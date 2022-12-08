@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -33,7 +34,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override fun createForm() = AddStepsRampForm()
 
-    override fun applyAnswerTo(answer: StepsRampAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: StepsRampAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         // special tagging if the wheelchair ramp is separate
         if (answer.wheelchairRamp == WheelchairRampStatus.SEPARATE) {
             val hasAnotherRamp = answer.bicycleRamp || answer.strollerRamp

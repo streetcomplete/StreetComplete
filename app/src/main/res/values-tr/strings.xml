@@ -819,9 +819,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Park ücreti var mı?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"bisiklet şeridi (kesik işaretler)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Kesilmemiş parke taşı/Arnavut Kaldırımı"</string>
     <string name="quest_streetSurface_square_title">"Bu meydanın yüzeyi nedir?"</string>
 
@@ -852,7 +849,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Burasi ne tarz bir bisiklet park alani ?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"bisiklet öneri şeridi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Bu posta kutusunun, posta toplama sureleri ne zaman?"</string>
@@ -1353,6 +1349,9 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_tourism_information_map">"Harita"</string>
 
     <!-- Fuzzy -->
+    <string name="quest_tourism_information_guidepost">"Kılavuz"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Genel atık için"</string>
     <string name="user_profile">"Profilim"</string>
     <string name="user_login">"Giriş Yap"</string>
@@ -1503,6 +1502,7 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <string name="quest_steps_incline_up">"Bu tarafla"</string>
     <string name="quest_step_count_title">"Burada kaç basamak var?"</string>
     <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Engel yok"</string>
     <string name="quest_steps_ramp_none">"(Kullanılabilir) Rampa yok"</string>
     <string name="quest_steps_ramp_bicycle">"Bisiklet rampası"</string>
     <string name="quest_steps_ramp_wheelchair">"Tekerlekli sandalye rampası"</string>
@@ -1517,6 +1517,7 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Gerçekten nadiren tamamlanan %d görev buldunuz ve çözdünüz, tebrikler!"</string>
     <string name="achievement_citizen_title">"Vatandaş"</string>
+    <string name="achievement_outdoors_title">"Açık havada"</string>
     <string name="quest_generic_answer_noSign">"İşaret yok"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Tekerlekli sandalye rampası haritada ayrı bir yol olarak gösteriliyor mu?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"ayrı"</string>
@@ -1565,6 +1566,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Uzun kamyonlar sığmaz"</string>
+    <string name="quest_crossing_type_marked">"İşaretlenmiş"</string>
     <string name="quest_generic_answer_does_not_exist">"Böyle bir şey yok…"</string>
     <string name="osm_element_gone_confirmation">"Böyle bir şey yok"</string>
     <string name="leave_note">"Not bırak"</string>
@@ -1590,6 +1592,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_construction_completion_date_title">"Ne zaman tamamlanacak?"</string>
     <string name="quest_surface_value_clay">"Kil"</string>
     <string name="quest_surface_value_artificial_turf">"Suni çim"</string>
+    <string name="quest_surface_value_tartan">"Kauçuk Zemin"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
@@ -1607,6 +1610,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="deleted_poi_action_description">"Sildin"</string>
     <string name="added_tag_action_title">"%s eklendi"</string>
     <string name="removed_tag_action_title">"%s kaldırıldı"</string>
+    <string name="delete_confirmation">"Sil"</string>
     <string name="background_type_map">"Harita"</string>
     <string name="no_location_permission_warning_title">"Konum İzni"</string>
     <string name="about_title_faq">"S.S.S."</string>
@@ -1615,8 +1619,17 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="action_search">"Ara"</string>
     <string name="no_search_results">"Hiçbir şey bulunamadı"</string>
     <string name="quest_presets_default_name">"Varsayılan"</string>
+
+    <!-- Android notifications -->
+    <string name="notification_channel_sync">"Verileri Senkronize Et"</string>
     <string name="quest_picnicTableCover_title">"Bu piknik masası kapalı mı (yağmurdan korunuyor mu)?"</string>
+    <string name="quest_traffic_calming_type_island">"Ada"</string>
     <string name="short_no_answer_on_button">"Hayır"</string>
+    <string name="restore_confirmation">"Eski haline getir"</string>
     <string name="pref_title_language_select">"Dil seç"</string>
     <string name="language_default">"Sistem varsayılanı"</string>
+    <string name="no_camera_permission_warning_title">"Kamera izni"</string>
+
+    <!-- AR Measure screen -->
+    <string name="ar_measure">"Ölçü"</string>
 </resources>

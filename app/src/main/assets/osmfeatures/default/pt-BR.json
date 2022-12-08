@@ -412,6 +412,9 @@
                 "building/part": {
                     "label": "Parte de construção"
                 },
+                "building/prefabricated": {
+                    "label": "Pré-fabricado"
+                },
                 "building_area": {
                     "label": "Edifício",
                     "terms": "prédio,edificação,construção,estrutura"
@@ -1845,6 +1848,9 @@
                     "label": "Telefone",
                     "placeholder": "+55 11 0982 1098"
                 },
+                "pipeline": {
+                    "label": "Tipo"
+                },
                 "piste/difficulty": {
                     "label": "Dificuldade",
                     "options": {
@@ -1954,6 +1960,11 @@
                 },
                 "plant/method": {
                     "label": "Método de geração"
+                },
+                "plant/output": {
+                    "options": {
+                        "electricity": "Eletricidade"
+                    }
                 },
                 "plant/output/electricity": {
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
@@ -2118,6 +2129,9 @@
                 },
                 "religion": {
                     "label": "Religião",
+                    "options": {
+                        "christian": "Cristã"
+                    },
                     "terms": "religião"
                 },
                 "reservation": {
@@ -2839,10 +2853,6 @@
                 "water_tank/volume": {
                     "label": "Volume (litros)",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "Volume de reserva de água (m³)",
-                    "terms": "volume de reserva de água (m³)"
                 },
                 "waterway": {
                     "label": "Tipo"
@@ -4908,8 +4918,7 @@
                     "name": "Travessia"
                 },
                 "highway/crossing/marked": {
-                    "name": "Faixa de pedestres",
-                    "terms": "faixa de pedestres"
+                    "name": "Faixa de pedestres"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Travessia com sinal para pedestres",
@@ -4938,8 +4947,7 @@
                     "terms": "travessia de pedestres com ciclovia"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Travessia de bicicleta marcada",
-                    "terms": "travessia de bicicleta marcada"
+                    "name": "Travessia de bicicleta marcada"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Travessia de bicicleta não marcada",
@@ -4972,24 +4980,9 @@
                 "highway/footway/crossing": {
                     "name": "Travessia de pedestres"
                 },
-                "highway/footway/marked": {
-                    "name": "Faixa de pedestres",
-                    "terms": "faixa de pedestres"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Calçada",
                     "terms": "calçada,passeio"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "Travessia com sinal para pedestres",
-                    "terms": "sinal de travessia de pedestres,travessia de pedestres com sinal,travessia de bicicletas com sinal"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Travessia de pedestres não marcada",
-                    "terms": "travessia de pedestres não marcada"
-                },
-                "highway/footway/zebra": {
-                    "name": "Faixa de pedestres"
                 },
                 "highway/give_way": {
                     "name": "Sinalização “dê a preferência”",
@@ -6013,10 +6006,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Oleoduto subterrâneo",
                     "terms": "oleoduto subterrâneo"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Válvula de Oleoduto",
-                    "terms": "válvula de oleoduto"
                 },
                 "man_made/pumping_station": {
                     "name": "Estação de Bombeamento",

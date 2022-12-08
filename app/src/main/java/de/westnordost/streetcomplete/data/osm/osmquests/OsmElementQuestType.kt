@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -96,9 +97,10 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
 
-    /** applies the data from [answer] to the element that has last been edited at [timestampEdited].
-     * The element is not directly modified, instead, a map of [tags] is built */
-    fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
+    /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
+     * with the given [tags] and the given [geometry].
+     * The element is not directly modified, instead, a map of [tags] is modified */
+    fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
 
     override fun createForm(): AbstractOsmQuestForm<T>
 }

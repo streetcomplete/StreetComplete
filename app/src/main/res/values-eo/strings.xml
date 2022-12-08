@@ -621,9 +621,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Kiu religio estas reprezentata en tiu idolejo?"</string>
     <string name="quest_parking_fee_title">"Ĉu kostas parkumi ĉi tie?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"bicikla leno (strekaj markoj)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Rondŝtonoj"</string>
     <string name="quest_streetSurface_square_title">"Kiun surfacon havas ĉi tiu placo?"</string>
     <string name="quest_fee_answer_hours">"Dependas je tempo kaj tago…"</string>
@@ -644,7 +641,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Konstruaĵo"</string>
     <string name="quest_bicycle_parking_type_title">"Kia biciklohaltejo estas ĉi tiu?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"Bicikla Sugesta Stratero"</string>
     <string name="quest_postboxCollectionTimes_title">"Kio estas la elektaj tempoj de ĉi tiu kolekto -skatolo?"</string>
     <string name="quest_collectionTimes_add_times">"Aldoni tempon de kolektado"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Sen specifita tempo"</string>

@@ -1151,7 +1151,39 @@
                     "label": "種類"
                 },
                 "healthcare/speciality": {
-                    "label": "専門科"
+                    "label": "専門科",
+                    "options": {
+                        "anaesthetics": "麻酔科",
+                        "biochemistry": "生化学",
+                        "biology": "臨床生物学",
+                        "cardiology": "循環器科",
+                        "child_psychiatry": "児童精神科",
+                        "community": "公衆衛生",
+                        "dental_oral_maxillo_facial_surgery": "歯科・口腔科・口腔顎顔面外科",
+                        "dermatology": "皮膚科",
+                        "diagnostic_radiology": "放射線科",
+                        "emergency": "救急科",
+                        "endocrinology": "内分泌科",
+                        "gastroenterology": "消化器内科",
+                        "general": "総合診療科",
+                        "gynaecology": "産婦人科",
+                        "internal": "内科",
+                        "neurology": "神経内科",
+                        "neurosurgery": "脳神経外科",
+                        "ophthalmology": "眼科",
+                        "orthodontics": "矯正歯科",
+                        "orthopaedics": "整形外科",
+                        "paediatric_surgery": "小児外科",
+                        "paediatrics": "小児科",
+                        "palliative": "緩和ケア",
+                        "physiatry": "リハビリテーション科",
+                        "plastic_surgery": "形成外科",
+                        "psychiatry": "精神科",
+                        "pulmonology": "呼吸器科",
+                        "radiology": "放射線科",
+                        "surgery": "外科",
+                        "urology": "泌尿器科"
+                    }
                 },
                 "heating": {
                     "label": "暖房の種類"
@@ -2785,10 +2817,6 @@
                 "water_tank/volume": {
                     "label": "量(リットル)",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "備蓄水量(m³)",
-                    "terms": "貯水量,貯水"
                 },
                 "waterway": {
                     "label": "水路の種類"
@@ -4877,8 +4905,7 @@
                     "name": "横断歩道"
                 },
                 "highway/crossing/marked": {
-                    "name": "横断歩道（マークあり）",
-                    "terms": "横断歩道（マークあり）,横断歩道,歩道"
+                    "name": "横断歩道（マークあり）"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "横断歩道（歩行者用信号あり）",
@@ -4907,8 +4934,7 @@
                     "terms": "横断歩道（自転車道内）,横断歩道,自転車道"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "自転車用横断道（マークあり）",
-                    "terms": "自転車用横断道（マークあり）,自転車横断道,自転車用横断歩道,自転車,自転車道,横断歩道"
+                    "name": "自転車用横断道（マークあり）"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "自転車用横断道（マークなし）",
@@ -4941,24 +4967,9 @@
                 "highway/footway/crossing": {
                     "name": "横断歩道"
                 },
-                "highway/footway/marked": {
-                    "name": "横断歩道（マークあり）",
-                    "terms": "横断歩道（マークあり）,横断歩道,歩道"
-                },
                 "highway/footway/sidewalk": {
                     "name": "歩道（車道の脇）",
                     "terms": "歩道（車道の脇）,歩道"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "横断歩道（歩行者用信号あり）",
-                    "terms": "横断歩道,信号機,信号,歩行者信号機,歩行者用信号機"
-                },
-                "highway/footway/unmarked": {
-                    "name": "横断歩道（マークなし）",
-                    "terms": "横断歩道（マークなし）,横断歩道,歩道"
-                },
-                "highway/footway/zebra": {
-                    "name": "横断歩道（ゼブラあり）"
                 },
                 "highway/give_way": {
                     "name": "ゆずれ標識（前方優先道路）",
@@ -6004,10 +6015,6 @@
                     "name": "パイプライン（地下）",
                     "terms": "パイプライン（地下）,パイプライン,地下,埋設パイプライン,地下パイプ"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "バルブ(パイプライン)",
-                    "terms": "バルブ(パイプライン)"
-                },
                 "man_made/pumping_station": {
                     "name": "ポンプ場",
                     "terms": "ポンプ場,揚水施設,汲み上げ"
@@ -6355,7 +6362,7 @@
                 },
                 "noexit/yes": {
                     "name": "行き止まり",
-                    "terms": "行き止まり,行止り,突き当たり"
+                    "terms": "行き止まり,行止り,突き当たり,袋小路"
                 },
                 "office": {
                     "name": "オフィス",

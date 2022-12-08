@@ -1,3 +1,27 @@
+v50.0-beta1: |
+  <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
+  <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>
+  <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
+  <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
+      quest and overlay. It lets you correct the position of the POI.</p>
+  </ul>
+  <h3>Enhanced Overlays</h3>
+  <ul>
+  <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
+  <li>Sidewalks: Support sidewalks mapped on exclusive cycleways</li>
+  <li>Street parking: Fix a crash when editing partially (#4634)</li>
+  <li>Shops: Add option to explicitely state that a shop has no name (#4648)</li>
+  <li>Shops: Fix removing localized names did not actually remove them</li>
+  <li>Other small enhancements (see #4657)</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Surfaces for segregated foot and cycleway: Correct common surface (#4615), by @mnalis</li>
+  <li>Disabled cycleway quest by default because it can be done more comprehensively in the overlay</li>
+  <li>Road width: Ask for confirmation when adding improbable road widths (#4655)</li>
+  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz</li>
+  </ul>
+
 v49.2: |
   <p>Tiny bugfix release for v49.1, because</p>
   <ul>

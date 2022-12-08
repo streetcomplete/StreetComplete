@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.osm.surface.updateSegregatedFootAndCycleway
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -38,14 +40,8 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, "cycleway")
-        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
-            if (tags["footway:surface"] == tags["cycleway:surface"]) {
-                tags["surface"] = tags["cycleway:surface"]!!
-            } else {
-                tags.remove("surface")
-            }
-        }
+        answer.updateSegregatedFootAndCycleway(tags)
     }
 }

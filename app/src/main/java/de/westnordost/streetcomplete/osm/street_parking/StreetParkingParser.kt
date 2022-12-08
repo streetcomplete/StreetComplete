@@ -67,7 +67,6 @@ private fun String.toParkingPosition() = when (this) {
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {
     val result = tags.toMutableMap()
     expandSidesTag("parking:lane", "", result)
-    expandSidesTag("parking:condition", "", result)
     expandSidesTag("parking:lane", "parallel", result)
     expandSidesTag("parking:lane", "diagonal", result)
     expandSidesTag("parking:lane", "perpendicular", result)

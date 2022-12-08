@@ -7,6 +7,7 @@ exclusiveCycleLaneStyle: white dashes on both sides
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: true
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

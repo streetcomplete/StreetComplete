@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.incline_direction
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -49,6 +50,6 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     override fun createForm() = AddBicycleInclineForm()
 
-    override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

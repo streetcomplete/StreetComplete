@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -22,7 +23,7 @@ import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
-    override val changesetComment = "Add housenumbers"
+    override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
     override val achievements = listOf(POSTMAN)
@@ -141,7 +142,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is AddressNumberOrName -> {
                 if (answer.number == null && answer.name == null) {

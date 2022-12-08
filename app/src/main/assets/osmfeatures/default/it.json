@@ -2749,10 +2749,6 @@
                     "label": "Volume (litri)",
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "Volume d’acqua (m³)",
-                    "terms": "volume,volume riserva,acqua,metri cubi"
-                },
                 "waterway": {
                     "label": "Tipo"
                 },
@@ -4239,7 +4235,7 @@
                 },
                 "building/terrace": {
                     "name": "Villette a schiera",
-                    "terms": "villette,fila di case"
+                    "terms": "villette,fila di case,schiera,casa a schiera"
                 },
                 "building/train_station": {
                     "name": "Edificio primario stazione ferroviaria"
@@ -4742,8 +4738,7 @@
                     "name": "Attraversamento"
                 },
                 "highway/crossing/marked": {
-                    "name": "Strisce pedonali",
-                    "terms": "attraversamento,pedonale,zebrato,zebra,strisce"
+                    "name": "Strisce pedonali"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Attraversamento pedonale semaforizzato",
@@ -4772,8 +4767,7 @@
                     "terms": "attraversamento bici e pedoni,bici e pedoni,ciclabile e pedonale"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Strisce per biciclette",
-                    "terms": "bici,bicicletta,attraversamento,strisce,incrocio,attraversamento ciclabile"
+                    "name": "Strisce per biciclette"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Attraversamento ciclabile non segnalato",
@@ -4808,24 +4802,9 @@
                 "highway/footway/crossing": {
                     "name": "Attraversamento pedonale"
                 },
-                "highway/footway/marked": {
-                    "name": "Strisce pedonali",
-                    "terms": "strisce,pedonale,pedoni,attraversamento pedonale,zebra,segnalato,incrocio"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Marciapiede",
                     "terms": "marciapiedi"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "Attraversamento pedonale semaforizzato",
-                    "terms": "semaforo,piedi,pedonale,strisce pedonali,attraversamento,bici,ciclabile,marciapiede"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Attraversamento pedonale non segnalato",
-                    "terms": "attraversamento,pedonale,percorso,sentiero,incrocio,non sengnalato,pericoloso"
-                },
-                "highway/footway/zebra": {
-                    "name": "Strisce pedonali"
                 },
                 "highway/give_way": {
                     "name": "Dare la precedenza",
@@ -5779,9 +5758,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Tubatura sotterranea",
                     "terms": "oleodotto,metanodotto,petrolio,metano,gas naturale,acqua,fognatura,fogne"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Valvola di conduttura"
                 },
                 "man_made/pumping_station": {
                     "name": "Stazione di pompaggio",

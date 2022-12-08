@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -39,7 +40,7 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
 
     override fun createForm() = AddSecondHandBicycleAvailabilityForm()
 
-    override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmValue == null) {
             tags.updateWithCheckDate("service:bicycle:retail", "no")
         } else {

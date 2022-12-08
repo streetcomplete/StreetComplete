@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bollard_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -51,7 +52,7 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
 
     override fun createForm() = AddBollardTypeForm()
 
-    override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BollardType -> tags["bollard"] = answer.osmValue
             BarrierTypeIsNotBollard -> tags["barrier"] = "yes"

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -62,7 +63,7 @@ class AddMaxPhysicalHeight(
 
     override fun createForm() = AddMaxPhysicalHeightForm()
 
-    override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         // overwrite maxheight value but retain the info that there is no sign onto another tag
         tags["maxheight"] = answer.height.toOsmValue()
         tags["maxheight:signed"] = "no"

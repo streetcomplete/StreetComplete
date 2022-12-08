@@ -408,7 +408,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_religion_chinese_folk">"Religião tradicional chinesa"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Qual é a religião representada neste nicho (alminhas ou capelinha)?"</string>
     <string name="quest_parking_fee_title">"Este estacionamento é pago?"</string>
-    <string name="quest_cycleway_value_lane_soft">"faixa de ciclovia (com marcas pintadas)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Paralelos toscos (não lisos irregulares)"</string>
     <string name="quest_streetSurface_square_title">"Qual é o tipo de pavimento desta praça?"</string>
     <string name="quest_fee_answer_hours">"Depende da hora e dia…"</string>
@@ -421,7 +420,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_bicycle_parking_type_locker">"Armário fechado"</string>
     <string name="quest_bicycle_parking_type_building">"Edíficio"</string>
     <string name="quest_bicycle_parking_type_title">"Que tipo de estacionamento para bicicleta é este?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"faixa de ciclovia sugerida"</string>
     <string name="quest_postboxCollectionTimes_title">"Qual é o horário de recolha desta caixa/marco de correio?"</string>
     <string name="quest_collectionTimes_add_times">"Adicionar horário de recolha"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Não tem horário indicado"</string>

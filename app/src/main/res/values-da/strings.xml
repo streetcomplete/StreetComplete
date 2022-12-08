@@ -468,7 +468,7 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"cykelsti, begge retninger"</string>
     <string name="pref_category_advanced">"Avanceret"</string>
-    <string name="quest_enabled">"Aktiveret"</string>
+    <string name="quest_enabled">"Aktiv"</string>
     <string name="quest_type">"Opgavetype"</string>
     <string name="action_reset">"Nulstil"</string>
     <string name="undo_confirm_positive">"Fortryd"</string>
@@ -575,9 +575,6 @@ Delvist betyder, at kørestolsbrugeren kan bruge toilettet, men at der mangler h
     <string name="quest_parking_fee_title">"Skal man betale for at parkere her?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"cykelbane (stiplet markering)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Pigsten"</string>
 
     <!-- Fuzzy -->
@@ -604,9 +601,6 @@ Delvist betyder, at kørestolsbrugeren kan bruge toilettet, men at der mangler h
     <string name="quest_bicycle_parking_type_locker">"Skab"</string>
     <string name="quest_bicycle_parking_type_building">"Bygning"</string>
     <string name="quest_bicycle_parking_type_title">"Hvilken type cykelparkering er dette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"cykel-henvisningssti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Hvad er tømningstiderne for denne postkasse?"</string>
@@ -823,7 +817,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_noteDiscussion_hide2">"Skjult af %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_image_upload2">"&lt;p&gt;Billeder du vedhæfter til en note uploades til en server og slettes nogle dage efter, at den note er blevet løst. Metadata i billeder fjernes før upload.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Billeder du vedhæfter til en note, uploades til min server og slettes nogle dage efter, at den note er blevet løst. Metadata i billeder fjernes før upload.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Fravælg alle"</string>
 
     <!-- Fuzzy -->
@@ -879,7 +873,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <!-- Fuzzy -->
     <string name="theme_dark">"Mørk"</string>
     <string name="theme_system_default">"Systemstandard"</string>
-    <string name="action_open_location">"Åbn denne placering i en anden app"</string>
+    <string name="action_open_location">"Åbn placering i en anden app"</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Ingen anden kortapplikation installeret"</string>
@@ -1179,7 +1173,7 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <!-- Main menu -->
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Menu"</string>
-    <string name="privacy_html_statistics">"&lt;p&gt;Oplysninger i din profil stammer fra den offentlige bidragshistorie i OpenStreetMap og er lagt ind på min server.&lt;/p&gt;"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Oplysningerne, der vises i din profil, er indhentet fra den offentligt tilgængelig bidragshistorik i OpenStreetMap og lagt på min server.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Du kan også gøre det senere på profilsiden."</string>
     <string name="credits_art_contributors_title">"Kunstbidragsydere"</string>
     <string name="credits_projects_contributors_title">"Projekter lavet for StreetComplete"</string>
@@ -1207,8 +1201,7 @@ aktiv"</string>
     <string name="link_photon_description">"Selvstændig udvidelse til Nominatim som indeholder fuzzy søgning og søg-mens-du-taster funktion"</string>
     <string name="link_graphhopper_description">"Et fleksibelt ruteberegningsværktøj"</string>
     <string name="link_qwant_maps_description">"Et kort til at søge efter steder og ruter"</string>
-    <string name="privacy_html_tileserver2">"&lt;p&gt;For at vise kortet med vektortiles fra %1$s. Se deres &lt;a href=\"%2$s\"&gt;
-fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;For at vise kortet, hentes der vektorfliser fra %1$s. Se deres &lt;a href=\"%2$s\"&gt;fortrolighedserklæring&lt;/a&gt; for mere information.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
     <string name="quest_board_type_history">"Historie"</string>
     <string name="quest_board_type_geology">"Geologi"</string>
@@ -1227,7 +1220,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på, at det er umuligt at angive en belægningstype her? Bemærk at svarmuligheden \"varierer langs med vejen\" giver dig mulighed for at klippe vejen der, hvor belægningstypen ændrer sig. Vær venlig at bruge \"Ved ikke\" hvis der kun er én belægningstype, men den ikke findes på listen."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_description">"Angiv kort overfladens karakter her, for eksempel \"sand med enkelte områder af brosten\". Tekstlængden er begrænset til 255 tegn."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Angiv kort overfladens karakter her, for eksempel \"sand med enkelte områder af pigsten\". Tekstlængden er begrænset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Rækkehuse"</string>
     <string name="at_housename">"husnavn %s"</string>
@@ -1960,7 +1953,7 @@ sorted alphabetically by title -->
     <string name="user_profile_dates_mapped">"Dage, hvor du har kortlagt for nylig"</string>
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
-    <string name="quest_cycleway_value_advisory_lane">"2-minus-1-vej"</string>
+    <string name="quest_cycleway_value_advisory_lane">"anbefalet cykelsti"</string>
     <string name="urlconfig_scan_qr_code_again2">"Når du har installeret appen, skal du scanne QR-koden igen eller klikke på &lt;a href=\"%s\"&gt;dette link&lt;/a&gt; for at anvende forudindstillingen."</string>
     <string name="confirmation_replace_shop_title">"Er det et andet sted nu?"</string>
     <string name="confirmation_replace_shop_message">"I så fald vil åbningstider, kontaktoplysninger osv. også være ændret."</string>

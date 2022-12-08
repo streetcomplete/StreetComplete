@@ -128,7 +128,8 @@
                         "bicycle": "Jazda na rowerze",
                         "hiking": "Wspinaczka",
                         "horse": "Jeżdżenie na koniu",
-                        "mtb": "Jazda na rowerze górskim"
+                        "mtb": "Jazda na rowerze górskim",
+                        "ski": "Narciarstwo"
                     }
                 },
                 "addr/interpolation": {
@@ -330,7 +331,15 @@
                     "terms": "ławka"
                 },
                 "bicycle_parking": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "building": "W budynku",
+                        "handlebar_holder": "Uchwyty na kierownicę",
+                        "lockers": "Indywidualne szafki",
+                        "shed": "Zamknięta wiata",
+                        "stands": "Stojaki (podtrzymują ramę roweru)",
+                        "wall_loops": "Wyrwikółka (podtrzymują wyłącznie koło)"
+                    }
                 },
                 "bin": {
                     "label": "Kosz na śmieci",
@@ -489,6 +498,9 @@
                 "capacity_volume": {
                     "label": "Objętość (m³)",
                     "placeholder": "50, 100, 200..."
+                },
+                "cash_in": {
+                    "label": "Wpłatomat"
                 },
                 "castle_type": {
                     "label": "Rodzaj",
@@ -765,6 +777,7 @@
                     "label": "Znaczenie"
                 },
                 "departures_board": {
+                    "label": "Tablica odjazdów/przyjazdów",
                     "options": {
                         "no": "Brak",
                         "realtime": "Tablica elektroniczna",
@@ -1561,7 +1574,8 @@
                     "terms": "zalecane ograniczenie prędkości"
                 },
                 "maxspeed/hgv": {
-                    "label": "Ograniczenie prędkości dla ciężarówek"
+                    "label": "Ograniczenie prędkości dla ciężarówek",
+                    "placeholder": "40, 50, 60..."
                 },
                 "maxstay": {
                     "label": "Maksymalny czas postoju",
@@ -1827,6 +1841,12 @@
                 },
                 "payment_multi": {
                     "label": "Rodzaje płatności",
+                    "options": {
+                        "google_pay": "Google Pay",
+                        "mastercard": "Mastercard",
+                        "notes": "Banknoty",
+                        "paypal": "PayPal"
+                    },
                     "terms": "rodzaj płatności,sposób płatności,metoda płatności,płatność,karta płatnicza,karta kredytowa,gotówka"
                 },
                 "phases": {
@@ -1949,6 +1969,7 @@
                     "label": "Metoda wytwarzania energii"
                 },
                 "plant/output/electricity": {
+                    "label": "Elektryczna moc wyjściowa",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2703,6 +2724,7 @@
                 "tracktype": {
                     "label": "Spoistość drogi, zazwyczaj leśnej lub polnej (tracktype)",
                     "options": {
+                        "grade1": "Utwardzona lub mocno ubita nawierzchnia",
                         "grade2": "Żwirowa/tłuczniowa z niewielką domieszką piasku, mułu lub gliny",
                         "grade3": "Składająca się z równej ilości twardych i miękkich materiałów",
                         "grade4": "Ziemia/piasek/trawa z domieszką twardych materiałów",
@@ -2784,6 +2806,7 @@
                         "converter": "Konwerter: zasila konwertery mocy",
                         "distribution": "Dystrybucja: Zasila odbiorców końcowych, instalowana poza podstacjami",
                         "generator": "Generator: Podwyższa napięcie w elektrowniach",
+                        "phase_angle_regulator": "Regulator przesunięcia fazowego",
                         "yes": "Nieznana rola"
                     }
                 },
@@ -2916,10 +2939,6 @@
                 "water_tank/volume": {
                     "label": "Objętość (w litrach)",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "Objętość zapasu wody (m³)",
-                    "terms": "objętość zapasu wody"
                 },
                 "waterway": {
                     "label": "Rodzaj"
@@ -3914,7 +3933,8 @@
                     "name": "Czytnik biletów"
                 },
                 "amenity/toilets": {
-                    "name": "Toalety"
+                    "name": "Toalety",
+                    "terms": "toalety,toaleta,łazienka,ubikacja,wc"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "WC",
@@ -4606,6 +4626,10 @@
                     "name": "Introligator",
                     "terms": "introligator,oprawianie,rzemiosło,rzemieślnik,rzemieślnicy"
                 },
+                "craft/brewery": {
+                    "name": "Browar",
+                    "terms": "piwo,rzemiosło,rzemieślnik,rzemieślnicy"
+                },
                 "craft/carpenter": {
                     "name": "Cieśla",
                     "terms": "cieśla,drewno,rzemiosło,rzemieślnik,rzemieślnicy"
@@ -5054,7 +5078,8 @@
                     "name": "Przystanek autobusowy"
                 },
                 "highway/construction": {
-                    "name": "Droga w budowie"
+                    "name": "Droga w budowie",
+                    "terms": "droga w budowie,droga w przebudowie,zamknięta droga,droga zamknięta,ścieżka w budowie,ścieżka w przebudowie,roboty drogowe,budowa,remont"
                 },
                 "highway/corridor": {
                     "name": "Korytarz (w budynku)",
@@ -5064,8 +5089,7 @@
                     "name": "Przejście"
                 },
                 "highway/crossing/marked": {
-                    "name": "Oznakowane przejście dla pieszych",
-                    "terms": "oznaczone przejście dla pieszych,przejście dla pieszych,zebra,pasy"
+                    "name": "Oznakowane przejście dla pieszych"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Przejście z sygnałami dla pieszych"
@@ -5096,8 +5120,7 @@
                     "terms": "przejazd pieszo-rowerowy"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Oznakowany przejazd rowerowy",
-                    "terms": "przejazd rowerowy,przejście rowerowe"
+                    "name": "Oznakowany przejazd rowerowy"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Nieoznakowany przejazd rowerowy",
@@ -5136,23 +5159,9 @@
                 "highway/footway/informal": {
                     "name": "Nieformalna ścieżka dla pieszych"
                 },
-                "highway/footway/marked": {
-                    "name": "Oznakowane przejście dla pieszych",
-                    "terms": "oznaczone przejście dla pieszych,przejście dla pieszych,zebra,pasy"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Chodnik przy jezdni",
                     "terms": "chodnik"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "Przejście z sygnałami dla pieszych"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Nieoznakowane przejście",
-                    "terms": "nieoznaczone przejście dla pieszych"
-                },
-                "highway/footway/zebra": {
-                    "name": "Oznakowane przejście dla pieszych"
                 },
                 "highway/give_way": {
                     "name": "Ustąp pierwszeństwa przejazdu",
@@ -5309,6 +5318,10 @@
                 "highway/toll_gantry": {
                     "name": "Bramownica poboru opłat",
                     "terms": "bramownica poboru opłat,pobór opłat,viatoll"
+                },
+                "highway/track": {
+                    "name": "Droga prowadząca na pola lub do lasu",
+                    "terms": "droga polna,droga leśna,trakt leśny"
                 },
                 "highway/traffic_mirror": {
                     "name": "Lustro drogowe",
@@ -6018,6 +6031,9 @@
                     "name": "Linia",
                     "terms": "linia,lina"
                 },
+                "man_made": {
+                    "name": "Konstrukcja"
+                },
                 "man_made/adit": {
                     "name": "Sztolnia",
                     "terms": "tunel kopalniany"
@@ -6197,10 +6213,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Podziemny rurociąg",
                     "terms": "podziemny,rurociąg,gazociąg,kanały,kanalizacja,ścieki,ropa,gaz"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Zawór rurociągu",
-                    "terms": "olej,gaz ziemny,woda,ściek,ścieki"
                 },
                 "man_made/planter": {
                     "name": "Sadzarka"
@@ -6499,6 +6511,10 @@
                     "name": "Fosa",
                     "terms": "fosa"
                 },
+                "natural/water/oxbow": {
+                    "name": "Starorzecze",
+                    "terms": "jezioro przyrzeczne,paleomeander"
+                },
                 "natural/water/pond": {
                     "name": "Staw",
                     "terms": "staw,sadzawka,bajoro"
@@ -6716,6 +6732,10 @@
                 "office/private_investigator": {
                     "name": "Prywatny detektyw",
                     "terms": "prywatny detektyw"
+                },
+                "office/property_management": {
+                    "name": "Zarządca nieruchomości / Biuro leasingowe",
+                    "terms": "wspólnota mieszkaniowa,spółdzielnia mieszkaniowa,mieszkania,wypożyczenia"
                 },
                 "office/quango": {
                     "name": "Biuro organizacji prawie pozarządowej",
@@ -7372,6 +7392,10 @@
                     "name": "Sklep z mangą i anime",
                     "terms": "anime,manga,cosplay"
                 },
+                "shop/antiques": {
+                    "name": "Antykwariat",
+                    "terms": "sklep z antykami,antyki"
+                },
                 "shop/appliance": {
                     "name": "Sklep z AGD",
                     "terms": "sklep z agd,agd,artykuły gospodarstwa domowego,klimatyzatory,kuchenki,lodówki,mikrofalówki,miksery,odkurzacze,pralki,roboty kuchenne,suszarki,wentylatory,zamrażarki,zmywarki"
@@ -7427,6 +7451,10 @@
                 "shop/bookmaker": {
                     "name": "Zakład bukmacherski",
                     "terms": "zakład bukmacherski,bukmacher,zakłady sportowe,hazard"
+                },
+                "shop/books": {
+                    "name": "Księgarnia",
+                    "terms": "komiksy,antykwariat"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -7545,6 +7573,10 @@
                     "name": "Sklep z kosmetykami",
                     "terms": "kosmetyki,makijaż,make-up,sephora,inglot,ziaja"
                 },
+                "shop/country_store": {
+                    "name": "Sklep z artykułami wiejskimi",
+                    "terms": "sklep wiejski"
+                },
                 "shop/craft": {
                     "name": "Sklep z artykułami dla artystów",
                     "terms": "sklep z artykułami dla artystów,artykuły dla artystów,artykuły dla plastyków,farby,sztalugi,papiery,kartony,tektury,płótna,pastele,pędzle,ramy,ramki,drewno,narzędzia,papierniczy,sklep papierniczy"
@@ -7556,6 +7588,10 @@
                 "shop/dairy": {
                     "name": "Sklep z nabiałem",
                     "terms": "nabiał"
+                },
+                "shop/deli": {
+                    "name": "Ekskluzywne delikatesy",
+                    "terms": "delikatesy,wyroby delikatesowe,wykwintne artykuły spożywcze,specjały,rarytasy"
                 },
                 "shop/department_store": {
                     "name": "Dom towarowy",
@@ -7680,6 +7716,10 @@
                     "name": "Sklep z narzędziami",
                     "terms": "sklep narzędziowy,narzędzia,elektronarzędzia,gwoździe,śruby,uszczelki,kable"
                 },
+                "shop/health_food": {
+                    "name": "Sklep ze zdrową żywnością",
+                    "terms": "zdrowa żywność,żywność ekologiczna,żywność regionalna,produkty regionalne,spożywcze,odżywcze,żywność surowa,żywność nieprzetworzona,wegetariańskie,wegańskie,witaminy"
+                },
                 "shop/hearing_aids": {
                     "name": "Sklep z aparatami słuchowymi",
                     "terms": "aparaty słuchowe"
@@ -7792,6 +7832,10 @@
                     "name": "Sklep z instrumentami muzycznymi",
                     "terms": "instrumenty muzyczne,sklep muzyczny"
                 },
+                "shop/newsagent": {
+                    "name": "Sklep z prasą",
+                    "terms": "salonik prasowy,prasa,gazety,czasopisma,lotto"
+                },
                 "shop/nutrition_supplements": {
                     "name": "Sklep z suplementami diety",
                     "terms": "suplementy diety,odżywki dla sportowców"
@@ -7819,6 +7863,9 @@
                 "shop/pastry": {
                     "name": "Cukiernia",
                     "terms": "cukiernia,pączkarnia,ciastkarnia,piekarnia,wypieki,ciasta,torty,pączki,precle"
+                },
+                "shop/pawnbroker": {
+                    "name": "Lombard"
                 },
                 "shop/perfumery": {
                     "name": "Perfumeria",
@@ -7875,6 +7922,10 @@
                 "shop/seafood": {
                     "name": "Sklep z rybami i owocami morza",
                     "terms": "sklep rybny,ryby,owoce morza"
+                },
+                "shop/second_hand": {
+                    "name": "Sklep z rzeczami używanymi",
+                    "terms": "second hand,komis,używane rzeczy,rzeczy używane"
                 },
                 "shop/sewing": {
                     "name": "Pasmanteria",
@@ -7974,6 +8025,10 @@
                 "shop/vacuum_cleaner": {
                     "name": "Sklep z odkurzaczami",
                     "terms": "odkurzacze"
+                },
+                "shop/variety_store": {
+                    "name": "Sklep dyskontowy",
+                    "terms": "sklep z różnościami,różności,bibeloty,pamiątki,prezenty,gadżety,dyskont"
                 },
                 "shop/video": {
                     "name": "Sklep/wypożyczalnia z filmami wideo/dvd",
@@ -8293,6 +8348,9 @@
                 "type/restriction/no_straight_on": {
                     "name": "Zakaz jazdy prosto"
                 },
+                "type/restriction/no_u_turn": {
+                    "name": "Zakaz zawracania"
+                },
                 "type/restriction/only_left_turn": {
                     "name": "Nakaz skrętu w lewo"
                 },
@@ -8301,6 +8359,10 @@
                 },
                 "type/restriction/only_straight_on": {
                     "name": "Nakaz jazdy prosto"
+                },
+                "type/restriction/only_u_turn": {
+                    "name": "Tylko zawracanie",
+                    "terms": "nakaz zawracania"
                 },
                 "type/route": {
                     "name": "Trasa/linia",
@@ -8311,7 +8373,8 @@
                     "terms": "trasa kolei linowej,kolej linowa"
                 },
                 "type/route/bicycle": {
-                    "name": "Trasa rowerowa"
+                    "name": "Trasa rowerowa",
+                    "terms": "szlak rowerowy"
                 },
                 "type/route/bus": {
                     "name": "Linia autobusowa",

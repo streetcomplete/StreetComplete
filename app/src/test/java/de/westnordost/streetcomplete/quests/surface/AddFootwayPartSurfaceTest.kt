@@ -112,10 +112,28 @@ class AddFootwayPartSurfaceTest {
 
     @Test fun `smoothness tag removed when footway surface changes`() {
         questType.verifyAnswer(
-            mapOf("footway:surface" to "asphalt", "footway:smoothness" to "excellent"),
+            mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "gravel",
+                "footway:smoothness" to "intermediate"
+            ),
             SurfaceAnswer(Surface.PAVING_STONES),
-            StringMapEntryDelete("footway:smoothness", "excellent"),
+            StringMapEntryDelete("footway:smoothness", "intermediate"),
             StringMapEntryModify("footway:surface", "asphalt", "paving_stones")
+        )
+    }
+
+    @Test fun `smoothness tag not removed when surface did not change`() {
+        questType.verifyAnswer(
+            mapOf(
+                "cycleway:surface" to "paving_stones",
+                "surface" to "paving_stones",
+                "smoothness" to "good"
+            ),
+            SurfaceAnswer(Surface.PAVING_STONES),
+            StringMapEntryAdd("footway:surface", "paving_stones"),
+            StringMapEntryModify("surface", "paving_stones", "paving_stones"),
+            StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
         )
     }
 
@@ -152,11 +170,24 @@ class AddFootwayPartSurfaceTest {
         )
     }
 
+    @Test fun `surface changes to generic paved when similar for footway and cycleway`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "paving_stones",
+                "footway:surface" to "paving_stones",
+                "cycleway:surface" to "asphalt",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
+            StringMapEntryModify("surface", "paving_stones", "paved")
+        )
+    }
+
     @Test fun `surface removed when different for footway and cycleway`() {
         questType.verifyAnswer(
             mapOf(
                 "surface" to "paving_stones",
-                "cycleway:surface" to "paving_stones",
+                "cycleway:surface" to "gravel",
                 "footway:surface" to "paving_stones",
             ),
             SurfaceAnswer(Surface.CONCRETE),

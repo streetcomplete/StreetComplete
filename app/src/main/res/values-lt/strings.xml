@@ -1023,9 +1023,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_parking_fee_title">"Ar stovėjimas čia mokamas?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"dviračių juosta (pažymėta)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Nemalingi akmenukai"</string>
 
     <!-- Fuzzy -->
@@ -1060,9 +1057,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Kokio tipo ši dviračių stotelė?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"dviračių siūloma juosta"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Kokie yra šios dėžutės laiškų surinkimo laikai?"</string>

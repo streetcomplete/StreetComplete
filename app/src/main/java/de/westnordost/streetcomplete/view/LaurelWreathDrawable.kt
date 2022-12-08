@@ -18,7 +18,7 @@ import kotlin.math.min
     99 to 10: may be losing elements as it gets smaller
     below: no decorative styling at all
  */
-class LaurelWreathDrawable(val resources: Resources) : Drawable() {
+class LaurelWreathDrawable(private val resources: Resources) : Drawable() {
     private val pairOfLaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)
     private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
     private val backgroundPaint = Paint()

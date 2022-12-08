@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -25,7 +26,7 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
 
     override fun createForm() = AddReligionForm()
 
-    override fun applyAnswerTo(answer: Religion, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Religion, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["religion"] = answer.osmValue
     }
 }

@@ -2396,9 +2396,6 @@
                 "water_tank/volume": {
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "Объем резервуара (м³)"
-                },
                 "waterway": {
                     "label": "Тип"
                 },
@@ -4652,9 +4649,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Подземный трубопровод"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Задвижка на трубопроводе"
                 },
                 "man_made/pumping_station": {
                     "name": "Насосная станция"

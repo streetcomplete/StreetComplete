@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -74,7 +75,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("kerb", answer.osmValue)
         /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
 

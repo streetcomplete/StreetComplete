@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -156,7 +157,7 @@ class AddOpeningHours(
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is NoOpeningHoursSign) {
             tags["opening_hours:signed"] = "no"
             tags.updateCheckDateForKey("opening_hours")

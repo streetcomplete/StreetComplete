@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -117,7 +118,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["wheelchair"] = answer.osmValue
     }
 }

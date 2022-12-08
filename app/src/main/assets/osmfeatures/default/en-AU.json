@@ -129,6 +129,9 @@
                 "amenity/bicycle_parking/building": {
                     "name": "Bicycle Parking Building"
                 },
+                "amenity/cafe/bubble_tea": {
+                    "name": "Bubble Tea Shop"
+                },
                 "amenity/childcare": {
                     "name": "Childcare",
                     "aliases": "Daycare"
@@ -266,14 +269,8 @@
                     "name": "Informal Walkway",
                     "aliases": "Informal Footpath"
                 },
-                "highway/footway/marked": {
-                    "name": "Marked Crossing"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Footpath (sidewalk)"
-                },
-                "highway/footway/zebra": {
-                    "name": "Marked Zebra Crossing"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"

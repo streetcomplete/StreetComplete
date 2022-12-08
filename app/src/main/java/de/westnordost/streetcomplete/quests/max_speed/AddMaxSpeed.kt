@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -36,7 +37,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override fun createForm() = AddMaxSpeedForm()
 
-    override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is MaxSpeedSign -> {
                 tags["maxspeed"] = answer.value.toString()

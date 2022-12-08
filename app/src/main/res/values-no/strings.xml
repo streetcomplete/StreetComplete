@@ -401,8 +401,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="credits_author_title">"Opphavsmann og vedlikeholder"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
-    <string name="credits_and_more">"og mer…"</string>
+    <string name="credits_and_more">"med fler…"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er et gatetun"</string>
 
     <!-- Fuzzy -->
@@ -803,9 +802,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_parking_fee_title">"Koster det noe å parkere her?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"Sykkelfelt (stipla linje)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Innstøpt elvestein"</string>
 
     <!-- Fuzzy -->
@@ -840,9 +836,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Hva slags parkering er dette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"Anbefalt sykkelfelt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Når blir denne postkassen tømt?"</string>
@@ -1814,9 +1807,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etasjer over kjeller har denne bygningsdelen?"</string>
     <string name="quest_crossing_title">"Er det kantstein hvor dette anlegget møter veien? Hvilken type?"</string>
     <string name="pref_subtitle_quests_preset_name">"Standardvalg: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformene er ofte vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto."</string>
+    <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformen ofte er vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto."</string>
     <string name="quest_religion_animist">"Animisme"</string>
     <string name="quest_construction_steps_title">"Er trappene ferdigbygget?"</string>
 
@@ -2299,6 +2290,7 @@ sorted alphabetically by title -->
     <string name="urlconfig_as_url">"Eller som en URL"</string>
     <string name="urlconfig_url_copied">"URL kopiert til utklippstavlen"</string>
     <string name="urlconfig_apply_title">"Bruk mal"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"To-etasjes sykkelstativ"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Denne uka"</string>
@@ -2308,4 +2300,8 @@ sorted alphabetically by title -->
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"anbefalt sykkelfelt"</string>
+    <string name="confirmation_replace_shop_title">"Er det en annen butikk nå?"</string>
+    <string name="confirmation_replace_shop_message">"I så fall har åpningstid, kontaktinformasjon osv. også endret seg."</string>
+    <string name="confirmation_replace_shop_yes">"En annen butikk nå"</string>
+    <string name="confirmation_replace_shop_no">"Fortsatt samme butikk"</string>
 </resources>

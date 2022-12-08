@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -30,7 +31,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
 
     override fun createForm() = AddBikeRentalTypeForm()
 
-    override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BikeRentalType -> {
                 tags["bicycle_rental"] = answer.osmValue

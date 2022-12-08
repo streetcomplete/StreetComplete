@@ -147,6 +147,13 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="split_way">Split way</string>
 
+    <string name="move_node">It’s at a slightly different position…</string>
+    <string name="quest_move_node_message">You can correct the position by moving the feature.\nMove it now?</string>
+    <string name="node_moved_not_far_enough">Please move it further</string>
+    <string name="node_moved_too_far">Moved too far. Consider leaving a note</string>
+    <string name="node_moved">Moved by %s</string>
+    <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
+
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
@@ -185,6 +192,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="split_way_action_description">You split the way</string>
     <string name="deleted_poi_action_description">You deleted it</string>
     <string name="create_node_action_description">You created a node with …</string>
+    <string name="move_node_action_description">You moved the node</string>
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>
@@ -932,6 +940,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
+    <string name="quest_cycleway_value_shoulder">none, but shoulder is usable for cyclists</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
@@ -1219,6 +1228,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
+    <string name="quest_placeName_no_name_answer">"There is no name sign"</string>
 
     <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
 
@@ -1296,6 +1306,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_road_width_title">"How wide is the road here?"</string>
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bicycle lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bicycle paths."</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from curb to curb, including on-street parking, bicycle lanes etc."</string>
 
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
@@ -1461,29 +1472,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
-    <string name="select_street_parking_position">"Select position:"</string>
-    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
-    <string name="street_parking_parallel">"Parallel"</string>
-    <string name="street_parking_diagonal">"Diagonal"</string>
-    <string name="street_parking_perpendicular">"Perpendicular"</string>
-    <string name="street_parking_on_street">"On street"</string>
-    <string name="street_parking_half_on_kerb">"Partially on street"</string>
-    <string name="street_parking_on_kerb">"Adjacent to street"</string>
-    <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
-    <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
-    <string name="street_parking_separate">Parking displayed separately on map</string>
-    <string name="street_parking_no">No parking here / Not allowed</string>
-    <string name="street_parking_prohibited">No parking</string>
-    <string name="street_stopping_prohibited">No stopping</string>
-    <string name="street_standing_prohibited">No standing</string>
-    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
-    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
-    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
-
-Alternatively, you can leave a note (with a photo)."</string>
-    <string name="street_parking_street_width">Street width: %s</string>
-
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
@@ -1586,6 +1574,21 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="select_overlay">Select Overlay</string>
 
+    <string name="overlay_cycleway">Cycleways</string>
+    <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
+    <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
+    <string name="bicycle_boulevard">Bicycle boulevard</string>
+    <string name="separate_cycleway_no">No cycling</string>
+    <string name="separate_cycleway_allowed">Cyclists are allowed</string>
+    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (regardless of whether cycling is allowed or not)</string>
+    <string name="separate_cycleway_non_segregated">Designated combined foot- and cycleway</string>
+    <string name="separate_cycleway_segregated">Segregated cycle- and footway</string>
+    <string name="separate_cycleway_exclusive">Exclusive cycleway</string>
+    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway which has a sidewalk for foot traffic (with kerb)</string>
+    <string name="cycleway_reverse_direction">Reverse cycleway direction</string>
+    <string name="cycleway_reverse_direction_warning">That a cycleway goes into the other direction is extremely rare.</string>
+    <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
+
     <string name="overlay_none">None</string>
 
     <string name="overlay_lit">Street lighting</string>
@@ -1609,4 +1612,28 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_no">"Still same place"</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On street"</string>
+    <string name="street_parking_half_on_kerb">"Partially on street"</string>
+    <string name="street_parking_on_kerb">"Adjacent to street"</string>
+    <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
+    <string name="street_parking_separate">Parking displayed separately on map</string>
+    <string name="street_parking_no">No parking here / Not allowed</string>
+    <string name="street_parking_prohibited">No parking</string>
+    <string name="street_stopping_prohibited">No stopping</string>
+    <string name="street_standing_prohibited">No standing</string>
+    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
+    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)."</string>
+    <string name="street_parking_street_width">Street width: %s</string>
+
 </resources>

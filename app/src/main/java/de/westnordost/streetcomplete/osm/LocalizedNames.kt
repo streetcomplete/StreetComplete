@@ -27,7 +27,6 @@ data class LocalizedName(var languageTag: String, var name: String)
  *  */
 fun createLocalizedNames(tags: Map<String, String>): List<LocalizedName>? {
     val result = ArrayList<LocalizedName>()
-    val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
     for ((key, value) in tags) {
         val m = namePattern.matchEntire(key)
         if (m != null) {
@@ -48,26 +47,39 @@ fun createLocalizedNames(tags: Map<String, String>): List<LocalizedName>? {
 }
 
 fun List<LocalizedName>.applyTo(tags: Tags) {
+    // applying a list of localized names always replaces the entire list of localized names, i.e.
+    // anything not specified gets deleted.
+    for (key in tags.keys) {
+        val isLocalizedName = namePattern.matches(key)
+        if (isLocalizedName) tags.remove(key)
+    }
+    tags.remove("int_name")
+
     if (isEmpty()) return
+
+    // if it has names, it is not noname...
+    tags.remove("noname")
+    tags.remove("name:signed")
 
     // language is only specified explicitly in OSM (usually) if there is more than one name specified
     if (size == 1) {
         tags["name"] = first().name
-        return
-    }
-
-    for ((language, name) in this) {
-        val key = when (language) {
-            "" -> "name"
-            "international" -> "int_name"
-            else -> "name:$language"
+    } else {
+        for ((language, name) in this) {
+            val key = when (language) {
+                "" -> "name"
+                "international" -> "int_name"
+                else -> "name:$language"
+            }
+            tags[key] = name
         }
-        tags[key] = name
-    }
 
-    // but if there is more than one language, ensure that a "main" name is also specified
-    if (find { it.languageTag == "" } == null) {
-        // use the name specified in the topmost row for that
-        tags["name"] = first().name
+        // but if there is more than one language, ensure that a "main" name is also specified
+        if (find { it.languageTag == "" } == null) {
+            // use the name specified in the topmost row for that
+            tags["name"] = first().name
+        }
     }
 }
+
+private val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")

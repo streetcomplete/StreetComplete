@@ -556,9 +556,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
 
     <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Czy parkowanie jest tutaj płatne?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"pas rowerowy (linia przerywana)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"kocie łby"</string>
     <string name="quest_streetSurface_square_title">"Jaką nawierzchnię ma ten plac?"</string>
     <string name="quest_fee_answer_hours">"Zależy od dnia i godziny…"</string>
@@ -584,9 +581,6 @@ Na przykład 1,3 lub 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Jaki rodzaj stojaków rowerowych ma ten parking rowerowy?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"pas rowerowy bez obowiązku użycia go przez rowerzystów"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"W jakich godzinach ta skrzynka pocztowa jest opróżniania?"</string>

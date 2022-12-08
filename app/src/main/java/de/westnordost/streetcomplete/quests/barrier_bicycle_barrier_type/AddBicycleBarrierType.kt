@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
@@ -21,7 +22,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
 
     override fun createForm() = AddBicycleBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BicycleBarrierType -> tags["cycle_barrier"] = answer.osmValue
             BarrierTypeIsNotBicycleBarrier -> tags["barrier"] = "yes"

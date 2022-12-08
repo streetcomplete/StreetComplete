@@ -7,6 +7,7 @@ edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.oneway
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -79,7 +80,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
             FORWARD -> "yes"
             BACKWARD -> "-1"

@@ -468,9 +468,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Koja je religija zastupljena u ovom svetištu?"</string>
     <string name="quest_parking_fee_title">"Naplaćuje li se parkiranje ovdje?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"biciklistička traka (isprekidane oznake)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Kaldrma"</string>
     <string name="quest_streetSurface_square_title">"Kakvu površinu ima ovaj trg?"</string>
     <string name="quest_fee_answer_hours">"Ovisi o satu i danu…"</string>
@@ -488,7 +485,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_bicycle_parking_type_locker">"Ormar"</string>
     <string name="quest_bicycle_parking_type_building">"Zgrada"</string>
     <string name="quest_bicycle_parking_type_title">"Koja je ovo vrsta parkirališta za bicikle?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"preporučena traka za bicikle"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Koja su vremena prikupljanja ovog poštanskog sandučića?"</string>

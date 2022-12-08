@@ -8,6 +8,7 @@ exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
+hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bus_stop_ref
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -34,7 +35,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
 
     override fun createForm() = AddBusStopRefForm()
 
-    override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoVisibleBusStopRef -> tags["ref:signed"] = "no"
             is BusStopRef ->          tags["ref"] = answer.ref

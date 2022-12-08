@@ -2881,10 +2881,6 @@
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "volumeno,kapacito"
                 },
-                "water_volume": {
-                    "label": "Volumeno de akva rezervujo (m³)",
-                    "terms": "enhaveco,kvanto da akvo,akvokvanto"
-                },
                 "waterway": {
                     "label": "Speco"
                 },
@@ -4994,8 +4990,7 @@
                     "name": "Stratpasejo"
                 },
                 "highway/crossing/marked": {
-                    "name": "Stratpasejo zebrostria",
-                    "terms": "zebro,pasejo,trairejo,irejo,stripasejo,piedira transirejo,markita stratpasejo"
+                    "name": "Stratpasejo zebrostria"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "Stratpasejo zebrostria"
@@ -5023,8 +5018,7 @@
                     "terms": "biciklvojo,biciklovojo,pasejo,zebro,transirejo"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Stratpasejo bicikla (markita)",
-                    "terms": "biciklvojo,biciklovojo,pasejo,zebro"
+                    "name": "Stratpasejo bicikla (markita)"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Stratpasejo bicikla (nemarkita)",
@@ -5057,20 +5051,9 @@
                 "highway/footway/crossing": {
                     "name": "Stratpasejo"
                 },
-                "highway/footway/marked": {
-                    "name": "Stratpasejo zebrostria",
-                    "terms": "zebro,pasejo,trairejo,irejo,markita stratpasejo"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trotuaro (ĉestrata)",
                     "terms": "irejo"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Stratpasejo",
-                    "terms": "pasejo,trairejo,irejo,piedira transirejo,transpasejo"
-                },
-                "highway/footway/zebra": {
-                    "name": "Stratpasejo zebrostria"
                 },
                 "highway/give_way": {
                     "name": "Trafiksigno pri cedi traveturon",
@@ -6105,10 +6088,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Konduktubo subtera",
                     "terms": "dukto,tubaro,tubolinio,tubkondukilo,naftodukto,gasoduto,akvodukto"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Valvo de konduktubo",
-                    "terms": "klapo"
                 },
                 "man_made/pumping_station": {
                     "name": "Pump-stacio",

@@ -1019,9 +1019,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_parking_fee_title">"¿Cuesta dineru aparcar equí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"carril bici (llinia discontinua)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Empedráu natural"</string>
 
     <!-- Fuzzy -->
@@ -1057,9 +1054,6 @@ Por exemplu: 1,3 o 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"¿Sabes el tipu d'aparcaderu de bicis?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"carril encamentáu pa bicis"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"¿Sabes les hores de recoyida d'esti buzón?"</string>

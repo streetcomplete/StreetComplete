@@ -295,6 +295,13 @@
                 "barrier": {
                     "label": "Typ"
                 },
+                "barrier_planter": {
+                    "label": "Bariéra",
+                    "options": {
+                        "planter": "Áno",
+                        "undefined": "Nie"
+                    }
+                },
                 "basin": {
                     "label": "Typ"
                 },
@@ -311,6 +318,7 @@
                     "label": "Služby",
                     "options": {
                         "cosmetics": "Kozmetika",
+                        "hair_removal": "Depilácia",
                         "nails": "Manikúra / Pedikúra",
                         "skin_care": "Starostlivosť o pokožku",
                         "spa": "Denné kúpele",
@@ -325,7 +333,12 @@
                 "bicycle_parking": {
                     "label": "Typ",
                     "options": {
-                        "building": "V budove"
+                        "building": "V budove",
+                        "handlebar_holder": "Stojan na riadidlá",
+                        "lockers": "Samostatne uzamknuteľné",
+                        "shed": "Uzavretý prístrešok",
+                        "stands": "Stojan (opiera sa oň rám bicykla)",
+                        "wall_loops": "Stojan na koleso"
                     }
                 },
                 "bin": {
@@ -1787,14 +1800,14 @@
                 "parking": {
                     "label": "Typ",
                     "options": {
-                        "carports": "Otvorený prístrešok pre autá",
+                        "carports": "Prístrešky pre autá",
                         "garage_boxes": "Garáže",
                         "lane": "Postranný pruh",
-                        "layby": "Pruh pri ceste",
+                        "layby": "Odpočívadlo pri ceste (malé)",
                         "multi-storey": "Viacúrovňové",
                         "rooftop": "Na streche",
-                        "sheds": "Šopy",
-                        "street_side": "Na kraji ulice",
+                        "sheds": "Súkromný prístrešok",
+                        "street_side": "Pri ceste",
                         "surface": "Povrchové",
                         "underground": "Podzemné"
                     }
@@ -2638,6 +2651,7 @@
                 "tracktype": {
                     "label": "Typ lesnej cesty",
                     "options": {
+                        "grade1": "Pevná: spevnený alebo silne skompaktnený povrch",
                         "grade2": "Väčšinou pevná: štrk zmiešaný s mäkkými materiálmi",
                         "grade3": "Vyvážená zmes tvrdých a mäkkých materiálov",
                         "grade4": "Väčšinou jemná: pôda/piesok/tráva s zmiešané s tvrdým materiálom",
@@ -2806,10 +2820,6 @@
                 "water_tank/volume": {
                     "label": "Objem (Litre)",
                     "placeholder": "10000, 20000, 30000..."
-                },
-                "water_volume": {
-                    "label": "Objem vody (m³)",
-                    "terms": "objem vody (m³)"
                 },
                 "waterway": {
                     "label": "Typ"
@@ -3376,6 +3386,10 @@
                 "amenity/nursing_home": {
                     "name": "Ošetrovateľské centum"
                 },
+                "amenity/parcel_locker": {
+                    "name": "Schránka na balíky",
+                    "terms": "schranka na baliky,schránka pre balíky,schranka pre baliky,balíkomat,balikomat,balíkobox,balikobox,alzabox,z-box,parcelbox"
+                },
                 "amenity/parking": {
                     "name": "Parkovisko"
                 },
@@ -3387,8 +3401,8 @@
                     "terms": "park & ride,park&ride,p&r,p & r,p+r,p + r"
                 },
                 "amenity/parking/street-side": {
-                    "name": "Postranné",
-                    "terms": "postranne"
+                    "name": "Parkovisko pri ceste",
+                    "terms": "postranné,postranne,pri ceste"
                 },
                 "amenity/parking/underground": {
                     "name": "Podzemné parkovisko"
@@ -4041,7 +4055,8 @@
                     "terms": "zrub,drevenica,chatka"
                 },
                 "building/carport": {
-                    "name": "Otvorený prístrešok pre autá"
+                    "name": "Prístrešok pre auto",
+                    "terms": "pristresok pre auto"
                 },
                 "building/cathedral": {
                     "name": "Budova katedrály",
@@ -4709,17 +4724,8 @@
                 "highway/footway/crossing": {
                     "name": "Priechod pre chodcov"
                 },
-                "highway/footway/marked": {
-                    "name": "Značený priechod pre chodcov"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Chodník pri ceste"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Neznačený priechod pre chodcov"
-                },
-                "highway/footway/zebra": {
-                    "name": "Značený priechod pre chodcov"
                 },
                 "highway/give_way": {
                     "name": "Značka daj prednosť",
@@ -4964,7 +4970,7 @@
                 },
                 "historic/wayside_shrine": {
                     "name": "Prícestný svätostánok",
-                    "terms": "pricestny svatostanok,svatyna,svätyňa,svatostanok,svätostánok"
+                    "terms": "pricestny svatostanok,svatyna,svätyňa,svatostanok,svätostánok,mala kaplnka,kaplnka"
                 },
                 "historic/wreck": {
                     "name": "Vrak lode"
@@ -5616,9 +5622,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Podzemné potrubie"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "Ventil potrubia"
-                },
                 "man_made/pumping_station": {
                     "name": "Prečerpávacia stanica",
                     "terms": "precerpavacia stanica"
@@ -5835,6 +5838,9 @@
                 },
                 "natural/stone": {
                     "name": "Samostatný kameň / balvan"
+                },
+                "natural/strait": {
+                    "name": "Prieliv"
                 },
                 "natural/tree": {
                     "name": "Strom",

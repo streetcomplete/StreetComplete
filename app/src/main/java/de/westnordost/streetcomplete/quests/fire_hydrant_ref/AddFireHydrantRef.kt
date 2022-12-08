@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_ref
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -26,7 +27,7 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
 
     override fun createForm() = AddFireHydrantRefForm()
 
-    override fun applyAnswerTo(answer: FireHydrantRefAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: FireHydrantRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoVisibleFireHydrantRef -> tags["ref:signed"] = "no"
             is FireHydrantRef ->          tags["ref"] = answer.ref

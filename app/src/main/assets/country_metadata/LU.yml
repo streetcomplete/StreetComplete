@@ -1,10 +1,12 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-advisoryCycleLaneStyle: white dashes
+advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]
 chargingStationOperators: [Chargy, Enovos]
 exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

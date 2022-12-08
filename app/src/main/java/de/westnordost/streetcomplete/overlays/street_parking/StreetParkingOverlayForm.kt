@@ -40,7 +40,7 @@ import kotlinx.serialization.json.Json
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
-    private var currentParking: LeftAndRightStreetParking? = null
+    private var originalParking: LeftAndRightStreetParking? = null
 
     private val isRightSideUpsideDown get() =
         !isForwardOneway && (isReversedOneway || isLeftHandTraffic)
@@ -66,20 +66,20 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
             getString(R.string.street_parking_street_width, widthFormatted)
         } else null
 
+        originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        currentParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
-        streetSideSelect.setPuzzleSide(currentParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
-        streetSideSelect.setPuzzleSide(currentParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
+        streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
+        streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != currentParking?.left ||
-        streetSideSelect.right?.value != currentParking?.right
+        streetSideSelect.left?.value != originalParking?.left ||
+        streetSideSelect.right?.value != originalParking?.right
 
     override fun serialize(item: StreetParking) = Json.encodeToString(item)
     override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)
@@ -129,7 +129,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        if (streetSideSelect.isComplete) streetSideSelect.saveLastSelection()
+        streetSideSelect.saveLastSelection()
         val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.applyTo(tagChanges)

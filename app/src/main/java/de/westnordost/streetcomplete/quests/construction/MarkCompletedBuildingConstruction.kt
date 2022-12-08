@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
@@ -23,7 +24,7 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
 
     override fun createForm() = MarkCompletedConstructionForm()
 
-    override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is OpeningDateAnswer -> {
                 tags["opening_date"] = answer.date.toCheckDateString()

@@ -128,7 +128,8 @@
                         "bicycle": "ركوب الدراجات",
                         "hiking": "المشي الخلوي (هايكنج)",
                         "horse": "ركوب الخيل",
-                        "mtb": "ركوب الدراجات في الجبل"
+                        "mtb": "ركوب الدراجات في الجبل",
+                        "ski": "التزحلق"
                     }
                 },
                 "addr/interpolation": {
@@ -329,7 +330,19 @@
                     "terms": "مقعد,مقعد طويل"
                 },
                 "bicycle_parking": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "building": "في مبنى",
+                        "handlebar_holder": "حامل المقود",
+                        "lockers": "خزائن فردية",
+                        "shed": "سقيفة مغلقة",
+                        "stands": "حامل (يدعم إطار الدراجة)",
+                        "wall_loops": "مقود العجلات (يدعم العجلة فقط)"
+                    }
+                },
+                "bike_ride": {
+                    "label": "اصطفاف وركوب",
+                    "terms": "اصطفاف وركوب,ركن الدراجة والركوب"
                 },
                 "bin": {
                     "label": "سلة النفايات",
@@ -360,7 +373,8 @@
                     "label": "النوع"
                 },
                 "booth": {
-                    "label": "كشك/دكان"
+                    "label": "كشك/دكان",
+                    "terms": "كشك,سقيفة,حجرة صغيرة"
                 },
                 "bottle": {
                     "label": "تعبئة القوارير"
@@ -417,9 +431,16 @@
                 "building/part": {
                     "label": "جزء من مبنى"
                 },
+                "building/prefabricated": {
+                    "label": "مسبقة الصنع",
+                    "terms": "مصنوعة من قبل"
+                },
                 "building_area": {
                     "label": "المبنى",
                     "terms": "المبنى,البناية,العمارة"
+                },
+                "building_area_yes": {
+                    "label": "مبنى"
                 },
                 "bunker_type": {
                     "label": "النوع"
@@ -487,6 +508,9 @@
                     "label": "السعة (متر مكعب)",
                     "placeholder": "50, 100, 200..."
                 },
+                "cash_in": {
+                    "label": "ودائع"
+                },
                 "castle_type": {
                     "label": "النوع",
                     "options": {
@@ -520,7 +544,8 @@
                 },
                 "circumference": {
                     "label": "محيط (على ارتفاع الصدر)",
-                    "placeholder": "1 متر, 20 سم, 30\"…"
+                    "placeholder": "1 متر, 20 سم, 30\"…",
+                    "terms": "محيط الدائرة (على ارتفاع الصدر)"
                 },
                 "clothes": {
                     "label": "ملابس",
@@ -612,10 +637,43 @@
                     }
                 },
                 "crop": {
-                    "label": "محاصيل"
+                    "label": "محاصيل",
+                    "options": {
+                        "asparagus": "نبات الهليون",
+                        "barley": "شعير",
+                        "beet": "بنجر",
+                        "cassava": "بفرة",
+                        "coffee": "قهوة",
+                        "cotton": "قطن",
+                        "cranberries": "توت بري",
+                        "fast_growing_wood": "تنسيغ قصير الأجل",
+                        "flowers": "زهور",
+                        "grape": "عنب",
+                        "grass": "عشب",
+                        "hop": "جنجلة",
+                        "lavender": "خزامي",
+                        "maize": "ذرة",
+                        "potato": "بطاطس",
+                        "rape": "لفت",
+                        "rice": "أرز",
+                        "soy": "فول الصويا",
+                        "strawberry": "فراولة",
+                        "sugar_beet": "شمندر سكري",
+                        "sugarcane": "قصب السكر",
+                        "sunflower": "تباع الشمس",
+                        "tea": "شاي",
+                        "tobacco": "Tobacco",
+                        "vegetable": "خضروات",
+                        "wheat": "قمح"
+                    }
                 },
                 "crossing": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "traffic_signals": "معبر بإشارات مرور",
+                        "uncontrolled": "فقط علامات الطريق",
+                        "unmarked": "لا توجد علامات طريق أو إشارات مرور"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "ذراع الحاجز",
@@ -635,6 +693,27 @@
                 },
                 "crossing/light": {
                     "label": "إضاءات"
+                },
+                "crossing/markings": {
+                    "label": "علامات المعابر",
+                    "options": {
+                        "dashes": "خطوط عرضية متقطعة",
+                        "dots": "خطوط عرضية منقطة",
+                        "ladder": "سلم مع قضبان طولية",
+                        "ladder:paired": "سلم مع قضبان طولية مقترنة",
+                        "ladder:skewed": "سلم مع قضبان قطرية",
+                        "lines": "خطوط عرضية",
+                        "lines:paired": "خطوط عرضية مزدوجة",
+                        "no": "لايوجد به علامات",
+                        "pictograms": "الرسوم التوضيحية المرسومة",
+                        "surface": "على السطح فقط",
+                        "yes": "توجد علامات بطريقة غير مباشرة",
+                        "zebra": "قضبان طولية",
+                        "zebra:bicolour": "قضبان طولية بألوان متناوبة",
+                        "zebra:double": "الثلاثي الرباعي",
+                        "zebra:paired": "قضبان طولية مقترنة"
+                    },
+                    "terms": "علامات المشاة,علامات المرور"
                 },
                 "crossing_raised": {
                     "label": "مرتفع",
@@ -765,9 +844,11 @@
                     "terms": "المذهب/الطائفة,المذهب,الطائفة"
                 },
                 "denotation": {
-                    "label": "علامة/معلم"
+                    "label": "علامة/معلم",
+                    "terms": "دلالة"
                 },
                 "departures_board": {
+                    "label": "لوحة المغادرين/القادمين",
                     "options": {
                         "no": "لا يوجد",
                         "realtime": "الوقت الفعلي",
@@ -1007,6 +1088,18 @@
                 },
                 "entrance": {
                     "label": "النوع",
+                    "options": {
+                        "emergency": "مخرج طوارئ",
+                        "entrance": "مدخل فقط",
+                        "exit": "مخرج فقط",
+                        "garage": "باب المرآب",
+                        "home": "منزل خاص أو شقة",
+                        "main": "رئيسي",
+                        "secondary": "ثانوي",
+                        "service": "خدمة",
+                        "staircase": "سلم",
+                        "yes": "غير محدد"
+                    },
                     "terms": "نوع,صنف,نمط"
                 },
                 "except": {
@@ -1138,6 +1231,19 @@
                 },
                 "fuel": {
                     "label": "وقود"
+                },
+                "fuel/fuel_multi": {
+                    "label": "أنواع الوقود",
+                    "options": {
+                        "GTL_diesel": "ديزل GTL",
+                        "HGV_diesel": "ديزل شاحنات",
+                        "LH2": "هيدروجين سائل",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (في عبوات)",
+                        "biodiesel": "ديزل حيوي",
+                        "cng": "الغاز الطبيعي المضغوط (CNG)",
+                        "diesel": "ديزل"
+                    }
                 },
                 "gambling": {
                     "label": "ألعاب"
@@ -1993,6 +2099,9 @@
                 "population": {
                     "label": "عدد السكان"
                 },
+                "population/date": {
+                    "placeholder": "YYYY-MM-DD"
+                },
                 "portable": {
                     "label": "محمول",
                     "terms": "محمول,متنقل"
@@ -2144,6 +2253,30 @@
                 },
                 "religion": {
                     "label": "الديانة",
+                    "options": {
+                        "bahai": "Bahá’í",
+                        "benzhu": "Benzhu",
+                        "buddhist": "Buddhist",
+                        "caodaism": "Caodaist",
+                        "chinese_folk": "Chinese Folk Religion",
+                        "christian": "Christian",
+                        "confucian": "Confucian",
+                        "hindu": "Hindu",
+                        "jain": "Jain",
+                        "jewish": "Jewish",
+                        "multifaith": "Multifaith",
+                        "muslim": "الإسلام",
+                        "none": "Nonreligious",
+                        "pagan": "Pagan",
+                        "shinto": "Shinto",
+                        "sikh": "Sikh",
+                        "spiritualist": "Spiritualist",
+                        "taoist": "Taoist",
+                        "tenrikyo": "Tenrikyo",
+                        "unitarian_universalist": "Unitarian Universalist",
+                        "vietnamese_folk": "Vietnamese Folk Religion",
+                        "voodoo": "Voodoo"
+                    },
                     "terms": "الديانة,الدين,الملة"
                 },
                 "reservation": {
@@ -2973,10 +3106,6 @@
                     "label": "السعة (لتر)",
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "الحجم (لتر)"
-                },
-                "water_volume": {
-                    "label": "سعة خزان المياه (م³)",
-                    "terms": "سعة خزان المياه (م³)"
                 },
                 "waterway": {
                     "label": "النوع"
@@ -5144,8 +5273,7 @@
                     "name": "معبر/خط مشاة"
                 },
                 "highway/crossing/marked": {
-                    "name": "معبر مشاة بعلامات مرورية",
-                    "terms": "معبر مشاة بدون إشارة مرور,معبر مشاة غير متحكم به,معبر مشاة"
+                    "name": "معبر مشاة بعلامات مرورية"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "معبر مشاة بإشارات",
@@ -5177,8 +5305,7 @@
                     "terms": "معبر مشاة ودراجات هوائية"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "معبر دراجات هوائية بعلامات مرورية",
-                    "terms": "معبر دراجات هوائية بعلامات مرورية"
+                    "name": "معبر دراجات هوائية بعلامات مرورية"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "معبر دراجات هوائية بدون علامات مرورية",
@@ -5222,24 +5349,9 @@
                 "highway/footway/informal": {
                     "name": "مسار للمشاة غير رسمي"
                 },
-                "highway/footway/marked": {
-                    "name": "معبر مشاة بعلامات مرورية",
-                    "terms": "معبر مشاة بعلامات مرورية"
-                },
                 "highway/footway/sidewalk": {
                     "name": "رصيف مشاة",
                     "terms": "رصيف مشاة,رصيف المشاة,رصيف جانب الطريق للمشاة"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "معبر مشاة بإشارات",
-                    "terms": "معبر مشاة بإشارات"
-                },
-                "highway/footway/unmarked": {
-                    "name": "معبر مشاة بدون علامات أو إشارة مرورية",
-                    "terms": "معبر مشاة بدون علامات أو إشارة مرورية"
-                },
-                "highway/footway/zebra": {
-                    "name": "معبر مشاة بعلامات مرورية"
                 },
                 "highway/give_way": {
                     "name": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\"",
@@ -6328,10 +6440,6 @@
                 "man_made/pipeline/underground": {
                     "name": "خط أنابيب تحت الأرض",
                     "terms": "خط أنابيب تحت الأرض"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "صمام خط أنابيب",
-                    "terms": "صمام خط أنابيب"
                 },
                 "man_made/planter": {
                     "name": "أصيص",

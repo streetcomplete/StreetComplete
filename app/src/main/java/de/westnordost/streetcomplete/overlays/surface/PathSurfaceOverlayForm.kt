@@ -27,7 +27,8 @@ import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.overlays.IAnswerItem
+import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
@@ -66,7 +67,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             updateSelectedCell()
         }
 
-        override val otherAnswers: List<AnswerItem> get() {
+        override val otherAnswers: List<IAnswerItem> get() {
             return if (isSegregatedLayout) {
                 listOf() // removing info about separate cycleway is to complicated
             } else if (bothFootAndBicycleTraffic(element!!.tags)) {

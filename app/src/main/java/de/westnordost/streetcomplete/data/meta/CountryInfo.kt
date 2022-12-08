@@ -49,6 +49,7 @@ data class IncompleteCountryInfo(
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
     val hasAdvisoryCycleLane: Boolean? = null,
+    val hasBicycleBoulevard: Boolean? = null,
     val hasDailyAlternateSideParkingSign: Boolean? = null,
     val hasLivingStreet: Boolean? = null,
     val hasNoStandingSign: Boolean? = null,
@@ -100,6 +101,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.hasAdvisoryCycleLane }
     val hasAdvisorySpeedLimitSign: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
+    val hasBicycleBoulevard: Boolean
+        get() = infos.firstNotNullOf { it.hasBicycleBoulevard }
     val hasBiWeeklyAlternateSideParkingSign: Boolean
         get() = infos.firstNotNullOf { it.hasBiWeeklyAlternateSideParkingSign }
     val hasCenterLeftTurnLane: Boolean
@@ -187,4 +190,14 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         } else {
             Locale(officialLanguages[0], countryCode)
         }
+
+    /** the country locale, but preferring the user's set language if the country has several
+     *  official languages and the user selected one of them, e.g. French in Switzerland */
+    val userPreferredLocale: Locale get() {
+        if (officialLanguages.isEmpty()) return Locale.getDefault()
+
+        val locales = officialLanguages.map { Locale(it, countryCode) }
+        val preferredLocale = locales.find { it.language == Locale.getDefault().language }
+        return preferredLocale ?: locales.first()
+    }
 }
