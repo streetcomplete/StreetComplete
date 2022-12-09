@@ -3,8 +3,6 @@
     <string name="action_settings">"Preferências"</string>
     <string name="oauth_communication_error">"Não foi possível contactar o servidor de autenticação"</string>
     <string name="oauth_failed_permissions">"A autenticação falhou: é preciso conceder todas as permissões listadas"</string>
-
-    <!-- Settings screen -->
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Visualização"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -44,14 +42,10 @@
     <string name="confirmation_discard_positive">"Rejeitar"</string>
     <string name="action_download">"Pesquisar missões aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
-
-    <!-- when the user left the answer form empty -->
     <string name="no_changes">"Não deu uma resposta"</string>
     <string name="close">"fechar"</string>
     <string name="download_error">"Erro ao pesquisar missões"</string>
     <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
-
-    <!-- Rui, qual o motivo para adicionar mais informação que a informação que é solicitada a tradução? -->
     <string name="download_area_too_big">"Aproxime mais"</string>
     <string name="confirmation_cancel_prev_download_title">"Parar a pesquisa atual e pesquisar antes nesta área?"</string>
     <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
@@ -64,8 +58,6 @@
     <string name="about_title_feedback">"Enviar comentário"</string>
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
-
-    <!-- Error messages and crash report -->
     <string name="offline">"Está com a internet desligada"</string>
     <string name="confirmation_authorize_now">"Tem de autorizar o acesso à sua conta no OpenStreetMap para enviar as suas alterações. Autorizar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
@@ -85,17 +77,9 @@
     <string name="quest_openingHours_comment_title">"Descreva o horário de funcionamento"</string>
     <string name="quest_openingHours_comment_description">"Seja preciso. O ideal é utilizar a descrição do horário afixada, por exemplo \"por marcação\". A ausência de uma afixação do horário de abertura não significa que não tenha um horário."</string>
     <string name="quest_roofShape_title">"Qual é a forma básica do telhado deste edifício?"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Selecione uma:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Mostrar mais…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-
-    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt;
@@ -142,8 +126,6 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="quest_oneway_title">"É uma rua de sentido único?"</string>
     <string name="quest_address_title">"Qual é o número de porta deste edifício?"</string>
     <string name="store_listing_short_description">"Aplicação de mapeamento no OpenStreetMap"</string>
-
-    <!-- Source string in English: I would suggest change "to OpenStreetMap in your name" to "with your OpenStreetMap account" -->
     <string name="store_listing_full_description">"Ajude a melhorar o OpenStreetMap com o StreetComplete!
 
 Esta aplicação, muito fácil de utilizar, procura dados que faltam num dado local e mostra-os no mapa como missões. Resolva cada uma destas missões respondendo a questões simples para adicionar ao mapa mais informação útil.
@@ -160,8 +142,6 @@ A informação que submeter nesta aplicação é enviada diretamente para o Open
     <string name="pref_title_keep_screen_on">"Manter o ecrã ligado"</string>
     <string name="download_server_error">"Erro de ligação ao pesquisar missões. Volte a tentar mais tarde."</string>
     <string name="upload_server_error">"Erro de ligação ao enviar as respostas. Volte a tentar mais tarde."</string>
-
-    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Sim"</string>
     <string name="quest_generic_hasFeature_no">"Não"</string>
     <string name="quest_bikeParkingCapacity_title">"Quantas bicicletas podem ser parqueadas aqui?"</string>
@@ -194,8 +174,6 @@ A informação que submeter nesta aplicação é enviada diretamente para o Open
     <string name="quest_sport_ice_hockey">"Hóquei no gelo"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Râguebi"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"Selecionar:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Este campo foi projetado explicitamente para estas modalidades (tem linhas de campo e equipamentos específicos) ou para ser utilizado para qualquer modalidade?"</string>
     <string name="quest_manySports_confirmation_specific">"Estes em particular"</string>
@@ -248,11 +226,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="credits_contributors">"Veja a &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
-
-    <!-- Credits screen -->
     <string name="credits_author_title">"Autoria e manutenção"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
     <string name="credits_and_more">"e mais…"</string>
     <string name="quest_maxspeed_answer_living_street">"É uma zona de coexistência"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, há um sinal como este?"</string>
@@ -305,8 +279,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- What's the context of this message? At least what's the meaning of "tilt" here? Got something to do with a big area to search for challenges? -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível pesquisar aqui. Tente aproximar a visualização com o botão + ou incline menos o mapa."</string>
     <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
     <string name="quest_crossing_type_unmarked">"Sem qualquer tipo de marcação"</string>
@@ -321,8 +293,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_parkingType_surface">"Estacionamento à superfície"</string>
     <string name="quest_parkingType_underground">"Estacionamento subterrâneo"</string>
     <string name="quest_parkingType_multiStorage">"Estacionamento de vários pisos"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">"De que material é feito este poste?"</string>
     <string name="quest_powerPolesMaterial_wood">"Madeira"</string>
     <string name="quest_powerPolesMaterial_metal">"Aço"</string>
@@ -363,15 +333,11 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="enable_quest_confirmation_title">"Ativar este tipo de missão?"</string>
     <string name="default_disabled_msg_go_inside">"Este tipo de missão está desativada de origem porque provavelmente tem de entrar no local para poder responder a esta missão."</string>
     <string name="quest_housenumber_conscription_number">"Número matricial"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">"Número de porta para além do matricial"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Também tem ciclovia do outro lado…"</string>
     <string name="quest_openingHours_emptyAnswer">"Tem de descrever o horário que está afixado. Se não estiver afixado, pergunte a um funcionário."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nenhuma, mas os ciclistas podem utilizar a estrada em ambos os sentidos"</string>
     <string name="quest_streetName_answer_noName_question">"Qual é a razão para não ter nome?"</string>
-
-    <!-- qual o motivo para utilizar a palavra "rua" nesta tradução, que induz em erro? -->
     <string name="quest_streetName_answer_noProperStreet_service2">"É algo como uma via de acesso ou via de estacionamento"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"É um caminho agrícola ou florestal"</string>
     <string name="quest_streetName_answer_noName_noname">"Nenhum dos anteriores, simplesmente não tem nome"</string>
@@ -380,8 +346,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="map_btn_create_note">"Criar nova nota"</string>
     <string name="create_new_note_unprecise">"Aproxime a visualização para deixar uma nota"</string>
     <string name="create_new_note_description">"Pode deixar uma nota para informar outros mapeadores que existe um problema aqui. Ajuste a posição da nota movendo o mapa:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia numa via dedicada ou numa faixa da estrada aqui? De que tipo?"</string>
@@ -430,8 +394,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_construction_building_title">"A construção deste edifício já terminou?"</string>
     <string name="questList_disabled_in_country">"Não disponível em %s"</string>
     <string name="quest_select_hint_most_specific">"Selecionar o adequado e específico:"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">"Tem a certeza que não consegue determinar de forma precisa?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para algumas missões, são descarregados dados de terceiros. Em particular, a missão de sentido único faz consultas a uma API, também alojada em westnordost.de, sobre candidatos possíveis de sentido único.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Não (deixar nota)"</string>
@@ -481,8 +443,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_train_station">"Edifício de uma estação ferroviária"</string>
     <string name="quest_buildingType_transportation">"Edifício de um serviço de transporte público"</string>
     <string name="quest_buildingType_university">"Edifício de uma universidade"</string>
-
-    <!-- To other translators: "Government building" includes nacional, municipal, provincial and divisional secretaries, government agencies and departments, town halls, (regional) parliaments and court houses. -->
     <string name="quest_buildingType_government">"Edifício do governo nacional ou local"</string>
     <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo para carros"</string>
@@ -518,8 +478,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_toilets">"Casa de banho"</string>
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
-
-    <!-- Rui, justifique esta tradução. Não é o que é solicitado para traduzir de todo. -->
     <string name="dialog_tutorial_upload">"Para enviar as suas alterações manualmente, toque no botão com este ícone na barra de ferramentas superior."</string>
     <string name="quest_segregated_separated">"São separadas uma da outra"</string>
     <string name="quest_segregated_mixed">"Os ciclistas e peões partilham a mesma pista"</string>
@@ -527,11 +485,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_maxheight_answer_noSign">"Não existe sinal…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Existe altura suficiente para que os camiões mais altos (com pelo menos 4,5 metros / 15 pés) possam passar?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura não é plausível. Tem a certeza que está correta?"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Fechada por %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Reaberta por %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Ocultada por %1$s, %2$s"</string>
@@ -552,22 +506,13 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="default_disabled_msg_maxspeed">"Esta missão está desativada de origem porque é necessário verificar se a totalidade da rua tem outros sinais de limite de velocidade e não apenas o trecho selecionado. Isto pode tornar complicada a resolução destas missões."</string>
     <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
     <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"no piso %s"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"subterrâneo"</string>
     <string name="quest_sidewalk_value_yes">"passeio"</string>
     <string name="quest_sidewalk_value_no">"sem passeio"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi etiquetada como não tendo passeio em nenhum dos lados. Caso tenha passeio, mas este está mapeado em 1 ou 2 linhas à parte de via pedonal, responda \"passeio\"."</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
-
-    <!-- Source text should be only "Theme" -->
     <string name="pref_title_theme_select">"Tema"</string>
     <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
@@ -575,15 +520,11 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="theme_system_default">"Predefinido do sistema"</string>
     <string name="action_open_location">"Abrir a localização noutra aplicação"</string>
     <string name="map_application_missing">"Não há outra aplicação de mapas instalada"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"número de porta"</string>
     <string name="label_blocknumber">"número do bloco"</string>
     <string name="quest_busStopShelter_covered">"Toda a paragem é coberta"</string>
     <string name="quest_ferry_pedestrian_title">"Esta rota de ferry transporta passageiros?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos a motor?"</string>
-
-    <!-- Add note interface -->
     <string name="quest_leave_new_note_photos_are_useful">"Se adicionar uma fotografia a sua nota vai ser muito mais útil, clara e fidedigna."</string>
     <string name="create_new_note_hint">"O ideal é deixar a nota no idioma local ou em inglês."</string>
     <string name="quest_leafType_title">"Esta árvore tem agulhas ou folhas?"</string>
@@ -605,8 +546,6 @@ Dividir agora?"</string>
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
     <string name="quest_ref_answer_noRef">"Não tem nº de referência visível…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"A via na seguinte ilustração tem a mesma orientação que a do mapa no sítio do marcador. Clique nela para escolher o sentido."</string>
     <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
     <string name="quest_recycling_materials_note">"Se algo que não constar na lista puder ser reciclado aqui, deixe antes uma nota."</string>
@@ -651,8 +590,6 @@ Dividir agora?"</string>
     <string name="osm_profile">"Perfil no OSM"</string>
     <string name="next">"Seguinte"</string>
     <string name="letsgo">"Vamos lá!"</string>
-
-    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Bem-vindo(a) ao OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"o mapa mundo livre e gratuito"</string>
     <string name="tutorial_intro">"O StreetComplete simplifica a contribuição para o OpenStreetMap.
@@ -663,25 +600,17 @@ Pode começar a resolvê-las de imediato e enviá-las mais tarde, após autentic
     <string name="tutorial_stay_safe">"Sempre que não tiver a certeza, pode sempre responder \"Não sei\" e deixar uma nota.
 
 Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar a aplicação e não entre em propriedade privada."</string>
-
-    <!-- Tradução em português: optei apenas por "Divirta-se!" porque é simples e clara. Poderia ser "Divirta-se a mapear" o que levava à mais correta "Divirta-se a cartografar" ou outras como "Bons mapeamentos" e por aí fora, e acaba-se por complicar o "espírito" da aplicação. -->
     <string name="tutorial_happy_mapping">"Divirta-se!"</string>
     <string name="achievements_empty">"Ainda não tens nenhuma conquista"</string>
-
-    <!-- Links screen -->
     <string name="links_empty">"Ainda não tem nenhuma hiperligação."</string>
     <string name="quests_empty">"Ainda não publicou respostas a missões"</string>
     <string name="unsynced_quests_description">"mais %d alterações por publicar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tem %d alterações por publicar. Terá que se autenticar para submetê-las."</string>
-
-    <!-- User screen -->
     <string name="user_quests_title">"Edições"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_links_title">"Coleção de hiperligações"</string>
     <string name="user_profile_title">"Perfil"</string>
     <string name="user_statistics_quest_wiki_link">"Documentação"</string>
-
-    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"Hiperligação desbloqueada:"</string>
     <string name="achievements_unlocked_links">"Hiperligações desbloqueadas:"</string>
     <string name="link_category_intro_title">"Introdução"</string>
@@ -750,12 +679,8 @@ Note que esta aplicação apenas pergunta pelo número de porta de um edifício 
     <string name="achievement_veg_solved_X">"Resolveu %d missões que são interessantes para quem é vegetariano!"</string>
     <string name="achievement_car_title">"Na estrada"</string>
     <string name="achievement_car_solved_X">"Resolveu %d missões que melhoram os detalhes das infraestruturas das ruas. Rua a rua, aos poucos o OpenStreetMap é cada vez melhor!"</string>
-
-    <!-- Notifications -->
     <string name="unread_messages_message">"Tem %d mensagens por ler"</string>
     <string name="unread_messages_button">"Abrir caixa de correio"</string>
-
-    <!-- Main menu -->
     <string name="action_about2">"Sobre"</string>
     <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Os dados visíveis no seu perfil, resulta da agregação da história das suas contribuições públicas no OpenStreetMap e depois alojada no meu servidor.&lt;/p&gt;"</string>
@@ -763,8 +688,6 @@ Note que esta aplicação apenas pergunta pelo número de porta de um edifício 
     <string name="credits_art_contributors_title">"Contribuidores de grafismos"</string>
     <string name="credits_projects_contributors_title">"Projetos criados para o StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contribuidores principais"</string>
-
-    <!-- User statistics screen -->
     <string name="stats_are_syncing">"As suas estatísticas estão a ser sincronizadas. Verifique este menu mais tarde."</string>
     <string name="user_statistics_country_rank">"Classificação em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
@@ -919,8 +842,6 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e pacotes"</string>
     <string name="team_mode">"Modo de equipa"</string>
-
-    <!-- Team mode -->
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
     <string name="team_mode_description">"Se estiver a mapear a mesma área como um grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa."</string>
     <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
@@ -931,17 +852,11 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
     <string name="quest_cycleway_value_separate">"mostrado em separado no mapa"</string>
-
-    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"Nota criada"</string>
     <string name="commented_note_action_title">"Nota comentada"</string>
     <string name="hid_action_description">"Você ocultou isto"</string>
     <string name="split_way_action_description">"Você dividiu o caminho"</string>
     <string name="deleted_poi_action_description">"Você eliminou"</string>
-
-    <!-- This is shown in undo action, in confirming dialog to undo. Example:
-
-Added lit = yes -->
     <string name="added_tag_action_title">"Adicionado: %s"</string>
     <string name="removed_tag_action_title">"%s removido"</string>
     <string name="changed_tag_action_title">"Atualizado para %s"</string>
@@ -1003,8 +918,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_buildingType_boathouse">"Barco-casa"</string>
     <string name="quest_buildingType_allotment_house">"Barraco de horta"</string>
     <string name="quest_buildingType_grandstand">"Tribuna principal"</string>
-
-    <!-- Quest selection screen -->
     <string name="action_search">"Pesquisar"</string>
     <string name="action_manage_presets">"Gerir conjuntos de missões"</string>
     <string name="team_mode_team_size_label2">"Quantas pessoas estão a mapear? Introduza o mesmo número nos telemóveis de toda a gente."</string>
@@ -1018,16 +931,12 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="no_search_results">"Nada encontrado"</string>
     <string name="quest_selection_hint_title">"Demasiadas coisas para fazer?"</string>
     <string name="quest_selection_hint_message">"Contribuir tem de ser divertido! Se achar que aparecem demasiadas missões, pode escolher apenas as missões que prefere e em que ordem de prioridade são mostradas."</string>
-
-    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Adicionar conjunto de missões"</string>
     <string name="quest_presets_preset_name">"Nome do conjunto de missões"</string>
     <string name="quest_presets_default_name">"Base"</string>
     <string name="quest_presets_selected">"Selecionado"</string>
     <string name="quest_presets_delete_message">"Eliminar o conjunto de missões \"%s\"? A seleção e ordenação das missões serão perdidas definitivamente."</string>
     <string name="notification_syncing">"A sincronizar dados…"</string>
-
-    <!-- Android notifications -->
     <string name="notification_channel_sync">"Sincronizar dados"</string>
     <string name="quest_board_type_sport">"Desporto, exercícios"</string>
     <string name="quest_generic_hasFeature_optional">"Opcionalmente"</string>
@@ -1035,8 +944,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_laundrySelfService_title2">"Esta lavandaria tem auto-serviço?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal devem ser preparados de acordo com regras especiais, com as agências de certificação Halal a marcar os produtos em conformidade."</string>
     <string name="quest_picnicTableCover_title">"Esta mesa de piqueniques é coberta (protegida dos elementos)?"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"São degraus"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido numa passagem num muro/vedação/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido numa cancela"</string>
@@ -1138,8 +1045,6 @@ Como alternativa, pode deixar uma nota (com uma fotografia)."</string>
     <string name="link_osmhydrant_description">"Averiguar, adicionar e editar quartéis de bombeiros e bocas de incêndio"</string>
     <string name="achievement_lifesaver_title">"Salva-vidas"</string>
     <string name="achievement_lifesaver_solved_X">"Resolveu %d missões que ajudam os serviços de emergência e os socorristas!"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">"Os próprios clientes enchem o depósito aqui (auto-serviço)?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Este tipo de missão está desativada de origem porque leva tempo a verificar ou é muitas vezes difícil fazer a escolha certa. Só deve ativar este tipo de missão se quiser dedicar-se a adicionar este tipo de dados."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Compactado, muito pouco cascalho ou areia soltos"</string>
@@ -1162,8 +1067,6 @@ Como alternativa, pode deixar uma nota (com uma fotografia)."</string>
     <string name="quest_sidewalk_answer_none_title">"Seleção dos passeios que faltam"</string>
     <string name="quest_side_select_interface_explanation">"Toque num dos lados e selecione a resposta correspondente.
 Faça o mesmo para o outro lado, se existir."</string>
-
-    <!-- AR Measure screen -->
     <string name="ar_measure">"Medir"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Ângulo demasiado agudo, afaste-se um pouco"</string>
     <string name="default_disabled_msg_no_ar">"Precisa de uma fita métrica para resolver esta missão, porque o seu telemóvel não suporta medição em realidade aumentada."</string>
@@ -1200,33 +1103,16 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_seating_indoor_and_outdoor">"Existem lugares para sentar no interior e no exterior"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Este tipo de missão está desativada de origem porque pode necessitar de verificação durante uma parte específica do ano, para poder verificar os lugares no exterior (esplanadas)."</string>
     <string name="no_camera_permission_toast">"Sem permissão de câmara"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Isto aceita pagamentos em dinheiro?"</string>
     <string name="quest_address_street_title2">"A que estrada pertence isto?"</string>
     <string name="quest_airConditioning_title">"Este local tem ar condicionado?"</string>
     <string name="quest_baby_changing_table_title2">"Este local tem mesa para muda de fralda?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Esta paragem tem assentos?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Esta paragem tem algum caixote do lixo?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"Esta paragem tem iluminação?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Qual é o nome desta paragem?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"Qual é o número ou código que identifica esta paragem?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Esta paragem tem abrigo?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Esta paragem tem pavimento tátil?"</string>
     <string name="quest_dietType_halal_name_title2">"Existem aqui alguns produtos halal (muçulmano)?"</string>
     <string name="quest_dietType_kosher_name_title2">"Existem aqui alguns produtos kosher (judaico)?"</string>
@@ -1253,9 +1139,6 @@ sorted alphabetically by title -->
     <string name="link_valhalla_description">"Motor de roteamento com utilização reduzida da memória, rotas multimodais, isócrones e muito mais."</string>
     <string name="link_backofyourhand_description">"Até que ponto conhece bem a sua área? Teste os seus conhecimentos através da localização de ruas."</string>
     <string name="link_notesreview_description">"Veja, filtre e comente as notas criadas por si e por outros. Muitas notas podem ser resolvidas colocando a informação destas no mapa com o editor iD ou o JOSM"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cards">"São aceites aqui cartões de crédito ou de débito?"</string>
     <string name="quest_accepts_cards_debit_and_credit">"Cartões de crédito e de débito"</string>
     <string name="quest_accepts_cards_credit_only">"Apenas cartões de crédito"</string>
@@ -1266,8 +1149,6 @@ sorted alphabetically by title -->
     <string name="quest_step_count_stile_hint">"Apenas o número de degraus para chegar ao topo. Se o número de degraus for diferente de cada lado das escadas, indique apenas o número mais elevado."</string>
     <string name="quest_shoulder_explanation2">"Uma berma é uma via lateral para paragem de emergência claramente demarcada. Não tem de ser necessariamente pavimentada em toda a sua largura e pode não ser suficientemente larga para um carro parar completamente fora das vias de trânsito."</string>
     <string name="quest_cycleway_value_none_and_oneway">"Não, não é permitido circular de bicicleta nesta direção"</string>
-
-    <!-- To other translators: it seems StreetComplete now can also record GPS navigation tracks. More info at https://github.com/streetcomplete/StreetComplete/issues/2209 -->
     <string name="map_btn_create_track">"Criar nova gravação de percurso GPS"</string>
     <string name="map_btn_stop_track">"Parar de gravar o percurso GPS"</string>
     <string name="quest_bicycle_rental_capacity_title">"Quanto espaços para bicicletas alugadas existem aqui?"</string>
@@ -1283,8 +1164,6 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_only_used">"Sim, apenas bicicletas usadas."</string>
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"Não se vendem bicicletas"</string>
     <string name="quest_building_entrance_title">"Que tipo de entrada no edifício é esta?"</string>
-
-    <!-- I think source string in English shouldn't have "public" since this is used also in private buildings like a club, a factory... they also have many entrances: main, service... -->
     <string name="quest_building_entrance_main">"Entrada principal do edifício"</string>
     <string name="quest_building_entrance_staircase">"Entrada para átrio e escadaria (p.ex. prédio de apartamentos)"</string>
     <string name="quest_building_entrance_service">"Entrada de serviço"</string>
@@ -1297,8 +1176,6 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_shop_title">"Existe aqui uma bomba para encher pneus (pelo menos quando está aberto)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Existe aqui uma bomba para encher pneus a funcionar?"</string>
     <string name="action_overlays">"Camadas"</string>
-
-    <!-- This is an action and not a tag right? -->
     <string name="split_way">"Dividir via"</string>
     <string name="quest_memorialType_title">"Que tipo de memorial é este?"</string>
     <string name="quest_memorialType_statue">"Estátua"</string>
@@ -1310,8 +1187,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_stele_wooden">"Estela de madeira (laje memorial)"</string>
     <string name="quest_memorialType_stele_stone">"Estela de pedra (laje memorial)"</string>
     <string name="quest_memorialType_sculpture">"Outra escultura"</string>
-
-    <!-- Overlays -->
     <string name="select_overlay">"Selecionar camada"</string>
     <string name="overlay_none">"Nenhuma"</string>
     <string name="overlay_lit">"Iluminação das ruas"</string>
@@ -1368,8 +1243,6 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Lojas"</string>
     <string name="name_label">"Nome:"</string>
     <string name="vacant_shop_title">"Loja vaga"</string>
-
-    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Outro tipo de local"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta (com ou sem uma chave)?"</string>
@@ -1384,8 +1257,6 @@ sorted alphabetically by title -->
     <string name="quest_presets_rename">"Alterar nome"</string>
     <string name="quest_presets_share">"Partilhar"</string>
     <string name="quest_presets_delete">"Eliminar"</string>
-
-    <!-- Config via URL/QRCode -->
     <string name="urlconfig_qr_code_description">"Deixe outros digitalizar este código QR para partilhar o seu presente."</string>
     <string name="urlconfig_as_url">"Ou como um URL:"</string>
     <string name="urlconfig_url_copied">"URL copiado para a área de transferência"</string>
@@ -1396,8 +1267,6 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_parking_type_two_tier">"Suporte de bicicletas de dois níveis"</string>
     <string name="user_profile_current_week_title">"Últimos 7 dias"</string>
     <string name="user_profile_dates_mapped">"Dias que mapeou recentemente"</string>
-
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"via recomendada para bicicletas"</string>
     <string name="urlconfig_scan_qr_code_again2">"Após instalar a aplicação, digitalize o código QR novamente ou clique &lt;a href=\"%s\"&gt;nesta hiperligação&lt;/a&gt; para aplicar o modelo."</string>
     <string name="confirmation_replace_shop_title">"Agora é um sítio diferente?"</string>

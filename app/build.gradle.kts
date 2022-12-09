@@ -210,13 +210,15 @@ val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
+    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
 val nsiVersion = "v6.0.20221205"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v5.1.0"
+
+val poEditorProjectId = "97843"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
@@ -268,12 +270,14 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
@@ -283,7 +287,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     mapStyleBranch = "jawg"
 }
 
-tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
+tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"

@@ -35,6 +35,6 @@ class MoveNodeActionTest {
         val updates = MoveNodeAction(p).createUpdates(n, n, repos, provider)
         assertTrue(updates.creations.isEmpty())
         assertTrue(updates.deletions.isEmpty())
-        assertEquals(listOf(movedNode), updates.modifications)
+        assertEquals(movedNode, updates.modifications.single().copy(timestampEdited = movedNode.timestampEdited))
     }
 }

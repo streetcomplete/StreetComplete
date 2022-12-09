@@ -3,16 +3,12 @@
     <string name="action_settings">"Einstellungen"</string>
     <string name="oauth_communication_error">"Login-Server kann nicht erreicht werden"</string>
     <string name="oauth_failed_permissions">"Login fehlgeschlagen: Alle aufgeführten Berechtigungen müssen gewährt werden"</string>
-
-    <!-- Settings screen -->
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Karten-Zwischenspeichers auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Hinweise anzeigen"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise dennoch anzeigen"</string>
-
-    <!-- Vorschlag: "Notizen ignorieren, wenn sie nicht als Fragen formuliert sind". Was passiert, kommt zuerst: "Notizen ignorieren". Vermeidet außerdem die unnötig lange Nominalphrase "nicht als Fragen formulierte Notizen". -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise ignorieren"</string>
     <string name="pref_title_map_cache">"Größe des Karten-Zwischenspeichers"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
@@ -21,8 +17,6 @@
     <string name="quest_generic_answer_notApplicable">"Nicht beantwortbar …"</string>
     <string name="quest_generic_confirmation_title">"Sicher?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, sicher"</string>
-
-    <!-- Ich werde das prüfen (?) -->
     <string name="quest_generic_confirmation_no">"Prüfe ich"</string>
     <string name="quest_leave_new_note_title">"Stattdessen einen Hinweis hinterlassen?"</string>
     <string name="quest_leave_new_note_description">"Du kannst an dieser Stelle einen öffentlichen Hinweis für andere hinterlassen oder diese Aufgabe nur für dich selbst verstecken"</string>
@@ -48,8 +42,6 @@
     <string name="confirmation_discard_positive">"Verwerfen"</string>
     <string name="action_download">"Hier nach Aufgaben suchen"</string>
     <string name="action_upload">"Antworten hochladen"</string>
-
-    <!-- when the user left the answer form empty -->
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="close">"Schließen"</string>
     <string name="download_error">"Fehler beim Suchen nach Aufgaben"</string>
@@ -66,8 +58,6 @@
     <string name="about_title_feedback">"Feedback geben"</string>
     <string name="about_title_license">"Lizenz"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
-
-    <!-- Error messages and crash report -->
     <string name="offline">"Du bist offline"</string>
     <string name="confirmation_authorize_now">"Du musst dich mit deinem OSM-Konto einloggen, um deine Antworten zu veröffentlichen. Jetzt einloggen?"</string>
     <string name="not_authorized">"Nicht eingeloggt"</string>
@@ -87,17 +77,9 @@
     <string name="quest_openingHours_comment_title">"Öffnungszeiten beschreiben"</string>
     <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht, z. B. „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
     <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Weitere anzeigen …"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
-
-    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, jemand, dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
@@ -130,9 +112,6 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mit Hilfe &lt;a 
     <string name="quest_surface_value_compacted">"Verdichtet"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Erde"</string>
-
-    <!-- „Kies“ bezeichnet durch Erosion rundgewaschene und geglättete Körner. Ohne Bindemittel ergibt das eine wenig stabile Wegoberfläche. 
-Die Beschreibung des Tags auf der englischen Wikiseite dagegen ist eine stabile Wetdecke. Die deutsche Wikiseite benutzt explizit das Wort „Splitt“, was gebrochene, kantige Steinchen bezeichnet. -->
     <string name="quest_surface_value_fine_gravel">"Feiner Splitt"</string>
     <string name="quest_surface_value_grass">"Gras"</string>
     <string name="quest_surface_value_grass_paver">"Rasenpflastersteine"</string>
@@ -146,8 +125,6 @@ Die Beschreibung des Tags auf der englischen Wikiseite dagegen ist eine stabile 
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_oneway_title">"Ist dies eine Einbahnstraße?"</string>
     <string name="quest_address_title">"Welche Hausnummer hat dieses Gebäude?"</string>
-
-    <!-- Is this intended not to be translated? -->
     <string name="store_listing_short_description">"OpenStreetMap-Erhebungs-App"</string>
     <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen – mit StreetComplete!
 
@@ -165,8 +142,6 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="pref_title_keep_screen_on">"Bildschirm immer an"</string>
     <string name="download_server_error">"Fehler beim Suchen nach Aufgaben. Versuche es später noch einmal."</string>
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
-
-    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
     <string name="quest_generic_hasFeature_no">"Nein"</string>
     <string name="quest_bikeParkingCapacity_title">"Wie viele Räder können hier abgestellt werden?"</string>
@@ -199,8 +174,6 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_sport_ice_hockey">"Eishockey"</string>
     <string name="quest_sport_netball">"Netzball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"Wähle:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Ist dieses Spielfeld speziell für genau diese Sportarten vorgesehen (es gibt Markierungen und Equipment) oder als Allzweckfeld für alle möglichen Spiele?"</string>
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
@@ -253,11 +226,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
-
-    <!-- Credits screen -->
     <string name="credits_author_title">"Hauptentwickler"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
     <string name="credits_and_more">"und weitere …"</string>
     <string name="quest_maxspeed_answer_living_street">"Es ist eine Spielstraße"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hier ist also so ein Schild wie dieses?"</string>
@@ -276,13 +245,9 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_chestnuts">"Kastanien"</string>
     <string name="produce_coconuts">"Kokosnüsse"</string>
     <string name="produce_coffee">"Kaffee"</string>
-
-    <!-- Nein, Preiselbeeren sind doch keine Cranberren: Nach Wikipediart-Artikel bitte "Großfrüchtige Moosbeere", aber sonst werden sie im Deutschen IMHO auch einfach Cranberries genannt. -->
     <string name="produce_cranberries">"Cranberries"</string>
     <string name="produce_dates">"Datteln"</string>
     <string name="produce_figs">"Feigen"</string>
-
-    <!-- Nur umgangssprachlich korreckt. Pampelmuse (Citrus maxima) != Grapefruit (Citrus paradisi) -->
     <string name="produce_grapefruits">"Grapefruits"</string>
     <string name="produce_guavas">"Guaven"</string>
     <string name="produce_hazelnuts">"Haselnüsse"</string>
@@ -291,8 +256,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_kiwis">"Kiwis"</string>
     <string name="produce_kola_nuts">"Kolanüsse"</string>
     <string name="produce_lemons">"Zitronen"</string>
-
-    <!-- Falsch, "Limonen" sind Zitronen: https://de.wiktionary.org/wiki/Limone -->
     <string name="produce_limes">"Limetten"</string>
     <string name="produce_mangos">"Mangos"</string>
     <string name="produce_mate">"Mate"</string>
@@ -330,8 +293,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_parkingType_surface">"Ebenerdig"</string>
     <string name="quest_parkingType_underground">"Tiefgarage"</string>
     <string name="quest_parkingType_multiStorage">"Parkhaus"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">"Woraus ist dieser Mast gemacht?"</string>
     <string name="quest_powerPolesMaterial_wood">"Holz"</string>
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
@@ -372,8 +333,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="enable_quest_confirmation_title">"Diesen Aufgabentyp aktivieren?"</string>
     <string name="default_disabled_msg_go_inside">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können."</string>
     <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Radweg auch auf anderer Seite …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
@@ -387,8 +346,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="map_btn_create_note">"Neuen Hinweis erstellen"</string>
     <string name="create_new_note_unprecise">"Zoome weiter herein, um einen Hinweis zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier einen Hinweis, um anderen Mappern ein Problem zu melden. Bewege die Karte, um die Position des Hinweises anzupassen:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
@@ -427,8 +384,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_bicycle_parking_type_locker">"Schließfächer"</string>
     <string name="quest_bicycle_parking_type_building">"Gebäude"</string>
     <string name="quest_bicycle_parking_type_title">"Was für ein Fahrradstellplatz ist das?"</string>
-
-    <!-- @FloEdelmann: Briefkasten ist das was man an der Haustür hat. Postkasten ist der gelbe von der Post. -->
     <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
     <string name="quest_collectionTimes_add_times">"Leerungszeit hinzufügen"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Keine Zeiten angegeben"</string>
@@ -439,8 +394,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
     <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bei einigen Quests werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt der Oneway-Quest eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Einbahnstraßen.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nein (Hinweis hinterlassen)"</string>
@@ -456,8 +409,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
     <string name="quest_buildingType_detached">"Freistehendes Haus"</string>
     <string name="quest_buildingType_detached_description">"Einfamilienhaus mit Garten rundherum"</string>
-
-    <!-- Doppelhaushälfte ist der korrekte Ausdruck, es gab nachfragen OSM Dach Gruppe -->
     <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
@@ -489,8 +440,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_college">"Hochschulgebäude"</string>
     <string name="quest_buildingType_hospital">"Gebäude eines Krankenhauses"</string>
     <string name="quest_buildingType_stadium">"Stadion"</string>
-
-    <!-- discussion on: https://github.com/westnordost/StreetComplete/issues/1347 -->
     <string name="quest_buildingType_train_station">"Bahnhofsgebäude"</string>
     <string name="quest_buildingType_transportation">"Gebäude für den öffentlichen Personenverkehr"</string>
     <string name="quest_buildingType_university">"Universitätsgebäude"</string>
@@ -536,11 +485,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild …"</string>
     <string name="quest_maxheight_answer_noSign_question">"Ist selbst für die höchsten Lastwagen mehr als genug Platz, um darunter durchzufahren? (mindestens etwa 4,5m)"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Geschlossen von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Wieder geöffnet von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Verborgen von %1$s, %2$s"</string>
@@ -561,14 +506,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal viel Arbeit für eine einzelne Aufgabe sein."</string>
     <string name="pref_title_quests_restore_hidden">"Versteckte Aufgaben wiederherstellen"</string>
     <string name="restore_hidden_success">"%d versteckte Aufgaben wiederhergestellt"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"auf Ebene %s"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"unterirdisch"</string>
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
@@ -582,17 +520,11 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="theme_system_default">"Systemvorgabe"</string>
     <string name="action_open_location">"Standort in einer anderen App öffnen"</string>
     <string name="map_application_missing">"Keine andere Kartenanwendung installiert"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"Hausnummer"</string>
     <string name="label_blocknumber">"Blocknummer"</string>
     <string name="quest_busStopShelter_covered">"gesamte Haltestelle ist überdacht"</string>
     <string name="quest_ferry_pedestrian_title">"Kann man als Fußgänger diese Fährverbindung nutzen?"</string>
-
-    <!-- Auch hier sollte man motor vehicles nicht mit "Autofahrer" übersetzen. -->
     <string name="quest_ferry_motor_vehicle_title">"Kann man mit Kraftfahrzeugen diese Fährverbindung nutzen?"</string>
-
-    <!-- Add note interface -->
     <string name="quest_leave_new_note_photos_are_useful">"Ein Foto macht einen Hinweis oft viel hilfreicher."</string>
     <string name="create_new_note_hint">"Verfasse ihn möglichst in der lokal gesprochenen Sprache, ansonsten auf Englisch."</string>
     <string name="quest_leafType_title">"Haben die Bäume hier Nadeln oder Blätter?"</string>
@@ -658,8 +590,6 @@ Jetzt aufspalten?"</string>
     <string name="osm_profile">"OSM-Profil"</string>
     <string name="next">"Weiter"</string>
     <string name="letsgo">"Auf geht’s!"</string>
-
-    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Willkommen bei OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"der freien Wiki-Weltkarte"</string>
     <string name="tutorial_intro">"Mit StreetComplete kannst du einfach bei OpenStreetMap mitwirken.
@@ -672,21 +602,15 @@ Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einlogge
 Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und betritt kein Privatgelände."</string>
     <string name="tutorial_happy_mapping">"Viel Spaß beim Kartieren!"</string>
     <string name="achievements_empty">"Du hast bisher noch keine Erfolge"</string>
-
-    <!-- Links screen -->
     <string name="links_empty">"Du hast noch keine Links"</string>
     <string name="quests_empty">"Du hast noch keine Beiträge veröffentlicht"</string>
     <string name="unsynced_quests_description">"plus %d noch nicht veröffentlichte Beiträge."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du hast %d noch nicht veröffentlichte Beiträge. Damit diese hochgeladen werden können, musst du dich anmelden."</string>
-
-    <!-- User screen -->
     <string name="user_quests_title">"Beiträge"</string>
     <string name="user_achievements_title">"Erfolge"</string>
     <string name="user_links_title">"Link-Sammlung"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
-
-    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"Freigeschalteter Link:"</string>
     <string name="achievements_unlocked_links">"Freigeschaltete Links:"</string>
     <string name="link_category_intro_title">"Einführung"</string>
@@ -737,8 +661,6 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="achievement_surveyor_solved_X">"Du hast %d Aufgaben gelöst, weiter so! Es winken weitere Erfolge mit Links zu OSM und anderen kartenbezogenen Apps und Projekten!"</string>
     <string name="achievement_regular_title">"Stammgast"</string>
     <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Engagement! ❤"</string>
-
-    <!-- Ist hier nicht "Radfahrer" gebräuchlicher? -->
     <string name="achievement_bicyclist_title">"Radfahrer"</string>
     <string name="achievement_bicyclist_solved_X">"Du hast %d Aufgaben gelöst, die Radfahrern helfen!"</string>
     <string name="achievement_wheelchair_title">"Mobilität"</string>
@@ -751,24 +673,14 @@ Diese Daten sind nicht nur für Postboten unentbehrlich, sondern auch für Navig
 Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
     <string name="achievement_blind_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Sehbehinderte sind."</string>
-
-    <!-- Wäre hier nicht "Pedestrian"/"Fußgänger" passender als "Runner"/"Läufer"? -->
     <string name="achievement_pedestrian_title">"Fußgänger"</string>
     <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind!"</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
     <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganern am Herzen liegen!"</string>
-
-    <!-- Hier sollte nicht ein bestimmtes Fahrzeug suggeriert werden sondern man sollte das offen lassen.
-
-Eine bessere Idee habe ich allerdings nicht. -->
     <string name="achievement_car_title">"Auf der Straße"</string>
     <string name="achievement_car_solved_X">"Du hast %d Aufgaben gelöst, die Details zu Straßeninfrastrukturdaten hinzufügen!"</string>
-
-    <!-- Notifications -->
     <string name="unread_messages_message">"Du hast %d ungelesene Nachrichten in deinem Posteingang"</string>
     <string name="unread_messages_button">"Posteingang öffnen"</string>
-
-    <!-- Main menu -->
     <string name="action_about2">"Über"</string>
     <string name="map_btn_menu">"Menü"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Die Daten, die in deinem Profil angezeigt werden, werden aus der öffentlich zugreifbaren Historie deiner Beiträge an der OpenStreetMap generiert und diese dann auch auf meinem Server gehostet.&lt;/p&gt;"</string>
@@ -776,8 +688,6 @@ Eine bessere Idee habe ich allerdings nicht. -->
     <string name="credits_art_contributors_title">"Grafik-Beiträge"</string>
     <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
     <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
-
-    <!-- User statistics screen -->
     <string name="stats_are_syncing">"Deine Statistiken synchronisieren noch. Schau später nochmal vorbei."</string>
     <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapping-Portal %s"</string>
@@ -828,8 +738,6 @@ Erfolge"</string>
     <string name="resurvey_intervals_more_often">"Öfter fragen"</string>
     <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
     <string name="about_title_translate">"App übersetzen"</string>
-
-    <!-- Was genau wird bei %1$s angezeigt ? -->
     <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt"</string>
     <string name="quest_oneway2_title">"Ist dies eine Einbahnstraße? In welche Richtung?"</string>
     <string name="quest_oneway2_dir">"Einbahnstraße in diese Richtung"</string>
@@ -847,8 +755,6 @@ Erfolge"</string>
     <string name="quest_steps_ramp_title">"Hat diese Treppe eine Rampe? Was für eine?"</string>
     <string name="quest_steps_ramp_none">"Keine (nutzbare) Rampe"</string>
     <string name="quest_steps_ramp_bicycle">"Rampe für Fahrräder"</string>
-
-    <!-- Habe mal den Plural den anderen deutschen Wörtern ("Hohe Lastwagen...") angeglichen. Der hier im Süden durchaus öfters zu hörende Plural "Wägen" ist laut Duden zudem nur "süddeutsch, österreichisch". -->
     <string name="quest_steps_ramp_stroller">"Rampe für Kinderwagen"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe für Rollstühle"</string>
     <string name="quest_atm_operator_title">"Welche Bank betreibt diesen Geldautomat?"</string>
@@ -906,8 +812,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht …"</string>
     <string name="osm_element_gone_description">"Bist du sicher, dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser einen Hinweis."</string>
     <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
-
-    <!-- "Note" is translated to "Hinweis" (not "Notiz") on the German OSM website, so I'll change all translations to be consistent with that. -->
     <string name="leave_note">"Hinweis hinterlassen"</string>
     <string name="quest_shop_gone_title">"Was ist jetzt stattdessen hier?"</string>
     <string name="quest_shop_gone_vacant_answer">"Es steht leer"</string>
@@ -940,8 +844,6 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_recycling_type_beverage_cartons">"Nur Getränkekartons"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
     <string name="team_mode">"Team-Modus starten"</string>
-
-    <!-- Team mode -->
     <string name="team_mode_exit">"Team-Modus beenden"</string>
     <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen."</string>
     <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
@@ -952,8 +854,6 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="synced">"Synchronisiert"</string>
     <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
     <string name="quest_cycleway_value_separate">"separat auf Karte eingezeichnet"</string>
-
-    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"Hinweis erstellt"</string>
     <string name="commented_note_action_title">"Hinweis kommentiert"</string>
     <string name="hid_action_description">"Versteckt von dir"</string>
@@ -978,8 +878,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_barrier_type_wire_gate">"Entfernbarer Drahtzaun"</string>
     <string name="quest_barrier_type_cattle_grid">"Weiderost"</string>
     <string name="quest_barrier_type_block">"Großes, schweres Objekt"</string>
-
-    <!-- Vielleicht „Verkehrsbarriere“? Oder ist das zu allgemein? -->
     <string name="quest_barrier_jersey_barrier">"Modulare Barriere"</string>
     <string name="quest_barrier_type_log">"Baumstamm"</string>
     <string name="quest_barrier_type_kerb">"Bordstein"</string>
@@ -1022,8 +920,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_buildingType_boathouse">"Bootshaus"</string>
     <string name="quest_buildingType_allotment_house">"Kleingartenlaube"</string>
     <string name="quest_buildingType_grandstand">"Tribüne"</string>
-
-    <!-- Quest selection screen -->
     <string name="action_search">"Suche"</string>
     <string name="action_manage_presets">"Voreinstellungen verwalten"</string>
     <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Gebt auf jedem Gerät die gleiche Zahl ein."</string>
@@ -1037,16 +933,12 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="no_search_results">"Nichts gefunden"</string>
     <string name="quest_selection_hint_title">"Zu viel zu tun?"</string>
     <string name="quest_selection_hint_message">"Bei OpenStreetMap mitzumachen soll vor allem Spaß machen! Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstellungen genau bestimmen, welche Aufgaben dir angezeigt werden und in welcher Reihenfolge."</string>
-
-    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Voreinstellung hinzufügen"</string>
     <string name="quest_presets_preset_name">"Name der Voreinstellung"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Ausgewählt"</string>
     <string name="quest_presets_delete_message">"Voreinstellung „%s“ löschen? Die eingestellte Auswahl und Reihenfolge der Aufgaben geht dabei unwiderruflich verloren."</string>
     <string name="notification_syncing">"Synchronisiere Daten …"</string>
-
-    <!-- Android notifications -->
     <string name="notification_channel_sync">"Daten synchronisieren"</string>
     <string name="quest_board_type_sport">"Sport, Training"</string>
     <string name="quest_generic_hasFeature_optional">"Optional"</string>
@@ -1054,8 +946,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_laundrySelfService_title2">"Bietet diese Wäscherei Selbstbedienung an?"</string>
     <string name="quest_dietType_explanation_halal">"Halale Produkte werden nach den muslimischen Speisegesetzen hergestellt, wobei spezielle Halal-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
     <string name="quest_picnicTableCover_title">"Ist dieser Picknicktisch überdacht (regengeschützt)?"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"Das ist eine Treppe"</string>
     <string name="quest_barrier_type_passage_conversion">"Durch Mauer-/Zaun-Durchgang ersetzt"</string>
     <string name="quest_barrier_type_gate_conversion">"Durch Tor ersetzt"</string>
@@ -1105,8 +995,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_parking_no">"Kein Parken hier / Nicht erlaubt"</string>
     <string name="street_parking_prohibited">"Parkverbot"</string>
     <string name="street_stopping_prohibited">"Halteverbot"</string>
-
-    <!-- Does not exist in most countries. It is something in between "no parking" and "no stopping", see wiki for parking:lane -->
     <string name="street_standing_prohibited">"Warteverbot"</string>
     <string name="street_parking_conditional_restrictions">"Parken / Halten ist bedingt eingeschränkt"</string>
     <string name="street_parking_no_other_reasons">"Kein explizites Schild / Parken nicht möglich"</string>
@@ -1133,21 +1021,14 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_smoothness_title_impassable">"Unbefahrbar"</string>
     <string name="quest_smoothness_description_excellent_paved">"Keine Unebenheiten oder Risse"</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"Fast nahtlos"</string>
-
-    <!-- mit "rough" is hier die Granularität der Oberfläche gemeint... vielleicht "rau"? -->
     <string name="quest_smoothness_description_good_paved">"Nur kleine Risse, Lücken, Reparaturen oder eine leicht raue Oberfläche"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Flache oder schmale Lücken"</string>
     <string name="quest_smoothness_description_good_sett">"Ungewöhnlich ebene Steine, regelmäßiges Muster, sehr flache oder schmale Lücken"</string>
-
-    <!-- auch hier ist mit "rough" eigentlich die Granularität der Oberfläche gemeint -->
     <string name="quest_smoothness_description_intermediate_paved">"Ungewöhnlich raue Oberfläche, größere Lücken, Risse, flache Spurrillen, Schlaglöcher oder andere Schäden"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Größere Lücken, möglicherweise einige verschobene Steine oder andere Schäden"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Ebene Steine oder mit harten Kanten, flache oder schmale Lücken"</string>
     <string name="quest_smoothness_description_intermediate_compacted_gravel">"Feiner Kies, flache Unebenheiten oder Schlaglöcher"</string>
     <string name="quest_smoothness_description_bad_paved">"Große Lücken, Schlaglöcher, Spurrillen, bröckelnder Belag oder andere Schäden"</string>
-
-    <!-- "Displaced" eigentlich in dem Sinne wie es in dem Bild zu sehen ist: Sind leicht verdreht, oder einige höher als andere usw.
-Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durcheinander" beschreiben? -->
     <string name="quest_smoothness_description_bad_paving_stones">"Verschobene Steine, große Lücken oder andere Schäden"</string>
     <string name="quest_smoothness_description_bad_sett">"Verwitterte oder unregelmäßig geformte Steine, große Lücken oder Schäden"</string>
     <string name="quest_smoothness_description_bad_compacted_gravel">"Einige größere Kiesel, Unebenheiten, Spurrillen oder Schlaglöcher"</string>
@@ -1166,8 +1047,6 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">"Darf man hier mit Selbstbedienung tanken?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er entweder sehr zeitintensiv ist oder es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren, wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Festgetreten, sehr wenig loser Kies oder Sand"</string>
@@ -1184,22 +1063,16 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="ar_core_tracking_error_excessive_motion">"Zu viel Bewegung"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Unzureichende visuelle Merkmale hier"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Kamera wird von einer anderen App verwendet"</string>
-
-    <!-- "Lenkerstange" ist ungebräuchlich. Die Dinger heißen üblicherweise (z. B. bei den großen Fahrradversendern) einfach "Lenker" - ich würde hier also "Lenkerhalter" schreiben. -->
     <string name="quest_bicycle_parking_type_handlebarholder">"Lenkerhalter"</string>
     <string name="quest_bicycle_parking_access_title2">"Wer darf ein Fahrrad hier parken? Das Parken kann kostenlos oder kostenpflichtig sein."</string>
     <string name="quest_playground_access_title2">"Wer darf diesen Spielplatz benutzen?"</string>
     <string name="quest_sidewalk_answer_none_title">"Auswählen, dass Bürgersteige fehlen"</string>
     <string name="quest_side_select_interface_explanation">"Berühre eine Seite und wähle die jeweils passende Situation aus.
 Wiederhole dies für die andere Seite, wenn sie existiert."</string>
-
-    <!-- AR Measure screen -->
     <string name="ar_measure">"Ausmessen"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Zu steiler Winkel, gehe ein wenig zurück"</string>
     <string name="default_disabled_msg_no_ar">"Du benötigst ein Maßband, um diese Aufgabe zu lösen, weil das Ausmessen mit Hilfe der Kamera auf diesem Gerät nicht unterstützt wird."</string>
     <string name="quest_cycleway_width_title">"Wie breit ist dieser Radweg hier?"</string>
-
-    <!-- @German translation: eine Straße geht von Hauswand zu Hauswand. Sie umfasst auch Geh- und Radwege. Daher habe ich auf den Begriff "Fahrbahn" umgestellt. -->
     <string name="quest_road_width_title">"Wie breit ist die Fahrbahn hier?"</string>
     <string name="quest_road_width_explanation">"Die Fahrbahn von Bordstein zu Bordstein: Das beinhaltet alles dazwischen, wie etwa Parkstreifen oder Radfahrstreifen, aber schließt alles jenseits davon aus, wie etwa Bürgersteige, Radwege oder Parkbuchten."</string>
     <string name="quest_sidewalk_answer_none">"Gar kein Bürgersteig"</string>
@@ -1210,8 +1083,6 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="ar_core_tracking_error_no_plane_hit">"Bleib dichter am Pfeil, aber achte dabei auf den Verkehr!"</string>
     <string name="quest_sidewalk_surface_title">"Welche Oberfläche hat der Bürgersteig hier?"</string>
     <string name="quest_tactilePaving_incorrect">"Nur auf einer Seite"</string>
-
-    <!-- @westnordost: Im Deutschen kommt vor die Auslassungspunkte normalerweise schon ein Leerzeichen: https://de.wikipedia.org/wiki/Auslassungspunkte#Deutsch -->
     <string name="quest_fee_answer_yes_but">"Ja, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Nein, aber es gibt eine Maximaldauer …"</string>
     <string name="unit_days">"Tage"</string>
@@ -1233,33 +1104,16 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_seating_indoor_and_outdoor">"Drinnen und draußen"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil möglicherweise nur in bestimmten Zeiten des Jahres überprüft werden kann, ob Sitzplätze im Freien existieren."</string>
     <string name="no_camera_permission_toast">"Keine Kamera-Berechtigung"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Akzeptiert dieser Ort Bargeld?"</string>
     <string name="quest_address_street_title2">"Auf welcher Straße befindet sich das?"</string>
     <string name="quest_airConditioning_title">"Hat dieser Ort eine Klimaanlage?"</string>
     <string name="quest_baby_changing_table_title2">"Gibt es einen Wickeltisch in diesem Ort?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Gibt es bei dieser Haltestelle eine Bank?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Gibt es bei dieser Haltestelle einen Mülleimer?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"Ist diese Haltestelle beleuchtet?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Wie heißt diese Haltestelle?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"Was ist die Referenznummer dieser Haltestelle?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Gibt es bei dieser Haltestelle einen Unterstand?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Hat diese Haltestelle eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_dietType_halal_name_title2">"Bietet dieser Ort halale Produkte an?"</string>
     <string name="quest_dietType_kosher_name_title2">"Bietet dieser Ort koschere Produkte an?"</string>
@@ -1286,17 +1140,12 @@ sorted alphabetically by title -->
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
     <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden."</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Werden hier Kredit- oder Debitkarten akzeptiert?"</string>
     <string name="quest_accepts_cards_debit_and_credit">"Sowohl Kreditkarten als auch Debitkarten"</string>
     <string name="quest_accepts_cards_credit_only">"Nur Kreditkarten"</string>
     <string name="quest_accepts_cards_dedit_only">"Nur Debitkarten"</string>
     <string name="quest_accepts_cards_unavailable">"Weder Kredit- noch Debitkarten"</string>
     <string name="quest_barrier_type_gate_any_size">"Tor (jede Größe)"</string>
-
-    <!-- "Pressluft" habe ich noch nie gehört, ist "Druckluft" vielleicht besser? Evtl. auch "Gibt es hier einen Druckluft-Kompressor"? -->
     <string name="quest_air_pump_compressor_title">"Gibt es hier Druckluft zum Aufpumpen von Reifen?"</string>
     <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn sich die Anzahl je Seite unterscheidet, nimm die höhere Zahl."</string>
     <string name="quest_shoulder_explanation2">"Ein Seitenstreifen ist ein klar abgegrenzter Nothaltebereich. Die als Seitenstreifen ausgewiesene Fläche ist nicht unbedingt über die gesamte Breite befestigt und nicht unbedingt breit genug, damit ein Auto vollständig abseits der Fahrbahn anhalten kann."</string>
@@ -1339,8 +1188,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_stele_wooden">"Hölzerne Stele"</string>
     <string name="quest_memorialType_stele_stone">"Steinerne Stele"</string>
     <string name="quest_memorialType_sculpture">"Andere Skulptur"</string>
-
-    <!-- Overlays -->
     <string name="select_overlay">"Overlay auswählen"</string>
     <string name="overlay_none">"Kein"</string>
     <string name="overlay_lit">"Straßenbeleuchtung"</string>
@@ -1368,7 +1215,7 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_caravans_only">"Nur Wohnmobile, Wohnwagen, …"</string>
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht unplausibel aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Straßenbreite: %s"</string>
@@ -1397,8 +1244,6 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Geschäfte"</string>
     <string name="name_label">"Name:"</string>
     <string name="vacant_shop_title">"Leerstehendes Geschäft"</string>
-
-    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Andere Art von Ort"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden (mit oder ohne Schlüssel)?"</string>
@@ -1413,8 +1258,6 @@ sorted alphabetically by title -->
     <string name="quest_presets_rename">"Umbenennen"</string>
     <string name="quest_presets_share">"Teilen"</string>
     <string name="quest_presets_delete">"Löschen"</string>
-
-    <!-- Config via URL/QRCode -->
     <string name="urlconfig_qr_code_description">"Lass andere diesen QR-Code scannen, um deine Voreinstellung mit ihnen zu teilen."</string>
     <string name="urlconfig_as_url">"Oder als URL:"</string>
     <string name="urlconfig_url_copied">"URL in die Zwischenablage kopiert"</string>
@@ -1425,8 +1268,6 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_parking_type_two_tier">"Doppelstock-Fahrradständer"</string>
     <string name="user_profile_current_week_title">"Letzte 7 Tage"</string>
     <string name="user_profile_dates_mapped">"Wann Du in letzter Zeit gemappt hast"</string>
-
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"Schutzstreifen"</string>
     <string name="urlconfig_scan_qr_code_again2">"Scanne den QR-Code oder klicke &lt;a href=\"%s\"&gt;diesen Link&lt;/a&gt; nach der Installation der App erneut, um die Voreinstellung zu übernehmen."</string>
     <string name="confirmation_replace_shop_title">"Ist das jetzt ein anderer Ort?"</string>
@@ -1439,11 +1280,11 @@ Jetzt verschieben?"</string>
     <string name="node_moved_not_far_enough">"Zu wenig verschoben"</string>
     <string name="node_moved_too_far">"Zu weit verschoben. Verfasse stattdessen eine Notiz"</string>
     <string name="node_moved">"Verschoben um %s"</string>
-    <string name="move_node_description">"Verschiebe die Karte um den Ort an die richtige Stelle zu verschieben. Nutze die Zoom-Funktion um so präzise wie möglich zu sein. Bitte sei Dir bewusst, dass deine eigene Position weniger exakt sein könnte als Dir angezeigt wird."</string>
+    <string name="move_node_description">"Verschiebe die Karte, um den Punkt an die richtige Stelle zu verschieben. Nutze die Zoom-Funktion, um so präzise wie möglich zu sein. Bitte sei Dir bewusst, dass deine eigene Position weniger exakt sein könnte, als Dir angezeigt wird."</string>
     <string name="move_node_action_description">"Du hast den Punkt verschoben"</string>
     <string name="quest_cycleway_value_shoulder">"Keiner, aber Seitenstreifen für Radverkehr nutzbar"</string>
     <string name="quest_placeName_no_name_answer">"Es gibt kein Schild für den Namen"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"Diese Breite sieht implausibel aus. Nicht vergessen: Hier soll die Breite von Bordstein zu Bordstein angegeben werden, also inklusive Parkstreifen, Radfahrstreifen usw."</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Diese Breite sieht ungewöhnlich aus. Nicht vergessen: Hier soll die Breite von Bordstein zu Bordstein angegeben werden, also inklusive Parkstreifen, Radfahrstreifen usw."</string>
     <string name="overlay_cycleway">"Fahrradwege"</string>
     <string name="bicycle_boulevard_is_a">"Es ist eine %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Es ist keine %1$s"</string>
@@ -1457,5 +1298,5 @@ Jetzt verschieben?"</string>
     <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg, der einen Bürgersteig für Fußverkehr hat (mit Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
-    <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite die umgedreht werden soll"</string>
+    <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
 </resources>

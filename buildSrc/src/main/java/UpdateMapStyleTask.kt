@@ -6,6 +6,7 @@ import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URL
 
+/** Pulls the newest map style from the streetcomplete-mapstyle repository */
 open class UpdateMapStyleTask : DefaultTask() {
 
     @get:Input lateinit var targetDir: String

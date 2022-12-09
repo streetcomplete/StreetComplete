@@ -8,6 +8,14 @@ import java.io.File
 import java.net.URL
 import java.util.Locale
 
+/** Download and split the brand presets from the name suggestion index by countries they are in:
+ *  Instead of one big presets file, sort those brands that only exist in certain countries into own
+ *  files (presets-DE.json etc.).
+ *
+ *  This is done because the name suggestion index presets JSON became so big (10MB and growing)
+ *  that it really slows down startup time. Many brand presets do not actually need to be loaded at
+ *  all because they exist only in select countries and the user will only be editing usually in one
+ *  country per session anyways. */
 open class UpdateNsiPresetsTask : DefaultTask() {
     @get:Input var targetDir: String? = null
     @get:Input var version: String? = null

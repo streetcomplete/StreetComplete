@@ -9,7 +9,8 @@ import java.io.StringWriter
 import java.net.URL
 import java.util.Locale
 
-/** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures library */
+/** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures
+ *  library */
 open class UpdatePresetsTask : DefaultTask() {
     @get:Input var languageCodes: Collection<String>? = null
     @get:Input var targetDir: String? = null
