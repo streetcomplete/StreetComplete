@@ -78,7 +78,7 @@ class OsmQuestController internal constructor(
         .filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }
         .map { it.name }.toSet() // technically those could change if questTypeRegistry is reloaded, but that's unlikely enough to ignore it
     // must be valid names!
-    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance")
+    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance", "AddHousenumber")
 
     private val hiddenCache = hiddenDB.getAllIds().toHashSet()
 

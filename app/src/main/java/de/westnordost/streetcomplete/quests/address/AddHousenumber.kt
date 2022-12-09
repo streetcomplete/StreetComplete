@@ -161,17 +161,17 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
     }
 }
 
-val notABuildingFilter by lazy { """
+private val notABuildingFilter by lazy { """
     ways, relations with !building"
 """.toElementFilterExpression() }
 
-val nonBuildingAreasWithAddressFilter by lazy { """
+private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
       (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
       and !building
 """.toElementFilterExpression() }
 
-val nonMultipolygonRelationsWithAddressFilter by lazy { """
+private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
       and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
@@ -202,7 +202,7 @@ private val buildingTypesThatShouldHaveAddresses = listOf(
     "kindergarten", "train_station", "hotel", "retail", "shop", "commercial", "office"
 )
 
-fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
+private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =
     when (this) {
         is Way -> this.nodeIds.any { it in nodeIds }
         is Relation -> containsAnyNode(nodeIds, mapData)
@@ -219,5 +219,5 @@ private fun Relation.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeo
         }
 
 /** return whether any of the ways with the given ids are contained in this relation */
-fun Relation.containsWay(wayId: Long): Boolean =
+private fun Relation.containsWay(wayId: Long): Boolean =
     members.any { it.type == ElementType.WAY && wayId == it.ref }
