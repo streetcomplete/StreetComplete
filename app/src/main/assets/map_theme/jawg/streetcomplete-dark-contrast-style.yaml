@@ -24,8 +24,8 @@ global:
     forest_color: '#293f28'
     town_color: '#000000'
 
-    building_color: [0.16, 0.36, 0.36, 0.35]
-    building_outline_color: [0.26, 0.6, 0.6, 0.4]
+    building_color: [0.13, 0.30, 0.30, 0.35]
+    building_outline_color: [0.23, 0.55, 0.55, 0.4]
 
     boundary_color: '#e72'
 
@@ -33,11 +33,3 @@ global:
     barrier_color: '#99f'
 
     tunnel_color: [0.3, 0.2, 1.0, 0.2]
-
-styles:
-    buildings-style:
-        base: polygons
-        blend: translucent
-    buildings-outline-style:
-        base: lines
-        blend: translucent
