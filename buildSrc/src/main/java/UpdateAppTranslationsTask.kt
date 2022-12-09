@@ -42,7 +42,9 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 } }
 </resources>"""
             for (androidResCode in androidResCodes) {
-                File(targetFiles(androidResCode)).writeText(text)
+                val file = File(targetFiles(androidResCode))
+                File(file.parent).mkdirs()
+                file.writeText(text)
             }
         }
     }

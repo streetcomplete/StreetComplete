@@ -12,6 +12,7 @@ fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: Str
     val url = URL(fetchLocalizationDownloadUrl(apiToken, projectId, code, "key_value_json"))
     return url.retryingQuotaConnection(null) { inputSteam ->
         val txt = inputSteam.bufferedReader().use { it.readText() }
+        if (txt.isEmpty()) return@retryingQuotaConnection mapOf()
         val obj = Parser.default().parse(txt.reader()) as JsonObject
         val result = obj.entries.associate { it.key to it.value as String }
 
