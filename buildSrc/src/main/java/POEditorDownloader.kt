@@ -5,8 +5,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Locale
 
-/** Fetch the localization for the given language code in the given format and do something
- *  with the contents */
+/** Fetch the localizations for the given language code and return it as a map of strings */
 fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: String): Map<String, String> {
     val code = if (languageCode == "sr-latn") "sr-cyrl" else languageCode
 
