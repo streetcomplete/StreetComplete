@@ -215,6 +215,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
     <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
+    <string name="ar_measure_horizontal">Measure lengths</string>
+    <string name="ar_measure_vertical">Measure heights</string>
+    <string name="ar_measure_meters">Use meters</string>
+    <string name="ar_measure_ft_in">Use feet &amp; inch</string>
 
 
     <!-- Notifications -->
@@ -346,7 +350,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
     <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
-
+    <string name="privacy_html_arcore">This application runs on &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href="https://policies.google.com/privacy"&gt;Google Privacy Policy&lt;/a&gt;.</string>
 
     <!-- User screen -->
 
