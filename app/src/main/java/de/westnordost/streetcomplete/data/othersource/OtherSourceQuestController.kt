@@ -42,8 +42,7 @@ class OtherSourceQuestController(
     }
 
     fun delete(key: OtherSourceQuestKey) {
-        if (getQuestType(key)?.deleteQuest(key.id) == true)
-            questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
+        questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
     fun getAllInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null, getHidden: Boolean = false): List<OtherSourceQuest> {
