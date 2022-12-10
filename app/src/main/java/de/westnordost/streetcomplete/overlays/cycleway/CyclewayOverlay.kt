@@ -60,6 +60,7 @@ class CyclewayOverlay(
         mapData.filter("""
             ways with
               highway ~ cycleway|path|footway
+              and horse != designated
               and area != yes
         """).map { it to getSeparateCyclewayStyle(it) }
 
