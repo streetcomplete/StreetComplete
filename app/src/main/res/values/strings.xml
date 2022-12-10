@@ -1574,7 +1574,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="select_overlay">Select Overlay</string>
 
-    <string name="overlay_cycleway">Cycleways</string>
+    <string name="overlay_cycleway">Bike paths</string>
     <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
