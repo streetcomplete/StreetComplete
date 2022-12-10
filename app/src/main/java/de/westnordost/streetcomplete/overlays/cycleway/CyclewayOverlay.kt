@@ -73,11 +73,12 @@ private fun getSeparateCyclewayStyle(element: Element) =
     PolylineStyle(StrokeStyle(createSeparateCycleway(element.tags).getColor()))
 
 private fun SeparateCycleway?.getColor() = when (this) {
-    SeparateCycleway.NONE,
-    SeparateCycleway.ALLOWED,
+    SeparateCycleway.NOT_ALLOWED,
+    SeparateCycleway.ALLOWED_ON_FOOTWAY,
     SeparateCycleway.NON_DESIGNATED ->
         Color.BLACK
 
+    SeparateCycleway.PATH,
     SeparateCycleway.NON_SEGREGATED ->
         Color.CYAN
 

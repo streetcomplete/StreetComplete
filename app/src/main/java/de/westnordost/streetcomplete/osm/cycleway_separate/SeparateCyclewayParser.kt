@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
@@ -18,23 +19,33 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
      */
     if (tags["highway"] !in listOf("path", "footway", "cycleway")) return null
 
-    // cycleway implies bicycle=designated
-    val bicycle = tags["bicycle"] ?: if (tags["highway"] == "cycleway") "designated" else null
-    if (bicycle != "designated") return if (bicycle == "yes") SeparateCycleway.ALLOWED else SeparateCycleway.NONE
-
-    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
-    if (hasSidewalk) {
-        return SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK
+    // cycleway implies bicycle=designated, path implies bicycle=yes
+    val bicycle = tags["bicycle"] ?: when (tags["highway"]) {
+        "cycleway" -> "designated"
+        "path" -> "yes"
+        else -> null // only happens if highway=footway
     }
 
     // footway implies foot=designated, path implies foot=yes
     val foot = tags["foot"] ?: when (tags["highway"]) {
         "footway" -> "designated"
         "path" -> "yes"
-        else -> null
+        else -> null // only happens if highway=cycleway
     }
-    if (foot !in listOf("yes", "designated")) return SeparateCycleway.EXCLUSIVE
+
+    if (bicycle == "no") return NOT_ALLOWED
+
+    if (bicycle == "yes" && foot == "yes") return PATH
+
+    if (bicycle == "yes" && foot == "designated") return ALLOWED_ON_FOOTWAY
+
+    if (bicycle != "designated") return NON_DESIGNATED
+
+    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
+    if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
+
+    if (foot !in listOf("yes", "designated")) return EXCLUSIVE
 
     val segregated = tags["segregated"] == "yes"
-    return if (segregated) SeparateCycleway.SEGREGATED else SeparateCycleway.NON_SEGREGATED
+    return if (segregated) SEGREGATED else NON_SEGREGATED
 }
