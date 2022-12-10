@@ -1291,12 +1291,13 @@ Jetzt verschieben?"</string>
     <string name="bicycle_boulevard">"Fahrradstraße"</string>
     <string name="separate_cycleway_no">"Kein Radverkehr"</string>
     <string name="separate_cycleway_allowed">"Radverkehr ist erlaubt"</string>
-    <string name="separate_cycleway_no_or_allowed">"Nicht für Radverkehr ausgewiesen (egal ob erlaubt oder nicht)"</string>
-    <string name="separate_cycleway_non_segregated">"Ausgewiesener gemeinsamer Fuß- und Radweg"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nicht ausgewiesen als Radweg (Radfahren kann trotzdem erlaubt sein)"</string>
+    <string name="separate_cycleway_non_segregated">"Gemeinsamer Rad- und Fußweg"</string>
     <string name="separate_cycleway_segregated">"Getrennter Rad- und Fußweg"</string>
     <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
-    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg, der einen Bürgersteig für Fußverkehr hat (mit Bordstein)"</string>
+    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
+    <string name="separate_cycleway_path">"Weg oder Pfad"</string>
 </resources>

@@ -1254,9 +1254,18 @@ También puedes dejar una nota (con foto)."</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
     <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
     <string name="user_profile_current_week_title">"Últimos 7 días"</string>
+    <string name="user_profile_dates_mapped">"Días en los que ha mapeado recientemente"</string>
     <string name="urlconfig_scan_qr_code_again2">"Después de instalar la aplicación, vuelva a escanear el código QR o haga clic en &lt;a href=\"%s\"&gt;este enlace&lt;/a&gt; para aplicar el ajuste preestablecido."</string>
     <string name="confirmation_replace_shop_title">"¿Es un lugar diferente ahora?"</string>
     <string name="confirmation_replace_shop_message">"En ese caso, el horario de apertura, la información de contacto, etc. también habrán cambiado."</string>
     <string name="confirmation_replace_shop_yes">"Lugar diferente ahora"</string>
     <string name="confirmation_replace_shop_no">"Sigue siendo el mismo lugar"</string>
+    <string name="move_node">"Está en una posición ligeramente distinta…"</string>
+    <string name="quest_move_node_message">"Puede corregir la posición moviendo el elemento.
+¿Quiere moverlo ahora?"</string>
+    <string name="node_moved_not_far_enough">"Muévalo más lejos"</string>
+    <string name="node_moved_too_far">"Lo ha movido demasiado. Considere dejar una nota"</string>
+    <string name="node_moved">"Movido %s"</string>
+    <string name="move_node_action_description">"Ha movido el nodo"</string>
+    <string name="quest_placeName_no_name_answer">"No hay señal con el nombre"</string>
 </resources>

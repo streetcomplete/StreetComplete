@@ -1274,4 +1274,26 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="confirmation_replace_shop_message">"I så fall kommer öppettiderna, kontaktinformation, m.m. att ha ändrats med."</string>
     <string name="confirmation_replace_shop_yes">"Annat ställe nu"</string>
     <string name="confirmation_replace_shop_no">"Fortfarande samma ställe"</string>
+    <string name="move_node">"Den är lite felplacerad…"</string>
+    <string name="quest_move_node_message">"Du kan ändra läget genom att flytta på punkten.
+Flytta den?"</string>
+    <string name="node_moved_not_far_enough">"Vänligen flytta den längre"</string>
+    <string name="node_moved_too_far">"För lång flytt. Lämna en anteckning istället"</string>
+    <string name="node_moved">"Flyttad av %s"</string>
+    <string name="move_node_description">"Dra i kartan för att placera i rätt läge. Använd zoomfunktionen och var så noggrann du kan. Observa att det visade läget kan vara mindre exakt än vad som visas."</string>
+    <string name="move_node_action_description">"Du flyttade på punkten"</string>
+    <string name="quest_cycleway_value_shoulder">"ingen, men vägrenen kan användas av cyklister"</string>
+    <string name="quest_placeName_no_name_answer">"Det finns ingen namnskylt"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Bredden verkar osannolik. Kom ihåg att det ska vara hela vägens bredd från kant till kant, inklusive gatuparkering, cykelfiler, osv."</string>
+    <string name="overlay_cycleway">"Cykelvägar"</string>
+    <string name="bicycle_boulevard_is_a">"Det är en %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Det är inte en %1$s"</string>
+    <string name="bicycle_boulevard">"Cykelgata"</string>
+    <string name="separate_cycleway_no">"Cykling förbjuden"</string>
+    <string name="separate_cycleway_allowed">"Cykling tillåten"</string>
+    <string name="separate_cycleway_segregated">"Uppdelad gång- och cykelbana"</string>
+    <string name="separate_cycleway_exclusive">"Endast cyklister"</string>
+    <string name="cycleway_reverse_direction">"Omvänd cykelvägsriktning"</string>
+    <string name="cycleway_reverse_direction_warning">"Att en cykelväg går i motsatt riktning är mycket ovanligt."</string>
+    <string name="cycleway_reverse_direction_toast">"Välj sida att vända på"</string>
 </resources>

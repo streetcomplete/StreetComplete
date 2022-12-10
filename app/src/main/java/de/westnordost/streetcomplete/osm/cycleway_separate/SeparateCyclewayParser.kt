@@ -35,9 +35,9 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
     if (bicycle in noCycling) return NOT_ALLOWED
 
-    if (bicycle in yesButNotDesignated && foot in yesButNotDesignated) return PATH
-
     if (bicycle in yesButNotDesignated && foot == "designated") return ALLOWED_ON_FOOTWAY
+
+    if (bicycle in yesButNotDesignated && foot in yesButNotDesignated) return PATH
 
     if (bicycle != "designated") return NON_DESIGNATED
 

@@ -1,4 +1,4 @@
-v50.0-beta1: |
+v50.0: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
   <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>
   <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
@@ -19,7 +19,12 @@ v50.0-beta1: |
   <li>Surfaces for segregated foot and cycleway: Correct common surface (#4615), by @mnalis</li>
   <li>Disabled cycleway quest by default because it can be done more comprehensively in the overlay</li>
   <li>Road width: Ask for confirmation when adding improbable road widths (#4655)</li>
-  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz</li>
+  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz, @tapetis</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Added language: Serbian in latin script (automatically generated from Serbian in cyrillic script)</li>
+  <li>Fix quest pins sometimes disapear and labels flicker on moving the map (#4522), by @Helium314</li>
   </ul>
 
 v49.2: |

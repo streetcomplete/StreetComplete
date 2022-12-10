@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5000
-        versionName = "50.0-beta1"
+        versionCode = 5001
+        versionName = "50.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -134,7 +134,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.5.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.4")
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -190,7 +190,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.34.0")
+    implementation("com.google.ar:core:1.35.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -205,7 +205,7 @@ val bcp47ExportLanguages = setOf(
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
 val nsiVersion = "v6.0.20221205"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v5.1.0"
+val presetsVersion = "v5.1.1"
 
 val poEditorProjectId = "97843"
 

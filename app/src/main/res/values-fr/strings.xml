@@ -1274,4 +1274,30 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="confirmation_replace_shop_message">"Dans ce cas, les horaires d’ouverture, informations de contact, etc, ont également changé."</string>
     <string name="confirmation_replace_shop_yes">"Lieu différent"</string>
     <string name="confirmation_replace_shop_no">"Lieu identique"</string>
+    <string name="move_node">"C'est à un emplacement légèrement différent..."</string>
+    <string name="quest_move_node_message">"Vous pouvez corriger la position en déplaçant l'objet. Le déplacer maintenant ?"</string>
+    <string name="node_moved_not_far_enough">"Veuillez le déplacer plus loin"</string>
+    <string name="node_moved_too_far">"Déplacé trop loin. Pensez à laisser une note"</string>
+    <string name="node_moved">"Déplacé par %s"</string>
+    <string name="move_node_description">"Déplacez la carte pour pour placer l'objet à l'emplacement correct. Utilisez le zoom et essayer d'être aussi précis que possible. Notez également que votre position affichée peut être manquer de précision."</string>
+    <string name="move_node_action_description">"Vous avez déplacé le noeud"</string>
+    <string name="quest_cycleway_value_shoulder">"aucune, mais bande d'arrêt d'urgence cyclable"</string>
+    <string name="quest_placeName_no_name_answer">"Il n'y a pas de nom indiqué"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Cette largeur semble suspecte. Pour rappel, cela doit concerner la largeur de bord à bord, en incluant le parking sur la chaussée, les voies cyclables, etc."</string>
+    <string name="overlay_cycleway">"Voies cyclables"</string>
+    <string name="bicycle_boulevard_is_a">"C'est un(e) %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Ce n'est pas un(e) %1$s"</string>
+    <string name="bicycle_boulevard">"Rue cyclable"</string>
+    <string name="separate_cycleway_no">"Cyclistes non autorisés"</string>
+    <string name="separate_cycleway_allowed">"Cyclistes autorisés"</string>
+    <string name="separate_cycleway_no_or_allowed">"Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)
+"</string>
+    <string name="separate_cycleway_non_segregated">"Chemin à usage partagé"</string>
+    <string name="separate_cycleway_segregated">"Voie ségréguée piétons et cycles"</string>
+    <string name="separate_cycleway_exclusive">"Voie cyclable exclusivement"</string>
+    <string name="separate_cycleway_with_sidewalk">"Chemin pour vélos uniquement avec chemin piéton mitoyen (séparé par une bordure)"</string>
+    <string name="cycleway_reverse_direction">"Voie cyclable en sens inverse"</string>
+    <string name="cycleway_reverse_direction_warning">"Qu'une voie cyclable aille dans le sens opposé est extrêmement rare."</string>
+    <string name="cycleway_reverse_direction_toast">"Tapez sur le côté à inverser"</string>
+    <string name="separate_cycleway_path">"Chemin ou piste"</string>
 </resources>
