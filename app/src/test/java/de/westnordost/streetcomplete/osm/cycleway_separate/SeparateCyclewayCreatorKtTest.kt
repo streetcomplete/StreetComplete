@@ -19,6 +19,16 @@ class SeparateCyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply none does not change bicycle=dismount`() {
+        verifyAnswer(
+            mapOf("highway" to "cycleway", "bicycle" to "dismount"),
+            NOT_ALLOWED,
+            arrayOf(
+                StringMapEntryModify("highway", "cycleway", "path"),
+            )
+        )
+    }
+
     @Test fun `apply none re-tags cycleway and adds foot=yes if foot was no before`() {
         verifyAnswer(
             mapOf("highway" to "cycleway", "foot" to "no"),
@@ -91,6 +101,24 @@ class SeparateCyclewayCreatorKtTest {
             mapOf("highway" to "footway"),
             ALLOWED_ON_FOOTWAY,
             arrayOf(StringMapEntryAdd("bicycle", "yes"))
+        )
+        verifyAnswer(
+            mapOf("highway" to "footway", "bicycle" to "no"),
+            ALLOWED_ON_FOOTWAY,
+            arrayOf(StringMapEntryModify("bicycle", "no", "yes"))
+        )
+    }
+
+    @Test fun `apply allowed does not re-tag bicycle=permissive etc`() {
+        verifyAnswer(
+            mapOf("highway" to "footway", "bicycle" to "permissive"),
+            ALLOWED_ON_FOOTWAY,
+            arrayOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()))
+        )
+        verifyAnswer(
+            mapOf("highway" to "footway", "bicycle" to "private"),
+            ALLOWED_ON_FOOTWAY,
+            arrayOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()))
         )
     }
 
@@ -263,7 +291,6 @@ class SeparateCyclewayCreatorKtTest {
             NON_SEGREGATED,
             arrayOf(
                 StringMapEntryAdd("bicycle", "designated"),
-                StringMapEntryModify("foot", "yes", "designated"),
                 StringMapEntryAdd("segregated", "no"),
             )
         )
@@ -281,6 +308,23 @@ class SeparateCyclewayCreatorKtTest {
             arrayOf(
                 StringMapEntryModify("bicycle", "yes", "designated"),
                 StringMapEntryAdd("foot", "designated"),
+                StringMapEntryAdd("segregated", "no"),
+            )
+        )
+    }
+
+    @Test fun `apply non-segregated does not re-tag any yes-like value`() {
+        verifyAnswer(
+            mapOf("highway" to "cycleway", "foot" to "yes"),
+            NON_SEGREGATED,
+            arrayOf(
+                StringMapEntryAdd("segregated", "no"),
+            )
+        )
+        verifyAnswer(
+            mapOf("highway" to "cycleway", "foot" to "permissive"),
+            NON_SEGREGATED,
+            arrayOf(
                 StringMapEntryAdd("segregated", "no"),
             )
         )
@@ -333,15 +377,6 @@ class SeparateCyclewayCreatorKtTest {
             SEGREGATED,
             arrayOf(
                 StringMapEntryAdd("bicycle", "designated"),
-                StringMapEntryAdd("segregated", "yes"),
-            )
-        )
-        verifyAnswer(
-            mapOf("highway" to "footway", "foot" to "yes"),
-            SEGREGATED,
-            arrayOf(
-                StringMapEntryAdd("bicycle", "designated"),
-                StringMapEntryModify("foot", "yes", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
             )
         )

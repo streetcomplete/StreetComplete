@@ -1582,8 +1582,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="separate_cycleway_allowed">Cyclists are allowed</string>
     <!-- highway=path / foot=yes + bicycle=yes -->
     <string name="separate_cycleway_path">Path or trail</string>
-    <!-- highway=footway / foot=designated -->
-    <string name="separate_cycleway_no_or_allowed">Sidewalk or foot path</string>
+    <!-- highway=footway / foot=designated and anything else that is not designated for cyclists-->
+    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (cycling may still be allowed)</string>
     <!-- foot=designated + bicycle=designated -->
     <string name="separate_cycleway_non_segregated">Shared-use path</string>
     <!-- foot=designated + bicycle=designated + segregated=yes -->

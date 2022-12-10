@@ -16,8 +16,14 @@ fun SeparateCycleway.applyTo(tags: Tags) {
     when (this) {
         PATH -> {
             tags["highway"] = "path"
-            if (tags["foot"] == "no" || tags["foot"] == "designated") tags["foot"] = "yes"
-            if (tags["bicycle"] == "no" || tags["bicycle"] == "designated") tags["bicycle"] = "yes"
+
+            // only re-tag to "yes" if defined and not some kind of "yes" value
+            if (tags.containsKey("foot") && tags["foot"] !in yesButNotDesignated) {
+                tags["foot"] = "yes"
+            }
+            if (tags.containsKey("bicycle") && tags["bicycle"] !in yesButNotDesignated) {
+                tags["bicycle"] = "yes"
+            }
         }
         NOT_ALLOWED, ALLOWED_ON_FOOTWAY, NON_DESIGNATED -> {
             // not a cycleway if not designated as one!
@@ -26,9 +32,15 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             }
 
             when (this) {
-                NOT_ALLOWED -> tags["bicycle"] = "no"
-                ALLOWED_ON_FOOTWAY -> tags["bicycle"] = "yes"
-                else -> if (tags["bicycle"] == "designated") tags.remove("bicycle")
+                NOT_ALLOWED -> {
+                    if (tags["bicycle"] !in noCycling) tags["bicycle"] = "no"
+                }
+                ALLOWED_ON_FOOTWAY -> {
+                    if (tags["bicycle"] !in yesButNotDesignated) tags["bicycle"] = "yes"
+                }
+                else -> {
+                    if (tags["bicycle"] == "designated") tags.remove("bicycle")
+                }
             }
             if (tags["foot"] == "no") {
                 tags["foot"] = "yes"
@@ -38,7 +50,8 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             if (!isCycleway || tags.containsKey("bicycle")) {
                 tags["bicycle"] = "designated"
             }
-            if (isCycleway || tags.containsKey("foot")) {
+            // do not retag highway=cycleway + foot=yes
+            if ((isCycleway || tags.containsKey("foot")) && tags["foot"] !in yesButNotDesignated) {
                 tags["foot"] = "designated"
             }
         }
@@ -88,3 +101,11 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         tags.updateCheckDateForKey("bicycle")
     }
 }
+
+private val noCycling = setOf(
+    "no", "dismount"
+)
+
+private val yesButNotDesignated = setOf(
+    "yes", "permissive", "private", "destination", "customers", "permit"
+)

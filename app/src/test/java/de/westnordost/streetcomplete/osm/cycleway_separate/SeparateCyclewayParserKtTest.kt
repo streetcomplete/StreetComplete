@@ -15,24 +15,30 @@ class SeparateCyclewayParserKtTest {
         assertEquals(PATH, parse("highway" to "path"))
         assertEquals(PATH, parse("highway" to "cycleway", "foot" to "yes", "bicycle" to "yes"))
         assertEquals(PATH, parse("highway" to "footway", "foot" to "yes", "bicycle" to "yes"))
+        assertEquals(PATH, parse("highway" to "path", "foot" to "permissive", "bicycle" to "permissive"))
+        assertEquals(PATH, parse("highway" to "path", "foot" to "customers", "bicycle" to "destination"))
+        assertEquals(PATH, parse("highway" to "path", "bicycle" to "permissive"))
+        assertEquals(PATH, parse("highway" to "path", "bicycle" to "private"))
     }
 
     @Test fun `parse not designated for cyclists`() {
         assertEquals(NON_DESIGNATED, parse("highway" to "footway"))
-        assertEquals(NON_DESIGNATED, parse("highway" to "path", "bicycle" to "permissive"))
-        assertEquals(NON_DESIGNATED, parse("highway" to "path", "bicycle" to "private"))
         assertEquals(NON_DESIGNATED, parse("highway" to "cycleway", "bicycle" to "yes"))
-
+        assertEquals(NON_DESIGNATED, parse("highway" to "cycleway", "bicycle" to "yes", "foot" to "no"))
     }
 
     @Test fun `parse no bicyclists allowed on path`() {
         assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no"))
         assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no"))
         assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "no"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "dismount"))
     }
 
     @Test fun `parse bicyclists allowed on footway`() {
         assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "destination"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "permissive"))
     }
 
     @Test fun `parse cyclists on non-segregated path`() {

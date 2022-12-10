@@ -33,19 +33,27 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
         else -> null // only happens if highway=cycleway
     }
 
-    if (bicycle == "no") return NOT_ALLOWED
+    if (bicycle in noCycling) return NOT_ALLOWED
 
-    if (bicycle == "yes" && foot == "yes") return PATH
+    if (bicycle in yesButNotDesignated && foot in yesButNotDesignated) return PATH
 
-    if (bicycle == "yes" && foot == "designated") return ALLOWED_ON_FOOTWAY
+    if (bicycle in yesButNotDesignated && foot == "designated") return ALLOWED_ON_FOOTWAY
 
     if (bicycle != "designated") return NON_DESIGNATED
 
     val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 
-    if (foot !in listOf("yes", "designated")) return EXCLUSIVE
+    if (foot == "no" || foot == null) return EXCLUSIVE
 
     val segregated = tags["segregated"] == "yes"
     return if (segregated) SEGREGATED else NON_SEGREGATED
 }
+
+private val noCycling = setOf(
+    "no", "dismount"
+)
+
+private val yesButNotDesignated = setOf(
+    "yes", "permissive", "private", "destination", "customers", "permit"
+)
