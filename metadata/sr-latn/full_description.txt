@@ -1,0 +1,5 @@
+Unapredite OpenStreetMap-e uz StreetComplete!
+
+Ova aplikacija nalazi nepotpune i proširive podatke u vašoj blizini i prikazuje ih na karti kao oznake. Svaka od njih je rešiva odgovorom na jednostavno pitanje dopunom informacija sa lica mesta.
+
+Podaci koje unesete se direktno dodaju u OpenStreetMap-e pod vašim imenom, bez potrebe za nekim drugim programom.

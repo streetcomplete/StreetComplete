@@ -1287,11 +1287,8 @@
     <string name="bicycle_boulevard">"Бициклистички булевар"</string>
     <string name="separate_cycleway_no">"Забрањено за бициклисте"</string>
     <string name="separate_cycleway_allowed">"Бициклистима је дозвољено"</string>
-    <string name="separate_cycleway_no_or_allowed">"Није намењено бициклистима (без обзира да ли је дозвољено или не)"</string>
-    <string name="separate_cycleway_non_segregated">"Намењено је и за пешаке и бициклисте"</string>
     <string name="separate_cycleway_segregated">"Одвојена бициклистичка од пешачке стазе"</string>
     <string name="separate_cycleway_exclusive">"Искључиво за бициклисте"</string>
-    <string name="separate_cycleway_with_sidewalk">"Искључиво бициклистичка стаза која има и стазу за пешаке (са ивичњаком)"</string>
     <string name="cycleway_reverse_direction">"Супротан смер за бициклисте"</string>
     <string name="cycleway_reverse_direction_warning">"Бициклисти који се крећу у супротном смеру су веома ретки."</string>
     <string name="cycleway_reverse_direction_toast">"Додирните са које стране је супротан смер"</string>

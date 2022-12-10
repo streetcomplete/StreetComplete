@@ -1288,12 +1288,13 @@ Vil du flytte det nu?"</string>
     <string name="bicycle_boulevard">"Cykelgade"</string>
     <string name="separate_cycleway_no">"Ingen cykling"</string>
     <string name="separate_cycleway_allowed">"Cykling er tilladt"</string>
-    <string name="separate_cycleway_no_or_allowed">"Ikke beregnet til cyklister (uanset om det er tilladt at cykle eller ej)"</string>
-    <string name="separate_cycleway_non_segregated">"Angivet som kombineret gang- og cykelsti"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ikke beregnet til cyklister (cykling kan stadig være tilladt)"</string>
+    <string name="separate_cycleway_non_segregated">"Fællessti"</string>
     <string name="separate_cycleway_segregated">"Opdelt cykel- og gangsti"</string>
     <string name="separate_cycleway_exclusive">"Udelukkende cykelsti"</string>
-    <string name="separate_cycleway_with_sidewalk">"Udelukkende cykelsti med fortov til fodgængere (med kantsten)"</string>
+    <string name="separate_cycleway_with_sidewalk">"Sti forbeholdt cykler med tilstødende fortov (adskilt af en kantsten)"</string>
     <string name="cycleway_reverse_direction">"Vend retning på cykelstien"</string>
     <string name="cycleway_reverse_direction_warning">"Det er yderst sjældent, at en cykelsti går i den anden retning."</string>
     <string name="cycleway_reverse_direction_toast">"Tryk på den side, der skal vendes"</string>
+    <string name="separate_cycleway_path">"Sti eller spor"</string>
 </resources>

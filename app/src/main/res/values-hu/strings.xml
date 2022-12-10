@@ -1275,11 +1275,8 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_road_width_unusualInput_confirmation_description">"Ez a szélesség valószínűtlennek tűnik. Ne feledje, ennek a szélességnek a járdaszegélytől a járdaszegélyig terjedő szélességnek kell lennie, beleértve az utcai parkolást, a kerékpársávokat stb. is."</string>
     <string name="separate_cycleway_no">"Nincs kerékpározás"</string>
     <string name="separate_cycleway_allowed">"Kerékpárosok számára engedélyezett"</string>
-    <string name="separate_cycleway_no_or_allowed">"Nem kerékpárosok számára kijelölt (függetlenül attól, hogy a kerékpározás engedélyezett-e vagy sem)"</string>
-    <string name="separate_cycleway_non_segregated">"Kijelölt kombinált gyalogos- és kerékpárút"</string>
     <string name="separate_cycleway_segregated">"Elkülönített kerékpár- és gyalogút"</string>
     <string name="separate_cycleway_exclusive">"Kizárólag kerékpárút"</string>
-    <string name="separate_cycleway_with_sidewalk">"Kizárólagos kerékpárút, amely a gyalogosforgalom számára járdával (járdaszegéllyel) rendelkezik"</string>
     <string name="cycleway_reverse_direction">"A kerékpárút irányának megfordítása"</string>
     <string name="cycleway_reverse_direction_toast">"Érintse meg, hogy melyik oldala legyen fordítva"</string>
 </resources>

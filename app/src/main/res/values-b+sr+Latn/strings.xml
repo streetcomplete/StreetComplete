@@ -1287,11 +1287,8 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="bicycle_boulevard">"Biciklistički bulevar"</string>
     <string name="separate_cycleway_no">"Zabranjeno za bicikliste"</string>
     <string name="separate_cycleway_allowed">"Biciklistima je dozvoljeno"</string>
-    <string name="separate_cycleway_no_or_allowed">"Nije namenjeno biciklistima (bez obzira da li je dozvoljeno ili ne)"</string>
-    <string name="separate_cycleway_non_segregated">"Namenjeno je i za pešake i bicikliste"</string>
     <string name="separate_cycleway_segregated">"Odvojena biciklistička od pešačke staze"</string>
     <string name="separate_cycleway_exclusive">"Isključivo za bicikliste"</string>
-    <string name="separate_cycleway_with_sidewalk">"Isključivo biciklistička staza koja ima i stazu za pešake (sa ivičnjakom)"</string>
     <string name="cycleway_reverse_direction">"Suprotan smer za bicikliste"</string>
     <string name="cycleway_reverse_direction_warning">"Biciklisti koji se kreć'u u suprotnom smeru su veoma retki."</string>
     <string name="cycleway_reverse_direction_toast">"Dodirnite sa koje strane je suprotan smer"</string>

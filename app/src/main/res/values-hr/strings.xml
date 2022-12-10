@@ -1274,4 +1274,26 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="confirmation_replace_shop_message">"U tom slučaju i radno vrijeme, podaci za kontakt itd. će također biti promijenjeni. "</string>
     <string name="confirmation_replace_shop_yes">"Druga je trgovina"</string>
     <string name="confirmation_replace_shop_no">"Nepromijenjeno"</string>
+    <string name="move_node">"Nalazi se na malo drugačijoj poziciji…"</string>
+    <string name="quest_move_node_message">"Možete ispraviti položaj pomicanjem značajke.
+Pomaknuti sada?"</string>
+    <string name="node_moved_not_far_enough">"Molimo pomaknite još dalje"</string>
+    <string name="node_moved_too_far">"Pomaknuto predaleko. Molimo ostavite bilješku"</string>
+    <string name="node_moved">"Pomaknuto za %s"</string>
+    <string name="move_node_description">"Povucite kartu kako biste značajku postavili na ispravnu poziciju. Koristite funkciju zumiranja i pokušajte biti što precizniji. Imajte na umu da vaša prikazana lokacija može biti slabe preciznosti."</string>
+    <string name="move_node_action_description">"Premjestili ste točku"</string>
+    <string name="quest_cycleway_value_shoulder">"nema, ali zaustavna traka je upotrebljiva za bicikliste"</string>
+    <string name="quest_placeName_no_name_answer">"Nema natpisa s imenom"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Ta širina izgleda nerealno. Zapamtite, to bi trebala biti širina od rubnika do rubnika, uključujući parking na ulici, biciklističke staze itd."</string>
+    <string name="overlay_cycleway">"Biciklističke staze"</string>
+    <string name="bicycle_boulevard_is_a">"To je %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"To nije %1$s"</string>
+    <string name="bicycle_boulevard">"Biciklistička avenija"</string>
+    <string name="separate_cycleway_no">"Zabranjeno bicikliranje"</string>
+    <string name="separate_cycleway_allowed">"Bicikliranje je dozvoljeno"</string>
+    <string name="separate_cycleway_segregated">"Razdvojena staza za bicikle i pješake"</string>
+    <string name="separate_cycleway_exclusive">"Staza isključivo za bicikle"</string>
+    <string name="cycleway_reverse_direction">"Obrnuti smjer biciklističke staze"</string>
+    <string name="cycleway_reverse_direction_warning">"Iznimno je rijetko da biciklistička staza ide u suprotnom smjeru."</string>
+    <string name="cycleway_reverse_direction_toast">"Dotaknite stranu koju želite preokrenuti"</string>
 </resources>

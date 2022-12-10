@@ -1295,12 +1295,13 @@ Chcete ho posunout?"</string>
     <string name="bicycle_boulevard">"Cyklobulvár"</string>
     <string name="separate_cycleway_no">"Jízda na kole zakázána"</string>
     <string name="separate_cycleway_allowed">"Cyklisté povoleni"</string>
-    <string name="separate_cycleway_no_or_allowed">"Není určeno pro cyklisty (bez ohledu na to, zda je tu jízda na kole povolena nebo ne)"</string>
-    <string name="separate_cycleway_non_segregated">"Určeno pro chodce a cyklisty"</string>
+    <string name="separate_cycleway_no_or_allowed">"Není určeno pro cyklisty (jízda na kole může být stále povolena)"</string>
+    <string name="separate_cycleway_non_segregated">"Stezka pro chodce a cyklisty"</string>
     <string name="separate_cycleway_segregated">"Oddělené stezky pro cyklisty a chodce"</string>
     <string name="separate_cycleway_exclusive">"Stezka výhradně pro cyklisty"</string>
-    <string name="separate_cycleway_with_sidewalk">"Stezka výhradně pro cyklisty, mající ale chodník (s obrubníkem)"</string>
+    <string name="separate_cycleway_with_sidewalk">"Stezka pro cyklisty (oddělená od chodníku obrubníkem)"</string>
     <string name="cycleway_reverse_direction">"Opačný směr cesty pro cyklisty"</string>
     <string name="cycleway_reverse_direction_warning">"Cesta pro cyklisty v opačném směru je extrémně vzácná."</string>
     <string name="cycleway_reverse_direction_toast">"Dotkněte se strany, kterou chcete obrátit"</string>
+    <string name="separate_cycleway_path">"Stezka nebo dráha"</string>
 </resources>

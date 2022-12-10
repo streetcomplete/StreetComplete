@@ -1268,4 +1268,9 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="confirmation_replace_shop_message">"I så fall har åpningstid, kontaktinformasjon osv. også endret seg."</string>
     <string name="confirmation_replace_shop_yes">"En annen butikk nå"</string>
     <string name="confirmation_replace_shop_no">"Fortsatt samme butikk"</string>
+    <string name="quest_placeName_no_name_answer">"Det er ingen navneskilt"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Denne bredden virker usannsynlig. Husk å måle bredden fra fortauskant til fortauskant, inkludert gateparkering, sykkelfelt osv."</string>
+    <string name="overlay_cycleway">"Sykkelveier"</string>
+    <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
 </resources>

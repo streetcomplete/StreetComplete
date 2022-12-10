@@ -1272,6 +1272,7 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="urlconfig_apply_message">"Aplica i selecciona la predifinició %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: Es rescriurà la predifiniciò amb el mateix nom!"</string>
     <string name="urlconfig_switch_hint">"Pots canviar els predefinits a la configuració en qualsevol moment"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Portabicicletes de dos nivells"</string>
     <string name="user_profile_current_week_title">"Últims 7 dies"</string>
     <string name="user_profile_dates_mapped">"Dies els quals has mapejat recentment"</string>
     <string name="urlconfig_scan_qr_code_again2">"Després d'instal·lar l'aplicació, escaneja el QR una altra vegada o punxa &lt;a href=\"%s\"&gt;aquest enllaç&lt;/a&gt; per a aplicar la predefinició."</string>
@@ -1279,4 +1280,19 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="confirmation_replace_shop_message">"En aquest cas, les hores d'obertura, informació de contacte, etc. Hauran canviat també."</string>
     <string name="confirmation_replace_shop_yes">"Ha canviat el negoci"</string>
     <string name="confirmation_replace_shop_no">"Continua siguent el mateix negoci"</string>
+    <string name="move_node">"Està a una posició lleugerament diferent..."</string>
+    <string name="quest_move_node_message">"Pots corregir la posició menejant l'element.
+Menejar ara?"</string>
+    <string name="node_moved_not_far_enough">"Si us plau, mogui-ho més lluny"</string>
+    <string name="node_moved_too_far">"S'ha mogut massa lluny. Considereu deixar una nota"</string>
+    <string name="move_node_description">"Arrossegueu el mapa per a situar l'element a la posició correcta. Utilitzeu la funció de zoom i intenteu ser tan precisos com sigui possible. Tingueu en compte que la teua ubicació que es mostra pot ser menys exacta del que es real."</string>
+    <string name="move_node_action_description">"Has menejat el node"</string>
+    <string name="quest_cycleway_value_shoulder">"cap, però el voral és usable per ciclistes"</string>
+    <string name="quest_placeName_no_name_answer">"No hi ha cap nom retolat"</string>
+    <string name="overlay_cycleway">"Ciclovies"</string>
+    <string name="bicycle_boulevard_is_a">"És un %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"No és un %1$s"</string>
+    <string name="bicycle_boulevard">"Bulevard per a biciclete"</string>
+    <string name="separate_cycleway_segregated">"Ciclovia i camí per a vianants segregats"</string>
+    <string name="separate_cycleway_exclusive">"Ciclovia exclusiva"</string>
 </resources>
