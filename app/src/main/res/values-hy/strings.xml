@@ -3,3275 +3,1108 @@
     <string name="action_settings">"Կարգավորումներ"</string>
     <string name="oauth_communication_error">"Անհնար է միանալ թույլտվության սերվերին"</string>
     <string name="oauth_failed_permissions">"Թույլտվությունը ձախողվեց: բոլոր թվարկված թույլտվությունները պետք է տրամադրվեն"</string>
-
-    <!-- Settings screen -->
     <string name="pref_category_communication">"Հաղորդակցություն"</string>
     <string name="pref_category_display">"Պատկեր"</string>
     <string name="pref_tilecache_size_summary">"%d ՄԲ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Քարտեզի սալիկները քեշավորելու համար արտաքին պահեստում վերապահված տարածք մեգաբայթերով"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Ցույց տալ բոլոր նշումները"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Ցուցադրել բոլոր նշումները հարցերով և առանց"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Փակել բոլոր նշումները առանց հարցի"</string>
     <string name="pref_title_map_cache">"Քարտեզի քեշի չափը"</string>
     <string name="map_btn_gps_tracking">"Հետևել ինձ"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-ի անդամներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Այլ պատասխաններ…"</string>
     <string name="quest_generic_answer_notApplicable">"Չգիտեմ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Համոզված ես?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Այո, վստահ եմ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Ես կստուգեմ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Փոխարենը գրառում թողնե՞լ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Դուք կարող եք հրապարակային նշում թողնել այս վայրում, որը մյուս քարտեզագրողները կարող են մեկնաբանել և հուսով ենք լուծել կամ պարզապես թաքցնել որոնումը միայն ձեզ համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"լավ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Ոչ, պարզապես թաքցնել"</string>
     <string name="quest_streetName_title">"Ի՞նչ է կոչվում այս փողոցը։"</string>
     <string name="quest_streetName_description">"ինչպես գրված է փողոցի նշանի վրա, հապավումները պետք է բացահայտել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Երբեմն փողոցի նշանը միայն փողոցի մի ծայրում է։ Նաև ուշադրություն դարձրեք, որ ավելի մեծ փողոցին պատկանող կողմնակի փողոցների համար կարող են չլինել լրացուցիչ փողոցային նշաններ: Սովորաբար տներով ցանկացած փողոց անուն ունի։"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Եթե ​​անունը կարող է գրված լինել առանց հապավումների, ապա այն պետք է այդպես գրել։ Շատ տարածված հապավումներ արդեն բացահայտվում  են մուտքագրելիս, բայց հավանաբար ոչ բոլորը:"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Հապավումներ չկան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"բացման ժամը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"փակման ժամ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Ավելացնել ամիսներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Ավելացրեք ժամեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Ավելացնել շաբաթվա օրերը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"Ընտրեք ամիսներ"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Ընտրեք աշխատանքային օրերը"</string>
     <string name="quest_openingHours_24_7_confirmation">"Այլ բառերով ասած բա՞ց է ցանկացած ժամի, ամեն օր։"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"Կարո՞ղ եք որևէ բան նպաստել այս գրառմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Ոչ, թաքնվեք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"անանուն"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Չեղարկե՞լ մուտքագրումը"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"հեռացնել"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Որոնումներ փնտրեք այստեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="action_upload">"Վերբեռնեք պատասխանները"</string>
-
-    <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
     <string name="no_changes">"Դուք ոչ մի պատասխան չեք տվել"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"փակել"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"Սխալ՝ որոնումներ փնտրելիս"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"Սխալը պատասխանները վերբեռնելիս"</string>
-
-    <!-- Fuzzy -->
     <string name="download_area_too_big">"Խնդրում ենք մեծացնել հետագա"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Փոխարենը դադարեցրեք ընթացիկ որոնումը եւ սկանավորեք այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Տեղանքը անջատված է: Բաց պարամետրեր, այն այժմ միացնելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Տեղադրության թույլտվությունը անհրաժեշտ է ձեր դիրքը քարտեզի վրա ցույց տալու համար եւ սկան ձեր հարեւանությամբ որոնումների համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Թոբիաս Ցվիքը և ներդրողները"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"Նախագծի տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"Գիտուբում"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"Հաղորդել սխալի մասին"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"Հետադարձ կապ"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"Լիցենզիա"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_license">"GNU Ընդհանուր հանրային լիցենզիա"</string>
-
-    <!-- Error messages and crash report -->
-    <!-- Fuzzy -->
     <string name="offline">"Դուք անցանց եք"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Ձեր պատասխանները հրապարակելու համար հարկավոր է լիազորել ձեր OSM օգտվողի հաշվի հետ: Լիազորեք հիմա:"</string>
-
-    <!-- Fuzzy -->
     <string name="not_authorized">"Ոչ լիազորված"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"Streetcomplete- ի այս տարբերակը չափազանց հին է: Խնդրում ենք թարմացնել:"</string>
-
-    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Ձեր շուրջը կատարվող որոնումների ավտոմատ սկանավորման համար միացրեք տեղադրությունը"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"Ավելի ուշ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"Այն ուղղակի կապում է երկու ճանապարհ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Այլ բան (թողնել նշում)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Գաղտնիության քաղաքականությունը"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"և տվյալների օգտագործումը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Հասարակական տոներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"Աշխատում է մինչև վերջին հաճախորդը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Բաց 24/7"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Կախված ամսից…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Մշտական ​​աշխատանք չկա…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Նկարագրեք բացման ժամերը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Եղեք հակիրճ, իդեալականորեն օգտագործեք բառերը նշանից, օրինակ՝ «Ըստ նշանակման»: Նշանի բացակայությունը չի նշանակում, որ նորմալ աշխատանքային ժամեր չկան։"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Ի՞նչ հիմնական ձև ունի այս շենքի տանիքը:"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Ընտրիր մեկը:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Ցույց տալ ավելին…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Այն ունի մի քանի տարբեր ձեւեր"</string>
-
-    <!-- Elements on map view -->
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Մանրացնել"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Խոշորացնել. մոտեցնել"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"Վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Միայն Wi-Fi- ում"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_off">"Անկայուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Ինչ մակերես ունի այս ճանապարհը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Սալահատակ (ընդհանուր)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Անպաշտպան (ընդհանուր)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Հող (ընդհանուր)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_asphalt">"Ասֆալտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Սեղմված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Բետոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Կեղտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"Նուրբ մանրախիճ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Խոտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Խոտի խոռոչ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Մանրախիճ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Սալահատակ քարեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Խճաքար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sand">"Ավազ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Հաստատել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Փայտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Այս փողոցը մայթ ունի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Որտեղ է այս փողոցը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Սա միակողմանի փողոց է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Որն է այս շենքի տան թիվը:"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenstreetMap Surveyor ծրագիրը"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"Օգնեք բարելավել OpenstreetMap- ը փողոցային ծաղկեփնջով:
 
 Այս ծրագիրը գտնում է թերի եւ ընդլայնվող տվյալներ ձեր հարեւանությամբ եւ այն ցուցադրում է քարտեզի վրա, որպես մարկեր: Դրանցից յուրաքանչյուրը լուծելի է `պատասխանելով մի պարզ հարց` կայքում տեղեկատվությունը լրացնելու համար:
 
 Ձեր մուտքագրվող տեղեկատվությունը այնուհետեւ ուղղակիորեն ավելացվում է ձեր անունով OpenstreetMap- ին, առանց մեկ այլ խմբագիր օգտագործելու անհրաժեշտության:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Անուն չունի…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Իսկապես ոչ մի անուն:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Այո, ոչ մի անուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Ավելացնել բացման ժամերը"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"Խնդրում ենք ուղարկել սխալի մասին զեկույցը ծրագրավորողին:"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"Ոչ, փողոցային վերջին անգամ վթարի է ենթարկվել:"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"Կազմել էլ"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"Դուք էլփոստի հաճախորդ չունեք:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"Պահպանեք էկրանը"</string>
-
-    <!-- Fuzzy -->
     <string name="download_server_error">"Միացման սխալ որոնումներից սկանավորելիս: Փորձեք ավելի ուշ:"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_server_error">"Միացման սխալը պատասխանները վերբեռնելիս: Փորձեք ավելի ուշ:"</string>
-
-    <!-- Generic strings used in various quests -->
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Այո"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Ոչ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Քանի հեծանիվ կարող է կայանել այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Այս տան համարը շատ անսովոր է թվում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_title">"Ինչ մարզաձեւ է խաղում այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Ոչ մի հատուկ մարզաձեւ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Ֆուտբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_tennis">"Թենիս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_baseball">"Բեյսբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_basketball">"Բասկետբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_golf">"Գոլֆ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"Ձիասպորտ մարզաձեւեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Հետեւել եւ դաշտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_volleyball">"Վոլեյբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"Լողափ վոլեյբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"Ամերիկյան ֆուտբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"Skateboarding"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_bowls">"Գունդ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"Boules"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"Հրաձգություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_cricket">"Մահակախաղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"Սեղանի թենիս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"Մարմնամարզություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_archery">"Աղեղնաձգություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Ավստրալիայի ֆուտբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_badminton">"Բադմինտոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Կանադական ֆուտբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Դաշտային հոկեյ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_handball">"Հանդբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Հոկեյ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_netball">"Նեթբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_rugby">"Ռեգբի"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"Ընտրեք."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Արդյոք այս մարզական դաշտը նախատեսված է հենց այս մարզաձեւերի համար հատուկ (գծանշաններ եւ սարքավորումներ ներկա են) կամ որպես ընդհանուր նպատակային մարզադաշտ բոլոր տեսակի խաղերի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Մասնավորապես դրանք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Հիմնական նպատակ, գլխավոր նպատակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Դուք ընտրել եք շատ սպորտաձեւեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Դուք պետք է վճարեք այս զուգարանը օգտագործելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Արդյո՞ք այս ուղին ունի շոշափելի նշաններ երկու կողմից:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Համոզված եք, որ ստուգել եք այս տեղում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Պետք է մուտքագրվի միայն հարցման մեջ գտնված տեղեկատվությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Արդյոք այս հեծանիվների կայանատեղը ծածկված է (պաշտպանված անձրեւից):"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Նորից մի ցուցադրեք այս նստաշրջանի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Այս արագության սահմանը անհասկանալի է թվում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Համոզված եք, որ սահման չի տեղադրվել:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ստուգել եք փողոցի ծայրերը:
 Եթե ​​ամբողջ փողոցի երկայնքով նշաններ չկան, որոնք դիմում են ընդգծված հատվածի համար, կիրառվում են լռելյայն արագության սահմաններ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Այո, ոչ մի նշան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Ներկառուցված տարածքներում ճանապարհները ունեն ավելի ցածր լռելյայն արագության սահման, քան գյուղական ճանապարհները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Ներկառուցված տարածք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Գյուղական"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"Եթե ​​գլխավոր փողոցային խաչմերուկում այսպիսի նշան կա, դուք չեք գտնի գոտու ներսում անհատական ​​նշաններ, քանի որ այնտեղ տեղադրված արագության սահմանը տարածվում է ամբողջ գոտի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_softball">"Սափրվել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_racquet">"Ռասետբոլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Չմշկասահք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"Թիավարել թենիս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"Gaelic Games"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Մասամբ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"Նկատի ունեցեք, որ նորմալ մանգաղների մեծ մասը կարող է օգտագործվել երկու կողմերից `յուրաքանչյուր հեծանիվ կայանելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Գլորաչմուշկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Մասնակիորեն նշանակում է, որ չկա ավելի շատ, քան կոճ-բարձր քայլը տեղ մուտք ունենալու համար, եւ որ սենյակների մեծ մասը մատչելի է սայլակով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Մասնակիորեն նշանակում է, որ այն չկա, քան կոճ `դրա մուտքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Հիասթափություն %s անունով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"Ինչ տեսակի վերամշակման օբյեկտ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"Կենտրոն"</string>
-
-    <!-- Fuzzy -->
     <string name="overground_recycling_container">"Բեռնարկղ"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Ստորգետնյա բեռնարկղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Հնարավոր չէ մուտքագրել նշանի նիշերը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Ստեղնաշարի դասավորությունը բացակայում է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"Բաց պարամետրեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Այցելեք App Store"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Եթե ​​դուք օգտագործում եք լռելյայն ստեղնաշար, հնարավորություններն այն են, որ դուք պարզապես կարող եք միացնել ստեղնաշարի դասավորությունը մուտքային մեթոդի պարամետրերում անհրաժեշտ լեզվով:
 
 Հակառակ դեպքում, App Store- ում կարող եք ներբեռնել մեկ այլ ստեղնաշար: Շատ լեզուներ աջակցող հանրաճանաչ ստեղնաշարեր Google Goard- ի, Swiftkey ստեղնաշարն են, ստեղնաշարը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(չճշտված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Ինչպիսի հրդեհային հիդրանտ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Սյուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Ստորգետնյա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Պատյան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Լիճ"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Թարգմանություններ"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"Կոդ ներդրողներ"</string>
-
-    <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"Հեղինակ եւ պահպանող"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"եւ ավելին…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Դա կենդանի փողոց է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Այսպիսով, այսպիսի նշան կա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Ինչ է մշակվում այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapes">"Խաղող"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"Agaves"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_almonds">"Նուշ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apples">"Խնձոր"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apricots">"Ծիրաններ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_avocados">"Ավոկադոն"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"Բանան"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"Հապալաս"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"Կակաո"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"Հնդկական ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cherries">"Կեռաս"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Շագանակ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"Կոկոս"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coffee">"Սուրճ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cranberries">"Լոռամիրգ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"Ամսաթվեր"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"Թուզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Գրեյպֆրիտներ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Գուավաս"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Պնդուկ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_jojoba">"Ջոջոբա"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kiwis">"Կիվներ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Kola ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_lemons">"Կիտրոններ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"Մանգո"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mate">"Ընկեր"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Մշկընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"նավթի արմավենու"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_olives">"Ձիթապտուղ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oranges">"Նարինջ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_papayas">"Պապայան"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_peaches">"Դեղձ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pears">"Տանձ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chili">"Չիլիական բիբար"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"Շուշակներ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pineapples">"Արքայախնձոր"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pepper">"Պղպեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pistachios">"Պիստակներ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_plums">"Սալոր"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"Ազնվամորի"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_rubber">"Ռետինե"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_strawberries">"Ելակ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tea">"Թեփ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_vanilla">"Վանիլ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_walnuts">"Ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sisal">"Սիսալ"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Այստեղ չի կարող սկանավորել: Փորձեք մեծացնել հետագա կամ ավելի քիչ թեքել քարտեզը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Ինչպիսի հատում է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Առանց ճանապարհային գծանշումների"</string>
-
-    <!-- Fuzzy -->
     <string name="action_undo">"Չեղարկել"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Երանգ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Լոլիկ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"ARECA ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Քաղցր պղպեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Բրազիլիայի ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"Թունգ ընկույզ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"Ինչպիսի կայանատեղի է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Ավտոկայանատեղի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Ստորգետնյա ավտոտնակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Ավտոկանգառ ավտոտնակ"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Ինչից է պատրաստված այս բեւեռը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Փայտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Պողպատ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Բետոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Տան անվանումը."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"Մակարդակները տանիքում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"կանոնավոր մակարդակներ (տանիքը չհաշված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Տարբերվում է շենքում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"Այս դեպքում պարզապես մուտքագրեք բարձրագույն շենքի արժեքները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Այս ճանապարհի ճանապարհներն այստեղ ֆիզիկապես առանձնացված են (I.E. պատնեշի միջոցով): Լռելյայն արագության սահմանը կախված է նրանից, թե արդյոք դա այդպես է, թե ոչ:"</string>
-
-    <!-- Fuzzy -->
     <string name="about_category_feedback">"Հետադարձ կապ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"Կցեք լուսանկարը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"Do անկանում եք ջնջել այս նկարը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"ցիկլային ուղին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"ցիկլային գոտի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"ոչ ոք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"Lane- ը բացահայտորեն տարածվեց այլ երթեւեկության հետ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"ավտոբուսի գոտում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"բացահայտորեն համօգտագործված մայթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_create_image_error">"Անհնար է լուսանկար ստեղծել լուսանկարում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"ցիկլի նրբանցք, երկու ուղղություններ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"ցիկլի ուղին, երկու ուղղություններ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Առաջ քաշված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Միացված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_type">"Quest տեսակը"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"Վերականգնել"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Չեղարկել"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"Չեղարկել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Միայն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Vegan կերակուրը պարունակում է ոչ մի կենդանական արտադրանք (միս, ձուկ, թռչնամիս, կաթնային արտադրանք, ձու, մեղր…):"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Բուսական կերակուրները պարունակում են միս, ձուկ կամ թռչնամիս:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Միայն պատասխանեք «Այո» -ին, եթե տեղն ապահովում է այս սննդակարգի համար ուտելու տարբերակների համեմատելի ընտրություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"Ինչ տեսակի լվացում է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Ավտոմատացված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Ինքնասպասարկում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Աշխատակազմը մաքրում է մեքենան"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"Միացրեք այս որոնման տեսակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ դուք հավանաբար պետք է մուտք գործեք տեղ, որպեսզի կարողանաք պատասխանել այս տեսակի որոնմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Զորակոչի համարը"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Կողմնորոշման համարը (ըստ ցանկության)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Նաեւ ցիկլը մյուս կողմից…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Դուք պետք է նկարագրեք, թե ինչ է նշանը: Եթե ​​նշան չկա, ապա ներսից պետք է խնդրեք բացման ժամեր:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"ոչ մեկը, բայց հեծանվորդները կարող են ճանապարհային ճանապարհ օգտագործել երկու ուղղություններով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Ինչու անուն չունի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"Դա ավտոճանապարհի կամ կայանման միջանցքի նման բան է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"Այն գյուղատնտեսական կամ անտառային ճանապարհ է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"Վերոհիշյալներից ոչ մեկը պարզապես անուն չունի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Նման սայլակով նշան կարող է երեւում, եթե զուգարանը հասանելի է:
 Մասամբ նշանակում է, որ սայլակը կարող է մուտք գործել եւ օգտագործել զուգարանը, բայց առկա է ձեռքի կամ հարմարեցված ձեռքի ավազան:"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_create_note">"Ստեղծեք նոր նոտա"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"Զբոսնել հետագայում `նոտա ստեղծելու համար"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_description">"Կարող եք գրառում թողնել, որպեսզի այլ Mappers- ը իմանա այստեղ հարցի մասին: Կարգավորեք գրառման դիրքը `քարտեզը տեղափոխելով."</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Սովորաբար այսպիսին է."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"Մետաղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Այստեղ կա ցիկլով Ինչ տեսակի?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Որն է այս կամուրջի կառուցվածքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"Wired (LAN)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"Համակարգիչ `ինտերնետ հասանելիությամբ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Կապ չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Այս նստարանը ունի հետեւի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Դա խնջույքի սեղան է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Ինչ կրոն է գործադրվում այս վայրում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_christian">"Քրիստոնեություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_muslim">"Իսլամ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"Հինդուականություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"Բուդդիզմ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"Շարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"Հուդաիզմ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"Տաոիզմ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"ցանկացած կրոնի օգտագործման համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"Սիխ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jain">"Jain"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"Հավատք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"Անոդիմա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"Չինական ժողովրդական կրոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Ինչ կրոն ներկայացված է այս սրբավայրում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Պետք է վճարել այստեղ կայանելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Unewn Cobblestone"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Ինչ մակերես ունի այս հրապարակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Կախված է ժամանակից եւ օր…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Ավելացնել անգամ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Այն ունի բազմաթիվ տան համարներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Դուք պարզապես կարող եք մուտքագրել ստորակետով առանձնացված տան համարներ կամ տողեր: \ n օրինակ 1,3 կամ 2–6:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Կանգնեք (աջակցում է հեծանիվների շրջանակին)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"Անվլոց (միայն աջակցում է անիվի)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"Թափել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"Դարակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Շինություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ինչպիսի հեծանիվների կայանատեղի է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Որոնք են այս փոստարկղի հավաքածուները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"Ավելացնել հավաքածուի ժամանակը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"Նշված ոչ մի անգամ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"Ավարտված է այս ճանապարհը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"Ավարտված է այս ցիկլը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"Ավարտված է այս ոտքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"Ավարտված է այս ճանապարհը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Ավարտված է այս շենքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"Երբեք չի ցուցադրվել %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Ընտրեք առավել հատուկը, որը տեղավորվում է."</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
-    <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Համոզված եք, որ այն կարող եք ավելի շատ պարզել:"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Որոշ որոնումների համար որոշ լրացուցիչ տվյալներ են ներբեռնվում երրորդ կողմերից: Մասնավորապես, oneway quest-ը API-ից, որը նույնպես տեղակայված է westnordost.de-ում, հարցնում է հնարավոր միակողմանի թեկնածուների համար:&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Ոչ (թողնել նոտա)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_reset">"Վերագործարկեք ինչպես որոնման հնարավորությունը եւ կարգը լռելյայն:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Խնդրում ենք ընտրել ավելի կոնկրետ արժեք:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"Այն ունի բազմաթիվ նպատակներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Այն դեռ կառուցվում է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"Բնակելի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"շենք, որտեղ մարդիկ ապրում են"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"Տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"Բազմաթիվ ընտանիքների տուն, կարող է ունենալ մանրածախ առեւտրի կետեր առաջին հարկում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Բնակարան շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Առանձնատուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"Ազատ կանգնած միայնակ ընտանիքի տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Կիսաբնակ տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Նման մեկ ընտանիքի տների գծային շարքը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Հյուրանոցի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Հանրակացարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Տանաբաման"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Միահարկ տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Բջջային տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Առեւտրային շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"շենք, որտեղ մարդիկ աշխատում են, գնումներ կատարեք կամ կատարում են որեւէ այլ առեւտրային գործունեություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Արդյունաբերական շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"Է.Գ. Գործարան, սեմինար, մեքենայի վերանորոգման ավտոտնակ,…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Գրասենյակային շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Խանութ (ներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Պահեստ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Կրպակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Պահեստարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Կրոնական շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Եկեղեցի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Մատուռ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"Տաճար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Մզկիթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Տաճարային շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Պաշոդ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Ժողովարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Քաղաքացիական շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"Հասարակական շենքը սովորաբար հարմարեցնում է հարմարավետությունը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Մանկապարտեզի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"Դպրոցի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"Քոլեջի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Հիվանդանոցի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"Ստադիոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Կայարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"Հասարակական տրանսպորտի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"Համալսարանական շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"Կառավարության շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"Մեքենաների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_carport">"Կարագ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"Տանիք մեքենայի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Մեկ ավտոտնակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"Բազմաթիվ ավտոտնակներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"Ավտոկանգառ շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"Ֆերմայում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"Ֆերմա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"Բնակելի շենքը ֆերմայում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"Ֆերմայի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"ցանկացած շենք ֆերմայում, որը բնակելի շենք չէ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Ջերմոց"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Այլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"Թափել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Խրճիթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"Փոքր, պարզ բնակելի կամ ապաստան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"Տանիք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"Ծառայությունների շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"Կառուցվելով մեքենաների հետ, ինչպիսիք են պոմպերը կամ տրանսֆորմատորները"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar">"Կախիչ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"Պահեստներ ինքնաթիռների, ուղղաթիռների կամ տիեզերանավերի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bunker">"Բունկեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Այն չունի տան համար…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Շենքը պիտակավորված էր,"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Պարսվածք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Որն է արագության սահմանը այս փողոցի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"Նշան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"Այն գտնվում է (դանդաղ) գոտու շրջանակներում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Ոչ մի նշան չի կիրառվում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"Բացման ժամերի բացման նշան չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Մարզական կենտրոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Զուգարաններ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Ինչն է սահմանում արագության սահմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Ինչպես են դրված եզրափակումն ու ցիկլը այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"Ձեր փոփոխությունները ձեռքով վերբեռնելու համար օգտագործեք կոճակը գործիքագոտում, որը նման է այսպիսին:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"Առանձնացված միմյանցից"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"Հեծանվորդներն ու հետիոտները կիսում են նույն տարածքը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Որն է այստեղ բարձրության սահմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Նշան չկա…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"Հեշտությամբ տեղ կա նույնիսկ ամենաբարձր բեռնատարների համար (առնվազն մոտ 4,5 մ / 15 ոտնաչափ) անցնելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Այս բարձրությունը անհասկանալի է թվում: Համոզված եք, որ ճիշտ է:"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Լուսանկարները, որոնք դուք կցում եք գրառմանը, վերբեռնվում են իմ սերվերում և ջնջվում գրառման լուծումից մի քանի օր անց: Նրանց մետատվյալները հեռացվում են վերբեռնումից առաջ:&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"Ապամոնտաժել բոլորին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"Ներառյալ շենքեր ռեստորանների, սրճարանների, մեծ խանութների համար…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Հաջորդ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Որն է այս ուղու մակերեսային ամրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Ամուր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Հիմնականում փափուկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Փափուկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Արդյոք այս շենքն ամբողջությամբ ստորգետնյա է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Մասնակիորեն նշանակում է, որ այն չկա, քան կոճ `դրա մուտքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Արդյոք այս վայրը մատչելի է սայլակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"Արդյոք այս լուսացույցները կոճակ ունեն `զբոսանքի ազդանշան պահանջելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Քանի մոտոցիկլետ կարող է կայանել այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Արդյոք այս մոտոցիկլետը ծածկված է (պաշտպանված անձրեւից):"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ սովորաբար ձեզանից պահանջվում է ստուգել ամբողջ փողոցը արագության սահմանափակումների համար, ոչ միայն ընդգծված հատվածը: Սա երբեմն կարող է լինել բավականին ձգվող պարզապես մեկ որոնման լուծման համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"Վերականգնել թաքնված որոնումները"</string>
-
-    <!-- Fuzzy -->
     <string name="restore_hidden_success">"Վերականգնվել է %d թաքնված որոնում"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"%s-րդ հարկում"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
     <string name="underground">"ստորգետնյա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"մայթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"ոչ մի մայթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Արդյոք հետիոտները արգելվում են այստեղ քայլել այս ճանապարհով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Այս փողոցը պիտակավորված էր որպես ոչ մի կողմում մայթ: Այն դեպքում, երբ ի վերջո մայթ կա, բայց այն ցուցադրվում է որպես առանձին ձեւ, խնդրում ենք պատասխանել «մայթին»:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Ինչպիսի շենք է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"Ընտրեք թեման"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_automatic">"Ավտո"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"Լապտեր"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"Մութ"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_system_default">"Համակարգի լռելյայն"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"Բաց տեղադրություն մեկ այլ հավելվածում"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"Այլ քարտեզի դիմում չի տեղադրվել"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
-    <!-- Fuzzy -->
     <string name="label_housenumber">"Տնային համարը"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"Բլոկի համարը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"Ամբողջ կանգառը ծածկված է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Արդյոք այս լաստանավը տրանսպորտում է հետիոտները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Արդյոք այս լաստանավը տրանսպորտում է ավտոմեքենաները:"</string>
-
-    <!-- Add note interface -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"Լուսանկար ավելացնելը նշումը կդարձնի շատ ավելի օգտակար:"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Իդեալում, գրառեք գրությունը տեղական լեզվով կամ այլ կերպ անգլերեն լեզվով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"Այստեղ ծառերն ունեն ասեղներ կամ տերեւներ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"Ասեղներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"Լայնացրած"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Երկուսն էլ ներկա են"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Որն է այստեղ ցիկլուի մակերեսը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Տարվում է ճանապարհին…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_description">"Եթե ​​դա տարբերվում է ճանապարհին, առաջին քայլը ճանապարհը պառակտելն է: Դրանից հետո յուրաքանչյուր պառակտված մասի համար որոնմանը կարելի է պատասխանել առանձին:
 Պառակտեք այն հիմա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Հպեք այն կետի վրա, այն կետում բաժանելու (ներ) ում, որտեղ պատասխանը տարբերվում է: Փորձեք հնարավորինս ճշգրիտ լինել, կարող եք այնքան մեծացնել:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Խնդրում ենք մեծացնել հետագա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Սրանք բավականին քիչ պառակտում են: Միշտ կարող եք հետագայում հետագայում բաժանվել:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Որն է այստեղի մակերեսը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Որն է քաշի սահմանը այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Այս քաշը անհասկանալի է թվում: Համոզված եք, որ ճիշտ է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"Նշանը տարբեր տեսք ունի…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"Կցանկանայիք նոտա թողնել Լուսանկարով գրությունը հնարավորություն կտա այլ քարտեզներին հոգ տանել դրա մասին:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Արդյոք այս քայլերը ունեն ձեռքով:"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"Ընթացիկ տարբերակը %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ոչ մի տեղեկանքի համար տեսանելի չէ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Պատկերազարդում գտնվող ճանապարհը պտտվում է նույնը, ինչ Քարտեզի վրա `PIN- ի գտնվելու վայրում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Ինչը կարելի է թողնել այստեղ վերամշակման համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"Եթե ​​որեւէ այլ բան կարող է վերամշակել, քան ընտրելի է այստեղ, փոխարենը թողեք գրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Մարտկոցներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"Բանկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"Հագուստ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"Այգու թափոններ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"Ապակե շշեր եւ բանկաներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"Շշեր եւ բանկաներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"Թուղթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"Պլաստիկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"Ցանկացած պլաստիկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Կոշիկներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"Էլեկտրական սարքեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"Միայն պլաստիկ շշեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"Միայն պլաստիկ փաթեթավորում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"Մետաղի ջարդոն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"Any անկացած ապակի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"Կարող են վերամշակվել միայն ապակե շշեր եւ բանկա, կամ ապակու ցանկացած տեսակ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Ապակու օրինակներ, որոնք հաճախ չեն ընդունվում. Ապակու ապակու, պատուհանների վահանակներ, ապակյա իրեր, լամպեր կամ հայելիներ:"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"Տարբերակի պատմություն"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"Ինչ նորություն կա?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"Գնահատեք այս ծրագիրը"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"Google Play- ում"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_donate">"Նվիրաբերել"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"Show ույց տվեք ձեր գնահատանքը: ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"Շնորհակալ եմ այս հավելվածին աջակցելու համար: Ներկայիս նվիրատվությունները տեսնելու եւ ինքներդ ձեզ նվիրելու համար հպեք համապատասխան հարթակին."</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Փոխարենը սկան"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_cancel">"Շարունակեք ընթացիկ սկան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"Առանձնացված տարածքներ տարբեր տերերի / վարձակալների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_title">"Ինչ տեսակի տուրիստական ​​տեղեկատվություն է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Տուրիստական ​​տեղեկատվական գրասենյակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"Տեղեկատվական տախտակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_terminal">"Տեղեկատվական տերմինալ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_map">"Քարտեզ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_guidepost">"Ուղեցույց"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Դա ընդհանուր թափոնների համար է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"Այսպիսով, սա բեռնարկղ է ցանկացած թափոնների համար, ինչպիսիք են տնկված տնային տնտեսության կամ առեւտրային թափոնները:"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile">"Իմ էջը"</string>
-
-    <!-- Fuzzy -->
     <string name="user_login">"Մուտք"</string>
-
-    <!-- Fuzzy -->
     <string name="user_logout">"Տնկիլ"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_profile">"OSM պրոֆիլ"</string>
-
-    <!-- Fuzzy -->
     <string name="next">"Հաջորդ"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"Գնացինք!"</string>
-
-    <!-- Tutorial screen -->
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"Բարի գալուստ OpenstreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm_subtitle">"Վիքի աշխարհի անվճար քարտեզը"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_intro">"StreetComplete- ն հեշտացնում է նպաստել OpenstreetMap- ին:
 Այն ինքնաբերաբար փնտրում է ձեր հարեւանությամբ անհայտ կորած մանրամասները. Հեծանիվների գծեր, տան համարներ, բացման ժամեր եւ շատ ավելին…"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Գտնվելուց հետո անհայտ կորած մանրամասները կհայտնվեն ձեր քարտեզի վրա, որպես որոնում:
 
 Դուք կարող եք սկսել դրանք անմիջապես լուծել եւ ավելի ուշ մուտք գործել ձեր պատասխանները հրապարակելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Երբ անորոշ եք, միշտ կարող եք պատասխանել «Չի կարելի ասել» եւ թողնել գրառում:
 
 Վերջապես, հիշեք, որ ապահով մնա. Տեղյակ եղեք ձեր շրջապատի մասին եւ մի մասնավոր սեփականություն չեք մտնում:"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_happy_mapping">"Շնորհավոր քարտեզագրում:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_empty">"Դուք դեռ ձեռքբերումներ չունեք"</string>
-
-    <!-- Links screen -->
-    <!-- Fuzzy -->
     <string name="links_empty">"Դուք դեռ հղումներ չունեք"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"Դուք դեռ չեք հրապարակել որոնման պատասխաններ"</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_description">"Գումարած %d -ը դեռ հրապարակված փոփոխություններ չի հրապարակվում:"</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_not_logged_in_description">"Դուք ունեք %d դեռ հրապարակված փոփոխություններ: Դուք պետք է մուտք գործեք, որպեսզի դրանք վերբեռնվեն:"</string>
-
-    <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"Լուծված որոնումներից"</string>
-
-    <!-- Fuzzy -->
     <string name="user_achievements_title">"Ձեռքբերումներ"</string>
-
-    <!-- Fuzzy -->
     <string name="user_links_title">"Հղումների հավաքածու"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_title">"Պրոֆիլ"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Փաստաթղթերով ձայնագրում"</string>
-
-    <!-- Achievement screen -->
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_link">"Unlocked հղում."</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_links">"Բացել հղումներ."</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_title">"Ներածություն"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_description">"Ավելին իմանալ OSM- ի եւ նրա համայնքի մասին"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_title">"Աջակցող"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_description">"Խմբագիրներ եւ այլ եղանակներ `OpenstreetMap- ին նպաստելու համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_title">"Քարտեզներ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_description">"OpenstreetMap- ի վրա հիմնված քարտեզներ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_title">"Ցուցափեղկ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_description">"OpenstreetMap- ի վրա հիմնված ծառայություններ եւ ծրագրեր"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_goodies_title">"Բարիքներ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_goodies_description">"Հետաքրքիր քարտեզին առնչվող իրեր, որպեսզի փորձեք"</string>
-
-    <!-- Fuzzy -->
     <string name="link_cyclosm_description">"Քարտեզ հեծանվորդների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"Քարտեզ `անվասայլակ մատչելի տեղեր գտնելու համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"Քարտեզ, որը ցույց է տալիս շենքերը 3D- ում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openvegemap_description">"Բացահայտեք բուսական եւ Vegan ռեստորանները ձեր քաղաքում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_touch_mapper_description">"Care անկացած հասցեով հեշտությամբ ստեղծեք շոշափելի քարտեզներ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapy_tactile_description">"Մոշավարման քարտեզներ տարբեր մասշտաբներով տեսողական խնդիրների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_josm_description">"Աշխատասեղանի համար լիովին ցուցադրված OSM խմբագիր: Սա կանոնավոր ներդրողների համար էներգիայի գործիք է:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_vespucci_description">"Advanced OSM խմբագիր Android- ի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_ideditor_description">"Պարզ OSM խմբագիր զննարկչի համար: Օպտիմիզացված է աշխատասեղանի կամ մեծ պլանշետների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_umap_description">"Ստեղծեք Քարտեզներ `պատվերով տվյալներով արագ եւ տեղադրեք դրանք ձեր կայքում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_opnvkarte_description">"Հասարակական տրանսպորտի երթուղիների քարտեզ եւ դադարում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_pic4review_description">"Նպաստել OSM- ին պարզապես նայելով ձեր քաղաքի նկարներին"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wiki_description">"Վիքիդը ձեր ելակետն է ամեն ինչի հետ կապված ամեն ինչի հետ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Նոր է OpenstreetMap- ը: Սա սկսնակ ուղեցույց է"</string>
-
-    <!-- Fuzzy -->
     <string name="link_neis_one_description">"Վիճակագրության հսկայական հավաքածու OpenstreetMap- ի ներդրողների համար, ինչպես եւ ինչպես եք նպաստել, ով է ձեր շուրջը, գումարած առաջատարներ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_welcome_mat_description">"Ընդհանուր տեղեկություններ OpenstreetMap- ի մասին եւ ինչպես աշխատել OSM- ի հետ `որպես կազմակերպություն"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapillary_description">"Ծառայություն եւ ծրագիր `բազմաշերտ փողոցային մակարդակի լուսանկարների փոխանակման համար, օգտագործելով դրանք` օգտագործելու համար OSM- ին ներդրման համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetcam_description">"Ծառայություն եւ ծրագիր `բազմաշերտ փողոցային մակարդակի լուսանկարների փոխանակման համար, օգտագործելով դրանք` օգտագործելու համար OSM- ին ներդրման համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"Հերթը շրջադարձային նավարկություն անվասայլակների օգտագործողների համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_nominatim_description">"OSM- ի տվյալների գեոկոդերը, որն օգտագործվում է շատ այլ ծառայությունների կողմից"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"Տեղադրեք քաղաքի բոլոր ճանապարհները, շապիկների, գորգերի վրա տպելու համար…"</string>
-
-    <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Ստեղծեք տպագրական քաղաքի քարտեզներ մի քանի հեշտ քայլերով, ըստ ցանկության փողոցային գրացուցակի հետ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_brouter_description">"Հավանաբար հեծանվորդների լավագույն երթուղղիչ շարժիչը"</string>
-
-    <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"Դիտեք OSM- ի խմբագրումները իրական ժամանակում տեղի են ունենում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osrm_description">"Ամենաարագ երթուղղման շարժիչը շուրջը"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_description">"Երթուղղում մի շարք տրանսպորտային միջոցների եւ ոտքով, յուրաքանչյուրը նախապատվություններով: Կարող է նաեւ isochrones (մեկնարկային կետից X րոպեի ընթացքում հասանելի տարածք X րոպեի ընթացքում):"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_haiku_description">"Օգտագործելով OSM տվյալներ, Haiku (ճապոնական պոեզիայի ձեւ)"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openinframap_description">"Քարտեզ, որը ցույց է տալիս ուժ, հեռահաղորդակցություններ, գազ եւ նավթի ենթակառուցվածք"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openorienteeringmap_description">"Ստեղծեք տպագրական քարտեզներ կողմնորոշվող սպորտի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetbrowser_description">"Map, OpenstreetMap Map- ի նկարագրումը ըստ կատեգորիայի"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Շաբաթվա նորությունների բլոգը, թե ինչ է կատարվում OpenstreetMap- ի աշխարհում"</string>
-
-    <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"Ստեղծել քաղաքի կամ թաղամասի գեղարվեստական ​​դիագրամ պաստառներ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_title">"Առաջին որոնումը լուծվեց"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Բարի գալուստ OpenstreetMap համայնք: Ձեր պրոֆիլի էկրանին դուք կարող եք տեսնել ավելի շատ տեղեկություններ ձեր լուծած յուրաքանչյուր որոնման տիպի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_title">"Հետազոտող"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_solved_X">"Դուք լուծել եք %d որոնումներից: Շարունակեք բացել ավելի շատ ձեռքբերումներ, որոնք պարունակում են հղումներ OSM- ի եւ քարտեզի հետ կապված այլ ծրագրերի եւ նախագծերի հետ:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_title">"Կանոնավոր"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_description">"Այս հավելվածով դուք նպաստեցիք %d օրեր OSM- ին: Կանոնավոր ներդրողներն են OSM- ի ողնաշարը, շնորհակալություն ձեր նվիրվածության համար: ❤"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Հեծանվորդ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք օգնում են հեծանվորդներին:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_title">"Շարժականություն"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք օգնում են սայլակի օգտագործողներին շրջել քաղաք:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_title">"Փոստատար"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Դուք օգնեցիք գտնել %d հասցեները:
 Այս տվյալներն անհրաժեշտ են ոչ միայն փոստատարի, այլեւ նավիգացիոն ցանկացած համակարգի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_title">"Բարձրահաշվ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Դուք լուծել եք %d շենքերի հետ կապված որոնումներ:
 Նկատի ունեցեք, որ այս ծրագիրը խնդրում է շենքի տնային տնտեսությունը միայն դրա տեսակից հետո:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_title">"Վեցերորդ իմաստ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք հետաքրքիր են տեսողական խնդիրների համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_title">"Վազող"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք հետաքրքիր են ոտքով մարդկանց համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_title">"Բարի կենդանիներին"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_solved_X">"Դուք լուծում եք %d -ի որոնումներից, որոնք հետաքրքիր են ոչ մսի դիետայի վրա ապրող մարդկանց համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_title">"Ճանապարհին"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա, «փողոց» -ը դնելով OpenstreetMap- ում:"</string>
-
-    <!-- Notifications -->
-    <!-- Fuzzy -->
     <string name="unread_messages_message">"Դուք ունեք %d Race Race հաղորդագրություններ ձեր մուտքի արկղում"</string>
-
-    <!-- Fuzzy -->
     <string name="unread_messages_button">"Բացեք ներարկղ"</string>
-
-    <!-- Main menu -->
-    <!-- Fuzzy -->
     <string name="action_about2">"Մասին"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_menu">"Մենյու"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_statistics">"Ձեր պրոֆիլում ներկայացված տվյալները համախմբված են ձեր հանրային մատչելի ներդրումային պատմությունից `OpenstreetMap- ից, այնուհետեւ հյուրընկալվել են իմ սերվերի վրա: &lt;/ p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now_note2">"Կարող եք նաեւ դա անել ավելի ուշ պրոֆիլային էկրանին:"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_art_contributors_title">"Արվեստի ներդրողներ"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"Ծրագրեր, որոնք արվել են փողոցային մասնաճյուղի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_main_contributors_title">"Հիմնական ներդրողներ"</string>
-
-    <!-- User statistics screen -->
-    <!-- Fuzzy -->
     <string name="stats_are_syncing">"Ձեր վիճակագրությունը դեռ համաժամեցվում է: Ստուգեք այս էկրանը ավելի ուշ:"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_country_rank">"Վարկանիշը %2$s: %1$d"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_country_wiki_link">"Քարտեզագրում պորտալ %s"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_country">"ըստ երկրի"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"ըստ որոնման տեսակի"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_global_rank">"Համաշխարհային
 աստիճան"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_local_rank">"Դասակարգել
 %s"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_days_active">"Օր
 ակտիվ"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Նվաճում
 մակարդակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Այն չի պատկանում անունով փողոցին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_place_name_label">"Տեղի անվանումը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cooking_oil">"Յուղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_engine_oil">"Շարժիչի յուղ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_photon_description">"Անկախության ընդլայնում է նոմինատիմի, որում ընդգրկված է Fuzzy որոնում եւ որոնում-որպես-տիպ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_graphhopper_description">"Flexible կուն երթուղային շարժիչ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_qwant_maps_description">"Քարտեզ `որոնելի վայրերով եւ ուղղություններով"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_tileserver2">"Քարտեզը ցուցադրելու համար վեկտորի սալիկները վերցվում են %1$s. Տեսեք իրենց &lt;a href=\"%2$s\"&gt; Գաղտնիության հայտարարությունը &lt;/a&gt; Լրացուցիչ տեղեկությունների համար: &lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_sponsors">"Հովանավորներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_history">"Պատմություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_geology">"Երկրաբանություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_plants">"Բույսեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_wildlife">"Վայրի բնության տեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_nature">"Բնություն (բազմաթիվ թեմաներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_notice_board">"Դա ծանուցման տախտակ է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_public_transport">"Հանրային տրանսպորտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_title">"Որն է այս տեղեկատվական խորհրդի թեման:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_map">"Դա քարտեզ է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_map_title">"Դա պարզապես քարտեզ է եւ միայն քարտեզ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_map_description">"Եթե ​​խորհուրդը որոշակի թեմայի մասին է, ապա նշեք այն, անկախ նրանից, թե արդյոք այն նույնպես ներառում է քարտեզ: Օրինակ, հասարակական տրանսպորտի խորհուրդը կարող է ունենալ ավտոբուսի երթուղու քարտեզ: Եթե ​​թեման նշված չէ առկա պատասխանների մեջ, փոխարենը հաշվի առեք գրությունը թողնելը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible">"Բազմաթիվ մակերեսներ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Համոզված եք, որ մակերեսը նշել հնարավոր չէ: Նկատի ունեցեք «տարբերվում է ճանապարհին» պատասխանը, որը թույլ է տալիս կտրել այն ճանապարհը, որտեղ մակերեսը փոխվում է: Խնդրում ենք օգտագործել «Չեմ կարող ասել», եթե կա մեկ մակերես, բայց այն մատչելի չէ որպես պատասխան:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Խնդրում ենք հակիրճ նշել այստեղ մակերեւույթի բնույթը, օրինակ, «Sandy- ը ճարմանդով ճարմանդով»: Տեքստի երկարությունը սահմանափակվում է 255 նիշով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_international">"միջազգային"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace2">"Տող տներ"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housename">"Տան անուն %s"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housenumber">"Տան համարը %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_off_days">"Ավելացնել օրեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_off_day">"Անշարժ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_unspecified_range">"Նշված չէ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"Սա դեռ այստեղ ցիկլի ճանապարհի իրավիճակն է:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_resurvey_intervals">"Վերականգնել ընդմիջումներով"</string>
-
-    <!-- Fuzzy -->
     <string name="resurvey_intervals_less_often">"Ավելի քիչ հարցրեք"</string>
-
-    <!-- Fuzzy -->
     <string name="resurvey_intervals_default">"Թերություն"</string>
-
-    <!-- Fuzzy -->
     <string name="resurvey_intervals_more_often">"Ավելի հաճախ հարցրեք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_is_defibrillator_inside_title">"Արդյոք այս դեֆիբրիլյատորը (AED) շենքի ներսում է:"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_translate">"Օգնեք թարգմանել այս ծրագիրը"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_translate">"%1$s թարգմանել %2$d%%"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway2_title">"Սա միակողմանի փողոց է: Որ ուղղությամբ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway2_dir">"Մի ճանապարհ այս ուղղությամբ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway2_no_oneway">"Ոչ մի քայլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_select_sign">"Ընտրեք նշան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_incline_title">"Որ ուղղությամբ է տանում դեպի վեր, այս քայլերի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_incline_up">"Այս ճանապարհը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_step_count_title">"Քանի քայլ կա այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_sound_title">"Այստեղ կույրերի համար կան ձայնային ազդանշաններ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Արդյոք այս լուսացույցները շոշափելի ցուցում ունեն կույր մարդկանց համար, երբ դա անվտանգ է հատել:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_description">"Հուշում. Հաճախ սա թրթռող կոճակ կամ պտտվող կոն է լուսացույցի կոճակի պատյանների ներքեւի մասում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"Փոքր առանձնատուն (ամառանոց, արձակուրդային տնակ, տնակ …)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_title2">"Ինչ խոչընդոտներ են օգտագործվում երկաթուղու այս հատումում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_none2">"Ոչ մի խոչընդոտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_title">"Այս քայլերը թեքահարթակ ունեն: Ինչպիսի?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_none">"Ոչ (օգտագործելի) թեքահարթակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_bicycle">"Հեծանիվների թեքահարթակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_stroller">"Զբոսնող թեքահարթակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_wheelchair">"Անվասայլակների թեքահարթակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Որն է բանկի անունը այս բանկոմատների համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_clothes_container_operator_title">"Ով է ընդունում նվիրատվություններ այս հագուստի աղբարկղի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_operator_title">"Ով է այս լիցքավորման կայանի օպերատորը:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_indoorequal_description">"Բացահայտեք առեւտրի փակ քարտեզներ, երկաթուղային կայաններ եւ այլն:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_title">"Գանձերի որս"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Դուք գտել եւ լուծել եք %d որոնումներից, որոնք իսկապես հազվադեպ են ավարտվում, շնորհավորանքներ:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_title">"Քաղաքացի"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"Դուք լուծում եք %d որոնումներից, որոնք օգտակար են քաղաքում առօրյա կյանքի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_title">"Դրսում"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Դուք լուծել եք %d որոնում, որոնք օգտակար են բացօթյա մարդկանց համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pedestrian_crossing_island">"Արդյոք այս հետիոտնային անցումը կղզի ունի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_noSign">"Նշան չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_separate_wheelchair">"Արդյոք սայլակի թեքահարթակը ցուցադրվում է որպես առանձին ձեւ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"առանձին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Առանձնացված չէ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_sync2">"Վերբեռնեք պատասխանները ինքնաբերաբար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_title">"Նկարագրեք մակերեսը"</string>
-
-    <!-- Fuzzy -->
     <string name="open_url">"Բաց URL"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_silo">"Սիլոս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_historic">"Պատմական"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_historic_description">"Պատմական արժեքի կառուցում, որը կառուցված է անհայտ կամ անհասկանալի նպատակով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_abandoned">"Լքված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_abandoned_description">"չօգտագործված շենք, որի բնօրինակ գործառույթը կամ նպատակը անհայտ է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_ruins">"Ավերակներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_ruins_description">"Անվերազերծված, ավերված եւ չճանաչելի շենք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Քանի մեքենա կարող է միաժամանակ գանձվել այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_disaster_ninja_description">"Քարտեզ, որը ցույց է տալիս վերջին բնական աղետները, հետաքրքիր է հումանիտար mappers: Նաեւ ցույց է տալիս շատ հետաքրքիր վիճակագրություն, վերլուծելու, թե որքանով են լավ քարտեզավորված եւ արդի տեղերը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_title">"Քանի երթեւեկություն է մեքենաների համար այս ճանապարհը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes">"Նշված գծեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_noLanes">"Նշված գծեր չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Այն ունի երկկողմանի ձախ շրջադարձուղի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message2b">"Սա ճիշտ է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"Որն է կամրջի տակ գտնվող բարձրության սահմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Եթե ​​այն չի կիրառվում ամբողջ ճանապարհով, հաշվի առեք պատասխանել «%s» -ին:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactile_paving_kerb_title">"Այստեղ կա այս եզրափակչի շոշափելի սալահատակ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"Որն է այս եզրագծի բարձրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_flush">"Նույն մակարդակը, ինչպես ճանապարհի մակերեսը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_lowered">"Մի փոքր ավելի բարձր, քան ճանապարհային մակերեսը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_raised">"Բարձր եզրագիծ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_lowered_ramp">"Զսպել թեքահարթակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Նշեք նշված գծերի (երկու ուղղությունների) ընդհանուր քանակը, որն օգտագործվում է մեքենայով երթեւեկությամբ: Այսպիսով, հեծանիվը եւ նվիրված ավտոկանգառ գոտիները չեն հաշվում:
 Եթե ​​որեւէ գոտի վերապահված է ավտոբուսներին, փոխարենը թողեք գրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Նշեք այստեղ մեքենաների երթեւեկությամբ օգտագործվող նշված գծերի քանակը: Այսպիսով, հեծանիվը եւ նվիրված ավտոկանգառ գոտիները չեն հաշվում:
 Եթե ​​որեւէ գոտի վերապահված է ավտոբուսներին, փոխարենը թողեք գրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_rock">"Ժայռ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_yes">"Բարձր բեռնատարները կարող են անցնել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Բարձր բեռնատարները չեն տեղավորվում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Նշանավոր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Ավտոճանապարհին հարող ավտոկանգառ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_lane">"Ավտոկանգառ ճանապարհի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"Պինդ, բայց չաղտոտված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade3a">"Հիմնականում պինդ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_does_not_exist">"Այն գոյություն չունի …"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Համոզված եք, որ այն գոյություն չունի, նույնիսկ մի փոքր այլ վայրում: Եթե ​​կասկածում եք, փոխարենը ավելի լավ թողեք գրությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_confirmation">"Այն գոյություն չունի"</string>
-
-    <!-- Fuzzy -->
     <string name="leave_note">"Թողնել նոտա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Ինչ է հիմա այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Թափուր է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Տեսակը մի տեսակ տեղ այստեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Այս խանութը թափուր է եղել: Հիմա ինչ է այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Lane Count- ը տարբերվում է յուրաքանչյուր կողմի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside_regional_warning">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն օգտակար չէ որոշ շրջաններում եւ, ամենայն հավանականությամբ, պետք է մուտք գործեք տեղ, որպեսզի կարողանաք պատասխանել այս տեսակի որոնմանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_kosher">"Կոշերի արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, Կաշրուտի սերտիֆիկացման գործակալությունները `նշելով արտադրանքը համապատասխանության մեջ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ոչ մի ցիկլով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Սովորաբար, թակել նկարազարդման մի կողմում, ընտրեք պատշաճ պատասխան եւ նույնը արեք մյուս կողմի համար:
 
 Նկատի ունեցեք առկա բոլոր ընտրանքները. Որոշ դեպքեր ակնհայտ չեն, ինչպես մի քայլար ճանապարհը, որը թույլ է տալիս հեծանվորդներին երկու ուղղություններով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Ընտրելով, որ ցիկլով չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_completed_at_known_date">"Ավարտվելու է ամսաթվով …"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_completion_date_title">"Երբ է այն ամբողջական:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_clay">"Կավ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_artificial_turf">"Արհեստական ​​տորֆ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_tartan">"Թաթան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Դուք պետք է վճարեք այստեղ հեծանիվ կայանելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Ոչ առանձնացված միայնակ ընտանիքի տուն, օրինակ. Մեկ շարքի տուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_potable_signed">"Ապահով խմել (ստորագրված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_potable_unsigned">"Ապահով խմել (չստորագրված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_not_potable_signed">"Խմելու անվտանգ չէ (ստորագրված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_not_potable_unsigned">"Խմելու անվտանգ չէ (չստորագրված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"Ինչ է արքայական Cypher- ը այս փոստարկղում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_type_none">"Ոչ մի թագավորական Cypher տեսանելի չէ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Շոտլանդիայի պսակը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Հրշեջ ծառայություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_beverage_cartons">"Նյուրակի ստվարաթուղթը միայն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Միայն պլաստիկ շշեր եւ ստվարաթուղթ"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode">"Թիմային ռեժիմ"</string>
-
-    <!-- Team mode -->
-    <!-- Fuzzy -->
     <string name="team_mode_exit">"Ելքի թիմային ռեժիմ"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_description">"Միեւնույն տարածքը մի խումբ քարտեզագրելու ժամանակ կարող եք մուտքագրել թիմային ռեժիմ, թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_team_size_hint">"Թիմային ռեժիմն աշխատում է 2-ից 12 հոգու խմբերի համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Վերահսկվում է լուսացույցների կողմից"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_title2">"Վերացրեք հետեւյալ խմբագրումը:"</string>
-
-    <!-- Fuzzy -->
     <string name="synced">"Համաժամյա"</string>
-
-    <!-- Fuzzy -->
     <string name="toast_undo_unavailable">"Այս խմբագրումը արդեն համաժամեցված է եւ չի կարող վերացնել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"Displayed ուցադրվում է առանձին քարտեզի վրա"</string>
-
-    <!-- Edit history sidebar -->
-    <!-- Fuzzy -->
     <string name="created_note_action_title">"Ստեղծված նշում"</string>
-
-    <!-- Fuzzy -->
     <string name="commented_note_action_title">"Մեկնաբանել է նշում"</string>
-
-    <!-- Fuzzy -->
     <string name="hid_action_description">"Դուք թաքցրել եք"</string>
-
-    <!-- Fuzzy -->
     <string name="split_way_action_description">"Դուք բաժանում եք ճանապարհը"</string>
-
-    <!-- Fuzzy -->
     <string name="deleted_poi_action_description">"Դուք ջնջել եք այն"</string>
-
-    <!-- Fuzzy -->
     <string name="added_tag_action_title">"Ավելացված է %s"</string>
-
-    <!-- Fuzzy -->
     <string name="removed_tag_action_title">"Հանված %s"</string>
-
-    <!-- Fuzzy -->
     <string name="changed_tag_action_title">"Թարմացվել է %s"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_delete_cache">"Delete նջել քեշը"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_delete_cache_summary">"Եթե ​​կարծում եք, որ որոշ տվյալներ հնացած են"</string>
-
-    <!-- Fuzzy -->
     <string name="delete_confirmation">"Ջնջել"</string>
-
-    <!-- Fuzzy -->
     <string name="delete_cache_dialog_message">"Delete նջել ներբեռնված քարտեզի բոլոր տվյալները, ներառյալ որոնումները:
 Տվյալները թարմացվում են %1$s օրվա օրերից հետո եւ չօգտագործված տվյալները ջնջվում են %2$s օրերից ինքնաբերաբար:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_background_type_select">"Ընտրեք ֆոնի տեսակը"</string>
-
-    <!-- Fuzzy -->
     <string name="background_type_map">"Քարտեզ"</string>
-
-    <!-- Fuzzy -->
     <string name="background_type_aerial_esri">"Aerial (ըստ ESRI)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_title">"Ինչպիսի պատնեշ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_lift_gate">"Բումի արգելք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_bollard">"Bollard (ներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_chain">"Շղթա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_rope">"Պարան"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_wire_gate">"Շարժական մետաղալարերի բաժին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_cattle_grid">"Grid արգելափակում անասունները քայլելուց"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_block">"Մեծ անշարժ գույք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_jersey_barrier">"Ersey երսիի պատնեշ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_log">"Լամպ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_kerb">"Զսպել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_height_restrictor">"Բարձրության արգելք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"Ամբողջ բարձրության շրջադարձը"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_turnstile">"Շրջադարձային"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"Անցում պատի / ցանկապատի / եւ այլնի միջոցով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_debris_pile">"Բեկորների կույտ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_squeezer">"Քամել կուտակել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_ladder">"Սանդուղք stile"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_bicycle_barrier">"Հեծանիվների պատնեշ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate">"Համբուրող դարպաս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_swing_gate">"Հորիզոնական բար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_policeType_title">"Ոստիկանական որ տեսակն է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate_conversion">"Վերածվել է համբուրվող դարպասի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_stile_type_title">"Ինչպիսի կիլոր է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached_description2">"Կցված միայնակ ընտանիքի տուն (ներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Quest ընտրություն եւ ցուցադրման կարգ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_subtitle_quests">"%1$d %2$d միացված"</string>
-
-    <!-- Fuzzy -->
     <string name="no_location_permission_warning_title">"Տեղադրության թույլտվություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_woodchips">"Փայտանյութեր"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_app">"Խցիկի հավելված չկա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_title">"Ինչ տեսակի Bollard է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_rising">"Բարձրացում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_flexible">"Ճկուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_fixed">"Ֆիքսված (շարժական չէ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_camera_type_title">"Ինչ տեսակի հսկողության տեսախցիկ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_camera_type_dome">"գմբեթ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_camera_type_fixed">"Ֆիքսված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_camera_type_panning">"Պլան"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_faq">"ՀՏՀ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title2">"Քանի մակարդակ ունի նկուղը այս շենքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title_buildingPart2">"Քանի մակարդակ է նկուղից վերեւում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_title">"Կան այն եզրաքարեր, որտեղ այս ճանապարհը այստեղ է հանդիպում այս ճանապարհին: Ինչպիսի?"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_subtitle_quests_preset_name">"Նախադրված. %s"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ տանիքի ձեւերը հաճախ հեշտությամբ չեն երեւում փողոցից: Այս որոնման տեսակը նույնպես բավականին ժամանակատար է. Շատ դեպքերում դա ավելի հեշտ է եւ ավելի արդյունավետ, դա տանը քարտեզագրելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_animist">"Անիմիստ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_steps_title">"Արդյոք այս քայլերն ավարտված են:"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_deselect_all">"Անջատեք բոլոր որոնումները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_boathouse">"Boathouse"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_allotment_house">"Այգու բաշխման արտահոսք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_grandstand">"Սրածայր"</string>
-
-    <!-- Quest selection screen -->
-    <!-- Fuzzy -->
     <string name="action_search">"Որոնել"</string>
-
-    <!-- Fuzzy -->
     <string name="action_manage_presets">"Կառավարեք նախադրյալները"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Քանի մարդ է քարտեզագրում: Մուտքագրեք նույն համարը բոլորի հեռախոսով:"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_choose_color2">"Հաջորդը, յուրաքանչյուր մարդ պետք է ընտրի այլ գույն: Ընտրեք ձերնը."</string>
-
-    <!-- Fuzzy -->
     <string name="link_organic_maps_description">"Քարտեզների ծրագիր ճանապարհորդների, արշավների եւ հեծանվորդների համար, որոնք անցանց են աշխատում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_no">"Ընդհանրապես ոչ մի զսպում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stepover_wooden">"Փայտե քայլը կշեռք"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stepover_stone">"Քարի քայլ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_removable">"Շարժական (առանց բանալու կամ առանց)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_foldable2">"Ծալովի (առանց առանցքային)"</string>
-
-    <!-- Fuzzy -->
     <string name="no_search_results">"Ոչինչ չի գտնվել"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_selection_hint_title">"Շատ անելիքներ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_selection_hint_message">"Ներդրումները պետք է հիմնականում զվարճալի լինեն: Եթե ​​դուք ծանրաբեռնված եք որոնումների քանակից, միշտ կարող եք մեղմել, թե որ որոնումներն են ցուցադրվում ձեզ եւ ինչ կարգով պարամետրերում:"</string>
-
-    <!-- Managing quest presets screen -->
-    <!-- Fuzzy -->
     <string name="quest_presets_preset_add">"Ավելացնել նախադրված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_preset_name">"Նախադրված անուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_default_name">"Թերություն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_selected">"Ընտրված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"հանել նջել «%s»: Դրա համար որոնման ընտրությունը եւ պատվերը անփոխարինելի կլինեն:"</string>
-
-    <!-- Fuzzy -->
     <string name="notification_syncing">"Համաժամեցման տվյալներ …"</string>
-
-    <!-- Android notifications -->
-    <!-- Fuzzy -->
     <string name="notification_channel_sync">"Համաժամացման տվյալներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_sport">"Սպորտ, վարժություններ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_optional">"Ըստ ցանկության"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bridge">"Bridge շենքերի միջեւ (Skyway)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_laundrySelfService_title2">"Այս լվացքը ապահովում է ինքնասպասարկում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_halal">"Հալալ արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, հետ կապված է Հալալ սերտիֆիկացման գործակալություններ, որոնք համապատասխանեցնում են արտադրանքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_picnicTableCover_title">"Արդյոք ծածկված է այս խնջույքի սեղանը (պաշտպանված անձրեւից):"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Այս մասը քայլեր է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage_conversion">"Վերածվել է պատի / ցանկապատի / եւ այլնի հատվածի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_gate_conversion">"Վերածվել է դարպասի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_title">"Ինչ տեսակի երթեւեկության հանգստացում է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_bump">"Bump (կարճ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_hump">"Hump ​​(ավելի երկար)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_table">"Աղյուսակ (հարթ գագաթ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_cushion">"Բարձ (լայնաշարժ տրանսպորտային միջոցների համար խճճված)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_choker">"Նեղացված ճանապարհ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_island">"կղզի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_chicane">"Խելամիտ կոր (ներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_rumble_strip">"Rumble շերտ (ներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete_plates">"Բետոնե ափսեներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete_lanes">"Բետոնե գոտիներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Ինչ տրամագիծ է նշվում այս հրդեհի հիդրանտի նշանի վրա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_confirmation_title">"Համոզված ես? Երբեմն տրամագիծը կարելի է գտնել հիդրանտի վրա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_diet_answer_no_food">"Այն սնունդ չունի"</string>
-
-    <!-- Fuzzy -->
     <string name="short_no_answer_on_button">"Ոչ"</string>
-
-    <!-- Fuzzy -->
     <string name="restore_confirmation">"Վերականգնել"</string>
-
-    <!-- Fuzzy -->
     <string name="restore_dialog_message">"Վերականգնել ձեր թաքնված բոլոր որոնումները:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_access_title2">"Ում է թույլատրվում այստեղ կայանել: Ավտոկանգառը կարող է լինել անվճար կամ վճարովի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_access_yes">"Ընդհանուր հասարակության ցանկացած անդամ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_access_customers">"Հատուկ տեղ է այցելում ցանկացած անձ (միայն E.G. Հաճախորդներ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_access_private">"Միայն անհատական ​​(ներ), թույլտվությամբ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Այս փոստարկղի հավաքածուները դեռ ճիշտ են:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_type_title">"Ինչ տեսակի հեծանիվ պատնեշ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_diagonal">"Անկյունագիծ դեպի ուղին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_tilted">"Նեղ անցում, ավելի փոքր դեպի վերեւ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Անցում խոչընդոտների միջեւ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_double">"Chicane - պատնեշ յուրաքանչյուր կողմում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - ավելի քան երկու խոչընդոտ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_language_select">"Ընտրել լեզուն"</string>
-
-    <!-- Fuzzy -->
     <string name="language_default">"Համակարգի լռելյայն"</string>
-
-    <!-- Fuzzy -->
     <string name="on_floor">"Հատակի վրա %s"</string>
-
-    <!-- Fuzzy -->
     <string name="select_street_parking_orientation">"Ընտրեք կողմնորոշումը դեպի ճանապարհը."</string>
-
-    <!-- Fuzzy -->
     <string name="select_street_parking_position">"Ընտրեք դիրքը."</string>
-
-    <!-- Fuzzy -->
     <string name="select_street_parking_no">"Ցանկացած նշան կամ ճանապարհի նշում այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_parallel">"Զուգահեռ"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_diagonal">"Անկյունագիծ"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_perpendicular">"Ուղղահայաց"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_street">"Ճանապարհի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"Մասնակի ճանապարհի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"Ճանապարհի հարեւանությամբ"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_street_side">"Ճանապարհի հարեւանությամբ միայն նվիրված տարածքներում"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Ճանապարհի վրա միայն նվիրված տարածություններում"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_separate">"Կայանատեղի, որը ցուցադրվում է առանձին քարտեզի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_no">"Այստեղ կայանել / չի թույլատրվում"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_prohibited">"Կայանելը արգելված է"</string>
-
-    <!-- Fuzzy -->
     <string name="street_stopping_prohibited">"Ոչ կանգ առնել"</string>
-
-    <!-- Fuzzy -->
     <string name="street_standing_prohibited">"Ոչ մի դիրք"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions">"Պայմանականորեն սահմանափակված ավտոկանգառ"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_no_other_reasons">"Ոչ մի հստակ նշան / կայանատեղի հնարավոր չէ"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Եթե ​​հնարավոր է ամենեւին կայանել կամ կանգ առնել այստեղ, նախ պատասխանեք, թե ինչպես են թույլատրվում այստեղ կայանել: Ինչ սահմանափակումներ են կիրառվում հենց ավելի ուշ:
 
 Այլապես, կարող եք թողնել գրառում (լուսանկարով):"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_number_label">"Տան համարը."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Այս ճանապարհը ուս ունի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_title">"Որտեղ է գտնվում այս հրդեհային հիդրանտը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Խոտի կամ կեղտի մեջ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_lane">"Ճանապարհի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Մայթին"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_parking_lot">"Կայանատեղիում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes_leave_note">"Այո (թողեք նշում)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"Որն է այս հրապարակի մակերեսային որակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"Որն է այստեղ այս ճանապարհի մակերեսային որակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_excellent">"Հարթ եւ նույնիսկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_good">"Հիմնականում նույնիսկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_intermediate">"Մի փոքր խճճված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_bad">"Կուզիկ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_very_bad">"Շատ խճճված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_horrible">"Շատ խճճված եւ անհավասար"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_very_horrible">"Համարյա անանցանելի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title_impassable">"Անանցանելի"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_excellent_paved">"Ոչ մի բամպեր կամ ճաքեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_excellent_paving_stones">"Համարյա սահուն"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_paved">"Միայն փոքր ճաքեր, բացեր, վերանորոգում կամ մի փոքր կոպիտ մակերես"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_paving_stones">"Մակերեսային կամ նեղ բացեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_sett">"Անսովոր հարթ քարեր, կանոնավոր օրինաչափություն, շատ մակերեսային կամ նեղ բացեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_paved">"Անսովոր կոպիտ մակերես, ավելի լայն բացեր, ճաքեր, մակերեսային ճարմանդներ, փոսեր կամ այլ վնասներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_paving_stones">"Ավելի լայն բացեր, հնարավոր է որոշ տեղահանված քարեր կամ այլ վնասներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_sett">"Հարթ քարեր կամ քառակուսի ծայրերով, մակերեսային կամ նեղ բացերով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_compacted_gravel">"Նուրբ մանրախիճ, մակերեսային կոճղեր կամ փնջեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_paved">"Մեծ բացեր, փոսեր, ճարմանդներ, փշրված սալահատակ կամ այլ վնաս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_paving_stones">"Տեղահանված քարեր, մեծ բացեր կամ այլ վնասներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_sett">"Քաղած քար կամ անկանոն ձեւեր, մեծ բացեր կամ վնասներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_compacted_gravel">"Որոշ ավելի մեծ մանրախիճ, ճարմանդներ, ճարմանդներ կամ փոսեր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_paved">"Խոր փոսեր, ճարմանդներ կամ այլ վտանգավոր վնաս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_sett">"Մեծ բացեր, տեղահանված, բացակայում կամ անկանոն ձեւավորված քարեր կամ վտանգավոր վնաս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_paving_stones">"Բացակայում եւ կոտրված քարեր, բացեր կամ այլ վտանգավոր վնասներ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Որոշ մեծ քարեր, խոր փոսեր, կոճղեր, ճարմանդներ, էրոզիա կամ այլ վտանգավոր վնաս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_horrible">"Պատշաճ կերպով օգտագործելի միայն դուրս ճանապարհային տրանսպորտային միջոցներով կամ ոտքով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_horrible">"Պատշաճ կերպով օգտագործվող միայն մասնագիտացված ճանապարհային տրանսպորտային միջոցներով կամ ոտքով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_impassable">"Անօգուտ ցանկացած մեքենայի համար, միայն անցանելի է ոտքով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_wrong_surface">"Մակերեսը տարբեր է"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_surface_value">"Մակերեսը պիտակավորված էր,"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle">"Խոչընդոտ կա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Խնդրում ենք տրամադրել ընդհանուր պատասխան `հարթության համար: Կարելի է անտեսվել միայնակ խոչընդոտներ, ինչպիսիք են Castbs- ը, արագության կոճղերը կամ անասունների ցանցերը: Կրկնվող կամ անսպասելի խոչընդոտները պետք է հաշվի առնեն պատասխանը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … նշեք, թե որ մեքենայի համար մակերեսը պետք է օգտագործվի: Կարեւորը մեծ պատկերն է, քան միայնակ վնասները:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osmhydrant_description">"Փնտրել, ավելացնել եւ խմբագրել հրշեջ կայաններ եւ հրդեհային հիդրաններ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_lifesaver_title">"Լուրեր"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք օգնում են շտապ օգնության եւ առաջին պատասխանողներին:"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
-    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Կարող եք այստեղ գազ մղել:"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն բավականին ժամանակատար է եւ հաճախ դժվար է ճիշտ ընտրություն կատարել: Դուք պետք է միայն միացնեք այս որոնման տեսակը, եթե իսկապես պարտավոր եք ավելացնել այսպիսի տվյալներ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_compacted_gravel">"Կոշտ փաթեթավորված, շատ քիչ չամրացված մանրախիճ կամ ավազ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_path_intersection">"Ինչպես է այս ճանապարհը անցնում այստեղ պատնեշը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_road_intersection">"Ինչպես է այս ճանապարհը անցնում այստեղ պատնեշը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"Displayed ուցադրվում է առանձին քարտեզի վրա"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_value_yes">"ուս"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_value_no">"ոչ մի ուս"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning_title">"Տեսախցիկի թույլտվություն"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Թույլտվությունը անհրաժեշտ է, որպեսզի կարողանաք լուսանկարվել եւ հեռավորությունները չափել խցիկի հետ:"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_error_sdk_too_old">"Այս ծրագիրը չափազանց հին է, փորձեք թարմացնել:"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_bad_state">"Ինչ որ բան այնպես չգնաց. Փորձեք վերագործարկել չափիչը:"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_insufficient_light">"Այստեղ շատ մութ է"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_excessive_motion">"Չափազանց շարժում"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_insufficient_features">"Անբավարար տեսողական հատկություններ այստեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_camera_unavailable">"Տեսախցիկը օգտագործվում է մեկ այլ հավելվածի կողմից"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_handlebarholder">"Handlebar Holder"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_access_title2">"Ով է թույլատրվում այստեղ հեծանիվ կայանել: Ավտոկանգառը կարող է լինել անվճար կամ վճարովի:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_playground_access_title2">"Ով է թույլատրվում օգտագործել այս խաղահրապարակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_answer_none_title">"Ընտրելով այդ մայթերը բացակայում են"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_side_select_interface_explanation">"Հպեք մի կողմ եւ ընտրեք համապատասխան պատասխանը:
 Նույնը արեք մյուս կողմի համար, եթե առկա է:"</string>
-
-    <!-- AR Measure screen -->
-    <!-- Fuzzy -->
     <string name="ar_measure">"Չափանիշ"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"Չափազանց կտրուկ անկյուն, մի փոքր հեռու"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_no_ar">"Այս որոնման լուծման համար ձեզ հարկավոր է ժապավենի միջոց, քանի որ տեսախցիկի չափումը չի ապահովվում այս սարքի վրա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"Որն է այստեղ այս ցիկլոյի լայնությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_title">"Որն է այստեղ այս ճանապարհի լայնությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Road անապարհի լայնությունը զսպելու համար. Սա ներառում է փողոցային մակերեւույթի վրա ցանկացած բան, ինչպիսին է փողոցային կայանատեղի կամ ցիկլային գծեր, բայց ճանապարհի կողքին գտնվող ցիկլի ուղիների կամ ավտոկանգառի կողքին բացվում է որեւէ բան:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_answer_none">"Ոչ մի մայթ ամենեւին"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Շնորհակալ եմ այս հավելվածին աջակցելու համար:
 Դժբախտաբար, Google Play Store- ի քաղաքականության շնորհիվ, նվիրատվությունների տանող ոչ մի հղում չի կարող ցուցադրվել հավելվածում: Այս համատեքստում նույնիսկ մեր նախագծի հետ կապելը չի ​​թույլատրվում:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osmand_description">"Բջջային ծրագիր առցանց եւ անցանց քարտեզի դիտման եւ նավիգացիայի համար"</string>
-
-    <!-- Fuzzy -->
     <string name="link_sunders_description">"Տեսախցիկների եւ հսկողության սարքավորումների քարտեզ"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_no_plane_hit">"Մոտեցեք սլաքին, բայց դիտեք երթեւեկությունը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_surface_title">"Որն է այստեղ մայթին մակերեսը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_incorrect">"Միայն մի կողմում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Այո, …"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_no_but_maxstay">"Ոչ, բայց կա առավելագույն տեւողություն …"</string>
-
-    <!-- Fuzzy -->
     <string name="unit_days">"օր"</string>
-
-    <!-- Fuzzy -->
     <string name="unit_hours">"ժամեր"</string>
-
-    <!-- Fuzzy -->
     <string name="unit_minutes">"րոպե"</string>
-
-    <!-- Fuzzy -->
     <string name="at_any_time">"ցանկացած ժամանակ"</string>
-
-    <!-- Fuzzy -->
     <string name="only_at_hours">"միայն հաջորդ ժամանակներում."</string>
-
-    <!-- Fuzzy -->
     <string name="except_at_hours">"Բացառությամբ հետեւյալ ժամանակներից."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bollard_type_not_bollard">"Ոչ թե բամբակյա, բայց մի քանի այլ պատնեշ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Ոչ թե ցիկլի պատնեշ, բայց մի քանի այլ պատնեշ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoking_no">"Ոչ, արգելված"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoking_outside">"Միայն դրսում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoking_separated">"Միայն առանձնացված տարածքներում"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoking_yes">"Այո, ամենուր"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_name_title">"Ինչպիսի նստատեղ ունի այս տեղը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Ոչ մի նստատեղ (միայն Takeaway)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_indoor_only">"Միայն փակ նստատեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_outdoor_only">"Բաց միայն նստատեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_indoor_and_outdoor">"Ինչպես ներսի, այնպես էլ բացօթյա նստատեղ"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_summer_outdoor_seating">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն կարող է պահանջել ստուգում տարվա որոշակի մասի ընթացքում `բացօթյա նստատեղը ստուգելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_toast">"Տեսախցիկի թույլտվություն չկա"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
-    <!-- Fuzzy -->
     <string name="quest_accepts_cash_title2">"Այստեղ ընդունվում է կանխիկ վճարում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_title2">"Որ փողոցում է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"Արդյոք այս տեղը օդը պայմանավորված է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title2">"Այս տեղը ունի մանկական փոփոխվող սեղան:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopBench_title2">"Այս կանգառում կա նստարան:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopBin_title2">"Այս կանգառի մեջ կա թափոնների զամբյուղ:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopLit_title2">"Սա կանգ է առնում:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title2">"Որն է այս կանգառի անվանումը:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"Որն է այս կանգառի հղումը:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title2">"Այս կանգառում կա ապաստան:"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopTactilePaving_title">"Այս կանգառը ունի շոշափելի սալահատակ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_halal_name_title2">"HALAL արտադրանքներն այստեղ առաջարկվում են:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_kosher_name_title2">"Այստեղ առաջարկվում են Kosher արտադրանքը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_vegan_title2">"Menu անկի ցանկացած Vegan իրեր այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_vegetarian_title2">"Menu անկի ցանկացած բուսակերային իրեր այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_title2">"Այստեղ ջուրը խմում է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_existence_title2">"Սա դեռ այստեղ է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generalFee_title2">"Անհրաժեշտ է վճարել այստեղ մուտք գործելու համար:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_title">"Ինչպիսի ինտերնետ կապ է առաջարկում այս վայրը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_level_title2">"Որ մակարդակի համարն է գտնվում այս տեղը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lit_title">"Այն լուսավորված է այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_title">"Որոնք են այստեղ բացման ժամերը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_signed_title">"Այստեղ ստորագրվել են բացման ժամերը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_resurvey_title">"Արդյոք այս բացման ժամերը դեռ ճիշտ են:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_placeName_title">"Որն է այս վայրի անվանումը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_type_title2">"Ինչպիսի խանութ է սա:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoking_title2">"Այստեղ ծխելը թույլատրվում է:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_title">"Որն է այստեղ մակերեսի որակը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_summit_register_title2">"Այստեղ կա գագաթնաժողով"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_title">"Ինչ է մակերեսը այստեղ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"Այստեղ կա որեւէ հանգստի սենյակ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Այս վայրում զուգարանը մատչելի է սայլակով:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Համոզված եք, որ հեծանվորդներին թույլ չեն տալիս երկու ուղղություններով օգտագործել այս մեկ ճանապարհի փողոցը: Կասկածում, ստուգեք, թե արդյոք փողոցում նշան կա:"</string>
 </resources>

@@ -25,7 +25,9 @@ layers:
             text:
                 text_source: global.name_source
                 buffer: 12px
-                priority: function() { return 20 + feature.scalerank }
+                # removing .toString() for some reason leads flickering labels and disappearing quest pins
+                # see https://github.com/streetcomplete/streetcomplete-mapstyle/issues/136 and https://github.com/streetcomplete/StreetComplete/issues/4522
+                priority: function() { return (20 + feature.scalerank).toString() }
                 font:
                     family: global.text_font_family
                     fill: global.text_water_color

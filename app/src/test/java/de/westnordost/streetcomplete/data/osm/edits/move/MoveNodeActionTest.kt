@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.ktx.copy
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -35,6 +36,6 @@ class MoveNodeActionTest {
         val updates = MoveNodeAction(p).createUpdates(n, n, repos, provider)
         assertTrue(updates.creations.isEmpty())
         assertTrue(updates.deletions.isEmpty())
-        assertEquals(listOf(movedNode), updates.modifications)
+        assertEquals(movedNode, updates.modifications.single().copy(timestampEdited = movedNode.timestampEdited))
     }
 }

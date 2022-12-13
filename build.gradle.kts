@@ -17,15 +17,19 @@ allprojects {
     }
 }
 
+val poEditorProjectId = "97843"
+
 tasks.register<UpdateWebsiteTranslationsTask>("updateWebsiteTranslations") {
     group = "streetcomplete"
     targetDir = "$projectDir/../streetcomplete-website/res"
+    projectId = poEditorProjectId
     apiToken = properties["POEditorAPIToken"] as String
 }
 
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
     targetDir = "$projectDir/metadata"
+    projectId = poEditorProjectId
     apiToken = properties["POEditorAPIToken"] as String
 }
 

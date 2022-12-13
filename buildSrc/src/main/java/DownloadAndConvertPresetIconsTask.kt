@@ -17,6 +17,8 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 import kotlin.math.max
 
+/** Download the SVG preset icons referred to by the iD presets and convert them to Android
+ *  drawables. */
 open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     @get:Input var targetDir: String? = null
     @get:Input var version: String? = null

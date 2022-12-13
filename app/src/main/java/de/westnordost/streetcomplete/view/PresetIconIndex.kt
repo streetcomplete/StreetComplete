@@ -429,6 +429,7 @@ val presetIconIndex = mapOf(
     "ic_preset_temaki_detergent_bottle" to R.drawable.ic_preset_temaki_detergent_bottle,
     "ic_preset_temaki_diamond" to R.drawable.ic_preset_temaki_diamond,
     "ic_preset_temaki_disc_golf_basket" to R.drawable.ic_preset_temaki_disc_golf_basket,
+    "ic_preset_temaki_diving" to R.drawable.ic_preset_temaki_diving,
     "ic_preset_temaki_domed_tower" to R.drawable.ic_preset_temaki_domed_tower,
     "ic_preset_temaki_donut" to R.drawable.ic_preset_temaki_donut,
     "ic_preset_temaki_drag_lift" to R.drawable.ic_preset_temaki_drag_lift,

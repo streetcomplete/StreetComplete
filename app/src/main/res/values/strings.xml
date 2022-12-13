@@ -1574,17 +1574,24 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="select_overlay">Select Overlay</string>
 
-    <string name="overlay_cycleway">Cycleways</string>
+    <string name="overlay_cycleway">Bike paths</string>
     <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
     <string name="separate_cycleway_no">No cycling</string>
     <string name="separate_cycleway_allowed">Cyclists are allowed</string>
-    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (regardless of whether cycling is allowed or not)</string>
-    <string name="separate_cycleway_non_segregated">Designated combined foot- and cycleway</string>
-    <string name="separate_cycleway_segregated">Segregated cycle- and footway</string>
-    <string name="separate_cycleway_exclusive">Exclusive cycleway</string>
-    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway which has a sidewalk for foot traffic (with kerb)</string>
+    <!-- highway=path / foot=yes + bicycle=yes -->
+    <string name="separate_cycleway_path">Path or trail</string>
+    <!-- highway=footway / foot=designated and anything else that is not designated for cyclists-->
+    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (cycling may still be allowed)</string>
+    <!-- foot=designated + bicycle=designated -->
+    <string name="separate_cycleway_non_segregated">Shared-use path</string>
+    <!-- foot=designated + bicycle=designated + segregated=yes -->
+    <string name="separate_cycleway_segregated">Separated bike and foot path</string>
+    <!-- highway=cycleway / bicycle=designated -->
+    <string name="separate_cycleway_exclusive">Bike-only path</string>
+    <!-- highway=cycleway + sidewalk=* -->
+    <string name="separate_cycleway_with_sidewalk">Bike-only path with adjacent sidewalk (separated by a curb)</string>
     <string name="cycleway_reverse_direction">Reverse cycleway direction</string>
     <string name="cycleway_reverse_direction_warning">That a cycleway goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
