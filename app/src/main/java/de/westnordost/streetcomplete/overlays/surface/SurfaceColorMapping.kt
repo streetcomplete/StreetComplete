@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.overlays.Color
  *   by extremely strong association between surface and colour
  */
 val Surface?.color get() = when (this) {
-    // https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28-%23DDDDDD-%23999999
     ASPHALT, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS, WOOD, METAL
                        -> Color.BLUE
     CONCRETE_PLATES, CONCRETE_LANES, SETT, COBLLESTONE_FLATTENED
@@ -46,9 +45,9 @@ val Surface?.color get() = when (this) {
     GRASS              -> Color.LIME
     DIRT, SOIL, EARTH, MUD, GROUND_ROAD, GROUND_AREA, WOODCHIPS
                        -> Color.GOLD
-    FINE_GRAVEL        -> "#dddddd"
+    FINE_GRAVEL        -> Color.GRAY
     GRAVEL, PEBBLES, ROCK
-                       -> "#999999"
+                       -> Color.DARK_GRAY
     CLAY, ARTIFICIAL_TURF, TARTAN
                        -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
     PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null

@@ -11,12 +11,13 @@ package de.westnordost.streetcomplete.overlays
  *
  *   The palette is loosely based on Color Universal Design (CUD) by Masataka Okabe and Kei Ito's
  *   color palette (https://jfly.uni-koeln.de/color/), compare:
- *   https://davidmathlogic.com/colorblind/#%23000000-%230072B2-%2356B4E9-%23CC79A7-%23009E73-%23D55E00-%23E69F00-%23F0E442
+ *   https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28-%23DDDDDD-%23999999
  *
  *   However,
  *   - the colors have been made more vibrant
  *   - and a few added
  *   - balanced to not be too close to the colors used on the background map
+ *   - two gray colours were added for emergency use as they overall work quite well
  *
  *   Also, it has been made so that black and crimson stand out, because these two are reserved in
  *   all overlays as having a special meaning
@@ -39,6 +40,9 @@ object Color {
     const val ORANGE = "#F37D1E"
     const val GOLD = "#EEBD0D"
     const val LIME = "#B6EF28"
+    // extra gray colours - work, but better to avoid them
+    const val GRAY = "#dddddd"
+    const val DARK_GRAY = "#999999"
 
     // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
     // (~0.01% of population)
