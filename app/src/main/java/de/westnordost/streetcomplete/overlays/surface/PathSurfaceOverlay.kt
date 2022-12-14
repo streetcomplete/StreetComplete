@@ -27,16 +27,19 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 
 class PathSurfaceOverlay : Overlay {
 
-    private val parentQuest = AddPathSurface()
     override val title = R.string.overlay_path_surface
-    override val icon = parentQuest.icon
-    override val changesetComment = parentQuest.changesetComment
-    override val wikiLink: String = parentQuest.wikiLink
-    override val achievements = parentQuest.achievements
-    override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
+    override val icon = R.drawable.ic_quest_way_surface
+    override val changesetComment = "Specify path surfaces"
+    override val wikiLink: String = "Key:surface"
+    override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
+    override val hidesQuestTypes = setOf(AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES

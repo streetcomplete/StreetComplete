@@ -25,16 +25,17 @@ import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 
 class RoadSurfaceOverlay : Overlay {
 
-    private val parentQuest = AddRoadSurface()
     override val title = R.string.overlay_road_surface
-    override val icon = parentQuest.icon
-    override val changesetComment = parentQuest.changesetComment
-    override val wikiLink: String = parentQuest.wikiLink
-    override val achievements = parentQuest.achievements
-    override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
+    override val icon = R.drawable.ic_quest_street_surface
+    override val changesetComment = "Specify road surfaces"
+    override val wikiLink: String = "Key:surface"
+    override val achievements = listOf(CAR, BICYCLIST)
+    override val hidesQuestTypes = setOf(AddRoadSurface::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
