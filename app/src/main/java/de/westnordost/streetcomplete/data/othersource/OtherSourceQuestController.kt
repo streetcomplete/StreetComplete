@@ -42,6 +42,7 @@ class OtherSourceQuestController(
     }
 
     fun delete(key: OtherSourceQuestKey) {
+        getQuestType(key)?.deleteQuest(key.id)
         questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
