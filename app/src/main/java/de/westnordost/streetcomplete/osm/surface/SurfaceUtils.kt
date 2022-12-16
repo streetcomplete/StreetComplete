@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
-import de.westnordost.streetcomplete.quests.surface.GENERIC_AREA_SURFACES
-import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 val INVALID_SURFACES = setOf(
     "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
