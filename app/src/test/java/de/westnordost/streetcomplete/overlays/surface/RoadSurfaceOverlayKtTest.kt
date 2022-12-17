@@ -15,7 +15,7 @@ class RoadSurfaceOverlayKtTest {
             "highway" to "motorway",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -26,7 +26,7 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -58,7 +58,7 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "explanation for missing surface tag",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -69,7 +69,7 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -80,7 +80,7 @@ class RoadSurfaceOverlayKtTest {
             "check_date:surface" to "2022-10-11",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -90,6 +90,6 @@ class RoadSurfaceOverlayKtTest {
             "surface" to "cobblestone",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 }

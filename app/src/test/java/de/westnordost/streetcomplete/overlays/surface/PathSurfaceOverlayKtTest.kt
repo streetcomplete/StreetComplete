@@ -15,7 +15,7 @@ class PathSurfaceOverlayKtTest {
             "highway" to "path",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -25,7 +25,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk" to "both",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -34,7 +34,7 @@ class PathSurfaceOverlayKtTest {
             "highway" to "tertiary",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -45,7 +45,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk" to "both",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -55,7 +55,7 @@ class PathSurfaceOverlayKtTest {
             "surface:note" to "explanation for missing surface tag",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -66,7 +66,7 @@ class PathSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -99,7 +99,7 @@ class PathSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -114,7 +114,7 @@ class PathSurfaceOverlayKtTest {
             "surface" to "concrete",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -128,7 +128,7 @@ class PathSurfaceOverlayKtTest {
             "segregated" to "yes",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -148,7 +148,7 @@ class PathSurfaceOverlayKtTest {
             "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -168,7 +168,7 @@ class PathSurfaceOverlayKtTest {
             "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -178,7 +178,7 @@ class PathSurfaceOverlayKtTest {
             "surface" to "cobblestone",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -189,7 +189,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk:right:surface" to "paved",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -201,7 +201,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk:right:surface:note" to "aaarghhhhhhh",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -213,7 +213,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk:both:surface:note" to "aaarghhhhhhh",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -224,7 +224,7 @@ class PathSurfaceOverlayKtTest {
             "sidewalk:both:surface:note" to "aaarghhhhhhh",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -234,7 +234,7 @@ class PathSurfaceOverlayKtTest {
             "surface" to "surprise Japanese torpedo boats",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -245,6 +245,6 @@ class PathSurfaceOverlayKtTest {
             "sidewalk:both:surface" to "surprise Japanese torpedo boats",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 }

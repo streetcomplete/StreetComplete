@@ -92,50 +92,50 @@ class SurfaceKtTest {
         val status = createSurfaceStatus(tags)
         assertTrue(status is CyclewayFootwaySurfacesWithNote)
         if (status is CyclewayFootwaySurfacesWithNote) {
-            assertEquals(status.note, "Rad Pflastersteine Fußgänger Asphalt")
+            assertEquals("Rad Pflastersteine Fußgänger Asphalt", status.note)
         }
     }
 
     @Test
     fun `find shared surface for two paved`() {
-        assertEquals(commonSurfaceDescription("asphalt", "paving_stones"), "paved")
+        assertEquals("paved", commonSurfaceDescription("asphalt", "paving_stones"))
         assertTrue(commonSurfaceObject("asphalt", "paving_stones")!!.osmValue == "paved")
     }
 
     @Test
     fun `find shared surface for two unpaved`() {
-        assertEquals(commonSurfaceDescription("gravel", "sand"), "unpaved")
+        assertEquals("unpaved", commonSurfaceDescription("gravel", "sand"))
         assertTrue(commonSurfaceObject("gravel", "sand")!!.osmValue == "unpaved")
     }
 
     @Test
     fun `find shared surface for two identical`() {
-        assertEquals(commonSurfaceDescription("sand", "sand"), "sand")
-        assertEquals(commonSurfaceObject("sand", "sand"), Surface.SAND)
+        assertEquals("sand", commonSurfaceDescription("sand", "sand"))
+        assertEquals(Surface.SAND, commonSurfaceObject("sand", "sand"))
     }
 
     @Test
     fun `find shared surface for two without shared surface`() {
-        assertEquals(commonSurfaceDescription("asphalt", "sand"), null)
-        assertEquals(commonSurfaceObject("asphalt", "sand"), null)
+        assertEquals(null, commonSurfaceDescription("asphalt", "sand"))
+        assertEquals(null, commonSurfaceObject("asphalt", "sand"))
     }
 
     @Test
     fun `converting tags to enum works`() {
-        assertEquals(surfaceTextValueToSurfaceEnum("asphalt"), Surface.ASPHALT)
-        assertEquals(surfaceTextValueToSurfaceEnum("sand"), Surface.SAND)
+        assertEquals(Surface.ASPHALT, surfaceTextValueToSurfaceEnum("asphalt"))
+        assertEquals(Surface.SAND, surfaceTextValueToSurfaceEnum("sand"))
     }
 
     @Test
     fun `converting tags to enum supports synonyms`() {
-        assertEquals(surfaceTextValueToSurfaceEnum("earth"), Surface.EARTH)
-        assertEquals(surfaceTextValueToSurfaceEnum("soil"), Surface.SOIL)
+        assertEquals(Surface.EARTH, surfaceTextValueToSurfaceEnum("earth"))
+        assertEquals(Surface.SOIL, surfaceTextValueToSurfaceEnum("soil"))
     }
 
     @Test
     fun `converting tags to enum return null for ones that should be retagged`() {
-        assertEquals(surfaceTextValueToSurfaceEnum("cement"), null)
-        assertEquals(surfaceTextValueToSurfaceEnum("cobblestone"), null)
+        assertEquals(null, surfaceTextValueToSurfaceEnum("cement"))
+        assertEquals(null, surfaceTextValueToSurfaceEnum("cobblestone"))
     }
 
     @Test
