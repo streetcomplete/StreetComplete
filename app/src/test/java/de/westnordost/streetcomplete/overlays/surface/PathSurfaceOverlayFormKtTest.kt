@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -172,6 +173,38 @@ class PathSurfaceOverlayFormKtTest {
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVING_STONES, null, Surface.SAND, null, null, *expectedChanges)
+    }
+
+    @Test
+    fun `Handle aliased tags, on example of surface=bricks`() {
+        val tags = mapOf(
+            "highway" to "path",
+            "footway:surface" to "bricks",
+            "surface" to "bricks",
+            "segregated" to "yes",
+            "bicycle" to "designated",
+            "foot" to "designated"
+        )
+        val expectedChanges = arrayOf(
+            StringMapEntryModify("surface", "bricks", "paved"),
+            StringMapEntryAdd("cycleway:surface", "paving_stones"),
+            StringMapEntryModify("footway:surface", "bricks", "bricks"),
+            StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString()),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.PAVING_STONES, null, Surface.BRICKS, null, null, *expectedChanges)
+    }
+
+    @Test
+    fun `Handle single surface with note`() {
+        val tags = mapOf(
+            "highway" to "path",
+        )
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface", "paved"),
+            StringMapEntryAdd("surface:note", "zażółć gęslą jaźń"),
+        )
+        verifyAnswerWithMainSurfaceOnly(tags, Surface.PAVED_ROAD, "zażółć gęslą jaźń", *expectedChanges)
     }
 }
 
