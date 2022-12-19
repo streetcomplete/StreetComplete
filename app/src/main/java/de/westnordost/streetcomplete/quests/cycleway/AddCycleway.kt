@@ -190,7 +190,7 @@ private val roadsFilter by lazy { """
 private val untaggedRoadsFilter by lazy { """
     ways with (
         highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-        or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
+        or highway = residential and (maxspeed > 33 or $notInZone30OrLess)
       )
       and !cycleway
       and !cycleway:left
@@ -203,7 +203,7 @@ private val untaggedRoadsFilter by lazy { """
       and (
         !maxspeed
         or maxspeed > 20
-        or $notIn30ZoneOrLess
+        or $notInZone30OrLess
       )
       and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
 """.toElementFilterExpression() }
@@ -213,8 +213,8 @@ private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
 """.toElementFilterExpression() }
 // highway=construction included, as situation often changes during and after construction
 
-private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
-    """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""
+private val notInZone30OrLess = (MAXSPEED_TYPE_KEYS + "maxspeed").joinToString(" or ") {
+    "$it and $it !~ \".*zone:?([1-9]|[1-2][0-9]|30)\""
 }
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 
@@ -14,7 +15,10 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         ways with
           (
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
-            or highway = residential and maxspeed > 33
+            or highway = residential and (
+              maxspeed > 33
+              or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+            )
           )
           and area != yes
           and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
@@ -24,6 +28,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           and placement != transition
           and (access !~ private|no or (foot and foot !~ private|no))
     """
+
     override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes

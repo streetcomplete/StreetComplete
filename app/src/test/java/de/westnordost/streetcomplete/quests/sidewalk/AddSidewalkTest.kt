@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
@@ -190,5 +182,25 @@ class AddSidewalkTest {
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(road))
+    }
+
+    @Test fun `not applicable to road with very low speed limit`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "maxspeed" to "9",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(road))
+    }
+
+    @Test fun `applicable to road with implicit speed limit`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "maxspeed" to "DE:zone30",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(null, questType.isApplicableTo(road))
     }
 }
