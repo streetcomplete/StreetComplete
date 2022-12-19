@@ -118,7 +118,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
-        setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
+        setTitleHintLabel(getNameAndLocationLabel(element, resources, featureDictionary))
     }
 
     override fun onStart() {
