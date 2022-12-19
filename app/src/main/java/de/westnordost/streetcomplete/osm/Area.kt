@@ -18,6 +18,7 @@ private fun isAreaExpressionFragment(prefix: String? = null): String {
     return """
         ${p}building
         or ${p}landuse
+        or ${p}landcover
         or ${p}natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
         or ${p}amenity
         or (${p}leisure and ${p}leisure != track)

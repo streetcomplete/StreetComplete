@@ -67,7 +67,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         otherQuestController.getVisible(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
-        element?.let { setTitleHintLabel(getNameAndLocationLabel(it.tags, resources, featureDictionaryFuture.get())) }
+        element?.let { setTitleHintLabel(getNameAndLocationLabel(it, resources, featureDictionaryFuture.get())) }
     }
 
     override fun onStart() {
