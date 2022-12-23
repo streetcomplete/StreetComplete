@@ -6,42 +6,43 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.quests.surface.SidewalkSurfaceAnswer.Side
 
 fun SidewalkSurfaceAnswer.applyTo(tags: StringMapChangesBuilder) {
     when (this) {
         is SidewalkIsDifferent -> {
-            deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.LEFT, tags)
-            deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.RIGHT, tags)
-            deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.BOTH, tags)
-            deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.LEFT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.RIGHT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.BOTH, tags)
+            deleteSmoothnessKeys(Side.LEFT, tags)
+            deleteSmoothnessKeys(Side.RIGHT, tags)
+            deleteSmoothnessKeys(Side.BOTH, tags)
+            deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+            deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
+            deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
             tags.remove("sidewalk:left")
             tags.remove("sidewalk:right")
             tags.remove("sidewalk:both")
             tags.remove("sidewalk")
         }
         is SidewalkSurface -> {
-            val leftChanged = this.left?.let { sideSurfaceChanged(it, SidewalkSurfaceAnswer.Side.LEFT, tags) }
-            val rightChanged = this.right?.let { sideSurfaceChanged(it, SidewalkSurfaceAnswer.Side.RIGHT, tags) }
+            val leftChanged = left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
+            val rightChanged = right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
             if (leftChanged == true) {
-                deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.LEFT, tags)
-                deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.BOTH, tags)
+                deleteSmoothnessKeys(Side.LEFT, tags)
+                deleteSmoothnessKeys(Side.BOTH, tags)
             }
             if (rightChanged == true) {
-                deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.RIGHT, tags)
-                deleteSmoothnessKeys(SidewalkSurfaceAnswer.Side.BOTH, tags)
+                deleteSmoothnessKeys(Side.RIGHT, tags)
+                deleteSmoothnessKeys(Side.BOTH, tags)
             }
 
-            if (this.left == this.right) {
-                this.left?.let { applySidewalkSurfaceAnswerTo(it, SidewalkSurfaceAnswer.Side.BOTH, tags) }
-                deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.LEFT, tags)
-                deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.RIGHT, tags)
+            if (left == right) {
+                left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
+                deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
             } else {
-                this.left?.let { applySidewalkSurfaceAnswerTo(it, SidewalkSurfaceAnswer.Side.LEFT, tags) }
-                this.right?.let { applySidewalkSurfaceAnswerTo(it, SidewalkSurfaceAnswer.Side.RIGHT, tags) }
-                deleteSidewalkSurfaceAnswerIfExists(SidewalkSurfaceAnswer.Side.BOTH, tags)
+                left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
+                right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
+                deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
             }
         }
     }
@@ -54,7 +55,7 @@ fun SidewalkSurfaceAnswer.applyTo(tags: StringMapChangesBuilder) {
     }
 }
 
-private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: SidewalkSurfaceAnswer.Side, tags: Tags) {
+private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags) {
     val sidewalkKey = "sidewalk:" + side.value
     val sidewalkSurfaceKey = "$sidewalkKey:surface"
 
@@ -71,7 +72,7 @@ private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: SidewalkS
 }
 
 /** clear smoothness tags for the given side*/
-private fun deleteSmoothnessKeys(side: SidewalkSurfaceAnswer.Side, tags: Tags) {
+private fun deleteSmoothnessKeys(side: Side, tags: Tags) {
     val sidewalkKey = "sidewalk:" + side.value
     tags.remove("$sidewalkKey:smoothness")
     tags.remove("$sidewalkKey:smoothness:date")
@@ -79,7 +80,7 @@ private fun deleteSmoothnessKeys(side: SidewalkSurfaceAnswer.Side, tags: Tags) {
 }
 
 /** clear previous answers for the given side */
-private fun deleteSidewalkSurfaceAnswerIfExists(side: SidewalkSurfaceAnswer.Side?, tags: Tags) {
+private fun deleteSidewalkSurfaceAnswerIfExists(side: Side?, tags: Tags) {
     val sideVal = if (side == null) "" else ":" + side.value
     val sidewalkSurfaceKey = "sidewalk$sideVal:surface"
 
@@ -89,7 +90,7 @@ private fun deleteSidewalkSurfaceAnswerIfExists(side: SidewalkSurfaceAnswer.Side
     tags.remove("$sidewalkSurfaceKey:note")
 }
 
-private fun sideSurfaceChanged(surface: SurfaceAnswer, side: SidewalkSurfaceAnswer.Side, tags: Tags): Boolean {
+private fun sideSurfaceChanged(surface: SurfaceAnswer, side: Side, tags: Tags): Boolean {
     val previousSideOsmValue = tags["sidewalk:${side.value}:surface"]
     val previousBothOsmValue = tags["sidewalk:both:surface"]
     val osmValue = surface.value.osmValue
