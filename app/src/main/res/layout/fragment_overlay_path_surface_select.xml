@@ -60,6 +60,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:visibility="gone"
+            tools:visibility="visible"
             >
 
             <EditText
@@ -147,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
+                tools:visibility="visible"
                 >
                 <EditText
                     android:id="@+id/explanation_input_cycleway_surface"
@@ -235,6 +237,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
+                tools:visibility="visible"
                 >
                 <EditText
                     android:id="@+id/explanation_input_footway_surface"
