@@ -10,71 +10,24 @@
     <LinearLayout
         android:id="@+id/main_surface_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
             android:id="@+id/selectButtonMainSurface"
-            android:layout_width="wrap_content"
+            layout="@layout/view_image_select"/>
+
+        <EditText
+            android:id="@+id/explanation_input_main_surface"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_button_selectable_outline"
-            android:animateLayoutChanges="true"
-            android:layout_centerInParent="true">
-
-            <FrameLayout
-                android:id="@+id/selectedCellViewMainSurface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewMainSurface"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-            <TextView
-                android:id="@+id/selectTextViewMainSurface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quest_select_hint"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
-                android:padding="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewMainSurface" />
-
-            <ImageView
-                android:id="@+id/dropDownArrowImageViewMainSurface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_expand_down_24dp"
-                android:padding="4dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/explanation_input_main_surface_container"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:minLines="3"
+            tools:text="Surface is a mosaic of paving stones, wood and metal."
+            android:maxLength="255"
+            android:scrollbars = "vertical"
             android:visibility="gone"
-            tools:visibility="visible"
-            >
-
-            <EditText
-                android:id="@+id/explanation_input_main_surface"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:gravity="top|start"
-                android:minLines="3"
-                tools:text="Surface is a mosaic of paving stones, wood and metal."
-                android:maxLength="255"
-                android:scrollbars = "vertical"
-                />
-        </LinearLayout>
+            tools:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,8 +36,8 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         tools:visibility="visible"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/cyclewaySurfaceLabel"
             android:layout_width="wrap_content"
@@ -92,76 +45,30 @@
             android:text="@string/overlay_cycleway_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <LinearLayout
             android:id="@+id/cycleway_surface_input_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-                <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal">
+
+            <include
                 android:id="@+id/selectButtonCyclewaySurface"
-                android:layout_width="wrap_content"
+                layout="@layout/view_image_select"/>
+
+            <EditText
+                android:id="@+id/explanation_input_cycleway_surface"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_button_selectable_outline"
-                android:animateLayoutChanges="true"
-                android:layout_centerInParent="true">
-
-                <FrameLayout
-                    android:id="@+id/selectedCellViewCyclewaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewCyclewaySurface"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-                <TextView
-                    android:id="@+id/selectTextViewCyclewaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quest_select_hint"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
-                    android:padding="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewCyclewaySurface" />
-
-                <ImageView
-                    android:id="@+id/dropDownArrowImageViewCyclewaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_expand_down_24dp"
-                    android:padding="4dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/explanation_input_cycleway_surface_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:minLines="3"
+                tools:text="Surface is a mosaic of paving stones, wood and metal."
+                android:maxLength="255"
+                android:scrollbars="vertical"
                 android:visibility="gone"
-                tools:visibility="visible"
-                >
-                <EditText
-                    android:id="@+id/explanation_input_cycleway_surface"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:gravity="top|start"
-                    android:minLines="3"
-                    tools:text="Surface is a mosaic of paving stones, wood and metal."
-                    android:maxLength="255"
-                    android:scrollbars = "vertical"
-                    />
-            </LinearLayout>
+                tools:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
 
@@ -171,8 +78,8 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         tools:visibility="visible"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/footwaySurfaceLabel"
             android:layout_width="wrap_content"
@@ -180,77 +87,30 @@
             android:text="@string/overlay_footway_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <LinearLayout
             android:id="@+id/cycleway_footway_input_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-                <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal">
+
+            <include
                 android:id="@+id/selectButtonFootwaySurface"
-                android:layout_width="wrap_content"
+                layout="@layout/view_image_select"/>
+
+            <EditText
+                android:id="@+id/explanation_input_footway_surface"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_button_selectable_outline"
-                android:animateLayoutChanges="true"
-                android:layout_centerInParent="true">
-
-                <FrameLayout
-                    android:id="@+id/selectedCellViewFootwaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewFootwaySurface"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-                <TextView
-                    android:id="@+id/selectTextViewFootwaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quest_select_hint"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
-                    android:padding="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/dropDownArrowImageViewFootwaySurface" />
-
-                <ImageView
-                    android:id="@+id/dropDownArrowImageViewFootwaySurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_expand_down_24dp"
-                    android:padding="4dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/explanation_input_footway_surface_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:minLines="3"
+                tools:text="Surface is a mosaic of paving stones, wood and metal."
+                android:maxLength="255"
+                android:scrollbars="vertical"
                 android:visibility="gone"
-                tools:visibility="visible"
-                >
-                <EditText
-                    android:id="@+id/explanation_input_footway_surface"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:gravity="top|start"
-                    android:minLines="3"
-                    tools:text="Surface is a mosaic of paving stones, wood and metal."
-                    android:maxLength="255"
-                    android:scrollbars = "vertical"
-                    />
-            </LinearLayout>
+                tools:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
 

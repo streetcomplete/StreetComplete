@@ -73,7 +73,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         binding.explanationInputMainSurface.doAfterTextChanged { checkIsFormComplete() }
 
-        binding.selectButtonMainSurface.setOnClickListener {
+        binding.selectButton.root.setOnClickListener {
             collectSurfaceData { gathered: SingleSurfaceItemInfo ->
                 when (gathered) {
                     is SingleSurfaceItem -> {
@@ -91,8 +91,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
 
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewMainSurface, true)
-        binding.selectedCellViewMainSurface.children.first().background = null
+        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
+        binding.selectButton.selectedCellView.children.first().background = null
 
         val status = createMainSurfaceStatus(element!!.tags)
         originalSurfaceStatus = status
@@ -116,13 +116,13 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private fun updateSelectedCell() {
         val mainSurfaceItem = selectedStatusForMainSurface
-        binding.selectTextViewMainSurface.isGone = mainSurfaceItem != null
-        binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
+        binding.selectButton.selectTextView.isGone = mainSurfaceItem != null
+        binding.selectButton.selectedCellView.isGone = mainSurfaceItem == null
         if (mainSurfaceItem != null) {
-            ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
+            ItemViewHolder(binding.selectButton.selectedCellView).bind(mainSurfaceItem)
         }
         if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
-            binding.explanationInputMainSurfaceContainer.isVisible = true
+            binding.explanationInputMainSurface.isVisible = true
         }
     }
 
