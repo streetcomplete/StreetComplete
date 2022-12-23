@@ -101,7 +101,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
-            binding.selectButtonMainSurface.isVisible = false
+            binding.mainSurfaceContainer.isVisible = false
             isSegregatedLayout = true
             binding.cyclewaySurfaceContainer.isVisible = true
             binding.footwaySurfaceContainer.isVisible = true
@@ -131,7 +131,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.explanationInputFootwaySurface.doAfterTextChanged { checkIsFormComplete() }
             binding.explanationInputCyclewaySurface.doAfterTextChanged { checkIsFormComplete() }
 
-            binding.selectButtonMainSurface.setOnClickListener {
+            binding.selectButtonMainSurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SingleSurfaceItemInfo ->
                     when (gathered) {
                         is SingleSurfaceItem -> {
@@ -146,7 +146,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                     checkIsFormComplete()
                 }
             }
-            binding.selectButtonCyclewaySurface.setOnClickListener {
+            binding.selectButtonCyclewaySurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SingleSurfaceItemInfo ->
                     when (gathered) {
                         is SingleSurfaceItem -> {
@@ -161,7 +161,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                     checkIsFormComplete()
                 }
             }
-            binding.selectButtonFootwaySurface.setOnClickListener {
+            binding.selectButtonFootwaySurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SingleSurfaceItemInfo ->
                     when (gathered) {
                         is SingleSurfaceItem -> {
@@ -179,12 +179,12 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
             if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
 
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewMainSurface, true)
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewCyclewaySurface, true)
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewFootwaySurface, true)
-            binding.selectedCellViewMainSurface.children.first().background = null
-            binding.selectedCellViewCyclewaySurface.children.first().background = null
-            binding.selectedCellViewFootwaySurface.children.first().background = null
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonMainSurface.selectedCellView, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonCyclewaySurface.selectedCellView, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonFootwaySurface.selectedCellView, true)
+            binding.selectButtonMainSurface.root.children.first().background = null
+            binding.selectButtonCyclewaySurface.root.children.first().background = null
+            binding.selectButtonFootwaySurface.root.children.first().background = null
 
             val status = createSurfaceStatus(element!!.tags)
             originalSurfaceStatus = status
@@ -247,34 +247,34 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         private fun updateSelectedCell() {
             val mainSurfaceItem = selectedStatusForMainSurface
-            binding.selectTextViewMainSurface.isGone = mainSurfaceItem != null
-            binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
+            binding.selectButtonMainSurface.selectTextView.isGone = mainSurfaceItem != null
+            binding.selectButtonMainSurface.selectedCellView.isGone = mainSurfaceItem == null
             if (mainSurfaceItem != null) {
-                ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
+                ItemViewHolder(binding.selectButtonMainSurface.selectedCellView).bind(mainSurfaceItem)
             }
             if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputMainSurfaceContainer.isVisible = true
+                binding.explanationInputMainSurface.isVisible = true
                 binding.mainSurfaceContainer.isVisible = true
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
-            binding.selectTextViewCyclewaySurface.isGone = cyclewaySurfaceItem != null
-            binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
+            binding.selectButtonCyclewaySurface.selectTextView.isGone = cyclewaySurfaceItem != null
+            binding.selectButtonCyclewaySurface.selectedCellView.isGone = cyclewaySurfaceItem == null
             if (cyclewaySurfaceItem != null) {
-                ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
+                ItemViewHolder(binding.selectButtonCyclewaySurface.selectedCellView).bind(cyclewaySurfaceItem)
             }
             if (cyclewayNoteText() != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputCyclewaySurfaceContainer.isVisible = true
+                binding.explanationInputCyclewaySurface.isVisible = true
             }
 
             val footwaySurfaceItem = selectedStatusForFootwaySurface
-            binding.selectTextViewFootwaySurface.isGone = footwaySurfaceItem != null
-            binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
+            binding.selectButtonFootwaySurface.selectTextView.isGone = footwaySurfaceItem != null
+            binding.selectButtonFootwaySurface.selectedCellView.isGone = footwaySurfaceItem == null
             if (footwaySurfaceItem != null) {
-                ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
+                ItemViewHolder(binding.selectButtonFootwaySurface.selectedCellView).bind(footwaySurfaceItem)
             }
             if (footwayNoteText() != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputFootwaySurfaceContainer.isVisible = true
+                binding.explanationInputFootwaySurface.isVisible = true
             }
         }
 

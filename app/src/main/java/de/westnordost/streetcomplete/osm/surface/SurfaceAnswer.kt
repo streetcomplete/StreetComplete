@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.surface
 
-import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
