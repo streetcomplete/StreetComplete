@@ -47,7 +47,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_AREA_SURFACES).toItems()
-    private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
+    private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
     private var originalSurfaceStatus: SurfaceInfo? = null
     private var isSegregatedLayout = false
 
