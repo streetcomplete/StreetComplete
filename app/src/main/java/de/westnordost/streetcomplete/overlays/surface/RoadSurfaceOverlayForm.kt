@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
@@ -191,7 +191,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         val note = noteText()
         val surfaceObject = selectedStatusForMainSurface!!.value!!
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-            SurfaceAnswer(surfaceObject, note).applyTo(it)
+            SurfaceAndNote(surfaceObject, note).applyTo(it)
         }.create()))
     }
 

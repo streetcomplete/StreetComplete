@@ -6,12 +6,13 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
@@ -62,30 +63,33 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
         val items = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
             .map { it.asItem() }
 
-        ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
-            val streetSideItem = item.value!!.asStreetSideItem(requireContext().resources)
-
-            if (item.value?.shouldBeDescribed == true) {
-                AlertDialog.Builder(requireContext())
-                    .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                        DescribeGenericSurfaceDialog(requireContext()) { description ->
-                            setNote(isRight, description)
-                            streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
-                        }.show()
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
+        ImageListPickerDialog(requireContext(), items, R.layout.cell_labeled_icon_select, 2) { item ->
+            val surface = item.value!!
+            if (surface.shouldBeDescribed) {
+                showDescribeSurfaceDialog(isRight, surface)
             } else {
-                setNote(isRight, null)
-                streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
+                replaceSurfaceSide(isRight, surface, null)
             }
         }.show()
     }
 
-    private fun setNote(isRight: Boolean, note: String?) {
-        if (isRight) rightNote = note
-        else leftNote = note
+    private fun showDescribeSurfaceDialog(isRight: Boolean, surface: Surface) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                DescribeGenericSurfaceDialog(requireContext()) { description ->
+                    replaceSurfaceSide(isRight, surface, description)
+                }.show()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
+        val streetSideItem = surface.asStreetSideItem(requireContext().resources)
+        if (isRight) rightNote = description
+        else leftNote = description
+        streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
     }
 
     override fun onClickOk() {
@@ -94,10 +98,10 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
         if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
             streetSideSelect.saveLastSelection()
         }
-        applyAnswer(SidewalkSurface(
-            left?.let { SurfaceAnswer(it, leftNote) },
-            right?.let { SurfaceAnswer(it, rightNote) }
-        ))
+        applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurface(
+            left?.let { SurfaceAndNote(it, leftNote) },
+            right?.let { SurfaceAndNote(it, rightNote) }
+        )))
     }
 
     /* ------------------------------------- instance state ------------------------------------- */

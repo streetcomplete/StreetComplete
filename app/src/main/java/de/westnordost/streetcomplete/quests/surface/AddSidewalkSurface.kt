@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 
 class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
@@ -36,6 +38,21 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun createForm() = AddSidewalkSurfaceForm()
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+        when (answer) {
+            is SidewalkIsDifferent -> {
+                for (side in listOf(":left", ":right", ":both", "")) {
+                    tags.remove("sidewalk$side:surface")
+                    tags.remove("sidewalk$side:surface:note")
+                    tags.remove("sidewalk$side:smoothness")
+                    tags.remove("sidewalk$side")
+                }
+                tags.removeCheckDatesForKey("sidewalk")
+                tags.removeCheckDatesForKey("sidewalk:surface")
+                tags.removeCheckDatesForKey("sidewalk:smoothness")
+            }
+            is SidewalkSurface -> {
+                answer.surfaces.applyTo(tags)
+            }
+        }
     }
 }

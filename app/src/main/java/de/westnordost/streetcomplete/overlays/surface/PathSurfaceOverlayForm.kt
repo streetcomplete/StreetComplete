@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
@@ -411,7 +411,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, surfaceObject: Surface, note: String?) {
-            SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
+            SurfaceAndNote(surfaceObject, note).applyTo(changesBuilder)
         }
 
         fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
@@ -426,12 +426,12 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 if (generalSurfaceNote != null && changesBuilder["surface:note"] != generalSurfaceNote) {
                     changesBuilder["surface:note"] = generalSurfaceNote
                 }
-                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                SurfaceAndNote(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAndNote(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             } else {
-                SurfaceAnswer(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
-                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                SurfaceAndNote(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
+                SurfaceAndNote(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAndNote(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             }
             if (!changesBuilder.containsKey("segregated")) {
                 changesBuilder["segregated"] = "yes"

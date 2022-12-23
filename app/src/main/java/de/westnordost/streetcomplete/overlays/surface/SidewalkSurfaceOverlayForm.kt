@@ -6,33 +6,34 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
+import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
-import de.westnordost.streetcomplete.quests.surface.SidewalkSurface
-import de.westnordost.streetcomplete.quests.surface.applyTo
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
-import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
+import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
-    private var currentSidewalk: LeftAndRightSidewalk? = null
+
+    private var originalSidewalkSurface: LeftAndRightSidewalkSurface? = null
     private var leftNote: String? = null
     private var rightNote: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        originalSidewalkSurface = createSidewalkSurface(element!!.tags)
         if (savedInstanceState == null) {
             initStateFromTags()
         }
@@ -44,53 +45,62 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         val hasRight = sides?.right == Sidewalk.YES
 
         streetSideSelect.showSides = when {
-            hasLeft && hasRight -> StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
-            hasLeft -> StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
-            hasRight -> StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
+            hasLeft && hasRight -> Sides.BOTH
+            hasLeft -> Sides.LEFT
+            hasRight -> Sides.RIGHT
             else -> return
         }
         // actually init surface....
-        val leftSurfaceString = element!!.tags["sidewalk:both:surface"] ?: element!!.tags["sidewalk:left:surface"]
-        val rightSurfaceString = element!!.tags["sidewalk:both:surface"] ?: element!!.tags["sidewalk:right:surface"]
-        val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
-        val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
-        if (leftSurfaceObject != null) {
-            streetSideSelect.replacePuzzleSide(leftSurfaceObject.asStreetSideItem(resources), false)
+        originalSidewalkSurface?.left?.value?.let {
+            streetSideSelect.replacePuzzleSide(it.asStreetSideItem(resources), false)
         }
-        if (rightSurfaceObject != null) {
-            streetSideSelect.replacePuzzleSide(rightSurfaceObject.asStreetSideItem(resources), true)
+        originalSidewalkSurface?.right?.value?.let {
+            streetSideSelect.replacePuzzleSide(it.asStreetSideItem(resources), true)
         }
+        leftNote = originalSidewalkSurface?.left?.note
+        rightNote = originalSidewalkSurface?.right?.note
     }
 
     override fun onClickSide(isRight: Boolean) {
         val items = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
             .map { it.asItem() }
 
-        ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
-            val streetSideItem = item.value!!.asStreetSideItem(requireContext().resources)
-
-            if (item.value?.shouldBeDescribed == true) {
-                AlertDialog.Builder(requireContext())
-                    .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                        DescribeGenericSurfaceDialog(requireContext()) { description ->
-                            setNote(isRight, description)
-                            streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
-                        }.show()
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
+        ImageListPickerDialog(requireContext(), items, R.layout.cell_labeled_icon_select, 2) { item ->
+            val surface = item.value!!
+            if (surface.shouldBeDescribed) {
+                showDescribeSurfaceDialog(isRight, surface)
             } else {
-                setNote(isRight, null)
-                streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
+                replaceSurfaceSide(isRight, surface, null)
             }
         }.show()
     }
 
-    private fun setNote(isRight: Boolean, note: String?) {
-        if (isRight) rightNote = note
-        else leftNote = note
+    private fun showDescribeSurfaceDialog(isRight: Boolean, surface: Surface) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                DescribeGenericSurfaceDialog(requireContext()) { description ->
+                    replaceSurfaceSide(isRight, surface, description)
+                }.show()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
+
+    private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
+        val streetSideItem = surface.asStreetSideItem(requireContext().resources)
+        if (isRight) rightNote = description
+        else leftNote = description
+        streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
+    }
+
+    /* ------------------------------------- apply changes  ------------------------------------- */
+
+    override fun hasChanges(): Boolean =
+        streetSideSelect.left?.value != originalSidewalkSurface?.left?.value ||
+        streetSideSelect.right?.value != originalSidewalkSurface?.right?.value ||
+        leftNote != originalSidewalkSurface?.left?.note ||
+        rightNote != originalSidewalkSurface?.right?.note
 
     override fun onClickOk() {
         val left = streetSideSelect.left?.value
@@ -98,12 +108,12 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
             streetSideSelect.saveLastSelection()
         }
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-            SidewalkSurface(
-                left?.let { leftSurface -> SurfaceAnswer(leftSurface, leftNote) },
-                right?.let { rightSurface -> SurfaceAnswer(rightSurface, rightNote) }
-            ).applyTo(it)
-        }.create()))
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        LeftAndRightSidewalkSurface(
+            left?.let { SurfaceAndNote(it, leftNote) },
+            right?.let { SurfaceAndNote(it, rightNote) }
+        ).applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     /* ------------------------------------- instance state ------------------------------------- */
@@ -119,21 +129,13 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         outState.putString(RIGHT_NOTE, rightNote)
     }
 
-    override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != currentSidewalk?.left ||
-            streetSideSelect.right?.value != currentSidewalk?.right
+    override fun serialize(item: Surface): String = item.name
+    override fun deserialize(str: String): Surface = Surface.valueOf(str)
+    override fun asStreetSideItem(item: Surface, isRight: Boolean) =
+        item.asStreetSideItem(resources)
 
     companion object {
         private const val LEFT_NOTE = "left_note"
         private const val RIGHT_NOTE = "right_note"
     }
-
-    override fun serialize(item: Surface): String =
-        item.name
-
-    override fun deserialize(str: String): Surface =
-        Surface.valueOf(str)
-
-    override fun asStreetSideItem(item: Surface, isRight: Boolean): StreetSideDisplayItem<Surface> =
-        item.asStreetSideItem(resources)
 }

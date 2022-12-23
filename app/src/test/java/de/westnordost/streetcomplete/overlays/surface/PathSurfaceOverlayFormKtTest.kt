@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -22,7 +22,7 @@ class PathSurfaceOverlayFormKtTest {
 
     private fun verifyAnswerWithMainSurfaceOnly(tags: Map<String, String>, surfaceAnswer: Surface, noteAnswer: String?, vararg expectedChanges: StringMapEntryChange) {
         val cb = StringMapChangesBuilder(tags)
-        SurfaceAnswer(surfaceAnswer, noteAnswer).applyTo(cb)
+        SurfaceAndNote(surfaceAnswer, noteAnswer).applyTo(cb)
         val changes = cb.create().changes
         Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }

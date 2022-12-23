@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.IsActuallyStepsAnswer
 import de.westnordost.streetcomplete.osm.surface.IsIndoorsAnswer
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.SurfaceOrIsStepsAnswer
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
@@ -36,14 +36,14 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(value, description))
+                        applyAnswer(SurfaceAndNote(value, description))
                     }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             return
         }
-        applyAnswer(SurfaceAnswer(value))
+        applyAnswer(SurfaceAndNote(value))
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
