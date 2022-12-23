@@ -62,7 +62,7 @@ internal class SurfaceAnswerKtTest {
         )
     }
 
-    @Test fun `removes smoothness values when surface changed`() {
+    @Test fun `removes associated values when surface changed`() {
         verifyAnswer(
             mapOf(
                 "highway" to "residential",
@@ -71,6 +71,7 @@ internal class SurfaceAnswerKtTest {
                 "smoothness" to "well",
                 "smoothness:date" to "2011-11-11",
                 "check_date:smoothness" to "2011-11-11",
+                "tracktype" to "grade5"
             ),
             SurfaceAnswer(Surface.ASPHALT),
             arrayOf(
@@ -79,6 +80,7 @@ internal class SurfaceAnswerKtTest {
                 StringMapEntryDelete("smoothness", "well"),
                 StringMapEntryDelete("smoothness:date", "2011-11-11"),
                 StringMapEntryDelete("check_date:smoothness", "2011-11-11"),
+                StringMapEntryDelete("tracktype", "grade5"),
             )
         )
     }
@@ -134,6 +136,16 @@ internal class SurfaceAnswerKtTest {
             arrayOf(
                 StringMapEntryModify("surface", "asphalt", "asphalt"),
                 StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
+            )
+        )
+    }
+
+    @Test fun `sidewalk surface marked as tag on road is not touched`() {
+        verifyAnswer(
+            mapOf("highway" to "tertiary", "sidewalk:surface" to "paving_stones"),
+            SurfaceAnswer(Surface.ASPHALT),
+            arrayOf(
+                StringMapEntryAdd("surface", "asphalt"),
             )
         )
     }
