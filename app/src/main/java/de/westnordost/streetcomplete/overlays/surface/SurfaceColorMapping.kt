@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.overlays.Color
  *
  * - similar surface should have similar colours
  *  - all paved ones are one such group
- *  - all unpaved ones are nother
+ *  - all unpaved ones are another
  *  - grass paver and compacted being high quality unpaved, unhewn cobblestone being low quality unpaved
  *    should be on border between this two groups
  *
