@@ -76,10 +76,10 @@ private fun getSeparateCyclewayStyle(element: Element) =
 private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NOT_ALLOWED,
     SeparateCycleway.ALLOWED_ON_FOOTWAY,
-    SeparateCycleway.NON_DESIGNATED ->
+    SeparateCycleway.NON_DESIGNATED,
+    SeparateCycleway.PATH ->
         Color.BLACK
 
-    SeparateCycleway.PATH,
     SeparateCycleway.NON_SEGREGATED ->
         Color.CYAN
 
