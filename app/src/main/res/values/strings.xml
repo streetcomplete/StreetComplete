@@ -1623,8 +1623,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk_surface">Sidewalk surface info (when tagged on road)</string>
     <string name="overlay_universal_surface">All and any surface</string>
 
-    <string name="overlay_cycleway_label">Cycleway:</string>
-    <string name="overlay_footway_label">Footway:</string>
+    <string name="overlay_cycleway_label">Bike path:</string>
+    <string name="overlay_footway_label">Foot path:</string>
     <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
     <string name="overlay_path_surface_not_segregated">Single surface</string>
 
