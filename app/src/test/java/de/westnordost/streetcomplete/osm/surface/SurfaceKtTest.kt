@@ -140,6 +140,6 @@ class SurfaceKtTest {
 
     @Test
     fun `check date is among keys removed on surface change`() {
-        assertTrue("check_date:cycleway:surface" in associatedKeysToBeRemovedOnChange("cycleway:"))
+        assertTrue("check_date:cycleway:surface" in keysToBeRemovedOnSurfaceChange("cycleway:"))
     }
 }

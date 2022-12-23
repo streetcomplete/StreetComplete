@@ -38,7 +38,7 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
 fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean =
     INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
 
-fun associatedKeysToBeRemovedOnChange(prefix: String): Set<String> =
+fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
     setOf(
         "${prefix}surface:grade",
         "${prefix}smoothness",

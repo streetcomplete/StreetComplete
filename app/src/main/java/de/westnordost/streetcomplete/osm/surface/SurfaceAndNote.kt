@@ -30,7 +30,7 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     // remove smoothness (etc) tags if surface was changed
     // or surface can be treated as outdated
     if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
-        for (target in associatedKeysToBeRemovedOnChange(pre)) {
+        for (target in keysToBeRemovedOnSurfaceChange(pre)) {
             tags.remove(target)
         }
     }

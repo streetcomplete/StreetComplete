@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
+import de.westnordost.streetcomplete.osm.surface.keysToBeRemovedOnSurfaceChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -89,8 +89,8 @@ class PathSurfaceOverlay : Overlay {
 
         // supported in both surface overlays
         "surface", "surface:note"
-    ) + associatedKeysToBeRemovedOnChange("") +
-    associatedKeysToBeRemovedOnChange("cycleway:") + associatedKeysToBeRemovedOnChange("fotway:")
+    ) + keysToBeRemovedOnSurfaceChange("") +
+    keysToBeRemovedOnSurfaceChange("cycleway:") + keysToBeRemovedOnSurfaceChange("fotway:")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter
