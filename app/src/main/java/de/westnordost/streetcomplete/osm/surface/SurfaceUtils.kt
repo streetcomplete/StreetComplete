@@ -37,15 +37,19 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
     "grade5" to ANYTHING_FULLY_PAVED,
 )
 
-fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean {
-    return INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
-}
+fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean =
+    INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
 
-fun associatedKeysToBeRemovedOnChange(prefix: String): Set<String> {
-    return setOf("${prefix}surface:grade", "${prefix}smoothness", "${prefix}smoothness:date",
-        "${prefix}smoothness", "${prefix}surface:colour", "source:${prefix}surface") +
-        getLastCheckDateKeys("${prefix}surface") + getLastCheckDateKeys("${prefix}smoothness")
-}
+fun associatedKeysToBeRemovedOnChange(prefix: String): Set<String> =
+    setOf(
+        "${prefix}surface:grade",
+        "${prefix}smoothness",
+        "${prefix}smoothness:date",
+        "${prefix}smoothness",
+        "${prefix}surface:colour",
+        "source:${prefix}surface") +
+    getLastCheckDateKeys("${prefix}surface") +
+    getLastCheckDateKeys("${prefix}smoothness")
 
 sealed class SurfaceInfo
 sealed class SingleSurfaceInfo : SurfaceInfo()
