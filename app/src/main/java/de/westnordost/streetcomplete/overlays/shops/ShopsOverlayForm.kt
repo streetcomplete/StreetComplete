@@ -294,7 +294,11 @@ private suspend fun createEditAction(
         }
     }
 
-    newNames.applyTo(tagChanges)
+    if (!isFeatureWithName) {
+        // in this case name input was not even shown so newNames will be empty
+        // newNames should not be applied as it will erase names provided by NSI
+        newNames.applyTo(tagChanges)
+    }
     if (newNames.isEmpty() && isNoName) {
         tagChanges["name:signed"] = "no"
     }

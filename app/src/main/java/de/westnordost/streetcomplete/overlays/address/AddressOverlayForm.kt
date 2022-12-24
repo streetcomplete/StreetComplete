@@ -74,10 +74,10 @@ class AddressOverlayForm : AbstractOverlayForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val tags = element?.tags
-        if (tags != null) {
+        val element = element
+        if (element != null) {
             setTitleHintLabel(getNameAndLocationLabel(
-                tags, resources, featureDictionary,
+                element, resources, featureDictionary,
                 showHouseNumber = false
             ))
         }
