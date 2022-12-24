@@ -17,7 +17,7 @@ package de.westnordost.streetcomplete.overlays
  *   - the colors have been made more vibrant
  *   - and a few added
  *   - balanced to not be too close to the colors used on the background map
- *   - two gray colours were added for emergency use as they overall work quite well
+ *   - gray colour was added for emergency use
  *
  *   Also, it has been made so that black and crimson stand out, because these two are reserved in
  *   all overlays as having a special meaning
@@ -40,9 +40,8 @@ object Color {
     const val ORANGE = "#F37D1E"
     const val GOLD = "#EEBD0D"
     const val LIME = "#B6EF28"
-    // extra gray colours - work, but better to avoid them
+    // extra gray colour - works, but better to avoid it
     const val GRAY = "#dddddd"
-    const val DARK_GRAY = "#999999"
 
     // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
     // (~0.01% of population)
