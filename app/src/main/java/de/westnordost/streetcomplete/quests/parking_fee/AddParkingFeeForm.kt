@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.view.controller.TimeRestriction.AT_ANY_TIME
 import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_HOURS
 import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
 import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
-import java.util.Locale
 
 class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
 
