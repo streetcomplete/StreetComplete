@@ -69,7 +69,20 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         override val otherAnswers: List<IAnswerItem> get() {
             return if (isSegregatedLayout) {
-                listOf() // removing info about separate cycleway is to complicated
+                listOf()
+                // removing info about separate cycleway is too complicated
+                //
+                // typically it requires editing not only surface info but
+                // also an access info as it happens in cases where
+                // bicycle access is gone
+                // may require also removal of cycleway=separate,
+                // bicycle=use_sidepath from the road
+                //
+                // and in cases where there is a segregated cycleway with
+                // the same surface as footway then StreetComplete will
+                // anyway ask for cycleway:surface and footway:surface
+                //
+                // fortunately need for this change are really rare
             } else if (bothFootAndBicycleTraffic(element!!.tags)) {
                     listOf(
                         AnswerItem(R.string.overlay_path_surface_segregated) {
