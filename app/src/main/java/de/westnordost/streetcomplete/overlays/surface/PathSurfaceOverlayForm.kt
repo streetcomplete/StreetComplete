@@ -72,27 +72,32 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 listOf()
                 // removing info about separate cycleway is too complicated
                 //
-                // typically it requires editing not only surface info but
-                // also an access info as it happens in cases where
-                // bicycle access is gone
-                // may require also removal of cycleway=separate,
-                // bicycle=use_sidepath from the road
+                // Typically it requires editing not only surface info but
+                // also an access info as it happens in cases
+                // where bicycle access is gone.
+                // May require also removal of cycleway=separate,
+                // bicycle=use_sidepath from the road.
                 //
-                // and in cases where there is a segregated cycleway with
+                // And in cases where there is a segregated cycleway with
                 // the same surface as footway then StreetComplete will
-                // anyway ask for cycleway:surface and footway:surface
+                // anyway ask for cycleway:surface and footway:surface.
                 //
-                // fortunately need for this change are really rare
+                // Fortunately need for this change are really rare.
+                // Notes can be left as usual.
             } else if (bothFootAndBicycleTraffic(element!!.tags)) {
-                    listOf(
-                        AnswerItem(R.string.overlay_path_surface_segregated) {
-                            // reset previous data
-                            selectedStatusForMainSurface = null
-                            binding.explanationInputMainSurface.text = null
-                            switchToFootwayCyclewaySurfaceLayout()
-                        }
-                    )
-                } else {
+                // Only where bicycle access is already present
+                // because adding bicycle access typically requires
+                // adding proper access tags, interconnections with roads
+                // and often also other geometry changes.
+                listOf(
+                    AnswerItem(R.string.overlay_path_surface_segregated) {
+                        // reset previous data
+                        selectedStatusForMainSurface = null
+                        binding.explanationInputMainSurface.text = null
+                        switchToFootwayCyclewaySurfaceLayout()
+                    }
+                )
+            } else {
                 listOf()
             }
         }
