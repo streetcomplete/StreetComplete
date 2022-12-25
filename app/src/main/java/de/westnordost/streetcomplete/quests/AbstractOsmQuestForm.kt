@@ -228,6 +228,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             if (prefs.getBoolean(Prefs.CREATE_EXTERNAL_QUESTS, false))
                 b.setNeutralButton(R.string.create_external_button) { _, _ ->
                     val text = EditText(it)
+                    text.isSingleLine = true
                     text.setPadding(30, 10, 30, 10)
                     AlertDialog.Builder(it)
                         .setTitle(R.string.create_external_title_message)
