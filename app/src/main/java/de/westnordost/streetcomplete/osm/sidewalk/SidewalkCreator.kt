@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.expandSides
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.*
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.mergeSides
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.*
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun LeftAndRightSidewalk.applyTo(tags: Tags) {
@@ -89,4 +89,3 @@ private val Sidewalk.osmValue: String get() = when (this) {
         throw IllegalArgumentException("Attempting to tag invalid sidewalk")
     }
 }
-

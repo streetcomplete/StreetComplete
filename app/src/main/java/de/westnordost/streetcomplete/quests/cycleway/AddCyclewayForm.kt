@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
-import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
+import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm

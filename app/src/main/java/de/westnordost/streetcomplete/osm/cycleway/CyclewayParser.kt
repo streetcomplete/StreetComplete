@@ -160,7 +160,6 @@ private fun createDirectionForSide(
     return explicitDirection ?: defaultDirection
 }
 
-
 /** Returns the cycleway value using the given tags for the given side using other tags that imply
  *  that a cycleway may be there (or not there) */
 private fun createCyclewayForSideFallback(
