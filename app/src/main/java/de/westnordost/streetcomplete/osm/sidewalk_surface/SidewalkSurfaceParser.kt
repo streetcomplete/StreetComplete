@@ -8,8 +8,8 @@ fun createSidewalkSurface(tags: Map<String, String>): LeftAndRightSidewalkSurfac
     val surfaceBothStr = tags["sidewalk:both:surface"]
     val surfaceLeftStr = tags["sidewalk:left:surface"] ?: surfaceBothStr ?: surfaceStr
     val surfaceRightStr = tags["sidewalk:right:surface"] ?: surfaceBothStr ?: surfaceStr
-    val surfaceLeft = Surface.values().find { it.osmValue == surfaceLeftStr }
-    val surfaceRight = Surface.values().find { it.osmValue == surfaceRightStr }
+    val surfaceLeft = surfaceMap[surfaceLeftStr]
+    val surfaceRight = surfaceMap[surfaceRightStr]
     if (surfaceLeft == null && surfaceRight == null) return null
     val note = tags["sidewalk:surface:note"]
     val bothNote = tags["sidewalk:both:surface:note"]
@@ -20,3 +20,5 @@ fun createSidewalkSurface(tags: Map<String, String>): LeftAndRightSidewalkSurfac
         surfaceRight?.let { SurfaceAndNote(it, rightNote) }
     )
 }
+
+private val surfaceMap: Map<String, Surface> = Surface.values().associateBy { it.osmValue }
