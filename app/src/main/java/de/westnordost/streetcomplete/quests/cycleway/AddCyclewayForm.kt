@@ -7,15 +7,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
+import de.westnordost.streetcomplete.osm.cycleway.Direction
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.getDefault
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
-import de.westnordost.streetcomplete.osm.isOneway
-import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
@@ -56,18 +57,14 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
 
     private var reverseDirection: Boolean = false
 
-    /** returns whether the side that goes into the opposite direction of the driving direction of a
-     * one-way is on the right side of the way */
-    private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
-
-    private val isOneway get() = isOneway(element.tags)
-    private val isReversedOneway get() = isReversedOneway(element.tags)
-
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    private fun isContraflowInOneway(isRight: Boolean): Boolean =
-        isOneway && (isReverseSideRight == isRight)
+    private fun isContraflowInOneway(isRight: Boolean): Boolean {
+        val direction = streetSideSelect.getPuzzleSide(isRight)?.value?.direction
+            ?: Direction.getDefault(isRight, isLeftHandTraffic)
+        return isInContraflowOfOneway(element.tags, direction)
+    }
 
     /* ---------------------------------------- lifecycle --------------------------------------- */
 
@@ -139,11 +136,10 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
     }
 
     private fun reverseCyclewayDirection(isRight: Boolean) {
-        val isContraflowInOneway = isContraflowInOneway(isRight)
         reverseDirection = false
         val value = streetSideSelect.getPuzzleSide(isRight)?.value ?: return
         val newValue = value.copy(direction = value.direction.reverse())
-        val newItem = newValue.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)
+        val newItem = newValue.asStreetSideItem(isRight, isContraflowInOneway(isRight), countryInfo)
         streetSideSelect.replacePuzzleSide(newItem, isRight)
     }
 
@@ -159,8 +155,10 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
 
     private fun selectCycleway(isRight: Boolean) {
         val isContraflowInOneway = isContraflowInOneway(isRight)
-        val dialogItems = getSelectableCycleways(countryInfo, element.tags, isRight)
-            .map { it.asDialogItem(isRight, isContraflowInOneway, requireContext(), countryInfo, ) }
+        val direction = streetSideSelect.getPuzzleSide(isRight)?.value?.direction
+            ?: Direction.getDefault(isRight, isLeftHandTraffic)
+        val dialogItems = getSelectableCycleways(countryInfo, element.tags, direction)
+            .map { it.asDialogItem(isRight, isContraflowInOneway, requireContext(), countryInfo) }
 
         ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
             val streetSideItem = item.value!!.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)

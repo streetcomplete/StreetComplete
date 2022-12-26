@@ -154,10 +154,7 @@ private fun createDirectionForSide(
         "no" ->  Direction.BOTH
         else ->  null
     }
-    val defaultDirection =
-        if (isRight xor isLeftHandTraffic) Direction.FORWARD else Direction.BACKWARD
-
-    return explicitDirection ?: defaultDirection
+    return explicitDirection ?: Direction.getDefault(isRight, isLeftHandTraffic)
 }
 
 /** Returns the cycleway value using the given tags for the given side using other tags that imply

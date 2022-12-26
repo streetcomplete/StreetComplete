@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.osm.cycleway.Direction
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -43,25 +44,15 @@ class OnewayKtTest {
         val reverseOneway = mapOf("oneway" to "-1")
 
         // not in oneway
-        assertFalse(isInContraflowOfOneway(false, mapOf(), false))
-        assertFalse(isInContraflowOfOneway(false, mapOf(), true))
-        assertFalse(isInContraflowOfOneway(true, mapOf(), false))
-        assertFalse(isInContraflowOfOneway(true, mapOf(), true))
+        assertFalse(isInContraflowOfOneway(mapOf(), Direction.FORWARD))
+        assertFalse(isInContraflowOfOneway(mapOf(), Direction.BACKWARD))
 
-        // sides of oneway
-        assertTrue(isInContraflowOfOneway(false, oneway, false))
-        assertFalse(isInContraflowOfOneway(true, oneway, false))
+        // forward oneway
+        assertTrue(isInContraflowOfOneway(oneway, Direction.BACKWARD))
+        assertFalse(isInContraflowOfOneway(oneway, Direction.FORWARD))
 
-        // sides of reverse oneway
-        assertFalse(isInContraflowOfOneway(false, reverseOneway, false))
-        assertTrue(isInContraflowOfOneway(true, reverseOneway, false))
-
-        // sides of reverse oneway in left hand traffic countries
-        assertTrue(isInContraflowOfOneway(false, reverseOneway, true))
-        assertFalse(isInContraflowOfOneway(true, reverseOneway, true))
-
-        // sides of oneway in left hand traffic countries
-        assertFalse(isInContraflowOfOneway(false, oneway, true))
-        assertTrue(isInContraflowOfOneway(true, oneway, true))
+        // reverse oneway
+        assertTrue(isInContraflowOfOneway(reverseOneway, Direction.FORWARD))
+        assertFalse(isInContraflowOfOneway(reverseOneway, Direction.BACKWARD))
     }
 }

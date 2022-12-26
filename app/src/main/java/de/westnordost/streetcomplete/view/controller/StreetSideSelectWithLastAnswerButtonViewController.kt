@@ -115,7 +115,6 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
         puzzleView.setLeftSideImage(defaultPuzzleImageLeft)
         puzzleView.setRightSideImage(defaultPuzzleImageRight)
-        updateLastSelectionButton()
     }
 
     /* ------------------------------------ rotate view ----------------------------------------- */
@@ -192,7 +191,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         }
     }
 
-    private fun updateLastSelectionButton() {
+    fun updateLastSelectionButton() {
         updateLastSelectionButtonVisibility()
         val left: I?
         val right: I?
