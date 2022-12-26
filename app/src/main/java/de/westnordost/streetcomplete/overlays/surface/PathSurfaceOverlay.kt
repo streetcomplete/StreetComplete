@@ -43,10 +43,12 @@ class PathSurfaceOverlay : Overlay {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
     override val hidesQuestTypes = setOf(AddPathSurface::class.simpleName!!)
 
+    private val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
+
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
         return mapData
-           .filter( """ways, relations with
+           .filter( """
+               ways, relations with
                (
                    highway ~ ${(ALL_PATHS).joinToString("|")}
                    and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
@@ -63,12 +65,12 @@ class PathSurfaceOverlay : Overlay {
                or
                (
                    highway ~ ${(ALL_ROADS).joinToString("|")}
-                   and (sidewalk=both or sidewalk=left or sidewalk=right or sidewalk:left=yes or sidewalk:right=yes)
+                   and (sidewalk ~ left|right|both or sidewalk:left = yes or sidewalk:right = yes)
                    and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
                )
-               """)
+           """)
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
     }
 
@@ -113,6 +115,7 @@ private fun getStyle(element: Element): Style {
         getStyleForSidewalkAsProperty(element)
     }
 }
+
 private fun getStyleForStandalonePath(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
     var dominatingSurface: Surface? = null
@@ -122,40 +125,41 @@ private fun getStyleForStandalonePath(element: Element): Style {
             dominatingSurface = surfaceStatus.surface
             noteProvided = surfaceStatus.note
         }
-        is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
-            // the worst case possible - bad surface without note: so lets present it
-            dominatingSurface = surfaceStatus.cycleway
-            noteProvided = surfaceStatus.cyclewayNote
-        } else if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
-            // cycleway surface either has
-            // data as bad as this one (also bad surface, without note)
-            // or even worse (bad surface without note, while here maybe there is a note)
-            dominatingSurface = surfaceStatus.footway
-            noteProvided = surfaceStatus.footwayNote
-        } else if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES) {
-            // so footway has no bad surface, while cycleway has bad surface
-            // lets take worse one
-            dominatingSurface = surfaceStatus.cycleway
-            noteProvided = surfaceStatus.cyclewayNote
-        } else {
-            // cycleway is arbitrarily taken as dominating here
-            // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
+        is CyclewayFootwaySurfacesWithNote -> {
+            if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
+                // the worst case possible - bad surface without note: so lets present it
+                dominatingSurface = surfaceStatus.cycleway
+                noteProvided = surfaceStatus.cyclewayNote
+            } else if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
+                // cycleway surface either has
+                // data as bad as this one (also bad surface, without note)
+                // or even worse (bad surface without note, while here maybe there is a note)
+                dominatingSurface = surfaceStatus.footway
+                noteProvided = surfaceStatus.footwayNote
+            } else if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES) {
+                // so footway has no bad surface, while cycleway has bad surface
+                // lets take worse one
+                dominatingSurface = surfaceStatus.cycleway
+                noteProvided = surfaceStatus.cyclewayNote
+            } else {
+                // cycleway is arbitrarily taken as dominating here
+                // though for bicycles surface is a bit more important
+                dominatingSurface = surfaceStatus.cycleway
+            }
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
         }
-        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
-            dominatingSurface = surfaceStatus.footway
-        } else {
-            // cycleway is arbitrarily taken as dominating here
-            // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
+        is CyclewayFootwaySurfaces -> {
+            if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
+                dominatingSurface = surfaceStatus.footway
+            } else {
+                // cycleway is arbitrarily taken as dominating here
+                // though for bicycles surface is a bit more important
+                dominatingSurface = surfaceStatus.cycleway
+            }
         }
-        is SurfaceMissing -> {
-            // no action needed
-        }
-        is SurfaceMissingWithNote -> {
+        is SurfaceMissing, is SurfaceMissingWithNote -> {
             // no action needed
         }
     }
