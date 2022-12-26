@@ -165,7 +165,7 @@ private fun getStyleForStandalonePath(element: Element): Style {
     }
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES
-    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
+    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
 
     val color = if (isNotSetButThatsOkay) {
         Color.INVISIBLE
