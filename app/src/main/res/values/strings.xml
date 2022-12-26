@@ -1001,7 +1001,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fireHydrant_type_pillar">Pillar</string>
     <string name="quest_fireHydrant_type_underground">Underground</string>
     <string name="quest_fireHydrant_type_wall">Wall</string>
-    <string name="quest_fireHydrant_type_pond">Pond</string>
+    <string name="quest_fireHydrant_type_pipe">Pipe</string>
 
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
