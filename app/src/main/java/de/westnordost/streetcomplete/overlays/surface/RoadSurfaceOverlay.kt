@@ -37,24 +37,21 @@ class RoadSurfaceOverlay : Overlay {
     override val achievements = listOf(CAR, BICYCLIST)
     override val hidesQuestTypes = setOf(AddRoadSurface::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
+    private val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
+
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
-        return mapData
-           .filter( """ways, relations with
-               highway ~ ${(ALL_ROADS).joinToString("|")}
-               and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
-               and (!surface:note or surface)
-               """)
-           .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
+        return mapData.filter("""
+               ways, relations with
+                 highway ~ ${(ALL_ROADS).joinToString("|")}
+                 and (!surface or surface ~ ${handledSurfaces.joinToString("|")})
+                 and (!surface:note or surface)
+           """)
+           .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }
+           .map { it to getStyle(it) }
     }
 
-    private fun tagsHaveOnlyAllowedSurfaceKeys(tags: Map<String, String>): Boolean {
-        return tags.keys.none {
-            "surface" in it && it !in allowedTagWithSurfaceInKey
-        }
-    }
     // https://taginfo.openstreetmap.org/search?q=surface
-    val supportedSurfaceKeys = listOf(
+    private val supportedSurfaceKeys = listOf(
         // supported in this overlay, but not in all overlays
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
@@ -68,6 +65,12 @@ class RoadSurfaceOverlay : Overlay {
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter
     )
+
+    private fun tagsHaveOnlyAllowedSurfaceKeys(tags: Map<String, String>): Boolean {
+        return tags.keys.none {
+            "surface" in it && it !in allowedTagWithSurfaceInKey
+        }
+    }
 
     override fun createForm(element: Element?) =
         if (element != null && element.tags["highway"] in ALL_ROADS) RoadSurfaceOverlayForm()
@@ -86,17 +89,14 @@ private fun getStyle(element: Element): Style {
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
         }
-        is CyclewayFootwaySurfaces -> {
-            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface and footway:surface")
-        }
         is SurfaceMissing -> {
             // no action needed
         }
         is SurfaceMissingWithNote -> {
             noteProvided = surfaceStatus.note
         }
-        is CyclewayFootwaySurfacesWithNote -> {
-            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface:note and footway:surface:note")
+        is CyclewayFootwaySurfaces, is CyclewayFootwaySurfacesWithNote -> {
+            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface and footway:surface")
         }
     }
     // not set but indoor or private -> do not highlight as missing
