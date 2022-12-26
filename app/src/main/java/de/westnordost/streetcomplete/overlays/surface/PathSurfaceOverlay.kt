@@ -55,7 +55,7 @@ class PathSurfaceOverlay : Overlay {
                    and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (segregated = yes or (!cycleway:surface and !footway:surface))
-                   and (!surface:note or (surface or cycleway:surface or footway:surface or segregated=yes))
+                   and (!surface:note or (surface or cycleway:surface or footway:surface or segregated = yes))
                    and (!cycleway:surface:note or cycleway:surface)
                    and (!footway:surface:note or footway:surface)
                    and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
@@ -65,7 +65,7 @@ class PathSurfaceOverlay : Overlay {
                or
                (
                    highway ~ ${(ALL_ROADS).joinToString("|")}
-                   and (sidewalk ~ left|right|both or sidewalk:left = yes or sidewalk:right = yes)
+                   and (sidewalk ~ left|right|both or sidewalk:both = yes or sidewalk:left = yes or sidewalk:right = yes)
                    and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
