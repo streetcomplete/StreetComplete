@@ -31,6 +31,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 
 class PathSurfaceOverlay : Overlay {
 
@@ -178,33 +180,23 @@ private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
         return PolylineStyle(StrokeStyle(Color.INVISIBLE))
     }
 
-    val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
-    val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
-    val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
-    val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
-    val leftNote = if (element.tags["sidewalk:left:surface"] != null) { element.tags["sidewalk:left:surface"] } else { element.tags["sidewalk:both:surface"] }
-    val rightNote = if (element.tags["sidewalk:right:surface"] != null) { element.tags["sidewalk:right:surface"] } else { element.tags["sidewalk:both:surface"] }
-    val leftIsNotSet = leftSurfaceObject in UNDERSPECIFED_SURFACES
-    val rightIsNotSet = rightSurfaceObject in UNDERSPECIFED_SURFACES
-    val leftColor = if (sidewalkSides.left != Sidewalk.YES) {
-        Color.INVISIBLE
-    } else if (leftIsNotSet && leftNote != null) {
-        Color.BLACK
-    } else {
-        leftSurfaceObject.color
-    }
-    val rightColor = if (sidewalkSides.right != Sidewalk.YES) {
-        Color.INVISIBLE
-    } else if (rightIsNotSet && rightNote != null) {
-        Color.BLACK
-    } else {
-        rightSurfaceObject.color
-    }
+    val sidewalkSurface = createSidewalkSurface(element.tags)
+    val leftColor =
+        if (sidewalkSides.left != Sidewalk.YES) Color.INVISIBLE
+        else sidewalkSurface?.left.color
+    val rightColor =
+        if (sidewalkSides.right != Sidewalk.YES) Color.INVISIBLE
+        else sidewalkSurface?.right.color
+
     return PolylineStyle(
         stroke = null,
         strokeLeft = StrokeStyle(leftColor),
         strokeRight = StrokeStyle(rightColor)
     )
 }
+
+private val SurfaceAndNote?.color: String get() =
+    if (this?.value in UNDERSPECIFED_SURFACES && this?.note != null) Color.BLACK
+    else this?.value.color
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
