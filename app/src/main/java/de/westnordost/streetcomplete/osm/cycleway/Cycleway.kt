@@ -180,6 +180,7 @@ fun getSelectableCycleways(
     val dualCycleways = listOf(
         CyclewayAndDirection(if (countryInfo.hasAdvisoryCycleLane) EXCLUSIVE_LANE else UNSPECIFIED_LANE, BOTH),
         CyclewayAndDirection(TRACK, BOTH),
+        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH)
     )
 
     // no need to distinguish between advisory and exclusive lane where the concept of exclusive

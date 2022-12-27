@@ -6,6 +6,7 @@ v50.1: |
   <li>Fix rare crash (#4685)</li>
   <li>Fire hydrant type quest: Replace deprecated selection of "pond" with "pipe" (see #362)</li>
   <li>Small enhancements and fixes on the bike paths overlay (#4698, #4669, #4701)</li>
+  <li>Bike paths quest and overlay: Add "explicitly on sidewalk, both directions" as selectable option (#4692)</li>
   <li>Clarify wordings and other small enhancements (#4682, #4695, #4702, #4699...), thanks @matkoniecz</li>
 
 v50.0: |
