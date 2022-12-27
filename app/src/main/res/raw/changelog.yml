@@ -1,4 +1,5 @@
 v50.1: |
+  <p>StreetComplete now has <a href="https://github.com/streetcomplete/StreetComplete/">3000 stars on GitHub</a>. Thanks, guys! 🤩</p>
   <ul>
   <li>Fix latinization of Serbian to latin script</li>
   <li>Fix sidewalk, bike paths, road width and lanes quest would often not show up in Romania and Russia (#4684)</li>
