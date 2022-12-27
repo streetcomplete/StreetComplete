@@ -53,8 +53,8 @@ data class CyclewayAndDirection(val cycleway: Cycleway, val direction: Direction
 
 fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
     cycleway.isSelectable(countryInfo) &&
-    // only allow dual track and dual lanes (not dual pictograms or something)
-    (direction != BOTH || cycleway == TRACK || cycleway == UNSPECIFIED_LANE || cycleway == EXCLUSIVE_LANE)
+    // only allow dual track, dual lanes and "dual" sidewalk (not dual pictograms or something)
+    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT))
 
 @Serializable
 enum class Direction {
