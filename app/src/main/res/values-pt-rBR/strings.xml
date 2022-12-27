@@ -222,7 +222,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_fireHydrant_type_pillar">"Pilar"</string>
     <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
     <string name="quest_fireHydrant_type_wall">"Parede"</string>
-    <string name="quest_fireHydrant_type_pond">"Açude"</string>
     <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
@@ -1274,4 +1273,5 @@ Que tipo de memorial é esse?"</string>
     <string name="confirmation_replace_shop_message">"Nesse caso, o horário de funcionamento, as informações de contato etc. também serão alterados."</string>
     <string name="confirmation_replace_shop_yes">"Lugar diferente agora"</string>
     <string name="confirmation_replace_shop_no">"Ainda no mesmo lugar"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"Compartilhada explicitamente com calçada, ambas as direções"</string>
 </resources>

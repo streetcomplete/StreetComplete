@@ -222,7 +222,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_fireHydrant_type_pillar">"Stående"</string>
     <string name="quest_fireHydrant_type_underground">"Under bakken"</string>
     <string name="quest_fireHydrant_type_wall">"Vegg"</string>
-    <string name="quest_fireHydrant_type_pond">"Rør i innsjø"</string>
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Oversettelser"</string>
     <string name="credits_contributors_title">"Programmerere"</string>
@@ -1273,4 +1272,5 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="overlay_cycleway">"Sykkelveier"</string>
     <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"gang- og sykkelvei, begge retninger"</string>
 </resources>

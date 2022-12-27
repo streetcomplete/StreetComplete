@@ -221,7 +221,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_fireHydrant_type_pillar">"Paaltje"</string>
     <string name="quest_fireHydrant_type_underground">"Ondergronds"</string>
     <string name="quest_fireHydrant_type_wall">"Muur"</string>
-    <string name="quest_fireHydrant_type_pond">"Dompelpomp"</string>
     <string name="credits_contributors">"Zie de &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt; complete lijst op GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Vertalingen"</string>
     <string name="credits_contributors_title">"Code mede-auteurs"</string>
@@ -1266,4 +1265,31 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="confirmation_replace_shop_message">"Maar dan moet ook de openingsuren, contact informatie etc. worden veranderd. "</string>
     <string name="confirmation_replace_shop_yes">"Andere plaats"</string>
     <string name="confirmation_replace_shop_no">"Dezelfde plaats"</string>
+    <string name="move_node">"Het is op een iets andere positie..."</string>
+    <string name="quest_move_node_message">"U kunt de positie corrigeren door het element te verplaatsen.
+Nu verplaatsen?"</string>
+    <string name="node_moved_not_far_enough">"Verplaats het alstublieft verder"</string>
+    <string name="node_moved_too_far">"Te ver verplaatst. Overweeg een notitie achter te laten"</string>
+    <string name="node_moved">"Verplaatst door %s"</string>
+    <string name="move_node_description">"Versleep de kaart om het element op de juiste positie te plaatsen. Gebruik de zoomfunctie en probeer zo precies mogelijk te zijn. Houd er rekening mee dat uw weergegeven locatie mogelijk minder exact is dan weergegeven."</string>
+    <string name="move_node_action_description">"Je hebt het element verplaatst"</string>
+    <string name="quest_cycleway_value_shoulder">"geen, maar de vluchtstrook is bruikbaar voor fietsers"</string>
+    <string name="quest_placeName_no_name_answer">"Daar is geen naambord"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Deze breedte lijkt ongeloofwaardig. Onthoud dat dit de breedte moet zijn van stoeprand tot stoeprand, inclusief parkeren op straat, fietspaden enz."</string>
+    <string name="overlay_cycleway">"Fietspaden"</string>
+    <string name="bicycle_boulevard_is_a">"Het is een %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Het is niet een %1$s"</string>
+    <string name="bicycle_boulevard">"Fiets boulevard"</string>
+    <string name="separate_cycleway_no">"Fietsen is niet toegestaan"</string>
+    <string name="separate_cycleway_allowed">"Fietsen is toegestaan"</string>
+    <string name="separate_cycleway_no_or_allowed">"Niet bestemd voor fietsers (fietsen mag misschien nog wel)"</string>
+    <string name="separate_cycleway_non_segregated">"Pad voor gedeeld gebruik"</string>
+    <string name="separate_cycleway_segregated">"Gescheiden fiets- en voetpad"</string>
+    <string name="separate_cycleway_exclusive">"Pad alleen voor fietsers"</string>
+    <string name="separate_cycleway_with_sidewalk">"Fietspad met aangrenzend trottoir (gescheiden door een stoeprand)"</string>
+    <string name="cycleway_reverse_direction">"Wijzig rijrichting fietspad"</string>
+    <string name="cycleway_reverse_direction_warning">"Dat een fietspad de andere kant op gaat, komt zelden voor."</string>
+    <string name="cycleway_reverse_direction_toast">"Tik om aan tegeven naar welke kan de rijrichting moet komen."</string>
+    <string name="quest_fireHydrant_type_pipe">"Pijp"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"een fietspad gedeeld met voetgangers, in beide richtingen"</string>
 </resources>

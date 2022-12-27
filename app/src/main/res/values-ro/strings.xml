@@ -222,7 +222,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_fireHydrant_type_pillar">"Stâlp"</string>
     <string name="quest_fireHydrant_type_underground">"Subteran"</string>
     <string name="quest_fireHydrant_type_wall">"Zid"</string>
-    <string name="quest_fireHydrant_type_pond">"Iaz"</string>
     <string name="credits_contributors">"Accesează &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completă pe GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduceri"</string>
     <string name="credits_contributors_title">"Contribuții la cod"</string>
@@ -991,4 +990,5 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Pe trotuar"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Într-un loc de parcare"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"trotuar clar împărțit, ambele direcții"</string>
 </resources>

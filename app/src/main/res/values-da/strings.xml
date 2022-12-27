@@ -223,7 +223,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_fireHydrant_type_pillar">"Søjle"</string>
     <string name="quest_fireHydrant_type_underground">"Underjordisk"</string>
     <string name="quest_fireHydrant_type_wall">"Væg"</string>
-    <string name="quest_fireHydrant_type_pond">"Dam"</string>
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Oversættelser"</string>
     <string name="credits_contributors_title">"Kodebidragsydere"</string>
@@ -1288,7 +1287,7 @@ Vil du flytte det nu?"</string>
     <string name="bicycle_boulevard">"Cykelgade"</string>
     <string name="separate_cycleway_no">"Ingen cykling"</string>
     <string name="separate_cycleway_allowed">"Cykling er tilladt"</string>
-    <string name="separate_cycleway_no_or_allowed">"Ikke beregnet til cyklister (cykling kan stadig være tilladt)"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ikke beregnet til cyklister (cykling kan dog være tilladt)"</string>
     <string name="separate_cycleway_non_segregated">"Fællessti"</string>
     <string name="separate_cycleway_segregated">"Opdelt cykel- og gangsti"</string>
     <string name="separate_cycleway_exclusive">"Udelukkende cykelsti"</string>
@@ -1297,4 +1296,6 @@ Vil du flytte det nu?"</string>
     <string name="cycleway_reverse_direction_warning">"Det er yderst sjældent, at en cykelsti går i den anden retning."</string>
     <string name="cycleway_reverse_direction_toast">"Tryk på den side, der skal vendes"</string>
     <string name="separate_cycleway_path">"Sti eller spor"</string>
+    <string name="quest_fireHydrant_type_pipe">"Rør"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"fællessti, begge retninger"</string>
 </resources>

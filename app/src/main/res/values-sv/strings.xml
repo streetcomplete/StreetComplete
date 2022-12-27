@@ -222,7 +222,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_fireHydrant_type_pillar">"Pelare"</string>
     <string name="quest_fireHydrant_type_underground">"Underjordisk"</string>
     <string name="quest_fireHydrant_type_wall">"Väggmonterad"</string>
-    <string name="quest_fireHydrant_type_pond">"Damm"</string>
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;hela listan på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Översättningar"</string>
     <string name="credits_contributors_title">"Kodbidragsgivare"</string>
@@ -1291,9 +1290,14 @@ Flytta den?"</string>
     <string name="bicycle_boulevard">"Cykelgata"</string>
     <string name="separate_cycleway_no">"Cykling förbjuden"</string>
     <string name="separate_cycleway_allowed">"Cykling tillåten"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ej lämpad för cyklister (oavsett om cykling är tillåten eller ej)"</string>
+    <string name="separate_cycleway_non_segregated">"Gemensam gång- och cykelbana"</string>
     <string name="separate_cycleway_segregated">"Uppdelad gång- och cykelbana"</string>
     <string name="separate_cycleway_exclusive">"Endast cyklister"</string>
+    <string name="separate_cycleway_with_sidewalk">"Cykelbana med trottoar"</string>
     <string name="cycleway_reverse_direction">"Omvänd cykelvägsriktning"</string>
     <string name="cycleway_reverse_direction_warning">"Att en cykelväg går i motsatt riktning är mycket ovanligt."</string>
     <string name="cycleway_reverse_direction_toast">"Välj sida att vända på"</string>
+    <string name="separate_cycleway_path">"Stig eller spår"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"gång- och cykelbana, båda riktningarna"</string>
 </resources>

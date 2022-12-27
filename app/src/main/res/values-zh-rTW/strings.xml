@@ -222,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"地上式消防栓"</string>
     <string name="quest_fireHydrant_type_underground">"地下式消防栓"</string>
     <string name="quest_fireHydrant_type_wall">"消防栓箱"</string>
-    <string name="quest_fireHydrant_type_pond">"池塘"</string>
     <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
     <string name="credits_translations_title">"翻譯"</string>
     <string name="credits_contributors_title">"程式碼貢獻者"</string>
@@ -1270,4 +1269,11 @@
     <string name="confirmation_replace_shop_message">"在這個例子下，營運時間、聯絡資訊等都會變動。"</string>
     <string name="confirmation_replace_shop_yes">"現在是不同的地點了"</string>
     <string name="confirmation_replace_shop_no">"還在相同的地點"</string>
+    <string name="move_node">"它在一個略微不同的位置…"</string>
+    <string name="quest_move_node_message">"可以通過移動特征來更正它的位置。
+現在移動嗎？"</string>
+    <string name="node_moved_not_far_enough">"請進一步移動它"</string>
+    <string name="node_moved_too_far">"你移動的太遠了。請考慮留個便簽在此"</string>
+    <string name="separate_cycleway_no">"禁止騎非機動車"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"應與人行道共用"</string>
 </resources>

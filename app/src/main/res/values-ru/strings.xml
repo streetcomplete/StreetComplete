@@ -223,7 +223,6 @@
     <string name="quest_fireHydrant_type_pillar">"Надземный (гидрант)"</string>
     <string name="quest_fireHydrant_type_underground">"Подземный (люк)"</string>
     <string name="quest_fireHydrant_type_wall">"Пожарный кран на стене"</string>
-    <string name="quest_fireHydrant_type_pond">"Пожарный пруд"</string>
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Переводы"</string>
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
@@ -1276,4 +1275,5 @@
     <string name="confirmation_replace_shop_message">"В таком случае, часы работы, контактная информация итд. тоже изменились."</string>
     <string name="confirmation_replace_shop_yes">"Теперь это другое место"</string>
     <string name="confirmation_replace_shop_no">"Это всё ещё то же место"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
 </resources>

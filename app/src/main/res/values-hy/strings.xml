@@ -202,7 +202,6 @@
     <string name="quest_fireHydrant_type_pillar">"Սյուն"</string>
     <string name="quest_fireHydrant_type_underground">"Ստորգետնյա"</string>
     <string name="quest_fireHydrant_type_wall">"Պատյան"</string>
-    <string name="quest_fireHydrant_type_pond">"Լիճ"</string>
     <string name="credits_translations_title">"Թարգմանություններ"</string>
     <string name="credits_contributors_title">"Կոդ ներդրողներ"</string>
     <string name="credits_author_title">"Հեղինակ եւ պահպանող"</string>
@@ -1107,4 +1106,5 @@
     <string name="quest_toiletAvailability_title">"Այստեղ կա որեւէ հանգստի սենյակ"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Այս վայրում զուգարանը մատչելի է սայլակով:"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Համոզված եք, որ հեծանվորդներին թույլ չեն տալիս երկու ուղղություններով օգտագործել այս մեկ ճանապարհի փողոցը: Կասկածում, ստուգեք, թե արդյոք փողոցում նշան կա:"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"բացահայտորեն համօգտագործված մայթ, երկու ուղղություններ"</string>
 </resources>

@@ -222,7 +222,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_fireHydrant_type_pillar">"Oszlop"</string>
     <string name="quest_fireHydrant_type_underground">"Föld alatti"</string>
     <string name="quest_fireHydrant_type_wall">"Fali"</string>
-    <string name="quest_fireHydrant_type_pond">"Tó"</string>
     <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;A teljes lista a GitHubon&lt;/a&gt; található."</string>
     <string name="credits_translations_title">"Fordítás"</string>
     <string name="credits_contributors_title">"A kódolásban közreműködők"</string>
@@ -308,14 +307,14 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_leave_new_note_photo">"Fénykép csatolása"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Törölni szeretnéd ezt a fényképet?"</string>
     <string name="quest_cycleway_value_track">"egyirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
-    <string name="quest_cycleway_value_lane">"kerékpársáv (SÁRGA folytonos vagy szaggatott vonal)"</string>
+    <string name="quest_cycleway_value_lane">"kerékpársáv (sárga folytonos vagy szaggatott vonal)"</string>
     <string name="quest_cycleway_value_none">"nincs"</string>
     <string name="quest_cycleway_value_shared">"kerékpáros nyom (piktogram)"</string>
     <string name="quest_cycleway_value_bus_lane">"busz- és kerékpársáv"</string>
     <string name="quest_cycleway_value_sidewalk">"gyalog- és kerékpárút"</string>
     <string name="quest_leave_new_note_create_image_error">"Nem sikerült a fényképhez fájlt létrehozni"</string>
-    <string name="quest_cycleway_value_lane_dual">"kétirányú kerékpársáv"</string>
-    <string name="quest_cycleway_value_track_dual">"kétirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
+    <string name="quest_cycleway_value_lane_dual">"egyoldali kétirányú kerékpársáv"</string>
+    <string name="quest_cycleway_value_track_dual">"egyoldali kétirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
     <string name="pref_category_advanced">"Speciális"</string>
     <string name="quest_enabled">"Engedélyezve"</string>
     <string name="quest_type">"Kérdéstípus"</string>
@@ -1261,22 +1260,37 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_bicycle_parking_type_two_tier">"Kétszintes kerékpártartó"</string>
     <string name="user_profile_current_week_title">"Ezen a héten"</string>
     <string name="user_profile_dates_mapped">"Térképezéssel töltött napok"</string>
-    <string name="quest_cycleway_value_advisory_lane">"nyitott kerékpársáv"</string>
+    <string name="quest_cycleway_value_advisory_lane">"nyitott kerékpársáv (fehér szaggatott vonal)"</string>
     <string name="urlconfig_scan_qr_code_again2">"Az alkalmazás telepítése után olvasd le újra a QR-kódot, vagy kattints &lt;a href=\"%s\"&gt;erre a hivatkozásra&lt;/a&gt; az előre beállított érték alkalmazásához."</string>
     <string name="confirmation_replace_shop_title">"Ez most egy másik üzlet?"</string>
     <string name="confirmation_replace_shop_message">"Ebben az esetben a nyitvatartási idő, az elérhetőségek stb. is megváltoztak."</string>
     <string name="confirmation_replace_shop_yes">"Ez egy másik üzlet lett"</string>
     <string name="confirmation_replace_shop_no">"Ugyanaz a hely"</string>
     <string name="move_node">"Kicsit más helyzetben van..."</string>
+    <string name="quest_move_node_message">"Az elem áthelyezésével korrigálhatja a pozíciót.
+Most akarja elmozdítani?"</string>
     <string name="node_moved_not_far_enough">"Kérjük, vigye tovább"</string>
     <string name="node_moved_too_far">"Túl messzire került. Fontolja meg, hogy megjegyzést hagyjon"</string>
+    <string name="node_moved">"Áthelyezve %s távolságra"</string>
+    <string name="move_node_description">"Mozgassa a térképet, hogy a megfelelő pozícióba kerüljön az objektum. Használja a nagyítást, és igyekezzen a lehető legpontosabban meghatározni a helyet. A megjelenített hely lehet, hogy nem lesz annyira pontos, mint amennyire a kijelzőn látható."</string>
     <string name="move_node_action_description">"Áthelyezte a csomópontot"</string>
+    <string name="quest_cycleway_value_shoulder">"nincs, de a burkolt padka kerékpározásra alkalmas"</string>
     <string name="quest_placeName_no_name_answer">"Nincs névtábla"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Ez a szélesség valószínűtlennek tűnik. Ne feledje, ennek a szélességnek a járdaszegélytől a járdaszegélyig terjedő szélességnek kell lennie, beleértve az utcai parkolást, a kerékpársávokat stb. is."</string>
-    <string name="separate_cycleway_no">"Nincs kerékpározás"</string>
-    <string name="separate_cycleway_allowed">"Kerékpárosok számára engedélyezett"</string>
-    <string name="separate_cycleway_segregated">"Elkülönített kerékpár- és gyalogút"</string>
+    <string name="overlay_cycleway">"Kerékpárutak"</string>
+    <string name="bicycle_boulevard_is_a">"Ez egy %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Ez nem %1$s"</string>
+    <string name="bicycle_boulevard">"Bicikliút"</string>
+    <string name="separate_cycleway_no">"Kerékpározás nem megengedett"</string>
+    <string name="separate_cycleway_allowed">"Kerékpározás megengedett"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nem kerékpárosok számára van kijelölve (a kerékpározás ettől még megengedett lehet)"</string>
+    <string name="separate_cycleway_non_segregated">"Nem elválasztott gyalog- és kerékpárút"</string>
+    <string name="separate_cycleway_segregated">"Elválasztott gyalog- és kerékpárút"</string>
     <string name="separate_cycleway_exclusive">"Kizárólag kerékpárút"</string>
+    <string name="separate_cycleway_with_sidewalk">"Kerékpárút a párhuzamos járdától szegéllyel elválasztva"</string>
     <string name="cycleway_reverse_direction">"A kerékpárút irányának megfordítása"</string>
+    <string name="cycleway_reverse_direction_warning">"Rendkívül ritka, hogy egy kerékpárút az ellenkező irányba menjen."</string>
     <string name="cycleway_reverse_direction_toast">"Érintse meg, hogy melyik oldala legyen fordítva"</string>
+    <string name="separate_cycleway_path">"Gyalog- és kerékpárút"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"kétirányú  gyalog- és kerékpárút"</string>
 </resources>

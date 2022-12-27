@@ -223,7 +223,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_fireHydrant_type_pillar">"Poste"</string>
     <string name="quest_fireHydrant_type_underground">"Subterránea (arqueta)"</string>
     <string name="quest_fireHydrant_type_wall">"Muro (BIE)"</string>
-    <string name="quest_fireHydrant_type_pond">"Estanque"</string>
     <string name="credits_contributors">"Puedes ver &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;la lista entera de colaboradores en GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traducciones"</string>
     <string name="credits_contributors_title">"Aportaciones de código"</string>
@@ -1266,6 +1265,18 @@ También puedes dejar una nota (con foto)."</string>
     <string name="node_moved_not_far_enough">"Muévalo más lejos"</string>
     <string name="node_moved_too_far">"Lo ha movido demasiado. Considere dejar una nota"</string>
     <string name="node_moved">"Movido %s"</string>
+    <string name="move_node_description">"Arrastra el mapa para localizar el elemento en la posición correcta. Usa el zoom y trata de ser lo más preciso posible. Por favor, ten en cuenta que tu posición mostrada puede ser menos precisa que la real."</string>
     <string name="move_node_action_description">"Ha movido el nodo"</string>
     <string name="quest_placeName_no_name_answer">"No hay señal con el nombre"</string>
+    <string name="overlay_cycleway">"Carriles bici"</string>
+    <string name="bicycle_boulevard_is_a">"Es un %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"No es un %1$s"</string>
+    <string name="separate_cycleway_no">"No permitida la bici"</string>
+    <string name="separate_cycleway_allowed">"Ciclistas permitidos"</string>
+    <string name="separate_cycleway_no_or_allowed">"No pensado para ciclistas (no significa que esté prohibido)"</string>
+    <string name="separate_cycleway_non_segregated">"Camino de uso compartido"</string>
+    <string name="separate_cycleway_segregated">"Camino peatonal y ciclista por separado"</string>
+    <string name="separate_cycleway_exclusive">"Camino exclusivamente ciclista"</string>
+    <string name="cycleway_reverse_direction">"Carril bici en sentido contrario"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
 </resources>

@@ -222,7 +222,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_fireHydrant_type_pillar">"Stup"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemni"</string>
     <string name="quest_fireHydrant_type_wall">"Na zidu"</string>
-    <string name="quest_fireHydrant_type_pond">"Jezero"</string>
     <string name="credits_contributors">"Pogledajte &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;cjelovit popis na GitHubu&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
@@ -1291,9 +1290,14 @@ Pomaknuti sada?"</string>
     <string name="bicycle_boulevard">"Biciklistička avenija"</string>
     <string name="separate_cycleway_no">"Zabranjeno bicikliranje"</string>
     <string name="separate_cycleway_allowed">"Bicikliranje je dozvoljeno"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nije predviđeno za bicikle (iako je vožnja biciklom možda dopuštena)"</string>
+    <string name="separate_cycleway_non_segregated">"Staza za zajedničku upotrebu"</string>
     <string name="separate_cycleway_segregated">"Razdvojena staza za bicikle i pješake"</string>
     <string name="separate_cycleway_exclusive">"Staza isključivo za bicikle"</string>
+    <string name="separate_cycleway_with_sidewalk">"Staza isključivo za bicikle sa susjednim nogostupom za pješake (odvojen rubnikom)"</string>
     <string name="cycleway_reverse_direction">"Obrnuti smjer biciklističke staze"</string>
     <string name="cycleway_reverse_direction_warning">"Iznimno je rijetko da biciklistička staza ide u suprotnom smjeru."</string>
     <string name="cycleway_reverse_direction_toast">"Dotaknite stranu koju želite preokrenuti"</string>
+    <string name="separate_cycleway_path">"Staza ili puteljak"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"nogostup eksplicitno dijeljen zajedno s pješacima, u oba smjera"</string>
 </resources>

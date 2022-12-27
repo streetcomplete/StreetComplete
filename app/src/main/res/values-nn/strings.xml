@@ -197,7 +197,6 @@
     <string name="quest_fireHydrant_type_pillar">"Ståande"</string>
     <string name="quest_fireHydrant_type_underground">"Underjordisk"</string>
     <string name="quest_fireHydrant_type_wall">"Veggmontert"</string>
-    <string name="quest_fireHydrant_type_pond">"Røyr i innsjø"</string>
     <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Omsetjingar"</string>
     <string name="credits_contributors_title">"Kodebidrag"</string>
@@ -970,4 +969,5 @@
     <string name="quest_building_entrance_shop">"Kundeinngang"</string>
     <string name="quest_building_entrance_yes">"Annan type inngang"</string>
     <string name="quest_building_entrance_dead_end">"Blindgang (ingen inngang)"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"gang- og sykkelveg – begge retningar"</string>
 </resources>

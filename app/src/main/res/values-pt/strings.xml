@@ -222,7 +222,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_fireHydrant_type_pillar">"Pilar"</string>
     <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
     <string name="quest_fireHydrant_type_wall">"De parede"</string>
-    <string name="quest_fireHydrant_type_pond">"Boca seca (necessário motor)"</string>
     <string name="credits_contributors">"Veja a &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
@@ -1273,29 +1272,30 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="confirmation_replace_shop_message">"Nesse caso, o horário de abertura, contactos, etc. terão de ser também alterados."</string>
     <string name="confirmation_replace_shop_yes">"É um sítio diferente agora"</string>
     <string name="confirmation_replace_shop_no">"Continua a ser o mesmo sítio"</string>
-    <string name="move_node">"Está numa posição ligeiramente diferente..."</string>
+    <string name="move_node">"Está numa posição ligeiramente diferente…"</string>
     <string name="quest_move_node_message">"Pode corrigir a posição do elemento movendo-o. Quer movê-lo?"</string>
     <string name="node_moved_not_far_enough">"Por favor mova-o mais"</string>
-    <string name="node_moved_too_far">"Moveu-o demasiado. Considere deixar uma Nota"</string>
+    <string name="node_moved_too_far">"Moveu-o demasiado. Considere deixar uma nota"</string>
     <string name="node_moved">"Movido por %s"</string>
     <string name="move_node_description">"Mova o mapa para colocar o elemento na posição correta. Utilize a funcionalidade de zoom e tente ser o mais preciso possível. Tenha em conta que a sua posição atual pode ser menos exata do que a visualizada."</string>
     <string name="move_node_action_description">"Moveu um nó"</string>
-    <string name="quest_cycleway_value_shoulder">"nenhum, mas a escapatória é utilizada por ciclistas"</string>
-    <string name="quest_placeName_no_name_answer">"não existe placa toponímica"</string>
+    <string name="quest_cycleway_value_shoulder">"nenhum, mas a berma é utilizada por ciclistas"</string>
+    <string name="quest_placeName_no_name_answer">"Não existe placa toponímica"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Esta largura, não é plausível. Tenha em conta que deverá ser a largura de lancil a lancil, incluindo os lugares de estacionamentos, ciclovias, etc."</string>
     <string name="overlay_cycleway">"Caminhos para bicicletas"</string>
-    <string name="bicycle_boulevard_is_a">"É um %1$s"</string>
-    <string name="bicycle_boulevard_is_not_a">"Não é um %1$s"</string>
+    <string name="bicycle_boulevard_is_a">"É %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Ciclovia"</string>
     <string name="separate_cycleway_no">"Sem ciclovia"</string>
     <string name="separate_cycleway_allowed">"São permitidos ciclistas"</string>
-    <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
+    <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (mas podem ser permitidos)"</string>
     <string name="separate_cycleway_non_segregated">"Caminho com espaço partilhado"</string>
     <string name="separate_cycleway_segregated">"Caminho pedonal e de bicicleta separados"</string>
     <string name="separate_cycleway_exclusive">"Caminho apenas para ciclistas"</string>
     <string name="separate_cycleway_with_sidewalk">"Apenas para bicicleta com um passeio adjacente ou separado por lancil"</string>
     <string name="cycleway_reverse_direction">"Inverter direção da ciclovia"</string>
-    <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção"</string>
+    <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção."</string>
     <string name="cycleway_reverse_direction_toast">"Toque no lado que pretende inverter"</string>
     <string name="separate_cycleway_path">"Caminho ou trilho"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"explicitamente partilhada com passeio, em ambas as direções"</string>
 </resources>

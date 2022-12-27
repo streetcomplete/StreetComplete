@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 396091
-  linesOfInterfaceMarkupChanged: 142060
-  assetFilesChanged: 1950
+  linesOfCodeChanged: 396519
+  linesOfInterfaceMarkupChanged: 142106
+  assetFilesChanged: 1951
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17352
+  linesOfCodeChanged: 17432
   linesOfInterfaceMarkupChanged: 4943
   assetFilesChanged: 610
 - name: "Flo Edelmann"
@@ -192,6 +192,7 @@
 - name: "Aidan Pieper"
   linesOfCodeChanged: 7
 - name: "ferdinand0101"
+  githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
 - name: "legofahrrad"
   githubUsername: "legofahrrad"
