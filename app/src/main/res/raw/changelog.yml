@@ -1,4 +1,5 @@
 v50.1: |
+  <ul>
   <li>Fix latinization of Serbian to latin script</li>
   <li>Fix sidewalk, bike paths, road width and lanes quest would often not show up in Romania and Russia (#4684)</li>
   <li>Fix shop overlay would not add name of place when selecting a brand (#4688 #4694), by @matkoniecz</li>
@@ -7,7 +8,8 @@ v50.1: |
   <li>Fire hydrant type quest: Replace deprecated selection of "pond" with "pipe" (see #362)</li>
   <li>Small enhancements and fixes on the bike paths overlay (#4698, #4669, #4701)</li>
   <li>Bike paths quest and overlay: Add "explicitly on sidewalk, both directions" as selectable option (#4692)</li>
-  <li>Clarify wordings and other small enhancements (#4682, #4695, #4702, #4699...), thanks @matkoniecz</li>
+  <li>Clarify wordings and other small enhancements (#4682, #4695, #4702, #4699, #1236...), thanks @matkoniecz</li>
+  </ul>
 
 v50.0: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
