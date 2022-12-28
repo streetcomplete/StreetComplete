@@ -54,20 +54,20 @@
                 tools:visibility="visible"
                 android:layout_centerInParent="true" />
 
-            <de.westnordost.streetcomplete.view.VerticalLabelView
+            <TextView
                 android:id="@+id/leftSideTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
                 android:textColor="#fff"
                 android:shadowColor="#000"
                 android:shadowRadius="4.0"
-                app:orientationRight="true"
-                tools:text="Sidewalk" />
+                android:textAlignment="center"
+                tools:text="sidepath or protected bicycle lane, both direction"
+                android:layout_centerInParent="true" />
 
         </RelativeLayout>
 
@@ -107,18 +107,20 @@
                 tools:src="@drawable/ic_no_parking"
                 />
 
-            <de.westnordost.streetcomplete.view.VerticalLabelView
+            <TextView
                 android:id="@+id/rightSideTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
                 android:textColor="#fff"
                 android:shadowColor="#000"
                 android:shadowRadius="4.0"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                tools:text="Sidewalk" />
+                android:textAlignment="center"
+                tools:text="Sidewalk"
+                android:layout_centerInParent="true" />
 
         </RelativeLayout>
 
