@@ -162,8 +162,11 @@ fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
 fun getSelectableCycleways(
     countryInfo: CountryInfo,
     roadTags: Map<String, String>,
-    direction: Direction
+    isRightSide: Boolean,
+    isLeftHandTraffic: Boolean,
+    direction: Direction?
 ): List<CyclewayAndDirection> {
+    val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
         NONE,
         TRACK,
@@ -198,11 +201,11 @@ fun getSelectableCycleways(
         cycleways.remove(SUGGESTION_LANE)
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
-    if (isInContraflowOfOneway(roadTags, direction)) {
+    if (isInContraflowOfOneway(roadTags, dir)) {
         cycleways.remove(PICTOGRAMS)
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
-    return cycleways.map { CyclewayAndDirection(it, direction) } + dualCycleways
+    return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
 }
 
 /** Return the default direction of a cycleway if nothing is specified */

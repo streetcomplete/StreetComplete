@@ -174,8 +174,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     private fun selectCycleway(isRight: Boolean) {
         val isContraflowInOneway = isContraflowInOneway(isRight)
         val direction = streetSideSelect.getPuzzleSide(isRight)?.value?.direction
-            ?: Direction.getDefault(isRight, isLeftHandTraffic)
-        val dialogItems = getSelectableCycleways(countryInfo, element!!.tags, direction)
+        val dialogItems = getSelectableCycleways(countryInfo, element!!.tags, isRight, isLeftHandTraffic, direction)
             .map { it.asDialogItem(isRight, isContraflowInOneway, requireContext(), countryInfo) }
 
         ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
