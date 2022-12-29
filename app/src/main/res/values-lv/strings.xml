@@ -222,7 +222,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_fireHydrant_type_pillar">"Pilārs"</string>
     <string name="quest_fireHydrant_type_underground">"Pazemes"</string>
     <string name="quest_fireHydrant_type_wall">"Iebūvēts sienā"</string>
-    <string name="quest_fireHydrant_type_pond">"Dīķis"</string>
     <string name="credits_contributors">"Skatiet &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;pilnu sarakstu GitHub vietnē&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Tulkojumi"</string>
     <string name="credits_contributors_title">"Programmējuši"</string>
@@ -1271,4 +1270,11 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="confirmation_replace_shop_message">"Tādā gadījumā būs jāmaina arī darba laiks, kontaktinformācija utt."</string>
     <string name="confirmation_replace_shop_yes">"Tagad cita vieta"</string>
     <string name="confirmation_replace_shop_no">"Tā pati vieta"</string>
+    <string name="move_node">"Tas ir nedaudz citā vietā…"</string>
+    <string name="quest_move_node_message">"Jūs varat izlabot novietojumu, pārvietojot iezīmi.
+Pārvietot tagad?"</string>
+    <string name="node_moved_not_far_enough">"Pārvietot tālāk"</string>
+    <string name="node_moved_too_far">"Pārvietots pārāk tālu. Apsveriet iespēju atstāt piezīmi"</string>
+    <string name="node_moved">"Pārvietots par %s"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"skaidri nodalīta ietve, abi virzieni"</string>
 </resources>

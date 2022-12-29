@@ -1,4 +1,18 @@
-v50.0-beta1: |
+v50.1: |
+  <p>StreetComplete now has <a href="https://github.com/streetcomplete/StreetComplete/">3000 stars on GitHub</a>. Thanks, guys! 🤩</p>
+  <ul>
+  <li>Fix latinization of Serbian to latin script</li>
+  <li>Fix sidewalk, bike paths, road width and lanes quest would often not show up in Romania and Russia (#4684)</li>
+  <li>Fix shop overlay would not add name of place when selecting a brand (#4688 #4694), by @matkoniecz</li>
+  <li>Fix display of multi-polygons (#4689)</li>
+  <li>Fix rare crash (#4685)</li>
+  <li>Fire hydrant type quest: Replace deprecated selection of "pond" with "pipe" (see #362)</li>
+  <li>Small enhancements and fixes on the bike paths overlay (#4698, #4669, #4701)</li>
+  <li>Bike paths quest and overlay: Add "explicitly on sidewalk, both directions" as selectable option (#4692)</li>
+  <li>Clarify wordings and other small enhancements (#4682, #4695, #4702, #4699, #1236...), thanks @matkoniecz</li>
+  </ul>
+
+v50.0: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
   <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>
   <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
@@ -19,7 +33,12 @@ v50.0-beta1: |
   <li>Surfaces for segregated foot and cycleway: Correct common surface (#4615), by @mnalis</li>
   <li>Disabled cycleway quest by default because it can be done more comprehensively in the overlay</li>
   <li>Road width: Ask for confirmation when adding improbable road widths (#4655)</li>
-  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz</li>
+  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz, @tapetis</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Added language: Serbian in latin script (automatically generated from Serbian in cyrillic script)</li>
+  <li>Fix quest pins sometimes disapear and labels flicker on moving the map (#4522), by @Helium314</li>
   </ul>
 
 v49.2: |

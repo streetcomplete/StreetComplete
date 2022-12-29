@@ -222,7 +222,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_fireHydrant_type_pillar">"Piar"</string>
     <string name="quest_fireHydrant_type_underground">"Subterránea (arqueta)"</string>
     <string name="quest_fireHydrant_type_wall">"Muro (BIE)"</string>
-    <string name="quest_fireHydrant_type_pond">"Lagoa"</string>
     <string name="credits_contributors">"Bótalle unha ollada á &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;listaxe enteira dos contribuíntes no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traducións"</string>
     <string name="credits_contributors_title">"Colaboradores do código"</string>
@@ -988,6 +987,10 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="street_parking_street_side">"Á beira da calzada só en espazos dedicados"</string>
     <string name="street_parking_painted_area_only">"Na calzada só en espazos dedicados"</string>
     <string name="street_parking_separate">"O estacionamento móstrase no mapa de maneira separada"</string>
+    <string name="street_parking_no">"Non é aparcadoiro / Non permitido"</string>
+    <string name="street_parking_prohibited">"Non é aparcadoiro"</string>
+    <string name="street_stopping_prohibited">"Non pode deterse"</string>
+    <string name="street_standing_prohibited">"Non pode permanecer"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
     <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
@@ -1008,4 +1011,5 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_fuelSelfService_title">"Podes botar combustible ti mesmo aquí?"</string>
     <string name="quest_barrier_road_intersection">"De que maneira a estrada atravesa aquí a barreira?"</string>
     <string name="quest_sidewalk_value_separate">"amosado por separado no mapa"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"compartido cos peóns, dúas direccións"</string>
 </resources>

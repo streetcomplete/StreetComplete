@@ -221,7 +221,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_fireHydrant_type_pillar">"Zutabekoa"</string>
     <string name="quest_fireHydrant_type_underground">"Lurpekoa"</string>
     <string name="quest_fireHydrant_type_wall">"Hormakoa"</string>
-    <string name="quest_fireHydrant_type_pond">"Urmaela"</string>
     <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
     <string name="credits_translations_title">"Itzulpenak"</string>
     <string name="credits_contributors_title">"Kode ekarpenak"</string>
@@ -1205,4 +1204,9 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_entrance_reference_reference_label">"Sarrerako etiketa:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Solairu kopurua:"</string>
     <string name="quest_entrance_reference_flat_range_to">"nora"</string>
+    <string name="default_disabled_msg_overlay">"Bilaketa mota hau lehenespenez desgaituta dago, dagoeneko gainjartze bat dagoelako eta horrekin datu hauek sartzea eta eguneratzea eraginkorragoa eta eraginkorragoa baita."</string>
+    <string name="quest_camp_drinking_water_title">"Edateko ura doan eskura al dute hemen kanpinzaleek?"</string>
+    <string name="quest_camp_shower_title">"Hemen ba al dago dutxarik?"</string>
+    <string name="quest_camp_power_supply_title">"Ba al dute bezeroek telefonoa, ordenagailu eramangarria eta abar kargatzeko modurik hemen?"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"esplizituki partekatutako espaloia, norabide bikoa"</string>
 </resources>

@@ -60,6 +60,7 @@ class CyclewayOverlay(
         mapData.filter("""
             ways with
               highway ~ cycleway|path|footway
+              and horse != designated
               and area != yes
         """).map { it to getSeparateCyclewayStyle(it) }
 
@@ -73,9 +74,10 @@ private fun getSeparateCyclewayStyle(element: Element) =
     PolylineStyle(StrokeStyle(createSeparateCycleway(element.tags).getColor()))
 
 private fun SeparateCycleway?.getColor() = when (this) {
-    SeparateCycleway.NONE,
-    SeparateCycleway.ALLOWED,
-    SeparateCycleway.NON_DESIGNATED ->
+    SeparateCycleway.NOT_ALLOWED,
+    SeparateCycleway.ALLOWED_ON_FOOTWAY,
+    SeparateCycleway.NON_DESIGNATED,
+    SeparateCycleway.PATH ->
         Color.BLACK
 
     SeparateCycleway.NON_SEGREGATED ->
@@ -148,8 +150,11 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
     SIDEWALK_EXPLICIT ->
         StrokeStyle(Color.CYAN, dashed = true)
 
-    NONE, NONE_NO_ONEWAY, SHOULDER ->
+    NONE, NONE_NO_ONEWAY ->
         StrokeStyle(Color.BLACK)
+
+    SHOULDER ->
+        StrokeStyle(Color.BLACK, dashed = true)
 
     SEPARATE ->
         StrokeStyle(Color.INVISIBLE)

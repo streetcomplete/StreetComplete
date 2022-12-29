@@ -221,7 +221,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_fireHydrant_type_pillar">"Stĺpový"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemný"</string>
     <string name="quest_fireHydrant_type_wall">"Stena"</string>
-    <string name="quest_fireHydrant_type_pond">"Nádrž"</string>
     <string name="credits_contributors">"Pozrite si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Preklady"</string>
     <string name="credits_contributors_title">"Prispievatelia kódu"</string>
@@ -1194,4 +1193,5 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_camp_type_tents_only">"Iba stany"</string>
     <string name="street_parking_street_width">"Šírka ulice: %s"</string>
     <string name="link_opencampingmap_description">"Mapa kempovísk"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"vyslovene zdieľaný chodník, oba smery"</string>
 </resources>

@@ -48,7 +48,7 @@
     <string name="upload_error">"Vastausten lähettämisessä tapahtui virhe"</string>
     <string name="download_area_too_big">"Lähennä vielä näkymää"</string>
     <string name="confirmation_cancel_prev_download_title">"Peruuta nykyinen haku ja hae tästä?"</string>
-    <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa päälle asetuksista?"</string>
+    <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa sen päälle asetuksista?"</string>
     <string name="no_location_permission_warning">"Sijaintiasi tarvitaan täydennyksien hakuun lähiympäristöstäsi."</string>
     <string name="about_title_authors">"Tekijät"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick ja avustajat"</string>
@@ -104,7 +104,7 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <string name="autosync_on">"Päällä"</string>
     <string name="autosync_only_on_wifi">"Vain Wifi"</string>
     <string name="autosync_off">"Pois päältä"</string>
-    <string name="quest_streetSurface_title">"Mikä päällyste tällä tiellä on?"</string>
+    <string name="quest_streetSurface_title">"Mikä pinta tällä tiellä on?"</string>
     <string name="quest_surface_value_paved">"Päällystetty (yleinen)"</string>
     <string name="quest_surface_value_unpaved">"Päällystämätön (yleinen)"</string>
     <string name="quest_surface_value_ground">"Maa (yleinen)"</string>
@@ -136,7 +136,7 @@ Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovel
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
     <string name="quest_openingHours_add_times">"Lisää aukioloaika"</string>
     <string name="crash_message">"Olisitko hyvä ja lähettäisit virheraportin kehittäjälle?"</string>
-    <string name="crash_title">"Oho, StreetComplete kaatui viime kerralla!"</string>
+    <string name="crash_title">"Voi ei, StreetComplete kaatui viime kerralla!"</string>
     <string name="crash_compose_email">"Kirjoita sähköposti"</string>
     <string name="no_email_client">"Sähköpostisovellus ei asennettuna."</string>
     <string name="pref_title_keep_screen_on">"Pidä näyttö päällä"</string>
@@ -153,7 +153,7 @@ Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovel
     <string name="quest_sport_baseball">"Baseball"</string>
     <string name="quest_sport_basketball">"Koripallo"</string>
     <string name="quest_sport_golf">"Golf"</string>
-    <string name="quest_sport_equestrian">"Ratsastus"</string>
+    <string name="quest_sport_equestrian">"Esteratsastus"</string>
     <string name="quest_sport_athletics">"Yleisurheilu"</string>
     <string name="quest_sport_volleyball">"Lentopallo"</string>
     <string name="quest_sport_beachvolleyball">"Rantalentopallo"</string>
@@ -178,7 +178,7 @@ Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovel
     <string name="quest_sport_manySports_confirmation_description">"Onko tämä kenttä suunniteltu juuri tälle lajille (merkinnät ja välineet näkyvillä) vai yleiskentäksi monille lajeille?"</string>
     <string name="quest_manySports_confirmation_specific">"Tarkalleen nämä"</string>
     <string name="quest_manySports_confirmation_generic">"Yleiskäyttöön"</string>
-    <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Valitsit useita lajeja"</string>
     <string name="quest_toiletsFee_title">"Vaatiiko tämä käymälä maksun?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Onko tämän suojatien molemmilla puolilla kosketuspäällysteet?"</string>
     <string name="quest_source_dialog_title">"Tarkistitko varmasti tämän paikan päällä?"</string>
@@ -196,7 +196,7 @@ Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovel
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racketball-kenttä"</string>
     <string name="quest_sport_ice_skating">"Luistelu"</string>
-    <string name="quest_sport_paddle_tennis">"Pöytätennis"</string>
+    <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Gaelilaiset urheilulajit"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Osittain"</string>
@@ -221,7 +221,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="quest_fireHydrant_type_pillar">"Pylväs"</string>
     <string name="quest_fireHydrant_type_underground">"Maanalainen"</string>
     <string name="quest_fireHydrant_type_wall">"Seinä"</string>
-    <string name="quest_fireHydrant_type_pond">"Lammikko"</string>
     <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHubissa&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Käännökset"</string>
     <string name="credits_contributors_title">"Koodaajat"</string>
@@ -298,7 +297,7 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="quest_powerPolesMaterial_concrete">"Betonia"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Vain neuvoa antava nopeusrajoitus…"</string>
     <string name="quest_address_house_name_label">"Talon nimi:"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel2">"katolla tasoja"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"tasoja katolla"</string>
     <string name="quest_buildingLevels_levelsLabel2">"tavallisia tasoja (ilman kattoa)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"vaihtelee rakennuksen osan mukaan"</string>
     <string name="quest_buildingLevels_answer_description">"Siinä tapauksessa syötä korkeimman osan mukaan."</string>
@@ -489,7 +488,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s sulkenut"</string>
     <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s avannut uudelleen"</string>
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s piilottanut"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä huomatuksen ratkaisusta. Kuvien metadata poistetaan ennen latausta.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä ilmoituksen ratkaisusta. Kuvien metadata poistetaan ennen latausta.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Poista kaikki valinta"</string>
     <string name="quest_buildingType_retail_description">"Sisältää ravintolat, kahvilat, yms kaupalliset rakennukset"</string>
     <string name="quest_openingHours_timeSelect_next">"Seuraava"</string>
@@ -525,8 +524,8 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_busStopShelter_covered">"Koko pysäkki on katettu"</string>
     <string name="quest_ferry_pedestrian_title">"Sopiiko tämä lauttareitti jalakulkijoille?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Sopiiko tämä lautta moottoriajoneuvojen reitiksi?"</string>
-    <string name="quest_leave_new_note_photos_are_useful">"Kuvan lisääminen tekee huomautuksesta paljon käyttökelpoisemman."</string>
-    <string name="create_new_note_hint">"Paras on kirjoittaa huomautus paikallisella kielellä, tai toisena vaihtoehtona englanniksi."</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Kuvan lisääminen tekee ilmoituksesta paljon käyttökelpoisemman."</string>
+    <string name="create_new_note_hint">"Paras on kirjoittaa ilmoitus paikallisella kielellä, tai vaihtoehtoisesti englanniksi."</string>
     <string name="quest_leafType_title">"Onko puissa neulaset vai lehdet?"</string>
     <string name="quest_leaf_type_needles">"Neulaset"</string>
     <string name="quest_leaf_type_broadleaved">"Lehdet"</string>
@@ -658,25 +657,26 @@ Muista turvallisuus: huomioi ympäristösi ja älä mene yksityisalueille."</str
     <string name="achievement_first_edit_title">"Ensimmäiseen kysymykseen vastattu"</string>
     <string name="achievement_first_edit_description">"Tervetuloa OpenStreetMap-yhteisöön! Profiilitiedoissasi näet lisätietoja ratkaisemistasi kysymyksistä."</string>
     <string name="achievement_surveyor_title">"Maanmittaaja"</string>
-    <string name="achievement_surveyor_solved_X">"Ratkaisit %d kysymystä! Jatka edelleen saadaksesi seuraavan tason saavutuksen, joka sisältää OSM:ään ja muihin kartoitusprojekteihin sekä -sovelluksiin liittyviä linkkejä!"</string>
+    <string name="achievement_surveyor_solved_X">"Ratkaisit %d asiaa! Jatka edelleen saadaksesi seuraavan tason saavutuksen, joka sisältää OSM:ään ja muihin kartoitusprojekteihin sekä -sovelluksiin liittyviä linkkejä!"</string>
     <string name="achievement_regular_title">"Tavallinen"</string>
     <string name="achievement_regular_description">"Osallistuit OSM:n täydentämiseen %d päivän ajan tällä sovelluksella! Säännölliset kartoittajat ovat OSM:n tukiranka, kiitos osallistumisesta! ♥️"</string>
     <string name="achievement_bicyclist_title">"Pyöräilijä"</string>
-    <string name="achievement_bicyclist_solved_X">"Ratkaisit %d kysymystä helpottaen pyöräilijöitä!"</string>
+    <string name="achievement_bicyclist_solved_X">"Ratkaisit %d asiaa, jotka helpottavat pyöräilijöitä!"</string>
     <string name="achievement_wheelchair_title">"Liikkuvuus"</string>
-    <string name="achievement_wheelchair_solved_X">"Ratkaisit %d kysymystä, jotka helpottavat pyörätuolilla liikkumista!"</string>
+    <string name="achievement_wheelchair_solved_X">"Ratkaisit %d asiaa, jotka helpottavat pyörätuolilla liikkumista!"</string>
     <string name="achievement_postman_title">"Posteljooni"</string>
     <string name="achievement_postman_solved_X">"Autoit määrittelemään %d osoitetta! Tämä tieto ei auta ainoastaan posteljoonia, vaan myös mitä tahansa navigointia."</string>
     <string name="achievement_building_title">"Monikerroksinen"</string>
-    <string name="achievement_building_solved_X">"Ratkaisit %d rakennuksiin liittyvää kysymystä. Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen."</string>
+    <string name="achievement_building_solved_X">"Ratkaisit %d rakennuksiin liittyvää asiaa.
+uomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen."</string>
     <string name="achievement_blind_title">"Kuudes aisti"</string>
-    <string name="achievement_blind_solved_X">"Ratkaisit %d kysymystä, jotka auttavat näkörajoitteisia."</string>
+    <string name="achievement_blind_solved_X">"Ratkaisit %d asiaa, jotka auttavat näkörajoitteisia."</string>
     <string name="achievement_pedestrian_title">"Juoksija"</string>
-    <string name="achievement_pedestrian_solved_X">"Ratkaisit %d kysymystä, jotka kiinnostavat jalankulkijoita!"</string>
+    <string name="achievement_pedestrian_solved_X">"Ratkaisit %d asiaa, jotka kiinnostavat jalankulkijoita!"</string>
     <string name="achievement_veg_title">"Eläinten ystävä"</string>
-    <string name="achievement_veg_solved_X">"Ratkaisit %d kysymystä ihmisille, jotka eivät syö lihaa!"</string>
+    <string name="achievement_veg_solved_X">"Ratkaisit %d asiaa, jotka kiinnostavat lihatonta ruokavaliota seuraavia ihmisiä!"</string>
     <string name="achievement_car_title">"Maantie on kuuma"</string>
-    <string name="achievement_car_solved_X">"Ratkaisit %d katuinfrastruktuuria parantavaa kysymystä!"</string>
+    <string name="achievement_car_solved_X">"Ratkaisit %d katuinfrastruktuuria parantavaa asiaa!"</string>
     <string name="unread_messages_message">"Sinulla on %d lukematonta viestiä postilaatikossasi"</string>
     <string name="unread_messages_button">"Avaa postilaatikko"</string>
     <string name="action_about2">"Tietoa"</string>
@@ -994,7 +994,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="street_parking_no_other_reasons">"Ei erillistä merkkiä / pysäköinti ei mahdollista"</string>
     <string name="street_parking_conditional_restrictions_hint">"Jos täällä on mahdollista pysäköidä tai pysäköidä ollenkaan, vastaa ensin, miten ne, joilla on lupa, pysäköivät tänne. Mitä rajoituksia tarkalleen sovelletaan, voidaan tarkentaa myöhemmin.
 
-Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
+Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa)."</string>
     <string name="quest_address_house_number_label">"Asunnon numero:"</string>
     <string name="quest_shoulder_title">"Onko tällä tiellä piennarta?"</string>
     <string name="quest_fireHydrant_position_title">"Missä tämä paloposti sijaitsee?"</string>
@@ -1002,7 +1002,7 @@ Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
     <string name="quest_fireHydrant_position_lane">"Tiellä"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Jalkakäytävällä"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Pysäköintipaikalla"</string>
-    <string name="quest_generic_hasFeature_yes_leave_note">"Kyllä (jätä muistiinpano)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Kyllä (jätä ilmoitus)"</string>
     <string name="quest_smoothness_square_title">"Millainen on tämän aukion pinnan laatu?"</string>
     <string name="quest_smoothness_road_title">"Millainen on tämän tien pinnan laatu?"</string>
     <string name="quest_smoothness_title_excellent">"Pehmeä ja tasainen"</string>
@@ -1173,6 +1173,8 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_memorialType_war_memorial">"Sotamuistomerkki"</string>
     <string name="quest_memorialType_stone">"Muistokivi"</string>
     <string name="quest_memorialType_obelisk">"Obeliski"</string>
+    <string name="quest_memorialType_stele_wooden">"Puinen steela (muistolaatta)"</string>
+    <string name="quest_memorialType_stele_stone">"Kivinen steela (muistolaatta)"</string>
     <string name="quest_memorialType_sculpture">"Muu veistos"</string>
     <string name="select_overlay">"Valitse taso"</string>
     <string name="overlay_none">"Ei mitään"</string>
@@ -1197,13 +1199,16 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_camp_type_tents_and_caravans">"Sekä teltat että matkailuautot, matkailuvaunut, ..."</string>
     <string name="quest_camp_type_caravans_only">"Vain matkailuautot, matkailuvaunut, ..."</string>
     <string name="quest_camp_type_tents_only">"Vain teltat"</string>
+    <string name="quest_camp_type_backcountry">"Erämaatelttailu (ei palveluja)"</string>
     <string name="quest_recycling_type_pet">"Vain PET-muovi"</string>
     <string name="street_parking_street_width">"Kadun leveys: %s"</string>
     <string name="overlay_street_parking">"Katupysäköinti"</string>
     <string name="link_opencampingmap_description">"Kartta leirintäalueista"</string>
     <string name="quest_atm_cashin_title">"Voiko tähän pankkiautomaattiin tallettaa rahaa?"</string>
+    <string name="create_node_action_description">"Loit pisteen jossa on…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Tämä on kokoontumispaikka"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Kokoontumispaikka on paikka, johon ihmiset voivat kokoontua hätätilanteissa. Se näyttää yleensä tältä:"</string>
+    <string name="quest_address_answer_house_name2">"Osoitteella on talon nimi…"</string>
     <string name="quest_address_street_street_name_label">"Kadun nimi:"</string>
     <string name="quest_address_street_hint2">"Napauta katua valitaksesi sen"</string>
     <string name="quest_drinking_water_type_title">"Kuinka juomavettä saa tästä?"</string>
@@ -1214,6 +1219,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_drinking_water_type_hand_pump">"Käsipumppu"</string>
     <string name="quest_drinking_water_type_water_well_no_pump">"Vesikaivo ilman pumppua"</string>
     <string name="quest_drinking_water_type_spring">"Lähde"</string>
+    <string name="quest_drinking_water_type_disused">"Hylätty juomavesiesine"</string>
     <string name="overlay_addresses">"Osoitteet"</string>
     <string name="overlay_shops">"Kaupat"</string>
     <string name="name_label">"Nimi:"</string>
@@ -1224,6 +1230,8 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_barrier_bicycle_installation_openable">"Avattavissa"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Poistettavissa"</string>
     <string name="quest_buildingType_guardhouse">"Vartiotupa"</string>
+    <string name="quest_genericRef_title">"Mikä on tunnistenumero täällä?"</string>
+    <string name="quest_sidewalk_answer_different">"Jalkakäytävän tilanne on eri"</string>
     <string name="about_title_get_involved">"Osallistu"</string>
     <string name="pref_category_quests_overlays">"Kysymykset ja tasot"</string>
     <string name="quest_presets_rename">"Nimeä uudelleen"</string>
@@ -1236,6 +1244,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="urlconfig_apply_message">"Toteutetaanko ja valitaanko esiasetus %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Huomio: Esiasetuksesi samalla nimellä ylikirjoitetaan!"</string>
     <string name="urlconfig_switch_hint">"Voit vaihtaa esiasetuksia milloin tahansa asetuksista."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Kaksikerroksinen pyöräteline"</string>
     <string name="user_profile_current_week_title">"Viimeiset 7 päivää"</string>
     <string name="user_profile_dates_mapped">"Päivät, jolloin olet kartoittanut"</string>
     <string name="urlconfig_scan_qr_code_again2">"Sovelluksen asennuksen jälkeen skannaa QR-koodi uudelleen tai napsauta &lt;a href=\"%s\"&gt;tätä linkkiä&lt;/a&gt; toteuttaaksesi esiasetuksen."</string>
@@ -1243,4 +1252,25 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="confirmation_replace_shop_message">"Siinä tapauksessa aukioloajat, yhteystiedot jne. ovat myös muuttuneet."</string>
     <string name="confirmation_replace_shop_yes">"Eri paikka nyt"</string>
     <string name="confirmation_replace_shop_no">"Edelleen sama paikka"</string>
+    <string name="move_node">"Se on hieman eri sijainnissa…"</string>
+    <string name="quest_move_node_message">"Voit korjata sijainnin siirtämällä kohdetta.
+Haluatko siirtää nyt?"</string>
+    <string name="node_moved_not_far_enough">"Siirrä se kauemmaksi"</string>
+    <string name="node_moved_too_far">"Siirretty liian kauas. Voisit kenties jättää ilmoituksen"</string>
+    <string name="node_moved">"Siirtänyt %s"</string>
+    <string name="move_node_action_description">"Siirsit pistettä"</string>
+    <string name="quest_placeName_no_name_answer">"Ei nimikylttiä"</string>
+    <string name="overlay_cycleway">"Pyöräilypolut"</string>
+    <string name="bicycle_boulevard_is_a">"Se on %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Se ei ole %1$s"</string>
+    <string name="bicycle_boulevard">"Pyöräilybaana"</string>
+    <string name="separate_cycleway_no">"Ei pyöräilyä"</string>
+    <string name="separate_cycleway_allowed">"Pyöräilijät sallitaan"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ei suunniteltu pyöräilijöille (voi silti olla sallittua)"</string>
+    <string name="separate_cycleway_non_segregated">"Yhteiskäyttöinen polku"</string>
+    <string name="separate_cycleway_segregated">"Erillinen pyörä- ja jalankulkupolku"</string>
+    <string name="separate_cycleway_exclusive">"Polku vain pyörille"</string>
+    <string name="cycleway_reverse_direction_warning">"Se, että pyörätie johtaa vastakkaiseen suuntaan, on erittäin harvinaista."</string>
+    <string name="separate_cycleway_path">"Polku tai reitti"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"jaettu jalkakäytävä, molempiin suuntiin"</string>
 </resources>

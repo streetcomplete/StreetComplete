@@ -25,7 +25,7 @@ private val serbianCyrillicToLatin = mapOf(
     'Р' to "R",  'р' to "r",
     'С' to "S",  'с' to "s",
     'Т' to "T",  'т' to "t",
-    'Ћ' to "Ć'", 'ћ' to "ć'",
+    'Ћ' to "Ć",  'ћ' to "ć",
     'У' to "U",  'у' to "u",
     'Ф' to "F",  'ф' to "f",
     'Х' to "H",  'х' to "h",

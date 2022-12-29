@@ -40,7 +40,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         super.onViewCreated(view, savedInstanceState)
 
         setTitleHintLabel(getNameAndLocationLabel(
-            element.tags, resources, featureDictionary,
+            element, resources, featureDictionary,
             showHouseNumber = true
         ))
 

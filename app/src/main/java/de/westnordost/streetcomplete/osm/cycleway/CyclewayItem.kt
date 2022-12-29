@@ -100,7 +100,8 @@ private fun Cycleway.getDualTrafficIconResId(countryInfo: CountryInfo): Int = wh
     TRACK ->
         if (countryInfo.isLeftHandTraffic) R.drawable.ic_cycleway_track_dual_l
         else                               R.drawable.ic_cycleway_track_dual
-    else -> 0
+    SIDEWALK_EXPLICIT ->                   R.drawable.ic_cycleway_sidewalk_explicit_dual
+    else ->                                0
 }
 
 private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
@@ -144,6 +145,10 @@ private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): I
         if (direction == BOTH) R.string.quest_cycleway_value_track_dual
         else                   R.string.quest_cycleway_value_track
     }
+    SIDEWALK_EXPLICIT -> {
+        if (direction == BOTH) R.string.quest_cycleway_value_sidewalk_dual
+        else                   R.string.quest_cycleway_value_sidewalk
+    }
     NONE -> {
         if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
         else                      R.string.quest_cycleway_value_none
@@ -152,7 +157,6 @@ private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): I
     SUGGESTION_LANE ->   R.string.quest_cycleway_value_advisory_lane
     NONE_NO_ONEWAY ->    R.string.quest_cycleway_value_none_but_no_oneway
     PICTOGRAMS ->        R.string.quest_cycleway_value_shared
-    SIDEWALK_EXPLICIT -> R.string.quest_cycleway_value_sidewalk
     BUSWAY ->            R.string.quest_cycleway_value_bus_lane
     SEPARATE ->          R.string.quest_cycleway_value_separate
     SHOULDER ->          R.string.quest_cycleway_value_shoulder

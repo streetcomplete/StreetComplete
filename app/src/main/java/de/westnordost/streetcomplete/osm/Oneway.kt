@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.osm.cycleway.Direction
+
 fun isForwardOneway(tags: Map<String, String>): Boolean =
     tags["oneway"] == "yes"
     || tags["oneway"] != "-1" && (tags["junction"] == "roundabout" || tags["junction"] == "circular")
@@ -19,12 +21,7 @@ fun isNotOnewayForCyclists(tags: Map<String, String>, isLeftHandTraffic: Boolean
     ]?.startsWith("opposite") == true
 
 /** Return whether the given side is in the contra-flow of a oneway. E.g. in Germany for a forward
- *  oneway, it is the left side */
-fun isInContraflowOfOneway(
-    isRightSide: Boolean,
-    tags: Map<String, String>,
-    isLeftHandTraffic: Boolean
-): Boolean {
-    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
-    return isOneway(tags) && isReverseSideRight == isRightSide
-}
+ *  oneway, it is the left side except of course it goes explicitly in flow direction */
+fun isInContraflowOfOneway(tags: Map<String, String>, direction: Direction): Boolean =
+    isForwardOneway(tags) && direction == Direction.BACKWARD
+    || isReversedOneway(tags) && direction == Direction.FORWARD

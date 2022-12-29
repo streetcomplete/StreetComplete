@@ -5,14 +5,14 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Locale
 
-/** Fetch the localization for the given language code in the given format and do something
- *  with the contents */
+/** Fetch the localizations for the given language code and return it as a map of strings */
 fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: String): Map<String, String> {
     val code = if (languageCode == "sr-latn") "sr-cyrl" else languageCode
 
     val url = URL(fetchLocalizationDownloadUrl(apiToken, projectId, code, "key_value_json"))
     return url.retryingQuotaConnection(null) { inputSteam ->
         val txt = inputSteam.bufferedReader().use { it.readText() }
+        if (txt.isEmpty()) return@retryingQuotaConnection mapOf()
         val obj = Parser.default().parse(txt.reader()) as JsonObject
         val result = obj.entries.associate { it.key to it.value as String }
 

@@ -230,7 +230,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fireHydrant_type_pillar">"柱"</string>
     <string name="quest_fireHydrant_type_underground">"地下"</string>
     <string name="quest_fireHydrant_type_wall">"壁"</string>
-    <string name="quest_fireHydrant_type_pond">"池"</string>
     <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
     <string name="credits_translations_title">"翻訳"</string>
     <string name="credits_contributors_title">"コードの貢献"</string>
@@ -896,4 +895,5 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="urlconfig_switch_hint">"プリセットの変更は設定でいつでも可能です。"</string>
     <string name="user_profile_current_week_title">"最近の７日間"</string>
     <string name="urlconfig_scan_qr_code_again2">"アプリのインストール後、再度QRコードを読み取るか、&lt;a href=\"%s\"&gt;このリンク&lt;/a&gt;をクリックしてプリセットを適用して下さい。"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"明示的に歩道と共有、両方向"</string>
 </resources>

@@ -114,7 +114,6 @@ internal class LocalizedNamesKtTest {
         )
     }
 
-
     @Test fun `apply two names adds name tag`() {
         verifyAnswer(
             mapOf(),

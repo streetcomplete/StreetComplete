@@ -222,7 +222,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_fireHydrant_type_pillar">"Kolono"</string>
     <string name="quest_fireHydrant_type_underground">"Subtere"</string>
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
-    <string name="quest_fireHydrant_type_pond">"Lageto"</string>
     <string name="credits_contributors">"Vidi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt; plenan liston je GitHub&lt;/a&gt;"</string>
     <string name="credits_translations_title">"Tradukoj"</string>
     <string name="credits_contributors_title">"Kontribuintoj de kodo"</string>
@@ -1191,4 +1190,5 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="user_profile_current_week_title">"Ĉi semajno"</string>
     <string name="user_profile_dates_mapped">"Tagoj dum tiuj vi mapis lastatempe"</string>
     <string name="urlconfig_scan_qr_code_again2">"Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href=\"%s\"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn."</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
 </resources>

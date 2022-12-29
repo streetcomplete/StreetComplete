@@ -221,7 +221,6 @@
     <string name="quest_fireHydrant_type_pillar">"Стоящ"</string>
     <string name="quest_fireHydrant_type_underground">"Подземен"</string>
     <string name="quest_fireHydrant_type_wall">"На сграда"</string>
-    <string name="quest_fireHydrant_type_pond">"Резервоар"</string>
     <string name="credits_contributors">"Вижте &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;целия списък в GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Програмисти"</string>
@@ -1201,4 +1200,5 @@
     <string name="quest_recycling_type_pet">"Само PET"</string>
     <string name="street_parking_street_width">"Ширина на пътя: %s"</string>
     <string name="overlay_street_parking">"Паркиране на улицата"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"Тротоарът е споделен, в двете посоки"</string>
 </resources>

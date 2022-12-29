@@ -24,7 +24,7 @@ package de.westnordost.streetcomplete.overlays
 object Color {
     // colors with reserved meanings
     const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"
-    const val BLACK = "#444444" // "no" / "does not exist"
+    const val BLACK = "#0f0f0f" // "no" / "does not exist"
     private const val RED = "#FF0000" // reserved
     const val DATA_REQUESTED = RED // "not mapped" / "incomplete/invalid" / "data missing" / "outdated"
 

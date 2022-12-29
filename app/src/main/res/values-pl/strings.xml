@@ -100,8 +100,7 @@ Informacja o Twoim położeniu jest używana tylko do automatycznego szukania za
 &lt;p&gt;&lt;b&gt;Użycie danych&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Jak wspomniano, aplikacja komunikuje się bezpośrednio z infrastrukturą OSM. 
-Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;prosty plik tekstowy&lt;/a&gt; na moim serwerze, czy nie zabroniono jej wysyłania jakichkolwiek zmian. To zabezpieczenie pozwala wyłączać przestarzałe wersje aplikacji, w których znaleziono krytyczne błędy, mogące uszkodzić dane OSM.&lt;br/&gt;
-&lt;/p&gt;
+Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;prosty plik tekstowy&lt;/a&gt; na moim serwerze, czy nie zabroniono jej wysyłania jakichkolwiek zmian. To zabezpieczenie pozwala wyłączać przestarzałe wersje aplikacji, w których znaleziono krytyczne błędy, mogące uszkodzić dane OSM.&lt;/p&gt;
 "</string>
     <string name="autosync_on">"Włącz"</string>
     <string name="autosync_only_on_wifi">"Tylko na Wi-Fi"</string>
@@ -119,7 +118,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_grass_paver">"kratka trawnikowa"</string>
     <string name="quest_surface_value_gravel">"żwirowa"</string>
     <string name="quest_surface_value_paving_stones">"brukowa / płyta chodnikowa"</string>
-    <string name="quest_surface_value_pebblestone">"otoczaki (okrągły żwir wygładzony przez wodę)"</string>
+    <string name="quest_surface_value_pebblestone">"Otoczaki (okrągły żwir wygładzony przez wodę)"</string>
     <string name="quest_surface_value_sand">"piaskowa"</string>
     <string name="quest_surface_value_sett">"nierówne kamienie"</string>
     <string name="quest_surface_value_wood">"drewniana"</string>
@@ -191,8 +190,8 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Na pewno nie ma znaku ograniczenia prędkości?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Czy sprawdziłeś na końcach ulicy?
 Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowiązują domyślne ograniczenia prędkości."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Tak, nie ma znaków."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"W terenie zabudowanym obowiązuje bardziej restrykcyjne domyślne ograniczenie prędkości niż poza terenem zabudowanym,"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Tak, nie ma znaków"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"W terenie zabudowanym obowiązuje bardziej restrykcyjne domyślne ograniczenie prędkości niż poza terenem zabudowanym."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"W terenie zabudowanym"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"W terenie niezabudowanym"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Jeśli jest taki znak na głównym skrzyżowaniu, to nie znajdziesz osobnych znaków wewnątrz strefy, ponieważ ograniczenie prędkości na znaku obowiązuje w całej strefie."</string>
@@ -224,7 +223,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_fireHydrant_type_pillar">"filarowy"</string>
     <string name="quest_fireHydrant_type_underground">"Podziemny"</string>
     <string name="quest_fireHydrant_type_wall">"Wewnętrzny"</string>
-    <string name="quest_fireHydrant_type_pond">"Staw"</string>
     <string name="credits_contributors">"Zobacz &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;pełną listę na GitHubie&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Tłumaczenia"</string>
     <string name="credits_contributors_title">"Współtwórcy"</string>
@@ -1274,4 +1272,31 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="confirmation_replace_shop_message">"W takim razie musiały zmienić się też godziny otwarcia, dane do kontaktu itp."</string>
     <string name="confirmation_replace_shop_yes">"Jest tu co innego"</string>
     <string name="confirmation_replace_shop_no">"Jest tu to samo"</string>
+    <string name="move_node">"Jest w nieco innym miejscu..."</string>
+    <string name="quest_move_node_message">"Pozycję można poprawić, przesuwając obiekt.
+Przesunąć go teraz?"</string>
+    <string name="node_moved_not_far_enough">"Proszę przenieść to dalej"</string>
+    <string name="node_moved_too_far">"Przeniesione za daleko. Rozważ pozostawienie uwagi"</string>
+    <string name="node_moved">"Przeniesione przez %s"</string>
+    <string name="move_node_description">"Przeciągnij mapę, aby umieścić obiekt we właściwym miejscu. Użyj funkcji powiększania i staraj się być jak najbardziej precyzyjny. Należy pamiętać, że wyświetlana przez Ciebie lokalizacja może być mniej dokładna niż wyświetlana."</string>
+    <string name="move_node_action_description">"Przeniosłeś węzeł"</string>
+    <string name="quest_cycleway_value_shoulder">"brak, ale pobocze jest użyteczne dla rowerzystów"</string>
+    <string name="quest_placeName_no_name_answer">"Nie ma oznaczenia nazwy"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Ta szerokość wygląda nieprawdopodobnie. Pamiętaj, że powinna to być szerokość od krawężnika do krawężnika, wliczając w to parking na ulicy, ścieżki rowerowe itp."</string>
+    <string name="overlay_cycleway">"Ścieżki rowerowe"</string>
+    <string name="bicycle_boulevard_is_a">"Jest to %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"To nie jest %1$s"</string>
+    <string name="bicycle_boulevard">"Bulwar rowerowy"</string>
+    <string name="separate_cycleway_no">"Brak drogi rowerowej"</string>
+    <string name="separate_cycleway_allowed">"Rowerzyści są dopuszczeni"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nieprzeznaczony dla rowerzystów (jazda na rowerze może być nadal dozwolona)"</string>
+    <string name="separate_cycleway_non_segregated">"Ścieżka do wspólnego użytku"</string>
+    <string name="separate_cycleway_segregated">"Rozdzielona ścieżka dla rowerów i pieszych"</string>
+    <string name="separate_cycleway_exclusive">"Ścieżka tylko dla rowerów"</string>
+    <string name="separate_cycleway_with_sidewalk">"Ścieżka tylko dla rowerów z przylegającym chodnikiem (oddzielone krawężnikiem)"</string>
+    <string name="cycleway_reverse_direction">"Odwróć kierunek ścieżki rowerowej"</string>
+    <string name="cycleway_reverse_direction_warning">"To, że ścieżka rowerowa prowadzi w innym kierunku, jest niezwykle rzadkie."</string>
+    <string name="cycleway_reverse_direction_toast">"Stuknij, którą stronę chcesz odwrócić"</string>
+    <string name="separate_cycleway_path">"Ścieżka lub szlak"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"chodnik wspóldzielony w obu kierunkach"</string>
 </resources>

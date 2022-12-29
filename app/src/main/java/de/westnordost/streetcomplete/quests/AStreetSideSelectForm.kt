@@ -53,6 +53,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageLeft = defaultPuzzleImage
         streetSideSelect.defaultPuzzleImageRight = defaultPuzzleImage
+        streetSideSelect.updateLastSelectionButton()
 
         if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
     }

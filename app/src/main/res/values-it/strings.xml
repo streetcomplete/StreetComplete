@@ -221,7 +221,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_fireHydrant_type_pillar">"Colonna"</string>
     <string name="quest_fireHydrant_type_underground">"Sotterraneo"</string>
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
-    <string name="quest_fireHydrant_type_pond">"Stagno"</string>
     <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Contributori al codice"</string>
@@ -1270,4 +1269,31 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="confirmation_replace_shop_message">"In quel caso, gli orari di apertura, le informazioni di contatto etc. saranno anch'esse cambiate."</string>
     <string name="confirmation_replace_shop_yes">"Ora è differente"</string>
     <string name="confirmation_replace_shop_no">"Sempre il solito posto"</string>
+    <string name="move_node">"È in una posizione un po' diversa…"</string>
+    <string name="quest_move_node_message">"Puoi correggere la posizione spostando l'elemento.
+Spostarlo ora?"</string>
+    <string name="node_moved_not_far_enough">"Per favore spostalo di più"</string>
+    <string name="node_moved_too_far">"Spostato troppo lontano. Lascia una nota"</string>
+    <string name="node_moved">"Spostato da %s"</string>
+    <string name="move_node_description">"Trascina la mappa per mettere l'elemento nella posizione corretta. Usa lo zoom e cerca di essere il più preciso possibile. Ricorda che la tua posizione corrente mostrata potrebbe essere poco accurata."</string>
+    <string name="move_node_action_description">"Hai spostato il nodo"</string>
+    <string name="quest_cycleway_value_shoulder">"nessuna, ma la banchina può essere usata dai ciclisti"</string>
+    <string name="quest_placeName_no_name_answer">"Non c'è alcun cartello"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Questa larghezza sembra improbabile. Ricorda che dovrebbe essere misurata da un cordolo all'altro, includendo parcheggi, piste ciclabili, ecc."</string>
+    <string name="overlay_cycleway">"Piste ciclabili"</string>
+    <string name="bicycle_boulevard_is_a">"È un %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Non è un %1$s"</string>
+    <string name="bicycle_boulevard">"Viale ciclabile"</string>
+    <string name="separate_cycleway_no">"No biciclette"</string>
+    <string name="separate_cycleway_allowed">"I velocipedi sono ammessi"</string>
+    <string name="separate_cycleway_no_or_allowed">"Non progettata per i velocipedi (ma forse sono ammessi)"</string>
+    <string name="separate_cycleway_non_segregated">"Percorso a uso promiscuo"</string>
+    <string name="separate_cycleway_segregated">"Percorso pedonale e ciclabile separati"</string>
+    <string name="separate_cycleway_exclusive">"Pista ciclabile"</string>
+    <string name="separate_cycleway_with_sidewalk">"Pista ciclabile con marciapiede adiacente (separati da un cordolo)"</string>
+    <string name="cycleway_reverse_direction">"Inverti direzione della ciclabile"</string>
+    <string name="cycleway_reverse_direction_warning">"Una pista ciclabile in direzione opposta è molto rara."</string>
+    <string name="cycleway_reverse_direction_toast">"Clicca il lato da invertire"</string>
+    <string name="separate_cycleway_path">"Sentiero"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
 </resources>
