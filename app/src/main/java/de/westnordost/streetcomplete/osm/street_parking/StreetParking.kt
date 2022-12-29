@@ -31,9 +31,9 @@ enum class ParkingOrientation {
 
 enum class ParkingPosition {
     LANE, // was ON_STREET
+    STREET_SIDE,
     HALF_ON_KERB,
     ON_KERB,
-    STREET_SIDE,
     // PAINTED_AREA_ONLY // removed
 }
 

@@ -99,17 +99,16 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             PARALLEL -> R.drawable.ic_street
             else -> R.drawable.ic_street_broad
         }
-        HALF_ON_KERB -> when (orientation) {
-            PARALLEL -> R.drawable.ic_street_narrow
-            else -> R.drawable.ic_street
-        }
-        ON_KERB -> R.drawable.ic_street_very_narrow
         STREET_SIDE -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_parking_bays_parallel
             DIAGONAL -> R.drawable.ic_street_parking_bays_diagonal
             PERPENDICULAR -> R.drawable.ic_street_parking_bays_perpendicular
         }
+        HALF_ON_KERB -> when (orientation) {
+            PARALLEL -> R.drawable.ic_street_narrow
+            else -> R.drawable.ic_street
         }
+        ON_KERB -> R.drawable.ic_street_very_narrow
         // TODO remove
         // PAINTED_AREA_ONLY -> when (orientation) {
         //     PARALLEL -> R.drawable.ic_street_marked_parking_parallel

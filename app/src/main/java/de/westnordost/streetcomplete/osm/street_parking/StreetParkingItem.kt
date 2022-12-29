@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.LANE
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 // import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY // TODO remove
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
@@ -89,9 +89,9 @@ private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsi
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
     LANE -> R.string.street_parking_lane
+    STREET_SIDE -> R.string.street_parking_street_side
     HALF_ON_KERB -> R.string.street_parking_half_on_kerb
     ON_KERB -> R.string.street_parking_on_kerb
-    STREET_SIDE -> R.string.street_parking_street_side
     // PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only // TODO remove
 }
 
