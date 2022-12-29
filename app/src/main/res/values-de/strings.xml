@@ -8,7 +8,7 @@
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Karten-Zwischenspeichers auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Hinweise anzeigen"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise dennoch anzeigen"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise trotzdem anzeigen"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise ignorieren"</string>
     <string name="pref_title_map_cache">"Größe des Karten-Zwischenspeichers"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
@@ -24,7 +24,7 @@
     <string name="quest_leave_new_note_no">"Verstecken"</string>
     <string name="quest_streetName_title">"Wie heißt diese Straße?"</string>
     <string name="quest_streetName_description">"Wie es auf dem Straßenschild steht, Abkürzungen bitte ausschreiben:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem mag es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen."</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem kann es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Keine Abkürzung"</string>
     <string name="quest_openingHours_start_time">"öffnet um"</string>
@@ -34,7 +34,7 @@
     <string name="quest_openingHours_add_weekdays">"Wochentage hinzufügen"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Monate auswählen"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Wochentage auswählen"</string>
-    <string name="quest_openingHours_24_7_confirmation">"Mit anderen Worten, es hat einfach immer, jeden Tag, auf?"</string>
+    <string name="quest_openingHours_24_7_confirmation">"Mit anderen Worten, es ist einfach immer geöffnet?"</string>
     <string name="quest_noteDiscussion_title">"Kannst du etwas zu diesem Hinweis beitragen?"</string>
     <string name="quest_noteDiscussion_no">"Nein, verbergen"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
@@ -222,7 +222,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_fireHydrant_type_pillar">"Überfluranschluss"</string>
     <string name="quest_fireHydrant_type_underground">"Unterfluranschluss"</string>
     <string name="quest_fireHydrant_type_wall">"Wandanschluss"</string>
-    <string name="quest_fireHydrant_type_pond">"Teich"</string>
     <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
@@ -1292,12 +1291,13 @@ Jetzt verschieben?"</string>
     <string name="separate_cycleway_no">"Kein Radverkehr"</string>
     <string name="separate_cycleway_allowed">"Radverkehr ist erlaubt"</string>
     <string name="separate_cycleway_no_or_allowed">"Nicht ausgewiesen als Radweg (Radfahren kann trotzdem erlaubt sein)"</string>
-    <string name="separate_cycleway_non_segregated">"Gemeinsamer Rad- und Fußweg"</string>
-    <string name="separate_cycleway_segregated">"Getrennter Rad- und Fußweg"</string>
+    <string name="separate_cycleway_non_segregated">"Gemeinsamer Geh- und Radweg"</string>
+    <string name="separate_cycleway_segregated">"Getrennter Geh- und Radweg"</string>
     <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
     <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
     <string name="separate_cycleway_path">"Weg oder Pfad"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"explizite Mitbenutzung des Bürgersteigs, beide Richtungen"</string>
 </resources>

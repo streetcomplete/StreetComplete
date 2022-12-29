@@ -6,10 +6,69 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddRoadWidthTest {
     private val quest = AddRoadWidth(mock())
+
+    @Test fun `is applicable to residential roads if speed below 33`() {
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "DE:zone30",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "source:maxspeed" to "DE:zone30",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "32",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "20 mph",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "walk",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+    }
+
+    @Test fun `is not applicable to residential roads if speed is 33 or more`() {
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "DE:urban",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "source:maxspeed" to "DE:urban",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "33",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "30 mph",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "variable",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+    }
 
     @Test fun `apply to street`() {
         quest.verifyAnswer(

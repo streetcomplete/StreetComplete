@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Да, сигуран сам"</string>
     <string name="quest_generic_confirmation_no">"Проверићу"</string>
     <string name="quest_leave_new_note_title">"А да се ипак стави напомена?"</string>
-    <string name="quest_leave_new_note_description">"Можете оставити јавну напомену на овој локацији како би други картографи могли да коментаришу и реше, или пак сакријте овај задатак од себе."</string>
+    <string name="quest_leave_new_note_description">"Можете оставити јавну напомену на овој локацији како би други картографи могли да је реше, или да сакријте овај задатак од себе"</string>
     <string name="quest_leave_new_note_yes">"Оставите напомену"</string>
     <string name="quest_leave_new_note_no">"Сакриј"</string>
     <string name="quest_streetName_title">"Који назив носи овај пут?"</string>
@@ -222,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"Стуб"</string>
     <string name="quest_fireHydrant_type_underground">"Подземни"</string>
     <string name="quest_fireHydrant_type_wall">"Зидни"</string>
-    <string name="quest_fireHydrant_type_pond">"Језеро"</string>
     <string name="credits_contributors">"Погледајте &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;читаву листу на GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Сарадници програмери"</string>
@@ -332,7 +331,7 @@
     <string name="quest_carWashType_service">"Особље пере возило"</string>
     <string name="enable_quest_confirmation_title">"Омогући ову врсту задатака?"</string>
     <string name="default_disabled_msg_go_inside">"Ова врста задатака је иницијално искључена јер вероватно морате ући унутра да бисте могли одговорити."</string>
-    <string name="quest_housenumber_conscription_number">"Кућни број (конскрипција)"</string>
+    <string name="quest_housenumber_conscription_number">"Број у насељу"</string>
     <string name="quest_housenumber_street_number_optional">"Оријентациони број (необавезно)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Такође, бициклистичка трака са друге стране…"</string>
     <string name="quest_openingHours_emptyAnswer">"Морате описати шта је на знаку. Ако га нема, питајте унутра за радно време."</string>
@@ -1280,16 +1279,22 @@
     <string name="move_node_action_description">"Померили сте тачку"</string>
     <string name="quest_cycleway_value_shoulder">"нема, али са стране је солидно за бициклисте"</string>
     <string name="quest_placeName_no_name_answer">"Нема табле са називом"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"Чини се да је неисправно. Ширина се мери од ивичњака до ивичњака обухватајући паркинг на путу, бициклистичке стазе и сл."</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Та ширина изгледа нереално. Ширина се мери од ивичњака до ивичњака обухватајући паркинг на путу, бициклистичке стазе и сл."</string>
     <string name="overlay_cycleway">"Бициклистичке стазе"</string>
     <string name="bicycle_boulevard_is_a">"То је %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"То није %1$s"</string>
     <string name="bicycle_boulevard">"Бициклистички булевар"</string>
     <string name="separate_cycleway_no">"Забрањено за бициклисте"</string>
     <string name="separate_cycleway_allowed">"Бициклистима је дозвољено"</string>
+    <string name="separate_cycleway_no_or_allowed">"Није намењено бициклистима (иако могу да возе туда)"</string>
+    <string name="separate_cycleway_non_segregated">"Дељена траса"</string>
     <string name="separate_cycleway_segregated">"Одвојена бициклистичка од пешачке стазе"</string>
-    <string name="separate_cycleway_exclusive">"Искључиво за бициклисте"</string>
-    <string name="cycleway_reverse_direction">"Супротан смер за бициклисте"</string>
+    <string name="separate_cycleway_exclusive">"Стаза само за бициклисте"</string>
+    <string name="separate_cycleway_with_sidewalk">"Стаза само за бициклисте са тротоаром са стране (одвојено физички)"</string>
+    <string name="cycleway_reverse_direction">"Супротан смер бициклистичке стазе"</string>
     <string name="cycleway_reverse_direction_warning">"Бициклисти који се крећу у супротном смеру су веома ретки."</string>
-    <string name="cycleway_reverse_direction_toast">"Додирните са које стране је супротан смер"</string>
+    <string name="cycleway_reverse_direction_toast">"Додирните страну коју треба окренути"</string>
+    <string name="separate_cycleway_path">"Путић или стаза"</string>
+    <string name="quest_fireHydrant_type_pipe">"Цевасти"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"тротоар који се дели са пешацима у оба смера"</string>
 </resources>

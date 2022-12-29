@@ -63,7 +63,7 @@ class CheckExistence(
           and (${lastChecked(6.0)})
         ) or (
           (
-            amenity ~ bicycle_parking|motorcycle_parking
+            amenity ~ bicycle_parking|motorcycle_parking|taxi
           )
           and (${lastChecked(12.0)})
         ))

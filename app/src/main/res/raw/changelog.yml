@@ -1,3 +1,17 @@
+v50.1: |
+  <p>StreetComplete now has <a href="https://github.com/streetcomplete/StreetComplete/">3000 stars on GitHub</a>. Thanks, guys! 🤩</p>
+  <ul>
+  <li>Fix latinization of Serbian to latin script</li>
+  <li>Fix sidewalk, bike paths, road width and lanes quest would often not show up in Romania and Russia (#4684)</li>
+  <li>Fix shop overlay would not add name of place when selecting a brand (#4688 #4694), by @matkoniecz</li>
+  <li>Fix display of multi-polygons (#4689)</li>
+  <li>Fix rare crash (#4685)</li>
+  <li>Fire hydrant type quest: Replace deprecated selection of "pond" with "pipe" (see #362)</li>
+  <li>Small enhancements and fixes on the bike paths overlay (#4698, #4669, #4701)</li>
+  <li>Bike paths quest and overlay: Add "explicitly on sidewalk, both directions" as selectable option (#4692)</li>
+  <li>Clarify wordings and other small enhancements (#4682, #4695, #4702, #4699, #1236...), thanks @matkoniecz</li>
+  </ul>
+
 v50.0: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
   <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>

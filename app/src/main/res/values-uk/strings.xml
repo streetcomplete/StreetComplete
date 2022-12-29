@@ -222,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"Колонка"</string>
     <string name="quest_fireHydrant_type_underground">"Підземний"</string>
     <string name="quest_fireHydrant_type_wall">"Настінний"</string>
-    <string name="quest_fireHydrant_type_pond">"Ставковий"</string>
     <string name="credits_contributors">"Дивіться &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;повний список на GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Перекладачі"</string>
     <string name="credits_contributors_title">"Співавтори коду"</string>
@@ -1204,4 +1203,5 @@
     <string name="quest_bicycle_barrier_installation_title">"Цей велобарʼєр відчиняється?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Нерухомий"</string>
     <string name="quest_buildingType_guardhouse">"Будинок охоронця"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"тротуар для пішохідів та велосипедистів"</string>
 </resources>

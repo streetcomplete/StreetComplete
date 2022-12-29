@@ -56,11 +56,10 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
             val maybeSeparatelyMappedSidewalkGeometries = mapData.ways
                 .filter { maybeSeparatelyMappedSidewalksFilter.matches(it) }
                 .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
-            if (maybeSeparatelyMappedSidewalkGeometries.isEmpty()) return roadsWithMissingSidewalks
-
-            val minAngleToWays = 25.0
-
-            if (maybeSeparatelyMappedSidewalkGeometries.isNotEmpty()) {
+            if (maybeSeparatelyMappedSidewalkGeometries.isEmpty()) {
+                return roadsWithMissingSidewalks
+            } else {
+                val minAngleToWays = 25.0
                 // filter out roads with missing sidewalks that are near footways
                 roadsWithMissingSidewalks.removeAll { road ->
                     val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
@@ -148,7 +147,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
         ways with
           highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
           and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-          and (!maxspeed or maxspeed > 9)
+          and (!maxspeed or maxspeed > 9 or maxspeed ~ [A-Z].*)
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
           and (
             lit = yes
@@ -165,7 +164,6 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
           and cycleway:right != separate
           and cycleway:both != separate
     """.toElementFilterExpression() }
-
     override val hasQuestSettings = true
 
     // min distance selection or element selection

@@ -38,7 +38,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
         "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-        "FR", // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
+        "FR", // https://github.com/streetcomplete/StreetComplete/issues/2427#issuecomment-751860679 https://t.me/osmfr/26320
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title

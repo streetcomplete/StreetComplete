@@ -223,7 +223,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_fireHydrant_type_pillar">"Stub"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemni"</string>
     <string name="quest_fireHydrant_type_wall">"Na zidu"</string>
-    <string name="quest_fireHydrant_type_pond">"Jezero"</string>
     <string name="credits_contributors">"Pogledajte &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;kompletan popis na GitHubu&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
@@ -1102,4 +1101,5 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_seating_indoor_and_outdoor">"I unutarnje i vanjsko sjedenje"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Ova vrsta zadatka je inicijalno onemogućena jer može zahtijevati provjeru tijekom određenog dijela godine kako bi se moglo provjeriti sjedenje na otvorenom."</string>
     <string name="no_camera_permission_toast">"Nema dopuštenja za kameru"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"trotoar posebno dijeljen zajedno s pješacima, u oba smjera"</string>
 </resources>

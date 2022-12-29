@@ -913,10 +913,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_construction_completion_date_title">When will it be complete?</string>
 
     <string name="quest_construction_road_title">Is this road completed?</string>
-    <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
-    <string name="quest_construction_footway_title">Is this footway completed?</string>
+    <string name="quest_construction_cycleway_title">Is this bike path completed?</string>
+    <string name="quest_construction_footway_title">Is this foot path completed?</string>
     <string name="quest_construction_steps_title">Are these steps completed?</string>
-    <string name="quest_construction_generic_title">Is this way completed?</string>
+    <string name="quest_construction_generic_title">Is this path completed?</string>
 
     <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
 
@@ -936,6 +936,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_dual">explicitly shared sidewalk, both directions</string>
     <string name="quest_cycleway_value_lane_dual">bicycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
@@ -1001,7 +1002,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fireHydrant_type_pillar">Pillar</string>
     <string name="quest_fireHydrant_type_underground">Underground</string>
     <string name="quest_fireHydrant_type_wall">Wall</string>
-    <string name="quest_fireHydrant_type_pond">Pond</string>
+    <string name="quest_fireHydrant_type_pipe">Pipe</string>
 
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
@@ -1592,8 +1593,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="separate_cycleway_exclusive">Bike-only path</string>
     <!-- highway=cycleway + sidewalk=* -->
     <string name="separate_cycleway_with_sidewalk">Bike-only path with adjacent sidewalk (separated by a curb)</string>
-    <string name="cycleway_reverse_direction">Reverse cycleway direction</string>
-    <string name="cycleway_reverse_direction_warning">That a cycleway goes into the other direction is extremely rare.</string>
+    <string name="cycleway_reverse_direction">Reverse bike path direction</string>
+    <string name="cycleway_reverse_direction_warning">A bike path that goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
 
     <string name="overlay_none">None</string>

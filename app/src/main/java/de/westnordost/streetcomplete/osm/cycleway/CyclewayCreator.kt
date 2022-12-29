@@ -125,12 +125,9 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
            - or the road is a oneway and the cycleway is on the contra-flow side
            - or it is already tagged (to correct it if need be)
          */
-        val isDefaultDirection = when (direction) {
-            FORWARD -> isRight xor isLeftHandTraffic
-            BACKWARD -> !isRight xor isLeftHandTraffic
-            BOTH -> false
-        }
-        val isInContraflowOfOneway = isInContraflowOfOneway(isRight, tags, isLeftHandTraffic)
+        val defaultDirection = Direction.getDefault(isRight, isLeftHandTraffic)
+        val isDefaultDirection = defaultDirection == direction
+        val isInContraflowOfOneway = isInContraflowOfOneway(tags, direction)
         if (!isDefaultDirection || isInContraflowOfOneway || tags.containsKey("$cyclewayKey:oneway")) {
             tags["$cyclewayKey:oneway"] = direction.onewayValue
         }

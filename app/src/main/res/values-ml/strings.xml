@@ -216,7 +216,6 @@
     <string name="quest_fireHydrant_type_pillar">"തൂൺ"</string>
     <string name="quest_fireHydrant_type_underground">"ഭൂമിക്കടിയിൽ"</string>
     <string name="quest_fireHydrant_type_wall">"ചുവർ"</string>
-    <string name="quest_fireHydrant_type_pond">"കുളം"</string>
     <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
     <string name="credits_translations_title">"വിവർത്തനങ്ങൾ"</string>
     <string name="credits_contributors_title">"കോഡ് സംഭാവകർ"</string>
@@ -785,4 +784,5 @@
     <string name="quest_shop_vacant_type_title">"ഈ കട ഒഴിഞ്ഞുകിടക്കുന്നു. ഇപ്പോൾ ഇവിടെ എന്താണ്?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"വരികളുടെ എണ്ണം ഓരോ വശത്തും വ്യത്യാസപ്പെട്ടിരിക്കുന്നു"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"ഇവിടെ സൈക്കിൾ പാത ഇല്ല"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"വ്യക്തമായി പങ്കിട്ട നടപ്പാത, രണ്ട് ദിശകളിലേക്കും"</string>
 </resources>

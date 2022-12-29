@@ -4,5 +4,5 @@ enum class FireHydrantType(val osmValue: String) {
     PILLAR("pillar"),
     UNDERGROUND("underground"),
     WALL("wall"),
-    POND("pond"),
+    PIPE("pipe"),
 }

@@ -226,7 +226,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_fireHydrant_type_pillar">"Sloupek"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemní"</string>
     <string name="quest_fireHydrant_type_wall">"Na zdi"</string>
-    <string name="quest_fireHydrant_type_pond">"Nádrž"</string>
     <string name="credits_contributors">"Přečtěte si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný seznam na GitHubu&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Překladatelé"</string>
     <string name="credits_contributors_title">"Přispěvatelé kódu"</string>
@@ -1304,4 +1303,6 @@ Chcete ho posunout?"</string>
     <string name="cycleway_reverse_direction_warning">"Cesta pro cyklisty v opačném směru je extrémně vzácná."</string>
     <string name="cycleway_reverse_direction_toast">"Dotkněte se strany, kterou chcete obrátit"</string>
     <string name="separate_cycleway_path">"Stezka nebo dráha"</string>
+    <string name="quest_fireHydrant_type_pipe">"Zakrytá trubka"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"výslovně sdílená s chodníkem, oba směry"</string>
 </resources>

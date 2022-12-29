@@ -222,7 +222,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_fireHydrant_type_pillar">"Sütun"</string>
     <string name="quest_fireHydrant_type_underground">"Yeraltı"</string>
     <string name="quest_fireHydrant_type_wall">"Duvar"</string>
-    <string name="quest_fireHydrant_type_pond">"Gölet"</string>
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
     <string name="credits_translations_title">"Çeviriler"</string>
     <string name="credits_contributors_title">"Kod Katkıcıları"</string>
@@ -770,4 +769,5 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="language_default">"Sistem varsayılanı"</string>
     <string name="no_camera_permission_warning_title">"Kamera izni"</string>
     <string name="ar_measure">"Ölçü"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"iki yönde de kaldırım ile paylaşılıyor"</string>
 </resources>

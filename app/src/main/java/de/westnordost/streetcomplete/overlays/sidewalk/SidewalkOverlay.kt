@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
@@ -95,7 +96,9 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
+      or maxspeed = walk
       or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*zone:?([1-9]|10)"
 """.toElementFilterExpression() }
 
 private fun sidewalkTaggingNotExpected(element: Element) =

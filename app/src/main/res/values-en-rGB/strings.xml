@@ -222,7 +222,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fireHydrant_type_pillar">"Pillar"</string>
     <string name="quest_fireHydrant_type_underground">"Underground"</string>
     <string name="quest_fireHydrant_type_wall">"Wall"</string>
-    <string name="quest_fireHydrant_type_pond">"Pond"</string>
     <string name="credits_contributors">"See the &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Translations"</string>
     <string name="credits_contributors_title">"Code contributors"</string>
@@ -1274,4 +1273,32 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
     <string name="confirmation_replace_shop_no">"Still same place"</string>
+    <string name="move_node">"It’s at a slightly different position…"</string>
+    <string name="quest_move_node_message">"You can correct the position by moving the feature.
+Move it now?"</string>
+    <string name="node_moved_not_far_enough">"Please move it further"</string>
+    <string name="node_moved_too_far">"Moved too far. Consider leaving a note"</string>
+    <string name="node_moved">"Moved by %s"</string>
+    <string name="move_node_description">"Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed."</string>
+    <string name="move_node_action_description">"You moved the node"</string>
+    <string name="quest_cycleway_value_shoulder">"none, but shoulder is usable for cyclists"</string>
+    <string name="quest_placeName_no_name_answer">"There is no name sign"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from curb to curb, including on-street parking, bicycle lanes etc."</string>
+    <string name="overlay_cycleway">"Cycleways"</string>
+    <string name="bicycle_boulevard_is_a">"It’s a %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"It’s not a %1$s"</string>
+    <string name="bicycle_boulevard">"Bicycle boulevard"</string>
+    <string name="separate_cycleway_no">"No cycling"</string>
+    <string name="separate_cycleway_allowed">"Cyclists are allowed"</string>
+    <string name="separate_cycleway_no_or_allowed">"Not designated for cyclists (cycling may still be allowed)"</string>
+    <string name="separate_cycleway_non_segregated">"Shared-use path"</string>
+    <string name="separate_cycleway_segregated">"Separated bike and foot path"</string>
+    <string name="separate_cycleway_exclusive">"Bike-only path"</string>
+    <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent sidewalk (separated by a curb)"</string>
+    <string name="cycleway_reverse_direction">"Reverse cycleway direction"</string>
+    <string name="cycleway_reverse_direction_warning">"That a cycleway goes into the other direction is extremely rare."</string>
+    <string name="cycleway_reverse_direction_toast">"Tap which side to reverse"</string>
+    <string name="separate_cycleway_path">"Path or trail"</string>
+    <string name="quest_fireHydrant_type_pipe">"Pipe"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"explicitly shared-use pavement, both directions"</string>
 </resources>

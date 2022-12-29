@@ -223,7 +223,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_fireHydrant_type_pillar">"Pilar"</string>
     <string name="quest_fireHydrant_type_underground">"Soterrat"</string>
     <string name="quest_fireHydrant_type_wall">"Paret"</string>
-    <string name="quest_fireHydrant_type_pond">"Estany"</string>
     <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa de contribuïdors a GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduccions"</string>
     <string name="credits_contributors_title">"Contribuïdors al codi"</string>
@@ -1285,14 +1284,26 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
 Menejar ara?"</string>
     <string name="node_moved_not_far_enough">"Si us plau, mogui-ho més lluny"</string>
     <string name="node_moved_too_far">"S'ha mogut massa lluny. Considereu deixar una nota"</string>
+    <string name="node_moved">"Menejat %s"</string>
     <string name="move_node_description">"Arrossegueu el mapa per a situar l'element a la posició correcta. Utilitzeu la funció de zoom i intenteu ser tan precisos com sigui possible. Tingueu en compte que la teua ubicació que es mostra pot ser menys exacta del que es real."</string>
     <string name="move_node_action_description">"Has menejat el node"</string>
     <string name="quest_cycleway_value_shoulder">"cap, però el voral és usable per ciclistes"</string>
     <string name="quest_placeName_no_name_answer">"No hi ha cap nom retolat"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Aquesta amplaria sembla impausible. Recorda, l'amplada és des de voral a voral, incloent aparcament a la calçada, carrils bici, etc."</string>
     <string name="overlay_cycleway">"Ciclovies"</string>
     <string name="bicycle_boulevard_is_a">"És un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"No és un %1$s"</string>
-    <string name="bicycle_boulevard">"Bulevard per a biciclete"</string>
+    <string name="bicycle_boulevard">"És un bulevard per a bicicletes"</string>
+    <string name="separate_cycleway_no">"Les bicicletes no estan permeses"</string>
+    <string name="separate_cycleway_allowed">"Les bicicletes estan permeses"</string>
+    <string name="separate_cycleway_no_or_allowed">"No designat per a anar en bicicleta (però podria estar-hi permés)"</string>
+    <string name="separate_cycleway_non_segregated">"Via d'us compartit"</string>
     <string name="separate_cycleway_segregated">"Ciclovia i camí per a vianants segregats"</string>
     <string name="separate_cycleway_exclusive">"Ciclovia exclusiva"</string>
+    <string name="separate_cycleway_with_sidewalk">"Via d'ús compartit"</string>
+    <string name="cycleway_reverse_direction">"Inverteix la direcció de la ciclovia"</string>
+    <string name="cycleway_reverse_direction_warning">"Que una ciclovia vaja en direcció contrària és extremadament estrany."</string>
+    <string name="cycleway_reverse_direction_toast">"Toca el sentit a invertir"</string>
+    <string name="separate_cycleway_path">"Camí o pista"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"vorera explícitament compartida, doble sentit"</string>
 </resources>
