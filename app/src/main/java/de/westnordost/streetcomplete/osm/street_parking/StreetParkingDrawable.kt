@@ -95,7 +95,7 @@ class StreetParkingDrawable(
 /** drawable res id of the street in the background */
 private fun getStreetDrawableResId(orientation: ParkingOrientation, position: ParkingPosition?): Int? =
     when (position) {
-        ON_STREET -> when (orientation) {
+        LANE -> when (orientation) {
             PARALLEL -> R.drawable.ic_street
             else -> R.drawable.ic_street_broad
         }

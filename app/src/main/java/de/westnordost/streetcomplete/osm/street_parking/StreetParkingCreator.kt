@@ -48,7 +48,7 @@ private val StreetParking.osmLaneValue get() = when (this) {
 }
 
 private val ParkingPosition.osmValue get() = when (this) {
-    ParkingPosition.ON_STREET ->         "on_street"
+    ParkingPosition.LANE ->              "lane"
     ParkingPosition.HALF_ON_KERB ->      "half_on_kerb"
     ParkingPosition.ON_KERB ->           "on_kerb"
     ParkingPosition.STREET_SIDE ->       "street_side"

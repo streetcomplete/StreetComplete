@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.LANE
 import kotlinx.serialization.Serializable
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
@@ -30,7 +30,7 @@ enum class ParkingOrientation {
 }
 
 enum class ParkingPosition {
-    ON_STREET,
+    LANE, // was ON_STREET
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
@@ -64,7 +64,7 @@ private val ParkingOrientation.estimatedWidth: Float get() = when (this) {
 }
 
 private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this) {
-    ON_STREET -> 1f
+    LANE -> 1f
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f
     else -> 0.5f // otherwise let's assume it is somehow on the street

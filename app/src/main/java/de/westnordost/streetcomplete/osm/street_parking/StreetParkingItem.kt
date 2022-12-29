@@ -4,7 +4,7 @@ import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.LANE
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.view.DrawableImage
@@ -88,7 +88,7 @@ private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsi
     DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512))
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
-    ON_STREET -> R.string.street_parking_on_street
+    LANE -> R.string.street_parking_lane
     HALF_ON_KERB -> R.string.street_parking_half_on_kerb
     ON_KERB -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
@@ -96,7 +96,7 @@ private val ParkingPosition.titleResId: Int get() = when (this) {
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
-    ON_STREET,
+    LANE,
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
