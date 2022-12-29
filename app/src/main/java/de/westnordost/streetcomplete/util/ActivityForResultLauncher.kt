@@ -7,6 +7,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
 /** Launches an activity for result (suspending) */
+@Deprecated("see #3967")
 class ActivityForResultLauncher<I, O> (
     caller: ActivityResultCaller,
     contract: ActivityResultContract<I, O>

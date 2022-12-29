@@ -3,21 +3,20 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
+import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
+import de.westnordost.streetcomplete.screens.measure.MeasureContract
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_length
     private val binding by contentViewBinding(QuestLengthBinding::bind)
-    private val takeMeasurement = TakeMeasurementLauncher(this)
+    private val launcher = registerForActivityResult(MeasureContract(), ::onMeasured)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var lengthInput: LengthInputViewController
@@ -43,12 +42,15 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
             checkIsFormComplete()
         }
         binding.measureButton.isGone = !checkArSupport()
-        binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
+        binding.measureButton.setOnClickListener { takeMeasurement() }
     }
 
-    private suspend fun takeMeasurement() {
+    private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
-        val length = takeMeasurement(requireContext(), lengthUnit, true) ?: return
+        launcher.launch(MeasureContract.Params(lengthUnit, true))
+    }
+
+    private fun onMeasured(length: Length?) {
         lengthInput.length = length
         isARMeasurement = true
     }
