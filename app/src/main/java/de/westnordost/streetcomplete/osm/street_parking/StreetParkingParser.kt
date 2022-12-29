@@ -34,7 +34,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
             return StreetParkingSeparate
         else -> {
             val parkingOrientation = parkingValue.toParkingOrientation()
-                // regard parking:lanes:*=marked as incomplete (because position is missing implicitly)
+                // regard parking:lane:*=marked as incomplete (because position is missing implicitly)
                 ?: return if (parkingValue == "marked") IncompleteStreetParking else UnknownStreetParking
 
             val parkingPositionValue = tags["parking:lane$sideVal:$parkingValue"]
