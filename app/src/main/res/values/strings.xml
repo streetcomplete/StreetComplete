@@ -215,11 +215,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
     <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
-    <string name="ar_measure_horizontal">Measure lengths</string>
-    <string name="ar_measure_vertical">Measure heights</string>
-    <string name="ar_measure_meters">Use meters</string>
-    <string name="ar_measure_ft_in">Use feet &amp; inch</string>
-
+    <string name="measure_info_title">"Achieving best precision"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is, which leads to measurement deviations that get larger the more you tilt your phone towards the horizon - basic trigonometry.&lt;/p&gt;
+&lt;p&gt;You can completely avoid this for horizontal measurements: Set each the start- and endpoint while pointing the phone straight down, i.e. seeing the white arrow from above. Try it out and compare!&lt;/p&gt;
+&lt;p&gt;For vertical measurements, you need to check if the startpoint is really on the ground by moving around it and see if it really sticks to the same position on the ground. If it seems to move, it floats above or below the ground a bit.&lt;/p&gt;"</string>
 
     <!-- Notifications -->
 
