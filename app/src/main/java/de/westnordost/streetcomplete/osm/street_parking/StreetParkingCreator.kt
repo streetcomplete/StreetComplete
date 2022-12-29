@@ -9,37 +9,37 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     if (left == null && right == null) return
     /* for being able to modify only one side (e.g. `left` is null while `right` is not null),
-       the sides conflated in `:both` keys need to be separated first. E.g. `parking:lane=no`
+       the sides conflated in `:both` keys need to be separated first. E.g. `parking=no`
        when left side is made `separate´ should become
-       - parking:lane:right=no
-       - parking:lane:left=separate
+       - parking:right=no
+       - parking:left=separate
        First separating the values and then later conflating them again, if possible, solves this.
      */
-    tags.expandSides("parking:lane")
-    ParkingOrientation.values().forEach { tags.expandSides("parking:lane", it.osmValue, true) }
+    tags.expandSides("parking")
+    ParkingOrientation.values().forEach { tags.expandSides("parking", it.osmValue, true) }
 
-    // parking:lane:<left/right>
+    // parking:<left/right>
     left?.applyTo(tags, "left")
     right?.applyTo(tags, "right")
 
-    tags.mergeSides("parking:lane")
-    ParkingOrientation.values().forEach { tags.mergeSides("parking:lane", it.osmValue) }
+    tags.mergeSides("parking")
+    ParkingOrientation.values().forEach { tags.mergeSides("parking", it.osmValue) }
 
-    if (!tags.hasChanges || tags.hasCheckDateForKey("parking:lane")) {
-        tags.updateCheckDateForKey("parking:lane")
+    if (!tags.hasChanges || tags.hasCheckDateForKey("parking")) {
+        tags.updateCheckDateForKey("parking")
     }
 }
 
 private fun StreetParking.applyTo(tags: Tags, side: String) {
-    tags["parking:lane:$side"] = osmLaneValue
+    tags["parking:$side"] = osmLaneValue
     // clear previous orientation(s)
-    ParkingOrientation.values().forEach { tags.remove("parking:lane:$side:${it.osmValue}") }
+    ParkingOrientation.values().forEach { tags.remove("parking:$side:${it.osmValue}") }
     if (this is StreetParkingPositionAndOrientation) {
-        tags["parking:lane:$side:$osmLaneValue"] = position.osmValue
+        tags["parking:$side:$osmLaneValue"] = position.osmValue
     }
 }
 
-/** get the OSM value for the parking:lane key */
+/** get the OSM value for the parking key */
 private val StreetParking.osmLaneValue get() = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.osmValue
     NoStreetParking -> "no"
