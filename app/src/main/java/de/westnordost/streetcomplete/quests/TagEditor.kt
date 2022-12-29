@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -81,6 +82,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val prefs: SharedPreferences by inject()
     protected val elementEditsController: ElementEditsController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val mapDataSource: MapDataWithEditsSource by inject()
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -284,7 +286,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             }
             && newTags.keys.all { it.length < 255 }
             && newTags.values.all { it.length < 255 }
-            && newTags.isNotEmpty() // though this could be allowed...
+            && (newTags.isNotEmpty() || mapDataSource.getWaysForNode(originalElement.id).isNotEmpty()) // allow deleting all tags if node is part of a way
             && newTags.keys.none { problematicKeyCharacters.containsMatchIn(it) }
 
     private fun showOk() = requireActivity().runOnUiThread { if (tagsChangedAndOk()) binding.okButton.popIn() else binding.okButton.popOut() }

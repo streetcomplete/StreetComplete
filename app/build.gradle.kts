@@ -189,10 +189,10 @@ dependencies {
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
-    // faster sqlite library (additional capapilities like R*-tree or json1 not used)
+    // faster sqlite library (additional capabilities like R*-tree or json1 not used)
     // performance comparison: https://github.com/streetcomplete/StreetComplete/issues/3609#issuecomment-1031177576
     implementation("com.github.requery:sqlite-android:3.39.2")
-    implementation("androidx.sqlite:sqlite:2.3.0-beta01")
+    implementation("androidx.sqlite:sqlite:2.3.0-rc01")
 
     // fast json serialization, used to write tags to database (and read)
     implementation("com.squareup.moshi:moshi:1.14.0")
