@@ -26,8 +26,12 @@ fun ElementGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap
     is ElementPolygonsGeometry -> {
         val outerRings = mutableListOf<List<LatLon>>()
         val innerRings = mutableListOf<List<LatLon>>()
-        polygons.forEach {
-            if (it.isRingDefinedClockwise()) innerRings.add(it) else outerRings.add(it)
+        if (polygons.size == 1) {
+            outerRings.add(polygons.first())
+        } else {
+            polygons.forEach {
+                if (it.isRingDefinedClockwise()) innerRings.add(it) else outerRings.add(it)
+            }
         }
 
         // outerRings must be sorted size ascending to correctly handle outer rings within holes
