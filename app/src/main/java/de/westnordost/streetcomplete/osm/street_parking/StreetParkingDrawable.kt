@@ -109,11 +109,13 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             DIAGONAL -> R.drawable.ic_street_parking_bays_diagonal
             PERPENDICULAR -> R.drawable.ic_street_parking_bays_perpendicular
         }
-        PAINTED_AREA_ONLY -> when (orientation) {
-            PARALLEL -> R.drawable.ic_street_marked_parking_parallel
-            DIAGONAL -> R.drawable.ic_street_marked_parking_diagonal
-            PERPENDICULAR -> R.drawable.ic_street_marked_parking_perpendicular
         }
+        // TODO remove
+        // PAINTED_AREA_ONLY -> when (orientation) {
+        //     PARALLEL -> R.drawable.ic_street_marked_parking_parallel
+        //     DIAGONAL -> R.drawable.ic_street_marked_parking_diagonal
+        //     PERPENDICULAR -> R.drawable.ic_street_marked_parking_perpendicular
+        // }
         null -> null
     }
 
@@ -132,11 +134,12 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             DIAGONAL -> listOf(2, 3)
             PERPENDICULAR -> listOf(0, 3, 4, 7)
         }
-        PAINTED_AREA_ONLY -> when (orientation) {
-            PARALLEL -> listOf(0, 3)
-            DIAGONAL -> listOf(0, 1, 4, 5)
-            PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
-        }
+        // TODO remove
+        // PAINTED_AREA_ONLY -> when (orientation) {
+        //     PARALLEL -> listOf(0, 3)
+        //     DIAGONAL -> listOf(0, 1, 4, 5)
+        //     PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
+        // }
         else -> emptyList()
     }
 

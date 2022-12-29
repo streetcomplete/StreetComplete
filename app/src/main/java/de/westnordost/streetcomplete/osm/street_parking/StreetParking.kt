@@ -34,7 +34,7 @@ enum class ParkingPosition {
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
-    PAINTED_AREA_ONLY
+    // PAINTED_AREA_ONLY // removed
 }
 
 fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {

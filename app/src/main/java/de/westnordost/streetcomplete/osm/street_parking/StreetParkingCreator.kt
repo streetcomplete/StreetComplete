@@ -52,7 +52,7 @@ private val ParkingPosition.osmValue get() = when (this) {
     ParkingPosition.HALF_ON_KERB ->      "half_on_kerb"
     ParkingPosition.ON_KERB ->           "on_kerb"
     ParkingPosition.STREET_SIDE ->       "street_side"
-    ParkingPosition.PAINTED_AREA_ONLY -> "painted_area_only"
+    // ParkingPosition.PAINTED_AREA_ONLY -> "painted_area_only" // TODO remove
 }
 
 private val ParkingOrientation.osmValue get() = when (this) {
