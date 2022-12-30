@@ -179,8 +179,9 @@ private fun getStyleForStandalonePath(element: Element): Style {
 
 private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
     val sidewalkSides = createSidewalkSides(element.tags)
-    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
-    if (sidewalkSides == null || isPrivateOnFoot(element)) {
+
+    // sidewalk data is not set on road -> do not highlight as missing
+    if (sidewalkSides == null) {
         return PolylineStyle(StrokeStyle(Color.INVISIBLE))
     }
 
@@ -191,6 +192,14 @@ private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
     val rightColor =
         if (sidewalkSides.right != Sidewalk.YES) Color.INVISIBLE
         else sidewalkSurface?.right.color
+
+    if (leftColor == Color.DATA_REQUESTED || rightColor == Color.DATA_REQUESTED) {
+        // yes, there is an edge case where one side has data set, one unset
+        // and it will be not shown
+        if (isPrivateOnFoot(element)) {
+            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
+        }
+    }
 
     return PolylineStyle(
         stroke = null,
