@@ -24,6 +24,7 @@
             <data android:scheme="geo" />
         </intent>
         <package android:name="de.westnordost.streetmeasure"/>
+        <package android:name="com.android.vending"/>
     </queries>
 
     <application
