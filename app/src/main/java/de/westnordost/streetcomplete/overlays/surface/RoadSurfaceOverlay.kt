@@ -47,7 +47,6 @@ class RoadSurfaceOverlay : Overlay {
                   and (!surface or surface ~ ${handledSurfaces.joinToString("|")})
                   and (!surface:note or surface)
             """)
-            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }
             .map { it to getStyle(it) }
     }
 
@@ -62,16 +61,6 @@ class RoadSurfaceOverlay : Overlay {
         // supported in both surface overlays
         "surface", "surface:note"
     ) + keysToBeRemovedOnSurfaceChange("")
-
-    private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
-        "proposed:surface", // does not matter
-    )
-
-    private fun tagsHaveOnlyAllowedSurfaceKeys(tags: Map<String, String>): Boolean {
-        return tags.keys.none {
-            "surface" in it && it !in allowedTagWithSurfaceInKey
-        }
-    }
 
     override fun createForm(element: Element?) =
         if (element != null && element.tags["highway"] in ALL_ROADS) RoadSurfaceOverlayForm()

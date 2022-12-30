@@ -71,34 +71,8 @@ class PathSurfaceOverlay : Overlay {
                    and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
                )
            """)
-           .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
+           .map { it to getStyle(it) }
     }
-
-    private fun tagsHaveOnlyAllowedSurfaceKeys(tags: Map<String, String>): Boolean {
-        return tags.keys.none {
-            "surface" in it && it !in allowedTagWithSurfaceInKey
-        }
-    }
-    // https://taginfo.openstreetmap.org/search?q=surface
-    val supportedSurfaceKeys = listOf(
-        // note that elements with sidewalk surface keys are exluded from path in the query above
-        // some people tag combined footway-cycleway as cycleway with sidewalk...
-        "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
-        "sidewalk:both:surface:note", "sidewalk:right:surface:note", "sidewalk:left:surface:note",
-
-        // supported in this overlay, not in all of them
-        "footway:surface", "cycleway:surface",
-        // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
-        "cycleway:surface:note", "footway:surface:note",
-
-        // supported in both surface overlays
-        "surface", "surface:note"
-    ) + keysToBeRemovedOnSurfaceChange("") +
-    keysToBeRemovedOnSurfaceChange("cycleway:") + keysToBeRemovedOnSurfaceChange("fotway:")
-
-    private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
-        "proposed:surface", // does not matter
-    )
 
     override fun createForm(element: Element?) =
         if (element != null) {
