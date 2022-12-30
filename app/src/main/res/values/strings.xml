@@ -218,7 +218,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="measure_info_title">"Achieving optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
-&lt;p&gt;For vertical measurements, check that the startpoint does not move in relation to the ground.&lt;/p&gt;"</string>
+&lt;p&gt;For vertical measurements, check that when moving around, the startpoint does not move in relation to the ground.&lt;/p&gt;"</string>
 
     <!-- Notifications -->
 

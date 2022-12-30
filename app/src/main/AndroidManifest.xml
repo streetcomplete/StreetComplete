@@ -23,6 +23,7 @@
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="geo" />
         </intent>
+        <package android:name="de.westnordost.streetmeasure"/>
     </queries>
 
     <application
