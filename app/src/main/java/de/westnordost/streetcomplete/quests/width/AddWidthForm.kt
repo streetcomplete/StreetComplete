@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.width
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -55,7 +58,11 @@ class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
 
     private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
-        launcher.launch(MeasureContract.Params(lengthUnit, false))
+        try {
+            launcher.launch(MeasureContract.Params(lengthUnit, false))
+        } catch (e: ActivityNotFoundException) {
+            context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
+        }
     }
 
     private fun onMeasured(length: Length?) {

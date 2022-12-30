@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_height
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
@@ -47,7 +50,11 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
 
     private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
-        launcher.launch(MeasureContract.Params(lengthUnit, true))
+        try {
+            launcher.launch(MeasureContract.Params(lengthUnit, false))
+        } catch (e: ActivityNotFoundException) {
+            context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
+        }
     }
 
     private fun onMeasured(length: Length?) {

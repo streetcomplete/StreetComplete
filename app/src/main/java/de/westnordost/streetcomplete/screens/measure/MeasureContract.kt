@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.measure
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
@@ -22,7 +23,8 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
             LengthUnit.METER ->         10
             LengthUnit.FOOT_AND_INCH -> 4
         }
-        val intent = context.packageManager.getLaunchIntentForPackage("de.westnordost.streetmeasure")!!
+        val intent = context.packageManager.getLaunchIntentForPackage("de.westnordost.streetmeasure")
+            ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         val attributes = context.obtainStyledAttributes(intArrayOf(android.R.attr.colorAccent))
         val argb = attributes.getColor(0, 0)
