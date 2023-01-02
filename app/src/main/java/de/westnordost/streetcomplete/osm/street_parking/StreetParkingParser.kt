@@ -61,7 +61,7 @@ private fun String.toParkingPosition() = when (this) {
     "on_kerb" -> ON_KERB
     // "painted_area_only", "marked" -> PAINTED_AREA_ONLY // remove
     "lay_by", "street_side", "bays" -> STREET_SIDE
-    "shoulder" -> SHOULDER // added
+    // "shoulder" -> SHOULDER // lets continue to not support this
     else -> null
 }
 

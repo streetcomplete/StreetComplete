@@ -34,7 +34,7 @@ enum class ParkingPosition {
     STREET_SIDE,
     HALF_ON_KERB,
     ON_KERB,
-    SHOULDER, // added
+    // SHOULDER, // lets continue to not support this
     // PAINTED_AREA_ONLY // removed
 }
 
@@ -69,6 +69,6 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
     STREET_SIDE -> 0f // added
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f
-    SOULDER -> 0f // added
+    // SOULDER -> 0f // lets continue to not support this
     else -> 0.5f // otherwise let's assume it is somehow on the street
 }
