@@ -35,6 +35,7 @@ private fun StreetParking.applyTo(tags: Tags, side: String) {
     // clear previous orientation(s)
     ParkingOrientation.values().forEach { tags.remove("parking:$side:${it.osmValue}") }
     if (this is StreetParkingPositionAndOrientation) {
+        // TODO now: tags["parking:$side:orientation"] = position.osmValue
         tags["parking:$side:$osmLaneValue"] = position.osmValue
     }
 }
