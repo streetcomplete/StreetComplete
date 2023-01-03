@@ -19,10 +19,6 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
             LengthUnit.METER -> "meter"
             LengthUnit.FOOT_AND_INCH -> "foot_and_inch"
         }
-        val precisionStep = when (input.lengthUnit) {
-            LengthUnit.METER ->         10
-            LengthUnit.FOOT_AND_INCH -> 4
-        }
         val intent = context.packageManager.getLaunchIntentForPackage("de.westnordost.streetmeasure")
             ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -32,7 +28,8 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
         intent.putExtras(bundleOf(
             "request_result" to       true,
             "unit" to                 unit,
-            "precision_step" to       precisionStep,
+            "precision_cm" to         10,
+            "precision_inch" to       4,
             "measure_vertical" to     input.measureVertical,
             "measuring_tape_color" to argb
         ))
