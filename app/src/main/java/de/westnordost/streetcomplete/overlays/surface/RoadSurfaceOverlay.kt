@@ -50,18 +50,6 @@ class RoadSurfaceOverlay : Overlay {
             .map { it to getStyle(it) }
     }
 
-    // https://taginfo.openstreetmap.org/search?q=surface
-    private val supportedSurfaceKeys = listOf(
-        // supported in this overlay, but not in all overlays
-        "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
-
-        // this is not a valid tag on road and therefore not supported here
-        // "footway:surface", "cycleway:surface",
-
-        // supported in both surface overlays
-        "surface", "surface:note"
-    ) + keysToBeRemovedOnSurfaceChange("")
-
     override fun createForm(element: Element?) =
         if (element != null && element.tags["highway"] in ALL_ROADS) RoadSurfaceOverlayForm()
         else null
