@@ -45,11 +45,9 @@ class PathSurfaceOverlay : Overlay {
 
     private val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
 
-    override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        return mapData
-           .filter( """
+    override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
+        mapData.filter( """
                ways, relations with
-               (
                    highway ~ ${(ALL_PATHS).joinToString("|")}
                    and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                    and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
@@ -61,18 +59,16 @@ class PathSurfaceOverlay : Overlay {
                    and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
                    and !sidewalk:both:surface and !sidewalk:right:surface and !sidewalk:left:surface and !sidewalk:surface
                    and !sidewalk:both:surface:note and !sidewalk:right:surface:note and !sidewalk:left:surface:note
-               )
-               or
-               (
+               """).map { it to getStyleForStandalonePath(it) } +
+       mapData.filter( """
+               ways, relations with
                    highway ~ ${(ALL_ROADS).joinToString("|")}
                    and (sidewalk ~ left|right|both or sidewalk:both = yes or sidewalk:left = yes or sidewalk:right = yes)
                    and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
-               )
            """)
-           .map { it to getStyle(it) }
-    }
+           .map { it to getStyleForSidewalkAsProperty(it) }
 
     override fun createForm(element: Element?) =
         if (element != null) {
@@ -80,14 +76,6 @@ class PathSurfaceOverlay : Overlay {
             else if (element.tags["highway"] in ALL_ROADS) SidewalkSurfaceOverlayForm()
             else null
         } else null
-}
-
-private fun getStyle(element: Element): Style {
-    return if (element.tags["highway"] in ALL_PATHS) {
-        getStyleForStandalonePath(element)
-    } else {
-        getStyleForSidewalkAsProperty(element)
-    }
 }
 
 private fun getStyleForStandalonePath(element: Element): Style {
