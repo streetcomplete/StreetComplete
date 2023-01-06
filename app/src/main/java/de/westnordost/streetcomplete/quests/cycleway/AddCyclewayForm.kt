@@ -70,8 +70,13 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (savedInstanceState == null) {
             initStateFromTags()
+        }
+
+        streetSideSelect.transformLastSelection = { item: CyclewayAndDirection, isRight: Boolean ->
+            CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
         }
     }
 

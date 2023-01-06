@@ -41,6 +41,12 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val lastSelectionRight: I?
     private val lastSelectionOneSide: I?
 
+    var transformLastSelection: (item: I, isRight: Boolean) -> I = { item, _ -> item }
+    set(value) {
+        field = value
+        updateLastSelectionButton()
+    }
+
     /** Angle in degrees by which the street side select puzzle should be rotated from North */
     var offsetPuzzleRotation: Float = 0f
     set(value) {
@@ -209,8 +215,12 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
                 right = lastSelectionOneSide
             }
         }
-        lastAnswerButtonBinding.leftSideImageView.setImage(left?.let { asStreetSideItem(it, false).icon })
-        lastAnswerButtonBinding.rightSideImageView.setImage(right?.let { asStreetSideItem(it, true).icon })
+        lastAnswerButtonBinding.leftSideImageView.setImage(left?.let {
+            asStreetSideItem(transformLastSelection(it, false), false).icon }
+        )
+        lastAnswerButtonBinding.rightSideImageView.setImage(right?.let {
+            asStreetSideItem(transformLastSelection(it, true), true).icon }
+        )
     }
 
     private fun updateLastSelectionButtonVisibility() {
@@ -244,8 +254,12 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
             }
         }
 
-        if (l != null && showSides != Sides.RIGHT) replacePuzzleSide(asStreetSideItem(l, false), false)
-        if (r != null && showSides != Sides.LEFT) replacePuzzleSide(asStreetSideItem(r, true), true)
+        if (l != null && showSides != Sides.RIGHT) {
+            replacePuzzleSide(asStreetSideItem(transformLastSelection(l, false), false), false)
+        }
+        if (r != null && showSides != Sides.LEFT) {
+            replacePuzzleSide(asStreetSideItem(transformLastSelection(r, true), true), true)
+        }
     }
 
     private fun isStreetDisplayedUpsideDown(): Boolean =
