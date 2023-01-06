@@ -205,7 +205,6 @@ fun getSelectableCycleways(
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
     if (isInContraflowOfOneway(roadTags, dir)) {
-        cycleways.remove(PICTOGRAMS)
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
     return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
