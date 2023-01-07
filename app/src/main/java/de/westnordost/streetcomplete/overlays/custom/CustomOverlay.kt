@@ -42,15 +42,43 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 }
 
 private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
-    val color = if (colorKeySelector == null) Color.LIME
+    val color by lazy {
+        if (colorKeySelector == null) Color.LIME
         else createColorFromString(element.tags.mapNotNull {
                 if (it.key.matches(colorKeySelector))
                     it.value + it.key
                 else null
             }.joinToString().takeIf { it.isNotEmpty() })
+    }
+
+    // get left/right style if there is some match
+    var leftColor = ""
+    var rightColor = ""
+    if (colorKeySelector != null && element !is Node) // avoid doing needless work
+        for ((k, v) in element.tags) {
+            if (!k.matches(colorKeySelector)) continue
+            // contains or endsWith? contains will also match things like sidewalk:left:surface, which may be wanted or not...
+            if (v == "both" || k.contains(":both")) {
+                leftColor = createColorFromString(v + k)
+                rightColor = leftColor
+                break
+            }
+            if (v == "right" || k.contains(":right")) {
+                rightColor = createColorFromString(v + k)
+                continue
+            }
+            if (v == "left" || k.contains(":left"))
+                leftColor = createColorFromString(v + k)
+        }
+
     return when {
-        element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"])
+        element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"]) // currently no coloring possible...
         IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, label = element.tags["name"])
+        leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
+            stroke = null,
+            strokeLeft = leftColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) },
+            strokeRight = rightColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) }
+        )
         else -> PolylineStyle(StrokeStyle(color)) // no label for lines, because this often leads to duplicate labels e.g. for roads
     }
 }
