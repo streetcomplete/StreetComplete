@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -128,7 +129,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         }
         d = Builder(c)
             .setTitle(R.string.custom_overlay_title)
-            .setView(linearLayout)
+            .setView(ScrollView(c).apply { addView(linearLayout) })
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 prefs.edit {
