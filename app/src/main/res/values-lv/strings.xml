@@ -1276,5 +1276,6 @@ Pārvietot tagad?"</string>
     <string name="node_moved_not_far_enough">"Pārvietot tālāk"</string>
     <string name="node_moved_too_far">"Pārvietots pārāk tālu. Apsveriet iespēju atstāt piezīmi"</string>
     <string name="node_moved">"Pārvietots par %s"</string>
+    <string name="quest_fireHydrant_type_pipe">"Caurule"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"skaidri nodalīta ietve, abi virzieni"</string>
 </resources>

@@ -1101,7 +1101,7 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_baby_changing_table_title2">"Heeft deze plek een plek om baby's te verschonen?"</string>
     <string name="quest_busStopBench_title2">"Is er een bankje bij deze halte?"</string>
     <string name="quest_busStopBin_title2">"Is er een afvalbak bij deze halte?"</string>
-    <string name="quest_busStopLit_title2">"Is deze bushalte verlicht?"</string>
+    <string name="quest_busStopLit_title2">"Is deze halte verlicht?"</string>
     <string name="quest_busStopName_title2">"Wat is de naam van deze halte?"</string>
     <string name="quest_busStopRef_title2">"Wat is het referentienummer van deze halte?"</string>
     <string name="quest_busStopShelter_title2">"Is er een schuilplaats bij deze halte?"</string>
@@ -1254,8 +1254,8 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="urlconfig_url_copied">"URL naar klembord gekopieerd"</string>
     <string name="urlconfig_apply_title">"Voorinstelling toepassen"</string>
     <string name="urlconfig_apply_message">"Voorinstelling %1$s toevoegen en selecteren?"</string>
-    <string name="urlconfig_apply_message_overwrite">"Let op: Je voorinstelling met dezelfde naam zal worden vervangen!"</string>
-    <string name="urlconfig_switch_hint">"Je kunt altijd de voorinstellingen wisselen in de instellingen."</string>
+    <string name="urlconfig_apply_message_overwrite">"Let op: je voorinstelling met dezelfde naam zal worden vervangen!"</string>
+    <string name="urlconfig_switch_hint">"Je kunt altijd van voorinstelling wisselen in de instellingen."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Fietsenrek op 2 niveaus"</string>
     <string name="user_profile_current_week_title">"Deze week"</string>
     <string name="user_profile_dates_mapped">"Dagen waarop je recentelijk voor Street Complete actief bent geweest"</string>
@@ -1270,16 +1270,16 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
 Nu verplaatsen?"</string>
     <string name="node_moved_not_far_enough">"Verplaats het alstublieft verder"</string>
     <string name="node_moved_too_far">"Te ver verplaatst. Overweeg een notitie achter te laten"</string>
-    <string name="node_moved">"Verplaatst door %s"</string>
+    <string name="node_moved">"Verplaatst met %s"</string>
     <string name="move_node_description">"Versleep de kaart om het element op de juiste positie te plaatsen. Gebruik de zoomfunctie en probeer zo precies mogelijk te zijn. Houd er rekening mee dat uw weergegeven locatie mogelijk minder exact is dan weergegeven."</string>
     <string name="move_node_action_description">"Je hebt het element verplaatst"</string>
     <string name="quest_cycleway_value_shoulder">"geen, maar de vluchtstrook is bruikbaar voor fietsers"</string>
-    <string name="quest_placeName_no_name_answer">"Daar is geen naambord"</string>
+    <string name="quest_placeName_no_name_answer">"Er is geen naambord"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Deze breedte lijkt ongeloofwaardig. Onthoud dat dit de breedte moet zijn van stoeprand tot stoeprand, inclusief parkeren op straat, fietspaden enz."</string>
     <string name="overlay_cycleway">"Fietspaden"</string>
     <string name="bicycle_boulevard_is_a">"Het is een %1$s"</string>
-    <string name="bicycle_boulevard_is_not_a">"Het is niet een %1$s"</string>
-    <string name="bicycle_boulevard">"Fiets boulevard"</string>
+    <string name="bicycle_boulevard_is_not_a">"Het is geen %1$s"</string>
+    <string name="bicycle_boulevard">"Fietsboulevard"</string>
     <string name="separate_cycleway_no">"Fietsen is niet toegestaan"</string>
     <string name="separate_cycleway_allowed">"Fietsen is toegestaan"</string>
     <string name="separate_cycleway_no_or_allowed">"Niet bestemd voor fietsers (fietsen mag misschien nog wel)"</string>
@@ -1289,7 +1289,13 @@ Nu verplaatsen?"</string>
     <string name="separate_cycleway_with_sidewalk">"Fietspad met aangrenzend trottoir (gescheiden door een stoeprand)"</string>
     <string name="cycleway_reverse_direction">"Wijzig rijrichting fietspad"</string>
     <string name="cycleway_reverse_direction_warning">"Dat een fietspad de andere kant op gaat, komt zelden voor."</string>
-    <string name="cycleway_reverse_direction_toast">"Tik om aan tegeven naar welke kan de rijrichting moet komen."</string>
+    <string name="cycleway_reverse_direction_toast">"Tik de kant waarvan de rijrichting gewijzigd moet worden"</string>
+    <string name="separate_cycleway_path">"Pad of karrespoor"</string>
     <string name="quest_fireHydrant_type_pipe">"Pijp"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"een fietspad gedeeld met voetgangers, in beide richtingen"</string>
+    <string name="measure_info_title">"Optimale precisie bereiken"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore gaat er soms (in eerste instantie) van uit dat de grond wat lager of hoger is dan hij in werkelijkheid is. Dit introduceert een meetfout die groter wordt naarmate u uw telefoon meer naar de horizon kantelt.&lt;/p&gt;
+&lt;p&gt;Stel elk begin- en eindpunt in terwijl u de telefoon recht naar beneden richt (zodat u de witte pijl van bovenaf ziet) om dit probleem voor horizontale metingen volledig te voorkomen.&lt;/p&gt;
+&lt;p&gt;Voor verticale metingen moet u in plaats daarvan controleren of het startpunt niet lijkt te bewegen ten opzichte van de grond door er vanuit verschillende richtingen naar te kijken.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Deze applicatie draait op &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), die wordt geleverd door Google en valt onder het privacybeleid van &lt;a href=\"https://policies.google.com/privacy\"&gt;Google&lt;/a&gt;."</string>
 </resources>

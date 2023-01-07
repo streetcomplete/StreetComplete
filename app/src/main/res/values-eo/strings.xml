@@ -124,7 +124,7 @@ Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href=\"
     <string name="quest_sidewalk_title">"Ĉu ĉi tiu vojo havas flankan paŝadvojon?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kie estas ĉi tiu vojo?"</string>
     <string name="quest_oneway_title">"Ĉu ĉi tio estas unudirekta strato?"</string>
-    <string name="quest_address_title">"Kia estas la domnombro de tiu konstruaĵo?"</string>
+    <string name="quest_address_title">"Kio estas la domnumero de tiu konstruaĵo?"</string>
     <string name="store_listing_short_description">"Esplora aplikaĵo de OpenStreetMap"</string>
     <string name="store_listing_full_description">"Helpu plibonigi OpenStreetMap per StreetComplete!
 
@@ -145,7 +145,7 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <string name="quest_generic_hasFeature_yes">"Jes"</string>
     <string name="quest_generic_hasFeature_no">"Ne"</string>
     <string name="quest_bikeParkingCapacity_title">"Kiom da bicikloj oni povas parki ĉi tie?"</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">"Ĉi tiu domonombro aspektas tre nekutime."</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Ĉi tiu domonumero aspektas tre nekutime."</string>
     <string name="quest_sport_title">"Kian sporton oni faras ĉi tie?"</string>
     <string name="quest_sport_answer_multi">"Neniu specifa sporto"</string>
     <string name="quest_sport_soccer">"Piedpilko"</string>
@@ -287,6 +287,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="produce_areca_nuts">"Betelonuksoj"</string>
     <string name="produce_sweet_peppers">"Paprikoj"</string>
     <string name="produce_brazil_nuts">"Brazila nuksoj"</string>
+    <string name="produce_tung_nuts">"Vernicia fordii nuksoj"</string>
     <string name="quest_parkingType_title">"Kia parkejo estas ĉi tie?"</string>
     <string name="quest_parkingType_surface">"Surtera"</string>
     <string name="quest_parkingType_underground">"Subtera"</string>
@@ -331,7 +332,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="enable_quest_confirmation_title">"Ĉu ebligi ĉi tiun taskospecon?"</string>
     <string name="default_disabled_msg_go_inside">"Tiu taskotipo estas defaŭlte malŝaltita pro, ke vi probable devas eniri la lokon por povi respondi al tasko de tiu tipo."</string>
     <string name="quest_housenumber_conscription_number">"Konsskriba Numero"</string>
-    <string name="quest_housenumber_street_number_optional">"Orienta Nombro (nedeviga)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orientiĝa numero (nedeviga)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ankaŭ biciklovojo aliflanke…"</string>
     <string name="quest_openingHours_emptyAnswer">"Vi devas priskribi kio estas sur la signo. Se ne estas signo, vi devus peti la malfermajn horojn ene."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Neniu, sed biciklantoj povas uzi vojon en ambaŭ direktoj"</string>
@@ -374,7 +375,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_streetSurface_square_title">"Kiun surfacon havas ĉi tiu placo?"</string>
     <string name="quest_fee_answer_hours">"Dependas je tempo kaj tago…"</string>
     <string name="quest_fee_add_times">"Aldoni tempojn"</string>
-    <string name="quest_housenumber_multiple_numbers">"Ĝi havas plurajn domnombro"</string>
+    <string name="quest_housenumber_multiple_numbers">"Ĝi havas plurajn domnumerojn"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Vi povas simple enigi domnumerojn disigitajn per komoj aŭ intervalojn.\nEkzemple 1,3 aŭ 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Arko (kiu subtenas biciklan kadron)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas radion)"</string>
@@ -382,7 +383,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_bicycle_parking_type_locker">"Ŝlosilita"</string>
     <string name="quest_bicycle_parking_type_building">"Konstruaĵo"</string>
     <string name="quest_bicycle_parking_type_title">"Kia biciklohaltejo estas ĉi tiu?"</string>
-    <string name="quest_postboxCollectionTimes_title">"Kio estas la elektaj tempoj de ĉi tiu kolekto -skatolo?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Kio estas la elektaj tempoj de ĉi tiu kolekto-skatolo?"</string>
     <string name="quest_collectionTimes_add_times">"Aldoni tempon de kolektado"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Sen specifita tempo"</string>
     <string name="quest_construction_road_title">"Ĉu ĉi tiu strato estas finita?"</string>
@@ -406,7 +407,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_buildingType_apartments">"Ludomo"</string>
     <string name="quest_buildingType_detached">"Izolite staranta domo"</string>
     <string name="quest_buildingType_detached_description">"memstaranta unufamilia hejmo"</string>
-    <string name="quest_buildingType_semi_detached">"Duonizolite staranta domo"</string>
+    <string name="quest_buildingType_semi_detached">"Ĝemela domo"</string>
     <string name="quest_buildingType_terrace_description">"lineara vico de similaj unufamiliaj hejmoj"</string>
     <string name="quest_buildingType_hotel">"Hotelo"</string>
     <string name="quest_buildingType_dormitory">"Kunloĝantejo"</string>
@@ -463,7 +464,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_buildingType_hangar">"Hangaro"</string>
     <string name="quest_buildingType_hangar_description">"Stokado por aviadiloj, helikopteroj aŭ kosmoŝipoj"</string>
     <string name="quest_buildingType_bunker">"Bunkro"</string>
-    <string name="quest_address_answer_no_housenumber">"Ĝi ne havas domonombron…"</string>
+    <string name="quest_address_answer_no_housenumber">"Ĝi ne havas domonumeron…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"La konstruaĵo estis etikedita kiel:"</string>
     <string name="quest_buildingType_shrine">"Idolejo"</string>
     <string name="quest_maxspeed_title_short2">"Kio estas la rapidlimo por ĉi tiu strato?"</string>
@@ -515,8 +516,8 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="theme_system_default">"Operaciuma defaŭlta"</string>
     <string name="action_open_location">"Malfermi lokon en alia aplikaĵo"</string>
     <string name="map_application_missing">"Neniu alia mapo-aplikaĵo instalita"</string>
-    <string name="label_housenumber">"domnombro"</string>
-    <string name="label_blocknumber">"dombloknombro"</string>
+    <string name="label_housenumber">"domnumero"</string>
+    <string name="label_blocknumber">"dombloknumero"</string>
     <string name="quest_busStopShelter_covered">"La tuta haltejo estas kovrita"</string>
     <string name="quest_ferry_pedestrian_title">"Ĉu ĉi tiu pramvojo transportas piedirantojn?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Ĉu ĉi tiu pramvojo transportas motorveturilojn?"</string>
@@ -569,12 +570,15 @@ Dividi ĝin nun?"</string>
     <string name="about_summary_donate">"Montru vian aprezon! ❤️"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Serĉi ĉi tie anstataŭe"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Daŭrigi nunan serĉadon"</string>
+    <string name="quest_buildingType_garages_description">"Garaĝaroj de diversaj ludantoj aŭ posedantoj"</string>
     <string name="quest_tourism_information_title">"Kiaj turismaj informoj estas tio?"</string>
     <string name="quest_tourism_information_office">"Turisma informa oficejo"</string>
     <string name="quest_tourism_information_board">"Informtabulo"</string>
     <string name="quest_tourism_information_terminal">"Informoj stacio"</string>
     <string name="quest_tourism_information_map">"Mapo"</string>
+    <string name="quest_tourism_information_guidepost">"Vojmontrilo"</string>
     <string name="quest_recycling_materials_answer_waste">"Ĝi estas por ĝenerala rubo"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Do, ĉi rubujo estas por ajna rubaĵo, kiel ĉedoma aŭ industria rubo, ĉu?"</string>
     <string name="user_profile">"Mia Profilo"</string>
     <string name="user_login">"Ensaluti"</string>
     <string name="user_logout">"Elsaluti"</string>
@@ -704,7 +708,7 @@ aktiva"</string>
     <string name="quest_streetName_menuItem_international">"internacia"</string>
     <string name="quest_buildingType_terrace2">"Vicdomoj"</string>
     <string name="at_housename">"Nomo de domo %s"</string>
-    <string name="at_housenumber">"domnombro %s"</string>
+    <string name="at_housenumber">"domnumero %s"</string>
     <string name="quest_openingHours_add_off_days">"Aldonu fermitajn tagojn"</string>
     <string name="quest_openingHours_off_day">"Fermita tago"</string>
     <string name="quest_openingHours_unspecified_range">"Ne specifita"</string>
@@ -734,6 +738,7 @@ aktiva"</string>
     <string name="quest_steps_ramp_bicycle">"Bicikla ramplo"</string>
     <string name="quest_steps_ramp_stroller">"Ramplo por beboĉaretoj"</string>
     <string name="quest_steps_ramp_wheelchair">"Rulseĝa ramplo"</string>
+    <string name="quest_atm_operator_title">"Kiu banko prizorgas ĉi tiun bankaŭtomaton?"</string>
     <string name="quest_clothes_container_operator_title">"Kiu akceptas donacojn por ĉi tiu vestujo?"</string>
     <string name="quest_charging_station_operator_title">"Kiu estas la funkciigisto de ĉi tiu ŝargstacio?"</string>
     <string name="link_indoorequal_description">"Malkovru endomajn mapojn de centroj, fervojaj stacioj ktp."</string>
@@ -798,14 +803,17 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Elektante ke ne ekzistas biciklovojo"</string>
     <string name="quest_construction_completed_at_known_date">"Finiĝos ĉe dato…"</string>
     <string name="quest_construction_completion_date_title">"Kiam ĝi estos kompleta?"</string>
-    <string name="quest_surface_value_clay">"Argilo"</string>
+    <string name="quest_surface_value_clay">"Skorio"</string>
     <string name="quest_surface_value_artificial_turf">"Artefarita herbo"</string>
+    <string name="quest_surface_value_tartan">"Tartano"</string>
     <string name="quest_bicycle_parking_fee_title">"Ĉu oni devas pagi por parki biciklon ĉi tie?"</string>
-    <string name="quest_buildingType_house_description2">"nesendependa unufamilia hejmo, ekz. unua vica domo"</string>
+    <string name="quest_buildingType_house_description2">"nesendependa unufamilia hejmo, ekz. unua envica domo"</string>
     <string name="quest_drinking_water_potable_signed">"Sekure trinkebla (signita)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Sekure trinkebla (ne signita)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Ne sekure trinkebla (signita)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Ne sekure trinkebla (ne signita)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Kiu reĝa monogramo estas videbla sur ĉi tiu poŝtkesto?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Neniu monogramo videblas"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La krono de Skotlando"</string>
     <string name="quest_buildingType_fire_station">"Fajrobrigadejo"</string>
     <string name="quest_recycling_type_beverage_cartons">"Nur trinkaĵa kartonoj"</string>
@@ -851,6 +859,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_type_bicycle_barrier">"Bicikla baro"</string>
     <string name="quest_policeType_title">"Kiu speco de policejo estas ĉi tio?"</string>
     <string name="quest_stile_type_title">"Kia bestobarilo estas ĉi tio?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"du unufamiliaj loĝejoj, havantaj unu komunan muron"</string>
     <string name="pref_title_quests2">"Taskelekto kaj vidiga ordo"</string>
     <string name="pref_subtitle_quests">"%1$d el %2$d ebligita"</string>
     <string name="no_location_permission_warning_title">"Loka Permeso"</string>
@@ -863,6 +872,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_camera_type_title">"Kia vigla fotilo estas ĉi tio?"</string>
     <string name="quest_camera_type_dome">"Kupolo"</string>
     <string name="quest_camera_type_fixed">"Fiksita"</string>
+    <string name="quest_camera_type_panning">"Movebla"</string>
     <string name="about_title_faq">"Oftaj Demandoj"</string>
     <string name="quest_buildingLevels_title2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵo?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵparto?"</string>
@@ -872,6 +882,8 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_construction_steps_title">"Ĉu ĉi tiuj paŝoj estas finitaj?"</string>
     <string name="pref_quests_deselect_all">"Ĉu malelekti ĉiujn taskojn?"</string>
     <string name="quest_buildingType_boathouse">"Boatdomo"</string>
+    <string name="quest_buildingType_allotment_house">"Ĝardendometo"</string>
+    <string name="quest_buildingType_grandstand">"Spektejo por publiko"</string>
     <string name="action_search">"Serĉi"</string>
     <string name="action_manage_presets">"Administri antaŭdifiniĝojn"</string>
     <string name="team_mode_team_size_label2">"Kiom da homoj mapas? Enigu la saman numeron en la telefono de ĉiuj."</string>
@@ -1153,7 +1165,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="overlay_street_parking">"Strata parkado"</string>
     <string name="link_opencampingmap_description">"Monda mapo de kampadejoj"</string>
     <string name="quest_atm_cashin_title">"Ĉu oni povas enmeti monon per ĉi tiu bankaŭtomato?"</string>
-    <string name="quest_address_answer_house_name2">"Ĝi havas domnumero ..."</string>
+    <string name="quest_address_answer_house_name2">"Ĝi havas domnumeron..."</string>
     <string name="quest_address_street_street_name_label">"Nomo de la strato:"</string>
     <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
     <string name="quest_bicycle_incline_title">"Kiu direkto iras supren?"</string>
@@ -1172,8 +1184,10 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="name_label">"Nomo:"</string>
     <string name="vacant_shop_title">"Vaka vendejo"</string>
     <string name="unknown_shop_title">"Alia kategorio"</string>
+    <string name="quest_address_answer_no_address">"Ne estas adreso"</string>
     <string name="quest_bicycle_barrier_installation_title">"Ĉu oni povas malfermi ĉi tiun biciklan baron (kun aŭ sen ŝlosilo)?"</string>
-    <string name="quest_genericRef_title">"Kio estas la identiga numero ĉi tie?"</string>
+    <string name="quest_buildingType_guardhouse">"Gardistejo"</string>
+    <string name="quest_genericRef_title">"Kio estas la referenca numero ĉi tie?"</string>
     <string name="about_title_get_involved">"Kontribuu"</string>
     <string name="pref_category_quests_overlays">"Taskoj &amp; supertavoloj"</string>
     <string name="quest_presets_rename">"Ŝanĝi nomon"</string>
@@ -1190,5 +1204,11 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="user_profile_current_week_title">"Ĉi semajno"</string>
     <string name="user_profile_dates_mapped">"Tagoj dum tiuj vi mapis lastatempe"</string>
     <string name="urlconfig_scan_qr_code_again2">"Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href=\"%s\"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn."</string>
+    <string name="confirmation_replace_shop_title">"Ĉu tio nun estas alia vendejo?"</string>
+    <string name="confirmation_replace_shop_message">"Tiukaze ankaŭ la malfermhoroj, kontaktdatumo, ktp. ŝanĝiĝus."</string>
+    <string name="confirmation_replace_shop_yes">"Alia vendejo"</string>
+    <string name="confirmation_replace_shop_no">"Sama vendejo"</string>
+    <string name="overlay_cycleway">"biciklovojoj"</string>
+    <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
 </resources>

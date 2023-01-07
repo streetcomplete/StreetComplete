@@ -1208,5 +1208,17 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_camp_drinking_water_title">"Edateko ura doan eskura al dute hemen kanpinzaleek?"</string>
     <string name="quest_camp_shower_title">"Hemen ba al dago dutxarik?"</string>
     <string name="quest_camp_power_supply_title">"Ba al dute bezeroek telefonoa, ordenagailu eramangarria eta abar kargatzeko modurik hemen?"</string>
+    <string name="overlay_street_parking">"Kaleko aparkalekua"</string>
+    <string name="quest_address_street_street_name_label">"Kalearen izena:"</string>
+    <string name="overlay_addresses">"Helbideak"</string>
+    <string name="overlay_shops">"Dendak"</string>
+    <string name="name_label">"Izena:"</string>
+    <string name="confirmation_replace_shop_title">"Leku desberdin batean al dago orain?"</string>
+    <string name="confirmation_replace_shop_yes">"Leku desberdin bat da orain"</string>
+    <string name="confirmation_replace_shop_no">"Oraindik leku berean"</string>
+    <string name="move_node">"Posizio apur bat desberdina da"</string>
+    <string name="node_moved_not_far_enough">"Mugitu urrunago, mesedez"</string>
+    <string name="move_node_action_description">"Nodoa mugitu duzu"</string>
+    <string name="overlay_cycleway">"Bizikleta bideak"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"esplizituki partekatutako espaloia, norabide bikoa"</string>
 </resources>

@@ -380,8 +380,7 @@
     <string name="quest_bicycle_parking_type_stand">"Стійка"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Колесотримач"</string>
     <string name="quest_bicycle_parking_type_shed">"Гараж"</string>
-    <string name="quest_bicycle_parking_type_locker">"Шафа із замком
-"</string>
+    <string name="quest_bicycle_parking_type_locker">"Шафа із замком"</string>
     <string name="quest_bicycle_parking_type_building">"Будівля"</string>
     <string name="quest_bicycle_parking_type_title">"Якого типу ця велопарковка?"</string>
     <string name="quest_postboxCollectionTimes_title">"Який час виїмки цієї поштової скриньки?"</string>
@@ -826,10 +825,10 @@
     <string name="quest_surface_value_tartan">"Тартан (гумове покриття)"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
     <string name="quest_buildingType_house_description2">"Не окремий односімейний будинок"</string>
-    <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник) "</string>
-    <string name="quest_drinking_water_potable_unsigned">"Безпечно для пиття (немає вказівника) "</string>
-    <string name="quest_drinking_water_not_potable_signed">"Не безпечно для пиття (вказівник) "</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Не безпечно для пиття (немає вказівника) "</string>
+    <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Безпечно для пиття (немає вказівника)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Не безпечно для пиття (вказівник)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Не безпечно для пиття (немає вказівника)"</string>
     <string name="quest_postboxRoyalCypher_title">"Який королівський шифр на цій поштовій скрині?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Королівського шифру не видно"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландії"</string>
@@ -839,7 +838,7 @@
     <string name="team_mode">"Командний режим"</string>
     <string name="team_mode_exit">"Вийти з командного режиму"</string>
     <string name="team_mode_description">"При картографуванні однієї місцевості у групі, ви можете увійти в командний режим, щоб поділити квести між усіма членами команди."</string>
-    <string name="team_mode_team_size_hint">"Командний режим для груп від 2 до 12 людей. "</string>
+    <string name="team_mode_team_size_hint">"Командний режим для груп від 2 до 12 людей."</string>
     <string name="team_mode_active">"Командний режим активний"</string>
     <string name="team_mode_deactivated">"Командний режим вимкнений"</string>
     <string name="quest_crossing_type_signals_controlled">"Перехід контролюється світлофором"</string>
@@ -940,7 +939,7 @@
     <string name="quest_dietType_explanation_halal">"Халяльна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Халяль повинні маркувати продукцію відповідно."</string>
     <string name="quest_picnicTableCover_title">"Цей стіл для пікніку має накриття (захищений від дощу)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
-    <string name="quest_barrier_type_passage_conversion">"Чи час забору кореспонденції для цієї скриньки все ще правильний?"</string>
+    <string name="quest_barrier_type_passage_conversion">"Перетворено на прохід у стіні/паркані тощо."</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
     <string name="quest_traffic_calming_type_title">"Який тип у цієї дорожньої нерівності?"</string>
     <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
@@ -1032,6 +1031,7 @@
     <string name="quest_smoothness_surface_value">"Покриття позначено як:"</string>
     <string name="quest_smoothness_obstacle">"Перешкода на шляху"</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙,… вкажіть, для яких транспортних засобів придатне покриття. Важлива загальна картина, а не окремі перешкоди."</string>
+    <string name="link_osmhydrant_description">"Пошук, додавання та редагування пожежних станцій та гідрантів"</string>
     <string name="achievement_lifesaver_title">"Рятувальник"</string>
     <string name="achievement_lifesaver_solved_X">"Ти розвʼязав %d завдань для допомоги рятувальним службам та екстреної допомоги!"</string>
     <string name="quest_fuelSelfService_title">"Чи можливе на цій заправці самообслуговування?"</string>
@@ -1072,6 +1072,7 @@
     <string name="unit_minutes">"хвилин"</string>
     <string name="at_any_time">"будь-коли"</string>
     <string name="only_at_hours">"тільки в такі години:"</string>
+    <string name="except_at_hours">"крім наступних годин:"</string>
     <string name="quest_bollard_type_not_bollard">"Не стовпчик, але інший барʼєр"</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Не велобарʼєр, інший барʼєр"</string>
     <string name="quest_smoking_no">"Ні, заборонено"</string>
@@ -1106,6 +1107,7 @@
     <string name="quest_level_title2">"На якому поверсі це знаходиться?"</string>
     <string name="quest_lit_title">"Чи освітлено тут?"</string>
     <string name="quest_openingHours_title">"Який тут розклад роботи?"</string>
+    <string name="quest_openingHours_signed_title">"Тут написані години роботи?"</string>
     <string name="quest_openingHours_resurvey_title">"Цей розклад роботи все ще правильний?"</string>
     <string name="quest_placeName_title">"Яка назва цього мiсця?"</string>
     <string name="quest_shop_type_title2">"Що це за магазин?"</string>
@@ -1120,8 +1122,11 @@
     <string name="quest_accepts_cards_credit_only">"Лише кредитні картки"</string>
     <string name="quest_accepts_cards_dedit_only">"Лише дебетові картки"</string>
     <string name="quest_accepts_cards_unavailable">"Жодних карток"</string>
+    <string name="quest_barrier_type_gate_any_size">"Ворота довільного розміру"</string>
     <string name="quest_step_count_stile_hint">"Лише кількість сходинок. Якщо кількість сходинок для кожної з сторін різні, вкажіть більше число."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"немає, рух на велосипеді в цьому напрямку заборонено"</string>
     <string name="quest_bicycle_rental_capacity_title">"Скільки тут місць для прокату велосипедів?"</string>
+    <string name="quest_bicycle_rental_type_title">"Який це тип велопрокату?"</string>
     <string name="quest_bicycle_shop_repair_title">"Чи можна тут полагодити велосипед?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Тут продають вживані велосипеди?"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"Ні, лише нові"</string>
@@ -1178,6 +1183,7 @@
     <string name="quest_camp_type_caravans_only">"Тільки будинки на колесах, трейлери, …"</string>
     <string name="quest_camp_type_tents_only">"Лише намети"</string>
     <string name="quest_camp_type_backcountry">"Кемпінг без облаштунків"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ця відповідь не підходить до того, що вже нанесено на мапу для цієї дороги. Ви впевнені, що відповідаєте саме про цю дорогу? Ви впевнені, що особисто бачили всю дорогу від початку до кінця?"</string>
     <string name="quest_recycling_type_pet">"Лише ПЕТ"</string>
     <string name="street_parking_street_width">"Ширина дороги: %s"</string>
@@ -1188,7 +1194,9 @@
     <string name="quest_address_answer_house_name2">"Цей будинок має назву…"</string>
     <string name="quest_address_street_street_name_label">"Назва вулиці:"</string>
     <string name="quest_address_street_hint2">"Торкніться потрібної вулиці на мапі"</string>
+    <string name="quest_drinking_water_type_title">"Який тут тип обʼєкту з питною водою?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Інший тип фонтану"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Фонтан випускає маленький струмінь води"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Лише наповнення пляшок"</string>
     <string name="quest_drinking_water_type_tap">"Кран з водою"</string>
     <string name="quest_drinking_water_type_hand_pump">"Ручна помпа"</string>
@@ -1203,5 +1211,34 @@
     <string name="quest_bicycle_barrier_installation_title">"Цей велобарʼєр відчиняється?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Нерухомий"</string>
     <string name="quest_buildingType_guardhouse">"Будинок охоронця"</string>
+    <string name="quest_genericRef_title">"Який тут номер обʼєкту?"</string>
+    <string name="quest_sidewalk_answer_different">"Ситуація з тротуарами інша"</string>
+    <string name="pref_category_quests_overlays">"Квести &amp; Накладні шари"</string>
+    <string name="quest_presets_rename">"Перейменувати"</string>
+    <string name="quest_presets_share">"Поділитися"</string>
+    <string name="urlconfig_qr_code_description">"Дозвольте іншим сканувати QR-код, щоб поділитися вашими налаштуваннями."</string>
+    <string name="urlconfig_as_url">"Або як URL:"</string>
+    <string name="urlconfig_url_copied">"URL скопійовано в буфер обміну"</string>
+    <string name="user_profile_current_week_title">"Останні 7 днів"</string>
+    <string name="quest_cycleway_value_advisory_lane">"рекомеднована смуга для велосипедів"</string>
+    <string name="confirmation_replace_shop_title">"Зараз тут інший заклад?"</string>
+    <string name="confirmation_replace_shop_yes">"Тепер тут інший заклад"</string>
+    <string name="confirmation_replace_shop_no">"Досі той самий заклад"</string>
+    <string name="move_node">"Це трохи в іншому місці…"</string>
+    <string name="move_node_action_description">"Ви пересунули точку"</string>
+    <string name="quest_cycleway_value_shoulder">"немає, але можна їхати по узбіччі"</string>
+    <string name="quest_placeName_no_name_answer">"Таблички з назвою немає"</string>
+    <string name="overlay_cycleway">"Велодоріжки"</string>
+    <string name="bicycle_boulevard_is_a">"Це %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Це не %1$s"</string>
+    <string name="bicycle_boulevard">"Велобульвар"</string>
+    <string name="separate_cycleway_allowed">"Дозволено велосипедистам"</string>
+    <string name="separate_cycleway_non_segregated">"Вело- та пішохідна доріжка без роздільника"</string>
+    <string name="separate_cycleway_segregated">"Окремі вело- та пішохідна доріжка"</string>
+    <string name="separate_cycleway_exclusive">"Доріжка лише для велосипедів"</string>
+    <string name="separate_cycleway_with_sidewalk">"Велодоріжка з прилеглим тротуаром (відокремлений бордюром)"</string>
+    <string name="cycleway_reverse_direction_warning">"Велодоріжка, яка йде в інший бік, зустрічається вкрай рідко."</string>
+    <string name="separate_cycleway_path">"Шлях або стежка"</string>
+    <string name="quest_fireHydrant_type_pipe">"Труба"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"тротуар для пішохідів та велосипедистів"</string>
 </resources>

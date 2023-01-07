@@ -1,5 +1,6 @@
 v50.2: |
   <ul>
+  <li>Add new language: Swahili by SUZA Youth Mappers - Asha Omar, Haitham Alawi & Hajra Salim</li>
   <li>Fix existence of cycleway was asked in 30 zones (#4706)</li>
   <li>Fix display of multi-polygons (#4689)</li>
   <li>Fix "Explicitly shared use pavement, both directions" did not show (#4711)</li>

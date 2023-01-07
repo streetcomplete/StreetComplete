@@ -1295,5 +1295,11 @@ Spostarlo ora?"</string>
     <string name="cycleway_reverse_direction_warning">"Una pista ciclabile in direzione opposta è molto rara."</string>
     <string name="cycleway_reverse_direction_toast">"Clicca il lato da invertire"</string>
     <string name="separate_cycleway_path">"Sentiero"</string>
+    <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
+    <string name="measure_info_title">"Cerco la precisione ottimale"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore alle volte (inizialmente) presuppone che il terreno sia un po' più in basso o un po' più in alto di quanto non sia realmente. Questo introduce un errore di misurazione che aumenta alzando il telefono verso l'orizzonte.&lt;/p&gt;
+&lt;p&gt;Imposta i punti di inizio e fine misurazione mentre hai il telefono verso terra (in modo da vedere la freccia bianca da sopra) per evitare questo errore nelle misure orizzontali.&lt;/p&gt;
+&lt;p&gt;Per le misurazioni verticali, devi fare attenzione che il punto d'inizio non sia parallaxo al terreno guardandolo da angolazioni differenti.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Questa applicazione utilizza un &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;servizio Google Play Services per la realtà aumentata&lt;/a&gt; (ARCore), fornito da Google e sottostante alla &lt;a href=\"https://policies.google.com/privacy\"&gt;Privacy policy di Google&lt;/a&gt;."</string>
 </resources>
