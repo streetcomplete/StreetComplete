@@ -1,3 +1,9 @@
+51.0_ee: |
+  <ul>
+  <li>Use left/right/both in custom overlay to display selection on side of a road</li>
+  <li>Allow saving full resolution photos used for notes</li>
+  </ul>
+
 50.0_ee: |
   <ul>
   <li>Optionally resurvey opening hours StreetComplete doesn't understand</li>

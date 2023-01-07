@@ -23,10 +23,13 @@
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
     <string name="pref_save_gpx">Get GPX notes and attached photos and tracks</string>
-    <string name="pref_save_gpx_not_found">No GPX notes found</string>
-    <string name="pref_save_gpx_error">Error saving GPX notes</string>
+    <string name="pref_save_file_error">Error saving file</string>
+    <string name="pref_files_not_found">No files found</string>
     <string name="pref_create_external_title">Allow creating external quests</string>
     <string name="pref_create_external_summary">…as alternative to leaving a note. This can be used as locally stored note visible on the map. Note that you’ll need to enable external quests.</string>
+    <string name="pref_save_photos_title">Save photos used for notes</string>
+    <string name="pref_save_photos_summary">Store full size versions of photos taken while creating notes, without clearing EXIF data</string>
+    <string name="pref_get_photos_title">Get full size photos</string>
 
     <!-- display settings -->
     <string name="pref_screen_display">Display</string>

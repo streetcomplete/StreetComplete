@@ -96,6 +96,7 @@ object Prefs {
     const val SHOW_GPX_TRACK = "show_gpx_track"
     const val RASTER_TILE_URL = "raster_tile_url"
     const val CREATE_EXTERNAL_QUESTS = "create_external_quests"
+    const val SAVE_PHOTOS = "save_photos"
 
     enum class Autosync {
         ON, WIFI, OFF

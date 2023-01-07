@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Environment
 import androidx.activity.result.ActivityResultCaller
@@ -10,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
@@ -23,6 +25,7 @@ import java.io.IOException
 class TakePhoto(
     activityResultCaller: ActivityResultCaller,
     private val askUserToAcknowledgeCameraPermissionRationale: suspend () -> Boolean,
+    private val prefs: SharedPreferences,
 ) {
     private val requestPermission = ActivityForResultLauncher(activityResultCaller, ActivityResultContracts.RequestPermission())
     private val takePhoto = ActivityForResultLauncher(activityResultCaller, ActivityResultContracts.TakePicture())
@@ -46,6 +49,12 @@ class TakePhoto(
             if (!saved) {
                 deleteImageFile(file)
                 return null
+            }
+            val dir = activity.getExternalFilesDir(null)
+            if (prefs.getBoolean(Prefs.SAVE_PHOTOS, false) && dir != null) {
+                val target = File(dir.absolutePath + File.separator + "full_photos", file.name)
+                target.parentFile?.mkdirs()
+                file.copyTo(target)
             }
             rescaleImageFile(file)
 

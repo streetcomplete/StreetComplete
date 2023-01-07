@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.content.ActivityNotFoundException
+import android.content.SharedPreferences
 import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.os.Bundle
 import android.util.Log
@@ -18,13 +19,15 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import org.koin.android.ext.android.inject
 import java.lang.Exception
 import kotlin.coroutines.resume
 
 class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
     private val binding by viewBinding(FragmentAttachPhotoBinding::bind)
-    private val launchTakePhoto = TakePhoto(this, ::askUserToAcknowledgeCameraPermissionRationale)
+    private val prefs: SharedPreferences by inject()
+    private val launchTakePhoto = TakePhoto(this, ::askUserToAcknowledgeCameraPermissionRationale, prefs)
 
     private lateinit var noteImageAdapter: NoteImageAdapter
 

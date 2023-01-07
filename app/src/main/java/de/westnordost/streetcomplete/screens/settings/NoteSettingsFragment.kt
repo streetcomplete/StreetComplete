@@ -66,7 +66,22 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
                 }
                 startActivityForResult(intent, GPX_REQUEST_CODE)
             } else {
-                context?.toast(getString(R.string.pref_save_gpx_not_found), Toast.LENGTH_LONG)
+                context?.toast(getString(R.string.pref_files_not_found), Toast.LENGTH_LONG)
+            }
+            true
+        }
+
+        findPreference<Preference>("get_photos")?.setOnPreferenceClickListener {
+            val dir = File(requireContext().getExternalFilesDir(null), "full_photos")
+            if (dir.exists() && dir.isDirectory && dir.list()?.isNotEmpty() == true) {
+                val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    putExtra(Intent.EXTRA_TITLE, "full_photos.zip")
+                    type = "application/zip"
+                }
+                startActivityForResult(intent, PHOTO_REQUEST_CODE)
+            } else {
+                context?.toast(getString(R.string.pref_files_not_found), Toast.LENGTH_LONG)
             }
             true
         }
@@ -78,6 +93,7 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
         val uri = data.data ?: return
         when (requestCode) {
             GPX_REQUEST_CODE -> saveGpx(uri)
+            PHOTO_REQUEST_CODE -> savePhotos(uri)
         }
     }
 
@@ -115,7 +131,43 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             zipStream.close()
             files.forEach { it.delete() }
         } catch (e: IOException) {
-            context?.toast(getString(R.string.pref_save_gpx_error), Toast.LENGTH_LONG)
+            context?.toast(getString(R.string.pref_save_file_error), Toast.LENGTH_LONG)
+        }
+        os.close()
+        output.close()
+    }
+
+    private fun savePhotos(uri: Uri) {
+        val output = activity?.contentResolver?.openOutputStream(uri) ?: return
+        val os = output.buffered()
+        try {
+            val filesDir = requireContext().getExternalFilesDir(null)
+            val files = mutableListOf<File>()
+            val picturesDir = File(filesDir, "full_photos")
+            // get all files in pictures dir
+            if (picturesDir.isDirectory) {
+                picturesDir.walk().forEach {
+                    if (!it.isDirectory) files.add(it)
+                }
+            }
+            else { // we checked for this, but better be sure
+                context?.toast(getString(R.string.pref_files_not_found), Toast.LENGTH_LONG)
+                return
+            }
+
+            // write files to zip
+            val zipStream = ZipOutputStream(os)
+            files.forEach {
+                val fileStream = FileInputStream(it).buffered()
+                zipStream.putNextEntry(ZipEntry(it.name))
+                fileStream.copyTo(zipStream, 1024)
+                fileStream.close()
+                zipStream.closeEntry()
+            }
+            zipStream.close()
+            files.forEach { it.delete() }
+        } catch (e: IOException) {
+            context?.toast(getString(R.string.pref_save_file_error), Toast.LENGTH_LONG)
         }
         os.close()
         output.close()
@@ -124,3 +176,4 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 }
 
 private const val GPX_REQUEST_CODE = 387532
+private const val PHOTO_REQUEST_CODE = 7658329

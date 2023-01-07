@@ -28,6 +28,13 @@
         android:defaultValue="false"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="save_photos"
+        android:title="@string/pref_save_photos_title"
+        android:summary="@string/pref_save_photos_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
     <Preference
         android:key="hide_notes_by"
         android:title="@string/pref_hide_notes_title" />
@@ -35,5 +42,9 @@
     <Preference
         android:key="get_gpx_notes"
         android:title="@string/pref_save_gpx" />
+
+    <Preference
+        android:key="get_photos"
+        android:title="@string/pref_get_photos_title" />
 
 </PreferenceScreen>
