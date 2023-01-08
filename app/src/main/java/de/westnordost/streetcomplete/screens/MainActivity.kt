@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.screens
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
@@ -20,6 +23,7 @@ import androidx.core.content.getSystemService
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -52,7 +56,7 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.location.LocationRequester
+import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
@@ -78,9 +82,15 @@ class MainActivity :
     private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: SharedPreferences by inject()
 
-    private val requestLocation = LocationRequester(this, this)
-
     private var mainFragment: MainFragment? = null
+
+    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (!intent.getBooleanExtra(LocationRequestFragment.GRANTED, false)) {
+                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+            }
+        }
+    }
 
     private val elementEditsListener = object : ElementEditsSource.Listener {
         override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { ensureLoggedIn() } }
@@ -97,6 +107,11 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+            requestLocationPermissionResultReceiver,
+            IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
+        )
+
         lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
@@ -108,6 +123,7 @@ class MainActivity :
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
         if (savedInstanceState == null) {
+            supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
             if (!hasShownTutorial && !userLoginStatusController.isLoggedIn) {
                 supportFragmentManager.commit {
@@ -332,15 +348,7 @@ class MainActivity :
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
 
     override fun onTutorialFinished() {
-        lifecycleScope.launch {
-            val hasLocation = requestLocation()
-            // if denied first time after exiting tutorial: ask again once (i.e. show rationale and ask again)
-            if (!hasLocation) {
-                requestLocation()
-            } else {
-                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
-            }
-        }
+        requestLocation()
 
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
 
@@ -351,6 +359,10 @@ class MainActivity :
                 remove(tutorialFragment)
             }
         }
+    }
+
+    private fun requestLocation() {
+        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */
@@ -364,6 +376,8 @@ class MainActivity :
     }
 
     companion object {
+        private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
+
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false
     }

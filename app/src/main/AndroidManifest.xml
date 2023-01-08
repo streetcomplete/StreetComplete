@@ -13,13 +13,7 @@
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     <uses-feature android:name="android.hardware.screen.portrait" />
 
-    <!-- measuring distances with ARCore -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <!-- Sceneform requires OpenGL ES 3 or later but this is actually checked at runtime and only
-         needed to access measuring with ARCore.
-         Tangram-ES on the other hand needs at least OpenGL ES 2.0, without it, the app is not
-         usable. -->
+    <!-- Tangram-ES needs at least OpenGL ES 2.0, without it, the app is not usable. -->
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <queries>
@@ -28,6 +22,8 @@
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="geo" />
         </intent>
+        <package android:name="de.westnordost.streetmeasure"/>
+        <package android:name="com.android.vending"/>
     </queries>
 
     <application
@@ -37,7 +33,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
-        <meta-data android:name="com.google.ar.core" android:value="optional" />
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.screens.MainActivity"
@@ -80,11 +75,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="de.westnordost.streetcomplete.screens.measure.MeasureActivity"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
         <activity android:name="de.westnordost.streetcomplete.screens.FragmentContainerActivity" />
         <activity android:name="de.westnordost.streetcomplete.screens.about.AboutActivity" />
         <activity

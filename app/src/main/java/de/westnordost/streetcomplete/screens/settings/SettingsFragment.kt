@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
-import de.westnordost.streetcomplete.screens.measure.MeasureActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.getSelectedLocales
@@ -119,16 +118,6 @@ class SettingsFragment :
 
         findPreference<Preference>("debug.links")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowLinksActivity::class.java))
-            true
-        }
-
-        findPreference<Preference>("debug.ar_measure_horizontal")?.setOnPreferenceClickListener {
-            startActivity(MeasureActivity.createIntent(requireContext(), false))
-            true
-        }
-
-        findPreference<Preference>("debug.ar_measure_vertical")?.setOnPreferenceClickListener {
-            startActivity(MeasureActivity.createIntent(requireContext(), true))
             true
         }
 
