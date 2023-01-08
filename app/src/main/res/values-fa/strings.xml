@@ -12,7 +12,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها…"</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -23,59 +23,59 @@
     <string name="quest_leave_new_note_yes">"یادداشت‌گذاری"</string>
     <string name="quest_leave_new_note_no">"پنهان سازی"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-    <string name="quest_streetName_description">"همان‌گونه که روی تابلوی خیابان نوشته شده، کلمات اختصاری را کامل بنویسید:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"گاهی تابلوی خیابان تنها در یک سر خیابان است. همچنین توجه داشته باشید که ممکن است برای معابر فرعی که به خیابان اصلی متصل هستند، تابلویی وجود نداشته باشد. معمولاً هر خیابان دارای منازل مسکونی، نامی دارد."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر می‌توان نام را بدون اختصار نوشت، می‌بایست آن را کامل بنویسید. هنگام تایپ بسیاری از کلمات اختصاری، صفحه‌کلید هوشمند به‌طور خودکار آنها را به شکل کامل تبدیل می‌کند، البته نه همه‌شان را."</string>
+    <string name="quest_streetName_description">"به‌همان صورت که روی تابلوی خیابان نوشته شده، کلمات اختصاری را کامل بنویسید:"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"گاهی تابلوی خیابان تنها در یک سمت خیابان است. همچنین توجه داشته باشید که ممکن است برای معابر فرعی که به خیابان اصلی متصل هستند، تابلویی وجود نداشته باشد. معمولاً هر خیابان دارای منازل مسکونی، نامی دارد."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر می‌توان نام را بدون اختصار نوشت، می‌بایست آن را کامل بنویسید. هنگام ورود کلمات بسیاری از کلمات اختصاری، صفحه‌کلید هوشمند به‌طور خودکار آنها را به شکل کامل تبدیل می‌کند، البته نه همه‌شان را."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
-    <string name="quest_openingHours_start_time">"ساعت آغاز کار"</string>
-    <string name="quest_openingHours_end_time">"ساعت پایان کار"</string>
+    <string name="quest_openingHours_start_time">"ساعت شروع کار"</string>
+    <string name="quest_openingHours_end_time">"زمان پایان کار"</string>
     <string name="quest_openingHours_add_months">"افزودن ماه"</string>
     <string name="quest_openingHours_add_hours">"افزودن ساعت"</string>
     <string name="quest_openingHours_add_weekdays">"افزودن روزهای هفته"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"انتخاب ماه"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"انتخاب روزهای هفته"</string>
-    <string name="quest_openingHours_24_7_confirmation">"به عبارت دیگر، آیا شبانه‌روزی باز است؟"</string>
-    <string name="quest_noteDiscussion_title">"آیا می‌توانید نکته‌ای به این یادداشت اضافه کنید؟"</string>
-    <string name="quest_noteDiscussion_no">"نه، مخفی کن"</string>
+    <string name="quest_openingHours_24_7_confirmation">"به عبارت دیگر، آیا شبانه‌روزی است؟"</string>
+    <string name="quest_noteDiscussion_title">"آیا نکته‌ای به این یادداشت اضافه می‌کنید؟"</string>
+    <string name="quest_noteDiscussion_no">"نه، پنهان کن"</string>
     <string name="quest_noteDiscussion_anonymous">"ناشناس"</string>
     <string name="confirmation_discard_title">"ابطال ورودی؟"</string>
-    <string name="confirmation_discard_positive">"ابطال"</string>
+    <string name="confirmation_discard_positive">"باطل کردن"</string>
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
     <string name="action_upload">"بارگذاری پاسخ‌ها"</string>
-    <string name="no_changes">"شما هیچ پاسخی ندادید"</string>
+    <string name="no_changes">"شما هیچگونه پاسخی ندادید"</string>
     <string name="close">"بستن"</string>
     <string name="download_error">"خطا هنگام پویش جُستارها"</string>
-    <string name="upload_error">"خطا هنگام بارگذاری پاسخ‌ها"</string>
+    <string name="upload_error">"خطا در زمان بارگذاری پاسخ‌ها"</string>
     <string name="download_area_too_big">"لطفاً بیشتر بزرگنمایی کنید"</string>
-    <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را لغو می‌کنید و در عوض اینجا جستجو شود؟"</string>
-    <string name="turn_on_location_request">"موقعیت مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
-    <string name="no_location_permission_warning">"مجوز موقعیت مکانی برای نمایش موقعیت شما روی نقشه و پویش جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
-    <string name="about_title_authors">"انتساب‌ها"</string>
+    <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را باطل می‌کنید و در عوض اینجا جستجو شود؟"</string>
+    <string name="turn_on_location_request">"ردیابی مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
+    <string name="no_location_permission_warning">"مجوز ردیابی مکانی برای نمایش محل شما روی نقشه و پویش جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
+    <string name="about_title_authors">"اعتبار‌نامه‌ها"</string>
     <string name="about_summary_authors">"‏ © %s Tobias Zwick و مشارکت‌کنندگان"</string>
     <string name="about_title_repository">"صفحهٔ پروژه"</string>
-    <string name="about_summary_repository">"روی گیت‌هاب"</string>
+    <string name="about_summary_repository">"روی سامانه میزبان مخزن (github)"</string>
     <string name="about_title_report_error">"گزارش خطا"</string>
     <string name="about_title_feedback">"ارائه بازخورد"</string>
     <string name="about_title_license">"پروانه"</string>
     <string name="about_summary_license">"پروانهٔ عمومی همگانی GNU"</string>
     <string name="offline">"برون‌خط هستید"</string>
-    <string name="confirmation_authorize_now">"برای انتشار پاسخ‌هایتان، باید با حساب کاربری OSM خود احراز هویت کنید. اکنون انجام می‌دهید؟"</string>
+    <string name="confirmation_authorize_now">"برای انتشار پاسخ‌هایتان، باید توسط حساب کاربری OSM خود احراز هویت کنید. اکنون انجام می‌دهید؟"</string>
     <string name="not_authorized">"احراز هویت نشده"</string>
-    <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفا به‌روز کنید!"</string>
-    <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، مکان‌نما را روشن کنید"</string>
+    <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفاً به‌روز کنید!"</string>
+    <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، ردیاب مکان‌ را روشن کنید"</string>
     <string name="later">"بعداً"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"چیز دیگری است (یادداشت بگذارید)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"مورد دیگری است (یادداشت بگذارید)"</string>
     <string name="about_title_privacy_statement">"بیانیهٔ حریم شخصی"</string>
     <string name="about_summary_privacy_statement">"و استفاده از داده‌ها"</string>
     <string name="quest_openingHours_public_holidays">"تعطیلات عمومی"</string>
     <string name="quest_openingHours_public_holidays_short">"تعطیلات عمومی"</string>
     <string name="quest_openingHours_open_end">"پایان کار"</string>
-    <string name="quest_openingHours_answer_247">"شبانه‌روزی"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی…"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"ساعت‌ کاری منظمی ندارد…"</string>
-    <string name="quest_openingHours_comment_title">"ساعت‌ کاری را توضیح دهید"</string>
-    <string name="quest_openingHours_comment_description">"مختصر باشد. بهتر است از جمله‌بندی روی علائم استفاده کنید؛ مانند «با وقت قبلی». فقدان علائم لزوماً به این معنی نیست که ساعات کاری منظم ندارد."</string>
+    <string name="quest_openingHours_answer_247">"همیشه باز"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی …"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"زمان کاری منظمی ندارد…"</string>
+    <string name="quest_openingHours_comment_title">"زمان کاری را توضیح دهید"</string>
+    <string name="quest_openingHours_comment_description">"مختصر باشد. بهتر است از جمله‌بندی روی علائم استفاده کنید؛ مانند «با وقت قبلی». فقدان علائم لزوماً به این معنی نیست که زمان کاری منظم ندارد."</string>
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
     <string name="quest_roofShape_select_one">"یکی را انتخاب کنید:"</string>
     <string name="quest_roofShape_show_more">"نمایش بیشتر…"</string>
@@ -85,11 +85,11 @@
     <string name="privacy_html">"&lt;p&gt; آها، یکی که به حریم شخصی اهمیت می‌دهد؛ عالی! به نظر خودم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در اوپن‌استریت‌مپ (OSM) مشارکت می‌کنید. &lt;br/&gt;
+ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در نقشه‌متن‌باز  (OSM) مشارکت می‌کنید. &lt;br/&gt;
 هر مشارکتی که در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت OSM وجود ندارد.
 &lt;/p&gt;
 &lt;p&gt;
-ویرایش اوپن‌استریت‌مپ به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در-محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
+ویرایش نقشه‌متن‌باز (osm) به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در-محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
 &lt;/p&gt;
 
 &lt;b&gt;موقعیت مکانی&lt;/b&gt;&lt;br/&gt;
@@ -125,8 +125,8 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_oneway_title">"آیا این خیابان یکطرفه است؟"</string>
     <string name="quest_address_title">"شماره این ساختمان چیست؟"</string>
-    <string name="store_listing_short_description">"برنامه نقشه‌بردار اوپن‌استریت‌مپ"</string>
-    <string name="store_listing_full_description">"اوپن‌استریت‌مپ را با کمک StreetComplete بهبود دهید!
+    <string name="store_listing_short_description">"برنامه نقشه‌کش نقشه‌متن‌باز (osm)"</string>
+    <string name="store_listing_full_description">"نقشه‌متن‌باز (osm) را با کمک StreetComplete بهبود دهید!
 
 این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
 
@@ -501,7 +501,7 @@
     <string name="quest_traffic_signals_button_title">"آیا این چراغ‌های راهنمایی دکمه‌ای برای درخواست چراغ سبز دارند؟"</string>
     <string name="quest_motorcycleParkingCapacity_title">"اینجا چند موتورسیکلت می‌توان پارک کرد؟"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"آیا پارکینگ موتورسیکلت سرپوشیده است (از باران محافظت می‌شود)؟"</string>
-    <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی کار زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جستار."</string>
+    <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جستار."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
     <string name="restore_hidden_success">"%d جُستار پنهان بازگردانده شد"</string>
     <string name="on_level">"در طبقه %s"</string>
@@ -566,7 +566,7 @@
     <string name="about_title_changelog">"تاریخچه نسخه‌ها"</string>
     <string name="title_whats_new">"تازه‌ها"</string>
     <string name="about_title_rate">"به برنامه امتیاز دهید"</string>
-    <string name="about_summary_rate">"در گوگل‌پلی"</string>
+    <string name="about_summary_rate">"در بازار گوگل"</string>
     <string name="about_title_donate">"کمک مالی"</string>
     <string name="about_summary_donate">"قدردانی خود را نشان دهید! ❤️"</string>
     <string name="about_description_donate">"با سپاس از تصمیم شما جهت حمایت از این برنامه! برای مشاهده کمکهای فعلی و کمک مالی خود، روی مکان مربوطه ضربه بزنید:"</string>
@@ -587,9 +587,9 @@
     <string name="osm_profile">"نمایه osm"</string>
     <string name="next">"بعدی"</string>
     <string name="letsgo">"بزن بریم!"</string>
-    <string name="tutorial_welcome_to_osm">"به اوپن‌استریت‌مپ خوش‌آمدید"</string>
+    <string name="tutorial_welcome_to_osm">"به نقشه‌متن‌باز (osm) خوش‌آمدید"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"نقشه جهانی ویکی رایگان"</string>
-    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در اوپن‌استریت‌مپ را آسان می‌کند.
+    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در نقشه‌متن‌باز (osm) را آسان می‌کند.
 به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، شماره خانه، ساعات کار و بسیاری موارد دیگر…"</string>
     <string name="tutorial_solving_quests">"جزئیاتی که از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
 
@@ -613,11 +613,11 @@
     <string name="link_category_intro_title">"مقدمه"</string>
     <string name="link_category_intro_description">"کسب اطلاعات بیشتر در مورد OSM و جامعه آن"</string>
     <string name="link_category_editors_title">"مشارکت"</string>
-    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در نقشه‌متن‌باز (osm)"</string>
     <string name="link_category_maps_title">"نقشه‌ها"</string>
-    <string name="link_category_maps_description">"نقشه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
+    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
     <string name="link_category_showcase_title">"ويترين"</string>
-    <string name="link_category_showcase_description">"خدمات و برنامه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
+    <string name="link_category_showcase_description">"خدمات و برنامه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
     <string name="link_category_goodies_title">"موارد کاربردی"</string>
     <string name="link_category_goodies_description">"مطالبی جالب و سرگرم‌کننده مربوط به نقشه برای شما؛ امتحانشان کنید"</string>
     <string name="link_cyclosm_description">"نقشه دوچرخه‌سواری"</string>
@@ -632,10 +632,10 @@
     <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید"</string>
     <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه‌های حمل‌ونقل عمومی"</string>
     <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید"</string>
-    <string name="link_wiki_description">"سایت ویکی osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با اوپن‌استریت‌مپ است."</string>
-    <string name="link_learnosm_description">"تازه با اوپن‌استریت‌مپ آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
-    <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در اوپن‌استریت‌مپ، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
-    <string name="link_welcome_mat_description">"اطلاعات کلی در مورد اوپن‌استریت‌مپ و نحوه کار با آن به عنوان یک سازمان"</string>
+    <string name="link_wiki_description">"سایت ویکی osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با نقشه‌متن‌باز (osm) است."</string>
+    <string name="link_learnosm_description">"تازه با نقشه‌متن‌باز (osm) آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
+    <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در نقشه‌متن‌باز (osm)، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
+    <string name="link_welcome_mat_description">"اطلاعات کلی در مورد نقشه‌متن‌باز (osm) و نحوه کار با آن به عنوان یک سازمان"</string>
     <string name="link_mapillary_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
     <string name="link_openstreetcam_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
     <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
@@ -653,7 +653,7 @@
     <string name="link_weeklyosm_description">"تارنمای اخبار هفتگی درباره اتفاقات رخ داده در دنیای OSM"</string>
     <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید"</string>
     <string name="achievement_first_edit_title">"اولین جُستار حل شد"</string>
-    <string name="achievement_first_edit_description">"به جامعه اوپن‌استریت‌مپ خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
+    <string name="achievement_first_edit_description">"به جامعه نقشه‌متن‌باز (osm) خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
     <string name="achievement_surveyor_title">"نقشه‌بردار"</string>
     <string name="achievement_surveyor_solved_X">"شما به %d جُستار پاسخ داده‌اید! ادامه دهید تا دستاوردهای بیشتری حاوی پیوندهایی به OSM و سایر برنامه‌ها و پروژه‌های مرتبط با نقشه کسب نمایید!"</string>
     <string name="achievement_regular_title">"منظم"</string>
@@ -674,12 +674,12 @@
     <string name="achievement_veg_title">"مهربان با حیوانات"</string>
     <string name="achievement_veg_solved_X">"شما %d جُستار موردعلاقهٔ افراد با رژیم غذایی بدون گوشت را پاسخ دادید!"</string>
     <string name="achievement_car_title">"در جاده"</string>
-    <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در اوپن‌استریت‌مپ ثبت کردید!"</string>
+    <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در نقشه‌متن‌باز (osm) ثبت کردید!"</string>
     <string name="unread_messages_message">"شما %d پیام ناخوانده در صندوق پیام دارید"</string>
     <string name="unread_messages_button">"گشودن صندوق پیام"</string>
     <string name="action_about2">"درباره"</string>
     <string name="map_btn_menu">"منو"</string>
-    <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در اوپن‌استریت‌مپ جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در نقشه‌متن‌باز (osm) جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"همچنین می‌توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
     <string name="credits_art_contributors_title">"مشارکت‌کنندگان هنری"</string>
     <string name="credits_projects_contributors_title">"پروژه‌های ساخته شده برای StreetComplete"</string>
@@ -926,7 +926,7 @@
     <string name="quest_bollard_type_removable">"قابل جدا شدن (با یا بدون کلید)"</string>
     <string name="quest_bollard_type_foldable2">"تاشو (با یا بدون کلید)"</string>
     <string name="no_search_results">"موردی پیدا نشد"</string>
-    <string name="quest_selection_hint_title">"کار زیاد است؟"</string>
+    <string name="quest_selection_hint_title">"جُستار‌های حل نشده زیاد است؟"</string>
     <string name="quest_selection_hint_message">"مشارکت در درجه اول باید سرگرم کننده باشد! اگر از تعداد جُستارها غافلگیر شده‌اید، همیشه می‌توانید در تنظیمات مشخص کنید که کدام جُستارها و به چه ترتیب برای شما نمایش داده شوند."</string>
     <string name="quest_presets_preset_add">"افزودن پیش‌تنظیم"</string>
     <string name="quest_presets_preset_name">"نام پیش‌تنظیم"</string>
@@ -1141,7 +1141,7 @@
     <string name="quest_accepts_cards_dedit_only">"فقط کارت‌های نقدی"</string>
     <string name="quest_accepts_cards_unavailable">"نه کارت نقدی و نه اعتباری"</string>
     <string name="quest_barrier_type_gate_any_size">"ورودی، هر اندازه"</string>
-    <string name="quest_air_pump_compressor_title">"آیا تلمبه باد در اینجا موجود است؟"</string>
+    <string name="quest_air_pump_compressor_title">"آیا تنظیم باد چرخ خودرو در اینجا هست؟"</string>
     <string name="quest_step_count_stile_hint">"فقط درج تعداد پله‌ها برای رسیدن به بالا. اگر تعداد پله‌ها در هر طرف تفاوت دارد، عدد بزرگ‌تر را وارد کنید."</string>
     <string name="quest_shoulder_explanation2">"شانه، یک خط توقف اضطراری است که به وضوح با خط‌کشی مشخص شده است. منطقه‌ای که به عنوان شانه تعیین می‌شود الزوماً تمام عرض آن روسازی نشده است و الزوماً به اندازه کافی عریض نیست که یک خودرو کاملاً خارج از خط عبور و مرور توقف کند."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ممنوع، دوچرخه‌سواری در این جهت مجاز نیست"</string>
@@ -1295,4 +1295,11 @@
     <string name="cycleway_reverse_direction_warning">"اینکه مسیر دوچرخه سواری به سمت دیگر برود بسیار نادر است."</string>
     <string name="cycleway_reverse_direction_toast">"روی نشانه برای معکوس کردن ضربه بزنید"</string>
     <string name="separate_cycleway_path">"مسیر مالرو یا کوره‌راه"</string>
+    <string name="quest_fireHydrant_type_pipe">"لوله"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"پیاده رو به وضوح مشترک، هر دو سمت"</string>
+    <string name="measure_info_title">"دستیابی به دقت مطلوب"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ابزار توسعه واقعیت افزوده گوگل گاهی (در ابتدا) زمین را کمی پایین‌تر یا بالاتر از آنچه در واقعیت هست فرض می‌کند. این یک خطای اندازه‌گیری است که هر چه بیشتر گوشی خود را نسبت به افق کج کنید بزرگتر می‌شود.&lt;/p&gt;
+&lt;p&gt;در حالی که گوشی همراه را بصورت مستقیم به سمت پایین می‌گیرید نقاط شروع و پایان را تنظیم کنید (به طوری که فلش سفید را از بالا مشاهده کنید) تا کاملاً از این مشکل برای اندازه‌گیری‌های افقی جلوگیری به عمل آید.&lt;/p&gt;
+&lt;p&gt;برای اندازه‌گیری‌های عمودی، لازم است به طور چشمی بررسی کنید که از جهات مختلف، نقطه شروع نسبت به سطح زمین حرکتی نداشته باشد.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"این برنامه در &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;سامانه خدمات بازار گوگل for AR&lt;/a&gt; (ARCore), توسط بازار گوگل ارائه شده و تحت پیوند زیر اجرا می شود &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
 </resources>

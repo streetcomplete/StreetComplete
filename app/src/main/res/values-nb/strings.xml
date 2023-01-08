@@ -306,15 +306,15 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="about_category_feedback">"Tilbakemelding"</string>
     <string name="quest_leave_new_note_photo">"Legg ved bilde"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ønsker du å slette dette bildet?"</string>
-    <string name="quest_cycleway_value_track">"Sykkelvei"</string>
+    <string name="quest_cycleway_value_track">"separat vei eller beskyttet sykkelfelt"</string>
     <string name="quest_cycleway_value_lane">"Sykkelfelt"</string>
     <string name="quest_cycleway_value_none">"Ingen"</string>
-    <string name="quest_cycleway_value_shared">"sykkelfeltet er delt med annen trafikk"</string>
+    <string name="quest_cycleway_value_shared">"oppmerking for sykling i blandet trafikk"</string>
     <string name="quest_cycleway_value_bus_lane">"i bussfeltet"</string>
-    <string name="quest_cycleway_value_sidewalk">"gang- og sykkelvei"</string>
+    <string name="quest_cycleway_value_sidewalk">"Fortau skiltet for syklende og gående"</string>
     <string name="quest_leave_new_note_create_image_error">"Klarte ikke å lagre bildet"</string>
     <string name="quest_cycleway_value_lane_dual">"sykkelfelt, begge retninger"</string>
-    <string name="quest_cycleway_value_track_dual">"sykkelvei, begge retninger"</string>
+    <string name="quest_cycleway_value_track_dual">"separat vei eller beskyttet sykkelfelt, begge retninger"</string>
     <string name="pref_category_advanced">"Avansert"</string>
     <string name="quest_enabled">"Aktivert"</string>
     <string name="quest_type">"Oppdragstype"</string>
@@ -347,7 +347,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="create_new_note_description">"Du kan lage en merknad så andre kartleggere får vite om problemet. Juster merknadens posisjon ved å bevege på kartet:"</string>
     <string name="quest_generic_looks_like_this">"Ser vanligvis slik ut:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_cycleway_title2">"Er det sykkelanlegg her? Hva slags?"</string>
+    <string name="quest_cycleway_title2">"Er det sykkelfelt eller sykkelvei her? Hva slags?"</string>
     <string name="quest_bridge_structure_title">"Hva slags struktur har denne brua?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Kablet (LAN)"</string>
@@ -530,7 +530,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_leaf_type_needles">"Bartrær"</string>
     <string name="quest_leaf_type_broadleaved">"Løvtrær"</string>
     <string name="quest_leaf_type_mixed">"Begge deler"</string>
-    <string name="quest_cyclewayPartSurface_title">"Hvordan er overflaten på sykkelstien her?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Hvordan er overflaten på sykkelveien her?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Varierer langs veien…"</string>
     <string name="quest_split_way_description">"Hvis det endrer seg langs veien er første steg å dele opp strekningen der endringene skjer. Deretter kan oppdraget besvares for hvert veistrekk.
 Vil du dele opp nå?"</string>
@@ -791,7 +791,7 @@ nivåer"</string>
     <string name="quest_maxheight_below_bridge_title">"Hva er høydebegrensningen under denne broen?"</string>
     <string name="quest_maxheight_split_way_hint">"Hvis det ikke gjelder hele strekningen kan du svare «%s»."</string>
     <string name="quest_tactile_paving_kerb_title">"Er det ledelinjer for blinde på fortauskanten her?"</string>
-    <string name="quest_kerb_height_title">"Hva er høyden på fortauskanten?"</string>
+    <string name="quest_kerb_height_title">"Hvor høy er fortauskanten?"</string>
     <string name="quest_kerb_height_flush">"Samme nivå som veien"</string>
     <string name="quest_kerb_height_lowered">"Litt høyere enn veien"</string>
     <string name="quest_kerb_height_raised">"Høy fortauskant"</string>
@@ -820,11 +820,11 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</st
     <string name="quest_lanes_answer_lanes_odd2">"Antall felt varierer for hver side"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du vanligvis må gå inn på stedet for å kunne svare."</string>
     <string name="quest_dietType_explanation_kosher">"Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen sykkelvei"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Verken sykkelfelt eller sykkelvei"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanlig på en side av illustrasjonen, velg riktig alternativ og gjenta det samme for den andre siden.
 
 Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare, som for eksempel en enveiskjørt vei som tillater sykling i begge retninger."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Velg at det ikke finnes noen sykkelvei"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Velg at det ikke finnes noen sykkelvei eller sykkelfelt"</string>
     <string name="quest_construction_completed_at_known_date">"Dato for ferdigstillelse…"</string>
     <string name="quest_construction_completion_date_title">"Når blir det ferdig?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
@@ -910,7 +910,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="about_title_faq">"Ofte stilte spørsmål"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etasjer over kjeller har denne bygningen?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etasjer over kjeller har denne bygningsdelen?"</string>
-    <string name="quest_crossing_title">"Er det kantstein hvor dette anlegget møter veien? Hvilken type?"</string>
+    <string name="quest_crossing_title">"Er det kantstein der denne veien møter kjørebanen? Hvilken type?"</string>
     <string name="pref_subtitle_quests_preset_name">"Standardvalg: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformen ofte er vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto."</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -1071,9 +1071,9 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="ar_measure">"Mål"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"For bratt vinkel, gå lenger unna"</string>
     <string name="default_disabled_msg_no_ar">"Du trenger et målebånd for å løse denne oppgaven fordi måling med kameraet ikke er støttet på denne enheten."</string>
-    <string name="quest_cycleway_width_title">"Hvor bred er denne sykkelveien her?"</string>
+    <string name="quest_cycleway_width_title">"Hvor bred er sykkelveien her?"</string>
     <string name="quest_road_width_title">"Hvor bred er denne veien her?"</string>
-    <string name="quest_road_width_explanation">"Veibanens bredde fra fortauskant til fortauskant: Dette inkluderer alt på veiens overflate som gateparkering og sykkelfelt, men ikke noe utenfor som sykkelveier eller parkering ved siden av veibanen."</string>
+    <string name="quest_road_width_explanation">"Veibanens bredde fra fortauskant til fortauskant: Dette inkluderer alt på veiens overflate som gateparkering og sykkelfelt, men ikke noe utenfor som fortau, parkering utenfor veibanen eller parallelle sykkelveier."</string>
     <string name="quest_sidewalk_answer_none">"Ingen fortau"</string>
     <string name="about_description_donate_google_play2">"Takk for at du vurderer å støtte denne appen!
 Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retningslinjer fra Google Play Store. Heller ikke lenker til prosjektets hjemmeside kan vises i denne sammenhengen."</string>
@@ -1267,10 +1267,27 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="confirmation_replace_shop_message">"I så fall har åpningstid, kontaktinformasjon osv. også endret seg."</string>
     <string name="confirmation_replace_shop_yes">"En annen butikk nå"</string>
     <string name="confirmation_replace_shop_no">"Fortsatt samme butikk"</string>
+    <string name="move_node">"Den er plassert litt feil…"</string>
+    <string name="quest_move_node_message">"Du kan rette opp plasseringen ved å flytte den.
+Vil du flytte den nå?"</string>
+    <string name="node_moved_not_far_enough">"Vennligst flytt den litt til"</string>
+    <string name="node_moved_too_far">"Flyttet for langt. Legg gjerne igjen en merknad"</string>
+    <string name="node_moved">"Flyttet av %s"</string>
+    <string name="move_node_action_description">"Du flyttet noden"</string>
+    <string name="quest_cycleway_value_shoulder">"ingen, men veiskulderen kan brukes av syklister"</string>
     <string name="quest_placeName_no_name_answer">"Det er ingen navneskilt"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Denne bredden virker usannsynlig. Husk å måle bredden fra fortauskant til fortauskant, inkludert gateparkering, sykkelfelt osv."</string>
     <string name="overlay_cycleway">"Sykkelveier"</string>
     <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"gang- og sykkelvei, begge retninger"</string>
+    <string name="separate_cycleway_allowed">"Sykling er tillatt"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ikke tilrettelagt for sykling (men kan likevel være tillatt)"</string>
+    <string name="separate_cycleway_non_segregated">"Gang- og sykkelvei, felles"</string>
+    <string name="separate_cycleway_segregated">"Adskilt gang og sykkelvei"</string>
+    <string name="separate_cycleway_exclusive">"Kun for sykkel"</string>
+    <string name="separate_cycleway_with_sidewalk">"Sykkelvei med fortau (adskilt med fortauskant)"</string>
+    <string name="cycleway_reverse_direction">"Snu retningen på sykkelveien"</string>
+    <string name="cycleway_reverse_direction_warning">"En sykkelvei som går inn i motsatt retning er veldig sjelden."</string>
+    <string name="cycleway_reverse_direction_toast">"Trykk på den som skal reverseres"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"Fortau skiltet for syklende og gående, i begge retninger"</string>
 </resources>

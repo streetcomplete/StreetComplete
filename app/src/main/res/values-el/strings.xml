@@ -1285,5 +1285,6 @@
     <string name="cycleway_reverse_direction_warning">"Το ότι ένας ποδηλατόδρομος πηγαίνει προς την άλλη κατεύθυνση είναι εξαιρετικά σπάνιο."</string>
     <string name="cycleway_reverse_direction_toast">"Πατήστε σε ποια πλευρά θέλετε να αντιστρέψετε"</string>
     <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι"</string>
+    <string name="quest_fireHydrant_type_pipe">"σωλήνα"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο, διπλή κατεύθυνση"</string>
 </resources>

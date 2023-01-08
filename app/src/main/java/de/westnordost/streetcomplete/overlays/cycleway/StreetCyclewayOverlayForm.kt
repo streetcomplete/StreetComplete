@@ -221,6 +221,11 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
 
     /* ----------------------------- AStreetSideSelectOverlayForm ------------------------------- */
 
+    override fun isFormComplete() =
+        streetSideSelect.left != null ||
+        streetSideSelect.right != null ||
+        bicycleBoulevard == BicycleBoulevard.YES
+
     override fun hasChanges(): Boolean =
         streetSideSelect.left?.value != originalCycleway?.left  ||
         streetSideSelect.right?.value != originalCycleway?.right ||

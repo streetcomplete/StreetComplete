@@ -1278,5 +1278,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="separate_cycleway_segregated">"Camino peatonal y ciclista por separado"</string>
     <string name="separate_cycleway_exclusive">"Camino exclusivamente ciclista"</string>
     <string name="cycleway_reverse_direction">"Carril bici en sentido contrario"</string>
+    <string name="cycleway_reverse_direction_warning">"Un carril bici que va en la otra dirección es extremadamente raro."</string>
+    <string name="separate_cycleway_path">"Camino o sendero"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
 </resources>

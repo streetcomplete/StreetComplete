@@ -978,7 +978,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
 "</string>
     <string name="pref_title_language_select">"Trieu una llengua"</string>
     <string name="language_default">"Predeterminat del sistema"</string>
-    <string name="on_floor">"al pis %s:"</string>
+    <string name="on_floor">"al pis %s"</string>
     <string name="select_street_parking_orientation">"Seleccioneu l'orientació cap a la carretera:"</string>
     <string name="select_street_parking_position">"Selecciona posició:"</string>
     <string name="select_street_parking_no">"Algun senyal o marca vial ací?"</string>
@@ -1274,6 +1274,7 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_bicycle_parking_type_two_tier">"Portabicicletes de dos nivells"</string>
     <string name="user_profile_current_week_title">"Últims 7 dies"</string>
     <string name="user_profile_dates_mapped">"Dies els quals has mapejat recentment"</string>
+    <string name="quest_cycleway_value_advisory_lane">"carril bici auxiliar"</string>
     <string name="urlconfig_scan_qr_code_again2">"Després d'instal·lar l'aplicació, escaneja el QR una altra vegada o punxa &lt;a href=\"%s\"&gt;aquest enllaç&lt;/a&gt; per a aplicar la predefinició."</string>
     <string name="confirmation_replace_shop_title">"Ara és en un negoci diferent?"</string>
     <string name="confirmation_replace_shop_message">"En aquest cas, les hores d'obertura, informació de contacte, etc. Hauran canviat també."</string>
@@ -1300,10 +1301,16 @@ Menejar ara?"</string>
     <string name="separate_cycleway_non_segregated">"Via d'us compartit"</string>
     <string name="separate_cycleway_segregated">"Ciclovia i camí per a vianants segregats"</string>
     <string name="separate_cycleway_exclusive">"Ciclovia exclusiva"</string>
-    <string name="separate_cycleway_with_sidewalk">"Via d'ús compartit"</string>
+    <string name="separate_cycleway_with_sidewalk">"Carril bici amb una vorera adjacent (separts per una vorada)"</string>
     <string name="cycleway_reverse_direction">"Inverteix la direcció de la ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"Que una ciclovia vaja en direcció contrària és extremadament estrany."</string>
     <string name="cycleway_reverse_direction_toast">"Toca el sentit a invertir"</string>
     <string name="separate_cycleway_path">"Camí o pista"</string>
+    <string name="quest_fireHydrant_type_pipe">"Tub"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"vorera explícitament compartida, doble sentit"</string>
+    <string name="measure_info_title">"Aconseguint precisió òptima"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore de vegades (inicialment) suposa que el sòl és una mica més baix o més alt del que és realment. Això introdueix un error de mesura que es fa més gran com més inclines el telèfon cap a l'horitzó.&lt;/p&gt;
+&lt;p&gt;Definiu cadascun el punt inicial i final mentre apunteu el telèfon cap avall (de manera que vegeu la fletxa blanca des de dalt) per evitar completament aquest problema amb les mesures horitzontals.&lt;/p&gt;
+&lt;p&gt;Per a mesuraments verticals, cal que comproveu que el punt d'inici sembla que no es mogui en relació amb el terra mirant-lo des de diferents direccions.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Aquesta aplicació s'executa a &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que el proporciona Google i es regeix per la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privadesa de Google&lt;/a&gt;."</string>
 </resources>

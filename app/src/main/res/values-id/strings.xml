@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Pengaturan"</string>
-    <string name="oauth_communication_error">"Tidak dapat menjangkau server otorisasi"</string>
-    <string name="oauth_failed_permissions">"Otorisasi gagal: Semua izin yang ada pada daftar harus diberikan"</string>
+    <string name="oauth_communication_error">"Tidak dapat menjangkau server autorisasi"</string>
+    <string name="oauth_failed_permissions">"Autorisasi gagal: Semua izin yang ada pada daftar harus diberikan"</string>
     <string name="pref_category_communication">"Komunikasi"</string>
     <string name="pref_category_display">"Tampilan"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -69,7 +69,7 @@
     <string name="about_title_privacy_statement">"Pernyataan privasi"</string>
     <string name="about_summary_privacy_statement">"dan penggunaan data"</string>
     <string name="quest_openingHours_public_holidays">"Hari libur nasional"</string>
-    <string name="quest_openingHours_public_holidays_short">"LN"</string>
+    <string name="quest_openingHours_public_holidays_short">"Libur Nasional"</string>
     <string name="quest_openingHours_open_end">"Buka tutup"</string>
     <string name="quest_openingHours_answer_247">"Buka 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Bereda sesuai bulan"</string>
@@ -443,7 +443,7 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_college">"Bangunan perguruan tinggi"</string>
     <string name="quest_buildingType_hospital">"Bangunan rumah sakit"</string>
     <string name="quest_buildingType_stadium">"Stadion"</string>
-    <string name="quest_buildingType_train_station">"Stasiun Kereta"</string>
+    <string name="quest_buildingType_train_station">"Stasiun kereta api"</string>
     <string name="quest_buildingType_transportation">"Bangunan transportasi umum"</string>
     <string name="quest_buildingType_university">"Bangunan universitas"</string>
     <string name="quest_buildingType_government">"Bangunan pemerintah"</string>
@@ -492,7 +492,7 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_noteDiscussion_closed2">"Tutup saat %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Buka lagi saat %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Tersembunyi saat %1$s, %2$s"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke server saya dan dihapus beberapa hari setelah catatan diselesaikan. Meta-data foto dihapus sebelum diunggah.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke server saya dan dihapus beberapa hari setelah catatan diselesaikan. Metadata foto dihapus sebelum diunggah.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Batalkan pilihan"</string>
     <string name="quest_buildingType_retail_description">"termasuk bangunan untuk restoran, kafe, …"</string>
     <string name="quest_openingHours_timeSelect_next">"Lanjut"</string>
@@ -664,7 +664,7 @@ Juga bisa menampilkan isokron (area yang dapat dijangkau dalam X menit dari titi
     <string name="achievement_surveyor_solved_X">"Kamu memecahkan %d pencarian!
 Lanjutkan untuk membuka pencapaian lebih banyak yang berisi tautan ke OSM serta aplikasi dan proyek terkait peta lainnya!"</string>
     <string name="achievement_regular_title">"regular"</string>
-    <string name="achievement_regular_description">"Kamu berkontribusi %d hari ke OSM dengan aplikasi ini! Kontribusi Reguler adalah tulang punggung OSM, terima kasih untuk dedikasimu! ❤"</string>
+    <string name="achievement_regular_description">"Kamu telah berkontribusi %d hari ke OSM dengan aplikasi ini! Kontributor reguler adalah tulang punggung OSM, terima kasih atas dedikasimu! ❤"</string>
     <string name="achievement_bicyclist_title">"Pesepeda"</string>
     <string name="achievement_bicyclist_solved_X">"Kamu memecahkan %d pencarian yang membantu para pesepeda!"</string>
     <string name="achievement_wheelchair_title">"Mobilitas"</string>
@@ -751,8 +751,8 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_steps_ramp_stroller">"Rampa kereta bayi"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampa kursi roda"</string>
     <string name="quest_atm_operator_title">"Apakah nama bank untuk ATM ini?"</string>
-    <string name="quest_charging_station_operator_title">"Siapa yang mengoperasikan stasiun pengisian ini?"</string>
-    <string name="link_indoorequal_description">"Jelajahi peta dalam ruangan pada pusat perbelanjaan, stasiun kereta api, dll."</string>
+    <string name="quest_charging_station_operator_title">"Siapa yang mengoperasikan stasiun pengisian daya ini?"</string>
+    <string name="link_indoorequal_description">"Jelajahi denah dalam ruangan pada pusat perbelanjaan, stasiun kereta api, dll."</string>
     <string name="achievement_rare_title">"Pemburu Harta Karun"</string>
     <string name="achievement_rare_solved_X">"Kamu menemukan dan memecahkan %d pencarian yang sangat jarang diselesaikan, selamat!"</string>
     <string name="achievement_citizen_title">"Rakyat"</string>
@@ -810,7 +810,7 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_drinking_water_potable_unsigned">"Aman untuk diminum (tak bertanda)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Tak aman untuk diminum (tertanda)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Tak aman untuk diminum (tak tertanda)"</string>
-    <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
+    <string name="quest_buildingType_fire_station">"Stasiun pemadam kebakaran"</string>
     <string name="team_mode">"Masuk ke Mode Kelompok"</string>
     <string name="team_mode_exit">"Keluar dari Mode Kelompok"</string>
     <string name="team_mode_description">"Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok."</string>
@@ -851,6 +851,7 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_camera_type_title">"Apa jenis kamera pengawas ini?"</string>
     <string name="about_title_faq">"SSD (Soal Sering Ditanya)"</string>
     <string name="quest_buildingLevels_title2">"Berapa jumlah lantai di atas basemen pada bangunan ini?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Berapa lantai di atas basemen/tanah yang terdapat pada bagian bangunan ini?"</string>
     <string name="pref_subtitle_quests_preset_name">"Prasetelan: %s"</string>
     <string name="default_disabled_msg_roofShape">"Jenis pencarian ini dinonaktifkan secara default karena bentuk atap seringkali tidak mudah terlihat dari jalan. Jenis pencarian ini juga cukup memakan waktu; dalam kebanyakan kasus lebih mudah dan lebih efisien untuk memetakan ini dari citra udara di rumah."</string>
     <string name="pref_quests_deselect_all">"Batalkan pilihan semua misi?"</string>
@@ -865,6 +866,9 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_bollard_type_foldable2">"Dapat dilipat (dengan atau tanpa kunci)"</string>
     <string name="no_search_results">"Tak ditemukan apapun"</string>
     <string name="quest_selection_hint_title">"Terlalu banyak yang harus dikerjakan?"</string>
+    <string name="quest_selection_hint_message">"Berkontribusi seharusnya terasa menyenangkan! Jika kamu merasa kewalahan dengan banyaknya pencarian, kamu bisa mengatur pencarian apa yang ditampilkan kepadamu serta urutannya di pengaturan."</string>
+    <string name="quest_presets_preset_add">"Tambah preset"</string>
+    <string name="quest_presets_preset_name">"Nama preset"</string>
     <string name="quest_presets_default_name">"Bawaan"</string>
     <string name="quest_presets_selected">"Dipilih"</string>
     <string name="notification_syncing">"Mensinkronkan data..."</string>
@@ -874,7 +878,9 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_dietType_explanation_halal">"Produk-produk Halal harus disiapkan dengan aturan khusus, dengan lembaga sertifikasi Halal menandai bahwa produk sesuai."</string>
     <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
     <string name="quest_barrier_type_passage_conversion">"Dikonversi menjadi lorong di dinding/pagar/dll."</string>
+    <string name="quest_fireHydrant_diameter_title">"Berapa diameter yang dijelaskan pada tanda di hidran kebakaran ini?"</string>
     <string name="quest_fireHydrant_confirmation_title">"Apa kamu yakin? Kadang diameternya dapat ditemukan pada hidran itu sendiri."</string>
+    <string name="quest_diet_answer_no_food">"Tidak ada makanan"</string>
     <string name="short_no_answer_on_button">"Tidak"</string>
     <string name="restore_confirmation">"Pulihkan"</string>
     <string name="restore_dialog_message">"Pulihkan pencarian yang telah kamu sembunyikan?"</string>
@@ -890,6 +896,9 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="select_street_parking_position">"Pilih posisi:"</string>
     <string name="street_parking_parallel">"Paralel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Sejajar"</string>
+    <string name="street_parking_on_street">"Di jalan"</string>
+    <string name="street_parking_half_on_kerb">"Di sebagian jalan"</string>
     <string name="street_parking_separate">"Parkir ditampilkan secara terpisah pada peta"</string>
     <string name="street_parking_no">"Tak ada parkir / dilarang parkir di sini"</string>
     <string name="street_parking_prohibited">"Dilarang parkir"</string>
@@ -897,6 +906,8 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="street_parking_no_other_reasons">"Tak ada tanda khusus / parkir tidak memungkinkan"</string>
     <string name="quest_address_house_number_label">"Nomor rumah:"</string>
     <string name="quest_shoulder_title">"Apa jalan ini memiliki bahu jalan?"</string>
+    <string name="quest_fireHydrant_position_title">"Di mana letak hidran kebakaran ini?"</string>
+    <string name="quest_fireHydrant_position_green">"Di rumput, lumpur, atau semak"</string>
     <string name="quest_fireHydrant_position_lane">"Pada jalan"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Pada trotoar"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Pada tempat parkir"</string>
@@ -946,6 +957,11 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_smoking_outside">"Hanya di luar ruangan"</string>
     <string name="quest_smoking_separated">"Hanya di ruangan terpisah"</string>
     <string name="quest_smoking_yes">"Ya, di mana saja"</string>
+    <string name="quest_seating_name_title">"Apa tempat duduk yang tersedia di tempat ini?"</string>
+    <string name="quest_seating_takeaway">"Tak ada tempat duduk (bawa pergi saja)"</string>
+    <string name="quest_seating_indoor_only">"Hanya di dalam ruangan"</string>
+    <string name="quest_seating_outdoor_only">"Hanya di luar ruangan"</string>
+    <string name="quest_seating_indoor_and_outdoor">"Di dalam dan luar ruangan"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Jenis pencarian ini dinonaktifkan secara default karena mungkin memerlukan pemeriksaan selama bagian tertentu dalam setahun untuk memverifikasi tempat duduk di luar ruangan."</string>
     <string name="no_camera_permission_toast">"Tidak ada izin kamera"</string>
     <string name="quest_accepts_cash_title2">"Apakah pembayaran tunai diterima di sini?"</string>
@@ -1008,6 +1024,8 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="lit_value_automatic">"Menyala saat ada orang lewat"</string>
     <string name="overlay_sidewalk">"Trotoar"</string>
     <string name="default_disabled_msg_overlay">"Jenis pencarian ini dinonaktifkan secara default karena sudah ada overlay yang lebih efektif dan efisien untuk memasukkan dan memperbarui data ini."</string>
+    <string name="quest_camp_power_supply_title">"Apakah pelanggan dapat mengisi daya ponsel, laptop, dsb di sini?"</string>
+    <string name="quest_camp_type_title">"Siapa yang diizinkan untuk berkemah di sini?"</string>
     <string name="overlay_street_parking">"Parkir jalanan"</string>
     <string name="link_ohsomehex_description">"Jelajahi data OSM lintas skala dari gambaran besar hingga objek individual di ruang dan waktu"</string>
     <string name="link_opencampingmap_description">"Peta tempat perkemahan"</string>
@@ -1021,12 +1039,25 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="overlay_addresses">"Alamat"</string>
     <string name="overlay_shops">"Toko"</string>
     <string name="name_label">"Nama:"</string>
+    <string name="unknown_shop_title">"Jenis tempat lain"</string>
     <string name="quest_address_answer_no_address">"Tidak ada alamat di sini"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Tetap"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Dapat dibuka"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Dapat dilepas"</string>
     <string name="about_title_get_involved">"Terlibat"</string>
     <string name="pref_category_quests_overlays">"Misi &amp; Hamparan"</string>
+    <string name="quest_presets_rename">"Ubah nama"</string>
+    <string name="quest_presets_share">"Bagikan"</string>
+    <string name="quest_presets_delete">"Hapus"</string>
+    <string name="urlconfig_qr_code_description">"Biarkan orang lain memindai kode QR berikut untuk membagikan preset kamu."</string>
+    <string name="urlconfig_as_url">"Atau sebagai URL:"</string>
+    <string name="urlconfig_url_copied">"URL disalin ke papan klip"</string>
+    <string name="urlconfig_apply_title">"Terapkan Preset"</string>
+    <string name="urlconfig_apply_message">"Terapkan dan pilih preset %1$s?"</string>
+    <string name="urlconfig_switch_hint">"Kamu dapat beralih preset pada pengaturan kapan saja."</string>
+    <string name="user_profile_current_week_title">"7 hari terakhir"</string>
+    <string name="user_profile_dates_mapped">"Hari kamu menyunting peta baru-baru ini"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Setelah memasang aplikasi, pindai kode QR lagi atau klik &lt;a href=\"%s\"&gt;tautan ini&lt;/a&gt; untuk menerapkan preset."</string>
     <string name="confirmation_replace_shop_title">"Apakah ini tempat yang berbeda sekarang?"</string>
     <string name="confirmation_replace_shop_message">"Dalam hal ini, jam buka, informasi kontak, dll. juga akan berubah."</string>
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
@@ -1037,6 +1068,7 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="node_moved">"Dipindahkan oleh %s"</string>
     <string name="move_node_description">"Seret peta untuk menempatkan fitur pada posisi yang benar. Gunakan fungsi zoom dan usahakan seakurat mungkin. Perlu diketahui bahwa lokasi Anda yang ditampilkan mungkin kurang tepat daripada yang ditampilkan."</string>
     <string name="move_node_action_description">"Anda memindahkan node"</string>
+    <string name="quest_placeName_no_name_answer">"Tak ada tanda nama"</string>
     <string name="overlay_cycleway">"Bike paths"</string>
     <string name="bicycle_boulevard_is_a">"Ini berupa %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ini bukan berupa %1$s"</string>
@@ -1045,4 +1077,5 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="cycleway_reverse_direction_warning">"Bahwa jalur sepeda menuju ke arah lain sangat jarang."</string>
     <string name="cycleway_reverse_direction_toast">"Ketuk sisi mana yang akan dibalik"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"trotoar berbagi jelas, kedua arah"</string>
+    <string name="privacy_html_arcore">"Aplikasi ini berjalan dengan &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), yang disediakan oleh Google dan diatur oleh &lt;a href=\"https://policies.google.com/privacy\"&gt;Kebijakan Privasi Google&lt;/a&gt;."</string>
 </resources>

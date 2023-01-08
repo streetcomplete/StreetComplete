@@ -1299,5 +1299,11 @@ Pomaknuti sada?"</string>
     <string name="cycleway_reverse_direction_warning">"Iznimno je rijetko da biciklistička staza ide u suprotnom smjeru."</string>
     <string name="cycleway_reverse_direction_toast">"Dotaknite stranu koju želite preokrenuti"</string>
     <string name="separate_cycleway_path">"Staza ili puteljak"</string>
+    <string name="quest_fireHydrant_type_pipe">"Cijev"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"nogostup eksplicitno dijeljen zajedno s pješacima, u oba smjera"</string>
+    <string name="measure_info_title">"Postizanje optimalne preciznosti"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore ponekad (inicijalno) pretpostavlja da je tlo malo niže ili više nego što zapravo jest. Ovo uvodi mjernu pogrešku koja raste čim više telefon usmjeravate prema horizontu.&lt;/p&gt;
+&lt;p&gt;Postavite i početnu i krajnju točku usmjeravajući telefon ravno prema dolje (tako da vidite bijelu strelicu odozgo) kako biste u potpunosti izbjegli ovaj problem za horizontalna mjerenja.&lt;/p&gt;
+&lt;p&gt;Za okomita mjerenja, umjesto toga morate provjeriti da početna točka ne pomiče u odnosu na tlo kada ju promatrate iz različitih smjerova.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Ova aplikacija je bazirana na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play uslugama za AR&lt;/a&gt; (ARCore) koje pruža Google i regulirana je &lt;a href=\"https://policies.google.com/privacy\"&gt;Googleovim Pravilima o privatnosti&lt;/a&gt;."</string>
 </resources>

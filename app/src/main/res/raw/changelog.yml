@@ -1,10 +1,11 @@
 v50.2: |
   <ul>
+  <li>Add new language: Swahili by SUZA Youth Mappers - Asha Omar, Haitham Alawi & Hajra Salim</li>
   <li>Fix existence of cycleway was asked in 30 zones (#4706)</li>
   <li>Fix display of multi-polygons (#4689)</li>
   <li>Fix "Explicitly shared use pavement, both directions" did not show (#4711)</li>
   <li>Fix last answer button for cycleways would (often) set the wrong direction (#4722)</li>
-  <li>Other small enhancements and fixes on the cycleway overlay (#4677, #4715, #4721 ...)</li>
+  <li>Other small enhancements and fixes on the cycleway overlay (#4677, #4715, #4721, #4671 ...)</li>
   </ul>
 
 v50.1: |

@@ -1274,6 +1274,32 @@
 現在移動嗎？"</string>
     <string name="node_moved_not_far_enough">"請進一步移動它"</string>
     <string name="node_moved_too_far">"你移動的太遠了。請考慮留個便簽在此"</string>
+    <string name="node_moved">"由 %s 移動"</string>
+    <string name="move_node_description">"拖拉地圖來將圖徵放置在正確位置，並且使用縮放功能來儘可能精確。注意你的顯示位置也許比顯示得還不精確。"</string>
+    <string name="move_node_action_description">"你已經移動節點"</string>
+    <string name="quest_cycleway_value_shoulder">"沒有，但單車騎士能使用路肩"</string>
+    <string name="quest_placeName_no_name_answer">"沒有名稱牌子"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"這個寬度看來不可能。記住，寬度是路緣到路緣，包括路邊停車、單車道等。"</string>
+    <string name="overlay_cycleway">"單車道"</string>
+    <string name="bicycle_boulevard_is_a">"是 %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"不是 %1$s"</string>
+    <string name="bicycle_boulevard">"單車大道"</string>
     <string name="separate_cycleway_no">"禁止騎非機動車"</string>
+    <string name="separate_cycleway_allowed">"允許單車"</string>
+    <string name="separate_cycleway_no_or_allowed">"不是設計給單車騎士(仍然能夠騎單車)"</string>
+    <string name="separate_cycleway_non_segregated">"共享車道"</string>
+    <string name="separate_cycleway_segregated">"分開的單車與行人路徑"</string>
+    <string name="separate_cycleway_exclusive">"只允許單車的路徑"</string>
+    <string name="separate_cycleway_with_sidewalk">"只允許單車的路徑旁邊有人行道 (有實體分隔開)"</string>
+    <string name="cycleway_reverse_direction">"反轉單車道方向"</string>
+    <string name="cycleway_reverse_direction_warning">"逆向的單車道通常很少見。"</string>
+    <string name="cycleway_reverse_direction_toast">"點一下決定那邊要反轉"</string>
+    <string name="separate_cycleway_path">"路徑或山徑"</string>
+    <string name="quest_fireHydrant_type_pipe">"管子"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"應與人行道共用"</string>
+    <string name="measure_info_title">"達成最佳精確度"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore 有時候 (一開始) 預設地面會低一點或是高一點，這會讓你越讓手機貼近水平線，測量的誤差變得比預期大。&lt;/p&gt;
+&lt;p&gt;設定每一次的開始 - 以及結束點，要將你手直直朝下 (因此你會在上面看到白色箭頭) 來完全避免水平測量的問題。&lt;/p&gt;
+&lt;p&gt;而垂直測量部分，你需要透過不同方向檢視，檢查開始點相較地面沒有跑掉。&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"這應用程式 &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) 來運作，並且由 Google 採用 &lt;a href=\"https://policies.google.com/privacy\"&gt;Google 隱私政策&lt;/a&gt; 提供服務與管理。"</string>
 </resources>

@@ -1297,4 +1297,9 @@
     <string name="separate_cycleway_path">"Путић или стаза"</string>
     <string name="quest_fireHydrant_type_pipe">"Цевасти"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"тротоар који се дели са пешацима у оба смера"</string>
+    <string name="measure_info_title">"Постизање оптималне прецизности"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore понекад (на почетку) претпоставља да је земља (тло, односно подлога) нешто нижа или виша него у стварности. Ово представља грешку у мерењу која постаје све већа како се телефон усмерава ка хоризонту.&lt;/p&gt;
+&lt;p&gt;Поставите почетну и крајњу тачку тако што ћете усмерити телефон право надоле (тако да белу стрелицу видите одозго) како бисте у потпуности избегли грешку хоризонталног мерења.&lt;/p&gt;
+&lt;p&gt;За вертикална мерења, потребно је да уместо тога проверите да ли се почетна тачка не помера у односу на земљу посматрајући је из различитих праваца.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Ова апликација је базирана на &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play услугама за AR&lt;/a&gt; (ARCore), које пружа компанија Google и регулисана је &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Смерницама за приватност&lt;/a&gt;."</string>
 </resources>
