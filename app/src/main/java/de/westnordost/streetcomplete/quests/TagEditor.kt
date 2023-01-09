@@ -236,8 +236,10 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 parentFragmentManager.popBackStack()
                 changes = null
             }
-            if (ch?.isEmpty() != false) // usually changes is set to null after this check, but better be safe as the order is not strict
+            if (ch?.isEmpty() != false) { // usually changes is set to null after this check, but better be safe as the order is not strict
+                showOk()
                 return@launch
+            }
             ch.applyTo(newTags) // apply before showOk()
             showOk()
             tagList.clear()
