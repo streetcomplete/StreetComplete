@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -22,17 +23,28 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
 class CreatePoiFragment : TagEditor() {
 
     // keep the listener from note fragment, there is nothing note-specific happening anyway
     private val listener: CreateNoteFragment.Listener? get() = parentFragment as? CreateNoteFragment.Listener ?: activity as? CreateNoteFragment.Listener
+    private val levelFilter: LevelFilter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
         newTags.putAll(prefillTags)
+        val allowedLevel = levelFilter.allowedLevel
+        if (levelFilter.isEnabled && allowedLevel != null && !newTags.contains("level") && !newTags.contains("level:ref") && !newTags.contains("addr:floor")) {
+            val levelTag = if (levelFilter.allowedLevelTags.size == 1) levelFilter.allowedLevelTags.single()
+                else if (levelFilter.allowedLevelTags.contains("level:ref") && "[a-zA-Z]".toRegex().containsMatchIn(allowedLevel)) "level:ref"
+                else "level"
+            newTags[levelTag] = if (levelTag == "level:ref") allowedLevel
+                else allowedLevel.toIntOrNull()?.toString() ?: ""
+
+        }
         tagList.clear()
         tagList.addAll(newTags.toList())
         tagList.sortBy { it.first }

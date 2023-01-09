@@ -27,8 +27,10 @@ import org.koin.core.component.inject
 class LevelFilter internal constructor(private val sharedPrefs: SharedPreferences) : KoinComponent {
     var isEnabled = false
         private set
-    private var allowedLevel: String? = null
-    private lateinit var allowedLevelTags: List<String>
+    var allowedLevel: String? = null
+        private set
+    lateinit var allowedLevelTags: List<String>
+        private set
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
