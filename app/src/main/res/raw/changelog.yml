@@ -2,7 +2,7 @@ v51.0: |
   <h3>Standalone measuring app</h3>
   <p>Measuring distances with the camera has been outsourced into a standalone app, so you can also measure things outside of the context of solving quests: <a href="https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure">StreetMeasure</a></p>
   <p>This has been done for licensing reasons (see #4289). In a nutshell, ARCore (= <a href="https://play.google.com/store/apps/details?id=com.google.ar.core">Google Play Services for AR</a>), on which the measuring is dependent on, is not open source.<br>
-     This is why it is also not available on the main repo in F-Droid. If you do not have Google Play, you can <a href="https://github.com/streetcomplete/StreetMeasure/releases">download the APK from Github<br>, but in any case you also need to install ARCore.</p>
+     This is why it is also not available on the main repo in F-Droid. If you do not have Google Play, you can <a href="https://github.com/streetcomplete/StreetMeasure/releases">download the APK from GitHub<br>, but in any case you also need to install ARCore.</p>
   <h3>Enhancements</h3>
   <ul>
   <li>The standalone measure app now explains how to achieve optimal precision and warns if the potential for a measuring error becomes too big (#4655)</li>
