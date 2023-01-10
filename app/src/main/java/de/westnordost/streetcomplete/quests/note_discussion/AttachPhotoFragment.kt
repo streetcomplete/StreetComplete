@@ -11,6 +11,9 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
+import androidx.exifinterface.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface.TAG_GPS_IMG_DIRECTION
+import androidx.exifinterface.media.ExifInterface.TAG_GPS_IMG_DIRECTION_REF
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
@@ -97,7 +100,9 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
             return
         }
         if (file != null) {
+            val exif = ExifInterface(file)
             rescaleImageFile(file)
+            copyDirectionExifData(file, exif)
 
             noteImageAdapter.list.add(file.path)
             noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
@@ -127,6 +132,13 @@ private fun rescaleImageFile(file: File) {
     val bitmap = decodeScaledBitmapAndNormalize(file.path, ApplicationConstants.ATTACH_PHOTO_MAXWIDTH, ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
     val out = FileOutputStream(file.path)
     bitmap.compress(Bitmap.CompressFormat.JPEG, ApplicationConstants.ATTACH_PHOTO_QUALITY, out)
+}
+
+private fun copyDirectionExifData(file: File, exif: ExifInterface) {
+    val newExif = ExifInterface(file.path)
+    newExif.setAttribute(TAG_GPS_IMG_DIRECTION, exif.getAttribute(TAG_GPS_IMG_DIRECTION))
+    newExif.setAttribute(TAG_GPS_IMG_DIRECTION_REF, exif.getAttribute(TAG_GPS_IMG_DIRECTION_REF))
+    newExif.saveAttributes()
 }
 
 private fun deleteImageFile(file: File) {
