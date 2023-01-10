@@ -81,6 +81,7 @@
     <string name="pref_import">Import settings</string>
     <string name="import_export_presets">Presets</string>
     <string name="import_export_presets_select">Select presets to export</string>
+    <string name="import_export_custom_overlays">Custom Overlays</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
     <string name="import_warning">Importing app settings will overwrite all current settings</string>

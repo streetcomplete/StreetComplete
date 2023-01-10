@@ -3,6 +3,7 @@
   <li>Use left/right/both in custom overlay to display selection on side of a road</li>
   <li>Allow saving full resolution photos used for notes</li>
   <li>Add level when creating POI while level filter is active</li>
+  <li>Allow importing / exporting custom overlay separately from other settings</li>
   </ul>
 
 50.0_ee: |

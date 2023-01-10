@@ -70,26 +70,27 @@ class DataManagementSettingsFragment :
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_data_management, false)
         addPreferencesFromResource(R.xml.preferences_ee_data_management)
 
-        findPreference<Preference>("export")?.setOnPreferenceClickListener {
+        fun importExport(import: Boolean) {
+            val lists = listOf(
+                resources.getString(R.string.import_export_settings) to "settings",
+                resources.getString(R.string.import_export_hidden_quests) to "hidden_quests",
+                resources.getString(R.string.import_export_presets) to "presets",
+                resources.getString(R.string.import_export_custom_overlays) to "overlays",
+            ).unzip()
             AlertDialog.Builder(requireContext())
-                .setTitle(R.string.pref_export)
-                .setNegativeButton(R.string.import_export_settings) { _,_ -> export("settings") }
-                .setNeutralButton(R.string.import_export_hidden_quests) { _,_ -> export("hidden_quests") }
-                .setPositiveButton(R.string.import_export_presets)  { _,_ -> export("presets") }
+                .setTitle(if (import) R.string.pref_import else R.string.pref_export)
+                .setItems(lists.first.toTypedArray()) { _, i -> if (import) import(lists.second[i]) else export(lists.second[i]) }
+                .setNegativeButton(android.R.string.cancel, null)
                 .show()
+        }
 
+        findPreference<Preference>("export")?.setOnPreferenceClickListener {
+            importExport(false)
             true
         }
 
         findPreference<Preference>("import")?.setOnPreferenceClickListener {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.pref_import)
-                .setMessage(R.string.import_warning)
-                .setNegativeButton(R.string.import_export_settings) { _,_ -> import("settings") }
-                .setNeutralButton(R.string.import_export_hidden_quests) { _,_ -> import("hidden_quests") }
-                .setPositiveButton(R.string.import_export_presets)  { _,_ -> import("presets") }
-                .show()
-
+            importExport(true)
             true
         }
 
@@ -241,6 +242,7 @@ class DataManagementSettingsFragment :
                     }
                     .show()
             }
+            REQUEST_CODE_OVERLAYS_EXPORT -> exportCustomOverlays(uri)
             REQUEST_CODE_SETTINGS_IMPORT -> if (!importSettings(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
             REQUEST_CODE_HIDDEN_IMPORT -> {
                 // do not delete existing hidden quests; this can be done manually anyway
@@ -306,6 +308,7 @@ class DataManagementSettingsFragment :
                     .setNeutralButton(R.string.import_presets_add) { _, _ -> importPresets(lines, false) }
                     .show()
             }
+            REQUEST_CODE_OVERLAYS_IMPORT -> if (!importCustomOverlays(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
             REQUEST_CODE_EXTERNAL_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_EXTERNAL) }
             REQUEST_CODE_EXTERNAL_EXPORT -> { writeFromExternalFileToUri(FILENAME_EXTERNAL, uri) }
             REQUEST_CODE_TREES_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_TREES) }
@@ -322,6 +325,7 @@ class DataManagementSettingsFragment :
             "settings" -> REQUEST_CODE_SETTINGS_IMPORT
             "hidden_quests" ->  REQUEST_CODE_HIDDEN_IMPORT
             "presets" ->  REQUEST_CODE_PRESETS_IMPORT
+            "overlays" ->  REQUEST_CODE_OVERLAYS_IMPORT
             "trees" -> REQUEST_CODE_TREES_IMPORT
             "external" -> REQUEST_CODE_EXTERNAL_IMPORT
             else -> throw(IllegalArgumentException())
@@ -340,6 +344,7 @@ class DataManagementSettingsFragment :
             "settings" -> REQUEST_CODE_SETTINGS_EXPORT
             "hidden_quests" ->  REQUEST_CODE_HIDDEN_EXPORT
             "presets" ->  REQUEST_CODE_PRESETS_EXPORT
+            "overlays" ->  REQUEST_CODE_OVERLAYS_EXPORT
             "trees" -> REQUEST_CODE_TREES_EXPORT
             "external" -> REQUEST_CODE_EXTERNAL_EXPORT
             else -> throw(IllegalArgumentException())
@@ -508,9 +513,26 @@ class DataManagementSettingsFragment :
                 && !it.contains("TangramIconsSpriteSheet") // this is huge and gets generated if missing anyway
                 && !it.contains("oauth.") // login data
                 && !it.contains("osm.") // login data
-                && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stores with presets, because preset id is never guaranteed to match
+                && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stored with presets, because preset id is never guaranteed to match
+                && !it.startsWith("custom_overlay") // custom overlays are exported separately
         }
         activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { settingsToJsonStream(settings, it) } }
+    }
+
+    private fun exportCustomOverlays(uri: Uri) {
+        val settings = prefs.all.filterKeys { it.startsWith("custom_overlay") }
+        activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use {
+            it.appendLine("overlays")
+            settingsToJsonStream(settings, it)
+        } }
+    }
+
+    private fun importCustomOverlays(uri: Uri): Boolean {
+        val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() } ?: return false
+        if (lines.first() != "overlays") return false
+        // todo: this will overwrite existing overlays, which is currently fine but will be a problem later
+        //  -> need to process the list and change numbers
+        return readToSettings(lines.subList(1, lines.size))
     }
 
     // this will ignore settings with value null
@@ -634,9 +656,11 @@ class DataManagementSettingsFragment :
 private const val REQUEST_CODE_SETTINGS_EXPORT = 532527
 private const val REQUEST_CODE_HIDDEN_EXPORT = 532528
 private const val REQUEST_CODE_PRESETS_EXPORT = 532529
+private const val REQUEST_CODE_OVERLAYS_EXPORT = 532530
 private const val REQUEST_CODE_SETTINGS_IMPORT = 67367487
 private const val REQUEST_CODE_HIDDEN_IMPORT = 67367488
 private const val REQUEST_CODE_PRESETS_IMPORT = 67367489
+private const val REQUEST_CODE_OVERLAYS_IMPORT = 67367490
 private const val REQUEST_CODE_TREES_IMPORT = 5331
 private const val REQUEST_CODE_TREES_EXPORT = 5332
 private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333

@@ -134,7 +134,10 @@ class QuestsSettingsFragment :
 
 }
 
-class LocationRequester(private val activity: Activity, activityResultCaller: ActivityResultCaller) {
+// Use the old location request thing that has been removed from SC because it sometimes may be
+// unreliable. Reasoning: less work, no possibility for testing background location permission,
+// it still mostly works, and it's only used for the nearby quest monitor.
+private class LocationRequester(private val activity: Activity, activityResultCaller: ActivityResultCaller) {
 
     private val requestPermission = ActivityForResultLauncher(
         activityResultCaller, ActivityResultContracts.RequestPermission()
