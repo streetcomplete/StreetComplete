@@ -40,7 +40,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -102,6 +101,7 @@ import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
+import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -136,7 +136,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.location.LocationRequester
+import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -213,7 +213,6 @@ class MainFragment :
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
 
-    private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
 
     private val binding by viewBinding(FragmentMainBinding::bind)
@@ -246,7 +245,6 @@ class MainFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        requestLocation = LocationRequester(requireActivity(), this)
         locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
@@ -255,6 +253,7 @@ class MainFragment :
                 is MainMenuButtonFragment -> mainMenuButtonFragment = fragment
             }
         }
+        childFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -880,7 +879,7 @@ class MainFragment :
 
         when {
             !binding.gpsTrackingButton.state.isEnabled -> {
-                lifecycleScope.launch { requestLocation() }
+                requestLocation()
             }
             !mapFragment.isFollowingPosition -> {
                 setIsFollowingPosition(true)
@@ -889,6 +888,10 @@ class MainFragment :
                 setIsNavigationMode(!mapFragment.isNavigationMode)
             }
         }
+    }
+
+    private fun requestLocation() {
+        (childFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
     }
 
     private fun onClickCreateButton() {
@@ -1482,6 +1485,8 @@ class MainFragment :
     companion object {
         private const val BOTTOM_SHEET = "bottom_sheet"
         private const val EDIT_HISTORY = "edit_history"
+
+        private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
     }
 }
 

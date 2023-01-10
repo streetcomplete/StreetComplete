@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5002
-        versionName = "50.1_ee"
+        versionCode = 5003
+        versionName = "50.2_ee"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -147,7 +147,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxCoroutinesVersion")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
@@ -188,7 +187,6 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.27.0")
-
     // faster sqlite library (additional capabilities like R*-tree or json1 not used)
     // performance comparison: https://github.com/streetcomplete/StreetComplete/issues/3609#issuecomment-1031177576
     implementation("com.github.requery:sqlite-android:3.39.2")
@@ -200,9 +198,6 @@ dependencies {
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 
-    // measuring distance with AR
-    implementation("com.google.ar:core:1.35.0")
-    implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
 /** Localizations that should be pulled from POEditor */
@@ -210,7 +205,8 @@ val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
+    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version

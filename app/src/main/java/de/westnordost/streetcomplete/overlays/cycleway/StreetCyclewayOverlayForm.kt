@@ -72,6 +72,10 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
             }
         }
         updateBicycleBoulevard()
+
+        streetSideSelect.transformLastSelection = { item: CyclewayAndDirection, isRight: Boolean ->
+            CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -216,6 +220,11 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     }
 
     /* ----------------------------- AStreetSideSelectOverlayForm ------------------------------- */
+
+    override fun isFormComplete() =
+        streetSideSelect.left != null ||
+        streetSideSelect.right != null ||
+        bicycleBoulevard == BicycleBoulevard.YES
 
     override fun hasChanges(): Boolean =
         streetSideSelect.left?.value != originalCycleway?.left  ||

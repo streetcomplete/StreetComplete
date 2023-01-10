@@ -45,8 +45,10 @@ open class UpdatePresetsTask : DefaultTask() {
         // Norway has two languages, one of them is called Bokmål
         // coded "no" in iD presets, but "nb" is also expected by Android.
         // https://github.com/streetcomplete/StreetComplete/issues/3890
-        val bokmalFile = File("$targetDir/no.json")
-        bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+        if ("no" in languageCodes.orEmpty()) {
+            val bokmalFile = File("$targetDir/no.json")
+            bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+        }
     }
 
     /** Fetch iD presets */

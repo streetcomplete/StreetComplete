@@ -1298,5 +1298,7 @@ Przesunąć go teraz?"</string>
     <string name="cycleway_reverse_direction_warning">"To, że ścieżka rowerowa prowadzi w innym kierunku, jest niezwykle rzadkie."</string>
     <string name="cycleway_reverse_direction_toast">"Stuknij, którą stronę chcesz odwrócić"</string>
     <string name="separate_cycleway_path">"Ścieżka lub szlak"</string>
+    <string name="quest_fireHydrant_type_pipe">"Rura"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"chodnik wspóldzielony w obu kierunkach"</string>
+    <string name="measure_info_title">"Uzyskiwanie optymalnej precyzji"</string>
 </resources>

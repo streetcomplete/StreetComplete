@@ -179,7 +179,7 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_manySports_confirmation_specific">"Kifejezetten ezeket"</string>
     <string name="quest_manySports_confirmation_generic">"Általános célú"</string>
     <string name="quest_sport_manySports_confirmation_title">"Sok sportágat jelöltél ki"</string>
-    <string name="quest_toiletsFee_title">"Fizetős ez a WC?"</string>
+    <string name="quest_toiletsFee_title">"Fizetős ez a wc?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Van vakvezető burkolat a gyalogosátkelő mindkét oldalán?"</string>
     <string name="quest_source_dialog_title">"Biztos, hogy ellenőrizted a helyszínen?"</string>
     <string name="quest_source_dialog_note">"Csak olyan információt adj meg, amit helyszíni felmérésnél szereztél."</string>
@@ -279,7 +279,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nem lehet beolvasni. Próbálj jobban belenagyítani, vagy kevésbé elforgatni a térképet."</string>
-    <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
+    <string name="quest_crossing_type_title">"Ez milyen típusú gyalogosátkelő?"</string>
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
     <string name="action_undo">"Visszavonás"</string>
     <string name="produce_mangosteen">"Mangosztán"</string>
@@ -732,7 +732,7 @@ szintek"</string>
     <string name="resurvey_intervals_less_often">"Kérdezzen rá ritkábban"</string>
     <string name="resurvey_intervals_default">"Alapértelmezett"</string>
     <string name="resurvey_intervals_more_often">"Kérdezzen rá gyakrabban"</string>
-    <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Van defibrillátor (AED) az épületben?"</string>
     <string name="about_title_translate">"Segíts az alkalmazás fordításában"</string>
     <string name="about_description_translate">"A %1$s nyelvű fordítás %2$d%%-ban kész"</string>
     <string name="quest_oneway2_title">"Ez egy egyirányú utca? Melyik irányban?"</string>
@@ -1117,7 +1117,7 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_internet_access_title">"Milyen fajta internetkapcsolatot kínál ez a hely?"</string>
     <string name="quest_level_title2">"Hányadik szinten van ez a hely?"</string>
     <string name="quest_lit_title">"Ki van világítva?"</string>
-    <string name="quest_openingHours_title">"Mi a nyitvatartási idő?"</string>
+    <string name="quest_openingHours_title">"Mi a nyitvatartási ideje?"</string>
     <string name="quest_openingHours_signed_title">"A nyitvatartási idő ki van írva?"</string>
     <string name="quest_openingHours_resurvey_title">"Érvényes ez a nyitvatartási idő?"</string>
     <string name="quest_placeName_title">"Mi a neve a helynek?"</string>
@@ -1238,12 +1238,12 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="vacant_shop_title">"Üres üzlethelyiség"</string>
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
     <string name="quest_address_answer_no_address">"Nincs cím"</string>
-    <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a kerékpárakadályt?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a kerékpáros akadályt?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Rögzített"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Nyitható"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Mozgatható"</string>
     <string name="quest_buildingType_guardhouse">"Őrház"</string>
-    <string name="quest_genericRef_title">"Mi az azonosítószám?"</string>
+    <string name="quest_genericRef_title">"Mi az azonosítószáma?"</string>
     <string name="quest_sidewalk_answer_different">"A járdák helyzete eltérő"</string>
     <string name="about_title_get_involved">"Kapcsolódj be"</string>
     <string name="pref_category_quests_overlays">"Kérdések és kiemelések"</string>
@@ -1292,5 +1292,11 @@ Most akarja elmozdítani?"</string>
     <string name="cycleway_reverse_direction_warning">"Rendkívül ritka, hogy egy kerékpárút az ellenkező irányba menjen."</string>
     <string name="cycleway_reverse_direction_toast">"Érintse meg, hogy melyik oldala legyen fordítva"</string>
     <string name="separate_cycleway_path">"Gyalog- és kerékpárút"</string>
+    <string name="quest_fireHydrant_type_pipe">"Cső"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"kétirányú  gyalog- és kerékpárút"</string>
+    <string name="measure_info_title">"Az optimális pontosság elérése"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;AzARCore néha (kezdetben) feltételezi, hogy a talaj egy kicsit alacsonyabb vagy magasabb, mint amilyen valójában. Ez mérési hibát eredményez, amely annál nagyobb lesz, minél inkább a horizont felé döntöd a telefonodat.&lt;/p&gt;
+&lt;p&gt;A vízszintes méréseknél ennek a problémának a teljes kiküszöböléséhez állítsd be a kezdő- és végpontokat úgy, hogy közben a telefont egyenesen lefelé irányítod (úgy, hogy felülről a fehér nyilat lásd).&lt;/p&gt;
+&lt;p&gt;Függőleges méréseknél ehelyett azt ellenőrizd, hogy a kezdőpont nem mozdul-e el a talajhoz képest, ha különböző irányokból nézed.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Ez az alkalmazás a &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) kiterjesztettvalóság-rendszeren fut, amelyet a Google biztosít, és amelyre a &lt;a href=\"https://policies.google.com/privacy\"&gt;Google adatvédelmi irányelvei&lt;/a&gt; vonatkoznak."</string>
 </resources>

@@ -123,6 +123,25 @@ class CyclewayKtTest {
         )
     }
 
+    @Test fun `oneway is a oneway for cyclists when separately mapped cycleway goes in contra-flow direction`() {
+        assertFalse(
+            LeftAndRightCycleway(CyclewayAndDirection(SEPARATE, BACKWARD), null)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+        )
+        assertFalse(
+            LeftAndRightCycleway(null, CyclewayAndDirection(SEPARATE, BACKWARD))
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+        )
+        assertFalse(
+            LeftAndRightCycleway(CyclewayAndDirection(SEPARATE, FORWARD), null)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+        )
+        assertFalse(
+            LeftAndRightCycleway(null, CyclewayAndDirection(SEPARATE, FORWARD))
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+        )
+    }
+
     @Test fun `oneway is oneway for cyclists when no cycleway goes in contra-flow direction`() {
         assertFalse(
             LeftAndRightCycleway(CyclewayAndDirection(TRACK, FORWARD), null)

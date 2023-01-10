@@ -1,3 +1,24 @@
+v51.0: |
+  <h3>Standalone measuring app</h3>
+  <p>Measuring distances with the camera has been outsourced into a standalone app, so you can also measure things outside of the context of solving quests: <a href="https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure">StreetMeasure</a></p>
+  <p>This has been done for licensing reasons (see #4289). In a nutshell, ARCore (= <a href="https://play.google.com/store/apps/details?id=com.google.ar.core">Google Play Services for AR</a>), on which the measuring is dependent on, is not open source.<br>
+     This is why it is also not available on the main repo in F-Droid. If you do not have Google Play, you can <a href="https://github.com/streetcomplete/StreetMeasure/releases">download the APK from GitHub<br>, but in any case you also need to install ARCore.</p>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>The standalone measure app now explains how to achieve optimal precision and warns if the potential for a measuring error becomes too big (#4655)</li>
+  </ul>
+
+
+v50.2: |
+  <ul>
+  <li>Add new language: Swahili by SUZA Youth Mappers - Asha Omar, Haitham Alawi & Hajra Salim</li>
+  <li>Fix existence of cycleway was asked in 30 zones (#4706)</li>
+  <li>Fix display of multi-polygons (#4689)</li>
+  <li>Fix "Explicitly shared use pavement, both directions" did not show (#4711)</li>
+  <li>Fix last answer button for cycleways would (often) set the wrong direction (#4722)</li>
+  <li>Other small enhancements and fixes on the cycleway overlay (#4677, #4715, #4721, #4671 ...)</li>
+  </ul>
+
 v50.1: |
   <p>StreetComplete now has <a href="https://github.com/streetcomplete/StreetComplete/">3000 stars on GitHub</a>. Thanks, guys! 🤩</p>
   <ul>

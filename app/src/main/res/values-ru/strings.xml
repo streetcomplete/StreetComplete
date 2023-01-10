@@ -1275,5 +1275,20 @@
     <string name="confirmation_replace_shop_message">"В таком случае, часы работы, контактная информация итд. тоже изменились."</string>
     <string name="confirmation_replace_shop_yes">"Теперь это другое место"</string>
     <string name="confirmation_replace_shop_no">"Это всё ещё то же место"</string>
+    <string name="move_node">"Очень малое перемещение..."</string>
+    <string name="quest_move_node_message">"Вы можете исправить положение этой точки.
+Переместить её?"</string>
+    <string name="node_moved_not_far_enough">"Пожалуйста, передвинь чуть дальше."</string>
+    <string name="node_moved_too_far">"Слишком далеко. Может стоит оставить заметку?"</string>
+    <string name="node_moved">"Передвинуто на %s"</string>
+    <string name="move_node_description">"Переместите карту чтобы поместить точку на корректное место. Используйте масштабирование чтобы добиться максимальной точности. Имейте в виду, что ваше отображаемое местоположение может быть не таким точным."</string>
+    <string name="move_node_action_description">"Вы переместили точку"</string>
+    <string name="quest_placeName_no_name_answer">"Здесь нет вывески с названием"</string>
+    <string name="overlay_cycleway">"Велодорожки"</string>
+    <string name="bicycle_boulevard_is_a">"Это %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Это не %1$s"</string>
+    <string name="separate_cycleway_exclusive">"Только для велосипедов"</string>
+    <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
+    <string name="quest_fireHydrant_type_pipe">"Труба"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
 </resources>

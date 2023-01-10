@@ -39,9 +39,12 @@ fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, is
     val previous = createCyclewaySides(tags, isLeftHandTraffic)
     val l = (left ?: previous?.left)
     val r = (right ?: previous?.right)
-    // "no cycleway" has no direction and should be ignored
-    val leftDir = l?.direction?.takeIf { l.cycleway != NONE }
-    val rightDir = r?.direction?.takeIf { r.cycleway != NONE }
+    /* "no cycleway" has no direction and should be ignored
+       "separate" should also be ignored because if the cycleway is mapped separately, the existance
+       of a separate way that enables cyclists to go in contra-flow-direction doesn't mean that they
+       can do the same on the main way for the road too (see #4715) */
+    val leftDir = l?.direction?.takeIf { l.cycleway != NONE && l.cycleway != SEPARATE }
+    val rightDir = r?.direction?.takeIf { r.cycleway != NONE && r.cycleway != SEPARATE }
 
     return leftDir == BOTH || rightDir == BOTH ||
         leftDir != null && leftDir != onewayDir ||
@@ -202,7 +205,6 @@ fun getSelectableCycleways(
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
     if (isInContraflowOfOneway(roadTags, dir)) {
-        cycleways.remove(PICTOGRAMS)
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
     return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways

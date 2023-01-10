@@ -775,9 +775,9 @@ Erfolge"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Oberfläche beschreiben"</string>
     <string name="open_url">"URL öffnen"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
-    <string name="quest_buildingType_historic">"Historisch"</string>
+    <string name="quest_buildingType_historic">"Historisches Gebäude"</string>
     <string name="quest_buildingType_historic_description">"historisches Gebäude, dessen (ursprünglicher) Zweck nicht offensichtlich ist"</string>
-    <string name="quest_buildingType_abandoned">"Verlassen"</string>
+    <string name="quest_buildingType_abandoned">"Verlassenes Gebäude"</string>
     <string name="quest_buildingType_abandoned_description">"verlassenes Gebäude, dessen ursprüngliche Funktion unbekannt ist"</string>
     <string name="quest_buildingType_ruins">"Ruine"</string>
     <string name="quest_buildingType_ruins_description">"verfallenes oder zerstörtes Gebäude"</string>
@@ -1299,5 +1299,11 @@ Jetzt verschieben?"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
     <string name="separate_cycleway_path">"Weg oder Pfad"</string>
+    <string name="quest_fireHydrant_type_pipe">"Rohr"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"explizite Mitbenutzung des Bürgersteigs, beide Richtungen"</string>
+    <string name="measure_info_title">"Optimale Genauigkeit erreichen"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore geht manchmal (anfangs) davon aus, dass der Boden etwas niedriger oder höher ist als in der Realität. Dadurch entsteht ein Messfehler, der umso größer wird, je mehr Du das Telefon in Richtung Horizont neigst.&lt;/p&gt;
+&lt;p&gt;Setze den Start- und Endpunkt einfach während das Telefon gerade nach unten zeigt (also so dass der weiße Pfeil von oben zu sehen ist), um dieses Problem bei horizontalen Messungen komplett zu umgehen.&lt;/p&gt;
+&lt;p&gt;Für vertikale Messungen musst Du den Startpunkt stattdessen aus verschiedenen Richtungen betrachten, um sicherzustellen, dass er sich nicht relativ zum Boden verschiebt.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Diese App nutzt die von Google bereitgestellten &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) welche den &lt;a href=\"https://policies.google.com/privacy\"&gt;Google-Datenschutzrichtlinien&lt;/a&gt; unterliegen."</string>
 </resources>

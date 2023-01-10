@@ -483,7 +483,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_maxheight_title">"Mikä on suurin sallittu korkeus täällä?"</string>
     <string name="quest_maxheight_answer_noSign">"Merkki puuttuu…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Onko tässä selkeästi riittävästi tilaa jopa korkeimmille rekoille (vähintään 4,5 metriä) kulkea tästä?"</string>
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Tämä korkeus näyttää epäuskottavalta. Oletko varma, että se on oikein?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Tämä korkeus vaikuttaa epätodennäköiseltä. Oletko varma, että se on oikein?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s sulkenut"</string>
     <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s avannut uudelleen"</string>
@@ -539,7 +539,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Täällä on muutamia jakoja. Voit jakaa tien myös myöhemmin osiin. "</string>
     <string name="quest_footwayPartSurface_title">"Mikä päällyste on tällä jalkakäytävällä?"</string>
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
-    <string name="quest_maxweight_unusualInput_confirmation_description">"Paino näyttää epätodennäköiseltä. Oletko varma, että syöttämäsi tieto on oikein?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Tämä paino vaikuttaa epätodennäköiseltä. Oletko varma, että se on oikein?"</string>
     <string name="quest_maxweight_answer_other_sign">"Merkki näyttää erilaiselta…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Haluaisitko jättää ilmoituksen? Ilmoitus kuvan kanssa helpottaa muiden kartoittajien tehtävää."</string>
     <string name="quest_handrail_title">"Onko näissä portaissa kaidetta?"</string>
@@ -668,7 +668,7 @@ Muista turvallisuus: huomioi ympäristösi ja älä mene yksityisalueille."</str
     <string name="achievement_postman_solved_X">"Autoit määrittelemään %d osoitetta! Tämä tieto ei auta ainoastaan posteljoonia, vaan myös mitä tahansa navigointia."</string>
     <string name="achievement_building_title">"Monikerroksinen"</string>
     <string name="achievement_building_solved_X">"Ratkaisit %d rakennuksiin liittyvää asiaa.
-uomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen."</string>
+Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen."</string>
     <string name="achievement_blind_title">"Kuudes aisti"</string>
     <string name="achievement_blind_solved_X">"Ratkaisit %d asiaa, jotka auttavat näkörajoitteisia."</string>
     <string name="achievement_pedestrian_title">"Juoksija"</string>
@@ -1126,11 +1126,13 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_shop_type_title2">"Minkä tyyppinen kauppa tämä on?"</string>
     <string name="quest_smoking_title2">"Onko tupakointi sallittu täällä?"</string>
     <string name="quest_smoothness_title">"Millainen on päällysteen laatu täällä?"</string>
+    <string name="quest_summit_register_title2">"Onko tällä vuorenhuipulla vieraskirjaa?"</string>
     <string name="quest_surface_title">"Millainen päällyste täällä on?"</string>
     <string name="quest_toiletAvailability_title">"Onko täällä WC:tä?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörtuolilla vessaan?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Oletko varma, etteivät pyöräilijät saa käyttää tätä yksisuuntaista katua molempiin suuntiin? Jos olet epävarma, tarkista onko kadun päässä merkkiä."</string>
     <string name="link_backofyourhand_description">"Kuinka hyvin tunnet ympäristösi? Testaa tietämystäsi paikantamalla kadut."</string>
+    <string name="link_notesreview_description">"Näe, suodata ja kommentoi sinun ja muiden tekemiä ilmoituksia. Ilmoitukset on mahdollista selvittää asettamalla ilmoitusten sisältämä tieto kartalle käyttäen iD:tä tai JOSM:ia"</string>
     <string name="quest_accepts_cards">"Kelpaako täällä luotto- tai debit-kortit?"</string>
     <string name="quest_accepts_cards_debit_and_credit">"Molemmat"</string>
     <string name="quest_accepts_cards_credit_only">"Vain luottokortit"</string>
@@ -1169,6 +1171,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="action_overlays">"Tasot"</string>
     <string name="quest_memorialType_title">"Minkälainen muistomerkki tämä on?"</string>
     <string name="quest_memorialType_statue">"Patsas"</string>
+    <string name="quest_memorialType_bust">"Rintakuva"</string>
     <string name="quest_memorialType_plaque">"Kyltti"</string>
     <string name="quest_memorialType_war_memorial">"Sotamuistomerkki"</string>
     <string name="quest_memorialType_stone">"Muistokivi"</string>
@@ -1185,6 +1188,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="lit_value_automatic">"Valaistu kun joku kulkee ohi"</string>
     <string name="overlay_sidewalk">"Jalkakäytävät"</string>
     <string name="quest_generic_answer_is_indoors">"Tämä on sisätiloissa"</string>
+    <string name="quest_summit_cross_title">"Onko tällä vuorenhuipulla ristiä?"</string>
     <string name="quest_entrance_reference">"Mitä sisäänkäynnin yhteydessä lukee?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Sisäänkäynnin nimi ja huoneistojen numerot"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Huoneistojen numerot"</string>
@@ -1192,6 +1196,8 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_entrance_reference_nothing_signed">"Ei nimikylttiä tai huoneistojen numeroita"</string>
     <string name="quest_entrance_reference_reference_label">"Sisäänkäynnin nimi:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Huoneistoväli:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"-"</string>
+    <string name="default_disabled_msg_overlay">"Tämä kysymystyyppi on pois käytöstä oletusarvoisesti, koska tarjolla on taso, jota käyttämällä tähän liittyvää tietoa on mahdollista syöttää ja päivittää tehokkaammalla tavalla."</string>
     <string name="quest_camp_drinking_water_title">"Onko juomavesi ilmaista leiriytyjille täällä?"</string>
     <string name="quest_camp_shower_title">"Onko täällä suihkuja?"</string>
     <string name="quest_camp_power_supply_title">"Voivatko asiakkaat ladata heidän puhelimiaan, tietokoneita jne täällä?"</string>
@@ -1200,6 +1206,8 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_camp_type_caravans_only">"Vain matkailuautot, matkailuvaunut, ..."</string>
     <string name="quest_camp_type_tents_only">"Vain teltat"</string>
     <string name="quest_camp_type_backcountry">"Erämaatelttailu (ei palveluja)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tämä vastaus ei vastaa sitä, mitä on jo kartoitettu tämän tien osalta. Vastaatko varmasti oikeaan tiehen liittyen? Kartoitiko varmasti henkilökohtaisesti koko tien osalta, kuten on tarkoitus?"</string>
     <string name="quest_recycling_type_pet">"Vain PET-muovi"</string>
     <string name="street_parking_street_width">"Kadun leveys: %s"</string>
     <string name="overlay_street_parking">"Katupysäköinti"</string>
@@ -1223,6 +1231,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="overlay_addresses">"Osoitteet"</string>
     <string name="overlay_shops">"Kaupat"</string>
     <string name="name_label">"Nimi:"</string>
+    <string name="vacant_shop_title">"Tyhjä/vapaa kauppatila"</string>
     <string name="unknown_shop_title">"Muunkaltainen paikka"</string>
     <string name="quest_address_answer_no_address">"Täällä ei ole osoitetta"</string>
     <string name="quest_bicycle_barrier_installation_title">"Voiko tämän pyöräilyesteen avata (avaimella tai ilman)?"</string>
@@ -1259,7 +1268,9 @@ Haluatko siirtää nyt?"</string>
     <string name="node_moved_too_far">"Siirretty liian kauas. Voisit kenties jättää ilmoituksen"</string>
     <string name="node_moved">"Siirtänyt %s"</string>
     <string name="move_node_action_description">"Siirsit pistettä"</string>
+    <string name="quest_cycleway_value_shoulder">"ei mitään, mutta piennar on pyöräilijöiden käytettävissä"</string>
     <string name="quest_placeName_no_name_answer">"Ei nimikylttiä"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Tämä leveys vaikuttaa epätodennäköiseltä. Muista, että leveys tulee ilmoittaa reunakiveyksestä toiseen reunakiveykseen, mukaan lukien pysäköinnin kadun varrella, pyöräilyväylät yms."</string>
     <string name="overlay_cycleway">"Pyöräilypolut"</string>
     <string name="bicycle_boulevard_is_a">"Se on %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Se ei ole %1$s"</string>
@@ -1272,5 +1283,11 @@ Haluatko siirtää nyt?"</string>
     <string name="separate_cycleway_exclusive">"Polku vain pyörille"</string>
     <string name="cycleway_reverse_direction_warning">"Se, että pyörätie johtaa vastakkaiseen suuntaan, on erittäin harvinaista."</string>
     <string name="separate_cycleway_path">"Polku tai reitti"</string>
+    <string name="quest_fireHydrant_type_pipe">"Putki"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"jaettu jalkakäytävä, molempiin suuntiin"</string>
+    <string name="measure_info_title">"Saavutetaan optimaalinen tarkkuus"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;Joskus ARCore saattaa (aluksi) olettaa maan olevan hieman todellisuutta alempana tai ylempänä. Tämä tuottaa mittausvirhettä, joka kasvaa sitä suuremmaksi, mitä enemmän kallistat puhelintasi kohti horisonttia.&lt;/p&gt;
+&lt;p&gt;Aseta sekä aloitus- että lopetuspiste osoittaen puhelimella suoraan alas (siten että näet valkoisen nuolen päältä) välttääksesi tämän vaakasuuntaisten mittauksien virheen.&lt;/p&gt;
+&lt;p&gt;Pystysuuntaisissa mittauksissa sinun pitää varmistaa, että aloituspiste ei näytä liikkuvan maahan nähden katsottaessa aloituspistettä eri suunnista.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Tämä sovellus toimii käyttäen &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR:ää&lt;/a&gt; (ARCore), jonka tarjoaa Google ja siihen sovelletaan &lt;a href=\"https://policies.google.com/privacy\"&gt;Googlen tietosuojakäytäntöä&lt;/a&gt;."</string>
 </resources>

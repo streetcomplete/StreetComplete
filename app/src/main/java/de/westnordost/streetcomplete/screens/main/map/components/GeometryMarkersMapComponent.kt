@@ -5,8 +5,6 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.ColorUtils
-import com.mapzen.tangram.geometry.Polygon
-import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -14,8 +12,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
-import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
@@ -93,32 +92,32 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
         // polygon / polylines marker(s)
         if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-            val positions = when (geometry) {
-                is ElementPolygonsGeometry -> geometry.polygons
-                is ElementPolylinesGeometry -> geometry.polylines
-                else -> throw IllegalStateException()
-            }
 
             if (geometry is ElementPolygonsGeometry) {
-                val marker = ctrl.addMarker()
-                val color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 50)) } ?: areaColor
-                marker.setStylingFromString("""
-                {
-                    style: 'geometry-polygons',
-                    color: '$color',
-                    order: 2000,
-                    collide: false
+                for (polygon in geometry.toTangramGeometry()) {
+                    val marker = ctrl.addMarker()
+                    val color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 50)) } ?: areaColor
+                    marker.setStylingFromString("""
+                    {
+                        style: 'geometry-polygons',
+                        color: '$color',
+                        order: 2000,
+                        collide: false
+                    }
+                    """.trimIndent())
+                    marker.setPolygon(polygon)
+                    markers.add(marker)
                 }
-                """.trimIndent())
-                marker.setPolygon(Polygon(
-                    positions.map { polygon -> polygon.map { it.toLngLat() } }, null
-                ))
-                markers.add(marker)
             }
 
             /* Polygons should be styled to have a more opaque outline. Due to a technical
              *  limitation in tangram-es, these have to be actually two markers then. */
-            for (polyline in positions) {
+            val polylines: ElementPolylinesGeometry = when (geometry) {
+                is ElementPolygonsGeometry -> ElementPolylinesGeometry(geometry.polygons, geometry.polygons.first().centerPointOfPolyline())
+                is ElementPolylinesGeometry -> geometry
+                else -> throw IllegalStateException()
+            }
+            for (polyline in polylines.toTangramGeometry()) {
                 val marker = ctrl.addMarker()
                 val color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 75)) } ?: lineColor
                 marker.setStylingFromString("""
@@ -132,7 +131,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                     join: round
                 }
                 """.trimIndent())
-                marker.setPolyline(Polyline(polyline.map { it.toLngLat() }, null))
+                marker.setPolyline(polyline)
                 markers.add(marker)
             }
         }

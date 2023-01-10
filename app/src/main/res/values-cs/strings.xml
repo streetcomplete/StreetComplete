@@ -1282,13 +1282,13 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
 Chcete ho posunout?"</string>
     <string name="node_moved_not_far_enough">"Prosím posuňte ještě dál"</string>
     <string name="node_moved_too_far">"Posunuto příliš daleko. Zvažte přidání poznámky"</string>
-    <string name="node_moved">"Posunul(a) %s"</string>
+    <string name="node_moved">"Přesunuto o %s"</string>
     <string name="move_node_description">"Posunujte mapou, až se toto místo dostane do správné pozice. Použijte zoom a zkuste dosáhnout co nejvyšší přesnosti. Dejte si prosím pozor, že vaše zobrazená pozice může být méně přesná, než se zobrazuje."</string>
     <string name="move_node_action_description">"Posunuli jste uzel"</string>
     <string name="quest_cycleway_value_shoulder">"není, ale krajnice je použitelná pro cyklisty"</string>
     <string name="quest_placeName_no_name_answer">"Není tu cedule s názvem"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Tato šířka se zdá být nemožná. Nezapomeňte, že má být od obrubníku k obrubníku, včetně parkování na ulici, cyklopruhů apod."</string>
-    <string name="overlay_cycleway">"Cesty pro cyklisty"</string>
+    <string name="overlay_cycleway">"Cyklostezka"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Není to %1$s"</string>
     <string name="bicycle_boulevard">"Cyklobulvár"</string>
@@ -1305,4 +1305,9 @@ Chcete ho posunout?"</string>
     <string name="separate_cycleway_path">"Stezka nebo dráha"</string>
     <string name="quest_fireHydrant_type_pipe">"Zakrytá trubka"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"výslovně sdílená s chodníkem, oba směry"</string>
+    <string name="measure_info_title">"Dosažení optimální přesnosti"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore někdy (na začátku) předpokládá, že země je trochu níže nebo výše, než skutečně je. To do měření zanáší chybu, která je tím větší, čím víc odkláníte telefon od horizontu.&lt;/p&gt;
+&lt;p&gt;Tuto chybu pro horizontální měření zcela odstraníte tím, že každý počáteční a koncový bod nastavíte zamířením telefonu kolmo dolů (takže vidíte bílou šipku směřující shora).&lt;/p&gt;
+&lt;p&gt;Pro vertikální měření musíte místo toho ověřit, že počáteční bod není paralaktický k zemi tím, že se na něj podíváte z různých směrů.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Tato aplikace běží na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Službách Google Play pro RR&lt;/a&gt; (ARCore), které poskytuje společnost Google a jejich použití se řídí &lt;a href=\"https://policies.google.com/privacy\"&gt;Zásadami ochrany soukromí Google&lt;/a&gt;."</string>
 </resources>

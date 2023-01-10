@@ -36,7 +36,7 @@ class LocationAvailabilityReceiver(private val context: Context) {
         )
         LocalBroadcastManager.getInstance(context).registerReceiver(
             requestLocationPermissionResultReceiver,
-            IntentFilter(LocationRequester.REQUEST_LOCATION_PERMISSION_RESULT)
+            IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
         )
     }
 
