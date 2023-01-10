@@ -10,7 +10,11 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.intersects
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
@@ -35,6 +39,8 @@ class OtherSourceQuestController(
 
     private val questTypes get() = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
     private val questTypeNamesBySource = questTypes.associate { it.source to it.name }
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     init {
         if (questTypes.size != questTypeNamesBySource.size)
             throw IllegalStateException("source values must be unique")
@@ -58,21 +64,23 @@ class OtherSourceQuestController(
     }
 
     /** calls [download] for each [OtherSourceQuestType] enabled in this country, thus may take long */
+    // todo: split it up into download and onMapDataDownloaded callback?
+    //  would allow for faster overall download, but is more complicated to handle (especially getting obsolete quests)
     suspend fun download(bbox: BoundingBox) {
         withContext(Dispatchers.IO) {
             val countryBoundaries = countryBoundariesFuture.get()
-            val obsoleteQuestKeys = mutableListOf<OtherSourceQuestKey>()
-            val newQuests = mutableListOf<OtherSourceQuest>()
-
-            questTypes.forEach { type ->
-                if (!type.downloadEnabled) return@forEach
-                if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@forEach
-                val previousQuests = type.getQuests(bbox).map { it.key }
-                val quests = type.download(bbox)
-                newQuests.addAll(quests)
-                val questKeys = HashSet<OtherSourceQuestKey>(quests.size).apply { quests.forEach { add(it.key) } }
-                obsoleteQuestKeys.addAll(previousQuests.filterNot { it in questKeys })
-            }
+            val updates = questTypes.mapNotNull { type ->
+                if (!type.downloadEnabled) return@mapNotNull null
+                if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@mapNotNull null
+                scope.async {
+                    val previousQuests = type.getQuests(bbox).map { it.key }
+                    val quests = type.download(bbox)
+                    val questKeys = HashSet<OtherSourceQuestKey>(quests.size).apply { quests.forEach { add(it.key) } }
+                    quests to previousQuests.filterNot { it in questKeys }
+                }
+            }.awaitAll().unzip()
+            val newQuests = updates.first.flatten()
+            val obsoleteQuestKeys = updates.second.flatten()
             questListeners.forEach { it.onUpdated(newQuests, obsoleteQuestKeys) }
         }
     }
@@ -164,6 +172,18 @@ class OtherSourceQuestController(
         val key = otherSourceDao.getKeyForElementEdit(edit.id)
         // don't delete synced edits, this will be done by ElementEditsController (using onDeletedEdits)
         type.onSyncedEdit(edit, key?.id)
+    }
+
+    fun onSyncEditFailed(edit: ElementEdit) {
+        val type = edit.type as? OtherSourceQuestType ?: return
+        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        type.onSyncEditFailed(edit, key?.id)
+    }
+
+    suspend fun onUpload(edit: ElementEdit): Boolean {
+        val type = edit.type as? OtherSourceQuestType ?: return true
+        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        return type.onUpload(edit, key?.id)
     }
 
     // for undoing stuff

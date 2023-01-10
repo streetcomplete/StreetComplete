@@ -48,12 +48,13 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
 
     /**
      *  Upload changes to the server. Uploaded quests should not be created again on [download].
-     *  Note that on each individual upload, [onSyncedEdit] will be called if there is a connected
-     *  ElementEdit before finally [upload] is called.
+     *  Note that on each individual upload of an ElementEdit, [onUpload] will be called before
+     *  uploading this edit, and [onSyncedEdit] will be called after, if there is a connected ElementEdit.
+     *  [upload] is called only after all elementEdits.
      */
     fun upload()
 
-    /** Return all quests inside the given [bbox]. */
+    /** Return all quests inside the given [bbox]. This should be fast and not require internet access. */
     fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest>
 
     /** Return quest with the given [id], or null. */
@@ -67,8 +68,10 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
 
     /**
      *  Called if the ElementEdit done as part of quest with the given [id] was deleted.
-     *  This can be because an edit was undone (before or after upload), or because it was
-     *  already uploaded and removed because it is older than MAX_UNDO_HISTORY_AGE.
+     *  This can be because
+     *   an edit was undone (before or after upload)
+     *   it was already uploaded and removed because it is older than MAX_UNDO_HISTORY_AGE
+     *   uploading the edit failed with a conflict exception (in this case onSyncEditFailed is called first)
      *  [id] can be null in case edit was not properly associated with id.
      */
     fun onDeletedEdit(edit: ElementEdit, id: String?)
@@ -79,6 +82,15 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
      *  Note that [upload] will also be called (before the first edit upload).
      */
     fun onSyncedEdit(edit: ElementEdit, id: String?)
+
+    /** Uploading the [edit] has failed due to a conflict exception */
+    fun onSyncEditFailed(edit: ElementEdit, id: String?)
+
+    /**
+     *  Called before uploading [edit]. Uploading will wait until this function returns.
+     *  @return false to cancel the upload for this edit (will throw a conflict exception)
+     */
+    suspend fun onUpload(edit: ElementEdit, id: String?): Boolean
 
     /**
      *  Removes the quest with the given [id]. What happens internally doesn't matter, as long as

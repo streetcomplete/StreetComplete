@@ -42,6 +42,12 @@ class ExternalQuest(private val externalList: ExternalList) : OtherSourceQuestTy
         id?.let { externalList.markSolved(it) } // just mark as solved, and bunch-delete in the end
     }
 
+    override fun onSyncEditFailed(edit: ElementEdit, id: String?) {
+        id?.let { externalList.markSolved(it, false) }
+    }
+
+    override suspend fun onUpload(edit: ElementEdit, id: String?): Boolean = true
+
     override fun deleteQuest(id: String): Boolean = externalList.delete(id)
 
     override fun deleteMetadataOlderThan(timestamp: Long) { }

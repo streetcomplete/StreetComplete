@@ -155,11 +155,11 @@ class OsmoseDao(
         )
     }
 
-    private fun reportChange(uuid: String, falsePositive: Boolean) {
+    fun reportChange(uuid: String, falsePositive: Boolean) {
         val url = "https://osmose.openstreetmap.fr/api/0.3/issue/$uuid/" +
             if (falsePositive) "false"
             else "done"
-        val request = Request.Builder().url(url).build()
+        val request = Request.Builder().header("User-Agent", USER_AGENT).url(url).build()
         try {
             client.newCall(request).execute()
             db.delete(NAME, where = "$UUID = '$uuid'")
@@ -169,13 +169,31 @@ class OsmoseDao(
         }
     }
 
-    fun reportChanges() {
-        db.query(NAME, where = "$ANSWERED != 0") {
+    // no need to report done here, as each "done" should be connected to an element edit
+    fun reportFalsePositives() {
+        db.query(NAME, where = "$ANSWERED = 1") {
             Pair(
                 it.getString(UUID),
                 it.getInt(ANSWERED) == 1
-            ) }.forEach { reportChange(it.first, it.second) }
+            ) }
+            .forEach { reportChange(it.first, it.second) }
+    }
 
+    // assume it exists if it's unclear
+    fun doesIssueStillExist(uuid: String): Boolean {
+        val url = "https://osmose.openstreetmap.fr/api/0.3/issue/$uuid"
+        val request = Request.Builder().header("User-Agent", USER_AGENT).url(url).build()
+        return try {
+            val r = client.newCall(request).execute()
+            if (r.body()?.string()?.contains("value is not a valid uuid") == true) {
+                db.delete(NAME, where = "$UUID = '$uuid'")
+                false
+            } else true
+        } catch (e: IOException) {
+            // just do nothing, so it's later tried again (hopefully...)
+            Log.i(TAG, "error checking existence of $uuid: ${e.message}")
+            true
+        }
     }
 
     fun setAsFalsePositive(uuid: String) {

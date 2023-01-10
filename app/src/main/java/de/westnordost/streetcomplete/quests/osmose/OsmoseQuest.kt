@@ -20,7 +20,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 
     override fun download(bbox: BoundingBox) = osmoseDao.download(bbox)
 
-    override fun upload() = osmoseDao.reportChanges()
+    override fun upload() = osmoseDao.reportFalsePositives()
 
     override fun deleteMetadataOlderThan(timestamp: Long) = osmoseDao.deleteOlderThan(timestamp)
 
@@ -34,14 +34,23 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 
     override fun onDeletedEdit(edit: ElementEdit, id: String?) {
         if (edit.isSynced) return // already reported as done
-        if (id == null)
-            osmoseDao.setFromDoneToNotAnsweredNear(edit.position)
-        else
+        if (id != null)
             osmoseDao.setNotAnswered(id)
     }
 
+    override fun onSyncEditFailed(edit: ElementEdit, id: String?) {
+        if (id != null) osmoseDao.delete(id)
+    }
+
+    override suspend fun onUpload(edit: ElementEdit, id: String?): Boolean {
+        // check whether issue still exists before uploading
+        if (id == null) return true // if we don't have an id, assume it's ok
+        return osmoseDao.doesIssueStillExist(id)
+    }
+
     override fun onSyncedEdit(edit: ElementEdit, id: String?) {
-        // todo: either report change here instead of in upload, or ignore it...
+        if (id != null)
+            osmoseDao.reportChange(id, false) // edits are never false positive
     }
 
     override val enabledInCountries: Countries

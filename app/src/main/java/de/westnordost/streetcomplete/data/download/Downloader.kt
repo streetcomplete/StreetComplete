@@ -16,6 +16,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.yield
 import kotlin.math.max
 
 /** Downloads all the things */
@@ -46,6 +47,7 @@ class Downloader(
                 launch { notesDownloader.download(bbox) }
                 launch {
                     mapDataDownloader.download(bbox)
+                    yield()
                     // download otherSource stuff after map data, because quest creation may depend on map data
                     otherSourceQuestController.download(bbox)
                 }

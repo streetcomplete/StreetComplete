@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.UploadService
@@ -34,6 +36,7 @@ class ElementEditsUploader(
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
     private val downloadController: DownloadController,
+    private val otherSourceQuestController: OtherSourceQuestController,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -64,6 +67,8 @@ class ElementEditsUploader(
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
+            if (edit.type is OtherSourceQuestType && !otherSourceQuestController.onUpload(edit))
+                throw(ConflictException())
             val updates = singleUploader.upload(edit, getIdProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
@@ -76,6 +81,7 @@ class ElementEditsUploader(
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
 
+            otherSourceQuestController.onSyncEditFailed(edit)
             elementEditsController.markSyncFailed(edit)
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
