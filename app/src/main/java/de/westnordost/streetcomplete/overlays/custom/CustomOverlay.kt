@@ -14,9 +14,11 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
+import de.westnordost.streetcomplete.util.ktx.isArea
 
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
@@ -73,7 +75,7 @@ private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
 
     return when {
         element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"]) // currently no coloring possible...
-        IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, label = element.tags["name"])
+        element.isArea() -> PolygonStyle(color, label = element.tags["name"])
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
             stroke = null,
             strokeLeft = leftColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) },

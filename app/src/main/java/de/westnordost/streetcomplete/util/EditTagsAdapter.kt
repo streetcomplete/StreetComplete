@@ -79,9 +79,8 @@ class EditTagsAdapter(
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList() // don't search if the field is not focused
                 lastFeature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
-                val feature = lastFeature ?: return@SearchAdapter defaultKeyList
                 lastSuggestions.clear()
-                lastSuggestions.addAll(getKeySuggestions(feature.id, dataSet).filter { it.startsWith(search) })
+                lastSuggestions.addAll(getKeySuggestions(lastFeature?.id, dataSet).filter { it.startsWith(search) })
                 val h = TypedValue()
                 context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
                 // limit the height of suggestions, because when all are shown the ones on top are hard to reach
@@ -197,10 +196,11 @@ class EditTagsAdapter(
 
     override fun getItemId(position: Int) = position.toLong()
 
-    private fun getKeySuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
+    private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
+        val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
+        if (featureId == null) return suggestions.filterNot { it in tags.keys }
         val fields = getMainSuggestions(featureId)
         val moreFields = getSecondarySuggestions(featureId)
-        val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
         fields.forEach {
             if (it.startsWith('{'))
                 suggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
