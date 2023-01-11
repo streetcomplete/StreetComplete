@@ -4,6 +4,7 @@
   <li>Allow saving full resolution photos used for notes</li>
   <li>Add level when creating POI while level filter is active</li>
   <li>Allow importing / exporting custom overlay separately from other settings</li>
+  <li>Delete button in tag editor deletes entire row on long press</li>
   </ul>
 
 50.0_ee: |

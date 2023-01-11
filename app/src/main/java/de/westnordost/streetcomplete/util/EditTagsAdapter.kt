@@ -170,6 +170,15 @@ class EditTagsAdapter(
 //                notifyItemRemoved(position) // crash when editing an entry, and deleting another one right after
                 notifyDataSetChanged()
             }
+            setOnLongClickListener {
+                val position = absoluteAdapterPosition
+                val oldEntry = displaySet[position]
+                displaySet.removeAt(position)
+                dataSet.remove(oldEntry.first)
+                onDataChanged()
+                notifyDataSetChanged()
+                true
+            }
         }
     }
 
