@@ -1,31 +1,54 @@
 StreetComplete expert edition is a modified version of StreetComplete with enhanced capabilities.
 It can be installed alongside origninal StreetComplete without any issues.
+Due to the different name used in changesets, edits made with this version do not contribute to StreetComplete statistics and star count.
 
-Notable changes:
+## Notable changes
 * Option to directly edit tags
 * Quick settings, e.g. for fast switch of preset
-* More customizable behavior, including settings for many quests
-* Import / export for settings, quest presets and hidden quests
-* Show all quests for the selected element at once
+* More customizable behavior, including settings or element selection for many quests
+* Overlay with customizable element selection and color source (tag regex)
+* Import / export for settings, quest presets, hidden quests and custom overlays
+* Show all quests for the selected element at once, and also nearby quests
 * Level filter (available in quick settings menu)
 * Create nodes from iD presets anywhere
 * Ability to create personal notes in a GPX file instead of uploading them to OSM
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
 * Quests based on custom data sources (currently available: Osmose and CSV file)
-* More answers for some quests
-* Customizable overlay: enter a filter and highlight anything that matches
+* More answers for some quests, like additional building types or specifying that a crossing is raised
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
-* Performance improvements (balanced by more data to process, so don't expect an improvement over StreetComplete)
+* Performance improvements (balanced by more data to process, so don't expect much improvement over StreetComplete)
+* Switch the main menu to a grid with six full-size buttons
+* Display a track from a GPX file, e.g. for following a planned route while surveying
+* Switch to satellite / aerial imagery background, and customize the source URL
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
 
+## Translations
 Translations for strings only available in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
 
+## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
-* Creation and deletion of nodes is possible (currently no moving)
+* Creating, moving and deleting nodes is possible
 * Guidelines are useful suggestions, but not enforced.
 * Quests may be based on external sources, not just on element selection.
+
+## Changeset differences compared to StreetComplete
+This section is aimed for people trying to decide whether a bad edit done in SC EE is fault of the user or of the app (EE modifications).
+In general, EE changesets will contain changes very similar to normal StreetComplete changesets, with following differences:
+* `created_by` is set to `StreetComplete_ee <version>_ee`
+* Quest type is given in `StreetComplete_ee:quest_type`
+* AddBuildingType has more possible answers, including one to change the `building` to `demolished:building`
+* AddCrossingType may change `crossing_ref`, `crossing:markings` and `traffic_calming`
+* AddPathSurface and AddRoadSurface have additional surfaces `metal_grid` and `stepping_stones`
+* All quest types related to roads / paths may add `access=private`
+* Any node may be moved, even if it is part of a way or relation
+* Any node may be deleted, or have all tags removed if it's not free-floating
+* An element at at the same position as a note may be edited (this is blocked in normal SC)
+* `check_date:*` may be added without resurvey
+* Most quests may apply to an extended range of elements
+* EE contains some additional quests, see [here (scroll down)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
+  * additonally there are the quest types TagEditor (may modify any tag), CreatePoiEditType (may add nodes) and CustomOverlay (may delete or move nodes; modifying tags will be via TagEditor)
 
 # original readme
 

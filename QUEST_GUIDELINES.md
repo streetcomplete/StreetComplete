@@ -6,19 +6,19 @@ Consider the following:
 
 ### Limitations of StreetComplete
 - 🌟 Only existing elements can be extended, no elements can be added or removed.
-  - Exception in expert edition: nodes can be added and removed (technically also possible in upstream StreetComplete)
 - ✂️ The geometry of elements cannot be changed (except splitting up ways)
 - 🏷️ So, basically: Only tags can be edited
+- For expert edition: nodes can be added, moved and removed
 
 ### General guidelines
-- For the expert edition: see those guidelines more as suggestions, not necessarily as requirements.
+- For expert edition: see those guidelines as suggestions, not necessarily as requirements.
 - ⚛️ **Atomic quests**: Per quest, only **one** thing should need to be answered by the user.
 - 🚧 **Established tags only**: No new or unestablished tags should be introduced through StreetComplete. Establishing tags must remain a community process and not be dictated by software implementation. 
 - 🤷 **Useful purpose**: Especially for tags that are not that well established yet - they should have some application. As by the design of OpenStreetMap, there are countless things that *could* be collected, such as the color of the cycleway, the brightness of street lamps, etc. and sometimes things like these are even documented on the wiki (because it is a wiki, obviously). That does not mean that it makes sense to collect this information (in this app).
 - 🕓 **Effort vs impact**: Consider if it is worth the effort when compared to the impact the quest would have. For how many elements would this quest type apply? This point is especially valid if you don't plan to implement a quest suggestion yourself through a PR. A quest to determine the type of building applies to 200 million elements while i.e. a quest to determine what a vending machine is selling applies to less than 1000 elements. 
 
 ### Users
-- For the expert edition: if any of the conditions below is not met, the quest will be disabled by default, but otherwise if perfectly acceptable. Only exception here is the *no spam* guideline in case it leads to undesired tag spam.
+- For expert edition: the quest will be disabled by default anyway, but otherwise not fulfilling any of the guidelines perfectly acceptable. Only exception here is the *no spam* guideline in case it leads to undesired tag spam.
 - 🤔 **No unanswerable quests**: All generated quests need to be actually answerable (no false-positives). This means that any answer given by the user must result in something being tagged. For example, a quest that asks for the website of a place must be able to tag the element somehow if the user answers that the place has no website - otherwise, the next user will be asked the same question. Sometimes, due to the nature of how things are tagged in OSM (such as the one given in the example) it is unfortunately simply not possible to fulfill this.
 - 👨‍💻 **Users are no experts**: No knowledge about OpenStreetMap or any other background knowledge must be necessary
 - 🐿️ **Easy answer**: Users are out and about and impatient. A quick, straightforward and clear answer must be possible

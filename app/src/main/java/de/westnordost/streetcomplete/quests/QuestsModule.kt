@@ -540,12 +540,10 @@ fun getQuestTypeList(
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     154 to AddWayLit(),
 
-    // quests added in modified version
+    // quests added in expert edition
     ApplicationConstants.EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
     ApplicationConstants.EE_QUEST_OFFSET + 1 to AddContactPhone(),
     ApplicationConstants.EE_QUEST_OFFSET + 2 to AddContactWebsite(),
-    // wrongSurface removed because AddRoadSurface now does similar checks
-//    ApplicationConstants.EE_QUEST_OFFSET + 3 to RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
     ApplicationConstants.EE_QUEST_OFFSET + 4 to AddCuisine(),
     ApplicationConstants.EE_QUEST_OFFSET + 5 to AddHealthcareSpeciality(),
     ApplicationConstants.EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
