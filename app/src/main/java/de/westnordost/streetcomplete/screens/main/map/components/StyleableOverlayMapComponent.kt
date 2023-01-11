@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Color
 import com.mapzen.tangram.MapData
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -22,7 +24,7 @@ import de.westnordost.streetcomplete.util.ktx.toARGBString
 import kotlin.math.absoluteValue
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
+class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController, private val prefs: SharedPreferences) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 
@@ -44,7 +46,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             props["layer"] = layer.toString()
             when (style) {
                 is PolygonStyle -> {
-                    getHeight(element.tags)?.let { props["height"] = it.toString() }
+                    if (prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true))
+                        getHeight(element.tags)?.let { props["height"] = it.toString() }
                     props["color"] = getColorWithSomeTransparency(style.color)
                     props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
                 }

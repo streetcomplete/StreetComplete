@@ -129,7 +129,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             else -> 0
         }
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl, prefs)
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, levelFilter)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
