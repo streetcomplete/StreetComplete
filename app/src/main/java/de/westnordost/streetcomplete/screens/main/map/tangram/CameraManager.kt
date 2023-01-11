@@ -15,6 +15,8 @@ import android.view.animation.Interpolator
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.core.animation.addListener
+import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -38,7 +40,7 @@ import kotlin.math.PI
  *
  *  See https://github.com/tangrams/tangram-es/issues/1962
  *  */
-class CameraManager(private val c: MapController, private val contentResolver: ContentResolver) {
+class CameraManager(private val c: MapController, private val mapboxMap: MapboxMap, private val contentResolver: ContentResolver) {
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
     private val doubleTypeEvaluator = DoubleTypeEvaluator()
     private val currentAnimations = mutableMapOf<String, Animator>()
@@ -110,14 +112,26 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {
+        val cameraPositionBuilder = com.mapbox.mapboxsdk.camera.CameraPosition.Builder(mapboxMap.cameraPosition)
         update.position?.let {
             _tangramCamera.latitude = it.latitude
             _tangramCamera.longitude = it.longitude
+            cameraPositionBuilder.target(LatLng(it.latitude, it.longitude))
         }
-        update.rotation?.let { _tangramCamera.rotation = it }
-        update.tilt?.let { _tangramCamera.tilt = it }
-        update.zoom?.let { _tangramCamera.zoom = it }
+        update.rotation?.let {
+            _tangramCamera.rotation = it
+            cameraPositionBuilder.bearing(it.toDouble())
+        }
+        update.tilt?.let {
+            _tangramCamera.tilt = it
+            cameraPositionBuilder.tilt(it.toDouble())
+        }
+        update.zoom?.let {
+            _tangramCamera.zoom = it
+            cameraPositionBuilder.zoom(it.toDouble())
+        }
         pushCameraPositionToController()
+        mapboxMap.moveCamera { d -> cameraPositionBuilder.build() }
     }
 
     @AnyThread private fun animateCameraUpdate(update: CameraUpdate, duration: Long, interpolator: Interpolator) {

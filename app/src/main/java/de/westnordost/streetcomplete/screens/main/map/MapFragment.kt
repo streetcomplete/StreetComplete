@@ -16,6 +16,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.Style
 import com.mapzen.tangram.TouchInput.DoubleTapResponder
 import com.mapzen.tangram.TouchInput.LongPressResponder
 import com.mapzen.tangram.TouchInput.PanResponder
@@ -51,6 +55,7 @@ import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.Version
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 
 /** Manages a map that remembers its last location*/
@@ -70,6 +75,7 @@ open class MapFragment :
     private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
 
     protected var controller: KtMapController? = null
+    protected var mapboxMap : MapboxMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null
 
     private var previousCameraPosition: CameraPosition? = null
@@ -122,7 +128,16 @@ open class MapFragment :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        Mapbox.getInstance(get())
+        val view = inflater.inflate(R.layout.fragment_map, container, false)
+
+        val mapView = view.findViewById<MapView>(R.id.mapbox)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync {
+            map -> map.setStyle(vectorTileProvider.makeStyleUrl())
+        }
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -136,7 +151,10 @@ open class MapFragment :
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        viewLifecycleScope.launch { initMap() }
+        val mapView = view.findViewById<MapView>(R.id.mapbox)
+        mapView.getMapAsync {
+            map -> viewLifecycleScope.launch { initMap(mapView, map) }
+        }
     }
 
     private fun showOpenUrlDialog(url: String) {
@@ -187,6 +205,7 @@ open class MapFragment :
         super.onDestroyView()
         binding.map.onDestroy()
         controller = null
+        mapboxMap = null
     }
 
     override fun onDestroy() {
@@ -205,10 +224,12 @@ open class MapFragment :
 
     /* ------------------------------------------- Map  ----------------------------------------- */
 
-    private suspend fun initMap() {
-        val ctrl = binding.map.initMap(createHttpHandler())
+    private suspend fun initMap(mapView: MapView, mapboxMap: MapboxMap) {
+        val ctrl = binding.map.initMap(mapboxMap, createHttpHandler())
         controller = ctrl
+        val style = mapboxMap.style
         if (ctrl == null) return
+        if (style == null) return
         lifecycle.addObserver(ctrl)
         registerResponders(ctrl)
 
@@ -221,7 +242,7 @@ open class MapFragment :
 
         ctrl.glViewHolder!!.view.awaitLayout()
 
-        onMapReady()
+        onMapReady(mapView, mapboxMap, style)
 
         isMapInitialized = true
         listener?.onMapInitialized()
@@ -267,7 +288,11 @@ open class MapFragment :
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
 
-    @CallSuper protected open suspend fun onMapReady() {
+    @CallSuper protected open suspend fun onMapReady(
+        mapView: MapView,
+        mapboxMap: MapboxMap,
+        style: Style
+    ) {
         restoreMapState()
     }
 

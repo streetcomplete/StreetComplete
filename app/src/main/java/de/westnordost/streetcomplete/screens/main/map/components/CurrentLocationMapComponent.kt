@@ -1,8 +1,19 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.PointF
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.Location
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
+import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.plugins.annotation.Symbol
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -17,12 +28,13 @@ import kotlin.math.cos
 import kotlin.math.pow
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapController) {
-
+class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val symbolManager: SymbolManager, private val ctrl: KtMapController) {
     // markers showing the user's location, direction and accuracy of location
     private val locationMarker: Marker
+    private val locationSymbol: Symbol
     private val accuracyMarker: Marker
     private val directionMarker: Marker
+    private val directionSymbol: Symbol
 
     private val directionMarkerSize: PointF
 
@@ -92,6 +104,21 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             it.setDrawable(dotImg)
             it.setDrawOrder(3)
         }
+        symbolManager.iconAllowOverlap = true
+        mapStyle.addImage("dotImg", bitmapFromDrawableRes(ctx, R.drawable.location_dot)!!)
+        mapStyle.addImage("directionImg", bitmapFromDrawableRes(ctx, R.drawable.location_direction)!!)
+        mapStyle.addImage("accuracyImg", accuracyImg)
+
+        directionSymbol = symbolManager.create(
+            SymbolOptions()
+                .withIconImage("directionImg")
+                .withLatLng(LatLng(0.0, 0.0))
+        )
+        locationSymbol = symbolManager.create(
+            SymbolOptions()
+                .withIconImage("dotImg")
+                .withLatLng(LatLng(0.0, 0.0))
+        )
 
         directionMarker = ctrl.addMarker().also {
             it.setDrawable(directionImg)
@@ -113,6 +140,29 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
         updateLocation()
         updateDirection()
     }
+    private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
+        convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
+
+    private fun convertDrawableToBitmap(sourceDrawable: Drawable?): Bitmap? {
+        if (sourceDrawable == null) {
+            return null
+        }
+        return if (sourceDrawable is BitmapDrawable) {
+            sourceDrawable.bitmap
+        } else {
+            // copying drawable object to not manipulate on the same reference
+            val constantState = sourceDrawable.constantState ?: return null
+            val drawable = constantState.newDrawable().mutate()
+            val bitmap: Bitmap = Bitmap.createBitmap(
+                drawable.intrinsicWidth, drawable.intrinsicHeight,
+                Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(bitmap)
+            drawable.setBounds(0, 0, canvas.width, canvas.height)
+            drawable.draw(canvas)
+            bitmap
+        }
+    }
 
     /** Update the GPS position shown on the map */
     private fun updateLocation() {
@@ -125,6 +175,10 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
         locationMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         directionMarker.isVisible = rotation != null
         directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
+        locationSymbol.latLng = LatLng(pos.latitude, pos.longitude)
+        directionSymbol.latLng = locationSymbol.latLng
+        symbolManager.update(directionSymbol)
+        symbolManager.update(locationSymbol)
 
         updateAccuracy()
     }
@@ -165,6 +219,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             angle: $rotation
         }
         """)
+        directionSymbol.iconRotate = rotation!!.toFloat();
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {

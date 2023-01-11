@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.graphics.RectF
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.geometry.LatLngBounds
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
@@ -17,7 +20,7 @@ import kotlin.math.roundToLong
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val ctrl: KtMapController) {
+class FocusGeometryMapComponent(private val ctrl: KtMapController, private val mapboxMap: MapboxMap) {
 
     private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)
 
@@ -41,6 +44,19 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
         val pos = ctrl.getEnclosingCameraPosition(g.getBounds(), offset) ?: return
         val currentPos = ctrl.cameraPosition
         val targetZoom = min(pos.zoom, 20f)
+
+        // TODO: This is some sample code of creating a Bounds for zooming
+        val cameraUpdate = CameraUpdateFactory.newLatLngBounds(
+            LatLngBounds.from(g.getBounds().max.latitude,
+                g.getBounds().max.longitude,
+                g.getBounds().min.latitude,
+                g.getBounds().min.longitude
+            ),
+            offset.left.toInt(),
+            offset.top.toInt(),
+            offset.right.toInt(),
+            offset.bottom.toInt()
+        )
 
         // do not zoom in if the element is already nicely in the view
         if (ctrl.screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2.5) return

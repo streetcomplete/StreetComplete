@@ -9,6 +9,10 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.mapbox.android.gestures.MoveGestureDetector
+import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.MapboxMap.OnMoveListener
 import com.mapzen.tangram.FeaturePickResult
 import com.mapzen.tangram.LabelPickResult
 import com.mapzen.tangram.MapChangeListener
@@ -55,10 +59,10 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
+class KtMapController(private val c: MapController, private val mapboxMap: MapboxMap, contentResolver: ContentResolver) :
     DefaultLifecycleObserver {
 
-    private val cameraManager = CameraManager(c, contentResolver)
+    private val cameraManager = CameraManager(c, mapboxMap, contentResolver)
     private val markerManager = MarkerManager(c)
     private val gestureManager = TouchGestureManager(c)
 
@@ -144,6 +148,9 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
                 }
             }
         })
+        mapboxMap.addOnCameraMoveStartedListener { mapChangingListener?.onMapWillChange() }
+        mapboxMap.addOnCameraMoveListener { mapChangingListener?.onMapIsChanging() }
+        mapboxMap.addOnCameraIdleListener { mapChangingListener?.onMapDidChange() }
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
@@ -378,12 +385,13 @@ private fun SceneError.toException() =
     LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
 suspend fun MapView.initMap(
+    mapboxMap: MapboxMap,
     httpHandler: HttpHandler? = null,
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
 ): KtMapController? = suspendCancellableCoroutine { cont ->
     getMapAsync({ mapController ->
         cont.resume(mapController?.let {
-            KtMapController(it, context.contentResolver)
+            KtMapController(it, mapboxMap, context.contentResolver)
         })
     }, glViewHolderFactory, httpHandler)
 }

@@ -4,11 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mapzen.tangram.MapView
-        android:id="@+id/map"
-        android:name="com.mapzen.tangram.MapView"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <com.mapzen.tangram.MapView
+            android:id="@+id/map"
+            android:name="com.mapzen.tangram.MapView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapbox"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/attributionContainer"

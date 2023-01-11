@@ -100,6 +100,7 @@ class EditHistoryPinsManager(
                 edit.position,
                 resources.getResourceEntryName(edit.icon),
                 edit.toProperties(),
+                "null", // FIXME: Handle EditHistoryPins, skipped for now.
                 edits.size - index // most recent first
             )
         }

@@ -9,6 +9,10 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
@@ -131,13 +135,14 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override suspend fun onMapReady() {
-        super.onMapReady()
+    override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
+        super.onMapReady(mapView, mapboxMap, style)
         restoreMapState()
 
         val ctrl = controller ?: return
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, ctrl)
+        val mapbox = mapboxMap ?: return
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, SymbolManager(mapView, mapboxMap, style), ctrl)
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)

@@ -3,6 +3,10 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -20,6 +24,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import kotlinx.coroutines.Dispatchers
@@ -99,13 +104,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
-    override suspend fun onMapReady() {
+    override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
         val ctrl = controller ?: return
         ctrl.setPickRadius(1f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
-        pinsMapComponent = PinsMapComponent(ctrl)
+
+        questTypeRegistry.forEach { style.addImage(resources.getResourceEntryName(it.icon), resources.getBitmapDrawable(it.icon)) }
+
+        pinsMapComponent = PinsMapComponent(ctrl, SymbolManager(mapView, mapboxMap, style), listener)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = FocusGeometryMapComponent(ctrl)
+        geometryMapComponent = FocusGeometryMapComponent(ctrl, mapboxMap)
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
@@ -121,7 +129,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         selectedOverlaySource.addListener(overlayListener)
 
-        super.onMapReady()
+        super.onMapReady(mapView, mapboxMap, style)
+
+        mapboxMap.addOnMapClickListener { i ->
+            listener?.onClickedMapAt(LatLon(i.latitude, i.longitude), 1.0)
+            return@addOnMapClickListener false
+        }
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
