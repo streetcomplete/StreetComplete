@@ -11,6 +11,19 @@
 
     <!-- settings -->
     <string name="pref_category_mods">EE settings</string>
+    <string name="pref_expert_mode_title">Expert mode</string>
+    <string name="pref_expert_mode_summary">Enable advanced editing capabilities</string>
+    <string name="pref_expert_mode_message">This will allow using quests added in StreetComplete expert edition, and ways of\n
+        <li>editing raw tags</li>\n
+        <li>moving nodes that are part of ways or relations</li>\n
+        <li>deleting free-floating any node</li>\n
+        <li>editing elements which should be blocked by a note</li>\n
+        <li>adding free floating nodes anywhere</li>\n
+        <li>changing element selection of quests</li>\n
+        This is still less than most other editors allow, but incautious use may result in damaging data in ways that are not possible in StreetComplete.
+        Be aware that by enabling expert mode you bear significantly more responsibility for what you are doing.
+        Please only enable this setting if you have OSM experience outside StreetComplete and understand what you are doing.
+    </string>
 
     <!-- notes settings -->
     <string name="pref_screen_notes">Notes</string>
@@ -41,7 +54,7 @@
     <string name="pref_show_solved_animation">Show animation after solving a quest</string>
     <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
     <string name="pref_close_forms_immediately_summary">Closes the form before the change is processed, so further quests may take a short time to show up</string>
-    <string name="pref_gpx_track_title">Show GPX track from file</string>
+    <string name="pref_gpx_track_title">Display GPX track from file</string>
     <string name="pref_gpx_track_provide">Select GPX file</string>
     <string name="pref_gpx_track_loading_error">Error loading GPX track file</string>
     <string name="pref_gpx_track_enable">Display GPX track</string>
@@ -61,7 +74,7 @@
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
     <string name="pref_recent_answers_first_min_lines">Move recent answers to front</string>
-    <string name="pref_recent_answers_first_min_lines_summary">if form has more than %d lines</string>
+    <string name="pref_recent_answers_first_min_lines_summary">If form has more than %d line(s)</string>
     <string name="pref_recent_answers_first_min_lines_message">Move recent answers to front if the quest answer form has more than this many lines of images</string>
     <string name="pref_show_nearby_quests_title">Show nearby quests</string>
     <string name="pref_show_nearby_quests_summary">Allows switching nearby quests when a quest form is shown</string>
@@ -104,6 +117,7 @@
     <string name="tree_external_export">Get</string>
     <string name="pref_tile_source_title">Tile source for satellite / aerial images</string>
     <string name="pref_tile_source_message">Tile URL must contain {x}, {y} and {z}</string>
+    <string name="pref_tree_external_summary">See message when enabling quest for details</string>
 
     <!-- quests settings -->
     <string name="pref_screen_quests">Quests</string>
@@ -316,11 +330,11 @@
     <string name="tag_editor_last_edited">Last edited: %s</string>
     <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
     <string name="tutorial_info_fork_message"><b>StreetComplete expert edition</b>\n\n
-This modified version of StreetComplete is intended for users with more than basic knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
-This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.
-Quests added in this version <i>may not be answerable</i> in all cases and are thus disabled by default. Please hide them in case they cannot be answered, and <i>do not spam notes</i>.\n\n
+This modified version of StreetComplete is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
+This especially applies to the possibility of editing raw tags and deleting nodes, but also for modification of element selection for quests.
+Quests added in this version <i>may not be answerable</i> in all cases and are thus disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
 By default, this version is configured to behave very similar to normal StreetComplete.\n
-You have access to your StreetComplete user statistics, but any quests solved using this version will not be counted towards them.</string>
+You have access to your StreetComplete user statistics, but any quests solved using this version <i>will not affect</i> statistics and star count.</string>
     <string name="fork_about_title_repository">Expert edition project home</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>
@@ -338,8 +352,11 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
     <string name="create_external_button">Create external quest</string>
     <string name="create_external_title_message">Enter message to be shown</string>
-    <string name="move_node_warning">Warning</string>
-    <string name="move_node_with_geometry">Moving this node will modify geometry of following ways or multipolygon relations: %s</string>
+    <string name="general_warning">Warning</string>
+    <string name="move_node_with_geometry">Moving this node will modify geometry of following ways or multipolygon relations: %s.\n
+        Be aware that any changes will not be immediately visible on the background map.
+    </string>
     <string name="move_node_of_other_relation">This node is part of following non-multipolygon relations: %s</string>
+    <string name="dialog_button_understood">Understood</string>
 
 </resources>

@@ -59,43 +59,49 @@ class QuestsSettingsFragment :
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_quests, false)
         addPreferencesFromResource(R.xml.preferences_ee_quests)
 
-        findPreference<Preference>("advanced_resurvey")?.setOnPreferenceClickListener {
-            val layout = LinearLayout(context)
-            layout.setPadding(30,10,30,10)
-            layout.orientation = LinearLayout.VERTICAL
-            val keyText = TextView(context)
-            keyText.setText(R.string.advanced_resurvey_message_keys)
-            val keyEditText = EditText(context)
-            keyEditText.inputType = InputType.TYPE_CLASS_TEXT
-            keyEditText.setHint(R.string.advanced_resurvey_hint_keys)
-            keyEditText.setText(prefs.getString(Prefs.RESURVEY_KEYS, ""))
+        findPreference<Preference>("advanced_resurvey")?.apply {
+            isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
+            setOnPreferenceClickListener {
+                val layout = LinearLayout(context)
+                layout.setPadding(30,10,30,10)
+                layout.orientation = LinearLayout.VERTICAL
+                val keyText = TextView(context)
+                keyText.setText(R.string.advanced_resurvey_message_keys)
+                val keyEditText = EditText(context)
+                keyEditText.inputType = InputType.TYPE_CLASS_TEXT
+                keyEditText.setHint(R.string.advanced_resurvey_hint_keys)
+                keyEditText.setText(prefs.getString(Prefs.RESURVEY_KEYS, ""))
 
-            val dateText = TextView(context)
-            dateText.setText(R.string.advanced_resurvey_message_date)
-            val dateEditText = EditText(context)
-            dateEditText.inputType = InputType.TYPE_CLASS_TEXT
-            dateEditText.setHint(R.string.advanced_resurvey_hint_date)
-            dateEditText.setText(prefs.getString(Prefs.RESURVEY_DATE, ""))
+                val dateText = TextView(context)
+                dateText.setText(R.string.advanced_resurvey_message_date)
+                val dateEditText = EditText(context)
+                dateEditText.inputType = InputType.TYPE_CLASS_TEXT
+                dateEditText.setHint(R.string.advanced_resurvey_hint_date)
+                dateEditText.setText(prefs.getString(Prefs.RESURVEY_DATE, ""))
 
-            layout.addView(keyText)
-            layout.addView(keyEditText)
-            layout.addView(dateText)
-            layout.addView(dateEditText)
+                layout.addView(keyText)
+                layout.addView(keyEditText)
+                layout.addView(dateText)
+                layout.addView(dateEditText)
 
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.advanced_resurvey_title)
-                .setView(layout)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    prefs.edit {
-                        putString(Prefs.RESURVEY_DATE, dateEditText.text.toString())
-                        putString(Prefs.RESURVEY_KEYS, keyEditText.text.toString())
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.advanced_resurvey_title)
+                    .setView(layout)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        prefs.edit {
+                            putString(Prefs.RESURVEY_DATE, dateEditText.text.toString())
+                            putString(Prefs.RESURVEY_KEYS, keyEditText.text.toString())
+                        }
+                        resurveyIntervalsUpdater.update()
                     }
-                    resurveyIntervalsUpdater.update()
-                }
-                .show()
-            true
+                    .show()
+                true
+            }
         }
+
+        findPreference<Preference>(Prefs.QUEST_SETTINGS_PER_PRESET)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
+        findPreference<Preference>(Prefs.DYNAMIC_QUEST_CREATION)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {

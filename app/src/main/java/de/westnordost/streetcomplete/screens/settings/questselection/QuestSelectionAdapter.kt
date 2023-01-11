@@ -176,7 +176,7 @@ class QuestSelectionAdapter(
     private suspend fun createQuestTypeVisibilityList() = withContext(Dispatchers.IO) {
         val sortedQuestTypes = questTypeRegistry.toMutableList()
         questTypeOrderController.sort(sortedQuestTypes)
-        sortedQuestTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
+        sortedQuestTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it), prefs) }.toMutableList()
     }
 
     /** Contains the logic for drag and drop (for reordering) */
@@ -270,7 +270,7 @@ class QuestSelectionAdapter(
             binding.visibilityCheckBox.isChecked = item.visible
             binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
             binding.visibilityCheckBox.setOnCheckedChangeListener(this)
-            binding.questSettings.visibility = if (item.questType.hasQuestSettings) View.VISIBLE else View.GONE
+            binding.questSettings.visibility = if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && item.questType.hasQuestSettings) View.VISIBLE else View.GONE
             binding.questSettings.setOnClickListener {
                 val settings = item.questType.getQuestSettingsDialog(it.context)
                 settings?.show()

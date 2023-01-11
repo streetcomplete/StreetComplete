@@ -10,9 +10,9 @@ import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.toTags
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 

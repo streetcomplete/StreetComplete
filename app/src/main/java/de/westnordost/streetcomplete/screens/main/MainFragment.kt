@@ -572,10 +572,10 @@ class MainFragment :
             else
                 getString(R.string.move_node_of_other_relation, relations.map { featureDictionaryFuture.get().byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
             AlertDialog.Builder(requireContext())
-                .setTitle(R.string.move_node_warning)
+                .setTitle(R.string.general_warning)
                 .setMessage(message)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok) { _,_ -> moveNode(editType, node) }
+                .setPositiveButton(R.string.dialog_button_understood) { _,_ -> moveNode(editType, node) }
                 .show()
         } else {
             moveNode(editType, node)
@@ -928,12 +928,14 @@ class MainFragment :
     private fun showMapContextMenu(position: LatLon) {
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, R.string.create_poi)
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
-                R.id.action_create_poi -> onClickAddPoi(position)
+                4 -> onClickAddPoi(position)
             }
             true
         }

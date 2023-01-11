@@ -39,7 +39,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
     init {
         val adapter = OverlaySelectionAdapter()
-        adapter.overlays = overlayRegistry
+        val expertMode = prefs.getBoolean(Prefs.EXPERT_MODE, false)
+        adapter.overlays = overlayRegistry.filterNot { !expertMode && it is CustomOverlay }
         adapter.selectedOverlay = selectedOverlayController.selectedOverlay
         adapter.onSelectedOverlay = { selectedOverlay = it }
         binding.overlaysList.adapter = adapter
@@ -52,10 +53,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             dismiss()
         }
 
-        setButton(BUTTON_NEGATIVE, context.resources.getText(R.string.custom_overlay_title)) { _,_ ->
-            showOverlayCustomizer(context)
-            dismiss()
-        }
+        if (expertMode)
+            setButton(BUTTON_NEGATIVE, context.resources.getText(R.string.custom_overlay_title)) { _,_ ->
+                showOverlayCustomizer(context)
+                dismiss()
+            }
 
         setView(binding.root)
     }

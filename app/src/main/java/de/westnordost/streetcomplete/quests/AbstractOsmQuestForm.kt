@@ -172,17 +172,21 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
-        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry, questKey) })
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry, questKey) })
 
         if (element.isSplittable()) {
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
         }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
-        createItsPrivateAnswer()?.let { answers.add(it) }
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            createItsPrivateAnswer()?.let { answers.add(it) }
 
         if (element is Node // add moveNodeAnswer only if it's a free floating node
-                /*&& mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()*/) {
+                && (prefs.getBoolean(Prefs.EXPERT_MODE, false) ||
+                    (mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+                    && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty())
+                )) {
             answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
         }
 
@@ -411,82 +415,4 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             ARG_ELEMENT to Json.encodeToString(element)
         )
     }
-}
-/*
-fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditAction) -> Unit) {
-    val tags = element.tags
-    context?.let { c ->
-
-        var dialog: AlertDialog? = null
-        val editField = EditText(c)
-        editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        editField.setText(tags.map { "${it.key}=${it.value}" }.sorted().joinToString("\n"))
-        editField.addTextChangedListener { text ->
-            var enabled = true
-            if (!tagsOk(text.toString())) {
-                dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
-                return@addTextChangedListener
-            }
-            val tagsNew = text.toString().toTags()
-            if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
-                enabled = false // tags not changed
-            dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
-        }
-
-        val date = Date(element.timestampEdited)
-        val timestamp = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            getDateTimeInstance().format(date)
-        else
-            date.toString()
-        dialog = AlertDialog.Builder(c)
-            .setTitle(c.getString(R.string.quest_edit_tags_title, timestamp))
-            .setView(editField)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->
-                // validity of tags already checked, and tags have changed
-                val updatedTags = mutableMapOf<String, String>()
-                editField.text.toString().split("\n").forEach {
-                    if (it.isBlank()) return@forEach
-                    updatedTags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
-                }
-                val builder = StringMapChangesBuilder(element.tags)
-                for (key in element.tags.keys) {
-                    if (!updatedTags.containsKey(key))
-                        builder.remove(key)
-                }
-                for ((key, value) in updatedTags) {
-                    if (tags[key] == value) continue
-                    builder[key] = value
-                }
-                onSolved(UpdateElementTagsAction(builder.create()))
-            }
-            .create()
-        dialog.show()
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
-    }
-}
-
-fun tagsOk(text: String): Boolean {
-    val keys = mutableSetOf<String>()
-    text.split("\n").forEach {
-        if (it.isBlank()) return@forEach // allow empty lines
-        if (!it.contains("=") // no key-value separator
-            || it.count { it == '=' } > 1 // more than one equals sign
-            || it.substringBefore("=").isBlank() // no key
-            || it.substringAfter("=").isBlank() // no value
-            || !keys.add(it.substringBefore("="))) { // key already exists
-            return false
-        }
-    }
-    return true
-}
-*/
-fun String.toTags(): Map<String, String> {
-    val tags = mutableMapOf<String, String>()
-    split("\n").forEach {
-        if (it.isBlank()) return@forEach // allow empty lines
-        if (it.count { it == '=' } == 1)
-            tags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
-    }
-    return tags
 }

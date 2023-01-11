@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -9,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.osmose.PREF_OSMOSE_LEVEL
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -48,7 +50,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  ...should be deletable.
      *
      *  By default: false.*/
-    val isDeleteElementEnabled: Boolean get() = true
+    val isDeleteElementEnabled: Boolean get() = prefs.getBoolean(Prefs.EXPERT_MODE, false)
 
     /** Whether the user should be able to replace this element with another preset. Only
      *  elements that are expected to be some kind of shop/amenity should be replaceable this way,

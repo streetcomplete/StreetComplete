@@ -364,10 +364,13 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
-            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+                answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
             if (element is Node // add moveNodeAnswer only if it's a free floating node
-                /*&& mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()*/) {
+                    && (prefs.getBoolean(Prefs.EXPERT_MODE, false) ||
+                        (mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+                        && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty())
+                    )) {
                 answers.add(AnswerItem(R.string.move_node) { moveNode() })
             }
         }

@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.quests.TagEditor
-import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
@@ -110,4 +109,14 @@ val createPoiEdit = object : ElementEditType {
     override val wikiLink: String? = null
     override val changesetComment: String = "Add node"
     override val name: String = "CreatePoiEditType" // keep old class name to avoid crash on startup if edit is in database
+}
+
+fun String.toTags(): Map<String, String> {
+    val tags = mutableMapOf<String, String>()
+    split("\n").forEach {
+        if (it.isBlank()) return@forEach // allow empty lines
+        if (it.count { it == '=' } == 1)
+            tags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+    }
+    return tags
 }

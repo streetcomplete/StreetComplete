@@ -2,16 +2,19 @@ package de.westnordost.streetcomplete.quests.building_type
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType, BuildingType>() {
 
-    override val otherAnswers = listOf(
+    override val otherAnswers = listOfNotNull(
         AnswerItem(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
         AnswerItem(R.string.quest_buildingType_answer_construction_site) { applyAnswer(BuildingType.CONSTRUCTION) },
-        AnswerItem(R.string.quest_buildingType_answer_demolished) { applyAnswer(BuildingType.DEMOLISHED) }
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            AnswerItem(R.string.quest_buildingType_answer_demolished) { applyAnswer(BuildingType.DEMOLISHED) }
+        else null
     )
 
     override val topItems = BuildingType.topSelectableValues.toItems()

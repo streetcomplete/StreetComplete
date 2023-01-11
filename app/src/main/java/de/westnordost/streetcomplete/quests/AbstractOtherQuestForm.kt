@@ -95,9 +95,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
             if (e.type == ElementType.NODE)
                 answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })
-            if (e is Node // add moveNodeAnswer only if it's a free floating node
-            /*&& mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()*/) {
+            if (e is Node) { // OtherSourceQuests require expert mode to be enabled (at least temporarily anyway, so user has read the warning
                 answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
             }
             if (e.isSplittable()) {

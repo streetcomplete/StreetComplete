@@ -118,6 +118,13 @@
         android:key="mods"
         android:title="@string/pref_category_mods">
 
+        <SwitchPreference
+            android:key="expert_mode"
+            android:title="@string/pref_expert_mode_title"
+            android:summary="@string/pref_expert_mode_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
         <PreferenceScreen
             android:fragment="de.westnordost.streetcomplete.screens.settings.UiSettingsFragment"
             android:title="@string/pref_screen_ui" />

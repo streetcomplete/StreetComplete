@@ -265,6 +265,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
         binding.tutorialStepFork.movementMethod = ScrollingMovementMethod()
 
+        binding.nextButton.setText(R.string.dialog_button_understood)
         enableNextButton()
     }
 

@@ -85,6 +85,9 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             }
             true
         }
+
+        findPreference<Preference>(Prefs.CREATE_EXTERNAL_QUESTS)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
+        findPreference<Preference>(Prefs.HIDE_KEYBOARD_FOR_NOTE)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

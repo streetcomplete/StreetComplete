@@ -50,10 +50,12 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             buttons.addView(RadioButton(context).apply {
                 setText(R.string.show_nearby_quests_all_types)
                 id = 2
+                if (!prefs.getBoolean(Prefs.EXPERT_MODE, false)) isEnabled = false
             })
             buttons.addView(RadioButton(context).apply {
                 setText(R.string.show_nearby_quests_even_hidden)
                 id = 3
+                if (!prefs.getBoolean(Prefs.EXPERT_MODE, false)) isEnabled = false
             })
             buttons.check(prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0))
             buttons.setOnCheckedChangeListener { _, _ ->

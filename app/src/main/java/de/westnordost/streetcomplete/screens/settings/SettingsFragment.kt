@@ -8,12 +8,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import androidx.preference.SwitchPreference
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -190,6 +192,17 @@ class SettingsFragment :
                 resurveyIntervalsUpdater.update()
                 if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
                     OsmQuestController.reloadQuestTypes()
+            }
+            Prefs.EXPERT_MODE -> {
+                if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.general_warning)
+                        .setMessage(R.string.pref_expert_mode_message)
+                        .setPositiveButton(R.string.dialog_button_understood, null)
+                        .setNegativeButton(android.R.string.cancel) { d, _ -> d.cancel() }
+                        .setOnCancelListener { findPreference<SwitchPreference>(Prefs.EXPERT_MODE)?.isChecked = false }
+                        .show()
+                }
             }
         }
     }
