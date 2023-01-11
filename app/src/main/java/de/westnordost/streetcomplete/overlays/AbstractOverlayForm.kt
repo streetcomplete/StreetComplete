@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -364,6 +365,8 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && element is Node)
+                answers.add(createDeleteElementAnswer(element))
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
             if (element is Node // add moveNodeAnswer only if it's a free floating node
@@ -385,6 +388,16 @@ abstract class AbstractOverlayForm :
 
     private fun moveNode() {
         listener?.onMoveNode(overlay, element as Node)
+    }
+
+    private fun createDeleteElementAnswer(node: Node): AnswerItem {
+        return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.osm_element_gone_description)
+                .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> viewLifecycleScope.launch { solve(DeletePoiNodeAction) } }
+                .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
+                .show()
+        }
     }
 
     protected fun composeNote(element: Element) {
