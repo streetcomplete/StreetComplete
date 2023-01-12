@@ -185,7 +185,8 @@ class OsmoseDao(
         val request = Request.Builder().header("User-Agent", USER_AGENT).url(url).build()
         return try {
             val r = client.newCall(request).execute()
-            if (r.body()?.string()?.contains("value is not a valid uuid") == true) {
+            val body = r.body()?.string() // r.body() may be called only once, the second time will crash
+            if (body?.contains("not a valid uuid") == true || body?.contains("not present in database") == true) {
                 db.delete(NAME, where = "$UUID = '$uuid'")
                 false
             } else true

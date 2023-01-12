@@ -19,9 +19,9 @@
         <li>deleting free-floating any node</li>\n
         <li>editing elements which should be blocked by a note</li>\n
         <li>adding free floating nodes anywhere</li>\n
-        <li>changing element selection of quests</li>\n
+        <li>changing element selection of quests</li>\n\n
         This is still less than most other editors allow, but incautious use may result in damaging data in ways that are not possible in StreetComplete.
-        Be aware that by enabling expert mode you bear significantly more responsibility for what you are doing.
+        Be aware that by enabling expert mode you bear significantly more responsibility for your edits.\n
         Please only enable this setting if you have OSM experience outside StreetComplete and understand what you are doing.
     </string>
 
@@ -112,7 +112,7 @@
     <string name="moving">Moving tiles…</string>
     <string name="pref_trees_title">Load tree quest file</string>
     <string name="pref_custom_title">Load custom quest file</string>
-    <string name="tree_custom_quest_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>
+    <string name="tree_custom_quest_import_export_message">Get currently used file or provide a new one? Check the corresponding quest enable message for details.</string>
     <string name="tree_custom_quest_import">Provide</string>
     <string name="tree_custom_quest_export">Get</string>
     <string name="pref_tile_source_title">Tile source for satellite / aerial images</string>

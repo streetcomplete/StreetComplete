@@ -66,6 +66,9 @@ class OtherSourceQuestController(
     /** calls [download] for each [OtherSourceQuestType] enabled in this country, thus may take long */
     // todo: split it up into download and onMapDataDownloaded callback?
     //  would allow for faster overall download, but is more complicated to handle (especially getting obsolete quests)
+    //  but only worth considering if there are more sources, or the slow osmose fixable download will be implemented
+    //  idea: download: get current quests, tell questsTypes to download
+    //   once all downloads done AND onMapDataDownloaded comes -> onMapDataDownloaded for all questsTypes, which should then create quests
     suspend fun download(bbox: BoundingBox) {
         withContext(Dispatchers.IO) {
             val countryBoundaries = countryBoundariesFuture.get()
@@ -199,7 +202,7 @@ class OtherSourceQuestController(
         questListeners.forEach { it.onUpdated(addedQuests = restoredQuests) }
     }
 
-    private fun getQuestType(key: OtherSourceQuestKey): OtherSourceQuestType? {
+    fun getQuestType(key: OtherSourceQuestKey): OtherSourceQuestType? {
         val questTypeName = questTypeNamesBySource[key.source] ?: return null
         return questTypeRegistry.getByName(questTypeName) as? OtherSourceQuestType
     }

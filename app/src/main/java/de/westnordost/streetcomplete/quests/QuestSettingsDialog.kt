@@ -147,5 +147,5 @@ fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SET
 else
     ""
 
-private val valueRegex = "[a-z0-9_?,\\s]+".toRegex()
+private val valueRegex = "[a-z0-9_?,/\\s]+".toRegex()
 private val elementSelectionRegex = "[a-z0-9_=!~()|:,<>\\s+-]+".toRegex()

@@ -32,6 +32,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -70,7 +72,6 @@ import kotlin.math.min
 //   and one that pastes clipboard into tags: newTags.putAll(clipboard.toTags())
 //    overwrite existing tags and add others, don't delete
 //  undo button, for undoing delete or paste (and maybe other changes? but will not work well with typing)
-//  don't depend on that TagEditor.isShowing and TagEditor.changes in companion object
 
 open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private var _binding: EditTagsBinding? = null
@@ -83,6 +84,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val elementEditsController: ElementEditsController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val mapDataSource: MapDataWithEditsSource by inject()
+    private val otherSourceQuestController: OtherSourceQuestController by inject()
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -269,12 +271,14 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         val action = UpdateElementTagsAction(builder.create())
+        val questKey = questKey
+        val editType = (questKey as? OtherSourceQuestKey)?.let { otherSourceQuestController.getQuestType(it) } ?: tagEdit
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
-            listener?.onEdited(tagEdit, element, geometry)
-            viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(tagEdit, originalElement, geometry, "survey", action, questKey) }
+            listener?.onEdited(editType, element, geometry)
+            viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey) }
         } else {
-            elementEditsController.add(tagEdit, originalElement, geometry, "survey", action, questKey)
-            listener?.onEdited(tagEdit, element, geometry)
+            elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey)
+            listener?.onEdited(editType, element, geometry)
         }
     }
 
