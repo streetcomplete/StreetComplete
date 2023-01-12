@@ -2,7 +2,7 @@ StreetComplete expert edition (EE) is a modified version of StreetComplete, aime
 EE can be installed alongside StreetComplete without any issues.
 Due to the different name used in changesets, edits made with this version do not contribute to StreetComplete statistics and star count.
 
-Functionality EE is much less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
+Functionality EE is considerably less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 ## Notable changes
 * Option to directly edit tags
@@ -27,7 +27,7 @@ Functionality EE is much less tested than what you might be used from normal Str
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
 
 ## Translations
-Translations for strings only available in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
+Translations for strings added in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
 
 ## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
@@ -53,7 +53,7 @@ In general, EE changesets will contain changes very similar to normal StreetComp
   * These quests usually do not fulfill the requirements for normal StreetComplete, and need to be enabled by the user first.
   * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)
 
-# original readme
+# original readme below
 
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 

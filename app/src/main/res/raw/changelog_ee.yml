@@ -5,6 +5,9 @@
   <li>Add level when creating POI while level filter is active</li>
   <li>Allow importing / exporting custom overlay separately from other settings</li>
   <li>Delete button in tag editor deletes entire row on long press</li>
+  <li>Allow deleting nodes in overlays</li>
+  <li>"External quest" renamed to "Custom quest", as Osmose quest uses an external source too</li>
+  <li>Other small fixes and improvements</li>
   <li>Dangerous editing capabilities (compared to normal SC) are now hidden unless an "expert mode" setting is enabled</li>
   </ul>
 

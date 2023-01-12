@@ -25,5 +25,9 @@ fun mockPrefs(): SharedPreferences {
     val prefs: SharedPreferences = mock()
     on(prefs.getString(ArgumentMatchers.anyString(), ArgumentMatchers.anyString())).thenAnswer { inv -> inv.getArgument(1, String::class.java) }
     on(prefs.getInt(ArgumentMatchers.anyString(), ArgumentMatchers.anyInt())).thenAnswer { inv -> inv.getArgument(1, Integer::class.java) }
+    on(prefs.getLong(ArgumentMatchers.anyString(), ArgumentMatchers.anyLong())).thenAnswer { inv -> inv.getArgument(1, Long::class.java) }
+    // style above doesn't work for boolean ("Cannot cast java.lang.Boolean to boolean")
+    on(prefs.getBoolean(ArgumentMatchers.anyString(), eq(true))).thenAnswer { true }
+    on(prefs.getBoolean(ArgumentMatchers.anyString(), eq(false))).thenAnswer { false }
     return prefs
 }
