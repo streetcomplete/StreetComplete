@@ -74,8 +74,8 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
-import de.westnordost.streetcomplete.quests.external.ExternalList
-import de.westnordost.streetcomplete.quests.external.ExternalQuest
+import de.westnordost.streetcomplete.quests.custom.CustomQuestList
+import de.westnordost.streetcomplete.quests.custom.ExternalQuest
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
@@ -194,7 +194,7 @@ import java.util.concurrent.FutureTask
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
-    single { ExternalList(androidContext()) }
+    single { CustomQuestList(androidContext()) }
     single { OsmoseDao(get(), get()) }
 
     single { questTypeRegistry(
@@ -217,7 +217,7 @@ fun questTypeRegistry(
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
     osmoseDao: OsmoseDao,
-    externalList: ExternalList,
+    customQuestList: CustomQuestList,
 ) = QuestTypeRegistry(getQuestTypeList(
     trafficFlowSegmentsApi,
     trafficFlowDao,
@@ -226,7 +226,7 @@ fun questTypeRegistry(
     countryBoundariesFuture,
     arSupportChecker,
     osmoseDao,
-    externalList,
+    customQuestList,
 ))
 
 fun getQuestTypeList(
@@ -237,7 +237,7 @@ fun getQuestTypeList(
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
     osmoseDao: OsmoseDao,
-    externalList: ExternalList,
+    customQuestList: CustomQuestList,
 ) = listOf(
 
     /* The quest types are primarily sorted by how easy they can be solved:
@@ -551,7 +551,7 @@ fun getQuestTypeList(
     ApplicationConstants.EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
     ApplicationConstants.EE_QUEST_OFFSET + 9 to AddTreeGenus(),
     ApplicationConstants.EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
-    ApplicationConstants.EE_QUEST_OFFSET + 11 to ExternalQuest(externalList),
+    ApplicationConstants.EE_QUEST_OFFSET + 11 to ExternalQuest(customQuestList),
     // POI quests
     ApplicationConstants.EE_QUEST_OFFSET + 12 to ShowBusiness(),
     ApplicationConstants.EE_QUEST_OFFSET + 13 to ShowBicycleStuff(),

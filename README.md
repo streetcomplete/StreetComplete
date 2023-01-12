@@ -1,6 +1,8 @@
-StreetComplete expert edition is a modified version of StreetComplete with enhanced capabilities.
-It can be installed alongside origninal StreetComplete without any issues.
+StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at users unhappy about the lack of enhanced capabilities in normal StreetComplete.
+EE can be installed alongside StreetComplete without any issues.
 Due to the different name used in changesets, edits made with this version do not contribute to StreetComplete statistics and star count.
+
+Functionality EE is much less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 ## Notable changes
 * Option to directly edit tags
@@ -46,9 +48,10 @@ In general, EE changesets will contain changes very similar to normal StreetComp
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * An element at at the same position as a note may be edited (this is blocked in normal SC)
 * `check_date:*` may be added without resurvey
-* Most quests may apply to an extended range of elements
-* EE contains some additional quests, see [here (scroll down)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
-  * additonally there are the quest types TagEditor (may modify any tag), CreatePoiEditType (may add nodes) and CustomOverlay (may delete or move nodes; modifying tags will be via TagEditor)
+* Most quests may apply to an extended range of elements (user-defined)
+* EE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
+  * These quests usually do not fulfill the requirements for normal StreetComplete, and need to be enabled by the user first.
+  * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)
 
 # original readme
 

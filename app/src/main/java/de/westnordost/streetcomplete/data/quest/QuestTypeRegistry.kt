@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.ObjectTypeRegistry
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.quests.external.ExternalList
+import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.getQuestTypeList
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
@@ -32,7 +32,7 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
     private val countryBoundariesFuture: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val arSupportChecker: ArSupportChecker by inject()
     private val osmoseDao: OsmoseDao by inject()
-    private val externalList: ExternalList by inject()
+    private val customQuestList: CustomQuestList by inject()
 
     fun reload() {
         ordinalsAndEntries.clear()
@@ -44,7 +44,7 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
             countryBoundariesFuture,
             arSupportChecker,
             osmoseDao,
-            externalList,
+            customQuestList,
         ))
         byName.clear()
         byOrdinal.clear()

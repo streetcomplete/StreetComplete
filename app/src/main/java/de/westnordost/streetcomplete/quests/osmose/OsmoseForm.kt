@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
-import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
+import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
@@ -41,8 +41,8 @@ class OsmoseForm : AbstractOtherQuestForm() {
         } )
     }
 
-    override val contentLayoutResId = R.layout.quest_osmose_external
-    private val binding by contentViewBinding(QuestOsmoseExternalBinding::bind)
+    override val contentLayoutResId = R.layout.quest_osmose_custom_quest
+    private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
@@ -52,7 +52,7 @@ class OsmoseForm : AbstractOtherQuestForm() {
         val key = questKey as OtherSourceQuestKey
         val i = osmoseDao.getIssue(key.id)
         if (i == null) {
-            context?.toast(R.string.quest_external_osmose_not_found)
+            context?.toast(R.string.quest_custom_quest_osmose_not_found)
             questController.delete(key)
             return
         }

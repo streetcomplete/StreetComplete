@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
-import de.westnordost.streetcomplete.quests.external.FILENAME_EXTERNAL
+import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -97,10 +97,10 @@ class DataManagementSettingsFragment :
         findPreference<Preference>("trees")?.setOnPreferenceClickListener {
             val dialog = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_trees_title)
-                .setMessage(R.string.tree_external_import_export_message)
+                .setMessage(R.string.tree_custom_quest_import_export_message)
                 .setNeutralButton(android.R.string.cancel, null)
-                .setNegativeButton(R.string.tree_external_import) { _,_ -> import("trees") }
-                .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("trees") }
+                .setNegativeButton(R.string.tree_custom_quest_import) { _,_ -> import("trees") }
+                .setPositiveButton(R.string.tree_custom_quest_export)  { _,_ -> export("trees") }
                 .show()
 
             val treesFile = File(context?.getExternalFilesDir(null), FILENAME_TREES)
@@ -109,16 +109,16 @@ class DataManagementSettingsFragment :
             true
         }
 
-        findPreference<Preference>("external")?.setOnPreferenceClickListener {
+        findPreference<Preference>("custom_quest")?.setOnPreferenceClickListener {
             val dialog = AlertDialog.Builder(requireContext())
-                .setTitle(R.string.pref_external_title)
-                .setMessage(R.string.tree_external_import_export_message)
+                .setTitle(R.string.pref_custom_title)
+                .setMessage(R.string.tree_custom_quest_import_export_message)
                 .setNeutralButton(android.R.string.cancel, null)
-                .setNegativeButton(R.string.tree_external_import) { _,_ -> import("external") }
-                .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("external") }
+                .setNegativeButton(R.string.tree_custom_quest_import) { _,_ -> import("custom_quest") }
+                .setPositiveButton(R.string.tree_custom_quest_export)  { _,_ -> export("custom_quest") }
                 .show()
 
-            val treesFile = File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL)
+            val treesFile = File(context?.getExternalFilesDir(null), FILENAME_CUSTOM_QUEST)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
 
             true
@@ -309,8 +309,8 @@ class DataManagementSettingsFragment :
                     .show()
             }
             REQUEST_CODE_OVERLAYS_IMPORT -> if (!importCustomOverlays(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
-            REQUEST_CODE_EXTERNAL_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_EXTERNAL) }
-            REQUEST_CODE_EXTERNAL_EXPORT -> { writeFromExternalFileToUri(FILENAME_EXTERNAL, uri) }
+            REQUEST_CODE_CUSTOM_QUEST_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_CUSTOM_QUEST) }
+            REQUEST_CODE_CUSTOM_QUEST_EXPORT -> { writeFromExternalFileToUri(FILENAME_CUSTOM_QUEST, uri) }
             REQUEST_CODE_TREES_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_TREES) }
             REQUEST_CODE_TREES_EXPORT -> { writeFromExternalFileToUri(FILENAME_TREES, uri) }
         }
@@ -327,7 +327,7 @@ class DataManagementSettingsFragment :
             "presets" ->  REQUEST_CODE_PRESETS_IMPORT
             "overlays" ->  REQUEST_CODE_OVERLAYS_IMPORT
             "trees" -> REQUEST_CODE_TREES_IMPORT
-            "external" -> REQUEST_CODE_EXTERNAL_IMPORT
+            "custom_quest" -> REQUEST_CODE_CUSTOM_QUEST_IMPORT
             else -> throw(IllegalArgumentException())
         }
         startActivityForResult(intent, requestCode)
@@ -336,7 +336,7 @@ class DataManagementSettingsFragment :
     private fun export(name: String) {
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
-            val fileName = if (name in arrayOf("trees", "external")) "$name.csv" else "$name.txt"
+            val fileName = if (name in arrayOf("trees", "custom_quest")) "$name.csv" else "$name.txt"
             putExtra(Intent.EXTRA_TITLE, fileName)
             type = "application/text"
         }
@@ -346,7 +346,7 @@ class DataManagementSettingsFragment :
             "presets" ->  REQUEST_CODE_PRESETS_EXPORT
             "overlays" ->  REQUEST_CODE_OVERLAYS_EXPORT
             "trees" -> REQUEST_CODE_TREES_EXPORT
-            "external" -> REQUEST_CODE_EXTERNAL_EXPORT
+            "custom_quest" -> REQUEST_CODE_CUSTOM_QUEST_EXPORT
             else -> throw(IllegalArgumentException())
         }
         startActivityForResult(intent, requestCode)
@@ -663,8 +663,8 @@ private const val REQUEST_CODE_PRESETS_IMPORT = 67367489
 private const val REQUEST_CODE_OVERLAYS_IMPORT = 67367490
 private const val REQUEST_CODE_TREES_IMPORT = 5331
 private const val REQUEST_CODE_TREES_EXPORT = 5332
-private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333
-private const val REQUEST_CODE_EXTERNAL_EXPORT = 5334
+private const val REQUEST_CODE_CUSTOM_QUEST_IMPORT = 5333
+private const val REQUEST_CODE_CUSTOM_QUEST_EXPORT = 5334
 
 // TODO: adjust this every time the version changes, and adjust data handling if necessary!
 private const val LAST_KNOWN_DB_VERSION = 8L

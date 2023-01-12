@@ -23,8 +23,8 @@
 
     <SwitchPreference
         android:key="create_external_quests"
-        android:title="@string/pref_create_external_title"
-        android:summary="@string/pref_create_external_summary"
+        android:title="@string/pref_create_custom_quest_title"
+        android:summary="@string/pref_create_custom_quest_summary"
         android:defaultValue="false"
         android:persistent="true" />
 

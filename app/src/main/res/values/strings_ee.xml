@@ -38,8 +38,8 @@
     <string name="pref_save_gpx">Get GPX notes and attached photos and tracks</string>
     <string name="pref_save_file_error">Error saving file</string>
     <string name="pref_files_not_found">No files found</string>
-    <string name="pref_create_external_title">Allow creating external quests</string>
-    <string name="pref_create_external_summary">…as alternative to leaving a note. This can be used as locally stored note visible on the map. Note that you’ll need to enable external quests.</string>
+    <string name="pref_create_custom_quest_title">Allow creating custom quests</string>
+    <string name="pref_create_custom_quest_summary">…as alternative to leaving a note. This can be used as locally stored note visible on the map. Note that you’ll need to enable custom quests.</string>
     <string name="pref_save_photos_title">Save photos used for notes</string>
     <string name="pref_save_photos_summary">Store full size versions of photos taken while creating notes, without clearing EXIF data</string>
     <string name="pref_get_photos_title">Get full size photos</string>
@@ -111,13 +111,13 @@
     <string name="pref_use_sd_summary">Changing this setting will move the data, which may take a while</string>
     <string name="moving">Moving tiles…</string>
     <string name="pref_trees_title">Load tree quest file</string>
-    <string name="pref_external_title">Load external quest file</string>
-    <string name="tree_external_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>
-    <string name="tree_external_import">Provide</string>
-    <string name="tree_external_export">Get</string>
+    <string name="pref_custom_title">Load custom quest file</string>
+    <string name="tree_custom_quest_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>
+    <string name="tree_custom_quest_import">Provide</string>
+    <string name="tree_custom_quest_export">Get</string>
     <string name="pref_tile_source_title">Tile source for satellite / aerial images</string>
     <string name="pref_tile_source_message">Tile URL must contain {x}, {y} and {z}</string>
-    <string name="pref_tree_external_summary">See message when enabling quest for details</string>
+    <string name="pref_tree_custom_quest_summary">See message when enabling quest for details</string>
 
     <!-- quests settings -->
     <string name="pref_screen_quests">Quests</string>
@@ -211,14 +211,14 @@
     <string name="quest_osmose_delete_this_issue">Remove this issue</string>
     <string name="quest_osmose_no_undo">Are you sure? This cannot be undone!</string>
     <string name="quest_osmose_select_element">Select element</string>
-    <string name="quest_external_osmose_not_found">Entry deleted, removing quest</string>
+    <string name="quest_custom_quest_osmose_not_found">Entry deleted, removing quest</string>
 
-    <!-- external quest (also uses osmose string above) -->
-    <string name="quest_external_title">External quest: %s</string>
-    <string name="quest_external_message">Use for checking specific pre-defined elements or locations. You can also specify tags and add a node with them. To use it, load a file in the main settings menu, containing either \`type,id,message\` (e.g. NODE,1234,check position) or \`latitude,longitude,message\`. For adding nodes, put the tags in the message after \'addNode\', e.g. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
-    <string name="quest_external_remove">Remove from list</string>
-    <string name="quest_external_add_node">Add node</string>
-    <string name="quest_external_add_node_text">You can add a node with: %s</string>
+    <!-- custom quest (also uses osmose string above) -->
+    <string name="quest_custom_quest_title">Custom quest: %s</string>
+    <string name="quest_custom_quest_message">Use for checking specific pre-defined elements or locations. You can also specify tags and add a node with them. To use it, load a file in the main settings menu, containing either \`type,id,message\` (e.g. NODE,1234,check position) or \`latitude,longitude,message\`. For adding nodes, put the tags in the message after \'addNode\', e.g. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_custom_quest_remove">Remove from list</string>
+    <string name="quest_custom_quest_add_node">Add node</string>
+    <string name="quest_custom_quest_add_node_text">You can add a node with: %s</string>
 
     <!-- bench material -->
     <string name="quest_benchMaterial_title">What’s this made of?</string>
@@ -350,8 +350,8 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
     <string name="quest_monitor_passive">Monitoring locations</string>
     <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
-    <string name="create_external_button">Create external quest</string>
-    <string name="create_external_title_message">Enter message to be shown</string>
+    <string name="create_custom_quest_button">Create custom quest</string>
+    <string name="create_custom_quest_title_message">Enter message to be shown</string>
     <string name="general_warning">Warning</string>
     <string name="move_node_with_geometry">Moving this node will modify geometry of following ways or multipolygon relations: %s.\n
         Be aware that any changes will not be immediately visible on the background map.

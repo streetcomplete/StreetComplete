@@ -44,12 +44,12 @@
     <Preference
         android:key="trees"
         android:title="@string/pref_trees_title"
-        android:summary="@string/pref_tree_external_summary" />
+        android:summary="@string/pref_tree_custom_quest_summary" />
 
     <Preference
-        android:key="external"
-        android:title="@string/pref_external_title"
-        android:summary="@string/pref_tree_external_summary" />
+        android:key="custom_quest"
+        android:title="@string/pref_custom_title"
+        android:summary="@string/pref_tree_custom_quest_summary" />
 
     <Preference
         android:key="export"

@@ -40,7 +40,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
-import de.westnordost.streetcomplete.quests.external.ExternalList
+import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
@@ -69,7 +69,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private val osmQuestController: OsmQuestController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val externalList: ExternalList by inject()
+    private val customQuestList: CustomQuestList by inject()
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
@@ -230,16 +230,16 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
                 .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
             if (prefs.getBoolean(Prefs.CREATE_EXTERNAL_QUESTS, false))
-                b.setNeutralButton(R.string.create_external_button) { _, _ ->
+                b.setNeutralButton(R.string.create_custom_quest_button) { _, _ ->
                     val text = EditText(it)
                     text.isSingleLine = true
                     text.setPadding(30, 10, 30, 10)
                     AlertDialog.Builder(it)
-                        .setTitle(R.string.create_external_title_message)
+                        .setTitle(R.string.create_custom_quest_title_message)
                         .setView(text)
                         .setNegativeButton(android.R.string.cancel, null)
                         .setPositiveButton(android.R.string.ok) { _, _ ->
-                            externalList.addEntry(element, text.text.toString())
+                            customQuestList.addEntry(element, text.text.toString())
                             listener?.onQuestHidden(questKey) // abuse this to close the quest form
                         }
                         .show()

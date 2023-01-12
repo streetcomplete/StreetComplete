@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.external
+package de.westnordost.streetcomplete.quests.custom
 
 import android.content.Context
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -18,10 +18,10 @@ import org.koin.core.component.inject
 import java.io.File
 import kotlin.Exception
 
-class ExternalList(context: Context) : KoinComponent {
+class CustomQuestList(context: Context) : KoinComponent {
     private val entriesById by lazy {
         // need to load by lazy, because there is a problem if mapDataWithEditsSource is accessed early
-        val m = hashMapOf<String, ExternalEntry>()
+        val m = hashMapOf<String, CustomQuestEntry>()
         load(m)
         m
     }
@@ -31,10 +31,16 @@ class ExternalList(context: Context) : KoinComponent {
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val questController: OtherSourceQuestController by inject()
 
+    init {
+        val oldfile = File(path, FILENAME_OLD)
+        if (oldfile.exists())
+            oldfile.renameTo(File(path, FILENAME_CUSTOM_QUEST))
+    }
+
     fun reload() = load(entriesById)
 
-    fun load(m: MutableMap<String, ExternalEntry>) {
-        val file = File(path, FILENAME_EXTERNAL)
+    fun load(m: MutableMap<String, CustomQuestEntry>) {
+        val file = File(path, FILENAME_CUSTOM_QUEST)
         m.clear()
         if (!file.exists()) {
             file.parentFile?.mkdirs()
@@ -48,7 +54,7 @@ class ExternalList(context: Context) : KoinComponent {
             val id = line.getId()
             if (id == null) null
             else
-                id to ExternalEntry(id).also {
+                id to CustomQuestEntry(id).also {
                     it.text = text
                     it.solved = rawText.endsWith(",solved")
                 }
@@ -58,9 +64,9 @@ class ExternalList(context: Context) : KoinComponent {
     fun addEntry(element: Element, message: String) {
         val id = "${element.type},${element.id}".getId() ?: return
         if (entriesById.containsKey(id)) return
-        val entry = ExternalEntry(id).apply { text = message }
+        val entry = CustomQuestEntry(id).apply { text = message }
         entriesById[id] = entry
-        val file = File(path, FILENAME_EXTERNAL)
+        val file = File(path, FILENAME_CUSTOM_QUEST)
         file.appendText("\n$id,$message")
         getQuest(id)?.let { questController.addQuests(listOf(it)) }
     }
@@ -94,7 +100,7 @@ class ExternalList(context: Context) : KoinComponent {
     fun markSolved(id: String, solved: Boolean = true) {
         if (entriesById[id]?.solved == solved) return
         entriesById[id]?.solved = solved
-        val file = File(path, FILENAME_EXTERNAL)
+        val file = File(path, FILENAME_CUSTOM_QUEST)
         val lines = file.readLines().toMutableList()
         var lineToChange = -1
         for (i in lines.indices) {
@@ -121,7 +127,7 @@ class ExternalList(context: Context) : KoinComponent {
         if (idList.isEmpty()) return false
         val ids = idList.toMutableSet()
         val deletedAny = entriesById.keys.removeAll(ids)
-        val file = File(path, FILENAME_EXTERNAL)
+        val file = File(path, FILENAME_CUSTOM_QUEST)
         val lines = file.readLines().toMutableList()
         val iterator = lines.iterator()
         while (iterator.hasNext()) {
@@ -145,7 +151,7 @@ private fun String.getId(): String? {
     else null
 }
 
-data class ExternalEntry(val id: String ) {
+data class CustomQuestEntry(val id: String ) {
     val elementKey = try {
         ElementKey(ElementType.valueOf(id.substringBefore(',').uppercase()),
             id.substringAfter(',').substringBefore(',').toLong())
@@ -161,6 +167,7 @@ data class ExternalEntry(val id: String ) {
     var solved: Boolean = false
 }
 
-const val FILENAME_EXTERNAL = "external.csv"
+const val FILENAME_CUSTOM_QUEST = "custom_quest.csv"
+private const val FILENAME_OLD = "external.csv"
 
 private val nodeWayRelation = "node|way|relation".toRegex(RegexOption.IGNORE_CASE)
