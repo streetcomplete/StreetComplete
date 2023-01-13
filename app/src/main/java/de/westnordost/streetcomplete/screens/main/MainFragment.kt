@@ -74,7 +74,6 @@ import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
-import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
