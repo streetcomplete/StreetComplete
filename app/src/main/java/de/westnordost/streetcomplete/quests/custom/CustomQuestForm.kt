@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
-import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOtherSourceQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.toTags
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 
-class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractOtherQuestForm() {
+class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractOtherSourceQuestForm() {
 
     override val contentLayoutResId = R.layout.quest_osmose_custom_quest
     private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)

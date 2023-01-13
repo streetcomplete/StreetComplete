@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOtherSourceQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class OsmoseForm : AbstractOtherQuestForm() {
+class OsmoseForm : AbstractOtherSourceQuestForm() {
 
     private val osmoseDao: OsmoseDao by inject()
 
@@ -27,18 +27,54 @@ class OsmoseForm : AbstractOtherQuestForm() {
     private val questController: OtherSourceQuestController by inject()
 
     override val buttonPanelAnswers by lazy {
-        listOf(AnswerItem(R.string.quest_osmose_false_positive) {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_osmose_false_positive)
-                .setMessage(R.string.quest_osmose_no_undo)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
-                    osmoseDao.setAsFalsePositive(issue.uuid)
-                    tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that any more
-                    // todo: do some kind of edit, so it can be undone? could be deleted on sync
-                }
-                .show()
-        } )
+        listOfNotNull(
+            if (issue.elements.isEmpty()) null
+            else if (issue.elements.size == 1) {
+                val e = mapDataSource.get(issue.elements.single().type, issue.elements.single().id)
+                if (e == null) null
+                else
+                    AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) }
+            }
+            else {
+                val elements = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }
+                if (elements.isEmpty()) null
+                else
+                    AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
+                        val l = LinearLayout(requireContext()).apply {
+                            orientation = LinearLayout.VERTICAL
+                            setPadding(30, 10, 30, 10)
+                        }
+                        var d: AlertDialog? = null
+                        elements.forEach { e ->
+                            l.addView(Button(requireContext()).apply {
+                                text = "${e.type} ${e.id}" // android studio complains, but that's element type and id and probably should not be translated
+                                setOnClickListener {
+                                    editTags(e)
+                                    d?.dismiss()
+                                }
+                            })
+                        }
+                        d = AlertDialog.Builder(requireContext())
+                            .setTitle(R.string.quest_osmose_select_element)
+                            .setView(l)
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .create()
+                        d?.show()
+                    }
+            },
+            AnswerItem(R.string.quest_osmose_false_positive) {
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.quest_osmose_false_positive)
+                    .setMessage(R.string.quest_osmose_no_undo)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
+                        osmoseDao.setAsFalsePositive(issue.uuid)
+                        tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that any more
+                        // todo: do some kind of edit, so it can be undone? the edit could be deleted on upload
+                    }
+                    .show()
+            }
+        )
     }
 
     override val contentLayoutResId = R.layout.quest_osmose_custom_quest
@@ -71,40 +107,6 @@ class OsmoseForm : AbstractOtherQuestForm() {
     }
 
     override val otherAnswers: List<AnswerItem> by lazy { listOfNotNull(
-        if (issue.elements.isEmpty()) null
-        else if (issue.elements.size == 1) {
-            val e = mapDataSource.get(issue.elements.single().type, issue.elements.single().id)
-            if (e == null) null
-            else
-                AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) }
-        }
-        else {
-            val elements = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }
-            if (elements.isEmpty()) null
-            else
-                AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
-                    val l = LinearLayout(requireContext()).apply {
-                        orientation = LinearLayout.VERTICAL
-                        setPadding(30, 10, 30, 10)
-                    }
-                    var d: AlertDialog? = null
-                    elements.forEach { e ->
-                        l.addView(Button(requireContext()).apply {
-                            text = "${e.type} ${e.id}"
-                            setOnClickListener {
-                                editTags(e)
-                                d?.dismiss()
-                            }
-                        })
-                    }
-                    d = AlertDialog.Builder(requireContext())
-                        .setTitle(R.string.quest_osmose_select_element)
-                        .setView(l)
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .create()
-                    d.show()
-                }
-        },
         AnswerItem(R.string.quest_osmose_hide_type_specific) { addToIgnorelist("${issue.item}/${issue.itemClass}") },
         AnswerItem(R.string.quest_osmose_hide_type_generic) { addToIgnorelist(issue.item.toString()) },
         AnswerItem(R.string.quest_osmose_delete_this_issue) {

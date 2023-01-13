@@ -7,6 +7,7 @@ import android.text.InputType
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
@@ -122,7 +123,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         linearLayout.addView(level)
         linearLayout.addView(enable)
         linearLayout.setPadding(30,10,30,10)
-        builder.setView(linearLayout)
+        builder.setView(ScrollView(context).apply { addView(linearLayout) })
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             val levelTagList = mutableListOf<String>()

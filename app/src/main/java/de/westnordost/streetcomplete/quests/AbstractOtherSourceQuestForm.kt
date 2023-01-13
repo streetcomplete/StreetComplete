@@ -36,7 +36,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 
-abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
+abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
     // overridable by child classes
     open val otherAnswers = listOf<AnswerItem>()
     open val buttonPanelAnswers = listOf<AnswerItem>()
@@ -91,7 +91,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
         val e = element
         if (e != null) {
-            if (otherAnswers.none { it.titleResourceId == R.string.quest_generic_answer_show_edit_tags })
+            if ((otherAnswers + buttonPanelAnswers).none { it.titleResourceId == R.string.quest_generic_answer_show_edit_tags })
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
             if (e.type == ElementType.NODE)
                 answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })

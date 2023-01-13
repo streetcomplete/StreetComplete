@@ -173,10 +173,10 @@
     <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note?</string>
     <string name="quest_generic_surface_yes">Allow without note</string>
     <string name="quest_generic_surface_no">Only with note (default)</string>
-    <string name="quest_settings_osmose_level_title">Select issue severity levels to download</string>
-    <string name="quest_settings_osmose_level_high">High priority (default)</string>
-    <string name="quest_settings_osmose_level_high_and_normal">High and normal priority</string>
-    <string name="quest_settings_osmose_level_all">All</string>
+    <string name="quest_settings_osmose_level_title">Select issue severity levels to download and display</string>
+    <string name="quest_settings_osmose_level_high">High</string>
+    <string name="quest_settings_osmose_level_medium">Medium</string>
+    <string name="quest_settings_osmose_level_low">Low</string>
     <string name="quest_settings_fixme_title">Select fixme values to ignore</string>
     <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by StreetComplete? If you choose yes, in some cases existing opening hours may not be shown when asking for resurvey.</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">All</string>
@@ -200,15 +200,15 @@
     <!-- osmose quest -->
     <string name="quest_osmose_title">Osmose quest: %s</string>
     <string name="quest_osmose_false_positive">Report false positive</string>
-    <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if enabled in quest settings. The message is displayed with the quest, editing tags reports the issue as solved. It is also possible to report the problem as false positive. Reporting the issue as solved or false positive cannot be undone.</string>
+    <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if at least one severity level is selected in quest settings.\n
+        The Osmose message is displayed with the quest, any edit reports the issue as solved.\n
+        It is also possible to report the problem as false positive; this cannot be undone.</string>
     <string name="quest_osmose_message_for_element">Item type %1$s: %2$s</string>
-    <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated. Also item/class can be used to hide only specific classes, e.g. 8280/11</string>
-    <string name="quest_osmose_settings_what">What to do?</string>
-    <string name="quest_osmose_settings_items">Select item types to hide</string>
-    <string name="quest_osmose_settings_enable">Enable downloading</string>
-    <string name="quest_osmose_hide_type_specific">Ignore similar issues (item and class)</string>
-    <string name="quest_osmose_hide_type_generic">Ignore similar issues (osmose item)</string>
-    <string name="quest_osmose_delete_this_issue">Remove this issue</string>
+    <string name="quest_osmose_settings">Set Osmose item types to hide, comma separated. Also item/class combinations can be used to hide only specific classes, e.g. 8280/11</string>
+    <string name="quest_osmose_settings_items">Select item types to ignore</string>
+    <string name="quest_osmose_hide_type_specific">Ignore issue type (item and class)</string>
+    <string name="quest_osmose_hide_type_generic">Ignore similar issues (Osmose item)</string>
+    <string name="quest_osmose_delete_this_issue">Remove this issue locally</string>
     <string name="quest_osmose_no_undo">Are you sure? This cannot be undone!</string>
     <string name="quest_osmose_select_element">Select element</string>
     <string name="quest_custom_quest_osmose_not_found">Entry deleted, removing quest</string>

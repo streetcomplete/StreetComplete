@@ -1,4 +1,4 @@
-StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at users unhappy about the lack of enhanced capabilities in normal StreetComplete.
+StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at experiences OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
 EE can be installed alongside StreetComplete without any issues.
 Due to the different name used in changesets, edits made with this version do not contribute to StreetComplete statistics and star count.
 
@@ -6,16 +6,16 @@ Functionality EE is considerably less tested than what you might be used from no
 
 ## Notable changes
 * Option to directly edit tags
-* Quick settings, e.g. for fast switch of preset
 * More customizable behavior, including settings or element selection for many quests
 * Overlay with customizable element selection and color source (tag regex)
-* Import / export for settings, quest presets, hidden quests and custom overlays
-* Show all quests for the selected element at once, and also nearby quests
-* Level filter (available in quick settings menu)
-* Create nodes from iD presets anywhere
+* Create nodes anywhere, using presets from iD tagging schema for pre-filling tags
 * Ability to create personal notes in a GPX file instead of uploading them to OSM
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
-* Quests based on custom data sources (currently available: Osmose and CSV file)
+* Quests based on external data sources (currently available: Osmose and CSV file)
+* Quick settings, e.g. for fast switch of preset
+* Level filter (available in quick settings menu)
+* Import / export for settings, quest presets, hidden quests and custom overlays
+* Show all quests for the selected element at once, and also nearby quests
 * More answers for some quests, like additional building types or specifying that a crossing is raised
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Performance improvements (balanced by more data to process, so don't expect much improvement over StreetComplete)

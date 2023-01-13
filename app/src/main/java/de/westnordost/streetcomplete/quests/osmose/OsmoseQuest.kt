@@ -2,7 +2,11 @@ package de.westnordost.streetcomplete.quests.osmose
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import androidx.appcompat.widget.SwitchCompat
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -65,42 +69,50 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
     override fun createForm() = OsmoseForm()
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog {
-        val enable = SwitchCompat(context).apply {
-            setText(R.string.quest_osmose_settings_enable)
-            isChecked = downloadEnabled
-            setOnCheckedChangeListener { _, b ->
-                downloadEnabled = b
-            }
+        val levels = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, "")!!.split("%2C").mapNotNull { it.toIntOrNull() }
+        val high = CheckBox(context).apply {
+            setText(R.string.quest_settings_osmose_level_high)
+            isChecked = levels.contains(1)
         }
-        enable.setPadding(30,10,30,10)
-
-        return AlertDialog.Builder(context)
-            .setTitle(R.string.quest_osmose_settings_what)
-            .setView(enable)
-            .setNegativeButton(R.string.quest_osmose_settings_items) { _,_ ->
+        val medium = CheckBox(context).apply {
+            setText(R.string.quest_settings_osmose_level_medium)
+            isChecked = levels.contains(2)
+        }
+        val low = CheckBox(context).apply {
+            setText(R.string.quest_settings_osmose_level_low)
+            isChecked = levels.contains(3)
+        }
+        val hide = Button(context).apply {
+            setText(R.string.quest_osmose_settings_items)
+            setOnClickListener {
                 singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings, false)
                     .show()
             }
-            .setNeutralButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.quest_settings_osmose_level_title) { _, _ ->
-                showLevelDialog(context)
+        }
+        val layout = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(TextView(context).apply { setText(R.string.quest_settings_osmose_level_title) })
+            addView(high)
+            addView(medium)
+            addView(low)
+            addView(hide)
+            setPadding(30, 10, 30, 10)
+        }
+
+        return AlertDialog.Builder(context)
+            .setTitle(context.resources.getString(R.string.quest_osmose_title, "…"))
+            .setView(ScrollView(context).apply { addView(layout) })
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val levelString = listOfNotNull(
+                    if (high.isChecked) 1 else null,
+                    if (medium.isChecked) 2 else null,
+                    if (low.isChecked) 3 else null,
+                ).takeIf { it.isNotEmpty() }?.joinToString("%2C") ?: ""
+                prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString).apply()
+                downloadEnabled = levelString != ""
             }
             .create()
-    }
-
-    private fun showLevelDialog(context: Context) {
-        AlertDialog.Builder(context)
-            .setTitle(R.string.quest_settings_osmose_level_title)
-            .setItems(R.array.pref_quest_settings_osmose_levels) { _, i ->
-                val levelString = when (i) {
-                    1 -> "1%2C2"
-                    2 -> "1%2C2%2C3"
-                    else -> "1"
-                }
-                prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString).apply()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
     }
 }
 

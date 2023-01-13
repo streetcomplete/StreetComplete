@@ -67,9 +67,4 @@
         <item>@string/quest_settings_level_more</item>
     </string-array>
 
-    <string-array name="pref_quest_settings_osmose_levels" translatable="false">
-        <item>@string/quest_settings_osmose_level_high</item>
-        <item>@string/quest_settings_osmose_level_high_and_normal</item>
-        <item>@string/quest_settings_osmose_level_all</item>
-    </string-array>
 </resources>
