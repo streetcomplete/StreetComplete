@@ -28,7 +28,8 @@ class StreetOrPlaceNameViewController(
     private val streetNameInput: EditText,
     roadNameSuggestionsSource: RoadNameSuggestionsSource,
     abbreviationsByLocale: AbbreviationsByLocale,
-    countryLocale: Locale
+    countryLocale: Locale,
+    startWithPlace: Boolean,
 ) {
     private val streetNameInputCtrl = AddressStreetNameInputViewController(
         streetNameInput, roadNameSuggestionsSource, abbreviationsByLocale, countryLocale
@@ -69,7 +70,7 @@ class StreetOrPlaceNameViewController(
             R.layout.spinner_item,
             StreetOrPlace.values().map { it.toLocalizedString(select.context.resources) }
         )
-        spinnerSelection = STREET
+        spinnerSelection = if (startWithPlace) PLACE else STREET
 
         select.onItemSelectedListener = OnAdapterItemSelectedListener {
             updateInputVisibilities()
