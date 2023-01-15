@@ -1,1 +1,0 @@
-Aplicació de cartògraf de camp per a l'OpenStreetMap

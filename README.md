@@ -1,4 +1,4 @@
-StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at experiences OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
+StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
 EE can be installed alongside StreetComplete without any issues.
 Due to the different name used in changesets, edits made with this version do not contribute to StreetComplete statistics and star count.
 
@@ -13,7 +13,7 @@ Functionality EE is considerably less tested than what you might be used from no
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
 * Quests based on external data sources (currently available: Osmose and CSV file)
 * Quick settings, e.g. for fast switch of preset
-* Level filter (available in quick settings menu)
+* Level filter (available onyl in quick settings menu)
 * Import / export for settings, quest presets, hidden quests and custom overlays
 * Show all quests for the selected element at once, and also nearby quests
 * More answers for some quests, like additional building types or specifying that a crossing is raised
@@ -25,6 +25,9 @@ Functionality EE is considerably less tested than what you might be used from no
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
+
+## Permissions
+EE has more permissions than normal StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
 
 ## Translations
 Translations for strings added in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).

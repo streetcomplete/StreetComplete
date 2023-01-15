@@ -1,1 +1,1 @@
-OpenStreetMap surveyor app
+OpenStreetMap surveyor app for experienced OSM contributors

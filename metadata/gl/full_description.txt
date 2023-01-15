@@ -1,5 +1,0 @@
-Axuda a mellora-lo OpenStreetMap co StreetComplete!
-
-Esta aplicación procura información incompleta e mellorábel na túa veciñanza e amósaa nun mapa con marcadores. Cada un deles pódelo resolver respostando a unha sinxela pregunta para así completar a información no propio lugar.
-
-A información engadida inclúese de xeito directo no OpenStreetMap no teu nome sen a necesidade de ningún outro editor.

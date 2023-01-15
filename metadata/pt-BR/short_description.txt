@@ -1,1 +1,0 @@
-Aplicativo topógrafo para OpenStreetMap

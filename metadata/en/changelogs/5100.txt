@@ -1,0 +1,9 @@
+- F-Droid release
+- Use left/right/both in custom overlay to display selection on side of a road
+- Allow saving full resolution photos used for notes
+- Add level when creating POI while level filter is active
+- Allow importing / exporting custom overlay separately from other settings
+- Delete button in tag editor deletes entire row on long press
+- Allow deleting nodes in overlays
+- "External quest" renamed to "Custom quest"
+- Other small fixes and improvements

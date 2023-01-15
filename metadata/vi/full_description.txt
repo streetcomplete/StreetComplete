@@ -1,5 +1,0 @@
-Giúp cải thiện OpenStreetMap bằng StreetComplete!
-
-Ứng dụng này tìm dữ liệu không hoàn chỉnh và có thể mở rộng được trong phạm vi của bạn và hiển thị nó trên bản đồ dưới dạng đánh dấu. Mỗi dấu có thể giải được bằng cách trả lời một câu hỏi đơn giản để hoàn thiện thông tin ở nơi đó.
-
-Thông tin bạn nhập vào sau đó được thêm trực tiếp vào OpenStreetMap dưới tên của bạn, mà không cần dùng một trình chỉnh sửa khác.

@@ -1,1 +1,0 @@
-Aplicación de mapeo para OpenStreetMap
