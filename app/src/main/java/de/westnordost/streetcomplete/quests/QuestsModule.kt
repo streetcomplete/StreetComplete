@@ -121,6 +121,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
+import de.westnordost.streetcomplete.quests.seasonal.AddSeasonal
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -316,6 +317,7 @@ fun questTypeRegistry(
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(featureDictionaryFuture),
+    155 to AddSeasonal(),
 
     50 to AddBoardType(),
 
