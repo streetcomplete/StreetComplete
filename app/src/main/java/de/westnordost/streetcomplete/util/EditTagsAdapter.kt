@@ -25,7 +25,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 // use displaySet and dataSet: displaySet is the sorted map.toList
-// editing the map directly is not so simple, because the order may change if the key is changed (actually removed and re-added)
+// editing the map directly is not so simple, because the order may change if the key is changed
 class EditTagsAdapter(
     private val displaySet: MutableList<Pair<String, String>>,
     private val dataSet: MutableMap<String, String>,
@@ -196,6 +196,9 @@ class EditTagsAdapter(
 
     override fun getItemId(position: Int) = position.toLong()
 
+    // todo: get geometry type, and use it for suggestions
+    //  means that generateTagSuggestions needs to be adjusted to generate something containing allowed geometry types!
+    //  and maybe suggestions should only be for a single geometry type? or for all geometry types for which this key is allowed?
     private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
         val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
         if (featureId == null) return suggestions.filterNot { it in tags.keys }
@@ -234,6 +237,3 @@ class EditTagsAdapter(
         private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
     }
 }
-
-private val defaultKeyList = listOf("amenity", "shop", "name", "man_made", "emergency", "natural", "office", "leisure", "tourism", "historic", "attraction")
-

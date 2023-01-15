@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
 import android.content.SharedPreferences
 import android.icu.text.DateFormat
@@ -67,10 +68,12 @@ import java.util.concurrent.FutureTask
 import kotlin.math.min
 
 // todo: ideas for improvements
-//  ability to copy and paste everything (this is the only advantage of the old editor)
+//  ability to copy and paste everything
+//   see https://stackoverflow.com/questions/19177231/android-copy-paste-from-clipboard-manager
 //   button that copies all tags into clipboard: tagsList.joinToString("\n")
 //   and one that pastes clipboard into tags: newTags.putAll(clipboard.toTags())
 //    overwrite existing tags and add others, don't delete
+//    only show button if clipboard contains data
 //  undo button, for undoing delete or paste (and maybe other changes? but will not work well with typing)
 
 open class TagEditor : Fragment(), IsCloseableBottomSheet {
@@ -204,6 +207,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         showOk()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun showQuest(quest: OsmQuest) {
         val f = quest.type.createForm()
         if (f.arguments == null) f.arguments = bundleOf()
@@ -251,7 +255,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 tagList.remove(emptyEntry)
                 tagList.add(emptyEntry)
             }
-            // data set changes include tags that were changed manually before opening the quest, so it really may be everything different!
             binding.editTags.adapter?.notifyDataSetChanged()
             // remove the quest immediately, because answering again may crash
             binding.questsGrid.removeView(binding.questsGrid.findViewWithTag<ImageView>(quest.type.name))
