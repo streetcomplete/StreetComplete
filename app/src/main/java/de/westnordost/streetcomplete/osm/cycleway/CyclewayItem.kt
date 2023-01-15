@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.cycleway
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import androidx.appcompat.graphics.drawable.DrawableWrapperCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
@@ -17,7 +18,6 @@ import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredResId
 import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneResId
 import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.DrawableWrapper
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -69,11 +69,11 @@ private fun CyclewayAndDirection.getDialogIconResId(isRight: Boolean, countryInf
         else ->     getIconResId(isRight, countryInfo)
     }
 
-private class Rotate180Degrees(drawable: Drawable) : DrawableWrapper(drawable) {
+private class Rotate180Degrees(drawable: Drawable) : DrawableWrapperCompat(drawable) {
     override fun draw(canvas: Canvas) {
         canvas.scale(-1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
-        drawable.bounds = bounds
-        drawable.draw(canvas)
+        drawable?.bounds = bounds
+        drawable?.draw(canvas)
     }
 }
 
