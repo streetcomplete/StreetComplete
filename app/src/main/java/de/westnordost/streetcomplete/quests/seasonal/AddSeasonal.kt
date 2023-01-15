@@ -27,6 +27,6 @@ class AddSeasonal : OsmFilterQuestType<Boolean>() {
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("seasonal", answer.toYesNo())
+        tags.updateWithCheckDate("seasonal", (!answer).toYesNo())
     }
 }
