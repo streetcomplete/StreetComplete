@@ -8,6 +8,7 @@ class HouseNumbersUtilKtTest {
     @Test fun addZero() {
         assertEquals("1", addToHouseNumber("1", 0))
         assertEquals("1c", addToHouseNumber("1c", 0))
+        assertEquals("M-2", addToHouseNumber("M-2", 0))
     }
 
     @Test fun addOne() {
@@ -18,6 +19,8 @@ class HouseNumbersUtilKtTest {
         assertEquals("7", addToHouseNumber("2,6,3", 1))
         assertEquals("7", addToHouseNumber("2,6/3,3", 1))
         assertEquals("9", addToHouseNumber("2,6-8,3", 1))
+        assertEquals("C-14", addToHouseNumber("C-13", 1))
+        assertEquals("CA14", addToHouseNumber("CA13", 1))
     }
 
     @Test fun subtractOne() {
@@ -37,5 +40,7 @@ class HouseNumbersUtilKtTest {
         assertEquals(null, addToHouseNumber("6,1/4-8,3", -1))
         assertEquals("1", addToHouseNumber("6,2-8,3", -1))
         assertEquals("1", addToHouseNumber("6,2f-8,3", -1))
+        assertEquals(null, addToHouseNumber("C-1", -1))
+        assertEquals("C/12", addToHouseNumber("C/13", -1))
     }
 }

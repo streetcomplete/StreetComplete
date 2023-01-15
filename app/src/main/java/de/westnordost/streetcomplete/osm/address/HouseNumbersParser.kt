@@ -10,8 +10,12 @@ fun parseHouseNumbers(string: String): HouseNumbers? {
         when (range.size) {
             1 -> SingleHouseNumbersPart(parseHouseNumberParts(range[0]) ?: return null)
             2 -> {
-                val start = parseHouseNumberParts(range[0]) ?: return null
-                val end = parseHouseNumberParts(range[1]) ?: return null
+                val start = parseHouseNumberParts(range[0])
+                val end = parseHouseNumberParts(range[1])
+                if (start == null && end != null) {
+                    return@map SingleHouseNumbersPart(parseHouseNumberParts(part) ?: return null)
+                }
+                if (start == null || end == null) return null
                 if (start < end) {
                     HouseNumbersPartsRange(start, end)
                 }
@@ -27,7 +31,20 @@ fun parseHouseNumbers(string: String): HouseNumbers? {
 
 private fun parseHouseNumberParts(string: String): StructuredHouseNumber? {
     val c = StringWithCursor(string)
-    val houseNumber = c.nextMatchesAndAdvance("\\p{N}{1,5}".toRegex())?.value?.toIntOrNull() ?: return null
+    val houseNumber = c.nextMatchesAndAdvance("\\p{N}{1,5}".toRegex())?.value?.toIntOrNull()
+    if (houseNumber == null) {
+        val letterAtStart = c.nextMatchesAndAdvance("\\p{L}{1,2}".toRegex())?.value ?: return null
+        val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?[/-]?\\s?)(\\p{N}{1,5})".toRegex())
+        return if (separatorWithNumber != null && c.isAtEnd()) {
+            HouseNumberWithLetterAtStart(
+                separatorWithNumber.groupValues[2].toInt(),
+                separatorWithNumber.groupValues[1],
+                letterAtStart
+            )
+        } else {
+            null
+        }
+    }
     if (c.isAtEnd()) return SimpleHouseNumber(houseNumber)
 
     val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?[/-]\\s?)(\\p{N})".toRegex())

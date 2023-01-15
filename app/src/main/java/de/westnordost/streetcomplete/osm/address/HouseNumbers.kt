@@ -89,6 +89,14 @@ data class HouseNumberWithLetter(
 ) : StructuredHouseNumber() {
     override fun toString() = "$number$separator$letter"
 }
+/** e.g. C-12 */
+data class HouseNumberWithLetterAtStart(
+    override val number: Int,
+    val separator: String,
+    val letter: String
+) : StructuredHouseNumber() {
+    override fun toString() = "$letter$separator$number"
+}
 /** e.g. 12/3 */
 data class HouseNumberWithNumber(
     override val number: Int,

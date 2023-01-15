@@ -30,6 +30,9 @@ class HouseNumbersParserKtTest {
         assertParses("1,3,5-8,12,21-24B")
 
         assertParses("10-4")
+        assertParses("B-145")
+        assertParses("BA-145")
+        assertParses("B145")
 
         assertParsingFails("10-b")
         assertParsingFails("-1")
