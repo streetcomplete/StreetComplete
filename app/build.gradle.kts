@@ -11,8 +11,8 @@ plugins {
 
 android {
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
         isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
@@ -119,7 +119,7 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
 
-    androidTestImplementation("androidx.test:runner:1.5.1")
+    androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
