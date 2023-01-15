@@ -1,6 +1,8 @@
 StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
-Please be aware that EE is not suitable for people used to discard warning messages without reading!
 
-Functionality EE is considerably less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
+Please be aware that EE is not suitable for people used to discard warning messages without reading!
+Users new to OpenStreetMap are best advised to use the normal version of StreetComplete.
+
+Functionality added in EE is considerably less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 Due to the different name used in changesets, edits made with this version do not contribute to the displayed StreetComplete statistics and star count.

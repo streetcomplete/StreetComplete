@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
+import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -549,6 +550,7 @@ fun getQuestTypeList(
     ApplicationConstants.EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
     ApplicationConstants.EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
     ApplicationConstants.EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
+    ApplicationConstants.EE_QUEST_OFFSET + 22 to AddArtworkType(),
     ApplicationConstants.EE_QUEST_OFFSET + 9 to AddTreeGenus(),
     ApplicationConstants.EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     ApplicationConstants.EE_QUEST_OFFSET + 11 to ExternalQuest(customQuestList),

@@ -929,7 +929,7 @@ class MainFragment :
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
-            popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, R.string.create_poi)
+            popupMenu.menu.add(Menu.NONE, 4, 4, R.string.create_poi)
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)

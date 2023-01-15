@@ -21,5 +21,8 @@ If you think they are needed, reduce the size or use thumbnails to keep the issu
 **Expected Behavior**
 <!-- Add a clear and concise description of what you expected to happen -->
 
+**Does it happen in normal StreetComplete?**
+<!-- If yes, then opening an issue at https://github.com/streetcomplete/StreetComplete/issues is recommended -->
+
 **Versions affected**
 <!-- Add the Android and StreetComplete version here. Please use exact version number instead of saying "latest" -->

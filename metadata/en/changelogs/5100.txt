@@ -6,4 +6,5 @@
 - Delete button in tag editor deletes entire row on long press
 - Allow deleting nodes in overlays
 - "External quest" renamed to "Custom quest"
+- Add artwork type quest
 - Other small fixes and improvements

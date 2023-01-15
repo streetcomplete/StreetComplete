@@ -268,15 +268,31 @@
     <string name="quest_seating_parklet">Next to the curb, or where parking used to be</string>
     <string name="quest_seating_pedestrian_zone">In a pedestrian zone</string>
     <string name="quest_seating_street">In a street area</string>
-    <string name="quest_seating_sidewalk">On the sidewalk </string>
+    <string name="quest_seating_sidewalk">On the sidewalk</string>
     <string name="quest_seating_patio">In a patio</string>
-    <string name="quest_seating_terrace">On a terrace </string>
+    <string name="quest_seating_terrace">On a terrace</string>
     <string name="quest_seating_balcony">On a balcony</string>
     <string name="quest_seating_veranda">On a veranda/porch </string>
     <string name="quest_seating_roof">On a roof</string>
     <string name="quest_seating_garden">In a garden area</string>
     <string name="quest_seating_beach">At a beach</string>
     <string name="quest_outdoor_seating_name_title">What kind of outdoor seating does this place have?</string>
+
+    <!-- artwork type -->
+    <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
+    <string name="quest_artwork_land_art">Land art</string>
 
     <!-- other -->
     <string name="quest_contact_phone">What is the phone number of this place?</string>
@@ -290,7 +306,7 @@
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note.</string>
     <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the main settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
-    <string name="default_disabled_msg_ee">This quest is disabled by default because it is only available in StreetComplete EE, and as such may not always be answerable.</string>
+    <string name="default_disabled_msg_ee">Quests added in StreetComplete EE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.</string>
 
 
     <!-- additional strings for quests available in upstream StreetComplete -->
