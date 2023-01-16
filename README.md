@@ -10,18 +10,18 @@ Due to the different name used in changesets, edits made with this version do no
 ## Notable changes
 * Option to directly edit tags
 * More customizable behavior, including settings or element selection for many quests
-* Overlay with customizable element selection and color source (tag regex)
+  * Such customization should be handled with care. There are some safeguards, modifying element selection could still lead to app crashes or bad tagging.
+* Overlay with customizable element selection and color source (regular expression evaluating tags)
 * Create nodes anywhere, using presets from iD tagging schema for pre-filling tags
-* Ability to create personal notes in a GPX file instead of uploading them to OSM
+* Ability to create notes in a GPX file instead of uploading them to OSM
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
 * Quests based on external data sources (currently available: Osmose and CSV file)
 * Quick settings, e.g. for fast switch of preset
-* Level filter (available onyl in quick settings menu)
+* Level filter (available only in quick settings menu)
 * Import / export for settings, quest presets, hidden quests and custom overlays
 * Show all quests for the selected element at once, and also nearby quests
 * More answers for some quests, like additional building types or specifying that a crossing is raised
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
-* Performance improvements (balanced by more data to process, so don't expect much improvement over StreetComplete)
 * Switch the main menu to a grid with six full-size buttons
 * Display a track from a GPX file, e.g. for following a planned route while surveying
 * Switch to satellite / aerial imagery background, and customize the source URL
@@ -38,6 +38,7 @@ Translations for strings added in expert edition can be done [on POEditor](https
 ## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
 * Creating, moving and deleting nodes is possible
+  * Inserting nodes into a way is not (yet) possible
 * Guidelines are useful suggestions, but not enforced.
 * Quests may be based on external sources, not just on element selection.
 

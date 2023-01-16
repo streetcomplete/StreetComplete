@@ -197,8 +197,9 @@ class EditTagsAdapter(
     override fun getItemId(position: Int) = position.toLong()
 
     // todo: get geometry type, and use it for suggestions
-    //  means that generateTagSuggestions needs to be adjusted to generate something containing allowed geometry types!
+    //  means that generateTagSuggestions needs to be adjusted to generate something containing allowed geometry types
     //  and maybe suggestions should only be for a single geometry type? or for all geometry types for which this key is allowed?
+    //  basic test: no building suggestion when adding a shop node
     private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
         val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
         if (featureId == null) return suggestions.filterNot { it in tags.keys }
@@ -233,6 +234,8 @@ class EditTagsAdapter(
     }
 
     companion object {
+        // todo: this thing is not really memory efficient, as it mostly contains duplicate strings
+        //  ideally FeatureDictionary at some point implements fields / moreFields
         private val keySuggestionsForFeatureId = hashMapOf<String, Pair<List<String>?, List<String>?>>()
         private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
     }
