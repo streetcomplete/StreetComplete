@@ -257,6 +257,7 @@ private suspend fun createEditAction(
     val isFeatureWithName = newFeature.addTags?.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && IS_DISUSED_SHOP_EXPRESSION.matches(element)
+    val isVacant = newFeature.id == "shop/vacant"
 
     val doReplaceShop =
         // do not replace shop if:
@@ -277,6 +278,8 @@ private suspend fun createEditAction(
             // was vacant before but not anymore (-> cleans up any previous tags that may be
             // associated with the old place
             || wasVacant && hasChangedFeature
+            // it's vacant now
+            || isVacant
         ) true
         // ask whether it is still the same shop if:
         // + the name was changed
