@@ -18,7 +18,7 @@ class LastPickedValuesStore<T : Any>(
         var previous = ""
         var previousCount = 1
         val maxCount = 2
-        val lastValues = newValues.asSequence().map(serialize) + getRaw().filter {
+        val lastValues = (newValues.asSequence().map(serialize) + getRaw()).filter {
             if (it != previous) {
                 previous = it
                 previousCount = 1

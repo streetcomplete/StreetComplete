@@ -160,7 +160,6 @@ class QuestAutoSyncer(
     private fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
-        if (!isConnected) return
         if (!prefs.getBoolean(Prefs.AUTO_DOWNLOAD, true)) return
         if (downloadController.isDownloadInProgress) return
 

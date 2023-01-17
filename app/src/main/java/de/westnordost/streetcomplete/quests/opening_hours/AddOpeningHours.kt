@@ -143,6 +143,8 @@ class AddOpeningHours(
         if (!filter.matches(element)) return false
         if (prefs.getBoolean(RESURVEY_ALL_OPENING_HOURS, false)) return true
         val tags = element.tags
+        // only show places that can be named somehow
+        if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
         val oh = tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a

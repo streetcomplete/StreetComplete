@@ -310,8 +310,11 @@
 
 
     <!-- additional strings for quests available in upstream StreetComplete -->
+    <!-- should be very similar to normal SC quest_smoothness_square_title -->
     <string name="quest_smoothness_square_title2">What’s the surface quality of this %s square?</string>
+    <!-- should be very similar to normal SC quest_smoothness_road_title -->
     <string name="quest_smoothness_road_title2">What’s the surface quality of this %s road here?</string>
+    <!-- should be very similar to normal SC quest_smoothness_title -->
     <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
     <string name="quest_surface_value_stepping_stones">Stepping stones</string>
@@ -374,5 +377,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
     </string>
     <string name="move_node_of_other_relation">This node is part of following non-multipolygon relations: %s</string>
     <string name="dialog_button_understood">Understood</string>
+    <!-- should be very similar to normal SC quest_move_node_message -->
+    <string name="quest_move_node_message_external_source">You can correct the position by moving the feature. Note that the position of this external source quest may not move with the node.\nMove it now?</string>
 
 </resources>

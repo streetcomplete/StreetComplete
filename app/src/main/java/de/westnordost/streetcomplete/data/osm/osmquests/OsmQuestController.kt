@@ -296,7 +296,8 @@ class OsmQuestController internal constructor(
     }
 
     override fun getVisible(key: OsmQuestKey): OsmQuest? {
-        val entry = db.getIfNotHidden(key) ?: return null
+        val entry = db.get(key) ?: return null
+        if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
         if (isBlacklistedPosition(geometry.center)) return null
         return createOsmQuest(entry, geometry)

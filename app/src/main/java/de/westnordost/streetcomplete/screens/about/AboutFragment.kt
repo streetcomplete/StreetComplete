@@ -67,6 +67,19 @@ class AboutFragment : PreferenceFragmentCompat() {
             openUrl("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
         }
 
+        findPreference<Preference>("translate")?.setOnPreferenceClickListener {
+            AlertDialog.Builder(requireContext())
+                .setMessage(resources.getString(
+                    R.string.about_description_translate,
+                    Locale.getDefault().displayLanguage,
+                    resources.getInteger(R.integer.translation_completeness)
+                ))
+                .setPositiveButton("StreetComplete") { _, _ -> openUrl("https://poeditor.com/join/project/IE4GC127Ki")}
+                .setNegativeButton("Expert Edition") { _, _ -> openUrl("https://poeditor.com/join/project/iAUihUmKW7")}
+                .show()
+            true
+        }
+
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
             openUrl("https://github.com/Helium314/StreetComplete/issues/")
         }

@@ -23,6 +23,7 @@ Due to the different name used in changesets, edits made with this version do no
 * More answers for some quests, like additional building types or specifying that a crossing is raised
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Switch the main menu to a grid with six full-size buttons
+* Downloading data will interrupt running uploads (will resume afterwards)
 * Display a track from a GPX file, e.g. for following a planned route while surveying
 * Switch to satellite / aerial imagery background, and customize the source URL
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)

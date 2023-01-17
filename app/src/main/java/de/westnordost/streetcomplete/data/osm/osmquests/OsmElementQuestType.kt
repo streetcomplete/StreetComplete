@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.osmose.PREF_OSMOSE_LEVEL
 
 /** Quest type where each quest refers to one OSM element.
  *

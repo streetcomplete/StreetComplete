@@ -28,22 +28,6 @@ class OsmQuestDao(private val db: Database) {
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) { it.toOsmQuestEntry() }
 
-    fun getIfNotHidden(key: OsmQuestKey): OsmQuestDaoEntry? {
-        return db.rawQuery("""SELECT * FROM $NAME
-            WHERE NOT EXISTS
-            (
-              SELECT 1 FROM ${OsmQuestsHiddenTable.NAME}
-              WHERE ${OsmQuestsHiddenTable.Columns.ELEMENT_ID} = ${key.elementId}
-              AND ${OsmQuestsHiddenTable.Columns.ELEMENT_TYPE} = '${key.elementType}'
-              AND ${OsmQuestsHiddenTable.Columns.QUEST_TYPE} = '${key.questTypeName}'
-            )
-            AND $ELEMENT_ID = ${key.elementId}
-            AND $ELEMENT_TYPE = '${key.elementType}'
-            AND $QUEST_TYPE = '${key.questTypeName}'
-            ;
-        """.trimIndent()) { it.toOsmQuestEntry() }.takeIf { it.isNotEmpty() }?.first()
-    }
-
     fun delete(key: OsmQuestKey): Boolean =
         db.delete(NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
