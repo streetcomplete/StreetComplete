@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.math.contains
 import org.koin.core.component.KoinComponent
@@ -29,7 +29,7 @@ class CustomQuestList(context: Context) : KoinComponent {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val questController: OtherSourceQuestController by inject()
+    private val questController: ExternalSourceQuestController by inject()
 
     init {
         val oldfile = File(path, FILENAME_OLD)
@@ -73,27 +73,27 @@ class CustomQuestList(context: Context) : KoinComponent {
 
     fun getEntry(id: String) = entriesById[id]
 
-    fun getQuest(id: String): OtherSourceQuest? {
+    fun getQuest(id: String): ExternalSourceQuest? {
         val entry = getEntry(id) ?: return null
         if (entry.solved) return null
         val geometry = entry.elementKey?.let { mapDataWithEditsSource.getGeometry(it.type, it.id) }
             ?: entry.position?.let { ElementPointGeometry(it) } ?: return null
-        return OtherSourceQuest(
+        return ExternalSourceQuest(
             id,
             geometry,
-            questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as OtherSourceQuestType,
+            questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as ExternalSourceQuestType,
             geometry.center
         ).apply { entry.elementKey?.let { elementKey = it } }
     }
 
-    fun get(bbox: BoundingBox): List<OtherSourceQuest> {
-        val type = questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as OtherSourceQuestType
+    fun get(bbox: BoundingBox): List<ExternalSourceQuest> {
+        val type = questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as ExternalSourceQuestType
         return entriesById.values.mapNotNull { entry ->
             if (entry.solved) return@mapNotNull null
             val geometry = entry.elementKey?.let { mapDataWithEditsSource.getGeometry(it.type, it.id) }
                 ?: entry.position?.let { ElementPointGeometry(it) } ?: return@mapNotNull null
             if (geometry.center !in bbox) return@mapNotNull null
-            OtherSourceQuest(entry.id, geometry, type, geometry.center)
+            ExternalSourceQuest(entry.id, geometry, type, geometry.center)
         }
     }
 

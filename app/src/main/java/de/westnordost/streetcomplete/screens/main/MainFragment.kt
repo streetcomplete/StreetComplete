@@ -76,7 +76,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -101,7 +101,6 @@ import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
-import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -1304,7 +1303,7 @@ class MainFragment :
     private fun getHighlightedElements(quest: Quest, element: Element? = null): List<Marker> {
         val bbox = when (quest) {
             is OsmQuest -> quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
-            is OtherSourceQuest -> quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
+            is ExternalSourceQuest -> quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
             else -> return emptyList()
         }
         var mapData: MapDataWithGeometry? = null
@@ -1325,7 +1324,7 @@ class MainFragment :
         val elements =
             when (quest) {
                 is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
-                is OtherSourceQuest -> quest.type.getHighlightedElements(::getMapData)
+                is ExternalSourceQuest -> quest.type.getHighlightedElements(::getMapData)
                 else -> emptySequence()
             }
         if (elements == emptySequence<Element>()) return emptyList()

@@ -5,10 +5,10 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 
-class CustomQuest(private val customQuestList: CustomQuestList) : OtherSourceQuestType {
+class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSourceQuestType {
 
     override val changesetComment = "Edit user-defined list of elements"
     override val wikiLink = "Tags"
@@ -27,9 +27,9 @@ class CustomQuest(private val customQuestList: CustomQuestList) : OtherSourceQue
 
     override fun upload() { customQuestList.deleteSolved() }
 
-    override fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest> = customQuestList.get(bbox)
+    override fun getQuests(bbox: BoundingBox): Collection<ExternalSourceQuest> = customQuestList.get(bbox)
 
-    override fun get(id: String): OtherSourceQuest? = customQuestList.getQuest(id)
+    override fun get(id: String): ExternalSourceQuest? = customQuestList.getQuest(id)
 
     override fun onAddedEdit(edit: ElementEdit, id: String) = customQuestList.markSolved(id)
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.data.externalsource
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
  */
 // do it very similar to OsmElementQuestType
 // for cleanup, each quest type should override deleteMetadataOlderThan, or old data will remain
-interface OtherSourceQuestType : QuestType, ElementEditType {
+interface ExternalSourceQuestType : QuestType, ElementEditType {
     // like for OsmQuestType
     override val title: Int get() = getTitle(emptyMap())
     fun getTitle(tags: Map<String, String>): Int
@@ -44,7 +44,7 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
      *
      *  Download will only happen if [downloadEnabled] is true.
      */
-    fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
+    fun download(bbox: BoundingBox): Collection<ExternalSourceQuest>
 
     /**
      *  Upload changes to the server. Uploaded quests should not be created again on [download].
@@ -55,10 +55,10 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     fun upload()
 
     /** Return all quests inside the given [bbox]. This should be fast and not require internet access. */
-    fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest>
+    fun getQuests(bbox: BoundingBox): Collection<ExternalSourceQuest>
 
     /** Return quest with the given [id], or null. */
-    fun get(id: String): OtherSourceQuest?
+    fun get(id: String): ExternalSourceQuest?
 
     /**
      *  Called if an ElementEdit was done as part of solving the quest with the given [id].

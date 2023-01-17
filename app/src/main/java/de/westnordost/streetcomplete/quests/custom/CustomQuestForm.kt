@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
-import de.westnordost.streetcomplete.quests.AbstractOtherSourceQuestForm
+import de.westnordost.streetcomplete.quests.AbstractExternalSourceQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.toTags
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 
-class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractOtherSourceQuestForm() {
+class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractExternalSourceQuestForm() {
 
     override val contentLayoutResId = R.layout.quest_osmose_custom_quest
     private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
@@ -24,13 +24,13 @@ class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractOt
     private var tagsText: String? = null
     private var pos: LatLon? = null
 
-    private val questController: OtherSourceQuestController by inject()
+    private val questController: ExternalSourceQuestController by inject()
 
     override val buttonPanelAnswers by lazy {
         val t = tagsText
         val p = pos
         listOfNotNull(
-        AnswerItem(R.string.quest_custom_quest_remove) { questController.delete(questKey as OtherSourceQuestKey) },
+        AnswerItem(R.string.quest_custom_quest_remove) { questController.delete(questKey as ExternalSourceQuestKey) },
         if (t != null && p != null)
             AnswerItem(R.string.quest_custom_quest_add_node) {
                 val f = CreatePoiFragment.createWithPrefill(t, p, questKey)
@@ -45,11 +45,11 @@ class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractOt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        entryId = (questKey as OtherSourceQuestKey).id
+        entryId = (questKey as ExternalSourceQuestKey).id
         val entry = customQuestList.getEntry(entryId)
         if (entry == null) {
             context?.toast(R.string.quest_custom_quest_osmose_not_found)
-            questController.delete(questKey as OtherSourceQuestKey)
+            questController.delete(questKey as ExternalSourceQuestKey)
             return
         }
         val text = entry.text

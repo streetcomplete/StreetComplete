@@ -10,17 +10,17 @@ import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
 import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
 import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
-import de.westnordost.streetcomplete.data.edithistory.OtherSourceQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.ExternalSourceQuestHiddenKey
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import kotlinx.coroutines.CoroutineScope
@@ -146,10 +146,10 @@ private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questType.name
     )
-    is OtherSourceQuestHidden -> listOf(
+    is ExternalSourceQuestHidden -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OTHER_SOURCE_QUEST,
-        MARKER_OTHER_SOURCE to key.otherSourceQuestKey.source,
-        MARKER_OTHER_SOURCE_ID to key.otherSourceQuestKey.id,
+        MARKER_OTHER_SOURCE to key.externalSourceQuestKey.source,
+        MARKER_OTHER_SOURCE_ID to key.externalSourceQuestKey.id,
         MARKER_QUEST_TYPE to questType.name
     )
     else -> throw IllegalArgumentException()
@@ -169,6 +169,6 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
         OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     EDIT_TYPE_HIDE_OTHER_SOURCE_QUEST ->
-        OtherSourceQuestHiddenKey(OtherSourceQuestKey(getValue(MARKER_OTHER_SOURCE), getValue(MARKER_OTHER_SOURCE_ID)))
+        ExternalSourceQuestHiddenKey(ExternalSourceQuestKey(getValue(MARKER_OTHER_SOURCE), getValue(MARKER_OTHER_SOURCE_ID)))
     else -> null
 }

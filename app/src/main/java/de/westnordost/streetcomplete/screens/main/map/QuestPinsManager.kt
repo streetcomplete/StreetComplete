@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -292,7 +292,7 @@ private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questTypeName
     )
-    is OtherSourceQuestKey -> listOf(
+    is ExternalSourceQuestKey -> listOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OTHER,
         MARKER_OTHER_ID to id,
         MARKER_OTHER_SOURCE to source,
@@ -309,6 +309,6 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
             getValue(MARKER_QUEST_TYPE)
         )
     QUEST_GROUP_OTHER ->
-        OtherSourceQuestKey(getValue(MARKER_OTHER_ID), getValue(MARKER_OTHER_SOURCE))
+        ExternalSourceQuestKey(getValue(MARKER_OTHER_ID), getValue(MARKER_OTHER_SOURCE))
     else -> null
 }

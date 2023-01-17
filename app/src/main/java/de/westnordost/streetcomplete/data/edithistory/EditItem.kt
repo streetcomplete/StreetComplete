@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
 
 val Edit.icon: Int get() = when (this) {
     is ElementEdit -> type.icon
@@ -22,7 +22,7 @@ val Edit.icon: Int get() = when (this) {
     }
     is OsmNoteQuestHidden -> R.drawable.ic_quest_notes
     is OsmQuestHidden -> questType.icon
-    is OtherSourceQuestHidden -> questType.icon
+    is ExternalSourceQuestHidden -> questType.icon
     else -> 0
 }
 
@@ -37,6 +37,6 @@ val Edit.overlayIcon: Int get() = when (this) {
     }
     is OsmNoteQuestHidden -> R.drawable.ic_undo_visibility
     is OsmQuestHidden -> R.drawable.ic_undo_visibility
-    is OtherSourceQuestHidden -> R.drawable.ic_undo_visibility
+    is ExternalSourceQuestHidden -> R.drawable.ic_undo_visibility
     else -> 0
 }

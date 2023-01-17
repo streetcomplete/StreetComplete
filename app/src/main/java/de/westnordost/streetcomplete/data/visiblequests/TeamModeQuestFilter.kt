@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -38,7 +38,7 @@ class TeamModeQuestFilter internal constructor(
     private val Quest.stableId: Long get() = when (this) {
         is OsmQuest -> elementId
         is OsmNoteQuest -> id
-        is OtherSourceQuest -> id.hashCode().toLong()
+        is ExternalSourceQuest -> id.hashCode().toLong()
         else -> 0
     }
 

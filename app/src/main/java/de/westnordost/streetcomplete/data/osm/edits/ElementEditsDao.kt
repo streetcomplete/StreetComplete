@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElem
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.tagEdit
@@ -145,7 +145,7 @@ class ElementEditsDao(
         getLong(ID),
         questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
             ?: overlayRegistry.getByName(getString(QUEST_TYPE))
-            ?: questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OtherSourceQuestType
+            ?: questTypeRegistry.getByName(getString(QUEST_TYPE)) as? ExternalSourceQuestType
             ?: createPoiEdit.takeIf { getString(QUEST_TYPE) == createPoiEdit.name }
             ?: tagEdit.takeIf { getString(QUEST_TYPE) == tagEdit.name }!!,
         ElementType.valueOf(getString(ELEMENT_TYPE)),

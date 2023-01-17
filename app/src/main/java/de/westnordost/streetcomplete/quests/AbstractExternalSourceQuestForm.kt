@@ -21,9 +21,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -36,12 +36,12 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 
-abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
+abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
     // overridable by child classes
     open val otherAnswers = listOf<AnswerItem>()
     open val buttonPanelAnswers = listOf<AnswerItem>()
     private val elementEditsController: ElementEditsController by inject()
-    private val otherQuestController: OtherSourceQuestController by inject()
+    private val otherQuestController: ExternalSourceQuestController by inject()
     protected val mapDataSource: MapDataWithEditsSource by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
@@ -64,7 +64,7 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
             }
         }
         // set element if available
-        otherQuestController.getVisible(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
+        otherQuestController.getVisible(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
         element?.let { setTitleHintLabel(getNameAndLocationLabel(it, resources, featureDictionaryFuture.get())) }
@@ -95,7 +95,7 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
             if (e.type == ElementType.NODE)
                 answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })
-            if (e is Node) { // OtherSourceQuests require expert mode to be enabled (at least temporarily anyway, so user has read the warning
+            if (e is Node) { // ExternalSourceQuests require expert mode to be enabled at least temporarily, so no need to check
                 answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
             }
             if (e.isSplittable()) {
@@ -120,10 +120,10 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
 
     private fun onClickMoveNodeAnswer() {
         context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_move_node_message)
+            .setMessage(R.string.quest_move_node_message_external_source)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onMoveNode(questType as OtherSourceQuestType, element as Node)
+                listener?.onMoveNode(questType as ExternalSourceQuestType, element as Node)
             }
             .show()
         }
@@ -134,7 +134,7 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onSplitWay(questType as OtherSourceQuestType, element as Way, geometry as ElementPolylinesGeometry)
+                listener?.onSplitWay(questType as ExternalSourceQuestType, element as Way, geometry as ElementPolylinesGeometry)
             }
             .show()
         }
@@ -171,21 +171,21 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
         val questTitle = resources.getQuestTitle(questType, element?.tags ?: emptyMap())
         val actualTitle = getCurrentTitle()
         val show = if (actualTitle.startsWith(questTitle)) actualTitle
-            else "$questTitle / $actualTitle" // title for Osmose quest contains more information, and this might also be the case for future OtherSourceQuests
+            else "$questTitle / $actualTitle" // both may contain relevant information
         val leaveNoteContext = "Unable to answer \"$show\""
-        listener?.onComposeNote(questType as OtherSourceQuestType, element ?: dummyElement, geometry, leaveNoteContext)
+        listener?.onComposeNote(questType as ExternalSourceQuestType, element ?: dummyElement, geometry, leaveNoteContext)
     }
 
     protected fun tempHideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { otherQuestController.tempHide(questKey as OtherSourceQuestKey) }
+            withContext(Dispatchers.IO) { otherQuestController.tempHide(questKey as ExternalSourceQuestKey) }
             listener?.onQuestHidden(questKey)
         }
     }
 
     protected fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { otherQuestController.hide(questKey as OtherSourceQuestKey) }
+            withContext(Dispatchers.IO) { otherQuestController.hide(questKey as ExternalSourceQuestKey) }
             listener?.onQuestHidden(questKey)
         }
     }
@@ -201,24 +201,24 @@ abstract class AbstractOtherSourceQuestForm : AbstractQuestForm(), IsShowingQues
             setLocked(false)
             return
         }
-        val qt = questType as OtherSourceQuestType
+        val questType = questType as ExternalSourceQuestType
         tempHideQuest() // make it disappear. the questType should take care the quest does not appear again
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(
                 Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             viewLifecycleScope.launch {
                 // Only listener is mainFragment for closing bottom sheet and showing the quest
                 // solved animation, so it's ok to call even though the edit was not done yet.
-                listener?.onEdited(qt, element, geometry)
+                listener?.onEdited(questType, element, geometry)
             }
             // don't hide quest here, this could be different for each type
             withContext(Dispatchers.IO) {
-                elementEditsController.add(qt, element, geometry, "survey", action, questKey)
+                elementEditsController.add(questType, element, geometry, "survey", action, questKey)
             }
         } else {
             withContext(Dispatchers.IO) {
-                elementEditsController.add(qt, element, geometry, "survey", action, questKey)
+                elementEditsController.add(questType, element, geometry, "survey", action, questKey)
             }
-            listener?.onEdited(qt, element, geometry)
+            listener?.onEdited(questType, element, geometry)
         }
     }
 }

@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
 import java.util.TreeSet
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -28,7 +28,7 @@ class EditHistoryController(
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,
     private val osmQuestController: OsmQuestController,
-    private val otherSourceQuestController: OtherSourceQuestController,
+    private val externalSourceQuestController: ExternalSourceQuestController,
 ) : EditHistorySource {
     private val listeners: MutableList<EditHistorySource.Listener> = CopyOnWriteArrayList()
 
@@ -60,9 +60,9 @@ class EditHistoryController(
         override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
-    private val otherSourceQuestHiddenListener = object : OtherSourceQuestController.HideQuestListener {
-        override fun onHid(edit: OtherSourceQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OtherSourceQuestHidden) { onDeleted(listOf(edit)) }
+    private val externalSourceQuestHiddenListener = object : ExternalSourceQuestController.HideQuestListener {
+        override fun onHid(edit: ExternalSourceQuestHidden) { onAdded(edit) }
+        override fun onUnhid(edit: ExternalSourceQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
 
@@ -77,7 +77,7 @@ class EditHistoryController(
         noteEditsController.addListener(osmNoteEditsListener)
         noteQuestController.addHideQuestsListener(osmNoteQuestHiddenListener)
         osmQuestController.addHideQuestsListener(osmQuestHiddenListener)
-        otherSourceQuestController.addHideListener(otherSourceQuestHiddenListener)
+        externalSourceQuestController.addHideListener(externalSourceQuestHiddenListener)
     }
 
     fun undo(edit: Edit): Boolean {
@@ -87,7 +87,7 @@ class EditHistoryController(
             is NoteEdit -> noteEditsController.undo(edit)
             is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
             is OsmQuestHidden -> osmQuestController.unhide(edit.questKey)
-            is OtherSourceQuestHidden -> otherSourceQuestController.unhide(edit.questKey)
+            is ExternalSourceQuestHidden -> externalSourceQuestController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
@@ -100,7 +100,7 @@ class EditHistoryController(
         result += noteEditsController.getAll()
         result += noteQuestController.getAllHiddenNewerThan(maxAge)
         result += osmQuestController.getAllHiddenNewerThan(maxAge)
-        result += otherSourceQuestController.getAllHiddenNewerThan(maxAge)
+        result += externalSourceQuestController.getAllHiddenNewerThan(maxAge)
         return result
     }
 
@@ -111,7 +111,7 @@ class EditHistoryController(
             cache.clear()
             cache.addAll(fetchAll())
         }
-        otherSourceQuestController.cleanElementEdits(cache.mapNotNull { (it as? ElementEdit)?.id })
+        externalSourceQuestController.cleanElementEdits(cache.mapNotNull { (it as? ElementEdit)?.id })
         return r
     }
 
@@ -121,7 +121,7 @@ class EditHistoryController(
         return when (key) {
             is OsmQuestHiddenKey -> osmQuestController.getHidden(key.osmQuestKey)
             is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
-            is OtherSourceQuestHiddenKey -> otherSourceQuestController.getHidden(key.otherSourceQuestKey)
+            is ExternalSourceQuestHiddenKey -> externalSourceQuestController.getHidden(key.externalSourceQuestKey)
             else -> null
         }
     }
@@ -138,7 +138,7 @@ class EditHistoryController(
         if (allHidden)
             (noteQuestController.getAllHiddenNewerThan(0L)
                 + osmQuestController.getAllHiddenNewerThan(0L)
-                + otherSourceQuestController.getAllHiddenNewerThan(0L)
+                + externalSourceQuestController.getAllHiddenNewerThan(0L)
             ).sortedByDescending { it.createdTimestamp }
         else synchronized(cache) { cache.toList() }
 

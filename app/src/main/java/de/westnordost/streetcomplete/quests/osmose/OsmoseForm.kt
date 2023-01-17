@@ -6,9 +6,9 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOtherSourceQuestForm
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.quests.AbstractExternalSourceQuestForm
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
@@ -18,13 +18,13 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class OsmoseForm : AbstractOtherSourceQuestForm() {
+class OsmoseForm : AbstractExternalSourceQuestForm() {
 
     private val osmoseDao: OsmoseDao by inject()
 
     private lateinit var issue: OsmoseIssue
 
-    private val questController: OtherSourceQuestController by inject()
+    private val questController: ExternalSourceQuestController by inject()
 
     override val buttonPanelAnswers by lazy {
         listOfNotNull(
@@ -85,7 +85,7 @@ class OsmoseForm : AbstractOtherSourceQuestForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val key = questKey as OtherSourceQuestKey
+        val key = questKey as ExternalSourceQuestKey
         val i = osmoseDao.getIssue(key.id)
         if (i == null) {
             context?.toast(R.string.quest_custom_quest_osmose_not_found)
@@ -110,7 +110,7 @@ class OsmoseForm : AbstractOtherSourceQuestForm() {
         AnswerItem(R.string.quest_osmose_hide_type_specific) { addToIgnorelist("${issue.item}/${issue.itemClass}") },
         AnswerItem(R.string.quest_osmose_hide_type_generic) { addToIgnorelist(issue.item.toString()) },
         AnswerItem(R.string.quest_osmose_delete_this_issue) {
-            questController.delete(questKey as OtherSourceQuestKey)
+            questController.delete(questKey as ExternalSourceQuestKey)
         },
     )
     }

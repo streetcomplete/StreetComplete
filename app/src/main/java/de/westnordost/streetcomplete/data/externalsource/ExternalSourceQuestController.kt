@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.data.externalsource
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -19,17 +19,17 @@ import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
-class OtherSourceQuestController(
+class ExternalSourceQuestController(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val otherSourceDao: OtherSourceDao,
+    private val externalSourceDao: ExternalSourceDao,
     elementEditsController: ElementEditsController,
 ) : ElementEditsSource.Listener {
 
-    private val hiddenCache = otherSourceDao.getAllHidden().toHashSet()
+    private val hiddenCache = externalSourceDao.getAllHidden().toHashSet()
 
     interface QuestListener {
-        fun onUpdated(addedQuests: Collection<OtherSourceQuest> = emptyList(), deletedQuestKeys: Collection<OtherSourceQuestKey> = emptyList())
+        fun onUpdated(addedQuests: Collection<ExternalSourceQuest> = emptyList(), deletedQuestKeys: Collection<ExternalSourceQuestKey> = emptyList())
         fun onInvalidate()
     }
     private val questListeners: MutableList<QuestListener> = CopyOnWriteArrayList()
@@ -37,7 +37,7 @@ class OtherSourceQuestController(
         questListeners.add(questListener)
     }
 
-    private val questTypes get() = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
+    private val questTypes get() = questTypeRegistry.filterIsInstance<ExternalSourceQuestType>()
     private val questTypeNamesBySource = questTypes.associate { it.source to it.name }
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
@@ -47,23 +47,23 @@ class OtherSourceQuestController(
         elementEditsController.addListener(this)
     }
 
-    fun delete(key: OtherSourceQuestKey) {
+    fun delete(key: ExternalSourceQuestKey) {
         getQuestType(key)?.deleteQuest(key.id)
         questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
-    fun getAllInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null, getHidden: Boolean = false): List<OtherSourceQuest> {
-        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes)
+    fun getAllInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null, getHidden: Boolean = false): List<ExternalSourceQuest> {
+        val quests = (visibleQuestTypes?.filterIsInstance<ExternalSourceQuestType>() ?: questTypes)
             .flatMap { it.getQuests(bbox) }
         return if (getHidden) quests else quests.filterNot { it.key in hiddenCache }
     }
 
-    fun getVisible(key: OtherSourceQuestKey): OtherSourceQuest? {
+    fun getVisible(key: ExternalSourceQuestKey): ExternalSourceQuest? {
         if (key in hiddenCache) return null
         return getQuestType(key)?.get(key.id)
     }
 
-    /** calls [download] for each [OtherSourceQuestType] enabled in this country, thus may take long */
+    /** calls [download] for each [ExternalSourceQuestType] enabled in this country, thus may take long */
     // todo: split it up into download and onMapDataDownloaded callback?
     //  would allow for faster overall download, but is more complicated to handle (especially getting obsolete quests)
     //  but only worth considering if there are more sources, or the slow osmose fixable download will be implemented
@@ -78,7 +78,7 @@ class OtherSourceQuestController(
                 scope.async {
                     val previousQuests = type.getQuests(bbox).map { it.key }
                     val quests = type.download(bbox)
-                    val questKeys = HashSet<OtherSourceQuestKey>(quests.size).apply { quests.forEach { add(it.key) } }
+                    val questKeys = HashSet<ExternalSourceQuestKey>(quests.size).apply { quests.forEach { add(it.key) } }
                     quests to previousQuests.filterNot { it in questKeys }
                 }
             }.awaitAll().unzip()
@@ -88,25 +88,25 @@ class OtherSourceQuestController(
         }
     }
 
-    /** calls [upload] for each [OtherSourceQuestType], thus may take long */
+    /** calls [upload] for each [ExternalSourceQuestType], thus may take long */
     fun upload() = questTypes.forEach { it.upload() }
 
     fun invalidate() = questListeners.forEach { it.onInvalidate() }
 
     /** to be called if quests have been added outside a download, so they can be shown immediately */
-    fun addQuests(quests: Collection<OtherSourceQuest>) =
+    fun addQuests(quests: Collection<ExternalSourceQuest>) =
         questListeners.forEach { it.onUpdated(addedQuests = quests) }
 
     // hiding / unhiding
 
     // tempHide is not really hiding, and is also used so pins actually disappear when quest is solved
-    fun tempHide(key: OtherSourceQuestKey) {
+    fun tempHide(key: ExternalSourceQuestKey) {
         questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
     interface HideQuestListener {
-        fun onHid(edit: OtherSourceQuestHidden)
-        fun onUnhid(edit: OtherSourceQuestHidden)
+        fun onHid(edit: ExternalSourceQuestHidden)
+        fun onUnhid(edit: ExternalSourceQuestHidden)
         fun onUnhidAll()
     }
     private val hideListeners: MutableList<HideQuestListener> = CopyOnWriteArrayList()
@@ -117,22 +117,22 @@ class OtherSourceQuestController(
         hideListeners.remove(hideQuestListener)
     }
 
-    fun hide(key: OtherSourceQuestKey) {
+    fun hide(key: ExternalSourceQuestKey) {
         val type = getQuestType(key) ?: return
         val quest = getVisible(key) ?: return
         hiddenCache.add(key)
-        val timestamp = otherSourceDao.hide(key)
+        val timestamp = externalSourceDao.hide(key)
         if (timestamp > 0) {
-            val hiddenQuest = OtherSourceQuestHidden(key.id, type, quest.position, timestamp)
+            val hiddenQuest = ExternalSourceQuestHidden(key.id, type, quest.position, timestamp)
             hideListeners.forEach { it.onHid(hiddenQuest) }
             questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
         }
     }
 
-    fun unhide(key: OtherSourceQuestKey): Boolean {
+    fun unhide(key: ExternalSourceQuestKey): Boolean {
         if (!hiddenCache.remove(key)) return false
         val hiddenQuest = getHidden(key) ?: return false
-        if (!otherSourceDao.unhide(key)) return false
+        if (!externalSourceDao.unhide(key)) return false
         hideListeners.forEach { it.onUnhid(hiddenQuest) }
         getVisible(key)?.let { q -> questListeners.forEach { it.onUpdated(addedQuests = listOf(q)) } }
         return true
@@ -140,61 +140,61 @@ class OtherSourceQuestController(
 
     fun unhideAll(): Int {
         hiddenCache.clear()
-        val count = otherSourceDao.unhideAll()
+        val count = externalSourceDao.unhideAll()
         hideListeners.forEach { it.onUnhidAll() }
         // no need to call onInvalidated on the listeners, OsmQuestController is already doing this
         return count
     }
 
-    fun getHidden(key: OtherSourceQuestKey, timestamp: Long? = null): OtherSourceQuestHidden? {
-        val ts = timestamp ?: otherSourceDao.getHiddenTimestamp(key) ?: return null
+    fun getHidden(key: ExternalSourceQuestKey, timestamp: Long? = null): ExternalSourceQuestHidden? {
+        val ts = timestamp ?: externalSourceDao.getHiddenTimestamp(key) ?: return null
         val quest = getQuestType(key)?.get(key.id) ?: return null
-        return OtherSourceQuestHidden(quest.id, quest.type, quest.position, ts)
+        return ExternalSourceQuestHidden(quest.id, quest.type, quest.position, ts)
     }
 
-    fun getAllHiddenNewerThan(timestamp: Long): List<OtherSourceQuestHidden> {
-        val hiddenKeys = otherSourceDao.getAllHiddenNewerThan(timestamp)
+    fun getAllHiddenNewerThan(timestamp: Long): List<ExternalSourceQuestHidden> {
+        val hiddenKeys = externalSourceDao.getAllHiddenNewerThan(timestamp)
         return hiddenKeys.mapNotNull { getHidden(it.first, it.second) }
     }
 
     // ElementEditsListener
 
-    // ignore, and actually this should never be called for OtherSourceQuestType
+    // ignore, and actually this should never be called for ExternalSourceQuestType
     override fun onAddedEdit(edit: ElementEdit) {}
 
     override fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
-        if (key is OtherSourceQuestKey) {
+        if (key is ExternalSourceQuestKey) {
             getQuestType(key)?.onAddedEdit(edit, key.id)
-            otherSourceDao.addElementEdit(key, edit.id)
+            externalSourceDao.addElementEdit(key, edit.id)
             questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
         }
     }
 
     override fun onSyncedEdit(edit: ElementEdit) {
-        val type = edit.type as? OtherSourceQuestType ?: return
-        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        val type = edit.type as? ExternalSourceQuestType ?: return
+        val key = externalSourceDao.getKeyForElementEdit(edit.id)
         // don't delete synced edits, this will be done by ElementEditsController (using onDeletedEdits)
         type.onSyncedEdit(edit, key?.id)
     }
 
     fun onSyncEditFailed(edit: ElementEdit) {
-        val type = edit.type as? OtherSourceQuestType ?: return
-        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        val type = edit.type as? ExternalSourceQuestType ?: return
+        val key = externalSourceDao.getKeyForElementEdit(edit.id)
         type.onSyncEditFailed(edit, key?.id)
     }
 
     suspend fun onUpload(edit: ElementEdit): Boolean {
-        val type = edit.type as? OtherSourceQuestType ?: return true
-        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        val type = edit.type as? ExternalSourceQuestType ?: return true
+        val key = externalSourceDao.getKeyForElementEdit(edit.id)
         return type.onUpload(edit, key?.id)
     }
 
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
         val restoredQuests = edits.mapNotNull { edit ->
-            val key = otherSourceDao.getKeyForElementEdit(edit.id)
-            otherSourceDao.deleteElementEdit(edit.id)
-            val type = questTypeNamesBySource[key?.source]?.let { questTypeRegistry.getByName(it) } as? OtherSourceQuestType
+            val key = externalSourceDao.getKeyForElementEdit(edit.id)
+            externalSourceDao.deleteElementEdit(edit.id)
+            val type = questTypeNamesBySource[key?.source]?.let { questTypeRegistry.getByName(it) } as? ExternalSourceQuestType
             type?.onDeletedEdit(edit, key?.id)
             if (key == null) null
             else getVisible(key)
@@ -204,10 +204,10 @@ class OtherSourceQuestController(
 
     // called when old elementEdits are removed
     fun cleanElementEdits(elementEditsIds: Collection<Long>) =
-        otherSourceDao.deleteAllExceptForElementEdits(elementEditsIds)
+        externalSourceDao.deleteAllExceptForElementEdits(elementEditsIds)
 
-    fun getQuestType(key: OtherSourceQuestKey): OtherSourceQuestType? {
+    fun getQuestType(key: ExternalSourceQuestKey): ExternalSourceQuestType? {
         val questTypeName = questTypeNamesBySource[key.source] ?: return null
-        return questTypeRegistry.getByName(questTypeName) as? OtherSourceQuestType
+        return questTypeRegistry.getByName(questTypeName) as? ExternalSourceQuestType
     }
 }

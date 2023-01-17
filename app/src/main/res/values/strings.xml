@@ -149,6 +149,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="move_node">It’s at a slightly different position…</string>
     <string name="quest_move_node_message">You can correct the position by moving the feature.\nMove it now?</string>
+    <string name="quest_move_node_message_external_source">You can correct the position by moving the feature. Note that the position of this external source quest may not move with the node.\nMove it now?</string>
     <string name="node_moved_not_far_enough">Please move it further</string>
     <string name="node_moved_too_far">Moved too far. Consider leaving a note</string>
     <string name="node_moved">Moved by %s</string>

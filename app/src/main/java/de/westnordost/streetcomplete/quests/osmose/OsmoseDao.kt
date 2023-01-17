@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.CLASS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENTS
@@ -67,7 +67,7 @@ class OsmoseDao(
         )
     }
 
-    fun download(bbox: BoundingBox): List<OtherSourceQuest> {
+    fun download(bbox: BoundingBox): List<ExternalSourceQuest> {
         // https://osmose.openstreetmap.fr/api/0.3/issues.csv?zoom=18&item=xxxx&level=1&limit=500&bbox=16.412324309349064%2C48.18403988244578%2C16.41940534114838%2C48.1871908341706
         // replace bbox
         val csvUrl = "https://osmose.openstreetmap.fr/api/0.3/issues.csv"
@@ -124,25 +124,25 @@ class OsmoseDao(
         return issues.mapNotNull { it.toQuest() }
     }
 
-    fun getQuest(uuid: String): OtherSourceQuest? =
+    fun getQuest(uuid: String): ExternalSourceQuest? =
         db.queryOne(NAME, where = "$UUID = '$uuid' AND $ANSWERED = 0") { it.toOsmoseIssue().toQuest() }
 
     fun getIssue(uuid: String): OsmoseIssue? =
         db.queryOne(NAME, where = "$UUID = '$uuid' AND $ANSWERED = 0") { c -> c.toOsmoseIssue().takeIf { !it.isIgnored() } }
 
-    fun getAllQuests(bbox: BoundingBox): List<OtherSourceQuest> =
+    fun getAllQuests(bbox: BoundingBox): List<ExternalSourceQuest> =
         db.query(NAME, where = "${inBoundsSql(bbox)} AND $ANSWERED = 0") {
             it.toOsmoseIssue()
         }.mapNotNull { it.toQuest() }
 
-    private fun OsmoseIssue.toQuest(): OtherSourceQuest? =
+    private fun OsmoseIssue.toQuest(): ExternalSourceQuest? =
         if (isIgnored()) null
         else
-            OtherSourceQuest(
+            ExternalSourceQuest(
                 uuid,
                 if (elements.size == 1) mapDataWithEditsSource.getGeometry(elements.single().type, elements.single().id) ?: ElementPointGeometry(position)
                 else ElementPointGeometry(position),
-                questTypeRegistry.getByName(OsmoseQuest::class.simpleName!!) as OtherSourceQuestType,
+                questTypeRegistry.getByName(OsmoseQuest::class.simpleName!!) as ExternalSourceQuestType,
                 position
         ).apply { if (elements.size == 1) elementKey = elements.single() }
                 // same area limitation as AddForestLeafType

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.area
@@ -26,7 +26,7 @@ class Downloader(
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesDb: DownloadedTilesDao,
     private val mutex: Mutex,
-    private val otherSourceQuestController: OtherSourceQuestController,
+    private val externalSourceQuestController: ExternalSourceQuestController,
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
@@ -48,8 +48,8 @@ class Downloader(
                 launch {
                     mapDataDownloader.download(bbox)
                     yield()
-                    // download otherSource stuff after map data, because quest creation may depend on map data
-                    otherSourceQuestController.download(bbox)
+                    // download externalSource stuff after map data, because quest creation may depend on map data
+                    externalSourceQuestController.download(bbox)
                 }
                 launch { mapTilesDownloader.download(bbox) }
             }

@@ -33,8 +33,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -87,7 +87,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val elementEditsController: ElementEditsController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val otherSourceQuestController: OtherSourceQuestController by inject()
+    private val externalSourceQuestController: ExternalSourceQuestController by inject()
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -275,7 +275,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         val action = UpdateElementTagsAction(builder.create())
         val questKey = questKey
-        val editType = (questKey as? OtherSourceQuestKey)?.let { otherSourceQuestController.getQuestType(it) } ?: tagEdit
+        val editType = (questKey as? ExternalSourceQuestKey)?.let { externalSourceQuestController.getQuestType(it) } ?: tagEdit
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             listener?.onEdited(editType, element, geometry)
             viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey) }

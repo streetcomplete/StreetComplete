@@ -20,5 +20,5 @@ data class OsmQuestKey(
 ) : QuestKey()
 
 @Serializable
-@SerialName("othersource")
-data class OtherSourceQuestKey(val id: String, val source: String) : QuestKey()
+@SerialName("externalsource")
+data class ExternalSourceQuestKey(val id: String, val source: String) : QuestKey()

@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestTables
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable
@@ -104,8 +104,8 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         // this is to avoid actual db upgrade to keep compatibility with upstream
 
         // create other source tables
-        writableDatabase.execSQL(OtherSourceQuestTables.CREATE_HIDDEN)
-        writableDatabase.execSQL(OtherSourceQuestTables.CREATE_EDITS)
+        writableDatabase.execSQL(ExternalSourceQuestTables.CREATE_HIDDEN)
+        writableDatabase.execSQL(ExternalSourceQuestTables.CREATE_EDITS)
 
         // create osmose table
         writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)

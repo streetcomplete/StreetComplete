@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestTables
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
@@ -207,10 +207,10 @@ class DataManagementSettingsFragment :
                         c.getLong(NoteQuestsHiddenTable.Columns.NOTE_ID).toString() + "," +
                             c.getLong(NoteQuestsHiddenTable.Columns.TIMESTAMP)
                     }
-                    val hiddenOtherSourceQuests = db.query(OtherSourceQuestTables.NAME_HIDDEN) { c ->
-                        c.getString(OtherSourceQuestTables.Columns.SOURCE) + "," +
-                            c.getString(OtherSourceQuestTables.Columns.ID) + "," +
-                            c.getLong(OtherSourceQuestTables.Columns.TIMESTAMP)
+                    val hiddenExternalSourceQuests = db.query(ExternalSourceQuestTables.NAME_HIDDEN) { c ->
+                        c.getString(ExternalSourceQuestTables.Columns.SOURCE) + "," +
+                            c.getString(ExternalSourceQuestTables.Columns.ID) + "," +
+                            c.getLong(ExternalSourceQuestTables.Columns.TIMESTAMP)
                     }
 
                     os.bufferedWriter().use {
@@ -220,7 +220,7 @@ class DataManagementSettingsFragment :
                         it.write("\n$BACKUP_HIDDEN_NOTES\n")
                         it.write(hiddenNotes.joinToString("\n"))
                         it.write("\n$BACKUP_HIDDEN_OTHER_QUESTS\n")
-                        it.write(hiddenOtherSourceQuests.joinToString("\n"))
+                        it.write(hiddenExternalSourceQuests.joinToString("\n"))
                     }
                 }
             }
@@ -250,7 +250,7 @@ class DataManagementSettingsFragment :
 
                 val quests = mutableListOf<Array<Any?>>()
                 val notes = mutableListOf<Array<Any?>>()
-                val otherSourceQuests = mutableListOf<Array<Any?>>()
+                val externalSourceQuests = mutableListOf<Array<Any?>>()
                 var currentThing = BACKUP_HIDDEN_OSM_QUESTS
                 for (line in lines) {
 
@@ -264,7 +264,7 @@ class DataManagementSettingsFragment :
                     when (currentThing) {
                         BACKUP_HIDDEN_OSM_QUESTS -> quests.add(arrayOf(split[0].toLong(), split[1], split[2], split[3].toLong()))
                         BACKUP_HIDDEN_NOTES -> notes.add(arrayOf(split[0].toLong(), split[1].toLong()))
-                        BACKUP_HIDDEN_OTHER_QUESTS -> otherSourceQuests.add(arrayOf(split[0], split[1], split[2].toLong()))
+                        BACKUP_HIDDEN_OTHER_QUESTS -> externalSourceQuests.add(arrayOf(split[0], split[1], split[2].toLong()))
                     }
                 }
 
@@ -282,11 +282,11 @@ class DataManagementSettingsFragment :
                     notes,
                     conflictAlgorithm = ConflictAlgorithm.REPLACE
                 )
-                db.insertMany(OtherSourceQuestTables.NAME_HIDDEN,
-                    arrayOf(OtherSourceQuestTables.Columns.SOURCE,
-                        OtherSourceQuestTables.Columns.ID,
-                        OtherSourceQuestTables.Columns.TIMESTAMP),
-                    otherSourceQuests,
+                db.insertMany(ExternalSourceQuestTables.NAME_HIDDEN,
+                    arrayOf(ExternalSourceQuestTables.Columns.SOURCE,
+                        ExternalSourceQuestTables.Columns.ID,
+                        ExternalSourceQuestTables.Columns.TIMESTAMP),
+                    externalSourceQuests,
                     conflictAlgorithm = ConflictAlgorithm.REPLACE
                 )
 

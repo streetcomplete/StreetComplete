@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
@@ -29,7 +29,7 @@ class VisibleQuestsSource(
     private val levelFilter: LevelFilter,
     private val dayNightQuestFilter: DayNightQuestFilter,
     private val prefs: SharedPreferences,
-    private val otherSourceQuestController: OtherSourceQuestController
+    private val externalSourceQuestController: ExternalSourceQuestController
 ) {
     interface Listener {
         /** Called when given quests in the given group have been added/removed */
@@ -84,8 +84,8 @@ class VisibleQuestsSource(
         }
     }
 
-    private val otherQuestListener = object : OtherSourceQuestController.QuestListener {
-        override fun onUpdated(addedQuests: Collection<OtherSourceQuest>, deletedQuestKeys: Collection<OtherSourceQuestKey>) {
+    private val otherQuestListener = object : ExternalSourceQuestController.QuestListener {
+        override fun onUpdated(addedQuests: Collection<ExternalSourceQuest>, deletedQuestKeys: Collection<ExternalSourceQuestKey>) {
             updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
         }
         override fun onInvalidate() = invalidate()
@@ -104,7 +104,7 @@ class VisibleQuestsSource(
         visibleQuestTypeSource.addListener(visibleQuestTypeSourceListener)
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
         selectedOverlaySource.addListener(selectedOverlayListener)
-        otherSourceQuestController.addQuestListener(otherQuestListener)
+        externalSourceQuestController.addQuestListener(otherQuestListener)
     }
 
     fun getAllVisible(bbox: BoundingBox): List<Quest> =
@@ -117,19 +117,19 @@ class VisibleQuestsSource(
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypes)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
-        val otherSourceQuests = otherSourceQuestController.getAllInBBox(bbox, visibleQuestTypes)
+        val externalSourceQuests = externalSourceQuestController.getAllInBBox(bbox, visibleQuestTypes)
 
         return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {
-            osmQuests.filter(::isVisibleInTeamMode) + osmNoteQuests.filter(::isVisibleInTeamMode) + otherSourceQuests.filter(::isVisibleInTeamMode)
+            osmQuests.filter(::isVisibleInTeamMode) + osmNoteQuests.filter(::isVisibleInTeamMode) + externalSourceQuests.filter(::isVisibleInTeamMode)
         } else {
-            osmQuests + osmNoteQuests + otherSourceQuests
+            osmQuests + osmNoteQuests + externalSourceQuests
         }
     }
 
     fun get(questKey: QuestKey): Quest? = cache.get(questKey) ?: when (questKey) {
         is OsmNoteQuestKey -> osmNoteQuestSource.getVisible(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.getVisible(questKey)
-        is OtherSourceQuestKey -> otherSourceQuestController.getVisible(questKey)
+        is ExternalSourceQuestKey -> externalSourceQuestController.getVisible(questKey)
     }?.takeIf { isVisible(it) }
 
     private fun isVisible(questType: QuestType): Boolean =
@@ -147,10 +147,10 @@ class VisibleQuestsSource(
         return when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
             1 -> getAllVisible(bbox)
             2 -> osmQuestSource.getAllVisibleInBBox(bbox) +
-                otherSourceQuestController.getAllInBBox(bbox) +
+                externalSourceQuestController.getAllInBBox(bbox) +
                 osmNoteQuestSource.getAllVisibleInBBox(bbox)
             3 -> osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
-                otherSourceQuestController.getAllInBBox(bbox, getHidden = true) +
+                externalSourceQuestController.getAllInBBox(bbox, getHidden = true) +
                 osmNoteQuestSource.getAllVisibleInBBox(bbox, getHidden = true)
             else -> emptyList()
         }

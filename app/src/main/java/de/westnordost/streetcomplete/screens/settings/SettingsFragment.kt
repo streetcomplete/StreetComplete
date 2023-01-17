@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
-import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.ListPreference
@@ -26,7 +25,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -63,7 +62,7 @@ class SettingsFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val otherSourceQuestController: OtherSourceQuestController by inject()
+    private val externalSourceQuestController: ExternalSourceQuestController by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -229,7 +228,7 @@ class SettingsFragment :
         context?.externalCacheDirs?.forEach { it.purge() }
     }
     private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
-        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll() + otherSourceQuestController.unhideAll()
+        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll() + externalSourceQuestController.unhideAll()
     }
 
     private fun getQuestPreferenceSummary(): String {
