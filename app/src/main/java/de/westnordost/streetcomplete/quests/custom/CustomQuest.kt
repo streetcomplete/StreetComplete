@@ -8,10 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 
-// custom quest was named "external quest" initially, but this is rather unclear as every
-// "OtherSourceQuestType" is based on external sources, i.e. not just map data
-// this class and the source string retain the old name because they are also used in database
-class ExternalQuest(private val customQuestList: CustomQuestList) : OtherSourceQuestType {
+class CustomQuest(private val customQuestList: CustomQuestList) : OtherSourceQuestType {
 
     override val changesetComment = "Edit user-defined list of elements"
     override val wikiLink = "Tags"
@@ -22,7 +19,7 @@ class ExternalQuest(private val customQuestList: CustomQuestList) : OtherSourceQ
 
     override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
 
-    override val source: String = "external"
+    override val source: String = "custom"
 
     override fun download(bbox: BoundingBox) = getQuests(bbox)
 

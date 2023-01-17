@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
@@ -86,7 +87,8 @@ class MoveNodeFragment :
         val args = requireArguments()
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
         editType = questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
+            ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)
+            ?: (questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OtherSourceQuestType)!!
 
         val isFeetAndInch = countryInfos.getByLocation(
             countryBoundaries.get(),

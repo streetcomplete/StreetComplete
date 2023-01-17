@@ -27,6 +27,9 @@ class OtherSourceDao(private val db: Database) {
     fun deleteElementEdit(elementEditId: Long) =
         db.delete(NAME_EDITS, where = "$EDIT_ID = $elementEditId") > 0
 
+    fun deleteAllExceptForElementEdits(elementEditIds: Collection<Long>) =
+        db.delete(NAME_EDITS, where = "$EDIT_ID not in (${elementEditIds.joinToString(",")})") > 0
+
     fun hide(key: OtherSourceQuestKey): Long {
         val timestamp = nowAsEpochMilliseconds()
         val inserted = db.insert(NAME_HIDDEN, listOf(

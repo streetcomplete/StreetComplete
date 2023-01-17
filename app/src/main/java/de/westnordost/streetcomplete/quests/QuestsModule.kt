@@ -76,7 +76,7 @@ import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
-import de.westnordost.streetcomplete.quests.custom.ExternalQuest
+import de.westnordost.streetcomplete.quests.custom.CustomQuest
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
@@ -553,7 +553,7 @@ fun getQuestTypeList(
     ApplicationConstants.EE_QUEST_OFFSET + 22 to AddArtworkType(),
     ApplicationConstants.EE_QUEST_OFFSET + 9 to AddTreeGenus(),
     ApplicationConstants.EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
-    ApplicationConstants.EE_QUEST_OFFSET + 11 to ExternalQuest(customQuestList),
+    ApplicationConstants.EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests
     ApplicationConstants.EE_QUEST_OFFSET + 12 to ShowBusiness(),
     ApplicationConstants.EE_QUEST_OFFSET + 13 to ShowBicycleStuff(),

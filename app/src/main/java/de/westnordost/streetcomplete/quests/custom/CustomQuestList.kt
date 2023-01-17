@@ -81,13 +81,13 @@ class CustomQuestList(context: Context) : KoinComponent {
         return OtherSourceQuest(
             id,
             geometry,
-            questTypeRegistry.getByName(ExternalQuest::class.simpleName!!) as OtherSourceQuestType,
+            questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as OtherSourceQuestType,
             geometry.center
         ).apply { entry.elementKey?.let { elementKey = it } }
     }
 
     fun get(bbox: BoundingBox): List<OtherSourceQuest> {
-        val type = questTypeRegistry.getByName(ExternalQuest::class.simpleName!!) as OtherSourceQuestType
+        val type = questTypeRegistry.getByName(CustomQuest::class.simpleName!!) as OtherSourceQuestType
         return entriesById.values.mapNotNull { entry ->
             if (entry.solved) return@mapNotNull null
             val geometry = entry.elementKey?.let { mapDataWithEditsSource.getGeometry(it.type, it.id) }

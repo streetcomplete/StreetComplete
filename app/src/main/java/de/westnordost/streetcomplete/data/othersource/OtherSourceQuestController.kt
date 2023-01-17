@@ -202,6 +202,10 @@ class OtherSourceQuestController(
         questListeners.forEach { it.onUpdated(addedQuests = restoredQuests) }
     }
 
+    // called when old elementEdits are removed
+    fun cleanElementEdits(elementEditsIds: Collection<Long>) =
+        otherSourceDao.deleteAllExceptForElementEdits(elementEditsIds)
+
     fun getQuestType(key: OtherSourceQuestKey): OtherSourceQuestType? {
         val questTypeName = questTypeNamesBySource[key.source] ?: return null
         return questTypeRegistry.getByName(questTypeName) as? OtherSourceQuestType

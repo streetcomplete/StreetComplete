@@ -59,6 +59,11 @@ class ElementEditsDao(
         }
     }
 
+    init {
+        db.delete(NAME, "$QUEST_TYPE in ('RemoveWrongSurface')") // remove quests that were removed
+        db.update(NAME, listOf(QUEST_TYPE to "CustomQuest"), "$QUEST_TYPE = 'ExternalQuest'") // that one was renamed
+    }
+
     fun add(edit: ElementEdit) {
         val rowId = db.insert(NAME, edit.toPairs())
         edit.id = rowId

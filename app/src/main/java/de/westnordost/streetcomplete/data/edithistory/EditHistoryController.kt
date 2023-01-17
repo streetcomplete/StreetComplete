@@ -111,6 +111,7 @@ class EditHistoryController(
             cache.clear()
             cache.addAll(fetchAll())
         }
+        otherSourceQuestController.cleanElementEdits(cache.mapNotNull { (it as? ElementEdit)?.id })
         return r
     }
 
