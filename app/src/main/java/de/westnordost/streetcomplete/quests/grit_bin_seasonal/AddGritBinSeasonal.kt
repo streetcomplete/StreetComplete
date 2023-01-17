@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.seasonal
+package de.westnordost.streetcomplete.quests.grit_bin_seasonal
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddSeasonal : OsmFilterQuestType<Boolean>() {
+class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
@@ -22,7 +22,7 @@ class AddSeasonal : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_seasonal_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_gritBinSeasonal_title
 
     override fun createForm() = YesNoQuestForm()
 

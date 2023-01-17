@@ -76,6 +76,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
+import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
 import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
@@ -121,7 +122,6 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
-import de.westnordost.streetcomplete.quests.seasonal.AddSeasonal
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -317,7 +317,7 @@ fun questTypeRegistry(
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(featureDictionaryFuture),
-    155 to AddSeasonal(),
+    155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
 

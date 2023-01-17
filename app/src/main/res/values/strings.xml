@@ -1015,6 +1015,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
+    <string name="quest_gritBinSeasonal_title">Is this here the whole year?</string>
+
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
     <string name="quest_internet_access_title">What kind of internet connection does this place offer?</string>
@@ -1316,8 +1318,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="default_disabled_msg_roofShape">This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
-
-    <string name="quest_seasonal_title">Is this here the whole year?</string>
 
     <string name="quest_seating_name_title">What kind of seating does this place have?</string>
     <string name="quest_seating_takeaway">No seating (takeout only)</string>
