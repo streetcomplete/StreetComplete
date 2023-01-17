@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
 
@@ -27,6 +26,6 @@ class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("seasonal", (!answer).toYesNo())
+        tags.updateWithCheckDate("seasonal", if (answer) "no" else "winter")
     }
 }

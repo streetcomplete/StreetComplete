@@ -1015,7 +1015,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
-    <string name="quest_gritBinSeasonal_title">Is this here the whole year?</string>
+    <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
