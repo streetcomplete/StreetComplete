@@ -108,6 +108,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is either time-consuming or difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data.</string>
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
 
 
     <!-- Quest interface -->
@@ -1014,6 +1015,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
+    <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
+
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
     <string name="quest_internet_access_title">What kind of internet connection does this place offer?</string>
@@ -1321,7 +1324,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_seating_indoor_only">Indoor seating only</string>
     <string name="quest_seating_outdoor_only">Outdoor seating only</string>
     <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it may require checking during specific part of the year in order to verify outdoor seating."</string>
 
     <string name="quest_segregated_title">How are the footpath and bicycle path laid out here?</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
