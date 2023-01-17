@@ -18,7 +18,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
          and fire_hydrant:type and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
          and !fire_hydrant:diameter
-         and fire_hydrant:diameter:signed != no
+         and (fire_hydrant:diameter:signed != no or fire_hydrant:diameter:signed older today -6 years)
     """
     override val changesetComment = "Specify fire hydrant diameters"
     override val wikiLink = "Tag:emergency=fire_hydrant"
