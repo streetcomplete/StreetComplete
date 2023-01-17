@@ -24,7 +24,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
 
     private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
 
-    private var isShowingPlaceName = false
+    private var isShowingPlaceName = lastWasPlaceName
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
@@ -33,7 +33,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        isShowingPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: false
+        isShowingPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: lastWasPlaceName
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,7 +52,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             streetNameInput = binding.streetNameInput,
             roadNameSuggestionsSource = roadNameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
-            countryLocale = countryInfo.locale
+            countryLocale = countryInfo.locale,
+            startWithPlace = isShowingPlaceName
         )
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
 
@@ -72,6 +73,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     }
 
     override fun onClickOk() {
+        lastWasPlaceName = isShowingPlaceName
         applyAnswer(streetOrPlaceCtrl.streetOrPlaceName!!)
     }
 
@@ -85,6 +87,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     }
 
     companion object {
+        private var lastWasPlaceName = false
+
         private const val IS_PLACE_NAME = "is_place_name"
     }
 }

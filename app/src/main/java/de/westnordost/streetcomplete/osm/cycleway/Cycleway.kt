@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import kotlinx.serialization.Serializable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Direction.*
@@ -9,6 +8,7 @@ import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
+import kotlinx.serialization.Serializable
 
 data class LeftAndRightCycleway(val left: CyclewayAndDirection?, val right: CyclewayAndDirection?)
 

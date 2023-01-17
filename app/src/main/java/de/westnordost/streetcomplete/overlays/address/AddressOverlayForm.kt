@@ -67,7 +67,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
         val streetName = element?.tags?.get("addr:street")
         streetOrPlaceName = streetName?.let { StreetName(it) } ?: placeName?.let { PlaceName(it) }
 
-        isShowingPlaceName = savedInstanceState?.getBoolean(SHOW_PLACE_NAME) ?: (placeName != null)
+        isShowingPlaceName = savedInstanceState?.getBoolean(SHOW_PLACE_NAME)
+            ?: if (streetOrPlaceName == null)
+                lastWasPlace
+            else
+                placeName != null
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
     }
 
@@ -92,9 +96,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             roadNameSuggestionsSource = roadNameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
-            countryLocale = countryInfo.locale
+            countryLocale = countryInfo.locale,
+            startWithPlace = isShowingPlaceName
         )
-        streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName
+        if (streetOrPlaceName != null) // this changes back to street if it's null
+            streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
 
         // initially do not show the select for place name
@@ -157,6 +163,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         val number = numberOrNameInputCtrl.addressNumber
         val name = numberOrNameInputCtrl.houseName
         val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName
+        lastWasPlace = streetOrPlaceName is PlaceName
 
         number?.streetHouseNumber?.let { lastHouseNumber = it }
         if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
@@ -199,6 +206,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         private var lastHouseNumber: String? = null
         private var lastPlaceName: String? = null
         private var lastStreetName: String? = null
+        private var lastWasPlace: Boolean = false
 
         private const val SHOW_PLACE_NAME = "show_place_name"
         private const val SHOW_HOUSE_NAME = "show_house_name"

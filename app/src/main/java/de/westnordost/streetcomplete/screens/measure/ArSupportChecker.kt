@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.screens.measure
 
 import android.app.ActivityManager
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.NameNotFoundException
-import android.net.Uri
 import android.os.Build
 import androidx.core.content.getSystemService
 
