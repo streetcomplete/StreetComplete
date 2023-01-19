@@ -5,11 +5,17 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -120,9 +126,41 @@ class SettingsFragment :
         }
 
         findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
-            AlertDialog.Builder(requireContext())
+            var reversed = false
+            var filter = ""
+            val log = TextView(requireContext())
+            log.text = Log.logLines.joinToString("\n")
+            fun reloadText() {
+                log.text = when {
+                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.contains(filter) }
+                    filter.isNotBlank() -> Log.logLines.filter { line -> line.contains(filter) }
+                    reversed -> Log.logLines.asReversed()
+                    else -> Log.logLines.asReversed()
+                }.take(1000).joinToString("\n") // limit to 1000 lines for performance reasons
+            }
+            val reverseButton = Button(requireContext())
+            reverseButton.setText(R.string.pref_read_reverse_button)
+            reverseButton.setOnClickListener {
+                reversed = !reversed
+                reloadText()
+            }
+            val filterView = EditText(requireContext()).apply {
+                setHint(R.string.pref_read_filter_hint)
+                doAfterTextChanged {
+                    filter = it.toString()
+                    reloadText()
+                }
+                setPadding(30, 10, 30, 10)
+            }
+            val layout = LinearLayout(requireContext()).apply { orientation = LinearLayout.VERTICAL }
+            layout.addView(LinearLayout(requireContext()).apply {
+                addView(reverseButton)
+                addView(filterView)
+            }) // put this on top, or layout will need more work to keep this visible
+            layout.addView(ScrollView(requireContext()).apply { addView(log) }) // we need to scroll the log
+            val d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_read_log_title)
-                .setMessage(Log.logLines.joinToString("\n"))
+                .setView(layout)
                 .setPositiveButton(android.R.string.ok, null)
                 .setNegativeButton(R.string.pref_read_log_save) { _, _ ->
                     val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
@@ -133,7 +171,10 @@ class SettingsFragment :
                     }
                     startActivityForResult(intent, REQUEST_CODE_LOG)
                 }
-                .show()
+                .create()
+            d.show()
+            // maximize dialog size, because log lines are long
+            d.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
 
             true
         }
