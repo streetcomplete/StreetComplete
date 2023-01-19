@@ -24,6 +24,8 @@
         Be aware that by enabling expert mode you bear significantly more responsibility for your edits.\n
         Please only enable this setting if you have OSM experience outside StreetComplete and understand what you are doing.
     </string>
+    <string name="pref_read_log_title">Read most recent 10000 logged events since app start</string>
+    <string name="pref_read_log_save">Save as file</string>
 
     <!-- notes settings -->
     <string name="pref_screen_notes">Notes</string>

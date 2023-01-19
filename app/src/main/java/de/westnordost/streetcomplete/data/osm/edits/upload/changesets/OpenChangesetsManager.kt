@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.Locale
 

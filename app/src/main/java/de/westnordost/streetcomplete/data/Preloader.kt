@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data
 
-import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.Dispatchers

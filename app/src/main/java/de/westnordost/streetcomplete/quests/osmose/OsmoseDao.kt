@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.osmose
 
 import android.content.SharedPreferences
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.CursorPosition
@@ -29,6 +28,7 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.TITLE
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.UUID
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea

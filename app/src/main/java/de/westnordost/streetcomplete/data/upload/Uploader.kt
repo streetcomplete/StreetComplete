@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.upload
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -15,6 +14,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

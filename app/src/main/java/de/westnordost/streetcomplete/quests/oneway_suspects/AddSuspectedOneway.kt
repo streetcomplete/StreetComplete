@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
-import android.util.Log
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -15,6 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
+import de.westnordost.streetcomplete.util.Log
 import kotlin.math.hypot
 
 class AddSuspectedOneway(

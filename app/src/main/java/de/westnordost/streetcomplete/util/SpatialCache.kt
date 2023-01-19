@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.util
 
-import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect

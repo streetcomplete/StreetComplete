@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -33,6 +34,7 @@ import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
@@ -112,6 +114,25 @@ class SettingsFragment :
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
                 } }
                 .setNegativeButton(android.R.string.cancel, null)
+                .show()
+
+            true
+        }
+
+        findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_read_log_title)
+                .setMessage(Log.logLines.joinToString("\n"))
+                .setPositiveButton(android.R.string.ok, null)
+                .setNegativeButton(R.string.pref_read_log_save) { _, _ ->
+                    val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE)
+                        val fileName = "log_${nowAsEpochMilliseconds()}.txt"
+                        putExtra(Intent.EXTRA_TITLE, fileName)
+                        type = "application/text"
+                    }
+                    startActivityForResult(intent, REQUEST_CODE_LOG)
+                }
                 .show()
 
             true
@@ -217,6 +238,15 @@ class SettingsFragment :
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK || data == null || requestCode != REQUEST_CODE_LOG)
+            return
+        val uri = data.data ?: return
+        activity?.contentResolver?.openOutputStream(uri)?.use { os ->
+            os.bufferedWriter().use { it.write(Log.logLines.joinToString("\n")) }
+        }
+    }
+
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
         mapDataController.clear()
@@ -243,3 +273,5 @@ class SettingsFragment :
     }
 
 }
+
+private const val REQUEST_CODE_LOG = 9743143

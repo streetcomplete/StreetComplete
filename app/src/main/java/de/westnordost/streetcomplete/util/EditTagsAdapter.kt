@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View

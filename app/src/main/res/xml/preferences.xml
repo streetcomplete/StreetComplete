@@ -173,6 +173,10 @@
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel" />
 
+        <Preference
+            android:key="read_log"
+            android:title="@string/pref_read_log_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

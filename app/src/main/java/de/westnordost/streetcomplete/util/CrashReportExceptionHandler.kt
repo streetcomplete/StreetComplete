@@ -7,8 +7,10 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
+import java.io.File
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -92,6 +94,12 @@ class CrashReportExceptionHandler(
     private fun writeCrashReportToFile(text: String) {
         try {
             appCtx.openFileOutput(crashReportFile, Context.MODE_PRIVATE).bufferedWriter().use { it.write(text) }
+            appCtx.getExternalFilesDir(null)?.also {
+                it.mkdirs()
+                val logfile = File(it, "crash_log_${nowAsEpochMilliseconds()}.txt")
+                logfile.writeText(Log.logLines.joinToString("\n"))
+                Log.logLines.clear()
+            }
         } catch (ignored: IOException) {
         }
     }

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import android.util.Log
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
