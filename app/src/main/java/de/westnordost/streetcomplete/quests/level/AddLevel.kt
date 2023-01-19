@@ -34,7 +34,7 @@ class AddLevel : OsmElementQuestType<String> {
     private val thingsWithLevelOrDoctorsFilter by lazy { """
         nodes, ways, relations with level
         ${if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) """
-        and (
+        or (
           amenity ~ doctors|dentist
           or healthcare ~ doctor|dentist|psychotherapist|physiotherapist
         ) """

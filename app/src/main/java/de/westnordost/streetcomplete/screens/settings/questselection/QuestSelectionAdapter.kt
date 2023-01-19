@@ -81,7 +81,7 @@ class QuestSelectionAdapter(
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
         val f = filter
-        return if (f.isEmpty()) {
+        return if (f.length <= 1) {
             null
         } else {
             val words = f.lowercase().split(' ')
