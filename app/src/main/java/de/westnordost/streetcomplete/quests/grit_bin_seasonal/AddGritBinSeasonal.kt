@@ -17,7 +17,7 @@ class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
     """
     override val changesetComment = "Specify whether grit bins are seasonal"
     override val wikiLink = "Key:seasonal"
-    override val icon = R.drawable.calendar
+    override val icon = R.drawable.ic_quest_calendar
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
 
