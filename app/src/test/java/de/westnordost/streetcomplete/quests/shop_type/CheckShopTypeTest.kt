@@ -49,6 +49,15 @@ class CheckShopTypeTest {
         ))
     }
 
+    @Test fun `is not applicable to disused shop that is not disused after all, with well specified alternative`() {
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf("disused:shop" to "yes", "shop" to "mall"),
+                timestamp = 100
+            )
+        ))
+    }
+
     @Test fun `apply shop vacant answer`() {
         questType.verifyAnswer(
             IsShopVacant,
