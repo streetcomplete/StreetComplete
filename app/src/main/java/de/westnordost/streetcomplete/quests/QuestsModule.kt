@@ -541,7 +541,7 @@ fun getQuestTypeList(
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     154 to AddWayLit(),
 
-    // quests added in expert edition
+    // quests added in SCEE
     ApplicationConstants.EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
     ApplicationConstants.EE_QUEST_OFFSET + 1 to AddContactPhone(),
     ApplicationConstants.EE_QUEST_OFFSET + 2 to AddContactWebsite(),

@@ -202,6 +202,7 @@
                         android:text="@string/tutorial_welcome_to_osm_subtitle"/>
 
                     <TextView
+                        android:id="@+id/introTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/subtitleTextView"

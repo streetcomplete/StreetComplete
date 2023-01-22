@@ -65,7 +65,7 @@ class CrashReportExceptionHandler(
         """.trimIndent()
 
         AlertDialog.Builder(activityCtx)
-            .setTitle(titleResourceId)
+            .setTitle(activityCtx.resources.getString(titleResourceId).replace("StreetComplete", "SCEE"))
             .setMessage(R.string.crash_message)
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
                 activityCtx.sendEmail(mailReportTo, "Error Report", report)

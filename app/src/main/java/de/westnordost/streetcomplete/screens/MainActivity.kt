@@ -315,7 +315,7 @@ class MainActivity :
         override fun onError(e: Exception) {
             runOnUiThread {
                 if (e is VersionBannedException) {
-                    var message = getString(R.string.version_banned_message)
+                    var message = getString(R.string.version_banned_message).replace("StreetComplete", "SCEE")
                     if (e.banReason != null) {
                         message += "\n\n\n${e.banReason}"
                     }

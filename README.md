@@ -1,9 +1,9 @@
-StreetComplete expert edition (EE) is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
+SCEE is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
 
-Please be aware that EE is not suitable for people used to discard warning messages without reading!
-Users new to OpenStreetMap are best advised to use the normal version of StreetComplete.
+Please be aware that SCEE is not suitable for people used to discard warning messages without reading!
+Users new to OpenStreetMap are best advised to use StreetComplete.
 
-Functionality added in EE is considerably less tested than what you might be used from normal StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
+Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 Due to the different name used in changesets, edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
 
@@ -31,10 +31,10 @@ Due to the different name used in changesets, edits made with this version do no
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
 
 ## Permissions
-EE has more permissions than normal StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
+SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
 
 ## Translations
-Translations for strings added in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
+Translations for strings added in SCEE can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
 
 ## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
@@ -44,9 +44,9 @@ The original [contributing guidelines](#contributing) are still valid, but note 
 * Quests may be based on external sources, not just on element selection.
 
 ## Changeset differences compared to StreetComplete
-This section is aimed for people trying to decide whether a bad edit done in SC EE is fault of the user or of the app (EE modifications).
-In general, EE changesets will contain changes very similar to normal StreetComplete changesets, with following differences:
-* `created_by` is set to `StreetComplete_ee <version>_ee`
+This section is aimed for people trying to decide whether a bad edit done in SCEE is fault of the user or of the app (SCEE modifications).
+In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
+* `created_by` is set to `StreetComplete_ee <version>`
 * Quest type is given in `StreetComplete_ee:quest_type`
 * AddBuildingType has more possible answers, including one to change the `building` to `demolished:building`
 * AddCrossingType may change `crossing_ref`, `crossing:markings` and `traffic_calming`
@@ -57,11 +57,11 @@ In general, EE changesets will contain changes very similar to normal StreetComp
 * An element at at the same position as a note may be edited (this is blocked in normal SC)
 * `check_date:*` may be added without resurvey
 * Most quests may apply to an extended range of elements (user-defined)
-* EE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
-  * These quests usually do not fulfill the requirements for normal StreetComplete, and need to be enabled by the user first.
+* SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
+  * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
   * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)
 
-# original readme below
+# original StreetComplete readme below
 
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 

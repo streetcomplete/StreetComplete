@@ -43,6 +43,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.respectSystemInsets()
+        binding.introTextView.text = binding.introTextView.text.toString().replace("StreetComplete", "SCEE")
         updateIndicatorDots()
         enableNextButton()
     }

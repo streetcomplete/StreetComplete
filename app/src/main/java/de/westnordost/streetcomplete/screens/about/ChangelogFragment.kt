@@ -90,20 +90,15 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    val upstreamChangelog = resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
-    val eeChangelog = resources.getYamlStringMap(R.raw.changelog_ee).map { Release(it.key, addedLinksEE(it.value)) }
+    val upstreamChangelog = resources.getYamlStringMap(R.raw.changelog).map { Release("StreetComplete " + it.key, addedLinks(it.value)) }
+    val eeChangelog = resources.getYamlStringMap(R.raw.changelog_ee).map { Release("SCEE " + it.key, addedLinksEE(it.value)) }
+    val r = "(?:\\d+(?:\\.\\d*)?|\\.\\d+)".toRegex()
     (upstreamChangelog + eeChangelog).sortedBy {
-        // reverse sort by version number, _ee first, then normal, then beta, then alpha
-        // actually there should be proper parsing using regex, but maybe later
-        when {
-            it.title.endsWith("_ee") ->
-                -it.title.substringAfter("v").substringBefore("_ee").toFloat() - 0.001F
-            it.title.contains("-beta") ->
-                -it.title.substringAfter("v").substringBefore("-beta").toFloat() + 0.001F
-            it.title.contains("-alpha") ->
-                -it.title.substringAfter("v").substringBefore("-alpha").toFloat() + 0.002F
-            else -> -it.title.substringAfter("v").toFloat()
-        }
+        val version = r.find(it.title)?.value?.toDoubleOrNull() ?: 0.0
+        val modifier1 = if (it.title.startsWith("SCEE")) -0.001 else 0.0
+        val modifier2 = if (it.title.contains("beta")) 0.0001 else 0.0
+        val modifier3 = if (it.title.contains("alpha")) 0.0002 else 0.0
+        0.0 - version + modifier1 + modifier2 + modifier3
     }
 }
 

@@ -10,10 +10,10 @@
 <resources>
 
     <!-- settings -->
-    <string name="pref_category_mods">EE settings</string>
+    <string name="pref_category_mods">SCEE settings</string>
     <string name="pref_expert_mode_title">Expert mode</string>
     <string name="pref_expert_mode_summary">Enable advanced editing capabilities</string>
-    <string name="pref_expert_mode_message">This will allow using quests added in StreetComplete expert edition, and ways of\n
+    <string name="pref_expert_mode_message">This will allow using quests added in SCEE, and ways of\n
         <li>editing raw tags</li>\n
         <li>moving nodes that are part of ways or relations</li>\n
         <li>deleting free-floating any node</li>\n
@@ -183,7 +183,7 @@
     <string name="quest_settings_osmose_level_medium">Medium</string>
     <string name="quest_settings_osmose_level_low">Low</string>
     <string name="quest_settings_fixme_title">Select fixme values to ignore</string>
-    <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by StreetComplete? If you choose yes, in some cases existing opening hours may not be shown when asking for resurvey.</string>
+    <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by SCEE? You may need to use the tag editor to enter the correct values.</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">All</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">Default</string>
 
@@ -311,10 +311,10 @@
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note.</string>
     <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the main settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
-    <string name="default_disabled_msg_ee">Quests added in StreetComplete EE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.</string>
+    <string name="default_disabled_msg_ee">Quests added in SCEE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.</string>
 
 
-    <!-- additional strings for quests available in upstream StreetComplete -->
+    <!-- additional strings for quests available in StreetComplete -->
     <!-- should be very similar to normal SC quest_smoothness_square_title -->
     <string name="quest_smoothness_square_title2">What’s the surface quality of this %s square?</string>
     <!-- should be very similar to normal SC quest_smoothness_road_title -->
@@ -353,13 +353,13 @@
     <string name="hide_button">Hide</string>
     <string name="tag_editor_last_edited">Last edited: %s</string>
     <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
-    <string name="tutorial_info_fork_message"><b>StreetComplete expert edition</b>\n\n
-This modified version of StreetComplete is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
+    <string name="tutorial_info_fork_message"><b>SCEE</b>\n\n
+This is a modified version of StreetComplete. It is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
 This especially applies to the possibility of editing raw tags and deleting nodes, but also for modification of element selection for quests.
-Quests added in this version <i>may not be answerable</i> in all cases and are thus disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
-By default, this version is configured to behave very similar to normal StreetComplete.\n
-You have access to your StreetComplete user statistics, but any quests solved using this version <i>will not affect</i> statistics and star count.</string>
-    <string name="fork_about_title_repository">Expert edition project home</string>
+Quests added in SCEE <i>may not be answerable</i> in all cases and are disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
+Out of the box SCEE is configured to behave very similar to StreetComplete.\n
+You have access to your StreetComplete user statistics, but any quests solved using SCEE <i>will not affect</i> statistics and star count.</string>
+    <string name="fork_about_title_repository">SCEE project home</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>

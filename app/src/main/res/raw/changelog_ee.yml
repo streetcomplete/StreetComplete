@@ -1,5 +1,6 @@
-51.0_ee: |
+51.0: |
   <ul>
+  <li>App renamed to SCEE as an attempt to reduce confusion of this fork with original StreetComplete</li>
   <li>Use left/right/both in custom overlay to display selection on side of a road (#403)</li>
   <li>Allow saving full resolution photos used for notes (#393)</li>
   <li>Add level when creating POI while level filter is active</li>
@@ -110,7 +111,7 @@ v45.0_ee: |
   <li>Add element selection to wheelchair quest</li>
   <li>Quick-access to settings by pressing menu key when in main menu dialog</li>
   <li>Add setting when to move recently used answers to front of image lists</li>
-  <li>Optionally show nearby quests while quest form is open, not just for same element. This also highlights elemets for other quests on the map.</li>
+  <li>Optionally show nearby quests while quest form is open, not just for same element. This also highlights elements for other quests on the map.</li>
   <li>Ask shoulders on some specific parts of motorways (by @mnalis)</li>
   <li>Use dark buttons in dark mode</li>
   </ul>
