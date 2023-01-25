@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -141,8 +141,8 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.HALF_ON_KERB),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB),
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:lane:both", "parallel"),
@@ -155,8 +155,8 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, ON_STREET),
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:lane:both", "parallel"),
@@ -170,8 +170,8 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PERPENDICULAR, ParkingPosition.STREET_SIDE),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.STREET_SIDE)
+                StreetParkingPositionAndOrientation(PERPENDICULAR, STREET_SIDE),
+                StreetParkingPositionAndOrientation(PARALLEL, STREET_SIDE)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:lane:left", "perpendicular"),
@@ -186,8 +186,8 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.STREET_SIDE),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PERPENDICULAR, ParkingPosition.PAINTED_AREA_ONLY)
+                StreetParkingPositionAndOrientation(DIAGONAL, STREET_SIDE),
+                StreetParkingPositionAndOrientation(PERPENDICULAR, PAINTED_AREA_ONLY)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:lane:left", "diagonal"),
@@ -285,8 +285,8 @@ class StreetParkingCreatorKtTest {
                 "parking:condition:left" to "free",
             ),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.HALF_ON_KERB),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB),
+                StreetParkingPositionAndOrientation(PARALLEL, ON_KERB)
             ),
             arrayOf(
                 StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
@@ -305,8 +305,8 @@ class StreetParkingCreatorKtTest {
                 "parking:lane:right:parallel" to "on_kerb",
             ),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
-                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET)
+                StreetParkingPositionAndOrientation(PARALLEL, ON_STREET),
+                StreetParkingPositionAndOrientation(DIAGONAL, ON_STREET)
             ),
             arrayOf(
                 StringMapEntryDelete("parking:lane:both", "parallel"),
@@ -324,7 +324,7 @@ class StreetParkingCreatorKtTest {
             mapOf(),
             LeftAndRightStreetParking(
                 null,
-                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET)
+                StreetParkingPositionAndOrientation(DIAGONAL, ON_STREET)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:lane:right", "diagonal"),
@@ -334,7 +334,7 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(DIAGONAL, ON_STREET),
                 null
             ),
             arrayOf(
