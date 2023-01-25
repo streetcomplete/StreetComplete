@@ -57,11 +57,11 @@ private fun String.toParkingOrientation() = when (this) {
 }
 
 private fun String.toParkingPosition() = when (this) {
-    "on_street", "on-street" -> ON_STREET
+    "on_street" -> ON_STREET
     "half_on_kerb" -> HALF_ON_KERB
     "on_kerb" -> ON_KERB
-    "painted_area_only", "marked" -> PAINTED_AREA_ONLY
-    "lay_by", "street_side", "bays" -> STREET_SIDE
+    "painted_area_only" -> PAINTED_AREA_ONLY
+    "lay_by", "street_side" -> STREET_SIDE
     "shoulder" -> SHOULDER
     else -> null
 }

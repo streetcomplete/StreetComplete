@@ -21,9 +21,7 @@ class StreetParkingParserKtTest {
             "on_kerb" to ON_KERB,
             "street_side" to STREET_SIDE,
             "lay_by" to STREET_SIDE,
-            "bays" to STREET_SIDE,
             "painted_area_only" to PAINTED_AREA_ONLY,
-            "marked" to PAINTED_AREA_ONLY,
             "shoulder" to SHOULDER
         )
 
