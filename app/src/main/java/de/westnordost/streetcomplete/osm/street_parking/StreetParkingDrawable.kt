@@ -144,9 +144,9 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
         }
         SHOULDER -> when (orientation) {
-            PARALLEL -> listOf(0, 1, 3)
-            DIAGONAL -> listOf(0, 1, 2, 4, 5)
-            PERPENDICULAR -> listOf(0, 1, 3, 4, 6, 7)
+            PARALLEL -> listOf(1, 2, 3)
+            DIAGONAL -> listOf(1, 2, 4, 5)
+            PERPENDICULAR -> listOf(1, 2, 3, 5, 6, 7)
         }
         else -> emptyList()
     }
