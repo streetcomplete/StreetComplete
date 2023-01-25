@@ -101,7 +101,7 @@ class AboutFragment : PreferenceFragmentCompat() {
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(R.string.action_about2)
+        activity?.let { it.title = it.resources.getString(R.string.action_about2) + " SCEE" }
     }
 
     private fun isInstalledViaGooglePlay(): Boolean {

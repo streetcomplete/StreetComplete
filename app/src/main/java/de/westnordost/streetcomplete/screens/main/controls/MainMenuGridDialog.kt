@@ -48,6 +48,7 @@ class MainMenuGridDialog(
             context.startActivity(intent)
             dismiss()
         }
+        binding.aboutButton.text = binding.aboutButton.text.toString() + " SCEE"
         binding.downloadButton.setOnClickListener {
             onClickDownload()
             dismiss()

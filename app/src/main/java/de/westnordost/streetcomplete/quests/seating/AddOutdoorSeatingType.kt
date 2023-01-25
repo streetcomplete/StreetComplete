@@ -17,7 +17,7 @@ class AddOutdoorSeatingType : OsmFilterQuestType<String>() {
           outdoor_seating = yes
     """
     override val changesetComment = "Add outdoor seating info"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_summer_outdoor_seating
+    override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
     override val wikiLink = "Key:outdoor_seating"
     override val icon = R.drawable.ic_quest_seating_type
     override val isReplaceShopEnabled = true
