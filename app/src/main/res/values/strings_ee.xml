@@ -102,7 +102,6 @@
     <string name="import_export_custom_overlays">Custom Overlays</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
-    <string name="import_warning">Importing app settings will overwrite all current settings</string>
     <string name="import_presets_message">Add imported presets or replace existing?</string>
     <string name="import_presets_add">Add</string>
     <string name="import_presets_replace">Replace</string>
@@ -166,11 +165,10 @@
     <string name="quest_settings_element_selection">Set elements eligible for this quest</string>
     <string name="quest_settings_eligible_highways">Set highways eligible for this quest, comma separated</string>
     <string name="quest_settings_sidewalk_what">What to set?</string>
-    <string name="quest_settings_sidewalk_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>
     <string name="quest_settings_sidewalk_distance_button">Distance</string>
     <string name="quest_settings_sidewalk_highways_button">Element selection</string>
     <string name="quest_settings_max_roof_levels">Maximum value for (building levels) minus (roof levels) for the quest to be shown</string>
-    <string name="quest_settings_building_levels_message">Set building types eligible for this quest, comma separated</string>
     <string name="quest_settings_max_steps_length">Maximum length of steps in meters for the quest to be shown</string>
     <string name="quest_settings_level_title">Show this quest for:</string>
     <string name="quest_settings_level_default">Shops &amp; similar in malls (default)</string>
@@ -310,7 +308,7 @@
     <string name="quest_healthcare_speciality_disabled_message">This quest requires knowledge about the healthcare:speciality tags. Without this knowledge, the quest can be very difficult to answer.</string>
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note.</string>
-    <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the main settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
+    <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the data management settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
     <string name="default_disabled_msg_ee">Quests added in SCEE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.</string>
 
 
@@ -364,9 +362,9 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
-    <string name="custom_overlay_hint">Element selection goes here</string>
+    <string name="custom_overlay_hint">Element selection</string>
     <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/StreetComplete/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
-    <string name="custom_overlay_color_message">Select key(s) to get color from. This does not work for nodes. Accepts regex, uses all matching tags to get a color.</string>
+    <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex, uses all matching tags to get a color, based on key and value of the first matching key.</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="attach_photo_delete">Delete</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>

@@ -168,7 +168,7 @@ class AddCycleway(
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        numberSelectionDialog(context, prefs, questPrefix(prefs) + PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_distance_message)
+        numberSelectionDialog(context, prefs, questPrefix(prefs) + PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_cycleway_distance_message)
 }
 
 /* Excluded is

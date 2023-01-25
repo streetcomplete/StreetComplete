@@ -21,7 +21,7 @@ class AddCuisine : OsmFilterQuestType<String>() {
     """
     override val changesetComment = "Add cuisine"
     override val wikiLink = "Key:cuisine"
-    override val icon = R.drawable.ic_quest_restaurant_cuisine
+    override val icon = R.drawable.ic_quest_restaurant
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

@@ -29,6 +29,7 @@ Due to the different name used in changesets, edits made with this version do no
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
+Database and preferences files are compatible with StreetComplete, so if you have root privileges you can transfer them in either direction.
 
 ## Permissions
 SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.

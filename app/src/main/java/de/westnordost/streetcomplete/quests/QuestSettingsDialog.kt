@@ -96,6 +96,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             }
         }
         button?.isEnabled = textInput.text.toString().let {
+            // check other stuff first, because creation filter expression is relatively slow
             (checkPrefix.isEmpty() || it.lowercase().matches(elementSelectionRegex))
                 && it.count { c -> c == '('} == it.count { c -> c == ')'}
                 && (it.contains('=') || it.contains('~'))
@@ -113,7 +114,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             OsmQuestController.reloadQuestTypes()
         }
         .create()
-    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
+    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) } // disable reset button if setting is default
     return dialog
 }
 
@@ -133,9 +134,9 @@ fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref:
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-    input.setPaddingRelative(30,10,30,10)
+    input.setPadding(20,10,20,10)
     input.setText(initialValue)
-    input.maxLines = 12
+    input.maxLines = 15 // if lines are not limited, the edit text might get so big that buttons are off screen (thanks, google for allowing this)
     return AlertDialog.Builder(context)
         .setMessage(messageId)
         .setView(input)
@@ -148,4 +149,4 @@ else
     ""
 
 private val valueRegex = "[a-z0-9_?,/\\s]+".toRegex()
-private val elementSelectionRegex = "[a-z0-9_=!~()|:,<>\\s+-]+".toRegex()
+private val elementSelectionRegex = "[a-z0-9_=!~()|:,<>\\s+-]+".toRegex() // todo: relax a little bit?
