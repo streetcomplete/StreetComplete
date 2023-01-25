@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -35,6 +37,86 @@ class StreetParkingCreatorKtTest {
             LeftAndRightStreetParking(null, NoStreetParking),
             arrayOf(StringMapEntryAdd("parking:lane:right", "no"))
         )
+    }
+
+    @Test fun `apply parking`() {
+        val orientations = listOf(
+            "parallel" to PARALLEL,
+            "diagonal" to DIAGONAL,
+            "perpendicular" to PERPENDICULAR
+        )
+
+        val positions = listOf(
+            "on_street" to ON_STREET,
+            "half_on_kerb" to HALF_ON_KERB,
+            "on_kerb" to ON_KERB,
+            "street_side" to STREET_SIDE,
+            "painted_area_only" to PAINTED_AREA_ONLY,
+            "shoulder" to SHOULDER
+        )
+
+        for ((orientationStr, orientationValue) in orientations) {
+
+            for ((positionStr, positionValue) in positions) {
+
+                val parking = StreetParkingPositionAndOrientation(orientationValue, positionValue)
+
+                verifyAnswer(
+                    mapOf(),
+                    LeftAndRightStreetParking(parking, parking),
+                    arrayOf(
+                        StringMapEntryAdd("parking:lane:both", orientationStr),
+                        StringMapEntryAdd("parking:lane:both:$orientationStr", positionStr)
+                    )
+                )
+
+                verifyAnswer(
+                    mapOf(),
+                    LeftAndRightStreetParking(parking, null),
+                    arrayOf(
+                        StringMapEntryAdd("parking:lane:left", orientationStr),
+                        StringMapEntryAdd("parking:lane:left:$orientationStr", positionStr)
+                    )
+                )
+
+                verifyAnswer(
+                    mapOf(),
+                    LeftAndRightStreetParking(null, parking),
+                    arrayOf(
+                        StringMapEntryAdd("parking:lane:right", orientationStr),
+                        StringMapEntryAdd("parking:lane:right:$orientationStr", positionStr)
+                    )
+                )
+
+                verifyAnswer(
+                    mapOf(
+                        "parking:lane:right" to orientationStr,
+                        "parking:lane:right:$orientationStr" to positionStr
+                    ),
+                    LeftAndRightStreetParking(parking, null),
+                    arrayOf(
+                        StringMapEntryAdd("parking:lane:both", orientationStr),
+                        StringMapEntryAdd("parking:lane:both:$orientationStr", positionStr),
+                        StringMapEntryDelete("parking:lane:right", orientationStr),
+                        StringMapEntryDelete("parking:lane:right:$orientationStr", positionStr)
+                    )
+                )
+
+                verifyAnswer(
+                    mapOf(
+                        "parking:lane:left" to orientationStr,
+                        "parking:lane:left:$orientationStr" to positionStr
+                    ),
+                    LeftAndRightStreetParking(null, parking),
+                    arrayOf(
+                        StringMapEntryAdd("parking:lane:both", orientationStr),
+                        StringMapEntryAdd("parking:lane:both:$orientationStr", positionStr),
+                        StringMapEntryDelete("parking:lane:left", orientationStr),
+                        StringMapEntryDelete("parking:lane:left:$orientationStr", positionStr)
+                    )
+                )
+            }
+        }
     }
 
     @Test fun `apply separate parking answer`() {

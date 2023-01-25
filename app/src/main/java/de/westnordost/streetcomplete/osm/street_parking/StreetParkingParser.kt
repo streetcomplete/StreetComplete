@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.SHOULDER
 
 fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
     val expandedTags = expandRelevantSidesTags(tags)
@@ -61,6 +62,7 @@ private fun String.toParkingPosition() = when (this) {
     "on_kerb" -> ON_KERB
     "painted_area_only", "marked" -> PAINTED_AREA_ONLY
     "lay_by", "street_side", "bays" -> STREET_SIDE
+    "shoulder" -> SHOULDER
     else -> null
 }
 

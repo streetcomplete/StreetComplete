@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -30,6 +24,7 @@ class StreetParkingParserKtTest {
             "bays" to STREET_SIDE,
             "painted_area_only" to PAINTED_AREA_ONLY,
             "marked" to PAINTED_AREA_ONLY,
+            "shoulder" to SHOULDER
         )
 
         for ((orientationStr, orientationValue) in orientations) {
