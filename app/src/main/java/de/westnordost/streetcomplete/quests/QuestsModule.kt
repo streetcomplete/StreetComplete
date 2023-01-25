@@ -86,6 +86,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
+import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
 import de.westnordost.streetcomplete.quests.healthcare_speciality.AddHealthcareSpeciality
 import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
@@ -368,6 +369,7 @@ fun getQuestTypeList(
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(featureDictionaryFuture),
+    155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
 

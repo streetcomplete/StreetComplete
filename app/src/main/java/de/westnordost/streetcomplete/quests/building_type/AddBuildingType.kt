@@ -24,6 +24,10 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and !leisure
          and !aeroway
          and !railway
+         and !craft
+         and !healthcare
+         and !office
+         and !shop
          and !description
          and location != underground
          and abandoned != yes
