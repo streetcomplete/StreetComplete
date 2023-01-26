@@ -71,7 +71,7 @@ app icon/
     ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
     ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
 
-assembly_point/
+assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
 bridge structure/
