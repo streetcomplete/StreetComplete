@@ -120,8 +120,8 @@ ic_link_graphhopper.png        fair use          used while linking and promotin
 ic_link_organic_maps.png       fair use          used while linking and promoting this project
 
 ic_preset_far-*                CC-BY 4.0         from https://fontawesome.com/license/free
-ic_preset_fas-*                  and
-ic_preset_fab-*                SIL OFL-1.1
+ic_preset_fas-*                  and             from https://fontawesome.com/license/free
+ic_preset_fab-*                SIL OFL-1.1       from https://fontawesome.com/license/free
 
 ic_preset_iD-*                 ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
 
