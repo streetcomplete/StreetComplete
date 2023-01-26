@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstants.EE_QUEST_OFFSET
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
@@ -125,6 +125,7 @@ import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
+import de.westnordost.streetcomplete.quests.railway_platform_ref.AddRailwayPlatformRef
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
@@ -544,27 +545,28 @@ fun getQuestTypeList(
     154 to AddWayLit(),
 
     // quests added in SCEE
-    ApplicationConstants.EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
-    ApplicationConstants.EE_QUEST_OFFSET + 1 to AddContactPhone(),
-    ApplicationConstants.EE_QUEST_OFFSET + 2 to AddContactWebsite(),
-    ApplicationConstants.EE_QUEST_OFFSET + 4 to AddCuisine(),
-    ApplicationConstants.EE_QUEST_OFFSET + 5 to AddHealthcareSpeciality(),
-    ApplicationConstants.EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
-    ApplicationConstants.EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
-    ApplicationConstants.EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
-    ApplicationConstants.EE_QUEST_OFFSET + 22 to AddArtworkType(),
-    ApplicationConstants.EE_QUEST_OFFSET + 9 to AddTreeGenus(),
-    ApplicationConstants.EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
-    ApplicationConstants.EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
+    EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
+    EE_QUEST_OFFSET + 1 to AddContactPhone(),
+    EE_QUEST_OFFSET + 2 to AddContactWebsite(),
+    EE_QUEST_OFFSET + 4 to AddCuisine(),
+    EE_QUEST_OFFSET + 5 to AddHealthcareSpeciality(),
+    EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
+    EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
+    EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
+    EE_QUEST_OFFSET + 22 to AddArtworkType(),
+    EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
+    EE_QUEST_OFFSET + 9 to AddTreeGenus(),
+    EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
+    EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests
-    ApplicationConstants.EE_QUEST_OFFSET + 12 to ShowBusiness(),
-    ApplicationConstants.EE_QUEST_OFFSET + 13 to ShowBicycleStuff(),
-    ApplicationConstants.EE_QUEST_OFFSET + 14 to ShowTrafficStuff(),
-    ApplicationConstants.EE_QUEST_OFFSET + 15 to ShowOther(),
-    ApplicationConstants.EE_QUEST_OFFSET + 16 to ShowRecycling(),
-    ApplicationConstants.EE_QUEST_OFFSET + 17 to ShowVacant(),
-    ApplicationConstants.EE_QUEST_OFFSET + 18 to ShowMachine(),
-    ApplicationConstants.EE_QUEST_OFFSET + 19 to ShowSeating(),
-    ApplicationConstants.EE_QUEST_OFFSET + 20 to ShowCamera(),
-    ApplicationConstants.EE_QUEST_OFFSET + 21 to ShowFixme(),
+    EE_QUEST_OFFSET + 12 to ShowBusiness(),
+    EE_QUEST_OFFSET + 13 to ShowBicycleStuff(),
+    EE_QUEST_OFFSET + 14 to ShowTrafficStuff(),
+    EE_QUEST_OFFSET + 15 to ShowOther(),
+    EE_QUEST_OFFSET + 16 to ShowRecycling(),
+    EE_QUEST_OFFSET + 17 to ShowVacant(),
+    EE_QUEST_OFFSET + 18 to ShowMachine(),
+    EE_QUEST_OFFSET + 19 to ShowSeating(),
+    EE_QUEST_OFFSET + 20 to ShowCamera(),
+    EE_QUEST_OFFSET + 21 to ShowFixme(),
 )

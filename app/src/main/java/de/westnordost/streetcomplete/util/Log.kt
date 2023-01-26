@@ -46,8 +46,7 @@ object Log {
         if (logLines.size > 12000) // clear oldest entries if list gets too long
             logLines.subList(0, 2000).clear()
         logLines.add(logLine)
-        if (BuildConfig.DEBUG)
-            println(logLine)
+//        println(logLine)
     }
 
     val logLines = mutableListOf<String>()
