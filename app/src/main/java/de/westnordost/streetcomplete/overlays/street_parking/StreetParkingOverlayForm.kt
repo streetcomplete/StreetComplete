@@ -73,8 +73,8 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun initStateFromTags() {
-        streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
-        streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
+        streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false), false), false)
+        streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true), true), true)
     }
 
     override fun hasChanges(): Boolean =
@@ -84,7 +84,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     override fun serialize(item: StreetParking) = Json.encodeToString(item)
     override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)
     override fun asStreetSideItem(item: StreetParking, isRight: Boolean) =
-        item.asStreetSideItem(requireContext(), isUpsideDown(isRight))
+        item.asStreetSideItem(requireContext(), isUpsideDown(isRight), isRight)
 
     private fun isUpsideDown(isRight: Boolean) =
         if (isRight) isRightSideUpsideDown else isLeftSideUpsideDown
@@ -115,7 +115,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     private fun onSelectedSide(parking: StreetParking, isRight: Boolean) {
         val ctx = context ?: return
-        streetSideSelect.replacePuzzleSide(parking.asStreetSideItem(ctx, isUpsideDown(isRight)), isRight)
+        streetSideSelect.replacePuzzleSide(parking.asStreetSideItem(ctx, isUpsideDown(isRight), isRight), isRight)
     }
 
     private fun getParkingItems(context: Context): List<DisplayItem<ParkingSelection>> =

@@ -30,11 +30,12 @@ fun StreetParking.asItem(
 
 fun StreetParking.asStreetSideItem(
     context: Context,
-    isUpsideDown: Boolean
+    isUpsideDown: Boolean,
+    isRightSide: Boolean
 ): StreetSideDisplayItem<StreetParking> = StreetSideItem2(
     this,
-    getIcon(context, isUpsideDown),
-    null,
+    getIcon(context, isUpsideDown, isRightSide),
+    titleResId?.let { ResText(it) },
     getDialogIcon(context, isUpsideDown),
     getFloatingIcon()
 )
@@ -47,9 +48,9 @@ private val StreetParking.titleResId: Int? get() = when (this) {
 }
 
 /** Image that should be shown in the street side select puzzle */
-private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
+private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image = when (this) {
     is StreetParkingPositionAndOrientation ->
-        getIcon(context, isUpsideDown)
+        getIcon(context, isUpsideDown, isRightSide)
     NoStreetParking, StreetParkingSeparate ->
         ResImage(R.drawable.ic_street_none)
     UnknownStreetParking, IncompleteStreetParking ->
@@ -85,8 +86,12 @@ private fun StreetParkingPositionAndOrientation.getDialogIcon(context: Context, 
 
 /** An image for a street parking to be displayed shows a wide variety of different cars so that
  *  it looks nicer and/or closer to reality */
-private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean): Image =
-    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512))
+private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image {
+    val drawable = StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512)
+    // show left and right side staggered to each other
+    if (isRightSide) drawable.phase = 0.5f
+    return DrawableImage(drawable)
+}
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_STREET -> R.string.street_parking_on_street
