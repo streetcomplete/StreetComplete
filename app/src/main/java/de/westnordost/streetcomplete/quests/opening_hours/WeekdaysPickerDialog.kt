@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
@@ -19,12 +22,23 @@ object WeekdaysPickerDialog {
             localeWeekdayName + if (weekdayName != localeWeekdayName) " — $weekdayName" else ""
         }.toTypedArray()
 
-        return AlertDialog.Builder(context)
+        val builder = AlertDialog.Builder(context)
             .setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
             .setMultiChoiceItems(names, selection) { _, _, _ -> }
+            .setNeutralButton("Uncheck all") { _, _ ->  }
             .setNegativeButton(android.R.string.cancel, null)
-            .setButton(android.R.string.uncheckAll, null)
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Weekdays(selection)) }
-            .show()
+
+        val created = builder.create();
+        created.show();
+
+        // TODO: overriding the `Uncheck all` listener to keep it from closing isn't working currently.
+        created.getButton(AlertDialog.BUTTON_NEUTRAL)
+            .setOnClickListener { _ -> run {
+                val view = created.listView;
+                selection.forEachIndexed { i, _ -> view.setItemChecked(i, false) }
+            }}
+
+        return created;
     }
 }
