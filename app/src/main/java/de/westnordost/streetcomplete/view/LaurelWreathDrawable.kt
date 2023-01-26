@@ -14,9 +14,14 @@ import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import kotlin.math.min
 
 /** Drawable providing decoration, suitable for a circular background
-    100 and more: fully grown wreath with all pretty elements
-    99 to 10: may be losing elements as it gets smaller
-    below: no decorative styling at all
+ *  depends on what is set in level of drawable that ranges from 0 to 10000
+ *  for all values - colour of backround circle is affected
+ *
+ *  there can be also laurel wreath decoration:
+ *  for 10000 - fully grown wreath with all pretty elements
+ *  for values between 9999 and 1000 - may be losing elements as it gets smaller,
+ *  with the first loss at it goes down from 10000 to 9999
+ *  below 1000: guaranted to have no decorative leaves at all
  */
 class LaurelWreathDrawable(private val resources: Resources) : Drawable() {
     private val pairOfLaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)

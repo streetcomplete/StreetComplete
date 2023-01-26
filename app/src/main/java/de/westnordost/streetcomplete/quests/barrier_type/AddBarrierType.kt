@@ -25,6 +25,10 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
          and !leisure
          and !aeroway
          and !railway
+         and !craft
+         and !healthcare
+         and !office
+         and !shop
     """
     override val changesetComment = "Specify type of barriers"
     override val wikiLink = "Key:barrier"

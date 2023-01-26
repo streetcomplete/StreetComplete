@@ -222,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"기둥형"</string>
     <string name="quest_fireHydrant_type_underground">"지하형"</string>
     <string name="quest_fireHydrant_type_wall">"벽에 있음"</string>
-    <string name="quest_fireHydrant_type_pond">"호수형"</string>
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
     <string name="credits_translations_title">"번역"</string>
     <string name="credits_contributors_title">"코드 기여자"</string>
@@ -1189,4 +1188,5 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_presets_share">"공유"</string>
     <string name="quest_presets_delete">"제거"</string>
     <string name="user_profile_current_week_title">"최근 7일간"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"양방향 인도 겸용 포장"</string>
 </resources>

@@ -34,6 +34,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
           and !ref
     """.toElementFilterExpression() }
 
+    private val privateFootwaysFilter by lazy {
+        "ways with highway ~ footway|steps|pedestrian and access ~ private|no".toElementFilterExpression()
+    }
+
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_door_address
@@ -73,6 +77,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // note: it does not support multipolygon buildings
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { privateFootwaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
         val buildings = mapData.ways.asSequence()
             .filter { buildingFilter.matches(it) }
         val result = mutableListOf<Node>()
@@ -81,7 +89,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                 .mapNotNull { mapData.getNode(it) }
                 .filter { entrancesFilter.matches(it) }
             if (buildingEntrances.count() < 2) continue
-            result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) })
+            result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) && it.id !in excludedWayNodeIds })
         }
         return result
     }

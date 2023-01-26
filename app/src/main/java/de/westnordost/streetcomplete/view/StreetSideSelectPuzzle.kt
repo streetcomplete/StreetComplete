@@ -118,11 +118,19 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         get() = binding.rotateContainer.rotation
         set(value) {
             binding.rotateContainer.rotation = value
-            val scale = abs(cos(value * PI / 180)).toFloat()
-            binding.rotateContainer.scaleX = 1 + scale * 2 / 3f
-            binding.rotateContainer.scaleY = 1 + scale * 2 / 3f
+            val scale = 1 + abs(cos(value * PI / 180)).toFloat() * 2 / 3f
+            binding.rotateContainer.scaleX = scale
+            binding.rotateContainer.scaleY = scale
             binding.leftSideFloatingIcon.rotation = -value
             binding.rightSideFloatingIcon.rotation = -value
+
+            binding.leftSideTextView.rotation = -value
+            binding.rightSideTextView.rotation = -value
+
+            binding.leftSideTextView.scaleX = 1.5f / scale
+            binding.leftSideTextView.scaleY = 1.5f / scale
+            binding.rightSideTextView.scaleX = 1.5f / scale
+            binding.rightSideTextView.scaleY = 1.5f / scale
         }
 
     fun setLeftSideFloatingIcon(image: Image?) {

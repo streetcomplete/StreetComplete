@@ -27,7 +27,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override val icon = R.drawable.ic_quest_seating
     override val isReplaceShopEnabled = true
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_summer_outdoor_seating
+    override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
 

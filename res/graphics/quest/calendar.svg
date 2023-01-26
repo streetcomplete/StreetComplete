@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#9bbe55"/>
+ <path d="m25 90v9c0 5.54 4.46 10 10 10h60c5.54 0 10-4.46 10-10v-9h-80z" opacity=".2"/>
+ <rect x="25" y="35" width="80" height="70" rx="10" ry="10" fill="#fff"/>
+ <rect x="35" y="85" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="51.667" y="85" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="68.333" y="85" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="85" y="85" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="85" y="70" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="68.333" y="70" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="51.667" y="70" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="35" y="70" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="35" y="55" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="51.667" y="55" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="68.333" y="55" width="10" height="10" fill="#b9b9b9"/>
+ <rect x="85" y="55" width="10" height="10" fill="#b9b9b9"/>
+ <path d="m35 30h60c5.54 0 10 4.46 10 10v10h-80v-10c0-5.54 4.46-10 10-10z" fill="#c84747"/>
+ <circle cx="86" cy="38" r="5" fill="#9e3d33"/>
+ <rect x="82" y="20" width="8" height="20" rx="4" ry="4" fill="#444"/>
+ <circle cx="44" cy="38" r="5" fill="#9e3d33"/>
+ <rect x="40" y="20" width="8" height="20" rx="4" ry="4" fill="#444"/>
+</svg>

@@ -31,6 +31,7 @@ class TimeRangePickerDialog(
 ) : AlertDialog(context) {
 
     private val startPicker: TimePicker
+    private val startPickerContainer: ViewGroup
     private val endPicker: TimePicker
     private val endPickerContainer: ViewGroup
     private val viewPager: ViewPager2
@@ -60,7 +61,8 @@ class TimeRangePickerDialog(
         )
 
         val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
-        startPicker = startPickerBinding.root
+        startPickerContainer = startPickerBinding.root
+        startPicker = startPickerBinding.picker
         startPicker.setIs24HourView(is24HourView)
 
         val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
@@ -122,7 +124,7 @@ class TimeRangePickerDialog(
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val viewGroup = (holder.itemView as FrameLayout)
             viewGroup.removeAllViews()
-            viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
+            viewGroup.addView(if (position == START_TIME_TAB) startPickerContainer else endPickerContainer)
         }
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

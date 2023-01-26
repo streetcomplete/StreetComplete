@@ -27,7 +27,9 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !aeroway
          and !railway
          and !craft
-         and !tourism
+         and !healthcare
+         and !office
+         and !shop
         )
     """
     override val changesetComment = "Survey shop types"

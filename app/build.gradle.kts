@@ -11,8 +11,8 @@ plugins {
 
 android {
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
         isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5001
-        versionName = "50.0"
+        versionCode = 5003
+        versionName = "50.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -111,7 +111,7 @@ dependencies {
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.3"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -119,7 +119,7 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
 
-    androidTestImplementation("androidx.test:runner:1.5.1")
+    androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
@@ -131,7 +131,7 @@ dependencies {
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.appcompat:appcompat:1.6.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.5.0")
     implementation("androidx.fragment:fragment-ktx:1.5.5")
@@ -147,7 +147,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxCoroutinesVersion")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
@@ -156,7 +155,7 @@ dependencies {
     implementation("androidx.work:work-runtime:2.7.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:1.5")
+    implementation("de.westnordost:countryboundaries:1.6")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
@@ -188,10 +187,6 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.27.0")
-
-    // measuring distance with AR
-    implementation("com.google.ar:core:1.35.0")
-    implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
 /** Localizations that should be pulled from POEditor */
@@ -199,11 +194,12 @@ val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
+    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20221205"
+val nsiVersion = "v6.0.20221227"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v5.1.1"
 

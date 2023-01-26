@@ -123,7 +123,7 @@ fun StringMapChangesBuilder.replaceShop(tags: Map<String, String>) {
  *  */
 fun isShopExpressionFragment(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
-    return ("""
+    return ("""(
         ${p}shop and ${p}shop !~ no|vacant|mall
         or ${p}office and ${p}office != vacant
         or ${p}healthcare and healthcare != hospital
@@ -245,7 +245,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             // "embassy", // usually purpose-built / not a normal commercial room
             // "place_of_worship" // usually-purpose-built
         )
-    ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
+    ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + ")\n"
     ).trimIndent()
 }
 

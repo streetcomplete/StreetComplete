@@ -222,7 +222,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fireHydrant_type_pillar">"Poste"</string>
     <string name="quest_fireHydrant_type_underground">"Soterráu"</string>
     <string name="quest_fireHydrant_type_wall">"Na parede (BIE)"</string>
-    <string name="quest_fireHydrant_type_pond">"Depósitu d'agua"</string>
     <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traducciones"</string>
     <string name="credits_contributors_title">"Collaboraciones col códigu"</string>
@@ -506,4 +505,5 @@ Por exemplu: 1,3 o 2–6."</string>
     <string name="default_disabled_msg_maxspeed">"Esti tipu d'entruga ta desactivada de mano porque, pelo xeneral, habría que buscar señales de llende de velocidá en tola cai, non sólo de la seición resaltada. Puede ser demasiáu trabayu pa completar una sola xera."</string>
     <string name="at_housename">"Nome de la casa %s"</string>
     <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"compartíu con peatones, dambes direiciones"</string>
 </resources>

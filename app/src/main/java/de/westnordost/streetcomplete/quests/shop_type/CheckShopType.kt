@@ -21,7 +21,22 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     private val disusedShopsFilter by lazy { """
         nodes, ways with (
           shop = vacant
-          or ${isShopExpressionFragment("disused")}
+          or (${isShopExpressionFragment("disused")}
+             and !man_made
+             and !historic
+             and !military
+             and !power
+             and !tourism
+             and !attraction
+             and !amenity
+             and !leisure
+             and !aeroway
+             and !railway
+             and !craft
+             and !healthcare
+             and !office
+             and !shop
+          )
         ) and (
           older today -1 years
           or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -1 years" }}

@@ -431,7 +431,6 @@ abstract class AbstractOverlayForm :
     }
 }
 
-
 interface IAnswerItem {
     val title: Text
     val action: () -> Unit

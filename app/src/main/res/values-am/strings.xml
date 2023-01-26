@@ -222,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"ምሰሶ"</string>
     <string name="quest_fireHydrant_type_underground">"ከመሬት በታች"</string>
     <string name="quest_fireHydrant_type_wall">"ግድግዳ"</string>
-    <string name="quest_fireHydrant_type_pond">"ኩሬ"</string>
     <string name="credits_contributors">"የ &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributor\"&gt;የተሟላ ዝርዝር በ GitHub ላይ ይመልከቱ&lt;/a&gt;።"</string>
     <string name="credits_translations_title">"ትርጉሞች"</string>
     <string name="credits_contributors_title">"የኮድ አስተዋጽዖ አበርካቾች"</string>
@@ -906,4 +905,5 @@
     <string name="quest_camera_type_dome">"ግማሽ ክብ"</string>
     <string name="quest_camera_type_fixed">"ተስተካክሏል"</string>
     <string name="quest_camera_type_panning">"ማንጠፍ"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"በግልፅ የእግረኛ መንገድን መጋራት፣ ሁለቱም አቅጣጫዎች"</string>
 </resources>

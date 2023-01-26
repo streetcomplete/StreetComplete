@@ -220,7 +220,6 @@
     <string name="quest_fireHydrant_type_pillar">"เสา"</string>
     <string name="quest_fireHydrant_type_underground">"ใต้ดิน"</string>
     <string name="quest_fireHydrant_type_wall">"กำแพง"</string>
-    <string name="quest_fireHydrant_type_pond">"บ่อ"</string>
     <string name="credits_contributors">"ให้ดู &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;รายการทั้งหมดใน GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"การแปลภาษา"</string>
     <string name="credits_contributors_title">"ผู้สมทบด้านโค้ด"</string>
@@ -1160,4 +1159,5 @@
     <string name="lit_value_automatic">"ส่องสว่างเฉพาะเมื่อมีคนผ่าน"</string>
     <string name="overlay_sidewalk">"ทางเท้า"</string>
     <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"ทางเท้าที่ใช้ร่วมกันอย่างชัดเจนทั้งสองทิศทาง"</string>
 </resources>

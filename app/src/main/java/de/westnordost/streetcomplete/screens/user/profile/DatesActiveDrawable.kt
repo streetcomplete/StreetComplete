@@ -31,7 +31,7 @@ class DatesActiveDrawable(
     private val textHeight: Float = boxSize * 0.8f
 
     private val greenBoxPaint = Paint().apply { setARGB(255, 128, 177, 88) }
-    private val emptyBoxPaint = Paint().apply { setARGB(20, 128, 128, 128) }
+    private val emptyBoxPaint = Paint().apply { setARGB(60, 128, 128, 128) }
     private val textPaint = Paint().apply {
         color = textColor
         textSize = textHeight
