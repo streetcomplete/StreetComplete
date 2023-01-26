@@ -23,6 +23,7 @@ object WeekdaysPickerDialog {
             .setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
             .setMultiChoiceItems(names, selection) { _, _, _ -> }
             .setNegativeButton(android.R.string.cancel, null)
+            .setButton(android.R.string.uncheckAll, null)
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Weekdays(selection)) }
             .show()
     }
