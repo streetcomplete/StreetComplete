@@ -307,7 +307,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         val updateRank = { r: Int ->
             circle.text = "#$r"
-            circle.background.level = min(100 - r, 100) * 100
+            circle.background.level = min(101 - r, 100) * 100
         }
         if (statistics?.countryCode != previousStatistics?.countryCode ||
             previousStatistics?.rank == null || rank > previousStatistics.rank) {
