@@ -1,3 +1,2 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 officialLanguages: [fr]
-orchardProduces: [banana, tomato, pineapple, lemon, lime, orange, guava, mango, mangosteen, grapefruit, coconut, avocado, chilli_pepper, sweet_pepper, papaya, coffee, apricot, vanilla]

@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-enum class QuestTypeAchievement(val id: String) {
+enum class EditTypeAchievement(val id: String) {
     RARE("rare"),
     CAR("car"),
     VEG("veg"),
@@ -29,16 +32,16 @@ enum class QuestTypeAchievement(val id: String) {
 val achievementsModule = module {
     factory(named("Achievements")) { achievements }
     factory(named("Links")) { links }
-    factory(named("QuestAliases")) { questAliases }
+    factory(named("TypeAliases")) { typeAliases }
     factory { UserAchievementsDao(get()) }
     factory { UserLinksDao(get()) }
 
     single<AchievementsSource> { get<AchievementsController>() }
-    single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
+    single { AchievementsController(get(), get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 
-// list of quest synonyms (this alternate name is mentioned to aid searching for this code)
-private val questAliases = listOf(
+// list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
+private val typeAliases = listOf(
     "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
@@ -46,6 +49,11 @@ private val questAliases = listOf(
     "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
     "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
+    // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
+    "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
+    "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,
+    "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
+    "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!
 )
 
 private val links = listOf(
@@ -118,6 +126,15 @@ private val links = listOf(
         R.string.link_openstreetcam_description
     ),
 
+    Link(
+        "ohsomehex",
+        "https://hex.ohsome.org",
+        "OSM History eXplorer",
+        LinkCategory.INTRO,
+        R.drawable.ic_link_ohsomehex,
+        R.string.link_ohsomehex_description
+    ),
+
     /* --------------------------------------- Editors ---------------------------------------*/
     Link(
         "pic4review",
@@ -151,6 +168,14 @@ private val links = listOf(
         R.drawable.ic_link_josm,
         R.string.link_josm_description
     ),
+    Link(
+        "notesreview",
+        "https://ent8r.github.io/NotesReview/",
+        "NotesReview",
+        LinkCategory.EDITORS,
+        R.drawable.ic_link_notesreview,
+        R.string.link_notesreview_description
+    ),
 
     /* ---------------------------------------- Maps -----------------------------------------*/
 
@@ -177,6 +202,14 @@ private val links = listOf(
         LinkCategory.MAPS,
         R.drawable.ic_link_organic_maps,
         R.string.link_organic_maps_description
+    ),
+    Link(
+        "osmand",
+        "https://osmand.net/",
+        "OsmAnd",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_osmand,
+        R.string.link_osmand_description
     ),
     Link(
         "cyclosm",
@@ -250,6 +283,14 @@ private val links = listOf(
         R.drawable.ic_link_osmhydrant,
         R.string.link_osmhydrant_description
     ),
+    Link(
+        "sunders",
+        "https://sunders.uber.space/",
+        "Surveillance under Surveillance",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_sunders,
+        R.string.link_sunders_description
+    ),
 
     /* -------------------------------------- Showcase ---------------------------------------*/
     Link(
@@ -317,6 +358,14 @@ private val links = listOf(
         R.drawable.ic_link_graphhopper,
         R.string.link_graphhopper_description
     ),
+    Link(
+        "valhalla",
+        "https://valhalla.openstreetmap.de/",
+        "Valhalla",
+        LinkCategory.SHOWCASE,
+        R.drawable.ic_link_valhalla,
+        R.string.link_valhalla_description
+    ),
 
     /* -------------------------------------- Goodies ----------------------------------------*/
     Link(
@@ -364,7 +413,7 @@ private val links = listOf(
         "https://oomap.co.uk/global/",
         "OpenOrienteeringMap",
         LinkCategory.GOODIES,
-        null,
+        R.drawable.ic_link_openorienteeringmap,
         R.string.link_openorienteeringmap_description
     ),
     Link(
@@ -374,6 +423,22 @@ private val links = listOf(
         LinkCategory.GOODIES,
         R.drawable.ic_link_figuregrounder,
         R.string.link_figuregrounder_description
+    ),
+    Link(
+        "backofyourhand",
+        "https://backofyourhand.com/",
+        "Back Of Your Hand",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_backofyourhand,
+        R.string.link_backofyourhand_description
+    ),
+    Link(
+        "opencampingmap",
+        "https://opencampingmap.org/",
+        "Open Camping Map",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_opencampingmap,
+        R.string.link_opencampingmap_description
     )
 )
 
@@ -386,7 +451,7 @@ private val achievements = listOf(
         R.drawable.ic_achievement_first_edit,
         R.string.achievement_first_edit_title,
         R.string.achievement_first_edit_description,
-        TotalSolvedQuests,
+        TotalEditCount,
         { 1 },
         mapOf(),
         1
@@ -397,7 +462,7 @@ private val achievements = listOf(
         R.drawable.ic_achievement_surveyor,
         R.string.achievement_surveyor_title,
         R.string.achievement_surveyor_solved_X,
-        TotalSolvedQuests,
+        TotalEditCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -412,7 +477,9 @@ private val achievements = listOf(
 
             8 to links("osm-haiku"),
 
-            10 to links("umap")
+            10 to links("umap"),
+
+            12 to links("backofyourhand")
         )
     ),
 
@@ -435,27 +502,29 @@ private val achievements = listOf(
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
-            7 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
+            7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
+            8 to links("ohsomehex"),
+            9 to links("notesreview"),
         )
     ),
 
     Achievement(
-        QuestTypeAchievement.RARE.id,
+        EditTypeAchievement.RARE.id,
         R.drawable.ic_achievement_rare,
         R.string.achievement_rare_title,
         R.string.achievement_rare_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 3, 9, 18, 30, 45, 63, ...
         { lvl -> (lvl + 1) * 3 },
         mapOf()
     ),
 
     Achievement(
-        QuestTypeAchievement.CAR.id,
+        EditTypeAchievement.CAR.id,
         R.drawable.ic_achievement_car,
         R.string.achievement_car_title,
         R.string.achievement_car_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -464,16 +533,17 @@ private val achievements = listOf(
             5 to links("osrm"), // routing engines are not that interesting for end users
             6 to links("openrouteservice"),
             7 to links("graphhopper"),
+            8 to links("valhalla"),
             12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
         )
     ),
 
     Achievement(
-        QuestTypeAchievement.VEG.id,
+        EditTypeAchievement.VEG.id,
         R.drawable.ic_achievement_veg,
         R.string.achievement_veg_title,
         R.string.achievement_veg_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -482,11 +552,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.PEDESTRIAN.id,
+        EditTypeAchievement.PEDESTRIAN.id,
         R.drawable.ic_achievement_pedestrian,
         R.string.achievement_pedestrian_title,
         R.string.achievement_pedestrian_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -495,11 +565,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BUILDING.id,
+        EditTypeAchievement.BUILDING.id,
         R.drawable.ic_achievement_building,
         R.string.achievement_building_title,
         R.string.achievement_building_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -509,11 +579,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.POSTMAN.id,
+        EditTypeAchievement.POSTMAN.id,
         R.drawable.ic_achievement_postman,
         R.string.achievement_postman_title,
         R.string.achievement_postman_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -525,11 +595,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BLIND.id,
+        EditTypeAchievement.BLIND.id,
         R.drawable.ic_achievement_blind,
         R.string.achievement_blind_title,
         R.string.achievement_blind_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -539,11 +609,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.WHEELCHAIR.id,
+        EditTypeAchievement.WHEELCHAIR.id,
         R.drawable.ic_achievement_wheelchair,
         R.string.achievement_wheelchair_title,
         R.string.achievement_wheelchair_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -553,11 +623,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BICYCLIST.id,
+        EditTypeAchievement.BICYCLIST.id,
         R.drawable.ic_achievement_bicyclist,
         R.string.achievement_bicyclist_title,
         R.string.achievement_bicyclist_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -567,40 +637,43 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.CITIZEN.id,
+        EditTypeAchievement.CITIZEN.id,
         R.drawable.ic_achievement_citizen,
         R.string.achievement_citizen_title,
         R.string.achievement_citizen_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("openstreetbrowser"),
             2 to links("qwant_maps"),
             3 to links("organic_maps"),
-            4 to links("indoorequal")
+            4 to links("indoorequal"),
+            5 to links("osmand"),
+            6 to links("sunders"),
         )
     ),
 
     Achievement(
-        QuestTypeAchievement.OUTDOORS.id,
+        EditTypeAchievement.OUTDOORS.id,
         R.drawable.ic_achievement_outdoors,
         R.string.achievement_outdoors_title,
         R.string.achievement_outdoors_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
-            1 to links("openorienteeringmap")
+            1 to links("openorienteeringmap"),
+            4 to links("opencampingmap")
         )
     ),
 
     Achievement(
-        QuestTypeAchievement.LIFESAVER.id,
+        EditTypeAchievement.LIFESAVER.id,
         R.drawable.ic_achievement_lifesaver,
         R.string.achievement_lifesaver_title,
         R.string.achievement_lifesaver_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -42,5 +43,14 @@ class VisibleQuestTypeDaoTest : ApplicationDbTestCase() {
         assertFalse(dao.get(1, "blurb"))
         dao.clear(1)
         assertTrue(dao.get(1, "blurb"))
+    }
+
+    @Test fun putAllAndGetAll() {
+        val visibilities = mapOf("a" to true, "b" to false)
+        dao.putAll(0, visibilities)
+        assertTrue(dao.get(0, "a"))
+        assertFalse(dao.get(0, "b"))
+        assertEquals(visibilities, dao.getAll(0))
+        assertEquals(mapOf<String, Boolean>(), dao.getAll(1))
     }
 }

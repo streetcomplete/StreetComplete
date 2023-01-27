@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.place_name
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LocalizedName
 
 class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
 
@@ -16,7 +16,7 @@ class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoName() }
+        AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() }
     )
 
     override fun onClickOk(names: List<LocalizedName>) {

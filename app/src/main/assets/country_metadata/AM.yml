@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [Ameriabank, Unibank, VTB, ACBA, ABB, HSBC, Ararat Bank, Ardshinbank, Armbusinessbank, ArmEconomBank, Areximbank, AEB, ВТБ, Araratbank, Ameria Bank, Հայբիզնեսբանկ, ASHIB, Ակբա, AcbaCreditAgricole, VTB Bank, Converse Bank, VTB Armenia]
 hasDailyAlternateSideParkingSign: true
@@ -7,6 +7,6 @@ hasSlowZone: true
 livingStreetSignStyle: russia
 mobileCountryCode: 283
 officialLanguages: [hy]
-orchardProduces: [tomato, grape, apple, apricot, peach, plum, pear, cherry, walnut, fig, hazelnut]
+orchardProduces: [grape, apricot, apple, peach, tomato, pear, plum, walnut, cherry, fig, hazelnut]
 slowZoneLabelPosition: top
 slowZoneLabelText: ԹՈՏՒ

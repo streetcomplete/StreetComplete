@@ -501,10 +501,6 @@
                     "name": "Pozorište",
                     "terms": "teatar,pozorište"
                 },
-                "amenity/toilets": {
-                    "name": "Toaleti",
-                    "terms": "kupatila,toaleti,wc-i"
-                },
                 "amenity/townhall": {
                     "name": "Gradska vijećnica",
                     "terms": "gradska vijećnica,vijećnica"
@@ -623,9 +619,6 @@
                 },
                 "craft/bookbinder": {
                     "name": "Knjigovezac"
-                },
-                "craft/brewery": {
-                    "name": "Pivara"
                 },
                 "craft/carpenter": {
                     "name": "Stolar"
@@ -1271,10 +1264,6 @@
                     "name": "Bakalnica",
                     "terms": "bakalnica,dragstor,prodavnica,granap"
                 },
-                "shop/deli": {
-                    "name": "Delikatese",
-                    "terms": "delikatese,prodavnica delikatesa"
-                },
                 "shop/department_store": {
                     "name": "Robna kuća",
                     "terms": "robna kuća,prodajni centar"
@@ -1390,17 +1379,9 @@
                 "shop/vacant": {
                     "name": "Prodavnica za iznajmljivanje"
                 },
-                "shop/variety_store": {
-                    "name": "Prodavnica mješovite robe",
-                    "terms": "prodavnica mješovite robe,radnja za prodaju mješovite robe"
-                },
                 "shop/video": {
                     "name": "Video klub",
                     "terms": "videoklub,videoteka"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Planinski dom",
-                    "terms": "alpska koliba,planinarski dom,planinarska kuća"
                 },
                 "tourism/artwork": {
                     "name": "Umjetničko djelo",
@@ -1532,9 +1513,6 @@
                 "waterway/river": {
                     "name": "Rijeka",
                     "terms": "rijeka,riječni tok"
-                },
-                "waterway/riverbank": {
-                    "name": "Riječno korito"
                 },
                 "waterway/stream": {
                     "name": "Potok",

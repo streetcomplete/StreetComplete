@@ -1,7 +1,10 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalValidHousenumberRegex: ([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{1,5}
+advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: yellow
 atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
 centerLineStyle: white
+hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasNoStandingSign: false
@@ -9,11 +12,13 @@ hasSlowZone: true
 isLeftHandTraffic: true
 livingStreetSignStyle: australia
 mobileCountryCode: 505
+noEntrySignStyle: no entry
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [en]
-orchardProduces: [grape, tomato, banana, apple, orange, pear, olive, peach, pineapple, almond, avocado, strawberry, lemon, lime, guava, mango, mangosteen, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: AREA

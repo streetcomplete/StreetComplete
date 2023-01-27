@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [البنك الأهلي المصري, بنك مصر, CIB, HSBC, صيدلية شاهبور, بنك فيصل الإسلامي المصري, Commercial International Bank, Banque Misr, NBE, Bank of Egypt, بنك الإسكندرية, البريد المصري, بنك القاهرة, البنك التجاري الدولي CIB]
 firstDayOfWorkweek: Su
@@ -6,6 +6,6 @@ mobileCountryCode: 602
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [tomato, grape, date, guava, mango, mangosteen, banana, orange, olive, apple, strawberry, peach, lemon, lime, fig, apricot, pear, chilli_pepper, sweet_pepper]
+orchardProduces: [tomato, guava, mango, mangosteen, orange, olive, grape, date, banana, apple, fig, chilli_pepper, sweet_pepper, peach, strawberry, lemon, lime, apricot, walnut]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

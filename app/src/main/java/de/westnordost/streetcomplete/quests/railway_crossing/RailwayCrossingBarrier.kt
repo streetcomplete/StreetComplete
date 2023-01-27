@@ -12,5 +12,11 @@ enum class RailwayCrossingBarrier(val osmValue: String?) {
      * this allows to tag rare cases that have both barrier and chicane
      * (SC leaves crossing:chicane untagged for crossing with barriers)
      */
-    CHICANE(null)
+    CHICANE(null);
+
+    companion object {
+        fun getSelectableValues(isPedestrianCrossing: Boolean) =
+            if (isPedestrianCrossing) listOf(NO, CHICANE, GATE, FULL)
+            else                      listOf(NO, HALF, DOUBLE_HALF, FULL)
+    }
 }

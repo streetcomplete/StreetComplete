@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
@@ -30,6 +29,7 @@ import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -61,8 +61,11 @@ class OsmQuestControllerTest {
 
         notesSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
-            ApplicableQuestType, NotApplicableQuestType, ComplexQuestTypeApplicableToNode42,
-            ApplicableQuestTypeNotInAnyCountry, ApplicableQuestType2
+            0 to ApplicableQuestType,
+            1 to NotApplicableQuestType,
+            2 to ComplexQuestTypeApplicableToNode42,
+            3 to ApplicableQuestTypeNotInAnyCountry,
+            4 to ApplicableQuestType2
         ))
         countryBoundaries = mock()
 
@@ -95,7 +98,7 @@ class OsmQuestControllerTest {
         on(mapDataSource.getGeometry(NODE, 1)).thenReturn(g)
 
         val expectedQuest = OsmQuest(ApplicableQuestType, NODE, 1, g)
-        assertEquals(expectedQuest, ctrl.get(key))
+        assertEquals(expectedQuest, ctrl.getVisible(key))
     }
 
     @Test fun getAllVisibleInBBox() {
@@ -176,7 +179,7 @@ class OsmQuestControllerTest {
 
         verify(hiddenDB).add(quest.key)
         verify(hideListener).onHid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+            quest.elementType, quest.elementId, quest.type, quest.position, 555
         )))
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
@@ -196,7 +199,7 @@ class OsmQuestControllerTest {
 
         verify(hiddenDB).delete(quest.key)
         verify(hideListener).onUnhid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+            quest.elementType, quest.elementId, quest.type, quest.position, 555
         )))
         verify(listener).onUpdated(
             addedQuests = eq(listOf(quest)),

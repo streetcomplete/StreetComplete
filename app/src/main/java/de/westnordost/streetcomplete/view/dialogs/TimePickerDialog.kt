@@ -8,7 +8,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.R
 
 /** A dialog in which you can select a time */
 class TimePickerDialog(
@@ -17,7 +16,7 @@ class TimePickerDialog(
     initialMinute: Int,
     is24HourView: Boolean,
     private val callback: (hourOfDay: Int, minute: Int) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     private val timePicker: TimePicker = TimePicker(context)
 

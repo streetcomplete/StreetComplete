@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "master"
+  workflow_dispatch:
 
 jobs:
   ktlint:
@@ -12,12 +13,12 @@ jobs:
       lintResultFilename: ktlint-result.txt
     steps:
       - name: Checkout the source code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Run Kotlin linter
         id: ktlint-check
         uses: musichin/ktlint-check@v1.2.1
         with:
-          version: '0.43.2'
+          version: '0.46.0'
           reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
           relative: true
           verbose: true

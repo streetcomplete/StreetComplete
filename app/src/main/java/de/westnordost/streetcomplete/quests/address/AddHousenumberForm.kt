@@ -1,94 +1,78 @@
 package de.westnordost.streetcomplete.quests.address
 
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.text.InputType
-import android.text.method.DigitsKeyListener
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
-import de.westnordost.streetcomplete.ktx.showKeyboard
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.databinding.ViewAddressNumberOrNameInputBinding
+import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
+import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.address.looksInvalid
+import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.osm.buildingSynonyms
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
+class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
+
+    override val contentLayoutResId = R.layout.view_address_number_or_name_input
+    private val binding by contentViewBinding(ViewAddressNumberOrNameInputBinding::bind)
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
-        AnswerItem(R.string.quest_address_answer_house_name_and_housenumber) { switchToHouseNameAndHouseNumber() },
-        AnswerItem(R.string.quest_address_answer_house_name) { switchToHouseName() },
+        AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
         AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
     )
 
-    private var houseNumberInput: EditText? = null
-    private var houseNameInput: EditText? = null
-    private var conscriptionNumberInput: EditText? = null
-    private var streetNumberInput: EditText? = null
-    private var blockNumberInput: EditText? = null
-
-    private var toggleKeyboardButton: Button? = null
-
-    private var addButton: View? = null
-    private var subtractButton: View? = null
-
-    enum class InterfaceMode {
-        HOUSENUMBER, HOUSENAME, HOUSENUMBER_AND_HOUSENAME
-    }
-    private var interfaceMode: InterfaceMode = InterfaceMode.HOUSENUMBER
-
-    private var houseNumberInputTextColors: ColorStateList? = null
-
-    private val isShowingHouseNumberHint: Boolean get() = houseNumberInputTextColors != null
+    private var isShowingHouseName: Boolean = false
+    private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val prevMode = savedInstanceState?.getString(INTERFACE_MODE)?.let { InterfaceMode.valueOf(it) }
-        interfaceMode = prevMode ?: InterfaceMode.HOUSENUMBER
-        setLayoutBasedOnInterfaceMode()
+        val numberView = layoutInflater.inflate(
+            getAddressNumberLayoutResId(countryInfo.countryCode),
+            binding.countrySpecificContainer
+        )
+        numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
+            toggleHouseNameButton = binding.toggleHouseNameButton,
+            houseNameInput = binding.houseNameInput,
+            toggleAddressNumberButton = binding.toggleAddressNumberButton,
+            addressNumberContainer = binding.addressNumberContainer,
+            activity = requireActivity(),
+            houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
+            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
+            conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
+            streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
+            toggleKeyboardButton = binding.toggleKeyboardButton,
+            addButton = numberView.findViewById(R.id.addButton),
+            subtractButton = numberView.findViewById(R.id.subtractButton),
+        )
+        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+
+        // initially do not show any house number / house name UI
+        isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) == true
+        if (!isShowingHouseName) {
+            binding.toggleAddressNumberButton.isGone = true
+            binding.toggleHouseNameButton.isGone = true
+        }
+
+        checkIsFormComplete()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(INTERFACE_MODE, interfaceMode.name)
-    }
-
-    override fun onClickOk() {
-        createAnswer()?.let { answer ->
-            confirmHousenumber(answer.looksInvalid(countryInfo.additionalValidHousenumberRegex)) {
-                applyAnswer(answer)
-                if (answer.isRealHouseNumberAnswer) lastRealHousenumberAnswer = answer
-            }
-        }
-    }
-
-    override fun isFormComplete() = when (interfaceMode) {
-        InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
-        InterfaceMode.HOUSENAME -> createAnswer() != null
-        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
+        outState.putBoolean(SHOW_HOUSE_NAME, isShowingHouseName)
     }
 
     /* ------------------------------------- Other answers -------------------------------------- */
-
-    private fun switchToHouseName() {
-        interfaceMode = InterfaceMode.HOUSENAME
-        setLayoutBasedOnInterfaceMode()
-        houseNameInput?.requestFocus()
-    }
-
-    private fun switchToHouseNameAndHouseNumber() {
-        interfaceMode = InterfaceMode.HOUSENUMBER_AND_HOUSENAME
-        setLayoutBasedOnInterfaceMode()
-        houseNameInput?.requestFocus()
-    }
 
     private fun showMultipleNumbersHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -99,10 +83,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun onNoHouseNumber() {
-        val buildingValue = osmElement!!.tags["building"]!!
-        val buildingType = BuildingType.getByTag("building", buildingValue)
+        val buildingValue = element.tags["building"]!!
+        val transformedBuildingValue = buildingSynonyms[buildingValue] ?: buildingValue
+        val buildingType = BuildingType.getByTag("building", transformedBuildingValue)?.asItem()
         if (buildingType != null) {
-            showNoHousenumberDialog(buildingType)
+            showNoHouseNumberDialog(buildingType)
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
@@ -110,147 +95,40 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private fun showNoHousenumberDialog(buildingType: BuildingType) {
+    private fun showNoHouseNumberDialog(buildingType: DisplayItem<BuildingType>) {
         val dialogBinding = DialogQuestAddressNoHousenumberBinding.inflate(layoutInflater)
-        ItemViewHolder(dialogBinding.root).bind(buildingType.asItem())
+        ItemViewHolder(dialogBinding.root).bind(buildingType)
 
         AlertDialog.Builder(requireContext())
             .setView(dialogBinding.root)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(AddressNumberOrName(null, null)) }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongBuildingType) }
             .show()
     }
 
-    /* -------------------------- Set (different) housenumber layout  --------------------------- */
+    /* ----------------------------------- Show house name -------------------------------------- */
 
-    private fun setLayoutBasedOnInterfaceMode() {
-        setLayout(
-            when (interfaceMode) {
-                InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
-                InterfaceMode.HOUSENAME -> R.layout.quest_housename
-                InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
-            }
-        )
+    private fun showHouseName() {
+        isShowingHouseName = true
+        binding.toggleAddressNumberButton.isGone = false
+        binding.toggleHouseNameButton.isGone = false
+        numberOrNameInputCtrl.setHouseNameViewExpanded(true)
+        binding.houseNameInput.requestFocus()
     }
 
-    private fun setLayout(layoutResourceId: Int) {
-        val view = setContentView(layoutResourceId)
+    /* ----------------------------------- Commit answer ---------------------------------------- */
 
-        toggleKeyboardButton = view.findViewById(R.id.toggleKeyboardButton)
-        houseNumberInput = view.findViewById(R.id.houseNumberInput)
-        houseNameInput = view.findViewById(R.id.houseNameInput)
-        conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
-        streetNumberInput = view.findViewById(R.id.streetNumberInput)
-        blockNumberInput = view.findViewById(R.id.blockNumberInput)
-        addButton = view.findViewById(R.id.addButton)
-        subtractButton = view.findViewById(R.id.subtractButton)
-
-        addButton?.setOnClickListener { addToHouseNumberInput(+1) }
-        subtractButton?.setOnClickListener { addToHouseNumberInput(-1) }
-
-        // must be called before registering the text changed watchers because it changes the text
-        prefillBlockNumber()
-
-        initKeyboardButton()
-        // must be after initKeyboardButton because it re-sets the onFocusListener
-        showHouseNumberHint()
-
-        val onChanged = TextChangedWatcher { checkIsFormComplete() }
-        houseNumberInput?.addTextChangedListener(onChanged)
-        houseNameInput?.addTextChangedListener(onChanged)
-        conscriptionNumberInput?.addTextChangedListener(onChanged)
-        streetNumberInput?.addTextChangedListener(onChanged)
-        blockNumberInput?.addTextChangedListener(onChanged)
-    }
-
-    private fun prefillBlockNumber() {
-        /* the block number likely does not change from one input to the other, so let's prefill it
-           with the last selected value */
-        val input = blockNumberInput ?: return
-        val blockNumberAnswer = lastRealHousenumberAnswer as? HouseAndBlockNumber ?: return
-        input.setText(blockNumberAnswer.blockNumber)
-    }
-
-    private fun showHouseNumberHint() {
-        val input = houseNumberInput ?: return
-        val prev = lastRealHousenumberAnswer?.realHouseNumber ?: return
-
-        /* The Auto fit layout does not work with hints, so we workaround this by setting the "real"
-        *  text instead and make it look like it is a hint. This little hack is much less effort
-        *  than to fork and fix the external dependency. We need to revert back the color both on
-        *  focus and on text changed (tapping on +/- button) */
-        houseNumberInputTextColors = input.textColors
-        input.setTextColor(input.hintTextColors)
-        input.setText(prev)
-        input.addTextChangedListener(TextChangedWatcher {
-            val colors = houseNumberInputTextColors
-            if (colors != null) input.setTextColor(colors)
-            houseNumberInputTextColors = null
-        })
-        input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            updateKeyboardButtonVisibility()
-            if (hasFocus) input.showKeyboard()
-            val colors = houseNumberInputTextColors
-            if (hasFocus && colors != null) {
-                input.text = null
-                input.setTextColor(colors)
-                houseNumberInputTextColors = null
-            }
+    override fun onClickOk() {
+        val number = numberOrNameInputCtrl.addressNumber
+        val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
+        confirmHouseNumber(isUnusual) {
+            applyAnswer(AddressNumberOrName(number, numberOrNameInputCtrl.houseName))
+            if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+            number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
     }
 
-    private fun addToHouseNumberInput(add: Int) {
-        val input = houseNumberInput ?: return
-        val prev = if (input.text.isEmpty()) {
-            lastRealHousenumberAnswer?.realHouseNumber
-        } else {
-            input.text.toString()
-        } ?: return
-        val newHouseNumber = prev.addToHouseNumber(add) ?: return
-        input.setText(newHouseNumber)
-        input.setSelection(newHouseNumber.length)
-    }
-
-    private fun initKeyboardButton() {
-        toggleKeyboardButton?.text = "abc"
-        toggleKeyboardButton?.setOnClickListener {
-            val focus = requireActivity().currentFocus
-            if (focus != null && focus is EditText) {
-                val start = focus.selectionStart
-                val end = focus.selectionEnd
-                if (focus.inputType and InputType.TYPE_CLASS_NUMBER != 0) {
-                    focus.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
-                    toggleKeyboardButton?.text = "123"
-                } else {
-                    focus.inputType = InputType.TYPE_CLASS_NUMBER
-                    focus.keyListener = DigitsKeyListener.getInstance("0123456789.,- /")
-                    toggleKeyboardButton?.text = "abc"
-                }
-                // for some reason, the cursor position gets lost first time the input type is set (#1093)
-                focus.setSelection(start, end)
-                focus.showKeyboard()
-            }
-        }
-        updateKeyboardButtonVisibility()
-
-        val onFocusChange = View.OnFocusChangeListener { v, hasFocus ->
-            updateKeyboardButtonVisibility()
-            if (hasFocus) v.showKeyboard()
-        }
-        houseNumberInput?.onFocusChangeListener = onFocusChange
-        streetNumberInput?.onFocusChangeListener = onFocusChange
-        blockNumberInput?.onFocusChangeListener = onFocusChange
-    }
-
-    private fun updateKeyboardButtonVisibility() {
-        toggleKeyboardButton?.isInvisible = !(
-            houseNumberInput?.hasFocus() == true
-            || streetNumberInput?.hasFocus() == true
-            || blockNumberInput?.hasFocus() == true
-        )
-    }
-
-    private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {
+    private fun confirmHouseNumber(isUnusual: Boolean, onConfirmed: () -> Unit) {
         if (isUnusual) {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_generic_confirmation_title)
@@ -262,79 +140,21 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
             onConfirmed()
         }
     }
+    override fun isFormComplete(): Boolean = numberOrNameInputCtrl.isComplete
 
-    override fun isRejectingClose(): Boolean {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
-
-        return listOf(houseName, houseNumber, conscriptionNumber, streetNumber, blockNumber).any { it != null }
-    }
-
-    private fun createAnswer(): HousenumberAnswer? {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
-
-        return when {
-            houseName != null && houseNumber != null   -> HouseNameAndHouseNumber(houseName, houseNumber)
-            houseName != null                          -> HouseName(houseName)
-            conscriptionNumber != null                 -> ConscriptionNumber(conscriptionNumber, streetNumber) // streetNumber is optional
-            blockNumber != null && houseNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
-            houseNumber != null                        -> HouseNumber(houseNumber)
-            else                                       -> null
-        }
-    }
-
-    private val EditText.nonEmptyInput: String? get() {
-        val input = text.toString().trim()
-        return if (input.isNotEmpty()) input else null
-    }
+    override fun isRejectingClose(): Boolean = !numberOrNameInputCtrl.isEmpty
 
     companion object {
-        private var lastRealHousenumberAnswer: HousenumberAnswer? = null
+        private var lastBlockNumber: String? = null
+        private var lastHouseNumber: String? = null
 
-        private const val INTERFACE_MODE = "interface_mode"
+        private const val SHOW_HOUSE_NAME = "show_house_name"
     }
 }
 
-private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when (this) {
-    is HouseNumber -> true
-    is HouseAndBlockNumber -> true
-    else -> false
-}
-
-private val HousenumberAnswer.realHouseNumber: String? get() = when (this) {
-    is HouseNumber -> number
-    is HouseAndBlockNumber -> houseNumber
-    else -> null
-}
-
-private fun String.addToHouseNumber(add: Int): String? {
-    val parsed = parseHouseNumber(this) ?: return null
-    when {
-        add == 0 -> return this
-        add > 0 -> {
-            val max = when (val it = parsed.list.maxOrNull()) {
-                is HouseNumbersPartsRange -> maxOf(it.start, it.end)
-                is SingleHouseNumbersPart -> it.single
-                null -> return null
-            }
-            return (max.number + add).toString()
-        }
-        add < 0 -> {
-            val min = when (val it = parsed.list.minOrNull()) {
-                is HouseNumbersPartsRange -> minOf(it.start, it.end)
-                is SingleHouseNumbersPart -> it.single
-                null -> return null
-            }
-            val result = min.number + add
-            return if (result < 1) null else result.toString()
-        }
-        else -> return null
-    }
+private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
+    "JP" -> R.layout.view_house_number_japan
+    "CZ" -> R.layout.view_house_number_czechia
+    "SK" -> R.layout.view_house_number_slovakia
+    else -> R.layout.view_house_number
 }

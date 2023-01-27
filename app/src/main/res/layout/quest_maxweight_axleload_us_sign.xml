@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="144dp"
+    android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:padding="12dp"
     android:background="@drawable/background_rectangular_sign_white"
     android:gravity="center">
 
@@ -34,6 +33,7 @@
             android:textStyle="bold"
             android:textColor="@color/traffic_black"
             android:textSize="36dp"
+            android:maxLines="1"
             tools:text="8"
             tools:ignore="SpUsage" />
 

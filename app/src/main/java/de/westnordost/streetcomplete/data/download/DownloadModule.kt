@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.download
 
+import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
+import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

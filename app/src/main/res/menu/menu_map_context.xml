@@ -5,8 +5,12 @@
         android:title="@string/map_btn_create_note"
         android:icon="@drawable/ic_create_note_24dp"
         android:orderInCategory="1"/>
+    <item android:id="@+id/action_create_track"
+        android:title="@string/map_btn_create_track"
+        android:icon="@drawable/ic_create_note_24dp"
+        android:orderInCategory="2"/>
     <item android:id="@+id/action_open_location"
         android:title="@string/action_open_location"
         android:icon="@drawable/ic_open_in_browser_24dp"
-        android:orderInCategory="2" />
+        android:orderInCategory="3" />
 </menu>

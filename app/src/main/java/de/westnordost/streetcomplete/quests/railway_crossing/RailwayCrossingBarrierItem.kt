@@ -9,14 +9,19 @@ import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarr
 import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.NO
 import de.westnordost.streetcomplete.view.image_select.Item
 
-fun List<RailwayCrossingBarrier>.toItems(isLeftHandTraffic: Boolean) =
-    map { it.asItem(isLeftHandTraffic) }
+fun RailwayCrossingBarrier.asItem(isLeftHandTraffic: Boolean): Item<RailwayCrossingBarrier> =
+    Item(this, getIconResId(isLeftHandTraffic), titleResId)
 
-fun RailwayCrossingBarrier.asItem(isLeftHandTraffic: Boolean): Item<RailwayCrossingBarrier> = when (this) {
-    NO -> Item(this, R.drawable.ic_railway_crossing_none, R.string.quest_railway_crossing_barrier_none2)
-    HALF -> Item(this, if (isLeftHandTraffic) R.drawable.ic_railway_crossing_half_l else R.drawable.ic_railway_crossing_half)
-    DOUBLE_HALF -> Item(this, R.drawable.ic_railway_crossing_double_half)
-    FULL -> Item(this, if (isLeftHandTraffic) R.drawable.ic_railway_crossing_full_l else R.drawable.ic_railway_crossing_full)
-    GATE -> Item(this, R.drawable.ic_railway_crossing_gate)
-    CHICANE -> Item(this, R.drawable.ic_railway_crossing_chicane)
+private val RailwayCrossingBarrier.titleResId: Int? get() = when (this) {
+    NO ->   R.string.quest_railway_crossing_barrier_none2
+    else -> null
+}
+
+private fun RailwayCrossingBarrier.getIconResId(isLeftHandTraffic: Boolean): Int = when (this) {
+    NO ->          R.drawable.ic_railway_crossing_none
+    HALF ->        if (isLeftHandTraffic) R.drawable.ic_railway_crossing_half_l else R.drawable.ic_railway_crossing_half
+    DOUBLE_HALF -> R.drawable.ic_railway_crossing_double_half
+    FULL ->        if (isLeftHandTraffic) R.drawable.ic_railway_crossing_full_l else R.drawable.ic_railway_crossing_full
+    GATE ->        R.drawable.ic_railway_crossing_gate
+    CHICANE ->     R.drawable.ic_railway_crossing_chicane
 }

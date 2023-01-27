@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Rawbank, Raw Bank, BIAC]
 centerLineStyle: white
 edgeLineStyle: short white dashes
@@ -6,4 +6,4 @@ mobileCountryCode: 630
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, mkw, ln, lua, sw]
-orchardProduces: [banana, guava, mango, mangosteen, papaya, pineapple, orange, avocado, tomato, chilli_pepper, sweet_pepper, coffee, rubber, grapefruit, lemon, lime, cacao, tea]
+orchardProduces: [banana, coffee, rubber, cacao, guava, mango, mangosteen, papaya, orange, chilli_pepper, sweet_pepper, tea, avocado, pineapple, tomato, grapefruit, lemon, lime]

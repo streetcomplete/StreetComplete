@@ -17,11 +17,12 @@ class VisibleQuestTypeDao(private val db: Database) {
         ))
     }
 
-    fun put(presetId: Long, questTypeNames: Iterable<String>, visible: Boolean) {
-        val vis = if (visible) 1 else 0
+    fun putAll(presetId: Long, questTypeVisibilities: Map<String, Boolean>) {
         db.replaceMany(NAME,
             arrayOf(QUEST_PRESET_ID, QUEST_TYPE, VISIBILITY),
-            questTypeNames.map { arrayOf(presetId, it, vis) }
+            questTypeVisibilities.map { (questTypeName, visibility) ->
+                arrayOf(presetId, questTypeName, if (visibility) 1 else 0)
+            }
         )
     }
 

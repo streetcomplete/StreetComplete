@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [CKB, Erste Bank, NLB, Atlas Banka, Hipotekarna banka, NLB Banka, Addiko Bank, Societe Generale, Prva Banka, Universal Capital Bank]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -6,4 +6,5 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 297
 officialLanguages: [sr, bs, sq, hr]
-orchardProduces: [grape, plum, pear, fig, tomato, chilli_pepper, sweet_pepper, orange, cherry, apple, peach, walnut, raspberry, kiwi, olive, tea]
+orchardProduces: [grape, fig, cherry, walnut, plum, apple, chilli_pepper, sweet_pepper, olive, raspberry, orange, tea, tomato, peach, pear, kiwi]
+postboxesHaveCollectionTimes: true

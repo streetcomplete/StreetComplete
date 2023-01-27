@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class TactilePavingForm : AbstractQuestAnswerFragment<Boolean>() {
+class TactilePavingForm : AbstractOsmQuestForm<Boolean>() {
 
     override val contentLayoutResId = R.layout.quest_tactile_paving
 

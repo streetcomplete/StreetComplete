@@ -35,6 +35,9 @@
                 "category-road_minor": {
                     "name": "비주요 도로"
                 },
+                "category-road_service": {
+                    "name": "서비스 도로"
+                },
                 "category-route": {
                     "name": "노선형 지물"
                 },
@@ -80,6 +83,10 @@
                             "description": "개별적으로 소유자의 허가로만 통행이 허가됨",
                             "title": "사유"
                         },
+                        "unknown": {
+                            "description": "통행 조건이 알려지지 않았거나 불분명함",
+                            "title": "알 수 없음"
+                        },
                         "yes": {
                             "description": "통행이 법적으로 허가됨; 정당한 이용",
                             "title": "허가됨"
@@ -104,6 +111,12 @@
                         "permissive": "소유자 허가 필요"
                     }
                 },
+                "activity": {
+                    "options": {
+                        "horse": "승마",
+                        "mtb": "산악 자전거"
+                    }
+                },
                 "addr/interpolation": {
                     "label": "유형",
                     "options": {
@@ -117,6 +130,7 @@
                         "block_number": "번지",
                         "block_number!jp": "번지",
                         "city": "행정시·행정구·구역",
+                        "city!cn": "지급시/지구/맹",
                         "city!jp": "시/정/촌/도쿄 특별구",
                         "city!vn": "시/읍",
                         "conscriptionnumber": "123",
@@ -124,6 +138,7 @@
                         "county": "군",
                         "county!jp": "군",
                         "district": "구",
+                        "district!cn": "시할구/현/기",
                         "district!vn": "구/시사/현",
                         "floor": "층",
                         "hamlet": "반",
@@ -135,6 +150,7 @@
                         "place": "장소",
                         "postcode": "우편번호",
                         "province": "도",
+                        "province!cn": "성/직할시/자치구/특별행정구",
                         "province!jp": "도도부현",
                         "quarter": "지구",
                         "quarter!jp": "오아자/마치",
@@ -225,6 +241,12 @@
                 "attraction": {
                     "label": "종류"
                 },
+                "automated": {
+                    "label": "자동"
+                },
+                "baby_feeding": {
+                    "label": "수유실"
+                },
                 "baby_seat": {
                     "label": "유아석"
                 },
@@ -255,7 +277,11 @@
                 "beauty": {
                     "label": "서비스",
                     "options": {
-                        "cosmetics": "화장품"
+                        "cosmetics": "화장품",
+                        "nails": "매니큐어 / 페디큐어",
+                        "skin_care": "스킨 케어",
+                        "tanning": "태닝",
+                        "waxing": "왁싱"
                     }
                 },
                 "bench": {
@@ -299,6 +325,10 @@
                 "boundary": {
                     "label": "유형"
                 },
+                "branch_brand": {
+                    "label": "지점",
+                    "terms": "분점"
+                },
                 "brand": {
                     "label": "상표"
                 },
@@ -329,14 +359,16 @@
                     "label": "지하 층수",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "층수",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "재질"
                 },
+                "building/prefabricated": {
+                    "label": "조립식"
+                },
                 "building_area": {
+                    "label": "건물"
+                },
+                "building_area_yes": {
                     "label": "건물"
                 },
                 "bunker_type": {
@@ -377,13 +409,13 @@
                     "label": "용적 (세제곱미터)",
                     "placeholder": "50, 100, 200..."
                 },
-                "cash_in": {
-                    "label": "입금"
-                },
                 "castle_type": {
                     "label": "유형",
                     "options": {
-                        "kremlin": "크렘린"
+                        "castrum": "로마 요새",
+                        "kremlin": "크렘린",
+                        "palace": "궁전",
+                        "shiro": "일본식 성"
                     }
                 },
                 "changing_table": {
@@ -400,10 +432,6 @@
                 "check_date": {
                     "label": "마지막으로 확인한 날짜",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "둘레",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "옷"
@@ -457,6 +485,9 @@
                 "country": {
                     "label": "국가"
                 },
+                "country_flag": {
+                    "label": "깃발 국가"
+                },
                 "couplings": {
                     "placeholder": "1, 2, 3..."
                 },
@@ -475,7 +506,35 @@
                     }
                 },
                 "crop": {
-                    "label": "작물"
+                    "label": "작물",
+                    "options": {
+                        "asparagus": "아스파라거스",
+                        "barley": "보리",
+                        "beet": "근대",
+                        "cassava": "카사바",
+                        "coffee": "커피콩",
+                        "cotton": "목화",
+                        "cranberries": "크랜베리",
+                        "fast_growing_wood": "단벌기 맹아갱신",
+                        "flowers": "꽃",
+                        "grape": "포도",
+                        "grass": "잔디",
+                        "hop": "홉",
+                        "lavender": "라벤더",
+                        "maize": "옥수수",
+                        "potato": "감자",
+                        "rape": "유채",
+                        "rice": "쌀",
+                        "soy": "콩",
+                        "strawberry": "딸기",
+                        "sugar_beet": "사탕무",
+                        "sugarcane": "사탕수수",
+                        "sunflower": "해바라기",
+                        "tea": "차",
+                        "tobacco": "담배",
+                        "vegetable": "야채",
+                        "wheat": "밀"
+                    }
                 },
                 "crossing": {
                     "label": "유형"
@@ -486,39 +545,50 @@
                 "cuisine": {
                     "label": "요리",
                     "options": {
-                        "american": "미국 음식",
-                        "asian": "아시아 음식",
+                        "american": "미국 요리",
+                        "asian": "아시아 요리",
                         "bubble_tea": "버블티",
                         "burger": "햄버거",
                         "cake": "케이크",
                         "chicken": "치킨",
-                        "chinese": "중국 음식",
+                        "chinese": "중국 요리",
                         "chocolate": "초콜릿",
                         "coffee_shop": "커피숍",
                         "dessert": "디저트",
                         "donut": "도넛",
-                        "french": "프랑스 음식",
-                        "german": "독일 음식",
-                        "greek": "그리스 음식",
+                        "fish": "생선",
+                        "french": "프랑스 요리",
+                        "german": "독일 요리",
+                        "greek": "그리스 요리",
                         "hot_dog": "핫도그",
                         "ice_cream": "아이스크림",
-                        "indian": "인도 음식",
-                        "italian": "이탈리아 음식",
-                        "japanese": "일본 음식",
+                        "indian": "인도 요리",
+                        "indonesian": "인도네시아 요리",
+                        "italian": "이탈리아 요리",
+                        "japanese": "일본 요리",
                         "juice": "주스",
                         "kebab": "케밥",
                         "korean": "한식",
-                        "mexican": "멕시코 음식",
+                        "lebanese": "레바논 요리",
+                        "malaysian": "말레이시아 요리",
+                        "mexican": "멕시코 요리",
                         "pankcake": "팬케이크",
                         "pasta": "파스타",
                         "pizza": "피자",
+                        "polish": "폴란드 요리",
+                        "portuguese": "포르투갈 요리",
                         "regional": "토속 음식",
+                        "russian": "러시아 요리",
                         "salad": "샐러드",
                         "sandwich": "샌드위치",
+                        "seafood": "해산물",
+                        "spanish": "스페인 요리",
+                        "steak_house": "스테이크하우스",
                         "sushi": "초밥",
-                        "thai": "태국 음식",
-                        "turkish": "터키 음식",
-                        "vietnamese": "베트남 음식"
+                        "taiwanese": "대만 요리",
+                        "thai": "태국 요리",
+                        "turkish": "터키 요리",
+                        "vietnamese": "베트남 요리"
                     }
                 },
                 "currency_multi": {
@@ -586,7 +656,6 @@
                     "label": "명시"
                 },
                 "departures_board": {
-                    "label": "출발 안내판",
                     "options": {
                         "no": "없음",
                         "realtime": "실시간",
@@ -743,7 +812,15 @@
                     "placeholder": "보통"
                 },
                 "embassy": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "branch_embassy": "대사관 분관",
+                        "high_commission": "고등 판무관 사무소",
+                        "mission": "재외 공관",
+                        "nunciature": "성좌의 재외 공관",
+                        "residence": "대사 관저",
+                        "yes": "대사관"
+                    }
                 },
                 "emergency": {
                     "label": "긴급"
@@ -765,7 +842,8 @@
                 },
                 "fax": {
                     "label": "팩스",
-                    "placeholder": "+31 42 123 4567"
+                    "placeholder": "+31 42 123 4567",
+                    "terms": "팩시밀리"
                 },
                 "fee": {
                     "label": "유료"
@@ -775,6 +853,11 @@
                 },
                 "fire_hydrant/diameter": {
                     "label": "지름(mm, in 또는 글자)"
+                },
+                "fire_hydrant/position": {
+                    "options": {
+                        "parking_lot": "주차장"
+                    }
                 },
                 "fire_hydrant/pressure": {
                     "label": "압력(바)"
@@ -799,8 +882,14 @@
                 "fixme": {
                     "label": "고쳐주기"
                 },
+                "flag/name": {
+                    "label": "깃발 이름"
+                },
                 "flag/type": {
                     "label": "깃발 유형"
+                },
+                "flag/wikidata": {
+                    "label": "깃발 위키데이터"
                 },
                 "ford": {
                     "label": "유형",
@@ -821,7 +910,7 @@
                 "fuel": {
                     "label": "주유소"
                 },
-                "fuel_multi": {
+                "fuel/fuel_multi": {
                     "label": "연료 유형"
                 },
                 "gambling": {
@@ -899,6 +988,11 @@
                 "highway": {
                     "label": "유형"
                 },
+                "highway_cartpath": {
+                    "options": {
+                        "service": "서비스 도로"
+                    }
+                },
                 "historic": {
                     "label": "유형"
                 },
@@ -940,7 +1034,8 @@
                 "horse_scale": {
                     "label": "승마 난이도",
                     "options": {
-                        "common": "쉬움: 운행하는 데 아무 문제나 어려움이 없다. (기본값)"
+                        "common": "쉬움: 운행하는 데 아무 문제나 어려움이 없다. (기본값)",
+                        "critical": "경계선: 숙련된 라이더와 말만 통행할 수 있습니다. 주요 장애물. 교량을주의 깊게 검사해야합니다."
                     }
                 },
                 "horse_stables": {
@@ -1117,7 +1212,8 @@
                     "label": "유형"
                 },
                 "manufacturer": {
-                    "label": "제조사"
+                    "label": "제조사",
+                    "terms": "제조업체"
                 },
                 "map_size": {
                     "label": "적용범위"
@@ -1188,13 +1284,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA 산길 난이도",
-                    "options": {
-                        "0": "매우 쉬움 (하얀 동그라미)",
-                        "1": "쉬움 (초록 동그라미)",
-                        "2": "중간 (파란 네모)",
-                        "3": "어려움 (검은 마름모)",
-                        "4": "매우 어려움 (두 검은 마름모)"
-                    },
                     "placeholder": "쉬움, 중간, 어려움..."
                 },
                 "mtb/scale/uphill": {
@@ -1235,6 +1324,7 @@
                     "placeholder": "지방, 지역, 국가, 국제"
                 },
                 "network_foot": {
+                    "label": "네트워크 수준",
                     "options": {
                         "iwn": "국제적",
                         "lwn": "지방",
@@ -1244,6 +1334,7 @@
                     "placeholder": "현지, 지역, 국가, 국제"
                 },
                 "network_horse": {
+                    "label": "네트워크 수준",
                     "options": {
                         "ihn": "국제적",
                         "lhn": "지방",
@@ -1288,7 +1379,7 @@
                     }
                 },
                 "opening_date": {
-                    "label": "예상개업일",
+                    "label": "예상 개업일",
                     "placeholder": "YYYY-MM-DD"
                 },
                 "opening_hours": {
@@ -1339,9 +1430,6 @@
                     "label": "유형"
                 },
                 "payment_multi": {
-                    "label": "결제 수단"
-                },
-                "payment_multi_fee": {
                     "label": "결제 수단"
                 },
                 "phases": {
@@ -1409,7 +1497,6 @@
                     "label": "발전 방식"
                 },
                 "plant/output/electricity": {
-                    "label": "전력 출력",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -1466,15 +1553,20 @@
                 "rating": {
                     "label": "정격 용량"
                 },
+                "real_fire-GB-IE": {
+                    "label": "실제 화재"
+                },
                 "recycling_accepts": {
                     "label": "종류",
                     "options": {
                         "batteries": "배터리",
                         "cans": "캔",
                         "clothes": "의류",
-                        "glass": "유리",
+                        "engine_oil": "엔진 오일",
                         "glass_bottles": "유리병",
                         "paper": "종이",
+                        "plastic": "플라스틱",
+                        "plastic_bottles": "플라스틱 병",
                         "scrap_metal": "고철",
                         "shoes": "신발"
                     }
@@ -1498,6 +1590,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "탑승구 번호"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "홀 번호",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "홀 번호",
@@ -1693,9 +1789,6 @@
                         "drive-through": "드라이브 스루"
                     }
                 },
-                "service/bicycle": {
-                    "label": "서비스"
-                },
                 "service/vehicle": {
                     "label": "서비스"
                 },
@@ -1810,7 +1903,8 @@
                 },
                 "start_date": {
                     "label": "시작 날짜",
-                    "placeholder": "YYYY-MM-DD"
+                    "placeholder": "YYYY-MM-DD",
+                    "terms": "시작일"
                 },
                 "step_count": {
                     "label": "계단 수"
@@ -1857,6 +1951,9 @@
                 "studio": {
                     "label": "유형"
                 },
+                "subject": {
+                    "label": "주제"
+                },
                 "substance": {
                     "label": "물질"
                 },
@@ -1900,6 +1997,11 @@
                 },
                 "survey/date": {
                     "label": "마지막으로 확인한 날짜"
+                },
+                "survey_point/structure": {
+                    "options": {
+                        "bracket": "브라켓"
+                    }
                 },
                 "swimming_pool": {
                     "label": "유형"
@@ -1971,7 +2073,7 @@
                 "tracktype": {
                     "label": "트랙 유형",
                     "options": {
-                        "grade1": "단단함: 포장되었거나 심하게 압축된 하드코어 표면",
+                        "grade1": "단단함:포장됨",
                         "grade2": "거의 단단함: 약간의 부드러운 소재가 섞인 자갈/바위",
                         "grade3": "부드러운 소재와 딱딱한 소재가 섞임",
                         "grade4": "거의 부드러움: 약간의 딱딱한 소재가 섞인 흙/모래/잔디",
@@ -2020,17 +2122,7 @@
                     "placeholder": "우수함, 좋음, 나쁨..."
                 },
                 "transformer": {
-                    "label": "변압기 유형",
-                    "options": {
-                        "auto": "단권변압기",
-                        "auxiliary": "보조변압기",
-                        "converter": "변환기 변압기",
-                        "distribution": "배전용 변압기",
-                        "generator": "발전기 변압기",
-                        "phase_angle_regulator": "이상변압기",
-                        "traction": "가공 전차선 변압기",
-                        "yes": "알 수 없음"
-                    }
+                    "label": "변압기 유형"
                 },
                 "trees": {
                     "label": "나무"
@@ -2045,6 +2137,7 @@
                 "usage_rail": {
                     "label": "용도",
                     "options": {
+                        "military": "군사용",
                         "tourism": "관광"
                     }
                 },
@@ -2055,9 +2148,11 @@
                     "label": "차량",
                     "options": {
                         "bus": "버스",
+                        "ferry": "페리,연락선",
                         "light_rail": "경전철",
                         "monorail": "모노레일",
                         "subway": "지하철",
+                        "train": "열차",
                         "tram": "노면 전차",
                         "trolleybus": "트롤리버스"
                     }
@@ -2107,6 +2202,9 @@
                 "wall": {
                     "label": "유형"
                 },
+                "waste": {
+                    "label": "쓰레기"
+                },
                 "water": {
                     "label": "유형"
                 },
@@ -2118,10 +2216,8 @@
                 },
                 "water_tank/volume": {
                     "label": "용적(리터)",
-                    "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "물 저장량(m³)"
+                    "placeholder": "10000, 20000, 30000…",
+                    "terms": "부피(리터)"
                 },
                 "waterway": {
                     "label": "유형"
@@ -2149,7 +2245,8 @@
                     "label": "도매"
                 },
                 "width": {
-                    "label": "폭(미터)"
+                    "label": "폭(미터)",
+                    "terms": "너비(미터)"
                 },
                 "wikidata": {
                     "label": "위키데이터"
@@ -2461,6 +2558,9 @@
                     "name": "의원",
                     "terms": "병원,내과,외과,소아청소년과,산부인과,정신건강의학과"
                 },
+                "amenity/doctors/gynaecology": {
+                    "name": "산부인과 의원"
+                },
                 "amenity/dojo": {
                     "name": "도장 / 무술 학원",
                     "terms": "도장 / 무술 학원"
@@ -2483,7 +2583,8 @@
                     "name": "행사장"
                 },
                 "amenity/exhibition_centre": {
-                    "name": "전시회장"
+                    "name": "전시회장",
+                    "terms": "박람회장"
                 },
                 "amenity/fast_food": {
                     "name": "패스트푸드",
@@ -2491,6 +2592,9 @@
                 },
                 "amenity/fast_food/burger": {
                     "name": "햄버거 패스트푸드"
+                },
+                "amenity/fast_food/cafeteria": {
+                    "name": "카페테리아"
                 },
                 "amenity/fast_food/chicken": {
                     "name": "치킨 패스트푸드"
@@ -2620,7 +2724,7 @@
                 },
                 "amenity/nightclub": {
                     "name": "나이트클럽",
-                    "terms": "나이트 클럽"
+                    "terms": "나이트 클럽,나이트"
                 },
                 "amenity/nightclub/lgbtq": {
                     "name": "LGBTQ+ 나이트클럽"
@@ -2629,10 +2733,14 @@
                     "name": "요양원"
                 },
                 "amenity/parking": {
-                    "name": "주차장"
+                    "name": "주차장",
+                    "terms": "주차장"
                 },
                 "amenity/parking/multi-storey": {
                     "name": "입체 주차장"
+                },
+                "amenity/parking/street-side": {
+                    "name": "노변 주차장"
                 },
                 "amenity/parking/underground": {
                     "name": "지하 주차장"
@@ -2648,7 +2756,8 @@
                     "name": "장애인 전용 주차 구역"
                 },
                 "amenity/pharmacy": {
-                    "name": "약국"
+                    "name": "약국",
+                    "terms": "약국 카운터"
                 },
                 "amenity/photo_booth": {
                     "name": "사진 부스"
@@ -2666,7 +2775,8 @@
                     "terms": "성당"
                 },
                 "amenity/place_of_worship/christian/jehovahs_witness": {
-                    "name": "여호와의 증인 왕국회관"
+                    "name": "여호와의 증인 왕국회관",
+                    "terms": "여호와"
                 },
                 "amenity/place_of_worship/christian/la_luz_del_mundo": {
                     "name": "라 루스 델 문도 신전"
@@ -2679,10 +2789,12 @@
                     "terms": "만디르"
                 },
                 "amenity/place_of_worship/jewish": {
-                    "name": "유대교 시너고그"
+                    "name": "유대교 시너고그",
+                    "terms": "유대 시나고규"
                 },
                 "amenity/place_of_worship/muslim": {
-                    "name": "이슬람교 모스크"
+                    "name": "이슬람교 모스크",
+                    "terms": "모스크"
                 },
                 "amenity/place_of_worship/shinto": {
                     "name": "신사",
@@ -2720,7 +2832,7 @@
                 },
                 "amenity/prep_school": {
                     "name": "학원",
-                    "terms": "국어,수학,영어,논술"
+                    "terms": "교습소,보습학원,국어,수학,영어,논술"
                 },
                 "amenity/prison": {
                     "name": "교도소 부지",
@@ -2756,7 +2868,8 @@
                     "name": "재활용 용기"
                 },
                 "amenity/refugee_site": {
-                    "name": "난민촌"
+                    "name": "난민촌",
+                    "terms": "난민 캠프"
                 },
                 "amenity/research_institute": {
                     "name": "연구 기관 부지"
@@ -2856,7 +2969,8 @@
                     "name": "달개"
                 },
                 "amenity/shower": {
-                    "name": "샤워실"
+                    "name": "샤워실",
+                    "terms": "샤워장"
                 },
                 "amenity/smoking_area": {
                     "name": "흡연 구역"
@@ -2867,7 +2981,7 @@
                 },
                 "amenity/social_facility/food_bank": {
                     "name": "푸드 뱅크",
-                    "terms": "푸드 뱅크"
+                    "terms": "푸드뱅크"
                 },
                 "amenity/social_facility/group_home": {
                     "name": "경로당",
@@ -2886,13 +3000,15 @@
                     "terms": "스튜디오,촬영장"
                 },
                 "amenity/studio/audio": {
-                    "name": "녹음실"
+                    "name": "녹음실",
+                    "terms": "녹음 스튜디오"
                 },
                 "amenity/studio/radio": {
                     "name": "라디오 방송국"
                 },
                 "amenity/studio/television": {
-                    "name": "텔레비전 방송국"
+                    "name": "텔레비전 방송국",
+                    "terms": "tv 방송국"
                 },
                 "amenity/studio/video": {
                     "name": "영화 촬영실"
@@ -2913,8 +3029,7 @@
                     "name": "원형극장"
                 },
                 "amenity/toilets": {
-                    "name": "화장실",
-                    "terms": "화장실,아름자리"
+                    "name": "화장실"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "수세식 화장실"
@@ -2927,7 +3042,7 @@
                 },
                 "amenity/townhall": {
                     "name": "마을 회관",
-                    "terms": "마을회관,주민센터,동사무소"
+                    "terms": "마을회관,주민센터,동사무소,행정복지센터"
                 },
                 "amenity/townhall/city": {
                     "name": "시청"
@@ -2992,7 +3107,7 @@
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "주차권 발권기",
-                    "terms": "주차권 발권기"
+                    "terms": "주차권 발권기,주차발권기"
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "대중교통 승차권 발매기",
@@ -3150,13 +3265,14 @@
                 },
                 "barrier/hedge": {
                     "name": "산 울타리",
-                    "terms": "산울타리"
+                    "terms": "산울타리,산울"
                 },
                 "barrier/height_restrictor": {
                     "name": "높이 제한기"
                 },
                 "barrier/kerb": {
-                    "name": "연석"
+                    "name": "연석",
+                    "terms": "갓돌"
                 },
                 "barrier/kerb/flush": {
                     "name": "턱 없는 연석"
@@ -3283,6 +3399,9 @@
                 "building/farm_auxiliary": {
                     "name": "농장 건물"
                 },
+                "building/fire_station": {
+                    "name": "소방서 건물"
+                },
                 "building/garage": {
                     "name": "차고",
                     "terms": "차고"
@@ -3312,6 +3431,10 @@
                 "building/house": {
                     "name": "주택",
                     "terms": "주택,집"
+                },
+                "building/houseboat": {
+                    "name": "선상 가옥",
+                    "terms": "집배"
                 },
                 "building/hut": {
                     "name": "오두막",
@@ -3347,11 +3470,12 @@
                     "terms": "지붕"
                 },
                 "building/ruins": {
-                    "name": "건물 폐허"
+                    "name": "건물 폐허",
+                    "terms": "폐가"
                 },
                 "building/school": {
                     "name": "학교 건물",
-                    "terms": "초등학교,중학교,고등학교"
+                    "terms": "유치원,초등학교,중학교,고등학교"
                 },
                 "building/semidetached_house": {
                     "name": "반분리된 주택",
@@ -3409,6 +3533,10 @@
                 "building_point": {
                     "name": "건물"
                 },
+                "cemetery/grave": {
+                    "name": "무덤",
+                    "terms": "묘지,묘,산소"
+                },
                 "club": {
                     "name": "클럽",
                     "terms": "클럽"
@@ -3436,10 +3564,6 @@
                 "craft/bookbinder": {
                     "name": "제본공",
                     "terms": "바인더"
-                },
-                "craft/brewery": {
-                    "name": "맥주 양조장",
-                    "terms": "양조공,양조장"
                 },
                 "craft/carpenter": {
                     "name": "목수",
@@ -3503,7 +3627,8 @@
                     "terms": "절연체"
                 },
                 "craft/joiner": {
-                    "name": "소목장이"
+                    "name": "소목장이",
+                    "terms": "소목장"
                 },
                 "craft/key_cutter": {
                     "name": "열쇠 따는 사람",
@@ -3512,13 +3637,17 @@
                 "craft/locksmith": {
                     "name": "열쇠 제조공"
                 },
+                "craft/metal_construction": {
+                    "name": "금속공",
+                    "terms": "금속 세공인"
+                },
                 "craft/painter": {
                     "name": "화가",
                     "terms": "화가"
                 },
                 "craft/photographer": {
                     "name": "사진가",
-                    "terms": "사진작가"
+                    "terms": "사진작가,사진사"
                 },
                 "craft/photographic_laboratory": {
                     "name": "현상소",
@@ -3526,7 +3655,7 @@
                 },
                 "craft/plasterer": {
                     "name": "미장공",
-                    "terms": "도벽사"
+                    "terms": "도벽사,미장이"
                 },
                 "craft/plumber": {
                     "name": "배관공",
@@ -3587,7 +3716,7 @@
                 },
                 "craft/upholsterer": {
                     "name": "실내 장식업",
-                    "terms": "실내 장식업"
+                    "terms": "인테리어"
                 },
                 "craft/watchmaker": {
                     "name": "시계 제조공",
@@ -3603,6 +3732,12 @@
                 },
                 "demolished/building": {
                     "name": "최근 철거된 건물"
+                },
+                "disc_golf/hole": {
+                    "name": "디스크 골프 홀"
+                },
+                "disc_golf/tee": {
+                    "name": "디스크 골프 티"
                 },
                 "disused/railway": {
                     "name": "폐선된 철도 지물"
@@ -3797,6 +3932,9 @@
                 "healthcare/rehabilitation": {
                     "name": "재활 시설"
                 },
+                "healthcare/sample_collection": {
+                    "name": "검체 채취 시설"
+                },
                 "healthcare/speech_therapist": {
                     "name": "언어치료사"
                 },
@@ -3815,14 +3953,23 @@
                     "name": "버스 정류소"
                 },
                 "highway/construction": {
-                    "name": "폐쇄된 도로"
+                    "name": "공사 중인 도로"
                 },
                 "highway/corridor": {
                     "name": "실내 복도",
                     "terms": "복도"
                 },
+                "highway/crossing": {
+                    "name": "횡단보도"
+                },
                 "highway/crossing/marked": {
                     "name": "횡단보도"
+                },
+                "highway/crossing/traffic_signals": {
+                    "name": "보행자 신호등이 있는 횡단보도"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "표시가 있는 횡단보도"
                 },
                 "highway/crossing/unmarked": {
                     "name": "표시되지 않은 횡단보도"
@@ -3845,7 +3992,8 @@
                     "terms": "엘리베이터,승강기"
                 },
                 "highway/elevator_line": {
-                    "name": "경사형 엘리베이터"
+                    "name": "경사형 엘리베이터",
+                    "terms": "경사형 엘리베이터,경사형 승강기"
                 },
                 "highway/footway": {
                     "name": "보도",
@@ -3854,18 +4002,12 @@
                 "highway/footway/conveying": {
                     "name": "무빙워크"
                 },
-                "highway/footway/marked": {
+                "highway/footway/crossing": {
                     "name": "횡단보도"
                 },
                 "highway/footway/sidewalk": {
                     "name": "인도",
                     "terms": "보도,보행로"
-                },
-                "highway/footway/unmarked": {
-                    "name": "표시되지 않은 횡단보도"
-                },
-                "highway/footway/zebra": {
-                    "name": "횡단보도"
                 },
                 "highway/give_way": {
                     "name": "양보 표지판",
@@ -3895,7 +4037,8 @@
                     "terms": "고속도로 연결로"
                 },
                 "highway/passing_place": {
-                    "name": "통행을 위한 여분 공간"
+                    "name": "통행을 위한 여분 공간",
+                    "terms": "통행을 위한 여분 공간,대피소"
                 },
                 "highway/path": {
                     "name": "경로",
@@ -3905,10 +4048,12 @@
                     "name": "보드워크"
                 },
                 "highway/pedestrian_area": {
-                    "name": "보행자 지역"
+                    "name": "보행자 지역",
+                    "terms": "보행자 지역,보행지역,보행구역"
                 },
                 "highway/pedestrian_line": {
-                    "name": "보행자 거리"
+                    "name": "보행자 거리",
+                    "terms": "보행자 거리,보행로"
                 },
                 "highway/primary": {
                     "name": "1차 도로",
@@ -3950,8 +4095,8 @@
                     "terms": "2차 도로 연결로"
                 },
                 "highway/service": {
-                    "name": "접근 도로",
-                    "terms": "접근 도로"
+                    "name": "서비스 도로",
+                    "terms": "서비스 도로"
                 },
                 "highway/service/alley": {
                     "name": "골목",
@@ -4005,8 +4150,7 @@
                     "terms": "3차 도로 연결로"
                 },
                 "highway/track": {
-                    "name": "농·임도",
-                    "terms": "농·임도"
+                    "name": "트랙 / 육로 접근 도로"
                 },
                 "highway/traffic_mirror": {
                     "name": "차량 거울",
@@ -4234,10 +4378,6 @@
                     "name": "위험 지역",
                     "terms": "위험 지역"
                 },
-                "landuse/military/naval_base": {
-                    "name": "해군 기지",
-                    "terms": "해군 기지"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "군용 장애물 코스"
                 },
@@ -4401,10 +4541,6 @@
                     "name": "해커스페이스",
                     "terms": "메이커스페이스"
                 },
-                "leisure/horse_riding": {
-                    "name": "승마 시설",
-                    "terms": "승마 시설"
-                },
                 "leisure/ice_rink": {
                     "name": "아이스 링크",
                     "terms": "아이스하키,스케이팅,컬링"
@@ -4476,10 +4612,6 @@
                 "leisure/pitch/cricket": {
                     "name": "크리켓장",
                     "terms": "크리켓 경기장"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "승마 경기장",
-                    "terms": "승마 경기장"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "필드 하키장"
@@ -4578,9 +4710,6 @@
                 "leisure/track/cycling": {
                     "name": "자전거 경주로"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "경마 경주로"
-                },
                 "leisure/track/running": {
                     "name": "육상 트랙",
                     "terms": "달리기,경주로"
@@ -4594,7 +4723,7 @@
                     "terms": "선"
                 },
                 "man_made": {
-                    "name": "인공 지물"
+                    "name": "사람이 만든 기능"
                 },
                 "man_made/adit": {
                     "name": "수평갱",
@@ -4732,9 +4861,6 @@
                 "man_made/pipeline/underground": {
                     "name": "지하 파이프라인"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "파이프라인 밸브"
-                },
                 "man_made/pumping_station": {
                     "name": "펌프장",
                     "terms": "펌프장"
@@ -4788,6 +4914,9 @@
                 },
                 "man_made/tunnel": {
                     "name": "터널 구역"
+                },
+                "man_made/video_wall": {
+                    "name": "디지털 화면"
                 },
                 "man_made/wastewater_plant": {
                     "name": "하수 처리장",
@@ -4953,6 +5082,9 @@
                 "natural/water": {
                     "name": "물",
                     "terms": "물"
+                },
+                "natural/water/basin": {
+                    "name": "웅덩이"
                 },
                 "natural/water/canal": {
                     "name": "운하 구역"
@@ -5270,6 +5402,12 @@
                 "playground/swing": {
                     "name": "그네"
                 },
+                "playground/teenshelter": {
+                    "name": "청소년 보호 시설"
+                },
+                "playground/trampoline": {
+                    "name": "트램펄린"
+                },
                 "playground/zipwire": {
                     "name": "놀이용 집라인"
                 },
@@ -5343,9 +5481,6 @@
                 "power/plant/source/oil": {
                     "name": "석유 발전소"
                 },
-                "power/plant/source/solar": {
-                    "name": "태양 발전소"
-                },
                 "power/plant/source/waste": {
                     "name": "쓰레기 소각 발전소"
                 },
@@ -5386,6 +5521,9 @@
                 "public_transport/platform/bus_point": {
                     "name": "버스 정류소",
                     "terms": "정류장,정거장"
+                },
+                "public_transport/platform/bus_tram_point": {
+                    "name": "노면전차, 버스 정류장"
                 },
                 "public_transport/platform/ferry": {
                     "name": "페리 승강장"
@@ -5571,6 +5709,9 @@
                 "railway/platform": {
                     "name": "기차 승강장"
                 },
+                "railway/preserved": {
+                    "name": "역사적 철도선"
+                },
                 "railway/rail": {
                     "name": "철로"
                 },
@@ -5600,7 +5741,11 @@
                     "name": "기차 차량 세척"
                 },
                 "railway/tram": {
-                    "name": "노면전차 궤도"
+                    "name": "노면전차 궤도",
+                    "terms": "트램 길"
+                },
+                "railway/tram_crossing": {
+                    "name": "전차 건널목"
                 },
                 "railway/tram_level_crossing": {
                     "name": "전차-도로 건널목"
@@ -5657,8 +5802,7 @@
                     "terms": "애니메이션/만화 상점"
                 },
                 "shop/antiques": {
-                    "name": "골동품 가게",
-                    "terms": "골동품 상점"
+                    "name": "골동품 가게"
                 },
                 "shop/appliance": {
                     "name": "가전 제품 가게",
@@ -5717,8 +5861,7 @@
                     "terms": "마권업자"
                 },
                 "shop/books": {
-                    "name": "서점",
-                    "terms": "책방"
+                    "name": "서점"
                 },
                 "shop/boutique": {
                     "name": "부티크"
@@ -5840,10 +5983,6 @@
                     "name": "유제품 가게",
                     "terms": "우유,달걀,계란,치즈"
                 },
-                "shop/deli": {
-                    "name": "델리",
-                    "terms": "점심,고기,샌드위치"
-                },
                 "shop/department_store": {
                     "name": "백화점",
                     "terms": "백화점"
@@ -5962,8 +6101,7 @@
                     "terms": "철물점"
                 },
                 "shop/health_food": {
-                    "name": "건강식품 가게",
-                    "terms": "건강식품 상점"
+                    "name": "건강식품 판매점"
                 },
                 "shop/hearing_aids": {
                     "name": "보청기 가게",
@@ -6066,10 +6204,6 @@
                     "name": "악기 가게",
                     "terms": "악기 상점"
                 },
-                "shop/newsagent": {
-                    "name": "신문/잡지 가게",
-                    "terms": "신문/잡지 상점"
-                },
                 "shop/nutrition_supplements": {
                     "name": "영양 보조 식품 가게",
                     "terms": "영양 보조 식품 상점"
@@ -6096,9 +6230,6 @@
                 "shop/pastry": {
                     "name": "과자 가게",
                     "terms": "과자 상점"
-                },
-                "shop/pawnbroker": {
-                    "name": "전당포"
                 },
                 "shop/perfumery": {
                     "name": "향수 가게",
@@ -6152,9 +6283,6 @@
                 "shop/seafood": {
                     "name": "해산물 가게",
                     "terms": "해산물 상점"
-                },
-                "shop/second_hand": {
-                    "name": "위탁/중고품 할인 매장"
                 },
                 "shop/sewing": {
                     "name": "바느질 용품 가게",
@@ -6247,7 +6375,7 @@
                     "terms": "진공청소기 상점"
                 },
                 "shop/variety_store": {
-                    "name": "잡화점"
+                    "name": "할인 판매점"
                 },
                 "shop/video": {
                     "name": "비디오 가게",
@@ -6294,7 +6422,7 @@
                     "name": "관광 지물"
                 },
                 "tourism/alpine_hut": {
-                    "name": "고산장"
+                    "name": "산악 루지"
                 },
                 "tourism/apartment": {
                     "name": "게스트 아파트 / 콘도",
@@ -6399,6 +6527,9 @@
                     "name": "놀이공원",
                     "terms": "테마파크,놀이동산"
                 },
+                "tourism/trail_riding_station": {
+                    "terms": "트레일 경주 스테이션"
+                },
                 "tourism/viewpoint": {
                     "name": "경승지"
                 },
@@ -6487,12 +6618,40 @@
                     "name": "우회전 금지",
                     "terms": "우회전 금지"
                 },
+                "type/restriction/no_straight_on": {
+                    "name": "직진 금지",
+                    "terms": "직진 금지"
+                },
+                "type/restriction/no_u_turn": {
+                    "name": "U턴 금지",
+                    "terms": "u턴 금지"
+                },
+                "type/restriction/only_left_turn": {
+                    "name": "좌회전만 허용",
+                    "terms": "좌회전만 허용"
+                },
+                "type/restriction/only_right_turn": {
+                    "name": "우회전만 허용",
+                    "terms": "우회전만 허용"
+                },
+                "type/restriction/only_straight_on": {
+                    "name": "직진만 허용",
+                    "terms": "직진만 허용"
+                },
+                "type/restriction/only_u_turn": {
+                    "name": "U턴만 허용",
+                    "terms": "u턴만 허용"
+                },
                 "type/route": {
                     "name": "노선",
                     "terms": "경로,노선"
                 },
                 "type/route/aerialway": {
                     "name": "항공 노선"
+                },
+                "type/route/bicycle": {
+                    "name": "자전거 노선",
+                    "terms": "자전거 노선"
                 },
                 "type/route/bus": {
                     "name": "버스 노선",
@@ -6503,6 +6662,10 @@
                 },
                 "type/route/ferry": {
                     "name": "페리 노선"
+                },
+                "type/route/foot": {
+                    "name": "도보 노선",
+                    "terms": "도보 노선"
                 },
                 "type/route/hiking": {
                     "name": "하이킹 노선"
@@ -6528,6 +6691,9 @@
                 },
                 "type/route/power": {
                     "name": "전력 노선"
+                },
+                "type/route/railway": {
+                    "name": "철도 노선"
                 },
                 "type/route/road": {
                     "name": "도로 노선",
@@ -6602,9 +6768,6 @@
                 "waterway/river": {
                     "name": "강",
                     "terms": "강"
-                },
-                "waterway/riverbank": {
-                    "name": "강둑"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "해양 화장실 처리장",

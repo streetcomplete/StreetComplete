@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
 atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, ATM, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, Τράπεζα Eurobank, NBG GROUP]
 chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
@@ -14,6 +14,7 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
-orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut, almond, plum]
+orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ

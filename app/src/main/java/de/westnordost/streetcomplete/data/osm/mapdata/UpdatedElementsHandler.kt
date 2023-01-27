@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 /** Reads the answer of an update map call on the OSM API. */
-class UpdatedElementsHandler {
+class UpdatedElementsHandler(val ignoreRelationTypes: Set<String?> = emptySet()) {
     private val nodeDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val wayDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
     private val relationDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
@@ -19,6 +19,9 @@ class UpdatedElementsHandler {
         val deletedElementKeys = mutableListOf<ElementKey>()
         val idUpdates = mutableListOf<ElementIdUpdate>()
         for (element in elements) {
+            if (element is Relation && element.tags["type"] in ignoreRelationTypes) {
+                continue
+            }
             val diff = getDiff(element.type, element.id) ?: continue
             if (diff.serverId != null && diff.serverVersion != null) {
                 updatedElements.add(createUpdatedElement(element, diff.serverId, diff.serverVersion))

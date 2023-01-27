@@ -1,7 +1,7 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [CDCG, Ecobank, UBA]
 centerLineStyle: white
 edgeLineStyle: short white dashes
 mobileCountryCode: 629
 officialLanguages: [fr, ln, mkw]
-orchardProduces: [banana, guava, mango, mangosteen, papaya, pineapple, orange, banana, avocado, tomato, guava, mango, mangosteen, chilli_pepper, sweet_pepper, coffee, rubber, avocado, grapefruit, lemon, lime]
+orchardProduces: [banana, coffee, rubber, cacao, guava, mango, mangosteen, banana, papaya, orange, chilli_pepper, sweet_pepper, tea, coffee, avocado, pineapple, tomato, guava, mango, mangosteen]

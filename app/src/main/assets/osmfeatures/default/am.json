@@ -133,9 +133,6 @@
                 "amenity/theatre": {
                     "name": "ቲያትር ቤት"
                 },
-                "amenity/toilets": {
-                    "name": "መፀዳጃ ቤት"
-                },
                 "amenity/university": {
                     "name": "ዩኒቨርሲቲ"
                 },
@@ -264,9 +261,6 @@
                 },
                 "shop/beverages": {
                     "name": "የለስላሳ መጠጦች ማከፋፈያ"
-                },
-                "shop/books": {
-                    "name": "መፃሕፍት መሸጫ"
                 },
                 "shop/butcher": {
                     "name": "ሥጋ ቤት"

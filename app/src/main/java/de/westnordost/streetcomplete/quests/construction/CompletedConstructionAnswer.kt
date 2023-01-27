@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
-sealed class CompletedConstructionAnswer
-data class StateAnswer(val value: Boolean) : CompletedConstructionAnswer()
-data class OpeningDateAnswer(val date: LocalDate) : CompletedConstructionAnswer()
+sealed interface CompletedConstructionAnswer
+data class StateAnswer(val value: Boolean) : CompletedConstructionAnswer
+data class OpeningDateAnswer(val date: LocalDate) : CompletedConstructionAnswer

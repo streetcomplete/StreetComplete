@@ -9,5 +9,5 @@
    <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
   </filter>
  </defs>
- <path transform="matrix(1 0 0 -1 0 62.4)" d="m40.8 5.2-18 24h-4c-7 0-12 5-12 12v4c0 7 5 12 12 12h44c7 0 12-5 12-12v-4c0-7-5-12-12-12h-4z" fill="#fff" filter="url(#filter1329)" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width=".167" style="paint-order:fill markers stroke"/>
+ <path transform="matrix(1 0 0 -1 0 62.4)" d="m40.8 5.2-18 24h-4c-7 0-12 5-12 12v4c0 7 5 12 12 12h44c7 0 12-5 12-12v-4c0-7-5-12-12-12h-4z" fill="#fff" filter="url(#filter1329)" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width=".167"/>
 </svg>

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.view
 
+import android.view.Menu
 import android.widget.TextView
 import androidx.annotation.StringRes
 
@@ -18,10 +19,9 @@ fun TextView.setText(text: Text?) {
     }
 }
 
-fun VerticalLabelView.setText(text: Text?) {
+fun Menu.add(groupId: Int, itemId: Int, order: Int, text: Text) {
     when (text) {
-        is ResText -> setText(resources.getString(text.resId))
-        is CharSequenceText -> setText(text.text.toString())
-        null -> setText("")
+        is ResText -> add(groupId, itemId, order, text.resId)
+        is CharSequenceText -> add(groupId, itemId, order, text.text)
     }
 }

@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [FNB, Bank Windhoek, Standard Bank, Nedbank, First National Bank, FNB Namibia]
 centerLineStyle: white
 edgeLineStyle: yellow
@@ -10,4 +10,4 @@ noParkingSignStyle: sadc
 noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, af]
-orchardProduces: [grape, tomato, orange, chilli_pepper, sweet_pepper, date, guava, mango, mangosteen]
+orchardProduces: [grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen]

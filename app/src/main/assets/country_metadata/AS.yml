@@ -1,7 +1,6 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: yellow
 edgeLineStyle: white
 lengthUnits: [foot and inch, meter]
 officialLanguages: [en, sm]
-orchardProduces: [coconut, banana, coconut, pineapple, guava, mango, mangosteen, papaya, avocado, banana, pineapple, cacao, tomato, coffee, pepper, cacao]
 speedUnits: [miles per hour, kilometers per hour]

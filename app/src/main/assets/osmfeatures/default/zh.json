@@ -354,9 +354,6 @@
                 "amenity/theatre": {
                     "name": "剧院"
                 },
-                "amenity/toilets": {
-                    "name": "厕所"
-                },
                 "amenity/townhall": {
                     "name": "市政府"
                 },
@@ -780,9 +777,6 @@
                 "shop/convenience": {
                     "name": "便利店"
                 },
-                "shop/deli": {
-                    "name": "熟食店"
-                },
                 "shop/department_store": {
                     "name": "百货店"
                 },
@@ -861,14 +855,8 @@
                 "shop/vacant": {
                     "name": "空置铺位"
                 },
-                "shop/variety_store": {
-                    "name": "杂货店"
-                },
                 "shop/video": {
                     "name": "影像店"
-                },
-                "tourism/alpine_hut": {
-                    "name": "高山小屋"
                 },
                 "tourism/artwork": {
                     "name": "艺术品"
@@ -959,9 +947,6 @@
                 },
                 "waterway/river": {
                     "name": "河流"
-                },
-                "waterway/riverbank": {
-                    "name": "河堤"
                 },
                 "waterway/stream": {
                     "name": "溪流"

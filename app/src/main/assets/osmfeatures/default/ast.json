@@ -435,9 +435,6 @@
                 "fuel": {
                     "label": "Combustible"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustible"
-                },
                 "gauge": {
                     "label": "Anchu de vía"
                 },
@@ -646,13 +643,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultá IMBA de la sienda",
-                    "options": {
-                        "0": "Más fácil (círculu blancu)",
-                        "1": "Fácil (círculu verde)",
-                        "2": "Mediana  (cuadráu azul)",
-                        "3": "Difícil (diamante prietu)",
-                        "4": "Difícil enforma (doble diamante prietu)"
-                    },
                     "placeholder": "Fácil, mediana, difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -803,7 +793,6 @@
                     "label": "Planta"
                 },
                 "plant/output/electricity": {
-                    "label": "Potencia de salida",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -913,9 +902,6 @@
                 },
                 "service": {
                     "label": "Tipu"
-                },
-                "service/bicycle": {
-                    "label": "Servicios"
                 },
                 "service/vehicle": {
                     "label": "Servicios"
@@ -1102,7 +1088,6 @@
                 "tracktype": {
                     "label": "Tipu de caleya",
                     "options": {
-                        "grade1": "Sólidu: superficie pavimentada o material duru bien apisonao",
                         "grade2": "Mayormente sólidu: grava/piedra con daqué material dondo amestáu",
                         "grade3": "Mestura igualada de materiales sólidos y dondos",
                         "grade4": "Mayormente dondu: tierra/sable/yerba con daqué de material sólidu amestáu",
@@ -1132,17 +1117,7 @@
                     "placeholder": "Escelente, bonu, malu..."
                 },
                 "transformer": {
-                    "label": "Tipu",
-                    "options": {
-                        "auto": "Autotresformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Convertidor",
-                        "distribution": "Distribución",
-                        "generator": "Xenerador",
-                        "phase_angle_regulator": "Regulador d'ángulu de fase",
-                        "traction": "Tracción",
-                        "yes": "Desconocíu"
-                    }
+                    "label": "Tipu"
                 },
                 "trees": {
                     "label": "Árboles"
@@ -1554,10 +1529,6 @@
                     "name": "Teatru",
                     "terms": "comedia,corral"
                 },
-                "amenity/toilets": {
-                    "name": "Aseos",
-                    "terms": "servicios,aseos,retretes"
-                },
                 "amenity/townhall": {
                     "name": "Edificiu municipal",
                     "terms": "casa del conceyu,ayuntamientu"
@@ -1829,10 +1800,6 @@
                 "craft/bookbinder": {
                     "name": "Encuadernador",
                     "terms": "encuadernación"
-                },
-                "craft/brewery": {
-                    "name": "Cervecería",
-                    "terms": "fabrica de cerveza,embotelladora de cerveza"
                 },
                 "craft/carpenter": {
                     "name": "Carpintería",
@@ -2149,9 +2116,6 @@
                     "name": "Enllaz d'estrada autonómica III",
                     "terms": "salida,accesu,enllaz,autonómica terciaria,autonómica mariella"
                 },
-                "highway/track": {
-                    "name": "Pista ensin mantenimientu"
-                },
                 "highway/traffic_mirror": {
                     "name": "Espeyu pal tráficu"
                 },
@@ -2271,10 +2235,6 @@
                 "landuse/military/danger_area": {
                     "name": "Área de peligru"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Base naval",
-                    "terms": "arsenal"
-                },
                 "landuse/military/range": {
                     "name": "Campu de tiru"
                 },
@@ -2328,9 +2288,6 @@
                 },
                 "leisure/golf_course": {
                     "name": "Campu de golf"
-                },
-                "leisure/horse_riding": {
-                    "name": "Instalación pa equitación"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista de xelu"
@@ -2764,9 +2721,6 @@
                     "name": "Llicorería",
                     "terms": "bodega"
                 },
-                "shop/antiques": {
-                    "name": "Anticuariu"
-                },
                 "shop/art": {
                     "name": "Galería d'arte",
                     "terms": "marchante d'arte"
@@ -2785,9 +2739,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Encuadernador"
-                },
-                "shop/books": {
-                    "name": "Llibrería"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -2842,9 +2793,6 @@
                 },
                 "shop/dairy": {
                     "name": "Llechería"
-                },
-                "shop/deli": {
-                    "name": "Gourmet"
                 },
                 "shop/department_store": {
                     "name": "Grandes almacenes"
@@ -2959,10 +2907,6 @@
                     "name": "Instrumentos musicales",
                     "terms": "luthier"
                 },
-                "shop/newsagent": {
-                    "name": "Prensa y revistes",
-                    "terms": "puestu de periódicos"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Tienda de suplementos nutritivos"
                 },
@@ -2979,10 +2923,6 @@
                 },
                 "shop/pastry": {
                     "name": "Pastelería"
-                },
-                "shop/pawnbroker": {
-                    "name": "Casa d'empeños",
-                    "terms": "monte de piedá"
                 },
                 "shop/perfumery": {
                     "name": "Perfumería"
@@ -3010,9 +2950,6 @@
                 "shop/seafood": {
                     "name": "Mariscos",
                     "terms": "pescadería"
-                },
-                "shop/second_hand": {
-                    "name": "Reventa d'empeños"
                 },
                 "shop/shoes": {
                     "name": "Zapatería"
@@ -3071,9 +3008,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Tienda d'aspiradores"
                 },
-                "shop/variety_store": {
-                    "name": "Bazar"
-                },
                 "shop/video": {
                     "name": "Tienda de videos"
                 },
@@ -3094,9 +3028,6 @@
                 },
                 "shop/wine": {
                     "name": "Bodega"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Refuxu d'alpinismu"
                 },
                 "tourism/aquarium": {
                     "name": "Acuariu"
@@ -3280,9 +3211,6 @@
                 "waterway/river": {
                     "name": "Ríu",
                     "terms": "ríu,regatu"
-                },
-                "waterway/riverbank": {
-                    "name": "Ribera"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Vaciáu de sentines",

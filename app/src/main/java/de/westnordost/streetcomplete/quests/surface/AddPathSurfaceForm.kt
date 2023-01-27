@@ -3,17 +3,17 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.util.ktx.isArea
 
-class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
-    override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_SURFACES).toItems()
+class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
+    override val items get() =
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
+        createMarkAsIndoorsAnswer(),
     )
 
     override val itemsPerRow = 3
@@ -36,11 +36,20 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsSte
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
-        val way = osmElement as? Way ?: return null
+        val way = element as? Way ?: return null
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
             applyAnswer(IsActuallyStepsAnswer)
+        }
+    }
+
+    private fun createMarkAsIndoorsAnswer(): AnswerItem? {
+        val way = element as? Way ?: return null
+        if (way.tags["indoor"] == "yes") return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_indoors) {
+            applyAnswer(IsIndoorsAnswer)
         }
     }
 }

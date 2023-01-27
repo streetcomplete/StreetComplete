@@ -3,15 +3,13 @@ package de.westnordost.streetcomplete.data.upload
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.util.enclosingTilePos
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -58,11 +56,10 @@ class Uploader(
         Log.i(TAG, "Starting upload")
 
         mutex.withLock {
-            coroutineScope {
-                // uploaders can run concurrently
-                launch { noteEditsUploader.upload() }
-                launch { elementEditsUploader.upload() }
-            }
+            // element edit and note edit uploader must run in sequence because the notes may need
+            // to be updated if the element edit uploader creates new elements to which notes refer
+            elementEditsUploader.upload()
+            noteEditsUploader.upload()
         }
 
         Log.i(TAG, "Finished upload")

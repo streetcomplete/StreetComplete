@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Belize Bank, Heritage Bank]
 centerLineStyle: yellow
 lengthUnits: [foot and inch, meter]
@@ -6,5 +6,5 @@ mobileCountryCode: 702
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, bzj]
-orchardProduces: [orange, banana, grapefruit, tomato, chilli_pepper, sweet_pepper, pineapple, papaya, coconut, cacao, coffee, guava, mango, mangosteen]
+orchardProduces: [orange, banana, grapefruit, coconut, cacao, pineapple, coffee, tomato, papaya, chilli_pepper, sweet_pepper, guava, mango, mangosteen]
 speedUnits: [miles per hour, kilometers per hour]

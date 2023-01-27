@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.equalsInOsm
-import de.westnordost.streetcomplete.util.measuredLength
-import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.ktx.equalsInOsm
+import de.westnordost.streetcomplete.util.math.measuredLength
+import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
 import kotlin.math.sign
 
 /** data class that carries the information for one split to perform on a random position on a way.
@@ -75,8 +75,9 @@ private fun SplitAtPoint.toSplitWays(positions: List<LatLon>): Collection<SplitW
     if (indicesOf.isEmpty()) throw ConflictException("To be split point has been moved")
 
     indicesOf = indicesOf.filter { index -> index > 0 && index < positions.lastIndex }
-    if (indicesOf.isEmpty())
+    if (indicesOf.isEmpty()) {
         throw ConflictException("Split position is now at the very start or end of the way - can't split there")
+    }
 
     return indicesOf.map { indexOf -> SplitWayAtIndex(pos, indexOf) }.sorted()
 }
@@ -110,10 +111,11 @@ private fun SplitAtLinePosition.toSplitWaysAt(positions: List<LatLon>): Collecti
        4
      */
 
-    if (result.isNotEmpty())
-        return result.sorted()
-    else
+    if (result.isEmpty()) {
         throw ConflictException("End points of the to be split line are not directly successive anymore")
+    }
+
+    return result.sorted()
 }
 
 /** returns the indices at which the given pos is found in this list, taking into account the limited

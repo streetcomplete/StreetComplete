@@ -1,32 +1,65 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isGone
+import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.mostCommonWithin
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
+class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
-    private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
+    override val contentLayoutResId get() = getHydrantDiameterSignLayoutResId(countryInfo.countryCode)
+    private val diameterInput by lazy { requireView().findViewById<EditText>(R.id.diameterInput) }
+    private val suggestionsButton by lazy { requireView().findViewById<View>(R.id.suggestionsButton) }
 
-    private val diameterValue get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val diameterValue get() = diameterInput.intOrNull ?: 0
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
+            .sorted()
+            .toList()
+    }
+
+    private lateinit var favs: LastPickedValuesStore<Int>
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.toString() },
+            deserialize = { it.toInt() }
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.addTextChangedListener(TextChangedWatcher {
+
+        updateSuggestionsButtonVisibility()
+
+        diameterInput.doAfterTextChanged {
             checkIsFormComplete()
-        })
+            updateSuggestionsButtonVisibility()
+        }
+
+        suggestionsButton.setOnClickListener { showSuggestionsMenu() }
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -38,10 +71,15 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
             FireHydrantDiameter(diameterValue, MILLIMETER)
         }
 
-        if (isUnusualDiameter(diameter))
-            confirmUnusualInput { applyAnswer(diameter) }
-        else
+        if (isUnusualDiameter(diameter)) {
+            confirmUnusualInput(diameter.unit) {
+                favs.add(diameterValue)
+                applyAnswer(diameter)
+            }
+        } else {
+            favs.add(diameterValue)
             applyAnswer(diameter)
+        }
     }
 
     private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {
@@ -52,10 +90,19 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
         }
     }
 
-    private fun confirmUnusualInput(onConfirmed: () -> Unit) {
+    private fun confirmUnusualInput(
+        unit: FireHydrantDiameterMeasurementUnit,
+        onConfirmed: () -> Unit
+    ) {
+        val min = if (unit == MILLIMETER) 80 else 3
+        val max = if (unit == MILLIMETER) 300 else 12
+        val msg = getString(
+            R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description2,
+            min, max
+        )
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
+            .setMessage(msg)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
@@ -70,4 +117,31 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
             .show()
         }
     }
+
+    private fun updateSuggestionsButtonVisibility() {
+        suggestionsButton.isGone = lastPickedAnswers.isEmpty() || diameterInput.intOrNull != null
+    }
+
+    private fun showSuggestionsMenu() {
+        val popup = PopupMenu(requireContext(), suggestionsButton)
+
+        for (diameter in lastPickedAnswers) {
+            popup.menu.add(diameter.toString())
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            diameterInput.setText(item.title.toString())
+            true
+        }
+        popup.show()
+    }
+}
+
+private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "DE", "BE" -> R.layout.quest_fire_hydrant_diameter_sign_de
+    "FI" -> R.layout.quest_fire_hydrant_diameter_sign_fi
+    "NL" -> R.layout.quest_fire_hydrant_diameter_sign_nl
+    "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl
+    "GB", "IE" -> R.layout.quest_fire_hydrant_diameter_sign_uk
+    else -> R.layout.quest_fire_hydrant_diameter_sign_generic
 }

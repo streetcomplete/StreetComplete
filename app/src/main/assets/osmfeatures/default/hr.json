@@ -310,11 +310,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "podzemne razine"
                 },
-                "building/levels_building": {
-                    "label": "Katova zgrade",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "razine zgrade,razine građevine,katovi"
-                },
                 "building/material": {
                     "label": "Materijal",
                     "terms": "matrijal"
@@ -358,9 +353,6 @@
                 },
                 "charge_toll": {
                     "terms": "cestarina,naplata"
-                },
-                "circumference": {
-                    "terms": "opseg"
                 },
                 "clothes": {
                     "label": "Odjeća"
@@ -491,7 +483,6 @@
                     "label": "Obilježavanje"
                 },
                 "departures_board": {
-                    "label": "Lista odlazaka",
                     "options": {
                         "no": "Nema",
                         "realtime": "U pravom vremenu",
@@ -649,9 +640,6 @@
                 },
                 "fuel": {
                     "label": "Gorivo"
-                },
-                "fuel_multi": {
-                    "label": "Tipovi goriva"
                 },
                 "gauge": {
                     "label": "Širina kolosijeka"
@@ -962,13 +950,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Težina staze po IMBA",
-                    "options": {
-                        "0": "Najlakše (bijeli krug)",
-                        "1": "Lagano (plava staza)",
-                        "2": "Srednje (plavi kvadrat)",
-                        "3": "Teško (crni dijamant)",
-                        "4": "Izuzetno teško (dupli crni dijamant)"
-                    },
                     "placeholder": "Lagano, srednje, teško...",
                     "terms": "imba disciplina brdskog biciklizma"
                 },
@@ -1107,10 +1088,6 @@
                     "label": "Načini plaćanja",
                     "terms": "način plaćanja"
                 },
-                "payment_multi_fee": {
-                    "label": "Načini plaćanja",
-                    "terms": "način plaćanja"
-                },
                 "phone": {
                     "label": "Telefon",
                     "placeholder": "+385 01 123 4567",
@@ -1160,7 +1137,6 @@
                     "label": "Elektrana"
                 },
                 "plant/output/electricity": {
-                    "label": "Električna snaga",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "polling_station": {
@@ -1458,7 +1434,6 @@
                 "tracktype": {
                     "label": "Vrsta poljskog ili šumskog puta",
                     "options": {
-                        "grade1": "Čvrsto: asfaltirana ili jako zbijeni makadam",
                         "grade2": "Većinom čvrsto: šljunak/kamenčići pomiješani sa mekšim materijalima",
                         "grade3": "Jednolika mješavina čvrstih i mekanih materijala",
                         "grade4": "Većinom mekano: zemlja/pjesak/trava sa nešto čvrstih materijala",
@@ -1514,9 +1489,6 @@
                 },
                 "water": {
                     "label": "Vrsta"
-                },
-                "water_volume": {
-                    "terms": "rezervna količina vode (m³)"
                 },
                 "waterway": {
                     "label": "Vrsta"
@@ -1910,10 +1882,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatar"
                 },
-                "amenity/toilets": {
-                    "name": "Toalet",
-                    "terms": "wc,toalet,nužnik,sanitarni čvor"
-                },
                 "amenity/townhall": {
                     "name": "Gradska vijećnica",
                     "terms": "gradska vijećnica,vijećnica,općinski dom"
@@ -2211,9 +2179,6 @@
                 "craft/bookbinder": {
                     "name": "Knjigovezac"
                 },
-                "craft/brewery": {
-                    "name": "Pivara"
-                },
                 "craft/carpenter": {
                     "name": "Stolar"
                 },
@@ -2406,17 +2371,8 @@
                 "highway/footway": {
                     "name": "Pješačka staza"
                 },
-                "highway/footway/marked": {
-                    "name": "Označeni pješački prijelaz"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Nogostup"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Neoznačeni pješački prijelaz"
-                },
-                "highway/footway/zebra": {
-                    "name": "Označeni pješački prijelaz"
                 },
                 "highway/living_street": {
                     "name": "Područje smirenog prometa"
@@ -2512,9 +2468,6 @@
                 },
                 "highway/tertiary_link": {
                     "name": "Pristupna cesta lokalne ceste"
-                },
-                "highway/track": {
-                    "name": "Šumski ili poljski put"
                 },
                 "highway/traffic_mirror": {
                     "name": "Prometno ogledalo"
@@ -2819,9 +2772,6 @@
                 "leisure/track/cycling": {
                     "name": "Staza za utrkivanje bicikala"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "Staza za utrkivanje konja"
-                },
                 "leisure/track/running": {
                     "name": "Staza za trčanje"
                 },
@@ -2882,9 +2832,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Podzemni cjevovod"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Ventil cjevovoda"
                 },
                 "man_made/pumping_station": {
                     "name": "Crpna stanica"
@@ -3350,9 +3297,6 @@
                     "name": "Prodavaonica alkoholnih pića",
                     "terms": "prodavaonica alkoholnih pića,diskont pića,dućan pića,dućan s pićem"
                 },
-                "shop/antiques": {
-                    "name": "Antikvarijat"
-                },
                 "shop/art": {
                     "name": "Trgovina umjetninama"
                 },
@@ -3395,9 +3339,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Kladioničar"
-                },
-                "shop/books": {
-                    "name": "Knjižara"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -3463,10 +3404,6 @@
                 },
                 "shop/dairy": {
                     "name": "Prodavaonica mliječnih proizvoda"
-                },
-                "shop/deli": {
-                    "name": "Prodavaonica delikatesa",
-                    "terms": "delikatesni dućan,trgovina delikatesama"
                 },
                 "shop/department_store": {
                     "name": "Robna kuća",
@@ -3598,9 +3535,6 @@
                     "name": "Trgovina glazbenih instrumenata",
                     "terms": "muzička trgovina,muzički dućan,gitare,bubnjevi"
                 },
-                "shop/newsagent": {
-                    "name": "Trgovina za novine i magazine"
-                },
                 "shop/optician": {
                     "name": "Optičar",
                     "terms": "optičar"
@@ -3615,9 +3549,6 @@
                 "shop/pastry": {
                     "name": "Slastičarna",
                     "terms": "slastice,kolači,kolačarnica,poslastičarna,slastičarnica,deserti,dućan s kolačima,kolač,torte,torta"
-                },
-                "shop/pawnbroker": {
-                    "name": "Zalagaonica"
                 },
                 "shop/perfumery": {
                     "name": "Parfimerija"
@@ -3699,10 +3630,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Trgovina za usisavače"
                 },
-                "shop/variety_store": {
-                    "name": "Prodavaonica mješovite robe",
-                    "terms": "prodavaonica mješovite robe,trgovina,prodavaonica,svaštara,dućan"
-                },
                 "shop/video": {
                     "name": "Videoteka",
                     "terms": "videoteka,video,video-kaseta,video kaseta,video kazeta,video-kazeta,iznajmljivanje video kazeta,iznajmljivanje dvda,iznajmljivanje dvd-a,dvd,blue ray,iznajmljivanje blue raya,blue-ray,iznajmljivanje blue-raya"
@@ -3723,10 +3650,6 @@
                 },
                 "shop/wine": {
                     "name": "Prodavaonica vina"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Planinarski dom",
-                    "terms": "planinarska kuća,planinarski dom,dom"
                 },
                 "tourism/apartment": {
                     "name": "Turistički apartman"
@@ -3932,9 +3855,6 @@
                 },
                 "waterway/river": {
                     "name": "Rijeka"
-                },
-                "waterway/riverbank": {
-                    "name": "Riječna obala"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Stanica za pražnjenje brodskog spremnika fekalija"

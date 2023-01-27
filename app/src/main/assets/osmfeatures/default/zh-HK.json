@@ -118,7 +118,6 @@
                 "activity": {
                     "label": "活動",
                     "options": {
-                        "Ski": "滑雪",
                         "bicycle": "騎單車",
                         "hiking": "遠足",
                         "horse": "騎馬",
@@ -296,7 +295,6 @@
                     "label": "服務",
                     "options": {
                         "cosmetics": "化妝品",
-                        "nails": "美甲",
                         "tanning": "日光浴"
                     }
                 },
@@ -370,9 +368,6 @@
                 },
                 "building/levels/underground": {
                     "label": "地庫樓層數",
-                    "placeholder": "2, 4, 6..."
-                },
-                "building/levels_building": {
                     "placeholder": "2, 4, 6..."
                 },
                 "building/material": {
@@ -460,10 +455,6 @@
                 "check_date": {
                     "label": "最後檢查日期",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "圓周",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "衣物"
@@ -950,9 +941,6 @@
                 "fuel": {
                     "label": "燃料"
                 },
-                "fuel_multi": {
-                    "label": "燃料種類"
-                },
                 "gambling": {
                     "label": "遊戲"
                 },
@@ -1332,13 +1320,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "國際越野單車協會路徑難度",
-                    "options": {
-                        "0": "最容易（白圓圈）",
-                        "1": "容易（綠圓圈）",
-                        "2": "中等（藍正方）",
-                        "3": "困難（黑鑽石）",
-                        "4": "極度困難（雙黑鑽石）"
-                    },
                     "placeholder": "容易、中等、困難 …"
                 },
                 "mtb/scale/uphill": {
@@ -1509,9 +1490,6 @@
                 "payment_multi": {
                     "label": "付款種類"
                 },
-                "payment_multi_fee": {
-                    "label": "付款種類"
-                },
                 "phases": {
                     "label": "相位",
                     "placeholder": "1, 2, 3..."
@@ -1614,7 +1592,6 @@
                     "label": "植物"
                 },
                 "plant/output/electricity": {
-                    "label": "電力輸出",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -1684,8 +1661,6 @@
                         "cans": "鋁罐",
                         "cardboard": "紙板",
                         "clothes": "衣物",
-                        "glass": "玻璃",
-                        "glass_bottles": "玻璃樽",
                         "green_waste": "堆肥",
                         "paper": "紙類",
                         "plastic_packaging": "塑膠包裝",
@@ -1932,9 +1907,6 @@
                         "emergency_access": "緊急通道",
                         "parking_aisle": "停車場通道"
                     }
-                },
-                "service/bicycle": {
-                    "label": "服務"
                 },
                 "service/vehicle": {
                     "label": "服務"
@@ -2244,7 +2216,6 @@
                 "tracktype": {
                     "label": "路徑種類",
                     "options": {
-                        "grade1": "實心：已鋪設路面或有剛硬的表面",
                         "grade2": "接近實心：混合了柔性物料的碎石/石塊",
                         "grade3": "混合了硬性與柔性的物料",
                         "grade4": "接近柔性：混合了硬性物料的土壤/砂粒/草",
@@ -2293,17 +2264,7 @@
                     "placeholder": "優良、好、差勁..."
                 },
                 "transformer": {
-                    "label": "種類",
-                    "options": {
-                        "auto": "自耦變壓器",
-                        "auxiliary": "輔助",
-                        "converter": "轉換器",
-                        "distribution": "配電器",
-                        "generator": "變電器",
-                        "phase_angle_regulator": "相位角整流器",
-                        "traction": " 牽引器",
-                        "yes": "未知"
-                    }
+                    "label": "種類"
                 },
                 "trees": {
                     "label": "樹"
@@ -2434,9 +2395,6 @@
                 "water_tank/volume": {
                     "label": "容積（公升）",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "儲水量（立方米）"
                 },
                 "waterway": {
                     "label": "種類"
@@ -3189,10 +3147,6 @@
                     "name": "露天劇場",
                     "terms": "圓形廣場,羅馬廣場,圓形劇場,圓形露天劇場"
                 },
-                "amenity/toilets": {
-                    "name": "廁所",
-                    "terms": "toilets,便所,公厠,公廁,厠所,廁所,方便,洗手間,盥洗室,化粧間"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "沖水廁所"
                 },
@@ -3664,10 +3618,6 @@
                     "name": "書籍釘裝",
                     "terms": "釘裝"
                 },
-                "craft/brewery": {
-                    "name": "釀酒廠",
-                    "terms": "釀酒廠,啤酒釀造,啤酒釀製,啤酒釀制"
-                },
                 "craft/carpenter": {
                     "name": "木匠",
                     "terms": "木匠,木工"
@@ -3968,9 +3918,6 @@
                 "highway/bus_stop": {
                     "name": "巴士站"
                 },
-                "highway/construction": {
-                    "name": "封閉道路"
-                },
                 "highway/corridor": {
                     "name": "室內走廊",
                     "terms": "室內通道"
@@ -4112,10 +4059,6 @@
                 "highway/tertiary_link": {
                     "name": "分路連接路",
                     "terms": "tertiary link,三級道路匝道,三級道路連接路,細路駁路"
-                },
-                "highway/track": {
-                    "name": "無保養道路",
-                    "terms": "未舖設路面的路"
                 },
                 "highway/traffic_mirror": {
                     "name": "廣角鏡",
@@ -4289,10 +4232,6 @@
                     "name": "危險區",
                     "terms": "danger area,危險地區,危險區域,危險範圍"
                 },
-                "landuse/military/naval_base": {
-                    "name": "海軍基地",
-                    "terms": "naval base,軍港,海軍基地"
-                },
                 "landuse/military/range": {
                     "name": "軍事靶場",
                     "terms": "military range,靶場,軍用靶場,射擊場"
@@ -4406,10 +4345,6 @@
                     "name": "高爾夫球場",
                     "terms": "golf course,哥夫球場,高爾夫球場"
                 },
-                "leisure/horse_riding": {
-                    "name": "騎馬設施",
-                    "terms": "horseback riding facility,騎馬場"
-                },
                 "leisure/ice_rink": {
                     "name": "溜冰場",
                     "terms": "溜冰場"
@@ -4473,10 +4408,6 @@
                 "leisure/pitch/cricket": {
                     "name": "木球場",
                     "terms": "cricket field,木球場"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "策騎場地",
-                    "terms": "riding arena,策騎場地"
                 },
                 "leisure/pitch/futsal": {
                     "name": "室內五人足球場"
@@ -4561,9 +4492,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "單車徑"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "賽馬跑道"
                 },
                 "leisure/track/running": {
                     "name": "緩跑徑"
@@ -5174,10 +5102,6 @@
                 "shop/anime": {
                     "name": "動畫／漫畫店"
                 },
-                "shop/antiques": {
-                    "name": "古董店",
-                    "terms": "古董店,古玩店"
-                },
                 "shop/appliance": {
                     "name": "電器店",
                     "terms": "appliance store,家電店,家用電器店"
@@ -5232,10 +5156,6 @@
                 "shop/bookmaker": {
                     "name": "投注站",
                     "terms": "投注站,收受賭注者"
-                },
-                "shop/books": {
-                    "name": "書店",
-                    "terms": "書局"
                 },
                 "shop/boutique": {
                     "name": "時裝店"
@@ -5321,10 +5241,6 @@
                 "shop/dairy": {
                     "name": "奶製品店",
                     "terms": "奶品店,乳品店,乳製品店"
-                },
-                "shop/deli": {
-                    "name": "食肆",
-                    "terms": "deli,熟食店,美食店,食肆"
                 },
                 "shop/department_store": {
                     "name": "百貨公司",
@@ -5413,9 +5329,6 @@
                     "name": "五金店",
                     "terms": "hardware store,五金店,五金舖"
                 },
-                "shop/health_food": {
-                    "name": "健康食品店"
-                },
                 "shop/hearing_aids": {
                     "name": "助聽器店",
                     "terms": "助聽器商店,耳聾機"
@@ -5491,10 +5404,6 @@
                     "name": "樂器店",
                     "terms": "樂器行,樂器店"
                 },
-                "shop/newsagent": {
-                    "name": "報紙/雜誌店",
-                    "terms": "報刊檔,報刊商店"
-                },
                 "shop/nutrition_supplements": {
                     "name": "營養補充品店",
                     "terms": "營養補充品店"
@@ -5514,10 +5423,6 @@
                 "shop/pastry": {
                     "name": "榚點店",
                     "terms": "pastry shop,西餅店,榚餅店,榚點店"
-                },
-                "shop/pawnbroker": {
-                    "name": "當舖",
-                    "terms": "大押,押,當押"
                 },
                 "shop/perfumery": {
                     "name": "香水店",
@@ -5559,10 +5464,6 @@
                 "shop/seafood": {
                     "name": "海鮮店",
                     "terms": "海產店"
-                },
-                "shop/second_hand": {
-                    "name": "寄賣/二手店",
-                    "terms": "格仔店,二手店"
                 },
                 "shop/shoes": {
                     "name": "鞋舖",
@@ -5623,10 +5524,6 @@
                     "name": "吸塵機店",
                     "terms": "吸塵器店"
                 },
-                "shop/variety_store": {
-                    "name": "十蚊店",
-                    "terms": "variety store,雜貨店,雜貨舖"
-                },
                 "shop/video": {
                     "name": "影視店",
                     "terms": "video store,影像店,影碟店,影視店"
@@ -5660,10 +5557,6 @@
                 },
                 "tourism": {
                     "name": "觀光特徽"
-                },
-                "tourism/alpine_hut": {
-                    "name": "高山小屋",
-                    "terms": "alpine hut,高山小屋,高山屋仔"
                 },
                 "tourism/apartment": {
                     "name": "民宿公寓 / 短租公寓",
@@ -5875,9 +5768,6 @@
                     "name": "遠足路綫",
                     "terms": "hiking route,行山路綫,行山路線,遠足路線"
                 },
-                "type/route/horse": {
-                    "name": "騎馬路綫"
-                },
                 "type/route/light_rail": {
                     "name": "輕鐵路綫",
                     "terms": "light rail route,輕鐵路線"
@@ -5953,9 +5843,6 @@
                 "waterway/river": {
                     "name": "河流",
                     "terms": "river,江,江河,河,河流,河川"
-                },
-                "waterway/riverbank": {
-                    "name": "河岸"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "船舶污水處理",

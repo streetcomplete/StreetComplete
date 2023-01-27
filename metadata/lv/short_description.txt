@@ -1,1 +1,1 @@
-OpenStreetMap aptaujas lietotne
+OpenStreetMap mērnieka lietotne

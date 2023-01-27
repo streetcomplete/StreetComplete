@@ -6,25 +6,21 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPE
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import kotlinx.serialization.Serializable
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
 
-sealed class StreetParking
+@Serializable sealed class StreetParking
 
-object StreetParkingProhibited : StreetParking()
-object StreetStandingProhibited : StreetParking()
-object StreetStoppingProhibited : StreetParking()
-object NoStreetParking : StreetParking()
+@Serializable object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
-object UnknownStreetParking : StreetParking()
+@Serializable object UnknownStreetParking : StreetParking()
 /** When not both parking orientation and position have been specified*/
-object IncompleteStreetParking : StreetParking()
+@Serializable object IncompleteStreetParking : StreetParking()
 /** There is street parking, but it is mapped as separate geometry */
-object StreetParkingSeparate : StreetParking()
+@Serializable object StreetParkingSeparate : StreetParking()
 
-data class StreetParkingPositionAndOrientation(
+@Serializable data class StreetParkingPositionAndOrientation(
     val orientation: ParkingOrientation,
     val position: ParkingPosition
 ) : StreetParking()
@@ -39,6 +35,16 @@ enum class ParkingPosition {
     ON_KERB,
     STREET_SIDE,
     PAINTED_AREA_ONLY
+}
+
+fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
+    if (left?.isValid != false && right?.isValid != false) return this
+    return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
+}
+
+private val StreetParking.isValid: Boolean get() = when (this) {
+    IncompleteStreetParking, UnknownStreetParking -> false
+    else -> true
 }
 
 val StreetParking.estimatedWidthOnRoad: Float get() = when (this) {
@@ -62,33 +68,4 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f
     else -> 0.5f // otherwise let's assume it is somehow on the street
-}
-
-/** get the OSM value for the parking:lane key */
-fun StreetParking.toOsmLaneValue(): String? = when (this) {
-    is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
-    NoStreetParking, StreetParkingProhibited, StreetStandingProhibited, StreetStoppingProhibited -> "no"
-    StreetParkingSeparate -> "separate"
-    UnknownStreetParking, IncompleteStreetParking -> null
-}
-
-fun StreetParking.toOsmConditionValue(): String? = when (this) {
-    StreetParkingProhibited -> "no_parking"
-    StreetStandingProhibited -> "no_standing"
-    StreetStoppingProhibited -> "no_stopping"
-    else -> null
-}
-
-fun ParkingPosition.toOsmValue() = when (this) {
-    ON_STREET -> "on_street"
-    HALF_ON_KERB -> "half_on_kerb"
-    ON_KERB -> "on_kerb"
-    STREET_SIDE -> "street_side"
-    PAINTED_AREA_ONLY -> "painted_area_only"
-}
-
-fun ParkingOrientation.toOsmValue() = when (this) {
-    PARALLEL -> "parallel"
-    DIAGONAL -> "diagonal"
-    PERPENDICULAR -> "perpendicular"
 }

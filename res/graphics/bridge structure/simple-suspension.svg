@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 320 96" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
     <style type="text/css">
-		.cables{fill: none; stroke:#AA0000;stroke-width:4;}
-		.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
-		.land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
-	</style>
+        .cables{fill: none; stroke:#AA0000;stroke-width:4;}
+        .struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+        .land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
+    </style>
     <rect class="struct" x="32" y="24" width="16" height="76"/>
     <rect class="struct" x="272" y="24" width="16" height="76"/>
-	<path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
-	<path class="cables" d="m52 26v22m12-14v22m12-16v20m12-14v18m12-14v18m12-14v18m12-16v20m12-18v20m12-18v20m120-54v22m-12-14v22m-12-14v18m-12-14v18m-12-14v18m-12-14v18m-12-16v20m-12-18v20m-12-18v20m-12-18v18"/>
-	<path class="struct" d="m-4 44v8h52c74.348 40.116 148.23 40.602 224 0h53v-8h-53c-74.396 42.381-151.04 41.813-224 0z"/>
-	<path class="cables" d="m48 24c71.949 48.042 151.95 47.958 224 0"/>
+    <path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
+    <path class="cables" d="m52 26v22m12-14v22m12-16v20m12-14v18m12-14v18m12-14v18m12-16v20m12-18v20m12-18v20m120-54v22m-12-14v22m-12-14v18m-12-14v18m-12-14v18m-12-14v18m-12-16v20m-12-18v20m-12-18v20m-12-18v18"/>
+    <path class="struct" d="m-4 44v8h52c74.348 40.116 148.23 40.602 224 0h53v-8h-53c-74.396 42.381-151.04 41.813-224 0z"/>
+    <path class="cables" d="m48 24c71.949 48.042 151.95 47.958 224 0"/>
 </svg>

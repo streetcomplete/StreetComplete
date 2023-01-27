@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
-import de.westnordost.streetcomplete.data.meta.removeCheckDates
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.removeCheckDates
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
-        nodes, ways, relations with (
+        nodes, ways with (
          shop = yes
          and !man_made
          and !historic
@@ -23,34 +23,29 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !tourism
          and !attraction
          and !amenity
-         and !craft
-         and !tourism
          and !leisure
+         and !aeroway
+         and !railway
+         and !craft
+         and !healthcare
+         and !office
+         and !shop
         )
     """
-    override val changesetComment = "Specify shop type"
+    override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"
-    override val icon = R.drawable.ic_quest_check_shop
+    override val icon = R.drawable.ic_quest_shop
     override val isReplaceShopEnabled = true
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = when {
-        hasProperName(tags) -> R.string.quest_shop_type_title
-        else -> R.string.quest_shop_type_title_no_name
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_type_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " +
-            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
-        )
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = ShopTypeForm()
 
-    private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(listOf("name", "brand", "operator"))
-
-    override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.removeCheckDates()
         when (answer) {
             is IsShopVacant -> {

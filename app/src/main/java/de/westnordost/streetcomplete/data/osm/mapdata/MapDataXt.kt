@@ -19,13 +19,9 @@ fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
     }.filter(expr::matches)
 }
 
-private fun getElementFilterExpression(expr: String): ElementFilterExpression {
+private fun getElementFilterExpression(expr: String): ElementFilterExpression = synchronized(filterExpCache) {
     if (!filterExpCache.containsKey(expr)) {
-        synchronized(filterExpCache) {
-            if (!filterExpCache.containsKey(expr)) {
-                filterExpCache[expr] = expr.toElementFilterExpression()
-            }
-        }
+        filterExpCache[expr] = expr.toElementFilterExpression()
     }
     return filterExpCache.getValue(expr)
 }

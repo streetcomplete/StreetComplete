@@ -355,11 +355,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "niveis,pisos,soto,sotos,subterráneos,sótano,subsolo,subchan"
                 },
-                "building/levels_building": {
-                    "label": "Andares do edificio",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "andares,pisos,niveis,plantas"
-                },
                 "building/material": {
                     "label": "Material"
                 },
@@ -403,9 +398,6 @@
                 "capacity_volume": {
                     "placeholder": "50, 100, 200..."
                 },
-                "cash_in": {
-                    "label": "Pagamento en efectivo"
-                },
                 "castle_type": {
                     "label": "Tipo"
                 },
@@ -425,10 +417,6 @@
                 "check_date": {
                     "label": "Data da última revisión",
                     "placeholder": "AAAA-MM-DD"
-                },
-                "circumference": {
-                    "label": "Circunferencia",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "Roupa"
@@ -585,7 +573,6 @@
                     "label": "Denotación"
                 },
                 "departures_board": {
-                    "label": "Taboleiro de saídas",
                     "options": {
                         "no": "Ningún",
                         "realtime": "Tempo real",
@@ -834,9 +821,6 @@
                 },
                 "fuel": {
                     "label": "Combustíbel"
-                },
-                "fuel_multi": {
-                    "label": "Tipos de combustíbeis"
                 },
                 "gambling": {
                     "label": "Xogos"
@@ -1248,13 +1232,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultade do roteiro de sendeiro",
-                    "options": {
-                        "0": "O máis doado (círculo branco)",
-                        "1": "Doado (círculo verde)",
-                        "2": "Media (cadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Extremadamente difícil (dobre diamante negro)"
-                    },
                     "placeholder": "Doado, Medio, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -1414,9 +1391,6 @@
                 "payment_multi": {
                     "label": "Tipos de pagamento"
                 },
-                "payment_multi_fee": {
-                    "label": "Tipos de pagamento"
-                },
                 "phases": {
                     "label": "Fases",
                     "placeholder": "1, 2, 3..."
@@ -1536,7 +1510,6 @@
                     "label": "Método de produción "
                 },
                 "plant/output/electricity": {
-                    "label": "Potencia de saída",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -1859,9 +1832,6 @@
                 "service": {
                     "label": "Tipo"
                 },
-                "service/bicycle": {
-                    "label": "Servizos"
-                },
                 "service/vehicle": {
                     "label": "Servizos"
                 },
@@ -2124,7 +2094,6 @@
                 "tracktype": {
                     "label": "Tipo da pista",
                     "options": {
-                        "grade1": "Sólido: superficie pavimentada ou fortemente compactada",
                         "grade2": "Principalmente Sólido: grava/rocha con algún material brando mesturado",
                         "grade3": "Mesma mestura de materiais duros e brandos",
                         "grade4": "Principalmente Brando: terra/area/herba con algún material duro mesturado",
@@ -2173,17 +2142,7 @@
                     "placeholder": "Excelente, bo, malo..."
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotransformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Conversor",
-                        "distribution": "Distribución",
-                        "generator": "Xerador",
-                        "phase_angle_regulator": "Desfasador",
-                        "traction": "Tracción",
-                        "yes": "Descoñecido"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Árbores"
@@ -2300,9 +2259,6 @@
                 "water_tank/volume": {
                     "label": "Volume (litros)",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "Volume de auga encorada (m³)"
                 },
                 "waterway": {
                     "label": "Tipo"
@@ -3175,10 +3131,6 @@
                     "name": "Anfiteatro",
                     "terms": "ar libre,aire libre,ao aire libre,grego,ampi,anfi,anfiteatro"
                 },
-                "amenity/toilets": {
-                    "name": "Aseos",
-                    "terms": "aseos,baños,wc,servizo,servizos,lavabo,latrina,retrete,váter,urinario,urinaria"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Aseo con cisterna",
                     "terms": "aseos,aseo,baños,wc,cuarto de baño,servizo,servizos,lavabo,latrina,retrete,váter,urinario,urinaria"
@@ -3714,10 +3666,6 @@
                     "name": "Encadernador",
                     "terms": "encadernador,libros"
                 },
-                "craft/brewery": {
-                    "name": "Cervexeiro",
-                    "terms": "cervexeiro,cervexaría,cervexa"
-                },
                 "craft/carpenter": {
                     "name": "Carpinteiro",
                     "terms": "carpinteiro,madeira,ebanista"
@@ -4068,9 +4016,6 @@
                 "highway/bus_stop": {
                     "name": "Parada de bus"
                 },
-                "highway/construction": {
-                    "name": "Estrada pechada"
-                },
                 "highway/corridor": {
                     "name": "Corredor interior",
                     "terms": "corredor,pasillo"
@@ -4079,8 +4024,7 @@
                     "name": "Paso de peóns"
                 },
                 "highway/crossing/marked": {
-                    "name": "Paso de peóns marcado",
-                    "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
+                    "name": "Paso de peóns marcado"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Paso de peóns sen marcar",
@@ -4104,8 +4048,7 @@
                     "terms": "peonil,peonal,ciclista,ciclismo,bicicleta"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Paso de bicicletas marcado",
-                    "terms": "paso de bicicleta,cruzamento de carril bici,cruzamento de ciclovía,cruzamento de bicicleta,cruzamento de bici,cruzamento de senda ciclista"
+                    "name": "Paso de bicicletas marcado"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Paso de bicicletas sen marcar",
@@ -4133,20 +4076,9 @@
                 "highway/footway/crossing": {
                     "name": "Paso de peóns"
                 },
-                "highway/footway/marked": {
-                    "name": "Paso de peóns marcado",
-                    "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Beirarrúa",
                     "terms": "calzada,paseo,berma"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Paso peonil sen marcar",
-                    "terms": "cruzamento sen marcar,paso de peóns sen marcar"
-                },
-                "highway/footway/zebra": {
-                    "name": "Paso de peóns marcado"
                 },
                 "highway/give_way": {
                     "name": "Ceda o paso"
@@ -4290,10 +4222,6 @@
                 "highway/toll_gantry": {
                     "name": "Arco de peaxe",
                     "terms": "arco de peaxe,arco de portaxe,pórtico de peaxe,pórtico de portaxe,peaxe electrónica,portaxe electrónica"
-                },
-                "highway/track": {
-                    "name": "Pista forestal ou agrícola",
-                    "terms": "camiño,senda,sendeiro,rúa,vía,pista,rural,forestal,agrícola,campo,sen mantemento,offroad,jeep,dobre tracción,tractor,4x4,atv,cuadrimotor,quadratrack,con huella,con pegada,carreiro,verea,vieiro,aldea,parroquia,lugar"
                 },
                 "highway/traffic_mirror": {
                     "name": "Espello de tráfico",
@@ -4529,9 +4457,6 @@
                     "name": "Área perigosa",
                     "terms": "zona de perigo,bombas,minas,munición,explosivo,militar,exército,forza aérea,mariña,armada,forza naval,área perigosa,zona de exclusión"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Base naval"
-                },
                 "landuse/military/range": {
                     "name": "Campo de tiro militar"
                 },
@@ -4696,9 +4621,6 @@
                 "leisure/golf_course": {
                     "name": "Campo de golf"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro de equitación"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de xeo"
                 },
@@ -4760,10 +4682,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Campo de crícket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Picadeiro",
-                    "terms": "picadeiro,cabalos,equitación"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hóckey",
@@ -4846,9 +4764,6 @@
                 "leisure/track/cycling": {
                     "name": "Circuíto de ciclismo"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de carreiras de cabalos"
-                },
                 "leisure/track/running": {
                     "name": "Pista de atletismo"
                 },
@@ -4861,9 +4776,6 @@
                 },
                 "line": {
                     "name": "Liña"
-                },
-                "man_made": {
-                    "name": "Elemento feito polo home"
                 },
                 "man_made/adit": {
                     "name": "Entrada a mina",
@@ -5008,10 +4920,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Tubaxe subterránea",
                     "terms": "petróleo,gas natural,auga,alcantarillado,augas residuais,desechos,refugallos,tubería,gasoduto,oleoduto,tubaxe,tubaría,tuberia,tubo"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Válvula de tubaxe",
-                    "terms": "petróleo,gas natural,auga,alcantarillado,augas residuais,pluviais,oleoduto"
                 },
                 "man_made/pumping_station": {
                     "name": "Estación de bombeo",
@@ -5633,9 +5541,6 @@
                 "power/plant/source/nuclear": {
                     "name": "Planta de enerxía nuclear"
                 },
-                "power/plant/source/solar": {
-                    "name": "Planta de enerxía solar"
-                },
                 "power/plant/source/wind": {
                     "name": "Planta de enerxía eólica"
                 },
@@ -5955,9 +5860,6 @@
                 "shop/anime": {
                     "name": "Tenda de anime / manga"
                 },
-                "shop/antiques": {
-                    "name": "Tenda de antigüidades"
-                },
                 "shop/appliance": {
                     "name": "Tenda de electrodomésticos"
                 },
@@ -6002,10 +5904,6 @@
                 "shop/bookmaker": {
                     "name": "Corredor de apostas",
                     "terms": "casa de apostas,casino,codere,luckia,apostas"
-                },
-                "shop/books": {
-                    "name": "Libraría",
-                    "terms": "libraría,venda de libros"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -6099,9 +5997,6 @@
                 "shop/cosmetics": {
                     "name": "Tenda de cosméticos"
                 },
-                "shop/country_store": {
-                    "name": "Tenda do agro ou campo"
-                },
                 "shop/craft": {
                     "name": "Tenda de artes e oficios"
                 },
@@ -6111,9 +6006,6 @@
                 "shop/dairy": {
                     "name": "Tenda de produtos frescos",
                     "terms": "produtos frescos,frescos,produtos,leite,lácteos,leitária,queixaría,central leiteira"
-                },
-                "shop/deli": {
-                    "name": "Delicatessen"
                 },
                 "shop/department_store": {
                     "name": "Grandes almacéns"
@@ -6214,9 +6106,6 @@
                 "shop/hardware": {
                     "name": "Ferraxaría"
                 },
-                "shop/health_food": {
-                    "name": "Tenda de produtos saudábeis"
-                },
                 "shop/hearing_aids": {
                     "name": "Tenda de audífonos"
                 },
@@ -6306,9 +6195,6 @@
                 "shop/musical_instrument": {
                     "name": "Tenda de instrumentos musicais"
                 },
-                "shop/newsagent": {
-                    "name": "Tenda de xornais/revistas"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Tenda de suplementos nutricionais"
                 },
@@ -6332,9 +6218,6 @@
                 "shop/pastry": {
                     "name": "Confeitaría ou pastelaría",
                     "terms": "confitaría,pastelaría,pasteis,tartas"
-                },
-                "shop/pawnbroker": {
-                    "name": "Casa de empeños"
                 },
                 "shop/perfumery": {
                     "name": "Perfumaría"
@@ -6380,9 +6263,6 @@
                 "shop/seafood": {
                     "name": "Peixaría",
                     "terms": "peixaría,peixería,peixeiro,peixe,marisco"
-                },
-                "shop/second_hand": {
-                    "name": "Tenda de segunda man"
                 },
                 "shop/sewing": {
                     "name": "Tenda de artigos de costura",
@@ -6465,10 +6345,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Tenda de aspiradoras"
                 },
-                "shop/variety_store": {
-                    "name": "Tenda de variedades ou bazar",
-                    "terms": "bazar,todo a cen,todo a 100,variedades"
-                },
                 "shop/video": {
                     "name": "Videoclube"
                 },
@@ -6512,9 +6388,6 @@
                 },
                 "tourism": {
                     "name": "Elemento de turismo"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Refuxio de montaña"
                 },
                 "tourism/apartment": {
                     "name": "Apartamento de hóspedes"
@@ -6832,9 +6705,6 @@
                 "waterway/river": {
                     "name": "Río",
                     "terms": "río,rio,regato,regacho,afluente,auga,vertente,agua,rama,arroio,curso,esteiro,estuario,foz,riachuelo,ribeira,corrente,curso de auga,beira,marxe"
-                },
-                "waterway/riverbank": {
-                    "name": "Beira de río"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Aseo para embarcacións",

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import android.net.Uri
 import androidx.core.net.toUri
-import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.util.ktx.format
 
 fun parseGeoUri(uri: Uri): GeoLocation? {
     if (uri.scheme != "geo") return null

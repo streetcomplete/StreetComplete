@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class NoteEditsController(
@@ -19,7 +21,8 @@ class NoteEditsController(
         action: NoteEditAction,
         position: LatLon,
         text: String? = null,
-        imagePaths: List<String> = emptyList()
+        imagePaths: List<String> = emptyList(),
+        track: List<Trackpoint> = emptyList(),
     ) {
         val edit = NoteEdit(
             0,
@@ -28,9 +31,10 @@ class NoteEditsController(
             action,
             text,
             imagePaths,
-            currentTimeMillis(),
+            nowAsEpochMilliseconds(),
             false,
-            imagePaths.isNotEmpty()
+            imagePaths.isNotEmpty(),
+            track,
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)
@@ -108,6 +112,16 @@ class NoteEditsController(
             return false
         }
         return true
+    }
+
+    fun updateElementIds(idUpdates: Collection<ElementIdUpdate>) {
+        for (idUpdate in idUpdates) {
+            val elementType = idUpdate.elementType.name.lowercase()
+            editsDB.replaceTextInUnsynced(
+                "osm.org/$elementType/${idUpdate.oldElementId} ",
+                "osm.org/$elementType/${idUpdate.newElementId} ",
+            )
+        }
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */

@@ -2,11 +2,11 @@
 <svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
  <g>
   <g transform="matrix(2.1973 0 0 2.1973 112.35 -596.06)" stroke-width="1.7201">
-   <circle cx="-38.081" cy="284.24" r="11.339" fill="#3e4347" style="paint-order:normal"/>
-   <circle cx="-38.128" cy="284.29" r="9.1187" fill="#fff" style="paint-order:normal"/>
-   <circle cx="-38.142" cy="284.3" r="7.2877" fill="#428bc1" style="paint-order:normal"/>
-   <circle cx="-37.868" cy="284.36" r="4.3467" fill="#fff" style="paint-order:normal"/>
-   <circle cx="-37.792" cy="284.45" r="2.2743" fill="#bb2e3c" style="paint-order:normal"/>
+   <circle cx="-38.081" cy="284.24" r="11.339" fill="#3e4347"/>
+   <circle cx="-38.128" cy="284.29" r="9.1187" fill="#fff"/>
+   <circle cx="-38.142" cy="284.3" r="7.2877" fill="#428bc1"/>
+   <circle cx="-37.868" cy="284.36" r="4.3467" fill="#fff"/>
+   <circle cx="-37.792" cy="284.45" r="2.2743" fill="#bb2e3c"/>
   </g>
   <g transform="matrix(1.5739 0 0 -1.5739 34.976 94.005)" stroke-width=".79419">
    <path d="m21.279 31.72c-8.999 0-10.5-1.5-13-4s-4-4-4-13c0-11.18-2-14-1-14s3 2 3 4-1.999 13 5.001 20h-1e-3c7 7 18 5 20 5s4 2 4 3-2.819-1-14-1" fill="#c1694f"/>

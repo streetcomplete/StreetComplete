@@ -1,7 +1,7 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Ecobank, BOA, private, Bank of Africa]
 mobileCountryCode: 616
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, fon]
-orchardProduces: [tomato, pineapple, cashew_nut, chilli_pepper, sweet_pepper, coconut, banana, guava, mango, mangosteen, orange, date, kola_nut, pepper, coffee]
+orchardProduces: [cashew_nut, tomato, chilli_pepper, sweet_pepper, coconut, pineapple, orange, banana, guava, mango, mangosteen, kola_nut, pepper, date, coffee]

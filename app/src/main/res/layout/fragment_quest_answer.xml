@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_alignParentLeft="true"
     android:layout_width="@dimen/quest_form_width"
+    tools:layout_width="300dp"
     android:layout_height="match_parent"
     android:id="@+id/bottomSheetContainer"
     tools:ignore="RtlHardcoded">
@@ -51,16 +52,17 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/titleHintLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"/>
-
-                    <TextView
                         android:id="@+id/titleLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.Title"/>
+
+                    <TextView
+                        android:id="@+id/titleHintLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Title.Hint"
+                        android:visibility="gone"/>
 
                 </LinearLayout>
 
@@ -149,19 +151,37 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <TextView
-        android:id="@+id/okButton"
-        android:text="@android:string/ok"
-        style="@style/RoundAccentButton"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+    <RelativeLayout
+        android:id="@+id/okButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="gone"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        android:alpha="0"/>
+        android:alpha="0"
+        tools:alpha="1"
+        tools:visibility="visible"
+        tools:scaleX="1"
+        tools:scaleY="1"
+        android:paddingTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingBottom="8dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/okButton"
+            android:src="@drawable/ic_check_48dp"
+            android:scaleType="centerInside"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="20dp"/>
+
+    </RelativeLayout>
 
     <View
         android:id="@+id/glassPane"

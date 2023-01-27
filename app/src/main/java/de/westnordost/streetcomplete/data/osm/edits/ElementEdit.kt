@@ -6,20 +6,19 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
 data class ElementEdit(
     /** (row) id of the edit. 0 if not inserted into DB yet */
     var id: Long,
 
-    /** quest type associated with the edit. This is used to sort this edit into a changeset
+    /** edit type associated with the edit. This is used to sort this edit into a changeset
      *  associated with the quest type. A changeset gets its comment from the quest type */
-    val questType: OsmElementQuestType<*>,
+    val type: ElementEditType,
 
     /** element type this edit refers to */
     val elementType: ElementType,
     /** element id this edit refers to. Unlike element.id, this field may change when the OSM API
-     *  returns element ID updates */
+     *  returns element ID updates. Use 0 for newly created elements */
     val elementId: Long,
     /** original element this edit was made on */
     val originalElement: Element,

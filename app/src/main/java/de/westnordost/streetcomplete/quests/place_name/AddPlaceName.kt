@@ -3,14 +3,15 @@ package de.westnordost.streetcomplete.quests.place_name
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -18,7 +19,7 @@ class AddPlaceName(
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
-        nodes, ways, relations with
+        nodes, ways with
         (
           shop and shop !~ no|vacant
           or craft
@@ -34,14 +35,16 @@ class AddPlaceName(
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",                                                                                     // work
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & opening hours
                 "boat_rental",
@@ -82,11 +85,8 @@ class AddPlaceName(
                 // name & wheelchair
                 "sports_centre", "stadium",
 
-                // name & opening hours
-                "horse_riding",
-
                 // name only
-                "dance", "nature_reserve", "marina",
+                "dance", "nature_reserve", "marina", "horse_riding",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
@@ -96,11 +96,14 @@ class AddPlaceName(
             ),
             "healthcare" to arrayOf(
                 // common
-                "audiologist", "optometrist", "counselling", "speech_therapist",
-                "sample_collection", "blood_donation",
+                "pharmacy", "doctor", "clinic", "dentist", "centre", "physiotherapist",
+                "laboratory", "alternative", "psychotherapist", "optometrist", "podiatrist",
+                "nurse", "counselling", "speech_therapist", "blood_donation", "sample_collection",
+                "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
+                "blood_bank", "nutrition_counselling",
 
-                // name & opening hours
-                "physiotherapist", "podiatrist",
+                // name & wheelchair
+                "rehabilitation", "hospice", "midwife", "birthing_centre"
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
@@ -111,13 +114,9 @@ class AddPlaceName(
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        arrayOfNotNull(featureName.value)
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -126,26 +125,17 @@ class AddPlaceName(
         filter.matches(element) && hasFeatureName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " +
-            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
-        )
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoPlaceNameSign -> {
                 tags["name:signed"] = "no"
             }
             is PlaceName -> {
-                for ((languageTag, name) in answer.localizedNames) {
-                    val key = when (languageTag) {
-                        "" -> "name"
-                        "international" -> "int_name"
-                        else -> "name:$languageTag"
-                    }
-                    tags[key] = name
-                }
+                answer.localizedNames.applyTo(tags)
             }
         }
     }

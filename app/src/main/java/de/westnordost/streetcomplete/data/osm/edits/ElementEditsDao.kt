@@ -15,13 +15,18 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.LO
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.NAME
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -32,7 +37,8 @@ import kotlinx.serialization.modules.subclass
 
 class ElementEditsDao(
     private val db: Database,
-    private val questTypeRegistry: QuestTypeRegistry
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val overlayRegistry: OverlayRegistry
 ) {
     private val json = Json {
         serializersModule = SerializersModule {
@@ -42,6 +48,10 @@ class ElementEditsDao(
                 subclass(SplitWayAction::class)
                 subclass(DeletePoiNodeAction::class)
                 subclass(RevertDeletePoiNodeAction::class)
+                subclass(CreateNodeAction::class)
+                subclass(RevertCreateNodeAction::class)
+                subclass(MoveNodeAction::class)
+                subclass(RevertMoveNodeAction::class)
             }
         }
     }
@@ -93,6 +103,14 @@ class ElementEditsDao(
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
+    fun updateElementId(id: Long, newElementId: Long): Int =
+        db.update(
+            NAME,
+            values = listOf(ELEMENT_ID to newElementId),
+            where = "$ID = ?",
+            args = arrayOf(id)
+        )
+
     fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
         db.update(
             NAME,
@@ -102,7 +120,7 @@ class ElementEditsDao(
         )
 
     private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOf(
-        QUEST_TYPE to questType.name,
+        QUEST_TYPE to type.name,
         ELEMENT_TYPE to elementType.name,
         ELEMENT_ID to elementId,
         ELEMENT to json.encodeToString(originalElement),
@@ -117,7 +135,8 @@ class ElementEditsDao(
 
     private fun CursorPosition.toElementEdit() = ElementEdit(
         getLong(ID),
-        questTypeRegistry.getByName(getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+        questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
+            ?: overlayRegistry.getByName(getString(QUEST_TYPE))!!,
         ElementType.valueOf(getString(ELEMENT_TYPE)),
         getLong(ELEMENT_ID),
         json.decodeFromString(getString(ELEMENT)),
@@ -128,5 +147,3 @@ class ElementEditsDao(
         json.decodeFromString(getString(ACTION))
     )
 }
-
-private val OsmElementQuestType<*>.name get() = this::class.simpleName

@@ -283,7 +283,6 @@
                     "label": "Hizmetler",
                     "options": {
                         "cosmetics": "Makyaj malzemeleri",
-                        "nails": "Tırnaklar",
                         "tanning": "Bronzlaşma"
                     }
                 },
@@ -362,10 +361,6 @@
                     "label": "Yeraltı Katlar",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "Bina Seviyeleri",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "Materyal"
                 },
@@ -410,9 +405,6 @@
                     "label": "Kapasite (Metreküp)",
                     "placeholder": "50, 100, 200..."
                 },
-                "cash_in": {
-                    "label": "Nakite çevir"
-                },
                 "castle_type": {
                     "label": "Tür"
                 },
@@ -430,10 +422,6 @@
                 "check_date": {
                     "label": "Son Kontrol Tarihi",
                     "placeholder": "GG-AA-YYYY"
-                },
-                "circumference": {
-                    "label": "Daire Çevresi",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "Çamaşırlar"
@@ -614,7 +602,6 @@
                     "label": "Anlam"
                 },
                 "departures_board": {
-                    "label": "Kalkış Panosu",
                     "options": {
                         "no": "Hiçbiri",
                         "realtime": "Gerçek Zamanlı",
@@ -877,9 +864,6 @@
                 },
                 "fuel": {
                     "label": "Benzin İstasyonu"
-                },
-                "fuel_multi": {
-                    "label": "Benzin Türü"
                 },
                 "gambling": {
                     "label": "Oyunlar"
@@ -1286,13 +1270,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Yol Zorluk Derecesi",
-                    "options": {
-                        "0": "Çok Kolay (beyaz)",
-                        "1": "Kolay (yeşil)",
-                        "2": "Orta Zorluk (mavi)",
-                        "3": "Çok Zor (siyah)",
-                        "4": "Aşırı Zor (çift siyah)"
-                    },
                     "placeholder": "Kolay, Orta, Zor"
                 },
                 "mtb/scale/uphill": {
@@ -1452,9 +1429,6 @@
                 "payment_multi": {
                     "label": "Ödeme Türleri"
                 },
-                "payment_multi_fee": {
-                    "label": "Ödeme Şekilleri"
-                },
                 "phases": {
                     "label": "Aşamalar",
                     "placeholder": "1, 2, 3..."
@@ -1574,7 +1548,6 @@
                     "label": "Üretim yöntemi"
                 },
                 "plant/output/electricity": {
-                    "label": "Güç Çıkışı",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -1900,9 +1873,6 @@
                         "parking_aisle": "Park Alanı"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Bisiklet"
-                },
                 "service/vehicle": {
                     "label": "Hizmetler"
                 },
@@ -2203,7 +2173,6 @@
                 "tracktype": {
                     "label": "Toprak Yol Durumu",
                     "options": {
-                        "grade1": "Sağlam: asfalt ya da sıkıştırılmış zemin",
                         "grade2": "Genellikle Sağlam: taş/çakıla karışmış yumuşak maddeler",
                         "grade3": "Sert ve yumuşak zemin maddelerinin karışımı",
                         "grade4": "Genellikle Yumuşak: toprak/kum/çimene karıştırılmış sert maddeler",
@@ -2252,17 +2221,7 @@
                     "placeholder": "Çok iyi, İyi, Kötü"
                 },
                 "transformer": {
-                    "label": "Tür",
-                    "options": {
-                        "auto": "Otomatik dönüştürücü",
-                        "auxiliary": "Yardımcı",
-                        "converter": "Dönüştürücü",
-                        "distribution": "Dağıtım",
-                        "generator": "Üreteç",
-                        "phase_angle_regulator": "Faz Açısı Düzenleyici",
-                        "traction": "Çekme",
-                        "yes": "Bilinmiyor"
-                    }
+                    "label": "Tür"
                 },
                 "trees": {
                     "label": "Ağaçlar"
@@ -2379,9 +2338,6 @@
                 "water_tank/volume": {
                     "label": "Hacim",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "Su Rezervi Hacmi (m³)"
                 },
                 "waterway": {
                     "label": "Tür"
@@ -3218,10 +3174,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfitiyatro"
                 },
-                "amenity/toilets": {
-                    "name": "Tuvalet",
-                    "terms": "tuvalet"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Alafranga tuvaletler"
                 },
@@ -3797,10 +3749,6 @@
                     "name": "Ciltçi",
                     "terms": "ciltçi"
                 },
-                "craft/brewery": {
-                    "name": "Bira İşletmesi",
-                    "terms": "bira i̇şletmesi,bira fabrikası"
-                },
                 "craft/carpenter": {
                     "name": "Marangoz",
                     "terms": "marangoz,dülger,doğramacı"
@@ -4198,9 +4146,6 @@
                 "highway/bus_stop": {
                     "name": "Otobüs Durağı"
                 },
-                "highway/construction": {
-                    "name": "Kapalı Yol"
-                },
                 "highway/corridor": {
                     "name": "Koridor",
                     "terms": "koridor,geçit"
@@ -4259,17 +4204,8 @@
                 "highway/footway/crossing": {
                     "name": "Yaya Geçidi"
                 },
-                "highway/footway/marked": {
-                    "name": "İşaretli Yaya Geçidi"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Kaldırım"
-                },
-                "highway/footway/unmarked": {
-                    "name": "İşaretsiz Yaya Geçidi"
-                },
-                "highway/footway/zebra": {
-                    "name": "İşaretli Yaya Geçidi"
                 },
                 "highway/give_way": {
                     "name": "Yol Ver İşareti",
@@ -4414,10 +4350,6 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Açık Yol Geçiş Ücreti"
-                },
-                "highway/track": {
-                    "name": "Tarım Yolu",
-                    "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu"
                 },
                 "highway/traffic_mirror": {
                     "name": "Trafik Aynası",
@@ -4652,10 +4584,6 @@
                     "name": "Tehlikeli Bölge",
                     "terms": "tehlikeli bölge"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Deniz Üssü",
-                    "terms": "deniz üssü"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Askeri Engel Sahası"
                 },
@@ -4829,10 +4757,6 @@
                 "leisure/hackerspace": {
                     "name": "Bilgisayar Korsanı Alanı"
                 },
-                "leisure/horse_riding": {
-                    "name": "At Binicilik Spor Kulübü",
-                    "terms": "at binicilik spor kulübü,binicilik spor kulübü,at binme yeri"
-                },
                 "leisure/ice_rink": {
                     "name": "Buz Pateni",
                     "terms": "buz pateni"
@@ -4901,10 +4825,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Kriket Sahası",
                     "terms": "kriket sahası"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Binicilik Alanı",
-                    "terms": "at binme alanı"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Çim Hokeyi Sahası"
@@ -4996,9 +4916,6 @@
                 "leisure/track/cycling": {
                     "name": "Bisiklet Parkuru"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "At Yarışı Parkuru"
-                },
                 "leisure/track/running": {
                     "name": "Koşu Parkuru"
                 },
@@ -5012,9 +4929,6 @@
                 "line": {
                     "name": "Çizgi",
                     "terms": "çizgi"
-                },
-                "man_made": {
-                    "name": "İnsan Yapımı Özellik"
                 },
                 "man_made/adit": {
                     "name": "Tünel Girişi",
@@ -5155,9 +5069,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Yeraltı Boru Hattı"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Boru Hattı Vanası"
                 },
                 "man_made/pumping_station": {
                     "name": "Pompa İstasyonu",
@@ -5816,9 +5727,6 @@
                 "power/plant/source/oil": {
                     "name": "Petrol Yakıtlı Enerji Santrali"
                 },
-                "power/plant/source/solar": {
-                    "name": "Güneş Paneli Çiftliği"
-                },
                 "power/plant/source/wind": {
                     "name": "Rüzgar Enerjisi Çiftliği"
                 },
@@ -6133,10 +6041,6 @@
                 "shop/anime": {
                     "name": "Anime / Manga Dükkanı"
                 },
-                "shop/antiques": {
-                    "name": "Antika Dükkanı",
-                    "terms": "antika dükkanı"
-                },
                 "shop/appliance": {
                     "name": "Beyaz Eşya Mağazası",
                     "terms": "beyaz eşya mağazası"
@@ -6191,10 +6095,6 @@
                 "shop/bookmaker": {
                     "name": "Bahis Merkezi",
                     "terms": "bahis merkezi"
-                },
-                "shop/books": {
-                    "name": "Kitapçı",
-                    "terms": "kitapçı"
                 },
                 "shop/boutique": {
                     "name": "Butik Mağaza"
@@ -6297,9 +6197,6 @@
                     "name": "Kozmetik Mağazası",
                     "terms": "kozmetik mağazası"
                 },
-                "shop/country_store": {
-                    "name": "Köy Mağazası"
-                },
                 "shop/craft": {
                     "name": "El Sanatları Mağazası"
                 },
@@ -6310,10 +6207,6 @@
                 "shop/dairy": {
                     "name": "Süt Mağazası",
                     "terms": "süt mağazası"
-                },
-                "shop/deli": {
-                    "name": "Şarküteri",
-                    "terms": "şarküteri"
                 },
                 "shop/department_store": {
                     "name": "Mağaza",
@@ -6426,9 +6319,6 @@
                     "name": "Donanım Mağazası",
                     "terms": "donanım mağazası"
                 },
-                "shop/health_food": {
-                    "name": "Sağlıklı Yiyecek Mağazası"
-                },
                 "shop/hearing_aids": {
                     "name": "İşitme Cihazı Mağazası",
                     "terms": "i̇şitme cihazı mağazası"
@@ -6531,10 +6421,6 @@
                     "name": "Müzik Aletleri Mağazası",
                     "terms": "müzik aletleri mağazası"
                 },
-                "shop/newsagent": {
-                    "name": "Gazete Bayii",
-                    "terms": "gazete bayii"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Gıda Takviye Ürünleri Mağazası",
                     "terms": "gıda takviye ürünleri mağazası,enerji takviye ürünleri mağazası"
@@ -6560,10 +6446,6 @@
                 "shop/pastry": {
                     "name": "Pastane",
                     "terms": "pastane"
-                },
-                "shop/pawnbroker": {
-                    "name": "İkinciel Alım Satım Mağazası",
-                    "terms": "i̇kinciel alım satım mağazası"
                 },
                 "shop/perfumery": {
                     "name": "Parfümeri",
@@ -6614,10 +6496,6 @@
                 "shop/seafood": {
                     "name": "Deniz Ürünleri Mağazası",
                     "terms": "deniz ürünleri mağazası"
-                },
-                "shop/second_hand": {
-                    "name": "Bit Pazarı",
-                    "terms": "bit pazarı"
                 },
                 "shop/sewing": {
                     "name": "Dikiş Malzemeleri Dükkanı"
@@ -6708,10 +6586,6 @@
                     "name": "Elektrikli Süpürge Mağazası",
                     "terms": "elektrikli süpürge mağazası"
                 },
-                "shop/variety_store": {
-                    "name": "Herşey 1 TL Mağazası",
-                    "terms": "herşey 1 tl mağazası"
-                },
                 "shop/video": {
                     "name": "Film - Video Mağazası",
                     "terms": "film - video mağazası"
@@ -6760,10 +6634,6 @@
                 },
                 "tourism": {
                     "name": "Turizm Özelliği"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Dağ Evi",
-                    "terms": "dağ evi,dağ kulübesi,baraka"
                 },
                 "tourism/apartment": {
                     "name": "Misafir Apartmanı",
@@ -7111,9 +6981,6 @@
                 "waterway/river": {
                     "name": "Akarsu",
                     "terms": "akarsu,nehir,irmak"
-                },
-                "waterway/riverbank": {
-                    "name": "Akarsu Kenarı"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Deniz Tuvalet İmha İstasyonu",

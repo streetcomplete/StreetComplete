@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.camera_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddCameraType : OsmFilterQuestType<CameraType>() {
 
@@ -16,11 +17,10 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
          and surveillance ~ public|outdoor|traffic
          and !camera:type
     """
-    override val changesetComment = "Add camera type"
+    override val changesetComment = "Specify camera types"
     override val wikiLink = "Tag:surveillance:type"
     override val icon = R.drawable.ic_quest_surveillance_camera
-
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camera_type_title
 
@@ -29,7 +29,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
 
     override fun createForm() = AddCameraTypeForm()
 
-    override fun applyAnswerTo(answer: CameraType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CameraType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["camera:type"] = answer.osmValue
     }
 }

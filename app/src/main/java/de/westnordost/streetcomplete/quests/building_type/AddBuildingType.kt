@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
@@ -22,6 +23,11 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and !amenity
          and !leisure
          and !aeroway
+         and !railway
+         and !craft
+         and !healthcare
+         and !office
+         and !shop
          and !description
          and location != underground
          and abandoned != yes
@@ -29,17 +35,16 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and abandoned:building != yes
          and ruins != yes and ruined != yes
     """
-    override val changesetComment = "Add building types"
+    override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
-
-    override val questTypeAchievements = listOf(BUILDING)
+    override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: BuildingType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmKey == "man_made") {
             tags.remove("building")
             tags["man_made"] = answer.osmValue

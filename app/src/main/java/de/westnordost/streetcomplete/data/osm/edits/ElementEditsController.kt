@@ -3,16 +3,16 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
-) : ElementEditsSource {
+) : ElementEditsSource, AddElementEditsController {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
@@ -21,14 +21,14 @@ class ElementEditsController(
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
     /** Add new unsynced edit to the to-be-uploaded queue */
-    fun add(
-        questType: OsmElementQuestType<*>,
+    override fun add(
+        type: ElementEditType,
         element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, questType, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, nowAsEpochMilliseconds(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -99,7 +99,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(edit.questType, edit.originalElement, edit.originalGeometry, edit.source, action.createReverted())
+            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, action.createReverted()))
         }
         // not uploaded yet
         else {
@@ -121,6 +121,15 @@ class ElementEditsController(
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
+            // set proper assigned id of the new element
+            val hasDummyElement = edit.elementId == 0L
+            if (hasDummyElement) {
+                if (edit.elementType != ElementType.NODE) {
+                    throw IllegalStateException("Element creation only supported for nodes")
+                }
+                val idProvider = elementIdProviderDB.get(id)
+                editsDB.updateElementId(id, idProvider.nextNodeId())
+            }
         }
         onAddedEdit(edit)
     }
@@ -130,7 +139,6 @@ class ElementEditsController(
         val ids: List<Long>
         synchronized(this) {
             edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
-            edits.add(edit)
 
             ids = edits.map { it.id }
 
@@ -148,12 +156,15 @@ class ElementEditsController(
         val result = mutableListOf<ElementEdit>()
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
-        val editsBasedOnThese = createdElementKeys.flatMap { editsDB.getByElement(it.type, it.id) }
+        val editsBasedOnThese = createdElementKeys
+            .flatMap { editsDB.getByElement(it.type, it.id) }
+            .filter { it.id != edit.id }
+
+        // deep first
         for (e in editsBasedOnThese) {
             result += getEditsBasedOnElementsCreatedByEdit(e)
         }
-        // deep first
-        result += editsBasedOnThese
+        result += edit
 
         return result
     }

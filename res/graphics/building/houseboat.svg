@@ -7,10 +7,10 @@
  </g>
  <g transform="matrix(2.6166 0 0 2.6166 24 -687.59)">
   <path d="m4.5861 294.88h25.988v-15.287l-13.758-9.1722-12.23 9.1722z" fill="#deb486"/>
-  <rect x="6.1148" y="265.84" width="6.1148" height="9.1722" fill="#deb486" style="paint-order:stroke markers fill"/>
+  <rect x="6.1148" y="265.84" width="6.1148" height="9.1722" fill="#deb486"/>
   <path d="m1.5287 281.12 15.287-13.758 16.816 13.758" fill="none" stroke="#c84747" stroke-width="4.5861"/>
-  <rect x="18.344" y="282.65" width="6.1148" height="12.23" fill="#c08268" style="paint-order:stroke markers fill"/>
-  <rect x="7.6435" y="284.18" width="7.6435" height="6.1148" fill="#95685e" style="paint-order:stroke markers fill"/>
-  <rect x="7.6435" y="282.65" width="7.6435" height="1.5287" fill="#c08268" style="paint-order:stroke markers fill"/>
+  <rect x="18.344" y="282.65" width="6.1148" height="12.23" fill="#c08268"/>
+  <rect x="7.6435" y="284.18" width="7.6435" height="6.1148" fill="#95685e"/>
+  <rect x="7.6435" y="282.65" width="7.6435" height="1.5287" fill="#c08268"/>
  </g>
 </svg>

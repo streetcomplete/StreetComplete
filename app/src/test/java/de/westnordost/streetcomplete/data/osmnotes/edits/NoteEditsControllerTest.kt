@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
@@ -64,5 +66,17 @@ class NoteEditsControllerTest {
         verify(db).markSynced(3)
         verify(db).updateNoteId(-100L, 123L)
         verify(listener).onSyncedEdit(edit)
+    }
+
+    @Test fun `update element ids`() {
+        ctrl.updateElementIds(listOf(
+            ElementIdUpdate(ElementType.NODE, -9, 1234),
+            ElementIdUpdate(ElementType.WAY, 4, 999),
+            ElementIdUpdate(ElementType.RELATION, 8, 234),
+        ))
+
+        verify(db).replaceTextInUnsynced("osm.org/node/-9 ", "osm.org/node/1234 ")
+        verify(db).replaceTextInUnsynced("osm.org/way/4 ", "osm.org/way/999 ")
+        verify(db).replaceTextInUnsynced("osm.org/relation/8 ", "osm.org/relation/234 ")
     }
 }

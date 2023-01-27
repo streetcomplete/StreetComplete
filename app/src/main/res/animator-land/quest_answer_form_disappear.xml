@@ -4,14 +4,14 @@
         android:propertyName="xFraction"
         android:valueType="floatType"
         android:valueFrom="0"
-        android:valueTo="-1.1"
-        android:duration="200"
-        android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
+        android:valueTo="-0.333"
+        android:duration="120"
+        android:interpolator="@android:anim/accelerate_interpolator"/>
     <objectAnimator
         android:propertyName="alpha"
         android:valueType="floatType"
         android:valueFrom="1.0"
         android:valueTo="0.0"
-        android:duration="200"
-        android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+        android:duration="120"
+        android:interpolator="@android:anim/accelerate_interpolator" />
 </set>

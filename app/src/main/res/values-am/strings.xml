@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_settings">"ማስተካከያ
-"</string>
+    <string name="action_settings">"ማስተካከያ"</string>
     <string name="oauth_communication_error">"የፈቃጅ ሰጪዉን  መድረስ አልተቻለም"</string>
-    <string name="retry">"እንደገና ሞክር"</string>
     <string name="oauth_failed_permissions">"ፍቃድ አልተገኘም-ሁሉም የተዘረዘሩ ፈቃዶች መሰጠት አለባቸው"</string>
     <string name="pref_category_communication">"መግባባት"</string>
     <string name="pref_category_display">"ማሳያ"</string>
@@ -29,7 +27,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"አንዳንድ ጊዜ የመንገድ ምልክቱ በጎዳናው ጫፍ ብቻ ነው ፡፡ እንዲሁም ፣ ለታላቅ ጎዳና ለሆኑ የጎን ጎዳናዎች ተጨማሪ የጎዳና ምልክቶች ላይኖሩ እንደሚችሉ ልብ ይበሉ ፡፡ አብዛኛውን ጊዜ ቤቶች ያሉት ማንኛውም ጎዳና ስም አለው ፡፡"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"ስያሜው ያለ አህጽሮተ-ፊደል መጻፍ ከተቻለ ሊስፋፋ ይገባል ፡፡ በሚተይቡበት ጊዜ ብዙ የተለመዱ ምህፃረ ቃላት በራስ-ሰር ይሰፋሉ ፣ ግን ምናልባት ሁሉም አይደሉም ፡፡"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"አህጽሮተ ቃል የለም"</string>
-    <string name="quest_openingHours_name_title">"ስንት ሰዐት ነዉ %s ሚከፈተዉ?"</string>
     <string name="quest_openingHours_start_time">"የመክፈቻ ሰዐት"</string>
     <string name="quest_openingHours_end_time">"የመዝጊያ ሰዐት"</string>
     <string name="quest_openingHours_add_months">"ወራትን ጨምር"</string>
@@ -54,8 +51,6 @@
     <string name="turn_on_location_request">"አካባቢ መጠቆሚያዉ ጠፍቷል። አሁን እሱን ለማብራት ማስተካከያን ይክፈቱ?"</string>
     <string name="no_location_permission_warning">"በካርታው ላይ ያለዎትን አቋም ለማሳየት እና በአቅራቢያዎ ላሉት ተልዕኮዎች ለመቃኘት የአካባቢ ፈቃድ ያስፈልጋል።"</string>
     <string name="about_title_authors">"ክሬዲቶች"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s ቶቢያስ ዚዊክ እና አስተዋጽዖ አበርካቾች"</string>
     <string name="about_title_repository">"ምንጭ ማከማቻ"</string>
     <string name="about_summary_repository">"በ GitHub ላይ"</string>
@@ -84,13 +79,9 @@
     <string name="quest_roofShape_title">"የዚህ ህንፃ ጣሪያ ምን ዓይነት መሰረታዊ ቅርፅ አለው?"</string>
     <string name="quest_roofShape_select_one">"አ ን ድ ም ረ ጥ:"</string>
     <string name="quest_roofShape_show_more">"ተጨማሪ አሳይ…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"በርካታ የተለያዩ ቅርጾች አሉት"</string>
     <string name="map_btn_zoom_out">"አሳንሱ"</string>
     <string name="map_btn_zoom_in">"አቅርብ"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; አህ ፣ ስለ ግላዊነት የሚያስብ ሰው ፣ ጥሩ! እኔ ለእርስዎ ጥሩ ዜና ብቻ ይመስለኛል &lt;/ p&gt;
 &lt;p&gt; &lt;b&gt; ቀጥተኛ አስተዋፅዖዎች &lt;/ b&gt; &lt;/ p&gt;
 &lt;p&gt;
@@ -132,7 +123,6 @@
     <string name="quest_surface_value_wood">"እንጨት"</string>
     <string name="quest_sidewalk_title">"ይህ ጎዳና የእግረኛ መንገድ አለው?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ይህ ጎዳና የት ነው?"</string>
-    <string name="quest_serviceType_title">"ይህ ምን ዓይነት የአገልግሎት መንገድ ነው?"</string>
     <string name="quest_oneway_title">"ይህ የአንድ አቅጣጫ ጎዳና ነው?"</string>
     <string name="quest_address_title">"የዚህ ህንፃ ቤት ቁጥር ስንት ነው?"</string>
     <string name="store_listing_short_description">"የ OpenStreetMap ቀያሽ መተግበሪያ"</string>
@@ -154,9 +144,6 @@
     <string name="upload_server_error">"መልሶችን በሚሰቀሉበት ጊዜ የግንኙነት ስህተት። ቆይተው እንደገና ይሞክሩ።"</string>
     <string name="quest_generic_hasFeature_yes">"አዎ"</string>
     <string name="quest_generic_hasFeature_no">"አይ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"ይህ የአውቶቡስ ማቆሚያ መጠለያ አለው?"</string>
     <string name="quest_bikeParkingCapacity_title">"እዚህ ስንት ብስክሌቶች ሊቆሙ ይችላሉ?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"ይህ የቤት ቁጥር በጣም ያልተለመደ ይመስላል።"</string>
     <string name="quest_sport_title">"እዚህ ምን ዓይነት ስፖርት ይጫወታል?"</string>
@@ -192,18 +179,12 @@
     <string name="quest_manySports_confirmation_specific">"በተለይም ለእነዚህ"</string>
     <string name="quest_manySports_confirmation_generic">"አጠቃላይ ጥቅም"</string>
     <string name="quest_sport_manySports_confirmation_title">"ብዙ ስፖርቶችን መርጠዋል"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"የአውቶቡስ ማቆሚያ %s መጠለያ አለው?"</string>
     <string name="quest_toiletsFee_title">"ይህንን የመጸዳጃ ክፍል ለመጠቀም መክፈል አለብዎት?"</string>
-    <string name="quest_tactilePaving_title_bus">"ይህ የአውቶቡስ ማቆሚያ የሚነካ ንጣፍ አለው?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"ይህ የእግረኛ መሻገሪያ በሁለቱም በኩል ንጣፍ አለው?"</string>
     <string name="quest_source_dialog_title">"እርግጠኛ ነዎት ይህንን በቦታው ላይ እንዳረጋገጡት?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"የአውቶቡስ ማቆሚያ %s የሚነካ ንጣፍ አለው?"</string>
     <string name="quest_source_dialog_note">"በዳሰሳ ጥናት ላይ የተገኘ መረጃ ብቻ መግባት አለበት ፡፡"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"ይህ የብስክሌት መኪና ማቆሚያ (ከዝናብ የተጠበቀ) ነው?"</string>
     <string name="dialog_session_dont_show_again">"ለዚህ ክፍለ ጊዜ እንደገና አታሳይ"</string>
-    <string name="quest_streetSurface_name_title">"የመንገድ %s እዚህ ምን ገጽ አለው?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"ይህ የፍጥነት ወሰን የማይታሰብ ይመስላል።"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"ምንም ገደብ እንደማይለጠፍ እርግጠኛ ኖት?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"በመንገዱ ጫፎች ላይ ቼክ አደረጉ?
@@ -219,34 +200,16 @@
     <string name="quest_sport_paddle_tennis">"የቴብል ቴኒስ"</string>
     <string name="quest_sport_gaelic_games">"ጋሊሊክ ጨዋታዎች"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"%s ለአካለ ጉዳተኞች ተሽከርካሪ ወንበር ተደራሽ ነው?"</string>
     <string name="quest_wheelchairAccess_limited">"በከፊል"</string>
     <string name="quest_bikeParkingCapacity_hint">"እያንዳንዳቸው አንድ ብስክሌት ለማቆም በጣም የተለመዱ መቋሚያዎች ከሁለቱም ወገን ሊጠቀሙባቸው እንደሚችሉ ልብ ይበሉ ፡፡"</string>
     <string name="quest_sport_roller_skating">"ሮለር ስኬቲንግ"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"ይህ የአውቶቡስ ጣቢያ ለአካለ ጉዳተኞች ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"ይህ የምድር ውስጥ ባቡር መግቢያ ተሽከርካሪ ለአካለ ጉዳተኞችተዠ ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"ይህ የባቡር ጣቢያ ለአካለ ጉዳተኞችወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_location_title">"ይህ ቦታ ለአካለ ጉዳተኞች ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"የአውቶቡስ ጣቢያ %s ለአካለ ጉዳተኞች ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"የምድር ውስጥ ባቡር መግቢያ %s ለአካለ ጉዳተኞች ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"%s የባቡር ጣቢያዉ ለአካለ ስንኩላን ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"%s አካባቢ ለአካለ ጉዳተኞች ወንበር ተደራሽ ነው?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"በከፊል ማለት ቦታውን ለመድረስ ከአንድ እርምጃ በላይ አይበልጥም እና በውስጣቸው ያሉት አብዛኛዎቹ ክፍሎች ተሽከርካሪ ወንበሮች ተደራሽ ናቸው ማለት ነው ፡፡"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"በከፊል ማለት እሱን ለመድረስ ከአንድ እርምጃ በላይ የለም ማለት ነው ፡፡"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s ምህፃረ ቃል በስሙ ዉስጥ?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"ይህ የመፀዳጃ ክፍል ህፃናት የሚቀይሩበት ጠረጴዛ አለው?"</string>
-    <string name="quest_baby_changing_table_title">"%s ህፃናት የሚቀይሩበት ጠረጴዛ አለው?"</string>
     <string name="quest_recycling_type_title">"ይህ ምን ዓይነት እንደገና ጥቅም ላይ የሚያውል ተቋም ነው?"</string>
     <string name="recycling_centre">"ማዕከል"</string>
     <string name="overground_recycling_container">"መያዣ"</string>
     <string name="underground_recycling_container">"የመሬት ውስጥ መያዣ"</string>
-    <string name="quest_generic_error_a_field_empty">"ባዶ ትተሃል"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s -%2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"ምስሎቹን በምልክቱ ላይ መተየብ አልተቻለም"</string>
     <string name="quest_streetName_cantType_title">"ኪቦርድ ገፅታ ይጎድላል?"</string>
     <string name="quest_streetName_cantType_open_settings">"ማስተካከያ ይክፈቱ"</string>
@@ -259,7 +222,6 @@
     <string name="quest_fireHydrant_type_pillar">"ምሰሶ"</string>
     <string name="quest_fireHydrant_type_underground">"ከመሬት በታች"</string>
     <string name="quest_fireHydrant_type_wall">"ግድግዳ"</string>
-    <string name="quest_fireHydrant_type_pond">"ኩሬ"</string>
     <string name="credits_contributors">"የ &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributor\"&gt;የተሟላ ዝርዝር በ GitHub ላይ ይመልከቱ&lt;/a&gt;።"</string>
     <string name="credits_translations_title">"ትርጉሞች"</string>
     <string name="credits_contributors_title">"የኮድ አስተዋጽዖ አበርካቾች"</string>
@@ -316,15 +278,8 @@
     <string name="produce_vanilla">"ቫኒላ"</string>
     <string name="produce_walnuts">"ዎልነስ"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"ይህ የተዘረጋ መንገድ በርቷል?"</string>
-    <string name="quest_way_lit_named_title">"%s እዚህ በርቷል?"</string>
-    <string name="quest_way_lit_road_title">"ይህ ለጥ ያለ የመንገድ መብራት አለዉ?"</string>
-    <string name="quest_way_lit_automatic">"የእንቅስቃሴ ማወቂያን ይጠቀማል"</string>
-    <string name="quest_way_lit_24_7">"ሌሊትና ቀን ይበራል"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"እዚህ ማንበብ አይቻልም። የበለጠ ለማጉላት ይሞክሩ ወይም ካርታውን በትንሹ ያዘንብሉት።"</string>
     <string name="quest_crossing_type_title">"ይህ ምን ዓይነት መሻገሪያ ነው?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"ያለ የመንገድ ምልክቶች መሻገሪያ "</string>
     <string name="action_undo">"ቀልብስ"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
@@ -337,15 +292,11 @@
     <string name="quest_parkingType_surface">"መኪና መቆመት ቦታ"</string>
     <string name="quest_parkingType_underground">"የመሬት ውስጥ ጋራዥ"</string>
     <string name="quest_parkingType_multiStorage">"የመኪና ማቆሚያ ጋራዥ"</string>
-    <string name="quest_toiletAvailability_name_title">"%s የመጸዳጃ ቤት አለው?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"የዚህ የኃይል ምሰሶ ቁሳቁስ ምንድነው?"</string>
     <string name="quest_powerPolesMaterial_wood">"እንጨት"</string>
     <string name="quest_powerPolesMaterial_metal">"ብረት"</string>
     <string name="quest_powerPolesMaterial_concrete">"ኮንክሪት"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"የፍጥነት ምክር ገደብ ብቻ…"</string>
-    <string name="quest_address_answer_house_name">"ከስም በስተቀር የቤት ቁጥር የለም…"</string>
     <string name="quest_address_house_name_label">"የቤት ስም"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"በጣሪያው ውስጥ ደረጃዎች"</string>
     <string name="quest_buildingLevels_levelsLabel2">"መደበኛ ደረጃዎች (ጣሪያውን ሳያካትት)"</string>
@@ -370,8 +321,6 @@
     <string name="action_reset">"ዳግም አስጀምር"</string>
     <string name="undo_confirm_positive">"ቀልብስ"</string>
     <string name="undo_confirm_negative">"ሰርዝ"</string>
-    <string name="quest_dietType_vegetarian_name_title">"%s በምግብ ዝርዝር ውስጥ የቬጀቴሪያን ምግብ አለ ?"</string>
-    <string name="quest_dietType_vegan_name_title">"%s በምግብ ዝርዝር ውስጥ የቪጋን ምግብ አለው?"</string>
     <string name="quest_hasFeature_only">"ብቻ"</string>
     <string name="quest_dietType_explanation_vegan">"የቪጋን ምግቦች ምንም የእንሰሳት ውጤቶች የሉም (ሥጋ ፣ ዓሳ ፣ የዶሮ እርባታ ፣ የወተት ተዋጽኦዎች ፣ እንቁላል ፣ ማር no የለም) ፡፡"</string>
     <string name="quest_dietType_explanation_vegetarian">"የቬጀቴሪያን ምግቦች ምንም ሥጋ ፣ አሳ ወይም የዶሮ እርባታ የላቸውም ፡፡"</string>
@@ -391,8 +340,6 @@
     <string name="quest_streetName_answer_noProperStreet_service2">"እንደ መንገድ ወይም የመኪና ማቆሚያ መተላለፊያ ያለ ነገር ነው"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"እርሻ ወይም የደን መንገድ ነው"</string>
     <string name="quest_streetName_answer_noName_noname">"ከላይ ከተዘረዘሩት ውስጥ አንዳቸውም ፣ በቀላሉ ስም የለውም"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"ይህ የመጸዳጃ ቤት ለአካለ ጉዳተኛ ወንበር ተደራሽ ነው?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"የመጸዳጃ ክፍሉ %s ለአካለ ጉዳተኛ ወንበር ተደራሽ ነው?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"መጸዳጃ ቤቱ ተደራሽ ከሆነ እንደዚህ ያለ የአካለ ጉዳተኞች ወንበር ምልክት ሊታይ ይችላል ፡፡
 በከፊል ማለት ተሽከርካሪ የአካለ ጉዳተኞች ወንበር ወደ መፀዳጃ ቤቱ ገብቶ ሊጠቀምበት ይችላል ማለት ነው ፣ ነገር ግን የእጅ መጥረጊያ ወይም የተስተካከለ የእጅ መታጠቢያ ገንዳ የለም ፡፡"</string>
     <string name="map_btn_create_note">"አዲስ ማስታወሻ ይፍጠሩ"</string>
@@ -402,17 +349,10 @@
     <string name="quest_surface_value_metal">"ብረት"</string>
     <string name="quest_cycleway_title2">"እዚህ የሳይክል መንገድ አለ? ምን አይነት?"</string>
     <string name="quest_bridge_structure_title">"የዚህ ድልድይ መዋቅር ምንድነው?"</string>
-    <string name="quest_internet_access_name_title">"ምን ዓይነት የበይነመረብ ግንኙነት %s ይሰጣል?"</string>
     <string name="quest_internet_access_wlan">"ዋይፋይ"</string>
     <string name="quest_internet_access_wired">"ባለገመድ (ላን)"</string>
     <string name="quest_internet_access_terminal">"ኮምፒተር ከበይነመረብ መዳረሻ ጋር"</string>
     <string name="quest_internet_access_no">"ግንኙነት የለም"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"የጎዳና መኪናው %s ን መጠለያ አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"ይህ የጎዳና መኪና ማቆሚያ መጠለያ አለው?"</string>
     <string name="quest_bench_backrest_title">"ይህ አግዳሚ ወንበር የኋላ መቀመጫ አለው?"</string>
     <string name="quest_bench_answer_picnic_table">"የሽርሽር ጠረጴዛ ነው"</string>
     <string name="quest_religion_for_place_of_worship_title">"በዚህ ቦታ የትኛው ሃይማኖት ነው የሚከናወነው?"</string>
@@ -431,27 +371,18 @@
     <string name="quest_religion_chinese_folk">"የቻይና ባሕላዊ ሃይማኖት"</string>
     <string name="quest_religion_for_wayside_shrine_title">"በዚህ መቅደስ ውስጥ የትኛው ሃይማኖት ይወከላል?"</string>
     <string name="quest_parking_fee_title">"እዚህ ለማቆም መክፈል አለብዎት?"</string>
-    <string name="quest_cycleway_value_lane_soft">"የሳይክል መንገድ (የተሰረዙ ምልክቶች)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ያልተቆረጠ ኮብልስቶን"</string>
-    <string name="quest_streetName_pedestrian_title">"የዚህ የእግረኛ ጎዳና ስም ማን ይባላል?"</string>
     <string name="quest_streetSurface_square_title">"ይህ አደባባይ ምን ገጽታ አለው?"</string>
-    <string name="quest_streetSurface_square_name_title">"%s አደባባዪ ምን ገጽ አለው?"</string>
     <string name="quest_fee_answer_hours">"በሰዓት እና በቀን ሚወሰን…"</string>
     <string name="quest_fee_add_times">"ጊዜዎችን ያክሉ"</string>
-    <string name="quest_fee_only_at_hours">"አዎ ፣ ግን ለ ..."</string>
-    <string name="quest_fee_not_at_hours">"አዎ ፣ ግን አይደለም…"</string>
-    <string name="quest_fee_hours_title">"በሚቀጥሉት ሰዐታት"</string>
-    <string name="quest_busStopName_title">"የዚህ አውቶቡስ ማቆሚያ ስሙ ማን ነው?"</string>
-    <string name="quest_tramStopName_title">"የዚህ የጎዳና መኪና ማቆሚያ ስም ማን ነው?"</string>
     <string name="quest_housenumber_multiple_numbers">"በርካታ የቤት ቁጥሮች አሉት"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"በኮማ የተለዩ የቤት ቁጥሮችን ወይም ክልሎችን በቀላሉ ማስገባት ይችላሉ ፡፡ \ n ለምሳሌ 1,3 ወይም 2-6 ፡፡"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"በኮማ የተለዩ የቤት ቁጥሮችን ወይም ክልሎችን በቀላሉ ማስገባት ይችላሉ ፡፡ \ n ለምሳሌ 1,3 ወይም 2–6 ፡፡"</string>
     <string name="quest_bicycle_parking_type_stand">"ቁም (የብስክሌት ፍሬም ይደግፋል)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"ተሽከርካሪ ወንበዴ (ጎማውን ብቻ ይደግፋል)"</string>
     <string name="quest_bicycle_parking_type_shed">"ቤት"</string>
     <string name="quest_bicycle_parking_type_locker">"መቆለፊያ"</string>
     <string name="quest_bicycle_parking_type_building">"ህንፃ"</string>
     <string name="quest_bicycle_parking_type_title">"ይህ ምን ዓይነት ብስክሌት መኪና ማቆሚያ ነው?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"የብስክሌት ጥቆማ መስመር"</string>
     <string name="quest_postboxCollectionTimes_title">"የዚህ የፖስታ ሣጥን መሰብሰብ ሰዐት ምንድን ነው?"</string>
     <string name="quest_collectionTimes_add_times">"የመሰብሰብ ጊዜን ያክሉ"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"ምንም ጊዜ አልተገለጸም"</string>
@@ -461,10 +392,6 @@
     <string name="quest_construction_generic_title">"ይህ መንገድ ተጠናቅቋል?"</string>
     <string name="quest_construction_building_title">"ይህ ህንፃ ተጠናቅቋል?"</string>
     <string name="questList_disabled_in_country">"በ %s ውስጥ በጭራሽ የማይታይ"</string>
-    <string name="quest_toiletAvailability_rest_area_title">"ይህ ማረፊያ ክፍል የመፀዳጃ ቤት መገልገያዎች አሉት?"</string>
-    <string name="quest_pathSurface_title_steps">"እነዚህ ደረጃዎች እዚህ ምን ገጽታ አላቸው?"</string>
-    <string name="quest_pathSurface_title_bridleway">"ይህ የትራንስፖርት መንገድ እዚህ ምን ገጽታ አለው?"</string>
-    <string name="quest_pathSurface_title">"ይህ መንገድ እዚህ ምን ዓይነት ገጽታ አለው?"</string>
     <string name="quest_select_hint_most_specific">"በጣም የሚስማማውን ይምረጡ:"</string>
     <string name="quest_generic_item_confirmation">"የበለጠ በትክክል መወሰን እንደማይችሉ እርግጠኛ ነዎት?"</string>
     <string name="privacy_html_third_party_quest_sources">"ለአንዳንድ ተልዕኮዎች ከሶስተኛ ወገኖች የተወሰኑ ተጨማሪ መረጃዎች ወርደዋል ፡፡ በተለይም የአንድ መንገድ ጥያቄ ኤ.ፒ.አይ. እንዲሁም በዌስትርኖርዶስት. De ላይ የተስተናገደ ነው ፣ ምናልባትም ለሁለቱም ዕጩዎች ሊሆኑ ይችላሉ ፡፡ &lt;/ p&gt;"</string>
@@ -543,24 +470,17 @@
     <string name="quest_buildingType_shrine">"መቅደስ"</string>
     <string name="quest_maxspeed_title_short2">"የዚህ ጎዳና ፍጥነት ገደብ ስንት ነው?"</string>
     <string name="quest_maxspeed_answer_sign">"ምልክት"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"(በቀስታ) ዞን ውስጥ ነው"</string>
     <string name="quest_maxspeed_answer_noSign2">"ምንም ምልክት የለም ፣ ነባሪዎች ይተገበራሉ"</string>
     <string name="quest_openingHours_no_sign">"የመክፈቻ ሰዓቶች የሉም"</string>
-    <string name="quest_maxspeed_name_title2">"እዚህ ለ %s የፍጥነት ወሰን ምንድነው?"</string>
     <string name="quest_buildingType_sports_centre">"የስፖርት ማዕከል"</string>
     <string name="quest_buildingType_toilets">"መጸዳጃ ቤቶች"</string>
     <string name="quest_maxspeed_sign_question">"የፍጥነት ገደቡን በምን ይገልጻል?"</string>
-    <string name="quest_playground_access_title">"ይህ የመጫወቻ ስፍራ በይፋ ተደራሽ ነው?"</string>
     <string name="quest_segregated_title">"የእግረኛ መንገድ እና ዑደት እንዴት እዚህ ተዘርግቷል?"</string>
     <string name="dialog_tutorial_upload">"ለውጦችዎን በእጅ ለመስቀል ፣ በሚመስል የመሳሪያ አሞሌ ውስጥ ያለውን አዝራር ይጠቀሙ።"</string>
     <string name="quest_segregated_separated">"አንዱ ከሌላው ተለያይቷል"</string>
     <string name="quest_segregated_mixed">"ብስክሌተኞች እና እግረኞች አንድ አይነት ቦታ ይጋራሉ"</string>
     <string name="quest_maxheight_title">"እዚህ የከፍታ ገደቡ ምን ያህል ነው?"</string>
-    <string name="quest_maxheight_parking_entrance_title">"የዚህ የመኪና ማቆሚያ መግቢያ ቁመት ምን ያህል ነው?"</string>
-    <string name="quest_maxheight_height_restrictor_title">"የዚህ ቁመት ገዳቢ ቁመት ምን ያህል ነው?"</string>
-    <string name="quest_maxheight_tunnel_title">"የዚህ ዋሻ ቁመት ገደብ ምንያህል ነዉ?"</string>
     <string name="quest_maxheight_answer_noSign">"ምንም ምልክት የለም…"</string>
     <string name="quest_maxheight_answer_noSign_question">"ረጅሙ የጭነት መኪናዎች እንኳን (ቢያንስ ወደ 4.5 ሜትር / 15 ጫማ ያህል) የሚያልፉበት ቦታ በቀላሉ አለ?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"ይህ ቁመት የማይታመን ይመስላል። ትክክል መሆኑን እርግጠኛ ነዎት?"</string>
@@ -570,18 +490,13 @@
     <string name="quest_noteDiscussion_hide2">"በ%1$s ተደብቋል ፣ %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;በማስታወሻ ላይ የሚያያይ Photosቸው ፎቶዎች በአገልጋዬ ላይ ተሰቅለው ያ ማስታወሻ ከተስተካከለ ከጥቂት ቀናት በኋላ ይሰረዛሉ፡፡ የእነሱ ሜታ-መረጃ ከመሰቀሉ በፊት ተገልጧል።&lt;/p&gt;"</string>
     <string name="action_deselect_all">"ሁሉንም አይምረጡ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"ሕንፃዎችን ጨምሮ ለምግብ ቤቶች ፣ ለካፌዎች ፣…"</string>
     <string name="quest_openingHours_timeSelect_next">"ቀጣይ"</string>
     <string name="quest_tracktype_title">"የዚህ ትራክ ወለል ጥንካሬ ምንድነው?"</string>
     <string name="quest_tracktype_grade1">"ጠንካራ"</string>
     <string name="quest_tracktype_grade4">"በአብዛኛው ለስላሳ"</string>
     <string name="quest_tracktype_grade5">"ለስላሳ"</string>
-    <string name="quest_building_underground_name_title">"%s ሙሉ በሙሉ ከመሬት በታች ነው?"</string>
     <string name="quest_building_underground_title">"ይህ ህንፃ ሙሉ በሙሉ ከመሬት በታች ነውን?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"በከፊል ማለት እሱ ጋር ለመድረስ ከአንድ እርምጃ በላይ የለም ማለት ነው ፡፡"</string>
     <string name="quest_wheelchairAccess_outside_title">"ይህ ቦታ ተሽከርካሪ ወንበር ተደራሽ ነው?"</string>
     <string name="quest_traffic_signals_button_title">"እነዚህ የትራፊክ መብራቶች የመራመጃ ምልክትን ለመጠየቅ አንድ አዝራር አላቸው?"</string>
@@ -590,20 +505,11 @@
     <string name="default_disabled_msg_maxspeed">"ይህ የፍለጋ አይነት በነባሪነት ተሰናክሏል ምክንያቱም ብዙውን ጊዜ የጎላውን ክፍል ብቻ ሳይሆን የፍጥነት ገደብ ምልክቶችን በሙሉ ጎዳናውን ለመፈተሽ ይጠየቃሉ። አንድ ነጠላ ጥያቄን ለመፍታት ይህ አንዳንድ ጊዜ በጣም ሰፊ ሊሆን ይችላል።"</string>
     <string name="pref_title_quests_restore_hidden">"የተደበቁ ተልዕኮዎችን ወደነበሩበት ይመልሱ"</string>
     <string name="restore_hidden_success">"%d የተደበቁ ተልዕኮዎች ተመልሰዎል"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"በደረጃ %s:"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="on_level">"በደረጃ %s"</string>
     <string name="underground">"ከመሬት በታች"</string>
     <string name="quest_sidewalk_value_yes">"የእግረኛ መንገድ"</string>
     <string name="quest_sidewalk_value_no">"የእግረኛ መንገድ የለም"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"እግረኞች እዚህ በዚህ መንገድ መጓዝ የተከለከሉ ናቸው?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"ይህ ጎዳና በሁለቱም በኩል የእግረኛ መንገድ እንደሌለው መለያ ተሰጥቶታል ፡፡ ከሁሉም በኋላ የእግረኛ መንገድ ካለ ግን እንደ የተለየ መንገድ ከታየ እባክዎን ‹የእግረኛ› ን ይመልሱ ፡፡"</string>
     <string name="quest_buildingType_title">"ይህ ምን ዓይነት ሕንፃ ነው?"</string>
     <string name="pref_title_theme_select">"ገጽታ ይምረጡ"</string>
@@ -611,25 +517,19 @@
     <string name="theme_light">"ብርሃን"</string>
     <string name="theme_dark">"ጨለማ"</string>
     <string name="theme_system_default">"ነባሪ ስርዐት"</string>
-    <string name="quest_placeName_title_name">"የዚህ ቦታ ስም ምንድን ነው? (%s)"</string>
     <string name="action_open_location">"ቦታን በሌላ መተግበሪያ ውስጥ ይክፈቱ"</string>
     <string name="map_application_missing">"ሌላ የካርታ መተግበሪያ አልተጫነም"</string>
     <string name="label_housenumber">"የቤት ቁጥር"</string>
     <string name="label_blocknumber">"የማገጃ ቁጥር"</string>
     <string name="quest_busStopShelter_covered">"ሙሉ ማቆምያ ተሸፍኗል"</string>
-    <string name="quest_ferry_pedestrian_name_title">"%s እግረኞችን ያጓጉዛል?"</string>
     <string name="quest_ferry_pedestrian_title">"ይህ የመርከብ መንገድ እግረኞችን ያጓጉዛል?"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"%s የሞተር ተሽከርካሪዎችን ያጓጉዛል?"</string>
     <string name="quest_ferry_motor_vehicle_title">"ይህ የጀልባ መንገድ የሞተር ተሽከርካሪዎችን ያጓጉዛል?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"ፎቶ ማከል ማስታወሻው የበለጠ ጠቃሚ ያደርገዋል።"</string>
-    <string name="quest_postboxCollectionTimes_name_title">"የዚህ የ%s ፖስታ ሳጥን የመሰብሰብያ ሰዐቶች ምንድን ናቸው?"</string>
     <string name="create_new_note_hint">"ማስታወሻውን በአከባቢው በሚነገረው ቋንቋ ወይም በሌላ በእንግሊዝኛ ይፃፉ ፡፡"</string>
     <string name="quest_leafType_title">"እዚህ ያሉት ዛፎች መርፌዎች ወይም ቅጠሎች አሏቸው?"</string>
     <string name="quest_leaf_type_needles">"መርፌዎች"</string>
     <string name="quest_leaf_type_broadleaved">"ሰፋ ያለ ቅርንጫፍ ያለዉ"</string>
     <string name="quest_leaf_type_mixed">"ሁለቱም ይገኛሉ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"እዚህ የመዞሪያው መንገድ ምን ይመስላል?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"በመንገዱ ላይ ይለያያል…"</string>
     <string name="quest_split_way_description">"በመንገድ ላይ የሚለያይ ከሆነ የመጀመሪያው እርምጃ መንገዱን መከፋፈል ነው ፡፡ ከዚያ በኋላ ጥያቄው ለእያንዳንዱ የተከፈለ ክፍል በተናጠል መልስ ሊሰጥ ይችላል ፡፡
@@ -637,22 +537,13 @@
     <string name="quest_split_way_tutorial">"መልሱ በሚለያይበት ቦታ (ቦታዎች) ላይ ለመከፋፈል ቦታ ላይ መታ ያድርጉ ፡፡ በተቻለ መጠን ትክክለኛ ለመሆን ይሞክሩ ፣ እንደተለመደው ማጉላት ይችላሉ።"</string>
     <string name="quest_split_way_too_imprecise">"እባክዎን የበለጠ ያጉሉ"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"እነዚህ በጣም ጥቂት ክፍፍሎች ናቸው። በኋላ ላይ ሁል ጊዜ መንገዱን የበለጠ መከፋፈል ይችላሉ።"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"እዚህ የእግረኛ መንገዱ ገጽ ምንድነው?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"መጸዳጃ ቤቱ በ%s ተሽከርካሪ ወንበር ላይ ተደራሽ ነው?"</string>
-    <string name="quest_tactilePaving_title_tram">"ይህ የጎዳና ላይ መቆሚያ የሚነካ ንጣፍ አለው?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"የመንገድ ላይ መኪናው%s ን የሚነካ ንጣፍ አለው?"</string>
     <string name="quest_maxweight_title">"እዚህ የክብደት ወሰን ስንትነዉ?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"ይህ ክብደት የማይታሰብ ይመስላል። ትክክል መሆኑን እርግጠኛ ነዎት?"</string>
     <string name="quest_maxweight_answer_other_sign">"ምልክት የተለየ ይመስላል…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"ማስታወሻ መተው ይፈልጋሉ? ፎቶ ያለው ማስታወሻ ሌሎች ካርታዎችን እንዲንከባከቡ ያስችላቸዋል።"</string>
-    <string name="quest_generalFee_title">"%s ለመግባት መክፈል ያስፈልግዎታል?"</string>
     <string name="quest_handrail_title">"እነዚህ ደረጃዎች የእጅ መወጣጫ አላቸውን?"</string>
-    <string name="quest_openingHours_no_name_title">"የዚህ ቦታ መክፈቻ ሰዓቶች ምንድናቸው? (%s)"</string>
     <string name="about_summary_current_version">"የአሁኑ ስሪት:%s"</string>
-    <string name="quest_postboxRef_title">"የዚህ የፖስታ ሳጥን የማጣቀሻ ቁጥር ምንድነው?"</string>
-    <string name="quest_postboxRef_name_title">"የዚህ የ%s ፖስታ ሳጥን የማጣቀሻ ቁጥር ምንድነው?"</string>
     <string name="quest_ref_answer_noRef">"ምንም የማጣቀሻ ቁጥር አይታይም…"</string>
     <string name="quest_street_side_puzzle_tutorial">"በምሳሌው ውስጥ ያለው መንገድ ሚስማር በሚገኝበት ቦታ ላይ በካርታው ላይ ካለው ጋር ተመሳሳይ ነው የሚሽከረከረው ፡፡"</string>
     <string name="quest_recycling_materials_title">"እንደገና ጥቅም ላይ ለማዋል እዚህ ምን ሊተው ይችላል?"</string>
@@ -675,37 +566,28 @@
     <string name="quest_recycling_glass_title">"እዚህ የመስታወት ጠርሙሶች እና ብልቃጦች ብቻ እንደገና ጥቅም ላይ ሊውሉ ይችላሉ ወይም ማንኛውንም ዓይነት ብርጭቆ?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"ብዙውን ጊዜ ተቀባይነት የማያገኙ የመስታወት ምሳሌዎች-ብርጭቆ ብርጭቆ ፣ የመስኮት መስታወቶች ፣ ብርጭቆ ዕቃዎች ፣ አምፖሎች ወይም መስተዋቶች ፡፡"</string>
     <string name="about_title_changelog">"የስሪት ታሪክ"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"ምን አዲስ ነገር አለ?"</string>
     <string name="about_title_rate">"ለዚህ መተግበሪያ ደረጃ ይስጡ"</string>
     <string name="about_summary_rate">"በ Google Play ላይ"</string>
     <string name="about_title_donate">"ለግስ"</string>
     <string name="about_summary_donate">"አድናቆትዎን ያሳዩ! ❤️"</string>
     <string name="about_description_donate">"ይህንን መተግበሪያ ለመደገፍ ስላሰቡ እናመሰግናለን! የአሁኑን መዋጮዎች ለመመልከት እና እራስዎን ለመለገስ በሚመለከታቸው መድረክ ላይ መታ ያድርጉ-"</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"በ%s ውስጥ የትኛው ሃይማኖት ይመለካል?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"በምትኩ እዚህ ይቃኙ"</string>
     <string name="confirmation_cancel_prev_download_cancel">"የአሁኑን ቅኝት ይቀጥሉ"</string>
     <string name="quest_buildingType_garages_description">"ለተለያዩ ባለቤቶች / ተከራዮች የተለዩ ቦታዎች"</string>
     <string name="quest_tourism_information_title">"ይህ ምን ዓይነት የቱሪስት መረጃ ነው?"</string>
-    <string name="quest_tourism_information_name_title">"ምን ዓይነት የቱሪስት መረጃ %s ነው?"</string>
     <string name="quest_tourism_information_office">"የቱሪስት መረጃ ቢሮ"</string>
     <string name="quest_tourism_information_board">"የመረጃ ሰሌዳ"</string>
     <string name="quest_tourism_information_terminal">"የመረጃ ተርሚናል"</string>
     <string name="quest_tourism_information_map">"ካርታ"</string>
     <string name="quest_tourism_information_guidepost">"መመሪያ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"ለአጠቃላይ ብክነት ነው"</string>
     <string name="quest_recycling_materials_answer_waste_description">"ስለዚህ ፣ ይህ እንደ ቆሻሻ የቤት ወይም የንግድ ቆሻሻ ያሉ ማናቸውም ቆሻሻዎች መያዣ ነው?"</string>
-    <string name="quest_accepts_cash_title">"%s የገንዘብ ክፍያ ይቀበላል?"</string>
     <string name="user_profile">"የግል ማህደሬ"</string>
     <string name="user_login">"ግባ"</string>
     <string name="user_logout">"ውጣ"</string>
     <string name="osm_profile">"OSM መገለጫ"</string>
     <string name="next">"ቀጣይ"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"እንሂድ!"</string>
     <string name="tutorial_welcome_to_osm">"ወደ OpenStreetMap እንኳን በደህና መጡ"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"ነፃው የዊኪ ዓለም ካርታ"</string>
@@ -714,8 +596,6 @@
     <string name="tutorial_solving_quests">"አንዴ ከተገኙ የጎደሉት ዝርዝሮች በካርታዎ ላይ እንደ ተልዕኮዎች ይታያሉ።
 
 እነሱን ወዲያውኑ መፍታት መጀመር እና በኋላ መልሶችንዎን ለማተም በመለያ መግባት ይችላሉ።"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"እርግጠኛ ባልሆኑበት በማንኛውም ጊዜ ሁል ጊዜ “መናገር አይቻልም” የሚል መልስ መስጠት እና ማስታወሻ መተው ይችላሉ ፡፡
 
 በመጨረሻም ፣ ደህንነትዎን ለመጠበቅ ያስታውሱ-ስለ አካባቢዎ ይጠንቀቁ እና ወደ የግል ንብረት አይግቡ ፡፡"</string>
@@ -754,11 +634,7 @@
     <string name="link_umap_description">"በፍጥነት በብጁ ውሂብ ካርታዎችን ይፍጠሩ እና በጣቢያዎ ውስጥ ያክሏቸው"</string>
     <string name="link_opnvkarte_description">"የህዝብ ማመላለሻ መንገዶች እና ማቆሚያዎች ካርታ"</string>
     <string name="link_pic4review_description">"የከተማዎን ሥዕሎች በመመልከት በቀላሉ ለ OSM ያበርክቱ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wiki_description">"ዊኪው ከ ‹OpenStreetMap› ጋር ለሚዛመዱ ነገሮች ሁሉ መነሻ ነጥብዎ ነው"</string>
-
-    <!-- Fuzzy -->
     <string name="link_learnosm_description">"ለ OpenStreetMap አዲስ ኖት? ይህ የጀማሪዎች መመሪያ ነው"</string>
     <string name="link_neis_one_description">"ለ OpenStreetMap አስተዋጽዖ አበርካቾች እጅግ በጣም ብዙ የስታቲስቲክስ ስብስቦች ፣ የት እና እንዴት እንደሰጡ ፣ በአጠገብዎ ያለ ሌላ ማን እና የመሪዎች ሰሌዳዎች"</string>
     <string name="link_welcome_mat_description">"ስለ OpenStreetMap አጠቃላይ መረጃ እና ከ OSM ጋር እንደ ድርጅት እንዴት እንደሚሰራ"</string>
@@ -776,8 +652,6 @@
     <string name="link_openinframap_description">"ኃይል ፣ ቴሌኮም ፣ ጋዝ እና የነዳጅ መሠረተ ልማት የሚያሳይ ካርታ"</string>
     <string name="link_openorienteeringmap_description">"ለስፖርት የሚታተሙ ካርታዎችን ይፍጠሩ"</string>
     <string name="link_openstreetbrowser_description">"የ OpenStreetMap ካርታ ባህርያትን የሚያሳይ ካርታ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"በ OpenStreetMap ዓለም ውስጥ ስለሚሆነው ነገር ሳምንታዊ የዜና ዘገባ"</string>
     <string name="link_figuregrounder_description">"የአንድ ከተማ ወይም የሰፈር ሥዕላዊ መግለጫ ፖስተሮችን ይፍጠሩ"</string>
     <string name="achievement_first_edit_title">"የመጀመሪያ ተልዕኮ ተፈፅሟል"</string>
@@ -803,8 +677,6 @@
     <string name="achievement_veg_title">"ለእንስሳት ደግ"</string>
     <string name="achievement_veg_solved_X">"ሥጋ ባለመብላት ለሚኖሩ ሰዎች አስደሳች የሆኑ %d ተልዕኮዎችን ፈትተዋል!"</string>
     <string name="achievement_car_title">"በጎዳናው ላይ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"ጎዳናውን በ OpenStreetMap ውስጥ በማስቀመጥ በመንገድ መሠረተ ልማት ላይ ዝርዝር ጉዳዮችን የሚያሻሽሉ የ%d ተልዕኮዎችን ፈትተዋል!"</string>
     <string name="unread_messages_message">"በገቢ መልዕክት ሳጥንዎ ውስጥ%d ያልተነበቡ መልዕክቶች አለዎት"</string>
     <string name="unread_messages_button">"የገቢ መልዕክት ሳጥን ይክፈቱ"</string>
@@ -828,12 +700,8 @@
 የነቃ"</string>
     <string name="user_profile_achievement_levels">"ስኬት
 ደረጃዎች"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"(ቤቱ) ቁጥር%s በየትኛው ጎዳና ላይ ነው?"</string>
     <string name="quest_address_street_no_named_streets">"እሱ በተሰየመ ጎዳና ውስጥ አይደለም"</string>
     <string name="quest_address_street_place_name_label">"የቦታ ስም"</string>
-    <string name="quest_address_street_description">"የእሱ የሆነውን መንገድ በካርታው ላይ ነካ ያድርጉ ወይም ከዚህ በታች ባለው መስክ ያለ አህጽሮተ ቃላት ያስገቡ-"</string>
     <string name="quest_recycling_type_cooking_oil">"የማብሰያ  ዘይት"</string>
     <string name="quest_recycling_type_engine_oil">"የሞተር ዘይት"</string>
     <string name="link_photon_description">"ጭጋጋማ ፍለጋን እና እንደ እርስዎ ዓይነት ፍለጋን ለይቶ ለብቻው ለኖሚናቲም ቅጥያ"</string>
@@ -853,47 +721,20 @@
     <string name="quest_board_type_map_title">"ካርታ ብቻ እና ካርታ ብቻ ነው?"</string>
     <string name="quest_board_type_map_description">"ቦርዱ ስለ አንድ የተወሰነ ርዕስ ከሆነ ፣ እባክዎ ካርታውንም ያካተተ ቢሆንም ይግለጹ። ለምሳሌ የህዝብ ማመላለሻ ቦርድ የአውቶቡስ መስመር ካርታ ሊኖረው ይችላል ፡፡ ርዕሰ ጉዳዩ ከሚገኙት መልሶች መካከል ካልተዘረዘረ እባክዎ በምትኩ ማስታወሻ ለመተው ያስቡ ፡፡"</string>
     <string name="quest_surface_detailed_answer_impossible">"ብዙ ገጽታዎች…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"ላዩን ለመለየት የማይቻል መሆኑን እርግጠኛ ነዎት? ንጣፉ የሚለወጥበትን መንገድ ለመቁረጥ የሚያስችልዎ “በመንገድ ላይ የተለያዩ” የመልስ አማራጭን ያስተውሉ ፡፡ አንድ ነጠላ ገጽ ካለ ግን እንደ መልስ የማይገኝ ከሆነ እባክዎ “ማለት አይቻልም” ይጠቀሙ ፡፡"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"እባክዎን እዚህ ላይ ምንነት በአጭሩ ይግለጹ ፣ ለምሳሌ “አሸዋማ ከኮብልስቶን ንጣፎች ጋር”። የጽሑፉ ርዝመት በ 255 ቁምፊዎች ብቻ ተወስኗል።"</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"ዓለም አቀፍ"</string>
     <string name="quest_buildingType_terrace2">"የረድፍ ቤቶች"</string>
-    <string name="at_housename">"የቤት ስም%s:"</string>
-    <string name="at_conscription_and_street_number">"የምዝገባ ቁጥር %1$s ፣ የአቅጣጫ ቁጥር %2$s"</string>
-    <string name="at_conscription_number">"የምዝገባ ቁጥር%s:"</string>
-    <string name="at_housenumber">"የቤት ቁጥር%s:"</string>
-    <string name="quest_openingHours_name_type_title">"የ%1$s (%2$s) የመክፈቻ ሰዓቶች ምንድናቸው?"</string>
-    <string name="quest_openingHours_resurvey_name_title">"እነዚህ የመክፈቻ ሰዓቶች ለ%s አሁንም ትክክል ናቸው?"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"እነዚህ የመክፈቻ ሰዓቶች ለ%1$s (%2$s) አሁንም ልክ ናቸው?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"እነዚህ የመክፈቻ ሰዓቶች አሁንም ትክክል ናቸው (%s)?"</string>
+    <string name="at_housename">"የቤት ስም%s"</string>
+    <string name="at_housenumber">"የቤት ቁጥር%s"</string>
     <string name="quest_openingHours_add_off_days">"የእረፍት ቀናትን ጨምር"</string>
     <string name="quest_openingHours_off_day">"እረፍት ቀን"</string>
     <string name="quest_openingHours_unspecified_range">"አልተገለጸም"</string>
     <string name="quest_cycleway_resurvey_title">"ይህ አሁንም የብስክሌት መንገድ ሁኔታ ነው እዚህ ነው?"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) የአካል ጉዳተኞች ተሽከርካሪ ወንበር ተደራሽ ነው?"</string>
     <string name="pref_title_resurvey_intervals">"የማሻሻያ ክፍተቶች"</string>
     <string name="resurvey_intervals_less_often">"ያነሰ ይጠይቁ"</string>
     <string name="resurvey_intervals_default">"ሲጀመር እንደነበረዉ"</string>
     <string name="resurvey_intervals_more_often">"ብዙ ጊዜ ይጠይቁ"</string>
-    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) የገንዘብ ክፍያ ይቀበላሉ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"የጎዳና ላይ  መኪና ማቆሚያ %s አግዳሚ ወንበር አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_title">"ይህ የጎዳና መኪና ማቆሚያ ወንበር አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_title">"ይህ የአውቶቡስ ማቆሚያ ወንበር አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_name_title">"የአውቶቡስ ማቆሚያ %s አግዳሚ ወንበር አለው?"</string>
-    <string name="quest_summit_register_title">"%s ሰሚት ላይ የስብሰባ ምዝገባ አለ?"</string>
     <string name="quest_is_defibrillator_inside_title">"ይህ defibrillator (AED) በሕንፃ ውስጥ ነው?"</string>
     <string name="about_title_translate">"ይህንን መተግበሪያ ለመተርጎም ያግዙ"</string>
     <string name="about_description_translate">"%1$s ተተርጉሟል %2$d%%"</string>
@@ -905,12 +746,8 @@
     <string name="quest_steps_incline_up">"በዚህ በኩል ወደላይ"</string>
     <string name="quest_step_count_title">"እዚህ ስንት ደረጃዎች አሉ?"</string>
     <string name="quest_traffic_signals_sound_title">"ለዓይነ ስውራን የድምፅ ምልክቶች እዚህ አሉ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"እነዚህ የትራፊክ መብራቶች በደህና መሻገር እንዲችሉ ለዓይነ ስውራን የእውቀት ምልክት አላቸውን?"</string>
     <string name="quest_traffic_signals_vibrate_description">"ፍንጭ-ብዙውን ጊዜ ይህ በትራፊክ መብራት ቁልፍ በታችኛው ክፍል ላይ የሚርገበገብ ቁልፍ ወይም የሚሽከረከር ሾጣጣ ነው ፡፡"</string>
-    <string name="quest_busStopRef_title">"የዚህ የአውቶቡስ ማቆሚያ ቁጥር ምን ያህል ነው?"</string>
-    <string name="quest_tramStopRef_title">"የዚህ የጎዳና መኪና ማቆሚያ የማጣቀሻ ቁጥር ምንድነው?"</string>
     <string name="quest_buildingType_bungalow_description2">"ትንሽ ገለልተኛ ቤት (የበጋ ቤት ፣ የበዓል ቤት ፣ ጎጆ…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"በዚህ የባቡር ሐዲድ መሻገሪያ ላይ ምን አይነት መሰናክሎች ጥቅም ላይ ይውላሉ?"</string>
     <string name="quest_railway_crossing_barrier_none2">"እንቅፋቶች የሉም"</string>
@@ -919,8 +756,6 @@
     <string name="quest_steps_ramp_bicycle">"የብስክሌት መወጣጫ"</string>
     <string name="quest_steps_ramp_stroller">"ጋሪ መወጣጫ"</string>
     <string name="quest_steps_ramp_wheelchair">"የአካለ ጉዳተኞች ወንበር መወጣጫ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"ለዚህ ኤቲኤም ባንክ ስሙ ማን ነው?"</string>
     <string name="quest_clothes_container_operator_title">"ለዚህ የልብስ ማስቀመጫ መዋጮ ማን ይቀበላል?"</string>
     <string name="quest_charging_station_operator_title">"የዚህ የኃይል መሙያ ጣቢያ ኦፕሬተር ማን ነው?"</string>
@@ -954,8 +789,6 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"ባለ ሁለት መንገድ የግራ መዞሪያ መስመር አለው"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"ይህ ትክክል ነው?"</string>
     <string name="quest_maxheight_below_bridge_title">"ከድልድዩ በታች ያለው የከፍታ ወሰን ስንት?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"ለሙሉ መንገድ የማይመለከት ከሆነ \"%s\" ን ለመመለስ ያስቡበት።"</string>
     <string name="quest_tactile_paving_kerb_title">"በዚህ ከርብ ላይ የሚነካ ንጣፍ እዚህ አለ?"</string>
     <string name="quest_kerb_height_title">"የዚህ ከርብ ቁመት ስንት ነው?"</string>
@@ -963,54 +796,31 @@
     <string name="quest_kerb_height_lowered">"ከመንገድ ወለል ትንሽ ከፍ ያለ"</string>
     <string name="quest_kerb_height_raised">"ከፍተኛ ከርብ"</string>
     <string name="quest_kerb_height_lowered_ramp">"የከርብ መወጣጫ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"በመኪና ትራፊክ ሊጠቀሙባቸው የሚችሉትን ምልክት የተደረገባቸውን ጠቅላላ መንገዶች (ሁለቱም አቅጣጫዎች) ይጥቀሱ ፡፡ ስለዚህ ፣ ብስክሌት እና የተለዩ የመኪና ማቆሚያ መንገዶች አይቆጠሩም።
 ማናቸውም መንገዶች ለአውቶቡሶች የተያዙ ከሆኑ እባክዎ በምትኩ ማስታወሻ ይተው ፡፡"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"በመኪና ትራፊክ የሚጠቀሙባቸውን ምልክት የተደረገባቸውን መንገዶች ቁጥር እዚህ ይግለጹ። ስለዚህ ፣ ብስክሌት እና የተለዩ የመኪና ማቆሚያ መንገዶች አይቆጠሩም።
 ማናቸውም መንገዶች ለአውቶቡሶች የተያዙ ከሆኑ እባክዎ በምትኩ ማስታወሻ ይተው ፡፡"</string>
     <string name="quest_surface_value_rock">"ድንጋይ "</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"ረዥም የጭነት መኪናዎች ሊያልፉ ይችላሉ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"ረዥም የጭነት መኪናዎች አያልፍም"</string>
-    <string name="quest_address_street_hint">"በካርታው ላይ መንገድ ይጫኑ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"ምልክት የተደረገበት መሻገሪያ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"ከመንገዱ ዳር መኪና ማቆም"</string>
     <string name="quest_parkingType_lane">"በመንገድ ላይ መኪና ማቆም"</string>
-    <string name="quest_existence_title">"አሁንም እዚህ አለ? (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s (%2$s) አሁንም እዚህ አለ?"</string>
     <string name="quest_tracktype_grade2a">"ጠንካራ ግን ያልተነጠፈ"</string>
     <string name="quest_tracktype_grade3a">"በአብዛኛው ጠንካራ"</string>
     <string name="quest_generic_answer_does_not_exist">"የለም…"</string>
     <string name="osm_element_gone_description">"ትንሽ ለየት ባለ ቦታ እንኳን እንደሌለ እርግጠኛ ነዎት? በሚጠራጠሩበት ጊዜ በምትኩ ማስታወሻ ይተዉ"</string>
     <string name="osm_element_gone_confirmation">"የለም"</string>
     <string name="leave_note">"ማስታወሻ ይተው"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"በምትኩ እዚህ ምን አለ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"ባዶ ነው"</string>
     <string name="quest_shop_gone_replaced_answer">"ኤ (n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"ምን ዐይነት ቦታ እንደሆነ እዚህ ጋር ይፃፉ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"ይህ ሱቅ ባዶ ሆኖ ቆይቷል ፡፡ አሁን እዚህ ምን አለ?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"የመስመሮች ቆጠራ በሁሉም ጎን ይለያል"</string>
-    <string name="quest_pitchSurface_title">"ይህ የስፖርት መስክ ምን ዓይነት ገጽታ አለው?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"ይህ የፍለጋ ዓይነት በነባሪነት ተሰናክሏል ምክንያቱም በአንዳንድ ክልሎች ጠቃሚ ስለማይሆን የዚህ አይነቱ ጥያቄ መልስ ለመስጠት ወደ ቦታው ሊገቡ ይችላሉ ፡፡"</string>
-    <string name="quest_dietType_kosher_name_title">"%s የኮሸር ምርቶችን ያቀርባል?"</string>
     <string name="quest_dietType_explanation_kosher">"የኮሸር ምርቶች በልዩ ህጎች መሰረት መዘጋጀት አለባቸው ፣ የ kashrut ማረጋገጫ ኤጄንሲዎች ምርቶችን በማክበር ምልክት ያደርጋሉ ፡፡"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"በጭራሽ ምንም ዑደት የለም"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"እንደተለመደው በምሳሌው በአንዱ በኩል መታ ያድርጉ ፣ ትክክለኛውን መልስ ይምረጡ እና ለሌላው ወገን እንዲሁ ያድርጉ ፡፡ ያሉትን አማራጮች ሁሉ ልብ ይበሉ-አንዳንድ ሁኔታዎች ግልጽ አይደሉም ፣ ለምሳሌ በሁለቱም አቅጣጫዎች ብስክሌተኞችን የሚፈቅድ እንደ አንድ መንገድ!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"ምንም የብስክሌት መተላለፊያ መንገድ እንደሌለ መምረጥ"</string>
     <string name="quest_construction_completed_at_known_date">"በቀን ይጠናቀቃል…"</string>
@@ -1018,11 +828,8 @@
     <string name="quest_surface_value_clay">"ሸክላ"</string>
     <string name="quest_surface_value_artificial_turf">"ሰው ሰራሽ ድንበር"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
-    <string name="quest_pitchSurface_title_track">"ይህ የስፖርት ትራክ ምን ገጽ አለው?"</string>
-    <string name="quest_bicycle_parking_access_title">"ማን እዚህ ብስክሌት ሊያቆም ይችላል ወይስ የተከለከለ ነው?"</string>
     <string name="quest_bicycle_parking_fee_title">"እዚህ ብስክሌት ለማቆም መክፈል አለብዎት?"</string>
     <string name="quest_buildingType_house_description2">"ያልተነጠለ የአንድ ቤተሰብ ቤት"</string>
-    <string name="quest_drinking_water_title">"ውሃው እዚህ የመጠጥ ነው? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"ለመጠጥ ደህንነቱ የተጠበቀ (የተፈረመ)"</string>
     <string name="quest_drinking_water_potable_unsigned">"ለመጠጥ ደህንነቱ የተጠበቀ(ያልተፈረመ)"</string>
     <string name="quest_drinking_water_not_potable_signed">"ለመጠጥ ደህና አይደለም (የተፈረመ)"</string>
@@ -1033,17 +840,12 @@
     <string name="quest_buildingType_fire_station">"የእሳት አደጋ መከላከያ ጣቢያ"</string>
     <string name="quest_recycling_type_beverage_cartons">"የመጠጥ ካርቶኖች ብቻ"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"የፕላስቲክ ጠርሙሶች እና ካርቶኖች ብቻ"</string>
-    <string name="quest_charging_station_name_capacity_title">"በዚህ መሙያ ጣቢያ (%s) ስንት መኪኖች በተመሳሳይ ጊዜ ሊሞሉ ይችላሉ?"</string>
     <string name="team_mode">"የቡድን ሁነታ"</string>
     <string name="team_mode_exit">"ከቡድን ሁነታ ውጣ"</string>
     <string name="team_mode_description">"በቡድን ውስጥ አንድ ላይ አንድ ላይ አንድ ቦታ ሲያስቀምጡ በሁሉም የቡድን አባላት መካከል ተልዕኮዎችን ለመከፋፈል የቡድን ሁኔታን ማስገባት ይችላሉ ፡፡"</string>
     <string name="team_mode_team_size_hint">"የቡድን ሞድ ከ 2 እስከ 12 ሰዎች ለሆኑ ሰዎች ይሠራል ፡፡"</string>
     <string name="team_mode_active">"የቡድን ሁነታ ንቁ ነው"</string>
     <string name="team_mode_deactivated">"የቡድን ሁነታ ጠፍቷል"</string>
-    <string name="quest_pitchLit_title">"የስፖርት ሜዳዉ በርቷል?"</string>
-    <string name="quest_pitchLit_title_track">"የስፖርት መሮጫዉ በርቷል?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"በትራፊክ መብራቶች ቁጥጥር የሚደረግበት መሻገሪያ"</string>
     <string name="undo_confirm_title2">"የሚከተለው አርትዖት ይቀልበስ?"</string>
     <string name="synced">"አንድ ሆኗል"</string>
@@ -1062,13 +864,10 @@
     <string name="delete_confirmation">"ሰርዝ"</string>
     <string name="delete_cache_dialog_message">"ተልዕኮዎችን ጨምሮ ሁሉንም የወረደ የካርታ ውሂብ ይሰረዝ?
 ከ %1$s ቀናት በኋላ መረጃው ታድሷል እና ጥቅም ላይ ያልዋለ ውሂብ በራስ-ሰር ከ %2$s ቀናት በኋላ ይሰረዛል።"</string>
-    <string name="quest_shop_type_title">"ምን ዓይነት ሱቅ %s ነው?"</string>
-    <string name="quest_shop_type_title_no_name">"ምን ዓይነት ሱቅ ነው?"</string>
     <string name="pref_background_type_select">"የጀርባ አይነት ይምረጡ"</string>
     <string name="background_type_map">"ካርታ"</string>
     <string name="background_type_aerial_esri">"አየር ላይ (በኤስሪ)"</string>
     <string name="quest_barrier_type_title">"ይህ ምን ዓይነት መሰናክል ነው?"</string>
-    <string name="quest_barrier_type_gate">"በር"</string>
     <string name="quest_barrier_type_lift_gate">"ድምፅ መሰናክል"</string>
     <string name="quest_barrier_type_bollard">"ቦላርድ (ዎች)"</string>
     <string name="quest_barrier_type_chain">"ሰንሰለት"</string>
@@ -1093,29 +892,11 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"ወደ መሳሳሚያ በር ተለውጧል"</string>
     <string name="quest_stile_type_title">"ይህ ምን ዓይነት መሰናክል ነው?"</string>
     <string name="quest_buildingType_semi_detached_description2">"የተዛመዱ ነጠላ ቤተሰቦች ቤት (ቶች)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"ተልዕኮ ምርጫ እና ቅድሚያ"</string>
     <string name="pref_subtitle_quests">"%1$d ከ %2$d ነቅቷል"</string>
-    <string name="quest_busStopLit_tram_name_title">"የጎዳና ላይ መኪና ማቆሚያ %s በርቷል?"</string>
-    <string name="quest_busStopLit_tram_title">"የጎዳና መኪና ማቆሚያዉ በርቷል?"</string>
-    <string name="quest_busStopLit_title">"ይህ የአውቶቡስ ማቆሚያ በርቷል?"</string>
-    <string name="quest_busStopLit_name_title">"የአውቶቡስ ማቆሚያ %s በርቷል?"</string>
     <string name="no_location_permission_warning_title">"የአካባቢ ፈቃድ"</string>
     <string name="quest_surface_value_woodchips">"የእንጨት ፍርፋሪ"</string>
     <string name="no_camera_app">"የካሜራ መተግበሪያ የለም"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_name_title">"%s የጎዳና መኪናው ማቆሚያ የቆሻሻ ቅርጫት አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_title">"ይህ የጎዳና መኪና ማቆሚያ የቆሻሻ ቅርጫት አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_title">"ይህ የአውቶቡስ ማቆሚያ የቆሻሻ ቅርጫት አለው?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_name_title">"አውቶቡስ ማቆሚያ %s የቆሻሻ ቅርጫት አለው?"</string>
     <string name="quest_bollard_type_title">"ይህ ምን ዓይነት ቦላርድ ነው?"</string>
     <string name="quest_bollard_type_rising">"እያደገ"</string>
     <string name="quest_bollard_type_flexible">"ተጣጣፊ"</string>
@@ -1124,4 +905,5 @@
     <string name="quest_camera_type_dome">"ግማሽ ክብ"</string>
     <string name="quest_camera_type_fixed">"ተስተካክሏል"</string>
     <string name="quest_camera_type_panning">"ማንጠፍ"</string>
+    <string name="quest_cycleway_value_sidewalk_dual">"በግልፅ የእግረኛ መንገድን መጋራት፣ ሁለቱም አቅጣጫዎች"</string>
 </resources>
