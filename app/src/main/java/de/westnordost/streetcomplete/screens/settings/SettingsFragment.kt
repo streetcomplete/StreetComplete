@@ -132,10 +132,10 @@ class SettingsFragment :
             log.text = Log.logLines.joinToString("\n")
             fun reloadText() {
                 log.text = when {
-                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.contains(filter) }
-                    filter.isNotBlank() -> Log.logLines.filter { line -> line.contains(filter) }
+                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.contains(filter, true) }
+                    filter.isNotBlank() -> Log.logLines.filter { line -> line.contains(filter, true) }
                     reversed -> Log.logLines.asReversed()
-                    else -> Log.logLines.asReversed()
+                    else -> Log.logLines
                 }.take(1000).joinToString("\n") // limit to 1000 lines for performance reasons
             }
             val reverseButton = Button(requireContext())

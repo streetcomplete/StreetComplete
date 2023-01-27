@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
@@ -85,8 +86,10 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         val hide = Button(context).apply {
             setText(R.string.quest_osmose_settings_items)
             setOnClickListener {
-                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings, false)
-                    .show()
+                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings) {
+                    osmoseDao.reloadIgnoredItems()
+                    OsmQuestController.reloadQuestTypes() // actually this is doing a bit more than necessary, but whatever
+                }.show()
             }
         }
         val layout = LinearLayout(context).apply {
@@ -111,6 +114,8 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
                 ).takeIf { it.isNotEmpty() }?.joinToString("%2C") ?: ""
                 prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString).apply()
                 downloadEnabled = levelString != ""
+                osmoseDao.reloadIgnoredItems()
+                OsmQuestController.reloadQuestTypes() // actually this is doing a bit more than necessary, but whatever
             }
             .create()
     }

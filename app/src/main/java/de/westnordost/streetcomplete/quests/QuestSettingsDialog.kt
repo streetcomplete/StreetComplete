@@ -18,7 +18,14 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 // when to call reloadQuestTypes: if whatever is changed is not read from settings every time, or if dynamic quest creation is enabled
 
 /** for setting values of a single key, comma separated */
-fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int, needsReload: Boolean = true): AlertDialog {
+fun singleTypeElementSelectionDialog(
+    context: Context,
+    prefs: SharedPreferences,
+    pref: String,
+    defaultValue: String,
+    messageId: Int,
+    onChanged: () -> Unit = { OsmQuestController.reloadQuestTypes() }
+): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
@@ -32,13 +39,11 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
-            if (needsReload)
-                OsmQuestController.reloadQuestTypes()
+            onChanged()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            if (needsReload)
-                OsmQuestController.reloadQuestTypes()
+            onChanged()
         }
         .create()
     dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
