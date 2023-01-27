@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.SHOULDER
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
@@ -99,7 +98,6 @@ private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_KERB -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
     PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
-    SHOULDER -> R.string.street_parking_allowed_on_shoulder
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
@@ -108,5 +106,4 @@ val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
     ON_KERB,
     STREET_SIDE,
     PAINTED_AREA_ONLY,
-    SHOULDER
 )

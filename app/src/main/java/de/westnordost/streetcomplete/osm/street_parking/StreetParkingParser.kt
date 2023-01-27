@@ -27,7 +27,6 @@ private fun createParkingForSide(tags: Map<String, String>, side: String): Stree
         "half_on_kerb" -> HALF_ON_KERB
         "on_kerb" -> ON_KERB
         "street_side" -> STREET_SIDE
-        "shoulder" -> SHOULDER
         "no" -> return NoStreetParking
         "separate" -> return StreetParkingSeparate
         "yes" -> return IncompleteStreetParking
@@ -80,7 +79,7 @@ private fun createParkingForSideOldSchema(tags: Map<String, String>, side: Strin
                 "on_kerb" -> ON_KERB
                 "painted_area_only" -> PAINTED_AREA_ONLY
                 "lay_by", "street_side" -> STREET_SIDE
-                "shoulder" -> SHOULDER
+
                 else -> null
             } ?: return UnknownStreetParking
 

@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.SHOULDER
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
@@ -96,14 +95,14 @@ private fun getStreetParkingStyle(element: Element): Style {
 }
 
 private val ParkingPosition.isDashed: Boolean get() = when (this) {
-    STREET_SIDE, PAINTED_AREA_ONLY, SHOULDER -> true
+    STREET_SIDE, PAINTED_AREA_ONLY -> true
     else -> false
 }
 
 private val ParkingPosition.color: String get() = when (this) {
-    ON_STREET, SHOULDER, PAINTED_AREA_ONLY -> Color.GOLD
-    HALF_ON_KERB ->                           Color.AQUAMARINE
-    ON_KERB, STREET_SIDE ->                   Color.BLUE
+    ON_STREET, PAINTED_AREA_ONLY -> Color.GOLD
+    HALF_ON_KERB ->                 Color.AQUAMARINE
+    ON_KERB, STREET_SIDE ->         Color.BLUE
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {

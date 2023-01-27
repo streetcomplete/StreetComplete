@@ -50,8 +50,7 @@ class StreetParkingCreatorKtTest {
             "lane" to ON_STREET,
             "half_on_kerb" to HALF_ON_KERB,
             "on_kerb" to ON_KERB,
-            "street_side" to STREET_SIDE,
-            "shoulder" to SHOULDER
+            "street_side" to STREET_SIDE
         )
 
         for ((orientationStr, orientationValue) in orientations) {

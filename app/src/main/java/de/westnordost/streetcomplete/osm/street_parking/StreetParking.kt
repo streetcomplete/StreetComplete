@@ -30,8 +30,7 @@ enum class ParkingPosition {
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
-    PAINTED_AREA_ONLY,
-    SHOULDER
+    PAINTED_AREA_ONLY
 }
 
 fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
@@ -45,14 +44,12 @@ private val StreetParking.isValid: Boolean get() = when (this) {
 }
 
 val StreetParking.estimatedWidthOnRoad: Float get() = when (this) {
-    is StreetParkingPositionAndOrientation ->
-        estimatedReservedWidth * position.estimatedWidthOnRoadFactor
+    is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * position.estimatedWidthOnRoadFactor
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
 val StreetParking.estimatedWidthOffRoad: Float get() = when (this) {
-    is StreetParkingPositionAndOrientation ->
-        estimatedReservedWidth * (1 - position.estimatedWidthOnRoadFactor)
+    is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * (1 - position.estimatedWidthOnRoadFactor)
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
@@ -61,14 +58,6 @@ private val ParkingOrientation.estimatedWidth: Float get() = when (this) {
     DIAGONAL -> 3f
     PERPENDICULAR -> 4f
 }
-
-private val StreetParkingPositionAndOrientation.estimatedReservedWidth: Float get() =
-    /* we assume that in the case that cars are (merely) allowed to use the breakdown lane for
-       parking, that also shoulder=* is set. So, the reserved width for parking is 0 as otherwise
-       we would count the width of the shoulder twice.
-     */
-    if (position == SHOULDER) 0f
-    else orientation.estimatedWidth
 
 private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this) {
     ON_STREET -> 1f

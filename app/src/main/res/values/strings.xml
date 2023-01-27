@@ -1637,7 +1637,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="street_parking_on_kerb">"Adjacent to street"</string>
     <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
     <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
-    <string name="street_parking_allowed_on_shoulder">"Parking on breakdown lane allowed"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
     <string name="street_parking_no">No parking here / Not allowed</string>
     <string name="street_parking_prohibited">No parking</string>

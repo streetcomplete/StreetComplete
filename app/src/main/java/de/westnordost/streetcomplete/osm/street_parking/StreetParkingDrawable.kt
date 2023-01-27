@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.SHOULDER
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
 import kotlin.math.round
@@ -126,11 +125,6 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             DIAGONAL -> R.drawable.ic_street_marked_parking_diagonal
             PERPENDICULAR -> R.drawable.ic_street_marked_parking_perpendicular
         }
-        SHOULDER -> when (orientation) {
-            PARALLEL -> R.drawable.ic_street_shoulder
-            DIAGONAL -> R.drawable.ic_street_shoulder_broad
-            PERPENDICULAR -> R.drawable.ic_street_shoulder_broad
-        }
         null -> null
     }
 
@@ -153,11 +147,6 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             PARALLEL -> listOf(0, 3)
             DIAGONAL -> listOf(0, 1, 4, 5)
             PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
-        }
-        SHOULDER -> when (orientation) {
-            PARALLEL -> listOf(1, 2, 3)
-            DIAGONAL -> listOf(1, 2, 4, 5)
-            PERPENDICULAR -> listOf(1, 2, 3, 5, 6, 7)
         }
         else -> emptyList()
     }
