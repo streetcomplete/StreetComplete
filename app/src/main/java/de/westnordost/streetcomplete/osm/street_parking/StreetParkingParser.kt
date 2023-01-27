@@ -22,9 +22,17 @@ fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParki
 /** Parsing new schema:
  *  https://wiki.openstreetmap.org/wiki/Street_parking */
 private fun createParkingForSide(tags: Map<String, String>, side: String): StreetParking? {
+    val isStaggered = tags["parking:$side:staggered"] == "yes"
+    val markings = tags["parking:$side:markings"]
+    val hasMarkings = markings != "no" && markings != null
+
     val position = when (tags["parking:$side"]) {
-        "lane" -> ON_STREET
-        "half_on_kerb" -> HALF_ON_STREET
+        "lane" -> when {
+            isStaggered && hasMarkings -> PAINTED_AREA_ONLY
+            isStaggered -> STAGGERED_ON_STREET
+            else -> ON_STREET
+        }
+        "half_on_kerb" -> if (isStaggered) STAGGERED_HALF_ON_STREET else HALF_ON_STREET
         "on_kerb" -> OFF_STREET
         "street_side" -> STREET_SIDE
         "no" -> return NoStreetParking
@@ -96,6 +104,8 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     expandSidesTag("parking:lane", "perpendicular", result, true)
     expandSidesTag("parking", "", result, false)
     expandSidesTag("parking", "orientation", result, false)
+    expandSidesTag("parking", "staggered", result, false)
+    expandSidesTag("parking", "markings", result, false)
     return result
 }
 

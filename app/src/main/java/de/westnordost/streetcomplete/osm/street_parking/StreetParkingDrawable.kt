@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
@@ -106,11 +108,11 @@ class StreetParkingDrawable(
 /** drawable res id of the street in the background */
 private fun getStreetDrawableResId(orientation: ParkingOrientation, position: ParkingPosition?): Int? =
     when (position) {
-        ON_STREET -> when (orientation) {
+        ON_STREET, STAGGERED_ON_STREET -> when (orientation) {
             PARALLEL -> R.drawable.ic_street
             else -> R.drawable.ic_street_broad
         }
-        HALF_ON_STREET -> when (orientation) {
+        HALF_ON_STREET, STAGGERED_HALF_ON_STREET -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_narrow
             else -> R.drawable.ic_street
         }
@@ -143,10 +145,10 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             DIAGONAL -> listOf(2, 3)
             PERPENDICULAR -> listOf(0, 3, 4, 7)
         }
-        PAINTED_AREA_ONLY -> when (orientation) {
+        PAINTED_AREA_ONLY, STAGGERED_ON_STREET, STAGGERED_HALF_ON_STREET -> when (orientation) {
             PARALLEL -> listOf(0, 3)
-            DIAGONAL -> listOf(0, 1, 4, 5)
-            PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
+            DIAGONAL -> listOf(0, 1, 5)
+            PERPENDICULAR -> listOf(0, 1, 6, 7)
         }
         else -> emptyList()
     }

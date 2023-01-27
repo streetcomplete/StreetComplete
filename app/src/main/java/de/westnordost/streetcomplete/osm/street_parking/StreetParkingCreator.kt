@@ -21,6 +21,7 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     tags.expandSides("parking", includeBareTag = false)
     tags.expandSides("parking", "orientation", includeBareTag = false)
     tags.expandSides("parking", "markings", includeBareTag = false)
+    tags.expandSides("parking", "staggered", includeBareTag = false)
 
     // parking:<left/right>
     left?.applyTo(tags, "left")
@@ -29,6 +30,7 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     tags.mergeSides("parking")
     tags.mergeSides("parking", "orientation")
     tags.mergeSides("parking", "markings")
+    tags.mergeSides("parking", "staggered")
 
     if (!tags.hasChanges || tags.hasCheckDateForKey("parking")) {
         tags.updateCheckDateForKey("parking")
@@ -50,9 +52,15 @@ private fun StreetParking.applyTo(tags: Tags, side: String) {
         if (position == PAINTED_AREA_ONLY) {
             tags["parking:$side:markings"] = "yes"
         }
+        if (position.isStaggered) {
+            tags["parking:$side:staggered"] = "yes"
+        } else {
+            tags.remove("parking:$side:staggered")
+        }
     } else {
         tags.remove("parking:$side:orientation")
         tags.remove("parking:$side:markings")
+        tags.remove("parking:$side:staggered")
     }
 }
 
@@ -65,11 +73,14 @@ private val StreetParking.osmPositionValue get() = when (this) {
 }
 
 private val ParkingPosition.osmValue get() = when (this) {
-    ON_STREET,
-    PAINTED_AREA_ONLY -> "lane"
-    HALF_ON_STREET ->    "half_on_kerb"
-    OFF_STREET ->        "on_kerb"
-    STREET_SIDE ->       "street_side"
+    ON_STREET, STAGGERED_ON_STREET, PAINTED_AREA_ONLY ->
+        "lane"
+    HALF_ON_STREET, STAGGERED_HALF_ON_STREET ->
+        "half_on_kerb"
+    OFF_STREET ->
+        "on_kerb"
+    STREET_SIDE ->
+        "street_side"
 }
 
 private val ParkingOrientation.osmValue get() = when (this) {

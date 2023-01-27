@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -161,6 +155,101 @@ class StreetParkingParserKtTest {
                 createStreetParkingSides(mapOf("parking" to str))
             )
         }
+    }
+
+    @Test fun `staggered parking`() {
+
+        val values = listOf(
+            "lane" to STAGGERED_ON_STREET,
+            "half_on_kerb" to STAGGERED_HALF_ON_STREET,
+        )
+
+        for ((str, value) in values) {
+            val parking = StreetParkingPositionAndOrientation(PARALLEL, value)
+
+            assertEquals(
+                LeftAndRightStreetParking(parking, null),
+                createStreetParkingSides(mapOf(
+                    "parking:left" to str,
+                    "parking:left:orientation" to "parallel",
+                    "parking:left:staggered" to "yes"
+                ))
+            )
+
+            assertEquals(
+                LeftAndRightStreetParking(null, parking),
+                createStreetParkingSides(mapOf(
+                    "parking:right" to str,
+                    "parking:right:orientation" to "parallel",
+                    "parking:right:staggered" to "yes"
+                ))
+            )
+
+            assertEquals(
+                LeftAndRightStreetParking(parking, parking),
+                createStreetParkingSides(mapOf(
+                    "parking:both" to str,
+                    "parking:both:orientation" to "parallel",
+                    "parking:both:staggered" to "yes"
+                ))
+            )
+
+            assertEquals(
+                LeftAndRightStreetParking(parking, parking),
+                createStreetParkingSides(mapOf(
+                    "parking:left" to str,
+                    "parking:right" to str,
+                    "parking:both:orientation" to "parallel",
+                    "parking:both:staggered" to "yes"
+                ))
+            )
+        }
+    }
+
+    @Test fun `painted area only parking`() {
+
+        val parking = StreetParkingPositionAndOrientation(PARALLEL, PAINTED_AREA_ONLY)
+
+        assertEquals(
+            LeftAndRightStreetParking(parking, null),
+            createStreetParkingSides(mapOf(
+                "parking:left" to "lane",
+                "parking:left:orientation" to "parallel",
+                "parking:left:staggered" to "yes",
+                "parking:left:markings" to "yes"
+            ))
+        )
+
+        assertEquals(
+            LeftAndRightStreetParking(null, parking),
+            createStreetParkingSides(mapOf(
+                "parking:right" to "lane",
+                "parking:right:orientation" to "parallel",
+                "parking:right:staggered" to "yes",
+                "parking:right:markings" to "yes"
+            ))
+        )
+
+        assertEquals(
+            LeftAndRightStreetParking(parking, parking),
+            createStreetParkingSides(mapOf(
+                "parking:both" to "lane",
+                "parking:both:orientation" to "parallel",
+                "parking:both:staggered" to "yes",
+                "parking:both:markings" to "yes"
+            ))
+        )
+
+        assertEquals(
+            LeftAndRightStreetParking(parking, parking),
+            createStreetParkingSides(mapOf(
+                "parking:left" to "lane",
+                "parking:right" to "lane",
+                "parking:both:orientation" to "parallel",
+                "parking:both:staggered" to "yes",
+                "parking:both:markings" to "yes"
+            ))
+        )
     }
 
     @Test fun `unknown orientation leads to unknown`() {

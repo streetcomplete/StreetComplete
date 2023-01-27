@@ -119,7 +119,7 @@ class StreetParkingCreatorKtTest {
         }
     }
 
-    @Test fun `apply separate parking answer`() {
+    @Test fun `apply separate parking`() {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(StreetParkingSeparate, StreetParkingSeparate),
@@ -137,7 +137,7 @@ class StreetParkingCreatorKtTest {
         )
     }
 
-    @Test fun `apply painted area only answer`() {
+    @Test fun `apply painted area only`() {
         val parking = StreetParkingPositionAndOrientation(PARALLEL, PAINTED_AREA_ONLY)
         verifyAnswer(
             mapOf(),
@@ -146,6 +146,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:both", "lane"),
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
                 StringMapEntryAdd("parking:both:markings", "yes"),
+                StringMapEntryAdd("parking:both:staggered", "yes"),
             )
         )
         verifyAnswer(
@@ -155,6 +156,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:left", "lane"),
                 StringMapEntryAdd("parking:left:orientation", "parallel"),
                 StringMapEntryAdd("parking:left:markings", "yes"),
+                StringMapEntryAdd("parking:left:staggered", "yes"),
             )
         )
         verifyAnswer(
@@ -164,8 +166,48 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:right", "lane"),
                 StringMapEntryAdd("parking:right:orientation", "parallel"),
                 StringMapEntryAdd("parking:right:markings", "yes"),
+                StringMapEntryAdd("parking:right:staggered", "yes"),
             )
         )
+    }
+
+    @Test fun `apply staggered parking on road`() {
+
+        val positions = listOf(
+            "lane" to STAGGERED_ON_STREET,
+            "half_on_kerb" to STAGGERED_HALF_ON_STREET
+        )
+        for ((positionStr, positionValue) in positions) {
+            val parking = StreetParkingPositionAndOrientation(PARALLEL, positionValue)
+
+            verifyAnswer(
+                mapOf(),
+                LeftAndRightStreetParking(parking, parking),
+                arrayOf(
+                    StringMapEntryAdd("parking:both", positionStr),
+                    StringMapEntryAdd("parking:both:orientation", "parallel"),
+                    StringMapEntryAdd("parking:both:staggered", "yes"),
+                )
+            )
+            verifyAnswer(
+                mapOf(),
+                LeftAndRightStreetParking(parking, null),
+                arrayOf(
+                    StringMapEntryAdd("parking:left", positionStr),
+                    StringMapEntryAdd("parking:left:orientation", "parallel"),
+                    StringMapEntryAdd("parking:left:staggered", "yes"),
+                )
+            )
+            verifyAnswer(
+                mapOf(),
+                LeftAndRightStreetParking(null, parking),
+                arrayOf(
+                    StringMapEntryAdd("parking:right", positionStr),
+                    StringMapEntryAdd("parking:right:orientation", "parallel"),
+                    StringMapEntryAdd("parking:right:staggered", "yes"),
+                )
+            )
+        }
     }
 
     @Test fun `apply parallel parking answer on both sides`() {
@@ -374,6 +416,24 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryDelete("parking:both:orientation", "parallel"),
                 StringMapEntryDelete("parking:both:markings", "yes"),
                 StringMapEntryModify("parking:both", "half_on_kerb", "no"),
+            )
+        )
+    }
+
+    @Test fun `clean up staggered tagging if new parking is not staggered`() {
+        val parking = StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET)
+        verifyAnswer(
+            mapOf(
+                "parking:both:orientation" to "parallel",
+                "parking:both" to "half_on_kerb",
+                "parking:both:staggered" to "yes"
+            ),
+            LeftAndRightStreetParking(parking, parking),
+            arrayOf(
+                StringMapEntryModify("parking:both:orientation", "parallel", "parallel"),
+                StringMapEntryModify("parking:both", "half_on_kerb", "half_on_kerb"),
+
+                StringMapEntryDelete("parking:both:staggered", "yes"),
             )
         )
     }
