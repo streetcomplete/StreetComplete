@@ -44,12 +44,26 @@
         android:layout_marginStart="@dimen/dialog_horizontal_margin"
         android:layout_toEndOf="@id/icon"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        app:layout_constraintBottom_toBottomOf="@id/icon"
+        app:layout_constraintBottom_toTopOf="@id/titleHintText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="@id/icon"
         tools:ignore="RtlSymmetry"
         tools:text="@string/quest_address_title" />
+
+    <TextView
+        android:id="@+id/titleHintText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_horizontal_margin"
+        android:layout_toEndOf="@id/icon"
+        android:textAppearance="@style/TextAppearance.Title.Hint"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        tools:ignore="RtlSymmetry"
+        tools:text="Building" />
 
     <View
         android:id="@+id/divider"
