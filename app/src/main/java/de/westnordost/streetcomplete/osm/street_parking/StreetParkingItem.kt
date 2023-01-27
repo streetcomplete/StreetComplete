@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
@@ -94,16 +94,16 @@ private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsi
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_STREET -> R.string.street_parking_on_street
-    HALF_ON_KERB -> R.string.street_parking_half_on_kerb
-    ON_KERB -> R.string.street_parking_on_kerb
+    HALF_ON_STREET -> R.string.street_parking_half_on_kerb
+    OFF_STREET -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
     PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
     ON_STREET,
-    HALF_ON_KERB,
-    ON_KERB,
+    HALF_ON_STREET,
+    OFF_STREET,
     STREET_SIDE,
     PAINTED_AREA_ONLY,
 )

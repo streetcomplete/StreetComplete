@@ -24,8 +24,8 @@ fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParki
 private fun createParkingForSide(tags: Map<String, String>, side: String): StreetParking? {
     val position = when (tags["parking:$side"]) {
         "lane" -> ON_STREET
-        "half_on_kerb" -> HALF_ON_KERB
-        "on_kerb" -> ON_KERB
+        "half_on_kerb" -> HALF_ON_STREET
+        "on_kerb" -> OFF_STREET
         "street_side" -> STREET_SIDE
         "no" -> return NoStreetParking
         "separate" -> return StreetParkingSeparate
@@ -75,8 +75,8 @@ private fun createParkingForSideOldSchema(tags: Map<String, String>, side: Strin
 
             val parkingPosition = when (parkingPositionValue) {
                 "on_street" -> ON_STREET
-                "half_on_kerb" -> HALF_ON_KERB
-                "on_kerb" -> ON_KERB
+                "half_on_kerb" -> HALF_ON_STREET
+                "on_kerb" -> OFF_STREET
                 "painted_area_only" -> PAINTED_AREA_ONLY
                 "lay_by", "street_side" -> STREET_SIDE
 

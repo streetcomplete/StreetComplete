@@ -48,8 +48,8 @@ class StreetParkingCreatorKtTest {
 
         val positions = listOf(
             "lane" to ON_STREET,
-            "half_on_kerb" to HALF_ON_KERB,
-            "on_kerb" to ON_KERB,
+            "half_on_kerb" to HALF_ON_STREET,
+            "on_kerb" to OFF_STREET,
             "street_side" to STREET_SIDE
         )
 
@@ -172,8 +172,8 @@ class StreetParkingCreatorKtTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB),
-                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET),
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:both", "half_on_kerb"),
@@ -187,7 +187,7 @@ class StreetParkingCreatorKtTest {
             mapOf(),
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(PARALLEL, ON_STREET),
-                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
@@ -217,7 +217,7 @@ class StreetParkingCreatorKtTest {
             mapOf(),
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(DIAGONAL, STREET_SIDE),
-                StreetParkingPositionAndOrientation(PERPENDICULAR, ON_KERB)
+                StreetParkingPositionAndOrientation(PERPENDICULAR, OFF_STREET)
             ),
             arrayOf(
                 StringMapEntryAdd("parking:left", "street_side"),
@@ -314,8 +314,8 @@ class StreetParkingCreatorKtTest {
                 "parking:right" to "on_kerb",
             ),
             LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB),
-                StreetParkingPositionAndOrientation(PARALLEL, ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET),
+                StreetParkingPositionAndOrientation(PARALLEL, OFF_STREET)
             ),
             arrayOf(
                 StringMapEntryModify("parking:both:orientation", "parallel", "parallel"),

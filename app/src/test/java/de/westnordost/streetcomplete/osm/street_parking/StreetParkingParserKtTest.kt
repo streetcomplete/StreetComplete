@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.osm.street_parking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
@@ -57,8 +57,8 @@ class StreetParkingParserKtTest {
 
         val positions = listOf(
             "lane" to ON_STREET,
-            "half_on_kerb" to HALF_ON_KERB,
-            "on_kerb" to ON_KERB,
+            "half_on_kerb" to HALF_ON_STREET,
+            "on_kerb" to OFF_STREET,
             "street_side" to STREET_SIDE,
         )
 
@@ -221,8 +221,8 @@ class StreetParkingParserKtTest {
 
         val positions = listOf(
             "on_street" to ON_STREET,
-            "half_on_kerb" to HALF_ON_KERB,
-            "on_kerb" to ON_KERB,
+            "half_on_kerb" to HALF_ON_STREET,
+            "on_kerb" to OFF_STREET,
             "street_side" to STREET_SIDE,
             "lay_by" to STREET_SIDE,
             "painted_area_only" to PAINTED_AREA_ONLY,
@@ -293,7 +293,7 @@ class StreetParkingParserKtTest {
         assertEquals(
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(PERPENDICULAR, STREET_SIDE),
-                StreetParkingPositionAndOrientation(PERPENDICULAR, HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PERPENDICULAR, HALF_ON_STREET)
             ),
             createStreetParkingSides(mapOf(
                 "parking:lane:both" to "perpendicular",
@@ -307,7 +307,7 @@ class StreetParkingParserKtTest {
         assertEquals(
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(PERPENDICULAR, STREET_SIDE),
-                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_KERB)
+                StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET)
             ),
             createStreetParkingSides(mapOf(
                 "parking:lane:left" to "perpendicular",

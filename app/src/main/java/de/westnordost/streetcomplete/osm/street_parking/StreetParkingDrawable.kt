@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
@@ -110,11 +110,11 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             PARALLEL -> R.drawable.ic_street
             else -> R.drawable.ic_street_broad
         }
-        HALF_ON_KERB -> when (orientation) {
+        HALF_ON_STREET -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_narrow
             else -> R.drawable.ic_street
         }
-        ON_KERB -> R.drawable.ic_street_very_narrow
+        OFF_STREET -> R.drawable.ic_street_very_narrow
         STREET_SIDE -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_parking_bays_parallel
             DIAGONAL -> R.drawable.ic_street_parking_bays_diagonal
