@@ -52,6 +52,8 @@
     <!-- display settings -->
     <string name="pref_screen_display">Display</string>
     <string name="pref_3d_buildings_title">Show 3D buildings</string>
+    <string name="pref_way_direction">Show direction of ways</string>
+    <string name="pref_way_direction_summary">Displays arrows on highlighted lines when opening a quest. Useful e.g. when adding oneway.</string>
     <string name="pref_quest_geometries_title">Display quest geometries</string>
     <string name="pref_quest_geometries_summary">Highlight ways and areas that have quests</string>
     <string name="pref_offset_fix_title">Remove quest marker offsets</string>
@@ -310,7 +312,12 @@
     <string name="quest_tree_error">Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note.</string>
     <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the data management settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
     <string name="default_disabled_msg_ee">Quests added in SCEE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.</string>
-
+    <string name="quest_railwayPlatformRef_title">What track number is here?</string>
+    <string name="quest_railwayPlatformRef_abc">ABC</string>
+    <string name="quest_railwayPlatformRef_message">Which tag to use for tracks accessible from this platform? According to OSM wiki, local_ref may be preferable, but actual usage is mostly ref.</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Note that which tag to use best is not 100% clear and thus left to the user. Choose between ref (default) and local_ref in the quest settings.\n
+    If there are two tracks along a platform, use semicolon separated values, e.g. 2;3
+    </string>
 
     <!-- additional strings for quests available in StreetComplete -->
     <!-- should be very similar to normal SC quest_smoothness_square_title -->

@@ -98,6 +98,7 @@ object Prefs {
     const val CREATE_EXTERNAL_QUESTS = "create_external_quests"
     const val SAVE_PHOTOS = "save_photos"
     const val EXPERT_MODE = "expert_mode"
+    const val SHOW_WAY_DIRECTION = "show_way_direction"
 
     enum class Autosync {
         ON, WIFI, OFF

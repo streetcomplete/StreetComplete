@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.SharedPreferences
 import android.graphics.RectF
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.mapzen.tangram.MapData
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.screenAreaContains
@@ -17,7 +20,7 @@ import kotlin.math.roundToLong
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val ctrl: KtMapController) {
+class FocusGeometryMapComponent(private val ctrl: KtMapController, private val prefs: SharedPreferences) {
 
     private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)
 
@@ -29,7 +32,21 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     fun showGeometry(geometry: ElementGeometry) {
-        geometryLayer.setFeatures(geometry.toTangramGeometry())
+        // show way direction arrows if the user wants
+        if (geometry is ElementPolylinesGeometry && prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false))
+            geometryLayer.setFeatures(geometry.toTangramGeometry(mapOf("arrows" to "yes")))
+        else
+            geometryLayer.setFeatures(geometry.toTangramGeometry())
+    }
+
+    // as above, but shows more than 1 geometry
+    fun showGeometries(geometries: Collection<ElementGeometry>) {
+        geometryLayer.setFeatures(geometries.map {
+            if (it is ElementPolylinesGeometry && prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false))
+                it.toTangramGeometry(mapOf("arrows" to "yes"))
+            else
+                it.toTangramGeometry()
+        }.flatten())
     }
 
     /** Hide all shown geometry */

@@ -8,6 +8,13 @@
         android:persistent="true" />
 
     <SwitchPreference
+        android:key="show_way_direction"
+        android:title="@string/pref_way_direction"
+        android:summary="@string/pref_way_direction_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="quest_geometries"
         android:title="@string/pref_quest_geometries_title"
         android:summary="@string/pref_quest_geometries_summary"

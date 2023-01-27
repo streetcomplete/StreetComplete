@@ -9,6 +9,8 @@
   <li>Allow deleting nodes in overlays</li>
   <li>"External quest" renamed to "Custom quest", as Osmose quest uses an external source too</li>
   <li>Add artwork type quest</li>
+  <li>Add railway platform ref quest</li>
+  <li>Allow showing direction of highlighted way</li>
   <li>Other small fixes and improvements</li>
   <li>Dangerous editing capabilities (compared to normal SC) are now hidden unless an "expert mode" setting is enabled</li>
   </ul>

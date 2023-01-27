@@ -5,13 +5,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractExternalSourceQuestForm
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -80,9 +84,6 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     override val contentLayoutResId = R.layout.quest_osmose_custom_quest
     private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
 
-    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
-        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val key = questKey as ExternalSourceQuestKey
@@ -101,8 +102,20 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     }
 
     private fun highlightElements() {
-        issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }.mapNotNull { e -> mapDataSource.getGeometry(e.type, e.id)?.let { e to it } }.forEach {
-            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(it.second, null, "${it.first.type} ${it.first.id}")
+        val elementsAndGeometry = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }.mapNotNull { e -> mapDataSource.getGeometry(e.type, e.id)?.let { e to it } }
+
+        if (prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false) && elementsAndGeometry.any { it.second is ElementPolylinesGeometry }) {
+            // show geometry containing way direction together with normal one. not nice looking, but:
+            //  normal one contains way labels, which are necessary for editing
+            //  this here contains the arrows
+            // and adding arrows to "normal" highlighted ways in special cases only is maybe work for later
+            val mapFragment = (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
+            mapFragment?.highlightGeometries(elementsAndGeometry.map { it.second })
+        }
+
+        val showsGeometryMarkersListener = parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers ?: return
+        elementsAndGeometry.forEach {
+            showsGeometryMarkersListener.putMarkerForCurrentHighlighting(it.second, null, "${it.first.type} ${it.first.id}")
         }
     }
 

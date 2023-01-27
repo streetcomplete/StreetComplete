@@ -115,7 +115,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
         pinsMapComponent = PinsMapComponent(ctrl)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = FocusGeometryMapComponent(ctrl)
+        geometryMapComponent = FocusGeometryMapComponent(ctrl, prefs)
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource, prefs)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
@@ -261,6 +261,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun highlightGeometry(geometry: ElementGeometry) {
         geometryMapComponent?.showGeometry(geometry)
+    }
+
+    fun highlightGeometries(geometries: Collection<ElementGeometry>) {
+        geometryMapComponent?.showGeometries(geometries)
     }
 
     /** Clear all highlighting */

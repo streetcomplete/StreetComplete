@@ -185,6 +185,22 @@ layers:
                     order: 1000
                     cap: round
                     join: round
+        oneway-arrow:
+            filter: { arrows: yes }
+            draw:
+                oneway-arrow:
+                    flat: true
+                    buffer: 2px
+                    collide: false
+                    order: 1000
+                    color: global.geometry_point_color
+                    size: [[15, [12px, auto]], [20, [36px, auto]]]
+                    angle: auto
+                    placement: spaced
+                    placement_spacing: [[15, 48px], [20, 96px]]
+                    placement_min_length_ratio: 0
+                    text:
+                        visible: false
         poly:
             filter: { type: poly }
             draw:
