@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -119,10 +118,10 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
-            binding.mainSurfaceContainer.isVisible = false
+            binding.mainSurfaceContainer.isGone = true
             isSegregatedLayout = true
-            binding.cyclewaySurfaceContainer.isVisible = true
-            binding.footwaySurfaceContainer.isVisible = true
+            binding.cyclewaySurfaceContainer.isGone = false
+            binding.footwaySurfaceContainer.isGone = false
         }
 
         private sealed class SingleSurfaceItemInfo
@@ -271,8 +270,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 ItemViewHolder(binding.selectButtonMainSurface.selectedCellView).bind(mainSurfaceItem)
             }
             if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputMainSurface.isVisible = true
-                binding.mainSurfaceContainer.isVisible = true
+                binding.explanationInputMainSurface.isGone = false
+                binding.mainSurfaceContainer.isGone = false
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
@@ -282,7 +281,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 ItemViewHolder(binding.selectButtonCyclewaySurface.selectedCellView).bind(cyclewaySurfaceItem)
             }
             if (cyclewayNoteText() != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputCyclewaySurface.isVisible = true
+                binding.explanationInputCyclewaySurface.isGone = false
             }
 
             val footwaySurfaceItem = selectedStatusForFootwaySurface
@@ -292,7 +291,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 ItemViewHolder(binding.selectButtonFootwaySurface.selectedCellView).bind(footwaySurfaceItem)
             }
             if (footwayNoteText() != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputFootwaySurface.isVisible = true
+                binding.explanationInputFootwaySurface.isGone = false
             }
         }
 
