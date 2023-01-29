@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
@@ -29,11 +31,12 @@ fun StreetParking.asItem(
 
 fun StreetParking.asStreetSideItem(
     context: Context,
-    isUpsideDown: Boolean
+    isUpsideDown: Boolean,
+    isRightSide: Boolean
 ): StreetSideDisplayItem<StreetParking> = StreetSideItem2(
     this,
-    getIcon(context, isUpsideDown),
-    null,
+    getIcon(context, isUpsideDown, isRightSide),
+    titleResId?.let { ResText(it) },
     getDialogIcon(context, isUpsideDown),
     getFloatingIcon()
 )
@@ -46,9 +49,9 @@ private val StreetParking.titleResId: Int? get() = when (this) {
 }
 
 /** Image that should be shown in the street side select puzzle */
-private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
+private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image = when (this) {
     is StreetParkingPositionAndOrientation ->
-        getIcon(context, isUpsideDown)
+        getIcon(context, isUpsideDown, isRightSide)
     NoStreetParking, StreetParkingSeparate ->
         ResImage(R.drawable.ic_street_none)
     UnknownStreetParking, IncompleteStreetParking ->
@@ -60,19 +63,18 @@ private fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean)
     is StreetParkingPositionAndOrientation ->
         getDialogIcon(context, isUpsideDown)
     NoStreetParking ->
-        ResImage(R.drawable.ic_parking_no)
+        ResImage(R.drawable.ic_floating_no)
     StreetParkingSeparate ->
-        ResImage(R.drawable.ic_parking_separate)
+        ResImage(R.drawable.ic_floating_separate)
     IncompleteStreetParking, UnknownStreetParking ->
         ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */
 private fun StreetParking.getFloatingIcon(): Image? = when (this) {
-    StreetParkingSeparate -> R.drawable.ic_parking_separate
-    NoStreetParking -> R.drawable.ic_parking_no
+    StreetParkingSeparate -> ResImage(R.drawable.ic_floating_separate)
     else -> null
-}?.let { ResImage(it) }
+}
 
 fun StreetParkingPositionAndOrientation.asItem(context: Context, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, isUpsideDown), ResText(position.titleResId))
@@ -84,21 +86,29 @@ private fun StreetParkingPositionAndOrientation.getDialogIcon(context: Context, 
 
 /** An image for a street parking to be displayed shows a wide variety of different cars so that
  *  it looks nicer and/or closer to reality */
-private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean): Image =
-    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512))
+private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image {
+    val drawable = StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512)
+    // show left and right side staggered to each other
+    if (isRightSide) drawable.phase = 0.5f
+    return DrawableImage(drawable)
+}
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_STREET -> R.string.street_parking_on_street
-    HALF_ON_KERB -> R.string.street_parking_half_on_kerb
-    ON_KERB -> R.string.street_parking_on_kerb
+    HALF_ON_STREET -> R.string.street_parking_half_on_kerb
+    OFF_STREET -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
     PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
+    STAGGERED_ON_STREET -> R.string.street_parking_staggered_on_street
+    STAGGERED_HALF_ON_STREET -> R.string.street_parking_staggered_half_on_kerb
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
     ON_STREET,
-    HALF_ON_KERB,
-    ON_KERB,
+    HALF_ON_STREET,
+    OFF_STREET,
     STREET_SIDE,
+    STAGGERED_ON_STREET,
+    STAGGERED_HALF_ON_STREET,
     PAINTED_AREA_ONLY
 )
