@@ -34,6 +34,9 @@ private fun createParkingForSide(tags: Map<String, String>, side: String): Stree
         }
         "half_on_kerb" -> if (isStaggered) STAGGERED_HALF_ON_STREET else HALF_ON_STREET
         "on_kerb" -> OFF_STREET
+        // interpret "shoulder" as "off street", i.e. the same as "on_kerb". Reasons given in
+        // https://wiki.openstreetmap.org/wiki/Talk:Street_parking#Suggestion_to_remove_parking:side=shoulder
+        "shoulder" -> OFF_STREET
         "street_side" -> STREET_SIDE
         "no" -> return NoStreetParking
         "separate" -> return StreetParkingSeparate
@@ -84,7 +87,7 @@ private fun createParkingForSideOldSchema(tags: Map<String, String>, side: Strin
             val parkingPosition = when (parkingPositionValue) {
                 "on_street" -> ON_STREET
                 "half_on_kerb" -> HALF_ON_STREET
-                "on_kerb" -> OFF_STREET
+                "on_kerb", "shoulder" -> OFF_STREET
                 "painted_area_only" -> PAINTED_AREA_ONLY
                 "lay_by", "street_side" -> STREET_SIDE
 

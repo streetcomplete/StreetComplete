@@ -171,6 +171,35 @@ class StreetParkingCreatorKtTest {
         )
     }
 
+    @Test fun `apply on_kerb parking does not replace shoulder parking`() {
+        val parking = StreetParkingPositionAndOrientation(PARALLEL, OFF_STREET)
+
+        verifyAnswer(
+            mapOf("parking:both" to "shoulder"),
+            LeftAndRightStreetParking(parking, parking),
+            arrayOf(
+                StringMapEntryModify("parking:both", "shoulder", "shoulder"),
+                StringMapEntryAdd("parking:both:orientation", "parallel"),
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:left" to "shoulder"),
+            LeftAndRightStreetParking(parking, null),
+            arrayOf(
+                StringMapEntryModify("parking:left", "shoulder", "shoulder"),
+                StringMapEntryAdd("parking:left:orientation", "parallel"),
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:right" to "shoulder"),
+            LeftAndRightStreetParking(null, parking),
+            arrayOf(
+                StringMapEntryModify("parking:right", "shoulder", "shoulder"),
+                StringMapEntryAdd("parking:right:orientation", "parallel"),
+            )
+        )
+    }
+
     @Test fun `apply staggered parking on road`() {
 
         val positions = listOf(

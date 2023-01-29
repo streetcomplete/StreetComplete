@@ -53,6 +53,7 @@ class StreetParkingParserKtTest {
             "lane" to ON_STREET,
             "half_on_kerb" to HALF_ON_STREET,
             "on_kerb" to OFF_STREET,
+            "shoulder" to OFF_STREET,
             "street_side" to STREET_SIDE,
         )
 
@@ -312,6 +313,7 @@ class StreetParkingParserKtTest {
             "on_street" to ON_STREET,
             "half_on_kerb" to HALF_ON_STREET,
             "on_kerb" to OFF_STREET,
+            "shoulder" to OFF_STREET,
             "street_side" to STREET_SIDE,
             "lay_by" to STREET_SIDE,
             "painted_area_only" to PAINTED_AREA_ONLY,
