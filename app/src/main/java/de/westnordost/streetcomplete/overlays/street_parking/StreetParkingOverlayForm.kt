@@ -153,8 +153,8 @@ private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boole
     PARALLEL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PARALLEL)
     DIAGONAL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.DIAGONAL)
     PERPENDICULAR -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PERPENDICULAR)
-    SEPARATE -> ResImage(R.drawable.ic_parking_separate)
-    NO -> ResImage(R.drawable.ic_parking_no)
+    SEPARATE -> ResImage(R.drawable.ic_floating_separate)
+    NO -> ResImage(R.drawable.ic_floating_no)
 }
 
 private fun ParkingSelection.asItem(context: Context, isUpsideDown: Boolean) =

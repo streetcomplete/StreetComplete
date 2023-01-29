@@ -63,19 +63,18 @@ private fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean)
     is StreetParkingPositionAndOrientation ->
         getDialogIcon(context, isUpsideDown)
     NoStreetParking ->
-        ResImage(R.drawable.ic_parking_no)
+        ResImage(R.drawable.ic_floating_no)
     StreetParkingSeparate ->
-        ResImage(R.drawable.ic_parking_separate)
+        ResImage(R.drawable.ic_floating_separate)
     IncompleteStreetParking, UnknownStreetParking ->
         ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */
 private fun StreetParking.getFloatingIcon(): Image? = when (this) {
-    StreetParkingSeparate -> R.drawable.ic_parking_separate
-    NoStreetParking -> R.drawable.ic_parking_no
+    StreetParkingSeparate -> ResImage(R.drawable.ic_floating_separate)
     else -> null
-}?.let { ResImage(it) }
+}
 
 fun StreetParkingPositionAndOrientation.asItem(context: Context, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, isUpsideDown), ResText(position.titleResId))

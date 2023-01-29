@@ -33,7 +33,7 @@ private val Sidewalk.imageResId get() = when (this) {
 }
 
 private val Sidewalk.floatingIconResId get() = when (this) {
-    SEPARATE -> R.drawable.ic_sidewalk_floating_separate
+    SEPARATE -> R.drawable.ic_floating_separate
     else -> null
 }
 
