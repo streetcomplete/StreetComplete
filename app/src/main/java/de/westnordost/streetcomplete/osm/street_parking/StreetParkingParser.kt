@@ -4,12 +4,13 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 
 fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
+    // expand tags first so we do not need to deal with :both and naked tags
     val expandedTags = expandRelevantSidesTags(tags)
     // first try to parse new schema
     var left = createParkingForSide(expandedTags, "left")
     var right = createParkingForSide(expandedTags, "right")
     if (left == null && right == null) {
-        // then get the values for left and right
+        // otherwise parse the old schema
         left = createParkingForSideOldSchema(expandedTags, "left")
         right = createParkingForSideOldSchema(expandedTags, "right")
     }
