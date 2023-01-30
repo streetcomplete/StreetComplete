@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.databinding.CellImageThumbnailBinding
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import de.westnordost.streetcomplete.util.getRotationMatrix
 import de.westnordost.streetcomplete.view.ListAdapter
+import com.github.chrisbanes.photoview.PhotoView
 import java.io.File
 
 class NoteImageAdapter(list: List<String>, private val context: Context) : ListAdapter<String>(list) {
@@ -43,7 +44,7 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
         val imagePath = list[index]
         val image = File(imagePath)
         if (!image.exists()) return // delete from list?
-        val v = ImageView(context).apply {
+        val v = PhotoView(context).apply {
             scaleType = ImageView.ScaleType.FIT_CENTER
             val bitmap = BitmapFactory.decodeFile(imagePath)
             val matrix = getRotationMatrix(imagePath)

@@ -198,6 +198,8 @@ dependencies {
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 
+    // image view that allows zoom and pan, for viewing photos attached to notes
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
 }
 
 /** Localizations that should be pulled from POEditor */
