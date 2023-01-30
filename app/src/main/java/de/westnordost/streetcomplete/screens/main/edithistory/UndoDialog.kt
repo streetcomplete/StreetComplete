@@ -90,8 +90,9 @@ class UndoDialog(
         super.onCreate(savedInstanceState)
         scope.launch {
             binding.titleText.text = edit.getTitle()
-            if (edit is ElementEdit)
+            if (edit is ElementEdit) {
                 binding.titleHintText.text = getNameAndLocationLabel(edit.originalElement, context.resources, featureDictionary)
+            }
         }
     }
 

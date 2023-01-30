@@ -68,10 +68,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
         streetOrPlaceName = streetName?.let { StreetName(it) } ?: placeName?.let { PlaceName(it) }
 
         isShowingPlaceName = savedInstanceState?.getBoolean(SHOW_PLACE_NAME)
-            ?: if (streetOrPlaceName == null)
+            ?: if (streetOrPlaceName == null) {
                 lastWasPlace
-            else
+            } else {
                 placeName != null
+            }
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
     }
 
@@ -99,8 +100,9 @@ class AddressOverlayForm : AbstractOverlayForm() {
             countryLocale = countryInfo.locale,
             startWithPlace = isShowingPlaceName
         )
-        if (streetOrPlaceName != null) // this changes back to street if it's null
+        if (streetOrPlaceName != null) { // this changes back to street if it's null
             streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName
+        }
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
 
         // initially do not show the select for place name

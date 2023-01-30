@@ -120,7 +120,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     if (connectionsById.isEmpty()) return emptySet()
 
     val sidewalkEndNodeIds = footways.asSequence()
-        .filter { it.tags["footway"] == "sidewalk" || it.tags["footway"] == "traffic_island"}
+        .filter { it.tags["footway"] == "sidewalk" || it.tags["footway"] == "traffic_island" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {

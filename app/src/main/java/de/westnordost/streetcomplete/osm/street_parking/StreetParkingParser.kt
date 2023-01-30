@@ -46,7 +46,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String): Stree
         else -> return UnknownStreetParking
     }
 
-    val orientation = when(tags["parking:$side:orientation"]) {
+    val orientation = when (tags["parking:$side:orientation"]) {
         "parallel" -> PARALLEL
         "diagonal" -> DIAGONAL
         "perpendicular" -> PERPENDICULAR
