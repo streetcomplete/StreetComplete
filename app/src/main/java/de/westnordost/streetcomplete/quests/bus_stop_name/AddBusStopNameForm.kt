@@ -16,7 +16,7 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_name_answer_noName) { confirmNoName() },
+        AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
