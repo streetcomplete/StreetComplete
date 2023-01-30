@@ -147,7 +147,7 @@ class ElementEditsDao(
             ?: overlayRegistry.getByName(getString(QUEST_TYPE))
             ?: questTypeRegistry.getByName(getString(QUEST_TYPE)) as? ExternalSourceQuestType
             ?: createPoiEdit.takeIf { getString(QUEST_TYPE) == createPoiEdit.name }
-            ?: tagEdit.takeIf { getString(QUEST_TYPE) == tagEdit.name }!!,
+            ?: tagEdit, // always assume it's a tagEdit if nothing matches, to avoid crashes if SCEE quests are removed / replaced by differently named StreetComplete version
         ElementType.valueOf(getString(ELEMENT_TYPE)),
         getLong(ELEMENT_ID),
         json.decodeFromString(getString(ELEMENT)),
