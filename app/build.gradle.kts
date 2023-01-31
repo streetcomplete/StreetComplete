@@ -6,7 +6,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization") version "1.7.10"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 android {
@@ -106,7 +106,7 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.3"
