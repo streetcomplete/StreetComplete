@@ -60,8 +60,7 @@ class ElementEditsDao(
     }
 
     init {
-        db.delete(NAME, "$QUEST_TYPE in ('RemoveWrongSurface')") // remove quests that were removed
-        db.update(NAME, listOf(QUEST_TYPE to "CustomQuest"), "$QUEST_TYPE = 'ExternalQuest'") // that one was renamed
+        db.update(NAME, listOf(QUEST_TYPE to "CustomQuest"), "$QUEST_TYPE = 'ExternalQuest'") // quest was renamed
     }
 
     fun add(edit: ElementEdit) {

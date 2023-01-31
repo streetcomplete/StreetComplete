@@ -75,7 +75,7 @@ class AboutFragment : PreferenceFragmentCompat() {
                     resources.getInteger(R.integer.translation_completeness)
                 ))
                 .setPositiveButton("StreetComplete") { _, _ -> openUrl("https://poeditor.com/join/project/IE4GC127Ki")}
-                .setNegativeButton("SCEE") { _, _ -> openUrl("https://poeditor.com/join/project/iAUihUmKW7")}
+                .setNegativeButton("SCEE") { _, _ -> openUrl("https://translate.codeberg.org/projects/scee/")}
                 .show()
             true
         }

@@ -16,21 +16,15 @@ Content:
 
 ## Translating the app
 
-You can translate StreetComplete at POEditor. You can add missing translations and improve existing ones. Discuss translations at POEditor.
+You can translate StreetComplete at POEditor, and SCEE in Weblate. You can add missing translations and improve existing ones.
 
 The only required skills here are ability to read English text and write in your own language.
 
-Follow [**this link**](https://poeditor.com/join/project/iAUihUmKW7) to improve the translations only available in StreetComplete expert edition, or click the image below to improve translations for StreetComplete (also used in expert edition):
+Follow [**this link**](https://translate.codeberg.org/projects/scee/) to improve the translations only available in SCEE, or click the image below to improve translations for StreetComplete (which are also used in SCEE):
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
-After joining, the [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
-
-Before each [release](res/documentation/creating%20new%20release.md), translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
-
-Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
-
-The source translation is in US English (in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+The source translation is in US English (in [app/src/main/res/values/strings_ee.xml](app/src/main/res/values/strings_ee.xml)).
 
 ### iD presets
 
@@ -42,7 +36,7 @@ For iD preset translation see [their documentation](https://github.com/openstree
 
 As you probably noticed, you can choose *"Cannot answer"* in StreetComplete and thus leave a note on OpenStreetMap.
 
-You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). While processing and solving notes, it may become apparent that there is a systematic problem in that users misunderstand the UI or the wording when solving StreetComplete quests.
+You can help with [processing OSM notes opened by StreetComplete and SCEE users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). While processing and solving notes, it may become apparent that there is a systematic problem in that users misunderstand the UI or the wording when solving StreetComplete quests.
 
 If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/streetcomplete/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 

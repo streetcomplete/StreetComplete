@@ -35,7 +35,7 @@ Database and preferences files are compatible with StreetComplete, so if you hav
 SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
 
 ## Translations
-Translations for strings added in SCEE can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
+Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
 
 ## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:

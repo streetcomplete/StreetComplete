@@ -21,8 +21,8 @@ class AddRailwayPlatformRef : OsmElementQuestType<String> {
     // inspired by https://github.com/streetcomplete/StreetComplete/pull/4315 + comments
     private val platformFilter = """
         ways with
-          railway = platform
-          and public_transport = platform
+          public_transport = platform
+          and railway ~ platform|platform_edge
           and !ref
           and !~ "ref:.*"
           and !local_ref
@@ -56,6 +56,7 @@ class AddRailwayPlatformRef : OsmElementQuestType<String> {
                 else (it as? ElementPolygonsGeometry)?.polygons?.singleOrNull()
             } ?: return@mapNotNull null
             var nearbyRailways = 0
+            // we want at least two nearby railways, because for a single track there is no need for asking ref
             railwayLineGeometries.forEach {
                 if (it.distanceTo(platformLineGeometry) < 10.0) {
                     nearbyRailways++
