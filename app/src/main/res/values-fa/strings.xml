@@ -7,18 +7,18 @@
     <string name="pref_category_display">"نمایش"</string>
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
     <string name="pref_tilecache_size_message">"میزان فضای اشغال‌شده (مگابایت) روی حافظهٔ خارجی برای ذخیرهٔ کاشی‌های نقشه"</string>
-    <string name="pref_title_show_notes_not_phrased_as_questions">"نمایش تمام یادداشت‌ها"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"نمایش همه یادداشت‌ها"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که پرسشی نیستند"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده‌گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
     <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
-    <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها…"</string>
+    <string name="quest_generic_otherAnswers">"پاسخ‌های دیگر…"</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
-    <string name="quest_leave_new_note_title">"در عوض یک یادداشت می‌گذارید؟"</string>
+    <string name="quest_leave_new_note_title">"در عوض یادداشت می‌گذارید؟"</string>
     <string name="quest_leave_new_note_description">"می‌توانید در این مکان یادداشتی عمومی بگذارید تا نقشه‌کش‌های دیگر آن را حل نمایند. یا فقط این جُستار را برای خودتان پنهان کنید"</string>
     <string name="quest_leave_new_note_yes">"یادداشت‌گذاری"</string>
     <string name="quest_leave_new_note_no">"پنهان سازی"</string>
@@ -49,7 +49,7 @@
     <string name="download_area_too_big">"لطفاً بیشتر بزرگنمایی کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را باطل می‌کنید و در عوض اینجا جستجو شود؟"</string>
     <string name="turn_on_location_request">"ردیابی مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
-    <string name="no_location_permission_warning">"مجوز ردیابی مکانی برای نمایش محل شما روی نقشه و پویش جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
+    <string name="no_location_permission_warning">"مجوز استفاده از مکان‌یاب (GPS) برای نمایش مکان شما روی نقشه و جستجوی جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
     <string name="about_title_authors">"اعتبار‌نامه‌ها"</string>
     <string name="about_summary_authors">"‏ © %s Tobias Zwick و مشارکت‌کنندگان"</string>
     <string name="about_title_repository">"صفحهٔ پروژه"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"برای انتشار پاسخ‌هایتان، باید توسط حساب کاربری OSM خود احراز هویت کنید. اکنون انجام می‌دهید؟"</string>
     <string name="not_authorized">"احراز هویت نشده"</string>
     <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفاً به‌روز کنید!"</string>
-    <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، ردیاب مکان‌ را روشن کنید"</string>
+    <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، ردیاب مکان‌ (GPS) را روشن کنید"</string>
     <string name="later">"بعداً"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"مورد دیگری است (یادداشت بگذارید)"</string>
@@ -82,14 +82,14 @@
     <string name="quest_roofShape_answer_many">"این سقف چند شکل مختلف دارد"</string>
     <string name="map_btn_zoom_out">"کوچک‌نمایی"</string>
     <string name="map_btn_zoom_in">"بزرگ‌نمایی"</string>
-    <string name="privacy_html">"&lt;p&gt; آها، یکی که به حریم شخصی اهمیت می‌دهد؛ عالی! به نظر خودم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt; درود، شخصی هستید که به حریم خصوصی اهمیت می‌دهد، عالی است! فکر می‌کنم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در نقشه‌متن‌باز  (OSM) مشارکت می‌کنید. &lt;br/&gt;
 هر مشارکتی که در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت OSM وجود ندارد.
 &lt;/p&gt;
 &lt;p&gt;
-ویرایش نقشه‌متن‌باز (osm) به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در-محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
+ویرایش نقشه‌متن‌باز (osm) به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
 &lt;/p&gt;
 
 &lt;b&gt;موقعیت مکانی&lt;/b&gt;&lt;br/&gt;
@@ -100,24 +100,26 @@
 &lt;p&gt; &lt;b&gt;استفاده از داده &lt;/ b&gt; &lt;/ p&gt;
 &lt;p&gt; 
 این برنامه مستقیماً با سرورهای OSM ارتباط برقرار می‌کند.&lt;br/&gt;
-پیش از بارگذاری تغییرات شما، برنامه یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;پروندهٔ متنی ساده&lt;/a&gt; را که در سرور ما وجود دارد بررسی می‌کند تا اطمینان حاصل کند که این نسخه از برنامه برای بارگذاری تغییرات ممنوع نشده باشد. این یک اقدام احتیاطی است تا بتوانیم جلوی نسخه‌هایی از برنامه را بگیریم که مشخص شده اشکالات اساسی دارند؛ تا دادهٔ خراب به OSM نفرستند.&lt;/p&gt;"</string>
+پیش از بارگذاری تغییرات شما، برنامه یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;پروندهٔ متنی ساده&lt;/a&gt; را که در سرور ما وجود دارد بررسی می‌کند تا اطمینان حاصل کند که این نسخه از برنامه برای بارگذاری تغییرات ممنوع نشده باشد. این یک اقدام برای احتیاط است تا بتوانیم جلوی نسخه‌هایی از برنامه را بگیریم که مشخص شده اشکالات اساسی دارند؛ تا دادهٔ خراب به OSM نفرستند.&lt;/p&gt;
+
+"</string>
     <string name="autosync_on">"روشن"</string>
     <string name="autosync_only_on_wifi">"فقط با وای‌فای"</string>
     <string name="autosync_off">"خاموش"</string>
-    <string name="quest_streetSurface_title">"جنس سطح این قسمت از مسیر چیست؟"</string>
-    <string name="quest_surface_value_paved">"روسازی‌شده (کلی)"</string>
-    <string name="quest_surface_value_unpaved">"روسازی‌نشده (کلی)"</string>
-    <string name="quest_surface_value_ground">"زمین (کلی)"</string>
+    <string name="quest_streetSurface_title">"جنس سطح این بخش از مسیر چیست؟"</string>
+    <string name="quest_surface_value_paved">"روسازی‌شده (عمومی)"</string>
+    <string name="quest_surface_value_unpaved">"روسازی‌نشده (عمومی)"</string>
+    <string name="quest_surface_value_ground">"زمین (عمومی)"</string>
     <string name="quest_surface_value_asphalt">"آسفالت"</string>
     <string name="quest_surface_value_compacted">"متراکم شده"</string>
     <string name="quest_surface_value_concrete">"بتن"</string>
     <string name="quest_surface_value_dirt">"خاکی"</string>
     <string name="quest_surface_value_fine_gravel">"شن ریزه"</string>
     <string name="quest_surface_value_grass">"چمنزار"</string>
-    <string name="quest_surface_value_grass_paver">"سنگفرش چمنی"</string>
+    <string name="quest_surface_value_grass_paver">"موکت چمنی"</string>
     <string name="quest_surface_value_gravel">"شن درشت"</string>
     <string name="quest_surface_value_paving_stones">"سنگفرش هموار"</string>
-    <string name="quest_surface_value_pebblestone">"سنگ‌ریزه (با لبه‌های گرد)"</string>
+    <string name="quest_surface_value_pebblestone">"سنگ‌ریزه (گردگوشه)"</string>
     <string name="quest_surface_value_sand">"ماسه"</string>
     <string name="quest_surface_value_sett">"سنگفرش ناهموار"</string>
     <string name="quest_surface_value_wood">"چوب"</string>
@@ -128,7 +130,7 @@
     <string name="store_listing_short_description">"برنامه نقشه‌کش نقشه‌متن‌باز (osm)"</string>
     <string name="store_listing_full_description">"نقشه‌متن‌باز (osm) را با کمک StreetComplete بهبود دهید!
 
-این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
+این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جُستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
 
 اطلاعاتی که وارد می‌کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در OSM اضافه می‌شود."</string>
     <string name="quest_name_answer_noName">"بدون نام…"</string>
@@ -183,7 +185,7 @@
     <string name="quest_tactilePaving_title_crosswalk">"آیا این گذرگاه پیاده در هر دو طرف سنگفرش آجدار ویژه نابینایان دارد؟"</string>
     <string name="quest_source_dialog_title">"آیا مطمئن هستید که اینجا را در محل بررسی کرده‌اید؟"</string>
     <string name="quest_source_dialog_note">"فقط اطلاعاتی که در محل وجود دارد باید وارد شود."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"آیا این پارکینگ دوچرخه مسقف می‌باشد (از باران محافظت می‌شود)؟"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"آیا این پارکینگ دوچرخه سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
     <string name="dialog_session_dont_show_again">"تا پایان این نشست دیگر نپرس"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"به نظر می‌رسد این محدودیت سرعت درست نباشد."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیتی در علائم نیامده است؟"</string>
@@ -221,9 +223,9 @@
     <string name="quest_fireHydrant_type_pillar">"شیر خیابانی"</string>
     <string name="quest_fireHydrant_type_underground">"زیرزمینی"</string>
     <string name="quest_fireHydrant_type_wall">"دیواری"</string>
-    <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;فهرست کامل روی GitHub&lt;/a&gt; را مشاهده نمایید."</string>
+    <string name="credits_contributors">"فهرست کامل را روی &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt; GitHub&lt;/a&gt; مشاهده نمایید."</string>
     <string name="credits_translations_title">"ترجمه‌ها"</string>
-    <string name="credits_contributors_title">"مشارکت‌کنندگان در کدنویسی"</string>
+    <string name="credits_contributors_title">"مشارکت‌کنندگان در بخش کدنویسی"</string>
     <string name="credits_author_title">"سازنده و نگهدارنده"</string>
     <string name="credits_and_more">"و دیگران…"</string>
     <string name="quest_maxspeed_answer_living_street">"این یک خیابان محل سکونت است"</string>
@@ -329,7 +331,7 @@
     <string name="quest_carWashType_selfService">"خودیار (self-service)"</string>
     <string name="quest_carWashType_service">"کارگر خودرو را نظافت می‌کند"</string>
     <string name="enable_quest_confirmation_title">"این نوع جُستار را فعال می‌کنید؟"</string>
-    <string name="default_disabled_msg_go_inside">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا ابتدا باید وارد این مکان شوید تا بتوانید به جستاری از این نوع پاسخ دهید."</string>
+    <string name="default_disabled_msg_go_inside">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا ابتدا باید وارد این مکان شوید تا بتوانید به جُستاری از این نوع پاسخ دهید."</string>
     <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
     <string name="quest_housenumber_street_number_optional">"شماره جهت‌یابی (اختیاری)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
@@ -393,7 +395,7 @@
     <string name="questList_disabled_in_country">"در %s نشان داده نمی‌شود"</string>
     <string name="quest_select_hint_most_specific">"مشخص‌ترین مورد متناسب را انتخاب کنید:"</string>
     <string name="quest_generic_item_confirmation">"مطمئن هستید که مشخص‌تر از این نمی‌شود انتخاب کرد؟"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص ثالث بارگیری می‌شود. به طور خاص، جستار یکطرفه درمورد نامزدهای احتمالی یکطرفه‌بودن از یک API پرس‌وجو می‌کند که روی westnordost.de میزبانی می‌شود.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص ثالث بارگیری می‌شود. به طور خاص، جُستار یکطرفه درمورد نامزدهای احتمالی یکطرفه‌بودن از یک API پرس‌وجو می‌کند که روی westnordost.de میزبانی می‌شود.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"نه (یادداشت بگذارید)"</string>
     <string name="pref_quests_reset">"بازنشانی هر دو جُستار فعال شده و سفارشی شده به حالت پیشفرض؟"</string>
     <string name="quest_generic_item_invalid_value">"لطفا یک مقدار واضح‌تر را انتخاب کنید."</string>
@@ -499,9 +501,9 @@
     <string name="quest_wheelchairAccess_limited_description_outside">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به آن وجود دارد."</string>
     <string name="quest_wheelchairAccess_outside_title">"آیا اینجا برای صندلی چرخدار دسترس‌پذیر است؟"</string>
     <string name="quest_traffic_signals_button_title">"آیا این چراغ‌های راهنمایی دکمه‌ای برای درخواست چراغ سبز دارند؟"</string>
-    <string name="quest_motorcycleParkingCapacity_title">"اینجا چند موتورسیکلت می‌توان پارک کرد؟"</string>
-    <string name="quest_motorcycleParkingCoveredStatus_title">"آیا پارکینگ موتورسیکلت سرپوشیده است (از باران محافظت می‌شود)؟"</string>
-    <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جستار."</string>
+    <string name="quest_motorcycleParkingCapacity_title">"در اینجا چند موتورسیکلت را می‌توان پارک کرد؟"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"آیا این پارکینگ موتورسیکلت سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
+    <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جُستار."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
     <string name="restore_hidden_success">"%d جُستار پنهان بازگردانده شد"</string>
     <string name="on_level">"در طبقه %s"</string>
@@ -550,7 +552,7 @@
     <string name="quest_recycling_type_cans">"قوطی"</string>
     <string name="quest_recycling_type_clothes">"لباس"</string>
     <string name="quest_recycling_type_green_waste">"زباله گیاهی"</string>
-    <string name="quest_recycling_type_glass_bottles">"بطری و بستوی شیشه‌ای"</string>
+    <string name="quest_recycling_type_glass_bottles">"بطری‌ها و ظروف شیشه‌ای"</string>
     <string name="quest_recycling_type_glass_bottles_short">"بطری و شیشه"</string>
     <string name="quest_recycling_type_paper">"کاغذ"</string>
     <string name="quest_recycling_type_plastic_generic">"پلاستیک"</string>
@@ -561,7 +563,7 @@
     <string name="quest_recycling_type_plastic_packaging">"فقط بسته‌بندی پلاستیکی"</string>
     <string name="quest_recycling_type_scrap_metal">"ضایعات فلزی"</string>
     <string name="quest_recycling_type_any_glass">"هر نوع شیشه‌ای"</string>
-    <string name="quest_recycling_glass_title">"آیا فقط بطری شیشه‌ای و بستوی شیشه‌ای (مثل شیشه مربا) در اینجا بازیافت می‌شود یا هر نوع شیشه‌ای؟"</string>
+    <string name="quest_recycling_glass_title">"آیا فقط بطری شیشه‌ای و ظروف شیشه‌ای (مثل شیشه مربا) در اینجا بازیافت می‌شود یا هر نوع شیشه‌ای؟"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"نمونه‌هایی از شیشه که غالباً پذیرفته نمی‌شوند: شیشه‌مات، پنجره‌های شیشه‌ای، ظروف شیشه‌ای، لامپ‌های روشنایی‌ حبابی یا کم‌مصرف."</string>
     <string name="about_title_changelog">"تاریخچه نسخه‌ها"</string>
     <string name="title_whats_new">"تازه‌ها"</string>
@@ -589,14 +591,14 @@
     <string name="letsgo">"بزن بریم!"</string>
     <string name="tutorial_welcome_to_osm">"به نقشه‌متن‌باز (osm) خوش‌آمدید"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"نقشه جهانی ویکی رایگان"</string>
-    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در نقشه‌متن‌باز (osm) را آسان می‌کند.
-به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، شماره خانه، ساعات کار و بسیاری موارد دیگر…"</string>
-    <string name="tutorial_solving_quests">"جزئیاتی که از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
+    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در نقشه‌متن‌باز (osm) را آسان‌تر می‌کند.
+این برنامه به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، پلاک خانه‌ها، ساعات کار و بسیاری موارد دیگر…"</string>
+    <string name="tutorial_solving_quests">"جزئیاتی که در نقشه از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
 
-می‌توانید بلافاصله پاسخگویی به آنها را شروع کرده و سپس برای انتشار پاسخ‌های خود، وارد حساب‌تان شوید."</string>
-    <string name="tutorial_stay_safe">"هر زمان که اطمینان ندارید، می توانید گزینه \"نمی توان بیان کرد\" را انتخاب نماید و یادداشت بگذارید.
+می‌توانید بلافاصله پاسخگویی به آنها را شروع کرده و سپس برای انتشار پاسخ‌های خود، وارد حساب کاربری‌تان شوید."</string>
+    <string name="tutorial_stay_safe">"هر زمانی که درمورد جُستاری اطمینان ندارید، می‌توانید گزینه \"نمی‌توان بیان کرد\" را انتخاب نماید و یادداشت بگذارید.
 
-در آخر، به یاد داشته باشید که مطمئن باشید: از محیط پیرامون خود مطلع باشید و به مکان‌های خصوصی وارد نشوید."</string>
+در آخر، به یاد داشته باشید که حتما از محیط پیرامون خود مطلع باشید و دقت کنید که به مکان‌های خصوصی وارد نشوید."</string>
     <string name="tutorial_happy_mapping">"نقشه‌کشی مبارک!"</string>
     <string name="achievements_empty">"شما هنوز دستاوردی ندارید"</string>
     <string name="links_empty">"شما هنوز پیوندی ندارید"</string>
@@ -622,18 +624,18 @@
     <string name="link_category_goodies_description">"مطالبی جالب و سرگرم‌کننده مربوط به نقشه برای شما؛ امتحانشان کنید"</string>
     <string name="link_cyclosm_description">"نقشه دوچرخه‌سواری"</string>
     <string name="link_wheelmap_description">"نقشه‌ای برای جستجوی مکان‌های قابل دسترسی صندلی چرخدار"</string>
-    <string name="link_osm_buildings_description">"نقشه‌ای که ساختمان‌ها را به صورت سه‌بعدی نشان می‌دهد"</string>
-    <string name="link_openvegemap_description">"رستوران‌های مناسب برای گیاه‌خوار و گیاه‌خوار مطلق را در شهر خود بشناسید"</string>
+    <string name="link_osm_buildings_description">"نقشه‌ای که ساختمان‌ها را به صورت سه‌بعدی نشان می‌دهد."</string>
+    <string name="link_openvegemap_description">"رستوران‌های مناسب برای گیاه‌خواران را در شهر خود بشناسید."</string>
     <string name="link_touch_mapper_description">"نقشه‌های لمسی را به راحتی برای هر نشانی ترسیم کنید."</string>
     <string name="link_mapy_tactile_description">"نقشه‌های لمسی برای کم بینایان در مقیاس‌های مختلف"</string>
     <string name="link_josm_description">"ویرایشگر کاملاً حرفه‌ای OSM برای رایانه. این ابزار قدرتمند برای مشارکت‌کنندگان فعال می‌باشد."</string>
     <string name="link_vespucci_description">"ویرایشگر پیشرفته OSM برای Android"</string>
-    <string name="link_ideditor_description">"ویرایشگر ساده OSM به عنوان مرورگر. برای رایانه‌های شخصی یا رایانه‌های لوحی بزرگ بهینه‌سازی شده است"</string>
-    <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید"</string>
+    <string name="link_ideditor_description">"ویرایشگر ساده OSM به عنوان مرورگر. برای رایانه‌های شخصی یا رایانه‌های لوحی بزرگ بهینه‌سازی شده است."</string>
+    <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید."</string>
     <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه‌های حمل‌ونقل عمومی"</string>
-    <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید"</string>
+    <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید."</string>
     <string name="link_wiki_description">"سایت ویکی osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با نقشه‌متن‌باز (osm) است."</string>
-    <string name="link_learnosm_description">"تازه با نقشه‌متن‌باز (osm) آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
+    <string name="link_learnosm_description">"تازه با نقشه‌متن‌باز (osm) آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است."</string>
     <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در نقشه‌متن‌باز (osm)، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
     <string name="link_welcome_mat_description">"اطلاعات کلی در مورد نقشه‌متن‌باز (osm) و نحوه کار با آن به عنوان یک سازمان"</string>
     <string name="link_mapillary_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
@@ -641,17 +643,17 @@
     <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
     <string name="link_nominatim_description">"کد جغرافیایی داده‌های OSM که توسط بسیاری از سامانه‌های دیگر استفاده می‌شود"</string>
     <string name="link_city_roads_description">"ارائه همه جاده‌های یک شهر برای چاپ روی تیشرت، لیوان و…"</string>
-    <string name="link_myosmatic_description">"نقشه‌های قابل چاپ شهری را در چند گام ساده، به صورت انتخابی با فهرست راهنمای خیابانی ایجاد کنید"</string>
+    <string name="link_myosmatic_description">"نقشه‌های قابل چاپ شهری را در چند گام ساده، به صورت انتخابی با فهرست راهنمای خیابانی ایجاد کنید."</string>
     <string name="link_brouter_description">"احتمالاً بهترین سامانهٔ مسیریابی برای دوچرخه‌سواران"</string>
     <string name="link_show_me_the_way_description">"مشاهده ویرایش‌های OSM به صورت لحظه‌ای"</string>
     <string name="link_osrm_description">"سریع‌ترین سامانه مسیریابی"</string>
     <string name="link_openrouteservice_description">"مسیریابی انواع وسایل نقلیه و پیاده به صورت دلخواه ارائه می‌شود. همچنین بطور لحظه‌ای زمان رسیدن به مقصد نیز قابل مشاهده است (نمایش زمان دستیابی از نقطه شروع)"</string>
     <string name="link_osm_haiku_description">"استفاده از داده‌های OSM برای تولید یک هایکو (شعر بی قافیه سه سطری ژاپنی)"</string>
     <string name="link_openinframap_description">"نقشه‌ای که زیرساخت‌های برق، مخابرات، گاز و نفت را نشان می‌دهد"</string>
-    <string name="link_openorienteeringmap_description">"برای ورزش جهت‌یابی، نقشه‌های چاپ‌کردنی بسازید"</string>
+    <string name="link_openorienteeringmap_description">"برای ورزش جهت‌یابی، نقشه‌های چاپ‌کردنی بسازید."</string>
     <string name="link_openstreetbrowser_description">"یک نقشه برای جستجوی عوارض نقشه OSM برحسب دسته‌بندی"</string>
     <string name="link_weeklyosm_description">"تارنمای اخبار هفتگی درباره اتفاقات رخ داده در دنیای OSM"</string>
-    <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید"</string>
+    <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید."</string>
     <string name="achievement_first_edit_title">"اولین جُستار حل شد"</string>
     <string name="achievement_first_edit_description">"به جامعه نقشه‌متن‌باز (osm) خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
     <string name="achievement_surveyor_title">"نقشه‌بردار"</string>
@@ -681,7 +683,7 @@
     <string name="map_btn_menu">"منو"</string>
     <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در نقشه‌متن‌باز (osm) جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"همچنین می‌توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
-    <string name="credits_art_contributors_title">"مشارکت‌کنندگان هنری"</string>
+    <string name="credits_art_contributors_title">"مشارکت‌کنندگان در بخش هنری"</string>
     <string name="credits_projects_contributors_title">"پروژه‌های ساخته شده برای StreetComplete"</string>
     <string name="credits_main_contributors_title">"مشارکت‌کنندگان اصلی"</string>
     <string name="stats_are_syncing">"آمار شما همچنان در حال همگام سازی است. بعداً این صفحه را بررسی کنید."</string>
@@ -752,14 +754,14 @@
     <string name="quest_atm_operator_title">"نام بانک این خودپرداز چیست؟"</string>
     <string name="quest_clothes_container_operator_title">"چه کسی کمک‌های مالی برای این سطل پوشاک را پرداخت می‌کند؟"</string>
     <string name="quest_charging_station_operator_title">"متصدی این ایستگاه شارژ کیست؟"</string>
-    <string name="link_indoorequal_description">"نقشه‌های داخلی مراکز خرید، ایستگاه‌های راه‌آهن و غیره را بیابید"</string>
+    <string name="link_indoorequal_description">"نقشه‌های داخلی مراکز خرید، ایستگاه‌های راه‌آهن و غیره را بیابید."</string>
     <string name="achievement_rare_title">"شکارچی گنج"</string>
     <string name="achievement_rare_solved_X">"شما %d جُستار را یافتید و پاسخ دادید که هنوز ناتمام بوده‌اند، تبریک می گویم!"</string>
     <string name="achievement_citizen_title">"رتبه عالی"</string>
     <string name="achievement_citizen_solved_X">"شما %d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!"</string>
     <string name="achievement_outdoors_title">"فضای پیرامون"</string>
     <string name="achievement_outdoors_solved_X">"شما %d جُستار مفید برای گردشگران را پاسخ دادید!"</string>
-    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاهِ پیاده جزیره دارد؟"</string>
+    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاهِ پیاده، جزیره دارد؟"</string>
     <string name="quest_generic_answer_noSign">"اینجا تابلو ندارد"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"آیا سطح شیب‌دار صندلی چرخدار به صورت راه جداگانه روی نقشه نمایش داده می شود؟"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"تفکیک شده"</string>
@@ -824,7 +826,7 @@
     <string name="quest_surface_value_clay">"خاکی"</string>
     <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
     <string name="quest_surface_value_tartan">"شطرنجی"</string>
-    <string name="quest_bicycle_parking_fee_title">"برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
+    <string name="quest_bicycle_parking_fee_title">"آیا برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
     <string name="quest_buildingType_house_description2">"خانه متصل و تک‌خانواری"</string>
     <string name="quest_drinking_water_potable_signed">"آب شرب (تایید شده)"</string>
     <string name="quest_drinking_water_potable_unsigned">"آب شرب (تایید نشده)"</string>
@@ -919,7 +921,7 @@
     <string name="action_manage_presets">"مدیریت پیش‌تنظیم‌ها"</string>
     <string name="team_mode_team_size_label2">"چند نفر در حال نقشه‌کشی هستند؟ شماره یکسانی را در تلفن همه وارد کنید."</string>
     <string name="team_mode_choose_color2">"در گام بعد، هر فرد باید رنگ متفاوتی را انتخاب کند. رنگ خود را انتخاب کنید:"</string>
-    <string name="link_organic_maps_description">"برنامه نقشه برای مسافران، کوهنوردان و دوچرخه‌سواران که بصورت آفلاین کار می‌کند"</string>
+    <string name="link_organic_maps_description">"برنامه نقشه برای مسافران، کوهنوردان و دوچرخه‌سواران که بصورت آفلاین کار می‌کند."</string>
     <string name="quest_kerb_height_no">"بدون هیچ جدولی"</string>
     <string name="quest_barrier_type_stepover_wooden">"چوبی پله‌ای روی پایه"</string>
     <string name="quest_barrier_type_stepover_stone">"سنگ منقطع"</string>
@@ -1043,7 +1045,7 @@
     <string name="achievement_lifesaver_title">"نجات‌دهنده"</string>
     <string name="achievement_lifesaver_solved_X">"شما %d جُستاری را که به خدمات اضطراری و اولین پاسخ دهندگان کمک می کند، حل نمودید!"</string>
     <string name="quest_fuelSelfService_title">"آیا خود شخص می‌تواند در این جایگاه سوخت، نازل را بردارد؟"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا یا بسیار وقت‌گیر است یا انتخاب درست اغلب دشوار است. فقط در صورتی این نوع جستار را فعال کنید که واقعاً دنبال اضافه‌کردن این نوع داده باشید."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا یا بسیار وقت‌گیر است یا انتخاب درست اغلب دشوار است. فقط در صورتی این نوع جُستار را فعال کنید که واقعاً دنبال اضافه‌کردن این نوع داده باشید."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"شن و ماسه سست و سخت فشرده شده و بسیار کم"</string>
     <string name="quest_barrier_path_intersection">"این مسیر در اینجا چگونه از مانع عبور می‌کند؟"</string>
     <string name="quest_barrier_road_intersection">"این جاده در اینجا چگونه از مانع عبور می‌کند؟"</string>
@@ -1072,8 +1074,8 @@
     <string name="quest_road_width_explanation">"عرض جاده از حاشیه تا حاشیه: این شامل هر چیزی در سطح خیابان مانند جای پارک در خیابان یا خطوط دوچرخه‌سواری است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
     <string name="about_description_donate_google_play2">"برای پشتیبانی از این برنامه از شما سپاسگزاریم!
-متأسفانه، به دلیل خط‌ مشی فروشگاه Google Play، هیچ پیوندی برای کمک مالی در برنامه نمایش داده نمی‌شود. در این زمینه، حتی پیونددادن به صفحهٔ اصلی پروژهٔ ما مجاز نیست."</string>
-    <string name="link_osmand_description">"برنامهٔ همراه برای مشاهدهٔ نقشه و ناوبری؛ برخط و برون‌خط"</string>
+متأسفانه، به دلیل خط‌مشی فروشگاه Google Play، هیچ پیوندی برای کمک مالی در برنامه نمایش داده نمی‌شود. در این زمینه، حتی پیونددادن به صفحهٔ اصلی پروژهٔ ما مجاز نیست."</string>
+    <string name="link_osmand_description">"برنامهٔ همراه برای مشاهدهٔ نقشه و ناوبری؛ آنلاین و آفلاین"</string>
     <string name="link_sunders_description">"نقشه دوربین‌ها و تجهیزات نظارتی"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"به جهت‌یاب نزدیک‌تر شوید، اما مراقب عبور و مرور باشید!"</string>
     <string name="quest_sidewalk_surface_title">"جنس سطح این پیاده‌رو چیست؟"</string>
@@ -1097,7 +1099,6 @@
     <string name="quest_seating_indoor_only">"فقط صندلی‌های داخل ساختمان"</string>
     <string name="quest_seating_outdoor_only">"فقط صندلی در فضای باز"</string>
     <string name="quest_seating_indoor_and_outdoor">"هم در فضای داخلی و هم در فضای باز"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا برای تأیید صندلی در فضای باز، شاید لازم باشد در زمان خاصی از سال بررسی انجام شود."</string>
     <string name="no_camera_permission_toast">"محدودیت تصویربرداری"</string>
     <string name="quest_accepts_cash_title2">"آیا در اینجا پرداخت نقدی پذیرفته می‌شود؟"</string>
     <string name="quest_address_street_title2">"اینجا در کدام خیابان است؟"</string>
@@ -1109,26 +1110,26 @@
     <string name="quest_busStopName_title2">"اسم این ایستگاه چیست؟"</string>
     <string name="quest_busStopRef_title2">"شماره شناسایی این ایستگاه چیست؟"</string>
     <string name="quest_busStopShelter_title2">"آیا این ایستگاه، سایبان دارد؟"</string>
-    <string name="quest_busStopTactilePaving_title">"آیا ایستگاه دارای سنگفرش لمسی نابینایان است؟"</string>
+    <string name="quest_busStopTactilePaving_title">"آیا این ایستگاه دارای سنگفرش لمسی ویژه نابینایان است؟"</string>
     <string name="quest_dietType_halal_name_title2">"آیا محصولات حلال در این محل ارائه می‌شود؟"</string>
     <string name="quest_dietType_kosher_name_title2">"آیا محصولات کوشر در اینجا ارائه می‌شود؟"</string>
-    <string name="quest_dietType_vegan_title2">"برای گیاه‌خوار مطلق چیزی در منو هست؟"</string>
-    <string name="quest_dietType_vegetarian_title2">"برای گیاه‌خوار چیزی در منو هست؟"</string>
+    <string name="quest_dietType_vegan_title2">"برای گیاه‌خواران مطلق چیزی در منو هست؟"</string>
+    <string name="quest_dietType_vegetarian_title2">"برای گیاه‌خواران چیزی در منو هست؟"</string>
     <string name="quest_drinking_water_title2">"آیا آب اینجا قابل شرب است؟"</string>
     <string name="quest_existence_title2">"آیا این مورد هنوز موجود است؟"</string>
     <string name="quest_generalFee_title2">"آیا برای ورود به این محل باید هزینه‌ای پرداخت کرد؟"</string>
     <string name="quest_internet_access_title">"این مکان چه نوع اتصال وب را ارائه می‌دهد؟"</string>
     <string name="quest_level_title2">"این مکان در چه ارتفاعی قرار دارد؟"</string>
     <string name="quest_lit_title">"آیا اینجا روشنایی دارد؟"</string>
-    <string name="quest_openingHours_title">"ساعت کاری چگونه است؟"</string>
-    <string name="quest_openingHours_signed_title">"آیا ساعت کاری در اینجا نصب شده؟"</string>
+    <string name="quest_openingHours_title">"ساعت کاری در اینجا چگونه است؟"</string>
+    <string name="quest_openingHours_signed_title">"آیا ساعت کاری در اینجا نصب شده است؟"</string>
     <string name="quest_openingHours_resurvey_title">"این ساعت کاری هنوز صحیح است؟"</string>
     <string name="quest_placeName_title">"نام این مکان چیست؟"</string>
     <string name="quest_shop_type_title2">"این چه نوع مغازه‌ای است؟"</string>
     <string name="quest_smoking_title2">"آیا سیگار کشیدن در اینجا مجاز است؟"</string>
     <string name="quest_smoothness_title">"کیفیت سطح اینجا چگونه است؟"</string>
     <string name="quest_summit_register_title2">"آیا ثبت‌نام برای اجلاس سران در اینجا وجود دارد؟"</string>
-    <string name="quest_surface_title">"سطح از چه نوع مصالحی است؟"</string>
+    <string name="quest_surface_title">"سطح اینجا از چه نوع مصالحی ساخته شده است؟"</string>
     <string name="quest_toiletAvailability_title">"آیا در اینجا سرویس‌بهداشتی وجود دارد؟"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"آیا سرویس‌بهداشتی در این مکان با صندلی چرخدار قابل دسترسی است؟"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"آیا مطمئن هستید که دوچرخه‌سواران مجاز به استفاده از این خیابان یک طرفه در هر دو جهت نیستند؟ بررسی کنید که آیا در انتهای خیابان تابلویی وجود دارد یا خیر."</string>
@@ -1173,7 +1174,7 @@
     <string name="quest_air_pump_bicycle_repair_station_title">"آیا تلمبه سالم برای دوچرخه در این محل هست؟"</string>
     <string name="action_overlays">"همپوشانی‌ها"</string>
     <string name="split_way">"تقاطع"</string>
-    <string name="quest_memorialType_title">"این چه بنای یادبودی است؟"</string>
+    <string name="quest_memorialType_title">"این سازه چه نوع بنای یادبودی است؟"</string>
     <string name="quest_memorialType_statue">"مجسمهٔ شخص"</string>
     <string name="quest_memorialType_bust">"نیم‌تنه"</string>
     <string name="quest_memorialType_plaque">"لوح / پلاک"</string>
@@ -1193,7 +1194,7 @@
     <string name="overlay_sidewalk">"پیاده‌روها"</string>
     <string name="quest_generic_answer_is_indoors">"در داخل ساختمان است"</string>
     <string name="quest_summit_cross_title">"آیا صلیب در این قله هست؟"</string>
-    <string name="quest_entrance_reference">"روی این تابلو چه نوشته شده است؟"</string>
+    <string name="quest_entrance_reference">"روی این تابلو چه چیزی نوشته شده است؟"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"برچسب ورودی و محدوده واحد‌های مجتمع"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"محدوده واحدهای مجتمع"</string>
     <string name="quest_entrance_reference_select_code_only">"برچسب ورودی"</string>
@@ -1215,7 +1216,7 @@
     <string name="quest_recycling_type_pet">"فقط حیوان‌خانگی"</string>
     <string name="street_parking_street_width">"پهنای‌ خیابان: %s"</string>
     <string name="overlay_street_parking">"پارک کنار مسیر"</string>
-    <string name="link_ohsomehex_description">"داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید"</string>
+    <string name="link_ohsomehex_description">"داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید."</string>
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
     <string name="create_node_action_description">"شما یک گره ایجاد کردید با ..."</string>
@@ -1228,7 +1229,7 @@
     <string name="quest_bicycle_incline_up_and_down">"دارای پستی و بلندی هست"</string>
     <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"فواره دیگر"</string>
-    <string name="quest_drinking_water_type_jet_water_fountain">"فواره قطره های کوچک آب می پاشد"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"فواره قطره‌های کوچک آب می‌پاشد"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"فقط پر کردن بطری‌ها"</string>
     <string name="quest_drinking_water_type_tap">"شیرآب"</string>
     <string name="quest_drinking_water_type_hand_pump">"پمپ دستی"</string>
@@ -1241,7 +1242,7 @@
     <string name="vacant_shop_title">"مغازه خالی"</string>
     <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
     <string name="quest_address_answer_no_address">"بدون آدرس"</string>
-    <string name="quest_bicycle_barrier_installation_title">"آیا این مانع دوچرخه باز می‌شود(با یا بدون کلید)؟"</string>
+    <string name="quest_bicycle_barrier_installation_title">"آیا می‌توان این مانع دوچرخه را (با یا بدون کلید) باز کرد؟"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"ثابت شده"</string>
     <string name="quest_barrier_bicycle_installation_openable">"قابل باز شدن"</string>
     <string name="quest_barrier_bicycle_installation_removable">"قابل حذف"</string>
@@ -1253,16 +1254,16 @@
     <string name="quest_presets_rename">"تغییر نام"</string>
     <string name="quest_presets_share">"اشتراک‌گذاری"</string>
     <string name="quest_presets_delete">"حذف"</string>
-    <string name="urlconfig_qr_code_description">"این کد QR را به دیگران نشان دهید تا پیش تنظیم های‌تان را اشتراک بگذارند."</string>
+    <string name="urlconfig_qr_code_description">"برای اینکه پیش‌تنظیم هایتان را با دیگران به اشتراک بگذارید این کد QR را به دیگران نشان دهید."</string>
     <string name="urlconfig_as_url">"یا به عنوان نشانی اینترنتی:"</string>
     <string name="urlconfig_url_copied">"نشانی اینترنتی در حافظه‌پنهان رونوشت شد"</string>
     <string name="urlconfig_apply_title">"اعمال پیش‌تنظیم"</string>
     <string name="urlconfig_apply_message">"%1$s از پیش تعیین شده اعمال و انتخاب شود؟"</string>
-    <string name="urlconfig_apply_message_overwrite">"نکته: پیش تنظیم شما با همین نام دوباره نویسی میشود!"</string>
+    <string name="urlconfig_apply_message_overwrite">"نکته: پیش‌تنظیم شما با همین نام رونویسی خواهد شد!"</string>
     <string name="urlconfig_switch_hint">"هر زمان که بخواهید می‌توانید تنظیمات از پیشفرض را در منوی تنظیمات تغییر دهید."</string>
     <string name="quest_bicycle_parking_type_two_tier">"محل پارک دوطبقه دوچرخه"</string>
-    <string name="user_profile_current_week_title">"در 7 روز گشته"</string>
-    <string name="user_profile_dates_mapped">"روزهایی را که اخیراً نقشه‌‌کشی کرده‌اید"</string>
+    <string name="user_profile_current_week_title">"در 7 روز گذشته"</string>
+    <string name="user_profile_dates_mapped">"روزهایی که اخیراً نقشه‌‌کشی کرده‌اید"</string>
     <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه مورد ادعا"</string>
     <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال شود."</string>
     <string name="confirmation_replace_shop_title">"حالا مکان دیگری است؟"</string>
@@ -1270,22 +1271,22 @@
     <string name="confirmation_replace_shop_yes">"الان مکان دیگری است"</string>
     <string name="confirmation_replace_shop_no">"هنوز همین مکان است"</string>
     <string name="move_node">"در این محل کمی متفاوت است…"</string>
-    <string name="quest_move_node_message">"با حرکت دادن نشانه می توانید مکان را اصلاح کنید.
-حاالا جابجاش کنم؟"</string>
+    <string name="quest_move_node_message">"با حرکت دادن نشانه می‌توانید موقعیت مکان را اصلاح کنید.
+حالا جابجاش کنم؟"</string>
     <string name="node_moved_not_far_enough">"لطفا آن را بیشتر حرکت دهید"</string>
     <string name="node_moved_too_far">"خیلی دور رفت. یک یادداشت بگذارید"</string>
     <string name="node_moved">"توسط %s منتقل شد"</string>
     <string name="move_node_description">"نقشه را بکشید تا نشانه در مکان صحیح قرار گیرد. از بزرگنمایی استفاده کنید و سعی کنید تا حد امکان دقیق باشید. لطفاً توجه داشته باشید که مکان نمایش داده شده شما ممکن است دقیق تر از چیزی باشد که نشان داده شده است."</string>
     <string name="move_node_action_description">"شما گره را جابجا کردید"</string>
-    <string name="quest_cycleway_value_shoulder">"هیچ، اما شانه مسیر برای دوچرخه سواران قابل استفاده است"</string>
-    <string name="quest_placeName_no_name_answer">"هیچگونه تابلوئی وجود ندارد"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"این عرض غیر قابل قبول به نظر می رسد. به یاد داشته باشید، عرض مذکور از لبه تا لبه باشد، شامل پارکینگ در خیابان، خطوط دوچرخه و غیره."</string>
-    <string name="overlay_cycleway">"مسیرهای دوچرخه سواری"</string>
+    <string name="quest_cycleway_value_shoulder">"هیچ، اما شانه مسیر برای دوچرخه‌سواران قابل استفاده است"</string>
+    <string name="quest_placeName_no_name_answer">"هیچگونه تابلویی وجود ندارد"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"این عرض غیر قابل قبول به نظر می‌رسد. به یاد داشته باشید، عرض مذکور از لبه تا لبه باشد، شامل پارکینگ در خیابان، خطوط دوچرخه و غیره."</string>
+    <string name="overlay_cycleway">"مسیرهای دوچرخه‌سواری"</string>
     <string name="bicycle_boulevard_is_a">"این یک %1$s است"</string>
     <string name="bicycle_boulevard_is_not_a">"این %1$s نیست"</string>
     <string name="bicycle_boulevard">"بلوار دوچرخه"</string>
     <string name="separate_cycleway_no">"دوچرخه سواری ممنوع"</string>
-    <string name="separate_cycleway_allowed">"دوچرخه سواری مجاز "</string>
+    <string name="separate_cycleway_allowed">"دوچرخه‌سواران مجاز هستند"</string>
     <string name="separate_cycleway_no_or_allowed">"برای دوچرخه سواری مشخص نشده است (دوچرخه سواری ممکن است همچنان مجاز باشد)"</string>
     <string name="separate_cycleway_non_segregated">"مسیر با استفاده مشترک"</string>
     <string name="separate_cycleway_segregated">"مسیر دوچرخه و پیاده مجزا"</string>
@@ -1302,4 +1303,8 @@
 &lt;p&gt;در حالی که گوشی همراه را بصورت مستقیم به سمت پایین می‌گیرید نقاط شروع و پایان را تنظیم کنید (به طوری که فلش سفید را از بالا مشاهده کنید) تا کاملاً از این مشکل برای اندازه‌گیری‌های افقی جلوگیری به عمل آید.&lt;/p&gt;
 &lt;p&gt;برای اندازه‌گیری‌های عمودی، لازم است به طور چشمی بررسی کنید که از جهات مختلف، نقطه شروع نسبت به سطح زمین حرکتی نداشته باشد.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"این برنامه در &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;سامانه خدمات بازار گوگل for AR&lt;/a&gt; (ARCore), توسط بازار گوگل ارائه شده و تحت پیوند زیر اجرا می شود &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"این نوع حُستار به طور پیش‌فرض غیرفعال است زیرا ممکن است نیاز به بررسی مجدد وضعیت در بخش مشخصی از سال داشته باشد."</string>
+    <string name="quest_gritBinSeasonal_title">"آیا اینجا هم خارج از زمستان است؟"</string>
+    <string name="street_parking_staggered_on_street">"به صورت متناوب در دو طرف خیابان"</string>
+    <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
 </resources>

@@ -1099,7 +1099,6 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_seating_indoor_only">"Apenas assentos internos"</string>
     <string name="quest_seating_outdoor_only">"Apenas assentos externos"</string>
     <string name="quest_seating_indoor_and_outdoor">"Assentos internos e externos"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Este tipo de questão está desabilitado por padrão porque pode precisar de uma checagem durante uma parte específica do ano para verificar os assentos externos"</string>
     <string name="no_camera_permission_toast">"Proibido filmar ou fotografar"</string>
     <string name="quest_accepts_cash_title2">"Pagamento em dinheiro é aceito aqui?"</string>
     <string name="quest_address_street_title2">"Em que rua é isto?"</string>
@@ -1273,5 +1272,28 @@ Que tipo de memorial é esse?"</string>
     <string name="confirmation_replace_shop_message">"Nesse caso, o horário de funcionamento, as informações de contato etc. também serão alterados."</string>
     <string name="confirmation_replace_shop_yes">"Lugar diferente agora"</string>
     <string name="confirmation_replace_shop_no">"Ainda no mesmo lugar"</string>
+    <string name="move_node">"Está em uma posição um pouco diferente..."</string>
+    <string name="quest_move_node_message">"Você pode corrigir a posição movendo o recurso.
+Movê-lo agora?"</string>
+    <string name="node_moved_not_far_enough">"Por favor, mova-o mais longe"</string>
+    <string name="node_moved_too_far">"Mudou muito. Considere deixar uma nota"</string>
+    <string name="node_moved">"Movido por %s"</string>
+    <string name="move_node_description">"Arraste o mapa para colocar o elemento na posição correta. Use a função de zoom e tente ser o mais preciso possível. Esteja ciente de que o local exibido pode ser menos exato do que o exibido."</string>
+    <string name="move_node_action_description">"Você moveu o nó"</string>
+    <string name="quest_cycleway_value_shoulder">"nenhum, mas o acostamento é utilizável para ciclistas"</string>
+    <string name="quest_placeName_no_name_answer">"Não há sinal de nome"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Essa largura parece implausível. Lembre-se, esta deve ser a largura de meio-fio a meio-fio, incluindo estacionamento na rua, ciclovias, etc."</string>
+    <string name="overlay_cycleway">"ciclovias"</string>
+    <string name="bicycle_boulevard_is_a">"É um %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
+    <string name="bicycle_boulevard">"Avenida da bicicleta"</string>
+    <string name="separate_cycleway_no">"Sem andar de bicicleta"</string>
+    <string name="separate_cycleway_allowed">"Ciclistas são permitidos"</string>
+    <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
+    <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
+    <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
+    <string name="separate_cycleway_exclusive">"Caminho somente para bicicletas"</string>
+    <string name="separate_cycleway_path">"Caminho ou trilha"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"Compartilhada explicitamente com calçada, ambas as direções"</string>
+    <string name="measure_info_title">"Alcançando a precisão ideal"</string>
 </resources>

@@ -837,7 +837,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_seating_indoor_only">"屋内席のみ"</string>
     <string name="quest_seating_outdoor_only">"屋外席のみ"</string>
     <string name="quest_seating_indoor_and_outdoor">"屋内席と屋外席が両方あり"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"この探求タイプは、屋外の座席を確認するために1年の特定の時期にチェックする必要があるため、デフォルトでは無効になっています。"</string>
     <string name="quest_accepts_cash_title2">"ここは現金での支払いが可能ですか？"</string>
     <string name="quest_address_street_title2">"ここは何通りにありますか？"</string>
     <string name="quest_airConditioning_title">"この場所は空調されていますか？"</string>

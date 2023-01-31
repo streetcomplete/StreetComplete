@@ -1096,7 +1096,6 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_seating_indoor_only">"Istumapaikat vain sisällä"</string>
     <string name="quest_seating_outdoor_only">"Istumapaikat vain ulkona"</string>
     <string name="quest_seating_indoor_and_outdoor">"Istumapaikkoja sisällä ja ulkona"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Tämä kyselytyyppi on poistettu oletuksena käytöstä, koska se saattaa vaatia tietyn vuodenajan ulkoistumapaikkojen varmistamiseksi."</string>
     <string name="no_camera_permission_toast">"Kameran käyttöoikeutta ei ole"</string>
     <string name="quest_accepts_cash_title2">"Voiko täällä maksaa käteisellä?"</string>
     <string name="quest_address_street_title2">"Millä kadulla tämä on?"</string>

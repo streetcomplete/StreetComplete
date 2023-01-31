@@ -82,6 +82,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
         binding.questSelectionList.adapter = questSelectionAdapter
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_quest_selection, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -96,6 +97,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
         })
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_reset -> {

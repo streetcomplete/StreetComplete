@@ -1100,7 +1100,6 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_seating_indoor_only">"Apenas lugares para sentar no interior"</string>
     <string name="quest_seating_outdoor_only">"Apenas lugares para sentar no exterior"</string>
     <string name="quest_seating_indoor_and_outdoor">"Existem lugares para sentar no interior e no exterior"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Este tipo de missão está desativada de origem porque pode necessitar de verificação durante uma parte específica do ano, para poder verificar os lugares no exterior (esplanadas)."</string>
     <string name="no_camera_permission_toast">"Sem permissão de câmara"</string>
     <string name="quest_accepts_cash_title2">"Isto aceita pagamentos em dinheiro?"</string>
     <string name="quest_address_street_title2">"A que estrada pertence isto?"</string>

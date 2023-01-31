@@ -12,7 +12,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerar anteckningar som inte är ställda som frågor"</string>
     <string name="pref_title_map_cache">"Storlek på kartcache"</string>
     <string name="map_btn_gps_tracking">"Följ mig"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap-bidragare"</string>
+    <string name="map_attribution_osm">"© OpenStreetMaps bidragsgivare"</string>
     <string name="quest_generic_otherAnswers">"Andra svar…"</string>
     <string name="quest_generic_answer_notApplicable">"Svårt att säga…"</string>
     <string name="quest_generic_confirmation_title">"Är du säker?"</string>
@@ -51,7 +51,7 @@
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Platsbehörighet är nödvändigt för att visa din position på kartan och söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick och bidragare"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Projektets hem"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -268,7 +268,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_chili">"Chili"</string>
     <string name="produce_persimmons">"Persimon"</string>
     <string name="produce_pineapples">"Ananas"</string>
-    <string name="produce_pepper">"Paprika"</string>
+    <string name="produce_pepper">"Peppar"</string>
     <string name="produce_pistachios">"Pistasch"</string>
     <string name="produce_plums">"Plommon"</string>
     <string name="produce_raspberries">"Hallon"</string>
@@ -804,7 +804,7 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_maxheight_answer_noSign_question_yes">"Höga lastbilar kan passera"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
-    <string name="quest_parkingType_street_side">"Parkering precis bredvid vägen"</string>
+    <string name="quest_parkingType_street_side">"Parkering i parkeringsficka"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
     <string name="quest_tracktype_grade2a">"Fast men obelagd"</string>
     <string name="quest_tracktype_grade3a">"Mestadels fast"</string>
@@ -985,11 +985,11 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="street_parking_parallel">"Parallell"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Vinkelrät"</string>
-    <string name="street_parking_on_street">"På vägbanan"</string>
-    <string name="street_parking_half_on_kerb">"Delvis på vägbanan"</string>
-    <string name="street_parking_on_kerb">"I anslutning till vägbanan"</string>
-    <string name="street_parking_street_side">"I anslutning till vägbanan endast i särskilda utrymmen"</string>
-    <string name="street_parking_painted_area_only">"Endast på vägbanan i särskilda utrymmen"</string>
+    <string name="street_parking_on_street">"På gatan"</string>
+    <string name="street_parking_half_on_kerb">"Delvis på trottoaren"</string>
+    <string name="street_parking_on_kerb">"På trottoaren"</string>
+    <string name="street_parking_street_side">"Bara i parkeringsficka"</string>
+    <string name="street_parking_painted_area_only">"Endast på gatan i parkeringsficka"</string>
     <string name="street_parking_separate">"Parkering visas separat på kartan"</string>
     <string name="street_parking_no">"Ingen parkering här / Inte tillåtet"</string>
     <string name="street_parking_prohibited">"Ingen parkering"</string>
@@ -1101,7 +1101,6 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="quest_seating_indoor_only">"Bara sittplatser inne"</string>
     <string name="quest_seating_outdoor_only">"Bara sittplatser ute"</string>
     <string name="quest_seating_indoor_and_outdoor">"Både sittplatser inne och ute"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Uppdragstypen är inaktiverad som standard eftersom utomhusmöbler ibland bara förekommer på sommaren och det gör veriferingen svår."</string>
     <string name="no_camera_permission_toast">"Ingen kamerabehörighet"</string>
     <string name="quest_accepts_cash_title2">"Kan man betala med kontanter här?"</string>
     <string name="quest_address_street_title2">"Vilken gata är det här på?"</string>
@@ -1301,8 +1300,13 @@ Flytta den?"</string>
     <string name="separate_cycleway_path">"Stig eller spår"</string>
     <string name="quest_fireHydrant_type_pipe">"Rör"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"gång- och cykelbana, båda riktningarna"</string>
+    <string name="measure_info_title">"Uppnå optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;Ibland antar ARCore att marken (initialt) är lite högre eller lägre än vad den egentligen är. Det skapar en felmarginal som blir större ju mer du lutar mobilen mot horisonten.&lt;/p&gt;
 &lt;p&gt;Sätt därför start- och slutpunkter medan du lutar mobilen rakt ner (så att du ser den vita pilen ovanifrån) för att helt undvika detta felet för horisontella mätningar.&lt;/p&gt;
 &lt;p&gt;För att mäta vertikalt måste du istället kontrollera att startpunkten inte rör sig i relation till marken genom att titta på den från flera håll.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Den här appen använder sig av &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play-tjänster för AR&lt;/a&gt; (ARCore), som tillhandahålls av Google och styrs av &lt;a href=\"https://policies.google.com/privacy\"&gt;Googles integritetspolicy&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Uppdragstypen är inaktiverad som standard eftersom den kan kräva att saker kontrolleras en viss tid på året."</string>
+    <string name="quest_gritBinSeasonal_title">"Finns det här även när det inte är vinter?"</string>
+    <string name="street_parking_staggered_on_street">"På gatan men bara en sida åt gången"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Delvis på trottaren men bara en sida åt gången"</string>
 </resources>

@@ -1101,7 +1101,6 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_seating_indoor_only">"Sitteplasser bare innendørs"</string>
     <string name="quest_seating_outdoor_only">"Sitteplasser bare utendørs"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sitteplasser både innendørs og utendørs"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Denne oppgavetypen er i utgangspunktet deaktivert fordi den kan kreve at man undersøker om det er sitteplasser utendørs kun deler av året."</string>
     <string name="no_camera_permission_toast">"Kameratillatelse mangler"</string>
     <string name="quest_accepts_cash_title2">"Blir kontanter akseptert her?"</string>
     <string name="quest_address_street_title2">"I hvilken gate ligger dette?"</string>
@@ -1136,6 +1135,7 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_toiletAvailability_title">"Er det et toalett her?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er dette toalettet tilgjengelig med rullestol?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Er du sikker på at syklister ikke har lov til å sykle begge veier på denne enveiskjørte veien? Sjekk om det er et skilt i enden av veien hvis du er i tvil."</string>
+    <string name="link_valhalla_description">"Navigasjonsmotor med et veldig lite minnefotavtrykk, multimodal navigering, isokroner og mer."</string>
     <string name="link_backofyourhand_description">"Hvor godt kjenner du nabolaget ditt? Test dine kunnskaper ved å lokalisere veiene."</string>
     <string name="link_notesreview_description">"Enkelt se, filtrere og kommentere merknader laget av deg selv og andre. Mange merknader kan løses ved å legge inn den oppgitte informasjonen i kartet med iD eller JOSM"</string>
     <string name="quest_accepts_cards">"Kan man betale med kreditt- eller debetkort her?"</string>
@@ -1259,10 +1259,14 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="urlconfig_as_url">"Eller som en URL"</string>
     <string name="urlconfig_url_copied">"URL kopiert til utklippstavlen"</string>
     <string name="urlconfig_apply_title">"Bruk mal"</string>
+    <string name="urlconfig_apply_message">"Ta i bruk og velg oppdragsoppsett %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Merk: oppdragsoppsett med samme navn vil bli overskrevet!"</string>
+    <string name="urlconfig_switch_hint">"Du kan til enhver tid bytte oppdragssett i innstillingene."</string>
     <string name="quest_bicycle_parking_type_two_tier">"To-etasjes sykkelstativ"</string>
     <string name="user_profile_current_week_title">"Denne uka"</string>
     <string name="user_profile_dates_mapped">"Dine nylige kartleggingsdager"</string>
     <string name="quest_cycleway_value_advisory_lane">"anbefalt sykkelfelt"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Etter å ha installert appen, skann QR-koden igjen eller klikk &lt;a href=\"%s\"&gt;denne linken&lt;/a&gt; for bruke oppdragssettet."</string>
     <string name="confirmation_replace_shop_title">"Er det en annen butikk nå?"</string>
     <string name="confirmation_replace_shop_message">"I så fall har åpningstid, kontaktinformasjon osv. også endret seg."</string>
     <string name="confirmation_replace_shop_yes">"En annen butikk nå"</string>
@@ -1280,6 +1284,7 @@ Vil du flytte den nå?"</string>
     <string name="overlay_cycleway">"Sykkelveier"</string>
     <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
+    <string name="bicycle_boulevard">"Sykkelgate"</string>
     <string name="separate_cycleway_allowed">"Sykling er tillatt"</string>
     <string name="separate_cycleway_no_or_allowed">"Ikke tilrettelagt for sykling (men kan likevel være tillatt)"</string>
     <string name="separate_cycleway_non_segregated">"Gang- og sykkelvei, felles"</string>
@@ -1289,5 +1294,7 @@ Vil du flytte den nå?"</string>
     <string name="cycleway_reverse_direction">"Snu retningen på sykkelveien"</string>
     <string name="cycleway_reverse_direction_warning">"En sykkelvei som går inn i motsatt retning er veldig sjelden."</string>
     <string name="cycleway_reverse_direction_toast">"Trykk på den som skal reverseres"</string>
+    <string name="separate_cycleway_path">"Sti eller vei"</string>
+    <string name="quest_fireHydrant_type_pipe">"Rør"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"Fortau skiltet for syklende og gående, i begge retninger"</string>
 </resources>

@@ -1094,7 +1094,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_seating_indoor_only">"Sedenie iba vnútri"</string>
     <string name="quest_seating_outdoor_only">"Sedenie iba vonku"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sedenie vnútri aj vonku"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože môže vyžadovať kontrolu počas určitej časti roka, aby sa overilo sedenie vonku."</string>
     <string name="no_camera_permission_toast">"Žiadne povolenie pre fotoaparát"</string>
     <string name="quest_accepts_cash_title2">"Prijímajú tu platby v hotovosti?"</string>
     <string name="quest_address_street_title2">"Na ktorej ulici je toto?"</string>

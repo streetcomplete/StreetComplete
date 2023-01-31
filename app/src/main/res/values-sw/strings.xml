@@ -1054,7 +1054,6 @@
     <string name="quest_seating_indoor_only">"Viti vya ndani pekee"</string>
     <string name="quest_seating_outdoor_only">"Viti vya nje tu"</string>
     <string name="quest_seating_indoor_and_outdoor">"Viti vyote vya ndani na vya nje"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"aina hiiya jitihada imezimwa kwa chaguo msingi kwa sababu inahitaji uangalizi wa sehemu maalumu katika mwaka huu kwa ajili ya kuthibitisha kueka viti mlango wa nje"</string>
     <string name="no_camera_permission_toast">"kamera hairuhusiwi"</string>
     <string name="quest_accepts_cash_title2">"Je, malipo ya pesa taslimu yanakubaliwa hapa?"</string>
     <string name="quest_address_street_title2">"Mtaa gani huu?"</string>

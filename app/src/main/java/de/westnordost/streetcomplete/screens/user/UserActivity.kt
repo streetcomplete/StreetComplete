@@ -61,6 +61,7 @@ class UserActivity :
         userLoginStatusSource.addListener(loginStatusListener)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val countryDetailsFragment = countryDetailsFragment
         if (countryDetailsFragment != null && countryDetailsFragment.isShowing) {

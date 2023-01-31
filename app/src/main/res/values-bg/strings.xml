@@ -1086,7 +1086,6 @@
     <string name="quest_seating_indoor_only">"Местата за сядане са само вътре"</string>
     <string name="quest_seating_outdoor_only">"Местата за сядане са само на открито"</string>
     <string name="quest_seating_indoor_and_outdoor">"Има места за сядане и вътре и отвън"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Тази задача е изключена по подразбиране, понеже изисква проверка през определено време на годината относно местата за сядане на открито."</string>
     <string name="no_camera_permission_toast">"Камерата няма разрешение"</string>
     <string name="quest_accepts_cash_title2">"Тук приемат ли пари в брой?"</string>
     <string name="quest_address_street_title2">"Това на коя улица е?"</string>

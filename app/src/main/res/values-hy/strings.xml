@@ -1071,7 +1071,6 @@
     <string name="quest_seating_indoor_only">"Միայն փակ նստատեղ"</string>
     <string name="quest_seating_outdoor_only">"Բաց միայն նստատեղ"</string>
     <string name="quest_seating_indoor_and_outdoor">"Ինչպես ներսի, այնպես էլ բացօթյա նստատեղ"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն կարող է պահանջել ստուգում տարվա որոշակի մասի ընթացքում `բացօթյա նստատեղը ստուգելու համար:"</string>
     <string name="no_camera_permission_toast">"Տեսախցիկի թույլտվություն չկա"</string>
     <string name="quest_accepts_cash_title2">"Այստեղ ընդունվում է կանխիկ վճարում:"</string>
     <string name="quest_address_street_title2">"Որ փողոցում է սա:"</string>

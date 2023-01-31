@@ -1,22 +1,22 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 396872
-  linesOfInterfaceMarkupChanged: 142178
-  assetFilesChanged: 1951
+  linesOfCodeChanged: 400246
+  linesOfInterfaceMarkupChanged: 142613
+  assetFilesChanged: 1952
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17432
-  linesOfInterfaceMarkupChanged: 4943
+  linesOfCodeChanged: 17534
+  linesOfInterfaceMarkupChanged: 4956
   assetFilesChanged: 614
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 17087
-  linesOfInterfaceMarkupChanged: 2357
-  assetFilesChanged: 151
+  linesOfCodeChanged: 17137
+  linesOfInterfaceMarkupChanged: 2425
+  assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 10550
-  linesOfInterfaceMarkupChanged: 777
+  linesOfCodeChanged: 10606
+  linesOfInterfaceMarkupChanged: 793
   assetFilesChanged: 70
 - name: "ENT8R"
   githubUsername: "ENT8R"
@@ -33,7 +33,7 @@
   assetFilesChanged: 69
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 2627
+  linesOfCodeChanged: 2680
   linesOfInterfaceMarkupChanged: 2180
   assetFilesChanged: 5
 - name: "YoshiRulz"
@@ -146,15 +146,14 @@
   githubUsername: "Map3428"
   linesOfCodeChanged: 78
 - name: "RiffLord"
-  githubUsername: "RiffLord"
-  linesOfCodeChanged: 69
+  linesOfCodeChanged: 66
+- name: "Emil"
+  githubUsername: "coolultra1"
+  linesOfCodeChanged: 57
 - name: "Daniel Lublin"
   githubUsername: "quite"
   linesOfCodeChanged: 56
   linesOfInterfaceMarkupChanged: 34
-- name: "Emil"
-  githubUsername: "coolultra1"
-  linesOfCodeChanged: 55
 - name: "xuiqzy"
   githubUsername: "xuiqzy"
   linesOfCodeChanged: 48
@@ -233,6 +232,9 @@
 - name: "Varun Talwar"
   githubUsername: "tallytalwar"
   linesOfCodeChanged: 4
+- name: "Bruno Pezer"
+  githubUsername: "RiffLord"
+  linesOfCodeChanged: 3
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3

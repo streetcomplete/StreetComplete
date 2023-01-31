@@ -1104,7 +1104,6 @@
     <string name="quest_seating_indoor_only">"جلوس داخلي فقط"</string>
     <string name="quest_seating_outdoor_only">"جلوس في خارجي فقط"</string>
     <string name="quest_seating_indoor_and_outdoor">"أماكن جلوس داخلية وخارجية"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"يتم تعطيل نوع المهمة هذا افتراضيًا لأنه قد يتطلب التحقق من توفر أماكن الجلوس الخارجية على مدار السنة."</string>
     <string name="no_camera_permission_toast">"لا يوجد إذن باستخدام الكاميرا"</string>
     <string name="quest_accepts_cash_title2">"هل الدفع نقدا مسموح هنا?"</string>
     <string name="quest_address_street_title2">"في أي شارع هذا؟"</string>

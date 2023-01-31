@@ -1093,7 +1093,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_seating_indoor_only">"Alleen zitplaatsen binnen"</string>
     <string name="quest_seating_outdoor_only">"Alleen zitplaatsen buiten"</string>
     <string name="quest_seating_indoor_and_outdoor">"Zowel zitplaatsen binnen als buiten"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Dit type vraag is standaard uitgeschakeld omdat mogelijk alleen tijdens een bepaald deel van het jaar kan worden gecontroleerd of er zitplaatsen buiten zijn."</string>
     <string name="no_camera_permission_toast">"Geen cameratoestemming"</string>
     <string name="quest_accepts_cash_title2">"Wordt hier contante betaling geaccepteerd?"</string>
     <string name="quest_address_street_title2">"In welke straat is dit?"</string>

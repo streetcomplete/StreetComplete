@@ -1099,7 +1099,6 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_seating_indoor_only">"Barruko eserlekuak soilik"</string>
     <string name="quest_seating_outdoor_only">"Kanpoko eserlekuak soilik"</string>
     <string name="quest_seating_indoor_and_outdoor">"Bai barruko zein kanpoko eserlekuak"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Bilaketa mota hau lehenespenez desgaituta dago, baliteke urteko zati zehatz batean egiaztatzea behar izatea kanpoko eserlekuak egiaztatzeko."</string>
     <string name="no_camera_permission_toast">"Ez dago kameraren baimenik"</string>
     <string name="quest_accepts_cash_title2">"Eskudirutan ordaintzea onartzen da hemen?"</string>
     <string name="quest_address_street_title2">"Zein kaletan dago hau?"</string>
