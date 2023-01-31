@@ -243,6 +243,24 @@
                 "animal_shelter": {
                     "label": "Tierheim"
                 },
+                "archaeological_site": {
+                    "label": "Typ",
+                    "options": {
+                        "baths": "Badeanlage (Therme)",
+                        "city": "Historische Stadt",
+                        "crannog": "Crannóg (Insel)",
+                        "enclosure": "Umgrenzung",
+                        "fortification": "Befestigung",
+                        "hut_circle": "Hüttenkreis (kreisförmige Vertiefung)",
+                        "megalith": "Megalith (Steinblock)",
+                        "necropolis": "Nekropole (Totenstadt)",
+                        "petroglyph": "Petroglyph (Felsbild)",
+                        "roman_circus": "Römischer Circus",
+                        "roman_villa": "Römische Villa",
+                        "settlement": "Historische Siedlung",
+                        "tumulus": "Tumulus (Hügelgrab)"
+                    }
+                },
                 "architect": {
                     "label": "Architekt",
                     "terms": "architekt,baukünstler"
@@ -254,7 +272,18 @@
                     "label": "Künstler"
                 },
                 "artwork_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "bust": "Büste",
+                        "graffiti": "Graffiti",
+                        "installation": "Kunstinstallation",
+                        "mosaic": "Mosaik",
+                        "mural": "Wandmalerei",
+                        "painting": "Gemälde",
+                        "relief": "Relief",
+                        "sculpture": "Skulptur",
+                        "statue": "Statue"
+                    }
                 },
                 "ascent": {
                     "label": "Anstieg",
@@ -264,7 +293,28 @@
                     "label": "Geldautomat"
                 },
                 "attraction": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "alpine_coaster": "Alpine-Coaster",
+                        "amusement_ride": "Fahrgeschäft",
+                        "animal": "Tiergehege",
+                        "big_wheel": "Riesenrad",
+                        "bumper_car": "Autoscooter",
+                        "bungee_jumping": "Bungee Jumping",
+                        "carousel": "Karussell",
+                        "dark_ride": "Themenfahrt (Dark Ride)",
+                        "drop_tower": "Freifallturm",
+                        "kiddie_ride": "Kinder-Fahrautomat",
+                        "log_flume": "Wildwasserbahn im Baumstamm",
+                        "maze": "Labyrinth",
+                        "pirate_ship": "Schiffsschaukel",
+                        "river_rafting": "Stromschnellenbahn (Rapid River)",
+                        "roller_coaster": "Achterbahn",
+                        "summer_toboggan": "Sommerrodelbahn",
+                        "swing_carousel": "Kettenkarussell",
+                        "train": "Bimmelbahn für Touristen",
+                        "water_slide": "Wasserrutsche"
+                    }
                 },
                 "automated": {
                     "label": "Automatisch"
@@ -293,7 +343,32 @@
                     "terms": "bar"
                 },
                 "barrier": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "block": "Großer Block",
+                        "bollard": "Poller",
+                        "cattle_grid": "Viehgitter",
+                        "chain": "Kette",
+                        "city_wall": "Stadtmauer",
+                        "cycle_barrier": "Umlaufgitter",
+                        "ditch": "Senke",
+                        "entrance": "Durchgang",
+                        "fence": "Zaun",
+                        "gate": "Tor",
+                        "guard_rail": "Leitplanke",
+                        "hedge": "Hecke",
+                        "height_restrictor": "Durchfahrtshöhenbegrenzer",
+                        "jersey_barrier": "Jersey-Barriere (Betonschutzwand)",
+                        "kerb": "Bordstein",
+                        "kissing_gate": "Kissing Gate (eine Art von Viehgatter)",
+                        "lift_gate": "Schranke (Schlagbaum)",
+                        "retaining_wall": "Stützmauer",
+                        "stile": "Zaunübertritt",
+                        "swing_gate": "Drehschranke",
+                        "toll_booth": "Mautstation",
+                        "turnstile": "Drehkreuz (halbe Höhe)",
+                        "wall": "Mauer"
+                    }
                 },
                 "barrier_planter": {
                     "label": "Hindernis",
@@ -303,7 +378,13 @@
                     }
                 },
                 "basin": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "detention": "Rückhaltebecken (Trockenbecken)",
+                        "evaporation": "Verdunstungsbecken",
+                        "infiltration": "Versickerungsbecken",
+                        "retention": "Rückhaltebecken (Dauerstaubecken)"
+                    }
                 },
                 "bath/open_air": {
                     "label": "Im Freien"
@@ -312,7 +393,14 @@
                     "label": "Sandbad"
                 },
                 "bath/type": {
-                    "label": "Art der Badeanstalt"
+                    "label": "Art der Badeanstalt",
+                    "options": {
+                        "hammam": "Hammam",
+                        "hot_spring": "Thermalquelle",
+                        "lake": "Seebad",
+                        "onsen": "Onsen",
+                        "thermal": "Thermalbad"
+                    }
                 },
                 "beauty": {
                     "label": "Schönheitssalon",
@@ -368,10 +456,28 @@
                     }
                 },
                 "board_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "art": "Kunst",
+                        "astronomy": "Astronomie",
+                        "geology": "Geologie",
+                        "history": "Geschichte",
+                        "nature": "Natur",
+                        "notice": "Aushang",
+                        "plants": "Pflanzen",
+                        "welcome_sign": "Willkommensschild",
+                        "wildlife": "Tierwelt"
+                    }
                 },
                 "bollard": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "fixed": "Fest eingebauter Poller",
+                        "flexible": "Flexibler Poller",
+                        "foldable": "Klappbarer Poller",
+                        "removable": "Entfernbarer Poller",
+                        "rising": "Ausfahrbarer Poller"
+                    }
                 },
                 "booth": {
                     "label": "Kabine",
@@ -437,13 +543,6 @@
                     "label": "Vorgefertigt",
                     "terms": "vorgefertigt"
                 },
-                "building_area": {
-                    "label": "Gebäude",
-                    "terms": "gebäude,bau,bauwerk,haus"
-                },
-                "building_area_yes": {
-                    "label": "Gebäude"
-                },
                 "bunker_type": {
                     "label": "Typ"
                 },
@@ -487,7 +586,7 @@
                     "terms": "kapazität,fassungsvermögen"
                 },
                 "capacity/caravans": {
-                    "label": "Kapazität (Wohnwagen)",
+                    "label": "Kapazität (Wohnmobile / Wohnwagen)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -509,6 +608,9 @@
                 "capacity_volume": {
                     "label": "Volumen (Kubikmeter)",
                     "placeholder": "50, 100, 200..."
+                },
+                "caravans": {
+                    "label": "Wohnmobile / Wohnwagen"
                 },
                 "cash_in": {
                     "label": "Einzahlmöglichkeit"
@@ -542,7 +644,8 @@
                 },
                 "check_date": {
                     "label": "Datum der letzten Überprüfung",
-                    "placeholder": "JJJJ-MM-TT"
+                    "placeholder": "JJJJ-MM-TT",
+                    "terms": "datum,prüfung,letzte prüfung,überprüfung,check,erhebung,vorortüberprüfung"
                 },
                 "circumference": {
                     "label": "Stammumfang (auf Brusthöhe)",
@@ -619,22 +722,80 @@
                     "terms": "überdacht,überdeckt"
                 },
                 "covered_no": {
-                    "label": "Überdacht",
                     "options": {
                         "no": "Nein",
                         "undefined": "Vermutlich Nein",
                         "yes": "Ja"
-                    },
-                    "terms": "überdacht,abgedeckt,bedeckt"
+                    }
                 },
                 "craft": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "agricultural_engines": "Landmaschinenmechaniker",
+                        "basket_maker": "Korbflechterei",
+                        "beekeeper": "Imkerei",
+                        "blacksmith": "Schmiede",
+                        "boatbuilder": "Bootsbauer",
+                        "bookbinder": "Buchbinder",
+                        "brewery": "Handwerksbrauerei",
+                        "builder": "Bauunternehmer",
+                        "carpenter": "Zimmerer",
+                        "carpet_layer": "Teppichleger",
+                        "caterer": "Catering",
+                        "chimney_sweeper": "Schornsteinfeger",
+                        "cleaning": "Reinigungsdienst",
+                        "clockmaker": "Uhrmacher (Standuhr)",
+                        "confectionery": "Konditor",
+                        "distillery": "Brennerei",
+                        "dressmaker": "Damenschneiderei",
+                        "electrician": "Elektriker",
+                        "electronics_repair": "Elektronik-Reparaturdienst",
+                        "floorer": "Bodenleger",
+                        "gardener": "Landschaftsgärtner",
+                        "glaziery": "Glaserei",
+                        "grinding_mill": "Getreidemühle",
+                        "handicraft": "Kunsthandwerk",
+                        "hvac": "Heizungs-, Lüftungs- und Klimatechnik",
+                        "insulation": "Fachbetrieb für Dämmarbeiten an Gebäuden",
+                        "jeweller": "Juwelier",
+                        "joiner": "Tischlerei",
+                        "key_cutter": "Schlüsselschneider",
+                        "locksmith": "Schlüsselmacher",
+                        "metal_construction": "Metallbaubetrieb",
+                        "oil_mill": "Ölmühle",
+                        "painter": "Malerbetrieb",
+                        "parquet_layer": "Parkettleger",
+                        "photographer": "Fotograf",
+                        "photographic_laboratory": "Fotolabor",
+                        "plasterer": "Stuckateur",
+                        "plumber": "Sanitärbetrieb",
+                        "pottery": "Töpferei",
+                        "rigger": "Takler",
+                        "roofer": "Dachdeckerbetrieb",
+                        "saddler": "Sattlerei",
+                        "sailmaker": "Segelmacher",
+                        "sawmill": "Sägewerk",
+                        "scaffolder": "Gerüstbaubetrieb",
+                        "sculptor": "Bildhauer",
+                        "shoemaker": "Schuster",
+                        "signmaker": "Schilder- und Lichtreklamehersteller",
+                        "stonemason": "Steinmetz",
+                        "tailor": "Herrenschneiderei",
+                        "tiler": "Fliesenleger",
+                        "tinsmith": "Spengler/Klempner",
+                        "upholsterer": "Raumausstatter",
+                        "watchmaker": "Uhrmacher (Armbanduhr)",
+                        "window_construction": "Fensterbauer",
+                        "winery": "Weingut"
+                    }
                 },
                 "crane/type": {
                     "label": "Krantyp",
                     "options": {
                         "floor-mounted_crane": "Am Boden befestigter Kran",
+                        "gantry_crane": "Portalkran",
                         "portal_crane": "Portalkran",
+                        "tower_crane": "Turmkran",
                         "travel_lift": "Travellift"
                     }
                 },
@@ -673,8 +834,8 @@
                     "label": "Typ",
                     "options": {
                         "traffic_signals": "Gehweh-Querung mit Ampel",
-                        "uncontrolled": "Nur mit Straßenmarkierung",
-                        "unmarked": "Ohne Straßenmarkierung und ohne Ampel"
+                        "uncontrolled": "Nur Fahrbahnmarkierung",
+                        "unmarked": "Ohne Fahrbahnmarkierung oder Ampel"
                     }
                 },
                 "crossing/barrier": {
@@ -697,7 +858,7 @@
                     "label": "Warnlicht am Bahnübergang"
                 },
                 "crossing/markings": {
-                    "label": "Straßenmarkierung",
+                    "label": "Fahrbahnmarkierung",
                     "options": {
                         "dashes": "Gestrichelte Linien",
                         "dots": "Gepunktete Linien",
@@ -715,10 +876,10 @@
                         "zebra:double": "Zebrastreifen mit geteilten Querstreifen",
                         "zebra:paired": "Zebrasteifen mit gepaarten Querstreifen"
                     },
-                    "terms": "markierung,markierungen,kennzeichnung,linien,straßenmarkierung,straßenmarkierungen,straßenkennzeichnung,straßenlinien,bodenmarkierung,bodenmarkierungen,bodenkennzeichnungen,bodenlinien,querungsmarkierung,querungsmarkierungen,querungskennzeichnung,querungslinien,kreuzungsmarkierung,kreuzungsmarkierungen,kreuzungskennzeichnung,kreuzungslinien"
+                    "terms": "markierung,markierungen,kennzeichnung,linien,straßenmarkierung,straßenmarkierungen,straßenkennzeichnung,straßenlinien,bodenmarkierung,bodenmarkierungen,bodenkennzeichnungen,bodenlinien,querungsmarkierung,querungsmarkierungen,querungskennzeichnung,querungslinien,kreuzungsmarkierung,kreuzungsmarkierungen,kreuzungskennzeichnung,kreuzungslinien,fahrbahnmarkierung,fahrbahnmarkierungen,fahrbahnkennzeichnung,fahrbahnlinien"
                 },
                 "crossing_raised": {
-                    "label": "Aufpflasterung\nPlateauaufpflasterung\nAnhebung der Fahrbahn",
+                    "label": "Aufpflasterung",
                     "options": {
                         "table": "Ja",
                         "undefined": "Nein"
@@ -792,9 +953,9 @@
                             "description": "Radweg, durch eine Linie vom Autoverkehr getrennt ",
                             "title": "Standard-Fahrradstreifen"
                         },
-                        "none": {
+                        "no": {
                             "description": "Kein Fahrradstreifen",
-                            "title": "Nichts"
+                            "title": "Keiner"
                         },
                         "opposite": {
                             "description": "Ein Zweirichtungs-Fahrradstreifen in einer Einbahnstraße",
@@ -806,7 +967,7 @@
                         },
                         "separate": {
                             "description": "Gibt an, dass der Radweg als separate Geometrie kartiert wurde",
-                            "title": "Separat kartierter Radweg"
+                            "title": "Fahrradweg separat eingezeichnet"
                         },
                         "share_busway": {
                             "description": "Fahrradstreifen auf der Busspur",
@@ -818,10 +979,10 @@
                         },
                         "track": {
                             "description": "Radweg durch physische Barriere vom restlichen Verkehr getrennt",
-                            "title": "baulich getrennter Radweg"
+                            "title": "Fahrradweg baulich von Fahrbahn getrennt"
                         }
                     },
-                    "placeholder": "nichts",
+                    "placeholder": "Fahrradstreifen, Fahrradweg, ...",
                     "terms": "fahrradspur,radspur,radfahrspur",
                     "types": {
                         "cycleway:left": "Linke Seite",
@@ -882,18 +1043,8 @@
                 "destination/ref": {
                     "label": "Straßennummer der folgenden Straße"
                 },
-                "destination/ref_oneway": {
-                    "label": "Straßennummer am Zielschild"
-                },
                 "destination/symbol": {
                     "label": "Symbol des folgenden Ziels"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Symbol am Zielschild",
-                    "terms": "zielsymbole"
-                },
-                "destination_oneway": {
-                    "label": "Zielschild"
                 },
                 "destination_waterway": {
                     "label": "Ziel"
@@ -954,24 +1105,16 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Richtung (Grad im Uhrzeigersinn)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
-                    "label": "Betroffene Richtung",
+                    "label": "Betroffene Fahrtrichtung",
                     "options": {
                         "backward": "Rückwärts",
                         "both": "Beide / Alle",
                         "forward": "Vorwärts"
                     },
                     "terms": "betroffene richtung"
-                },
-                "direction_vertex_dual": {
-                    "label": "betroffene Richtung",
-                    "options": {
-                        "backward": "Rückwärts",
-                        "forward": "Vorwärts"
-                    }
                 },
                 "dispensing": {
                     "label": "Gibt rezeptpflichtige Medikamente aus"
@@ -1037,10 +1180,6 @@
                     "terms": "dauer,zeitraum"
                 },
                 "ele": {
-                    "label": "Höhenlage (Meter)",
-                    "terms": "höhe,höhenlage,normalhöhe,meter über meereshöhe"
-                },
-                "ele_node": {
                     "label": "Höhenlage (Meter)",
                     "terms": "höhe,höhenlage,normalhöhe,meter über meereshöhe"
                 },
@@ -1152,7 +1291,7 @@
                     "terms": "druck (bar)"
                 },
                 "fire_hydrant/type": {
-                    "label": "Form",
+                    "label": "Typ",
                     "options": {
                         "pillar": "Überflur-Hydrant",
                         "pipe": "verschlossenes Rohr",
@@ -1223,10 +1362,6 @@
                 },
                 "frequency": {
                     "label": "Betriebsfrequenz",
-                    "terms": "betriebsfrequenz"
-                },
-                "frequency_electrified": {
-                    "label": "Frequenz",
                     "terms": "betriebsfrequenz"
                 },
                 "from": {
@@ -1376,7 +1511,7 @@
                     "label": "Typ"
                 },
                 "healthcare/speciality": {
-                    "label": "Spezialgebiete",
+                    "label": "Fachrichtung",
                     "options": {
                         "abortion": "Abtreibung",
                         "acupuncture": "Akupunktur",
@@ -1578,7 +1713,6 @@
                     "terms": "neigung,steigung,gefälle"
                 },
                 "incline_steps": {
-                    "label": "Neigung",
                     "options": {
                         "down": "Hinunter",
                         "up": "Hinauf"
@@ -1608,9 +1742,6 @@
                 "intermittent": {
                     "label": "Periodisch",
                     "terms": "wechselnd,zeitweise"
-                },
-                "intermittent_yes": {
-                    "label": "Zeitweise ausgetrocknet"
                 },
                 "internet_access": {
                     "label": "Internetzugang",
@@ -1706,16 +1837,6 @@
                     },
                     "terms": "blattzyklus"
                 },
-                "leaf_cycle_singular": {
-                    "label": "Blätterzyklus",
-                    "options": {
-                        "deciduous": "Sommergrün",
-                        "evergreen": "Immergrün",
-                        "semi_deciduous": "Größtenteils sommergrün",
-                        "semi_evergreen": "Größtenteils immergrün"
-                    },
-                    "terms": "blattzyklus,phänologie,laubrhythmus,abszission,blattausdauer,laubwechsel"
-                },
                 "leaf_type": {
                     "label": "Blatt-Typ",
                     "options": {
@@ -1728,11 +1849,6 @@
                 },
                 "leaf_type_singular": {
                     "label": "Blatttyp",
-                    "options": {
-                        "broadleaved": "Breitblättrig/Laubblätter",
-                        "leafless": "Blattlos",
-                        "needleleaved": "Nadelblättrig"
-                    },
                     "terms": "blatttyp,blattwerk,blattform"
                 },
                 "leisure": {
@@ -1754,11 +1870,18 @@
                     "label": "Typ"
                 },
                 "license_classes": {
-                    "label": "Führerscheimklassen",
-                    "terms": "führerscheimklassen,führerscheinkategorien"
+                    "label": "Führerscheinklassen",
+                    "terms": "führerscheinklassen,führerscheinkategorien"
                 },
                 "lifeguard": {
                     "label": "Rettungsschwimmer"
+                },
+                "lift_gate/type": {
+                    "label": "Typ",
+                    "options": {
+                        "double": "Gegenüberliegende Schrankenbäume",
+                        "single": "Ein Schrankenbaum"
+                    }
                 },
                 "line_attachment": {
                     "label": "Leitungsbefestigung",
@@ -1777,7 +1900,6 @@
                     "terms": "standort"
                 },
                 "location_pool": {
-                    "label": "Lage",
                     "options": {
                         "indoor": "im Innenraum",
                         "outdoor": "im Freien",
@@ -1819,6 +1941,30 @@
                 },
                 "material": {
                     "label": "Material",
+                    "options": {
+                        "adobe": "Lehm",
+                        "aluminium": "Aluminium",
+                        "brass": "Blech",
+                        "brick": "Backstein",
+                        "bronze": "Bronze",
+                        "concrete": "Beton",
+                        "dry_stone": "Trockenmauerwerk ",
+                        "glass": "Glas",
+                        "granite": "Granit",
+                        "iron": "Eisen",
+                        "limestone": "Kalkstein",
+                        "marble": "Marmor",
+                        "metal": "Metall",
+                        "plastic": "Kunststoff",
+                        "reinforced_conrete": "Stahlbeton",
+                        "rock": "Fels",
+                        "sand": "Sand",
+                        "sandstone": "Sandstein",
+                        "soil": "Erdreich",
+                        "steel": "Stahl",
+                        "stone": "Stein",
+                        "wood": "Holz"
+                    },
                     "terms": "material"
                 },
                 "mattress": {
@@ -1856,16 +2002,25 @@
                     "label": "Maximalgewicht",
                     "terms": "maximales gewicht,höchstgewicht"
                 },
-                "maxweight_bridge": {
-                    "label": "Höchstgewicht",
-                    "terms": "maximales gewicht"
-                },
                 "maxwidth": {
                     "label": "Maximale Breite",
                     "terms": "lichte,breite,weite,lichte breite,lichte weite,durchgangslichte,durchgangsbreite,durchgangsweite,durchfahrlichte,durchfahrbreite,durchfahrweite,maximale lichte,maximale breite,maximale weite"
                 },
                 "memorial": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "blue_plaque": "Blue Plaque",
+                        "bust": "Büste",
+                        "cross": "Gedenkkreuz",
+                        "obelisk": "Obelisk",
+                        "plaque": "Gedenktafel",
+                        "sculpture": "Skulptur",
+                        "statue": "Statue",
+                        "stele": "Stele",
+                        "stolperstein": "Stolperstein",
+                        "stone": "Gedenkstein",
+                        "war_memorial": "Kriegsmahnmal"
+                    }
                 },
                 "microbrewery": {
                     "label": "Hausbrauerei",
@@ -1995,8 +2150,69 @@
                     "label": "Notiz",
                     "terms": "kommentar,anmerkung"
                 },
+                "nudism": {
+                    "label": "FKK",
+                    "options": {
+                        "customary": "Üblich",
+                        "designated": "Vorgesehen",
+                        "no": "Verboten",
+                        "obligatory": "Verpflichtend",
+                        "permissive": "Geduldet",
+                        "yes": "Erlaubt"
+                    },
+                    "terms": "nudismus,freikörperkultur,nackt,nacktbaden,naturalismus"
+                },
                 "office": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "accountant": "Buchhaltungsbüro",
+                        "adoption_agency": "Adoptionsagentur",
+                        "advertising_agency": "Werbeagentur",
+                        "architect": "Architekturbüro",
+                        "association": "Büro eines Berufs- oder Interessenverbands",
+                        "charity": "Wohlfahrtseinrichtung",
+                        "company": "Firmenbüro",
+                        "construction_company": "Büro eines Bauunternehmens",
+                        "consulting": "Consulting/Beratungs-Büro",
+                        "courier": "Kurierdienst",
+                        "coworking": "Coworking-Büro",
+                        "diplomatic": "Diplomatische und konsularische Vertretung",
+                        "educational_institution": "Bildungseinrichtung",
+                        "employment_agency": "Arbeitsvermittlung",
+                        "energy_supplier": "Energieversorgungsunternehmen",
+                        "engineer": "Ingenieurbüro",
+                        "estate_agent": "Immobilienmakler",
+                        "financial": "Finanzvermittlung",
+                        "financial_advisor": "Finanzberatung",
+                        "forestry": "Forstverwaltung",
+                        "foundation": "Stiftung",
+                        "government": "Behörde",
+                        "graphic_design": "Grafikdesign",
+                        "guide": "Fremdenführer",
+                        "insurance": "Versicherungsbüro",
+                        "it": "IT-Unternehmen",
+                        "lawyer": "Anwaltskanzlei",
+                        "logistics": "Spedition",
+                        "moving_company": "Umzugsfirma",
+                        "newspaper": "Zeitungsredaktion",
+                        "ngo": "NGO-Büro – Nichtregierungsorganisation",
+                        "notary": "Notariat",
+                        "physician": "Arztpraxis",
+                        "political_party": "Parteibüro",
+                        "private_investigator": "Privatdetektiv",
+                        "property_management": "Hausverwaltung",
+                        "quango": "Mittlerorganisation",
+                        "religion": "Büro einer Glaubensgemeinschaft",
+                        "research": "Forschungseinrichtung",
+                        "security": "Sicherheitsdienstleister",
+                        "surveyor": "Sachverständigenbüro",
+                        "tax_advisor": "Steuerberatungskanzlei",
+                        "telecommunication": "Telekommunikationsunternehmen",
+                        "therapist": "Therapeut",
+                        "travel_agent": "Reisebüro",
+                        "union": "Gewerkschaftsbüro",
+                        "water_utility": "Wasserversorgungsunternehmen"
+                    }
                 },
                 "oneway": {
                     "label": "Einbahnstraße",
@@ -2014,7 +2230,6 @@
                     "terms": "einbahn (fahrräder)"
                 },
                 "oneway_yes": {
-                    "label": "Einbahnstraße",
                     "options": {
                         "alternating": "Abwechselnd",
                         "no": "Nein",
@@ -2084,11 +2299,14 @@
                     "options": {
                         "carports": "Carports",
                         "garage_boxes": "Garagenboxen",
+                        "half_on_kerb": "Halb auf Gehweg",
                         "lane": "Parkstreifen am Straßenrand",
                         "layby": "Rastplatz",
                         "multi-storey": "Parkhaus",
+                        "on_kerb": "Auf Gehweg",
                         "rooftop": "Dachfläche",
                         "sheds": "Schuppen",
+                        "shoulder": "Auf Seitenstreifen",
                         "street_side": "Straßenrand",
                         "surface": "Ebenerdig",
                         "underground": "Tiefgarage"
@@ -2102,12 +2320,39 @@
                         "perpendicular": "Quer zur Straße"
                     }
                 },
-                "parking_entrance": {
-                    "label": "Typ",
+                "parking/side/orientation": {
+                    "label": "Parkplatzausrichtung",
                     "options": {
-                        "multi-storey": "Mehrstöckig",
-                        "underground": "Tiefgarage"
+                        "diagonal": "Schräg zur Straße (~45°)",
+                        "parallel": "Parallel zur Straße",
+                        "perpendicular": "Rechtwinklig zur Straße (~90°)"
+                    },
+                    "terms": "ausrichtung,richtung,orientierung,stellplatzausrichtung,stellplatzrichtung,stellplatzorientierung,parkplatzausrichtung,parkplatzrichtung,parkplatzorientierung",
+                    "types": {
+                        "parking:left:orientation": "Linke Seite",
+                        "parking:right:orientation": "Rechte Seite"
                     }
+                },
+                "parking/side/parking": {
+                    "label": "Parken",
+                    "options": {
+                        "half_on_kerb": "Halb auf Gehweg",
+                        "lane": "Parkstreifen am Straßenrand",
+                        "no": "Nein",
+                        "on_kerb": "Auf Gehweg",
+                        "separate": "Parken separat kartiert",
+                        "shoulder": "Seitenstreifen",
+                        "street_side": "Straßenrand",
+                        "yes": "Ja (unspezifiziert)"
+                    },
+                    "terms": "parken,parkplatz,parkplätze,stellplatz,stellplätze",
+                    "types": {
+                        "parking:left": "Linke Seite",
+                        "parking:right": "Rechte Seite"
+                    }
+                },
+                "parking_entrance": {
+                    "label": "Typ"
                 },
                 "parking_space": {
                     "label": "Typ"
@@ -2167,6 +2412,10 @@
                     "placeholder": "+49 123 4567",
                     "terms": "telefonnummer,rufnummer"
                 },
+                "picnic_table": {
+                    "label": "Picknicktisch",
+                    "terms": "jausentisch,picknicktisch,tischgruppe,außentisch"
+                },
                 "pipeline": {
                     "label": "Typ"
                 },
@@ -2184,7 +2433,6 @@
                     "placeholder": "Leicht, Mittel, Schwierig …"
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Schwierigkeit",
                     "options": {
                         "advanced": "Schwierig (Schwarzer Diamant)",
                         "easy": "Leicht (grüner Kreis)",
@@ -2197,7 +2445,6 @@
                     "placeholder": "Leicht, Mittel, Schwierig ..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Schwierigkeit",
                     "options": {
                         "advanced": "Mittel - Schmaler, steiler oder eisiger Abschnitt, enge Kurve",
                         "easy": "Leicht - Sanfte Hügel, kurze steile Abschnitte",
@@ -2208,7 +2455,6 @@
                     "placeholder": "Einfach, Mittel, Fortgeschritten ..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Schwierigkeit",
                     "options": {
                         "advanced": "Schwierig - S: Steigung 40-45°",
                         "easy": "Leicht - WS: Steigung 30-35°",
@@ -2221,7 +2467,7 @@
                     "placeholder": "Leicht, Mittel, Schwierig ..."
                 },
                 "piste/grooming": {
-                    "label": "Grooming",
+                    "label": "Präparierung",
                     "options": {
                         "backcountry": "Skitouren abseits der Piste",
                         "classic": "Klassisch",
@@ -2232,7 +2478,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Präparierung",
                     "options": {
                         "backcountry": "freies Gelände - nicht präpariert",
                         "classic": "Klassisch",
@@ -2240,14 +2485,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Präparierung",
                     "options": {
                         "backcountry": "freies Geländer - Schneeschuhe",
                         "classic": "Klassisch - Winterwandern"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Präparierung",
                     "options": {
                         "backcountry": "freies Gelände, keine Präparierung",
                         "classic": "Klassisch",
@@ -2365,7 +2608,7 @@
                     "placeholder": "Entfernung in Kilometer mit einer Nachkommastelle (123.4)"
                 },
                 "railway/signal/direction": {
-                    "label": "Betroffene Richtung",
+                    "label": "Betroffene Fahrtrichtung",
                     "options": {
                         "backward": "Rückwärts",
                         "both": "Beide / Alle",
@@ -2519,7 +2762,18 @@
                     "label": "Typ"
                 },
                 "resource": {
-                    "label": "Rohstoffe"
+                    "label": "Rohstoffe",
+                    "options": {
+                        "aggregate": "Gesteinskörnung",
+                        "clay": "Tonerde",
+                        "coal": "Kohle",
+                        "gold": "Gold",
+                        "gravel": "Kies",
+                        "iron_ore": "Eisenerz",
+                        "limestone": "Kalkstein",
+                        "peat": "Torf",
+                        "sand": "Sand"
+                    }
                 },
                 "restriction": {
                     "label": "Typ"
@@ -2746,6 +3000,9 @@
                 "shelter_type": {
                     "label": "Typ"
                 },
+                "shoes": {
+                    "label": "Schuhe"
+                },
                 "shop": {
                     "label": "Typ"
                 },
@@ -2766,9 +3023,6 @@
                 },
                 "site": {
                     "label": "Typ"
-                },
-                "site_type": {
-                    "label": "Anlagentyp"
                 },
                 "smoking": {
                     "label": "Rauchen",
@@ -2803,7 +3057,18 @@
                     "terms": "sms,short message service,sims,kurznachricht"
                 },
                 "social_facility": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "ambulatory_care": "Ambulante Pflege",
+                        "assisted_living": "Betreutes Wohnen",
+                        "day_care": "Tagespflege",
+                        "food_bank": "Essensausgabe",
+                        "group_home": "Wohnheim",
+                        "nursing_home": "Pflegeheim",
+                        "outreach": "Sozialhilfeeinrichtung",
+                        "shelter": "Obdachlosenunterkunft",
+                        "workshop": "Behindertenwerkstatt"
+                    }
                 },
                 "social_facility_for": {
                     "label": "Unterstützter Personenkreis"
@@ -2833,7 +3098,44 @@
                     "terms": "spezies wikidata"
                 },
                 "sport": {
-                    "label": "Sport"
+                    "label": "Sport",
+                    "options": {
+                        "american_football": "American Football",
+                        "athletics": "Leichtathletik",
+                        "badminton": "Badminton",
+                        "baseball": "Baseball",
+                        "basketball": "Basketball",
+                        "beachvolleyball": "Beachvolleyball",
+                        "boules": "Boule/Boccia",
+                        "bowls": "Bowls",
+                        "climbing": "Klettern",
+                        "cricket": "Cricket",
+                        "cycling": "Radfahren",
+                        "equestrian": "Pferdesport",
+                        "fitness": "Fitness Training",
+                        "free_flying": "Paragliding / Gleitschirmfliegen",
+                        "futsal": "Futsal",
+                        "golf": "Golf",
+                        "gymnastics": "Turnen / Gymnastik",
+                        "handball": "Handball",
+                        "horse_racing": "Pferderennen",
+                        "karting": "Kartsport",
+                        "motocross": "Motocross",
+                        "motor": "Motorsport",
+                        "netball": "Netball",
+                        "padel": "Padel",
+                        "rugby_union": "Rugby Union",
+                        "running": "Laufsport",
+                        "shooting": "Schießsport",
+                        "skateboard": "Skateboard",
+                        "skiing": "Skisport",
+                        "soccer": "Fussball",
+                        "softball": "Softball",
+                        "swimming": "Schwimmsport",
+                        "table_tennis": "Tischtennis",
+                        "tennis": "Tennis",
+                        "volleyball": "Volleyball"
+                    }
                 },
                 "sport_ice": {
                     "label": "Sportarten",
@@ -2881,6 +3183,9 @@
                     "label": "Startdatum/Inbetriebnahme",
                     "placeholder": "JJJJ-MM-TT",
                     "terms": "anfangsdatum,startdatum"
+                },
+                "static_caravans": {
+                    "label": "Dauercamper"
                 },
                 "step_count": {
                     "label": "Anzahl der Stufen",
@@ -2947,7 +3252,16 @@
                     "terms": "thema wikidata"
                 },
                 "substance": {
-                    "label": "Substanz"
+                    "label": "Substanz",
+                    "options": {
+                        "fuel": "Kraftstoff",
+                        "gas": "Erdgas",
+                        "hot_water": "Heißes Wasser",
+                        "oil": "Erdöl",
+                        "rainwater": "Regenwasser",
+                        "sewage": "Abwasser",
+                        "water": "Trinkwasser"
+                    }
                 },
                 "substation": {
                     "label": "Typ",
@@ -2993,10 +3307,10 @@
                         "asphalt": "Asphalt",
                         "compacted": "Verdichtet",
                         "concrete": "Beton",
-                        "dirt": "Unbefestigte Straße",
+                        "dirt": "Unbefestigte Oberfläche",
                         "grass": "Gras",
                         "gravel": "Schotter",
-                        "ground": "naturbelassene Oberfläche",
+                        "ground": "Naturbelassene Oberfläche",
                         "metal": "Metall",
                         "mud": "Dauerhaft Schlammig",
                         "paved": "Versiegelte Oberfläche",
@@ -3101,9 +3415,12 @@
                 "telecom/medium": {
                     "label": "Medium"
                 },
+                "tents": {
+                    "label": "Zelte"
+                },
                 "tidal": {
-                    "label": "Gezeiten",
-                    "terms": "gezeiten"
+                    "label": "Gezeitenabhängig",
+                    "terms": "gezeiten,tidenhub,flut,ebbe"
                 },
                 "to": {
                     "label": "Nach"
@@ -3177,13 +3494,27 @@
                     "label": "Typ"
                 },
                 "traffic_calming": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "bump": "Kurze Bodenwelle",
+                        "chicane": "Schikane",
+                        "choked_table": "Fahrbahnverengung mit Bodenwelle",
+                        "choker": "Fahrbahnverengung",
+                        "cushion": "Bodenwelle mit Lücken",
+                        "dip": "Absenkung",
+                        "double_dip": "Doppelte Absenkung",
+                        "hump": "Lange Bodenwelle (Kreissegment)",
+                        "island": "Verkehrsinsel",
+                        "mini_bumps": "Kleine Teller",
+                        "rumble_strip": "Rüttelstreifen",
+                        "table": "Lange Bodenwelle (Plateau)"
+                    }
                 },
                 "traffic_sign": {
                     "label": "Verkehrsschild"
                 },
                 "traffic_sign/direction": {
-                    "label": "Betroffene Richtung",
+                    "label": "Betroffene Fahrtrichtung",
                     "options": {
                         "backward": "Rückwärts",
                         "both": "Beide / Alle",
@@ -3202,7 +3533,7 @@
                     "terms": "countdown-timer"
                 },
                 "traffic_signals/direction": {
-                    "label": "Betroffene Richtung",
+                    "label": "Betroffene Fahrtrichtung",
                     "options": {
                         "backward": "Rückwärts",
                         "both": "Beide / Alle",
@@ -3314,7 +3645,16 @@
                     }
                 },
                 "utility": {
-                    "label": "Medium"
+                    "label": "Medium",
+                    "options": {
+                        "gas": "Erdgas",
+                        "oil": "Öl",
+                        "power": "Elektrizität",
+                        "sewerage": "Abwasser",
+                        "street_lighting": "Straßenbeleuchtung",
+                        "telecom": "Telekommunikation",
+                        "water": "Trinkwasser"
+                    }
                 },
                 "utility_semi": {
                     "label": "unterirdische Leitungen"
@@ -3389,15 +3729,17 @@
                     "label": "Tertiärspannung",
                     "terms": "dritte spannung,tertiäre spannung"
                 },
-                "voltage_electrified": {
-                    "label": "Spannung",
-                    "terms": "spannung"
-                },
                 "wall": {
                     "label": "Typ"
                 },
                 "waste": {
-                    "label": "Abfall"
+                    "label": "Abfall",
+                    "options": {
+                        "cigarettes": "Zigaretten",
+                        "dog_excrement": "Hundekot",
+                        "organic": "Biomüll",
+                        "trash": "Restmüll"
+                    }
                 },
                 "water": {
                     "label": "Typ"
@@ -3406,7 +3748,14 @@
                     "label": "Wasserentnahmestelle"
                 },
                 "water_source": {
-                    "label": "Wasserherkunft"
+                    "label": "Wasserherkunft",
+                    "options": {
+                        "main": "Trinkwassernetz",
+                        "pond": "Teich",
+                        "river": "Fluss",
+                        "stream": "Bach",
+                        "water_tank": "Wassertank"
+                    }
                 },
                 "water_tank/volume": {
                     "label": "Volumen (Liter)",
@@ -3836,10 +4185,113 @@
                     "name": "Arzt, Ärztin",
                     "terms": "arzt,ärztin,mediziner,medizinerin,doktor,doktorin"
                 },
+                "amenity/doctors/allergology": {
+                    "name": "Allergologe",
+                    "terms": "allergie,asthma"
+                },
+                "amenity/doctors/cardiology": {
+                    "name": "Kardiologe",
+                    "terms": "herzspezialist"
+                },
+                "amenity/doctors/dermatology": {
+                    "name": "Hautarzt",
+                    "terms": "dermatologe"
+                },
+                "amenity/doctors/gastroenterology": {
+                    "name": "Gastroenterologe",
+                    "terms": "darm,verdauungssystem,verdauung,speiseröhre,gallenstein,magen-darm-trakt,gastroenterologie,dickdarm,leber,ösophagus,dünndarm,magen"
+                },
+                "amenity/doctors/general": {
+                    "name": "Hausarzt",
+                    "terms": "allgemeinmediziner"
+                },
                 "amenity/doctors/gynaecology": {
                     "name": "Gynäkologe",
                     "terms": "gynäkologe",
                     "aliases": "Frauenarzt\nFacharzt für Frauenheilkunde"
+                },
+                "amenity/doctors/haematology": {
+                    "name": "Hämatologe",
+                    "terms": "anämie,blut,knochenmark,hämatologie,leukämie,lymphom,blutstillung,hämophilie,thrombophilie,hämostaseologie,blutgerinnung,blutkrebs,lymphknoten,blutarmut,bluterkrankheit"
+                },
+                "amenity/doctors/internal": {
+                    "name": "Internist",
+                    "terms": "internist,internistischer allgemeinmediziner,innere medizin,arzt"
+                },
+                "amenity/doctors/nephrology": {
+                    "name": "Nephrologe",
+                    "terms": "niere,nieren,nierenmedizin,nephrologie,nierenerkrankung,nierenkrankheit"
+                },
+                "amenity/doctors/neurology": {
+                    "name": "Neurologe",
+                    "terms": "gehirn,nerven,nervensystem,neurologie"
+                },
+                "amenity/doctors/neurosurgery": {
+                    "name": "Neurochirurgie",
+                    "terms": "gehirn,neurologische chirurgie,nervensystem"
+                },
+                "amenity/doctors/oncology": {
+                    "name": "Onkologe",
+                    "terms": "krebs,chemotherapie,onkologie,tumor"
+                },
+                "amenity/doctors/ophthalmology": {
+                    "name": "Augenarzt",
+                    "terms": "auge,augen,brille,okular,ophthalmologie,augenheilkunde",
+                    "aliases": "Ophthalmologe"
+                },
+                "amenity/doctors/orthopaedics": {
+                    "name": "Orthopäde",
+                    "terms": "orthopädie,skelett,wirbelsäule"
+                },
+                "amenity/doctors/otolaryngology": {
+                    "name": "Hals-Nasen-Ohren-Arzt",
+                    "terms": "hals-nasen-ohren-heilkunde,hno,oto-rhino-laryngologie,orl,ohren,luftwege,mundhöhle,rachen,kehlkopf,speiseröhre",
+                    "aliases": "HNO Arzt"
+                },
+                "amenity/doctors/paediatrics": {
+                    "name": "Kinderarzt",
+                    "terms": "jugendliche,kinder,kleinkinder,pädiatrie,kinderheilkunde,pädiatrik,kinder- und jugendmedizin,jugendmedizin"
+                },
+                "amenity/doctors/pathology": {
+                    "name": "Pathologe",
+                    "terms": "autopsie,anatomische pathologie,pathologie"
+                },
+                "amenity/doctors/plastic_surgery": {
+                    "name": "Plastischer Chirurg",
+                    "terms": "ästhetische chirurgie,kosmetische chirurgie,kraniofaziale chirurgie,rekonstruktive chirurgie,plastische chirurgie",
+                    "aliases": "Schönheitschirurg"
+                },
+                "amenity/doctors/podiatry": {
+                    "name": "Podiater",
+                    "terms": "fußchirurg"
+                },
+                "amenity/doctors/proctology": {
+                    "name": "Proktologe",
+                    "terms": "kolorektale chirurgie,proktologie,darmspezialist,enddarm,mastdarm,analkanal"
+                },
+                "amenity/doctors/pulmonology": {
+                    "name": "Lungenfacharzt",
+                    "terms": "pneumologie,pulmologie,pulmonologie,lungenheilkunde,bronchialheilkunde,asthma,brustmedizin,lunge,pneumonologie,lungenentzündung,atemwege,respirologie,atemwegsmedizin"
+                },
+                "amenity/doctors/radiology": {
+                    "name": "Radiologe",
+                    "terms": "radiologie,computertomographie,ct,magnetresonanztomographie,ultraschall,ultrasonographie,mrt,sonographie"
+                },
+                "amenity/doctors/rheumatology": {
+                    "name": "Rheumatologe",
+                    "terms": "lupus,oteoporose,rheuma,rheumatologie"
+                },
+                "amenity/doctors/surgery": {
+                    "name": "Allgemeinchirurg",
+                    "terms": "chirurgie,operativen behandlung,allgemeinchirurgie"
+                },
+                "amenity/doctors/trauma": {
+                    "name": "Unfallchirurg",
+                    "terms": "unfallchirurgie,traumachirurgie,notfallchirurgie,verletzungschirurgie,traumatologie,unfallheilkunde,unfallmedizin,wiederherstellungschirurgie"
+                },
+                "amenity/doctors/urology": {
+                    "name": "Urologe",
+                    "terms": "nebennieren,blase,nebenhoden,niere,penis,prostata,fortpflanzung,hodensack,hoden,harnröhre,harnleiter,urologie,harnwege"
                 },
                 "amenity/dojo": {
                     "name": "Kampfsportstudio",
@@ -4328,7 +4780,7 @@
                 },
                 "amenity/school": {
                     "name": "Schule, Schulgelände",
-                    "terms": "schulhof,schule,realschule,mittelschule,grundschule,gymnasium,ganztagsschule,förderschule"
+                    "terms": "schulhof,schule,realschule,mittelschule,grundschule,gymnasium,ganztagsschule,förderschule,gesamtschule,gemeinschaftsschule"
                 },
                 "amenity/shelter": {
                     "name": "Wetterschutz",
@@ -4621,7 +5073,7 @@
                 },
                 "attraction/big_wheel": {
                     "name": "Riesenrad",
-                    "terms": "riesenrad"
+                    "terms": "fahrgeschäft,riesenrad"
                 },
                 "attraction/bumper_car": {
                     "name": "Autoscooter",
@@ -4804,7 +5256,8 @@
                 },
                 "barrier/lift_gate": {
                     "name": "Schranke",
-                    "terms": "schranke,schlagbaum,schranken"
+                    "terms": "schranke,schlagbaum,wegeschranke,schlag",
+                    "aliases": "Schlagbaum"
                 },
                 "barrier/log": {
                     "name": "Baumstamm",
@@ -5061,7 +5514,7 @@
                 },
                 "building/school": {
                     "name": "Schulgebäude",
-                    "terms": "schulgebäude,schulhaus"
+                    "terms": "schulgebäude,schulhaus,schule"
                 },
                 "building/semidetached_house": {
                     "name": "Doppelhaushälfte",
@@ -5084,8 +5537,8 @@
                     "terms": "stadiongebäude"
                 },
                 "building/static_caravan": {
-                    "name": "Feststehender Wohnwagen",
-                    "terms": "abgestellter wohnwagen,dauercamper"
+                    "name": "Dauercamper",
+                    "terms": "wohnwagen,wohnmobil,saisoncamping,wohnwagensiedlung,mobilheim,mobile home"
                 },
                 "building/sty": {
                     "name": "Schweinestall",
@@ -5155,7 +5608,7 @@
                     "terms": "korbflechter,korbmacher,korbhersteller,korbmacherei,korbflechterei"
                 },
                 "craft/beekeeper": {
-                    "name": "Imker/in",
+                    "name": "Imkerei",
                     "terms": "imker,bienenzüchter"
                 },
                 "craft/blacksmith": {
@@ -5163,12 +5616,12 @@
                     "terms": "schmied,hufschmied,schmiedewerkstatt,kunstschmiede,kunstschmied"
                 },
                 "craft/boatbuilder": {
-                    "name": "Bootsbauer/in",
+                    "name": "Bootsbauer",
                     "terms": "schiffsbauer,bootsbauer,bootbauer,bootfachwart"
                 },
                 "craft/bookbinder": {
-                    "name": "Buchbinder/in",
-                    "terms": "buchbinder"
+                    "name": "Buchbinder",
+                    "terms": "buchbinder,buchbinderin"
                 },
                 "craft/brewery": {
                     "name": "Handwerksbrauerei",
@@ -5180,15 +5633,16 @@
                     "terms": "tischler,schreiner,zimmerer,bauschreiner,zimmermann,holztechniker"
                 },
                 "craft/carpet_layer": {
-                    "name": "Teppichleger/in",
+                    "name": "Teppichleger",
                     "terms": "teppichleger,teppichbodenleger,teppichverleger"
                 },
                 "craft/caterer": {
-                    "name": "Partyservice",
-                    "terms": "partyservice,speiselieferant,lebensmittellieferant,brötchenservice,gastronom,catering,caterer,catering-service"
+                    "name": "Catering",
+                    "terms": "partyservice,speiselieferant,lebensmittellieferant,brötchenservice,gastronom,catering,caterer,catering-service",
+                    "aliases": "Partyservice"
                 },
                 "craft/chimney_sweeper": {
-                    "name": "Kaminkehrer/in",
+                    "name": "Schornsteinfeger",
                     "terms": "kaminkehrer,schornsteinfeger,rauchfangkehrer,kaminfeger"
                 },
                 "craft/cleaning": {
@@ -5196,12 +5650,12 @@
                     "terms": "putzerei,reinigungsdienst"
                 },
                 "craft/clockmaker": {
-                    "name": "Uhrmacher/in (Standuhr)",
+                    "name": "Uhrmacher (Standuhr)",
                     "terms": "uhrmacher (standuhr)"
                 },
                 "craft/confectionery": {
                     "name": "Süßwarengeschäft",
-                    "terms": "süßwarengeschäft,confiserie,bonbonladen,konditorei,konditor"
+                    "terms": "süßwarengeschäft,confiserie,bonbonladen,konditorei,konditor,zuckerbäcker"
                 },
                 "craft/distillery": {
                     "name": "Brennerei",
@@ -5212,50 +5666,50 @@
                     "terms": "schneiderei,damenschneiderei"
                 },
                 "craft/electrician": {
-                    "name": "Elektriker/in",
+                    "name": "Elektriker",
                     "terms": "elektriker,elektroniker,elektroinstallateur,elektromechaniker,elektrotechnik,elektromonteur"
                 },
                 "craft/electronics_repair": {
-                    "name": "Elektronik-Reparatur-Geschäft",
+                    "name": "Elektronik-Reparaturdienst",
                     "terms": "elektronik-reparatur-geschäft"
                 },
                 "craft/floorer": {
-                    "name": "Bodenleger/in",
-                    "terms": "bodenleger"
+                    "name": "Bodenleger",
+                    "terms": "bodenleger,fußbodenleger,bodenbelag,fußbodenbelag"
                 },
                 "craft/gardener": {
-                    "name": "Gärtner/in",
-                    "terms": "gärtner,landschaftsgärtner,landschaftspflege,gartenpflege"
+                    "name": "Landschaftsgärtner",
+                    "terms": "gärtner,landschaftsgärtner,landschaftspflege,gartenpflege,gartenbauer,galabau,garten und landschaftsbau,landschaftsbau"
                 },
                 "craft/glaziery": {
                     "name": "Glaserei",
-                    "terms": "glaserei,fensterglaserei,autoglaserei,glaser,glasschleiferei"
+                    "terms": "glaserei,fensterglaserei,autoglaserei,glaser,glasschleiferei,gläserei,kirchenglas"
                 },
                 "craft/handicraft": {
                     "name": "Kunsthandwerk",
-                    "terms": "kunsthandwerk"
+                    "terms": "kunsthandwerk,kunstgewerbe"
                 },
                 "craft/hvac": {
                     "name": "Heizungs-, Lüftungs- und Klimatechnik",
-                    "terms": "lüftungstechnik,heizungstechnik,klimatechnik,kältetechnik,techniker für heizungs- lüftungs- und klimatechnik,hvac"
+                    "terms": "lüftungstechnik,heizungstechnik,klimatechnik,kältetechnik,techniker für heizungs- lüftungs- und klimatechnik,hvac,hls,hkls,hks,anlagentechnik,gebäudetechnik,haustechnik"
                 },
                 "craft/insulator": {
-                    "name": "Dämmstoff",
-                    "terms": "dämmstoff,isolierung,isolierstoff"
+                    "name": "Dämmstoffarbeiten",
+                    "terms": "dämmstoff,isolierung,isolierstoff,dämmung,eps,xps"
                 },
                 "craft/joiner": {
                     "name": "Tischlerei",
-                    "terms": "tischler,schreiner,tischlierbetrieb,tischlerei,schreinerei,möbelbau"
+                    "terms": "tischler,schreiner,tischlerbetrieb,tischlerei,schreinerei,möbelbau,möbelbauer"
                 },
                 "craft/key_cutter": {
-                    "name": "Schlüsselschneider/in",
+                    "name": "Schlüsselschneider",
                     "terms": "schlüsselschneider,schlüsselgeschäft,schlüsseldienst,schlüsselservice,schlüsselmacher,sicherheitstechniker"
                 },
                 "craft/locksmith": {
-                    "name": "Schlosser/in"
+                    "name": "Schlüsselmacher"
                 },
                 "craft/metal_construction": {
-                    "name": "Metallbetrieb",
+                    "name": "Metallbaubetrieb",
                     "terms": "metallverarbeitender betrieb,metallbau,metallbauer,metallplanung,bauschlosserei,schlosserei,metalltechnik,konstruktionsmechaniker,zaun- und geländerbau,bauschlosser,stahlbauer,schlosser"
                 },
                 "craft/painter": {
@@ -5263,20 +5717,20 @@
                     "terms": "maler,anstreicher,malerbetrieb,malereibetrieb,lackiererei,lackierer"
                 },
                 "craft/parquet_layer": {
-                    "name": "Parkettleger/in",
-                    "terms": "parkettleger,parkettverleger"
+                    "name": "Parkettleger",
+                    "terms": "parkettleger,parkettverleger,holzparkett,holzdielen"
                 },
                 "craft/photographer": {
-                    "name": "Fotograf/in",
-                    "terms": "fotograf,fotostudio,fotoatelier,photograph"
+                    "name": "Fotograf",
+                    "terms": "fotograf,fotostudio,fotoatelier,photograph,lichtbildner"
                 },
                 "craft/photographic_laboratory": {
                     "name": "Fotolabor",
-                    "terms": "fotolabor,fotografisches labor"
+                    "terms": "fotolabor,fotografisches labor,dunkelkammer"
                 },
                 "craft/plasterer": {
-                    "name": "Stuckateur/in",
-                    "terms": "stuckateur,kaschierer,gipser,verputzer,stukkateur"
+                    "name": "Stuckateur",
+                    "terms": "stuckateur,kaschierer,gipser,verputzer,stukkateur,putzer"
                 },
                 "craft/plumber": {
                     "name": "Sanitärbetrieb",
@@ -5284,10 +5738,10 @@
                 },
                 "craft/pottery": {
                     "name": "Töpferei",
-                    "terms": "keramik,topf,vase,töpfer"
+                    "terms": "keramik,topf,vase,töpfer,ton,brennofen,porzellan"
                 },
                 "craft/rigger": {
-                    "name": "Rigger",
+                    "name": "Takler",
                     "terms": "rigger,takler,höhenarbeiter"
                 },
                 "craft/roofer": {
@@ -5295,51 +5749,51 @@
                     "terms": "dachdecker,bedachung"
                 },
                 "craft/saddler": {
-                    "name": "Sattler/in",
+                    "name": "Sattlerei",
                     "terms": "sattler"
                 },
                 "craft/sailmaker": {
-                    "name": "Segelmacher/in",
+                    "name": "Segelmacher",
                     "terms": "segelmacher"
                 },
                 "craft/sawmill": {
                     "name": "Sägewerk",
-                    "terms": "sägewerk,sägerei,sägemühle"
+                    "terms": "sägewerk,sägerei,sägemühle,säge,schneidmühle,bordmühle,brettmühle,brettsäge"
                 },
                 "craft/scaffolder": {
-                    "name": "Gerüstbau",
-                    "terms": "gerüstbauer,gerüster"
+                    "name": "Gerüstbaubetrieb",
+                    "terms": "gerüstbau,gerüstbauer,gerüster"
                 },
                 "craft/sculptor": {
-                    "name": "Bildhauer/in",
+                    "name": "Bildhauer",
                     "terms": "bildhauer"
                 },
                 "craft/shoemaker": {
-                    "name": "Schuster/in",
-                    "terms": "schuster,schuhmacher,schuh-service"
+                    "name": "Schuster",
+                    "terms": "schuster,schuhmacher,schuh-service,schusterei"
                 },
                 "craft/signmaker": {
-                    "name": "Schilderhersteller/in",
+                    "name": "Schilder- und Lichtreklamehersteller",
                     "terms": "schilderhersteller,schildermacher,werbetechniker,beschriftung,reklame,bedruckung"
                 },
                 "craft/stonemason": {
                     "name": "Steinmetz",
-                    "terms": "steinmetz"
+                    "terms": "steinmetz,steinbildhauer"
                 },
                 "craft/tailor": {
                     "name": "Herrenschneiderei"
                 },
                 "craft/tiler": {
-                    "name": "Fliesenleger/in",
-                    "terms": "fliesenleger,dachdecker,plattenleger"
+                    "name": "Fliesenleger",
+                    "terms": "fliesenleger,dachdecker,plattenleger,mosaikleger"
                 },
                 "craft/tinsmith": {
-                    "name": "Klempnerei",
+                    "name": "Spengler/Klempner",
                     "terms": "klempnerei,klempner,spengler,blechschmied,flaschner,blechner,spängler,bauklempnerei,bauklempner"
                 },
                 "craft/upholsterer": {
-                    "name": "Polsterer",
-                    "terms": "polsterer,möbeltapezierer"
+                    "name": "Raumausstatter",
+                    "terms": "polsterer,möbeltapezierer,raumausstatter,stuhlmacher"
                 },
                 "craft/watchmaker": {
                     "name": "Uhrmacher/in (Armbanduhr)",
@@ -5351,7 +5805,7 @@
                 },
                 "craft/winery": {
                     "name": "Weingut",
-                    "terms": "weingut,weinkellerei,winzer,weinbauer,kellerei"
+                    "terms": "weingut,weinkellerei,winzer,weinbauer,kellerei,winzerbetrieb"
                 },
                 "cycleway/asl": {
                     "name": "Vorgezogene Aufstellfläche",
@@ -5557,9 +6011,33 @@
                     "terms": "akupunktur,anthroposophisch,aromatherapie,ayurveda,heilkunde,homöopathie,hydrotherapie,hypnose,kräutermedizin,naturheilkunde,osteopathie,pflanzenheilkunde,physiatrie,reiki,spagyrika,tcm,unani,wasserheilkunde",
                     "aliases": "Heilpraktiker\nHeilpraktikerin"
                 },
+                "healthcare/alternative/acupuncture": {
+                    "name": "Praxis für Akupunktur",
+                    "terms": "akupunktur,nadel,nadelstimulation,nadelstiche,akkupunktur"
+                },
+                "healthcare/alternative/ayurveda": {
+                    "name": "Praxis für Ayurveda",
+                    "terms": "ayurveda,ayurweda,indische medizin"
+                },
                 "healthcare/alternative/chiropractic": {
                     "name": "Chiropraktiker/in",
                     "terms": "chiropraktiker,manualtherapeut"
+                },
+                "healthcare/alternative/homeopathy": {
+                    "name": "Praxis für Homöopathie",
+                    "terms": "homöopathie,globuli"
+                },
+                "healthcare/alternative/naturopathy": {
+                    "name": "Praxis für Naturheilkunde",
+                    "terms": "naturheilkunde,naturopathie,physiatrie,naturheilverfahren,heilpflanzen,phytotherapie,hydrotherapie,balneotherapie,wärmetherapie,kältetherapie,wasserkur,bewegungstherapie,ernährungstherapie,ordnungstherapie"
+                },
+                "healthcare/alternative/osteopathy": {
+                    "name": "Praxis für Osteopathie",
+                    "terms": "manuelle medizin,manualtherapie,chirotherapie,chiropraktik"
+                },
+                "healthcare/alternative/traditional_chinese_medicine": {
+                    "name": "Praxis für Traditionelle Chinesische Medizin",
+                    "terms": "tcm"
                 },
                 "healthcare/audiologist": {
                     "name": "Hörakustiker/in",
@@ -5658,23 +6136,18 @@
                 "highway/crossing": {
                     "name": "Übergang"
                 },
-                "highway/crossing/marked": {
-                    "name": "markierter / gekennzeichneter Übergang"
-                },
                 "highway/crossing/traffic_signals": {
                     "name": "Kreuzung mit Fußgängerampel",
                     "terms": "fußgängerampel,fußgängerübergang,radübergang"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "markierter / gekennzeichneter Übergang",
-                    "terms": "zebrastreifen,gekennzeichneter übergang,markierter übergang,querung,übergang,überweg,fußgängerüberweg,markierung"
+                    "name": "Gehweg-Querung mit Fahrbahnmarkierung",
+                    "terms": "markierter fußgängerüberweg,markierter zebrastreifen,zebrastreifen,fußgängerüberweg",
+                    "aliases": "Gekennzeichneter Übergang\nMarkierter Übergang"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
                     "terms": "nicht gekennzeichneter übergang,nicht markierte kreuzung,nicht gekennzeichnete kreuzung"
-                },
-                "highway/crossing/zebra": {
-                    "name": "markierter / gekennzeichneter Übergang"
                 },
                 "highway/cycleway": {
                     "name": "Radweg",
@@ -5691,15 +6164,12 @@
                     "name": "Rad- und Fußübergang",
                     "terms": "rad- und fußübergang,fahrradübergang und fußgängerübergang"
                 },
-                "highway/cycleway/crossing/marked": {
-                    "name": "Gekennzeichneter Fahrrad-Übergang"
-                },
                 "highway/cycleway/crossing/traffic_signals": {
                     "name": "Radweg-Querung mit Ampel",
                     "terms": "fahrradquerung,fahrradüberweg,radquerung,radüberweg,radfahrerquerung,radfahrerüberweg,fahrradweg,radweg,fahrradstreifen,radstreifen,ampel,ampelgeregelt,lichtzeichen"
                 },
                 "highway/cycleway/crossing/uncontrolled": {
-                    "name": "Radweg-Querung mit Straßenmarkierung",
+                    "name": "Radweg-Querung mit Fahrbahnmarkierung",
                     "terms": "gekennzeichneter fahrrad-übergang"
                 },
                 "highway/cycleway/crossing/unmarked": {
@@ -5745,25 +6215,18 @@
                 "highway/footway/crossing": {
                     "name": "Fußgängerüberweg (eigener Weg)"
                 },
-                "highway/footway/crossing/marked": {
-                    "name": "Gehweg-Querung mit Straßenmarkierung",
-                    "aliases": "Gekennzeichneter Übergang\nMarkierter Übergang"
-                },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Gehweg-Querung mit Ampel",
                     "terms": "fußgängerampel,fußgängergang,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
                 },
                 "highway/footway/crossing/uncontrolled": {
-                    "name": "Gehweg-Querung mit Straßenmarkierung",
+                    "name": "Gehweg-Querung mit Fahrbahnmarkierung",
                     "terms": "markierter fußgängerüberweg,markierter zebrastreifen,zebrastreifen,fußgängerüberweg",
                     "aliases": "Gekennzeichneter Übergang\nMarkierter Übergang"
                 },
                 "highway/footway/crossing/unmarked": {
                     "name": "Querung ohne Markierungen",
                     "terms": "nicht gekennzeichneter übergang,nicht markierte kreuzung,nicht gekennzeichnete kreuzung"
-                },
-                "highway/footway/crossing/zebra": {
-                    "name": "Gehweg-Querung mit Zebrastreifen"
                 },
                 "highway/footway/informal": {
                     "name": "Trampelpfad"
@@ -6268,6 +6731,10 @@
                     "name": "Wohnblockanlage",
                     "terms": "wohnsiedlung,wohnkomplex"
                 },
+                "landuse/residential/trailer_park": {
+                    "name": "Wohnwagenpark",
+                    "terms": "wohnwagenpark"
+                },
                 "landuse/retail": {
                     "name": "Einzelhandel",
                     "terms": "einzelhandelsgebiet,einzelhandelsfläche,geschäfte"
@@ -6413,6 +6880,10 @@
                 "leisure/garden/community": {
                     "name": "Gemeinschaftsgarten",
                     "terms": "gemeinschaftsgarten,gartengemeinschaft,kommunaler garten,kooperativer garten,kollektiver garten"
+                },
+                "leisure/garden/residential": {
+                    "name": "Hausgarten",
+                    "terms": "privatgarten"
                 },
                 "leisure/golf_course": {
                     "name": "Golfplatz",
@@ -6760,12 +7231,13 @@
                     "terms": "kran"
                 },
                 "man_made/crane/gantry_crane": {
-                    "name": "Bckenkran",
-                    "terms": "brückenkran"
+                    "name": "Brückenkran",
+                    "terms": "brückenkran",
+                    "aliases": "Portalkran"
                 },
                 "man_made/crane/portal_crane": {
                     "name": "Portalkran",
-                    "terms": "portalkran"
+                    "terms": "portalwippdrehkran"
                 },
                 "man_made/cross": {
                     "name": "Kreuz ohne religiösen Wert",
@@ -6793,8 +7265,9 @@
                     "aliases": "Fahnenstange"
                 },
                 "man_made/gantry": {
-                    "name": "Portal",
-                    "terms": "portal"
+                    "name": "Schilderbrücke",
+                    "terms": "portal,wegweiserbrücke,vzb,wechselverkehrszeichen,kragarm",
+                    "aliases": "Verkehrszeichenbrücke"
                 },
                 "man_made/gasometer": {
                     "name": "Gasometer",
@@ -7418,6 +7891,10 @@
                     "name": "Finanzamt",
                     "terms": "finanzamt"
                 },
+                "office/graphic_design": {
+                    "name": "Grafikdesign",
+                    "terms": "grafikdesign,komunikationsdesign"
+                },
                 "office/guide": {
                     "name": "Fremdenführer",
                     "terms": "fremdenführer"
@@ -7851,8 +8328,8 @@
                     "terms": "strommast,stromleitungsmast,freileitungspfosten"
                 },
                 "power/portal": {
-                    "name": "Ankerportal",
-                    "terms": "ankerportal"
+                    "name": "Abspannportal",
+                    "terms": "verteilportal,portalmast"
                 },
                 "power/substation": {
                     "name": "Umspannwerk",
@@ -8601,7 +9078,7 @@
                 },
                 "shop/locksmith": {
                     "name": "Schlüsseldienst",
-                    "terms": "schlosser,schlüsseldienst"
+                    "terms": "schlosser,schlüsseldienst,schlüsselmacher"
                 },
                 "shop/lottery": {
                     "name": "Lottoannahmestelle",
@@ -8789,7 +9266,7 @@
                 },
                 "shop/tailor": {
                     "name": "Schneider",
-                    "terms": "schneider,herrenschneider,änderungsschneiderei,änderungsservice"
+                    "terms": "schneider,herrenschneider,änderungsschneiderei,änderungsservice,anzugsschneider"
                 },
                 "shop/tattoo": {
                     "name": "Tätowierer",
@@ -9129,6 +9606,10 @@
                 "traffic_sign/maxspeed": {
                     "name": "Höchstgeschwindigkeits-Schild",
                     "terms": "höchstgeschwindigkeits-schild"
+                },
+                "traffic_sign/variable_message": {
+                    "name": "Wechselverkehrszeichen",
+                    "terms": "wechselverkehrszeichen"
                 },
                 "type/boundary": {
                     "name": "Grenze",

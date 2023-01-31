@@ -208,9 +208,6 @@
                 "building": {
                     "label": "Ēka"
                 },
-                "building_area": {
-                    "label": "Ēka"
-                },
                 "bunker_type": {
                     "label": "Tips"
                 },
@@ -308,35 +305,20 @@
                     "label": "Velosipēdu ceļi",
                     "options": {
                         "lane": {
-                            "description": "Riteņbraucēju celiņš atdalīts no braucamās daļas ar svītru",
-                            "title": "Parasts velosipēdu celiņš"
-                        },
-                        "none": {
-                            "description": "Nav velosipēdu celiņa",
-                            "title": "Nav"
+                            "description": "Riteņbraucēju celiņš atdalīts no braucamās daļas ar svītru"
                         },
                         "opposite": {
                             "description": "Riteņbraucēju celiņš kas iet abos vienvirziena ceļa virzienos"
                         },
-                        "opposite_lane": {
-                            "title": "Pretējs velosipēdu celiņš"
-                        },
                         "share_busway": {
-                            "description": "Velosipēdu celiņš kopā ar ar autobusu ceļu",
-                            "title": "Velosipēdu celiņš kopā ar publiskā transporta joslu"
+                            "description": "Velosipēdu celiņš kopā ar ar autobusu ceļu"
                         },
                         "shared_lane": {
-                            "description": "Velosipēdu celiņš bez atdalīšanas no braucamās daļas",
-                            "title": "Dalīts velosipēdu celiņš"
+                            "description": "Velosipēdu celiņš bez atdalīšanas no braucamās daļas"
                         },
                         "track": {
                             "description": "Velosipēdu celiņš, nodalīts no satiksmes ar sienu"
                         }
-                    },
-                    "placeholder": "Nav",
-                    "types": {
-                        "cycleway:left": "Kreisā puse",
-                        "cycleway:right": "Labā puse"
                     }
                 },
                 "dance/style": {
@@ -561,7 +543,6 @@
                     "label": "Slīpums"
                 },
                 "incline_steps": {
-                    "label": "Slīpums",
                     "options": {
                         "down": "Lejup",
                         "up": "Augšup"
@@ -618,15 +599,6 @@
                         "semi_evergreen": "Daļēji Mūžzaļš"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Lapu Maiņa",
-                    "options": {
-                        "deciduous": "Mainīgs",
-                        "evergreen": "Mūžzaļš",
-                        "semi_deciduous": "Daļēji Mainīgs",
-                        "semi_evergreen": "Daļēji Mūžzaļš"
-                    }
-                },
                 "leaf_type": {
                     "label": "Lapu Veids",
                     "options": {
@@ -637,12 +609,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Lapu Veids",
-                    "options": {
-                        "broadleaved": "Platlapu",
-                        "leafless": "Bezlapu",
-                        "needleleaved": "Skujlapu"
-                    }
+                    "label": "Lapu Veids"
                 },
                 "leisure": {
                     "label": "Tips"
@@ -788,7 +755,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Vienvirziena",
                     "options": {
                         "no": "Nē",
                         "undefined": "Pieņemts ka Jā",
@@ -1531,10 +1497,6 @@
                 "area": {
                     "name": "Apgabals"
                 },
-                "attraction/big_wheel": {
-                    "name": "Panorāmas rats",
-                    "terms": "rats,atrakcija,bruciens,lielais rats"
-                },
                 "attraction/bungee_jumping": {
                     "name": "Gumijlēkšana",
                     "terms": "gumija,augstums,lekšana,lekšanas platforma"
@@ -1599,10 +1561,6 @@
                 "barrier/kissing_gate": {
                     "name": "Dubultveramie vārti",
                     "terms": "dubultie,abpusējie,dubultvārti"
-                },
-                "barrier/lift_gate": {
-                    "name": "Lifta ieeja",
-                    "terms": "paceļamie,bomja,bomis"
                 },
                 "barrier/retaining_wall": {
                     "name": "Stiprinājuma siena"

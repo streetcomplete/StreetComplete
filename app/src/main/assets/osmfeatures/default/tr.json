@@ -364,9 +364,6 @@
                 "building/material": {
                     "label": "Materyal"
                 },
-                "building_area": {
-                    "label": "Bina"
-                },
                 "bunker_type": {
                     "label": "Tür"
                 },
@@ -549,38 +546,23 @@
                     "label": "Bisiklet Yolu",
                     "options": {
                         "lane": {
-                            "description": "Araç trafiğinden ayrılmış bisiklet şeridi",
-                            "title": "Standart bisiklet şeridi"
-                        },
-                        "none": {
-                            "description": "Bisiklet yolu yok",
-                            "title": "Hiçbiri"
+                            "description": "Araç trafiğinden ayrılmış bisiklet şeridi"
                         },
                         "opposite": {
-                            "description": "Tek yön yolda her iki yönde kullanılabilen bisiklet şeridi",
-                            "title": "Her iki yönde kullanılabilen bisiklet şeridi"
+                            "description": "Tek yön yolda her iki yönde kullanılabilen bisiklet şeridi"
                         },
                         "opposite_lane": {
-                            "description": "Trafiğin tersi yönde ilerleyen bisiklet şeridi",
-                            "title": "Ters yönde bisiklet şeridi"
+                            "description": "Trafiğin tersi yönde ilerleyen bisiklet şeridi"
                         },
                         "share_busway": {
-                            "description": "Otobüs şeridini kullanan bisiklet şeridi",
-                            "title": "Otobüsle paylaşılan bisiklet şeridi"
+                            "description": "Otobüs şeridini kullanan bisiklet şeridi"
                         },
                         "shared_lane": {
-                            "description": "Otomobil trafiğinden ayrı olmayan bisiklet yolu",
-                            "title": "Paylaşılan bisiklet şeridi"
+                            "description": "Otomobil trafiğinden ayrı olmayan bisiklet yolu"
                         },
                         "track": {
-                            "description": "Yolda somut bir şekilde ayrılmış bisiklet şeridi",
-                            "title": "Ayrılmış bisiklet yolu"
+                            "description": "Yolda somut bir şekilde ayrılmış bisiklet şeridi"
                         }
-                    },
-                    "placeholder": "hiçbiri",
-                    "types": {
-                        "cycleway:left": "Solda",
-                        "cycleway:right": "Sağda"
                     }
                 },
                 "dance/style": {
@@ -627,17 +609,8 @@
                 "destination/ref": {
                     "label": "Hedef Yol Numaraları"
                 },
-                "destination/ref_oneway": {
-                    "label": "Hedef Yol Numaraları"
-                },
                 "destination/symbol": {
                     "label": "Hedef Sembolleri"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Hedef Sembolleri"
-                },
-                "destination_oneway": {
-                    "label": "Hedefler"
                 },
                 "destination_waterway": {
                     "label": "Hedef"
@@ -680,7 +653,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Yön (Saat Yönünde Derece)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -688,13 +660,6 @@
                     "options": {
                         "backward": "Geri",
                         "both": "İleri ve Geri",
-                        "forward": "İleri"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "Etkilenen Yön",
-                    "options": {
-                        "backward": "Geri",
                         "forward": "İleri"
                     }
                 },
@@ -856,9 +821,6 @@
                 "frequency": {
                     "label": "Çalışma Sıklığı"
                 },
-                "frequency_electrified": {
-                    "label": "Çalışma Sıklığı"
-                },
                 "from": {
                     "label": "Nereden"
                 },
@@ -1015,7 +977,6 @@
                     "label": "Meyil"
                 },
                 "incline_steps": {
-                    "label": "Yön",
                     "options": {
                         "down": "Aşağı",
                         "up": "Yukarı"
@@ -1040,9 +1001,6 @@
                     "label": "Yazıt"
                 },
                 "intermittent": {
-                    "label": "Aralıklı"
-                },
-                "intermittent_yes": {
                     "label": "Aralıklı"
                 },
                 "internet_access": {
@@ -1122,15 +1080,6 @@
                         "semi_evergreen": "Kısmen Yeşil"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Yaprak Dönümü",
-                    "options": {
-                        "deciduous": "Yaprak Döken",
-                        "evergreen": "Hep Yeşil",
-                        "semi_deciduous": "Kısmen Yaprak Döken",
-                        "semi_evergreen": "Kısmen Yeşil"
-                    }
-                },
                 "leaf_type": {
                     "label": "Yaprak Türü",
                     "options": {
@@ -1141,12 +1090,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Yaprak Türü",
-                    "options": {
-                        "broadleaved": "Geniş Yapraklı",
-                        "leafless": "Yapraksız",
-                        "needleleaved": "İğneli"
-                    }
+                    "label": "Yaprak Türü"
                 },
                 "leisure": {
                     "label": "Tür"
@@ -1176,7 +1120,6 @@
                     "label": "Konum"
                 },
                 "location_pool": {
-                    "label": "Konum",
                     "options": {
                         "indoor": "İçeri",
                         "outdoor": "Dışarı",
@@ -1232,9 +1175,6 @@
                 },
                 "maxweight": {
                     "label": "En Fazla Ağırlık"
-                },
-                "maxweight_bridge": {
-                    "label": "Maksimum Ağırlık"
                 },
                 "memorial": {
                     "label": "Tür"
@@ -1356,7 +1296,6 @@
                     "label": "Tek Yön (bisiklet)"
                 },
                 "oneway_yes": {
-                    "label": "Tek Yön",
                     "options": {
                         "alternating": "Alternatif",
                         "no": "Hayır",
@@ -1417,11 +1356,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "Tür",
-                    "options": {
-                        "multi-storey": "Seviyeli",
-                        "underground": "Yeraltı"
-                    }
+                    "label": "Tür"
                 },
                 "parking_space": {
                     "label": "Tür"
@@ -1451,7 +1386,6 @@
                     "placeholder": "Kolay, Orta, İleri Derece"
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Zorluk",
                     "options": {
                         "advanced": "İleri Derece (siyah elmas)",
                         "easy": "Basit (yeşil çember)",
@@ -1464,7 +1398,6 @@
                     "placeholder": "Kolay, Orta, İleri Derece..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Zorluk",
                     "options": {
                         "advanced": "İleri - dar dik veya buzlu bölüm, keskin dönüş",
                         "easy": "Kolay - Yumuşak tepeler, kısa dik bölüm",
@@ -1475,7 +1408,6 @@
                     "placeholder": "Kolay, Orta, İleri Derece..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Zorluk",
                     "options": {
                         "advanced": "İler - S: 40-45° eğim",
                         "easy": "Kolay - WS: 30-35° eğim",
@@ -1499,7 +1431,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Bakım",
                     "options": {
                         "backcountry": "Taşra - Tımarlama olmaz",
                         "classic": "Klasik",
@@ -1507,14 +1438,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Tımarlama",
                     "options": {
                         "backcountry": "Taşra - Kar raketi yürüyüşü",
                         "classic": "Klasik - Kış Doğa Yürüyüşü"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Tımarlama",
                     "options": {
                         "backcountry": "Taşra, tımarlama olmaz",
                         "classic": "Klasik",
@@ -1913,9 +1842,6 @@
                 },
                 "site": {
                     "label": "Tür"
-                },
-                "site_type": {
-                    "label": "Site Tipi"
                 },
                 "smoking": {
                     "label": "Sigara İçilme Durumu",
@@ -2316,9 +2242,6 @@
                 },
                 "voltage/tertiary": {
                     "label": "Üçüncül Gerilim"
-                },
-                "voltage_electrified": {
-                    "label": "Gerilim"
                 },
                 "wall": {
                     "label": "Tür"
@@ -3174,6 +3097,9 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfitiyatro"
                 },
+                "amenity/toilets": {
+                    "terms": "tuvalet"
+                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Alafranga tuvaletler"
                 },
@@ -3322,10 +3248,6 @@
                 "attraction/animal": {
                     "name": "Hayvan Muhafazası"
                 },
-                "attraction/big_wheel": {
-                    "name": "Dönme Dolap",
-                    "terms": "dönme dolap"
-                },
                 "attraction/bumper_car": {
                     "name": "Çarpışan Arabalar"
                 },
@@ -3458,8 +3380,8 @@
                     "terms": "sadece i̇nsanlar i̇çin giriş kapısı"
                 },
                 "barrier/lift_gate": {
-                    "name": "Asansör Kapı",
-                    "terms": "asansör kapı"
+                    "name": "Bom Bariyeri",
+                    "terms": "bariyer,turnike,yol bariyeri"
                 },
                 "barrier/retaining_wall": {
                     "name": "İstinat Duvarı",
@@ -3679,10 +3601,6 @@
                     "name": "Stadyum",
                     "terms": "stadyum"
                 },
-                "building/static_caravan": {
-                    "name": "Karavan",
-                    "terms": "karavan"
-                },
                 "building/sty": {
                     "name": "Domuz Ahırı"
                 },
@@ -3748,6 +3666,9 @@
                 "craft/bookbinder": {
                     "name": "Ciltçi",
                     "terms": "ciltçi"
+                },
+                "craft/brewery": {
+                    "name": "El Yapımı Bira İşletmesi"
                 },
                 "craft/carpenter": {
                     "name": "Marangoz",
@@ -4153,14 +4074,8 @@
                 "highway/crossing": {
                     "name": "Geçit"
                 },
-                "highway/crossing/marked": {
-                    "name": "İşaretli Yaya Geçidi"
-                },
                 "highway/crossing/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
-                },
-                "highway/crossing/zebra": {
-                    "name": "İşaretli Yaya Geçidi"
                 },
                 "highway/cycleway": {
                     "name": "Bisiklet Yolu",
@@ -4174,9 +4089,6 @@
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "Bisiklet ve Yaya Geçidi"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "İşaretli Bisiklet Geçidi"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "İşaretsiz Bisiklet Geçidi"
@@ -4350,6 +4262,10 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Açık Yol Geçiş Ücreti"
+                },
+                "highway/track": {
+                    "name": "Pist / Arazi Erişim Yolu",
+                    "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu"
                 },
                 "highway/traffic_mirror": {
                     "name": "Trafik Aynası",
@@ -4929,6 +4845,9 @@
                 "line": {
                     "name": "Çizgi",
                     "terms": "çizgi"
+                },
+                "man_made": {
+                    "name": "İnsan Yapımı Özellik"
                 },
                 "man_made/adit": {
                     "name": "Tünel Girişi",
@@ -6096,6 +6015,10 @@
                     "name": "Bahis Merkezi",
                     "terms": "bahis merkezi"
                 },
+                "shop/books": {
+                    "name": "Kitapçı",
+                    "terms": "kitapçı"
+                },
                 "shop/boutique": {
                     "name": "Butik Mağaza"
                 },
@@ -6207,6 +6130,10 @@
                 "shop/dairy": {
                     "name": "Süt Mağazası",
                     "terms": "süt mağazası"
+                },
+                "shop/deli": {
+                    "name": "Şarküteri",
+                    "terms": "şarküteri"
                 },
                 "shop/department_store": {
                     "name": "Mağaza",
@@ -6421,6 +6348,10 @@
                     "name": "Müzik Aletleri Mağazası",
                     "terms": "müzik aletleri mağazası"
                 },
+                "shop/newsagent": {
+                    "name": "Gazete Bayii",
+                    "terms": "gazete bayii"
+                },
                 "shop/nutrition_supplements": {
                     "name": "Gıda Takviye Ürünleri Mağazası",
                     "terms": "gıda takviye ürünleri mağazası,enerji takviye ürünleri mağazası"
@@ -6586,6 +6517,10 @@
                     "name": "Elektrikli Süpürge Mağazası",
                     "terms": "elektrikli süpürge mağazası"
                 },
+                "shop/variety_store": {
+                    "name": "İndirim Mağazası",
+                    "terms": "1 tl mağazası"
+                },
                 "shop/video": {
                     "name": "Film - Video Mağazası",
                     "terms": "film - video mağazası"
@@ -6634,6 +6569,10 @@
                 },
                 "tourism": {
                     "name": "Turizm Özelliği"
+                },
+                "tourism/alpine_hut": {
+                    "name": "Dağ Köşkü",
+                    "terms": "dağ evi,dağ kulübesi,baraka"
                 },
                 "tourism/apartment": {
                     "name": "Misafir Apartmanı",
@@ -6868,6 +6807,10 @@
                 },
                 "type/route/aerialway": {
                     "name": "Araç Güzergahı"
+                },
+                "type/route/bicycle": {
+                    "name": "Bisiklet Rotası",
+                    "terms": "bisiklet güzergahı,bisiklet rotası"
                 },
                 "type/route/bus": {
                     "name": "Otobüs Güzergahı",

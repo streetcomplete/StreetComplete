@@ -119,7 +119,8 @@
                         "private": "خصوصی",
                         "unknown": "نامشخص",
                         "yes": "عمومی"
-                    }
+                    },
+                    "terms": "دسترسی مجاز"
                 },
                 "activity": {
                     "label": "فعالیت",
@@ -127,6 +128,7 @@
                         "bicycle": "دوچرخه سواری",
                         "hiking": "پیاده روی",
                         "horse": "اسب سواری",
+                        "mtb": "دوچرخه‌سواری کوهستان",
                         "ski": "اسکی"
                     }
                 },
@@ -402,9 +404,6 @@
                 "building/material": {
                     "label": "جنس"
                 },
-                "building_area": {
-                    "label": "ساختمان"
-                },
                 "bunker_type": {
                     "label": "نوع"
                 },
@@ -445,7 +444,6 @@
                     "placeholder": "۵۰, ۱۰۰, ۲۰۰..."
                 },
                 "capacity/caravans": {
-                    "label": "ظرفیت (کاروان)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -563,7 +561,6 @@
                     "label": "سرپوشیده"
                 },
                 "covered_no": {
-                    "label": "سرپوشیده",
                     "options": {
                         "no": "خیر",
                         "undefined": "خیر فرض شده",
@@ -677,38 +674,23 @@
                     "label": "خطوط عبوری دوچرخه",
                     "options": {
                         "lane": {
-                            "description": "خط دوچرخه جدا شده از ترافیک خودرو با خط رنگی",
-                            "title": "خط استاندارد دوچرخه"
-                        },
-                        "none": {
-                            "description": "بدون خط دوچرخه",
-                            "title": "هیچکدام"
+                            "description": "خط دوچرخه جدا شده از ترافیک خودرو با خط رنگی"
                         },
                         "opposite": {
-                            "description": "خط دوطرفه ویژهٔ دوچرخه‌سواری در خیابان یکطرفه",
-                            "title": "خط عبور ویژهٔ دوچرخه در جهت مخالف حرکت"
+                            "description": "خط دوطرفه ویژهٔ دوچرخه‌سواری در خیابان یکطرفه"
                         },
                         "opposite_lane": {
-                            "description": "خط ویژه دوچرخه‌سواری در جهت برعکس رفت و آمد",
-                            "title": "خط دوچرخه مخالف"
+                            "description": "خط ویژه دوچرخه‌سواری در جهت برعکس رفت و آمد"
                         },
                         "share_busway": {
-                            "description": "یک خط دوچرخه مشترک با خط اتوبوس",
-                            "title": "خط دوچرخه مشترک با خط اتوبوس"
+                            "description": "یک خط دوچرخه مشترک با خط اتوبوس"
                         },
                         "shared_lane": {
-                            "description": "خط دوچرخه بدون جدایش از ترافیک خودرو",
-                            "title": "خط دوچرخه‌سواری مشترک"
+                            "description": "خط دوچرخه بدون جدایش از ترافیک خودرو"
                         },
                         "track": {
-                            "description": "خط دوچرخه جدا شده از ترافیک خودرو با مانع فیزیکی",
-                            "title": "مسیر دوچرخه"
+                            "description": "خط دوچرخه جدا شده از ترافیک خودرو با مانع فیزیکی"
                         }
-                    },
-                    "placeholder": "هیچکدام",
-                    "types": {
-                        "cycleway:left": "سمت چپ",
-                        "cycleway:right": "سمت راست"
                     }
                 },
                 "dance/style": {
@@ -756,17 +738,8 @@
                 "destination/ref": {
                     "label": "شماره جاده مقصد"
                 },
-                "destination/ref_oneway": {
-                    "label": "شماره جاده مقصد"
-                },
                 "destination/symbol": {
                     "label": "نمادهای مقصد"
-                },
-                "destination/symbol_oneway": {
-                    "label": "نمادهای مقصد"
-                },
-                "destination_oneway": {
-                    "label": "مقصدها"
                 },
                 "destination_waterway": {
                     "label": "مقصد"
@@ -818,7 +791,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "جهت (ساعت‌گرد)",
                     "placeholder": "۴۵, ۹۰, ۱۸۰, ۲۷۰"
                 },
                 "direction_vertex": {
@@ -827,13 +799,6 @@
                         "backward": "رو به عقب",
                         "both": "هردو/همه",
                         "forward": "رو به جلو "
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "جهت تحت تأثیر",
-                    "options": {
-                        "backward": "رو به عقب",
-                        "forward": "رو به جلو"
                     }
                 },
                 "dispensing": {
@@ -893,9 +858,6 @@
                     "terms": "مدت، مدت زمان"
                 },
                 "ele": {
-                    "label": "ارتفاع (متر)"
-                },
-                "ele_node": {
                     "label": "ارتفاع (متر)"
                 },
                 "electrified": {
@@ -1019,9 +981,6 @@
                 },
                 "frequency": {
                     "label": "تناوب کار"
-                },
-                "frequency_electrified": {
-                    "label": "فرکانس عملیاتی"
                 },
                 "from": {
                     "label": "از"
@@ -1196,7 +1155,6 @@
                     "terms": "شیب، سرازیری، سربالایی"
                 },
                 "incline_steps": {
-                    "label": "شیب",
                     "options": {
                         "down": "رو به پایین",
                         "up": "رو به بالا"
@@ -1225,9 +1183,6 @@
                 "intermittent": {
                     "label": "دوره‌ای",
                     "terms": "متناوب، ناپیوسته، منقطع"
-                },
-                "intermittent_yes": {
-                    "label": "دوره‌ای"
                 },
                 "internet_access": {
                     "label": "اتصال اینترنت",
@@ -1313,15 +1268,6 @@
                         "semi_evergreen": "شبه-همیشه سبز"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "چرخه برگ",
-                    "options": {
-                        "deciduous": "برگریز",
-                        "evergreen": "همیشه سبز",
-                        "semi_deciduous": "شبه برگریز",
-                        "semi_evergreen": "شبه-همیشه سبز"
-                    }
-                },
                 "leaf_type": {
                     "label": "نوع برگ",
                     "options": {
@@ -1332,12 +1278,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "نوع برگ",
-                    "options": {
-                        "broadleaved": "پهن برگ",
-                        "leafless": "بی برگ",
-                        "needleleaved": "برگ سوزنی "
-                    }
+                    "label": "نوع برگ"
                 },
                 "leisure": {
                     "label": "نوع"
@@ -1371,7 +1312,6 @@
                     "terms": "موقعیت، مکان، لوکیشن، محل"
                 },
                 "location_pool": {
-                    "label": "موقعیت",
                     "options": {
                         "indoor": "سرپوشیده",
                         "outdoor": "فضای باز ",
@@ -1435,10 +1375,6 @@
                 },
                 "maxweight": {
                     "label": "حداکثر وزن"
-                },
-                "maxweight_bridge": {
-                    "label": "حداکثر وزن",
-                    "terms": "حداکثر وزن"
                 },
                 "memorial": {
                     "label": "نوع"
@@ -1574,7 +1510,6 @@
                     "label": "یکطرفه (برای دوچرخه)"
                 },
                 "oneway_yes": {
-                    "label": "یکطرفه",
                     "options": {
                         "alternating": "متناوب",
                         "no": "خیر",
@@ -1658,11 +1593,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "نوع",
-                    "options": {
-                        "multi-storey": "چندطبقه",
-                        "underground": "زیرزمینی"
-                    }
+                    "label": "نوع"
                 },
                 "parking_space": {
                     "label": "نوع"
@@ -1694,7 +1625,6 @@
                     "placeholder": "آسان، متوسط، پیشرفته ..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "دشواری",
                     "options": {
                         "advanced": "پیشرفته (لوزی سیاه)",
                         "easy": "آسان (دایره سبز)",
@@ -1707,7 +1637,6 @@
                     "placeholder": "آسان، متوسط، پیشرفته ..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "دشواری",
                     "options": {
                         "advanced": "پیشرفته - بخش باریک، شیب‌دار یا یخی، گردش با زاویهٔ تند",
                         "easy": "آسان - تپه های نرم ، بخش شیب‌دار کوتاه",
@@ -1718,7 +1647,6 @@
                     "placeholder": "آسان، متوسط، پیشرفته ..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "دشواری",
                     "options": {
                         "advanced": "پیشرفته - S: شیب ۴۰-۴۵ درجه",
                         "easy": "آسان - WS: شیب ۳۰-۳۵ درجه",
@@ -1742,7 +1670,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "تیمار کردن",
                     "options": {
                         "backcountry": "ناحیه‌ی دورافتاده - بدون نظافت",
                         "classic": "کلاسیک",
@@ -1750,14 +1677,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "تیمار کردن",
                     "options": {
                         "backcountry": "ناحیه‌ی دورافتاده - دارای پاچیله (کفش برفی)",
                         "classic": "کلاسیک - پیاده‌روی زمستانی"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "تیمار کردن",
                     "options": {
                         "backcountry": "ناحیه‌ی دورافتاده - بدون نظافت",
                         "classic": "کلاسیک",
@@ -2188,9 +2113,6 @@
                 "site": {
                     "label": "نوع"
                 },
-                "site_type": {
-                    "label": "نوع سایت"
-                },
                 "smoking": {
                     "label": "کشیدن مواد افیونی",
                     "options": {
@@ -2619,9 +2541,6 @@
                 },
                 "voltage/tertiary": {
                     "label": "ولتاژ ثالثیه"
-                },
-                "voltage_electrified": {
-                    "label": "ولتاژ"
                 },
                 "wall": {
                     "label": "نوع"
@@ -3786,9 +3705,6 @@
                     "name": "محوطه حیوانات",
                     "terms": "پارک حیوانات، باغ وحش، خرس، پرنده، پرندگان، ماهی، حشره، حشرات، میمون، پنگوئن، پارک تفریحی، ببر، شیر، آکواریوم، لاکپشت، خزندگان"
                 },
-                "attraction/big_wheel": {
-                    "name": "چرخ و فلک"
-                },
                 "attraction/bumper_car": {
                     "name": "ماشین‌های کوبنده",
                     "terms": "پارک تفریحی، اتومبیل‌های برقی ، اتومبیل رانی"
@@ -3938,10 +3854,6 @@
                 "barrier/kissing_gate": {
                     "name": "ورودی مخصوص انسان",
                     "terms": "دروازه مخصوص انسان,کیسینگ گیت"
-                },
-                "barrier/lift_gate": {
-                    "name": "راهبند بازویی",
-                    "terms": "گیت بالارونده"
                 },
                 "barrier/retaining_wall": {
                     "name": "دیوار نگه دارنده",
@@ -4177,10 +4089,6 @@
                 },
                 "building/stadium": {
                     "name": "ساختمان استادیوم"
-                },
-                "building/static_caravan": {
-                    "name": "خانه از پیش ساخته متحرک",
-                    "terms": "تریلر خانه ، خانه تولیدی ، خانه موبایل ، خانه پیش ساخته ، کاروان مسکونی ، کاروان استاتیک ، خانه تریلر ، خانه سیار"
                 },
                 "building/sty": {
                     "name": "آغل خوک",
@@ -4684,18 +4592,9 @@
                 "highway/crossing": {
                     "name": "گذرگاه پیاده"
                 },
-                "highway/crossing/marked": {
-                    "name": "تقاطع گذرگاه پیاده با نشانه‌گذاری"
-                },
-                "highway/crossing/uncontrolled": {
-                    "name": "خط عابرپیاده علامت‌گذاری شده"
-                },
                 "highway/crossing/unmarked": {
                     "name": "تقاطع گذرگاه پیاده بدون نشانه‌گذاری",
                     "terms": "گذرگاه عابر پیاده، محل عبور عابر پیاده"
-                },
-                "highway/crossing/zebra": {
-                    "name": "تقاطع گذرگاه پیاده با خط‌کشی راه‌راه"
                 },
                 "highway/cycleway": {
                     "name": "راه دوچرخه‌سواری",
@@ -4711,9 +4610,6 @@
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "گذرگاه دوچرخه و پیاده",
                     "terms": "عبور دوچرخه و پیاده ، عبور دوچرخه و عابر پیاده ، راه دوچرخه ، دوچرخه سواری ، دوچرخه سوار، تقاطع"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "گذرگاه دوچرخه با نشانه‌گذاری"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "گذرگاه دوچرخه بدون نشانه‌گذاری",

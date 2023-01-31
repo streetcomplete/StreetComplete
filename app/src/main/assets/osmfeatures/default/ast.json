@@ -211,9 +211,6 @@
                 "building": {
                     "label": "Edificiu"
                 },
-                "building_area": {
-                    "label": "Edificiu"
-                },
                 "bunker_type": {
                     "label": "Tipu"
                 },
@@ -309,38 +306,23 @@
                     "label": "Carriles bici",
                     "options": {
                         "lane": {
-                            "description": "Un carril bici separáu del tráficu d'autos por una llinia pintada",
-                            "title": "Carril bici estándar"
-                        },
-                        "none": {
-                            "description": "Sin carril bici",
-                            "title": "Dengún"
+                            "description": "Un carril bici separáu del tráficu d'autos por una llinia pintada"
                         },
                         "opposite": {
-                            "description": "Carril bici de dos direcciones n'una cai de dirección única",
-                            "title": "Carril bici a contradirección"
+                            "description": "Carril bici de dos direcciones n'una cai de dirección única"
                         },
                         "opposite_lane": {
-                            "description": "Un carril bici que va en dirección opuesta al tráficu",
-                            "title": "Carril bici opuestu"
+                            "description": "Un carril bici que va en dirección opuesta al tráficu"
                         },
                         "share_busway": {
-                            "description": "Carril bici compartíu con carril bus",
-                            "title": "Carril bici compartíu con bus"
+                            "description": "Carril bici compartíu con carril bus"
                         },
                         "shared_lane": {
-                            "description": "Un carril bici sin separación del tráficu d'autos",
-                            "title": "Carril bici compartíu"
+                            "description": "Un carril bici sin separación del tráficu d'autos"
                         },
                         "track": {
-                            "description": "Un carril bici separáu del tráficu por una barrera física",
-                            "title": "Pista ciclable"
+                            "description": "Un carril bici separáu del tráficu por una barrera física"
                         }
-                    },
-                    "placeholder": "dengún",
-                    "types": {
-                        "cycleway:left": "Llau izquierdu",
-                        "cycleway:right": "Llau drechu"
                     }
                 },
                 "date": {
@@ -502,7 +484,6 @@
                     "label": "Pendiente"
                 },
                 "incline_steps": {
-                    "label": "Cuesta",
                     "options": {
                         "down": "Abaxo",
                         "up": "Arriba"
@@ -556,15 +537,6 @@
                         "semi_evergreen": "Semi-perenne"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Ciclu de fueyes",
-                    "options": {
-                        "deciduous": "Caducu",
-                        "evergreen": "Perenne",
-                        "semi_deciduous": "Semi-caducu",
-                        "semi_evergreen": "Semi-perenne"
-                    }
-                },
                 "leaf_type": {
                     "label": "Tipu de fueya",
                     "options": {
@@ -575,12 +547,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Tipu de fueya",
-                    "options": {
-                        "broadleaved": "Fueya ancha",
-                        "leafless": "Sin fueya",
-                        "needleleaved": "Fueya d'aguya"
-                    }
+                    "label": "Tipu de fueya"
                 },
                 "leisure": {
                     "label": "Tipu"
@@ -712,7 +679,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Sentíu únicu",
                     "options": {
                         "no": "Non",
                         "undefined": "Créyese que si",
@@ -1597,10 +1563,6 @@
                 "area": {
                     "name": "Área"
                 },
-                "attraction/big_wheel": {
-                    "name": "Noria",
-                    "terms": "rueda,atracciones"
-                },
                 "attraction/carousel": {
                     "name": "Caballinos",
                     "terms": "carrusel,atracciones,feria"
@@ -1648,9 +1610,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Puerta ganadera"
-                },
-                "barrier/lift_gate": {
-                    "name": "Barrera"
                 },
                 "barrier/retaining_wall": {
                     "name": "Muru de contención"
@@ -1763,9 +1722,6 @@
                 "building/stable": {
                     "name": "Establu",
                     "terms": "corte,cuadra"
-                },
-                "building/static_caravan": {
-                    "name": "Casa portátil"
                 },
                 "building/terrace": {
                     "name": "Filera de cases"

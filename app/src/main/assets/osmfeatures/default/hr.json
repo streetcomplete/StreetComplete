@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Dopušten pristup",
                     "options": {
+                        "customers": {
+                            "description": "Ograničeno na kupce na odredištu",
+                            "title": "Kupci"
+                        },
                         "designated": {
                             "description": "Pristup dopuštaju znakovi ili lokalni zakoni",
                             "title": "Označeno"
@@ -83,6 +87,10 @@
                             "description": "Pristup je dopušten samo uz izričitu dozvolu vlasnika",
                             "title": "Privatno"
                         },
+                        "unknown": {
+                            "description": "Uvjeti za pristup su nepoznati ili nejasni",
+                            "title": "Nepoznato"
+                        },
                         "yes": {
                             "description": "Pristup je dopušten zakonom; pravo prolaza",
                             "title": "Dopušteno"
@@ -109,6 +117,11 @@
                         "permit": "Samo s dozvolom"
                     },
                     "terms": "dopušten pristup,dopuštenje,pristup"
+                },
+                "activity": {
+                    "options": {
+                        "ski": "Skijanje"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Vrsta",
@@ -314,10 +327,6 @@
                     "label": "Materijal",
                     "terms": "matrijal"
                 },
-                "building_area": {
-                    "label": "Zgrada",
-                    "terms": "zgrada,građevina"
-                },
                 "bunker_type": {
                     "label": "Vrsta"
                 },
@@ -410,7 +419,35 @@
                     "label": "Usjev"
                 },
                 "crossing": {
-                    "label": "Vrsta"
+                    "label": "Vrsta",
+                    "options": {
+                        "traffic_signals": "Pješački prijelaz sa semaforom",
+                        "uncontrolled": "Samo oznake na cesti",
+                        "unmarked": "Prijelaz bez oznaka ili semafora"
+                    }
+                },
+                "crossing/island": {
+                    "label": "Pješački otok"
+                },
+                "crossing/markings": {
+                    "label": "Oznake na cesti",
+                    "options": {
+                        "no": "Neoznačeno",
+                        "surface": "Drugačija površina",
+                        "yes": "Nekakve oznake",
+                        "zebra": "Zebra",
+                        "zebra:bicolour": "Zebra u dvije boje",
+                        "zebra:double": "Dvostruka zebra",
+                        "zebra:paired": "Zebra u parovima"
+                    },
+                    "terms": "zebra,horizontalna signalizacija"
+                },
+                "crossing_raised": {
+                    "label": "Dignuta",
+                    "options": {
+                        "table": "Da",
+                        "undefined": "Ne"
+                    }
                 },
                 "cuisine": {
                     "label": "Kuhinja",
@@ -430,40 +467,25 @@
                     "label": "Biciklističke trake",
                     "options": {
                         "lane": {
-                            "description": "Biciklistička traka odvojena od automobilskog prometa obojenom crtom",
-                            "title": "Standardna biciklistička traka"
-                        },
-                        "none": {
-                            "description": "Nema biciklističke trake",
-                            "title": "Nijedna"
+                            "description": "Biciklistička traka odvojena od automobilskog prometa obojenom crtom"
                         },
                         "opposite": {
-                            "description": "Biciklistička traka za kretanje u oba smjera u jednosmjernoj ulici",
-                            "title": "Biciklistička traka suprotnog smjera"
+                            "description": "Biciklistička traka za kretanje u oba smjera u jednosmjernoj ulici"
                         },
                         "opposite_lane": {
-                            "description": "Biciklistička traka suprotnog smjera kretanja u odnosu na promet",
-                            "title": "Biciklistička traka suprotnog smjera"
+                            "description": "Biciklistička traka suprotnog smjera kretanja u odnosu na promet"
                         },
                         "share_busway": {
-                            "description": "Biciklistička traka dijeljena s autobusnom trakom",
-                            "title": "Biciklistička traka dijeljena s autobusima"
+                            "description": "Biciklistička traka dijeljena s autobusnom trakom"
                         },
                         "shared_lane": {
-                            "description": "Biciklistička traka nije odvojena od automobilskog prometa",
-                            "title": "Dijeljena biciklistička traka"
+                            "description": "Biciklistička traka nije odvojena od automobilskog prometa"
                         },
                         "track": {
-                            "description": "Biciklistička traka odvojena fizičkom ogradom od automobilskog prometa",
-                            "title": "Biciklistička staza"
+                            "description": "Biciklistička traka odvojena fizičkom ogradom od automobilskog prometa"
                         }
                     },
-                    "placeholder": "nijedna",
-                    "terms": "biciklističke trake",
-                    "types": {
-                        "cycleway:left": "Lijeva strana",
-                        "cycleway:right": "Desna strana"
-                    }
+                    "terms": "biciklističke trake"
                 },
                 "dance/style": {
                     "label": "Vrste plesova"
@@ -506,10 +528,6 @@
                 "destination/symbol": {
                     "label": "Znakovi odredišta"
                 },
-                "destination/symbol_oneway": {
-                    "label": "Znakovi odredišta",
-                    "terms": "znakovi odredišta"
-                },
                 "diameter": {
                     "label": "Promjer"
                 },
@@ -532,12 +550,6 @@
                     "options": {
                         "backward": "Nazad",
                         "both": "Oba smjera",
-                        "forward": "Naprijed"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "options": {
-                        "backward": "Nazad",
                         "forward": "Naprijed"
                     }
                 },
@@ -635,9 +647,6 @@
                 "frequency": {
                     "terms": "frekvencija"
                 },
-                "frequency_electrified": {
-                    "terms": "frekvencija"
-                },
                 "fuel": {
                     "label": "Gorivo"
                 },
@@ -729,6 +738,9 @@
                 "horse_scale": {
                     "terms": "razina jahanja"
                 },
+                "hot_water": {
+                    "label": "Topla voda"
+                },
                 "iata": {
                     "label": "IATA kôd za zračnu luku"
                 },
@@ -744,13 +756,13 @@
                     "terms": "nizbrdica"
                 },
                 "incline_steps": {
-                    "label": "Nagib",
                     "options": {
                         "down": "Dolje",
                         "up": "Gore"
                     }
                 },
                 "indoor": {
+                    "label": "U zatvorenom prostoru",
                     "terms": "u zatvorenom prostoru"
                 },
                 "informal": {
@@ -794,6 +806,9 @@
                     },
                     "terms": "raskršće"
                 },
+                "kitchen": {
+                    "label": "Kuhinja"
+                },
                 "lamp_type": {
                     "label": "Vrsta"
                 },
@@ -807,6 +822,7 @@
                 },
                 "layer": {
                     "label": "Sloj",
+                    "placeholder": "0",
                     "terms": "sloj"
                 },
                 "leaf_cycle": {
@@ -815,15 +831,6 @@
                         "deciduous": "Listopadno",
                         "evergreen": "Zimzeleno",
                         "mixed": "Mješano",
-                        "semi_deciduous": "Polu-listopadni",
-                        "semi_evergreen": "Polu-zimzeleni"
-                    }
-                },
-                "leaf_cycle_singular": {
-                    "label": "Padanje lišća",
-                    "options": {
-                        "deciduous": "Listopadan",
-                        "evergreen": "Zimzeleno",
                         "semi_deciduous": "Polu-listopadni",
                         "semi_evergreen": "Polu-zimzeleni"
                     }
@@ -838,12 +845,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Vrsta listova",
-                    "options": {
-                        "broadleaved": "Široki list",
-                        "leafless": "Bez lišća",
-                        "needleleaved": "Iglice"
-                    }
+                    "label": "Vrsta listova"
                 },
                 "leisure": {
                     "label": "Vrsta"
@@ -858,6 +860,9 @@
                 "level_semi": {
                     "terms": "razine,katovi"
                 },
+                "lifeguard": {
+                    "label": "Spasilac"
+                },
                 "line_management": {
                     "terms": "odvajanje,topološka crta,terminacija"
                 },
@@ -870,7 +875,6 @@
                     "terms": "mjesto,lokacija"
                 },
                 "location_pool": {
-                    "label": "Lokacija",
                     "options": {
                         "indoor": "U zatvorenom prostoru",
                         "outdoor": "Na otvorenom",
@@ -892,6 +896,30 @@
                 },
                 "material": {
                     "label": "Materijal",
+                    "options": {
+                        "adobe": "Nepečena opeka (ćerpič)",
+                        "aluminium": "Aluminij",
+                        "brass": "Mjed",
+                        "brick": "Cigle",
+                        "bronze": "Bronca",
+                        "concrete": "Beton",
+                        "dry_stone": "Suhozid",
+                        "glass": "Staklo",
+                        "granite": "Granit",
+                        "iron": "Željezo",
+                        "limestone": "Vapnenac",
+                        "marble": "Mramor",
+                        "metal": "Metal",
+                        "plastic": "Plastika",
+                        "reinforced_conrete": "Ojačani beton",
+                        "rock": "Stijena",
+                        "sand": "Pjesak",
+                        "sandstone": "Stijena pješčenjak",
+                        "soil": "Zemlja, tlo",
+                        "steel": "Čelik",
+                        "stone": "Kamen",
+                        "wood": "Drvo"
+                    },
                     "terms": "materijal"
                 },
                 "max_age": {
@@ -917,9 +945,14 @@
                     "label": "Najveća dopuštena težina",
                     "terms": "maksimalna težina"
                 },
-                "maxweight_bridge": {
-                    "label": "Najveća dopuštena težina",
-                    "terms": "maksimalna težina"
+                "memorial": {
+                    "options": {
+                        "bust": "Poprsje",
+                        "obelisk": "Obelisk",
+                        "plaque": "Spomen ploča",
+                        "sculpture": "Skulptura",
+                        "statue": "Kip"
+                    }
                 },
                 "microbrewery": {
                     "label": "Mikro pivovara",
@@ -1033,7 +1066,6 @@
                     "terms": "jednosmjerno (bicikli)"
                 },
                 "oneway_yes": {
-                    "label": "Jednosmjerno",
                     "options": {
                         "alternating": "Izmjenjujuće",
                         "no": "Ne",
@@ -1077,12 +1109,28 @@
                     "options": {
                         "carports": "Nastrešnica",
                         "garage_boxes": "Boks garaža",
+                        "half_on_kerb": "Dijelom na rubniku",
                         "lane": "Parking uz prometnicu",
+                        "layby": "Na odmorištu",
                         "multi-storey": "Višerazinski",
+                        "on_kerb": "Na rubnik",
+                        "rooftop": "Na krovu",
                         "sheds": "Šupe",
+                        "street_side": "Uz kolnik",
                         "surface": "Površinski",
                         "underground": "Podzemni"
                     }
+                },
+                "parking/orientation": {
+                    "label": "Orijentacija",
+                    "options": {
+                        "diagonal": "Dijagonalno na ulicu",
+                        "parallel": "Paralelno sa ulicom",
+                        "perpendicular": "Okomito na ulicu"
+                    }
+                },
+                "parking/side/orientation": {
+                    "label": "Orijentacija parkiranja"
                 },
                 "payment_multi": {
                     "label": "Načini plaćanja",
@@ -1136,8 +1184,19 @@
                 "plant": {
                     "label": "Elektrana"
                 },
+                "plant/output": {
+                    "options": {
+                        "compressed_air": "Komprimirani zrak",
+                        "electricity": "Električna struja",
+                        "hot_water": "Vrela voda",
+                        "steam": "Vodena para"
+                    }
+                },
                 "plant/output/electricity": {
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
+                },
+                "plant/source": {
+                    "label": "Izvor energije"
                 },
                 "polling_station": {
                     "terms": "biračko mjesto"
@@ -1164,16 +1223,38 @@
                 "ramp": {
                     "terms": "ugrađen prilaz"
                 },
+                "recycling_accepts": {
+                    "label": "Prima",
+                    "options": {
+                        "batteries": "Baterije",
+                        "cans": "Limenke",
+                        "cardboard": "Karton",
+                        "clothes": "Odjeća",
+                        "cooking_oil": "Ulje za kuhanje",
+                        "engine_oil": "Motorno ulje",
+                        "glass": "Svakakvo staklo (kaljeno staklo, prozori, ogledala, itd.)",
+                        "glass_bottles": "Staklene boce i staklenke",
+                        "green_waste": "Biootpad",
+                        "paper": "Papir",
+                        "plastic": "Plastika",
+                        "plastic_bottles": "Plastične boce",
+                        "plastic_packaging": "Plastično pakiranje"
+                    }
+                },
                 "ref": {
                     "terms": "referenti kod"
                 },
                 "ref/vatin": {
                     "terms": "porezni broj,oib"
                 },
+                "ref_golf_hole": {
+                    "label": "Broj rupe"
+                },
                 "ref_road_number": {
                     "terms": "broj ceste"
                 },
                 "ref_route": {
+                    "label": "Broj rute",
                     "terms": "broj rute"
                 },
                 "ref_runway": {
@@ -1184,6 +1265,16 @@
                 },
                 "religion": {
                     "label": "Religija",
+                    "options": {
+                        "buddhist": "Budizam",
+                        "christian": "Kršćanska",
+                        "hindu": "Hinduizam",
+                        "jewish": "Judaizam",
+                        "muslim": "Muslimanska",
+                        "shinto": "Šintoizam",
+                        "sikh": "Sikhizam",
+                        "taoist": "Taoizam"
+                    },
                     "terms": "vjera,vjeroispovijed"
                 },
                 "reservation": {
@@ -1251,6 +1342,7 @@
                     "label": "Oblik"
                 },
                 "seamark/buoy_lateral/colour": {
+                    "label": "Boja",
                     "options": {
                         "green": "Zelena"
                     }
@@ -1331,7 +1423,10 @@
                     "terms": "izvori,reference"
                 },
                 "sport": {
-                    "label": "Sportovi"
+                    "label": "Sportovi",
+                    "options": {
+                        "handball": "Rukomet"
+                    }
                 },
                 "sport_ice": {
                     "label": "Sportovi"
@@ -1386,6 +1481,9 @@
                 },
                 "surface": {
                     "label": "Površina",
+                    "options": {
+                        "asphalt": "Asfalt"
+                    },
                     "terms": "površina"
                 },
                 "survey/date": {
@@ -1463,6 +1561,11 @@
                 "trolley_wire": {
                     "terms": "žice trolejbusa"
                 },
+                "tunnel_combo": {
+                    "options": {
+                        "culvert": "Propust"
+                    }
+                },
                 "usage_rail": {
                     "options": {
                         "tourism": "Turizam"
@@ -1483,9 +1586,6 @@
                 },
                 "voltage/tertiary": {
                     "terms": "tercijarni napon"
-                },
-                "voltage_electrified": {
-                    "terms": "napon"
                 },
                 "water": {
                     "label": "Vrsta"
@@ -2012,9 +2112,6 @@
                 "barrier/kissing_gate": {
                     "name": "Rotirajući prolaz za ljude"
                 },
-                "barrier/lift_gate": {
-                    "name": "Rampa"
-                },
                 "barrier/retaining_wall": {
                     "name": "Potporni zid"
                 },
@@ -2032,6 +2129,9 @@
                 },
                 "boundary/administrative": {
                     "name": "Administrativna granica"
+                },
+                "bridge/support/pier": {
+                    "name": "Stup mosta"
                 },
                 "building": {
                     "name": "Građevina",
@@ -2133,9 +2233,6 @@
                 },
                 "building/stadium": {
                     "name": "Zgrada stadiona"
-                },
-                "building/static_caravan": {
-                    "name": "Statičan mobilan dom"
                 },
                 "building/terrace": {
                     "name": "Kuće u nizu"
@@ -2288,6 +2385,13 @@
                     "name": "Garaža hitne pomoći",
                     "terms": "garaža hitne pomoći,stanica hitne pomoći,stanica za hitnu pomoć,hitna pomoć"
                 },
+                "emergency/fire_extinguisher": {
+                    "name": "Aparat za gašenje požara",
+                    "terms": "vatrogasni aparat"
+                },
+                "emergency/fire_hose": {
+                    "name": "Vatrogasno crijevo"
+                },
                 "emergency/fire_hydrant": {
                     "name": "Požarni hidrant",
                     "terms": "hidrant"
@@ -2295,6 +2399,10 @@
                 "emergency/lifeguard": {
                     "name": "Spasilac",
                     "terms": "plaži,spasioc"
+                },
+                "emergency/mountain_rescue": {
+                    "name": "Gorska služba spašavanja",
+                    "terms": "hgss"
                 },
                 "emergency/phone": {
                     "name": "Telefon za nuždu"
@@ -2344,14 +2452,8 @@
                 "highway/corridor": {
                     "name": "Hodnik"
                 },
-                "highway/crossing/marked": {
-                    "name": "Označeni pješački prijelaz"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Neoznačeni pješački prijelaz"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Označeni pješački prijelaz"
                 },
                 "highway/cycleway": {
                     "name": "Biciklistička staza"
@@ -2361,9 +2463,6 @@
                 },
                 "highway/cycleway/crossing": {
                     "name": "Biciklistički prijelaz"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "Označeni biciklistički prijelaz"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Neoznačeni biciklistički prijelaz"
@@ -2468,6 +2567,9 @@
                 },
                 "highway/tertiary_link": {
                     "name": "Pristupna cesta lokalne ceste"
+                },
+                "highway/track": {
+                    "name": "Poljski ili šumski put"
                 },
                 "highway/traffic_mirror": {
                     "name": "Prometno ogledalo"
@@ -2716,6 +2818,9 @@
                 "leisure/pitch/chess": {
                     "name": "Golema šahovska ploča"
                 },
+                "leisure/pitch/handball": {
+                    "name": "Teren za rukomet"
+                },
                 "leisure/pitch/skateboard": {
                     "name": "Skate park",
                     "terms": "skate park,skejt park,skejt,skate,park za ekstremne sportove"
@@ -2824,7 +2929,11 @@
                 },
                 "man_made/pier": {
                     "name": "Mol",
-                    "terms": "pristanište,mol,lukobran,molo,mul,gat"
+                    "terms": "pristanište,mol,lukobran,molo,mul,gat,dok"
+                },
+                "man_made/pier/floating": {
+                    "name": "Plutajući mol",
+                    "terms": "plutajući ponton,plutajući dok"
                 },
                 "man_made/pipeline": {
                     "name": "Cjevovod",
@@ -2913,6 +3022,9 @@
                 },
                 "man_made/windmill": {
                     "name": "Vetrenjača"
+                },
+                "man_made/windpump": {
+                    "name": "Pumpa za vodu na vjetar"
                 },
                 "man_made/works": {
                     "name": "Tvornica"
@@ -3150,6 +3262,15 @@
                 },
                 "power/minor_line": {
                     "name": "Mali dalekovod"
+                },
+                "power/plant/source/coal": {
+                    "name": "Termoelektrana na ugljen"
+                },
+                "power/plant/source/gas": {
+                    "name": "Termoelektrana na plin"
+                },
+                "power/plant/source/oil": {
+                    "name": "Termoelektrana na loživo ulje"
                 },
                 "power/pole": {
                     "name": "Električni stup",

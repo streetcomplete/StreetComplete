@@ -243,6 +243,13 @@
                 "animal_shelter": {
                     "label": "Dla zwierząt"
                 },
+                "archaeological_site": {
+                    "label": "Typ",
+                    "options": {
+                        "baths": "Łaźnie",
+                        "roman_villa": "Willa rzymska"
+                    }
+                },
                 "architect": {
                     "label": "Architekt",
                     "terms": "architekt"
@@ -254,7 +261,13 @@
                     "label": "Artysta"
                 },
                 "artwork_type": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "bust": "Popiersie",
+                        "graffiti": "Graffiti",
+                        "mural": "Mural",
+                        "sculpture": "Rzeźba"
+                    }
                 },
                 "ascent": {
                     "label": "W górę",
@@ -264,7 +277,11 @@
                     "label": "Bankomat"
                 },
                 "attraction": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "carousel": "Karuzela",
+                        "maze": "Labirtynt"
+                    }
                 },
                 "automated": {
                     "label": "Automatyczna"
@@ -293,7 +310,22 @@
                     "terms": "bar"
                 },
                 "barrier": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "bollard": "Słupek",
+                        "chain": "Łańcuch",
+                        "city_wall": "Mur miejski",
+                        "ditch": "Rów",
+                        "entrance": "Wejście",
+                        "fence": "Płot",
+                        "gate": "Brama",
+                        "guard_rail": "Barierka energochłonna",
+                        "hedge": "Żywopłot",
+                        "kerb": "Krawężnik",
+                        "retaining_wall": "Mur oporowy",
+                        "stile": "Przełaz",
+                        "wall": "Mur"
+                    }
                 },
                 "barrier_planter": {
                     "label": "Bariera",
@@ -312,7 +344,10 @@
                     "label": "Kąpiele piaskowe"
                 },
                 "bath/type": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "hot_spring": "Gorące źródło"
+                    }
                 },
                 "beauty": {
                     "label": "Usługi",
@@ -427,13 +462,6 @@
                 "building/part": {
                     "label": "Część budynku"
                 },
-                "building_area": {
-                    "label": "Budynek",
-                    "terms": "budynek"
-                },
-                "building_area_yes": {
-                    "label": "Budynek"
-                },
                 "bunker_type": {
                     "label": "Rodzaj"
                 },
@@ -476,7 +504,6 @@
                     "terms": "liczba miejsc,pojemność"
                 },
                 "capacity/caravans": {
-                    "label": "Pojemność (karawany)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -606,7 +633,6 @@
                     "terms": "zadaszenie,dach"
                 },
                 "covered_no": {
-                    "label": "Zadaszenie",
                     "options": {
                         "no": "Nie",
                         "undefined": "Zakłada się, że Nie",
@@ -614,7 +640,14 @@
                     }
                 },
                 "craft": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "beekeeper": "Pszczelarz",
+                        "blacksmith": "Kowal",
+                        "boatbuilder": "Budowniczy łodzi",
+                        "bookbinder": "Introligator",
+                        "carpenter": "Stolarz"
+                    }
                 },
                 "crane/type": {
                     "label": "Rodzaj żurawia",
@@ -628,7 +661,10 @@
                     "label": "Rodzaj uprawy"
                 },
                 "crossing": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "traffic_signals": "Przejście z sygnalizacją świetlną"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "Ramię barierowe",
@@ -648,6 +684,21 @@
                 },
                 "crossing/light": {
                     "label": "Światła"
+                },
+                "crossing/markings": {
+                    "label": "Oznaczenie przejścia",
+                    "options": {
+                        "dashes": "Równoległe przerywane linie",
+                        "dots": "Równoległe kropkowane linie",
+                        "ladder": "Drabina z pasami",
+                        "lines": "Równoległe linie",
+                        "lines:paired": "Podwójne równoległe linie",
+                        "no": "Nieoznaczone",
+                        "yes": "Jakoś oznaczone",
+                        "zebra": "Pasy",
+                        "zebra:bicolour": "Pasy o zmiennych barwach"
+                    },
+                    "terms": "oznakowanie przejścia,oznaczenie,styl przejścia,rodzaj przejścia"
                 },
                 "crossing_raised": {
                     "label": "Podniesione",
@@ -721,40 +772,25 @@
                     "label": "Pasy rowerowe",
                     "options": {
                         "lane": {
-                            "description": "Pas rowerowy, wydzielony od drogi namalowaną linią",
-                            "title": "Standardowy pas rowerowy"
-                        },
-                        "none": {
-                            "description": "Brak pasa rowerowego",
-                            "title": "Brak"
+                            "description": "Pas rowerowy, wydzielony od drogi namalowaną linią"
                         },
                         "opposite": {
-                            "description": "Kontraruch – na tej drodze ruch rowerowy odbywa się w obie strony",
-                            "title": "Kontrapas"
+                            "description": "Kontraruch – na tej drodze ruch rowerowy odbywa się w obie strony"
                         },
                         "opposite_lane": {
-                            "description": "Kontrapas – pas rowerowy, na którym ruch odbywa się w przeciwnym kierunku niż kierunek ruchu pasa drogi, przy której leży.",
-                            "title": "Kontrapas rowerowy"
+                            "description": "Kontrapas – pas rowerowy, na którym ruch odbywa się w przeciwnym kierunku niż kierunek ruchu pasa drogi, przy której leży."
                         },
                         "share_busway": {
-                            "description": "Pas rowerowy dzielony z buspasem",
-                            "title": "Pas rowerowy dzielony z buspasem"
+                            "description": "Pas rowerowy dzielony z buspasem"
                         },
                         "shared_lane": {
-                            "description": "Pas rowerowy nieoddzielony od pasa ruchu",
-                            "title": "Współdzielony pas rowerowy"
+                            "description": "Pas rowerowy nieoddzielony od pasa ruchu"
                         },
                         "track": {
-                            "description": "Pas rowerowy wydzielony z jezdni fizyczną barierą",
-                            "title": "Wydzielona droga rowerowa (nie pas)"
+                            "description": "Pas rowerowy wydzielony z jezdni fizyczną barierą"
                         }
                     },
-                    "placeholder": "brak",
-                    "terms": "pasy rowerowe",
-                    "types": {
-                        "cycleway:left": "Lewa strona",
-                        "cycleway:right": "Prawa strona"
-                    }
+                    "terms": "pasy rowerowe"
                 },
                 "dance/style": {
                     "label": "Style taneczne"
@@ -808,18 +844,8 @@
                 "destination/ref": {
                     "label": "Miejsca docelowe (numery dróg)"
                 },
-                "destination/ref_oneway": {
-                    "label": "Miejsca docelowe (numery dróg)"
-                },
                 "destination/symbol": {
                     "label": "Miejsca docelowe (symbole)"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Miejsca docelowe (symbole)",
-                    "terms": "miejsca docelowe,symbole"
-                },
-                "destination_oneway": {
-                    "label": "Miejsca docelowe"
                 },
                 "destination_waterway": {
                     "label": "Ujście"
@@ -877,7 +903,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Kierunek (stopnie)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -885,13 +910,6 @@
                     "options": {
                         "backward": "Wstecz",
                         "both": "W obu/wszystkich kierunkach",
-                        "forward": "Naprzód"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "Kierunek",
-                    "options": {
-                        "backward": "Do tyłu",
                         "forward": "Naprzód"
                     }
                 },
@@ -960,9 +978,6 @@
                 "ele": {
                     "label": "Wysokość (metry)"
                 },
-                "ele_node": {
-                    "label": "Wysokość (metry)"
-                },
                 "electrified": {
                     "label": "Elektryfikacja",
                     "options": {
@@ -1027,7 +1042,7 @@
                     "label": "Droga ekspresowa"
                 },
                 "faces": {
-                    "label": "Liczba powierzchni"
+                    "label": "Liczba tarcz"
                 },
                 "fax": {
                     "label": "Faks",
@@ -1131,10 +1146,6 @@
                     "label": "Częstotliwość pracy",
                     "terms": "częstotliwość pracy"
                 },
-                "frequency_electrified": {
-                    "label": "Częstotliwość pracy",
-                    "terms": "częstotliwość pracy"
-                },
                 "from": {
                     "label": "Z"
                 },
@@ -1215,7 +1226,10 @@
                     "label": "Rodzaj"
                 },
                 "healthcare/speciality": {
-                    "label": "Specjalności"
+                    "label": "Specjalności",
+                    "options": {
+                        "cardiology": "Kardiologia"
+                    }
                 },
                 "heating": {
                     "label": "Ogrzewanie"
@@ -1324,7 +1338,6 @@
                     "terms": "nachylenie"
                 },
                 "incline_steps": {
-                    "label": "Nachylenie",
                     "options": {
                         "down": "W dół",
                         "up": "W górę"
@@ -1354,9 +1367,6 @@
                 "intermittent": {
                     "label": "Okresowość",
                     "terms": "okresowość"
-                },
-                "intermittent_yes": {
-                    "label": "Okresowość"
                 },
                 "internet_access": {
                     "label": "Dostęp do Internetu",
@@ -1449,15 +1459,6 @@
                         "semi_evergreen": "Czasami zrzucające liście na zimę"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Cykl życiowy",
-                    "options": {
-                        "deciduous": "Zrzucające liście na zimę",
-                        "evergreen": "Zimozielone",
-                        "semi_deciduous": "Zrzucające liście, tropikalne",
-                        "semi_evergreen": "Czasami zrzucające liście na zimę"
-                    }
-                },
                 "leaf_type": {
                     "label": "Kategoria",
                     "options": {
@@ -1468,12 +1469,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Kategoria",
-                    "options": {
-                        "broadleaved": "Liściaste",
-                        "leafless": "Bezlistne",
-                        "needleleaved": "Iglaste"
-                    }
+                    "label": "Kategoria"
                 },
                 "leisure": {
                     "label": "Rodzaj"
@@ -1511,7 +1507,6 @@
                     "terms": "lokalizacja,lokacja,miejsce"
                 },
                 "location_pool": {
-                    "label": "Lokalizacja",
                     "options": {
                         "indoor": "Wewnątrz",
                         "outdoor": "Na zewnątrz",
@@ -1582,10 +1577,6 @@
                     "terms": "maksymalny czas postoju"
                 },
                 "maxweight": {
-                    "label": "Maksymalna masa pojazdu",
-                    "terms": "maksymalna masa pojazdu"
-                },
-                "maxweight_bridge": {
                     "label": "Maksymalna masa pojazdu",
                     "terms": "maksymalna masa pojazdu"
                 },
@@ -1741,7 +1732,6 @@
                     "terms": "jednokierunkowa dla rowerów"
                 },
                 "oneway_yes": {
-                    "label": "Jednokierunkowa",
                     "options": {
                         "alternating": "Ruch wahadłowy",
                         "no": "Nie",
@@ -1830,11 +1820,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "Rodzaj",
-                    "options": {
-                        "multi-storey": "Wielopoziomowy",
-                        "underground": "Podziemny"
-                    }
+                    "label": "Rodzaj"
                 },
                 "parking_space": {
                     "label": "Rodzaj"
@@ -1872,7 +1858,6 @@
                     "placeholder": "Łatwa, Średnia, Zaawansowana..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Trudność",
                     "options": {
                         "advanced": "Zaawansowana (czarny romb)",
                         "easy": "Łatwa (zielony okrąg)",
@@ -1885,7 +1870,6 @@
                     "placeholder": "Łatwa, Średnia, Zaawansowana..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Trudność",
                     "options": {
                         "advanced": "Zaawansowana – wąska, strome lub oblodzone fragmenty, ostre zakręty",
                         "easy": "Łatwa – delikatne pagórki, krótkie strome odcinki",
@@ -1896,7 +1880,6 @@
                     "placeholder": "Łatwa, Średnia, Zaawansowana..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Trudność",
                     "options": {
                         "advanced": "Zaawansowana – S: 40-45° nachylenia",
                         "easy": "Łatwa – WS: 30-35° nachylenia",
@@ -1920,7 +1903,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Ratrakowanie",
                     "options": {
                         "backcountry": "Dzika – bez ratrakowania",
                         "classic": "Klasycznie",
@@ -1928,14 +1910,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Ratrakowanie",
                     "options": {
                         "backcountry": "Dzika – rakiety śnieżne",
                         "classic": "Klasyczna – zimowa wspinaczka"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Ratrakowanie",
                     "options": {
                         "backcountry": "Dzika, bez ratrakowania",
                         "classic": "Klasyczna",
@@ -2403,9 +2383,6 @@
                 },
                 "site": {
                     "label": "Rodzaj"
-                },
-                "site_type": {
-                    "label": "Rodzaj stanowiska"
                 },
                 "smoking": {
                     "label": "Dla palących",
@@ -2917,10 +2894,6 @@
                     "label": "Napięcie trzeciorzędne",
                     "terms": "napięcie trzeciorzędne"
                 },
-                "voltage_electrified": {
-                    "label": "Napięcie",
-                    "terms": "napięcie"
-                },
                 "wall": {
                     "label": "Rodzaj"
                 },
@@ -3359,6 +3332,9 @@
                 "amenity/doctors": {
                     "name": "Gabinet lekarski lub przychodnia",
                     "terms": "przychodnia,nzoz,lekarz,doktor,gabinet lekarski,centrum medyczne,klinika,poradnia,leczenie,medycyna,zdrowie,alergolog,chirurg,dermatolog,endokrynolog,geriatra,ginekolog,hematolog,internista,kardiochirurg,kardiolog,laryngolog,nefrolog,neonatolog,neurolog,okulista,onkolog,ortopeda,otorynolaryngolog,pediatra,psychiatra,reumatolog,seksuolog,urolog"
+                },
+                "amenity/doctors/cardiology": {
+                    "name": "Kardiolog"
                 },
                 "amenity/doctors/gynaecology": {
                     "name": "Ginekolog"
@@ -4099,7 +4075,8 @@
                     "terms": "obszar,obręb,powierzchnia"
                 },
                 "area/footway": {
-                    "name": "Obszar chodnika"
+                    "name": "Obszar chodnika",
+                    "terms": "area:highway,obszar ścieżki dla pieszych,krawędzie chodnika,kształt chodnika"
                 },
                 "area/highway": {
                     "name": "Obszar drogi",
@@ -4115,10 +4092,6 @@
                 "attraction/animal": {
                     "name": "Zwierzę",
                     "terms": "zwierzę,zwierzęta,minizoo,woliera,papugarnia,akwarium,safari"
-                },
-                "attraction/big_wheel": {
-                    "name": "Diabelski młyn",
-                    "terms": "diabelski młyn,park rozrywki,lunapark,wesołe miasteczko"
                 },
                 "attraction/bumper_car": {
                     "name": "Autodrom (w parku rozrywki)",
@@ -4282,10 +4255,6 @@
                 "barrier/kissing_gate": {
                     "name": "Kissing gate",
                     "terms": "kissing gate,bariera"
-                },
-                "barrier/lift_gate": {
-                    "name": "Szlaban",
-                    "terms": "szlaban,bariera"
                 },
                 "barrier/log": {
                     "name": "Powalone drzewo"
@@ -4517,7 +4486,7 @@
                 },
                 "building/ruins": {
                     "name": "Ruiny budynku",
-                    "terms": "ruiny,wyburzony"
+                    "terms": "sztuczne ruiny,wyburzony"
                 },
                 "building/school": {
                     "name": "Budynek szkolny",
@@ -4542,10 +4511,6 @@
                 "building/stadium": {
                     "name": "Budynek stadionu",
                     "terms": "stadion,sporotowy"
-                },
-                "building/static_caravan": {
-                    "name": "Przyczepa/wóz kempingowy ustawiony na stałe",
-                    "terms": "mieszkalny wóz kempingowy"
                 },
                 "building/sty": {
                     "name": "Chlew",
@@ -5088,21 +5053,13 @@
                 "highway/crossing": {
                     "name": "Przejście"
                 },
-                "highway/crossing/marked": {
-                    "name": "Oznakowane przejście dla pieszych"
-                },
                 "highway/crossing/traffic_signals": {
-                    "name": "Przejście z sygnałami dla pieszych"
-                },
-                "highway/crossing/uncontrolled": {
-                    "name": "Oznaczone przejście dla pieszych"
+                    "name": "Przejście z sygnałami dla pieszych",
+                    "terms": "przejście z sygnalizacją dla pieszych"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "Nieoznakowane przejście",
-                    "terms": "nieoznaczone przejście dla pieszych"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Oznakowane przejście dla pieszych"
+                    "name": "Nieoznaczone przejście",
+                    "terms": "nieoznakowane przejście dla pieszych"
                 },
                 "highway/cycleway": {
                     "name": "Droga rowerowa",
@@ -5119,12 +5076,15 @@
                     "name": "Przejazd pieszo-rowerowy",
                     "terms": "przejazd pieszo-rowerowy"
                 },
-                "highway/cycleway/crossing/marked": {
-                    "name": "Oznakowany przejazd rowerowy"
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "Przejazd rowerowy z sygnalizacją świetlną"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
+                    "name": "Oznaczony przejazd rowerowy"
                 },
                 "highway/cycleway/crossing/unmarked": {
-                    "name": "Nieoznakowany przejazd rowerowy",
-                    "terms": "przejazd rowerowy,przejście rowerowe"
+                    "name": "Nieoznaczony przejazd rowerowy",
+                    "terms": "nieoznakowany przejazd rowerowy,przejście rowerowe"
                 },
                 "highway/elevator": {
                     "name": "Winda",
@@ -5142,7 +5102,7 @@
                     "terms": "zatoka awaryjna,zatoczka,autostrada"
                 },
                 "highway/footway": {
-                    "name": "Chodnik/ścieżka dla pieszych",
+                    "name": "Ścieżka dla pieszych",
                     "terms": "pobocze,bulwar,ścieżka,deptak,szosa,spacer,chodnik"
                 },
                 "highway/footway/access_aisle": {
@@ -5156,12 +5116,22 @@
                 "highway/footway/crossing": {
                     "name": "Przejście dla pieszych"
                 },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "Przejście z sygnałami dla pieszych"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "Oznaczone przejście"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "Nieoznaczone przejście",
+                    "terms": "nieoznaczone przejście dla pieszych"
+                },
                 "highway/footway/informal": {
                     "name": "Nieformalna ścieżka dla pieszych"
                 },
                 "highway/footway/sidewalk": {
-                    "name": "Chodnik przy jezdni",
-                    "terms": "chodnik"
+                    "name": "Chodnik",
+                    "terms": "chodnik wzdłuż drogi,chodnik przy jezdni"
                 },
                 "highway/give_way": {
                     "name": "Ustąp pierwszeństwa przejazdu",

@@ -311,9 +311,6 @@
                 "building": {
                     "label": "Eraikin"
                 },
-                "building_area": {
-                    "label": "Eraikin"
-                },
                 "bunker_type": {
                     "label": "Mota"
                 },
@@ -446,38 +443,23 @@
                     "label": "Bidegorria",
                     "options": {
                         "lane": {
-                            "description": "Margotutako marra batez autoen trafikotik bereizitako bidegorria",
-                            "title": "Bidegorri arrunta"
-                        },
-                        "none": {
-                            "description": "Bizikletentzako bidegorririk gabe",
-                            "title": "Inor"
+                            "description": "Margotutako marra batez autoen trafikotik bereizitako bidegorria"
                         },
                         "opposite": {
-                            "description": "Norabide bakarreko kale batean bi noranzkoetan ibiltzeko aukera duen bidegorria ",
-                            "title": "Kontrako norabidedun bidegorria"
+                            "description": "Norabide bakarreko kale batean bi noranzkoetan ibiltzeko aukera duen bidegorria "
                         },
                         "opposite_lane": {
-                            "description": "Trafikoaren kontrako norantzan doan bidegorria",
-                            "title": "Kontrako bidegorria"
+                            "description": "Trafikoaren kontrako norantzan doan bidegorria"
                         },
                         "share_busway": {
-                            "description": "Autobus erraiarekin bat doan bidegorria",
-                            "title": "Autobusen bidearekin bat eginda doan bidegorria"
+                            "description": "Autobus erraiarekin bat doan bidegorria"
                         },
                         "shared_lane": {
-                            "description": "Errepidetik banandu gabeko bidegorria",
-                            "title": "Partekatutako bidegorria"
+                            "description": "Errepidetik banandu gabeko bidegorria"
                         },
                         "track": {
-                            "description": "Errepidetik barrera fisiko batez banandutako bidegorria",
-                            "title": "Bidegorria"
+                            "description": "Errepidetik barrera fisiko batez banandutako bidegorria"
                         }
-                    },
-                    "placeholder": "Bat ere ez",
-                    "types": {
-                        "cycleway:left": "Ezkerreko aldea ",
-                        "cycleway:right": "Eskuineko aldea"
                     }
                 },
                 "dance/style": {
@@ -779,7 +761,6 @@
                     "label": "Aldapa"
                 },
                 "incline_steps": {
-                    "label": "Aldapa",
                     "options": {
                         "down": "Behera",
                         "up": "Gora"
@@ -853,15 +834,6 @@
                         "semi_evergreen": "Erdi-iraunkor"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Hostoaren zikloa",
-                    "options": {
-                        "deciduous": "Hostoerorkor",
-                        "evergreen": "Hosto iraunkor",
-                        "semi_deciduous": "Erdi-hostoerorkor",
-                        "semi_evergreen": "Erdi-iraunkor"
-                    }
-                },
                 "leaf_type": {
                     "label": "Hosto mota",
                     "options": {
@@ -889,7 +861,6 @@
                     "label": "Kokalekua"
                 },
                 "location_pool": {
-                    "label": "Kokalekua",
                     "options": {
                         "indoor": "Barru",
                         "outdoor": "Kanpo",
@@ -989,7 +960,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Norabide bakarra",
                     "options": {
                         "alternating": "Txandakatzen",
                         "no": "Ez",
@@ -1041,15 +1011,12 @@
                     "placeholder": "Erraz, Erdi-maila, Aditu..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/grooming": {
@@ -1250,9 +1217,6 @@
                 },
                 "site": {
                     "label": "Mota"
-                },
-                "site_type": {
-                    "label": "Toki mota"
                 },
                 "smoking": {
                     "label": "Erretze",

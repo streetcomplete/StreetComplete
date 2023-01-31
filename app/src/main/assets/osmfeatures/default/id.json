@@ -315,9 +315,6 @@
                 "building/levels/underground": {
                     "label": "Jumlah lantai bawah tanah"
                 },
-                "building_area": {
-                    "label": "Bangunan"
-                },
                 "bunker_type": {
                     "label": "Tipe"
                 },
@@ -484,40 +481,25 @@
                     "label": "Jalur Sepeda",
                     "options": {
                         "lane": {
-                            "description": "Jalur sepeda dipisahkan dari lalu lintas oleh garis",
-                            "title": "Lajur Sepeda Standar"
-                        },
-                        "none": {
-                            "description": "Tidak ada jalur sepeda",
-                            "title": "Tidak ada"
+                            "description": "Jalur sepeda dipisahkan dari lalu lintas oleh garis"
                         },
                         "opposite": {
-                            "description": "Jalur sepeda yang melintas dua arah pada jalan satu arah",
-                            "title": "Jalur sepeda lawan arus\nJalur sepeda kontraflow"
+                            "description": "Jalur sepeda yang melintas dua arah pada jalan satu arah"
                         },
                         "opposite_lane": {
-                            "description": "Jalur sepeda yang melintas berlawanan arah dengan lalu lintas",
-                            "title": "Jajur sepeda berlawanan"
+                            "description": "Jalur sepeda yang melintas berlawanan arah dengan lalu lintas"
                         },
                         "share_busway": {
-                            "description": "Jalur sepeda berbagi dengan jalur bus",
-                            "title": "Jalur sepeda berbagi dengan bus"
+                            "description": "Jalur sepeda berbagi dengan jalur bus"
                         },
                         "shared_lane": {
-                            "description": "Jalur sepeda yang tidak ada pemisah dari lalu lintas kendaraan bermotor",
-                            "title": "Jalur sepeda berbagi"
+                            "description": "Jalur sepeda yang tidak ada pemisah dari lalu lintas kendaraan bermotor"
                         },
                         "track": {
-                            "description": "Jalur sepeda yang dipisahkan dari lalu lintas dengan pembatas",
-                            "title": "Jalur sepeda"
+                            "description": "Jalur sepeda yang dipisahkan dari lalu lintas dengan pembatas"
                         }
                     },
-                    "placeholder": "tidak ada",
-                    "terms": "jalur sepeda,lajur sepeda,jalan sepeda",
-                    "types": {
-                        "cycleway:left": "Sisi kiri",
-                        "cycleway:right": "Sisi kanan"
-                    }
+                    "terms": "jalur sepeda,lajur sepeda,jalan sepeda"
                 },
                 "dance/style": {
                     "label": "Gaya tarian"
@@ -566,18 +548,8 @@
                 "destination/ref": {
                     "label": "Nomor Jalan Tujuan"
                 },
-                "destination/ref_oneway": {
-                    "label": "Nomor Jalan Tujuan"
-                },
                 "destination/symbol": {
                     "label": "Simbol Tujuan"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Simbol Tujuan",
-                    "terms": "simbol tujuan,simbol destinasi"
-                },
-                "destination_oneway": {
-                    "label": "Tujuan"
                 },
                 "destination_waterway": {
                     "label": "Tujuan"
@@ -621,7 +593,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Arah (Derajat Searah Jarum Jam)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -630,12 +601,6 @@
                         "backward": "Kebelakang",
                         "both": "Keduanya / Semua",
                         "forward": "Kedepan"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "Arah yang Dipengaruhi",
-                    "options": {
-                        "backward": "Kebelakang"
                     }
                 },
                 "display": {
@@ -1067,7 +1032,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Satu Arah",
                     "options": {
                         "no": "Tidak",
                         "undefined": "Dianggap Ya",
@@ -1551,9 +1515,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Gerbang pertemuan"
-                },
-                "barrier/lift_gate": {
-                    "name": "Gerbang lif"
                 },
                 "barrier/retaining_wall": {
                     "name": "Dinding penahan"
