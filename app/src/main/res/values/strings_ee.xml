@@ -209,10 +209,9 @@
         The Osmose message is displayed with the quest, any edit reports the issue as solved.\n
         It is also possible to report the problem as false positive; this cannot be undone.</string>
     <string name="quest_osmose_message_for_element">Item type %1$s: %2$s</string>
-    <string name="quest_osmose_settings">Set Osmose item types to hide, comma separated. Also item/class combinations can be used to hide only specific classes, e.g. 8280/11</string>
-    <string name="quest_osmose_settings_items">Select item types to ignore</string>
-    <string name="quest_osmose_hide_type_specific">Ignore issue type (item and class)</string>
-    <string name="quest_osmose_hide_type_generic">Ignore similar issues (Osmose item)</string>
+    <string name="quest_osmose_remove_checked">Un-ignore checked</string>
+    <string name="quest_osmose_settings_items">Modify item types to ignore</string>
+    <string name="quest_osmose_hide_type">Ignore issues with same…</string>
     <string name="quest_osmose_delete_this_issue">Remove this issue locally</string>
     <string name="quest_osmose_no_undo">Are you sure? This cannot be undone!</string>
     <string name="quest_osmose_select_element">Select element</string>

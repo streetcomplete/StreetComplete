@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.util.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
@@ -120,21 +121,35 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     }
 
     override val otherAnswers: List<AnswerItem> by lazy { listOfNotNull(
-        AnswerItem(R.string.quest_osmose_hide_type_specific) { addToIgnorelist("${issue.item}/${issue.itemClass}") },
-        AnswerItem(R.string.quest_osmose_hide_type_generic) { addToIgnorelist(issue.item.toString()) },
+        AnswerItem(R.string.quest_osmose_hide_type) { showIgnoreDialog() },
         AnswerItem(R.string.quest_osmose_delete_this_issue) {
             questController.delete(questKey as ExternalSourceQuestKey)
         },
     )
     }
 
+    private fun showIgnoreDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_osmose_hide_type)
+            .setItems(arrayOfNotNull("item: ${issue.item}", "item/class: ${issue.item}/${issue.itemClass}", "subtitle: ${issue.subtitle}".takeIf { issue.subtitle.isNotBlank() })) { _, i ->
+                when (i) {
+                    0 -> issue.item.toString()
+                    1 -> "${issue.item}/${issue.itemClass}"
+                    2 -> issue.subtitle
+                    else -> null
+                }?.let { addToIgnorelist(it) }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
     private fun addToIgnorelist(item: String) {
-        val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!
-            .split(",")
+        val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, OSMOSE_DEFAULT_IGNORED_ITEMS)!!
+            .split("§§")
             .mapNotNull { if (it.isNotBlank()) it.trim() else null }
             .toMutableSet()
         types.add(item)
-        prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString(", ")).apply()
+        prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString("§§")).apply()
         osmoseDao.reloadIgnoredItems()
         questController.invalidate()
     }

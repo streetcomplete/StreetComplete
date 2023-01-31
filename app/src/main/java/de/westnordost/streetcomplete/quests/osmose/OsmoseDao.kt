@@ -49,18 +49,23 @@ class OsmoseDao(
 
     private val ignoredItems = hashSetOf<Int>()
     private val ignoredItemClassCombinations = hashSetOf<String>()
+    private val ignoredSubtitles = hashSetOf<String>()
     private val allowedLevels = hashSetOf<Int>()
     init { reloadIgnoredItems() }
     fun reloadIgnoredItems() {
-        val ignored = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!.split(',')
+        val ignored = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, OSMOSE_DEFAULT_IGNORED_ITEMS)!!.split("§§")
         ignoredItems.clear()
-        ignoredItems.addAll(
-                ignored.mapNotNull { it.trim().toIntOrNull() }.toMutableSet()
-        )
         ignoredItemClassCombinations.clear()
-        ignoredItemClassCombinations.addAll(
-            ignored.mapNotNull { if (!it.contains('/')) null else it.trim() }
-        )
+        ignoredSubtitles.clear()
+        val itemClassRegex = "\\d+/\\d+".toRegex()
+        ignored.forEach {
+            val i = it.trim().ifEmpty { return@forEach }
+            when {
+                i.toIntOrNull() != null -> ignoredItems.add(i.toInt())
+                i.contains('/') && i.matches(itemClassRegex) -> ignoredItemClassCombinations.add(i)
+                else -> ignoredSubtitles.add(i)
+            }
+        }
         allowedLevels.clear()
         allowedLevels.addAll(
             prefs.getString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, "")!!.split("%2C").mapNotNull { it.toIntOrNull() }
@@ -107,9 +112,6 @@ class OsmoseDao(
                             Log.i(TAG, "skip line, could not parse some numbers: $split")
                             return@mapNotNull null
                         }
-                        // don't create quest for ignored items. this is less flexible than
-                        if (item in ignoredItems || "$item/$itemClass" in ignoredItemClassCombinations)
-                            return@mapNotNull null
                         issues.add(OsmoseIssue(
                             split[0], item, itemClass, itemLevel, split[5], split[6], LatLon(lat, lon), parseElementKeys(split[13])
                         ))
@@ -147,14 +149,6 @@ class OsmoseDao(
         ).apply { if (elements.size == 1) elementKey = elements.single() }
                 // same area limitation as AddForestLeafType
                 .takeIf { ((it.geometry as? ElementPolygonsGeometry)?.polygons?.measuredMultiPolygonArea() ?: 0.0) < 10000 }
-
-    fun setFromDoneToNotAnsweredNear(position: LatLon) {
-        db.update(NAME,
-            values = listOf(ANSWERED to -1),
-            where = "${inBoundsSql(position.enclosingBoundingBox(1.0))} AND $ANSWERED = -1",
-            conflictAlgorithm = ConflictAlgorithm.IGNORE
-        )
-    }
 
     fun reportChange(uuid: String, falsePositive: Boolean) {
         val url = "https://osmose.openstreetmap.fr/api/0.3/issue/$uuid/" +
@@ -226,7 +220,10 @@ class OsmoseDao(
         db.delete(NAME)
     }
 
-    private fun OsmoseIssue.isIgnored() = item in ignoredItems || level !in allowedLevels || "$item/$itemClass" in ignoredItemClassCombinations
+    private fun OsmoseIssue.isIgnored() = item in ignoredItems
+        || level !in allowedLevels
+        || subtitle in ignoredSubtitles
+        || "$item/$itemClass" in ignoredItemClassCombinations
 
 }
 

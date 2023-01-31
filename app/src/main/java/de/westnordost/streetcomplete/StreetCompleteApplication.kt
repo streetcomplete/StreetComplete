@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
+import de.westnordost.streetcomplete.quests.osmose.PREF_OSMOSE_ITEMS
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
@@ -151,6 +152,12 @@ class StreetCompleteApplication : Application() {
             prefs.edit { putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME) }
             if (lastVersion != null) {
                 onNewVersion()
+                if (lastVersion.endsWith("_ee"))
+                    // adjust osmose ignores, this is necessary because they may now contain comma
+                    prefs.all.filterKeys { it.contains(PREF_OSMOSE_ITEMS) }.forEach { (key, value) ->
+                        if (value is String)
+                            prefs.edit { putString(key, value.replace(",", "§§")) }
+                    }
             }
         }
     }

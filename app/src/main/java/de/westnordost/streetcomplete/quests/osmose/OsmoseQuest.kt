@@ -7,6 +7,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.core.content.edit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
-import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
 class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
 
@@ -86,10 +86,30 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         val hide = Button(context).apply {
             setText(R.string.quest_osmose_settings_items)
             setOnClickListener {
-                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings) {
-                    osmoseDao.reloadIgnoredItems()
-                    OsmQuestController.reloadQuestTypes() // actually this is doing a bit more than necessary, but whatever
-                }.show()
+                val pref = questPrefix(prefs) + PREF_OSMOSE_ITEMS
+                val items = prefs.getString(pref, OSMOSE_DEFAULT_IGNORED_ITEMS)!!.split("§§").filter { it.isNotEmpty() }.toTypedArray()
+                val itemsForRemoval = mutableSetOf<String>()
+                var d: AlertDialog? = null
+                d = AlertDialog.Builder(context)
+                    .setMultiChoiceItems(items, null, ) { _, i, x ->
+                        if (x) itemsForRemoval.add(items[i])
+                        else itemsForRemoval.remove(items[i])
+                        d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
+                    }
+                    .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ ->
+                        prefs.edit { putString(pref, items.filterNot { it in itemsForRemoval }.joinToString("§§")) }
+                        osmoseDao.reloadIgnoredItems()
+                        OsmQuestController.reloadQuestTypes()
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
+                        prefs.edit { remove(pref) }
+                        osmoseDao.reloadIgnoredItems()
+                        OsmQuestController.reloadQuestTypes()
+                    }.create()
+                d.show()
+                d.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
+                d.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref)
             }
         }
         val layout = LinearLayout(context).apply {
@@ -123,3 +143,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
 
 const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"
 const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
+// items that have associated SC quests/overlays are disabled by default
+const val OSMOSE_DEFAULT_IGNORED_ITEMS = // todo: extend, there is some issue for fixme, missing maxheight, missing recycling materials, deprecated parking tags,...
+    "3230/32301"// + "§§" + // Probably only for bottles, not any type of glass
+
