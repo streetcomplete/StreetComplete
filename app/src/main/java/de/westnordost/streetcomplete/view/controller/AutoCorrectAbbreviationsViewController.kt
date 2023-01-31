@@ -47,7 +47,7 @@ class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
             fixedReplace(s, wordStart, wordStart + lastWordBeforeCursor.length, replacement)
         } else if (lastWordBeforeCursor.length > 3) {
             val locale = abbrs.locale
-            val capital = lastWordBeforeCursor.substring(0, 1).uppercase(locale)
+            val capital = lastWordBeforeCursor.get(0).titlecase(locale)
             s.replace(wordStart, wordStart + 1, capital)
         }
     }
