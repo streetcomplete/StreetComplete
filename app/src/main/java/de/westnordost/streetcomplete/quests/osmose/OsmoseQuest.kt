@@ -7,6 +7,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -85,32 +86,14 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         }
         val hide = Button(context).apply {
             setText(R.string.quest_osmose_settings_items)
-            setOnClickListener {
-                val pref = questPrefix(prefs) + PREF_OSMOSE_ITEMS
-                val items = prefs.getString(pref, OSMOSE_DEFAULT_IGNORED_ITEMS)!!.split("§§").filter { it.isNotEmpty() }.toTypedArray()
-                val itemsForRemoval = mutableSetOf<String>()
-                var d: AlertDialog? = null
-                d = AlertDialog.Builder(context)
-                    .setMultiChoiceItems(items, null, ) { _, i, x ->
-                        if (x) itemsForRemoval.add(items[i])
-                        else itemsForRemoval.remove(items[i])
-                        d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
-                    }
-                    .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ ->
-                        prefs.edit { putString(pref, items.filterNot { it in itemsForRemoval }.joinToString("§§")) }
-                        osmoseDao.reloadIgnoredItems()
-                        OsmQuestController.reloadQuestTypes()
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
-                        prefs.edit { remove(pref) }
-                        osmoseDao.reloadIgnoredItems()
-                        OsmQuestController.reloadQuestTypes()
-                    }.create()
-                d.show()
-                d.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
-                d.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref)
-            }
+            setOnClickListener {showIgnoredItemsDialog(context) }
+        }
+        val appLanguage = SwitchCompat(context).apply {
+            setText(R.string.quest_osmose_use_app_language)
+            isChecked = prefs.getBoolean(PREF_OSMOSE_APP_LANGUAGE, false)
+        }
+        val appLanguageInfo = TextView(context).apply {
+            setText(R.string.quest_osmose_use_app_language_information)
         }
         val layout = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
@@ -119,6 +102,8 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
             addView(medium)
             addView(low)
             addView(hide)
+            addView(appLanguage)
+            addView(appLanguageInfo)
             setPadding(30, 10, 30, 10)
         }
 
@@ -132,18 +117,69 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
                     if (medium.isChecked) 2 else null,
                     if (low.isChecked) 3 else null,
                 ).takeIf { it.isNotEmpty() }?.joinToString("%2C") ?: ""
-                prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString).apply()
-                downloadEnabled = levelString != ""
-                osmoseDao.reloadIgnoredItems()
-                OsmQuestController.reloadQuestTypes() // actually this is doing a bit more than necessary, but whatever
+                if (levelString != prefs.getString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, OSMOSE_DEFAULT_IGNORED_ITEMS)) {
+                    prefs.edit { putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString) }
+                    downloadEnabled = levelString != ""
+                    osmoseDao.reloadIgnoredItems()
+                    OsmQuestController.reloadQuestTypes() // actually this is doing a bit more than necessary, but whatever
+                }
+                prefs.edit { putBoolean(PREF_OSMOSE_APP_LANGUAGE, appLanguage.isChecked) }
             }
             .create()
+    }
+
+    private fun showIgnoredItemsDialog(context: Context) {
+        val pref = questPrefix(prefs) + PREF_OSMOSE_ITEMS
+        val items = prefs.getString(pref, OSMOSE_DEFAULT_IGNORED_ITEMS)!!.split("§§").filter { it.isNotEmpty() }.toTypedArray()
+        val itemsForRemoval = mutableSetOf<String>()
+        var d: AlertDialog? = null
+        d = AlertDialog.Builder(context)
+            .setMultiChoiceItems(items, null, ) { _, i, x ->
+                if (x) itemsForRemoval.add(items[i])
+                else itemsForRemoval.remove(items[i])
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
+            }
+            .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ -> // todo: dialog broken if list is long and button text is long
+                prefs.edit { putString(pref, items.filterNot { it in itemsForRemoval }.joinToString("§§")) }
+                osmoseDao.reloadIgnoredItems()
+                OsmQuestController.reloadQuestTypes()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
+                prefs.edit { remove(pref) }
+                osmoseDao.reloadIgnoredItems()
+                OsmQuestController.reloadQuestTypes()
+            }.create()
+        d.show()
+        d.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
+        d.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref)
     }
 }
 
 const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"
 const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
-// items that have associated SC quests/overlays are disabled by default
-const val OSMOSE_DEFAULT_IGNORED_ITEMS = // todo: extend, there is some issue for fixme, missing maxheight, missing recycling materials, deprecated parking tags,...
-    "3230/32301"// + "§§" + // Probably only for bottles, not any type of glass
+const val PREF_OSMOSE_APP_LANGUAGE = "qs_OsmoseQuest_app_language" // do not use the quest settings prefix here, as it doesn't make sense for language
 
+// items that have associated SC quests/overlays are disabled by default
+const val OSMOSE_DEFAULT_IGNORED_ITEMS = // todo: there is some issue for missing maxheight
+    "3230/32301" + "§§" + // "Probably only for bottles, not any type of glass"
+    "4061/40610" + "§§" + // "object needs review" (fixme poi "quest")
+    "3250" + "§§" + // "Invalid Opening Hours" (will be not be asked immediately, but frequently re-surveyed, at least of the option is on)
+    "shop=yes is unspecific. Please replace ''yes'' by a specific value." + "§§" +
+//    alternative for all languages: 9002/9002007 and contains "shop=yes" or "shop = yes" (thanks, translator)
+    "amenity=recycling without recycling:*" + "§§" +
+//    alternative for all languages: 9001/9001001 and contains "recycling:*"
+    "amenity=recycling without recycling_type=container or recycling_type=centre" + "§§" +
+//    alternative for all languages: 9001/9001001 and contains all 3 tags
+    "emergency=fire_hydrant without fire_hydrant:type" + "§§" +
+//    alternative for all languages: 9001/9001001 and contains "emergency=fire_hydrant" and "fire_hydrant:type"
+    "Combined foot- and cycleway without segregated." + "§§" +
+//    alternative for all languages: 9001/9001001 and contains "segregated"
+    "leisure=pitch without sport" + "§§" +
+//    alternative for all languages and types: 9001/9001001 and contains "leisure=pitch" and "sport"
+    "The tag `parking:lane:both` is deprecated in favour of `parking:both`" + "§§" +
+    "The tag `parking:lane:left` is deprecated in favour of `parking:left`" + "§§" +
+    "The tag `parking:lane:right` is deprecated in favour of `parking:right`"
+//    alternative for all languages and types: 4010 and contains "parking:lane:*" and "parking:<same>"
+// "tracktype=grade4 together with surface=asphalt" -> how to do it properly? current system won't work, or needs blacklisting all combinations
+//    alternative for all languages and types: 9001/9001001 and contains "tracktype=" and "surface="

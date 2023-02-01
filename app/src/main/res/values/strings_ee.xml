@@ -209,8 +209,10 @@
         The Osmose message is displayed with the quest, any edit reports the issue as solved.\n
         It is also possible to report the problem as false positive; this cannot be undone.</string>
     <string name="quest_osmose_message_for_element">Item type %1$s: %2$s</string>
-    <string name="quest_osmose_remove_checked">Un-ignore checked</string>
+    <string name="quest_osmose_remove_checked">Remove</string>
     <string name="quest_osmose_settings_items">Modify item types to ignore</string>
+    <string name="quest_osmose_use_app_language">Download issues in application language</string>
+    <string name="quest_osmose_use_app_language_information">This will interfere with items that are ignored by subtitle</string>
     <string name="quest_osmose_hide_type">Ignore issues with same…</string>
     <string name="quest_osmose_delete_this_issue">Remove this issue locally</string>
     <string name="quest_osmose_no_undo">Are you sure? This cannot be undone!</string>

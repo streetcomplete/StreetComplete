@@ -8,6 +8,7 @@
   <li>Delete button in tag editor deletes entire row on long press</li>
   <li>Allow deleting nodes in overlays</li>
   <li>"External quest" renamed to "Custom quest", as Osmose quest uses an external source too</li>
+  <li>Various improvements to Osmose quest, including more specific ignoring of issue types and use of app language</li>
   <li>Add artwork type quest</li>
   <li>Add railway platform ref quest</li>
   <li>Allow showing direction of highlighted way</li>

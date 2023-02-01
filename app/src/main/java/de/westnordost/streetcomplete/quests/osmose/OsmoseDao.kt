@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.osmose
 
+import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
@@ -29,8 +30,8 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.UUID
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -41,6 +42,7 @@ import java.io.IOException
 class OsmoseDao(
     private val db: Database,
     private val prefs: SharedPreferences,
+    private val context: Context,
 ) : KoinComponent {
     private val client = OkHttpClient()
 
@@ -79,14 +81,19 @@ class OsmoseDao(
         val zoom = 16 // what is the use?
         val level = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, "")!!
         if (level.isEmpty()) return emptyList()
+        val url = "$csvUrl?zoom=$zoom&item=xxxx&level=$level&limit=500&bbox=${bbox.min.longitude}%2C${bbox.min.latitude}%2C${bbox.max.longitude}%2C${bbox.max.latitude}"
         val request = Request.Builder()
-            .url("$csvUrl?zoom=$zoom&item=xxxx&level=$level&limit=500&bbox=${bbox.min.longitude}%2C${bbox.min.latitude}%2C${bbox.max.longitude}%2C${bbox.max.latitude}")
+            .url(url)
             .header("User-Agent", USER_AGENT)
-            .build()
-        Log.d(TAG, "downloading for bbox: $bbox using request ${request.url()}")
+        if (prefs.getBoolean(PREF_OSMOSE_APP_LANGUAGE, false)) {
+            val locale = getSelectedLocales(context)[0]
+            if (locale != null)
+                request.header("Accept-Language", locale.toString())
+        }
+        Log.d(TAG, "downloading for bbox: $bbox using request $url")
         val issues = mutableListOf<OsmoseIssue>()
         try {
-            val response = client.newCall(request).execute()
+            val response = client.newCall(request.build()).execute()
             val body = response.body() ?: return emptyList()
             // drop first, it's just column names
             // drop last, it's an empty line

@@ -141,7 +141,6 @@ class AddOpeningHours(
 
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
-        if (prefs.getBoolean(RESURVEY_ALL_OPENING_HOURS, false)) return true
         val tags = element.tags
         // only show places that can be named somehow
         if (!hasName(tags)) return false
@@ -153,6 +152,7 @@ class AddOpeningHours(
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
+        if (prefs.getBoolean(RESURVEY_ALL_OPENING_HOURS, false)) return true
         return rules.isSupportedOpeningHours()
     }
 
