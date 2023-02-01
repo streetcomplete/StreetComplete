@@ -56,7 +56,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("fork_repository")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/StreetComplete/")
+            openUrl("https://github.com/Helium314/SCEE/")
         }
 
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
@@ -81,11 +81,11 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/StreetComplete/issues/")
+            openUrl("https://github.com/Helium314/SCEE/issues/")
         }
 
         findPreference<Preference>("give_feedback")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/StreetComplete/discussions/")
+            openUrl("https://github.com/Helium314/SCEE/discussions/")
         }
 
         findPreference<Preference>("rate")?.isVisible = isInstalledViaGooglePlay()
