@@ -198,6 +198,7 @@ class MainActivity :
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (!forwardBackPressedToChildren()) super.onBackPressed()
     }

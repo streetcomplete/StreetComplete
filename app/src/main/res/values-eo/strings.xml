@@ -1049,7 +1049,6 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_seating_indoor_only">"Nur endoma sidloko"</string>
     <string name="quest_seating_outdoor_only">"Nur subĉiela sidloko"</string>
     <string name="quest_seating_indoor_and_outdoor">"Kaj endoma kaj subĉiela sidloko"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Ĉi tiu serĉa tipo estas malebligita defaŭlte ĉar ĝi eble postulas kontroladon dum specifa parto de la jaro por kontroli subĉielan sidlokon."</string>
     <string name="no_camera_permission_toast">"Neniu fotila permeso"</string>
     <string name="quest_accepts_cash_title2">"Ĉu kontanta pago estas akceptita ĉi tie?"</string>
     <string name="quest_address_street_title2">"Sur kiu strato estas ĉi tio?"</string>
@@ -1142,6 +1141,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="lit_value_automatic">"Lumigita kiam iu preterpasas"</string>
     <string name="overlay_sidewalk">"Trotuaroj"</string>
     <string name="quest_generic_answer_is_indoors">"Ĉi tio estas endome"</string>
+    <string name="quest_summit_cross_title">"Ĉu estas montkruco ĉi tie?"</string>
     <string name="quest_entrance_reference">"Kio estas signita ĉe ĉi tiu enirejo?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Enireja etikedo kaj gamo de apartamentoj"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Gamo da apartamentoj"</string>

@@ -780,7 +780,7 @@ aktiv"</string>
     <string name="quest_buildingType_abandoned_description">"ubrugt bygning, hvis oprindelige funktion eller formål er ukendt"</string>
     <string name="quest_buildingType_ruins">"Ruiner"</string>
     <string name="quest_buildingType_ruins_description">"forladt, ødelagt og/eller uidentificerbar bygning"</string>
-    <string name="quest_charging_station_capacity_title">"Hvor mange biler kan oplades samtidig på denne ladestation?"</string>
+    <string name="quest_charging_station_capacity_title">"Hvor mange biler kan oplades samtidig ved denne ladestation?"</string>
     <string name="link_disaster_ninja_description">"Kort, der viser nylige naturkatastrofer, interessant for humanitære kortlæggere. Viser også mange interessante statistikker til at analysere, hvor godt kortlagte og opdaterede stederne er."</string>
     <string name="quest_lanes_title">"Hvor mange kørebaner for biler har denne vej?"</string>
     <string name="quest_lanes_answer_lanes">"Markerede kørebaner"</string>
@@ -1098,7 +1098,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_seating_indoor_only">"Kun indendørs siddepladser"</string>
     <string name="quest_seating_outdoor_only">"Kun udendørs siddepladser"</string>
     <string name="quest_seating_indoor_and_outdoor">"Både inden- og udendørs siddepladser"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Denne opgavetype er som standard deaktiveret, fordi det kan være nødvendigt at kontrollere den på en bestemt del af året for at verificere udendørs siddepladser."</string>
     <string name="no_camera_permission_toast">"Ingen kameratilladelse"</string>
     <string name="quest_accepts_cash_title2">"Modtages der kontant betaling her?"</string>
     <string name="quest_address_street_title2">"Hvilken gade er dette på?"</string>
@@ -1270,7 +1269,7 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="confirmation_replace_shop_message">"I så fald vil åbningstider, kontaktoplysninger osv. også være ændret."</string>
     <string name="confirmation_replace_shop_yes">"Andet sted nu"</string>
     <string name="confirmation_replace_shop_no">"Stadig samme sted"</string>
-    <string name="move_node">"Det ligger ved en lidt anden position…"</string>
+    <string name="move_node">"Ligger ved en lidt anden position…"</string>
     <string name="quest_move_node_message">"Du kan rette positionen ved at flytte elementet.
 Vil du flytte det nu?"</string>
     <string name="node_moved_not_far_enough">"Flyt det længere"</string>
@@ -1303,4 +1302,8 @@ Vil du flytte det nu?"</string>
 &lt;p&gt;Afsæt hvert start- og slutpunkt, mens du peger telefonen lige nedad (så du kan se den hvide pil fra oven) for helt at undgå dette problem ved horisontale målinger.&lt;/p&gt;
 &lt;p&gt;For vertikale målinger skal du i stedet kontrollere, at startpunktet ikke ser ud til at bevæge sig i forhold til jordoverfladen ved at se på det fra forskellige retninger.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Denne applikation kører på &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), som leveres af Google og er underlagt &lt;a href=\"https://policies.google.com/privacy\"&gt;Google privatlivspolitik&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Denne opgavetype er som standard deaktiveret, fordi det kan være nødvendigt at kontrollere situationen igen på et bestemt tidspunkt af året."</string>
+    <string name="quest_gritBinSeasonal_title">"Er det også her, når det ikke er vinter?"</string>
+    <string name="street_parking_staggered_on_street">"På vejen i skiftende sider"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Delvist på vejen i skiftende sider"</string>
 </resources>

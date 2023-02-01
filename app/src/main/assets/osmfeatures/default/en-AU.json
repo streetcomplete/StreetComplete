@@ -9,6 +9,9 @@
                 "brewery": {
                     "label": "Draught Beers"
                 },
+                "building/flats": {
+                    "label": "Unit Count"
+                },
                 "capacity_volume": {
                     "label": "Capacity (Cubic Metres)"
                 },
@@ -47,9 +50,6 @@
                     }
                 },
                 "ele": {
-                    "label": "Elevation (Metres)"
-                },
-                "ele_node": {
                     "label": "Elevation (Metres)"
                 },
                 "fax": {
@@ -118,6 +118,9 @@
             "presets": {
                 "aerialway/zip_line": {
                     "name": "Flying Fox"
+                },
+                "aeroway/jet_bridge": {
+                    "name": "Aerobridge"
                 },
                 "amenity/arts_centre": {
                     "name": "Arts Centre"
@@ -237,15 +240,6 @@
                 },
                 "healthcare/counselling": {
                     "name": "Counselling Centre"
-                },
-                "highway/crossing/marked": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/uncontrolled": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Marked Crossing"
                 },
                 "highway/cycleway/bicycle_foot": {
                     "name": "Shared Path"

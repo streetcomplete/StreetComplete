@@ -30,9 +30,9 @@ barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap
 barrier_bicycle_barrier_dou... CC-BY-SA 4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
 barrier_bicycle_barrier_tri... CC-BY-SA 4.0      HolgerJeromin https://commons.wikimedia.org/wiki/File:Umlaufgitter_Schatten_hoch.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
-barrier_bicycle_installation_f CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_fixed.jpg
-barrier_bicycle_installation_o CC-BY-SA 4.0      Ellievking1 https://commons.wikimedia.org/wiki/File:Barrier_on_Formartine_and_Buchan_cycle_route_at_Auchnagatt.jpg
-barrier_bicycle_installation_r CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_removable_detail.jpg
+barrier_bicycle_installation_f… CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_fixed.jpg
+barrier_bicycle_installation_o… CC-BY-SA 4.0      Ellievking1 https://commons.wikimedia.org/wiki/File:Barrier_on_Formartine_and_Buchan_cycle_route_at_Auchnagatt.jpg
+barrier_bicycle_installation_r… CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_removable_detail.jpg
 
 bench_concrete.jpg             CC-BY-SA 4.0      AgainErick https://commons.wikimedia.org/wiki/File:Street_bench_-_Diergaarde_Blijdorp_-_Rotterdam_-_Concrete.jpg
 bench_metal.jpg                CC-BY-SA 2.5      Finne Boonen https://commons.wikimedia.org/wiki/File:Botanique_bank.jpg
@@ -127,8 +127,8 @@ ic_link_graphhopper.png        fair use          used while linking and promotin
 ic_link_organic_maps.png       fair use          used while linking and promoting this project
 
 ic_preset_far-*                CC-BY 4.0         from https://fontawesome.com/license/free
-ic_preset_fas-*                  and
-ic_preset_fab-*                SIL OFL-1.1
+ic_preset_fas-*                  and             from https://fontawesome.com/license/free
+ic_preset_fab-*                SIL OFL-1.1       from https://fontawesome.com/license/free
 
 ic_preset_iD-*                 ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
 

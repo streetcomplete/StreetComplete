@@ -1065,7 +1065,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="default_disabled_msg_no_ar">"Necesita una cinta métrica para resolver esta pregunta porque la medición con la cámara no es compatible con este dispositivo."</string>
     <string name="quest_cycleway_width_title">"¿Cuál es el ancho del carril bici en este punto?"</string>
     <string name="quest_road_width_title">"¿Cuál es el ancho de este camino aquí?"</string>
-    <string name="quest_road_width_explanation">"El ancho de la calzada de bordillo a bordillo: Esto incluye cualquier cosa en la superficie de la calle, como estacionamiento en la calle o carriles para bicicletas, pero excluye cualquier cosa más allá, como carriles para bicicletas o estacionamiento al lado de la calzada."</string>
+    <string name="quest_road_width_explanation">"El ancho de la calzada de bordillo a bordillo: Esto incluye cualquier cosa en la superficie de la calle, incluido el estacionamiento en la calle o carriles para bicicletas, pero excluye cualquier cosa más allá del bordillo, como las aceras, el estacionamiento fuera de la vía pública o los carriles para bicicletas adyacentes."</string>
     <string name="quest_sidewalk_answer_none">"No hay ninguna acera"</string>
     <string name="about_description_donate_google_play2">"¡Gracias por considerar apoyar esta aplicación! Lamentablemente, debido a la política de Google Play Store, no se mostrarán en la aplicación enlaces que conduzcan a donaciones. En este contexto, ni siquiera se permite vincular a la web de nuestro proyecto."</string>
     <string name="link_osmand_description">"Aplicación móvil para visualización y navegación de mapas en línea y fuera de línea"</string>
@@ -1092,7 +1092,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_seating_indoor_only">"Solo asientos en el interior"</string>
     <string name="quest_seating_outdoor_only">"Solo asientos en el exterior"</string>
     <string name="quest_seating_indoor_and_outdoor">"Asientos tanto en el interior como en el exterior"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Este tipo de misión está deshabilitado de forma predeterminada porque puede requerir una verificación durante una parte específica del año para verificar los asientos en el exterior."</string>
     <string name="no_camera_permission_toast">"Sin permiso de cámara"</string>
     <string name="quest_accepts_cash_title2">"¿Aquí se acepta pago en efectivo?"</string>
     <string name="quest_address_street_title2">"¿En qué calle está esto?"</string>
@@ -1281,4 +1280,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="cycleway_reverse_direction_warning">"Un carril bici que va en la otra dirección es extremadamente raro."</string>
     <string name="separate_cycleway_path">"Camino o sendero"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
+    <string name="privacy_html_arcore">"Esta aplicación se ejecuta en &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que es proporcionado por Google y se rige por la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privacidad de Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Este tipo de misión está deshabilitado de forma predeterminada porque puede requerir re-verificar la situación en una época específica del año."</string>
 </resources>

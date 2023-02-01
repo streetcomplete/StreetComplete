@@ -87,6 +87,36 @@ class KerbUtilTest {
         assertEquals(1, mapData.findAllKerbNodes().toList().size)
     }
 
+    @Test fun `shared endpoints between traffic islands and crossings count`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(id = 1),
+            way(1, listOf(1, 2), mapOf(
+                "highway" to "footway",
+                "footway" to "traffic_island"
+            )),
+            way(2, listOf(1, 3), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+        ))
+        assertEquals(1, mapData.findAllKerbNodes().toList().size)
+    }
+
+    @Test fun `shared endpoints between traffic islands and sidewalks don't count`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(id = 1),
+            way(1, listOf(1, 2), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+            way(2, listOf(1, 3), mapOf(
+                "highway" to "footway",
+                "footway" to "traffic_island"
+            )),
+        ))
+        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    }
+
     @Test fun `shared endpoints between sidewalks and crossings and sidewalk without endpoint don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1),
@@ -145,6 +175,25 @@ class KerbUtilTest {
             way(2, listOf(1, 4), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
+            )),
+            way(3, listOf(1, 3), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+        ))
+        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    }
+
+    @Test fun `shared endpoints between crossing, traffic island and sidewalk don't count`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(id = 1),
+            way(1, listOf(1, 2), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+            way(2, listOf(1, 4), mapOf(
+                "highway" to "footway",
+                "footway" to "traffic_island"
             )),
             way(3, listOf(1, 3), mapOf(
                 "highway" to "footway",

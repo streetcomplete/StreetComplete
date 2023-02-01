@@ -29,12 +29,6 @@
                         "forward": "Forwards"
                     }
                 },
-                "direction_vertex_dual": {
-                    "options": {
-                        "backward": "Backwards",
-                        "forward": "Forwards"
-                    }
-                },
                 "healthcare/speciality": {
                     "label": "Specialities"
                 },
@@ -141,7 +135,7 @@
                 },
                 "amenity/fuel": {
                     "name": "Petrol Station",
-                    "terms": "gas station"
+                    "terms": "gas station,service station"
                 },
                 "amenity/internet_cafe": {
                     "name": "Internet Café",
@@ -349,6 +343,9 @@
                 },
                 "tourism/caravan_site": {
                     "name": "Caravan Site"
+                },
+                "tourism/chalet": {
+                    "terms": "bach,crib"
                 },
                 "tourism/information/office": {
                     "name": "Visitor Centre"

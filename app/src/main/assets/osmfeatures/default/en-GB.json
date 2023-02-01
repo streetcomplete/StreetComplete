@@ -284,9 +284,6 @@
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
                 },
-                "building_area": {
-                    "label": "Building"
-                },
                 "bunker_type": {
                     "label": "Type"
                 },
@@ -404,38 +401,23 @@
                     "label": "Bike Lanes",
                     "options": {
                         "lane": {
-                            "description": "A bike lane separated from motor traffic by a painted line",
-                            "title": "Standard bike lane"
-                        },
-                        "none": {
-                            "description": "No bike lane",
-                            "title": "None"
+                            "description": "A bike lane separated from motor traffic by a painted line"
                         },
                         "opposite": {
-                            "description": "A bike lane that travels in both directions on a one-way street",
-                            "title": "Contraflow bike lane"
+                            "description": "A bike lane that travels in both directions on a one-way street"
                         },
                         "opposite_lane": {
-                            "description": "A bike lane that travels in the opposite direction of traffic",
-                            "title": "Opposite bike lane"
+                            "description": "A bike lane that travels in the opposite direction of traffic"
                         },
                         "share_busway": {
-                            "description": "A bike lane shared with a bus lane",
-                            "title": "Bike lane shared with bus"
+                            "description": "A bike lane shared with a bus lane"
                         },
                         "shared_lane": {
-                            "description": "A bike lane with no separation from motor traffic",
-                            "title": "Shared bike lane"
+                            "description": "A bike lane with no separation from motor traffic"
                         },
                         "track": {
-                            "description": "A bike lane separated from traffic by a physical barrier",
-                            "title": "Bike track"
+                            "description": "A bike lane separated from traffic by a physical barrier"
                         }
-                    },
-                    "placeholder": "none",
-                    "types": {
-                        "cycleway:left": "Left side",
-                        "cycleway:right": "Right side"
                     }
                 },
                 "dance/style": {
@@ -695,7 +677,6 @@
                     "label": "Incline"
                 },
                 "incline_steps": {
-                    "label": "Incline",
                     "options": {
                         "down": "Down",
                         "up": "Up"
@@ -768,15 +749,6 @@
                         "semi_evergreen": "Semi-Evergreen"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Leaf Cycle",
-                    "options": {
-                        "deciduous": "Deciduous",
-                        "evergreen": "Evergreen",
-                        "semi_deciduous": "Semi-Deciduous",
-                        "semi_evergreen": "Semi-Evergreen"
-                    }
-                },
                 "leaf_type": {
                     "label": "Leaf Type",
                     "options": {
@@ -787,12 +759,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Leaf Type",
-                    "options": {
-                        "broadleaved": "Broadleaved",
-                        "leafless": "Leafless",
-                        "needleleaved": "Needleleaved"
-                    }
+                    "label": "Leaf Type"
                 },
                 "leisure": {
                     "label": "Type"
@@ -810,7 +777,6 @@
                     "label": "Location"
                 },
                 "location_pool": {
-                    "label": "Location",
                     "options": {
                         "indoor": "Indoor",
                         "outdoor": "Outdoor",
@@ -938,7 +904,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "One Way",
                     "options": {
                         "alternating": "Alternating",
                         "no": "No",
@@ -1957,9 +1922,6 @@
                 "attraction/amusement_ride": {
                     "name": "Amusement Ride"
                 },
-                "attraction/big_wheel": {
-                    "name": "Big Wheel"
-                },
                 "attraction/bungee_jumping": {
                     "name": "Bungee Jumping"
                 },
@@ -2034,9 +1996,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Kissing Gate"
-                },
-                "barrier/lift_gate": {
-                    "name": "Lift Gate"
                 },
                 "barrier/retaining_wall": {
                     "name": "Retaining Wall"
@@ -2176,9 +2135,6 @@
                 },
                 "building/stadium": {
                     "name": "Stadium Building"
-                },
-                "building/static_caravan": {
-                    "name": "Static Caravan"
                 },
                 "building/temple": {
                     "name": "Temple Building"
@@ -2450,12 +2406,6 @@
                 },
                 "highway/corridor": {
                     "name": "Indoor Corridor"
-                },
-                "highway/crossing/marked": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Marked Crossing"
                 },
                 "highway/cycleway": {
                     "name": "Cycle Path"

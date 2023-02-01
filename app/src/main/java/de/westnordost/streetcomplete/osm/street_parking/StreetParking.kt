@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import kotlinx.serialization.Serializable
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
@@ -31,9 +27,11 @@ enum class ParkingOrientation {
 
 enum class ParkingPosition {
     ON_STREET,
-    HALF_ON_KERB,
-    ON_KERB,
+    HALF_ON_STREET,
+    OFF_STREET,
     STREET_SIDE,
+    STAGGERED_ON_STREET,
+    STAGGERED_HALF_ON_STREET,
     PAINTED_AREA_ONLY
 }
 
@@ -45,6 +43,11 @@ fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
 private val StreetParking.isValid: Boolean get() = when (this) {
     IncompleteStreetParking, UnknownStreetParking -> false
     else -> true
+}
+
+val ParkingPosition.isStaggered: Boolean get() = when (this) {
+    STAGGERED_HALF_ON_STREET, STAGGERED_ON_STREET, PAINTED_AREA_ONLY -> true
+    else -> false
 }
 
 val StreetParking.estimatedWidthOnRoad: Float get() = when (this) {
@@ -65,7 +68,9 @@ private val ParkingOrientation.estimatedWidth: Float get() = when (this) {
 
 private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this) {
     ON_STREET -> 1f
-    HALF_ON_KERB -> 0.5f
-    ON_KERB -> 0f
+    HALF_ON_STREET -> 0.5f
+    STAGGERED_ON_STREET -> 0.5f // because cars park not left and right at the same time
+    STAGGERED_HALF_ON_STREET -> 0.25f // because cars park not left and right at the same time
+    OFF_STREET -> 0f
     else -> 0.5f // otherwise let's assume it is somehow on the street
 }

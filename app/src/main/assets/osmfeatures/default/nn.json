@@ -161,9 +161,6 @@
                 "building": {
                     "label": "Bygning"
                 },
-                "building_area": {
-                    "label": "Bygning"
-                },
                 "cables": {
                     "label": "Kablar",
                     "placeholder": "1, 2, 3..."
@@ -209,18 +206,8 @@
                     "label": "Sykkelvegar",
                     "options": {
                         "lane": {
-                            "description": "Ein sykkelveg er skilt frå biltrafikk med ei måla linje",
-                            "title": "Standard sykkelveg"
-                        },
-                        "none": {
-                            "description": "Ingen sykkelveg",
-                            "title": "Ingen"
+                            "description": "Ein sykkelveg er skilt frå biltrafikk med ei måla linje"
                         }
-                    },
-                    "placeholder": "Ingen",
-                    "types": {
-                        "cycleway:left": "Venstre side",
-                        "cycleway:right": "Høgre side"
                     }
                 },
                 "dance/style": {
@@ -241,9 +228,6 @@
                 },
                 "design": {
                     "label": "Utforming"
-                },
-                "destination_oneway": {
-                    "label": "Destinasjonar"
                 },
                 "devices": {
                     "label": "Einingar",
@@ -428,7 +412,6 @@
                     "label": "Plassering"
                 },
                 "location_pool": {
-                    "label": "Plassering",
                     "options": {
                         "indoor": "Innandørs",
                         "outdoor": "Utandørs",
@@ -546,9 +529,6 @@
                         "novice": "Nybegynnar"
                     },
                     "placeholder": "Lett, mellomstadium, avansert…"
-                },
-                "piste/difficulty_downhill": {
-                    "label": "Vanskegrad"
                 },
                 "pump": {
                     "options": {

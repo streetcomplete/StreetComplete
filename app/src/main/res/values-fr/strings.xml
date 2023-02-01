@@ -1101,7 +1101,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_seating_indoor_only">"En intérieur seulement"</string>
     <string name="quest_seating_outdoor_only">"En terrasse seulement"</string>
     <string name="quest_seating_indoor_and_outdoor">"En intérieur et en terrasse"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Ce type de quête est désactivé par défaut car cela peut nécessiter de vérifier la disponibilité d’une terrasse durant certaines parties spécifiques de l’année."</string>
     <string name="no_camera_permission_toast">"Pas de permission pour l’appareil photo"</string>
     <string name="quest_accepts_cash_title2">"Le paiement en liquide est-il accepté ici ?"</string>
     <string name="quest_address_street_title2">"Quelle rue est-ce ?"</string>
@@ -1302,8 +1301,8 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_fireHydrant_type_pipe">"Colonne"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"trottoir partagé, dans les deux sens"</string>
     <string name="measure_info_title">"Améliorer la précision de mesure"</string>
-    <string name="measure_info_html_description">"&lt;p&gt;ARCore présume parfois (à l'initialisation) que le sol est plus bas ou plus haut qu'il ne l'est vraiment. Cela introduit une erreur de mesure qui s'accroit lorsque vous inclinez votre téléphone vers l'horizon.&lt;/p&gt;
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore présume parfois (à l’initialisation) que le sol est plus bas ou plus haut qu’il ne l’est vraiment. Cela introduit une erreur de mesure qui s’accroit lorsque vous inclinez votre téléphone vers l’horizon.&lt;/p&gt;
 &lt;p&gt;Réglez les points de départ et de terminaison en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
-&lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n'est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;"</string>
+&lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n’est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Cette application utilise les &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Services Google Play pour RA&lt;/a&gt; (ARCore), qui sont fournis par Google et sont soumis aux &lt;a href=\"https://policies.google.com/privacy\"&gt;règles de confidentialité de Google&lt;/a&gt;."</string>
 </resources>

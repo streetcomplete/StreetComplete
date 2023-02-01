@@ -108,6 +108,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is either time-consuming or difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data.</string>
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
 
 
     <!-- Quest interface -->
@@ -180,7 +181,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="no_camera_app">No camera app available</string>
 
     <string name="no_camera_permission_warning_title">Camera permission</string>
-    <string name="no_camera_permission_warning">The permission is required to take photos and measure distances with the camera.</string>
+    <string name="no_camera_permission_warning">The permission is required to measure distances with the camera.</string>
     <string name="no_camera_permission_toast">No camera permission</string>
 
 
@@ -215,7 +216,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
     <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
-
+    <string name="measure_info_title">"Achieving optimal precision"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
+&lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
+&lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
 
     <!-- Notifications -->
 
@@ -346,7 +350,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
     <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
-
+    <string name="privacy_html_arcore">This application runs on &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href="https://policies.google.com/privacy"&gt;Google Privacy Policy&lt;/a&gt;.</string>
 
     <!-- User screen -->
 
@@ -1011,6 +1015,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
+    <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
+
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
     <string name="quest_internet_access_title">What kind of internet connection does this place offer?</string>
@@ -1229,7 +1235,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
-    <string name="quest_placeName_no_name_answer">"There is no name sign"</string>
+    <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
 
     <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
 
@@ -1318,7 +1324,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_seating_indoor_only">Indoor seating only</string>
     <string name="quest_seating_outdoor_only">Outdoor seating only</string>
     <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it may require checking during specific part of the year in order to verify outdoor seating."</string>
 
     <string name="quest_segregated_title">How are the footpath and bicycle path laid out here?</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
@@ -1328,7 +1333,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What’s here now?</string>
     <string name="quest_shop_gone_title">What’s here now instead?</string>
-    <string name="quest_shop_gone_vacant_answer">It’s vacant</string>
+    <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
 
@@ -1632,6 +1637,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="street_parking_on_kerb">"Adjacent to street"</string>
     <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
     <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
+    <string name="street_parking_staggered_on_street">"On street on alternating sides"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
     <string name="street_parking_no">No parking here / Not allowed</string>
     <string name="street_parking_prohibited">No parking</string>

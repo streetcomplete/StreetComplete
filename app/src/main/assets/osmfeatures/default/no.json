@@ -400,12 +400,6 @@
                 "building/part": {
                     "label": "Byggningsdel"
                 },
-                "building_area": {
-                    "label": "Bygning"
-                },
-                "building_area_yes": {
-                    "label": "Byggning"
-                },
                 "bunker_type": {
                     "label": "Type"
                 },
@@ -445,7 +439,6 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "capacity/caravans": {
-                    "label": "Kapasitet (Caravans)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -565,7 +558,6 @@
                     "label": "Dekket"
                 },
                 "covered_no": {
-                    "label": "Dekket",
                     "options": {
                         "no": "Nei",
                         "undefined": "Antas å være nr",
@@ -670,38 +662,23 @@
                     "label": "Sykkelfelter",
                     "options": {
                         "lane": {
-                            "description": "Et sykkelfelt separat fra biltrafikk med en malt linje",
-                            "title": "Standard sykkelfelt"
-                        },
-                        "none": {
-                            "description": "Ingen sykklfelt",
-                            "title": "Ingen"
+                            "description": "Et sykkelfelt separat fra biltrafikk med en malt linje"
                         },
                         "opposite": {
-                            "description": "Sykkelfelt som går i begge retninger i en enveiskjørt gate",
-                            "title": "Motstrøms sykkelfelt"
+                            "description": "Sykkelfelt som går i begge retninger i en enveiskjørt gate"
                         },
                         "opposite_lane": {
-                            "description": "Et sykkelfelt som går i motsatte retning av trafikken.",
-                            "title": "Motsatte sykkelfelt"
+                            "description": "Et sykkelfelt som går i motsatte retning av trafikken."
                         },
                         "share_busway": {
-                            "description": "Et sykkelfelt delt med bussfelt",
-                            "title": "Sykkelfelt delt med buss"
+                            "description": "Et sykkelfelt delt med bussfelt"
                         },
                         "shared_lane": {
-                            "description": "Et sykkelfelt med ingen separasjon fra biltrafikk",
-                            "title": "Delt sykkelfelt"
+                            "description": "Et sykkelfelt med ingen separasjon fra biltrafikk"
                         },
                         "track": {
-                            "description": "Et sykkelfelt separert fra trafikk med fysisk sperre.",
-                            "title": "Sykkelbane"
+                            "description": "Et sykkelfelt separert fra trafikk med fysisk sperre."
                         }
-                    },
-                    "placeholder": "ingen",
-                    "types": {
-                        "cycleway:left": "Venstresidig",
-                        "cycleway:right": "Høyresidig"
                     }
                 },
                 "dance/style": {
@@ -747,12 +724,6 @@
                 },
                 "destination": {
                     "label": "Reisemål"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Destinasjonssymboler"
-                },
-                "destination_oneway": {
-                    "label": "Destinasjoner"
                 },
                 "destination_waterway": {
                     "label": "Reisemål"
@@ -806,7 +777,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Retning (grader med klokken)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -815,13 +785,6 @@
                         "backward": "Bakover",
                         "both": "Begge / Alle",
                         "forward": "Fremover"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "Påvirket Retning",
-                    "options": {
-                        "backward": "Bakover",
-                        "forward": "Framover"
                     }
                 },
                 "dispensing": {
@@ -884,9 +847,6 @@
                 },
                 "ele": {
                     "label": "Høyde (meter)"
-                },
-                "ele_node": {
-                    "label": "Høyde (Meter)"
                 },
                 "electrified": {
                     "label": "Elektrifisering",
@@ -1041,9 +1001,6 @@
                     "label": "Type"
                 },
                 "frequency": {
-                    "label": "Driftsfrekvens"
-                },
-                "frequency_electrified": {
                     "label": "Driftsfrekvens"
                 },
                 "from": {
@@ -1208,7 +1165,6 @@
                     "label": "Stigning"
                 },
                 "incline_steps": {
-                    "label": "Stigning",
                     "options": {
                         "down": "Ned",
                         "up": "Opp"
@@ -1234,9 +1190,6 @@
                     "terms": "inskripsjon,innskrift,påskrift,epigraf"
                 },
                 "intermittent": {
-                    "label": "Intermittent"
-                },
-                "intermittent_yes": {
                     "label": "Intermittent"
                 },
                 "internet_access": {
@@ -1316,15 +1269,6 @@
                         "semi_evergreen": "Delvis-Eviggrønn"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Bladsyklus",
-                    "options": {
-                        "deciduous": "Løvfellende",
-                        "evergreen": "Eviggrønn",
-                        "semi_deciduous": "Semi-Løvfellende",
-                        "semi_evergreen": "Vintergrøn"
-                    }
-                },
                 "leaf_type": {
                     "label": "Bladtype",
                     "options": {
@@ -1335,12 +1279,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Bladtype",
-                    "options": {
-                        "broadleaved": "Løvtre",
-                        "leafless": "Bladløs",
-                        "needleleaved": "Nåltre"
-                    }
+                    "label": "Bladtype"
                 },
                 "leisure": {
                     "label": "Type"
@@ -1376,7 +1315,6 @@
                     "label": "Sted"
                 },
                 "location_pool": {
-                    "label": "Sted",
                     "options": {
                         "indoor": "Innendørs",
                         "outdoor": "Utendørs",
@@ -1440,9 +1378,6 @@
                     "label": "Maks Opphold"
                 },
                 "maxweight": {
-                    "label": "Maksvekt"
-                },
-                "maxweight_bridge": {
                     "label": "Maksvekt"
                 },
                 "maxwidth": {
@@ -1581,7 +1516,6 @@
                     "label": "Enveis (Sykler)"
                 },
                 "oneway_yes": {
-                    "label": "Enveis",
                     "options": {
                         "alternating": "Alternerende",
                         "no": "Nei",
@@ -1660,11 +1594,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "Type",
-                    "options": {
-                        "multi-storey": "Fleretasje parking",
-                        "underground": "Underjordisk"
-                    }
+                    "label": "Type"
                 },
                 "parking_space": {
                     "label": "Type"
@@ -1694,7 +1624,6 @@
                     "placeholder": "Enkelt, Middels, Avansert…"
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Vanskelighetsgrad",
                     "options": {
                         "advanced": "Avansert (black diamond)",
                         "easy": "Enkel (grønn sirkel)",
@@ -1707,7 +1636,6 @@
                     "placeholder": "Enkel, Middels, Avansert ..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Vanskelighetsgrad",
                     "options": {
                         "advanced": "Avansert - smal, bratt eller isete del, skarp sving",
                         "easy": "Enkel - Myke bakker, kort bratt parti",
@@ -1718,7 +1646,6 @@
                     "placeholder": "Enkel, middels, avansert ..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Vanskelighetsgrad",
                     "options": {
                         "advanced": "Avansert - S: 40-45 ° stigning",
                         "easy": "Enkel - WS: 30-35 ° stigning",
@@ -1742,7 +1669,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Preparering",
                     "options": {
                         "backcountry": "Terrengløype - upreparert",
                         "classic": "Klassisk",
@@ -1750,14 +1676,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Preparering",
                     "options": {
                         "backcountry": "Tur - Truger",
                         "classic": "Klassisk - Vinter Fottur"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Løypepreparering",
                     "options": {
                         "backcountry": "Tur, ingen løypepreparering",
                         "classic": "Klassisk",
@@ -2553,9 +2477,6 @@
                 "voltage/secondary": {
                     "label": "Sekundærspenning"
                 },
-                "voltage_electrified": {
-                    "label": "Spenning"
-                },
                 "wall": {
                     "label": "Type"
                 },
@@ -3270,9 +3191,6 @@
                 "attraction/animal": {
                     "name": "Dyreinnhegning"
                 },
-                "attraction/big_wheel": {
-                    "name": "Pariserhjul"
-                },
                 "attraction/bumper_car": {
                     "name": "Radiobil"
                 },
@@ -3371,9 +3289,6 @@
                 },
                 "barrier/kerb/raised": {
                     "name": "Hevet kantstein"
-                },
-                "barrier/lift_gate": {
-                    "name": "Vippebom"
                 },
                 "barrier/retaining_wall": {
                     "name": "Støttemur"
@@ -3542,9 +3457,6 @@
                 },
                 "building/stadium": {
                     "name": "Stadionbyging"
-                },
-                "building/static_caravan": {
-                    "name": "Statisk campingvogn"
                 },
                 "building/temple": {
                     "name": "Tempelbygning"
@@ -3865,14 +3777,8 @@
                 "highway/corridor": {
                     "name": "Innendørs korridor"
                 },
-                "highway/crossing/marked": {
-                    "name": "Fotgjengerovergang"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Tilrettelagt kryssing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Fotgjengerovergang"
                 },
                 "highway/cycleway": {
                     "name": "Sykkelvei"
@@ -3885,9 +3791,6 @@
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "Sykkel- og fotgjengerovergang"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "Merket Sykkelovergang"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Umerket sykkelovergang"

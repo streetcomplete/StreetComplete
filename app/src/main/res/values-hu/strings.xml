@@ -1094,7 +1094,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_seating_indoor_only">"Csak beltéri ülőhelyek"</string>
     <string name="quest_seating_outdoor_only">"Csak kültéri ülőhelyek"</string>
     <string name="quest_seating_indoor_and_outdoor">"Beltéri és kültéri ülőhelyek"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Ez a kérdés alapértelmezett ki van kapcsolva, mert lehet hogy csak az év egy bizonyos szakában ellenőrizhetők a kültéri ülőhelyek."</string>
     <string name="no_camera_permission_toast">"Nincs hozzáférés a kamerához."</string>
     <string name="quest_accepts_cash_title2">"Készpénzzel lehet fizetni?"</string>
     <string name="quest_address_street_title2">"Melyik utcában van?"</string>
