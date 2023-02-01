@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
@@ -367,8 +368,8 @@ abstract class AbstractOverlayForm :
             }
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && element is Node)
                 answers.add(createDeleteElementAnswer(element))
-            if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
-                answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && this !is CustomOverlayForm)
+                answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(element) })
             if (element is Node // add moveNodeAnswer only if it's a free floating node
                     && (prefs.getBoolean(Prefs.EXPERT_MODE, false) ||
                         (mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
@@ -380,6 +381,10 @@ abstract class AbstractOverlayForm :
 
         answers.addAll(otherAnswers)
         return answers
+    }
+
+    protected fun editTags(element: Element) {
+        listener?.onEditTags(element, geometry)
     }
 
     protected fun splitWay(element: Element) {
