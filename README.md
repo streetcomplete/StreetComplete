@@ -20,6 +20,7 @@ Due to the different name used in changesets, edits made with this version do no
 * Level filter (available only in quick settings menu)
 * Import / export for settings, quest presets, hidden quests and custom overlays
 * Show all quests for the selected element at once, and also nearby quests
+* Show direction of ways, which may be useful for tagging oneways, or for solving Osmose issues
 * More answers for some quests, like additional building types or specifying that a crossing is raised
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Switch the main menu to a grid with six full-size buttons
@@ -36,7 +37,8 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
 
 ## Download SCEE
 
-<!--[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/)-->[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/Helium314/SCEE/releases/latest)
+<!-- [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/) -->
+[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/Helium314/SCEE/releases/latest)
 
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
