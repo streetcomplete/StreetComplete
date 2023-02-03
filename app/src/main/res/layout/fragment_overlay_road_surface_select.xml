@@ -15,6 +15,9 @@
     <EditText
         android:id="@+id/explanation_input_main_surface"
         android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
+        android:layout_marginRight="@dimen/quest_form_horizontal_margin"
+        android:layout_marginBottom="@dimen/ok_button_size"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:gravity="top|start"

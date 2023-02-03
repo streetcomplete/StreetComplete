@@ -24,6 +24,9 @@
         <EditText
             android:id="@+id/explanation_input_main_surface"
             android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
+            android:layout_marginRight="@dimen/quest_form_horizontal_margin"
+            android:layout_marginBottom="@dimen/ok_button_size"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:gravity="top|start"
@@ -57,6 +60,9 @@
             android:id="@+id/cycleway_surface_input_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
+            android:layout_marginRight="@dimen/quest_form_horizontal_margin"
+            android:layout_marginBottom="@dimen/ok_button_size"
             android:orientation="vertical">
 
             <include
@@ -110,6 +116,9 @@
                 android:id="@+id/explanation_input_footway_surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
+                android:layout_marginRight="@dimen/quest_form_horizontal_margin"
+                android:layout_marginBottom="@dimen/ok_button_size"
                 android:inputType="textMultiLine"
                 android:gravity="top|start"
                 tools:text="Surface is a mosaic of paving stones, wood and metal."
