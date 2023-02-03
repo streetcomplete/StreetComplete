@@ -44,6 +44,8 @@
 
     <dimen name="map_button_size">60dp</dimen>
 
+    <dimen name="ok_button_size">72dp</dimen>
+
     <!-- user screen -->
 
     <dimen name="statistics_edit_type_icon_size">192dp</dimen>
