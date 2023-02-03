@@ -31,6 +31,7 @@
     <SwitchPreference
         android:key="show_solved_animation"
         android:title="@string/pref_show_solved_animation"
+        android:summary="@string/pref_show_solved_animation_summary"
         android:defaultValue="true"
         android:persistent="true" />
 

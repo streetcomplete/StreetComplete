@@ -139,7 +139,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
                 else itemsForRemoval.remove(items[i])
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
             }
-            .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ -> // todo: dialog broken if list is long and button text is long
+            .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ -> // todo: dialog broken if list is long and button text is long... but that's actually an Android issue?
                 prefs.edit { putString(pref, items.filterNot { it in itemsForRemoval }.joinToString("§§")) }
                 osmoseDao.reloadIgnoredItems()
                 OsmQuestController.reloadQuestTypes()
@@ -161,9 +161,10 @@ const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
 const val PREF_OSMOSE_APP_LANGUAGE = "qs_OsmoseQuest_app_language" // do not use the quest settings prefix here, as it doesn't make sense for language
 
 // items that have associated SC quests/overlays are disabled by default
-const val OSMOSE_DEFAULT_IGNORED_ITEMS = // todo: there is some issue for missing maxheight
+const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "3230/32301" + "§§" + // "Probably only for bottles, not any type of glass"
     "4061/40610" + "§§" + // "object needs review" (fixme poi "quest")
+    "7130/71301" + "§§" + // "Missing maxheight tag"
     "3250" + "§§" + // "Invalid Opening Hours" (will be not be asked immediately, but frequently re-surveyed, at least of the option is on)
     "shop=yes is unspecific. Please replace ''yes'' by a specific value." + "§§" +
 //    alternative for all languages: 9002/9002007 and contains "shop=yes" or "shop = yes" (thanks, translator)
@@ -179,7 +180,9 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS = // todo: there is some issue for missin
 //    alternative for all languages and types: 9001/9001001 and contains "leisure=pitch" and "sport"
     "The tag `parking:lane:both` is deprecated in favour of `parking:both`" + "§§" +
     "The tag `parking:lane:left` is deprecated in favour of `parking:left`" + "§§" +
-    "The tag `parking:lane:right` is deprecated in favour of `parking:right`"
+    "The tag `parking:lane:right` is deprecated in favour of `parking:right`" + "§§" +
 //    alternative for all languages and types: 4010 and contains "parking:lane:*" and "parking:<same>"
+    "Same value of cycleway:left and cycleway:right" // there is no quest, but SC may cause this and does not understand the "fix"
+//    alternative for all languages: 9001 and contains "cycleway:left" and "cycleway:right"
 // "tracktype=grade4 together with surface=asphalt" -> how to do it properly? current system won't work, or needs blacklisting all combinations
 //    alternative for all languages and types: 9001/9001001 and contains "tracktype=" and "surface="

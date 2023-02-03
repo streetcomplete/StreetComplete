@@ -59,6 +59,7 @@
     <string name="pref_offset_fix_title">Remove quest marker offsets</string>
     <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
     <string name="pref_show_solved_animation">Show animation after solving a quest</string>
+    <string name="pref_show_solved_animation_summary">This also controls the quest-solved sound</string>
     <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
     <string name="pref_close_forms_immediately_summary">Closes the form before the change is processed, so further quests may take a short time to show up</string>
     <string name="pref_gpx_track_title">Display GPX track from file</string>

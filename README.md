@@ -34,6 +34,10 @@ Database and preferences files are compatible with StreetComplete, so if you hav
 ## Permissions
 SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
 
+## Download SCEE
+
+<!--[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/)-->[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/Helium314/SCEE/releases/latest)
+
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
 
