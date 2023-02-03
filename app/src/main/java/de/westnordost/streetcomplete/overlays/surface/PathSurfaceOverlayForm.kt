@@ -10,6 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPathSurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
@@ -34,6 +35,8 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
+import de.westnordost.streetcomplete.util.getFeatureName
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -122,6 +125,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             isSegregatedLayout = true
             binding.cyclewaySurfaceContainer.isGone = false
             binding.footwaySurfaceContainer.isGone = false
+            val locales = getLocalesForFeatureDictionary(resources.configuration)
+            binding.cyclewaySurfaceLabel.text = getFeatureName( Way(1, listOf(), mapOf("highway" to "cycleway")), featureDictionary, locales)
+            binding.footwaySurfaceLabel.text = getFeatureName( Way(1, listOf(), mapOf("highway" to "footway")), featureDictionary, locales)
         }
 
         private sealed class SingleSurfaceItemInfo

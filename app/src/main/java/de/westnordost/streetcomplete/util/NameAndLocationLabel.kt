@@ -69,7 +69,7 @@ private fun getLocationHtml(
 }
 
 /** Returns the feature name only, e.g. "Bakery" */
-private fun getFeatureName(
+internal fun getFeatureName(
     element: Element,
     featureDictionary: FeatureDictionary,
     locales: Array<Locale?>

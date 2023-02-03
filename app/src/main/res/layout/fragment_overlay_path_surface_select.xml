@@ -49,7 +49,7 @@
             android:id="@+id/cyclewaySurfaceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overlay_cycleway_label"
+            tools:text="Cycleway Path"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -93,7 +93,7 @@
             android:id="@+id/footwaySurfaceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overlay_footway_label"
+            tools:text="Foot Path"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
