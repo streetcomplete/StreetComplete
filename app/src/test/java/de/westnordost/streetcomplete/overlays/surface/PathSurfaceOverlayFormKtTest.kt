@@ -55,6 +55,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("surface", "compacted"),
             StringMapEntryAdd("cycleway:surface", "compacted"),
             StringMapEntryAdd("footway:surface", "compacted"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.COMPACTED, null,
@@ -68,6 +69,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("surface", "paved"),
             StringMapEntryAdd("cycleway:surface", "asphalt"),
             StringMapEntryAdd("footway:surface", "paving_stones"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.ASPHALT, null,
@@ -80,6 +82,7 @@ class PathSurfaceOverlayFormKtTest {
         val expectedChanges = arrayOf(
             StringMapEntryAdd("cycleway:surface", "asphalt"),
             StringMapEntryAdd("footway:surface", "gravel"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.ASPHALT, null,
@@ -109,6 +112,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryDelete("surface:note", "you get what you reward for"),
             StringMapEntryDelete("cycleway:surface:note", "a"),
             StringMapEntryDelete("footway:surface:note", "🤷"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.SETT, null,
@@ -123,6 +127,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryDelete("surface", "unpaved"),
             StringMapEntryAdd("cycleway:surface", "paving_stones"),
             StringMapEntryAdd("footway:surface", "sand"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVING_STONES, null,
@@ -141,6 +146,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryModify("footway:surface", "asphalt", "paved"),
             StringMapEntryAdd("cycleway:surface:note", "foo"),
             StringMapEntryAdd("footway:surface:note", "bar"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVED_AREA, "foo",
@@ -159,6 +165,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryModify("footway:surface", "asphalt", "paved"),
             StringMapEntryModify("cycleway:surface:note", "old", "foo"),
             StringMapEntryModify("footway:surface:note", "old", "bar"),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVED_AREA, "foo",
@@ -192,6 +199,7 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface", "paving_stones"),
             StringMapEntryModify("footway:surface", "bricks", "bricks"),
             StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString()),
+            StringMapEntryModify("segregated", "yes", "yes"),
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVING_STONES, null, Surface.BRICKS, null, null, *expectedChanges)
