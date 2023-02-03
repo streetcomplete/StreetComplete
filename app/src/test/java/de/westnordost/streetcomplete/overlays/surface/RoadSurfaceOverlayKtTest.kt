@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.surface
 
+import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
@@ -91,5 +92,13 @@ class RoadSurfaceOverlayKtTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
         assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
+    }
+
+    @Test
+    fun `surfaces for motorways can be assumed as concrete and asphalt is shown in the same way`() {
+        // if not then
+        // if (dominatingSurface == null && (element.tags["highway"] == "motorway" || element.tags["highway"] == "motorway_link")) {
+        // in getStyle of RoadSurfaceOverlay needs to be replaced by putting motorway into isNotSetButThatsOkay
+        assertEquals(Surface.ASPHALT.color, Surface.PAVING_STONES.color)
     }
 }

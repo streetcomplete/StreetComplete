@@ -16,13 +16,9 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
-import de.westnordost.streetcomplete.osm.surface.SingleSurface
-import de.westnordost.streetcomplete.osm.surface.SingleSurfaceInfo
-import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNoteMayBeEmpty
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
@@ -43,7 +39,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
-    private var originalSurfaceStatus: SingleSurfaceInfo? = null
+    private var originalSurfaceStatus: SurfaceAndNoteMayBeEmpty? = null
 
     private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
         set(value) {
@@ -96,20 +92,11 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         val status = createMainSurfaceStatus(element!!.tags)
         originalSurfaceStatus = status
-        when (status) {
-            is SingleSurface -> {
-                selectedStatusForMainSurface = status.surface.asItem()
-            }
-            is SingleSurfaceWithNote -> {
-                binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-                selectedStatusForMainSurface = status.surface.asItem()
-            }
-            is SurfaceMissingWithNote -> {
-                binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-            }
-            is SurfaceMissing -> {
-                // nothing to do
-            }
+        if(status.value != null) {
+            selectedStatusForMainSurface = status.value.asItem()
+        }
+        if(status.note != null) {
+            binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
         }
         updateSelectedCell()
     }
@@ -146,29 +133,15 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete(): Boolean {
-        when (val original = originalSurfaceStatus) {
-            is SingleSurfaceWithNote -> {
-                if (noteText() != original.note) {
-                    return true
-                }
-            }
-            is SurfaceMissingWithNote -> {
-                if (noteText() != original.note) {
-                    return true
-                }
-            }
-            else -> {}
-        }
-        if (selectedStatusForMainSurface == null) {
+        if(!hasChanges()) {
             return false
         }
         val surfaceValue = selectedStatusForMainSurface!!.value
-        val note = noteText()
         if (surfaceValue == null) {
             return false
         }
         if (surfaceValue.shouldBeDescribed) {
-            return note != null
+            return noteText() != null
         }
         return true
     }
@@ -178,13 +151,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     }
 
     override fun hasChanges(): Boolean {
-        return when (val status = originalSurfaceStatus) {
-            is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
-            is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
-            is SurfaceMissing -> selectedStatusForMainSurface?.value != null
-            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || noteText() != status.note
-            null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
-        }
+        // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?
+        return selectedStatusForMainSurface?.value != originalSurfaceStatus!!.value || noteText() != originalSurfaceStatus!!.note
     }
 
     override fun onClickOk() {

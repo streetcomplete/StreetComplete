@@ -49,17 +49,9 @@ fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
     getLastCheckDateKeys("${prefix}surface") +
     getLastCheckDateKeys("${prefix}smoothness")
 
-sealed class SurfaceInfo
-sealed class SingleSurfaceInfo : SurfaceInfo()
+class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?, val cycleway: Surface?, val cyclewayNote: String?, val footway: Surface?, val footwayNote: String?)
 
-data class SingleSurface(val surface: Surface) : SingleSurfaceInfo()
-data class SingleSurfaceWithNote(val surface: Surface, val note: String) : SingleSurfaceInfo()
-object SurfaceMissing : SingleSurfaceInfo()
-data class SurfaceMissingWithNote(val note: String) : SingleSurfaceInfo()
-data class CyclewayFootwaySurfaces(val main: Surface?, val cycleway: Surface?, val footway: Surface?) : SurfaceInfo()
-data class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?, val cycleway: Surface?, val cyclewayNote: String?, val footway: Surface?, val footwayNote: String?) : SurfaceInfo()
-
-fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
+fun createSurfaceStatus(tags: Map<String, String>): CyclewayFootwaySurfacesWithNote {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
     val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
@@ -70,47 +62,35 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     // to show user an empty space to fill missing data
     // unless it has an associated note
     val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
-    val cyclewaySurfaceIgnoringUnspecific = if (cyclewaySurface?.shouldBeDescribed == true && cyclewaySurfaceNote == null) { null } else { cyclewaySurface }
-    val footwaySurfaceIgnoringUnspecific = if (footwaySurface?.shouldBeDescribed == true && footwaySurfaceNote == null) { null } else { footwaySurface }
-    val hasDedicatedFootwayCyclewayData = cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes" || cyclewaySurfaceNote != null || footwaySurfaceNote != null
-    if (cyclewaySurfaceNote != null || footwaySurfaceNote != null || (hasDedicatedFootwayCyclewayData && surfaceNote != null)) {
-        // even if all surface are unspecific and end specified as null then we still want to give info that it is split in parts
-        // (like with case where it is segregated=yes)
-        return CyclewayFootwaySurfacesWithNote(surfaceIgnoringUnspecific, surfaceNote, cyclewaySurfaceIgnoringUnspecific, cyclewaySurfaceNote, footwaySurfaceIgnoringUnspecific, footwaySurfaceNote)
+    var cyclewaySurfaceIgnoringUnspecific = if (cyclewaySurface?.shouldBeDescribed == true && cyclewaySurfaceNote == null) { null } else { cyclewaySurface }
+    var footwaySurfaceIgnoringUnspecific = if (footwaySurface?.shouldBeDescribed == true && footwaySurfaceNote == null) { null } else { footwaySurface }
+    if(tags["segregated"] == "yes") {
+        if(cyclewaySurfaceIgnoringUnspecific == null) {
+            cyclewaySurfaceIgnoringUnspecific = surfaceIgnoringUnspecific
+        }
+        if(footwaySurfaceIgnoringUnspecific == null) {
+            footwaySurfaceIgnoringUnspecific = surfaceIgnoringUnspecific
+        }
     }
-    if (hasDedicatedFootwayCyclewayData) {
-        return CyclewayFootwaySurfaces(surfaceIgnoringUnspecific, cyclewaySurfaceIgnoringUnspecific, footwaySurfaceIgnoringUnspecific)
-    }
-    if (surfaceIgnoringUnspecific != null && surfaceNote != null) {
-        return SingleSurfaceWithNote(surfaceIgnoringUnspecific, surfaceNote)
-    }
-    if (surfaceIgnoringUnspecific == null && surfaceNote != null ) {
-        return SurfaceMissingWithNote(surfaceNote)
-    }
-    if (surfaceIgnoringUnspecific != null) {
-        return SingleSurface(surfaceIgnoringUnspecific)
-    }
-    return SurfaceMissing
+    return CyclewayFootwaySurfacesWithNote(surfaceIgnoringUnspecific, surfaceNote, cyclewaySurfaceIgnoringUnspecific, cyclewaySurfaceNote, footwaySurfaceIgnoringUnspecific, footwaySurfaceNote)
 }
+
+data class SurfaceAndNoteMayBeEmpty(val value: Surface?, val note: String? = null)
+/*
+maybe just use SurfaceAndNote?
+But then SurfaceAndNote.applyTo will need to throw exceptions on null value or rely on manual checks
+ensuring otherwise that empty value will not be passed there
+ */
 
 /*
 * to be used when only surface and surface:note tag is relevant
 * for example if we want to tag road surface and we are free to skip sidewalk surface info
 * */
-fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
+fun createMainSurfaceStatus(tags: Map<String, String>): SurfaceAndNoteMayBeEmpty {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
     val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
-    if (surfaceIgnoringUnspecific != null && surfaceNote != null ) {
-        return SingleSurfaceWithNote(surfaceIgnoringUnspecific, surfaceNote)
-    }
-    if (surfaceIgnoringUnspecific == null && surfaceNote != null ) {
-        return SurfaceMissingWithNote(surfaceNote)
-    }
-    if (surfaceIgnoringUnspecific != null) {
-        return SingleSurface(surfaceIgnoringUnspecific)
-    }
-    return SurfaceMissing
+    return SurfaceAndNoteMayBeEmpty(surfaceIgnoringUnspecific, surfaceNote)
 }
 
 fun surfaceTextValueToSurfaceEnum(surfaceValue: String?): Surface? {

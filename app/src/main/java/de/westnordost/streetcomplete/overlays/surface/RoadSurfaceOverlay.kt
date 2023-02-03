@@ -6,17 +6,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
-import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
-import de.westnordost.streetcomplete.osm.surface.SingleSurface
-import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.keysToBeRemovedOnSurfaceChange
-import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -27,6 +19,7 @@ import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 
 class RoadSurfaceOverlay : Overlay {
 
@@ -56,27 +49,9 @@ class RoadSurfaceOverlay : Overlay {
 }
 
 private fun getStyle(element: Element): Style {
-    val surfaceStatus = createSurfaceStatus(element.tags)
-    var dominatingSurface: Surface? = null
-    var noteProvided: String? = null
-    when (surfaceStatus) {
-        is SingleSurfaceWithNote -> {
-            dominatingSurface = surfaceStatus.surface
-            noteProvided = surfaceStatus.note
-        }
-        is SingleSurface -> {
-            dominatingSurface = surfaceStatus.surface
-        }
-        is SurfaceMissing -> {
-            // no action needed
-        }
-        is SurfaceMissingWithNote -> {
-            noteProvided = surfaceStatus.note
-        }
-        is CyclewayFootwaySurfaces, is CyclewayFootwaySurfacesWithNote -> {
-            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface and footway:surface")
-        }
-    }
+    val surfaceStatus = createMainSurfaceStatus(element.tags)
+    var dominatingSurface: Surface? = surfaceStatus.value
+    val noteProvided: String? = surfaceStatus.note
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"

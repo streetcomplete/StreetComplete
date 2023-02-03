@@ -9,16 +9,10 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
-import de.westnordost.streetcomplete.osm.surface.SingleSurface
-import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
-import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.keysToBeRemovedOnSurfaceChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -33,6 +27,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNoteMayBeEmpty
 
 class PathSurfaceOverlay : Overlay {
 
@@ -52,7 +47,7 @@ class PathSurfaceOverlay : Overlay {
                    and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                    and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
-                   and (segregated = yes or (!cycleway:surface and !footway:surface))
+                   and (segregated = yes or (!cycleway:surface and !footway:surface and !cycleway:surface:note and !footway:surface:note))
                    and (!surface:note or (surface or cycleway:surface or footway:surface or segregated = yes))
                    and (!cycleway:surface:note or cycleway:surface)
                    and (!footway:surface:note or footway:surface)
@@ -82,48 +77,31 @@ private fun getStyleForStandalonePath(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
-    when (surfaceStatus) {
-        is SingleSurfaceWithNote -> {
-            dominatingSurface = surfaceStatus.surface
-            noteProvided = surfaceStatus.note
+    if(element.tags["segregated"] == "yes") {
+        // filters guarantee that otherwise there is actually no split
+        if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
+            // the worst case possible - bad surface without note: so lets present it
+            dominatingSurface = surfaceStatus.cycleway
+            noteProvided = surfaceStatus.cyclewayNote
+        } else if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
+            // cycleway surface either has
+            // data as bad as this one (also bad surface, without note)
+            // or even worse (bad surface without note, while here maybe there is a note)
+            dominatingSurface = surfaceStatus.footway
+            noteProvided = surfaceStatus.footwayNote
+        } else if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES) {
+            // so footway has no bad surface, while cycleway has bad surface
+            // lets take worse one
+            dominatingSurface = surfaceStatus.cycleway
+            noteProvided = surfaceStatus.cyclewayNote
+        } else {
+            // cycleway is arbitrarily taken as dominating here
+            // though for bicycles surface is a bit more important
+            dominatingSurface = surfaceStatus.cycleway
         }
-        is CyclewayFootwaySurfacesWithNote -> {
-            if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
-                // the worst case possible - bad surface without note: so lets present it
-                dominatingSurface = surfaceStatus.cycleway
-                noteProvided = surfaceStatus.cyclewayNote
-            } else if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
-                // cycleway surface either has
-                // data as bad as this one (also bad surface, without note)
-                // or even worse (bad surface without note, while here maybe there is a note)
-                dominatingSurface = surfaceStatus.footway
-                noteProvided = surfaceStatus.footwayNote
-            } else if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES) {
-                // so footway has no bad surface, while cycleway has bad surface
-                // lets take worse one
-                dominatingSurface = surfaceStatus.cycleway
-                noteProvided = surfaceStatus.cyclewayNote
-            } else {
-                // cycleway is arbitrarily taken as dominating here
-                // though for bicycles surface is a bit more important
-                dominatingSurface = surfaceStatus.cycleway
-            }
-        }
-        is SingleSurface -> {
-            dominatingSurface = surfaceStatus.surface
-        }
-        is CyclewayFootwaySurfaces -> {
-            if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
-                dominatingSurface = surfaceStatus.footway
-            } else {
-                // cycleway is arbitrarily taken as dominating here
-                // though for bicycles surface is a bit more important
-                dominatingSurface = surfaceStatus.cycleway
-            }
-        }
-        is SurfaceMissing, is SurfaceMissingWithNote -> {
-            // no action needed
-        }
+    } else {
+        dominatingSurface = surfaceStatus.main
+        noteProvided = surfaceStatus.note
     }
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES

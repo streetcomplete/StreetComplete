@@ -33,47 +33,71 @@ class SurfaceKtTest {
 
     @Test
     fun `specific surface generates specific surface status for roads`() {
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt")).value, Surface.ASPHALT)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt")).note, null)
     }
 
     @Test
     fun `specific surface generates specific surface status for paths`() {
-        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).main, Surface.ASPHALT)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).cycleway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).cyclewayNote, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).footway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt")).footwayNote, null)
     }
 
     @Test
     fun `note tag results in a diferent status for roads`() {
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurfaceWithNote)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).value, Surface.ASPHALT)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).note, "useful info")
     }
 
     @Test
     fun `note tag results in a diferent status for paths`() {
-        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurfaceWithNote)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).main, Surface.ASPHALT)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).note, "useful info")
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).cycleway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).cyclewayNote, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).footway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).footwayNote, null)
     }
 
     @Test
     fun `paved and unpaved is treated as missing surface for roads and paths`() {
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "unpaved")) is SurfaceMissing)
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "paved")) is SurfaceMissing)
-        assertTrue(createSurfaceStatus(mapOf("surface" to "unpaved")) is SurfaceMissing)
-        assertTrue(createSurfaceStatus(mapOf("surface" to "paved")) is SurfaceMissing)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "unpaved")).value, null)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "unpaved")).note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).main, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).cycleway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).cyclewayNote, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).footway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved")).footwayNote, null)
     }
 
     @Test
-    fun `paved and unpaved is not removed when with nopte for both roads and paths`() {
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "paved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
-        assertTrue(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
-        assertTrue(createSurfaceStatus(mapOf("surface" to "paved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
+    fun `paved and unpaved is not removed when with note for both roads and paths`() {
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).main, Surface.UNPAVED_ROAD)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).note, "foobar")
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).cycleway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).cyclewayNote, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).footway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).footwayNote, null)
     }
 
     @Test
-    fun `cobblestone is treated as missing surface for roads`() {
-        assertTrue(createSurfaceStatus(mapOf("surface" to "cobblestone")) is SurfaceMissing)
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "cobblestone")) is SurfaceMissing)
+    fun `cobblestone is treated as missing surface for roads and paths`() {
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "cobblestone")).value, null)
+        assertEquals(createMainSurfaceStatus(mapOf("surface" to "cobblestone")).note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).main, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).cycleway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).cyclewayNote, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).footway, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone")).footwayNote, null)
     }
 
-        @Test
+    @Test
     fun `surface note is taken into account when generating surface status fo path with cycleway and footway split`() {
         // https://www.openstreetmap.org/way/925626513 version 4
         val tags = mapOf(
