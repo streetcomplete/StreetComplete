@@ -44,6 +44,8 @@
         android:visibility="gone"
         tools:visibility="visible"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:width="0dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -90,6 +92,8 @@
         android:visibility="gone"
         tools:visibility="visible"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:width="0dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
