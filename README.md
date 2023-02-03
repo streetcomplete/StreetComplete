@@ -10,13 +10,14 @@ Due to the different name used in changesets, edits made with this version do no
 ## Notable changes
 * Option to directly edit tags
 * More customizable behavior, including settings or element selection for many quests
-  * Such customization should be handled with care. There are some safeguards, modifying element selection could still lead to app crashes or bad tagging.
+  * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to app crashes or bad tagging.
 * Overlay with customizable element selection and color source (regular expression evaluating tags)
 * Create nodes anywhere, using presets from iD tagging schema for pre-filling tags
 * Ability to create notes in a GPX file instead of uploading them to OSM
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
 * Quests based on external data sources (currently available: Osmose and CSV file)
-* Quick settings, e.g. for fast switch of preset
+* Switch to satellite / aerial imagery background, and customize the source URL
+* Quick settings, for fast switch of preset or background
 * Level filter (available only in quick settings menu)
 * Import / export for settings, quest presets, hidden quests and custom overlays
 * Show all quests for the selected element at once, and also nearby quests
@@ -25,8 +26,8 @@ Due to the different name used in changesets, edits made with this version do no
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Switch the main menu to a grid with six full-size buttons
 * Downloading data will interrupt running uploads (will resume afterwards)
+* Allow creating quests on the fly, which immediately reflects changes in resurvey interval and element selection of a quest
 * Display a track from a GPX file, e.g. for following a planned route while surveying
-* Switch to satellite / aerial imagery background, and customize the source URL
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
