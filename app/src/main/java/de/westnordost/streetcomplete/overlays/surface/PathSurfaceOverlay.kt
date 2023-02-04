@@ -4,14 +4,19 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
+import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
@@ -21,13 +26,6 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNoteMayBeEmpty
 
 class PathSurfaceOverlay : Overlay {
 
@@ -75,9 +73,9 @@ class PathSurfaceOverlay : Overlay {
 
 private fun getStyleForStandalonePath(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
-    var dominatingSurface: Surface? = null
+    var dominatingSurface: Surface?
     var noteProvided: String? = null
-    if(element.tags["segregated"] == "yes") {
+    if (element.tags["segregated"] == "yes") {
         // filters guarantee that otherwise there is actually no split
         if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
             // the worst case possible - bad surface without note: so lets present it

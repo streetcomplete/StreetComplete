@@ -4,11 +4,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -17,9 +20,6 @@ import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 
 class RoadSurfaceOverlay : Overlay {
 

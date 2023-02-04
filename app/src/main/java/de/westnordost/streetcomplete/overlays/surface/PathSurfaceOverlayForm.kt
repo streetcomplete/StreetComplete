@@ -335,13 +335,13 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         if (selectedStatusForFootwaySurface?.value != originalSurfaceStatus!!.footway) {
             return true
         }
-        if (noteText() != originalSurfaceStatus!!.note){
+        if (noteText() != originalSurfaceStatus!!.note) {
             return true
         }
-        if (cyclewayNoteText() != originalSurfaceStatus!!.cyclewayNote){
+        if (cyclewayNoteText() != originalSurfaceStatus!!.cyclewayNote) {
             return true
         }
-        if (footwayNoteText() != originalSurfaceStatus!!.footwayNote){
+        if (footwayNoteText() != originalSurfaceStatus!!.footwayNote) {
             return true
         }
         return false

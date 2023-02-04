@@ -92,10 +92,10 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         val status = createMainSurfaceStatus(element!!.tags)
         originalSurfaceStatus = status
-        if(status.value != null) {
+        if (status.value != null) {
             selectedStatusForMainSurface = status.value.asItem()
         }
-        if(status.note != null) {
+        if (status.note != null) {
             binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
         }
         updateSelectedCell()
@@ -133,7 +133,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete(): Boolean {
-        if(!hasChanges()) {
+        if (!hasChanges()) {
             return false
         }
         val surfaceValue = selectedStatusForMainSurface!!.value
@@ -146,7 +146,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         return true
     }
 
-    fun noteText(): String? {
+    private fun noteText(): String? {
         return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
 
