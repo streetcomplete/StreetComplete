@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -119,9 +120,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             isSegregatedLayout = true
             binding.cyclewaySurfaceContainer.isGone = false
             binding.footwaySurfaceContainer.isGone = false
-            val locales = getLocalesForFeatureDictionary(resources.configuration)
-            binding.cyclewaySurfaceLabel.text = getFeatureName( Way(1, listOf(), mapOf("highway" to "cycleway")), featureDictionary, locales)
-            binding.footwaySurfaceLabel.text = getFeatureName( Way(1, listOf(), mapOf("highway" to "footway")), featureDictionary, locales)
+            val conf = resources.configuration
+            binding.cyclewaySurfaceLabel.text = featureDictionary.getFeatureName(conf, mapOf("highway" to "cycleway"), GeometryType.LINE)
+            binding.footwaySurfaceLabel.text = featureDictionary.getFeatureName(conf, mapOf("highway" to "footway"), GeometryType.LINE)
         }
 
         private sealed class SingleSurfaceItemInfo
