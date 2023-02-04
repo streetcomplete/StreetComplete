@@ -120,7 +120,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     if (connectionsById.isEmpty()) return emptySet()
 
     val sidewalkEndNodeIds = footways.asSequence()
-        .filter { it.tags["footway"] == "sidewalk" }
+        .filter { it.tags["footway"] == "sidewalk" || it.tags["footway"] == "traffic_island" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     for (id in sidewalkEndNodeIds) {
@@ -133,7 +133,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
     ways.asSequence()
-        .filter { it.tags["footway"] != "sidewalk" && it.tags["footway"] != "crossing" }
+        .filter { it.tags["footway"] != "sidewalk" && it.tags["footway"] != "traffic_island" && it.tags["footway"] != "crossing" }
         .flatMap { it.nodeIds.firstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()

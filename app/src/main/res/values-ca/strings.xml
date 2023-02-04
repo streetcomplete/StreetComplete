@@ -331,7 +331,7 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_carWashType_selfService">"Autoservei"</string>
     <string name="quest_carWashType_service">"El personal neteja el cotxe"</string>
     <string name="enable_quest_confirmation_title">"Voleu habilitar aquest tipus de missions?"</string>
-    <string name="default_disabled_msg_go_inside">"Aquest tipus de missions està desactivat de manera predeterminada, ja que probablement haureu d'entrar dins del lloc per poder respondre una pregunta d'aquest tipus."</string>
+    <string name="default_disabled_msg_go_inside">"Aquest tipus de missió està desactivada per defecte perquè probablement haureu d'entrar dins del lloc per poder respondre una pregunta d'aquest tipus."</string>
     <string name="quest_housenumber_conscription_number">"Número de circumscripció"</string>
     <string name="quest_housenumber_street_number_optional">"Número d'orientació (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"També hi ha carril bici a l'altre costat…"</string>
@@ -503,7 +503,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_traffic_signals_button_title">"Aquest semàfor té botó per a demanar llum verda?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Quantes motos es poden aparcar aquí?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Aquest aparcament de motos és cobert (protegit de la pluja)?"</string>
-    <string name="default_disabled_msg_maxspeed">"Aquest tipus de missió està desactivat de forma predeterminada perquè habitualment cal revisar els senyals de límit de velocitat en tot el carrer, no només de la secció ressaltada. De vegades això pot ser massa per només resoldre una única missió."</string>
+    <string name="default_disabled_msg_maxspeed">"Aquest tipus de missió està desactivada per defecte perquè habitualment cal revisar els senyals de límit de velocitat en tot el carrer, no només de la secció ressaltada. De vegades això pot ser massa per només resoldre una única missió."</string>
     <string name="pref_title_quests_restore_hidden">"Restaura les missions ocultes"</string>
     <string name="restore_hidden_success">"S'han restaurat %d missions ocultes"</string>
     <string name="on_level">"en la planta %s"</string>
@@ -1048,7 +1048,7 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>
     <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
     <string name="quest_fuelSelfService_title">"A aquesta benzinera pots repostar tu mateix?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Aquesta missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Aquest tipus de missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Molt compactat, poca grava o sorra solta"</string>
     <string name="quest_barrier_path_intersection">"Com creua aquest camí la barrera aquí?"</string>
     <string name="quest_barrier_road_intersection">"Com creua aquesta carretera la barrera aquí?"</string>
@@ -1102,7 +1102,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_seating_indoor_only">"Només seients interiors"</string>
     <string name="quest_seating_outdoor_only">"Només seients exteriors"</string>
     <string name="quest_seating_indoor_and_outdoor">"Els dos, interior i exterior"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Aquesta missió està desactivat per defecte perquè pot requerir la comprovació durant una part específica de l'any per tal de verificar els seients a l'aire lliure."</string>
     <string name="no_camera_permission_toast">"No hi ha permís per a fer servir la càmera"</string>
     <string name="quest_accepts_cash_title2">"Ací s'accepta pagaments en metàl·lic?"</string>
     <string name="quest_address_street_title2">"A quin carrer està això?"</string>
@@ -1313,4 +1312,8 @@ Menejar ara?"</string>
 &lt;p&gt;Definiu cadascun el punt inicial i final mentre apunteu el telèfon cap avall (de manera que vegeu la fletxa blanca des de dalt) per evitar completament aquest problema amb les mesures horitzontals.&lt;/p&gt;
 &lt;p&gt;Per a mesuraments verticals, cal que comproveu que el punt d'inici sembla que no es mogui en relació amb el terra mirant-lo des de diferents direccions.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Aquesta aplicació s'executa a &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que el proporciona Google i es regeix per la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privadesa de Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Aquest tipus de missió està desactivada per defecte perquè pot requerir tornar a comprovar la situació en una part específica de l'any."</string>
+    <string name="quest_gritBinSeasonal_title">"Açò està també aquí durant l'hivern?"</string>
+    <string name="street_parking_staggered_on_street">"Al carrer alternant el costat"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Parcialment al carrer alternant el costat"</string>
 </resources>

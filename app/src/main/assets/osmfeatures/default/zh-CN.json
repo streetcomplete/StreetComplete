@@ -420,13 +420,6 @@
                 "building/part": {
                     "label": "建筑物部分"
                 },
-                "building_area": {
-                    "label": "建筑物",
-                    "terms": "建筑物,建筑,结构,房子"
-                },
-                "building_area_yes": {
-                    "label": "建筑"
-                },
                 "bunker_type": {
                     "label": "类型"
                 },
@@ -470,7 +463,6 @@
                     "terms": "容量,容纳,容积"
                 },
                 "capacity/caravans": {
-                    "label": "容量（房车）",
                     "placeholder": "10，20，50……"
                 },
                 "capacity/disabled_parking": {
@@ -546,7 +538,7 @@
                     "terms": "颜色,色彩,色"
                 },
                 "comment": {
-                    "label": "修改集注释",
+                    "label": "变更集注释",
                     "placeholder": "请简要说明您的贡献 (必填)"
                 },
                 "communication_multi": {
@@ -598,13 +590,11 @@
                     "terms": "上盖,覆盖,遮挡"
                 },
                 "covered_no": {
-                    "label": "有盖的",
                     "options": {
                         "no": "否",
                         "undefined": "假定为否",
                         "yes": "是"
-                    },
-                    "terms": "有上盖的"
+                    }
                 },
                 "craft": {
                     "label": "种类"
@@ -644,7 +634,10 @@
                     }
                 },
                 "crossing": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "traffic_signals": "有交通信号的人行横道"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "屏障臂",
@@ -664,6 +657,10 @@
                 },
                 "crossing/light": {
                     "label": "灯光"
+                },
+                "crossing/markings": {
+                    "label": "人行横道",
+                    "terms": "人行横道,斑马线"
                 },
                 "crossing_raised": {
                     "label": "抬高式",
@@ -737,44 +734,28 @@
                     "label": "自行车道",
                     "options": {
                         "lane": {
-                            "description": "通过交通标线与机动车隔开的自行车道",
-                            "title": "标准自行车道"
-                        },
-                        "none": {
-                            "description": "无自行车道",
-                            "title": "无"
+                            "description": "通过交通标线与机动车隔开的自行车道"
                         },
                         "opposite": {
-                            "description": "单行路上可双向通行的自行车道",
-                            "title": "逆向自行车道"
+                            "description": "单行路上可双向通行的自行车道"
                         },
                         "opposite_lane": {
-                            "description": "和其他车辆反向行驶的自行车道",
-                            "title": "对向自行车道"
+                            "description": "和其他车辆反向行驶的自行车道"
                         },
                         "separate": {
-                            "description": "表示自行车道被绘制为单独的几何图形",
-                            "title": "单独绘制自行车道"
+                            "description": "表示自行车道被绘制为单独的几何图形"
                         },
                         "share_busway": {
-                            "description": "与公交车道共用的自行车道",
-                            "title": "与公交车共用的自行车道"
+                            "description": "与公交车道共用的自行车道"
                         },
                         "shared_lane": {
-                            "description": "与机动车无隔离的自行车道",
-                            "title": "共用自行车道"
+                            "description": "与机动车无隔离的自行车道"
                         },
                         "track": {
-                            "description": "有物理隔离的自行车道",
-                            "title": "专用自行车道"
+                            "description": "有物理隔离的自行车道"
                         }
                     },
-                    "placeholder": "无",
-                    "terms": "自行车道,单车道,自行车,单车",
-                    "types": {
-                        "cycleway:left": "左侧",
-                        "cycleway:right": "右侧"
-                    }
+                    "terms": "自行车道,单车道,自行车,单车"
                 },
                 "dance/style": {
                     "label": "舞蹈类型"
@@ -827,18 +808,8 @@
                 "destination/ref": {
                     "label": "目的地道路编号"
                 },
-                "destination/ref_oneway": {
-                    "label": "目的地道路编号"
-                },
                 "destination/symbol": {
                     "label": "目的地标识"
-                },
-                "destination/symbol_oneway": {
-                    "label": "目的地标识",
-                    "terms": "目的地,目的地标示,出口标志,出口标识,出口标牌,标志,标识,标牌"
-                },
-                "destination_oneway": {
-                    "label": "目的地"
                 },
                 "destination_waterway": {
                     "label": "目的地"
@@ -899,7 +870,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "方向（顺时针度）",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -910,13 +880,6 @@
                         "forward": "向前"
                     },
                     "terms": "受影响的方向,受影响的方位"
-                },
-                "direction_vertex_dual": {
-                    "label": "影响方位",
-                    "options": {
-                        "backward": "向后",
-                        "forward": "向前"
-                    }
                 },
                 "dispensing": {
                     "label": "开处方药"
@@ -982,10 +945,6 @@
                     "terms": "时长,持续时间,期间"
                 },
                 "ele": {
-                    "label": "海拔（米）",
-                    "terms": "海拔（米）"
-                },
-                "ele_node": {
                     "label": "海拔（米）",
                     "terms": "海拔（米）"
                 },
@@ -1155,10 +1114,6 @@
                     "label": "类型"
                 },
                 "frequency": {
-                    "label": "工作频率",
-                    "terms": "工作频率"
-                },
-                "frequency_electrified": {
                     "label": "工作频率",
                     "terms": "工作频率"
                 },
@@ -1361,7 +1316,6 @@
                     "terms": "上升"
                 },
                 "incline_steps": {
-                    "label": "斜坡",
                     "options": {
                         "down": "下",
                         "up": "上"
@@ -1391,9 +1345,6 @@
                 "intermittent": {
                     "label": "断流现象",
                     "terms": "断断续续的"
-                },
-                "intermittent_yes": {
-                    "label": "断流现象"
                 },
                 "internet_access": {
                     "label": "互联网接入",
@@ -1489,15 +1440,6 @@
                     },
                     "terms": "叶片周期"
                 },
-                "leaf_cycle_singular": {
-                    "label": "落叶周期",
-                    "options": {
-                        "deciduous": "落叶树",
-                        "evergreen": "常绿树",
-                        "semi_deciduous": "半落叶树",
-                        "semi_evergreen": "半常绿树"
-                    }
-                },
                 "leaf_type": {
                     "label": "叶型",
                     "options": {
@@ -1509,12 +1451,7 @@
                     "terms": "叶片种类"
                 },
                 "leaf_type_singular": {
-                    "label": "叶型",
-                    "options": {
-                        "broadleaved": "阔叶",
-                        "leafless": "无叶",
-                        "needleleaved": "针叶"
-                    }
+                    "label": "叶型"
                 },
                 "leisure": {
                     "label": "类型"
@@ -1553,7 +1490,6 @@
                     "terms": "位置,场合"
                 },
                 "location_pool": {
-                    "label": "位置",
                     "options": {
                         "indoor": "室内",
                         "outdoor": "户外",
@@ -1628,10 +1564,6 @@
                     "label": "可停留时间"
                 },
                 "maxweight": {
-                    "label": "限制质量",
-                    "terms": "最大重量,最大承重,限重"
-                },
-                "maxweight_bridge": {
                     "label": "限制质量",
                     "terms": "最大重量,最大承重,限重"
                 },
@@ -1780,7 +1712,6 @@
                     "terms": "自行车单行道,单行道（自行车）"
                 },
                 "oneway_yes": {
-                    "label": "单行线",
                     "options": {
                         "alternating": "交替",
                         "no": "否",
@@ -1866,11 +1797,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "类型",
-                    "options": {
-                        "multi-storey": "多层",
-                        "underground": "地下"
-                    }
+                    "label": "类型"
                 },
                 "parking_space": {
                     "label": "类型"
@@ -1901,7 +1828,6 @@
                     "placeholder": "容易，中阶，进阶"
                 },
                 "piste/difficulty_downhill": {
-                    "label": "难度",
                     "options": {
                         "advanced": "高级（黑色菱形）",
                         "easy": "初级（绿色圆圈）",
@@ -1914,7 +1840,6 @@
                     "placeholder": "初级、中级、高级..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "难度",
                     "options": {
                         "advanced": "高级 - 雪道狭窄、陡峭或有结冰，并有急转弯",
                         "easy": "初级 - 坡度较平缓，且陡坡较短",
@@ -1925,7 +1850,6 @@
                     "placeholder": "初级、中级、高级..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "难度",
                     "options": {
                         "advanced": "高级 - S: 坡度 40-45°",
                         "easy": "初级 - WS: 坡度 30-35°",
@@ -1949,7 +1873,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Grooming",
                     "options": {
                         "backcountry": "Backcountry - no grooming",
                         "classic": "经典的",
@@ -1957,14 +1880,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Grooming",
                     "options": {
                         "backcountry": "Backcountry - Snowshoeing",
                         "classic": "Classic - Winter Hiking"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Grooming",
                     "options": {
                         "backcountry": "Backcountry, no grooming",
                         "classic": "Classic",
@@ -2017,7 +1938,10 @@
                     "label": "投票站"
                 },
                 "population": {
-                    "label": "人口"
+                    "label": "人口数"
+                },
+                "population/date": {
+                    "label": "人口数据统计日期"
                 },
                 "portable": {
                     "label": "便携式"
@@ -2440,9 +2364,6 @@
                 "site": {
                     "label": "类型"
                 },
-                "site_type": {
-                    "label": "站点类型"
-                },
                 "smoking": {
                     "label": "吸烟",
                     "options": {
@@ -2489,6 +2410,9 @@
                         "streetlevel imagery": "街景照片",
                         "survey": "测量"
                     }
+                },
+                "source/population": {
+                    "label": "人口数据来源"
                 },
                 "species": {
                     "label": "种",
@@ -2968,9 +2892,6 @@
                 },
                 "voltage/tertiary": {
                     "label": "三次电压"
-                },
-                "voltage_electrified": {
-                    "label": "电压"
                 },
                 "wall": {
                     "label": "类型"
@@ -4131,10 +4052,6 @@
                 "attraction/animal": {
                     "name": "圈养动物"
                 },
-                "attraction/big_wheel": {
-                    "name": "摩天轮",
-                    "terms": "摩天轮,大转轮,观览车,观景台,法利士,费里斯,巨轮,俯瞰,远眺,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
-                },
                 "attraction/bumper_car": {
                     "name": "碰碰车"
                 },
@@ -4298,10 +4215,6 @@
                 "barrier/kissing_gate": {
                     "name": "单人转门",
                     "terms": "单人转门"
-                },
-                "barrier/lift_gate": {
-                    "name": "道闸",
-                    "terms": "道闸,挡车器"
                 },
                 "barrier/log": {
                     "name": "倒在路上的树"
@@ -4532,10 +4445,6 @@
                 },
                 "building/stadium": {
                     "name": "体育场建筑"
-                },
-                "building/static_caravan": {
-                    "name": "固定房车",
-                    "terms": "固定房车,房车"
                 },
                 "building/sty": {
                     "name": "猪圈"
@@ -5029,15 +4938,17 @@
                 "highway/crossing": {
                     "name": "路口"
                 },
-                "highway/crossing/marked": {
-                    "name": "人行横道 (有标线)"
+                "highway/crossing/traffic_signals": {
+                    "name": "有交通信号人行横道",
+                    "terms": "交通信号,人行横道,斑马线,红绿灯"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "有标线人行横道",
+                    "terms": "标线,人行横道,斑马线,划线"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "人行横道 (无标线)",
+                    "name": "无标线人行横道",
                     "terms": "人行横道"
-                },
-                "highway/crossing/zebra": {
-                    "name": "人行横道 (有标线)"
                 },
                 "highway/cycleway": {
                     "name": "自行车道",
@@ -5054,8 +4965,13 @@
                     "name": "自行车人行横道",
                     "terms": "自行车,步行,人行,过街,横道"
                 },
-                "highway/cycleway/crossing/marked": {
-                    "name": "自行车横道 (有标线)"
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "有交通信号自行车横道",
+                    "terms": "自行车,交通信号,红绿灯,横道"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
+                    "name": "有标线自行车横道",
+                    "terms": "自行车,横道,标线"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "自行车横道 (无标线)",
@@ -5086,6 +5002,17 @@
                 },
                 "highway/footway/crossing": {
                     "name": "人行横道"
+                },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "有交通信号人行横道",
+                    "terms": "交通信号,人行横道,斑马线,红绿灯"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "有标线人行横道",
+                    "terms": "标线,人行横道,斑马线"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "无标线人行横道"
                 },
                 "highway/footway/sidewalk": {
                     "name": "人行道",
@@ -5460,7 +5387,7 @@
                 },
                 "landuse/industrial": {
                     "name": "工业区",
-                    "terms": "工业区"
+                    "terms": "工业区,工厂"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "废车场",
@@ -6168,6 +6095,10 @@
                 "man_made/works": {
                     "name": "生产设施",
                     "terms": "工厂,加工,制造,生产线"
+                },
+                "man_made/works/brewery": {
+                    "name": "啤酒厂",
+                    "terms": "工业啤酒厂"
                 },
                 "marker": {
                     "name": "标记物"
@@ -7235,6 +7166,10 @@
                     "name": "书商",
                     "terms": "书商"
                 },
+                "shop/books": {
+                    "name": "书店",
+                    "terms": "书城,图书商店"
+                },
                 "shop/boutique": {
                     "name": "精品店"
                 },
@@ -8122,8 +8057,8 @@
                     "terms": "铁路,高铁,线"
                 },
                 "type/route/road": {
-                    "name": "驾驶线路",
-                    "terms": "行车路线,行车线路,驾驶路线,路线,线路"
+                    "name": "道路线路",
+                    "terms": "道路,公路,国道,省道,高速,街道,路线,线路"
                 },
                 "type/route/subway": {
                     "name": "地铁线路",

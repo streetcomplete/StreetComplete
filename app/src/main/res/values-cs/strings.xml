@@ -1105,7 +1105,6 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_seating_indoor_only">"Sezení jen uvnitř"</string>
     <string name="quest_seating_outdoor_only">"Sezení jen venku"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sezení uvnitř i venku"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Tento typ úkolu je ve výchozím stavu zakázán, protože může vyžadovat kontrolu během určité části roku, aby se ověřilo venkovní sezení."</string>
     <string name="no_camera_permission_toast">"Fotoaparát není povolen"</string>
     <string name="quest_accepts_cash_title2">"Přijímá se tu platba v hotovosti?"</string>
     <string name="quest_address_street_title2">"Na které ulici je toto?"</string>
@@ -1288,7 +1287,7 @@ Chcete ho posunout?"</string>
     <string name="quest_cycleway_value_shoulder">"není, ale krajnice je použitelná pro cyklisty"</string>
     <string name="quest_placeName_no_name_answer">"Není tu cedule s názvem"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Tato šířka se zdá být nemožná. Nezapomeňte, že má být od obrubníku k obrubníku, včetně parkování na ulici, cyklopruhů apod."</string>
-    <string name="overlay_cycleway">"Cyklostezka"</string>
+    <string name="overlay_cycleway">"Cyklostezky"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Není to %1$s"</string>
     <string name="bicycle_boulevard">"Cyklobulvár"</string>
@@ -1310,4 +1309,8 @@ Chcete ho posunout?"</string>
 &lt;p&gt;Tuto chybu pro horizontální měření zcela odstraníte tím, že každý počáteční a koncový bod nastavíte zamířením telefonu kolmo dolů (takže vidíte bílou šipku směřující shora).&lt;/p&gt;
 &lt;p&gt;Pro vertikální měření musíte místo toho ověřit, že počáteční bod není paralaktický k zemi tím, že se na něj podíváte z různých směrů.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Tato aplikace běží na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Službách Google Play pro RR&lt;/a&gt; (ARCore), které poskytuje společnost Google a jejich použití se řídí &lt;a href=\"https://policies.google.com/privacy\"&gt;Zásadami ochrany soukromí Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Tento typ úkolů je ve výchozím nastavení zakázán, protože může vyžadovat kontrolu situace v určitém ročním období."</string>
+    <string name="quest_gritBinSeasonal_title">"Je to tu i mimo zimní období?"</string>
+    <string name="street_parking_staggered_on_street">"Na ulici střídavě na obou stranách"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Částečně na chodníku střídavě na obou stranách"</string>
 </resources>

@@ -1097,7 +1097,6 @@
     <string name="quest_seating_indoor_only">"只有室內座位"</string>
     <string name="quest_seating_outdoor_only">"只有室外座位"</string>
     <string name="quest_seating_indoor_and_outdoor">"室內與室外座位都有"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"這個任務預設關閉，因為需要在一年特定時間來確認是否提供室外座位。"</string>
     <string name="no_camera_permission_toast">"沒有相機權限"</string>
     <string name="quest_accepts_cash_title2">"這裡接受現金付款嗎？"</string>
     <string name="quest_address_street_title2">"這邊道路名稱是？"</string>

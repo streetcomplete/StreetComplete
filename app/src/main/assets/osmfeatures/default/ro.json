@@ -218,9 +218,6 @@
                 "building": {
                     "label": "Clădire"
                 },
-                "building_area": {
-                    "label": "Clădire"
-                },
                 "bunker_type": {
                     "label": "Tip"
                 },
@@ -287,21 +284,7 @@
                     "label": "Rețea"
                 },
                 "cycleway": {
-                    "label": "Drumuri de Biciclete",
-                    "options": {
-                        "lane": {
-                            "title": "Drum de Biciclete Standard"
-                        },
-                        "none": {
-                            "description": "Fără Drum de Biciclete",
-                            "title": "Niciun"
-                        }
-                    },
-                    "placeholder": "niciun",
-                    "types": {
-                        "cycleway:left": "Partea stângă",
-                        "cycleway:right": "Partea dreaptă"
-                    }
+                    "label": "Drumuri de Biciclete"
                 },
                 "date": {
                     "label": "Dată"
@@ -442,7 +425,6 @@
                     "label": "Înclinare"
                 },
                 "incline_steps": {
-                    "label": "Înclinare",
                     "options": {
                         "down": "Jos",
                         "up": "Sus"
@@ -585,7 +567,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "O singură direcție",
                     "options": {
                         "no": "Nu",
                         "undefined": "Presupus a fi Da",
@@ -1201,9 +1182,6 @@
                 },
                 "building/semidetached_house": {
                     "name": "Casă Semi-detașată"
-                },
-                "building/static_caravan": {
-                    "name": "Casă Mobilă Statică"
                 },
                 "building/terrace": {
                     "name": "Case în Rând"

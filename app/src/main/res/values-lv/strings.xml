@@ -1098,7 +1098,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="quest_seating_indoor_only">"Sēdvietas tikai iekštelpās"</string>
     <string name="quest_seating_outdoor_only">"Sēdvietas tikai ārtelpās"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sēdvietas ir gan iekštelpās, gan ārā"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Šis uzdevumu veids ir izslēgts, jo, lai pārbaudītu āra sēdvietas, ir jāsagaida noteikts gadalaiks."</string>
     <string name="no_camera_permission_toast">"Kamerai nav atļaujas"</string>
     <string name="quest_accepts_cash_title2">"Vai šeit pieņem skaidras naudas norēķinus?"</string>
     <string name="quest_address_street_title2">"Uz kuras ielas tas ir?"</string>
@@ -1276,6 +1275,31 @@ Pārvietot tagad?"</string>
     <string name="node_moved_not_far_enough">"Pārvietot tālāk"</string>
     <string name="node_moved_too_far">"Pārvietots pārāk tālu. Apsveriet iespēju atstāt piezīmi"</string>
     <string name="node_moved">"Pārvietots par %s"</string>
+    <string name="move_node_description">"Velciet karti, lai novietotu elementu pareizajā vietā. Izmantojiet tuvināšanas funkciju un mēģiniet būt pēc iespējas precīzāki. Ņemiet vērā, ka jūsu attēlotā vieta varētu būt mazāk precīza, kā attēlots."</string>
+    <string name="move_node_action_description">"Jūs pārvietojāt mezglu"</string>
+    <string name="quest_cycleway_value_shoulder">"nav, bet malu var izmantot velosipēdisti"</string>
+    <string name="quest_placeName_no_name_answer">"Nav nosaukuma zīmes"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Šis platums izskatās neticams. Atcerieties, ka tam vajadzētu būt platumam no apmales līdz apmalei, ieskaitot stāvvietas, velojoslas utt."</string>
+    <string name="overlay_cycleway">"Veloceļi"</string>
+    <string name="bicycle_boulevard_is_a">"Tas ir %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Tas nav %1$s"</string>
+    <string name="bicycle_boulevard">"Velobulvāris"</string>
+    <string name="separate_cycleway_no">"Nav velobraukšanas"</string>
+    <string name="separate_cycleway_allowed">"Velosipēdisti ir atļauti"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nav paredzēts velosipēdistiem (braukšana ar velosipēdu var būt atļauta)"</string>
+    <string name="separate_cycleway_non_segregated">"Koplietoti ceļi"</string>
+    <string name="separate_cycleway_segregated">"Nodalīti velo un gājēju ceļi"</string>
+    <string name="separate_cycleway_exclusive">"Ceļš tikai velosipēdistiem"</string>
+    <string name="separate_cycleway_with_sidewalk">"Veloceliņš ar piegulošu ietvi (atdalīta ar apmali)"</string>
+    <string name="cycleway_reverse_direction">"Mainīt veloceliņa virzienu"</string>
+    <string name="cycleway_reverse_direction_warning">"Pretēja virziena veloceliņi ir ārkārtīgs retums."</string>
+    <string name="cycleway_reverse_direction_toast">"Spiediet, kuru pusi vērst pretējā virzienā"</string>
+    <string name="separate_cycleway_path">"Ceļš vai taka"</string>
     <string name="quest_fireHydrant_type_pipe">"Caurule"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"skaidri nodalīta ietve, abi virzieni"</string>
+    <string name="measure_info_title">"Optimālas precizitātes sasniegšana"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;APCore dažkārt (sākotnēji) pieņem, ka zeme ir nedaudz augstāk vai zemāk, nekā tā patiesībā ir. Tas rada mērījuma kļūdu, kas pieaug līdz ar tālruņa pagriešanu horizonta virzienā.&lt;/p&gt;
+&lt;p&gt;Iestatiet sākuma un beigu punktus, kamēr tālrunis rāda taisni un leju (tā, lai jūs redzētu balto bultu no augšpuses), lai pilnībā izvairītos no šīs horizontālo mērījumu problēmas.&lt;/p&gt;
+&lt;p&gt;Vertikāliem mērījumiem jums jāpārbauda, ka sākuma punkts nepārvietojas attiecībā pret zemi. To var izdarīt, skatoties no dažādiem virzieniem.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Šī lietotne darbojas uz &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), ko nodrošina Google un tās darbību nosaka &lt;a href=\"https://policies.google.com/privacy\"&gt;Google privātuma politika&lt;/a&gt;."</string>
 </resources>

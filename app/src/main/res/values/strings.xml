@@ -1235,7 +1235,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
-    <string name="quest_placeName_no_name_answer">"There is no name sign"</string>
+    <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
 
     <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
 
@@ -1333,7 +1333,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What’s here now?</string>
     <string name="quest_shop_gone_title">What’s here now instead?</string>
-    <string name="quest_shop_gone_vacant_answer">It’s vacant</string>
+    <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
 
@@ -1643,6 +1643,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="street_parking_on_kerb">"Adjacent to street"</string>
     <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
     <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
+    <string name="street_parking_staggered_on_street">"On street on alternating sides"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
     <string name="street_parking_no">No parking here / Not allowed</string>
     <string name="street_parking_prohibited">No parking</string>

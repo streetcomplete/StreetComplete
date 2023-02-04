@@ -192,6 +192,9 @@
                 "air_conditioning": {
                     "terms": "ปรับอากาศ\nทำความเย็น\nติดแอร์"
                 },
+                "area/highway": {
+                    "label": "ประเภท"
+                },
                 "atm": {
                     "label": "เครื่องรับจ่ายเงินอัตโนมัติ"
                 },
@@ -227,16 +230,9 @@
                 "building/part": {
                     "label": "ส่วนอาคาร"
                 },
-                "building_area": {
-                    "label": "อาคาร",
-                    "terms": "ตึก,อาคาร,สิ่งปลูกสร้าง"
-                },
                 "capacity": {
                     "label": "ความจุ",
                     "terms": "ปริมาตร,ความจุ,จำนวนรองรับ"
-                },
-                "capacity/caravans": {
-                    "label": "ความจุ (คาราวาน)"
                 },
                 "capacity/persons": {
                     "label": "ความจุ (คน)"
@@ -251,10 +247,6 @@
                     "placeholder": "http://example.com/"
                 },
                 "covered": {
-                    "label": "หลังคาคลุม",
-                    "terms": "หลังคาคลุม"
-                },
-                "covered_no": {
                     "label": "หลังคาคลุม",
                     "terms": "หลังคาคลุม"
                 },
@@ -295,8 +287,7 @@
                     "label": "เลนจักรยาน",
                     "options": {
                         "share_busway": {
-                            "description": "ทางจักรยานที่ใช้ร่วมกับทางรถประจำทาง",
-                            "title": "ทางจักรยานที่ใช้ร่วมกับรถประจำทาง"
+                            "description": "ทางจักรยานที่ใช้ร่วมกับทางรถประจำทาง"
                         }
                     }
                 },
@@ -332,6 +323,9 @@
                 },
                 "height_building": {
                     "label": "ความสูงอาคาร (เมตร)"
+                },
+                "highway": {
+                    "label": "ประเภท"
                 },
                 "highway_cartpath": {
                     "label": "ประเภทของทาง",
@@ -1199,6 +1193,9 @@
                 "area": {
                     "name": "พื้นที่"
                 },
+                "area/highway": {
+                    "name": "พื้นที่ถนน"
+                },
                 "attraction/water_slide": {
                     "name": "สไลด์น้ำ"
                 },
@@ -1272,9 +1269,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "ประตูกั้นปศุสัตว์"
-                },
-                "barrier/lift_gate": {
-                    "name": "ประตูกั้นแบบยกขึ้น"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "ที่กั้นจักรยานยนต์"
@@ -1707,26 +1701,26 @@
                     "name": "ป้ายรถประจำทาง",
                     "aliases": "ป้ายรถเมล์"
                 },
+                "highway/busway": {
+                    "name": "ช่องทางรถประจำทาง"
+                },
+                "highway/construction": {
+                    "name": "ถนนกำลังก่อสร้าง"
+                },
                 "highway/crossing": {
                     "name": "ทางข้าม"
-                },
-                "highway/crossing/marked": {
-                    "name": "ทางข้ามมีเครื่องหมายจราจร"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "ทางข้ามมีไฟจราจร"
                 },
-                "highway/crossing/uncontrolled": {
-                    "name": "ทางข้ามที่มีเครื่องหมายจราจร"
-                },
                 "highway/crossing/unmarked": {
                     "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
                 },
-                "highway/crossing/zebra": {
-                    "name": "ทางข้ามที่มีเครื่องหมายจราจร"
-                },
                 "highway/cycleway": {
                     "name": "ทางจักรยาน"
+                },
+                "highway/cycleway/bicycle_foot": {
+                    "name": "ทางจักรยานกับทางเท้า"
                 },
                 "highway/cycleway/crossing": {
                     "name": "ทางข้ามจักรยาน"
@@ -1734,17 +1728,29 @@
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "ทางข้ามจักรยานกับคนเดิน"
                 },
-                "highway/cycleway/crossing/marked": {
+                "highway/cycleway/crossing/uncontrolled": {
                     "name": "ทางข้ามจักรยานมีเครื่องหมายจราจร"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "ทางข้ามจักรยานไม่มีเครื่องหมายจราจร"
+                },
+                "highway/elevator": {
+                    "name": "ลิฟท์"
                 },
                 "highway/footway": {
                     "name": "ทางเดิน"
                 },
                 "highway/footway/crossing": {
                     "name": "ทางข้ามคนเดิน"
+                },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "ทางข้ามมีเครื่องหมายจราจรสำหรับคนเดิน"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "ทางข้ามมีเครื่องหมายจราจร"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
                 },
                 "highway/footway/informal": {
                     "name": "ทางเดินไม่เป็นทางการ"
@@ -1753,8 +1759,15 @@
                     "name": "ทางเท้า",
                     "aliases": "ทางเดิน"
                 },
+                "highway/motorway": {
+                    "name": "ทางหลวงพิเศษ",
+                    "aliases": "มอเตอร์เวย์"
+                },
                 "highway/motorway_junction": {
                     "name": "ทางแยก / ทางออก ทางพิเศษ"
+                },
+                "highway/motorway_link": {
+                    "name": "ทางเชื่อมทางหลวงพิเศษ"
                 },
                 "highway/path": {
                     "name": "ทางแคบ"
@@ -1762,14 +1775,41 @@
                 "highway/path/informal": {
                     "name": "ทางไม่เป็นทางการ"
                 },
+                "highway/pedestrian_area": {
+                    "name": "พื้นที่คนเดิน"
+                },
                 "highway/pedestrian_line": {
                     "name": "ถนนคนเดิน"
+                },
+                "highway/primary": {
+                    "name": "ถนนสายหลัก"
+                },
+                "highway/primary_link": {
+                    "name": "ทางเชื่อมถนนสายหลัก"
+                },
+                "highway/raceway": {
+                    "name": "เส้นทางรถแข่ง"
+                },
+                "highway/raceway/karting": {
+                    "name": "เส้นทางโกคาร์ต"
                 },
                 "highway/residential": {
                     "name": "ถนนชุมชน"
                 },
+                "highway/rest_area": {
+                    "name": "ที่พัก"
+                },
+                "highway/road": {
+                    "name": "ถนนไม่ทราบประเภท"
+                },
                 "highway/road/bridge": {
                     "name": "สะพานถนนไม่ทราบประเภท"
+                },
+                "highway/secondary": {
+                    "name": "ถนนสายรอง"
+                },
+                "highway/secondary_link": {
+                    "name": "ทางเชื่อมถนนสายรอง"
                 },
                 "highway/service": {
                     "name": "ถนนบริการ"
@@ -1783,14 +1823,47 @@
                 "highway/service/driveway": {
                     "name": "ทางรถ"
                 },
+                "highway/service/emergency_access": {
+                    "name": "ทางฉุกเฉิน"
+                },
                 "highway/service/parking_aisle": {
                     "name": "ถนนลานจอดรถ"
+                },
+                "highway/speed_camera": {
+                    "name": "กล้องตรวจจับความเร็ว"
+                },
+                "highway/steps": {
+                    "name": "ขั้น"
+                },
+                "highway/steps/conveying": {
+                    "name": "บันไดเลื่อน"
+                },
+                "highway/stop": {
+                    "name": "ป้ายหยุด"
                 },
                 "highway/street_lamp": {
                     "name": "ไฟถนน"
                 },
+                "highway/tertiary": {
+                    "name": "ถนนสายย่อย"
+                },
+                "highway/tertiary_link": {
+                    "name": "ถนนเชื่อมถนนสายย่อย"
+                },
                 "highway/track": {
                     "name": "ทางเกวียน"
+                },
+                "highway/traffic_signals": {
+                    "name": "สัญญานจราจร"
+                },
+                "highway/trunk": {
+                    "name": "ทางหลวงสายประธาน"
+                },
+                "highway/trunk_link": {
+                    "name": "ทางเชื่อมทางหลวงสายประธาน"
+                },
+                "highway/unclassified": {
+                    "name": "ถนนพื้นฐาน"
                 },
                 "historic/building": {
                     "name": "อาคารทางประวัติศาสตร์"

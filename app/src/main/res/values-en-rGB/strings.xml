@@ -1101,7 +1101,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_seating_indoor_only">"Indoor seating only"</string>
     <string name="quest_seating_outdoor_only">"Outdoor seating only"</string>
     <string name="quest_seating_indoor_and_outdoor">"Both indoor and outdoor seating"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it may require checking during specific part of the year in order to verify outdoor seating."</string>
     <string name="no_camera_permission_toast">"No camera permission"</string>
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
     <string name="quest_address_street_title2">"Which street is this on?"</string>
@@ -1301,4 +1300,9 @@ Move it now?"</string>
     <string name="separate_cycleway_path">"Path or trail"</string>
     <string name="quest_fireHydrant_type_pipe">"Pipe"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"explicitly shared-use pavement, both directions"</string>
+    <string name="measure_info_title">"Achieving optimal precision"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
+&lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
+&lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"This application runs on &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
 </resources>

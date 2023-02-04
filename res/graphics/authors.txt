@@ -71,7 +71,7 @@ app icon/
     ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
     ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
 
-assembly_point/
+assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
 bridge structure/
@@ -149,31 +149,42 @@ charging station capacity/
 cycleway/
     bus_lane.svg
     bus_lane_l.svg
-    lane.svg
-    lane_belgium.svg
-    lane_dual.svg
-    lane_dual_belgium.svg
-    lane_dual_italy.svg
-    lane_dual_l.svg
-    lane_dual_switzerland.svg
-    lane_italy.svg
-    lane_l.svg
-    lane_switzerland.svg
     none.svg
-    pictograms.svg
-    pictograms_l.svg
-    shared_lane.svg
-    shared_lane_l.svg
-    shared_lane_switzerland.svg
     sidewalk.svg
     sidewalk_explicit.svg
     sidewalk_explicit_l.svg
-    suggestion_lane.svg
     suggestion_lane_belgium.svg
     track.svg
     track_dual.svg
     track_dual_l.svg
     track_l.svg
+    lane_dashed_yellow_l.svg
+    lane_dashed_both_white.svg
+    lane_dashed_white_l.svg
+    bicycle.svg
+    lane_yellow_dual.svg
+    lane_dotted_white.svg
+    lane_white.svg
+    shared_lane_white_dashed_l.svg
+    pictograms_yellow_l.svg
+    pictograms_yellow.svg
+    lane_white_l.svg
+    shoulder.svg
+    pictograms_white_l.svg
+    shared_lane_orchre_background.svg
+    lane_white_dual_l.svg
+    pictograms_white.svg
+    lane_dashed_both_white_l.svg
+    lane_yellow.svg
+    shared_lane_white_dashed.svg
+    sidewalk_explicit_dual.svg
+    lane_dashed_yellow.svg
+    lane_dotted_white_l.svg
+    lane_white_dual.svg
+    lane_yellow_l.svg
+    lane_dashed_white.svg
+    lane_yellow_dual_l.svg
+    shared_lane_no_pictograms.svg
 
 cycleway segregation/
     not_segregated.svg
@@ -204,8 +215,8 @@ lanes/
     car5.svg
 
 laurel_wreath/
-    laurel_leaf_rotated.svg        CC0               Mateusz Konieczny (if even copyright is applicable here)
-    laurel_leaf_ending.svg         CC0               Mateusz Konieczny (if even copyright is applicable here)
+    ic_laurel_leaf_pair.svg        CC0               Mateusz Konieczny (if even copyright is applicable here)
+    ic_laurel_leaf_ending.svg      CC0               Mateusz Konieczny (if even copyright is applicable here)
 
 links/
     link_neis_one.svg

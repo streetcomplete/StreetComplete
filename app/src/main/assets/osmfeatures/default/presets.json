@@ -839,6 +839,7 @@
         "fields": [
             "ref",
             "holding_position/type",
+            "direction_vertex",
             "ele_node"
         ],
         "geometry": [
@@ -1687,9 +1688,11 @@
             "capacity",
             "delivery",
             "diet_multi",
+            "drive_through",
             "email",
             "fax",
             "gnis/feature_id-US",
+            "highchair",
             "level",
             "min_age",
             "not/name",
@@ -1702,8 +1705,7 @@
             "takeaway",
             "toilets",
             "toilets/wheelchair",
-            "wheelchair",
-            "highchair"
+            "wheelchair"
         ],
         "geometry": [
             "point",
@@ -1892,7 +1894,7 @@
     "amenity/charging_station": {
         "icon": "fas-charging-station",
         "fields": [
-            "name",
+            "brand",
             "operator",
             "capacity",
             "access_simple",
@@ -1901,14 +1903,14 @@
             "charge_fee"
         ],
         "moreFields": [
-            "branch_brand",
-            "brand",
             "covered",
             "level",
-            "manufacturer"
+            "manufacturer",
+            "network"
         ],
         "geometry": [
             "point",
+            "vertex",
             "area"
         ],
         "tags": {
@@ -2401,6 +2403,106 @@
             "value": "doctors"
         }
     },
+    "amenity/doctors/allergology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "allergology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "allergology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "allergology"
+        }
+    },
+    "amenity/doctors/cardiology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "cardiology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "cardiology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "cardiology"
+        }
+    },
+    "amenity/doctors/dermatology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "dermatology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "dermatology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "dermatology"
+        }
+    },
+    "amenity/doctors/gastroenterology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "gastroenterology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "gastroenterology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "gastroenterology"
+        }
+    },
+    "amenity/doctors/general": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "general"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "general",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "general"
+        }
+    },
     "amenity/doctors/gynaecology": {
         "icon": "maki-doctor",
         "geometry": [
@@ -2409,12 +2511,416 @@
         ],
         "tags": {
             "amenity": "doctors",
-            "healthcare": "doctor",
             "healthcare:speciality": "gynaecology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "gynaecology",
+            "healthcare": "doctor"
         },
         "reference": {
             "key": "healthcare:speciality",
             "value": "gynaecology"
+        }
+    },
+    "amenity/doctors/haematology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "haematology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "haematology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "haematology"
+        }
+    },
+    "amenity/doctors/internal": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "internal"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "internal",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "internal"
+        }
+    },
+    "amenity/doctors/nephrology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "nephrology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "nephrology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "nephrology"
+        }
+    },
+    "amenity/doctors/neurology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "neurology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "neurology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "neurology"
+        }
+    },
+    "amenity/doctors/neurosurgery": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "neurosurgery"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "neurosurgery",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "neurosurgery"
+        }
+    },
+    "amenity/doctors/oncology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "oncology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "oncology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "oncology"
+        }
+    },
+    "amenity/doctors/ophthalmology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "ophthalmology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "ophthalmology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "ophthalmology"
+        }
+    },
+    "amenity/doctors/orthopaedics": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "orthopaedics"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "orthopaedics",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "orthopaedics"
+        }
+    },
+    "amenity/doctors/otolaryngology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "otolaryngology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "otolaryngology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "otolaryngology"
+        }
+    },
+    "amenity/doctors/paediatrics": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "paediatrics"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "paediatrics",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "paediatrics"
+        }
+    },
+    "amenity/doctors/pathology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "pathology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "pathology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "pathology"
+        }
+    },
+    "amenity/doctors/plastic_surgery": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "plastic_surgery"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "plastic_surgery",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "plastic_surgery"
+        }
+    },
+    "amenity/doctors/podiatry": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "podiatry"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "podiatry",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "podiatry"
+        }
+    },
+    "amenity/doctors/proctology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "proctology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "proctology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "proctology"
+        }
+    },
+    "amenity/doctors/pulmonology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "pulmonology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "pulmonology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "pulmonology"
+        }
+    },
+    "amenity/doctors/radiology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "radiology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "radiology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "radiology"
+        }
+    },
+    "amenity/doctors/rheumatology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "rheumatology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "rheumatology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "rheumatology"
+        }
+    },
+    "amenity/doctors/surgery": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "surgery"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "surgery",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "surgery"
+        }
+    },
+    "amenity/doctors/trauma": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "trauma"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "trauma",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "trauma"
+        }
+    },
+    "amenity/doctors/urology": {
+        "icon": "maki-doctor",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "urology"
+        },
+        "addTags": {
+            "amenity": "doctors",
+            "healthcare:speciality": "urology",
+            "healthcare": "doctor"
+        },
+        "reference": {
+            "key": "healthcare:speciality",
+            "value": "urology"
         }
     },
     "amenity/dojo": {
@@ -2636,6 +3142,7 @@
             "email",
             "fax",
             "gnis/feature_id-US",
+            "highchair",
             "internet_access",
             "internet_access/fee",
             "internet_access/ssid",
@@ -2647,8 +3154,7 @@
             "ref/FR/siret-FR",
             "smoking",
             "takeaway",
-            "wheelchair",
-            "highchair"
+            "wheelchair"
         ],
         "geometry": [
             "point",
@@ -4828,6 +5334,7 @@
             "email",
             "fax",
             "gnis/feature_id-US",
+            "highchair",
             "internet_access",
             "internet_access/fee",
             "internet_access/ssid",
@@ -4847,8 +5354,7 @@
             "takeaway",
             "toilets",
             "toilets/wheelchair",
-            "wheelchair",
-            "highchair"
+            "wheelchair"
         ],
         "geometry": [
             "point",
@@ -7449,8 +7955,7 @@
             "opening_hours/covid19"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "barrier": "lift_gate"
@@ -9844,17 +10349,14 @@
         "icon": "maki-golf",
         "fields": [
             "name",
-            "capacity"
+            "capacity",
+            "surface"
         ],
         "geometry": [
             "area"
         ],
         "tags": {
             "golf": "driving_range"
-        },
-        "addTags": {
-            "golf": "driving_range",
-            "landuse": "grass"
         }
     },
     "golf/fairway": {
@@ -10680,6 +11182,7 @@
     "highway/cycleway/crossing/traffic_signals": {
         "icon": "fas-biking",
         "fields": [
+            "oneway",
             "crossing",
             "surface",
             "tactile_paving",
@@ -10707,6 +11210,7 @@
     "highway/cycleway/crossing/uncontrolled": {
         "icon": "temaki-cyclist_crosswalk",
         "fields": [
+            "oneway",
             "crossing",
             "surface",
             "tactile_paving",
@@ -12385,7 +12889,7 @@
         "icon": "temaki-ruins",
         "fields": [
             "name",
-            "site_type",
+            "archaeological_site",
             "historic/civilization",
             "inscription",
             "access_simple"
@@ -13720,6 +14224,29 @@
             "value": "apartments"
         }
     },
+    "landuse/residential/trailer_park": {
+        "icon": "temaki-manufactured_home",
+        "fields": [
+            "name",
+            "operator",
+            "address"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "residential": "trailer_park"
+        },
+        "addTags": {
+            "landuse": "residential",
+            "residential": "trailer_park"
+        },
+        "reference": {
+            "key": "residential",
+            "value": "trailer_park"
+        }
+    },
     "landuse/retail": {
         "icon": "maki-commercial",
         "geometry": [
@@ -14515,6 +15042,19 @@
             "value": "community"
         }
     },
+    "leisure/garden/residential": {
+        "icon": "maki-garden",
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "leisure": "garden",
+            "garden:type": "residential"
+        },
+        "reference": {
+            "key": "garden:type"
+        }
+    },
     "leisure/golf_course": {
         "icon": "maki-golf",
         "fields": [
@@ -14740,6 +15280,7 @@
         "fields": [
             "name",
             "operator",
+            "operator/type",
             "address",
             "opening_hours"
         ],
@@ -14783,6 +15324,7 @@
         "fields": [
             "name",
             "operator",
+            "operator/type",
             "address",
             "opening_hours"
         ],
@@ -15578,6 +16120,8 @@
         "icon": "maki-pitch",
         "fields": [
             "name",
+            "operator",
+            "operator/type",
             "sport",
             "building_area",
             "address",
@@ -16872,7 +17416,7 @@
             "content",
             "operator",
             "material",
-            "building_area_yes",
+            "building_area",
             "height",
             "capacity_volume"
         ],
@@ -17470,8 +18014,9 @@
             "operator",
             "marker",
             "utility",
-            "inscription",
-            "colour"
+            "colour",
+            "material",
+            "inscription"
         ],
         "moreFields": [
             "height",
@@ -18485,7 +19030,7 @@
         "tags": {
             "office": "*"
         },
-        "matchScore": 0.4
+        "matchScore": 0.7
     },
     "office/administrative": {
         "icon": "maki-suitcase",
@@ -18540,7 +19085,7 @@
             "office": "yes"
         },
         "searchable": false,
-        "matchScore": 0.5
+        "matchScore": 0.8
     },
     "office/accountant": {
         "icon": "temaki-accounting",
@@ -18899,6 +19444,16 @@
         "reference": {
             "key": "government",
             "value": "tax"
+        }
+    },
+    "office/graphic_design": {
+        "icon": "maki-suitcase",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "office": "graphic_design"
         }
     },
     "office/guide": {
@@ -20050,7 +20605,8 @@
             "generator:method": "photovoltaic",
             "generator:type": "solar_photovoltaic_panel",
             "generator:output:electricity": "*",
-            "building": "roof"
+            "building": "roof",
+            "layer": "1"
         },
         "reference": {
             "key": "generator:method",
@@ -21845,6 +22401,9 @@
         "geometry": [
             "vertex"
         ],
+        "fields": [
+            "direction_vertex"
+        ],
         "tags": {
             "railway": "derail"
         }
@@ -22369,7 +22928,7 @@
         "tags": {
             "shop": "*"
         },
-        "matchScore": 0.4
+        "matchScore": 0.7
     },
     "shop/boutique": {
         "icon": "maki-shop",
@@ -22434,7 +22993,7 @@
             "shop": "yes"
         },
         "searchable": false,
-        "matchScore": 0.5
+        "matchScore": 0.8
     },
     "shop/agrarian": {
         "icon": "fas-tractor",
@@ -24003,6 +24562,11 @@
         "geometry": [
             "point",
             "area"
+        ],
+        "fields": [
+            "name",
+            "shoes",
+            "{shop}"
         ],
         "tags": {
             "shop": "shoes"
@@ -25645,6 +26209,20 @@
             "traffic_sign": "maxspeed"
         }
     },
+    "traffic_sign/variable_message": {
+        "icon": "temaki-billboard",
+        "fields": [
+            "{traffic_sign}",
+            "direction_vertex"
+        ],
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "traffic_sign": "variable_message"
+        }
+    },
     "type/boundary": {
         "icon": "iD-boundary",
         "fields": [
@@ -26431,6 +27009,9 @@
             "destination_waterway",
             "ref"
         ],
+        "moreFields": [
+            "gnis/feature_id-US"
+        ],
         "geometry": [
             "relation"
         ],
@@ -26622,6 +27203,11 @@
         ],
         "tags": {
             "waterway": "fuel"
+        },
+        "addTags": {
+            "waterway": "fuel",
+            "seamark:type": "small_craft_facility",
+            "seamark:small_craft_facility:category": "fuel_station"
         }
     },
     "waterway/lock_gate": {
@@ -26706,6 +27292,11 @@
         ],
         "tags": {
             "waterway": "sanitary_dump_station"
+        },
+        "addTags": {
+            "waterway": "sanitary_dump_station",
+            "seamark:type": "small_craft_facility",
+            "seamark:small_craft_facility:category": "pump-out"
         }
     },
     "waterway/stream_intermittent": {

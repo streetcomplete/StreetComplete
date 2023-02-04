@@ -58,6 +58,7 @@ open class FragmentContainerActivity(
         supportActionBar?.subtitle = fragment.subtitle
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if ((mainFragment as? BackPressedListener)?.onBackPressed() == true) {
             return

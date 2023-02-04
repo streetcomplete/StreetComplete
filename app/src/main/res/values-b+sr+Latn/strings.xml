@@ -1098,7 +1098,6 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="quest_seating_indoor_only">"Sedenje samo unutra"</string>
     <string name="quest_seating_outdoor_only">"Sedenje samo napolju"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sedenje i unutra i napolju"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Ovaj zadatak je isključen jer zahteva proveru u tačno određeno vreme godine da bi se zaključilo da li ima sedenja napolju."</string>
     <string name="no_camera_permission_toast">"Nema dozvola za kameru"</string>
     <string name="quest_accepts_cash_title2">"Da li se ovde prihvata gotovina?"</string>
     <string name="quest_address_street_title2">"U kojoj je ovo ulici?"</string>

@@ -1103,7 +1103,6 @@
     <string name="quest_seating_indoor_only">"Места только в помещении"</string>
     <string name="quest_seating_outdoor_only">"Места только на открытом воздухе "</string>
     <string name="quest_seating_indoor_and_outdoor">"Сидячие места есть и внутри, и снаружи"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Этот тип квеста отключен по умолчанию, потому что может потребоваться проверка в определенное время года, чтобы проверить места на открытом воздухе."</string>
     <string name="no_camera_permission_toast">"Отсутствует разрешение на использование камеры"</string>
     <string name="quest_accepts_cash_title2">"Принимается ли здесь оплата наличными?"</string>
     <string name="quest_address_street_title2">"На какой это улице?"</string>
@@ -1287,7 +1286,13 @@
     <string name="overlay_cycleway">"Велодорожки"</string>
     <string name="bicycle_boulevard_is_a">"Это %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Это не %1$s"</string>
+    <string name="separate_cycleway_no">"Проезд на велосипеде запрещён"</string>
+    <string name="separate_cycleway_allowed">"Движение на велосипеде разрешено"</string>
+    <string name="separate_cycleway_no_or_allowed">"Не предназначено для велосипедистов (проезд на велосипеде может быть разрешён)"</string>
+    <string name="separate_cycleway_segregated">"Велосипеда и пешеходная дорожки разделены"</string>
     <string name="separate_cycleway_exclusive">"Только для велосипедов"</string>
+    <string name="separate_cycleway_with_sidewalk">"Вело дорожка с отдельным тротуаром для пешеходов"</string>
+    <string name="cycleway_reverse_direction">"Развернуть направление велосипедной дорожки"</string>
     <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>

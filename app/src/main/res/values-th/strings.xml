@@ -1092,7 +1092,6 @@
     <string name="quest_seating_indoor_only">"มีแต่ที่นั่งในอาคาร"</string>
     <string name="quest_seating_outdoor_only">"มีแต่ที่นั่งนอกอาคาร"</string>
     <string name="quest_seating_indoor_and_outdoor">"มีที่นั่งทั้งในและนอกอาคาร"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้น เพราะภารกิจอาจจะทำได้แค่บางช่วงเวลาของปีที่จะตรวจที่นั่งนอกอาคาร"</string>
     <string name="no_camera_permission_toast">"ไม่มีสิทธิ์เข้าถึงกล้อง"</string>
     <string name="quest_accepts_cash_title2">"จ่ายด้วยเงินสดได้รึเปล่า?"</string>
     <string name="quest_address_street_title2">"อยู่บนถนนอะไร?"</string>

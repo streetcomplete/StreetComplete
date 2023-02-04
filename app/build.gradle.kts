@@ -6,7 +6,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization") version "1.7.10"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 android {
@@ -16,7 +16,7 @@ android {
         isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     signingConfigs {
@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5003
-        versionName = "50.2"
+        versionCode = 5100
+        versionName = "51.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -106,7 +106,7 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.3"
@@ -199,9 +199,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20221227"
+val nsiVersion = "v6.0.20230123"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v5.1.1"
+val presetsVersion = "v5.2.1"
 
 val poEditorProjectId = "97843"
 

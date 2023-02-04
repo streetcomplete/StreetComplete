@@ -366,9 +366,6 @@
                 "building/material": {
                     "label": "Материјал"
                 },
-                "building_area": {
-                    "label": "Зграда"
-                },
                 "bunker_type": {
                     "label": "Врста"
                 },
@@ -529,37 +526,23 @@
                     "label": "Бициклистичке стазе",
                     "options": {
                         "lane": {
-                            "description": "бициклистичка стаза одвојена од ауто-саобраћаја уз помоћ беле линије",
-                            "title": "стандардна бициклистичка стаза"
-                        },
-                        "none": {
-                            "description": "без бициклистичке стазе",
-                            "title": "ништа"
+                            "description": "бициклистичка стаза одвојена од ауто-саобраћаја уз помоћ беле линије"
                         },
                         "opposite": {
                             "description": "бициклистичка стаза у оба смера на једносмерном путу"
                         },
                         "opposite_lane": {
-                            "description": "Трака за бицикле у супротном смеру саобраћаја",
-                            "title": "наспрамна бициклистичка стаза"
+                            "description": "Трака за бицикле у супротном смеру саобраћаја"
                         },
                         "share_busway": {
-                            "description": "бициклистичка стаза дељена са аутобуском траком",
-                            "title": "бициклистичка стаза дељена са аутобусом"
+                            "description": "бициклистичка стаза дељена са аутобуском траком"
                         },
                         "shared_lane": {
-                            "description": "бициклистичка стаза без раздвајања од аутомобилског саобраћаја",
-                            "title": "дељена бициклистичка стаза"
+                            "description": "бициклистичка стаза без раздвајања од аутомобилског саобраћаја"
                         },
                         "track": {
-                            "description": "бициклистичка стаза оградом одвојена од саобраћаја",
-                            "title": "бициклистичка стаза "
+                            "description": "бициклистичка стаза оградом одвојена од саобраћаја"
                         }
-                    },
-                    "placeholder": "ништа",
-                    "types": {
-                        "cycleway:left": "Лева страна",
-                        "cycleway:right": "Десна страна"
                     }
                 },
                 "dance/style": {
@@ -604,18 +587,8 @@
                 "destination/ref": {
                     "label": "Путне ознаке одредишта"
                 },
-                "destination/ref_oneway": {
-                    "label": "Путне ознаке одредишта"
-                },
                 "destination/symbol": {
                     "label": "Симболи одредишта"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Симболи одредишта",
-                    "terms": "симболи одредишта,ознаке одредишта"
-                },
-                "destination_oneway": {
-                    "label": "Одредишта"
                 },
                 "destination_waterway": {
                     "label": "Одредиште"
@@ -652,12 +625,6 @@
                     }
                 },
                 "direction_vertex": {
-                    "options": {
-                        "backward": "Уназад",
-                        "forward": "Унапред"
-                    }
-                },
-                "direction_vertex_dual": {
                     "options": {
                         "backward": "Уназад",
                         "forward": "Унапред"
@@ -790,9 +757,6 @@
                 "fountain": {
                     "label": "Врста"
                 },
-                "frequency_electrified": {
-                    "label": "Радна фреквенција"
-                },
                 "from": {
                     "label": "Од"
                 },
@@ -916,7 +880,6 @@
                     "label": "Успон"
                 },
                 "incline_steps": {
-                    "label": "Нагиб",
                     "options": {
                         "down": "Доле",
                         "up": "Горе"
@@ -939,9 +902,6 @@
                     "label": "Натпис"
                 },
                 "intermittent": {
-                    "label": "Наизменичан"
-                },
-                "intermittent_yes": {
                     "label": "Наизменичан"
                 },
                 "internet_access": {
@@ -1011,15 +971,6 @@
                         "semi_evergreen": "Полу-зимзелена"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Лисни циклус",
-                    "options": {
-                        "deciduous": "Листопадна",
-                        "evergreen": "Зимзелена",
-                        "semi_deciduous": "Полу-листопадна",
-                        "semi_evergreen": "Полу-зимзелена"
-                    }
-                },
                 "leaf_type": {
                     "label": "Врста листа",
                     "options": {
@@ -1030,12 +981,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Врста листа",
-                    "options": {
-                        "broadleaved": "Широколисна",
-                        "leafless": "Безлисна",
-                        "needleleaved": "Танколисна"
-                    }
+                    "label": "Врста листа"
                 },
                 "leisure": {
                     "label": "Врста"
@@ -1059,7 +1005,6 @@
                     "label": "Локација"
                 },
                 "location_pool": {
-                    "label": "Положај",
                     "options": {
                         "indoor": "Унутрашњи простор",
                         "outdoor": "Спољашњи простор",
@@ -1114,9 +1059,6 @@
                     "label": "Максимално задржавање"
                 },
                 "maxweight": {
-                    "label": "Максимална тежина"
-                },
-                "maxweight_bridge": {
                     "label": "Максимална тежина"
                 },
                 "memorial": {
@@ -1215,7 +1157,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Једносмерна",
                     "options": {
                         "alternating": "Наизменичан",
                         "no": "Не",
@@ -1569,9 +1510,6 @@
                 "site": {
                     "label": "Врста"
                 },
-                "site_type": {
-                    "label": "Врста места"
-                },
                 "smoking": {
                     "label": "Пушење",
                     "options": {
@@ -1900,9 +1838,6 @@
                 },
                 "voltage/tertiary": {
                     "label": "Терцијјарни напон"
-                },
-                "voltage_electrified": {
-                    "label": "Напон"
                 },
                 "wall": {
                     "label": "Врста"
@@ -2646,9 +2581,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Капија са двоје врата"
-                },
-                "barrier/lift_gate": {
-                    "name": "Покретна рампа"
                 },
                 "barrier/retaining_wall": {
                     "name": "Потпорни зид"

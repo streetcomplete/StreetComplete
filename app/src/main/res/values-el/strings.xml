@@ -1087,7 +1087,6 @@
     <string name="quest_seating_indoor_only">"Καθίσματα μόνο σε εσωτερικό χώρο"</string>
     <string name="quest_seating_outdoor_only">"Καθίσματα μόνο σε εξωτερικό χώρο"</string>
     <string name="quest_seating_indoor_and_outdoor">"Καθίσματα εσωτερικού και εξωτερικού χώρου"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή ενδέχεται να απαιτείται έλεγχος κατά τη διάρκεια συγκεκριμένης περιόδου του έτους, προκειμένου να επαληθευτούν τα καθίσματα εξωτερικού χώρου."</string>
     <string name="no_camera_permission_toast">"Δεν υπάρχει άδεια κάμερας"</string>
     <string name="quest_accepts_cash_title2">"Είναι δεκτή η πληρωμή με μετρητά εδώ;"</string>
     <string name="quest_address_street_title2">"Σε ποιο δρόμο είναι αυτό;"</string>
@@ -1287,4 +1286,9 @@
     <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι"</string>
     <string name="quest_fireHydrant_type_pipe">"σωλήνα"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο, διπλή κατεύθυνση"</string>
+    <string name="measure_info_title">"Επίτευξη βέλτιστης ακρίβειας"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;Το ARCore μερικές φορές (αρχικά) υποθέτει ότι το έδαφος είναι λίγο χαμηλότερο ή υψηλότερο από ό,τι στην πραγματικά είναι. Αυτό εισάγει ένα σφάλμα μέτρησης που γίνεται μεγαλύτερο όσο περισσότερο γέρνετε το τηλέφωνό σας προς τον ορίζοντα.&lt;/p&gt;
+&lt;p&gt;Ρυθμίστε το σημείο έναρξης και τέλους ενώ στρέφετε το τηλέφωνο ευθεία προς τα κάτω (έτσι ώστε να βλέπετε το λευκό βέλος από πάνω) για να αποφύγετε εντελώς αυτό το ζήτημα για οριζόντιες μετρήσεις.&lt;/p&gt;
+&lt;p&gt;Για κάθετες μετρήσεις, πρέπει να ελέγξετε ότι το σημείο εκκίνησης δεν φαίνεται να μετακινείται σε σχέση με το έδαφος κοιτάζοντάς το από διαφορετικές κατευθύνσεις.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Αυτή η εφαρμογή εκτελείται στο &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Υπηρεσίες Google Play για το AR&lt;/a&gt; (ARCore), το οποίο παρέχεται από την Google και διέπεται από την &lt;a href=\"https://policies.google.com/privacy\"&gt;Πολιτική απορρήτου της Google&lt;/a&gt;."</string>
 </resources>

@@ -81,14 +81,15 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
     }
 
     private fun initStateFromTags() {
-        val cycleways = createCyclewaySides(element.tags, isLeftHandTraffic)?.selectableOrNullValues(countryInfo)
+        val cycleways = createCyclewaySides(element.tags, isLeftHandTraffic)
 
         streetSideSelect.showSides = getInitiallyShownSides(cycleways)
 
-        val leftItem = cycleways?.left?.asStreetSideItem(false, isContraflowInOneway(false), countryInfo)
+        val onlyValidCycleways = cycleways?.selectableOrNullValues(countryInfo)
+        val leftItem = onlyValidCycleways?.left?.asStreetSideItem(false, isContraflowInOneway(false), countryInfo)
         streetSideSelect.setPuzzleSide(leftItem, false)
 
-        val rightItem = cycleways?.right?.asStreetSideItem(true, isContraflowInOneway(true), countryInfo)
+        val rightItem = onlyValidCycleways?.right?.asStreetSideItem(true, isContraflowInOneway(true), countryInfo)
         streetSideSelect.setPuzzleSide(rightItem, true)
 
         // only show as re-survey (yes/no button) if the previous tagging was complete

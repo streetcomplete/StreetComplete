@@ -1099,7 +1099,6 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_seating_indoor_only">"Sėdimos vietos tik patalpose"</string>
     <string name="quest_seating_outdoor_only">"Sėdimos vietos tik lauke"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sėdimos vietos viduje ir lauke"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Šis užduoties tipas pagal numatytuosius nustatymus yra išjungtas, nes tam tikru metų laiku gali prireikti patikrinti, ar yra vietų lauke."</string>
     <string name="no_camera_permission_toast">"Leidimo naudoti fotoaparatą nėra"</string>
     <string name="quest_accepts_cash_title2">"Ar čia galima atsiskaityti grynaisiais pinigais?"</string>
     <string name="quest_address_street_title2">"Kurioje gatvėje tai yra?"</string>

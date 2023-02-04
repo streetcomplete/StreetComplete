@@ -11,10 +11,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
@@ -41,6 +43,13 @@ class StreetParkingDrawable(
     override fun getIntrinsicWidth(): Int = round(width * context.resources.displayMetrics.density).toInt()
     override fun getIntrinsicHeight(): Int = round(height * context.resources.displayMetrics.density).toInt()
 
+    /** Y-Offset in percent (0..<1) */
+    var phase: Float = 0f
+    set(value) {
+        field = value
+        invalidateSelf()
+    }
+
     override fun draw(canvas: Canvas) {
         if (!isVisible) return
 
@@ -59,35 +68,39 @@ class StreetParkingDrawable(
         val carCount = parkingOrientation.carCount
         val backgroundResId = getStreetDrawableResId(parkingOrientation, parkingPosition)
         val nyanResId = if (isApril1st()) R.drawable.car_nyan else null
+        val repeats = ceil(bounds.height() / height).toInt()
 
-        for (y in 0 until ceil(bounds.height() / height).toInt()) {
-
-            // drawing the street background
-            if (backgroundResId != null) {
-                val background = context.getDrawable(backgroundResId)!!
-                val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
-                background.setBounds(0, 0, width, backgroundHeight)
+        // drawing the street background
+        if (backgroundResId != null) {
+            val background = context.getDrawable(backgroundResId)!!
+            val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
+            val offsetY = (phase * height).toInt()
+            for (i in 0 until repeats) {
+                val y = (i * height).toInt() + offsetY
+                background.setBounds(0, y, width, backgroundHeight + y)
                 background.draw(canvas)
             }
-
-            // drawing the cars
-            for (i in 0 until carCount) {
-                if (i in omittedCarIndices) continue
-                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(
-                    CAR_RES_IDS.size)]
-                val car = context.getDrawable(carResId)!!
-                val carHeight = car.intrinsicHeight * carWidth / car.intrinsicWidth
-                val paddingY = (height / carCount - carHeight) / 2
-                val carY = 1f * height / carCount * i + paddingY
-                canvas.withSave {
-                    canvas.translate(carX, carY)
-                    canvas.rotate(carRotation, carWidth / 2, carHeight / 2)
-                    car.setBounds(0, 0, carWidth.toInt(), carHeight.toInt())
-                    car.draw(canvas)
-                }
+            if (offsetY != 0) {
+                background.setBounds(0, -backgroundHeight + offsetY, width, offsetY)
+                background.draw(canvas)
             }
+        }
 
-            canvas.translate(0f, height)
+        // drawing the cars
+        for (i in 0 until carCount * repeats) {
+            if (i % carCount in omittedCarIndices) continue
+            val carResId =
+                nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(CAR_RES_IDS.size)]
+            val car = context.getDrawable(carResId)!!
+            val carHeight = car.intrinsicHeight * carWidth / car.intrinsicWidth
+            val paddingY = (height / carCount - carHeight) / 2
+            val carY = (1f * height / carCount * i + paddingY + phase * height) % (height * repeats)
+            canvas.withSave {
+                canvas.translate(carX, carY)
+                canvas.rotate(carRotation, carWidth / 2, carHeight / 2)
+                car.setBounds(0, 0, carWidth.toInt(), carHeight.toInt())
+                car.draw(canvas)
+            }
         }
     }
 }
@@ -95,15 +108,15 @@ class StreetParkingDrawable(
 /** drawable res id of the street in the background */
 private fun getStreetDrawableResId(orientation: ParkingOrientation, position: ParkingPosition?): Int? =
     when (position) {
-        ON_STREET -> when (orientation) {
+        ON_STREET, STAGGERED_ON_STREET -> when (orientation) {
             PARALLEL -> R.drawable.ic_street
             else -> R.drawable.ic_street_broad
         }
-        HALF_ON_KERB -> when (orientation) {
+        HALF_ON_STREET, STAGGERED_HALF_ON_STREET -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_narrow
             else -> R.drawable.ic_street
         }
-        ON_KERB -> R.drawable.ic_street_very_narrow
+        OFF_STREET -> R.drawable.ic_street_very_narrow
         STREET_SIDE -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_parking_bays_parallel
             DIAGONAL -> R.drawable.ic_street_parking_bays_diagonal
@@ -132,10 +145,10 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             DIAGONAL -> listOf(2, 3)
             PERPENDICULAR -> listOf(0, 3, 4, 7)
         }
-        PAINTED_AREA_ONLY -> when (orientation) {
+        PAINTED_AREA_ONLY, STAGGERED_ON_STREET, STAGGERED_HALF_ON_STREET -> when (orientation) {
             PARALLEL -> listOf(0, 3)
-            DIAGONAL -> listOf(0, 1, 4, 5)
-            PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
+            DIAGONAL -> listOf(0, 1, 5)
+            PERPENDICULAR -> listOf(0, 1, 6, 7)
         }
         else -> emptyList()
     }

@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -36,6 +37,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -49,7 +51,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import org.koin.core.qualifier.named
 import java.util.MissingFormatArgumentException
+import java.util.concurrent.FutureTask
 
 class UndoDialog(
     context: Context,
@@ -58,6 +62,9 @@ class UndoDialog(
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val editHistoryController: EditHistoryController by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+
+    private val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
@@ -83,6 +90,9 @@ class UndoDialog(
         super.onCreate(savedInstanceState)
         scope.launch {
             binding.titleText.text = edit.getTitle()
+            if (edit is ElementEdit) {
+                binding.titleHintText.text = getNameAndLocationLabel(edit.originalElement, context.resources, featureDictionary)
+            }
         }
     }
 

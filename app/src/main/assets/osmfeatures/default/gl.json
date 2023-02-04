@@ -358,9 +358,6 @@
                 "building/material": {
                     "label": "Material"
                 },
-                "building_area": {
-                    "label": "Edificio"
-                },
                 "bunker_type": {
                     "label": "Tipo"
                 },
@@ -520,38 +517,23 @@
                     "label": "Carrís bici",
                     "options": {
                         "lane": {
-                            "description": "Un carril para bicicletas e marcado e separado do tráfico de estradas",
-                            "title": "Carril bici común"
-                        },
-                        "none": {
-                            "description": "Sen carril bici",
-                            "title": "Ningún"
+                            "description": "Un carril para bicicletas e marcado e separado do tráfico de estradas"
                         },
                         "opposite": {
-                            "description": "Un carril de bicicletas que vai en ambas direccións nunha vía de un único sentido",
-                            "title": "Carril bici contrasentido"
+                            "description": "Un carril de bicicletas que vai en ambas direccións nunha vía de un único sentido"
                         },
                         "opposite_lane": {
-                            "description": "Un carril de bicicletas que vai na dirección oposta á do tráfico da estrada",
-                            "title": "Carril bici inverso"
+                            "description": "Un carril de bicicletas que vai na dirección oposta á do tráfico da estrada"
                         },
                         "share_busway": {
-                            "description": "Un carril de bicicletas compartido coas liñas de autobús",
-                            "title": "Carril de bicicletas que se comparte coas de autobuses"
+                            "description": "Un carril de bicicletas compartido coas liñas de autobús"
                         },
                         "shared_lane": {
-                            "description": "Un carril de bicicletas que non está separado do tráfico de estrada",
-                            "title": "Carril bici compartido"
+                            "description": "Un carril de bicicletas que non está separado do tráfico de estrada"
                         },
                         "track": {
-                            "description": "Un carril de bicicletas que está separado do tráfico por unha barreira física",
-                            "title": "Pista de bicicletas"
+                            "description": "Un carril de bicicletas que está separado do tráfico por unha barreira física"
                         }
-                    },
-                    "placeholder": "Ningún",
-                    "types": {
-                        "cycleway:left": "Beira esquerda",
-                        "cycleway:right": "Beira dereita"
                     }
                 },
                 "dance/style": {
@@ -598,17 +580,8 @@
                 "destination/ref": {
                     "label": "Referencias das estradas de destino"
                 },
-                "destination/ref_oneway": {
-                    "label": "Números de estrada de destino"
-                },
                 "destination/symbol": {
                     "label": "Símbolos do destino"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Símbolos do destino"
-                },
-                "destination_oneway": {
-                    "label": "Destinos"
                 },
                 "destination_waterway": {
                     "label": "Destinos"
@@ -642,7 +615,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Dirección (graos en sentido horario)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -650,13 +622,6 @@
                     "options": {
                         "backward": "Cara atrás",
                         "both": "Ambos / Todos",
-                        "forward": "Cara adiante"
-                    }
-                },
-                "direction_vertex_dual": {
-                    "label": "Dirección afectada",
-                    "options": {
-                        "backward": "Cara atrás",
                         "forward": "Cara adiante"
                     }
                 },
@@ -812,9 +777,6 @@
                 },
                 "frequency": {
                     "label": "Frecuencia de operación"
-                },
-                "frequency_electrified": {
-                    "label": "Frecuencia da operación"
                 },
                 "from": {
                     "label": "Dende"
@@ -972,7 +934,6 @@
                     "label": "Inclinación"
                 },
                 "incline_steps": {
-                    "label": "Inclinación",
                     "options": {
                         "down": "Abaixo",
                         "up": "Arriba"
@@ -997,9 +958,6 @@
                     "label": "Inscrición"
                 },
                 "intermittent": {
-                    "label": "Intermitente"
-                },
-                "intermittent_yes": {
                     "label": "Intermitente"
                 },
                 "internet_access": {
@@ -1081,15 +1039,6 @@
                         "semi_evergreen": "Medio perenne"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Ciclo da follaxe",
-                    "options": {
-                        "deciduous": "Caducifolio",
-                        "evergreen": "Perenne",
-                        "semi_deciduous": "Medio caducifolio",
-                        "semi_evergreen": "Medio perenne"
-                    }
-                },
                 "leaf_type": {
                     "label": "Tipo de follaxe",
                     "options": {
@@ -1100,12 +1049,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Tipo de follaxe",
-                    "options": {
-                        "broadleaved": "Follaxe mixtas",
-                        "leafless": "Sen follaxe",
-                        "needleleaved": "Follaxe perenne"
-                    }
+                    "label": "Tipo de follaxe"
                 },
                 "leisure": {
                     "label": "Tipo"
@@ -1138,7 +1082,6 @@
                     "terms": "ubicación,localización,posición,situación"
                 },
                 "location_pool": {
-                    "label": "Localización",
                     "options": {
                         "indoor": "Interior",
                         "outdoor": "Exterior",
@@ -1193,9 +1136,6 @@
                     "label": "Estancia máxima"
                 },
                 "maxweight": {
-                    "label": "Peso máximo"
-                },
-                "maxweight_bridge": {
                     "label": "Peso máximo"
                 },
                 "memorial": {
@@ -1318,7 +1258,6 @@
                     "label": "Un só sentido (Bicicletas)"
                 },
                 "oneway_yes": {
-                    "label": "Sentido único",
                     "options": {
                         "alternating": "Alterno",
                         "no": "Non",
@@ -1379,11 +1318,7 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "Tipo",
-                    "options": {
-                        "multi-storey": "Varios niveis",
-                        "underground": "Subterráneo"
-                    }
+                    "label": "Tipo"
                 },
                 "parking_space": {
                     "label": "Tipo"
@@ -1413,7 +1348,6 @@
                     "placeholder": "Doado, Intermedio, Avanzado..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Dificultade",
                     "options": {
                         "advanced": "Avanzado (diamante negro)",
                         "easy": "Doado (círculo verde)",
@@ -1426,7 +1360,6 @@
                     "placeholder": "Doado, Intermedio, Avanzado..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Dificultade",
                     "options": {
                         "advanced": "Avanzado: sección estreita, encostada ou xeada, xiro forte",
                         "easy": "Doado - Pendentes suaves, sección costenta curta",
@@ -1437,7 +1370,6 @@
                     "placeholder": "Doado, Intermedio, Avanzado..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Dificultade",
                     "options": {
                         "advanced": "Avanzado - S: 40-45° de pendente",
                         "easy": "Doado - WS: 30-35° de pendente",
@@ -1461,7 +1393,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Sen pisapistas",
                         "classic": "Clásico",
@@ -1469,14 +1400,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Raquetas de neve",
                         "classic": "Clásico - Sendeirismo de inverno"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Sen pisapistas",
                         "classic": "Clásico",
@@ -1873,9 +1802,6 @@
                 "site": {
                     "label": "Tipo"
                 },
-                "site_type": {
-                    "label": "Tipo de sitio"
-                },
                 "smoking": {
                     "label": "Fumar",
                     "options": {
@@ -2237,9 +2163,6 @@
                 },
                 "voltage/tertiary": {
                     "label": "Tensión do terciario"
-                },
-                "voltage_electrified": {
-                    "label": "Voltaxe"
                 },
                 "wall": {
                     "label": "Tipo"
@@ -3268,10 +3191,6 @@
                 "attraction/animal": {
                     "name": "Recinto de animais"
                 },
-                "attraction/big_wheel": {
-                    "name": "Noria",
-                    "terms": "noria,nora,atracción"
-                },
                 "attraction/bumper_car": {
                     "name": "Coches de choque"
                 },
@@ -3404,9 +3323,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Porta Kissing"
-                },
-                "barrier/lift_gate": {
-                    "name": "Barreira levadiza"
                 },
                 "barrier/retaining_wall": {
                     "name": "Muro de contención"
@@ -3610,9 +3526,6 @@
                 },
                 "building/stadium": {
                     "name": "Edificio do estadio"
-                },
-                "building/static_caravan": {
-                    "name": "Autocaravana estática"
                 },
                 "building/temple": {
                     "name": "Edificio do templo"
@@ -4023,15 +3936,9 @@
                 "highway/crossing": {
                     "name": "Paso de peóns"
                 },
-                "highway/crossing/marked": {
-                    "name": "Paso de peóns marcado"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Paso de peóns sen marcar",
                     "terms": "paso de peóns sen marcar,peonil,peonal"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Paso de peóns marcado"
                 },
                 "highway/cycleway": {
                     "name": "Senda ciclista",
@@ -4046,9 +3953,6 @@
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "Paso de peóns e de pista de ciclismo",
                     "terms": "peonil,peonal,ciclista,ciclismo,bicicleta"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "Paso de bicicletas marcado"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Paso de bicicletas sen marcar",

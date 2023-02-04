@@ -1098,7 +1098,6 @@
     <string name="quest_seating_indoor_only">"Седење само унутра"</string>
     <string name="quest_seating_outdoor_only">"Седење само напољу"</string>
     <string name="quest_seating_indoor_and_outdoor">"Седење и унутра и напољу"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Овај задатак је искључен јер захтева проверу у тачно одређено време године да би се закључило да ли има седења напољу."</string>
     <string name="no_camera_permission_toast">"Нема дозвола за камеру"</string>
     <string name="quest_accepts_cash_title2">"Да ли се овде прихвата готовина?"</string>
     <string name="quest_address_street_title2">"У којој је ово улици?"</string>

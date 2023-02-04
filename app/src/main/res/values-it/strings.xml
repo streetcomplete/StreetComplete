@@ -61,7 +61,7 @@
     <string name="offline">"Sei offline"</string>
     <string name="confirmation_authorize_now">"È necessaria l'autorizzazione per pubblicare le tue risposte su OSM con il tuo account. Vuoi farlo ora?"</string>
     <string name="not_authorized">"Non si è autorizzati"</string>
-    <string name="version_banned_message">"Stai usando una versione di StreetComplete troppa vecchia. Ti prego di aggiornarla!"</string>
+    <string name="version_banned_message">"Stai usando una versione di StreetComplete troppo vecchia. È necessario aggiornarla!"</string>
     <string name="no_gps_no_quests">"Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione"</string>
     <string name="later">"Più tardi"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"È solo un collegamento tra due strade"</string>
@@ -82,13 +82,14 @@
     <string name="quest_roofShape_answer_many">"Ha forme diverse"</string>
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
     <string name="map_btn_zoom_in">"Ingrandisci"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy. Bello! Penso di avere solo buone notizie per te:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy, che bello! Ecco una carrellata di buone notizie (spero):&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap (OSM).&lt;br/&gt;
+&lt;p&gt;
+Prima di tutto, va detto che con questa applicazione si danno contributi effettivi e diretti a OpenStreetMap (OSM).&lt;br/&gt;
 Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM.
 &lt;/p&gt;
 &lt;p&gt;
-La modifica anonima in OpenStreetMap non è possibile. Tutte le modifiche apportate (e la loro data e posizione) sono attribuite al tuo account utente OSM e sono visibili pubblicamente sul sito web openstreetmap.org. Siccome StreetComplete dovrebbe essere usata soltanto per perlustrazioni sul posto, questo rivela dove sei e quando stai usando l'app.
+La modifica anonima in OpenStreetMap non è possibile. Tutte le modifiche apportate (con relative data e posizione) sono attribuite al tuo account utente OSM e visibili pubblicamente sul sito web openstreetmap.org. Siccome StreetComplete andrebbe usata soltanto per perlustrazioni sul posto, dalla modifica traspariscono ora e luogo dell'utilizzo dell'app.
 &lt;/p&gt;
 
 &lt;b&gt;Posizione&lt;/b&gt;&lt;br/&gt;
@@ -110,7 +111,7 @@ Prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https
     <string name="quest_surface_value_asphalt">"Asfalto"</string>
     <string name="quest_surface_value_compacted">"Compatto"</string>
     <string name="quest_surface_value_concrete">"Cemento"</string>
-    <string name="quest_surface_value_dirt">"Misto"</string>
+    <string name="quest_surface_value_dirt">"Terra"</string>
     <string name="quest_surface_value_fine_gravel">"Ghiaia fine"</string>
     <string name="quest_surface_value_grass">"Erba"</string>
     <string name="quest_surface_value_grass_paver">"Misto erba-cemento"</string>
@@ -1097,7 +1098,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_seating_indoor_only">"Solo all'interno"</string>
     <string name="quest_seating_outdoor_only">"Solo all'esterno"</string>
     <string name="quest_seating_indoor_and_outdoor">"Sia all'interno che all'esterno"</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"Questo compito è disabilitato di default perché richiede che sia controllato durante specifici orari per verificare le sedute all'esterno."</string>
     <string name="no_camera_permission_toast">"Accesso alla fotocamera mancante"</string>
     <string name="quest_accepts_cash_title2">"Sono accettati pagamenti in contanti qui?"</string>
     <string name="quest_address_street_title2">"In quale strada si trova?"</string>
@@ -1241,7 +1241,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="vacant_shop_title">"Negozio vuoto"</string>
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
     <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
-    <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta (eventualmente con una chiave)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fisso"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Apribile"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Smontabile"</string>
@@ -1298,8 +1298,8 @@ Spostarlo ora?"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
     <string name="measure_info_title">"Cerco la precisione ottimale"</string>
-    <string name="measure_info_html_description">"&lt;p&gt;ARCore alle volte (inizialmente) presuppone che il terreno sia un po' più in basso o un po' più in alto di quanto non sia realmente. Questo introduce un errore di misurazione che aumenta alzando il telefono verso l'orizzonte.&lt;/p&gt;
-&lt;p&gt;Imposta i punti di inizio e fine misurazione mentre hai il telefono verso terra (in modo da vedere la freccia bianca da sopra) per evitare questo errore nelle misure orizzontali.&lt;/p&gt;
-&lt;p&gt;Per le misurazioni verticali, devi fare attenzione che il punto d'inizio non sia parallaxo al terreno guardandolo da angolazioni differenti.&lt;/p&gt;"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore talvolta rileva (inizialmente) il terreno ad una distanza leggermente maggiore o minore di quella reale, introducendo così un errore di misurazione il quale aumenta man mano che si ruota il telefono verso l'orizzonte.&lt;/p&gt;
+&lt;p&gt;Per evitare questo tipo di errori nelle misurazioni orizzontali, imposta i punti di inizio e fine con il telefono rivolto esattamente verso il basso (in modo da vedere la freccia bianca dall'alto).&lt;/p&gt;
+&lt;p&gt;Per le misurazioni verticali, invece, controlla che il punto d'inizio sia fisso rispetto al terreno guardandolo da angolazioni differenti.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Questa applicazione utilizza un &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;servizio Google Play Services per la realtà aumentata&lt;/a&gt; (ARCore), fornito da Google e sottostante alla &lt;a href=\"https://policies.google.com/privacy\"&gt;Privacy policy di Google&lt;/a&gt;."</string>
 </resources>

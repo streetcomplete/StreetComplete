@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isReversedOneway
@@ -176,22 +177,11 @@ private fun createCyclewayForSideFallback(
 
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {
     val result = tags.toMutableMap()
-    expandSidesTag("cycleway", "", result)
-    expandSidesTag("cycleway", "lane", result)
-    expandSidesTag("cycleway", "oneway", result)
-    expandSidesTag("cycleway", "segregated", result)
+    result.expandSidesTags("cycleway", "", true)
+    result.expandSidesTags("cycleway", "lane", true)
+    result.expandSidesTags("cycleway", "oneway", true)
+    result.expandSidesTags("cycleway", "segregated", true)
     return result
-}
-
-/** Expand my_tag:both and my_tag into my_tag:left and my_tag:right etc */
-private fun expandSidesTag(keyPrefix: String, keyPostfix: String, tags: MutableMap<String, String>) {
-    val pre = keyPrefix
-    val post = if (keyPostfix.isEmpty()) "" else ":$keyPostfix"
-    val value = tags["$pre:both$post"] ?: tags["$pre$post"]
-    if (value != null) {
-        if (!tags.containsKey("$pre:left$post")) tags["$pre:left$post"] = value
-        if (!tags.containsKey("$pre:right$post")) tags["$pre:right$post"] = value
-    }
 }
 
 private val KNOWN_CYCLEWAY_AND_RELATED_KEYS = listOf(

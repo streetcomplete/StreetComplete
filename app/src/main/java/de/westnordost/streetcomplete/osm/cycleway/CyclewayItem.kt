@@ -79,7 +79,7 @@ private class Rotate180Degrees(drawable: Drawable) : DrawableWrapperCompat(drawa
 
 private fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int): Int? = when (this) {
     NONE ->     if (isContraflowInOneway) noEntrySignDrawableResId else null
-    SEPARATE -> R.drawable.ic_sidewalk_floating_separate
+    SEPARATE -> R.drawable.ic_floating_separate
     else ->     null
 }
 
