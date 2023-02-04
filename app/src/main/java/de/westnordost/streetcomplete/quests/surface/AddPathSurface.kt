@@ -9,10 +9,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.osm.surface.IsActuallyStepsAnswer
-import de.westnordost.streetcomplete.osm.surface.IsIndoorsAnswer
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceOrIsStepsAnswer
 import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
@@ -47,8 +43,8 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is SurfaceAndNote -> {
-                answer.applyTo(tags)
+            is SurfaceAnswer -> {
+                answer.surfaceAndNote.applyTo(tags)
             }
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"

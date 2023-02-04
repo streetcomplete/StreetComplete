@@ -4,11 +4,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-sealed interface SurfaceOrIsStepsAnswer
-object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
-object IsIndoorsAnswer : SurfaceOrIsStepsAnswer
-
-data class SurfaceAndNote(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
+data class SurfaceAndNote(val value: Surface, val note: String? = null)
 
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val osmValue = value.osmValue
