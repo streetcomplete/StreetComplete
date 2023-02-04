@@ -31,6 +31,8 @@ class AddContactWebsite : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddContactWebsiteForm()
 
+    override val isReplaceShopEnabled: Boolean = true
+
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["website"] = answer
     }

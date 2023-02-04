@@ -15,6 +15,8 @@ class AddContactPhone : OsmFilterQuestType<String>() {
         nodes, ways, relations with
         (
          tourism = information and information = office
+         or craft
+         or healthcare
          or """.trimIndent() +
          PLACES_FOR_CONTACT_QUESTS +
         "\n) and !phone and !contact:phone and !contact:mobile and !brand and name"
@@ -30,6 +32,8 @@ class AddContactPhone : OsmFilterQuestType<String>() {
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = AddContactPhoneForm()
+
+    override val isReplaceShopEnabled: Boolean = true
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["phone"] = answer
@@ -55,12 +59,4 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
         "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
         "lawyer", "estate_agent", "therapist", "notary"
     ),
-    "craft" to arrayOf(
-        "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-        "electronics_repair", "stonemason", "winery"
-    ),
-    "healthcare" to arrayOf(
-        "psychotherapist", "physiotherapist", "laboratory", "dentist", "doctor", "alternative",
-        "optometrist", "podiatrist", "occupational_therapist", "pharmacy", "psychotherapist"
-    )
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
