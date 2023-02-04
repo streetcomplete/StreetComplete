@@ -292,8 +292,8 @@ class SettingsFragment :
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
         mapDataController.clear()
-        noteController.clear()
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
+        noteController.clear()
     }
 
     private suspend fun deleteTiles() = withContext(Dispatchers.IO) {
