@@ -34,10 +34,10 @@ class AddLevel : OsmElementQuestType<String> {
     private val thingsWithLevelOrDoctorsFilter by lazy { """
         nodes, ways, relations with level
         ${if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) """
-        or (
-          amenity ~ doctors|dentist
-          or healthcare ~ doctor|dentist|psychotherapist|physiotherapist
-        ) """
+            or (
+              amenity ~ doctors|dentist
+              or healthcare ~ doctor|dentist|psychotherapist|physiotherapist
+            ) """
         else ""}
     """.toElementFilterExpression() }
 
@@ -53,10 +53,11 @@ class AddLevel : OsmElementQuestType<String> {
          (
            (shop and shop !~ no|vacant|mall)
            or craft
-           or amenity
+           or (amenity and amenity !~ parking|parking_entrance)
            or leisure
            or office
            or tourism
+           or healthcare
          )
          and !level
     """.toElementFilterExpression()}
