@@ -47,17 +47,23 @@ class DisplaySettingsFragment :
         addPreferencesFromResource(R.xml.preferences_ee_display)
 
         findPreference<Preference>("display_gpx_track")?.setOnPreferenceClickListener {
+            val gpxFileExists = context?.getExternalFilesDir(null)?.let { File(it, GPX_TRACK_FILE) }?.exists() == true
+            var d: AlertDialog? = null
             val selectFileButton = Button(context).apply {
                 setText(R.string.pref_gpx_track_provide)
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
                     type = "*/*"
                 }
-                setOnClickListener { startActivityForResult(intent, GPX_TRACK_CODE) }
+                setOnClickListener {
+                    d?.dismiss()
+                    startActivityForResult(intent, GPX_TRACK_CODE)
+                }
             }
             val enableSwitch = SwitchCompat(requireContext()).apply {
                 setText(R.string.pref_gpx_track_enable)
                 isChecked = prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)
+                isEnabled = gpxFileExists
                 setOnCheckedChangeListener { _, _ ->
                     prefs.edit { putBoolean(Prefs.SHOW_GPX_TRACK, isChecked) }
                     gpx_track_changed = true
@@ -65,6 +71,7 @@ class DisplaySettingsFragment :
             }
             val downloadButton = Button(context).apply {
                 setText(R.string.pref_gpx_track_download)
+                isEnabled = gpxFileExists
                 setOnClickListener {
                     val points = loadGpxTrackPoints(requireContext()) ?: return@setOnClickListener
                     // for getting tiles containing the track, we simply assume that there is at least one point in each tile
@@ -102,11 +109,12 @@ class DisplaySettingsFragment :
                 addView(selectFileButton)
                 addView(enableSwitch)
             }
-            AlertDialog.Builder(requireContext())
+            d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_gpx_track_title)
                 .setView(layout)
                 .setPositiveButton(android.R.string.ok, null)
-                .show()
+                .create()
+            d.show()
             true
         }
     }

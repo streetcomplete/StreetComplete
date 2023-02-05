@@ -6,7 +6,7 @@ global:
     track_color_record: '#44fe1616'
     old_track_color: '#22536dfe'
     quest_geometry_color: '#330092D1' # complementary to accent, a bit more transparent
-    gpx_track_color: '#4453fe70'
+    gpx_track_color: '#2953fe70'
 
 textures:
     pins:
