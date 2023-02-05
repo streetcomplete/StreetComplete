@@ -96,7 +96,7 @@ class CrashReportExceptionHandler(
             appCtx.openFileOutput(crashReportFile, Context.MODE_PRIVATE).bufferedWriter().use { it.write(text) }
             appCtx.getExternalFilesDir(null)?.also {
                 it.mkdirs()
-                val logfile = File(it, "crash_log_${nowAsEpochMilliseconds()}.txt")
+                val logfile = File(it, "log_before_crash_${nowAsEpochMilliseconds()}.txt")
                 logfile.writeText(Log.logLines.joinToString("\n"))
                 Log.logLines.clear()
             }

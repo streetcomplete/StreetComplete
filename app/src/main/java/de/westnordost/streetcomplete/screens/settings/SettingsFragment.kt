@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -129,27 +131,41 @@ class SettingsFragment :
         findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
             var reversed = false
             var filter = ""
+            var maxLines = 200
             val log = TextView(requireContext())
-            log.text = Log.logLines.joinToString("\n")
+            log.text = Log.logLines.take(maxLines).joinToString("\n")
             fun reloadText() {
                 log.text = when {
                     filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.contains(filter, true) }
                     filter.isNotBlank() -> Log.logLines.filter { line -> line.contains(filter, true) }
                     reversed -> Log.logLines.asReversed()
                     else -> Log.logLines
-                }.take(1000).joinToString("\n") // limit to 1000 lines for performance reasons
+                }.take(maxLines).joinToString("\n")
+            }
+            val scrollLog = ScrollView(requireContext()).apply {
+                addView(log)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    setOnScrollChangeListener { _, _, _, _, _ ->
+                        if (log.bottom - (height + scrollY) <= 0 && Log.logLines.size > maxLines) {
+                            maxLines *= 2
+                            reloadText()
+                        }
+                    }
+                }
             }
             val reverseButton = Button(requireContext())
             reverseButton.setText(R.string.pref_read_reverse_button)
             reverseButton.setOnClickListener {
                 reversed = !reversed
                 reloadText()
+                scrollLog.fullScroll(View.FOCUS_UP)
             }
             val filterView = EditText(requireContext()).apply {
                 setHint(R.string.pref_read_filter_hint)
                 doAfterTextChanged {
                     filter = it.toString()
                     reloadText()
+                    scrollLog.fullScroll(View.FOCUS_UP)
                 }
                 setPadding(30, 10, 30, 10)
             }
@@ -158,7 +174,7 @@ class SettingsFragment :
                 addView(reverseButton)
                 addView(filterView)
             }) // put this on top, or layout will need more work to keep this visible
-            layout.addView(ScrollView(requireContext()).apply { addView(log) }) // we need to scroll the log
+            layout.addView(scrollLog)
             val d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_read_log_title)
                 .setView(layout)

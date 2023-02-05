@@ -175,8 +175,7 @@
 
         <Preference
             android:key="read_log"
-            android:title="@string/pref_read_log_title"
-            android:summary="@string/pref_read_log_summary" />
+            android:title="@string/pref_read_log_title" />
 
     </PreferenceCategory>
 
