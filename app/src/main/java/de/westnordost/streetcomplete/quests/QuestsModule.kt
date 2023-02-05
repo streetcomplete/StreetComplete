@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
+import de.westnordost.streetcomplete.quests.backup_generator.AddBackupGenerator
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
@@ -424,6 +425,8 @@ fun questTypeRegistry(
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
     113 to AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
+
+    156 to AddBackupGenerator(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
