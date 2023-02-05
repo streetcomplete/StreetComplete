@@ -86,6 +86,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 // because adding bicycle access typically requires
                 // adding proper access tags, interconnections with roads
                 // and often also other geometry changes.
+                // in case where path is not clearly marked as carrying both foot and bicycle traffic
+                // mapper can leave a note
                 listOf(
                     AnswerItem(R.string.overlay_path_surface_segregated) {
                         // reset previous data
@@ -100,8 +102,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun bothFootAndBicycleTraffic(tags: Map<String, String>): Boolean {
-            // in case where path is not clearly marked as carrying both foot and bicycle traffic
-            // mapper can leave a note
             if (tags["highway"] == "footway") {
                 return tags["bicycle"] == "yes" || tags["bicycle"] == "designated"
             }
