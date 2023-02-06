@@ -4,15 +4,24 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
+import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.commit
 import androidx.preference.PreferenceManager
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
+import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.cuisine.AddCuisineForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.view.controller.FeatureViewController
+import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -21,9 +30,23 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
     override val contentLayoutResId = R.layout.quest_cuisine_suggestion
     private val binding by contentViewBinding(QuestCuisineSuggestionBinding::bind)
 
-    val specialities = mutableListOf<String>()
+    private val specialities = mutableListOf<String>()
 
-    val speciality get() = binding.cuisineInput.text?.toString().orEmpty().trim()
+    override val otherAnswers = listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
+        val f = MedicalSpecialityTypeForm()
+        if (f.arguments == null) f.arguments = bundleOf()
+        val args = createArguments(questKey, questType, geometry, 0f, 0f)
+        f.requireArguments().putAll(args)
+        val osmArgs = createArguments(element)
+        f.requireArguments().putAll(osmArgs)
+        activity?.currentFocus?.hideKeyboard()
+        parentFragmentManager.commit {
+            replace(id, f, "bottom_sheet")
+            addToBackStack("bottom_sheet")
+        }
+    })
+
+    private val speciality get() = binding.cuisineInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,6 +118,132 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
         }).toSet().toTypedArray()
     }
 }
+
+
+class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
+
+    override val contentLayoutResId = R.layout.view_shop_type // TODO?
+    private val binding by contentViewBinding(ViewShopTypeBinding::bind)
+
+    private lateinit var radioButtons: List<RadioButton>
+    private var selectedRadioButtonId: Int = 0
+    private lateinit var featureCtrl: FeatureViewController
+
+    override val otherAnswers = listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
+        val f = AddHealthcareSpecialityForm()
+        if (f.arguments == null) f.arguments = bundleOf()
+        val args = createArguments(questKey, questType, geometry, 0f, 0f)
+        f.requireArguments().putAll(args)
+        val osmArgs = createArguments(element)
+        f.requireArguments().putAll(osmArgs)
+        activity?.currentFocus?.hideKeyboard()
+        parentFragmentManager.commit {
+            replace(id, f, "bottom_sheet")
+            addToBackStack("bottom_sheet")
+        }
+    })
+
+    private lateinit var favs: LastPickedValuesStore<Feature>
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
+            .toList()
+    }
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.id },
+            deserialize = { featureDictionary.byId(it).get() },
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        radioButtons = listOf(binding.vacantRadioButton, binding.replaceRadioButton, binding.leaveNoteRadioButton)
+        for (radioButton in radioButtons) {
+            radioButton.setOnClickListener { selectRadioButton(it) }
+        }
+
+        featureCtrl = FeatureViewController(featureDictionary, binding.featureView.textView, binding.featureView.iconView)
+        featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
+
+        binding.featureView.root.background = null
+        binding.featureContainer.setOnClickListener {
+            selectRadioButton(binding.replaceRadioButton)
+
+            SearchFeaturesDialog(
+                requireContext(),
+                featureDictionary,
+                element.geometryType,
+                countryOrSubdivisionCode,
+                featureCtrl.feature?.name,
+                ::filterOnlySpecialitiesOfMedicalDoctors,
+                ::onSelectedFeature,
+                lastPickedAnswers.ifEmpty { listOf( // see https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values with chiropractic skipped (pseudomedicine), biology (no entry in presets)
+                    "amenity/doctors/general",
+                    "amenity/doctors/ophthalmology",
+                    "amenity/doctors/paediatrics",
+                    "amenity/doctors/gynaecology",
+                    // dentist ?
+                    // psychiatry - https://github.com/openstreetmap/id-tagging-schema/issues/778
+                    "amenity/doctors/orthopaedics",
+                    "amenity/doctors/internal",
+                    // orthodontics
+                    // dermatology
+                    // osteopathy
+                    // otolaryngology
+                    // radiology
+                ).mapNotNull { featureDictionary.byId(it).get() } }
+            ).show()
+        }
+    }
+
+    private fun filterOnlySpecialitiesOfMedicalDoctors(feature: Feature): Boolean {
+        if (!feature.tags.containsKey("healthcare:speciality")) {
+            return false
+        }
+        return feature.tags["amenity"] == "doctors"
+    }
+
+    private fun onSelectedFeature(feature: Feature) {
+        featureCtrl.feature = feature
+        checkIsFormComplete()
+    }
+
+    override fun onClickOk() {
+        when (selectedRadioButtonId) {
+            R.id.vacantRadioButton    -> composeNote()
+            R.id.leaveNoteRadioButton -> composeNote()
+            R.id.replaceRadioButton   -> {
+                applyAnswer(featureCtrl.feature!!.addTags["healthcare:speciality"]!!)
+                favs.add(featureCtrl.feature!!)
+            }
+        }
+    }
+
+    override fun isFormComplete() = when (selectedRadioButtonId) {
+        R.id.vacantRadioButton,
+        R.id.leaveNoteRadioButton -> true
+        R.id.replaceRadioButton   -> featureCtrl.feature != null
+        else                      -> false
+    }
+
+    private fun selectRadioButton(radioButton: View) {
+        selectedRadioButtonId = radioButton.id
+        for (b in radioButtons) {
+            b.isChecked = selectedRadioButtonId == b.id
+        }
+        checkIsFormComplete()
+    }
+
+}
+
+
 const val healthcareSpecialityFromWiki = """
 allergology
 anaesthetics

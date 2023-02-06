@@ -306,7 +306,8 @@
     <string name="quest_cuisine_title">What cuisine does this place have? Use suggested OSM tags!</string>
     <string name="quest_cuisine_add_more">Add another cuisine</string>
     <string name="quest_service_building_operator_title">"Who is the operator for this service building?"</string>
-    <string name="quest_healthcare_speciality_title">What healthcare specialities does this place have? Use suggested OSM tags!</string>
+    <string name="quest_healthcare_speciality_title">What healthcare specialities does this place have?</string>
+    <string name="quest_healthcare_speciality_switch_ui">Switch UI</string>
     <string name="quest_healthcare_speciality_add_more">Add another speciality</string>
     <string name="quest_healthcare_speciality_disabled_message">This quest requires knowledge about the healthcare:speciality tags. Without this knowledge, the quest can be very difficult to answer.</string>
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>

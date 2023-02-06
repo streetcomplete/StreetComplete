@@ -19,7 +19,7 @@ class AddHealthcareSpeciality : OsmFilterQuestType<String>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_healthcare_speciality_title
 
-    override fun createForm() = AddHealthcareSpecialityForm()
+    override fun createForm() = MedicalSpecialityTypeForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["healthcare:speciality"] = answer
