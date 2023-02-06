@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -22,10 +23,12 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
        - cycleway:left=separate
        First separating the values and then later conflating them again, if possible, solves this.
      */
-    tags.expandSides("cycleway")
-    tags.expandSides("cycleway", "lane")
-    tags.expandSides("cycleway", "oneway")
-    tags.expandSides("cycleway", "segregated")
+
+    expandBareTags(tags, isLeftHandTraffic)
+    tags.expandSides("cycleway", null, false)
+    tags.expandSides("cycleway", "lane", false)
+    tags.expandSides("cycleway", "oneway", false)
+    tags.expandSides("cycleway", "segregated", false)
 
     applyOnewayNotForCyclists(tags, isLeftHandTraffic)
     left?.applyTo(tags, false, isLeftHandTraffic)
@@ -47,6 +50,21 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
         if (left?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
         if (right?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
     ).applyTo(tags)
+}
+
+/* bare cycleway tags are interpreted differently for oneways, see comment in CyclewayParser
+*  regarding "naked" cycleway keys */
+private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
+    val cycleway = tags["cycleway"]
+    if (cycleway != null && isOneway(tags)) {
+        val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
+        val isOpposite = cycleway.startsWith("opposite")
+        val side = if (isOpposite == isReverseSideRight) "right" else "left"
+        tags["cycleway:$side"] = cycleway
+        tags["cycleway:lane"]?.let { tags["cycleway:$side:lane"] = it }
+        tags["cycleway:oneway"]?.let { tags["cycleway:$side:oneway"] = it }
+        tags["cycleway:segregated"]?.let { tags["cycleway:$side:segregated"] = it }
+    }
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {

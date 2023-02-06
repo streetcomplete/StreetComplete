@@ -38,8 +38,11 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     *  it that way. */
     val nakedCycleway = createCyclewayForSide(expandedTags, null)
     if (isOneway && nakedCycleway != null && nakedCycleway != NONE) {
-        val isRight = if (isOpposite) isReverseSideRight else !isReverseSideRight
-        if (isRight) right = nakedCycleway else left = nakedCycleway
+        if (isOpposite == isReverseSideRight) {
+            right = nakedCycleway
+        } else {
+            left = nakedCycleway
+        }
     } else {
         left = createCyclewayForSide(expandedTags, false)
         right = createCyclewayForSide(expandedTags, true)
