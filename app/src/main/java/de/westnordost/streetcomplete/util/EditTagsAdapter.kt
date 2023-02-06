@@ -163,10 +163,12 @@ class EditTagsAdapter(
                     // otherwise clear value
                     displaySet[position] = displaySet[position].copy(second = "")
                     dataSet[oldEntry.first] = ""
+                    // show suggestions if not entering a name
+                    if (!oldEntry.second.startsWith("name"))
+                        valueView.postDelayed({ valueView.requestFocus() }, 10)
                 }
-                onDataChanged()
-//                notifyItemRemoved(position) // crash when editing an entry, and deleting another one right after
                 notifyDataSetChanged()
+                onDataChanged()
             }
             setOnLongClickListener {
                 val position = absoluteAdapterPosition
