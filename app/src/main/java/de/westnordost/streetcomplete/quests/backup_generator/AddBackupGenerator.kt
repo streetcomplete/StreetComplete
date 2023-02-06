@@ -13,16 +13,15 @@ import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBackupGenerator : OsmFilterQuestType<Boolean>() {
-    val amenities = listOf(
+    private val amenities = listOf(
         "bar", "cafe", "fast_food", "food_court", "pub", "restaurant", "cinema",
-        "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash", "telephone",
-        "vending_machine"
+        "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash", "vending_machine"
     )
-    val tourisms = listOf(
-        "zoo", "aquarium", "theme_park", "hotel", "hostel", "motel", "guest_house",
-        "apartment", "camp_site", "museum", "gallery"
+    private val tourisms = listOf(
+        "theme_park", "hotel", "hostel", "motel", "guest_house", "apartment", "camp_site",
+        "museum", "gallery"
     )
-    val leisures = listOf(
+    private val leisures = listOf(
         "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
         "miniature_golf", "sauna", "trampoline_park", "tanning_salon"
     )
