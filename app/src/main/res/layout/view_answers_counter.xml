@@ -29,6 +29,7 @@
         android:layout_alignParentLeft="true"
         android:src="@drawable/ic_star_white_shadow_32dp"
         app:tint="@color/button_white"
+        app:tintMode="multiply"
         tools:ignore="RtlHardcoded" />
 
     <RelativeLayout
@@ -37,6 +38,7 @@
         android:layout_toRightOf="@id/iconView"
         android:layout_marginLeft="-12dp"
         android:layout_centerVertical="true"
+        android:visibility="gone"
         tools:ignore="RtlHardcoded">
 
         <TextView
@@ -62,7 +64,7 @@
             android:layout_below="@+id/labelView"
             android:textAppearance="@style/TextAppearance.BigBody"
             android:textStyle="bold"
-        android:textColor="#ddd"
+            android:textColor="#fff"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:shadowColor="#000"
