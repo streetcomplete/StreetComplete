@@ -14,12 +14,15 @@ v51.0: |
   <li>Parking overlay: Add option to specify that cars park on alternating sides (i.e. not enough space to park on both sides at the same time)</li>
   <li>Address overlay: Make entering addresses in places with no street names more efficient (#4718, #4751), by @Helium314</li>
   <li>Ask for kerbs also on traffic islands (#3786), by @arrival-spring</li>
+  <li>Do not ask various quests for ways that only exist to connect an e.g. footway to the street-way (#4787)</li>
+  <li>Notes: You can now preview the to be attached photos by tapping on them (#2497, #4797), by @Helium314</li>
   <li>The name and location of a place is now also shown in the undo dialog (#4767, #4772), by @Helium314</li>
-  <li>Other small enhancements (#4762, #4750, #2880, #4765, #4710, #4781...), thanks @matkoniecz, @FloEdelmann, @Helium314</li>
+  <li>Other small enhancements, improved wordings, ... (#4762, #4750, #2880, #4765, #4710, #4781, #4745...), thanks @matkoniecz, @FloEdelmann, @Helium314</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>Don't ask whether vacant shop is still the same shop (#4752, #4756), by @Helium314</li>
+  <li>(Street) names should not automatically be capitalized in Georgian (#4784, #4785), by @balsoft</li>
   <li>Other fixes (#4774, #4763...)</li>
   </ul>
 
