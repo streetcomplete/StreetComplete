@@ -187,6 +187,9 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.27.0")
+
+    // image view that allows zoom and pan
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
 }
 
 /** Localizations that should be pulled from POEditor */
