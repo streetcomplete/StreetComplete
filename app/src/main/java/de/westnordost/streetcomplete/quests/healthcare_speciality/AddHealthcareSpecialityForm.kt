@@ -184,20 +184,31 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
                 featureCtrl.feature?.name,
                 ::filterOnlySpecialitiesOfMedicalDoctors,
                 ::onSelectedFeature,
-                lastPickedAnswers.ifEmpty { listOf( // see https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values with chiropractic skipped (pseudomedicine), biology (no entry in presets)
+                lastPickedAnswers.ifEmpty { listOf( 
+                    // based on https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values
+                    // with alternative medicine skipped
                     "amenity/doctors/general",
+                    // chiropractic - skipped (alternative medicine)
                     "amenity/doctors/ophthalmology",
                     "amenity/doctors/paediatrics",
                     "amenity/doctors/gynaecology",
-                    // dentist ?
+                    //biology skipped as that is value for laboratory
+                    // "amenity/dentist", would require changes in SCEE
                     // psychiatry - https://github.com/openstreetmap/id-tagging-schema/issues/778
                     "amenity/doctors/orthopaedics",
                     "amenity/doctors/internal",
-                    // orthodontics
-                    // dermatology
-                    // osteopathy
-                    // otolaryngology
-                    // radiology
+                    // "healthcare/dentist/orthodontics", may require changes in SCEE
+                    "amenity/doctors/dermatology",
+                    // osteopathy - skipped (alternative medicine)
+                    "amenity/doctors/otolaryngology",
+                    "amenity/doctors/radiology",
+                    // vaccination? that is tagged differently, right? TODO
+                    "amenity/doctors/cardiology",
+                    "amenity/doctors/surgery", // TODO? really for doctors? Maybe that is used primarily for hospitals?
+                    // physiotherapy
+                    // urology
+                    // emergency
+                    // dialysis
                 ).mapNotNull { featureDictionary.byId(it).get() } }
             ).show()
         }
