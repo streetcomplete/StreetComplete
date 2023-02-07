@@ -70,6 +70,15 @@ class HasTagLike(val key: String, val value: String) : ElementFilter {
         obj.tags.entries.any { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
 }
 
+class NotHasTagLike(val key: String, val value: String) : ElementFilter {
+    private val keyRegex = RegexOrSet.from(key)
+    private val valueRegex = RegexOrSet.from(value)
+
+    override fun toString() = "~$key !~ $value"
+    override fun matches(obj: Element) =
+        obj.tags.entries.none { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
+}
+
 class HasTagLessThan(key: String, value: Float) : CompareTagValue(key, value) {
     override fun toString() = "$key < $value"
     override fun compareTo(tagValue: Float) = tagValue < value

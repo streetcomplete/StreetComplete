@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -99,7 +100,8 @@ private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (thi
     is NotHasKeyLike,
     is NotHasTag,
     is NotHasTagValueLike,
-    is HasTagValueLike ->
+    is HasTagValueLike,
+    is NotHasTagLike ->
         true
     is HasKey,
     is HasKeyLike,
