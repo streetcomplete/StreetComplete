@@ -71,7 +71,6 @@ private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
     }
     tags.remove("cycleway")
     tags.expandBareTagIntoSide("cycleway", "lane", side)
-    tags.expandBareTagIntoSide("cycleway", "lane", side)
     tags.expandBareTagIntoSide("cycleway", "oneway", side)
     tags.expandBareTagIntoSide("cycleway", "segregated", side)
 }
