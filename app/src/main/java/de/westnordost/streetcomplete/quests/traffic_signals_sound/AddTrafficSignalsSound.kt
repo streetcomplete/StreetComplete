@@ -55,7 +55,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = YesNoQuestForm()
+    override fun createForm() = AddTrafficSignalsSoundForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate(SOUND_SIGNALS, answer.toYesNo())
