@@ -11,19 +11,16 @@
         tools:src="@drawable/surface_paving_stones"
         android:id="@+id/imageView"
         android:scaleType="centerCrop"
-        android:layout_width="90dp"
-        android:layout_height="90dp"/>
+        android:layout_width="72dp"
+        android:layout_height="72dp"/>
 
     <ImageView
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="0dp"
-        android:src="@drawable/ic_close_24dp"
+        android:src="@drawable/ic_close_32dp"
         app:tint="#fff"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:layout_margin="10dp"
         android:background="#9333"
         android:layout_alignEnd="@id/imageView"/>
 
