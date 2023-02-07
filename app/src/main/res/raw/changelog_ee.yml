@@ -1,6 +1,7 @@
 51.0: |
   <ul>
   <li>App renamed to SCEE as an attempt to reduce confusion of this fork with original StreetComplete</li>
+  <li>Add new UI for healthcare quest (by @matkoniecz, #408)</li>
   <li>Use left/right/both in custom overlay to display selection on side of a road (#403)</li>
   <li>Allow saving full resolution photos used for notes (#393)</li>
   <li>Add level when creating POI while level filter is active</li>

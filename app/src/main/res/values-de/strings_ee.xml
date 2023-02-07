@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_hide_notes_title">Notizen bestimmter Nutzer verstecken</string>
+    <string name="pref_category_mods">SCEE Einstellungen</string>
+    <string name="pref_screen_notes">Notizen</string>
+    <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
+</resources>

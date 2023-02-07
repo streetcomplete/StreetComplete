@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_read_filter_hint">Фільтр…</string>
+    <string name="pref_hide_notes_hint">Використовуйте кому для відокремлення імен користувачів або ідентифікаторів</string>
+    <string name="pref_category_mods">Налаштування SCEE</string>
+    <string name="pref_expert_mode_title">Експертний режим</string>
+    <string name="pref_expert_mode_summary">Увімкнути розширені можливості редагування</string>
+    <string name="pref_read_log_summary">Показує максимум 1000 записів журналу з моменту запуску програми, використовуйте фільтр, щоб отримати більше</string>
+    <string name="pref_read_log_save">Збереження повного журналу у файл</string>
+    <string name="pref_screen_notes">Нотатки</string>
+    <string name="pref_hide_notes_title">Приховати нотатки певних користувачів</string>
+</resources>
