@@ -236,6 +236,7 @@ class MainFragment :
         updateOffsetWithOpenBottomSheet()
     }
 
+    @UiThread
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val mapFragment = this.mapFragment ?: return
@@ -547,11 +548,13 @@ class MainFragment :
     /* ------------------------------ SelectedOverlaySource.Listener -----------------------------*/
 
     override fun onSelectedOverlayChanged() {
-        updateCreateButtonVisibility()
+        viewLifecycleScope.launch {
+            updateCreateButtonVisibility()
 
-        val f = bottomSheetFragment
-        if (f is IsShowingElement) {
-            viewLifecycleScope.launch { closeBottomSheet() }
+            val f = bottomSheetFragment
+            if (f is IsShowingElement) {
+                closeBottomSheet()
+            }
         }
     }
 
@@ -559,18 +562,20 @@ class MainFragment :
 
     @AnyThread
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val f = bottomSheetFragment
-        // open quest has been deleted
-        if (f is IsShowingQuestDetails && f.questKey in removed) {
-            viewLifecycleScope.launch { closeBottomSheet() }
+        viewLifecycleScope.launch {
+            val f = bottomSheetFragment
+            // open quest has been deleted
+            if (f is IsShowingQuestDetails && f.questKey in removed) {
+                closeBottomSheet()
+            }
         }
     }
 
     @AnyThread
     override fun onVisibleQuestsInvalidated() {
-        val f = bottomSheetFragment
-        if (f is IsShowingQuestDetails) {
-            viewLifecycleScope.launch {
+        viewLifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f is IsShowingQuestDetails) {
                 val openQuest = withContext(Dispatchers.IO) { visibleQuestsSource.get(f.questKey) }
                 // open quest does not exist anymore after visible quest invalidation
                 if (openQuest == null) closeBottomSheet()
@@ -582,19 +587,21 @@ class MainFragment :
 
     @AnyThread
     override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val f = bottomSheetFragment
-        // open element has been deleted
-        if (f is IsShowingElement && f.elementKey in deleted) {
-            viewLifecycleScope.launch { closeBottomSheet() }
+        viewLifecycleScope.launch {
+            val f = bottomSheetFragment
+            // open element has been deleted
+            if (f is IsShowingElement && f.elementKey in deleted) {
+                closeBottomSheet()
+            }
         }
     }
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-        val f = bottomSheetFragment
-        if (f !is IsShowingElement) return
-        val elementKey = f.elementKey ?: return
         viewLifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f !is IsShowingElement) return@launch
+            val elementKey = f.elementKey ?: return@launch
             val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
             // open element does not exist anymore after download
             if (openElement == null) {
@@ -605,9 +612,11 @@ class MainFragment :
 
     @AnyThread
     override fun onCleared() {
-        val f = bottomSheetFragment
-        if (f is IsShowingElement) {
-            viewLifecycleScope.launch { closeBottomSheet() }
+        viewLifecycleScope.launch {
+            val f = bottomSheetFragment
+            if (f is IsShowingElement) {
+                closeBottomSheet()
+            }
         }
     }
 
