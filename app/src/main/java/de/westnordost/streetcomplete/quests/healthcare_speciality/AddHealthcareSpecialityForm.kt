@@ -147,7 +147,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
+            .mostCommonWithin(target = 12, historyCount = 50, first = 1)
             .toList()
     }
 
@@ -184,32 +184,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
                 featureCtrl.feature?.name,
                 ::filterOnlySpecialitiesOfMedicalDoctors,
                 ::onSelectedFeature,
-                lastPickedAnswers.ifEmpty { listOf( 
-                    // based on https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values
-                    // with alternative medicine skipped
-                    "amenity/doctors/general",
-                    // chiropractic - skipped (alternative medicine)
-                    "amenity/doctors/ophthalmology",
-                    "amenity/doctors/paediatrics",
-                    "amenity/doctors/gynaecology",
-                    //biology skipped as that is value for laboratory
-                    // "amenity/dentist", would require changes in SCEE
-                    // psychiatry - https://github.com/openstreetmap/id-tagging-schema/issues/778
-                    "amenity/doctors/orthopaedics",
-                    "amenity/doctors/internal",
-                    // "healthcare/dentist/orthodontics", may require changes in SCEE
-                    "amenity/doctors/dermatology",
-                    // osteopathy - skipped (alternative medicine)
-                    "amenity/doctors/otolaryngology",
-                    "amenity/doctors/radiology",
-                    // vaccination? that is tagged differently, right? TODO
-                    "amenity/doctors/cardiology",
-                    "amenity/doctors/surgery", // TODO? really for doctors? Maybe that is used primarily for hospitals?
-                    // physiotherapy
-                    // urology
-                    // emergency
-                    // dialysis
-                ).mapNotNull { featureDictionary.byId(it).get() } }
+                getSuggestions()
             ).show()
         }
     }
@@ -252,6 +227,36 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         checkIsFormComplete()
     }
 
+    private fun getSuggestions(): Collection<Feature> {
+        if (lastPickedAnswers.size >= 12) return lastPickedAnswers
+        return (lastPickedAnswers + listOf(
+                // based on https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values
+                // with alternative medicine skipped
+                "amenity/doctors/general",
+                // chiropractic - skipped (alternative medicine)
+                "amenity/doctors/ophthalmology",
+                "amenity/doctors/paediatrics",
+                "amenity/doctors/gynaecology",
+                //biology skipped as that is value for laboratory
+                // "amenity/dentist", would require changes in SCEE
+                // psychiatry - https://github.com/openstreetmap/id-tagging-schema/issues/778
+                "amenity/doctors/orthopaedics",
+                "amenity/doctors/internal",
+                // "healthcare/dentist/orthodontics", may require changes in SCEE
+                "amenity/doctors/dermatology",
+                // osteopathy - skipped (alternative medicine)
+                "amenity/doctors/otolaryngology",
+                "amenity/doctors/radiology",
+                // vaccination? that is tagged differently, right? TODO
+                "amenity/doctors/cardiology",
+                "amenity/doctors/surgery", // TODO? really for doctors? Maybe that is used primarily for hospitals?
+                // physiotherapy
+                // urology
+                // emergency
+                // dialysis
+                ).mapNotNull { featureDictionary.byId(it).get() }
+            ).distinct().take(12)
+    }
 }
 
 
