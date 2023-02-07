@@ -24,8 +24,8 @@
     <ImageView
         android:id="@+id/attachedGpxView"
         android:layout_toEndOf="@id/takePhotoButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:src="@drawable/ic_attach_gpx_24dp"
         app:tint="@color/disabled_text"
         android:visibility="gone"

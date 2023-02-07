@@ -56,7 +56,7 @@ private fun getImageSize(imagePath: String): Size? {
     return Size(width, height)
 }
 
-private fun getRotationMatrix(imagePath: String): Matrix =
+fun getRotationMatrix(imagePath: String): Matrix =
     try {
         ExifInterface(imagePath).rotationMatrix
     } catch (ignore: IOException) {
