@@ -52,19 +52,35 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     ).applyTo(tags)
 }
 
-/* bare cycleway tags are interpreted differently for oneways, see comment in CyclewayParser
-*  regarding "naked" cycleway keys */
+/* bare cycleway tags are interpreted differently for oneways */
 private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
-    val cycleway = tags["cycleway"]
-    if (cycleway != null && isOneway(tags)) {
+    val cycleway = tags["cycleway"] ?: return
+    // i.e. they are only expanded into one side. Which side depends on country, direction of oneway
+    // and whether it is an "opposite" tag value
+    val side = if (isOneway(tags)) {
         val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
         val isOpposite = cycleway.startsWith("opposite")
-        val side = if (isOpposite == isReverseSideRight) "right" else "left"
-        tags["cycleway:$side"] = cycleway
-        tags["cycleway:lane"]?.let { tags["cycleway:$side:lane"] = it }
-        tags["cycleway:oneway"]?.let { tags["cycleway:$side:oneway"] = it }
-        tags["cycleway:segregated"]?.let { tags["cycleway:$side:segregated"] = it }
+        if (isOpposite == isReverseSideRight) "right" else "left"
+    } else {
+        "both"
     }
+    if (!tags.containsKey("cycleway:$side")) {
+        tags["cycleway:$side"] = cycleway
+            .removePrefix("opposite_") // opposite_track -> track etc.
+            .replaceFirst("opposite", "no") // opposite -> no
+    }
+    tags.remove("cycleway")
+    tags.expandBareTagIntoSide("cycleway", "lane", side)
+    tags.expandBareTagIntoSide("cycleway", "lane", side)
+    tags.expandBareTagIntoSide("cycleway", "oneway", side)
+    tags.expandBareTagIntoSide("cycleway", "segregated", side)
+}
+
+private fun Tags.expandBareTagIntoSide(key: String, suffix: String = "", side: String) {
+    val post = if (suffix.isEmpty()) "" else ":$suffix"
+    val value = get("$key$post") ?: return
+    if (!containsKey("$key:$side$post")) set("$key:$side$post", value)
+    remove("$key$post")
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
