@@ -65,7 +65,7 @@ class StreetParkingCreatorKtTest {
                     LeftAndRightStreetParking(parking, parking),
                     arrayOf(
                         StringMapEntryAdd("parking:both", positionStr),
-                        StringMapEntryAdd("parking:both:orientation", orientationStr )
+                        StringMapEntryAdd("parking:both:orientation", orientationStr)
                     )
                 )
 
