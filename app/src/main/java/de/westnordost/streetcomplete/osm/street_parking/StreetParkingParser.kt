@@ -113,4 +113,3 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("parking", "markings", false)
     return result
 }
-
