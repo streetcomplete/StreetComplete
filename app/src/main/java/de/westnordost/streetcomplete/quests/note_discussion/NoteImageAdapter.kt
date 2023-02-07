@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnLayout
@@ -51,18 +52,21 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
         if (!image.exists()) return
 
         val dialog = Dialog(context)
-        val imageView = PhotoView(context).apply {
-            scaleType = ImageView.ScaleType.FIT_CENTER
-            val bitmap = BitmapFactory.decodeFile(imagePath)
-            val matrix = getRotationMatrix(imagePath)
-            val result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-            if (result != bitmap) {
-                bitmap.recycle()
-            }
-            setImageBitmap(result)
-            setOnOutsidePhotoTapListener { dialog.dismiss() }
+        val imageView = PhotoView(context)
+        val bitmap = BitmapFactory.decodeFile(imagePath)
+        val matrix = getRotationMatrix(imagePath)
+        val result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+        if (result != bitmap) {
+            bitmap.recycle()
         }
+        imageView.setImageBitmap(result)
+        imageView.setOnOutsidePhotoTapListener { dialog.dismiss() }
+        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+        imageView.minimumScale = 0.75f
+        imageView.maximumScale = 4f
+        imageView.doOnLayout { imageView.scale = 0.75f }
         dialog.setContentView(imageView)
+        dialog.window?.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
     }
