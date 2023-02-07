@@ -205,7 +205,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         } else if (NOT_LIKE == operator) {
             return NotHasTagLike(key, parseQuotableWord())
         }
-        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE'", cursorPos)
+        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE' or '$NOT_LIKE'", cursorPos)
     }
 
     if (nextIsAndAdvance(OLDER)) {

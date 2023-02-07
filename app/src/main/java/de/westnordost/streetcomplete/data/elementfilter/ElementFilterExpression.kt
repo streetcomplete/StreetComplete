@@ -40,7 +40,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `!~shop|craft`                 | doesn't have a tag whose key matches the regex `shop|craft`                   |
  *  | `shop ~ car|boat`              | has a tag whose key is `shop` and whose value matches the regex `car|boat`    |
  *  | `shop !~ car|boat`             | doesn't have a tag whose key is `shop` and value matches the regex `car|boat` |
- *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value `car|boat` (both regexes)  |
+ *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value matches `car|boat` (both regexes) |
+ *  | `~shop|craft !~ car|boat`      | doesn't have a tag whose key matches `shop|craft` and value matches `car|boat` (both regexes) |
  *  | `foo < 3.3`                    | has a tag with key `foo` whose value is smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
  *  | `foo < 3.3ft`                  | same as above but value is smaller than 3.3 feet (~1 meter)<br/>This works for other units as well (mph, st, lbs, yds...) |
  *  | `foo < 3'4"`                   | same as above but value is smaller than 3 feet, 4 inches (~1 meter)           |
@@ -51,6 +52,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop and name`                | has both a tag with key `shop` and one with key `name`                        |
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
+ *
+ *  Note that regexes have to match the whole string, i.e. `~shop|craft` does not match `shop_type`.
  *
  *  ### Equivalent expressions
  *  | expression                     | equivalent expression                                    |
