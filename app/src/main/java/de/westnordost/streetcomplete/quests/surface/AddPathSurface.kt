@@ -28,6 +28,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
             and !note:surface
           )
         )
+        and ~path|footway|cycleway|bridleway !~ link
     """
     /* ~paved ways are less likely to change the surface type */
 

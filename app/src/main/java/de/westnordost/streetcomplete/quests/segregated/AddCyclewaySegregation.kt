@@ -23,6 +23,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
         and area != yes
         and !sidewalk
         and (!segregated or segregated older today -8 years)
+        and ~path|footway|cycleway !~ link
     """
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
     override val wikiLink = "Key:segregated"

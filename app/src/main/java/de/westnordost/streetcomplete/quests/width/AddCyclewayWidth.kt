@@ -32,6 +32,7 @@ class AddCyclewayWidth(
         and area != yes
         and access !~ private|no
         and placement != transition
+        and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"
