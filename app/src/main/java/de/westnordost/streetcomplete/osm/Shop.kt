@@ -267,4 +267,5 @@ val IS_DISUSED_SHOP_EXPRESSION = """
     nodes, ways, relations with
       ${isShopExpressionFragment("disused")}
       or shop = vacant
+      or office = vacant
 """.toElementFilterExpression()
