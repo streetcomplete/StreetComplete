@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.upload
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -15,6 +16,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -60,10 +62,9 @@ class Uploader(
         } else
             prefs.edit().putInt(Prefs.BAN_CHECK_ERROR_COUNT, 0).apply()
         if (prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0) > 10) {
-            AlertDialog.Builder(context)
-                .setMessage(R.string.ban_check_fails)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
+            ContextCompat.getMainExecutor(context).execute {
+                context.toast(R.string.ban_check_fails, Toast.LENGTH_LONG)
+            }
         }
 
         // let's fail early in case of no authorization
