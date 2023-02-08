@@ -41,6 +41,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
         and indoor != yes
+        and ~path|footway|cycleway !~ link
     """
 
     override val changesetComment = "Specify whether ways are lit"

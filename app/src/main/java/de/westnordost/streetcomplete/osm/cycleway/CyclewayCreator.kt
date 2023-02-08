@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -22,10 +23,12 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
        - cycleway:left=separate
        First separating the values and then later conflating them again, if possible, solves this.
      */
-    tags.expandSides("cycleway")
-    tags.expandSides("cycleway", "lane")
-    tags.expandSides("cycleway", "oneway")
-    tags.expandSides("cycleway", "segregated")
+
+    expandBareTags(tags, isLeftHandTraffic)
+    tags.expandSides("cycleway", null, false)
+    tags.expandSides("cycleway", "lane", false)
+    tags.expandSides("cycleway", "oneway", false)
+    tags.expandSides("cycleway", "segregated", false)
 
     applyOnewayNotForCyclists(tags, isLeftHandTraffic)
     left?.applyTo(tags, false, isLeftHandTraffic)
@@ -47,6 +50,36 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
         if (left?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
         if (right?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
     ).applyTo(tags)
+}
+
+/* bare cycleway tags are interpreted differently for oneways */
+private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
+    val cycleway = tags["cycleway"] ?: return
+    // i.e. they are only expanded into one side. Which side depends on country, direction of oneway
+    // and whether it is an "opposite" tag value
+    val side = if (isOneway(tags)) {
+        val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
+        val isOpposite = cycleway.startsWith("opposite")
+        if (isOpposite == isReverseSideRight) "right" else "left"
+    } else {
+        "both"
+    }
+    if (!tags.containsKey("cycleway:$side")) {
+        tags["cycleway:$side"] = cycleway
+            .removePrefix("opposite_") // opposite_track -> track etc.
+            .replaceFirst("opposite", "no") // opposite -> no
+    }
+    tags.remove("cycleway")
+    tags.expandBareTagIntoSide("cycleway", "lane", side)
+    tags.expandBareTagIntoSide("cycleway", "oneway", side)
+    tags.expandBareTagIntoSide("cycleway", "segregated", side)
+}
+
+private fun Tags.expandBareTagIntoSide(key: String, suffix: String = "", side: String) {
+    val post = if (suffix.isEmpty()) "" else ":$suffix"
+    val value = get("$key$post") ?: return
+    if (!containsKey("$key:$side$post")) set("$key:$side$post", value)
+    remove("$key$post")
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {

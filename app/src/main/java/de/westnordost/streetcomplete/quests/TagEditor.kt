@@ -13,6 +13,7 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -207,6 +208,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         showOk()
     }
 
+    @UiThread
     @SuppressLint("NotifyDataSetChanged")
     private fun showQuest(quest: OsmQuest) {
         val f = quest.type.createForm()

@@ -82,4 +82,20 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
     }
 }
 
-private val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
+// https://wiki.openstreetmap.org/wiki/Multilingual_names :
+// e.g.
+// name                 - name (language is unspecified)
+// name:de              - German name
+// name:ja-Latn         - Japanese name transliterated to Latin alphabet
+// name:ja_rm           - same as above (the above is preferred by community since 2018)
+// name:zh-HK           - Chinese name as written in Hong Kong
+// name:zh-Hant-SG      - Traditional Chinese name as written in Singapore
+// name:zh-Latn-pinyin  - Chinese name transliterated to Latin alphabet (using pinyin transliteration)
+// name:zh_pinyin       - same as above (this is preferred by community)
+// name:be-tarask       - Belariusian name in pre-reform of 1933, classical orthography
+
+private val namePattern = Regex(pattern =
+    "name(?::([a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-[A-Z]{2})?(?:[_-][a-z]{2,})?))?"
+    //        language   script             country       ortography/transliteration system etc.
+    //        ISO 639    ISO 15924          ISO 3166      OSM-community defined
+)

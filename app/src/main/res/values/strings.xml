@@ -1563,6 +1563,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_traffic_signals_button_title">Do these traffic lights have a button to request a walk signal?</string>
 
     <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
+    <string name="quest_traffic_signals_sound_description">Hint: Look out for speakers. Not all sound signals can be activated through a button.</string>
 
     <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it’s safe to cross?</string>
     <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>

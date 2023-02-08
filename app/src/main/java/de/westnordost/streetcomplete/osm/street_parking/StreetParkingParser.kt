@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
+import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 
@@ -102,30 +103,13 @@ private fun createParkingForSideOldSchema(tags: Map<String, String>, side: Strin
 
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {
     val result = tags.toMutableMap()
-    expandSidesTag("parking:lane", "", result, true)
-    expandSidesTag("parking:lane", "parallel", result, true)
-    expandSidesTag("parking:lane", "diagonal", result, true)
-    expandSidesTag("parking:lane", "perpendicular", result, true)
-    expandSidesTag("parking", "", result, false)
-    expandSidesTag("parking", "orientation", result, false)
-    expandSidesTag("parking", "staggered", result, false)
-    expandSidesTag("parking", "markings", result, false)
+    result.expandSidesTags("parking:lane", "", true)
+    result.expandSidesTags("parking:lane", "parallel", true)
+    result.expandSidesTags("parking:lane", "diagonal", true)
+    result.expandSidesTags("parking:lane", "perpendicular", true)
+    result.expandSidesTags("parking", "", false)
+    result.expandSidesTags("parking", "orientation", false)
+    result.expandSidesTags("parking", "staggered", false)
+    result.expandSidesTags("parking", "markings", false)
     return result
-}
-
-/** Expand my_tag:both and my_tag into my_tag:left and my_tag:right etc */
-private fun expandSidesTag(
-    keyPrefix: String,
-    keyPostfix: String,
-    tags: MutableMap<String, String>,
-    useNakedTag: Boolean
-) {
-    val pre = keyPrefix
-    val post = if (keyPostfix.isEmpty()) "" else ":$keyPostfix"
-    var value = tags["$pre:both$post"]
-    if (value == null && useNakedTag) value = tags["$pre$post"]
-    if (value != null) {
-        if (!tags.containsKey("$pre:left$post")) tags["$pre:left$post"] = value
-        if (!tags.containsKey("$pre:right$post")) tags["$pre:right$post"] = value
-    }
 }
