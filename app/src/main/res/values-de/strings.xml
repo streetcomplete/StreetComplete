@@ -1055,7 +1055,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_shoulder_value_yes">"Seitenstreifen"</string>
     <string name="quest_shoulder_value_no">"Kein Seitenstreifen"</string>
     <string name="no_camera_permission_warning_title">"Kamerazugriff"</string>
-    <string name="no_camera_permission_warning">"Die Berechtigung wird benötigt, um Fotos zu machen und Abstände mit der Kamera zu messen."</string>
+    <string name="no_camera_permission_warning">"Die Berechtigung wird benötigt, um Abstände mit der Kamera zu messen."</string>
     <string name="ar_core_error_sdk_too_old">"Die App ist zu alt, versuche zu aktualisieren."</string>
     <string name="ar_core_tracking_error_bad_state">"Etwas hat nicht geklappt. Versuche die Messung neu zu starten."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Zu dunkel hier"</string>
@@ -1305,8 +1305,9 @@ Jetzt verschieben?"</string>
 &lt;p&gt;Setze den Start- und Endpunkt einfach während das Telefon gerade nach unten zeigt (also so dass der weiße Pfeil von oben zu sehen ist), um dieses Problem bei horizontalen Messungen komplett zu umgehen.&lt;/p&gt;
 &lt;p&gt;Für vertikale Messungen musst du den Startpunkt stattdessen aus verschiedenen Richtungen betrachten, um sicherzustellen, dass er sich nicht relativ zum Boden verschiebt.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Diese App nutzt die von Google bereitgestellten &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) welche den &lt;a href=\"https://policies.google.com/privacy\"&gt;Google-Datenschutzrichtlinien&lt;/a&gt; unterliegen."</string>
-    <string name="default_disabled_msg_seasonal">"Dieser Aufgabentyp ist standardmäßig deaktiviert weil man die Situation vor Ort möglicherweise nur zu bestimmten Jahreszeiten überprüfen kann."</string>
-    <string name="quest_gritBinSeasonal_title">"Ist dies auch außerhalb des Winters hier?"</string>
+    <string name="default_disabled_msg_seasonal">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil man die Situation vor Ort möglicherweise nur zu bestimmten Jahreszeiten überprüfen kann."</string>
+    <string name="quest_gritBinSeasonal_title">"Ist das auch außerhalb des Winters hier?"</string>
     <string name="street_parking_staggered_on_street">"Wechselseitig auf der Straße"</string>
     <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Straße"</string>
+    <string name="quest_traffic_signals_sound_description">"Tipp: Achte auf Lautsprecher. Nicht alle Tonsignale können über eine Taste aktiviert werden."</string>
 </resources>

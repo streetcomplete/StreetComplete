@@ -125,7 +125,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
     return ("""(
         ${p}shop and ${p}shop !~ no|vacant|mall
-        or ${p}office and ${p}office != vacant
+        or ${p}office and ${p}office !~ no|vacant
         or ${p}healthcare and healthcare != hospital
         or ${p}craft
         or ${p}tourism = information and ${p}information = office
@@ -267,4 +267,5 @@ val IS_DISUSED_SHOP_EXPRESSION = """
     nodes, ways, relations with
       ${isShopExpressionFragment("disused")}
       or shop = vacant
+      or office = vacant
 """.toElementFilterExpression()

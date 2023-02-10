@@ -21,6 +21,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     private val disusedShopsFilter by lazy { """
         nodes, ways with (
           shop = vacant
+          or office = vacant
           or (${isShopExpressionFragment("disused")}
              and !man_made
              and !historic

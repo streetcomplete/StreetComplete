@@ -990,5 +990,12 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Pe trotuar"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Într-un loc de parcare"</string>
+    <string name="unit_days">"zile"</string>
+    <string name="unit_hours">"ore"</string>
+    <string name="unit_minutes">"minute"</string>
+    <string name="quest_drinking_water_title2">"Apa este potabilă aici?"</string>
+    <string name="quest_address_street_street_name_label">"Numele străzii:"</string>
+    <string name="name_label">"Nume:"</string>
+    <string name="quest_presets_delete">"Șterge"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"trotuar clar împărțit, ambele direcții"</string>
 </resources>

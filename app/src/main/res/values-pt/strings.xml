@@ -1053,7 +1053,7 @@ Como alternativa, pode deixar uma nota (com uma fotografia)."</string>
     <string name="quest_shoulder_value_yes">"berma"</string>
     <string name="quest_shoulder_value_no">"sem berma"</string>
     <string name="no_camera_permission_warning_title">"Permissão da câmara"</string>
-    <string name="no_camera_permission_warning">"A permissão é necessária para fotografar ou medir distâncias com a câmara."</string>
+    <string name="no_camera_permission_warning">"A permissão é necessária para medir distâncias com a câmara."</string>
     <string name="ar_core_error_sdk_too_old">"Esta aplicação é demasiado antiga, tente atualizá-la-"</string>
     <string name="ar_core_tracking_error_bad_state">"Algo correu mal. Tente recomeçar a medição."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Está demasiado escuro aqui"</string>
@@ -1303,4 +1303,8 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
 &lt;p&gt;Defina cada ponto inicial e final enquanto aponta o telemóvel diretamente para baixo (para que se veja a seta branca de cima) para evitar completamente este problema para medições horizontais.&lt;/p&gt;
 &lt;p&gt;Para medições verticais, é necessário verificar se o ponto de partida não está em paralaxe ao solo, olhando para ele a partir de diferentes direções.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Esta aplicação funciona em &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services para AR&lt;/a&gt; (ARCore), que é fornecida pelo Google e governada pela &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de Privacidade Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Este tipo de missão está desativado por defeito porque pode exigir uma nova verificação da situação numa parte específica do ano."</string>
+    <string name="quest_gritBinSeasonal_title">"Isto também está aqui fora do Inverno?"</string>
+    <string name="street_parking_staggered_on_street">"Na estrada em lados alternados"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Parcialmente na estrada em lados alternados"</string>
 </resources>

@@ -1282,4 +1282,5 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
     <string name="privacy_html_arcore">"Esta aplicación se ejecuta en &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que es proporcionado por Google y se rige por la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privacidad de Google&lt;/a&gt;."</string>
     <string name="default_disabled_msg_seasonal">"Este tipo de misión está deshabilitado de forma predeterminada porque puede requerir re-verificar la situación en una época específica del año."</string>
+    <string name="quest_traffic_signals_sound_description">"Pista: Busca altavoces (pueden ser grandes o pequeños). No siempre suenan permanentemente."</string>
 </resources>

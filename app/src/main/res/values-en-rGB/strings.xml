@@ -387,7 +387,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_collectionTimes_add_times">"Add collection time"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"No times specified"</string>
     <string name="quest_construction_road_title">"Is this road completed?"</string>
-    <string name="quest_construction_cycleway_title">"Is this bike path completed?"</string>
+    <string name="quest_construction_cycleway_title">"Is this cycleway completed?"</string>
     <string name="quest_construction_footway_title">"Is this footpath completed?"</string>
     <string name="quest_construction_generic_title">"Is this way completed?"</string>
     <string name="quest_construction_building_title">"Is this building completed?"</string>
@@ -1055,7 +1055,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
     <string name="no_camera_permission_warning_title">"Camera permission"</string>
-    <string name="no_camera_permission_warning">"The permission is required to take photos and measure distances with the camera."</string>
+    <string name="no_camera_permission_warning">"The permission is required to measure distances with the camera."</string>
     <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
     <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Too dark here"</string>
@@ -1305,4 +1305,9 @@ Move it now?"</string>
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"This application runs on &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
+    <string name="quest_gritBinSeasonal_title">"Is this also here outside of winter?"</string>
+    <string name="street_parking_staggered_on_street">"On street on alternating sides"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
+    <string name="quest_traffic_signals_sound_description">"Hint: Look out for speakers. Not all sound signals can be activated through a button."</string>
 </resources>

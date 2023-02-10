@@ -24,7 +24,7 @@ bg:
 bs: 
    OSMcontributorBH: 37371
 ca: 
-   Pau Nofuentes Sendra: 17943
+   Pau Nofuentes Sendra: 18028
    jmaspons: 12372
    Joan Montané: 10186
    Josep: 1914
@@ -36,7 +36,7 @@ ca:
    Gabriel Fernández Fernández: 53
 cs: 
    leschek: 27791
-   Lukáš Jelínek: 11640
+   Lukáš Jelínek: 11724
    Stanislav Tichý: 2467
    Petr Kristof: 738
    Petr Kadlec: 666
@@ -46,7 +46,7 @@ cs:
    Vladankudlac: 19
    Lukas852: 14
 da: 
-   ERyPTION: 28247
+   ERyPTION: 28329
    Dennis Kjær Jensen: 6394
    Soren: 3647
    Leonora: 2785
@@ -59,7 +59,7 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 19213
+   Flo Edelmann: 19468
    legofahrrad: 1970
    Andre Thum: 1051
    papojari: 761
@@ -98,11 +98,11 @@ en-AU:
    Peter Newman: 53
 en-GB: 
    Oliver Hawes: 6869
-   10992: 5235
+   10992: 5155
    arrival-spring: 2995
    Peter Newman: 2969
    legofahrrad: 1655
-   Jay Turner: 1093
+   Jay Turner: 1065
    Andi Chandler: 852
    Andrew: 488
    Chris Lane: 327
@@ -145,6 +145,7 @@ es:
    Leo Alcaraz: 137
    Nonation: 137
    riccot: 97
+   Pau Nofuentes Sendra: 90
    Robot8A: 71
    pataquets: 64
    Víctor Suárez: 57
@@ -164,15 +165,15 @@ eu:
    Etzharai: 213
 fa: 
    Mohammad Mehdi Maliki: 16922
-   ARA2020: 13765
+   ARA2020: 13850
    Iman: 11132
    Ahmad: 776
    Mostafa Ahangarha: 336
    mojtaba: 275
    Goudarz Jafari: 45
 fi: 
-   Jiri Grönroos: 13577
-   OpenKartat: 7199
+   Jiri Grönroos: 13750
+   OpenKartat: 7959
    Aleksi.klasila: 4745
    Juhana Uuttu: 4563
    Jarmo Sutinen: 2673
@@ -206,12 +207,12 @@ fr:
    Jean-Baptiste Holcroft: 286
    Jamie Nadeau: 257
    gendy54: 206
+   Vincèn: 163
    Anthony C.: 155
    lvgx: 152
    X@v: 143
    Violaine_Do: 140
    Kazing: 138
-   Vincèn: 136
    Dettorer: 125
    Brice: 101
    S. morel: 100
@@ -237,7 +238,7 @@ gl:
    ccpr1l: 14400
    Xose M.: 2274
 hr: 
-   Matija Nalis: 45969
+   Matija Nalis: 46302
    Nemanja Bračko: 59
    Mario: 9
 hu: 
@@ -261,8 +262,8 @@ id:
    zmni: 85
    Suryamudti0128: 17
 it: 
-   Mannivu: 12309
-   Marco: 9796
+   Mannivu: 12512
+   Marco: 9827
    napo: 6399
    Ittiti: 3385
    mircozorzo: 3142
@@ -310,7 +311,7 @@ lt:
    Jurkis: 449
    Ignas Kiela: 278
 lv: 
-   Rudolfs. mazurs: 40645
+   Rudolfs. mazurs: 40915
    ForestEnjoyer: 3221
    Kārlis: 538
 ml: 
@@ -365,7 +366,7 @@ pl:
    Ilona Sadowska: 8309
    Tomasz Maciejewski: 3494
    Kamil: 3083
-   Piotr Strębski: 2526
+   Piotr Strębski: 2853
    Konrad W: 2377
    Dominik Danelski: 1861
    Marek-M: 1674
@@ -390,7 +391,7 @@ pl:
    Marek: 39
    Michal: 38
 pt: 
-   Carnum: 36043
+   Carnum: 36269
    NunoCaldeira: 5941
    Rui: 3262
    waldyrious: 2609
@@ -417,6 +418,7 @@ ro:
    Alex Bulintis: 177
    maxxxiejazz: 110
    Fcsernik: 65
+   Ciprian: 62
 ru: 
    NetFarmer: 13019
    Alex: 4011
@@ -436,7 +438,7 @@ ru:
    ksetdekov: 612
    Константин: 554
    argz: 407
-   Roman. deev06: 342
+   Roman. deev06: 365
    Андрей: 326
    Vano111ru: 325
    XnL: 233
@@ -453,7 +455,7 @@ ru:
    Barsuk452: 89
    Mihajlo0743: 82
    Van: 80
-   Roman Nikishin: 77
+   Roman Nikishin: 51
    nikiforovpizza: 50
    Alexey: 43
    Serge: 43
@@ -491,7 +493,6 @@ sv:
 sw: 
    SUZA Youth Mappers - Asha Omar, Haitham Alawi, & Hajra Salim: 49155
 th: 
-   Mishari: 22248
    Tucking Spearhead: 5256
    PPNplus: 3596
    Kamthorn: 708

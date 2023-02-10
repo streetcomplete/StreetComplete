@@ -1140,6 +1140,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_barrier_type_gate_any_size">"Portti, mikä tahansa koko"</string>
     <string name="quest_air_pump_compressor_title">"Onko täällä ilmakompressoria?"</string>
     <string name="quest_step_count_stile_hint">"Askelten määrä huipulle. Jos askelten määrä eroaa kummallakin puolella, ilmoita suurempi askelmäärä."</string>
+    <string name="quest_shoulder_explanation2">"Piennar on selkeästi merkitty hätäpysähdyskaistaksi.  Piennar alue ei välttämättä ole päällystetty koko leveydeltä eikä välttämättä riittävän leveä, jotta auto voisi pysähtyä kokonaan pois liikennekaistalta."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ei mitään, pyöräily ei ole sallittu tähän suuntaan"</string>
     <string name="map_btn_create_track">"Luo uusi tien tallennus"</string>
     <string name="map_btn_stop_track">"Lopeta tien tallennus"</string>
@@ -1168,6 +1169,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_air_pump_bicycle_shop_title">"Onko täällä julkista pyöränpumppua (ainakin kun liike avoinna)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Onko täällä toimivaa pyöränpumppua?"</string>
     <string name="action_overlays">"Tasot"</string>
+    <string name="split_way">"Jaa tie osiin"</string>
     <string name="quest_memorialType_title">"Minkälainen muistomerkki tämä on?"</string>
     <string name="quest_memorialType_statue">"Patsas"</string>
     <string name="quest_memorialType_bust">"Rintakuva"</string>
@@ -1218,6 +1220,8 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_address_answer_house_name2">"Osoitteella on talon nimi…"</string>
     <string name="quest_address_street_street_name_label">"Kadun nimi:"</string>
     <string name="quest_address_street_hint2">"Napauta katua valitaksesi sen"</string>
+    <string name="quest_bicycle_incline_title">"Missä suunnassa on ylämäki?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Se hyppii ylös ja alas"</string>
     <string name="quest_drinking_water_type_title">"Kuinka juomavettä saa tästä?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Muu vesilähde"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vesilähde josta suihkuaa pieni vesisuihku"</string>
@@ -1266,6 +1270,7 @@ Haluatko siirtää nyt?"</string>
     <string name="node_moved_not_far_enough">"Siirrä se kauemmaksi"</string>
     <string name="node_moved_too_far">"Siirretty liian kauas. Voisit kenties jättää ilmoituksen"</string>
     <string name="node_moved">"Siirtänyt %s"</string>
+    <string name="move_node_description">"Sijoita karttakohde oikeaan paikkaan vetämällä karttaa.  Käytä zoomaustoimintoa ja yritä olla mahdollisimman tarkka.  Huomaa, että näytetty sijaintisi ei välttämättä ole tarkka."</string>
     <string name="move_node_action_description">"Siirsit pistettä"</string>
     <string name="quest_cycleway_value_shoulder">"ei mitään, mutta piennar on pyöräilijöiden käytettävissä"</string>
     <string name="quest_placeName_no_name_answer">"Ei nimikylttiä"</string>
@@ -1280,7 +1285,10 @@ Haluatko siirtää nyt?"</string>
     <string name="separate_cycleway_non_segregated">"Yhteiskäyttöinen polku"</string>
     <string name="separate_cycleway_segregated">"Erillinen pyörä- ja jalankulkupolku"</string>
     <string name="separate_cycleway_exclusive">"Polku vain pyörille"</string>
+    <string name="separate_cycleway_with_sidewalk">"Vain pyöräilyreitti viereisellä jalkakäytävällä (erottuna reunakiveyksellä)"</string>
+    <string name="cycleway_reverse_direction">"Käännä pyörätien suunta"</string>
     <string name="cycleway_reverse_direction_warning">"Se, että pyörätie johtaa vastakkaiseen suuntaan, on erittäin harvinaista."</string>
+    <string name="cycleway_reverse_direction_toast">"Napauta kumman puolen haluat kääntää"</string>
     <string name="separate_cycleway_path">"Polku tai reitti"</string>
     <string name="quest_fireHydrant_type_pipe">"Putki"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"jaettu jalkakäytävä, molempiin suuntiin"</string>
@@ -1289,4 +1297,9 @@ Haluatko siirtää nyt?"</string>
 &lt;p&gt;Aseta sekä aloitus- että lopetuspiste osoittaen puhelimella suoraan alas (siten että näet valkoisen nuolen päältä) välttääksesi tämän vaakasuuntaisten mittauksien virheen.&lt;/p&gt;
 &lt;p&gt;Pystysuuntaisissa mittauksissa sinun pitää varmistaa, että aloituspiste ei näytä liikkuvan maahan nähden katsottaessa aloituspistettä eri suunnista.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Tämä sovellus toimii käyttäen &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR:ää&lt;/a&gt; (ARCore), jonka tarjoaa Google ja siihen sovelletaan &lt;a href=\"https://policies.google.com/privacy\"&gt;Googlen tietosuojakäytäntöä&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Tämä tehtävätyyppi on oletusarvoisesti poissa käytöstä, koska se voi edellyttää tilanteen tarkistamista uudelleen tiettynä vuodenaikana."</string>
+    <string name="quest_gritBinSeasonal_title">"Onko tämä täällä muulloinkin, kuin talvella?"</string>
+    <string name="street_parking_staggered_on_street">"Kadulla vastakkaisin puolin"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Osittain kadulla vastakkaisin puolin"</string>
+    <string name="quest_traffic_signals_sound_description">"Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella."</string>
 </resources>
