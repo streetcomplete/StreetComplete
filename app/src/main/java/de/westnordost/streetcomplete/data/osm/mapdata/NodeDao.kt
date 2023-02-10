@@ -97,6 +97,8 @@ private val jsonAdapter: JsonAdapter<Map<String, String>> = Moshi.Builder().buil
 private fun CursorPosition.toNode() = Node(
     getLong(ID),
     LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+    // copying from the moshi-"LinkedTreeHashMap" to a normal HashMap is slightly slower than keeping
+    // the moshi map, but tag search then is a little faster, so overall it's better, plus using less memory
     getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let { HashMap<String, String>(it.size, 1.0f).apply { putAll(it) } } } ?: emptyMap(),
     getInt(VERSION),
     getLong(TIMESTAMP),

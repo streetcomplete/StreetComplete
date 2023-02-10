@@ -2,9 +2,10 @@
 - Understand left/right/both in custom overlay coloring
 - Allow saving full photos used for notes
 - Add level when creating POI while level filter is active
-- Allow importing / exporting custom overlay separately
+- Import / export custom overlay
 - Delete button in tag editor deletes row on long press
 - Allow deleting nodes in overlays
+- Improve healthcare UI
 - "External quest" renamed to "Custom quest"
 - Add artwork type and railway platform ref quests
 - Allow showing direction of highlighted way

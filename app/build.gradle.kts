@@ -192,7 +192,7 @@ dependencies {
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
     // faster sqlite library (additional capabilities like R*-tree or json1 not used)
-    // performance comparison: https://github.com/streetcomplete/StreetComplete/issues/3609#issuecomment-1031177576
+    // putting 25% faster, reading 5% faster than Android 9 built-in sqlite
     implementation("com.github.requery:sqlite-android:3.39.2")
     implementation("androidx.sqlite:sqlite:2.3.0")
 
