@@ -1274,7 +1274,7 @@
     <string name="confirmation_replace_shop_message">"В таком случае, часы работы, контактная информация итд. тоже изменились."</string>
     <string name="confirmation_replace_shop_yes">"Теперь это другое место"</string>
     <string name="confirmation_replace_shop_no">"Это всё ещё то же место"</string>
-    <string name="move_node">"Очень малое перемещение..."</string>
+    <string name="move_node">"Немного в другом месте…"</string>
     <string name="quest_move_node_message">"Вы можете исправить положение этой точки.
 Переместить её?"</string>
     <string name="node_moved_not_far_enough">"Пожалуйста, передвинь чуть дальше."</string>

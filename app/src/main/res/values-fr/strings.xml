@@ -1288,8 +1288,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="bicycle_boulevard">"Rue cyclable"</string>
     <string name="separate_cycleway_no">"Cyclistes non autorisés"</string>
     <string name="separate_cycleway_allowed">"Cyclistes autorisés"</string>
-    <string name="separate_cycleway_no_or_allowed">"Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)
-"</string>
+    <string name="separate_cycleway_no_or_allowed">"Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)"</string>
     <string name="separate_cycleway_non_segregated">"Chemin à usage partagé"</string>
     <string name="separate_cycleway_segregated">"Voie ségréguée piétons et cycles"</string>
     <string name="separate_cycleway_exclusive">"Voie cyclable exclusivement"</string>
@@ -1305,4 +1304,8 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
 &lt;p&gt;Réglez les points de départ et de terminaison en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
 &lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n’est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Cette application utilise les &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Services Google Play pour RA&lt;/a&gt; (ARCore), qui sont fournis par Google et sont soumis aux &lt;a href=\"https://policies.google.com/privacy\"&gt;règles de confidentialité de Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Ce type de quêtes est désactivé par défaut car il peut nécessiter une re-vérification à un moment précis de l’année."</string>
+    <string name="quest_gritBinSeasonal_title">"Est-ce là même hors hiver ?"</string>
+    <string name="street_parking_staggered_on_street">"Sur la chaussée, en alternance"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Partiellement sur la chaussée, en alternance"</string>
 </resources>
