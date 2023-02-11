@@ -36,15 +36,10 @@ class PathSurfaceOverlay : Overlay {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
     override val hidesQuestTypes = setOf(AddPathSurface::class.simpleName!!)
 
-    private val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
-
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
         mapData.filter( """
                ways, relations with
                    highway ~ ${(ALL_PATHS).joinToString("|")}
-                   and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
-                   and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
-                   and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (segregated = yes or (!cycleway:surface and !footway:surface and !cycleway:surface:note and !footway:surface:note))
                    and (!surface:note or (surface or cycleway:surface or footway:surface or segregated = yes))
                    and (!cycleway:surface:note or cycleway:surface)
@@ -57,9 +52,6 @@ class PathSurfaceOverlay : Overlay {
                ways, relations with
                    highway ~ ${(ALL_ROADS).joinToString("|")}
                    and (sidewalk ~ left|right|both or sidewalk:both = yes or sidewalk:left = yes or sidewalk:right = yes)
-                   and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
-                   and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
-                   and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
            """)
            .map { it to getStyleForSidewalkAsProperty(it) }
 

@@ -54,7 +54,7 @@ val Surface.titleResId: Int get() = when (this) {
     PAVED_AREA -> R.string.quest_surface_value_paved
     UNPAVED_AREA -> R.string.quest_surface_value_unpaved
     GROUND_AREA -> R.string.quest_surface_value_ground
-    UNIDENTIFIED -> R.string.unknown_shop_title
+    UNIDENTIFIED -> R.string.unknown_surface_title
 }
 
 val Surface.iconResId: Int get() = when (this) {
@@ -86,4 +86,5 @@ val Surface.iconResId: Int get() = when (this) {
     PAVED_AREA -> R.drawable.surface_paved_area
     UNPAVED_AREA -> R.drawable.surface_unpaved_area
     GROUND_AREA -> R.drawable.surface_ground_area
+    UNIDENTIFIED -> R.drawable.background_fully_transparent // TODO - does not have the same size, maybe there is a fitting image?
 }

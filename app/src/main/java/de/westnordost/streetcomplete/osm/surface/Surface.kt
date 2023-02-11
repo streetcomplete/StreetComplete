@@ -42,7 +42,8 @@ enum class Surface(val osmValue: String) {
     PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
     COBLLESTONE_FLATTENED("cobblestone:flattened"),
     BRICK("brick"),
-    BRICKS("bricks");
+    BRICKS("bricks"),
+    UNIDENTIFIED("fake_value");
 }
 
 val COMMON_SPECIFIC_PAVED_SURFACES = listOf(

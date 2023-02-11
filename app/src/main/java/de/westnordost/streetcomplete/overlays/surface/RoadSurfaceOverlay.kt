@@ -30,14 +30,11 @@ class RoadSurfaceOverlay : Overlay {
     override val achievements = listOf(CAR, BICYCLIST)
     override val hidesQuestTypes = setOf(AddRoadSurface::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
-    private val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
-
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         return mapData
             .filter("""
                 ways, relations with
                   highway ~ ${(ALL_ROADS).joinToString("|")}
-                  and (!surface or surface ~ ${handledSurfaces.joinToString("|")})
                   and (!surface:note or surface)
             """)
             .map { it to getStyle(it) }
