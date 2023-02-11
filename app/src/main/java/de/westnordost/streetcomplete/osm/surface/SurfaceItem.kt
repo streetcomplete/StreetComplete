@@ -26,7 +26,7 @@ fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surfac
     )
 
 val Surface.titleResId: Int get() = when (this) {
-    ASPHALT -> R.string.quest_surface_value_asphalt
+    ASPHALT, CHIPSEAL -> R.string.quest_surface_value_asphalt
     CONCRETE -> R.string.quest_surface_value_concrete
     CONCRETE_PLATES -> R.string.quest_surface_value_concrete_plates
     CONCRETE_LANES -> R.string.quest_surface_value_concrete_lanes
@@ -54,10 +54,11 @@ val Surface.titleResId: Int get() = when (this) {
     PAVED_AREA -> R.string.quest_surface_value_paved
     UNPAVED_AREA -> R.string.quest_surface_value_unpaved
     GROUND_AREA -> R.string.quest_surface_value_ground
+    UNIDENTIFIED -> R.string.unknown_shop_title
 }
 
 val Surface.iconResId: Int get() = when (this) {
-    ASPHALT -> R.drawable.surface_asphalt
+    ASPHALT, CHIPSEAL -> R.drawable.surface_asphalt
     CONCRETE -> R.drawable.surface_concrete
     CONCRETE_PLATES -> R.drawable.surface_concrete_plates
     CONCRETE_LANES -> R.drawable.surface_concrete_lanes

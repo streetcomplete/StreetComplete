@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.overlays.Color
  *   by extremely strong association between surface and colour
  */
 val Surface?.color get() = when (this) {
-    ASPHALT, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
+    ASPHALT, CHIPSEAL, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
                        -> Color.BLUE
     WOOD, METAL        -> Color.SKY
     CONCRETE_PLATES, CONCRETE_LANES, SETT, COBLLESTONE_FLATTENED
