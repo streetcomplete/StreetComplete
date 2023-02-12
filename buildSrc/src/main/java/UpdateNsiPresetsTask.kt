@@ -53,6 +53,10 @@ open class UpdateNsiPresetsTask : DefaultTask() {
             val exclude = locationSet["exclude"] as? JsonArray<String>
             if (include != null) transform(include)
             if (exclude != null) transform(exclude)
+            // remove "locationSet": { "include": "001" } because that's the default
+            if (include?.singleOrNull() == "001" && exclude == null) {
+                value.remove("locationSet")
+            }
         }
 
         // sort into separate files
