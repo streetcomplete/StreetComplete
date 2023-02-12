@@ -32,6 +32,7 @@ class AddRoadSurfaceTest {
         assertIsApplicable("highway" to "residential", "surface" to "paved")
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:note" to "wildly mixed asphalt, concrete, paving stones and sett")
         assertIsApplicable("highway" to "residential", "surface" to "cobblestone")
+        assertIsApplicable("highway" to "residential", "surface" to "cement")
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
