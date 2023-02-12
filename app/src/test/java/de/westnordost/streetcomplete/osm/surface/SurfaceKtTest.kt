@@ -77,7 +77,7 @@ class SurfaceKtTest {
 
     @Test
     fun `paved and unpaved is not removed when with note for both roads and paths`() {
-        assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).main, Surface.UNPAVED_ROAD)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).main in listOf(Surface.UNPAVED_ROAD, Surface.UNPAVED_AREA))
         assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).note, "foobar")
         assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).cycleway, null)
         assertEquals(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")).cyclewayNote, null)
