@@ -63,14 +63,14 @@ class RoadSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `way with unsupported surface is ineligible`() {
+    fun `way with unlisted surface is eligible`() {
         val data = way(tags = mapOf(
             "highway" to "track",
             "surface" to "https://en.wikipedia.org/wiki/Stone_frigate",
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(0, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
