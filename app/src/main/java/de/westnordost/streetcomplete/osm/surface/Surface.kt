@@ -36,6 +36,9 @@ enum class Surface(val osmValue: String) {
     MUD("mud"), // valid value, but not displayed specially in StreetComplete
     EARTH("earth"), // synonym of "dirt", maybe more clear
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
+    METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
+    // this way than without info
+
     // this values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them somehow
     SOIL("soil"),

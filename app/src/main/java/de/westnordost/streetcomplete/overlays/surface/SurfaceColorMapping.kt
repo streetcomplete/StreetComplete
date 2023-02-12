@@ -36,7 +36,8 @@ import de.westnordost.streetcomplete.overlays.Color
 val Surface?.color get() = when (this) {
     ASPHALT, CHIPSEAL, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
                        -> Color.BLUE
-    WOOD, METAL        -> Color.SKY
+    WOOD, METAL, METAL_GRID
+                       -> Color.SKY
     CONCRETE_PLATES, CONCRETE_LANES, SETT, COBLLESTONE_FLATTENED
                        -> Color.CYAN
     UNHEWN_COBBLESTONE, GRASS_PAVER -> Color.AQUAMARINE
