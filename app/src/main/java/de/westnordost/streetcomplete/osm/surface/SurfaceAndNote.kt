@@ -9,7 +9,7 @@ data class SurfaceAndNote(val value: Surface, val note: String? = null)
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
-    if(value != Surface.UNIDENTIFIED) { // in such case we should edit only note TODO add tests for that!
+    if(value != Surface.UNIDENTIFIED) { // in such case we should edit only note
         val osmValue = value.osmValue
         val previousOsmValue = tags[key]
 

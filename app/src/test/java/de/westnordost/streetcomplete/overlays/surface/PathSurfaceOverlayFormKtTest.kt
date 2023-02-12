@@ -216,5 +216,15 @@ class PathSurfaceOverlayFormKtTest {
         )
         verifyAnswerWithMainSurfaceOnly(tags, Surface.PAVED_ROAD, "zażółć gęslą jaźń", *expectedChanges)
     }
-}
 
+    @Test
+    fun `saving edit with unidentified surface is changing only note`() {
+        val tags = mapOf("highway" to "path", "surface" to "rare_value")
+        val note = "UNIDENTIFIED is having fale osmValue and special handling in applying edit function"
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface:note", note),
+        )
+        verifyAnswerWithMainSurfaceOnly(tags, Surface.UNIDENTIFIED, note, *expectedChanges)
+    }
+
+}
