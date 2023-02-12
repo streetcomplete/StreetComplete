@@ -87,12 +87,18 @@ fun createMainSurfaceStatus(tags: Map<String, String>): SurfaceAndNoteMayBeEmpty
 }
 
 fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
+    if (surfaceTag == null) {
+        return null
+    }
+    if (surfaceTag in INVALID_SURFACES) {
+        return null
+    }
     // we are treating surface=paved as not being specified at all
     // to show user an empty space to fill missing data
     // unless it has an associated note
     val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
     val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
-    if (surface == null && surfaceTag != null) {
+    if (surface == null) {
         return Surface.UNIDENTIFIED
     }
     return surfaceIgnoringUnspecific
