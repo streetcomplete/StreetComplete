@@ -1305,4 +1305,9 @@ Przesunąć go teraz?"</string>
 &lt;p&gt;Aby zapobiec problemowi przy pomiarze poziomym, ustawiaj każdy punkt początkowy i końcowy, kierując telefon prosto w dół (tak, aby widzieć białą strzałkę od góry).&lt;/p&gt;
 &lt;p&gt;W przypadku pomiarów pionowych, należy zamiast tego sprawdzić, czy punkt początkowy nie przesuwa się względem ziemi, patrząc na niego z różnych kierunków.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ta aplikacja wykorzystuje usługę &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), dostarczaną przez firmę Google, która objęta jest &lt;a href=\"https://policies.google.com/privacy\"&gt;Polityką Prywatności Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Ten typ zadania jest domyślnie wyłączony, ponieważ może wymagać ponownego sprawdzenia sytuacji w określonej części roku."</string>
+    <string name="quest_gritBinSeasonal_title">"Czy jest to również tutaj poza zimą?"</string>
+    <string name="street_parking_staggered_on_street">"Na ulicy po naprzemiennych stronach"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Częściowo na ulicy po naprzemiennych stronach"</string>
+    <string name="quest_traffic_signals_sound_description">"Wskazówka: uważaj na głośniki. Nie wszystkie sygnały dźwiękowe można aktywować przyciskiem."</string>
 </resources>

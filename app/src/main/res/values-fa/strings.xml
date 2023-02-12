@@ -1307,4 +1307,5 @@
     <string name="quest_gritBinSeasonal_title">"آیا اینجا هم خارج از زمستان است؟"</string>
     <string name="street_parking_staggered_on_street">"به صورت متناوب در دو طرف خیابان"</string>
     <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
+    <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. همه سیگنال‌های صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
 </resources>

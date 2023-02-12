@@ -23,6 +23,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             or smoothness older today -4 years
             or smoothness:date < today -4 years
           )
+          and ~${ALL_PATHS_EXCEPT_STEPS.joinToString("|")} !~ link
     """
     override val changesetComment = "Specify paths smoothness"
     override val wikiLink = "Key:smoothness"

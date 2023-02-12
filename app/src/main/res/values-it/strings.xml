@@ -1297,9 +1297,13 @@ Spostarlo ora?"</string>
     <string name="separate_cycleway_path">"Sentiero"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
-    <string name="measure_info_title">"Cerco la precisione ottimale"</string>
+    <string name="measure_info_title">"Ottenere la precisione ottimale"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore talvolta rileva (inizialmente) il terreno ad una distanza leggermente maggiore o minore di quella reale, introducendo così un errore di misurazione il quale aumenta man mano che si ruota il telefono verso l'orizzonte.&lt;/p&gt;
 &lt;p&gt;Per evitare questo tipo di errori nelle misurazioni orizzontali, imposta i punti di inizio e fine con il telefono rivolto esattamente verso il basso (in modo da vedere la freccia bianca dall'alto).&lt;/p&gt;
 &lt;p&gt;Per le misurazioni verticali, invece, controlla che il punto d'inizio sia fisso rispetto al terreno guardandolo da angolazioni differenti.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Questa applicazione utilizza un &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;servizio Google Play Services per la realtà aumentata&lt;/a&gt; (ARCore), fornito da Google e sottostante alla &lt;a href=\"https://policies.google.com/privacy\"&gt;Privacy policy di Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Questa quest è disabilitata di default perché potrebbe richiedere di ricontrollare la situazione in uno specifico arco temporale."</string>
+    <string name="quest_gritBinSeasonal_title">"È qui all'aperto anche d'inverno?"</string>
+    <string name="street_parking_staggered_on_street">"Sulla strada su lati alterni"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Parzialmente sulla strada su lati alterni"</string>
 </resources>

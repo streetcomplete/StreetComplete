@@ -697,6 +697,75 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply answer for one side in oneway when bare tag was set before`() {
+        verifyAnswer(
+            mapOf("oneway" to "yes", "cycleway" to "track"),
+            cycleway(null, NONE),
+            arrayOf(
+                StringMapEntryDelete("cycleway", "track"),
+                StringMapEntryAdd("cycleway:right", "no")
+            )
+        )
+        verifyAnswer(
+            mapOf("oneway" to "-1", "cycleway" to "opposite"),
+            cycleway(TRACK, null),
+            arrayOf(
+                StringMapEntryDelete("cycleway", "opposite"),
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("cycleway:left", "track")
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "oneway" to "yes",
+                "cycleway" to "opposite_track",
+                "cycleway:segregated" to "yes"
+            ),
+            cycleway(null, NONE),
+            arrayOf(
+                StringMapEntryDelete("cycleway", "opposite_track"),
+                StringMapEntryDelete("cycleway:segregated", "yes"),
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("cycleway:left:segregated", "yes"),
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("oneway:bicycle", "no")
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "oneway" to "yes",
+                "cycleway" to "opposite_lane",
+                "cycleway:lane" to "advisory",
+                "cycleway:oneway" to "yes"
+            ),
+            cycleway(null, NONE),
+            arrayOf(
+                StringMapEntryDelete("cycleway", "opposite_lane"),
+                StringMapEntryDelete("cycleway:lane", "advisory"),
+                StringMapEntryDelete("cycleway:oneway", "yes"),
+                StringMapEntryAdd("cycleway:left", "lane"),
+                StringMapEntryAdd("cycleway:left:lane", "advisory"),
+                StringMapEntryAdd("cycleway:left:oneway", "yes"),
+                StringMapEntryAdd("cycleway:right", "no")
+            )
+        )
+    }
+
+    @Test fun `expanding bare tags does not overwrite non-bare tags`() {
+        verifyAnswer(
+            mapOf(
+                "oneway" to "yes",
+                "cycleway" to "track",
+                "cycleway:right" to "blubber",
+            ),
+            cycleway(NONE, null),
+            arrayOf(
+                StringMapEntryDelete("cycleway", "track"),
+                StringMapEntryAdd("cycleway:left", "no")
+            )
+        )
+    }
+
     @Test(expected = IllegalArgumentException::class)
     fun `applying invalid left throws exception`() {
         cycleway(INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)

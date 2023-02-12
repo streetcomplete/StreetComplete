@@ -1264,7 +1264,7 @@
     <string name="urlconfig_as_url">"أو كعنوان URL:"</string>
     <string name="urlconfig_url_copied">"تم نسخ URL إلى الحافظة"</string>
     <string name="urlconfig_apply_title">"تطبيق الإعداد المسبق"</string>
-    <string name="urlconfig_apply_message">"تطبيق وتحديد الإعداد المسبق٪ 1 $ s؟"</string>
+    <string name="urlconfig_apply_message">"تطبيق وتحديد الإعداد المسبق %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"ملاحظة: ستتم الكتابة فوق الإعداد المسبق الذي يحمل نفس الاسم!"</string>
     <string name="urlconfig_switch_hint">"يمكنك تبديل الإعدادات المسبقة في الإعدادات في أي وقت."</string>
     <string name="quest_bicycle_parking_type_two_tier">"رف دراجة من طبقتين"</string>

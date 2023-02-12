@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -65,7 +65,7 @@ class StreetParkingCreatorKtTest {
                     LeftAndRightStreetParking(parking, parking),
                     arrayOf(
                         StringMapEntryAdd("parking:both", positionStr),
-                        StringMapEntryAdd("parking:both:orientation",orientationStr )
+                        StringMapEntryAdd("parking:both:orientation", orientationStr)
                     )
                 )
 

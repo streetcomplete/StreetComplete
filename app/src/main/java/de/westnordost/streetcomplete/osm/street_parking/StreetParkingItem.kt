@@ -98,8 +98,7 @@ private val ParkingPosition.titleResId: Int get() = when (this) {
     HALF_ON_STREET -> R.string.street_parking_half_on_kerb
     OFF_STREET -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
-    PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
-    STAGGERED_ON_STREET -> R.string.street_parking_staggered_on_street
+    PAINTED_AREA_ONLY, STAGGERED_ON_STREET -> R.string.street_parking_staggered_on_street
     STAGGERED_HALF_ON_STREET -> R.string.street_parking_staggered_half_on_kerb
 }
 
@@ -109,6 +108,5 @@ val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
     OFF_STREET,
     STREET_SIDE,
     STAGGERED_ON_STREET,
-    STAGGERED_HALF_ON_STREET,
-    PAINTED_AREA_ONLY
+    STAGGERED_HALF_ON_STREET
 )

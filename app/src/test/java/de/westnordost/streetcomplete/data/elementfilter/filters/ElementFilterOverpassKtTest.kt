@@ -109,6 +109,13 @@ class ElementFilterOverpassKtTest {
         )
     }
 
+    @Test fun notHasTagLike() {
+        assertEquals(
+            "[~'^(.ame)$' !~ '^(y.s)$']",
+            NotHasTagLike(".ame", "y.s").toOverpassString()
+        )
+    }
+
     @Test fun hasTagLessThan() {
         assertEquals(
             "[width](if: number(t['width']) < 3.5)",

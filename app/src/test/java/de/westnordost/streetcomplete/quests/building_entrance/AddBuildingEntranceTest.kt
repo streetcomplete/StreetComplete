@@ -167,4 +167,50 @@ class AddBuildingEntranceTest {
         )
         Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
+
+    @Test
+    fun `not applicable to footway entering rooftop which may be without an actual entrance`() {
+        // fixes https://github.com/streetcomplete/StreetComplete/issues/4805
+        val mapDataWithRoof = TestMapDataWithGeometry(
+            listOf(
+                node(1),
+                node(2),
+                node(3),
+                node(4),
+                node(30),
+                way(1L, listOf(1, 2, 3, 4), mapOf(
+                    "building" to "apartments",
+                )),
+                way(2L, listOf(1, 3), mapOf(
+                    "highway" to "footway",
+                    "location" to "roof",
+                )),
+                way(3L, listOf(3, 30), mapOf(
+                    "highway" to "footway",
+                )),
+            ),
+        )
+        Assert.assertEquals(0, questType.getApplicableElements(mapDataWithRoof).toList().size)
+
+        val mapDataWithRooftop = TestMapDataWithGeometry(
+            listOf(
+                node(1),
+                node(2),
+                node(3),
+                node(4),
+                node(30),
+                way(1L, listOf(1, 2, 3, 4), mapOf(
+                    "building" to "apartments",
+                )),
+                way(2L, listOf(1, 3), mapOf(
+                    "highway" to "footway",
+                    "location" to "rooftop",
+                )),
+                way(3L, listOf(3, 30), mapOf(
+                    "highway" to "footway",
+                )),
+            ),
+        )
+        Assert.assertEquals(0, questType.getApplicableElements(mapDataWithRooftop).toList().size)
+    }
 }

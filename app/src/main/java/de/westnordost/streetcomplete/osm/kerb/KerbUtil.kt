@@ -107,7 +107,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     val footways = ways.filter { footwaysFilter.matches(it) }
 
     val crossingEndNodeIds = footways.asSequence()
-        .filter { it.tags["footway"] == "crossing" }
+        .filter { it.tags["footway"] == "crossing" || it.tags["footway"] == "access_aisle" }
         .flatMap { it.nodeIds.firstAndLast() }
 
     val connectionsById = mutableMapOf<Long, Int>()
@@ -133,7 +133,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     // skip nodes that share an end node with a way where it is not clear if it is a sidewalk, crossing or something else
     ways.asSequence()
-        .filter { it.tags["footway"] != "sidewalk" && it.tags["footway"] != "traffic_island" && it.tags["footway"] != "crossing" }
+        .filter { it.tags["footway"] !in handledFootwayValues }
         .flatMap { it.nodeIds.firstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()
@@ -146,3 +146,5 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     return connectionsById.keys
 }
+
+private val handledFootwayValues = setOf("sidewalk", "traffic_island", "crossing", "access_aisle")

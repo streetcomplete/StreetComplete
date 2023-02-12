@@ -1270,7 +1270,7 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
 Presunúť ju teraz?"</string>
     <string name="node_moved_not_far_enough">"Prosím, posuňte ďalej"</string>
     <string name="node_moved_too_far">"Presunul sa príliš ďaleko. Zvážte zanechanie poznámky"</string>
-    <string name="node_moved">"Presunuté o"</string>
+    <string name="node_moved">"Presunuté o %s"</string>
     <string name="move_node_description">"Potiahnutím mapy umiestnite prvok na správne miesto. Použite funkciu priblíženia a snažte sa byť čo najpresnejší. Berte na vedomie, že zobrazená poloha môže byť menej presná ako zobrazená."</string>
     <string name="move_node_action_description">"Presunuli ste uzol"</string>
     <string name="quest_cycleway_value_shoulder">"nieje, ale krajnica je použiteľná pre cyklistov"</string>

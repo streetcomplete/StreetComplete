@@ -1316,4 +1316,5 @@ Menejar ara?"</string>
     <string name="quest_gritBinSeasonal_title">"Açò està també aquí durant l'hivern?"</string>
     <string name="street_parking_staggered_on_street">"Al carrer alternant el costat"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialment al carrer alternant el costat"</string>
+    <string name="quest_traffic_signals_sound_description">"Pista: Busca altaveus (poden ser grans o menuts). No sempre el so sona permanentment."</string>
 </resources>

@@ -31,6 +31,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAndNote>() {
           )
         )
         and (access !~ private|no or (foot and foot !~ private|no))
+        and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Add footway path surfaces"
     override val wikiLink = "Key:surface"

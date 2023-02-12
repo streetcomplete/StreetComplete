@@ -24,8 +24,8 @@
     <ImageView
         android:id="@+id/attachedGpxView"
         android:layout_toEndOf="@id/takePhotoButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:src="@drawable/ic_attach_gpx_24dp"
         app:tint="@color/disabled_text"
         android:visibility="gone"
@@ -51,6 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:scrollbars="horizontal"
+        tools:listitem="@layout/cell_image_thumbnail"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>

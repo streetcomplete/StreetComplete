@@ -29,7 +29,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
-        ways with (tunnel and tunnel != no) or (covered and covered != no)
+        ways with (tunnel and tunnel != no) or (covered and covered != no) or location ~ roof|rooftop
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify type of entrances"

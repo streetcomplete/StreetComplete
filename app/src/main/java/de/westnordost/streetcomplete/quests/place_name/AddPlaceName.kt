@@ -22,8 +22,8 @@ class AddPlaceName(
         nodes, ways with
         (
           shop and shop !~ no|vacant
+          or office and office !~ no|vacant
           or craft
-          or office
           or amenity = recycling and recycling_type = centre
           or tourism = information and information = office
           or """ +

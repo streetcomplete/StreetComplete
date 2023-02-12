@@ -73,6 +73,5 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
         return this.matches(word)
     }
 
-    private fun String.firstLetterToUppercase() =
-        this.substring(0, 1).uppercase(locale) + this.substring(1)
+    private fun String.firstLetterToUppercase() = get(0).titlecase(locale) + substring(1)
 }

@@ -1305,4 +1305,9 @@ Pomaknuti sada?"</string>
 &lt;p&gt;Postavite i početnu i krajnju točku usmjeravajući telefon ravno prema dolje (tako da vidite bijelu strelicu odozgo) kako biste u potpunosti izbjegli ovaj problem za horizontalna mjerenja.&lt;/p&gt;
 &lt;p&gt;Za okomita mjerenja, umjesto toga morate provjeriti da početna točka ne pomiče u odnosu na tlo kada ju promatrate iz različitih smjerova.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ova aplikacija je bazirana na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play uslugama za AR&lt;/a&gt; (ARCore) koje pruža Google i regulirana je &lt;a href=\"https://policies.google.com/privacy\"&gt;Googleovim Pravilima o privatnosti&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Ova vrsta zadatka je inicijalno onemogućena jer vjerojatno zahtijeva provjeru situacije u određenom dijelu godine."</string>
+    <string name="quest_gritBinSeasonal_title">"Je li ovo prisutno i van zime?"</string>
+    <string name="street_parking_staggered_on_street">"Naizmjence na jednoj pa na drugoj strani ceste"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Naizmjence djelomično na jednoj pa na drugoj strani ceste"</string>
+    <string name="quest_traffic_signals_sound_description">"Savjet: potražite zvučnike. Ne aktiviraju se svi zvučni signali gumbom ili automatski."</string>
 </resources>

@@ -1313,4 +1313,5 @@ Chcete ho posunout?"</string>
     <string name="quest_gritBinSeasonal_title">"Je to tu i mimo zimní období?"</string>
     <string name="street_parking_staggered_on_street">"Na ulici střídavě na obou stranách"</string>
     <string name="street_parking_staggered_half_on_kerb">"Částečně na chodníku střídavě na obou stranách"</string>
+    <string name="quest_traffic_signals_sound_description">"Nápověda: Hledejte reproduktory. Ne všechny zvukové signály lze aktivovat tlačítkem."</string>
 </resources>
