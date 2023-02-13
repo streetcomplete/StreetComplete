@@ -51,7 +51,7 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
     private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
         try {
-            launcher.launch(MeasureContract.Params(lengthUnit, false))
+            launcher.launch(MeasureContract.Params(lengthUnit, true))
         } catch (e: ActivityNotFoundException) {
             context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
         }

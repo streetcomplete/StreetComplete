@@ -19,6 +19,8 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
         nodes with amenity = recycling and recycling_type = container
          and recycling:clothes = yes
          and !operator and !name and !brand
+         and operator:signed != no
+         and brand:signed != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify clothing bin operators"
