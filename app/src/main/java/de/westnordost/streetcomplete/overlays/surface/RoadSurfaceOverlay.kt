@@ -46,18 +46,7 @@ class RoadSurfaceOverlay : Overlay {
 
 private fun getStyle(element: Element): Style {
     val surfaceStatus = createMainSurfaceStatus(element.tags)
-    var dominatingSurface: Surface? = surfaceStatus.value
-    val noteProvided: String? = surfaceStatus.note
-    // not set but indoor or private -> do not highlight as missing
-    val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES
-    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
-    val color = if (isNotSetButThatsOkay) {
-        Color.INVISIBLE
-    } else if (isNotSet && noteProvided != null) {
-        Color.BLACK
-    } else {
-        dominatingSurface.color
-    }
+    val color = surfaceStatus.getItsColor(element)
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
 }
 

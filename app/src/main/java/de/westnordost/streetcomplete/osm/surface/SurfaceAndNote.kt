@@ -9,33 +9,31 @@ data class SurfaceAndNote(val value: Surface, val note: String? = null)
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
-    if(value != Surface.UNIDENTIFIED) { // in such case we should edit only note
-        val osmValue = value.osmValue
-        val previousOsmValue = tags[key]
+    val osmValue = value.osmValue
+    val previousOsmValue = tags[key]
 
-        var replacesTracktype = false
-        if (prefix == null) {
-            replacesTracktype = tags.containsKey("tracktype")
-                && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
+    var replacesTracktype = false
+    if (prefix == null) {
+        replacesTracktype = tags.containsKey("tracktype")
+            && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
 
-            if (replacesTracktype) {
-                tags.remove("tracktype")
-                tags.removeCheckDatesForKey("tracktype")
-            }
+        if (replacesTracktype) {
+            tags.remove("tracktype")
+            tags.removeCheckDatesForKey("tracktype")
         }
-
-        // remove smoothness (etc) tags if surface was changed
-        // or surface can be treated as outdated
-        if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
-            for (target in keysToBeRemovedOnSurfaceChange(pre)) {
-                tags.remove(target)
-            }
-        }
-
-        // update surface + check date
-        if (updateCheckDate) tags.updateWithCheckDate(key, osmValue)
-        else tags[key] = osmValue
     }
+
+    // remove smoothness (etc) tags if surface was changed
+    // or surface can be treated as outdated
+    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
+        for (target in keysToBeRemovedOnSurfaceChange(pre)) {
+            tags.remove(target)
+        }
+    }
+
+    // update surface + check date
+    if (updateCheckDate) tags.updateWithCheckDate(key, osmValue)
+    else tags[key] = osmValue
 
     // add/remove note - used to describe generic surfaces
     if (note != null) {

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import android.content.res.Resources
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -10,11 +11,22 @@ import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideItem2
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.osm.surface.Surface.*
 
 fun List<Surface>.toItems() = this.map { it.asItem() }
+fun List<Surface>.toItemsWithFakeNullPossibility() = this.map { it.asItemWithFakeNullPossibility() }
+
+fun ParsedSurface.asItem(): DisplayItem<Surface?> {
+    return when (this) {
+        is Surface -> this.asItemWithFakeNullPossibility()
+        is UnknownSurface -> this.asItem()
+    }
+}
+
+fun UnknownSurface.asItem(): DisplayItem<Surface?> = Item(null,  R.drawable.background_fully_transparent, R.string.unknown_surface_title)
 
 fun Surface.asItem(): DisplayItem<Surface> = Item(this, iconResId, titleResId)
+
+fun Surface.asItemWithFakeNullPossibility(): DisplayItem<Surface?> = Item(this, iconResId, titleResId)
 
 fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface> =
     StreetSideItem2(
@@ -54,7 +66,6 @@ val Surface.titleResId: Int get() = when (this) {
     PAVED_AREA -> R.string.quest_surface_value_paved
     UNPAVED_AREA -> R.string.quest_surface_value_unpaved
     GROUND_AREA -> R.string.quest_surface_value_ground
-    UNIDENTIFIED -> R.string.unknown_surface_title
 }
 
 val Surface.iconResId: Int get() = when (this) {
@@ -86,5 +97,4 @@ val Surface.iconResId: Int get() = when (this) {
     PAVED_AREA -> R.drawable.surface_paved_area
     UNPAVED_AREA -> R.drawable.surface_unpaved_area
     GROUND_AREA -> R.drawable.surface_ground_area
-    UNIDENTIFIED -> R.drawable.background_fully_transparent // TODO - does not have the same size, maybe there is a fitting image?
 }

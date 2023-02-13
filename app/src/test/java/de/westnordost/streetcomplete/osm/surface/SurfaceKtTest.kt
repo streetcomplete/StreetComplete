@@ -114,8 +114,8 @@ class SurfaceKtTest {
             "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
         )
         val status = createSurfaceStatus(tags)
-        assertTrue(status is CyclewayFootwaySurfacesWithNote)
-        if (status is CyclewayFootwaySurfacesWithNote) {
+        assertTrue(status is ParsedCyclewayFootwaySurfacesWithNote)
+        if (status is ParsedCyclewayFootwaySurfacesWithNote) {
             assertEquals("Rad Pflastersteine Fußgänger Asphalt", status.note)
         }
     }

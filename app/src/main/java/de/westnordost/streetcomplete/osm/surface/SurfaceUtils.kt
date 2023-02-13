@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.overlays.Color
+import de.westnordost.streetcomplete.overlays.surface.color
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 val INVALID_SURFACES = setOf(
     "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
@@ -49,9 +53,9 @@ fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
     getLastCheckDateKeys("${prefix}surface") +
     getLastCheckDateKeys("${prefix}smoothness")
 
-class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?, val cycleway: Surface?, val cyclewayNote: String?, val footway: Surface?, val footwayNote: String?)
+class ParsedCyclewayFootwaySurfacesWithNote(val main: ParsedSurfaceWithNote, val cycleway: ParsedSurfaceWithNote, val footway: ParsedSurfaceWithNote)
 
-fun createSurfaceStatus(tags: Map<String, String>): CyclewayFootwaySurfacesWithNote {
+fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurfacesWithNote {
     val surfaceNote = tags["surface:note"]
     val surface = parseSingleSurfaceTag(tags["surface"], surfaceNote)
     val cyclewaySurfaceNote = tags["cycleway:surface:note"]
@@ -67,26 +71,47 @@ fun createSurfaceStatus(tags: Map<String, String>): CyclewayFootwaySurfacesWithN
             footwaySurface = surface
         }
     }
-    return CyclewayFootwaySurfacesWithNote(surface, surfaceNote, cyclewaySurface, cyclewaySurfaceNote, footwaySurface, footwaySurfaceNote)
+    return ParsedCyclewayFootwaySurfacesWithNote(
+        ParsedSurfaceWithNote(surface, surfaceNote),
+        ParsedSurfaceWithNote(cyclewaySurface, cyclewaySurfaceNote),
+        ParsedSurfaceWithNote(footwaySurface, footwaySurfaceNote))
 }
 
-data class SurfaceAndNoteMayBeEmpty(val value: Surface?, val note: String? = null)
-/*
-maybe just use SurfaceAndNote?
-But then SurfaceAndNote.applyTo will need to throw exceptions on null value or rely on manual checks
-ensuring otherwise that empty value will not be passed there
- */
+data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = null) {
+    fun getItsColor(element: Element): String {
+        return when (this.value) {
+            is Surface -> {
+                // not set but indoor or private -> do not highlight as missing
+                val isNotSet = this.value in UNDERSPECIFED_SURFACES
+                val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
+                if (isNotSetButThatsOkay) {
+                    Color.INVISIBLE
+                } else {
+                    this.value.color
+                }
+            }
+            UnknownSurface -> {
+                Color.BLACK
+            }
+            null -> {
+                Color.BLACK
+            }
+        }
+    }
+
+    private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
+}
 
 /*
 * to be used when only surface and surface:note tag is relevant
 * for example if we want to tag road surface and we are free to skip sidewalk surface info
 * */
-fun createMainSurfaceStatus(tags: Map<String, String>): SurfaceAndNoteMayBeEmpty {
+fun createMainSurfaceStatus(tags: Map<String, String>): ParsedSurfaceWithNote {
     val surfaceNote = tags["surface:note"]
-    return SurfaceAndNoteMayBeEmpty(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
+    return ParsedSurfaceWithNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
 }
 
-fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
+fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): ParsedSurface? {
     if (surfaceTag == null) {
         return null
     }
@@ -99,7 +124,7 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
     val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
     val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
     if (surface == null) {
-        return Surface.UNIDENTIFIED
+        return UnknownSurface
     }
     return surfaceIgnoringUnspecific
 }

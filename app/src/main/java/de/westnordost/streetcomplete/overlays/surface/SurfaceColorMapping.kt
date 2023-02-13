@@ -49,7 +49,7 @@ val Surface?.color get() = when (this) {
                        -> Color.GOLD
     GRAVEL, PEBBLES, ROCK
                        -> Color.GRAY
-    CLAY, ARTIFICIAL_TURF, TARTAN, UNIDENTIFIED
+    CLAY, ARTIFICIAL_TURF, TARTAN
                        -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
     PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null
                        -> Color.DATA_REQUESTED

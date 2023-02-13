@@ -16,14 +16,14 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNoteMayBeEmpty
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
-import de.westnordost.streetcomplete.osm.surface.toItems
+import de.westnordost.streetcomplete.osm.surface.toItemsWithFakeNullPossibility
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
@@ -37,19 +37,19 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+    val items: List<DisplayItem<Surface?>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItemsWithFakeNullPossibility()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
-    private var originalSurfaceStatus: SurfaceAndNoteMayBeEmpty? = null
+    private var originalSurfaceStatus: ParsedSurfaceWithNote? = null
 
-    private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
+    private var selectedStatusForMainSurface: DisplayItem<Surface?>? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
 
     private sealed class SingleSurfaceItemInfo
-    private data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
-    private data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
+    private data class SingleSurfaceItem(val surface: DisplayItem<Surface?>) : SingleSurfaceItemInfo()
+    private data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface?>, val note: String) : SingleSurfaceItemInfo()
 
     private fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
         ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
@@ -92,8 +92,9 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         val status = createMainSurfaceStatus(element!!.tags)
         originalSurfaceStatus = status
-        if (status.value != null) {
-            selectedStatusForMainSurface = status.value.asItem()
+        val value = status.value
+        if (value != null) {
+            selectedStatusForMainSurface = value.asItem()
         }
         if (status.note != null) {
             binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
