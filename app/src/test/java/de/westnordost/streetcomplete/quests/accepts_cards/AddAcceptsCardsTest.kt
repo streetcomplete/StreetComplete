@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert
 import org.junit.Test
 
@@ -27,7 +26,7 @@ class AddAcceptsCardsTest {
     fun `applicable to grocery shops`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
-                node(1, tags=mapOf("shop" to "greengrocer", "name" to "Foobar")),
+                node(1, tags = mapOf("shop" to "greengrocer", "name" to "Foobar")),
             ),
         )
         Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
