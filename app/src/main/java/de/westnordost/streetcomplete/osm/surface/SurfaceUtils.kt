@@ -91,9 +91,6 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
         return null
     }
     if (surfaceTag in INVALID_SURFACES) {
-        // TODO how cobblestone/cement with note works?
-        // how it should even work?
-        // how we are handling empty surface tag and associated note tag?
         return null
     }
     // we are treating surface=paved as not being specified at all

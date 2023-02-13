@@ -136,6 +136,11 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         if (!hasChanges()) {
             return false
         }
+        if (selectedStatusForMainSurface == null) {
+            // can happen in case surface=cobblestone has surface:note
+            // saving just modified note is not possible
+            return false
+        }
         val surfaceValue = selectedStatusForMainSurface!!.value
         if (surfaceValue == null) {
             return false
