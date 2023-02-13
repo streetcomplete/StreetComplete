@@ -87,14 +87,18 @@ data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = 
                 if (isNotSetButThatsOkay) {
                     Color.INVISIBLE
                 } else {
-                    this.value.color
+                    if (note != null) {
+                        Color.BLACK
+                    } else {
+                        this.value.color
+                    }
                 }
             }
             UnknownSurface -> {
                 Color.BLACK
             }
             null -> {
-                Color.BLACK
+                Color.DATA_REQUESTED
             }
         }
     }
