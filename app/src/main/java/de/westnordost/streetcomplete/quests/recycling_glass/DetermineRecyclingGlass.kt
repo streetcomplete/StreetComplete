@@ -20,6 +20,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
           and recycling_type = container
           and recycling:glass = yes
           and !recycling:glass_bottles
+          and access !~ private|no
     """
     override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"

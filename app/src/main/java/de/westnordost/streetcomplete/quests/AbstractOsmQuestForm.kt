@@ -352,9 +352,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     private fun createItsPrivateAnswer(): AnswerItem? {
-        if (element !is Way) return null
-        return if (wayWithoutAccessTagsFilter.matches(element))
-            AnswerItem(R.string.quest_way_private) {
+        return if (elementWithoutAccessTagsFilter.matches(element)
+            && (
+                "ways with highway or leisure ~ track|pitch".toElementFilterExpression().matches(element)
+                    || "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table".toElementFilterExpression().matches(element)
+                )
+            )
+            AnswerItem(R.string.quest_private) {
                 viewLifecycleScope.launch {
                     val builder = StringMapChangesBuilder(element.tags)
                     builder["access"] = "private"
@@ -379,9 +383,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     // check the most common access tags
-    private val wayWithoutAccessTagsFilter by lazy { """
-        ways with highway
-         and !access
+    private val elementWithoutAccessTagsFilter by lazy { """
+        nodes, ways, relations with
+         !access
          and !bicycle
          and !foot
          and !vehicle

@@ -16,6 +16,7 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
           (amenity = bench or leisure = picnic_table or amenity = lounger)
           and (!area or area = no)
           and !material
+          and access !~ private|no
     """
     override val changesetComment = "Add material information to benches"
     override val wikiLink = "Tag:amenity=bench"

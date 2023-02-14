@@ -9,7 +9,7 @@
     <string name="pref_select_first_edit_summary">"Omogućuje brže poništavanje, ali automatski pomiče kameru"</string>
     <string name="pref_delete_old_data_after">"Izbriši stare podatke nakon"</string>
     <string name="pref_delete_old_data_after_summary">"%d dana"</string>
-    <string name="quest_way_private">"To je privatno"</string>
+    <string name="quest_private">"To je privatno"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_metal_grid">"Metalna rešetka"</string>
