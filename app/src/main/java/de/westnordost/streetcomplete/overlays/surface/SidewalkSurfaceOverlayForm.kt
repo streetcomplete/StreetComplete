@@ -89,8 +89,11 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
 
     private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
         val streetSideItem = surface.asStreetSideItem(requireContext().resources)
-        if (isRight) rightNote = description
-        else leftNote = description
+        if (isRight) {
+            rightNote = description
+        } else {
+            leftNote = description
+        }
         streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
     }
 

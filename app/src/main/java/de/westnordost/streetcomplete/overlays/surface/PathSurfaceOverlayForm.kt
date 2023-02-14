@@ -14,9 +14,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPathSurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.ParsedCyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.GENERIC_AREA_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.surface.ParsedCyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.osm.surface.asItemWithFakeNullPossibility
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
-import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.osm.surface.toItemsWithFakeNullPossibility
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -148,7 +147,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectButtonMainSurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForMainSurface = gathered.value.asItemWithFakeNullPossibility()
-                    if(gathered.note == null) {
+                    if (gathered.note == null) {
                         binding.explanationInputMainSurface.text = null
                     } else {
                         binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
@@ -159,7 +158,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectButtonCyclewaySurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForCyclewaySurface = gathered.value.asItemWithFakeNullPossibility()
-                    if(gathered.note == null) {
+                    if (gathered.note == null) {
                         binding.explanationInputCyclewaySurface.text = null
                     } else {
                         binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(gathered.note)
@@ -170,7 +169,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectButtonFootwaySurface.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForFootwaySurface = gathered.value.asItemWithFakeNullPossibility()
-                    if(gathered.note == null) {
+                    if (gathered.note == null) {
                         binding.explanationInputFootwaySurface.text = null
                     } else {
                         binding.explanationInputFootwaySurface.text = SpannableStringBuilder(gathered.note)
