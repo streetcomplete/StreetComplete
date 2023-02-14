@@ -14,7 +14,7 @@ val INVALID_SURFACES = setOf(
 val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
 
 val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
-    "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver", "earth", "mud",
+    "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
 )
 
 val ANYTHING_FULLY_PAVED = setOf(
