@@ -16,16 +16,16 @@ import de.westnordost.streetcomplete.overlays.Color
  *  - all paved ones are one such group
  *  - all unpaved ones are another
  *  - grass paver and compacted being high quality unpaved, unhewn cobblestone being low quality unpaved
- *    should be on border between this two groups
+ *    should be on border between these two groups
  *
  * - asphalt, concrete, paving stones are associated with grey
- *   but colouring this surfaces as grey resulted in really depressing, unfun
+ *   but colouring these surfaces as grey resulted in really depressing, unfun
  *   and soul-crushing display in cities where everything is well paved.
  *   Blue is more fun and less sad (while it will not convince anyone
  *   that concrete desert is a good thing).
  *
  * - highly unusual (for roads and paths) surfaces also got black colour
- * - due to running out of colors all well paved surface get the same colour
+ * - due to running out of colors all well paved surfaces get the same colour
  * - due to running out of colours fine gravel, gravel, pebbles, rock got gray surface
  * - dashes were tested but due to limitation of Tangram were not working well and were
  *   incapable of replacing colour coding
