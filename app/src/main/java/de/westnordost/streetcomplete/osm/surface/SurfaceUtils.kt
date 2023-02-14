@@ -14,16 +14,13 @@ val INVALID_SURFACES = setOf(
 val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
 
 val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
-    "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver",
-    // this ones are not strictly supported by aliased - so this is used by commonSurface* functions
-    "earth", "mud",
+    "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver", "earth", "mud",
 )
 
 val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
     "concrete", "concrete:plates", "paving_stones",
     "metal", "wood", "unhewn_cobblestone",
-    // this ones are not strictly supported by aliased - so this is used by commonSurface* functions
     "brick", "bricks", "cobblestone:flattened", "paving_stones:30",
 )
 
