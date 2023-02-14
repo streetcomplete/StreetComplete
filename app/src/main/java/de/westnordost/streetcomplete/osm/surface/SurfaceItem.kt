@@ -15,11 +15,9 @@ import de.westnordost.streetcomplete.view.image_select.Item
 fun List<Surface>.toItems() = this.map { it.asItem() }
 fun List<Surface>.toItemsWithFakeNullPossibility() = this.map { it.asItemWithFakeNullPossibility() }
 
-fun ParsedSurface.asItem(): DisplayItem<Surface?> {
-    return when (this) {
-        is Surface -> this.asItemWithFakeNullPossibility()
-        is UnknownSurface -> this.asItem()
-    }
+fun ParsedSurface.asItem(): DisplayItem<Surface?> = when (this) {
+    is Surface -> this.asItemWithFakeNullPossibility()
+    is UnknownSurface -> this.asItem()
 }
 
 fun UnknownSurface.asItem(): DisplayItem<Surface?> = Item(null,  R.drawable.background_fully_transparent, R.string.unknown_surface_title)
