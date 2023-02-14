@@ -90,9 +90,3 @@ val ParsedSurface.shouldBeDescribed: Boolean get() =
     }
 
 val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
-
-val ParsedSurface.provideSurfaceIfPossible: Surface? get() =
-    when (this) {
-        is Surface -> this
-        is UnknownSurface -> null
-    }

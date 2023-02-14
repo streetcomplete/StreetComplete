@@ -23,7 +23,7 @@ class RoadSurfaceOverlay : Overlay {
     override val changesetComment = "Specify road surfaces"
     override val wikiLink: String = "Key:surface"
     override val achievements = listOf(CAR, BICYCLIST)
-    override val hidesQuestTypes = setOf(AddRoadSurface::class.simpleName!!, AddPathSurface::class.simpleName!!)
+    override val hidesQuestTypes = setOf(AddRoadSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         return mapData
