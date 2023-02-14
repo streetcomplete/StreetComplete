@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.BARN
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.COWSHED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.DEMOLISHED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.DIGESTER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.PRESBYTERY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.RIDING_HALL
@@ -99,7 +98,6 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     TRANSFORMER_TOWER -> R.string.quest_buildingType_transformer_tower
     TENT ->            R.string.quest_buildingType_tent
     CONSTRUCTION ->    null
-    DEMOLISHED ->      null
 }
 
 private val BuildingType.descriptionResId: Int? get() = when (this) {
@@ -202,5 +200,4 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     TRANSFORMER_TOWER -> R.drawable.ic_building_service
     TENT ->            R.drawable.ic_building_greenhouse
     CONSTRUCTION ->    null
-    DEMOLISHED ->      null
 }

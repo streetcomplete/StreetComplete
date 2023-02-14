@@ -330,7 +330,6 @@
     <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
     <string name="quest_surface_value_stepping_stones">Stepping stones</string>
-    <string name="quest_buildingType_answer_demolished">It’s demolished (traces visible)</string>
     <string name="quest_buildingType_presbytery">Presbytery</string>
     <string name="quest_buildingType_barn">Barn</string>
     <string name="quest_buildingType_cowshed">Cowshed</string>
@@ -352,6 +351,7 @@
     <string name="quest_wheelchair_description_no_language">no language specified</string>
     <string name="quest_seating_no">No seating, but not takeout only</string>
     <string name="quest_way_private">It’s private</string>
+    <string name="quest_building_demolished">It’s demolished (traces visible)</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_building_entrance_parking">Parking entrance</string>
 

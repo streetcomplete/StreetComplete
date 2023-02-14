@@ -48,9 +48,6 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
         if (answer.osmKey == "man_made") {
             tags.remove("building")
             tags["man_made"] = answer.osmValue
-        } else if (answer == BuildingType.DEMOLISHED) {
-            tags["demolished:building"] = tags["building"] ?: "yes"
-            tags.remove("building")
         } else if (answer.osmKey != "building") {
             tags[answer.osmKey] = answer.osmValue
             if (answer == BuildingType.ABANDONED) {

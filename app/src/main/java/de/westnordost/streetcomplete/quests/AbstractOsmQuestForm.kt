@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -179,8 +180,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
         }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
-        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
             createItsPrivateAnswer()?.let { answers.add(it) }
+            createItsDemolishedAnswer()?.let { answers.add(it) }
+        }
 
         if (element is Node // add moveNodeAnswer only if it's a free floating node
                 && (prefs.getBoolean(Prefs.EXPERT_MODE, false) ||
@@ -361,6 +364,20 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         else null
     }
 
+    private fun createItsDemolishedAnswer(): AnswerItem? {
+        if (!element.isArea()) return null
+        return if (buildingsFilter.matches(element))
+            AnswerItem(R.string.quest_building_demolished) {
+                viewLifecycleScope.launch {
+                    val builder = StringMapChangesBuilder(element.tags)
+                    builder["demolished:building"] = builder["building"] ?: "yes"
+                    builder.remove("building")
+                    solve(UpdateElementTagsAction(builder.create()))
+                }
+            }
+        else null
+    }
+
     // check the most common access tags
     private val wayWithoutAccessTagsFilter by lazy { """
         ways with highway
@@ -375,6 +392,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
          and !motorcar
          and !psv
          and !ski
+    """.toElementFilterExpression() }
+
+    private val buildingsFilter by lazy { """
+        ways, relations with building
+          and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
+          and !building:demolished
+          and !building:razed
     """.toElementFilterExpression() }
 
     private suspend fun solve(action: ElementEditAction) {
