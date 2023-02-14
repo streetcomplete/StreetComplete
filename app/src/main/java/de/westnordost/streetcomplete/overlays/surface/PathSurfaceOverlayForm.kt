@@ -296,17 +296,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             return hasChanges()
         }
 
-    fun noteText(): String? {
-        return binding.explanationInputMainSurface.nonBlankTextOrNull
-    }
-
-    private fun cyclewayNoteText(): String? {
-        return binding.explanationInputCyclewaySurface.nonBlankTextOrNull
-    }
-
-    private fun footwayNoteText(): String? {
-        return binding.explanationInputFootwaySurface.nonBlankTextOrNull
-    }
+    val noteText get() = binding.explanationInputMainSurface.nonBlankTextOrNull
+    private val cyclewayNoteText get() = binding.explanationInputCyclewaySurface.nonBlankTextOrNull
+    private val footwayNoteText get() = binding.explanationInputFootwaySurface.nonBlankTextOrNull
 
     override fun hasChanges(): Boolean {
         // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?
