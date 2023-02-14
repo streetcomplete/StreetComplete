@@ -25,7 +25,10 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
+import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
 
 class PathSurfaceOverlay : Overlay {
 
@@ -34,7 +37,12 @@ class PathSurfaceOverlay : Overlay {
     override val changesetComment = "Specify path surfaces"
     override val wikiLink: String = "Key:surface"
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
-    override val hidesQuestTypes = setOf(AddPathSurface::class.simpleName!!)
+    override val hidesQuestTypes = setOf(
+        AddPathSurface::class.simpleName!!,
+        AddFootwayPartSurface::class.simpleName!!,
+        AddCyclewayPartSurface::class.simpleName!!,
+        AddSidewalkSurface::class.simpleName!!,
+    )
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
         mapData.filter( """
