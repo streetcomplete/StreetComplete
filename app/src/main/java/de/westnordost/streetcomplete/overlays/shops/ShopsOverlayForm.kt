@@ -110,7 +110,9 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                null,
+                geometry.center
             ).show()
         }
 

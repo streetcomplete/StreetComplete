@@ -41,6 +41,13 @@
         android:defaultValue="true"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="search_more_languages"
+        android:title="@string/pref_search_more_languages_title"
+        android:summary="@string/pref_search_more_languages_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
         android:key="favs_first_min_lines"
         android:title="@string/pref_recent_answers_first_min_lines"

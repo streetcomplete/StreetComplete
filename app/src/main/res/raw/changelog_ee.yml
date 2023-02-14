@@ -1,3 +1,9 @@
+52.0: |
+  <ul>
+  <li>Allow feature search in all system and local languages</li>
+  <li>Small improvements</li>
+  </ul>
+
 51.0: |
   <ul>
   <li>App renamed to SCEE as an attempt to reduce confusion of this fork with original StreetComplete</li>

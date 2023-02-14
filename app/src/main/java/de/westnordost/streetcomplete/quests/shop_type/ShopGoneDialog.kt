@@ -24,7 +24,8 @@ class ShopGoneDialog(
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
     private val onSelectedFeature: (Map<String, String>) -> Unit,
-    private val onLeaveNote: () -> Unit
+    private val onLeaveNote: () -> Unit,
+    private val pos: LatLon? = null,
 ) : AlertDialog(context) {
 
     private val binding: ViewShopTypeBinding
@@ -55,7 +56,9 @@ class ShopGoneDialog(
                 countryCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                null,
+                pos
             ).show()
         }
 

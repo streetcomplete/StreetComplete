@@ -322,7 +322,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 countryOrSubdivisionCode,
                 featureDictionary,
                 onSelectedFeature = this::onShopReplacementSelected,
-                onLeaveNote = this::composeNote
+                onLeaveNote = this::composeNote,
+                geometry.center
             ).show()
         } else {
             composeNote()

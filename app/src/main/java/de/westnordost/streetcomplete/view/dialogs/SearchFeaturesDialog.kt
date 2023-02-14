@@ -9,15 +9,27 @@ import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.StreetCompleteApplication
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.qualifier.named
+import java.util.Locale
+import java.util.concurrent.FutureTask
 
 /** Search and select a preset */
 class SearchFeaturesDialog(
@@ -28,12 +40,15 @@ class SearchFeaturesDialog(
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
     private val onSelectedFeatureFn: (Feature) -> Unit,
-    private val preSelect: Collection<Feature>? = null
-) : AlertDialog(context) {
+    private val preSelect: Collection<Feature>? = null,
+    private val pos: LatLon? = null
+) : AlertDialog(context), KoinComponent {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
     private val locales = getLocalesForFeatureDictionary(context.resources.configuration)
     private val adapter = FeaturesAdapter()
+    private val countryInfos: CountryInfos by inject()
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 
@@ -73,14 +88,38 @@ class SearchFeaturesDialog(
         updateSearchResults()
     }
 
-    private fun getFeatures(startsWith: String): List<Feature> =
-        featureDictionary
-            .byTerm(startsWith)
-            .forGeometry(geometryType)
-            .inCountry(countryOrSubdivisionCode)
-            .forLocale(*locales)
-            .find()
-            .filter(filterFn)
+    private fun getFeatures(startsWith: String): List<Feature> {
+        return if (StreetCompleteApplication.preferences.getBoolean(Prefs.SEARCH_MORE_LANGUAGES, false)) {
+            // even if there are many languages, UI stuff will likely be slower than the multiple searches
+            val otherLocales = locales.toList().allExceptFirstAndLast() + // first is default, last is null
+                (pos?.let { p ->
+                    val c = countryInfos.getByLocation(countryBoundaries.get(), p.longitude, p.latitude)
+                    c.officialLanguages.map { Locale(it, c.countryCode) }
+                } ?: emptyList())
+            (featureDictionary // get default results
+                .byTerm(startsWith)
+                .forGeometry(geometryType)
+                .inCountry(countryOrSubdivisionCode)
+                .forLocale(*locales)
+                .find() +
+                otherLocales.toSet().flatMap {
+                    if (it == null) return@flatMap emptyList()
+                    featureDictionary // plus results for each additional locale
+                        .byTerm(startsWith)
+                        .forGeometry(geometryType)
+                        .inCountry(countryOrSubdivisionCode)
+                        .forLocale(it)
+                        .find()
+                }).distinctBy { it.id }
+        } else
+            featureDictionary
+                .byTerm(startsWith)
+                .forGeometry(geometryType)
+                .inCountry(countryOrSubdivisionCode)
+                .forLocale(*locales)
+                .find()
+                .filter(filterFn)
+    }
 
     private fun updateSearchResults() {
         val text = searchText
