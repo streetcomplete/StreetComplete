@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.surface
 import de.westnordost.streetcomplete.overlays.Color.BLACK
 import de.westnordost.streetcomplete.overlays.Color.INVISIBLE
 import de.westnordost.streetcomplete.overlays.surface.color
+import de.westnordost.streetcomplete.overlays.surface.getColor
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -15,7 +16,7 @@ class SurfaceUtilsKtTest {
             "sidewalk" to "both",
             "surface" to "asphalt",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), Surface.ASPHALT.color)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), Surface.ASPHALT.color)
     }
 
     @Test
@@ -25,7 +26,7 @@ class SurfaceUtilsKtTest {
             "sidewalk" to "both",
             "surface" to "unpaved",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), Surface.UNPAVED_ROAD.color)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), Surface.UNPAVED_ROAD.color)
     }
 
     @Test
@@ -34,7 +35,7 @@ class SurfaceUtilsKtTest {
             "highway" to "primary",
             "sidewalk" to "both",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), Surface.UNPAVED_ROAD.color)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), Surface.UNPAVED_ROAD.color)
     }
 
     @Test
@@ -44,7 +45,7 @@ class SurfaceUtilsKtTest {
             "sidewalk" to "both",
             "surface" to "cobblestone",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), Surface.UNPAVED_ROAD.color)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), Surface.UNPAVED_ROAD.color)
     }
 
     @Test
@@ -55,7 +56,7 @@ class SurfaceUtilsKtTest {
             "surface" to "unpaved",
             "surface:note" to "note text",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), BLACK)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), BLACK)
     }
 
     @Test
@@ -65,7 +66,7 @@ class SurfaceUtilsKtTest {
             "access" to "private",
             "surface" to "unpaved",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), INVISIBLE)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), INVISIBLE)
     }
 
     @Test
@@ -76,6 +77,6 @@ class SurfaceUtilsKtTest {
             "foot" to "yes",
             "surface" to "unpaved",
         ))
-        assertEquals(createMainSurfaceStatus(road.tags).getItsColor(road), Surface.UNPAVED_ROAD.color)
+        assertEquals(createMainSurfaceStatus(road.tags).getColor(road), Surface.UNPAVED_ROAD.color)
     }
 }

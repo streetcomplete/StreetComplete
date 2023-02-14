@@ -45,8 +45,6 @@ class RoadSurfaceOverlay : Overlay {
 
 private fun getStyle(element: Element): Style {
     val surfaceStatus = createMainSurfaceStatus(element.tags)
-    val color = surfaceStatus.getItsColor(element)
+    val color = surfaceStatus.getColor(element)
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
 }
-
-private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

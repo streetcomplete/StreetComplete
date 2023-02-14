@@ -97,7 +97,7 @@ private fun getStyleForStandalonePath(element: Element): Style {
         surfaceStatus.main
     }
 
-    val color = dominatingSurface.getItsColor(element)
+    val color = dominatingSurface.getColor(element)
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 }
 

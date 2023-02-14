@@ -66,28 +66,7 @@ fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurface
 }
 
 data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = null) {
-    fun getItsColor(element: Element): String {
-        return when (this.value) {
-            is Surface -> {
-                // not set but indoor or private -> do not highlight as missing
-                val isNotSet = this.value in UNDERSPECIFED_SURFACES
-                val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
-                if (isNotSetButThatsOkay) {
-                    Color.INVISIBLE
-                } else if (note != null) {
-                    Color.BLACK
-                } else {
-                    this.value.color
-                }
-            }
-            UnknownSurface -> {
-                Color.BLACK
-            }
-            null -> {
-                Color.DATA_REQUESTED
-            }
-        }
-    }
+
 
     private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
 }
