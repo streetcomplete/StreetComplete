@@ -35,16 +35,11 @@ class RoadSurfaceOverlay : Overlay {
             .map { it to getStyle(it) }
     }
 
-    override fun createForm(element: Element?) =
-        if (element != null && element.tags["highway"] in ALL_ROADS) {
-            RoadSurfaceOverlayForm()
-        } else {
-            null
-        }
+    override fun createForm(element: Element?) = RoadSurfaceOverlayForm()
 }
 
 private fun getStyle(element: Element): Style {
     val surfaceStatus = createMainSurfaceStatus(element.tags)
     val color = surfaceStatus.getColor(element)
-    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
+    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 }
