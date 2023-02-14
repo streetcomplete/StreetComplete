@@ -226,7 +226,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             if (mainSurfaceItem != null) {
                 ItemViewHolder(binding.selectButtonMainSurface.selectedCellView).bind(mainSurfaceItem)
             }
-            if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
+            if (noteText != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurface.isGone = false
                 binding.mainSurfaceContainer.isGone = false
             }
@@ -237,7 +237,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             if (cyclewaySurfaceItem != null) {
                 ItemViewHolder(binding.selectButtonCyclewaySurface.selectedCellView).bind(cyclewaySurfaceItem)
             }
-            if (cyclewayNoteText() != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
+            if (cyclewayNoteText != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputCyclewaySurface.isGone = false
             }
 
@@ -247,7 +247,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             if (footwaySurfaceItem != null) {
                 ItemViewHolder(binding.selectButtonFootwaySurface.selectedCellView).bind(footwaySurfaceItem)
             }
-            if (footwayNoteText() != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
+            if (footwayNoteText != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputFootwaySurface.isGone = false
             }
         }
@@ -278,11 +278,11 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         override fun onSaveInstanceState(outState: Bundle) {
             super.onSaveInstanceState(outState)
             outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
-            outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
+            outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText)
             outState.putInt(SELECTED_CYCLEWAY_SURFACE_INDEX, items.indexOf(selectedStatusForCyclewaySurface))
-            outState.putString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT, noteText())
+            outState.putString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT, noteText)
             outState.putInt(SELECTED_FOOTWAY_SURFACE_INDEX, items.indexOf(selectedStatusForFootwaySurface))
-            outState.putString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT, noteText())
+            outState.putString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT, noteText)
         }
 
         /* -------------------------------------- apply answer -------------------------------------- */
@@ -311,13 +311,13 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         if (selectedStatusForFootwaySurface?.value != originalSurfaceStatus!!.footway.value) {
             return true
         }
-        if (noteText() != originalSurfaceStatus!!.main.note) {
+        if (noteText != originalSurfaceStatus!!.main.note) {
             return true
         }
-        if (cyclewayNoteText() != originalSurfaceStatus!!.cycleway.note) {
+        if (cyclewayNoteText != originalSurfaceStatus!!.cycleway.note) {
             return true
         }
-        if (footwayNoteText() != originalSurfaceStatus!!.footway.note) {
+        if (footwayNoteText != originalSurfaceStatus!!.footway.note) {
             return true
         }
         return false
@@ -328,13 +328,13 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
             val footwaySurface = selectedStatusForFootwaySurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                editTagsWithSeparateCyclewayAndFootwayAnswer(it, cyclewaySurface, cyclewayNoteText(), footwaySurface, footwayNoteText(), noteText())
+                editTagsWithSeparateCyclewayAndFootwayAnswer(it, cyclewaySurface, cyclewayNoteText, footwaySurface, footwayNoteText, noteText)
             }.create()))
         } else {
             // like RoadSurfaceOverlayForm is doing this
             val surfaceObject = selectedStatusForMainSurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                editTagsWithMainSurfaceAnswer(it, surfaceObject, noteText())
+                editTagsWithMainSurfaceAnswer(it, surfaceObject, noteText)
             }.create()))
         }
     }
