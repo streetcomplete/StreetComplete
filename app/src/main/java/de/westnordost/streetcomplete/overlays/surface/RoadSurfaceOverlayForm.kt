@@ -152,9 +152,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         return true
     }
 
-    private fun noteText(): String? {
-        return binding.explanationInputMainSurface.nonBlankTextOrNull
-    }
+    private val noteText get() = binding.explanationInputMainSurface.nonBlankTextOrNull
 
     override fun hasChanges(): Boolean {
         // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?

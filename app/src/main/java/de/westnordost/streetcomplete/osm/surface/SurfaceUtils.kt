@@ -86,12 +86,10 @@ data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = 
                 val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
                 if (isNotSetButThatsOkay) {
                     Color.INVISIBLE
+                } else if (note != null) {
+                    Color.BLACK
                 } else {
-                    if (note != null) {
-                        Color.BLACK
-                    } else {
-                        this.value.color
-                    }
+                    this.value.color
                 }
             }
             UnknownSurface -> {
@@ -138,13 +136,11 @@ fun surfaceTextValueToSurfaceEnum(surfaceValue: String?): Surface? {
 
     // PAVED_AREA and UNPAVED_AREA are more generic - and this can be also asked
     // for objects which are not roads
-    if (foundSurface == Surface.PAVED_ROAD) {
-        return Surface.PAVED_AREA
+    return when (foundSurface) {
+        Surface.PAVED_ROAD -> Surface.PAVED_AREA
+        Surface.UNPAVED_ROAD -> Surface.UNPAVED_AREA
+        else -> foundSurface
     }
-    if (foundSurface == Surface.UNPAVED_ROAD) {
-        return Surface.UNPAVED_AREA
-    }
-    return foundSurface
 }
 
 fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
@@ -165,14 +161,10 @@ fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
 
 fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
-    if (shared == "paved") {
-        return Surface.PAVED_AREA
+    return when (shared) {
+        "paved" -> Surface.PAVED_AREA
+        "unpaved" -> Surface.UNPAVED_AREA
+        "ground" -> Surface.GROUND_AREA
+        else -> Surface.values().firstOrNull { it.osmValue == shared }
     }
-    if (shared == "unpaved") {
-        return Surface.UNPAVED_AREA
-    }
-    if (shared == "ground") {
-        return Surface.GROUND_AREA
-    }
-    return Surface.values().firstOrNull { it.osmValue == shared }
 }

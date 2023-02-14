@@ -41,7 +41,7 @@ enum class Surface(val osmValue: String) : ParsedSurface {
     METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
     // this way than without info
 
-    // this values ideally would be removed from OpenStreetMap, but while they remain
+    // these values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them somehow
     SOIL("soil"),
     PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
