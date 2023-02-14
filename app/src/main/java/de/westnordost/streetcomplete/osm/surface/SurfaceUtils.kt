@@ -86,12 +86,10 @@ data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = 
                 val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
                 if (isNotSetButThatsOkay) {
                     Color.INVISIBLE
+                } else if (note != null) {
+                    Color.BLACK
                 } else {
-                    if (note != null) {
-                        Color.BLACK
-                    } else {
-                        this.value.color
-                    }
+                    this.value.color
                 }
             }
             UnknownSurface -> {
