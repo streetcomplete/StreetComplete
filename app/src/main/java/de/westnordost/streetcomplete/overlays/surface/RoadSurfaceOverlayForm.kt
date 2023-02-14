@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.children
@@ -35,52 +34,29 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_road_surface_select
     private val binding by contentViewBinding(FragmentOverlayRoadSurfaceSelectBinding::bind)
 
-    private val itemsPerRow = 2
+    private val noteText get() = binding.explanationInput.nonBlankTextOrNull
+
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface?>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItemsWithFakeNullPossibility()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
+
     private var originalSurfaceStatus: ParsedSurfaceWithNote? = null
 
-    private var selectedStatusForMainSurface: DisplayItem<Surface?>? = null
+    private var selectedSurfaceItem: DisplayItem<Surface?>? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
 
-    private sealed class SingleSurfaceItemInfo
-    private data class SingleSurfaceItem(val surface: DisplayItem<Surface?>) : SingleSurfaceItemInfo()
-    private data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface?>, val note: String) : SingleSurfaceItemInfo()
-
-    private fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
-        ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-            val value = item.value
-            if (value != null && value.shouldBeDescribed) {
-                DescribeGenericSurfaceDialog(requireContext()) { description ->
-                    callback(SingleSurfaceItemWithNote(item, description))
-                }.show()
-            } else {
-                callback(SingleSurfaceItem(item))
-            }
-        }.show()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.explanationInputMainSurface.doAfterTextChanged { checkIsFormComplete() }
+        binding.explanationInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SingleSurfaceItemInfo ->
-                when (gathered) {
-                    is SingleSurfaceItem -> {
-                        selectedStatusForMainSurface = gathered.surface
-                        binding.explanationInputMainSurface.text = null
-                    }
-                    is SingleSurfaceItemWithNote -> {
-                        selectedStatusForMainSurface = gathered.surface
-                        binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
-                    }
-                }
+            collectSurfaceData { surface: DisplayItem<Surface?>, note: String? ->
+                selectedSurfaceItem = surface
+                binding.explanationInput.setText(note)
                 checkIsFormComplete()
             }
         }
@@ -92,83 +68,72 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
         val status = createMainSurfaceStatus(element!!.tags)
         originalSurfaceStatus = status
-        val value = status.value
-        if (value != null) {
-            selectedStatusForMainSurface = value.asItem()
-        }
-        if (status.note != null) {
-            binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-        }
+        selectedSurfaceItem = status.value?.asItem()
+        binding.explanationInput.setText(status.note)
         updateSelectedCell()
     }
 
+    private fun collectSurfaceData(callback: (surface: DisplayItem<Surface?>, note: String?) -> Unit) {
+        ImageListPickerDialog(requireContext(), items, cellLayoutId, 2) { item ->
+            val value = item.value
+            if (value != null && value.shouldBeDescribed) {
+                DescribeGenericSurfaceDialog(requireContext()) { description ->
+                    callback(item, description)
+                }.show()
+            } else {
+                callback(item, null)
+            }
+        }.show()
+    }
+
     private fun updateSelectedCell() {
-        val mainSurfaceItem = selectedStatusForMainSurface
-        binding.selectButton.selectTextView.isGone = mainSurfaceItem != null
-        binding.selectButton.selectedCellView.isGone = mainSurfaceItem == null
-        if (mainSurfaceItem != null) {
-            ItemViewHolder(binding.selectButton.selectedCellView).bind(mainSurfaceItem)
+        val surfaceItem = selectedSurfaceItem
+        binding.selectButton.selectTextView.isGone = surfaceItem != null
+        binding.selectButton.selectedCellView.isGone = surfaceItem == null
+        if (surfaceItem != null) {
+            ItemViewHolder(binding.selectButton.selectedCellView).bind(surfaceItem)
         }
-        if (noteText != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
-            binding.explanationInputMainSurface.isVisible = true
+        if (noteText != null || surfaceItem?.value?.shouldBeDescribed == true) {
+            binding.explanationInput.isVisible = true
         }
     }
 
     /* ------------------------------------- instance state ------------------------------------- */
 
     private fun onLoadInstanceState(inState: Bundle) {
-        val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
-        val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
-        selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
-        if (selectedMainSurfaceNoteText != null) {
-            binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
-        }
+        val selectedIndex = inState.getInt(SELECTED_INDEX)
+        selectedSurfaceItem = if (selectedIndex != -1) items[selectedIndex] else null
+        binding.explanationInput.setText(inState.getString(NOTE_TEXT))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
-        outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText)
+        outState.putInt(SELECTED_INDEX, items.indexOf(selectedSurfaceItem))
+        outState.putString(NOTE_TEXT, noteText)
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete(): Boolean {
-        if (!hasChanges()) {
-            return false
-        }
-        if (selectedStatusForMainSurface == null) {
-            // can happen in case surface=cobblestone has surface:note
-            // saving just modified note is not possible
-            return false
-        }
-        val surfaceValue = selectedStatusForMainSurface!!.value
-        if (surfaceValue == null) {
-            return false
-        }
+        val surfaceValue = selectedSurfaceItem?.value ?: return false
         if (surfaceValue.shouldBeDescribed) {
             return noteText != null
         }
         return true
     }
 
-    private val noteText get() = binding.explanationInputMainSurface.nonBlankTextOrNull
-
-    override fun hasChanges(): Boolean {
-        // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?
-        return selectedStatusForMainSurface?.value != originalSurfaceStatus!!.value || noteText != originalSurfaceStatus!!.note
-    }
+    override fun hasChanges(): Boolean =
+        selectedSurfaceItem?.value != originalSurfaceStatus?.value
+        || noteText != originalSurfaceStatus?.note
 
     override fun onClickOk() {
-        val note = noteText
-        val surfaceObject = selectedStatusForMainSurface!!.value!!
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-            SurfaceAndNote(surfaceObject, note).applyTo(it)
-        }.create()))
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        SurfaceAndNote(selectedSurfaceItem!!.value!!, noteText).applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     companion object {
-        private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
-        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
+        private const val SELECTED_INDEX = "selected_index"
+        private const val NOTE_TEXT = "note_text"
     }
 }
