@@ -59,18 +59,9 @@ fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurface
     val surfaceNote = tags["surface:note"]
     val surface = parseSingleSurfaceTag(tags["surface"], surfaceNote)
     val cyclewaySurfaceNote = tags["cycleway:surface:note"]
-    var cyclewaySurface = parseSingleSurfaceTag(tags["cycleway:surface"], cyclewaySurfaceNote)
+    val cyclewaySurface = parseSingleSurfaceTag(tags["cycleway:surface"], cyclewaySurfaceNote)
     val footwaySurfaceNote = tags["footway:surface:note"]
-    var footwaySurface = parseSingleSurfaceTag(tags["footway:surface"], footwaySurfaceNote)
-    if(tags["segregated"] == "yes") {
-        // TODO is it needed
-        if(cyclewaySurface == null) {
-            cyclewaySurface = surface
-        }
-        if(footwaySurface == null) {
-            footwaySurface = surface
-        }
-    }
+    val footwaySurface = parseSingleSurfaceTag(tags["footway:surface"], footwaySurfaceNote)
     return ParsedCyclewayFootwaySurfacesWithNote(
         ParsedSurfaceWithNote(surface, surfaceNote),
         ParsedSurfaceWithNote(cyclewaySurface, cyclewaySurfaceNote),
