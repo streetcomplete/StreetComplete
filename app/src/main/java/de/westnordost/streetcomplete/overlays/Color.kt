@@ -11,7 +11,7 @@ package de.westnordost.streetcomplete.overlays
  *
  *   The palette is loosely based on Color Universal Design (CUD) by Masataka Okabe and Kei Ito's
  *   color palette (https://jfly.uni-koeln.de/color/), compare:
- *   https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28-%23DDDDDD-%23999999
+ *   https://davidmathlogic.com/colorblind/#%23000000-%230072B2-%2356B4E9-%23CC79A7-%23009E73-%23D55E00-%23E69F00-%23F0E442-%23DDDDDD
  *
  *   However,
  *   - the colors have been made more vibrant
