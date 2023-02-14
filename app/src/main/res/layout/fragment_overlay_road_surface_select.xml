@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:minHeight="160dp"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:gravity="center">
 
     <include
-        android:id="@+id/selectButton"
-        layout="@layout/view_image_select"/>
+        android:id="@+id/form"
+        layout="@layout/view_image_select_plus_text"
+        />
 
-    <EditText
-        android:id="@+id/explanation_input"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
-        android:layout_marginRight="@dimen/quest_form_horizontal_margin"
-        android:layout_marginBottom="@dimen/ok_button_size"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:gravity="top|start"
-        tools:text="Surface is a mosaic of paving stones, wood and metal."
-        android:maxLength="255"
-        android:scrollbars="vertical"
-        android:visibility="gone"
-        tools:visibility="visible" />
-
-</LinearLayout>
+</RelativeLayout>

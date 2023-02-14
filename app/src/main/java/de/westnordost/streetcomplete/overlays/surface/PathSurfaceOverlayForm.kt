@@ -40,7 +40,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_path_surface_select
     private val binding by contentViewBinding(FragmentOverlayPathSurfaceSelectBinding::bind)
 
-    private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface?>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_AREA_SURFACES).toItemsWithFakeNullPossibility()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
@@ -91,7 +90,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                     AnswerItem(R.string.overlay_path_surface_segregated) {
                         // reset previous data
                         selectedStatusForMainSurface = null
-                        binding.explanationInputMainSurface.text = null
+                        binding.main.explanationInput.text = null
                         switchToFootwayCyclewaySurfaceLayout()
                     }
                 )
@@ -115,7 +114,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
-            binding.mainSurfaceContainer.isGone = true
+            binding.main.root.isGone = true
             isSegregatedLayout = true
             binding.cyclewaySurfaceContainer.isGone = false
             binding.footwaySurfaceContainer.isGone = false
@@ -125,7 +124,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun collectSurfaceData(callback: (SurfaceAndNote) -> Unit) {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+            ImageListPickerDialog(requireContext(), items, cellLayoutId, 2) { item ->
                 val value = item.value
                 if (value != null && value.shouldBeDescribed) {
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
@@ -140,39 +139,39 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
-            binding.explanationInputMainSurface.doAfterTextChanged { checkIsFormComplete() }
-            binding.explanationInputFootwaySurface.doAfterTextChanged { checkIsFormComplete() }
-            binding.explanationInputCyclewaySurface.doAfterTextChanged { checkIsFormComplete() }
+            binding.main.explanationInput.doAfterTextChanged { checkIsFormComplete() }
+            binding.footway.explanationInput.doAfterTextChanged { checkIsFormComplete() }
+            binding.cycleway.explanationInput.doAfterTextChanged { checkIsFormComplete() }
 
-            binding.selectButtonMainSurface.root.setOnClickListener {
+            binding.main.selectButton.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForMainSurface = gathered.value.asItemWithFakeNullPossibility()
                     if (gathered.note == null) {
-                        binding.explanationInputMainSurface.text = null
+                        binding.main.explanationInput.text = null
                     } else {
-                        binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
+                        binding.main.explanationInput.text = SpannableStringBuilder(gathered.note)
                     }
                     checkIsFormComplete()
                 }
             }
-            binding.selectButtonCyclewaySurface.root.setOnClickListener {
+            binding.cycleway.selectButton.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForCyclewaySurface = gathered.value.asItemWithFakeNullPossibility()
                     if (gathered.note == null) {
-                        binding.explanationInputCyclewaySurface.text = null
+                        binding.cycleway.explanationInput.text = null
                     } else {
-                        binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(gathered.note)
+                        binding.cycleway.explanationInput.text = SpannableStringBuilder(gathered.note)
                     }
                     checkIsFormComplete()
                 }
             }
-            binding.selectButtonFootwaySurface.root.setOnClickListener {
+            binding.footway.selectButton.root.setOnClickListener {
                 collectSurfaceData { gathered: SurfaceAndNote ->
                     selectedStatusForFootwaySurface = gathered.value.asItemWithFakeNullPossibility()
                     if (gathered.note == null) {
-                        binding.explanationInputFootwaySurface.text = null
+                        binding.footway.explanationInput.text = null
                     } else {
-                        binding.explanationInputFootwaySurface.text = SpannableStringBuilder(gathered.note)
+                        binding.footway.explanationInput.text = SpannableStringBuilder(gathered.note)
                     }
                     checkIsFormComplete()
                 }
@@ -180,12 +179,12 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
             if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
 
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonMainSurface.selectedCellView, true)
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonCyclewaySurface.selectedCellView, true)
-            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButtonFootwaySurface.selectedCellView, true)
-            binding.selectButtonMainSurface.root.children.first().background = null
-            binding.selectButtonCyclewaySurface.root.children.first().background = null
-            binding.selectButtonFootwaySurface.root.children.first().background = null
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.main.selectButton.selectedCellView, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.cycleway.selectButton.selectedCellView, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.footway.selectButton.selectedCellView, true)
+            binding.main.selectButton.root.children.first().background = null
+            binding.cycleway.selectButton.root.children.first().background = null
+            binding.footway.selectButton.root.children.first().background = null
 
             val status = createSurfaceStatus(element!!.tags)
             originalSurfaceStatus = status
@@ -202,15 +201,15 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 selectedStatusForFootwaySurface = footwaySurface.value.asItem()
             }
             if (mainSurface.note != null) {
-                binding.explanationInputMainSurface.text = SpannableStringBuilder(mainSurface.note)
+                binding.main.explanationInput.text = SpannableStringBuilder(mainSurface.note)
                 selectedStatusForMainSurface = mainSurface.value?.asItem() // even if paved/unpaved
             }
             if (cyclewaySurface.note != null) {
-                binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(cyclewaySurface.note)
+                binding.cycleway.explanationInput.text = SpannableStringBuilder(cyclewaySurface.note)
                 selectedStatusForCyclewaySurface = cyclewaySurface.value?.asItem() // even if paved/unpaved
             }
             if (footwaySurface.note != null) {
-                binding.explanationInputFootwaySurface.text = SpannableStringBuilder(footwaySurface.note)
+                binding.footway.explanationInput.text = SpannableStringBuilder(footwaySurface.note)
                 selectedStatusForFootwaySurface = footwaySurface.value?.asItem() // even if paved/unpaved
             }
             if (element!!.tags["segregated"] == "yes" || cyclewaySurface.value != null || footwaySurface.value != null || cyclewaySurface.note != null || footwaySurface.note != null) {
@@ -221,34 +220,34 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         private fun updateSelectedCell() {
             val mainSurfaceItem = selectedStatusForMainSurface
-            binding.selectButtonMainSurface.selectTextView.isGone = mainSurfaceItem != null
-            binding.selectButtonMainSurface.selectedCellView.isGone = mainSurfaceItem == null
+            binding.main.selectButton.selectTextView.isGone = mainSurfaceItem != null
+            binding.main.selectButton.selectedCellView.isGone = mainSurfaceItem == null
             if (mainSurfaceItem != null) {
-                ItemViewHolder(binding.selectButtonMainSurface.selectedCellView).bind(mainSurfaceItem)
+                ItemViewHolder(binding.main.selectButton.selectedCellView).bind(mainSurfaceItem)
             }
             if (noteText != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputMainSurface.isGone = false
-                binding.mainSurfaceContainer.isGone = false
+                binding.main.explanationInput.isGone = false
+                binding.main.root.isGone = false
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
-            binding.selectButtonCyclewaySurface.selectTextView.isGone = cyclewaySurfaceItem != null
-            binding.selectButtonCyclewaySurface.selectedCellView.isGone = cyclewaySurfaceItem == null
+            binding.cycleway.selectButton.selectTextView.isGone = cyclewaySurfaceItem != null
+            binding.cycleway.selectButton.selectedCellView.isGone = cyclewaySurfaceItem == null
             if (cyclewaySurfaceItem != null) {
-                ItemViewHolder(binding.selectButtonCyclewaySurface.selectedCellView).bind(cyclewaySurfaceItem)
+                ItemViewHolder(binding.cycleway.selectButton.selectedCellView).bind(cyclewaySurfaceItem)
             }
             if (cyclewayNoteText != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputCyclewaySurface.isGone = false
+                binding.cycleway.explanationInput.isGone = false
             }
 
             val footwaySurfaceItem = selectedStatusForFootwaySurface
-            binding.selectButtonFootwaySurface.selectTextView.isGone = footwaySurfaceItem != null
-            binding.selectButtonFootwaySurface.selectedCellView.isGone = footwaySurfaceItem == null
+            binding.footway.selectButton.selectTextView.isGone = footwaySurfaceItem != null
+            binding.footway.selectButton.selectedCellView.isGone = footwaySurfaceItem == null
             if (footwaySurfaceItem != null) {
-                ItemViewHolder(binding.selectButtonFootwaySurface.selectedCellView).bind(footwaySurfaceItem)
+                ItemViewHolder(binding.footway.selectButton.selectedCellView).bind(footwaySurfaceItem)
             }
             if (footwayNoteText != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputFootwaySurface.isGone = false
+                binding.footway.explanationInput.isGone = false
             }
         }
 
@@ -263,15 +262,15 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             val selectedFootwaySurfaceNoteText = inState.getString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT)
             selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
             if (selectedMainSurfaceNoteText != null) {
-                binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+                binding.main.explanationInput.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
             }
             selectedStatusForCyclewaySurface = if (selectedCyclewaySurfaceIndex != -1) items[selectedCyclewaySurfaceIndex] else null
             if (selectedCyclewaySurfaceNoteText != null) {
-                binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
+                binding.cycleway.explanationInput.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
             }
             selectedStatusForFootwaySurface = if (selectedFootwaySurfaceIndex != -1) items[selectedFootwaySurfaceIndex] else null
             if (selectedFootwaySurfaceNoteText != null) {
-                binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
+                binding.footway.explanationInput.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
             }
         }
 
@@ -296,9 +295,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             return hasChanges()
         }
 
-    val noteText get() = binding.explanationInputMainSurface.nonBlankTextOrNull
-    private val cyclewayNoteText get() = binding.explanationInputCyclewaySurface.nonBlankTextOrNull
-    private val footwayNoteText get() = binding.explanationInputFootwaySurface.nonBlankTextOrNull
+    val noteText get() = binding.main.explanationInput.nonBlankTextOrNull
+    private val cyclewayNoteText get() = binding.cycleway.explanationInput.nonBlankTextOrNull
+    private val footwayNoteText get() = binding.footway.explanationInput.nonBlankTextOrNull
 
     override fun hasChanges(): Boolean {
         // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?

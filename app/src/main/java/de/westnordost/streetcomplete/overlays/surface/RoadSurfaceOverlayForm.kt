@@ -32,7 +32,8 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_road_surface_select
-    private val binding by contentViewBinding(FragmentOverlayRoadSurfaceSelectBinding::bind)
+    private val containerBinding by contentViewBinding(FragmentOverlayRoadSurfaceSelectBinding::bind)
+    private val binding get() = containerBinding.form
 
     private val noteText get() = binding.explanationInput.nonBlankTextOrNull
 

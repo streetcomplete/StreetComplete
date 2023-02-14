@@ -1,51 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="160dp"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal"
+    android:weightSum="2"
+    android:divider="@drawable/space_16dp"
+    android:showDividers="middle|beginning|end"
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/main_surface_container"
+    <include
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <include
-            android:id="@+id/selectButtonMainSurface"
-            layout="@layout/view_image_select" />
-
-        <EditText
-            android:id="@+id/explanation_input_main_surface"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
-            android:layout_marginRight="@dimen/quest_form_horizontal_margin"
-            android:layout_marginBottom="@dimen/ok_button_size"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:gravity="top|start"
-            tools:text="Surface is a mosaic of paving stones, wood and metal."
-            android:maxLength="255"
-            android:scrollbars="vertical"
-            android:visibility="gone"
-            tools:visibility="visible" />
-    </LinearLayout>
+        layout="@layout/view_image_select_plus_text"
+        tools:visibility="gone"
+        />
 
     <LinearLayout
         android:id="@+id/cycleway_surface_container"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:visibility="visible"
-        android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:width="0dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -58,43 +39,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/cycleway_surface_input_container"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/cycleway"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
-            android:layout_marginRight="@dimen/quest_form_horizontal_margin"
-            android:layout_marginBottom="@dimen/ok_button_size"
-            android:orientation="vertical">
+            layout="@layout/view_image_select_plus_text"
+            />
 
-            <include
-                android:id="@+id/selectButtonCyclewaySurface"
-                layout="@layout/view_image_select"/>
-
-            <EditText
-                android:id="@+id/explanation_input_cycleway_surface"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:gravity="top|start"
-                tools:text="Surface is a mosaic of paving stones, wood and metal."
-                android:maxLength="255"
-                android:scrollbars="vertical"
-                android:visibility="gone"
-                tools:visibility="visible" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/footway_surface_container"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:visibility="visible"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:width="0dp"
         android:gravity="center_horizontal"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -106,31 +67,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/cycleway_footway_input_container"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/footway"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/selectButtonFootwaySurface"
-                layout="@layout/view_image_select"/>
-
-            <EditText
-                android:id="@+id/explanation_input_footway_surface"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/quest_form_horizontal_margin"
-                android:layout_marginRight="@dimen/quest_form_horizontal_margin"
-                android:layout_marginBottom="@dimen/ok_button_size"
-                android:inputType="textMultiLine"
-                android:gravity="top|start"
-                tools:text="Surface is a mosaic of paving stones, wood and metal."
-                android:maxLength="255"
-                android:scrollbars="vertical"
-                android:visibility="gone"
-                tools:visibility="visible" />
-        </LinearLayout>
+            layout="@layout/view_image_select_plus_text"
+            />
     </LinearLayout>
 
 </LinearLayout>
