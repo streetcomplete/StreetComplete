@@ -109,7 +109,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         if (mainSurfaceItem != null) {
             ItemViewHolder(binding.selectButton.selectedCellView).bind(mainSurfaceItem)
         }
-        if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
+        if (noteText != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
             binding.explanationInputMainSurface.isVisible = true
         }
     }
@@ -128,7 +128,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
-        outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
+        outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText)
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
@@ -147,7 +147,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             return false
         }
         if (surfaceValue.shouldBeDescribed) {
-            return noteText() != null
+            return noteText != null
         }
         return true
     }
@@ -156,11 +156,11 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun hasChanges(): Boolean {
         // originalSurfaceStatus was supposed to be set in onViewCreated - is it possible to trigger this before onViewCreated completes?
-        return selectedStatusForMainSurface?.value != originalSurfaceStatus!!.value || noteText() != originalSurfaceStatus!!.note
+        return selectedStatusForMainSurface?.value != originalSurfaceStatus!!.value || noteText != originalSurfaceStatus!!.note
     }
 
     override fun onClickOk() {
-        val note = noteText()
+        val note = noteText
         val surfaceObject = selectedStatusForMainSurface!!.value!!
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
             SurfaceAndNote(surfaceObject, note).applyTo(it)
