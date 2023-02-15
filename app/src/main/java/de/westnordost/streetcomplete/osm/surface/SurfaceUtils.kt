@@ -85,6 +85,10 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): ParsedSurf
     val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
     val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
     if (surface == null) {
+        if (";" in surfaceTag || "<" in surfaceTag) {
+            // invalid surface tag, result of a botched merge, can and should be treated as requiring replacement
+            return null
+        }
         return UnknownSurface
     }
     return surfaceIgnoringUnspecific
