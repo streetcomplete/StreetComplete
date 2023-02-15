@@ -354,10 +354,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createItsPrivateAnswer(): AnswerItem? {
         return if (elementWithoutAccessTagsFilter.matches(element)
-            && (
-                "ways with highway or leisure ~ track|pitch".toElementFilterExpression().matches(element)
-                    || "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table".toElementFilterExpression().matches(element)
-                )
+                && (highwaysFilter.matches(element) || otherFilter.matches(element))
             )
             AnswerItem(R.string.quest_private) {
                 viewLifecycleScope.launch {
@@ -382,29 +379,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             }
         else null
     }
-
-    // check the most common access tags
-    private val elementWithoutAccessTagsFilter by lazy { """
-        nodes, ways, relations with
-         !access
-         and !bicycle
-         and !foot
-         and !vehicle
-         and !motor_vehicle
-         and !horse
-         and !bus
-         and !hgv
-         and !motorcar
-         and !psv
-         and !ski
-    """.toElementFilterExpression() }
-
-    private val buildingsFilter by lazy { """
-        ways, relations with building
-          and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
-          and !building:demolished
-          and !building:razed
-    """.toElementFilterExpression() }
 
     private suspend fun solve(action: ElementEditAction) {
         if (TagEditor.showingTagEditor) return
@@ -443,5 +417,33 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun createArguments(element: Element) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element)
         )
+
+        // check the most common access tags
+        private val elementWithoutAccessTagsFilter = """
+        nodes, ways, relations with
+         !access
+         and !bicycle
+         and !foot
+         and !vehicle
+         and !motor_vehicle
+         and !horse
+         and !bus
+         and !hgv
+         and !motorcar
+         and !psv
+         and !ski
+    """.toElementFilterExpression()
+
+        private val buildingsFilter = """
+        ways, relations with building
+          and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
+          and !building:demolished
+          and !building:razed
+    """.toElementFilterExpression()
+
+        private val highwaysFilter = "ways with highway ~ unclassified|residential|service|track|footway|bridleway|steps|path or leisure ~ track|pitch"
+            .toElementFilterExpression()
+
+        private val otherFilter = "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table".toElementFilterExpression()
     }
 }
