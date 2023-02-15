@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
-import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.surface.color
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 val INVALID_SURFACES = setOf(
     "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
@@ -65,11 +61,7 @@ fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurface
         ParsedSurfaceWithNote(footwaySurface, footwaySurfaceNote))
 }
 
-data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = null) {
-
-
-    private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
-}
+data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = null)
 
 /*
 * to be used when only surface and surface:note tag is relevant
