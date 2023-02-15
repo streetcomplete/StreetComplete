@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests.existence
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
@@ -16,9 +15,9 @@ import java.util.concurrent.FutureTask
 
 class CheckExistence(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmElementQuestType<Unit> {
+) : OsmFilterQuestType<Unit>() {
 
-    private val nodesFilter by lazy { """
+    override val elementFilter = """
         nodes with ((
           (
             amenity = atm
@@ -71,7 +70,7 @@ class CheckExistence(
         ))
         and access !~ no|private
         and (!seasonal or seasonal = no)
-    """.toElementFilterExpression() }
+    """
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
@@ -88,12 +87,6 @@ class CheckExistence(
     override val achievements = listOf(CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
-
-    override fun isApplicableTo(element: Element) =
-        nodesFilter.matches(element) && hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
@@ -117,9 +110,6 @@ class CheckExistence(
         older today -$yearsAgo years
         or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -$yearsAgo years" }}
     """.trimIndent()
-
-    private fun hasAnyName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }
 
 private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }
