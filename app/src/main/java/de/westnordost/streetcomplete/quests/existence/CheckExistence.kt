@@ -36,6 +36,7 @@ class CheckExistence(
             or leisure = picnic_table
             or amenity = bbq
             or leisure = firepit
+            or (leisure = pitch and sport = table_tennis)
             or amenity = grit_bin and seasonal = no
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator
@@ -75,13 +76,6 @@ class CheckExistence(
     //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
-    private val nodesWaysFilter by lazy { """
-        nodes, ways with
-          (leisure = pitch and sport = table_tennis)
-          and access !~ no|private
-          and (${lastChecked(4.0)})
-    """.toElementFilterExpression() }
-
     /* bicycle parkings, motorcycle parkings have capacity quests asked every
     *  few years already, so if it's gone now, it will be noticed that way.
     *  But some users disable this quests as spammy or boring or unimportant,
@@ -98,9 +92,8 @@ class CheckExistence(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) = lastCheckFilter.matches(element)
-        && (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
-        && hasAnyName(element.tags)
+    override fun isApplicableTo(element: Element) =
+        nodesFilter.matches(element) && hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
@@ -119,9 +112,6 @@ class CheckExistence(
     override fun applyAnswerTo(answer: Unit, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateCheckDate()
     }
-
-    // useless for the logic, but checked first and thus returns no already before doing the full check
-    private val lastCheckFilter = "nodes, ways with ${lastChecked(2.0)}".toElementFilterExpression()
 
     private fun lastChecked(yearsAgo: Double): String = """
         older today -$yearsAgo years
