@@ -61,14 +61,15 @@ val Surface?.color get() = when (this) {
 }
 
 fun ParsedSurfaceWithNote.getColor(element: Element): String {
+    // not set but indoor or private -> do not highlight as missing
+    val isNotSet = value in UNDERSPECIFED_SURFACES
+    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
+    if (isNotSetButThatsOkay) {
+        return Color.INVISIBLE
+    }
     return when (value) {
         is Surface -> {
-            // not set but indoor or private -> do not highlight as missing
-            val isNotSet = value in UNDERSPECIFED_SURFACES
-            val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
-            if (isNotSetButThatsOkay) {
-                Color.INVISIBLE
-            } else if (note != null) {
+            if (note != null) {
                 Color.BLACK
             } else {
                 value.color
