@@ -165,6 +165,7 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "3230/32301" + "§§" + // "Probably only for bottles, not any type of glass"
     "4061/40610" + "§§" + // "object needs review" (fixme poi "quest")
     "7130/71301" + "§§" + // "Missing maxheight tag"
+    "2060/1" + "§§" + // "addr:housenumber or addr:housename without addr:street, addr:district, addr:neighbourhood, addr:quarter, addr:suburb, addr:place or addr:hamlet must be in a associatedStreet relation"
     "3250" + "§§" + // "Invalid Opening Hours" (will be not be asked immediately, but frequently re-surveyed, at least of the option is on)
     "shop=yes is unspecific. Please replace ''yes'' by a specific value." + "§§" +
 //    alternative for all languages: 9002/9002007 and contains "shop=yes" or "shop = yes" (thanks, translator)
