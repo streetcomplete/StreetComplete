@@ -10,7 +10,7 @@ class AddBuildingEntranceTest {
 
     private val questType = AddEntrance()
 
-    fun generalTestDataWithWayThroughBuilding(tagsOnWayThroughBuilding: Map<String, String>): TestMapDataWithGeometry {
+    private fun generalTestDataWithWayThroughBuilding(tagsOnWayThroughBuilding: Map<String, String>): TestMapDataWithGeometry {
         return TestMapDataWithGeometry(
             listOf(
                 node(1),
@@ -38,12 +38,21 @@ class AddBuildingEntranceTest {
     }
 
     @Test
+    fun `applicable to cases where corridor through building is mapped and amrked as private`() {
+        val mapData = generalTestDataWithWayThroughBuilding(mapOf(
+            "highway" to "corridor",
+            "access" to "private",
+        ))
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test
     fun `applicable to cases where indor footway through building is mapped`() {
         val mapData = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "footway",
             "indoor" to "yes",
         ))
-        // 2 because both ends of way through building geenrated quest
+        // 2 because both ends of way through building generated quest
         Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
     }
 
@@ -52,8 +61,17 @@ class AddBuildingEntranceTest {
         val mapData = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "footway",
         ))
-        // 2 because both ends of way through building geenrated quest
+        // 2 because both ends of way through building generated quest
         Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test
+    fun `footway through building may be marked as private`() {
+        val mapData = generalTestDataWithWayThroughBuilding(mapOf(
+            "highway" to "footway",
+            "access" to "private",
+        ))
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
