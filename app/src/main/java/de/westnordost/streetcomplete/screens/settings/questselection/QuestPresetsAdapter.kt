@@ -52,6 +52,11 @@ class QuestPresetsAdapter(
             }
         } }
 
+        override fun onDuplicatedQuestPreset(preset: QuestPreset, duplicatedPresetId: Long) { viewLifecycleScope.launch {
+            presets.add(preset)
+            notifyItemInserted(presets.size - 1)
+        } }
+
         override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
             val deleteIndex = presets.indexOfFirst { it.id == presetId }
             presets.removeAt(deleteIndex)
@@ -115,6 +120,10 @@ class QuestPresetsAdapter(
                 renameItem.setOnMenuItemClickListener { onClickRenamePreset(preset); true }
             }
 
+            val duplicateItem = popup.menu.add(R.string.quest_presets_duplicate)
+            duplicateItem.setIcon(R.drawable.ic_add_24dp)
+            duplicateItem.setOnMenuItemClickListener { onClickDuplicatePreset(preset); true }
+
             val shareItem = popup.menu.add(R.string.quest_presets_share)
             shareItem.setIcon(R.drawable.ic_share_24dp)
             shareItem.setOnMenuItemClickListener { onClickSharePreset(preset); true }
@@ -142,6 +151,22 @@ class QuestPresetsAdapter(
         private fun renameQuestPreset(presetId: Long, name: String) {
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.rename(presetId, name)
+            }
+        }
+        private fun onClickDuplicatePreset(preset: QuestPreset) {
+            val ctx = itemView.context
+            val dialog = EditTextDialog(ctx,
+                title = ctx.getString(R.string.quest_presets_duplicate),
+                text = preset.name,
+                callback = { name -> duplicateQuestPreset(preset.id, name) }
+            )
+            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
+            dialog.show()
+        }
+
+        private fun duplicateQuestPreset(presetId: Long, name: String) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                questPresetsController.duplicate(presetId, name)
             }
         }
 

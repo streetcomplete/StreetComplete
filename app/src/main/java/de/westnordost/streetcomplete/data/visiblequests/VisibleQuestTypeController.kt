@@ -23,6 +23,11 @@ class VisibleQuestTypeController(
                 onQuestTypeVisibilitiesChanged()
             }
             override fun onAddedQuestPreset(preset: QuestPreset) {}
+            override fun onDuplicatedQuestPreset(preset: QuestPreset, duplicatedPresetId: Long) {
+                val duplicatedQuestTypes = getVisible(duplicatedPresetId)
+                val questTypes = questTypeRegistry.associateWith { it in duplicatedQuestTypes }
+                setVisibilities(questTypes, preset.id)
+            }
             override fun onRenamedQuestPreset(preset: QuestPreset) {}
             override fun onDeletedQuestPreset(presetId: Long) {
                 clearVisibilities(presetId)

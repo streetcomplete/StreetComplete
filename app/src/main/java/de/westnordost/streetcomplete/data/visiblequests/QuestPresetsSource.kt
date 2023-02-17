@@ -5,6 +5,7 @@ interface QuestPresetsSource {
         fun onSelectedQuestPresetChanged()
         fun onAddedQuestPreset(preset: QuestPreset)
         fun onRenamedQuestPreset(preset: QuestPreset)
+        fun onDuplicatedQuestPreset(preset: QuestPreset, duplicatedPresetId: Long)
         fun onDeletedQuestPreset(presetId: Long)
     }
 
