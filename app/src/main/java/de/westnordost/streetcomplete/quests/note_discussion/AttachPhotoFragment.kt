@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import android.widget.RelativeLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
@@ -65,6 +66,10 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
         binding.attachedGpxView.isGone = !hasGpxAttached
 
         updateHintVisibility()
+
+        // use default StreetComplete layout (no margin) if there is no GPX button
+        if (!prefs.getBoolean(Prefs.GPX_BUTTON, false))
+            (binding.takePhotoButton.layoutParams as RelativeLayout.LayoutParams).marginStart = 0
     }
 
     private fun updateHintVisibility() {
