@@ -48,9 +48,6 @@ class PathSurfaceOverlay : Overlay {
                ways, relations with
                    highway ~ ${(ALL_PATHS).joinToString("|")}
                    and (segregated = yes or (!cycleway:surface and !footway:surface and !cycleway:surface:note and !footway:surface:note))
-                   and (!surface:note or (surface or cycleway:surface or footway:surface or segregated = yes))
-                   and (!cycleway:surface:note or cycleway:surface)
-                   and (!footway:surface:note or footway:surface)
                    and !sidewalk and !sidewalk:left and !sidewalk:right and !sidewalk:both
                    and !sidewalk:both:surface and !sidewalk:right:surface and !sidewalk:left:surface and !sidewalk:surface
                    and !sidewalk:both:surface:note and !sidewalk:right:surface:note and !sidewalk:left:surface:note
