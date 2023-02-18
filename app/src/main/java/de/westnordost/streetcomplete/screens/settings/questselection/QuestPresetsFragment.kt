@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.databinding.FragmentQuestPresetsBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -21,6 +23,8 @@ import org.koin.android.ext.android.inject
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
     private val questPresetsController: QuestPresetsController by inject()
+    private val questTypeOrderController: QuestTypeOrderController by inject()
+    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val urlConfigController: UrlConfigController by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
@@ -29,7 +33,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController, urlConfigController)
+        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController, questTypeOrderController, visibleQuestTypeController, urlConfigController)
         lifecycle.addObserver(adapter)
         binding.questPresetsList.adapter = adapter
         binding.addPresetButton.setOnClickListener { onClickAddPreset() }

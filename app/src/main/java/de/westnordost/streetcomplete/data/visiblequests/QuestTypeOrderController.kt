@@ -21,14 +21,15 @@ class QuestTypeOrderController(
             }
             override fun onAddedQuestPreset(preset: QuestPreset) {}
             override fun onRenamedQuestPreset(preset: QuestPreset) {}
-            override fun onDuplicatedQuestPreset(preset: QuestPreset, duplicatedPresetId: Long) {
-                val orders = getOrders(duplicatedPresetId)
-                setOrders(orders, preset.id)
-            }
             override fun onDeletedQuestPreset(presetId: Long) {
                 clear(presetId)
             }
         })
+    }
+
+    fun copyOrders(presetId: Long, newPresetId: Long) {
+        val orders = getOrders(presetId)
+        setOrders(orders, newPresetId)
     }
 
     fun setOrders(orderItems: List<Pair<QuestType, QuestType>>, presetId: Long? = null) {

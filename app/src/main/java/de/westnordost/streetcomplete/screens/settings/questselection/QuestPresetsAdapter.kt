@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.CoroutineScope
@@ -27,6 +29,8 @@ import kotlinx.coroutines.launch
 class QuestPresetsAdapter(
     private val context: Context,
     private val questPresetsController: QuestPresetsController,
+    private val questTypeOrderController: QuestTypeOrderController,
+    private val visibleQuestTypeController: VisibleQuestTypeController,
     private val urlConfigController: UrlConfigController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
@@ -50,11 +54,6 @@ class QuestPresetsAdapter(
                 presets[index] = preset
                 notifyItemChanged(index)
             }
-        } }
-
-        override fun onDuplicatedQuestPreset(preset: QuestPreset, duplicatedPresetId: Long) { viewLifecycleScope.launch {
-            presets.add(preset)
-            notifyItemInserted(presets.size - 1)
         } }
 
         override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
@@ -166,7 +165,9 @@ class QuestPresetsAdapter(
 
         private fun duplicateQuestPreset(presetId: Long, name: String) {
             viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.duplicate(presetId, name)
+                val newPresetId = questPresetsController.add(name)
+                questTypeOrderController.copyOrders(presetId, newPresetId)
+                visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
             }
         }
 

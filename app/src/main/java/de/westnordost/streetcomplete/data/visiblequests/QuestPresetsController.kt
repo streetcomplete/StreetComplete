@@ -25,13 +25,6 @@ class QuestPresetsController(
         return presetId
     }
 
-    fun duplicate(duplicatedPresetId: Long, name: String): Long {
-        val newPresetId = questPresetsDao.add(name)
-        val newQuestPreset = QuestPreset(newPresetId, name)
-        onDuplicatedQuestPreset(newQuestPreset, duplicatedPresetId)
-        return newPresetId
-    }
-
     override fun getName(presetId: Long): String? {
         return questPresetsDao.getName(presetId)
     }
@@ -68,9 +61,6 @@ class QuestPresetsController(
     }
     private fun onAddedQuestPreset(presetId: Long, presetName: String) {
         listeners.forEach { it.onAddedQuestPreset(QuestPreset(presetId, presetName)) }
-    }
-    private fun onDuplicatedQuestPreset(questPreset: QuestPreset, duplicatedPresetId: Long) {
-        listeners.forEach { it.onDuplicatedQuestPreset(questPreset, duplicatedPresetId) }
     }
     private fun onRenamedQuestPreset(presetId: Long, presetName: String) {
         listeners.forEach { it.onRenamedQuestPreset(QuestPreset(presetId, presetName)) }
