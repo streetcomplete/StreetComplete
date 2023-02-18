@@ -114,13 +114,13 @@ private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
         if (sidewalkSides.left != Sidewalk.YES) {
             Color.INVISIBLE
         } else {
-            sidewalkSurface?.left.color
+            sidewalkSurface?.left?.getColor(element) ?: Color.DATA_REQUESTED
         }
     val rightColor =
         if (sidewalkSides.right != Sidewalk.YES) {
             Color.INVISIBLE
         } else {
-            sidewalkSurface?.right.color
+            sidewalkSurface?.right?.getColor(element) ?: Color.DATA_REQUESTED
         }
 
     if (leftColor == Color.DATA_REQUESTED || rightColor == Color.DATA_REQUESTED) {
