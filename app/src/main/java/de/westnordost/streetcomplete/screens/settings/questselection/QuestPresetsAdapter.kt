@@ -121,7 +121,7 @@ class QuestPresetsAdapter(
             }
 
             val duplicateItem = popup.menu.add(R.string.quest_presets_duplicate)
-            duplicateItem.setIcon(R.drawable.ic_add_24dp)
+            duplicateItem.setIcon(R.drawable.ic_content_copy_24dp)
             duplicateItem.setOnMenuItemClickListener { onClickDuplicatePreset(preset); true }
 
             val shareItem = popup.menu.add(R.string.quest_presets_share)
