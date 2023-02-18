@@ -42,5 +42,6 @@ private fun isAreaExpressionFragment(prefix: String? = null): String {
         or ${p}aerialway = station
         or ${p}allotments
         or ${p}healthcare
+        or ${p}highway = services
     """.trimIndent()
 }
