@@ -12,6 +12,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.HttpUrl
@@ -37,7 +38,7 @@ class MapTilesDownloader(
         var cachedSize = 0
         val time = nowAsEpochMilliseconds()
 
-        coroutineScope {
+        withTimeout(30000) { coroutineScope { // adding a call timeout to okhttp client does not help...
             for (tile in getDownloadTileSequence(bbox)) {
                 launch {
                     val result = try {
@@ -55,7 +56,7 @@ class MapTilesDownloader(
                     }
                 }
             }
-        }
+        } }
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
