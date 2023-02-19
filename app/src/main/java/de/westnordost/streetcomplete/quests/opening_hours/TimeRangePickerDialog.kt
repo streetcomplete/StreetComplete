@@ -60,9 +60,10 @@ class TimeRangePickerDialog(
             null as DialogInterface.OnClickListener?
         )
 
-        val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
+        val startPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
         startPickerContainer = startPickerBinding.root
         startPicker = startPickerBinding.picker
+        startPickerBinding.checkBox.visibility = View.INVISIBLE
         startPicker.setIs24HourView(is24HourView)
 
         val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
