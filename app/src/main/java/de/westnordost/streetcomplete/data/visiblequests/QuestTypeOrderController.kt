@@ -28,8 +28,8 @@ class QuestTypeOrderController(
     }
 
     fun copyOrders(presetId: Long, newPresetId: Long) {
-        val orders = getOrders(presetId)
-        setOrders(orders, newPresetId)
+        questTypeOrderDao.setAll(newPresetId, questTypeOrderDao.getAll(presetId))
+        if (newPresetId == selectedPresetId) onQuestTypeOrderChanged()
     }
 
     fun setOrders(orderItems: List<Pair<QuestType, QuestType>>, presetId: Long? = null) {
