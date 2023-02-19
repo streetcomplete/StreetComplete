@@ -32,6 +32,22 @@
         app:tintMode="multiply"
         tools:ignore="RtlHardcoded" />
 
+    <TextView
+        android:id="@+id/plusView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notification_background"
+        android:gravity="center"
+        android:textColor="@color/button_white"
+        android:textSize="12dp"
+        android:layout_alignTop="@id/iconView"
+        android:layout_alignEnd="@id/iconView"
+        android:minWidth="16dp"
+        android:layout_marginTop="2dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:text="+" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

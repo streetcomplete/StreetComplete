@@ -19,6 +19,13 @@ class AnswersCounterView @JvmOverloads constructor(
 
     private val binding = ViewAnswersCounterBinding.inflate(LayoutInflater.from(context), this)
 
+    var showUnsyncedChangesIndicator = false
+        set(value) {
+            if (field == value) return
+            binding.plusView.isGone = !value
+            field = value
+        }
+
     var uploadedCount: Int = 0
         set(value) {
             field = value

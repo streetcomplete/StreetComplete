@@ -122,6 +122,9 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
         }
         val amount = editCount + if (isAutosync) unsyncedChangesCountSource.getSolvedCount() else 0
         answersCounterView.setUploadedCount(amount, animated)
+
+        answersCounterView.showUnsyncedChangesIndicator =
+            isAutosync && unsyncedChangesCountSource.getCount() != 0
     }
 
     private fun addCount(diff: Int, animate: Boolean) {

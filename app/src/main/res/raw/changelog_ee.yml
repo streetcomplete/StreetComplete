@@ -1,6 +1,7 @@
 52.0: |
   <ul>
   <li>Allow feature search in all system and local languages</li>
+  <li>Add indicator for unsynced edits if autosync is on</li>
   <li>Small improvements</li>
   </ul>
 
