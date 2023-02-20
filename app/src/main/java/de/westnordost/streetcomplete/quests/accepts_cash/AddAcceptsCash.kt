@@ -57,7 +57,8 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val isReplaceShopEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
-        "SE"
+        "SE",
+        "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
     )
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
