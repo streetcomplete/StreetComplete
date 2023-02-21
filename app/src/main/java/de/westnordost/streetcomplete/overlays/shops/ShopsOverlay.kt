@@ -62,7 +62,7 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
                 ways, relations with building
             """)
             .map {
-                it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
+                it to PolygonStyle(Color.INVISIBLE)
             }
 
     override fun createForm(element: Element?) = ShopsOverlayForm()
