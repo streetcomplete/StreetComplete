@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.getShortHouseNumber
 import java.util.concurrent.FutureTask
 
 class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) : Overlay {
@@ -55,6 +56,13 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
                     PolygonStyle(Color.INVISIBLE, icon, label)
                 }
                 element to style
+            } +
+        mapData
+            .filter("""
+                ways, relations with building
+            """)
+            .map {
+                it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
             }
 
     override fun createForm(element: Element?) = ShopsOverlayForm()
