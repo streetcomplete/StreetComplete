@@ -21,11 +21,10 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
-import de.westnordost.streetcomplete.osm.surface.asItemWithFakeNullPossibility
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
-import de.westnordost.streetcomplete.osm.surface.toItemsWithFakeNullPossibility
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
@@ -41,22 +40,22 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     private val binding by contentViewBinding(FragmentOverlayPathSurfaceSelectBinding::bind)
 
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface?>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_AREA_SURFACES).toItemsWithFakeNullPossibility()
+    val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_AREA_SURFACES).toItems()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
     private var originalSurfaceStatus: ParsedCyclewayFootwaySurfacesWithNote? = null
     private var isSegregatedLayout = false
 
-    private var selectedStatusForMainSurface: DisplayItem<Surface?>? = null
+    private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
-    private var selectedStatusForCyclewaySurface: DisplayItem<Surface?>? = null
+    private var selectedStatusForCyclewaySurface: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
-    private var selectedStatusForFootwaySurface: DisplayItem<Surface?>? = null
+    private var selectedStatusForFootwaySurface: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
@@ -145,7 +144,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         binding.main.selectButton.root.setOnClickListener {
             collectSurfaceData { gathered: SurfaceAndNote ->
-                selectedStatusForMainSurface = gathered.value.asItemWithFakeNullPossibility()
+                selectedStatusForMainSurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.main.explanationInput.text = null
                 } else {
@@ -156,7 +155,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
         binding.cycleway.selectButton.root.setOnClickListener {
             collectSurfaceData { gathered: SurfaceAndNote ->
-                selectedStatusForCyclewaySurface = gathered.value.asItemWithFakeNullPossibility()
+                selectedStatusForCyclewaySurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.cycleway.explanationInput.text = null
                 } else {
@@ -167,7 +166,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
         binding.footway.selectButton.root.setOnClickListener {
             collectSurfaceData { gathered: SurfaceAndNote ->
-                selectedStatusForFootwaySurface = gathered.value.asItemWithFakeNullPossibility()
+                selectedStatusForFootwaySurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.footway.explanationInput.text = null
                 } else {

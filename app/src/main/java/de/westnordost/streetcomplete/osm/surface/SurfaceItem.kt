@@ -13,10 +13,9 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<Surface>.toItems() = this.map { it.asItem() }
-fun List<Surface>.toItemsWithFakeNullPossibility() = this.map { it.asItemWithFakeNullPossibility() }
 
-fun ParsedSurface.asItem(): DisplayItem<Surface?> = when (this) {
-    is Surface -> this.asItemWithFakeNullPossibility()
+fun ParsedSurface.asItem(): DisplayItem<Surface> = when (this) {
+    is Surface -> this.asItem()
     is UnknownSurface -> this.asItem()
 }
 
@@ -25,7 +24,7 @@ fun ParsedSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<
     is UnknownSurface -> this.asStreetSideItem(resources)
 }
 
-fun UnknownSurface.asItem(): DisplayItem<Surface?> = Item(null,  R.drawable.background_fully_transparent, R.string.unknown_surface_title)
+fun UnknownSurface.asItem(): DisplayItem<Surface> = Item(null,  R.drawable.background_fully_transparent, R.string.unknown_surface_title)
 fun UnknownSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface?> =
     StreetSideItem2(
         null,
@@ -37,9 +36,7 @@ fun UnknownSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem
 
 fun Surface.asItem(): DisplayItem<Surface> = Item(this, iconResId, titleResId)
 
-fun Surface.asItemWithFakeNullPossibility(): DisplayItem<Surface?> = Item(this, iconResId, titleResId)
-
-fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface> =
+fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<out Surface> =
     StreetSideItem2(
         this,
         ResImage(R.drawable.ic_sidewalk_illustration_yes),

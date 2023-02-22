@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
-import de.westnordost.streetcomplete.osm.surface.toItemsWithFakeNullPossibility
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
@@ -38,12 +38,12 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     private val noteText get() = binding.explanationInput.nonBlankTextOrNull
 
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface?>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItemsWithFakeNullPossibility()
+    val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
 
     private var originalSurfaceStatus: ParsedSurfaceWithNote? = null
 
-    private var selectedSurfaceItem: DisplayItem<Surface?>? = null
+    private var selectedSurfaceItem: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
@@ -55,7 +55,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         binding.explanationInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.selectButton.root.setOnClickListener {
-            collectSurfaceData { surface: DisplayItem<Surface?>, note: String? ->
+            collectSurfaceData { surface: DisplayItem<Surface>, note: String? ->
                 selectedSurfaceItem = surface
                 binding.explanationInput.setText(note)
                 checkIsFormComplete()
@@ -74,7 +74,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         updateSelectedCell()
     }
 
-    private fun collectSurfaceData(callback: (surface: DisplayItem<Surface?>, note: String?) -> Unit) {
+    private fun collectSurfaceData(callback: (surface: DisplayItem<Surface>, note: String?) -> Unit) {
         ImageListPickerDialog(requireContext(), items, cellLayoutId, 2) { item ->
             val value = item.value
             if (value != null && value.shouldBeDescribed) {
