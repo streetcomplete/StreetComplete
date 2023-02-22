@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.sidewalk_surface
 
 import de.westnordost.streetcomplete.osm.expandSidesTags
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.parseSingleSurfaceTag
 
 fun createSidewalkSurface(tags: Map<String, String>): LeftAndRightParsedSidewalkSurface? {
@@ -15,7 +15,7 @@ fun createSidewalkSurface(tags: Map<String, String>): LeftAndRightParsedSidewalk
     if (left == null && right == null) {
         return null
     }
-    return LeftAndRightParsedSidewalkSurface(SurfaceWithNote(left, leftNote), SurfaceWithNote(right, rightNote))
+    return LeftAndRightParsedSidewalkSurface(ParsedSurfaceWithNote(left, leftNote), ParsedSurfaceWithNote(right, rightNote))
 }
 
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {

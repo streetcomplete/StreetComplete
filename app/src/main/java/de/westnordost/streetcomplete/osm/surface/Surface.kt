@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 
-enum class Surface(val osmValue: String?) {
+sealed interface ParsedSurface
+object UnknownSurface : ParsedSurface
+enum class Surface(val osmValue: String) : ParsedSurface {
     ASPHALT("asphalt"),
     CONCRETE("concrete"),
     CONCRETE_PLATES("concrete:plates"),
@@ -46,7 +48,6 @@ enum class Surface(val osmValue: String?) {
     COBLLESTONE_FLATTENED("cobblestone:flattened"),
     BRICK("brick"),
     BRICKS("bricks"),
-    UNKNOWN_SURFACE(null),
 }
 
 val COMMON_SPECIFIC_PAVED_SURFACES = listOf(
@@ -82,6 +83,10 @@ val GENERIC_AREA_SURFACES = listOf(
 
 val UNDERSPECIFED_SURFACES = GENERIC_ROAD_SURFACES + GENERIC_AREA_SURFACES + null
 
-val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
+val ParsedSurface.shouldBeDescribed: Boolean get() =
+    when (this) {
+        is Surface -> this.shouldBeDescribed
+        is UnknownSurface -> false
+    }
 
-val Surface.unknownSurface: Boolean get() = this == UNKNOWN_SURFACE
+val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES

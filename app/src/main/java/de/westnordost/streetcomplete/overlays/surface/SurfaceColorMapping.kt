@@ -2,10 +2,11 @@ package de.westnordost.streetcomplete.overlays.surface
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.UnknownSurface
 import de.westnordost.streetcomplete.overlays.Color
 
 /*
@@ -57,10 +58,9 @@ val Surface?.color get() = when (this) {
                        -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
     PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null
                        -> Color.DATA_REQUESTED
-    UNKNOWN_SURFACE    -> Color.BLACK
 }
 
-fun SurfaceWithNote.getColor(element: Element): String {
+fun ParsedSurfaceWithNote.getColor(element: Element): String {
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = value in UNDERSPECIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
@@ -74,6 +74,9 @@ fun SurfaceWithNote.getColor(element: Element): String {
             } else {
                 value.color
             }
+        }
+        UnknownSurface -> {
+            Color.BLACK
         }
         null -> {
             Color.DATA_REQUESTED
