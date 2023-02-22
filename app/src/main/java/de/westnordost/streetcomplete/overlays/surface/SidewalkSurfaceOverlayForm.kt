@@ -16,19 +16,19 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.surface.ParsedSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.UnknownSurface
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
-import de.westnordost.streetcomplete.osm.surface.asStreetSideItemWithFakeNullPossibility
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
-class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface?>() {
+class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<ParsedSurface>() {
 
     private var originalSidewalkSurface: LeftAndRightParsedSidewalkSurface? = null
     private var leftNote: String? = null
@@ -91,7 +91,7 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface?>() {
     }
 
     private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
-        val streetSideItem = surface.asStreetSideItemWithFakeNullPossibility(requireContext().resources)
+        val streetSideItem = surface.asStreetSideItem(requireContext().resources)
         if (isRight) {
             rightNote = description
         } else {
@@ -116,8 +116,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface?>() {
         }
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         LeftAndRightSidewalkSurface(
-            left?.let { SurfaceAndNote(it, leftNote) },
-            right?.let { SurfaceAndNote(it, rightNote) }
+            left?.let { if(it is Surface) SurfaceAndNote(it, leftNote) else null },
+            right?.let { if(it is Surface) SurfaceAndNote(it, rightNote) else null }
         ).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
@@ -135,15 +135,21 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface?>() {
         outState.putString(RIGHT_NOTE, rightNote)
     }
 
-    override fun serialize(item: Surface?): String = item?.name ?: UNKNOWN_SURFACE
-    override fun deserialize(str: String): Surface? =
+    override fun serialize(item: ParsedSurface): String = when(item) {
+        is Surface -> {
+            item.osmValue
+        }
+        is UnknownSurface -> {
+            UNKNOWN_SURFACE
+        }
+    }
+    override fun deserialize(str: String): ParsedSurface =
         if (str == UNKNOWN_SURFACE) {
-            null
+            UnknownSurface
         } else {
             Surface.valueOf(str)
         }
-    override fun asStreetSideItem(item: Surface?, isRight: Boolean) =
-        item?.asStreetSideItemWithFakeNullPossibility(resources) ?: UnknownSurface.asStreetSideItem(resources)
+    override fun asStreetSideItem(item: ParsedSurface, isRight: Boolean) = item.asStreetSideItem(resources)
 
     companion object {
         private const val LEFT_NOTE = "left_note"

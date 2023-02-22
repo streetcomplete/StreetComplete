@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
+import de.westnordost.streetcomplete.osm.surface.asSurfaceStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -86,7 +87,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     }
 
     private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
-        val streetSideItem = surface.asStreetSideItem(requireContext().resources)
+        val streetSideItem = surface.asSurfaceStreetSideItem(requireContext().resources)
         if (isRight) rightNote = description
         else leftNote = description
         streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
@@ -122,7 +123,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     override fun serialize(item: Surface) = item.name
     override fun deserialize(str: String) = Surface.valueOf(str)
     override fun asStreetSideItem(item: Surface, isRight: Boolean) =
-        item.asStreetSideItem(resources)
+        item.asSurfaceStreetSideItem(resources)
 
     companion object {
         private const val LEFT_NOTE = "left_note"
