@@ -134,10 +134,3 @@ private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
         strokeRight = StrokeStyle(rightColor)
     )
 }
-
-private val SurfaceAndNote?.color: String get() =
-    if (this?.value in UNDERSPECIFED_SURFACES && this?.note != null) {
-        Color.BLACK
-    } else {
-        this?.value.color
-    }
