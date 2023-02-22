@@ -46,7 +46,7 @@ fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
     getLastCheckDateKeys("${prefix}surface") +
     getLastCheckDateKeys("${prefix}smoothness")
 
-class ParsedCyclewayFootwaySurfacesWithNote(val main: ParsedSurfaceWithNote, val cycleway: ParsedSurfaceWithNote, val footway: ParsedSurfaceWithNote)
+class ParsedCyclewayFootwaySurfacesWithNote(val main: SurfaceWithNote, val cycleway: SurfaceWithNote, val footway: SurfaceWithNote)
 
 fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurfacesWithNote {
     val surfaceNote = tags["surface:note"]
@@ -56,23 +56,23 @@ fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurface
     val footwaySurfaceNote = tags["footway:surface:note"]
     val footwaySurface = parseSingleSurfaceTag(tags["footway:surface"], footwaySurfaceNote)
     return ParsedCyclewayFootwaySurfacesWithNote(
-        ParsedSurfaceWithNote(surface, surfaceNote),
-        ParsedSurfaceWithNote(cyclewaySurface, cyclewaySurfaceNote),
-        ParsedSurfaceWithNote(footwaySurface, footwaySurfaceNote))
+        SurfaceWithNote(surface, surfaceNote),
+        SurfaceWithNote(cyclewaySurface, cyclewaySurfaceNote),
+        SurfaceWithNote(footwaySurface, footwaySurfaceNote))
 }
 
-data class ParsedSurfaceWithNote(val value: ParsedSurface?, val note: String? = null)
+data class SurfaceWithNote(val value: Surface?, val note: String? = null)
 
 /*
 * to be used when only surface and surface:note tag is relevant
 * for example if we want to tag road surface and we are free to skip sidewalk surface info
 * */
-fun createMainSurfaceStatus(tags: Map<String, String>): ParsedSurfaceWithNote {
+fun createMainSurfaceStatus(tags: Map<String, String>): SurfaceWithNote {
     val surfaceNote = tags["surface:note"]
-    return ParsedSurfaceWithNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
+    return SurfaceWithNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
 }
 
-fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): ParsedSurface? {
+fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
     if (surfaceTag == null) {
         return null
     }
@@ -89,7 +89,7 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): ParsedSurf
             // invalid surface tag, result of a botched merge, can and should be treated as requiring replacement
             return null
         }
-        return UnknownSurface
+        return Surface.UNKNOWN_SURFACE
     }
     return surfaceIgnoringUnspecific
 }

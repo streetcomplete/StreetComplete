@@ -9,7 +9,7 @@ data class SurfaceAndNote(val value: Surface, val note: String? = null)
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
-    val osmValue = value.osmValue
+    val osmValue = value.osmValue!!
     val previousOsmValue = tags[key]
 
     var replacesTracktype = false
@@ -32,8 +32,11 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     }
 
     // update surface + check date
-    if (updateCheckDate) tags.updateWithCheckDate(key, osmValue)
-    else tags[key] = osmValue
+    if (updateCheckDate) {
+        tags.updateWithCheckDate(key, osmValue)
+    } else {
+        tags[key] = osmValue
+    }
 
     // add/remove note - used to describe generic surfaces
     if (note != null) {
