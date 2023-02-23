@@ -19,15 +19,15 @@ fun ParsedSurface.asItem(): DisplayItem<Surface> = when (this) {
     is UnknownSurface -> this.asItem()
 }
 
-fun ParsedSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<ParsedSurface> = when (this) {
-    is Surface -> this.asStreetSideItem(resources)
+fun ParsedSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface?> = when (this) {
+    is Surface -> this.asStreetSideItemWithFakeNullPossibility(resources)
     is UnknownSurface -> this.asStreetSideItem(resources)
 }
 
 fun UnknownSurface.asItem(): DisplayItem<Surface> = Item(null,  R.drawable.background_fully_transparent, R.string.unknown_surface_title)
-fun UnknownSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<ParsedSurface> =
+fun UnknownSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface?> =
     StreetSideItem2(
-        this,
+        null,
         ResImage(R.drawable.ic_sidewalk_illustration_yes),
         ResText(R.string.unknown_surface_title),
         ResImage(R.drawable.background_fully_transparent),
@@ -36,7 +36,7 @@ fun UnknownSurface.asStreetSideItem(resources: Resources): StreetSideDisplayItem
 
 fun Surface.asItem(): DisplayItem<Surface> = Item(this, iconResId, titleResId)
 
-fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<ParsedSurface> =
+fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<out Surface> =
     StreetSideItem2(
         this,
         ResImage(R.drawable.ic_sidewalk_illustration_yes),
@@ -45,7 +45,7 @@ fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Parsed
         DrawableImage(RotatedCircleDrawable(resources.getDrawable(iconResId)))
     )
 
-fun Surface.asSurfaceStreetSideItem(resources: Resources): StreetSideDisplayItem<Surface> =
+fun Surface.asStreetSideItemWithFakeNullPossibility(resources: Resources): StreetSideDisplayItem<Surface?> =
     StreetSideItem2(
         this,
         ResImage(R.drawable.ic_sidewalk_illustration_yes),
