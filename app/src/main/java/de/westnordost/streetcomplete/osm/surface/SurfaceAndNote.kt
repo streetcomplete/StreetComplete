@@ -9,7 +9,10 @@ data class SurfaceAndNote(val value: Surface, val note: String? = null)
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
-    val osmValue = value.osmValue!!
+    val osmValue = value.osmValue
+    if (osmValue == null) {
+       throw IllegalArgumentException("callers of applyTo are obligated to provide only taggable data")
+    }
     val previousOsmValue = tags[key]
 
     var replacesTracktype = false
