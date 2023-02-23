@@ -27,7 +27,6 @@ class CheckShopExistence : OsmFilterQuestType<Unit>() {
     override val elementFilter = """
         nodes with (
           (${isShopExpressionFragment()})
-          or (${isShopExpressionFragment("disused")}
              and !man_made
              and !historic
              and !military
