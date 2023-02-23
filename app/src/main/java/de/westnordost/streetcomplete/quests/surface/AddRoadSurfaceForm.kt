@@ -35,7 +35,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
         val tracktype = element.tags["tracktype"]
         if (tracktype == null) {
             onTracktypeConfirmed()
-        } else if (isSurfaceAndTracktypeMismatching(surface.osmValue, tracktype)) {
+        } else if (isSurfaceAndTracktypeMismatching(surface.osmValue!!, tracktype)) {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
