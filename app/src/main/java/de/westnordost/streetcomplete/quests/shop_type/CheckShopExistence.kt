@@ -36,7 +36,6 @@ class CheckShopExistence : OsmFilterQuestType<Unit>() {
              and !railway
              and amenity !~ clinic|library|music_school|post_office
              and healthcare !~ clinic
-          )
         ) and (
           older today -2 years
           or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -2 years" }}
