@@ -34,6 +34,8 @@ class CheckShopExistence : OsmFilterQuestType<Unit>() {
              and !attraction
              and !aeroway
              and !railway
+             and amenity !~ hospital|clinic|library|music_school|post_office
+             and healthcare !~ hospital|clinic
           )
         ) and (
           older today -2 years
