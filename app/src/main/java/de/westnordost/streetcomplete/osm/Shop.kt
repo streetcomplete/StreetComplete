@@ -216,7 +216,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
 
             /* entertainment, arts & culture */
             "arts_centre",
-            // "brothel",
+            "brothel",
             // "casino", // as far as I know, always purpose-built
             // "cinema", // typically purpose-built
             "community_centre", // often purpose-built, but not necessarily
@@ -230,7 +230,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "social_centre",
             "stripclub",
             "studio",
-            // "swingerclub",
+            "swingerclub",
             // "theatre",
 
             /* public service */
