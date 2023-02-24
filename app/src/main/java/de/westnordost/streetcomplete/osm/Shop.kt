@@ -218,7 +218,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "arts_centre",
             // "brothel",
             // "casino", // as far as I know, always purpose-built
-            // "cinema",
+            // "cinema", // typically purpose-built
             "community_centre", // often purpose-built, but not necessarily
             // "conference_centre", // purpose-built
             "events_venue", // smaller ones are not purpose-built
