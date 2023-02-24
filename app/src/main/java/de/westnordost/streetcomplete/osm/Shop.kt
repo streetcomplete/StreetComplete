@@ -209,7 +209,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "clinic", // sizes vary a lot, not necessarily purpose-built
             "dentist",
             "doctors",
-            "hospital", // purpose-built
+            // "hospital", // purpose-built
             "pharmacy",
             // social_facility only if it is not residential, see above
             "veterinary",
