@@ -61,6 +61,13 @@ val Surface?.color get() = when (this) {
 }
 
 fun SurfaceWithNote.getColor(element: Element): String {
+    if (element.tags["highway"] in listOf("motorway", "motorway_link")) {
+        // assume motorways to be well paved (ASPHALT or CONCRETE)
+        // in tests equality of color of ASPHALT and CONCRETE is checked
+        // (to find relevant test search for motorway or motorway_link)
+        // allowing us to do this
+        return ASPHALT.color
+    }
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = value in UNDERSPECIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))

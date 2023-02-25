@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.overlays.surface
 
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
@@ -95,10 +97,20 @@ class RoadSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `surfaces for motorways can be assumed as concrete and asphalt is shown in the same way`() {
-        // if not then
-        // if (dominatingSurface == null && (element.tags["highway"] == "motorway" || element.tags["highway"] == "motorway_link")) {
-        // in getStyle of RoadSurfaceOverlay needs to be replaced by putting motorway into isNotSetButThatsOkay
-        assertEquals(Surface.ASPHALT.color, Surface.PAVING_STONES.color)
+    fun `surfaces for motorways are assumed to be well paved`() {
+        val motorway = way(tags = mapOf(
+            "highway" to "motorway",
+        ))
+        assertEquals(Surface.ASPHALT.color, SurfaceWithNote(null).getColor(motorway))
+        assertEquals(Surface.CONCRETE.color, SurfaceWithNote(null).getColor(motorway))
+    }
+
+    @Test
+    fun `surfaces for motorways links are assumed to be well paved`() {
+        val motorwayLink = way(tags = mapOf(
+            "highway" to "motorway_link",
+        ))
+        assertEquals(Surface.ASPHALT.color, SurfaceWithNote(null).getColor(motorwayLink))
+        assertEquals(Surface.CONCRETE.color, SurfaceWithNote(null).getColor(motorwayLink))
     }
 }
