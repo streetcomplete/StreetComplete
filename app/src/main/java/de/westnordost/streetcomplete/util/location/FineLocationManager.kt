@@ -100,7 +100,7 @@ private fun Location.isBetterThan(previous: Location?): Boolean {
     // Check whether the new location fix is newer or older
     // we use elapsedRealtimeNanos instead of epoch time because some devices have issues
     // that may lead to incorrect GPS location.time (e.g. GPS week rollover, but also others)
-    // the use of nanoseconds is necessary because it iss the only way to get
+    // the use of nanoseconds is necessary because it is the only way to get
     // elapsedRealtime of a location before API level 33
     val timeDelta = this.elapsedRealtimeNanos - previous.elapsedRealtimeNanos
     val isMuchNewer = timeDelta > TWO_MINUTES_IN_NANOSECONDS
