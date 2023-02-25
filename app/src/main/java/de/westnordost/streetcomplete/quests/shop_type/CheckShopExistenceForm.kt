@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.existence
+package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
