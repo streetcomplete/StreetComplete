@@ -86,7 +86,7 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
 // Based on https://web.archive.org/web/20180424190538/https://developer.android.com/guide/topics/location/strategies.html#BestEstimate
 
-private const val TWO_MINUTES = 1000L * 60 * 2
+private const val TWO_MINUTES = 1000L * 1000 * 1000 * 60 * 2
 
 /** Determines whether this Location reading is better than the previous Location fix */
 private fun Location.isBetterThan(previous: Location?): Boolean {
@@ -98,7 +98,7 @@ private fun Location.isBetterThan(previous: Location?): Boolean {
     if (previous == null) return true
 
     // Check whether the new location fix is newer or older
-    val timeDelta = this.time - previous.time
+    val timeDelta = this.elapsedRealtimeNanos - previous.elapsedRealtimeNanos
     val isMuchNewer = timeDelta > TWO_MINUTES
     val isMuchOlder = timeDelta < -TWO_MINUTES
     val isNewer = timeDelta > 0L
