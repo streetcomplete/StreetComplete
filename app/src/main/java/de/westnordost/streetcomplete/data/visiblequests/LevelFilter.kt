@@ -56,18 +56,19 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         val tags = element?.tags ?: return true
         val levelTags = tags.filterKeys { allowedLevelTags.contains(it) }
         if (levelTags.isEmpty()) return allowedLevel == null
-        if (allowedLevel == null) return false // level tags not empty
+        val allowedLevel = allowedLevel ?: return false
         levelTags.values.forEach { value ->
             val levels = value.split(";")
-            if (allowedLevel!!.startsWith('<')) {
-                val maxLevel = allowedLevel!!.substring(1).trim().toFloatOrNull()
+            if (allowedLevel == "*") return true // we have anything in an allowed tag, that's enough
+            if (allowedLevel.startsWith('<')) {
+                val maxLevel = allowedLevel.substring(1).trim().toFloatOrNull()
                 if (maxLevel != null)
                     levels.forEach { level ->
                         level.toFloatOrNull()?.let { if (it < maxLevel) return true }
                     }
             }
-            if (allowedLevel!!.startsWith('>')) {
-                val minLevel = allowedLevel!!.substring(1).trim().toFloatOrNull()
+            if (allowedLevel.startsWith('>')) {
+                val minLevel = allowedLevel.substring(1).trim().toFloatOrNull()
                 if (minLevel != null)
                     levels.forEach { level ->
                         level.toFloatOrNull()?.let { if (it > minLevel) return true }
