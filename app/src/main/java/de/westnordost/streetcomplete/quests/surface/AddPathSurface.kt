@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -44,7 +43,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
-    override fun createForm() = AddPathSurfaceForm(prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false))
+    override fun createForm() = AddPathSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
@@ -70,4 +69,4 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         )
 }
 
-private const val ALLOW_GENERIC_PATH = "qs_AddPathSurface_allow_generic"
+const val ALLOW_GENERIC_PATH = "qs_AddPathSurface_allow_generic"

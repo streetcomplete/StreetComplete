@@ -51,7 +51,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         if (tags["area"] == "yes") R.string.quest_streetSurface_square_title
         else                       R.string.quest_streetSurface_title
 
-    override fun createForm() = AddRoadSurfaceForm(prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false))
+    override fun createForm() = AddRoadSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
@@ -67,4 +67,4 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
 }
 
-private const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"
+const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"

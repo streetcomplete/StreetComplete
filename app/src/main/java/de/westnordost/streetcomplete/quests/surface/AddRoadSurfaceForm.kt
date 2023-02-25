@@ -4,8 +4,9 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddRoadSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestForm<Surface, SurfaceAnswer>() {
+class AddRoadSurfaceForm() : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val items get() =
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -45,7 +46,7 @@ class AddRoadSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestFor
         surface: Surface,
         onSurfaceDescribed: (description: String?) -> Unit
     ) {
-        if (allowGeneric || !surface.shouldBeDescribed) {
+        if (prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false) || !surface.shouldBeDescribed) {
             onSurfaceDescribed(null)
         } else {
             AlertDialog.Builder(requireContext())
