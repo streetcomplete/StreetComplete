@@ -49,13 +49,13 @@ class PathSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `way with surface note without surface tag is ineligible`() {
+    fun `way with surface note without surface tag is also eligible`() {
         val data = way(tags = mapOf(
             "highway" to "path",
             "surface:note" to "explanation for missing surface tag",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
