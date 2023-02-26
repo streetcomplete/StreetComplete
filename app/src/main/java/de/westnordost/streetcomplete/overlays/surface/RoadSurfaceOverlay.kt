@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
-import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
 class RoadSurfaceOverlay : Overlay {

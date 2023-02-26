@@ -43,7 +43,7 @@ enum class Surface(val osmValue: String?) {
     // we want to handle them somehow
     SOIL("soil"),
     PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
-    COBLLESTONE_FLATTENED("cobblestone:flattened"),
+    COBBLESTONE_FLATTENED("cobblestone:flattened"),
     BRICK("brick"),
     BRICKS("bricks"),
     UNKNOWN_SURFACE(null),

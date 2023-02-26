@@ -42,7 +42,7 @@ val Surface?.color get() = when (this) {
                        -> Color.BLUE
     WOOD, METAL, METAL_GRID
                        -> Color.SKY
-    CONCRETE_PLATES, CONCRETE_LANES, SETT, COBLLESTONE_FLATTENED
+    CONCRETE_PLATES, CONCRETE_LANES, SETT, COBBLESTONE_FLATTENED
                        -> Color.CYAN
     UNHEWN_COBBLESTONE, GRASS_PAVER -> Color.AQUAMARINE
     COMPACTED, FINE_GRAVEL
