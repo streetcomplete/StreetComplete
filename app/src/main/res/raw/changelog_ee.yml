@@ -1,8 +1,8 @@
-52.0: |
+51.1: |
   <ul>
   <li>Allow feature search in all system and local languages</li>
   <li>Add indicator for unsynced edits if autosync is on</li>
-  <li>Small improvements</li>
+  <li>Small fixes and improvements</li>
   </ul>
 
 51.0: |
