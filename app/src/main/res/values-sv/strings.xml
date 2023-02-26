@@ -1309,4 +1309,5 @@ Flytta den?"</string>
     <string name="quest_gritBinSeasonal_title">"Finns det här även när det inte är vinter?"</string>
     <string name="street_parking_staggered_on_street">"På gatan men bara en sida åt gången"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delvis på trottaren men bara en sida åt gången"</string>
+    <string name="quest_traffic_signals_sound_description">"Tips: Leta efter högtalare. Inte alla ljudsignaler kan aktiveras med en knapp."</string>
 </resources>

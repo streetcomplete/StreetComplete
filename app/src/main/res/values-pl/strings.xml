@@ -1105,7 +1105,7 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_accepts_cash_title2">"Czy w tym miejscu jest akceptowana płatność gotówkowa?"</string>
     <string name="quest_address_street_title2">"Na której ulicy jest to?"</string>
     <string name="quest_airConditioning_title">"Czy to miejsce jest klimatyzowane?"</string>
-    <string name="quest_baby_changing_table_title2">"Czy te miejsce ma przewijak dla niemowląt?"</string>
+    <string name="quest_baby_changing_table_title2">"Czy jest tutaj dostępny przewijak dla niemowląt?"</string>
     <string name="quest_busStopBench_title2">"Czy jest ławka na tym przystanku?"</string>
     <string name="quest_busStopBin_title2">"Czy jest na tym przystanku śmietnik?"</string>
     <string name="quest_busStopLit_title2">"Czy jest ten przystanek oświetlony?"</string>
@@ -1118,11 +1118,11 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_dietType_vegan_title2">"Czy sá tutaj veganskie produkty na menu?"</string>
     <string name="quest_dietType_vegetarian_title2">"Są tutaj w menu jakieś wegetariańskie dania?"</string>
     <string name="quest_drinking_water_title2">"Czy jest tu woda zdatna do pitna?"</string>
-    <string name="quest_existence_title2">"Czy dalej istnieje tutaj te miejsce?"</string>
+    <string name="quest_existence_title2">"Czy to miejsce wciąż istnieje?"</string>
     <string name="quest_generalFee_title2">"Czy trzeba tutaj zapłacić aby wejść?"</string>
     <string name="quest_internet_access_title">"Jaki rodzaj połączenia internetowego oferuje to miejsce?"</string>
     <string name="quest_level_title2">"Na którym poziomie jest to miejce pomieszczone?"</string>
-    <string name="quest_lit_title">"Czy jest tutaj te miejsce oświetlone?"</string>
+    <string name="quest_lit_title">"Czy to miejsce jest oświetlone?"</string>
     <string name="quest_openingHours_title">"Jakie są tutaj godziny otwarcia?"</string>
     <string name="quest_openingHours_signed_title">"Czy jest tutaj informacja o godzinach otwarcia?"</string>
     <string name="quest_openingHours_resurvey_title">"Czy tę godziny otwarcia są dalej poprawne?"</string>

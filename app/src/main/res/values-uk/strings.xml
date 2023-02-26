@@ -1297,4 +1297,7 @@
 &lt;p&gt;Встановіть кожну початкову та кінцеву точки, спрямовуючи телефон прямо вниз (щоб ви бачили білу стрілку зверху), щоб повністю уникнути цієї проблеми для горизонтальних вимірювань.&lt;/p&gt;
 &lt;p&gt;Для вертикальних вимірювань вам потрібно натомість переконатися, що початкова точка не рухається відносно землі, дивлячись на неї з різних боків.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ця програма працює в &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;службах Google Play для AR&lt;/a&gt; (ARCore), які надається Google і регулюється &lt;a href=\"https://policies.google.com/privacy\"&gt;Політикою конфіденційності Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Цей тип квесту вимкнено за замовчуванням, оскільки може знадобитися повторна перевірка ситуації в певну пору року."</string>
+    <string name="quest_gritBinSeasonal_title">"Це також тут не взимку?"</string>
+    <string name="quest_traffic_signals_sound_description">"Підказка: зверніть увагу на динаміки. Не всі звукові сигнали можна активувати кнопкою."</string>
 </resources>

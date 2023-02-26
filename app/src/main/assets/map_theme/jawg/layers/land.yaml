@@ -116,14 +116,23 @@ layers:
                     width: [[15, 1px], [18, 2m]]
 
     pedestrian-areas:
-        data: { source: jawg , layer: road }
+        data: { source: jawg, layer: road }
         squares:
-            filter: { class: street_limited, type: pedestrian , $zoom: { min: 14 } }
+            filter: { class: street_limited, type: pedestrian, $zoom: { min: 14 } }
             draw:
                 lines:
                     color: global.square_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
                     order: 30
+                polygons:
+                    color: global.square_color
+                    order: 31
+
+    path-areas:
+        data: { source: jawg, layer: road }
+        squares:
+            filter: { class: path, $zoom: { min: 14 } }
+            draw:
                 polygons:
                     color: global.square_color
                     order: 31
