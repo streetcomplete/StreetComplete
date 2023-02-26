@@ -41,7 +41,7 @@ enum class Surface(val osmValue: String?) {
 
     // these values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them as synonyms
-    SOIL("soil"),
+    SOIL("soil"), // synonym of earth and dirt
     PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
     COBBLESTONE_FLATTENED("cobblestone:flattened"),
     BRICK("brick"),
