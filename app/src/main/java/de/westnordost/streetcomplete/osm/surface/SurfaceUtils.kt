@@ -46,7 +46,7 @@ fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
     getLastCheckDateKeys("${prefix}surface") +
     getLastCheckDateKeys("${prefix}smoothness")
 
-class ParsedCyclewayFootwaySurfacesWithNote(val main: SurfaceWithNote, val cycleway: SurfaceWithNote, val footway: SurfaceWithNote)
+class ParsedCyclewayFootwaySurfacesWithNote(val main: ParsedSurfaceAndNote, val cycleway: ParsedSurfaceAndNote, val footway: ParsedSurfaceAndNote)
 
 fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurfacesWithNote {
     val surfaceNote = tags["surface:note"]
@@ -56,20 +56,20 @@ fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurface
     val footwaySurfaceNote = tags["footway:surface:note"]
     val footwaySurface = parseSingleSurfaceTag(tags["footway:surface"], footwaySurfaceNote)
     return ParsedCyclewayFootwaySurfacesWithNote(
-        SurfaceWithNote(surface, surfaceNote),
-        SurfaceWithNote(cyclewaySurface, cyclewaySurfaceNote),
-        SurfaceWithNote(footwaySurface, footwaySurfaceNote))
+        ParsedSurfaceAndNote(surface, surfaceNote),
+        ParsedSurfaceAndNote(cyclewaySurface, cyclewaySurfaceNote),
+        ParsedSurfaceAndNote(footwaySurface, footwaySurfaceNote))
 }
 
-data class SurfaceWithNote(val value: Surface?, val note: String? = null)
+data class ParsedSurfaceAndNote(val value: Surface?, val note: String? = null)
 
 /*
 * to be used when only surface and surface:note tag is relevant
 * for example if we want to tag road surface and we are free to skip sidewalk surface info
 * */
-fun createMainSurfaceStatus(tags: Map<String, String>): SurfaceWithNote {
+fun createMainSurfaceStatus(tags: Map<String, String>): ParsedSurfaceAndNote {
     val surfaceNote = tags["surface:note"]
-    return SurfaceWithNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
+    return ParsedSurfaceAndNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
 }
 
 fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {

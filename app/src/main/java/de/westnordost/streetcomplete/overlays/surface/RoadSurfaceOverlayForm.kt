@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
@@ -41,7 +41,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
 
-    private var originalSurfaceStatus: SurfaceWithNote? = null
+    private var originalSurfaceStatus: ParsedSurfaceAndNote? = null
 
     private var selectedSurfaceItem: DisplayItem<Surface>? = null
         set(value) {

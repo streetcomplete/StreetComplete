@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 import de.westnordost.streetcomplete.overlays.Color
 
@@ -60,7 +60,7 @@ val Surface?.color get() = when (this) {
     UNKNOWN_SURFACE    -> Color.BLACK
 }
 
-fun SurfaceWithNote.getColor(element: Element): String {
+fun ParsedSurfaceAndNote.getColor(element: Element): String {
     if (element.tags["highway"] in listOf("motorway", "motorway_link")) {
         // assume motorways to be well paved (ASPHALT or CONCRETE)
         // in tests equality of color of ASPHALT and CONCRETE is checked
