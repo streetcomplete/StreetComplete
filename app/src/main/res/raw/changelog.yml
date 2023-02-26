@@ -1,7 +1,7 @@
 v51.1: |
   <h3>Enhancements</h3>
   <ul>
-  <li>Also ask in the Netherlands whether shops accept cash (#4826), by @matkoniecz</li>
+  <li>Also ask in the Netherlands whether shops accept cash (#4826), by @matkoniecz (quest disabled by default, can be enabled in settings)</li>
   <li>Don't ask anything about benches and recycling containers if they are private (#4815), by @Helium314</li>
   <li>Allow more options when specifying the type of shop, by @matkoniecz</li>
   </ul>
@@ -9,7 +9,7 @@ v51.1: |
   <ul>
   <li>Solve a problem with getting the GPS location on certain devices and circumstances (#4846, #4652), by @Helium314</li>
   <li>Max height: Open <a href="https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure">StreetMeasure</a> in vertical measurement mode (#4808)</li>
-  <li>Type of entrance: Don't ask for paths that only continue below a roof (#4805), by @matkoniecz</li>
+  <li>Type of entrance: Don't ask for paths that only continue on top of a roof (#4805), by @matkoniecz</li>
   <li>Answering that a ping pong table mapped is gone would not remove it if it was an area (#4816)</li>
   <li>Render highway service areas and healthcare places as areas (#4824, #4809), by @matkoniecz, @dbdean</li>
   </ul>
