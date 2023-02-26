@@ -7,7 +7,9 @@ val INVALID_SURFACES = setOf(
     "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 and https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
 )
 
-val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
+val SOFT_SURFACES = setOf(
+    "ground", "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
+)
 
 val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
