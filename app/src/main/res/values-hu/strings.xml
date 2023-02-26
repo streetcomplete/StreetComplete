@@ -1298,4 +1298,9 @@ Most akarja elmozdítani?"</string>
 &lt;p&gt;A vízszintes méréseknél ennek a problémának a teljes kiküszöböléséhez állítsd be a kezdő- és végpontokat úgy, hogy közben a telefont egyenesen lefelé irányítod (úgy, hogy felülről a fehér nyilat lásd).&lt;/p&gt;
 &lt;p&gt;Függőleges méréseknél ehelyett azt ellenőrizd, hogy a kezdőpont nem mozdul-e el a talajhoz képest, ha különböző irányokból nézed.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ez az alkalmazás a &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) kiterjesztettvalóság-rendszeren fut, amelyet a Google biztosít, és amelyre a &lt;a href=\"https://policies.google.com/privacy\"&gt;Google adatvédelmi irányelvei&lt;/a&gt; vonatkoznak."</string>
+    <string name="default_disabled_msg_seasonal">"Ez a küldetéstípus alapértelmezés szerint ki van kapcsolva, mivel az ellenőrzésre az év egy bizonyos szakaszában lehet szükség."</string>
+    <string name="quest_gritBinSeasonal_title">"Ez télen is kívül itt van?"</string>
+    <string name="street_parking_staggered_on_street">"Az utcán felváltva, mindkét oldalon"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Részben az utca váltakozó oldalain"</string>
+    <string name="quest_traffic_signals_sound_description">"Tipp: Keresse a hangszórókat. Nem minden hangjelzés aktiválható gombnyomással."</string>
 </resources>

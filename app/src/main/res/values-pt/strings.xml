@@ -811,7 +811,7 @@ conquista"</string>
     <string name="osm_element_gone_confirmation">"Não existe"</string>
     <string name="leave_note">"Deixar nota"</string>
     <string name="quest_shop_gone_title">"O que é que se encontra aqui agora?"</string>
-    <string name="quest_shop_gone_vacant_answer">"Encerrou definitivamente (desocupada)"</string>
+    <string name="quest_shop_gone_vacant_answer">"Está desocupado…"</string>
     <string name="quest_shop_gone_replaced_answer">"É…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Digite o tipo de lugar aqui"</string>
     <string name="quest_shop_vacant_type_title">"Esta loja esteve desocupada. O que se encontra aqui agora?"</string>
@@ -1081,7 +1081,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="ar_core_tracking_error_no_plane_hit">"Mantenha-se mais perto da seta mas cuidado com o trânsito!"</string>
     <string name="quest_sidewalk_surface_title">"Qual é a superfície do passeio aqui?"</string>
     <string name="quest_tactilePaving_incorrect">"Apenas de um lado"</string>
-    <string name="quest_fee_answer_yes_but">"Sim..."</string>
+    <string name="quest_fee_answer_yes_but">"Sim…"</string>
     <string name="quest_fee_answer_no_but_maxstay">"É gratuito mas tem limite de tempo"</string>
     <string name="unit_days">"dias"</string>
     <string name="unit_hours">"horas"</string>
@@ -1279,7 +1279,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="move_node_description">"Mova o mapa para colocar o elemento na posição correta. Utilize a funcionalidade de zoom e tente ser o mais preciso possível. Tenha em conta que a sua posição atual pode ser menos exata do que a visualizada."</string>
     <string name="move_node_action_description">"Moveu um nó"</string>
     <string name="quest_cycleway_value_shoulder">"nenhum, mas a berma é utilizada por ciclistas"</string>
-    <string name="quest_placeName_no_name_answer">"Não existe placa toponímica"</string>
+    <string name="quest_placeName_no_name_answer">"Não existe placa toponímica…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Esta largura, não é plausível. Tenha em conta que deverá ser a largura de lancil a lancil, incluindo os lugares de estacionamentos, ciclovias, etc."</string>
     <string name="overlay_cycleway">"Caminhos para bicicletas"</string>
     <string name="bicycle_boulevard_is_a">"É %1$s"</string>
@@ -1307,4 +1307,5 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_gritBinSeasonal_title">"Isto também está aqui fora do Inverno?"</string>
     <string name="street_parking_staggered_on_street">"Na estrada em lados alternados"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente na estrada em lados alternados"</string>
+    <string name="quest_traffic_signals_sound_description">"Dica: observe se existe algum altifalante. Nem todos os sinais sonoros são ativados por um botão."</string>
 </resources>

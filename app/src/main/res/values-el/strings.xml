@@ -1291,4 +1291,9 @@
 &lt;p&gt;Ρυθμίστε το σημείο έναρξης και τέλους ενώ στρέφετε το τηλέφωνο ευθεία προς τα κάτω (έτσι ώστε να βλέπετε το λευκό βέλος από πάνω) για να αποφύγετε εντελώς αυτό το ζήτημα για οριζόντιες μετρήσεις.&lt;/p&gt;
 &lt;p&gt;Για κάθετες μετρήσεις, πρέπει να ελέγξετε ότι το σημείο εκκίνησης δεν φαίνεται να μετακινείται σε σχέση με το έδαφος κοιτάζοντάς το από διαφορετικές κατευθύνσεις.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Αυτή η εφαρμογή εκτελείται στο &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Υπηρεσίες Google Play για το AR&lt;/a&gt; (ARCore), το οποίο παρέχεται από την Google και διέπεται από την &lt;a href=\"https://policies.google.com/privacy\"&gt;Πολιτική απορρήτου της Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή επειδή μπορεί να απαιτεί επανέλεγχο της κατάστασης σε μια συγκεκριμένη περίοδο του έτους."</string>
+    <string name="quest_gritBinSeasonal_title">"Αυτό είναι εδώ και εκτός χειμώνα;"</string>
+    <string name="street_parking_staggered_on_street">"Στο δρόμο σε εναλλασσόμενες πλευρές"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Μερικώς στο δρόμο σε εναλλασσόμενες πλευρές"</string>
+    <string name="quest_traffic_signals_sound_description">"Συμβουλή: Προσέξτε για ηχεία. Δεν λειτουργούν όλα τα ηχητικά σήματα μέσω ενός κουμπιού."</string>
 </resources>

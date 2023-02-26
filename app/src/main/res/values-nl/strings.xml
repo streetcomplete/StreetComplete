@@ -1297,4 +1297,9 @@ Nu verplaatsen?"</string>
 &lt;p&gt;Stel elk begin- en eindpunt in terwijl u de telefoon recht naar beneden richt (zodat u de witte pijl van bovenaf ziet) om dit probleem voor horizontale metingen volledig te voorkomen.&lt;/p&gt;
 &lt;p&gt;Voor verticale metingen moet u in plaats daarvan controleren of het startpunt niet lijkt te bewegen ten opzichte van de grond door er vanuit verschillende richtingen naar te kijken.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Deze applicatie draait op &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), die wordt geleverd door Google en valt onder het privacybeleid van &lt;a href=\"https://policies.google.com/privacy\"&gt;Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Dit type vraag is standaard uitgeschakeld omdat de situatie in een specifiek deel van het jaar mogelijk opnieuw moet worden gecontroleerd."</string>
+    <string name="quest_gritBinSeasonal_title">"Staat deze grintbak hier ook buiten het winterseizoen?"</string>
+    <string name="street_parking_staggered_on_street">"Op de straat aan afwisselende zijden"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Gedeeltelijk op de straat aan afwisselende zijden"</string>
+    <string name="quest_traffic_signals_sound_description">"Hint: Zoek naar luidsprekers. Niet alle geluidssignalen kunnen via een knop worden geactiveerd."</string>
 </resources>

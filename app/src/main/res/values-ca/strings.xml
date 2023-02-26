@@ -21,7 +21,7 @@
     <string name="quest_generic_confirmation_no">"Ho comprovaré"</string>
     <string name="quest_leave_new_note_title">"Alternativament, vols deixar una nota?"</string>
     <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre o alternativament amaga la missió només per a tu"</string>
-    <string name="quest_leave_new_note_yes">"D'acord"</string>
+    <string name="quest_leave_new_note_yes">"Deixeu una nota"</string>
     <string name="quest_leave_new_note_no">"No, només amaga-la"</string>
     <string name="quest_streetName_title">"Quin nom té aquesta via?"</string>
     <string name="quest_streetName_description">"com està escrita en el senyal del carrer, les abreviatures s'amplien:"</string>

@@ -1306,4 +1306,5 @@ Spostarlo ora?"</string>
     <string name="quest_gritBinSeasonal_title">"È qui all'aperto anche d'inverno?"</string>
     <string name="street_parking_staggered_on_street">"Sulla strada su lati alterni"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parzialmente sulla strada su lati alterni"</string>
+    <string name="quest_traffic_signals_sound_description">"Consiglio: cerca degli altoparlanti. Non tutti i segnali sonori sono attivabili tramite pulsante."</string>
 </resources>

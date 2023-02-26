@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 400683
-  linesOfInterfaceMarkupChanged: 142690
+  linesOfCodeChanged: 400715
+  linesOfInterfaceMarkupChanged: 142811
   assetFilesChanged: 1952
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17563
+  linesOfCodeChanged: 17843
   linesOfInterfaceMarkupChanged: 4956
   assetFilesChanged: 618
 - name: "Flo Edelmann"
@@ -15,7 +15,7 @@
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 10646
+  linesOfCodeChanged: 10662
   linesOfInterfaceMarkupChanged: 831
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -61,7 +61,7 @@
   linesOfInterfaceMarkupChanged: 62
 - name: "David Dean"
   githubUsername: "dbdean"
-  linesOfCodeChanged: 952
+  linesOfCodeChanged: 963
   linesOfInterfaceMarkupChanged: 117
 - name: "Mark Tully"
   githubUsername: "Teester"
