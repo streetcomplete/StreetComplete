@@ -1494,6 +1494,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_compacted">"Compacted"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
+    <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>

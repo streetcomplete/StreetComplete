@@ -33,7 +33,8 @@ val Surface.titleResId: Int get() = when (this) {
     FINE_GRAVEL -> R.string.quest_surface_value_fine_gravel
     PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS -> R.string.quest_surface_value_paving_stones
     COMPACTED -> R.string.quest_surface_value_compacted
-    DIRT, SOIL, EARTH, MUD -> R.string.quest_surface_value_dirt
+    DIRT, SOIL, EARTH -> R.string.quest_surface_value_dirt
+    MUD -> R.string.quest_surface_value_mud
     SETT, COBBLESTONE_FLATTENED -> R.string.quest_surface_value_sett
     UNHEWN_COBBLESTONE -> R.string.quest_surface_value_unhewn_cobblestone
     GRASS_PAVER -> R.string.quest_surface_value_grass_paver
@@ -65,7 +66,8 @@ val Surface.iconResId: Int get() = when (this) {
     FINE_GRAVEL -> R.drawable.surface_fine_gravel
     PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS -> R.drawable.surface_paving_stones
     COMPACTED -> R.drawable.surface_compacted
-    DIRT, SOIL, EARTH, MUD -> R.drawable.surface_dirt
+    DIRT, SOIL, EARTH -> R.drawable.surface_dirt
+    MUD -> R.drawable.surface_mud
     SETT, COBBLESTONE_FLATTENED -> R.drawable.surface_sett
     UNHEWN_COBBLESTONE -> R.drawable.surface_cobblestone
     GRASS_PAVER -> R.drawable.surface_grass_paver

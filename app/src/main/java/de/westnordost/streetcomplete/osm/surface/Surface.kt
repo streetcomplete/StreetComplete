@@ -11,6 +11,7 @@ enum class Surface(val osmValue: String?) {
     PAVING_STONES("paving_stones"),
     COMPACTED("compacted"),
     DIRT("dirt"),
+    MUD("mud"),
     SETT("sett"),
     UNHEWN_COBBLESTONE("unhewn_cobblestone"),
     GRASS_PAVER("grass_paver"),
@@ -33,7 +34,6 @@ enum class Surface(val osmValue: String?) {
     GROUND_AREA("ground"),
 
     // extra values, recording duplicates
-    MUD("mud"), // valid value, but not displayed specially in StreetComplete
     EARTH("earth"), // synonym of "dirt", maybe more clear
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
     METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
@@ -60,7 +60,7 @@ val COMMON_SPECIFIC_UNPAVED_SURFACES = listOf(
 )
 
 val GROUND_SURFACES = listOf(
-    DIRT, GRASS, SAND, ROCK
+    DIRT, MUD, GRASS, SAND, ROCK
 )
 
 val PITCH_SURFACES = listOf(
