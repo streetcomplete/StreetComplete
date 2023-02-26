@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
@@ -129,7 +129,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        SurfaceAndNote(selectedSurfaceItem!!.value!!, noteText).applyTo(tagChanges)
+        SurfaceAnswer(selectedSurfaceItem!!.value!!, noteText).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 

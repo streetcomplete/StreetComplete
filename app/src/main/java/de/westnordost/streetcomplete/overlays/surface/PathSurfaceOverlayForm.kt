@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.osm.surface.GENERIC_AREA_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.ParsedCyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
@@ -122,15 +122,15 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         binding.footwaySurfaceLabel.text = featureDictionary.getFeatureName(conf, mapOf("highway" to "footway"), GeometryType.LINE)
     }
 
-    private fun collectSurfaceData(callback: (SurfaceAndNote) -> Unit) {
+    private fun collectSurfaceData(callback: (SurfaceAnswer) -> Unit) {
         ImageListPickerDialog(requireContext(), items, cellLayoutId, 2) { item ->
             val value = item.value
             if (value != null && value.shouldBeDescribed) {
                 DescribeGenericSurfaceDialog(requireContext()) { description ->
-                    callback(SurfaceAndNote(item.value!!, description))
+                    callback(SurfaceAnswer(item.value!!, description))
                 }.show()
             } else {
-                callback(SurfaceAndNote(item.value!!, null))
+                callback(SurfaceAnswer(item.value!!, null))
             }
         }.show()
     }
@@ -143,7 +143,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         binding.cycleway.explanationInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.main.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAndNote ->
+            collectSurfaceData { gathered: SurfaceAnswer ->
                 selectedStatusForMainSurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.main.explanationInput.text = null
@@ -154,7 +154,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             }
         }
         binding.cycleway.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAndNote ->
+            collectSurfaceData { gathered: SurfaceAnswer ->
                 selectedStatusForCyclewaySurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.cycleway.explanationInput.text = null
@@ -165,7 +165,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             }
         }
         binding.footway.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAndNote ->
+            collectSurfaceData { gathered: SurfaceAnswer ->
                 selectedStatusForFootwaySurface = gathered.value.asItem()
                 if (gathered.note == null) {
                     binding.footway.explanationInput.text = null
@@ -339,7 +339,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, surfaceObject: Surface, note: String?) {
-            SurfaceAndNote(surfaceObject, note).applyTo(changesBuilder)
+            SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
         fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
@@ -354,12 +354,12 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 if (generalSurfaceNote != null && changesBuilder["surface:note"] != generalSurfaceNote) {
                     changesBuilder["surface:note"] = generalSurfaceNote
                 }
-                SurfaceAndNote(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAndNote(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             } else {
-                SurfaceAndNote(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
-                SurfaceAndNote(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAndNote(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                SurfaceAnswer(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
+                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             }
             changesBuilder["segregated"] = "yes"
         }

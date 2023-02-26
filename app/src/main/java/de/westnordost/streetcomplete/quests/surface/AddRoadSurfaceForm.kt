@@ -7,13 +7,13 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeMismatching
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val items get() =
         (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -23,7 +23,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
         val surface = selectedItems.single()
         confirmPotentialTracktypeMismatch(surface) {
             collectSurfaceDescription(surface) { description ->
-                applyAnswer(SurfaceAndNote(surface, description))
+                applyAnswer(SurfaceAnswer(surface, description))
             }
         }
     }

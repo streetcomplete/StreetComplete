@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
-fun LeftAndRightSidewalkSurface.applyTo(tags: Tags) {
+fun LeftAndRightSidewalkSurfaceAnswer.applyTo(tags: Tags) {
     tags.expandSides("sidewalk", "surface")
     tags.expandSides("sidewalk", "surface:note")
     tags.expandSides("sidewalk", "smoothness")

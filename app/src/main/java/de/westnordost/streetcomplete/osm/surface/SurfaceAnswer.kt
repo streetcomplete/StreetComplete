@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-data class SurfaceAndNote(val value: Surface, val note: String? = null)
+data class SurfaceAnswer(val value: Surface, val note: String? = null)
 
-fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
+fun SurfaceAnswer.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
     val osmValue = value.osmValue
@@ -51,13 +51,13 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     tags.remove("source:$key")
 }
 
-fun SurfaceAndNote.updateSegregatedFootAndCycleway(tags: Tags) {
+fun SurfaceAnswer.updateSegregatedFootAndCycleway(tags: Tags) {
     val footwaySurface = tags["footway:surface"]
     val cyclewaySurface = tags["cycleway:surface"]
     if (cyclewaySurface != null && footwaySurface != null) {
         val commonSurface = when {
             footwaySurface == cyclewaySurface -> this
-            footwaySurface in ANYTHING_FULLY_PAVED && cyclewaySurface in ANYTHING_FULLY_PAVED -> SurfaceAndNote(Surface.PAVED_ROAD)
+            footwaySurface in ANYTHING_FULLY_PAVED && cyclewaySurface in ANYTHING_FULLY_PAVED -> SurfaceAnswer(Surface.PAVED_ROAD)
             else -> null
         }
         if (commonSurface != null) {

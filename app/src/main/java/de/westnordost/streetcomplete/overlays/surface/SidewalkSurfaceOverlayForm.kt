@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightParsedSidewalkSurface
-import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurfaceAnswer
 import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
@@ -113,9 +113,9 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             streetSideSelect.saveLastSelection()
         }
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        LeftAndRightSidewalkSurface(
-            left?.let { SurfaceAndNote(it, leftNote) },
-            right?.let { SurfaceAndNote(it, rightNote) }
+        LeftAndRightSidewalkSurfaceAnswer(
+            left?.let { SurfaceAnswer(it, leftNote) },
+            right?.let { SurfaceAnswer(it, rightNote) }
         ).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
