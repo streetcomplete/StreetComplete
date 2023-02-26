@@ -294,7 +294,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         return hasChanges()
     }
 
-    val noteText get() = binding.main.explanationInput.nonBlankTextOrNull
+    private val noteText get() = binding.main.explanationInput.nonBlankTextOrNull
     private val cyclewayNoteText get() = binding.cycleway.explanationInput.nonBlankTextOrNull
     private val footwayNoteText get() = binding.footway.explanationInput.nonBlankTextOrNull
 

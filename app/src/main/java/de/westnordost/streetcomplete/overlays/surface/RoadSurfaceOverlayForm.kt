@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus

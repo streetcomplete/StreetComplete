@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.overlays.surface
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
+import de.westnordost.streetcomplete.osm.surface.SurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 import de.westnordost.streetcomplete.overlays.Color
 
