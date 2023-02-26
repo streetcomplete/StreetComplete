@@ -35,7 +35,7 @@ fun createSyncNotification(context: Context): Notification {
 
     return NotificationCompat.Builder(context, NOTIFICATIONS_CHANNEL_SYNC)
         .setSmallIcon(R.mipmap.ic_notification)
-        .setContentTitle(NAME)
+        .setContentTitle(context.resources.getString(R.string.app_name))
         .setContentText(context.resources.getString(R.string.notification_syncing))
         .setContentIntent(pendingIntent)
         .setCategory(NotificationCompat.CATEGORY_PROGRESS)

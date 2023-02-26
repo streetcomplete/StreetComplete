@@ -56,10 +56,11 @@ This section is aimed for people trying to decide whether a bad edit done in SCE
 In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
 * `created_by` is set to `StreetComplete_ee <version>`
 * Quest type is given in `StreetComplete_ee:quest_type`
-* AddBuildingType has more possible answers, including one to change the `building` to `demolished:building`
+* AddBuildingType has more possible answers
 * AddCrossingType may change `crossing_ref`, `crossing:markings` and `traffic_calming`
 * AddPathSurface and AddRoadSurface have additional surfaces `metal_grid` and `stepping_stones`
 * All quest types related to roads / paths may add `access=private`
+* All quest types related to buildings may change `building` to `demolished:building`
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * An element at at the same position as a note may be edited (this is blocked in normal SC)

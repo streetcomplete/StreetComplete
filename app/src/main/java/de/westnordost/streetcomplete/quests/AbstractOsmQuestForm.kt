@@ -368,7 +368,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createItsDemolishedAnswer(): AnswerItem? {
         if (!element.isArea()) return null
-        return if (buildingsFilter.matches(element))
+        return if (demolishableBuildingsFilter.matches(element))
             AnswerItem(R.string.quest_building_demolished) {
                 viewLifecycleScope.launch {
                     val builder = StringMapChangesBuilder(element.tags)
@@ -434,11 +434,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
          and !ski
     """.toElementFilterExpression()
 
-        private val buildingsFilter = """
+        // in some cases changing building to demolished:building is not enough
+        private val demolishableBuildingsFilter = """
         ways, relations with building
           and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
           and !building:demolished
           and !building:razed
+          and !shop and !amenity and !historic and !craft and !healthcare and !office and !attraction and !tourism
     """.toElementFilterExpression()
 
         private val highwaysFilter = "ways with highway ~ unclassified|residential|service|track|footway|bridleway|steps|path or leisure ~ track|pitch"

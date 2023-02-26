@@ -750,6 +750,7 @@ class MainFragment :
     }
 
     override fun onEditHistoryIsEmpty() {
+        mapFragment?.endFocus()
         closeEditHistorySidebar()
     }
 
