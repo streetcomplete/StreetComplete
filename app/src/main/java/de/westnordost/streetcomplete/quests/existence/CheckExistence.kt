@@ -71,15 +71,13 @@ class CheckExistence(
         and access !~ no|private
         and (!seasonal or seasonal = no)
     """
-    // traffic_calming = table is often used as a property of a crossing: we don't want the app
+    // - traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that
-    // postboxes are in 4 years category so that postbox collection times is asked instead more often
-
-    /* bicycle parkings, motorcycle parkings have capacity quests asked every
-    *  few years already, so if it's gone now, it will be noticed that way.
-    *  But some users disable this quests as spammy or boring or unimportant,
-    *  so asking about this anyway would be a good idea.
-    * */
+    // - postboxes are in 4 years category so that postbox collection times is asked instead more often
+    // - bicycle parkings, motorcycle parkings have capacity quests asked every
+    //    few years already, so if it's gone now, it will be noticed that way.
+    //    But some users disable this quests as spammy or boring or unimportant,
+    //    so asking about this anyway would be a good idea.
 
     override val changesetComment = "Survey if places still exist"
     override val wikiLink: String? = null
