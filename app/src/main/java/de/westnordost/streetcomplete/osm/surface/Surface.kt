@@ -34,7 +34,7 @@ enum class Surface(val osmValue: String?) {
     GROUND_AREA("ground"),
 
     // extra values, handled as synonyms
-    EARTH("earth"), // synonym of "dirt", maybe more clear
+    EARTH("earth"), // synonym of "dirt"
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
     METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
     // this way than without info
