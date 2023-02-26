@@ -16,7 +16,7 @@ val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
 val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
     "concrete", "concrete:plates", "paving_stones",
-    "metal", "wood", "unhewn_cobblestone",
+    "metal", "wood", "unhewn_cobblestone", "chipseal",
     "brick", "bricks", "cobblestone:flattened", "paving_stones:30",
 )
 
