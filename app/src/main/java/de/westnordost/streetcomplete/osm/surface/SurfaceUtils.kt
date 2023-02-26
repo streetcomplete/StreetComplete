@@ -81,7 +81,7 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
     if (surfaceTag in INVALID_SURFACES) {
         return null
     }
-    // we are treating surface=paved as not being specified at all
+    // we are treating surface=paved and similar as not being specified at all
     // to show user an empty space to fill missing data
     // unless it has an associated note
     val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
