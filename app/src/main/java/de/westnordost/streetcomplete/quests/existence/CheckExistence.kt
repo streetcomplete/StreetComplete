@@ -36,6 +36,7 @@ class CheckExistence(
             or leisure = picnic_table
             or amenity = bbq
             or leisure = firepit
+            or (leisure = pitch and sport = table_tennis)
             or amenity = grit_bin and seasonal = no
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator
@@ -71,22 +72,13 @@ class CheckExistence(
         and access !~ no|private
         and (!seasonal or seasonal = no)
     """.toElementFilterExpression() }
-    // traffic_calming = table is often used as a property of a crossing: we don't want the app
+    // - traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that
-    // postboxes are in 4 years category so that postbox collection times is asked instead more often
-
-    private val nodesWaysFilter by lazy { """
-        nodes, ways with
-          (leisure = pitch and sport = table_tennis)
-          and access !~ no|private
-          and (${lastChecked(4.0)})
-    """.toElementFilterExpression() }
-
-    /* bicycle parkings, motorcycle parkings have capacity quests asked every
-    *  few years already, so if it's gone now, it will be noticed that way.
-    *  But some users disable this quests as spammy or boring or unimportant,
-    *  so asking about this anyway would be a good idea.
-    * */
+    // - postboxes are in 4 years category so that postbox collection times is asked instead more often
+    // - bicycle parkings, motorcycle parkings have capacity quests asked every
+    //    few years already, so if it's gone now, it will be noticed that way.
+    //    But some users disable this quests as spammy or boring or unimportant,
+    //    so asking about this anyway would be a good idea.
 
     override val changesetComment = "Survey if places still exist"
     override val wikiLink: String? = null
@@ -99,8 +91,7 @@ class CheckExistence(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =
-        (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
-        && hasAnyName(element.tags)
+        nodesFilter.matches(element) && hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
