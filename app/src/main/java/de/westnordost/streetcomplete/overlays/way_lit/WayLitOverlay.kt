@@ -38,8 +38,8 @@ class WayLitOverlay : Overlay {
 private fun getStyle(element: Element): Style {
     val lit = createLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
-    val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
-    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
+    val isNotSetButThatIsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
+    val color = if (isNotSetButThatIsOkay) Color.INVISIBLE else lit.color
     return if (element.tags["area"] == "yes") PolygonStyle(color, null)
         else PolylineStyle(StrokeStyle(color))
 }

@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.overlays.Color
  *    should be on border between these two groups
  *
  * - asphalt, concrete, paving stones are associated with grey
- *   but colouring these surfaces as grey resulted in really depressing, unfun
+ *   but colouring these surfaces as grey resulted in really depressing, unfunny
  *   and soul-crushing display in cities where everything is well paved.
  *   Blue is more fun and less sad (while it will not convince anyone
  *   that concrete desert is a good thing).
@@ -70,8 +70,8 @@ fun SurfaceWithNote.getColor(element: Element): String {
     }
     // not set but indoor or private -> do not highlight as missing
     val isNotSet = value in UNDERSPECIFED_SURFACES
-    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
-    if (isNotSetButThatsOkay) {
+    val isNotSetButThatIsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
+    if (isNotSetButThatIsOkay) {
         return Color.INVISIBLE
     }
     return when (value) {
