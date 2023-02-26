@@ -163,4 +163,21 @@ class SurfaceKtTest {
     fun `check date is among keys removed on surface change`() {
         assertTrue("check_date:cycleway:surface" in keysToBeRemovedOnSurfaceChange("cycleway:"))
     }
+
+    @Test
+    fun `surface=unpaved is underspecified and must be described`() {
+        assertTrue(Surface.UNPAVED_ROAD.shouldBeDescribed)
+        assertTrue(Surface.UNPAVED_AREA.shouldBeDescribed)
+    }
+
+    @Test
+    fun `surface=asphalt is well specified and does not need description`() {
+        assertFalse(Surface.ASPHALT.shouldBeDescribed)
+    }
+
+    @Test
+    fun `surface=ground is underspecified and does not need description`() {
+        assertFalse(Surface.GROUND_AREA.shouldBeDescribed)
+        assertFalse(Surface.GROUND_ROAD.shouldBeDescribed)
+    }
 }
