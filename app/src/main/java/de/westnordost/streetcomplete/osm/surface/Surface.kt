@@ -33,19 +33,21 @@ enum class Surface(val osmValue: String?) {
     UNPAVED_AREA("unpaved"),
     GROUND_AREA("ground"),
 
-    // extra values, recording duplicates
+    // extra values, handled as synonyms
     EARTH("earth"), // synonym of "dirt", maybe more clear
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
     METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
     // this way than without info
 
     // these values ideally would be removed from OpenStreetMap, but while they remain
-    // we want to handle them somehow
+    // we want to handle them as synonyms
     SOIL("soil"),
     PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
     COBBLESTONE_FLATTENED("cobblestone:flattened"),
     BRICK("brick"),
     BRICKS("bricks"),
+
+    // various possibly valid surfaces not supported as duplicates
     UNKNOWN_SURFACE(null),
 }
 
