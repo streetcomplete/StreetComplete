@@ -40,7 +40,7 @@ fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, is
     val l = (left ?: previous?.left)
     val r = (right ?: previous?.right)
     /* "no cycleway" has no direction and should be ignored
-       "separate" should also be ignored because if the cycleway is mapped separately, the existance
+       "separate" should also be ignored because if the cycleway is mapped separately, the existence
        of a separate way that enables cyclists to go in contra-flow-direction doesn't mean that they
        can do the same on the main way for the road too (see #4715) */
     val leftDir = l?.direction?.takeIf { l.cycleway != NONE && l.cycleway != SEPARATE }

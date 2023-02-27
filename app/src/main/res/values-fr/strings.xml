@@ -1280,7 +1280,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="move_node_description">"Déplacez la carte pour pour placer l’objet à l’emplacement correct. Utilisez le zoom et essayer d’être aussi précis que possible. Notez également que votre position affichée peut être manquer de précision."</string>
     <string name="move_node_action_description">"Vous avez déplacé le noeud"</string>
     <string name="quest_cycleway_value_shoulder">"aucune, mais bande d’arrêt d’urgence cyclable"</string>
-    <string name="quest_placeName_no_name_answer">"Il n’y a pas de nom indiqué"</string>
+    <string name="quest_placeName_no_name_answer">"Il n’y a pas de signe de nom…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Cette largeur semble suspecte. Pour rappel, cela doit concerner la largeur de bord à bord, en incluant le parking sur la chaussée, les voies cyclables, etc."</string>
     <string name="overlay_cycleway">"Voies cyclables"</string>
     <string name="bicycle_boulevard_is_a">"C’est un(e) %1$s"</string>
@@ -1308,4 +1308,5 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_gritBinSeasonal_title">"Est-ce là même hors hiver ?"</string>
     <string name="street_parking_staggered_on_street">"Sur la chaussée, en alternance"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partiellement sur la chaussée, en alternance"</string>
+    <string name="quest_traffic_signals_sound_description">"Indice : cherchez les haut-parleurs. Tous les signaux sonores ne sont pas activés via un bouton."</string>
 </resources>

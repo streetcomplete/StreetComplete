@@ -11,14 +11,14 @@ import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
-import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
-import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
@@ -60,12 +60,13 @@ class TimeRangePickerDialog(
             null as DialogInterface.OnClickListener?
         )
 
-        val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
+        val startPickerBinding = TimeRangePickerBinding.inflate(inflater)
         startPickerContainer = startPickerBinding.root
         startPicker = startPickerBinding.picker
         startPicker.setIs24HourView(is24HourView)
+        startPickerBinding.checkBox.isInvisible = true
 
-        val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
+        val endPickerBinding = TimeRangePickerBinding.inflate(inflater)
         endPickerContainer = endPickerBinding.root
         openEndCheckbox = endPickerBinding.checkBox
         endPicker = endPickerBinding.picker
