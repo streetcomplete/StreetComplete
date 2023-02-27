@@ -98,6 +98,16 @@ class SurfaceKtTest {
     }
 
     @Test
+    fun `cobblestone is treated as missing surface for roads and paths also when with note but note is shown`() {
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).main.value, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).main.note, "foobar")
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).cycleway.value, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).cycleway.note, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).footway.value, null)
+        assertEquals(createSurfaceStatus(mapOf("surface" to "cobblestone", "surface:note" to "foobar")).footway.note, null)
+    }
+
+    @Test
     fun `surface note is taken into account when generating surface status fo path with cycleway and footway split`() {
         // https://www.openstreetmap.org/way/925626513 version 4
         val tags = mapOf(
