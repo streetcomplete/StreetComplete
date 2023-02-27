@@ -48,13 +48,13 @@ class SurfaceKtTest {
     }
 
     @Test
-    fun `note tag results in a diferent status for roads`() {
+    fun `note tag results in a different status for roads`() {
         assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).value, Surface.ASPHALT)
         assertEquals(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).note, "useful info")
     }
 
     @Test
-    fun `note tag results in a diferent status for paths`() {
+    fun `note tag results in a different status for paths`() {
         assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).main.value, Surface.ASPHALT)
         assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).main.note, "useful info")
         assertEquals(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")).cycleway.value, null)
