@@ -110,6 +110,19 @@ internal class SidewalkSurfaceCreatorKtTest {
             )
         )
     }
+
+    @Test fun `carriageway properties not affected by sidewalk answer`() {
+        verifyAnswer(
+            mapOf("sidewalk" to "both",
+                "surface" to "concrete",
+                "smoothness" to "excellent",
+            ),
+            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
+            )
+        )
+    }
 }
 
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightSidewalkSurfaceAnswer, expectedChanges: Array<StringMapEntryChange>) {
