@@ -78,9 +78,6 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
     if (surfaceTag == null) {
         return null
     }
-    if (surfaceTag in INVALID_SURFACES) {
-        return null
-    }
     // we are treating surface=paved and similar as not being specified at all
     // to show user an empty space to fill missing data
     // unless it has an associated note
@@ -93,6 +90,9 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
 }
 
 fun surfaceTextValueToSurfaceEnum(surfaceTag: String): Surface? {
+    if (surfaceTag in INVALID_SURFACES) {
+        return null
+    }
     val foundSurface = Surface.values().find { it.osmValue == surfaceTag }
 
     // PAVED_AREA and UNPAVED_AREA are more generic - and this can be also asked
