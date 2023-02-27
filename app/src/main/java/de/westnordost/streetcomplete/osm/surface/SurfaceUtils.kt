@@ -85,25 +85,28 @@ fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
     // to show user an empty space to fill missing data
     // unless it has an associated note
     val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
-    val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) null else surface
-    if (surface == null) {
-        if (";" in surfaceTag || "<" in surfaceTag) {
-            // invalid surface tag, result of a botched merge, can and should be treated as requiring replacement
-            return null
-        }
-        return Surface.UNKNOWN_SURFACE
+    return if (surface?.shouldBeDescribed == true && surfaceNote == null) {
+        null
+    } else {
+        surface
     }
-    return surfaceIgnoringUnspecific
 }
 
-fun surfaceTextValueToSurfaceEnum(surfaceValue: String?): Surface? {
-    val foundSurface = Surface.values().find { it.osmValue == surfaceValue }
+fun surfaceTextValueToSurfaceEnum(surfaceTag: String): Surface? {
+    val foundSurface = Surface.values().find { it.osmValue == surfaceTag }
 
     // PAVED_AREA and UNPAVED_AREA are more generic - and this can be also asked
     // for objects which are not roads
     return when (foundSurface) {
         Surface.PAVED_ROAD -> Surface.PAVED_AREA
         Surface.UNPAVED_ROAD -> Surface.UNPAVED_AREA
+        null -> {
+            if (";" in surfaceTag || "<" in surfaceTag) {
+                null
+            } else {
+                Surface.UNKNOWN_SURFACE
+            }
+        }
         else -> foundSurface
     }
 }

@@ -170,6 +170,17 @@ class SurfaceKtTest {
     }
 
     @Test
+    fun `converting tags to enum can produce UNKNOWN_SURFACE`() {
+        assertEquals(Surface.UNKNOWN_SURFACE, surfaceTextValueToSurfaceEnum("weird_specific_value"))
+    }
+
+    @Test
+    fun `converting tags to enum treats outcomes of bad merges as invalid`() {
+        assertEquals(null, surfaceTextValueToSurfaceEnum("paved;unpaved"))
+        assertEquals(null, surfaceTextValueToSurfaceEnum("<different>"))
+    }
+
+    @Test
     fun `check date is among keys removed on surface change`() {
         assertTrue("check_date:cycleway:surface" in keysToBeRemovedOnSurfaceChange("cycleway:"))
     }
