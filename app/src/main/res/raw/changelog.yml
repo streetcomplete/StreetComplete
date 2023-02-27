@@ -1,3 +1,13 @@
+vNext: |
+  <h3>New overlays for surfaces (#4378, #4642), by @matkoniecz</h3>
+  <p>Now you can comprehensively map and verify surfaces mapped for roads, paths and sidewalks!<b>
+     There are two new overlays, one for roads and one for paths plus sidewalks / bike paths.</p>
+
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Surfaces: Added "persistent mud" as selectable surface, by @matkoniecz</li>
+  </ul>
+
 v51.1: |
   <h3>Enhancements</h3>
   <ul>
