@@ -88,5 +88,5 @@ val Surface.iconResId: Int get() = when (this) {
     PAVED_AREA -> R.drawable.surface_paved_area
     UNPAVED_AREA -> R.drawable.surface_unpaved_area
     GROUND_AREA -> R.drawable.surface_ground_area
-    UNKNOWN_SURFACE -> R.drawable.background_fully_transparent
+    UNKNOWN_SURFACE -> R.drawable.space_128dp
 }
