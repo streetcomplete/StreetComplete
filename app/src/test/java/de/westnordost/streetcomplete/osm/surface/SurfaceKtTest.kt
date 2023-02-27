@@ -108,7 +108,7 @@ class SurfaceKtTest {
     }
 
     @Test
-    fun `surface note is taken into account when generating surface status fo path with cycleway and footway split`() {
+    fun `surface note is taken into account when generating surface status for path with cycleway and footway split`() {
         // https://www.openstreetmap.org/way/925626513 version 4
         val tags = mapOf(
             "bicycle" to "designated",
