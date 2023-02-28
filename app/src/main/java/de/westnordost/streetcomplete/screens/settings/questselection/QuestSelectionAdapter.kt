@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.ApplicationConstants.EE_QUEST_OFFSET
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -78,6 +79,13 @@ class QuestSelectionAdapter(
             }
         }
 
+    var onlySceeQuests: Boolean = false
+        set(value) {
+            if (field == value) return
+            field = value
+            notifyDataSetChanged()
+        }
+
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
         val f = filter
@@ -98,7 +106,7 @@ class QuestSelectionAdapter(
     private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
 
     private val shownQuestTypes: List<QuestVisibility> get() =
-        questTypesDuringDrag ?: filteredQuestTypes ?: questTypes
+        questTypesDuringDrag ?: filteredQuestTypes ?: if (onlySceeQuests) questTypes.filter { questTypeRegistry.getOrdinalOf(it.questType)!! >= EE_QUEST_OFFSET } else questTypes
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
         override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -85,6 +86,8 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_quest_selection, menu)
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            menu.add(Menu.NONE, 3, 3, R.string.action_scee_quests)
         super.onCreateOptionsMenu(menu, inflater)
 
         val searchItem = menu.findItem(R.id.action_search)
@@ -116,6 +119,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
                     .show()
                 return true
             }
+            3 -> questSelectionAdapter.onlySceeQuests = !questSelectionAdapter.onlySceeQuests
         }
         return super.onOptionsItemSelected(item)
     }

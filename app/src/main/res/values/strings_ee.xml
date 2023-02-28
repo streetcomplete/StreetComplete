@@ -162,6 +162,7 @@
     <string name="pref_network_interval_title">"Network location update interval"</string>
     <string name="pref_interval_summary">%d seconds</string>
     <string name="pref_interval_message">Update interval in seconds</string>
+    <string name="action_scee_quests">Show only SCEE quests</string>
 
 
     <!-- quest settings -->
