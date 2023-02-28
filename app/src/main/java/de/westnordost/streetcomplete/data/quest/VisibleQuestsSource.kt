@@ -146,12 +146,14 @@ class VisibleQuestsSource(
         val bbox = quest.position.enclosingBoundingBox(distance)
         return when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
             1 -> getAllVisible(bbox)
-            2 -> osmQuestSource.getAllVisibleInBBox(bbox) +
-                externalSourceQuestController.getAllInBBox(bbox) +
-                osmNoteQuestSource.getAllVisibleInBBox(bbox)
-            3 -> osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
-                externalSourceQuestController.getAllInBBox(bbox, getHidden = true) +
-                osmNoteQuestSource.getAllVisibleInBBox(bbox, getHidden = true)
+            2 -> (osmQuestSource.getAllVisibleInBBox(bbox) +
+                    externalSourceQuestController.getAllInBBox(bbox) +
+                    osmNoteQuestSource.getAllVisibleInBBox(bbox)
+                ).filter { isVisibleInTeamMode(it) }
+            3 -> (osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
+                    externalSourceQuestController.getAllInBBox(bbox, getHidden = true) +
+                    osmNoteQuestSource.getAllVisibleInBBox(bbox, getHidden = true)
+                ).filter { isVisibleInTeamMode(it) }
             else -> emptyList()
         }
     }
