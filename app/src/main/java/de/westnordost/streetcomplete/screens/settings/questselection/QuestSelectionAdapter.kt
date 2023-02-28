@@ -186,7 +186,7 @@ class QuestSelectionAdapter(
 
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
             val qv = (viewHolder as QuestVisibilityViewHolder).item
-            if (!qv.isInteractionEnabled) return 0
+            if (!qv.isInteractionEnabled(questTypeRegistry)) return 0
 
             return makeFlag(ACTION_STATE_IDLE, UP or DOWN) or
                    makeFlag(ACTION_STATE_DRAG, UP or DOWN)
@@ -203,7 +203,7 @@ class QuestSelectionAdapter(
 
         override fun canDropOver(recyclerView: RecyclerView, current: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             val qv = (target as QuestVisibilityViewHolder).item
-            return qv.isInteractionEnabled
+            return qv.isInteractionEnabled(questTypeRegistry)
         }
 
         override fun onMoved(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, fromPos: Int, target: RecyclerView.ViewHolder, toPos: Int, x: Int, y: Int) {
@@ -262,13 +262,14 @@ class QuestSelectionAdapter(
 
         fun onBind(with: QuestVisibility) {
             this.item = with
-            val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
+            val interactionEnabled = item.isInteractionEnabled(questTypeRegistry)
+            val colorResId = if (interactionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             binding.questIcon.setImageResource(item.questType.icon)
             binding.questTitle.text = genericQuestTitle(binding.questTitle.resources, item.questType)
             binding.visibilityCheckBox.setOnCheckedChangeListener(null)
             binding.visibilityCheckBox.isChecked = item.visible
-            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
+            binding.visibilityCheckBox.isEnabled = interactionEnabled
             binding.visibilityCheckBox.setOnCheckedChangeListener(this)
             binding.questSettings.visibility = if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && item.questType.hasQuestSettings) View.VISIBLE else View.GONE
             binding.questSettings.setOnClickListener {
@@ -279,7 +280,7 @@ class QuestSelectionAdapter(
             }
             binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
 
-            binding.dragHandle.isInvisible = !item.isInteractionEnabled
+            binding.dragHandle.isInvisible = !interactionEnabled
             binding.dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)

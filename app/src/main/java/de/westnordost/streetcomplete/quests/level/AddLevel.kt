@@ -102,6 +102,7 @@ class AddLevel : OsmElementQuestType<String> {
         val mallGeometries = mapData
             .filter { mallFilter.matches(it) }
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+            .toMutableList()
         if (mallGeometries.isEmpty()) return result
 
         // get all shops that have level tagged or are doctors
@@ -109,26 +110,26 @@ class AddLevel : OsmElementQuestType<String> {
         if (thingsWithLevel.isEmpty()) return result
 
         // with this, find malls that contain shops that have different levels tagged
-        val multiLevelMallGeometries = mallGeometries.filter { mallGeometry ->
+        mallGeometries.retainAll { mallGeometry ->
             var level: String? = null
             for (shop in thingsWithLevel) {
                 val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
-                if (!mallGeometry.getBounds().contains(pos)) continue
+                if (!mallGeometry.getBounds().contains(pos)) continue // crude filter first for performance reasons
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
                 if (shop.tags.containsKey("level")) {
                     if (level != null) {
-                        if (level != shop.tags["level"]) return@filter true
+                        if (level != shop.tags["level"]) return@retainAll true
                     } else {
                         level = shop.tags["level"]
                     }
                 }
             }
-            return@filter false
+            return@retainAll false
         }
-        if (multiLevelMallGeometries.isEmpty()) return result
+        if (mallGeometries.isEmpty()) return result
 
-        for (mallGeometry in multiLevelMallGeometries) {
+        for (mallGeometry in mallGeometries) {
             val it = shopsWithoutLevel.iterator()
             while (it.hasNext()) {
                 val shop = it.next()
@@ -174,7 +175,7 @@ class AddLevel : OsmElementQuestType<String> {
 
 }
 
-private val doctorAmenity = setOf("doctors", "dentist")
-private val doctorHealthcare = setOf("doctor", "dentist", "psychotherapist", "physiotherapist")
+private val doctorAmenity = hashSetOf("doctors", "dentist")
+private val doctorHealthcare = hashSetOf("doctor", "dentist", "psychotherapist", "physiotherapist")
 
 private const val PREF_MORE_LEVELS = "qs_AddLevel_more_levels"

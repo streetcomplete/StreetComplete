@@ -1359,8 +1359,11 @@ class MainFragment :
 
     private fun showOtherQuests(quest: Quest): List<Marker> {
         if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) == 0) return emptyList()
+
+        // Quests should be grouped by element key, so non-OsmQuests need some kind of fake key
         fun Quest.thatKey() = if (this is OsmQuest) ElementKey(elementType, elementId)
             else ElementKey(ElementType.values()[abs(key.hashCode() % 3)], -abs(7 * key.hashCode()).toLong())
+
         val markers = mutableListOf<Marker>()
 
         val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
@@ -1371,13 +1374,12 @@ class MainFragment :
 
         val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<Quest>>>()
         val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.BLUE, ColorUtils.blendARGB(Color.RED, Color.YELLOW, 0.5f))
-        var iter = colors.iterator()
+        var colorIterator = colors.iterator()
         quests.forEach {
             questsAndColorByElement.getOrPut(it.thatKey()) {
-                val color = if (it.thatKey() == quest.thatKey())
-                    Color.WHITE
-                else iter.next()
-                if (!iter.hasNext()) iter = colors.iterator() // cycle through colors
+                val color = if (it.thatKey() == quest.thatKey()) Color.WHITE // no color for other quests of the selected element
+                    else colorIterator.next()
+                if (!colorIterator.hasNext()) colorIterator = colors.iterator() // cycle through color list if there are many elements
                 if (color != Color.WHITE)
                     markers.add(Marker(it.geometry, color = color))
                 Pair(color, mutableListOf())
@@ -1394,19 +1396,19 @@ class MainFragment :
                         binding.otherQuestsLayout.removeAllViews()
                         viewLifecycleScope.launch { showQuestDetails(q) }
                     }
-                    // create drawable from quest icon and ring
+
+                    // create layerDrawable from quest icon and ring
                     val ring = resources.getDrawable(R.drawable.pin_selection_ring)
                     ring.colorFilter = if (color == Color.WHITE) null
                         else PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
                     val icon = resources.getDrawable(q.type.icon)
                     icon.colorFilter = PorterDuffColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.8f), PorterDuff.Mode.MULTIPLY)
-                    val ld = LayerDrawable(arrayOf(icon, ring))
-                    setImageDrawable(ld)
+                    setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
                 }
                 binding.otherQuestsLayout.addView(questView)
             }
         }
-        binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
+        binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP) // scroll up when the quest changes
         binding.otherQuestsScrollView.visibility = View.VISIBLE
         return markers
     }

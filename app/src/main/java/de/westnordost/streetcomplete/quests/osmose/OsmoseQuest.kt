@@ -183,6 +183,7 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "The tag `parking:lane:left` is deprecated in favour of `parking:left`" + "§§" +
     "The tag `parking:lane:right` is deprecated in favour of `parking:right`" + "§§" +
 //    alternative for all languages and types: 4010 and contains "parking:lane:*" and "parking:<same>"
+    "The tag `parking:orientation` is deprecated in favour of `orientation`" + "§§" +
     "Same value of cycleway:left and cycleway:right" // there is no quest, but SC may cause this and does not understand the "fix"
 //    alternative for all languages: 9001 and contains "cycleway:left" and "cycleway:right"
 // "tracktype=grade4 together with surface=asphalt" -> how to do it properly? current system won't work, or needs blacklisting all combinations
