@@ -23,9 +23,6 @@ class ShowCamera : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_poi_camera_title
 
-    override fun getTitleArgs(tags: Map<String, String>) =
-        arrayOf(tags.entries.toString())
-
     override fun createForm() = NoAnswerFragment()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

@@ -35,10 +35,6 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override fun createForm() = ShopTypeForm()
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        return arrayOf(tags.entries.toString())
-    }
-
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
