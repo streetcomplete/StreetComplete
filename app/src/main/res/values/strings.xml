@@ -621,7 +621,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="label_housenumber">house number</string>
     <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_blocknumber">block number</string>
-    <!-- In some countries, addresses may have a house number and a block (number or letters -->
+    <!-- In some countries, addresses may have a house number and a block (number or letters) -->
     <string name="label_block">block</string>
     <!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
     <string name="quest_housenumber_conscription_number">Conscription number</string>
