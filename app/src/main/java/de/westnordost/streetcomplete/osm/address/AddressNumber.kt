@@ -17,7 +17,7 @@ val AddressNumber.streetHouseNumber: String? get() = when (this) {
     else -> null
 }
 
-fun AddressNumber.applyTo(tags: Tags) {
+fun AddressNumber.applyTo(tags: Tags, useBlock: Boolean = false) {
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber
@@ -31,7 +31,10 @@ fun AddressNumber.applyTo(tags: Tags) {
         }
         is HouseAndBlockNumber -> {
             tags["addr:housenumber"] = houseNumber
-            tags["addr:block_number"] = blockNumber
+            if (useBlock)
+                tags["addr:block"] = blockNumber
+            else
+                tags["addr:block_number"] = blockNumber
         }
         is HouseNumber -> {
             tags["addr:housenumber"] = houseNumber
@@ -47,7 +50,7 @@ fun createAddressNumber(tags: Map<String, String>): AddressNumber? {
     }
     val houseNumber = tags["addr:housenumber"]
     if (houseNumber != null) {
-        val blockNumber = tags["addr:block_number"]
+        val blockNumber = tags["addr:block_number"] ?: tags["addr:block"]
         if (blockNumber != null) {
             return HouseAndBlockNumber(houseNumber, blockNumber)
         } else {

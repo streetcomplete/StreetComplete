@@ -50,11 +50,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private var streetOrPlaceName: StreetOrPlaceName? = null
 
     private var isShowingHouseName: Boolean = false
-    private var isShowingPlaceName = false
+    private var isShowingPlaceName: Boolean = false
+    private var isShowingBlockNumber: Boolean = false
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() },
+        if (countryInfo.countryCode in listOf("IN", "EG", "UY")) AnswerItem(R.string.quest_address_toggle_block) { toggleBlockInput() } else null,
         if (element != null) AnswerItem(R.string.quest_address_answer_no_address) { confirmRemoveAddress() } else null,
     )
 
@@ -110,9 +112,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
             streetOrPlaceBinding.streetOrPlaceSelect.isGone = true
         }
 
+        showNumberOrNameInput(getAddressNumberLayoutResId(countryInfo.countryCode, if (addressNumber != null) addressNumber is HouseAndBlockNumber else lastBlockNumber != null))
+    }
+
+    private fun showNumberOrNameInput(layoutResId: Int) {
         val numberOrNameBinding = binding.addressNumberOrNameContainer
         val numberView = layoutInflater.inflate(
-            getAddressNumberLayoutResId(countryInfo.countryCode),
+            layoutResId,
             numberOrNameBinding.countrySpecificContainer
         )
         numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
@@ -141,6 +147,17 @@ class AddressOverlayForm : AbstractOverlayForm() {
             numberOrNameBinding.toggleAddressNumberButton.isGone = true
             numberOrNameBinding.toggleHouseNameButton.isGone = true
         }
+        isShowingBlockNumber = numberView.findViewById<EditText?>(R.id.blockNumberInput) != null
+    }
+
+    private fun toggleBlockInput() {
+        binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
+        val layoutResId = if (isShowingBlockNumber) {
+                R.layout.view_house_number
+            } else {
+                R.layout.view_house_number_and_block
+            }
+        showNumberOrNameInput(layoutResId)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -169,10 +186,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         number?.streetHouseNumber?.let { lastHouseNumber = it }
         if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+            else lastBlockNumber = null
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
-        applyEdit(createAddressElementEditAction(element, geometry, number, name, streetOrPlaceName))
+        applyEdit(createAddressElementEditAction(element, geometry, number, name, streetOrPlaceName, countryInfo.countryCode))
     }
 
     /* ------------------------------ Show house name / place name ------------------------------ */
@@ -220,11 +238,12 @@ private fun createAddressElementEditAction(
     geometry: ElementGeometry,
     number: AddressNumber?,
     name: String?,
-    streetOrPlaceName: StreetOrPlaceName?
+    streetOrPlaceName: StreetOrPlaceName?,
+    countryCode: String
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-    number?.applyTo(tagChanges)
+    number?.applyTo(tagChanges, countryCode in listOf("IN", "EG", "UY"))
     name?.let { tagChanges["addr:housename"] = it }
     streetOrPlaceName?.applyTo(tagChanges)
     tagChanges.remove("noaddress")
@@ -263,9 +282,10 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key == "noaddress" ||
     key == "nohousenumber"
 
-private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
+private fun getAddressNumberLayoutResId(countryCode: String, useOptionalBlockLayout: Boolean = false): Int = when (countryCode) {
     "JP" -> R.layout.view_house_number_japan
     "CZ" -> R.layout.view_house_number_czechia
     "SK" -> R.layout.view_house_number_slovakia
+    "IN", "EG", "UY" -> if (useOptionalBlockLayout) R.layout.view_house_number_and_block else R.layout.view_house_number
     else -> R.layout.view_house_number
 }
