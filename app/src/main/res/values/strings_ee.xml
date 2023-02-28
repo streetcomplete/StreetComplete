@@ -125,6 +125,7 @@
     <string name="tree_custom_quest_export">Get</string>
     <string name="pref_tile_source_title">Tile source for satellite / aerial images</string>
     <string name="pref_tile_source_message">Tile URL must contain {x}, {y} and {z}</string>
+    <string name="pref_tile_source_hide_labels">Hide labels</string>
     <string name="pref_tree_custom_quest_summary">See message when enabling quest for details</string>
 
     <!-- quests settings -->

@@ -91,9 +91,10 @@ class SceneMapComponent(
         val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
         val isHighContrastNightMode = theme == Prefs.Theme.DARK_CONTRAST
         val offsetFix = if (prefs.getBoolean(Prefs.OFFSET_FIX, false)) "-offset-fix" else ""
-        val april1 = if (isApril1st() && !isHighContrastNightMode && offsetFix.isNotEmpty()) "wonky-" else ""
+        val noSatelliteLabel = if (prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)) "-no-label" else ""
+        val april1 = if (isApril1st() && !isHighContrastNightMode && offsetFix.isNotEmpty() && noSatelliteLabel.isNotEmpty()) "wonky-" else ""
         val scene = april1 + when {
-            isAerialView -> "scene-satellite$offsetFix.yaml"
+            isAerialView -> "scene-satellite$offsetFix$noSatelliteLabel.yaml"
             isHighContrastNightMode -> "scene-dark-contrast$offsetFix.yaml"
             isNightMode -> "scene-dark$offsetFix.yaml"
             else -> "scene-light$offsetFix.yaml"

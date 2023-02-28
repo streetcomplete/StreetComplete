@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
@@ -134,21 +135,32 @@ class DataManagementSettingsFragment :
                     d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = t.contains("{x}") && t.contains("{y}") && t.contains("{z}")
                 }
             }
+            val hideLabelsSwitch = SwitchCompat(requireContext()).apply {
+                setText(R.string.pref_tile_source_hide_labels)
+                isChecked = prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)
+            }
             val layout = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
                 setPadding(30,10,30,10)
                 addView(TextView(requireContext()).apply { setText(R.string.pref_tile_source_message) })
                 addView(urlText)
+                addView(hideLabelsSwitch)
             }
             d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_tile_source_title)
                 .setView(layout)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setNeutralButton(R.string.action_reset) { _, _ ->
-                    prefs.edit { remove(Prefs.RASTER_TILE_URL) }
+                    prefs.edit {
+                        remove(Prefs.RASTER_TILE_URL)
+                        remove(Prefs.NO_SATELLITE_LABEL)
+                    }
                 }
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    prefs.edit { putString(Prefs.RASTER_TILE_URL, urlText.text.toString()) }
+                    prefs.edit {
+                        putString(Prefs.RASTER_TILE_URL, urlText.text.toString())
+                        putBoolean(Prefs.NO_SATELLITE_LABEL, hideLabelsSwitch.isChecked)
+                    }
                     activity?.let { ActivityCompat.recreate(it) } // need to reload scene
                 }
                 .create()

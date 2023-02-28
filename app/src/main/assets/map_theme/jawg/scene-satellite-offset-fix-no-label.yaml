@@ -1,0 +1,3 @@
+import:
+    - streetcomplete-poi-offset-fix.yaml
+    - streetcomplete-satellite-no-label-style.yaml

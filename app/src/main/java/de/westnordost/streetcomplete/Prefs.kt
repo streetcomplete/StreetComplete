@@ -100,6 +100,7 @@ object Prefs {
     const val EXPERT_MODE = "expert_mode"
     const val SHOW_WAY_DIRECTION = "show_way_direction"
     const val SEARCH_MORE_LANGUAGES = "search_more_languages"
+    const val NO_SATELLITE_LABEL = "no_satellite_label"
 
     enum class Autosync {
         ON, WIFI, OFF
