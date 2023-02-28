@@ -122,15 +122,15 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         binding.footwaySurfaceLabel.text = featureDictionary.getFeatureName(conf, mapOf("highway" to "footway"), GeometryType.LINE)
     }
 
-    private fun collectSurfaceData(callback: (SurfaceAnswer) -> Unit) {
+    private fun collectSurfaceData(callback: (Surface, String?) -> Unit) {
         ImageListPickerDialog(requireContext(), items, cellLayoutId, 2) { item ->
             val value = item.value
             if (value != null && value.shouldBeDescribed) {
                 DescribeGenericSurfaceDialog(requireContext()) { description ->
-                    callback(SurfaceAnswer(item.value!!, description))
+                    callback(item.value!!, description)
                 }.show()
             } else {
-                callback(SurfaceAnswer(item.value!!, null))
+                callback(item.value!!, null)
             }
         }.show()
     }
@@ -143,34 +143,34 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         binding.cycleway.explanationInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.main.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAnswer ->
-                selectedStatusForMainSurface = gathered.value.asItem()
-                if (gathered.note == null) {
+            collectSurfaceData { surface: Surface, note: String? ->
+                selectedStatusForMainSurface = surface.asItem()
+                if (note == null) {
                     binding.main.explanationInput.text = null
                 } else {
-                    binding.main.explanationInput.text = SpannableStringBuilder(gathered.note)
+                    binding.main.explanationInput.text = SpannableStringBuilder(note)
                 }
                 checkIsFormComplete()
             }
         }
         binding.cycleway.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAnswer ->
-                selectedStatusForCyclewaySurface = gathered.value.asItem()
-                if (gathered.note == null) {
+            collectSurfaceData { surface: Surface, note: String? ->
+                selectedStatusForCyclewaySurface = surface.asItem()
+                if (note == null) {
                     binding.cycleway.explanationInput.text = null
                 } else {
-                    binding.cycleway.explanationInput.text = SpannableStringBuilder(gathered.note)
+                    binding.cycleway.explanationInput.text = SpannableStringBuilder(note)
                 }
                 checkIsFormComplete()
             }
         }
         binding.footway.selectButton.root.setOnClickListener {
-            collectSurfaceData { gathered: SurfaceAnswer ->
-                selectedStatusForFootwaySurface = gathered.value.asItem()
-                if (gathered.note == null) {
+            collectSurfaceData { surface: Surface, note: String? ->
+                selectedStatusForFootwaySurface = surface.asItem()
+                if (note == null) {
                     binding.footway.explanationInput.text = null
                 } else {
-                    binding.footway.explanationInput.text = SpannableStringBuilder(gathered.note)
+                    binding.footway.explanationInput.text = SpannableStringBuilder(note)
                 }
                 checkIsFormComplete()
             }
