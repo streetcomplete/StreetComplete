@@ -129,7 +129,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        IsSurfaceAnswer(selectedSurfaceItem!!.value!!, noteText).applyTo(tagChanges) // TODO eliminate IsSurfaceAnswer
+        selectedSurfaceItem!!.value!!.applyTo(tagChanges, note = noteText)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
