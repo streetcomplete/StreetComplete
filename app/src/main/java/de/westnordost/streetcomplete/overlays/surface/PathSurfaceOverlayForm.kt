@@ -339,7 +339,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, surfaceObject: Surface, note: String?) {
-            SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
+            surfaceObject.applyTo(changesBuilder, note = note)
         }
 
         fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
@@ -354,12 +354,12 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 if (generalSurfaceNote != null && changesBuilder["surface:note"] != generalSurfaceNote) {
                     changesBuilder["surface:note"] = generalSurfaceNote
                 }
-                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                footwaySurface.applyTo(changesBuilder, prefix = "footway", note = footwayNote)
+                cyclewaySurface.applyTo(changesBuilder, prefix = "cycleway", note = cyclewayNote)
             } else {
-                SurfaceAnswer(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
-                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
-                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
+                mainSurface.applyTo(changesBuilder, note = generalSurfaceNote)
+                footwaySurface.applyTo(changesBuilder, prefix = "footway", note = footwayNote)
+                cyclewaySurface.applyTo(changesBuilder, prefix = "cycleway", note = cyclewayNote)
             }
             changesBuilder["segregated"] = "yes"
         }
