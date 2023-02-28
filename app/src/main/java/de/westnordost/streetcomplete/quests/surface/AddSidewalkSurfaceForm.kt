@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
@@ -99,8 +98,8 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
             streetSideSelect.saveLastSelection()
         }
         applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurfaceAnswer(
-            left?.let { SurfaceAnswer(it, leftNote) },
-            right?.let { SurfaceAnswer(it, rightNote) }
+            left?.let { IsSurfaceAnswer(it, leftNote) },
+            right?.let { IsSurfaceAnswer(it, rightNote) }
         )))
     }
 

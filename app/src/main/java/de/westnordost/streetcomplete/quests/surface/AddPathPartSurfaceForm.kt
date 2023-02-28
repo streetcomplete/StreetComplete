@@ -7,12 +7,11 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddPathPartSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
+class AddPathPartSurfaceForm : AImageListQuestForm<Surface, IsSurfaceAnswer>() {
     override val items get() =
         (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -25,13 +24,13 @@ class AddPathPartSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(value, description))
+                        applyAnswer(IsSurfaceAnswer(value, description))
                     }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             return
         }
-        applyAnswer(SurfaceAnswer(value))
+        applyAnswer(IsSurfaceAnswer(value))
     }
 }

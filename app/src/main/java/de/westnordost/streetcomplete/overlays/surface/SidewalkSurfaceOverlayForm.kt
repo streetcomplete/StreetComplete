@@ -17,12 +17,12 @@ import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACE
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
+import de.westnordost.streetcomplete.quests.surface.IsSurfaceAnswer
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
@@ -114,8 +114,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         }
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         LeftAndRightSidewalkSurfaceAnswer(
-            left?.let { SurfaceAnswer(it, leftNote) },
-            right?.let { SurfaceAnswer(it, rightNote) }
+            left?.let { IsSurfaceAnswer(it, leftNote) }, // TODO eliminate IsSurfaceAnswer
+            right?.let { IsSurfaceAnswer(it, rightNote) } // TODO eliminate IsSurfaceAnswer
         ).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }

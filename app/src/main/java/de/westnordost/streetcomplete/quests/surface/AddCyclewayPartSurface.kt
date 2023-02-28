@@ -6,11 +6,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
-import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateSegregatedFootAndCycleway
 
-class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
+class AddCyclewayPartSurface : OsmFilterQuestType<IsSurfaceAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -41,8 +39,8 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: IsSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, "cycleway")
-        answer.updateSegregatedFootAndCycleway(tags)
+        answer.surface.updateSegregatedFootAndCycleway(tags)
     }
 }

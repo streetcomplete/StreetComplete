@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.surface.IsSurfaceAnswer
 
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
@@ -91,7 +92,7 @@ val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
 
 val Surface.unknownSurface: Boolean get() = this == UNKNOWN_SURFACE
 
-fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true, note: String?) {
+fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true, note: String? = null) {
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
     val osmValue = osmValue
@@ -137,15 +138,11 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
     tags.remove("source:$key")
 }
 
-fun SurfaceAnswer.updateSegregatedFootAndCycleway(tags: Tags) {
+fun Surface.updateSegregatedFootAndCycleway(tags: Tags) {
     val footwaySurface = tags["footway:surface"]
     val cyclewaySurface = tags["cycleway:surface"]
     if (cyclewaySurface != null && footwaySurface != null) {
-        val commonSurface = when {
-            footwaySurface == cyclewaySurface -> this
-            footwaySurface in ANYTHING_FULLY_PAVED && cyclewaySurface in ANYTHING_FULLY_PAVED -> SurfaceAnswer(Surface.PAVED_ROAD)
-            else -> null
-        }
+        val commonSurface = commonSurfaceObject(footwaySurface, cyclewaySurface)
         if (commonSurface != null) {
             commonSurface.applyTo(tags)
         } else {
