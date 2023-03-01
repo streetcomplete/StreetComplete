@@ -97,7 +97,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(3, 2), tags = mapOf("highway" to "unclassified")),
             way(3, nodes = listOf(4, 2), tags = mapOf("barrier" to "guard_rail")),
-            way(4, nodes = listOf(2, 5), tags = mapOf("barrier" to "retaining_wall"))
+            way(4, nodes = listOf(2, 5), tags = mapOf("barrier" to "wall"))
         ))
         Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
