@@ -56,7 +56,7 @@ class AddressNumberInputViewController(
             when (value) {
                 is HouseAndBlockNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
-                    blockNumberInput?.setText(value.houseNumber)
+                    blockNumberInput?.setText(value.blockNumber)
                 }
                 is HouseNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
