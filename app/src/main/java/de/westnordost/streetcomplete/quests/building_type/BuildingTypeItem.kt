@@ -101,6 +101,7 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
     RESIDENTIAL ->     R.string.quest_buildingType_residential_description
     COMMERCIAL ->      R.string.quest_buildingType_commercial_generic_description
     CIVIC ->           R.string.quest_buildingType_civic_description
+    GUARDHOUSE ->      R.string.quest_buildingType_guardhouse_description
     else ->            null
 }
 
