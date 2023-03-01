@@ -42,6 +42,11 @@ class VisibleQuestTypeController(
 
     private val selectedPresetId: Long get() = questPresetsSource.selectedId
 
+    fun copyVisibilities(presetId: Long, newPresetId: Long) {
+        visibleQuestTypeDao.putAll(newPresetId, visibleQuestTypeDao.getAll(presetId))
+        if (newPresetId == selectedPresetId) onQuestTypeVisibilitiesChanged()
+    }
+
     fun setVisibility(questType: QuestType, visible: Boolean, presetId: Long? = null) {
         val id = presetId ?: selectedPresetId
         synchronized(this) {
