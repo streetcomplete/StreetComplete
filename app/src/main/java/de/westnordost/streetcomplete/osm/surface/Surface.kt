@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.surface.IsSurfaceAnswer
+import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),

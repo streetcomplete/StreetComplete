@@ -98,8 +98,8 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
             streetSideSelect.saveLastSelection()
         }
         applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurfaceAnswer(
-            left?.let { IsSurfaceAnswer(it, leftNote) },
-            right?.let { IsSurfaceAnswer(it, rightNote) }
+            left?.let { SurfaceAnswer(it, leftNote) },
+            right?.let { SurfaceAnswer(it, rightNote) }
         )))
     }
 

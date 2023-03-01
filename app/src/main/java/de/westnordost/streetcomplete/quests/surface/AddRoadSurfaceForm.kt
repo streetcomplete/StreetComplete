@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestForm<Surface, IsSurfaceAnswer>() {
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val items get() =
         (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -22,7 +22,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, IsSurfaceAnswer>() {
         val surface = selectedItems.single()
         confirmPotentialTracktypeMismatch(surface) {
             collectSurfaceDescription(surface) { description ->
-                applyAnswer(IsSurfaceAnswer(surface, description))
+                applyAnswer(SurfaceAnswer(surface, description))
             }
         }
     }

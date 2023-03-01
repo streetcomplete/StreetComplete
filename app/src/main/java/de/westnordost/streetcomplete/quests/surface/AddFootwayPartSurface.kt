@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.updateSegregatedFootAndCycleway
 
-class AddFootwayPartSurface : OsmFilterQuestType<IsSurfaceAnswer>() {
+class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -40,7 +40,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<IsSurfaceAnswer>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: IsSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, "footway")
         answer.surface.updateSegregatedFootAndCycleway(tags)
     }

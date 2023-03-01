@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.isArea
 
-class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
+class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
     override val items get() =
         (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -32,14 +32,14 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(IsSurfaceAnswer(value, description))
+                        applyAnswer(SurfaceAnswer(value, description))
                     }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             return
         }
-        applyAnswer(IsSurfaceAnswer(value))
+        applyAnswer(SurfaceAnswer(value))
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {

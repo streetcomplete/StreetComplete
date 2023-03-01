@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddPitchSurface : OsmFilterQuestType<IsSurfaceAnswer>() {
+class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
         // #2377
         "multi", "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball",
@@ -47,7 +47,7 @@ class AddPitchSurface : OsmFilterQuestType<IsSurfaceAnswer>() {
 
     override fun createForm() = AddPitchSurfaceForm()
 
-    override fun applyAnswerTo(answer: IsSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

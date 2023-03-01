@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 
-class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
+class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -42,9 +42,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsSurfaceAnswer -> {
+            is SurfaceAnswer -> {
                 answer.applyTo(tags)
             }
             is IsActuallyStepsAnswer -> {
