@@ -1,3 +1,15 @@
+v52.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Fix block number input in Japan, by @Helium314</li>
+  <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
+  <li>Other small enhancements, thanks @matkoniecz</li>
+  </ul>
+
 v51.1: |
   <h3>Enhancements</h3>
   <ul>
