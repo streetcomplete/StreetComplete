@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -16,7 +16,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `apply asphalt surface on both sides`() {
         verifyAnswer(
             mapOf(),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.ASPHALT), ParsedSurfaceAndNote(Surface.ASPHALT)),
             arrayOf(
                 StringMapEntryAdd("sidewalk:both:surface", "asphalt")
             )
@@ -26,7 +26,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `apply different surface on each side`() {
         verifyAnswer(
             mapOf(),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.PAVING_STONES)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.ASPHALT), ParsedSurfaceAndNote(Surface.PAVING_STONES)),
             arrayOf(
                 StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
                 StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
@@ -37,9 +37,9 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `apply generic surface on both sides`() {
         verifyAnswer(
             mapOf(),
-            LeftAndRightSidewalkSurfaceAnswer(
-                SurfaceAnswer(Surface.PAVED_ROAD, "note"),
-                SurfaceAnswer(Surface.PAVED_ROAD, "note")
+            LeftAndRightParsedSidewalkSurface(
+                ParsedSurfaceAndNote(Surface.PAVED_ROAD, "note"),
+                ParsedSurfaceAndNote(Surface.PAVED_ROAD, "note")
             ),
             arrayOf(
                 StringMapEntryAdd("sidewalk:both:surface", "paved"),
@@ -51,7 +51,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `updates check_date`() {
         verifyAnswer(
             mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:surface" to "2000-10-10"),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.ASPHALT), ParsedSurfaceAndNote(Surface.ASPHALT)),
             arrayOf(
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
                 StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
@@ -62,7 +62,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `sidewalk surface changes to be the same on both sides`() {
         verifyAnswer(
             mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.CONCRETE)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.CONCRETE), ParsedSurfaceAndNote(Surface.CONCRETE)),
             arrayOf(
                 StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
                 StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
@@ -74,7 +74,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `sidewalk surface changes on each side`() {
         verifyAnswer(
             mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.GRAVEL)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.CONCRETE), ParsedSurfaceAndNote(Surface.GRAVEL)),
             arrayOf(
                 StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
                 StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
@@ -85,7 +85,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     @Test fun `smoothness tag removed when surface changes, same on both sides`() {
         verifyAnswer(
             mapOf("sidewalk:both:surface" to "asphalt", "sidewalk:both:smoothness" to "excellent"),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.PAVING_STONES), ParsedSurfaceAndNote(Surface.PAVING_STONES)),
             arrayOf(
                 StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
@@ -100,7 +100,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 "sidewalk:left:smoothness" to "excellent",
                 "sidewalk:right:smoothness" to "good"
             ),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.PAVING_STONES), ParsedSurfaceAndNote(Surface.PAVING_STONES)),
             arrayOf(
                 StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
                 StringMapEntryDelete("sidewalk:right:surface", "concrete"),
@@ -117,7 +117,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 "surface" to "concrete",
                 "smoothness" to "excellent",
             ),
-            LeftAndRightSidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            LeftAndRightParsedSidewalkSurface(ParsedSurfaceAndNote(Surface.PAVING_STONES), ParsedSurfaceAndNote(Surface.PAVING_STONES)),
             arrayOf(
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             )
@@ -125,7 +125,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightSidewalkSurfaceAnswer, expectedChanges: Array<StringMapEntryChange>) {
+private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightParsedSidewalkSurface, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
     val changes = cb.create().changes

@@ -9,20 +9,19 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightParsedSidewalkSurface
-import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurfaceAnswer
 import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
-import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
@@ -113,9 +112,9 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             streetSideSelect.saveLastSelection()
         }
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        LeftAndRightSidewalkSurfaceAnswer(
-            left?.let { SurfaceAnswer(it, leftNote) }, // TODO eliminate IsSurfaceAnswer
-            right?.let { SurfaceAnswer(it, rightNote) } // TODO eliminate IsSurfaceAnswer
+        LeftAndRightParsedSidewalkSurface(
+            left?.let { ParsedSurfaceAndNote(it, leftNote) },
+            right?.let { ParsedSurfaceAndNote(it, rightNote) }
         ).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
