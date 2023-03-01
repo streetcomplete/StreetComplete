@@ -9,15 +9,17 @@ sealed interface AddressNumber
 data class HouseNumber(val houseNumber: String) : AddressNumber
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
 data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : AddressNumber
+data class HouseNumberAndBlock(val houseNumber: String, val block: String) : AddressNumber
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
     is HouseAndBlockNumber -> houseNumber
+    is HouseNumberAndBlock -> houseNumber
     // not conscription number because there is no logical succession
     else -> null
 }
 
-fun AddressNumber.applyTo(tags: Tags, useBlock: Boolean = false) {
+fun AddressNumber.applyTo(tags: Tags) {
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber
@@ -31,10 +33,11 @@ fun AddressNumber.applyTo(tags: Tags, useBlock: Boolean = false) {
         }
         is HouseAndBlockNumber -> {
             tags["addr:housenumber"] = houseNumber
-            if (useBlock)
-                tags["addr:block"] = blockNumber
-            else
-                tags["addr:block_number"] = blockNumber
+            tags["addr:block_number"] = blockNumber
+        }
+        is HouseNumberAndBlock -> {
+            tags["addr:housenumber"] = houseNumber
+            tags["addr:block"] = block
         }
         is HouseNumber -> {
             tags["addr:housenumber"] = houseNumber
@@ -50,11 +53,12 @@ fun createAddressNumber(tags: Map<String, String>): AddressNumber? {
     }
     val houseNumber = tags["addr:housenumber"]
     if (houseNumber != null) {
-        val blockNumber = tags["addr:block_number"] ?: tags["addr:block"]
-        if (blockNumber != null) {
-            return HouseAndBlockNumber(houseNumber, blockNumber)
-        } else {
-            return HouseNumber(houseNumber)
+        val blockNumber = tags["addr:block_number"]
+        val block = tags["addr:block"]
+        return when {
+            blockNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
+            block != null -> HouseNumberAndBlock(houseNumber, block)
+            else -> HouseNumber(houseNumber)
         }
     }
     return null

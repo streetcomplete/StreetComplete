@@ -49,6 +49,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             activity = requireActivity(),
             houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
             blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
+            blockInput = null, //todo: this is just to make it compile, add the rest for block later
             conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
             streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
             toggleKeyboardButton = binding.toggleKeyboardButton,

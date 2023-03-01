@@ -23,13 +23,14 @@
 
         <me.grantland.widget.AutofitLayout
             android:id="@+id/blockNumberInputContainer"
-            android:layout_width="56dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/blockNumberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minWidth="56dp"
                 android:imeOptions="actionNext"
                 android:ellipsize="start"
                 tools:hint="12"

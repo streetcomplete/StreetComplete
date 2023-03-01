@@ -20,6 +20,7 @@ class AddressNumberInputViewController(
     activity: Activity,
     private val houseNumberInput: EditText?,
     private val blockNumberInput: EditText?,
+    private val blockInput: EditText?,
     private val conscriptionNumberInput: EditText?,
     private val streetNumberInput: EditText?,
     toggleKeyboardButton: Button,
@@ -33,6 +34,7 @@ class AddressNumberInputViewController(
     val isEmpty: Boolean get() =
         houseNumberInput?.nonBlankTextOrNull == null
         && blockNumberInput?.nonBlankTextOrNull == null
+        && blockInput?.nonBlankTextOrNull == null
         && conscriptionNumberInput?.nonBlankTextOrNull == null
         && streetNumberInput?.nonBlankTextOrNull == null
 
@@ -45,11 +47,10 @@ class AddressNumberInputViewController(
             }
 
             val houseNumber = houseNumberInput?.nonBlankTextOrNull ?: return null
-            if (blockNumberInput != null) {
-                val blockNumber = blockNumberInput.nonBlankTextOrNull ?: return null
-                return HouseAndBlockNumber(houseNumber, blockNumber)
-            } else {
-                return HouseNumber(houseNumber)
+            return when {
+                blockNumberInput != null -> blockNumberInput.nonBlankTextOrNull?.let { HouseAndBlockNumber(houseNumber, it) }
+                blockInput != null -> blockInput.nonBlankTextOrNull?.let { HouseNumberAndBlock(houseNumber, it) }
+                else -> HouseNumber(houseNumber)
             }
         }
         set(value) {
@@ -57,6 +58,10 @@ class AddressNumberInputViewController(
                 is HouseAndBlockNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
                     blockNumberInput?.setText(value.houseNumber)
+                }
+                is HouseNumberAndBlock -> {
+                    houseNumberInput?.setText(value.houseNumber)
+                    blockInput?.setText(value.block)
                 }
                 is HouseNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
@@ -68,6 +73,7 @@ class AddressNumberInputViewController(
                 null -> {
                     houseNumberInput?.text = null
                     blockNumberInput?.text = null
+                    blockInput?.text = null
                     conscriptionNumberInput?.text = null
                     streetNumberInput?.text = null
                 }
@@ -86,14 +92,23 @@ class AddressNumberInputViewController(
                     }
                 }
             }
+            // same for block
+            if (blockInput != null) {
+                if (blockInput.nonBlankTextOrNull == null) {
+                    if (blockInput.nonBlankHintOrNull != null) {
+                        blockInput.setText(blockInput.hint)
+                    }
+                }
+            }
             onInputChanged?.invoke()
         }
         blockNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
+        blockInput?.doAfterTextChanged { onInputChanged?.invoke() }
         conscriptionNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
         streetNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
 
         toggleKeyboardButtonViewController = SwitchKeyboardButtonViewController(
-            activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, streetNumberInput)
+            activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, blockInput, streetNumberInput)
         )
     }
 
