@@ -870,7 +870,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
     <string name="quest_buildingType_guardhouse">Guardhouse</string>
-    <string name="quest_buildingType_guardhouse_description">building constructed to house security staff, common at entrances to controlled areas</string>
+    <string name="quest_buildingType_guardhouse_description">building constructed for security staff, common at entrances to controlled areas</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
