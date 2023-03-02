@@ -115,7 +115,12 @@ class AddressOverlayForm : AbstractOverlayForm() {
             streetOrPlaceBinding.streetOrPlaceSelect.isGone = true
         }
 
-        showNumberOrNameInput(if (isShowingBlock) R.layout.view_house_number_and_block else getAddressNumberLayoutResId(countryInfo.countryCode))
+        val layoutResId = if (isShowingBlock && countryInfo.countryCode != "JP") {
+            R.layout.view_house_number_and_block
+        } else {
+            getAddressNumberLayoutResId(countryInfo.countryCode)
+        }
+        showNumberOrNameInput(layoutResId)
     }
 
     private fun showNumberOrNameInput(layoutResId: Int) {

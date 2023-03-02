@@ -47,10 +47,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutResId = if (lastBlock == null) {
-            getAddressNumberLayoutResId(countryInfo.countryCode)
-        } else {
+        val layoutResId = if (lastBlock != null && countryInfo.countryCode != "JP") {
             R.layout.view_house_number_and_block
+        } else {
+            getAddressNumberLayoutResId(countryInfo.countryCode)
         }
         showNumberOrNameInput(layoutResId)
 
