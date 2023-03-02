@@ -16,32 +16,35 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.toTags
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 
-class CustomQuestForm(private val customQuestList: CustomQuestList) : AbstractExternalSourceQuestForm() {
+class CustomQuestForm : AbstractExternalSourceQuestForm() {
 
-    override val contentLayoutResId = R.layout.quest_osmose_custom_quest
-    private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
+// switch back to this form if some sort of longer text field should be added
+//    override val contentLayoutResId = R.layout.quest_osmose_custom_quest
+//    private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
     lateinit var entryId: String
     private var tagsText: String? = null
     private var pos: LatLon? = null
 
     private val questController: ExternalSourceQuestController by inject()
+    private val customQuestList: CustomQuestList by inject()
 
     override val buttonPanelAnswers by lazy {
         val t = tagsText
         val p = pos
         listOfNotNull(
-        AnswerItem(R.string.quest_custom_quest_remove) { questController.delete(questKey as ExternalSourceQuestKey) },
-        if (t != null && p != null)
-            AnswerItem(R.string.quest_custom_quest_add_node) {
-                val f = CreatePoiFragment.createWithPrefill(t, p, questKey)
-                parentFragmentManager.commit {
-                    add(id, f, null)
-                    addToBackStack(null)
+            AnswerItem(R.string.quest_custom_quest_remove) { questController.delete(questKey as ExternalSourceQuestKey) },
+            if (t != null && p != null)
+                AnswerItem(R.string.quest_custom_quest_add_node) {
+                    val f = CreatePoiFragment.createWithPrefill(t, p, questKey)
+                    parentFragmentManager.commit {
+                        add(id, f, null)
+                        addToBackStack(null)
+                    }
+                    (parentFragment as? MainFragment)?.offsetPos(p)
                 }
-                (parentFragment as? MainFragment)?.offsetPos(p)
-            }
-        else null
-    ) }
+            else null
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

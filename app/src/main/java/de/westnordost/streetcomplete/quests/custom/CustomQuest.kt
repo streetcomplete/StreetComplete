@@ -56,5 +56,5 @@ class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSource
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog? = null
 
-    override fun createForm() = CustomQuestForm(customQuestList)
+    override fun createForm() = CustomQuestForm()
 }
