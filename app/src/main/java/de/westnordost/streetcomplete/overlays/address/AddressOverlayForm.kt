@@ -116,10 +116,10 @@ class AddressOverlayForm : AbstractOverlayForm() {
         }
 
         val layoutResId = if (isShowingBlock && countryInfo.countryCode != "JP") {
-            R.layout.view_house_number_and_block
-        } else {
-            getAddressNumberLayoutResId(countryInfo.countryCode)
-        }
+                R.layout.view_house_number_and_block
+            } else {
+                getAddressNumberLayoutResId(countryInfo.countryCode)
+            }
         showNumberOrNameInput(layoutResId)
     }
 
@@ -129,7 +129,6 @@ class AddressOverlayForm : AbstractOverlayForm() {
             layoutResId,
             numberOrNameBinding.countrySpecificContainer
         )
-        val blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)
         val blockInput = numberView.findViewById<EditText?>(R.id.blockInput)
 
         numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
@@ -139,7 +138,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
             addressNumberContainer = numberOrNameBinding.addressNumberContainer,
             activity = requireActivity(),
             houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
-            blockNumberInput = blockNumberInput?.apply { hint = lastBlockNumber },
+            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
             blockInput = blockInput?.apply { hint = lastBlock },
             conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
             streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
@@ -165,7 +164,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private fun toggleBlockInput() {
         binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
         val layoutResId = if (isShowingBlock) {
-            getAddressNumberLayoutResId(countryInfo.countryCode)
+                getAddressNumberLayoutResId(countryInfo.countryCode)
             } else {
                 R.layout.view_house_number_and_block
             }
@@ -253,7 +252,7 @@ private fun createAddressElementEditAction(
     geometry: ElementGeometry,
     number: AddressNumber?,
     name: String?,
-    streetOrPlaceName: StreetOrPlaceName?,
+    streetOrPlaceName: StreetOrPlaceName?
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 

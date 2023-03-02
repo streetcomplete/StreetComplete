@@ -42,16 +42,18 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 
     private var isShowingHouseName: Boolean = false
+    private var isShowingBlock: Boolean = false
     private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK) ?: (lastBlock != null)
 
-        val layoutResId = if (lastBlock != null && countryInfo.countryCode != "JP") {
-            R.layout.view_house_number_and_block
-        } else {
-            getAddressNumberLayoutResId(countryInfo.countryCode)
-        }
+        val layoutResId = if (isShowingBlock && countryInfo.countryCode != "JP") {
+                R.layout.view_house_number_and_block
+            } else {
+                getAddressNumberLayoutResId(countryInfo.countryCode)
+            }
         showNumberOrNameInput(layoutResId)
 
         // initially do not show any house number / house name UI
@@ -70,6 +72,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             layoutResId,
             binding.countrySpecificContainer
         )
+        val blockInput = numberView.findViewById<EditText?>(R.id.blockInput)
+
         numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
             toggleHouseNameButton = binding.toggleHouseNameButton,
             houseNameInput = binding.houseNameInput,
@@ -78,7 +82,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             activity = requireActivity(),
             houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
             blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
-            blockInput = numberView.findViewById<EditText?>(R.id.blockInput)?.apply { hint = lastBlock },
+            blockInput = blockInput?.apply { hint = lastBlock },
             conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
             streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
             toggleKeyboardButton = binding.toggleKeyboardButton,
@@ -86,11 +90,13 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             subtractButton = numberView.findViewById(R.id.subtractButton),
         )
         numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+        isShowingBlock = blockInput != null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(SHOW_HOUSE_NAME, isShowingHouseName)
+        outState.putBoolean(SHOW_BLOCK, isShowingBlock)
     }
 
     /* ------------------------------------- Other answers -------------------------------------- */
@@ -172,6 +178,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         private var lastHouseNumber: String? = null
 
         private const val SHOW_HOUSE_NAME = "show_house_name"
+        private const val SHOW_BLOCK = "show_block_number"
     }
 }
 
