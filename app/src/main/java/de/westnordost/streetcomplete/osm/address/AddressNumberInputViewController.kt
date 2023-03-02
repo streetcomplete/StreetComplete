@@ -108,8 +108,8 @@ class AddressNumberInputViewController(
         streetNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
 
         toggleKeyboardButtonViewController = SwitchKeyboardButtonViewController(
-            activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, blockInput, streetNumberInput)
-        )
+            activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, streetNumberInput)
+        ) // blockInput is missing because it should always show the full keyboard
     }
 
     private fun addToHouseNumberInput(add: Int) {

@@ -23,18 +23,21 @@
 
         <me.grantland.widget.AutofitLayout
             android:id="@+id/blockNumberInputContainer"
-            android:layout_width="56dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/blockNumberInput"
+                android:id="@+id/blockInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minWidth="56dp"
+                android:maxWidth="156dp"
                 android:imeOptions="actionNext"
                 android:ellipsize="start"
+                android:maxLines="2"
                 tools:hint="12"
                 android:textColorHint="#6fff"
-                android:digits="0123456789"
+                android:inputType="textMultiLine"
                 style="@style/BlockNumberEditText" />
 
         </me.grantland.widget.AutofitLayout>
@@ -96,7 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_blocknumber" />
+            android:text="@string/label_block" />
 
         <TextView
             android:layout_width="wrap_content"
