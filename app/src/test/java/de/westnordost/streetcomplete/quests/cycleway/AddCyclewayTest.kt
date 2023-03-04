@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
@@ -34,7 +32,6 @@ class AddCyclewayTest {
         val countryBoundaries: CountryBoundaries = mock()
         val futureTask = FutureTask { countryBoundaries }
         futureTask.run()
-        StreetCompleteApplication.preferences = mockPrefs()
 
         countryInfo = mock()
         countryInfos = mock()

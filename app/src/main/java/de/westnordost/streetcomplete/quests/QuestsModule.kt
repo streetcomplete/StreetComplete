@@ -140,6 +140,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingOperator
 import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingType
+import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.show_poi.ShowSeating
@@ -504,6 +505,7 @@ fun getQuestTypeList(
     132 to AddAcceptsCash(),
 
     133 to AddFuelSelfService(),
+    156 to CheckShopExistence(), // after opening hours and similar so they will be preferred if enabled
 
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 

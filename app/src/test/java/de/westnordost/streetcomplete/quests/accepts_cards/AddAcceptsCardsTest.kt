@@ -1,14 +1,23 @@
 package de.westnordost.streetcomplete.quests.accepts_cards
 
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 
 class AddAcceptsCardsTest {
-    private val questType = AddAcceptsCards()
+    private lateinit var questType: AddAcceptsCards
+
+    @Before
+    fun setUp() {
+        StreetCompleteApplication.preferences = mockPrefs()
+        questType = AddAcceptsCards()
+    }
 
     @Test
     fun `set stile as squeezer`() {

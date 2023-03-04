@@ -18,7 +18,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
      * see https://wiki.openstreetmap.org/wiki/Tag:shop=bicycle#Additional_keys
      *
      * Also, "access=customers" + "service:bicycle:pump=yes" is an invalid combination, as the wiki states that
-     * "yes" means "a feture has a bicycle pump which can be used by anybody, not only customers"
+     * "yes" means "a feature has a bicycle pump which can be used by anybody, not only customers"
      */
     override val elementFilter = """
         nodes, ways with

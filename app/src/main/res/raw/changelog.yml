@@ -1,3 +1,15 @@
+v52.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Fix block number input in Japan, by @Helium314</li>
+  <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
+  <li>Other small enhancements, thanks @matkoniecz</li>
+  </ul>
+
 v51.1: |
   <h3>Enhancements</h3>
   <ul>
@@ -79,7 +91,7 @@ v50.0: |
   <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
   <li>Sidewalks: Support sidewalks mapped on exclusive cycleways</li>
   <li>Street parking: Fix a crash when editing partially (#4634)</li>
-  <li>Shops: Add option to explicitely state that a shop has no name (#4648)</li>
+  <li>Shops: Add option to explicitly state that a shop has no name (#4648)</li>
   <li>Shops: Fix removing localized names did not actually remove them</li>
   <li>Other small enhancements (see #4657)</li>
   </ul>
@@ -93,7 +105,7 @@ v50.0: |
   <h3>Other enhancements and fixes</h3>
   <ul>
   <li>Added language: Serbian in latin script (automatically generated from Serbian in cyrillic script)</li>
-  <li>Fix quest pins sometimes disapear and labels flicker on moving the map (#4522), by @Helium314</li>
+  <li>Fix quest pins sometimes disappear and labels flicker on moving the map (#4522), by @Helium314</li>
   </ul>
 
 v49.2: |

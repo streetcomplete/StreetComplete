@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.edit
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,8 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.CoroutineScope
@@ -30,8 +33,10 @@ import kotlinx.coroutines.launch
 class QuestPresetsAdapter(
     private val context: Context,
     private val questPresetsController: QuestPresetsController,
+    private val questTypeOrderController: QuestTypeOrderController,
+    private val visibleQuestTypeController: VisibleQuestTypeController,
     private val urlConfigController: UrlConfigController,
-    private val prefs: SharedPreferences
+    private val prefs: SharedPreferences,
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
@@ -121,6 +126,10 @@ class QuestPresetsAdapter(
                 renameItem.setOnMenuItemClickListener { onClickRenamePreset(preset); true }
             }
 
+            val duplicateItem = popup.menu.add(R.string.quest_presets_duplicate)
+            duplicateItem.setIcon(R.drawable.ic_content_copy_24dp)
+            duplicateItem.setOnMenuItemClickListener { onClickDuplicatePreset(preset); true }
+
             val shareItem = popup.menu.add(R.string.quest_presets_share)
             shareItem.setIcon(R.drawable.ic_share_24dp)
             shareItem.setOnMenuItemClickListener { onClickSharePreset(preset); true }
@@ -148,6 +157,39 @@ class QuestPresetsAdapter(
         private fun renameQuestPreset(presetId: Long, name: String) {
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.rename(presetId, name)
+            }
+        }
+        private fun onClickDuplicatePreset(preset: QuestPreset) {
+            val ctx = itemView.context
+            val dialog = EditTextDialog(ctx,
+                title = ctx.getString(R.string.quest_presets_duplicate),
+                text = preset.name,
+                callback = { name -> duplicateQuestPreset(preset.id, name) }
+            )
+            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
+            dialog.show()
+        }
+
+        private fun duplicateQuestPreset(presetId: Long, name: String) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                val newPresetId = questPresetsController.add(name)
+                questTypeOrderController.copyOrders(presetId, newPresetId)
+                visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
+
+                val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${presetId}_qs_") }
+                prefs.edit {
+                    copyFromQuestSettings.forEach { (key, value) ->
+                        val newKey = key.replace("${presetId}_qs_", "${newPresetId}_qs_")
+                        when (value) {
+                            is Boolean -> putBoolean(newKey, value)
+                            is Int -> putInt(newKey, value)
+                            is String -> putString(newKey, value)
+                            is Long -> putLong(newKey, value)
+                            is Float -> putFloat(newKey, value)
+                            is Set<*> -> putStringSet(newKey, value.toSet() as? Set<String>)
+                        }
+                    }
+                }
             }
         }
 
