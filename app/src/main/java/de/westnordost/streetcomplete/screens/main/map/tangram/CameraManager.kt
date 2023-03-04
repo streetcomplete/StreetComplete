@@ -131,7 +131,7 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             cameraPositionBuilder.zoom(it.toDouble())
         }
         pushCameraPositionToController()
-        mapboxMap.moveCamera { d -> cameraPositionBuilder.build() }
+        mapboxMap.cameraPosition = cameraPositionBuilder.build()
     }
 
     @AnyThread private fun animateCameraUpdate(update: CameraUpdate, duration: Long, interpolator: Interpolator) {
@@ -164,7 +164,7 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
         animator.duration = duration
         animator.interpolator = interpolator
         animator.addListener(onEnd = {
-            // for some reason, the ObjectAnimator does not properly animate to the end value, so
+            // for some reason, the ObjectAnimator does not properly animate to the end value, some bearing
             // we need to set it to the end value on finish manually
             applyCameraUpdate(update)
             unassignAnimation(animator)
@@ -177,6 +177,7 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             animator.addUpdateListener(this::animate)
             lastAnimatorEndTime = endTime
         }
+//        mapboxMap.animateCamera(some update, duration) // todo: mapLibre cameraUpdate requires
         mainHandler.runImmediate { animator.start() }
     }
 

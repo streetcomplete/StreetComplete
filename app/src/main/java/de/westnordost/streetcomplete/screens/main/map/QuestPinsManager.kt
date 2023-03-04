@@ -4,7 +4,6 @@ import android.content.res.Resources
 import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
@@ -30,7 +29,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
@@ -69,7 +67,11 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            updateQuestPins(added, removed)
+            val oldUpdateJob = updateJob
+            updateJob = viewLifecycleScope.launch {
+                oldUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
+                updateQuestPins(added, removed)
+            }
         }
 
         override fun onVisibleQuestsInvalidated() {
@@ -149,24 +151,34 @@ class QuestPinsManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        val quests = synchronized(visibleQuestsSource) {
-            visibleQuestsSource.getAllVisible(bbox)
+        updateJob?.cancel()
+        updateJob = viewLifecycleScope.launch {
+            val quests = withContext(Dispatchers.IO) {
+                synchronized(visibleQuestsSource) {
+                    if (!coroutineContext.isActive) null
+                    else visibleQuestsSource.getAllVisible(bbox)
+                }
+            } ?: return@launch
+            setQuestPins(quests)
         }
-        setQuestPins(quests)
     }
 
-    private fun setQuestPins(quests: List<Quest>) {
+    private suspend fun setQuestPins(quests: List<Quest>) {
         val pins = synchronized(questsInView) {
             questsInView.clear()
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
         synchronized(pinsMapComponent) {
-            pinsMapComponent.set(pins)
+            if (coroutineContext.isActive) {
+                pinsMapComponent.set(pins)
+            }
         }
     }
 
-    private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
+    private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
+        // todo: mapLibre SymbolManager should be able to delete pins, but not by any key
+        //  we need the Symbol returned when adding a pin, and associate it with the quest
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
         var deletedAny = false
@@ -177,7 +189,9 @@ class QuestPinsManager(
         }
         if (deletedAny || addedInView.isNotEmpty()) {
             synchronized(pinsMapComponent) {
-                pinsMapComponent.set(pins)
+                if (coroutineContext.isActive) {
+                    pinsMapComponent.set(pins)
+                }
             }
         }
     }
@@ -198,7 +212,7 @@ class QuestPinsManager(
         val iconName = resources.getResourceEntryName(quest.type.icon)
         val props = quest.key.toProperties()
         val importance = getQuestImportance(quest)
-        return quest.markerLocations.map { Pin(it, iconName, props, quest.key.toJsonProperties(), importance) }
+        return quest.markerLocations.map { Pin(it, iconName, props, props.toJsonProperties(), importance) }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
@@ -244,18 +258,6 @@ private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
     )
 }
 
-public fun QuestKey.toJsonProperties() : String = when(this) {
-    is OsmQuestKey -> {
-        val o = JsonObject()
-        o.addProperty(MARKER_QUEST_GROUP, QUEST_GROUP_OSM)
-        o.addProperty(MARKER_ELEMENT_TYPE, elementType.name)
-        o.addProperty(MARKER_ELEMENT_ID, elementId.toString())
-        o.addProperty(MARKER_QUEST_TYPE, questTypeName)
-        Gson().toJson(o)
-    }
-    else -> {"null"}
-}
-
 private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST_GROUP)) {
     QUEST_GROUP_OSM_NOTE ->
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
@@ -268,8 +270,21 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
     else -> null
 }
 
-public fun JsonElement.toQuestKey() : QuestKey = OsmQuestKey(
-        asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_TYPE).asString.let { ElementType.valueOf(it) },
-        asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_ID).asLong,
-        asJsonObject.getAsJsonPrimitive(MARKER_QUEST_TYPE).asString,
-    )
+fun List<Pair<String, String>>.toJsonProperties(): JsonElement {
+    val o = JsonObject()
+    forEach { o.addProperty(it.first, it.second) }
+    return o
+}
+
+fun JsonElement.toQuestKey(): QuestKey? =
+    when (asJsonObject.getAsJsonPrimitive(MARKER_QUEST_GROUP).asString) {
+        QUEST_GROUP_OSM_NOTE ->
+            OsmNoteQuestKey(asJsonObject.getAsJsonPrimitive(MARKER_NOTE_ID).asLong)
+        QUEST_GROUP_OSM ->
+            OsmQuestKey(
+                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_TYPE).asString.let { ElementType.valueOf(it) },
+                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_ID).asLong,
+                asJsonObject.getAsJsonPrimitive(MARKER_QUEST_TYPE).asString,
+            )
+        else -> null
+    }

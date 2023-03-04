@@ -164,7 +164,7 @@ dependencies {
     implementation("de.westnordost:osmapi-notes:2.0")
     implementation("de.westnordost:osmapi-traces:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:3.14.9")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
 
     // widgets
@@ -184,7 +184,7 @@ dependencies {
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
-    implementation("org.maplibre.gl:android-sdk:9.5.2")
+    implementation("org.maplibre.gl:android-sdk:10.0.2") // todo: 10.0.2, but this contains okhttp4 and breaks unrelated SC okhttp stuff
     implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 
     // opening hours parser

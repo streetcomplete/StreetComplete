@@ -54,8 +54,7 @@ import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.internal.Version
-import org.koin.android.ext.android.get
+import okhttp3.internal.userAgent
 import org.koin.android.ext.android.inject
 
 /** Manages a map that remembers its last location*/
@@ -128,13 +127,15 @@ open class MapFragment :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Mapbox.getInstance(get())
+        Mapbox.getInstance(requireContext())
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
         val mapView = view.findViewById<MapView>(R.id.mapbox)
         mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync {
-            map -> map.setStyle(vectorTileProvider.makeStyleUrl())
+        val mapLibreJson = resources.assets.open("map_theme/jawg-streets.json").reader().readText()
+        mapView.getMapAsync { map ->
+            val s = Style.Builder().fromJson(mapLibreJson.replace("jawgApiKey", vectorTileProvider.apiKey))
+            map.setStyle(s)
         }
 
         return view
@@ -281,7 +282,7 @@ open class MapFragment :
             override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
                 builder
                     .cacheControl(cacheConfig.tangramCacheControl)
-                    .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
+                    .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + userAgent)
             }
         }
     }

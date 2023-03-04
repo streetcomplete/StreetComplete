@@ -3,14 +3,25 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.plugins.annotation.CircleManager
+import com.mapbox.mapboxsdk.plugins.annotation.CircleOptions
+import com.mapbox.mapboxsdk.plugins.annotation.FillManager
+import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
+import com.mapbox.mapboxsdk.plugins.annotation.Line
+import com.mapbox.mapboxsdk.plugins.annotation.LineManager
+import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -109,9 +120,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         ctrl.setPickRadius(1f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
 
+        // todo: here we should use pins, not round icons
+        //  just create them as LayerDrawable?
         questTypeRegistry.forEach { style.addImage(resources.getResourceEntryName(it.icon), resources.getBitmapDrawable(it.icon)) }
 
-        pinsMapComponent = PinsMapComponent(ctrl, SymbolManager(mapView, mapboxMap, style), listener)
+        val symbolManager = initializeSymbolManager(mapView, mapboxMap, style)
+        pinsMapComponent = PinsMapComponent(ctrl, symbolManager)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = FocusGeometryMapComponent(ctrl, mapboxMap)
 
@@ -131,10 +145,24 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         super.onMapReady(mapView, mapboxMap, style)
 
-        mapboxMap.addOnMapClickListener { i ->
-            listener?.onClickedMapAt(LatLon(i.latitude, i.longitude), 1.0)
-            return@addOnMapClickListener false
+        mapboxMap.addOnMapClickListener { pos ->
+            listener?.onClickedMapAt(LatLon(pos.latitude, pos.longitude), 1.0)
+            false
         }
+        mapboxMap.addOnMapLongClickListener { pos ->
+            // how to convert position to (whatever is expected here)?
+            // these float values are actually used
+//            onLongPress()
+            true
+        }
+
+        MainMapFragment.mapView = mapView
+        MainMapFragment.mapboxMap = mapboxMap
+        MainMapFragment.symbolManager = symbolManager
+        MainMapFragment.style = style
+        lineManager = LineManager(mapView, mapboxMap, style)
+        fillManager = FillManager(mapView, mapboxMap, style)
+        circleManager = CircleManager(mapView, mapboxMap, style)
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
@@ -146,9 +174,44 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onDestroy() {
         super.onDestroy()
         selectedOverlaySource.removeListener(overlayListener)
+        mapboxMap = null
+        mapView = null
+        symbolManager = null
+        lineManager = null
+        fillManager = null
+        circleManager = null
+        style = null
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
+
+    // todo: overlay stuff
+    private fun initializeSymbolManager(mapView: MapView, mapboxMap: MapboxMap, style: Style): SymbolManager {
+        val sm = SymbolManager(mapView, mapboxMap, style)
+        sm.addClickListener { symbol ->
+            viewLifecycleScope.launch {
+                when (pinMode) {
+                    PinMode.QUESTS -> {
+                        val questKey = symbol.data?.toQuestKey()
+                        if (questKey != null) {
+                            listener?.onClickedQuest(questKey)
+                            return@launch
+                        }
+                    }
+                    PinMode.EDITS -> {
+                        val editKey = symbol.data?.toEditKey()
+                        if (editKey != null) {
+                            listener?.onClickedEdit(editKey)
+                            return@launch
+                        }
+                    }
+                    PinMode.NONE -> {}
+                }
+            }
+            return@addClickListener true
+        }
+        return sm
+    }
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
@@ -249,6 +312,34 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun highlightGeometry(geometry: ElementGeometry) {
         geometryMapComponent?.showGeometry(geometry)
+        when (geometry) {
+            is ElementPolylinesGeometry -> {
+                val lo = LineOptions()
+                    // todo: this is only a single line
+                    .withLatLngs(geometry.polylines.first().map { LatLng(it.latitude, it.longitude) })
+                    .withLineColor("#ff0000")
+                    .withLineWidth(4f)
+                    .withLineOffset(5f)
+                    .withLineOpacity(0.5f)
+                lineManager?.create(lo)
+            }
+            is ElementPolygonsGeometry -> {
+                fillManager?.create(FillOptions()
+                    .withLatLngs(geometry.polygons.map { it.map { LatLng(it.latitude, it.longitude) } })
+                    .withFillOutlineColor("#ff0000")
+                    .withFillColor("#00ff00")
+                    .withFillOpacity(0.3f)
+                )
+            }
+            is ElementPointGeometry -> {
+                circleManager?.create(CircleOptions()
+                    .withCircleColor("#0000ff")
+                    .withLatLng(LatLng(geometry.center.latitude, geometry.center.longitude))
+                    .withCircleRadius(10f)
+                    .withCircleOpacity(0.7f)
+                )
+            }
+        }
     }
 
     /** Clear all highlighting */
@@ -258,6 +349,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
+        lineManager?.deleteAll()
+        circleManager?.deleteAll()
+        fillManager?.deleteAll()
     }
 
     fun clearSelectedPins() {
@@ -313,5 +407,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val CLICK_AREA_SIZE_IN_DP = 48
+
+        // todo: this is bad, but very convenient for testing if we have access to everything from everywhere
+        var mapView: MapView? = null
+        var mapboxMap: MapboxMap? = null
+        var symbolManager: SymbolManager? = null
+        var lineManager: LineManager? = null
+        var fillManager: FillManager? = null
+        var circleManager: CircleManager? = null
+        var style: Style? = null
     }
 }

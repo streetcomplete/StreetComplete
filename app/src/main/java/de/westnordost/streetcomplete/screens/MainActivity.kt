@@ -140,6 +140,7 @@ class MainActivity :
         noteEditsSource.addListener(noteEditsListener)
 
         handleUrlConfig()
+        activity = this
     }
 
     private fun handleUrlConfig() {
@@ -244,6 +245,7 @@ class MainActivity :
         super.onDestroy()
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
+        activity = null
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -378,6 +380,7 @@ class MainActivity :
 
     companion object {
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
+        var activity: MainActivity? = null // todo: this is horrible, but useful for testing
 
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false

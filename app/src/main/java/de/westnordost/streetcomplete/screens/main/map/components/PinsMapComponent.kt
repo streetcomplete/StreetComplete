@@ -1,22 +1,20 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import com.google.gson.JsonParser
+import com.google.gson.JsonElement
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
-import de.westnordost.streetcomplete.screens.main.map.toQuestKey
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(
     ctrl: KtMapController,
     private val symbolManager: SymbolManager,
-    listener: MainMapFragment.Listener?
 ) {
 
     private val pinsLayer: MapData = ctrl.addDataLayer(PINS_LAYER)
@@ -25,15 +23,6 @@ class PinsMapComponent(
     var isVisible: Boolean
         get() = pinsLayer.visible
         set(value) { pinsLayer.visible = value }
-
-    init {
-        symbolManager.addClickListener { u ->
-            val questKey = u.data!!.toQuestKey()
-            listener?.onClickedQuest(questKey)
-            return@addClickListener true
-        }
-    }
-
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
@@ -50,15 +39,25 @@ class PinsMapComponent(
             Point(pin.position.toLngLat(), properties)
         })
 
-        symbolManager.deleteAll()
-        symbolManager.create(pins.map { pin ->
+        // todo: crash if not on UI thread
+        //  for now the runOnUiThread is ok, but actually it should be handled differently...
+        MainActivity.activity?.runOnUiThread {
+            symbolManager.deleteAll()
+            // todo: symbolManager returns symbols created from the pins, which can be used to delete single pins from the map
+            //  is the order of the returned list the same as the symbol options list?
+            //  this is important for associating symbols with quests
+            //  -> yes according to https://github.com/maplibre/maplibre-plugins-android/blob/main/plugin-annotation/src/main/java/com/mapbox/mapboxsdk/plugins/annotation/AnnotationManager.java#L150
+            //   but it's not mentioned in documentation... can we assume it will stay that way?
+            //   there will likely be performance issues when adding pins one by one...
+            val a = symbolManager.create(pins.map { pin ->
+                SymbolOptions()
+                    .withLatLng(LatLng(pin.position.latitude, pin.position.longitude))
+                    .withIconImage(pin.iconName)
+                    .withIconSize(0.3f)
+                    .withData(pin.jsonProps)
+            })
 
-            SymbolOptions()
-                .withLatLng(LatLng(pin.position.latitude, pin.position.longitude))
-                .withIconImage(pin.iconName)
-                .withIconSize(0.3f)
-                .withData(JsonParser().parse(pin.jsonProps))
-        })
+        }
     }
 
     /** Clear pins */
@@ -76,6 +75,6 @@ data class Pin(
     val position: LatLon,
     val iconName: String,
     val properties: Collection<Pair<String, String>> = emptyList(),
-    val jsonProps : String,
+    val jsonProps: JsonElement,
     val importance: Int = 0
 )

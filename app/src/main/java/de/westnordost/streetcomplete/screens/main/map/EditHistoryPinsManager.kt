@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.google.gson.JsonElement
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -100,7 +101,7 @@ class EditHistoryPinsManager(
                 edit.position,
                 resources.getResourceEntryName(edit.icon),
                 edit.toProperties(),
-                "null", // FIXME: Handle EditHistoryPins, skipped for now.
+                edit.toProperties().toJsonProperties(),
                 edits.size - index // most recent first
             )
         }
@@ -156,3 +157,20 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
         OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     else -> null
 }
+
+fun JsonElement.toEditKey(): EditKey? =
+    when (asJsonObject.getAsJsonPrimitive(MARKER_EDIT_TYPE).asString) {
+        EDIT_TYPE_ELEMENT ->
+            ElementEditKey(asJsonObject.getAsJsonPrimitive(MARKER_ID).asLong)
+        EDIT_TYPE_NOTE ->
+            NoteEditKey(asJsonObject.getAsJsonPrimitive(MARKER_ID).asLong)
+        EDIT_TYPE_HIDE_OSM_QUEST ->
+            OsmQuestHiddenKey(OsmQuestKey(
+                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_TYPE).asString.let { ElementType.valueOf(it) },
+                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_ID).asLong,
+                asJsonObject.getAsJsonPrimitive(MARKER_QUEST_TYPE).asString,
+            ))
+        EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
+            OsmNoteQuestHiddenKey(OsmNoteQuestKey(asJsonObject.getAsJsonPrimitive(MARKER_NOTE_ID).asLong))
+        else -> null
+    }

@@ -10,5 +10,4 @@ abstract class VectorTileProvider(
     val apiKey: String
 ) {
     abstract fun getTileUrl(zoom: Int, x: Int, y: Int): String
-    abstract fun makeStyleUrl(): String
 }
