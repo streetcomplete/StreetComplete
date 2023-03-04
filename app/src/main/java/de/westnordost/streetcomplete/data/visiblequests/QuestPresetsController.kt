@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import android.content.SharedPreferences
-import androidx.core.content.edit
 import java.util.concurrent.CopyOnWriteArrayList
 
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore,
-    private val questTypeOrderDao: QuestTypeOrderDao,
-    private val visibleQuestTypeDao: VisibleQuestTypeDao,
     private val prefs: SharedPreferences,
 ) : QuestPresetsSource {
 
@@ -37,31 +34,6 @@ class QuestPresetsController(
     fun rename(presetId: Long, name: String) {
         questPresetsDao.rename(presetId, name)
         onRenamedQuestPreset(presetId, name)
-    }
-
-    fun add(presetName: String, copyFromId: Long): Long {
-        val presetId = questPresetsDao.add(presetName)
-        val order = questTypeOrderDao.getAll(copyFromId)
-        questTypeOrderDao.setAll(presetId, order)
-        val visibilities = visibleQuestTypeDao.getAll(copyFromId)
-        visibleQuestTypeDao.putAll(presetId, visibilities)
-        onAddedQuestPreset(presetId, presetName)
-
-        val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${copyFromId}_qs_") }
-        prefs.edit {
-            copyFromQuestSettings.forEach { (key, value) ->
-                val newKey = key.replace("${copyFromId}_qs_", "${presetId}_qs_")
-                when (value) {
-                    is Boolean -> putBoolean(newKey, value)
-                    is Int -> putInt(newKey, value)
-                    is String -> putString(newKey, value)
-                    is Long -> putLong(newKey, value)
-                    is Float -> putFloat(newKey, value)
-                    is Set<*> -> putStringSet(newKey, value.toSet() as? Set<String>)
-                }
-            }
-        }
-        return presetId
     }
 
     fun delete(presetId: Long) {

@@ -157,8 +157,6 @@
     <string name="delete_confirmation_both">Both</string>
     <string name="theme_dark_contrast">Dark (increased contrast)</string>
     <string name="resurvey_intervals_even_less_often">Ask even less often</string>
-    <string name="copy_preset_title">Copy from another preset?</string>
-    <string name="copy_preset_new">Don’t copy</string>
     <string name="pref_gps_interval_title">GPS location update interval</string>
     <string name="pref_network_interval_title">"Network location update interval"</string>
     <string name="pref_interval_summary">%d seconds</string>
