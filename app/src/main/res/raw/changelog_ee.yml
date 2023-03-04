@@ -1,3 +1,10 @@
+52.0: |
+  <ul>
+  <li>Allow hiding labels when viewing satellite map</li>
+  <li>Allow copying text from log reader</li>
+  <li>Small fixes and improvements</li>
+  </ul>
+
 51.1: |
   <ul>
   <li>Allow feature search in all system and local languages</li>
