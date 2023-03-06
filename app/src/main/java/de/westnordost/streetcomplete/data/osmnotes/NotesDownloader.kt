@@ -26,7 +26,7 @@ class NotesDownloader(
 
         yield()
 
-        // noteController.putAllForBBox(bbox, notes) TODO: Handle Notes in MapLibre
+         noteController.putAllForBBox(bbox, notes)
     }
 
     companion object {

@@ -41,17 +41,15 @@ class PinsMapComponent(ctrl: KtMapController) {
         //  for now the runOnUiThread is ok, but actually it should be handled differently...
         MainActivity.activity?.runOnUiThread {
             MainMapFragment.pinSymbolManager!!.deleteAll()
-            // todo: symbolManager returns symbols created from the pins, which can be used to delete single pins from the map
+            // todo: symbolManager returns symbols created from the pins, which can be used to delete single symbols from the map
             //  is the order of the returned list the same as the symbol options list?
-            //  this is important for associating symbols with quests
+            //  this is important for associating symbols with quests (there might be performance issues when adding many pins one by one)
             //  -> yes according to https://github.com/maplibre/maplibre-plugins-android/blob/main/plugin-annotation/src/main/java/com/mapbox/mapboxsdk/plugins/annotation/AnnotationManager.java#L150
-            //   but it's not mentioned in documentation... can we assume it will stay that way?
-            //   there might be performance issues when adding many pins one by one...
             MainMapFragment.pinSymbolManager!!.create(pins.map { pin ->
                 SymbolOptions() // actually creating should not be done on UI thread (but later...)
                     .withLatLng(pin.position.toLatLng())
                     .withIconImage(pin.iconName)
-                    .withIconSize(0.3f)
+                    .withIconSize(0.3f) // seems smaller than tangram, maybe depends on pixel ratio
                     .withData(pin.jsonProps)
             })
             MainMapFragment.pinDotManager!!.deleteAll()

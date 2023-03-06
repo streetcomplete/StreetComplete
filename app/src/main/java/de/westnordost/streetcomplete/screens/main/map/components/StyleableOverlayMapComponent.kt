@@ -164,7 +164,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                             LineOptions()
                                 .withData(data)
                                 .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(getLineWidth(element.tags) * 2) // too narrow otherwise. maybe depends on displayMetrics.density
+                                .withLineWidth(getLineWidth(element.tags) * 2) // too narrow otherwise. maybe depends on displayMetrics.density / mapView.pixelRatio
                                 .withLineColor(style.stroke.color)
                             //.withLinePattern() // how to set dashed style?
                         } else null
@@ -261,7 +261,7 @@ data class StyledElement(
 )
 
 fun JsonElement.toElementKey(): ElementKey? {
-    // todo: what are the values if it doesn't exist?
+    // todo: what are the values if it doesn't exist? empty strings?
     val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID).asString.toLongOrNull() ?: return null
     val type = asJsonObject.getAsJsonPrimitive(ELEMENT_TYPE).asString
     return if (type in ElementType.values().map { it.toString() })
