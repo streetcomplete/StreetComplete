@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.nonBlankHintOrNull
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.SwitchKeyboardButtonViewController
@@ -110,6 +112,16 @@ class AddressNumberInputViewController(
         toggleKeyboardButtonViewController = SwitchKeyboardButtonViewController(
             activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, streetNumberInput)
         ) // blockInput is missing because it should always show the full keyboard
+
+        blockInput?.let { editText ->
+            val ctx = editText.context
+            val formWidth = ctx.resources.getDimension(R.dimen.quest_form_width).toInt().takeIf { it > 0 }
+                ?: ctx.resources.displayMetrics.widthPixels
+            // form width minus 250dp, but max. 150dp
+            editText.maxWidth = (formWidth - ctx.dpToPx(250).toInt())
+                .coerceAtMost(ctx.dpToPx(150).toInt())
+                .coerceAtLeast(ctx.dpToPx(56).toInt())
+        }
     }
 
     private fun addToHouseNumberInput(add: Int) {

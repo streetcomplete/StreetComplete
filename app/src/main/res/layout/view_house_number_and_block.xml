@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minWidth="56dp"
-                android:maxWidth="156dp"
+                android:maxWidth="110dp"
                 android:imeOptions="actionNext"
                 android:ellipsize="start"
                 android:maxLines="2"
