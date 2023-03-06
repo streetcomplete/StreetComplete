@@ -1,13 +1,18 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.graphics.RectF
+import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapzen.tangram.MapData
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.screenAreaContains
@@ -65,11 +70,29 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
 
         val zoomTime = max(450L, (abs(currentPos.zoom - targetZoom) * 300).roundToLong())
 
-        ctrl.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
+        // test implementation for showing that mapLibre can set camera to the desired area, including padding
+        MainActivity.activity!!.runOnUiThread {
+            val bounds = LatLngBounds.fromLatLngs(listOf(g.getBounds().max.toLatLng(), g.getBounds().min.toLatLng()))
+            val c = MainMapFragment.mapboxMap!!.getCameraForLatLngBounds(
+                bounds,
+                arrayOf(
+                    offset.left.toInt(),
+                    offset.top.toInt(),
+                    offset.right.toInt(),
+                    offset.bottom.toInt()
+                ).toIntArray()
+            )
+            c?.let { MainMapFragment.mapboxMap!!.easeCamera(CameraUpdateFactory.newCameraPosition(it), zoomTime.toInt()) }
+        }
+
+        // commented because otherwise camera will be moved by cameraManager too
+        // this means that when clicking on an element / quest, only the mapLibre camera may move
+        //  (and only if the geometry is not fully inside tangram camera view...)
+/*        ctrl.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
             zoom = targetZoom
         }
-    }
+*/    }
 
     @Synchronized fun clearFocusGeometry() {
         previousCameraPosition = null
