@@ -93,7 +93,7 @@ class MapTilesDownloader(
         //   b. if tiles don't belong to any region
         //  are old tiles always preferred over showing nothing, if new tiles can't be downloaded?
         //   there is some "expires" time and a "must revalidate" value (boolean?) in the database
-        val bounds = LatLngBounds.fromLatLngs(listOf(bbox.max.toLatLng(), bbox.min.toLatLng()))
+/*        val bounds = LatLngBounds.fromLatLngs(listOf(bbox.max.toLatLng(), bbox.min.toLatLng()))
         val regionDefinition = OfflineTilePyramidRegionDefinition(styleUrl, bounds, 0.0, 16.0, pixelRatio)
         val metadata = "region_name".toByteArray() // looks like this is not actually needed
         val callback = object : OfflineManager.CreateOfflineRegionCallback {
@@ -134,7 +134,7 @@ class MapTilesDownloader(
         }
 
         OfflineManager.getInstance(MainActivity.activity!!).createOfflineRegion(regionDefinition, metadata, callback)
-
+*/
         coroutineScope {
             for (tile in getDownloadTileSequence(bbox)) {
                 launch {

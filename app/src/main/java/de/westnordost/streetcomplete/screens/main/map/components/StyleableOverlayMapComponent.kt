@@ -2,10 +2,17 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Resources
 import android.graphics.Color
+import com.google.gson.JsonElement
+import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
+import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -14,8 +21,11 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.screens.main.map.toJsonProperties
 import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
@@ -94,6 +104,73 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 ElementPointGeometry(geometry.center).toTangramGeometry(props)
             }
         )
+        val annotations = features.flatMap { (element, geometry, style) ->
+            // probably there should be separate line/fill/circle/symbol managers for overlays
+            val data = listOf(
+                ELEMENT_ID to element.id.toString(),
+                ELEMENT_TYPE to element.type.name
+            ).toJsonProperties()
+            when (style) {
+                is PointStyle -> {
+                    val o = SymbolOptions()
+                        .withData(data)
+                        .withLatLng(geometry.center.toLatLng())
+                    // currently one of those is not null, so we need a symbol anyway
+                    if (style.icon != null) o.withIconImage(style.icon.toString())
+                    if (style.label != null) o.withTextField(style.label)
+                    listOf(o)
+                }
+                is PolygonStyle -> {
+                    val o = FillOptions()
+                        .withData(data)
+                        .withFillColor(style.color)
+                        .withFillOutlineColor(getDarkenedColor(style.color))
+                        .withLatLngs((geometry as ElementPolygonsGeometry).polygons.map { it.map { it.toLatLng() } })
+                    listOf(o)
+                    // no label here...
+                }
+                is PolylineStyle -> {
+                    (geometry as ElementPolylinesGeometry).polylines.flatMap { line ->
+                        val left = if (style.strokeLeft != null) {
+                            LineOptions()
+                                .withData(data)
+                                .withLatLngs(line.map { it.toLatLng() })
+                                .withLineWidth(10f) // todo...
+                                .withLineOffset(15f)
+                                .withLineColor(style.strokeLeft.color)
+                            //.withLinePattern() // how to set dashed style?
+                        } else null
+                        val right = if (style.strokeRight != null) {
+                            LineOptions()
+                                .withData(data)
+                                .withLatLngs(line.map { it.toLatLng() })
+                                .withLineWidth(10f) // todo...
+                                .withLineOffset(-15f)
+                                .withLineColor(style.strokeRight.color)
+                            //.withLinePattern() // how to set dashed style?
+                        } else null
+                        val center = if (style.stroke != null && style.stroke.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
+                            LineOptions()
+                                .withData(data)
+                                .withLatLngs(line.map { it.toLatLng() })
+                                .withLineWidth(15f) // todo...
+                                .withLineColor(style.stroke.color)
+                            //.withLinePattern() // how to set dashed style?
+                        } else null
+                        listOfNotNull(left, right, center)
+                        // no label here...
+                    }
+                }
+            }
+        }
+        MainActivity.activity?.runOnUiThread {
+            // MainMapFragment.symbolManager?.deleteAll() // don't, this will remove quest pins
+            MainMapFragment.fillManager!!.deleteAll() // also remove highlighted stuff, but whatever for now
+            MainMapFragment.lineManager!!.deleteAll() // also remove highlighted stuff, but whatever for now
+            MainMapFragment.symbolManager!!.create(annotations.filterIsInstance<SymbolOptions>())
+            MainMapFragment.fillManager!!.create(annotations.filterIsInstance<FillOptions>())
+            MainMapFragment.lineManager!!.create(annotations.filterIsInstance<LineOptions>())
+        }
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
@@ -149,3 +226,12 @@ data class StyledElement(
     val geometry: ElementGeometry,
     val style: Style
 )
+
+fun JsonElement.toElementKey(): ElementKey? {
+    // todo: what are the values if it doesn't exist?
+    val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID).asString.toLongOrNull() ?: return null
+    val type = asJsonObject.getAsJsonPrimitive(ELEMENT_TYPE).asString
+    return if (type in ElementType.values().map { it.toString() })
+        ElementKey(ElementType.valueOf(type), id)
+    else null
+}

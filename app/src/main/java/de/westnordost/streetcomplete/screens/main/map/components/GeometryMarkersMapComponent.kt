@@ -3,11 +3,22 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.DrawableRes
+import com.mapbox.mapboxsdk.plugins.annotation.Circle
+import com.mapbox.mapboxsdk.plugins.annotation.CircleOptions
+import com.mapbox.mapboxsdk.plugins.annotation.Fill
+import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
+import com.mapbox.mapboxsdk.plugins.annotation.Line
+import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
+import com.mapbox.mapboxsdk.plugins.annotation.Symbol
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
@@ -24,6 +35,9 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
     // cache for all drawable res ids supplied so far
     private val drawables: MutableMap<Int, BitmapDrawable> = HashMap()
 
+    // annotations have an id, but we can delete it only using the actual annotation
+    private val annotationsByPosition: MutableMap<LatLon, List<com.mapbox.mapboxsdk.plugins.annotation.Annotation<*>>> = HashMap()
+
     @Synchronized fun put(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int? = null,
@@ -33,7 +47,13 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         delete(geometry)
 
         val markers = mutableListOf<Marker>()
+        val annotations = mutableListOf<com.mapbox.mapboxsdk.plugins.annotation.Annotation<*>>()
         var iconSize = 0
+
+        // todo: symbols not showing (icon and text)
+        //  maybe related to collision?
+        //  maybe we need a second symbolManager for this?
+        // todo2: lines/fill/circles show above symbols, but should actually show below
 
         // point / icon marker
         if (drawableResId != null || geometry is ElementPointGeometry) {
@@ -44,9 +64,25 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 marker.setDrawable(drawable)
                 iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
                 color = "white"
+                MainActivity.activity?.runOnUiThread {
+                    val symbol = MainMapFragment.symbolManager!!.create(SymbolOptions()
+                        .withLatLng(center.toLatLng())
+                        .withIconImage(drawableResId.toString())
+                    )
+                    annotations.add(symbol)
+                }
             } else {
                 iconSize = pointSize
                 color = pointColor
+                MainActivity.activity?.runOnUiThread {
+                    val circle = MainMapFragment.circleManager!!.create(CircleOptions()
+                        .withLatLng(center.toLatLng())
+                        .withCircleRadius(8f)
+                        .withCircleColor("#D140D0")
+                        .withCircleOpacity(0.7f)
+                    )
+                    annotations.add(circle)
+                }
             }
             marker.setStylingFromString("""
             {
@@ -85,6 +121,14 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             """.trimIndent())
             marker.setPoint(geometry.center)
             markers.add(marker)
+            MainActivity.activity?.runOnUiThread {
+                val symbol = MainMapFragment.symbolManager!!.create(SymbolOptions()
+                    .withLatLng(center.toLatLng())
+                    .withTextField(escapedTitle)
+                    .withTextOffset(arrayOf(0f, 15f))
+                )
+                annotations.add(symbol)
+            }
         }
 
         // polygon / polylines marker(s)
@@ -103,6 +147,14 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                     """.trimIndent())
                     marker.setPolygon(polygon)
                     markers.add(marker)
+                }
+                MainActivity.activity?.runOnUiThread {
+                    val fill = MainMapFragment.fillManager!!.create(FillOptions()
+                            .withLatLngs(geometry.polygons.map { it.map { it.toLatLng() } })
+                            .withFillColor("#D140D0")
+                            .withFillOpacity(0.3f)
+                    )
+                    annotations.add(fill)
                 }
             }
 
@@ -129,9 +181,21 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 marker.setPolyline(polyline)
                 markers.add(marker)
             }
+            MainActivity.activity?.runOnUiThread {
+                val options = polylines.polylines.map { line ->
+                    LineOptions()
+                        .withLatLngs(line.map { it.toLatLng() })
+                        .withLineColor("#D140D0")
+                        .withLineWidth(6f)
+                        .withLineOpacity(0.5f)
+                }
+                val lines = MainMapFragment.lineManager!!.create(options)
+                annotations.addAll(lines)
+            }
         }
 
         markerIdsByPosition[center] = markers.map { it.markerId }
+        annotationsByPosition[center] = annotations
     }
 
     @Synchronized fun delete(geometry: ElementGeometry) {
@@ -139,6 +203,12 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         val markerIds = markerIdsByPosition[pos] ?: return
         markerIdsByPosition.remove(pos)
         markerIds.forEach { ctrl.removeMarker(it) }
+
+        val annotations = annotationsByPosition[pos] ?: return
+        annotationsByPosition.remove(pos)
+        MainActivity.activity?.runOnUiThread {
+            removeAnnotations(annotations)
+        }
     }
 
     @Synchronized fun clear() {
@@ -146,6 +216,10 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             markerIds.forEach { ctrl.removeMarker(it) }
         }
         markerIdsByPosition.clear()
+        MainActivity.activity?.runOnUiThread {
+            removeAnnotations(annotationsByPosition.values.flatten())
+        }
+        annotationsByPosition.clear()
     }
 
     private fun getBitmapDrawable(@DrawableRes drawableResId: Int): BitmapDrawable {
@@ -162,4 +236,11 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         private const val lineWidth = 6
         private const val pointSize = 16
     }
+}
+
+fun removeAnnotations(annotations: Collection<com.mapbox.mapboxsdk.plugins.annotation.Annotation<*>>) {
+    MainMapFragment.symbolManager!!.delete(annotations.filterIsInstance<Symbol>())
+    MainMapFragment.circleManager!!.delete(annotations.filterIsInstance<Circle>())
+    MainMapFragment.lineManager!!.delete(annotations.filterIsInstance<Line>())
+    MainMapFragment.fillManager!!.delete(annotations.filterIsInstance<Fill>())
 }

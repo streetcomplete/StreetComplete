@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import com.google.gson.JsonElement
-import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -48,10 +48,10 @@ class PinsMapComponent(
             //  this is important for associating symbols with quests
             //  -> yes according to https://github.com/maplibre/maplibre-plugins-android/blob/main/plugin-annotation/src/main/java/com/mapbox/mapboxsdk/plugins/annotation/AnnotationManager.java#L150
             //   but it's not mentioned in documentation... can we assume it will stay that way?
-            //   there will likely be performance issues when adding pins one by one...
-            val a = symbolManager.create(pins.map { pin ->
+            //   there might be performance issues when adding many pins one by one...
+            symbolManager.create(pins.map { pin ->
                 SymbolOptions()
-                    .withLatLng(LatLng(pin.position.latitude, pin.position.longitude))
+                    .withLatLng(pin.position.toLatLng())
                     .withIconImage(pin.iconName)
                     .withIconSize(0.3f)
                     .withData(pin.jsonProps)

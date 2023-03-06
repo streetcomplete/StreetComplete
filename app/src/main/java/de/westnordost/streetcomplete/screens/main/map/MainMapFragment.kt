@@ -11,12 +11,12 @@ import com.mapbox.mapboxsdk.plugins.annotation.CircleManager
 import com.mapbox.mapboxsdk.plugins.annotation.CircleOptions
 import com.mapbox.mapboxsdk.plugins.annotation.FillManager
 import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
-import com.mapbox.mapboxsdk.plugins.annotation.Line
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -120,9 +121,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         ctrl.setPickRadius(1f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
 
+        // add used images for quests and icons
         // todo: here we should use pins, not round icons
         //  just create them as LayerDrawable?
         questTypeRegistry.forEach { style.addImage(resources.getResourceEntryName(it.icon), resources.getBitmapDrawable(it.icon)) }
+        // any need to keep resource name for icons?
+        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(it.toString(), resources.getBitmapDrawable(it)) }
 
         val symbolManager = initializeSymbolManager(mapView, mapboxMap, style)
         pinsMapComponent = PinsMapComponent(ctrl, symbolManager)
@@ -150,9 +154,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             false
         }
         mapboxMap.addOnMapLongClickListener { pos ->
-            // how to convert position to (whatever is expected here)?
-            // these float values are actually used
-//            onLongPress()
+            val pixel: PointF = mapboxMap.projection.toScreenLocation(pos)
+            onLongPress(pixel.x, pixel.y)
             true
         }
 
@@ -161,7 +164,27 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         MainMapFragment.symbolManager = symbolManager
         MainMapFragment.style = style
         lineManager = LineManager(mapView, mapboxMap, style)
+        lineManager?.addClickListener { line ->
+            val key = line.data?.toElementKey()
+            if (key != null) {
+                viewLifecycleScope.launch {
+                    listener?.onClickedElement(key)
+                }
+                true
+            } else
+                false
+        }
         fillManager = FillManager(mapView, mapboxMap, style)
+        fillManager?.addClickListener { fill ->
+            val key = fill.data?.toElementKey()
+            if (key != null) {
+                viewLifecycleScope.launch {
+                    listener?.onClickedElement(key)
+                }
+                true
+            } else
+                false
+        }
         circleManager = CircleManager(mapView, mapboxMap, style)
     }
 
@@ -303,6 +326,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun hideNonHighlightedPins() {
         pinsMapComponent?.isVisible = false
+        // todo: what to do in mapLibre?
+        //  ideally we would just set a filter on the symbolManager so it shows only pins of the current quest key
+        //  but need to find some nice guide first
+        //  and actually this would also hide icons set by geometryMapComponent
+        //   simply use a second symbolManager? should work
     }
 
     fun hideOverlay() {
@@ -312,30 +340,44 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun highlightGeometry(geometry: ElementGeometry) {
         geometryMapComponent?.showGeometry(geometry)
+
+        // clear previous geometries as tangram does
+        lineManager?.deleteAll()
+        circleManager?.deleteAll()
+        fillManager?.deleteAll()
+
         when (geometry) {
             is ElementPolylinesGeometry -> {
-                val lo = LineOptions()
-                    // todo: this is only a single line
-                    .withLatLngs(geometry.polylines.first().map { LatLng(it.latitude, it.longitude) })
-                    .withLineColor("#ff0000")
-                    .withLineWidth(4f)
-                    .withLineOffset(5f)
-                    .withLineOpacity(0.5f)
-                lineManager?.create(lo)
+                val options = geometry.polylines.map { line ->
+                    LineOptions()
+                        .withLatLngs(line.map { it.toLatLng() })
+                        .withLineColor("#D14000")
+                        .withLineWidth(6f)
+                        .withLineOpacity(0.5f)
+                }
+                lineManager?.create(options)
             }
             is ElementPolygonsGeometry -> {
                 fillManager?.create(FillOptions()
-                    .withLatLngs(geometry.polygons.map { it.map { LatLng(it.latitude, it.longitude) } })
-                    .withFillOutlineColor("#ff0000")
-                    .withFillColor("#00ff00")
+                    .withLatLngs(geometry.polygons.map { it.map { it.toLatLng() } })
+                    .withFillColor("#D14000")
                     .withFillOpacity(0.3f)
                 )
+                // create outline
+                val options = geometry.polygons.map { line ->
+                    LineOptions()
+                        .withLatLngs(line.map { it.toLatLng() })
+                        .withLineColor("#D14000")
+                        .withLineWidth(6f)
+                        .withLineOpacity(0.5f)
+                }
+                lineManager?.create(options)
             }
             is ElementPointGeometry -> {
                 circleManager?.create(CircleOptions()
-                    .withCircleColor("#0000ff")
+                    .withCircleColor("#D14000")
                     .withLatLng(LatLng(geometry.center.latitude, geometry.center.longitude))
-                    .withCircleRadius(10f)
+                    .withCircleRadius(14f)
                     .withCircleOpacity(0.7f)
                 )
             }
