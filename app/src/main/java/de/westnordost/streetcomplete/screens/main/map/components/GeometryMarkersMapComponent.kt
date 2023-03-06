@@ -65,7 +65,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
                 color = "white"
                 MainActivity.activity?.runOnUiThread {
-                    val symbol = MainMapFragment.symbolManager!!.create(SymbolOptions()
+                    val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                         .withLatLng(center.toLatLng())
                         .withIconImage(drawableResId.toString())
                     )
@@ -75,7 +75,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 iconSize = pointSize
                 color = pointColor
                 MainActivity.activity?.runOnUiThread {
-                    val circle = MainMapFragment.circleManager!!.create(CircleOptions()
+                    val circle = MainMapFragment.geometryCircleManger!!.create(CircleOptions()
                         .withLatLng(center.toLatLng())
                         .withCircleRadius(8f)
                         .withCircleColor("#D140D0")
@@ -122,7 +122,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             marker.setPoint(geometry.center)
             markers.add(marker)
             MainActivity.activity?.runOnUiThread {
-                val symbol = MainMapFragment.symbolManager!!.create(SymbolOptions()
+                val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                     .withLatLng(center.toLatLng())
                     .withTextField(escapedTitle)
                     .withTextOffset(arrayOf(0f, 15f))
@@ -149,7 +149,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                     markers.add(marker)
                 }
                 MainActivity.activity?.runOnUiThread {
-                    val fill = MainMapFragment.fillManager!!.create(FillOptions()
+                    val fill = MainMapFragment.geometryFillManager!!.create(FillOptions()
                             .withLatLngs(geometry.polygons.map { it.map { it.toLatLng() } })
                             .withFillColor("#D140D0")
                             .withFillOpacity(0.3f)
@@ -189,7 +189,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                         .withLineWidth(6f)
                         .withLineOpacity(0.5f)
                 }
-                val lines = MainMapFragment.lineManager!!.create(options)
+                val lines = MainMapFragment.geometryLineManager!!.create(options)
                 annotations.addAll(lines)
             }
         }
@@ -238,9 +238,9 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
     }
 }
 
-fun removeAnnotations(annotations: Collection<com.mapbox.mapboxsdk.plugins.annotation.Annotation<*>>) {
-    MainMapFragment.symbolManager!!.delete(annotations.filterIsInstance<Symbol>())
-    MainMapFragment.circleManager!!.delete(annotations.filterIsInstance<Circle>())
-    MainMapFragment.lineManager!!.delete(annotations.filterIsInstance<Line>())
-    MainMapFragment.fillManager!!.delete(annotations.filterIsInstance<Fill>())
+private fun removeAnnotations(annotations: Collection<com.mapbox.mapboxsdk.plugins.annotation.Annotation<*>>) {
+    MainMapFragment.geometrySymbolManager!!.delete(annotations.filterIsInstance<Symbol>())
+    MainMapFragment.geometryCircleManger!!.delete(annotations.filterIsInstance<Circle>())
+    MainMapFragment.geometryLineManager!!.delete(annotations.filterIsInstance<Line>())
+    MainMapFragment.geometryFillManager!!.delete(annotations.filterIsInstance<Fill>())
 }

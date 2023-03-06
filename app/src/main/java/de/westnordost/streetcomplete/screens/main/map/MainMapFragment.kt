@@ -161,10 +161,21 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         MainMapFragment.mapView = mapView
         MainMapFragment.mapboxMap = mapboxMap
-        MainMapFragment.symbolManager = symbolManager
         MainMapFragment.style = style
-        lineManager = LineManager(mapView, mapboxMap, style)
-        lineManager?.addClickListener { line ->
+        pinSymbolManager = symbolManager
+        overlaySymbolManager = SymbolManager(mapView, mapboxMap, style)
+        overlaySymbolManager?.addClickListener {
+            val key = it.data?.toElementKey()
+            if (key != null) {
+                viewLifecycleScope.launch {
+                    listener?.onClickedElement(key)
+                }
+                true
+            } else
+                false
+        }
+        overlayLineManager = LineManager(mapView, mapboxMap, style)
+        overlayLineManager?.addClickListener { line ->
             val key = line.data?.toElementKey()
             if (key != null) {
                 viewLifecycleScope.launch {
@@ -174,8 +185,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             } else
                 false
         }
-        fillManager = FillManager(mapView, mapboxMap, style)
-        fillManager?.addClickListener { fill ->
+        overlayFillManager = FillManager(mapView, mapboxMap, style)
+        overlayFillManager?.addClickListener { fill ->
             val key = fill.data?.toElementKey()
             if (key != null) {
                 viewLifecycleScope.launch {
@@ -185,7 +196,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             } else
                 false
         }
-        circleManager = CircleManager(mapView, mapboxMap, style)
+        geometrySymbolManager = SymbolManager(mapView, mapboxMap, style)
+        geometryLineManager = LineManager(mapView, mapboxMap, style)
+        geometryFillManager = FillManager(mapView, mapboxMap, style)
+        geometryCircleManger = CircleManager(mapView, mapboxMap, style)
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
@@ -199,16 +213,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
         mapView = null
-        symbolManager = null
-        lineManager = null
-        fillManager = null
-        circleManager = null
+        pinSymbolManager = null
+        overlayLineManager = null
+        overlayFillManager = null
+        geometryCircleManger = null
         style = null
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
-    // todo: overlay stuff
     private fun initializeSymbolManager(mapView: MapView, mapboxMap: MapboxMap, style: Style): SymbolManager {
         val sm = SymbolManager(mapView, mapboxMap, style)
         sm.addClickListener { symbol ->
@@ -342,9 +355,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.showGeometry(geometry)
 
         // clear previous geometries as tangram does
-        lineManager?.deleteAll()
-        circleManager?.deleteAll()
-        fillManager?.deleteAll()
+        geometryLineManager?.deleteAll()
+        geometryCircleManger?.deleteAll()
+        geometryFillManager?.deleteAll()
 
         when (geometry) {
             is ElementPolylinesGeometry -> {
@@ -355,10 +368,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                         .withLineWidth(6f)
                         .withLineOpacity(0.5f)
                 }
-                lineManager?.create(options)
+                geometryLineManager?.create(options)
             }
             is ElementPolygonsGeometry -> {
-                fillManager?.create(FillOptions()
+                geometryFillManager?.create(FillOptions()
                     .withLatLngs(geometry.polygons.map { it.map { it.toLatLng() } })
                     .withFillColor("#D14000")
                     .withFillOpacity(0.3f)
@@ -371,10 +384,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                         .withLineWidth(6f)
                         .withLineOpacity(0.5f)
                 }
-                lineManager?.create(options)
+                geometryLineManager?.create(options)
             }
             is ElementPointGeometry -> {
-                circleManager?.create(CircleOptions()
+                geometryCircleManger?.create(CircleOptions()
                     .withCircleColor("#D14000")
                     .withLatLng(LatLng(geometry.center.latitude, geometry.center.longitude))
                     .withCircleRadius(14f)
@@ -391,9 +404,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
-        lineManager?.deleteAll()
-        circleManager?.deleteAll()
-        fillManager?.deleteAll()
+        geometrySymbolManager?.deleteAll()
+        geometryLineManager?.deleteAll()
+        geometryCircleManger?.deleteAll()
+        geometryFillManager?.deleteAll()
     }
 
     fun clearSelectedPins() {
@@ -453,10 +467,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo: this is bad, but very convenient for testing if we have access to everything from everywhere
         var mapView: MapView? = null
         var mapboxMap: MapboxMap? = null
-        var symbolManager: SymbolManager? = null
-        var lineManager: LineManager? = null
-        var fillManager: FillManager? = null
-        var circleManager: CircleManager? = null
+        var pinSymbolManager: SymbolManager? = null
+        var overlaySymbolManager: SymbolManager? = null
+        var overlayLineManager: LineManager? = null
+        var overlayFillManager: FillManager? = null
+        var geometrySymbolManager: SymbolManager? = null
+        var geometryLineManager: LineManager? = null
+        var geometryFillManager: FillManager? = null
+        var geometryCircleManger: CircleManager? = null
         var style: Style? = null
     }
 }

@@ -42,7 +42,14 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     /** Shows/hides the map data */
     var isVisible: Boolean
         get() = layer.visible
-        set(value) { layer.visible = value }
+        set(value) {
+            layer.visible = value
+            if (!value) {
+                MainMapFragment.overlaySymbolManager!!.deleteAll()
+                MainMapFragment.overlayFillManager!!.deleteAll()
+                MainMapFragment.overlayLineManager!!.deleteAll()
+            }
+        }
 
     /** Show given map data with each the given style */
     fun set(features: Collection<StyledElement>) {
@@ -153,7 +160,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                             LineOptions()
                                 .withData(data)
                                 .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(15f) // todo...
+                                .withLineWidth(getLineWidth(element.tags) * 1.5f) // 1.5 is pixel density, depends on phone
                                 .withLineColor(style.stroke.color)
                             //.withLinePattern() // how to set dashed style?
                         } else null
@@ -164,12 +171,12 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             }
         }
         MainActivity.activity?.runOnUiThread {
-            // MainMapFragment.symbolManager?.deleteAll() // don't, this will remove quest pins
-            MainMapFragment.fillManager!!.deleteAll() // also remove highlighted stuff, but whatever for now
-            MainMapFragment.lineManager!!.deleteAll() // also remove highlighted stuff, but whatever for now
-            MainMapFragment.symbolManager!!.create(annotations.filterIsInstance<SymbolOptions>())
-            MainMapFragment.fillManager!!.create(annotations.filterIsInstance<FillOptions>())
-            MainMapFragment.lineManager!!.create(annotations.filterIsInstance<LineOptions>())
+            MainMapFragment.overlaySymbolManager!!.deleteAll()
+            MainMapFragment.overlayFillManager!!.deleteAll()
+            MainMapFragment.overlayLineManager!!.deleteAll()
+            MainMapFragment.overlaySymbolManager!!.create(annotations.filterIsInstance<SymbolOptions>())
+            MainMapFragment.overlayFillManager!!.create(annotations.filterIsInstance<FillOptions>())
+            MainMapFragment.overlayLineManager!!.create(annotations.filterIsInstance<LineOptions>())
         }
     }
 
