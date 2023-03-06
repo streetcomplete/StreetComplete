@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string translatable="false" name="fileprovider_authority">de.westnordost.streetcomplete.debug.fileprovider</string>
+    <string translatable="false" name="fileprovider_authority">de.westnordost.streetcomplete.ml.debug.fileprovider</string>
 </resources>
