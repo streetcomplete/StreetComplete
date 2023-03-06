@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.osm.buildingSynonyms
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.IAnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -26,20 +27,13 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     override val contentLayoutResId = R.layout.view_address_number_or_name_input
     private val binding by contentViewBinding(ViewAddressNumberOrNameInputBinding::bind)
 
-    override val otherAnswers by lazy { // lazy to allow initializing geometry, which is needed for country code
+    override val otherAnswers get() =
         listOfNotNull(
             AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
             AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
-            if (countryInfo.countryCode != "JP") {
-                if (lastBlock == null) {
-                    AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
-                } else {
-                    AnswerItem(R.string.quest_address_answer_no_block) { showNumberOrNameInput(getAddressNumberLayoutResId(countryInfo.countryCode)) }
-                }
-            } else null,
+            createBlockAnswerItem(),
             AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
         )
-    }
 
     private var isShowingHouseName: Boolean = false
     private var isShowingBlock: Boolean = false
@@ -49,11 +43,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         super.onViewCreated(view, savedInstanceState)
         isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK) ?: (lastBlock != null)
 
-        val layoutResId = if (isShowingBlock && countryInfo.countryCode != "JP") {
-                R.layout.view_house_number_and_block
-            } else {
-                getAddressNumberLayoutResId(countryInfo.countryCode)
-            }
+        val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
+            ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
+
         showNumberOrNameInput(layoutResId)
 
         // initially do not show any house number / house name UI
@@ -100,6 +92,15 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 
     /* ------------------------------------- Other answers -------------------------------------- */
+
+    private fun createBlockAnswerItem(): IAnswerItem? =
+        if (getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode) == null) {
+            if (isShowingBlock) {
+                AnswerItem(R.string.quest_address_answer_no_block) { showNumberOrNameInput(R.layout.view_house_number) }
+            } else {
+                AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
+            }
+        } else null
 
     private fun showMultipleNumbersHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -182,9 +183,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 }
 
-private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
+private fun getCountrySpecificAddressNumberLayoutResId(countryCode: String): Int? = when (countryCode) {
     "JP" -> R.layout.view_house_number_japan
     "CZ" -> R.layout.view_house_number_czechia
     "SK" -> R.layout.view_house_number_slovakia
-    else -> R.layout.view_house_number
+    else -> null
 }

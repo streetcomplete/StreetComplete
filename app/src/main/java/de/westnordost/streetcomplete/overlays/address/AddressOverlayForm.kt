@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.osm.address.createAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -57,7 +58,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() },
-        if (countryInfo.countryCode != "JP") AnswerItem(R.string.overlay_address_toggle_block) { toggleBlockInput() } else null,
+        createBlockAnswerItem(),
         if (element != null) AnswerItem(R.string.quest_address_answer_no_address) { confirmRemoveAddress() } else null,
     )
 
@@ -115,15 +116,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
             streetOrPlaceBinding.streetOrPlaceSelect.isGone = true
         }
 
-        val layoutResId = if (isShowingBlock && countryInfo.countryCode != "JP") {
-                R.layout.view_house_number_and_block
-            } else {
-                getAddressNumberLayoutResId(countryInfo.countryCode)
-            }
+        val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
+            ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
         showNumberOrNameInput(layoutResId)
     }
 
     private fun showNumberOrNameInput(layoutResId: Int) {
+        binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
         val numberOrNameBinding = binding.addressNumberOrNameContainer
         val numberView = layoutInflater.inflate(
             layoutResId,
@@ -161,16 +160,6 @@ class AddressOverlayForm : AbstractOverlayForm() {
         isShowingBlock = blockInput != null
     }
 
-    private fun toggleBlockInput() {
-        binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
-        val layoutResId = if (isShowingBlock) {
-                getAddressNumberLayoutResId(countryInfo.countryCode)
-            } else {
-                R.layout.view_house_number_and_block
-            }
-        showNumberOrNameInput(layoutResId)
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(SHOW_PLACE_NAME, isShowingPlaceName)
@@ -204,6 +193,17 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         applyEdit(createAddressElementEditAction(element, geometry, number, name, streetOrPlaceName))
     }
+
+    /* --------------------------------- Show/Toggle block input -------------------------------- */
+
+    private fun createBlockAnswerItem(): IAnswerItem? =
+        if (getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode) == null) {
+            if (isShowingBlock) {
+                AnswerItem(R.string.quest_address_answer_no_block) { showNumberOrNameInput(R.layout.view_house_number) }
+            } else {
+                AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
+            }
+        } else null
 
     /* ------------------------------ Show house name / place name ------------------------------ */
 
@@ -295,9 +295,9 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key == "noaddress" ||
     key == "nohousenumber"
 
-private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
+private fun getCountrySpecificAddressNumberLayoutResId(countryCode: String): Int? = when (countryCode) {
     "JP" -> R.layout.view_house_number_japan
     "CZ" -> R.layout.view_house_number_czechia
     "SK" -> R.layout.view_house_number_slovakia
-    else -> R.layout.view_house_number
+    else -> null
 }
