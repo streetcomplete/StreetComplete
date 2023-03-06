@@ -19,6 +19,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.runImmediate
@@ -85,6 +86,12 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             if (duration == 0L || isAnimationsOff) {
                 applyCameraUpdate(update)
             } else {
+                val cameraPositionBuilder = com.mapbox.mapboxsdk.camera.CameraPosition.Builder(mapboxMap.cameraPosition)
+                update.rotation?.let { cameraPositionBuilder.bearing(it.toDouble()) }
+                update.position?.let { cameraPositionBuilder.target(it.toLatLng()) }
+                update.zoom?.let { cameraPositionBuilder.zoom(it.toDouble()) }
+                update.tilt?.let { cameraPositionBuilder.tilt(it.toDouble()) }
+                mapboxMap.easeCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build()), duration.toInt())
                 animateCameraUpdate(update, duration, interpolator)
             }
         }
@@ -131,7 +138,8 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             cameraPositionBuilder.zoom(it.toDouble())
         }
         pushCameraPositionToController()
-        mapboxMap.cameraPosition = cameraPositionBuilder.build()
+//        mapboxMap.cameraPosition = cameraPositionBuilder.build()
+        mapboxMap.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build()))
     }
 
     @AnyThread private fun animateCameraUpdate(update: CameraUpdate, duration: Long, interpolator: Interpolator) {
@@ -177,7 +185,6 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             animator.addUpdateListener(this::animate)
             lastAnimatorEndTime = endTime
         }
-//        mapboxMap.animateCamera(some update, duration) // todo: mapLibre cameraUpdate requires
         mainHandler.runImmediate { animator.start() }
     }
 
