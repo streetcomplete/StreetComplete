@@ -14,6 +14,7 @@ import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
+import com.mapbox.mapboxsdk.style.expressions.Expression
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
@@ -128,8 +129,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // any need to keep resource name for icons?
         TangramIconsSpriteSheet.ICONS.forEach { style.addImage(it.toString(), resources.getBitmapDrawable(it)) }
 
-        val symbolManager = initializeSymbolManager(mapView, mapboxMap, style)
-        pinsMapComponent = PinsMapComponent(ctrl, symbolManager)
+        pinsMapComponent = PinsMapComponent(ctrl)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = FocusGeometryMapComponent(ctrl, mapboxMap)
 
@@ -162,7 +162,38 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         MainMapFragment.mapView = mapView
         MainMapFragment.mapboxMap = mapboxMap
         MainMapFragment.style = style
-        pinSymbolManager = symbolManager
+        pinSymbolManager = SymbolManager(mapView, mapboxMap, style)
+        pinSymbolManager?.addClickListener { symbol ->
+            viewLifecycleScope.launch {
+                when (pinMode) {
+                    PinMode.QUESTS -> {
+                        val questKey = symbol.data?.toQuestKey()
+                        if (questKey != null) {
+                            listener?.onClickedQuest(questKey)
+                            return@launch
+                        }
+                    }
+                    PinMode.EDITS -> {
+                        val editKey = symbol.data?.toEditKey()
+                        if (editKey != null) {
+                            listener?.onClickedEdit(editKey)
+                            return@launch
+                        }
+                    }
+                    PinMode.NONE -> {}
+                }
+            }
+            return@addClickListener true
+        }
+        pinSymbolManager?.setFilter(Expression.gte(Expression.zoom(), 14f)) // hide quests at low zoom
+        // todo: 2 separate managers mean that we have to load the data twice
+        //  is there a way of providing data only once?
+        //  maybe Style.layers can be used here?
+        pinDotManager = CircleManager(mapView, mapboxMap, style)
+        // hmm... this looks ugly. icons would be possible, and a filter depending on icon name
+        // actually this is only useful if there is a separate collide/no collide thing
+        pinDotManager?.setFilter(Expression.lt(Expression.zoom(), 14f))
+
         overlaySymbolManager = SymbolManager(mapView, mapboxMap, style)
         overlaySymbolManager?.addClickListener {
             val key = it.data?.toElementKey()
@@ -221,33 +252,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
-
-    private fun initializeSymbolManager(mapView: MapView, mapboxMap: MapboxMap, style: Style): SymbolManager {
-        val sm = SymbolManager(mapView, mapboxMap, style)
-        sm.addClickListener { symbol ->
-            viewLifecycleScope.launch {
-                when (pinMode) {
-                    PinMode.QUESTS -> {
-                        val questKey = symbol.data?.toQuestKey()
-                        if (questKey != null) {
-                            listener?.onClickedQuest(questKey)
-                            return@launch
-                        }
-                    }
-                    PinMode.EDITS -> {
-                        val editKey = symbol.data?.toEditKey()
-                        if (editKey != null) {
-                            listener?.onClickedEdit(editKey)
-                            return@launch
-                        }
-                    }
-                    PinMode.NONE -> {}
-                }
-            }
-            return@addClickListener true
-        }
-        return sm
-    }
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
@@ -468,6 +472,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var mapView: MapView? = null
         var mapboxMap: MapboxMap? = null
         var pinSymbolManager: SymbolManager? = null
+        var pinDotManager: CircleManager? = null
         var overlaySymbolManager: SymbolManager? = null
         var overlayLineManager: LineManager? = null
         var overlayFillManager: FillManager? = null
