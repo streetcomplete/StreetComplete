@@ -11,6 +11,7 @@ import com.mapbox.mapboxsdk.plugins.annotation.Line
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
+import com.mapbox.mapboxsdk.style.layers.Property
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -67,7 +68,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 MainActivity.activity?.runOnUiThread {
                     val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                         .withLatLng(center.toLatLng())
-                        .withIconImage(drawableResId.toString())
+                        .withIconImage(resources.getResourceEntryName(drawableResId)) // todo: this is not working... why? works in overlays, and the name is determined the same way as it is set
                     )
                     annotations.add(symbol)
                 }
@@ -125,7 +126,9 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                     .withLatLng(center.toLatLng())
                     .withTextField(escapedTitle)
-                    .withTextOffset(arrayOf(0f, 15f))
+                    .withTextOffset(arrayOf(0f, 1f))
+                    .withTextMaxWidth(5f)
+                    .withTextAnchor(Property.TEXT_ANCHOR_TOP)
                 )
                 annotations.add(symbol)
             }

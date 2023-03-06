@@ -6,6 +6,7 @@ import com.google.gson.JsonElement
 import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
+import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
@@ -119,22 +120,25 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             ).toJsonProperties()
             when (style) {
                 is PointStyle -> {
-                    val o = SymbolOptions()
-                        .withData(data)
-                        .withLatLng(geometry.center.toLatLng())
-                    // currently one of those is not null, so we need a symbol anyway
-                    if (style.icon != null) o.withIconImage(style.icon.toString())
-                    if (style.label != null) o.withTextField(style.label)
-                    listOf(o)
+                    // there is no other style, so we always need a symbol and not a circle
+                    val o = getSymbolOptions(style.icon, style.label)
+                        ?.withData(data)
+                        ?.withLatLng(geometry.center.toLatLng())
+                    listOfNotNull(o)
                 }
                 is PolygonStyle -> {
                     val o = FillOptions()
                         .withData(data)
-                        .withFillColor(style.color)
-                        .withFillOutlineColor(getDarkenedColor(style.color))
                         .withLatLngs((geometry as ElementPolygonsGeometry).polygons.map { it.map { it.toLatLng() } })
-                    listOf(o)
-                    // no label here...
+                    if (style.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
+                        o.withFillColor(style.color)
+                        o.withFillOutlineColor(getDarkenedColor(style.color))
+                    } else
+                        o.withFillOpacity(0f)
+                    val i = getSymbolOptions(style.icon, style.label)
+                        ?.withLatLng(geometry.center.toLatLng())
+                        ?.withData(data)
+                    listOfNotNull(o, i)
                 }
                 is PolylineStyle -> {
                     (geometry as ElementPolylinesGeometry).polylines.flatMap { line ->
@@ -142,8 +146,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                             LineOptions()
                                 .withData(data)
                                 .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(10f) // todo...
-                                .withLineOffset(15f)
+                                .withLineWidth(10f) // todo
+                                .withLineOffset(15f) // todo (may depend on display density)
                                 .withLineColor(style.strokeLeft.color)
                             //.withLinePattern() // how to set dashed style?
                         } else null
@@ -151,7 +155,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                             LineOptions()
                                 .withData(data)
                                 .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(10f) // todo...
+                                .withLineWidth(10f)
                                 .withLineOffset(-15f)
                                 .withLineColor(style.strokeRight.color)
                             //.withLinePattern() // how to set dashed style?
@@ -160,12 +164,14 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                             LineOptions()
                                 .withData(data)
                                 .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(getLineWidth(element.tags) * 1.5f) // 1.5 is pixel density, depends on phone
+                                .withLineWidth(getLineWidth(element.tags) * 2) // too narrow otherwise. maybe depends on displayMetrics.density
                                 .withLineColor(style.stroke.color)
                             //.withLinePattern() // how to set dashed style?
                         } else null
-                        listOfNotNull(left, right, center)
-                        // no label here...
+                        val i = getSymbolOptions(null, style.label)
+                            ?.withLatLng(geometry.center.toLatLng())
+                            ?.withData(data)
+                        listOfNotNull(left, right, center, i)
                     }
                 }
             }
@@ -191,6 +197,21 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         else -> if (!isOneway(tags)) 5.5f else 3f
     }
 
+    private fun getSymbolOptions(icon: String?, label: String?): SymbolOptions? {
+        if (icon == null && label == null) return null
+        val o = SymbolOptions()
+        if (icon != null) o.withIconImage(icon) // todo: icon color is white, not black with white border. the commented options below do nothing
+//            .withIconColor("black")
+//            .withIconHaloWidth(0.3f)
+//            .withIconHaloColor("white")
+        if (label != null) o.withTextField(label)
+            .withTextOffset(arrayOf(1.5f, 0f))
+            .withTextMaxWidth(5f)
+            .withTextAnchor(Property.TEXT_ANCHOR_LEFT)
+            // text should be left-aligned, but otherwise it's fine
+        return o
+    }
+
     /** estimates height of thing */
     private fun getHeight(tags: Map<String, String>): Float? {
         val height = tags["height"]?.toFloatOrNull()
@@ -212,6 +233,11 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     /** Clear map data */
     fun clear() {
         layer.clear()
+        MainActivity.activity?.runOnUiThread {
+            MainMapFragment.overlaySymbolManager!!.deleteAll()
+            MainMapFragment.overlayFillManager!!.deleteAll()
+            MainMapFragment.overlayLineManager!!.deleteAll()
+        }
     }
 
     fun getElementKey(properties: Map<String, String>): ElementKey? {

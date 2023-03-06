@@ -126,8 +126,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo: here we should use pins, not round icons
         //  just create them as LayerDrawable?
         questTypeRegistry.forEach { style.addImage(resources.getResourceEntryName(it.icon), resources.getBitmapDrawable(it.icon)) }
-        // any need to keep resource name for icons?
-        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(it.toString(), resources.getBitmapDrawable(it)) }
+        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it)) }
 
         pinsMapComponent = PinsMapComponent(ctrl)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
