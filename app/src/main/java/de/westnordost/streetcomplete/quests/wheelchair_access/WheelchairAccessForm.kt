@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
+import android.text.InputFilter
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
@@ -35,12 +36,7 @@ open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
                 val e = EditText(context).apply {
                     hint = it.substringAfter(':').ifEmpty { context.getString(R.string.quest_wheelchair_description_no_language) }
                     element.tags["wheelchair:description$it"]?.let { setText(it) }
-                    addTextChangedListener {
-                        if (text.toString().length > 254) {
-                            context.toast(R.string.quest_wheelchair_description_too_long)
-                            setText(text.toString().substring(0, 254))
-                        }
-                    }
+                    filters = arrayOf(InputFilter.LengthFilter(255))
                 }
                 layout.addView(e)
                 e

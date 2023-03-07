@@ -324,12 +324,6 @@
     </string>
 
     <!-- additional strings for quests available in StreetComplete -->
-    <!-- should be very similar to normal SC quest_smoothness_square_title -->
-    <string name="quest_smoothness_square_title2">What’s the surface quality of this %s square?</string>
-    <!-- should be very similar to normal SC quest_smoothness_road_title -->
-    <string name="quest_smoothness_road_title2">What’s the surface quality of this %s road here?</string>
-    <!-- should be very similar to normal SC quest_smoothness_title -->
-    <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
     <string name="quest_surface_value_stepping_stones">Stepping stones</string>
     <string name="quest_buildingType_presbytery">Presbytery</string>
@@ -349,7 +343,6 @@
     <string name="quest_lanes_answer_noLanes_known_count">No markings, obvious lane count</string>
     <string name="quest_wheelchair_description_answer">Add description</string>
     <string name="quest_wheelchair_description_title">Fill in at least one language</string>
-    <string name="quest_wheelchair_description_too_long">Description is too long</string>
     <string name="quest_wheelchair_description_no_language">no language specified</string>
     <string name="quest_seating_no">No seating, but not takeout only</string>
     <string name="quest_private">It’s private</string>

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -58,6 +59,9 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
 
         binding.descriptionLabel.isGone = false
         binding.descriptionLabel.text = stringBuilder
+
+
+        setTitle(resources.getString((questType as OsmElementQuestType<*>).getTitle(element.tags)) + " (${element.tags["surface"]})")
     }
 
     override val moveFavoritesToFront = false
