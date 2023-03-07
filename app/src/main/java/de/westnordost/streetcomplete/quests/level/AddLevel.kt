@@ -178,4 +178,4 @@ class AddLevel : OsmElementQuestType<String> {
 private val doctorAmenity = hashSetOf("doctors", "dentist")
 private val doctorHealthcare = hashSetOf("doctor", "dentist", "psychotherapist", "physiotherapist")
 
-private const val PREF_MORE_LEVELS = "qs_AddLevel_more_levels"
+const val PREF_MORE_LEVELS = "qs_AddLevel_more_levels"

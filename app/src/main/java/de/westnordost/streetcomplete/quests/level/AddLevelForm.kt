@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.level.SingleLevel
@@ -54,9 +55,17 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val bbox = geometry.center.enclosingBoundingBox(50.0)
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
-        val shopsWithLevels = mapData.filter {
-            it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
-        }
+        val shopsWithLevels = if (prefs.getBoolean(PREF_MORE_LEVELS, false))
+                mapData.filter { e ->
+                    e.tags["level"] != null && (
+                        IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(e)
+                            || getPinIcon(e.tags) != null
+                        )
+                }
+            else
+                mapData.filter {
+                    it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
+                }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
