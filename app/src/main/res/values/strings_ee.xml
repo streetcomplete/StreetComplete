@@ -76,6 +76,7 @@
     <string name="pref_select_first_edit_title">Select first edit on opening history</string>
     <string name="pref_select_first_edit_summary">Allows for quicker undo, but moves camera automatically</string>
     <string name="pref_main_menu_grid">Show all main menu items as grid</string>
+    <string name="pref_caps_word_name_input">Capitalize all words when entering names</string>
     <string name="pref_show_next_quest_title">Show next quest immediately</string>
     <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
     <string name="pref_hide_button_title">Show hide button</string>

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
@@ -15,7 +16,9 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
@@ -316,6 +319,9 @@ class LocalizedNameAdapter(
 
             updateNameSuggestions()
             updateAbbreviations()
+
+            if (StreetCompleteApplication.preferences.getBoolean(Prefs.CAPS_WORD_NAME_INPUT, false))
+                input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE or InputType.TYPE_TEXT_FLAG_CAP_WORDS
         }
 
         private fun updateNameSuggestions() {

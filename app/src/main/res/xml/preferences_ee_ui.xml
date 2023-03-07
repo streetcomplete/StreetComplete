@@ -68,4 +68,10 @@
         android:defaultValue="false"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="caps_word_name_input"
+        android:title="@string/pref_caps_word_name_input"
+        android:defaultValue="false"
+        android:persistent="true" />
+
 </PreferenceScreen>

@@ -101,6 +101,7 @@ object Prefs {
     const val SHOW_WAY_DIRECTION = "show_way_direction"
     const val SEARCH_MORE_LANGUAGES = "search_more_languages"
     const val NO_SATELLITE_LABEL = "no_satellite_label"
+    const val CAPS_WORD_NAME_INPUT = "caps_word_name_input"
 
     enum class Autosync {
         ON, WIFI, OFF
