@@ -15,7 +15,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways with (
-         shop = yes
+         shop ~ yes|other|unknown|shop|fixme|retail
          and !man_made
          and !historic
          and !military
@@ -29,6 +29,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !craft
          and !healthcare
          and !office
+        ) or (
+         amenity ~ shop|shopping and !shop
         )
     """
     override val changesetComment = "Survey shop types"
@@ -46,6 +48,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.removeCheckDates()
+        if (tags["amenity"] in listOf("shop", "shopping"))
+            tags.remove("amenity")
         when (answer) {
             is IsShopVacant -> {
                 tags.remove("shop")
