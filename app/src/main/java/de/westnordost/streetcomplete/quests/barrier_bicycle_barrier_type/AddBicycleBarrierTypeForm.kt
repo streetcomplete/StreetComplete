@@ -17,7 +17,7 @@ class AddBicycleBarrierTypeForm :
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_barrier_bicycle_type_not_cycle_barrier) {
-            applyAnswer(BarrierTypeIsNotBicycleBarrier)
+            applyAnswer(BarrierTypeIsNotBicycleBarrier, true)
         },
     )
 }

@@ -273,14 +273,14 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    protected fun applyAnswer(answer: T) {
+    protected fun applyAnswer(answer: T, extra: Boolean = false) {
         viewLifecycleScope.launch {
             if (TagEditor.showingTagEditor) {
                 val changesBuilder = StringMapChangesBuilder(element.tags)
                 osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
                 TagEditor.changes = changesBuilder.create()
             } else
-                solve(UpdateElementTagsAction(createQuestChanges(answer)))
+                solve(UpdateElementTagsAction(createQuestChanges(answer)), extra)
         }
     }
 
@@ -334,7 +334,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
             builder.replaceShop(tags)
-            solve(UpdateElementTagsAction(builder.create()))
+            solve(UpdateElementTagsAction(builder.create()), true)
         }
     }
 
@@ -348,7 +348,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun onDeletePoiNodeConfirmed() {
         viewLifecycleScope.launch {
-            solve(DeletePoiNodeAction)
+            solve(DeletePoiNodeAction, true)
         }
     }
 
@@ -360,7 +360,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 viewLifecycleScope.launch {
                     val builder = StringMapChangesBuilder(element.tags)
                     builder["access"] = "private"
-                    solve(UpdateElementTagsAction(builder.create()))
+                    solve(UpdateElementTagsAction(builder.create()), true)
                 }
             }
         else null
@@ -374,13 +374,16 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                     val builder = StringMapChangesBuilder(element.tags)
                     builder["demolished:building"] = builder["building"] ?: "yes"
                     builder.remove("building")
-                    solve(UpdateElementTagsAction(builder.create()))
+                    solve(UpdateElementTagsAction(builder.create()), true)
                 }
             }
         else null
     }
 
-    private suspend fun solve(action: ElementEditAction) {
+    private suspend fun solve(action: ElementEditAction, extra: Boolean = false) {
+        // really bad hacky way of using separate changesets for some "other answers",
+        // but doesn't require changing database stuff and commit can be reverted without breaking stuff
+        val source = if (extra) "survey,extra" else "survey"
         if (TagEditor.showingTagEditor) return
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
@@ -393,7 +396,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {
-                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+                addElementEditsController.add(osmElementQuestType, element, geometry, source, action)
             }
         }
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {

@@ -154,7 +154,7 @@ class SplitWayFragment :
             if (checkIsSurvey(requireContext(), geometry, location)) {
                 val action = SplitWayAction(ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
-                    elementEditsController.add(editType, way, geometry, "survey", action)
+                    elementEditsController.add(editType, way, geometry, "survey,extra", action)
                 }
                 listener?.onSplittedWay(editType, way, geometry)
                 return

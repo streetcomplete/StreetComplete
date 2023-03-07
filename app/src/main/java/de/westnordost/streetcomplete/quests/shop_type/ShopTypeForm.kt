@@ -64,7 +64,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
 
     override fun onClickOk() {
         when (selectedRadioButtonId) {
-            R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
+            R.id.vacantRadioButton    -> applyAnswer(IsShopVacant, true)
             R.id.leaveNoteRadioButton -> composeNote()
             R.id.replaceRadioButton   -> applyAnswer(ShopType(featureCtrl.feature!!.addTags))
         }

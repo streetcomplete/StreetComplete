@@ -49,23 +49,26 @@ The original [contributing guidelines](#contributing) are still valid, but note 
 * Creating, moving and deleting nodes is possible
   * Inserting nodes into a way is not (yet) possible
 * Guidelines are useful suggestions, but not enforced.
-* Quests may be based on external sources, not just on element selection.
+* Quests may be based on external sources like Osmose, not just on element selection.
 
 ## Changeset differences compared to StreetComplete
 This section is aimed for people trying to decide whether a bad edit done in SCEE is fault of the user or of the app (SCEE modifications).
 In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
 * `created_by` is set to `StreetComplete_ee <version>`
 * Quest type is given in `StreetComplete_ee:quest_type`
-* AddBuildingType has more possible answers
-* AddCrossingType may change `crossing_ref`, `crossing:markings` and `traffic_calming`
-* AddPathSurface and AddRoadSurface have additional surfaces `metal_grid` and `stepping_stones`
-* All quest types related to roads / paths may add `access=private`
-* All quest types related to buildings may change `building` to `demolished:building`
+* _AddBuildingType_ has more possible answers
+* _AddCrossingType_ may change `crossing_ref`, `crossing:markings` and `traffic_calming`
+* _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
-* An element at at the same position as a note may be edited (this is blocked in normal SC)
 * `check_date:*` may be added without resurvey
+* An element at at the same position as a note may be edited (this is blocked in normal SC)
 * Most quests may apply to an extended range of elements (user-defined)
+* Starting with SCEE 52.0, some answers create separate changesets with comment `Other edits in context of: <orignal quest changeset comment>`.
+This happens for changes that can occur in StreetComplete, such as moving or deleting a node, changing shop types, removing surface, changing highway to steps and removing sidewalks.
+Further SCEE adds new answers leading to such a changeset comment:
+  * All quest types related to roads / paths may add `access=private`
+  * All quest types related to buildings may change `building` to `demolished:building`
 * SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
   * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
   * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)

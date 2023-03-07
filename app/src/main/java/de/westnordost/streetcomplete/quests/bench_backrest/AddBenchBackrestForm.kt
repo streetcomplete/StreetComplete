@@ -15,6 +15,6 @@ class AddBenchBackrestForm : AbstractOsmQuestForm<BenchBackrestAnswer>() {
     )
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_bench_answer_picnic_table) { applyAnswer(PICNIC_TABLE) }
+        AnswerItem(R.string.quest_bench_answer_picnic_table) { applyAnswer(PICNIC_TABLE, true) }
     )
 }

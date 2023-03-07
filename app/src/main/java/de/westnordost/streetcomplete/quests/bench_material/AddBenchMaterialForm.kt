@@ -23,7 +23,7 @@ class AddBenchMaterialForm : AImageListQuestForm<BenchMaterial, BenchMaterial>()
     )
 
     override val otherAnswers by lazy { if (element.tags["amenity"] == "bench")
-        listOf(AnswerItem(R.string.quest_bench_answer_picnic_table) { applyAnswer(BenchMaterial.PICNIC) })
+        listOf(AnswerItem(R.string.quest_bench_answer_picnic_table) { applyAnswer(BenchMaterial.PICNIC, true) })
     else emptyList() }
 
     override val itemsPerRow = 3

@@ -159,7 +159,7 @@ class MoveNodeFragment :
         restoreBackground()
         viewLifecycleScope.launch {
             val action = MoveNodeAction(pos)
-            elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey", action)
+            elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey,extra", action)
             listener?.onMovedNode(editType, pos)
         }
     }

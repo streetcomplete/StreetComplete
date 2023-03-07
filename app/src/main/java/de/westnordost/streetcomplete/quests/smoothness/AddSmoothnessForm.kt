@@ -87,7 +87,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         AlertDialog.Builder(requireContext())
             .setView(inner)
             .setPositiveButton(R.string.quest_generic_hasFeature_yes_leave_note) { _, _ -> composeNote() }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongSurfaceAnswer) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongSurfaceAnswer, true) }
             .show()
     }
 
@@ -99,7 +99,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         if (!ALL_PATHS_EXCEPT_STEPS.contains(way.tags["highway"])) return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IsActuallyStepsAnswer)
+            applyAnswer(IsActuallyStepsAnswer, true)
         }
     }
 }

@@ -41,7 +41,7 @@ class AddPathSurfaceForm() : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IsActuallyStepsAnswer)
+            applyAnswer(IsActuallyStepsAnswer, true)
         }
     }
 
@@ -50,7 +50,7 @@ class AddPathSurfaceForm() : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer
         if (way.tags["indoor"] == "yes") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_indoors) {
-            applyAnswer(IsIndoorsAnswer)
+            applyAnswer(IsIndoorsAnswer, true)
         }
     }
 }

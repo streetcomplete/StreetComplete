@@ -19,7 +19,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     private var rightNote: String? = null
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
+        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent, true) }
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

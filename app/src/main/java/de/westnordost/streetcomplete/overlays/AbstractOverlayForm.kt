@@ -399,7 +399,7 @@ abstract class AbstractOverlayForm :
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.osm_element_gone_description)
-                .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> viewLifecycleScope.launch { solve(DeletePoiNodeAction) } }
+                .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> viewLifecycleScope.launch { solve(DeletePoiNodeAction, true) } }
                 .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
                 .show()
         }
@@ -413,7 +413,8 @@ abstract class AbstractOverlayForm :
 
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
-    private suspend fun solve(action: ElementEditAction) {
+    private suspend fun solve(action: ElementEditAction, extra: Boolean = false) {
+        val source = if (extra) "survey,extra" else "survey"
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
             setLocked(false)
@@ -424,11 +425,11 @@ abstract class AbstractOverlayForm :
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
             viewLifecycleScope.launch { listener?.onEdited(overlay, element, geometry) }
             withContext(Dispatchers.IO) {
-                addElementEditsController.add(overlay, element, geometry, "survey", action)
+                addElementEditsController.add(overlay, element, geometry, source, action)
             }
         } else {
             withContext(Dispatchers.IO) {
-                addElementEditsController.add(overlay, element, geometry, "survey", action)
+                addElementEditsController.add(overlay, element, geometry, source, action)
             }
             listener?.onEdited(overlay, element, geometry)
         }

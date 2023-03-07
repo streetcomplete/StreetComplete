@@ -39,7 +39,7 @@ class AddProhibitedForPedestriansForm : AbstractOsmQuestForm<ProhibitedForPedest
         AlertDialog.Builder(ctx)
             .setView(dialogBinding.root)
             .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IS_LIVING_STREET) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IS_LIVING_STREET, true) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }

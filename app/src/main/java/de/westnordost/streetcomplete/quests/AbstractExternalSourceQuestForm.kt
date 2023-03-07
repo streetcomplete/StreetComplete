@@ -196,6 +196,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     }
 
     protected suspend fun editElement(element: Element, action: ElementEditAction) {
+        // currently no way to set source to "survey,extra" because even other answers are likely part of the quest for both existing quests
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
             setLocked(false)
