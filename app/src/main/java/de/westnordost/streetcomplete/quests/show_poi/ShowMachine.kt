@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.NoAnswerFragment
 class ShowMachine : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
-          amenity ~ vending_machine|atm|telephone|charging_station|device_charging_station
+          amenity ~ vending_machine|atm|telephone|charging_station|device_charging_station|photo_booth
           or atm = yes and (amenity or shop)
     """
     override val changesetComment = "Adjust vending machine or similar"

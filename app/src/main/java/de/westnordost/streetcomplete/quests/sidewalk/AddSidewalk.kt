@@ -146,7 +146,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val untaggedRoadsFilter by lazy { """
         ways with
           highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
-          and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
+          and (!sidewalk or sidewalk = none) and !sidewalk:both and !sidewalk:left and !sidewalk:right
           and (!maxspeed or maxspeed > 9 or maxspeed ~ [A-Z].*)
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
           and (
