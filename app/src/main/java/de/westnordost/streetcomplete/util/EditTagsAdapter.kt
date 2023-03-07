@@ -52,6 +52,13 @@ class EditTagsAdapter(
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private fun storeRecentlyUsed(text: String, name: String, isKey: Boolean) { // will be value if not key
+            val keys = linkedSetOf(text)
+            val pref = "EditTagsAdapter_${name}_" + if (isKey) "keys" else "values"
+            keys.addAll(prefs.getString(pref, "")!!.split("§§"))
+            prefs.edit { putString(pref, keys.filter { it.isNotEmpty() }.take(10).joinToString("§§")) }
+        }
+
         val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
             var lastFeature: Feature? = null
             val lastSuggestions = linkedSetOf<String>()
@@ -59,19 +66,14 @@ class EditTagsAdapter(
                 val text = text.toString()
                 if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
                 else if (text !in lastSuggestions && text.isNotBlank()) {
-                    // store most recently used keys on focus loss (user typed answer instead of tapping suggestion)
-                    val keys = linkedSetOf(text)
-                    val pref = "EditTagsAdapter_${lastFeature?.id}_keys"
-                    keys.addAll(prefs.getString(pref, "")!!.split("§§"))
-                    prefs.edit { putString(pref, keys.take(10).joinToString("§§")) }
+                    // store most recently used keys on focus loss
+                    //  this may be because user typed answer instead of tapping suggestion
+                    //  unfortunately this also happens in other cases where storing may not be wanted, but leave it for now
+                    storeRecentlyUsed(text, lastFeature?.id.toString(), true)
                 }
             }
             onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
-                // store most recently used keys
-                val keys = linkedSetOf(text.toString())
-                val pref = "EditTagsAdapter_${lastFeature?.id}_keys"
-                keys.addAll(prefs.getString(pref, "")!!.split("§§"))
-                prefs.edit { putString(pref, keys.take(10).joinToString("§§")) }
+                storeRecentlyUsed(text.toString(), lastFeature?.id.toString(), true)
                 // move to value view if key is selected from suggestions
                 valueView.requestFocus()
             }
@@ -114,18 +116,11 @@ class EditTagsAdapter(
                 if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
                 else if (text !in lastSuggestions && text.isNotBlank() && keyView.text.toString().isNotBlank()) {
                     // store most recently used values on focus loss (user typed answer instead of tapping suggestion)
-                    val values = linkedSetOf(text)
-                    val pref = "EditTagsAdapter_${keyView.text}_values"
-                    values.addAll(prefs.getString(pref, "")!!.split("§§"))
-                    prefs.edit { putString(pref, values.take(10).joinToString("§§")) }
+                    storeRecentlyUsed(text, keyView.text.toString(), false)
                 }
             }
             onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
-                // store most recently used values
-                val values = linkedSetOf(text.toString())
-                val pref = "EditTagsAdapter_${keyView.text}_values"
-                values.addAll(prefs.getString(pref, "")!!.split("§§"))
-                prefs.edit { putString(pref, values.take(10).joinToString("§§")) }
+                storeRecentlyUsed(text.toString(), keyView.text.toString(), false)
             }
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList()
