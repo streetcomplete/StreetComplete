@@ -4,17 +4,20 @@ import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.Image
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.plugins.annotation.CircleManager
 import com.mapbox.mapboxsdk.plugins.annotation.CircleOptions
+import com.mapbox.mapboxsdk.plugins.annotation.ClusterOptions
 import com.mapbox.mapboxsdk.plugins.annotation.FillManager
 import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.style.expressions.Expression
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
@@ -36,6 +39,8 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
+import de.westnordost.streetcomplete.util.ktx.asBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -169,10 +174,29 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   style.addLayer(below/at/above)
         //    actually which layer? SymbolElementProvider is created, and has a getLayer function -> simply generates a SymbolLayer with a unique id
 
+        //  performance
+        //   check if circle source is faster: simply invert the zoom filter
+        //    -> MUCH faster
+        //   check if enabling overlap (instead of hiding icons) helps
+        //    -> actually worse, so displaying many images seems to be an issue (or maybe rather: having many in view)
+        //   check if non-bitmap drawables help (but documentation explicitly mentions bitmap image, and actually creates one)
+        //    -> no change
+        //   check if smaller images help (size is reduced to 0.3 in pins component -> do it already when loading)
+        //    -> no change
+        //   check if showing only a single image for each quest helps
+        //    a. set the same image for each quest type
+        //     -> maybe(!) a little better, but not enough improvement
+        //    b. provide the same(!) drawable for each quest type icon
+        //     -> as above
+        //   check if clustering helps: SymbolManager(mapView, mapboxMap, style, null, ClusterOptions().withClusterRadius(40))
+        //    -> much faster, but still not close to displaying circles, and it displays a circle with number of icons which isn't really what we want
+
         // todo next
-        //  add quest pins (and dots, but maybe later) using a customGeometrySource and symbolLayer
+        //  add quest pins (and dots, but maybe later) using a customGeometrySource (or geoJsonSource?) and symbolLayer
         //   should be done in QuestPinsManager
         //   first don't set volatile, as it should be faster, and test performance
+
+        // mapLibre always downloads "something" on startup: what is it, and why?
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
