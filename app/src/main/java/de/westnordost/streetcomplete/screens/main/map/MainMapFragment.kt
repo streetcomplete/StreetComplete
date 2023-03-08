@@ -131,6 +131,48 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         pinsMapComponent = PinsMapComponent(ctrl)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = FocusGeometryMapComponent(ctrl, mapboxMap)
+        // test: use layers instead of symbol manager
+        //  layers can be added above / below a single other layer, or at specific index (probably just insert in the layers list at position)
+        //  how to hide layers?
+        //   they can be removed from the style, but is re-adding them fast?
+        //   or a filter can be set
+        //  the symbol layer seems to have only a single icon, is this true? then we would have to use a lot of layers, which might affect performance
+        //  which source to use?
+        //   GeoJsonSource? can have "features", need to check how they are displayed, and whether they can have icons
+        //    features can be from json, which might work
+        //    but can feature be removed? don't see a way...
+        //   CustomGeometrySource? that might work pretty fast, especially if we store the pins (or pin jsons, or features) in yet another spatialCache
+        //    but is there a way of reloading data? (after adding / removing quests)
+        //    -> setTileData(z, x, y, featureCollection)
+        //     but... then data would be valid only for a specific zoom level?
+        //  how to actually check whether a feature in a layer was clicked?
+        //   only map and mapView have click listeners (and the annotation managers which we want to avoid here)
+        //  can add a filter that has access to feature.properties -> hope this is fast
+        //  now find something about order...
+        //   there are symbol/... sortKeys
+        //   and symbolLayer also has a Z-order
+
+        // what SymbolManager does:
+        //  creating the manager (annotation/general)
+        //   onMapClickListener is added, with a MapClickResolver (same for long click)
+        //    -> check how we get the symbol from this, and what this resolver actually does
+        //  adding a symbol
+        //   create(json) -> create(FeatureCollection.fromJson(json)) -> just creates SymbolOptions
+        //   interestingly, symbol.build creates a json object... could do that in a simpler way i guess (json string -> features -> symbols -> JsonObject)
+        //   annotation is put in the annotation LongSparseArray, map is updated
+        //  updateSource
+        //   creates features.fromGeometry(annotation.geometry, annotation.feature) and sets properties (what a waste if we already could store features)
+        //   geoJsonSource.setGeoJson(FeatureCollection.fromFeatures)
+        //   -> this helps a lot!
+        //  initialize
+        //   style.addSource(geoJsonSource)
+        //   style.addLayer(below/at/above)
+        //    actually which layer? SymbolElementProvider is created, and has a getLayer function -> simply generates a SymbolLayer with a unique id
+
+        // todo next
+        //  add quest pins (and dots, but maybe later) using a customGeometrySource and symbolLayer
+        //   should be done in QuestPinsManager
+        //   first don't set volatile, as it should be faster, and test performance
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)

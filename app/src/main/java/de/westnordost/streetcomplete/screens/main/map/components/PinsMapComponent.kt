@@ -51,6 +51,7 @@ class PinsMapComponent(ctrl: KtMapController) {
                     .withIconImage(pin.iconName)
                     .withIconSize(0.3f) // seems smaller than tangram, maybe depends on pixel ratio
                     .withData(pin.jsonProps)
+                    .withSymbolSortKey(-pin.importance.toFloat())
             })
             MainMapFragment.pinDotManager!!.deleteAll()
             MainMapFragment.pinDotManager!!.create(pins.map { pin ->
