@@ -1521,7 +1521,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
     <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">This answer is not matching what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">This answer does not match what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?</string>
 
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
