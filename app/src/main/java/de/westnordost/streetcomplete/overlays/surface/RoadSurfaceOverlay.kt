@@ -30,8 +30,7 @@ class RoadSurfaceOverlay : Overlay {
             ways, relations with
                 highway ~ ${(ALL_ROADS).joinToString("|")}
                 or area != yes and (sidewalk ~ left|right|both or sidewalk:both = yes or sidewalk:left = yes or sidewalk:right = yes)
-            """)
-            .map { it to getStyle(it) }
+        """).map { it to getStyle(it) }
 
     /* cycleways with any sidewalk tagged on the way (common tagging for road-like cycleways in
        Netherlands) are treated like roads here because in the PathSurfaceOverlay, one would instead
