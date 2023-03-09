@@ -11,15 +11,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.databinding.FragmentOverlayRoadSurfaceSelectBinding
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
-import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
-import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
+import de.westnordost.streetcomplete.osm.surface.createSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -36,17 +33,22 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private val noteText get() = binding.explanationInput.nonBlankTextOrNull
 
-    /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+    private val items: List<DisplayItem<Surface>> = SELECTABLE_WAY_SURFACES.toItems()
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
 
-    private var originalSurfaceStatus: ParsedSurfaceAndNote? = null
+    private var originalSurface: SurfaceAndNote? = null
 
     private var selectedSurfaceItem: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        originalSurface = createSurfaceAndNote(element!!.tags)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,16 +63,21 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             }
         }
 
-        if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
-
         LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
         binding.selectButton.selectedCellView.children.first().background = null
 
-        val status = createMainSurfaceStatus(element!!.tags)
-        originalSurfaceStatus = status
-        selectedSurfaceItem = status.value?.asItem()
-        binding.explanationInput.setText(status.note)
+        if (savedInstanceState != null) {
+            onLoadInstanceState(savedInstanceState)
+        } else {
+            initStateFromTags()
+        }
+
         updateSelectedCell()
+    }
+
+    private fun initStateFromTags() {
+        selectedSurfaceItem = originalSurface?.value?.asItem()
+        binding.explanationInput.setText( originalSurface?.note)
     }
 
     private fun collectSurfaceData(callback: (surface: DisplayItem<Surface>, note: String?) -> Unit) {
@@ -87,13 +94,13 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     }
 
     private fun updateSelectedCell() {
-        val surfaceItem = selectedSurfaceItem
-        binding.selectButton.selectTextView.isGone = surfaceItem != null
-        binding.selectButton.selectedCellView.isGone = surfaceItem == null
-        if (surfaceItem != null) {
-            ItemViewHolder(binding.selectButton.selectedCellView).bind(surfaceItem)
+        val item = selectedSurfaceItem
+        binding.selectButton.selectTextView.isGone = item != null
+        binding.selectButton.selectedCellView.isGone = item == null
+        if (item != null) {
+            ItemViewHolder(binding.selectButton.selectedCellView).bind(item)
         }
-        if (noteText != null || surfaceItem?.value?.shouldBeDescribed == true) {
+        if (noteText != null || item?.value?.shouldBeDescribed == true) {
             binding.explanationInput.isVisible = true
         }
     }
@@ -101,8 +108,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /* ------------------------------------- instance state ------------------------------------- */
 
     private fun onLoadInstanceState(inState: Bundle) {
-        val selectedIndex = inState.getInt(SELECTED_INDEX)
-        selectedSurfaceItem = if (selectedIndex != -1) items[selectedIndex] else null
+        selectedSurfaceItem = items.getOrNull(inState.getInt(SELECTED_INDEX, -1))
         binding.explanationInput.setText(inState.getString(NOTE_TEXT))
     }
 
@@ -115,20 +121,16 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete(): Boolean {
-        val surfaceValue = selectedSurfaceItem?.value ?: return false
-        if (surfaceValue.shouldBeDescribed) {
-            return noteText != null
-        }
-        return true
+        val surface = selectedSurfaceItem?.value
+        return surface != null && (!surface.shouldBeDescribed || noteText != null)
     }
 
     override fun hasChanges(): Boolean =
-        selectedSurfaceItem?.value != originalSurfaceStatus?.value
-        || noteText != originalSurfaceStatus?.note
+        selectedSurfaceItem?.value != originalSurface?.value || noteText != originalSurface?.note
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedSurfaceItem!!.value!!.applyTo(tagChanges, note = noteText)
+        SurfaceAndNote(selectedSurfaceItem!!.value!!, noteText).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 

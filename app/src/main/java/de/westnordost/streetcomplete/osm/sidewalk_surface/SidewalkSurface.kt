@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.sidewalk_surface
 
-import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 
-data class LeftAndRightParsedSidewalkSurface(
-    val left: ParsedSurfaceAndNote?,
-    val right: ParsedSurfaceAndNote?,
+data class LeftAndRightSidewalkSurface(
+    val left: SurfaceAndNote?,
+    val right: SurfaceAndNote?,
 )

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 
 val INVALID_SURFACES = setOf(
@@ -34,105 +35,44 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
     "grade5" to ANYTHING_FULLY_PAVED,
 )
 
-fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean =
+/** @return whether the given tag value for [surface] contradicts the tag value for [tracktype].
+ *  E.g. surface=asphalt but tracktype=grade5. */
+fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boolean =
     INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
 
-fun keysToBeRemovedOnSurfaceChange(prefix: String): Set<String> =
+/** Sets the common surface of the foot- and cycleway parts into the surface tag, if any. If the
+ *  surfaces of the foot- and cycleway parts have nothing in common, removes the surface tag */
+fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
+    val footwaySurface = tags["footway:surface"]
+    val cyclewaySurface = tags["cycleway:surface"]
+    if (cyclewaySurface != null && footwaySurface != null) {
+        val commonSurface = getCommonSurface(footwaySurface, cyclewaySurface)
+        if (commonSurface != null) {
+            SurfaceAndNote(createSurface(commonSurface), tags["surface:note"]).applyTo(tags)
+        } else {
+            tags.remove("surface")
+            tags.remove("surface:note")
+            getKeysAssociatedWithSurface().forEach { tags.remove(it) }
+        }
+    }
+}
+
+private fun getCommonSurface(vararg surface: String?): String?  = when {
+    surface.any { it == null } -> null
+    surface.all { it == surface.firstOrNull() } -> surface.firstOrNull()
+    surface.all { it in ANYTHING_PAVED } -> "paved"
+    surface.all { it in ANYTHING_UNPAVED } -> "unpaved"
+    else -> null
+}
+
+fun getKeysAssociatedWithSurface(prefix: String = ""): Set<String> =
     setOf(
         "${prefix}surface:grade",
+        "${prefix}surface:colour",
+        "source:${prefix}surface",
         "${prefix}smoothness",
         "${prefix}smoothness:date",
-        "${prefix}smoothness",
-        "${prefix}surface:colour",
-        "source:${prefix}surface") +
-    getLastCheckDateKeys("${prefix}surface") +
-    getLastCheckDateKeys("${prefix}smoothness")
-
-class ParsedCyclewayFootwaySurfacesWithNote(val main: ParsedSurfaceAndNote, val cycleway: ParsedSurfaceAndNote, val footway: ParsedSurfaceAndNote)
-
-fun createSurfaceStatus(tags: Map<String, String>): ParsedCyclewayFootwaySurfacesWithNote {
-    val surfaceNote = tags["surface:note"]
-    val surface = parseSingleSurfaceTag(tags["surface"], surfaceNote)
-    val cyclewaySurfaceNote = tags["cycleway:surface:note"]
-    val cyclewaySurface = parseSingleSurfaceTag(tags["cycleway:surface"], cyclewaySurfaceNote)
-    val footwaySurfaceNote = tags["footway:surface:note"]
-    val footwaySurface = parseSingleSurfaceTag(tags["footway:surface"], footwaySurfaceNote)
-    return ParsedCyclewayFootwaySurfacesWithNote(
-        ParsedSurfaceAndNote(surface, surfaceNote),
-        ParsedSurfaceAndNote(cyclewaySurface, cyclewaySurfaceNote),
-        ParsedSurfaceAndNote(footwaySurface, footwaySurfaceNote))
-}
-
-data class ParsedSurfaceAndNote(val value: Surface?, val note: String? = null)
-
-/*
-* to be used when only surface and surface:note tag is relevant
-* for example if we want to tag road surface and we are free to skip sidewalk surface info
-* */
-fun createMainSurfaceStatus(tags: Map<String, String>): ParsedSurfaceAndNote {
-    val surfaceNote = tags["surface:note"]
-    return ParsedSurfaceAndNote(parseSingleSurfaceTag(tags["surface"], surfaceNote), surfaceNote)
-}
-
-fun parseSingleSurfaceTag(surfaceTag: String?, surfaceNote: String?): Surface? {
-    if (surfaceTag == null) {
-        return null
-    }
-    // we are treating surface=paved and similar as not being specified at all
-    // to show user an empty space to fill missing data
-    // unless it has an associated note
-    val surface = surfaceTextValueToSurfaceEnum(surfaceTag)
-    return if (surface?.shouldBeDescribed == true && surfaceNote == null) {
-        null
-    } else {
-        surface
-    }
-}
-
-fun surfaceTextValueToSurfaceEnum(surfaceTag: String): Surface? {
-    if (surfaceTag in INVALID_SURFACES) {
-        return null
-    }
-    val foundSurface = Surface.values().find { it.osmValue == surfaceTag }
-
-    // PAVED_AREA and UNPAVED_AREA are more generic - and this can be also asked
-    // for objects which are not roads
-    return when (foundSurface) {
-        Surface.PAVED_ROAD -> Surface.PAVED_AREA
-        Surface.UNPAVED_ROAD -> Surface.UNPAVED_AREA
-        null -> {
-            if (";" in surfaceTag || "<" in surfaceTag) {
-                null
-            } else {
-                Surface.UNKNOWN_SURFACE
-            }
-        }
-        else -> foundSurface
-    }
-}
-
-fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
-    if (surfaceA == null || surfaceB == null) {
-        return null
-    }
-    if (surfaceA == surfaceB) {
-        return surfaceA
-    }
-    if (surfaceA in ANYTHING_PAVED && surfaceB in ANYTHING_PAVED) {
-        return "paved"
-    }
-    if (surfaceA in ANYTHING_UNPAVED && surfaceB in ANYTHING_UNPAVED) {
-        return "unpaved"
-    }
-    return null
-}
-
-fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
-    val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
-    return when (shared) {
-        "paved" -> Surface.PAVED_AREA
-        "unpaved" -> Surface.UNPAVED_AREA
-        "ground" -> Surface.GROUND_AREA
-        else -> Surface.values().firstOrNull { it.osmValue == shared }
-    }
-}
+        "source:${prefix}smoothness",
+    ) +
+        getLastCheckDateKeys("${prefix}surface") +
+        getLastCheckDateKeys("${prefix}smoothness")

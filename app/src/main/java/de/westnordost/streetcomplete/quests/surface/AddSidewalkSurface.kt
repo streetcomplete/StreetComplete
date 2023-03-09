@@ -51,7 +51,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
                 tags.removeCheckDatesForKey("sidewalk:smoothness")
             }
             is SidewalkSurface -> {
-                answer.surfaces.applyTo(tags)
+                answer.value.applyTo(tags)
             }
         }
     }

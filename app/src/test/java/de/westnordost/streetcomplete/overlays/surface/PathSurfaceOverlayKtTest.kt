@@ -38,14 +38,14 @@ class PathSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `ineligible for paths with tagged sidewalks`() {
+    fun `eligible for paths with tagged sidewalks`() {
         // popular tagging style in Netherlands - see http://overpass-turbo.eu/s/1oel
         val data = way(tags = mapOf(
             "highway" to "cycleway",
             "sidewalk" to "both",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(0, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
+        assertEquals(1, PathSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test

@@ -49,13 +49,10 @@ val Surface.titleResId: Int get() = when (this) {
     CLAY -> R.string.quest_surface_value_clay
     ARTIFICIAL_TURF -> R.string.quest_surface_value_artificial_turf
     TARTAN -> R.string.quest_surface_value_tartan
-    PAVED_ROAD -> R.string.quest_surface_value_paved
-    UNPAVED_ROAD -> R.string.quest_surface_value_unpaved
-    GROUND_ROAD -> R.string.quest_surface_value_ground
-    PAVED_AREA -> R.string.quest_surface_value_paved
-    UNPAVED_AREA -> R.string.quest_surface_value_unpaved
-    GROUND_AREA -> R.string.quest_surface_value_ground
-    UNKNOWN_SURFACE -> R.string.unknown_surface_title
+    PAVED -> R.string.quest_surface_value_paved
+    UNPAVED -> R.string.quest_surface_value_unpaved
+    GROUND -> R.string.quest_surface_value_ground
+    UNKNOWN -> R.string.unknown_surface_title
 }
 
 val Surface.iconResId: Int get() = when (this) {
@@ -82,11 +79,8 @@ val Surface.iconResId: Int get() = when (this) {
     CLAY -> R.drawable.surface_tennis_clay
     ARTIFICIAL_TURF -> R.drawable.surface_artificial_turf
     TARTAN -> R.drawable.surface_tartan
-    PAVED_ROAD -> R.drawable.path_surface_paved
-    UNPAVED_ROAD -> R.drawable.path_surface_unpaved
-    GROUND_ROAD -> R.drawable.surface_ground
-    PAVED_AREA -> R.drawable.surface_paved_area
-    UNPAVED_AREA -> R.drawable.surface_unpaved_area
-    GROUND_AREA -> R.drawable.surface_ground_area
-    UNKNOWN_SURFACE -> R.drawable.space_128dp
+    PAVED -> R.drawable.surface_paved_area
+    UNPAVED -> R.drawable.surface_unpaved_area
+    GROUND -> R.drawable.surface_ground_area
+    UNKNOWN -> R.drawable.space_128dp
 }

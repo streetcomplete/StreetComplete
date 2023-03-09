@@ -6,25 +6,27 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
+import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAnswer>() {
 
     private var leftNote: String? = null
     private var rightNote: String? = null
+
+    private val items: List<DisplayItem<Surface>> = SELECTABLE_WAY_SURFACES.toItems()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
@@ -58,9 +60,6 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     }
 
     override fun onClickSide(isRight: Boolean) {
-        val items = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
-            .map { it.asItem() }
-
         ImageListPickerDialog(requireContext(), items, R.layout.cell_labeled_icon_select, 2) { item ->
             val surface = item.value!!
             if (surface.shouldBeDescribed) {
@@ -96,9 +95,9 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
         if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
             streetSideSelect.saveLastSelection()
         }
-        applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurfaceAnswer(
-            left?.let { SurfaceAnswer(it, leftNote) },
-            right?.let { SurfaceAnswer(it, rightNote) }
+        applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurface(
+            left?.let { SurfaceAndNote(it, leftNote) },
+            right?.let { SurfaceAndNote(it, rightNote) }
         )))
     }
 

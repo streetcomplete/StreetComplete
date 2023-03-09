@@ -27,9 +27,7 @@ import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 import java.util.concurrent.FutureTask
 

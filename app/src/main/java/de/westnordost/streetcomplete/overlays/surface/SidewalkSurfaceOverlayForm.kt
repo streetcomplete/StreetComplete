@@ -8,41 +8,47 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightParsedSidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
 import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk_surface.createSidewalkSurface
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
-import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
 
-    private var originalSidewalkSurface: LeftAndRightParsedSidewalkSurface? = null
+    private var originalSidewalkSurface: LeftAndRightSidewalkSurface? = null
     private var leftNote: String? = null
     private var rightNote: String? = null
 
+    private val items: List<DisplayItem<Surface>> = SELECTABLE_WAY_SURFACES.toItems()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        originalSidewalkSurface = createSidewalkSurface(element!!.tags)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        originalSidewalkSurface = createSidewalkSurface(element!!.tags)
-        if (savedInstanceState == null) {
+        if (savedInstanceState != null) {
+            onLoadInstanceState(savedInstanceState)
+        } else {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        val sides = createSidewalkSides(element!!.tags)
-        val hasLeft = sides?.left == Sidewalk.YES
-        val hasRight = sides?.right == Sidewalk.YES
+        val sidewalk = createSidewalkSides(element!!.tags)
+        val hasLeft = sidewalk?.left == Sidewalk.YES
+        val hasRight = sidewalk?.right == Sidewalk.YES
 
         streetSideSelect.showSides = when {
             hasLeft && hasRight -> Sides.BOTH
@@ -51,20 +57,13 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             else -> return
         }
         // actually init surface....
-        originalSidewalkSurface?.left?.value?.let {
-            streetSideSelect.replacePuzzleSide(it.asStreetSideItem(resources), false)
-        }
-        originalSidewalkSurface?.right?.value?.let {
-            streetSideSelect.replacePuzzleSide(it.asStreetSideItem(resources), true)
-        }
+        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.left?.value?.asStreetSideItem(resources), false)
+        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.right?.value?.asStreetSideItem(resources), true)
         leftNote = originalSidewalkSurface?.left?.note
         rightNote = originalSidewalkSurface?.right?.note
     }
 
     override fun onClickSide(isRight: Boolean) {
-        val items = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
-            .map { it.asItem() }
-
         ImageListPickerDialog(requireContext(), items, R.layout.cell_labeled_icon_select, 2) { item ->
             val surface = item.value!!
             if (surface.shouldBeDescribed) {
@@ -99,6 +98,13 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
 
     /* ------------------------------------- apply changes  ------------------------------------- */
 
+    override fun isFormComplete(): Boolean {
+        val left = streetSideSelect.left?.value
+        val right = streetSideSelect.left?.value
+        return left != null && (!left.shouldBeDescribed || leftNote != null) &&
+               right != null && (!right.shouldBeDescribed || rightNote != null)
+    }
+
     override fun hasChanges(): Boolean =
         streetSideSelect.left?.value != originalSidewalkSurface?.left?.value ||
         streetSideSelect.right?.value != originalSidewalkSurface?.right?.value ||
@@ -108,22 +114,24 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
     override fun onClickOk() {
         val left = streetSideSelect.left?.value
         val right = streetSideSelect.right?.value
+        // only save last selection if it is a value that does not need to be described with a note
         if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
             streetSideSelect.saveLastSelection()
         }
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        LeftAndRightParsedSidewalkSurface(
-            left?.let { ParsedSurfaceAndNote(it, leftNote) },
-            right?.let { ParsedSurfaceAndNote(it, rightNote) }
+        LeftAndRightSidewalkSurface(
+            left?.let { SurfaceAndNote(it, leftNote) },
+            right?.let { SurfaceAndNote(it, rightNote) }
         ).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     /* ------------------------------------- instance state ------------------------------------- */
 
-    fun onLoadInstanceState(savedInstanceState: Bundle) {
+    private fun onLoadInstanceState(savedInstanceState: Bundle) {
         leftNote = savedInstanceState.getString(LEFT_NOTE, null)
         rightNote = savedInstanceState.getString(RIGHT_NOTE, null)
+        // street side select puzzle is initialized in superclass
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

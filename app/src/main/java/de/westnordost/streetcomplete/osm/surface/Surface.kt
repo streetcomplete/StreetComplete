@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.osm.surface
 
-import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.surface.Surface.*
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
+
+data class SurfaceAndNote(val value: Surface?, val note: String? = null)
 
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
@@ -30,135 +28,50 @@ enum class Surface(val osmValue: String?) {
     CLAY("clay"),
     ARTIFICIAL_TURF("artificial_turf"),
     TARTAN("tartan"),
-    PAVED_ROAD("paved"),
-    UNPAVED_ROAD("unpaved"),
-    GROUND_ROAD("ground"),
-    PAVED_AREA("paved"),
-    UNPAVED_AREA("unpaved"),
-    GROUND_AREA("ground"),
+    // generic surfaces
+    PAVED("paved"),
+    UNPAVED("unpaved"),
+    GROUND("ground"),
 
-    // extra values, handled as synonyms
+    // extra values, handled as synonyms (not selectable)
     EARTH("earth"), // synonym of "dirt"
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
-    METAL_GRID("metal_grid"), // not exactly the same info, but better to show it
+    METAL_GRID("metal_grid"), // not exactly the same info as metal
     // this way than without info
 
     // these values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them as synonyms
     SOIL("soil"), // synonym of earth and dirt
-    PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
-    COBBLESTONE_FLATTENED("cobblestone:flattened"),
+    PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"), // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dpaving_stones%3A30
+    COBBLESTONE_FLATTENED("cobblestone:flattened"), // =sett with good smoothness
     BRICK("brick"),
     BRICKS("bricks"),
 
     // various possibly valid surfaces not supported as duplicates
-    UNKNOWN_SURFACE(null),
+    UNKNOWN(null),
 }
 
-val COMMON_SPECIFIC_PAVED_SURFACES = listOf(
-    ASPHALT, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
-    PAVING_STONES, SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-    WOOD, METAL
-)
-
-val COMMON_SPECIFIC_UNPAVED_SURFACES = listOf(
-    COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS
-)
-
-val GROUND_SURFACES = listOf(
-    DIRT, MUD, GRASS, SAND, ROCK
-)
-
-val PITCH_SURFACES = listOf(
+val SELECTABLE_PITCH_SURFACES = listOf(
     GRASS, ASPHALT, SAND, CONCRETE,
     CLAY, ARTIFICIAL_TURF, TARTAN, DIRT,
     FINE_GRAVEL, PAVING_STONES, COMPACTED,
     SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
     WOOD, METAL, GRAVEL, PEBBLES,
-    ROCK, PAVED_AREA, UNPAVED_AREA, GROUND_AREA
+    ROCK, PAVED, UNPAVED, GROUND
 )
 
-val GENERIC_ROAD_SURFACES = listOf(
-    PAVED_ROAD, UNPAVED_ROAD, GROUND_ROAD
+val SELECTABLE_WAY_SURFACES = listOf(
+    // paved surfaces
+    ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
+    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL,
+    // unpaved surfaces
+    COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS,
+    // ground surfaces
+    DIRT, MUD, GRASS, SAND, ROCK,
+    // generic surfaces
+    PAVED, UNPAVED, GROUND
 )
 
-val GENERIC_AREA_SURFACES = listOf(
-    PAVED_AREA, UNPAVED_AREA, GROUND_AREA
-)
-
-val UNDERSPECIFED_SURFACES = GENERIC_ROAD_SURFACES + GENERIC_AREA_SURFACES + null - GROUND_ROAD - GROUND_AREA
+private val UNDERSPECIFED_SURFACES = setOf(PAVED, UNPAVED).toSet()
 
 val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
-
-val Surface.unknownSurface: Boolean get() = this == UNKNOWN_SURFACE
-
-fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true, note: String? = null) {
-    val pre = if (prefix != null) "$prefix:" else ""
-    val key = "${pre}surface"
-    val osmValue = osmValue
-    if (osmValue == null) {
-        throw IllegalArgumentException("callers of applyTo are obligated to provide only taggable data")
-    }
-    val previousOsmValue = tags[key]
-
-    var replacesTracktype = false
-    if (prefix == null) {
-        replacesTracktype = tags.containsKey("tracktype")
-            && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
-
-        if (replacesTracktype) {
-            tags.remove("tracktype")
-            tags.removeCheckDatesForKey("tracktype")
-        }
-    }
-
-    // remove smoothness (etc) tags if surface was changed
-    // or surface can be treated as outdated
-    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
-        for (target in keysToBeRemovedOnSurfaceChange(pre)) {
-            tags.remove(target)
-        }
-    }
-
-    // update surface + check date
-    if (updateCheckDate) {
-        tags.updateWithCheckDate(key, osmValue)
-    } else {
-        tags[key] = osmValue
-    }
-
-    // add/remove note - used to describe generic surfaces
-    if (note != null) {
-        tags["$key:note"] = note
-    } else {
-        tags.remove("$key:note")
-    }
-
-    // clean up old source tags - source should be in changeset tags
-    tags.remove("source:$key")
-}
-
-fun Surface.updateSegregatedFootAndCycleway(tags: Tags) {
-    val footwaySurface = tags["footway:surface"]
-    val cyclewaySurface = tags["cycleway:surface"]
-    if (cyclewaySurface != null && footwaySurface != null) {
-        val commonSurface = commonSurfaceObject(footwaySurface, cyclewaySurface)
-        if (commonSurface != null) {
-            commonSurface.applyTo(tags)
-        } else {
-            removeSurface(tags)
-        }
-    }
-}
-
-private fun removeSurface(tags: Tags) {
-    tags.remove("surface")
-    tags.remove("surface:note")
-    tags.remove("source:surface")
-    tags.removeCheckDatesForKey("surface")
-    tags.remove("surface:grade")
-    tags.remove("smoothness")
-    tags.remove("smoothness:date")
-    tags.remove("source:smoothness")
-    tags.removeCheckDatesForKey("smoothness")
-}

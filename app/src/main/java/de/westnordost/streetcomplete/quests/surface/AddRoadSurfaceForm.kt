@@ -2,66 +2,40 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_PAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.osm.surface.GROUND_SURFACES
+import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeMismatching
-import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeConflicting
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
-    override val items get() =
-        (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
+    override val items get() = SELECTABLE_WAY_SURFACES.toItems()
 
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val surface = selectedItems.single()
         confirmPotentialTracktypeMismatch(surface) {
-            collectSurfaceDescription(surface) { description ->
-                applyAnswer(SurfaceAnswer(surface, description))
+            collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
+                applyAnswer(SurfaceAndNote(surface, description))
             }
         }
     }
 
-    private fun confirmPotentialTracktypeMismatch(
-        surface: Surface,
-        onTracktypeConfirmed: () -> Unit
-    ) {
+    private fun confirmPotentialTracktypeMismatch(surface: Surface, onConfirmed: () -> Unit) {
         val tracktype = element.tags["tracktype"]
-        if (tracktype == null) {
-            onTracktypeConfirmed()
-        } else if (isSurfaceAndTracktypeMismatching(surface.osmValue!!, tracktype)) {
+        if (isSurfaceAndTracktypeConflicting(surface.osmValue!!, tracktype)) {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    onTracktypeConfirmed()
+                    onConfirmed()
                 }
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         } else {
-            onTracktypeConfirmed()
-        }
-    }
-
-    private fun collectSurfaceDescription(
-        surface: Surface,
-        onSurfaceDescribed: (description: String?) -> Unit
-    ) {
-        if (!surface.shouldBeDescribed) {
-            onSurfaceDescribed(null)
-        } else {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    DescribeGenericSurfaceDialog(requireContext(), onSurfaceDescribed).show()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
+            onConfirmed()
         }
     }
 }

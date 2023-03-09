@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
-import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.overlays.Color
 
 /*
@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.overlays.Color
  * - ideally, sand would have colour close to yellow and grass colour close to green caused
  *   by extremely strong association between surface and colour
  */
-val Surface?.color get() = when (this) {
+val Surface.color get() = when (this) {
     ASPHALT, CHIPSEAL, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
                        -> Color.BLUE
     WOOD, METAL, METAL_GRID
@@ -49,43 +49,34 @@ val Surface?.color get() = when (this) {
                        -> Color.TEAL
     SAND               -> Color.ORANGE
     GRASS              -> Color.LIME
-    DIRT, SOIL, EARTH, MUD, GROUND_ROAD, GROUND_AREA, WOODCHIPS
+    DIRT, SOIL, EARTH, MUD, GROUND, WOODCHIPS
                        -> Color.GOLD
     GRAVEL, PEBBLES, ROCK
                        -> Color.GRAY
     CLAY, ARTIFICIAL_TURF, TARTAN
                        -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
-    PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null
-                       -> Color.DATA_REQUESTED
-    UNKNOWN_SURFACE    -> Color.BLACK
+    UNKNOWN, PAVED, UNPAVED
+                       -> Color.BLACK
 }
 
-fun ParsedSurfaceAndNote.getColor(element: Element): String {
-    if (element.tags["highway"] in listOf("motorway", "motorway_link")) {
-        // assume motorways to be well paved (ASPHALT or CONCRETE)
-        // in tests equality of color of ASPHALT and CONCRETE is checked
-        // (to find relevant test search for motorway or motorway_link)
-        // allowing us to do this
-        return ASPHALT.color
-    }
-    // not set but indoor or private -> do not highlight as missing
-    val isNotSet = value in UNDERSPECIFED_SURFACES
-    val isNotSetButThatIsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element))
-    if (isNotSetButThatIsOkay) {
-        return Color.INVISIBLE
-    }
-    return when (value) {
-        is Surface -> {
-            if (note != null) {
-                Color.BLACK
-            } else {
-                value.color
-            }
-        }
-        null -> {
+fun SurfaceAndNote?.getColor(element: Element): String =
+    if (this?.value == null || value.shouldBeDescribed && note == null) {
+        // not set but indoor, private or just a "virtual" link -> do not highlight as missing
+        if (isIndoor(element.tags) || isPrivateOnFoot(element) || isLink(element.tags)) {
+            Color.INVISIBLE
+        } else {
             Color.DATA_REQUESTED
         }
+    } else {
+        value.color
     }
-}
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
+
+private fun isLink(tags: Map<String, String>): Boolean =
+    listOfNotNull(
+        tags["path"],
+        tags["footway"],
+        tags["cycleway"],
+        tags["bridleway"]
+    ).none { it == "link" }

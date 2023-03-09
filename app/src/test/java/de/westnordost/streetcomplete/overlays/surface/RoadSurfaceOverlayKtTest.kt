@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.surface
 
-import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.ParsedSurfaceAndNote
+import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
@@ -32,7 +31,7 @@ class RoadSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `adding surface note to unspecified surface changes line colour`() {
+    fun `adding surface note to unspecified surface changes line color`() {
         val withNoteData = way(tags = mapOf(
             "highway" to "track",
             "surface" to "paved",
@@ -54,13 +53,13 @@ class RoadSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `way with surface note without surface tag is ineligible`() {
+    fun `way with surface note without surface tag is eligible`() {
         val data = way(tags = mapOf(
             "highway" to "tertiary",
             "surface:note" to "explanation for missing surface tag",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(0, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
+        assertEquals(1, RoadSurfaceOverlay().getStyledElements(mapData).toList().size)
     }
 
     @Test
@@ -96,20 +95,12 @@ class RoadSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `surfaces for motorways are assumed to be well paved`() {
-        val motorway = way(tags = mapOf(
-            "highway" to "motorway",
-        ))
-        assertEquals(Surface.ASPHALT.color, ParsedSurfaceAndNote(null).getColor(motorway))
-        assertEquals(Surface.CONCRETE.color, ParsedSurfaceAndNote(null).getColor(motorway))
-    }
-
-    @Test
-    fun `surfaces for motorways links are assumed to be well paved`() {
-        val motorwayLink = way(tags = mapOf(
-            "highway" to "motorway_link",
-        ))
-        assertEquals(Surface.ASPHALT.color, ParsedSurfaceAndNote(null).getColor(motorwayLink))
-        assertEquals(Surface.CONCRETE.color, ParsedSurfaceAndNote(null).getColor(motorwayLink))
+    fun `missing surfaces for motorways are not highlighted`() {
+        val motorway = way(1, tags = mapOf("highway" to "motorway",))
+        val motorwayLink = way(2, tags = mapOf("highway" to "motorway_link",))
+        val mapData = TestMapDataWithGeometry(listOf(motorway, motorwayLink))
+        for ((_, style) in RoadSurfaceOverlay().getStyledElements(mapData)) {
+            assertEquals(Color.INVISIBLE, (style as PolylineStyle).stroke?.color)
+        }
     }
 }
