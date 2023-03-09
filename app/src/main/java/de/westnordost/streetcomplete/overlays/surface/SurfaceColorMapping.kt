@@ -74,9 +74,7 @@ fun SurfaceAndNote?.getColor(element: Element): String =
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
 
 private fun isLink(tags: Map<String, String>): Boolean =
-    listOfNotNull(
-        tags["path"],
-        tags["footway"],
-        tags["cycleway"],
-        tags["bridleway"]
-    ).any { it == "link" }
+    tags["path"] == "link"
+    || tags["footway"] == "link"
+    || tags["cycleway"] == "link"
+    || tags["bridleway"] == "link"

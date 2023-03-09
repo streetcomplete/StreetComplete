@@ -41,11 +41,11 @@ class PathSurfaceOverlay : Overlay {
     )
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
-        mapData.filter( """
+        mapData.filter("""
             ways, relations with
                 highway ~ ${(ALL_PATHS).joinToString("|")}
                 or area != yes and (sidewalk ~ left|right|both or sidewalk:both = yes or sidewalk:left = yes or sidewalk:right = yes)
-            """).map { it to getStyle(it) }
+        """).map { it to getStyle(it) }
 
     /* cycleways with any sidewalk tagged on the way are common tagging for road-like cycleways in
        Netherlands, when tapping on these, we want to be able to specify the sidewalk surface.

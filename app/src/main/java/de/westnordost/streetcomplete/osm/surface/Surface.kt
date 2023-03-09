@@ -28,6 +28,7 @@ enum class Surface(val osmValue: String?) {
     CLAY("clay"),
     ARTIFICIAL_TURF("artificial_turf"),
     TARTAN("tartan"),
+
     // generic surfaces
     PAVED("paved"),
     UNPAVED("unpaved"),
@@ -36,8 +37,7 @@ enum class Surface(val osmValue: String?) {
     // extra values, handled as synonyms (not selectable)
     EARTH("earth"), // synonym of "dirt"
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
-    METAL_GRID("metal_grid"), // not exactly the same info as metal
-    // this way than without info
+    METAL_GRID("metal_grid"), // more specific than "metal"
 
     // these values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them as synonyms
