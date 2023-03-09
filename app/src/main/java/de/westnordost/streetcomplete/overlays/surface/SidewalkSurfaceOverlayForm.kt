@@ -57,8 +57,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             else -> return
         }
         // actually init surface....
-        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.left?.value?.asStreetSideItem(resources), false)
-        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.right?.value?.asStreetSideItem(resources), true)
+        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.left?.surface?.asStreetSideItem(resources), false)
+        streetSideSelect.setPuzzleSide(originalSidewalkSurface?.right?.surface?.asStreetSideItem(resources), true)
         leftNote = originalSidewalkSurface?.left?.note
         rightNote = originalSidewalkSurface?.right?.note
     }
@@ -106,8 +106,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != originalSidewalkSurface?.left?.value ||
-        streetSideSelect.right?.value != originalSidewalkSurface?.right?.value ||
+        streetSideSelect.left?.value != originalSidewalkSurface?.left?.surface ||
+        streetSideSelect.right?.value != originalSidewalkSurface?.right?.surface ||
         leftNote != originalSidewalkSurface?.left?.note ||
         rightNote != originalSidewalkSurface?.right?.note
 

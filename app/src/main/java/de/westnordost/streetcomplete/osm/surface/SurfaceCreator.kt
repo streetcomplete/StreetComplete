@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
  *  By default the check date is also updated if the surface did not change, specified
  *  [updateCheckDate] = false if this should not be done. */
 fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean = true) {
-    val osmValue = value?.osmValue
+    val osmValue = surface?.osmValue
     requireNotNull(osmValue) { "Surface must be valid and not null" }
 
     val pre = if (prefix != null) "$prefix:" else ""

@@ -60,7 +60,7 @@ val Surface.color get() = when (this) {
 }
 
 fun SurfaceAndNote?.getColor(element: Element): String =
-    if (this?.value == null || value.shouldBeDescribed && note == null) {
+    if (this?.surface == null || surface.shouldBeDescribed && note == null) {
         // not set but indoor, private or just a "virtual" link -> do not highlight as missing
         if (isIndoor(element.tags) || isPrivateOnFoot(element) || isLink(element.tags)) {
             Color.INVISIBLE
@@ -68,7 +68,7 @@ fun SurfaceAndNote?.getColor(element: Element): String =
             Color.DATA_REQUESTED
         }
     } else {
-        value.color
+        surface.color
     }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

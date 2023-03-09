@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 
-data class SurfaceAndNote(val value: Surface?, val note: String? = null)
+data class SurfaceAndNote(val surface: Surface?, val note: String? = null)
 
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
@@ -75,3 +75,6 @@ val SELECTABLE_WAY_SURFACES = listOf(
 private val UNDERSPECIFED_SURFACES = setOf(PAVED, UNPAVED).toSet()
 
 val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
+
+val SurfaceAndNote.isComplete: Boolean get() =
+    surface != null && (!surface.shouldBeDescribed || note != null)
