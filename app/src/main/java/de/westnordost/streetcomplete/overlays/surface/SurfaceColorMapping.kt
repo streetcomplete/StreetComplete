@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.osm.surface.isComplete
 import de.westnordost.streetcomplete.overlays.Color
 
 /*
@@ -60,7 +60,7 @@ val Surface.color get() = when (this) {
 }
 
 fun SurfaceAndNote?.getColor(element: Element): String =
-    if (this?.surface == null || surface.shouldBeDescribed && note == null) {
+    if (this?.isComplete != true) {
         // not set but indoor, private or just a "virtual" link -> do not highlight as missing
         if (isIndoor(element.tags) || isPrivateOnFoot(element) || isLink(element.tags)) {
             Color.INVISIBLE
@@ -68,7 +68,7 @@ fun SurfaceAndNote?.getColor(element: Element): String =
             Color.DATA_REQUESTED
         }
     } else {
-        surface.color
+        surface!!.color
     }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
@@ -79,4 +79,4 @@ private fun isLink(tags: Map<String, String>): Boolean =
         tags["footway"],
         tags["cycleway"],
         tags["bridleway"]
-    ).none { it == "link" }
+    ).any { it == "link" }

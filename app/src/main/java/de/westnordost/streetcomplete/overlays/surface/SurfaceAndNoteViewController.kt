@@ -54,8 +54,8 @@ class SurfaceAndNoteViewController(
 
         selectButton.setOnClickListener {
             collectSurfaceData { surface: Surface, note: String? ->
-                selectedSurfaceItem = surface.asItem()
                 noteInput.setText(note)
+                selectedSurfaceItem = surface.asItem()
                 onInputChanged?.invoke()
             }
         }

@@ -9,7 +9,6 @@
     android:weightSum="2"
     android:divider="@drawable/space_16dp"
     android:showDividers="middle|beginning|end"
-    android:gravity="center_vertical"
     android:orientation="horizontal">
 
     <include
