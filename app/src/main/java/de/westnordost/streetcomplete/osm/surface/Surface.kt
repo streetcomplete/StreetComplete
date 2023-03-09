@@ -72,7 +72,7 @@ val SELECTABLE_WAY_SURFACES = listOf(
     PAVED, UNPAVED, GROUND
 )
 
-private val UNDERSPECIFED_SURFACES = setOf(PAVED, UNPAVED).toSet()
+private val UNDERSPECIFED_SURFACES = setOf(PAVED, UNPAVED)
 
 val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
 
