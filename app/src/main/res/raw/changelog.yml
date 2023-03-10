@@ -5,6 +5,7 @@ v52.0-beta1: |
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
+  <li>Addresses: Allow specifying block numbers (#4718, #4850), by @Helium314</li>
   <li>Fix block number input in Japan, by @Helium314</li>
   <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
   <li>Address overlay: You can now add addresses to entrances (#4823)</li>
