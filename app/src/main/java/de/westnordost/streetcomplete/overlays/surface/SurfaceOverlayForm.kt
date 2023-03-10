@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.databinding.FragmentOverlayPathSurfaceSelectBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
@@ -22,9 +22,9 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.getFeatureName
 
-class PathSurfaceOverlayForm : AbstractOverlayForm() {
-    override val contentLayoutResId = R.layout.fragment_overlay_path_surface_select
-    private val binding by contentViewBinding(FragmentOverlayPathSurfaceSelectBinding::bind)
+class SurfaceOverlayForm : AbstractOverlayForm() {
+    override val contentLayoutResId = R.layout.fragment_overlay_surface_select
+    private val binding by contentViewBinding(FragmentOverlaySurfaceSelectBinding::bind)
 
     private lateinit var surfaceCtrl: SurfaceAndNoteViewController
     private lateinit var cyclewaySurfaceCtrl: SurfaceAndNoteViewController
