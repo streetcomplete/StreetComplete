@@ -43,8 +43,8 @@ class AddressOverlay(
                 nodes with
                   addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
                   or entrance
-               """)
-           .map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags) ?: "◽") } + // or ▫
+            """)
+            .map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags) ?: "◽") } + // or ▫
         mapData
             .filter("ways, relations with building")
             .filter {
