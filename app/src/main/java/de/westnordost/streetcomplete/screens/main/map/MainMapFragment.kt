@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import com.google.gson.JsonArray
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.Image
 import com.mapbox.mapboxsdk.maps.MapView
@@ -17,6 +18,11 @@ import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.layers.CircleLayer
+import com.mapbox.mapboxsdk.style.layers.PropertyValue
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer
+import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -163,7 +169,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    -> check how we get the symbol from this, and what this resolver actually does
         //  adding a symbol
         //   create(json) -> create(FeatureCollection.fromJson(json)) -> just creates SymbolOptions
-        //   interestingly, symbol.build creates a json object... could do that in a simpler way i guess (json string -> features -> symbols -> JsonObject)
+        //   interestingly, symbolOptions.build creates a json object... could do that in a simpler way i guess (json string -> features -> symbols -> JsonObject)
         //   annotation is put in the annotation LongSparseArray, map is updated
         //  updateSource
         //   creates features.fromGeometry(annotation.geometry, annotation.feature) and sets properties (what a waste if we already could store features)
@@ -190,6 +196,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //     -> as above
         //   check if clustering helps: SymbolManager(mapView, mapboxMap, style, null, ClusterOptions().withClusterRadius(40))
         //    -> much faster, but still not close to displaying circles, and it displays a circle with number of icons which isn't really what we want
+        //   use only one SymbolLayer with a single icon as layer property
+        //    -> about as fast as a circleLayer, which would be acceptable (but all quests have the same icon here!)
+        //     how to set multiple icons? annotationManager also does it, but how actually?
+        //   use one layer per icon
+        //    -> much worse than normal
 
         // todo next
         //  add quest pins (and dots, but maybe later) using a customGeometrySource (or geoJsonSource?) and symbolLayer
@@ -211,6 +222,23 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
+
+        // using a geoJsonSource for quests, and one layer for pins and one for circles
+        //  actually if we would put the circle layer behind pins, and always visible it would already be close to default sc, right?
+        //  issue: how to set an icon per pin? this can be done in a single layer, judging from annotationmanager code
+        pinsSource = GeoJsonSource("pins-source", GeoJsonOptions().withBuffer(32))
+        style.addSource(pinsSource!!)
+        pinsLayer = SymbolLayer("pins-layer", "pins-source").withSourceLayer("pins-source")
+            .withProperties(PropertyValue("icon-image", "ic_quest_notes"), PropertyValue("icon-size", 0.3f),)
+        val a = JsonArray()
+        a.add("ic_quest_way_surface")
+        a.add("ic_quest_building")
+        pinsLayer!!.setProperties(PropertyValue("icon-image", a)) // this is not helping
+        pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
+        style.addLayer(pinsLayer!!)
+        val pinsLayer2 = CircleLayer("pins-layer2", "pins-source").withSourceLayer("pins-source")
+        pinsLayer2.setFilter(Expression.lt(Expression.zoom(), 14f))
+        style.addLayer(pinsLayer2)
 
         super.onMapReady(mapView, mapboxMap, style)
 
@@ -546,5 +574,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var geometryFillManager: FillManager? = null
         var geometryCircleManger: CircleManager? = null
         var style: Style? = null
+        var pinsSource: GeoJsonSource? = null
+        var pinsLayer: SymbolLayer? = null
     }
 }
