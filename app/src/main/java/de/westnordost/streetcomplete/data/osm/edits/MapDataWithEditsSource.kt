@@ -480,9 +480,11 @@ class MapDataWithEditsSource internal constructor(
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
+        l2.add(listener)
     }
     fun removeListener(listener: Listener) {
         listeners.remove(listener)
+        l2.remove(listener)
     }
 
     private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
@@ -495,6 +497,10 @@ class MapDataWithEditsSource internal constructor(
     }
     private fun callOnCleared() {
         listeners.forEach { it.onCleared() }
+    }
+
+    companion object {
+        val l2: MutableList<Listener> = CopyOnWriteArrayList()
     }
 }
 

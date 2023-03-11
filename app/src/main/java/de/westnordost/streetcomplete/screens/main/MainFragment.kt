@@ -14,6 +14,7 @@ import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
 import android.location.Location
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
@@ -120,6 +121,7 @@ import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
@@ -243,7 +245,7 @@ class MainFragment :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
+        Log.i("MainFragment", "onAttach")
         locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
@@ -255,8 +257,49 @@ class MainFragment :
         childFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("MainFragment", "onCreate")
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.i("MainFragment", "onCreateView")
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.i("MainFragment", "onViewStateRestored")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("MainFragment", "onPause")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i("MainFragment", "onSaveInstanceState")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.i("MainFragment", "onDestroyView")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MainFragment", "onDestroy")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.i("MainFragment", "onDetach")
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.i("MainFragment", "onViewCreated")
 
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
@@ -282,6 +325,7 @@ class MainFragment :
 
     override fun onResume() {
         super.onResume()
+        Log.i("MainFragment", "onResume")
         binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
             View.VISIBLE
         else
@@ -297,6 +341,7 @@ class MainFragment :
     @UiThread
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        Log.i("MainFragment", "onConfigurationChanged")
         val mapFragment = this.mapFragment ?: return
         /* when rotating the screen and the bottom sheet is open, the view
            should not rotate around its proper center but around the center
@@ -317,6 +362,7 @@ class MainFragment :
 
     override fun onStart() {
         super.onStart()
+        Log.i("MainFragment", "onStart (add listeners)")
         wasFollowingPosition = mapFragment?.isFollowingPosition // use value from mapFragment if already loaded
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
@@ -348,6 +394,7 @@ class MainFragment :
 
     override fun onStop() {
         super.onStop()
+        Log.i("MainFragment", "onStop (remove listeners)")
         wasFollowingPosition = mapFragment?.isFollowingPosition
         wasNavigationMode = mapFragment?.isNavigationMode
         visibleQuestsSource.removeListener(this)

@@ -7,6 +7,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import java.io.IOException
@@ -87,6 +88,8 @@ class CrashReportExceptionHandler(
         $stackTrace
 
         Last log before crash: ${Log.logLines.takeLast(100).joinToString("\n")}
+
+        MapDataWithEditsSource listeners: ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
         """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }
