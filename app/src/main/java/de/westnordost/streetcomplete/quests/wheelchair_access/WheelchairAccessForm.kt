@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.L
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
 
-open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
+open class WheelchairAccessForm : AbstractOsmQuestForm<WheelChairAccessAnswer>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },

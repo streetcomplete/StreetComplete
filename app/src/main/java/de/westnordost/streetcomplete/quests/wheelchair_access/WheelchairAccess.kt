@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-enum class WheelchairAccess(val osmValue: String) {
+sealed interface WheelChairAccessAnswer
+
+enum class WheelchairAccess(val osmValue: String) : WheelChairAccessAnswer {
     YES("yes"),
     LIMITED("limited"),
     NO("no"),
 }
+
+object NoToilet : WheelChairAccessAnswer
