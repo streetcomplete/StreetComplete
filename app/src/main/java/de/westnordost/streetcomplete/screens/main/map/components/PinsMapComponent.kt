@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import android.util.Log
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
@@ -32,7 +31,8 @@ class PinsMapComponent(ctrl: KtMapController) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
-        pinsLayer.setFeatures(pins.map { pin ->
+        // first create all features, then set tham (almost) at the same time, to visually compare which library is faster here
+        val tangramFeatures = pins.map { pin ->
             // avoid creation of intermediate HashMaps.
             val tangramProperties = listOf(
                 "type" to "point",
@@ -43,34 +43,28 @@ class PinsMapComponent(ctrl: KtMapController) {
             properties.putAll(tangramProperties)
             properties.putAll(pin.properties)
             Point(pin.position.toLngLat(), properties)
-        })
+        }
 
+        // todo: does it actually make sense to supply 2 quests for the same position?
+        //  probably not, because for the quest to disappear, a source update is necessary anyway
+        val mapLibreFeatures = FeatureCollection.fromFeatures(pins
+            // do sorting here, because we can set the symbolZOrder to SYMBOL_Z_ORDER_SOURCE, which
+            // is the order in which the source has the features
+            // this avoids the rather slow sorting using symbol-sort-key (and we need one less property)
+            // since there is no way to add/remove single quests from the source, this is (probably) a good way of sorting
+            .sortedBy { -it.importance }
+            .map {
+            val p = JsonObject()
+            p.addProperty("icon-image", it.iconName)
+//            p.addProperty("symbol-sort-key", it.importance.toFloat()) // toFloat necessary?
+            Feature.fromGeometry(com.mapbox.geojson.Point.fromLngLat(it.position.longitude, it.position.latitude), p)
+        })
         // todo: crash if not on UI thread
         //  for now the runOnUiThread is ok, but actually it should be handled differently...
         MainActivity.activity?.runOnUiThread {
 
             // using pinsSource (currently image per pin does not work)
-            MainMapFragment.pinsSource?.setGeoJson(FeatureCollection.fromFeatures(pins.map {
-                Feature.fromJson(
-                """
-                {
-                type: Feature,
-                geometry:{type=Point, coordinates=[${it.position.longitude}, ${it.position.latitude}]},
-                 properties={"symbol-sort-key":-${it.importance.toFloat()},
-                 "icon-size":0.3,
-                 "icon-image":"${it.iconName}",
-                 "id":0,
-                 "custom_data":{"quest_group":"osm","element_type":"WAY","element_id":"161885673","quest_type":"AddBuildingType"}
-                 },
-                  isDraggable=false}
-                """.trimIndent()
-//                 {geometry=Point{type=Point, bbox=null, coordinates=[${it.position.longitude}, ${it.position.latitude}]}, properties={"symbol-sort-key":-${it.importance.toFloat()},"icon-size":0.3,"icon-image":"${it.iconName}","icon-rotate":null,"icon-offset":null,"icon-anchor":null,"text-field":null,"text-font":null,"text-size":null,"text-max-width":null,"text-letter-spacing":null,"text-justify":null,"text-radial-offset":null,"text-anchor":null,"text-rotate":null,"text-transform":null,"text-offset":null,"icon-opacity":null,"icon-color":null,"icon-halo-color":null,"icon-halo-width":null,"icon-halo-blur":null,"text-opacity":null,"text-color":null,"text-halo-color":null,"text-halo-width":null,"text-halo-blur":null,"id":0,"custom_data":{"quest_group":"osm","element_type":"WAY","element_id":"161885673","quest_type":"AddBuildingType"}}, isDraggable=false}
-                )
-                val p = JsonObject()
-                p.addProperty("icon-image", it.iconName)
-                p.addProperty("icon-size", 0.3f)
-                Feature.fromGeometry(com.mapbox.geojson.Point.fromLngLat(it.position.longitude, it.position.latitude), p)
-            })) // todo: not shown on the map... what's wrong?
+            MainMapFragment.pinsSource?.setGeoJson(mapLibreFeatures)
                 //  probably some properties, because it's shown in a circleLayer
                 //  hmm... i can set the same properties for the layer, but not for a single feature -> ??
 
@@ -105,6 +99,7 @@ class PinsMapComponent(ctrl: KtMapController) {
                     .withCircleStrokeWidth(1f)
             })*/
         }
+        pinsLayer.setFeatures(tangramFeatures)
     }
 
     /** Clear pins */

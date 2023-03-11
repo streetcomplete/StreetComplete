@@ -19,6 +19,8 @@ import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.CircleLayer
+import com.mapbox.mapboxsdk.style.layers.Property
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.PropertyValue
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
@@ -229,16 +231,27 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         pinsSource = GeoJsonSource("pins-source", GeoJsonOptions().withBuffer(32))
         style.addSource(pinsSource!!)
         pinsLayer = SymbolLayer("pins-layer", "pins-source").withSourceLayer("pins-source")
-            .withProperties(PropertyValue("icon-image", "ic_quest_notes"), PropertyValue("icon-size", 0.3f),)
-        val a = JsonArray()
-        a.add("ic_quest_way_surface")
-        a.add("ic_quest_building")
-        pinsLayer!!.setProperties(PropertyValue("icon-image", a)) // this is not helping
+//            .withProperties(PropertyValue("icon-image", "ic_quest_notes"), PropertyValue("icon-size", 0.3f),)
+//            .withProperties(PropertyFactory.iconImage("{icon-image}")) // this does the trick! is {} necessary? yes!
+            .withProperties(PropertyValue("icon-image", "{icon-image}")) // works, any difference to using PropertyFactory?
+            .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE)) // maybe not 100% perfect, but best so far without performance loss (should be order as in source, so just need to provide sorted list)
+//            .withProperties(PropertyValue("symbol-sort-key", "{symbol-sort-key}")) // looks like this does nothing... why?
+//            .withProperties(PropertyFactory.iconImage(Expression.get("icon-image"))) // is this also slow? nope...
+//            .withProperties(PropertyFactory.symbolSortKey("{symbol-sort-key}")) // this is not working, as it expects a float...
+//            .withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually slow... maybe this is what's so bad when using symbolManager?
+                // with a single importance value per quest type (not per quest), performance is ok... though still clearly worse than without this order
+            // how to avoid sort key?
+            //  maybe the order of the featurecollection is sufficient?
+            //  try sorting the pins by importance, and not setting sort order
+            //  -> it works usually (and especially: sorts quest of a single element), but sometimes doesn't work (e.g. at low zoom the wrong quest remains)
+            //   maybe we can use clustering to avoid those issues at low zoom? there should be a way of setting a symbol instead of circle with text
+            .withProperties(PropertyValue("icon-size", 0.3f))
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
         val pinsLayer2 = CircleLayer("pins-layer2", "pins-source").withSourceLayer("pins-source")
-        pinsLayer2.setFilter(Expression.lt(Expression.zoom(), 14f))
-        style.addLayer(pinsLayer2)
+//        pinsLayer2.setFilter(Expression.lt(Expression.zoom(), 14f))
+//        style.addLayer(pinsLayer2)
+        style.addLayerBelow(pinsLayer2, "pins-layer") // always show dots, but only below symbols
 
         super.onMapReady(mapView, mapboxMap, style)
 
