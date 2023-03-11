@@ -13,7 +13,6 @@ class AddWheelchairAccessToiletsPartTest {
         val mapData = TestMapDataWithGeometry(listOf(
             node(tags = mapOf(
                 "shop" to "convenience",
-                "name" to "Some name",
                 "toilets" to "yes"
             ))
         ))
