@@ -48,7 +48,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelChairAccessAnswer
         when (answer) {
             is WheelchairAccess -> {
                 tags.updateWithCheckDate("toilets:wheelchair", answer.osmValue)
-                tags.updateWithCheckDate("toilets", "yes")
+                tags["toilets"] = "yes"
             }
             is NoToilet -> tags.updateWithCheckDate("toilets", "no")
         }
