@@ -56,12 +56,13 @@ This section is aimed for people trying to decide whether a bad edit done in SCE
 In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
 * `created_by` is set to `StreetComplete_ee <version>`
 * Quest type is given in `StreetComplete_ee:quest_type`
-* _AddBuildingType_ has more possible answers
-* _AddCrossingType_ may change `crossing_ref`, `crossing:markings` and `traffic_calming`
+* _AddBuildingType_ has additional answers `barn`, `sty`, `stable`, `cowshed`, `digester`, `presbytery`, `riding_hall`, `sports_hall`, and `transformer_tower`
+* _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * `check_date:*` may be added without resurvey
+* Wheelchair quests may add `wheelchair:description` and `wheelchair:description:<language>`
 * An element at at the same position as a note may be edited (this is blocked in normal SC)
 * Most quests may apply to an extended range of elements (user-defined)
 * Starting with SCEE 52.0, some answers create separate changesets with comment `Other edits in context of: <orignal quest changeset comment>`.
