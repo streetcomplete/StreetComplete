@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelChairAccessAnswer>() {
+class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -118,10 +118,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelChairAccessAnswer>()
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 
-    override fun applyAnswerTo(answer: WheelChairAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is WheelchairAccess -> tags["wheelchair"] = answer.osmValue
-            else -> throw IllegalStateException("Other wheelchair answer")
-        }
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["wheelchair"] = answer.osmValue
     }
 }

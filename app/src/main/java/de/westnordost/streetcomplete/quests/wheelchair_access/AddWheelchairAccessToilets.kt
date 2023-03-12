@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToilets : OsmFilterQuestType<WheelChairAccessAnswer>() {
+class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
 
     override val elementFilter = """
         nodes, ways with amenity = toilets
@@ -28,10 +28,13 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelChairAccessAnswer>() 
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: WheelChairAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is WheelchairAccess -> tags.updateWithCheckDate("wheelchair", answer.osmValue)
-            else -> throw IllegalStateException("Other wheelchair answer")
+            is WheelchairAccessToilets -> {
+                tags.updateWithCheckDate("wheelchair", answer.access.osmValue)
+                tags["toilets"] = "yes"
+            }
+            is NoToilet -> tags.updateWithCheckDate("toilets", "no")
         }
     }
 }
