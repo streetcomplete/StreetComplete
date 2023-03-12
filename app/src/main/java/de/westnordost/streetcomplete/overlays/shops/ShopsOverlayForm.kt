@@ -100,9 +100,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
-
-        // Only show current type if it is a shop, otherwise treat it as if it was a new shop for the selection form
-        featureCtrl.feature = originalFeature?.takeIf { filterOnlyShops(it)}
+        featureCtrl.feature = originalFeature
 
         binding.featureView.setOnClickListener {
             SearchFeaturesDialog(
@@ -292,8 +290,7 @@ private suspend fun createEditAction(
         tagChanges.replaceShop(newFeature.addTags)
     } else {
         for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-            // don't remove building tags when adding a shop to a building
-            if (key != "building") tagChanges.remove(key)
+            tagChanges.remove(key)
         }
         for ((key, value) in newFeature.addTags) {
             tagChanges[key] = value
