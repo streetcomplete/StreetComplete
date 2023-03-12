@@ -245,11 +245,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //            .withProperties(PropertyValue("icon-image", "ic_quest_notes"), PropertyValue("icon-size", 0.3f),)
 //            .withProperties(PropertyFactory.iconImage("{icon-image}")) // this does the trick! is {} necessary? yes!
             .withProperties(PropertyValue("icon-image", "{icon-image}")) // works, any difference to using PropertyFactory?
-            .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE)) // maybe not 100% perfect, but best so far without performance loss (should be order as in source, so just need to provide sorted list)
+            .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE))
+            // maybe not 100% perfect, but best so far without performance loss (should be order as in source, so just need to provide sorted list)
+            // is sorting really worse than using symbol-sort-key? for one element it's definitely fine,
+            //  and currently can't find issues where it would be wrong for nearby elements -> keep it for npw, and switch to symbol-sort-key" if necessary
 //            .withProperties(PropertyValue("symbol-sort-key", "{symbol-sort-key}")) // looks like this does nothing... why?
 //            .withProperties(PropertyFactory.symbolSortKey("{symbol-sort-key}")) // this is not working, as it expects a float...
-//            .withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually slow... maybe this is what's so bad when using symbolManager?
-                // with a single importance value per quest type (not per quest), performance is ok... though still clearly worse than without this order
+//            .withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually somewhat slow...
+                // with a single importance value per quest type (not per quest), performance is ok... though still somewhat worse than without this order
             // how to avoid sort key?
             //  maybe the order of the featurecollection is sufficient?
             //  try sorting the pins by importance, and not setting sort order
@@ -290,6 +293,36 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapReady(mapView, mapboxMap, style)
 
         mapboxMap.addOnMapClickListener { pos ->
+
+            // check whether we clicked a feature
+            val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
+            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer")
+            if (features.isNotEmpty()) { // yes, there is a feature
+                // is the first feature always the correct one?
+                // maybe need to check order in maplibre sources, but in a quick test it always was the one rendered on top
+                viewLifecycleScope.launch {
+                    when (pinMode) {
+                        PinMode.QUESTS -> {
+                            val questKey = features.firstOrNull()?.properties()?.toQuestKey()
+                            if (questKey != null) {
+                                listener?.onClickedQuest(questKey)
+                                return@launch
+                            }
+                        }
+                        PinMode.EDITS -> {
+                            val editKey = features.firstOrNull()?.properties()?.toEditKey()
+                            if (editKey != null) {
+                                listener?.onClickedEdit(editKey)
+                                return@launch
+                            }
+                        }
+                        PinMode.NONE -> {}
+                    }
+                }
+                return@addOnMapClickListener true
+            }
+
+            // just click the map
             listener?.onClickedMapAt(LatLon(pos.latitude, pos.longitude), 1.0)
             false
         }
@@ -302,7 +335,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         MainMapFragment.mapView = mapView
         MainMapFragment.mapboxMap = mapboxMap
         MainMapFragment.style = style
-        pinSymbolManager = SymbolManager(mapView, mapboxMap, style)
+//        pinSymbolManager = SymbolManager(mapView, mapboxMap, style)
         pinSymbolManager?.addClickListener { symbol ->
             viewLifecycleScope.launch {
                 when (pinMode) {
@@ -325,14 +358,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             }
             return@addClickListener true
         }
-        pinSymbolManager?.setFilter(Expression.gte(Expression.zoom(), 14f)) // hide quests at low zoom
+//        pinSymbolManager?.setFilter(Expression.gte(Expression.zoom(), 14f)) // hide quests at low zoom
         // todo: 2 separate managers mean that we have to load the data twice
         //  is there a way of providing data only once?
         //  maybe Style.layers can be used here?
-        pinDotManager = CircleManager(mapView, mapboxMap, style)
+//        pinDotManager = CircleManager(mapView, mapboxMap, style)
         // hmm... this looks ugly. icons would be possible, and a filter depending on icon name
         // actually this is only useful if there is a separate collide/no collide thing
-        pinDotManager?.setFilter(Expression.lt(Expression.zoom(), 14f))
+//        pinDotManager?.setFilter(Expression.lt(Expression.zoom(), 14f))
 
         overlaySymbolManager = SymbolManager(mapView, mapboxMap, style)
         overlaySymbolManager?.addClickListener {

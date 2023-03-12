@@ -52,12 +52,15 @@ class PinsMapComponent(ctrl: KtMapController) {
             // is the order in which the source has the features
             // this avoids the rather slow sorting using symbol-sort-key (and we need one less property)
             // since there is no way to add/remove single quests from the source, this is (probably) a good way of sorting
-            .sortedBy { -it.importance }
+            .sortedBy { it.importance }
             .map {
-            val p = JsonObject()
-            p.addProperty("icon-image", it.iconName)
-//            p.addProperty("symbol-sort-key", it.importance.toFloat()) // toFloat necessary?
-            Feature.fromGeometry(com.mapbox.geojson.Point.fromLngLat(it.position.longitude, it.position.latitude), p)
+                val p = JsonObject()
+                p.addProperty("icon-image", it.iconName)
+                p.addProperty("symbol-sort-key", it.importance.toFloat())
+                it.properties.forEach {
+                    p.addProperty(it.first, it.second)
+                }
+                Feature.fromGeometry(com.mapbox.geojson.Point.fromLngLat(it.position.longitude, it.position.latitude), p)
         })
         // todo: crash if not on UI thread
         //  for now the runOnUiThread is ok, but actually it should be handled differently...
