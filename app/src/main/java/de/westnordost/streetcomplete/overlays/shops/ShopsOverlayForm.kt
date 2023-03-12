@@ -290,7 +290,8 @@ private suspend fun createEditAction(
         tagChanges.replaceShop(newFeature.addTags)
     } else {
         for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-            tagChanges.remove(key)
+            // don't remove building tags when adding a shop to a building
+            if (key != "building") tagChanges.remove(key)
         }
         for ((key, value) in newFeature.addTags) {
             tagChanges[key] = value
