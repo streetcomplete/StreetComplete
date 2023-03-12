@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import androidx.core.graphics.drawable.toDrawable
 import com.google.gson.JsonArray
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.Image
@@ -138,7 +139,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // add used images for quests and icons
         // todo: here we should use pins, not round icons
         //  just create them as LayerDrawable?
-        questTypeRegistry.forEach { style.addImage(resources.getResourceEntryName(it.icon), resources.getBitmapDrawable(it.icon)) }
+        questTypeRegistry.forEach {
+            val d = resources.getDrawable(it.icon)
+            style.addImage(resources.getResourceEntryName(it.icon), d.createBitmap((d.intrinsicWidth*0.3).toInt(),(d.intrinsicHeight*0.3).toInt()).toDrawable(resources))
+        }
         TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it)) }
 
         pinsMapComponent = PinsMapComponent(ctrl)
@@ -236,7 +240,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyValue("icon-image", "{icon-image}")) // works, any difference to using PropertyFactory?
             .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE)) // maybe not 100% perfect, but best so far without performance loss (should be order as in source, so just need to provide sorted list)
 //            .withProperties(PropertyValue("symbol-sort-key", "{symbol-sort-key}")) // looks like this does nothing... why?
-//            .withProperties(PropertyFactory.iconImage(Expression.get("icon-image"))) // is this also slow? nope...
 //            .withProperties(PropertyFactory.symbolSortKey("{symbol-sort-key}")) // this is not working, as it expects a float...
 //            .withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually slow... maybe this is what's so bad when using symbolManager?
                 // with a single importance value per quest type (not per quest), performance is ok... though still clearly worse than without this order
@@ -245,7 +248,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             //  try sorting the pins by importance, and not setting sort order
             //  -> it works usually (and especially: sorts quest of a single element), but sometimes doesn't work (e.g. at low zoom the wrong quest remains)
             //   maybe we can use clustering to avoid those issues at low zoom? there should be a way of setting a symbol instead of circle with text
-            .withProperties(PropertyValue("icon-size", 0.3f))
+//            .withProperties(PropertyValue("icon-size", 0.3f)) // better set icon size when creating the drawable, this is clearly faster when setting a lot of pins
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
         val pinsLayer2 = CircleLayer("pins-layer2", "pins-source").withSourceLayer("pins-source")
