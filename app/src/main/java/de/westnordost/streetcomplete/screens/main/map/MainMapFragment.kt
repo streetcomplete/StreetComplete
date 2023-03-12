@@ -5,7 +5,9 @@ import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.drawable.toDrawable
 import com.google.gson.JsonArray
+import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.maps.Image
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
@@ -24,8 +26,11 @@ import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.PropertyValue
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
+import com.mapbox.mapboxsdk.style.sources.CustomGeometrySource
+import com.mapbox.mapboxsdk.style.sources.CustomGeometrySourceOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import com.mapbox.mapboxsdk.style.sources.GeometryTileProvider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -212,6 +217,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  add quest pins (and dots, but maybe later) using a customGeometrySource (or geoJsonSource?) and symbolLayer
         //   should be done in QuestPinsManager
         //   first don't set volatile, as it should be faster, and test performance
+        //  memory: in an area with a lot of pins, maplibre seems to use a lot of memory
+        //   but better check properly, because maybe it's similar to tangram, and noticeable just because it's doubled now
 
         // mapLibre always downloads "something" on startup: what is it, and why?
 
@@ -249,6 +256,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             //  -> it works usually (and especially: sorts quest of a single element), but sometimes doesn't work (e.g. at low zoom the wrong quest remains)
             //   maybe we can use clustering to avoid those issues at low zoom? there should be a way of setting a symbol instead of circle with text
 //            .withProperties(PropertyValue("icon-size", 0.3f)) // better set icon size when creating the drawable, this is clearly faster when setting a lot of pins
+        // clustering actually might improve performance with a lot of pins, and allow to do more things like https://github.com/streetcomplete/StreetComplete/issues/124#issuecomment-1137061717
+        //  but this is a source option, so we would need a second source just for the dots... which seems very unnecessary
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
         val pinsLayer2 = CircleLayer("pins-layer2", "pins-source").withSourceLayer("pins-source")
@@ -256,6 +265,28 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        style.addLayer(pinsLayer2)
         style.addLayerBelow(pinsLayer2, "pins-layer") // always show dots, but only below symbols
 
+        // consider customGeometrySource
+        //  map queries data directly, and caches returned data (probably unless set to volatile)
+        //  but: query happens at every zoom level, which is unnecessary
+        //   overscale can be used to ignore higher zoom levels, but when setting minZoom, getFeaturesForBounds is not called on lower zoom
+        //   so there will be getFeaturesForBounds e.g. at z15, and we will need to supply data that the map actually might already have, but only for z16
+        //  adding / removing pins would be easier, as arbitrary bbox can be invalidated
+        //   but then data is not immediately reloaded...
+        //   so better use setTileData when updating pins
+        //    but then we need to adjust all available zoom levels (at least the ones we know that are loaded, so we would need to keep track of this, but we don't know what is still cached internally...)
+        //    this means we need to set a lot of data (at many zoom levels!) when pins are updated
+        // -> most likely not feasible, just keep the tangram way of caching pins (or maybe features)
+/*        val options = CustomGeometrySourceOptions().withMaxZoom(16).withMinZoom(16) // request data only at z16 (and higher thanks to overscale) -> how to do it at 15?
+        customGeometrySource = CustomGeometrySource("custom-source", options, object : GeometryTileProvider {
+            override fun getFeaturesForBounds(bounds: LatLngBounds, zoomLevel: Int): FeatureCollection {
+                // looks like it's actually requesting whole tiles (didn't verify though)
+                return FeatureCollection.fromFeatures(emptyList())
+            }
+        })
+        customGeometrySource!!.maxOverscaleFactorForParentTiles = 10
+        style.addSource(customGeometrySource!!)
+        style.addLayer(SymbolLayer("custom-geo", "custom-source"))
+*/
         super.onMapReady(mapView, mapboxMap, style)
 
         mapboxMap.addOnMapClickListener { pos ->
@@ -592,5 +623,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var style: Style? = null
         var pinsSource: GeoJsonSource? = null
         var pinsLayer: SymbolLayer? = null
+        var customGeometrySource: CustomGeometrySource? = null
     }
 }

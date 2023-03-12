@@ -177,8 +177,8 @@ class QuestPinsManager(
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        // todo: mapLibre SymbolManager should be able to delete pins, but not by any key
-        //  we need the Symbol returned when adding a pin, and associate it with the quest
+        // maplibre: geoJsonSource actually can't update/add/remove single pins,
+        //  but maybe customGeometrySource can invalidate the region so it's requested again
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
         var deletedAny = false
