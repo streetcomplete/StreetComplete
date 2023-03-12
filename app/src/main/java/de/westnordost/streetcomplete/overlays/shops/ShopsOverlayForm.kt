@@ -77,6 +77,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                     .forGeometry(element.geometryType)
                     .inCountry(countryOrSubdivisionCode)
                     .find()
+                    .filter(::filterOnlyShops)
                     .firstOrNull()
                 // if not found anything in the iD presets, it's a shop type unknown to iD presets
                 ?: DummyFeature(
