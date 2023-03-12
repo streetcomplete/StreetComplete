@@ -70,7 +70,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         originalFeature = element?.let {
             if (IS_DISUSED_SHOP_EXPRESSION.matches(element)) {
                 createVacantShop(requireContext().resources)
-            } else {
+            } else if (IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(element)) {
                 featureDictionary
                     .byTags(element.tags)
                     .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
@@ -85,7 +85,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                     "maki-shop",
                     element.tags
                 )
-            }
+            } else null // element not shop, so treat as new shop
         }
         originalNoName = element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
         isNoName = savedInstanceState?.getBoolean(NO_NAME) ?: originalNoName
