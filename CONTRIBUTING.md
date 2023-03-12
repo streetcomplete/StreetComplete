@@ -126,6 +126,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
+  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - used by osmfeatures. In StreetComplete it powers display of feature type, object classification in shop overlay and more
 * [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 
 ### Created for StreetComplete

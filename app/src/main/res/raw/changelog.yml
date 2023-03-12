@@ -1,3 +1,35 @@
+v52.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Addresses: Allow specifying block numbers (#4718, #4850), by @Helium314</li>
+  <li>Fix block number input in Japan, by @Helium314</li>
+  <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
+  <li>Address overlay: You can now add addresses to entrances (#4823)</li>
+  <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
+  <li>Other small enhancements (#4864, ...), thanks @matkoniecz, @arrival-spring</li>
+  </ul>
+
+v51.1: |
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Also ask in the Netherlands whether shops accept cash (#4826), by @matkoniecz (quest still disabled by default)</li>
+  <li>Don't ask anything about benches and recycling containers if they are private (#4815), by @Helium314</li>
+  <li>Allow more options when specifying the type of shop, by @matkoniecz</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Solve a problem with getting the GPS location on certain devices and circumstances (#4846, #4652), by @Helium314</li>
+  <li>Max height: Open <a href="https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure">StreetMeasure</a> in vertical measurement mode (#4808)</li>
+  <li>Type of entrance: Don't ask for paths that only continue on top of a roof (#4805), by @matkoniecz</li>
+  <li>Answering that a ping pong table mapped is gone would not remove it if it was an area (#4816)</li>
+  <li>Render highway service areas and healthcare places as areas (#4824, #4809), by @matkoniecz, @dbdean</li>
+  <li>Opening hours: Fixed shifting of the form when selecting the closing time (#4763)</li>
+  </ul>
+
 v51.0: |
   <h3>Standalone measuring app</h3>
   <p>Measuring distances with the camera has been outsourced into a standalone app, so you can also measure things outside of the context of solving quests: <a href="https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure">StreetMeasure</a></p>
@@ -62,7 +94,7 @@ v50.0: |
   <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
   <li>Sidewalks: Support sidewalks mapped on exclusive cycleways</li>
   <li>Street parking: Fix a crash when editing partially (#4634)</li>
-  <li>Shops: Add option to explicitely state that a shop has no name (#4648)</li>
+  <li>Shops: Add option to explicitly state that a shop has no name (#4648)</li>
   <li>Shops: Fix removing localized names did not actually remove them</li>
   <li>Other small enhancements (see #4657)</li>
   </ul>
@@ -76,7 +108,7 @@ v50.0: |
   <h3>Other enhancements and fixes</h3>
   <ul>
   <li>Added language: Serbian in latin script (automatically generated from Serbian in cyrillic script)</li>
-  <li>Fix quest pins sometimes disapear and labels flicker on moving the map (#4522), by @Helium314</li>
+  <li>Fix quest pins sometimes disappear and labels flicker on moving the map (#4522), by @Helium314</li>
   </ul>
 
 v49.2: |

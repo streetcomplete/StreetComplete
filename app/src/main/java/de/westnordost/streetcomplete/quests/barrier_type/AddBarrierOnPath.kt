@@ -17,7 +17,7 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy { """
         ways with
-          barrier ~ wall|fence|hedge|guard_rail|retaining_wall|city_wall
+          barrier ~ wall|fence|hedge|guard_rail|city_wall
           and area != yes
     """.toElementFilterExpression() }
 

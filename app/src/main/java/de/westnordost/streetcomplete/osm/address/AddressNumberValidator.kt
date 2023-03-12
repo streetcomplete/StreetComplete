@@ -17,6 +17,8 @@ fun AddressNumber.looksInvalid(additionalValidHouseNumberRegex: String?): Boolea
             !houseNumber.matches(validHouseNumberRegex)
         is HouseAndBlockNumber ->
             !houseNumber.matches(validHouseNumberRegex) || !blockNumber.matches(VALID_BLOCK_NUMBER_REGEX)
+        is HouseNumberAndBlock ->
+            !houseNumber.matches(validHouseNumberRegex)
     }
 }
 
