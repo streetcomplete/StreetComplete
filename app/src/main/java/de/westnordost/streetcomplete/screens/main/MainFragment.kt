@@ -1054,7 +1054,7 @@ class MainFragment :
         mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
         mapFragment.highlightGeometry(quest.geometry)
         mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
-        mapFragment.hideNonHighlightedPins()
+        mapFragment.hideNonHighlightedPins(quest.key)
         mapFragment.hideOverlay()
     }
 

@@ -5,7 +5,6 @@ import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -212,13 +211,13 @@ class QuestPinsManager(
         val iconName = resources.getResourceEntryName(quest.type.icon)
         val props = quest.key.toProperties()
         val importance = getQuestImportance(quest)
-        return quest.markerLocations.map { Pin(it, iconName, props, props.toJsonProperties(), importance) }
+        return quest.markerLocations.map { Pin(it, iconName, props, importance) }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
     private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
-        return questTypeOrder // fewer distinct numbers are considerably faster in maplibre
+        return 100000 - questTypeOrder // fewer distinct numbers are considerably faster in maplibre
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* position is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
@@ -271,14 +270,8 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
     else -> null
 }
 
-fun List<Pair<String, String>>.toJsonProperties(): JsonElement {
-    val o = JsonObject()
-    forEach { o.addProperty(it.first, it.second) }
-    return o
-}
-
 fun JsonElement.toQuestKey(): QuestKey? =
-    when (asJsonObject.getAsJsonPrimitive(MARKER_QUEST_GROUP).asString) {
+    when (asJsonObject.getAsJsonPrimitive(MARKER_QUEST_GROUP)?.asString) {
         QUEST_GROUP_OSM_NOTE ->
             OsmNoteQuestKey(asJsonObject.getAsJsonPrimitive(MARKER_NOTE_ID).asLong)
         QUEST_GROUP_OSM ->

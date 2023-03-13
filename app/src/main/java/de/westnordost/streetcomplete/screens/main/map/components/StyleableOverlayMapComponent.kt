@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Resources
 import android.graphics.Color
 import com.google.gson.JsonElement
-import com.mapbox.mapboxsdk.plugins.annotation.FillOptions
-import com.mapbox.mapboxsdk.plugins.annotation.LineOptions
+import com.google.gson.JsonObject
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.MultiLineString
+import com.mapbox.geojson.Point
+import com.mapbox.geojson.Polygon
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -26,7 +29,6 @@ import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
-import de.westnordost.streetcomplete.screens.main.map.toJsonProperties
 import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
@@ -46,9 +48,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         set(value) {
             layer.visible = value
             if (!value) {
-                MainMapFragment.overlaySymbolManager!!.deleteAll()
-                MainMapFragment.overlayFillManager!!.deleteAll()
-                MainMapFragment.overlayLineManager!!.deleteAll()
+                MainMapFragment.overlaySource!!.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
+                // or rather set isvisible via filter?
             }
         }
 
@@ -112,78 +113,78 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 ElementPointGeometry(geometry.center).toTangramGeometry(props)
             }
         )
-        val annotations = features.flatMap { (element, geometry, style) ->
-            // probably there should be separate line/fill/circle/symbol managers for overlays
-            val data = listOf(
-                ELEMENT_ID to element.id.toString(),
-                ELEMENT_TYPE to element.type.name
-            ).toJsonProperties()
+
+        // features for new approach
+        val mapLibreFeatures = features.flatMap {  (element, geometry, style) ->
+            val p = JsonObject()
+            p.addProperty(ELEMENT_ID, element.id.toString()) // try avoiding the string?
+            p.addProperty(ELEMENT_TYPE, element.type.name)
+
             when (style) {
                 is PointStyle -> {
                     // there is no other style, so we always need a symbol and not a circle
-                    val o = getSymbolOptions(style.icon, style.label)
-                        ?.withData(data)
-                        ?.withLatLng(geometry.center.toLatLng())
-                    listOfNotNull(o)
+                    if (style.icon != null)
+                        p.addProperty("icon", style.icon)
+                    if (style.label != null)
+                        p.addProperty("label", style.label) // offset and stuff is set for all text in layer
+                    listOf(Feature.fromGeometry(Point.fromLngLat(geometry.center.longitude, geometry.center.latitude), p))
                 }
                 is PolygonStyle -> {
-                    val o = FillOptions()
-                        .withData(data)
-                        .withLatLngs((geometry as ElementPolygonsGeometry).polygons.map { it.map { it.toLatLng() } })
                     if (style.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
-                        o.withFillColor(style.color)
-                        o.withFillOutlineColor(getDarkenedColor(style.color))
+                        p.addProperty("color", style.color)
+                        p.addProperty("outline-color", getDarkenedColor(style.color))
                     } else
-                        o.withFillOpacity(0f)
-                    val i = getSymbolOptions(style.icon, style.label)
-                        ?.withLatLng(geometry.center.toLatLng())
-                        ?.withData(data)
-                    listOfNotNull(o, i)
+                        p.addProperty("opacity", 0f)
+                    if (getHeight(element.tags) != null)
+                        p.addProperty("height", getHeight(element.tags))
+
+                    val points = (geometry as ElementPolygonsGeometry).polygons.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
+                    val f = Feature.fromGeometry(Polygon.fromLngLats(points), p)
+                    val label = if (style.label != null)
+                        Feature.fromGeometry(
+                            Point.fromLngLat(geometry.center.longitude, geometry.center.latitude),
+                            JsonObject().apply { addProperty("label", style.label) }
+                        )
+                    else null
+                    listOfNotNull(f, label)
                 }
                 is PolylineStyle -> {
-                    (geometry as ElementPolylinesGeometry).polylines.flatMap { line ->
-                        val left = if (style.strokeLeft != null) {
-                            LineOptions()
-                                .withData(data)
-                                .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(10f) // todo
-                                .withLineOffset(15f) // todo (may depend on display density)
-                                .withLineColor(style.strokeLeft.color)
-                            //.withLinePattern() // how to set dashed style?
-                        } else null
-                        val right = if (style.strokeRight != null) {
-                            LineOptions()
-                                .withData(data)
-                                .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(10f)
-                                .withLineOffset(-15f)
-                                .withLineColor(style.strokeRight.color)
-                            //.withLinePattern() // how to set dashed style?
-                        } else null
-                        val center = if (style.stroke != null && style.stroke.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
-                            LineOptions()
-                                .withData(data)
-                                .withLatLngs(line.map { it.toLatLng() })
-                                .withLineWidth(getLineWidth(element.tags) * 2) // too narrow otherwise. maybe depends on displayMetrics.density / mapView.pixelRatio
-                                .withLineColor(style.stroke.color)
-                            //.withLinePattern() // how to set dashed style?
-                        } else null
-                        val i = getSymbolOptions(null, style.label)
-                            ?.withLatLng(geometry.center.toLatLng())
-                            ?.withData(data)
-                        listOfNotNull(left, right, center, i)
-                    }
+                    // there is no strokeColor for lines, so appearance is different and thinner due to missing "line-outline"
+                    val points = (geometry as ElementPolylinesGeometry).polylines.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
+                    val line = MultiLineString.fromLngLats(points)
+                    val left = if (style.strokeLeft != null) {
+                        val p2 = p.deepCopy()
+                        p2.addProperty("width", 9f)
+                        p2.addProperty("offset", 10f) // todo
+                        if (style.strokeLeft.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
+                            p2.addProperty("color", style.strokeLeft.color)
+                        Feature.fromGeometry(line, p2)
+                    } else null
+                    val right = if (style.strokeRight != null) {
+                        val p2 = p.deepCopy()
+                        p2.addProperty("width", 9f)
+                        p2.addProperty("offset", -10f) // todo
+                        if (style.strokeRight.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
+                            p2.addProperty("color", style.strokeRight.color)
+                        Feature.fromGeometry(line, p2)
+                    } else null
+                    val center = if (style.stroke != null && style.stroke.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
+                        val p2 = p.deepCopy()
+                        p2.addProperty("width", getLineWidth(element.tags))
+                        p2.addProperty("color", style.stroke.color)
+                        Feature.fromGeometry(line, p2)
+                    } else null
+                    val label = if (style.label != null)
+                        Feature.fromGeometry(
+                            Point.fromLngLat(geometry.center.longitude, geometry.center.latitude),
+                            JsonObject().apply { addProperty("label", style.label) }
+                        )
+                    else null
+                    listOfNotNull(left, right, center, label)
                 }
             }
         }
-        MainActivity.activity?.runOnUiThread {
-            MainMapFragment.overlaySymbolManager!!.deleteAll()
-            MainMapFragment.overlayFillManager!!.deleteAll()
-            MainMapFragment.overlayLineManager!!.deleteAll()
-            MainMapFragment.overlaySymbolManager!!.create(annotations.filterIsInstance<SymbolOptions>())
-            MainMapFragment.overlayFillManager!!.create(annotations.filterIsInstance<FillOptions>())
-            MainMapFragment.overlayLineManager!!.create(annotations.filterIsInstance<LineOptions>())
-        }
+        MainActivity.activity?.runOnUiThread { MainMapFragment.overlaySource!!.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
@@ -234,9 +235,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     fun clear() {
         layer.clear()
         MainActivity.activity?.runOnUiThread {
-            MainMapFragment.overlaySymbolManager!!.deleteAll()
-            MainMapFragment.overlayFillManager!!.deleteAll()
-            MainMapFragment.overlayLineManager!!.deleteAll()
+            MainMapFragment.overlaySource!!.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         }
     }
 
@@ -262,9 +261,15 @@ data class StyledElement(
 
 fun JsonElement.toElementKey(): ElementKey? {
     // todo: what are the values if it doesn't exist? empty strings?
-    val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID).asString.toLongOrNull() ?: return null
+    val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID)?.asString?.toLongOrNull() ?: return null
     val type = asJsonObject.getAsJsonPrimitive(ELEMENT_TYPE).asString
     return if (type in ElementType.values().map { it.toString() })
         ElementKey(ElementType.valueOf(type), id)
     else null
+}
+
+fun List<Pair<String, String>>.toJsonProperties(): JsonElement {
+    val o = JsonObject()
+    forEach { o.addProperty(it.first, it.second) }
+    return o
 }

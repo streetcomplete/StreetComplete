@@ -68,7 +68,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 MainActivity.activity?.runOnUiThread {
                     val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                         .withLatLng(center.toLatLng())
-                        .withIconImage(resources.getResourceEntryName(drawableResId)) // todo: this is not working... why? works in overlays, and the name is determined the same way as it is set
+                        .withIconImage(resources.getResourceEntryName(drawableResId)) // todo: pinIcons not loaded in the style, but no priority
                     )
                     annotations.add(symbol)
                 }

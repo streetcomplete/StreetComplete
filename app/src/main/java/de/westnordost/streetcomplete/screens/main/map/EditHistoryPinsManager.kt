@@ -101,7 +101,6 @@ class EditHistoryPinsManager(
                 edit.position,
                 resources.getResourceEntryName(edit.icon),
                 edit.toProperties(),
-                edit.toProperties().toJsonProperties(),
                 edits.size - index // most recent first
             )
         }
@@ -159,7 +158,7 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
 }
 
 fun JsonElement.toEditKey(): EditKey? =
-    when (asJsonObject.getAsJsonPrimitive(MARKER_EDIT_TYPE).asString) {
+    when (asJsonObject.getAsJsonPrimitive(MARKER_EDIT_TYPE)?.asString) {
         EDIT_TYPE_ELEMENT ->
             ElementEditKey(asJsonObject.getAsJsonPrimitive(MARKER_ID).asLong)
         EDIT_TYPE_NOTE ->
