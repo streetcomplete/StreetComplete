@@ -13,15 +13,11 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val elementFilter = """
         nodes, ways with
          (
-             toilets = yes
-             or
-             (
-                (
-                    amenity~restaurant|pub|bar
-                    or amenity~cafe|fast_food and indoor_seating=yes
-                )
-                and !toilets
-             )
+           toilets = yes
+           or !toilets and (
+             amenity ~ restaurant|pub|bar
+             or amenity ~ cafe|fast_food and indoor_seating = yes
+           )
          )
          and access !~ no|private
          and (
