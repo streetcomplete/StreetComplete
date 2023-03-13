@@ -7,7 +7,12 @@ sealed interface WheelchairAccessToiletsAnswer
 data class WheelchairAccessToilets(val access: WheelchairAccess) : WheelchairAccessToiletsAnswer
 object NoToilet : WheelchairAccessToiletsAnswer
 
-fun WheelchairAccessToilets.applyTo(tags: Tags) {
-    tags.updateWithCheckDate("toilets:wheelchair", access.osmValue)
-    tags["toilets"] = "yes"
+fun WheelchairAccessToiletsAnswer.applyTo(tags: Tags) = when (this) {
+    is WheelchairAccessToilets -> {
+        tags.updateWithCheckDate("toilets:wheelchair", access.osmValue)
+        tags["toilets"] = "yes"
+    }
+    NoToilet -> {
+        tags.updateWithCheckDate("toilets", "no")
+    }
 }
