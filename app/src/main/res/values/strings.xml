@@ -1575,6 +1575,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">Is the restroom at this place wheelchair accessible?</string>
+    <string name="quest_wheelchairAccessPat_noToilet">There is no restroom here</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle-high step to access it.</string>

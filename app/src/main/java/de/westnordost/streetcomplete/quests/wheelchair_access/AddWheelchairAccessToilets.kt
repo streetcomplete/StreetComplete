@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
 
     override val elementFilter = """
         nodes, ways with amenity = toilets
@@ -28,7 +28,10 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is WheelchairAccessToilets -> answer.applyTo(tags)
+            is NoToilet -> tags.updateWithCheckDate("toilets", "no")
+        }
     }
 }
