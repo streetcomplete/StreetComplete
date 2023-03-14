@@ -24,7 +24,7 @@ class CheckShopExistence(
     // opening hours resurvey quest rather than this one (which would cause edit date to be changed
     // and silence all resurvey quests)
     private val filter by lazy { ("""
-        nodes with (
+        nodes, ways with (
              ${isShopExpressionFragment()}
              and !man_made
              and !historic
