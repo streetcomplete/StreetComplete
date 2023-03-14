@@ -10,11 +10,13 @@ import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumber
 import de.westnordost.streetcomplete.databinding.ViewAddressNumberOrNameInputBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.osm.buildingSynonyms
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.IAnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -25,37 +27,26 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     override val contentLayoutResId = R.layout.view_address_number_or_name_input
     private val binding by contentViewBinding(ViewAddressNumberOrNameInputBinding::bind)
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
-        AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
-        AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
-    )
+    override val otherAnswers get() =
+        listOfNotNull(
+            AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
+            AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
+            createBlockAnswerItem(),
+            AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
+        )
 
     private var isShowingHouseName: Boolean = false
+    private var isShowingBlock: Boolean = false
     private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK) ?: (lastBlock != null)
 
-        val numberView = layoutInflater.inflate(
-            getAddressNumberLayoutResId(countryInfo.countryCode),
-            binding.countrySpecificContainer
-        )
-        numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
-            toggleHouseNameButton = binding.toggleHouseNameButton,
-            houseNameInput = binding.houseNameInput,
-            toggleAddressNumberButton = binding.toggleAddressNumberButton,
-            addressNumberContainer = binding.addressNumberContainer,
-            activity = requireActivity(),
-            houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
-            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
-            conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
-            streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
-            toggleKeyboardButton = binding.toggleKeyboardButton,
-            addButton = numberView.findViewById(R.id.addButton),
-            subtractButton = numberView.findViewById(R.id.subtractButton),
-        )
-        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+        val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
+            ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
+
+        showNumberOrNameInput(layoutResId)
 
         // initially do not show any house number / house name UI
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) == true
@@ -67,12 +58,49 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         checkIsFormComplete()
     }
 
+    private fun showNumberOrNameInput(layoutResId: Int) {
+        binding.countrySpecificContainer.removeAllViews()
+        val numberView = layoutInflater.inflate(
+            layoutResId,
+            binding.countrySpecificContainer
+        )
+        val blockInput = numberView.findViewById<EditText?>(R.id.blockInput)
+
+        numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
+            toggleHouseNameButton = binding.toggleHouseNameButton,
+            houseNameInput = binding.houseNameInput,
+            toggleAddressNumberButton = binding.toggleAddressNumberButton,
+            addressNumberContainer = binding.addressNumberContainer,
+            activity = requireActivity(),
+            houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
+            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
+            blockInput = blockInput?.apply { hint = lastBlock },
+            conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
+            streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
+            toggleKeyboardButton = binding.toggleKeyboardButton,
+            addButton = numberView.findViewById(R.id.addButton),
+            subtractButton = numberView.findViewById(R.id.subtractButton),
+        )
+        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+        isShowingBlock = blockInput != null
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(SHOW_HOUSE_NAME, isShowingHouseName)
+        outState.putBoolean(SHOW_BLOCK, isShowingBlock)
     }
 
     /* ------------------------------------- Other answers -------------------------------------- */
+
+    private fun createBlockAnswerItem(): IAnswerItem? =
+        if (getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode) == null) {
+            if (isShowingBlock) {
+                AnswerItem(R.string.quest_address_answer_no_block) { showNumberOrNameInput(R.layout.view_house_number) }
+            } else {
+                AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
+            }
+        } else null
 
     private fun showMultipleNumbersHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -124,6 +152,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         confirmHouseNumber(isUnusual) {
             applyAnswer(AddressNumberOrName(number, numberOrNameInputCtrl.houseName))
             if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+            lastBlock = (number as? HouseNumberAndBlock)?.block
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
     }
@@ -146,15 +175,17 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     companion object {
         private var lastBlockNumber: String? = null
+        private var lastBlock: String? = null
         private var lastHouseNumber: String? = null
 
         private const val SHOW_HOUSE_NAME = "show_house_name"
+        private const val SHOW_BLOCK = "show_block_number"
     }
 }
 
-private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
+private fun getCountrySpecificAddressNumberLayoutResId(countryCode: String): Int? = when (countryCode) {
     "JP" -> R.layout.view_house_number_japan
     "CZ" -> R.layout.view_house_number_czechia
     "SK" -> R.layout.view_house_number_slovakia
-    else -> R.layout.view_house_number
+    else -> null
 }
