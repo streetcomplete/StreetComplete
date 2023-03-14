@@ -62,9 +62,9 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
             binding.levelsInput.setText(element.tags["building:levels"])
             binding.roofLevelsInput.setText(element.tags["roof:levels"])
         }
-        val focussedInput = if (levels == null) binding.levelsInput else binding.roofLevelsInput
-        focussedInput.requestFocus()
-        focussedInput.selectAll()
+        val focusedInput = if (levels == null) binding.levelsInput else binding.roofLevelsInput
+        focusedInput.requestFocus()
+        focusedInput.selectAll()
 
         binding.levelsInput.doAfterTextChanged { checkIsFormComplete() }
         binding.roofLevelsInput.doAfterTextChanged { checkIsFormComplete() }
