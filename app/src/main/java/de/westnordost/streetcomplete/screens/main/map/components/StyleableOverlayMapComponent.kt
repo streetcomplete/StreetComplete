@@ -198,21 +198,6 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         else -> if (!isOneway(tags)) 5.5f else 3f
     }
 
-    private fun getSymbolOptions(icon: String?, label: String?): SymbolOptions? {
-        if (icon == null && label == null) return null
-        val o = SymbolOptions()
-        if (icon != null) o.withIconImage(icon) // todo: icon color is white, not black with white border. the commented options below do nothing
-//            .withIconColor("black")
-//            .withIconHaloWidth(0.3f)
-//            .withIconHaloColor("white")
-        if (label != null) o.withTextField(label)
-            .withTextOffset(arrayOf(1.5f, 0f))
-            .withTextMaxWidth(5f)
-            .withTextAnchor(Property.TEXT_ANCHOR_LEFT)
-            // text should be left-aligned, but otherwise it's fine
-        return o
-    }
-
     /** estimates height of thing */
     private fun getHeight(tags: Map<String, String>): Float? {
         val height = tags["height"]?.toFloatOrNull()

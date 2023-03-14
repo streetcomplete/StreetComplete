@@ -140,6 +140,8 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         updateLocation()
         updateDirection()
     }
+
+    // actually this is unnecessary, as MapLibre creates bitmap from supplied drawable anyway -> just add dotImg / directionImg
     private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
         convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
 

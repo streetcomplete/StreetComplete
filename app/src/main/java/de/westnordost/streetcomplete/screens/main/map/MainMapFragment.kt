@@ -348,7 +348,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayerBelow(overlayLineLayer, "pins-layer")
 
         val overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
-            .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway
+            .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
 //            .withProperties(PropertyFactory.fillColor(Expression.get("color")))
 //            .withProperties(PropertyFactory.fillOutlineColor(Expression.get("outline-color"))) // no outline color if extrusion?
 //            .withProperties(PropertyFactory.fillOpacity(Expression.get("opacity")))
@@ -543,6 +543,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             is ElementPolygonsGeometry -> {
                 val points = geometry.polygons.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
                 val polygon = com.mapbox.geojson.Polygon.fromLngLats(points) // todo: breaks for mulitpolygons when zooming in (weird...)
+                // todo: actually the outline is displayed in the fill layer
+                //  maybe this is what breaks multipolygon display
+                //  just set some Expression.geometryType() filter on the fill layer
                 val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points) // outline
                 geometrySource?.setGeoJson(FeatureCollection.fromFeatures(listOf(Feature.fromGeometry(multilineString), Feature.fromGeometry(polygon))))
             }
