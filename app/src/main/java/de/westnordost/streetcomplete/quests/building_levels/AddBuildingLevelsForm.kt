@@ -27,10 +27,6 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val roofsAreUsuallyFlat get() = countryInfo.roofsAreUsuallyFlat
-    private val hasNonFlatRoofShape get() =
-        element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
-
     private val levels get() = binding.levelsInput.intOrNull?.takeIf { it >= 0 }
     private val roofLevels get() = binding.roofLevelsInput.intOrNull?.takeIf { it >= 0 }
 
@@ -91,8 +87,11 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         }
     }
 
-    override fun isFormComplete() =
-        levels != null && (roofsAreUsuallyFlat && !hasNonFlatRoofShape || roofLevels != null)
+    override fun isFormComplete(): Boolean {
+        val hasNonFlatRoofShape = element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
+        val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+        return levels != null && (roofLevelsAreOptional || roofLevels != null)
+    }
 }
 
 private class LastPickedAdapter(
