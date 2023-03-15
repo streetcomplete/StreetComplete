@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
+import de.westnordost.streetcomplete.quests.bbq_cover.AddBbqCover
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
@@ -244,6 +245,8 @@ fun questTypeRegistry(
 
     10 to AddBenchBackrest(),
     11 to AddPicnicTableCover(),
+
+    157 to AddBbqCover(),
 
     12 to AddBridgeStructure(),
 
