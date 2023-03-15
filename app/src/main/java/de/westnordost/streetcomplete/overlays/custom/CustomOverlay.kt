@@ -14,8 +14,6 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -26,14 +24,14 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
     override val icon = R.drawable.ic_custom_overlay_poi
     override val changesetComment = "Edit user-defined element selection"
     override val wikiLink: String = "Tags"
-    override val isCreateNodeEnabled get() = prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.startsWith("nodes")
+    override val isCreateNodeEnabled get() = prefs.getString(Prefs.CUSTOM_OVERLAY_IDX_FILTER, "")!!.startsWith("nodes")
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val filter = try {
-            prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.toElementFilterExpression() ?: return emptySequence()
+            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, prefs), "")?.toElementFilterExpression() ?: return emptySequence()
         } catch (e: ParseException) { return emptySequence() }
         val colorKeySelector = try {
-            prefs.getString(Prefs.CUSTOM_OVERLAY_COLOR_KEY, "")?.takeIf { it.isNotEmpty() }?.toRegex()
+            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")?.takeIf { it.isNotEmpty() }?.toRegex()
         } catch (_: Exception) { null }
         return mapData
             .filter(filter)
@@ -93,3 +91,6 @@ private fun createColorFromString(string: String?): String {
         else -> createColorFromString("${c}1") // the 1 is there to avoid very similar colors for numbers
     }
 }
+
+fun getIndexedCustomOverlayPref(pref: String, index: Int) = pref.replace("idx", index.toString())
+fun getCurrentCustomOverlayPref(pref: String, prefs: SharedPreferences) = getIndexedCustomOverlayPref(pref, prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))

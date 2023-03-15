@@ -1242,7 +1242,7 @@ class MainFragment :
         val camera = mapFragment.cameraPosition
         if (overlay is CustomOverlay) {
             val pos = camera?.position ?: return
-            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with "), pos))
+            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_IDX_FILTER, "")!!.substringAfter("with "), pos))
             mapFragment.show3DBuildings = false
             return
         }

@@ -44,7 +44,8 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
         fun onBind(with: Overlay?) {
             val ctx = binding.root.context
-            binding.radioButton.setText(with?.title ?: R.string.overlay_none)
+            val titleResId = with?.title ?: R.string.overlay_none
+            binding.radioButton.text = if (titleResId != 0) ctx.getString(titleResId) else with?.changesetComment // the custom title
             val icon = with?.icon?.let { ctx.getDrawable(it) }
             icon?.setBounds(0, 0, ctx.dpToPx(32).toInt(), ctx.dpToPx(32).toInt())
             binding.radioButton.setCompoundDrawables(icon, null, null, null)

@@ -153,6 +153,7 @@ class StyleableOverlayManager(
             }
             if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+                ctrl.requestRender() // otherwise there will only be an update if map is changed
             }
         }
     }

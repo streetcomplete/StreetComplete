@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
+import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.osmose.PREF_OSMOSE_ITEMS
@@ -160,7 +161,15 @@ class StreetCompleteApplication : Application() {
                             prefs.edit { putString(key, value.replace(",", "§§")) }
                     }
             }
+            // update custom overlay to the indexed version
+            prefs.edit {
+                if (prefs.contains("custom_overlay_filter"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, 0), prefs.getString("custom_overlay_filter", "")!!)
+                if (prefs.contains("custom_overlay_color_key"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, 0), prefs.getString("custom_overlay_color_key", "")!!)
+            }
         }
+
     }
 
     private fun onNewVersion() {

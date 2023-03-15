@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
+import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
@@ -315,12 +316,19 @@ class DataManagementSettingsFragment :
                 }
                 AlertDialog.Builder(requireContext())
                     .setTitle(R.string.pref_import)
-                    .setMessage(R.string.import_presets_message)
-                    .setPositiveButton(R.string.import_presets_replace) { _, _ -> importPresets(lines, true) }
-                    .setNeutralButton(R.string.import_presets_add) { _, _ -> importPresets(lines, false) }
+                    .setMessage(R.string.import_presets_overlays_message)
+                    .setPositiveButton(R.string.import_presets_overlays_replace) { _, _ -> importPresets(lines, true) }
+                    .setNeutralButton(R.string.import_presets_overlays_add) { _, _ -> importPresets(lines, false) }
                     .show()
             }
-            REQUEST_CODE_OVERLAYS_IMPORT -> if (!importCustomOverlays(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
+            REQUEST_CODE_OVERLAYS_IMPORT -> {
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.pref_import)
+                    .setMessage(R.string.import_presets_overlays_message)
+                    .setPositiveButton(R.string.import_presets_overlays_replace) { _, _ -> if (!importCustomOverlays(uri, true)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG) }
+                    .setNeutralButton(R.string.import_presets_overlays_add) { _, _ -> if (!importCustomOverlays(uri, false)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG) }
+                    .show()
+            }
             REQUEST_CODE_CUSTOM_QUEST_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_CUSTOM_QUEST) }
             REQUEST_CODE_CUSTOM_QUEST_EXPORT -> { writeFromExternalFileToUri(FILENAME_CUSTOM_QUEST, uri) }
             REQUEST_CODE_TREES_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_TREES) }
@@ -539,12 +547,37 @@ class DataManagementSettingsFragment :
         } }
     }
 
-    private fun importCustomOverlays(uri: Uri): Boolean {
+    private fun importCustomOverlays(uri: Uri, replaceExisting: Boolean): Boolean {
         val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() } ?: return false
         if (lines.first() != "overlays") return false
-        // todo: this will overwrite existing overlays, which is currently fine but will be a problem later
-        //  -> need to process the list and change numbers
-        return readToSettings(lines.subList(1, lines.size))
+        return if (replaceExisting) {
+            val result = readToSettings(lines.subList(1, lines.size))
+            // update in case of old data
+            prefs.edit {
+                if (prefs.contains("custom_overlay_filter"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, 0), prefs.getString("custom_overlay_filter", "")!!)
+                if (prefs.contains("custom_overlay_color_key"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, 0), prefs.getString("custom_overlay_color_key", "")!!)
+            }
+            result
+        }
+        else {
+            val offset = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.max() + 1
+            val newLines = lines.mapNotNull {
+                if (it == "overlays") return@mapNotNull null
+                val id = it.substringAfter("custom_overlay_").substringBefore("_").toIntOrNull() ?: return@mapNotNull null
+                it.replace(id.toString(), (id + offset).toString())
+            }
+            val result = readToSettings(newLines)
+            // update in case of old data
+            prefs.edit {
+                if (prefs.contains("custom_overlay_filter"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, offset), prefs.getString("custom_overlay_filter", "")!!)
+                if (prefs.contains("custom_overlay_color_key"))
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, offset), prefs.getString("custom_overlay_color_key", "")!!)
+            }
+            result
+        }
     }
 
     // this will ignore settings with value null

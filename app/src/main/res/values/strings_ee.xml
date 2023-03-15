@@ -107,9 +107,9 @@
     <string name="import_export_custom_overlays">Custom Overlays</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
-    <string name="import_presets_message">Add imported presets or replace existing?</string>
-    <string name="import_presets_add">Add</string>
-    <string name="import_presets_replace">Replace</string>
+    <string name="import_presets_overlays_message">Add imported, or replace existing?</string>
+    <string name="import_presets_overlays_add">Add</string>
+    <string name="import_presets_overlays_replace">Replace</string>
     <string name="import_error">Import error</string>
     <string name="import_error_db_version">Import error: unknown version</string>
     <string name="export_warning_db_version">Warning: database version unknown, import may not work. Please ask for the app to be updated.</string>
@@ -371,6 +371,8 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
     <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex, uses all matching tags to get a color, based on key and value of the first matching key.</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
+    <string name="custom_overlay_manage">Manage</string>
+    <string name="custom_overlay_delete">Really delete %s?</string>
     <string name="attach_photo_delete">Delete</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>
     <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>
