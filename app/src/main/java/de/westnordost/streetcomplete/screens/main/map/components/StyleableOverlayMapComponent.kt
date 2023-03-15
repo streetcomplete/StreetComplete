@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Color
 import com.mapzen.tangram.MapData
+import com.mapzen.tangram.geometry.Geometry
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -38,7 +39,11 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** Show given map data with each the given style */
     fun set(features: Collection<StyledElement>) {
-        layer.setFeatures(features.flatMap { (element, geometry, style) ->
+        val f = features.flatMap { sel ->
+            sel.tangramGeometry?.let { return@flatMap it }
+            val element = sel.element
+            val geometry = sel.geometry
+            val style = sel.style
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
@@ -82,21 +87,22 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 }
             }
 
-            geometry.toTangramGeometry(props)
-        } + // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
-            // issue that icons for polygons are shown on every single vertex
-            features
-            .filter { it.style is PolygonStyle && (it.style.icon != null || it.style.label != null) }
-            .flatMap { (element, geometry, style) ->
+            val g1 = geometry.toTangramGeometry(props)
+            val g = if (style is PolygonStyle && (style.icon != null || style.label != null)) {
+                // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
+                // issue that icons for polygons are shown on every single vertex
                 val props = HashMap<String, String>(4)
                 val polygonStyle = style as PolygonStyle
                 props[ELEMENT_ID] = element.id.toString()
                 props[ELEMENT_TYPE] = element.type.name
                 polygonStyle.icon?.let { props["icon"] = it }
                 polygonStyle.label?.let { props["text"] = it }
-                ElementPointGeometry(geometry.center).toTangramGeometry(props)
-            }
-        )
+                ElementPointGeometry(geometry.center).toTangramGeometry(props) + g1
+            } else g1
+            sel.tangramGeometry = g
+            g
+        }
+        layer.setFeatures(f)
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
@@ -151,4 +157,6 @@ data class StyledElement(
     val element: Element,
     val geometry: ElementGeometry,
     val style: Style
-)
+) {
+    var tangramGeometry: List<Geometry>? = null
+}
