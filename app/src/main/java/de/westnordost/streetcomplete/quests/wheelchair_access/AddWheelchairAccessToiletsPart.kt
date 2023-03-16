@@ -11,6 +11,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
 
     override val elementFilter = """
         nodes, ways with
+         wheelchair = limited
          (
            toilets = yes
            or !toilets and (
