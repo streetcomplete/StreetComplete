@@ -9,7 +9,9 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -192,6 +194,20 @@ class QuestPinsManager(
         val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
         var deletedAny = false
         val pins = synchronized(questsInView) {
+            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) && removed.isEmpty() && added.size < 20) {
+                // issue with dynamic quest creation: quests near tile edge are not in database,
+                // so there are no previous quests to remove -> remove all previous pins here, or they will continue showing
+                // works because added contains all quests for that element, and if an answered quest was in db it will be in removed
+
+                val elementKeys = added.mapNotNull { if (it is OsmQuest) ElementKey(it.elementType, it.elementId) else null }.toHashSet()
+                questsInView.keys.removeAll { questKey ->
+                    questKey is OsmQuestKey
+                        // remove all pins for this element (better would be a detection whether we are withing 20 m of tile edge...)
+                        && elementKeys.any { questKey.elementId == it.id && questKey.elementType == it.type }
+                }
+                deletedAny = true
+            }
+
             addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
             removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
             questsInView.values.flatten()
