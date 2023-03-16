@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
 
@@ -37,6 +38,12 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
     override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+        when (answer) {
+            is WheelchairAccessToilets -> {
+                tags.updateWithCheckDate("toilets:wheelchair", answer.access.osmValue)
+                tags["toilets"] = "yes"
+            }
+            is NoToilet -> answer.applyTo(tags)
+        }
     }
 }
