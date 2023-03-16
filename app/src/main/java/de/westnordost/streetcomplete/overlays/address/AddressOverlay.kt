@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.address
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -11,8 +12,12 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
+import de.westnordost.streetcomplete.util.ktx.getIds
+import java.util.concurrent.FutureTask
 
-class AddressOverlay : Overlay {
+class AddressOverlay(
+    private val countryBoundaries: FutureTask<CountryBoundaries>
+) : Overlay {
 
     override val title = R.string.overlay_addresses
     override val icon = R.drawable.ic_quest_housenumber
@@ -28,16 +33,26 @@ class AddressOverlay : Overlay {
         "layers.buildings.draw.buildings-outline-style.extrude" to "false"
     )
 
+    private val noAddressesOnBuildings = setOf(
+        "IT" // https://github.com/streetcomplete/StreetComplete/issues/4801
+    )
+
     override fun getStyledElements(mapData: MapDataWithGeometry) =
-        mapData.filter("""
-            nodes with
-              addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
-        """).map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags)) } +
-        mapData.filter("""
-            ways, relations with building
-        """).map {
-            it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
-        }
+        mapData
+            .filter("""
+                nodes with
+                  addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
+                  or entrance
+            """)
+            .map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags) ?: "◽") } + // or ▫
+        mapData
+            .filter("ways, relations with building")
+            .filter {
+                val center = mapData.getGeometry(it.type, it.id)?.center ?: return@filter false
+                val country = countryBoundaries.get().getIds(center).firstOrNull()
+                country !in noAddressesOnBuildings
+            }
+            .map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }
 
     override fun createForm(element: Element?) = AddressOverlayForm()
 }

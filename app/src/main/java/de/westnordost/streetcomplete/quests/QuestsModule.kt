@@ -505,7 +505,7 @@ fun getQuestTypeList(
     132 to AddAcceptsCash(),
 
     133 to AddFuelSelfService(),
-    156 to CheckShopExistence(), // after opening hours and similar so they will be preferred if enabled
+    156 to CheckShopExistence(featureDictionaryFuture), // after opening hours and similar so they will be preferred if enabled
 
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 

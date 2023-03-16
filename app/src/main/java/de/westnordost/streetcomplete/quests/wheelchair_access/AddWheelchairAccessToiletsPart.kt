@@ -6,14 +6,18 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
-         toilets = yes
-         and name
+         (
+           toilets = yes
+           or !toilets and (
+             amenity ~ restaurant|pub|bar
+             or amenity ~ cafe|fast_food and indoor_seating = yes
+           )
+         )
          and access !~ no|private
          and (
            !toilets:wheelchair
@@ -32,14 +36,16 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("toilets:wheelchair", answer.osmValue)
-        answer.updatedDescriptions?.forEach { (language, description) ->
-            // language already contains the colon, or may be empty
-            if (description.isEmpty())
-                tags.remove("wheelchair:description$language")
-            else
-                tags["wheelchair:description$language"] = description
-        }
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        answer.applyTo(tags)
+        if (answer is WheelchairAccessToilets)
+            // use the wheelchair:description tag also for toilets part
+            answer.access.updatedDescriptions?.forEach { (language, description) ->
+                // language already contains the colon, or may be empty
+                if (description.isEmpty())
+                    tags.remove("wheelchair:description$language")
+                else
+                    tags["wheelchair:description$language"] = description
+            }
     }
 }

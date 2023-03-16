@@ -19,7 +19,7 @@ val overlaysModule = module {
         0 to WayLitOverlay(),
         1 to SidewalkOverlay(),
         2 to StreetParkingOverlay(),
-        3 to AddressOverlay(),
+        3 to AddressOverlay(get(named("CountryBoundariesFuture"))),
         4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
         5 to CyclewayOverlay(get(), get(named("CountryBoundariesFuture"))),
         (EE_QUEST_OFFSET + 0) to CustomOverlay(get()),

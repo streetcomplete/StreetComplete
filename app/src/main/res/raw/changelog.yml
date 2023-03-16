@@ -5,9 +5,12 @@ v52.0-beta1: |
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
+  <li>Addresses: Allow specifying block numbers (#4718, #4850), by @Helium314</li>
   <li>Fix block number input in Japan, by @Helium314</li>
+  <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
+  <li>Address overlay: You can now add addresses to entrances (#4823)</li>
   <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
-  <li>Other small enhancements, thanks @matkoniecz</li>
+  <li>Other small enhancements (#4864, ...), thanks @matkoniecz, @arrival-spring</li>
   </ul>
 
 v51.1: |
