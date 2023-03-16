@@ -150,6 +150,7 @@ class StyleableOverlayManager(
             }
             if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+                ctrl.requestRender()
             }
         }
     }
@@ -169,6 +170,7 @@ class StyleableOverlayManager(
             deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+                ctrl.requestRender()
             }
         }
     }
