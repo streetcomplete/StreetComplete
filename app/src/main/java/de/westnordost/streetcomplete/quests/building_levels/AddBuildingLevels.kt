@@ -1,11 +1,16 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
@@ -14,7 +19,10 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
            building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
            and (
                !building:levels
-               or !roof:levels and roof:shape and roof:shape != flat
+               ${if (prefs.getBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, true))
+                   "or !roof:levels and roof:shape and roof:shape != flat"
+                   else ""
+               }
            )
            and !man_made
            and location != underground
@@ -37,4 +45,25 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
         tags["building:levels"] = answer.levels.toString()
         answer.roofLevels?.let { tags["roof:levels"] = it.toString() }
     }
+
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog {
+        val array = arrayOf(
+            context.getString(R.string.quest_settings_building_levels_mandatory_roof),
+            context.getString(R.string.quest_settings_building_levels_optional_roof)
+        )
+        return AlertDialog.Builder(context)
+            .setSingleChoiceItems(array, if (prefs.getBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, true)) 0 else 1) { d, i ->
+                prefs.edit { putBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, i == 0) }
+                d.dismiss()
+                OsmQuestController.reloadQuestTypes()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .setNeutralButton(R.string.element_selection_button) { _, _ ->
+                super.getQuestSettingsDialog(context)?.show()
+            }.create()
+    }
 }
+
+const val MANDATORY_ROOF_LEVELS = "qs_AddBuildingLevels_mandatory_roof_levels"

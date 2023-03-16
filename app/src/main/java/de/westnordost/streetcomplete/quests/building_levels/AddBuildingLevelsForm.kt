@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
@@ -89,7 +90,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
     override fun isFormComplete(): Boolean {
         val hasNonFlatRoofShape = element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
-        val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+        val roofLevelsAreOptional = !prefs.getBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, true) || (countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape)
         return levels != null && (roofLevelsAreOptional || roofLevels != null)
     }
 }

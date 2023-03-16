@@ -172,7 +172,6 @@
     <string name="quest_settings_sidewalk_what">What to set?</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>
     <string name="quest_settings_sidewalk_distance_button">Distance</string>
-    <string name="quest_settings_sidewalk_highways_button">Element selection</string>
     <string name="quest_settings_max_roof_levels">Maximum value for (building levels) minus (roof levels) for the quest to be shown</string>
     <string name="quest_settings_max_steps_length">Maximum length of steps in meters for the quest to be shown</string>
     <string name="quest_settings_level_title">Show this quest for:</string>
@@ -189,6 +188,9 @@
     <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by SCEE? You may need to use the tag editor to enter the correct values.</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">All</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">Default</string>
+    <string name="element_selection_button">Element selection</string>
+    <string name="quest_settings_building_levels_mandatory_roof">Require entering roof levels in most countries (default)</string>
+    <string name="quest_settings_building_levels_optional_roof">Allow omitting roof levels everywhere</string>
 
 
     <!-- quick settings -->
@@ -367,7 +369,6 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
-    <string name="custom_overlay_hint">Element selection</string>
     <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
     <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex, uses all matching tags to get a color, based on key and value of the first matching key.</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>

@@ -177,7 +177,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
                     4,
                     R.string.quest_settings_sidewalk_cycleway_distance_message).show()
             }
-            .setNegativeButton(R.string.quest_settings_sidewalk_highways_button) { _, _ ->
+            .setNegativeButton(R.string.element_selection_button) { _, _ ->
                 singleTypeElementSelectionDialog(context,
                     prefs,
                     questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION,

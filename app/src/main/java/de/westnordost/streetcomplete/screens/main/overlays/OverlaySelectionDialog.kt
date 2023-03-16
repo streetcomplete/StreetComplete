@@ -118,7 +118,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             isChecked = overlayFilter?.get(0)?.contains("relations") ?: true
         }
         val tag = EditText(c).apply {
-            setHint(R.string.custom_overlay_hint)
+            setHint(R.string.element_selection_button)
             setText(overlayFilter?.get(1) ?: "")
         }
         val coloringText = TextView(c).apply {
