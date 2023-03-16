@@ -29,7 +29,7 @@ open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 
     override fun isRejectingClose(): Boolean = descriptions.isNotEmpty()
 
-    override val otherAnswers: List<AnswerItem> = listOf(
+    override val otherAnswers: List<AnswerItem> get() = listOf(
         createAddDescriptionAnswer(element, descriptions, requireContext(), countryInfo)
     )
 }
