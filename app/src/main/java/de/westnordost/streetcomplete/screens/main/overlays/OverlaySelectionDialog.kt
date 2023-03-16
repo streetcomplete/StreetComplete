@@ -39,6 +39,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val prefs: SharedPreferences by inject()
+    private val ctx = context
 
     private val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
     private var selectedOverlay: Overlay? = selectedOverlayController.selectedOverlay
@@ -86,7 +87,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             object : Overlay {
                 override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
                 override fun createForm(element: Element?) = null
-                override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { context.getString(R.string.custom_overlay_title) } // displayed overlay name
+                override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
                 override val icon = R.drawable.ic_custom_overlay_poi
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
                 override val wikiLink = it // index
@@ -96,7 +97,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
     @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
     private fun showOverlayCustomizer() {
-        val c = context
+        val c = ctx
         var d: AlertDialog? = null
         val i = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
 
@@ -133,7 +134,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
                 }
                 catch (e: Exception) {
-                    Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
                 }
             }
@@ -152,14 +153,14 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = true }
             }
             catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                 d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = tag.text.isEmpty() }
             }
         }
         val linearLayout = LinearLayout(c).apply {
             orientation = LinearLayout.VERTICAL
             addView(title)
-            addView(TextView(context).apply { setHtml(resources.getString(R.string.custom_overlay_message)) })
+            addView(TextView(ctx).apply { setHtml(resources.getString(R.string.custom_overlay_message)) })
             addView(tag)
             addView(nodes)
             addView(ways)
@@ -193,7 +194,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     }
 
     private fun showCustomOverlayManager() {
-        val c = context
+        val c = ctx
         val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.sorted()
         var d: AlertDialog? = null
         val layout = LinearLayout(c).apply { orientation = LinearLayout.VERTICAL }
@@ -208,7 +209,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 showOverlayCustomizer()
                 d?.dismiss()
             }
-            l.addView(ImageView(context).apply {
+            l.addView(ImageView(c).apply {
                 setImageResource(R.drawable.ic_delete_24dp)
                 isEnabled = idx != 0
                 setOnClickListener {
