@@ -140,9 +140,11 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L172-L195) but do not worry too much, it can be tweaked later.
 
+Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
+
 Add your quest to the list so that it will be loaded by the app.
 
-As this point you can run the app in emulator - everything should work and one of quests will appear twice.
+At this point you can run the app in emulator - everything should work and one of quests will appear twice.
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/b4f01eeb752f92fd6927fbb9a943ea19a4799eec) in the example repository.
 
