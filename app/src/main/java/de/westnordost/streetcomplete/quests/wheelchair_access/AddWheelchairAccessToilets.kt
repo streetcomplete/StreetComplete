@@ -31,7 +31,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccessToiletsAns
     override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is WheelchairAccessToilets -> tags.updateWithCheckDate("wheelchair", answer.access.osmValue)
-            is NoToilet -> answer.applyTo(tags)
+            is NoToilet -> throw IllegalStateException()
         }
     }
 }
