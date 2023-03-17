@@ -16,7 +16,12 @@ class AddWheelchairAccessToiletsForm : AbstractOsmQuestForm<WheelchairAccessToil
         AnswerItem(R.string.quest_wheelchairAccess_limited) { applyAnswer(WheelchairAccessToilets(LIMITED)) },
     )
 
-    override val otherAnswers get() = listOf(
-        AnswerItem(R.string.quest_wheelchairAccessPat_noToilet) { applyAnswer(NoToilet) }
+    override val otherAnswers get() = listOfNotNull(
+        createNoToiletsAnswer()
     )
+
+    private fun createNoToiletsAnswer(): AnswerItem? {
+        return if (element.tags["amenity"] == "toilets") null
+        else AnswerItem(R.string.quest_wheelchairAccessPat_noToilet) { applyAnswer(NoToilet) }
+    }
 }
