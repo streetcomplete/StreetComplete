@@ -52,29 +52,31 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             fakeOverlays.singleOrNull { it.wikiLink == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() }
         else
             selectedOverlayController.selectedOverlay
-        adapter.onSelectedOverlay = {
-            if (it?.title == 0) {
-                prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, it.wikiLink!!.toInt()) }
-                if (selectedOverlayController.selectedOverlay is CustomOverlay)
-                    selectedOverlayController.selectedOverlay = null // trigger reload
-                selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
-            } else
-                selectedOverlay = it
-        }
+        adapter.onSelectedOverlay = { selectedOverlay = it }
         binding.overlaysList.adapter = adapter
         binding.overlaysList.layoutManager = LinearLayoutManager(context)
 
         setTitle(R.string.select_overlay)
 
         setButton(BUTTON_POSITIVE, context.resources.getText(android.R.string.ok)) { _, _ ->
+            if (selectedOverlay?.title == 0) {
+                prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay!!.wikiLink!!.toInt()) }
+                // set the actual custom overlay instead of the fake one
+                selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+            }
+            if (selectedOverlayController.selectedOverlay is CustomOverlay)
+                selectedOverlayController.selectedOverlay = null // trigger reload (needed if switching between custom overlays)
             selectedOverlayController.selectedOverlay = selectedOverlay
             dismiss()
         }
 
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
             setButton(BUTTON_NEGATIVE, context.resources.getText(R.string.custom_overlay_title)) { _,_ ->
-                showOverlayCustomizer()
-                dismiss()
+                val currentCustomOverlay = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
+                val selectedCustomOverlay = selectedOverlay?.wikiLink?.toIntOrNull()
+                showOverlayCustomizer(selectedCustomOverlay ?: currentCustomOverlay)
+                if (currentCustomOverlay == selectedCustomOverlay)
+                    dismiss() // dismiss dialog only if currently selected custom overlay was edited
             }
 
         setView(binding.root)
@@ -96,16 +98,15 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     }
 
     @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
-    private fun showOverlayCustomizer() {
+    private fun showOverlayCustomizer(index: Int) {
         val c = ctx
         var d: AlertDialog? = null
-        val i = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
 
         val title = EditText(c).apply {
             setHint(R.string.name_label)
-            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), ""))
+            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ""))
         }
-        val overlayFilter = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, i), "")?.split(" with ")?.takeIf { it.size == 2 }
+        val overlayFilter = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), "")?.split(" with ")?.takeIf { it.size == 2 }
         val nodes = CheckBox(c).apply {
             text = "nodes"
             isChecked = overlayFilter?.get(0)?.contains("nodes") ?: true
@@ -127,7 +128,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         }
         val color = EditText(c).apply {
             setHint(R.string.custom_overlay_color_hint)
-            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, i), "")!!)
+            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), "")!!)
             doAfterTextChanged {
                 try {
                     it.toString().toRegex()
@@ -175,12 +176,16 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 prefs.edit {
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, i), filterString())
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, i), color.text.toString())
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), title.text.toString())
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
+                    val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.sorted()
+                    if (index !in indices)
+                        putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
                 }
-                if (selectedOverlay?.name == CustomOverlay::class.simpleName)
-                    selectedOverlayController.apply { // trigger reload
+                if (selectedOverlay?.name == CustomOverlay::class.simpleName && index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
+                    // trigger reload if we are editing the current overlay
+                    selectedOverlayController.apply {
                         val temp = selectedOverlay
                         selectedOverlay = null
                         selectedOverlay = temp
@@ -206,7 +211,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
             text.setOnClickListener {
                 prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, idx) }
-                showOverlayCustomizer()
+                showOverlayCustomizer(idx)
                 d?.dismiss()
             }
             l.addView(ImageView(c).apply {
@@ -228,6 +233,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                                 }
                             }
                             d?.dismiss()
+                            showCustomOverlayManager()
                         }
                         .show()
                 }
@@ -239,19 +245,18 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         layout.addView(LinearLayout(c).apply {
             addView(ImageView(c).apply { setImageResource(R.drawable.ic_add_24dp) })
             addView(TextView(c).apply {
-                text = "add" // todo
+                setText(R.string.custom_overlay_add)
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
             })
             setOnClickListener {
-            prefs.edit {
-                val newIdx = indices.last() + 1
-                putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, newIdx)
-                putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + newIdx).joinToString(","))
+                val newIdx = indices.max() + 1
+                prefs.edit {
+                    putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, newIdx)
+                    putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + newIdx).joinToString(","))
+                }
+                showOverlayCustomizer(newIdx)
+                d?.dismiss()
             }
-            showOverlayCustomizer()
-            d?.dismiss()
-        }
-
         })
 
         d = AlertDialog.Builder(c)
