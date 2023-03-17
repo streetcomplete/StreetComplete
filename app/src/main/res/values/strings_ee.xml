@@ -107,7 +107,7 @@
     <string name="import_export_custom_overlays">Custom Overlays</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
-    <string name="import_presets_overlays_message">Add imported, or replace existing?</string>
+    <string name="import_presets_overlays_message">Add imported, or replace existing? If you choose replace, all currently existing will be removed.</string>
     <string name="import_presets_overlays_add">Add</string>
     <string name="import_presets_overlays_replace">Replace</string>
     <string name="import_error">Import error</string>

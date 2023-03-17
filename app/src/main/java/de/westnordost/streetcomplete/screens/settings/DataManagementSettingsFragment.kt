@@ -395,13 +395,27 @@ class DataManagementSettingsFragment :
         val visibilities = mutableListOf<Array<Any?>>()
         var currentThing = BACKUP_PRESETS
         val profileIdMap = mutableMapOf(0L to 0L) // "default" is not in the presets section
+        val qsRegex = "([0-9]+)_qs_".toRegex()
         for (line in lines) { // go through list of presets
             val split = line.split(",")
             if (split.size < 2) break // happens if we come to the next category
             val id = split[0].toLong()
             profileIdMap[id] = id
         }
-        if (!replaceExistingPresets) {
+
+        if (replaceExistingPresets) {
+            prefs.edit {
+                // remove all per-preset quest settings for proper replace
+                prefs.all.keys.filter { qsRegex.containsMatchIn(it) }.forEach { remove(it) }
+                // set selected preset to default, because previously selected may not exist any more
+                putLong(Prefs.SELECTED_QUESTS_PRESET, 0)
+            }
+
+            // delete existing data in all tables
+            db.delete(QuestPresetsTable.NAME)
+            db.delete(QuestTypeOrderTable.NAME)
+            db.delete(VisibleQuestTypeTable.NAME)
+        } else {
             // map profile ids to ids greater than existing maximum
             val max = db.query(QuestPresetsTable.NAME) { it.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID) }.maxOrNull() ?: 0L
             val keys = profileIdMap.keys.toList()
@@ -423,16 +437,11 @@ class DataManagementSettingsFragment :
                     // get remaining lines (they must be written if BACKUP_PRESETS_QUEST_SETTINGS is written)
                     val l = lines.subList(lines.indexOf(line) + 1, lines.size)
                     // replace per-preset quest settings preset ids
-                    val qs = "([0-9]+)_qs_".toRegex()
-                    val adjustedLines = l.map { it.replace(qs) { result ->
+                    val adjustedLines = l.map { it.replace(qsRegex) { result ->
                         if (result.groupValues.size > 1)
                             "${result.groupValues[1].toLongOrNull()?.let { profileIdMap[it] }}_qs_"
                         else throw (IllegalStateException())
                     } }
-                    if (replaceExistingPresets) // remove all per-preset quest settings for proper replace
-                        prefs.edit { prefs.all.keys.filter { qs.containsMatchIn(it) }.forEach {
-                            remove(it)
-                        } }
                     readToSettings(adjustedLines)
                 } catch (_: Exception){
                     // do nothing if lines are broken somehow
@@ -447,13 +456,6 @@ class DataManagementSettingsFragment :
                 BACKUP_PRESETS_ORDERS -> orders.add(arrayOf(id, split[1], split[2]))
                 BACKUP_PRESETS_VISIBILITIES -> visibilities.add(arrayOf(id, split[1], split[2].toLong()))
             }
-        }
-
-        if (replaceExistingPresets) {
-            // delete existing data in both tables
-            db.delete(QuestPresetsTable.NAME)
-            db.delete(QuestTypeOrderTable.NAME)
-            db.delete(VisibleQuestTypeTable.NAME)
         }
 
         db.insertMany(QuestPresetsTable.NAME,
@@ -473,8 +475,6 @@ class DataManagementSettingsFragment :
             visibilities
         )
 
-        if (replaceExistingPresets) // set selected preset to default, because previously selected may not exist any more
-            prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).commit()
         visibleQuestTypeController.setVisibilities(emptyMap()) // reload stuff
     }
 
@@ -551,6 +551,10 @@ class DataManagementSettingsFragment :
         val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() } ?: return false
         if (lines.first() != "overlays") return false
         return if (replaceExisting) {
+            // first remove old overlays
+            // this is necessary because otherwise overlay may remain, but hidden due to not in indices pref
+            prefs.edit { prefs.all.keys.forEach { if (it.startsWith("custom_overlay")) remove(it) } }
+
             val result = readToSettings(lines.subList(1, lines.size))
             // update in case of old data
             prefs.edit {
@@ -562,19 +566,29 @@ class DataManagementSettingsFragment :
             result
         }
         else {
-            val offset = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.max() + 1
-            val newLines = lines.mapNotNull {
-                if (it == "overlays") return@mapNotNull null
-                val id = it.substringAfter("custom_overlay_").substringBefore("_").toIntOrNull() ?: return@mapNotNull null
-                it.replace(id.toString(), (id + offset).toString())
+            val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!
+                .split(",").mapNotNull { it.toIntOrNull() }
+                .ifEmpty { listOf(0) }.toMutableList()
+            val offset = indices.max() + 1
+            val newLines = lines.mapNotNull { line ->
+                if (line == "overlays") return@mapNotNull null
+                val id = line.substringAfter("custom_overlay_").substringBefore("_").toIntOrNull() ?: return@mapNotNull null
+                indices.add(id + offset)
+                line.replace(id.toString(), (id + offset).toString())
             }
             val result = readToSettings(newLines)
-            // update in case of old data
             prefs.edit {
-                if (prefs.contains("custom_overlay_filter"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, offset), prefs.getString("custom_overlay_filter", "")!!)
-                if (prefs.contains("custom_overlay_color_key"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, offset), prefs.getString("custom_overlay_color_key", "")!!)
+                // update in case of old data
+                if (prefs.contains("custom_overlay_filter") || prefs.contains("custom_overlay_color_key")) {
+                    val oldOverlayIndex = if (indices.contains(offset)) indices.max() + 1 else offset
+                    indices.add(oldOverlayIndex)
+                    if (prefs.contains("custom_overlay_filter"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, oldOverlayIndex), prefs.getString("custom_overlay_filter", "")!!)
+                    if (prefs.contains("custom_overlay_color_key"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, oldOverlayIndex), prefs.getString("custom_overlay_color_key", "")!!)
+                }
+                // set updated indices
+                putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.sorted().joinToString(","))
             }
             result
         }
