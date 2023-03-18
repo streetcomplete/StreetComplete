@@ -64,11 +64,6 @@ class ExternalSourceQuestController(
     }
 
     /** calls [download] for each [ExternalSourceQuestType] enabled in this country, thus may take long */
-    // todo: split it up into download and onMapDataDownloaded callback?
-    //  would allow for faster overall download, but is more complicated to handle (especially getting obsolete quests)
-    //  but only worth considering if there are more sources, or the slow osmose fixable download will be implemented
-    //  idea: download: get current quests, tell questsTypes to download
-    //   once all downloads done AND onMapDataDownloaded comes -> onMapDataDownloaded for all questsTypes, which should then create quests
     suspend fun download(bbox: BoundingBox) {
         withContext(Dispatchers.IO) {
             val countryBoundaries = countryBoundariesFuture.get()
@@ -112,9 +107,6 @@ class ExternalSourceQuestController(
     private val hideListeners: MutableList<HideQuestListener> = CopyOnWriteArrayList()
     fun addHideListener(hideQuestListener: HideQuestListener) {
         hideListeners.add(hideQuestListener)
-    }
-    fun removeHideListener(hideQuestListener: HideQuestListener) {
-        hideListeners.remove(hideQuestListener)
     }
 
     fun hide(key: ExternalSourceQuestKey) {

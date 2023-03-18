@@ -75,7 +75,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                     .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
                         osmoseDao.setAsFalsePositive(issue.uuid)
                         tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that any more
-                        // todo: do some kind of edit, so it can be undone? the edit could be deleted on upload
+                        // todo: do some kind of edit, so it can be undone? the edit could be deleted on upload (see also ExternalSourceModule commented stuff)
                     }
                     .show()
             }

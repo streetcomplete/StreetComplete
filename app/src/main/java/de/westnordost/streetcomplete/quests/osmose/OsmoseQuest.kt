@@ -128,6 +128,9 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
             .create()
     }
 
+    // dialog broken if list is long and button text is long
+    //  but that actually looks like an Android issue,,,
+    //  anyway, with current short button text all buttons are in one line, and there should be no problem
     private fun showIgnoredItemsDialog(context: Context) {
         val pref = questPrefix(prefs) + PREF_OSMOSE_ITEMS
         val items = prefs.getString(pref, OSMOSE_DEFAULT_IGNORED_ITEMS)!!.split("§§").filter { it.isNotEmpty() }.toTypedArray()
@@ -139,7 +142,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
                 else itemsForRemoval.remove(items[i])
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
             }
-            .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ -> // todo: dialog broken if list is long and button text is long... but that's actually an Android issue?
+            .setPositiveButton(R.string.quest_osmose_remove_checked) { _, _ ->
                 prefs.edit { putString(pref, items.filterNot { it in itemsForRemoval }.joinToString("§§")) }
                 osmoseDao.reloadIgnoredItems()
                 OsmQuestController.reloadQuestTypes()

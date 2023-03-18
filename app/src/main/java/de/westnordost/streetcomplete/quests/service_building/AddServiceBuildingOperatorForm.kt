@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
 
-    // TODO: make proper list like ATM operators
-    //  but how to extract from data? taginfo does not really help here
+    // make proper list like ATM operators?
     override val suggestions: List<String> get() = (lastPickedAnswers + OPERATORS).distinct()
 
     override fun onClickOk() {
@@ -38,7 +37,7 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
+            .mostCommonWithin(target = 50, historyCount = 50, first = 1)
             .toList()
     }
 }

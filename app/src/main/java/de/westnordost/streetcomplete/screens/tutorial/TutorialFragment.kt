@@ -220,12 +220,12 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         enableNextButton()
     }
 
+    // overcomplicated thing just to show a message...
     private fun step3Transition() = viewLifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
         binding.nextButton.setText(R.string.letsgo)
-        // todo: effectively i just want to show R.string.tutorial_info_fork_message
 
         val tutorialStepStaySafe = binding.tutorialStepStaySafe
         tutorialStepStaySafe.animate()

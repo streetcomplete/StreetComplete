@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.awaitReceiverCall
@@ -52,6 +53,7 @@ class QuestsSettingsFragment :
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val dayNightQuestFilter: DayNightQuestFilter by inject()
+    private val questTypeOrderController: QuestTypeOrderController by inject()
 
     override val title: String get() = getString(R.string.pref_screen_quests)
 
@@ -112,7 +114,7 @@ class QuestsSettingsFragment :
             Prefs.DAY_NIGHT_BEHAVIOR -> {
                 dayNightQuestFilter.reload()
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
-                // todo: (re)initializeQuestTypeOrders somehow, maybe just set inactive then active in quest
+                questTypeOrderController.onQuestTypeOrderChanged()
             }
             Prefs.QUEST_SETTINGS_PER_PRESET -> { OsmQuestController.reloadQuestTypes() }
             Prefs.QUEST_MONITOR -> {
