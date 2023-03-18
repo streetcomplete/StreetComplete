@@ -68,7 +68,10 @@ class QuestSelectionAdapter(
         set(value) {
             field = value
             notifyDataSetChanged()
+            sceeOnlyQuestTypes = questTypes.filter { questTypeRegistry.getOrdinalOf(it.questType)!! >= EE_QUEST_OFFSET }
         }
+
+    private var sceeOnlyQuestTypes = listOf<QuestVisibility>()
 
     var filter: String = ""
         set(value) {
@@ -106,7 +109,7 @@ class QuestSelectionAdapter(
     private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
 
     private val shownQuestTypes: List<QuestVisibility> get() =
-        questTypesDuringDrag ?: filteredQuestTypes ?: if (onlySceeQuests) questTypes.filter { questTypeRegistry.getOrdinalOf(it.questType)!! >= EE_QUEST_OFFSET } else questTypes
+        questTypesDuringDrag ?: filteredQuestTypes ?: if (onlySceeQuests) sceeOnlyQuestTypes else questTypes
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
         override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
