@@ -48,8 +48,14 @@ class StyleableOverlayManager(
     private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
+        val wasNull = field == null
+        val isNullNow = value == null
         field = value
-        if (value != null) show() else hide()
+        when {
+            wasNull ->   show()
+            isNullNow -> hide()
+            else ->      switchOverlay()
+        }
     }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
@@ -97,6 +103,11 @@ class StyleableOverlayManager(
         clear()
         onNewScreenPosition()
         mapDataSource.addListener(mapDataListener)
+    }
+
+    private fun switchOverlay() {
+        clear()
+        onNewScreenPosition()
     }
 
     private fun hide() {
@@ -150,6 +161,7 @@ class StyleableOverlayManager(
             }
             if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+                ctrl.requestRender()
             }
         }
     }
@@ -169,6 +181,7 @@ class StyleableOverlayManager(
             deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+                ctrl.requestRender()
             }
         }
     }

@@ -59,7 +59,7 @@ class SidewalkOverlay : Overlay {
 
 private fun getFootwayStyle(element: Element): PolylineStyle {
     val foot = element.tags["foot"] ?: when (element.tags["highway"]) {
-        "footway" -> "designated"
+        "footway", "steps" -> "designated"
         "path" -> "yes"
         else -> null
     }
