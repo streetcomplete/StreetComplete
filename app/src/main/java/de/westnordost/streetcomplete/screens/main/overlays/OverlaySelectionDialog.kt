@@ -111,7 +111,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ""))
         }
         val filterText = TextView(ctx).apply {
-            setText("filter info")
+            setText(R.string.custom_overlay_filter_info)
             setPadding(10, 10, 10, 5)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
             setTextColor(ContextCompat.getColor(ctx, R.color.accent))
@@ -164,8 +164,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             }
         }
         val colorText = TextView(ctx).apply {
-            setText(R.string.custom_overlay_color_message)
-            setText("color info")
+            setText(R.string.custom_overlay_color_info)
             setPadding(10, 10, 10, 5)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
             setTextColor(ContextCompat.getColor(ctx, R.color.accent))

@@ -54,28 +54,34 @@ private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
     // get left/right style if there is some match
     var leftColor = ""
     var rightColor = ""
-    if (colorKeySelector != null && element !is Node) // avoid doing needless work
+    var centerColor: String? = null
+    if (colorKeySelector != null && element !is Node && !element.isArea()) // avoid doing needless work
         for ((k, v) in element.tags) {
             if (!k.matches(colorKeySelector)) continue
             // contains or endsWith? contains will also match things like sidewalk:left:surface, which may be wanted or not...
             if (v == "both" || k.contains(":both")) {
-                leftColor = createColorFromString(v + k)
+                // create color in a way that left, right and both match in color
+                leftColor = createColorFromString(v + k.replace(":both", ""))
                 rightColor = leftColor
-                break
-            }
-            if (v == "right" || k.contains(":right")) {
-                rightColor = createColorFromString(v + k)
                 continue
             }
-            if (v == "left" || k.contains(":left"))
-                leftColor = createColorFromString(v + k)
+            if (v == "right" || k.contains(":right")) {
+                rightColor = createColorFromString(v + k.replace(":right", ""))
+                continue
+            }
+            if (v == "left" || k.contains(":left")) {
+                leftColor = createColorFromString(v + k.replace(":left", ""))
+                continue
+            }
+            // only use a center color if there is a match that is not related to left/right/both
+            centerColor = createColorFromString(v + k)
         }
 
     return when {
         element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"]) // currently no coloring possible...
         element.isArea() -> PolygonStyle(color, label = element.tags["name"])
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
-            stroke = null,
+            stroke = centerColor?.let { StrokeStyle(it) },
             strokeLeft = leftColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) },
             strokeRight = rightColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) }
         )

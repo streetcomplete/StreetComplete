@@ -1,5 +1,7 @@
 52.0: |
   <ul>
+  <li>Allow adding multiple custom overlays</li>
+  <li>Improve coloring for custom overlays</li>
   <li>Allow hiding labels when viewing satellite map</li>
   <li>Allow copying text from log reader</li>
   <li>Use separate changesets with adjusted comment for some "other answers"</li>
