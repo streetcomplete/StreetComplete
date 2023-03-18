@@ -87,13 +87,6 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.adapter = imageSelector
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        /* must be cleared because the layout manager holds a reference to the imageSelector
-           (through the spanSizeLookup) which exists outside of the view lifecycle */
-        binding.list.layoutManager = null
-    }
-
     private fun scrollTo(index: Int) {
         val item = binding.list.layoutManager?.findViewByPosition(index) ?: return
         val itemPos = IntArray(2)
