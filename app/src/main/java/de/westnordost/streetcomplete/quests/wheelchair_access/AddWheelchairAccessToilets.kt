@@ -5,8 +5,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
+class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways with amenity = toilets
@@ -27,15 +28,14 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccessToiletsAns
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
-        if (answer is WheelchairAccessToilets)
-            answer.access.updatedDescriptions?.forEach { (language, description) ->
-                // language already contains the colon, or may be empty
-                if (description.isEmpty())
-                    tags.remove("wheelchair:description$language")
-                else
-                    tags["wheelchair:description$language"] = description
-            }
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("wheelchair", answer.osmValue)
+        answer.updatedDescriptions?.forEach { (language, description) ->
+            // language already contains the colon, or may be empty
+            if (description.isEmpty())
+                tags.remove("wheelchair:description$language")
+            else
+                tags["wheelchair:description$language"] = description
+        }
     }
 }

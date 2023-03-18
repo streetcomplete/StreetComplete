@@ -6,12 +6,14 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsAnswer>() {
+class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
-         (
+          wheelchair = limited
+          and (
            toilets = yes
            or !toilets and (
              amenity ~ restaurant|pub|bar
@@ -34,18 +36,24 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title2
 
-    override fun createForm() = AddWheelchairAccessToiletsForm()
+    override fun createForm() = AddWheelchairAccessToiletsPartForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccessToiletsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
-        if (answer is WheelchairAccessToilets)
-            // use the wheelchair:description tag also for toilets part
-            answer.access.updatedDescriptions?.forEach { (language, description) ->
-                // language already contains the colon, or may be empty
-                if (description.isEmpty())
-                    tags.remove("wheelchair:description$language")
-                else
-                    tags["wheelchair:description$language"] = description
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsPartAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is WheelchairAccessToiletsPart -> {
+                tags.updateWithCheckDate("toilets:wheelchair", answer.access.osmValue)
+                tags["toilets"] = "yes"
+                answer.access.updatedDescriptions?.forEach { (language, description) ->
+                    // language already contains the colon, or may be empty
+                    if (description.isEmpty())
+                        tags.remove("wheelchair:description$language")
+                    else
+                        tags["wheelchair:description$language"] = description
+                }
             }
+            NoToilet -> {
+                tags.updateWithCheckDate("toilets", "no")
+            }
+        }
     }
 }

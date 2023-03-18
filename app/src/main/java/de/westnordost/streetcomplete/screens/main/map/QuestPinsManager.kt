@@ -188,6 +188,7 @@ class QuestPinsManager(
         synchronized(pinsMapComponent) {
             if (coroutineContext.isActive) {
                 pinsMapComponent.set(pins)
+                ctrl.requestRender()
             }
         }
     }
@@ -219,6 +220,7 @@ class QuestPinsManager(
             synchronized(pinsMapComponent) {
                 if (coroutineContext.isActive) {
                     pinsMapComponent.set(pins)
+                    ctrl.requestRender()
                 }
             }
         }
