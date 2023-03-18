@@ -169,7 +169,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     // min distance selection or element selection
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
         AlertDialog.Builder(context)
-            .setTitle(R.string.quest_settings_sidewalk_what)
+            .setTitle(R.string.quest_settings_what_to_edit)
             .setPositiveButton(R.string.quest_settings_sidewalk_distance_button) { _,_ ->
                 numberSelectionDialog(context,
                     prefs,

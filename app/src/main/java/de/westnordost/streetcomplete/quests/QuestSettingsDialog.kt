@@ -202,7 +202,7 @@ fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SET
 else
     ""
 
-fun OsmFilterQuestType<*>.getPrefixedFullElementSelectionPref(prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${name}_full_element_selection"
+fun OsmElementQuestType<*>.getPrefixedFullElementSelectionPref(prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${name}_full_element_selection"
 
 private val valueRegex = "[a-z\\d_?,/\\s]+".toRegex()
 

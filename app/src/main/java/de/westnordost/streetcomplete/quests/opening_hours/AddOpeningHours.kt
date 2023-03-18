@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -19,6 +20,8 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRule
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
+import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
+import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours(
@@ -27,7 +30,7 @@ class AddOpeningHours(
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    private val filter by lazy { ("""
+    private val filterString by lazy { ("""
         nodes, ways with
         (
           name or brand or noname = yes or name:signed = no
@@ -119,7 +122,9 @@ class AddOpeningHours(
         )
         and access !~ private|no
         and opening_hours:signed != no
-    """).toElementFilterExpression() }
+    """) }
+
+    private val filter by lazy { prefs.getString(getPrefixedFullElementSelectionPref(prefs), filterString)!!.toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
@@ -193,8 +198,22 @@ class AddOpeningHours(
 
     override val hasQuestSettings: Boolean = true
 
-    override fun getQuestSettingsDialog(context: Context) = booleanQuestSettingsDialog(context, prefs, RESURVEY_ALL_OPENING_HOURS, R.string.quest_settings_resurvey_all_opening_hours, R.string.quest_settings_resurvey_all_opening_hours_yes, R.string.quest_settings_resurvey_all_opening_hours_no)
-
+    override fun getQuestSettingsDialog(context: Context) =
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_what_to_edit)
+            .setPositiveButton(R.string.quest_settings_resurvey_all_opening_hours_title) { _, _ ->
+                booleanQuestSettingsDialog(context, prefs, RESURVEY_ALL_OPENING_HOURS,
+                    R.string.quest_settings_resurvey_all_opening_hours_message,
+                    R.string.quest_settings_resurvey_all_opening_hours_yes,
+                    R.string.quest_settings_resurvey_all_opening_hours_no
+                ).show()
+            }
+            .setNegativeButton(R.string.element_selection_button) { _, _ ->
+                fullElementSelectionDialog(context, prefs, getPrefixedFullElementSelectionPref(prefs),
+                    R.string.quest_settings_element_selection, filterString
+                ).show()
+            }
+            .create()
 }
 
 private const val RESURVEY_ALL_OPENING_HOURS = "qs_AddOpeningHours_resurvey_all"

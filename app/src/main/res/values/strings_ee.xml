@@ -169,7 +169,7 @@
     <string name="quest_settings_reset">Reset</string>
     <string name="quest_settings_element_selection">Set elements eligible for this quest</string>
     <string name="quest_settings_eligible_highways">Set highways eligible for this quest, comma separated</string>
-    <string name="quest_settings_sidewalk_what">What to set?</string>
+    <string name="quest_settings_what_to_edit">What to set?</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>
     <string name="quest_settings_sidewalk_distance_button">Distance</string>
     <string name="quest_settings_max_roof_levels">Maximum value for (building levels) minus (roof levels) for the quest to be shown</string>
@@ -185,7 +185,8 @@
     <string name="quest_settings_osmose_level_medium">Medium</string>
     <string name="quest_settings_osmose_level_low">Low</string>
     <string name="quest_settings_fixme_title">Select fixme values to ignore</string>
-    <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by SCEE? You may need to use the tag editor to enter the correct values.</string>
+    <string name="quest_settings_resurvey_all_opening_hours_title">Resurvey all opening hours</string>
+    <string name="quest_settings_resurvey_all_opening_hours_message">Resurvey all opening hours, including values not understood by SCEE? You may need to use the tag editor to enter the correct values.</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">All</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">Default</string>
     <string name="element_selection_button">Element selection</string>
