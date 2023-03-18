@@ -369,8 +369,12 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
-    <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
-    <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex, uses all matching tags to get a color, based on key and value of the first matching key.</string>
+    <string name="custom_overlay_filter_message">Click the link below to open information about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result.
+        \nThe checkboxes replace the \"nodes, ways with\" part.</string>
+    <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex and uses all matching tags to get a color, based on key and value of the first matching key. (except :left/right/both endings, which take precedence over other keys). If there is a match, the same color means the same value. If there is no match, the color is always red, indicating missing data. Knowledge on regular expressions is very helpful for this feature.
+        \n\nExample:
+        \n\"highway\" shows same highway values in the same color
+        \n\".*surface.*\" shows same matching key / values pairs (e.g. sidewalk:surface:right=asphalt) in the same color</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="custom_overlay_manage">Manage</string>
     <string name="custom_overlay_delete">Really delete %s?</string>
