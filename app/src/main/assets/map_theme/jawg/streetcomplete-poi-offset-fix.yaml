@@ -37,6 +37,33 @@ layers:
                     color: function() { return feature.poi_color }
                     collide: false
                     offset: [-2px, -3.7px]
+                text:
+                    text_source: function() { return feature.label }
+                    max_lines: 2
+                    buffer: 12px
+                    anchor: bottom
+                    offset: [0px, 7px]
+                    font:
+                        family: global.text_font_family
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: global.text_stroke
+        # collide is a boolean, can't use a function...
+        poi_dot_no_collide_labels:
+            filter: { $zoom: { min: 19 }}
+            draw:
+                text:
+                    text_source: function() { return feature.label }
+                    collide: false
+                    max_lines: 2
+                    buffer: 12px
+                    anchor: bottom
+                    offset: [0px, 7px]
+                    font:
+                        family: global.text_font_family
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: global.text_stroke
         dots_no_collide:
             filter: { $zoom: { min: 16 }, poi_color: no }
             draw:

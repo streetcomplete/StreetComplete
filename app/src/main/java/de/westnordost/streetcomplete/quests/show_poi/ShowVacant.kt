@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
+import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -11,6 +12,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
+import de.westnordost.streetcomplete.quests.getLabelSources
 import de.westnordost.streetcomplete.quests.shop_type.IsShopVacant
 import de.westnordost.streetcomplete.quests.shop_type.ShopType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
@@ -29,6 +32,7 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
     override val icon = R.drawable.ic_quest_poi_vacant
     override val dotColor = "grey"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_vacant
+    override val dotLabelSources = getLabelSources("label", this, prefs)
 
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_poi_vacant_title
@@ -58,4 +62,6 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
             }
         }
     }
+
+    override fun getQuestSettingsDialog(context: Context) = getLabelOrElementSelectionDialog(context, this, prefs)
 }

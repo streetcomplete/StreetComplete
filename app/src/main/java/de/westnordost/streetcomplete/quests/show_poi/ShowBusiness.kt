@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
+import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -9,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.NoAnswerFragment
-import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
 
 class ShowBusiness : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
@@ -34,7 +35,7 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",
+                "coworking_space", "prep_school",
 
                 "boat_rental",
                 "theatre",                             // culture
@@ -76,4 +77,6 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
         getMapData().filter(IS_SHOP_EXPRESSION)
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
+
+    override fun getQuestSettingsDialog(context: Context) = getLabelOrElementSelectionDialog(context, this, prefs)
 }

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -25,6 +26,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.isDay
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
@@ -51,6 +53,7 @@ class QuestPinsManager(
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: SharedPreferences,
+    private val mapDataSource: MapDataWithEditsSource,
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
@@ -253,15 +256,23 @@ class QuestPinsManager(
 
     private fun createQuestPins(quest: Quest): List<Pin> {
         val iconName = resources.getResourceEntryName(quest.type.icon)
-        val props = quest.key.toProperties()
         val color = quest.type.dotColor
         val importance = getQuestImportance(quest)
-        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false)
-                && quest.geometry !is ElementPointGeometry && color == "no")
+        val label = if (color != "no" && quest is OsmQuest) getLabel(quest) else null
+        val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
+
+        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && quest.geometry !is ElementPointGeometry && color == "no")
             quest.geometry
-        else
-            null
+        else null
         return quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }
+    }
+
+    private fun getLabel(quest: OsmQuest): String? {
+        val labelSources = quest.type.dotLabelSources.ifEmpty { return null }
+        val tags = mapDataSource.get(quest.elementType, quest.elementId)?.tags ?: return null
+        return labelSources.firstNotNullOfOrNull {
+            if (it == "label") getNameLabel(tags) else tags[it]
+        }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */

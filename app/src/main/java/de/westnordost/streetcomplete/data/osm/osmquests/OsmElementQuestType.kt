@@ -104,4 +104,11 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
 
     override fun createForm(): AbstractOsmQuestForm<T>
+
+    /** tags to derive label of the dot, checked in given order. Use "label" to get the label
+     * using NameAndLocationLabel.getNameLabel. Use empty list to show no label.
+     * Ignored if [dotColor] is no. */
+    val dotLabelSources: List<String> get() = labelList
 }
+
+private val labelList = listOf("label")

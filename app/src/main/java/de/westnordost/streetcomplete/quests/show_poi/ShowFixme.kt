@@ -20,6 +20,7 @@ class ShowFixme : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_poi_fixme
     override val dotColor = "red"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_fixme
+    override val dotLabelSources = listOf("fixme", "FIXME")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fixme_title
 

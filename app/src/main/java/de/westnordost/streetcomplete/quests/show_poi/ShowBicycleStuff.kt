@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
+import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -8,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.NoAnswerFragment
+import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
 
 class ShowBicycleStuff : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
@@ -29,4 +31,6 @@ class ShowBicycleStuff : OsmFilterQuestType<Boolean>() {
         getMapData().filter(filter)
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
+
+    override fun getQuestSettingsDialog(context: Context) = getLabelOrElementSelectionDialog(context, this, prefs)
 }

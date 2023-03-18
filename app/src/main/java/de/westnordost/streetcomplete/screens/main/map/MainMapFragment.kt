@@ -117,7 +117,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = FocusGeometryMapComponent(ctrl, prefs)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource, prefs)
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource, prefs, mapDataSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 

@@ -4,13 +4,20 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.InputType
+import android.util.TypedValue
+import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -26,17 +33,8 @@ fun singleTypeElementSelectionDialog(
     messageId: Int,
     onChanged: () -> Unit = { OsmQuestController.reloadQuestTypes() }
 ): AlertDialog {
-    var dialog: AlertDialog? = null
     val textInput = EditText(context)
-    textInput.addTextChangedListener {
-        val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
-        button?.isEnabled = textInput.text.toString().let {
-            it.lowercase().matches(valueRegex)
-                && !it.trim().endsWith(',')
-                && !it.contains(",,")
-                && it.isNotEmpty() }
-    }
-    dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
+    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
             onChanged()
@@ -46,22 +44,25 @@ fun singleTypeElementSelectionDialog(
             onChanged()
         }
         .create()
+    textInput.addTextChangedListener {
+        val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        button?.isEnabled = textInput.text.toString().let {
+            it.lowercase().matches(valueRegex)
+                && !it.trim().endsWith(',')
+                && !it.contains(",,")
+                && it.isNotEmpty() }
+    }
     dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
     return dialog
 }
 
 /** for setting values of a single number */
 fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: Int, messageId: Int): AlertDialog {
-    var dialog: AlertDialog? = null
     val numberInput = EditText(context)
     numberInput.inputType = InputType.TYPE_CLASS_NUMBER
-    numberInput.addTextChangedListener {
-        val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
-        button?.isEnabled = numberInput.text.toString().let { it.toIntOrNull() != null }
-    }
     numberInput.setPaddingRelative(30,10,30,10)
     numberInput.setText(prefs.getInt(pref, defaultValue).toString())
-    dialog = AlertDialog.Builder(context)
+    val dialog = AlertDialog.Builder(context)
         .setMessage(messageId)
         .setView(numberInput)
         .setNegativeButton(android.R.string.cancel, null)
@@ -78,6 +79,10 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
                 OsmQuestController.reloadQuestTypes()
         }
         .create()
+    numberInput.addTextChangedListener {
+        val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        button?.isEnabled = numberInput.text.toString().let { it.toIntOrNull() != null }
+    }
     dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
     return dialog
 }
@@ -86,11 +91,21 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
  *  This will check validity of input and only allow saving selection can be parsed.
  */
 fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
-    var dialog: AlertDialog? = null
     val textInput = EditText(context)
     val checkPrefix = if (pref.endsWith("_full_element_selection")) "" else "nodes with "
+
+    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue?.trimIndent() ?: "") ?: "", textInput)
+        .setPositiveButton(android.R.string.ok) { _, _ ->
+            prefs.edit().putString(pref, textInput.text.toString()).apply()
+            OsmQuestController.reloadQuestTypes()
+        }
+        .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
+            prefs.edit().remove(pref).apply()
+            OsmQuestController.reloadQuestTypes()
+        }
+        .create()
     textInput.addTextChangedListener {
-        val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
+        val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         val isValidFilterExpression by lazy {
             try {
                 (checkPrefix + it).toElementFilterExpression()
@@ -108,17 +123,6 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
                 && isValidFilterExpression
         }
     }
-
-    dialog = dialog(context, messageId, prefs.getString(pref, defaultValue?.trimIndent() ?: "") ?: "", textInput)
-        .setPositiveButton(android.R.string.ok) { _, _ ->
-            prefs.edit().putString(pref, textInput.text.toString()).apply()
-            OsmQuestController.reloadQuestTypes()
-        }
-        .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
-            prefs.edit().remove(pref).apply()
-            OsmQuestController.reloadQuestTypes()
-        }
-        .create()
     dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) } // disable reset button if setting is default
     return dialog
 }
@@ -148,10 +152,59 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
         .setNegativeButton(android.R.string.cancel, null)
 }
 
+fun getLabelOrElementSelectionDialog(context: Context, questType: OsmFilterQuestType<*>, prefs: SharedPreferences): AlertDialog {
+    val description = TextView(context).apply {
+        setText(R.string.quest_settings_dot_labels_message)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+    }
+    val prefWithPrefix = getPrefixedLabelSourcePref(questType, prefs)
+    val labels = EditText(context).apply {
+        setText(prefs.getString(prefWithPrefix, questType.dotLabelSources.joinToString(", ")))
+    }
+    var d: AlertDialog? = null
+    d = AlertDialog.Builder(context)
+        .setView(LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(description)
+            addView(labels)
+            addView(Button(context).apply {
+                setText(R.string.element_selection_button)
+                setOnClickListener {
+                    fullElementSelectionDialog(context, prefs, questType.getPrefixedFullElementSelectionPref(prefs), R.string.quest_settings_element_selection, questType.elementFilter).show()
+                    d?.dismiss()
+                }
+            })
+            setPadding(30, 10, 30, 10)
+        })
+        .setPositiveButton(android.R.string.ok) { _, _ ->
+            labels.text.toString().split(",")
+            prefs.edit { putString(prefWithPrefix, labels.text.toString()) }
+            OsmQuestController.reloadQuestTypes()
+        }
+        .setNegativeButton(android.R.string.cancel, null)
+        .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
+            prefs.edit().remove(prefWithPrefix).apply()
+            OsmQuestController.reloadQuestTypes()
+        }.create()
+    d.setOnShowListener { d.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(prefWithPrefix) } // disable reset button if setting is default
+    return d
+}
+
+fun getLabelSources(defaultValue: String, questType: OsmFilterQuestType<*>, prefs: SharedPreferences) =
+    prefs.getString(getPrefixedLabelSourcePref(questType, prefs),
+        defaultValue
+    )!!.split(",").map { it.trim() }
+
+private fun getPrefixedLabelSourcePref(questType: OsmElementQuestType<*>, prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${questType.name}_label_sources"
+
 fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""
 
-private val valueRegex = "[a-z0-9_?,/\\s]+".toRegex()
-private val elementSelectionRegex = "[a-z0-9_=!~()|:,<>\\s+-]+".toRegex() // todo: relax a little bit?
+fun OsmFilterQuestType<*>.getPrefixedFullElementSelectionPref(prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${name}_full_element_selection"
+
+private val valueRegex = "[a-z\\d_?,/\\s]+".toRegex()
+
+// relax a little bit? but e.g. A-Z is very uncommon and might lead to mistakes
+private val elementSelectionRegex = "[a-z\\d_=!~()|:,<>\\s+-]+".toRegex()

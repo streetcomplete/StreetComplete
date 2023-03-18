@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
+import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -7,6 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
+import de.westnordost.streetcomplete.quests.getLabelSources
 
 class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
@@ -26,6 +29,7 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_poi_traffic
     override val dotColor = "deepskyblue"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_traffic
+    override val dotLabelSources = getLabelSources( "", this, prefs)
 
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_poi_traffic_title
@@ -49,4 +53,6 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
         if (answer)
             tags["traffic_calming"] = "table"
     }
+
+    override fun getQuestSettingsDialog(context: Context) = getLabelOrElementSelectionDialog(context, this, prefs)
 }
