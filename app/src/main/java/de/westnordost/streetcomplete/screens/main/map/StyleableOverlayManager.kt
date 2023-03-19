@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -25,6 +27,7 @@ import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.coroutineContext
@@ -42,13 +45,77 @@ class StyleableOverlayManager(
 
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
-    // map data in current view: key -> [pin, ...]
-    private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var updateJob: Job? = null
     private val m = Mutex()
+
+    // cache recent queries in some sort of crappy chaotic spatial cache
+    // don't do it by tile, because this can be much slower to load in some cases
+    private val cache = LinkedHashMap<TilesRect, HashMap<ElementKey, StyledElement>>(16, 1f, true)
+
+    // return styledElements, and cache the ones from rects we don't have
+    private fun getFromCache(tilesRect: TilesRect): Collection<StyledElement> {
+        // get smallest cached rect that completely contains tileRect
+        var smallestTile: TilesRect? = null
+        cache.keys.forEach {
+            if (it.contains(tilesRect) && it.size < (smallestTile?.size ?: 1000))
+                smallestTile = it
+        }
+        if (smallestTile != null) return cache[smallestTile]!!.values
+        // maybe we have it cached in multiple tiles
+        val tiles = tilesRect.asTilePosSequence().toList()
+        // info which cached tilesRect contains which tiles
+        val a = cache.keys.mapNotNull { rect ->
+            rect to tiles.filter { rect.contains(it.toTilesRect()) }.ifEmpty { return@mapNotNull null }
+        }.sortedBy { it.first.size } // sort by rect size so we prefer small ones
+        if (a.isEmpty()){
+            return fetchAndCache(tilesRect)
+        }
+
+        val cachedTiles = hashSetOf<TilePos>()
+        val fetchRects = mutableListOf<TilesRect>()
+        for ((rect, list) in a) {
+            if (list.any { it !in cachedTiles }) {
+                cachedTiles.addAll(list)
+                fetchRects.add(rect)
+            }
+        }
+        // allow returning a larger area than wanted, this is slower when setting but uses cached data
+        if (cachedTiles.containsAll(tiles) && fetchRects.flatMap { it.asTilePosSequence().toList() }.toHashSet().size <= tiles.size * 1.5) {
+            val data = hashSetOf<StyledElement>()
+            fetchRects.forEach { data.addAll(cache[it]!!.values) }
+            return data
+        }
+
+        // still here -> just use the tiles that are fully contained in cache, and request the rest
+        val fullyContainedTileRects = a.unzip().first.filter { tilesRect.contains(it) }
+        val t = tiles.filterNot { tile -> fullyContainedTileRects.any { it.contains(tile.toTilesRect()) } }
+        val minRect = t.minTileRect()
+        return if (minRect == tilesRect || minRect == null) {
+            fetchAndCache(tilesRect)
+        } else {
+            val data = hashSetOf<StyledElement>()
+            fullyContainedTileRects.forEach { data.addAll(cache[it]!!.values) }
+            data.addAll(fetchAndCache(minRect))
+            data
+        }
+    }
+
+    private fun fetchAndCache(tilesRect: TilesRect): Collection<StyledElement> {
+        val mapData = mapDataSource.getMapDataWithGeometry(tilesRect.asBoundingBox(TILES_ZOOM))
+        val overlay = overlay ?: return emptyList()
+        val data = hashMapOf<ElementKey, StyledElement>()
+        createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
+            if (styledElement == null || !levelFilter.levelAllowed(styledElement.element)) return@forEach
+            data[key] = styledElement
+        }
+
+        cache[tilesRect] = data
+        if (cache.size > 16) cache.keys.remove(cache.keys.first())
+        return data.values
+    }
 
     private var overlay: Overlay? = null
     set(value) {
@@ -136,55 +203,44 @@ class StyleableOverlayManager(
     }
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
-        val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
             while (m.isLocked) { delay(50) }
             if (!coroutineContext.isActive) return@launch
-            val mapData = m.withLock { mapDataSource.getMapDataWithGeometry(bbox) }
-            setStyledElements(mapData)
+            val data = m.withLock { getFromCache(tilesRect) }
+            if (!coroutineContext.isActive) return@launch
+            mapComponent.set(data)
+            ctrl.requestRender()
         }
     }
 
     private fun clear() {
-        synchronized(mapDataInView) { mapDataInView.clear() }
+        runBlocking { m.withLock { cache.clear() } }
         lastDisplayedRect = null
         viewLifecycleScope.launch { mapComponent.clear() }
-    }
-
-    private suspend fun setStyledElements(mapData: MapDataWithGeometry) {
-        val layer = overlay ?: return
-        synchronized(mapDataInView) {
-            mapDataInView.clear()
-            createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
-                if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
-                if (styledElement != null) {
-                    mapDataInView[key] = styledElement
-                }
-            }
-            if (coroutineContext.isActive) {
-                mapComponent.set(mapDataInView.values)
-                ctrl.requestRender()
-            }
-        }
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val layer = overlay ?: return
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         var changedAnything = false
-        synchronized(mapDataInView) {
+        m.withLock {
+            val bboxes = cache.keys.associateWith { it.asBoundingBox(TILES_ZOOM) }
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
                 if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
-                if (styledElement != null) mapDataInView[key] = styledElement
-                else                       mapDataInView.remove(key)
+
+                if (styledElement != null) cache.forEach {
+                    if (styledElement.geometry.getBounds().intersect(bboxes[it.key]!!))
+                        it.value[key] = styledElement
+                } else
+                    cache.values.forEach { if (it.remove(key) != null) changedAnything = true }
                 if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
                     changedAnything = true
                 }
             }
-            deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
+            deleted.forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
             if (changedAnything && coroutineContext.isActive) {
-                mapComponent.set(mapDataInView.values)
+                mapComponent.set(lastDisplayedRect?.let { getFromCache(it) } ?: cache.values.flatMap { it.values }.toHashSet())
                 ctrl.requestRender()
             }
         }

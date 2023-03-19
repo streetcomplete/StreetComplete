@@ -91,13 +91,13 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val g = if (style is PolygonStyle && (style.icon != null || style.label != null)) {
                 // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
                 // issue that icons for polygons are shown on every single vertex
-                val props = HashMap<String, String>(4)
+                val props2 = HashMap<String, String>(4)
                 val polygonStyle = style as PolygonStyle
-                props[ELEMENT_ID] = element.id.toString()
-                props[ELEMENT_TYPE] = element.type.name
-                polygonStyle.icon?.let { props["icon"] = it }
-                polygonStyle.label?.let { props["text"] = it }
-                ElementPointGeometry(geometry.center).toTangramGeometry(props) + g1
+                props2[ELEMENT_ID] = element.id.toString()
+                props2[ELEMENT_TYPE] = element.type.name
+                polygonStyle.icon?.let { props2["icon"] = it }
+                polygonStyle.label?.let { props2["text"] = it }
+                ElementPointGeometry(geometry.center).toTangramGeometry(props2) + g1
             } else g1
             sel.tangramGeometry = g
             g
