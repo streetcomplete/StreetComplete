@@ -1,11 +1,12 @@
-52.0: |
+52.0-beta1: |
   <ul>
-  <li>Allow adding multiple custom overlays</li>
+  <li>Allow adding multiple custom overlays (#404)</li>
+  <li>Performance improvements when setting quest pins, overlay elements and when downloading</li>
   <li>Improve coloring for custom overlays</li>
-  <li>Allow hiding road name labels when viewing satellite map</li>
+  <li>Allow hiding road name labels when viewing satellite map (#418)</li>
   <li>Show configurable labels with POI dot quests</li>
   <li>Allow copying text from log reader</li>
-  <li>Use separate changesets with adjusted comment for some "other answers"</li>
+  <li>Use separate changesets with adjusted comment for some <i>other answers</i></li>
   <li>Small fixes and improvements</li>
   </ul>
 

@@ -24,6 +24,7 @@ class SpatialCache<K, T>(
     private val fetch: (BoundingBox) -> Collection<T>,
     private val getKey: T.() -> K,
     private val getPosition: T.() -> LatLon,
+    private val noTrim: Map<TilePos, Int> = emptyMap()
 ) {
     private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles / 0.75).toInt(), 0.75f, true)
     private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
@@ -136,9 +137,11 @@ class SpatialCache<K, T>(
 
     /** Reduces cache size to the given number of non-empty [tiles]. */
     fun trim(tiles: Int = maxTiles) { synchronized(this) {
-        while (size > tiles) {
-            val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
-            removeTile(firstNonEmptyTile)
+        val i = byTile.iterator()
+        while (i.hasNext() && size > tiles) {
+            val tile = i.next()
+            if (tile.value.isNotEmpty() && tile.key !in noTrim)
+                removeTile(tile.key)
         }
     } }
 

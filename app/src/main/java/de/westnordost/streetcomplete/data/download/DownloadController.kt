@@ -70,6 +70,10 @@ class DownloadController(
         downloadServiceIsBound = false
     }
 
+    fun setPersisting(persisting: Boolean) {
+        downloadService?.persisting = persisting
+    }
+
     override fun addDownloadProgressListener(listener: DownloadProgressListener) {
         downloadProgressRelay.addListener(listener)
     }

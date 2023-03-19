@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
@@ -7,7 +8,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.format
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
@@ -19,6 +26,7 @@ class MapDataController internal constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator,
     private val createdElementsController: CreatedElementsController,
+    private val downloadController: DownloadController,
 ) : MapDataRepository {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -49,6 +57,8 @@ class MapDataController internal constructor(
         )
         elements to elementGeometries
     }
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private var dbJob: Job? = null // we rely on this job never being canceled (which should not be possible unless explicitly calling cancel)
 
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
@@ -73,22 +83,34 @@ class MapDataController internal constructor(
             // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
             // see comment for QUEST_FILTER_PADDING
             cache.update(oldElementKeys, mapData, geometryEntries, bbox)
-
-            elementDB.deleteAll(oldElementKeys)
-            geometryDB.deleteAll(oldElementKeys)
-            geometryDB.putAll(geometryEntries)
-            elementDB.putAll(mapData)
         }
-
-        Log.i(TAG,
-            "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-            " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
-        )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
         mapDataWithGeometry.boundingBox = mapData.boundingBox
 
+        // first call onReplaced, then persist the data
+        // this allows quests to be created and displayed before starting to persist data (which slows down quest creation considerably)
+        // overall the persist takes a little longer, but it's still perceived as a clear performance improvement
         onReplacedForBBox(bbox, mapDataWithGeometry)
+
+        val oldDbJob = dbJob
+        dbJob = scope.launch {
+            cache.noTrimPlus(mapData.boundingBox!!)
+            downloadController.setPersisting(true)
+            oldDbJob?.join()
+            synchronized(this@MapDataController) {
+                elementDB.deleteAll(oldElementKeys)
+                geometryDB.deleteAll(oldElementKeys)
+                geometryDB.putAll(geometryEntries)
+                elementDB.putAll(mapData)
+            }
+            cache.noTrimMinus(mapData.boundingBox!!)
+            Log.i(TAG,
+                "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
+                " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
+            )
+            downloadController.setPersisting(false)
+        }
     }
 
     /** incorporate the [mapDataUpdates] (data has been updated after upload) */
@@ -110,17 +132,41 @@ class MapDataController internal constructor(
 
             cache.update(deletedKeys, elements, geometryEntries)
 
-            elementDB.deleteAll(deletedKeys)
-            geometryDB.deleteAll(deletedKeys)
-            geometryDB.putAll(geometryEntries)
-            elementDB.putAll(elements)
-            createdElementsController.putAll(newElementKeys)
+            if (newElementKeys.isNotEmpty())
+                createdElementsController.putAll(newElementKeys)
         }
 
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
+
+        val oldDbJob = dbJob
+        dbJob = scope.launch {
+            // the background job here is mostly so that a running dbJob (slow persist) doesn't block updateAll
+            if (oldDbJob?.isActive == true) {
+                val bbox = geometryEntries.flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }.enclosingBoundingBox()
+                cache.noTrimPlus(bbox)
+                oldDbJob.join()
+                // no need to set persisting, as this is only few elements at a time
+                synchronized(this@MapDataController) {
+                    elementDB.deleteAll(deletedKeys)
+                    geometryDB.deleteAll(deletedKeys)
+                    geometryDB.putAll(geometryEntries)
+                    elementDB.putAll(elements)
+                }
+                cache.noTrimMinus(bbox)
+            } else {
+                // no need for noTrim, this is fast anyway if there is no persist running
+                oldDbJob?.join() // probably unnecessary, but better be safe
+                synchronized(this@MapDataController) {
+                    elementDB.deleteAll(deletedKeys)
+                    geometryDB.deleteAll(deletedKeys)
+                    geometryDB.putAll(geometryEntries)
+                    elementDB.putAll(elements)
+                }
+            }
+        }
     }
 
     /** Create ElementGeometryEntries for [elements] using [mapData] to supply the necessary geometry */

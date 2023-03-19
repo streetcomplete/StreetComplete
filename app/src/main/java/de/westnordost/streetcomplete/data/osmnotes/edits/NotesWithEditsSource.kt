@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.util.SpatialCache
 import java.util.concurrent.CopyOnWriteArrayList
 
 class NotesWithEditsSource(
@@ -23,6 +24,7 @@ class NotesWithEditsSource(
         fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val noteCache = SpatialCache(16, 64, null, { getAllForCache(it) }, Note::id, Note::position)
 
     private val noteControllerListener = object : NoteController.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -73,6 +75,7 @@ class NotesWithEditsSource(
     }
 
     fun get(noteId: Long): Note? {
+        noteCache.get(noteId)?.let { return it }
         val noteEdits = noteEditsSource.getAllUnsyncedForNote(noteId)
         var note = noteController.get(noteId)
         for (noteEdit in noteEdits) {
@@ -90,11 +93,11 @@ class NotesWithEditsSource(
         return note
     }
 
-    fun getAllPositions(bbox: BoundingBox): List<LatLon> =
-        noteController.getAllPositions(bbox) +
-        noteEditsSource.getAllUnsyncedPositions(bbox)
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> = noteCache.get(bbox).map { it.position }
 
-    fun getAll(bbox: BoundingBox): Collection<Note> =
+    fun getAll(bbox: BoundingBox): Collection<Note> = noteCache.get(bbox)
+
+    private fun getAllForCache(bbox: BoundingBox): Collection<Note> =
         editsAppliedToNotes(
             noteController.getAll(bbox),
             noteEditsSource.getAllUnsynced(bbox)
@@ -161,10 +164,12 @@ class NotesWithEditsSource(
     }
 
     private fun callOnUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
+        noteCache.update(added + updated, deleted)
         listeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 
     private fun callOnCleared() {
+        noteCache.clear()
         listeners.forEach { it.onCleared() }
     }
 }

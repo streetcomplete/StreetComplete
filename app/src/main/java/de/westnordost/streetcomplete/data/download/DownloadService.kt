@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import de.westnordost.streetcomplete.util.Log
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -46,6 +45,11 @@ class DownloadService : CoroutineIntentService(TAG) {
     // state
     private var isPriorityDownload: Boolean = false
     private var isDownloading: Boolean = false
+        set(value) {
+            field = value
+            updateShowNotification()
+        }
+    var isPersisting: Boolean = false
         set(value) {
             field = value
             updateShowNotification()
@@ -98,7 +102,7 @@ class DownloadService : CoroutineIntentService(TAG) {
     }
 
     private fun updateShowNotification() {
-        if (!showNotification || !isDownloading) stopForeground(true)
+        if (!showNotification || !(isDownloading || isPersisting)) stopForeground(true)
         else startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
     }
 
@@ -111,6 +115,10 @@ class DownloadService : CoroutineIntentService(TAG) {
         val isPriorityDownloadInProgress: Boolean get() = isPriorityDownload
 
         val isDownloadInProgress: Boolean get() = isDownloading
+
+        var persisting: Boolean
+            get() = isPersisting
+            set(value) { isPersisting = value }
 
         var showDownloadNotification: Boolean
             get() = showNotification
