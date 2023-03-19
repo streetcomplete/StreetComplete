@@ -73,7 +73,7 @@ class DisplaySettingsFragment :
                 setText(R.string.pref_gpx_track_download)
                 isEnabled = gpxFileExists
                 setOnClickListener {
-                    val points = loadGpxTrackPoints(requireContext()) ?: return@setOnClickListener
+                    val points = loadGpxTrackPoints(requireContext(), true) ?: return@setOnClickListener
                     // for getting tiles containing the track, we simply assume that there is at least one point in each tile
                     // this will cause issues for crude tracks, but we can take care about that later
                     val usedTiles = hashSetOf<TilePos>()
@@ -155,13 +155,14 @@ class DisplaySettingsFragment :
     }
 }
 
-fun loadGpxTrackPoints(context: Context): List<LatLon>? {
+fun loadGpxTrackPoints(context: Context, complain: Boolean = false): List<LatLon>? {
     // load gpx file as one long track, no matter how it's stored internally (for now)
     // <trkpt lat="..." lon="..."><ele>...</ele></trkpt>
     // <wpt lon="..." lat="...">
     val gpxFile = context.getExternalFilesDir(null)?.let { File(it, GPX_TRACK_FILE) }
     if (gpxFile?.exists() != true) {
-        context.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
+        if (complain)
+            context.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
         return null
     }
     val gpxPoints = gpxFile.readLines().mapNotNull { line -> // this is a bit slow, but ok
