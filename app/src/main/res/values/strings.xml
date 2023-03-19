@@ -1638,7 +1638,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_surface">Surfaces</string>
 
     <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
-    <string name="overlay_path_surface_not_segregated">Single surface</string>
 
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>
