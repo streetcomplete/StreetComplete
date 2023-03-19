@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
@@ -134,7 +135,9 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             initStateFromTags()
         }
 
-        if (element!!.tags["segregated"] == "yes" || originalCyclewaySurface != null || originalFootwaySurface != null) {
+        val isSegregated = element!!.tags["segregated"] == "yes"
+        val isPath = element!!.tags["highway"] in ALL_PATHS
+        if (isPath && (isSegregated || originalCyclewaySurface != null || originalFootwaySurface != null)) {
             switchToFootwayCyclewaySurfaceLayout()
         }
 
