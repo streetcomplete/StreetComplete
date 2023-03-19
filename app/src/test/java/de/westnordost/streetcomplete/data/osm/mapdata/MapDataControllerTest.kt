@@ -14,8 +14,12 @@ import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.math.enlargedBy
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -44,7 +48,7 @@ class MapDataControllerTest {
         elementDB = mock()
         geometryCreator = mock()
         createdElementsController = mock()
-        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController)
+        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController, mock())
     }
 
     @Test fun get() {
@@ -114,6 +118,7 @@ class MapDataControllerTest {
             deleted = deleteKeys,
             idUpdates = idUpdates
         ))
+        sleep(50)
 
         val expectedDeleteKeys = deleteKeys + idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
         verify(geometryDB).deleteAll(expectedDeleteKeys)
@@ -178,6 +183,7 @@ class MapDataControllerTest {
 
         controller.addListener(listener)
         controller.putAllForBBox(bbox, mapData)
+        sleep(2000) // long wait necessary, because cache.noTrimPlus takes long for such a huge bbox (33k z16 tiles)
 
         verify(elementDB).deleteAll(eq(emptySet()))
         verify(geometryDB).deleteAll(eq(emptySet()))

@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -205,10 +206,11 @@ class NotesWithEditsSourceTest {
         val ps1 = listOf(p(3.0, 2.0), p(1.0, 3.0))
         val ps2 = listOf(p(3.0, 2.0), p(5.0, 1.0))
 
-        on(noteController.getAllPositions(any())).thenReturn(ps1)
-        on(noteEditsController.getAllUnsyncedPositions(any())).thenReturn(ps2)
+        on(noteController.getAll(any<BoundingBox>())).thenReturn(ps1.map { note(it.hashCode().toLong(), it) })
+        on(noteEditsController.getAllUnsynced(any())).thenReturn(ps2.map { noteEdit(noteId = it.hashCode().toLong() + 1, pos = it, action = NoteEditAction.CREATE) })
 
-        val positions = src.getAllPositions(bbox)
+        val posBbox = (ps1 + ps2).enclosingBoundingBox()
+        val positions = src.getAllPositions(posBbox)
 
         assertTrue(positions.containsAll(ps1 + ps2))
     }
@@ -241,7 +243,8 @@ class NotesWithEditsSourceTest {
         on(noteController.getAll(any<BoundingBox>())).thenReturn(initialNotes1)
         on(noteEditsController.getAllUnsynced(any())).thenReturn(edits1)
 
-        assertEquals(expectedNotes1.toSet(), src.getAll(bbox).toSet())
+        val notesBbox = (initialNotes1.map { it.position } + edits1.map { it.position }).enclosingBoundingBox()
+        assertEquals(expectedNotes1.toSet(), src.getAll(notesBbox).toSet())
     }
 
     //endregion
