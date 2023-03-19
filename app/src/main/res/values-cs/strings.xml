@@ -1314,4 +1314,13 @@ Chcete ho posunout?"</string>
     <string name="street_parking_staggered_on_street">"Na ulici střídavě na obou stranách"</string>
     <string name="street_parking_staggered_half_on_kerb">"Částečně na chodníku střídavě na obou stranách"</string>
     <string name="quest_traffic_signals_sound_description">"Nápověda: Hledejte reproduktory. Ne všechny zvukové signály lze aktivovat tlačítkem."</string>
+    <string name="quest_presets_duplicate">"Duplikovat"</string>
+    <string name="label_block">"blok"</string>
+    <string name="quest_address_answer_block">"Je uvnitř bloku…"</string>
+    <string name="quest_address_answer_no_block">"Není uvnitř bloku…"</string>
+    <string name="quest_surface_value_mud">"Trvalé bláto"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Není tu žádná toaleta"</string>
+    <string name="unknown_surface_title">"Jiný druh povrchu"</string>
+    <string name="overlay_surface">"Povrchy"</string>
+    <string name="overlay_path_surface_segregated">"Rozděleno na části pro cyklisty a chodce"</string>
 </resources>
