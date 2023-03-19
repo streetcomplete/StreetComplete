@@ -167,7 +167,7 @@
 
     <!-- quest settings -->
     <string name="quest_settings_reset">Reset</string>
-    <string name="quest_settings_element_selection">Set elements eligible for this quest</string>
+    <string name="quest_settings_element_selection">Set elements eligible for this quest. &lt;a href=\"https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info on the element selection syntax in a browser.</string>
     <string name="quest_settings_eligible_highways">Set highways eligible for this quest, comma separated</string>
     <string name="quest_settings_what_to_edit">What to set?</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>

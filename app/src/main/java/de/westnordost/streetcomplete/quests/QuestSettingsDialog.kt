@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.InputType
+import android.text.method.LinkMovementMethod
 import android.util.TypedValue
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
+import androidx.core.text.HtmlCompat
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -19,6 +21,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import java.util.regex.PatternSyntaxException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
@@ -94,6 +97,8 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     val textInput = EditText(context)
     val checkPrefix = if (pref.endsWith("_full_element_selection")) "" else "nodes with "
 
+    val message = HtmlCompat.fromHtml(context.getString(messageId), HtmlCompat.FROM_HTML_MODE_LEGACY)
+
     val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue?.trimIndent() ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
@@ -103,6 +108,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             prefs.edit().remove(pref).apply()
             OsmQuestController.reloadQuestTypes()
         }
+        .setMessage(message)
         .create()
     textInput.addTextChangedListener {
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
@@ -111,6 +117,9 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
                 (checkPrefix + it).toElementFilterExpression()
                 true
             } catch(e: ParseException) {
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                false
+            } catch(e: PatternSyntaxException) {
                 Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                 false
             }
@@ -123,7 +132,10 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
                 && isValidFilterExpression
         }
     }
-    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) } // disable reset button if setting is default
+    dialog.setOnShowListener {
+        dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) // disable reset button if setting is default
+        dialog.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance() // make the link actually open a browser
+    }
     return dialog
 }
 
@@ -207,4 +219,4 @@ fun OsmElementQuestType<*>.getPrefixedFullElementSelectionPref(prefs: SharedPref
 private val valueRegex = "[a-z\\d_?,/\\s]+".toRegex()
 
 // relax a little bit? but e.g. A-Z is very uncommon and might lead to mistakes
-private val elementSelectionRegex = "[a-z\\d_=!~()|:,<>\\s+-]+".toRegex()
+private val elementSelectionRegex = "[a-z\\d_=!?\"~*\\[\\]()|:.,<>\\s+-]+".toRegex()
