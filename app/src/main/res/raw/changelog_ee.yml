@@ -6,6 +6,7 @@
   <li>Allow hiding road name labels when viewing satellite map (#418)</li>
   <li>Show configurable labels with POI dot quests</li>
   <li>Allow copying text from log reader</li>
+  <li>Allow answering that a road is under construction</li>
   <li>Use separate changesets with adjusted comment for some <i>other answers</i></li>
   <li>Small fixes and improvements</li>
   </ul>

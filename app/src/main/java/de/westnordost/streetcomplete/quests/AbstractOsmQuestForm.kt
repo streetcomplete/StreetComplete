@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.app.DatePickerDialog
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.location.Location
@@ -48,16 +49,24 @@ import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
+import de.westnordost.streetcomplete.util.ktx.toInstant
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.add
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.plus
+import kotlinx.datetime.toJavaLocalDate
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
@@ -183,6 +192,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
             createItsPrivateAnswer()?.let { answers.add(it) }
             createItsDemolishedAnswer()?.let { answers.add(it) }
+            createConstructionAnswer()?.let { answers.add(it) }
         }
 
         if (element is Node // add moveNodeAnswer only if it's a free floating node
@@ -366,6 +376,51 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         else null
     }
 
+    private fun createConstructionAnswer(): AnswerItem? {
+        if (!elementWithoutAccessTagsFilter.matches(element)
+            || !element.tags.containsKey("highway")
+            || element.tags["highway"] == "construction"
+        ) return null
+        return AnswerItem(R.string.quest_construction) {
+            val tomorrow = systemTimeNow().toLocalDate().plus(1, DateTimeUnit.DAY)
+            val p = DatePickerDialog(requireContext(), { _, y, m, d ->
+                val finishDate = LocalDate(y, m + 1, d)
+                val today = systemTimeNow().toLocalDate()
+                val builder = StringMapChangesBuilder(element.tags)
+                val diff = finishDate.toEpochDays() - today.toEpochDays()
+                if (diff <= 0) return@DatePickerDialog // don't even bother to tell the user if they are trying to enter wrong data
+
+                // for short construction up to a few months it's better to use conditional access
+                // as per https://wiki.openstreetmap.org/wiki/Tag:highway%3Dconstruction
+                if (diff < 200) { // we arbitrarily set the few months to 200 days
+                    val f = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.US)
+                    builder["access:conditional"] = "no @ (${f.format(today.toJavaLocalDate())}-${f.format(finishDate.toJavaLocalDate())})"
+                    viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                } else {
+                    // if we actually change the highway to construction, we let the user set a construction value
+                    val t = EditText(requireContext()).apply {
+                        setText(element.tags["highway"])
+                        setPadding(30, 10, 30, 10)
+                    }
+                    val f = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)
+                    builder["opening_date"] = f.format(finishDate.toJavaLocalDate())
+                    builder["highway"] = "construction"
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.quest_construction_value)
+                        .setView(t)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            t.text.toString().takeIf { it.isNotBlank() }?.let { builder["construction"] = it }
+                            viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                        }
+                        .show()
+                }
+            }, tomorrow.year, tomorrow.monthNumber - 1, tomorrow.dayOfMonth)
+            p.datePicker.minDate = tomorrow.toInstant().toEpochMilliseconds()
+            p.show()
+        }
+    }
+
     private fun createItsDemolishedAnswer(): AnswerItem? {
         if (!element.isArea()) return null
         return if (demolishableBuildingsFilter.matches(element))
@@ -425,10 +480,17 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         private val elementWithoutAccessTagsFilter = """
         nodes, ways, relations with
          !access
+         and !access:conditional
          and !bicycle
+         and !bicycle:conditional
          and !foot
+         and !foot:conditional
          and !vehicle
+         and !vehicle:conditional
          and !motor_vehicle
+         and !motor_vehicle:conditional
+         and !motorcycle
+         and !motorcycle:conditional
          and !horse
          and !bus
          and !hgv

@@ -352,6 +352,8 @@
     <string name="quest_seating_no">No seating, but not takeout only</string>
     <string name="quest_private">It’s private</string>
     <string name="quest_building_demolished">It’s demolished (traces visible)</string>
+    <string name="quest_construction">It’s under construction until…</string>
+    <string name="quest_construction_value">Set \"construction=…\", or leave empty if unknown</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_building_entrance_parking">Parking entrance</string>
 
