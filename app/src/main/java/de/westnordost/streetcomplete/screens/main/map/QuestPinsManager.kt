@@ -6,12 +6,14 @@ import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
@@ -177,12 +179,31 @@ class QuestPinsManager(
 
     private suspend fun setQuestPins(newQuests: List<Quest>) {
         val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        val normalQuests = hashMapOf<ElementGeometry, Quest>()
+        val poiDots = hashMapOf<ElementGeometry, Quest>()
+        val markersAtEndQuests = mutableListOf<Quest>()
+        newQuests.forEach {
+            // (effectively) filter so that for every geometry only the one with lowest order remains
+            // but if the quest has markers at ends, pins are at a different position -> simply always show
+            if ((it.type as? OsmElementQuestType<*>)?.hasMarkersAtEnds == true) {
+                markersAtEndQuests.add(it)
+                return@forEach
+            }
+
+            val order = questTypeOrders[it.type] ?: 0
+            val map = if (it.type.dotColor == "no") normalQuests else poiDots
+            val oldOrder = questTypeOrders[map[it.geometry]?.type]
+            if (oldOrder == null || order < oldOrder)
+                map[it.geometry] = it
+        }
         val pins = synchronized(questsInView) {
             // remove only quests without visible pins, because
             //  now newQuests are only quests we might not have had in questsInView
             //  we don't want to remove quests for long ways only because the center is not visible
             questsInView.values.removeAll { pins -> pins.none { bbox?.contains(it.position) != false } }
-            newQuests.forEach { questsInView[it.key] = createQuestPins(it) }
+            normalQuests.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
+            poiDots.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
+            markersAtEndQuests.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
             questsInView.values.flatten()
         }
         synchronized(pinsMapComponent) {
@@ -195,8 +216,25 @@ class QuestPinsManager(
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
         var deletedAny = false
+        val normalQuests = hashMapOf<ElementGeometry, Quest>()
+        val poiDots = hashMapOf<ElementGeometry, Quest>()
+        val markersAtEndQuests = mutableListOf<Quest>()
+        added.forEach {
+            if (displayedBBox?.contains(it.position) == false) return@forEach
+            // (effectively) filter so that for every geometry only the one with lowest order remains
+            // but if the quest has markers at ends, pins are at a different position -> simply always show
+            if ((it.type as? OsmElementQuestType<*>)?.hasMarkersAtEnds == true) {
+                markersAtEndQuests.add(it)
+                return@forEach
+            }
+
+            val order = questTypeOrders[it.type] ?: 0
+            val map = if (it.type.dotColor == "no") normalQuests else poiDots
+            val oldOrder = questTypeOrders[map[it.geometry]?.type]
+            if (oldOrder == null || order < oldOrder)
+                map[it.geometry] = it
+        }
         val pins = synchronized(questsInView) {
             if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) && removed.isEmpty() && added.size < 20) {
                 // issue with dynamic quest creation: quests near tile edge are not in database,
@@ -212,11 +250,13 @@ class QuestPinsManager(
                 deletedAny = true
             }
 
-            addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
+            normalQuests.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
+            poiDots.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
+            markersAtEndQuests.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
             removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
             questsInView.values.flatten()
         }
-        if (deletedAny || addedInView.isNotEmpty()) {
+        if (deletedAny || normalQuests.isNotEmpty() || poiDots.isNotEmpty()) {
             synchronized(pinsMapComponent) {
                 if (coroutineContext.isActive) {
                     pinsMapComponent.set(pins)
@@ -263,10 +303,14 @@ class QuestPinsManager(
         val label = if (color != "no" && quest is OsmQuest) getLabel(quest) else null
         val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
 
-        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && quest.geometry !is ElementPointGeometry && color == "no")
+        val geometry = if (quest.geometry !is ElementPointGeometry && prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && color == "no")
             quest.geometry
         else null
-        return quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }
+        val pins = quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }
+        // storing importance in the quest requires the VisibleQuestsSource.cache to be invalidated on order change!
+        // or what we do: clear quest.pins if the order changed
+        quest.pins = pins
+        return pins
     }
 
     private fun getLabel(quest: OsmQuest): String? {
@@ -288,6 +332,7 @@ class QuestPinsManager(
     }
 
     private fun reinitializeQuestTypeOrders() {
+        visibleQuestsSource.clearCachedQuestPins() // pin.importance contains quest order, so we need to reset it
         initializeQuestTypeOrders()
         invalidate()
     }

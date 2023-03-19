@@ -158,6 +158,9 @@ class VisibleQuestsSource(
         }
     }
 
+    fun clearCachedQuestPins() {
+        cache.getItems().forEach { it.pins = null }
+    }
 
     fun addListener(listener: Listener) {
         listeners.add(listener)

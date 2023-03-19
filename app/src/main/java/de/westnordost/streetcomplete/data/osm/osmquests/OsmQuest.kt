@@ -15,7 +15,7 @@ data class OsmQuest(
     override val elementType: ElementType,
     override val elementId: Long,
     override val geometry: ElementGeometry
-) : Quest, OsmQuestDaoEntry {
+) : Quest(), OsmQuestDaoEntry {
 
     override val key: OsmQuestKey by lazy { OsmQuestKey(elementType, elementId, questTypeName) }
 

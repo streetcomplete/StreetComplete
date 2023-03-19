@@ -24,21 +24,8 @@ class PinsMapComponent(ctrl: KtMapController) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
-        pinsLayer.setFeatures(pins.map { pin ->
-            // avoid creation of intermediate HashMaps.
-            val tangramProperties = listOf(
-                "type" to "point",
-                "kind" to pin.iconName,
-                "importance" to pin.importance.toString(),
-                "poi_color" to pin.color
-            )
-            val properties = HashMap<String, String>()
-            properties.putAll(tangramProperties)
-            properties.putAll(pin.properties)
-            Point(pin.position.toLngLat(), properties)
-        })
-        val questGeometries = pins.mapNotNull { it.geometry }.toHashSet().map { it.toTangramGeometry() }.flatten()
-        questsGeometryLayer.setFeatures(questGeometries)
+        pinsLayer.setFeatures(pins.map { it.tangramPoint })
+        questsGeometryLayer.setFeatures(pins.mapNotNull { it.tangramGeometry }.flatten())
     }
 
     /** Clear pins */
@@ -61,4 +48,17 @@ data class Pin(
     val importance: Int = 0,
     val geometry: ElementGeometry? = null,
     val color: String = "no",
-)
+) {
+    // cache tangram geometry in the pin, so we don't need to create it over and over again
+    val tangramPoint by lazy {
+        val props = hashMapOf(
+            "type" to "point",
+            "kind" to iconName,
+            "importance" to importance.toString(),
+            "poi_color" to color
+        )
+        props.putAll(properties)
+        Point(position.toLngLat(), props)
+    }
+    val tangramGeometry by lazy { geometry?.toTangramGeometry() }
+}
