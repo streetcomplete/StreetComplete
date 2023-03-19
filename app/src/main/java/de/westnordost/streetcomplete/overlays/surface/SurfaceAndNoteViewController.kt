@@ -34,11 +34,11 @@ class SurfaceAndNoteViewController(
     var value: SurfaceAndNote?
     set(value) {
         selectedSurfaceItem = value?.surface?.asItem()
-        noteInput.setText(value?.note)
+        noteText = value?.note
     }
     get() {
         val surface = selectedSurfaceItem?.value
-        val note = noteInput.nonBlankTextOrNull
+        val note = noteText
         return if (surface == null && note == null) null else SurfaceAndNote(surface, note)
     }
 
@@ -46,7 +46,15 @@ class SurfaceAndNoteViewController(
         set(value) {
             field = value
             updateSelectedCell()
+            updateNoteVisibility()
         }
+
+    private var noteText: String?
+        set(value) {
+            noteInput.setText(value)
+            updateNoteVisibility()
+        }
+        get() = noteInput.nonBlankTextOrNull
 
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
     private val items: List<DisplayItem<Surface>> = selectableSurfaces.toItems()
@@ -58,8 +66,8 @@ class SurfaceAndNoteViewController(
 
         selectButton.setOnClickListener {
             collectSurfaceData { surface: Surface, note: String? ->
-                noteInput.setText(note)
                 selectedSurfaceItem = surface.asItem()
+                noteText = note
                 onInputChanged?.invoke()
             }
         }
@@ -75,7 +83,10 @@ class SurfaceAndNoteViewController(
         if (item != null) {
             ItemViewHolder(selectedCellView).bind(item)
         }
-        noteInput.isGone = noteInput.nonBlankTextOrNull == null && item?.value?.shouldBeDescribed != true
+    }
+
+    private fun updateNoteVisibility() {
+        noteInput.isGone = noteInput.nonBlankTextOrNull == null && selectedSurfaceItem?.value?.shouldBeDescribed != true
     }
 
     private fun collectSurfaceData(callback: (Surface, String?) -> Unit) {
