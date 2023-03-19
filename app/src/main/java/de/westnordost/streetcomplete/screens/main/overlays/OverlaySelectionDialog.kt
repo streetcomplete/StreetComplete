@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.databinding.DialogOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
+import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -202,7 +203,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             addView(color)
             setPadding(30,10,30,10)
         }
-        val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.sorted()
+        val indices = getCustomOverlayIndices(prefs).sorted()
         val b = Builder(ctx)
             .setTitle(R.string.custom_overlay_title)
             .setView(ScrollView(ctx).apply { addView(linearLayout) })
@@ -227,7 +228,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     }
 
     private fun showCustomOverlayManager() {
-        val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { it.toIntOrNull() }.ifEmpty { listOf(0) }.sorted()
+        val indices = getCustomOverlayIndices(prefs).sorted()
         var d: AlertDialog? = null
         val layout = LinearLayout(ctx).apply { orientation = LinearLayout.VERTICAL }
         layout.setPadding(40, 20, 40, 20)

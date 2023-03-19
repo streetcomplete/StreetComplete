@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
+import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
@@ -395,7 +396,7 @@ class DataManagementSettingsFragment :
         val visibilities = mutableListOf<Array<Any?>>()
         var currentThing = BACKUP_PRESETS
         val profileIdMap = mutableMapOf(0L to 0L) // "default" is not in the presets section
-        val qsRegex = "([0-9]+)_qs_".toRegex()
+        val qsRegex = "(\\d+)_qs_".toRegex()
         for (line in lines) { // go through list of presets
             val split = line.split(",")
             if (split.size < 2) break // happens if we come to the next category
@@ -499,7 +500,7 @@ class DataManagementSettingsFragment :
                     c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
                     c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
             }
-            val perPresetQuestSetting = "[0-9]_qs_.+".toRegex()
+            val perPresetQuestSetting = "\\d+_qs_.+".toRegex()
             val questSettings = prefs.all.filterKeys { it.matches(perPresetQuestSetting) && it.substringBefore('_').toLongOrNull() in ids }
 
             os.bufferedWriter().use {
@@ -527,7 +528,7 @@ class DataManagementSettingsFragment :
         } }
 
     private fun exportSettings(uri: Uri) {
-        val perPresetQuestSetting = "[0-9]_qs_.+".toRegex()
+        val perPresetQuestSetting = "\\d+_qs_.+".toRegex()
         val settings = prefs.all.filterKeys {
             !it.contains("TangramPinsSpriteSheet") // this is huge and gets generated if missing anyway
                 && !it.contains("TangramIconsSpriteSheet") // this is huge and gets generated if missing anyway
@@ -566,15 +567,18 @@ class DataManagementSettingsFragment :
             result
         }
         else {
-            val indices = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!
-                .split(",").mapNotNull { it.toIntOrNull() }
-                .ifEmpty { listOf(0) }.toMutableList()
+            val customOverlayRegex = "custom_overlay_(\\d+)_".toRegex()
+            val indices = getCustomOverlayIndices(prefs).toMutableSet()
             val offset = indices.max() + 1
             val newLines = lines.mapNotNull { line ->
                 if (line == "overlays") return@mapNotNull null
-                val id = line.substringAfter("custom_overlay_").substringBefore("_").toIntOrNull() ?: return@mapNotNull null
-                indices.add(id + offset)
-                line.replace(id.toString(), (id + offset).toString())
+                line.replace(customOverlayRegex) { result ->
+                    if (result.groupValues.size <= 1) throw (IllegalStateException())
+                    val oldIndex = result.groupValues[1].toInt()
+                    val newIndex = oldIndex + offset
+                    indices.add(newIndex)
+                    "custom_overlay_${newIndex}_"
+                }
             }
             val result = readToSettings(newLines)
             prefs.edit {
