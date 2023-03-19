@@ -36,7 +36,11 @@ class SurfaceAndNoteViewController(
         selectedSurfaceItem = value?.surface?.asItem()
         noteInput.setText(value?.note)
     }
-    get() = SurfaceAndNote(selectedSurfaceItem?.value, noteInput.nonBlankTextOrNull)
+    get() {
+        val surface = selectedSurfaceItem?.value
+        val note = noteInput.nonBlankTextOrNull
+        return if (surface == null && note == null) null else SurfaceAndNote(surface, note)
+    }
 
     private var selectedSurfaceItem: DisplayItem<Surface>? = null
         set(value) {
