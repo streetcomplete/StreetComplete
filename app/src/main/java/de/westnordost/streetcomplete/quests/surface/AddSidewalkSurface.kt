@@ -6,9 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 
 class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
@@ -39,97 +38,21 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun createForm() = AddSidewalkSurfaceForm()
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-       when (answer) {
+        when (answer) {
             is SidewalkIsDifferent -> {
-                deleteSmoothnessKeys(Side.LEFT, tags)
-                deleteSmoothnessKeys(Side.RIGHT, tags)
-                deleteSmoothnessKeys(Side.BOTH, tags)
-                deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-                deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-                deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-                tags.remove("sidewalk:left")
-                tags.remove("sidewalk:right")
-                tags.remove("sidewalk:both")
-                tags.remove("sidewalk")
+                for (side in listOf(":left", ":right", ":both", "")) {
+                    tags.remove("sidewalk$side:surface")
+                    tags.remove("sidewalk$side:surface:note")
+                    tags.remove("sidewalk$side:smoothness")
+                    tags.remove("sidewalk$side")
+                }
+                tags.removeCheckDatesForKey("sidewalk")
+                tags.removeCheckDatesForKey("sidewalk:surface")
+                tags.removeCheckDatesForKey("sidewalk:smoothness")
             }
             is SidewalkSurface -> {
-                val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
-                val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
-
-                if (leftChanged == true) {
-                    deleteSmoothnessKeys(Side.LEFT, tags)
-                    deleteSmoothnessKeys(Side.BOTH, tags)
-                }
-                if (rightChanged == true) {
-                    deleteSmoothnessKeys(Side.RIGHT, tags)
-                    deleteSmoothnessKeys(Side.BOTH, tags)
-                }
-
-                if (answer.left == answer.right) {
-                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
-                    deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-                    deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-                } else {
-                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
-                    answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
-                    deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-                }
+                answer.value.applyTo(tags)
             }
         }
-
-        deleteSidewalkSurfaceAnswerIfExists(null, tags)
-
-        // only set the check date if nothing was changed or if check date was already set
-        if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk:surface")) {
-            tags.updateCheckDateForKey("sidewalk:surface")
-        }
-    }
-
-    private enum class Side(val value: String) {
-        LEFT("left"), RIGHT("right"), BOTH("both")
-    }
-
-    private fun sideSurfaceChanged(surface: SurfaceAnswer, side: Side, tags: Tags): Boolean {
-        val previousSideOsmValue = tags["sidewalk:${side.value}:surface"]
-        val previousBothOsmValue = tags["sidewalk:both:surface"]
-        val osmValue = surface.value.osmValue
-
-        return previousSideOsmValue != null && previousSideOsmValue != osmValue
-            || previousBothOsmValue != null && previousBothOsmValue != osmValue
-    }
-
-    private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags) {
-        val sidewalkKey = "sidewalk:" + side.value
-        val sidewalkSurfaceKey = "$sidewalkKey:surface"
-
-        tags[sidewalkSurfaceKey] = surface.value.osmValue
-
-        // add/remove note - used to describe generic surfaces
-        if (surface.note != null) {
-            tags["$sidewalkSurfaceKey:note"] = surface.note
-        } else {
-            tags.remove("$sidewalkSurfaceKey:note")
-        }
-        // clean up old source tags - source should be in changeset tags
-        tags.remove("source:$sidewalkSurfaceKey")
-    }
-
-    /** clear smoothness tags for the given side*/
-    private fun deleteSmoothnessKeys(side: Side, tags: Tags) {
-        val sidewalkKey = "sidewalk:" + side.value
-        tags.remove("$sidewalkKey:smoothness")
-        tags.remove("$sidewalkKey:smoothness:date")
-        tags.removeCheckDatesForKey("$sidewalkKey:smoothness")
-    }
-
-    /** clear previous answers for the given side */
-    private fun deleteSidewalkSurfaceAnswerIfExists(side: Side?, tags: Tags) {
-        val sideVal = if (side == null) "" else ":" + side.value
-        val sidewalkSurfaceKey = "sidewalk$sideVal:surface"
-
-        // only things are cleared that are set by this quest
-        // for example cycleway:surface should only be cleared by a cycleway surface quest etc.
-        tags.remove(sidewalkSurfaceKey)
-        tags.remove("$sidewalkSurfaceKey:note")
     }
 }

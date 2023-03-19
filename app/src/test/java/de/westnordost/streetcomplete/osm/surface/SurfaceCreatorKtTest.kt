@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.surface
+package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -9,23 +9,23 @@ import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
-internal class SurfaceAnswerKtTest {
+class SurfaceCreatorKtTest {
 
     @Test fun `apply surface`() {
-        verifyAnswer(
+        verify(
             mapOf("highway" to "residential"),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(StringMapEntryAdd("surface", "asphalt"))
         )
     }
 
-    @Test fun `apply non-changed surface`() {
-        verifyAnswer(
+    @Test fun `apply non-changed surface updates check date`() {
+        verify(
             mapOf(
                 "highway" to "residential",
                 "surface" to "asphalt"
             ),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryModify("surface", "asphalt", "asphalt"),
                 StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
@@ -34,13 +34,13 @@ internal class SurfaceAnswerKtTest {
     }
 
     @Test fun `remove mismatching tracktype`() {
-        verifyAnswer(
+        verify(
             mapOf(
                 "highway" to "residential",
                 "tracktype" to "grade5",
                 "check_date:tracktype" to "2011-11-11"
             ),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt"),
                 StringMapEntryDelete("tracktype", "grade5"),
@@ -50,20 +50,20 @@ internal class SurfaceAnswerKtTest {
     }
 
     @Test fun `keep matching tracktype`() {
-        verifyAnswer(
+        verify(
             mapOf(
                 "highway" to "residential",
                 "tracktype" to "grade1"
             ),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt")
             )
         )
     }
 
-    @Test fun `removes smoothness values when surface changed`() {
-        verifyAnswer(
+    @Test fun `remove associated tags when surface changed`() {
+        verify(
             mapOf(
                 "highway" to "residential",
                 "surface" to "compacted",
@@ -71,22 +71,46 @@ internal class SurfaceAnswerKtTest {
                 "smoothness" to "well",
                 "smoothness:date" to "2011-11-11",
                 "check_date:smoothness" to "2011-11-11",
+                "tracktype" to "grade5",
+                "surface:colour" to "pink"
             ),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryModify("surface", "compacted", "asphalt"),
                 StringMapEntryDelete("surface:grade", "3"),
+                StringMapEntryDelete("surface:colour", "pink"),
                 StringMapEntryDelete("smoothness", "well"),
                 StringMapEntryDelete("smoothness:date", "2011-11-11"),
                 StringMapEntryDelete("check_date:smoothness", "2011-11-11"),
+                StringMapEntryDelete("tracktype", "grade5"),
             )
         )
     }
 
-    @Test fun `always removes source-surface`() {
-        verifyAnswer(
+    @Test fun `keep associated tags when surface did not change`() {
+        verify(
+            mapOf(
+                "highway" to "residential",
+                "surface" to "asphalt",
+                "surface:grade" to "3",
+                "smoothness" to "well",
+                "smoothness:date" to "2011-11-11",
+                "check_date:smoothness" to "2011-11-11",
+                "tracktype" to "grade1",
+                "surface:colour" to "pink"
+            ),
+            SurfaceAndNote(Surface.ASPHALT),
+            arrayOf(
+                StringMapEntryModify("surface", "asphalt", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
+            )
+        )
+    }
+
+    @Test fun `always remove source-surface`() {
+        verify(
             mapOf("highway" to "residential", "source:surface" to "bing"),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt"),
                 StringMapEntryDelete("source:surface", "bing"),
@@ -95,31 +119,41 @@ internal class SurfaceAnswerKtTest {
     }
 
     @Test fun `add note when specified`() {
-        verifyAnswer(
+        verify(
             mapOf(),
-            SurfaceAnswer(Surface.ASPHALT, "nurgle"),
+            SurfaceAndNote(Surface.ASPHALT, "gurgle"),
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt"),
-                StringMapEntryAdd("surface:note", "nurgle"),
+                StringMapEntryAdd("surface:note", "gurgle"),
             )
         )
     }
 
     @Test fun `remove note when not specified`() {
-        verifyAnswer(
+        verify(
             mapOf("surface:note" to "nurgle"),
-            SurfaceAnswer(Surface.ASPHALT),
+            SurfaceAndNote(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt"),
                 StringMapEntryDelete("surface:note", "nurgle"),
             )
         )
     }
+
+    @Test fun `sidewalk surface marked as tag on road is not touched`() {
+        verify(
+            mapOf("highway" to "tertiary", "sidewalk:surface" to "paving_stones"),
+            SurfaceAndNote(Surface.ASPHALT),
+            arrayOf(
+                StringMapEntryAdd("surface", "asphalt"),
+            )
+        )
+    }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: SurfaceAnswer, expectedChanges: Array<StringMapEntryChange>) {
+private fun verify(tags: Map<String, String>, value: SurfaceAndNote, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb)
+    value.applyTo(cb)
     val changes = cb.create().changes
     Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
 }

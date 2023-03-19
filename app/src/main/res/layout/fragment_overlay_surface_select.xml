@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="160dp"
+    android:weightSum="2"
+    android:divider="@drawable/space_16dp"
+    android:showDividers="middle|beginning|end"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/view_image_select_plus_text"
+        tools:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/cycleway_surface_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cyclewaySurfaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Cycleway Path"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            android:id="@+id/cycleway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/view_image_select_plus_text"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footway_surface_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/footwaySurfaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Foot Path"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            android:id="@+id/footway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/view_image_select_plus_text"
+            />
+    </LinearLayout>
+
+</LinearLayout>

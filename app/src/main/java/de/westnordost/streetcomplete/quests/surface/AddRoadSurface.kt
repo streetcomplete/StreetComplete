@@ -5,11 +5,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.osm.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.applyTo
 
-class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
+class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
 
     override val elementFilter = """
         ways with (
@@ -25,7 +28,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
-            surface ~ paved|unpaved|cobblestone
+            surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
             and !surface:note
             and !note:surface
           )
@@ -49,7 +52,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddRoadSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SurfaceAndNote, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }
