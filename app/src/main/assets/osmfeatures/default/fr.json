@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Niveau administratif"
                 },
+                "advertising": {
+                    "label": "Type"
+                },
                 "aerialway": {
                     "label": "Type"
                 },
@@ -358,7 +361,7 @@
                         "guard_rail": "Barrière de sécurité",
                         "hedge": "Haie",
                         "height_restrictor": "Limite de hauteur",
-                        "jersey_barrier": "Mur Jersey",
+                        "jersey_barrier": "Barrière béton anti-intrusion",
                         "kerb": "Bordure de trottoir",
                         "kissing_gate": "Portillon à chicane mobile",
                         "lift_gate": "Barrière levante",
@@ -514,6 +517,67 @@
                 },
                 "building": {
                     "label": "Bâtiment ",
+                    "options": {
+                        "allotment_house": "Maison de lotissement",
+                        "apartments": "Immeuble",
+                        "barn": "Grange",
+                        "boathouse": "Hangar à bateaux",
+                        "bungalow": "Bungalow",
+                        "bunker": "Bunker",
+                        "cabin": "Cabane",
+                        "carport": "Abri à voiture",
+                        "cathedral": "Cathédrale",
+                        "chapel": "Chapelle",
+                        "church": "Église",
+                        "civic": "Équipement public",
+                        "college": "Enseignement supérieur (non universitaire) - bâtiment",
+                        "commercial": "Bâtiment de bureaux et d'affaires",
+                        "construction": "Bâtiment en construction",
+                        "cowshed": "Étable",
+                        "detached": "Maison individuelle",
+                        "dormitory": "Résidence étudiante",
+                        "farm": "Corps de ferme",
+                        "farm_auxiliary": "Bâtiment de ferme",
+                        "fire_station": "Caserne de pompiers",
+                        "garage": "Garage privé",
+                        "garages": "Bloc de garages",
+                        "ger": "Yourte",
+                        "grandstand": "Tribune",
+                        "greenhouse": "Serre",
+                        "hangar": "Hangar",
+                        "hospital": "Bâtiment d'hôpital",
+                        "hotel": "Bâtiment d'hôtel",
+                        "house": "Maison mitoyenne",
+                        "houseboat": "Bateau habitable",
+                        "hut": "Hutte",
+                        "industrial": "Bâtiment industriel",
+                        "kindergarten": "Bâtiment de crèche, garderie",
+                        "manufacture": "Bâtiment de la production industrielle",
+                        "mosque": "Mosquée",
+                        "office": "Bâtiment de bureaux",
+                        "outbuilding": "Dépendance",
+                        "pavilion": "Pavillon",
+                        "public": "Établissement public",
+                        "residential": "Bâtiment résidentiel",
+                        "retail": "Bâtiment commercial",
+                        "roof": "Toit",
+                        "ruins": "Bâtiment en ruine",
+                        "school": "Bâtiment scolaire - élémentaire ou secondaire",
+                        "semidetached_house": "Maison jumelée",
+                        "service": "Bâtiment de service",
+                        "shed": "Cabanon",
+                        "stable": "Étable",
+                        "stadium": "Bâtiment du stade",
+                        "static_caravan": "Mobile Home",
+                        "sty": "Porcherie",
+                        "synagogue": "Synagogue",
+                        "temple": "Temple",
+                        "terrace": "Rangée de maisons",
+                        "train_station": "Gare ferroviaire",
+                        "transportation": "Bâtiment pour transports publics",
+                        "university": "Université - bâtiment universitaire",
+                        "warehouse": "Entrepôt"
+                    },
                     "terms": "bâtiment,construction,batiment"
                 },
                 "building/flats": {
@@ -646,10 +710,31 @@
                 },
                 "circumference": {
                     "label": "Circonférence (à hauteur de poitrine)",
-                    "placeholder": "1 m, 20 cm, 30\"…"
+                    "placeholder": "1 m, 20 cm, 30\"…",
+                    "terms": "circonférence,contour,longueur,rayon,diamètre,diamètre à hauteur de poitrine,diamètre à hauteur d'homme"
                 },
                 "clothes": {
                     "label": "Vêtements",
+                    "options": {
+                        "babies": "Vêtements pour bébés",
+                        "children": "Vêtements pour enfants",
+                        "denim": "Vêtements en jean",
+                        "fur": "Vêtements en fourrure",
+                        "hats": "Chapeaux",
+                        "maternity": "Vêtements de grossesse",
+                        "men": "Vêtements pour homme",
+                        "motorcycle": "Vêtements pour moto",
+                        "oversize": "Vêtements grande taille",
+                        "socks": "Chaussettes",
+                        "sports": "Vêtements de sport",
+                        "suits": "Costumes",
+                        "swimwear": "Maillots de bain",
+                        "traditional": "Habits / costumes traditionnels",
+                        "underwear": "Sous-vêtements",
+                        "wedding": "Vêtements de mariage",
+                        "women": "Vêtements pour femme",
+                        "workwear": "Vêtements de travail"
+                    },
                     "terms": "vêtements,habits,costume,tenue,fringues,sapes"
                 },
                 "club": {
@@ -856,6 +941,9 @@
                 "crossing/markings": {
                     "label": "Marquage au sol",
                     "options": {
+                        "ladder": "Échelle avec barres longitudinales",
+                        "ladder:skewed": "Échelle avec barres diagonales",
+                        "lines": "Lignes transversales",
                         "no": "Non marqué",
                         "pictograms": "Pictogrammes peints",
                         "surface": "Traitement de surface uniquement",
@@ -993,7 +1081,8 @@
                     "terms": "dénomination,église,religion"
                 },
                 "denotation": {
-                    "label": "Signification"
+                    "label": "Signification",
+                    "terms": "signification,dénotation"
                 },
                 "departures_board": {
                     "label": "Tableau d'arrivés / de départs",
@@ -1006,6 +1095,9 @@
                 },
                 "deposit/trolley": {
                     "label": "Caution"
+                },
+                "depot": {
+                    "label": "Type"
                 },
                 "depth": {
                     "label": "Profondeur (mètres)"
@@ -1151,7 +1243,8 @@
                     "terms": "potable,buvable,eau potable"
                 },
                 "drinking_water_available": {
-                    "label": "Eau Potable Disponible"
+                    "label": "Eau Potable Disponible",
+                    "terms": "eau,potable,accessible,disponible,buvable"
                 },
                 "drive_through": {
                     "label": "Service Drive",
@@ -1773,7 +1866,8 @@
                     "label": "Hauteur"
                 },
                 "kitchen": {
-                    "label": "Cuisine"
+                    "label": "Cuisine",
+                    "terms": "cuisine"
                 },
                 "kneipp_water_cure_multi": {
                     "label": "Types de bassin"
@@ -1829,7 +1923,8 @@
                     "terms": "type,genre,feuille,feuillage,aiguille"
                 },
                 "leaf_type_singular": {
-                    "label": "Type de feuilles"
+                    "label": "Type de feuilles",
+                    "terms": "type,genre,feuille,feuillage,aiguille,phénologie"
                 },
                 "leisure": {
                     "label": "Type"
@@ -1998,6 +2093,9 @@
                         "stone": "Pierre",
                         "war_memorial": "Mémorial de guerre"
                     }
+                },
+                "message": {
+                    "label": "Message"
                 },
                 "microbrewery": {
                     "label": "Micro-brasserie",
@@ -2387,7 +2485,8 @@
                     "terms": "téléphone,numéro de téléphone"
                 },
                 "picnic_table": {
-                    "label": "Table de pique-nique"
+                    "label": "Table de pique-nique",
+                    "terms": "table de pique-nique,table,piquenique,pique-nique"
                 },
                 "pipeline": {
                     "label": "Type"
@@ -2640,6 +2739,9 @@
                 },
                 "ref/isil": {
                     "label": "Code ISIL"
+                },
+                "ref/linz/place_id-NZ": {
+                    "label": "Numéro d'identification NZGB"
                 },
                 "ref/vatin": {
                     "label": "Numéro d'identifiant TVA",
@@ -2899,7 +3001,7 @@
                         "hovercraft": "Aéroglisseur",
                         "lifeboat": "Canot de sauvetage au sol",
                         "lifeboat_on_mooring": "Canot de sauvetage amarré",
-                        "radio": "Equipement radio",
+                        "radio": "Équipement radio",
                         "refuge_intertidal": "Refuge en cas de marée haute",
                         "refuge_shipwrecked": "Refuge pour naufragé",
                         "seaplane": "Hydravion",
@@ -3157,7 +3259,7 @@
                     "terms": "date de début,début"
                 },
                 "static_caravans": {
-                    "label": "Caravanes"
+                    "label": "Mobile Homes"
                 },
                 "step_count": {
                     "label": "Nombre de marches",
@@ -3315,7 +3417,8 @@
                     "terms": "dernière vérification terrain,terrain"
                 },
                 "survey_point/datum_aligned": {
-                    "label": "Aligné sur le système géodésique local"
+                    "label": "Aligné sur le système géodésique local",
+                    "terms": "aligné sur le système géodésique local"
                 },
                 "survey_point/purpose": {
                     "label": "Usage",
@@ -3552,6 +3655,7 @@
                         "converter": "Convertisseur",
                         "distribution": "Distribution (vers le consommateur final)",
                         "generator": "Générateur (pour augmenter la tension)",
+                        "main": "Transformateur principal d'une sous-station",
                         "phase_angle_regulator": "Déphaseur",
                         "yes": "Rôle indéfini"
                     }
@@ -3736,7 +3840,7 @@
                 },
                 "website": {
                     "label": "Site Web",
-                    "placeholder": "https://exemple.com/",
+                    "placeholder": "https://exemple.com",
                     "terms": "site web,site internet,web,internet,site,page web,page internet,url,uri"
                 },
                 "wetland": {
@@ -3789,12 +3893,13 @@
                     "terms": "enroulement,bobinage,enroulage,bobine"
                 },
                 "windings/auto": {
-                    "label": "Autotransformateur",
+                    "label": "Auto-transformateur",
                     "options": {
                         "no": "Non",
                         "undefined": "Indéfini",
                         "yes": "Oui"
-                    }
+                    },
+                    "terms": "autotransformateur"
                 },
                 "windings/configuration": {
                     "label": "Configuration des enroulements",
@@ -3817,6 +3922,9 @@
                 "address": {
                     "name": "Adresse",
                     "terms": "adresse,localisation,ban,address"
+                },
+                "advertising": {
+                    "name": "Système publicitaire"
                 },
                 "advertising/billboard": {
                     "name": "Panneau publicitaire",
@@ -4159,6 +4267,9 @@
                 "amenity/doctors/cardiology": {
                     "name": "Cardiologue"
                 },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "Pédopsychiatre"
+                },
                 "amenity/doctors/dermatology": {
                     "name": "Dermatologue"
                 },
@@ -4213,6 +4324,9 @@
                 },
                 "amenity/doctors/proctology": {
                     "name": "Proctologue"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "Psychiatre"
                 },
                 "amenity/doctors/pulmonology": {
                     "name": "Pneumologue"
@@ -4758,6 +4872,9 @@
                     "name": "Soins ambulatoires",
                     "terms": "soins ambulatoires"
                 },
+                "amenity/social_facility/assisted_living": {
+                    "name": "EPHAD"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "Banque alimentaire",
                     "terms": "banque alimentaire"
@@ -4773,6 +4890,9 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Maison de repos",
                     "terms": "maison de repis,maison de convalescence,maison de retraite médicalisée"
+                },
+                "amenity/stripclub": {
+                    "name": "Club de strip-tease"
                 },
                 "amenity/studio": {
                     "name": "Studio",
@@ -5006,7 +5126,8 @@
                     "terms": "enclos,animal,animaux,cage,lion,tigre,ours,zoo,parc zoologique,parc animalier,safari"
                 },
                 "attraction/big_wheel": {
-                    "name": "Grande roue"
+                    "name": "Grande roue",
+                    "terms": "grande roue,roue panoramique,attraction,manège"
                 },
                 "attraction/bumper_car": {
                     "name": "Auto tamponneuse",
@@ -5089,13 +5210,16 @@
                     "terms": "poste-frontière,poste frontiere,contrôle à la frontière,contrôle aux frontières,point de contrôle à une frontière,controle,border control"
                 },
                 "barrier/bump_gate": {
-                    "name": "Barrière pendulaire"
+                    "name": "Barrière poussable par véhicule",
+                    "terms": "barrière,portail,ouvrable,poussable"
                 },
                 "barrier/bus_trap": {
-                    "name": "Entrée de voie de bus (Allemagne)"
+                    "name": "Fosse franchissable par essieu large",
+                    "terms": "fosse,trou,bus,camion,moto,essieu,large"
                 },
                 "barrier/cable_barrier": {
-                    "name": "Barrière câblée"
+                    "name": "Glissière de sécurité par câble",
+                    "terms": "barrière,glissière,sécurité,route,câble,câble métallique"
                 },
                 "barrier/cattle_grid": {
                     "name": "Grille à bétail",
@@ -5141,7 +5265,8 @@
                     "terms": "barrière de sécurité,barre de sécurité,garde-fou,garde-corps,rampe"
                 },
                 "barrier/hampshire_gate": {
-                    "name": "Barrière à fils"
+                    "name": "Portail en fils de fer",
+                    "terms": "barrière,portail,accès,fil,fer,barré,barbelé"
                 },
                 "barrier/handrail": {
                     "name": "Rampe"
@@ -5155,7 +5280,8 @@
                     "terms": "limite de hauteur,limiteur de hauteur,barrière"
                 },
                 "barrier/jersey_barrier": {
-                    "name": "Muret de sécurité"
+                    "name": "Barrière béton anti-intrusion",
+                    "terms": "barrière,bloc,sécurité,béton,béton armé,préfabriqué,jersey,gba,dba"
                 },
                 "barrier/kerb": {
                     "name": "Bordure de trottoir",
@@ -5182,23 +5308,26 @@
                     "terms": "portillon à chicanes,chicane battante,portail à bétail,portail à sas,portillon,passage,bétail,piétons,randonneurs,animaux,animal,vache,cheval,enclos,barrier kissing gate,kissing gate"
                 },
                 "barrier/lift_gate": {
-                    "name": "Barrière levante"
+                    "name": "Barrière levante",
+                    "terms": "barrière,levante,sécurité,automatique,manuelle"
                 },
                 "barrier/log": {
                     "name": "Arbre Tombé"
                 },
                 "barrier/motorcycle_barrier": {
-                    "name": "Barrière pour motos"
+                    "name": "Portail anti motos",
+                    "terms": "barrière,portail,accès,restriction,restreindre,empêcher,moto,scooter"
                 },
                 "barrier/planter": {
-                    "name": "Barrière champêtre"
+                    "name": "Barrière type jardinière"
                 },
                 "barrier/retaining_wall": {
                     "name": "Mur de soutènement",
                     "terms": "mur de soutènement,mur de retenue,retenue,restanque,faisse,rideau,retaining wall,érosion,éboulement,glissement de terrain"
                 },
                 "barrier/rope": {
-                    "name": "Corde"
+                    "name": "Barrière de corde",
+                    "terms": "barrière,portail,accès,corde,fibres"
                 },
                 "barrier/sally_port": {
                     "name": "Entrée fortifiée",
@@ -5233,7 +5362,8 @@
                     "terms": "mur anti-bruit,nuisance sonore,barrière sonore,barrière anti-bruit,autoroute,acoustique,sonore,bruit,bruyant,anti-bruit"
                 },
                 "barrier/wicket_gate": {
-                    "name": "Portillon"
+                    "name": "Portillon",
+                    "terms": "portillon,portail,accès,piéton"
                 },
                 "barrier/yes": {
                     "name": "Barrière (non précisée)"
@@ -5458,7 +5588,8 @@
                     "terms": "stade,tribune."
                 },
                 "building/static_caravan": {
-                    "name": "Caravane"
+                    "name": "Mobile Home",
+                    "terms": "mobile home,mobile-home,mobil-home,mobil home,maison mobile,résidence mobile de loisirs,bungalow"
                 },
                 "building/sty": {
                     "name": "Porcherie",
@@ -5864,6 +5995,9 @@
                     "name": "Entrée principale",
                     "terms": "entrée,porte,accès,principal,principale"
                 },
+                "entrance/staircase": {
+                    "name": "Entrée d'escalier"
+                },
                 "ford": {
                     "name": "Gué",
                     "terms": "gué"
@@ -5954,8 +6088,8 @@
                     "terms": "audiologiste,audiologue"
                 },
                 "healthcare/birthing_center": {
-                    "name": "Maison de naissance",
-                    "terms": "maternité"
+                    "name": "Maternité",
+                    "terms": "centre de maternité,clinique,établissement,accouchement,grossesse"
                 },
                 "healthcare/blood_donation": {
                     "name": "Centre de don du sang",
@@ -6084,7 +6218,8 @@
                     "terms": "passage piéton,passage cycliste"
                 },
                 "highway/cycleway/moped_link-NL": {
-                    "name": "Liaison de mobylette"
+                    "name": "Route pour mobylettes",
+                    "terms": "route,chemin,liaison,piste,mobilette,cyclomoteur,vélomoteur"
                 },
                 "highway/elevator": {
                     "name": "Ascenseur",
@@ -6542,6 +6677,9 @@
                     "name": "Zone industrielle",
                     "terms": "usines"
                 },
+                "landuse/industrial/depot": {
+                    "name": "Dépôt"
+                },
                 "landuse/industrial/scrap_yard": {
                     "name": "Casse automobile",
                     "terms": "casse automobile,cimetière de voitures,ferrailles."
@@ -6633,7 +6771,8 @@
                     "terms": "immeuble,résidence,complexe,appartements"
                 },
                 "landuse/residential/trailer_park": {
-                    "name": "Parc de maisons mobiles"
+                    "name": "Parc de maisons mobiles",
+                    "terms": "parc de mobile homes,parc de mobil-homes"
                 },
                 "landuse/retail": {
                     "name": "Zone commerciale",
@@ -6885,8 +7024,8 @@
                     "terms": "terrain de cricket"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Terrain d'équitation",
-                    "terms": "terrain d'équitation,aire d'équitation,aire de dressage,cheval,chevaux,entraînement,aire de saut d'obstacles,saut d'obstacles"
+                    "name": "Terrain de rodéo",
+                    "terms": "terrain,arène,cheval,équitation,rodéo"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Terrain de hockey sur gazon"
@@ -6896,7 +7035,8 @@
                     "terms": "terrain,four,square,foursquare"
                 },
                 "leisure/pitch/funnel_ball": {
-                    "name": "Terrain pour jeu de Funnel"
+                    "name": "Terrain pour jeu de Funnel",
+                    "terms": "terrain,stade,court,funnel,entonnoir,cheminée"
                 },
                 "leisure/pitch/futsal": {
                     "name": "Terrain de football en salle",
@@ -7260,7 +7400,8 @@
                     "terms": "pipeline,pétrole,gaz naturel,eau,égouts,gazoduc,oléoduc"
                 },
                 "man_made/planter": {
-                    "name": "Jardinière"
+                    "name": "Jardinière",
+                    "terms": "jardinière,pot,bac,plante,décoration,fleurs"
                 },
                 "man_made/pumping_station": {
                     "name": "Station de pompage",
@@ -7285,6 +7426,18 @@
                 "man_made/street_cabinet": {
                     "name": "Armoire de rue",
                     "terms": "armoire,box,cabinet,technique,fibre,télécommunication,contrôle,lampadaires,électrique,gaz,électricité"
+                },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "Relais postal"
+                },
+                "man_made/street_cabinet/traffic_control": {
+                    "name": "Système de régulation du trafic"
+                },
+                "man_made/street_cabinet/traffic_monitoring": {
+                    "name": "Système de contrôle du trafic"
+                },
+                "man_made/street_cabinet/transport_management": {
+                    "name": "Système de gestion du trafic"
                 },
                 "man_made/surveillance": {
                     "name": "Appareil de surveillance",
@@ -7730,6 +7883,9 @@
                     "name": "Fournisseur d'énergie",
                     "terms": "fournisseur d'énergie,électricité"
                 },
+                "office/engineer": {
+                    "name": "Bureau d'études et d'ingénierie"
+                },
                 "office/estate_agent": {
                     "name": "Agence immobilière",
                     "terms": "agence immobilière"
@@ -7956,7 +8112,7 @@
                     "terms": "quartier"
                 },
                 "place/square": {
-                    "name": "Square",
+                    "name": "Place",
                     "terms": "place,placette,square"
                 },
                 "place/suburb": {
@@ -8495,6 +8651,9 @@
                 "railway/tram_stop": {
                     "name": "Emplacement où s'arrête le tram"
                 },
+                "railway/turntable": {
+                    "name": "Voie de retournement"
+                },
                 "railway/yard": {
                     "name": "Dépôt ferroviaire",
                     "terms": "depot,fret"
@@ -9000,6 +9159,10 @@
                     "name": "Boutique de compléments alimentaires",
                     "terms": "compléments alimentaires;compléments nutritionnels"
                 },
+                "shop/nuts": {
+                    "name": "Magasin de noix",
+                    "terms": "noix,fruits secs,fruit sec,cacahuète,pistache,graine,noix de coco,amande"
+                },
                 "shop/optician": {
                     "name": "Opticien",
                     "terms": "opticien,marchand de lunettes"
@@ -9038,7 +9201,7 @@
                 },
                 "shop/pet_grooming": {
                     "name": "Salon de toilettage",
-                    "terms": "salon de toilettage"
+                    "terms": "toilettage,animal,chien,chat,salon,animalerie"
                 },
                 "shop/photo": {
                     "name": "Tirage de photos",

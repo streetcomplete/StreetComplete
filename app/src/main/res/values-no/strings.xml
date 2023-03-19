@@ -1285,6 +1285,7 @@ Vil du flytte den nå?"</string>
     <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
     <string name="bicycle_boulevard">"Sykkelgate"</string>
+    <string name="separate_cycleway_no">"Sykling forbudt"</string>
     <string name="separate_cycleway_allowed">"Sykling er tillatt"</string>
     <string name="separate_cycleway_no_or_allowed">"Ikke tilrettelagt for sykling (men kan likevel være tillatt)"</string>
     <string name="separate_cycleway_non_segregated">"Gang- og sykkelvei, felles"</string>
@@ -1297,4 +1298,8 @@ Vil du flytte den nå?"</string>
     <string name="separate_cycleway_path">"Sti eller vei"</string>
     <string name="quest_fireHydrant_type_pipe">"Rør"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"Fortau skiltet for syklende og gående, i begge retninger"</string>
+    <string name="privacy_html_arcore">"Denne applikasjonen kjører på &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), som tilbys av Google og styres av &lt;a href=\"https://policies.google.com/privacy\"&gt;Googles personvernregler&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Denne typen oppdrag er som standard utilgjengelig da den kan kreve at en sjekker situasjonen om igjen på en spesifikk årstid."</string>
+    <string name="quest_gritBinSeasonal_title">"Er den her også utenom vintersesongen?"</string>
+    <string name="quest_traffic_signals_sound_description">"Hint: Se etter høyttalere. Ikke alle lydsignaler kan aktiveres med en knapp."</string>
 </resources>

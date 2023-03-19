@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Administrativní úroveň"
                 },
+                "advertising": {
+                    "label": "Typ"
+                },
                 "aerialway": {
                     "label": "Typ"
                 },
@@ -497,7 +500,7 @@
                     "terms": "odvětví,branže,filiálka,větev"
                 },
                 "brand": {
-                    "label": "Obchodní značka",
+                    "label": "Obchodní řetězec",
                     "terms": "značka,firma,logo,provozovatel,majitel"
                 },
                 "brewery": {
@@ -516,6 +519,67 @@
                 },
                 "building": {
                     "label": "Budova",
+                    "options": {
+                        "allotment_house": "Zahradní dům",
+                        "apartments": "Budova s byty",
+                        "barn": "Stodola",
+                        "boathouse": "Přístřešek pro loď",
+                        "bungalow": "Bungalov",
+                        "bunker": "Bunkr",
+                        "cabin": "Dřevěná stavba",
+                        "carport": "Zastřešené stání pro auto",
+                        "cathedral": "Budova katedrály",
+                        "chapel": "Budova kaple",
+                        "church": "Budova kostela",
+                        "civic": "Budova občanské vybavenosti",
+                        "college": "Budova vyšší odborné školy/college",
+                        "commercial": "Obchodní budova",
+                        "construction": "Budova ve výstavbě",
+                        "cowshed": "Kravín",
+                        "detached": "Samostatný rodinný dům",
+                        "dormitory": "Kolej / internát",
+                        "farm": "Zemědělský dům",
+                        "farm_auxiliary": "Zemědělská budova",
+                        "fire_station": "Budova požární zbrojnice",
+                        "garage": "Garáž",
+                        "garages": "Budova soukromých garáží",
+                        "ger": "Jurta",
+                        "grandstand": "Tribuna",
+                        "greenhouse": "Skleník",
+                        "hangar": "Budova hangáru",
+                        "hospital": "Budova nemocnice",
+                        "hotel": "Budova hotelu",
+                        "house": "Rodinný dům",
+                        "houseboat": "Hausbót",
+                        "hut": "Chatička",
+                        "industrial": "Průmyslová budova",
+                        "kindergarten": "Budova školky/předškolního zařízení",
+                        "manufacture": "Budova průmyslové výroby",
+                        "mosque": "Budova mešity",
+                        "office": "Kancelářská budova",
+                        "outbuilding": "Přístavba",
+                        "pavilion": "Pavilón",
+                        "public": "Veřejná budova",
+                        "residential": "Obytná budova",
+                        "retail": "Budova s obchody",
+                        "roof": "Střecha",
+                        "ruins": "Zřícená budova",
+                        "school": "Budova školy",
+                        "semidetached_house": "Polovina dvojdomku",
+                        "service": "Účelová budova",
+                        "shed": "Kůlna",
+                        "stable": "Stáj",
+                        "stadium": "Budova stadionu",
+                        "static_caravan": "Obytný vůz",
+                        "sty": "Vepřín",
+                        "synagogue": "Budova synagogy",
+                        "temple": "Budova chrámu",
+                        "terrace": "Řada řadových domů",
+                        "train_station": "Nádražní budova",
+                        "transportation": "Dopravní budova",
+                        "university": "Budova vysoké školy",
+                        "warehouse": "Skladiště"
+                    },
                     "terms": "struktura"
                 },
                 "building/flats": {
@@ -610,7 +674,8 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "caravans": {
-                    "label": "Karavany / obytné přívěsy"
+                    "label": "Karavany / obytné přívěsy",
+                    "terms": "tábor,táborník,karavan,turista"
                 },
                 "cash_in": {
                     "label": "Vklady"
@@ -654,6 +719,26 @@
                 },
                 "clothes": {
                     "label": "Oblečení",
+                    "options": {
+                        "babies": "Kojenecké oblečení",
+                        "children": "Dětské oblečení",
+                        "denim": "Džínové oblečení",
+                        "fur": "Kožešinové oblečení",
+                        "hats": "Klobouky",
+                        "maternity": "Těhotenské oblečení",
+                        "men": "Pánské oblečení",
+                        "motorcycle": "Motocyklové oblečení",
+                        "oversize": "Nadměrná velikost",
+                        "socks": "Ponožky",
+                        "sports": "Sportovní oblečení",
+                        "suits": "Obleky",
+                        "swimwear": "Plavky",
+                        "traditional": "Tradiční oděvy / lidové kroje",
+                        "underwear": "Spodní prádlo",
+                        "wedding": "Svatební oblečení",
+                        "women": "Dámské oblečení",
+                        "workwear": "Pracovní oblečení"
+                    },
                     "terms": "šaty,textil,oděv"
                 },
                 "club": {
@@ -1022,6 +1107,9 @@
                 "deposit/trolley": {
                     "label": "Vklad"
                 },
+                "depot": {
+                    "label": "Typ"
+                },
                 "depth": {
                     "label": "Hloubka (v metrech)"
                 },
@@ -1034,8 +1122,7 @@
                     "terms": "souhrn"
                 },
                 "design": {
-                    "label": "Design",
-                    "terms": "vzhled,vizáž,styl"
+                    "label": "Design"
                 },
                 "destination": {
                     "label": "Směry"
@@ -2022,6 +2109,10 @@
                         "war_memorial": "Památník na válku"
                     }
                 },
+                "message": {
+                    "label": "Zpráva",
+                    "terms": "textovka,sms,smska,psaní,textová zpráva,dopis"
+                },
                 "microbrewery": {
                     "label": "Minipivovar",
                     "terms": "mini pivovar,mini-pivovar,malý pivovar,drobný pivovar,místní pivovar,vaření piva,pivo,lokální"
@@ -2206,7 +2297,12 @@
                         "research": "Výzkumný ústav",
                         "security": "Kancelář hlídače",
                         "surveyor": "Zeměměřický úřad",
-                        "tax_advisor": "Kancelář daňového poradce"
+                        "tax_advisor": "Kancelář daňového poradce",
+                        "telecommunication": "Telekomunikační společnost",
+                        "therapist": "Terapeutická kancelář",
+                        "travel_agent": "Cestovní kancelář",
+                        "union": "Úřad práce",
+                        "water_utility": "Vodohospodářská kancelář"
                     }
                 },
                 "oneway": {
@@ -2663,6 +2759,10 @@
                 "ref/isil": {
                     "label": "Kód ISIL"
                 },
+                "ref/linz/place_id-NZ": {
+                    "label": "ID místa NZGB",
+                    "terms": "nz,linz,informace o zemi nový zéland,toitū te whenua,nzgb,nový zéland zeměpisná tabule,ngā pou taunaha o aotearoa"
+                },
                 "ref/vatin": {
                     "label": "Daňové identifikační číslo",
                     "terms": "identifikační číslo pro dph,dič"
@@ -2757,7 +2857,18 @@
                     "label": "Typ"
                 },
                 "resource": {
-                    "label": "Zdroje"
+                    "label": "Zdroje",
+                    "options": {
+                        "aggregate": "Kamenivo",
+                        "clay": "Jíl",
+                        "coal": "Uhlí",
+                        "gold": "Zlato",
+                        "gravel": "Štěrk",
+                        "iron_ore": "Železná ruda",
+                        "limestone": "Vápenec",
+                        "peat": "Rašelina",
+                        "sand": "Písek"
+                    }
                 },
                 "restriction": {
                     "label": "Typ"
@@ -3186,7 +3297,8 @@
                     }
                 },
                 "street_cabinet": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "terms": "pouliční skříň,elektřina,plyn,pouliční osvětlení,semafory,monitorování dopravy,správa věřejné dopravy,správa vody,voda,odpad,poštovní schránka,telefon,kabelová televize"
                 },
                 "stroller": {
                     "label": "Přístup pro kočárky",
@@ -3383,7 +3495,7 @@
                     "terms": "okno,vokno,s sebou,do ruky,ven,na cestu,výdej,výdejní okno,zabalit,ssebou,sebou"
                 },
                 "target": {
-                    "label": "Cíl"
+                    "label": "Cílová země"
                 },
                 "taxon": {
                     "label": "Taxon",
@@ -3834,6 +3946,10 @@
                     "name": "Adresa",
                     "terms": "město,psč,ulice,čp,če"
                 },
+                "advertising": {
+                    "name": "Reklamní zařízení",
+                    "terms": "reklamní obrazovka,vlajka,neonový nápis,nápis"
+                },
                 "advertising/billboard": {
                     "name": "Reklamní poutač",
                     "terms": "reklama,billboard,plakát"
@@ -4110,6 +4226,10 @@
                     "name": "Potratová klinika",
                     "terms": "ženské zdravotnictví"
                 },
+                "amenity/clinic/dialysis": {
+                    "name": "Dialyzační středisko",
+                    "terms": "dialýza ledvin,dialyzační ambulance"
+                },
                 "amenity/clinic/fertility": {
                     "name": "Klinika plodnosti",
                     "terms": "vajíčko,plodnost,rozmnožování,spermie,ovulace"
@@ -4176,6 +4296,10 @@
                 "amenity/doctors/cardiology": {
                     "name": "Kardiolog",
                     "terms": "kardiochirurg,kardiologie,kardiovaskulární systém,koronární tepna,srdce"
+                },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "Dětský a dorostový psychiatr",
+                    "terms": "adolescentní psychiatrie,dětská psychiatrie,pediatrická psychiatrie"
                 },
                 "amenity/doctors/dermatology": {
                     "name": "Dermatolog",
@@ -4248,6 +4372,10 @@
                 "amenity/doctors/proctology": {
                     "name": "Kolorektální chirurg",
                     "terms": "zadek,kolorektální chirurgie,proktologie"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "Psychiatr",
+                    "terms": "psychiatrie"
                 },
                 "amenity/doctors/pulmonology": {
                     "name": "Pneumolog",
@@ -4800,6 +4928,10 @@
                     "name": "Ambulantní péče",
                     "terms": "ošetření,zdravotnictví,sociální péče"
                 },
+                "amenity/social_facility/assisted_living": {
+                    "name": "Život s pomocí",
+                    "terms": "asistované bydlení,pečovatelský dům,důchodci,bydlení,starý,senior"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "Potravinová banka",
                     "terms": "potravinová spíž,vývařovna"
@@ -4815,6 +4947,10 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Domov pro seniory",
                     "terms": "senioři,bydlení,ošetřovatelství,staří,asistované bydlení"
+                },
+                "amenity/stripclub": {
+                    "name": "Striptýzový klub",
+                    "terms": "břišní tanec,dospělý*,pánové*,nevěstinec,strip*"
                 },
                 "amenity/studio": {
                     "name": "Studio",
@@ -5789,7 +5925,8 @@
                     "terms": "discgolfový terč,diskový otvor"
                 },
                 "disc_golf/hole": {
-                    "name": "Jamka pro disc golf"
+                    "name": "Jamka pro disc golf",
+                    "terms": "golfová jamka,jamka diskového golfu"
                 },
                 "disc_golf/tee": {
                     "name": "Odpaliště pro disc golf",
@@ -5915,6 +6052,10 @@
                 "entrance/main": {
                     "name": "Hlavní vchod",
                     "terms": "hlavní vchod,vchod,dveře,průchod,vstup,východ,hlavní vstup,vchodové dveře,vstupní dveře"
+                },
+                "entrance/staircase": {
+                    "name": "Vstup na schodiště",
+                    "terms": "dveře,schody,schodiště,schodový"
                 },
                 "ford": {
                     "name": "Brod",
@@ -6594,6 +6735,10 @@
                     "name": "Průmyslová oblast",
                     "terms": "průmysl,průmyslová,průmyslové,průmyslový,industriální,továrna,továrny,fabrika,fabriky"
                 },
+                "landuse/industrial/depot": {
+                    "name": "Depo",
+                    "terms": "autobus,náklaďák,vozidlo,dvůr,daráž,parkování"
+                },
                 "landuse/industrial/scrap_yard": {
                     "name": "Vrakoviště",
                     "terms": "auto,haraburdí,kov,záchrana,šrot,vytáhnutí,vozidlo,vrak,dvůr"
@@ -6938,8 +7083,8 @@
                     "terms": "hřiště na kriket"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Jezdecká aréna",
-                    "terms": "aréna,drezurní aréna,drezurní kruh,drezura,jezdectví,jezdecký kruh,jízda na koni,kůň,koně,skákací aréna,skákací kruh,longeing,ohrádka,kruh jezdectví,jízda,kruh,kulatá ohrádka"
+                    "name": "Jezdecká / Rodeo aréna",
+                    "terms": "aréna,drezurní aréna,drezurní kruh,drezura,jezdectví,jezdecký kruh,jízda na koni,kůň,jezdecká aréna,jízdárna,skákací aréna,skákací kruh,longeing,ohrádka,polo,jízda,kruh,rodeo,kulaté pero"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Hřiště pro pozemní hokej",
@@ -7339,6 +7484,26 @@
                 "man_made/street_cabinet": {
                     "name": "Pouliční skříň / kaplička",
                     "terms": "kabelová televize,monitorovací box,technický box,telekomunikace,ovládání dopravního signálu"
+                },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "Veřejná poštovní schránka",
+                    "terms": "listovní úschova,poštovní doručování,poštovní služby"
+                },
+                "man_made/street_cabinet/traffic_control": {
+                    "name": "Skříň systému kontroly dopravy",
+                    "terms": "automatizace řízení dopravy,semafor"
+                },
+                "man_made/street_cabinet/traffic_monitoring": {
+                    "name": "Skříň monitorování dopravy",
+                    "terms": "monitorování dopravy,počítání vozidel"
+                },
+                "man_made/street_cabinet/transport_management": {
+                    "name": "Skříň řízení dopravy",
+                    "terms": "automatizace řízení dopravy"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "Soukromá skříň na sběr odpadu",
+                    "terms": "sběr odpadu,odpad,skříň"
                 },
                 "man_made/surveillance": {
                     "name": "Ostraha, kamera",
@@ -7781,6 +7946,10 @@
                 "office/energy_supplier": {
                     "name": "Kancelář dodavatele elektřiny",
                     "terms": "elektřina,energetická společnost,energetická služba,plyn"
+                },
+                "office/engineer": {
+                    "name": "Inženýrská kancelář",
+                    "terms": "stavební inženýr,elektroinženýr,inženýr,strojírenská firma,strojní inženýr,statik,technický inženýr"
                 },
                 "office/estate_agent": {
                     "name": "Realitní kancelář",
@@ -8381,7 +8550,7 @@
                     "terms": "plocha zastávky,plocha železniční stanice,plocha vlakové stanice,plocha stanice hromadné dopravy,oblast stanice,oblast zastávkyí,mhd,hromadná doprava,veřejná doprava,oblast zastávky"
                 },
                 "public_transport/stop_position": {
-                    "name": "Místo zastavení veřejné dopravy",
+                    "name": "Zastávka veřejné dopravy",
                     "terms": "místo zastavení hromadné dopravy,metro,bus,trolejbus,tramvaj,tram,autobus,lanovka,lanová dráha,podzemní dráha,podzemka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,pozice zastavení vlaku,zastavení autobusu,zastavení linky"
                 },
                 "public_transport/stop_position_aerialway": {
@@ -8389,7 +8558,7 @@
                     "terms": "místo zastavení lanovky,místo zastavení lanové dráhy,místo zastavení kabiny,lanovka,lanová dráha,mhd,městská hromadná doprava,stanice,pozice zastavení lanové dráhy,zastavení kabiny lanovky"
                 },
                 "public_transport/stop_position_bus": {
-                    "name": "Místo zastavení autobusu",
+                    "name": "Autobusová zastávka",
                     "terms": "místo zastavení autobusu,místo zastavení busu,autobus,bus,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,zastávka,pozice zastavení autobusu,zastavení busu"
                 },
                 "public_transport/stop_position_ferry": {
@@ -8397,27 +8566,27 @@
                     "terms": "místo zastavení trajektu,trajekt,přívoz,stanice,pozice zastavení trajektu,pozice přistavení trajektu,pozice zastavení přívozu,zastavení lodě,místo pro nalodění,místo pro vylodění"
                 },
                 "public_transport/stop_position_light_rail": {
-                    "name": "Místo zastavení lehké dráhy",
+                    "name": "Zastávka lehké dráhy",
                     "terms": "místo zastavení lehké dráhy,lehká dráha,lehké metro,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,pozice zastavení lehké dráhy,zastavení vlaku lehké dráhy"
                 },
                 "public_transport/stop_position_monorail": {
-                    "name": "Místo zastavení jednokolejky",
+                    "name": "Zastávka jednokolejky",
                     "terms": "místo zastavení monorailu,místo zastavení jednokolejky,místo zastavení vlaku monorailu,monorail,jednokolejná dráha,jednokolejka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,místo zastavení nadzemky,pozice zastavení jednokolejky,zastavení vlaku monorailu"
                 },
                 "public_transport/stop_position_subway": {
-                    "name": "Místo zastavení metra",
+                    "name": "Zastávka metra",
                     "terms": "místo zastavení metra,metro,podzemní dráha,podzemka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,pozice zastavení metra,zastavení vlaku metra"
                 },
                 "public_transport/stop_position_train": {
-                    "name": "Místo zastavení vlaku",
+                    "name": "Vlaková zastávka",
                     "terms": "místo zastavení vlaku,železniční stanice,zastavení vlaku,vlak,kolej"
                 },
                 "public_transport/stop_position_tram": {
-                    "name": "Místo zastavení tramvaje",
+                    "name": "Tramvajová zastávka",
                     "terms": "místo zastavení tramvaje,tram,tramvaj,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,zastávka,pozice zastavení tramvaje,místo zastavení šaliny,šalina,šmirgl,místo zastavení šmirglu"
                 },
                 "public_transport/stop_position_trolleybus": {
-                    "name": "Místo zastavení trolejbusu",
+                    "name": "Zastávka trolejbusu",
                     "terms": "místo zastavení trolejbusu,trol,trolejbus,trolley,trolej bus,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,zastávka,pozice zastavení trolejbusu"
                 },
                 "railway": {
@@ -8537,6 +8706,10 @@
                 },
                 "railway/tram_stop": {
                     "name": "Zastávka tramvaje"
+                },
+                "railway/turntable": {
+                    "name": "Železniční točna",
+                    "terms": "točna"
                 },
                 "railway/yard": {
                     "name": "seřaďovací nádraží",
@@ -9036,6 +9209,10 @@
                     "name": "Obchod s potravními doplňky",
                     "terms": "doplňky stravy,potravní doplňky,doplňky potravy,potravinové doplňky,doplňky výživy,výživové doplňky,nutraceutika,supplementy,vitamíny,minerály,léky"
                 },
+                "shop/nuts": {
+                    "name": "Obchod s oříšky",
+                    "terms": "mandle,kešu,brazilské ořechy,kaštany,kokosy,sušené ovoce,lískové ořechy,makadamie,ořechy,arašídy,pekanové ořechy,pistácie,semena,vlašské ořechy"
+                },
                 "shop/optician": {
                     "name": "Optika",
                     "terms": "optik,optika,brýle,zrak,kontaktní čočky,čočky"
@@ -9072,7 +9249,7 @@
                     "terms": "obchod pro domácí zvířata,obchod pro domácí mazlíčky,zverimex"
                 },
                 "shop/pet_grooming": {
-                    "name": "Zvířecí salon",
+                    "name": "Zvířecí kadeřník",
                     "terms": "kočka,pes"
                 },
                 "shop/photo": {
@@ -9525,7 +9702,8 @@
                     "terms": "maximální rychlost,radar,rychlostní kamera"
                 },
                 "type/multipolygon": {
-                    "name": "Multipolygon"
+                    "name": "Multipolygon",
+                    "terms": "multipolygon,polygon,mnohoúhelník"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "Skupina zastávek veřejné dopravy"
@@ -9569,7 +9747,8 @@
                     "terms": "lanovka,nadzemní doprava,linka,trasa,trasa lanové dráhy,lanová dráha,nadzemní linka"
                 },
                 "type/route/bicycle": {
-                    "name": "Cyklotrasa"
+                    "name": "Cyklotrasa",
+                    "terms": "cyklotrasa,cyklistická trasa,cyklistická značka"
                 },
                 "type/route/bus": {
                     "name": "Autobusová trasa",
@@ -9647,7 +9826,8 @@
                     "terms": "site,uskupení,seskupení,skupina,seznam,místo"
                 },
                 "type/waterway": {
-                    "name": "Vodní tok"
+                    "name": "Vodní tok",
+                    "terms": "vodní tok,řeka,potok,kanál,tok"
                 },
                 "waterway": {
                     "name": "Prvek vodní dopravy"

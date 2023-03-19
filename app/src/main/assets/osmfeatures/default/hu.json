@@ -244,7 +244,14 @@
                     "label": "Állatoknak"
                 },
                 "archaeological_site": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "city": "Történelmi város",
+                        "necropolis": "Nekropolisz",
+                        "petroglyph": "Sziklafaragás",
+                        "roman_villa": "Római kori villa",
+                        "settlement": "Történelmi település"
+                    }
                 },
                 "architect": {
                     "label": "Építész",
@@ -278,7 +285,13 @@
                     "label": "Bankautomata"
                 },
                 "attraction": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "big_wheel": "Óriáskerék",
+                        "bumper_car": "Dodzsem",
+                        "maze": "Labirintus",
+                        "roller_coaster": "Hullámvasút"
+                    }
                 },
                 "automated": {
                     "label": "Automatizált"
@@ -307,7 +320,15 @@
                     "terms": "bár,éjszakai szórakozóhely,lokál,mulató"
                 },
                 "barrier": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "city_wall": "Városfal",
+                        "entrance": "Bejárat",
+                        "fence": "Kerítés",
+                        "gate": "Kapu",
+                        "height_restrictor": "Magasságkorlátozó",
+                        "wall": "Fal"
+                    }
                 },
                 "barrier_planter": {
                     "label": "Akadály",
@@ -332,7 +353,10 @@
                     "label": "Homokfürdő"
                 },
                 "bath/type": {
-                    "label": "Fürdőtípus"
+                    "label": "Fürdőtípus",
+                    "options": {
+                        "thermal": "Termálfürdő"
+                    }
                 },
                 "beauty": {
                     "label": "Szolgáltatások",
@@ -433,6 +457,58 @@
                 },
                 "building": {
                     "label": "Épület",
+                    "options": {
+                        "barn": "Pajta",
+                        "boathouse": "Csónakház",
+                        "bungalow": "Bungaló",
+                        "bunker": "Bunker",
+                        "cathedral": "Székesegyház",
+                        "chapel": "Kápolnaépület",
+                        "church": "Templomépület",
+                        "civic": "Középület",
+                        "college": "Főiskolai épület",
+                        "commercial": "Kereskedelmi épület",
+                        "construction": "Épülő épület",
+                        "cowshed": "Tehénistálló",
+                        "detached": "Önálló családi ház",
+                        "dormitory": "Kollégium",
+                        "farm": "Tanyaház",
+                        "farm_auxiliary": "Mezőgazdasági épület",
+                        "fire_station": "Tűzoltólaktanya",
+                        "garage": "Garázs",
+                        "garages": "Garázsok",
+                        "ger": "Jurta",
+                        "grandstand": "Fedett lelátó",
+                        "greenhouse": "Üvegház",
+                        "hangar": "Hangárépület",
+                        "hospital": "Kórházépület",
+                        "hotel": "Szállodaépület",
+                        "houseboat": "Lakóhajó",
+                        "hut": "Kunyhó",
+                        "industrial": "Ipari épület",
+                        "kindergarten": "Óvodaépület",
+                        "manufacture": "Ipari termelőüzem\nGyárépület",
+                        "mosque": "Mecset",
+                        "office": "Irodaépület",
+                        "outbuilding": "Melléképület",
+                        "pavilion": "Pavilonépület",
+                        "public": "Középület",
+                        "residential": "Lakóépület",
+                        "retail": "Kiskereskedelmi épület",
+                        "roof": "Tető",
+                        "ruins": "Épület romjai",
+                        "school": "Iskolaépület",
+                        "semidetached_house": "Ikerház",
+                        "stable": "Lóistálló",
+                        "stadium": "Stadionépület",
+                        "sty": "Disznóól",
+                        "synagogue": "Zsinagóga",
+                        "temple": "Templomépület",
+                        "train_station": "Vasútállomás-épület",
+                        "transportation": "Közlekedési épület",
+                        "university": "Egyetemi épület",
+                        "warehouse": "Raktár"
+                    },
                     "terms": "építmény,ház,épület"
                 },
                 "building/flats": {
@@ -1295,6 +1371,7 @@
                 "generator/source": {
                     "label": "Áramforrás",
                     "options": {
+                        "biogas": "Biogáz",
                         "biomass": "Az erőmű energiaforrása",
                         "coal": "Szén",
                         "diesel": "Gázolaj",
@@ -1359,7 +1436,44 @@
                     "label": "Szakorvosi ellátás",
                     "options": {
                         "abortion": "Abortusz",
-                        "acupuncture": "Akupunktúra"
+                        "acupuncture": "Akupunktúra",
+                        "allergology": "Allergia és asztma",
+                        "anaesthetics": "Aneszteziológia",
+                        "angiology": "Angiológia",
+                        "aromatherapy": "Aromaterápia",
+                        "ayurveda": "Ájurvéda",
+                        "biochemistry": "Biokémia",
+                        "biology": "Biológia",
+                        "blood_check": "Vérvizsgálat",
+                        "cardiology": "Kardiológia",
+                        "cardiothoracic_surgery": "Szív- és mellkassebészet",
+                        "child_psychiatry": "Gyermek- és serdülőkori pszichiátria",
+                        "chiropractic": "Kiropraktika (csontkovácsolás)",
+                        "clinical_pathology": "Klinikai patológia",
+                        "dental_oral_maxillo_facial_surgery": "Fogászat, száj- és állkapocssebészet",
+                        "dermatology": "Bőrgyógyászat",
+                        "dermatovenereology": "Bőrgyógyászat",
+                        "diabetology": "Diabetológia",
+                        "diagnostic_radiology": "Diagnosztikai radiológia",
+                        "emergency": "Sürgősségi orvoslás",
+                        "endocrinology": "Endokrinológia",
+                        "gastroenterology": "Gasztroenterológia",
+                        "gynaecology": "Szülészet és nőgyógyászat",
+                        "haematology": "Hematológia",
+                        "hepatology": "Hepatológia",
+                        "herbalism": "Gyógynövényterápia",
+                        "homeopathy": "Homeopátia",
+                        "hydrotherapy": "Vízgyógyászat (hidroterápia)",
+                        "hypnosis": "Hipnózis",
+                        "infectious_diseases": "Fertőző betegségek",
+                        "intensive": "Intenzív ellátás",
+                        "internal": "Belgyógyászat",
+                        "neonatology": "Újszülöttgyógyászat",
+                        "nephrology": "Nefrológia",
+                        "neurology": "Ideggyógyászat",
+                        "neuropsychiatry": "Idegpszichiátria",
+                        "neurosurgery": "Idegsebészet",
+                        "nuclear": "Nukleáris gyógyászat"
                     }
                 },
                 "heating": {
@@ -7819,10 +7933,6 @@
                 "shop/pet": {
                     "name": "Kisállatkereskedés",
                     "terms": "állat,kisállat,állateledel"
-                },
-                "shop/pet_grooming": {
-                    "name": "Állatkozmetika",
-                    "terms": "kutyakozmetika"
                 },
                 "shop/photo": {
                     "name": "Fotósbolt",

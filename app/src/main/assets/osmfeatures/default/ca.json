@@ -249,6 +249,7 @@
                         "baths": "Banys",
                         "city": "Ciutat Històrica",
                         "crannog": "Crannog",
+                        "enclosure": "Recinte",
                         "fortification": "Fortificació",
                         "hut_circle": "Cabana circular",
                         "megalith": "Megàlit",
@@ -292,7 +293,28 @@
                     "label": "Caixer automàtic"
                 },
                 "attraction": {
-                    "label": "Tipus"
+                    "label": "Tipus",
+                    "options": {
+                        "alpine_coaster": "Muntanya russa Alpina",
+                        "amusement_ride": "Atracció de fira",
+                        "animal": "Recinte per a animals",
+                        "big_wheel": "Roda de fira",
+                        "bumper_car": "Autos de xoc",
+                        "bungee_jumping": "Salt elàstic",
+                        "carousel": "Cavallets",
+                        "dark_ride": "Tren fantasma",
+                        "drop_tower": "Torres de caiguda lliure",
+                        "kiddie_ride": "Passeig infantil",
+                        "log_flume": "Canal de troncs",
+                        "maze": "Laberint",
+                        "pirate_ship": "Passeig en vaixell pirata",
+                        "river_rafting": "Passeig pels ràpids del riu",
+                        "roller_coaster": "Muntanya russa",
+                        "summer_toboggan": "Tobogan d'estiu",
+                        "swing_carousel": "Gronxadors penjants",
+                        "train": "Tren turístic",
+                        "water_slide": "Tobogan d'aigua"
+                    }
                 },
                 "automated": {
                     "label": "Automàtic"
@@ -323,6 +345,7 @@
                 "barrier": {
                     "label": "Tipus",
                     "options": {
+                        "block": "Bloc gran",
                         "bollard": "Piló",
                         "cattle_grid": "Reixat ",
                         "chain": "Cadena",
@@ -332,8 +355,10 @@
                         "entrance": "Entrada",
                         "fence": "Tanca",
                         "gate": "Porta",
+                        "guard_rail": "Guarda rail",
                         "hedge": "Tanca de bardissa",
                         "height_restrictor": "Restrictor de gàlib",
+                        "jersey_barrier": "Barrera Jerse",
                         "kerb": "Gual",
                         "kissing_gate": "Porta giratòria",
                         "retaining_wall": "Mur de contenció",
@@ -365,7 +390,11 @@
                     "label": "Bany de sorra"
                 },
                 "bath/type": {
-                    "label": "Especialitat"
+                    "label": "Especialitat",
+                    "options": {
+                        "hot_spring": "Font Càlida",
+                        "lake": "Llac"
+                    }
                 },
                 "beauty": {
                     "label": "Serveis",
@@ -481,6 +510,64 @@
                 },
                 "building": {
                     "label": "Edifici",
+                    "options": {
+                        "apartments": "Edifici d'apartaments",
+                        "barn": "Graner",
+                        "boathouse": "Caseta per a vaixells",
+                        "bungalow": "Bungalou",
+                        "bunker": "Búnquer",
+                        "cabin": "Cabina",
+                        "carport": "Aixopluc",
+                        "cathedral": "Catedral",
+                        "chapel": "Capella",
+                        "church": "Església",
+                        "civic": "Edifici cívic",
+                        "college": "Edifici d'una escola professional",
+                        "commercial": "Edifici comercial",
+                        "construction": "Edifici en construcció",
+                        "cowshed": "Estable de vaques",
+                        "detached": "Casa a quatre vents",
+                        "dormitory": "Dormitoris",
+                        "farm": "Casa a una granja",
+                        "farm_auxiliary": "Edifici d'una granja",
+                        "fire_station": "Edifici d'un parc de bombers",
+                        "garage": "Garatge",
+                        "garages": "Garatges",
+                        "ger": "Iurta",
+                        "grandstand": "Tribuna",
+                        "greenhouse": "Hivernacle",
+                        "hangar": "Hangar",
+                        "hospital": "Edifici hospitalari",
+                        "hotel": "Edifici d'un hotel",
+                        "house": "Casa",
+                        "houseboat": "Casa flotant",
+                        "hut": "Cabana",
+                        "industrial": "Edifici industrial",
+                        "kindergarten": "Edifici de preescolar / llar d'infants",
+                        "manufacture": "Edifici per a producció industrial",
+                        "mosque": "Mesquita",
+                        "office": "Edifci d'oficines",
+                        "public": "Edifici públic",
+                        "residential": "Edifici residencial",
+                        "retail": "Edifici comercial",
+                        "roof": "Teulada",
+                        "ruins": "Edifici en ruines",
+                        "school": "Edifici escolar",
+                        "semidetached_house": "Casa adossada",
+                        "service": "Edifici de servei",
+                        "shed": "Cobert",
+                        "stable": "Estable",
+                        "stadium": "Estadi",
+                        "static_caravan": "Autocaravana",
+                        "sty": "Porcellera",
+                        "synagogue": "Sinagoga",
+                        "temple": "Temple",
+                        "terrace": "Cases en filera",
+                        "train_station": "Edifici d'estació de tren",
+                        "transportation": "Edifici per a transports",
+                        "university": "Edifici universitari",
+                        "warehouse": "Magatzem"
+                    },
                     "terms": "edifici,construcció,casa,estructura"
                 },
                 "building/flats": {
@@ -551,6 +638,7 @@
                     "terms": "capacitat"
                 },
                 "capacity/caravans": {
+                    "label": "Capacitat (Autocaravana / Remolc d'acampada)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -572,6 +660,9 @@
                 "capacity_volume": {
                     "label": "Capacitat (metres cúbics)",
                     "placeholder": "50, 100, 200..."
+                },
+                "caravans": {
+                    "label": "Autocaravana / Remolc d'acampada"
                 },
                 "cash_in": {
                     "label": "Dipòsit"
@@ -605,7 +696,8 @@
                 },
                 "check_date": {
                     "label": "Data d'última revisió ",
-                    "placeholder": "AAAA-MM-DD"
+                    "placeholder": "AAAA-MM-DD",
+                    "terms": "reenquesta,enquesta,visita"
                 },
                 "circumference": {
                     "label": "Diàmetre a l'alçada de l'home",
@@ -614,6 +706,25 @@
                 },
                 "clothes": {
                     "label": "Roba",
+                    "options": {
+                        "babies": "Roba per a nadons",
+                        "children": "Roba per a nens",
+                        "denim": "Teixit texà",
+                        "fur": "Roba de pelatge",
+                        "hats": "Barrets",
+                        "maternity": "Roba de maternitat",
+                        "men": "Roba d'home",
+                        "motorcycle": "Roba per a montar en moto",
+                        "oversize": "Roba de talles grans",
+                        "socks": "Calcetins",
+                        "sports": "Roba d'esport",
+                        "swimwear": "Roba de bany",
+                        "traditional": "Roba Tradicional / Vestuari Popular",
+                        "underwear": "Llenceria",
+                        "wedding": "Roba de boda",
+                        "women": "Roba de dona",
+                        "workwear": "Roba de feina"
+                    },
                     "terms": "roba"
                 },
                 "club": {
@@ -994,8 +1105,7 @@
                     "terms": "descripció,resumen"
                 },
                 "design": {
-                    "label": "Disseny",
-                    "terms": "disseny,diseny"
+                    "label": "Disseny"
                 },
                 "destination": {
                     "label": "Destinacions"
@@ -1836,6 +1946,9 @@
                 "lifeguard": {
                     "label": "Socorrista"
                 },
+                "lift_gate/type": {
+                    "label": "Tipus"
+                },
                 "line_attachment": {
                     "label": "Fixació de la línia",
                     "terms": "soport de la línia,enganx de la línia"
@@ -2084,7 +2197,31 @@
                     "label": "Nota"
                 },
                 "office": {
-                    "label": "Tipus"
+                    "label": "Tipus",
+                    "options": {
+                        "insurance": "Oficina d'una Companyia Asseguradora",
+                        "it": "Oficina de tecnologies de la informació",
+                        "lawyer": "Bufet d'advocats",
+                        "logistics": "Agència de transports",
+                        "moving_company": "Companyia de mudances",
+                        "newspaper": "Oficines d'un Diari",
+                        "ngo": "Oficina d'una ONG",
+                        "notary": "Notaria",
+                        "physician": "Metge",
+                        "political_party": "Seu d'un partit polític",
+                        "private_investigator": "Oficina d'investigador privat",
+                        "quango": "Oficina de quasi-ONG",
+                        "religion": "Oficina religiosa",
+                        "research": "Oficines d'R+D",
+                        "security": "Oficina de seguretat",
+                        "surveyor": "Oficina d'un agrimensor",
+                        "tax_advisor": "Asesoria Fiscal",
+                        "telecommunication": "Oficines d'una companyia de telecomunicacions",
+                        "therapist": "Consulta d'un terapeuta",
+                        "travel_agent": "Agència de viatges",
+                        "union": "Oficina d'un sindicat",
+                        "water_utility": "Oficina de la companyia d'aigua"
+                    }
                 },
                 "oneway": {
                     "label": "Sentit únic",
@@ -2164,11 +2301,14 @@
                     "options": {
                         "carports": "Aixoplucs",
                         "garage_boxes": "Boxs",
+                        "half_on_kerb": "Parcialment en la vorera",
                         "lane": "Adossat a la carretera",
                         "layby": "Apartadero de descans",
                         "multi-storey": "Diversos nivells",
+                        "on_kerb": "A la vorera",
                         "rooftop": "Terrat",
                         "sheds": "Garatges",
+                        "shoulder": "Voral",
                         "street_side": "Adjacent a la carretera",
                         "surface": "Superfície",
                         "underground": "Subterrani"
@@ -2180,6 +2320,33 @@
                         "diagonal": "Diagonal respecte la carretera",
                         "parallel": "Paral·lel a la carreterera",
                         "perpendicular": "Perpendicular a la carretera"
+                    }
+                },
+                "parking/side/orientation": {
+                    "label": "Orientació de l'aparcament",
+                    "options": {
+                        "diagonal": "Diagonal en relació al carrer (~45°)",
+                        "parallel": "Paral·lel al carrer",
+                        "perpendicular": "Perpendicular a la carretera (~90°)"
+                    },
+                    "types": {
+                        "parking:left:orientation": "Costat esquerre",
+                        "parking:right:orientation": "Costat dreta"
+                    }
+                },
+                "parking/side/parking": {
+                    "label": "Aparcament",
+                    "options": {
+                        "half_on_kerb": "Parcialemnt en la vorera",
+                        "no": "No",
+                        "on_kerb": "A la vorera",
+                        "separate": "Aparcament mapejat separadament",
+                        "shoulder": "Voral",
+                        "yes": "Si (sense especificar)"
+                    },
+                    "types": {
+                        "parking:left": "Costat esquerre",
+                        "parking:right": "Costat dreta"
                     }
                 },
                 "parking_entrance": {
@@ -2239,7 +2406,12 @@
                 },
                 "phone": {
                     "label": "Telèfon",
-                    "placeholder": "+31 42 123 4567"
+                    "placeholder": "+31 42 123 4567",
+                    "terms": "telèfon,número de telèfon"
+                },
+                "picnic_table": {
+                    "label": "Taula de pícnic",
+                    "terms": "pícnic. taula exterior,banc,parc,taula"
                 },
                 "pipeline": {
                     "label": "Tipus"
@@ -2554,7 +2726,18 @@
                     "label": "Tipus"
                 },
                 "resource": {
-                    "label": "Recursos"
+                    "label": "Recursos",
+                    "options": {
+                        "aggregate": "Agregat",
+                        "clay": "Argila",
+                        "coal": "Carbó",
+                        "gold": "Or",
+                        "gravel": "Grava",
+                        "iron_ore": "Mineral de ferro",
+                        "limestone": "Pedra calcària",
+                        "peat": "Torba",
+                        "sand": "Sorra"
+                    }
                 },
                 "restriction": {
                     "label": "Tipus"
@@ -2809,7 +2992,17 @@
                     "label": "SMS"
                 },
                 "social_facility": {
-                    "label": "Tipus"
+                    "label": "Tipus",
+                    "options": {
+                        "ambulatory_care": "Atenció ambulatòria",
+                        "assisted_living": "Habitatge assistit",
+                        "day_care": "Centre de dia",
+                        "food_bank": "Banc d'aliments",
+                        "group_home": "Habitatge grupal",
+                        "nursing_home": "Residència d'ancians",
+                        "shelter": "Refugi",
+                        "workshop": "Centre ocupacional"
+                    }
                 },
                 "social_facility_for": {
                     "label": "Persones ateses"
@@ -2823,7 +3016,8 @@
                         "osm notes": "Notes d'OpenStreetMap",
                         "streetlevel imagery": "Fotografies a peu de carrer",
                         "survey": "Exploració"
-                    }
+                    },
+                    "terms": "fonts,font,recurs"
                 },
                 "species": {
                     "label": "Espècies"
@@ -2832,7 +3026,43 @@
                     "label": "Wikidata de l'espècie"
                 },
                 "sport": {
-                    "label": "Esports"
+                    "label": "Esports",
+                    "options": {
+                        "american_football": "Futbol Americà",
+                        "athletics": "Atletisme",
+                        "badminton": "Bàdminton",
+                        "baseball": "Beisbol",
+                        "basketball": "Bàsquet",
+                        "beachvolleyball": "Voleibol de platja",
+                        "boules": "Petanca",
+                        "bowls": "Joc de bitlles",
+                        "climbing": "Escalada",
+                        "cricket": "Criquet",
+                        "cycling": "Ciclisme",
+                        "equestrian": "Hípica",
+                        "free_flying": "Parapent / Ala delta",
+                        "futsal": "Futbol sala",
+                        "golf": "Golf",
+                        "gymnastics": "Gimnàstica artística",
+                        "handball": "Handbol",
+                        "horse_racing": "Carrera de cavalls",
+                        "karting": "Kàrting",
+                        "motocross": "Motocròs",
+                        "motor": "Esports de motor",
+                        "netball": "Netbol",
+                        "padel": "Pàdel",
+                        "rugby_union": "Rugbi",
+                        "running": "Raning",
+                        "shooting": "Tir",
+                        "skateboard": "Monopatí de carrer",
+                        "skiing": "Esquí",
+                        "soccer": "Futbol",
+                        "softball": "Softball",
+                        "swimming": "Natació",
+                        "table_tennis": "Ping-pong",
+                        "tennis": "Tenis",
+                        "volleyball": "Voleibol"
+                    }
                 },
                 "sport_ice": {
                     "label": "Esports",
@@ -2938,7 +3168,16 @@
                     "label": "Wikidata del subjecte"
                 },
                 "substance": {
-                    "label": "Substància"
+                    "label": "Substància",
+                    "options": {
+                        "fuel": "Combustible",
+                        "gas": "Gas natural",
+                        "hot_water": "Aigua calenta",
+                        "oil": "Petroli cru",
+                        "rainwater": "Aigua de pluja",
+                        "sewage": "Aigües residuals",
+                        "water": "Aigua potable"
+                    }
                 },
                 "substation": {
                     "label": "Tipus",
@@ -3322,7 +3561,12 @@
                     "label": "Tipus"
                 },
                 "waste": {
-                    "label": "Residus"
+                    "label": "Residus",
+                    "options": {
+                        "cigarettes": "Cigarrets",
+                        "dog_excrement": "Excrement de gos",
+                        "organic": "Resta orgànica"
+                    }
                 },
                 "water": {
                     "label": "Tipus"
@@ -3410,8 +3654,8 @@
                     "terms": "adreça,direcció,domicili"
                 },
                 "advertising/billboard": {
-                    "name": "Taulell",
-                    "terms": "cartellera"
+                    "name": "Tanca publicitària",
+                    "terms": "cartellera,taulell"
                 },
                 "advertising/board": {
                     "name": "Tauler de notificacions"
@@ -3539,6 +3783,10 @@
                 "amenity/bicycle_parking": {
                     "name": "Aparcament per a  bicicletes",
                     "terms": "aparcament per a bicicletes,àrea d'aparcament de bicicletes,estació de bicicletes públiques,parking de bicis,pàrquing de bicicletes,parking de bicicletes,pàrquing de bicis"
+                },
+                "amenity/bicycle_parking/building": {
+                    "name": "Garatge per a bicicletes",
+                    "terms": "estació de bicicletes,aparcament de bicicletes,ciclisme,bicicleta,aparcabicis"
                 },
                 "amenity/bicycle_rental": {
                     "name": "Lloguer de bicicletes",
@@ -3829,7 +4077,7 @@
                 },
                 "amenity/gambling": {
                     "name": "Sala de Jocs",
-                    "terms": "apostes,bingo,blackjack,casino,pachinco,loteria,slots,joc d'atzar,escurabujaques,jocs d'atzar,apostar,joc"
+                    "terms": "apostes,bingo,blackjack,casino,pachinco,loteria,slots,joc d'atzar,escurabujaques,jocs d'atzar,apostar,joc,saló de jocs"
                 },
                 "amenity/grave_yard": {
                     "name": "Cementiri",
@@ -4045,7 +4293,7 @@
                     "terms": "biodegradable,biologic,compost,descomposable,contenidor de basura,residus de jardí,orgànic,basura,restes de menjar"
                 },
                 "amenity/recycling_centre": {
-                    "name": "Ecoparc",
+                    "name": "Ecoparc/Deixalleria",
                     "terms": "centre de reciclatge,punt verd,punt net"
                 },
                 "amenity/recycling_container": {
@@ -4337,17 +4585,45 @@
                     "name": "Autos de xoc",
                     "terms": "cotxes de xoc"
                 },
+                "attraction/bungee_jumping": {
+                    "name": "Salt elàstic",
+                    "terms": "salt,botar,bot,bungee,puenting,pont,benji,corda elàstica,salt al buit,bungee jumping"
+                },
+                "attraction/drop_tower": {
+                    "name": "Torres de caiguda lliure",
+                    "terms": "caiguda lliure,caiguda,lliure,parc d'atraccions,atracció de fira,torre"
+                },
+                "attraction/kiddie_ride": {
+                    "name": "Passeig infantil",
+                    "terms": "passeig infantil,atracció per a xiquets,atracció per a nens"
+                },
+                "attraction/log_flume": {
+                    "name": "Canal de troncs",
+                    "terms": "parc d'atraccions,canal,troncs,atracció"
+                },
                 "attraction/maze": {
                     "name": "Laberint"
                 },
+                "attraction/pirate_ship": {
+                    "name": "Passeig en vaixell pirata"
+                },
+                "attraction/river_rafting": {
+                    "name": "Passeig pels ràpids del riu"
+                },
                 "attraction/roller_coaster": {
                     "name": "Muntanya russa"
+                },
+                "attraction/summer_toboggan": {
+                    "name": "Tobogan d'estiu"
+                },
+                "attraction/swing_carousel": {
+                    "name": "Gronxadors penjants"
                 },
                 "attraction/train": {
                     "name": "Tren turístic"
                 },
                 "attraction/water_slide": {
-                    "name": "tobogan d'aigua"
+                    "name": "Tobogan d'aigua"
                 },
                 "barrier": {
                     "name": "Barrera",
@@ -4411,6 +4687,9 @@
                 "barrier/height_restrictor": {
                     "name": "Restrictor de gàlib"
                 },
+                "barrier/jersey_barrier": {
+                    "name": "Barrera Jersey"
+                },
                 "barrier/kerb": {
                     "name": "Gual",
                     "terms": "vorera,bordillo,rebaix"
@@ -4470,6 +4749,10 @@
                 "building/barn": {
                     "name": "Graner"
                 },
+                "building/boathouse": {
+                    "name": "Caseta per a vaixells",
+                    "terms": "vaixells,bots,barcos,enmgatzemar vaixelles"
+                },
                 "building/bungalow": {
                     "name": "Bungalou"
                 },
@@ -4479,6 +4762,10 @@
                 "building/cabin": {
                     "name": "Cabana",
                     "terms": "cabina"
+                },
+                "building/carport": {
+                    "name": "Aixopluc",
+                    "terms": "pàrquing cobert,aparcament cobert,cobert,cotxe"
                 },
                 "building/cathedral": {
                     "name": "Edifici Catedralici"
@@ -4494,7 +4781,7 @@
                     "aliases": "Edifici públic"
                 },
                 "building/college": {
-                    "name": "Edifici d'escola professional"
+                    "name": "Edifici d'una escola professional"
                 },
                 "building/commercial": {
                     "name": "Edifici comercial",
@@ -4522,7 +4809,8 @@
                     "name": "Edifici d'una granja"
                 },
                 "building/fire_station": {
-                    "name": "Edifici d'un parc de bombers"
+                    "name": "Edifici d'un parc de bombers",
+                    "terms": "bombers,emergències,foc,112"
                 },
                 "building/garage": {
                     "name": "garatge",
@@ -4530,6 +4818,14 @@
                 },
                 "building/garages": {
                     "name": "Garatges"
+                },
+                "building/ger": {
+                    "name": "Iurta",
+                    "terms": "ger,yurta"
+                },
+                "building/grandstand": {
+                    "name": "Tribuna",
+                    "terms": "grada,seients,tribuna,estadi,camp,espectadors"
                 },
                 "building/greenhouse": {
                     "name": "Hivernacle"
@@ -4545,6 +4841,10 @@
                     "name": "Casa",
                     "terms": "casa"
                 },
+                "building/houseboat": {
+                    "name": "Casa flotant",
+                    "terms": "casa,familia,residència,habitatge"
+                },
                 "building/hut": {
                     "name": "Cabana",
                     "terms": "barraca"
@@ -4555,6 +4855,9 @@
                 },
                 "building/kindergarten": {
                     "name": "Edifici de preescolar"
+                },
+                "building/manufacture": {
+                    "name": "Edifici per a producció industrial"
                 },
                 "building/mosque": {
                     "name": "Edifici d'una mesquita"
@@ -4571,7 +4874,7 @@
                     "terms": "edifici residencial"
                 },
                 "building/retail": {
-                    "name": "Edifici d'un comerç al detall",
+                    "name": "Edifici comercial",
                     "terms": "tenda,botiga,comerç,edifici comercial,detall"
                 },
                 "building/roof": {
@@ -4586,7 +4889,8 @@
                     "terms": "escola,gimnàs,poliesportiu,aulari,seminaris,pati,esbarjo,aules,despatxos,tallers,ateliers,aules d'informàtica,classes,classe,sala de música,corredors,corredor,pasillo,pasillos,passadís,passadissos,sala de professors,recepció"
                 },
                 "building/semidetached_house": {
-                    "name": "Casa adossada"
+                    "name": "Casa adossada",
+                    "terms": "llar,casa,familiar,unifamiliar,residència,allotjament,urbanització"
                 },
                 "building/service": {
                     "name": "Edifici de serveis"
@@ -4611,7 +4915,8 @@
                     "name": "Edifici d'estació de tren"
                 },
                 "building/transportation": {
-                    "name": "Edifici per a transports"
+                    "name": "Edifici per a transports",
+                    "terms": "estació,autobús,autocar,bus"
                 },
                 "building/university": {
                     "name": "Edifici universitari",
@@ -4816,8 +5121,8 @@
                     "name": "Objecte d'emergència"
                 },
                 "emergency/ambulance_station": {
-                    "name": "Parada d'ambulàncies",
-                    "terms": "estació d'ambulàncies"
+                    "name": "Estació d'ambulàncies",
+                    "terms": "parada d'ambulàncies,emergències,ambulàncies,metge"
                 },
                 "emergency/assembly_point": {
                     "name": "Punt de trobada d'emergència",
@@ -5320,7 +5625,7 @@
                     "name": "Zona Agrícola"
                 },
                 "landuse/farmyard": {
-                    "name": "Edificis de Granja",
+                    "name": "Terrenys de Granja",
                     "terms": "granja,granges,galliner,estable,mas,masia,masoveria,ranxo,nau,naus,dipòsit,femta,fems,fem,porc,porcs,purí,purins,gallina,gallines,conill,conills,pinso,tancat,tanca,valles,valla"
                 },
                 "landuse/flowerbed": {
@@ -5330,7 +5635,8 @@
                     "name": "Bosc gestionat"
                 },
                 "landuse/garages": {
-                    "name": "Terreny per a garatges"
+                    "name": "Terreny per a garatges",
+                    "terms": "parking,aparcament,pàrquing"
                 },
                 "landuse/grass": {
                     "name": "Herba",
@@ -5436,7 +5742,8 @@
                     "terms": "vinyar,vinyal,vinyet,vinya"
                 },
                 "landuse/winter_sports": {
-                    "name": "Zona d'esports d'hivern"
+                    "name": "Zona d'esports d'hivern",
+                    "terms": "pista,esquí,neu,eski,muntanya,resort,snowboard,tabla de neu"
                 },
                 "leisure": {
                     "name": "Element d'esbarjo"
@@ -5610,6 +5917,9 @@
                 "leisure/pitch/netball": {
                     "name": "Pista de netbol"
                 },
+                "leisure/pitch/padel": {
+                    "name": "Pista de pàdel"
+                },
                 "leisure/pitch/rugby_league": {
                     "name": "Camp de la lliga de Rugbi"
                 },
@@ -5657,7 +5967,8 @@
                     "name": "Grada (Nàutica)"
                 },
                 "leisure/sports_centre": {
-                    "name": "Complex esportiu"
+                    "name": "Complex esportiu",
+                    "terms": "poliesportiu,pavelló,pabelló,centre d'atletisme,atletisme,complexe,polideportiu"
                 },
                 "leisure/sports_centre/climbing": {
                     "name": "Gimnàs d'escalada"
@@ -5720,6 +6031,17 @@
                 },
                 "man_made/chimney": {
                     "name": "Xemeneia"
+                },
+                "man_made/clearcut": {
+                    "name": "Tala rasa d'arbres",
+                    "terms": "tall,tala,bosc,arbre,fusta"
+                },
+                "man_made/compass_rose": {
+                    "name": "Rosa dels vents",
+                    "terms": "tramuntana,vent de port,gregal,llevant,xaloc,migjorn,garbí,llebeig,ponent,mestral,cerç,serè,nord,sud,est,oest,roseta dels vents,bruixola"
+                },
+                "man_made/courtyard": {
+                    "name": "Pati interior"
                 },
                 "man_made/crane": {
                     "name": "Grua"
@@ -5806,6 +6128,9 @@
                     "name": "Tanc d'aigua",
                     "terms": "torre d'aigua,dipòsit d'aigua,cisterna",
                     "aliases": "Dipòsit d'aigua"
+                },
+                "man_made/street_cabinet": {
+                    "name": "Armari de carrer"
                 },
                 "man_made/surveillance": {
                     "name": "Vigilància"
@@ -6128,7 +6453,7 @@
                 },
                 "office/lawyer": {
                     "name": "Bufet d'advocats",
-                    "terms": "advocat,dret,jutge"
+                    "terms": "advocat,dret,jutge,llei"
                 },
                 "office/lawyer/notary": {
                     "name": "Notaria"
@@ -6175,7 +6500,7 @@
                     "terms": "asesoria,comptable,tases,taxes,asesor,consultor"
                 },
                 "office/telecommunication": {
-                    "name": "Oficina de telecomunicacions",
+                    "name": "Oficines d'una companyia de telecomunicacions",
                     "terms": "comunicació,proveïdor d'internet,xarxa,telèfon,veu,isp"
                 },
                 "office/therapist": {
@@ -6746,7 +7071,8 @@
                     "name": "Botiga de roba de segona mà"
                 },
                 "shop/clothes/underwear": {
-                    "name": "Botiga de llenceria"
+                    "name": "Botiga de llenceria",
+                    "terms": "roba interior,sonstenidor,sujetado,calçoncillos,calçotets,brangues,tanga,braga,boxer,íntim,moda"
                 },
                 "shop/clothes/workwear": {
                     "name": "Botiga de roba de feina"
@@ -6829,7 +7155,6 @@
                     "terms": "botiga de robes,teles,robes"
                 },
                 "shop/farm": {
-                    "name": "Estand productiu",
                     "terms": "grades"
                 },
                 "shop/fashion": {

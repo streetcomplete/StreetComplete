@@ -470,6 +470,10 @@
                 },
                 "building": {
                     "label": "Budova",
+                    "options": {
+                        "construction": "Budova vo výstavbe",
+                        "fire_station": "Budova hasičskej stanice"
+                    },
                     "terms": "budova,stavba"
                 },
                 "building/flats": {
@@ -4646,6 +4650,10 @@
                 "highway/bus_stop": {
                     "name": "Autobusová zastávka"
                 },
+                "highway/construction": {
+                    "name": "Cesta vo výstavbe",
+                    "terms": "cesta vo vystavbe"
+                },
                 "highway/corridor": {
                     "name": "Chodba v budove",
                     "terms": "chodba,hala"
@@ -6862,10 +6870,6 @@
                 "shop/pet": {
                     "name": "Obchod s potrebami pre domáce zvieratá",
                     "terms": "domáci miláčik,domaci milacik,domace zvierata,domáce zvierata,potrava"
-                },
-                "shop/pet_grooming": {
-                    "name": "Zvierací salón",
-                    "terms": "zvieraci salon,salón pre zvieratá,salon pre zvierata,psí salón,salón pre psov,psi salon,salon pre psov,mačací salón,macaci salon,salón pre mačky,salon pre macky"
                 },
                 "shop/photo": {
                     "name": "Obchod s fototechnikou",

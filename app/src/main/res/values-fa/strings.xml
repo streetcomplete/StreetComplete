@@ -1185,10 +1185,10 @@
     <string name="quest_memorialType_stele_stone">"ایستاسنگ سنگی (لوح یادبود)"</string>
     <string name="quest_memorialType_sculpture">"مجسمهٔ دیگر"</string>
     <string name="select_overlay">"انتخاب پوشش"</string>
-    <string name="overlay_none">"هیچ‌کدام"</string>
+    <string name="overlay_none">"هیچیک"</string>
     <string name="overlay_lit">"روشنایی خیابان"</string>
     <string name="lit_value_yes">"روشن"</string>
-    <string name="lit_value_no">"روشن نیست"</string>
+    <string name="lit_value_no">"روشنایی ندارد"</string>
     <string name="lit_value_24_7">"شب و روز روشن"</string>
     <string name="lit_value_automatic">"وقتی کسی از آنجا می‌گذرد روشن می‌شود"</string>
     <string name="overlay_sidewalk">"پیاده‌روها"</string>
@@ -1220,13 +1220,13 @@
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
     <string name="create_node_action_description">"شما یک گره ایجاد کردید با ..."</string>
-    <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان تجمع است"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان گردهمایی است"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطه تجمع جایی است که افراد در مواقع اضطراری در آن جمع می‌شوند. معمولاً شبیه این به نظر می‌رسد:"</string>
     <string name="quest_address_answer_house_name2">"نشانی دارای شماره خانه است..."</string>
     <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
     <string name="quest_address_street_hint2">"برای انتخاب خیابان روی نقشه ضربه بزنید"</string>
     <string name="quest_bicycle_incline_title">"کدام جهت در اینجا به سمت بالا منتهی می‌شود؟"</string>
-    <string name="quest_bicycle_incline_up_and_down">"دارای پستی و بلندی هست"</string>
+    <string name="quest_bicycle_incline_up_and_down">"پستی و بلندی دارد"</string>
     <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"فواره دیگر"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"فواره قطره‌های کوچک آب می‌پاشد"</string>
@@ -1257,7 +1257,7 @@
     <string name="urlconfig_qr_code_description">"برای اینکه پیش‌تنظیم هایتان را با دیگران به اشتراک بگذارید این کد QR را به دیگران نشان دهید."</string>
     <string name="urlconfig_as_url">"یا به عنوان نشانی اینترنتی:"</string>
     <string name="urlconfig_url_copied">"نشانی اینترنتی در حافظه‌پنهان رونوشت شد"</string>
-    <string name="urlconfig_apply_title">"اعمال پیش‌تنظیم"</string>
+    <string name="urlconfig_apply_title">"اعمال پیش‌فرض"</string>
     <string name="urlconfig_apply_message">"%1$s از پیش تعیین شده اعمال و انتخاب شود؟"</string>
     <string name="urlconfig_apply_message_overwrite">"نکته: پیش‌تنظیم شما با همین نام رونویسی خواهد شد!"</string>
     <string name="urlconfig_switch_hint">"هر زمان که بخواهید می‌توانید تنظیمات از پیشفرض را در منوی تنظیمات تغییر دهید."</string>
@@ -1265,28 +1265,28 @@
     <string name="user_profile_current_week_title">"در 7 روز گذشته"</string>
     <string name="user_profile_dates_mapped">"روزهایی که اخیراً نقشه‌‌کشی کرده‌اید"</string>
     <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه مورد ادعا"</string>
-    <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال شود."</string>
+    <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد."</string>
     <string name="confirmation_replace_shop_title">"حالا مکان دیگری است؟"</string>
-    <string name="confirmation_replace_shop_message">"در این صورت، ساعات کار، اطلاعات تماس و غیره نیز تغییر می‌کند."</string>
+    <string name="confirmation_replace_shop_message">"در این صورت، ساعات کار، اطلاعات تماس و غیره هم تغییر می‌کند."</string>
     <string name="confirmation_replace_shop_yes">"الان مکان دیگری است"</string>
     <string name="confirmation_replace_shop_no">"هنوز همین مکان است"</string>
     <string name="move_node">"در این محل کمی متفاوت است…"</string>
     <string name="quest_move_node_message">"با حرکت دادن نشانه می‌توانید موقعیت مکان را اصلاح کنید.
-حالا جابجاش کنم؟"</string>
+اکنون جابجا کنم؟"</string>
     <string name="node_moved_not_far_enough">"لطفا آن را بیشتر حرکت دهید"</string>
     <string name="node_moved_too_far">"خیلی دور رفت. یک یادداشت بگذارید"</string>
     <string name="node_moved">"توسط %s منتقل شد"</string>
     <string name="move_node_description">"نقشه را بکشید تا نشانه در مکان صحیح قرار گیرد. از بزرگنمایی استفاده کنید و سعی کنید تا حد امکان دقیق باشید. لطفاً توجه داشته باشید که مکان نمایش داده شده شما ممکن است دقیق تر از چیزی باشد که نشان داده شده است."</string>
     <string name="move_node_action_description">"شما گره را جابجا کردید"</string>
-    <string name="quest_cycleway_value_shoulder">"هیچ، اما شانه مسیر برای دوچرخه‌سواران قابل استفاده است"</string>
-    <string name="quest_placeName_no_name_answer">"هیچگونه تابلویی وجود ندارد"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"این عرض غیر قابل قبول به نظر می‌رسد. به یاد داشته باشید، عرض مذکور از لبه تا لبه باشد، شامل پارکینگ در خیابان، خطوط دوچرخه و غیره."</string>
+    <string name="quest_cycleway_value_shoulder">"هیچ، ولی شانه مسیر برای دوچرخه‌سواران قابل استفاده است"</string>
+    <string name="quest_placeName_no_name_answer">"هیچ تابلویی وجود ندارد"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"این عرض غیر قابل قبول به نظر می‌رسد. خاطر یاد داشته باشید، عرض مذکور از لبه تا لبه باشد، شامل پارکینگ در خیابان، خطوط دوچرخه و غیره."</string>
     <string name="overlay_cycleway">"مسیرهای دوچرخه‌سواری"</string>
     <string name="bicycle_boulevard_is_a">"این یک %1$s است"</string>
     <string name="bicycle_boulevard_is_not_a">"این %1$s نیست"</string>
     <string name="bicycle_boulevard">"بلوار دوچرخه"</string>
     <string name="separate_cycleway_no">"دوچرخه سواری ممنوع"</string>
-    <string name="separate_cycleway_allowed">"دوچرخه‌سواران مجاز هستند"</string>
+    <string name="separate_cycleway_allowed">"دوچرخه‌سواران مجاز می‌باشند"</string>
     <string name="separate_cycleway_no_or_allowed">"برای دوچرخه سواری مشخص نشده است (دوچرخه سواری ممکن است همچنان مجاز باشد)"</string>
     <string name="separate_cycleway_non_segregated">"مسیر با استفاده مشترک"</string>
     <string name="separate_cycleway_segregated">"مسیر دوچرخه و پیاده مجزا"</string>
@@ -1303,9 +1303,9 @@
 &lt;p&gt;در حالی که گوشی همراه را بصورت مستقیم به سمت پایین می‌گیرید نقاط شروع و پایان را تنظیم کنید (به طوری که فلش سفید را از بالا مشاهده کنید) تا کاملاً از این مشکل برای اندازه‌گیری‌های افقی جلوگیری به عمل آید.&lt;/p&gt;
 &lt;p&gt;برای اندازه‌گیری‌های عمودی، لازم است به طور چشمی بررسی کنید که از جهات مختلف، نقطه شروع نسبت به سطح زمین حرکتی نداشته باشد.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"این برنامه در &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;سامانه خدمات بازار گوگل for AR&lt;/a&gt; (ARCore), توسط بازار گوگل ارائه شده و تحت پیوند زیر اجرا می شود &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
-    <string name="default_disabled_msg_seasonal">"این نوع حُستار به طور پیش‌فرض غیرفعال است زیرا ممکن است نیاز به بررسی مجدد وضعیت در بخش مشخصی از سال داشته باشد."</string>
+    <string name="default_disabled_msg_seasonal">"این نوع جُستار به طور پیش‌فرض غیرفعال است زیرا ممکن است نیاز به بررسی مجدد وضعیت در بخش مشخصی از سال داشته باشد."</string>
     <string name="quest_gritBinSeasonal_title">"آیا اینجا هم خارج از زمستان است؟"</string>
     <string name="street_parking_staggered_on_street">"به صورت متناوب در دو طرف خیابان"</string>
     <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
-    <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. همه سیگنال‌های صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
+    <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. تمام هشدارهای صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
 </resources>

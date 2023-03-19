@@ -1301,4 +1301,9 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
 &lt;p&gt;Postavite početnu i krajnju tačku tako što ćete usmeriti telefon pravo nadole (tako da belu strelicu vidite odozgo) kako biste u potpunosti izbegli grešku horizontalnog merenja.&lt;/p&gt;
 &lt;p&gt;Za vertikalna merenja, potrebno je da umesto toga proverite da li se početna tačka ne pomera u odnosu na zemlju posmatrajući je iz različitih pravaca.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ova aplikacija je bazirana na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play uslugama za AR&lt;/a&gt; (ARCore), koje pruža kompanija Google i regulisana je &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Smernicama za privatnost&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Ovaj zadatak je isključen jer može biti potrebna ponovna provera stvarnog stanja u određeno doba godine."</string>
+    <string name="quest_gritBinSeasonal_title">"Da li je tu i kad nije zima?"</string>
+    <string name="street_parking_staggered_on_street">"Na ulici sa suprotne strane"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Delimično na ulici sa suprotne strane"</string>
+    <string name="quest_traffic_signals_sound_description">"Savet: Potražite zvučnike. Ne mogu se svi zvučni signali aktivirati na dugme."</string>
 </resources>

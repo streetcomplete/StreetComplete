@@ -6222,10 +6222,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Cricketveld"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Paardenpiste",
-                    "terms": "piste,paardrijden,manege,arena,ruiter,dressuur"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "Veldhockeyveld"
                 },
@@ -8206,10 +8202,6 @@
                 "shop/pet": {
                     "name": "Dierenwinkel",
                     "terms": "dierenzaak,dierenwinkel,huisdieren"
-                },
-                "shop/pet_grooming": {
-                    "name": "Trimsalon",
-                    "terms": "huisdierenverzorging,huisdierentrimsalon,hondenverzorging,hondentrimsalon,kattenverzorging,kattentrimsalon"
                 },
                 "shop/photo": {
                     "name": "Fotowinkel",

@@ -1804,6 +1804,10 @@
                 },
                 "payment_multi": {
                     "label": "支付类型",
+                    "options": {
+                        "contactless": "非接触式支付",
+                        "mastercard_contactless": "万事达卡非接触式支付"
+                    },
                     "terms": "支付类型,付款类型,收款类型"
                 },
                 "phases": {
@@ -7537,9 +7541,6 @@
                 "shop/pet": {
                     "name": "宠物店",
                     "terms": "宠物店"
-                },
-                "shop/pet_grooming": {
-                    "name": "宠物美容美发店"
                 },
                 "shop/photo": {
                     "name": "照相馆",

@@ -5818,10 +5818,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Γήπεδο Cricket"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Αρένα Ιππασίας",
-                    "terms": "χώρος ιππασίας,αίθουσα ιππασίας"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "Γήπεδο Χόκεϋ"
                 },
@@ -7498,9 +7494,6 @@
                 "shop/pet": {
                     "name": "Κατάστημα Κατοικίδιων",
                     "terms": "κατάστημα κατοικιδίων,πετ σοπ"
-                },
-                "shop/pet_grooming": {
-                    "name": "Κατάστημα Καλλωπισμού Κατοικίδιων"
                 },
                 "shop/photo": {
                     "name": "Φωτογραφείο",

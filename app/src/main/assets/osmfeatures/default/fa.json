@@ -243,6 +243,17 @@
                 "animal_shelter": {
                     "label": "پناهگاه حیوانات"
                 },
+                "archaeological_site": {
+                    "label": "نوع",
+                    "options": {
+                        "city": "شهر تاریخی",
+                        "enclosure": "محفظه",
+                        "necropolis": "گورستان / شهر اموات",
+                        "petroglyph": "سنگ تراشی/حکاکی روی سنگ",
+                        "roman_circus": "سیرک رومی",
+                        "roman_villa": "ویلای رومی"
+                    }
+                },
                 "architect": {
                     "label": "معمار"
                 },
@@ -6850,10 +6861,6 @@
                 "shop/pet": {
                     "name": "فروشگاه حیوانات خانگی",
                     "terms": "پرنده فروشی,سهره,گربه,سگ,ماهی,آکواریوم فروشی,ماهی تزئینی"
-                },
-                "shop/pet_grooming": {
-                    "name": "فروشگاه لوازم نظافت حیوان خانگی",
-                    "terms": "گربه ، سگ"
                 },
                 "shop/photo": {
                     "name": "عکس و ویدیو",

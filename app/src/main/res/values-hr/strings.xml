@@ -1265,7 +1265,7 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="urlconfig_switch_hint">"Možete promijeniti Grupe zadataka u postavkama u bilo kojem trenutku."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
     <string name="user_profile_current_week_title">"Zadnjih 7 dana"</string>
-    <string name="user_profile_dates_mapped">"Dani kojima ste nedavno kartirali"</string>
+    <string name="user_profile_dates_mapped">"Dani kada ste nedavno kartirali"</string>
     <string name="quest_cycleway_value_advisory_lane">"Preporučena traka za bicikle"</string>
     <string name="urlconfig_scan_qr_code_again2">"Nakon instaliranja aplikacije ponovno skenirajte QR kod ili kliknite &lt;a href=\"%s\"&gt;ovu poveznicu&lt;/a&gt; za primjenu Grupe zadataka."</string>
     <string name="confirmation_replace_shop_title">"Koja je ovdje sada trgovina?"</string>
