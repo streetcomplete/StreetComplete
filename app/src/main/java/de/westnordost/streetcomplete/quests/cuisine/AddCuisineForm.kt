@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.quests.cuisine
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
@@ -20,12 +22,16 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
     override val contentLayoutResId = R.layout.quest_cuisine_suggestion
     private val binding by contentViewBinding(QuestCuisineSuggestionBinding::bind)
 
-    val cuisines = mutableListOf<String>()
+    val cuisines = mutableSetOf<String>()
 
     val cuisine get() = binding.cuisineInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (suggestions.isEmpty()) { // load suggestions
+            requireContext().assets.open("cuisine/cuisineSuggestions.txt").bufferedReader()
+                .lineSequence().forEach { if (it.isNotBlank()) suggestions.add(it.trim()) }
+        }
 
         binding.cuisineInput.setAdapter(
             ArrayAdapter(
@@ -34,6 +40,16 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
                 (lastPickedAnswers + suggestions).distinct()
             )
         )
+        binding.cuisineInput.onItemClickListener = AdapterView.OnItemClickListener { _, t, _, _ ->
+            val cuisine = (t as? TextView)?.text?.toString() ?: return@OnItemClickListener
+            if (!cuisines.add(cuisine)) return@OnItemClickListener // we don't want duplicates
+            binding.currentCuisines.text = cuisines.joinToString(";")
+            binding.cuisineInput.text.clear()
+            viewLifecycleScope.launch {
+                delay(20) // delay, because otherwise dropdown disappears immediately
+                binding.cuisineInput.showDropDown()
+            }
+        }
 
         binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
 
@@ -47,6 +63,10 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
                 delay(20) // delay, because otherwise dropdown disappears immediately
                 binding.cuisineInput.showDropDown()
             }
+        }
+        viewLifecycleScope.launch {
+            delay(20) // delay, because otherwise dropdown is not anchored at the correct view
+            binding.cuisineInput.showDropDown()
         }
     }
 
@@ -76,191 +96,11 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
+            .mostCommonWithin(target = 20, historyCount = 50, first = 1)
             .toList()
     }
 
     companion object {
-        private val suggestions = cuisineValues.split("\n").mapNotNull {
-            if (it.isBlank()) null
-            else it.trim()
-        }.toTypedArray()
+        private val suggestions = mutableListOf<String>()
     }
 }
-
-const val cuisineValues = """
-afghan
-african
-american
-arab
-argentinian
-armenian
-asian
-austrian
-bagel
-bakery
-balkan
-barbecue
-basque
-bavarian
-bbq
-beef
-beef_bowl
-beef_noodle
-belgian
-bistro
-bolivian
-brasserie
-brazilian
-breakfast
-british
-brunch
-bubble_tea
-buffet
-burger
-buschenschank
-cafe
-cafetaria
-cajun
-cake
-canteen
-cantonese
-caribbean
-chicken
-chili
-chimney_cake
-chinese
-chocolate
-churro
-coffee
-coffee_shop
-couscous
-crepe
-crepes
-croatian
-cuban
-curry
-czech
-danish
-deli
-dessert
-diner
-donut
-dumplings
-empanada
-english
-escalope
-ethiopian
-european
-falafel
-filipino
-fine_dining
-fish
-fish_and_chips
-fondue
-french
-fried_chicken
-fried_food
-fries
-friture
-frozen_yogurt
-georgian
-german
-greek
-grill
-gyros
-hawaiian
-heuriger
-hot_dog
-hotpot
-hungarian
-ice_cream
-indian
-indonesian
-international
-irish
-italian
-italian_pizza
-jamaican
-japanese
-juice
-kebab
-korean
-langos
-lao
-latin_american
-lebanese
-malagasy
-malay
-malaysian
-meat
-mediterranean
-mexican
-middle_eastern
-mongolian
-moroccan
-nepalese
-noodle
-organic
-oriental
-pakistani
-pancake
-pasta
-pastel
-pastry
-persian
-peruvian
-piadina
-pie
-pita
-pizza
-poke
-polish
-portuguese
-potato
-pretzel
-pub
-ramen
-regional
-romanian
-russian
-salad
-sandwich
-sausage
-savory_pancakes
-seafood
-shawarma
-smoothie
-smørrebrød
-snack
-snackbar
-soba
-soup
-southern
-souvlaki
-spanish
-steak_house
-sushi
-swedish
-swiss
-syrian
-tacos
-taiwanese
-takoyaki
-tapas
-teahouse
-teppanyaki
-tex-mex
-thai
-traditional
-turkish
-udon
-ukrainian
-uzbek
-vietnamese
-waffle
-western
-wings
-yakiniku
-yakitori
-"""

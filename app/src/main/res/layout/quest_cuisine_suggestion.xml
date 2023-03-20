@@ -16,7 +16,8 @@
     <AutoCompleteTextView
         android:id="@+id/cuisineInput"
         android:textSize="32sp"
-        android:completionThreshold="1"
+        android:completionThreshold="0"
+        android:dropDownAnchor="@id/currentCuisines"
         tools:text="Beer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
