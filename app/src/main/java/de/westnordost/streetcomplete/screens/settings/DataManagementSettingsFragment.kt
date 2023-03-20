@@ -75,10 +75,10 @@ class DataManagementSettingsFragment :
 
         fun importExport(import: Boolean) {
             val lists = listOf(
-                resources.getString(R.string.import_export_settings) to "settings",
                 resources.getString(R.string.import_export_hidden_quests) to "hidden_quests",
                 resources.getString(R.string.import_export_presets) to "presets",
                 resources.getString(R.string.import_export_custom_overlays) to "overlays",
+                resources.getString(R.string.import_export_settings) to "settings",
             ).unzip()
             AlertDialog.Builder(requireContext())
                 .setTitle(if (import) R.string.pref_import else R.string.pref_export)
