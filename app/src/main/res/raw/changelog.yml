@@ -15,7 +15,7 @@ v52.0-beta1: |
   <li>Building levels: Require specifying the roof levels, too (with exceptions) (#4874, #4821, #4661)</li>
   <li>Ask about wheelchair accessibility of toilets in restaurants etc. (#4866, #4868, #4879), thanks @arrival-spring, @Helium314</li>
   <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
-  <li>Fix some memory leaks and crashes (#4887, #4884)</li>
+  <li>Fix some memory leaks and crashes (#4869, #4884)</li>
   <li>Other small enhancements (#4864, #4880, #4883...), thanks @matkoniecz, @arrival-spring, @Helium314</li>
   </ul>
 

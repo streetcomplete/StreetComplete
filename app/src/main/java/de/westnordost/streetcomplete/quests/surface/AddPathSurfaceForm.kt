@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.Surface.STEPPING_STONES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
@@ -26,19 +25,12 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (!prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false) && value.shouldBeDescribed) {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(SurfaceAndNote(value, description)))
-                    }.show()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-            return
-        }
-        applyAnswer(SurfaceAnswer(SurfaceAndNote(value)))
+        if (prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false))
+            applyAnswer(SurfaceAnswer(SurfaceAndNote(value, null)))
+        else
+            collectSurfaceDescriptionIfNecessary(requireContext(), value) {
+                applyAnswer(SurfaceAnswer(SurfaceAndNote(value, it)))
+            }
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
