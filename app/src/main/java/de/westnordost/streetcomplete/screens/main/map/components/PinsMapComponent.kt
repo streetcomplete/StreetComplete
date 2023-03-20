@@ -7,14 +7,17 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
-class PinsMapComponent(ctrl: KtMapController) {
+class PinsMapComponent(private val ctrl: KtMapController) {
 
     private val pinsLayer: MapData = ctrl.addDataLayer(PINS_LAYER)
 
     /** Shows/hides the pins */
     var isVisible: Boolean
         get() = pinsLayer.visible
-        set(value) { pinsLayer.visible = value }
+        set(value) {
+            pinsLayer.visible = value
+            ctrl.requestRender()
+        }
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
