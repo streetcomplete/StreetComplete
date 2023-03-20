@@ -43,26 +43,15 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
         binding.cuisineInput.onItemClickListener = AdapterView.OnItemClickListener { _, t, _, _ ->
             val cuisine = (t as? TextView)?.text?.toString() ?: return@OnItemClickListener
             if (!cuisines.add(cuisine)) return@OnItemClickListener // we don't want duplicates
-            binding.currentCuisines.text = cuisines.joinToString(";")
-            binding.cuisineInput.text.clear()
-            viewLifecycleScope.launch {
-                delay(20) // delay, because otherwise dropdown disappears immediately
-                binding.cuisineInput.showDropDown()
-            }
+            onAddedCuisine(cuisine)
         }
 
         binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.addCuisineButton.setOnClickListener {
-            if (isFormComplete() && binding.cuisineInput.text.isNotBlank()) {
-                cuisines.add(cuisine)
-                binding.currentCuisines.text = cuisines.joinToString(";")
-                binding.cuisineInput.text.clear()
-            }
-            viewLifecycleScope.launch {
-                delay(20) // delay, because otherwise dropdown disappears immediately
-                binding.cuisineInput.showDropDown()
-            }
+            if (!isFormComplete() || binding.cuisineInput.text.isBlank()) return@setOnClickListener
+            cuisines.add(cuisine)
+            onAddedCuisine(cuisine)
         }
         viewLifecycleScope.launch {
             delay(20) // delay, because otherwise dropdown is not anchored at the correct view
@@ -90,6 +79,16 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
             serialize = { it },
             deserialize = { it },
         )
+    }
+
+    private fun onAddedCuisine(cuisine: String) {
+        binding.currentCuisines.text = cuisines.joinToString(";")
+        binding.cuisineInput.text.clear()
+        (binding.cuisineInput.adapter as ArrayAdapter<String>).remove(cuisine)
+        viewLifecycleScope.launch {
+            delay(30) // delay, because otherwise dropdown disappears immediately (also the remove apparently is done in background, so it needs some time)
+            binding.cuisineInput.showDropDown()
+        }
     }
 
     private lateinit var favs: LastPickedValuesStore<String>
