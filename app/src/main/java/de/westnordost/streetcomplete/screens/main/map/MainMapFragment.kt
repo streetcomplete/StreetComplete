@@ -231,7 +231,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun hideOverlay() {
         styleableOverlayMapComponent?.isVisible = false
-        styleableOverlayMapComponent?.isVisible = false
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
