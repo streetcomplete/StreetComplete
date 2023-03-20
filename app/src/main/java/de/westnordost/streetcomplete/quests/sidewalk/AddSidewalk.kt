@@ -24,7 +24,10 @@ import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
-        ways with highway ~ path|footway|cycleway|construction
+        ways with
+          highway ~ path|footway|cycleway|construction
+          and foot !~ no|private
+          and access !~ no|private
     """.toElementFilterExpression() }
     // highway=construction included, as situation often changes during and after construction
 
