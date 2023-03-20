@@ -1499,6 +1499,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_compacted">"Compacted"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
+    <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>
@@ -1610,7 +1611,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
 
     <string name="overlay_none">None</string>
-
     <string name="overlay_lit">Street lighting</string>
     <string name="lit_value_yes">Lit</string>
     <string name="lit_value_no">Not lit</string>
@@ -1632,6 +1632,12 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_no">"Still same place"</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <!-- Used for surfaces unknown by SC. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from them -->
+    <string name="unknown_surface_title">Other kind of surface</string>
+    <string name="overlay_surface">Surfaces</string>
+
+    <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
 
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>

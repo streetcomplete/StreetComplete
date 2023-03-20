@@ -813,7 +813,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
     <string name="leave_note">"Hinweis hinterlassen"</string>
     <string name="quest_shop_gone_title">"Was ist jetzt stattdessen hier?"</string>
-    <string name="quest_shop_gone_vacant_answer">"Es steht leer"</string>
+    <string name="quest_shop_gone_vacant_answer">"Es steht leer…"</string>
     <string name="quest_shop_gone_replaced_answer">"Ein(e) …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Hier Art des Ortes eingeben"</string>
     <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist jetzt hier?"</string>
@@ -1082,7 +1082,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="ar_core_tracking_error_no_plane_hit">"Bleib dichter am Pfeil, aber achte dabei auf den Verkehr!"</string>
     <string name="quest_sidewalk_surface_title">"Welche Oberfläche hat der Bürgersteig hier?"</string>
     <string name="quest_tactilePaving_incorrect">"Nur auf einer Seite"</string>
-    <string name="quest_fee_answer_yes_but">"Ja, …"</string>
+    <string name="quest_fee_answer_yes_but">"Ja,…"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Nein, aber es gibt eine Maximaldauer …"</string>
     <string name="unit_days">"Tage"</string>
     <string name="unit_hours">"Stunden"</string>
@@ -1214,7 +1214,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du die Lage über die gesamte Länge hinweg überprüft hast?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Straßenbreite: %s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
@@ -1281,7 +1281,7 @@ Jetzt verschieben?"</string>
     <string name="move_node_description">"Verschiebe die Karte, um den Punkt an die richtige Stelle zu verschieben. Nutze die Zoom-Funktion, um so präzise wie möglich zu sein. Bitte sei Dir bewusst, dass deine eigene Position weniger exakt sein könnte, als Dir angezeigt wird."</string>
     <string name="move_node_action_description">"Du hast den Punkt verschoben"</string>
     <string name="quest_cycleway_value_shoulder">"Keiner, aber Seitenstreifen für Radverkehr nutzbar"</string>
-    <string name="quest_placeName_no_name_answer">"Es gibt kein Schild für den Namen"</string>
+    <string name="quest_placeName_no_name_answer">"Es gibt kein Schild für den Namen…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Diese Breite sieht ungewöhnlich aus. Nicht vergessen: Hier soll die Breite von Bordstein zu Bordstein angegeben werden, also inklusive Parkstreifen, Radfahrstreifen usw."</string>
     <string name="overlay_cycleway">"Fahrradwege"</string>
     <string name="bicycle_boulevard_is_a">"Es ist eine %1$s"</string>
@@ -1310,4 +1310,13 @@ Jetzt verschieben?"</string>
     <string name="street_parking_staggered_on_street">"Wechselseitig auf der Straße"</string>
     <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Straße"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Achte auf Lautsprecher. Nicht alle Tonsignale können über eine Taste aktiviert werden."</string>
+    <string name="quest_presets_duplicate">"Duplizieren"</string>
+    <string name="label_block">"Block"</string>
+    <string name="quest_address_answer_block">"Ist in einem Block…"</string>
+    <string name="quest_address_answer_no_block">"Ist nicht in einem Block…"</string>
+    <string name="quest_surface_value_mud">"Ständiger Matsch"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Keine Toilette hier"</string>
+    <string name="unknown_surface_title">"Andere Art von Oberfläche"</string>
+    <string name="overlay_surface">"Oberflächen"</string>
+    <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Fuß- und Fahrradweg"</string>
 </resources>

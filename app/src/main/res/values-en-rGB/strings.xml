@@ -54,7 +54,7 @@
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Project Home"</string>
     <string name="about_summary_repository">"on GitHub"</string>
-    <string name="about_title_report_error">"Report error"</string>
+    <string name="about_title_report_error">"Report an error"</string>
     <string name="about_title_feedback">"Give Feedback"</string>
     <string name="about_title_license">"Licence"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
@@ -813,7 +813,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="osm_element_gone_confirmation">"It does not exist"</string>
     <string name="leave_note">"Leave note"</string>
     <string name="quest_shop_gone_title">"What’s here now instead?"</string>
-    <string name="quest_shop_gone_vacant_answer">"It’s vacant"</string>
+    <string name="quest_shop_gone_vacant_answer">"It’s vacant…"</string>
     <string name="quest_shop_gone_replaced_answer">"A(n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type kind of place here"</string>
     <string name="quest_shop_vacant_type_title">"This shop has been vacant. What’s here now?"</string>
@@ -1214,7 +1214,7 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_camp_type_tents_only">"Only tents"</string>
     <string name="quest_camp_type_backcountry">"Backcountry camping (no facilities)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"This answer is not matching what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"This answer does not match what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?"</string>
     <string name="quest_recycling_type_pet">"PET only"</string>
     <string name="street_parking_street_width">"Street width: %s"</string>
     <string name="overlay_street_parking">"Street parking"</string>
@@ -1281,7 +1281,7 @@ Move it now?"</string>
     <string name="move_node_description">"Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed."</string>
     <string name="move_node_action_description">"You moved the node"</string>
     <string name="quest_cycleway_value_shoulder">"none, but shoulder is usable for cyclists"</string>
-    <string name="quest_placeName_no_name_answer">"There is no name sign"</string>
+    <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from curb to curb, including on-street parking, bicycle lanes etc."</string>
     <string name="overlay_cycleway">"Cycleways"</string>
     <string name="bicycle_boulevard_is_a">"It’s a %1$s"</string>

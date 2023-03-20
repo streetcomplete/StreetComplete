@@ -1208,7 +1208,10 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="confirmation_replace_shop_message">"Tiukaze ankaŭ la malfermhoroj, kontaktdatumo, ktp. ŝanĝiĝus."</string>
     <string name="confirmation_replace_shop_yes">"Alia vendejo"</string>
     <string name="confirmation_replace_shop_no">"Sama vendejo"</string>
+    <string name="quest_placeName_no_name_answer">"Neniu signo kun nomo ĉi tie…"</string>
     <string name="overlay_cycleway">"biciklovojoj"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
+    <string name="quest_gritBinSeasonal_title">"Ĉu ĝi ankaŭ estas malvintre ĉi tie?"</string>
+    <string name="quest_traffic_signals_sound_description">"Avizo: Rigardu ĉu estas laŭtparoliloj ĉe la semaforo. Sona signalo ne ĉiam estas ŝaltebla per butono."</string>
 </resources>

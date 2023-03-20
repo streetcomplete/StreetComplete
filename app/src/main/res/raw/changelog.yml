@@ -1,4 +1,6 @@
 v52.0-beta1: |
+  <h3>New overlay for surfaces (#4378, #4642), thanks @matkoniecz</h3>
+  <p>Now you can comprehensively map and verify surfaces mapped for roads and paths!</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
@@ -9,8 +11,12 @@ v52.0-beta1: |
   <li>Fix block number input in Japan, by @Helium314</li>
   <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
   <li>Address overlay: You can now add addresses to entrances (#4823)</li>
+  <li>Surfaces: Added "persistent mud" as selectable surface, by @matkoniecz</li>
+  <li>Building levels: Require specifying the roof levels, too (with exceptions) (#4874, #4821, #4661)</li>
+  <li>Ask about wheelchair accessibility of toilets in restaurants etc. (#4866, #4868, #4879), thanks @arrival-spring, @Helium314</li>
   <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
-  <li>Other small enhancements (#4864, ...), thanks @matkoniecz, @arrival-spring</li>
+  <li>Fix some memory leaks and crashes (#4887, #4884)</li>
+  <li>Other small enhancements (#4864, #4880, #4883...), thanks @matkoniecz, @arrival-spring, @Helium314</li>
   </ul>
 
 v51.1: |

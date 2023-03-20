@@ -48,7 +48,7 @@
     <string name="upload_error">"Błąd podczas przesyłania odpowiedzi"</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
     <string name="confirmation_cancel_prev_download_title">"Chcesz zatrzymać trwające wyszukiwanie i rozpocząć w tej okolicy?"</string>
-    <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Włączyć ją w ustawieniach?"</string>
+    <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Otworzyć ustawienia by to zmienić?"</string>
     <string name="no_location_permission_warning">"Aby wyświetlić swoją pozycję na mapie i zadania dostępne w okolicy, potrzebna jest zgoda na lokalizację."</string>
     <string name="about_title_authors">"Autorzy"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick i współautorzy"</string>
@@ -155,7 +155,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_sport_basketball">"Koszykówka"</string>
     <string name="quest_sport_golf">"Golf"</string>
     <string name="quest_sport_equestrian">"Jeździectwo"</string>
-    <string name="quest_sport_athletics">"Lekka atletyka"</string>
+    <string name="quest_sport_athletics">"Lekkoatletyka"</string>
     <string name="quest_sport_volleyball">"Siatkówka"</string>
     <string name="quest_sport_beachvolleyball">"Siatkówka plażowa"</string>
     <string name="quest_sport_american_football">"Futbol amerykański"</string>
@@ -281,7 +281,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="produce_sisal">"Agawy sizalowe"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutaj nie można nic znaleźć. Spróbuj przybliżyć lub zmniejszyć pochylenie mapy."</string>
     <string name="quest_crossing_type_title">"Jaki jest to rodzaj przejścia?"</string>
-    <string name="quest_crossing_type_unmarked">"Przejście nieoznaczone"</string>
+    <string name="quest_crossing_type_unmarked">"Bez oznaczenia na jezdni"</string>
     <string name="action_undo">"Cofnij"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Pomidory"</string>
@@ -312,7 +312,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_value_none">"brak"</string>
     <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
     <string name="quest_cycleway_value_bus_lane">"na pasie dla autobusów"</string>
-    <string name="quest_cycleway_value_sidewalk">"chodnik wspóldzielony"</string>
+    <string name="quest_cycleway_value_sidewalk">"chodnik współdzielony"</string>
     <string name="quest_leave_new_note_create_image_error">"Nie udało się utworzyć pliku dla zdjęcia"</string>
     <string name="quest_cycleway_value_lane_dual">"pas rowerowy w obu kierunkach"</string>
     <string name="quest_cycleway_value_track_dual">"droga dla rowerów w obu kierunkach"</string>
@@ -325,18 +325,18 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_hasFeature_only">"Tylko"</string>
     <string name="quest_dietType_explanation_vegan">"Dania wegańskie nie zawierają żadnych produktów pochodzenia zwierzęcego (bez mięsa, ryb, drobiu, przetworów mlecznych, jaj, miodu, owoców morza, itp.)"</string>
     <string name="quest_dietType_explanation_vegetarian">"Dania wegetariańskie nie zawierają mięsa, w tym ryb i drobiu."</string>
-    <string name="quest_dietType_explanation">"Zaznacz tylko jeśli miejsce oferuje pełnoprawne danie dla tej diety, wykluczając przystawki itp."</string>
+    <string name="quest_dietType_explanation">"Zaznacz tylko jeśli miejsce oferuje pełnoprawne danie dla tej diety, pomijając przystawki itp."</string>
     <string name="quest_carWashType_title">"Jaki to rodzaj myjni samochodowej?"</string>
     <string name="quest_carWashType_automated">"Automatyczna"</string>
     <string name="quest_carWashType_selfService">"Samoobsługowa"</string>
     <string name="quest_carWashType_service">"Myje obsługa"</string>
     <string name="enable_quest_confirmation_title">"Aktywować ten rodzaj zadań?"</string>
-    <string name="default_disabled_msg_go_inside">"To zadanie jest domyślnie nieaktywne, ponieważ odpowiedź jest często niemożliwa bez wejścia do danego miejsca"</string>
+    <string name="default_disabled_msg_go_inside">"To zadanie jest domyślnie nieaktywne, ponieważ odpowiedź na nie jest często niemożliwa bez wejścia do danego miejsca."</string>
     <string name="quest_housenumber_conscription_number">"Numer konskrypcyjny"</string>
     <string name="quest_housenumber_street_number_optional">"Numer orientacyjny (opcjonalny)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Również ścieżka rowerowa po drugiej stronie…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Musisz opisać, co jest na znaku. Jeśli nie ma znaku, możesz zapytać na miejscu o godziny otwarcia."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"brak, ale rowerzyści mogą się poruszać w obu kierunkach"</string>
+    <string name="quest_openingHours_emptyAnswer">"Opisz co jest na znaku. Jeśli nie ma znaku, zapytaj na miejscu o godziny otwarcia."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"brak, ale rowerzyści mogą się poruszać na jezdni w obu kierunkach"</string>
     <string name="quest_streetName_answer_noName_question">"Dlaczego ta droga nie ma nazwy?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"To coś w rodzaju podjazdu lub alejki parkingowej"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Jest to droga polna lub leśna"</string>
@@ -1248,7 +1248,7 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_barrier_bicycle_installation_fixed">"Stała"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Otwieralna"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Usuwalna"</string>
-    <string name="quest_buildingType_guardhouse">"Wartownia"</string>
+    <string name="quest_buildingType_guardhouse">"Wartownia / Budka parkingowa / Portiernia"</string>
     <string name="quest_genericRef_title">"Jaki jest tutaj numer identyfikacyjny?"</string>
     <string name="quest_sidewalk_answer_different">"Sytuacja na chodniku jest inna"</string>
     <string name="about_title_get_involved">"Zaangażuj się"</string>

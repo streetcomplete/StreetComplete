@@ -9,16 +9,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddRoadWidth(
-    private val checkArSupport: ArSupportChecker,
+    private val checkArSupport: ArSupportChecker
 ) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """

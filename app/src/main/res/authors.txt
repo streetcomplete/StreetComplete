@@ -245,11 +245,9 @@ surface_fine_gravel.jpg        CC0               https://commons.wikimedia.org/w
 surface_grass.jpg              CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Footpath_through_the_long_grass_near_Southorpe_Bottom_(geograph_4621359).jpg (Richard Humphrey)
 surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg (Immanuel Giel)
 surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
-surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
+surface_mud.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dirt_road,_Ond%C5%99ejovsko_(4).jpg (Pavel Ševela [sevela.p])
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
 surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
-path_surface_paved.jpg         CC-BY 4.0         https://github.com/streetcomplete/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
-path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/streetcomplete/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_rock.jpg               CC0               Elliot Plack
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)

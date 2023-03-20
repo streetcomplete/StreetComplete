@@ -59,8 +59,8 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 19468
-   legofahrrad: 1970
+   Flo Edelmann: 19190
+   legofahrrad: 1987
    Andre Thum: 1051
    papojari: 761
    Lenni: 530
@@ -92,22 +92,20 @@ el:
    tinigrillion: 186
 en: 
    Claudius Henrichs: 49
-   Tech Dec: 4
 en-AU: 
    Didz: 9071
    Tech Dec: 5775
+   Andrew: 2708
    Baku: 1875
-   Andrew: 1354
    Peter Newman: 53
 en-GB: 
    Oliver Hawes: 6869
    10992: 5155
-   arrival-spring: 2995
+   arrival-spring: 3236
    Peter Newman: 2969
-   legofahrrad: 1655
+   legofahrrad: 1447
    Jay Turner: 1065
    Andi Chandler: 852
-   Andrew: 488
    Chris Lane: 327
    Ian Rutson: 285
    عثمان: 251
@@ -121,14 +119,15 @@ en-GB:
    John: 58
    Github: 42
    wheresalice: 42
+   MMK21: 15
    Volker: 7
    Ferdi: 5
    Luka: 4
 eo: 
    Jolesh: 19977
    Jan: 6462
+   Hanna: 3429
    Martin Constantino-Bodin: 3300
-   Hanna: 3265
    g: 1443
    Robin van der Vliet: 659
    Hendursaga: 569
@@ -157,7 +156,7 @@ es:
    Manu: 11
 eu: 
    Osoitz: 17336
-   alexgabi: 10281
+   alexgabi: 10969
    Galder: 6793
    Gari Araolaza: 1386
    Alexander Gabilondo: 1185
@@ -167,18 +166,18 @@ eu:
    Jokin: 224
    Etzharai: 213
 fa: 
-   Mohammad Mehdi Maliki: 16922
-   ARA2020: 13850
+   Mohammad Mehdi Maliki: 17550
+   ARA2020: 13378
    Iman: 11132
-   Ahmad: 776
+   Ahmad: 759
    Mostafa Ahangarha: 336
-   mojtaba: 275
+   mojtaba: 134
    Goudarz Jafari: 45
 fi: 
-   Jiri Grönroos: 13750
+   Jiri Grönroos: 13820
    OpenKartat: 7959
    Aleksi.klasila: 4745
-   Juhana Uuttu: 4563
+   Juhana Uuttu: 4508
    Jarmo Sutinen: 2673
    Jimi Viita-aho: 1795
    Kantele: 1440
@@ -241,7 +240,7 @@ gl:
    ccpr1l: 14400
    Xose M.: 2274
 hr: 
-   Matija Nalis: 46302
+   Matija Nalis: 46300
    Nemanja Bračko: 59
    Mario: 9
 hu: 
@@ -302,6 +301,7 @@ ja:
 ko: 
    imsesaok: 14090
    Depth221: 4418
+   태석: 1134
    crem2y: 858
    Seungjun Lee: 415
    Rkdclgh: 165
@@ -326,13 +326,13 @@ ml:
    Dharwish: 450
    Mujeeb rahman k: 398
 nb: 
-   Mats Randgaard: 30429
+   Mats Randgaard: 30482
    Trond S: 4627
    Simen Heggestøyl: 1748
    Syver: 1638
    10992: 919
+   Trond Kjetil Bremnes: 844
    Mathias Haugsbø: 790
-   Trond Kjetil Bremnes: 387
    Patchie: 192
    Daniel: 164
    oskini: 125
@@ -366,10 +366,10 @@ nn:
    Karl Ove Hufthammer: 32578
    10992: 12
 pl: 
-   Mateusz Konieczny: 12803
+   Mateusz Konieczny: 13159
    Ilona Sadowska: 8309
-   Tomasz Maciejewski: 3494
-   Kamil: 3083
+   Tomasz Maciejewski: 3210
+   Kamil: 3074
    Piotr Strębski: 2853
    Konrad W: 2262
    Dominik Danelski: 1861
@@ -380,7 +380,7 @@ pl:
    Damndog: 1055
    Rogoyski: 932
    Krystian Biesaga: 841
-   Krzysztof Krasoń: 777
+   Krzysztof Krasoń: 755
    M1roN: 751
    Garbulix: 470
    Paba22: 457
@@ -432,7 +432,6 @@ ru:
    Igorpolyakov: 1811
    zetx16: 1747
    Astra: 1746
-   flexagoon: 1097
    Grass-snake: 983
    Bzzzil: 941
    Silka123: 920
@@ -440,6 +439,7 @@ ru:
    lx5: 833
    Gum: 762
    ksetdekov: 612
+   quyse: 567
    Константин: 554
    argz: 407
    Roman. deev06: 365
@@ -479,7 +479,7 @@ sk:
    Zaijo: 198
    Brano: 31
 sr-cyrl: 
-   Nemanja Bračko: 19070
+   Nemanja Bračko: 19341
    Mario: 17197
    Branko Kokanovic: 6461
    Nikola: 169
@@ -508,8 +508,8 @@ th:
 tr: 
    Muha Aliss: 12580
    Ömer Faruk Çakmak: 2437
-   Nesim: 1710
    Ege: 1544
+   Nesim: 1026
    Ümit Seyhan: 875
    Alperen: 304
    burder5334: 297
@@ -552,5 +552,4 @@ zh-TW:
    typebrook: 177
    thomas: 174
    Sevenwuying: 66
-   alice: 47
    秉宏: 25

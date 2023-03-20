@@ -2476,7 +2476,10 @@
                     "terms": "specie,wikidata"
                 },
                 "sport": {
-                    "label": "Sport"
+                    "label": "Sport",
+                    "options": {
+                        "boules": "Bocce"
+                    }
                 },
                 "sport_ice": {
                     "label": "Sport",
@@ -2732,6 +2735,9 @@
                     "label": "Tipo di costruzione",
                     "placeholder": "Con tiranti, traliccio, camuffata, ..."
                 },
+                "tower/platforms": {
+                    "placeholder": "1, 2, 3..."
+                },
                 "tower/type": {
                     "label": "Tipo"
                 },
@@ -2852,7 +2858,11 @@
                     "terms": "tipo di utilizzo,uso,utilizzo"
                 },
                 "usage_waterway": {
-                    "label": "Tipo di uso"
+                    "label": "Tipo di uso",
+                    "options": {
+                        "irrigation": "Irrigazione",
+                        "transmission": "Trasmissione"
+                    }
                 },
                 "utility": {
                     "label": "Utenza"
@@ -7437,10 +7447,6 @@
                 "shop/pet": {
                     "name": "Negozio per animali",
                     "terms": "negozio di animali"
-                },
-                "shop/pet_grooming": {
-                    "name": "Toelettatura per animali",
-                    "terms": "cane,gatto,cani,gatti,toilette,toletta,tolettatura,toelettatura,parrucchiere,unghie,shampoo"
                 },
                 "shop/photo": {
                     "name": "Fotografo",

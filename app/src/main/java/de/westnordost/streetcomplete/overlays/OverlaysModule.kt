@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -22,6 +23,7 @@ val overlaysModule = module {
         3 to AddressOverlay(get(named("CountryBoundariesFuture"))),
         4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
         5 to CyclewayOverlay(get(), get(named("CountryBoundariesFuture"))),
+        6 to SurfaceOverlay(),
         (EE_QUEST_OFFSET + 0) to CustomOverlay(get()),
     )) }
 }

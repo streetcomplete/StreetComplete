@@ -4644,9 +4644,6 @@
                     "name": "크리켓장",
                     "terms": "크리켓 경기장"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "승마 경기장"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "필드 하키장"
                 },
@@ -6348,10 +6345,6 @@
                 "shop/pet": {
                     "name": "애완동물 가게",
                     "terms": "동물,고양이,개,물고기,강아지,파충류"
-                },
-                "shop/pet_grooming": {
-                    "name": "애완동물 용품 가게",
-                    "terms": "애완동물 용품 상점"
                 },
                 "shop/photo": {
                     "name": "사진 가게",
