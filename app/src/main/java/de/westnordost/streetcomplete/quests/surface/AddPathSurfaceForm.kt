@@ -24,19 +24,9 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (value.shouldBeDescribed) {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(SurfaceAndNote(value, description)))
-                    }.show()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-            return
+        collectSurfaceDescriptionIfNecessary(requireContext(), value) {
+            applyAnswer(SurfaceAnswer(SurfaceAndNote(value, it)))
         }
-        applyAnswer(SurfaceAnswer(SurfaceAndNote(value)))
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
