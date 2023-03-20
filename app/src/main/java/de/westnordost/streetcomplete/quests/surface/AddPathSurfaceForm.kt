@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.ktx.isArea
 
 class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
-    override val items get() = SELECTABLE_WAY_SURFACES.toMutableList().apply { add(size - 3, STEPPING_STONES) }.toItems()
+    override val items get() = SELECTABLE_WAY_SURFACES.toItems()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),

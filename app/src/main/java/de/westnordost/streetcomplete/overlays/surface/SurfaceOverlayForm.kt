@@ -126,7 +126,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             binding.footway.explanationInput,
             binding.footway.selectButton.selectedCellView,
             binding.footway.selectButton.selectTextView,
-            SELECTABLE_WAY_SURFACES.toMutableList().apply { add(size - 3, Surface.STEPPING_STONES) }
+            SELECTABLE_WAY_SURFACES
         )
         footwaySurfaceCtrl.onInputChanged = { checkIsFormComplete() }
 

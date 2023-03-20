@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.util.ktx.awaitReceiverCall
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hasPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -116,7 +117,7 @@ class QuestsSettingsFragment :
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
                 questTypeOrderController.onQuestTypeOrderChanged()
             }
-            Prefs.QUEST_SETTINGS_PER_PRESET -> { OsmQuestController.reloadQuestTypes() }
+            Prefs.QUEST_SETTINGS_PER_PRESET -> { viewLifecycleScope.launch { OsmQuestController.reloadQuestTypes() } }
             Prefs.QUEST_MONITOR -> {
                 // Q introduces background location permission, but only R+ need it for foreground service
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && prefs.getBoolean(key, false)) {

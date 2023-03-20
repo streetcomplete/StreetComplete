@@ -1,7 +1,7 @@
-52.0-beta1: |
+v52.0-beta1: |
   <ul>
   <li>Allow adding multiple custom overlays (#404)</li>
-  <li>Performance improvements when setting quest pins, overlay elements and when downloading</li>
+  <li>Performance improvements when showing pins and overlay elements, and when downloading</li>
   <li>Improve coloring for custom overlays</li>
   <li>Allow hiding road name labels when viewing satellite map (#418)</li>
   <li>Show configurable labels with POI dot quests</li>
@@ -11,14 +11,14 @@
   <li>Small fixes and improvements</li>
   </ul>
 
-51.1: |
+v51.1: |
   <ul>
   <li>Allow feature search in all system and local languages</li>
   <li>Add indicator for unsynced edits if autosync is on</li>
   <li>Small fixes and improvements</li>
   </ul>
 
-51.0: |
+v51.0: |
   <ul>
   <li>App renamed to SCEE as an attempt to reduce confusion of this fork with original StreetComplete</li>
   <li>Add new UI for healthcare quest (by @matkoniecz, #408)</li>
@@ -38,7 +38,7 @@
   <li>Dangerous editing capabilities (compared to normal SC) are now hidden unless an "expert mode" setting is enabled</li>
   </ul>
 
-50.0_ee: |
+v50.0_ee: |
   <ul>
   <li>Optionally resurvey opening hours StreetComplete doesn't understand</li>
   <li>Highlight nearby elements for POI quests</li>
