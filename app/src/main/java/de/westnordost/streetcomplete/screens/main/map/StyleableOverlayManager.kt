@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -119,7 +120,7 @@ class StyleableOverlayManager(
 
     private var overlay: Overlay? = null
     set(value) {
-        if (field == value) return
+        // always reload, even if the overlay is the same
         val wasNull = field == null
         val isNullNow = value == null
         field = value

@@ -72,9 +72,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 // set the actual custom overlay instead of the fake one
                 selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }
-            if (selectedOverlayController.selectedOverlay is CustomOverlay)
-                selectedOverlayController.selectedOverlay = null // trigger reload (needed if switching between custom overlays)
-            selectedOverlayController.selectedOverlay = selectedOverlay
+            if (selectedOverlay != selectedOverlayController.selectedOverlay || selectedOverlay is CustomOverlay)
+                selectedOverlayController.selectedOverlay = selectedOverlay // only set same overlay if it's custom, as setting same one now reloads
             dismiss()
         }
 
