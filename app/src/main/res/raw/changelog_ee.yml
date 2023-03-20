@@ -2,7 +2,7 @@ v52.0-beta1: |
   <ul>
   <li>Allow adding multiple custom overlays (#404)</li>
   <li>Performance improvements when showing pins and overlay elements, and when downloading</li>
-  <li>Improve coloring for custom overlays</li>
+  <li>Improve coloring for custom overlays, and make node coloring work</li>
   <li>Allow hiding road name labels when viewing satellite map (#418)</li>
   <li>Show configurable labels with POI dot quests</li>
   <li>Allow copying text from log reader</li>

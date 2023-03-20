@@ -78,7 +78,7 @@ private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
         }
 
     return when {
-        element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"]) // currently no coloring possible...
+        element is Node -> PointStyle("ic_custom_overlay_node", element.tags["name"], color)
         element.isArea() -> PolygonStyle(color, label = element.tags["name"])
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
             stroke = centerColor?.let { StrokeStyle(it) },

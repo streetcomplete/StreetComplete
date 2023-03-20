@@ -340,6 +340,7 @@ layers:
                     collide: true
                     size: 34px
                     sprite: function() { return feature.icon }
+                    color: function() { return feature.color }
                     text:
                         anchor: [right]
                         optional: true
@@ -360,6 +361,7 @@ layers:
                     collide: false
                     size: 34px
                     sprite: function() { return feature.icon }
+                    color: function() { return feature.color }
                     text:
                         anchor: [right]
                         optional: true

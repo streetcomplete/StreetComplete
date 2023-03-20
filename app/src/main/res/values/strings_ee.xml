@@ -375,9 +375,9 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_filter_message">Click the link below to open information about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result.
         \nThe checkboxes replace the \"nodes, ways with\" part.</string>
-    <string name="custom_overlay_color_message">Select key(s) to get color from (does not work for nodes). Accepts regex and uses matching tags to get a color. The color is based on key and value of the first matching key, except for :left/right/both endings, which take precedence over other matching keys. :left/right/both will also be shown on the sides of a way. If there is a match, the same color means the same value. If there is no match, the color is always red, indicating missing data. Knowledge on regular expressions is very helpful for this feature.
+    <string name="custom_overlay_color_message">Select key(s) to get color from. Accepts regex and uses matching tags to get a color. The color is based on key and value of the first matching key, except for :left/right/both endings, which take precedence over other matching keys. :left/right/both will also be shown on the sides of a way. If there is a match, the same color means the same value. If there is no match, the color is always red, indicating missing data. Knowledge on regular expressions is very helpful for this feature.
         \n\nExample:
-        \n\"surface\" shows surface=asphalt in the same color, and sufrace=concrete in a different color
+        \n\"surface\" shows surface=asphalt in the same color, and surface=concrete in a different color
         \n\".*surface\" shows sidewalk:(left/right/both):surface=asphalt in the same color, but surface=asphalt or cycleway:(left/right/both):surface=asphalt in different colors</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="custom_overlay_color_info">Coloring details</string>

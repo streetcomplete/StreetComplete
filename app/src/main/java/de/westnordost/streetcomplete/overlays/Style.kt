@@ -34,4 +34,6 @@ data class PointStyle(
     val icon: String?,
     /** label to show on the point */
     val label: String? = null,
+    /** color to use for the icon */
+    val color: String? = null,
 ) : Style

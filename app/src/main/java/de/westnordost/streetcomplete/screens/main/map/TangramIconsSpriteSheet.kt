@@ -9,6 +9,7 @@ import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.presetIconIndex
@@ -56,7 +57,10 @@ class TangramIconsSpriteSheet(
             val iconIntrinsicSize = max(icon.intrinsicWidth, icon.intrinsicHeight)
             val iconWidth = iconSize * icon.intrinsicWidth / iconIntrinsicSize
             val iconHeight = iconSize * icon.intrinsicHeight / iconIntrinsicSize
-            val bitmap = icon.createBitmapWithWhiteBorder(borderWidth, iconWidth, iconHeight)
+            val bitmap = if (iconName == "ic_custom_overlay_node")
+                    icon.createBitmap(iconWidth + borderWidth * 2, iconHeight + borderWidth * 2)
+                else
+                    icon.createBitmapWithWhiteBorder(borderWidth, iconWidth, iconHeight)
             val padX = (iconSize - iconWidth) / 2f
             val padY = (iconSize - iconHeight) / 2f
             canvas.drawBitmap(bitmap, padX + x.toFloat(), padY + y.toFloat(), null)
@@ -88,7 +92,7 @@ class TangramIconsSpriteSheet(
         private val ICONS = listOf(
             R.drawable.ic_pin_choker_borderless,
             R.drawable.ic_pin_parking_borderless,
-            R.drawable.ic_custom_overlay_poi,
+            R.drawable.ic_custom_overlay_node,
         )  + presetIconIndex.values
     }
 }
