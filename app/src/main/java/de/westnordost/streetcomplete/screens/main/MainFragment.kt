@@ -1065,9 +1065,7 @@ class MainFragment :
     }
 
     private fun addPoi(pos: LatLon, feature: Feature) {
-        val mapFragment = mapFragment ?: return
         showInBottomSheet(CreatePoiFragment.createFromFeature(feature, pos))
-        mapFragment.hideNonHighlightedPins()
 
         // actually this could run again if tags are changed
         viewLifecycleScope.launch {
