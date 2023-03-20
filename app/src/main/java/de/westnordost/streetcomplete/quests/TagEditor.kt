@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -278,6 +279,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         val action = UpdateElementTagsAction(builder.create())
         val questKey = questKey
         val editType = (questKey as? ExternalSourceQuestKey)?.let { externalSourceQuestController.getQuestType(it) } ?: tagEdit
+        if (questKey is OsmQuestKey && prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+            OsmQuestController.lastAnsweredQuestKey = questKey
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             listener?.onEdited(editType, element, geometry)
             viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey) }

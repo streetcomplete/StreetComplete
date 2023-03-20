@@ -236,20 +236,6 @@ class QuestPinsManager(
                 map[it.geometry] = it
         }
         val pins = synchronized(questsInView) {
-            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) && removed.isEmpty() && added.size < 20) {
-                // issue with dynamic quest creation: quests near tile edge are not in database,
-                // so there are no previous quests to remove -> remove all previous pins here, or they will continue showing
-                // works because added contains all quests for that element, and if an answered quest was in db it will be in removed
-
-                val elementKeys = added.mapNotNull { if (it is OsmQuest) ElementKey(it.elementType, it.elementId) else null }.toHashSet()
-                questsInView.keys.removeAll { questKey ->
-                    questKey is OsmQuestKey
-                        // remove all pins for this element (better would be a detection whether we are withing 20 m of tile edge...)
-                        && elementKeys.any { questKey.elementId == it.id && questKey.elementType == it.type }
-                }
-                deletedAny = true
-            }
-
             normalQuests.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
             poiDots.values.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
             markersAtEndQuests.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }

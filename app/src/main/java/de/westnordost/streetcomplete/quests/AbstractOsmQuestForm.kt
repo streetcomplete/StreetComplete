@@ -454,6 +454,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 addElementEditsController.add(osmElementQuestType, element, geometry, source, action)
             }
         }
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+            // necessary because otherwise pins may remain if quest is not in database
+            OsmQuestController.lastAnsweredQuestKey = questKey as? OsmQuestKey
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             viewLifecycleScope.launch {
                 // Only listener is mainFragment for closing bottom sheet and showing the quest

@@ -115,6 +115,10 @@ class OsmQuestController internal constructor(
                 updateQuests(quests, obsoleteQuestKeys)
             }
 
+            lastAnsweredQuestKey?.let {
+                lastAnsweredQuestKey = null
+                onUpdated(added = quests, deletedKeys = (obsoleteQuestKeys + it).toHashSet())
+            }
             onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
 
@@ -471,6 +475,7 @@ class OsmQuestController internal constructor(
         private const val TAG = "OsmQuestController"
         private var instance: OsmQuestController? = null
         fun reloadQuestTypes() = instance?.reloadQuestTypes()
+        var lastAnsweredQuestKey: OsmQuestKey? = null // workaround for issues with dynamic quest creation
     }
 }
 
