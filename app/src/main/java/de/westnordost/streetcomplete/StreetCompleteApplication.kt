@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
+import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
@@ -162,13 +163,18 @@ class StreetCompleteApplication : Application() {
                     }
             }
             // update custom overlay to the indexed version
-            prefs.edit {
-                if (prefs.contains("custom_overlay_filter"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, 0), prefs.getString("custom_overlay_filter", "")!!)
-                if (prefs.contains("custom_overlay_color_key"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, 0), prefs.getString("custom_overlay_color_key", "")!!)
-                remove("custom_overlay_filter")
-                remove("custom_overlay_color_key")
+            if (prefs.contains("custom_overlay_filter") || prefs.contains("custom_overlay_color_key")) {
+                val indices = if (prefs.contains(Prefs.CUSTOM_OVERLAY_INDICES)) getCustomOverlayIndices(prefs)  else emptyList()
+                val newIndex = indices.maxOrNull() ?: 0
+                prefs.edit {
+                    if (prefs.contains("custom_overlay_filter"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, newIndex), prefs.getString("custom_overlay_filter", "")!!)
+                    if (prefs.contains("custom_overlay_color_key"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, newIndex), prefs.getString("custom_overlay_color_key", "")!!)
+                    remove("custom_overlay_filter")
+                    remove("custom_overlay_color_key")
+                    putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + newIndex).sorted().joinToString(","))
+                }
             }
         }
 

@@ -558,13 +558,18 @@ class DataManagementSettingsFragment :
 
             val result = readToSettings(lines.subList(1, lines.size))
             // update in case of old data
-            prefs.edit {
-                if (prefs.contains("custom_overlay_filter"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, 0), prefs.getString("custom_overlay_filter", "")!!)
-                if (prefs.contains("custom_overlay_color_key"))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, 0), prefs.getString("custom_overlay_color_key", "")!!)
-                remove("custom_overlay_filter")
-                remove("custom_overlay_color_key")
+            if (prefs.contains("custom_overlay_filter") || prefs.contains("custom_overlay_color_key")) {
+                val indices = if (prefs.contains(Prefs.CUSTOM_OVERLAY_INDICES)) getCustomOverlayIndices(prefs)  else emptyList()
+                val newIndex = indices.maxOrNull() ?: 0
+                prefs.edit {
+                    if (prefs.contains("custom_overlay_filter"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, newIndex), prefs.getString("custom_overlay_filter", "")!!)
+                    if (prefs.contains("custom_overlay_color_key"))
+                        putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, newIndex), prefs.getString("custom_overlay_color_key", "")!!)
+                    remove("custom_overlay_filter")
+                    remove("custom_overlay_color_key")
+                    putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + newIndex).sorted().joinToString(","))
+                }
             }
             result
         }
