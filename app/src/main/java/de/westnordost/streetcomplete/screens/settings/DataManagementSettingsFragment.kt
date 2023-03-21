@@ -563,6 +563,8 @@ class DataManagementSettingsFragment :
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, 0), prefs.getString("custom_overlay_filter", "")!!)
                 if (prefs.contains("custom_overlay_color_key"))
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, 0), prefs.getString("custom_overlay_color_key", "")!!)
+                remove("custom_overlay_filter")
+                remove("custom_overlay_color_key")
             }
             result
         }
@@ -590,6 +592,8 @@ class DataManagementSettingsFragment :
                         putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, oldOverlayIndex), prefs.getString("custom_overlay_filter", "")!!)
                     if (prefs.contains("custom_overlay_color_key"))
                         putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, oldOverlayIndex), prefs.getString("custom_overlay_color_key", "")!!)
+                    remove("custom_overlay_filter")
+                    remove("custom_overlay_color_key")
                 }
                 // set updated indices
                 putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.sorted().joinToString(","))
