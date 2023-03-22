@@ -15,7 +15,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways with (
-         shop ~ yes|other|unknown|shop|fixme|retail
+         shop ~ yes|fixme|retail
          and !man_made
          and !historic
          and !military
