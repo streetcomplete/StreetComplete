@@ -265,7 +265,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
             if (isOneway) {
                 showSelectMarkedLanesDialogForOneSide(currentLaneCount.takeIf { it > 0 })
             } else {
-                showSelectMarkedLanesDialogForBothSides(currentLaneCount.takeIf { it > 0 })
+                showSelectMarkedLanesDialogForBothSides(currentLaneCount.takeIf { it > 0 } ?: 2)
             }
         } else {
             throw IllegalStateException()
@@ -286,10 +286,16 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
     private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?): Int =
         suspendCancellableCoroutine { cont ->
             ValuePickerDialog(requireContext(),
-                listOf(2, 4, 6, 8, 10, 12, 14),
+                listOf(1, 2, 4, 6, 8, 10, 12, 14),
                 selectedValue, null,
                 R.layout.quest_lanes_select_lanes,
-                { cont.resume(it) }
+                {
+                    if (it == 1 && selectedLanesType == MARKED && !isOneway)
+                        // workaround for only one lane being shown
+                        // for 1 lane tagging is the same as UNMARKED_KNOWN_LANE_COUNT anyway
+                        selectedLanesType = UNMARKED_KNOWN_LANE_COUNT
+                    cont.resume(it)
+                }
             ).show()
         }
 
