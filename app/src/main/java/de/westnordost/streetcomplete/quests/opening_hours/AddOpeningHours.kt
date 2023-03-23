@@ -51,7 +51,7 @@ class AddOpeningHours(
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
-                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "car_wash", "car_rental", "fuel","driving_school",                                  // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
