@@ -140,8 +140,14 @@ class SpatialCache<K, T>(
         val i = byTile.iterator()
         while (i.hasNext() && size > tiles) {
             val tile = i.next()
-            if (tile.value.isNotEmpty() && tile.key !in noTrim)
-                removeTile(tile.key)
+            // don't call removeTile here, because removing a tile any other way than i.remove will crash
+            if (tile.value.isNotEmpty() && tile.key !in noTrim) {
+                val itemsToRemove = tile.value
+                for (item in itemsToRemove) {
+                    byKey.remove(item.getKey())
+                }
+                i.remove()
+            }
         }
     } }
 
