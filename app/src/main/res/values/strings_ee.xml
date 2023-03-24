@@ -163,6 +163,7 @@
     <string name="pref_interval_summary">%d seconds</string>
     <string name="pref_interval_message">Update interval in seconds</string>
     <string name="action_scee_quests">Show only SCEE quests</string>
+    <string name="restore_dialog_hint">You can also manually choose which quests to restore by long-pressing the undo button.</string>
 
 
     <!-- quest settings -->
