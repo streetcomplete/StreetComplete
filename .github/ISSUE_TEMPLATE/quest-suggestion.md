@@ -19,10 +19,10 @@ Question asked: **Is there an example tag on item XY?**
 
 <!-- If the answer is not obvious, please add a short explanation below each item. -->
 ### Checklist
-Checklist for quest suggestions (see [guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)):
+Checklist for quest suggestions (see [guidelines](https://github.com/Helium314/SCEE/blob/modified/QUEST_GUIDELINES.md)):
 - [ ] 🚧 To be added tag is established and has a useful purpose
-- [ ] 🤔 Any answer the user can give must have an equivalent tagging (Quest should not reappear to other users when solved by one)
-- [ ] 🐿️ Easily answerable by any pedestrian from the outside but a survey is necessary
+- [ ] 🤔 Any answer the user can give should have an equivalent tagging (SCEE quests may not be answerable in all cases, but please keep this to rare cases)
+- [ ] 🐿️ A survey is necessary (may require knowledge of the subject, though easy answering for everyone is preferred)
 - [ ] 💤 Not an overwhelming percentage of quests have the same answer (No spam)
 - [ ] 🕓 Applies to a reasonable number of map data (Worth the effort)
 
