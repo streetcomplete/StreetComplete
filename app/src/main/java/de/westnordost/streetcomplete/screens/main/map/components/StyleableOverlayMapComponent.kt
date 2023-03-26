@@ -154,5 +154,7 @@ data class StyledElement(
     val geometry: ElementGeometry,
     val style: Style
 ) {
+    // geometries may contain road color, which depends on current theme
+    // however, storing is not an issue as styled elements are cleared on theme switch (both automatic and manual)
     var tangramGeometries: List<Geometry>? = null
 }
