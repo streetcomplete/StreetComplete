@@ -87,6 +87,7 @@ class MainActivity :
     private val prefs: SharedPreferences by inject()
 
     private var mainFragment: MainFragment? = null
+    private var backPressed = false
 
     private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -200,7 +201,10 @@ class MainActivity :
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (!forwardBackPressedToChildren()) super.onBackPressed()
+        if (!forwardBackPressedToChildren()) {
+            backPressed = true
+            super.onBackPressed()
+        }
     }
 
     private fun forwardBackPressedToChildren(): Boolean {
@@ -245,8 +249,9 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running)
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running && !backPressed)
             bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
+        backPressed = false // as an easy way to avoid quest monitor: don't start it if SC was closed using back button
     }
 
     override fun onResume() {

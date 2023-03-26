@@ -30,11 +30,9 @@
         android:defaultValue="false"
         android:persistent="true" />
 
-    <SwitchPreference
+    <Preference
         android:key="quest_monitor"
         android:title="@string/pref_quest_monitor_title"
-        android:summary="@string/pref_quest_monitor_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
+        android:summary="@string/pref_quest_monitor_summary" />
 
 </PreferenceScreen>

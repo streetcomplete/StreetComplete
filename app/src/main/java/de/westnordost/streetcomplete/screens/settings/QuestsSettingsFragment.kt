@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
@@ -13,11 +14,13 @@ import android.provider.Settings
 import android.text.InputType
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
@@ -103,6 +106,58 @@ class QuestsSettingsFragment :
             }
         }
 
+        findPreference<Preference>(Prefs.QUEST_MONITOR)?.setOnPreferenceClickListener {
+            val layout = LinearLayout(context)
+            layout.setPadding(30, 10, 30, 10)
+            layout.orientation = LinearLayout.VERTICAL
+            val enable = SwitchCompat(requireContext()).apply {
+                isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR, false)
+                setText(R.string.pref_quest_monitor_title)
+            }
+            val downloadSwitch = SwitchCompat(requireContext()).apply {
+                isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, false)
+                setText(R.string.pref_quest_monitor_download)
+                setPadding(0, 0, 0, 10)
+            }
+            val activeText = TextView(context).apply { setText(R.string.quest_monitor_active_request) }
+            val gpsSwitch = SwitchCompat(requireContext()).apply {
+                isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_GPS, false)
+                setText(R.string.quest_monitor_gps)
+            }
+            val netSwitch = SwitchCompat(requireContext()).apply {
+                isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_NET, false)
+                setText(R.string.quest_monitor_net)
+            }
+            val accuracyText = TextView(context).apply { setText(R.string.quest_monitor_accuracy_text) }
+            val accuracyEditText = EditText(context)
+            accuracyEditText.inputType = InputType.TYPE_CLASS_NUMBER
+            accuracyEditText.setText(prefs.getFloat(Prefs.QUEST_MONITOR_ACCURACY, 50f).toString())
+
+            layout.addView(enable)
+            layout.addView(downloadSwitch)
+            layout.addView(activeText)
+            layout.addView(gpsSwitch)
+            layout.addView(netSwitch)
+            layout.addView(accuracyText)
+            layout.addView(accuracyEditText)
+
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_quest_monitor_title)
+                .setView(ScrollView(context).apply { addView(layout) })
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    prefs.edit {
+                        putBoolean(Prefs.QUEST_MONITOR, enable.isChecked)
+                        putBoolean(Prefs.QUEST_MONITOR_GPS, gpsSwitch.isChecked)
+                        putBoolean(Prefs.QUEST_MONITOR_NET, netSwitch.isChecked)
+                        putBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, downloadSwitch.isChecked)
+                        putFloat(Prefs.QUEST_MONITOR_ACCURACY, accuracyText.text.toString().toFloatOrNull() ?: 50f)
+                    }
+                }
+                .show()
+            true
+        }
+
         findPreference<Preference>(Prefs.QUEST_SETTINGS_PER_PRESET)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
         findPreference<Preference>(Prefs.DYNAMIC_QUEST_CREATION)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
     }
@@ -119,13 +174,17 @@ class QuestsSettingsFragment :
             }
             Prefs.QUEST_SETTINGS_PER_PRESET -> { viewLifecycleScope.launch { OsmQuestController.reloadQuestTypes() } }
             Prefs.QUEST_MONITOR -> {
+                if (!prefs.getBoolean(key, false)) return
                 // Q introduces background location permission, but only R+ need it for foreground service
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && prefs.getBoolean(key, false)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     val requester = LocationRequester(requireActivity(), this)
                     lifecycleScope.launch {
                         if (!requester.requestBackgroundLocationPermission())
                             prefs.edit { putBoolean(key, false) }
                     }
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(POST_NOTIFICATIONS), 0) // don't care about result. if the user wants notifications and denies permission so be it.
                 }
             }
         }

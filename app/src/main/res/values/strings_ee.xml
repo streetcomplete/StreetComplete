@@ -148,8 +148,13 @@
     <string name="pref_dynamic_quest_creation_summary">Quests are created when loading the viewed area. Somewhat slow, but immediately applies changed quest settings.</string>
     <string name="quest_settings_per_preset_rescan">For properly applying all changed quest settings, re-scanning for quests is necessary.</string>
     <string name="pref_quest_monitor_title">Notify about nearby quests</string>
-    <string name="pref_quest_monitor_summary">Monitors location when app is in background, but does not actively request locations</string>
+    <string name="pref_quest_monitor_summary">Monitors location when the app is in background</string>
     <string name="quest_monitor_permission_warning">Background location permission is required for the nearby quest monitor to work</string>
+    <string name="quest_monitor_accuracy_text">Set minimum accuracy for searching nearby quests. Quests within approximately 1.5 * accuracy will trigger a notification.</string>
+    <string name="quest_monitor_gps">Actively request GPS locations?</string>
+    <string name="quest_monitor_net">Actively request network locations?</string>
+    <string name="quest_monitor_active_request">Actively requesting locations will increase battery use. When not actively requesting locations, locations requested by other apps will still be used.</string>
+    <string name="pref_quest_monitor_download">Download data if necessary? This may considerably consume data and battery, and may be rendered useless by Android for battery saving reasons.</string>
 
     <!-- other settings -->
     <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>
@@ -390,7 +395,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="quest_monitor_found">%d quests nearby, closest:</string>
     <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>
     <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
-    <string name="quest_monitor_passive">Monitoring locations</string>
+    <string name="quest_monitor_running">Monitoring location</string>
     <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
     <string name="create_custom_quest_button">Create custom quest</string>
     <string name="create_custom_quest_title_message">Enter message to be shown</string>
