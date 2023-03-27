@@ -72,7 +72,7 @@ Further SCEE adds new answers leading to such a changeset comment:
   * All quest types related to buildings may change `building` to `demolished:building`
 * SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
   * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
-  * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)
+  * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes, free floating or to a single way) and _CustomOverlay_ (may delete or move nodes; modifying tags in custom overlay context is done via _TagEditor_)
 
 # original StreetComplete readme below
 

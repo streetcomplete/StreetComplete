@@ -98,7 +98,7 @@ object Prefs {
     const val QUEST_MONITOR = "quest_monitor"
     const val QUEST_MONITOR_GPS = "quest_monitor_gps"
     const val QUEST_MONITOR_NET = "quest_monitor_net"
-    const val QUEST_MONITOR_ACCURACY = "quest_monitor_accuracy"
+    const val QUEST_MONITOR_RADIUS = "quest_monitor_radius"
     const val QUEST_MONITOR_DOWNLOAD = "quest_monitor_download"
     const val SHOW_GPX_TRACK = "show_gpx_track"
     const val RASTER_TILE_URL = "raster_tile_url"

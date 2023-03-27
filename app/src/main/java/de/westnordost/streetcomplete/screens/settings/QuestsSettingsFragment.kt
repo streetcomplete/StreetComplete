@@ -128,10 +128,10 @@ class QuestsSettingsFragment :
                 isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_NET, false)
                 setText(R.string.quest_monitor_net)
             }
-            val accuracyText = TextView(context).apply { setText(R.string.quest_monitor_accuracy_text) }
+            val accuracyText = TextView(context).apply { setText(R.string.quest_monitor_search_radius_text) }
             val accuracyEditText = EditText(context)
             accuracyEditText.inputType = InputType.TYPE_CLASS_NUMBER
-            accuracyEditText.setText(prefs.getFloat(Prefs.QUEST_MONITOR_ACCURACY, 50f).toString())
+            accuracyEditText.setText(prefs.getFloat(Prefs.QUEST_MONITOR_RADIUS, 50f).toString())
 
             layout.addView(enable)
             layout.addView(downloadSwitch)
@@ -151,7 +151,7 @@ class QuestsSettingsFragment :
                         putBoolean(Prefs.QUEST_MONITOR_GPS, gpsSwitch.isChecked)
                         putBoolean(Prefs.QUEST_MONITOR_NET, netSwitch.isChecked)
                         putBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, downloadSwitch.isChecked)
-                        putFloat(Prefs.QUEST_MONITOR_ACCURACY, accuracyText.text.toString().toFloatOrNull() ?: 50f)
+                        putFloat(Prefs.QUEST_MONITOR_RADIUS, accuracyText.text.toString().toFloatOrNull() ?: 50f)
                     }
                 }
                 .show()

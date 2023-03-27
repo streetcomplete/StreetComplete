@@ -54,7 +54,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
     private val downloadController: DownloadController by inject()
     private val downloadedTilesDb: DownloadedTilesDao by inject()
     private var lastScanCenter = LatLon(0.0, 0.0)
-    private val minAccuracy = prefs.getFloat(Prefs.QUEST_MONITOR_ACCURACY, 50f)
+    private val searchRadius = prefs.getFloat(Prefs.QUEST_MONITOR_RADIUS, 50f).toDouble()
     private val download = prefs.getBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, false)
     private val dataRetainTime = prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS) * 24L * 60 * 60 * 1000
 
@@ -129,22 +129,22 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
     override fun onLocationChanged(location: Location) {
         // check whether we have nearby quests
-        if (location.accuracy > minAccuracy) return
+        if (location.accuracy > searchRadius) return
         val loc = location.toLatLon()
-        if (loc.distanceTo(lastScanCenter) < minAccuracy * 0.7) return // don't scan if we're still close to previous location
+        if (loc.distanceTo(lastScanCenter) < searchRadius * 0.7) return // don't scan if we're still close to previous location
         lastScanCenter = loc
-        val quests = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(minAccuracy * 1.5)).filter { it.type.dotColor == "no" }
+        val quests = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(searchRadius)).filter { it.type.dotColor == "no" }
         if (quests.isEmpty()) {
             NotificationManagerCompat.from(this).cancel(FOUND_NOTIFICATION_ID) // no quest, no notification
             if (download) {
-                // maybe download surrounding area
+                // check whether surrounding area should be downloaded
                 if (downloadController.isDownloadInProgress) return // download already running
                 val activeNetworkInfo = getSystemService<ConnectivityManager>()?.activeNetworkInfo ?: return
                 if (!activeNetworkInfo.isConnected) return // we are not connected
                 val ignoreOlderThan = nowAsEpochMilliseconds() - dataRetainTime
                 val tile = loc.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM).toTilesRect()
                 if (downloadedTilesDb.get(tile, ignoreOlderThan).contains(DownloadedTilesType.ALL)) return // we already have the area
-                downloadController.download(loc.enclosingBoundingBox(max(150.0, minAccuracy.toDouble()))) // download quests in at least 150 m radius (will likely be single z16 tile)
+                downloadController.download(loc.enclosingBoundingBox(max(150.0, searchRadius))) // download quests in at least 150 m radius (will likely be single z16 tile)
             }
             return
         }

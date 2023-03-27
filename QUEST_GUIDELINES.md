@@ -5,7 +5,7 @@ Do you have an idea for a new quest? Read this!
 Consider the following:
 
 ### Limitations of SCEE
-- 🌟 Only existing elements can be extended, and only free-floating nodes can be added, moved or removed.
+- 🌟 Only existing elements can be extended, but nodes can be moved, removed and added (free-floating or to a single way).
 - ✂️ The geometry of elements cannot be changed (except splitting up ways and moving single nodes)
 
 ### General guidelines

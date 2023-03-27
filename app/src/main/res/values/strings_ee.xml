@@ -150,7 +150,7 @@
     <string name="pref_quest_monitor_title">Notify about nearby quests</string>
     <string name="pref_quest_monitor_summary">Monitors location when the app is in background</string>
     <string name="quest_monitor_permission_warning">Background location permission is required for the nearby quest monitor to work</string>
-    <string name="quest_monitor_accuracy_text">Set minimum accuracy for searching nearby quests. Quests within approximately 1.5 * accuracy will trigger a notification.</string>
+    <string name="quest_monitor_search_radius_text">Set radius nearby quest search. Note that quests with slightly larger distance may also be found. Location accuracy witch accuracy worse than this value are ignored.</string>
     <string name="quest_monitor_gps">Actively request GPS locations?</string>
     <string name="quest_monitor_net">Actively request network locations?</string>
     <string name="quest_monitor_active_request">Actively requesting locations will increase battery use. When not actively requesting locations, locations requested by other apps will still be used.</string>
