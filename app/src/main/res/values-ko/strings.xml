@@ -958,7 +958,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_surface_value_concrete_plates">"콘크리트 판"</string>
     <string name="quest_surface_value_concrete_lanes">"콘크리트 차로"</string>
     <string name="quest_fireHydrant_diameter_title">"이 소화전의 지름이 얼마로 표기되어 있나요?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"확실한가요? 소화전 겉면에 지름이 적혀 있는 경우도 있습니다."</string>
     <string name="quest_diet_answer_no_food">"음식이 없음"</string>
     <string name="short_no_answer_on_button">"아니오"</string>
     <string name="restore_confirmation">"복구"</string>

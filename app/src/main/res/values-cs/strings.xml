@@ -963,7 +963,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_surface_value_concrete_plates">"Betonové panely"</string>
     <string name="quest_surface_value_concrete_lanes">"Panely pod kola"</string>
     <string name="quest_fireHydrant_diameter_title">"Jaký průměr je uveden na značce tohoto hydrantu?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Opravdu? Někdy lze průměr najít přímo na samotném hydrantu."</string>
     <string name="quest_diet_answer_no_food">"Nemá žádná jídla"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
     <string name="restore_confirmation">"Obnovit"</string>

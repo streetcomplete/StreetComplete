@@ -956,7 +956,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_surface_value_concrete_plates">"Porlanezko plakak"</string>
     <string name="quest_surface_value_concrete_lanes">"Porlanezko errailak"</string>
     <string name="quest_fireHydrant_diameter_title">"Zein da ur-hargune honetan aipatzen den diametroa?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Ziur zaude? Batzuetan diametroa ur-hargunean bertan agertzen da."</string>
     <string name="quest_diet_answer_no_food">"Ez du janaririk"</string>
     <string name="short_no_answer_on_button">"Ez"</string>
     <string name="restore_confirmation">"Berrezarri"</string>

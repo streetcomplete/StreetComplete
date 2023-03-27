@@ -960,7 +960,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_surface_value_concrete_plates">"Betonowe płyty"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonowe pasy"</string>
     <string name="quest_fireHydrant_diameter_title">"Jaka średnica jest na znaku tego hydrantu?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Jesteś pewien? Czasem średnica jest też podana na samym hydrancie."</string>
     <string name="quest_diet_answer_no_food">"Nie ma jedzenia"</string>
     <string name="short_no_answer_on_button">"Nie"</string>
     <string name="restore_confirmation">"Przywróć"</string>

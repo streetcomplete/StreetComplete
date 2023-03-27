@@ -960,7 +960,6 @@
     <string name="quest_surface_value_concrete_plates">"Бетонные плиты"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонные дорожки"</string>
     <string name="quest_fireHydrant_diameter_title">"Какой диаметр указан на табличке для данного пожарного гидранта?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Вы уверены? Иногда диаметр можно найти на самом гидранте."</string>
     <string name="quest_diet_answer_no_food">"У него нет еды"</string>
     <string name="short_no_answer_on_button">"Нет"</string>
     <string name="restore_confirmation">"Восстановить"</string>

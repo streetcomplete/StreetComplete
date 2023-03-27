@@ -930,7 +930,6 @@
     <string name="quest_surface_value_concrete_plates">"Բետոնե ափսեներ"</string>
     <string name="quest_surface_value_concrete_lanes">"Բետոնե գոտիներ"</string>
     <string name="quest_fireHydrant_diameter_title">"Ինչ տրամագիծ է նշվում այս հրդեհի հիդրանտի նշանի վրա:"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Համոզված ես? Երբեմն տրամագիծը կարելի է գտնել հիդրանտի վրա:"</string>
     <string name="quest_diet_answer_no_food">"Այն սնունդ չունի"</string>
     <string name="short_no_answer_on_button">"Ոչ"</string>
     <string name="restore_confirmation">"Վերականգնել"</string>

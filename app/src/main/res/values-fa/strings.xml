@@ -958,7 +958,6 @@
     <string name="quest_surface_value_concrete_plates">"صفحات بتنی"</string>
     <string name="quest_surface_value_concrete_lanes">"خطوط بتنی"</string>
     <string name="quest_fireHydrant_diameter_title">"چه قطری روی تابلوی این شیر آتش‌نشانی مشخص شده است؟"</string>
-    <string name="quest_fireHydrant_confirmation_title">"مطمئنید؟ گاهی اوقات می توان قطر را روی خود شیر یافت."</string>
     <string name="quest_diet_answer_no_food">"خوراک ندارد"</string>
     <string name="short_no_answer_on_button">"خیر"</string>
     <string name="restore_confirmation">"بازنشانی"</string>
@@ -1308,4 +1307,10 @@
     <string name="street_parking_staggered_on_street">"به صورت متناوب در دو طرف خیابان"</string>
     <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
     <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. تمام هشدارهای صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
+    <string name="quest_presets_duplicate">"کپی کردن"</string>
+    <string name="label_block">"بلوک"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"اینجا سرویس بهداشتی نیست"</string>
+    <string name="unknown_surface_title">"نوع دیگری از سطح"</string>
+    <string name="overlay_surface">"سطوح"</string>
+    <string name="overlay_path_surface_segregated">"به دو بخش دوچرخه‌سواری و پیاده‌روی تقسیم می‌شود"</string>
 </resources>

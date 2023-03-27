@@ -960,7 +960,6 @@
     <string name="quest_surface_value_concrete_plates">"ألواح خرسانية"</string>
     <string name="quest_surface_value_concrete_lanes">"مسارات خرسانية"</string>
     <string name="quest_fireHydrant_diameter_title">"ما القطر المحدد على علامة صنبور إطفاء الحرائق هذا؟"</string>
-    <string name="quest_fireHydrant_confirmation_title">"هل أنت واثق؟ في بعض الأحيان يمكن العثور على القطر على صنبور المياه نفسه."</string>
     <string name="quest_diet_answer_no_food">"ليس لديها طعام"</string>
     <string name="short_no_answer_on_button">"لا"</string>
     <string name="restore_confirmation">"استرجاع"</string>

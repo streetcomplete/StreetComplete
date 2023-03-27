@@ -957,7 +957,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_surface_value_concrete_plates">"Betonplader"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonbaner"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er angivet for denne brandhane?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Nogle gange kan diameteren findes på brandhanen selv"</string>
     <string name="quest_diet_answer_no_food">"Man kan ikke købe mad"</string>
     <string name="short_no_answer_on_button">"Nej"</string>
     <string name="restore_confirmation">"Gendan"</string>
@@ -1307,4 +1306,13 @@ Vil du flytte det nu?"</string>
     <string name="street_parking_staggered_on_street">"På vejen i skiftende sider"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delvist på vejen i skiftende sider"</string>
     <string name="quest_traffic_signals_sound_description">"Tip: Hold udkig efter højttalere. Ikke alle lydsignaler kan aktiveres via en knap."</string>
+    <string name="quest_presets_duplicate">"Dublet"</string>
+    <string name="label_block">"blok"</string>
+    <string name="quest_address_answer_block">"Ligger inden for en blok…"</string>
+    <string name="quest_address_answer_no_block">"Ligger ikke inden for en blok…"</string>
+    <string name="quest_surface_value_mud">"Permanent mudder"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Ikke noget toilet her"</string>
+    <string name="unknown_surface_title">"Anden type overflade"</string>
+    <string name="overlay_surface">"Overflader"</string>
+    <string name="overlay_path_surface_segregated">"Opdelt i dele til cykling og gang"</string>
 </resources>

@@ -960,7 +960,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_surface_value_concrete_plates">"Plaques de béton"</string>
     <string name="quest_surface_value_concrete_lanes">"Voies en béton"</string>
     <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d’incendie ?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d’incendie elle-même."</string>
     <string name="quest_diet_answer_no_food">"Pas de nourriture"</string>
     <string name="short_no_answer_on_button">"Non"</string>
     <string name="restore_confirmation">"Restaurer"</string>
@@ -1309,4 +1308,13 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="street_parking_staggered_on_street">"Sur la chaussée, en alternance"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partiellement sur la chaussée, en alternance"</string>
     <string name="quest_traffic_signals_sound_description">"Indice : cherchez les haut-parleurs. Tous les signaux sonores ne sont pas activés via un bouton."</string>
+    <string name="quest_presets_duplicate">"Dupliquer"</string>
+    <string name="label_block">"bloc"</string>
+    <string name="quest_address_answer_block">"Cela fait partie d’un bloc…"</string>
+    <string name="quest_address_answer_no_block">"Cela ne fait pas partie d’un bloc…"</string>
+    <string name="quest_surface_value_mud">"Boue persistante"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Il n’y a pas de toilettes ici"</string>
+    <string name="unknown_surface_title">"Autre type de surface"</string>
+    <string name="overlay_surface">"Surfaces"</string>
+    <string name="overlay_path_surface_segregated">"Séparé entre voies cyclables et piétonnes"</string>
 </resources>

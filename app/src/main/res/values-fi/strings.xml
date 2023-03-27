@@ -955,7 +955,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_concrete_plates">"Betonilevyt"</string>
     <string name="quest_surface_value_concrete_lanes">"Betoniväylä"</string>
     <string name="quest_fireHydrant_diameter_title">"Mikä halkaisija on ilmoitettu tämän palopostin kyltissä?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Oletko varma? Joskus halkaisija löytyy itse palopostista."</string>
     <string name="quest_diet_answer_no_food">"Siinä ei ole ruokaa"</string>
     <string name="short_no_answer_on_button">"Ei"</string>
     <string name="restore_confirmation">"Palauta"</string>
@@ -1302,4 +1301,10 @@ Haluatko siirtää nyt?"</string>
     <string name="street_parking_staggered_on_street">"Kadulla vastakkaisin puolin"</string>
     <string name="street_parking_staggered_half_on_kerb">"Osittain kadulla vastakkaisin puolin"</string>
     <string name="quest_traffic_signals_sound_description">"Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella."</string>
+    <string name="quest_presets_duplicate">"Kaksoiskappale"</string>
+    <string name="quest_surface_value_mud">"Pysyvää mutaa"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Täällä ei ole WC:tä"</string>
+    <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
+    <string name="overlay_surface">"Pinnat"</string>
+    <string name="overlay_path_surface_segregated">"Jaa pyöräily- ja kävelyosuuksiin"</string>
 </resources>

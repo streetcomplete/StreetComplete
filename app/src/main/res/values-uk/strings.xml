@@ -953,7 +953,6 @@
     <string name="quest_surface_value_concrete_plates">"Бетонні плити"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонні доріжки"</string>
     <string name="quest_fireHydrant_diameter_title">"Який діаметр вказаний на знаку для цього пожежного гідранта?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Ви впевнені?  Іноді діаметр можна знайти на самому гідранті."</string>
     <string name="quest_diet_answer_no_food">"У ньому немає їжі"</string>
     <string name="short_no_answer_on_button">"Ні"</string>
     <string name="restore_confirmation">"Відновити"</string>
@@ -1300,4 +1299,11 @@
     <string name="default_disabled_msg_seasonal">"Цей тип квесту вимкнено за замовчуванням, оскільки може знадобитися повторна перевірка ситуації в певну пору року."</string>
     <string name="quest_gritBinSeasonal_title">"Це також тут не взимку?"</string>
     <string name="quest_traffic_signals_sound_description">"Підказка: зверніть увагу на динаміки. Не всі звукові сигнали можна активувати кнопкою."</string>
+    <string name="label_block">"блок"</string>
+    <string name="quest_address_answer_block">"Це в межах блоку…"</string>
+    <string name="quest_address_answer_no_block">"Це за межами блоку…"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Тут немає вбиральні"</string>
+    <string name="unknown_surface_title">"Інший тип поверхні"</string>
+    <string name="overlay_surface">"Покриття"</string>
+    <string name="overlay_path_surface_segregated">"Поділено на вело- та пішохідну смуги"</string>
 </resources>

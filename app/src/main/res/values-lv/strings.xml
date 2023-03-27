@@ -957,7 +957,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_surface_value_concrete_plates">"Betona plāksnes"</string>
     <string name="quest_surface_value_concrete_lanes">"Betona sliedes"</string>
     <string name="quest_fireHydrant_diameter_title">"Kāds diametrs ir norādīts uz zīmes šim ugunsdzēsības hidrantam?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Vai tiešām? Dažkārt tas ir atrodams uz paša hidranta."</string>
     <string name="quest_diet_answer_no_food">"Tajā nav ēdiens"</string>
     <string name="short_no_answer_on_button">"Nē"</string>
     <string name="restore_confirmation">"Atjaunot"</string>

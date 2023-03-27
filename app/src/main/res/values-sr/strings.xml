@@ -957,7 +957,6 @@
     <string name="quest_surface_value_concrete_plates">"Плочасти бетон"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонске саобраћ. траке"</string>
     <string name="quest_fireHydrant_diameter_title">"Који је пречник написан на знаку хидранта?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Да ли сте сигурни? Понекад се пречник може наћи на самом хидранту."</string>
     <string name="quest_diet_answer_no_food">"Нема хране"</string>
     <string name="short_no_answer_on_button">"Не"</string>
     <string name="restore_confirmation">"Врати задатке"</string>
@@ -1306,4 +1305,12 @@
     <string name="street_parking_staggered_on_street">"На улици са супротне стране"</string>
     <string name="street_parking_staggered_half_on_kerb">"Делимично на улици са супротне стране"</string>
     <string name="quest_traffic_signals_sound_description">"Савет: Потражите звучнике. Не могу се сви звучни сигнали активирати на дугме."</string>
+    <string name="quest_presets_duplicate">"Направи дупликат"</string>
+    <string name="label_block">"блок"</string>
+    <string name="quest_address_answer_block">"У кругу блока…"</string>
+    <string name="quest_address_answer_no_block">"Није у кругу блока…"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Овде нема тоалета"</string>
+    <string name="unknown_surface_title">"Други тип подлоге"</string>
+    <string name="overlay_surface">"Подлоге"</string>
+    <string name="overlay_path_surface_segregated">"Подељено на бициклистичке и пешачке делове"</string>
 </resources>

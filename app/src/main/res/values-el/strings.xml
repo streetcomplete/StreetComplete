@@ -947,7 +947,6 @@
     <string name="quest_surface_value_concrete_plates">"Πλάκες από μπετόν"</string>
     <string name="quest_surface_value_concrete_lanes">"Λωρίδες από μπετόν"</string>
     <string name="quest_fireHydrant_diameter_title">"Ποια διάμετρος καθορίζεται στην πινακίδα για αυτόν τον πυροσβεστικό κρουνό;"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Είσαι σίγουρος? Μερικές φορές η διάμετρος μπορεί να βρεθεί στον ίδιο τον κρουνό."</string>
     <string name="quest_diet_answer_no_food">"Δεν έχει φαγητό"</string>
     <string name="short_no_answer_on_button">"Όχι"</string>
     <string name="restore_confirmation">"Επαναφορά"</string>

@@ -957,7 +957,6 @@ Podaci se osvežavaju svakih %1$s dana, dok se nekorišćeni podaci automatski b
     <string name="quest_surface_value_concrete_plates">"Pločasti beton"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske saobrać. trake"</string>
     <string name="quest_fireHydrant_diameter_title">"Koji je prečnik napisan na znaku hidranta?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Da li ste sigurni? Ponekad se prečnik može naći na samom hidrantu."</string>
     <string name="quest_diet_answer_no_food">"Nema hrane"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
     <string name="restore_confirmation">"Vrati zadatke"</string>
@@ -1306,4 +1305,12 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="street_parking_staggered_on_street">"Na ulici sa suprotne strane"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delimično na ulici sa suprotne strane"</string>
     <string name="quest_traffic_signals_sound_description">"Savet: Potražite zvučnike. Ne mogu se svi zvučni signali aktivirati na dugme."</string>
+    <string name="quest_presets_duplicate">"Napravi duplikat"</string>
+    <string name="label_block">"blok"</string>
+    <string name="quest_address_answer_block">"U krugu bloka…"</string>
+    <string name="quest_address_answer_no_block">"Nije u krugu bloka…"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Ovde nema toaleta"</string>
+    <string name="unknown_surface_title">"Drugi tip podloge"</string>
+    <string name="overlay_surface">"Podloge"</string>
+    <string name="overlay_path_surface_segregated">"Podeljeno na biciklističke i pešačke delove"</string>
 </resources>
