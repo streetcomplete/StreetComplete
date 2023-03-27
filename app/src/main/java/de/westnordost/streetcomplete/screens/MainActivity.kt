@@ -185,13 +185,17 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
-        downloadController.showNotification = false
-        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        downloadController.showNotification = false
+        uploadController.showNotification = false
     }
 
     @Deprecated("Deprecated in Java")
@@ -229,12 +233,12 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
+        downloadController.showNotification = true
+        uploadController.showNotification = true
     }
 
     public override fun onStop() {
         super.onStop()
-        downloadController.showNotification = true
-        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
