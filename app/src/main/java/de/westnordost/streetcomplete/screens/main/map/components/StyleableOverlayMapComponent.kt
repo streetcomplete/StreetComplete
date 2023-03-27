@@ -39,66 +39,71 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     fun set(features: Collection<StyledElement>) {
         layer.setFeatures(features.flatMap { styledElement ->
             styledElement.tangramGeometries?.let { return@flatMap it }
-            val element = styledElement.element
-            val geometry = styledElement.geometry
-            val style = styledElement.style
-            val props = HashMap<String, String>()
-            props[ELEMENT_ID] = element.id.toString()
-            props[ELEMENT_TYPE] = element.type.name
-            val layer = element.tags["layer"]?.toIntOrNull()?.takeIf { it.absoluteValue <= 20 } ?: 0
-            props["layer"] = layer.toString()
-            when (style) {
-                is PolygonStyle -> {
-                    getHeight(element.tags)?.let { props["height"] = it.toString() }
-                    props["color"] = getColorWithSomeTransparency(style.color)
-                    props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
-                }
-                is PolylineStyle -> {
-                    val width = getLineWidth(element.tags)
-                    // thin lines should be rendered on top (see #4291)
-                    if (width <= 2f) props["layer"] = (layer + 1).toString()
-                    props["width"] = width.toString()
-                    style.strokeLeft?.let {
-                        if (it.dashed) props["dashedLeft"] = "1"
-                        props["colorLeft"] = it.color
-                    }
-                    style.strokeRight?.let {
-                        if (it.dashed) props["dashedRight"] = "1"
-                        props["colorRight"] = it.color
-                    }
-                    if (style.stroke != null) {
-                        if (style.stroke.dashed) props["dashed"] = "1"
-                        props["color"] = style.stroke.color
-                        props["strokeColor"] = getDarkenedColor(style.stroke.color)
-                    } else if (style.strokeLeft != null || style.strokeRight != null) {
-                        // must have a color for the center if left or right is defined because
-                        // there are really ugly overlaps in tangram otherwise
-                        props["color"] = resources.getString(R.string.road_color)
-                        props["strokeColor"] = resources.getString(R.string.road_outline_color)
-                    }
-                    style.label?.let { props["text"] = it }
-                }
-                is PointStyle -> {
-                    style.label?.let { props["text"] = it }
-                    style.icon?.let { props["icon"] = it }
-                }
-            }
 
-            val geometries = if (style is PolygonStyle && (style.icon != null || style.label != null)) {
-                // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
-                // issue that icons for polygons are shown on every single vertex
-                val properties = HashMap<String, String>(4, 1.0f)
-                properties[ELEMENT_ID] = element.id.toString()
-                properties[ELEMENT_TYPE] = element.type.name
-                style.icon?.let { properties["icon"] = it }
-                style.label?.let { properties["text"] = it }
-                geometry.toTangramGeometry(props) + ElementPointGeometry(geometry.center).toTangramGeometry(properties)
-            } else {
-                geometry.toTangramGeometry(props)
-            }
+            val geometries = createTangramGeometries(styledElement)
             styledElement.tangramGeometries = geometries
             geometries
         })
+    }
+
+    private fun createTangramGeometries(styledElement: StyledElement): List<Geometry> {
+        val element = styledElement.element
+        val geometry = styledElement.geometry
+        val style = styledElement.style
+        val props = HashMap<String, String>()
+        props[ELEMENT_ID] = element.id.toString()
+        props[ELEMENT_TYPE] = element.type.name
+        val layer = element.tags["layer"]?.toIntOrNull()?.takeIf { it.absoluteValue <= 20 } ?: 0
+        props["layer"] = layer.toString()
+        when (style) {
+            is PolygonStyle -> {
+                getHeight(element.tags)?.let { props["height"] = it.toString() }
+                props["color"] = getColorWithSomeTransparency(style.color)
+                props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
+            }
+            is PolylineStyle -> {
+                val width = getLineWidth(element.tags)
+                // thin lines should be rendered on top (see #4291)
+                if (width <= 2f) props["layer"] = (layer + 1).toString()
+                props["width"] = width.toString()
+                style.strokeLeft?.let {
+                    if (it.dashed) props["dashedLeft"] = "1"
+                    props["colorLeft"] = it.color
+                }
+                style.strokeRight?.let {
+                    if (it.dashed) props["dashedRight"] = "1"
+                    props["colorRight"] = it.color
+                }
+                if (style.stroke != null) {
+                    if (style.stroke.dashed) props["dashed"] = "1"
+                    props["color"] = style.stroke.color
+                    props["strokeColor"] = getDarkenedColor(style.stroke.color)
+                } else if (style.strokeLeft != null || style.strokeRight != null) {
+                    // must have a color for the center if left or right is defined because
+                    // there are really ugly overlaps in tangram otherwise
+                    props["color"] = resources.getString(R.string.road_color)
+                    props["strokeColor"] = resources.getString(R.string.road_outline_color)
+                }
+                style.label?.let { props["text"] = it }
+            }
+            is PointStyle -> {
+                style.label?.let { props["text"] = it }
+                style.icon?.let { props["icon"] = it }
+            }
+        }
+
+        return if (style is PolygonStyle && (style.icon != null || style.label != null)) {
+            // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
+            // issue that icons for polygons are shown on every single vertex
+            val properties = HashMap<String, String>(4, 1.0f)
+            properties[ELEMENT_ID] = element.id.toString()
+            properties[ELEMENT_TYPE] = element.type.name
+            style.icon?.let { properties["icon"] = it }
+            style.label?.let { properties["text"] = it }
+            geometry.toTangramGeometry(props) + ElementPointGeometry(geometry.center).toTangramGeometry(properties)
+        } else {
+            geometry.toTangramGeometry(props)
+        }
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
