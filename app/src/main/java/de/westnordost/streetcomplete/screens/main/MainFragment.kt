@@ -104,6 +104,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
@@ -124,7 +125,6 @@ import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -984,14 +984,20 @@ class MainFragment :
     private fun showMapContextMenu(position: LatLon) {
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
-        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
             popupMenu.menu.add(Menu.NONE, 4, 4, R.string.create_poi)
+            popupMenu.menu.add(Menu.NONE, 5, 5, R.string.insert_node)
+        }
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
                 4 -> onClickAddPoi(position)
+                5 -> {
+                    //mapFragment?.show3DBuildings = false // todo: why does this add markers that can't be removed while the form is open?
+                    showInBottomSheet(InsertNodeFragment.create(position))
+                }
             }
             true
         }
@@ -1046,9 +1052,8 @@ class MainFragment :
     private fun selectPoiType(pos: LatLon) {
         val fd = featureDictionaryFuture.get()
         val country = countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull()
-        val locales = getLocalesForFeatureDictionary(requireContext().resources.configuration)
-        val defaultFeatures: List<Feature>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
-            .split("§").mapNotNull { fd.byId(it).forLocale(*locales).inCountry(country).get() }
+        val defaultFeatureIds: List<String>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
+            .split("§").filter { it.isNotBlank() }
             .ifEmpty { null } // null will show defaults, while empty list will not
 
         SearchFeaturesDialog(
@@ -1059,7 +1064,7 @@ class MainFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { addPoi(pos, it) },
-            defaultFeatures?.reversed(), // features shown without entering text
+            defaultFeatureIds?.reversed(), // features shown without entering text
             pos,
         ).show()
     }

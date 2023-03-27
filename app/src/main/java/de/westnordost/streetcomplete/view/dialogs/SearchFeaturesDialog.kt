@@ -40,7 +40,7 @@ class SearchFeaturesDialog(
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
     private val onSelectedFeatureFn: (Feature) -> Unit,
-    private val preSelect: Collection<Feature>? = null,
+    private val preSelect: Collection<String>? = null,
     private val pos: LatLon? = null
 ) : AlertDialog(context), KoinComponent {
 
@@ -52,7 +52,7 @@ class SearchFeaturesDialog(
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 
-    private val defaultFeatures: List<Feature> by lazy {
+    private val defaultFeatures: List<String> by lazy {
         listOf(
             // ordered by usage number according to taginfo
             "amenity/restaurant",
@@ -63,12 +63,7 @@ class SearchFeaturesDialog(
             "amenity/pharmacy",
             "shop/clothes",
             "shop/hairdresser"
-        ).mapNotNull {
-            featureDictionary
-                .byId(it)
-                .forLocale(*locales)
-                .inCountry(countryOrSubdivisionCode).get()
-        }
+        )
     }
 
     init {
@@ -123,7 +118,13 @@ class SearchFeaturesDialog(
 
     private fun updateSearchResults() {
         val text = searchText
-        val list = if (text == null) preSelect ?: defaultFeatures else getFeatures(text)
+        val list = if (text == null) (preSelect ?: defaultFeatures).mapNotNull {
+            featureDictionary
+                .byId(it)
+                .forLocale(*locales)
+                .inCountry(countryOrSubdivisionCode).get()
+        } else
+            getFeatures(text)
         adapter.list = list.toMutableList()
         binding.noResultsText.isGone = list.isNotEmpty()
     }

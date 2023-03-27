@@ -143,7 +143,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         }
     })
 
-    private lateinit var favs: LastPickedValuesStore<Feature>
+    private lateinit var favs: LastPickedValuesStore<String>
 
     private val lastPickedAnswers by lazy {
         favs.get()
@@ -156,8 +156,8 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
-            serialize = { it.id },
-            deserialize = { featureDictionary.byId(it).get() },
+            serialize = { it },
+            deserialize = { it },
         )
     }
 
@@ -208,7 +208,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
             R.id.leaveNoteRadioButton -> composeNote()
             R.id.replaceRadioButton   -> {
                 applyAnswer(featureCtrl.feature!!.addTags["healthcare:speciality"]!!)
-                favs.add(featureCtrl.feature!!)
+                favs.add(featureCtrl.feature!!.id)
             }
         }
     }
@@ -228,7 +228,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         checkIsFormComplete()
     }
 
-    private fun getSuggestions(): Collection<Feature> {
+    private fun getSuggestions(): Collection<String> {
         if (lastPickedAnswers.size >= 12) return lastPickedAnswers
         return (lastPickedAnswers + listOf(
                 // based on https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values
@@ -255,7 +255,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
                 // urology
                 // emergency
                 // dialysis
-                ).mapNotNull { featureDictionary.byId(it).get() }
+                )
             ).distinct().take(12)
     }
 }

@@ -80,7 +80,7 @@ class CreatePoiFragment : TagEditor() {
             listener?.onCreatedNote(position)
             viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey) }
         } else {
-            elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags))
+            elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
             listener?.onCreatedNote(position)
         }
     }

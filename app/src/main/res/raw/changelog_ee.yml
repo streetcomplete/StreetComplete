@@ -1,6 +1,8 @@
 v52.0-beta1: |
   <ul>
   <li>Allow adding multiple custom overlays (#404)</li>
+  <li>Allow inserting nodes into a single way</li>
+  <li>Add some options to nearby quest monitor</li>
   <li>Performance improvements when showing pins and overlay elements, and when downloading</li>
   <li>Improve coloring for custom overlays, and make node coloring work</li>
   <li>Allow hiding road name labels when viewing satellite map (#418)</li>

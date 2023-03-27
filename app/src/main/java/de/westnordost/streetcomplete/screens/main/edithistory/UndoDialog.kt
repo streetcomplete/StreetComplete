@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
+import de.westnordost.streetcomplete.data.osm.edits.insert.InsertNodeAction
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
@@ -134,6 +135,7 @@ class UndoDialog(
                 is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
                 is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
                 is MoveNodeAction ->          createTextView(ResText(R.string.move_node_action_description))
+                is InsertNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
                 else -> throw IllegalArgumentException()
             }
         }

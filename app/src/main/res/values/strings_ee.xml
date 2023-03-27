@@ -378,6 +378,8 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>
+    <string name="insert_node">Insert node into way</string>
+    <string name="insert_node_select_way">Select a position on a way</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_filter_message">Click the link below to open information about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result.
         \nThe checkboxes replace the \"nodes, ways with\" part.</string>
