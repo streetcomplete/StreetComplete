@@ -960,7 +960,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_surface_value_concrete_plates">"Betongelementer"</string>
     <string name="quest_surface_value_concrete_lanes">"Spor med betongplater"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er dokumentert på selve brannhydranten?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Som oftest kan diameter-informasjon være beskrevet på selve brannhydranten."</string>
     <string name="quest_diet_answer_no_food">"Ingen servering"</string>
     <string name="short_no_answer_on_button">"Nei"</string>
     <string name="restore_confirmation">"Gjenopprette"</string>

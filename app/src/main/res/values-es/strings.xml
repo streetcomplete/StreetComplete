@@ -953,7 +953,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_surface_value_concrete_plates">"Losas de hormigón"</string>
     <string name="quest_surface_value_concrete_lanes">"Roderas de cemento u hormigón para vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en esta boca de incendio?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"¿Seguro? A veces el diámetro está marcado en la propia boca."</string>
     <string name="quest_diet_answer_no_food">"No tiene comida."</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Restaurar"</string>

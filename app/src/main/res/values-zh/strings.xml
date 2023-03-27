@@ -958,7 +958,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_surface_value_concrete_plates">"水泥板"</string>
     <string name="quest_surface_value_concrete_lanes">"水泥车辙板"</string>
     <string name="quest_fireHydrant_diameter_title">"这个消防栓所标明的规定直径是多少？"</string>
-    <string name="quest_fireHydrant_confirmation_title">"你确定吗？有时可以在它本身上找到直径"</string>
     <string name="quest_diet_answer_no_food">"它不提供餐点"</string>
     <string name="short_no_answer_on_button">"没有"</string>
     <string name="restore_confirmation">"恢复"</string>

@@ -1,22 +1,29 @@
-v52.0-beta1: |
-  <h3>New overlay for surfaces (#4378, #4642), thanks @matkoniecz</h3>
-  <p>Now you can comprehensively map and verify surfaces mapped for roads and paths!</p>
+v52.0: |
+  <h3>New overlay for surfaces!</h3>
+  <p>
+  Now you can comprehensively map and verify surfaces mapped for roads and paths (#4378, #4642), thanks @matkoniecz
+  </p>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
   </ul>
-  <h3>Enhancements and Fixes</h3>
+  <h3>Enhancements & Fixes</h3>
   <ul>
-  <li>Addresses: Allow specifying block numbers (#4718, #4850), by @Helium314</li>
-  <li>Fix block number input in Japan, by @Helium314</li>
+  <li>Increase the speed by which the map is updated after an edit by ~30% (#4897, #4906), by @Helium314</li>
+  <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
+  <li>Fix some memory leaks and crashes (#4869, #4884, #4896)</li>
+  <li>Addresses: Fix block number input in Japan, by @Helium314</li>
+  <li>Other small fixes (#4901, #2780, #4880, #4890...), thanks @Helium314</li>
+  </ul>
+  <h3>Quest & Overlay Enhancements</h3>
+  <ul>
+  <li>Addresses: Allow to specify block numbers (#4718, #4850), by @Helium314</li>
   <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
   <li>Address overlay: You can now add addresses to entrances (#4823)</li>
-  <li>Surfaces: Added "persistent mud" as selectable surface, by @matkoniecz</li>
+  <li>Surfaces: Add "persistent mud" as selectable surface, by @matkoniecz</li>
   <li>Building levels: Require specifying the roof levels, too (with exceptions) (#4874, #4821, #4661)</li>
-  <li>Ask about wheelchair accessibility of toilets in restaurants etc. (#4866, #4868, #4879), thanks @arrival-spring, @Helium314</li>
-  <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
-  <li>Fix some memory leaks and crashes (#4869, #4884)</li>
-  <li>Other small enhancements (#4864, #4880, #4883...), thanks @matkoniecz, @arrival-spring, @Helium314</li>
+  <li>Wheelchair accessibility: Also ask for toilets in restaurants etc. (#4866, #4868, #4879), thanks @arrival-spring, @Helium314</li>
+  <li>Other small enhancements and wording improvements (#4864, #4883, #4899, #4872, #4907, #4892...), thanks @matkoniecz, @arrival-spring, @bmaggi, @Helium314</li>
   </ul>
 
 v51.1: |

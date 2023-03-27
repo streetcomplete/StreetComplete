@@ -952,7 +952,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_surface_value_concrete_plates">"Betonnen platen"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonnen stroken"</string>
     <string name="quest_fireHydrant_diameter_title">"Welke diameter wordt aangegeven op het bord voor deze brandkraan?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
     <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
     <string name="short_no_answer_on_button">"Nee"</string>
     <string name="restore_confirmation">"Herstel"</string>

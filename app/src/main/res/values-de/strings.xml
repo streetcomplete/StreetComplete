@@ -960,7 +960,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_surface_value_concrete_plates">"Betonplatten"</string>
     <string name="quest_surface_value_concrete_lanes">"Fahrspuren aus Beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Bist du sicher? Manchmal steht der Durchmesser auf dem Hydranten selbst."</string>
     <string name="quest_diet_answer_no_food">"Hier gibt es nichts zu essen"</string>
     <string name="short_no_answer_on_button">"Nein"</string>
     <string name="restore_confirmation">"Wiederherstellen"</string>
@@ -1082,7 +1081,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="ar_core_tracking_error_no_plane_hit">"Bleib dichter am Pfeil, aber achte dabei auf den Verkehr!"</string>
     <string name="quest_sidewalk_surface_title">"Welche Oberfläche hat der Bürgersteig hier?"</string>
     <string name="quest_tactilePaving_incorrect">"Nur auf einer Seite"</string>
-    <string name="quest_fee_answer_yes_but">"Ja,…"</string>
+    <string name="quest_fee_answer_yes_but">"Ja, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Nein, aber es gibt eine Maximaldauer …"</string>
     <string name="unit_days">"Tage"</string>
     <string name="unit_hours">"Stunden"</string>

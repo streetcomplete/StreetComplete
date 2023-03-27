@@ -958,7 +958,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_surface_value_concrete_plates">"Placas de cimento"</string>
     <string name="quest_surface_value_concrete_lanes">"2 faixas de cimento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual é o diâmetro especificado nesta boca de incêndio?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Tem a certeza? Por vezes o diâmetro pode ser encontrado na boca de incêndio."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
     <string name="restore_confirmation">"Restaurar"</string>

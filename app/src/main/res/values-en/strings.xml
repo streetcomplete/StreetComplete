@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This ( app/src/main/res/values/strings.xml ) is the source file for the app's strings in en-US.
+<!-- This ( app/src/main/res/values/strings.xml ) is the source file for the app’s strings in en-US.
      All other strings.xml are imported from POEditor crowd translation platform.
 
      The strings are sorted into categories to
@@ -618,9 +618,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_address_title">"What’s the house number of this building?"</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
     <string name="label_housenumber">house number</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
     <string name="label_blocknumber">block number</string>
     <!-- In some countries, addresses may have a house number and a block (number or letters) -->
     <string name="label_block">block</string>
@@ -633,8 +633,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_housenumber_multiple_numbers_description" tools:ignore="TypographyDashes">"You can enter comma-separated house numbers or ranges.\nFor example 1,3 or 2-6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_address">No address here</string>
-    <string name="quest_address_answer_block">It\'s within a block…</string>
-    <string name="quest_address_answer_no_block">It isn\'t within a block…</string>
+    <string name="quest_address_answer_block">It’s within a block…</string>
+    <string name="quest_address_answer_no_block">It isn’t within a block…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
@@ -999,7 +999,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_fireHydrant_diameter_title">What diameter is specified on the sign for this fire hydrant?</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">This diameter looks implausible, it is usually between %1$d and %2$d.</string>
-    <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
 
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
     <string name="quest_fireHydrant_position_green">In grass, dirt or shrubbery</string>
@@ -1499,6 +1498,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_compacted">"Compacted"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
+    <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>
@@ -1610,7 +1610,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
 
     <string name="overlay_none">None</string>
-
     <string name="overlay_lit">Street lighting</string>
     <string name="lit_value_yes">Lit</string>
     <string name="lit_value_no">Not lit</string>
@@ -1632,6 +1631,12 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_no">"Still same place"</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <!-- Used for surfaces unknown by SC. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from them -->
+    <string name="unknown_surface_title">Other kind of surface</string>
+    <string name="overlay_surface">Surfaces</string>
+
+    <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
 
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>

@@ -960,7 +960,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="quest_surface_value_concrete_plates">"Betonske ploče"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske trake"</string>
     <string name="quest_fireHydrant_diameter_title">"Koji je promjer označen na ovom vatrogasnom hidrantu?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Jeste li sigurni? Ponekad je promjer označen i na samom hidrantu."</string>
     <string name="quest_diet_answer_no_food">"Nema nikakve hrane"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
     <string name="restore_confirmation">"Vrati zadatke"</string>
@@ -1030,7 +1029,7 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)."</string>
     <string name="quest_smoothness_description_bad_paved">"Velike praznine, rupe, kolotečine, mrvljenje podloge ili druga oštećenja"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Pomaknute ploče, veliki razmaci ili druga oštećenja"</string>
     <string name="quest_smoothness_description_bad_sett">"Istrošeni kamen ili nepravilni oblici, veliki razmaci ili oštećenja"</string>
-    <string name="quest_smoothness_description_bad_compacted_gravel">"Ponekad veći tucanik, neravnine, kolotečine ili rupe"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Ponekad krupniji tucanik, veće neravnine, kolotečine ili rupe"</string>
     <string name="quest_smoothness_description_very_bad_paved">"Duboke rupe, kolotečine ili druga opasna oštećenja"</string>
     <string name="quest_smoothness_description_very_bad_sett">"Velike praznine, pomaknuto, nedostajuće ili kamenje nepravilnog oblika ili opasna oštećenja"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Nedostajuće i slomljene ploče, praznine ili druga opasna oštećenja"</string>
@@ -1310,4 +1309,13 @@ Pomaknuti sada?"</string>
     <string name="street_parking_staggered_on_street">"Naizmjence na jednoj pa na drugoj strani ceste"</string>
     <string name="street_parking_staggered_half_on_kerb">"Naizmjence djelomično na jednoj pa na drugoj strani ceste"</string>
     <string name="quest_traffic_signals_sound_description">"Savjet: potražite zvučnike. Ne aktiviraju se svi zvučni signali gumbom ili automatski."</string>
+    <string name="quest_presets_duplicate">"Dupliciraj"</string>
+    <string name="label_block">"blok"</string>
+    <string name="quest_address_answer_block">"Nalazi se unutar bloka…"</string>
+    <string name="quest_address_answer_no_block">"Nije unutar bloka…"</string>
+    <string name="quest_surface_value_mud">"Postojano blato"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Ovdje nema toaleta"</string>
+    <string name="unknown_surface_title">"Nepoznata vrsta površine"</string>
+    <string name="overlay_surface">"Površine"</string>
+    <string name="overlay_path_surface_segregated">"Podijeljena je na biciklistički i pješački dio"</string>
 </resources>

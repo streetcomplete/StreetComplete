@@ -958,7 +958,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_surface_value_concrete_plates">"Betono plokštės"</string>
     <string name="quest_surface_value_concrete_lanes">"Betono juostos"</string>
     <string name="quest_fireHydrant_diameter_title">"Koks šio gaisrinio hidranto skersmuo nurodytas ženkle?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Ar tikrai? Kartais skersmuo nurodomas ant paties hidranto."</string>
     <string name="quest_diet_answer_no_food">"Jame nėra maisto"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
     <string name="restore_confirmation">"Atkurti"</string>

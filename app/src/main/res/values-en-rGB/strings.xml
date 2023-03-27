@@ -960,7 +960,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_surface_value_concrete_plates">"Concrete plates"</string>
     <string name="quest_surface_value_concrete_lanes">"Concrete lanes"</string>
     <string name="quest_fireHydrant_diameter_title">"What diameter is specified on the sign for this fire hydrant?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="quest_diet_answer_no_food">"It has no food"</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Restore"</string>
@@ -1310,4 +1309,13 @@ Move it now?"</string>
     <string name="street_parking_staggered_on_street">"On street on alternating sides"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
     <string name="quest_traffic_signals_sound_description">"Hint: Look out for speakers. Not all sound signals can be activated through a button."</string>
+    <string name="quest_presets_duplicate">"Duplicate"</string>
+    <string name="label_block">"block"</string>
+    <string name="quest_address_answer_block">"It's within a block…"</string>
+    <string name="quest_address_answer_no_block">"It isn't within a block…"</string>
+    <string name="quest_surface_value_mud">"Persistent mud"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"There is no restroom here"</string>
+    <string name="unknown_surface_title">"Other kind of surface"</string>
+    <string name="overlay_surface">"Surfaces"</string>
+    <string name="overlay_path_surface_segregated">"Split into cycling and walking parts"</string>
 </resources>

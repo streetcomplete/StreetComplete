@@ -952,7 +952,6 @@
     <string name="quest_surface_value_concrete_plates">"แผ่นคอนกรีต"</string>
     <string name="quest_surface_value_concrete_lanes">"ช่องคอนกรีต"</string>
     <string name="quest_fireHydrant_diameter_title">"หัวจ่ายมีเส้นผ่านศูนย์กลางเท่าไหร่ที่ระบุบนป้าย?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"แน่ใจนะ? บางครั้งเส้นผ่านศูนย์อาจจะเขียนบนหัวจ่าย"</string>
     <string name="quest_diet_answer_no_food">"ไม่ขายอาหาร"</string>
     <string name="short_no_answer_on_button">"ไม่"</string>
     <string name="restore_confirmation">"กู้คืน"</string>

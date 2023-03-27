@@ -19,8 +19,8 @@
     <string name="quest_generic_confirmation_yes">"Jes, mi certas"</string>
     <string name="quest_generic_confirmation_no">"Mi kontrolu"</string>
     <string name="quest_leave_new_note_title">"Ĉu skribi noton anstataŭe?"</string>
-    <string name="quest_leave_new_note_description">"Vi povas skribi publikan noton ĉi tie por ke aliaj mapistoj povu komenti ĝin kaj esperable solvi ĝin, aŭ alimaniere nur kaŝi la demandon nur por vi"</string>
-    <string name="quest_leave_new_note_yes">"Bone"</string>
+    <string name="quest_leave_new_note_description">"Vi povas skribi publikan noton ĉi tie por ke aliaj mapistoj solvu ĝin, aŭ alimaniere kaŝi la demandon nur por vi"</string>
+    <string name="quest_leave_new_note_yes">"Lasi noton"</string>
     <string name="quest_leave_new_note_no">"Ne, nur kaŝi"</string>
     <string name="quest_streetName_title">"Kiu estas la nomo de ĉi tiu vojo?"</string>
     <string name="quest_streetName_description">"kiel skribite je la startoŝildo, mallongigoj estos elvolvitaj:"</string>
@@ -75,11 +75,11 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Ŝanĝiĝas laŭ monato…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ne estas fiksaj malfermohoroj…"</string>
     <string name="quest_openingHours_comment_title">"Priskribu malferman tempon"</string>
-    <string name="quest_openingHours_comment_description">"Komentu mallonge, prefere uzante la samajn vortojn kiel en la signo, ekz. \"laŭ interkonsento\". Se ne estas signo, tio ne aŭtomate signifas, ke ne estas fiksaj malfermohoroj."</string>
+    <string name="quest_openingHours_comment_description">"Komentu mallonge, prefere uzante la samajn vortojn kiel en la signo, ekz. “laŭ interkonsento”. Se ne estas signo, tio ne aŭtomate signifas, ke ne estas fiksaj malfermohoroj."</string>
     <string name="quest_roofShape_title">"Kiun bazan formon havas tegmento de ĉi tiu konstruaĵo?"</string>
     <string name="quest_roofShape_select_one">"Elektu unu:"</string>
     <string name="quest_roofShape_show_more">"Montri pli…"</string>
-    <string name="quest_roofShape_answer_many">"Ĝi havas kelkajn aliajn formojn"</string>
+    <string name="quest_roofShape_answer_many">"Ĝi havas plurajn malsamajn formojn"</string>
     <string name="map_btn_zoom_out">"malzomi"</string>
     <string name="map_btn_zoom_in">"zomi"</string>
     <string name="privacy_html">"&lt;p&gt;Ho, iu, kiu zorgas pri privateco, malaĉe! Mi pensas, ke mi havas nur bonajn novaĵojn por vi:&lt;/p&gt;
@@ -204,7 +204,7 @@ Se nenia indikilo kiu aplikiĝus por la ĉi-montrita parto aperas en la tuta str
     <string name="quest_bikeParkingCapacity_hint">"Rimarku ke plejparte de la normalaj arkoj uzeblas ambaŭflanke, permesante la parkadon de du bicklikloj."</string>
     <string name="quest_sport_roller_skating">"Rulŝuado"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parte signifas, ke estas ne pli ol unu ŝtupo por atingi la lokon kaj la plejmulto de ĉambroj ene estas atingeblaj por rulseĝoj."</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"“Parte“ signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"“Parte” signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ĉu estas mallongigoj en la nomo %s?"</string>
     <string name="quest_recycling_type_title">"Kia reciklaĵo estas ĉi tio?"</string>
     <string name="recycling_centre">"Reciklejo"</string>
@@ -324,7 +324,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_hasFeature_only">"Nur"</string>
     <string name="quest_dietType_explanation_vegan">"Veganaj manĝoj enhavas neniujn bestajn produktojn (neniu viando, fiŝo, kokaĵo, laktoproduktoj, ovoj, mielo …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetaraj pladoj estas sen viando, fiŝaĵo kaj biraĵo."</string>
-    <string name="quest_dietType_explanation">"Nur respondu \"jes\" se la loko disponigas kompareblan elekton de manĝebloj por ĉi tiu dieto"</string>
+    <string name="quest_dietType_explanation">"Nur respondu “jes” se la loko disponigas kompareblan elekton de manĝebloj por ĉi tiu dieto"</string>
     <string name="quest_carWashType_title">"Kia aŭtolavado estas ĉi tio?"</string>
     <string name="quest_carWashType_automated">"Aŭtomata"</string>
     <string name="quest_carWashType_selfService">"Memserva"</string>
@@ -496,7 +496,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_tracktype_grade4">"Plejparte malfirma"</string>
     <string name="quest_tracktype_grade5">"Malfirma"</string>
     <string name="quest_building_underground_title">"Ĉu ĉi tiu konstruaĵo estas entute subtere?"</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">"“Parte“ signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"“Parte” signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ĉu ĉi tiu loko estas atingebla per rulseĝo?"</string>
     <string name="quest_traffic_signals_button_title">"Ĉu ĉi tiuj semaforoj havas butonon por peti marŝan signalon?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kiom da motorbicikloj pvas estas parkitaj ĉi tie?"</string>
@@ -800,6 +800,9 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_shop_vacant_type_title">"Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Ne estas samkvante da koridoroj ambaŭflanke"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Tute neniu biciklovojo"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kiel kutime, alklaku iaflanke de la ilustraĵo, elektu akuratan respondon, kaj faru same aliflanke.
+
+Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo kiu permesas biciklistojn en ambaŭ direktoj!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Elektante ke ne ekzistas biciklovojo"</string>
     <string name="quest_construction_completed_at_known_date">"Finiĝos ĉe dato…"</string>
     <string name="quest_construction_completion_date_title">"Kiam ĝi estos kompleta?"</string>
@@ -846,16 +849,23 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="background_type_map">"Mapo"</string>
     <string name="background_type_aerial_esri">"Aerial (de Esri)"</string>
     <string name="quest_barrier_type_title">"Kia barilo estas ĉi tio?"</string>
+    <string name="quest_barrier_type_lift_gate">"Barilo levebla"</string>
     <string name="quest_barrier_type_bollard">"Bolardo(j)"</string>
     <string name="quest_barrier_type_chain">"Ĉeno"</string>
     <string name="quest_barrier_type_rope">"Ŝnuro"</string>
     <string name="quest_barrier_type_wire_gate">"Forprenebla dratsekcio"</string>
     <string name="quest_barrier_type_cattle_grid">"Krado blokanta brutaron de promenado supren"</string>
     <string name="quest_barrier_type_block">"Granda senmova objekto"</string>
+    <string name="quest_barrier_jersey_barrier">"Antaŭfabrikita barilo"</string>
     <string name="quest_barrier_type_log">"Ŝtipo"</string>
     <string name="quest_barrier_type_kerb">"trotuarrando"</string>
     <string name="quest_barrier_type_height_restrictor">"Alteca barilo"</string>
+    <string name="quest_barrier_full_height_turnstile">"Homalta turnokruco"</string>
+    <string name="quest_barrier_type_turnstile">"Turnokruco"</string>
+    <string name="quest_barrier_type_passage">"Transirejo tra muro/barilo/ktp."</string>
     <string name="quest_barrier_type_debris_pile">"Amaso da forĵetaĵoj"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Mallarĝega pasejo"</string>
+    <string name="quest_barrier_type_stile_ladder">"Ŝtupareto"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Bicikla baro"</string>
     <string name="quest_policeType_title">"Kiu speco de policejo estas ĉi tio?"</string>
     <string name="quest_stile_type_title">"Kia bestobarilo estas ĉi tio?"</string>
@@ -921,7 +931,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_surface_value_concrete_plates">"Konkretaj platoj"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonaj vojeroj"</string>
     <string name="quest_fireHydrant_diameter_title">"Kiu diametro estas specifita sur la signo por ĉi tiu fajra hidranto?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Ĉu vi certas? Foje la diametro troveblas sur la hidranto mem."</string>
     <string name="quest_diet_answer_no_food">"Ĝi ne havas manĝaĵon"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
     <string name="restore_confirmation">"Restaŭri"</string>
@@ -933,6 +942,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_postboxCollectionTimes_resurvey_title">"Ĉu la elektaj tempoj de ĉi tiu kolekto-skatolo ankoraŭ ĝustas?"</string>
     <string name="quest_bicycle_barrier_type_title">"Kia bicikla barilo estas ĉi tio?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala al la vojo"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Mallarĝa transirejo, malpli larĝa supre"</string>
     <string name="quest_barrier_bicycle_type_single">"Trairejo inter bariloj"</string>
     <string name="quest_barrier_bicycle_type_double">"Baro - baroj de ambaŭ flankoj unu post la alia"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Baro - pli ol du baroj"</string>
@@ -1079,7 +1089,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_smoking_title2">"Ĉu oni rajtas fumi ĉi tie?"</string>
     <string name="quest_smoothness_title">"Kio estas la surfackvalito ĉi tie?"</string>
     <string name="quest_summit_register_title2">"Ĉu estas pintkunvena registro ĉi tie?"</string>
-    <string name="quest_surface_title">"Kio estas la surfaco ĉi tie?"</string>
+    <string name="quest_surface_title">"Kia estas la surfaco ĉi tie?"</string>
     <string name="quest_toiletAvailability_title">"Ĉu estas necesejo ĉi tie?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Ĉu la necesejo ĉe ĉi tiu loko estas alirebla?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ĉu vi certas, ke biciklantoj ne rajtas uzi ĉi tiun unudirektan straton en ambaŭ direktoj? Se vi ne certas, serĉu signon ĉe la fino de la strato."</string>
@@ -1112,7 +1122,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_building_entrance_main">"Ĉefa eniro de publika konstruaĵo"</string>
     <string name="quest_building_entrance_staircase">"Ŝtupara enirejo (t.e. de apartamenta konstruaĵo)"</string>
     <string name="quest_building_entrance_service">"Serva enirejo"</string>
-    <string name="quest_building_entrance_exit">"Eliro nur"</string>
+    <string name="quest_building_entrance_exit">"Nur eliro"</string>
     <string name="quest_building_entrance_emergency_exit">"Nur kriza eliro"</string>
     <string name="quest_building_entrance_shop">"Butikvesta enirejo"</string>
     <string name="quest_building_entrance_yes">"Alia enira tipo"</string>
@@ -1165,6 +1175,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="overlay_street_parking">"Strata parkado"</string>
     <string name="link_opencampingmap_description">"Monda mapo de kampadejoj"</string>
     <string name="quest_atm_cashin_title">"Ĉu oni povas enmeti monon per ĉi tiu bankaŭtomato?"</string>
+    <string name="create_node_action_description">"Vi kreis nodon per …"</string>
     <string name="quest_address_answer_house_name2">"Ĝi havas domnumeron..."</string>
     <string name="quest_address_street_street_name_label">"Nomo de la strato:"</string>
     <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
@@ -1186,8 +1197,12 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="unknown_shop_title">"Alia kategorio"</string>
     <string name="quest_address_answer_no_address">"Ne estas adreso"</string>
     <string name="quest_bicycle_barrier_installation_title">"Ĉu oni povas malfermi ĉi tiun biciklan baron (kun aŭ sen ŝlosilo)?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fiksita"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Malfermebla"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Forigebla"</string>
     <string name="quest_buildingType_guardhouse">"Gardistejo"</string>
     <string name="quest_genericRef_title">"Kio estas la referenca numero ĉi tie?"</string>
+    <string name="quest_sidewalk_answer_different">"La situacio de la trotuaro malsamas"</string>
     <string name="about_title_get_involved">"Kontribuu"</string>
     <string name="pref_category_quests_overlays">"Taskoj &amp; supertavoloj"</string>
     <string name="quest_presets_rename">"Ŝanĝi nomon"</string>
@@ -1208,10 +1223,37 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="confirmation_replace_shop_message">"Tiukaze ankaŭ la malfermhoroj, kontaktdatumo, ktp. ŝanĝiĝus."</string>
     <string name="confirmation_replace_shop_yes">"Alia vendejo"</string>
     <string name="confirmation_replace_shop_no">"Sama vendejo"</string>
+    <string name="move_node">"Ĝi ne estas ekzakte ĉi tie…"</string>
+    <string name="quest_move_node_message">"Vi povas plibonigi ĝian pozicion movante ĝin.
+Movu ĝin nun?"</string>
+    <string name="node_moved_not_far_enough">"Bonvole movu ĝin pli fore"</string>
+    <string name="node_moved_too_far">"Movis tro fore. Bonvole konsideru fari noton"</string>
+    <string name="node_moved">"Moviĝis je %s"</string>
+    <string name="move_node_description">"Ŝovu la mapon por meti la simbolon al la ĝusta loko. Provu uzi la zom-funkcion por esti plej preciza. Bonvole pripensu ke via montrita pozicio estus malakurata."</string>
+    <string name="move_node_action_description">"Vi movis la punkton"</string>
     <string name="quest_placeName_no_name_answer">"Neniu signo kun nomo ĉi tie…"</string>
     <string name="overlay_cycleway">"biciklovojoj"</string>
+    <string name="bicycle_boulevard_is_a">"Estas %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Ne estas %1$s"</string>
+    <string name="separate_cycleway_no">"Biciklado malpermesata"</string>
+    <string name="separate_cycleway_allowed">"Biciklistoj estas permesataj"</string>
+    <string name="separate_cycleway_no_or_allowed">"Ne farita por biciklistoj (sed eblas ke oni tamen povu biciklumi)"</string>
+    <string name="separate_cycleway_non_segregated">"Sendivida vojo por biciklistoj kaj piedpaŝantoj"</string>
+    <string name="separate_cycleway_segregated">"Dividita vojo por biciklistoj kaj piedpaŝantoj"</string>
+    <string name="separate_cycleway_exclusive">"Vojo nur por biciklistoj"</string>
+    <string name="separate_cycleway_with_sidewalk">"Nurbicikla vojo kun apuda trotuaro (dividita per videbla limo)"</string>
+    <string name="cycleway_reverse_direction_toast">"Alklaku la alidirektendan flankon"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
     <string name="quest_gritBinSeasonal_title">"Ĉu ĝi ankaŭ estas malvintre ĉi tie?"</string>
     <string name="quest_traffic_signals_sound_description">"Avizo: Rigardu ĉu estas laŭtparoliloj ĉe la semaforo. Sona signalo ne ĉiam estas ŝaltebla per butono."</string>
+    <string name="quest_presets_duplicate">"Kopii"</string>
+    <string name="label_block">"dombloko"</string>
+    <string name="quest_address_answer_block">"Ĝi estas parto de dombloko…"</string>
+    <string name="quest_address_answer_no_block">"Ĝi ne estas parto de dombloko…"</string>
+    <string name="quest_surface_value_mud">"Ŝlimo"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Ne estas necesejo ĉi tie"</string>
+    <string name="unknown_surface_title">"Alia tipo de surfaco"</string>
+    <string name="overlay_surface">"Surfacoj"</string>
+    <string name="overlay_path_surface_segregated">"Dividi la biciklan kaj piedpaŝan partojn"</string>
 </resources>
