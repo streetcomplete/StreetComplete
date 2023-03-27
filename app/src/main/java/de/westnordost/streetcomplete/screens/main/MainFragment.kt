@@ -996,6 +996,7 @@ class MainFragment :
                 4 -> onClickAddPoi(position)
                 5 -> {
                     //mapFragment?.show3DBuildings = false // todo: why does this add markers that can't be removed while the form is open?
+                    mapFragment?.hideOverlay()
                     showInBottomSheet(InsertNodeFragment.create(position))
                 }
             }

@@ -1,4 +1,4 @@
-v52.0-beta1: |
+v52.0: |
   <ul>
   <li>Allow adding multiple custom overlays (#404)</li>
   <li>Allow inserting nodes into a single way</li>

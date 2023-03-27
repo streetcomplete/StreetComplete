@@ -8,7 +8,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.annotation.UiThread
-import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
@@ -73,6 +73,7 @@ class InsertNodeFragment :
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
+    private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,6 +86,8 @@ class InsertNodeFragment :
 
         binding.undoButton.isInvisible = true
         binding.okButton.isInvisible = !isFormComplete
+        binding.mapButton.setOnClickListener { toggleBackground() }
+        updateMapButtonText()
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -130,6 +133,7 @@ class InsertNodeFragment :
             defaultFeatureIds.reversed(), // features shown without entering text
             il.first,
         ).show()
+        restoreBackground()
     }
 
     private fun onSelectedFeature(feature: Feature, insertLocation: Triple<LatLon, InsertBetween, Way>) {
@@ -147,6 +151,22 @@ class InsertNodeFragment :
         }
     }
 
+    private fun toggleBackground() {
+        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        updateMapButtonText()
+    }
+
+    private fun updateMapButtonText() {
+        val isMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP"
+        val textId = if (isMap) R.string.background_type_aerial_esri else R.string.background_type_map
+        binding.mapButton.setText(textId)
+    }
+
+    private fun restoreBackground() {
+        if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
+            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
+    }
+
     @UiThread
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         val mapData = mapDataSource.getMapDataWithGeometry(position.enclosingBoundingBox(50.0))
@@ -154,7 +174,7 @@ class InsertNodeFragment :
             val geo = mapData.getWayGeometry(it.id) ?: return@mapNotNull null
             it to geo
         }
-        var closestWay: Pair<Pair<Way, List<List<LatLon>>>, Double>? = null
+        val closeWays = hashSetOf<Triple<Way, List<List<LatLon>>, Double>>()
         waysAndGeometries.forEach {
             val geoLines = when (it.second) {
                 is ElementPolylinesGeometry -> (it.second as ElementPolylinesGeometry).polylines
@@ -162,19 +182,25 @@ class InsertNodeFragment :
                 else -> return@forEach
             }
             val distance = geoLines.minOf { position.distanceToArcs(it) }
-            if (distance <= clickAreaSizeInMeters && (closestWay == null || distance < closestWay!!.second))
-                closestWay = (it.first to geoLines) to distance
+            if (distance <= clickAreaSizeInMeters)
+                closeWays.add(Triple(it.first, geoLines, distance))
         }
-        if (closestWay == null) {
+        if (closeWays.isEmpty()) {
             binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.setText(R.string.insert_node_select_way)
             insertLocation = null
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
             animateButtonVisibilities()
             return true
         }
+        // quite often we have several ways using the same nodes
+        // prefer highways, then barriers
+        val minDistance = closeWays.minOf { it.third }
+        closeWays.removeAll { it.third > minDistance + 0.001 } // without the 0.001 this is not reliable
+        val closestWay = closeWays.firstOrNull { it.first.tags.containsKey("highway") }
+            ?: closeWays.firstOrNull { it.first.tags.containsKey("barrier") } ?: closeWays.first()
 
         val result = mutableSetOf<Pair<LatLon, InsertBetween>>()
-        closestWay!!.first.second.forEach { it.forEachLine { first, second ->
+        closestWay.second.forEach { it.forEachLine { first, second ->
             val crossTrackDistance = abs(position.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = position.alongTrackDistanceTo(first, second)
@@ -188,17 +214,17 @@ class InsertNodeFragment :
             }
         } }
         val here = result.minByOrNull { position.distanceTo(it.first) }
-        if (here == null) {
+        if (here == null) { // actually this should not happen
             binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.setText(R.string.insert_node_select_way)
             insertLocation = null
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
             animateButtonVisibilities()
             return true
         }
-        insertLocation = Triple(here.first, here.second, closestWay!!.first.first)
+        insertLocation = Triple(here.first, here.second, closestWay.first)
 
         binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.text =
-            closestWay!!.first.first.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
+            closestWay.first.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
         animateButtonVisibilities()
 
         // highlight way and position
@@ -210,11 +236,11 @@ class InsertNodeFragment :
                 null
             )
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-                mapData.getWayGeometry(closestWay!!.first.first.id)!!,
+                mapData.getWayGeometry(closestWay.first.id)!!,
                 null,
                 null
             )
-            closestWay!!.first.first.nodeIds.forEach {
+            closestWay.first.nodeIds.forEach {
                 val node = mapData.getNode(it) ?: return@forEach
                 if (node.tags.isEmpty()) return@forEach
                 showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
@@ -227,7 +253,10 @@ class InsertNodeFragment :
         return true
     }
 
-    @UiThread override fun onClickClose(onConfirmed: () -> Unit) { onConfirmed() }
+    @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
+        restoreBackground()
+        onConfirmed()
+    }
 
     private fun animateButtonVisibilities() {
         if (isFormComplete) binding.okButton.popIn() else binding.okButton.popOut()

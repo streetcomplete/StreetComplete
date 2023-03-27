@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
@@ -12,11 +13,13 @@ import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -72,6 +75,7 @@ class SplitWayFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val soundFx: SoundFx by inject()
+    private val prefs: SharedPreferences by inject()
 
     override val elementKey: ElementKey by lazy { ElementKey(way.type, way.id) }
 
@@ -94,6 +98,7 @@ class SplitWayFragment :
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
+    private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,6 +126,8 @@ class SplitWayFragment :
 
         binding.undoButton.isInvisible = !hasChanges
         binding.okButton.isInvisible = !isFormComplete
+        binding.mapButton.setOnClickListener { toggleBackground() }
+        updateMapButtonText()
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -148,6 +155,7 @@ class SplitWayFragment :
     }
 
     private suspend fun splitWay() {
+        restoreBackground()
         binding.glassPane.isGone = false
         if (splits.size <= 2 || confirmManySplits()) {
             val location = listOfNotNull(listener?.displayedMapLocation)
@@ -184,6 +192,22 @@ class SplitWayFragment :
                 ElementPointGeometry(item.second)
             )
         }
+    }
+
+    private fun toggleBackground() {
+        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        updateMapButtonText()
+    }
+
+    private fun updateMapButtonText() {
+        val isMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP"
+        val textId = if (isMap) R.string.background_type_aerial_esri else R.string.background_type_map
+        binding.mapButton.setText(textId)
+    }
+
+    private fun restoreBackground() {
+        if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
+            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
     }
 
     @UiThread
@@ -273,12 +297,14 @@ class SplitWayFragment :
 
     @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!hasChanges) {
+            restoreBackground()
             onConfirmed()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
+                        restoreBackground()
                         onConfirmed()
                     }
                     .setNegativeButton(R.string.short_no_answer_on_button, null)
