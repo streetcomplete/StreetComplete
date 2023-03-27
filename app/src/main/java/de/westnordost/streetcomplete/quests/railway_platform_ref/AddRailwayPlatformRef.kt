@@ -96,7 +96,7 @@ class AddRailwayPlatformRef : OsmElementQuestType<String> {
         AlertDialog.Builder(context)
             .setMessage(R.string.quest_railwayPlatformRef_message)
             .setPositiveButton("local_ref") { _, _ -> prefs.edit { putString(PREF_KEY, "local_ref") }}
-            .setNegativeButton("ref") { _, _ -> prefs.edit { putString(PREF_KEY, "ref") }}
+            .setNegativeButton("ref") { _, _ -> prefs.edit { remove(PREF_KEY) }}
             .create()
 }
 

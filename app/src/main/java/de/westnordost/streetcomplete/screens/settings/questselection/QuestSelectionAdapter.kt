@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -258,6 +260,22 @@ class QuestSelectionAdapter(
         RecyclerView.ViewHolder(binding.root), CompoundButton.OnCheckedChangeListener {
 
         lateinit var item: QuestVisibility
+        private val questSettingsInUseBackground by lazy { GradientDrawable().apply {
+            gradientType = GradientDrawable.RADIAL_GRADIENT
+            gradientRadius = 25f
+            val bgColor = ContextCompat.getColor(context, R.color.background)
+            val accentColor = ContextCompat.getColor(context, R.color.accent)
+            colors = arrayOf(accentColor, bgColor).toIntArray()
+        } }
+        private val questPrefix by lazy { questPrefix(prefs) + "qs_" }
+        private val questTypesWithUsedSettings by lazy {
+            val set = hashSetOf<String>()
+            prefs.all.keys.forEach {
+                if (it.startsWith(questPrefix))
+                    set.add(it.substringAfter(questPrefix).substringBefore("_"))
+            }
+            set
+        }
 
         private val isEnabledInCurrentCountry: Boolean
             get() {
@@ -282,14 +300,25 @@ class QuestSelectionAdapter(
             binding.visibilityCheckBox.isChecked = item.visible
             binding.visibilityCheckBox.isEnabled = interactionEnabled
             binding.visibilityCheckBox.setOnCheckedChangeListener(this)
-            binding.questSettings.visibility = if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && item.questType.hasQuestSettings) View.VISIBLE else View.GONE
-            binding.questSettings.setOnClickListener {
-                val settings = item.questType.getQuestSettingsDialog(it.context)
-                settings?.show()
-                if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
-                    context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
-            }
-            binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && item.questType.hasQuestSettings) {
+                binding.questSettings.isVisible = true
+                binding.questSettings.setOnClickListener {
+                    val settings = item.questType.getQuestSettingsDialog(it.context)
+                    if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                        settings?.setOnDismissListener {
+                            context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
+                            synchronized(questSettingsInUseBackground) {
+                                if (prefs.all.keys.any { it.startsWith(questPrefix + item.questType.name) })
+                                    questTypesWithUsedSettings.add(item.questType.name)
+                                else questTypesWithUsedSettings.remove(item.questType.name)
+                                setBackground(item)
+                            }
+                        }
+                    settings?.show()
+                }
+                setBackground(item)
+            } else
+                binding.questSettings.isGone = true
 
             binding.dragHandle.isInvisible = !interactionEnabled
             binding.dragHandle.setOnTouchListener { v, event ->
@@ -309,6 +338,14 @@ class QuestSelectionAdapter(
             }
 
             updateSelectionStatus()
+        }
+
+        private fun setBackground(item: QuestVisibility) {
+            synchronized(questSettingsInUseBackground) {
+                if (item.questType.name in questTypesWithUsedSettings)
+                    binding.questSettings.background = questSettingsInUseBackground
+                else binding.questSettings.setBackgroundColor(ContextCompat.getColor(context, R.color.background))
+            }
         }
 
         private fun updateSelectionStatus() {

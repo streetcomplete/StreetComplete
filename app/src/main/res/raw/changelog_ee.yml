@@ -11,6 +11,7 @@ v52.0-beta1: |
   <li>Allow answering that a road is under construction</li>
   <li>Allow answering one lane for non-oneways (#420)</li>
   <li>Use separate changesets with adjusted comment for some <i>other answers</i></li>
+  <li>Indicate whether quest settings are in use</li>
   <li>Small fixes and improvements</li>
   </ul>
 

@@ -55,7 +55,10 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
         )
         return AlertDialog.Builder(context)
             .setSingleChoiceItems(array, if (prefs.getBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, true)) 0 else 1) { d, i ->
-                prefs.edit { putBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, i == 0) }
+                if (i == 0)
+                    prefs.edit { remove(questPrefix(prefs) + MANDATORY_ROOF_LEVELS) }
+                else
+                    prefs.edit { putBoolean(questPrefix(prefs) + MANDATORY_ROOF_LEVELS, false) }
                 d.dismiss()
                 OsmQuestController.reloadQuestTypes()
             }
