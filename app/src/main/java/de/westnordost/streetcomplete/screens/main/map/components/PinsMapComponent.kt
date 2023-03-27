@@ -48,7 +48,7 @@ data class Pin(
             "kind" to iconName,
             "importance" to importance.toString()
         )
-        val props = HashMap<String, String>()
+        val props = HashMap<String, String>(properties.size + tangramProperties.size, 1f)
         props.putAll(tangramProperties)
         props.putAll(properties)
         Point(position.toLngLat(), props)
