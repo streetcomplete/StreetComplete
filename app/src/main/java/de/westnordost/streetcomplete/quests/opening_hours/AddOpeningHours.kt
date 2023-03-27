@@ -60,6 +60,9 @@ class AddOpeningHours(
                 "food_court", "nightclub",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
+                "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
+                "cooking_school",
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
@@ -90,7 +93,7 @@ class AddOpeningHours(
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic", "coworking",
+                "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant"
             ),

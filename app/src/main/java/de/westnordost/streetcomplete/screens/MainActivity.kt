@@ -190,13 +190,23 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
-        downloadController.showNotification = false
-        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        downloadController.showNotification = false
+        uploadController.showNotification = false
+        // try to stop more often than it seems necessary, because sometime android is slow to react, e.g. when quickly switching between SC and other app
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
+            try { unbindService(questMonitorConnection) } catch (e: IllegalArgumentException) {
+                // wtf is going on? it's not destroyed, but not registered?
+                // anyway, this check whether service is running doesn't work properly -> try every time, not just if running
+            }
     }
 
     @Deprecated("Deprecated in Java")
@@ -249,19 +259,11 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
+        downloadController.showNotification = true
+        uploadController.showNotification = true
         if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running && !backPressed)
             bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
         backPressed = false // as an easy way to avoid quest monitor: don't start it if SC was closed using back button
-    }
-
-    override fun onResume() {
-        super.onResume()
-        // try to stop more often than it seems necessary, because sometime android is slow to react, e.g. when quickly switching between SC and other app
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
-            try { unbindService(questMonitorConnection) } catch (e: IllegalArgumentException) {
-                // wtf is going on? it's not destroyed, but not registered?
-                // anyway, this check whether service is running doesn't work properly -> try every time, not just if running
-            }
     }
 
     private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
@@ -277,8 +279,6 @@ class MainActivity :
 
     public override fun onStop() {
         super.onStop()
-        downloadController.showNotification = true
-        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)

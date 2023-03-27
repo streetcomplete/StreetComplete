@@ -50,14 +50,16 @@ data class Pin(
     val geometry: ElementGeometry? = null,
     val color: String = "no",
 ) {
-    // cache tangram geometry in the pin, so we don't need to create it over and over again
     val tangramPoint by lazy {
-        val props = hashMapOf(
+        // avoid creation of intermediate HashMaps.
+        val tangramProperties = listOf(
             "type" to "point",
             "kind" to iconName,
             "importance" to importance.toString(),
             "poi_color" to color
         )
+        val props = HashMap<String, String>(properties.size + tangramProperties.size, 1f)
+        props.putAll(tangramProperties)
         props.putAll(properties)
         Point(position.toLngLat(), props)
     }

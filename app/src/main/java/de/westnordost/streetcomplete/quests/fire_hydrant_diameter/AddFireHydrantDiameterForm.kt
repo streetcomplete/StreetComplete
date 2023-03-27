@@ -111,7 +111,7 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_fireHydrant_confirmation_title)
+            .setMessage(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoFireHydrantDiameterSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
