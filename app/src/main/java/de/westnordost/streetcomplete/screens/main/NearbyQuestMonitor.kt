@@ -133,7 +133,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         val loc = location.toLatLon()
         if (loc.distanceTo(lastScanCenter) < searchRadius * 0.7) return // don't scan if we're still close to previous location
         lastScanCenter = loc
-        val quests = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(searchRadius)).filter { it.type.dotColor == "no" }
+        val quests = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(searchRadius)).filter { it.type.dotColor == null }
         if (quests.isEmpty()) {
             NotificationManagerCompat.from(this).cancel(FOUND_NOTIFICATION_ID) // no quest, no notification
             if (download) {

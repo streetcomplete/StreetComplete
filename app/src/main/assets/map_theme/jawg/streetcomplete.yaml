@@ -131,7 +131,7 @@ layers:
     streetcomplete_pins:
         data: { source: streetcomplete_pins }
         pins:
-            filter: { $zoom: { min: 16 }, poi_color: no }
+            filter: { $zoom: { min: 16 }, poi_color: false }
             draw:
                 pin-icons:
                     interactive: true
@@ -143,7 +143,7 @@ layers:
                     sprite_default: quest
                     offset: [-8px, -33px]
         poi_dots:
-            filter: { $zoom: { min: 18 }, not: { poi_color: no } }
+            filter: { $zoom: { min: 18 }, poi_color: true }
             draw:
                 pin-dots:
                     interactive: true
@@ -181,7 +181,7 @@ layers:
                         size: global.text_size
                         stroke: global.text_stroke
         dots_no_collide:
-            filter: { $zoom: { min: 16 }, poi_color: no }
+            filter: { $zoom: { min: 16 }, poi_color: false }
             draw:
                 pin-dots:
                     priority: 1
@@ -190,7 +190,7 @@ layers:
                     collide: false
                     offset: [-1.5px, -12px]
         dots:
-            filter: { $zoom: { min: 14, max: 15.999 }, poi_color: no }
+            filter: { $zoom: { min: 14, max: 15.999 }, poi_color: false }
             draw:
                 pin-dots:
                     priority: 1

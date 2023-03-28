@@ -165,12 +165,14 @@ class QuestsSettingsFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
             Prefs.DYNAMIC_QUEST_CREATION -> {
-                visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+                viewLifecycleScope.launch { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
             }
             Prefs.DAY_NIGHT_BEHAVIOR -> {
-                dayNightQuestFilter.reload()
-                visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
-                questTypeOrderController.onQuestTypeOrderChanged()
+                viewLifecycleScope.launch {
+                    dayNightQuestFilter.reload()
+                    visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+                    questTypeOrderController.onQuestTypeOrderChanged()
+                }
             }
             Prefs.QUEST_SETTINGS_PER_PRESET -> { viewLifecycleScope.launch { OsmQuestController.reloadQuestTypes() } }
             Prefs.QUEST_MONITOR -> {

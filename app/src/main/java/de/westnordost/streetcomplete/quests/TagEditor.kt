@@ -126,9 +126,11 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         deferredQuests = viewLifecycleScope.async(Dispatchers.IO) {
             // create quests if we have dynamic quest creation on or a new POI, otherwise just load from db
             // this is much faster, but actually may contain resurvey quests... whatever (for now)
-            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) || element.id == 0L) osmQuestController.createNonPoiQuestsForElement(element, geometry)
-            else osmQuestController.getAllVisibleInBBox(geometry.center.enclosingBoundingBox(0.01), null, true)
-                .filter { it.elementType == element.type && it.elementId == element.id && it.type.dotColor == "no" }
+            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) || element.id == 0L)
+                osmQuestController.createNonPoiQuestsForElement(element, geometry)
+            else
+                osmQuestController.getAllVisibleInBBox(geometry.center.enclosingBoundingBox(0.01), null, true)
+                .filter { it.elementType == element.type && it.elementId == element.id && it.type.dotColor == null }
         }
         _binding = EditTagsBinding.inflate(inflater, container, false)
         return binding.root

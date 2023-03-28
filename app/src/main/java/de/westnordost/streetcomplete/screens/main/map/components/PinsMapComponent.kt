@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import com.mapzen.tangram.MapData
+import com.mapzen.tangram.geometry.Geometry
 import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -26,7 +27,9 @@ class PinsMapComponent(private val ctrl: KtMapController) {
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
         pinsLayer.setFeatures(pins.map { it.tangramPoint })
-        questsGeometryLayer.setFeatures(pins.mapNotNull { it.tangramGeometry }.flatten())
+        val geos = HashSet<Geometry>(pins.size * 2)
+        pins.forEach { it.tangramGeometry?.let { geos.addAll(it) } }
+        questsGeometryLayer.setFeatures(geos.toList())
     }
 
     /** Clear pins */
@@ -48,15 +51,15 @@ data class Pin(
     val properties: Collection<Pair<String, String>> = emptyList(),
     val importance: Int = 0,
     val geometry: ElementGeometry? = null,
-    val color: String = "no",
+    val color: String? = null,
 ) {
     val tangramPoint by lazy {
         // avoid creation of intermediate HashMaps.
-        val tangramProperties = listOf(
+        val tangramProperties = listOfNotNull(
             "type" to "point",
             "kind" to iconName,
             "importance" to importance.toString(),
-            "poi_color" to color
+            color?.let { "poi_color" to color }
         )
         val props = HashMap<String, String>(properties.size + tangramProperties.size, 1f)
         props.putAll(tangramProperties)

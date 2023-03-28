@@ -37,6 +37,6 @@ interface QuestType : EditType {
     fun getQuestSettingsDialog(context: Context): AlertDialog? = null
     val hasQuestSettings: Boolean get() = false
 
-    /** color of the dot, which is used instead of a quest pin unless color is "no" */
-    val dotColor: String get() = "no"
+    /** color of the dot, which is used instead of a quest pin */
+    val dotColor: String? get() = null
 }

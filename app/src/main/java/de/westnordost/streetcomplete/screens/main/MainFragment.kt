@@ -1418,7 +1418,7 @@ class MainFragment :
         val markers = mutableListOf<Marker>()
 
         val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
-            .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
+            .filterNot { it == quest || it.type.dotColor != null } // ignore current quest and poi dots
             .sortedBy { it.thatKey() != quest.thatKey() }
         if (quests.isEmpty()) return emptyList()
         binding.compassView.isInvisible = true

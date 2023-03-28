@@ -245,10 +245,10 @@ class QuestPinsManager(
         val iconName = resources.getResourceEntryName(quest.type.icon)
         val color = quest.type.dotColor
         val importance = getQuestImportance(quest)
-        val label = if (color != "no" && quest is OsmQuest) getLabel(quest) else null
+        val label = if (color != null && quest is OsmQuest) getLabel(quest) else null
         val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
 
-        val geometry = if (quest.geometry !is ElementPointGeometry && prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && color == "no")
+        val geometry = if (quest.geometry !is ElementPointGeometry && prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && color == null)
             quest.geometry
         else null
         val pins = quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }

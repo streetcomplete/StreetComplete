@@ -107,7 +107,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** tags to derive label of the dot, checked in given order. Use "label" to get the label
      * using NameAndLocationLabel.getNameLabel. Use empty list to show no label.
-     * Ignored if [dotColor] is no. */
+     * Ignored if [dotColor] is null. */
     val dotLabelSources: List<String> get() = labelList
 }
 
