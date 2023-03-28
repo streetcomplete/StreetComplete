@@ -47,6 +47,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
 
     protected var element: Element? = null
     private val dummyElement by lazy { Node(0, LatLon(0.0, 0.0)) }
+    private val externalQuestType by lazy { questType as ExternalSourceQuestType }
 
     private val listener: AbstractOsmQuestForm.Listener? get() = parentFragment as? AbstractOsmQuestForm.Listener ?: activity as? AbstractOsmQuestForm.Listener
 
@@ -123,7 +124,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
             .setMessage(R.string.quest_move_node_message_external_source)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onMoveNode(questType as ExternalSourceQuestType, element as Node)
+                listener?.onMoveNode(externalQuestType, element as Node)
             }
             .show()
         }
@@ -134,7 +135,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onSplitWay(questType as ExternalSourceQuestType, element as Way, geometry as ElementPolylinesGeometry)
+                listener?.onSplitWay(externalQuestType, element as Way, geometry as ElementPolylinesGeometry)
             }
             .show()
         }
@@ -168,12 +169,12 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     }
 
     protected fun composeNote() {
-        val questTitle = resources.getQuestTitle(questType, element?.tags ?: emptyMap())
+        val questTitle = resources.getQuestTitle(externalQuestType, element?.tags ?: emptyMap())
         val actualTitle = getCurrentTitle()
         val show = if (actualTitle.startsWith(questTitle)) actualTitle
             else "$questTitle / $actualTitle" // both may contain relevant information
         val leaveNoteContext = "Unable to answer \"$show\""
-        listener?.onComposeNote(questType as ExternalSourceQuestType, element ?: dummyElement, geometry, leaveNoteContext)
+        listener?.onComposeNote(externalQuestType, element ?: dummyElement, geometry, leaveNoteContext)
     }
 
     protected fun tempHideQuest() {
@@ -202,24 +203,11 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
             setLocked(false)
             return
         }
-        val questType = questType as ExternalSourceQuestType
         tempHideQuest() // make it disappear. the questType should take care the quest does not appear again
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(
-                Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
-            viewLifecycleScope.launch {
-                // Only listener is mainFragment for closing bottom sheet and showing the quest
-                // solved animation, so it's ok to call even though the edit was not done yet.
-                listener?.onEdited(questType, element, geometry)
-            }
-            // don't hide quest here, this could be different for each type
-            withContext(Dispatchers.IO) {
-                elementEditsController.add(questType, element, geometry, "survey", action, questKey)
-            }
-        } else {
-            withContext(Dispatchers.IO) {
-                elementEditsController.add(questType, element, geometry, "survey", action, questKey)
-            }
-            listener?.onEdited(questType, element, geometry)
+
+        withContext(Dispatchers.IO) {
+            elementEditsController.add(externalQuestType, element, geometry, "survey", action, questKey)
         }
+        listener?.onEdited(externalQuestType, element, geometry)
     }
 }

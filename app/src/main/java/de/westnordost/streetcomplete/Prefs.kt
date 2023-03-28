@@ -83,7 +83,6 @@ object Prefs {
     const val FAVS_FIRST_MIN_LINES = "favs_first_min_lines"
     const val SHOW_NEARBY_QUESTS = "show_nearby_quests"
     const val SHOW_NEARBY_QUESTS_DISTANCE = "show_nearby_quests_distance"
-    const val CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING = "close_form_immediately"
     const val CUSTOM_OVERLAY_IDX_FILTER = "custom_overlay_idx_filter"
     const val CUSTOM_OVERLAY_IDX_COLOR_KEY = "custom_overlay_idx_color_key"
     const val CUSTOM_OVERLAY_IDX_NAME = "custom_overlay_idx_name"

@@ -75,14 +75,8 @@ class CreatePoiFragment : TagEditor() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
-
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
-            listener?.onCreatedNote(position)
-            viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey) }
-        } else {
-            elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
-            listener?.onCreatedNote(position)
-        }
+        elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
+        listener?.onCreatedNote(position)
     }
 
     companion object {

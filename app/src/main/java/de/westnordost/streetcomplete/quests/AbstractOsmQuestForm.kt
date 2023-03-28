@@ -436,16 +436,22 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     private suspend fun solve(action: ElementEditAction, extra: Boolean = false) {
+        if (TagEditor.showingTagEditor) return
+
         // really bad hacky way of using separate changesets for some "other answers",
         // but doesn't require changing database stuff and commit can be reverted without breaking stuff
         val source = if (extra) "survey,extra" else "survey"
-        if (TagEditor.showingTagEditor) return
+
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
             setLocked(false)
             return
         }
-        fun doThatStuff() {
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+            // necessary because otherwise pins may remain if quest is not in database
+            OsmQuestController.lastAnsweredQuestKey = questKey as? OsmQuestKey
+
+        withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
                 val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
@@ -454,22 +460,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 addElementEditsController.add(osmElementQuestType, element, geometry, source, action)
             }
         }
-        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
-            // necessary because otherwise pins may remain if quest is not in database
-            OsmQuestController.lastAnsweredQuestKey = questKey as? OsmQuestKey
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
-            viewLifecycleScope.launch {
-                // Only listener is mainFragment for closing bottom sheet and showing the quest
-                // solved animation, so it's ok to call even though the edit was not done yet.
-                listener?.onEdited(osmElementQuestType, element, geometry)
-            }
-            // hides the quest pin immediately (and would close bottom sheet without solved animation)
-            hideOsmQuestController.tempHide(questKey as OsmQuestKey)
-            withContext(Dispatchers.IO) { doThatStuff() }
-        } else {
-            withContext(Dispatchers.IO) { doThatStuff() }
-            listener?.onEdited(osmElementQuestType, element, geometry)
-        }
+        listener?.onEdited(osmElementQuestType, element, geometry)
     }
 
     companion object {

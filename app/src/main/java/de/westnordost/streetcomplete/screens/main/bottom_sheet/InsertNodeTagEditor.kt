@@ -42,13 +42,8 @@ class InsertNodeTagEditor : TagEditor() {
         val position: LatLon = Json.decodeFromString(args.getString(ARG_POS)!!)
         val between: InsertBetween = Json.decodeFromString(args.getString(ARG_BETWEEN)!!)
         val way: Way = Json.decodeFromString(args.getString(ARG_WAY)!!)
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
-            listener?.onCreatedNote(position)
-            viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between)) }
-        } else {
-            elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between))
-            listener?.onCreatedNote(position)
-        }
+        elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between))
+        listener?.onCreatedNote(position)
     }
 
     companion object {

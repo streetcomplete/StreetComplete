@@ -281,13 +281,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         val editType = (questKey as? ExternalSourceQuestKey)?.let { externalSourceQuestController.getQuestType(it) } ?: tagEdit
         if (questKey is OsmQuestKey && prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
             OsmQuestController.lastAnsweredQuestKey = questKey
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
-            listener?.onEdited(editType, element, geometry)
-            viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey) }
-        } else {
-            elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey)
-            listener?.onEdited(editType, element, geometry)
-        }
+        // always use "survey", because either it's tag editor or some external quest that's most like supposed to allow this
+        elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey)
+        listener?.onEdited(editType, element, geometry)
     }
 
     private fun tagsChangedAndOk(): Boolean =

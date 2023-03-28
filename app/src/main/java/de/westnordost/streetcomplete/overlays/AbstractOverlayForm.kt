@@ -422,17 +422,11 @@ abstract class AbstractOverlayForm :
         }
         // use dummy element if element is null
         val element = element ?: Node(0, geometry.center)
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
-            viewLifecycleScope.launch { listener?.onEdited(overlay, element, geometry) }
-            withContext(Dispatchers.IO) {
-                addElementEditsController.add(overlay, element, geometry, source, action)
-            }
-        } else {
-            withContext(Dispatchers.IO) {
-                addElementEditsController.add(overlay, element, geometry, source, action)
-            }
-            listener?.onEdited(overlay, element, geometry)
+
+        withContext(Dispatchers.IO) {
+            addElementEditsController.add(overlay, element, geometry, source, action)
         }
+        listener?.onEdited(overlay, element, geometry)
     }
 
     private fun setLocked(locked: Boolean) {

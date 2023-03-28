@@ -35,13 +35,6 @@
         android:defaultValue="true"
         android:persistent="true" />
 
-    <SwitchPreference
-        android:key="close_form_immediately"
-        android:title="@string/pref_close_forms_immediately_title"
-        android:summary="@string/pref_close_forms_immediately_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
-
     <Preference
         android:key="display_gpx_track"
         android:title="@string/pref_gpx_track_title" />
