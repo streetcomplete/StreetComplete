@@ -117,7 +117,7 @@ class OsmQuestController internal constructor(
 
             lastAnsweredQuestKey?.let {
                 lastAnsweredQuestKey = null
-                onUpdated(added = quests, deletedKeys = (obsoleteQuestKeys + it).toHashSet())
+                onUpdated(added = quests, deletedKeys = obsoleteQuestKeys + it)
             }
             onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
@@ -257,14 +257,14 @@ class OsmQuestController internal constructor(
         questsPreviously: Collection<OsmQuestDaoEntry>,
         deletedQuestKeys: Collection<OsmQuestKey>
     ): List<OsmQuestKey> {
-        val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuestDaoEntry>()
-        questsPreviously.associateByTo(previousQuestsByKey) { it.key }
+        val obsoleteQuestKeys = HashSet<OsmQuestKey>(questsPreviously.size, 1.0f)
+        questsPreviously.forEach { obsoleteQuestKeys.add(it.key) }
 
         for (quest in questsNow) {
-            previousQuestsByKey.remove(quest.key)
+            obsoleteQuestKeys.remove(quest.key)
         }
         // quests that were created previously for an element but now not anymore shall be deleted
-        return previousQuestsByKey.values.map { it.key } + deletedQuestKeys
+        return deletedQuestKeys + obsoleteQuestKeys
     }
 
     private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
@@ -314,12 +314,16 @@ class OsmQuestController internal constructor(
             val quests = createQuestsForBBox(bbox, mapData, questTypes?.filterIsInstance<OsmElementQuestType<*>>() ?: allQuestTypes)
             return if (getHidden) quests else quests.filterNot { it.key in hiddenCache || it.position.truncateTo5Decimals() in hiddenPositions }
         }
-        val entries = if (getHidden) db.getAllInBBox(bbox, questTypes?.map { it.name })
-        else db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
-            it.position.truncateTo5Decimals() !in hiddenPositions
-        }
+        val entries = if (getHidden)
+                db.getAllInBBox(bbox, questTypes?.map { it.name })
+            else if (hiddenPositions.isEmpty())
+                db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name })
+            else
+                db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
+                    it.position.truncateTo5Decimals() !in hiddenPositions
+                }
 
-        val elementKeys = HashSet<ElementKey>()
+        val elementKeys = HashSet<ElementKey>(entries.size, 1.0f)
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
 
         val geometriesByKey = mapDataSource.getGeometries(elementKeys)
@@ -343,12 +347,10 @@ class OsmQuestController internal constructor(
         notesSource
             .getAllPositions(bbox.enlargedBy(1.2))
             .map { it.truncateTo5Decimals() }
-            .toSet()
+            .toHashSet()
 
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
         pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
-
-    private fun getHiddenQuests(): Set<OsmQuestKey> = synchronized(this) { hiddenCache.toHashSet() } // not a good idea, better check hiddenCache directly
 
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: OsmQuestKey) {
@@ -363,7 +365,7 @@ class OsmQuestController internal constructor(
     }
 
     override fun tempHide(key: OsmQuestKey) {
-        onUpdated(deletedKeys = listOf(key))
+        onUpdated(deletedKeys = listOf(key)) // remove is from visible quests, but don't actually hide
     }
 
     fun unhide(key: OsmQuestKey): Boolean {
@@ -436,7 +438,10 @@ class OsmQuestController internal constructor(
         val visibleAdded = if (added.isNotEmpty()) {
             val bbox = added.map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
-            synchronized(this) { added.filter { it.key !in hiddenCache && it.position.truncateTo5Decimals() !in hiddenPositions } }
+            if (hiddenPositions.isEmpty())
+                synchronized(this) { added.filter { it.key !in hiddenCache } }
+            else
+                synchronized(this) { added.filter { it.key !in hiddenCache && it.position.truncateTo5Decimals() !in hiddenPositions } }
         } else {
             added
         }
