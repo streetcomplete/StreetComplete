@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
@@ -27,7 +28,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
+import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
@@ -68,12 +72,22 @@ class InsertNodeFragment :
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val prefs: SharedPreferences by inject()
+    private val levelFilter: LevelFilter by inject()
 
     private val isFormComplete get() = insertLocation != null
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
     private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
+    private val tagsText by lazy { binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText).apply {
+        maxLines = 10
+        isClickable = true
+        scrollBarFadeDuration = 0
+        movementMethod = ScrollingMovementMethod()
+    } }
+    private val mapFragment by lazy {
+        (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -181,8 +195,10 @@ class InsertNodeFragment :
     @UiThread
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         val mapData = mapDataSource.getMapDataWithGeometry(position.enclosingBoundingBox(50.0))
+        tagsText.scrollY = 0
         val waysAndGeometries = mapData.ways.mapNotNull {
             val geo = mapData.getWayGeometry(it.id) ?: return@mapNotNull null
+            if (!levelFilter.levelAllowed(it)) return@mapNotNull null
             it to geo
         }
         val closeWays = hashSetOf<Triple<Way, List<List<LatLon>>, Double>>()
@@ -197,9 +213,10 @@ class InsertNodeFragment :
                 closeWays.add(Triple(it.first, geoLines, distance))
         }
         if (closeWays.isEmpty()) {
-            binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.setText(R.string.insert_node_select_way)
+            tagsText.setText(R.string.insert_node_select_way)
             insertLocation = null
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
+            mapFragment?.clearHighlighting()
             animateButtonVisibilities()
             return true
         }
@@ -226,16 +243,16 @@ class InsertNodeFragment :
         } }
         val here = result.minByOrNull { position.distanceTo(it.first) }
         if (here == null) { // actually this should not happen
-            binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.setText(R.string.insert_node_select_way)
+            tagsText.setText(R.string.insert_node_select_way)
             insertLocation = null
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
+            mapFragment?.clearHighlighting()
             animateButtonVisibilities()
             return true
         }
         insertLocation = Triple(here.first, here.second, closestWay.first)
 
-        binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText)?.text =
-            closestWay.first.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
+        tagsText.text = closestWay.first.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
         animateButtonVisibilities()
 
         // highlight way and position
@@ -246,11 +263,7 @@ class InsertNodeFragment :
                 R.drawable.crosshair_marker,
                 null
             )
-            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-                mapData.getWayGeometry(closestWay.first.id)!!,
-                null,
-                null
-            )
+            mapFragment?.highlightGeometry(mapData.getWayGeometry(closestWay.first.id)!!)
             closestWay.first.nodeIds.forEach {
                 val node = mapData.getNode(it) ?: return@forEach
                 if (node.tags.isEmpty()) return@forEach

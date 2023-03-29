@@ -30,7 +30,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         private set
     var allowedLevel: String? = null
         private set
-    lateinit var allowedLevelTags: List<String>
+    lateinit var allowedLevelTags: Set<String>
         private set
 
     private val mapDataSource: MapDataWithEditsSource by inject()
@@ -41,7 +41,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
 
     private fun reload() {
         allowedLevel = sharedPrefs.getString(Prefs.ALLOWED_LEVEL, "").let { if (it.isNullOrBlank()) null else it.trim() }
-        allowedLevelTags = sharedPrefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",")
+        allowedLevelTags = sharedPrefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",").toHashSet()
     }
 
     fun isVisible(quest: Quest): Boolean =
