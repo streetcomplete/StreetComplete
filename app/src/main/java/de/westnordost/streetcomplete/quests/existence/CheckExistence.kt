@@ -57,8 +57,6 @@ class CheckExistence(
             amenity = bench
             or amenity = lounger
             or amenity = waste_basket
-            or traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
-            or traffic_calming = table and !highway and !crossing
             or amenity = recycling and recycling_type = container
             or amenity = toilets
             or amenity = drinking_water
@@ -68,7 +66,13 @@ class CheckExistence(
           (
             amenity ~ bicycle_parking|motorcycle_parking|taxi
           )
-          and (${lastChecked(12.0)})
+          and (${lastChecked(10.0)})
+        ) or (
+          (
+            traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
+            or traffic_calming = table and !highway and !crossing
+          )
+          and (${lastChecked(14.0)})
         ))
         and access !~ no|private
         and (!seasonal or seasonal = no)
