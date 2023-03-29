@@ -137,12 +137,23 @@ class InsertNodeFragment :
     }
 
     private fun onSelectedFeature(feature: Feature, insertLocation: Triple<LatLon, InsertBetween, Way>) {
-        // maybe in background?
-        val recentFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
-        if (recentFeatureIds.lastOrNull() != feature.id) {
-            recentFeatureIds.remove(feature.id)
-            recentFeatureIds.add(feature.id)
-            prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
+        viewLifecycleScope.launch {
+            val recentFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
+            if (recentFeatureIds.lastOrNull() != feature.id) {
+                recentFeatureIds.remove(feature.id)
+                recentFeatureIds.add(feature.id)
+                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
+            }
+            val mapData = mapDataSource.getMapDataWithGeometry(insertLocation.first.enclosingBoundingBox(20.0))
+            val nearbySimilarElements = mapData.filter { e -> feature.tags.all { e.tags[it.key] == it.value } }
+            nearbySimilarElements.forEach {
+                val geo = mapData.getGeometry(it.type, it.id) ?: return@forEach
+                showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
+                    geo,
+                    getPinIcon(it.tags),
+                    getTitle(it.tags)
+                )
+            }
         }
         val f = InsertNodeTagEditor.create(insertLocation.first, feature, insertLocation.second, insertLocation.third)
         parentFragmentManager.commit {
