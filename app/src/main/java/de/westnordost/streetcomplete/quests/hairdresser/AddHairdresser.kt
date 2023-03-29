@@ -39,8 +39,8 @@ class AddHairdresser : OsmFilterQuestType<Hairdresser>() {
             tags["male:signed"] = "no"
             tags["female:signed"] = "no"
         } else {
-            tags["male"] = answer.isMale.toYesNo()
-            tags["female"] = answer.isFemale.toYesNo()
+            if (answer.isMale) tags["male"] = "yes"
+            if (answer.isFemale) tags["female"] = "yes"
         }
     }
 }
