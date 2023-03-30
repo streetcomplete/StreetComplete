@@ -1,16 +1,6 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.BARN
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.COWSHED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.DIGESTER
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.PRESBYTERY
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.RIDING_HALL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SPORTS_HALL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.STABLE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.STY
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSFORMER_TOWER
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSIT_SHELTER
 
 enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<BuildingType>) {
     RESIDENTIAL(BuildingType.RESIDENTIAL, listOf(
@@ -18,7 +8,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         STATIC_CARAVAN, DORMITORY
     )),
     COMMERCIAL(BuildingType.COMMERCIAL, listOf(
-        OFFICE, RETAIL, KIOSK, INDUSTRIAL, WAREHOUSE, HOTEL, STORAGE_TANK, BRIDGE, DIGESTER
+        OFFICE, RETAIL, KIOSK, INDUSTRIAL, WAREHOUSE, HOTEL, STORAGE_TANK, BRIDGE
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
@@ -34,7 +24,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED, ALLOTMENT_HOUSE, BARN, COWSHED, STABLE, STY
     )),
     OTHER(null, listOf(
-        SHED, ROOF, GUARDHOUSE, BRIDGE, ALLOTMENT_HOUSE, SERVICE, TRANSFORMER_TOWER, HUT, TENT, TOILETS, HANGAR, BUNKER,
+        SHED, ROOF, GUARDHOUSE, BRIDGE, ALLOTMENT_HOUSE, SERVICE, TRANSFORMER_TOWER, HUT, TENT, TOILETS, HANGAR, BUNKER, DIGESTER, ELEVATOR,
         HISTORIC, BOATHOUSE, RIDING_HALL, ABANDONED, RUINS
     )),
 }

@@ -73,6 +73,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     RIDING_HALL     ("building", "riding_hall"),
     SPORTS_HALL     ("building", "sports_hall"),
     DIGESTER        ("building", "digester"),
+    ELEVATOR        ("building", "elevator"),
 
     HISTORIC        ("historic", "yes"),
     ABANDONED       ("abandoned", "yes"),
