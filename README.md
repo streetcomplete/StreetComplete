@@ -5,32 +5,107 @@ Users new to OpenStreetMap are best advised to use StreetComplete.
 
 Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
-Due to the different name used in changesets, edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
+Due to the different name used in changesets ("StreetComplete_ee"), edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
 
-## Notable changes
-* Option to directly edit tags
-* More customizable behavior, including settings or element selection for many quests
-  * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to app crashes or bad tagging.
-* Overlay with customizable element selection and color source (regular expression evaluating tags)
-* Create nodes anywhere, using presets from iD tagging schema for pre-filling tags
-* Ability to create notes in a GPX file instead of uploading them to OSM
-* Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
-* Quests based on external data sources (currently available: Osmose and CSV file)
-* Switch to satellite / aerial imagery background, and customize the source URL
-* Quick settings, for fast switch of preset or background
-* Level filter (available only in quick settings menu)
-* Import / export for settings, quest presets, hidden quests and custom overlays
-* Show all quests for the selected element at once, and also nearby quests
-* Show direction of ways, which may be useful for tagging oneways, or for solving Osmose issues
-* More answers for some quests, like additional building types or specifying that a crossing is raised
-* Show all hidden quests on long press on undo icon (works only for downloaded areas)
-* Switch the main menu to a grid with six full-size buttons
-* Downloading data will interrupt running uploads (will resume afterwards)
-* Allow creating quests on the fly, which immediately reflects changes in resurvey interval and element selection of a quest
-* Display a track from a GPX file, e.g. for following a planned route while surveying
-* Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
+## Differences to StreetComplete
+* Non-optional differences to StreetComplete
+  * No statistics: To avoid unfair competition, a slightly changed name avoids changes being counted towards StreetComplete statistics, making the star count rather useless (thus it is not shown)
+    * When using auto-upload, an indicator now shows when there are changes waiting to be uploaded
+  * Dark theme uses dark buttons
+  * Prevent short scroll to user location at app start when map was at a different position
+  * Downloading data will interrupt upload queue (will resume afterwards)
+  * Manual downloads can be queued instead if always cancelling the previous one
+  * Show all hidden quests on long press on undo button (works only for downloaded areas)
+  * Additional answers for some quests
+    * Additional building types
+    * Additional path surfaces
+    * Specify that a crossing is raised
+    * Anwer non-marked lanes with a count
+    * Answer "no seating, but not takeaway only"
+    * Add wheelchair description when answering wheelchair quest
+  * Move the "no cycleway" answer to more accessible position
+  * Highlight obstacles along the way for smoothness quests
+  * Open settings when pressing menu key in main menu dialog
+  * Allow switching to aerial view while adding or moving a node
+  * Some potential performance improvements
+* New quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
+  * Material of benches and picnic tables
+  * Phone number and website
+  * Cuisine
+  * Healthcare speciality
+  * Outdoor seating type
+  * Service building type
+  * Service building operator
+  * Artwork type
+  * Railway platform number
+  * Tree genus / species quest
+    * Allows provding a file containing translated tree names instead of the default english ones
+  * Quests based on external sources
+    * Osmose quest showing Osmose issues as quests, with filter options
+    * Custom quest from CSV file, allows creating nodes (see in-app description)
+  * Show POI quests with the sole purpose of indicating existance of elements of chosen type (may show labels)
+  * Option to show only quests added in SCEE in quest selection menu
+  * Some "other answers" result in a modified changeset comment (because in SCEE they may contain more unexpected changes)
+* Customizable overlays: Choose which elements are highlighted, and which tag is used to determine the color
+* Settings
+  * Additional darker dark theme
+  * Background map can be changed to aerial / satellite imagery
+  * Separate deletion of quest and map tile cache
+  * Adjust location update intervals
+  * Log reader (not a setting, but it's in the menu)
+  * Expert mode that enables capabilities which can be dangerous when used by unexperienced OSM contributors
+    * Directly edit tags, with suggstions from iD and last used values
+    * Add nodes everywhere, either free-floating or as part of a single way
+    * Delete free-floating nodes
+    * Additional "other answers" for tagging paths as private or under construction, or buildings as demolished
+    * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
+    * Allow disabling and moving the note quest
+    * Some of the settings below can only be enabled in expert mode
+  * Quest settings for most quests, mostly for customized element selection, but also for other things like allowing generic paved surface answer without note
+    * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.
+  * UI settings
+    * Quick settings button for switching preset, background and reverse quest order. Also contains a level filter for displayed quests / overlay elements
+    * Show next quest for this element immediately
+    * Show nearby quests / other quests for same element when quest form is open
+    * Hide button for temporarily hiding quests (long press for permanent hide)
+    * Zoom using volume buttons
+    * Auto-select first edit when opening edit history
+    * Search features in local language and all languages enabled in the system
+    * Select how many lines the form needs to have to move recent selection to front
+    * Show all main menu items as grid
+    * Capitalize words when entering names
+  * Display settings
+    * Disable 3D buildings
+    * Show arrows indicating direction of highlighted way
+    * Highlight geometries for nearby quests
+    * Put pin to exact location of a quest
+    * Disable quest solved animation
+    * Provide GPX track and have it always shown on the map
+  * Quest settings
+    * Hide or increase priority of quests depending on time of day
+    * Force resurvey for specific tags
+    * Different quest settings for each preset
+    * Dynamic quest creation for immediately applying changed quest settings and resurvey intervals
+    * Notifications about nearby quests when app is in background
+  * Note settings
+    * Create personal notes in a GPX file (adds a new button when creating a note)
+    * Swap OSM and GPX note buttons, for switching default notes
+    * Disable hiding the keyboard before creating a note
+    * Create custom quests like notes
+    * Save full-size photos made for notes
+    * Hide notes created by specific users
+  * Data management settings
+    * Disable auto-download
+    * Disable always downloading map data on manual download, even if data is fresh
+    * Choose tile URL for aerial imagery
+    * Set data retention time
+    * Store map tiles on SD card
+    * Import / export
+      * Custom overlays
+      * Quest presets, including per-preset quest settings
+      * Hidden quests
+      * All other settings, including quest settings and recently selected answers. Does not export login data.
 
-A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
 Database and preferences files are compatible with StreetComplete, so if you have root privileges you can transfer them in either direction.
 
 ## Permissions

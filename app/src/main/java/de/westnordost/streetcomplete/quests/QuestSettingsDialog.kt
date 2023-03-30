@@ -39,9 +39,11 @@ fun singleTypeElementSelectionDialog(
     onChanged: () -> Unit = { OsmQuestController.reloadQuestTypes() }
 ): AlertDialog {
     val textInput = EditText(context)
-    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
+    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)!!.replace("|",", "), textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
-            prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
+            val prefText = textInput.text.toString().split(",").joinToString("|") { it.trim() }
+            if (prefs.getString(pref, defaultValue) == prefText) return@setPositiveButton
+            prefs.edit().putString(pref, prefText).apply()
             onChanged()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
@@ -73,6 +75,7 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
         .setNegativeButton(android.R.string.cancel, null)
         .setPositiveButton(android.R.string.ok) { _,_ ->
             numberInput.text.toString().toIntOrNull()?.let {
+                if (it == prefs.getInt(pref, it)) return@setPositiveButton
                 prefs.edit().putInt(pref, it).apply()
                 if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
                     OsmQuestController.reloadQuestTypes()
@@ -103,6 +106,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
 
     val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue.trimIndent())!!, textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
+            if (textInput.text.toString() == prefs.getString(pref, defaultValue.trimIndent())) return@setPositiveButton
             prefs.edit().putString(pref, textInput.text.toString()).apply()
             OsmQuestController.reloadQuestTypes()
         }

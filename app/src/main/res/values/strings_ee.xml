@@ -146,7 +146,7 @@
     <string name="pref_dynamic_quest_creation_summary">Quests are created when loading the viewed area. Somewhat slow, but immediately applies changed quest settings.</string>
     <string name="quest_settings_per_preset_rescan">For properly applying all changed quest settings, re-scanning for quests is necessary.</string>
     <string name="pref_quest_monitor_title">Notify about nearby quests</string>
-    <string name="pref_quest_monitor_summary">Monitors location when the app is in background</string>
+    <string name="pref_quest_monitor_summary">Monitors location when the app is in background, except if backgrounded using back button</string>
     <string name="quest_monitor_permission_warning">Background location permission is required for the nearby quest monitor to work</string>
     <string name="quest_monitor_search_radius_text">Set radius nearby quest search. Note that quests with slightly larger distance may also be found. Location accuracy witch accuracy worse than this value are ignored.</string>
     <string name="quest_monitor_gps">Actively request GPS locations?</string>
