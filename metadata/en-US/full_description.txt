@@ -6,3 +6,5 @@ Users new to OpenStreetMap are best advised to use StreetComplete.
 Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 Extra features may cause SCEE to behave in highly modified way compared to StreetComplete. One of effects is that edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
+
+For a full list of differences to StreetComplete see https://github.com/Helium314/SCEE#differences-to-streetcomplete
