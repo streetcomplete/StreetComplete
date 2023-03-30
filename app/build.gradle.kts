@@ -201,6 +201,9 @@ dependencies {
 
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
+
+    // diff utils for comparing filters modified by quest settings with original
+    implementation("io.github.java-diff-utils:java-diff-utils:4.12")
 }
 
 /** Localizations that should be pulled from POEditor */

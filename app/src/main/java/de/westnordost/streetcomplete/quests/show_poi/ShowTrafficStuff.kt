@@ -16,6 +16,7 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
          barrier and barrier !~ wall|fence|retaining_wall|hedge
          or traffic_calming
+         or traffic_sign
          or crossing
          or entrance
          or public_transport

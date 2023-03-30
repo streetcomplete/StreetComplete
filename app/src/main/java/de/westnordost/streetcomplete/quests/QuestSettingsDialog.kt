@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.text.HtmlCompat
 import androidx.core.widget.addTextChangedListener
+import com.github.difflib.text.DiffRow.Tag
+import com.github.difflib.text.DiffRowGenerator
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
@@ -93,13 +95,13 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
 /** For setting full element selection.
  *  This will check validity of input and only allow saving selection can be parsed.
  */
-fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
+fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String): AlertDialog {
     val textInput = EditText(context)
     val checkPrefix = if (pref.endsWith("_full_element_selection")) "" else "nodes with "
 
     val message = HtmlCompat.fromHtml(context.getString(messageId), HtmlCompat.FROM_HTML_MODE_LEGACY)
 
-    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue?.trimIndent() ?: "") ?: "", textInput)
+    val dialog = dialog(context, messageId, prefs.getString(pref, defaultValue.trimIndent())!!, textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
             OsmQuestController.reloadQuestTypes()
@@ -109,6 +111,12 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             OsmQuestController.reloadQuestTypes()
         }
         .setMessage(message)
+        .setView(LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(textInput)
+            if (prefs.contains(pref))
+                addView(getDiffButton(context, defaultValue) { textInput.text.toString() })
+        })
         .create()
     textInput.addTextChangedListener {
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
@@ -138,6 +146,33 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     }
     return dialog
 }
+
+private fun getDiffButton(context: Context, defaultText: String, getCurrentText: () -> String) =
+    Button(context).apply {
+        setText(R.string.quest_settings_highlight_changes_button)
+        setOnClickListener {
+            val drg = DiffRowGenerator.create()
+                .showInlineDiffs(true)
+                .mergeOriginalRevised(true)
+                .inlineDiffByWord(true)
+                .ignoreWhiteSpaces(true)
+                .oldTag { f -> if (f) "<b><i><del>" else "</del></i></b>" }
+                .newTag { f -> if (f) "<b><u><ins>" else "</ins></u></b>" }
+                .build()
+            val thatSpace = " "
+            val newDefault = defaultText.replace("|", "$thatSpace|$thatSpace") // replace with (nearly) invisible space, so word differences are used
+            val newCurrent = getCurrentText().replace("|", "$thatSpace|$thatSpace")
+            val diffRows = drg.generateDiffRows(newDefault.split("\n"), newCurrent.split("\n"))
+            val diffText = diffRows.mapNotNull {
+                if (it.tag == Tag.EQUAL) return@mapNotNull null
+                it.oldLine
+            }.joinToString("</br>")
+            AlertDialog.Builder(context)
+                .setMessage(HtmlCompat.fromHtml(diffText, HtmlCompat.FROM_HTML_MODE_LEGACY))
+                .setNegativeButton(R.string.close, null)
+                .show()
+        }
+    }
 
 fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, answerYes: Int, answerNo: Int): AlertDialog =
     AlertDialog.Builder(context)

@@ -17,7 +17,7 @@ class AddCuisine : OsmFilterQuestType<String>() {
             amenity ~ restaurant|fast_food
             or amenity = pub and food = yes
         )
-        and name and !cuisine
+        and !cuisine
     """
     override val changesetComment = "Add cuisine"
     override val wikiLink = "Key:cuisine"
