@@ -1022,7 +1022,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
 
     <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
-    <string name="quest_hairdresser_male_and_female">Men and women</string>
+    <string name="quest_hairdresser_male_and_female">Anyone</string>
     <string name="quest_hairdresser_female_only">Women</string>
     <string name="quest_hairdresser_male_only">Men</string>
     <string name="quest_hairdresser_not_signed">Not signed</string>
