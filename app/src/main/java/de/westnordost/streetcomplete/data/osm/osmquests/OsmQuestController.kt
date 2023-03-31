@@ -112,14 +112,16 @@ class OsmQuestController internal constructor(
                 Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
+                lastAnsweredQuestKey?.let {
+                    lastAnsweredQuestKey = null
+                    onUpdated(added = quests, deletedKeys = obsoleteQuestKeys + it)
+                }
+                onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+                // write quests to db only after onUpdated
+                // this might reduces the app being blocked during download / map data persist
+                // on answering the second quest during a download or persist phase, it's still blocked (but shorter of course)
                 updateQuests(quests, obsoleteQuestKeys)
             }
-
-            lastAnsweredQuestKey?.let {
-                lastAnsweredQuestKey = null
-                onUpdated(added = quests, deletedKeys = obsoleteQuestKeys + it)
-            }
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
