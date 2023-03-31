@@ -135,8 +135,11 @@ class QuestPinsManager(
     }
 
     private fun invalidate() {
-        clear()
-        onNewScreenPosition()
+        // avoid calling clear, as this will just look like flickering pins
+        synchronized(questsInView) { questsInView.clear() }
+        lastDisplayedRect = null
+        // still call clear if no re-draw is triggered
+        if (!onNewScreenPosition()) clear()
     }
 
     private fun clear() {
@@ -148,19 +151,22 @@ class QuestPinsManager(
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
         properties.toQuestKey()
 
-    fun onNewScreenPosition() {
-        if (!isStarted || !isVisible) return
+    // return whether onNewTilesRect is called, for less flashing invalidate
+    fun onNewScreenPosition(): Boolean {
+        if (!isStarted || !isVisible) return false
         val zoom = ctrl.cameraPosition.zoom
         // require zoom >= 14, which is the lowest zoom level where quests are shown
-        if (zoom < 14) return
-        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
+        if (zoom < 14) return false
+        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return false
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 32) return
+        if (tilesRect.size > 32) return false
         if (lastDisplayedRect?.contains(tilesRect) != true) {
             lastDisplayedRect = tilesRect
             onNewTilesRect(tilesRect)
+            return true
         }
+        return false
     }
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
