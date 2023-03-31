@@ -184,6 +184,7 @@ class ExternalSourceQuestController(
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
         val restoredQuests = edits.mapNotNull { edit ->
+            if (edit.isSynced) return@mapNotNull null // synced edits are deleted after 12 hours, and we don't want this to restore anything
             val key = externalSourceDao.getKeyForElementEdit(edit.id)
             externalSourceDao.deleteElementEdit(edit.id)
             val type = questTypeNamesBySource[key?.source]?.let { questTypeRegistry.getByName(it) } as? ExternalSourceQuestType

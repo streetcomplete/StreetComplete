@@ -177,6 +177,9 @@ class MapDataWithEditsSource internal constructor(
             val mapData = MutableMapDataWithGeometry()
             val elementsToDelete: MutableList<ElementKey>
             synchronized(this) {
+                // if we just deleted synced edits, nothing will actually change
+                // if user undid a synced edit, the revered edit will come soon anyway
+                if (edits.all { it.isSynced }) return
                 rebuildLocalChanges()
 
                 elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
