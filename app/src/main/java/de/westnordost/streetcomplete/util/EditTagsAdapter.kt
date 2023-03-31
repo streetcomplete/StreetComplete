@@ -43,8 +43,13 @@ class EditTagsAdapter(
             try {
                 val keySuggestions = context.resources.assets.open("tag_editor/keySuggestionsForFeature.json").reader().readText()
                 val valueSuggestions = context.resources.assets.open("tag_editor/valueSuggestionsByKey.json").reader().readText()
-                keySuggestionsForFeatureId.putAll(Json.decodeFromString(keySuggestions))
-                valueSuggestionsByKey.putAll(Json.decodeFromString(valueSuggestions))
+                // filling maps twice is a bit inefficient, but there are so many duplicate strings that interning is worth it
+                Json.decodeFromString<Map<String, Pair<List<String>?, List<String>?>>>(keySuggestions).forEach {
+                    keySuggestionsForFeatureId[it.key.intern()] = it.value.first?.map { it.intern() } to it.value.second?.map { it.intern() }
+                }
+                Json.decodeFromString<Map<String, List<String>>>(valueSuggestions).forEach {
+                    valueSuggestionsByKey[it.key.intern()] = it.value.map { it.intern() }
+                }
             } catch (e: Exception) {
                 Log.w("EditTagsAdapter", "failed to read and parse suggestions: ${e.message}")
             }
@@ -196,6 +201,7 @@ class EditTagsAdapter(
     //  means that generateTagSuggestions needs to be adjusted to generate something containing allowed geometry types
     //  and maybe suggestions should only be for a single geometry type? or for all geometry types for which this key is allowed?
     //  basic test: no building suggestion when adding a shop node
+    //  ideally FeatureDictionary at some point implements fields / moreFields...
     private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
         val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
         if (featureId == null) return suggestions.filterNot { it in tags.keys }
@@ -230,8 +236,6 @@ class EditTagsAdapter(
     }
 
     companion object {
-        // todo: this thing is not really memory efficient, as it mostly contains duplicate strings
-        //  ideally FeatureDictionary at some point implements fields / moreFields
         private val keySuggestionsForFeatureId = hashMapOf<String, Pair<List<String>?, List<String>?>>()
         private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
     }

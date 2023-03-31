@@ -99,7 +99,11 @@ private fun CursorPosition.toNode() = Node(
     LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
     // copying from the moshi-"LinkedTreeHashMap" to a normal HashMap is slightly slower than keeping
     // the moshi map, but tag search then is a little faster, so overall it's better, plus using less memory
-    getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let { HashMap<String, String>(it.size, 1.0f).apply { putAll(it) } } } ?: emptyMap(),
+    getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let {
+        HashMap<String, String>(it.size, 1.0f).apply {
+            it.forEach { (k, v) -> put(k.intern(), v.intern()) }
+        }
+    } } ?: emptyMap(),
     getInt(VERSION),
     getLong(TIMESTAMP),
 )

@@ -61,7 +61,7 @@ private fun OsmQuestKey.toPairs() = listOf(
 private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
     ElementType.valueOf(getString(ELEMENT_TYPE)),
     getLong(ELEMENT_ID),
-    getString(QUEST_TYPE)
+    getString(QUEST_TYPE).intern()
 )
 
 private fun CursorPosition.toHiddenOsmQuest() = OsmQuestKeyWithTimestamp(toOsmQuestKey(), getLong(TIMESTAMP))

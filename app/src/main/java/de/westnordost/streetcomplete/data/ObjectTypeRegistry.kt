@@ -16,7 +16,7 @@ open class ObjectTypeRegistry<T>(private val ordinalsAndEntries: List<Pair<Int, 
 
     protected fun reloadInit() {
         for ((ordinal, objectType) in ordinalsAndEntries) {
-            val typeName = objectType::class.simpleName!!
+            val typeName = objectType::class.simpleName!!.intern()
             require(!byName.containsKey(typeName)) {
                 "A object type's name must be unique! \"$typeName\" is defined twice!"
             }

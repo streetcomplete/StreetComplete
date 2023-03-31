@@ -154,7 +154,7 @@ private fun String.toTree(isSpecies: Boolean): Tree? {
     val localName = if (line.contains(" (") && line.contains(')'))
         line.substringAfter("(").substringBeforeLast(")")
     else null
-    return Tree(line.substringBefore(" ("), isSpecies, localName)
+    return Tree(line.substringBefore(" (").intern(), isSpecies, localName)
 }
 
 const val FILENAME_TREES = "trees.csv"

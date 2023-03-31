@@ -94,7 +94,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "camp_site", "camping", "emergency(:.*)?", "evacuation_cent(er|re)", "education",
     "engineering", "forestry", "foundation", "lawyer", "logistics", "military", "community_centre",
     "bank",
-).map { it.toRegex() }
+).map { it.intern().toRegex() }
 
 fun StringMapChangesBuilder.replaceShop(tags: Map<String, String>) {
     removeCheckDates()

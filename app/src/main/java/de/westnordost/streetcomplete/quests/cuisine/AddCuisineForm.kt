@@ -30,7 +30,7 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
         super.onViewCreated(view, savedInstanceState)
         if (suggestions.isEmpty()) { // load suggestions
             requireContext().assets.open("cuisine/cuisineSuggestions.txt").bufferedReader()
-                .lineSequence().forEach { if (it.isNotBlank()) suggestions.add(it.trim()) }
+                .lineSequence().forEach { if (it.isNotBlank()) suggestions.add(it.trim().intern()) }
         }
 
         binding.cuisineInput.setAdapter(

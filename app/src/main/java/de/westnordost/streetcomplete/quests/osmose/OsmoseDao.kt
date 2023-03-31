@@ -252,8 +252,8 @@ private fun CursorPosition.toOsmoseIssue() = OsmoseIssue(
     getInt(ITEM),
     getInt(CLASS),
     getInt(LEVEL),
-    getString(TITLE),
-    getString(SUBTITLE),
+    getString(TITLE).intern(),
+    getString(SUBTITLE).intern(),
     LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
     parseElementKeys(getString(ELEMENTS))
 )
