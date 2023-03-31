@@ -37,6 +37,12 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
             throw ConflictException(e.message, e)
         }
 
+    override fun close(id: Long, comment: String): Note =
+        if (comment.isBlank())
+            api.close(id).toNote()
+        else
+            api.close(id, comment).toNote()
+
     override fun get(id: Long): Note? = wrapExceptions { api.get(id)?.toNote() }
 
     override fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int) = wrapExceptions {

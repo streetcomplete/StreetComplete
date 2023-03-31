@@ -121,7 +121,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
 
     private fun onClickMoveNodeAnswer() {
         context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_move_node_message_external_source)
+            .setMessage("${getString(R.string.quest_move_node_message)}\n${getString(R.string.move_node_message_external_source_addition)}")
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 listener?.onMoveNode(externalQuestType, element as Node)

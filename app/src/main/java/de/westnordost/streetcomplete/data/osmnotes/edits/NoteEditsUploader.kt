@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CLOSE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -79,6 +80,7 @@ class NoteEditsUploader(
             val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
                 COMMENT -> notesApi.comment(edit.noteId, text)
+                CLOSE -> notesApi.close(edit.noteId, text)
             }
 
             Log.d(TAG,

@@ -204,6 +204,7 @@ private fun Note.shouldShowAsQuest(
 ): Boolean {
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
+    if (isClosed) return false // don't show closed notes
 
     // don't show notes created by specific users
     comments.firstOrNull()?.let {

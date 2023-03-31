@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CLOSE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
@@ -18,6 +19,7 @@ val Edit.icon: Int get() = when (this) {
         when (action) {
             CREATE -> R.drawable.ic_quest_create_note
             COMMENT -> R.drawable.ic_quest_notes
+            CLOSE -> R.drawable.ic_quest_close_note
         }
     }
     is OsmNoteQuestHidden -> R.drawable.ic_quest_notes

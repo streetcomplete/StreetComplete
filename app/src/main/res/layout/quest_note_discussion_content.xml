@@ -17,6 +17,14 @@
         android:background="@drawable/background_edittext_outline"
         />
 
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/closeNoteCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:text="@string/close_note_checkbox"
+        />
+
     <FrameLayout
         android:id="@+id/attachPhotoFragment"
         android:layout_marginTop="8dp"

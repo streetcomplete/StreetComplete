@@ -53,13 +53,14 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
   * Separate deletion of quest and map tile cache
   * Adjust location update intervals
   * Log reader (not a setting, but it's in the menu)
-  * Expert mode that enables capabilities which can be dangerous when used by unexperienced OSM contributors
+  * Expert mode that enables capabilities, some of which can be dangerous when used by unexperienced OSM contributors
     * Directly edit tags, with suggstions from iD and last used values
     * Add nodes everywhere, either free-floating or as part of a single way
     * Delete free-floating nodes
     * Additional "other answers" for tagging paths as private or under construction, or buildings as demolished
     * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
     * Allow disabling and moving the note quest
+    * Allow closing notes
     * Some of the settings below can only be enabled in expert mode
   * Quest settings for most quests, mostly for customized element selection, but also for other things like allowing generic paved surface answer without note
     * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.

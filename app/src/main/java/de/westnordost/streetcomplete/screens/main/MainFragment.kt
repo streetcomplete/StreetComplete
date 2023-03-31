@@ -1272,7 +1272,7 @@ class MainFragment :
         // open note if it is blocking element
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
-            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).filterNot { it.isClosed }.firstOrNull()
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

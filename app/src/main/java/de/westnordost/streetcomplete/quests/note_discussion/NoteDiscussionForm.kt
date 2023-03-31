@@ -8,6 +8,7 @@ import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -105,6 +106,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
                 true
             }
         }
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            binding.closeNoteCheckBox.isVisible = true
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
@@ -122,11 +125,13 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onClickOk() {
-        require(noteText != null ) { "NoteQuest has been answered with an empty comment!" }
+        val close = binding.closeNoteCheckBox.isChecked
+        require(noteText != null || close ) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                noteEditsController.add(noteId, NoteEditAction.COMMENT, geometry.center, noteText, imagePaths)
+                val action = if (close) NoteEditAction.CLOSE else NoteEditAction.COMMENT
+                noteEditsController.add(noteId, action, geometry.center, noteText, imagePaths)
             }
             listener?.onNoteQuestSolved(questType, noteId, geometry.center)
         }

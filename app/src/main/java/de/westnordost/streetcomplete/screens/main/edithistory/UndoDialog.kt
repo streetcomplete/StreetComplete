@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CLOSE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
@@ -112,6 +113,7 @@ class UndoDialog(
             context.resources.getText(when (action) {
                 CREATE -> R.string.created_note_action_title
                 COMMENT -> R.string.commented_note_action_title
+                CLOSE -> R.string.closed_note_action_title
             })
         }
         is OsmQuestHidden -> {

@@ -1,5 +1,6 @@
 next: |
   <ul>
+  <li>Allow closing notes</li>
   <li>Allow highlighting differences between used quest setting and default</li>
   <li>Updated Ukrainian translation, thanks to mike140</li>
   <li>Small fixes and improvements</li>
