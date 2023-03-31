@@ -207,22 +207,39 @@ class EditTagsAdapter(
         if (featureId == null) return suggestions.filterNot { it in tags.keys }
         val fields = getMainSuggestions(featureId)
         val moreFields = getSecondarySuggestions(featureId)
+        val fieldSuggestions = mutableListOf<String>()
+        val moreFieldSuggestions = mutableListOf<String>()
         fields.forEach {
-            if (it.startsWith('{'))
-                suggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
-            else suggestions.add(it)
+            if (it == "building" ) return@forEach // happens for node shops...
+            if (it.startsWith('{')) // does this actually trigger? or is it unnecessary?
+                fieldSuggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
+            else fieldSuggestions.add(it)
         }
         moreFields.forEach {
+            // ignore some moreFields that often are inappropriate (but keep if in fields!)
+            if (it.startsWith("ref:") || it.startsWith("building") || it == "gnis:feature_id" || it == "ele" || it == "height" ) return@forEach
             if (it.startsWith('{'))
                 suggestions.addAll(getSecondarySuggestions(it.substringAfter('{').substringBefore('}')))
             else suggestions.add(it)
         }
-        suggestions.removeAll(tags.keys)
-        // suggestions should not be cluttered with all those address tags
-        val moveToEnd = suggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
-        suggestions.removeAll(moveToEnd)
-        suggestions.addAll(moveToEnd)
+
+        // suggestions should not be cluttered with all those address tags, but we don't want to ignore them completely
+        // but we want to ignore some refs, and building which shows up for shops, but is usually not a good idea because we ignore geometry
+        val fieldsMoveToEnd = fieldSuggestions.filter { it.startsWith("addr:") }
+        fieldSuggestions.removeAll(fieldsMoveToEnd)
+        val moreFieldsMoveToEnd = moreFieldSuggestions.filter { it.startsWith("addr:")}
+        moreFieldSuggestions.removeAll(moreFieldsMoveToEnd)
+
+        // order: previously entered values, fields, moreFields, addr fields, addr moreFields
+        // do it in this complicated way because we don't want to (re)move keys the user has entered
+        suggestions.addAll(fieldSuggestions)
+        suggestions.addAll(moreFieldSuggestions)
+        suggestions.addAll(fieldsMoveToEnd)
+        suggestions.addAll(moreFieldsMoveToEnd)
+
+        suggestions.removeAll(tags.keys) // don't suggest what we already have
         return suggestions
+        // can be optimized, but likely not worth the work
     }
 
     private fun getMainSuggestions(featureId: String): List<String> {
