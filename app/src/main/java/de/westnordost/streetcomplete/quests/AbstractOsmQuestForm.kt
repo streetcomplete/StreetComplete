@@ -471,7 +471,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         )
 
         // check the most common access tags
-        private val elementWithoutAccessTagsFilter = """
+        val elementWithoutAccessTagsFilter = """
         nodes, ways, relations with
          !access
          and !access:conditional
@@ -494,7 +494,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     """.toElementFilterExpression()
 
         // in some cases changing building to demolished:building is not enough
-        private val demolishableBuildingsFilter = """
+        val demolishableBuildingsFilter = """
         ways, relations with building
           and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
           and !building:demolished

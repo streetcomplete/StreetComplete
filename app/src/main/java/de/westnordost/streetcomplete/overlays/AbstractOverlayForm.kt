@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
+import android.app.DatePickerDialog
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
@@ -33,6 +35,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -45,16 +49,21 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
+import de.westnordost.streetcomplete.util.ktx.toInstant
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CharSequenceText
@@ -66,11 +75,16 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.plus
+import kotlinx.datetime.toJavaLocalDate
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
@@ -368,6 +382,10 @@ abstract class AbstractOverlayForm :
             }
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && element is Node)
                 answers.add(createDeleteElementAnswer(element))
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
+                createItsDemolishedAnswer()?.let { answers.add(it) }
+                createConstructionAnswer()?.let { answers.add(it) }
+            }
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && this !is CustomOverlayForm)
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(element) })
             if (element is Node // add moveNodeAnswer only if it's a free floating node
@@ -403,6 +421,69 @@ abstract class AbstractOverlayForm :
                 .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
                 .show()
         }
+    }
+
+    private fun createConstructionAnswer(): AnswerItem? {
+        val element = element ?: return null
+        if (!AbstractOsmQuestForm.elementWithoutAccessTagsFilter.matches(element)
+            || !element.tags.containsKey("highway")
+            || element.tags["highway"] == "construction"
+        ) return null
+        return AnswerItem(R.string.quest_construction) {
+            val tomorrow = systemTimeNow().toLocalDate().plus(1, DateTimeUnit.DAY)
+            val p = DatePickerDialog(requireContext(), { _, y, m, d ->
+                val finishDate = LocalDate(y, m + 1, d)
+                val today = systemTimeNow().toLocalDate()
+                val builder = StringMapChangesBuilder(element.tags)
+                val diff = finishDate.toEpochDays() - today.toEpochDays()
+                if (diff <= 0) return@DatePickerDialog // don't even bother to tell the user if they are trying to enter wrong data
+
+                // for short construction up to a few months it's better to use conditional access
+                // as per https://wiki.openstreetmap.org/wiki/Tag:highway%3Dconstruction
+                if (diff < 200) { // we arbitrarily set the few months to 200 days
+                    val f = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.US)
+                    builder["access:conditional"] =
+                        "no @ (${f.format(today.toJavaLocalDate())}-${f.format(finishDate.toJavaLocalDate())})"
+                    viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                } else {
+                    // if we actually change the highway to construction, we let the user set a construction value
+                    val t = EditText(requireContext()).apply {
+                        setText(element.tags["highway"])
+                        setPadding(30, 10, 30, 10)
+                    }
+                    val f = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)
+                    builder["opening_date"] = f.format(finishDate.toJavaLocalDate())
+                    builder["highway"] = "construction"
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.quest_construction_value)
+                        .setView(t)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            t.text.toString().takeIf { it.isNotBlank() }
+                                ?.let { builder["construction"] = it }
+                            viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                        }
+                        .show()
+                }
+            }, tomorrow.year, tomorrow.monthNumber - 1, tomorrow.dayOfMonth)
+            p.datePicker.minDate = tomorrow.toInstant().toEpochMilliseconds()
+            p.show()
+        }
+    }
+
+    private fun createItsDemolishedAnswer(): AnswerItem? {
+        val element = element ?: return null
+        if (!element.isArea()) return null
+        return if (AbstractOsmQuestForm.demolishableBuildingsFilter.matches(element))
+            AnswerItem(R.string.quest_building_demolished) {
+                viewLifecycleScope.launch {
+                    val builder = StringMapChangesBuilder(element.tags)
+                    builder["demolished:building"] = builder["building"] ?: "yes"
+                    builder.remove("building")
+                    solve(UpdateElementTagsAction(builder.create()), true)
+                }
+            }
+        else null
     }
 
     protected fun composeNote(element: Element) {
