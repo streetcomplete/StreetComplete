@@ -32,10 +32,13 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes with
-             man_made = water_tap
-             or man_made = water_well
-             or natural = spring
-             or amenity = drinking_water
+             (
+                 man_made = water_tap
+                 or man_made = water_well
+                 or natural = spring
+                 or amenity = drinking_water
+             )
+             and access !~ private|no
         """)
 
     override fun createForm() = AddDrinkingWaterForm()

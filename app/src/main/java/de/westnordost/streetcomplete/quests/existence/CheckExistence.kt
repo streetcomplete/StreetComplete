@@ -25,6 +25,7 @@ class CheckExistence(
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = parcel_locker
             or amenity = public_bookcase
+            or amenity = give_box
             or barrier = log
           )
           and (${lastChecked(2.0)})
@@ -35,7 +36,7 @@ class CheckExistence(
             or leisure = picnic_table
             or amenity = bbq
             or leisure = firepit
-            or (leisure = pitch and sport = table_tennis)
+            or (leisure = pitch and sport ~ table_tennis|chess)
             or amenity = grit_bin and seasonal = no
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator
@@ -55,8 +56,6 @@ class CheckExistence(
             amenity = bench
             or amenity = lounger
             or amenity = waste_basket
-            or traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
-            or traffic_calming = table and !highway and !crossing
             or amenity = recycling and recycling_type = container
             or amenity = toilets
             or amenity = drinking_water
@@ -66,7 +65,13 @@ class CheckExistence(
           (
             amenity ~ bicycle_parking|motorcycle_parking|taxi
           )
-          and (${lastChecked(12.0)})
+          and (${lastChecked(10.0)})
+        ) or (
+          (
+            traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
+            or traffic_calming = table and !highway and !crossing
+          )
+          and (${lastChecked(14.0)})
         ))
         and access !~ no|private
         and (!seasonal or seasonal = no)

@@ -18,7 +18,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="display"
+        android:key="quests_overlays"
         android:title="@string/pref_category_quests_overlays">
 
         <Preference

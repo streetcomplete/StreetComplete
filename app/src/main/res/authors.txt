@@ -114,6 +114,7 @@ ic_link_thenandnow.png         fair use          used while linking and promotin
 ic_link_openstreetbrowser.png  fair use          used while linking and promoting this project
 ic_link_photon.png             fair use          used while linking and promoting this project
 ic_link_valhalla.png           fair use          used while linking and promoting this project
+ic_link_ohsomehex.png          fair use          used while linking and promoting this project (also, this may be simple enough to be in a public domain)
 ic_link_cyclosm.xml            fair use          used while linking and promoting this project ( https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
 ic_link_weeklyosm.png          fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg https://wiki.openstreetmap.org/wiki/File:Logo_weeklyOSM.svg https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg
 ic_link_cyclosm.png            fair use          used while linking and promoting this project
