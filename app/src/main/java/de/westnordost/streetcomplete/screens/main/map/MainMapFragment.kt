@@ -287,7 +287,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
             // check whether we clicked a feature
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
-            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-fills") // only query this specific layer(s)
+            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills") // only query this specific layer(s)
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {
@@ -336,16 +336,33 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         overlaySource = GeoJsonSource("overlay-source")
         style.addSource(overlaySource!!)
 
-        val overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
+        // need more information on how to work with expressions...
+        // or better use them in style json instead of here? probably easier
+        val overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
+            // separate layer for dashed lines
+            .withFilter(Expression.has("dashed"))
             .withProperties(
                 PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
                 PropertyFactory.lineColor(Expression.get("color")),
                 PropertyFactory.lineOpacity(Expression.get("opacity")),
-                PropertyFactory.lineOffset(getSomeExpressionForLineWidth("offset")), // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
-                PropertyFactory.lineWidth(getSomeExpressionForLineWidth("width"))
-            // there is no "lineOutlineColor", so how to copy the tangram overlay style?
+                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")),
+                PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
+                PropertyFactory.lineDasharray(arrayOf(1.5f, 1f)), // todo: depends on zoom, but re-evaluated only at integer zoom borders
+//                PropertyFactory.lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
             )
-        style.addLayerBelow(overlayLineLayer, "pins-layer")
+        style.addLayerBelow(overlayDashedLineLayer, "pins-layer")
+        val overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
+            .withFilter(Expression.not(Expression.has("dashed")))
+            .withProperties(
+                PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
+                PropertyFactory.lineColor(Expression.get("color")),
+                PropertyFactory.lineOpacity(Expression.get("opacity")),
+                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")), // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
+                PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
+                PropertyFactory.lineDasharray(Expression.has("dashed"))
+                // there is no "lineOutlineColor", so how to copy the tangram overlay style?
+            )
+        style.addLayerBelow(overlayLineLayer, "pins-layer") // means: above the dashed layer
 
         val overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
             .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
@@ -672,20 +689,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     )
  */
 
-fun getSomeExpressionForLineWidth(lineWidth: Float): Expression =
+fun changeDistanceWithZoom(lineWidth: Float): Expression =
     Expression.interpolate(Expression.exponential(2), Expression.zoom(),
         Expression.stop(10, lineWidth / 128f), // * 2^-7
         Expression.stop(25, lineWidth * 256f) // * 2^8 -> 8 - (-7) = 15, which is the zoom range for this interpolation
     )
 
 // expression for line width dependent on zoom (if we want width in meters)
-fun getSomeExpressionForLineWidth(lineWidthProperty: String): Expression =
+fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
     // todo: actually the style json uses 1.5 and 1.3 as base (depends for what), so overlay lines change size compared to roads
     //  also tangram seems to use something like 1.5
     Expression.interpolate(Expression.exponential(BASE), Expression.zoom(),
         // divide by FACTOR because we use division here...
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
-        Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
+        Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )
 
 private const val BASE = 1.5f

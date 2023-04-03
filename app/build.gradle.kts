@@ -184,7 +184,7 @@ dependencies {
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
-    implementation("org.maplibre.gl:android-sdk:10.0.2") // todo: 10.0.2, but this contains okhttp4 and breaks unrelated SC okhttp stuff
+    implementation("org.maplibre.gl:android-sdk:10.0.2")
     implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 
     // opening hours parser

@@ -115,6 +115,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         )
 
         // features for new approach
+        // todo: color.invisible should reproduce original style?
+        //  then do after actual style is decided
         val mapLibreFeatures = features.flatMap {  (element, geometry, style) ->
             val p = JsonObject()
             p.addProperty(ELEMENT_ID, element.id.toString()) // try avoiding the string?
@@ -154,24 +156,30 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     val line = MultiLineString.fromLngLats(points)
                     val left = if (style.strokeLeft != null) {
                         val p2 = p.deepCopy()
-                        p2.addProperty("width", 9f)
-                        p2.addProperty("offset", 10f) // todo
+                        p2.addProperty("width", 7f)
+                        p2.addProperty("offset", -9f)
                         if (style.strokeLeft.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
                             p2.addProperty("color", style.strokeLeft.color)
+                        if (style.strokeLeft.dashed)
+                            p2.addProperty("dashed", true)
                         Feature.fromGeometry(line, p2)
                     } else null
                     val right = if (style.strokeRight != null) {
                         val p2 = p.deepCopy()
-                        p2.addProperty("width", 9f)
-                        p2.addProperty("offset", -10f) // todo
+                        p2.addProperty("width", 7f)
+                        p2.addProperty("offset", 9f)
                         if (style.strokeRight.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
                             p2.addProperty("color", style.strokeRight.color)
+                        if (style.strokeRight.dashed)
+                            p2.addProperty("dashed", true)
                         Feature.fromGeometry(line, p2)
                     } else null
                     val center = if (style.stroke != null && style.stroke.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
                         val p2 = p.deepCopy()
                         p2.addProperty("width", getLineWidth(element.tags))
                         p2.addProperty("color", style.stroke.color)
+                        if (style.stroke.dashed)
+                            p2.addProperty("dashed", true)
                         Feature.fromGeometry(line, p2)
                     } else null
                     val label = if (style.label != null)
