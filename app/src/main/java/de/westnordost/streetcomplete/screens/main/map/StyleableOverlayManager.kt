@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -227,7 +226,9 @@ class StyleableOverlayManager(
         var changedAnything = false
         m.withLock {
             val bboxes = cache.keys.associateWith { it.asBoundingBox(TILES_ZOOM) }
+            var empty = true
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
+                empty = false
                 if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
 
                 if (styledElement != null) cache.forEach {
@@ -239,7 +240,10 @@ class StyleableOverlayManager(
                     changedAnything = true
                 }
             }
-            deleted.forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
+            if (empty) // we updated elements, but none was in styled elements -> maybe element is not applicable any more
+                (deleted + updated.map { ElementKey(it.type, it.id) }).forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
+            else
+                deleted.forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(lastDisplayedRect?.let { getFromCache(it) } ?: cache.values.flatMap { it.values }.toHashSet())
                 ctrl.requestRender()
