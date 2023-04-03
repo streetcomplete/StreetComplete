@@ -17,7 +17,7 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
         nodes, ways with
           (
               shop = hairdresser
-              and !female and !male and !unisex
+              and !female and !male
               and !male:signed and !female:signed
           )
     """
@@ -42,5 +42,6 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
             if (answer.isMale) tags["male"] = "yes"
             if (answer.isFemale) tags["female"] = "yes"
         }
+        tags.remove("unisex")
     }
 }
