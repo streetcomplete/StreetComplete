@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddHairdresser : OsmFilterQuestType<Hairdresser>() {
+class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -32,10 +32,10 @@ class AddHairdresser : OsmFilterQuestType<Hairdresser>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
-    override fun createForm() = AddHairdresserForm()
+    override fun createForm() = AddHairdresserCustomersForm()
 
-    override fun applyAnswerTo(answer: Hairdresser, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer == Hairdresser.NOT_SIGNED) {
+    override fun applyAnswerTo(answer: HairdresserCustomers, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer == HairdresserCustomers.NOT_SIGNED) {
             tags["male:signed"] = "no"
             tags["female:signed"] = "no"
         } else {
