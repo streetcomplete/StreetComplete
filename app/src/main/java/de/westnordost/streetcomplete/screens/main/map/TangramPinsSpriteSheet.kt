@@ -100,7 +100,8 @@ class TangramPinsSpriteSheet(
     companion object {
         private const val PIN_ICONS_FILE = "pins.png"
         private val ADDITIONAL_ICONS = listOf(
-            R.drawable.ic_quest_create_note
+            R.drawable.ic_quest_create_note,
+            R.drawable.ic_quest_close_note,
         )
     }
 }
