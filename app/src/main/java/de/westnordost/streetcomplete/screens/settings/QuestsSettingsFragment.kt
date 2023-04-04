@@ -39,8 +39,8 @@ import de.westnordost.streetcomplete.util.ktx.awaitReceiverCall
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hasPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.CancellableContinuation
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -165,16 +165,16 @@ class QuestsSettingsFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
             Prefs.DYNAMIC_QUEST_CREATION -> {
-                viewLifecycleScope.launch { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
+                lifecycleScope.launch(Dispatchers.IO) { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
             }
             Prefs.DAY_NIGHT_BEHAVIOR -> {
-                viewLifecycleScope.launch {
+                lifecycleScope.launch(Dispatchers.IO) {
                     dayNightQuestFilter.reload()
                     visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
                     questTypeOrderController.onQuestTypeOrderChanged()
                 }
             }
-            Prefs.QUEST_SETTINGS_PER_PRESET -> { viewLifecycleScope.launch { OsmQuestController.reloadQuestTypes() } }
+            Prefs.QUEST_SETTINGS_PER_PRESET -> { lifecycleScope.launch(Dispatchers.IO) { OsmQuestController.reloadQuestTypes() } }
             Prefs.QUEST_MONITOR -> {
                 if (!prefs.getBoolean(key, false)) return
                 // Q introduces background location permission, but only R+ need it for foreground service

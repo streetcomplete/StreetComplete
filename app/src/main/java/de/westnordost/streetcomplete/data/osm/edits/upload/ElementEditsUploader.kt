@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.util.Log
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -54,7 +55,7 @@ class ElementEditsUploader(
                     delay(1000)
                     context.startService(UploadService.createIntent(context))
                 }
-                break
+                throw CancellationException() // don't simply break, because otherwise upload will continue with notes
             }
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
