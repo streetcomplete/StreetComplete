@@ -362,7 +362,11 @@
     <string name="quest_construction_value">Set \"construction=…\", or leave empty if unknown</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_building_entrance_parking">Parking entrance</string>
-
+    <string name="quest_maxspeed_time_limited">Differs by time…</string>
+    <string name="quest_maxspeed_time_limited_enter_default">Select the default limit first</string>
+    <string name="quest_maxspeed_time_limited_enter_speed">temporary speed limit</string>
+    <string name="quest_maxspeed_time_limited_from">From</string>
+    <string name="quest_maxspeed_time_limited_to">To</string>
 
     <!-- other -->
     <string name="hide_button">Hide</string>

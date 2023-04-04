@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import android.os.Bundle
+import android.text.InputType
+import android.text.format.DateFormat
+import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
@@ -20,6 +23,9 @@ import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_P
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
@@ -28,12 +34,15 @@ import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NSL
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
+import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
+import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
-class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
+class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<Speed, OpeningHoursRuleList>?>>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
     private val binding by contentViewBinding(QuestMaxspeedBinding::bind)
@@ -43,6 +52,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         if (countryInfo.hasAdvisorySpeedLimitSign) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
+        result.add(AnswerItem(R.string.quest_maxspeed_time_limited) { dependsOnTime() })
         return result
     }
 
@@ -69,6 +79,92 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         binding.speedTypeSelect.setOnCheckedChangeListener { _, checkedId -> setSpeedType(getSpeedType(checkedId)) }
     }
 
+    // other answer: speed limit depends on time of day
+    private fun dependsOnTime() {
+        // first require selecting sth for normal limit
+        if (!isFormComplete()) {
+            AlertDialog.Builder(requireContext()).setMessage(R.string.quest_maxspeed_time_limited_enter_default).show()
+            return
+        }
+        // if nsl: ask dual carriageway
+        if (speedType == NSL) {
+            askIsDualCarriageway(
+                onYes = { showTimeThing("nsl_dual") },
+                onNo = { showTimeThing("nsl_single") }
+            )
+            return
+        }
+        // if no sign: ask urban/rural
+        if (speedType == NO_SIGN) {
+            val highwayTag = element.tags["highway"]!!
+            if (countryInfo.countryCode == "GB") {
+                if (ROADS_WITH_DEFINITE_SPEED_LIMIT_GB.contains(highwayTag)) {
+                    showTimeThing(highwayTag)
+                } else {
+                    askIsDualCarriageway(
+                        onYes = { applyNoSignAnswer("nsl_dual") },
+                        onNo = {
+                            determineLit(
+                                onYes = { showTimeThing("nsl_restricted", true) },
+                                onNo = { showTimeThing("nsl_single", false) }
+                            )
+                        }
+                    )
+                }
+            } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
+                showTimeThing(highwayTag)
+            } else {
+                askUrbanOrRural(
+                    onUrban = { showTimeThing("urban") },
+                    onRural = { showTimeThing("rural") }
+                )
+            }
+            return
+        }
+        showTimeThing()
+    }
+
+    private fun showTimeThing(noSignAnswer: String? = null, lit: Boolean? = null) {
+        val speedText = EditText(requireContext()).apply {
+            setPadding(30, 10, 30, 10)
+            setHint(R.string.quest_maxspeed_time_limited_enter_speed)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+            inputType = InputType.TYPE_CLASS_NUMBER
+        }
+        val d = AlertDialog.Builder(requireContext())
+            .setView(speedText)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val speed = when (speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()) {
+                    KILOMETERS_PER_HOUR -> Kmh(speedText.text.toString().toInt())
+                    MILES_PER_HOUR -> Mph(speedText.text.toString().toInt())
+                }
+                WeekdaysPickerDialog.show(requireContext(), null, countryInfo.userPreferredLocale) { weekdays ->
+                    TimeRangePickerDialog(
+                        requireContext(),
+                        getString(R.string.quest_maxspeed_time_limited_from),
+                        getString(R.string.quest_maxspeed_time_limited_to),
+                        TimeRange(8 * 60, 18 * 60, false),
+                        DateFormat.is24HourFormat(context)
+                    ) { timeRange ->
+                        val oh = listOf(OpeningWeekdaysRow(weekdays, timeRange)).toOpeningHoursRules()
+                        when (speedType) {
+                            NO_SIGN -> applyNoSignAnswer(noSignAnswer!!, null, speed to oh)
+                            NSL -> applyNoSignAnswer(noSignAnswer!!, lit, speed to oh)
+                            LIVING_STREET -> applyAnswer(IsLivingStreet to (speed to oh))
+                            else -> applySpeedLimitFormAnswer(speed to oh)
+                        }
+                    }.show()
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .create()
+        speedText.doAfterTextChanged {
+            d.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = it?.toString()?.toIntOrNull() != null
+        }
+        d.setOnShowListener { d.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false }
+        d.show()
+    }
+
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
             val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(element.tags["highway"])
@@ -79,7 +175,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                 confirmNoSign { determineImplicitMaxspeedType() }
             }
         } else if (speedType == LIVING_STREET) {
-            applyAnswer(IsLivingStreet)
+            applyAnswer(IsLivingStreet to null)
         } else if (speedType == NSL) {
             askIsDualCarriageway(
                 onYes = { applyNoSignAnswer("nsl_dual") },
@@ -188,16 +284,16 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
     }
 
-    private fun applySpeedLimitFormAnswer() {
+    private fun applySpeedLimitFormAnswer(timeDependent: Pair<Speed, OpeningHoursRuleList>? = null) {
         val speed = getSpeedFromInput()!!
         when (speedType) {
-            ADVISORY      -> applyAnswer(AdvisorySpeedSign(speed))
+            ADVISORY      -> applyAnswer(AdvisorySpeedSign(speed) to timeDependent)
             ZONE          -> {
                 val zoneX = speed.toValue()
                 LAST_INPUT_SLOW_ZONE = zoneX
-                applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone$zoneX"))
+                applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone$zoneX") to timeDependent)
             }
-            SIGN          -> applyAnswer(MaxSpeedSign(speed))
+            SIGN          -> applyAnswer(MaxSpeedSign(speed) to timeDependent)
             else          -> throw IllegalStateException()
         }
     }
@@ -307,8 +403,8 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
     }
 
-    private fun applyNoSignAnswer(roadType: String, lit: Boolean? = null) {
-        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType, lit))
+    private fun applyNoSignAnswer(roadType: String, lit: Boolean? = null, timeDependent: Pair<Speed, OpeningHoursRuleList>? = null) {
+        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType, lit) to timeDependent)
     }
 
     companion object {

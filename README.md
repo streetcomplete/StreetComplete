@@ -20,7 +20,7 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
     * Additional building types
     * Additional path surfaces
     * Specify that a crossing is raised
-    * Anwer non-marked lanes with a count
+    * Answer non-marked lanes with a count
     * Answer "no seating, but not takeaway only"
     * Add wheelchair description when answering wheelchair quest
   * Move the "no cycleway" answer to more accessible position
@@ -39,11 +39,11 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
   * Artwork type
   * Railway platform number
   * Tree genus / species quest
-    * Allows provding a file containing translated tree names instead of the default english ones
+    * Allows providing a file containing translated tree names instead of the default english ones
   * Quests based on external sources
     * Osmose quest showing Osmose issues as quests, with filter options
     * Custom quest from CSV file, allows creating nodes (see in-app description)
-  * Show POI quests with the sole purpose of indicating existance of elements of chosen type (may show labels)
+  * Show POI quests with the sole purpose of indicating existence of elements of chosen type (may show labels)
   * Option to show only quests added in SCEE in quest selection menu
   * Some "other answers" result in a modified changeset comment (because in SCEE they may contain more unexpected changes)
 * Customizable overlays: Choose which elements are highlighted, and which tag is used to determine the color
@@ -53,11 +53,15 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
   * Separate deletion of quest and map tile cache
   * Adjust location update intervals
   * Log reader (not a setting, but it's in the menu)
-  * Expert mode that enables capabilities, some of which can be dangerous when used by unexperienced OSM contributors
-    * Directly edit tags, with suggstions from iD and last used values
+  * Expert mode that enables capabilities, some of which can be dangerous when used by inexperienced OSM contributors
+    * Directly edit tags, with suggestions from iD and last used values
     * Add nodes everywhere, either free-floating or as part of a single way
     * Delete free-floating nodes
-    * Additional "other answers" for tagging paths as private or under construction, or buildings as demolished
+    * Additional "other answers"
+      * tag highways as private
+      * tag highways as under construction (with finish date)
+      * tag buildings as demolished
+      * add time-dependent maxspeed 
     * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
     * Allow disabling and moving the note quest
     * Allow closing notes
@@ -132,9 +136,10 @@ This section is aimed for people trying to decide whether a bad edit done in SCE
 In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
 * `created_by` is set to `StreetComplete_ee <version>`
 * Quest type is given in `StreetComplete_ee:quest_type`
-* _AddBuildingType_ has additional answers `barn`, `sty`, `stable`, `cowshed`, `digester`, `presbytery`, `riding_hall`, `sports_hall`, and `transformer_tower`
+* _AddBuildingType_ has additional answers `barn`, `sty`, `stable`, `cowshed`, `digester`, `presbytery`, `riding_hall`, `sports_hall`, `tent`, `elevator`, and `transformer_tower`
 * _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
+* _AddMaxSpeed_ may tag time-dependent `maxspeed:conditional`
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * `check_date:*` may be added without resurvey

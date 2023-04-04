@@ -7,10 +7,11 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
+class AddMaxSpeed : OsmFilterQuestType<Pair<MaxSpeedAnswer, Pair<Speed, OpeningHoursRuleList>?>>() {
 
     override val elementFilter = """
         ways with
@@ -37,7 +38,12 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override fun createForm() = AddMaxSpeedForm()
 
-    override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Pair<MaxSpeedAnswer, Pair<Speed, OpeningHoursRuleList>?>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        val timeDependent = answer.second
+        if (timeDependent != null) {
+            tags["maxspeed:conditional"] = "${timeDependent.first} @ (${timeDependent.second})"
+        }
+        val answer = answer.first
         when (answer) {
             is MaxSpeedSign -> {
                 tags["maxspeed"] = answer.value.toString()
