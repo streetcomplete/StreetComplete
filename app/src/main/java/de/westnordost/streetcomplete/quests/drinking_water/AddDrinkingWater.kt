@@ -20,6 +20,8 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
         and (!seasonal or seasonal = no)
+        and (!disused or disused = no)
+        and (!ruins or ruins = no)
     """
     override val changesetComment = "Specify whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
