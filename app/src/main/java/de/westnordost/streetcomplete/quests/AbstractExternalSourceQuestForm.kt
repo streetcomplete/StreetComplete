@@ -192,7 +192,8 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     }
 
     protected fun editTags(e: Element) {
-        val geo = if (e is Node) ElementPointGeometry(e.position) else mapDataSource.getGeometry(e.type, e.id) ?: return
+        val geo = if (e is Node) ElementPointGeometry(e.position) else mapDataSource.getGeometry(e.type, e.id)
+            ?: geometry // fall back to quest geometry for cases where the element has no geometry (e.g. osmose quest for relation containing only node members)
         listener?.onEditTags(e, geo, questKey)
     }
 
