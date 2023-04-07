@@ -21,13 +21,6 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         See #427 for discussion. */
     override val elementFilter = """
         ways with
-        highway and
-        (
-          !lit
-          or lit = no and lit older today -8 years
-          or lit older today -16 years
-        )
-        and
         (
           highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
           or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
@@ -40,6 +33,12 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
           or highway = path and (foot = designated or bicycle = designated)
         )
         and (access !~ private|no or (foot and foot !~ private|no))
+        and
+        (
+          !lit
+          or lit = no and lit older today -8 years
+          or lit older today -16 years
+        )
         and indoor != yes
         and ~path|footway|cycleway !~ link
     """
