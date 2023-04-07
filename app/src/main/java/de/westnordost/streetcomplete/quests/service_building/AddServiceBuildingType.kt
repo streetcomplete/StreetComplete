@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddServiceBuildingType : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        ways, relations with
           building = service
           and !power
           and !service
