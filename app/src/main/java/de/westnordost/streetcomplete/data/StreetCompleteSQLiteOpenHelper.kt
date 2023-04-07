@@ -112,6 +112,9 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         writableDatabase.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
         // delete previous version of osmose db
         writableDatabase.execSQL("DROP TABLE IF EXISTS osmose_issues;")
+
+        // create osm quests element id index if not existing
+        writableDatabase.execSQL(OsmQuestTable.CREATE_ELEMENT_ID_INDEX_IF_NOT_EXISTS)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

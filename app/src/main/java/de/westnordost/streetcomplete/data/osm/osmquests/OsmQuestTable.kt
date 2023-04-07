@@ -32,4 +32,10 @@ object OsmQuestTable {
             ${Columns.LONGITUDE}
         );
     """
+
+    const val CREATE_ELEMENT_ID_INDEX_IF_NOT_EXISTS = """
+        CREATE INDEX IF NOT EXISTS osm_quests_id_index ON $NAME (
+            ${Columns.ELEMENT_ID}
+        );
+    """
 }
