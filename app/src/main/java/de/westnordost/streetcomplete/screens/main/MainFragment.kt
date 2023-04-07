@@ -42,6 +42,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -890,7 +891,7 @@ class MainFragment :
                     if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
                         context?.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
                 }
-                questPresetsController.selectedId = presets[i].id
+                lifecycleScope.launch(Dispatchers.IO) { questPresetsController.selectedId = presets[i].id }
                 dialog?.dismiss()
             }
             .setNegativeButton(android.R.string.cancel, null)
