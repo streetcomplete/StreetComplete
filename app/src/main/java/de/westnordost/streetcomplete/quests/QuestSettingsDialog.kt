@@ -170,7 +170,7 @@ private fun getDiffButton(context: Context, defaultText: String, getCurrentText:
             val diffText = diffRows.mapNotNull {
                 if (it.tag == Tag.EQUAL) return@mapNotNull null
                 it.oldLine
-            }.joinToString("</br>")
+            }.joinToString("<br>")
             AlertDialog.Builder(context)
                 .setMessage(HtmlCompat.fromHtml(diffText, HtmlCompat.FROM_HTML_MODE_LEGACY))
                 .setNegativeButton(R.string.close, null)
