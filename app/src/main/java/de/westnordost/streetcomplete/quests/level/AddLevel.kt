@@ -58,6 +58,7 @@ class AddLevel : OsmElementQuestType<String> {
            or office
            or tourism
            or healthcare
+           or (man_made = surveillance and surveillance:type = camera)
          )
          and !level
     """.toElementFilterExpression()}
