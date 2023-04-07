@@ -34,6 +34,7 @@ import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
+import androidx.core.os.ConfigurationCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -133,6 +134,7 @@ import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toList
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
@@ -1391,6 +1393,7 @@ class MainFragment :
             }
         if (elements == emptySequence<Element>()) return emptyList()
         val levels = element?.let { createLevelsOrNull(it.tags) }
+        val localLanguages = ConfigurationCompat.getLocales(resources.configuration).toList().map { it.language }
         for (e in elements) {
             // don't highlight "this" element
             if (element == e) continue
@@ -1402,7 +1405,7 @@ class MainFragment :
 
             val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
             val icon = getPinIcon(e.tags)
-            val title = getTitle(e.tags)
+            val title = getTitle(e.tags, localLanguages)
             markers.add(Marker(geometry, icon, title))
         }
         return markers

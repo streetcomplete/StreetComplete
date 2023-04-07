@@ -79,17 +79,22 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
     return null
 }
 
-fun getTitle(map: Map<String, String>): String? {
-    return getNameLabel(map) ?: getShortHouseNumber(map) ?: getTreeGenus(map)
+fun getTitle(map: Map<String, String>, languages: Collection<String> = emptyList()): String? {
+    return getNameLabel(map) ?: getShortHouseNumber(map) ?: getTreeGenus(map, languages)
 }
 
-fun getTreeGenus(map: Map<String, String>): String? {
+// prefer tree species in provided languages, then osm tag, then other languages
+fun getTreeGenus(map: Map<String, String>, languages: Collection<String> = emptyList()): String? {
     if (map["natural"] != "tree") return null
+    languages.forEach { lc ->
+        map["species:$lc"]?.let { return it }
+        map["genus:$lc"]?.let { return it }
+    }
     map["species"]?.let { return it }
     map["genus"]?.let { return it }
-    map.keys.forEach {
-        if (it.startsWith("genus:") || it.startsWith("species:"))
-            return map[it]
+    map.forEach { (key, value) ->
+        if (key.startsWith("genus:") || key.startsWith("species:"))
+            return value
     }
     return null
 }
