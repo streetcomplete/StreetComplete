@@ -27,9 +27,15 @@ class PinsMapComponent(private val ctrl: KtMapController) {
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
         pinsLayer.setFeatures(pins.map { it.tangramPoint })
-        val geos = HashSet<Geometry>(pins.size * 2)
-        pins.forEach { it.tangramGeometry?.let { geos.addAll(it) } }
-        questsGeometryLayer.setFeatures(geos.toList())
+        // complicated for geometries, because apparently there is no equals for (tangram) Geometry
+        val geoSet = HashSet<ElementGeometry?>(pins.size)
+        val tangramGeos = ArrayList<Geometry>(pins.size)
+        pins.forEach {
+            val tg = it.tangramGeometry ?: return@forEach
+            if (geoSet.add(tg.first))
+                tangramGeos.addAll(tg.second)
+        }
+        questsGeometryLayer.setFeatures(tangramGeos)
     }
 
     /** Clear pins */
@@ -66,5 +72,8 @@ data class Pin(
         props.putAll(properties)
         Point(position.toLngLat(), props)
     }
-    val tangramGeometry by lazy { geometry?.toTangramGeometry() }
+    val tangramGeometry by lazy {
+        if (geometry == null) null
+        else geometry to geometry.toTangramGeometry()
+    }
 }
