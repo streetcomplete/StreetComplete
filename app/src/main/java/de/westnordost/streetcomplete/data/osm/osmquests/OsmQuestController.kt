@@ -74,13 +74,18 @@ class OsmQuestController internal constructor(
     private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
         .sortedBy { it.chonkerIndex }
 
-    private val wayOnlyFilterQuestTypes = questTypeRegistry.filterIsInstance<OsmFilterQuestType<*>>()
-        .filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }
-        .map { it.name }.toSet() // technically those could change if questTypeRegistry is reloaded, but that's unlikely enough to ignore it
+    private val wayOnlyFilterQuestTypes by lazy {
+        // technically those could change if questTypeRegistry is reloaded, but that's unlikely enough to ignore it
+        // the filter step is slow when called on init, probably because filters are loaded by lazy
+        questTypeRegistry.filterIsInstance<OsmFilterQuestType<*>>()
+            .filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }
+            .map { it.name }.toHashSet()
+    }
+
     // must be valid names!
     private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance", "AddHousenumber")
 
-    private val hiddenCache = hiddenDB.getAllIds().toHashSet()
+    private val hiddenCache by lazy { hiddenDB.getAllIds().toHashSet() }
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 

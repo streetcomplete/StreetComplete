@@ -124,6 +124,11 @@ class StreetCompleteApplication : Application() {
             )
         }
 
+        applicationScope.launch {
+            editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
+            preloader.preload()
+        }
+
         /* Force log out users who use the old OAuth consumer key+secret because it does not exist
            anymore. Trying to use that does not result in a "not authorized" API response, but some
            response the app cannot handle */
@@ -138,11 +143,6 @@ class StreetCompleteApplication : Application() {
         preferences = prefs
 
         crashReportExceptionHandler.install()
-
-        applicationScope.launch {
-            preloader.preload()
-            editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
-        }
 
         enqueuePeriodicCleanupWork()
 

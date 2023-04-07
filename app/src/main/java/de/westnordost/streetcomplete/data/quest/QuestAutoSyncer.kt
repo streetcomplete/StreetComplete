@@ -42,12 +42,12 @@ class QuestAutoSyncer(
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
-    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val prefs: SharedPreferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val downloadedTilesDao: DownloadedTilesDao
+    private val downloadedTilesDao: DownloadedTilesDao,
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
 ) : DefaultLifecycleObserver {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))

@@ -26,7 +26,7 @@ class ExternalSourceQuestController(
     elementEditsController: ElementEditsController,
 ) : ElementEditsSource.Listener {
 
-    private val hiddenCache = externalSourceDao.getAllHidden().toHashSet()
+    private val hiddenCache by lazy { externalSourceDao.getAllHidden().toHashSet() }
 
     interface QuestListener {
         fun onUpdated(addedQuests: Collection<ExternalSourceQuest> = emptyList(), deletedQuestKeys: Collection<ExternalSourceQuestKey> = emptyList())
@@ -38,14 +38,16 @@ class ExternalSourceQuestController(
     }
 
     private val questTypes get() = questTypeRegistry.filterIsInstance<ExternalSourceQuestType>()
-    private val questTypeNamesBySource = questTypes.associate { it.source to it.name }
+    private val questTypeNamesBySource by lazy {
+        val types = questTypes
+        val namesBySource = types.associate { it.source to it.name }
+        if (types.size != namesBySource.size)
+            throw IllegalStateException("source values must be unique")
+        namesBySource
+    }
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
-    init {
-        if (questTypes.size != questTypeNamesBySource.size)
-            throw IllegalStateException("source values must be unique")
-        elementEditsController.addListener(this)
-    }
+    init { elementEditsController.addListener(this) }
 
     fun delete(key: ExternalSourceQuestKey) {
         getQuestType(key)?.deleteQuest(key.id)

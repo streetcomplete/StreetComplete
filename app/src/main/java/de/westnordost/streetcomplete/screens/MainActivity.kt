@@ -117,7 +117,6 @@ class MainActivity :
             IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
         )
 
-        lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
@@ -125,6 +124,7 @@ class MainActivity :
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 
         setContentView(R.layout.activity_main)
+        lifecycle.addObserver(questAutoSyncer)
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
         if (savedInstanceState == null) {

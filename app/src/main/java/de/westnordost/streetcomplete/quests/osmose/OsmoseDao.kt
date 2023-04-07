@@ -44,7 +44,7 @@ class OsmoseDao(
     private val prefs: SharedPreferences,
     private val context: Context,
 ) : KoinComponent {
-    private val client = OkHttpClient()
+    private val client by lazy { OkHttpClient() }
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
