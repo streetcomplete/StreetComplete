@@ -362,8 +362,8 @@ class OsmQuestController internal constructor(
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: OsmQuestKey) {
         synchronized(this) {
-            hiddenCache.add(key)
-            hiddenDB.add(key)
+            if (hiddenCache.add(key)) // we may already have it hidden, as nearby quests may allow answering hidden quests
+                hiddenDB.add(key)
         }
 
         val hidden = getHidden(key)
