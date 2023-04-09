@@ -115,6 +115,9 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
                 startForeground(MONITOR_NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_LOCATION)
             else
                 startForeground(MONITOR_NOTIFICATION_ID, notification)
+            lastScanCenter = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.toLatLon()
+                ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)?.toLatLon()
+                ?: LatLon(0.0, 0.0)
             if (prefs.getBoolean(Prefs.QUEST_MONITOR_GPS, false))
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getInt(Prefs.GPS_INTERVAL, 0) * 1000L, 0.0f, this)
             if (prefs.getBoolean(Prefs.QUEST_MONITOR_NET, false))
