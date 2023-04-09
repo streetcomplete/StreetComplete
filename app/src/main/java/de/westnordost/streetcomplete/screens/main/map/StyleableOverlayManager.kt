@@ -52,8 +52,8 @@ class StyleableOverlayManager(
         val isNullNow = value == null
         field = value
         when {
-            wasNull ->   show()
             isNullNow -> hide()
+            wasNull ->   show()
             else ->      switchOverlay()
         }
     }
