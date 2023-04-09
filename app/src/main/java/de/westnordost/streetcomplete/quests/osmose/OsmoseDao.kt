@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.osmose
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.database.sqlite.SQLiteException
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.CursorPosition
@@ -173,12 +174,16 @@ class OsmoseDao(
 
     // no need to report done here, as each "done" should be connected to an element edit
     fun reportFalsePositives() {
-        db.query(NAME, where = "$ANSWERED = 1") {
-            Pair(
-                it.getString(UUID),
-                it.getInt(ANSWERED) == 1
-            ) }
-            .forEach { reportChange(it.first, it.second) }
+        try {
+            db.query(NAME, where = "$ANSWERED = 1") {
+                Pair(it.getString(UUID), it.getInt(ANSWERED) == 1)
+            }.forEach { reportChange(it.first, it.second) }
+        } catch (e: SQLiteException) {
+            // SQLiteException: no such table: osmose_issues_v2 (code 1): , while compiling: SELECT * FROM osmose_issues_v2 WHERE answered = 1
+            // user didn't even enable osmose quest -> in this case unused osmose quest should not cause a crash
+            // but actually: why isn't table created? it's in database helper init!
+            Log.w(TAG, "Osmose table not found when trying to report false positives")
+        }
     }
 
     // assume it exists if it's unclear
