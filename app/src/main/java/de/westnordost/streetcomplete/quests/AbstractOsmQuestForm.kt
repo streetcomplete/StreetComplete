@@ -324,14 +324,14 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    protected fun replaceShop() {
+    protected fun replaceShop(extra: Boolean = true) {
         if (IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(element)) {
             ShopGoneDialog(
                 requireContext(),
                 element.geometryType,
                 countryOrSubdivisionCode,
                 featureDictionary,
-                onSelectedFeature = this::onShopReplacementSelected,
+                onSelectedFeature = { onShopReplacementSelected(it, extra) },
                 onLeaveNote = this::composeNote,
                 geometry.center
             ).show()
@@ -340,25 +340,25 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    private fun onShopReplacementSelected(tags: Map<String, String>) {
+    private fun onShopReplacementSelected(tags: Map<String, String>, extra: Boolean = true) {
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
             builder.replaceShop(tags)
-            solve(UpdateElementTagsAction(builder.create()), true)
+            solve(UpdateElementTagsAction(builder.create()), extra)
         }
     }
 
-    protected fun deletePoiNode() {
+    protected fun deletePoiNode(extra: Boolean = true) {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.osm_element_gone_description)
-            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed() }
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed(extra) }
             .setNeutralButton(R.string.leave_note) { _, _ -> composeNote() }
             .show()
     }
 
-    private fun onDeletePoiNodeConfirmed() {
+    private fun onDeletePoiNodeConfirmed(extra: Boolean = true) {
         viewLifecycleScope.launch {
-            solve(DeletePoiNodeAction, true)
+            solve(DeletePoiNodeAction, extra)
         }
     }
 
