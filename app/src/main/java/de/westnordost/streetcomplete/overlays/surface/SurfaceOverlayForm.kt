@@ -53,7 +53,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             Fortunately need for this change are really rare. Notes can be left as usual.
             */
             listOf()
-
         } else if (isBothFootAndBicycleTraffic(element!!)) {
             /*
             Only where bicycle access is already present because adding bicycle access typically
