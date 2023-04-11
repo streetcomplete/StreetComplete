@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -22,7 +23,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
        as otherwise we assume they don't provide seating (like bakery, wine shop...)
     */
     override val elementFilter = """
-         nodes, ways, relations with
+         nodes, ways with
          (
              amenity ~ bar|cafe|biergarten|restaurant|food_court and (indoor_seating != no or outdoor_seating != no)
              or leisure = outdoor_seating
@@ -52,7 +53,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
     override fun createForm() = SmokingAllowedForm()
 
-    override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("smoking", answer.osmValue)
     }
 }

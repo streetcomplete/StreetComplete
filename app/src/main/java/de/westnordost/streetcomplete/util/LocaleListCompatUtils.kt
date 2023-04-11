@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.os.LocaleList
+import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
@@ -44,9 +45,4 @@ fun setDefaultLocales(locales: LocaleListCompat) {
 }
 
 /** Get Android system locale(s) */
-fun getSystemLocales(): LocaleListCompat =
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        LocaleListCompat.wrap(Resources.getSystem().configuration.locales)
-    } else {
-        LocaleListCompat.create(Resources.getSystem().configuration.locale)
-    }
+fun getSystemLocales() = ConfigurationCompat.getLocales(Resources.getSystem().configuration)

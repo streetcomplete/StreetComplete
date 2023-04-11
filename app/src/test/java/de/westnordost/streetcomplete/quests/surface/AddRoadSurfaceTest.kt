@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -10,31 +7,6 @@ import org.junit.Test
 
 class AddRoadSurfaceTest {
     private val questType = AddRoadSurface()
-
-    @Test fun `verify simple name adding`() {
-        questType.verifyAnswer(
-            mapOf("highway" to "residential"),
-            SurfaceAnswer(Surface.ASPHALT),
-            StringMapEntryAdd("surface", "asphalt")
-        )
-    }
-
-    @Test fun `verify remove of mismatching tracktype`() {
-        questType.verifyAnswer(
-            mapOf("highway" to "residential", "tracktype" to "grade5"),
-            SurfaceAnswer(Surface.ASPHALT),
-            StringMapEntryAdd("surface", "asphalt"),
-            StringMapEntryDelete("tracktype", "grade5")
-        )
-    }
-
-    @Test fun `verify keeping matching tracktype`() {
-        questType.verifyAnswer(
-            mapOf("highway" to "residential", "tracktype" to "grade1"),
-            SurfaceAnswer(Surface.ASPHALT),
-            StringMapEntryAdd("surface", "asphalt")
-        )
-    }
 
     @Test fun `not applicable to tagged surface`() {
         assertIsNotApplicable("highway" to "residential", "surface" to "asphalt")
@@ -54,6 +26,13 @@ class AddRoadSurfaceTest {
 
     @Test fun `not applicable to tagged surface with fitting tracktype`() {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade1")
+    }
+
+    @Test fun `applicable to surface tags not providing proper info`() {
+        assertIsApplicable("highway" to "residential", "surface" to "paved")
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:note" to "wildly mixed asphalt, concrete, paving stones and sett")
+        assertIsApplicable("highway" to "residential", "surface" to "cobblestone")
+        assertIsApplicable("highway" to "residential", "surface" to "cement")
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {

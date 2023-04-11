@@ -128,7 +128,8 @@
                         "bicycle": "ركوب الدراجات",
                         "hiking": "المشي الخلوي (هايكنج)",
                         "horse": "ركوب الخيل",
-                        "mtb": "ركوب الدراجات في الجبل"
+                        "mtb": "ركوب الدراجات في الجبل",
+                        "ski": "التزحلق"
                     }
                 },
                 "addr/interpolation": {
@@ -242,6 +243,9 @@
                 "animal_shelter": {
                     "label": "للحيوانات"
                 },
+                "archaeological_site": {
+                    "label": "نوع"
+                },
                 "architect": {
                     "label": "مهندس معماري",
                     "terms": "مهندس معماري,مصمم"
@@ -253,7 +257,16 @@
                     "label": "فنان/رسام"
                 },
                 "artwork_type": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "bust": "صدر",
+                        "graffiti": "جدارية",
+                        "mosaic": "فسيفساء",
+                        "mural": "جدار",
+                        "painting": "لوحة",
+                        "sculpture": "منحوتة",
+                        "statue": "تمثال"
+                    }
                 },
                 "ascent": {
                     "label": "إجمالي الصعود",
@@ -329,7 +342,19 @@
                     "terms": "مقعد,مقعد طويل"
                 },
                 "bicycle_parking": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "building": "في مبنى",
+                        "handlebar_holder": "حامل المقود",
+                        "lockers": "خزائن فردية",
+                        "shed": "سقيفة مغلقة",
+                        "stands": "حامل (يدعم إطار الدراجة)",
+                        "wall_loops": "مقود العجلات (يدعم العجلة فقط)"
+                    }
+                },
+                "bike_ride": {
+                    "label": "اصطفاف وركوب",
+                    "terms": "اصطفاف وركوب,ركن الدراجة والركوب"
                 },
                 "bin": {
                     "label": "سلة النفايات",
@@ -354,13 +379,20 @@
                     }
                 },
                 "board_type": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "art": "فن",
+                        "astronomy": "علم الفلك",
+                        "geology": "جيولوجيا",
+                        "history": "تاريخ"
+                    }
                 },
                 "bollard": {
                     "label": "النوع"
                 },
                 "booth": {
-                    "label": "كشك/دكان"
+                    "label": "كشك/دكان",
+                    "terms": "كشك,سقيفة,حجرة صغيرة"
                 },
                 "bottle": {
                     "label": "تعبئة القوارير"
@@ -410,11 +442,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "مستويات تحت الأرض,تحت سطح الأرض,جوف الأرض,مدفون"
                 },
-                "building/levels_building": {
-                    "label": "طوابق/أدوار المبنى",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "أدوار المبنى,طوابق المبنى"
-                },
                 "building/material": {
                     "label": "مادة البناء",
                     "terms": "مواد البناء,نوع مواد البناء,نوع البناية"
@@ -422,9 +449,9 @@
                 "building/part": {
                     "label": "جزء من مبنى"
                 },
-                "building_area": {
-                    "label": "المبنى",
-                    "terms": "المبنى,البناية,العمارة"
+                "building/prefabricated": {
+                    "label": "مسبقة الصنع",
+                    "terms": "مصنوعة من قبل"
                 },
                 "bunker_type": {
                     "label": "النوع"
@@ -469,7 +496,6 @@
                     "terms": "السعة,القدرة الاستيعابية"
                 },
                 "capacity/caravans": {
-                    "label": "السعة (للكرفانات)",
                     "placeholder": "10، 20، 50..."
                 },
                 "capacity/disabled_parking": {
@@ -493,7 +519,7 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "cash_in": {
-                    "label": "إيداع النقد"
+                    "label": "ودائع"
                 },
                 "castle_type": {
                     "label": "النوع",
@@ -528,7 +554,8 @@
                 },
                 "circumference": {
                     "label": "محيط (على ارتفاع الصدر)",
-                    "placeholder": "1 متر, 20 سم, 30\"…"
+                    "placeholder": "1 متر, 20 سم, 30\"…",
+                    "terms": "محيط الدائرة (على ارتفاع الصدر)"
                 },
                 "clothes": {
                     "label": "ملابس",
@@ -600,13 +627,11 @@
                     "terms": "مغطى"
                 },
                 "covered_no": {
-                    "label": "مغطى",
                     "options": {
                         "no": "لا",
                         "undefined": "يفترض أن يكون لا",
                         "yes": "نعم"
-                    },
-                    "terms": "مغطى"
+                    }
                 },
                 "craft": {
                     "label": "النوع"
@@ -620,10 +645,43 @@
                     }
                 },
                 "crop": {
-                    "label": "محاصيل"
+                    "label": "محاصيل",
+                    "options": {
+                        "asparagus": "نبات الهليون",
+                        "barley": "شعير",
+                        "beet": "بنجر",
+                        "cassava": "بفرة",
+                        "coffee": "قهوة",
+                        "cotton": "قطن",
+                        "cranberries": "توت بري",
+                        "fast_growing_wood": "تنسيغ قصير الأجل",
+                        "flowers": "زهور",
+                        "grape": "عنب",
+                        "grass": "عشب",
+                        "hop": "جنجلة",
+                        "lavender": "خزامي",
+                        "maize": "ذرة",
+                        "potato": "بطاطس",
+                        "rape": "لفت",
+                        "rice": "أرز",
+                        "soy": "فول الصويا",
+                        "strawberry": "فراولة",
+                        "sugar_beet": "شمندر سكري",
+                        "sugarcane": "قصب السكر",
+                        "sunflower": "تباع الشمس",
+                        "tea": "شاي",
+                        "tobacco": "Tobacco",
+                        "vegetable": "خضروات",
+                        "wheat": "قمح"
+                    }
                 },
                 "crossing": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "traffic_signals": "معبر بإشارات مرور",
+                        "uncontrolled": "فقط علامات الطريق",
+                        "unmarked": "لا توجد علامات طريق أو إشارات مرور"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "ذراع الحاجز",
@@ -643,6 +701,27 @@
                 },
                 "crossing/light": {
                     "label": "إضاءات"
+                },
+                "crossing/markings": {
+                    "label": "علامات المعابر",
+                    "options": {
+                        "dashes": "خطوط عرضية متقطعة",
+                        "dots": "خطوط عرضية منقطة",
+                        "ladder": "سلم مع قضبان طولية",
+                        "ladder:paired": "سلم مع قضبان طولية مقترنة",
+                        "ladder:skewed": "سلم مع قضبان قطرية",
+                        "lines": "خطوط عرضية",
+                        "lines:paired": "خطوط عرضية مزدوجة",
+                        "no": "لايوجد به علامات",
+                        "pictograms": "الرسوم التوضيحية المرسومة",
+                        "surface": "على السطح فقط",
+                        "yes": "توجد علامات بطريقة غير مباشرة",
+                        "zebra": "قضبان طولية",
+                        "zebra:bicolour": "قضبان طولية بألوان متناوبة",
+                        "zebra:double": "الثلاثي الرباعي",
+                        "zebra:paired": "قضبان طولية مقترنة"
+                    },
+                    "terms": "علامات المشاة,علامات المرور"
                 },
                 "crossing_raised": {
                     "label": "مرتفع",
@@ -716,43 +795,35 @@
                     "label": "مسارات الدراجات",
                     "options": {
                         "lane": {
-                            "description": "مسار دراجات مفصول عن السيارات بخط مطبوع",
-                            "title": "مسار دراجات قياسي"
+                            "description": "مسار دراجات مفصول عن السيارات بخط مطبوع"
                         },
-                        "none": {
-                            "description": "لا يوجد مسار للدراجات",
+                        "no": {
                             "title": "لا شيء"
                         },
                         "opposite": {
-                            "description": "مسار دراجات للسير في كلا الاتجاهين على طريق باتجاه واحد",
-                            "title": "مسار دراجات معاكس لاتجاه الطريق"
+                            "description": "مسار دراجات للسير في كلا الاتجاهين على طريق باتجاه واحد"
                         },
                         "opposite_lane": {
-                            "description": "مسار دراجات يسير في الاتجاه المعاكس لحركة مرور السيارات",
-                            "title": "مسار دراجات معاكس"
+                            "description": "مسار دراجات يسير في الاتجاه المعاكس لحركة مرور السيارات"
                         },
                         "separate": {
-                            "description": "للإشارة إلى أنه قد تم تخطيط مسار الدراجات باعتباره شكلًا هندسيًا منفصلاً",
-                            "title": "تم تعيين مسار الدراجات بشكل منفصل"
+                            "description": "للإشارة إلى أنه قد تم تخطيط مسار الدراجات باعتباره شكلًا هندسيًا منفصلاً"
                         },
                         "share_busway": {
-                            "description": "مسار درجات مشتركة مع مسار الحافلات",
-                            "title": "مسار دراجات مشترك مع الحافلات"
+                            "description": "مسار درجات مشتركة مع مسار الحافلات"
                         },
                         "shared_lane": {
-                            "description": "مسار دراجات غير مفصول عن حركة مرور السيارات",
-                            "title": "مسار دراجات مشترك"
+                            "description": "مسار دراجات غير مفصول عن حركة مرور السيارات"
                         },
                         "track": {
                             "description": "مسار دراجات مفصول عن السيارات بحاجز",
                             "title": "مسار الدراجة"
                         }
                     },
-                    "placeholder": "لا شيء",
                     "terms": "مسارات الداراجات,مسارات الدراجات الهوائية",
                     "types": {
-                        "cycleway:left": "جانب أيسر",
-                        "cycleway:right": "جانب أيمن"
+                        "cycleway:left": "الجانب الأيسر",
+                        "cycleway:right": "الجانب الأيمن"
                     }
                 },
                 "dance/style": {
@@ -773,10 +844,11 @@
                     "terms": "المذهب/الطائفة,المذهب,الطائفة"
                 },
                 "denotation": {
-                    "label": "علامة/معلم"
+                    "label": "علامة/معلم",
+                    "terms": "دلالة"
                 },
                 "departures_board": {
-                    "label": "لوحة المغادرين",
+                    "label": "لوحة المغادرين/القادمين",
                     "options": {
                         "no": "لا يوجد",
                         "realtime": "الوقت الفعلي",
@@ -807,18 +879,8 @@
                 "destination/ref": {
                     "label": "أرقام طُرق الوجهة"
                 },
-                "destination/ref_oneway": {
-                    "label": "أرقام طُرق الوجهة"
-                },
                 "destination/symbol": {
                     "label": "رموز الوجهة"
-                },
-                "destination/symbol_oneway": {
-                    "label": "رموز الوجهة",
-                    "terms": "رموز الوجهة"
-                },
-                "destination_oneway": {
-                    "label": "الوجهات"
                 },
                 "destination_waterway": {
                     "label": "الوجهة"
@@ -879,7 +941,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "الاتجاهات (بالدرجات في اتجاه عقارب الساعة)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -890,13 +951,6 @@
                         "forward": "للأمام"
                     },
                     "terms": "الاتجاه المتأثر"
-                },
-                "direction_vertex_dual": {
-                    "label": "الاتجاه يتأثر",
-                    "options": {
-                        "backward": "للخلف",
-                        "forward": "للأمام"
-                    }
                 },
                 "dispensing": {
                     "label": "يصرف أدوية بوصفة طبية"
@@ -965,10 +1019,6 @@
                     "label": "الارتفاع (متر)",
                     "terms": "الارتفاع (متر)"
                 },
-                "ele_node": {
-                    "label": "الارتفاع (متر)",
-                    "terms": "الارتفاع (متر)"
-                },
                 "electrified": {
                     "label": "الكهربية",
                     "options": {
@@ -1016,6 +1066,18 @@
                 },
                 "entrance": {
                     "label": "النوع",
+                    "options": {
+                        "emergency": "مخرج طوارئ",
+                        "entrance": "مدخل فقط",
+                        "exit": "مخرج فقط",
+                        "garage": "باب المرآب",
+                        "home": "منزل خاص أو شقة",
+                        "main": "رئيسي",
+                        "secondary": "ثانوي",
+                        "service": "خدمة",
+                        "staircase": "سلم",
+                        "yes": "غير محدد"
+                    },
                     "terms": "نوع,صنف,نمط"
                 },
                 "except": {
@@ -1138,18 +1200,24 @@
                     "label": "التردد الكهربائي",
                     "terms": "التردد الكهربائي,تردد التشغيل"
                 },
-                "frequency_electrified": {
-                    "label": "التردد الكهربائي",
-                    "terms": "التردد الكهربائي,تردد التشغيل"
-                },
                 "from": {
                     "label": "من"
                 },
                 "fuel": {
                     "label": "وقود"
                 },
-                "fuel_multi": {
-                    "label": "أنواع الوقود"
+                "fuel/fuel_multi": {
+                    "label": "أنواع الوقود",
+                    "options": {
+                        "GTL_diesel": "ديزل GTL",
+                        "HGV_diesel": "ديزل شاحنات",
+                        "LH2": "هيدروجين سائل",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (في عبوات)",
+                        "biodiesel": "ديزل حيوي",
+                        "cng": "الغاز الطبيعي المضغوط (CNG)",
+                        "diesel": "ديزل"
+                    }
                 },
                 "gambling": {
                     "label": "ألعاب"
@@ -1171,14 +1239,25 @@
                     "terms": "الجنس"
                 },
                 "generator/method": {
-                    "label": "الطريقة"
+                    "label": "الطريقة",
+                    "options": {
+                        "anaerobic_digestion": "الهضم اللاهوائي"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "الطاقة الناتجة",
                     "placeholder": "50 ميجا وات، 100 ميجا وات، 200 ميجا وات..."
                 },
                 "generator/source": {
-                    "label": "المصدر"
+                    "label": "المصدر",
+                    "options": {
+                        "nuclear": "طاقة نووية",
+                        "oil": "نفط",
+                        "solar": "إشعاع الشمس",
+                        "tidal": "طاقة المد والجزر",
+                        "waste": "نفايات",
+                        "wave": "طاقة الأمواج"
+                    }
                 },
                 "generator/type": {
                     "label": "النوع"
@@ -1338,7 +1417,6 @@
                     "terms": "انحدار الطريق,درجة الانحدار,مستوى الانحدار"
                 },
                 "incline_steps": {
-                    "label": "درجة الانحدار",
                     "options": {
                         "down": "للأسفل",
                         "up": "للأعلى"
@@ -1368,9 +1446,6 @@
                 "intermittent": {
                     "label": "متقطع (لا يحتوي على الماء بشكل دائم)",
                     "terms": "متقطع,لا يحتوي على الماء بشكل دائم"
-                },
-                "intermittent_yes": {
-                    "label": "متقطع (لا يحتوي على الماء بشكل دائم)"
                 },
                 "internet_access": {
                     "label": "اتصال انترنت",
@@ -1466,15 +1541,6 @@
                     },
                     "terms": "دورة حياة الورقة"
                 },
-                "leaf_cycle_singular": {
-                    "label": "دورة أوراق الشجر",
-                    "options": {
-                        "deciduous": "المتساقطة",
-                        "evergreen": "دائمة الخضرة",
-                        "semi_deciduous": "شبه متساقطة",
-                        "semi_evergreen": "شبه دائمة الخضرة"
-                    }
-                },
                 "leaf_type": {
                     "label": "نوع ورق الشجر",
                     "options": {
@@ -1486,12 +1552,7 @@
                     "terms": "نوع الورقة,نوع ورقة النبات"
                 },
                 "leaf_type_singular": {
-                    "label": "نوع ورق الشجر",
-                    "options": {
-                        "broadleaved": "عريضة الأوراق",
-                        "leafless": "بدون أوراق",
-                        "needleleaved": "إبرية"
-                    }
+                    "label": "نوع ورق الشجر"
                 },
                 "leisure": {
                     "label": "النوع"
@@ -1530,7 +1591,6 @@
                     "terms": "المكان,المكان بالضبط"
                 },
                 "location_pool": {
-                    "label": "المكان",
                     "options": {
                         "indoor": "مُغطى/داخلي",
                         "outdoor": "في الخارج/الهواء الطلق",
@@ -1607,10 +1667,6 @@
                 },
                 "maxweight": {
                     "label": "أقصى وزن",
-                    "terms": "أقصى وزن,الوزن الأقصى"
-                },
-                "maxweight_bridge": {
-                    "label": "الوزن الأقصى",
                     "terms": "أقصى وزن,الوزن الأقصى"
                 },
                 "maxwidth": {
@@ -1762,7 +1818,6 @@
                     "terms": "اتجاه واحد (للدراجات)"
                 },
                 "oneway_yes": {
-                    "label": "هذا الطريق يسير باتجاه واحد",
                     "options": {
                         "alternating": "بالتناوب:يتغير اتجاهه بشكل متغير في اليوم الواحد",
                         "no": "لا",
@@ -1851,22 +1906,17 @@
                     }
                 },
                 "parking_entrance": {
-                    "label": "النوع",
-                    "options": {
-                        "multi-storey": "متعدد الطوابق",
-                        "underground": "تحت الأرض"
-                    }
+                    "label": "النوع"
                 },
                 "parking_space": {
                     "label": "النوع"
                 },
                 "payment_multi": {
                     "label": "طرق الدفع",
+                    "options": {
+                        "apple_pay": "أبل باي"
+                    },
                     "terms": "طرق الدفع,طرق الحساب"
-                },
-                "payment_multi_fee": {
-                    "label": "أنواع الدفع",
-                    "terms": "أنواع الدفع,أنواع الحساب"
                 },
                 "phases": {
                     "label": "المراحل/الفترات",
@@ -1876,6 +1926,9 @@
                     "label": "هاتف",
                     "placeholder": "+966 42 123 4567",
                     "terms": "هاتف,تلفون"
+                },
+                "pipeline": {
+                    "label": "نوع"
                 },
                 "piste/difficulty": {
                     "label": "الصعوبة",
@@ -1891,7 +1944,6 @@
                     "placeholder": "سهل، متوسط، متقدم..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "الصعوبة",
                     "options": {
                         "advanced": "متقدم (جوهرة سوداء)",
                         "easy": "سهل (دائرة خضراء)",
@@ -1904,7 +1956,6 @@
                     "placeholder": "سهل، متوسط، متقدم..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "الصعوبة",
                     "options": {
                         "advanced": "متقدم - ضيق، منحدر أو جزء جليدي، إنعطاف حاد",
                         "easy": "سهل - تلال ناعمة، منحدرات صغيرة",
@@ -1915,7 +1966,6 @@
                     "placeholder": "سهل، متوسط، متقدم..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "الصعوبة",
                     "options": {
                         "advanced": "متقدم S:انحدار بدرجة 40-45",
                         "easy": "سهل - WS:انحدار بدرجة 30-35",
@@ -1939,7 +1989,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "تحضير مسار الزحلقة",
                     "options": {
                         "backcountry": "غير محضر/معتنى به",
                         "classic": "تقليدي",
@@ -1947,14 +1996,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "تحضير مسار الزحلقة",
                     "options": {
                         "backcountry": "غير محضر/معتنى به - لابد من وجود حذاء مخصص",
                         "classic": "كلاسيكي وللهايكنك الشتوي"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "تحضير مسار الزحلقة",
                     "options": {
                         "backcountry": "غير محضر/معتنى به",
                         "classic": "تقليدي",
@@ -1987,8 +2034,19 @@
                 "plant/method": {
                     "label": "طريقة التوليد"
                 },
+                "plant/output": {
+                    "options": {
+                        "cold_air": "هواء بارد",
+                        "cold_water": "ماء بارد",
+                        "compressed_air": "هواء مضغوط",
+                        "electricity": "كهرباء",
+                        "hot_air": "هواء ساخن",
+                        "hot_water": "ماء ساخن",
+                        "steam": "بخار",
+                        "vacuum": "فراغ"
+                    }
+                },
                 "plant/output/electricity": {
-                    "label": "الطاقة الناتجة",
                     "placeholder": "500 ميجا وات، 1000 ميجا وات، 2000 ميجا وات..."
                 },
                 "plant/source": {
@@ -2009,6 +2067,9 @@
                 },
                 "population": {
                     "label": "عدد السكان"
+                },
+                "population/date": {
+                    "placeholder": "YYYY-MM-DD"
                 },
                 "portable": {
                     "label": "محمول",
@@ -2161,6 +2222,30 @@
                 },
                 "religion": {
                     "label": "الديانة",
+                    "options": {
+                        "bahai": "Bahá’í",
+                        "benzhu": "Benzhu",
+                        "buddhist": "Buddhist",
+                        "caodaism": "Caodaist",
+                        "chinese_folk": "Chinese Folk Religion",
+                        "christian": "Christian",
+                        "confucian": "Confucian",
+                        "hindu": "Hindu",
+                        "jain": "Jain",
+                        "jewish": "Jewish",
+                        "multifaith": "Multifaith",
+                        "muslim": "الإسلام",
+                        "none": "Nonreligious",
+                        "pagan": "Pagan",
+                        "shinto": "Shinto",
+                        "sikh": "Sikh",
+                        "spiritualist": "Spiritualist",
+                        "taoist": "Taoist",
+                        "tenrikyo": "Tenrikyo",
+                        "unitarian_universalist": "Unitarian Universalist",
+                        "vietnamese_folk": "Vietnamese Folk Religion",
+                        "voodoo": "Voodoo"
+                    },
                     "terms": "الديانة,الدين,الملة"
                 },
                 "reservation": {
@@ -2403,6 +2488,9 @@
                 "shelter_type": {
                     "label": "النوع"
                 },
+                "shoes": {
+                    "label": "أحذية"
+                },
                 "shop": {
                     "label": "النوع"
                 },
@@ -2423,9 +2511,6 @@
                 },
                 "site": {
                     "label": "النوع"
-                },
-                "site_type": {
-                    "label": "نوع الموقع"
                 },
                 "smoking": {
                     "label": "التدخين",
@@ -2574,6 +2659,12 @@
                     "placeholder": "غير معروف",
                     "terms": "هيكلة,بنية,منظومة"
                 },
+                "structure_power": {
+                    "label": "بنية",
+                    "options": {
+                        "solid": "صلب"
+                    }
+                },
                 "structure_waterway": {
                     "label": "البنية",
                     "options": {
@@ -2596,7 +2687,21 @@
                     "label": "مادة"
                 },
                 "substation": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "industrial": "صناعي"
+                    }
+                },
+                "substation_pipeline": {
+                    "label": "نوع",
+                    "options": {
+                        "compression": "ضغط",
+                        "field_gathering": "ميدان تجمع",
+                        "industrial": "صناعي",
+                        "measurement": "قياس",
+                        "valve": "صمام",
+                        "valve_group": "مجموعة صمامات"
+                    }
                 },
                 "supervised": {
                     "label": "يشرف عليها",
@@ -2619,9 +2724,11 @@
                         "ground": "أرضي",
                         "paved": "مرصوف/معبد",
                         "paving_stones": "مرصوف بالطوب",
+                        "salt": "ملح",
                         "sand": "رمل",
                         "unpaved": "غير مرصوف/معبد",
-                        "wood": "خشبي"
+                        "wood": "خشبي",
+                        "woodchips": "رقائق الخشب"
                     },
                     "terms": "السطح,سطح,أديم"
                 },
@@ -2644,8 +2751,7 @@
                     "terms": "تاريخ آخر تحقق واستقصاء شخصي,تاريخ آخر تحقق واستقصاء واقعي,تاريخ آخر تحقق واستقصاء موثق"
                 },
                 "survey_point/datum_aligned": {
-                    "label": "تتماشى مع المسند الجيوديسي المحلي",
-                    "terms": "تتماشى مع المسند الجيوديسي المحلي"
+                    "label": "تتماشى مع المسند الجيوديسي المحلي"
                 },
                 "survey_point/purpose": {
                     "label": "الغرض من نقطة الاستطلاع",
@@ -2743,6 +2849,14 @@
                     "label": "أنواع المراحيض",
                     "terms": "المراحيض,وضعيات قضاء الحاجة"
                 },
+                "toilets/wheelchair": {
+                    "label": "مرحاض يستقبل الكراسي المتحركة",
+                    "options": {
+                        "limited": "محدودة",
+                        "no": "لا",
+                        "yes": "نعم"
+                    }
+                },
                 "toll": {
                     "label": "رسوم",
                     "terms": "رسوم"
@@ -2757,6 +2871,10 @@
                     "label": "وصف بناء البرج",
                     "placeholder": "مشدود ، مبني هيكلياً، مخفي ، ..."
                 },
+                "tower/platforms": {
+                    "label": "منصات",
+                    "placeholder": "1 ، 2 ، 3 ..."
+                },
                 "tower/type": {
                     "label": "النوع"
                 },
@@ -2766,7 +2884,6 @@
                 "tracktype": {
                     "label": "تصنيف المسار",
                     "options": {
-                        "grade1": "مستوي: مرصوف/معبد أو مدكوك ومضغوط بشكل قوي",
                         "grade2": "مستوي في المعظم: وهو مسار عبر الحصى/صخور المختلطة مع بعض المواد اللينة",
                         "grade3": "مسار مختلط بين موارد صلبة ولينة",
                         "grade4": "لين في المعظم: مسار على تربة/رمال/عشب مختلطة مع بعض المواد الصلبة مثل الحصى",
@@ -2823,7 +2940,8 @@
                         },
                         "no": "لا",
                         "walk": {
-                            "description": "لا يوجد سوى إشارة عند السماح بالمشي"
+                            "description": "لا يوجد سوى إشارة عند السماح بالمشي",
+                            "title": "مؤشر المشي"
                         },
                         "yes": "نعم"
                     }
@@ -2871,7 +2989,22 @@
                     "placeholder": "الافتراضي"
                 },
                 "tunnel_combo": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "avalanche_protector": "حامي انهيار ثلجي",
+                        "building_passage": "ممر داخل البناء",
+                        "culvert": "بربخ"
+                    }
+                },
+                "turning_circle": {
+                    "label": "شكل"
+                },
+                "two_sided": {
+                    "label": "ذو وجهين",
+                    "options": {
+                        "undefined": "لا",
+                        "yes": "نعم"
+                    }
                 },
                 "usage_rail": {
                     "label": "نوع الاستخدام",
@@ -2972,10 +3105,6 @@
                     "label": "الجهد الكهربائي العالي",
                     "terms": "الجهد الكهربائي العالي,الجهد العالي,الفولت العالي"
                 },
-                "voltage_electrified": {
-                    "label": "الجهد الكهربائي",
-                    "terms": "الجهد الكهربائي,الجهد الكهربي,الفولت,الفولتج,فولطية,الفولطية,الفلطية,التيار الكهربائي"
-                },
                 "wall": {
                     "label": "النوع"
                 },
@@ -2989,16 +3118,15 @@
                     "label": "نقطة تعبئة مياة شرب"
                 },
                 "water_source": {
-                    "label": "مصدر المياه"
+                    "label": "مصدر المياه",
+                    "options": {
+                        "water_tank": "خزان ماء"
+                    }
                 },
                 "water_tank/volume": {
                     "label": "السعة (لتر)",
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "الحجم (لتر)"
-                },
-                "water_volume": {
-                    "label": "سعة خزان المياه (م³)",
-                    "terms": "سعة خزان المياه (م³)"
                 },
                 "waterway": {
                     "label": "النوع"
@@ -3435,6 +3563,9 @@
                 "amenity/drinking_water": {
                     "name": "مياه شرب",
                     "terms": "ماء الشرب"
+                },
+                "amenity/driver_training": {
+                    "name": "أراضي تعليم السيلقة"
                 },
                 "amenity/driving_school": {
                     "name": "مدرسة تعليم القيادة",
@@ -4161,10 +4292,6 @@
                     "name": "حظيرة حيوانات",
                     "terms": "حظيرة حيوانات،محجر حيوانات،حوش حيوانات،حوز حيوانات،ضميمة حيوانات"
                 },
-                "attraction/big_wheel": {
-                    "name": "دولاب هواء",
-                    "terms": "دولاب هواء; العجلة الكبيرة"
-                },
                 "attraction/bumper_car": {
                     "name": "Bumper Cars"
                 },
@@ -4330,10 +4457,6 @@
                 "barrier/kissing_gate": {
                     "name": "بوابة لا تسمح بعبور الماشية",
                     "terms": "بوابة منع الماشية"
-                },
-                "barrier/lift_gate": {
-                    "name": "حاجز عمودي يرتفع وينخفض",
-                    "terms": "بوابة الرافعة,حاجز عمودي,حاجز عمودي يرتفع وينخفض,بوابة عامودية,بوابة مواقف عامودية"
                 },
                 "barrier/log": {
                     "name": "شجرة ساقطة",
@@ -4605,10 +4728,6 @@
                     "name": "مبنى الملعب",
                     "terms": "مبنى الملعب"
                 },
-                "building/static_caravan": {
-                    "name": "منزل متحرك موجود في مكانه لفترة",
-                    "terms": "مقطورة متحركة ثابتة في مكانها لفترة"
-                },
                 "building/sty": {
                     "name": "Pigsty"
                 },
@@ -4689,10 +4808,6 @@
                 "craft/bookbinder": {
                     "name": "تغليف وتجليد الكتب",
                     "terms": "مجلد الكتب"
-                },
-                "craft/brewery": {
-                    "name": "مصنع بيرة",
-                    "terms": "بيرة; جعة"
                 },
                 "craft/carpenter": {
                     "name": "نجار",
@@ -5169,23 +5284,13 @@
                 "highway/crossing": {
                     "name": "معبر/خط مشاة"
                 },
-                "highway/crossing/marked": {
-                    "name": "معبر مشاة بعلامات مرورية",
-                    "terms": "معبر مشاة بدون إشارة مرور,معبر مشاة غير متحكم به,معبر مشاة"
-                },
                 "highway/crossing/traffic_signals": {
                     "name": "معبر مشاة بإشارات",
                     "terms": "معبر مشاة بإشارات"
                 },
-                "highway/crossing/uncontrolled": {
-                    "name": "معبر مشاة بعلامات مرورية"
-                },
                 "highway/crossing/unmarked": {
                     "name": "معبر مشاة بدون علامات أو إشارة مرورية",
                     "terms": "معبر مشاة بدون علامات مرورية أو إشارة مرورية"
-                },
-                "highway/crossing/zebra": {
-                    "name": "معبر مشاة بعلامات مرورية"
                 },
                 "highway/cycleway": {
                     "name": "مسار دراجات",
@@ -5201,10 +5306,6 @@
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "معبر مشاة ودراجات هوائية",
                     "terms": "معبر مشاة ودراجات هوائية"
-                },
-                "highway/cycleway/crossing/marked": {
-                    "name": "معبر دراجات هوائية بعلامات مرورية",
-                    "terms": "معبر دراجات هوائية بعلامات مرورية"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "معبر دراجات هوائية بدون علامات مرورية",
@@ -5248,24 +5349,9 @@
                 "highway/footway/informal": {
                     "name": "مسار للمشاة غير رسمي"
                 },
-                "highway/footway/marked": {
-                    "name": "معبر مشاة بعلامات مرورية",
-                    "terms": "معبر مشاة بعلامات مرورية"
-                },
                 "highway/footway/sidewalk": {
                     "name": "رصيف مشاة",
                     "terms": "رصيف مشاة,رصيف المشاة,رصيف جانب الطريق للمشاة"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "معبر مشاة بإشارات",
-                    "terms": "معبر مشاة بإشارات"
-                },
-                "highway/footway/unmarked": {
-                    "name": "معبر مشاة بدون علامات أو إشارة مرورية",
-                    "terms": "معبر مشاة بدون علامات أو إشارة مرورية"
-                },
-                "highway/footway/zebra": {
-                    "name": "معبر مشاة بعلامات مرورية"
                 },
                 "highway/give_way": {
                     "name": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\"",
@@ -5292,10 +5378,6 @@
                     "terms": "مفرق طريق سريع,مخرج طريق سريع"
                 },
                 "highway/motorway_link": {
-                    "name": "وصلة لطريق سريع",
-                    "terms": "رابط لطريق سريع,وصلة طريق سريع,طرق مرتبطة بالطريق السريع"
-                },
-                "highway/motorway_link-US-CA": {
                     "name": "وصلة لطريق سريع",
                     "terms": "رابط لطريق سريع,وصلة طريق سريع,طرق مرتبطة بالطريق السريع"
                 },
@@ -5329,10 +5411,6 @@
                 },
                 "highway/primary_link": {
                     "name": "وصلة لطريق أولي",
-                    "terms": "رابط لطريق أولي,وصلة طريق أولي"
-                },
-                "highway/primary_link-US-CA": {
-                    "name": "وصلة طريق أولي",
                     "terms": "رابط لطريق أولي,وصلة طريق أولي"
                 },
                 "highway/raceway": {
@@ -5456,10 +5534,6 @@
                     "terms": "شارع أساسي,شارع رئيسي"
                 },
                 "highway/trunk_link": {
-                    "name": "وصلة لطريق رئيسي",
-                    "terms": "رابط لشارع رئيسي"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "وصلة لطريق رئيسي",
                     "terms": "رابط لشارع رئيسي"
                 },
@@ -6003,10 +6077,6 @@
                     "name": "ملعب كريكت",
                     "terms": "ملعب كريكت"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "حلبة ركوب الخيل",
-                    "terms": "حلبة ركوب الخيل"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "مساحة ملعب الهوكى",
                     "terms": "مساحة ملعب الهوكى"
@@ -6367,10 +6437,6 @@
                     "name": "خط أنابيب تحت الأرض",
                     "terms": "خط أنابيب تحت الأرض"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "صمام خط أنابيب",
-                    "terms": "صمام خط أنابيب"
-                },
                 "man_made/planter": {
                     "name": "أصيص",
                     "terms": "أصيص,قصرية,محبق,إناء زراعي"
@@ -6432,6 +6498,9 @@
                 "man_made/tower/defensive": {
                     "name": "برج محصن",
                     "terms": "برج محصن"
+                },
+                "man_made/tower/diving": {
+                    "name": "منصة غطس"
                 },
                 "man_made/tower/minaret": {
                     "name": "منارة مسجد (مئذنة)",
@@ -7234,6 +7303,11 @@
                     "name": "محطة كهرباء كهرومائية",
                     "terms": "محطة كهرباء كهرومائية"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "مزرعة شمسية",
+                    "terms": "محطة الطاقة الشمسية ، محطة توليد الطاقة الشمسية ، الطاقات المتجددة",
+                    "aliases": "محطة للطاقة الشمسية"
+                },
                 "power/plant/source/nuclear": {
                     "name": "محطة كهرباء نووية",
                     "terms": "محطة كهرباء نووية"
@@ -7243,8 +7317,8 @@
                     "terms": "محطة كهرباء تعمل بالنفط"
                 },
                 "power/plant/source/solar": {
-                    "name": "مزرعة للطاقة الشمسية",
-                    "terms": "مزرعة للطاقة الشمسية"
+                    "name": "محطة للطاقة الشمسية",
+                    "terms": "محطة توليد الطاقة الشمسية ، الطاقات المتجددة"
                 },
                 "power/plant/source/waste": {
                     "name": "مولد طاقة يعمل عن طريق حرق النفايات",
@@ -7614,6 +7688,10 @@
                     "name": "متجر أنيمي / مانغا",
                     "terms": "متجر أنيمي / مانغا"
                 },
+                "shop/antiques": {
+                    "name": "متجر تحف",
+                    "terms": "متجر تحف ، متجر أشياء قديمة ، تذكارات"
+                },
                 "shop/appliance": {
                     "name": "متجر الأجهزة المنزلية",
                     "terms": "متجر الأجهزة المنزلية,متجر ثلاجات,ثلاجات,غسالات,مكيفات"
@@ -7668,6 +7746,11 @@
                 },
                 "shop/bookmaker": {
                     "name": "مكتب رهانات"
+                },
+                "shop/books": {
+                    "name": "بائع كتب",
+                    "terms": "متجر كتب ، مكتبة ، محل بيع كتب",
+                    "aliases": "متجر كتب\nمكتبة\nمحل بيع كتب"
                 },
                 "shop/boutique": {
                     "name": "بوتيك"
@@ -7796,6 +7879,10 @@
                     "name": "متجر الألبان",
                     "terms": "متجر الألبان، الألبان"
                 },
+                "shop/deli": {
+                    "name": "محل أطعمة لذيذة",
+                    "terms": "محل أطعمة راقية ، متجر أطعمة لذيذة"
+                },
                 "shop/department_store": {
                     "name": "محل متعدد الأقسام",
                     "terms": "محل متعدد الأقسام"
@@ -7917,6 +8004,10 @@
                     "name": "محل مواد بناء",
                     "terms": "محل بيع عتاد,سباكة,مواد بناء,لوازم حديقة,عدد,مسامير,حديد,مفكات"
                 },
+                "shop/health_food": {
+                    "name": "متجر أغذية صحية",
+                    "terms": "متجر أغذية صحية ، محل أغذية صحية"
+                },
                 "shop/hearing_aids": {
                     "name": "متجر سماعات الأذن الطبية",
                     "terms": "سماعات الأذن الطبية; معينات سمعية; أجهزة تقوية السمع; مساعدات السمع"
@@ -8028,6 +8119,11 @@
                     "name": "متجر آلات موسيقية",
                     "terms": "محل بيع الآلات الموسيقية"
                 },
+                "shop/newsagent": {
+                    "name": "كشك",
+                    "terms": "كشك جرائد ، كشك جرائد ومجلات ، محل بيع الجرائد ، محل بيع صحف",
+                    "aliases": "كشك جرائد\nكشك جرائد ومجلات\nمحل بيع الجرائد\nمحل بيع صحف"
+                },
                 "shop/nutrition_supplements": {
                     "name": "متجر المكملات الغذائية",
                     "terms": "متجر المكملات الغذائية، مكملات غذائية"
@@ -8056,6 +8152,10 @@
                     "name": "متجر حلويات",
                     "terms": "متجر الحلويات"
                 },
+                "shop/pawnbroker": {
+                    "name": "متجر رهن",
+                    "terms": "متجر رهن"
+                },
                 "shop/perfumery": {
                     "name": "متجر عطور",
                     "terms": "عطور"
@@ -8063,10 +8163,6 @@
                 "shop/pet": {
                     "name": "محل بيع حيوانات أليفة",
                     "terms": "محل حيوانات أليفة"
-                },
-                "shop/pet_grooming": {
-                    "name": "متجر العناية بالحيوانات الأليفة",
-                    "terms": "متجر العناية بالحيوانات الأليفة"
                 },
                 "shop/photo": {
                     "name": "محل تصوير",
@@ -8110,6 +8206,10 @@
                 "shop/seafood": {
                     "name": "متجر مأكولات بحرية",
                     "terms": "مأكولات بحرية,مسمكة,سمك"
+                },
+                "shop/second_hand": {
+                    "name": "متجر التوفير",
+                    "terms": "محل لبيع البضائع المستعملة ، محل التوفير ، البال ، البالي ، قديم ، أشياء قديمة ، مستعمل ، بال"
                 },
                 "shop/sewing": {
                     "name": "متجر مستلزمات خياطة",
@@ -8208,6 +8308,11 @@
                 "shop/vacuum_cleaner": {
                     "name": "متجر المكنسات الكهربائية",
                     "terms": "متجر المكنسات الكهربائية; مكنسات كهربائية"
+                },
+                "shop/variety_store": {
+                    "name": "متجر التخفيضات",
+                    "terms": "متجر التخفيضات ، متجر الخصم ، متجر الخصومات ، محلات كماليات رخيصة (أبو خمسة) ، منوعات وكماليات رخيصة ، محل كل شيء ، محل كماليات رخيصة",
+                    "aliases": "متجر الخصم\nمتجر الخصومات\nمحلات كماليات رخيصة (أبو خمسة)\nمنوعات وكماليات رخيصة\nمحل كل شيء\nمحل كماليات رخيصة"
                 },
                 "shop/video": {
                     "name": "محل بيع وتأجير الأفلام",
@@ -8477,6 +8582,10 @@
                 "traffic_sign/maxspeed": {
                     "name": "علامة الحد الأعلى لسرعة الطريق",
                     "terms": "علامة الحد الأعلى لسرعة الطريق"
+                },
+                "traffic_sign/variable_message": {
+                    "name": "علامة رسالة متغيرة",
+                    "terms": "علامة رسالة متغيرة ، علامة ذات رسالة متغيرة ، علامة مرور ذات رسالة متغيرة"
                 },
                 "type/boundary": {
                     "name": "حدود",

@@ -11,15 +11,15 @@ class RoadWidthKtTest {
         assertEquals(4.3f, estimateRoadwayWidth(mapOf("width" to "4.3")))
         assertEquals(null, estimateRoadwayWidth(mapOf("width" to "4 meters")))
 
-        assertEquals(12f, estimateRoadwayWidth(mapOf("lanes" to "4")))
+        assertEquals(11f, estimateRoadwayWidth(mapOf("lanes" to "4")))
         assertEquals(null, estimateRoadwayWidth(mapOf("lanes" to "4.5")))
-        assertEquals(3f, estimateRoadwayWidth(mapOf("lanes" to "0")))
+        assertEquals(2.75f, estimateRoadwayWidth(mapOf("lanes" to "0")))
 
-        assertEquals(12f, estimateRoadwayWidth(mapOf("highway" to "motorway", "lanes" to "2")))
-        assertEquals(8f, estimateRoadwayWidth(mapOf("highway" to "trunk", "lanes" to "2")))
-        assertEquals(6f, estimateRoadwayWidth(mapOf("highway" to "residential", "lanes" to "2")))
+        assertEquals(11.5f, estimateRoadwayWidth(mapOf("highway" to "motorway", "lanes" to "2")))
+        assertEquals(7.5f, estimateRoadwayWidth(mapOf("highway" to "trunk", "lanes" to "2")))
+        assertEquals(5.5f, estimateRoadwayWidth(mapOf("highway" to "residential", "lanes" to "2")))
 
-        assertEquals(100f, estimateRoadwayWidth(mapOf(
+        assertEquals(99.5f, estimateRoadwayWidth(mapOf(
             "highway" to "residential",
             "lanes" to "2",
             "shoulder" to "right",
@@ -37,12 +37,12 @@ class RoadWidthKtTest {
         tags.remove("width:carriageway")
         assertEquals(11.5f, estimateRoadwayWidth(tags))
         tags.remove("width")
-        assertEquals(9f, estimateRoadwayWidth(tags))
+        assertEquals(8.25f, estimateRoadwayWidth(tags))
     }
 
     @Test fun `guess roadway width observes oneway tag`() {
-        assertEquals(6f, guessRoadwayWidth(mapOf("highway" to "residential")))
-        assertEquals(3f, guessRoadwayWidth(mapOf("highway" to "residential", "oneway" to "-1")))
+        assertEquals(5.5f, guessRoadwayWidth(mapOf("highway" to "residential")))
+        assertEquals(2.75f, guessRoadwayWidth(mapOf("highway" to "residential", "oneway" to "-1")))
     }
 
     @Test fun `usable roadway width`() {

@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -20,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
@@ -35,6 +37,8 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -47,7 +51,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import org.koin.core.qualifier.named
 import java.util.MissingFormatArgumentException
+import java.util.concurrent.FutureTask
 
 class UndoDialog(
     context: Context,
@@ -56,6 +62,9 @@ class UndoDialog(
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val editHistoryController: EditHistoryController by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+
+    private val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
@@ -66,7 +75,7 @@ class UndoDialog(
         val overlayResId = edit.overlayIcon
         if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
         binding.createdTimeText.text =
-            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
+            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, nowAsEpochMilliseconds(), DateUtils.MINUTE_IN_MILLIS)
         binding.descriptionContainer.addView(edit.descriptionView)
 
         setTitle(R.string.undo_confirm_title2)
@@ -81,6 +90,9 @@ class UndoDialog(
         super.onCreate(savedInstanceState)
         scope.launch {
             binding.titleText.text = edit.getTitle()
+            if (edit is ElementEdit) {
+                binding.titleHintText.text = getNameAndLocationLabel(edit.originalElement, context.resources, featureDictionary)
+            }
         }
     }
 
@@ -117,6 +129,7 @@ class UndoDialog(
                 is DeletePoiNodeAction ->     createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
                 is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
+                is MoveNodeAction ->          createTextView(ResText(R.string.move_node_action_description))
                 else -> throw IllegalArgumentException()
             }
         }

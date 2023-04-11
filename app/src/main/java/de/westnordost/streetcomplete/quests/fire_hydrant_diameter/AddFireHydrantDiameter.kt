@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -17,7 +18,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
          and fire_hydrant:type and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
          and !fire_hydrant:diameter
-         and fire_hydrant:diameter:signed != no
+         and (fire_hydrant:diameter:signed != no or fire_hydrant:diameter:signed older today -6 years)
     """
     override val changesetComment = "Specify fire hydrant diameters"
     override val wikiLink = "Tag:emergency=fire_hydrant"
@@ -36,7 +37,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun createForm() = AddFireHydrantDiameterForm()
 
-    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
             is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"

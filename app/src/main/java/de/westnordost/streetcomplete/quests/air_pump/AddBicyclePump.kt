@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.air_pump
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -17,7 +18,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
      * see https://wiki.openstreetmap.org/wiki/Tag:shop=bicycle#Additional_keys
      *
      * Also, "access=customers" + "service:bicycle:pump=yes" is an invalid combination, as the wiki states that
-     * "yes" means "a feture has a bicycle pump which can be used by anybody, not only customers"
+     * "yes" means "a feature has a bicycle pump which can be used by anybody, not only customers"
      */
     override val elementFilter = """
         nodes, ways with
@@ -48,7 +49,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("service:bicycle:pump", answer.toYesNo())
     }
 }

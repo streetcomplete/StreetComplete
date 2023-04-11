@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -36,20 +35,9 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override fun createForm() = AddSmoothnessForm()
 
-    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            is SmoothnessValueAnswer -> {
-                tags.updateWithCheckDate("smoothness", answer.value.osmValue)
-                tags.remove("smoothness:date")
-            }
-            is WrongSurfaceAnswer -> {
-                tags.remove("surface")
-                tags.remove("smoothness")
-                tags.remove("smoothness:date")
-                tags.removeCheckDatesForKey("smoothness")
-            }
-            is IsActuallyStepsAnswer -> throw IllegalStateException()
-        }
+    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer is IsActuallyStepsAnswer) throw IllegalStateException()
+        answer.applyTo(tags)
     }
 }
 

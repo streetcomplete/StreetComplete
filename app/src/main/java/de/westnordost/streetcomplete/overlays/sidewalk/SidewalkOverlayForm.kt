@@ -16,24 +16,23 @@ import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
-    private var currentSidewalk: LeftAndRightSidewalk? = null
+    private var originalSidewalk: LeftAndRightSidewalk? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        originalSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        currentSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
-        streetSideSelect.setPuzzleSide(currentSidewalk?.left?.asStreetSideItem(), false)
-        streetSideSelect.setPuzzleSide(currentSidewalk?.right?.asStreetSideItem(), true)
+        streetSideSelect.setPuzzleSide(originalSidewalk?.left?.asStreetSideItem(), false)
+        streetSideSelect.setPuzzleSide(originalSidewalk?.right?.asStreetSideItem(), true)
     }
 
     override fun onClickSide(isRight: Boolean) {
@@ -52,12 +51,10 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != currentSidewalk?.left ||
-        streetSideSelect.right?.value != currentSidewalk?.right
+        streetSideSelect.left?.value != originalSidewalk?.left ||
+        streetSideSelect.right?.value != originalSidewalk?.right
 
-    override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
-        item.value.name
-
-    override fun deserialize(str: String, isRight: Boolean) =
-        Sidewalk.valueOf(str).asStreetSideItem()!!
+    override fun serialize(item: Sidewalk) = item.name
+    override fun deserialize(str: String) = Sidewalk.valueOf(str)
+    override fun asStreetSideItem(item: Sidewalk, isRight: Boolean) = item.asStreetSideItem()!!
 }

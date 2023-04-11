@@ -11,14 +11,14 @@ import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
-import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
-import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
@@ -31,6 +31,7 @@ class TimeRangePickerDialog(
 ) : AlertDialog(context) {
 
     private val startPicker: TimePicker
+    private val startPickerContainer: ViewGroup
     private val endPicker: TimePicker
     private val endPickerContainer: ViewGroup
     private val viewPager: ViewPager2
@@ -59,11 +60,13 @@ class TimeRangePickerDialog(
             null as DialogInterface.OnClickListener?
         )
 
-        val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
-        startPicker = startPickerBinding.root
+        val startPickerBinding = TimeRangePickerBinding.inflate(inflater)
+        startPickerContainer = startPickerBinding.root
+        startPicker = startPickerBinding.picker
         startPicker.setIs24HourView(is24HourView)
+        startPickerBinding.checkBox.isInvisible = true
 
-        val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
+        val endPickerBinding = TimeRangePickerBinding.inflate(inflater)
         endPickerContainer = endPickerBinding.root
         openEndCheckbox = endPickerBinding.checkBox
         endPicker = endPickerBinding.picker
@@ -122,7 +125,7 @@ class TimeRangePickerDialog(
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val viewGroup = (holder.itemView as FrameLayout)
             viewGroup.removeAllViews()
-            viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
+            viewGroup.addView(if (position == START_TIME_TAB) startPickerContainer else endPickerContainer)
         }
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

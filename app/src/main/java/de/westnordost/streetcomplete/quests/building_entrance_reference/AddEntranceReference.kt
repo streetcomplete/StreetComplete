@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_entrance_reference
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -32,6 +33,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
           and !name
           and !ref
     """.toElementFilterExpression() }
+
+    private val privateFootwaysFilter by lazy {
+        "ways with highway ~ footway|steps|pedestrian and access ~ private|no".toElementFilterExpression()
+    }
 
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
@@ -72,6 +77,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // note: it does not support multipolygon buildings
+        val excludedWayNodeIds = mutableSetOf<Long>()
+        mapData.ways
+            .filter { privateFootwaysFilter.matches(it) }
+            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
         val buildings = mapData.ways.asSequence()
             .filter { buildingFilter.matches(it) }
         val result = mutableListOf<Node>()
@@ -80,14 +89,14 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                 .mapNotNull { mapData.getNode(it) }
                 .filter { entrancesFilter.matches(it) }
             if (buildingEntrances.count() < 2) continue
-            result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) })
+            result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) && it.id !in excludedWayNodeIds })
         }
         return result
     }
 
     override fun createForm() = AddEntranceReferenceForm()
 
-    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is FlatRange -> {
                 tags["addr:flats"] = answer.flatRange

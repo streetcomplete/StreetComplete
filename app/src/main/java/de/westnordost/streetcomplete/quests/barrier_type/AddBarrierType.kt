@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
@@ -24,6 +25,10 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
          and !leisure
          and !aeroway
          and !railway
+         and !craft
+         and !healthcare
+         and !office
+         and !shop
     """
     override val changesetComment = "Specify type of barriers"
     override val wikiLink = "Key:barrier"
@@ -35,6 +40,6 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

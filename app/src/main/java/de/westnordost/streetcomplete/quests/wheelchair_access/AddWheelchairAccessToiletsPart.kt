@@ -1,18 +1,25 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
-         toilets = yes
-         and name
+        nodes, ways with
+          wheelchair = limited
+          and (
+           toilets = yes
+           or !toilets and (
+             amenity ~ restaurant|pub|bar
+             or amenity ~ cafe|fast_food and indoor_seating = yes
+           )
+         )
          and access !~ no|private
          and (
            !toilets:wheelchair
@@ -29,9 +36,17 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title2
 
-    override fun createForm() = AddWheelchairAccessToiletsForm()
+    override fun createForm() = AddWheelchairAccessToiletsPartForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("toilets:wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsPartAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is WheelchairAccessToiletsPart -> {
+                tags.updateWithCheckDate("toilets:wheelchair", answer.access.osmValue)
+                tags["toilets"] = "yes"
+            }
+            NoToilet -> {
+                tags.updateWithCheckDate("toilets", "no")
+            }
+        }
     }
 }

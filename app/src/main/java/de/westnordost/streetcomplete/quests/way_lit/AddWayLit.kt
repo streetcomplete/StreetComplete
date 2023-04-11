@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
@@ -38,6 +39,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
         and indoor != yes
+        and ~path|footway|cycleway !~ link
     """
 
     override val changesetComment = "Specify whether ways are lit"
@@ -50,7 +52,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     override fun createForm() = WayLitForm()
 
-    override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is IsActuallyStepsAnswer -> tags["highway"] = "steps"
             is WayLit -> answer.litStatus.applyTo(tags)

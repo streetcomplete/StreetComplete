@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
@@ -31,6 +32,7 @@ class AddCyclewayWidth(
         and area != yes
         and access !~ private|no
         and placement != transition
+        and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"
@@ -43,7 +45,7 @@ class AddCyclewayWidth(
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val isExclusive = tags["highway"] == "cycleway" && tags["foot"] != "yes" && tags["foot"] != "designated"
 
         val key = if (isExclusive) "width" else "cycleway:width"

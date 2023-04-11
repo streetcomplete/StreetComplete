@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways, relations with shop = bicycle
+        nodes, ways with shop = bicycle
         and (
             !service:bicycle:repair
             or service:bicycle:repair older today -6 years
@@ -36,7 +37,7 @@ class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("service:bicycle:repair", answer.toYesNo())
     }
 }

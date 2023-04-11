@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -9,7 +10,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
         (
           amenity ~ library|community_centre|youth_centre
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet
@@ -35,7 +36,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override fun createForm() = AddInternetAccessForm()
 
-    override fun applyAnswerTo(answer: InternetAccess, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: InternetAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("internet_access", answer.osmValue)
     }
 }

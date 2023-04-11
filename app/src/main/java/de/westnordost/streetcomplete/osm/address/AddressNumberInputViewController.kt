@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.nonBlankHintOrNull
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.SwitchKeyboardButtonViewController
@@ -20,6 +22,7 @@ class AddressNumberInputViewController(
     activity: Activity,
     private val houseNumberInput: EditText?,
     private val blockNumberInput: EditText?,
+    private val blockInput: EditText?,
     private val conscriptionNumberInput: EditText?,
     private val streetNumberInput: EditText?,
     toggleKeyboardButton: Button,
@@ -33,6 +36,7 @@ class AddressNumberInputViewController(
     val isEmpty: Boolean get() =
         houseNumberInput?.nonBlankTextOrNull == null
         && blockNumberInput?.nonBlankTextOrNull == null
+        && blockInput?.nonBlankTextOrNull == null
         && conscriptionNumberInput?.nonBlankTextOrNull == null
         && streetNumberInput?.nonBlankTextOrNull == null
 
@@ -45,18 +49,21 @@ class AddressNumberInputViewController(
             }
 
             val houseNumber = houseNumberInput?.nonBlankTextOrNull ?: return null
-            if (blockNumberInput != null) {
-                val blockNumber = blockNumberInput.nonBlankTextOrNull ?: return null
-                return HouseAndBlockNumber(houseNumber, blockNumber)
-            } else {
-                return HouseNumber(houseNumber)
+            return when {
+                blockNumberInput != null -> blockNumberInput.nonBlankTextOrNull?.let { HouseAndBlockNumber(houseNumber, it) }
+                blockInput != null -> blockInput.nonBlankTextOrNull?.let { HouseNumberAndBlock(houseNumber, it) }
+                else -> HouseNumber(houseNumber)
             }
         }
         set(value) {
             when (value) {
                 is HouseAndBlockNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
-                    blockNumberInput?.setText(value.houseNumber)
+                    blockNumberInput?.setText(value.blockNumber)
+                }
+                is HouseNumberAndBlock -> {
+                    houseNumberInput?.setText(value.houseNumber)
+                    blockInput?.setText(value.block)
                 }
                 is HouseNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
@@ -68,6 +75,7 @@ class AddressNumberInputViewController(
                 null -> {
                     houseNumberInput?.text = null
                     blockNumberInput?.text = null
+                    blockInput?.text = null
                     conscriptionNumberInput?.text = null
                     streetNumberInput?.text = null
                 }
@@ -86,15 +94,34 @@ class AddressNumberInputViewController(
                     }
                 }
             }
+            // same for block
+            if (blockInput != null) {
+                if (blockInput.nonBlankTextOrNull == null) {
+                    if (blockInput.nonBlankHintOrNull != null) {
+                        blockInput.setText(blockInput.hint)
+                    }
+                }
+            }
             onInputChanged?.invoke()
         }
         blockNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
+        blockInput?.doAfterTextChanged { onInputChanged?.invoke() }
         conscriptionNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
         streetNumberInput?.doAfterTextChanged { onInputChanged?.invoke() }
 
         toggleKeyboardButtonViewController = SwitchKeyboardButtonViewController(
             activity, toggleKeyboardButton, setOfNotNull(houseNumberInput, blockNumberInput, streetNumberInput)
-        )
+        ) // blockInput is missing because it should always show the full keyboard
+
+        blockInput?.let { editText ->
+            val ctx = editText.context
+            val formWidth = ctx.resources.getDimension(R.dimen.quest_form_width).toInt().takeIf { it > 0 }
+                ?: ctx.resources.displayMetrics.widthPixels
+            // form width minus 250dp, but max. 150dp
+            editText.maxWidth = (formWidth - ctx.dpToPx(250).toInt())
+                .coerceAtMost(ctx.dpToPx(150).toInt())
+                .coerceAtLeast(ctx.dpToPx(56).toInt())
+        }
     }
 
     private fun addToHouseNumberInput(add: Int) {

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -41,6 +42,7 @@ import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.add
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -60,6 +62,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private val noteEditsController: NoteEditsController by inject()
     private val osmQuestController: OsmQuestController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
@@ -80,8 +83,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
 
     // overridable by child classes
-    open val otherAnswers = listOf<AnswerItem>()
-    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<IAnswerItem>()
+    open val buttonPanelAnswers = listOf<IAnswerItem>()
 
     interface Listener {
         /** The GPS position at which the user is displayed at */
@@ -95,6 +98,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         /** Called when the user chose to split the way */
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
+
+        /** Called when the user chose to move the node */
+        fun onMoveNode(editType: ElementEditType, node: Node)
 
         /** Called when the user chose to hide the quest instead */
         fun onQuestHidden(osmQuestKey: OsmQuestKey)
@@ -112,7 +118,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
-        setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
+        setTitleHintLabel(getNameAndLocationLabel(element, resources, featureDictionary))
     }
 
     override fun onStart() {
@@ -130,8 +136,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
     }
 
-    private fun assembleOtherAnswers(): List<AnswerItem> {
-        val answers = mutableListOf<AnswerItem>()
+    private fun assembleOtherAnswers(): List<IAnswerItem> {
+        val answers = mutableListOf<IAnswerItem>()
 
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
@@ -139,6 +145,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
         }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
+
+        if (element is Node // add moveNodeAnswer only if it's a free floating node
+                && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
+            answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
+        }
 
         answers.addAll(otherAnswers)
         return answers
@@ -165,7 +177,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         for (i in answers.indices) {
             val otherAnswer = answers[i]
             val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
         }
         popup.show()
 
@@ -196,6 +208,17 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
+    private fun onClickMoveNodeAnswer() {
+        context?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_move_node_message)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                listener?.onMoveNode(osmElementQuestType, element as Node)
+            }
+            .show()
+        }
+    }
+
     protected fun applyAnswer(answer: T) {
         viewLifecycleScope.launch {
             solve(UpdateElementTagsAction(element, createQuestChanges(answer)))
@@ -204,7 +227,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createQuestChanges(answer: T): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
-        osmElementQuestType.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
+        osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
         val changes = changesBuilder.create()
         require(!changes.isEmpty()) {
             "${osmElementQuestType.name} was answered by the user but there are no changes!"

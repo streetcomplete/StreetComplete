@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:showDividers="middle"
-    android:divider="@drawable/space_8dp"
     android:orientation="horizontal">
 
     <me.grantland.widget.AutofitLayout
@@ -33,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:padding="8dp"
         android:text="@string/quest_entrance_reference_flat_range_to"
         />
 

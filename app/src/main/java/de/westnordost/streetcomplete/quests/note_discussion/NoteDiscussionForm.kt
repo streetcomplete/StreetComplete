@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -40,7 +41,6 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
-import java.time.Instant
 
 class NoteDiscussionForm : AbstractQuestForm() {
 
@@ -66,14 +66,18 @@ class NoteDiscussionForm : AbstractQuestForm() {
     interface Listener {
         /** Called when the user successfully answered the quest */
         fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon)
+        /** Called when the user did not answer the quest but also did not hide it */
+        fun onNoteQuestClosed()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val alreadyHidden = osmNoteQuestController.getVisible(noteId) == null
         setButtonPanelAnswers(listOf(
-            AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            if (alreadyHidden) AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
+            else               AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
         ))
 
         binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
@@ -113,6 +117,10 @@ class NoteDiscussionForm : AbstractQuestForm() {
             }
             listener?.onNoteQuestSolved(questType, noteId, geometry.center)
         }
+    }
+
+    private fun closeQuest() {
+        listener?.onNoteQuestClosed()
     }
 
     private fun hideQuest() {
@@ -158,7 +166,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         override fun onBind(with: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, Instant.now().toEpochMilli(), MINUTE_IN_MILLIS)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, nowAsEpochMilliseconds(), MINUTE_IN_MILLIS)
             val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = with.action.actionResourceId

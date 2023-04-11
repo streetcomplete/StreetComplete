@@ -9,7 +9,8 @@ import java.io.StringWriter
 import java.net.URL
 import java.util.Locale
 
-/** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures library */
+/** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures
+ *  library */
 open class UpdatePresetsTask : DefaultTask() {
     @get:Input var languageCodes: Collection<String>? = null
     @get:Input var targetDir: String? = null
@@ -44,8 +45,10 @@ open class UpdatePresetsTask : DefaultTask() {
         // Norway has two languages, one of them is called Bokmål
         // coded "no" in iD presets, but "nb" is also expected by Android.
         // https://github.com/streetcomplete/StreetComplete/issues/3890
-        val bokmalFile = File("$targetDir/no.json")
-        bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+        if ("no" in languageCodes.orEmpty()) {
+            val bokmalFile = File("$targetDir/no.json")
+            bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+        }
     }
 
     /** Fetch iD presets */

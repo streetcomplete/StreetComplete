@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [BNDA, BICIM]
 mobileCountryCode: 610
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, bm]
+orchardProduces: [guava, mango, mangosteen, cashew_nut, orange, tomato, banana, chilli_pepper, sweet_pepper, lemon, lime, papaya, grapefruit, tea, date]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [BNDA, BICIM]
-orchardProduces: [guava, mango, mangosteen, cashew_nut, orange, tomato, banana, chilli_pepper, sweet_pepper, lemon, lime, papaya, grapefruit, tea, date]

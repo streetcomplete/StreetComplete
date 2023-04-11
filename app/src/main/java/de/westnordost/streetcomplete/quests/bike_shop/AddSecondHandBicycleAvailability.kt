@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -12,7 +13,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAvailability>() {
     override val elementFilter = """
-        nodes, ways, relations with shop = bicycle
+        nodes, ways with shop = bicycle
         and (
             !service:bicycle:second_hand
             or service:bicycle:second_hand older today -6 years
@@ -39,7 +40,7 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
 
     override fun createForm() = AddSecondHandBicycleAvailabilityForm()
 
-    override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmValue == null) {
             tags.updateWithCheckDate("service:bicycle:retail", "no")
         } else {

@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
@@ -27,20 +29,13 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     override fun createForm() = AddBusStopNameForm()
 
-    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoBusStopName -> {
                 tags["name:signed"] = "no"
             }
             is BusStopName -> {
-                for ((languageTag, name) in answer.localizedNames) {
-                    val key = when (languageTag) {
-                        "" -> "name"
-                        "international" -> "int_name"
-                        else -> "name:$languageTag"
-                    }
-                    tags[key] = name
-                }
+                answer.localizedNames.applyTo(tags)
             }
         }
     }

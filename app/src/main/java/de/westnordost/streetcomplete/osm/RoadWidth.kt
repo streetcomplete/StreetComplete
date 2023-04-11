@@ -36,9 +36,9 @@ fun estimateRoadwayWidth(tags: Map<String, String>): Float? {
 /** Guess width of a roadway. Don't expect any precision from it! */
 fun guessRoadwayWidth(tags: Map<String, String>): Float {
     val widthOfOneSide = when (tags["highway"]) {
-        "motorway", "trunk" -> 2 * BROAD_LANE
-        "motorway_link", "trunk_link" -> BROAD_LANE
-        "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
+        "motorway" -> 2 * BROAD_LANE
+        "motorway_link" -> BROAD_LANE
+        "trunk", "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
         "secondary", "tertiary", "unclassified" -> LANE
         "service" -> 2.5f
         else -> LANE
@@ -67,6 +67,40 @@ fun estimateUsableRoadwayWidth(tags: Map<String, String>): Float? {
         (estimateParkingOnRoadWidth(tags) ?: 0f) -
         (estimateCycleLanesWidth(tags) ?: 0f) -
         (estimateShouldersWidth(tags) ?: 0f)
+}
+
+/** Returns whether the estimated width of the given road is improbable */
+fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
+    val roadType = tags["highway"]
+    if (roadType in ALL_ROADS) {
+        val usableWidth = estimateUsableRoadwayWidth(tags) ?: return null
+        if (isOneway(tags)) {
+            if (roadType == "service" || roadType == "track") {
+                // a service road (e.g. driveway) or just some track should be at least as broad
+                // as the default profile of OSRM considers as passable by cars
+                return usableWidth < 1.9f
+            } else {
+                // all others should at least be broad enough to accommodate a truck
+                return usableWidth < 2.6f
+            }
+        }
+        /* one may assume that if the usable width of non-oneway roads is below double the above
+           widths, it is also implausible, however, this is actually sometimes the case, by design:
+           - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
+             https://en.wikipedia.org/wiki/2-1_road
+           - certain residential streets with (partial) on-street parking that narrow them down so
+             much that drivers have to do a slalom around the parking cars and have to wait on each
+             other to pass them
+           Hence, to declare such common cases implausible is dubious.
+           However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
+           2x the above, then it is dubious
+         */
+        else {
+            val width = estimateRoadwayWidth(tags) ?: return null
+            return width < 2 * 2.6f
+        }
+    }
+    return null
 }
 
 /** Estimated width of the street-parking on the roadway.
@@ -100,12 +134,12 @@ fun estimateCycleTrackWidth(tags: Map<String, String>): Float? =
 private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): Float? {
     val sides = createCyclewaySides(tags, false) ?: return null
 
-    val leftWidth = if (sides.left?.isLane == isLane) {
+    val leftWidth = if (sides.left?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:left:width"])?.toFloatOrNull()
             ?: sides.left.estimatedWidth
     } else 0f
 
-    val rightWidth = if (sides.right?.isLane == isLane) {
+    val rightWidth = if (sides.right?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:right:width"])?.toFloatOrNull()
             ?: sides.right.estimatedWidth
     } else 0f
@@ -113,6 +147,7 @@ private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): 
     return leftWidth + rightWidth
 }
 
-private const val BROAD_LANE = 4f
-private const val LANE = 3f
+// rather under-estimate then over-estimate the road width
+private const val BROAD_LANE = 3.75f // standard interstate/motorway width
+private const val LANE = 2.75f // widest trucks are about 2.6m
 private const val SHOULDER = 2f

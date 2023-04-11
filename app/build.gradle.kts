@@ -6,17 +6,17 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization") version "1.7.10"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 android {
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
         isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     signingConfigs {
@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4800
-        versionName = "48.0-alpha1"
+        versionCode = 5201
+        versionName = "52.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -106,12 +106,12 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.0"
+    val koinVersion = "3.2.3"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -119,8 +119,8 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
 
-    androidTestImplementation("androidx.test:runner:1.4.0")
-    androidTestImplementation("androidx.test:rules:1.4.0")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
@@ -131,31 +131,33 @@ dependencies {
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.5.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.3")
+    implementation("androidx.annotation:annotation:1.6.0")
+    implementation("androidx.fragment:fragment-ktx:1.5.6")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.3")
+    implementation("androidx.exifinterface:exifinterface:1.3.6")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxCoroutinesVersion")
+
+    // Date/time
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.7.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:1.5")
+    implementation("de.westnordost:countryboundaries:1.6")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:5.1")
+    implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
@@ -173,6 +175,9 @@ dependencies {
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
+    // sharing presets/settings via QR Code
+    implementation("com.google.zxing:core:3.5.0")
+
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     implementation("com.charleskorn.kaml:kaml:0.48.0")
@@ -183,9 +188,8 @@ dependencies {
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
-    // measuring distance with AR
-    implementation("com.google.ar:core:1.33.0")
-    implementation("com.google.ar.sceneform:core:1.17.1")
+    // image view that allows zoom and pan
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
 }
 
 /** Localizations that should be pulled from POEditor */
@@ -193,13 +197,16 @@ val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
+    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220926"
+val nsiVersion = "v6.0.20230320"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.5.1"
+val presetsVersion = "v6.0.0"
+
+val poEditorProjectId = "97843"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
@@ -251,12 +258,14 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
@@ -266,7 +275,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     mapStyleBranch = "jawg"
 }
 
-tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
+tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"

@@ -34,7 +34,7 @@ class OsmNoteQuestController(
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            val hiddenNoteIds = getNoteIdsHidden()
+            val hiddenNoteIds = getHiddenIds()
 
             val quests = mutableListOf<OsmNoteQuest>()
             val deletedQuestIds = ArrayList(deleted)
@@ -76,8 +76,8 @@ class OsmNoteQuestController(
         notesPreferences.listener = notesPreferencesListener
     }
 
-    override fun get(questId: Long): OsmNoteQuest? {
-        if (isNoteHidden(questId)) return null
+    override fun getVisible(questId: Long): OsmNoteQuest? {
+        if (isHidden(questId)) return null
         return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
@@ -86,7 +86,7 @@ class OsmNoteQuestController(
     }
 
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
-        val blockedNoteIds = getNoteIdsHidden()
+        val blockedNoteIds = getHiddenIds()
         return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
     }
 
@@ -147,9 +147,9 @@ class OsmNoteQuestController(
         }
     }
 
-    private fun isNoteHidden(noteId: Long): Boolean = hiddenDB.contains(noteId)
+    private fun isHidden(questId: Long): Boolean = hiddenDB.contains(questId)
 
-    private fun getNoteIdsHidden(): Set<Long> = hiddenDB.getAllIds().toSet()
+    private fun getHiddenIds(): Set<Long> = hiddenDB.getAllIds().toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 
@@ -238,7 +238,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
     val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
 
     val text = comments.firstOrNull()?.text
-    return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
+    return text?.matches(Regex(".*$questionMarksAroundTheWorld.*", RegexOption.DOT_MATCHES_ALL)) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =

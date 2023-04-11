@@ -2,9 +2,12 @@
 advisorySpeedLimitSignStyle: blue
 centerLineStyle: white
 edgeLineStyle: white
+exclusiveCycleLaneStyle: white
 firstDayOfWorkweek: Mo
+hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
+hasBicycleBoulevard: false
 hasCenterLeftTurnLane: false
 hasDailyAlternateSideParkingSign: false
 hasLivingStreet: false
@@ -17,6 +20,8 @@ noEntrySignStyle: default
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
+orchardProduces: []
+pictogramCycleLaneStyle: white
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 postboxesHaveCollectionTimes: false
@@ -27,4 +32,3 @@ roofsAreUsuallyFlat: false
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5
-orchardProduces: []

@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
 
 /** Action that restores a POI node to the previous state before deletion/clearing of tags
  */
@@ -35,7 +35,7 @@ data class RevertDeletePoiNodeAction(
 
         val restoredNode = originalNode.copy(
             version = newVersion,
-            timestampEdited = currentTimeMillis()
+            timestampEdited = nowAsEpochMilliseconds()
         )
         return MapDataChanges(modifications = listOf(restoredNode))
     }

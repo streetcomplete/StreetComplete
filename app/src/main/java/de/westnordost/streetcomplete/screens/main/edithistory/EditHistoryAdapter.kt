@@ -14,8 +14,8 @@ import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.databinding.RowEditItemBinding
 import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
 import de.westnordost.streetcomplete.util.ktx.findNext
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toast
-import java.lang.System.currentTimeMillis
 import java.text.DateFormat
 import java.util.Collections
 import kotlin.collections.ArrayList
@@ -57,7 +57,7 @@ class EditHistoryAdapter(
 
     fun onSynced(edit: Edit) {
         val editIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
-        if(editIndex == -1) return
+        if (editIndex == -1) return
 
         val syncedItemIndex = rows.indexOfFirst { it is IsSyncedItem }
         if (syncedItemIndex != -1) {
@@ -191,7 +191,7 @@ class EditHistoryAdapter(
 }
 
 private fun Edit.formatSameDayTime() = DateUtils.formatSameDayTime(
-    createdTimestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
+    createdTimestamp, nowAsEpochMilliseconds(), DateFormat.SHORT, DateFormat.SHORT
 )
 
 private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)

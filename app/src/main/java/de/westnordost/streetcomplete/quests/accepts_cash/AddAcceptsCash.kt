@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.accepts_cash
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -36,7 +37,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
             "electronics_repair", "key_cutter", "stonemason"
         )
         return """
-            nodes, ways, relations with
+            nodes, ways with
             (
               (shop and shop !~ no|vacant|mall)
               or amenity ~ ${amenities.joinToString("|")}
@@ -54,7 +55,11 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-    override val enabledInCountries = NoCountriesExcept("SE")
+    override val enabledInCountries = NoCountriesExcept(
+        "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
+        "SE",
+        "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
+    )
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
@@ -65,7 +70,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["payment:cash"] = answer.toYesNo()
     }
 }

@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Nivel administrativo"
                 },
+                "advertising": {
+                    "label": "Tipo"
+                },
                 "aerialway": {
                     "label": "Tipo"
                 },
@@ -243,6 +246,24 @@
                 "animal_shelter": {
                     "label": "Para animales"
                 },
+                "archaeological_site": {
+                    "label": "Tipo",
+                    "options": {
+                        "baths": "Baños",
+                        "city": "Ciudad histórica",
+                        "crannog": "Crannog",
+                        "enclosure": "Recinto",
+                        "fortification": "Fortificación",
+                        "hut_circle": "Círculo de cabaña",
+                        "megalith": "Megalito",
+                        "necropolis": "Necrópolis",
+                        "petroglyph": "Tallado en roca",
+                        "roman_circus": "Circo romano",
+                        "roman_villa": "Villa romana",
+                        "settlement": "Asentamiento histórico",
+                        "tumulus": "Túmulo"
+                    }
+                },
                 "architect": {
                     "label": "Arquitecto, ta",
                     "terms": "diseñador,edificios,arquitecto,arquitecta,arquitectura"
@@ -254,7 +275,18 @@
                     "label": "Artista"
                 },
                 "artwork_type": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "bust": "Busto",
+                        "graffiti": "Grafiti",
+                        "installation": "Instalación artística",
+                        "mosaic": "Mosaico",
+                        "mural": "Mural",
+                        "painting": "Pintura",
+                        "relief": "Relieve",
+                        "sculpture": "Escultura",
+                        "statue": "Estatua"
+                    }
                 },
                 "ascent": {
                     "label": "Ascenso total",
@@ -264,7 +296,28 @@
                     "label": "Cajero automático"
                 },
                 "attraction": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "alpine_coaster": "Montaña rusa alpina",
+                        "amusement_ride": "Atracción de feria",
+                        "animal": "Recinto para animales",
+                        "big_wheel": "Noria",
+                        "bumper_car": "Autitos chocadores",
+                        "bungee_jumping": "Salto en bungee / Puenting",
+                        "carousel": "Carrusel",
+                        "dark_ride": "Tren fantasma",
+                        "drop_tower": "Torre de caída",
+                        "kiddie_ride": "Paseo infantil",
+                        "log_flume": "Canal de troncos",
+                        "maze": "Laberinto",
+                        "pirate_ship": "Paseo en barco pirata",
+                        "river_rafting": "Paseo por los rápidos del río",
+                        "roller_coaster": "Montaña rusa",
+                        "summer_toboggan": "Tobogán de verano",
+                        "swing_carousel": "Carrusel oscilante",
+                        "train": "Tren turístico",
+                        "water_slide": "Tobogán acuático"
+                    }
                 },
                 "automated": {
                     "label": "Automático"
@@ -282,8 +335,8 @@
                     "label": "Asiento de bebé"
                 },
                 "backcountry": {
-                    "label": "Travesía",
-                    "terms": "travesía,travesia,fuera de pista"
+                    "label": "Campo abierto",
+                    "terms": "travesía,travesia,fuera de pista,campo abierto"
                 },
                 "backrest": {
                     "label": "Respaldo"
@@ -293,7 +346,32 @@
                     "terms": "bar,barra,copas,tapas,café,cafetería,pub,cantina,taberna"
                 },
                 "barrier": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "block": "Bloque grande",
+                        "bollard": "Bolardo",
+                        "cattle_grid": "Guardaganado",
+                        "chain": "Cadena",
+                        "city_wall": "Muralla",
+                        "cycle_barrier": "Barrera para bicicletas",
+                        "ditch": "Zanja",
+                        "entrance": "Entrada",
+                        "fence": "Valla",
+                        "gate": "Puerta",
+                        "guard_rail": "Guardarraíl",
+                        "hedge": "Seto",
+                        "height_restrictor": "Restrictor de altura",
+                        "jersey_barrier": "Barrera Jersey",
+                        "kerb": "Bordillo",
+                        "kissing_gate": "Pasamano / Tranquera",
+                        "lift_gate": "Barrera levadiza",
+                        "retaining_wall": "Muro de contención",
+                        "stile": "Escalones",
+                        "swing_gate": "Puerta batiente",
+                        "toll_booth": "Cabina de peaje",
+                        "turnstile": "Torniquete",
+                        "wall": "Pared"
+                    }
                 },
                 "barrier_planter": {
                     "label": "Barrera",
@@ -303,7 +381,13 @@
                     }
                 },
                 "basin": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "detention": "Detención",
+                        "evaporation": "Evaporación",
+                        "infiltration": "Infiltración",
+                        "retention": "Retención"
+                    }
                 },
                 "bath/open_air": {
                     "label": "Aire libre"
@@ -312,7 +396,14 @@
                     "label": "Baño de arena"
                 },
                 "bath/type": {
-                    "label": "Especialidad"
+                    "label": "Especialidad",
+                    "options": {
+                        "hammam": "Haman",
+                        "hot_spring": "Aguas termales",
+                        "lake": "Lago",
+                        "onsen": "Onsen",
+                        "thermal": "Baño termal"
+                    }
                 },
                 "beauty": {
                     "label": "Servicios",
@@ -331,7 +422,19 @@
                     "terms": "asientos,asiento,banco,escaño"
                 },
                 "bicycle_parking": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "building": "En un edificio",
+                        "handlebar_holder": "Soporte para el manillar",
+                        "lockers": "Casilleros individuales",
+                        "shed": "Cobertizo cerrado",
+                        "stands": "Soporte (soporta el cuadro de la bicicleta)",
+                        "wall_loops": "Doblador de ruedas (sólo soporta la rueda)"
+                    }
+                },
+                "bike_ride": {
+                    "label": "Aparcamiento disuasorio para bicicletas",
+                    "terms": "estacionar,estacionamiento,parking,transporte público,aparcar,aparcamiento,sistemas disuasorios,aparcamiento disuasorio,zona,bicicleta"
                 },
                 "bin": {
                     "label": "Papelera",
@@ -356,13 +459,32 @@
                     }
                 },
                 "board_type": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "art": "Arte",
+                        "astronomy": "Astronomía",
+                        "geology": "Geología",
+                        "history": "Historia",
+                        "nature": "Naturaleza",
+                        "notice": "Tablón de anuncios",
+                        "plants": "Plantas",
+                        "welcome_sign": "Cartel de bienvenida",
+                        "wildlife": "Vida silvestre"
+                    }
                 },
                 "bollard": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "fixed": "Bolardo fijo",
+                        "flexible": "Bolardo flexible",
+                        "foldable": "Bolardo plegable",
+                        "removable": "Bolardo desmontable",
+                        "rising": "Bolardo levadizo"
+                    }
                 },
                 "booth": {
-                    "label": "Cabina"
+                    "label": "Cabina",
+                    "terms": "cabina"
                 },
                 "bottle": {
                     "label": "Llenado de botellas"
@@ -397,6 +519,67 @@
                 },
                 "building": {
                     "label": "Edificio",
+                    "options": {
+                        "allotment_house": "Cobertizo de jardín",
+                        "apartments": "Edificio de apartamentos",
+                        "barn": "Granero",
+                        "boathouse": "Cobertizo para botes",
+                        "bungalow": "Bungaló",
+                        "bunker": "Búnker",
+                        "cabin": "Cabaña",
+                        "carport": "Cochera abierta",
+                        "cathedral": "Edificio de la catedral",
+                        "chapel": "Edificio de la capilla",
+                        "church": "Edificio de la iglesia",
+                        "civic": "Edificio cívico",
+                        "college": "Edificio educativo superior no universitario",
+                        "commercial": "Edificio comercial",
+                        "construction": "Edificio en construcción",
+                        "cowshed": "Establo",
+                        "detached": "Casa independiente",
+                        "dormitory": "Dormitorio universitario",
+                        "farm": "Casa rural",
+                        "farm_auxiliary": "Edificio agrícola",
+                        "fire_station": "Edificio de la estación de bomberos",
+                        "garage": "Garaje privado",
+                        "garages": "Garajes privados",
+                        "ger": "Yurta",
+                        "grandstand": "Tribuna",
+                        "greenhouse": "Invernadero",
+                        "hangar": "Edificio hangar",
+                        "hospital": "Edificio hospitalario",
+                        "hotel": "Edificio hotelero",
+                        "house": "Casa",
+                        "houseboat": "Casa flotante",
+                        "hut": "Barraca",
+                        "industrial": "Edificio industrial",
+                        "kindergarten": "Edificio de preescolar / jardín de infantes",
+                        "manufacture": "Edificio de producción industrial",
+                        "mosque": "Edificio de la mezquita",
+                        "office": "Edificio de oficinas",
+                        "outbuilding": "Dependencia",
+                        "pavilion": "Edificio pabellón",
+                        "public": "Edificio público",
+                        "residential": "Edificio residencial",
+                        "retail": "Edificio de tiendas comerciales",
+                        "roof": "Techo",
+                        "ruins": "Edificio en ruinas",
+                        "school": "Edificio escolar",
+                        "semidetached_house": "Casa semiadosada o dúplex",
+                        "service": "Edificio de servicios",
+                        "shed": "Cobertizo",
+                        "stable": "Establo",
+                        "stadium": "Edificio del estadio",
+                        "static_caravan": "Casa móvil",
+                        "sty": "Pocilga",
+                        "synagogue": "Edificio de la sinagoga",
+                        "temple": "Edificio del templo",
+                        "terrace": "Casas adosadas",
+                        "train_station": "Edificio de la estación de tren",
+                        "transportation": "Edificio de transporte público",
+                        "university": "Edificio universitario",
+                        "warehouse": "Almacén"
+                    },
                     "terms": "edificio,construcción,casa,estructura"
                 },
                 "building/flats": {
@@ -413,11 +596,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "niveles,pisos,subterráneos,sótano,subsuelo"
                 },
-                "building/levels_building": {
-                    "label": "Niveles del edificio",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "pisos,niveles,edificio"
-                },
                 "building/material": {
                     "label": "Material",
                     "terms": "material"
@@ -425,12 +603,9 @@
                 "building/part": {
                     "label": "Parte del edificio"
                 },
-                "building_area": {
-                    "label": "Edificio",
-                    "terms": "edificio,construcción"
-                },
-                "building_area_yes": {
-                    "label": "Edificio"
+                "building/prefabricated": {
+                    "label": "Prefabricado",
+                    "terms": "prefabricado,prefabricada,manufacturado,modular,portátil"
                 },
                 "bunker_type": {
                     "label": "Tipo"
@@ -475,7 +650,7 @@
                     "terms": "capacidad,aforo,cabida,aptitud"
                 },
                 "capacity/caravans": {
-                    "label": "Capacidad (Caravanas)",
+                    "label": "Capacidad (Autocaravana / Remolque de camping)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -498,8 +673,12 @@
                     "label": "Capacidad (metros cúbicos)",
                     "placeholder": "50, 100, 200..."
                 },
+                "caravans": {
+                    "label": "Autocaravana / Remolque de camping",
+                    "terms": "casa rodante,caravana,cámper,remolque caravana,turismo"
+                },
                 "cash_in": {
-                    "label": "Pagar en efectivo"
+                    "label": "Depósitos"
                 },
                 "castle_type": {
                     "label": "Tipo",
@@ -530,14 +709,36 @@
                 },
                 "check_date": {
                     "label": "Fecha de última revisión",
-                    "placeholder": "AAAA-MM-DD"
+                    "placeholder": "AAAA-MM-DD",
+                    "terms": "relevamiento,reconocimiento,fecha del último relevamiento"
                 },
                 "circumference": {
                     "label": "Circunferencia (a la altura del pecho)",
-                    "placeholder": "1 m, 20 cm, 30\"…"
+                    "placeholder": "1 m, 20 cm, 30\"…",
+                    "terms": "circunferencia,diámetro a la altura del pecho"
                 },
                 "clothes": {
                     "label": "Ropa",
+                    "options": {
+                        "babies": "Ropa de bebé",
+                        "children": "Ropa infantil",
+                        "denim": "Ropa de jeans",
+                        "fur": "Ropa de piel",
+                        "hats": "Sombreros",
+                        "maternity": "Ropa de maternidad",
+                        "men": "Ropa de hombre",
+                        "motorcycle": "Ropa de motociclista",
+                        "oversize": "Ropa de tallas grandes",
+                        "socks": "Calcetines / Medias",
+                        "sports": "Ropa deportiva",
+                        "suits": "Trajes",
+                        "swimwear": "Bañadores / Mallas",
+                        "traditional": "Prendas tradicionales / folclóricas",
+                        "underwear": "Ropa interior",
+                        "wedding": "Ropa de boda",
+                        "women": "Ropa de mujer",
+                        "workwear": "Ropa de trabajo"
+                    },
                     "terms": "ropa,prendas,vestidos,vestimenta,indumentaria,trajes,atuendo,ropajes"
                 },
                 "club": {
@@ -606,30 +807,121 @@
                     "terms": "cubierto,tapado"
                 },
                 "covered_no": {
-                    "label": "Cubierto",
                     "options": {
                         "no": "No",
                         "undefined": "Se asume que No",
                         "yes": "Sí"
-                    },
-                    "terms": "cubierto,recubierto,tapado,protegido"
+                    }
                 },
                 "craft": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "agricultural_engines": "Mecánico de motores agrícolas",
+                        "basket_maker": "Cestería",
+                        "beekeeper": "Apicultor",
+                        "blacksmith": "Herrero",
+                        "boatbuilder": "Constructor de barcos",
+                        "bookbinder": "Encuadernador",
+                        "brewery": "Fábrica de cerveza artesanal",
+                        "builder": "Constructor",
+                        "carpenter": "Carpintero",
+                        "carpet_layer": "Instalador de alfombras",
+                        "caterer": "Servicio de catering",
+                        "chimney_sweeper": "Deshollinador",
+                        "cleaning": "Servicio de limpieza",
+                        "clockmaker": "Relojero",
+                        "confectionery": "Confitero",
+                        "distillery": "Destilería",
+                        "dressmaker": "Modista",
+                        "electrician": "Electricista",
+                        "electronics_repair": "Reparación de electrónica",
+                        "floorer": "Colocador de pisos",
+                        "gardener": "Jardinero",
+                        "glaziery": "Cristalería",
+                        "grinding_mill": "Molino",
+                        "handicraft": "Artesanía",
+                        "hvac": "Climatización",
+                        "insulation": "Instalador de aislante",
+                        "jeweller": "Joyero",
+                        "joiner": "Ebanista",
+                        "key_cutter": "Copista de llaves",
+                        "locksmith": "Cerrajero",
+                        "metal_construction": "Metalúrgico",
+                        "oil_mill": "Almazara (Molino de semillas oleaginosas)",
+                        "painter": "Pintor",
+                        "parquet_layer": "Parquetero",
+                        "photographer": "Fotógrafo",
+                        "photographic_laboratory": "Laboratorio fotográfico",
+                        "plasterer": "Yesero",
+                        "plumber": "Fontanero / Plomero",
+                        "pottery": "Alfarero (Fabricante de cerámica)",
+                        "rigger": "Aparejador",
+                        "roofer": "Techador",
+                        "saddler": "Guarnicionero",
+                        "sailmaker": "Velero",
+                        "sawmill": "Aserradero",
+                        "scaffolder": "Andamista",
+                        "sculptor": "Escultor",
+                        "shoemaker": "Zapatero",
+                        "signmaker": "Fabricante de letreros",
+                        "stonemason": "Escultor de piedra",
+                        "tailor": "Sastre",
+                        "tiler": "Azulejero / Colocador de baldosas",
+                        "tinsmith": "Hojalatero",
+                        "upholsterer": "Tapicero",
+                        "watchmaker": "Relojero de pulsera",
+                        "window_construction": "Construcción de ventanas",
+                        "winery": "Bodega"
+                    }
                 },
                 "crane/type": {
                     "label": "Tipo de grúa",
                     "options": {
                         "floor-mounted_crane": "Grúa fija al suelo",
+                        "gantry_crane": "Grúa pórtico",
                         "portal_crane": "Grúa portal",
+                        "tower_crane": "Grúa torre",
                         "travel_lift": "Ascensor de viaje"
                     }
                 },
                 "crop": {
-                    "label": "Cultivos"
+                    "label": "Cultivos",
+                    "options": {
+                        "asparagus": "Espárragos",
+                        "barley": "Cebada",
+                        "beet": "Remolacha",
+                        "cassava": "Yuca",
+                        "coffee": "Café",
+                        "cotton": "Algodón",
+                        "cranberries": "Arándanos",
+                        "fast_growing_wood": "Árboles forestales de cultivo corto",
+                        "flowers": "Flores",
+                        "grape": "Uvas",
+                        "grass": "Césped",
+                        "hop": "Lúpulo",
+                        "lavender": "Lavanda",
+                        "maize": "Maíz",
+                        "potato": "Papas",
+                        "rape": "Colza",
+                        "rice": "Arroz",
+                        "soy": "Soja",
+                        "strawberry": "Fresas / Frutillas",
+                        "sugar_beet": "Remolacha azucarera",
+                        "sugarcane": "Caña de azúcar",
+                        "sunflower": "Girasoles",
+                        "tea": "Té",
+                        "tobacco": "Tabaco",
+                        "vegetable": "Verduras",
+                        "wheat": "Trigo"
+                    }
                 },
                 "crossing": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "traffic_signals": "Cruce con señales de tránsito",
+                        "uncontrolled": "Sólo marcas viales (señalización horizontal)",
+                        "unmarked": "Sin marcas viales ni señales de tránsito"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "Brazo de barrera",
@@ -649,6 +941,27 @@
                 },
                 "crossing/light": {
                     "label": "Luces"
+                },
+                "crossing/markings": {
+                    "label": "Señalización de cruces",
+                    "options": {
+                        "dashes": "Líneas transversales discontinuas",
+                        "dots": "Líneas transversales punteadas",
+                        "ladder": "Escalera con barras longitudinales",
+                        "ladder:paired": "Escalera con barras longitudinales emparejadas",
+                        "ladder:skewed": "Escalera con barras diagonales",
+                        "lines": "Líneas transversales",
+                        "lines:paired": "Líneas transversales dobles",
+                        "no": "Sin marcar",
+                        "pictograms": "Pictogramas pintados",
+                        "surface": "Sólo tratamiento de superficie",
+                        "yes": "Marcado de alguna manera",
+                        "zebra": "Barras longitudinales",
+                        "zebra:bicolour": "Barras longitudinales con colores alternos",
+                        "zebra:double": "Barras longitudinales dobles",
+                        "zebra:paired": "Barras longitudinales emparejadas"
+                    },
+                    "terms": "cruce,paso,peatón,peatonal,cebra,paso peatonal,cruce peatonal,paso de peatones,paso de cebra,marcas,senalización"
                 },
                 "crossing_raised": {
                     "label": "Elevado",
@@ -725,13 +1038,13 @@
                             "description": "Un carril para bicicletas separado del tránsito de automóviles por una línea pintada",
                             "title": "Carril estándar para bicicletas"
                         },
-                        "none": {
+                        "no": {
                             "description": "Sin carril para bicicletas",
                             "title": "Ninguno"
                         },
                         "opposite": {
                             "description": "Un carril para bicicletas que viaja en ambas direcciones en una calle de un sólo sentido",
-                            "title": "Carril en dirección opuesta para bicicletas"
+                            "title": "Carril de contraflujo para bicicletas"
                         },
                         "opposite_lane": {
                             "description": "Un carril para bicicletas que viaja en la dirección opuesta al tránsito",
@@ -754,7 +1067,7 @@
                             "title": "Pista para bicicletas"
                         }
                     },
-                    "placeholder": "ninguno",
+                    "placeholder": "Carril, vía, contraflujo, ...",
                     "terms": "bici,bicicleta,carriles,senda,bicisenda,ciclovía",
                     "types": {
                         "cycleway:left": "Lado izquierdo",
@@ -779,10 +1092,11 @@
                     "terms": "denominación,nombre,valor,confesión,comunión"
                 },
                 "denotation": {
-                    "label": "Denotación"
+                    "label": "Denotación",
+                    "terms": "denotación,denotacion"
                 },
                 "departures_board": {
-                    "label": "Tablero de salidas",
+                    "label": "Tablero de Partida/Llegadas",
                     "options": {
                         "no": "Ninguno",
                         "realtime": "Tiempo real",
@@ -792,6 +1106,9 @@
                 },
                 "deposit/trolley": {
                     "label": "Depósito"
+                },
+                "depot": {
+                    "label": "Tipo"
                 },
                 "depth": {
                     "label": "Profundidad (metros)"
@@ -811,20 +1128,10 @@
                     "label": "Destinos"
                 },
                 "destination/ref": {
-                    "label": "Números de carretera destino"
-                },
-                "destination/ref_oneway": {
-                    "label": "Números de carretera destino"
+                    "label": "Referencia de la carretera de destino"
                 },
                 "destination/symbol": {
                     "label": "Símbolos de destino"
-                },
-                "destination/symbol_oneway": {
-                    "label": "Símbolos de destino",
-                    "terms": "símbolos de destino,destino,simbolos,señales"
-                },
-                "destination_oneway": {
-                    "label": "Destinos"
                 },
                 "destination_waterway": {
                     "label": "Destino"
@@ -885,7 +1192,6 @@
                     }
                 },
                 "direction_point": {
-                    "label": "Dirección (Grados en sentido horario)",
                     "placeholder": "45, 90, 180, 270"
                 },
                 "direction_vertex": {
@@ -896,13 +1202,6 @@
                         "forward": "Adelante"
                     },
                     "terms": "dirección,rumbo"
-                },
-                "direction_vertex_dual": {
-                    "label": "Dirección afectada",
-                    "options": {
-                        "backward": "Hacia atrás",
-                        "forward": "Adelante"
-                    }
                 },
                 "dispensing": {
                     "label": "Prepara recetas"
@@ -971,10 +1270,6 @@
                     "label": "Elevación (metros)",
                     "terms": "elevación,altura,altitud,ascenso"
                 },
-                "ele_node": {
-                    "label": "Elevación (metros)",
-                    "terms": "elevación,altura,altitud,ascenso"
-                },
                 "electrified": {
                     "label": "Electrificación",
                     "options": {
@@ -1022,6 +1317,18 @@
                 },
                 "entrance": {
                     "label": "Tipo",
+                    "options": {
+                        "emergency": "Salida de emergencia",
+                        "entrance": "Sólo entrada",
+                        "exit": "Sólo salida",
+                        "garage": "Puerta de garaje",
+                        "home": "Casa o apartamento privado",
+                        "main": "Principal",
+                        "secondary": "Secundaria",
+                        "service": "Servicio",
+                        "staircase": "Escalera",
+                        "yes": "Sin especificar"
+                    },
                     "terms": "tipo,tipos"
                 },
                 "except": {
@@ -1144,18 +1451,42 @@
                     "label": "Frecuencia de operación",
                     "terms": "frecuencia de operación,alta frecuencia,baja frecuencia,media frecuencia,hercios,periodo,infrarrojo,radio,microondas,luz visible,ondas,ultravioleta,rayos x,audible,subsónico,sonar,radar,gamma"
                 },
-                "frequency_electrified": {
-                    "label": "Frecuencia de operación",
-                    "terms": "frecuencia de operación,alta frecuencia,baja frecuencia,media frecuencia,hercios,periodo,infrarrojo,radio,microondas,luz visible,ondas,ultravioleta,rayos x,audible,subsónico,sonar,radar,gamma"
-                },
                 "from": {
                     "label": "Desde"
                 },
                 "fuel": {
                     "label": "Combustible"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustible"
+                "fuel/fuel_multi": {
+                    "label": "Tipos de combustible",
+                    "options": {
+                        "GTL_diesel": "GTL diésel",
+                        "HGV_diesel": "Diésel para camiones",
+                        "LH2": "Hidrógeno líquido",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (envasado)",
+                        "biodiesel": "Biodiésel",
+                        "cng": "Gas natural comprimido (GNC)",
+                        "diesel": "Diésel",
+                        "e10": "Gasolina E10",
+                        "e85": "Gasolina E85",
+                        "h70": "Hidrógeno gaseoso (700 bar)",
+                        "lpg": "Gas natural licuado (GLP)",
+                        "octane_100": "Gasolina (100 octanos)",
+                        "octane_80": "Gasolina (80 octanos)",
+                        "octane_85": "Gasolina (85 octanos)",
+                        "octane_87": "Gasolina (87 octanos)",
+                        "octane_88": "Gasolina (88 octanos)",
+                        "octane_89": "Gasolina (89 octanos)",
+                        "octane_90": "Gasolina (90 octanos)",
+                        "octane_91": "Gasolina (91 octanos)",
+                        "octane_92": "Gasolina (92 octanos)",
+                        "octane_93": "Gasolina (93 octanos)",
+                        "octane_95": "Gasolina (95 octanos)",
+                        "octane_97": "Gasolina (97 octanos)",
+                        "octane_98": "Gasolina (98 octanos)",
+                        "propane": "Propano"
+                    }
                 },
                 "gambling": {
                     "label": "Juegos"
@@ -1177,14 +1508,48 @@
                     "terms": "género,sexo,femenino,masculino,unisex,no definido,hermafrodita,andrógino"
                 },
                 "generator/method": {
-                    "label": "Método"
+                    "label": "Método",
+                    "options": {
+                        "anaerobic_digestion": "Digestión anaeróbica",
+                        "barrage": "Presa mareomotriz",
+                        "combustion": "Combustión",
+                        "fission": "Fisión",
+                        "fusion": "Fusión",
+                        "gasification": "Gasificación",
+                        "photovoltaic": "Fotovoltaico",
+                        "run-of-the-river": "Central hidroeléctrica de pasada",
+                        "stream": "Corriente de marea",
+                        "thermal": "Solar térmica",
+                        "water-pumped-storage": "Acumulación por bombeo",
+                        "water-storage": "Embalse",
+                        "wind_turbine": "Turbina eólica"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "Potencia de salida",
                     "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "Fuente"
+                    "label": "Fuente",
+                    "options": {
+                        "battery": "Batería",
+                        "biofuel": "Combustibles de origen vegetal",
+                        "biogas": "Biogás",
+                        "biomass": "Materia vegetal",
+                        "coal": "Carbón",
+                        "diesel": "Diésel",
+                        "gas": "Gas natural",
+                        "gasoline": "Gasolina",
+                        "geothermal": "Energía geotérmica",
+                        "hydro": "Energía hidroeléctrica",
+                        "nuclear": "Energía nuclear",
+                        "oil": "Petróleo",
+                        "solar": "Radiación solar",
+                        "tidal": "Energía mareomotriz",
+                        "waste": "Residuos",
+                        "wave": "Energía undimotriz",
+                        "wind": "Viento"
+                    }
                 },
                 "generator/type": {
                     "label": "Tipo"
@@ -1233,22 +1598,113 @@
                     "label": "Tipo"
                 },
                 "healthcare/speciality": {
-                    "label": "Especialidades"
+                    "label": "Especialidades",
+                    "options": {
+                        "abortion": "Aborto",
+                        "acupuncture": "Acupuntura",
+                        "allergology": "Alergia y asma",
+                        "anaesthetics": "Anestesiología",
+                        "angiology": "Angiología",
+                        "anthroposophical": "Medicina antroposófica",
+                        "applied_kinesiology": "Kinesiología aplicada",
+                        "aromatherapy": "Aromaterapia",
+                        "ayurveda": "Ayurveda",
+                        "behavior": "Terapia conductual",
+                        "biochemistry": "Bioquímica",
+                        "biology": "Biología",
+                        "blood_check": "Análisis de sangre",
+                        "body": "Terapia corporal",
+                        "cardiology": "Cardiología",
+                        "cardiothoracic_surgery": "Cirugía cardiotorácica",
+                        "child_psychiatry": "Psiquiatra de niños y adolescentes",
+                        "chiropractic": "Quiropráctica",
+                        "clinical_pathology": "Patología clínica",
+                        "community": "Comunidad y salud pública",
+                        "dental_oral_maxillo_facial_surgery": "Cirugía dental, oral y maxilofacial",
+                        "depth": "Psicología profunda",
+                        "dermatology": "Dermatología",
+                        "dermatovenereology": "Dermatovenereología",
+                        "diabetology": "Diabetología",
+                        "diagnostic_radiology": "Radiología diagnóstica",
+                        "emergency": "Medicina de emergencia",
+                        "endocrinology": "Endocrinología",
+                        "fertility": "Fertilidad",
+                        "gastroenterology": "Gastroenterología",
+                        "general": "Práctica general",
+                        "geriatrics": "Medicina geriatrica",
+                        "gynaecology": "Obstetricia y ginecología",
+                        "haematology": "Hematología",
+                        "hepatology": "Hepatología",
+                        "herbalism": "Herboristería",
+                        "homeopathy": "Homeopatía",
+                        "humanistic": "Psicología humanista",
+                        "hydrotherapy": "Hidroterapia",
+                        "hypnosis": "Hipnosis",
+                        "infectious_diseases": "Enfermedad infecciosa",
+                        "intensive": "Cuidados intensivos",
+                        "internal": "Medicina interna",
+                        "naturopathy": "Naturopatía",
+                        "neonatology": "Neonatología",
+                        "nephrology": "Nefrología",
+                        "neurology": "Neurología",
+                        "neuropsychiatry": "Neuropsiquiatría",
+                        "neurosurgery": "Neurocirugía",
+                        "nuclear": "Medicina nuclear",
+                        "occupational": "Medicina ocupacional",
+                        "oncology": "Oncología",
+                        "ophthalmology": "Oftalmología",
+                        "orthodontics": "Ortodoncia",
+                        "orthopaedics": "Cirugía ortopédica",
+                        "osteopathy": "Osteopatía",
+                        "otolaryngology": "Otorrinolaringología",
+                        "paediatric_surgery": "Cirugía pediátrica",
+                        "paediatrics": "Pediatría",
+                        "palliative": "Cuidados paliativos",
+                        "pathology": "Patología",
+                        "physiatry": "Fisiatría y rehabilitación",
+                        "plastic_surgery": "Cirugía plástica",
+                        "podiatry": "Podología",
+                        "proctology": "Cirugía colorrectal",
+                        "psychiatry": "Psiquiatría",
+                        "pulmonology": "Neumología",
+                        "radiology": "Radiología",
+                        "radiotherapy": "Radioterapia",
+                        "reflexology": "Reflexología",
+                        "reiki": "Reiki",
+                        "rheumatology": "Reumatología",
+                        "shiatsu": "Shiatsu",
+                        "stomatology": "Estomatología",
+                        "surgery": "Cirugía general",
+                        "systemic": "Terapia sistémica",
+                        "traditional_chinese_medicine": "Medicina tradicional china",
+                        "transplant": "Cirugía de trasplante",
+                        "trauma": "Cirugía traumatológica",
+                        "tropical": "Medicina tropical",
+                        "tuina": "Tui na",
+                        "unani": "Medicina unani",
+                        "urology": "Urología",
+                        "vaccination": "Vacunación",
+                        "vascular_surgery": "Cirugía vascular"
+                    }
                 },
                 "heating": {
                     "label": "Calefacción"
                 },
                 "height": {
                     "label": "Altura (metros)",
-                    "terms": "altura,altitud,metros,pies,centímetros"
+                    "terms": "altura,altitud,metros"
+                },
+                "height/hub": {
+                    "label": "Altura del buje (metros)",
+                    "terms": "altura,altitud,metros"
                 },
                 "height_building": {
                     "label": "Altura del edificio (metros)",
                     "terms": "altura del edificio,metros,pies"
                 },
                 "highchair": {
-                    "label": "Silla alta",
-                    "terms": "silla alta,sillita alta para niños"
+                    "label": "Trona / Sillita alta",
+                    "terms": "silla alta,sillita alta para niños,trona"
                 },
                 "highspeed": {
                     "label": "Alta velocidad",
@@ -1344,7 +1800,6 @@
                     "terms": "inclinación,pendiente,cuesta"
                 },
                 "incline_steps": {
-                    "label": "Pendiente",
                     "options": {
                         "down": "Abajo",
                         "up": "Arriba"
@@ -1374,9 +1829,6 @@
                 "intermittent": {
                     "label": "Intermitente",
                     "terms": "intermitente"
-                },
-                "intermittent_yes": {
-                    "label": "Intermitente"
                 },
                 "internet_access": {
                     "label": "Conexión a Internet",
@@ -1413,7 +1865,7 @@
                 "junction_line": {
                     "label": "Cruce",
                     "options": {
-                        "circular": "Círculo de tráfico",
+                        "circular": "Rotonda sin derecho de paso",
                         "jughandle": "Cambio de sentido a distinto nivel",
                         "roundabout": "Rotonda"
                     },
@@ -1472,15 +1924,6 @@
                     },
                     "terms": "ciclo de la hoja,ciclo,hoja"
                 },
-                "leaf_cycle_singular": {
-                    "label": "Ciclo de la hoja",
-                    "options": {
-                        "deciduous": "Caduco",
-                        "evergreen": "Perenne",
-                        "semi_deciduous": "Semicaducifolio",
-                        "semi_evergreen": "Semiperenne"
-                    }
-                },
                 "leaf_type": {
                     "label": "Tipo de hoja",
                     "options": {
@@ -1493,11 +1936,7 @@
                 },
                 "leaf_type_singular": {
                     "label": "Tipo de hoja",
-                    "options": {
-                        "broadleaved": "Hoja ancha",
-                        "leafless": "Sin hojas",
-                        "needleleaved": "Coníferas"
-                    }
+                    "terms": "tipo de hoja,hojas"
                 },
                 "leisure": {
                     "label": "Tipo"
@@ -1524,8 +1963,16 @@
                 "lifeguard": {
                     "label": "Socorrista acuático"
                 },
+                "lift_gate/type": {
+                    "label": "Tipo",
+                    "options": {
+                        "double": "Barras opuestas",
+                        "single": "Barra única"
+                    }
+                },
                 "line_attachment": {
-                    "label": "Enganche de línea"
+                    "label": "Fijación de la línea",
+                    "terms": "fijación de la línea,enganche de la línea,soporte de la línea"
                 },
                 "line_management": {
                     "label": "Gestión de línea",
@@ -1540,7 +1987,6 @@
                     "terms": "ubicación,localización,posición"
                 },
                 "location_pool": {
-                    "label": "Ubicación",
                     "options": {
                         "indoor": "Interior",
                         "outdoor": "Exterior",
@@ -1581,6 +2027,30 @@
                 },
                 "material": {
                     "label": "Material",
+                    "options": {
+                        "adobe": "Adobe",
+                        "aluminium": "Aluminio",
+                        "brass": "Latón",
+                        "brick": "Ladrillo",
+                        "bronze": "Bronce",
+                        "concrete": "Hormigón / Concreto",
+                        "dry_stone": "Piedra seca",
+                        "glass": "Vidrio",
+                        "granite": "Granito",
+                        "iron": "Hierro",
+                        "limestone": "Caliza",
+                        "marble": "Mármol",
+                        "metal": "Metal",
+                        "plastic": "Plástico",
+                        "reinforced_conrete": "Hormigón armado",
+                        "rock": "Roca",
+                        "sand": "Arena",
+                        "sandstone": "Arenisca",
+                        "soil": "Suelo, tierra",
+                        "steel": "Acero",
+                        "stone": "Piedra",
+                        "wood": "Madera"
+                    },
                     "terms": "material,fibra,sustrato,sustancia,elemento"
                 },
                 "mattress": {
@@ -1618,16 +2088,29 @@
                     "label": "Peso máximo",
                     "terms": "peso,máximo,límite,kilos,kilogramos,toneladas"
                 },
-                "maxweight_bridge": {
-                    "label": "Peso máximo",
-                    "terms": "peso,máximo,límite,kilos,kilogramos,toneladas"
-                },
                 "maxwidth": {
                     "label": "Ancho máximo",
                     "terms": "ancho máximo,anchura máxima,máximo,ancho límite,anchura límite"
                 },
                 "memorial": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "blue_plaque": "Placa azul",
+                        "bust": "Busto",
+                        "cross": "Cruz conmemorativa",
+                        "obelisk": "Obelisco",
+                        "plaque": "Placa conmemorativa",
+                        "sculpture": "Escultura",
+                        "statue": "Estatua",
+                        "stele": "Estela",
+                        "stolperstein": "Stolperstein",
+                        "stone": "Piedra",
+                        "war_memorial": "Monumento al soldado caído"
+                    }
+                },
+                "message": {
+                    "label": "Mensaje",
+                    "terms": "mensaje,aviso,texto"
                 },
                 "microbrewery": {
                     "label": "Microcervecería",
@@ -1651,6 +2134,10 @@
                     "label": "Límite mínimo de velocidad",
                     "placeholder": "20, 30, 40...",
                     "terms": "velocidad,límite mínimo de velocidad,mínima"
+                },
+                "model": {
+                    "label": "Modelo",
+                    "terms": "modelo"
                 },
                 "monitoring_multi": {
                     "label": "Supervisando"
@@ -1753,8 +2240,69 @@
                     "label": "Nota",
                     "terms": "comentario,observación,nota"
                 },
+                "nudism": {
+                    "label": "Nudismo",
+                    "options": {
+                        "customary": "Costumbre",
+                        "designated": "Designado",
+                        "no": "Prohibido",
+                        "obligatory": "Obligatorio",
+                        "permissive": "Permisivo",
+                        "yes": "Permitido"
+                    },
+                    "terms": "naturismo,naturista,recreación al desnudo,nudista"
+                },
                 "office": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "accountant": "Estudio contable",
+                        "adoption_agency": "Agencia de adopción",
+                        "advertising_agency": "Agencia de publicidad",
+                        "architect": "Estudio de arquitectura",
+                        "association": "Oficina de organización sin fines de lucro",
+                        "charity": "Oficina de caridad",
+                        "company": "Oficina corporativa",
+                        "construction_company": "Oficina de empresa constructora",
+                        "consulting": "Oficina de consultoría",
+                        "courier": "Oficina de mensajería",
+                        "coworking": "Espacio de coworking",
+                        "diplomatic": "Oficina diplomática",
+                        "educational_institution": "Institución educativa",
+                        "employment_agency": "Agencia de empleo",
+                        "energy_supplier": "Oficina de proveedor de energía",
+                        "engineer": "Oficina de ingeniería",
+                        "estate_agent": "Oficina inmobiliaria",
+                        "financial": "Oficina financiera",
+                        "financial_advisor": "Asesor financiero",
+                        "forestry": "Oficina forestal",
+                        "foundation": "Oficina de la fundación",
+                        "government": "Oficina gubernamental",
+                        "graphic_design": "Oficina de diseño gráfico",
+                        "guide": "Oficina del guía turístico",
+                        "insurance": "Oficina de seguros",
+                        "it": "Oficina de Tecnología de la Información",
+                        "lawyer": "Despacho de abogados",
+                        "logistics": "Agencia de transportes",
+                        "moving_company": "Oficina de empresa de mudanzas",
+                        "newspaper": "Oficina del periódico",
+                        "ngo": "Oficina de ONG",
+                        "notary": "Notaría",
+                        "physician": "Médico",
+                        "political_party": "Oficina del partido político",
+                        "private_investigator": "Oficina del detective privado",
+                        "property_management": "Oficina de administración de propiedades",
+                        "quango": "Oficina de cuasi-ONG",
+                        "religion": "Oficina religiosa",
+                        "research": "Oficina de investigación",
+                        "security": "Oficina de seguridad",
+                        "surveyor": "Oficina del perito",
+                        "tax_advisor": "Oficina de asesoría fiscal",
+                        "telecommunication": "Oficina de telecomunicaciones",
+                        "therapist": "Oficina del terapeuta",
+                        "travel_agent": "Agencia de viajes",
+                        "union": "Oficina sindical",
+                        "water_utility": "Oficina de suministro de agua"
+                    }
                 },
                 "oneway": {
                     "label": "Sentido único",
@@ -1772,7 +2320,6 @@
                     "terms": "mano única,bicicletas,vía,ciclovía,única,unidireccional,sentido"
                 },
                 "oneway_yes": {
-                    "label": "Sentido único",
                     "options": {
                         "alternating": "Alternante",
                         "no": "No",
@@ -1840,14 +2387,17 @@
                 "parking": {
                     "label": "Tipo",
                     "options": {
-                        "carports": "Cocheras",
+                        "carports": "Cochera abierta",
                         "garage_boxes": "Garaje en cubículos",
+                        "half_on_kerb": "La mitad en la acera",
                         "lane": "Carril al borde de la calzada",
                         "layby": "Área de descanso",
                         "multi-storey": "Multinivel",
+                        "on_kerb": "En la acera",
                         "rooftop": "Techo",
                         "sheds": "Galpones",
-                        "street_side": "Junto a la calle",
+                        "shoulder": "Arcén / banquina",
+                        "street_side": "Adyacente a la calzada",
                         "surface": "Superficie",
                         "underground": "Subterráneo"
                     }
@@ -1855,27 +2405,92 @@
                 "parking/orientation": {
                     "label": "Orientación",
                     "options": {
-                        "diagonal": "Diagonal a la calle",
-                        "parallel": "Paralelo a la calle",
-                        "perpendicular": "En ángulo recto a la calle"
+                        "diagonal": "Diagonal a la calzada",
+                        "parallel": "Paralelo a la calzada",
+                        "perpendicular": "En ángulo recto a la calzada"
+                    }
+                },
+                "parking/side/orientation": {
+                    "label": "Orientación del estacionamiento",
+                    "options": {
+                        "diagonal": "Diagonal con respecto a la calzada (~45°)",
+                        "parallel": "Paralelo a la calzada",
+                        "perpendicular": "Se encuentra con la calzada en ángulo recto (~90°)"
+                    },
+                    "terms": "orientación de estacionamiento,orientación de aparcamiento",
+                    "types": {
+                        "parking:left:orientation": "Lado izquierdo",
+                        "parking:right:orientation": "Lado derecho"
+                    }
+                },
+                "parking/side/parking": {
+                    "label": "Estacionamiento",
+                    "options": {
+                        "half_on_kerb": "La mitad en la acera",
+                        "lane": "Carril al borde de la calzada",
+                        "no": "No",
+                        "on_kerb": "En la acera",
+                        "separate": "Estacionamiento mapeado por separado",
+                        "shoulder": "Arcén / banquina",
+                        "street_side": "Adyacente a la calzada",
+                        "yes": "Sí (sin especificar)"
+                    },
+                    "terms": "aparcamiento,estacionamiento,parking",
+                    "types": {
+                        "parking:left": "Lado izquierdo",
+                        "parking:right": "Lado derecho"
                     }
                 },
                 "parking_entrance": {
-                    "label": "Tipo",
-                    "options": {
-                        "multi-storey": "Multinivel",
-                        "underground": "Subterráneo"
-                    }
+                    "label": "Tipo"
                 },
                 "parking_space": {
                     "label": "Tipo"
                 },
                 "payment_multi": {
                     "label": "Formas de pago",
-                    "terms": "formas de pago,tarjeta de crédito,dinero,efectivo,trueque,cheque,fianza,metálico,moneda,billete,bitcoin,criptomoneda"
-                },
-                "payment_multi_fee": {
-                    "label": "Formas de pago",
+                    "options": {
+                        "account_cards": "Tarjeta de cuenta",
+                        "alipay": "Alipay",
+                        "american_express": "American Express",
+                        "app": "Aplicación móvil",
+                        "apple_pay": "Apple Pay",
+                        "bancomat": "Bancomat",
+                        "blik": "Blik",
+                        "cards": "Tarjeta de pago",
+                        "cash": "Efectivo",
+                        "cheque": "Cheque",
+                        "clipper": "Clipper",
+                        "coins": "Monedas",
+                        "contactless": "Pago sin contacto",
+                        "credit_cards": "Tarjeta de crédito",
+                        "cryptocurrencies": "Criptomoneda",
+                        "debit_cards": "Tarjeta de débito",
+                        "diners_club": "Diners Club",
+                        "discover_card": "Discover",
+                        "dkv": "DKV",
+                        "electronic_purses": "Monedero electrónico",
+                        "ep_easycard": "悠遊卡EasyCard",
+                        "ep_geldkarte": "GeldKarte",
+                        "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
+                        "google_pay": "Google Pay",
+                        "jcb": "JCB",
+                        "maestro": "Maestro",
+                        "mastercard": "Mastercard",
+                        "mastercard_contactless": "Mastercard Contactless",
+                        "notes": "Papel moneda",
+                        "paypal": "PayPal",
+                        "prepaid_ticket": "Billete prepago",
+                        "telephone_cards": "Tarjeta telefónica",
+                        "unionpay": "UnionPay",
+                        "uta": "UTA",
+                        "v_pay": "V Pay",
+                        "visa": "Visa",
+                        "visa_debit": "Visa Débito",
+                        "visa_electron": "Visa Electron",
+                        "wechat": "WeChat Pay"
+                    },
                     "terms": "formas de pago,tarjeta de crédito,dinero,efectivo,trueque,cheque,fianza,metálico,moneda,billete,bitcoin,criptomoneda"
                 },
                 "phases": {
@@ -1886,6 +2501,13 @@
                     "label": "Teléfono",
                     "placeholder": "+31 42 123 4567",
                     "terms": "teléfono,número de teléfono,número de línea,móvil,celular"
+                },
+                "picnic_table": {
+                    "label": "Mesa de picnic",
+                    "terms": "mesa de exterior,banco"
+                },
+                "pipeline": {
+                    "label": "Tipo"
                 },
                 "piste/difficulty": {
                     "label": "Dificultad",
@@ -1901,7 +2523,6 @@
                     "placeholder": "Fácil, intermedio, avanzado..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Dificultad",
                     "options": {
                         "advanced": "Avanzado (diamante negro)",
                         "easy": "Fácil (círculo verde)",
@@ -1914,7 +2535,6 @@
                     "placeholder": "Fácil, Intermedio, Avanzado ..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Dificultad",
                     "options": {
                         "advanced": "Avanzado: sección estrecha, empinada o helada, giro pronunciado",
                         "easy": "Fácil - Colinas suaves, sección empinada corta",
@@ -1925,7 +2545,6 @@
                     "placeholder": "Fácil, Intermedio, Avanzado ..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Dificultad",
                     "options": {
                         "advanced": "Avanzado - S: 40-45° de inclinación",
                         "easy": "Fácil - WS: 30-35° de inclinación",
@@ -1949,7 +2568,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Sin pisapistas",
                         "classic": "Clásico",
@@ -1957,14 +2575,12 @@
                     }
                 },
                 "piste/grooming_hike": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Raquetas de nieve",
                         "classic": "Clásico - Senderismo de invierno"
                     }
                 },
                 "piste/grooming_nordic": {
-                    "label": "Pisapistas",
                     "options": {
                         "backcountry": "Backcountry - Sin pisapistas",
                         "classic": "Clásico",
@@ -1997,8 +2613,21 @@
                 "plant/method": {
                     "label": "Método de generación"
                 },
+                "plant/output": {
+                    "label": "Forma de salida de la energía",
+                    "options": {
+                        "cold_air": "Aire frío",
+                        "cold_water": "Agua fría",
+                        "compressed_air": "Aire comprimido",
+                        "electricity": "Electricidad",
+                        "hot_air": "Aire caliente",
+                        "hot_water": "Agua caliente",
+                        "steam": "Vapor",
+                        "vacuum": "Vacío"
+                    }
+                },
                 "plant/output/electricity": {
-                    "label": "Potencia de salida",
+                    "label": "Salida de energía eléctrica",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2020,6 +2649,10 @@
                 },
                 "population": {
                     "label": "Cantidad de población"
+                },
+                "population/date": {
+                    "label": "Fecha de la población",
+                    "placeholder": "AAAA-MM-DD"
                 },
                 "portable": {
                     "label": "Portátil",
@@ -2097,7 +2730,7 @@
                         "engine_oil": "Aceite de motor",
                         "glass": "Cualquier vidrio (vidrio templado, ventanas, espejos, etc.)",
                         "glass_bottles": "Botellas y frascos de vidrio",
-                        "green_waste": "Basura orgánica",
+                        "green_waste": "Residuos orgánicos",
                         "paper": "Papel",
                         "plastic": "Plástico",
                         "plastic_bottles": "Botellas de plástico",
@@ -2125,6 +2758,10 @@
                 "ref/isil": {
                     "label": "Código ISIL"
                 },
+                "ref/linz/place_id-NZ": {
+                    "label": "ID de lugar de NZGB",
+                    "terms": "nz,linz,información de la tierra nueva zelanda,toitū te whenua,nzgb,junta geográfica de nueva zelanda,postes de aotearoa"
+                },
                 "ref/vatin": {
                     "label": "Número de identificación del IVA",
                     "terms": "número de identificación del impuesto al valor agregado,vatin,id"
@@ -2147,7 +2784,7 @@
                     "label": "Número de plataforma"
                 },
                 "ref_road_number": {
-                    "label": "Número de la carretera",
+                    "label": "Referencia de la carretera",
                     "terms": "número de camino,número de ruta,número de calle,número de vía"
                 },
                 "ref_room_number": {
@@ -2176,6 +2813,30 @@
                 },
                 "religion": {
                     "label": "Religión",
+                    "options": {
+                        "bahai": "Bahá'í",
+                        "benzhu": "Benzhu",
+                        "buddhist": "Budista",
+                        "caodaism": "Caodaísta",
+                        "chinese_folk": "Religión popular China",
+                        "christian": "Cristiano",
+                        "confucian": "Confuciano",
+                        "hindu": "Hindú",
+                        "jain": "Jainista",
+                        "jewish": "Judío",
+                        "multifaith": "Multirreligioso",
+                        "muslim": "Musulmán",
+                        "none": "No religioso",
+                        "pagan": "Pagano",
+                        "shinto": "Sintoísmo",
+                        "sikh": "Sijismo",
+                        "spiritualist": "Espiritista",
+                        "taoist": "Taoísta",
+                        "tenrikyo": "Tenrikyo",
+                        "unitarian_universalist": "Unitarismo universalista",
+                        "vietnamese_folk": "Religión popular vietnamita",
+                        "voodoo": "Vudú"
+                    },
                     "terms": "religión,confesión,judío,cristiano,católico,ateo,cienciología,testigos de jehová,umbanda,protestante,budista,dios,filosofía,wicca,ortodoxos,mormones,espiritual,ritual,helenismo,pastafarismo,chamanismo,brujería,pagano,islam,jediismo,satanismo,shinto,taoísmo,yoga,reiki,iglesia,templo,monasterio,capilla,catedral"
                 },
                 "reservation": {
@@ -2195,7 +2856,18 @@
                     "label": "Tipo"
                 },
                 "resource": {
-                    "label": "Recursos"
+                    "label": "Recursos",
+                    "options": {
+                        "aggregate": "Agregado",
+                        "clay": "Arcilla",
+                        "coal": "Carbón",
+                        "gold": "Oro",
+                        "gravel": "Grava",
+                        "iron_ore": "Mineral de hierro",
+                        "limestone": "Caliza",
+                        "peat": "Turba",
+                        "sand": "Arena"
+                    }
                 },
                 "restriction": {
                     "label": "Tipo"
@@ -2212,6 +2884,10 @@
                 },
                 "rooms": {
                     "label": "Habitaciones"
+                },
+                "rotor/diameter": {
+                    "label": "Diámetro del rotor (metros)",
+                    "terms": "diámetro del rotor,diametro del rotor,rotor,metros"
                 },
                 "roundtrip": {
                     "label": "Forma un circuito cerrado",
@@ -2418,6 +3094,9 @@
                 "shelter_type": {
                     "label": "Tipo"
                 },
+                "shoes": {
+                    "label": "Zapatos"
+                },
                 "shop": {
                     "label": "Tipo"
                 },
@@ -2438,9 +3117,6 @@
                 },
                 "site": {
                     "label": "Tipo"
-                },
-                "site_type": {
-                    "label": "Tipo de sitio"
                 },
                 "smoking": {
                     "label": "Fumar",
@@ -2475,7 +3151,18 @@
                     "terms": "sms,mensaje,celular,teléfono,móvil,texto"
                 },
                 "social_facility": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "ambulatory_care": "Atención ambulatoria",
+                        "assisted_living": "Hogar para indigentes",
+                        "day_care": "Guardería",
+                        "food_bank": "Banco de alimentos",
+                        "group_home": "Hogar grupal / Asilo",
+                        "nursing_home": "Residencia de ancianos",
+                        "outreach": "Divulgación social",
+                        "shelter": "Albergue",
+                        "workshop": "Taller"
+                    }
                 },
                 "social_facility_for": {
                     "label": "Personas atendidas"
@@ -2492,6 +3179,9 @@
                     },
                     "terms": "fuentes,referencias,orígenes,origen"
                 },
+                "source/population": {
+                    "label": "Fuente de la población"
+                },
                 "species": {
                     "label": "Especies",
                     "placeholder": "Acer platanoides, Quercus robur, …",
@@ -2502,7 +3192,44 @@
                     "terms": "especies,wikidata,datos,metadatos,información,etiquetas,base"
                 },
                 "sport": {
-                    "label": "Deportes"
+                    "label": "Deportes",
+                    "options": {
+                        "american_football": "Fútbol americano",
+                        "athletics": "Atletismo",
+                        "badminton": "Bádminton",
+                        "baseball": "Béisbol",
+                        "basketball": "Baloncesto / Básquetbol",
+                        "beachvolleyball": "Voleibol de playa",
+                        "boules": "Bolos",
+                        "bowls": "Bolo césped / Bochas",
+                        "climbing": "Escalada",
+                        "cricket": "Críquet",
+                        "cycling": "Ciclismo",
+                        "equestrian": "Ecuestre",
+                        "fitness": "Entrenamiento físico",
+                        "free_flying": "Parapente / Ala Delta",
+                        "futsal": "Futsal / Fútbol sala",
+                        "golf": "Golf",
+                        "gymnastics": "Gimnasia",
+                        "handball": "Handball / Balonmano por equipos",
+                        "horse_racing": "Carreras de caballos",
+                        "karting": "Carreras de karts / Karting",
+                        "motocross": "Motocross",
+                        "motor": "Deportes de motor (Motorsports)",
+                        "netball": "Balonred / Netball",
+                        "padel": "Pádel",
+                        "rugby_union": "Rugby union",
+                        "running": "Running",
+                        "shooting": "Tiro deportivo",
+                        "skateboard": "Skateboard / Monopatinaje",
+                        "skiing": "Esquí",
+                        "soccer": "Fútbol",
+                        "softball": "Sóftbol",
+                        "swimming": "Natación",
+                        "table_tennis": "Tenis de mesa",
+                        "tennis": "Tenis",
+                        "volleyball": "Voleibol"
+                    }
                 },
                 "sport_ice": {
                     "label": "Deportes",
@@ -2526,9 +3253,9 @@
                 "sport_racing_motor": {
                     "label": "Deportes",
                     "options": {
-                        "karting": "Karting",
+                        "karting": "Carreras de karts / karting",
                         "motocross": "Motocross",
-                        "motor": "Automovilismo",
+                        "motor": "Deportes de motor (Motorsports)",
                         "speedway": "Pista de carreras de motos"
                     }
                 },
@@ -2539,7 +3266,7 @@
                         "cycling": "Ciclismo",
                         "dog_racing": "Carreras de perros",
                         "horse_racing": "Carreras de caballos",
-                        "running": "Running (Carrera a pie)"
+                        "running": "Running"
                     }
                 },
                 "stars": {
@@ -2547,9 +3274,12 @@
                     "terms": "estrellas,calificación,puntuación,crítica,puntaje,mejor,peor,comparación"
                 },
                 "start_date": {
-                    "label": "Fecha inicio",
+                    "label": "Fecha de inicio",
                     "placeholder": "AAAA-MM-DD",
                     "terms": "fecha de inicio,comienzo,inauguración,empezar,término,final"
+                },
+                "static_caravans": {
+                    "label": "Casas móviles"
                 },
                 "step_count": {
                     "label": "Número de escalones",
@@ -2566,7 +3296,8 @@
                     }
                 },
                 "street_cabinet": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "terms": "tipo,tipos,género"
                 },
                 "stroller": {
                     "label": "Acceso para cochecitos",
@@ -2589,6 +3320,14 @@
                     "placeholder": "Desconocido",
                     "terms": "estructura,construcción"
                 },
+                "structure_power": {
+                    "label": "Estructura",
+                    "options": {
+                        "lattice": "Celosía",
+                        "solid": "Sólido",
+                        "tubular": "Tubular"
+                    }
+                },
                 "structure_waterway": {
                     "label": "Estructura",
                     "options": {
@@ -2608,10 +3347,45 @@
                     "terms": "wikidata,wikipedia,sujeto,tema,asunto"
                 },
                 "substance": {
-                    "label": "Sustancia"
+                    "label": "Sustancia",
+                    "options": {
+                        "fuel": "Combustible",
+                        "gas": "Gas natural",
+                        "hot_water": "Agua caliente",
+                        "oil": "Petróleo crudo",
+                        "rainwater": "Agua de lluvia",
+                        "sewage": "Aguas residuales",
+                        "water": "Agua potable"
+                    }
                 },
                 "substation": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "compensation": "Compensación de potencia reactiva",
+                        "converter": "Convertidor CA/CC de alta tensión",
+                        "distribution": "Distribución regional",
+                        "generation": "Generación",
+                        "industrial": "Industrial",
+                        "minor_distribution": "Distribución local",
+                        "traction": "Suministro del sistema de tracción",
+                        "transition": "Transición de superficie/subterránea",
+                        "transmission": "Transmisión de alta tensión"
+                    }
+                },
+                "substation_pipeline": {
+                    "label": "Tipo",
+                    "options": {
+                        "compression": "Compresión",
+                        "distribution": "Distribución regional",
+                        "field_gathering": "Recolección de campo",
+                        "industrial": "Industrial",
+                        "inspection_gauge": "Medidor de inspección",
+                        "measurement": "Medición",
+                        "minor_distribution": "Distribución local",
+                        "transmission": "Transmisión",
+                        "valve": "Válvula",
+                        "valve_group": "Grupo de válvulas"
+                    }
                 },
                 "supervised": {
                     "label": "Vigilado",
@@ -2632,11 +3406,17 @@
                         "grass": "Césped",
                         "gravel": "Grava",
                         "ground": "Suelo",
+                        "metal": "Metal",
+                        "mud": "Continuamente embarrado",
                         "paved": "Pavimentado",
                         "paving_stones": "Adoquines",
+                        "salt": "Sal",
                         "sand": "Arena",
+                        "sett": "Adoquinado",
+                        "unhewn_cobblestone": "Empedrado (piedras sin cortar, redondeadas)",
                         "unpaved": "Sin pavimentar",
-                        "wood": "Madera"
+                        "wood": "Madera",
+                        "woodchips": "Astillas de madera"
                     },
                     "terms": "superficie"
                 },
@@ -2730,6 +3510,9 @@
                 "telecom/medium": {
                     "label": "Medio"
                 },
+                "tents": {
+                    "label": "Carpas"
+                },
                 "tidal": {
                     "label": "De marea",
                     "terms": "marea"
@@ -2758,6 +3541,15 @@
                     "label": "Posiciones",
                     "terms": "posición"
                 },
+                "toilets/wheelchair": {
+                    "label": "Baño accesible para sillas de ruedas",
+                    "options": {
+                        "limited": "Limitado",
+                        "no": "No",
+                        "yes": "Sí"
+                    },
+                    "terms": "baño,inodoro,accesible,accesibilidad,discapacitados,minusválidos"
+                },
                 "toll": {
                     "label": "Peaje",
                     "terms": "peaje"
@@ -2772,6 +3564,10 @@
                     "label": "Construcción",
                     "placeholder": "Atirantada, celosía, oculta/disfrazada, ..."
                 },
+                "tower/platforms": {
+                    "label": "Plataformas",
+                    "placeholder": "1, 2, 3..."
+                },
                 "tower/type": {
                     "label": "Tipo"
                 },
@@ -2781,7 +3577,7 @@
                 "tracktype": {
                     "label": "Tipo de pista",
                     "options": {
-                        "grade1": "Sólido: pavimentada o de superficie compacta y dura",
+                        "grade1": "Sólido: pavimentada",
                         "grade2": "Mayormente sólido: grava/roca con algún material suave mezclado",
                         "grade3": "Mezcla pareja de materiales duros y blandos",
                         "grade4": "Mayormente Suave: tierra/arena/césped con algún un material duro mezclado",
@@ -2793,7 +3589,21 @@
                     "label": "Tipo"
                 },
                 "traffic_calming": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "bump": "Reductor de velocidad",
+                        "chicane": "Chicana de tránsito",
+                        "choked_table": "Reductor de velocidad trapezoidal con estrechamiento",
+                        "choker": "Estrechamiento de calzada",
+                        "cushion": "Cojín Berlinés",
+                        "dip": "Badén / Cuneta",
+                        "double_dip": "Doble badén o cuneta",
+                        "hump": "Reductor de velocidad ancho",
+                        "island": "Isleta de tránsito",
+                        "mini_bumps": "Reductor de velocidad lenticular",
+                        "rumble_strip": "Banda sonora reductora de velocidad",
+                        "table": "Reductor de velocidad trapezoidal"
+                    }
                 },
                 "traffic_sign": {
                     "label": "Señal de tránsito"
@@ -2887,10 +3697,24 @@
                     "placeholder": "Predeterminado"
                 },
                 "tunnel_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "avalanche_protector": "Protector contra avalanchas",
+                        "building_passage": "Pasaje del edificio",
+                        "culvert": "Alcantarilla",
+                        "flooded": "Túnel inundado"
+                    }
                 },
                 "turning_circle": {
                     "label": "Forma"
+                },
+                "two_sided": {
+                    "label": "Dos lados",
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Sí"
+                    },
+                    "terms": "dos lados,doble lado,dos caras,doble cara"
                 },
                 "usage_rail": {
                     "label": "Tipo de uso",
@@ -2916,7 +3740,16 @@
                     }
                 },
                 "utility": {
-                    "label": "Servicio público"
+                    "label": "Servicio público",
+                    "options": {
+                        "gas": "Gas",
+                        "oil": "Petróleo",
+                        "power": "Energía eléctrica",
+                        "sewerage": "Aguas residuales",
+                        "street_lighting": "Alumbrado público",
+                        "telecom": "Telecomunicaciones",
+                        "water": "Agua"
+                    }
                 },
                 "utility_semi": {
                     "label": "Servicios públicos"
@@ -2991,15 +3824,17 @@
                     "label": "Voltaje terciario",
                     "terms": "voltaje terciario,voltaje"
                 },
-                "voltage_electrified": {
-                    "label": "Voltaje",
-                    "terms": "votaje,vatios,watts,potencial,energía,electricidad"
-                },
                 "wall": {
                     "label": "Tipo"
                 },
                 "waste": {
-                    "label": "Residuos"
+                    "label": "Residuos",
+                    "options": {
+                        "cigarettes": "Cigarrillos",
+                        "dog_excrement": "Excremento de perro",
+                        "organic": "Residuos orgánicos",
+                        "trash": "Basura"
+                    }
                 },
                 "water": {
                     "label": "Tipo"
@@ -3008,16 +3843,19 @@
                     "label": "Punto de agua"
                 },
                 "water_source": {
-                    "label": "Fuente de agua"
+                    "label": "Fuente de agua",
+                    "options": {
+                        "main": "Tubería de distribución de agua",
+                        "pond": "Estanque",
+                        "river": "Río",
+                        "stream": "Arroyo",
+                        "water_tank": "Depósito de agua"
+                    }
                 },
                 "water_tank/volume": {
                     "label": "Volumen (litros)",
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "volumen,cantidad,litros,litro"
-                },
-                "water_volume": {
-                    "label": "Volumen de reserva de agua (m³)",
-                    "terms": "volumen de reserva de agua,reservar,volumen,cantidad"
                 },
                 "waterway": {
                     "label": "Tipo"
@@ -3106,6 +3944,10 @@
                 "address": {
                     "name": "Dirección",
                     "terms": "dirección,altura,domicilio,residencia"
+                },
+                "advertising": {
+                    "name": "Dispositivo publicitario",
+                    "terms": "pantalla publicitaria,bandera,letrero de neón,rótulo"
                 },
                 "advertising/billboard": {
                     "name": "Panel publicitario",
@@ -3257,7 +4099,7 @@
                     "terms": "refugio,albergue,adopción,cuidado,rescate,animal,animales,mascotas,gato,perro,caballo,gallina,reptiles,tortuga,peces,anfibios,pájaros,roedores"
                 },
                 "amenity/arts_centre": {
-                    "name": "Centro de Arte",
+                    "name": "Centro de arte",
                     "terms": "centro de arte,centro de bellas artes"
                 },
                 "amenity/atm": {
@@ -3270,7 +4112,7 @@
                 },
                 "amenity/bar": {
                     "name": "Bar (latam) / Bar de copas (es)",
-                    "terms": "bar,pub,tasca,cantina,taberna,barra"
+                    "terms": "bar,tasca,cantina,taberna,barra,cervecería,cerveceria,cerveza"
                 },
                 "amenity/bar/lgbtq": {
                     "name": "Bar LGBTQ+",
@@ -3383,6 +4225,10 @@
                     "name": "Clínica de aborto",
                     "terms": "aborto,abotar,interrupción,embarazo,interrupción del embarazo,clínica de aborto"
                 },
+                "amenity/clinic/dialysis": {
+                    "name": "Centro de diálisis",
+                    "terms": "centro de diálisis,diálisis renal,clínica de diálisis"
+                },
                 "amenity/clinic/fertility": {
                     "name": "Clínica de fertilidad",
                     "terms": "clínica de fertilidad,fertilidad,reproducción,esperma,ovulación,clínica de reproducción"
@@ -3442,9 +4288,117 @@
                     "name": "Médico",
                     "terms": "médico,medico,médica,medica,galeno,consultorio médico,ambulatorio médico,consulta médica,enfermería,doctor,doctora"
                 },
+                "amenity/doctors/allergology": {
+                    "name": "Alergólogo / Alergista",
+                    "terms": "alergólogo,alergista,alergia,asma"
+                },
+                "amenity/doctors/cardiology": {
+                    "name": "Cardiólogo",
+                    "terms": "cirujano cardíaco,cardiología,sistema cardiovascular,arteria coronaria,corazón"
+                },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "Psiquiatra de niños y adolescentes",
+                    "terms": "psiquiatra de niños y adolescentes,psiquiatría adolescente,psiquiatría infantil,psiquiatría pediátrica,psiquiatría de niños"
+                },
+                "amenity/doctors/dermatology": {
+                    "name": "Dermatólogo",
+                    "terms": "dermatología,cabello,uñas,piel"
+                },
+                "amenity/doctors/gastroenterology": {
+                    "name": "Gastroenterólogo",
+                    "terms": "intestinos,sistema digestivo,digestión,esófago,tubo digestivo,cálculos biliares,tracto gastrointestinal,gastroenterología,intestino grueso,hígado,intestino delgado,estómago"
+                },
+                "amenity/doctors/general": {
+                    "name": "Médico de atención primaria",
+                    "terms": "médico de atención primaria,médico de familia,médico de cabecera,médico primario"
+                },
                 "amenity/doctors/gynaecology": {
                     "name": "Ginecólogo",
                     "terms": "óvulo,ginecólogo,ginecologo,ginecóloga,ginecologa ginecología,ginecologia,obstetricia,ovulación,ovulacion,reproductiva,médico de la mujer,medicina de la mujer"
+                },
+                "amenity/doctors/haematology": {
+                    "name": "Hematólogo",
+                    "terms": "anemia,sangre,médula ósea,hematología,leucemia,linfoma"
+                },
+                "amenity/doctors/internal": {
+                    "name": "Internista",
+                    "terms": "médico general interno,medicina interna,especialista en medicina interna"
+                },
+                "amenity/doctors/nephrology": {
+                    "name": "Nefrólogo",
+                    "terms": "riñón,riñones,medicina renal,nefrología,renal"
+                },
+                "amenity/doctors/neurology": {
+                    "name": "Neurólogo",
+                    "terms": "cerebro,nervios,sistema nervioso,neurología,neurocirugía"
+                },
+                "amenity/doctors/neurosurgery": {
+                    "name": "Neurocirujano",
+                    "terms": "cerebro,cirugía neurológica,neurocirugía"
+                },
+                "amenity/doctors/oncology": {
+                    "name": "Oncólogo",
+                    "terms": "cáncer,quimioterapia,oncología,tumor"
+                },
+                "amenity/doctors/ophthalmology": {
+                    "name": "Oftalmólogo",
+                    "terms": "ojo,ojos,anteojos,ocular,oftalmología"
+                },
+                "amenity/doctors/orthopaedics": {
+                    "name": "Cirujano ortopédico",
+                    "terms": "cirugía ortopédica"
+                },
+                "amenity/doctors/otolaryngology": {
+                    "name": "Otorrinolaringólogo",
+                    "terms": "oído,otorrinolaringología,cirugía de cabeza y cuello,nariz,orl,cráneo,garganta"
+                },
+                "amenity/doctors/paediatrics": {
+                    "name": "Pediatra",
+                    "terms": "adolescentes,niños,bebés,pediatría"
+                },
+                "amenity/doctors/pathology": {
+                    "name": "Patólogo",
+                    "terms": "autopsia,patología anatómica,patología"
+                },
+                "amenity/doctors/plastic_surgery": {
+                    "name": "Cirujano plástico",
+                    "terms": "cirugía estética,cirugía cosmética,cirugía craneofacial,cirugía reconstructiva,cirugía plástica"
+                },
+                "amenity/doctors/podiatry": {
+                    "name": "Podólogo",
+                    "terms": "tobillo,pies,pie,pierna,piernas,podología"
+                },
+                "amenity/doctors/proctology": {
+                    "name": "Cirujano colorrectal",
+                    "terms": "cirugía colorrectal,proctología,colon,ano,coloproctología"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "Psiquiatra",
+                    "terms": "psiquiatra,psiquiatría,siquiatra"
+                },
+                "amenity/doctors/pulmonology": {
+                    "name": "Neumólogo",
+                    "terms": "asma,medicina torácica,pulmón,neumología,neumonología,neumonía,vías respiratorias,respirología,medicina respiratoria"
+                },
+                "amenity/doctors/radiology": {
+                    "name": "Radiólogo",
+                    "terms": "radiología,tomografía computarizada,imágenes por resonancia magnética,resonancia,ultrasonido médico,ultrasonografía médica,resonancia magnética,ecografía,ultrasonografía"
+                },
+                "amenity/doctors/rheumatology": {
+                    "name": "Reumatólogo",
+                    "terms": "lupus,osteoporosis,reuma,reumatología"
+                },
+                "amenity/doctors/surgery": {
+                    "name": "Cirujano general",
+                    "terms": "cirugía"
+                },
+                "amenity/doctors/trauma": {
+                    "name": "Cirujano traumatológico",
+                    "terms": "cirugía,cirugía de trauma,cirujano traumatólogo,traumatólogo"
+                },
+                "amenity/doctors/urology": {
+                    "name": "Urólogo",
+                    "terms": "glándulas suprarrenales,vejiga,epidídimo,riñón,pene,próstata,reproductor,escroto,testículos,uretra,uréteres,urología,urinario"
                 },
                 "amenity/dojo": {
                     "name": "Academia de artes marciales",
@@ -3484,6 +4438,10 @@
                 "amenity/fast_food/burger": {
                     "name": "Hamburguesa (Comida rápida)",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,comida rápida,comida al paso"
+                },
+                "amenity/fast_food/cafeteria": {
+                    "name": "Comedor",
+                    "terms": "cafetería,café,comedor,refectorio,cantina"
                 },
                 "amenity/fast_food/chicken": {
                     "name": "Pollo (Comida rápida)",
@@ -3663,7 +4621,7 @@
                     "terms": "estacionamiento,playa de estacionamiento,aparcadero,aparcamiento,aparcamento,auto,vehículo"
                 },
                 "amenity/parking/multi-storey": {
-                    "name": "Garaje de estacionamiento multinivel",
+                    "name": "Estacionamiento multinivel",
                     "terms": "aparcamiento,estacionamiento,estacionamiento de varios pisos,estructura de estacionamiento,rampa de estacionamiento,plataforma de estacionamiento,estacionamiento cubierto"
                 },
                 "amenity/parking/park_ride": {
@@ -3671,7 +4629,7 @@
                     "terms": "cercanías,incentivo,estacionamiento,p + r,park,ride,transporte público,bus,metro,subte"
                 },
                 "amenity/parking/street-side": {
-                    "name": "Estacionamiento apartado junto a la calle",
+                    "name": "Estacionamiento adyacente a la calzada",
                     "terms": "estacionamiento de automóviles,aparcamiento de automóviles,estacionamiento de vehículos,aparcamiento de vehículos,estacionamiento en la calle,aparcamiento en la calle,estacionamiento en la carretera,aparcamiento en la carretera,dársena,darsena"
                 },
                 "amenity/parking/underground": {
@@ -3679,7 +4637,7 @@
                     "terms": "estacionamiento,estacionamiento de automóviles,estacionamiento de vehículos,estacionamiento de rv,estacionamiento subterráneo,estacionamiento de camiones,aparcamiento"
                 },
                 "amenity/parking_entrance": {
-                    "name": "Entrada / salida del garaje de estacionamiento",
+                    "name": "Entrada/salida del garaje",
                     "terms": "entrada,salida,aparcamiento,parking,aparcadero,estacionamiento,garaje,parqueadero,parqueo"
                 },
                 "amenity/parking_space": {
@@ -3788,7 +4746,7 @@
                 },
                 "amenity/pub": {
                     "name": "Pub (latam) / Bar (es)",
-                    "terms": "alcohol,bebida,bar,pub"
+                    "terms": "alcohol,bebida,bar,pub,cervecería,cerveceria,cerveza"
                 },
                 "amenity/pub/irish": {
                     "name": "Pub irlandés",
@@ -3822,7 +4780,7 @@
                     "terms": "computadoras,desechos electrónicos,reciclaje de productos electrónicos,electrónicos,teléfonos,telefonos,tabletas,tablets,notebooks,ordenadores,desechos,basura,celulares,móviles,pilas,baterías,laptop,componentes,televisores,portátil,monitores,pantallas,cartuchos de impresora,impresoras"
                 },
                 "amenity/recycling/container/green_waste": {
-                    "name": "Contenedor de residuos orgánicos",
+                    "name": "Contenedor de residuos verdes",
                     "terms": "biodegradable,biológico,compost,descomponible,basurero,desperdicio de jardín,orgánico,basura,restos de comida,verde,residuo"
                 },
                 "amenity/recycling_centre": {
@@ -3931,11 +4889,11 @@
                 },
                 "amenity/shelter": {
                     "name": "Refugio",
-                    "terms": "albergue,abrigo,amparo,asilo,cobertizo,garita,refugio"
+                    "terms": "albergue,abrigo,amparo,asilo,cobertizo,garita,refugio,templete,pabellón,gazebo,picnic"
                 },
                 "amenity/shelter/gazebo": {
-                    "name": "Gazebo",
-                    "terms": "gazebo,glorieta"
+                    "name": "Gazebo / Glorieta",
+                    "terms": "gazebo,glorieta,mirador,kiosco,quiosco,templete,tienda,pabellón"
                 },
                 "amenity/shelter/lean_to": {
                     "name": "Cobertizo",
@@ -3969,6 +4927,10 @@
                     "name": "Cuidado ambulatorio",
                     "terms": "atención ambulatoria"
                 },
+                "amenity/social_facility/assisted_living": {
+                    "name": "Residencia para mayores",
+                    "terms": "residencia para mayores,residencia de ancianos,ancianos,vida asistida,tercera edad,asilo de ancianos,centro de vida asistida,instalación de vida asistida,centro de residencia asistida"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "Banco de alimentos",
                     "terms": "banco de alimentos"
@@ -3984,6 +4946,10 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Hogar de ancianos",
                     "terms": "anciano,vejez,adultez,adulto mayor,3ra edad,tercera edad,asilo,hogar,residencia,geriátrico,reposo,vida asistida,cuidado de ancianos"
+                },
+                "amenity/stripclub": {
+                    "name": "Club de striptease",
+                    "terms": "club de striptease,baile erótico,adultos,caballeros,cabaret,striptease"
                 },
                 "amenity/studio": {
                     "name": "Estudio de grabación",
@@ -4218,15 +5184,15 @@
                 },
                 "attraction/big_wheel": {
                     "name": "Noria",
-                    "terms": "rueda de la fortuna,vuelta al mundo,viaje a la luna,rueda moscovita,rueda de chicago,rueda chicagua,rueda gigante,rueda feria,juego mecánico,juego de feria"
+                    "terms": "parque temático,atracciones,noria de feria,rueda de chicago,rueda de la fortuna,rueda ferris,rueda gigante,rueda moscovita,viaje a la luna,vuelta al mundo,estrella,atracción de feria,parque de atracciones,parque de diversiones"
                 },
                 "attraction/bumper_car": {
-                    "name": "Autos de choque",
-                    "terms": "atracción,atraccion,coche de choque,autos chocadores,autitos chocadores,carros chocones,parque de atracciones,coches chocantes,coches locos,coches de tope,carritos chocones"
+                    "name": "Autitos chocadores",
+                    "terms": "atracción,atraccion,coche de choque,autos chocadores,autitos chocadores,carros chocones,parque de atracciones,coches chocantes,coches locos,coches de tope,carritos chocones,autitos chocones,caritos chocadores,autos de choque,coches de choque,carros chocadores"
                 },
                 "attraction/bungee_jumping": {
-                    "name": "Saldo de bungee",
-                    "terms": "salto,saltar,bungee,puenting,puente,benji,cuerda elástica,salto al vacío"
+                    "name": "Salto en bungee / Puenting",
+                    "terms": "salto,saltar,bungee,puenting,puente,benji,cuerda elástica,salto al vacío,bungee jumping"
                 },
                 "attraction/carousel": {
                     "name": "Carrusel",
@@ -4237,7 +5203,7 @@
                     "terms": "paseo oscuro,viaje oscuro,tren fantasma,paseo guiado,juego de feria"
                 },
                 "attraction/drop_tower": {
-                    "name": "Paseo en torre de caída",
+                    "name": "Torre de caída",
                     "terms": "parque temático,atracción de feria,góndola,torre,gran caída"
                 },
                 "attraction/kiddie_ride": {
@@ -4257,7 +5223,7 @@
                     "terms": "parque temático,paseo de carnaval,paseo de atracciones"
                 },
                 "attraction/river_rafting": {
-                    "name": "Paseo en rápidos por el río",
+                    "name": "Paseo por los rápidos del río",
                     "terms": "parque temático,parque acuático,simulador de rafting,paseo en balsa por el río,paseo en rápidos por el río"
                 },
                 "attraction/roller_coaster": {
@@ -4265,12 +5231,12 @@
                     "terms": "montaña rusa,juego mecánico,juego de feria"
                 },
                 "attraction/summer_toboggan": {
-                    "name": "Pista de tobogán de verano",
+                    "name": "Tobogán de verano",
                     "terms": "tobogán alpino,montaña rusa,pista de tobogán de verano,montaña rusa alpina,sommerrodelbahn"
                 },
                 "attraction/swing_carousel": {
-                    "name": "Paseo del columpio",
-                    "terms": "parque temático,atracción de feria,carrusel,torre,torre de carrusel,columpio"
+                    "name": "Carrusel oscilante",
+                    "terms": "parque temático,atracción de feria,carrusel,torre,torre de carrusel,columpio,carrusel oscilante"
                 },
                 "attraction/train": {
                     "name": "Tren turístico",
@@ -4313,7 +5279,7 @@
                     "terms": "barrera de cable,barrera de seguridad de cable metálico"
                 },
                 "barrier/cattle_grid": {
-                    "name": "Paso canadiense",
+                    "name": "Guardaganado",
                     "terms": "paso con rejas para animales,paso canadiense,barrera canadiense,guardaganados,guarda ganados,rejilla de retención,paso de vehículo"
                 },
                 "barrier/chain": {
@@ -4395,12 +5361,12 @@
                     "terms": "bordillo,borde,cuneta,sardinel,cordón,enrollado,redondeado,canal,canalón"
                 },
                 "barrier/kissing_gate": {
-                    "name": "Puerta de ganado",
-                    "terms": "puerta,seguridad,ganado,animales,control"
+                    "name": "Pasamano / Tranquera",
+                    "terms": "pasamano,portón,porton,tranquera,puerta,seguridad,ganado,animales,control"
                 },
                 "barrier/lift_gate": {
                     "name": "Barrera levadiza",
-                    "terms": "entrada,salida,paso,puerta,barrera,levadiza,pivote,acceso,control"
+                    "terms": "barrera levadiza,pluma"
                 },
                 "barrier/log": {
                     "name": "Árbol caído"
@@ -4421,7 +5387,7 @@
                     "terms": "barrera de cuerda,barrera de soga,valla de cuerda,valla de soga"
                 },
                 "barrier/sally_port": {
-                    "name": "Poterna de acceso",
+                    "name": "Poterna",
                     "terms": "poterna,puerta lateral del castillo,puerta esclusa,puerta de seguridad"
                 },
                 "barrier/spikes": {
@@ -4429,7 +5395,7 @@
                     "terms": "tira de pinchos,pinchos,tira de púas,puas,tira de espigas,espigas,tura de clavos,clavos,barra de pinchos,barra de púas,barra de espigas,barra de clavos"
                 },
                 "barrier/stile": {
-                    "name": "Escalera de paso",
+                    "name": "Escalones de paso",
                     "terms": "peldaños en una valla,escalones de cerca,escalera de paso"
                 },
                 "barrier/swing_gate": {
@@ -4495,8 +5461,8 @@
                     "terms": "cobertizo,botes"
                 },
                 "building/bungalow": {
-                    "name": "Bungalow",
-                    "terms": "bungalow,bungaló,búngalo,cabaña"
+                    "name": "Bungaló",
+                    "terms": "bungalow,bungaló,búngalo,bungalo,cabaña"
                 },
                 "building/bunker": {
                     "name": "Búnker"
@@ -4506,8 +5472,8 @@
                     "terms": "cabina,camarote"
                 },
                 "building/carport": {
-                    "name": "Cochera cubierta",
-                    "terms": "estacionamiento cubierto,garaje,coche,auto,vehículo,porche"
+                    "name": "Cochera abierta",
+                    "terms": "estacionamiento cubierto,garaje,coche,auto,vehículo,porche,cochera abierta,garaje abierto,aparcamiento techado"
                 },
                 "building/cathedral": {
                     "name": "Edificio catedral",
@@ -4546,8 +5512,8 @@
                     "terms": "casa independiente,chalet"
                 },
                 "building/dormitory": {
-                    "name": "Dormitorio",
-                    "terms": "dormitorio,residencia universitaria"
+                    "name": "Dormitorio universitario",
+                    "terms": "dormitorio,residencia universitaria,dormitorio universitario"
                 },
                 "building/entrance": {
                     "name": "Entrada/Salida"
@@ -4560,13 +5526,17 @@
                     "name": "Edificio agrícola",
                     "terms": "edificio agrícola,edificio agricola,agrícola,agricola,granja,edificio agrario,construcción agrícola"
                 },
+                "building/fire_station": {
+                    "name": "Edificio de la estación de bomberos",
+                    "terms": "edificio de la estación de bomberos,estación de bomberos,bomberos"
+                },
                 "building/garage": {
                     "name": "Garaje privado",
-                    "terms": "garaje,cochera"
+                    "terms": "garaje,garage,cochera,estacionamiento"
                 },
                 "building/garages": {
-                    "name": "Garajes",
-                    "terms": "garajes,cocheras"
+                    "name": "Garajes privados",
+                    "terms": "garajes,garages,cocheras,estacionamientos"
                 },
                 "building/ger": {
                     "name": "Yurta",
@@ -4581,15 +5551,15 @@
                     "terms": "invernadero,invernáculo"
                 },
                 "building/hangar": {
-                    "name": "Edificio del hangar",
+                    "name": "Edificio hangar",
                     "terms": "hangar"
                 },
                 "building/hospital": {
-                    "name": "Edificio de hospital",
+                    "name": "Edificio hospitalario",
                     "terms": "hospital,sanatorio,centro de primeros auxilios,clínica,psiquiátrico"
                 },
                 "building/hotel": {
-                    "name": "Edificio del hotel",
+                    "name": "Edificio hotelero",
                     "terms": "edificio hotelero,hotel"
                 },
                 "building/house": {
@@ -4601,12 +5571,12 @@
                     "terms": "hogar,familia,residencia,vivienda"
                 },
                 "building/hut": {
-                    "name": "Choza",
-                    "terms": "refugio,abrigo,vivac,choza,cabaña"
+                    "name": "Barraca",
+                    "terms": "refugio,abrigo,vivac,choza,cabaña,barraca"
                 },
                 "building/industrial": {
                     "name": "Edificio industrial",
-                    "terms": "fábrica,factoría,industria,manufactura,taller,empresa,explotación"
+                    "terms": "fábrica,factoría,industria,edificio industrial,nave industrial"
                 },
                 "building/kindergarten": {
                     "name": "Edificio de preescolar / jardín de infantes",
@@ -4634,12 +5604,12 @@
                     "terms": "edificio público,construcción,centro cultural,centro social,delegación"
                 },
                 "building/residential": {
-                    "name": "Edificio residencial en bloques",
-                    "terms": "bloque,monoblock,monoblocks"
+                    "name": "Edificio residencial",
+                    "terms": "residencias,doméstico,domiciliario,bloque,monoblock,monoblocks"
                 },
                 "building/retail": {
-                    "name": "Edificio de tienda comercial",
-                    "terms": "venta al por menor,venta al detalle"
+                    "name": "Edificio de tiendas comerciales",
+                    "terms": "venta al por menor,venta al detalle,edificio de tiendas comerciales,tiendas comerciales"
                 },
                 "building/roof": {
                     "name": "Techo",
@@ -4650,15 +5620,15 @@
                     "terms": "ruina,ruinas,restos"
                 },
                 "building/school": {
-                    "name": "Edificio de escuela",
-                    "terms": "edificio colegio,escuela,colegio"
+                    "name": "Edificio escolar",
+                    "terms": "edificio colegio,escuela,colegio,edificio escolar,escolar"
                 },
                 "building/semidetached_house": {
-                    "name": "Casa adosada o duplex",
-                    "terms": "casa adosada,casa pareada,duplex"
+                    "name": "Casa semiadosada o dúplex",
+                    "terms": "casa,doble,duplex,familia,residencia,vivienda,casa adosada,casa semiadosada,semiadosada,dúplex"
                 },
                 "building/service": {
-                    "name": "Edificio de servicio",
+                    "name": "Edificio de servicios",
                     "terms": "edificio de servicio,servicio,maquinaria,bombas,transformadores"
                 },
                 "building/shed": {
@@ -4666,7 +5636,7 @@
                     "terms": "cobertizo,establo,tinglado,barraca"
                 },
                 "building/stable": {
-                    "name": "Establo para caballos",
+                    "name": "Establo",
                     "terms": "cuadra,caballeriza,establo,caballo,yegua"
                 },
                 "building/stadium": {
@@ -4674,8 +5644,8 @@
                     "terms": "edificio del estadio,estadio"
                 },
                 "building/static_caravan": {
-                    "name": "Caravana estática",
-                    "terms": "caravana,remolque,autocaravana,trailer,roulotte,casa rodante"
+                    "name": "Casa móvil",
+                    "terms": "casa remolque,casa prefabricada,caravana residencial,caravana estática,casa móvil estática,trailer,casa rodante"
                 },
                 "building/sty": {
                     "name": "Pocilga",
@@ -4701,7 +5671,7 @@
                     "terms": "edificio de transporte público,transporte público,transporte publico,terminal"
                 },
                 "building/university": {
-                    "name": "Edificio de universidad",
+                    "name": "Edificio universitario",
                     "terms": "universidad,facultad,escuela universitaria,colegio mayor"
                 },
                 "building/warehouse": {
@@ -4760,8 +5730,8 @@
                     "terms": "encuadernador,empastador,libro"
                 },
                 "craft/brewery": {
-                    "name": "Cervecería",
-                    "terms": "cervecería,fábrica de cerveza,cerveza"
+                    "name": "Fábrica de cerveza artesanal",
+                    "terms": "alcohol,cerveza,bebida"
                 },
                 "craft/carpenter": {
                     "name": "Carpintero",
@@ -4851,8 +5821,8 @@
                     "terms": "pintor,pintura,arte,artista,oleo,lienzo,acuarela,decoración,color"
                 },
                 "craft/parquet_layer": {
-                    "name": "Colocador de parqué",
-                    "terms": "parqué,parque,parquet"
+                    "name": "Parquetero",
+                    "terms": "parqué,parque,parquet,parquetero,parquetista,colocador de parqué,instalador de parqué"
                 },
                 "craft/photographer": {
                     "name": "Fotógrafo",
@@ -5081,6 +6051,10 @@
                     "name": "Entrada principal",
                     "terms": "entrada,ingreso,puerta,portón,acceso,principal,vestíbulo"
                 },
+                "entrance/staircase": {
+                    "name": "Escalera de entrada",
+                    "terms": "escalera de entrada,puerta,escaleras"
+                },
                 "ford": {
                     "name": "Vado",
                     "terms": "vado,paso,cruce"
@@ -5144,17 +6118,41 @@
                     "name": "Medicina alternativa",
                     "terms": "medicina alternativa,acupuntura,antroposófico,kinesiología aplicada,aromaterapia,ayurveda,herbolario,homeopatía,hidroterapia,hipnosis,naturopatía,osteopatía,reflexología,reiki,shiatsu,tradicional,tuina,unani,medicina alterna"
                 },
+                "healthcare/alternative/acupuncture": {
+                    "name": "Practicante de acupuntura",
+                    "terms": "acupuntura"
+                },
+                "healthcare/alternative/ayurveda": {
+                    "name": "Practicante de Ayurveda",
+                    "terms": "medicina tradicional india,ayurveda"
+                },
                 "healthcare/alternative/chiropractic": {
                     "name": "Quiropráctico",
                     "terms": "quiropráctico,dolor de espalda,espalda,columna"
+                },
+                "healthcare/alternative/homeopathy": {
+                    "name": "Homeópata",
+                    "terms": "homeópata,homeopatía"
+                },
+                "healthcare/alternative/naturopathy": {
+                    "name": "Naturópata",
+                    "terms": "naturópata,naturopatía,medicina naturopática"
+                },
+                "healthcare/alternative/osteopathy": {
+                    "name": "Osteópata",
+                    "terms": "osteópata,osteopatía,huesos"
+                },
+                "healthcare/alternative/traditional_chinese_medicine": {
+                    "name": "Practicante de medicina tradicional china",
+                    "terms": "die da,dit da,reiki,tui na,tuina,shiatsu"
                 },
                 "healthcare/audiologist": {
                     "name": "Audiólogo",
                     "terms": "audiólogo,oído,audición,sonido"
                 },
                 "healthcare/birthing_center": {
-                    "name": "Centro de natalidad",
-                    "terms": "centro de partos,bebé,parto,trabajo de parto,embarazo,nacimiento,centro de natalidad,alumbramiento,clínica de maternidad,hospital maternal,maternal,centro de alumbramiento,centro de nacimiento"
+                    "name": "Centro de maternidad",
+                    "terms": "centro de maternidad,centro de partos,bebé,parto,trabajo de parto,embarazo,nacimientos,centro de natalidad,alumbramiento,clínica de maternidad,hospital maternal,maternal,centro de alumbramiento,centro de nacimientos"
                 },
                 "healthcare/blood_donation": {
                     "name": "Centro de donación de sangre",
@@ -5216,7 +6214,7 @@
                     "name": "Centro de salud (tipo no especificado)"
                 },
                 "highway": {
-                    "name": "Elemento de carretera"
+                    "name": "Vía"
                 },
                 "highway/bridleway": {
                     "name": "Camino de herradura",
@@ -5229,6 +6227,10 @@
                 "highway/bus_stop": {
                     "name": "Parada de bus"
                 },
+                "highway/busway": {
+                    "name": "Vía de autobús",
+                    "terms": "autobús de tránsito rápido,bus rapid transit,brt,metrobús,metrobus,sistemas de autobús expreso,sistemas de transporte rápidos en autobuses,sistemas de transporte público masivo en autobuses,autobus,colectivo"
+                },
                 "highway/construction": {
                     "name": "Vía en construcción",
                     "terms": "carretera en construcción,calle en construcción,camino en construcción,construcción de carreteras,obras viales,vía en obras"
@@ -5240,23 +6242,17 @@
                 "highway/crossing": {
                     "name": "Cruce"
                 },
-                "highway/crossing/marked": {
-                    "name": "Cruce peatonal marcado",
-                    "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
-                },
                 "highway/crossing/traffic_signals": {
                     "name": "Cruce con señales para peatones",
                     "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "Cruce peatonal marcado"
+                    "name": "Cruce peatonal marcado",
+                    "terms": "paso de peatones marcado,paso de peatones señalizado,cruce de peatones señalizado,paso de cebra,cruce de cebra,cebra"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Cruce peatonal sin marcar",
                     "terms": "cruce,crucero,paso a nivel,sin marcar"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Cruce peatonal marcado"
                 },
                 "highway/cycleway": {
                     "name": "Ciclovía",
@@ -5273,9 +6269,13 @@
                     "name": "Cruce de bicicleta y peatonal",
                     "terms": "bicicleta,paso peatonal,paso de peatones,ciclovía,ciclismo,ciclista"
                 },
-                "highway/cycleway/crossing/marked": {
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "Cruce de ciclovía con señales de tránsito",
+                    "terms": "cruce de bicisenda,cruce de ciclovía,cruce de carril bici,cruce de bicicletas"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
                     "name": "Cruce de ciclovía marcado",
-                    "terms": "paso de bicicleta,cruce de carril bici,cruce de ciclovía,cruce de bicicleta,cruce de bici"
+                    "terms": "cruce de bicisenda,cruce de ciclovía,cruce de carril bici,cruce de bicicletas"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Cruce de ciclovía sin marcar",
@@ -5320,27 +6320,28 @@
                 "highway/footway/crossing": {
                     "name": "Cruce peatonal"
                 },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "Cruce con señales para peatones",
+                    "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "Cruce peatonal marcado",
+                    "terms": "paso de peatones marcado,paso de peatones señalizado,cruce de peatones señalizado,paso de cebra,cruce de cebra,cebra"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "Cruce peatonal sin marcar",
+                    "terms": "cruce peatonal,paso peatonal,sin marcar,sin señalar"
+                },
                 "highway/footway/informal": {
                     "name": "Camino peatonal informal"
-                },
-                "highway/footway/marked": {
-                    "name": "Cruce peatonal marcado",
-                    "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Acera",
                     "terms": "acera,vereda,banqueta,andén"
                 },
-                "highway/footway/traffic_signals": {
-                    "name": "Cruce con señales para peatones",
-                    "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Cruce sin marcar",
-                    "terms": "cruce sin marcar"
-                },
-                "highway/footway/zebra": {
-                    "name": "Cruce peatonal marcado"
+                "highway/footway/traffic_island": {
+                    "name": "Isla para peatones",
+                    "terms": "isla,refugio,cruce,peatones"
                 },
                 "highway/give_way": {
                     "name": "Señal de ceda el paso",
@@ -5348,7 +6349,7 @@
                 },
                 "highway/living_street": {
                     "name": "Calle semipeatonal o residencial",
-                    "terms": "calle,residencial,urbanización,calle residencial,semipeatonal,zona residencial,zona 30,vía compartida"
+                    "terms": "calle,residencial,urbanización,calle residencial,semipeatonal,peatonal,zona residencial,zona 30,máxima 20,vía compartida,calle de convivencia,convivencia"
                 },
                 "highway/milestone": {
                     "name": "Hito kilométrico",
@@ -5367,10 +6368,6 @@
                     "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
                 "highway/motorway_link": {
-                    "name": "Enlace de autopista",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
-                },
-                "highway/motorway_link-US-CA": {
                     "name": "Enlace de autopista",
                     "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
@@ -5405,10 +6402,6 @@
                 "highway/primary_link": {
                     "name": "Enlace de carretera primaria",
                     "terms": "enlace carretera primaria,enlace a carretera primaria,enlace a vía primaria"
-                },
-                "highway/primary_link-US-CA": {
-                    "name": "Enlace principal",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
                 "highway/raceway": {
                     "name": "Pista de carreras de automovilismo",
@@ -5470,6 +6463,9 @@
                     "name": "Pasillo de estacionamiento",
                     "terms": "pasillo,coche,carro,auto,automóvil,vehículo,aparcamiento,parking,aparcadero,estacionamiento,garaje,parqueadero,parqueo"
                 },
+                "highway/service_area": {
+                    "name": "Área de servicio pavimentada"
+                },
                 "highway/services": {
                     "name": "Área de servicio",
                     "terms": "área de servicios,área de descanso"
@@ -5520,7 +6516,7 @@
                 },
                 "highway/traffic_signals": {
                     "name": "Semáforos",
-                    "terms": "semáforo,semaforo,señal de tráfico,luces de tráfico,luces de señalización,luces de parado,señal,tráfico,tránsito,control"
+                    "terms": "semáforo,semaforo,señal de tráfico,señal de tránsito,luces de tráfico,luces de señalización,luces de parado,señal,tráfico,tránsito,control"
                 },
                 "highway/trailhead": {
                     "name": "Inicio del sendero",
@@ -5534,10 +6530,6 @@
                     "name": "Enlace de carretera principal",
                     "terms": "enlace principal,enlace a carretera troncal"
                 },
-                "highway/trunk_link-US-CA": {
-                    "name": "Enlace troncal",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
-                },
                 "highway/turning_circle": {
                     "name": "Círculo de giro",
                     "terms": "círculo de giro,cul de sac"
@@ -5547,8 +6539,8 @@
                     "terms": "bucle de giro,cul-de-sac,cul de sac,calle sin salida,callejón sin salida"
                 },
                 "highway/unclassified": {
-                    "name": "Camino menor",
-                    "terms": "carretera,camino,sendero,vía,menor,no clasificada,sin clasificación"
+                    "name": "Carretera menor",
+                    "terms": "carretera menor,carretera sin clasificar,carretera,camino,sendero,vía,menor,no clasificada,sin clasificación"
                 },
                 "historic": {
                     "name": "Lugar histórico",
@@ -5752,6 +6744,10 @@
                     "name": "Área industrial",
                     "terms": "área industrial,parque industrial,industria,fábrica,terreno industrial"
                 },
+                "landuse/industrial/depot": {
+                    "name": "Terminal",
+                    "terms": "terminal,estación,depósito,deposito,autobús,bus,colectivo,camión,vehículo,patio,almacenamiento,aparcamiento,estacionamiento"
+                },
                 "landuse/industrial/scrap_yard": {
                     "name": "Depósito de chatarra",
                     "terms": "chatarra,coche,auto,vehículo,basura,metal,naufragio,patio"
@@ -5832,7 +6828,7 @@
                     "terms": "terreno,religioso,religión,religion,monasterio,convento,seminario,casa de retiro,instituto religioso,capilla,templo,iglesia,lugar de oración,gruta"
                 },
                 "landuse/reservoir": {
-                    "name": "Reservorio"
+                    "name": "Embalse"
                 },
                 "landuse/residential": {
                     "name": "Área residencial",
@@ -5841,6 +6837,10 @@
                 "landuse/residential/apartments": {
                     "name": "Complejo de apartamentos",
                     "terms": "apartamentos,departamentos,piso,residencia,vivienda"
+                },
+                "landuse/residential/trailer_park": {
+                    "name": "Parque de caravanas",
+                    "terms": "parque de caravanas,comunidad de casas prefabricadas,parque de trailers"
                 },
                 "landuse/retail": {
                     "name": "Área de tiendas comerciales",
@@ -5874,7 +6874,7 @@
                     "terms": "templete,quiosco de música,música,musica"
                 },
                 "leisure/beach_resort": {
-                    "name": "Balneario",
+                    "name": "Balneario de playa",
                     "terms": "resort,complejo,playa,complejo de playa,balneario"
                 },
                 "leisure/bird_hide": {
@@ -5886,7 +6886,7 @@
                     "terms": "gradas,multitud,banco,deportes,soporte,asiento,asientos"
                 },
                 "leisure/bowling_alley": {
-                    "name": "Pista de bolos",
+                    "name": "Bolera / Bowling",
                     "terms": "bowling,bolos,boliche,juego de bolos,pista de bowling,bolera"
                 },
                 "leisure/common": {
@@ -5989,6 +6989,10 @@
                     "name": "Jardín comunitario",
                     "terms": "jardín cooperativo,jardín colectivo,jardín comunitario"
                 },
+                "leisure/garden/residential": {
+                    "name": "Jardín residencial",
+                    "terms": "jardín trasero,patio trasero,jardín doméstico,jardín delantero,patio delantero"
+                },
                 "leisure/golf_course": {
                     "name": "Campo de golf",
                     "terms": "campo de golf,cancha de golf"
@@ -5999,8 +7003,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Centro ecuestre",
-                    "terms": "equitación,equino,cabalgar,cabalgatas,caballo,montar,ecuestre,centro,instalación,hípica,montar a caballo,rancho,finca de caballos,granja de caballos",
-                    "aliases": "Centro hípico"
+                    "terms": "equitación,equino,cabalgar,cabalgatas,caballo,montar,ecuestre,centro ecuestre,instalación ecuestre,hípica,montar a caballo,rancho,finca de caballos,granja de caballos,criadero de caballos,centro hípico,club de equitación,poney club"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista de hielo",
@@ -6046,6 +7049,10 @@
                     "name": "Campo de fútbol americano",
                     "terms": "cancha,campo,fútbol,football,americano,gridiron"
                 },
+                "leisure/pitch/american_handball": {
+                    "name": "Cancha de handball americano / Pista de balonmano americano",
+                    "terms": "handball,wallball,balonmano,cancha,pista,americano,estados unidos,estadounidense"
+                },
                 "leisure/pitch/archery": {
                     "name": "Campo de tiro con arco",
                     "terms": "arco y flecha,ballesta,rango de arquería,tiro con arco"
@@ -6063,7 +7070,7 @@
                     "terms": "campo,cancha,béisbol,baseball"
                 },
                 "leisure/pitch/basketball": {
-                    "name": "Cancha de baloncesto",
+                    "name": "Cancha de baloncesto / básquetbol",
                     "terms": "cancha de baloncesto,baloncesto,basketball,básquetbol"
                 },
                 "leisure/pitch/beachvolleyball": {
@@ -6087,9 +7094,8 @@
                     "terms": "campo de críquet,criquet,cricket"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Picadero",
-                    "terms": "picadero,equitación,monta,montar a caballo,caballos,equino,ecuestre,arena,picadero de caballos,doma,conducción de equinos,adiestramiento de caballos,dar cuerda,pista de doma,pista de salto",
-                    "aliases": "Pista de equitación\nPista ecuestre\nPista hípica"
+                    "name": "Pista ecuestre / Arena de rodeo",
+                    "terms": "arena,arena de doma,pista de doma,doma,ecuestre,pista de equitación,equitación,caballo,a caballo,pista de salto,polo,rodeo,picadero,pista ecuestre,pista hípica"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hockey",
@@ -6110,6 +7116,10 @@
                 "leisure/pitch/gaga": {
                     "name": "Pozo de Gaga",
                     "terms": "gaga,gaga ball,pozo de gaga,hoyo de gaga,foso de gaga"
+                },
+                "leisure/pitch/handball": {
+                    "name": "Cancha de handball / Pista de balonmano",
+                    "terms": "handball,balonmano,cancha,pista"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Foso de herraduras (juego)",
@@ -6136,8 +7146,8 @@
                     "terms": "cancha,campo,liga,rugby,rugbi,fútbol rugby,rugby a 13,rugby league"
                 },
                 "leisure/pitch/rugby_union": {
-                    "name": "Campo de rugby unión",
-                    "terms": "cancha,campo,unión,rugby,rugbi,fútbol rugby,rugby a 15,rugby union"
+                    "name": "Campo de rugby union",
+                    "terms": "cancha,campo,unión,union,rugby,rugbi,fútbol rugby,rugby a 15,rugby-15,rugby union"
                 },
                 "leisure/pitch/shooting": {
                     "name": "Campo de tiro",
@@ -6319,11 +7329,19 @@
                     "terms": "brújula,este,norte,sur,oeste,rosa de los vientos"
                 },
                 "man_made/courtyard": {
-                    "name": "Patio"
+                    "name": "Patio interior"
                 },
                 "man_made/crane": {
                     "name": "Grúa",
                     "terms": "elevadora,cabria,cabrestante,trucha,pluma"
+                },
+                "man_made/crane/gantry_crane": {
+                    "name": "Grúa pórtico",
+                    "terms": "grúa pórtico,puente grúa,puente-grúa,grúa puente"
+                },
+                "man_made/crane/portal_crane": {
+                    "name": "Grúa portal",
+                    "terms": "grúa de nivelación,grúa no perpendicular"
                 },
                 "man_made/cross": {
                     "name": "Cruz",
@@ -6348,6 +7366,10 @@
                 "man_made/flagpole": {
                     "name": "Asta de bandera",
                     "terms": "mástil,mastil,asta de bandera,astabandera"
+                },
+                "man_made/gantry": {
+                    "name": "Pórtico de señales",
+                    "terms": "pórtico de señales,pórtico de carretera,brazo de mástil,soporte de señalización vial,estructura de señalización vial,conjunto de señalización,soporte de señalización,estructura de señalización"
                 },
                 "man_made/gasometer": {
                     "name": "Gasómetro",
@@ -6453,10 +7475,6 @@
                     "name": "Tubería subterránea",
                     "terms": "petróleo,gas natural,agua,alcantarillado,aguas residuales,desechos,tubería,gasoducto,oleoducto"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "Válvula de tubería",
-                    "terms": "petróleo,gas natural,agua,alcantarillado,aguas residuales"
-                },
                 "man_made/planter": {
                     "name": "Maceta",
                     "terms": "maceta,tiesto"
@@ -6485,6 +7503,26 @@
                     "name": "Armario de servicios",
                     "terms": "televisión por cable,caja de monitoreo,caja técnica,telecomunicaciones,control de señales de tráfico,servicios públicos,armario,gabinete"
                 },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "Buzón postal",
+                    "terms": "buzón postal,almacenamiento de cartas,entrega de correo,servicios postales"
+                },
+                "man_made/street_cabinet/traffic_control": {
+                    "name": "Gabinete del sistema de control de tráfico",
+                    "terms": "gabinete del sistema de control de tráfico,armario del sistema de control de tráfico,automatización del control del tráfico,semáforo"
+                },
+                "man_made/street_cabinet/traffic_monitoring": {
+                    "name": "Gabinete de monitoreo de tráfico",
+                    "terms": "gabinete de monitoreo de tráfico,armario de monitoreo de tráfico,control del tráfico,recuento de vehículos"
+                },
+                "man_made/street_cabinet/transport_management": {
+                    "name": "Gabinete de gestión de transporte",
+                    "terms": "gabinete de gestión de transporte,automatización del transporte público"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "Gabinete privado de recolección de residuos",
+                    "terms": "gabinete privado de recolección de residuos,gabinete privado de recogida de basuras,residuo,basura"
+                },
                 "man_made/surveillance": {
                     "name": "Vigilancia",
                     "terms": "vigilancia,observación,supervisión,cámara,control,seguridad,cctv"
@@ -6496,6 +7534,10 @@
                 "man_made/survey_point": {
                     "name": "Punto geodésico",
                     "terms": "vértice geodésico,punto geodésico"
+                },
+                "man_made/tailings_pond": {
+                    "name": "Estanque de relaves",
+                    "terms": "estanque,relaves,minería,separación,lodo"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -6520,6 +7562,10 @@
                 "man_made/tower/defensive": {
                     "name": "Torre fortificada",
                     "terms": "torre defensiva,torre del castillo"
+                },
+                "man_made/tower/diving": {
+                    "name": "Plataforma de clavados",
+                    "terms": "plataforma de clavados,torre de clavados,clavados,zambullirse"
                 },
                 "man_made/tower/minaret": {
                     "name": "Alminar",
@@ -6580,6 +7626,10 @@
                 "man_made/works": {
                     "name": "Fábrica",
                     "terms": "factoría,manofactura,industria,taller,ensamblaje,planta,materia prima,fabricado,producción,fabricación,ingenio,procesadora,refinería,cervecería,azucarera"
+                },
+                "man_made/works/brewery": {
+                    "name": "Fábrica de cerveza industrial",
+                    "terms": "alcohol,cerveza,bebida"
                 },
                 "man_made/yes": {
                     "name": "Elemento artificial (tipo no especificado)"
@@ -6668,8 +7718,8 @@
                     "terms": "brezal,landa,jaral,matorral,llanura,páramo,meseta,arenal,estepa,planicie,descampado,escajo,tojo"
                 },
                 "natural/hot_spring": {
-                    "name": "Fuente termal",
-                    "terms": "manantial geotermal,piscina termal,aguas termales"
+                    "name": "Aguas termales",
+                    "terms": "manantial geotermal,piscina termal,aguas termales,fuente termal"
                 },
                 "natural/mud": {
                     "name": "Lodo",
@@ -6723,6 +7773,10 @@
                     "name": "Piedra sin unir",
                     "terms": "roca,piedra"
                 },
+                "natural/strait": {
+                    "name": "Estrecho",
+                    "terms": "estrecho,canal,paso,pasaje"
+                },
                 "natural/tree": {
                     "name": "Árbol",
                     "terms": "árbol,arbol,arbusto"
@@ -6730,6 +7784,10 @@
                 "natural/tree_row": {
                     "name": "Árboles en fila",
                     "terms": "fila,hilera,árboles,arboles"
+                },
+                "natural/tree_stump": {
+                    "name": "Tocón de árbol",
+                    "terms": "tocón,tocon,tueco,corte,árbol cortado,árbol quitado"
                 },
                 "natural/valley": {
                     "name": "Valle",
@@ -6758,6 +7816,10 @@
                 "natural/water/moat": {
                     "name": "Foso",
                     "terms": "foso"
+                },
+                "natural/water/oxbow": {
+                    "name": "Brazo muerto",
+                    "terms": "brazo muerto,meandro abandonado,hoz abandonada,lago en herradura,galacho"
                 },
                 "natural/water/pond": {
                     "name": "Estanque",
@@ -6910,6 +7972,10 @@
                     "name": "Oficina de proveedor de energía",
                     "terms": "electricidad,energía,empresa de energía"
                 },
+                "office/engineer": {
+                    "name": "Oficina de ingeniería",
+                    "terms": "ingeniero civil,ingeniero eléctrico,ingeniero,empresa de ingeniería,ingeniero mecánico,ingeniero estructural,ingeniero técnico"
+                },
                 "office/estate_agent": {
                     "name": "Inmobiliaria",
                     "terms": "bienes raíces,inmobiliaria,inmueble,oficina"
@@ -6945,6 +8011,10 @@
                 "office/government/tax": {
                     "name": "Oficina de recaudación de impuestos y rentas",
                     "terms": "autoridades fiscales,ingresos,impuestos,rentas,tributos,recaudación,afip,agip,arba,dgr,ingresos fiscales,ingresos tributarios,recaudación fiscal,recaudación tributaria,recaudaciones tributarias,ingresos impositivos,oficina fiscal,oficina de impuestos,oficina tributaria,oficina de recaudación"
+                },
+                "office/graphic_design": {
+                    "name": "Oficina de diseño gráfico",
+                    "terms": "diseño,arte,ilustrar,ilustración,tecnología,visual"
                 },
                 "office/guide": {
                     "name": "Oficina de turismo",
@@ -6992,6 +8062,10 @@
                     "name": "Oficina de investigador privado",
                     "terms": "investigador privado,detective privado"
                 },
+                "office/property_management": {
+                    "name": "Administración de propiedades / Oficina de arrendamiento",
+                    "terms": "alquiler de inmuebles,administración,inmobiliaria"
+                },
                 "office/quango": {
                     "name": "Oficina ONG cuasiautónoma",
                     "terms": "ong,no gubernamentales,organización,cuasi autónoma,cuasiautónoma"
@@ -7027,12 +8101,27 @@
                 "office/travel_agent": {
                     "name": "Agencia de viajes"
                 },
+                "office/union": {
+                    "name": "Oficina sindical",
+                    "terms": "sindicato,gremio"
+                },
                 "office/water_utility": {
                     "name": "Oficina de servicios públicos de agua",
                     "terms": "servicio público,servicio publico,agua,saneamiento"
                 },
                 "office/yes": {
                     "name": "Oficina (tipo no especificado)"
+                },
+                "pipeline": {
+                    "name": "Elemento de tubería"
+                },
+                "pipeline/substation": {
+                    "name": "Subestación de tubería",
+                    "terms": "subestación del oleoducto,oleoducto,subestación de tubería,tubería,petróleo,gas natural,agua"
+                },
+                "pipeline/valve": {
+                    "name": "Válvula de tubería",
+                    "terms": "petróleo,gas natural,agua,alcantarillado,aguas residuales,válvula,valvula,tubería"
                 },
                 "piste/downhill": {
                     "name": "Pista de esquí alpino",
@@ -7273,6 +8362,10 @@
                     "name": "Cable eléctrico subterráneo",
                     "terms": "cable,alimentación,energía,electricidad,subterráneo"
                 },
+                "power/catenary_mast": {
+                    "name": "Poste de la catenaria",
+                    "terms": "poste de la catenaria,pilón catenario,mástil catenario,línea aérea,cable aéreo"
+                },
                 "power/generator": {
                     "name": "Generador de energía",
                     "terms": "subestación,generador,generador eléctrico,generador de electricidad,generador de potencia,generador de energía,estación eléctrica,planta de electridad,central elécrica,electricidad,eléctrica,electrica"
@@ -7325,6 +8418,10 @@
                     "name": "Estación de energía hidroeléctrica",
                     "terms": "represa,presa,central eléctrica,central electrica,escurrimiento del río,marea,turbina de agua"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "Granja solar",
+                    "terms": "central fotovoltaica,paneles solares,parque solar,granja solar,solar a gran escala"
+                },
                 "power/plant/source/nuclear": {
                     "name": "Planta de energía nuclear",
                     "terms": "atómica,fisión,fision,central eléctrica,central electrica,reactor nuclear"
@@ -7334,8 +8431,8 @@
                     "terms": "carbón,combustión,combustible fósil,petróleo,central eléctrica"
                 },
                 "power/plant/source/solar": {
-                    "name": "Huerta solar",
-                    "terms": "central fotovoltaica,paneles solares,parque solar,parque fotovoltaico,huerta solar,huerto solar,granja solar,campo solar,solar"
+                    "name": "Planta de energía solar",
+                    "terms": "planta,energía,solar"
                 },
                 "power/plant/source/waste": {
                     "name": "Planta de energía de incineración de residuos",
@@ -7348,6 +8445,10 @@
                 "power/pole": {
                     "name": "Poste eléctrico",
                     "terms": "poste,electricidad,postes de electricidad,poste de electricidad"
+                },
+                "power/portal": {
+                    "name": "Portal de anclaje",
+                    "terms": "portal de anclaje,pórtico de anclaje,torre de pórtico,torre de marco en h,energía,líneas eléctricas,horizontal"
                 },
                 "power/substation": {
                     "name": "Subestación eléctrica",
@@ -7650,6 +8751,10 @@
                 "railway/tram_stop": {
                     "name": "Parada de tranvía"
                 },
+                "railway/turntable": {
+                    "name": "Plataforma giratoria ferroviaria",
+                    "terms": "plataforma giratoria"
+                },
                 "railway/yard": {
                     "name": "Patio de ferrocarril",
                     "terms": "parada de vagones de carga,estación de tren de carga,estación de carga ferroviaria,patio de ferrocarril"
@@ -7763,7 +8868,7 @@
                 },
                 "shop/bookmaker": {
                     "name": "Corredor de apuestas",
-                    "terms": "apuesta,dinero,apostador"
+                    "terms": "apuesta,dinero,apostador,juego,casa de apuestas,corredor de apuestas"
                 },
                 "shop/books": {
                     "name": "Librería",
@@ -8073,7 +9178,7 @@
                 },
                 "shop/kiosk": {
                     "name": "Quiosco",
-                    "terms": "kiosko,kiosco,puesto,negocio,periódico,revista,encendedor,mapas,cigarrillo,dulces,golosinas,refrescos,jugos,flores"
+                    "terms": "kiosko,kiosco,kiosquero,puesto,caseta,negocio,periódico,revista,encendedor,mapas,cigarrillo,dulces,golosinas,refrescos,jugos,flores,glorieta"
                 },
                 "shop/kitchen": {
                     "name": "Tienda de diseño de cocinas",
@@ -8155,6 +9260,10 @@
                     "name": "Tienda de suplementos nutricionales",
                     "terms": "nutrición,suplementos,complementos,vitaminas,minerales,tienda,almacén,negocio"
                 },
+                "shop/nuts": {
+                    "name": "Tienda de frutos secos",
+                    "terms": "almendras,anacardos,castañas de cajú,nueces de pecan,nueces de brasil,castañas,cocos,frutos secos,avellanas,macadamia,nueces,cacahuetes,pacanas,pistachos,semillas"
+                },
                 "shop/optician": {
                     "name": "Óptica",
                     "terms": "óptica,optica,gafas,lentillas"
@@ -8192,8 +9301,8 @@
                     "terms": "mascota,animal,tienda de animales"
                 },
                 "shop/pet_grooming": {
-                    "name": "Tienda de aseo de mascotas",
-                    "terms": "baño,aseo,peluquería,mascotas,perro,gato,peluquero canino,can"
+                    "name": "Peluquería de mascotas",
+                    "terms": "peluquería de mascotas,aseo de mascotas,gato,perro"
                 },
                 "shop/photo": {
                     "name": "Tienda de fotografía",
@@ -8424,12 +9533,12 @@
                     "terms": "busto,figura"
                 },
                 "tourism/artwork/graffiti": {
-                    "name": "Pintada",
-                    "terms": "pintada,grafiti,graffiti,ilustraciones de la clle,obra de guerrilla,obra de graffiti"
+                    "name": "Grafiti",
+                    "terms": "pintada,grafiti,graffiti,arte urbano,arte callejero,ilustraciones de la calle,ilustraciones de guerrilla,ilustraciones de graffiti"
                 },
                 "tourism/artwork/installation": {
-                    "name": "Instalación de arte",
-                    "terms": "arte interactivo,arte de intervención,arte moderno"
+                    "name": "Instalación artística",
+                    "terms": "arte interactivo,arte de intervención,arte moderno,instalación artística"
                 },
                 "tourism/artwork/mural": {
                     "name": "Mural",
@@ -8565,14 +9674,14 @@
                 },
                 "tourism/zoo/wildlife": {
                     "name": "Parque de vida silvestre",
-                    "terms": "animales indígenas"
+                    "terms": "animales autóctonos,parque de la vida silvestre,reserva natural,santuario de fauna silvestre,vida silvestre,fauna silvestre,vida salvaje"
                 },
                 "traffic_calming": {
                     "name": "Reductor de velocidad",
-                    "terms": "moderador de tráfico,apaciguador de tráfico,calmado de tráfico,reductor de velocidad,tráfico,tránsito,circulación,chichón,joroba,velocidad,guardias tumbados,policías acostados,badén"
+                    "terms": "moderador de tráfico,moderador de tránsito,apaciguador de tráfico,apaciguador de tránsito,calmado de tráfico,calmado de tránsito,reductor de velocidad,tráfico,tránsito,circulación,chichón,joroba,velocidad,guardias tumbados,policías acostados,badén"
                 },
                 "traffic_calming/bump": {
-                    "name": "Reductor de velocidad corto",
+                    "name": "Reductor de velocidad",
                     "terms": "atenuador,badén,calmado de tráfico,cojín berlinés,guardia muerto​,guardia tumbado,lomada,lomba,lombada,lomo de burro,lomo de toro,muerto,​ policía acostado,policía muerto,reductor de velocidad,resalte,resalto,rompe-velocidades,rompevelocidades,rompemuelle,tope,túmulo,tumulo,vigilante acostado,banda de frenado"
                 },
                 "traffic_calming/chicane": {
@@ -8581,7 +9690,7 @@
                 },
                 "traffic_calming/choker": {
                     "name": "Estrechamiento de calzada",
-                    "terms": "garganta,estrangulamiento,estrechamiento,frenar,velocidad,reductor de velocidad,tránsito"
+                    "terms": "garganta,estrangulamiento,estrechamiento,frenar,velocidad,reductor de velocidad,tránsito,chicana"
                 },
                 "traffic_calming/cushion": {
                     "name": "Cojín Berlinés",
@@ -8592,7 +9701,7 @@
                     "terms": "cuneta,badén,depresión,vado,canalizador de agua,zanja,frenar,velocidad,atenuador,calmado de tráfico,reductor de velocidad"
                 },
                 "traffic_calming/hump": {
-                    "name": "Reductor de velocidad largo",
+                    "name": "Reductor de velocidad ancho",
                     "terms": "atenuador,badén,calmado de tráfico,cojín berlinés,guardia muerto​,guardia tumbado,lomada,lomba,lombada,lomo de burro,lomo de toro,muerto,​ policía acostado,policía muerto,reductor de velocidad,resalte,resalto,rompe-velocidades,rompevelocidades,rompemuelle,tope,túmulo,tumulo,vigilante acostado,banda de frenado"
                 },
                 "traffic_calming/island": {
@@ -8608,8 +9717,8 @@
                     "terms": "banda sonora,atenuador,badén,calmado de tráfico,cojín berlinés,guardia muerto​,guardia tumbado,lomada,lomba,lombada,lomo de burro,lomo de toro,muerto,​ policía acostado,policía muerto,reductor de velocidad,resalte,resalto,rompe-velocidades,rompevelocidades,rompemuelle,tope,túmulo,tumulo,vigilante acostado,banda de frenado"
                 },
                 "traffic_calming/table": {
-                    "name": "Reductor de velocidad con paso peatonal",
-                    "terms": "atenuador,badén,calmado de tráfico,cojín berlinés,guardia muerto​,guardia tumbado,lomada,lomba,lombada,lomo de burro,lomo de toro,muerto,​ policía acostado,policía muerto,reductor de velocidad,resalte,resalto,rompe-velocidades,rompevelocidades,rompemuelle,tope,túmulo,tumulo,vigilante acostado,banda de frenado"
+                    "name": "Reductor de velocidad trapezoidal",
+                    "terms": "atenuador,badén,calmado de tráfico,cojín berlinés,guardia muerto​,guardia tumbado,lomada,lomba,lombada,lomo de burro,lomo de toro,muerto,​ policía acostado,policía muerto,reductor de velocidad,resalte,resalto,rompe-velocidades,rompevelocidades,rompemuelle,tope,túmulo,tumulo,vigilante acostado,banda de frenado,trapezoidal"
                 },
                 "traffic_calming/yes": {
                     "name": "Reductor de velocidad (tipo no especificado)"
@@ -8625,6 +9734,10 @@
                 "traffic_sign/maxspeed": {
                     "name": "Señal de límite de velocidad",
                     "terms": "señal,cartel,señalización,velocidad máxima"
+                },
+                "traffic_sign/variable_message": {
+                    "name": "Señal de mensaje variable",
+                    "terms": "vms,señal de mensaje dinámico"
                 },
                 "type/boundary": {
                     "name": "Límite",

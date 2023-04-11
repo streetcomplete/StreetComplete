@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment
 import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment
 
-class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener, QuestSelectionFragment.Listener {
+class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         if (savedInstanceState == null) {

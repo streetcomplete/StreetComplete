@@ -8,12 +8,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.equalsInOsm
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
-import java.time.Instant
 
 /** Action that creates a node and optionally inserts it as a vertex into the given way(s) */
 @Serializable
@@ -29,7 +28,7 @@ data class CreateNodeAction(
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val newNode = Node(idProvider.nextNodeId(), position, tags, 1, Instant.now().toEpochMilli())
+        val newNode = Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
 
         // inserting node into way(s)
         val editedWays = ArrayList<Way>(insertIntoWays.size)
@@ -56,7 +55,7 @@ data class CreateNodeAction(
             val nodeIds = way.nodeIds.toMutableList()
             nodeIds.add(node1Index + 1, newNode.id)
 
-            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = currentTimeMillis()))
+            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = nowAsEpochMilliseconds()))
         }
 
         return MapDataChanges(creations = listOf(newNode), modifications = editedWays)

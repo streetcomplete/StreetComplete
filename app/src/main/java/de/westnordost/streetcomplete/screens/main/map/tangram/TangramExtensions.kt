@@ -13,25 +13,51 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.isInPolygon
+import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
+import de.westnordost.streetcomplete.util.math.measuredArea
 
 fun ElementGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Geometry> = when (this) {
-    is ElementPolylinesGeometry -> {
-        polylines.map { polyline ->
-            Polyline(polyline.map { it.toLngLat() }, properties + ("type" to "line"))
+    is ElementPolylinesGeometry -> toTangramGeometry(properties)
+    is ElementPolygonsGeometry -> toTangramGeometry(properties)
+    is ElementPointGeometry -> toTangramGeometry(properties)
+}
+
+fun ElementPointGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Point> {
+    return listOf(Point(center.toLngLat(), properties + ("type" to "point")))
+}
+
+fun ElementPolylinesGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Polyline> {
+    return polylines.map { polyline ->
+        Polyline(polyline.map { it.toLngLat() }, properties + ("type" to "line"))
+    }
+}
+
+fun ElementPolygonsGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Polygon> {
+    val outerRings = mutableListOf<List<LatLon>>()
+    val innerRings = mutableListOf<List<LatLon>>()
+    if (polygons.size == 1) {
+        outerRings.add(polygons.first())
+    } else {
+        polygons.forEach {
+            if (it.isRingDefinedClockwise()) innerRings.add(it) else outerRings.add(it)
         }
     }
-    is ElementPolygonsGeometry -> {
-        listOf(
-            Polygon(
-                polygons.map { polygon ->
-                    polygon.map { it.toLngLat() }
-                },
-                properties + ("type" to "poly")
-            )
-        )
-    }
-    is ElementPointGeometry -> {
-        listOf(Point(center.toLngLat(), properties + ("type" to "point")))
+
+    // outerRings must be sorted size ascending to correctly handle outer rings within holes
+    // of larger polygons.
+    outerRings.sortBy { it.measuredArea() }
+
+    return outerRings.map { outerRing ->
+        val rings = mutableListOf<List<LngLat>>()
+        rings.add(outerRing.map { it.toLngLat() })
+        for (innerRing in innerRings.toList()) {
+            if (innerRing[0].isInPolygon(outerRing)) {
+                innerRings.remove(innerRing)
+                rings.add(innerRing.map { it.toLngLat() })
+            }
+        }
+        Polygon(rings, properties + ("type" to "poly"))
     }
 }
 

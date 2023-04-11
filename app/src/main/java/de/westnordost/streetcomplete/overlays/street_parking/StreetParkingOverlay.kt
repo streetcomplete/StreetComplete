@@ -13,17 +13,16 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
-import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
 import de.westnordost.streetcomplete.overlays.Color
@@ -98,24 +97,24 @@ private fun getStreetParkingStyle(element: Element): Style {
 }
 
 private val ParkingPosition.isDashed: Boolean get() = when (this) {
-    STREET_SIDE, PAINTED_AREA_ONLY -> true
+    STREET_SIDE, PAINTED_AREA_ONLY, STAGGERED_ON_STREET, STAGGERED_HALF_ON_STREET -> true
     else -> false
 }
 
 private val ParkingPosition.color: String get() = when (this) {
-    ON_STREET, PAINTED_AREA_ONLY -> Color.GOLD
-    HALF_ON_KERB ->                 Color.AQUAMARINE
-    ON_KERB, STREET_SIDE ->         Color.BLUE
+    ON_STREET, PAINTED_AREA_ONLY, STAGGERED_ON_STREET ->
+        Color.GOLD
+    HALF_ON_STREET, STAGGERED_HALF_ON_STREET ->
+        Color.AQUAMARINE
+    OFF_STREET, STREET_SIDE ->
+        Color.BLUE
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParkingPositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    NoStreetParking,
-    StreetStandingProhibited,
-    StreetParkingProhibited,
-    StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
+    NoStreetParking ->          StrokeStyle(Color.BLACK)
 
     StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
 

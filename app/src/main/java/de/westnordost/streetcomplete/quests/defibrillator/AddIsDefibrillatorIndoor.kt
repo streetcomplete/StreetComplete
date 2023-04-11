@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.defibrillator
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -16,7 +17,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
         nodes with
          emergency = defibrillator
          and access !~ private|no
-         and !indoor
+         and !indoor and !location
     """
     override val changesetComment = "Determine whether defibrillators are inside buildings"
     override val wikiLink = "Key:indoor"
@@ -30,7 +31,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["indoor"] = answer.toYesNo()
     }
 }

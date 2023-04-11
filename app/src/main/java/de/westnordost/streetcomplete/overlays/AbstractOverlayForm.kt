@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.content.res.Configuration
-import android.graphics.Point
+import android.content.res.Resources
+import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -27,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -37,7 +40,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
-import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
@@ -50,7 +52,11 @@ import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.CharSequenceText
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.add
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -60,6 +66,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.util.Locale
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
@@ -71,6 +78,7 @@ abstract class AbstractOverlayForm :
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -91,6 +99,14 @@ abstract class AbstractOverlayForm :
         val latLon = geometry.center
         return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
+
+    private val englishResources: Resources
+        get() {
+            val conf = Configuration(resources.configuration)
+            conf.setLocale(Locale.ENGLISH)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
+            return localizedContext.resources
+        }
 
     // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
@@ -116,7 +132,7 @@ abstract class AbstractOverlayForm :
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
-    open val otherAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<IAnswerItem>()
 
     interface Listener {
         /** The GPS position at which the user is displayed at */
@@ -131,7 +147,10 @@ abstract class AbstractOverlayForm :
         /** Called when the user chose to split the way */
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
 
-        fun getMapPositionAt(screenPos: Point): LatLon?
+        /** Called when the user chose to move the node */
+        fun onMoveNode(editType: ElementEditType, node: Node)
+
+        fun getMapPositionAt(screenPos: PointF): LatLon?
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -169,9 +188,10 @@ abstract class AbstractOverlayForm :
         binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
             cornerRadius, margin, margin, margin, margin
         )
+        binding.speechbubbleContentContainer.clipToOutline = true
 
         setTitleHintLabel(
-            element?.tags?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
+            element?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
         )
 
         binding.moreButton.setOnClickListener {
@@ -317,7 +337,7 @@ abstract class AbstractOverlayForm :
         for (i in answers.indices) {
             val otherAnswer = answers[i]
             val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
         }
         popup.show()
 
@@ -327,8 +347,8 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    private fun assembleOtherAnswers(): List<AnswerItem> {
-        val answers = mutableListOf<AnswerItem>()
+    private fun assembleOtherAnswers(): List<IAnswerItem> {
+        val answers = mutableListOf<IAnswerItem>()
 
         val element = element
         if (element != null) {
@@ -336,6 +356,12 @@ abstract class AbstractOverlayForm :
 
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
+            }
+
+            if (element is Node // add moveNodeAnswer only if it's a free floating node
+                && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
+                answers.add(AnswerItem(R.string.move_node) { moveNode() })
             }
         }
 
@@ -347,8 +373,12 @@ abstract class AbstractOverlayForm :
         listener?.onSplitWay(overlay, element as Way, geometry as ElementPolylinesGeometry)
     }
 
+    private fun moveNode() {
+        listener?.onMoveNode(overlay, element as Node)
+    }
+
     protected fun composeNote(element: Element) {
-        val overlayTitle = requireContext().getString(overlay.title)
+        val overlayTitle = englishResources.getString(overlay.title)
         val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
@@ -381,7 +411,7 @@ abstract class AbstractOverlayForm :
         val createNoteMarker = binding.markerCreateLayout.createNoteMarker
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos)
+        return listener?.getMapPositionAt(screenPos.toPointF())
     }
 
     companion object {
@@ -401,4 +431,15 @@ abstract class AbstractOverlayForm :
     }
 }
 
-data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)
+interface IAnswerItem {
+    val title: Text
+    val action: () -> Unit
+}
+
+data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = ResText(titleResourceId)
+}
+
+data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = CharSequenceText(titleString)
+}

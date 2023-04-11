@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.seating
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -26,7 +27,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override val icon = R.drawable.ic_quest_seating
     override val isReplaceShopEnabled = true
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_summer_outdoor_seating
+    override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
 
@@ -35,7 +36,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
 
     override fun createForm() = AddSeatingForm()
 
-    override fun applyAnswerTo(answer: Seating, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Seating, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer == Seating.NO) tags["takeaway"] = "only"
         tags["outdoor_seating"] = answer.hasOutdoorSeating.toYesNo()
         tags["indoor_seating"] = answer.hasIndoorSeating.toYesNo()

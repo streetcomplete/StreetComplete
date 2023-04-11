@@ -27,8 +27,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = binding.levelsInput.intOrNull
-    private val roofLevels get() = binding.roofLevelsInput.intOrNull
+    private val levels get() = binding.levelsInput.intOrNull?.takeIf { it >= 0 }
+    private val roofLevels get() = binding.roofLevelsInput.intOrNull?.takeIf { it >= 0 }
 
     private val lastPickedAnswers by lazy {
         favs.get()
@@ -54,7 +54,14 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.levelsInput.requestFocus()
+        if (savedInstanceState == null) {
+            binding.levelsInput.setText(element.tags["building:levels"])
+            binding.roofLevelsInput.setText(element.tags["roof:levels"])
+        }
+        val focusedInput = if (levels == null) binding.levelsInput else binding.roofLevelsInput
+        focusedInput.requestFocus()
+        focusedInput.selectAll()
+
         binding.levelsInput.doAfterTextChanged { checkIsFormComplete() }
         binding.roofLevelsInput.doAfterTextChanged { checkIsFormComplete() }
 
@@ -80,10 +87,11 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         }
     }
 
-    override fun isFormComplete() =
-        // levels must be an int >= 0. IF roof levels is specified, it must also be an int >= 0
-        levels?.let { it >= 0 } ?: false
-        && (roofLevels == null || roofLevels?.let { it >= 0 } ?: false)
+    override fun isFormComplete(): Boolean {
+        val hasNonFlatRoofShape = element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
+        val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+        return levels != null && (roofLevelsAreOptional || roofLevels != null)
+    }
 }
 
 private class LastPickedAdapter(

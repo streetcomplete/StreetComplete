@@ -1,7 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalValidHousenumberRegex: ([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{1,5}
+advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: yellow
+atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
 centerLineStyle: white
+hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasNoStandingSign: false
@@ -13,10 +16,9 @@ noEntrySignStyle: no entry
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [en]
+orchardProduces: [grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: AREA
-atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
-orchardProduces: [grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry]

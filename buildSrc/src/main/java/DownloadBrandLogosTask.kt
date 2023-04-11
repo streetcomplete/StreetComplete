@@ -10,6 +10,9 @@ import java.io.FileOutputStream
 import java.lang.Exception
 import java.net.URL
 
+/** Download all the brand logos referred to in the name suggestion index.
+ *
+ *  Unused, it is just too much to deliver them with the app. */
 open class DownloadBrandLogosTask : DefaultTask() {
     @get:Input var targetDir: String? = null
     @get:Input var version: String? = null

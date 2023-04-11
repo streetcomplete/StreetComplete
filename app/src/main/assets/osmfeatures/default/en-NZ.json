@@ -29,12 +29,6 @@
                         "forward": "Forwards"
                     }
                 },
-                "direction_vertex_dual": {
-                    "options": {
-                        "backward": "Backwards",
-                        "forward": "Forwards"
-                    }
-                },
                 "healthcare/speciality": {
                     "label": "Specialities"
                 },
@@ -114,7 +108,12 @@
                     "terms": "bbq,grill,barbecue"
                 },
                 "amenity/cafe": {
-                    "name": "Café"
+                    "name": "Café",
+                    "terms": "bistro,coffee,tea,cafe"
+                },
+                "amenity/cafe/bubble_tea": {
+                    "name": "Bubble Tea Café",
+                    "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca,pearl tea,boba drink,cafe"
                 },
                 "amenity/community_centre": {
                     "name": "Community Centre"
@@ -136,7 +135,11 @@
                 },
                 "amenity/fuel": {
                     "name": "Petrol Station",
-                    "terms": "gas station"
+                    "terms": "gas station,service station"
+                },
+                "amenity/internet_cafe": {
+                    "name": "Internet Café",
+                    "terms": "cybercafe,taxiphone,teleboutique,coffee,cafe,net,lanhouse,internet cafe"
                 },
                 "amenity/parking": {
                     "name": "Car Park",
@@ -216,6 +219,9 @@
                 "building/terrace": {
                     "name": "Terraced Houses",
                     "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
+                },
+                "emergency/fire_hose": {
+                    "terms": "fire hose reel,fhr,riser,dry riser,standpipe,stand pipe"
                 },
                 "healthcare/birthing_center": {
                     "name": "Birthing Centre"
@@ -337,6 +343,9 @@
                 },
                 "tourism/caravan_site": {
                     "name": "Caravan Site"
+                },
+                "tourism/chalet": {
+                    "terms": "bach,crib"
                 },
                 "tourism/information/office": {
                     "name": "Visitor Centre"

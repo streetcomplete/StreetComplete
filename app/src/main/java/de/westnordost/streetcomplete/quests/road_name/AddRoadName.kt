@@ -1,13 +1,15 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.osm.applyTo
 
 class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
@@ -17,6 +19,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
           and !name and !name:left and !name:right
           and !ref
           and noname != yes
+          and name:signed != no
           and !junction
           and area != yes
           and (
@@ -35,7 +38,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override fun createForm() = AddRoadNameForm()
 
-    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoRoadName -> tags["noname"] = "yes"
             is RoadIsServiceRoad -> {
@@ -60,20 +63,9 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
                 if (singleName?.isRef() == true) {
                     tags["ref"] = singleName.name
                 } else {
-                    applyAnswerRoadName(answer, tags)
+                    answer.localizedNames.applyTo(tags)
                 }
             }
-        }
-    }
-
-    private fun applyAnswerRoadName(answer: RoadName, tags: Tags) {
-        for ((languageTag, name) in answer.localizedNames) {
-            val key = when (languageTag) {
-                "" -> "name"
-                "international" -> "int_name"
-                else -> "name:$languageTag"
-            }
-            tags[key] = name
         }
     }
 }

@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, BBVA Bancomer, BBVA, Banjercito, Interacciones, Banco Azteca, Inbursa, Afirme, Citibanamex, Coppel, Banco Santander, Multiva, 'BBVA Bancomer, S.A.', Banco Multiva, CIBanco, Santander Serfin, CFE, Bancomer BBVA, Banco del Bajío, 'Santander Consumo, S.A. de C.V.', Bancoppel]
 centerLineStyle: yellow
+chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: mexico
@@ -8,8 +10,6 @@ noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
+orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]
 popularSports: [soccer, basketball, baseball, tennis]
 workweekDays: 6
-atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, BBVA Bancomer, BBVA, Banjercito, Interacciones, Banco Azteca, Inbursa, Afirme, Citibanamex, Coppel, Banco Santander, Multiva, 'BBVA Bancomer, S.A.', Banco Multiva, CIBanco, Santander Serfin, CFE, Bancomer BBVA, Banco del Bajío, 'Santander Consumo, S.A. de C.V.', Bancoppel]
-chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
-orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]

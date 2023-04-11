@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
@@ -25,7 +25,7 @@ class ElementEditsController(
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, type, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -95,7 +95,7 @@ class ElementEditsController(
             delete(edit)
             // ... and add a new revert to the queue
             val reverted = action.createReverted(getIdProvider(edit.id))
-            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, currentTimeMillis(), false, reverted))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
         }
         // not uploaded yet
         else {

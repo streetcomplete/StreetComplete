@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.camera_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -28,7 +29,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
 
     override fun createForm() = AddCameraTypeForm()
 
-    override fun applyAnswerTo(answer: CameraType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CameraType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["camera:type"] = answer.osmValue
     }
 }

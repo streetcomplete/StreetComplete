@@ -65,7 +65,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         check("nodes with check_date < today -2 days", "node[check_date](if:date(t['check_date']) < date('$twoDaysAgo'));")
 
         val twoDaysInFuture = dateDaysAgo(-2f).toCheckDateString()
-        check("nodes with check_date < today + 0.285 weeks", "node[check_date](if:date(t['check_date']) < date('$twoDaysInFuture'));")
+        check("nodes with check_date < today + 2 days", "node[check_date](if:date(t['check_date']) < date('$twoDaysInFuture'));")
     }
 
     @Test fun `element older x days`() {

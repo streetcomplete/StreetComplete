@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -62,7 +64,36 @@ class MapDataWithEditsSource internal constructor(
             val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
             val modifiedDeleted = ArrayList<ElementKey>()
             synchronized(this) {
+                /* We don't want to callOnUpdated if none of the changes affects map data provided
+                 * by MapDataWithEditsSource.
+                 * This is the case if
+                 *  * All keys in deleted are already in deletedElements.
+                 *  * The modified versions of all elements in updated are the same before and after
+                 *    rebuildLocalChanges, except for the timestamp (expected to have few ms
+                 *    difference) and version (never updated locally).
+                 */
+                val deletedIsUnchanged = deletedElements.containsAll(deleted)
+                val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
+                    val key = ElementKey(element.type, element.id)
+                    if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
+                        null // we already have the updated version, so this element is unchanged
+                    } else {
+                        key to get(element.type, element.id) // elementKey and element as provided by MapDataWithEditsSource
+                    }
+                }
+
                 rebuildLocalChanges()
+
+                /* nothingChanged can be false at this point when e.g. there are two edits on the
+                   same element, and onUpdated is called after the first edit is uploaded. */
+                val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
+                    val updatedElement = get(it.first.type, it.first.id)
+                    // old and new elements are equal except version and timestamp, or both are null
+                    it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
+                }
+                if (nothingChanged) {
+                    return
+                }
 
                 for (element in updated) {
                     val key = ElementKey(element.type, element.id)
@@ -156,6 +187,14 @@ class MapDataWithEditsSource internal constructor(
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
                         elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                    }
+
+                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
+                        val waysContainingNode = getWaysForNode(edit.elementId)
+                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
+                        for (elem in waysContainingNode + affectedRelations) {
+                            mapData.put(elem, getGeometry(elem.type, elem.id))
+                        }
                     }
                 }
             }
@@ -404,7 +443,21 @@ class MapDataWithEditsSource internal constructor(
             updatedElements[key] = element
             updatedGeometries[key] = createGeometry(element)
         }
-        return MapDataUpdates(updated = updates, deleted = deletedKeys)
+
+        // get affected ways and relations and update geometries if a node was moved
+        val elementsWithChangedGeometry = mutableListOf<Element>()
+        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
+            val waysContainingNode = getWaysForNode(edit.elementId)
+            val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
+            for (element in waysContainingNode + affectedRelations) {
+                val key = ElementKey(element.type, element.id)
+                deletedElements.remove(key)
+                updatedElements[key] = element
+                updatedGeometries[key] = createGeometry(element)
+                elementsWithChangedGeometry.add(element) // questController needs to know that element was affected (though it was not updated in OSM sense)
+            }
+        }
+        return MapDataUpdates(updated = updates + elementsWithChangedGeometry, deleted = deletedKeys)
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
@@ -442,3 +495,10 @@ class MapDataWithEditsSource internal constructor(
         listeners.forEach { it.onCleared() }
     }
 }
+
+private fun Element.isEqualExceptVersionAndTimestamp(element: Element?): Boolean =
+    id == element?.id && tags == element.tags && type == element.type && when (this) {
+        is Node -> position == (element as Node).position
+        is Way -> nodeIds == (element as Way).nodeIds
+        is Relation -> members == (element as Relation).members
+    }

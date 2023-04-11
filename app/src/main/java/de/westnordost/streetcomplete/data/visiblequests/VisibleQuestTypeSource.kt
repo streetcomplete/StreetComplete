@@ -14,6 +14,8 @@ interface VisibleQuestTypeSource {
     /** return whether the given quest type is visible */
     fun isVisible(questType: QuestType): Boolean
 
+    fun getVisible(presetId: Long? = null): Set<QuestType>
+
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
 }

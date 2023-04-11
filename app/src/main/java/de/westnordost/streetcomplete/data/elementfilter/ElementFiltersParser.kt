@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
@@ -201,8 +202,10 @@ private fun StringWithCursor.parseTag(): ElementFilter {
             return HasKeyLike(key)
         } else if (LIKE == operator) {
             return HasTagLike(key, parseQuotableWord())
+        } else if (NOT_LIKE == operator) {
+            return NotHasTagLike(key, parseQuotableWord())
         }
-        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE'", cursorPos)
+        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE' or '$NOT_LIKE'", cursorPos)
     }
 
     if (nextIsAndAdvance(OLDER)) {

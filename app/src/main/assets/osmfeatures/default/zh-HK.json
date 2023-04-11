@@ -370,14 +370,8 @@
                     "label": "地庫樓層數",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "物料"
-                },
-                "building_area": {
-                    "label": "建築物"
                 },
                 "bunker_type": {
                     "label": "種類"
@@ -409,7 +403,6 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "capacity/caravans": {
-                    "label": "容納（露營拖車）",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -521,7 +514,6 @@
                     "label": "被遮蓋"
                 },
                 "covered_no": {
-                    "label": "被遮蓋",
                     "options": {
                         "no": "否",
                         "undefined": "假設為否",
@@ -629,38 +621,23 @@
                     "label": "單車徑",
                     "options": {
                         "lane": {
-                            "description": "單車徑與行車道由地上的綫分開",
-                            "title": "標準單車徑"
-                        },
-                        "none": {
-                            "description": "沒有單車徑",
-                            "title": "無"
+                            "description": "單車徑與行車道由地上的綫分開"
                         },
                         "opposite": {
-                            "description": "單程路提供雙程行車單車徑",
-                            "title": "雙向行駛單車徑"
+                            "description": "單程路提供雙程行車單車徑"
                         },
                         "opposite_lane": {
-                            "description": "與行車方向相反的單車徑",
-                            "title": "逆向單車道"
+                            "description": "與行車方向相反的單車徑"
                         },
                         "share_busway": {
-                            "description": "與巴士綫共享的單車徑",
-                            "title": "與巴士綫共用的單車徑"
+                            "description": "與巴士綫共享的單車徑"
                         },
                         "shared_lane": {
-                            "description": "沒有與行車道分開的單車徑",
-                            "title": "共用單車徑"
+                            "description": "沒有與行車道分開的單車徑"
                         },
                         "track": {
-                            "description": "單車徑與行車道由障礙物分開",
-                            "title": "單車徑"
+                            "description": "單車徑與行車道由障礙物分開"
                         }
-                    },
-                    "placeholder": "無",
-                    "types": {
-                        "cycleway:left": "左側",
-                        "cycleway:right": "右側"
                     }
                 },
                 "dance/style": {
@@ -707,17 +684,8 @@
                 "destination/ref": {
                     "label": "目的地道路編號"
                 },
-                "destination/ref_oneway": {
-                    "label": "目的地道路編號"
-                },
                 "destination/symbol": {
                     "label": "目的地符號"
-                },
-                "destination/symbol_oneway": {
-                    "label": "目的地符號"
-                },
-                "destination_oneway": {
-                    "label": "目的地"
                 },
                 "destination_waterway": {
                     "label": "目的地"
@@ -773,12 +741,6 @@
                         "forward": "前向"
                     }
                 },
-                "direction_vertex_dual": {
-                    "options": {
-                        "backward": "後向",
-                        "forward": "前向"
-                    }
-                },
                 "display": {
                     "label": "顯示",
                     "options": {
@@ -830,9 +792,6 @@
                     "placeholder": "00:00"
                 },
                 "ele": {
-                    "label": "海拔（米）"
-                },
-                "ele_node": {
                     "label": "海拔（米）"
                 },
                 "electrified": {
@@ -943,9 +902,6 @@
                 },
                 "fuel": {
                     "label": "燃料"
-                },
-                "fuel_multi": {
-                    "label": "燃料種類"
                 },
                 "gambling": {
                     "label": "遊戲"
@@ -1099,7 +1055,6 @@
                     "label": "斜"
                 },
                 "incline_steps": {
-                    "label": "斜坡",
                     "options": {
                         "down": "落",
                         "up": "上"
@@ -1193,15 +1148,6 @@
                         "semi_evergreen": "半常綠    "
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "換葉週期",
-                    "options": {
-                        "deciduous": "落葉",
-                        "evergreen": "常綠",
-                        "semi_deciduous": "半落葉",
-                        "semi_evergreen": "半常綠"
-                    }
-                },
                 "leaf_type": {
                     "label": "葉子種類",
                     "options": {
@@ -1212,12 +1158,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "葉子種類",
-                    "options": {
-                        "broadleaved": "闊葉",
-                        "leafless": "無葉",
-                        "needleleaved": "針葉"
-                    }
+                    "label": "葉子種類"
                 },
                 "leisure": {
                     "label": "類別"
@@ -1238,7 +1179,6 @@
                     "label": "地點"
                 },
                 "location_pool": {
-                    "label": "位置",
                     "options": {
                         "indoor": "室內",
                         "outdoor": "室外",
@@ -1293,9 +1233,6 @@
                     "label": "可停留時間"
                 },
                 "maxweight": {
-                    "label": "最大承重"
-                },
-                "maxweight_bridge": {
                     "label": "最大承重"
                 },
                 "memorial": {
@@ -1412,7 +1349,6 @@
                     "label": "單程路（單車）"
                 },
                 "oneway_yes": {
-                    "label": "單程",
                     "options": {
                         "alternating": "單綫雙程",
                         "no": "否",
@@ -1484,19 +1420,12 @@
                     "label": "方向"
                 },
                 "parking_entrance": {
-                    "label": "種類",
-                    "options": {
-                        "multi-storey": "多層",
-                        "underground": "地下"
-                    }
+                    "label": "種類"
                 },
                 "parking_space": {
                     "label": "種類"
                 },
                 "payment_multi": {
-                    "label": "付款種類"
-                },
-                "payment_multi_fee": {
                     "label": "付款種類"
                 },
                 "phases": {
@@ -1521,7 +1450,6 @@
                     "placeholder": "容易、中階、 進階..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "難度",
                     "options": {
                         "advanced": "進階（黑鑽）",
                         "easy": "容易（綠圓圈）",
@@ -1534,7 +1462,6 @@
                     "placeholder": "容易、中階、 進階..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "難度",
                     "options": {
                         "advanced": "高階 - 窄、斜或結冰路段，急彎",
                         "easy": "容易 - 軟地、一小段斜的段",
@@ -1545,7 +1472,6 @@
                     "placeholder": "容易、中階、 進階..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "難度",
                     "options": {
                         "advanced": "高階 - S: 斜度 40-45°",
                         "easy": "容易 - WS: 斜度 30-35°",
@@ -1569,7 +1495,6 @@
                     }
                 },
                 "piste/grooming_downhill": {
-                    "label": "雪道種類",
                     "options": {
                         "classic": "典型"
                     }
@@ -1601,7 +1526,6 @@
                     "label": "植物"
                 },
                 "plant/output/electricity": {
-                    "label": "電力輸出",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -1959,9 +1883,6 @@
                 "site": {
                     "label": "類別"
                 },
-                "site_type": {
-                    "label": "地點類別"
-                },
                 "smoking": {
                     "label": "吸煙",
                     "options": {
@@ -2226,7 +2147,6 @@
                 "tracktype": {
                     "label": "路徑種類",
                     "options": {
-                        "grade1": "實心：已鋪設路面或有剛硬的表面",
                         "grade2": "接近實心：混合了柔性物料的碎石/石塊",
                         "grade3": "混合了硬性與柔性的物料",
                         "grade4": "接近柔性：混合了硬性物料的土壤/砂粒/草",
@@ -2385,9 +2305,6 @@
                 "voltage/tertiary": {
                     "label": "三次電壓"
                 },
-                "voltage_electrified": {
-                    "label": "電壓"
-                },
                 "wall": {
                     "label": "種類"
                 },
@@ -2406,9 +2323,6 @@
                 "water_tank/volume": {
                     "label": "容積（公升）",
                     "placeholder": "10000, 20000, 30000…"
-                },
-                "water_volume": {
-                    "label": "儲水量（立方米）"
                 },
                 "waterway": {
                     "label": "種類"
@@ -3309,10 +3223,6 @@
                     "name": "機動遊戲機",
                     "terms": "amusement ride,機動遊戲"
                 },
-                "attraction/big_wheel": {
-                    "name": "摩天輪",
-                    "terms": "big wheel,ferris wheel"
-                },
                 "attraction/bungee_jumping": {
                     "name": "笨豬跳",
                     "terms": "bungee jumping,bungee jump,高空彈跳"
@@ -3393,10 +3303,6 @@
                 "barrier/kissing_gate": {
                     "name": "單人轉門",
                     "terms": "kissing gate,單人轉門"
-                },
-                "barrier/lift_gate": {
-                    "name": "閘桿",
-                    "terms": "lift gate,擋車器,道閘"
                 },
                 "barrier/retaining_wall": {
                     "name": "護土牆",
@@ -3576,10 +3482,6 @@
                 "building/stadium": {
                     "name": "體育館建築物"
                 },
-                "building/static_caravan": {
-                    "name": "固定式露營車",
-                    "terms": "固定式露營車,露營車"
-                },
                 "building/temple": {
                     "name": "寺廟建築物"
                 },
@@ -3631,10 +3533,6 @@
                 "craft/bookbinder": {
                     "name": "書籍釘裝",
                     "terms": "釘裝"
-                },
-                "craft/brewery": {
-                    "name": "釀酒廠",
-                    "terms": "釀酒廠,啤酒釀造,啤酒釀製,啤酒釀制"
                 },
                 "craft/carpenter": {
                     "name": "木匠",

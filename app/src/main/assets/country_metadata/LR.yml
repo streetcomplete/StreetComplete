@@ -6,5 +6,5 @@ noEntrySignStyle: do not enter
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en]
-speedUnits: [miles per hour, kilometers per hour]
 orchardProduces: [cacao, rubber, banana, coffee, coconut, orange, pineapple, tomato]
+speedUnits: [miles per hour, kilometers per hour]

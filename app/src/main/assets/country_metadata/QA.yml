@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 advisorySpeedLimitSignStyle: white
+atmOperators: [Doha Bank, QNB, QIB, Commercial Bank of Qatar]
 centerLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 427
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
+orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, fig]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [Doha Bank, QNB, QIB, Commercial Bank of Qatar]
-orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, fig]

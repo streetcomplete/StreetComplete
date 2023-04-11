@@ -89,11 +89,69 @@ private val String?.asLineStyleResId: Int? get() = when (this) {
 }
 
 val CountryInfo.shoulderLineStyleResId: Int get() = when (edgeLineStyle) {
-    "white" -> R.drawable.ic_shoulder_white_line
-    "yellow" -> R.drawable.ic_shoulder_yellow_line
-    "short white dashes" -> R.drawable.ic_shoulder_short_white_dashes
-    "white dashes" -> R.drawable.ic_shoulder_white_dashes
+    "white" ->               R.drawable.ic_shoulder_white_line
+    "yellow" ->              R.drawable.ic_shoulder_yellow_line
+    "short white dashes" ->  R.drawable.ic_shoulder_short_white_dashes
+    "white dashes" ->        R.drawable.ic_shoulder_white_dashes
     "short yellow dashes" -> R.drawable.ic_shoulder_short_yellow_dashes
-    "two yellow lines" -> R.drawable.ic_shoulder_two_yellow_lines
-    else -> R.drawable.ic_shoulder_white_line
+    "two yellow lines" ->    R.drawable.ic_shoulder_two_yellow_lines
+    else ->                  R.drawable.ic_shoulder_white_line
+}
+
+val CountryInfo.exclusiveCycleLaneResId: Int get() = when (exclusiveCycleLaneStyle) {
+    "white" ->                      R.drawable.ic_cycleway_lane_white
+    "yellow" ->                     R.drawable.ic_cycleway_lane_yellow
+    "white dots" ->                 R.drawable.ic_cycleway_lane_dotted_white
+    "white dashes" ->               R.drawable.ic_cycleway_lane_dashed_white
+    "white dashes on both sides" -> R.drawable.ic_cycleway_lane_dashed_both_white
+    "yellow dashes" ->              R.drawable.ic_cycleway_lane_dashed_yellow
+    else ->                         R.drawable.ic_cycleway_lane_white
+}
+
+val CountryInfo.exclusiveCycleLaneMirroredResId: Int get() = when (exclusiveCycleLaneStyle) {
+    "white" ->                      R.drawable.ic_cycleway_lane_white_l
+    "yellow" ->                     R.drawable.ic_cycleway_lane_yellow_l
+    "white dots" ->                 R.drawable.ic_cycleway_lane_dotted_white_l
+    "white dashes" ->               R.drawable.ic_cycleway_lane_dashed_white_l
+    "white dashes on both sides" -> R.drawable.ic_cycleway_lane_dashed_both_white_l
+    "yellow dashes" ->              R.drawable.ic_cycleway_lane_dashed_yellow_l
+    else ->                         R.drawable.ic_cycleway_lane_white_l
+}
+
+val CountryInfo.dualCycleLaneResId: Int get() = when {
+    exclusiveCycleLaneStyle.startsWith("white") ->  R.drawable.ic_cycleway_lane_white_dual
+    exclusiveCycleLaneStyle.startsWith("yellow") -> R.drawable.ic_cycleway_lane_yellow_dual
+    else ->                                         R.drawable.ic_cycleway_lane_white_dual
+}
+
+val CountryInfo.dualCycleLaneMirroredResId: Int get() = when {
+    exclusiveCycleLaneStyle.startsWith("white") ->  R.drawable.ic_cycleway_lane_white_dual_l
+    exclusiveCycleLaneStyle.startsWith("yellow") -> R.drawable.ic_cycleway_lane_yellow_dual_l
+    else ->                                         R.drawable.ic_cycleway_lane_white_dual_l
+}
+
+val CountryInfo.advisoryCycleLaneResId: Int get() = when (advisoryCycleLaneStyle) {
+    "white dashes" ->                   R.drawable.ic_cycleway_shared_lane_white_dashed
+    "white dashes without pictogram" -> R.drawable.ic_cycleway_shared_lane_no_pictograms
+    "ochre background" ->               R.drawable.ic_cycleway_shared_lane_orchre_background
+    else ->                             R.drawable.ic_cycleway_shared_lane_white_dashed
+}
+
+val CountryInfo.advisoryCycleLaneMirroredResId: Int get() = when (advisoryCycleLaneStyle) {
+    "white dashes" ->                   R.drawable.ic_cycleway_shared_lane_white_dashed_l
+    "white dashes without pictogram" -> R.drawable.ic_cycleway_shared_lane_no_pictograms
+    "ochre background" ->               R.drawable.ic_cycleway_shared_lane_orchre_background
+    else ->                             R.drawable.ic_cycleway_shared_lane_white_dashed_l
+}
+
+val CountryInfo.pictogramCycleLaneResId: Int get() = when (pictogramCycleLaneStyle) {
+    "white" ->  R.drawable.ic_cycleway_pictograms_white
+    "yellow" -> R.drawable.ic_cycleway_pictograms_yellow
+    else ->     R.drawable.ic_cycleway_pictograms_white
+}
+
+val CountryInfo.pictogramCycleLaneMirroredResId: Int get() = when (pictogramCycleLaneStyle) {
+    "white" ->  R.drawable.ic_cycleway_pictograms_white_l
+    "yellow" -> R.drawable.ic_cycleway_pictograms_yellow_l
+    else ->     R.drawable.ic_cycleway_pictograms_white_l
 }

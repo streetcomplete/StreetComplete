@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -21,6 +22,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
           and !backrest
           and !bench:type
           and (!seasonal or seasonal = no)
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether benches have backrests"
     override val wikiLink = "Tag:amenity=bench"
@@ -35,7 +37,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override fun createForm() = AddBenchBackrestForm()
 
-    override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             PICNIC_TABLE -> {
                 tags["leisure"] = "picnic_table"

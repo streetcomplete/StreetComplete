@@ -1,4 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Standard Chartered, ATM, UOB, 7-Eleven Malaysia Sdn Bhd, Public Bank, HSBC, Bank Islam Malaysia Berhad]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 502
@@ -7,8 +8,7 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: double yellow
 noStoppingSignStyle: vienna
 officialLanguages: [ms]
+orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange]
 popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
 popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]
 postboxesHaveCollectionTimes: true
-atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Standard Chartered, ATM, UOB, 7-Eleven Malaysia Sdn Bhd, Public Bank, HSBC, Bank Islam Malaysia Berhad]
-orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange]

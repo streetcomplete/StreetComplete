@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -47,7 +48,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     override fun createForm() = AddStileTypeForm()
 
-    override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is StileType -> {
                 val newType = answer.osmValue

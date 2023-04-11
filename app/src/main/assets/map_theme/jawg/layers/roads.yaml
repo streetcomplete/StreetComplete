@@ -17,30 +17,30 @@ layers:
 
     highway:
         data: { source: jawg, layer: road }
-        filter: [ class: [ motorway, motorway_link ], { class: main, type: trunk }, { class: street, type: trunk_link } ]
+        filter: [ class: [ motorway, motorway_link ] ]
         draw:
             lines-highway-style:
                 order: 34
                 join: round
                 cap: round
                 color: global.highway_color
-                width: [[8, 1px], [14, 8px], [18, 20m]]
+                width: [[8, 1px], [14, 8px], [18, 15m]]
                 outline:
                     color: global.highway_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
                     order: 35
 
         link:
-            filter: [ class: motorway_link, { class: street, type: trunk_link } ]
+            filter: [ class: motorway_link ]
             draw:
                 lines-highway-style:
-                    width: [[10, 1px], [14, 3px], [18, 6m]]
+                    width: [[10, 1px], [14, 3px], [18, 4.5m]]
 
         oneway:
             filter: function () { return feature.oneway == true; }
             draw:
                 lines-highway-style:
-                    width: [[10, 2px], [14, 4px], [18, 10m]]
+                    width: [[10, 2px], [14, 4px], [18, 7.5m]]
 
         bridges:
             filter: { structure: bridge }
@@ -72,31 +72,31 @@ layers:
 
     roads:
         data: { source: jawg, layer: road }
-        filter: { class: [main, street, street_limited, service, driveway, path], not: { type: [ trunk, trunk_link ] } }
+        filter: { class: [main, street, street_limited, service, driveway, path] }
         draw:
             lines-road-style:
                 order: 30
                 join: round
                 cap: round
                 color: global.road_color
-                width: [[5, 1px], [12, 2px], [16, 4px], [18, 6m]]
+                width: [[5, 1px], [12, 2px], [16, 4px], [18, 5.5m]]
 
         major_road:
             filter: { class: main }
             draw:
                 lines-road-style:
-                    width: [[9, 1px], [14, 2px], [16, 5px], [19, 9m]]
+                    width: [[9, 1px], [14, 2px], [16, 5px], [19, 7.5m]]
             oneway:
                 filter: function () { return feature.oneway == true; }
                 draw:
                     lines-road-style:
-                        width: [[9, 0.75px], [14, 1.5px], [16, 3px], [19, 6m]]
+                        width: [[9, 0.75px], [14, 1.5px], [16, 3px], [19, 4.5m]]
 
         minor_road:
             filter: { class: street }
             draw:
                 lines-road-style:
-                    width: [[11, 0.5px], [12, 0.75px], [14, 1.0px], [15, 2.0px], [16, 6m]]
+                    width: [[11, 0.5px], [12, 0.75px], [14, 1.0px], [15, 2.0px], [16, 5.5m]]
             oneway:
                 filter: function () { return feature.oneway == true; }
                 draw:

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -25,7 +26,7 @@ class AddOpeningHours(
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
     private val filter by lazy { ("""
-        nodes, ways, relations with
+        nodes, ways with
         (
           (
             (
@@ -44,14 +45,19 @@ class AddOpeningHours(
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",                                                                                     // work
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
+                "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
+                "cooking_school",
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & opening hours
                 "boat_rental"
@@ -76,7 +82,7 @@ class AddOpeningHours(
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic", "coworking",
+                "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant"
             ),
@@ -87,11 +93,11 @@ class AddOpeningHours(
             ),
             "healthcare" to arrayOf(
                 // common
-                "audiologist", "optometrist", "counselling", "speech_therapist",
-                "sample_collection", "blood_donation",
-
-                // name & opening hours
-                "physiotherapist", "podiatrist",
+                "pharmacy", "doctor", "clinic", "dentist", "centre", "physiotherapist",
+                "laboratory", "alternative", "psychotherapist", "optometrist", "podiatrist",
+                "nurse", "counselling", "speech_therapist", "blood_donation", "sample_collection",
+                "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
+                "blood_bank", "nutrition_counselling",
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
@@ -154,7 +160,7 @@ class AddOpeningHours(
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is NoOpeningHoursSign) {
             tags["opening_hours:signed"] = "no"
             tags.updateCheckDateForKey("opening_hours")
@@ -169,6 +175,9 @@ class AddOpeningHours(
             tags.updateWithCheckDate("opening_hours", openingHoursString)
             if (tags["opening_hours:signed"] == "no") {
                 tags.remove("opening_hours:signed")
+            }
+            if ("opening_hours:covid19" in tags) {
+                tags.remove("opening_hours:covid19")
             }
         }
     }

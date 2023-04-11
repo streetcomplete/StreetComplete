@@ -9,6 +9,9 @@
                 "brewery": {
                     "label": "Draught Beers"
                 },
+                "building/flats": {
+                    "label": "Unit Count"
+                },
                 "capacity_volume": {
                     "label": "Capacity (Cubic Metres)"
                 },
@@ -49,9 +52,6 @@
                 "ele": {
                     "label": "Elevation (Metres)"
                 },
-                "ele_node": {
-                    "label": "Elevation (Metres)"
-                },
                 "fax": {
                     "placeholder": "+61 1 2345 6789"
                 },
@@ -75,6 +75,9 @@
                 },
                 "length": {
                     "label": "Length (Metres)"
+                },
+                "maxspeed/hgv": {
+                    "label": "Heavy Vehicle Speed Limit"
                 },
                 "min_height": {
                     "label": "Height of Bottom (Metres)"
@@ -113,6 +116,12 @@
                 }
             },
             "presets": {
+                "aerialway/zip_line": {
+                    "name": "Flying Fox"
+                },
+                "aeroway/jet_bridge": {
+                    "name": "Aerobridge"
+                },
                 "amenity/arts_centre": {
                     "name": "Arts Centre"
                 },
@@ -122,6 +131,9 @@
                 },
                 "amenity/bicycle_parking/building": {
                     "name": "Bicycle Parking Building"
+                },
+                "amenity/cafe/bubble_tea": {
+                    "name": "Bubble Tea Shop"
                 },
                 "amenity/childcare": {
                     "name": "Childcare",
@@ -187,12 +199,19 @@
                     "name": "Toilets",
                     "aliases": "Bathroom\nLavatory\nWater Closet\nRestroom"
                 },
+                "amenity/trolley_bay": {
+                    "name": "Trolley Bay"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump"
                 },
                 "amenity/waste_basket": {
                     "name": "Rubbish Bin",
                     "terms": "waste,bin,garbage,rubbish,litter,trash"
+                },
+                "amenity/weighbridge": {
+                    "name": "Weighbridge",
+                    "aliases": "Truck Scale"
                 },
                 "barrier/kerb": {
                     "name": "Kerb"
@@ -222,15 +241,6 @@
                 "healthcare/counselling": {
                     "name": "Counselling Centre"
                 },
-                "highway/crossing/marked": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/uncontrolled": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Marked Crossing"
-                },
                 "highway/cycleway/bicycle_foot": {
                     "name": "Shared Path"
                 },
@@ -245,14 +255,16 @@
                     "name": "Inclined Lift",
                     "terms": "inclined elevator,cable railway"
                 },
-                "highway/footway/marked": {
-                    "name": "Marked Crossing"
+                "highway/footway": {
+                    "name": "Walkway",
+                    "aliases": "Footpath"
+                },
+                "highway/footway/informal": {
+                    "name": "Informal Walkway",
+                    "aliases": "Informal Footpath"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Footpath (sidewalk)"
-                },
-                "highway/footway/zebra": {
-                    "name": "Marked Zebra Crossing"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
@@ -263,6 +275,14 @@
                 "highway/street_lamp": {
                     "name": "Street Light",
                     "terms": "streetlamp,street lamp,lamp,light,gaslight"
+                },
+                "highway/track": {
+                    "name": "Track / Land-Access Road",
+                    "terms": "fire trail",
+                    "aliases": "Fire Trail"
+                },
+                "highway/traffic_signals": {
+                    "name": "Traffic Lights"
                 },
                 "indoor/elevator": {
                     "name": "Indoor Lift Shaft"
@@ -275,6 +295,9 @@
                 },
                 "leisure/fitness_centre": {
                     "name": "Gym / Fitness Centre"
+                },
+                "leisure/fitness_station": {
+                    "name": "Outdoor Exercise Equipment"
                 },
                 "leisure/horse_riding": {
                     "name": "Horseback Riding Centre"
@@ -290,6 +313,13 @@
                 },
                 "place/suburb": {
                     "name": "Suburb"
+                },
+                "playground/slide": {
+                    "name": "Slide",
+                    "aliases": "Slippery Dip"
+                },
+                "playground/zipwire": {
+                    "name": "Playground Flying Fox"
                 },
                 "shop/caravan": {
                     "name": "Caravan Dealership"
@@ -314,6 +344,9 @@
                 },
                 "shop/mall": {
                     "name": "Shopping Centre"
+                },
+                "shop/newsagent": {
+                    "name": "Newsagency"
                 },
                 "shop/tyres": {
                     "name": "Tyre Shop"

@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.quests.shop_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
 
 class CheckShopTypeTest {
     private val questType = CheckShopType()
@@ -41,6 +40,7 @@ class CheckShopTypeTest {
         ))
     }
 
+    // for disused non-disused combo validator see https://josm.openstreetmap.de/ticket/22668#ticket
     @Test fun `is not applicable to disused shop that is not disused after all, apparently`() {
         assertFalse(questType.isApplicableTo(
             node(
@@ -50,10 +50,28 @@ class CheckShopTypeTest {
         ))
     }
 
+    @Test fun `is not applicable to disused shop that is not disused after all, with well specified alternative`() {
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf("disused:shop" to "yes", "shop" to "mall"),
+                timestamp = 100
+            )
+        ))
+    }
+
+    @Test fun `is not applicable to disused shop that is not disused after all, with well specified non-shop alternative`() {
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf("disused:shop" to "yes", "amenity" to "clothing_bank"),
+                timestamp = 100
+            )
+        ))
+    }
+
     @Test fun `apply shop vacant answer`() {
         questType.verifyAnswer(
             IsShopVacant,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date", nowAsCheckDateString())
         )
     }
 
@@ -61,7 +79,7 @@ class CheckShopTypeTest {
         questType.verifyAnswer(
             mapOf("check_date" to "already set"),
             IsShopVacant,
-            StringMapEntryModify("check_date", "already set", LocalDate.now().toCheckDateString())
+            StringMapEntryModify("check_date", "already set", nowAsCheckDateString())
         )
     }
 
@@ -74,7 +92,7 @@ class CheckShopTypeTest {
                 "survey_date" to "d"
             ),
             IsShopVacant,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date", nowAsCheckDateString()),
             StringMapEntryDelete("lastcheck", "a"),
             StringMapEntryDelete("last_checked", "b"),
             StringMapEntryDelete("survey:date", "c"),

@@ -180,21 +180,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <View
-            android:id="@+id/contextMenuView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            tools:ignore="MissingConstraints" />
-
-        <RelativeLayout
-            android:id="@+id/edit_history_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipChildren="false"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="1dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/edit_history_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <View
+        android:id="@+id/contextMenuView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:ignore="MissingConstraints" />
 
     <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
     <RelativeLayout

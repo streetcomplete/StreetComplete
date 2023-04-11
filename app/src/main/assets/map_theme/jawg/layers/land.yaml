@@ -116,9 +116,9 @@ layers:
                     width: [[15, 1px], [18, 2m]]
 
     pedestrian-areas:
-        data: { source: jawg , layer: road }
+        data: { source: jawg, layer: road }
         squares:
-            filter: { class: street_limited, type: pedestrian , $zoom: { min: 14 } }
+            filter: { class: street_limited, type: pedestrian, $zoom: { min: 14 } }
             draw:
                 lines:
                     color: global.square_outline_color
@@ -128,20 +128,14 @@ layers:
                     color: global.square_color
                     order: 31
 
-    hillshade:
-        data: { source: jawg , layer: hillshade }
-        highlights:
-            filter: { highlight: true }
+    path-areas:
+        data: { source: jawg, layer: road }
+        squares:
+            filter: { class: path, $zoom: { min: 14 } }
             draw:
-                hillshade-light-style:
-                    order: 100
-                    color: '#040404'
-        shadows:
-            filter: { shadow: true }
-            draw:
-                hillshade-shadow-style:
-                    order: 100
-                    color: '#f9f9f9'
+                polygons:
+                    color: global.square_color
+                    order: 31
 
     bridges:
         data: { source: jawg, layer: structure }
@@ -156,22 +150,16 @@ layers:
                 color: global.building_outline_color
 
 styles:
-    hillshade-light-style:
-        base: polygons
-        blend: add
-    hillshade-shadow-style:
-        base: polygons
-        blend: multiply
     boundary_dashes:
         base: lines
         dash: [1, 2]
         blend: translucent
     buildings-style:
         base: polygons
-        blend: opaque
+        blend: translucent
     buildings-outline-style:
         base: lines
-        blend: inlay
+        blend: translucent
     lines-coast:
         base: lines
         texcoords: true

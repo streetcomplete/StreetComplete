@@ -22,7 +22,7 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
 
     override val title = R.string.overlay_shops
     override val icon = R.drawable.ic_quest_shop
-    override val changesetComment = "Add shops etc."
+    override val changesetComment = "Survey shops etc."
     override val wikiLink: String = "Key:shop"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
@@ -33,7 +33,8 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
     override val isCreateNodeEnabled = true
 
     override val sceneUpdates = listOf(
-        "layers.housenumber-labels.enabled" to "false" // because they often overlap with shop names
+        "layers.buildings.draw.buildings-style.extrude" to "false",
+        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
     )
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =

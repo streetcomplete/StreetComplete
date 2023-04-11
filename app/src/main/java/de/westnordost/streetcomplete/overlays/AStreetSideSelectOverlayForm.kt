@@ -36,7 +36,8 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
             prefs,
             Prefs.LAST_PICKED_PREFIX + javaClass.simpleName,
             ::serialize,
-            ::deserialize
+            ::deserialize,
+            ::asStreetSideItem
         )
         streetSideSelect.onInputChanged = { checkIsFormComplete() }
         streetSideSelect.onClickSide = ::onClickSide
@@ -44,6 +45,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
         val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageLeft = defaultPuzzleImage
         streetSideSelect.defaultPuzzleImageRight = defaultPuzzleImage
+        streetSideSelect.updateLastSelectionButton()
 
         if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
     }
@@ -65,20 +67,22 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     private fun onLoadInstanceState(inState: Bundle) {
         streetSideSelect.showSides = StreetSideSelectWithLastAnswerButtonViewController.Sides.valueOf(inState.getString(SHOW_SIDES, null)!!)
-        streetSideSelect.setPuzzleSide(inState.getString(LEFT, null)?.let { deserialize(it, false) }, false)
-        streetSideSelect.setPuzzleSide(inState.getString(RIGHT, null)?.let { deserialize(it, true) }, true)
+        val left = inState.getString(LEFT)?.let { asStreetSideItem(deserialize(it), false) }
+        val right = inState.getString(RIGHT)?.let { asStreetSideItem(deserialize(it), true) }
+        streetSideSelect.setPuzzleSide(left, false)
+        streetSideSelect.setPuzzleSide(right, true)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(SHOW_SIDES, streetSideSelect.showSides.name)
-        outState.putString(LEFT, streetSideSelect.left?.let { serialize(it, false) })
-        outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it, true) })
+        outState.putString(LEFT, streetSideSelect.left?.let { serialize(it.value) })
+        outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it.value) })
     }
 
-    protected abstract fun serialize(item: StreetSideDisplayItem<I>, isRight: Boolean): String
-
-    protected abstract fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<I>
+    protected abstract fun serialize(item: I): String
+    protected abstract fun deserialize(str: String): I
+    protected abstract fun asStreetSideItem(item: I, isRight: Boolean): StreetSideDisplayItem<I>
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

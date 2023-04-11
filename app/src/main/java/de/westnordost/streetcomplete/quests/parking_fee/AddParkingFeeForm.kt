@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.view.controller.TimeRestriction.AT_ANY_TIME
 import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_HOURS
 import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
 import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
-import java.util.Locale
 
 class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
 
@@ -57,7 +56,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
             ).also {
                 it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
                 it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.officialLanguages.firstOrNull()?.let { Locale(it) } ?: Locale.getDefault()
+                it.locale = countryInfo.userPreferredLocale
                 it.onInputChanged = { checkIsFormComplete() }
                 // user already answered that it depends on the time, so don't show the "at any time" option
                 it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
@@ -78,7 +77,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
             ).also {
                 it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
                 it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.officialLanguages.firstOrNull()?.let { Locale(it) } ?: Locale.getDefault()
+                it.locale = countryInfo.userPreferredLocale
                 it.onInputChanged = { checkIsFormComplete() }
             }
         }

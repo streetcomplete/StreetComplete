@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -18,9 +19,25 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
     private val disusedShopsFilter by lazy { """
-        nodes, ways, relations with (
+        nodes, ways with (
           shop = vacant
-          or ${isShopExpressionFragment("disused")}
+          or office = vacant
+          or (${isShopExpressionFragment("disused")}
+             and !man_made
+             and !historic
+             and !military
+             and !power
+             and !tourism
+             and !attraction
+             and !amenity
+             and !leisure
+             and !aeroway
+             and !railway
+             and !craft
+             and !healthcare
+             and !office
+             and !shop
+          )
         ) and (
           older today -1 years
           or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -1 years" }}
@@ -49,7 +66,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
     override fun createForm() = ShopTypeForm()
 
-    override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is IsShopVacant -> {
                 tags.updateCheckDate()

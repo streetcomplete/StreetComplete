@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -83,6 +84,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         )
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             popQuestForm()
@@ -194,6 +196,11 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
         message("Splitting way")
+        popQuestForm()
+    }
+
+    override fun onMoveNode(editType: ElementEditType, node: Node) {
+        message("Moving node")
         popQuestForm()
     }
 

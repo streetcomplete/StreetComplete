@@ -18,11 +18,6 @@ class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
             editText.imeOptions = EditorInfo.IME_ACTION_DONE or editText.imeOptions
         }
 
-        editText.inputType =
-            EditorInfo.TYPE_CLASS_TEXT or
-                EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
-                EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
-
         editText.addTextChangedListener(AbbreviationAutoCorrecter())
 
         editText.setOnEditorActionListener { _, actionId, _ ->
@@ -52,7 +47,7 @@ class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
             fixedReplace(s, wordStart, wordStart + lastWordBeforeCursor.length, replacement)
         } else if (lastWordBeforeCursor.length > 3) {
             val locale = abbrs.locale
-            val capital = lastWordBeforeCursor.substring(0, 1).uppercase(locale)
+            val capital = lastWordBeforeCursor.get(0).titlecase(locale)
             s.replace(wordStart, wordStart + 1, capital)
         }
     }

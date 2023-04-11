@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -13,7 +14,7 @@ import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_
 
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
-    override val elementFilter = "nodes, ways, relations with amenity = recycling and !recycling_type"
+    override val elementFilter = "nodes, ways with amenity = recycling and !recycling_type"
     override val changesetComment = "Specify type of recycling amenities"
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.ic_quest_recycling
@@ -27,7 +28,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override fun createForm() = AddRecyclingTypeForm()
 
-    override fun applyAnswerTo(answer: RecyclingType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: RecyclingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             RECYCLING_CENTRE -> {
                 tags["recycling_type"] = "centre"

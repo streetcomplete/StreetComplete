@@ -31,7 +31,7 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.selectButton.setOnClickListener {
+        binding.selectButton.root.setOnClickListener {
             ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
                 if (item != selectedItem) {
                     selectedItem = item
@@ -42,18 +42,18 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
         if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
 
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellView, true)
-        binding.selectedCellView.children.first().background = null
+        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
+        binding.selectButton.selectedCellView.children.first().background = null
 
         updateSelectedCell()
     }
 
     private fun updateSelectedCell() {
         val item = selectedItem
-        binding.selectTextView.isGone = item != null
-        binding.selectedCellView.isGone = item == null
+        binding.selectButton.selectTextView.isGone = item != null
+        binding.selectButton.selectedCellView.isGone = item == null
         if (item != null) {
-            ItemViewHolder(binding.selectedCellView).bind(item)
+            ItemViewHolder(binding.selectButton.selectedCellView).bind(item)
         }
     }
 

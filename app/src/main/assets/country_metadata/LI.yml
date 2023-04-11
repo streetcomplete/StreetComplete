@@ -1,4 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]
+exclusiveCycleLaneStyle: yellow
+hasAdvisoryCycleLane: false
+hasBicycleBoulevard: true
 hasSlowZone: true
 mobileCountryCode: 295
 noParkingLineStyle: dashed yellow line with Xs
@@ -7,4 +11,3 @@ officialLanguages: [de]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
-atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]

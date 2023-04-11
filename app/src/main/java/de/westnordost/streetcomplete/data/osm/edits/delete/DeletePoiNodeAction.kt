@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 import java.lang.System.currentTimeMillis
 
@@ -47,11 +48,10 @@ data class DeletePoiNodeAction(
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            val emptyNode = currentNode.copy(
+            MapDataChanges(modifications = listOf(node.copy(
                 tags = emptyMap(),
-                timestampEdited = currentTimeMillis()
-            )
-            MapDataChanges(modifications = listOf(emptyNode))
+                timestampEdited = nowAsEpochMilliseconds()
+            )))
         }
     }
 

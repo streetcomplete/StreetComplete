@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [CRDB, NMB, NBC, CRDB Bank, Barclays, Stanbic Bank, FNB, Ecobank, National Microfinance Bank (NMB), Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
 centerLineStyle: white
+chargingStationOperators: [Jaza Energy]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true
@@ -8,6 +10,4 @@ mobileCountryCode: 640
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [sw, en]
-atmOperators: [CRDB, NMB, NBC, CRDB Bank, Barclays, Stanbic Bank, FNB, Ecobank, National Microfinance Bank (NMB), Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
-chargingStationOperators: [Jaza Energy]
 orchardProduces: [cashew_nut, coconut, banana, coffee, sisal, orange, tomato, guava, mango, mangosteen, tea, pineapple, cacao, chilli_pepper, sweet_pepper, lemon, lime, nutmeg, grape]

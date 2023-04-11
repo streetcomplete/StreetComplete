@@ -10,7 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
-/** Manages the UI for inputting the address number (usually housenumber, see [AddressStreetNameInputViewController])
+/** Manages the UI for inputting the address number (usually housenumber, see [AddressNumberInputViewController])
  *  and/or a house name.
  *
  *  Both inputs can be retracted and expanded with tapping on [toggleHouseNameButton] or
@@ -26,6 +26,7 @@ class AddressNumberAndNameInputViewController(
     activity: Activity,
     houseNumberInput: EditText?,
     blockNumberInput: EditText?,
+    blockInput: EditText?,
     conscriptionNumberInput: EditText?,
     streetNumberInput: EditText?,
     toggleKeyboardButton: Button,
@@ -33,7 +34,7 @@ class AddressNumberAndNameInputViewController(
     subtractButton: View?
 ) {
     private val addressNumberCtrl = AddressNumberInputViewController(
-        activity, houseNumberInput, blockNumberInput, conscriptionNumberInput, streetNumberInput, toggleKeyboardButton, addButton, subtractButton
+        activity, houseNumberInput, blockNumberInput, blockInput, conscriptionNumberInput, streetNumberInput, toggleKeyboardButton, addButton, subtractButton
     )
 
     var onInputChanged: (() -> Unit)? = null

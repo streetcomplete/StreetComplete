@@ -97,9 +97,6 @@
                 "building": {
                     "label": "Građevina"
                 },
-                "building_area": {
-                    "label": "Građevina"
-                },
                 "capacity": {
                     "label": "Kapacitet",
                     "placeholder": "50, 100, 200..."
@@ -220,9 +217,6 @@
                 },
                 "oneway": {
                     "label": "Jednosmjerno"
-                },
-                "oneway_yes": {
-                    "label": "Jednosmjerna"
                 },
                 "opening_hours": {
                     "label": "Sati"
@@ -556,10 +550,6 @@
                     "name": "Kapija (sa dvoje vrata)",
                     "terms": "kapija sa dvoje vrata"
                 },
-                "barrier/lift_gate": {
-                    "name": "Kapija (koja se podiže)",
-                    "terms": "kapija koja se podiže,podižuća kapija"
-                },
                 "barrier/retaining_wall": {
                     "name": "Potporni zid",
                     "terms": "potporni zid,zid za zadržavanje"
@@ -619,9 +609,6 @@
                 },
                 "craft/bookbinder": {
                     "name": "Knjigovezac"
-                },
-                "craft/brewery": {
-                    "name": "Pivara"
                 },
                 "craft/carpenter": {
                     "name": "Stolar"

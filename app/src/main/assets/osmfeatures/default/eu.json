@@ -106,6 +106,7 @@
                 "access_simple": {
                     "label": "Sarrera baimendua",
                     "options": {
+                        "customers": "Bezeroentzat bakarrik",
                         "private": "Pribatua",
                         "unknown": "Ezezaguna",
                         "yes": "Publikoa"
@@ -120,7 +121,11 @@
                     }
                 },
                 "addr/interpolation": {
-                    "label": "Mota"
+                    "label": "Mota",
+                    "options": {
+                        "all": "Guztiak",
+                        "alphabetic": "Alfabetikoa"
+                    }
                 },
                 "address": {
                     "label": "Helbidea",
@@ -217,6 +222,12 @@
                 "animal_shelter": {
                     "label": "Animalientzako"
                 },
+                "archaeological_site": {
+                    "options": {
+                        "megalith": "Megalitoa",
+                        "tumulus": "Tumulua"
+                    }
+                },
                 "architect": {
                     "label": "Arkitektua",
                     "terms": "arkitektua,arkitetua,eraikin diseinatzailea"
@@ -278,7 +289,17 @@
                     }
                 },
                 "board_type": {
-                    "label": "Mota"
+                    "label": "Mota",
+                    "options": {
+                        "art": "Artea",
+                        "astronomy": "Astronomia",
+                        "geology": "Geologia",
+                        "history": "Historia",
+                        "nature": "Natura",
+                        "notice": "Ohar-taula",
+                        "plants": "Landareak",
+                        "welcome_sign": "Ongietorri seinalea"
+                    }
                 },
                 "bollard": {
                     "label": "Mota"
@@ -309,10 +330,18 @@
                     "label": "Mota"
                 },
                 "building": {
-                    "label": "Eraikin"
-                },
-                "building_area": {
-                    "label": "Eraikin"
+                    "label": "Eraikin",
+                    "options": {
+                        "farm": "Baserria",
+                        "farm_auxiliary": "Baserri alboko eraikina",
+                        "fire_station": "Suhiltzaileen eraikina",
+                        "garage": "Garajea",
+                        "garages": "Garajeak",
+                        "house": "Etxea",
+                        "roof": "Teilatu-aterpea",
+                        "school": "Eskola-eraikina",
+                        "warehouse": "Biltegia"
+                    }
                 },
                 "bunker_type": {
                     "label": "Mota"
@@ -339,9 +368,6 @@
                 "capacity": {
                     "label": "Edukiera",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Kobratu"
                 },
                 "castle_type": {
                     "label": "Mota"
@@ -393,7 +419,12 @@
                     "label": "Estalita"
                 },
                 "craft": {
-                    "label": "Mota"
+                    "label": "Mota",
+                    "options": {
+                        "photographer": "Argazkilaria",
+                        "plumber": "Iturgina",
+                        "shoemaker": "Zapataria"
+                    }
                 },
                 "crane/type": {
                     "label": "Garabi mota",
@@ -403,7 +434,17 @@
                     }
                 },
                 "crop": {
-                    "label": "Laborantzak"
+                    "label": "Laborantzak",
+                    "options": {
+                        "coffee": "Kafea",
+                        "grape": "Mahatsa",
+                        "maize": "Artoa",
+                        "potato": "Patatak",
+                        "rice": "Arroza",
+                        "tobacco": "Tabakoa",
+                        "vegetable": "Barazkiak",
+                        "wheat": "Garia"
+                    }
                 },
                 "crossing": {
                     "label": "Mota"
@@ -449,38 +490,23 @@
                     "label": "Bidegorria",
                     "options": {
                         "lane": {
-                            "description": "Margotutako marra batez autoen trafikotik bereizitako bidegorria",
-                            "title": "Bidegorri arrunta"
-                        },
-                        "none": {
-                            "description": "Bizikletentzako bidegorririk gabe",
-                            "title": "Inor"
+                            "description": "Margotutako marra batez autoen trafikotik bereizitako bidegorria"
                         },
                         "opposite": {
-                            "description": "Norabide bakarreko kale batean bi noranzkoetan ibiltzeko aukera duen bidegorria ",
-                            "title": "Kontrako norabidedun bidegorria"
+                            "description": "Norabide bakarreko kale batean bi noranzkoetan ibiltzeko aukera duen bidegorria "
                         },
                         "opposite_lane": {
-                            "description": "Trafikoaren kontrako norantzan doan bidegorria",
-                            "title": "Kontrako bidegorria"
+                            "description": "Trafikoaren kontrako norantzan doan bidegorria"
                         },
                         "share_busway": {
-                            "description": "Autobus erraiarekin bat doan bidegorria",
-                            "title": "Autobusen bidearekin bat eginda doan bidegorria"
+                            "description": "Autobus erraiarekin bat doan bidegorria"
                         },
                         "shared_lane": {
-                            "description": "Errepidetik banandu gabeko bidegorria",
-                            "title": "Partekatutako bidegorria"
+                            "description": "Errepidetik banandu gabeko bidegorria"
                         },
                         "track": {
-                            "description": "Errepidetik barrera fisiko batez banandutako bidegorria",
-                            "title": "Bidegorria"
+                            "description": "Errepidetik barrera fisiko batez banandutako bidegorria"
                         }
-                    },
-                    "placeholder": "Bat ere ez",
-                    "types": {
-                        "cycleway:left": "Ezkerreko aldea ",
-                        "cycleway:right": "Eskuineko aldea"
                     }
                 },
                 "dance/style": {
@@ -584,6 +610,10 @@
                     "label": "Iraupen",
                     "placeholder": "00:00"
                 },
+                "ele": {
+                    "label": "Altitudea (Metroak)",
+                    "terms": "garaiera,altuera,altitude"
+                },
                 "electrified": {
                     "label": "Elektrifikazio",
                     "options": {
@@ -670,9 +700,6 @@
                 },
                 "fuel": {
                     "label": "Erregai"
-                },
-                "fuel_multi": {
-                    "label": "Erregai motak"
                 },
                 "garden/type": {
                     "label": "Lorategi mota"
@@ -785,7 +812,6 @@
                     "label": "Aldapa"
                 },
                 "incline_steps": {
-                    "label": "Aldapa",
                     "options": {
                         "down": "Behera",
                         "up": "Gora"
@@ -859,15 +885,6 @@
                         "semi_evergreen": "Erdi-iraunkor"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Hostoaren zikloa",
-                    "options": {
-                        "deciduous": "Hostoerorkor",
-                        "evergreen": "Hosto iraunkor",
-                        "semi_deciduous": "Erdi-hostoerorkor",
-                        "semi_evergreen": "Erdi-iraunkor"
-                    }
-                },
                 "leaf_type": {
                     "label": "Hosto mota",
                     "options": {
@@ -895,7 +912,6 @@
                     "label": "Kokalekua"
                 },
                 "location_pool": {
-                    "label": "Kokalekua",
                     "options": {
                         "indoor": "Barru",
                         "outdoor": "Kanpo",
@@ -981,6 +997,9 @@
                 "note": {
                     "label": "Ohar"
                 },
+                "nudism": {
+                    "label": "Nudismoa"
+                },
                 "office": {
                     "label": "Mota"
                 },
@@ -995,7 +1014,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Norabide bakarra",
                     "options": {
                         "alternating": "Txandakatzen",
                         "no": "Ez",
@@ -1028,9 +1046,6 @@
                 "payment_multi": {
                     "label": "Ordaintzeko Moduak"
                 },
-                "payment_multi_fee": {
-                    "label": "Ordainketa motak"
-                },
                 "phases": {
                     "label": "Faseak",
                     "placeholder": "1, 2, 3..."
@@ -1050,15 +1065,12 @@
                     "placeholder": "Erraz, Erdi-maila, Aditu..."
                 },
                 "piste/difficulty_downhill": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/difficulty_nordic": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/difficulty_skitour": {
-                    "label": "Zailtasun",
                     "placeholder": "Erraz, Erdi-mailako, Aditu..."
                 },
                 "piste/grooming": {
@@ -1259,9 +1271,6 @@
                 },
                 "site": {
                     "label": "Mota"
-                },
-                "site_type": {
-                    "label": "Toki mota"
                 },
                 "smoking": {
                     "label": "Erretze",
@@ -1988,6 +1997,9 @@
                     "name": "Arkitektura bulegoa",
                     "terms": "arkitekto bulegoa,arkitektura bulegoa"
                 },
+                "place/locality": {
+                    "name": "Aurkintza"
+                },
                 "shop/hairdresser": {
                     "name": "Ile-apaintzailea"
                 },
@@ -1999,6 +2011,12 @@
                 },
                 "shop/vacant": {
                     "name": "Denda-lokal hutsa"
+                },
+                "type/boundary": {
+                    "name": "Muga"
+                },
+                "waterway/waterfall": {
+                    "name": "Ur-jauzia"
                 }
             }
         }

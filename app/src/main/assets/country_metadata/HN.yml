@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [BAC Honduras, Banco Atlántida, Banco de Occidente, Ficohsa, Banco Ficohsa, Davivienda]
 centerLineStyle: yellow
 mobileCountryCode: 708
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-atmOperators: [BAC Honduras, Banco Atlántida, Banco de Occidente, Ficohsa, Banco Ficohsa, Davivienda]
 orchardProduces: [coffee, banana, orange, cacao, pineapple, coconut, grapefruit, cashew_nut, pepper, nutmeg, tomato, chilli_pepper, sweet_pepper, lemon, lime, avocado, apple]

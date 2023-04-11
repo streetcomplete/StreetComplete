@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.surface
 
-data class SidewalkSurfaceAnswer(
-    val left: SurfaceAnswer?,
-    val right: SurfaceAnswer?,
-)
+import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
 
-data class SidewalkSurfaceSide(val surface: Surface)
+sealed interface SidewalkSurfaceAnswer
+
+data class SidewalkSurface(val value: LeftAndRightSidewalkSurface) : SidewalkSurfaceAnswer
+object SidewalkIsDifferent : SidewalkSurfaceAnswer

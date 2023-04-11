@@ -264,12 +264,6 @@
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
-                "building_area": {
-                    "label": "Pastatas"
-                },
                 "bunker_type": {
                     "label": "Tipas"
                 },
@@ -379,38 +373,23 @@
                     "label": "Dviračių juostos",
                     "options": {
                         "lane": {
-                            "description": "Dviračių juosta atskirta nuo automobilių eismo nubrėžta linija",
-                            "title": "Standartinė dviračių juosta"
-                        },
-                        "none": {
-                            "description": "Nėra dviračių juostos",
-                            "title": "Nėra"
+                            "description": "Dviračių juosta atskirta nuo automobilių eismo nubrėžta linija"
                         },
                         "opposite": {
-                            "description": "Abiejų krypčių dviračių juosta vienpusėje gatvėje",
-                            "title": "Dviračių juostos kryptis prieš eismą"
+                            "description": "Abiejų krypčių dviračių juosta vienpusėje gatvėje"
                         },
                         "opposite_lane": {
-                            "description": "Dviračių juosta, kuria eismas vyksta priešinga kryptimi.",
-                            "title": "Priešinga dviračių juosta"
+                            "description": "Dviračių juosta, kuria eismas vyksta priešinga kryptimi."
                         },
                         "share_busway": {
-                            "description": "Dviračių juosta yra kartu su autobusų juosta",
-                            "title": "Dviračių juosta kartu su autobusų"
+                            "description": "Dviračių juosta yra kartu su autobusų juosta"
                         },
                         "shared_lane": {
-                            "description": "Dviračių juosta be atskirties nuo automobilių eismo",
-                            "title": "Bendra dviračių juosta"
+                            "description": "Dviračių juosta be atskirties nuo automobilių eismo"
                         },
                         "track": {
-                            "description": "Dviračių juosta, atskirta nuo eismo fiziniu barjeru",
-                            "title": "Dviračių takas"
+                            "description": "Dviračių juosta, atskirta nuo eismo fiziniu barjeru"
                         }
-                    },
-                    "placeholder": "nėra",
-                    "types": {
-                        "cycleway:left": "Kairė pusė",
-                        "cycleway:right": "Dešinė pusė"
                     }
                 },
                 "dance/style": {
@@ -584,9 +563,6 @@
                 "fuel": {
                     "label": "Degalai"
                 },
-                "fuel_multi": {
-                    "label": "Kuro tipai"
-                },
                 "gambling": {
                     "label": "Žaidimai"
                 },
@@ -681,7 +657,6 @@
                     "label": "Nuolydis"
                 },
                 "incline_steps": {
-                    "label": "Įkalnė",
                     "options": {
                         "down": "Žemyn",
                         "up": "Aukštyn"
@@ -697,9 +672,6 @@
                     "label": "Tipas"
                 },
                 "intermittent": {
-                    "label": "Nepastovus"
-                },
-                "intermittent_yes": {
                     "label": "Nepastovus"
                 },
                 "internet_access": {
@@ -755,15 +727,6 @@
                         "semi_evergreen": "Pusiau-amžinai žaliuojantis"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Lapų ciklas",
-                    "options": {
-                        "deciduous": "Lapuočiai",
-                        "evergreen": "Visžaliai",
-                        "semi_deciduous": "Pusiau lapuočiai",
-                        "semi_evergreen": "Pusiau visžaliai"
-                    }
-                },
                 "leaf_type": {
                     "label": "Lapų tipas",
                     "options": {
@@ -774,12 +737,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Lapų tipas",
-                    "options": {
-                        "broadleaved": "Plačialapiai",
-                        "leafless": "Belapiai",
-                        "needleleaved": "Spygliuočiai"
-                    }
+                    "label": "Lapų tipas"
                 },
                 "leisure": {
                     "label": "Tipas"
@@ -800,9 +758,6 @@
                     "label": "Apšvietimas"
                 },
                 "location": {
-                    "label": "Vieta"
-                },
-                "location_pool": {
                     "label": "Vieta"
                 },
                 "man_made": {
@@ -841,9 +796,6 @@
                     "label": "Maksimalus buvimo laikas"
                 },
                 "maxweight": {
-                    "label": "Maksimalus svoris"
-                },
-                "maxweight_bridge": {
                     "label": "Maksimalus svoris"
                 },
                 "memorial": {
@@ -946,7 +898,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Vienpusis eismas",
                     "options": {
                         "no": "Ne",
                         "undefined": "Numatytai, kad Taip",
@@ -1006,15 +957,6 @@
                     },
                     "placeholder": "Lengvas, vidutinis, sudėtingas..."
                 },
-                "piste/difficulty_downhill": {
-                    "label": "Sudėtingumas"
-                },
-                "piste/difficulty_nordic": {
-                    "label": "Sudėtingumas"
-                },
-                "piste/difficulty_skitour": {
-                    "label": "Sudėtingumas"
-                },
                 "piste/grooming": {
                     "label": "Priežiūra",
                     "options": {
@@ -1048,7 +990,6 @@
                     "label": "Tipas"
                 },
                 "plant/output/electricity": {
-                    "label": "Energijos išvesties galia",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -1302,9 +1243,6 @@
                 },
                 "site": {
                     "label": "Tipas"
-                },
-                "site_type": {
-                    "label": "Stovyklavietės Tipas"
                 },
                 "smoking": {
                     "label": "Rūkymas",
@@ -1890,9 +1828,6 @@
                     "name": "Plotas",
                     "terms": "plotas"
                 },
-                "attraction/big_wheel": {
-                    "name": "Didelis ratas"
-                },
                 "attraction/carousel": {
                     "name": "Karuselė"
                 },
@@ -1950,10 +1885,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Atsidarantys varteliai"
-                },
-                "barrier/lift_gate": {
-                    "name": "Pakeliami vartai",
-                    "terms": "pakeliami vartai"
                 },
                 "barrier/retaining_wall": {
                     "name": "Laikančioji siena"
@@ -2104,9 +2035,6 @@
                 "building/stadium": {
                     "name": "Stadiono pastatas"
                 },
-                "building/static_caravan": {
-                    "name": "Statiški mobilūs namai"
-                },
                 "building/temple": {
                     "name": "Šventyklos pastatas"
                 },
@@ -2136,10 +2064,6 @@
                 "craft/bookbinder": {
                     "name": "Knygrišys",
                     "terms": "knygryšys"
-                },
-                "craft/brewery": {
-                    "name": "Alaus darykla",
-                    "terms": "aludarė"
                 },
                 "craft/carpenter": {
                     "name": "Dailidė",

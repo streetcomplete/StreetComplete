@@ -211,9 +211,6 @@
                 "building": {
                     "label": "Edificiu"
                 },
-                "building_area": {
-                    "label": "Edificiu"
-                },
                 "bunker_type": {
                     "label": "Tipu"
                 },
@@ -309,38 +306,23 @@
                     "label": "Carriles bici",
                     "options": {
                         "lane": {
-                            "description": "Un carril bici separáu del tráficu d'autos por una llinia pintada",
-                            "title": "Carril bici estándar"
-                        },
-                        "none": {
-                            "description": "Sin carril bici",
-                            "title": "Dengún"
+                            "description": "Un carril bici separáu del tráficu d'autos por una llinia pintada"
                         },
                         "opposite": {
-                            "description": "Carril bici de dos direcciones n'una cai de dirección única",
-                            "title": "Carril bici a contradirección"
+                            "description": "Carril bici de dos direcciones n'una cai de dirección única"
                         },
                         "opposite_lane": {
-                            "description": "Un carril bici que va en dirección opuesta al tráficu",
-                            "title": "Carril bici opuestu"
+                            "description": "Un carril bici que va en dirección opuesta al tráficu"
                         },
                         "share_busway": {
-                            "description": "Carril bici compartíu con carril bus",
-                            "title": "Carril bici compartíu con bus"
+                            "description": "Carril bici compartíu con carril bus"
                         },
                         "shared_lane": {
-                            "description": "Un carril bici sin separación del tráficu d'autos",
-                            "title": "Carril bici compartíu"
+                            "description": "Un carril bici sin separación del tráficu d'autos"
                         },
                         "track": {
-                            "description": "Un carril bici separáu del tráficu por una barrera física",
-                            "title": "Pista ciclable"
+                            "description": "Un carril bici separáu del tráficu por una barrera física"
                         }
-                    },
-                    "placeholder": "dengún",
-                    "types": {
-                        "cycleway:left": "Llau izquierdu",
-                        "cycleway:right": "Llau drechu"
                     }
                 },
                 "date": {
@@ -435,9 +417,6 @@
                 "fuel": {
                     "label": "Combustible"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustible"
-                },
                 "gauge": {
                     "label": "Anchu de vía"
                 },
@@ -505,7 +484,6 @@
                     "label": "Pendiente"
                 },
                 "incline_steps": {
-                    "label": "Cuesta",
                     "options": {
                         "down": "Abaxo",
                         "up": "Arriba"
@@ -559,15 +537,6 @@
                         "semi_evergreen": "Semi-perenne"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Ciclu de fueyes",
-                    "options": {
-                        "deciduous": "Caducu",
-                        "evergreen": "Perenne",
-                        "semi_deciduous": "Semi-caducu",
-                        "semi_evergreen": "Semi-perenne"
-                    }
-                },
                 "leaf_type": {
                     "label": "Tipu de fueya",
                     "options": {
@@ -578,12 +547,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Tipu de fueya",
-                    "options": {
-                        "broadleaved": "Fueya ancha",
-                        "leafless": "Sin fueya",
-                        "needleleaved": "Fueya d'aguya"
-                    }
+                    "label": "Tipu de fueya"
                 },
                 "leisure": {
                     "label": "Tipu"
@@ -715,7 +679,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "Sentíu únicu",
                     "options": {
                         "no": "Non",
                         "undefined": "Créyese que si",
@@ -796,7 +759,6 @@
                     "label": "Planta"
                 },
                 "plant/output/electricity": {
-                    "label": "Potencia de salida",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -1092,7 +1054,6 @@
                 "tracktype": {
                     "label": "Tipu de caleya",
                     "options": {
-                        "grade1": "Sólidu: superficie pavimentada o material duru bien apisonao",
                         "grade2": "Mayormente sólidu: grava/piedra con daqué material dondo amestáu",
                         "grade3": "Mestura igualada de materiales sólidos y dondos",
                         "grade4": "Mayormente dondu: tierra/sable/yerba con daqué de material sólidu amestáu",
@@ -1602,10 +1563,6 @@
                 "area": {
                     "name": "Área"
                 },
-                "attraction/big_wheel": {
-                    "name": "Noria",
-                    "terms": "rueda,atracciones"
-                },
                 "attraction/carousel": {
                     "name": "Caballinos",
                     "terms": "carrusel,atracciones,feria"
@@ -1653,9 +1610,6 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Puerta ganadera"
-                },
-                "barrier/lift_gate": {
-                    "name": "Barrera"
                 },
                 "barrier/retaining_wall": {
                     "name": "Muru de contención"
@@ -1769,9 +1723,6 @@
                     "name": "Establu",
                     "terms": "corte,cuadra"
                 },
-                "building/static_caravan": {
-                    "name": "Casa portátil"
-                },
                 "building/terrace": {
                     "name": "Filera de cases"
                 },
@@ -1805,10 +1756,6 @@
                 "craft/bookbinder": {
                     "name": "Encuadernador",
                     "terms": "encuadernación"
-                },
-                "craft/brewery": {
-                    "name": "Cervecería",
-                    "terms": "fabrica de cerveza,embotelladora de cerveza"
                 },
                 "craft/carpenter": {
                     "name": "Carpintería",

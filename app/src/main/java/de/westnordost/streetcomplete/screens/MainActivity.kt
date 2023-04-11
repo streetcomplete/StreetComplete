@@ -1,10 +1,14 @@
 package de.westnordost.streetcomplete.screens
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
 import android.view.KeyEvent
@@ -16,8 +20,10 @@ import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -36,9 +42,11 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
@@ -48,7 +56,7 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.location.LocationRequester
+import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
@@ -70,11 +78,19 @@ class MainActivity :
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
+    private val urlConfigController: UrlConfigController by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: SharedPreferences by inject()
 
-    private val requestLocation = LocationRequester(this, this)
-
     private var mainFragment: MainFragment? = null
+
+    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (!intent.getBooleanExtra(LocationRequestFragment.GRANTED, false)) {
+                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+            }
+        }
+    }
 
     private val elementEditsListener = object : ElementEditsSource.Listener {
         override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { ensureLoggedIn() } }
@@ -91,6 +107,11 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+            requestLocationPermissionResultReceiver,
+            IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
+        )
+
         lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
@@ -102,6 +123,7 @@ class MainActivity :
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
         if (savedInstanceState == null) {
+            supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
             if (!hasShownTutorial && !userLoginStatusController.isLoggedIn) {
                 supportFragmentManager.commit {
@@ -116,10 +138,38 @@ class MainActivity :
 
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
+
+        handleUrlConfig()
+    }
+
+    private fun handleUrlConfig() {
+        if (intent.action != Intent.ACTION_VIEW) return
+        val data = intent.data ?: return
+        val config = urlConfigController.parse(data.toString()) ?: return
+
+        val alreadyExists = questPresetsSource.getByName(config.presetName) != null
+
+        val name = "<i>" + Html.escapeHtml(config.presetName) + "</i>"
+        val text = StringBuilder()
+        text.append(getString(R.string.urlconfig_apply_message, name))
+        text.append("<br><br>")
+        if (alreadyExists) {
+            text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")
+            text.append("<br><br>")
+        } else {
+            text.append(getString(R.string.urlconfig_switch_hint))
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(R.string.urlconfig_apply_title)
+            .setMessage(text.toString().parseAsHtml())
+            .setPositiveButton(android.R.string.ok) { _, _ -> urlConfigController.apply(config) }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> }
+            .show()
     }
 
     private fun handleGeoUri() {
-        if (Intent.ACTION_VIEW != intent.action) return
+        if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
@@ -135,8 +185,6 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
-        downloadController.showNotification = false
-        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
 
@@ -144,6 +192,13 @@ class MainActivity :
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
     }
 
+    public override fun onResume() {
+        super.onResume()
+        downloadController.showNotification = false
+        uploadController.showNotification = false
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (!forwardBackPressedToChildren()) super.onBackPressed()
     }
@@ -178,12 +233,12 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
+        downloadController.showNotification = true
+        uploadController.showNotification = true
     }
 
     public override fun onStop() {
         super.onStop()
-        downloadController.showNotification = true
-        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
@@ -298,15 +353,7 @@ class MainActivity :
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
 
     override fun onTutorialFinished() {
-        lifecycleScope.launch {
-            val hasLocation = requestLocation()
-            // if denied first time after exiting tutorial: ask again once (i.e. show rationale and ask again)
-            if (!hasLocation) {
-                requestLocation()
-            } else {
-                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
-            }
-        }
+        requestLocation()
 
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
 
@@ -317,6 +364,10 @@ class MainActivity :
                 remove(tutorialFragment)
             }
         }
+    }
+
+    private fun requestLocation() {
+        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */
@@ -330,6 +381,8 @@ class MainActivity :
     }
 
     companion object {
+        private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
+
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false
     }

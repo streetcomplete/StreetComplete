@@ -24,6 +24,7 @@ import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.round
 
 /** A very custom view that conceptually shows the left and right side of a street. Both sides
  *  are clickable.<br>
@@ -117,11 +118,19 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         get() = binding.rotateContainer.rotation
         set(value) {
             binding.rotateContainer.rotation = value
-            val scale = abs(cos(value * PI / 180)).toFloat()
-            binding.rotateContainer.scaleX = 1 + scale * 2 / 3f
-            binding.rotateContainer.scaleY = 1 + scale * 2 / 3f
+            val scale = 1 + abs(cos(value * PI / 180)).toFloat() * 2 / 3f
+            binding.rotateContainer.scaleX = scale
+            binding.rotateContainer.scaleY = scale
             binding.leftSideFloatingIcon.rotation = -value
             binding.rightSideFloatingIcon.rotation = -value
+
+            binding.leftSideTextView.rotation = -value
+            binding.rightSideTextView.rotation = -value
+
+            binding.leftSideTextView.scaleX = 1.5f / scale
+            binding.leftSideTextView.scaleY = 1.5f / scale
+            binding.rightSideTextView.scaleX = 1.5f / scale
+            binding.rightSideTextView.scaleY = 1.5f / scale
         }
 
     fun setLeftSideFloatingIcon(image: Image?) {
@@ -228,8 +237,10 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     private fun scaleToWidth(drawable: BitmapDrawable, width: Int, flip180Degrees: Boolean): BitmapDrawable {
         val m = Matrix()
-        val scale = width.toFloat() / drawable.bitmap.width
-        m.postScale(scale, scale)
+        val scaleX = width.toFloat() / drawable.bitmap.width
+        // Scale y like x but snap to the nearest full pixel
+        val scaleY = round(drawable.bitmap.height * scaleX) / drawable.bitmap.height
+        m.postScale(scaleX, scaleY)
         if (flip180Degrees) m.postRotate(180f)
         val bitmap = Bitmap.createBitmap(
             drawable.bitmap, 0, 0,

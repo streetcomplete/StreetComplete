@@ -1,24 +1,28 @@
 package de.westnordost.streetcomplete.quests.width
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
+import de.westnordost.streetcomplete.screens.measure.MeasureContract
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_length
     private val binding by contentViewBinding(QuestLengthBinding::bind)
-    private val takeMeasurement = TakeMeasurementLauncher(this)
+    private val launcher = registerForActivityResult(MeasureContract(), ::onMeasured)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var lengthInput: LengthInputViewController
@@ -49,18 +53,43 @@ class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
             checkIsFormComplete()
         }
         binding.measureButton.isGone = !checkArSupport()
-        binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
+        binding.measureButton.setOnClickListener { takeMeasurement() }
     }
 
-    private suspend fun takeMeasurement() {
+    private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
-        val length = takeMeasurement(requireContext(), lengthUnit, false) ?: return
+        try {
+            launcher.launch(MeasureContract.Params(lengthUnit, false))
+        } catch (e: ActivityNotFoundException) {
+            context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
+        }
+    }
+
+    private fun onMeasured(length: Length?) {
         lengthInput.length = length
         isARMeasurement = true
     }
 
     override fun onClickOk() {
-        applyAnswer(WidthAnswer(lengthInput.length!!, isARMeasurement))
+        val length = lengthInput.length!!
+        val newTags = element.tags + ("width" to length.toMeters().toString())
+        if (hasDubiousRoadWidth(newTags) != true) {
+            applyAnswer(WidthAnswer(length, isARMeasurement))
+        } else {
+            confirmDubiousRoadWidth {
+                applyAnswer(WidthAnswer(length, isARMeasurement))
+            }
+        }
+    }
+
+    private fun confirmDubiousRoadWidth(onConfirmed: () -> Unit) {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_road_width_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
     }
 
     override fun isFormComplete(): Boolean = lengthInput.length != null

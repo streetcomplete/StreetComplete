@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.general_fee
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -10,7 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
          (tourism = museum or leisure = beach_resort or tourism = gallery)
          and access !~ private|no
          and !fee
@@ -24,7 +25,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["fee"] = answer.toYesNo()
     }
 }
