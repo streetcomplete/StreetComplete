@@ -16,8 +16,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.serialization.decodeFromString
@@ -28,6 +28,7 @@ import kotlinx.serialization.json.Json
 class EditTagsAdapter(
     private val displaySet: MutableList<Pair<String, String>>,
     private val dataSet: MutableMap<String, String>,
+    private val geometryType: GeometryType, // todo: currently unused, but should be used (later) for getting correct suggestions
     private val featureDictionary: FeatureDictionary,
     context: Context,
     private val prefs: SharedPreferences,
@@ -115,7 +116,7 @@ class EditTagsAdapter(
         }
 
         val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
-            val lastSuggestions = mutableListOf<String>()
+            val lastSuggestions = linkedSetOf<String>()
             setOnFocusChangeListener { _, focused ->
                 val text = text.toString()
                 if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
@@ -130,15 +131,17 @@ class EditTagsAdapter(
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList()
                 val key = displaySet[absoluteAdapterPosition].first
-                val suggestions = prefs.getString("EditTagsAdapter_${keyView.text}_values", "")!!
-                    .split("§§").filter { it.isNotEmpty() }.toMutableSet()
-                suggestions.addAll(valueSuggestionsByKey[key].orEmpty())
                 lastSuggestions.clear()
-                lastSuggestions.addAll(suggestions.filter { it.startsWith(search) })
+                prefs.getString("EditTagsAdapter_${keyView.text}_values", "")!!
+                    .split("§§").forEach {
+                        if (it.startsWith(search) && it.isNotEmpty())
+                            lastSuggestions.add(it)
+                    }
+                lastSuggestions.addAll(valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) })
                 val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
                 else 0
                 dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * lastSuggestions.size).toInt()
-                lastSuggestions
+                lastSuggestions.toList()
             }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
@@ -197,10 +200,10 @@ class EditTagsAdapter(
 
     override fun getItemId(position: Int) = position.toLong()
 
-    // todo: get geometry type, and use it for suggestions
+    // todo: use geometry type for suggestions
     //  means that generateTagSuggestions needs to be adjusted to generate something containing allowed geometry types
     //  and maybe suggestions should only be for a single geometry type? or for all geometry types for which this key is allowed?
-    //  basic test: no building suggestion when adding a shop node
+    //  basic test: no building suggestion when adding a shop node (though currently this is manually excluded)
     //  ideally FeatureDictionary at some point implements fields / moreFields...
     private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
         val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()

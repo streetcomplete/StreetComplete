@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -35,13 +36,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeTagEditor
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.EditTagsAdapter
 import de.westnordost.streetcomplete.util.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -166,7 +170,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
-        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, featureDictionaryFuture.get(), requireContext(), prefs) {
+        val geometryType = if (element is Node && (this is InsertNodeTagEditor || mapDataSource.getWaysForNode(element.id).isNotEmpty())) GeometryType.VERTEX
+            else element.geometryType
+        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, geometryType, featureDictionaryFuture.get(), requireContext(), prefs) {
             viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(1000) }
             showOk()
         }.apply { setHasStableIds(true) }
