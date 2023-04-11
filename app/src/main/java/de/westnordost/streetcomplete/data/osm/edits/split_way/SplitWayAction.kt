@@ -46,10 +46,10 @@ data class SplitWayAction(
         idProvider: ElementIdProvider
     ): MapDataChanges {
         val wayId = originalWay.id
-        val completeWay = mapDataRepository.getWayComplete(wayId)
+        val wayComplete = mapDataRepository.getWayComplete(wayId)
             ?: throw ConflictException("Element deleted")
 
-        var currentWay = completeWay.getWay(wayId)
+        var currentWay = wayComplete.getWay(wayId)
             ?: throw ConflictException("Way #$wayId has been deleted")
 
         if (isGeometrySubstantiallyDifferent(originalWay, currentWay)) {
@@ -61,7 +61,7 @@ data class SplitWayAction(
         }
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
-        val positions = currentWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
+        val positions = currentWay.nodeIds.map { nodeId -> wayComplete.getNode(nodeId)!!.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
         val sortedSplits = splits.map { it.toSplitWayAt(positions) }.sorted()
