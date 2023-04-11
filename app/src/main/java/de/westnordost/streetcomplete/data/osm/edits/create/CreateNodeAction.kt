@@ -34,12 +34,12 @@ data class CreateNodeAction(
         val editedWays = ArrayList<Way>(insertIntoWays.size)
         for (insertIntoWay in insertIntoWays) {
             val wayId = insertIntoWay.wayId
-            val completeWay = mapDataRepository.getWayComplete(wayId)
+            val wayComplete = mapDataRepository.getWayComplete(wayId)
 
-            val way = completeWay?.getWay(wayId)
+            val way = wayComplete?.getWay(wayId)
                 ?: throw ConflictException("Way #$wayId has been deleted")
 
-            val positions = way.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
+            val positions = way.nodeIds.map { nodeId -> wayComplete.getNode(nodeId)!!.position }
 
             val node1Index = positions.indexOfFirst { it.equalsInOsm(insertIntoWay.pos1) }
             if (node1Index == -1) throw ConflictException("Node in way at insert position has been moved or deleted")
@@ -63,7 +63,7 @@ data class CreateNodeAction(
 
     override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
         RevertCreateNodeAction(
-            Node(idProvider.nextNodeId(), position, tags, 1, Instant.now().toEpochMilli()),
+            Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds()),
             insertIntoWays.map { it.wayId }
         )
 }

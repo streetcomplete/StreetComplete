@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
 
 /** Action reverts creation of a node */
 @Serializable
@@ -38,7 +38,7 @@ data class RevertCreateNodeAction(
         }
         val waysById = mapDataRepository.getWaysForNode(currentNode.id).associateBy { it.id }
         if (waysById.keys.any { it !in insertedIntoWayIds }) {
-            throw ConflictException("Node is now also part of another way")
+            throw ConflictException("Node is now also part of yet another way")
         }
 
         val editedWays = ArrayList<Way>(insertedIntoWayIds.size)
@@ -48,7 +48,7 @@ data class RevertCreateNodeAction(
 
             val nodeIds = way.nodeIds.filter { it != currentNode.id }
 
-            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = currentTimeMillis()))
+            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = nowAsEpochMilliseconds()))
         }
 
         return MapDataChanges(modifications = editedWays, deletions = listOf(currentNode))
