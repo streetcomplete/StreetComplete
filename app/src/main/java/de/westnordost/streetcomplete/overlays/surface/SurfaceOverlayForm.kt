@@ -210,7 +210,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             surfaceCtrl.value!!.applyTo(changesBuilder)
         }
 
-        applyEdit(UpdateElementTagsAction(changesBuilder.create()))
+        applyEdit(UpdateElementTagsAction(element!!, changesBuilder.create()))
     }
 
     companion object {
