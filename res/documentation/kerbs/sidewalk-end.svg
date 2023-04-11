@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <rect width="512" height="512" fill="#a8ca5c"/>
+ <path d="m0 416h512v-192h-512z" fill="#666"/>
+ <path d="m0 176v48h288c0-26.51-21.49-48-48-48z" fill="#999"/>
+ <path d="m0 464v-48h288c0 26.51-21.49 48-48 48z" fill="#999"/>
+ <g stroke-width="3">
+  <path d="m0 200h248" stroke="#f00000"/>
+  <path d="m0 440h248" stroke="#f00000"/>
+  <path d="m248 200v240" stroke="#0ff000"/>
+ </g>
+ <g font-family="serif" font-size="21.333px">
+  <text x="160" y="168" fill="#f00f0f" xml:space="preserve"><tspan x="160" y="168" fill="#f00f0f" font-family="sans-serif" font-size="21.333px">sidewalk</tspan></text>
+  <text x="132" y="484" fill="#f00f0f" xml:space="preserve"><tspan x="132" y="484" fill="#f00f0f" font-family="sans-serif" font-size="21.333px">sidewalk</tspan></text>
+  <text x="152" y="340" fill="#00ff00" xml:space="preserve"><tspan x="152" y="340" fill="#00ff00" font-family="sans-serif" font-size="21.333px">crossing</tspan></text>
+  <text x="260" y="256" fill="#0099ff" xml:space="preserve"><tspan x="260" y="256" fill="#0099ff" font-family="sans-serif" font-size="21.333px">barrier=kerb</tspan></text>
+ </g>
+ <g fill="none" stroke-width="3">
+  <rect x="240" y="192" width="16" height="16" stroke="#fffc00"/>
+  <rect x="240" y="216" width="16" height="16" stroke="#09f"/>
+  <rect x="240" y="408" width="16" height="16" stroke="#09f"/>
+  <rect x="240" y="432" width="16" height="16" stroke="#fffc00"/>
+ </g>
+</svg>
