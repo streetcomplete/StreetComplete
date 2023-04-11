@@ -188,6 +188,36 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 9 && newVersion > 9) {
             db.execSQL("DROP INDEX osm_element_edits_index")
 
+            // ALTER TABLE ... DROP COLUMN not supported in Android's version of sqlite, so, copy
+            // all data except from the columns dropped into new table
+            val oldName = "osm_element_edits_old"
+            db.execSQL("ALTER TABLE ${ElementEditsTable.NAME} RENAME TO $oldName;")
+            db.execSQL(ElementEditsTable.CREATE)
+            db.execSQL("""
+                INSERT INTO ${ElementEditsTable.NAME} (
+                    ${ElementEditsTable.Columns.ID},
+                    ${ElementEditsTable.Columns.QUEST_TYPE},
+                    ${ElementEditsTable.Columns.GEOMETRY},
+                    ${ElementEditsTable.Columns.SOURCE},
+                    ${ElementEditsTable.Columns.LATITUDE},
+                    ${ElementEditsTable.Columns.LONGITUDE},
+                    ${ElementEditsTable.Columns.CREATED_TIMESTAMP},
+                    ${ElementEditsTable.Columns.IS_SYNCED},
+                    ${ElementEditsTable.Columns.ACTION}
+                ) SELECT
+                    ${ElementEditsTable.Columns.ID},
+                    ${ElementEditsTable.Columns.QUEST_TYPE},
+                    ${ElementEditsTable.Columns.GEOMETRY},
+                    ${ElementEditsTable.Columns.SOURCE},
+                    ${ElementEditsTable.Columns.LATITUDE},
+                    ${ElementEditsTable.Columns.LONGITUDE},
+                    ${ElementEditsTable.Columns.CREATED_TIMESTAMP},
+                    ${ElementEditsTable.Columns.IS_SYNCED},
+                    ${ElementEditsTable.Columns.ACTION}
+                FROM $oldName WHERE true;
+            """.trimIndent())
+            db.execSQL("DROP TABLE $oldName;")
+
             // TODO upgrade database: ElementEditsTable different now (no element type, id, element) but this is in the actions now
         }
     }
