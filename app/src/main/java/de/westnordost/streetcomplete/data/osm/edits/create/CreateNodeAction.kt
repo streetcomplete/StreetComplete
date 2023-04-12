@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -23,6 +25,9 @@ data class CreateNodeAction(
 ) : ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(1, 0, 0)
+
+    override val elementKeys: List<ElementKey> get() =
+        insertIntoWays.map { ElementKey(ElementType.WAY, it.wayId) }
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,

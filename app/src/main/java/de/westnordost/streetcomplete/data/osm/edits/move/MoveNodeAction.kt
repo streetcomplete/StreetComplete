@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -22,6 +23,8 @@ data class MoveNodeAction(
 ) : ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
+
+    override val elementKeys get() = listOf(ElementKey(originalNode.type, originalNode.id))
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,
