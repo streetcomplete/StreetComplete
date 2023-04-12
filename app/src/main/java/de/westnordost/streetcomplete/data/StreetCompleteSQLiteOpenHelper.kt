@@ -200,8 +200,6 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
             db.execSQL(EditElementsTable.CREATE)
             db.execSQL(EditElementsTable.INDEX_CREATE)
-
-            // TODO upgrade database: ElementEditsTable different now (no element type, id, element) but this is in the actions now
         }
     }
 }
