@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.toast
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -77,7 +78,9 @@ class Uploader(
         mutex.withLock {
             // element edit and note edit uploader must run in sequence because the notes may need
             // to be updated if the element edit uploader creates new elements to which notes refer
-            elementEditsUploader.upload(context)
+            try {
+                elementEditsUploader.upload(context)
+            } catch (e: CancellationException) { return } // this seems to be inappropriate, but whatever if it works
             noteEditsUploader.upload()
             externalSourceQuestController.upload()
         }
