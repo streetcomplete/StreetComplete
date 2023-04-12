@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
@@ -43,6 +44,14 @@ data class SplitWayAction(
     )
 
     override val elementKeys get() = listOf(ElementKey(originalWay.type, originalWay.id))
+
+    override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
+        val newId = idUpdates.find {
+            it.elementType == originalWay.type && it.oldElementId == originalWay.id
+        }?.newElementId ?: return this
+
+        return copy(originalWay = originalWay.copy(id = newId))
+    }
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,

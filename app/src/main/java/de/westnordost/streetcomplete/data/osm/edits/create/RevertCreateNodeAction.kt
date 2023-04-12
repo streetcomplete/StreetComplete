@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.data.osm.edits.create
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -21,6 +23,20 @@ data class RevertCreateNodeAction(
 
     // the revert does not depend on the ways into which the node has been inserted to still be there
     override val elementKeys get() = listOf(ElementKey(originalNode.type, originalNode.id))
+
+    override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
+        val newId = idUpdates.find {
+            it.elementType == originalNode.type && it.oldElementId == originalNode.id
+        }?.newElementId
+
+        return copy(
+            originalNode = newId?.let { originalNode.copy(id = newId) } ?: originalNode,
+            insertedIntoWayIds = insertedIntoWayIds.map { wayId ->
+                idUpdates.find {
+                    it.elementType == ElementType.WAY && it.oldElementId == wayId
+                }?.newElementId ?: wayId
+        })
+    }
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,
