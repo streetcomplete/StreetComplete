@@ -170,7 +170,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.get(NODE, 1))
-        assertEquals(emptyList<Element>(), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -182,7 +181,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
-        assertEquals(listOf(nd), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -195,7 +193,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd2, s.get(NODE, 1))
-        assertEquals(listOf(nd2), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -217,7 +214,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd3, s.get(NODE, 1))
-        assertEquals(listOf(nd3), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -230,7 +226,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.get(NODE, 1))
-        assertEquals(listOf<Element>(), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -245,23 +240,6 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
-        assertEquals(listOf(nd), s.getAll(listOf(ElementKey(NODE, 1))))
-    }
-
-    @Test
-    fun `getAll returns mix of original and updated elements`() {
-        val nd = node(1)
-        val nd2 = node(2)
-
-        originalElementsAre(nd)
-        mapDataChangesAre(modifications = listOf(nd2))
-
-        val s = create()
-
-        assertEquals(
-            setOf(nd, nd2),
-            s.getAll(listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))).toSet()
-        )
     }
 
     //endregion

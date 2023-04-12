@@ -216,11 +216,6 @@ class MapDataWithEditsSource internal constructor(
         return updatedElements[key] ?: mapDataController.get(type, id)
     }
 
-    fun getAll(keys: Collection<ElementKey>): List<Element> = synchronized(this) {
-        val originalKeys = keys.filter { !deletedElements.contains(it) && !updatedElements.containsKey(it) }
-        return keys.mapNotNull { updatedElements[it] } + mapDataController.getAll(originalKeys)
-    }
-
     fun getGeometry(type: ElementType, id: Long): ElementGeometry? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
