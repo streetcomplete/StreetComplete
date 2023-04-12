@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <rect width="512" height="512" fill="#a8ca5c"/>
+ <path d="m0 416h512v-192h-512z" fill="#666"/>
+ <g fill="#999">
+  <path d="m0 416h512v48h-512z"/>
+  <rect transform="rotate(45)" x="216.37" y="-272.94" width="43.314" height="330.11"/>
+  <path d="m0 176v48h168c0-26.51-21.49-48-48-48z"/>
+ </g>
+ <g stroke-width="3">
+  <path d="m0 200h136" stroke="#f00000"/>
+  <path d="m0 440h512" stroke="#f00000"/>
+  <path d="m136 200v240" stroke="#0ff000"/>
+ </g>
+ <text x="400" y="496" fill="#f00f0f" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="400" y="496" fill="#f00f0f" font-family="sans-serif" font-size="21.333px">sidewalk</tspan></text>
+ <text x="156" y="340" fill="#00ff00" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="156" y="340" fill="#00ff00" font-family="sans-serif" font-size="21.333px">crossing</tspan></text>
+ <g fill="none" stroke-width="3">
+  <path d="M 136,200 336,0" stroke="#f60"/>
+  <rect x="128" y="192" width="16" height="16" stroke="#fffc00"/>
+  <rect x="128" y="432" width="16" height="16" stroke="#fffc00"/>
+ </g>
+ <text x="272" y="116" fill="#ff6600" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="272" y="116" fill="#ff6600" font-family="sans-serif" font-size="21.333px">footway</tspan></text>
+</svg>

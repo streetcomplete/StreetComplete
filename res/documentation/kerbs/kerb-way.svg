@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <path d="m160 200h192" fill="none" stroke="#0f0" stroke-width="3"/>
+ <rect width="512" height="512" fill="#a8ca5c"/>
+ <path d="m0 416h512v-192h-512z" fill="#666"/>
+ <path d="m0 416h512v48h-512z" fill="#999"/>
+ <path d="m0 176h512v48h-512z" fill="#999"/>
+ <g stroke-width="3">
+  <path d="m0 224h512" fill="#f60" stroke="#0ff"/>
+  <path d="m0 416h512" fill="#f60" stroke="#0ff"/>
+  <path d="m0 440h512" stroke="#f60"/>
+  <path d="m0 200h512" stroke="#f60"/>
+ </g>
+ <text x="384" y="480" fill="#ff6600" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="384" y="480" fill="#ff6600" font-family="sans-serif" font-size="21.333px">footway</tspan></text>
+ <g stroke-width="3">
+  <path d="m244 200v240" fill="none" stroke="#f60"/>
+  <text x="260" y="316" fill="#ff6600" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="260" y="316" fill="#ff6600" font-family="sans-serif" font-size="21.333px">footway</tspan></text>
+  <rect x="236" y="216" width="16" height="16" fill="none" stroke="#12b9e4"/>
+  <rect x="236" y="408" width="16" height="16" fill="none" stroke="#12b9e4"/>
+ </g>
+ <text x="400" y="160" fill="#f00f0f" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="400" y="160" fill="#ff6600" font-family="sans-serif" font-size="21.333px">footway</tspan></text>
+ <text x="354.44922" y="403.93295" fill="#00ffff" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="354.44922" y="403.93295" fill="#00ffff" font-family="sans-serif" font-size="21.333px">barrier=kerb</tspan></text>
+</svg>

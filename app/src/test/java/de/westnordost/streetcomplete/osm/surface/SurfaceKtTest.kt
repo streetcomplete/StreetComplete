@@ -19,4 +19,3 @@ class SurfaceKtTest {
         assertFalse(Surface.GROUND.shouldBeDescribed)
     }
 }
-
