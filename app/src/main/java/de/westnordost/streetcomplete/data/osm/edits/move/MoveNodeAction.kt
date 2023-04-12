@@ -16,18 +16,21 @@ import kotlinx.serialization.Serializable
 
 /** Action that moves a node. */
 @Serializable
-data class MoveNodeAction(val position: LatLon) : ElementEditAction, IsActionRevertable {
+data class MoveNodeAction(
+    val originalNode: Node,
+    val position: LatLon
+) : ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val node = element as? Node ?: throw ConflictException("Element deleted")
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        val currentNode = mapDataRepository.getNode(originalNode.id)
+            ?: throw ConflictException("Element deleted")
+        val node = currentNode as? Node ?: throw ConflictException("Element deleted")
+        if (isGeometrySubstantiallyDifferent(originalNode, currentNode)) {
             throw ConflictException("Element geometry changed substantially")
         }
         return MapDataChanges(modifications = listOf(node.copy(
@@ -36,5 +39,6 @@ data class MoveNodeAction(val position: LatLon) : ElementEditAction, IsActionRev
         )))
     }
 
-    override fun createReverted(): ElementEditAction = RevertMoveNodeAction
+    override fun createReverted(idProvider: ElementIdProvider) =
+        RevertMoveNodeAction(originalNode)
 }
