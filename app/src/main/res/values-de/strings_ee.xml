@@ -4,4 +4,6 @@
     <string name="pref_category_mods">SCEE Einstellungen</string>
     <string name="pref_screen_notes">Notizen</string>
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
+    <string name="pref_expert_mode_title">Expertenmodus</string>
+    <string name="pref_expert_mode_summary">Aktiviere erweiterte Bearbeitungsmöglichkeiten</string>
 </resources>
