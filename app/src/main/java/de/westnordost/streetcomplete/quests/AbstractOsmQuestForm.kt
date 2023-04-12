@@ -123,7 +123,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun onQuestHidden(questKey: QuestKey)
 
         /** Called when the user chose to edit tags */
-        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?)
+        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?, editTypeName: String? = null)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 

@@ -154,6 +154,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         }
         // need to add this after filterString, which needs to be added after tag
         tag.addTextChangedListener {
+            if (it == null || it.count { it == '(' } != it.count { it == ')' }) {
+                d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
+                return@addTextChangedListener
+            }
             try {
                 filterString().toElementFilterExpression()
                 d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = true }
@@ -180,6 +184,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             setHint(R.string.custom_overlay_color_hint)
             setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), "")!!)
             doAfterTextChanged {
+                if (it == null || it.count { it == '(' } != it.count { it == ')' }) {
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
+                    return@doAfterTextChanged
+                }
                 try {
                     it.toString().toRegex()
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = true

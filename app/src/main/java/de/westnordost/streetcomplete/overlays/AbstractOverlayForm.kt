@@ -173,7 +173,7 @@ abstract class AbstractOverlayForm :
         fun getMapPositionAt(screenPos: PointF): LatLon?
 
         /** Called when the user chose to edit tags */
-        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey? = null)
+        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey? = null, editTypeName: String?)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -401,8 +401,8 @@ abstract class AbstractOverlayForm :
         return answers
     }
 
-    protected fun editTags(element: Element) {
-        listener?.onEditTags(element, geometry)
+    protected fun editTags(element: Element, editTypeName: String? = null) {
+        listener?.onEditTags(element, geometry, editTypeName = editTypeName)
     }
 
     protected fun splitWay(element: Element) {

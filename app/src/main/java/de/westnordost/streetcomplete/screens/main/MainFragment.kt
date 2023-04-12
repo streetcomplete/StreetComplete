@@ -591,10 +591,10 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?) {
+    override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?, editTypeName: String?) {
         val f = TagEditor()
         if (f.arguments == null) f.arguments = bundleOf()
-        val args = TagEditor.createArguments(element, geometry, mapFragment?.cameraPosition?.rotation, mapFragment?.cameraPosition?.tilt, questKey)
+        val args = TagEditor.createArguments(element, geometry, mapFragment?.cameraPosition?.rotation, mapFragment?.cameraPosition?.tilt, questKey, editTypeName)
         f.requireArguments().putAll(args)
         binding.otherQuestsScrollView.visibility = View.GONE
         childFragmentManager.commit(true) {

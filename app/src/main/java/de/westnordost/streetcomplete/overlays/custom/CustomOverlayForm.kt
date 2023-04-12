@@ -13,7 +13,7 @@ class CustomOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.editButton.setOnClickListener { element?.let { editTags(it) } }
+        binding.editButton.setOnClickListener { element?.let { editTags(it, "CustomOverlay") } }
     }
 
     override fun hasChanges() = false

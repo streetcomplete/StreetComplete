@@ -37,9 +37,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeTagEditor
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -94,6 +96,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val externalSourceQuestController: ExternalSourceQuestController by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val overlayRegistry: OverlayRegistry by inject()
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -101,6 +105,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val tagList = mutableListOf<Pair<String, String>>() // sorted list of tags from newTags, need to keep in sync manually
     private lateinit var geometry: ElementGeometry
     protected var questKey: QuestKey? = null
+    protected var editTypeName: String? = null
 
     // those 2 are lazy because resources require context to be initialized
     private val questIconWidth by lazy { (resources.displayMetrics.density * 56 + 0.5f).toInt() }
@@ -118,7 +123,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         val args = requireArguments()
         originalElement = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
-        questKey = arguments?.getString(ARG_QUEST_KEY)?.let { Json.decodeFromString(it) }
+        questKey = args.getString(ARG_QUEST_KEY)?.let { Json.decodeFromString(it) }
+        editTypeName = args.getString(ARG_EDIT_TYPE_NAME)
         newTags.putAll(originalElement.tags)
         tagList.addAll(newTags.toList().sortedBy { it.first })
         element = originalElement.copy(tags = newTags, timestampEdited = nowAsEpochMilliseconds()) // we don't want resurvey quests, user can just edit tag or delete and get quest again
@@ -286,7 +292,11 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         val action = UpdateElementTagsAction(builder.create())
         val questKey = questKey
-        val editType = (questKey as? ExternalSourceQuestKey)?.let { externalSourceQuestController.getQuestType(it) } ?: tagEdit
+        val editType = when {
+            questKey is ExternalSourceQuestKey -> externalSourceQuestController.getQuestType(questKey)!!
+            editTypeName != null -> (overlayRegistry.getByName(editTypeName!!) ?: questTypeRegistry.getByName(editTypeName!!)) as ElementEditType
+            else -> tagEdit
+        }
         if (questKey is OsmQuestKey && prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
             OsmQuestController.lastAnsweredQuestKey = questKey
         // always use "survey", because either it's tag editor or some external quest that's most like supposed to allow this
@@ -358,13 +368,15 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
         private const val ARG_QUEST_KEY = "quest_key"
+        private const val ARG_EDIT_TYPE_NAME = "edit_type_name"
 
-        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Float?, tilt: Float?, questKey: QuestKey? = null) = bundleOf(
+        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Float?, tilt: Float?, questKey: QuestKey? = null, editTypeName: String? = null) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt,
-            ARG_QUEST_KEY to Json.encodeToString(questKey)
+            ARG_QUEST_KEY to Json.encodeToString(questKey),
+            ARG_EDIT_TYPE_NAME to editTypeName
         )
 
         var changes: StringMapChanges? = null
