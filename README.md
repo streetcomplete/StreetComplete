@@ -140,6 +140,7 @@ In general, SCEE changesets will contain changes very similar to StreetComplete 
 * _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
 * _AddMaxSpeed_ may tag time-dependent `maxspeed:conditional`
+* [discardable tags](https://wiki.openstreetmap.org/wiki/Discardable_tags) are removed automatically 
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * `check_date:*` may be added without resurvey

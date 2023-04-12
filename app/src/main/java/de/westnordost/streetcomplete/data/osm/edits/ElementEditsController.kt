@@ -2,6 +2,11 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
@@ -42,7 +47,18 @@ class ElementEditsController(
         action: ElementEditAction,
         key: QuestKey?
     ) {
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, nowAsEpochMilliseconds(), false, action), key)
+        val newAction = if (action is UpdateElementTagsAction && element.tags.keys.any { it in DISCARDABLE_TAGS }) {
+            val builder = StringMapChangesBuilder(element.tags)
+            action.changes.changes.forEach { when (it) {
+                is StringMapEntryDelete -> builder.remove(it.key)
+                is StringMapEntryAdd -> builder[it.key] = it.value
+                is StringMapEntryModify -> builder[it.key] = it.value
+            } }
+            DISCARDABLE_TAGS.forEach { builder.remove(it) }
+            UpdateElementTagsAction(builder.create())
+        } else
+            action
+        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, nowAsEpochMilliseconds(), false, newAction), key)
     }
 
     fun get(id: Long): ElementEdit? =
@@ -231,3 +247,57 @@ class ElementEditsController(
         listeners.forEach { it.onDeletedEdits(edits) }
     }
 }
+
+// list from josm
+private val DISCARDABLE_TAGS = hashSetOf(
+    "created_by",
+    "converted_by",
+    "current_id",
+    "geobase:datasetName",
+    "geobase:uuid",
+    "KSJ2:ADS",
+    "KSJ2:ARE",
+    "KSJ2:AdminArea",
+    "KSJ2:COP_label",
+    "KSJ2:DFD",
+    "KSJ2:INT",
+    "KSJ2:INT_label",
+    "KSJ2:LOC",
+    "KSJ2:LPN",
+    "KSJ2:OPC",
+    "KSJ2:PubFacAdmin",
+    "KSJ2:RAC",
+    "KSJ2:RAC_label",
+    "KSJ2:RIC",
+    "KSJ2:RIN",
+    "KSJ2:WSC",
+    "KSJ2:coordinate",
+    "KSJ2:curve_id",
+    "KSJ2:curve_type",
+    "KSJ2:filename",
+    "KSJ2:lake_id",
+    "KSJ2:lat",
+    "KSJ2:long",
+    "KSJ2:river_id",
+    "odbl",
+    "odbl:note",
+    "osmarender:nameDirection",
+    "osmarender:renderName",
+    "osmarender:renderRef",
+    "osmarender:rendernames",
+    "SK53_bulk:load",
+    "sub_sea:type",
+    "tiger:source",
+    "tiger:separated",
+    "tiger:tlid",
+    "tiger:upload_uuid",
+    "import_uuid",
+    "gnis:import_uuid",
+    "yh:LINE_NAME",
+    "yh:LINE_NUM",
+    "yh:STRUCTURE",
+    "yh:TOTYUMONO",
+    "yh:TYPE",
+    "yh:WIDTH",
+    "yh:WIDTH_RANK"
+)

@@ -4,6 +4,7 @@ next: |
   <li>Allow highlighting differences between used quest setting and default</li>
   <li>Allow entering time-dependent speed limit</li>
   <li>Updated Ukrainian translation, thanks to mike140</li>
+  <li>Automatically remove discardable tags</li>
   <li>Small fixes and improvements</li>
   </ul>
 
