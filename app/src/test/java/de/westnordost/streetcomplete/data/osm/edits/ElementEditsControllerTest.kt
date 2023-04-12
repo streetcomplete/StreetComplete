@@ -25,6 +25,7 @@ class ElementEditsControllerTest {
 
     private lateinit var ctrl: ElementEditsController
     private lateinit var db: ElementEditsDao
+    private lateinit var elementsDb: EditElementsDao
     private lateinit var listener: ElementEditsSource.Listener
     private lateinit var lastEditTimeStore: LastEditTimeStore
     private lateinit var idProvider: ElementIdProviderDao
@@ -33,11 +34,12 @@ class ElementEditsControllerTest {
         db = mock()
         on(db.delete(anyLong())).thenReturn(true)
         on(db.markSynced(anyLong())).thenReturn(true)
+        elementsDb = mock()
         idProvider = mock()
         lastEditTimeStore = mock()
 
         listener = mock()
-        ctrl = ElementEditsController(db, idProvider, lastEditTimeStore)
+        ctrl = ElementEditsController(db, elementsDb, idProvider, lastEditTimeStore)
         ctrl.addListener(listener)
     }
 
@@ -47,7 +49,7 @@ class ElementEditsControllerTest {
 
         ctrl.add(QUEST_TYPE, pGeom(), "test", action)
 
-        verify(db).add(any())
+        verify(db).put(any())
         verify(idProvider).assign(0L, 1, 2, 3)
         verify(listener).onAddedEdit(any())
         verify(lastEditTimeStore).touch()
@@ -153,7 +155,7 @@ class ElementEditsControllerTest {
         verify(idProvider).deleteAll(eq(listOf(edit.id)))
         verify(listener).onDeletedEdits(listOf(edit))
 
-        verify(db).add(any())
+        verify(db).put(any())
         verify(idProvider).assign(0L, 0, 0, 0)
         verify(listener).onAddedEdit(any())
         verify(lastEditTimeStore).touch()

@@ -8,6 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
+    private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
 ) : ElementEditsSource, AddElementEditsController {
@@ -51,7 +52,9 @@ class ElementEditsController(
         synchronized(this) {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
-            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+            val ids = deleteEdits.map { it.id }
+            deletedCount = editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
         }
         onDeletedEdits(deleteEdits)
         return deletedCount
@@ -68,7 +71,16 @@ class ElementEditsController(
     fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
         val syncSuccess: Boolean
         synchronized(this) {
-            TODO("update element ids in editsDB...")
+            val editIdsToUpdate = HashSet<Long>()
+            elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
+                editElementsDB.getAll(it.elementType, it.oldElementId)
+            }
+            for (id in editIdsToUpdate) {
+                val oldEdit = editsDB.get(id) ?: continue
+                val updatedEdit = oldEdit.copy(action = edit.action.idsUpdatesApplied(elementUpdates.idUpdates))
+                editsDB.put(updatedEdit)
+                editElementsDB.put(id, updatedEdit.action.elementKeys)
+            }
             syncSuccess = editsDB.markSynced(edit.id)
         }
         if (syncSuccess) onSyncedEdit(edit)
@@ -108,11 +120,11 @@ class ElementEditsController(
 
     private fun add(edit: ElementEdit) {
         synchronized(this) {
-            editsDB.add(edit)
-            val id = edit.id
+            editsDB.put(edit)
+            editElementsDB.put(edit.id, edit.action.elementKeys)
             val createdElementsCount = edit.action.newElementsCount
             elementIdProviderDB.assign(
-                id,
+                edit.id,
                 createdElementsCount.nodes,
                 createdElementsCount.ways,
                 createdElementsCount.relations
@@ -130,6 +142,7 @@ class ElementEditsController(
             ids = edits.map { it.id }
 
             editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
         }
 
         onDeletedEdits(edits)
@@ -144,7 +157,8 @@ class ElementEditsController(
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
         val editsBasedOnThese = createdElementKeys
-            .flatMap { TODO("get all edits that act on element with key $it") }
+            .flatMapTo(HashSet()) { editElementsDB.getAll(it.type, it.id) }
+            .mapNotNull { editsDB.get(it) }
             .filter { it.id != edit.id }
 
         // deep first

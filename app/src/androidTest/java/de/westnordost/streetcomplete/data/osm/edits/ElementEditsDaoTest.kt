@@ -48,7 +48,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_UpdateElementTagsEdit() {
         val edit = updateTags()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -56,7 +56,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_RevertUpdateElementTagsEdit() {
         val edit = revertUpdateTags()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -64,7 +64,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_DeletePoiNodeEdit() {
         val edit = deletePoi()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -72,7 +72,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_RevertDeletePoiNodeEdit() {
         val edit = revertDeletePoi()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -80,7 +80,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_SplitWayEdit() {
         val edit = splitWay()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -88,7 +88,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_AddNodeEdit() {
         val edit = createNode()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -96,7 +96,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_RevertAddNodeEdit() {
         val edit = revertCreateNode()
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
@@ -108,7 +108,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertFalse(dao.delete(1L))
         assertNull(dao.get(1L))
         // now it is added
-        dao.add(edit)
+        dao.put(edit)
         assertNotNull(edit.id)
         assertNotNull(dao.get(edit.id))
         // delete again -> nothing there again
@@ -160,7 +160,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun markSynced() {
         val e = updateTags(isSynced = false)
-        dao.add(e)
+        dao.put(e)
         val id = e.id
         assertFalse(dao.get(id)!!.isSynced)
         dao.markSynced(id)
@@ -171,32 +171,32 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertNull(dao.getOldestUnsynced())
 
         val e1 = updateTags(isSynced = true)
-        dao.add(e1)
+        dao.put(e1)
         assertNull(dao.getOldestUnsynced())
 
         val e2 = updateTags(timestamp = 1000, isSynced = false)
-        dao.add(e2)
+        dao.put(e2)
         assertEquals(e2, dao.getOldestUnsynced())
 
         val e3 = updateTags(timestamp = 1500, isSynced = false)
-        dao.add(e3)
+        dao.put(e3)
         assertEquals(e2, dao.getOldestUnsynced())
 
         val e4 = updateTags(timestamp = 500, isSynced = false)
-        dao.add(e4)
+        dao.put(e4)
         assertEquals(e4, dao.getOldestUnsynced())
     }
 
     @Test fun getUnsyncedCount() {
         assertEquals(0, dao.getUnsyncedCount())
 
-        dao.add(updateTags(isSynced = true))
+        dao.put(updateTags(isSynced = true))
         assertEquals(0, dao.getUnsyncedCount())
 
-        dao.add(updateTags(isSynced = false))
+        dao.put(updateTags(isSynced = false))
         assertEquals(1, dao.getUnsyncedCount())
 
-        dao.add(updateTags(isSynced = false))
+        dao.put(updateTags(isSynced = false))
         assertEquals(2, dao.getUnsyncedCount())
     }
 
@@ -211,7 +211,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 }
 
-private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
+private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { put(it) }
 
 private fun updateTags(
     element: Element = node,

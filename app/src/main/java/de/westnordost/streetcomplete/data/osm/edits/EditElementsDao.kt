@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
 class EditElementsDao(private val db: Database) {
 
-    fun add(id: Long, elementKeys: List<ElementKey>) {
+    fun put(id: Long, elementKeys: List<ElementKey>) {
         db.insertMany(
             NAME,
             arrayOf(EDIT_ID, ELEMENT_TYPE, ELEMENT_ID),

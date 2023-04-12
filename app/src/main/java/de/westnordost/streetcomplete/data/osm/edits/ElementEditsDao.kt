@@ -52,7 +52,7 @@ class ElementEditsDao(
         }
     }
 
-    fun add(edit: ElementEdit) {
+    fun put(edit: ElementEdit) {
         val rowId = db.insert(NAME, edit.toPairs())
         edit.id = rowId
     }
