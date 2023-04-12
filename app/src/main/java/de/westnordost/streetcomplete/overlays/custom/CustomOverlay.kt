@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
+import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.isArea
 
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
@@ -45,41 +46,55 @@ private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
     val color by lazy {
         if (colorKeySelector == null) Color.LIME
         else createColorFromString(element.tags.mapNotNull {
+                // derive color from all matching tags
                 if (it.key.matches(colorKeySelector))
                     it.value + it.key
                 else null
-            }.joinToString().takeIf { it.isNotEmpty() })
+            // sort because tags hashMap doesn't have a defined order
+            }.sorted().joinToString().takeIf { it.isNotEmpty() })
     }
 
-    // get left/right style if there is some match
     var leftColor = ""
     var rightColor = ""
     var centerColor: String? = null
-    if (colorKeySelector != null && element !is Node && !element.isArea()) // avoid doing needless work
+    // get left/right style if there is some match
+    if (colorKeySelector != null && element !is Node && !element.isArea()) { // avoid doing needless work here
+        val leftColorTags = mutableListOf<String>()
+        val rightColorTags = mutableListOf<String>()
+        val centerColorTags = mutableListOf<String>()
         for ((k, v) in element.tags) {
             if (!k.matches(colorKeySelector)) continue
-            // contains or endsWith? contains will also match things like sidewalk:left:surface, which may be wanted or not...
+            // create color in a way that left, right and both match in color -> strip side from tags
             if (v == "both" || k.contains(":both")) {
-                // create color in a way that left, right and both match in color
-                leftColor = createColorFromString(v + k.replace(":both", ""))
-                rightColor = leftColor
+                val t = v + k.replace(":both", "")
+                leftColorTags.add(t)
+                rightColorTags.add(t)
                 continue
             }
             if (v == "right" || k.contains(":right")) {
-                rightColor = createColorFromString(v + k.replace(":right", ""))
+                rightColorTags.add(v + k.replace(":right", ""))
                 continue
             }
             if (v == "left" || k.contains(":left")) {
-                leftColor = createColorFromString(v + k.replace(":left", ""))
+                leftColorTags.add(v + k.replace(":left", ""))
                 continue
             }
             // only use a center color if there is a match that is not related to left/right/both
-            centerColor = createColorFromString(v + k)
+            centerColorTags.add(v + k)
         }
+        // make sure to use all matching color tags
+        if (leftColorTags.isNotEmpty())
+            leftColor = createColorFromString(leftColorTags.sorted().joinToString())
+        if (rightColorTags.isNotEmpty())
+            rightColor = createColorFromString(rightColorTags.sorted().joinToString())
+        if (centerColorTags.isNotEmpty())
+            centerColor = createColorFromString(centerColorTags.sorted().joinToString())
+    }
+
 
     return when {
-        element is Node -> PointStyle("ic_custom_overlay_node", element.tags["name"], color)
-        element.isArea() -> PolygonStyle(color, label = element.tags["name"])
+        element is Node -> PointStyle("ic_custom_overlay_node", getNameLabel(element.tags), color)
+        element.isArea() -> PolygonStyle(color, label = getNameLabel(element.tags))
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
             stroke = centerColor?.let { StrokeStyle(it) },
             strokeLeft = leftColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) },
