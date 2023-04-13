@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
@@ -188,7 +189,7 @@ class StyleableOverlayManager(
 
     private fun createStyledElementsByKey(overlay: Overlay, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
         overlay.getStyledElements(mapData).map { (element, style) ->
-            val key = ElementKey(element.type, element.id)
+            val key = element.key
             val geometry = mapData.getGeometry(element.type, element.id)
             key to geometry?.let { StyledElement(element, geometry, style) }
         }
