@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -30,14 +29,11 @@ data class CreateNodeAction(
     override val elementKeys: List<ElementKey> get() =
         insertIntoWays.map { ElementKey(ElementType.WAY, it.wayId) }
 
-    override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
-        return copy(insertIntoWays = insertIntoWays.map { wayAt ->
-            val newId = idUpdates.find {
-                it.elementType == ElementType.WAY && it.oldElementId == wayAt.wayId
-            }?.newElementId ?: return@map wayAt
-            wayAt.copy(wayId = newId)
-        })
-    }
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        insertIntoWays = insertIntoWays.map {
+            it.copy(wayId = updatedIds[ElementKey(ElementType.WAY, it.wayId)] ?: it.wayId)
+        }
+    )
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,

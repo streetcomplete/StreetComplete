@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -31,13 +31,9 @@ data class DeletePoiNodeAction(
 
     override val elementKeys get() = listOf(originalNode.key)
 
-    override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
-        val newId = idUpdates.find {
-            it.elementType == originalNode.type && it.oldElementId == originalNode.id
-        }?.newElementId ?: return this
-
-        return copy(originalNode = originalNode.copy(id = newId))
-    }
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        originalNode = originalNode.copy(id = updatedIds[originalNode.key] ?: originalNode.id)
+    )
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,

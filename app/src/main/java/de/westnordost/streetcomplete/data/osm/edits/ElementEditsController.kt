@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
@@ -69,6 +70,9 @@ class ElementEditsController(
     }
 
     fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+        val idUpdatesMap = elementUpdates.idUpdates.associate {
+            ElementKey(it.elementType, it.oldElementId) to it.newElementId
+        }
         val syncSuccess: Boolean
         synchronized(this) {
             val editIdsToUpdate = HashSet<Long>()
@@ -77,7 +81,7 @@ class ElementEditsController(
             }
             for (id in editIdsToUpdate) {
                 val oldEdit = editsDB.get(id) ?: continue
-                val updatedEdit = oldEdit.copy(action = edit.action.idsUpdatesApplied(elementUpdates.idUpdates))
+                val updatedEdit = oldEdit.copy(action = edit.action.idsUpdatesApplied(idUpdatesMap))
                 editsDB.put(updatedEdit)
                 editElementsDB.put(id, updatedEdit.action.elementKeys)
             }
