@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleLi
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddMaxSpeed : OsmFilterQuestType<Pair<MaxSpeedAnswer, Pair<Speed, OpeningHoursRuleList>?>>() {
+class AddMaxSpeed : OsmFilterQuestType<Pair<MaxSpeedAnswer, Pair<String, String>?>>() {
 
     override val elementFilter = """
         ways with
@@ -38,10 +38,9 @@ class AddMaxSpeed : OsmFilterQuestType<Pair<MaxSpeedAnswer, Pair<Speed, OpeningH
 
     override fun createForm() = AddMaxSpeedForm()
 
-    override fun applyAnswerTo(answer: Pair<MaxSpeedAnswer, Pair<Speed, OpeningHoursRuleList>?>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val timeDependent = answer.second
-        if (timeDependent != null) {
-            tags["maxspeed:conditional"] = "${timeDependent.first} @ (${timeDependent.second})"
+    override fun applyAnswerTo(answer: Pair<MaxSpeedAnswer, Pair<String, String>?>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.second != null) {
+            tags[answer.second!!.first] = answer.second!!.second
         }
         val answer = answer.first
         when (answer) {

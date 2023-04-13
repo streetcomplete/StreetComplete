@@ -58,10 +58,11 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
     * Add nodes everywhere, either free-floating or as part of a single way
     * Delete free-floating nodes
     * Additional "other answers"
-      * tag highways as private
+      * add `access=private` to benches, bicycle parkings, picnic tables, pitches, (leisure) tracks and recycling containers
+      * tag/adjust highway access
       * tag highways as under construction (with finish date)
       * tag buildings as demolished
-      * add time-dependent maxspeed 
+      * add conditional maxspeed
     * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
     * Allow disabling and moving the note quest
     * Allow closing notes
@@ -139,7 +140,7 @@ In general, SCEE changesets will contain changes very similar to StreetComplete 
 * _AddBuildingType_ has additional answers `barn`, `sty`, `stable`, `cowshed`, `digester`, `presbytery`, `riding_hall`, `sports_hall`, `tent`, `elevator`, and `transformer_tower`
 * _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
-* _AddMaxSpeed_ may tag time-dependent `maxspeed:conditional`
+* _AddMaxSpeed_ may tag `maxspeed:conditional`
 * [discardable tags](https://wiki.openstreetmap.org/wiki/Discardable_tags) are removed automatically 
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
@@ -150,7 +151,8 @@ In general, SCEE changesets will contain changes very similar to StreetComplete 
 * Starting with SCEE 52.0, some answers create separate changesets with comment `Other edits in context of: <orignal quest changeset comment>`.
 This happens for changes that can occur in StreetComplete, such as moving or deleting a node, changing shop types, removing surface, changing highway to steps and removing sidewalks.
 Further SCEE adds new answers leading to such a changeset comment:
-  * All quest types related to roads / paths may add `access=private`
+  * All quest types related to roads / paths may adjust access tags
+  * Quests types asking about about benches, picnic tables, recycling containers, bicycle parkings and sports tracks/pitches may tag `access=private`
   * All quest types related to buildings may change `building` to `demolished:building`
 * SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
   * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.

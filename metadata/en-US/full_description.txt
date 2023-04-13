@@ -1,7 +1,7 @@
 SCEE is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
 
 Please be aware that SCEE is not suitable for people used to discard warning messages without reading!
-Users new to OpenStreetMap are best advised to use StreetComplete.
+Users new to OpenStreetMap are best advised to use StreetComplete: https://f-droid.org/en/packages/de.westnordost.streetcomplete/
 
 Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 

@@ -362,11 +362,10 @@
     <string name="quest_construction_value">Set \"construction=…\", or leave empty if unknown</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_building_entrance_parking">Parking entrance</string>
-    <string name="quest_maxspeed_time_limited">Differs by time…</string>
-    <string name="quest_maxspeed_time_limited_enter_default">Select the default limit first</string>
-    <string name="quest_maxspeed_time_limited_enter_speed">temporary speed limit</string>
-    <string name="quest_maxspeed_time_limited_from">From</string>
-    <string name="quest_maxspeed_time_limited_to">To</string>
+    <string name="quest_maxspeed_conditional">Depends on…</string>
+    <string name="quest_maxspeed_time_limited_enter_default">Select the default limit before selecting this answer</string>
+    <string name="time_limited_from">From</string>
+    <string name="time_limited_to">To</string>
 
     <!-- other -->
     <string name="hide_button">Hide</string>
@@ -414,5 +413,14 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="move_node_message_external_source_addition">Note that the position of this quest may not move with the node.</string>
     <string name="close_note_checkbox">Close note (only do this if you actually solve the note!)</string>
     <string name="closed_note_action_title">You closed it</string>
+    <string name="manage_access">Manage access…</string>
+    <string name="add_access">Add access…</string>
+    <string name="access_manager_message">Choose access tags. Remember to tag only signed access, and avoid generic \"access\" tag if possible</string>
+    <string name="access_manager_button_add">Add</string>
+    <string name="access_manager_button_add_conditional">Add conditional</string>
+    <string name="access_length_limit">Length</string>
+    <string name="access_weight_limit">Weight</string>
+    <string name="access_width_limit">Width</string>
+    <string name="access_time_limit">Time</string>
 
 </resources>

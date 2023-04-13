@@ -103,6 +103,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     }
 
     @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
+    @Suppress("KotlinConstantConditions") // because this is simply incorrect...
     private fun showOverlayCustomizer(index: Int) {
         var d: AlertDialog? = null
 

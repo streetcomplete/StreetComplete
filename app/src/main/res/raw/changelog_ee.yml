@@ -1,3 +1,9 @@
+v53.0: |
+  <ul>
+  <li>Simplify adding / updating (conditional) road and path access</li>
+  <li>Add more conditional maxspeed options</li>
+  </ul>
+
 v52.1: |
   <ul>
   <li>Several crash fixes</li>

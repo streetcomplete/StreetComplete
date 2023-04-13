@@ -39,12 +39,17 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.util.AccessManagerDialog
+import de.westnordost.streetcomplete.util.accessKeys
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.containsAnyKey
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -193,6 +198,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             createItsPrivateAnswer()?.let { answers.add(it) }
             createItsDemolishedAnswer()?.let { answers.add(it) }
             createConstructionAnswer()?.let { answers.add(it) }
+            createAccessManagerAnswer()?.let { answers.add(it) }
         }
 
         if (element is Node // add moveNodeAnswer only if it's a free floating node
@@ -363,9 +369,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     private fun createItsPrivateAnswer(): AnswerItem? {
-        return if (elementWithoutAccessTagsFilter.matches(element)
-                && (highwaysFilter.matches(element) || otherFilter.matches(element))
-            )
+        return if (elementWithoutAccessTagsFilter.matches(element) && thingsWithMaybeAccessFilter.matches(element))
             AnswerItem(R.string.quest_private) {
                 viewLifecycleScope.launch {
                     val builder = StringMapChangesBuilder(element.tags)
@@ -374,6 +378,18 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 }
             }
         else null
+    }
+
+    private fun createAccessManagerAnswer(): AnswerItem? {
+        if (!"ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}".toElementFilterExpression().matches(element)) return null
+        val title = if (element.tags.containsAnyKey(*accessKeys))
+                R.string.manage_access
+            else R.string.add_access
+        return AnswerItem(title) {
+            AccessManagerDialog(requireContext(), element.tags) {
+                viewLifecycleScope.launch { solve(UpdateElementTagsAction(it.create()), true) }
+            }.show()
+        }
     }
 
     private fun createConstructionAnswer(): AnswerItem? {
@@ -502,9 +518,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
           and !shop and !amenity and !historic and !craft and !healthcare and !office and !attraction and !tourism
     """.toElementFilterExpression()
 
-        private val highwaysFilter = "ways with highway ~ unclassified|residential|service|track|footway|bridleway|steps|path or leisure ~ track|pitch"
+        private val thingsWithMaybeAccessFilter = "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table or leisure ~ track|pitch"
             .toElementFilterExpression()
-
-        private val otherFilter = "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table".toElementFilterExpression()
     }
 }

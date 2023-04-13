@@ -26,6 +26,7 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -48,13 +49,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
+import de.westnordost.streetcomplete.util.accessKeys
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.containsAnyKey
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -385,6 +391,7 @@ abstract class AbstractOverlayForm :
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
                 createItsDemolishedAnswer()?.let { answers.add(it) }
                 createConstructionAnswer()?.let { answers.add(it) }
+                createAccessManagerAnswer()?.let { answers.add(it) }
             }
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && this !is CustomOverlayForm)
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(element) })
@@ -420,6 +427,19 @@ abstract class AbstractOverlayForm :
                 .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> viewLifecycleScope.launch { solve(DeletePoiNodeAction, true) } }
                 .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
                 .show()
+        }
+    }
+
+    private fun createAccessManagerAnswer(): AnswerItem? {
+        val element = element ?: return null
+        if (!"ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}".toElementFilterExpression().matches(element)) return null
+        val title = if (element.tags.containsAnyKey(*accessKeys))
+            R.string.manage_access
+        else R.string.add_access
+        return AnswerItem(title) {
+            AccessManagerDialog(requireContext(), element.tags) {
+                viewLifecycleScope.launch { solve(UpdateElementTagsAction(it.create()), true) }
+            }.show()
         }
     }
 
