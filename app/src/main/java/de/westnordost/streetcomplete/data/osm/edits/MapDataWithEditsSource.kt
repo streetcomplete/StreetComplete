@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
@@ -74,7 +75,7 @@ class MapDataWithEditsSource internal constructor(
                  */
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
                 val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
-                    val key = ElementKey(element.type, element.id)
+                    val key = element.key
                     if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
                         null // we already have the updated version, so this element is unchanged
                     } else {
@@ -96,7 +97,7 @@ class MapDataWithEditsSource internal constructor(
                 }
 
                 for (element in updated) {
-                    val key = ElementKey(element.type, element.id)
+                    val key = element.key
                     // an element contained in the update that was deleted by an edit shall be deleted
                     if (deletedElements.contains(key)) {
                         modifiedDeleted.add(key)
@@ -422,7 +423,7 @@ class MapDataWithEditsSource internal constructor(
             return null
         }
 
-        val deletedKeys = mapDataChanges.deletions.map { ElementKey(it.type, it.id) }
+        val deletedKeys = mapDataChanges.deletions.map { it.key }
         for (key in deletedKeys) {
             deletedElements.add(key)
             updatedElements.remove(key)
@@ -434,7 +435,7 @@ class MapDataWithEditsSource internal constructor(
         val updates = (mapDataChanges.creations + mapDataChanges.modifications).sortedBy { it.type.ordinal }
 
         for (element in updates) {
-            val key = ElementKey(element.type, element.id)
+            val key = element.key
             deletedElements.remove(key)
             updatedElements[key] = element
             updatedGeometries[key] = createGeometry(element)
@@ -446,7 +447,7 @@ class MapDataWithEditsSource internal constructor(
             val waysContainingNode = getWaysForNode(edit.elementId)
             val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
             for (element in waysContainingNode + affectedRelations) {
-                val key = ElementKey(element.type, element.id)
+                val key = element.key
                 deletedElements.remove(key)
                 updatedElements[key] = element
                 updatedGeometries[key] = createGeometry(element)

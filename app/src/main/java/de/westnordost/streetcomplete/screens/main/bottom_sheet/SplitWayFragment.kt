@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -73,7 +74,7 @@ class SplitWayFragment :
     private val overlayRegistry: OverlayRegistry by inject()
     private val soundFx: SoundFx by inject()
 
-    override val elementKey: ElementKey by lazy { ElementKey(way.type, way.id) }
+    override val elementKey: ElementKey by lazy { way.key }
 
     private lateinit var way: Way
     private lateinit var editType: ElementEditType

@@ -80,8 +80,7 @@ class MapDataCache(
                 ElementType.RELATION -> {
                     val deletedRelationMembers = relationCache.remove(key.id)?.members.orEmpty()
                     for (member in deletedRelationMembers) {
-                        val memberKey = ElementKey(member.type, member.ref)
-                        relationIdsByElementKeyCache[memberKey]?.remove(key.id)
+                        relationIdsByElementKeyCache[member.key]?.remove(key.id)
                     }
                     relationGeometryCache.remove(key.id)
                 }
@@ -140,15 +139,14 @@ class MapDataCache(
                 val oldRelation = relationCache[relation.id]
                 if (oldRelation != null) {
                     for (oldMember in oldRelation.members) {
-                        val memberKey = ElementKey(oldMember.type, oldMember.ref)
-                        relationIdsByElementKeyCache[memberKey]?.remove(relation.id)
+                        relationIdsByElementKeyCache[oldMember.key]?.remove(relation.id)
                     }
                 }
                 relationCache[relation.id] = relation
 
                 // ...and then the new members added
                 for (member in relation.members) {
-                    val memberKey = ElementKey(member.type, member.ref)
+                    val memberKey = member.key
                     // only if the node member is already in the spatial cache or any node of a member
                     // is, the relation ids it refers to must be known:
                     // relationIdsByElementKeyCache is required for getMapDataWithGeometry(bbox),
@@ -224,7 +222,7 @@ class MapDataCache(
         if (keys.size == cachedElements.size) return cachedElements
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
+        val cachedKeys = cachedElements.map { it.key }.toSet()
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
@@ -290,7 +288,7 @@ class MapDataCache(
         if (keys.size == cachedEntries.size) return cachedEntries
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
+        val cachedKeys = cachedEntries.map { it.key }.toSet()
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedEntries = fetch(keysToFetch)
         for (entry in fetchedEntries) {
