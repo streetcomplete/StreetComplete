@@ -38,24 +38,27 @@ import de.westnordost.streetcomplete.overlays.Color
  *   by extremely strong association between surface and colour
  */
 val Surface.color get() = when (this) {
-    ASPHALT, CHIPSEAL, CONCRETE, PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
+    ASPHALT, CHIPSEAL, CONCRETE
                        -> Color.BLUE
-    WOOD, METAL, METAL_GRID
+    PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
                        -> Color.SKY
     CONCRETE_PLATES, CONCRETE_LANES, SETT, COBBLESTONE_FLATTENED
                        -> Color.CYAN
-    UNHEWN_COBBLESTONE, GRASS_PAVER -> Color.AQUAMARINE
+    UNHEWN_COBBLESTONE, GRASS_PAVER
+                       -> Color.AQUAMARINE
     COMPACTED, FINE_GRAVEL
                        -> Color.TEAL
     SAND               -> Color.ORANGE
     GRASS              -> Color.LIME
     DIRT, SOIL, EARTH, MUD, GROUND, WOODCHIPS
                        -> Color.GOLD
-    GRAVEL, PEBBLES, ROCK
+    GRAVEL, PEBBLES, ROCK,
+    // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
+    WOOD, METAL, METAL_GRID
                        -> Color.GRAY
+    UNKNOWN, PAVED, UNPAVED,
+    // not encountered in normal situations, get the same as surface with surface:note
     CLAY, ARTIFICIAL_TURF, TARTAN
-                       -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
-    UNKNOWN, PAVED, UNPAVED
                        -> Color.BLACK
 }
 
