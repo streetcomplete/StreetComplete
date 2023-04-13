@@ -4,12 +4,12 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
@@ -22,7 +22,7 @@ data class RevertCreateNodeAction(
 ) : ElementEditAction, IsRevertAction {
 
     // the revert does not depend on the ways into which the node has been inserted to still be there
-    override val elementKeys get() = listOf(ElementKey(originalNode.type, originalNode.id))
+    override val elementKeys get() = listOf(originalNode.key)
 
     override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
         val newId = idUpdates.find {

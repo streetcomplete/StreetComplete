@@ -6,11 +6,11 @@ import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
@@ -24,7 +24,7 @@ data class MoveNodeAction(
 
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
-    override val elementKeys get() = listOf(ElementKey(originalNode.type, originalNode.id))
+    override val elementKeys get() = listOf(originalNode.key)
 
     override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
         val newId = idUpdates.find {

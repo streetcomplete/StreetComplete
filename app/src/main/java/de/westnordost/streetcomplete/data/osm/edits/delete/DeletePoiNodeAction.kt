@@ -5,10 +5,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
@@ -29,7 +29,7 @@ data class DeletePoiNodeAction(
     private val originalNode: Node
 ) : ElementEditAction, IsActionRevertable {
 
-    override val elementKeys get() = listOf(ElementKey(originalNode.type, originalNode.id))
+    override val elementKeys get() = listOf(originalNode.key)
 
     override fun idsUpdatesApplied(idUpdates: Collection<ElementIdUpdate>): ElementEditAction {
         val newId = idUpdates.find {
