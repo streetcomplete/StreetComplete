@@ -10,12 +10,17 @@ import android.location.Location
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
+import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
+import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
@@ -23,6 +28,9 @@ import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.pow
@@ -33,6 +41,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
     private val locationMarker: Marker
     private val locationSymbol: Symbol
     private val accuracyMarker: Marker
+    private val accuracySymbol: Symbol
     private val directionMarker: Marker
     private val directionSymbol: Symbol
 
@@ -75,6 +84,27 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         }
 
     init {
+        // todo: use location component instead of symbol manager
+        //  problem: accuracy circle is choppy when zooming (huge performance impact) -> maybe stay with symbols...
+        //  and other icons aren't displayed, but that hopefully can be fixed
+        GlobalScope.launch {
+            while (MainMapFragment.mapboxMap == null) {
+                delay(100)
+            }
+            delay(500) // just to be sure
+            val lc = MainMapFragment.mapboxMap!!.locationComponent
+            val options = LocationComponentOptions.builder(ctx)
+                .bearingDrawable(R.drawable.location_direction) // todo: not displayed
+                .gpsDrawable(R.drawable.location_dot) // todo: not displayed
+                .build()
+            val activationOptions = LocationComponentActivationOptions.builder(ctx, MainMapFragment.style!!)
+                .locationEngine(null) // is this enough to disable? then lc.forceLocationUpdate(loc) pushes location update
+                .locationComponentOptions(options)
+                .build()
+            // can also set compass engine somewhere
+            MainActivity.activity?.runOnUiThread { lc.activateLocationComponent(activationOptions) }
+        }
+
         val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
         val dotSize = PointF(
             ctx.pxToDp(dotImg.bitmap.width),
@@ -105,6 +135,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
             it.setDrawOrder(3)
         }
         symbolManager.iconAllowOverlap = true
+        symbolManager.setFilter(Expression.literal(false)) // disable for testing location component
         mapStyle.addImage("dotImg", bitmapFromDrawableRes(ctx, R.drawable.location_dot)!!)
         mapStyle.addImage("directionImg", bitmapFromDrawableRes(ctx, R.drawable.location_direction)!!)
         mapStyle.addImage("accuracyImg", accuracyImg)
@@ -117,6 +148,11 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         locationSymbol = symbolManager.create(
             SymbolOptions()
                 .withIconImage("dotImg")
+                .withLatLng(LatLng(0.0, 0.0))
+        )
+        accuracySymbol = symbolManager.create(
+            SymbolOptions()
+                .withIconImage("accuracyImg")
                 .withLatLng(LatLng(0.0, 0.0))
         )
 
@@ -179,8 +215,10 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         locationSymbol.latLng = LatLng(pos.latitude, pos.longitude)
         directionSymbol.latLng = locationSymbol.latLng
+        accuracySymbol.latLng = locationSymbol.latLng
         symbolManager.update(directionSymbol)
         symbolManager.update(locationSymbol)
+        MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
 
         updateAccuracy()
     }

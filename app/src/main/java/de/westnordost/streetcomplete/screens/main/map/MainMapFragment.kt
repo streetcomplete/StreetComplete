@@ -151,19 +151,27 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         /* ---------------------------- MapLibre stuff --------------------------- */
 
+        // how to...
+        //  hide layers:
+        //   layer.setFilter(Expression.literal(false))
+        //   maybe could also remove layer from style, todo: check whether one is clearly more performant
+
         // todo
-        //  how to hide layers? filter? remove and re-add to style?
         //  performance test when updating pins (maybe CustomGeometrySource could be faster than GeoJsonSource)
-        //  try filters: is adding / removing /changing fast? especially compared to setting source data
         //  memory: in an area with a lot of pins, maplibre seems to use a lot of memory
         //   but better check properly, because maybe it's similar to tangram, and noticeable just because it's doubled now
+        //   tangram only: huge spike to 250 mb in the start, then after loading quests and surface overlay: 200: 38+0+64+1+16+80 (java, native, graphics, stack, code, other)
+        //    save 20 mb graphics, 2 mb java when backgrounded
+        //   both: keeps rising a lot, stabilizes at 300 (38+0+92+1+23+143)
+        //    mgl adds 28 graphics, 7 code, 63 "other" -> probably not much different to tangram, especially considering that "other" likely is native stuff and thus 80 are for tangram anyway
+        //   -> memory might just be fine...
         //  mapLibre always downloads "something" on startup: what is it, and why?
         //   looks like it's some icons
         //    actually they are already present, does it really look whether there are new ones at every start?
         //    maybe just need to set different caching parameters... how?
         //   remove it by adjusting the style?
-        //  symbols are hidden by the view direction indicator thing
-        //  hide pins of not the active quest
+        //  hide pins of not-the-active quest
+        //  see CurrentLocationMapComponent
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -240,7 +248,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 return FeatureCollection.fromFeatures(emptyList())
             }
         })
-        customGeometrySource.maxOverscaleFactorForParentTiles = 10
+        customGeometrySource.maxOverscaleFactorForParentTiles = 10 // use data at higher zoom levels
         style.addSource(customGeometrySource)
 
         style.addLayer(SymbolLayer("custom-geo", "custom-source")) // like below
@@ -359,7 +367,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.lineOpacity(Expression.get("opacity")),
                 PropertyFactory.lineOffset(changeDistanceWithZoom("offset")), // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
                 PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
-                PropertyFactory.lineDasharray(Expression.has("dashed"))
                 // there is no "lineOutlineColor", so how to copy the tangram overlay style?
             )
         style.addLayerBelow(overlayLineLayer, "pins-layer") // means: above the dashed layer

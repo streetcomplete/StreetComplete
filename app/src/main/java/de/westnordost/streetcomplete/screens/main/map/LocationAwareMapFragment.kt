@@ -142,7 +142,7 @@ open class LocationAwareMapFragment : MapFragment() {
         val ctrl = controller ?: return
         val ctx = context ?: return
         val mapbox = mapboxMap ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, SymbolManager(mapView, mapboxMap, style), ctrl)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, SymbolManager(mapView, mapboxMap, style, "geo-symbols"), ctrl)
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)
