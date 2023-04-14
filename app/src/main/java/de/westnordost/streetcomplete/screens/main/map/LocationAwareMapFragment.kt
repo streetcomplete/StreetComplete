@@ -45,6 +45,11 @@ open class LocationAwareMapFragment : MapFragment() {
     var displayedLocation: Location? = null
         private set
 
+    /** Positions the user was within a minute of the most recent location update,
+     * sorted by when location was added (more recent ones first) */
+    val recentLocations: List<Location> get() = _recentLocations.reversed()
+    private val _recentLocations = mutableListOf<Location>()
+
     /** The GPS trackpoints the user has walked */
     private var tracks: ArrayList<ArrayList<Trackpoint>>
 
@@ -111,6 +116,7 @@ open class LocationAwareMapFragment : MapFragment() {
         // Restore value of members from saved state
         if (savedInstanceState != null) {
             displayedLocation = savedInstanceState.getParcelable(DISPLAYED_LOCATION)
+            displayedLocation?.let { _recentLocations.add(it) }
             isRecordingTracks = savedInstanceState.getBoolean(TRACKS_IS_RECORDING)
             tracks = Json.decodeFromString(savedInstanceState.getString(TRACKS)!!)
         }
@@ -238,6 +244,8 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private fun onLocationChanged(location: Location) {
         displayedLocation = location
+        _recentLocations.removeAll { it.elapsedRealtimeNanos <= location.elapsedRealtimeNanos - 60 * 1000 * 1000 * 1000L }
+        _recentLocations.add(location)
         locationMapComponent?.location = location
         addTrackLocation(location)
         compass.setLocation(location)

@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
@@ -89,6 +90,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
+
+        /** Positions the user was within a minute of the most recent location update,
+         * sorted by when location was added (more recent ones first) */
+        val recentLocations: List<Location>
 
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
@@ -287,7 +292,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private suspend fun solve(action: ElementEditAction) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
+        if (!checkIsSurvey(requireContext(), geometry, listener?.recentLocations ?: emptyList())) {
             setLocked(false)
             return
         }

@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -138,6 +139,10 @@ abstract class AbstractOverlayForm :
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
+
+        /** Positions the user was within a minute of the most recent location update,
+         * sorted by when location was added (more recent ones first) */
+        val recentLocations: List<Location>
 
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
@@ -388,7 +393,7 @@ abstract class AbstractOverlayForm :
 
     private suspend fun solve(action: ElementEditAction) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
+        if (!checkIsSurvey(requireContext(), geometry, listener?.recentLocations ?: emptyList())) {
             setLocked(false)
             return
         }

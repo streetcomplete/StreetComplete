@@ -444,6 +444,8 @@ class MainFragment :
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
+    override val recentLocations: List<Location> get() = mapFragment?.recentLocations ?: emptyList()
+
     override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
         closeBottomSheet()

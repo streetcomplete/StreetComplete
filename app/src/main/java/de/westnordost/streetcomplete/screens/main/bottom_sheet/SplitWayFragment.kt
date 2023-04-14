@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
@@ -87,6 +88,10 @@ class SplitWayFragment :
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
+
+        /** Positions the user was within a minute of the most recent location update,
+         * sorted by when location was added (more recent ones first) */
+        val recentLocations: List<Location>
 
         /** Called after the given way has been split in the frame of the given edit type */
         fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
@@ -151,8 +156,7 @@ class SplitWayFragment :
     private suspend fun splitWay() {
         binding.glassPane.isGone = false
         if (splits.size <= 2 || confirmManySplits()) {
-            val location = listOfNotNull(listener?.displayedMapLocation)
-            if (checkIsSurvey(requireContext(), geometry, location)) {
+            if (checkIsSurvey(requireContext(), geometry, listener?.recentLocations ?: emptyList())) {
                 val action = SplitWayAction(ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
                     elementEditsController.add(editType, way, geometry, "survey", action)
