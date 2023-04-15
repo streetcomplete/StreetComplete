@@ -22,6 +22,8 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
     var selectedOverlay: Overlay? = null
         set(value) {
+            // To match other preference dialogs, also invoke callback when nothing changed to allow
+            // dismissing the selection dialog when the active overlay is selected again.
             onSelectedOverlay?.invoke(value)
             if (field == value) return
             field = value
