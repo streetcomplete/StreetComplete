@@ -18,13 +18,18 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     private val overlayRegistry: OverlayRegistry by inject()
 
     init {
+        val currentOverlay = selectedOverlayController.selectedOverlay
+
         val adapter = OverlaySelectionAdapter()
         adapter.overlays = overlayRegistry
-        adapter.selectedOverlay = selectedOverlayController.selectedOverlay
-        adapter.onSelectedOverlay = {
-            selectedOverlayController.selectedOverlay = it
+        adapter.selectedOverlay = currentOverlay
+        adapter.onSelectedOverlay = { selectedOverlay ->
+            if (currentOverlay != selectedOverlay) {
+                selectedOverlayController.selectedOverlay = selectedOverlay
+            }
             dismiss()
         }
+
         val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
         binding.overlaysList.adapter = adapter
         binding.overlaysList.layoutManager = LinearLayoutManager(context)
