@@ -1663,4 +1663,10 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="street_parking_street_width">Street width: %s</string>
 
+    <string name="lane_narrowing_traffic_calming_choker">Curb extension</string>
+    <!-- More commonly known as "pedestrian refuge", however, not all traffic islands are accessible to pedestrians -->
+    <string name="lane_narrowing_traffic_calming_island">Traffic island</string>
+    <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
+
 </resources>
