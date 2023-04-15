@@ -99,10 +99,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(WayTrafficFlowTable.CREATE)
 
         // external source and osmose tables (get created in init as well, but apparently may still cause issues)
-        writableDatabase.execSQL(ExternalSourceQuestTables.CREATE_HIDDEN)
-        writableDatabase.execSQL(ExternalSourceQuestTables.CREATE_EDITS)
-        writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
-        writableDatabase.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
+        db.execSQL(ExternalSourceQuestTables.CREATE_HIDDEN)
+        db.execSQL(ExternalSourceQuestTables.CREATE_EDITS)
+        db.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
+        db.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
     }
 
     init {
