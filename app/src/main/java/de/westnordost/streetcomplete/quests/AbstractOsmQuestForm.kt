@@ -488,37 +488,41 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         // check the most common access tags
         val elementWithoutAccessTagsFilter = """
-        nodes, ways, relations with
-         !access
-         and !access:conditional
-         and !bicycle
-         and !bicycle:conditional
-         and !foot
-         and !foot:conditional
-         and !vehicle
-         and !vehicle:conditional
-         and !motor_vehicle
-         and !motor_vehicle:conditional
-         and !motorcycle
-         and !motorcycle:conditional
-         and !horse
-         and !bus
-         and !hgv
-         and !motorcar
-         and !psv
-         and !ski
+nodes, ways, relations with
+ !access
+ and !access:conditional
+ and !bicycle
+ and !bicycle:conditional
+ and !foot
+ and !foot:conditional
+ and !vehicle
+ and !vehicle:conditional
+ and !motor_vehicle
+ and !motor_vehicle:conditional
+ and !motorcycle
+ and !motorcycle:conditional
+ and !horse
+ and !bus
+ and !hgv
+ and !motorcar
+ and !psv
+ and !ski
     """.toElementFilterExpression()
 
         // in some cases changing building to demolished:building is not enough
         val demolishableBuildingsFilter = """
-        ways, relations with building
-          and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
-          and !building:demolished
-          and !building:razed
-          and !shop and !amenity and !historic and !craft and !healthcare and !office and !attraction and !tourism
+ways, relations with building
+  and building !~ no|construction|ruins|collapsed|damaged|proposed|ruin|destroyed
+  and !building:demolished
+  and !building:razed
+  and !shop and !amenity and !historic and !craft and !healthcare and !office and !attraction and !tourism
     """.toElementFilterExpression()
 
-        private val thingsWithMaybeAccessFilter = "nodes, ways with amenity ~ recycling|bicycle_parking|bench|picnic_table or leisure ~ track|pitch"
-            .toElementFilterExpression()
+        private val thingsWithMaybeAccessFilter = """
+nodes, ways with
+  amenity ~ recycling|bicycle_parking|bench|picnic_table
+  or leisure ~ track|pitch
+  or highway ~ path|footway
+    """.toElementFilterExpression()
     }
 }
