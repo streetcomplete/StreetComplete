@@ -8,5 +8,3 @@ enum class LaneNarrowingTrafficCalming {
     CHICANE,
     CHOKED_ISLAND
 }
-// TODO how to treat painted island etc...?
-
