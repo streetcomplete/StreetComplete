@@ -44,7 +44,9 @@ class SearchAdapter<T>(
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-            items = results.values as List<T>
+            // results should always come from performFiltering, but still got a crash report with
+            // NPE here, which happens on click ok (and not actually anything where filtering happens)
+            (results?.values as? List<T>)?.let { items = it }
         }
 
         override fun convertResultToString(resultValue: Any?): CharSequence {
