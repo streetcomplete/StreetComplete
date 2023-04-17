@@ -89,6 +89,11 @@ class CrashReportExceptionHandler(
 
         Last log before crash: ${Log.logLines.takeLast(100).joinToString("\n")}
 
+        Log warnings and errors: ${Log.logLines.filter {
+            val firstPart = it.substringBefore(":")
+            firstPart.contains(" W ") || firstPart.contains(" W ")
+        }.joinToString("\n")}
+
         MapDataWithEditsSource listeners: ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
         """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
