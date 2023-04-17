@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.util.ktx.isArea
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
     override val title = R.string.custom_overlay_title
-    override val icon = R.drawable.ic_custom_overlay_poi
+    override val icon = R.drawable.ic_custom_overlay
     override val changesetComment = "Edit user-defined element selection"
     override val wikiLink: String = "Tags"
     override val isCreateNodeEnabled get() = prefs.getString(Prefs.CUSTOM_OVERLAY_IDX_FILTER, "")!!.startsWith("nodes")

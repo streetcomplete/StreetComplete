@@ -17,8 +17,6 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -65,7 +63,7 @@ class CreatePoiFragment : TagEditor() {
             prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
         }
 
-        binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_custom_overlay_poi)
+        binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_add_poi)
         binding.markerCreateLayout.root.visibility = View.VISIBLE
 
     }
@@ -98,7 +96,7 @@ class CreatePoiFragment : TagEditor() {
 }
 
 val createPoiEdit = object : ElementEditType {
-    override val icon: Int = R.drawable.ic_custom_overlay_poi
+    override val icon: Int = R.drawable.ic_add_poi
     override val title: Int = R.string.create_poi
     override val wikiLink: String? = null
     override val changesetComment: String = "Add node"

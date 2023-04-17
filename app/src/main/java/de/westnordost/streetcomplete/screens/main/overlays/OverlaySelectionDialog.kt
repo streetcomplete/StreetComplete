@@ -95,7 +95,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
                 override fun createForm(element: Element?) = null
                 override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
-                override val icon = R.drawable.ic_custom_overlay_poi
+                override val icon = R.drawable.ic_custom_overlay
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
                 override val wikiLink = it // index
             }
