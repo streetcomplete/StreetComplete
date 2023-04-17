@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDateTime
-import java.util.Collections
 
 object Log {
     fun e(tag: String, message: String, e: Throwable? = null) {

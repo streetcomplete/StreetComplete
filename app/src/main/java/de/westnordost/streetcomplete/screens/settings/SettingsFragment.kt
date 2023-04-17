@@ -166,8 +166,11 @@ class SettingsFragment :
                 setHint(R.string.pref_read_filter_hint)
                 doAfterTextChanged {
                     filter = it.toString()
+                    val previousCursorPosition = selectionStart
                     reloadText()
                     scrollLog.fullScroll(View.FOCUS_UP)
+                    requestFocus() // focus is lost when scrolling it seems
+                    setSelection(previousCursorPosition)
                 }
                 setPadding(30, 10, 30, 10)
             }
