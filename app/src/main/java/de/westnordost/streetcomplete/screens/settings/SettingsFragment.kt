@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -24,7 +25,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
@@ -36,7 +39,9 @@ import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.purge
+import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,11 +49,12 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
-/** Shows the settings screen */
+/** Shows the settings lists */
 class SettingsFragment :
     PreferenceFragmentCompat(),
     HasTitle,
-    SharedPreferences.OnSharedPreferenceChangeListener {
+    SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener,
+    QuestPresetsSource.Listener {
 
     private val prefs: SharedPreferences by inject()
     private val downloadedTilesDao: DownloadedTilesDao by inject()
@@ -61,26 +67,14 @@ class SettingsFragment :
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
 
-    interface Listener {
-        fun onClickedQuestSelection()
-        fun onClickedQuestPresets()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     override val title: String get() = getString(R.string.action_settings)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
         addPreferencesFromResource(R.xml.preferences)
 
-        findPreference<Preference>("quests")?.setOnPreferenceClickListener {
-            listener?.onClickedQuestSelection()
-            true
-        }
-
-        findPreference<Preference>("quest_presets")?.setOnPreferenceClickListener {
-            listener?.onClickedQuestPresets()
-            true
+        findPreference<NumberPickerPreference>("map.tilecache")?.setSummaryProvider { pref ->
+            requireContext().getString(R.string.pref_tilecache_size_summary, (pref as NumberPickerPreference).value)
         }
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
@@ -144,10 +138,26 @@ class SettingsFragment :
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpToolbarTitleAndIcon(view.findViewById(R.id.toolbar))
+    }
+
     override fun onStart() {
         super.onStart()
-        findPreference<Preference>("quests")?.summary = getQuestPreferenceSummary()
-        findPreference<Preference>("quest_presets")?.summary = getQuestPresetsPreferenceSummary()
+
+        setQuestPreferenceSummary()
+        setQuestPresetsPreferenceSummary()
+
+        visibleQuestTypeSource.addListener(this)
+        questPresetsSource.addListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        visibleQuestTypeSource.removeListener(this)
+        questPresetsSource.removeListener(this)
     }
 
     override fun onResume() {
@@ -208,14 +218,45 @@ class SettingsFragment :
         osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
-    private fun getQuestPreferenceSummary(): String {
+    private fun setQuestPreferenceSummary() {
         val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
         val totalCount = questTypeRegistry.size
-        return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        val summary = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        viewLifecycleScope.launch {
+            findPreference<Preference>("quests")?.summary = summary
+        }
     }
 
-    private fun getQuestPresetsPreferenceSummary(): String {
+    private fun setQuestPresetsPreferenceSummary() {
         val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
-        return getString(R.string.pref_subtitle_quests_preset_name, presetName)
+        val summary = getString(R.string.pref_subtitle_quests_preset_name, presetName)
+        viewLifecycleScope.launch {
+            findPreference<Preference>("quest_presets")?.summary = summary
+        }
     }
+
+    override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
+        setQuestPreferenceSummary()
+    }
+
+    override fun onQuestTypeVisibilitiesChanged() {
+        setQuestPreferenceSummary()
+    }
+
+    override fun onSelectedQuestPresetChanged() {
+        setQuestPresetsPreferenceSummary()
+    }
+
+    override fun onAddedQuestPreset(preset: QuestPreset) {
+        setQuestPresetsPreferenceSummary()
+    }
+
+    override fun onRenamedQuestPreset(preset: QuestPreset) {
+        setQuestPresetsPreferenceSummary()
+    }
+
+    override fun onDeletedQuestPreset(presetId: Long) {
+        setQuestPresetsPreferenceSummary()
+    }
+
 }

@@ -2,11 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
+        android:fragment="de.westnordost.streetcomplete.screens.about.ChangelogFragment"
         android:key="version"
         android:title="@string/about_title_changelog"
         android:widgetLayout="@layout/widget_image_next"/>
 
     <Preference
+        android:fragment="de.westnordost.streetcomplete.screens.about.CreditsFragment"
         android:key="authors"
         android:title="@string/about_title_authors"
         android:summary="@string/about_summary_authors"
@@ -41,6 +43,7 @@
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
     <Preference
+        android:fragment="de.westnordost.streetcomplete.screens.about.PrivacyStatementFragment"
         android:key="privacy"
         android:title="@string/about_title_privacy_statement"
         android:summary="@string/about_summary_privacy_statement"

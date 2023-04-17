@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.screens.user
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -11,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
+import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.login.LoginFragment
@@ -47,6 +50,15 @@ class UserActivity :
         override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) } }
     }
 
+    private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
+            if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
+                title = fragment.title
+                supportActionBar?.subtitle = fragment.subtitle
+            }
+        }
+    }
+
     /* --------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +71,22 @@ class UserActivity :
             }
         }
         userLoginStatusSource.addListener(loginStatusListener)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            supportActionBar!!.setDisplayShowHomeEnabled(true)
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
+
+        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        } else super.onOptionsItemSelected(item)
     }
 
     @Deprecated("Deprecated in Java")
