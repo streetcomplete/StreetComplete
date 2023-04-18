@@ -6,10 +6,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -27,12 +33,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.DialogOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -41,6 +49,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
     private val prefs: SharedPreferences by inject()
     private val ctx = context
     private val adapter = OverlaySelectionAdapter()
@@ -80,7 +89,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
             setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add_button)) { _,_ ->
-                val newIdx = getCustomOverlayIndices(prefs).max() + 1
+                val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isNullOrBlank()) 0
+                    else getCustomOverlayIndices(prefs).max() + 1
                 showOverlayCustomizer(newIdx)
             }
 
@@ -95,7 +105,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
                 override fun createForm(element: Element?) = null
                 override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
-                override val icon = R.drawable.ic_custom_overlay
+                override val icon = ctx.resources.getIdentifier(
+                    prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
+                    "drawable", ctx.packageName
+                )
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
                 override val wikiLink = it // index
             }
@@ -199,9 +212,23 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 }
             }
         }
+        val iconList = LinkedHashSet<Int>(questTypeRegistry.size).apply {
+            add(R.drawable.ic_custom_overlay)
+            questTypeRegistry.forEach { add(it.icon) }
+        }.toList()
+        val iconSpinner = Spinner(ctx).apply {
+            adapter = ArrayImageAdapter(ctx, iconList)
+            val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
+            setSelection(iconList.indexOf(selectedIcon))
+            dropDownWidth = ctx.dpToPx(48).toInt()
+            layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
+        }
         val linearLayout = LinearLayout(ctx).apply {
             orientation = LinearLayout.VERTICAL
-            addView(title)
+            addView(LinearLayout(ctx).apply {
+                addView(iconSpinner)
+                addView(title)
+            })
             addView(filterText)
             addView(tag)
             addView(nodes)
@@ -222,12 +249,20 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
                     if (index !in indices) // add if it's new
                         putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
                     putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
                 }
-                selectedOverlayController.selectedOverlay = null
-                selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                // switch to overlay if we're editing current one or if it's new
+                if (index !in indices || (index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) && selectedOverlayController.selectedOverlay is CustomOverlay)) {
+                    selectedOverlayController.selectedOverlay = null
+                    selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                    dismiss()
+                } else {
+                    // otherwise reload overlay list because of icon and name
+                    adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays()
+                }
             }
         if (index in indices)
             b.setNeutralButton(R.string.delete_confirmation) { _, _ ->
@@ -240,19 +275,40 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                             remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index))
                             remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index))
                             remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index))
+                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index))
                             putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
                             if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index) {
                                 putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
-                                selectedOverlayController.selectedOverlay = null
-                                adapter.selectedOverlay = null
+                                if (selectedOverlayController.selectedOverlay is CustomOverlay) {
+                                    selectedOverlayController.selectedOverlay = null
+                                    //adapter.selectedOverlay = null // can't change overlay, as any change will dismiss overlay selection dialog...
+                                }
                             }
                         }
-                        d?.dismiss()
                         adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays()
                     }
                     .show()
             }
         d = b.create()
         d.show()
+    }
+}
+
+private class ArrayImageAdapter(context: Context, private val items: List<Int>) : ArrayAdapter<Int>(context, android.R.layout.select_dialog_item, items), SpinnerAdapter {
+    val params = ViewGroup.LayoutParams(context.dpToPx(48).toInt(), context.dpToPx(48).toInt())
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // for non-dropdown
+        val view = super.getView(position, convertView, parent)
+        val tv = view.findViewById<TextView>(android.R.id.text1)
+        tv.text = ""
+        tv.background = context.getDrawable(items[position])
+        tv.layoutParams = params
+        return view
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val v = (convertView as? ImageView) ?: ImageView(context)
+        v.setImageResource(items[position])
+        v.layoutParams = params
+        return v
     }
 }

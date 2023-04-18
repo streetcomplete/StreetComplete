@@ -559,7 +559,7 @@ class DataManagementSettingsFragment :
             val result = readToSettings(lines.subList(1, lines.size))
             // update in case of old data
             if (prefs.contains("custom_overlay_filter") || prefs.contains("custom_overlay_color_key")) {
-                val indices = if (prefs.contains(Prefs.CUSTOM_OVERLAY_INDICES)) getCustomOverlayIndices(prefs)  else emptyList()
+                val indices = if (prefs.contains(Prefs.CUSTOM_OVERLAY_INDICES)) getCustomOverlayIndices(prefs) else emptyList()
                 val newIndex = indices.maxOrNull() ?: 0
                 prefs.edit {
                     if (prefs.contains("custom_overlay_filter"))
@@ -576,7 +576,7 @@ class DataManagementSettingsFragment :
         else {
             val customOverlayRegex = "custom_overlay_(\\d+)_".toRegex()
             val indices = getCustomOverlayIndices(prefs).toMutableSet()
-            val offset = indices.max() + 1
+            val offset = indices.maxOrNull()?.let { it + 1 } ?: 0
             val newLines = lines.mapNotNull { line ->
                 if (line == "overlays") return@mapNotNull null
                 line.replace(customOverlayRegex) { result ->
