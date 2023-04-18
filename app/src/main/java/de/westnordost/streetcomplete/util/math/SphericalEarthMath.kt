@@ -27,7 +27,7 @@ const val EARTH_RADIUS = 6371000.0
 /** In meters. See https://en.wikipedia.org/wiki/Earth%27s_circumference */
 const val EARTH_CIRCUMFERENCE = 40000000.0
 
-/* --------------------------------- LatLon extension functions --------------------------------- */
+//region LatLon extension functions
 
 /**
  * Return a bounding box that contains a circle with the given radius around this point. In
@@ -166,7 +166,10 @@ fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RA
         .minOf { distanceToArc(it.first, it.second, globeRadius) }
 }
 
-/* -------------------------------- Polyline extension functions -------------------------------- */
+
+//endregion
+
+//region Polyline extension functions
 
 /** Returns the shortest distance between this polyline and given polyline */
 fun List<LatLon>.distanceTo(polyline: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
@@ -300,6 +303,14 @@ fun List<LatLon>.pointOnPolylineFromEnd(distance: Double): LatLon? {
     return pointsOnPolyline(true, distance).firstOrNull()
 }
 
+/**
+ * Returns the points the distances into the polyline, starting from the end. Returns less points if
+ * the polyline is not long enough.
+ */
+fun List<LatLon>.pointsOnPolylineFromEnd(distances: List<Double>): List<LatLon> {
+    return pointsOnPolyline(true, *distances.toDoubleArray())
+}
+
 private fun List<LatLon>.pointsOnPolyline(fromEnd: Boolean, vararg distances: Double): List<LatLon> {
     if (distances.isEmpty()) return emptyList()
     val list = if (fromEnd) this.asReversed() else this
@@ -324,7 +335,9 @@ private fun List<LatLon>.pointsOnPolyline(fromEnd: Boolean, vararg distances: Do
     return result
 }
 
-/* --------------------------------- Polygon extension functions -------------------------------- */
+//endregion
+
+//region Polygon extension functions
 
 /**
  * Returns the center point of the given polygon
@@ -468,7 +481,9 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
     return sum > 0
 }
 
-/* ------------------------------ Bounding Box extension functions  ----------------------------- */
+//endregion
+
+//region Bounding Box extension functions
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
@@ -547,6 +562,8 @@ private inline fun BoundingBox.checkAlignment(
         }
     }
 }
+
+//endregion
 
 fun createTranslated(latitude: Double, longitude: Double): LatLon {
     var lat = latitude
