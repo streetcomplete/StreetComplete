@@ -48,10 +48,12 @@ val Surface.color get() = when (this) {
                        -> Color.AQUAMARINE
     COMPACTED, FINE_GRAVEL
                        -> Color.TEAL
-    SAND               -> Color.ORANGE
-    GRASS              -> Color.LIME
     DIRT, SOIL, EARTH, MUD, GROUND, WOODCHIPS
-                       -> Color.GOLD
+                       -> Color.ORANGE
+    GRASS              -> Color.LIME // greenish colour for grass is deliberate
+    SAND               -> Color.GOLD // yellowish color for sand is deliberate
+                                     // sand and grass are strongly associated with
+                                     // this colors
     GRAVEL, PEBBLES, ROCK,
     // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
     WOOD, METAL, METAL_GRID
