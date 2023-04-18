@@ -42,14 +42,14 @@ inline fun <T> List<T>.findNext(index: Int, predicate: (T) -> Boolean): T? {
     return null
 }
 
-/** Iterate through the given list of points in pairs, so [predicate] is called for every line */
-inline fun <T> Iterable<T>.forEachLine(predicate: (first: T, second: T) -> Unit) {
+/** Return a sequence that iterates through the given list of points in pairs */
+fun <T> Iterable<T>.asSequenceOfPairs(): Sequence<Pair<T, T>> = sequence {
     val it = iterator()
-    if (!it.hasNext()) return
+    if (!it.hasNext()) return@sequence
     var item1 = it.next()
     while (it.hasNext()) {
         val item2 = it.next()
-        predicate(item1, item2)
+        yield(item1 to item2)
         item1 = item2
     }
 }
