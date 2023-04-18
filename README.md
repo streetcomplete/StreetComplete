@@ -7,6 +7,27 @@ Functionality added in SCEE is considerably less tested than what you might be u
 
 Due to the different name used in changesets ("StreetComplete_ee"), edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
 
+1. [Download](#download-scee)
+2. [Translate](#translations)
+3. [Additional permissions](#permissions)
+4. [Differences to StreetComplete](#differences-to-streetcomplete)
+5. [Contributing quests](#contributing-quests)
+6. [Differences in changesets](#changeset-differences-compared-to-streetcomplete)
+7. [StreetComplete readme](#original-streetcomplete-readme-below)
+
+## Download SCEE
+
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/)
+[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/Helium314/SCEE/releases/latest)
+
+F-Droid releases of SCEE make use of reproducible builds, so releases on F-Droid and GitHub are signed with the same keys. This means you can switch between GitHub and F-Droid releases anytime without needing to uninstall first.
+
+## Translations
+Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
+
+## Permissions
+SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
+
 ## Differences to StreetComplete
 * Non-optional differences to StreetComplete
   * No statistics: To avoid unfair competition, a slightly changed name avoids changes being counted towards StreetComplete statistics, making the star count rather useless (thus it is not shown)
@@ -113,17 +134,6 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
       * All other settings, including quest settings and recently selected answers. Does not export login data.
 
 Database and preferences files are compatible with StreetComplete, so if you have root privileges you can transfer them in either direction.
-
-## Permissions
-SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
-
-## Download SCEE
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/)
-[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/Helium314/SCEE/releases/latest)
-
-## Translations
-Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
 
 ## Contributing quests
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
