@@ -167,6 +167,20 @@ fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RA
         .minOf { distanceToArc(it.first, it.second, globeRadius) }
 }
 
+/** Returns the point on the arc spanned between the given points that is closest to this
+ *  point */
+fun LatLon.nearestPointOnArc(start: LatLon, end: LatLon): LatLon {
+    val alongTrackDistance = alongTrackDistanceTo(start, end)
+    if (alongTrackDistance <= 0) return start
+    val arc = listOf(start, end)
+    return arc.pointOnPolylineFromStart(alongTrackDistance) ?: end
+}
+
+/** Returns the point on the given polyline that is closest to this point */
+fun LatLon.nearestPointOnArcs(polyline: List<LatLon>): LatLon {
+    val arc = polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
+    return nearestPointOnArc(arc.first, arc.second)
+}
 
 //endregion
 

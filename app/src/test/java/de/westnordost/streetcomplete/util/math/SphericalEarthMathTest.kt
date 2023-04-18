@@ -273,6 +273,29 @@ class SphericalEarthMathTest {
 
     //endregion
 
+    //region nearestPointOnArc, nearestPointOnArcs
+
+    @Test fun `nearestPointOnArc returns startpoint`() {
+        assertEquals(
+            p(1.0, 1.0),
+            p(0.0, 0.0).nearestPointOnArc(p(1.0, 1.0), p(2.0, 1.0))
+        )
+    }
+
+    @Test fun `nearestPointOnArc returns endpoint`() {
+        assertEquals(
+            p(1.0, 1.0),
+            p(0.0, 0.0).nearestPointOnArc(p(2.0, 1.0), p(1.0, 1.0))
+        )
+    }
+
+    @Test fun `nearestPointOnArc returns a point on the arc`() {
+        assertTrue(
+            p(0.5, 0.5).equalsInOsm(p(0.0, 0.0).nearestPointOnArc(p(1.0, 0.0), p(0.0, 1.0)))
+        )
+    }
+
+    //endregion
 
     //region enclosingBoundingBox
 
