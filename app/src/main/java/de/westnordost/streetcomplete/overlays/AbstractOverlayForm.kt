@@ -46,6 +46,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
@@ -153,7 +154,7 @@ abstract class AbstractOverlayForm :
 
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    override val elementKey: ElementKey? get() = element?.let { ElementKey(it.type, it.id) }
+    override val elementKey: ElementKey? get() = element?.key
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null

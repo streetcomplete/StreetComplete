@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.overlays
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.RowOverlaySelectionBinding
@@ -13,6 +14,8 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
     var onSelectedOverlay: ((Overlay?) -> Unit)? = null
 
+    var onCustomizeOverlay: ((Int) -> Unit)? = null
+
     var overlays: List<Overlay> = emptyList()
         set(value) {
             if (field == value) return
@@ -22,9 +25,11 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
     var selectedOverlay: Overlay? = null
         set(value) {
+            // To match other preference dialogs, also invoke callback when nothing changed to allow
+            // dismissing the selection dialog when the active overlay is selected again.
+            onSelectedOverlay?.invoke(value)
             if (field == value) return
             field = value
-            onSelectedOverlay?.invoke(value)
             notifyDataSetChanged()
         }
 
@@ -45,15 +50,18 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
         fun onBind(with: Overlay?) {
             val ctx = binding.root.context
             val titleResId = with?.title ?: R.string.overlay_none
-            binding.radioButton.text = if (titleResId != 0) ctx.getString(titleResId) else with?.changesetComment // the custom title
+            binding.overlayTitle.text = if (titleResId != 0) ctx.getString(titleResId) else with?.changesetComment // the custom title
             val icon = with?.icon?.let { ctx.getDrawable(it) }
             icon?.setBounds(0, 0, ctx.dpToPx(32).toInt(), ctx.dpToPx(32).toInt())
-            binding.radioButton.setCompoundDrawables(icon, null, null, null)
-            binding.radioButton.compoundDrawablePadding = ctx.dpToPx(4).toInt()
-            binding.radioButton.setOnCheckedChangeListener(null)
+            binding.overlayTitle.setCompoundDrawables(icon, null, null, null)
+            binding.overlayTitle.compoundDrawablePadding = ctx.dpToPx(4).toInt()
             binding.radioButton.isChecked = with == selectedOverlay
-            binding.radioButton.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) selectedOverlay = with
+            binding.root.setOnClickListener { selectedOverlay = with }
+            binding.customButton.isVisible = titleResId == 0
+            if (titleResId == 0) {
+                binding.customButton.setOnClickListener {
+                    with?.wikiLink?.toIntOrNull()?.let { onCustomizeOverlay?.invoke(it) }
+                }
             }
         }
     }

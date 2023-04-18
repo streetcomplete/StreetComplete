@@ -163,6 +163,7 @@ class UndoDialog(
         val txt = TextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         txt.setText(text)
+        txt.setTextIsSelectable(true)
         return txt
     }
 

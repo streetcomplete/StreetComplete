@@ -8,7 +8,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -45,43 +44,44 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     private val prefs: SharedPreferences by inject()
     private val ctx = context
 
-    private val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
-    private var selectedOverlay: Overlay? = selectedOverlayController.selectedOverlay
-
     init {
+        val currentOverlay = selectedOverlayController.selectedOverlay
+
         val adapter = OverlaySelectionAdapter()
         val fakeOverlays = getFakeCustomOverlays()
         adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + fakeOverlays
-        adapter.selectedOverlay = if (selectedOverlayController.selectedOverlay is CustomOverlay)
+        adapter.selectedOverlay = if (currentOverlay is CustomOverlay)
             fakeOverlays.singleOrNull { it.wikiLink == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() }
         else
-            selectedOverlayController.selectedOverlay
-        adapter.onSelectedOverlay = {
-            selectedOverlay = it
-            getButton(BUTTON_NEUTRAL)?.isEnabled = selectedOverlay?.title == 0 // only enable custom overlay button if one is selected
-        }
-        setOnShowListener { getButton(BUTTON_NEUTRAL)?.isEnabled = (selectedOverlay is CustomOverlay || selectedOverlay?.title == 0) }
-        binding.overlaysList.adapter = adapter
-        binding.overlaysList.layoutManager = LinearLayoutManager(context)
-
-        setTitle(R.string.select_overlay)
-
-        setButton(BUTTON_POSITIVE, context.resources.getText(android.R.string.ok)) { _, _ ->
+            currentOverlay
+        adapter.onSelectedOverlay = { so ->
+            var selectedOverlay = so
             if (selectedOverlay?.title == 0) {
                 prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay!!.wikiLink!!.toInt()) }
                 // set the actual custom overlay instead of the fake one
                 selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }
-            if (selectedOverlay != selectedOverlayController.selectedOverlay || selectedOverlay is CustomOverlay)
+            if (currentOverlay != selectedOverlay || selectedOverlay is CustomOverlay)
                 selectedOverlayController.selectedOverlay = selectedOverlay // only set same overlay if it's custom, as setting same one now reloads
+            dismiss()
+        }
+        adapter.onCustomizeOverlay = { showOverlayCustomizer(it) }
+
+        val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
+
+        binding.overlaysList.adapter = adapter
+        binding.overlaysList.layoutManager = LinearLayoutManager(context)
+
+        setTitle(R.string.select_overlay)
+
+        setButton(BUTTON_NEGATIVE, context.resources.getText(android.R.string.cancel)) { _, _ ->
             dismiss()
         }
 
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
-            setButton(BUTTON_NEUTRAL, context.resources.getText(R.string.custom_overlay_title)) { _,_ ->
-                val currentCustomOverlay = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
-                val selectedCustomOverlay = selectedOverlay?.wikiLink?.toIntOrNull()
-                showOverlayCustomizer(selectedCustomOverlay ?: currentCustomOverlay)
+            setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add)) { _,_ -> // todo: replace with shorter text to avoid 2 lines, but check weblate only translations first (add comment in line above)
+                val newIdx = getCustomOverlayIndices(prefs).max() + 1
+                showOverlayCustomizer(newIdx)
             }
 
         setView(binding.root)
@@ -229,73 +229,28 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 selectedOverlayController.selectedOverlay = null
                 selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }
-        if (index in indices)
-            b.setNeutralButton(R.string.custom_overlay_manage) { _, _ -> showCustomOverlayManager() }
-        d = b.create()
-        d.show()
-    }
-
-    private fun showCustomOverlayManager() {
-        val indices = getCustomOverlayIndices(prefs).sorted()
-        var d: AlertDialog? = null
-        val layout = LinearLayout(ctx).apply { orientation = LinearLayout.VERTICAL }
-        layout.setPadding(40, 20, 40, 20)
-        indices.forEach { idx ->
-            val l = LinearLayout(ctx)
-            val text = TextView(ctx)
-            text.text = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, idx), ctx.getString(R.string.custom_overlay_title))
-            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
-            text.setOnClickListener {
-                prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, idx) }
-                showOverlayCustomizer(idx)
-                d?.dismiss()
-            }
-            l.addView(ImageView(ctx).apply {
-                setImageResource(R.drawable.ic_delete_24dp)
-                isEnabled = idx != 0
-                setOnClickListener {
-                    Builder(ctx)
-                        .setMessage(ctx.getString(R.string.custom_overlay_delete, text.text))
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(R.string.delete_confirmation) { _, _ ->
-                            prefs.edit {
-                                remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, idx))
-                                remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, idx))
-                                remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, idx))
-                                putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == idx }.joinToString(","))
-                                if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == idx) {
-                                    putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
-                                    selectedOverlayController.selectedOverlay = null
-                                }
+        if (index != 0) // don't allow deleting first custom overlay
+            b.setNeutralButton(R.string.attach_photo_delete) { _, _ -> // todo: rename string, but first check whether it's translated on weblate only
+                val overlayName = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(R.string.custom_overlay_title))
+                Builder(ctx)
+                    .setMessage(ctx.getString(R.string.custom_overlay_delete, overlayName))
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(R.string.delete_confirmation) { _, _ ->
+                        prefs.edit {
+                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index))
+                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index))
+                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index))
+                            putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
+                            if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index) {
+                                putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
+                                selectedOverlayController.selectedOverlay = null
                             }
-                            d?.dismiss()
-                            showCustomOverlayManager()
                         }
-                        .show()
-                }
-            })
-            l.addView(text)
-            l.setPadding(0, 10, 0, 10)
-            layout.addView(l)
-        }
-        layout.addView(LinearLayout(ctx).apply {
-            addView(ImageView(ctx).apply { setImageResource(R.drawable.ic_add_24dp) })
-            addView(TextView(ctx).apply {
-                setText(R.string.custom_overlay_add)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
-            })
-            setOnClickListener {
-                val newIdx = indices.max() + 1
-                showOverlayCustomizer(newIdx)
-                d?.dismiss()
+                        d?.dismiss()
+                    }
+                    .show()
             }
-        })
-
-        d = Builder(ctx)
-            .setTitle(R.string.custom_overlay_manage)
-            .setView(layout)
-            .setNegativeButton(R.string.close, null)
-            .create()
+        d = b.create()
         d.show()
     }
 }

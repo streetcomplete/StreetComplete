@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
@@ -63,7 +64,7 @@ class MoveNodeFragment :
     private val countryInfos: CountryInfos by inject()
     private val prefs: SharedPreferences by inject()
 
-    override val elementKey: ElementKey by lazy { ElementKey(node.type, node.id) }
+    override val elementKey: ElementKey by lazy { node.key }
 
     private lateinit var node: Node
     private lateinit var editType: ElementEditType

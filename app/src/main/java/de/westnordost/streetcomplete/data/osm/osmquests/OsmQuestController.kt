@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -109,7 +110,7 @@ class OsmQuestController internal constructor(
 
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
-                val previousQuests = db.getAllForElements(updated.map { ElementKey(it.type, it.id) })
+                val previousQuests = db.getAllForElements(updated.map { it.key })
                 // quests that refer to elements that have been deleted shall be deleted
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
@@ -333,12 +334,11 @@ class OsmQuestController internal constructor(
         val elementKeys = HashSet<ElementKey>(entries.size, 1.0f)
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
 
-        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
-            .associateBy { ElementKey(it.elementType, it.elementId) }
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys).associateBy { it.key }
 
         return entries.mapNotNull { entry ->
-            val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
-            createOsmQuest(entry, geometryEntry?.geometry)
+            val geometry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]?.geometry
+            createOsmQuest(entry, geometry)
         }
     }
 
@@ -412,8 +412,7 @@ class OsmQuestController internal constructor(
             ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
         }
 
-        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
-            .associateBy { ElementKey(it.elementType, it.elementId) }
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys).associateBy { it.key }
 
         return questKeysWithTimestamp.mapNotNull { (key, timestamp) ->
             val pos = geometriesByKey[ElementKey(key.elementType, key.elementId)]?.geometry?.center
