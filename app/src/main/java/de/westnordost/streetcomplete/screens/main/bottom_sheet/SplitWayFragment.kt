@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
@@ -258,7 +258,7 @@ class SplitWayFragment :
 
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
-        geometry.polylines.single().forEachLine { first, second ->
+        geometry.polylines.single().asSequenceOfPairs().forEach { (first, second) ->
             val crossTrackDistance = abs(clickPosition.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)

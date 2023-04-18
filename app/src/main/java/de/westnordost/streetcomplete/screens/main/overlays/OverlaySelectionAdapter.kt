@@ -22,9 +22,11 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
     var selectedOverlay: Overlay? = null
         set(value) {
+            // To match other preference dialogs, also invoke callback when nothing changed to allow
+            // dismissing the selection dialog when the active overlay is selected again.
+            onSelectedOverlay?.invoke(value)
             if (field == value) return
             field = value
-            onSelectedOverlay?.invoke(value)
             notifyDataSetChanged()
         }
 
@@ -44,16 +46,13 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
 
         fun onBind(with: Overlay?) {
             val ctx = binding.root.context
-            binding.radioButton.setText(with?.title ?: R.string.overlay_none)
+            binding.overlayTitle.setText(with?.title ?: R.string.overlay_none)
             val icon = with?.icon?.let { ctx.getDrawable(it) }
             icon?.setBounds(0, 0, ctx.dpToPx(32).toInt(), ctx.dpToPx(32).toInt())
-            binding.radioButton.setCompoundDrawables(icon, null, null, null)
-            binding.radioButton.compoundDrawablePadding = ctx.dpToPx(4).toInt()
-            binding.radioButton.setOnCheckedChangeListener(null)
+            binding.overlayTitle.setCompoundDrawables(icon, null, null, null)
+            binding.overlayTitle.compoundDrawablePadding = ctx.dpToPx(4).toInt()
             binding.radioButton.isChecked = with == selectedOverlay
-            binding.radioButton.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) selectedOverlay = with
-            }
+            binding.root.setOnClickListener { selectedOverlay = with }
         }
     }
 }

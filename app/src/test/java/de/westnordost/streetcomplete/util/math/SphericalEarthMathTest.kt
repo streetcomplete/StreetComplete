@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.util.ktx.equalsInOsm
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
@@ -14,7 +15,9 @@ import kotlin.math.sqrt
 
 class SphericalEarthMathTest {
 
-    /* ++++++++++++++++++++++++++++++++ test distance functions +++++++++++++++++++++++++++++++++ */
+    //region LatLon extension functions
+
+    //region distanceTo, initialBearingTo, finalBearingTo
 
     @Test fun `distance to Berlin`() {
         checkHamburgTo(52.4, 13.4, 259, 117, 120)
@@ -83,6 +86,10 @@ class SphericalEarthMathTest {
         if (angle2 != null) assertEquals(angle2, HH.finalBearingTo(t).roundToInt())
     }
 
+    //endregion
+
+    //region isRightOf
+
     @Test fun `point right of line`() {
         val px = p(0.0, 0.0)
         val p0 = p(-1.0, 0.0)
@@ -117,7 +124,46 @@ class SphericalEarthMathTest {
         assertTrue(p(1.0, 1.0).isRightOf(p0, p1, p2))
     }
 
-    /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
+    //endregion
+
+    //region translate
+
+    @Test fun `translate latitude north`() { checkTranslate(1000, 0) }
+    @Test fun `translate latitude south`() { checkTranslate(1000, 180) }
+    @Test fun `translate latitude west`() { checkTranslate(1000, 270) }
+    @Test fun `translate latitude east`() { checkTranslate(1000, 90) }
+    @Test fun `translate latitude northeast`() { checkTranslate(1000, 45) }
+    @Test fun `translate latitude southeast`() { checkTranslate(1000, 135) }
+    @Test fun `translate latitude southwest`() { checkTranslate(1000, 225) }
+    @Test fun `translate latitude northwest`() { checkTranslate(1000, 315) }
+
+    @Test fun translateOverBoundaries() {
+        // cross 180th meridian both ways
+        checkTranslate(p(179.9999999, 0.0), 1000, 90)
+        checkTranslate(p(-179.9999999, 0.0), 1000, 270)
+        // cross north pole and come out on the other side
+        // should come out at 45,-90
+        val quarterOfEarth = (PI / 2 * EARTH_RADIUS).toInt()
+        checkTranslate(p(90.0, +45.0), quarterOfEarth, 0)
+        // should come out at -45,-90
+        checkTranslate(p(90.0, -45.0), quarterOfEarth, 180)
+    }
+
+    private fun checkTranslate(one: LatLon, distance: Int, angle: Int) {
+        val two = one.translate(distance.toDouble(), angle.toDouble())
+
+        assertEquals(distance, one.distanceTo(two).roundToInt())
+        assertEquals(angle, one.initialBearingTo(two).roundToInt())
+    }
+
+    private fun checkTranslate(distance: Int, angle: Int) {
+        val one = p(9.9782365, 53.5712482)
+        checkTranslate(one, distance, angle)
+    }
+
+    //endregion
+
+    //region distanceToArc, crossTrackDistanceTo, alongTrackDistanceTo, distanceToArc, distanceToArcs
 
     @Test fun `simple distance to horizontal arc`() {
         val start = p(-0.01, 0.0)
@@ -225,7 +271,33 @@ class SphericalEarthMathTest {
         )
     }
 
-    /* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
+    //endregion
+
+    //region nearestPointOnArc, nearestPointOnArcs
+
+    @Test fun `nearestPointOnArc returns startpoint`() {
+        assertEquals(
+            p(1.0, 1.0),
+            p(0.0, 0.0).nearestPointOnArc(p(1.0, 1.0), p(2.0, 1.0))
+        )
+    }
+
+    @Test fun `nearestPointOnArc returns endpoint`() {
+        assertEquals(
+            p(1.0, 1.0),
+            p(0.0, 0.0).nearestPointOnArc(p(2.0, 1.0), p(1.0, 1.0))
+        )
+    }
+
+    @Test fun `nearestPointOnArc returns a point on the arc`() {
+        assertTrue(
+            p(0.5, 0.5).equalsInOsm(p(0.0, 0.0).nearestPointOnArc(p(1.0, 0.0), p(0.0, 1.0)))
+        )
+    }
+
+    //endregion
+
+    //region enclosingBoundingBox
 
     @Test fun `enclosingbbox radius`() {
         val pos = p(0.0, 0.0)
@@ -289,177 +361,13 @@ class SphericalEarthMathTest {
         assertEquals(160.0, bbox.min.longitude, 0.0)
     }
 
-    @Test fun `contains works`() {
-        val bbox = bbox(-1.0, -2.0, 1.0, 2.0)
-        assertTrue(bbox.contains(p(-2.0, -1.0)))
-        assertTrue(bbox.contains(p(+2.0, -1.0)))
-        assertTrue(bbox.contains(p(-2.0, +1.0)))
-        assertTrue(bbox.contains(p(+2.0, +1.0)))
-        assertTrue(bbox.contains(p(+0.0, +0.0)))
+    //endregion
 
-        assertFalse(bbox.contains(p(-2.1, 0.0)))
-        assertFalse(bbox.contains(p(+2.1, 0.0)))
-        assertFalse(bbox.contains(p(0.0, -1.1)))
-        assertFalse(bbox.contains(p(0.0, +1.1)))
-    }
+    //endregion
 
-    @Test fun `contains works at 180th meridian`() {
-        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
-        assertTrue(bbox.contains(p(179.0, 0.0)))
-        assertTrue(bbox.contains(p(179.0, 1.0)))
-        assertTrue(bbox.contains(p(180.0, 0.0)))
-        assertTrue(bbox.contains(p(180.0, 1.0)))
-        assertTrue(bbox.contains(p(-179.0, 0.0)))
-        assertTrue(bbox.contains(p(-179.0, 1.0)))
-        assertTrue(bbox.contains(p(-180.0, 0.0)))
-        assertTrue(bbox.contains(p(-180.0, 1.0)))
+    //region Polyline extension functions
 
-        assertFalse(bbox.contains(p(0.0, 0.0)))
-    }
-
-    @Test fun `isCompletelyInside works`() {
-        val bbox1 = bbox(-1.0, -1.0, 1.0, 1.0)
-        val bbox2 = bbox(-0.5, -0.5, 0.5, 1.0)
-        assertTrue(bbox2.isCompletelyInside(bbox1))
-        assertFalse(bbox1.isCompletelyInside(bbox2))
-    }
-
-    @Test fun `isCompletelyInside works at 180th meridian`() {
-        val bbox1 = bbox(0.0, 179.0, 1.0, -179.0)
-        val bbox2 = bbox(0.0, 179.5, 0.5, -179.5)
-        assertTrue(bbox2.isCompletelyInside(bbox1))
-        assertFalse(bbox1.isCompletelyInside(bbox2))
-    }
-
-    @Test fun `enlargedBy really enlarges bounding box`() {
-        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
-        assertTrue(bbox.isCompletelyInside(bbox.enlargedBy(1.0)))
-    }
-
-    @Test fun `enlargedBy really enlarges bounding box, even at 180th meridian`() {
-        val bbox1 = bbox(0.0, 179.0, 1.0, 180.0)
-        // enlarged bounding box should go over the 180th meridian
-        assertTrue(bbox1.isCompletelyInside(bbox1.enlargedBy(100.0)))
-        // here already bbox2 crosses the 180th meridian, maybe this makes a difference
-        val bbox2 = bbox(0.0, 179.0, 1.0, -179.0)
-        assertTrue(bbox2.isCompletelyInside(bbox2.enlargedBy(100.0)))
-    }
-
-    @Test fun `bounding box not on same latitude do not intersect`() {
-        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
-        val above = bbox(1.1, 0.0, 1.2, 1.0)
-        val below = bbox(-0.2, 0.0, -0.1, 1.0)
-        assertFalse(bbox.intersect(above))
-        assertFalse(bbox.intersect(below))
-        assertFalse(above.intersect(bbox))
-        assertFalse(below.intersect(bbox))
-    }
-
-    @Test fun `bounding box not on same longitude do not intersect`() {
-        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
-        val left = bbox(0.0, -0.2, 1.0, -0.1)
-        val right = bbox(0.0, 1.1, 1.0, 1.2)
-        assertFalse(bbox.intersect(left))
-        assertFalse(bbox.intersect(right))
-        assertFalse(left.intersect(bbox))
-        assertFalse(right.intersect(bbox))
-    }
-
-    @Test fun `intersecting bounding boxes`() {
-        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
-        val touchLeft = bbox(0.0, -0.1, 1.0, 0.0)
-        val touchUpperRightCorner = bbox(1.0, 1.0, 1.1, 1.1)
-        val completelyInside = bbox(0.4, 0.4, 0.8, 0.8)
-        val intersectLeft = bbox(0.4, -0.5, 0.5, 0.5)
-        val intersectRight = bbox(0.4, 0.8, 0.5, 1.2)
-        val intersectTop = bbox(0.9, 0.4, 1.1, 0.8)
-        val intersectBottom = bbox(-0.2, 0.4, 0.2, 0.6)
-        assertTrue(bbox.intersect(touchLeft))
-        assertTrue(bbox.intersect(touchUpperRightCorner))
-        assertTrue(bbox.intersect(completelyInside))
-        assertTrue(bbox.intersect(intersectLeft))
-        assertTrue(bbox.intersect(intersectRight))
-        assertTrue(bbox.intersect(intersectTop))
-        assertTrue(bbox.intersect(intersectBottom))
-        // and the other way around
-        assertTrue(touchLeft.intersect(bbox))
-        assertTrue(touchUpperRightCorner.intersect(bbox))
-        assertTrue(completelyInside.intersect(bbox))
-        assertTrue(intersectLeft.intersect(bbox))
-        assertTrue(intersectRight.intersect(bbox))
-        assertTrue(intersectTop.intersect(bbox))
-        assertTrue(intersectBottom.intersect(bbox))
-    }
-
-    @Test fun `bounding box not on same longitude do not intersect, even on 180th meridian`() {
-        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
-        val other = bbox(0.0, -178.0, 1.0, 178.0)
-        assertFalse(bbox.intersect(other))
-        assertFalse(other.intersect(bbox))
-    }
-
-    @Test fun `intersecting bounding boxes at 180th meridian`() {
-        val bbox = bbox(0.0, 179.5, 1.0, -170.0)
-        val touchLeft = bbox(0.0, 179.0, 1.0, 180.0)
-        val touchUpperRightCorner = bbox(1.0, -170.0, 1.1, -169.0)
-        val completelyInside = bbox(0.4, 179.9, 0.8, -179.9)
-        val intersectLeft = bbox(0.4, 179.0, 0.5, 179.9)
-        val intersectRight = bbox(0.4, -179.0, 0.5, -150.0)
-        val intersectTop = bbox(0.9, 179.9, 1.1, -179.8)
-        val intersectBottom = bbox(-0.2, 179.9, 0.2, -179.8)
-        assertTrue(bbox.intersect(touchLeft))
-        assertTrue(bbox.intersect(touchUpperRightCorner))
-        assertTrue(bbox.intersect(completelyInside))
-        assertTrue(bbox.intersect(intersectLeft))
-        assertTrue(bbox.intersect(intersectRight))
-        assertTrue(bbox.intersect(intersectTop))
-        assertTrue(bbox.intersect(intersectBottom))
-        // and the other way around
-        assertTrue(touchLeft.intersect(bbox))
-        assertTrue(touchUpperRightCorner.intersect(bbox))
-        assertTrue(completelyInside.intersect(bbox))
-        assertTrue(intersectLeft.intersect(bbox))
-        assertTrue(intersectRight.intersect(bbox))
-        assertTrue(intersectTop.intersect(bbox))
-        assertTrue(intersectBottom.intersect(bbox))
-    }
-
-    /* ++++++++++++++++++++++++++++++ test translating of positions +++++++++++++++++++++++++++++ */
-
-    @Test fun `translate latitude north`() { checkTranslate(1000, 0) }
-    @Test fun `translate latitude south`() { checkTranslate(1000, 180) }
-    @Test fun `translate latitude west`() { checkTranslate(1000, 270) }
-    @Test fun `translate latitude east`() { checkTranslate(1000, 90) }
-    @Test fun `translate latitude northeast`() { checkTranslate(1000, 45) }
-    @Test fun `translate latitude southeast`() { checkTranslate(1000, 135) }
-    @Test fun `translate latitude southwest`() { checkTranslate(1000, 225) }
-    @Test fun `translate latitude northwest`() { checkTranslate(1000, 315) }
-
-    @Test fun translateOverBoundaries() {
-        // cross 180th meridian both ways
-        checkTranslate(p(179.9999999, 0.0), 1000, 90)
-        checkTranslate(p(-179.9999999, 0.0), 1000, 270)
-        // cross north pole and come out on the other side
-        // should come out at 45,-90
-        val quarterOfEarth = (PI / 2 * EARTH_RADIUS).toInt()
-        checkTranslate(p(90.0, +45.0), quarterOfEarth, 0)
-        // should come out at -45,-90
-        checkTranslate(p(90.0, -45.0), quarterOfEarth, 180)
-    }
-
-    private fun checkTranslate(one: LatLon, distance: Int, angle: Int) {
-        val two = one.translate(distance.toDouble(), angle.toDouble())
-
-        assertEquals(distance, one.distanceTo(two).roundToInt())
-        assertEquals(angle, one.initialBearingTo(two).roundToInt())
-    }
-
-    private fun checkTranslate(distance: Int, angle: Int) {
-        val one = p(9.9782365, 53.5712482)
-        checkTranslate(one, distance, angle)
-    }
-
-    /* +++++++++++++++++++++++++++++ test calculation of center line ++++++++++++++++++++++++++++ */
+    //region centerLineOfPolyline
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerLineOfPolyline for point fails`() {
@@ -495,7 +403,9 @@ class SphericalEarthMathTest {
         assertEquals(Pair(p0, p1), listOf(p0, p1, p2, p3).centerLineOfPolyline())
     }
 
-    /* +++++++++++++++++++++++++ test calculation of center point of line +++++++++++++++++++++++ */
+    //endregion
+
+    //region centerPointOfPolyline
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerPointOfPolyline fails for empty list`() {
@@ -517,7 +427,218 @@ class SphericalEarthMathTest {
         assertEquals(p(170.0, 0.0), listOf(p(150.0, 0.0), p(-170.0, 0.0)).centerPointOfPolyline())
     }
 
-    /* +++++++++++++++++++++++ test calculation of center point of polygon ++++++++++++++++++++++ */
+    //endregion
+
+    //region pointOnPolylineFromStart, pointsOnPolylineFromStart, pointOnPolylineFromEnd, pointsOnPolylineFromEnd
+
+    @Test fun `pointOnPolyline for single line`() {
+        val list = listOf(p(0.0, 0.0), p(10.0, 0.0))
+        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
+        assertEquals(p(7.5, 0.0), list.pointOnPolylineFromEnd(list.measuredLength() * 0.25))
+    }
+
+    @Test fun `pointOnPolyline for polyline`() {
+        val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
+        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
+        assertEquals(p(7.5, 0.0), list.pointOnPolylineFromEnd(list.measuredLength() * 0.25))
+    }
+
+    @Test fun `pointOnPolyline for line that crosses 180th meridian`() {
+        val list = listOf(p(179.0, 0.0), p(-179.0, 0.0))
+        assertEquals(p(-180.0, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.5))
+        assertEquals(p(-180.0, 0.0), list.pointOnPolylineFromEnd(list.measuredLength() * 0.5))
+    }
+
+    @Test fun `pointsOnPolyline for polyline`() {
+        val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
+        val points = listOf(
+            list.measuredLength() * 0.25,
+            list.measuredLength() * 0.75, // unsorted order
+            list.measuredLength() * 0.55, // 0.55 amd 0.75 are in the same segment
+        )
+
+        assertEquals(
+            listOf(p(2.5, 0.0), p(5.5, 0.0), p(7.5, 0.0)),
+            list.pointsOnPolylineFromStart(points)
+        )
+        assertEquals(
+            listOf(p(7.5, 0.0), p(4.5, 0.0), p(2.5, 0.0)),
+            list.pointsOnPolylineFromEnd(points)
+        )
+    }
+
+    @Test fun `pointsOnPolyline for no point`() {
+        val list = listOf(p(0.0, 0.0), p(5.0, 0.0))
+        assertEquals(
+            listOf<LatLon>(),
+            list.pointsOnPolylineFromStart(listOf())
+        )
+        assertEquals(
+            listOf<LatLon>(),
+            list.pointsOnPolylineFromEnd(listOf())
+        )
+    }
+
+    //endregion
+
+    //region isRingDefinedClockwise
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `isRingDefinedClockwise for empty list fails`() {
+        emptyList<LatLon>().isRingDefinedClockwise()
+    }
+
+    @Test fun isRingDefinedClockwise() {
+        val polygon = p(0.0, 0.0).createRhombus(1.0)
+        assertFalse(polygon.isRingDefinedClockwise())
+        assertTrue(polygon.reversed().isRingDefinedClockwise())
+    }
+
+    @Test fun `isRingDefinedClockwise for ring on 180th meridian`() {
+        val polygon = p(180.0, 0.0).createRhombus(1.0)
+        assertFalse(polygon.isRingDefinedClockwise())
+        assertTrue(polygon.reversed().isRingDefinedClockwise())
+    }
+
+    //endregion
+
+    //region intersectsWith
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `intersectsWith requires line`() {
+        listOf(p(0.0,0.0)).intersectsWith(listOf(p(1.0, 0.0), p(0.0, 1.0)))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `intersectsWith requires line for the parameter too`() {
+        listOf(p(1.0, 0.0), p(0.0, 1.0)).intersectsWith(listOf(p(0.0,0.0)))
+    }
+
+    @Test fun `intersectsWith finds intersection`() {
+        val h = listOf(p(-1.0, 0.0), p(1.0, 0.0))
+        val v = listOf(p(0.0, -1.0), p(0.0, 1.0))
+        assertTrue(h.intersectsWith(v))
+    }
+
+    @Test fun `intersectsWith does not count touching endpoints`() {
+        val h = listOf(p(-1.0, 0.0), p(1.0, 0.0))
+        val h2 = listOf(p(1.0, 0.0), p(2.0, 0.0))
+        val h3 = listOf(p(-1.0, 0.0), p(-2.0, 0.0))
+        assertFalse(h.intersectsWith(h2))
+        assertFalse(h.intersectsWith(h3))
+        assertFalse(h.intersectsWith(h2.reversed()))
+        assertFalse(h.intersectsWith(h3.reversed()))
+    }
+
+    //endregion
+
+    //region intersectionOf
+
+    @Test fun `two lines intersect at endpoints`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(1.0, 0.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(p2.longitude, i.longitude, 1e-9)
+        assertEquals(p2.latitude, i.latitude, 1e-9)
+    }
+
+    @Test fun `two lines intersect at start points`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
+        val q1 = p(0.0, 0.0)
+        val q2 = p(1.0, 1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(p1.longitude, i.longitude, 1e-9)
+        assertEquals(p1.latitude, i.latitude, 1e-9)
+    }
+
+    @Test fun `two lines intersect somewhere in the middle`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(2.0, 0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(2.0, -1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(1.0, i.longitude, 1e-9)
+        assertEquals(0.0, i.latitude, 1e-9)
+    }
+
+    @Test fun `two lines do not intersect somewhere after segment p`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(4.0, 0.0)
+        val q1 = p(0.0, 2.0)
+        val q2 = p(1.0, 1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere after segment q`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
+        val q1 = p(0.0, 1.0)
+        val q2 = p(4.0, -1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere before segment p`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.0, 1.0)
+        val q1 = p(-2.0, -1.0)
+        val q2 = p(0.0, 1.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect somewhere before segment q`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.0, 4.0)
+        val q1 = p(4.0, 1.0)
+        val q2 = p(5.0, 2.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect that are on the same great circle`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(2.0, 0.0)
+        val q1 = p(4.0, 0.0)
+        val q2 = p(-2.0, 0.0)
+
+        assertEquals(p1, intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines do not intersect that are on the same great circle`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
+        val q1 = p(3.0, 0.0)
+        val q2 = p(2.0, 0.0)
+
+        assertNull(intersectionOf(p1, p2, q1, q2))
+    }
+
+    @Test fun `two lines intersect on the other side of the earth`() {
+        val p1 = p(0.0, 0.0)
+        val p2 = p(180.0, 0.0)
+        val q1 = p(-90.0, 1.0)
+        val q2 = p(90.0, -1.0)
+
+        val i = intersectionOf(p1, p2, q1, q2)!!
+        assertEquals(0.0, i.longitude, 1e-9)
+        assertEquals(0.0, i.latitude, 1e-9)
+    }
+
+    //endregion
+
+    //endregion
+
+    //region Polygon extension functions
+
+    //region centerPointOfPolygon
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerPointOfPolygon for empty polygon fails`() {
@@ -539,44 +660,9 @@ class SphericalEarthMathTest {
         assertEquals(center, center.createRhombus(1.0).centerPointOfPolygon())
     }
 
-    /* +++++++++++++++++++++++++ test calculation of point in line string +++++++++++++++++++++++ */
+    //endregion
 
-    @Test fun `pointOnPolylineFromStart for single line`() {
-        val list = listOf(p(0.0, 0.0), p(10.0, 0.0))
-        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
-    }
-
-    @Test fun `pointOnPolylineFromStart for polyline`() {
-        val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
-        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
-    }
-
-    @Test fun `pointOnPolylineFromStart for line that crosses 180th meridian`() {
-        val list = listOf(p(179.0, 0.0), p(-179.0, 0.0))
-        assertEquals(p(-180.0, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.5))
-    }
-
-    @Test fun `pointsOnPolylineFromStart for polyline`() {
-        val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
-        assertEquals(
-            listOf(p(2.5, 0.0), p(5.5, 0.0), p(7.5, 0.0)),
-            list.pointsOnPolylineFromStart(listOf(
-                list.measuredLength() * 0.25,
-                list.measuredLength() * 0.75, // unsorted order
-                list.measuredLength() * 0.55, // 0.55 amd 0.75 are in the same segment
-            ))
-        )
-    }
-
-    @Test fun `pointsOnPolylineFromStart for no point`() {
-        val list = listOf(p(0.0, 0.0), p(5.0, 0.0))
-        assertEquals(
-            listOf<LatLon>(),
-            list.pointsOnPolylineFromStart(listOf())
-        )
-    }
-
-    /* +++++++++++++++++++++++++++++++ test point in polygon check ++++++++++++++++++++++++++++++ */
+    //region isInPolygon
 
     @Test fun `point at polygon vertex is in polygon`() {
         val square = p(0.0, 0.0).createSquareWithPointsAtCenterOfEdges(10.0)
@@ -719,24 +805,9 @@ class SphericalEarthMathTest {
         assertTrue(p(-178.5, 0.0).isInPolygon(r))
     }
 
-    /* +++++++++++++++++++++++++++++ test point in multipolygon check +++++++++++++++++++++++++++ */
+    //endregion
 
-    @Test(expected = IllegalArgumentException::class)
-    fun `isRingDefinedClockwise for empty list fails`() {
-        emptyList<LatLon>().isRingDefinedClockwise()
-    }
-
-    @Test fun isRingDefinedClockwise() {
-        val polygon = p(0.0, 0.0).createRhombus(1.0)
-        assertFalse(polygon.isRingDefinedClockwise())
-        assertTrue(polygon.reversed().isRingDefinedClockwise())
-    }
-
-    @Test fun `isRingDefinedClockwise for ring on 180th meridian`() {
-        val polygon = p(180.0, 0.0).createRhombus(1.0)
-        assertFalse(polygon.isRingDefinedClockwise())
-        assertTrue(polygon.reversed().isRingDefinedClockwise())
-    }
+    //region isInMultipolygon
 
     @Test fun isInMultipolygon() {
         val origin = p(0.0, 0.0)
@@ -758,6 +829,10 @@ class SphericalEarthMathTest {
         assertFalse(p.isInPolygon(way))
         assertFalse(p.isInMultipolygon(listOf(way)))
     }
+
+    //endregion
+
+    //region measuredArea
 
     @Test fun `polygon area is 0 for a polygon with less than 3 edges`() {
         val twoEdges = listOf(p(0.0, 0.0), p(1.0, 0.0), p(1.0, 1.0))
@@ -783,105 +858,148 @@ class SphericalEarthMathTest {
         assertTrue(square.measuredArea() > 0)
     }
 
-    /* +++++++++++++++++++++++++++++ test intersection check +++++++++++++++++++++++++++ */
+    //endregion
 
-    @Test fun `two lines intersect at endpoints`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(1.0, 0.0)
-        val q1 = p(0.0, 1.0)
-        val q2 = p(1.0, 0.0)
+    //endregion
 
-        val i = intersectionOf(p1, p2, q1, q2)!!
-        assertEquals(p2.longitude, i.longitude, 1e-9)
-        assertEquals(p2.latitude, i.latitude, 1e-9)
+    //region Bounding Box extension functions
+
+    @Test fun `contains works`() {
+        val bbox = bbox(-1.0, -2.0, 1.0, 2.0)
+        assertTrue(bbox.contains(p(-2.0, -1.0)))
+        assertTrue(bbox.contains(p(+2.0, -1.0)))
+        assertTrue(bbox.contains(p(-2.0, +1.0)))
+        assertTrue(bbox.contains(p(+2.0, +1.0)))
+        assertTrue(bbox.contains(p(+0.0, +0.0)))
+
+        assertFalse(bbox.contains(p(-2.1, 0.0)))
+        assertFalse(bbox.contains(p(+2.1, 0.0)))
+        assertFalse(bbox.contains(p(0.0, -1.1)))
+        assertFalse(bbox.contains(p(0.0, +1.1)))
     }
 
-    @Test fun `two lines intersect at start points`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(1.0, 0.0)
-        val q1 = p(0.0, 0.0)
-        val q2 = p(1.0, 1.0)
+    @Test fun `contains works at 180th meridian`() {
+        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
+        assertTrue(bbox.contains(p(179.0, 0.0)))
+        assertTrue(bbox.contains(p(179.0, 1.0)))
+        assertTrue(bbox.contains(p(180.0, 0.0)))
+        assertTrue(bbox.contains(p(180.0, 1.0)))
+        assertTrue(bbox.contains(p(-179.0, 0.0)))
+        assertTrue(bbox.contains(p(-179.0, 1.0)))
+        assertTrue(bbox.contains(p(-180.0, 0.0)))
+        assertTrue(bbox.contains(p(-180.0, 1.0)))
 
-        val i = intersectionOf(p1, p2, q1, q2)!!
-        assertEquals(p1.longitude, i.longitude, 1e-9)
-        assertEquals(p1.latitude, i.latitude, 1e-9)
+        assertFalse(bbox.contains(p(0.0, 0.0)))
     }
 
-    @Test fun `two lines intersect somewhere in the middle`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(2.0, 0.0)
-        val q1 = p(0.0, 1.0)
-        val q2 = p(2.0, -1.0)
-
-        val i = intersectionOf(p1, p2, q1, q2)!!
-        assertEquals(1.0, i.longitude, 1e-9)
-        assertEquals(0.0, i.latitude, 1e-9)
+    @Test fun `isCompletelyInside works`() {
+        val bbox1 = bbox(-1.0, -1.0, 1.0, 1.0)
+        val bbox2 = bbox(-0.5, -0.5, 0.5, 1.0)
+        assertTrue(bbox2.isCompletelyInside(bbox1))
+        assertFalse(bbox1.isCompletelyInside(bbox2))
     }
 
-    @Test fun `two lines do not intersect somewhere after segment p`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(4.0, 0.0)
-        val q1 = p(0.0, 2.0)
-        val q2 = p(1.0, 1.0)
-
-        assertNull(intersectionOf(p1, p2, q1, q2))
+    @Test fun `isCompletelyInside works at 180th meridian`() {
+        val bbox1 = bbox(0.0, 179.0, 1.0, -179.0)
+        val bbox2 = bbox(0.0, 179.5, 0.5, -179.5)
+        assertTrue(bbox2.isCompletelyInside(bbox1))
+        assertFalse(bbox1.isCompletelyInside(bbox2))
     }
 
-    @Test fun `two lines do not intersect somewhere after segment q`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(1.0, 0.0)
-        val q1 = p(0.0, 1.0)
-        val q2 = p(4.0, -1.0)
-
-        assertNull(intersectionOf(p1, p2, q1, q2))
+    @Test fun `enlargedBy really enlarges bounding box`() {
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        assertTrue(bbox.isCompletelyInside(bbox.enlargedBy(1.0)))
     }
 
-    @Test fun `two lines do not intersect somewhere before segment p`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(0.0, 1.0)
-        val q1 = p(-2.0, -1.0)
-        val q2 = p(0.0, 1.0)
-
-        assertNull(intersectionOf(p1, p2, q1, q2))
+    @Test fun `enlargedBy really enlarges bounding box, even at 180th meridian`() {
+        val bbox1 = bbox(0.0, 179.0, 1.0, 180.0)
+        // enlarged bounding box should go over the 180th meridian
+        assertTrue(bbox1.isCompletelyInside(bbox1.enlargedBy(100.0)))
+        // here already bbox2 crosses the 180th meridian, maybe this makes a difference
+        val bbox2 = bbox(0.0, 179.0, 1.0, -179.0)
+        assertTrue(bbox2.isCompletelyInside(bbox2.enlargedBy(100.0)))
     }
 
-    @Test fun `two lines do not intersect somewhere before segment q`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(0.0, 4.0)
-        val q1 = p(4.0, 1.0)
-        val q2 = p(5.0, 2.0)
-
-        assertNull(intersectionOf(p1, p2, q1, q2))
+    @Test fun `bounding box not on same latitude do not intersect`() {
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val above = bbox(1.1, 0.0, 1.2, 1.0)
+        val below = bbox(-0.2, 0.0, -0.1, 1.0)
+        assertFalse(bbox.intersect(above))
+        assertFalse(bbox.intersect(below))
+        assertFalse(above.intersect(bbox))
+        assertFalse(below.intersect(bbox))
     }
 
-    @Test fun `two lines intersect that are on the same great circle`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(2.0, 0.0)
-        val q1 = p(4.0, 0.0)
-        val q2 = p(-2.0, 0.0)
-
-        assertEquals(p1, intersectionOf(p1, p2, q1, q2))
+    @Test fun `bounding box not on same longitude do not intersect`() {
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val left = bbox(0.0, -0.2, 1.0, -0.1)
+        val right = bbox(0.0, 1.1, 1.0, 1.2)
+        assertFalse(bbox.intersect(left))
+        assertFalse(bbox.intersect(right))
+        assertFalse(left.intersect(bbox))
+        assertFalse(right.intersect(bbox))
     }
 
-    @Test fun `two lines do not intersect that are on the same great circle`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(1.0, 0.0)
-        val q1 = p(3.0, 0.0)
-        val q2 = p(2.0, 0.0)
-
-        assertNull(intersectionOf(p1, p2, q1, q2))
+    @Test fun `intersecting bounding boxes`() {
+        val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+        val touchLeft = bbox(0.0, -0.1, 1.0, 0.0)
+        val touchUpperRightCorner = bbox(1.0, 1.0, 1.1, 1.1)
+        val completelyInside = bbox(0.4, 0.4, 0.8, 0.8)
+        val intersectLeft = bbox(0.4, -0.5, 0.5, 0.5)
+        val intersectRight = bbox(0.4, 0.8, 0.5, 1.2)
+        val intersectTop = bbox(0.9, 0.4, 1.1, 0.8)
+        val intersectBottom = bbox(-0.2, 0.4, 0.2, 0.6)
+        assertTrue(bbox.intersect(touchLeft))
+        assertTrue(bbox.intersect(touchUpperRightCorner))
+        assertTrue(bbox.intersect(completelyInside))
+        assertTrue(bbox.intersect(intersectLeft))
+        assertTrue(bbox.intersect(intersectRight))
+        assertTrue(bbox.intersect(intersectTop))
+        assertTrue(bbox.intersect(intersectBottom))
+        // and the other way around
+        assertTrue(touchLeft.intersect(bbox))
+        assertTrue(touchUpperRightCorner.intersect(bbox))
+        assertTrue(completelyInside.intersect(bbox))
+        assertTrue(intersectLeft.intersect(bbox))
+        assertTrue(intersectRight.intersect(bbox))
+        assertTrue(intersectTop.intersect(bbox))
+        assertTrue(intersectBottom.intersect(bbox))
     }
 
-    @Test fun `two lines intersect on the other side of the earth`() {
-        val p1 = p(0.0, 0.0)
-        val p2 = p(180.0, 0.0)
-        val q1 = p(-90.0, 1.0)
-        val q2 = p(90.0, -1.0)
-
-        val i = intersectionOf(p1, p2, q1, q2)!!
-        assertEquals(0.0, i.longitude, 1e-9)
-        assertEquals(0.0, i.latitude, 1e-9)
+    @Test fun `bounding box not on same longitude do not intersect, even on 180th meridian`() {
+        val bbox = bbox(0.0, 179.0, 1.0, -179.0)
+        val other = bbox(0.0, -178.0, 1.0, 178.0)
+        assertFalse(bbox.intersect(other))
+        assertFalse(other.intersect(bbox))
     }
+
+    @Test fun `intersecting bounding boxes at 180th meridian`() {
+        val bbox = bbox(0.0, 179.5, 1.0, -170.0)
+        val touchLeft = bbox(0.0, 179.0, 1.0, 180.0)
+        val touchUpperRightCorner = bbox(1.0, -170.0, 1.1, -169.0)
+        val completelyInside = bbox(0.4, 179.9, 0.8, -179.9)
+        val intersectLeft = bbox(0.4, 179.0, 0.5, 179.9)
+        val intersectRight = bbox(0.4, -179.0, 0.5, -150.0)
+        val intersectTop = bbox(0.9, 179.9, 1.1, -179.8)
+        val intersectBottom = bbox(-0.2, 179.9, 0.2, -179.8)
+        assertTrue(bbox.intersect(touchLeft))
+        assertTrue(bbox.intersect(touchUpperRightCorner))
+        assertTrue(bbox.intersect(completelyInside))
+        assertTrue(bbox.intersect(intersectLeft))
+        assertTrue(bbox.intersect(intersectRight))
+        assertTrue(bbox.intersect(intersectTop))
+        assertTrue(bbox.intersect(intersectBottom))
+        // and the other way around
+        assertTrue(touchLeft.intersect(bbox))
+        assertTrue(touchUpperRightCorner.intersect(bbox))
+        assertTrue(completelyInside.intersect(bbox))
+        assertTrue(intersectLeft.intersect(bbox))
+        assertTrue(intersectRight.intersect(bbox))
+        assertTrue(intersectTop.intersect(bbox))
+        assertTrue(intersectBottom.intersect(bbox))
+    }
+
+    //endregion
 
     companion object {
         private val HH = p(10.0, 53.5)
