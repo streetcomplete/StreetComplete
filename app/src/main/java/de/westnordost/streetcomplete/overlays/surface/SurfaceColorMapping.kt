@@ -58,7 +58,8 @@ val Surface.color get() = when (this) {
     // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
     WOOD, METAL, METAL_GRID
                        -> Color.GRAY
-    UNKNOWN, PAVED, UNPAVED,
+    UNKNOWN,
+    PAVED, UNPAVED, // overriden in getColor of note is note is not present
     // not encountered in normal situations, get the same as surface with surface:note
     CLAY, ARTIFICIAL_TURF, TARTAN
                        -> Color.BLACK
