@@ -46,7 +46,7 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
         "restaurant", "cafe", "internet_cafe",
         "cinema", "townhall", "embassy", "community_centre", "youth_centre", "library",
         "dentist", "doctors", "clinic", "veterinary", "animal_shelter",
-        "arts_centre", "ferry_terminal"
+        "arts_centre", "ferry_terminal", "prep_school",
     ),
     "tourism" to arrayOf("zoo", "aquarium", "gallery", "museum", "alpine_hut", "camp_site", "caravan_site"),
     "shop" to arrayOf(
