@@ -24,8 +24,9 @@ import kotlin.math.tan
 
 /** In meters. See https://en.wikipedia.org/wiki/Earth_radius#Mean_radius */
 const val EARTH_RADIUS = 6371000.0
-/** In meters. See https://en.wikipedia.org/wiki/Earth%27s_circumference */
-const val EARTH_CIRCUMFERENCE = 40000000.0
+/** In meters. See https://en.wikipedia.org/wiki/Earth%27s_circumference
+ *  Mean between polar and equator circumference */
+const val EARTH_CIRCUMFERENCE = (40007863.0 + 40075017.0) / 2.0
 
 //region LatLon extension functions
 
