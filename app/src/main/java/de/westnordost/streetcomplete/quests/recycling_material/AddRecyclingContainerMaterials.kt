@@ -26,6 +26,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
           amenity = recycling
           and recycling_type = container
           and access !~ private|no
+          and !note and !recycling:note and !note:recycling
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify what can be recycled in recycling containers"
