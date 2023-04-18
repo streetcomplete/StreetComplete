@@ -43,11 +43,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     private val overlayRegistry: OverlayRegistry by inject()
     private val prefs: SharedPreferences by inject()
     private val ctx = context
+    private val adapter = OverlaySelectionAdapter()
 
     init {
         val currentOverlay = selectedOverlayController.selectedOverlay
 
-        val adapter = OverlaySelectionAdapter()
         val fakeOverlays = getFakeCustomOverlays()
         adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + fakeOverlays
         adapter.selectedOverlay = if (currentOverlay is CustomOverlay)
@@ -79,7 +79,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         }
 
         if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
-            setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add)) { _,_ -> // todo: replace with shorter text to avoid 2 lines, but check weblate only translations first (add comment in line above)
+            setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add_button)) { _,_ ->
                 val newIdx = getCustomOverlayIndices(prefs).max() + 1
                 showOverlayCustomizer(newIdx)
             }
@@ -229,8 +229,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 selectedOverlayController.selectedOverlay = null
                 selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }
-        if (index != 0) // don't allow deleting first custom overlay
-            b.setNeutralButton(R.string.attach_photo_delete) { _, _ -> // todo: rename string, but first check whether it's translated on weblate only
+        if (index in indices)
+            b.setNeutralButton(R.string.delete_confirmation) { _, _ ->
                 val overlayName = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(R.string.custom_overlay_title))
                 Builder(ctx)
                     .setMessage(ctx.getString(R.string.custom_overlay_delete, overlayName))
@@ -244,9 +244,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                             if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index) {
                                 putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
                                 selectedOverlayController.selectedOverlay = null
+                                adapter.selectedOverlay = null
                             }
                         }
                         d?.dismiss()
+                        adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays()
                     }
                     .show()
             }

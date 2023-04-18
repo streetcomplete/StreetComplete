@@ -394,8 +394,8 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_color_info">Coloring details</string>
     <string name="custom_overlay_filter_info">Filtering details</string>
     <string name="custom_overlay_delete">Really delete %s?</string>
-    <string name="custom_overlay_add">New custom overlay</string>
-    <string name="attach_photo_delete">Delete</string>
+    <!-- custom_overlay_add_button should be short, so the button can be displayed in same line with the cancel button -->
+    <string name="custom_overlay_add_button">New custom</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>
     <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>
     <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
