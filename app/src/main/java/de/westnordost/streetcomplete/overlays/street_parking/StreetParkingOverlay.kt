@@ -43,6 +43,7 @@ class StreetParkingOverlay : Overlay {
     override val changesetComment = "Specify whether there is street parking and what kind"
     override val wikiLink: String = "Key:parking:lane"
     override val achievements = listOf(CAR)
+    override val isCreateNodeEnabled = true
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
         // roads
@@ -69,7 +70,7 @@ class StreetParkingOverlay : Overlay {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
         } else if (element == null || createNarrowingTrafficCalming(element.tags) != null) {
-            NarrowingTrafficCalmingForm()
+            LaneNarrowingTrafficCalmingForm()
         } else {
             null
         }
