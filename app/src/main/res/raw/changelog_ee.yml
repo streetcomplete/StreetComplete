@@ -1,6 +1,8 @@
 v53.0: |
   <ul>
   <li>Simplify adding / updating (conditional) road and path access</li>
+  <li>Allow selecting icon for custom overlay</li>
+  <li>Show tags matching color selector in custom overlay form</li>
   <li>Add more conditional maxspeed options</li>
   </ul>
 
