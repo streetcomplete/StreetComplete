@@ -177,9 +177,14 @@ fun LatLon.nearestPointOnArc(start: LatLon, end: LatLon): LatLon {
 }
 
 /** Returns the point on the given polyline that is closest to this point */
-fun LatLon.nearestPointOnArcs(polyline: List<LatLon>): LatLon {
-    val arc = polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
+fun LatLon.nearestPointOf(polyline: List<LatLon>): LatLon {
+    val arc = nearestArcOf(polyline)
     return nearestPointOnArc(arc.first, arc.second)
+}
+
+/** Returns the segment of the given polyline that is closest to this point */
+fun LatLon.nearestArcOf(polyline: List<LatLon>): Pair<LatLon, LatLon> {
+    return polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
 }
 
 //endregion
