@@ -108,7 +108,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 override val icon = ctx.resources.getIdentifier(
                     prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
                     "drawable", ctx.packageName
-                )
+                ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
                 override val wikiLink = it // index
             }
