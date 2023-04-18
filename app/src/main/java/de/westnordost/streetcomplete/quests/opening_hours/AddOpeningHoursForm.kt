@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import android.os.Bundle
 import android.view.Menu.NONE
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
@@ -18,6 +19,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -136,12 +139,23 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private fun showInputCommentDialog() {
         val dialogBinding = QuestOpeningHoursCommentBinding.inflate(layoutInflater)
+        val favs = LastPickedValuesStore(prefs, javaClass.simpleName, { it }, { it }, 10)
+        val lastValues = favs.get().mostCommonWithin(target = 3, historyCount = 5, first = 2).toList()
+        dialogBinding.commentInput.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                lastValues
+            )
+        )
 
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_openingHours_comment_title)
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = dialogBinding.commentInput.text.toString().replace("\"", "").trim()
+                val txtRaw = dialogBinding.commentInput.text.toString()
+                favs.add(txtRaw)
+                val txt = txtRaw.replace("\"", "").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(requireContext())
                         .setMessage(R.string.quest_openingHours_emptyAnswer)
@@ -152,6 +166,10 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
+            .create().apply { setOnShowListener {
+                dialogBinding.commentInput.requestFocus()
+                dialogBinding.commentInput.showDropDown()
+            } }
             .show()
     }
 

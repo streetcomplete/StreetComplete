@@ -12,11 +12,12 @@
         android:text="@string/quest_openingHours_comment_description"
         android:labelFor="@+id/commentInput"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/commentInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:completionThreshold="0"
         android:maxLength="253"
         />
 
