@@ -41,6 +41,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
+import de.westnordost.streetcomplete.screens.main.RecentLocationStore
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
@@ -80,6 +81,7 @@ abstract class AbstractOverlayForm :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -138,10 +140,6 @@ abstract class AbstractOverlayForm :
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
-
-        /** Positions the user was within a minute of the most recent location update,
-         * sorted by when location was added (more recent ones first) */
-        val recentLocations: List<Location>
 
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
@@ -392,7 +390,7 @@ abstract class AbstractOverlayForm :
 
     private suspend fun solve(action: ElementEditAction) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, listener?.recentLocations ?: emptyList())) {
+        if (!checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
             setLocked(false)
             return
         }

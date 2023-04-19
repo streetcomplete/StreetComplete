@@ -5,4 +5,5 @@ import org.koin.dsl.module
 
 val mainModule = module {
     single { LocationAvailabilityReceiver(get()) }
+    single { RecentLocationStore() }
 }

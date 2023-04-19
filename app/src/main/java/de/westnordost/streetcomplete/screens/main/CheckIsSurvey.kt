@@ -22,7 +22,7 @@ import kotlin.coroutines.resume
 suspend fun checkIsSurvey(
     context: Context,
     geometry: ElementGeometry,
-    locations: List<Location>
+    locations: Sequence<Location>
 ): Boolean {
     if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
         return true
@@ -51,7 +51,7 @@ suspend fun checkIsSurvey(
 
 private suspend fun isWithinSurveyDistance(
     geometry: ElementGeometry,
-    locations: List<Location>
+    locations: Sequence<Location>
 ): Boolean = withContext(Dispatchers.Default) {
     // suspending because distanceToArcs is slow
     locations.any { location ->

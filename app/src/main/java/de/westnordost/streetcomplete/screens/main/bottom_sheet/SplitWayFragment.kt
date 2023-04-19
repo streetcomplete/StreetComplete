@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.screens.main.RecentLocationStore
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.SoundFx
@@ -73,6 +74,7 @@ class SplitWayFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val soundFx: SoundFx by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
 
     override val elementKey: ElementKey by lazy { way.key }
 
@@ -87,10 +89,6 @@ class SplitWayFragment :
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
-
-        /** Positions the user was within a minute of the most recent location update,
-         * sorted by when location was added (more recent ones first) */
-        val recentLocations: List<Location>
 
         /** Called after the given way has been split in the frame of the given edit type */
         fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
@@ -155,7 +153,7 @@ class SplitWayFragment :
     private suspend fun splitWay() {
         binding.glassPane.isGone = false
         if (splits.size <= 2 || confirmManySplits()) {
-            if (checkIsSurvey(requireContext(), geometry, listener?.recentLocations ?: emptyList())) {
+            if (checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
                 val action = SplitWayAction(ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
                     elementEditsController.add(editType, way, geometry, "survey", action)
