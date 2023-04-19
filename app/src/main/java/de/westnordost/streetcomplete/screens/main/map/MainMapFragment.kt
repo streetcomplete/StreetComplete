@@ -151,26 +151,23 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         /* ---------------------------- MapLibre stuff --------------------------- */
 
-        // how to...
-        //  hide layers:
+        // how to best hide layers?
         //   layer.setFilter(Expression.literal(false))
-        //   maybe could also remove layer from style, todo: check whether one is clearly more performant
+        //   maybe could also remove layer from style, but didn't try yet
 
         // todo
         //  performance test when updating pins (maybe CustomGeometrySource could be faster than GeoJsonSource)
-        //  memory: in an area with a lot of pins, maplibre seems to use a lot of memory
-        //   but better check properly, because maybe it's similar to tangram, and noticeable just because it's doubled now
-        //   tangram only: huge spike to 250 mb in the start, then after loading quests and surface overlay: 200: 38+0+64+1+16+80 (java, native, graphics, stack, code, other)
-        //    save 20 mb graphics, 2 mb java when backgrounded
-        //   both: keeps rising a lot, stabilizes at 300 (38+0+92+1+23+143)
-        //    mgl adds 28 graphics, 7 code, 63 "other" -> probably not much different to tangram, especially considering that "other" likely is native stuff and thus 80 are for tangram anyway
-        //   -> memory might just be fine...
+        //   but looks like GeoJsonSource is the more usable one anyway, see below
         //  mapLibre always downloads "something" on startup: what is it, and why?
-        //   looks like it's some icons
+        //   looks like it's some icons (glyph / sprite urls)
         //    actually they are already present, does it really look whether there are new ones at every start?
         //    maybe just need to set different caching parameters... how?
+        //    or maybe this is fixed when using offline stuff
         //   remove it by adjusting the style?
-        //  hide pins of not-the-active quest
+        //  hide pins of not-the-active quest (just set a filter)
+        //  enable offline stuff
+        //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
+        //   see MapTilesDownloader
         //  see CurrentLocationMapComponent
 
         // performance observations when displaying many icons (symbols)
@@ -178,15 +175,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   -> use SymbolLayer and some source (GeoJson, or CustomGeometry)
         //  circle layer is much faster than symbol layer, when moving and especially when zooming
         //  enabling overlap makes things worse (probably because more symbols are displayed)
-        //  smaller images help (shrink images already when adding to style, instead of using a property)
+        //  smaller images help (shrink images already when adding to style, instead of using scale property)
         //  clustering helps noticeably, but still slower than circles
         //  not sorting symbols using symbolSortOrder (for priority) helps a lot
-        //   using one order per quest type considerably reduces performance impact of symbol sorting
+        //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
         //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is
         //    (almost?) as faster as not sorting (requires GeoJsonSource and sorting the list of pins)
 
         // add used images for quests pins and other icons
-        // todo: here we should use pins, not round icons... just create LayerDrawables?
+        // todo: here we should use pins, not round icons... simply create LayerDrawables?
         questTypeRegistry.forEach {
             val drawable = resources.getDrawable(it.icon)
             val bitmap = drawable.createBitmap(
@@ -199,10 +196,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // this is only recommended for monochrome icons, and allows using halo stuff for symbols (for mimicking tangram icons with outline)
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
         TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true) }
-        // here also the icons from pinIcons should be loaded
+        // todo: here also the icons from pinIcons should be loaded
 
         // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
-        // this mimics tangram behavior, and improves performance when there are many icons
+        // this mimics tangram behavior, and noticeeably improves performance when there are many icons
         // defaults: 300, 0, true
         style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
 
@@ -218,28 +215,34 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
          *  actually we would need at least the scroll animation to be longer for more tangram-like feeling, but no setting for that
          *  better / more tangram-like animation is not implemented: https://github.com/maplibre/maplibre-gl-native/issues/25
          *   apparently it may be slow, but tangram is really fast here...
+         * flingAnimation: time and threshold should be in next MapLibre version (now: 10.0.2),
+         *  and should definitely be adjusted... sth like threshold 250 and time 500
          */
 
         // sources
         //  GeoJsonSource
-        //   need to set all features for each adjustment, though (visually) removing pins could be done via filter
+        //   need to set all features for each change, though (visually) removing pins could be done via filter
         //  CustomGeometrySource
         //   map queries data directly (by tile, giving bbox and zoom), and caches returned data (probably unless set to volatile)
-        //   queries happen at all zoom levels, which seems unnecessary... at least overscale might be used to ignore higher zoom levels
+        //   queries happen at all zoom levels, which seems unnecessary... at least overscale can be used to ignore higher zoom levels (than the 16 we use as base)
         //   arbitrary bbox can be invalidated, but is not reloaded if already in view (thus useless for updating pins)
         //   thus we would need to use setTileData when updating pins (maybe / hopefully only for the currently displayed tile)
         //    would be less data to set than for GeoJsonSource, but still far from single pins
         //    if we need to set multiple tiles (zoom levels!) at once, data might be even more than for GetJsonSource
         //   -> just keep the tangram way of caching pins (or maybe features) and use GeoJsonSource
-        //  clustering is a source option! which is really bad for https://github.com/streetcomplete/StreetComplete/issues/124#issuecomment-1137061717
-        //   but if we use 2 sources, this could be done and probably images could be used for clusters: https://github.com/mapbox/mapbox-gl-native/issues/16060
+        //  clustering is a source option, not a layer option
+        //   this is really bad for https://github.com/streetcomplete/StreetComplete/issues/124#issuecomment-1137061717
+        //   because also the dots will be in the clusters (and thus not visible individually)
+        //   if we use 2 sources, this could be done
+        //   images (quest pins) could be used for clusters: https://github.com/mapbox/mapbox-gl-native/issues/16060
 
         // use a GeoJsonSource for quests, and one layer for pins and one for circles
         pinsSource = GeoJsonSource("pins-source", GeoJsonOptions().withBuffer(32)) // is the buffer relevant? default value is 128, so this should load less data fromm adjacent tiles
         style.addSource(pinsSource!!)
 
-        // starting attempt for CustomGeometrySource
-/*        val options = CustomGeometrySourceOptions()
+        // discarded attempt for CustomGeometrySource
+/*
+        val options = CustomGeometrySourceOptions()
             .withMaxZoom(16) // avoids requesting data at zoom higher than 16 (thanks to overscale)
             .withMinZoom(16) // but this does not mean data from z16 is used on z15 -> how to do? or just have the same data at multiple zoom levels?
         val customGeometrySource = CustomGeometrySource("custom-source", options, object : GeometryTileProvider {
@@ -251,12 +254,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         customGeometrySource.maxOverscaleFactorForParentTiles = 10 // use data at higher zoom levels
         style.addSource(customGeometrySource)
 
-        style.addLayer(SymbolLayer("custom-geo", "custom-source")) // like below
+        style.addLayer(SymbolLayer("custom-geo", "custom-source"))
 */
 
         // use a symbol layer for the pins
         pinsLayer = SymbolLayer("pins-layer", "pins-source")
-
             // set icon from feature property
             .withProperties(PropertyFactory.iconImage("{icon-image}")) // take icon name from icon-image property of feature
             //.withProperties(PropertyFactory.iconImage(Expression.get("icon-image"))) // does the same, but feels slower (nothing conclusive though)
@@ -268,15 +270,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 //  this is more performant than symbolSortKey, and appears to be working as intended (test some more?)
 
             // set icon size
-            // no, better set icon size when creating the drawable
-            //  this is faster when there are lots of pins
-            //.withProperties(PropertyValue("icon-size", 0.3f))
+            // no, better set icon size when creating the drawable: this is much faster when there are lots of pins
+            //.withProperties(PropertyValue("icon-size", 0.35f))
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
 
-        // add a circle layer using the pinsSource
+        // add a circle layer using the pinsSource (could actually also be a symbol layer using the dot image, but circles are fast!)
         val pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
-            // set fixed properties instead of using feature properties, as circles are all the same
+            // set fixed properties, circles are all the same
             .withProperties(
                 PropertyFactory.circleColor("white"),
                 PropertyFactory.circleStrokeColor("black"),
@@ -288,14 +289,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
         style.addLayerBelow(pinsDotLayer, "pins-layer")
 
-        super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
+        super.onMapReady(mapView, mapboxMap, style) // arguemnts are a leftover from initial implementation, maybe change?
 
         // add click listeners
         mapboxMap.addOnMapClickListener { pos ->
-
             // check whether we clicked a feature
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
-            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills") // only query this specific layer(s)
+            // only query this specific layer(s), leave layerIds empty for querying all layers
+            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {
@@ -355,7 +356,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.lineOpacity(Expression.get("opacity")),
                 PropertyFactory.lineOffset(changeDistanceWithZoom("offset")),
                 PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
-                PropertyFactory.lineDasharray(arrayOf(1.5f, 1f)), // todo: depends on zoom, but re-evaluated only at integer zoom borders
+                PropertyFactory.lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
 //                PropertyFactory.lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
             )
         style.addLayerBelow(overlayDashedLineLayer, "pins-layer")
@@ -365,12 +366,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
                 PropertyFactory.lineColor(Expression.get("color")),
                 PropertyFactory.lineOpacity(Expression.get("opacity")),
-                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")), // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
+                // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
+                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")),
                 PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
-                // there is no "lineOutlineColor", so how to copy the tangram overlay style?
+                // there is no "lineOutlineColor", so how to properly copy the tangram overlay style?
             )
         style.addLayerBelow(overlayLineLayer, "pins-layer") // means: above the dashed layer
 
+        // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
         val overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
             .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
 //            .withProperties(PropertyFactory.fillColor(Expression.get("color")))
@@ -390,19 +393,22 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.textOffset(arrayOf(1.5f, 0f)), // todo: only if icon -> use expression?
                 PropertyFactory.textMaxWidth(5f),
                 PropertyFactory.textHaloColor("white"),
-                PropertyFactory.textHaloWidth(1.5f),
+                PropertyFactory.textHaloWidth(1.5f), // works as expected, while for icons it doesn't
                 PropertyFactory.iconColor("black"),
                 PropertyFactory.iconHaloColor("white"),
-                PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... but for text it just works normally?
+                PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
 //                PropertyFactory.iconHaloBlur(2f),
             )
         style.addLayerBelow(overlaySymbolLayer, "pins-layer")
 
+        // for highlighted nearby
+        // keep AnnotationManagers? or use layers? not enough icons to be relevant for performance
         geometrySymbolManager = SymbolManager(mapView, mapboxMap, style)
         geometryLineManager = LineManager(mapView, mapboxMap, style)
         geometryFillManager = FillManager(mapView, mapboxMap, style)
         geometryCircleManger = CircleManager(mapView, mapboxMap, style)
 
+        // for quest geometry
         geometrySource = GeoJsonSource("geometry-source")
         style.addSource(geometrySource!!)
 
@@ -703,11 +709,11 @@ fun changeDistanceWithZoom(lineWidth: Float): Expression =
     )
 
 // expression for line width dependent on zoom (if we want width in meters)
+// this seems to work reasonably well, but probably should be done in the style json
 fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
     // todo: actually the style json uses 1.5 and 1.3 as base (depends for what), so overlay lines change size compared to roads
     //  also tangram seems to use something like 1.5
     Expression.interpolate(Expression.exponential(BASE), Expression.zoom(),
-        // divide by FACTOR because we use division here...
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
         Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )
