@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.custom
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -29,20 +30,26 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val filter = try {
-            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, prefs), "")?.toElementFilterExpression() ?: return emptySequence()
+            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, prefs), "")
+                ?.toElementFilterExpression() ?: return emptySequence()
         } catch (e: ParseException) { return emptySequence() }
         val colorKeySelector = try {
-            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")?.takeIf { it.isNotEmpty() }?.toRegex()
+            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")
+                ?.takeIf { it.isNotBlank() }?.toRegex()
+        } catch (_: Exception) { null }
+        val dashFilter = try {
+            val string = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, prefs), "")?.takeIf { it.isNotBlank() }
+            string?.let { "ways with $it".toElementFilterExpression() }
         } catch (_: Exception) { null }
         return mapData
             .filter(filter)
-            .map { it to getStyle(it, colorKeySelector) }
+            .map { it to getStyle(it, colorKeySelector, dashFilter) }
     }
 
     override fun createForm(element: Element?) = CustomOverlayForm()
 }
 
-private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
+private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: ElementFilterExpression?): Style {
     val color by lazy {
         if (colorKeySelector == null) Color.LIME
         else createColorFromString(element.tags.mapNotNull {
@@ -95,12 +102,13 @@ private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
     return when {
         element is Node -> PointStyle("ic_custom_overlay_node", getNameLabel(element.tags), color)
         element.isArea() -> PolygonStyle(color, label = getNameLabel(element.tags))
+        // no labels for lines, because this often leads to duplicate labels e.g. for roads
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
-            stroke = centerColor?.let { StrokeStyle(it) },
+            stroke = centerColor?.let { StrokeStyle(it, dashFilter?.matches(element) == true) },
             strokeLeft = leftColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) },
             strokeRight = rightColor.takeIf { it.isNotEmpty() }?.let { StrokeStyle(it) }
         )
-        else -> PolylineStyle(StrokeStyle(color)) // no label for lines, because this often leads to duplicate labels e.g. for roads
+        else -> PolylineStyle(StrokeStyle(color, dashFilter?.matches(element) == true))
     }
 }
 

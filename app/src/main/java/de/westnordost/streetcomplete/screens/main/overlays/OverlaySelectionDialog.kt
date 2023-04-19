@@ -110,6 +110,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
                 override val wikiLink = index
+                override fun equals(other: Any?): Boolean {
+                    if (other !is Overlay) return false
+                    return wikiLink == other.wikiLink // we only care about index!
+                }
             }
         }
     }
@@ -122,6 +126,17 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         val title = EditText(ctx).apply {
             setHint(R.string.name_label)
             setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ""))
+        }
+        val iconList = LinkedHashSet<Int>(questTypeRegistry.size).apply {
+            add(R.drawable.ic_custom_overlay)
+            questTypeRegistry.forEach { add(it.icon) }
+        }.toList()
+        val iconSpinner = Spinner(ctx).apply {
+            adapter = ArrayImageAdapter(ctx, iconList)
+            val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
+            setSelection(iconList.indexOf(selectedIcon))
+            dropDownWidth = ctx.dpToPx(48).toInt()
+            layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
         }
         val filterText = TextView(ctx).apply {
             setText(R.string.custom_overlay_filter_info)
@@ -173,11 +188,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             }
             try {
                 filterString().toElementFilterExpression()
-                d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = true }
+                d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
             }
             catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
-                Toast.makeText(this.ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-                d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = tag.text.isEmpty() }
+                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                d?.getButton(BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
             }
         }
         val colorText = TextView(ctx).apply {
@@ -206,21 +221,33 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
                 }
                 catch (e: Exception) {
-                    Toast.makeText(this@OverlaySelectionDialog.ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
                 }
             }
         }
-        val iconList = LinkedHashSet<Int>(questTypeRegistry.size).apply {
-            add(R.drawable.ic_custom_overlay)
-            questTypeRegistry.forEach { add(it.icon) }
-        }.toList()
-        val iconSpinner = Spinner(ctx).apply {
-            adapter = ArrayImageAdapter(ctx, iconList)
-            val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
-            setSelection(iconList.indexOf(selectedIcon))
-            dropDownWidth = ctx.dpToPx(48).toInt()
-            layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
+        val dashFilter = EditText(ctx).apply {
+            setHint(R.string.custom_overlay_dash_filter_hint)
+            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), "")!!)
+            doAfterTextChanged { text ->
+                if (text.isNullOrBlank()) {
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
+                    return@doAfterTextChanged
+                }
+
+                if (text.count { it == '(' } != text.count { it == ')' }) {
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
+                    return@doAfterTextChanged
+                }
+                try {
+                    "ways with $text".toElementFilterExpression()
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
+                }
+                catch (e: Exception) {
+                    Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
+                }
+            }
         }
         val linearLayout = LinearLayout(ctx).apply {
             orientation = LinearLayout.VERTICAL
@@ -235,6 +262,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             addView(relations)
             addView(colorText)
             addView(color)
+            addView(dashFilter)
             setPadding(30,10,30,10)
         }
         val indices = getCustomOverlayIndices(prefs).sorted()
@@ -249,9 +277,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
                     putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
-                    if (index !in indices) // add if it's new
+                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
+                    if (index !in indices) { // add if it's new, and selet it immediately
                         putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
-                    putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
+                        putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
+                    }
                 }
                 // switch to overlay if we're editing current one or if it's new
                 if (index !in indices || (index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) && selectedOverlayController.selectedOverlay is CustomOverlay)) {
@@ -271,10 +301,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(R.string.delete_confirmation) { _, _ ->
                         prefs.edit {
-                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index))
-                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index))
-                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index))
-                            remove(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index))
+                            prefs.all.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) remove(it) }
                             putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
                             if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index) {
                                 putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
