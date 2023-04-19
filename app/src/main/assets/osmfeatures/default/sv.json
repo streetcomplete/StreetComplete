@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Administrativ nivå"
                 },
+                "advertising": {
+                    "label": "Typ"
+                },
                 "aerialway": {
                     "label": "Typ"
                 },
@@ -516,6 +519,67 @@
                 },
                 "building": {
                     "label": "Byggnad",
+                    "options": {
+                        "allotment_house": "Hus på kolonilott",
+                        "apartments": "Lägenhetsbyggnad",
+                        "barn": "Lada",
+                        "boathouse": "Båthus",
+                        "bungalow": "Bungalow",
+                        "bunker": "Bunker",
+                        "cabin": "Stuga",
+                        "carport": "Carport",
+                        "cathedral": "Katedral",
+                        "chapel": "Kapell",
+                        "church": "Kyrkobyggnad",
+                        "civic": "Kommunal byggnad",
+                        "college": "Collegebyggnad",
+                        "commercial": "Kontorsbyggnad",
+                        "construction": "Byggnad under uppförande",
+                        "cowshed": "Kostall",
+                        "detached": "Fristående hus",
+                        "dormitory": "Elevhem",
+                        "farm": "Mangårdsbyggnad (bostadshus på gård)",
+                        "farm_auxiliary": "Gårdsbyggnader",
+                        "fire_station": "Brandstation",
+                        "garage": "Garage",
+                        "garages": "Garage",
+                        "ger": "Jurta",
+                        "grandstand": "Huvudläktare",
+                        "greenhouse": "Växthus",
+                        "hangar": "Hangar",
+                        "hospital": "Sjukhusbyggnad",
+                        "hotel": "Hotellbyggnad",
+                        "house": "Enfamiljshus",
+                        "houseboat": "Husbåt",
+                        "hut": "Koja",
+                        "industrial": "Industribyggnad",
+                        "kindergarten": "Förskolebyggnad",
+                        "manufacture": "Industiell produktionsbyggnad",
+                        "mosque": "Moskébyggnad",
+                        "office": "Kontorsbyggnad",
+                        "outbuilding": "Uthus",
+                        "pavilion": "Sportklubbhus",
+                        "public": "Offentlig byggnad",
+                        "residential": "Bostadshus",
+                        "retail": "Butiksbyggnad",
+                        "roof": "Tak",
+                        "ruins": "Ruinbyggnad",
+                        "school": "Skolbyggnad",
+                        "semidetached_house": "Delvist fristående hus",
+                        "service": "Teknikhus",
+                        "shed": "Skjul",
+                        "stable": "Stall",
+                        "stadium": "Stadionbyggnad",
+                        "static_caravan": "Villavagn",
+                        "sty": "Svinstia",
+                        "synagogue": "Synagogsbyggnad",
+                        "temple": "Tempelbyggnad",
+                        "terrace": "Terrasshus",
+                        "train_station": "Tågstationshus",
+                        "transportation": "Byggnad för kollektivtrafik",
+                        "university": "Universitetsbyggnad",
+                        "warehouse": "Lagerhus"
+                    },
                     "terms": "byggnad,hus,konstruktion,byggnadsverk,bygge,anläggning,fastighet,kåk"
                 },
                 "building/flats": {
@@ -610,7 +674,8 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "caravans": {
-                    "label": "Husvagn / Husbil"
+                    "label": "Husvagn / Husbil",
+                    "terms": "husvagn,husbil"
                 },
                 "cash_in": {
                     "label": "Insättning"
@@ -654,6 +719,26 @@
                 },
                 "clothes": {
                     "label": "Kläder",
+                    "options": {
+                        "babies": "Babykläder",
+                        "children": "Barnkläder",
+                        "denim": "Jeans-kläder",
+                        "fur": "Pälskläder",
+                        "hats": "Hattar",
+                        "maternity": "Mammakläder",
+                        "men": "Herrkläder",
+                        "motorcycle": "Motorcykelkläder",
+                        "oversize": "Kläder i stora storlekar",
+                        "socks": "Sockar",
+                        "sports": "Sportkläder",
+                        "suits": "Kostymer",
+                        "swimwear": "Badkläder",
+                        "traditional": "Traditionella plagg / folkdräkter",
+                        "underwear": "Underkläder",
+                        "wedding": "Bröllopskläder",
+                        "women": "Damkläder",
+                        "workwear": "Arbetskläder"
+                    },
                     "terms": "kläder,mode,klädsel,typ av kläder,klädestyp,klädtyp"
                 },
                 "club": {
@@ -1022,6 +1107,9 @@
                 "deposit/trolley": {
                     "label": "Deposition"
                 },
+                "depot": {
+                    "label": "Typ"
+                },
                 "depth": {
                     "label": "Djup (meter)"
                 },
@@ -1034,8 +1122,7 @@
                     "terms": "beskrivning,sammanfattning"
                 },
                 "design": {
-                    "label": "Design",
-                    "terms": "design,typ,utseende,masttyp,typ av stolpe,typ av mast,kraftledningsstolpe,typ av kraftledningsstolpe"
+                    "label": "Design"
                 },
                 "destination": {
                     "label": "Destinationer"
@@ -6967,10 +7054,6 @@
                     "name": "Cricketplan",
                     "terms": "cricket,cricketplan,kricket,kricketplan"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Ridområde",
-                    "terms": "ridning,rida,häst,ridskola,hästridning,stall,ryttare,häst*,ridklubb,ridhus,dressyr,hästhoppning,trav,galopp"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "Landhockeyplan",
                     "terms": "landhockeyplan,landhockey"
@@ -7825,6 +7908,10 @@
                 "office/energy_supplier": {
                     "name": "Energibolag",
                     "terms": "energibolag,elbolag,el,ström,energi,gas"
+                },
+                "office/engineer": {
+                    "name": "Ingenjörskontoret",
+                    "terms": "ingenjörskontoret,civilingenjör,elingenjör,ingenjör,ingenjörsfirma,maskiningenjör,byggnadsingenjör,teknisk ingenjör"
                 },
                 "office/estate_agent": {
                     "name": "Mäklare/bostadsförmedling",
@@ -9106,6 +9193,10 @@
                     "name": "Hälsokost",
                     "terms": "hälsokost,hälsa,viktminskning,hälsoprodukter,vitaminer,mineraler,hälsoörter"
                 },
+                "shop/nuts": {
+                    "name": "Nötbutik",
+                    "terms": "nötbutik,nöt,nötter,mandlar,cashewnötter,paranötter,kastanjer,kokosnötter,torkad frukt,hasselnötter,macadamia,jordnötter,pekannötter,pistagenötter,frön,valnötter"
+                },
                 "shop/optician": {
                     "name": "Optiker",
                     "terms": "optiker,synundersökning,glasögon,linser,ögon"
@@ -9141,10 +9232,6 @@
                 "shop/pet": {
                     "name": "Djurbutik",
                     "terms": "djuraffär,djur,husdjur,hund,hundar,katt,katter,djurmat,djurtillbehör,djurburar,akvarium,fisk"
-                },
-                "shop/pet_grooming": {
-                    "name": "Pälsvård för husdjur",
-                    "terms": "pälsvård för husdjur,pälsvård,husdjur,hund,trimning,hundvård"
                 },
                 "shop/photo": {
                     "name": "Fotoaffär",

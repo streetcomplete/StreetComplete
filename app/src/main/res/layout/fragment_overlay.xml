@@ -116,8 +116,8 @@
                             android:src="@drawable/ic_check_48dp"
                             android:scaleType="centerInside"
                             style="@style/RoundAccentButton"
-                            android:layout_width="72dp"
-                            android:layout_height="72dp"
+                            android:layout_width="@dimen/ok_button_size"
+                            android:layout_height="@dimen/ok_button_size"
                             android:padding="20dp"/>
 
                     </RelativeLayout>

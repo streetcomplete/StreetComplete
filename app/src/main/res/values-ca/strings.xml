@@ -958,7 +958,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_surface_value_concrete_plates">"Plaques de formigó"</string>
     <string name="quest_surface_value_concrete_lanes">"Línies de formigó"</string>
     <string name="quest_fireHydrant_diameter_title">"Quin és el diàmetre d'aquesta boca d'incendis?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Estàs segur? Moltes vegades el diametre es pot trobar al propi hidrant."</string>
     <string name="quest_diet_answer_no_food">"No té menjar"</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Recupera"</string>
@@ -1317,4 +1316,13 @@ Menejar ara?"</string>
     <string name="street_parking_staggered_on_street">"Al carrer alternant el costat"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialment al carrer alternant el costat"</string>
     <string name="quest_traffic_signals_sound_description">"Pista: Busca altaveus (poden ser grans o menuts). No sempre el so sona permanentment."</string>
+    <string name="quest_presets_duplicate">"Duplicat"</string>
+    <string name="label_block">"Bloc"</string>
+    <string name="quest_address_answer_block">"Es troba a un bloc..."</string>
+    <string name="quest_address_answer_no_block">"No és a un bloc..."</string>
+    <string name="quest_surface_value_mud">"Fang persistent"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Aquí no hi ha lavabo"</string>
+    <string name="unknown_surface_title">"Un altre tipus de superfície"</string>
+    <string name="overlay_surface">"Superfícies"</string>
+    <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
 </resources>

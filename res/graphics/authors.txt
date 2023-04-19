@@ -190,6 +190,11 @@ cycleway segregation/
     not_segregated.svg
     segregated_l.svg
     segregated_r.svg
+    allowed.svg
+    exclusive.svg
+    no.svg
+    with_sidewalk_l.svg
+    with_sidewalk.svg
 
 fire hydrant diameter/
     fire_hydrant_sign_de.svg    modified from https://commons.wikimedia.org/wiki/File:Hydrantenschild_mit_Legende.svg, Marvin Feiter
@@ -251,6 +256,7 @@ pins/
     car_air_compressor.svg
     car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
     choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
+    choker_borderless.svg           modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
     defibrillator.svg               (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
     fire_hydrant.svg
     information.svg

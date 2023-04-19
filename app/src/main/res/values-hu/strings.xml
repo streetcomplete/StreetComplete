@@ -953,7 +953,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_surface_value_concrete_plates">"Betonlapok"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonsávok"</string>
     <string name="quest_fireHydrant_diameter_title">"Milyen átmérő van megadva a tűzcsap tábláján?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Biztos? Néha az átmérő értéke a tűzcsapra rá van írva."</string>
     <string name="quest_diet_answer_no_food">"Nincs étel"</string>
     <string name="short_no_answer_on_button">"Nem"</string>
     <string name="restore_confirmation">"Visszaállít"</string>

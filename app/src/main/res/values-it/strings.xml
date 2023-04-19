@@ -957,7 +957,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_surface_value_concrete_plates">"Lastre di cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Linee in cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Sei Sicuro? Delle volte il diametro può essere trovato sull'idrante stesso."</string>
     <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Ripristina"</string>
@@ -1211,7 +1210,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_camp_type_tents_only">"Solo tende"</string>
     <string name="quest_camp_type_backcountry">"Campeggio fuoripista (niente strutture)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver misurato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver controllato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
     <string name="quest_recycling_type_pet">"Solo PET"</string>
     <string name="street_parking_street_width">"Larghezza strada: %s"</string>
     <string name="overlay_street_parking">"Parcheggio in strada"</string>
@@ -1307,4 +1306,13 @@ Spostarlo ora?"</string>
     <string name="street_parking_staggered_on_street">"Sulla strada su lati alterni"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parzialmente sulla strada su lati alterni"</string>
     <string name="quest_traffic_signals_sound_description">"Consiglio: cerca degli altoparlanti. Non tutti i segnali sonori sono attivabili tramite pulsante."</string>
+    <string name="quest_presets_duplicate">"Duplicato"</string>
+    <string name="label_block">"isolato"</string>
+    <string name="quest_address_answer_block">"È in un isolato..."</string>
+    <string name="quest_address_answer_no_block">"Non è in un isolato..."</string>
+    <string name="quest_surface_value_mud">"Fango persistente"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Non c'è un bagno qui"</string>
+    <string name="unknown_surface_title">"Altri tipi di supeficie"</string>
+    <string name="overlay_surface">"Superfici"</string>
+    <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
 </resources>

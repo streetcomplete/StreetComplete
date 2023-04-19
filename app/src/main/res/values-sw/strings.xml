@@ -917,7 +917,6 @@
     <string name="quest_surface_value_concrete_plates">"Sahani nzito"</string>
     <string name="quest_surface_value_concrete_lanes">"Njia za zege"</string>
     <string name="quest_fireHydrant_diameter_title">"Ni kipenyo gani kilichoainishwa kwenye ishara ya bomba hili la kuzima moto?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Una uhakika? Wakati mwingine kipenyo kinaweza kupatikana kwenye bomba la maji lenyewe."</string>
     <string name="quest_diet_answer_no_food">"Haina chakula"</string>
     <string name="short_no_answer_on_button">"Hapana"</string>
     <string name="restore_confirmation">"Rejesha"</string>

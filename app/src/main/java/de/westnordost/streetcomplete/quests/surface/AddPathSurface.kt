@@ -7,8 +7,10 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
+import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
@@ -23,7 +25,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
-            surface ~ paved|unpaved|cobblestone
+            surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
             and !surface:note
             and !note:surface
           )
@@ -44,7 +46,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is SurfaceAnswer -> {
-                answer.applyTo(tags)
+                answer.value.applyTo(tags)
             }
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"

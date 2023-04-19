@@ -12,36 +12,23 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
-class PinsMapComponent(ctrl: KtMapController) {
+class PinsMapComponent(private val ctrl: KtMapController) {
 
     private val pinsLayer: MapData = ctrl.addDataLayer(PINS_LAYER)
 
     /** Shows/hides the pins */
     var isVisible: Boolean
         get() = pinsLayer.visible
-        set(value) { pinsLayer.visible = value }
+        set(value) {
+            pinsLayer.visible = value
+            ctrl.requestRender()
+        }
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
         // first create all features, then set them (almost) at the same time, to visually compare which library is faster here
-        // impression: on start, MapLibre is faster, but once the app is fully running there is no difference
-        val tangramFeatures = pins.map { pin ->
-            // avoid creation of intermediate HashMaps.
-            val tangramProperties = listOf(
-                "type" to "point",
-                "kind" to pin.iconName,
-                "importance" to pin.importance.toString()
-            )
-            val properties = HashMap<String, String>()
-            properties.putAll(tangramProperties)
-            properties.putAll(pin.properties)
-            Point(pin.position.toLngLat(), properties)
-        }
-
-        // todo: does it actually make sense to supply 2 quests for the same position?
-        //  probably not, because for the quest to disappear, a source update is necessary anyway
-        //  -> this way it might be possible to reduce amount of data to set, which means faster setting and probably a faster map
-        //  (latter is not necessary in tangram, as it's really fast even with many pins)
+        // impression: on start, MapLibre is faster, but once the app is fully loaded there is no difference
+        val tangramFeatures = pins.map { it.tangramPoint }
 
         // do sorting here, because we can set the symbolZOrder to SYMBOL_Z_ORDER_SOURCE, which
         // is the order in which the source has the features
@@ -73,4 +60,17 @@ data class Pin(
     val iconName: String,
     val properties: Collection<Pair<String, String>> = emptyList(),
     val importance: Int = 0
-)
+) {
+    val tangramPoint by lazy {
+        // avoid creation of intermediate HashMaps.
+        val tangramProperties = listOf(
+            "type" to "point",
+            "kind" to iconName,
+            "importance" to importance.toString()
+        )
+        val props = HashMap<String, String>(properties.size + tangramProperties.size, 1f)
+        props.putAll(tangramProperties)
+        props.putAll(properties)
+        Point(position.toLngLat(), props)
+    }
+}

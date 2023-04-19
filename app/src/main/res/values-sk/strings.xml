@@ -953,7 +953,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_surface_value_concrete_plates">"Betónové panely"</string>
     <string name="quest_surface_value_concrete_lanes">"Betónové pruhy"</string>
     <string name="quest_fireHydrant_diameter_title">"Aký priemer je uvedený na značke tohto hydrantu?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Naozaj? Niekedy sa dá priemer nájsť priamo na samotnom hydrante."</string>
     <string name="quest_diet_answer_no_food">"Nemá žiadne jedlá"</string>
     <string name="short_no_answer_on_button">"Nie"</string>
     <string name="restore_confirmation">"Obnoviť"</string>

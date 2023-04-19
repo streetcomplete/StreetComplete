@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Verwaltungsebene"
                 },
+                "advertising": {
+                    "label": "Typ"
+                },
                 "aerialway": {
                     "label": "Typ"
                 },
@@ -516,6 +519,67 @@
                 },
                 "building": {
                     "label": "Gebäude",
+                    "options": {
+                        "allotment_house": "Kleingartenhaus",
+                        "apartments": "Mehrfamilienhaus",
+                        "barn": "Scheune",
+                        "boathouse": "Bootshaus",
+                        "bungalow": "Bungalow",
+                        "bunker": "Bunker",
+                        "cabin": "Blockhütte",
+                        "carport": "Carport",
+                        "cathedral": "Kathedrale",
+                        "chapel": "Kapellenbau",
+                        "church": "Kirchengebäude",
+                        "civic": "Öffentliches Gebäude",
+                        "college": "Hochschulgebäude",
+                        "commercial": "Gewerbegebäude",
+                        "construction": "im Bau befindliches Gebäude",
+                        "cowshed": "Kuhstall",
+                        "detached": "Freistehendes Einfamilienhaus",
+                        "dormitory": "Wohnheim",
+                        "farm": "Bauernhaus",
+                        "farm_auxiliary": "Landwirtschaftliches Nutzgebäude",
+                        "fire_station": "Feuerwehrgebäude",
+                        "garage": "Einzelgarage",
+                        "garages": "Mehrfach-/Blockgaragen",
+                        "ger": "Jurte",
+                        "grandstand": "Tribüne",
+                        "greenhouse": "Gewächshaus",
+                        "hangar": "Hangargebäude",
+                        "hospital": "Krankenhausgebäude",
+                        "hotel": "Hotelgebäude",
+                        "house": "Wohnhaus",
+                        "houseboat": "Hausboot",
+                        "hut": "Schutzhütte",
+                        "industrial": "Fabrikgebäude",
+                        "kindergarten": "Kindergartengebäude",
+                        "manufacture": "Industrielles Produktionsgebäude",
+                        "mosque": "Moscheegebäude",
+                        "office": "Bürogebäude",
+                        "outbuilding": "Nebengebäude",
+                        "pavilion": "Sportpavillon",
+                        "public": "Öffentliches Amtsgebäude",
+                        "residential": "Allgemeines Wohngebäude",
+                        "retail": "Geschäftsgebäude",
+                        "roof": "Dach",
+                        "ruins": "Künstliche Ruine",
+                        "school": "Schulgebäude",
+                        "semidetached_house": "Doppelhaushälfte",
+                        "service": "Versorgungsgebäude",
+                        "shed": "Schuppen",
+                        "stable": "Pferdestall",
+                        "stadium": "Stadiongebäude",
+                        "static_caravan": "Dauercamper",
+                        "sty": "Schweinestall",
+                        "synagogue": "Synagogengebäude",
+                        "temple": "Tempelgebäude",
+                        "terrace": "Reihenhäuser",
+                        "train_station": "Bahnhofsgebäude",
+                        "transportation": "Gebäude für den öffentlichen Verkehr",
+                        "university": "Universitätsgebäude",
+                        "warehouse": "Lagerhalle"
+                    },
                     "terms": "gebäude,haus,bauwerk"
                 },
                 "building/flats": {
@@ -610,7 +674,8 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "caravans": {
-                    "label": "Wohnmobile / Wohnwagen"
+                    "label": "Wohnmobile / Wohnwagen",
+                    "terms": "wohnwagen"
                 },
                 "cash_in": {
                     "label": "Einzahlmöglichkeit"
@@ -654,6 +719,26 @@
                 },
                 "clothes": {
                     "label": "Kleidung",
+                    "options": {
+                        "babies": "Babykleidung",
+                        "children": "Kinderkleidung",
+                        "denim": "Jeanskleidung",
+                        "fur": "Pelzwaren",
+                        "hats": "Hüte / Kappen / Mützen",
+                        "maternity": "Umstandskleidung",
+                        "men": "Männerkleidung",
+                        "motorcycle": "Motorradbekleidung",
+                        "oversize": "Übergrößen",
+                        "socks": "Strümpfe",
+                        "sports": "Sportkleidung",
+                        "suits": "Anzüge",
+                        "swimwear": "Badebekleidung",
+                        "traditional": "Trachten",
+                        "underwear": "Unterwäsche",
+                        "wedding": "Hochzeitsbekleidung",
+                        "women": "Frauenkleidung",
+                        "workwear": "Arbeitskleidung"
+                    },
                     "terms": "kleider,kleidung,bekleidung,klamotten"
                 },
                 "club": {
@@ -1022,6 +1107,9 @@
                 "deposit/trolley": {
                     "label": "Pfand"
                 },
+                "depot": {
+                    "label": "Typ"
+                },
                 "depth": {
                     "label": "Tiefe (Meter)"
                 },
@@ -1034,8 +1122,7 @@
                     "terms": "beschreibung"
                 },
                 "design": {
-                    "label": "Design",
-                    "terms": "design,bauform"
+                    "label": "Design"
                 },
                 "destination": {
                     "label": "Ziel"
@@ -2022,6 +2109,10 @@
                         "war_memorial": "Kriegsmahnmal"
                     }
                 },
+                "message": {
+                    "label": "Art der Werbebotschaft",
+                    "terms": "slogan,botschaft,werbespruch"
+                },
                 "microbrewery": {
                     "label": "Hausbrauerei",
                     "terms": "mikrobrauerei"
@@ -2571,6 +2662,14 @@
                 "post": {
                     "label": "Zustelladresse"
                 },
+                "post_box/type": {
+                    "label": "Bauart",
+                    "options": {
+                        "lamp": "Befestigt an Pfosten/Mast",
+                        "pillar": "Freistehender Kasten",
+                        "wall": "Eingemauert"
+                    }
+                },
                 "power": {
                     "label": "Typ"
                 },
@@ -2667,6 +2766,10 @@
                 },
                 "ref/isil": {
                     "label": "ISIL-Code"
+                },
+                "ref/linz/place_id-NZ": {
+                    "label": "NZGB Ortskennung",
+                    "terms": "nzgb,linz"
                 },
                 "ref/vatin": {
                     "label": "Umsatzsteuer UID Nummer",
@@ -2804,6 +2907,20 @@
                 },
                 "route_master": {
                     "label": "Typ"
+                },
+                "royal_cypher": {
+                    "label": "Monogramm",
+                    "options": {
+                        "CIIIR": "CIIIR (Charles III)",
+                        "EIIR": "EIIR (Elizabeth II)",
+                        "EVIIIR": "EVIIIR (Edward VIII)",
+                        "EVIIR": "EVIIR (Edward VII)",
+                        "GR": "GR (George V)",
+                        "GVIR": "GVIR (George VI)",
+                        "VR": "VR (Victoria)",
+                        "no": "Nein",
+                        "scottish_crown": "Krone von Schottland"
+                    }
                 },
                 "ruins": {
                     "label": "Typ"
@@ -3202,7 +3319,8 @@
                     }
                 },
                 "street_cabinet": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "terms": "typ"
                 },
                 "stroller": {
                     "label": "Kinderwagenzugang",
@@ -3849,6 +3967,10 @@
                     "name": "Adresse",
                     "terms": "adresse"
                 },
+                "advertising": {
+                    "name": "Werbeträger",
+                    "terms": "werbeträger,werbemittel,werbung,werbeschild,schild,poster"
+                },
                 "advertising/billboard": {
                     "name": "Plakatwand",
                     "terms": "werbetafel,anschlagtafel,reklametafel,anschlagbrett"
@@ -4126,6 +4248,10 @@
                     "name": "Abtreibungsklinik",
                     "terms": "abtreibungsklinik,schwangerschaftsabbruchsklinik"
                 },
+                "amenity/clinic/dialysis": {
+                    "name": "Dialysezentrum",
+                    "terms": "nierenzentrum,dialyse,nephrologisches zentrum,dialysepraxis"
+                },
                 "amenity/clinic/fertility": {
                     "name": "Kinderwunschklinik",
                     "terms": "kinderwunschklinik,künstliche befruchtung,in-vitro-fertilisation,ivf"
@@ -4192,6 +4318,10 @@
                 "amenity/doctors/cardiology": {
                     "name": "Kardiologe",
                     "terms": "herzspezialist"
+                },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "Kinder- und Jugendpsychiater",
+                    "terms": "kinder- und jugendpsychiatrie,kinderpsychiatrie,jugendpsychiatrie,kinder- und jugendpsychiatrie und -psychotherapie,kinder- und jugendpsychiater,kinderpsychiater,jugendpsychiater,kjp,kjpd,psychiatrie,psychiater"
                 },
                 "amenity/doctors/dermatology": {
                     "name": "Hautarzt",
@@ -4268,6 +4398,10 @@
                 "amenity/doctors/proctology": {
                     "name": "Proktologe",
                     "terms": "kolorektale chirurgie,proktologie,darmspezialist,enddarm,mastdarm,analkanal"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "Psychiater",
+                    "terms": "psychiatrie"
                 },
                 "amenity/doctors/pulmonology": {
                     "name": "Lungenfacharzt",
@@ -4822,6 +4956,10 @@
                     "name": "Ambulante Unterstützung",
                     "terms": "ambulanter pflegedienst,streetwork"
                 },
+                "amenity/social_facility/assisted_living": {
+                    "name": "Einrichtung für betreutes Seniorenwohnen",
+                    "terms": "seniorenwohnen,altenwohnen,ältere,pflege,betreuung,altenpflege,seniorenwohnheim,seniorenpflege"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "Essensausgabe",
                     "terms": "essensausgabe,sozialmarkt,tafel,suppenküche,volksküche"
@@ -4837,6 +4975,10 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Seniorenpflegeheim",
                     "terms": "pflegeheim,seniorenpflegeheim,altersheim,seniorenheim,seniorenwohnheim,behindertenpflegeheim"
+                },
+                "amenity/stripclub": {
+                    "name": "Stripclub",
+                    "terms": "striplokal"
                 },
                 "amenity/studio": {
                     "name": "Ton-/Fernsehstudio",
@@ -5489,7 +5631,7 @@
                     "name": "Nebengebäude"
                 },
                 "building/pavilion": {
-                    "name": "Nebengebäude (Pavillon)",
+                    "name": "Sportpavillon",
                     "terms": "nebengebäude,pavillion"
                 },
                 "building/public": {
@@ -5509,8 +5651,8 @@
                     "terms": "dach"
                 },
                 "building/ruins": {
-                    "name": "Verlassenes Gebäude",
-                    "terms": "verlassenes gebäude"
+                    "name": "Künstliche Ruine",
+                    "terms": "verlassenes gebäude,ruine"
                 },
                 "building/school": {
                     "name": "Schulgebäude",
@@ -5533,7 +5675,7 @@
                     "terms": "stallungen,stallgebäude,stall"
                 },
                 "building/stadium": {
-                    "name": "Stadion",
+                    "name": "Stadiongebäude",
                     "terms": "stadiongebäude"
                 },
                 "building/static_caravan": {
@@ -5946,6 +6088,10 @@
                 "entrance/main": {
                     "name": "Haupteingang",
                     "terms": "eingangstür,tür,eingang,hauptzugang,zugang"
+                },
+                "entrance/staircase": {
+                    "name": "Treppenhauseingang",
+                    "terms": "treppe,treppenhaus,stiege,stiegenhaus,treppenaufgang,tür,eingang,zugang,aufgang"
                 },
                 "ford": {
                     "name": "Furt (Gewässerquerung)",
@@ -6361,7 +6507,7 @@
                     "terms": "parkplatzfahrgasse,fahrweg auf parkplatzflächen"
                 },
                 "highway/service_area": {
-                    "name": "Befestigte Betriebsfläche"
+                    "name": "Betriebs-/Rangierfläche"
                 },
                 "highway/services": {
                     "name": "Raststätte mit Tankstelle/Restaurant",
@@ -6640,6 +6786,10 @@
                 "landuse/industrial": {
                     "name": "Industriegebiet",
                     "terms": "fabrikgelände,industriegelände,industriegegend,industrie,fabriken,industrielles gebäude"
+                },
+                "landuse/industrial/depot": {
+                    "name": "Depot",
+                    "terms": "fahrzeugpark,bauhof,betriebshof,busbetriebshof,bushof,straßenbahn-betriebshof,straßenbahndepot,omnibusdepot"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "Schrottplatz",
@@ -6988,7 +7138,7 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "Reitplatz",
-                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz"
+                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz,rodeo"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Hockeyfeld",
@@ -7402,6 +7552,26 @@
                 "man_made/street_cabinet": {
                     "name": "Schaltschrank im Freien",
                     "terms": "kabel-tv-schrank überwachungsbox,telekomunikationsschrank,ampelsteuerungsschrank"
+                },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "Postablagekasten",
+                    "terms": "postsammelkasten,briefablagekaste,briefsammelkasten"
+                },
+                "man_made/street_cabinet/traffic_control": {
+                    "name": "Schaltschrank mit Ampelsteuerungstechnik",
+                    "terms": "schaltschrank,verkehrssteuerung,ampelsteuerung,lichtsignalsteuerung,verkehrsautomatisierung,ampelautomatisierungssystem,verkehrssteuerungssystem,technikschrank,straßenschrank,verteilerschrank"
+                },
+                "man_made/street_cabinet/traffic_monitoring": {
+                    "name": "Schaltschrank mit Verkehrsmesstechnik",
+                    "terms": "verkehrszählung,verkehrsmessung,verkehrsanalyse,verkehrserhebung,verkehrsüberwachung,verkehrsmanagement,fahrradzählung,fahrzeugzählung,seitenradar,straßenschrank,verteilerschrank,kabelschrank,schaltschrank,technikschrank"
+                },
+                "man_made/street_cabinet/transport_management": {
+                    "name": "Schaltschrank mit Verkehrssteuerungstechnik",
+                    "terms": "verkehrszählung,verkehrsmessung,verkehrsanalyse,verkehrserhebung,verkehrsüberwachung,verkehrsmanagement,fahrradzählung,fahrzeugzählung,seitenradar,straßenschrank,verteilerschrank,kabelschrank,schaltschrank,technikschrank"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "Mülltonnenbox",
+                    "terms": "müllbox,mülltonneneinfassung,mülltonnenverkleidung,müllsammelschrank"
                 },
                 "man_made/surveillance": {
                     "name": "Überwachung",
@@ -7853,6 +8023,10 @@
                 "office/energy_supplier": {
                     "name": "Energieversorgungsunternehmen",
                     "terms": "energieversorgungsunternehmen"
+                },
+                "office/engineer": {
+                    "name": "Ingenieurbüro",
+                    "terms": "ingenieur,statiker,tragwerksplaner,bauingenieur,elektroingenieur,maschinenbauingenieur"
                 },
                 "office/estate_agent": {
                     "name": "Immobilienmakler",
@@ -8631,6 +8805,10 @@
                 "railway/tram_stop": {
                     "name": "Straßenbahn-Halteplatz"
                 },
+                "railway/turntable": {
+                    "name": "Eisenbahn-Drehscheibe",
+                    "terms": "drehscheibe,drehbühne,segmentdrehscheibe,doppeldrehscheibe"
+                },
                 "railway/yard": {
                     "name": "Gleisharfe",
                     "terms": "gleisharfe,gleisfeld,gleisgruppe,ladestelle,güterbahnhof"
@@ -8703,8 +8881,9 @@
                     "terms": "babysachengeschäft,babybekleidungsgeschäft,babygeschäft,babyfachmarkt"
                 },
                 "shop/bag": {
-                    "name": "Taschenladen",
-                    "terms": "taschengeschäft,taschen/koffer-geschäft,reisegepäckgeschäft"
+                    "name": "Taschengeschäft",
+                    "terms": "taschen,koffer,reisegepäck,rollkoffer,reisetaschen,handtaschen,umhängetaschen",
+                    "aliases": "Koffergeschäft"
                 },
                 "shop/bakery": {
                     "name": "Bäckerei",
@@ -9136,6 +9315,10 @@
                     "name": "Nahrungsergänzungsmittelgeschäft",
                     "terms": "nahrungsergänzungsmittelgeschäft,vitaminpräparategeschäft,gewichtsreduktionspräparategeschäft"
                 },
+                "shop/nuts": {
+                    "name": "Nussgeschäft",
+                    "terms": "mandeln,cashews,paranüsse,kastanien,kokosnüsse,trockenfrüchte,haselnüsse,macadamia,nüsse,erdnüsse,pekannüsse,pistazien,samen,walnüsse"
+                },
                 "shop/optician": {
                     "name": "Optiker",
                     "terms": "brillengeschäft,optiker,augenoptiker"
@@ -9169,12 +9352,13 @@
                     "terms": "parfümerie,parfümgeschäft"
                 },
                 "shop/pet": {
-                    "name": "Tierhandlung",
-                    "terms": "tierhandlung,zoohandlung,zoofachgeschäft"
+                    "name": "Zoofachgeschäft",
+                    "terms": "tierhandlung,zoohandlung,zoofachgeschäft,tiernahrung,tierzubehör,haustier,goldfisch",
+                    "aliases": "Tierhandlung"
                 },
                 "shop/pet_grooming": {
-                    "name": "Tierpflegedienst, Tierfriseur (meist Hundesalon)",
-                    "terms": "hundefriseur,hundesalon,tierfriseur,tierpflegedienst"
+                    "name": "Tierfriseur",
+                    "terms": "hundefriseur,hundesalon,tierfriseur,tierpflegedienst,tierpflege"
                 },
                 "shop/photo": {
                     "name": "Fotofachgeschäft",
@@ -9225,8 +9409,8 @@
                     "terms": "second-hand-laden,trödel,trödelladen,gebrauchtwarenladen,brockenhaus,brockenstube,brocki"
                 },
                 "shop/sewing": {
-                    "name": "Kurzwarenladen",
-                    "terms": "nähzubehörgeschäft"
+                    "name": "Geschäft für Nähzubehör",
+                    "terms": "nähzubehör,kurzwaren,garn,stricken,nähen,häckeln,sticken,nähmaschinen,nadeln,stricknadeln"
                 },
                 "shop/shoe_repair": {
                     "name": "Schuhreparatur",

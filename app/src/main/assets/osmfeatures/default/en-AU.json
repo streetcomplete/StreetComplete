@@ -276,6 +276,11 @@
                     "name": "Street Light",
                     "terms": "streetlamp,street lamp,lamp,light,gaslight"
                 },
+                "highway/track": {
+                    "name": "Track / Land-Access Road",
+                    "terms": "fire trail",
+                    "aliases": "Fire Trail"
+                },
                 "highway/traffic_signals": {
                     "name": "Traffic Lights"
                 },

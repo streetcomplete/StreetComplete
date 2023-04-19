@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.util
 
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.text.Html
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.geometryType
-import java.util.Locale
 
 fun getNameAndLocationLabel(
     element: Element,
@@ -16,8 +17,9 @@ fun getNameAndLocationLabel(
     featureDictionary: FeatureDictionary,
     showHouseNumber: Boolean? = null
 ): CharSequence? {
-    val locales = getLocalesForFeatureDictionary(resources.configuration)
-    val feature = getFeatureName(element, featureDictionary, locales)
+    // only if geometry is not a node because at this point we cannot tell apart points vs vertices
+    val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
+    val feature = featureDictionary.getFeatureName(resources.configuration, element.tags, geometryType)
         ?.withNonBreakingSpaces()
         ?.inItalics()
     val name = getNameLabel(element.tags)
@@ -69,22 +71,18 @@ private fun getLocationHtml(
 }
 
 /** Returns the feature name only, e.g. "Bakery" */
-private fun getFeatureName(
-    element: Element,
-    featureDictionary: FeatureDictionary,
-    locales: Array<Locale?>
-): String? {
-    val builder = featureDictionary
-        .byTags(element.tags)
-        .isSuggestion(false)
-        .forLocale(*locales)
-
-    // only if geometry is not a node because at this point we cannot tell apart points vs vertices
-    if (element.type != ElementType.NODE) {
-        builder.forGeometry(element.geometryType)
-    }
-    return builder.find().firstOrNull()?.name
-}
+fun FeatureDictionary.getFeatureName(
+    configuration: Configuration,
+    tags: Map<String, String>,
+    geometryType: GeometryType? = null,
+): String? = this
+    .byTags(tags)
+    .isSuggestion(false)
+    .forLocale(*getLocalesForFeatureDictionary(configuration))
+    .forGeometry(geometryType)
+    .find()
+    .firstOrNull()
+    ?.name
 
 /** Returns a text that identifies the feature by name, ref, brand or whatever, e.g. "The Leaky Cauldron" */
 fun getNameLabel(tags: Map<String, String>): String? {

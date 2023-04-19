@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
@@ -27,98 +24,17 @@ class AddSidewalkSurfaceTest {
 
     @Test fun `applicable to road with sidewalk on only one side`() {
         assertIsApplicable("highway" to "residential", "sidewalk" to "left")
-
         assertIsApplicable("highway" to "residential", "sidewalk" to "right")
     }
 
     @Test fun `applicable to road with sidewalk on one side and separate sidewalk on the other`() {
         assertIsApplicable("highway" to "residential", "sidewalk:left" to "yes", "sidewalk:right" to "separate")
-
         assertIsApplicable("highway" to "residential", "sidewalk:left" to "separate", "sidewalk:right" to "yes")
     }
 
     @Test fun `applicable to road with sidewalk on one side and no sidewalk on the other`() {
         assertIsApplicable("highway" to "residential", "sidewalk:left" to "yes", "sidewalk:right" to "no")
-
         assertIsApplicable("highway" to "residential", "sidewalk:left" to "no", "sidewalk:right" to "yes")
-    }
-
-    @Test fun `apply asphalt surface on both sides`() {
-        questType.verifyAnswer(
-            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
-            StringMapEntryAdd("sidewalk:both:surface", "asphalt")
-        )
-    }
-
-    @Test fun `apply different surface on each side`() {
-        questType.verifyAnswer(
-            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.PAVING_STONES)),
-            StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
-            StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
-        )
-    }
-
-    @Test fun `apply generic surface on both sides`() {
-        questType.verifyAnswer(
-            SidewalkSurface(
-                SurfaceAnswer(Surface.PAVED_ROAD, "note"),
-                SurfaceAnswer(Surface.PAVED_ROAD, "note")),
-            StringMapEntryAdd("sidewalk:both:surface", "paved"),
-            StringMapEntryAdd("sidewalk:both:surface:note", "note")
-        )
-    }
-
-    @Test fun `updates check_date`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:surface" to "2000-10-10"),
-            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
-            StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
-        )
-    }
-
-    @Test fun `sidewalk surface changes to be the same on both sides`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            SidewalkSurface(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.CONCRETE)),
-            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
-            StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
-            StringMapEntryAdd("sidewalk:both:surface", "concrete")
-        )
-    }
-
-    @Test fun `sidewalk surface changes on each side`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            SidewalkSurface(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.GRAVEL)),
-            StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
-            StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
-        )
-    }
-
-    @Test fun `smoothness tag removed when surface changes, same on both sides`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:both:surface" to "asphalt", "sidewalk:both:smoothness" to "excellent"),
-            SidewalkSurface(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
-            StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
-            StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
-        )
-    }
-
-    @Test fun `remove smoothness when surface changes, different on each side`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:left:surface" to "asphalt",
-                "sidewalk:right:surface" to "concrete",
-                "sidewalk:left:smoothness" to "excellent",
-                "sidewalk:right:smoothness" to "good"
-            ),
-            SidewalkSurface(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
-            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
-            StringMapEntryDelete("sidewalk:right:surface", "concrete"),
-            StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
-            StringMapEntryDelete("sidewalk:right:smoothness", "good"),
-            StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
-        )
     }
 
     @Test fun `remove all sidewalk information`() {

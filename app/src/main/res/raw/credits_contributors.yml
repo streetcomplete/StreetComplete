@@ -1,13 +1,13 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 400715
-  linesOfInterfaceMarkupChanged: 142811
+  linesOfCodeChanged: 401261
+  linesOfInterfaceMarkupChanged: 142843
   assetFilesChanged: 1952
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17843
-  linesOfInterfaceMarkupChanged: 4956
-  assetFilesChanged: 618
+  linesOfCodeChanged: 20256
+  linesOfInterfaceMarkupChanged: 5176
+  assetFilesChanged: 634
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 17146
@@ -15,8 +15,8 @@
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 10662
-  linesOfInterfaceMarkupChanged: 831
+  linesOfCodeChanged: 11108
+  linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
   githubUsername: "ENT8R"
@@ -33,7 +33,7 @@
   assetFilesChanged: 69
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 2680
+  linesOfCodeChanged: 2933
   linesOfInterfaceMarkupChanged: 2180
   assetFilesChanged: 5
 - name: "YoshiRulz"
@@ -45,7 +45,7 @@
   linesOfInterfaceMarkupChanged: 3159
 - name: "Isira Seneviratne"
   githubUsername: "Isira-Seneviratne"
-  linesOfCodeChanged: 1743
+  linesOfCodeChanged: 1751
 - name: "Adrien Pavie"
   githubUsername: "PanierAvide"
   linesOfCodeChanged: 1639
@@ -134,6 +134,9 @@
 - name: "Ebrahim Byagowi"
   githubUsername: "ebraminio"
   linesOfCodeChanged: 108
+- name: "michalgwo"
+  githubUsername: "michalgwo"
+  linesOfCodeChanged: 106
 - name: "Swampeyfrog"
   githubUsername: "Southernswampfrog"
   linesOfCodeChanged: 104
@@ -213,6 +216,10 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "cyclingcat"
+  linesOfCodeChanged: 4
+- name: "MegaArthur"
+  linesOfCodeChanged: 4
 - name: "riQQ"
   githubUsername: "riQQ"
   linesOfCodeChanged: 4
@@ -221,10 +228,6 @@
   linesOfCodeChanged: 4
 - name: "Greg Oledzki"
   githubUsername: "mccartney"
-  linesOfCodeChanged: 4
-- name: "cyclingcat"
-  linesOfCodeChanged: 4
-- name: "MegaArthur"
   linesOfCodeChanged: 4
 - name: "Dominik Danelski"
   githubUsername: "Etua"
@@ -238,13 +241,16 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "Benoit Maggi"
+  githubUsername: "bmaggi"
+  linesOfCodeChanged: 2
+- name: "gileri"
+  linesOfCodeChanged: 2
 - name: "Alexander Bantyev"
   githubUsername: "balsoft"
   linesOfCodeChanged: 2
 - name: "Andrew Harvey"
   githubUsername: "andrewharvey"
-  linesOfCodeChanged: 2
-- name: "gileri"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
   githubUsername: "yrtimiD"

@@ -11,11 +11,9 @@ class AddAcceptsCardsTest {
     private val questType = AddAcceptsCards()
 
     @Test
-    fun `set stile as squeezer`() {
+    fun `sets expected tags`() {
         questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-            ),
+            mapOf(),
             CardAcceptance.DEBIT_AND_CREDIT,
             StringMapEntryAdd("payment:debit_cards", "yes"),
             StringMapEntryAdd("payment:credit_cards", "yes"),
@@ -23,7 +21,7 @@ class AddAcceptsCardsTest {
     }
 
     @Test
-    fun `applicable to grocery shops`() {
+    fun `applicable to greengrocer shops`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1, tags = mapOf("shop" to "greengrocer", "name" to "Foobar")),

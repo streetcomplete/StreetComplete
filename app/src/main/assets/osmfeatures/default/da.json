@@ -594,7 +594,10 @@
                     }
                 },
                 "craft": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "brewery": "Bryggeri"
+                    }
                 },
                 "crane/type": {
                     "label": "Krantype",
@@ -2500,6 +2503,11 @@
                 "aerialway/drag_lift": {
                     "name": "Træklift",
                     "terms": "træklift"
+                },
+                "aerialway/gondola": {
+                    "name": "Gondollift",
+                    "terms": "gondol,svævebane,svæve,kabel,kabelbane",
+                    "aliases": "Gondolbane"
                 },
                 "aerialway/goods": {
                     "name": "Varekabelbane",
@@ -5800,6 +5808,10 @@
                 },
                 "shop/fashion": {
                     "name": "Modebutik"
+                },
+                "shop/fireplace": {
+                    "name": "Brændeovnsforretning",
+                    "terms": "ovn,kamin,brænde,ild,ildsted,pejs,skorsten,opvarmning"
                 },
                 "shop/fishing": {
                     "name": "Fiskebutik",

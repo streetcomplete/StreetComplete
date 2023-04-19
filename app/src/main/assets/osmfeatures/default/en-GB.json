@@ -2816,9 +2816,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Cricket Field"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Horse Riding Arena"
-                },
                 "leisure/pitch/netball": {
                     "name": "Netball Court"
                 },
@@ -3672,9 +3669,6 @@
                 },
                 "shop/pet": {
                     "name": "Pet Shop"
-                },
-                "shop/pet_grooming": {
-                    "name": "Pet Grooming Shop"
                 },
                 "shop/photo": {
                     "name": "Photography Shop"

@@ -553,7 +553,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun hideOverlay() {
         styleableOverlayMapComponent?.isVisible = false
-        styleableOverlayMapComponent?.isVisible = false
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
@@ -714,6 +713,7 @@ fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
     // todo: actually the style json uses 1.5 and 1.3 as base (depends for what), so overlay lines change size compared to roads
     //  also tangram seems to use something like 1.5
     Expression.interpolate(Expression.exponential(BASE), Expression.zoom(),
+        // why didn't I use BASE.pow(7)?
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
         Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )

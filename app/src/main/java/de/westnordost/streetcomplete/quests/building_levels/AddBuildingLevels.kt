@@ -11,11 +11,14 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override val elementFilter = """
         ways, relations with
-         building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
-         and !building:levels
-         and !man_made
-         and location != underground
-         and ruins != yes
+           building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
+           and (
+               !building:levels
+               or !roof:levels and roof:shape and roof:shape != flat
+           )
+           and !man_made
+           and location != underground
+           and ruins != yes
     """
     override val changesetComment = "Specify building and roof levels"
     override val wikiLink = "Key:building:levels"

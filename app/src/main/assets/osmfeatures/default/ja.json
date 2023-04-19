@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Admin Level"
                 },
+                "advertising": {
+                    "label": "広告機器の種類"
+                },
                 "aerialway": {
                     "label": "種類"
                 },
@@ -434,7 +437,7 @@
                     "terms": "バイク＆ライド,駐輪＆バイク"
                 },
                 "bin": {
-                    "label": "ゴミ箱有無",
+                    "label": "ゴミ箱の有無",
                     "terms": "ゴミ箱,ごみ箱,廃棄物,空き缶,空き瓶,空きビン,空きカン"
                 },
                 "blind": {
@@ -516,6 +519,67 @@
                 },
                 "building": {
                     "label": "建物",
+                    "options": {
+                        "allotment_house": "分譲住宅",
+                        "apartments": "集合住宅（個々の建物）",
+                        "barn": "納屋",
+                        "boathouse": "ボートハウス",
+                        "bungalow": "バンガロー（建物）",
+                        "bunker": "バンカー",
+                        "cabin": "ログハウス（建物）",
+                        "carport": "カーポート",
+                        "cathedral": "聖堂（建物）",
+                        "chapel": "礼拝堂（建物）",
+                        "church": "教会（建物）",
+                        "civic": "市民向け施設（建物）",
+                        "college": "短大・高専・専門学校（建物）",
+                        "commercial": "商業全般用の建物",
+                        "construction": "建設中の建物",
+                        "cowshed": "牛小屋",
+                        "detached": "一戸建て住宅",
+                        "dormitory": "寮",
+                        "farm": "農家（居住用）",
+                        "farm_auxiliary": "農業補助施設全般（非居住用）",
+                        "fire_station": "消防署の建物",
+                        "garage": "車庫（建物）",
+                        "garages": "集合車庫（建物、大）",
+                        "ger": "ゲル",
+                        "grandstand": "メインスタンド",
+                        "greenhouse": "温室（建物）",
+                        "hangar": "ハンガー",
+                        "hospital": "病院（建物）",
+                        "hotel": "ホテル（建物）",
+                        "house": "住宅全般",
+                        "houseboat": "ハウスボート",
+                        "hut": "小屋",
+                        "industrial": "工場（建物）",
+                        "kindergarten": "幼稚園/保育園（建物）",
+                        "manufacture": "工業生産棟",
+                        "mosque": "モスク（建物）",
+                        "office": "オフィスビル",
+                        "outbuilding": "別棟",
+                        "pavilion": "競技場付属施設",
+                        "public": "公共建築物",
+                        "residential": "住居全般（建物）",
+                        "retail": "店舗用の建物",
+                        "roof": "屋根",
+                        "ruins": "廃墟（建物）",
+                        "school": "学校（建物）",
+                        "semidetached_house": "二世帯住宅",
+                        "service": "機械室（建物）",
+                        "shed": "物置",
+                        "stable": "厩",
+                        "stadium": "スタジアム（建物）",
+                        "static_caravan": "トレーラーハウス",
+                        "sty": "豚小屋",
+                        "synagogue": "シナゴーグ（建物）",
+                        "temple": "寺院（建物）",
+                        "terrace": "テラスハウス",
+                        "train_station": "駅舎",
+                        "transportation": "公共交通機関（建物）",
+                        "university": "大学（建物）",
+                        "warehouse": "倉庫"
+                    },
                     "terms": "建物,ビル"
                 },
                 "building/flats": {
@@ -610,7 +674,8 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "caravans": {
-                    "label": "キャンピングカー"
+                    "label": "キャンピングカー",
+                    "terms": "キャンパー,キャンピングトレーラー,トラベルトレーラー,キャラバン"
                 },
                 "cash_in": {
                     "label": "預入"
@@ -654,6 +719,26 @@
                 },
                 "clothes": {
                     "label": "服",
+                    "options": {
+                        "babies": "ベビー服",
+                        "children": "子供服",
+                        "denim": "ジーンズ",
+                        "fur": "毛皮",
+                        "hats": "帽子",
+                        "maternity": "妊婦服",
+                        "men": "男性服",
+                        "motorcycle": "バイク服",
+                        "oversize": "大きいサイズ",
+                        "socks": "靴下",
+                        "sports": "スポーツ服",
+                        "suits": "スーツ",
+                        "swimwear": "水着",
+                        "traditional": "伝統服（和服）",
+                        "underwear": "下着",
+                        "wedding": "婚礼服",
+                        "women": "女性服",
+                        "workwear": "作業着"
+                    },
                     "terms": "衣類,服,衣料,着物,和服,洋服,スーツ,古着,呉服"
                 },
                 "club": {
@@ -1022,6 +1107,9 @@
                 "deposit/trolley": {
                     "label": "デポジット"
                 },
+                "depot": {
+                    "label": "倉庫・車庫の種類"
+                },
                 "depth": {
                     "label": "深さ (メートル)"
                 },
@@ -1034,8 +1122,7 @@
                     "terms": "説明,概要,サマリー"
                 },
                 "design": {
-                    "label": "塔のデザイン",
-                    "terms": "塔のデザイン,デザイン"
+                    "label": "塔のデザイン"
                 },
                 "destination": {
                     "label": "行き先"
@@ -1232,15 +1319,15 @@
                     "label": "種類",
                     "options": {
                         "emergency": "非常口",
-                        "entrance": "出入口（入口専用）",
-                        "exit": "出入口（出口専用）",
-                        "garage": "出入口（車庫）",
-                        "home": "出入口（住居）",
-                        "main": "出入口（正面）",
-                        "secondary": "出入口（脇）",
-                        "service": "出入口（通用口）",
-                        "staircase": "出入口（階段）",
-                        "yes": "出入口（全般）"
+                        "entrance": "入口専用",
+                        "exit": "出口専用",
+                        "garage": "車庫",
+                        "home": "住居",
+                        "main": "正面",
+                        "secondary": "副出入口 (裏口ではない)",
+                        "service": "通用口",
+                        "staircase": "階段",
+                        "yes": "全般"
                     },
                     "terms": "種別,タイプ,種類"
                 },
@@ -2022,6 +2109,10 @@
                         "war_memorial": "戦争記念碑"
                     }
                 },
+                "message": {
+                    "label": "広告内容",
+                    "terms": "メッセージ,コマーシャル,公告,掲示"
+                },
                 "microbrewery": {
                     "label": "地ビール醸造所",
                     "terms": "醸造所,クラフトビール,蔵元"
@@ -2571,6 +2662,15 @@
                 "post": {
                     "label": "郵便受の配達先住所"
                 },
+                "post_box/type": {
+                    "label": "郵便ポストの種類",
+                    "options": {
+                        "community": "集合郵便受け付き",
+                        "lamp": "柱上",
+                        "pillar": "箱形自立",
+                        "wall": "壁面設置"
+                    }
+                },
                 "power": {
                     "label": "種類"
                 },
@@ -2667,6 +2767,10 @@
                 },
                 "ref/isil": {
                     "label": "ISILコード"
+                },
+                "ref/linz/place_id-NZ": {
+                    "label": "NZGB地名ID",
+                    "terms": "ニュージーランド,ニュージーランド地名辞典"
                 },
                 "ref/vatin": {
                     "label": "VAT ID 番号",
@@ -2804,6 +2908,20 @@
                 },
                 "route_master": {
                     "label": "種類"
+                },
+                "royal_cypher": {
+                    "label": "ロイヤル・サイファー",
+                    "options": {
+                        "CIIIR": "CIIIR （チャールズ3世）",
+                        "EIIR": "EIIR （エリザベス2世）",
+                        "EVIIIR": "EVIIIR （エドワード8世）",
+                        "EVIIR": "EVIIR （エドワード7世）",
+                        "GR": "GR （ジョージ5世）",
+                        "GVIR": "GVIR （ジョージ6世）",
+                        "VR": "VR （ヴィクトリア）",
+                        "no": "なし",
+                        "scottish_crown": "スコットランド王冠"
+                    }
                 },
                 "ruins": {
                     "label": "廃墟の種類"
@@ -3202,7 +3320,8 @@
                     }
                 },
                 "street_cabinet": {
-                    "label": "ストリートキャビネットの種類"
+                    "label": "ストリートキャビネットの種類",
+                    "terms": "キャビネット,ボックス,トランスボックス,筐体"
                 },
                 "stroller": {
                     "label": "ベビーカー利用可否",
@@ -3601,7 +3720,7 @@
                     "label": "トンネルの種類",
                     "options": {
                         "avalanche_protector": "雪崩防護施設",
-                        "building_passage": "建物通路",
+                        "building_passage": "建物貫通路",
                         "culvert": "暗渠"
                     }
                 },
@@ -3845,6 +3964,10 @@
                     "name": "住所",
                     "terms": "住所"
                 },
+                "advertising": {
+                    "name": "広告機器",
+                    "terms": "広告機器,看板,掲示板"
+                },
                 "advertising/billboard": {
                     "name": "広告(大看板)",
                     "terms": "掲示板,看板,広告,宣伝,屋外広告,広告用看板,広告(大看板),大看板,立て看板,道路"
@@ -3941,7 +4064,7 @@
                 },
                 "aeroway/helipad": {
                     "name": "ヘリパッド",
-                    "terms": "ヘリパッド,ヘリコプター発着所,ヘリポート"
+                    "terms": "ヘリパッド,ヘリコプター,ヘリポート,公共用ヘリポート,非公共用ヘリポート,飛行場外離着陸場,場外離着陸場,屋上緊急離着陸場,緊急離着陸場"
                 },
                 "aeroway/holding_position": {
                     "name": "航空機の停止位置",
@@ -4114,12 +4237,16 @@
                     "terms": "映画館,上映施設,スクリーン,銀幕,シネマ,芸術,娯楽,カルチャー"
                 },
                 "amenity/clinic": {
-                    "name": "クリニック（中規模病院）",
-                    "terms": "クリニック,病院,医療,医者"
+                    "name": "医療センター（通院のみ）",
+                    "terms": "クリニック,病院,医療,医者,通院,外来"
                 },
                 "amenity/clinic/abortion": {
                     "name": "中絶クリニック",
                     "terms": "中絶クリニック,病院,医療,医者,中絶"
+                },
+                "amenity/clinic/dialysis": {
+                    "name": "透析センター",
+                    "terms": "透析センター,人工透析センター"
                 },
                 "amenity/clinic/fertility": {
                     "name": "不妊クリニック",
@@ -4178,8 +4305,8 @@
                     "terms": "ダイブセンター,スキューバダイビングセンター,ダイビングセンター,海,潜水"
                 },
                 "amenity/doctors": {
-                    "name": "医院（小規模病院）",
-                    "terms": "医院,町医者,診療所,医者,病院,医療"
+                    "name": "診療所（個人・小規模）",
+                    "terms": "医院,町医者,診療所,開業医,個人開業医,医者,クリニック,病院,医療,通院,外来,プライマリケア"
                 },
                 "amenity/doctors/allergology": {
                     "name": "アレルギー科",
@@ -4188,6 +4315,10 @@
                 "amenity/doctors/cardiology": {
                     "name": "循環器科",
                     "terms": "循環器科,診療科目,ヘルスケア,心臓血管外科学,循環器内科,心臓血管外科,医療分野,診察科目,専門医"
+                },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "児童精神科",
+                    "terms": "児童精神科,小児精神科,思春期精神科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/dermatology": {
                     "name": "皮膚科",
@@ -4242,7 +4373,7 @@
                     "terms": "耳鼻科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/paediatrics": {
-                    "name": "小児科",
+                    "name": "小児科医",
                     "terms": "小児科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/pathology": {
@@ -4254,12 +4385,16 @@
                     "terms": "形成外科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/podiatry": {
-                    "name": "足病科",
+                    "name": "足病医",
                     "terms": "足病科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/proctology": {
                     "name": "肛門科",
                     "terms": "肛門科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "精神科医",
+                    "terms": "精神科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/pulmonology": {
                     "name": "呼吸器科",
@@ -4310,7 +4445,7 @@
                 },
                 "amenity/events_venue": {
                     "name": "イベント施設",
-                    "terms": "イベント施設,イベント会場,会場,催事,催事場,結婚式場"
+                    "terms": "イベント施設,イベント会場,会場,催事,催事場,結婚式場,多目的ホール"
                 },
                 "amenity/exhibition_centre": {
                     "name": "展示場",
@@ -4404,7 +4539,7 @@
                 },
                 "amenity/hospital": {
                     "name": "大規模病院（代表点または敷地）",
-                    "terms": "病院の敷地,病院,医療"
+                    "terms": "病院の敷地,クリニック,診療所,病院,医療,医者,入院,通院,外来"
                 },
                 "amenity/hunting_stand": {
                     "name": "狩猟スタンド",
@@ -4616,7 +4751,7 @@
                 },
                 "amenity/post_depot": {
                     "name": "郵便集配所",
-                    "terms": "郵便集配所"
+                    "terms": "郵便集配所,ゆうゆう窓口,集配郵便局,郵便事業,差立,仕分け"
                 },
                 "amenity/post_office": {
                     "name": "郵便局",
@@ -4813,6 +4948,10 @@
                     "name": "訪問介護事業所",
                     "terms": "訪問介護事業所,訪問介護,訪問看護,介護,看護,介護施設,福祉,福祉施設"
                 },
+                "amenity/social_facility/assisted_living": {
+                    "name": "高齢者向け住宅",
+                    "terms": "ケアハウス,老人ホーム,福祉,介護,介護施設,福祉施設"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "フードバンク",
                     "terms": "フードバンク,食べ物,福祉"
@@ -4828,6 +4967,10 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "介護付き老人ホーム",
                     "terms": "特別養護老人ホーム,老人ホーム,介護施設,福祉,福祉施設,介護,ナーシングホーム"
+                },
+                "amenity/stripclub": {
+                    "name": "ストリップ劇場",
+                    "terms": "ナイトクラブ,娯楽,アダルト,レジャー"
                 },
                 "amenity/studio": {
                     "name": "スタジオ",
@@ -5320,7 +5463,7 @@
                 },
                 "building": {
                     "name": "建物全般",
-                    "terms": "建物,ビル"
+                    "terms": "建物,ビル,建築物,建造物"
                 },
                 "building/allotment_house": {
                     "name": "分譲住宅",
@@ -5442,7 +5585,7 @@
                 },
                 "building/house": {
                     "name": "住宅全般",
-                    "terms": "住宅,民家,住居"
+                    "terms": "住宅,民家,住居,家"
                 },
                 "building/houseboat": {
                     "name": "ハウスボート",
@@ -5484,7 +5627,7 @@
                 },
                 "building/residential": {
                     "name": "住居全般（建物）",
-                    "terms": "住宅,アパート,マンション,住居"
+                    "terms": "住宅,アパート,マンション,住居,家"
                 },
                 "building/retail": {
                     "name": "店舗用の建物",
@@ -5566,8 +5709,8 @@
                     "name": "建物"
                 },
                 "cemetery/grave": {
-                    "name": "墓",
-                    "terms": "墓,墓石"
+                    "name": "墓所",
+                    "terms": "墓,墓石,墓所"
                 },
                 "cemetery/sector": {
                     "name": "霊園区画",
@@ -5864,8 +6007,8 @@
                     "terms": "救命キット,救急セット,救急救命セット"
                 },
                 "emergency/landing_site": {
-                    "name": "緊急着陸地点",
-                    "terms": "緊急着陸地点,救命"
+                    "name": "緊急離着陸場",
+                    "terms": "緊急着陸地点,救命,ヘリコプター,ヘリパッド,ヘリポート,飛行場外離着陸場,場外離着陸場"
                 },
                 "emergency/life_ring": {
                     "name": "救命浮き輪",
@@ -5928,8 +6071,12 @@
                     "terms": "救急外来入口,救急車搬送口,急患,救急車,出入口（救急外来）,出口,入口,救急外来"
                 },
                 "entrance/main": {
-                    "name": "正面玄関",
-                    "terms": "正面玄関,表玄関,表口,ドア,正面入口"
+                    "name": "出入口 (正面)",
+                    "terms": "正面玄関,表玄関,表口,ドア,正面入口,出入口"
+                },
+                "entrance/staircase": {
+                    "name": "出入口（階段）",
+                    "terms": "階段の入口,階段,出入口,出入り口,出口,入口"
                 },
                 "ford": {
                     "name": "洗い越し",
@@ -6483,8 +6630,8 @@
                     "terms": "廃墟,歴史"
                 },
                 "historic/tomb": {
-                    "name": "墓",
-                    "terms": "墓,古墳,歴史,墳墓"
+                    "name": "墓（歴史的）",
+                    "terms": "墓,古墳,歴史,墳墓,墓（歴史的）"
                 },
                 "historic/wayside_cross": {
                     "name": "道路際の十字架",
@@ -6570,7 +6717,7 @@
                     "terms": "事務所用地,オフィス街"
                 },
                 "landuse/construction": {
-                    "name": "建設予定地",
+                    "name": "建設用地",
                     "terms": "工事中用地,建設用地,工事現場,建設予定地"
                 },
                 "landuse/education": {
@@ -6620,6 +6767,10 @@
                     "name": "工業用地",
                     "terms": "工業用地,工業団地,工業地,工業地帯"
                 },
+                "landuse/industrial/depot": {
+                    "name": "業務用車両の車庫",
+                    "terms": "車庫,営業所,バス,トラック,車両,駐車場"
+                },
                 "landuse/industrial/scrap_yard": {
                     "name": "自動車解体場",
                     "terms": "自動車解体場,スクラップ場,自動車,スクラップ"
@@ -6642,7 +6793,7 @@
                 },
                 "landuse/military/airfield": {
                     "name": "軍用飛行場",
-                    "terms": "軍用飛行場"
+                    "terms": "軍用飛行場,飛行場,空港,航空基地"
                 },
                 "landuse/military/barracks": {
                     "name": "兵舎",
@@ -6968,7 +7119,7 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "乗馬場",
-                    "terms": "乗馬施設,乗馬アリーナ,スポーツ,運動,娯楽,レジャー,乗馬"
+                    "terms": "乗馬施設,馬術場,乗馬アリーナ,スポーツ,運動,娯楽,レジャー,乗馬"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "フィールドホッケー場",
@@ -7377,6 +7528,26 @@
                     "name": "ストリートキャビネット",
                     "terms": "ストリートキャビネット,歩道,計器箱,装置ボックス,モニター,通信装置,信号装置,道路脇"
                 },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "郵便リレーボックス",
+                    "terms": "リレーボックス,郵便,配達"
+                },
+                "man_made/street_cabinet/traffic_control": {
+                    "name": "交通制御システム用キャビネット",
+                    "terms": "交通制御,信号制御,信号"
+                },
+                "man_made/street_cabinet/traffic_monitoring": {
+                    "name": "交通監視用キャビネット",
+                    "terms": "交通監視,交通量計測"
+                },
+                "man_made/street_cabinet/transport_management": {
+                    "name": "交通機関用キャビネット",
+                    "terms": "公共交通機関,自動運転"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "廃棄物用キャビネット",
+                    "terms": "ゴミ,ごみ,廃棄物"
+                },
                 "man_made/surveillance": {
                     "name": "監視装置",
                     "terms": "調査監視"
@@ -7772,7 +7943,7 @@
                 },
                 "office/architect": {
                     "name": "設計事務所",
-                    "terms": "設計事務所,建築事務所,オフィス,事務所"
+                    "terms": "設計事務所,建築事務所,オフィス,事務所,建築設計事務所"
                 },
                 "office/association": {
                     "name": "非営利組織",
@@ -7825,6 +7996,10 @@
                 "office/energy_supplier": {
                     "name": "エネルギー供給者",
                     "terms": "エネルギー供給者,石油会社,電力会社,ガス会社,オフィス,事務所"
+                },
+                "office/engineer": {
+                    "name": "技術士事務所",
+                    "terms": "技術者,技術士,技師,オフィス,事務所"
                 },
                 "office/estate_agent": {
                     "name": "不動産代理店",
@@ -7933,8 +8108,8 @@
                     "terms": "警備会社,会社,オフィス,事務所,セキュリティ,警備,安全"
                 },
                 "office/surveyor": {
-                    "name": "測量会社",
-                    "terms": "測量会社,オフィス,事務所"
+                    "name": "土地家屋調査士事務所",
+                    "terms": "測量,オフィス,事務所,土地家屋調査士,土地家屋調査士事務所,土地家屋"
                 },
                 "office/tax_advisor": {
                     "name": "税理士事務所",
@@ -8024,8 +8199,8 @@
                     "name": "農場"
                 },
                 "place/hamlet": {
-                    "name": "Hamlet",
-                    "terms": "集落,地名"
+                    "name": "集落・通称地名",
+                    "terms": "集落,地名,通称地名"
                 },
                 "place/island": {
                     "name": "島",
@@ -8040,12 +8215,12 @@
                     "terms": "一軒家,住宅地,地名"
                 },
                 "place/locality": {
-                    "name": "地形名",
-                    "terms": "地形名,地名"
+                    "name": "無居住地域・通称地名",
+                    "terms": "地形名,地名,無居住地域,通称地名"
                 },
                 "place/neighbourhood": {
                     "name": "小字",
-                    "terms": "小字,地名"
+                    "terms": "小字,地名,丁目,字"
                 },
                 "place/plot": {
                     "name": "小区画",
@@ -8295,6 +8470,10 @@
                 "power/pole": {
                     "name": "電柱",
                     "terms": "電柱,電信柱,道路,歩道"
+                },
+                "power/portal": {
+                    "name": "引留鉄構",
+                    "terms": "引留鉄構,アンカーポータル,鉄構"
                 },
                 "power/substation": {
                     "name": "変電所",
@@ -8596,6 +8775,10 @@
                 },
                 "railway/tram_stop": {
                     "name": "トラム停車位置"
+                },
+                "railway/turntable": {
+                    "name": "転車台",
+                    "terms": "ターンテーブル,鉄道"
                 },
                 "railway/yard": {
                     "name": "貨物駅",
@@ -9102,6 +9285,10 @@
                     "name": "栄養サプリ販売店",
                     "terms": "栄養サプリメント販売店,サプリ専門店,サプリメント専門店,健康,サプリ,サプリメント"
                 },
+                "shop/nuts": {
+                    "name": "ナッツ店",
+                    "terms": "ナッツ店,お店,店舗,ショッピング,小売,食べ物,木の実,ナッツ"
+                },
                 "shop/optician": {
                     "name": "メガネ店",
                     "terms": "メガネ,眼鏡,メガネ屋,眼鏡屋,めがね"
@@ -9240,7 +9427,7 @@
                 },
                 "shop/tea": {
                     "name": "茶舗",
-                    "terms": "茶舗,茶店,食品,お茶,緑茶,飲み物,店舗,小売,嗜好品"
+                    "terms": "茶舗,茶店,食品,お茶,緑茶,飲み物,店舗,小売,嗜好品,茶葉"
                 },
                 "shop/telecommunication": {
                     "name": "通信サービス店",

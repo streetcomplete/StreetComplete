@@ -960,7 +960,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_surface_value_concrete_plates">"Betongplattor"</string>
     <string name="quest_surface_value_concrete_lanes">"Betongkörspår"</string>
     <string name="quest_fireHydrant_diameter_title">"Vilken diameter står angiven för denna brandpost?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Är du säker? Ibland kan diametern stå angiven på själva brandposten."</string>
     <string name="quest_diet_answer_no_food">"Ingen mat"</string>
     <string name="short_no_answer_on_button">"Nej"</string>
     <string name="restore_confirmation">"Återställ"</string>
@@ -1242,7 +1241,7 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="overlay_shops">"Butiker"</string>
     <string name="name_label">"Namn:"</string>
     <string name="vacant_shop_title">"Tom butikslokal"</string>
-    <string name="unknown_shop_title">"Okänd slags plats"</string>
+    <string name="unknown_shop_title">"Annan slags plats"</string>
     <string name="quest_address_answer_no_address">"Ingen adress här"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan den här cykelgrinden öppnas?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
@@ -1310,4 +1309,13 @@ Flytta den?"</string>
     <string name="street_parking_staggered_on_street">"På gatan men bara en sida åt gången"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delvis på trottaren men bara en sida åt gången"</string>
     <string name="quest_traffic_signals_sound_description">"Tips: Leta efter högtalare. Inte alla ljudsignaler kan aktiveras med en knapp."</string>
+    <string name="quest_presets_duplicate">"Skapa kopia"</string>
+    <string name="label_block">"kvarter"</string>
+    <string name="quest_address_answer_block">"Det ligger i ett namngivet kvarter"</string>
+    <string name="quest_address_answer_no_block">"Det ligger inte i ett namngivet kvarter"</string>
+    <string name="quest_surface_value_mud">"Beständig lera"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Det finns ingen toalett här"</string>
+    <string name="unknown_surface_title">"Annan slags beläggning"</string>
+    <string name="overlay_surface">"Beläggningar"</string>
+    <string name="overlay_path_surface_segregated">"Uppdelad gång- och cykelbana"</string>
 </resources>

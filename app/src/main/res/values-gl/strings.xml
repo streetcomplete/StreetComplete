@@ -956,7 +956,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_surface_value_concrete_plates">"Placas de cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Rodeiras de cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Que diametro se especifica no letreiro desta boca de incendios?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Seguro? Algunhas veces o díametro está especificado na propia boca de incendios."</string>
     <string name="quest_diet_answer_no_food">"Non ofrece comida"</string>
     <string name="short_no_answer_on_button">"Non"</string>
     <string name="restore_confirmation">"Restablecer"</string>

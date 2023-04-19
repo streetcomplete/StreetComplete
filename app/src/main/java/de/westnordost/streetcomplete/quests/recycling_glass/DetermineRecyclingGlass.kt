@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTL
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
           amenity = recycling
           and recycling_type = container
           and recycling:glass = yes

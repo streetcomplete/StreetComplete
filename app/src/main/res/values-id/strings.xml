@@ -900,7 +900,6 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
     <string name="quest_barrier_type_passage_conversion">"Dikonversi menjadi lorong di dinding/pagar/dll."</string>
     <string name="quest_fireHydrant_diameter_title">"Berapa diameter yang dijelaskan pada tanda di hidran kebakaran ini?"</string>
-    <string name="quest_fireHydrant_confirmation_title">"Apa kamu yakin? Kadang diameternya dapat ditemukan pada hidran itu sendiri."</string>
     <string name="quest_diet_answer_no_food">"Tidak ada makanan"</string>
     <string name="short_no_answer_on_button">"Tidak"</string>
     <string name="restore_confirmation">"Pulihkan"</string>

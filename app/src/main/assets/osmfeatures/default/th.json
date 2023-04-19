@@ -128,7 +128,8 @@
                         "bicycle": "ปั่นจักรยาน",
                         "hiking": "เดินป่า",
                         "horse": "ขี่ม้า",
-                        "mtb": "ปั่นจักรยานเสือภูเขา"
+                        "mtb": "ปั่นจักรยานเสือภูเขา",
+                        "ski": "เล่นสกี"
                     }
                 },
                 "addr/interpolation": {
@@ -143,6 +144,8 @@
                 "address": {
                     "label": "ที่อยู่",
                     "placeholders": {
+                        "block_number": "เลขบล็อก",
+                        "block_number!jp": "หมายเลขบล็อก",
                         "city": "แขวง/ตำบล",
                         "conscriptionnumber": "123",
                         "country": "ประเทศ",
@@ -152,17 +155,23 @@
                         "housename": "ชื่อบ้าน",
                         "housenumber": "123",
                         "housenumber!jp": "หมายเลขอาคาร",
+                        "neighbourhood": "ชุมชน",
                         "place": "สถานที่",
                         "postcode": "รหัสไปรษณีย์",
                         "province": "จังหวัด",
                         "state": "รัฐ",
                         "street": "ถนน",
                         "subdistrict": "แขวง/ตำบล",
-                        "suburb": "ชานเมือง"
+                        "suburb": "ชานเมือง",
+                        "suburb!jp": "ห้อง",
+                        "unit": "ยูนิต"
                     }
                 },
                 "admin_level": {
                     "label": "อำนาจการปกครอง"
+                },
+                "advertising": {
+                    "label": "ชนิด"
                 },
                 "aerialway": {
                     "label": "รูปแบบ"
@@ -175,6 +184,9 @@
                         "exit": "ทางออก"
                     }
                 },
+                "aerialway/bubble": {
+                    "label": "ร่มกันสภาพอากาศ"
+                },
                 "aerialway/capacity": {
                     "label": "จำนวนคน (ต่อชั่วโมง)",
                     "placeholder": "500, 2500, 5000..."
@@ -183,33 +195,244 @@
                     "label": "ระยะเวลา (นาที)",
                     "placeholder": "1, 2, 3..."
                 },
+                "aerialway/heating": {
+                    "label": "ฮีตเตอร์"
+                },
+                "aerialway/occupancy": {
+                    "label": "ความจุ",
+                    "placeholder": "2, 4, 8..."
+                },
                 "aerialway/summer/access": {
+                    "label": "การเข้าถึง (ฤดูร้อน)",
                     "options": {
+                        "both": "ทั้งคู่",
                         "entry": "ทางเข้า",
                         "exit": "ทางออก"
                     }
                 },
+                "aeroway": {
+                    "label": "ชนิด"
+                },
+                "agrarian": {
+                    "label": "ผลิตภัณฑ์"
+                },
                 "air_conditioning": {
+                    "label": "ปรับอากาศ",
                     "terms": "ปรับอากาศ\nทำความเย็น\nติดแอร์"
+                },
+                "amenity": {
+                    "label": "ชนิด"
+                },
+                "animal_boarding": {
+                    "label": "สำหรับสัตว์"
+                },
+                "animal_breeding": {
+                    "label": "สำหรับสัตว์"
+                },
+                "animal_shelter": {
+                    "label": "สำหรับสัตว์"
+                },
+                "archaeological_site": {
+                    "label": "ชนิด",
+                    "options": {
+                        "baths": "โรงอาบน้ำ",
+                        "city": "เมืองประวัติศาสตร์",
+                        "crannog": "แครนนอก",
+                        "enclosure": "คอก",
+                        "fortification": "ป้อมปราการ",
+                        "hut_circle": "วงกระท่อม",
+                        "megalith": "เมกะลิธ",
+                        "necropolis": "สุสาน",
+                        "petroglyph": "หินแกะสลัก",
+                        "roman_circus": "ลานโรมันเซอร์คัส",
+                        "roman_villa": "โรมันวิลล่า",
+                        "settlement": "ถิ่นฐานประวัติศาสตร์",
+                        "tumulus": "หลุมฝังศพ"
+                    }
+                },
+                "architect": {
+                    "label": "สถาปนิก",
+                    "terms": "ผู้ออกแบบ"
                 },
                 "area/highway": {
                     "label": "ประเภท"
                 },
+                "artist": {
+                    "label": "ศิลปิน"
+                },
+                "artwork_type": {
+                    "label": "ประเภท",
+                    "options": {
+                        "bust": "รูปสลักครึ่งตัว",
+                        "graffiti": "กราฟฟิตี",
+                        "installation": "งานศิลปะติดตั้ง",
+                        "mosaic": "งานโมเสก",
+                        "mural": "จิตรกรรมฝาผนัง",
+                        "painting": "ภาพวาดจิตรกรรม",
+                        "relief": "ประติมากรรมนูนต่ำ",
+                        "sculpture": "ประติมากรรม",
+                        "statue": "รูปปั้น"
+                    }
+                },
+                "ascent": {
+                    "label": "ความสูงที่เพื่มขึ้น",
+                    "terms": "ความชันที่เพิ่มขึ้น"
+                },
                 "atm": {
                     "label": "เครื่องรับจ่ายเงินอัตโนมัติ"
                 },
+                "attraction": {
+                    "label": "ชนิด",
+                    "options": {
+                        "alpine_coaster": "เครื่องเล่นอัลไพน์โคสเตอร์",
+                        "amusement_ride": "เครื่องเล่น",
+                        "animal": "กรงสัตว์",
+                        "big_wheel": "ชิงช้าสวรรค์",
+                        "bumper_car": "รถบั๊ม",
+                        "bungee_jumping": "บันจีจัมพ์",
+                        "carousel": "ม้าหมุน",
+                        "dark_ride": "รถไฟผีสิง",
+                        "drop_tower": "หอคอยทิ้งดิ่ง",
+                        "kiddie_ride": "ม้าโยก",
+                        "log_flume": "ล่องแก่ง",
+                        "maze": "เขาวงกต",
+                        "pirate_ship": "เครื่องเล่นเรือโจรสลัด",
+                        "river_rafting": "ล่องแก่งใหญ่",
+                        "roller_coaster": "รถไฟเหาะ",
+                        "summer_toboggan": "รถเหาะภูเขา",
+                        "swing_carousel": "ม้าหมุนชิงช้า",
+                        "train": "รถไฟท่องเที่ยว",
+                        "water_slide": "สไลด์น้ำ"
+                    }
+                },
+                "automated": {
+                    "label": "อัตโนมัติ"
+                },
+                "baby_feeding": {
+                    "label": "พื้นที่ดูแลทารก",
+                    "options": {
+                        "no": "ไม่มี",
+                        "room": "ห้องเฉพาะ",
+                        "yes": "พื้นที่มีการระบุเครื่องหมาย"
+                    },
+                    "terms": "พื้นที่ดูแลเด็ก,พื้นที่สำหรับทารก"
+                },
+                "baby_seat": {
+                    "label": "ที่นั่งสำหรับทารก"
+                },
+                "backcountry": {
+                    "label": "เขตทุรกันดาร",
+                    "terms": "กันดาร"
+                },
+                "backrest": {
+                    "label": "พนักพิง"
+                },
+                "bar": {
+                    "label": "บาร์"
+                },
                 "barrier": {
-                    "label": "ชนิด"
+                    "label": "ชนิด",
+                    "options": {
+                        "block": "บล็อกใหญ่",
+                        "bollard": "เสาอุปสรรค",
+                        "cattle_grid": "ตะแกรงกันสัตว์ข้าม",
+                        "chain": "ล่ามโซ่",
+                        "city_wall": "กำแพงเมือง",
+                        "cycle_barrier": "ที่กั้นจักรยาน",
+                        "ditch": "คูน้ำ",
+                        "entrance": "ทางเข้า",
+                        "fence": "รั้ว",
+                        "gate": "ประตูรั้ว",
+                        "guard_rail": "ราวกันตก",
+                        "hedge": "แนวพุ่มไม้",
+                        "height_restrictor": "ที่กั้นจำกัดความสูง",
+                        "jersey_barrier": "ราวกั้นเกาะกลางถนน",
+                        "kerb": "ขอบทางเดิน",
+                        "kissing_gate": "ประตูกั้นปศุสัตว์",
+                        "lift_gate": "ประตูกันกระแทก",
+                        "retaining_wall": "กำแพงกันดิน",
+                        "stile": "ทางกั้นไม้",
+                        "swing_gate": "ประตูกั้นแบบเปิดสวิง",
+                        "toll_booth": "ตู้เก็บค่าผ่านทาง",
+                        "turnstile": "ประตูหมุน",
+                        "wall": "กำแพง"
+                    }
                 },
                 "barrier_planter": {
-                    "label": "สิ่งกีดขวาง"
+                    "label": "สิ่งกีดขวาง",
+                    "options": {
+                        "planter": "ใช่",
+                        "undefined": "ไม่"
+                    }
+                },
+                "basin": {
+                    "label": "ชนิด",
+                    "options": {
+                        "detention": "บ่อกัก",
+                        "evaporation": "การระเหย",
+                        "infiltration": "การแทรกซึม",
+                        "retention": "เก็บรักษา"
+                    }
+                },
+                "bath/open_air": {
+                    "label": "เปิดโล่ง"
+                },
+                "bath/sand_bath": {
+                    "label": "อาบทราย"
+                },
+                "bath/type": {
+                    "label": "ความเชี่ยวชาญ",
+                    "options": {
+                        "hammam": "โรงอาบน้ำฮัมมัม",
+                        "hot_spring": "บ่อน้ำร้อน",
+                        "lake": "ทะเลสาบ",
+                        "onsen": "ออนเซ็น",
+                        "thermal": "อ่างน้ำร้อน"
+                    }
+                },
+                "beauty": {
+                    "label": "บริการ",
+                    "options": {
+                        "cosmetics": "เครื่องสำอาง",
+                        "hair_removal": "จำกัดขน",
+                        "nails": "ทำเล็บมือ/เล็บเท้า",
+                        "skin_care": "สกินแคร์",
+                        "spa": "เดย์สปา",
+                        "tanning": "ทำผิวแทน",
+                        "waxing": "แวกซ์ขน"
+                    }
                 },
                 "bench": {
                     "label": "ม้านั่ง",
                     "terms": "ม้านั่ง,ที่นั่ง,เก้าอี้"
                 },
+                "bicycle_parking": {
+                    "label": "ประเภท",
+                    "options": {
+                        "building": "ในอาคาร",
+                        "handlebar_holder": "ที่ล็อคแฮนด์",
+                        "lockers": "ล็อคเกอร์ส่วนบุคคล",
+                        "shed": "โรงจอดปิด",
+                        "stands": "ขาตั้ง (รองโครงตัวจักรยาน)",
+                        "wall_loops": "แบบที่ล็อคกับล้อ"
+                    }
+                },
+                "bike_ride": {
+                    "label": "ปั่นและจร",
+                    "terms": "ปั้นจักรยานและเดินทางต่อ"
+                },
                 "bin": {
-                    "label": "ถังขยะ"
+                    "label": "ถังขยะ",
+                    "terms": "ถังทิ้ง"
+                },
+                "blind": {
+                    "label": "การอำนวยความสะดวกสำหรับการเข้าถึงโดยผู้พิการทางสายตา",
+                    "options": {
+                        "limited": "โดยจำกัด",
+                        "no": "ไม่มี",
+                        "yes": "มี"
+                    },
+                    "terms": "การเข้าถึงของผู้ที่มีความบกพร่องทางสายตา"
                 },
                 "blood_components": {
                     "label": "องค์ประกอบของเลือด",
@@ -220,41 +443,461 @@
                         "whole": "เลือดล้วนๆ"
                     }
                 },
+                "board_type": {
+                    "label": "ชนิด",
+                    "options": {
+                        "art": "ศิลปะ",
+                        "astronomy": "ดาราศาสตร์",
+                        "geology": "ธรณีวิทยา",
+                        "history": "ประวัติศาสตร์",
+                        "nature": "ธรรมชาติ",
+                        "notice": "กระดานป้ายติดประกาศ",
+                        "plants": "พืช",
+                        "welcome_sign": "ป้ายต้อนรับ",
+                        "wildlife": "สัตว์ป่า"
+                    }
+                },
                 "bollard": {
-                    "label": "ประเภทของอุปสรรคเสา"
+                    "label": "ประเภทของอุปสรรคเสา",
+                    "options": {
+                        "fixed": "เสาอุปสรรคคงที่",
+                        "flexible": "เสาอุปสรรคยืดหยุ่น",
+                        "foldable": "เสาอุปสรรคพับได้",
+                        "removable": "เสาอุปสรรคที่นำออกได้",
+                        "rising": "เสาอุปสรรคยืด"
+                    }
+                },
+                "booth": {
+                    "label": "บูธ",
+                    "terms": "ตู้"
+                },
+                "bottle": {
+                    "label": "เติมขวด"
+                },
+                "boules": {
+                    "label": "ชนิด"
+                },
+                "boundary": {
+                    "label": "ชนิด"
+                },
+                "branch_brand": {
+                    "label": "สาขา",
+                    "terms": "แขนง"
+                },
+                "brand": {
+                    "label": "แบรนด์",
+                    "terms": "ยี่ห้อ"
+                },
+                "brewery": {
+                    "label": "เบียร์สด",
+                    "terms": "ดราฟเบียร์"
+                },
+                "bridge": {
+                    "label": "ชนิด",
+                    "placeholder": "พิ้นฐาน"
+                },
+                "bridge/support": {
+                    "label": "ชนิด"
+                },
+                "bridge_combo": {
+                    "label": "ชนิด"
                 },
                 "building": {
                     "label": "อาคาร",
+                    "options": {
+                        "allotment_house": "บ้านจัดสรร",
+                        "apartments": "อาคารอพาร์ทเม้น",
+                        "barn": "โรงนา",
+                        "boathouse": "อู่เรือ",
+                        "bungalow": "บังกะโล",
+                        "bunker": "หลุมหลบภัย",
+                        "cabin": "กระท่อม",
+                        "carport": "โรงจอดรถ",
+                        "cathedral": "อาคารมหาวิหาร",
+                        "chapel": "อาคารโบสถ์เล็ก",
+                        "church": "อาคารโบสถ์",
+                        "civic": "อาคารราชการ",
+                        "college": "อาคารสถานที่การศึกษา",
+                        "commercial": "อาคารพาณิชย์",
+                        "construction": "อาคารกำลังก่อสร้าง",
+                        "cowshed": "คอกวัว",
+                        "detached": "บ้านเดี่ยว",
+                        "dormitory": "หอพัก",
+                        "farm": "บ้านไร่",
+                        "farm_auxiliary": "สิ่งปลูกสร้างในฟาร์ม",
+                        "fire_station": "อาคารสถานีดับเพลิง",
+                        "garage": "โรงรถ",
+                        "garages": "โรงรถ",
+                        "ger": "กระโจมมองโกเลีย",
+                        "grandstand": "อัฒจรรย์",
+                        "greenhouse": "เรือนกระจก",
+                        "hangar": "โรงเก็บเครื่องบิน",
+                        "hospital": "อาคารโรงพยาบาล",
+                        "hotel": "อาคารโรงแรม",
+                        "house": "บ้าน",
+                        "houseboat": "เรือนแพ",
+                        "hut": "กระท่อม",
+                        "industrial": "อาคารอุตสาหกรรม",
+                        "kindergarten": "อาคารโรงเรียนอนุบาล",
+                        "manufacture": "อาคารอุตสาหกรรมการผลิต",
+                        "mosque": "อาคารมัสยิด",
+                        "office": "อาคารสำนักงาน",
+                        "outbuilding": "สิ่งปลูกสร้างด้านนอก\nเรือนนอก\nตึกนอก",
+                        "pavilion": "อาคารศาลา",
+                        "public": "อาคารสาธารณะ",
+                        "residential": "อาคารที่อยู่อาศัย",
+                        "retail": "อาคารขายปลีก",
+                        "roof": "หลังคา",
+                        "ruins": "สถานปรักหักพัง",
+                        "school": "อาคารโรงเรียน",
+                        "semidetached_house": "บ้านแฝด",
+                        "service": "อาคารบริการ",
+                        "shed": "เพิง",
+                        "stable": "มั่นคง",
+                        "stadium": "อาคารสนามกีฬา",
+                        "static_caravan": "บ้านสำเร็จ",
+                        "sty": "คอกหมู",
+                        "synagogue": "โบสถ์ของศาสนายิว",
+                        "temple": "อาคารวัด\nอาคารโบสถ์",
+                        "terrace": "บ้านแถว",
+                        "train_station": "อาคารสถานีรถไฟ",
+                        "transportation": "อาคารสถานีขนส่ง",
+                        "university": "อาคารมหาวิทยาลัย\nอาคารอุดมศึกษา",
+                        "warehouse": "คลังสินค้า\nโกดัง"
+                    },
                     "terms": "สิ่งปลูกสร้าง,ตึก,อาคาร"
+                },
+                "building/flats": {
+                    "label": "ยูนิต",
+                    "placeholder": "2, 4, 6, 8..."
+                },
+                "building/levels": {
+                    "label": "จำนวนชั้น",
+                    "placeholder": "2, 4, 6..."
+                },
+                "building/levels/underground": {
+                    "label": "ชั้นใต้ดิน",
+                    "placeholder": "2, 4, 6..."
+                },
+                "building/material": {
+                    "label": "วัสดุ"
                 },
                 "building/part": {
                     "label": "ส่วนอาคาร"
                 },
+                "building/prefabricated": {
+                    "label": "สำเร็จรูป",
+                    "terms": "สำเร็จรูป,สร้างสำเร็จ,สร้างไว้ก่อนแล้ว"
+                },
+                "bunker_type": {
+                    "label": "ชนิด"
+                },
+                "button_operated": {
+                    "label": "ปุ่มโทร"
+                },
+                "cables": {
+                    "label": "สายเคเบิล",
+                    "placeholder": "1, 2, 3..."
+                },
+                "cai_scale-IT": {
+                    "label": "ความยากของเส้นทางเดินป่า (จากสโมสรอัลไพน์อิจาเลียน)",
+                    "options": {
+                        "E": "E: สำหรับนักเดินป่า",
+                        "EAI": "EAI: เดินป่าในสภาพหิมะตก",
+                        "EE": "EE: สำหรับนักเดินป่าเชี่ยวชาญ",
+                        "EEA": "EEA: สำหรับนักเดินป่าเชี่ยวชาญพร้อมอุปกรณ์",
+                        "T": "T: นักท่องเที่ยว"
+                    },
+                    "placeholder": "T, E, EE, …"
+                },
+                "camera/direction": {
+                    "label": "ทิศทาง (องศาตามนาฬิกา)",
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "camera/mount": {
+                    "label": "ที่ติดกล้อง"
+                },
+                "camera/type": {
+                    "label": "ชนิดของกล้อง",
+                    "options": {
+                        "dome": "โดม",
+                        "fixed": "คงที่",
+                        "panning": "หมุนแพนได้"
+                    }
+                },
                 "capacity": {
                     "label": "ความจุ",
+                    "placeholder": "50, 100, 200...",
                     "terms": "ปริมาตร,ความจุ,จำนวนรองรับ"
                 },
+                "capacity/caravans": {
+                    "label": "ความจุ (รถบ้าน/รถบ้านพ่วง)",
+                    "placeholder": "10, 20, 50..."
+                },
+                "capacity/disabled_parking": {
+                    "label": "พื้นที่ที่เข้าถึงได้",
+                    "placeholder": "1, 2, 3..."
+                },
                 "capacity/persons": {
-                    "label": "ความจุ (คน)"
+                    "label": "ความจุ (คน)",
+                    "placeholder": "50, 100, 200..."
                 },
                 "capacity/tents": {
-                    "label": "ความจุ (เต๊นท์)"
+                    "label": "ความจุ (เต๊นท์)",
+                    "placeholder": "10, 20, 50..."
+                },
+                "capacity_parking": {
+                    "label": "พื้นที่ทั้งสิ้น",
+                    "placeholder": "10, 20, 30..."
                 },
                 "capacity_volume": {
-                    "label": "ความจุ (ลูกบาศก์เมตร)"
+                    "label": "ความจุ (ลูกบาศก์เมตร)",
+                    "placeholder": "50, 100, 200..."
+                },
+                "caravans": {
+                    "label": "รถบ้าน/รถบ้านพ่วง",
+                    "terms": "รถเทรลเลอร์"
+                },
+                "cash_in": {
+                    "label": "เงินฝาก"
+                },
+                "castle_type": {
+                    "label": "ประเภท",
+                    "options": {
+                        "castrum": "ป้อมโรมัน",
+                        "defensive": "ปราสาทป้องกัน",
+                        "fortress": "ป้อมปราการ",
+                        "hillfort": "ป้อมเนิน",
+                        "kremlin": "ป้อมเครมลิน",
+                        "manor": "คฤหาสน์",
+                        "palace": "พระราชวัง",
+                        "shiro": "ปราสาทญี่ปุ่นชิโระ",
+                        "stately": "บ้านโอฬาร"
+                    }
+                },
+                "changing_table": {
+                    "label": "โต๊ะเปลี่ยนผ้าอ้อม"
+                },
+                "charge_fee": {
+                    "label": "ค่าใช้จ่าย",
+                    "placeholder": "20THB, 1 EUR, 5 USD…"
+                },
+                "charge_toll": {
+                    "label": "ค่าผ่านทาง",
+                    "placeholder": "20THB, 1 EUR, 5 USD…"
+                },
+                "check_date": {
+                    "label": "วันที่ตรวจสอบล่าสุด",
+                    "placeholder": "ปปปป-ดด-วว"
+                },
+                "circumference": {
+                    "label": "เส้นรอบวง (ที่ความสูงหน้าอก)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
+                },
+                "clothes": {
+                    "label": "เสื้อผ้า",
+                    "options": {
+                        "babies": "เสื้อผ้าสำหรับทารก",
+                        "children": "เสื้อผ้าเด็ก",
+                        "denim": "เสื้อผ้าผ้ายีน",
+                        "fur": "เสื้อผ้าขนสัตว์",
+                        "hats": "หมวก",
+                        "maternity": "เสื้อผ้ามารดาตั้งครรภ์",
+                        "men": "เสื้อผ้าบุรุษ",
+                        "motorcycle": "เสื้อผ้าจักรยานยนต์",
+                        "oversize": "เสื้อผ้าขนาดใหญ่พิเศษ",
+                        "socks": "ถุงเท้า",
+                        "sports": "ชุดกีฬา",
+                        "suits": "ชุดสูท",
+                        "swimwear": "ชุดว่ายน้ำ",
+                        "traditional": "เสื้อผ้าพื้นเมือง / เครื่องแต่งกายพื้นบ้าน",
+                        "underwear": "ชุดชั้นใน",
+                        "wedding": "ชุดแต่งงาน",
+                        "women": "เสื้อผ้าสตรี",
+                        "workwear": "ชุดทำงาน"
+                    },
+                    "terms": "เครื่องแต่งกาย,ชุด"
+                },
+                "club": {
+                    "label": "ประเภท"
+                },
+                "collection_times": {
+                    "label": "เวลาไขตู้"
+                },
+                "collector": {
+                    "label": "ชิ้น"
+                },
+                "colour": {
+                    "label": "สี"
+                },
+                "comment": {
+                    "label": "ความคิดเห็นชุดการเปลี่ยนแปลง",
+                    "placeholder": "คำอธิบายเกี่ยวกับการแก้ไขของคุณโดยสังเขป (จำเป็น)"
+                },
+                "communication_multi": {
+                    "label": "ชนิดการสื่อสาร",
+                    "terms": "รูปแบบการสื่อสาร"
+                },
+                "connectivity": {
+                    "label": "การเชื่อมต่อ"
+                },
+                "construction": {
+                    "label": "ประเภท"
+                },
+                "consulate": {
+                    "label": "ประเภท"
+                },
+                "consulting": {
+                    "label": "ความเชี่ยวชาญ"
                 },
                 "contact/webcam": {
+                    "label": "URL ของกล้อง",
                     "placeholder": "http://example.com/"
+                },
+                "content": {
+                    "label": "เนื้อหา"
+                },
+                "conveying": {
+                    "label": "ทิศทางการเคลื่อนที่",
+                    "options": {
+                        "backward": "ไปข้างหลัง",
+                        "forward": "ไปข้างหน้า",
+                        "reversible": "ไปได้ทั้งสองทิศทาง"
+                    }
+                },
+                "conveying_escalator": {
+                    "label": "ขึ้น"
+                },
+                "country": {
+                    "label": "ประเทศ"
+                },
+                "country_flag": {
+                    "label": "ธงชาติ"
+                },
+                "couplings": {
+                    "label": "ข้อต่อ",
+                    "placeholder": "1, 2, 3..."
                 },
                 "covered": {
                     "label": "หลังคาคลุม",
                     "terms": "หลังคาคลุม"
                 },
+                "covered_no": {
+                    "options": {
+                        "no": "ไม่",
+                        "undefined": "สันนิษฐานว่าไม่",
+                        "yes": "ใช่"
+                    }
+                },
                 "craft": {
-                    "label": "ประเภท\nชนิด"
+                    "label": "ประเภท\nชนิด",
+                    "options": {
+                        "agricultural_engines": "ช่างเครื่องจักรกลเกษตร",
+                        "basket_maker": "ช่างจักสาน\nช่างทำตะกร้า",
+                        "beekeeper": "คนเลี้ยงผึ้ง",
+                        "blacksmith": "ช่างตีเหล็ก",
+                        "boatbuilder": "ช่างต่อเรือ",
+                        "bookbinder": "คนเย็บเล่มหนังสือ",
+                        "brewery": "โรงเบียร์",
+                        "builder": "ช่างก่อสร้าง",
+                        "carpenter": "ช่างไม้",
+                        "carpet_layer": "ช่างปูพรม",
+                        "caterer": "ผู้ให้บริการจัดเลี้ยง\nบริษัทจัดเลี้ยง",
+                        "chimney_sweeper": "คนทำความสะอาดปล่องไฟ",
+                        "cleaning": "บริการทำความสะอาด",
+                        "clockmaker": "ช่างทำนาฬิกา",
+                        "confectionery": "คนทำขนม",
+                        "distillery": "โรงกลั่นสุรา",
+                        "dressmaker": "ช่างตัดเสื้อ",
+                        "electrician": "ช่างไฟฟ้า",
+                        "electronics_repair": "ซ่อมอุปกรณ์อิเล็กทรอนิกส์",
+                        "floorer": "ช่างปูพื้น",
+                        "gardener": "คนสวน",
+                        "glaziery": "งานติดตั้งกระจก",
+                        "grinding_mill": "โม่บด",
+                        "handicraft": "หัตถกรรม",
+                        "hvac": "ระบบปรับอากาศ",
+                        "insulation": "ฉนวน",
+                        "jeweller": "ช่างเพชรพลอย",
+                        "joiner": "ช่างต่อไม้",
+                        "key_cutter": "ตัดกุญแจ",
+                        "locksmith": "ช่างทำกุญแจ",
+                        "metal_construction": "ช่างโลหะ",
+                        "oil_mill": "สกัดน้ำมัน",
+                        "painter": "จิตรกร",
+                        "parquet_layer": "ช่างปูพื้นไม้ปาร์เก้",
+                        "photographer": "ช่างภาพ",
+                        "photographic_laboratory": "ห้องล้างรูป",
+                        "plasterer": "ช่างปูน",
+                        "plumber": "ช่างประปา",
+                        "pottery": "ช่างปั้นเครื่องปั้นดินเผา",
+                        "rigger": "ช่างขึงใบเรือ",
+                        "roofer": "คนทำหลังคา",
+                        "saddler": "คนทำอานม้า",
+                        "sailmaker": "ช่างทำเรือใบ",
+                        "sawmill": "โรงเลื่อย",
+                        "scaffolder": "นั่งร้าน",
+                        "sculptor": "ประติมากร",
+                        "shoemaker": "ช่างทำรองเท้า",
+                        "signmaker": "ช่างทำป้าย",
+                        "stonemason": "ช่างหิน",
+                        "tailor": "ช่างตัดเสื้อ",
+                        "tiler": "ช่างปูกระเบื้อง",
+                        "tinsmith": "ช่างบัดกรี",
+                        "upholsterer": "ช่างทำเก้าอี้",
+                        "watchmaker": "ช่างซ่อมนาฬิกา",
+                        "window_construction": "การติดตั้งหน้าต่าง",
+                        "winery": "โรงกลั่นไวน์"
+                    }
+                },
+                "crane/type": {
+                    "label": "ประเภทของเครน",
+                    "options": {
+                        "floor-mounted_crane": "ปั้นจั่นยึดติดพื้น",
+                        "gantry_crane": "เครนหน้าท่า",
+                        "portal_crane": "พอร์ทัลเครน",
+                        "tower_crane": "ทาวเวอร์เครน",
+                        "travel_lift": "เครนยกเรือ"
+                    }
+                },
+                "crop": {
+                    "label": "พืชผล",
+                    "options": {
+                        "asparagus": "หน่อไม้ฝรั่ง",
+                        "barley": "ข้าวบาเลย์",
+                        "beet": "หัวผักกาด",
+                        "cassava": "มันสำปะหลัง",
+                        "coffee": "กาแฟ",
+                        "cotton": "ฝ้าย",
+                        "cranberries": "แครนเบอร์รี่",
+                        "fast_growing_wood": "ป่าละเมาะระยะสั้น",
+                        "flowers": "ดอกไม้",
+                        "grape": "องุ่น",
+                        "grass": "หญ้า",
+                        "hop": "ฮอปส์",
+                        "lavender": "ลาเวนเดอร์",
+                        "maize": "ข้าวโพด",
+                        "potato": "มันฝรั่ง",
+                        "rape": "ผักกาดก้านขาว",
+                        "rice": "ข้าว",
+                        "soy": "ถั่วเหลือง",
+                        "strawberry": "สตรอเบอร์รี่",
+                        "sugar_beet": "หัวผักกาดน้ำตาล",
+                        "sugarcane": "อ้อย",
+                        "sunflower": "ทานตะวัน",
+                        "tea": "ชา",
+                        "tobacco": "ยาสูบ",
+                        "vegetable": "ผัก",
+                        "wheat": "ข้าวสาลี"
+                    }
                 },
                 "crossing": {
-                    "label": "ประเภท"
+                    "label": "ประเภท",
+                    "options": {
+                        "traffic_signals": "ทางข้ามพร้อมสัญญาณไฟ",
+                        "uncontrolled": "เฉพาะเครื่องหมายบนถนน",
+                        "unmarked": "ไม่มีเครื่องหมายบนถนน หรือสัญญาณไฟ"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "ไม้กั้น",
@@ -275,39 +918,537 @@
                 "crossing/light": {
                     "label": "ไฟ"
                 },
-                "cuisine": {
+                "crossing/markings": {
+                    "label": "เครื่องหมายทางข้าม",
                     "options": {
-                        "coffee_shop": "ร้านกาแฟ"
+                        "dashes": "เส้นขวางประ",
+                        "dots": "เส้นขวางจุด",
+                        "ladder": "บรรไดพร้อมแถบตามยาว",
+                        "ladder:paired": "บรรไดพร้อมแถบคู่ตามยาว",
+                        "ladder:skewed": "บรรไดพร้อมแถบทแยง",
+                        "lines": "เส้นทแยง",
+                        "lines:paired": "เส้นทแยงคู่",
+                        "no": "ไม่มีเครื่องหมาย",
+                        "pictograms": "รูปสัญลักษณ์ที่ทาสี",
+                        "surface": "การรักษาพื้นผิวเท่านั้น",
+                        "yes": "ทำเครื่องหมายอย่างใด",
+                        "zebra": "แถบตามยาว",
+                        "zebra:bicolour": "แถบตามยาวสลับสี",
+                        "zebra:double": "ทริปเปิล-โฟร์",
+                        "zebra:paired": "แถบตามยาวคู่"
+                    },
+                    "terms": "เครื่องหมายทางม้าลาย,เครื่องหมายทางคนเดินข้าม"
+                },
+                "crossing_raised": {
+                    "label": "ยกระดับ",
+                    "options": {
+                        "table": "ใช่",
+                        "undefined": "ไม่"
                     }
                 },
+                "cuisine": {
+                    "label": "ประเภทอาหาร",
+                    "options": {
+                        "american": "อเมริกัน",
+                        "asian": "เอเชีย",
+                        "bubble_tea": "ชาไข่มุก",
+                        "burger": "เบอร์เกอร์",
+                        "cake": "เค้ก",
+                        "chicken": "ไก่",
+                        "chinese": "อาหารจีน",
+                        "chocolate": "ช็อคโกแลต",
+                        "coffee_shop": "ร้านกาแฟ",
+                        "dessert": "ของหวาน",
+                        "donut": "โดนัท",
+                        "fish": "ปลา",
+                        "french": "อาหารฝรั่งเศส",
+                        "german": "อาหารเยอรมัน",
+                        "greek": "อาหารกรีก",
+                        "hot_dog": "ฮอทดอก",
+                        "ice_cream": "ไอศกรีม",
+                        "indian": "อาหารอินเดียน",
+                        "indonesian": "อาหารอินโดนีเซีย",
+                        "italian": "อาหารอิตาเลียน",
+                        "japanese": "อาหารญี่ปุ่น",
+                        "juice": "น้ำผลไม้",
+                        "kebab": "เคบับ",
+                        "korean": "อาหารเกาหลี",
+                        "lebanese": "อาหารเลบานีส",
+                        "malaysian": "อาหารมาเลย์เซียน",
+                        "mexican": "อาหารแม็กซิกัน",
+                        "pankcake": "แพนเค้ก",
+                        "pasta": "พาสต้า",
+                        "pizza": "พิซซ่า",
+                        "polish": "อาหารโปแลนด์",
+                        "portuguese": "อาหารโปรตุเกส",
+                        "regional": "อาหารท้องถิ่น",
+                        "russian": "อาหารรัสเซีย",
+                        "salad": "สลัด",
+                        "sandwich": "แซนวิช",
+                        "seafood": "อาหารทะเล",
+                        "spanish": "อาหารสเปน",
+                        "steak_house": "สเต็ก",
+                        "sushi": "ซูชิ",
+                        "taiwanese": "อาหารไต้หวัน",
+                        "thai": "อาหารไทย",
+                        "turkish": "อาหารตุรกี",
+                        "vietnamese": "อาหารเวียดนาม"
+                    },
+                    "terms": "อาหาร,เมนู"
+                },
                 "currency_multi": {
-                    "label": "ชนิดเงินตรา"
+                    "label": "ชนิดเงินตรา",
+                    "terms": "สกุลเงิน"
+                },
+                "cutting": {
+                    "label": "ชนิด",
+                    "placeholder": "พิ้นฐาน"
+                },
+                "cycle_network": {
+                    "label": "เครือข่าย"
                 },
                 "cycleway": {
                     "label": "เลนจักรยาน",
                     "options": {
+                        "lane": {
+                            "description": "เลนจักรยานที่แยกออกจากการจราจรด้วยเส้นทาสี",
+                            "title": "เลนจักรยานมาตรฐาน"
+                        },
+                        "no": {
+                            "description": "ไม่มีเลนจักรยาน",
+                            "title": "ไม่มี"
+                        },
+                        "opposite": {
+                            "description": "เลนจักรยานสองทิศทางบนถนนด้านเดียว",
+                            "title": "เลนจักรยานสวนทางกัน"
+                        },
+                        "opposite_lane": {
+                            "description": "เลนจักรยานที่ทิศจรงข้ามกับจารจร",
+                            "title": "ตรงข้ามเลนจักรยาน"
+                        },
+                        "separate": {
+                            "description": "ระบุว่าทางจักรยานถูกบันทึกเป็นรูปเรขาคณิตแยกต่างหาก",
+                            "title": "ทางจักรยานถูกบันทึกแยก"
+                        },
                         "share_busway": {
-                            "description": "ทางจักรยานที่ใช้ร่วมกับทางรถประจำทาง"
+                            "description": "ทางจักรยานที่ใช้ร่วมกับทางรถประจำทาง",
+                            "title": "เลนจักรยานแบ่งกับเลนรถเมล์"
+                        },
+                        "shared_lane": {
+                            "description": "เลนจักรยานที่ไม่มีการกั้นกับจารจร",
+                            "title": "เลนจักรยานแบ่ง"
+                        },
+                        "track": {
+                            "description": "เลนจักรยานแยกจากจารจรด้วยตัวกั้นแท้",
+                            "title": "ทางจักรยาน"
                         }
+                    },
+                    "placeholder": "เลน, ทาง, สวนทาง, ...",
+                    "terms": "เลนปั่นจักรยาน,เลนปั่น",
+                    "types": {
+                        "cycleway:left": "ด้านซ้าย",
+                        "cycleway:right": "ด้านขวา"
                     }
+                },
+                "dance/style": {
+                    "label": "รูปแบบการเต้น"
+                },
+                "date": {
+                    "label": "วันที่"
+                },
+                "defibrillator/location": {
+                    "label": "อธิบายสถานที่"
+                },
+                "delivery": {
+                    "label": "เดลิเวอรี",
+                    "terms": "จัดส่ง"
+                },
+                "denomination": {
+                    "label": "นิกาย"
+                },
+                "denotation": {
+                    "label": "สัญลักษณ์"
+                },
+                "departures_board": {
+                    "label": "กระดานผู้โดยสารขาเข้า/ขาออก",
+                    "options": {
+                        "no": "ไม่มี",
+                        "realtime": "เรียลไทม์",
+                        "timetable": "ตามตารางเวลา",
+                        "yes": "ใช่"
+                    }
+                },
+                "deposit/trolley": {
+                    "label": "เติมเงิน"
+                },
+                "depot": {
+                    "label": "ชนิด"
+                },
+                "depth": {
+                    "label": "ความลึก (เมตร)"
+                },
+                "descent": {
+                    "label": "ระยะลาดเอียงรวม"
+                },
+                "description": {
+                    "label": "คำอธิบาย"
+                },
+                "design": {
+                    "label": "ออกแบบ"
+                },
+                "destination": {
+                    "label": "ปลายทาง"
+                },
+                "destination/ref": {
+                    "label": "หมายเลขถนนปลายทาง"
+                },
+                "destination/symbol": {
+                    "label": "สัญลักษณ์ปลายทาง"
+                },
+                "destination_waterway": {
+                    "label": "ปลายทาง"
+                },
+                "devices": {
+                    "label": "อุปกรณ์",
+                    "placeholder": "1, 2, 3..."
+                },
+                "diameter": {
+                    "label": "เส้นผ่านศูนย์กลาง",
+                    "placeholder": "5 mm, 10 cm, 15 in…"
+                },
+                "diameter_crown": {
+                    "label": "เส้นผ่านศูนย์กลางร่มไม้",
+                    "placeholder": "4 m, 9', …"
+                },
+                "diet_multi": {
+                    "label": "ประเภทการกิน",
+                    "options": {
+                        "gluten_free": "ปราศจากกลูเตน",
+                        "halal": "ฮาลาล",
+                        "kosher": "โคเชอร์",
+                        "lactose_free": "ปราศจากแลคโตส",
+                        "pescetarian": "เพสเซทาเรียน",
+                        "vegan": "วีแกน",
+                        "vegetarian": "มังสวิรัติ"
+                    }
+                },
+                "diplomatic": {
+                    "label": "ชนิด"
+                },
+                "diplomatic/services": {
+                    "label": "บริการ"
+                },
+                "direction": {
+                    "label": "ทิศทาง (องศาตามนาฬิกา)",
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "ทิศทาง",
+                    "options": {
+                        "east": "ไปทางทิศตะวันออก",
+                        "north": "ไปทางทิศตะวันตก",
+                        "south": "ไปทางทิศใต้",
+                        "west": "ไปทางทิศเหนือ"
+                    }
+                },
+                "direction_clock": {
+                    "label": "ทิศทาง",
+                    "options": {
+                        "anticlockwise": "ทวนเข็มนาฬิกา",
+                        "clockwise": "ตามเข็มนาฬิกา"
+                    }
+                },
+                "direction_point": {
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "direction_vertex": {
+                    "label": "ทิศทางที่ได้รับผลกระทบ",
+                    "options": {
+                        "backward": "ไปข้างหลัง",
+                        "both": "ทั้งคู่ / ทั้งหมด",
+                        "forward": "ไปข้างหน้า"
+                    }
+                },
+                "dispensing": {
+                    "label": "จ่ายยาตามใบสั่งแพทย์"
+                },
+                "display": {
+                    "label": "จอแสดงผล",
+                    "options": {
+                        "analog": "อนาล็อก",
+                        "digital": "ดิจิทัล",
+                        "sundial": "นาฬิกาแดด",
+                        "unorthodox": "นอกรีต"
+                    }
+                },
+                "distance": {
+                    "label": "ระยะทาง",
+                    "terms": "ระยะ"
+                },
+                "disused/amenity": {
+                    "label": "ชนิด"
+                },
+                "disused/railway": {
+                    "label": "ชนิด"
                 },
                 "disused/shop": {
                     "label": "ประเภท\nชนิด"
                 },
+                "dock": {
+                    "label": "ประเภท"
+                },
+                "dog": {
+                    "label": "สุนัข",
+                    "options": {
+                        "leashed": "มีสายจูงเท่านั้น",
+                        "no": "ไม่อนุญาต",
+                        "yes": "อนุญาต"
+                    },
+                    "terms": "หมา"
+                },
+                "door": {
+                    "label": "ประตู"
+                },
+                "door_type": {
+                    "label": "ชนิด"
+                },
+                "drink_multi": {
+                    "label": "เครื่องดื่ม"
+                },
+                "drinking_water": {
+                    "label": "ดื่มได้",
+                    "terms": "สามารถดื่มได้"
+                },
                 "drinking_water_available": {
-                    "label": "มีน้ำดื่ม"
+                    "label": "มีน้ำดื่ม",
+                    "terms": "มีน้ำดื่ม"
+                },
+                "drive_through": {
+                    "label": "ไดร์ฟทรู",
+                    "terms": "ขับรถผ่าน"
+                },
+                "duration": {
+                    "label": "ระยะเวลา",
+                    "placeholder": "00:00"
+                },
+                "ele": {
+                    "label": "ระดับความสูง (เมตร)"
+                },
+                "electrified": {
+                    "label": "ระบบการจ่ายไฟ",
+                    "options": {
+                        "contact_line": "สายจ่ายไฟ",
+                        "no": "ไม่มี",
+                        "rail": "รางจ่ายไฟ",
+                        "yes": "มี (ไม่ระบุประเภท)"
+                    },
+                    "placeholder": "สายจ่ายไฟ, รางจ่ายไฟ, ..."
+                },
+                "email": {
+                    "label": "อีเมล",
+                    "placeholder": "example@example.com"
+                },
+                "embankment": {
+                    "label": "ชนิด",
+                    "placeholder": "พิ้นฐาน"
+                },
+                "embassy": {
+                    "label": "ประเภท",
+                    "options": {
+                        "branch_embassy": "สาขาของสถานทูต",
+                        "delegation": "คณะผู้แทน",
+                        "high_commission": "ข้าหลวงใหญ่",
+                        "interests_section": "ส่วนผลประโยชน์",
+                        "mission": "ภารกิจทางการทูต",
+                        "nunciature": "ภารกิจอัครสมณทูตแห่งสันตะสำนัก",
+                        "residence": "บ้านพักอย่างเป็นทางการของเอกอัครราชทูต",
+                        "yes": "สถานทูต"
+                    }
                 },
                 "emergency": {
                     "label": "ฉุกเฉิน"
                 },
-                "fire_hydrant/position": {
+                "emergency_combo": {
+                    "label": "ประเภท"
+                },
+                "emergency_ward_entrance": {
+                    "label": "ประเภท"
+                },
+                "enforcement": {
+                    "label": "ประเภท"
+                },
+                "entrance": {
+                    "label": "ประเภท",
                     "options": {
+                        "emergency": "ทางออกฉุกเฉิน",
+                        "entrance": "ทางเข้าเท่านั้น",
+                        "exit": "ทางออกเท่านั้น",
+                        "garage": "ประตูโรงรถ",
+                        "home": "บ้านส่วนบุคคล หรืออพาร์ทเมนท์",
+                        "main": "ทางหลัก",
+                        "secondary": "ทางรอง",
+                        "service": "บริการ",
+                        "staircase": "บรรได",
+                        "yes": "ไม่ระบุ"
+                    }
+                },
+                "except": {
+                    "label": "ข้อยกเว้น"
+                },
+                "expected_rcn_route_relations": {
+                    "label": "โหนดการขี่จักรยานที่อยู่ติดกัน"
+                },
+                "expected_rwn_route_relations": {
+                    "label": "โหนดการเดินที่อยู่ติดกัน"
+                },
+                "expressway-US": {
+                    "label": "ทางด่วน"
+                },
+                "faces": {
+                    "label": "จำนวนด้าน"
+                },
+                "fax": {
+                    "label": "โทรสาร",
+                    "placeholder": "+66 42 123 457",
+                    "terms": "แฟกส์"
+                },
+                "fee": {
+                    "label": "ค่าธรรมเนียม",
+                    "terms": "ค่าใช้จ่าย,ราคา"
+                },
+                "fence_type": {
+                    "label": "ประเภท"
+                },
+                "fire_hydrant/diameter": {
+                    "label": "ผ่านศูนย์กลาง (mm, in, หรือตัวอักษร)"
+                },
+                "fire_hydrant/position": {
+                    "label": "ตำแหน่ง",
+                    "options": {
+                        "green": "เขียว/หญ้า",
+                        "lane": "เลนถนน",
                         "parking_lot": "ลานจอดรถ",
                         "sidewalk": "ทางเท้า"
                     }
                 },
+                "fire_hydrant/pressure": {
+                    "label": "ความดัน (บาร์)"
+                },
+                "fire_hydrant/type": {
+                    "label": "รูปร่าง",
+                    "options": {
+                        "pillar": "เสา/เหนือพื้นดิน",
+                        "pipe": "ท่อปิด",
+                        "underground": "ใต้ดิน",
+                        "wall": "กำแพง"
+                    }
+                },
+                "fireplace": {
+                    "label": "เตาผิง"
+                },
+                "fishing": {
+                    "label": "ตกปลา",
+                    "terms": "จับปลา"
+                },
+                "fitness_station": {
+                    "label": "ชนิดของอุปกรณ์"
+                },
+                "fixme": {
+                    "label": "ช่วยแก้ไขข้อบกพร่องฉันหน่อย"
+                },
+                "flag/name": {
+                    "label": "ชื่อของธง"
+                },
+                "flag/type": {
+                    "label": "ชนิดของธง"
+                },
+                "flag/wikidata": {
+                    "label": "Wikidata ของธง"
+                },
+                "flashing_lights": {
+                    "label": "ไฟกระพริบ",
+                    "options": {
+                        "always": {
+                            "description": "ไฟกระพริบตลอดเวลา",
+                            "title": "กระพริบตลอดเวลา"
+                        },
+                        "button": {
+                            "description": "ไฟกระพริบเมื่อกดปุ่ม",
+                            "title": "มีปุ่มกด"
+                        },
+                        "button;sensor": {
+                            "description": "ไฟกระพริบเมื่อเซ็นเซอร์ตรวจจับหรือกดปุ่ม",
+                            "title": "มีปุ่มกด และเซ็นเซอร์"
+                        },
+                        "no": "ไม่มี",
+                        "sensor": {
+                            "description": "มีไฟจากการตรวจจับของเซ็นเซอร์",
+                            "title": "มีเซ็นเซอร์"
+                        },
+                        "yes": "ใช่"
+                    }
+                },
+                "floating": {
+                    "label": "ลอย"
+                },
+                "flood_prone": {
+                    "label": "มีแนวโน้มที่จะน้ำท่วม"
+                },
+                "ford": {
+                    "label": "ประเภท",
+                    "placeholder": "พิ้นฐาน"
+                },
+                "fountain": {
+                    "label": "ชนิด"
+                },
+                "frequency": {
+                    "label": "ความถี่การทำงาน"
+                },
+                "from": {
+                    "label": "จาก"
+                },
                 "fuel": {
                     "label": "เชื้อเพลิง"
+                },
+                "fuel/fuel_multi": {
+                    "label": "ประเภทเชื้อเพลิง",
+                    "options": {
+                        "GTL_diesel": "ดีเซล GTL",
+                        "HGV_diesel": "ดีเซลรถบรรทุก",
+                        "LH2": "ไฮโดรเจนเหลว",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (แบ่งขายเป็นกระป๋อง)",
+                        "biodiesel": "ไบโอดีเซล",
+                        "cng": "แก๊สธรรมชาติอัด (CNG)",
+                        "diesel": "ดีเซล",
+                        "e10": "แก๊สโซลีน E10",
+                        "e85": "แก๊สโซลีน E85",
+                        "h70": "แก็สไฮโดรเจน (700 บาร์)",
+                        "lpg": "ก๊าซธรรมชาติเหลว (LPG)",
+                        "octane_100": "แก๊สโซลีน (ออกเทน 100)",
+                        "octane_80": "แก๊สโซลีน (ออกเทน 80)",
+                        "octane_85": "แก๊สโซลีน (ออกเทน 85)",
+                        "octane_87": "แก๊สโซลีน (ออกเทน 87)",
+                        "octane_88": "แก๊สโซลีน (ออกเทน 88)",
+                        "octane_89": "แก๊สโซลีน (ออกเทน 89)",
+                        "octane_90": "แก๊สโซลีน (ออกเทน 90)",
+                        "octane_91": "แก๊สโซลีน (ออกเทน 91)",
+                        "octane_92": "แก๊สโซลีน (ออกเทน 92)",
+                        "octane_93": "แก๊สโซลีน (ออกเทน 93)",
+                        "octane_95": "แก๊สโซลีน (ออกเทน 95)",
+                        "octane_97": "แก๊สโซลีน (ออกเทน 97)",
+                        "octane_98": "แก๊สโซลีน (ออกเทน 98)",
+                        "propane": "โพรเพน"
+                    }
+                },
+                "gambling": {
+                    "label": "เกมส์"
+                },
+                "garden/type": {
+                    "label": "ชนิดของสวน"
+                },
+                "gauge": {
+                    "label": "ขนาดความกว้างรางรถไฟ"
                 },
                 "gender": {
                     "label": "เพศ",
@@ -316,13 +1457,206 @@
                         "male": "ชาย",
                         "unisex": "ชายและหญิง"
                     },
-                    "placeholder": "ไม่ทราบ"
+                    "placeholder": "ไม่ทราบ",
+                    "terms": "เพศ,เพศสภาพ,เจนเดอร์"
+                },
+                "generator/method": {
+                    "label": "วิธี",
+                    "options": {
+                        "anaerobic_digestion": "การย่อยแบบไม่ใช้ออกซิเจน",
+                        "barrage": "เขื่อนกั้นน้ำ",
+                        "combustion": "สันดาป",
+                        "fission": "ฟิชชัน",
+                        "fusion": "ฟิวชั่น",
+                        "gasification": "แก๊สซิฟิเคชัน",
+                        "photovoltaic": "ไฟฟ้าโซลาร์เซลล์",
+                        "run-of-the-river": "การไหลของแม่น้ำ",
+                        "stream": "กระแสน้ำ",
+                        "thermal": "ความร้อนจากแสงอาทิตย์",
+                        "water-pumped-storage": "ปั๊มเก็บ",
+                        "water-storage": "อ่างเก็บน้ำ",
+                        "wind_turbine": "กังหันลม"
+                    }
+                },
+                "generator/output/electricity": {
+                    "label": "กำลังไฟออก",
+                    "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "แหล่งที่มา"
+                    "label": "แหล่งที่มา",
+                    "options": {
+                        "battery": "แบตเตอรี่",
+                        "biofuel": "เชื้อเพลิงจากพืช",
+                        "biogas": "ก๊าซชีวภาพ",
+                        "biomass": "วัตถุพืช",
+                        "coal": "ถ่านหิน",
+                        "diesel": "ดีเซล",
+                        "gas": "ก๊าซธรรมชาติ",
+                        "gasoline": "แก็สโซลีน",
+                        "geothermal": "พลังงานความร้อนใต้พิภพ",
+                        "hydro": "ไฟฟ้าพลังน้ำ",
+                        "nuclear": "พลังงานนิวเคลียร์",
+                        "oil": "น้ำมัน",
+                        "solar": "รังสีสุริยะ",
+                        "tidal": "พลังน้ำขึ้นน้ำลง",
+                        "waste": "ของเสีย",
+                        "wave": "พลังคลื่น",
+                        "wind": "ลม"
+                    }
+                },
+                "generator/type": {
+                    "label": "ประเภท"
+                },
+                "genus": {
+                    "label": "สกุล",
+                    "placeholder": "Acer, Platanus, Quercus …",
+                    "terms": "จีนัส"
+                },
+                "geyser/height": {
+                    "label": "ความสูงของการปะทุ"
+                },
+                "gnis/feature_id-US": {
+                    "label": "ID คุณลักษณะ GNIS"
+                },
+                "government": {
+                    "label": "ประเภท"
+                },
+                "grades": {
+                    "label": "ระดับชั้น"
+                },
+                "grape_variety": {
+                    "label": "พันธุ์องุ่น"
+                },
+                "group_only": {
+                    "label": "กลุ่มเท่านั้น"
+                },
+                "guest_house": {
+                    "label": "ประเภท"
+                },
+                "handicap": {
+                    "label": "แฮนดิแคป",
+                    "placeholder": "1-18"
+                },
+                "handrail": {
+                    "label": "ราวจับ"
+                },
+                "hashtags": {
+                    "label": "แฮชแท็ก",
+                    "placeholder": "#example"
+                },
+                "healthcare": {
+                    "label": "ประเภท"
+                },
+                "healthcare/speciality": {
+                    "label": "ความเชี่ยวชาญ",
+                    "options": {
+                        "abortion": "การทำแท้ง",
+                        "acupuncture": "การฝังเข็ม",
+                        "allergology": "ภูมิแพ้ และหอบหืด",
+                        "anaesthetics": "วิสัญญีวิทยา",
+                        "angiology": "วิทยาหลอดเลือดและหลอดน้ำเหลือง",
+                        "anthroposophical": "เวชศาสตร์มานุษยวิทยา",
+                        "applied_kinesiology": "กายภาพประยุกต์",
+                        "aromatherapy": "สุคนธบำบัด",
+                        "ayurveda": "อายุรเวท",
+                        "behavior": "พฤติกรรมบำบัด",
+                        "biochemistry": "ชีวเคมี",
+                        "biology": "ชีววิทยา",
+                        "blood_check": "ตรวจเลือด",
+                        "body": "กายบำบัด",
+                        "cardiology": "หทัยวิทยา",
+                        "cardiothoracic_surgery": "การผ่าตัดหัวใจ",
+                        "child_psychiatry": "จิตเวชศาสตร์เด็กและวัยรุ่น",
+                        "chiropractic": "จัดกระดูก",
+                        "clinical_pathology": "พยาธิวิทยาคลินิก",
+                        "community": "สาธารณสุข",
+                        "dental_oral_maxillo_facial_surgery": "ศัลยกรรมช่องฟัน ปากและขากรรไกร",
+                        "depth": "จิตวิทยาเชิงลึก",
+                        "dermatology": "ตจวิทยา",
+                        "dermatovenereology": "ตจกามโรควิทยา",
+                        "diabetology": "เบาหวานวิทยา",
+                        "diagnostic_radiology": "รังสีวินิจฉัย",
+                        "emergency": "เวชศาสตร์ฉุกเฉิน",
+                        "endocrinology": "ต่อมไร้ท่อวิทยา",
+                        "fertility": "เจริญพันธุ์",
+                        "gastroenterology": "วิทยาทางเดินอาหาร",
+                        "general": "เวชปฏิบัติทั่วไป",
+                        "geriatrics": "เวชศาสตร์ผู้สูงอายุ",
+                        "gynaecology": "สูตินรีเวชวิทยา",
+                        "haematology": "โลหิตวิทยา",
+                        "hepatology": "วิทยาตับ",
+                        "herbalism": "เวชสมุนไพรวิทยา",
+                        "homeopathy": "โฮมีโอพาธี",
+                        "humanistic": "จิตวิทยามนุษยนิยม",
+                        "hydrotherapy": "วารีบำบัด",
+                        "hypnosis": "การสะกดจิต",
+                        "infectious_diseases": "โรคติดเชื้อ",
+                        "intensive": "อภิบาล",
+                        "internal": "อายุรศาสตร์",
+                        "naturopathy": "ธรรมชาติบำบัด",
+                        "neonatology": "กุมารเวชศาสตร์ทารกแรกเกิด",
+                        "nephrology": "วักกวิทยา",
+                        "neurology": "ประสาทวิทยา",
+                        "neuropsychiatry": "ประสาทจิตเวช",
+                        "neurosurgery": "ประสาทศัลยศาสตร์",
+                        "nuclear": "เวชศาสตร์นิวเคลียร์",
+                        "occupational": "อาชีวเวชศาสตร์",
+                        "oncology": "วิทยามะเร็ง",
+                        "ophthalmology": "จักษุวิทยา",
+                        "orthodontics": "ทันตกรรมจัดฟัน",
+                        "orthopaedics": "ศัลยศาสตร์ออร์โธปิดิกส์",
+                        "osteopathy": "ออสทีโอพาธี",
+                        "otolaryngology": "หู คอ จมูก",
+                        "paediatric_surgery": "กุมารศัลยศาสตร์",
+                        "paediatrics": "กุมารเวชศาสตร์",
+                        "palliative": "การดูแลประคับประคอง",
+                        "pathology": "พยาธิวิทยา",
+                        "physiatry": "เวชศาสตร์ฟื้นฟู",
+                        "plastic_surgery": "ศัลยศาสตร์พลาสติก",
+                        "podiatry": "บาทาเวชศาสตร์",
+                        "proctology": "ศัลยศาสตร์ลำไส้ใหญ่และทวารหนัก",
+                        "psychiatry": "จิตเวชศาสตร์",
+                        "pulmonology": "วิทยาปอด",
+                        "radiology": "รังสีวิทยา",
+                        "radiotherapy": "รังสีรักษา",
+                        "reflexology": "การนวดกดจุดสะท้อนเท้า",
+                        "reiki": "เรกิ",
+                        "rheumatology": "วิทยารูมาติก",
+                        "shiatsu": "ชิอัตสึ",
+                        "stomatology": "โอษฐวิทยา",
+                        "surgery": "ศัลยกรรมทั่วไป",
+                        "systemic": "การรักษาที่มีผลทั่วร่าง",
+                        "traditional_chinese_medicine": "แพทย์แผนจีน",
+                        "transplant": "การปลูกถ่ายอวัยวะ",
+                        "trauma": "ศัลยศาสตร์อุบัติเหตุ",
+                        "tropical": "เวชศาสตร์เขตร้อน",
+                        "tuina": "ทุยหนา",
+                        "unani": "แพทย์แผนยูนาน",
+                        "urology": "วิทยาทางเดินปัสสาวะ",
+                        "vaccination": "วัคซีน",
+                        "vascular_surgery": "ศัลยกรรมหลอดเลือด"
+                    }
+                },
+                "heating": {
+                    "label": "เครื่องทำความร้อน"
+                },
+                "height": {
+                    "label": "ความสูง (เมตร)"
+                },
+                "height/hub": {
+                    "label": "ความสูงของแกนหมุน (เมตร)",
+                    "terms": "ความสูงของแกน (เมตร)"
                 },
                 "height_building": {
-                    "label": "ความสูงอาคาร (เมตร)"
+                    "label": "ความสูงอาคาร (เมตร)",
+                    "terms": "ความสูงอาคาร (เมตร)"
+                },
+                "highchair": {
+                    "label": "เก้าอี้สูง",
+                    "terms": "เก้าอี้ยกสูง"
+                },
+                "highspeed": {
+                    "label": "ความเร็วสูง"
                 },
                 "highway": {
                     "label": "ประเภท"
@@ -330,23 +1664,116 @@
                 "highway_cartpath": {
                     "label": "ประเภทของทาง",
                     "options": {
+                        "path": "ทางรถคาร์ท",
                         "service": "ถนนบริการ"
                     }
                 },
-                "horse_riding": {
-                    "label": "การขี่ม้า"
+                "historic": {
+                    "label": "ประเภท"
                 },
-                "horse_scale": {
+                "historic/civilization": {
+                    "label": "อารยธรรมประวัติศาสตร์"
+                },
+                "historic/wreck/date_sunk": {
+                    "label": "วันที่จม"
+                },
+                "historic/wreck/visible_at_high_tide": {
+                    "label": "มองเห็นได้เมื่อน้ำขึ้น"
+                },
+                "historic/wreck/visible_at_low_tide": {
+                    "label": "มองเห็นได้เมื่อน้ำลง"
+                },
+                "holding_position/type": {
+                    "label": "ประเภท",
                     "options": {
-                        "critical": "ก้ำกึ่ง: ผ่านได้เฉพาะผู้ขี่และม้าที่มีประสบการณ์เท่านั้น มีอุปสรรค ควรจะตรวจสอบสะพานอย่างรอบคอบ",
-                        "impossible": "ผ่านไม่ได้: ม้าไม่สามารถผ่านทางหรือสะพานได้ แคบเกินไป โครงสร้างรองรับไม่เพียงพอ สิ่งกีดขวางเหมือนบันได อันตรายถึงชีวิต"
+                        "ILS": "เครื่องช่วยการเดินอากาศ",
+                        "intermediate": "ทางแยกแท็กซี่เวย์กับแท็กซี่เวย์",
+                        "runway": "รันเวย์"
                     }
                 },
+                "hoops": {
+                    "label": "จำนวนห่วง",
+                    "placeholder": "1, 2, 4..."
+                },
+                "horse_dressage": {
+                    "label": "ศิลปะการบังคับม้า",
+                    "options": {
+                        "equestrian": "ใช่",
+                        "undefined": "ไม่"
+                    }
+                },
+                "horse_riding": {
+                    "label": "การขี่ม้า",
+                    "options": {
+                        "horse_riding": "ใช่",
+                        "undefined": "ไม่"
+                    }
+                },
+                "horse_scale": {
+                    "label": "ความยากการขี่ม้า",
+                    "options": {
+                        "common": "ง่าย: ไม่มีปัญหา หรือความยาก (พื้นฐาน)",
+                        "critical": "ก้ำกึ่ง: ผ่านได้เฉพาะผู้ขี่และม้าที่มีประสบการณ์เท่านั้น มีอุปสรรค ควรจะตรวจสอบสะพานอย่างรอบคอบ",
+                        "dangerous": "อันตราย: เฉพาะนักขี่และม้าที่มีประสบการณ์สูงเท่านั้น และในสภาพอากาศที่ดีเท่านั้น",
+                        "demanding": "ด้วยความระมัดระวัง : ทางไม่เรียบ ขรุขระเป็นบางช่วง",
+                        "difficult": "ยาก: ทางแคบและเปิดโล่ง อาจมีอุปสรรคในการข้าม และทางเดินที่แคบ",
+                        "impossible": "ผ่านไม่ได้: ม้าไม่สามารถผ่านทางหรือสะพานได้ แคบเกินไป โครงสร้างรองรับไม่เพียงพอ สิ่งกีดขวางเหมือนบันได อันตรายถึงชีวิต"
+                    },
+                    "placeholder": "ยาก, อันตราย, …"
+                },
                 "horse_stables": {
-                    "label": "คอกม้า"
+                    "label": "คอกม้า",
+                    "options": {
+                        "stables": "ใช่",
+                        "undefined": "ไม่"
+                    }
                 },
                 "hot_water": {
                     "label": "น้ำร้อน"
+                },
+                "iata": {
+                    "label": "รหัสท่าอากาศยาน IATA"
+                },
+                "icao": {
+                    "label": "รหัสท่าอากาศยาน ICAO"
+                },
+                "image": {
+                    "label": "ภาพ",
+                    "placeholder": "https://example.com/photo.jpg",
+                    "terms": "ภาพถ่าย"
+                },
+                "incline": {
+                    "label": "ความลาดชัน",
+                    "terms": "ความชัน"
+                },
+                "incline_steps": {
+                    "options": {
+                        "down": "ลง",
+                        "up": "ขึ้น"
+                    }
+                },
+                "indoor": {
+                    "label": "ในร่ม",
+                    "terms": "มีร่ม,ภายในอาคาร"
+                },
+                "indoor_type": {
+                    "label": "ประเภท"
+                },
+                "industrial": {
+                    "label": "ประเภท"
+                },
+                "informal": {
+                    "label": "ไม่เป็นทางการ"
+                },
+                "information": {
+                    "label": "ประเภท"
+                },
+                "inscription": {
+                    "label": "ข้อความจารึก"
+                },
+                "intermittent": {
+                    "label": "ไม่สม่ำเสมอ",
+                    "terms": "ไม่ต่อเนื่อง,เป็นพักๆ,เป็นช่วงๆ"
                 },
                 "internet_access": {
                     "label": "บริการอินเทอร์เน็ต",
@@ -356,11 +1783,83 @@
                         "wired": "ใช้สาย",
                         "wlan": "ไร้สาย",
                         "yes": "ใช่"
-                    }
+                    },
+                    "terms": "การเชื่อมต่ออินเตอร์เน็ต"
+                },
+                "internet_access/fee": {
+                    "label": "การเข้าถึงอินเตอร์เน็ต",
+                    "options": {
+                        "customers": "เฉพาะลูกค้า",
+                        "no": "ฟรี",
+                        "yes": "เสียเงิน"
+                    },
+                    "terms": "การเข้าถึงอินเตอร์เน็ต"
+                },
+                "internet_access/ssid": {
+                    "label": "ชื่อเครือข่าย WiFi",
+                    "terms": "ชื่อเครือข่ายไวไฟ"
+                },
+                "interval": {
+                    "label": "ระยะห่างเวลา",
+                    "terms": "ระยะเวลาระหว่าง"
+                },
+                "junction/ref_oneway": {
+                    "label": "หมายเลขทางแยก",
+                    "terms": "เลขทางแยก"
+                },
+                "junction_line": {
+                    "label": "ทางแยก",
+                    "options": {
+                        "circular": "ทางแยกวงกลม",
+                        "jughandle": "ทางเบี่ยงแยก",
+                        "roundabout": "วงเวียน"
+                    },
+                    "terms": "แยก"
+                },
+                "kerb": {
+                    "label": "ขอบถนน"
+                },
+                "kerb/height": {
+                    "label": "ความสูง"
+                },
+                "kitchen": {
+                    "label": "ห้องครัว",
+                    "terms": "ครัว"
+                },
+                "kneipp_water_cure_multi": {
+                    "label": "ชนิดอ่าง"
+                },
+                "label": {
+                    "label": "ป้าย"
+                },
+                "lamp_mount": {
+                    "label": "เสา"
+                },
+                "lamp_type": {
+                    "label": "ประเภท"
+                },
+                "landuse": {
+                    "label": "ประเภท"
+                },
+                "lane_markings": {
+                    "label": "เครื่องหมายเลน",
+                    "terms": "การหมายเลน"
                 },
                 "lanes": {
                     "label": "ช่องทาง",
+                    "placeholder": "1, 2, 3...",
                     "terms": "ช่องทาง,ช่องจราจร,เลน"
+                },
+                "language_multi": {
+                    "label": "ภาษา"
+                },
+                "layer": {
+                    "label": "ชั้น",
+                    "placeholder": "0",
+                    "terms": "เลเยอร์"
+                },
+                "leaf_cycle": {
+                    "label": "วงจรใบไม้"
                 },
                 "location_pool": {
                     "options": {
@@ -1432,7 +2931,7 @@
                     "aliases": "อาคารพลับพลา\nอาคารศาลา"
                 },
                 "building/public": {
-                    "name": "อาคารสาธารนะ"
+                    "name": "อาคารสาธารณะ"
                 },
                 "building/residential": {
                     "name": "อาคารที่อยู่อาศัย"
@@ -1477,10 +2976,10 @@
                     "aliases": "อาคารโบสถ์"
                 },
                 "building/terrace": {
-                    "name": "บ้านแดว"
+                    "name": "บ้านแถว"
                 },
                 "building/train_station": {
-                    "name": "อาคารสถานทีรถไฟ"
+                    "name": "อาคารสถานีรถไฟ"
                 },
                 "building/transportation": {
                     "name": "อาคารสถานีขนส่ง"
@@ -1505,7 +3004,7 @@
                     "aliases": "งานฝีมือ"
                 },
                 "craft/agricultural_engines": {
-                    "name": "เครื่องจักรกลเกษตร"
+                    "name": "ช่างเครื่องจักรกลเกษตร"
                 },
                 "craft/basket_maker": {
                     "name": "ช่างจักสาน",
@@ -1580,11 +3079,10 @@
                     "aliases": "ฉนวนกันความร้อน"
                 },
                 "craft/joiner": {
-                    "name": "ช่างไม้",
-                    "aliases": "ผู้เข้าร่วม"
+                    "name": "ช่างต่อไม้"
                 },
                 "craft/key_cutter": {
-                    "name": "เครื่องตัดกุญแจ"
+                    "name": "ตัดกุญแจ"
                 },
                 "craft/locksmith": {
                     "name": "ช่างกุญแจ",
@@ -1818,7 +3316,7 @@
                     "name": "ตรอก"
                 },
                 "highway/service/drive-through": {
-                    "name": "ขับรถผ่าน"
+                    "name": "ทางขับผ่าน"
                 },
                 "highway/service/driveway": {
                     "name": "ทางรถ"
@@ -2048,10 +3546,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "สนามคริกเก็ต"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "สนามม้า",
-                    "aliases": "สนามขี่ม้า"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "สนามฮอกกี้"
@@ -2848,9 +4342,6 @@
                 },
                 "shop/pet": {
                     "name": "ร้านสัตว์เลี้ยง"
-                },
-                "shop/pet_grooming": {
-                    "name": "ร้านตัดแต่งขนสัตว์เลี้ยง"
                 },
                 "shop/photo": {
                     "name": "ร้านถ่ายรูป"

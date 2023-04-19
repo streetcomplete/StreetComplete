@@ -84,7 +84,7 @@ class CameraManager(private val c: MapController, private val mapboxMap: MapboxM
             update.resolveDeltas(_tangramCamera)
             cancelCameraAnimations(update)
             if (duration == 0L || isAnimationsOff) {
-                applyCameraUpdate(update)
+                applyCameraUpdate(update) // todo: mapLibre camera should be set here, because applyCameraUpdate is also called at the end of animateCameraUpdate
             } else {
                 val cameraPositionBuilder = com.mapbox.mapboxsdk.camera.CameraPosition.Builder(mapboxMap.cameraPosition)
                 update.rotation?.let { cameraPositionBuilder.bearing(it.toDouble()) }

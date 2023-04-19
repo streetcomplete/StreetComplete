@@ -18,6 +18,7 @@ class KerbUtilTest {
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
     }
 
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/kerb-node.svg
     @Test fun `barrier=kerb nodes on footways count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 2, tags = mapOf("barrier" to "kerb")),
@@ -59,6 +60,7 @@ class KerbUtilTest {
         assertTrue(kerb.couldBeAKerb())
     }
 
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/kerb-way.svg
     @Test fun `shared nodes between barrier=kerb ways and footways count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 2),
@@ -72,85 +74,87 @@ class KerbUtilTest {
         assertEquals(1, mapData.findAllKerbNodes().toList().size)
     }
 
-    @Test fun `shared endpoints between sidewalks and crossings count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(1, mapData.findAllKerbNodes().toList().size)
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/crossing-style2.svg
+    @Test fun `shared endpoints between sidewalks etc and crossings etc count`() {
+        val likeSidewalks = listOf("sidewalk", "traffic_island")
+        val likeCrossings = listOf("crossing", "access_aisle")
+        for (likeSidewalk in likeSidewalks) {
+            for (likeCrossing in likeCrossings) {
+                val mapData = TestMapDataWithGeometry(listOf(
+                    node(id = 1),
+                    way(1, listOf(1, 2), mapOf(
+                        "highway" to "footway",
+                        "footway" to likeSidewalk
+                    )),
+                    way(2, listOf(1, 3), mapOf(
+                        "highway" to "footway",
+                        "footway" to likeCrossing
+                    )),
+                ))
+                assertEquals(1, mapData.findAllKerbNodes().toList().size)
+            }
+        }
     }
 
-    @Test fun `shared endpoints between traffic islands and crossings count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "traffic_island"
-            )),
-            way(2, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(1, mapData.findAllKerbNodes().toList().size)
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/footway-crossing.svg
+    // assuming the orange way could be any other way, too
+    @Test fun `shared endpoints between sidewalks and crossings and any other way don't count`() {
+        val waysTags = listOf(
+            mapOf("highway" to "footway", "footway" to "sidewalk"),
+            mapOf("highway" to "footway", "footway" to "traffic_island"),
+            mapOf("highway" to "footway", "footway" to "crossing"), // yes, even other crossings
+            mapOf("highway" to "footway"),
+            mapOf("highway" to "cycleway"),
+            mapOf("highway" to "path"),
+            mapOf("highway" to "bridleway"),
+            mapOf("highway" to "service"),
+            mapOf("highway" to "residential"),
+            mapOf("construction" to "footway"),
+            mapOf("construction" to "cycleway"),
+            mapOf("construction" to "path"),
+            mapOf("construction" to "bridleway"),
+            mapOf("construction" to "service"),
+            mapOf("construction" to "residential"),
+        )
+
+        for (wayTags in waysTags) {
+            val mapData = TestMapDataWithGeometry(listOf(
+                node(id = 1),
+                way(1, listOf(1, 2), mapOf(
+                    "highway" to "footway",
+                    "footway" to "sidewalk"
+                )),
+                way(2, listOf(1, 3), mapOf(
+                    "highway" to "footway",
+                    "footway" to "crossing"
+                )),
+                way(3, listOf(1, 5), wayTags),
+            ))
+            assertEquals(0, mapData.findAllKerbNodes().toList().size)
+        }
     }
 
-    @Test fun `shared endpoints between traffic islands and sidewalks don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "traffic_island"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    @Test fun `shared endpoints between two crossings etc don't count`() {
+        val likeCrossings = listOf("crossing", "access_aisle")
+        for (likeCrossing in likeCrossings) {
+            val mapData = TestMapDataWithGeometry(listOf(
+                node(id = 1),
+                way(1, listOf(1, 2), mapOf(
+                    "highway" to "footway",
+                    "footway" to "crossing"
+                )),
+                way(2, listOf(1, 3), mapOf(
+                    "highway" to "footway",
+                    "footway" to likeCrossing
+                )),
+            ))
+            assertEquals(0, mapData.findAllKerbNodes().toList().size)
+        }
     }
 
-    @Test fun `shared endpoints between sidewalks and crossings and sidewalk without endpoint don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(3, listOf(4, 1, 5), mapOf(
-                "highway" to "footway",
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between two crossings don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(2, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between a crossing and not-endpoints of a sidewalk don't count`() {
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/crossing-style1.svg
+    // lower side (assuming the lower sidewalk is just one way)
+    @Test fun `endpoints of a crossing and non-endpoints of a sidewalk don't count`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1),
             way(1, listOf(1, 2), mapOf(
@@ -160,135 +164,6 @@ class KerbUtilTest {
             way(2, listOf(4, 1, 3), mapOf(
                 "highway" to "footway",
                 "footway" to "sidewalk"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between crossings and several sidewalks don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(3, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between crossing, traffic island and sidewalk don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "traffic_island"
-            )),
-            way(3, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between two crossings and sidewalk don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(1),
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2L, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(3L, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between crossings and sidewalks, some not fully tagged, don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(),
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(2L, listOf(1, 4), mapOf(
-                "highway" to "footway",
-            )),
-            way(3L, listOf(1, 3), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between crossings and sidewalk and cycleway don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(2, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(3, listOf(1, 3), mapOf(
-                "highway" to "cycleway",
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `shared endpoints between crossings and sidewalk and footway construction don't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(2, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(3, listOf(1, 3), mapOf(
-                "construction" to "footway",
-            )),
-        ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
-    }
-
-    @Test fun `intersection with a road doesn't count`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1),
-            way(1, listOf(1, 2), mapOf(
-                "highway" to "footway",
-                "footway" to "crossing"
-            )),
-            way(2, listOf(1, 4), mapOf(
-                "highway" to "footway",
-                "footway" to "sidewalk"
-            )),
-            way(3, listOf(5, 1, 3), mapOf(
-                "highway" to "secondary",
             )),
         ))
         assertEquals(0, mapData.findAllKerbNodes().toList().size)

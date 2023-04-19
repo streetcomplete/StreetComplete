@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -18,6 +18,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
           (highway = path and bicycle = designated and foot = designated)
           or (highway = footway and bicycle = designated)
           or (highway = cycleway and foot ~ designated|yes)
+          or highway ~ path|footway|cycleway and (footway:surface or cycleway:surface)
         )
         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
         and area != yes
