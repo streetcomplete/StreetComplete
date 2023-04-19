@@ -13,7 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.text.HtmlCompat
-import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import com.github.difflib.text.DiffRow.Tag
 import com.github.difflib.text.DiffRowGenerator
 import de.westnordost.streetcomplete.Prefs
@@ -51,7 +51,7 @@ fun singleTypeElementSelectionDialog(
             onChanged()
         }
         .create()
-    textInput.addTextChangedListener {
+    textInput.doAfterTextChanged {
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         button?.isEnabled = textInput.text.toString().let {
             it.lowercase().matches(valueRegex)
@@ -87,7 +87,7 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
                 OsmQuestController.reloadQuestTypes()
         }
         .create()
-    numberInput.addTextChangedListener {
+    numberInput.doAfterTextChanged {
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         button?.isEnabled = numberInput.text.toString().let { it.toIntOrNull() != null }
     }
@@ -122,7 +122,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
                 addView(getDiffButton(context, defaultValue) { textInput.text.toString() })
         })
         .create()
-    textInput.addTextChangedListener {
+    textInput.doAfterTextChanged {
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         val isValidFilterExpression by lazy {
             try {

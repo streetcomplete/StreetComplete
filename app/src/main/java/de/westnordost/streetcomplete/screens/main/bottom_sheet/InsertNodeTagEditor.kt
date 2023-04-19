@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -12,8 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.TagEditor
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

@@ -159,18 +159,18 @@ class EditTagsAdapter(
                 val position = absoluteAdapterPosition
                 val oldEntry = displaySet[position]
                 if (oldEntry.second.isEmpty()) {
-                    // delete if value is empty
+                    // delete row if value is empty
                     displaySet.removeAt(position)
                     dataSet.remove(oldEntry.first)
                 } else {
-                    // otherwise clear value
+                    // otherwise clear value only
                     displaySet[position] = displaySet[position].copy(second = "")
                     dataSet[oldEntry.first] = ""
                     // show suggestions if not entering a name
                     if (!oldEntry.second.startsWith("name"))
                         valueView.postDelayed({ valueView.requestFocus() }, 10)
                 }
-                notifyDataSetChanged()
+                notifyDataSetChanged() // slightly weird behavior if only notifying about the actual changes
                 onDataChanged()
             }
             setOnLongClickListener {

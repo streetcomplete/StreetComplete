@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
@@ -89,7 +88,6 @@ class InsertNodeFragment :
         (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

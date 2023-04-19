@@ -28,6 +28,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.Insets
@@ -1453,10 +1454,10 @@ class MainFragment :
                     }
 
                     // create layerDrawable from quest icon and ring
-                    val ring = resources.getDrawable(R.drawable.pin_selection_ring)
+                    val ring = ContextCompat.getDrawable(context, R.drawable.pin_selection_ring)!! // thanks google for not providing documentation WHEN this can be null... is it instead of resourceNotFoundException?
                     ring.colorFilter = if (color == Color.WHITE) null
                         else PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
-                    val icon = resources.getDrawable(q.type.icon)
+                    val icon = ContextCompat.getDrawable(context, q.type.icon)!!
                     icon.colorFilter = PorterDuffColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.8f), PorterDuff.Mode.MULTIPLY)
                     setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
                 }

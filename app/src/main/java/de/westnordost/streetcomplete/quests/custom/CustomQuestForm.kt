@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
-import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
 import de.westnordost.streetcomplete.quests.AbstractExternalSourceQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.MainFragment
@@ -21,7 +20,7 @@ class CustomQuestForm : AbstractExternalSourceQuestForm() {
 // switch back to this form if some sort of longer text field should be added
 //    override val contentLayoutResId = R.layout.quest_osmose_custom_quest
 //    private val binding by contentViewBinding(QuestOsmoseCustomQuestBinding::bind)
-    lateinit var entryId: String
+    private lateinit var entryId: String
     private var tagsText: String? = null
     private var pos: LatLon? = null
 

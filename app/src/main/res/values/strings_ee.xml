@@ -329,7 +329,7 @@
     <string name="quest_railwayPlatformRef_title">What track number is here?</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
     <string name="quest_railwayPlatformRef_message">Which tag to use for tracks accessible from this platform? According to OSM wiki, local_ref may be preferable, but actual usage is mostly ref.</string>
-    <string name="quest_disabled_msg_railway_platform_ref">Note that which tag to use best is not 100% clear and thus left to the user. Choose between ref (default) and local_ref in the quest settings.\n
+    <string name="quest_disabled_msg_railway_platform_ref">Note that which tag to use best is not entirely clear in the wiki and thus left to the user. Choose between \'ref\' (default) and \'local_ref\' in the quest settings.\n
     If there are two tracks along a platform, use semicolon separated values, e.g. 2;3
     </string>
 

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.osmose
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
+@SuppressLint("SetTextI18n") // android studio complains, but that's element type and id and probably should not be translated
 class OsmoseForm : AbstractExternalSourceQuestForm() {
 
     private val osmoseDao: OsmoseDao by inject()
@@ -52,7 +54,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                         var d: AlertDialog? = null
                         elements.forEach { e ->
                             l.addView(Button(requireContext()).apply {
-                                text = "${e.type} ${e.id}" // android studio complains, but that's element type and id and probably should not be translated
+                                text = "${e.type} ${e.id}"
                                 setOnClickListener {
                                     editTags(e)
                                     d?.dismiss()

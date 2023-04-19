@@ -179,7 +179,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         val geometryType = if (element is Node && (this is InsertNodeTagEditor || mapDataSource.getWaysForNode(element.id).isNotEmpty())) GeometryType.VERTEX
             else element.geometryType
         binding.editTags.adapter = EditTagsAdapter(tagList, newTags, geometryType, featureDictionaryFuture.get(), requireContext(), prefs) {
-            viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(1000) }
+            viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(750) }
             showOk()
         }.apply { setHasStableIds(true) }
 

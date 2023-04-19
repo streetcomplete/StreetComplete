@@ -5,17 +5,14 @@ import android.text.InputFilter
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.LIMITED
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
-import de.westnordost.streetcomplete.util.ktx.toast
 
 open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 

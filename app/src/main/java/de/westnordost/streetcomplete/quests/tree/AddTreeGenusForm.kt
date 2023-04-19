@@ -2,13 +2,7 @@ package de.westnordost.streetcomplete.quests.tree
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.TextView
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -88,8 +82,8 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         return getTrees(input).firstOrNull { StringUtils.canonicalize(it.toDisplayString()) == StringUtils.canonicalize(input) }
     }
 
-    private fun getTrees(search: String): List<Tree> {
-        val search = search.trim()
+    private fun getTrees(fullSearch: String): List<Tree> {
+        val search = fullSearch.trim()
         // not working, i need a tree with the same name and species, but local name?
         if (search.isEmpty()) return lastPickedAnswers.mapNotNull { answer ->
             val treeString = answer.split('§')

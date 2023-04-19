@@ -23,7 +23,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.edit
 import androidx.core.net.toUri
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.Prefs
@@ -99,8 +98,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
     private fun getFakeCustomOverlays(): List<Overlay> {
         if (!prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
-        return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull {
-            val i = it.toIntOrNull() ?: return@mapNotNull null
+        return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { index ->
+            val i = index.toIntOrNull() ?: return@mapNotNull null
             object : Overlay {
                 override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
                 override fun createForm(element: Element?) = null
@@ -110,7 +109,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     "drawable", ctx.packageName
                 ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
                 override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
-                override val wikiLink = it // index
+                override val wikiLink = index
             }
         }
     }
@@ -167,10 +166,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             return "$types with ${tag.text}"
         }
         // need to add this after filterString, which needs to be added after tag
-        tag.addTextChangedListener {
-            if (it == null || it.count { it == '(' } != it.count { it == ')' }) {
+        tag.doAfterTextChanged { text ->
+            if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
                 d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
-                return@addTextChangedListener
+                return@doAfterTextChanged
             }
             try {
                 filterString().toElementFilterExpression()
@@ -197,13 +196,13 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         val color = EditText(ctx).apply {
             setHint(R.string.custom_overlay_color_hint)
             setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), "")!!)
-            doAfterTextChanged {
-                if (it == null || it.count { it == '(' } != it.count { it == ')' }) {
+            doAfterTextChanged {text ->
+                if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
                     return@doAfterTextChanged
                 }
                 try {
-                    it.toString().toRegex()
+                    text.toString().toRegex()
                     d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
                 }
                 catch (e: Exception) {

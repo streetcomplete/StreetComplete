@@ -3,13 +3,11 @@ package de.westnordost.streetcomplete.quests.railway_platform_ref
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.IAnswerItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
 class AddRailwayPlatformRefForm : AbstractOsmQuestForm<String>() {

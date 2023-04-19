@@ -137,7 +137,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         val itemsForRemoval = mutableSetOf<String>()
         var d: AlertDialog? = null
         d = AlertDialog.Builder(context)
-            .setMultiChoiceItems(items, null, ) { _, i, x ->
+            .setMultiChoiceItems(items, null) { _, i, x ->
                 if (x) itemsForRemoval.add(items[i])
                 else itemsForRemoval.remove(items[i])
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = itemsForRemoval.isNotEmpty()
