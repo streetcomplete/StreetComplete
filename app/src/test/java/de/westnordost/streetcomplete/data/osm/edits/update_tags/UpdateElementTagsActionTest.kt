@@ -4,13 +4,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
@@ -22,13 +19,10 @@ class UpdateElementTagsActionTest {
 
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
-    private lateinit var questType: OsmElementQuestType<*>
 
     @Before fun setUp() {
         repos = mock()
         provider = mock()
-        questType = mock()
-        on(questType.isApplicableTo(any())).thenReturn(true)
     }
 
     @Test(expected = ConflictException::class)
