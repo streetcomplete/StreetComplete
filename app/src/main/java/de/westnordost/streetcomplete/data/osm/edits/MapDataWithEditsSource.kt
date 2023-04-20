@@ -191,13 +191,6 @@ class MapDataWithEditsSource internal constructor(
                         mapData.put(element, getGeometry(key.type, key.id))
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-
-                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-                        val waysContainingNode = getWaysForNode(edit.elementId)
-                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-                        for (elem in waysContainingNode + affectedRelations) {
-                            mapData.put(elem, getGeometry(elem.type, elem.id))
-                        }
                         deletedElementKeys.add(key)
                     }
                 }
@@ -443,20 +436,7 @@ class MapDataWithEditsSource internal constructor(
             updatedGeometries[key] = createGeometry(element)
         }
 
-        // get affected ways and relations and update geometries if a node was moved
-        val elementsWithChangedGeometry = mutableListOf<Element>()
-        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-            val waysContainingNode = getWaysForNode(edit.elementId)
-            val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-            for (element in waysContainingNode + affectedRelations) {
-                val key = element.key
-                deletedElements.remove(key)
-                updatedElements[key] = element
-                updatedGeometries[key] = createGeometry(element)
-                elementsWithChangedGeometry.add(element) // questController needs to know that element was affected (though it was not updated in OSM sense)
-            }
-        }
-        return MapDataUpdates(updated = updates + elementsWithChangedGeometry, deleted = deletedKeys)
+        return MapDataUpdates(updated = updates, deleted = deletedKeys)
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
