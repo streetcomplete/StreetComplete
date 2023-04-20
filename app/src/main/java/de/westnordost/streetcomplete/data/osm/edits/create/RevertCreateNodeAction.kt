@@ -11,13 +11,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import kotlinx.serialization.Serializable
 
-/** Action reverts creation of a node */
+/** Action reverts creation of a (free-floating) node.
+ *
+ *  If the node has been touched at all in the meantime (node moved or tags changed), there'll be
+ *  a conflict. */
 @Serializable
 data class RevertCreateNodeAction(
     private val originalNode: Node
 ) : ElementEditAction, IsRevertAction {
 
-    // the revert does not depend on the ways into which the node has been inserted to still be there
     override val elementKeys get() = listOf(originalNode.key)
 
     override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(

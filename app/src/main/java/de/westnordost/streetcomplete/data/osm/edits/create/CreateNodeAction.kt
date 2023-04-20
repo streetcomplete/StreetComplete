@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
-/** Action that creates a node (free-floating) node. */
+/** Action that creates a (free-floating) node. */
 @Serializable
 data class CreateNodeAction(
     val position: LatLon,
