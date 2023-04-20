@@ -130,6 +130,8 @@ abstract class AbstractOverlayForm :
     private var initialMapTilt = 0f
     override val elementKey: ElementKey? get() = element?.key
 
+    protected val metersPerPixel: Double? get() = listener?.metersPerPixel
+
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
@@ -138,6 +140,9 @@ abstract class AbstractOverlayForm :
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
+
+        /** How many pixels equal one meter on display at the current zoom */
+        val metersPerPixel: Double?
 
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
