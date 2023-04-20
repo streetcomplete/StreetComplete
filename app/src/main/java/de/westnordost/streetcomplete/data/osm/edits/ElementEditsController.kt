@@ -83,6 +83,8 @@ class ElementEditsController(
                 val oldEdit = editsDB.get(id) ?: continue
                 val updatedEdit = oldEdit.copy(action = edit.action.idsUpdatesApplied(idUpdatesMap))
                 editsDB.put(updatedEdit)
+                // must clear first because the element ids associated with this id are different now
+                editElementsDB.delete(id)
                 editElementsDB.put(id, updatedEdit.action.elementKeys)
             }
             syncSuccess = editsDB.markSynced(edit.id)
