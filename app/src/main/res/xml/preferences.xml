@@ -6,13 +6,13 @@
         android:key="quests_overlays"
         android:title="@string/pref_category_quests_overlays">
 
-        <Preference
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
             android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment"
             android:key="quest_presets"
             android:title="@string/action_manage_presets"
             android:widgetLayout="@layout/widget_image_next" />
 
-        <Preference
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
             android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment"
             android:key="quests"
             android:title="@string/pref_title_quests2"

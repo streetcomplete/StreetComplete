@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.screens.about
 
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceHeaderFragmentCompat
+import de.westnordost.streetcomplete.screens.TwoPaneHeaderFragment
 
 /** Shows the about screen lists and details in a two pane layout. */
-class TwoPaneAboutFragment : PreferenceHeaderFragmentCompat() {
+class TwoPaneAboutFragment : TwoPaneHeaderFragment() {
 
     override fun onCreatePreferenceHeader(): PreferenceFragmentCompat {
         return AboutFragment()

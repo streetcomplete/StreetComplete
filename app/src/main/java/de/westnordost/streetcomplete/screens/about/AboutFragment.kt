@@ -9,20 +9,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBinding
 import de.westnordost.streetcomplete.databinding.DialogDonateBinding
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.screens.TwoPaneListFragment
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.ListAdapter
 import java.util.Locale
 
 /** Shows the about screen list. */
-class AboutFragment : PreferenceFragmentCompat(), HasTitle {
+class AboutFragment : TwoPaneListFragment(), HasTitle {
 
     override val title: String get() = getString(R.string.action_about2)
 

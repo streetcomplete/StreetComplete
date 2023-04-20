@@ -13,7 +13,6 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.ListPreference
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -32,6 +31,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.screens.TwoPaneListFragment
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.getDefaultTheme
@@ -51,7 +51,7 @@ import java.util.Locale
 
 /** Shows the settings lists */
 class SettingsFragment :
-    PreferenceFragmentCompat(),
+    TwoPaneListFragment(),
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener,
     QuestPresetsSource.Listener {
