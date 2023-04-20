@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -175,20 +173,24 @@ class MapDataWithEditsSource internal constructor(
 
         override fun onDeletedEdits(edits: List<ElementEdit>) {
             val mapData = MutableMapDataWithGeometry()
-            val elementsToDelete: MutableList<ElementKey>
+            val deletedElementKeys: MutableList<ElementKey>
             synchronized(this) {
                 rebuildLocalChanges()
 
-                elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
+                deletedElementKeys = edits
+                    .flatMap { elementEditsController.getIdProvider(it.id).getAll() }
+                    .toMutableList()
 
-                for (edit in edits) {
-                    val element = get(edit.elementType, edit.elementId)
+                val editedElementKeys = edits
+                    .flatMap { elementEditsController.getEditElements(it.id) }
+                    .toSet()
+
+                for (key in editedElementKeys) {
+                    val element = get(key.type, key.id)
                     if (element != null) {
-                        mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                        mapData.put(element, getGeometry(key.type, key.id))
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-                        elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
-                    }
 
                     if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
                         val waysContainingNode = getWaysForNode(edit.elementId)
@@ -196,11 +198,12 @@ class MapDataWithEditsSource internal constructor(
                         for (elem in waysContainingNode + affectedRelations) {
                             mapData.put(elem, getGeometry(elem.type, elem.id))
                         }
+                        deletedElementKeys.add(key)
                     }
                 }
             }
 
-            callOnUpdated(updated = mapData, deleted = elementsToDelete)
+            callOnUpdated(updated = mapData, deleted = deletedElementKeys)
         }
     }
 

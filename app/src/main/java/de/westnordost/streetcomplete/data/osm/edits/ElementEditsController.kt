@@ -30,13 +30,13 @@ class ElementEditsController(
         add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action))
     }
 
-    fun get(id: Long): ElementEdit? =
+    override fun get(id: Long): ElementEdit? =
         editsDB.get(id)
 
-    fun getAll(): List<ElementEdit> =
+    override fun getAll(): List<ElementEdit> =
         editsDB.getAll()
 
-    fun getAllUnsynced(): List<ElementEdit> =
+    override fun getAllUnsynced(): List<ElementEdit> =
         editsDB.getAllUnsynced()
 
     fun getOldestUnsynced(): ElementEdit? =

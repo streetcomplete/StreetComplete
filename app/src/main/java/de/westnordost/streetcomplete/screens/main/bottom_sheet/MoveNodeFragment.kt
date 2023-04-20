@@ -133,8 +133,8 @@ class MoveNodeFragment :
         val pos = getMarkerPosition() ?: return
         if (!checkIsDistanceOkAndUpdateText(pos)) return
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(pos)
-            elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey", action)
+            val action = MoveNodeAction(node, pos)
+            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action)
             listener?.onMovedNode(editType, pos)
         }
     }
