@@ -181,9 +181,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             longitude = pos.longitude
         }
 
-    override val recentLocations: List<Location>
-        get() = listOf(displayedMapLocation)
-
     override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
         popQuestForm()
     }

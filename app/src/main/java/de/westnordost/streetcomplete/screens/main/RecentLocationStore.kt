@@ -31,11 +31,12 @@ class RecentLocationStore {
     }
 }
 
+// ~ 5 times faster than using SphericalEarthMath distanceTo, could be 20 times when using approximate cos
 private fun Location.isWithin10mOf(location: Location): Boolean {
     // see https://en.wikipedia.org/wiki/Geographical_distance#Spherical_Earth_projected_to_a_plane
     val dLat = (latitude - location.latitude) * PI / 180.0
-    val dLon = longitude - location.longitude * PI / 180.0
-    val cosDLon = cos((latitude + location.latitude) * PI / 180.0 / 2) * dLon // actually cos could be approximated using 1 - x^2 / 2 + x^4 / 24
+    val dLon = (longitude - location.longitude) * PI / 180.0
+    val cosDLon = cos((latitude + location.latitude) * PI / 180.0 / 2) * dLon // actually cos could be approximated using 1 - x^2 / 2 + x^4 / 24 - x^6 / 720: 4 times faster and good enough
     val distanceSquared = EARTH_RADIUS * EARTH_RADIUS * (dLat * dLat + cosDLon * cosDLon) // no need for sqrt
     return distanceSquared < 10 * 10
 }
