@@ -20,7 +20,8 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         assertEquals(0, dao.delete(0))
         assertEquals(0, dao.deleteAll(listOf(0, 1, 2)))
         // nothing to get
-        assertTrue(dao.getAll(ElementType.NODE, 0).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.NODE, 0).isEmpty())
+        assertTrue(dao.get(0).isEmpty())
     }
 
     @Test fun addGetDelete() {
@@ -40,20 +41,39 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         ))
 
         // get...
-        assertTrue(dao.getAll(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(9, 7)))
-        assertTrue(dao.getAll(ElementType.WAY, 1).containsExactlyInAnyOrder(listOf(7)))
-        assertTrue(dao.getAll(ElementType.WAY, 3).containsExactlyInAnyOrder(listOf(3)))
+        assertTrue(dao.getAllByElement(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(9, 7)))
+        assertTrue(dao.getAllByElement(ElementType.WAY, 1).containsExactlyInAnyOrder(listOf(7)))
+        assertTrue(dao.getAllByElement(ElementType.WAY, 3).containsExactlyInAnyOrder(listOf(3)))
 
-        assertTrue(dao.getAll(ElementType.WAY, 0).isEmpty())
-        assertTrue(dao.getAll(ElementType.NODE, 1).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.WAY, 0).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.NODE, 1).isEmpty())
+
+        assertEquals(
+            listOf(ElementKey(ElementType.NODE, 0)),
+            dao.get(9)
+        )
+
+        assertEquals(
+            listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 1),),
+            dao.get(7)
+        )
+
+        assertEquals(
+            listOf(ElementKey(ElementType.WAY, 2)),
+            dao.get(3)
+        )
 
         // delete
         assertEquals(1, dao.delete(9))
-        assertTrue(dao.getAll(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(7)))
+        assertTrue(dao.getAllByElement(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(7)))
 
         assertEquals(3, dao.deleteAll(listOf(7,3)))
-        assertTrue(dao.getAll(ElementType.NODE, 0).isEmpty())
-        assertTrue(dao.getAll(ElementType.WAY, 1).isEmpty())
-        assertTrue(dao.getAll(ElementType.WAY, 2).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.NODE, 0).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.WAY, 1).isEmpty())
+        assertTrue(dao.getAllByElement(ElementType.WAY, 2).isEmpty())
+
+        assertTrue(dao.get(9).isEmpty())
+        assertTrue(dao.get(7).isEmpty())
+        assertTrue(dao.get(3).isEmpty())
     }
 }

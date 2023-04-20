@@ -42,6 +42,9 @@ class ElementEditsController(
     fun getOldestUnsynced(): ElementEdit? =
         editsDB.getOldestUnsynced()
 
+    fun getEditElements(id: Long): List<ElementKey> =
+        editElementsDB.get(id)
+
     fun getIdProvider(id: Long): ElementIdProvider =
         elementIdProviderDB.get(id)
 
@@ -77,7 +80,7 @@ class ElementEditsController(
         synchronized(this) {
             val editIdsToUpdate = HashSet<Long>()
             elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
-                editElementsDB.getAll(it.elementType, it.oldElementId)
+                editElementsDB.getAllByElement(it.elementType, it.oldElementId)
             }
             for (id in editIdsToUpdate) {
                 val oldEdit = editsDB.get(id) ?: continue
@@ -163,7 +166,7 @@ class ElementEditsController(
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
         val editsBasedOnThese = createdElementKeys
-            .flatMapTo(HashSet()) { editElementsDB.getAll(it.type, it.id) }
+            .flatMapTo(HashSet()) { editElementsDB.getAllByElement(it.type, it.id) }
             .mapNotNull { editsDB.get(it) }
             .filter { it.id != edit.id }
 
