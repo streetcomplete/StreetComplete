@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.insert.InsertNodeIntoWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -17,11 +17,10 @@ import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.asItem
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.createNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.math.PointOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPointOnWays
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class LaneNarrowingTrafficCalmingForm :
@@ -39,21 +38,22 @@ class LaneNarrowingTrafficCalmingForm :
         ways with highway ~ ${ALL_ROADS.joinToString("|")}
     """.toElementFilterExpression()
 
+    // TODO close if element == null and user moves view too much from orig position?
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (element == null && geometry is ElementPointGeometry) {
-            viewLifecycleScope.launch {
-                val center = geometry.center
-                val data = mapDataWithEditsSource.getMapDataWithGeometry(center.enclosingBoundingBox(100.0))
-                roadPolylinesByWayId = data
-                    .filter(allRoadsFilter)
-                    .mapNotNull {
-                        val polyline =
-                            (data.getWayGeometry(it.id) as? ElementPolylinesGeometry)?.polylines?.singleOrNull()
-                        if (polyline == null) null else it.id to polyline
-                    }.toMap()
-            }
-        }
+        if (element == null) initCreatingPointOnWay()
+    }
+
+    private fun initCreatingPointOnWay() {
+        val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(100.0))
+        roadPolylinesByWayId = data
+            .filter(allRoadsFilter)
+            .mapNotNull {
+                val wayGeometry = data.getWayGeometry(it.id) as? ElementPolylinesGeometry
+                val polyline = wayGeometry?.polylines?.singleOrNull() ?: return@mapNotNull null
+                it.id to polyline
+            }.toMap()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,8 +66,10 @@ class LaneNarrowingTrafficCalmingForm :
     override fun onMapMoved(position: LatLon) {
         if (element != null) return
         val geometriesByWayId = roadPolylinesByWayId ?: return
-
-        pointOnWay = position.getPointOnWays(geometriesByWayId, maxDistance, snaptoVertexDistance)
+        val metersPerPixel = metersPerPixel ?: return
+        val maxDistance = metersPerPixel * requireContext().dpToPx(32)
+        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(32)
+        pointOnWay = position.getPointOnWays(geometriesByWayId, maxDistance, snapToVertexDistance)
         setMarkerIcon(....)
         TODO("Not yet implemented")
     }
@@ -81,12 +83,15 @@ class LaneNarrowingTrafficCalmingForm :
     override fun onClickOk() {
         val narrowingTrafficCalming = selectedItem!!.value!!
         val element = element
+        val pointOnWay = pointOnWay
         if (element != null) {
             val tagChanges = StringMapChangesBuilder(element.tags)
             narrowingTrafficCalming.applyTo(tagChanges)
             applyEdit(UpdateElementTagsAction(tagChanges.create()))
         } else if (pointOnWay != null) {
-            // TODO
+            val tagChanges = StringMapChangesBuilder(mapOf())
+            narrowingTrafficCalming.applyTo(tagChanges)
+            applyEdit(InsertNodeIntoWayAction(pointOnWay, tagChanges))
         }
     }
 }
