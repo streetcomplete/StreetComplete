@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.p
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
-import org.junit.Assert.fail
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class CollectionsTest {
@@ -53,26 +53,28 @@ class CollectionsTest {
         assertNull(listOf(1, 2, 3).findPrevious(-1) { true })
     }
 
-    @Test fun `forEachLine with empty list`() {
-        listOf<LatLon>().forEachLine { _, _ -> fail() }
+    @Test fun `asSequenceOfPairs with empty list`() {
+        assertTrue(listOf<LatLon>().asSequenceOfPairs().toList().isEmpty())
     }
 
-    @Test fun `forEachLine with list with only one element`() {
-        listOf(p(0.0, 0.0)).forEachLine { _, _ -> fail() }
+    @Test fun `asSequenceOfPairs with list with only one element`() {
+        assertTrue(listOf(p(0.0, 0.0)).asSequenceOfPairs().toList().isEmpty())
     }
 
-    @Test fun `forEachLine with several elements`() {
-        var counter = 0
-        listOf(
-            p(0.0, 0.0),
-            p(1.0, 0.0),
-            p(2.0, 0.0),
-            p(3.0, 0.0),
-        ).forEachLine { first, second ->
-            assertEquals(first.latitude + 1, second.latitude, 0.0)
-            counter++
-        }
-        assertEquals(3, counter)
+    @Test fun `asSequenceOfPairs with several elements`() {
+        assertEquals(
+            listOf(
+                p(0.0, 0.0) to p(1.0, 0.0),
+                p(1.0, 0.0) to p(2.0, 0.0),
+                p(2.0, 0.0) to p(3.0, 0.0)
+            )
+            ,listOf(
+                p(0.0, 0.0),
+                p(1.0, 0.0),
+                p(2.0, 0.0),
+                p(3.0, 0.0),
+            ).asSequenceOfPairs().toList()
+        )
     }
 
     @Test fun `indexOfMaxBy with no elements`() {
