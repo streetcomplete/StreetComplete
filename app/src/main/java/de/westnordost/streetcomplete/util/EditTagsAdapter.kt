@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.util.TypedValue
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
@@ -18,6 +17,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.RowEditTagBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.serialization.decodeFromString
@@ -57,7 +57,7 @@ class EditTagsAdapter(
         }
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val binding: RowEditTagBinding) : RecyclerView.ViewHolder(binding.root) {
         private fun storeRecentlyUsed(text: String, name: String, isKey: Boolean) { // will be value if not key
             val keys = linkedSetOf(text)
             val pref = "EditTagsAdapter_${name}_" + if (isKey) "keys" else "values"
@@ -65,7 +65,7 @@ class EditTagsAdapter(
             prefs.edit { putString(pref, keys.filter { it.isNotEmpty() }.take(10).joinToString("§§")) }
         }
 
-        val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
+        val keyView: AutoCompleteTextView = binding.keyText.apply {
             var lastFeature: Feature? = null
             val lastSuggestions = linkedSetOf<String>()
             setOnFocusChangeListener { _, focused ->
@@ -115,7 +115,7 @@ class EditTagsAdapter(
             }
         }
 
-        val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
+        val valueView: AutoCompleteTextView = binding.valueText.apply {
             val lastSuggestions = linkedSetOf<String>()
             setOnFocusChangeListener { _, focused ->
                 val text = text.toString()
@@ -154,7 +154,7 @@ class EditTagsAdapter(
             }
         }
 
-        val delete: ImageView = view.findViewById<ImageView>(R.id.deleteButton).apply {
+        val delete: ImageView = binding.deleteButton.apply {
             setOnClickListener {
                 val position = absoluteAdapterPosition
                 val oldEntry = displaySet[position]
@@ -186,9 +186,7 @@ class EditTagsAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.row_edit_tag, viewGroup, false)
-        return ViewHolder(view)
+        return ViewHolder(RowEditTagBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
