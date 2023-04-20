@@ -181,9 +181,7 @@ class MapDataWithEditsSource internal constructor(
                     .flatMap { elementEditsController.getIdProvider(it.id).getAll() }
                     .toMutableList()
 
-                val editedElementKeys = edits
-                    .flatMap { elementEditsController.getEditElements(it.id) }
-                    .toSet()
+                val editedElementKeys = edits.flatMap { it.action.elementKeys }.toSet()
 
                 for (key in editedElementKeys) {
                     val element = get(key.type, key.id)

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
@@ -72,12 +73,19 @@ class ElementEditsUploader(
 
             elementEditsController.markSyncFailed(edit)
 
-            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
-            if (mapData != null) {
-                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
-            } else {
-                val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
+            val updated = mutableListOf<Element>()
+            val deleted = mutableListOf<ElementKey>()
+
+            for (elementKey in edit.action.elementKeys) {
+                val mapData = fetchElementComplete(elementKey.type, elementKey.id)
+                if (mapData != null) {
+                    updated.addAll(mapData)
+                } else {
+                    deleted.add(elementKey)
+                }
+            }
+            if (updated.isNotEmpty() || deleted.isNotEmpty()) {
+                mapDataController.updateAll(MapDataUpdates(updated = updated, deleted = deleted))
             }
         }
     }
