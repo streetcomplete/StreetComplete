@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.util.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
@@ -226,7 +226,7 @@ class InsertNodeFragment :
             ?: closeWays.firstOrNull { it.first.tags.containsKey("barrier") } ?: closeWays.first()
 
         val result = mutableSetOf<Pair<LatLon, InsertBetween>>()
-        closestWay.second.forEach { it.forEachLine { first, second ->
+        closestWay.second.forEach { it.asSequenceOfPairs().forEach { (first, second) ->
             val crossTrackDistance = abs(position.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = position.alongTrackDistanceTo(first, second)
