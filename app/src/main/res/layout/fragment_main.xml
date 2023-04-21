@@ -209,7 +209,7 @@
         <HorizontalScrollView
             android:id="@+id/overlayScrollView"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             app:layout_constraintLeft_toRightOf="@id/createButton"
             app:layout_constraintBottom_toBottomOf="@id/rightSideContainer"
             app:layout_constraintRight_toLeftOf="@id/rightSideContainer" >

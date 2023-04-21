@@ -439,9 +439,12 @@ class MainFragment :
         binding.overlayScrollView.isVisible = true
 
         val overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, requireContext())
+        val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())
-            if (selectedOverlaySource.selectedOverlay == overlay || (selectedOverlaySource.selectedOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
+            val isActive = selectedOverlaySource.selectedOverlay == overlay
+                || (selectedOverlaySource.selectedOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
+            if (isActive) {
                 val ring = ContextCompat.getDrawable(requireContext(), R.drawable.pin_selection_ring)!!
                 val icon = ContextCompat.getDrawable(requireContext(), overlay.icon)!!
                 view.setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
@@ -467,8 +470,14 @@ class MainFragment :
                 }
                 reloadOverlaySelector()
             }
-            view.layoutParams = ViewGroup.LayoutParams(requireContext().dpToPx(60).toInt(), requireContext().dpToPx(60).toInt())
+            view.layoutParams = params
             binding.overlayLayout.addView(view)
+//            if (isActive) { // scroll to enabled overlay if not visible... but not working on app start, which would be the main purpose
+//                val scrollBounds = Rect()
+//                binding.overlayScrollView.getHitRect(scrollBounds)
+//                if (!view.isShown)
+//                    binding.overlayScrollView.scrollX = requireContext().dpToPx(52).toInt() * binding.overlayLayout.indexOfChild(view)
+//            }
         }
     }
 
