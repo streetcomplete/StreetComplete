@@ -34,6 +34,7 @@ interface ElementEditAction {
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)
 
 interface IsActionRevertable {
+    // TODO this will not work... idProvider returns the original "temporary" ids, not the ones after upload
     fun createReverted(idProvider: ElementIdProvider): ElementEditAction
 }
 interface IsRevertAction

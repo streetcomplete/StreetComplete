@@ -73,6 +73,10 @@ class ElementEditsUploader(
 
             elementEditsController.markSyncFailed(edit)
 
+            /* fetching the current version of the element(s) edited on conflict and persisting
+               them is not really optional, as when the edit has been deleted due to the conflict,
+               the quests etc. would otherwise just be displayed again as if the user didn't solve
+               them */
             val updated = mutableListOf<Element>()
             val deleted = mutableListOf<ElementKey>()
 

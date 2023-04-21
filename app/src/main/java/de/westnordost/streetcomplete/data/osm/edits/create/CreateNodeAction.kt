@@ -33,7 +33,7 @@ data class CreateNodeAction(
         return MapDataChanges(creations = listOf(newNode))
     }
 
-    override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
+    override fun createReverted(idProvider: ElementIdProvider) =
         RevertCreateNodeAction(
             Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
         )

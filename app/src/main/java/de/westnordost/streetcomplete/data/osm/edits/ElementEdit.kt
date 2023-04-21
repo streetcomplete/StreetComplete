@@ -13,7 +13,7 @@ data class ElementEdit(
      *  associated with the quest type. A changeset gets its comment from the quest type */
     val type: ElementEditType,
 
-    /** original geometry of element this edit refers to */
+    /** original geometry of element this edit refers to. For display purposes only */
     val originalGeometry: ElementGeometry,
 
     /** what is the source of this edit? (Currently, always "survey"). Used for the changeset

@@ -63,6 +63,6 @@ data class DeletePoiNodeAction(
         }
     }
 
-    override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
+    override fun createReverted(idProvider: ElementIdProvider) =
         RevertDeletePoiNodeAction(originalNode)
 }
