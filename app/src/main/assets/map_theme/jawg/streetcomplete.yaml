@@ -405,16 +405,16 @@ layers:
             filter: { type: [line], color: true, dashed: true }
             draw:
                 map_data-lines-dashed:
-                      interactive: true
-                      color: function() { return feature.color; }
-                      width: function() { return feature.width; }
-                      order: function() { return 701 + Number(feature.layer)*5; }
-                      cap: round
-                      join: round
-                      outline:
-                          color: function() { return feature.strokeColor; }
-                          width: 1m
-                          order: function() { return 702 + Number(feature.layer)*5; }
+                    interactive: true
+                    color: function() { return feature.color; }
+                    width: function() { return feature.width; }
+                    order: function() { return 701 + Number(feature.layer)*5; }
+                    cap: round
+                    join: round
+                    outline:
+                        color: function() { return feature.strokeColor; }
+                        width: 1m
+                        order: function() { return 702 + Number(feature.layer)*5; }
         line-left:
             filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:

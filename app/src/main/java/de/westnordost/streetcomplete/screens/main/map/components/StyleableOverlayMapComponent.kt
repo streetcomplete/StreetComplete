@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.overlays.Color.INVISIBLE
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -80,8 +81,12 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 if (style.stroke != null) {
                     if (style.stroke.dashed) props["dashed"] = "1"
                     props["color"] = style.stroke.color
-                    if (!style.stroke.dashed) // dashed and stroke creates different dash length for outline and actual line, which looks very strange
-                        props["strokeColor"] = getDarkenedColor(style.stroke.color)
+                    if (style.stroke.dashed)
+                            // dashed and stroke creates different dash length for outline and actual line, which looks very strange
+                            // but not setting a strokeColor results in the line not being selectable, so just use INVISIBLE
+                            props["strokeColor"] = INVISIBLE
+                        else
+                            props["strokeColor"] = getDarkenedColor(style.stroke.color)
                 } else if (style.strokeLeft != null || style.strokeRight != null) {
                     // must have a color for the center if left or right is defined because
                     // there are really ugly overlaps in tangram otherwise
