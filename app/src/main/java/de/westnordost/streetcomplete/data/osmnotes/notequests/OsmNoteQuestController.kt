@@ -213,13 +213,14 @@ private fun Note.shouldShowAsQuest(
     }
 
     /* don't show notes where user replied last unless he wrote a survey required marker */
-    if (comments.last().isReplyFromUser(userId)
+    if (showOnlyNotesPhrasedAsQuestions
+        && comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
     ) return false
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
        replies yet */
-    if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
+    if (probablyCreatedByUserInThisApp(userId, !showOnlyNotesPhrasedAsQuestions) && !hasReplies) return false
 
     /* many notes are created to report problems on the map that cannot be resolved
      * through an on-site survey.
@@ -259,9 +260,12 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
     text?.matches(".*#surveyme.*".toRegex()) == true
 
-private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
+private fun Note.probablyCreatedByUserInThisApp(userId: Long, requireMatchingVersion: Boolean): Boolean {
     val firstComment = comments.first()
-    val isViaApp = firstComment.text?.contains("via " + ApplicationConstants.NAME) == true
+    val isViaApp = if (requireMatchingVersion)
+            firstComment.text?.contains("via " + ApplicationConstants.USER_AGENT) == true
+        else
+            firstComment.text?.contains("via " + ApplicationConstants.NAME) == true
     return firstComment.isFromUser(userId) && isViaApp
 }
 
