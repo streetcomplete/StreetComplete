@@ -91,6 +91,7 @@
     <string name="show_nearby_quests_distance">Show quests within this distance (limited to 10 meters)</string>
     <string name="pref_search_more_languages_title">Search features in more languages</string>
     <string name="pref_search_more_languages_summary">Feature search shows results in all system and local language</string>
+    <string name="pref_overlay_quick_selector_title">Show overlay quick selector</string>
 
     <!-- data management settings -->
     <string name="pref_screen_data_management">Data management</string>

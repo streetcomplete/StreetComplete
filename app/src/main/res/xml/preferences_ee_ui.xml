@@ -9,6 +9,12 @@
         android:persistent="true" />
 
     <SwitchPreference
+        android:key="overlay_quick_selector"
+        android:title="@string/pref_overlay_quick_selector_title"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="show_next_quest_immediately"
         android:title="@string/pref_show_next_quest_title"
         android:summary="@string/pref_show_next_quest_summary"

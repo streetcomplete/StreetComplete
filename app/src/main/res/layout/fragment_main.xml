@@ -201,10 +201,28 @@
             android:src="@drawable/ic_add_48dp"
             android:padding="20dp"
             android:layout_marginBottom="22dp"
-            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/overlayScrollView"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintLeft_toRightOf="@id/createButton"
+            app:layout_constraintBottom_toBottomOf="@id/rightSideContainer"
+            app:layout_constraintRight_toLeftOf="@id/rightSideContainer" >
+
+            <LinearLayout
+                android:id="@+id/overlayLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:elevation="2dp"
+                android:paddingHorizontal="4dp"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

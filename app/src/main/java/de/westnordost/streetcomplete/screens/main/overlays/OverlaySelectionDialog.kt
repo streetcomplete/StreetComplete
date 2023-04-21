@@ -56,7 +56,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     init {
         val currentOverlay = selectedOverlayController.selectedOverlay
 
-        val fakeOverlays = getFakeCustomOverlays()
+        val fakeOverlays = getFakeCustomOverlays(prefs, ctx)
         adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + fakeOverlays
         adapter.selectedOverlay = if (currentOverlay is CustomOverlay)
             fakeOverlays.singleOrNull { it.wikiLink == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() }
@@ -94,28 +94,6 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             }
 
         setView(binding.root)
-    }
-
-    private fun getFakeCustomOverlays(): List<Overlay> {
-        if (!prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
-        return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { index ->
-            val i = index.toIntOrNull() ?: return@mapNotNull null
-            object : Overlay {
-                override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
-                override fun createForm(element: Element?) = null
-                override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
-                override val icon = ctx.resources.getIdentifier(
-                    prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
-                    "drawable", ctx.packageName
-                ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
-                override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
-                override val wikiLink = index
-                override fun equals(other: Any?): Boolean {
-                    if (other !is Overlay) return false
-                    return wikiLink == other.wikiLink // we only care about index!
-                }
-            }
-        }
     }
 
     @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
@@ -290,7 +268,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                     dismiss()
                 } else {
                     // otherwise reload overlay list because of icon and name
-                    adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays()
+                    adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
                 }
             }
         if (index in indices)
@@ -311,7 +289,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                                 }
                             }
                         }
-                        adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays()
+                        adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
                     }
                     .show()
             }
@@ -336,5 +314,28 @@ private class ArrayImageAdapter(context: Context, private val items: List<Int>) 
         v.setImageResource(items[position])
         v.layoutParams = params
         return v
+    }
+}
+
+fun getFakeCustomOverlays(prefs: SharedPreferences, ctx: Context): List<Overlay> {
+    if (!prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
+    return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { index ->
+        val i = index.toIntOrNull() ?: return@mapNotNull null
+        object : Overlay {
+            override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
+            override fun createForm(element: Element?) = null
+            override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
+            override val icon = ctx.resources.getIdentifier(
+                prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
+                "drawable", ctx.packageName
+            ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
+            override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
+            override val wikiLink = index
+            override fun equals(other: Any?): Boolean {
+                if (other !is Overlay) return false
+                return wikiLink == other.wikiLink // we only care about index!
+            }
+            override val name = index // allows to uniquely identify an overlay
+        }
     }
 }

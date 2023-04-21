@@ -81,6 +81,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -124,6 +126,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.main.overlays.getFakeCustomOverlays
 import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
@@ -204,19 +207,21 @@ class MainFragment :
     SelectedOverlaySource.Listener,
     // rest
     HandlesOnBackPressed,
-    ShowsGeometryMarkers {
+    ShowsGeometryMarkers,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
-    private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val selectedOverlaySource: SelectedOverlayController by inject()
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val overlayRegistry: OverlayRegistry by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -373,6 +378,8 @@ class MainFragment :
         selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
+        prefs.registerOnSharedPreferenceChangeListener(this)
+        reloadOverlaySelector()
     }
 
     /** Called by the activity when the user presses the back button.
@@ -406,6 +413,8 @@ class MainFragment :
         mapDataWithEditsSource.removeListener(this)
         selectedOverlaySource.removeListener(this)
         locationManager.removeUpdates()
+        prefs.unregisterOnSharedPreferenceChangeListener(this)
+        clearOverlaySelector()
     }
 
     private fun updateOffsetWithOpenBottomSheet() {
@@ -418,6 +427,55 @@ class MainFragment :
     }
 
     //endregion
+
+    private fun clearOverlaySelector() = binding.overlayLayout.removeAllViews()
+
+    private fun reloadOverlaySelector() {
+        clearOverlaySelector()
+        if (!prefs.getBoolean(Prefs.OVERLAY_QUICK_SELECTOR, false)) {
+            binding.overlayScrollView.isGone = true
+            return
+        }
+        binding.overlayScrollView.isVisible = true
+
+        val overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, requireContext())
+        overlays.forEach { overlay ->
+            val view = ImageView(requireContext())
+            if (selectedOverlaySource.selectedOverlay == overlay || (selectedOverlaySource.selectedOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
+                val ring = ContextCompat.getDrawable(requireContext(), R.drawable.pin_selection_ring)!!
+                val icon = ContextCompat.getDrawable(requireContext(), overlay.icon)!!
+                view.setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
+            } else
+                view.setImageResource(overlay.icon)
+            view.scaleX = 0.95f
+            view.scaleY = 0.95f
+//            if (overlay.title == 0) // todo: show overlay customizer... but need to disentangle it from overlay selection dialog first
+//                view.setOnLongClickListener {  }
+            view.setOnClickListener {
+                val oldOverlay = selectedOverlaySource.selectedOverlay
+
+                // if active overlay was tapped, disable it
+                if (oldOverlay == overlay || (oldOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
+                    selectedOverlaySource.selectedOverlay = null
+                } else {
+                    // if other overlay was tapped, enable it
+                    if (overlay.title == 0) {
+                        prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, overlay.wikiLink!!.toInt()) }
+                        selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                    } else
+                        selectedOverlaySource.selectedOverlay = overlay
+                }
+                reloadOverlaySelector()
+            }
+            view.layoutParams = ViewGroup.LayoutParams(requireContext().dpToPx(60).toInt(), requireContext().dpToPx(60).toInt())
+            binding.overlayLayout.addView(view)
+        }
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+        if (key.startsWith("custom_overlay") && key != Prefs.CUSTOM_OVERLAY_SELECTED_INDEX)
+            reloadOverlaySelector()
+    }
 
     //region QuestsMapFragment - Callbacks from the map with its quest pins
 
@@ -707,6 +765,7 @@ class MainFragment :
     override fun onSelectedOverlayChanged() {
         viewLifecycleScope.launch {
             updateCreateButtonVisibility()
+            reloadOverlaySelector()
 
             val f = bottomSheetFragment
             if (f is IsShowingElement) {
