@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
@@ -12,6 +15,7 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
@@ -65,7 +69,7 @@ class ElementEditsUploaderTest {
 
         verify(singleUploader).upload(eq(edit), any())
         verify(listener).onUploaded(any(), any())
-        verify(elementEditsController).markSynced(edit)
+        verify(elementEditsController).markSynced(edit, updates)
         verify(noteEditsController).updateElementIds(any())
         verify(mapDataController).updateAll(updates)
 
@@ -73,8 +77,20 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
-        val edit = edit()
+        // edit modifies node 1 and way 1
+        val node1 = node()
+        val action: ElementEditAction = mock()
+        on(action.elementKeys).thenReturn(listOf(
+            ElementKey(ElementType.NODE, 1),
+            ElementKey(ElementType.WAY, 1),
+        ))
+        val edit = edit(action = action)
 
+        // ...but way 1 is gone
+        on(mapDataApi.getNode(1)).thenReturn(node1)
+        on(mapDataApi.getWayComplete(1)).thenReturn(null)
+
+        // the edit is the first in the upload queue and the uploader throws a conflict exception
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
 
@@ -85,5 +101,7 @@ class ElementEditsUploaderTest {
 
         verify(elementEditsController).markSyncFailed(edit)
         verifyNoInteractions(statisticsController)
+
+        verify(mapDataController).updateAll(eq(MapDataUpdates(updated = listOf(node1))))
     }
 }
