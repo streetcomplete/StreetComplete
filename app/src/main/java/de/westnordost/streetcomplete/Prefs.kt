@@ -112,6 +112,7 @@ object Prefs {
     const val CAPS_WORD_NAME_INPUT = "caps_word_name_input"
     const val INSERT_NODE_RECENT_FEATURE_IDS = "insert_node_recent_feature_ids"
     const val OVERLAY_QUICK_SELECTOR = "overlay_quick_selector"
+    const val CREATE_NODE_LAST_TAGS_FOR_FEATURE = "create_node_last_tags_for_"
 
     enum class Autosync {
         ON, WIFI, OFF

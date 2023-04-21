@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests
 import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
 import android.content.SharedPreferences
+import android.graphics.drawable.LayerDrawable
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
@@ -46,6 +47,7 @@ import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeTagEditor
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.EditTagsAdapter
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -212,9 +214,37 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             }
         })
 
+        if (element.id == 0L) {
+            val previousTagsForFeature: Map<String, String>? = try { featureDictionaryFuture.get()
+                .byTags(newTags)
+                .isSuggestion(false)
+                .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
+                .find()
+                .firstOrNull()
+                ?.let { prefs.getString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, "") }
+                ?.let { Json.decodeFromString(it) }
+            } catch (e: Exception) { null }
+            if (previousTagsForFeature?.isNotEmpty() == true)
+                binding.questsGrid.addView(ImageView(requireContext()).apply {
+                    setImageResource(R.drawable.ic_undo_24dp)
+                    scaleX = -0.7f // mirror to have a redo icon
+                    scaleY = 0.7f // and make a little smaller, looks weird otherwise
+                    layoutParams = questIconParameters
+                    setOnClickListener {
+                        previousTagsForFeature.forEach { newTags[it.key] = it.value }
+                        binding.editTags.adapter?.notifyDataSetChanged()
+                        tagList.clear()
+                        tagList.addAll(newTags.toList().sortedBy { it.first })
+                        viewLifecycleScope.launch { updateQuests(0) }
+                        showOk()
+                    }
+                })
+        }
+
         val quests = runBlocking { deferredQuests.await() } // should still be fine, doesn't take that long
         quests.forEach { q ->
-            val icon = ImageView(requireContext()).apply { setImageResource(q.type.icon) }
+            val icon = ImageView(requireContext())
+            icon.setImageResource(q.type.icon)
             icon.layoutParams = questIconParameters
             icon.tag = q.type.name
             icon.setOnClickListener { showQuest(q) }

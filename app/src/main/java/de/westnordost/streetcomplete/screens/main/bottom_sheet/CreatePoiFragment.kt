@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.content.edit
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
@@ -15,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import kotlinx.serialization.encodeToString
@@ -40,7 +42,6 @@ class CreatePoiFragment : TagEditor() {
                 else "level"
             newTags[levelTag] = if (levelTag == "level:ref") allowedLevel
                 else allowedLevel.toIntOrNull()?.toString() ?: ""
-
         }
         tagList.clear()
         tagList.addAll(newTags.toList())
@@ -75,6 +76,10 @@ class CreatePoiFragment : TagEditor() {
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
         elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
         listener?.onCreatedNote(position)
+        arguments?.getString(ARG_ID)?.let {
+            if (!IS_SHOP_EXPRESSION.matches(element))
+                prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
+        }
     }
 
     companion object {

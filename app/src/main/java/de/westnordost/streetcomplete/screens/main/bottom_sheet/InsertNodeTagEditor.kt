@@ -2,14 +2,17 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.TagEditor
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -41,12 +44,17 @@ class InsertNodeTagEditor : TagEditor() {
         val way: Way = Json.decodeFromString(args.getString(ARG_WAY)!!)
         elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between))
         listener?.onCreatedNote(position)
+        arguments?.getString(ARG_FEATURE_ID)?.let {
+            if (!IS_SHOP_EXPRESSION.matches(element))
+                prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
+        }
     }
 
     companion object {
         private const val ARG_POS = "pos"
         private const val ARG_WAY = "way"
-        private const val ARG_FEATURE_NAME = "feature"
+        private const val ARG_FEATURE_NAME = "feature_name"
+        private const val ARG_FEATURE_ID = "feature_id"
         private const val ARG_BETWEEN = "between"
         private const val ARG_TAGS = "tags"
 
@@ -61,6 +69,7 @@ class InsertNodeTagEditor : TagEditor() {
             ))
             feature?.let {
                 args.putString(ARG_FEATURE_NAME, it.name)
+                args.putString(ARG_FEATURE_ID, it.id)
                 args.putString(ARG_TAGS, Json.encodeToString(it.addTags))
             }
             f.arguments = args
