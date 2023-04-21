@@ -35,7 +35,7 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space", "prep_school",
+                "coworking_space", "prep_school", "dojo",
 
                 "boat_rental",
                 "theatre",                             // culture

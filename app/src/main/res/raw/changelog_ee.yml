@@ -5,6 +5,7 @@ v53.0: |
   <li>Add dash filter for custom overlay (only for center line)</li>
   <li>Show tags matching color selector in custom overlay form</li>
   <li>Add more conditional maxspeed options</li>
+  <li>Add optional overlay quick selector</li>
   <li>Option to show all notes now only hides SCEE notes if they were created with the same version</li>
   </ul>
 

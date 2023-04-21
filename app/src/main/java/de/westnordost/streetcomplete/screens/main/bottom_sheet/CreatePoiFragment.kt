@@ -60,7 +60,7 @@ class CreatePoiFragment : TagEditor() {
             if (recentFeatureIds.lastOrNull() == it) return@let
             recentFeatureIds.remove(it)
             recentFeatureIds.add(it)
-            prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
+            prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(20).joinToString("§")).apply()
         }
 
         binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_add_poi)

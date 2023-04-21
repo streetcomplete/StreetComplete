@@ -154,7 +154,7 @@ class InsertNodeFragment :
             if (recentFeatureIds.lastOrNull() != feature.id) {
                 recentFeatureIds.remove(feature.id)
                 recentFeatureIds.add(feature.id)
-                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
+                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(20).joinToString("§")).apply()
             }
             val mapData = mapDataSource.getMapDataWithGeometry(insertLocation.first.enclosingBoundingBox(20.0))
             val nearbySimilarElements = mapData.filter { e -> feature.tags.all { e.tags[it.key] == it.value } }
