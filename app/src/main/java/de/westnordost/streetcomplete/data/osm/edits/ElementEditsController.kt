@@ -81,7 +81,7 @@ class ElementEditsController(
             }
             for (id in editIdsToUpdate) {
                 val oldEdit = editsDB.get(id) ?: continue
-                val updatedEdit = oldEdit.copy(action = edit.action.idsUpdatesApplied(idUpdatesMap))
+                val updatedEdit = oldEdit.copy(action = oldEdit.action.idsUpdatesApplied(idUpdatesMap))
                 editsDB.put(updatedEdit)
                 // must clear first because the element ids associated with this id are different now
                 editElementsDB.delete(id)
