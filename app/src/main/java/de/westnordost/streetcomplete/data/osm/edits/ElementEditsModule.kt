@@ -24,7 +24,7 @@ val elementEditsModule = module {
     single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
-    single { ElementEditsController(get(), get(), get(), get()) }
+    single { ElementEditsController(get(), get(), get()) }
     single { MapDataWithEditsSource(get(), get(), get()) }
 
     worker { ChangesetAutoCloserWorker(get(), get(), get()) }

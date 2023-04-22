@@ -5,12 +5,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.util.ktx.copy
 import kotlinx.serialization.Serializable
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
@@ -23,10 +21,6 @@ data class RevertUpdateElementTagsAction(
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override val elementKeys get() = listOf(originalElement.key)
-
-    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
-        originalElement = originalElement.copy(id = updatedIds[originalElement.key] ?: originalElement.id)
-    )
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,
