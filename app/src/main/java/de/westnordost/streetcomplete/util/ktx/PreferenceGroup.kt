@@ -4,12 +4,12 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
 import androidx.preference.forEach
 
-fun PreferenceGroup.forEachRecursive(action: (Preference) -> Unit) {
+fun PreferenceGroup.asRecursiveSequence(): Sequence<Preference> = sequence {
     forEach { preference ->
         if (preference is PreferenceGroup) {
-            preference.forEachRecursive(action)
+            yieldAll(preference.asRecursiveSequence())
         } else {
-            action(preference)
+            yield(preference)
         }
     }
 }
