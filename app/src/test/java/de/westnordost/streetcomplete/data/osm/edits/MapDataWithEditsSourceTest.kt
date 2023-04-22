@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -13,10 +12,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
@@ -855,10 +853,10 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
-    //region ElementEditsSource.Listener ::onDeletedEdit
+    //region ElementEditsSource.Listener ::onDeletedEdits
 
     @Test
-    fun `onDeletedEdit relays updated element`() {
+    fun `onDeletedEdits relays updated element`() {
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
@@ -868,7 +866,7 @@ class MapDataWithEditsSourceTest {
 
         mapDataChangesAre(modifications = listOf(n))
 
-        editsControllerNotifiesDeletedEdit(n, listOf())
+        editsControllerNotifiesDeletedEdit(listOf(n.key), listOf())
 
         verify(listener).onUpdated(
             updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
@@ -877,7 +875,7 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test
-    fun `onDeletedEdit relays elements created by edit as deleted elements`() {
+    fun `onDeletedEdits relays elements created by edit as deleted elements`() {
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
@@ -892,7 +890,7 @@ class MapDataWithEditsSourceTest {
         )
 
         mapDataChangesAre(modifications = listOf(n))
-        editsControllerNotifiesDeletedEdit(n, delElements)
+        editsControllerNotifiesDeletedEdit(listOf(n.key), delElements)
 
         verify(listener).onUpdated(
             updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
@@ -1225,8 +1223,10 @@ class MapDataWithEditsSourceTest {
         editsListener.onAddedEdit(edit(action = action))
     }
 
-    private fun editsControllerNotifiesDeletedEdit(element: Element, createdElementKeys: List<ElementKey>) {
+    private fun editsControllerNotifiesDeletedEdit(editedElementKeys: List<ElementKey>, createdElementKeys: List<ElementKey>) {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
-        editsListener.onDeletedEdits(listOf(edit(element = element)))
+        val action = mock<ElementEditAction>()
+        on(action.elementKeys).thenReturn(editedElementKeys)
+        editsListener.onDeletedEdits(listOf(edit(action = action)))
     }
 }
