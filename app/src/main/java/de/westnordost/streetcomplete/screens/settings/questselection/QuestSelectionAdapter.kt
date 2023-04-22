@@ -333,7 +333,7 @@ class QuestSelectionAdapter(
             oldItem: QuestVisibility,
             newItem: QuestVisibility,
         ): Boolean {
-            return oldItem.questType.name == newItem.questType.name && oldItem.visible == newItem.visible
+            return oldItem.visible == newItem.visible
         }
     }
 }

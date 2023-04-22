@@ -53,8 +53,7 @@ import java.util.Locale
 class SettingsFragment :
     TwoPaneListFragment(),
     HasTitle,
-    SharedPreferences.OnSharedPreferenceChangeListener, VisibleQuestTypeSource.Listener,
-    QuestPresetsSource.Listener {
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val prefs: SharedPreferences by inject()
     private val downloadedTilesDao: DownloadedTilesDao by inject()
@@ -68,6 +67,34 @@ class SettingsFragment :
     private val questPresetsSource: QuestPresetsSource by inject()
 
     override val title: String get() = getString(R.string.action_settings)
+
+    private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
+            setQuestPreferenceSummary()
+        }
+
+        override fun onQuestTypeVisibilitiesChanged() {
+            setQuestPreferenceSummary()
+        }
+    }
+
+    private val questPresetsListener = object : QuestPresetsSource.Listener {
+        override fun onSelectedQuestPresetChanged() {
+            setQuestPresetsPreferenceSummary()
+        }
+
+        override fun onAddedQuestPreset(preset: QuestPreset) {
+            setQuestPresetsPreferenceSummary()
+        }
+
+        override fun onRenamedQuestPreset(preset: QuestPreset) {
+            setQuestPresetsPreferenceSummary()
+        }
+
+        override fun onDeletedQuestPreset(presetId: Long) {
+            setQuestPresetsPreferenceSummary()
+        }
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
@@ -149,15 +176,15 @@ class SettingsFragment :
         setQuestPreferenceSummary()
         setQuestPresetsPreferenceSummary()
 
-        visibleQuestTypeSource.addListener(this)
-        questPresetsSource.addListener(this)
+        visibleQuestTypeSource.addListener(visibleQuestTypeListener)
+        questPresetsSource.addListener(questPresetsListener)
     }
 
     override fun onStop() {
         super.onStop()
 
-        visibleQuestTypeSource.removeListener(this)
-        questPresetsSource.removeListener(this)
+        visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
+        questPresetsSource.removeListener(questPresetsListener)
     }
 
     override fun onResume() {
@@ -234,29 +261,4 @@ class SettingsFragment :
             findPreference<Preference>("quest_presets")?.summary = summary
         }
     }
-
-    override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
-        setQuestPreferenceSummary()
-    }
-
-    override fun onQuestTypeVisibilitiesChanged() {
-        setQuestPreferenceSummary()
-    }
-
-    override fun onSelectedQuestPresetChanged() {
-        setQuestPresetsPreferenceSummary()
-    }
-
-    override fun onAddedQuestPreset(preset: QuestPreset) {
-        setQuestPresetsPreferenceSummary()
-    }
-
-    override fun onRenamedQuestPreset(preset: QuestPreset) {
-        setQuestPresetsPreferenceSummary()
-    }
-
-    override fun onDeletedQuestPreset(presetId: Long) {
-        setQuestPresetsPreferenceSummary()
-    }
-
 }

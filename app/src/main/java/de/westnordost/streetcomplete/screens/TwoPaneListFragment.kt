@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.screens
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentOnAttachListener
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -14,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.forEachRecursive
 /** A two pane list fragment that handles showing a divider to separate the detail view and allows
  * highlighting the preference belonging to the fragment shown in the detail pane. */
 abstract class TwoPaneListFragment : PreferenceFragmentCompat(),
-    TwoPaneHeaderFragment.PaneListener, FragmentOnAttachListener {
+    TwoPaneHeaderFragment.PaneListener {
 
     private var singlePane = false
     private var divider: View? = null
@@ -29,6 +27,15 @@ abstract class TwoPaneListFragment : PreferenceFragmentCompat(),
             field = value
         }
 
+    private val onAttachFragmentListener = FragmentOnAttachListener { _, fragment ->
+        // Highlight initial selection made by onCreateInitialDetailFragment
+        preferenceScreen.forEachRecursive { p ->
+            if (p is ActivatablePreference && p.fragment == fragment.javaClass.name) {
+                detailPanePreference = p
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,21 +43,12 @@ abstract class TwoPaneListFragment : PreferenceFragmentCompat(),
         savedInstanceState?.getString(DETAIL_PANE_PREFERENCE)?.let {
             detailPanePreference = findPreference(it)
         }
-        parentFragmentManager.addFragmentOnAttachListener(this)
+        parentFragmentManager.addFragmentOnAttachListener(onAttachFragmentListener)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        parentFragmentManager.removeFragmentOnAttachListener(this)
-    }
-
-    // Highlight initial selection made by onCreateInitialDetailFragment
-    override fun onAttachFragment(fragmentManager: FragmentManager, fragment: Fragment) {
-        preferenceScreen.forEachRecursive { p ->
-            if (p is ActivatablePreference && p.fragment == fragment.javaClass.name) {
-                detailPanePreference = p
-            }
-        }
+        parentFragmentManager.removeFragmentOnAttachListener(onAttachFragmentListener)
     }
 
     override fun onPanesChanged(singlePane: Boolean) {
