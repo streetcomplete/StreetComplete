@@ -55,9 +55,10 @@
         <ScrollView
             android:id="@+id/otherQuestsScrollView"
             android:visibility="gone"
-            android:layout_width="80dp"
+            android:layout_width="58dp"
             android:layout_height="330dp"
-            app:layout_constraintTop_toBottomOf="@+id/answers_counter_fragment"
+            android:layout_marginRight="6dp"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_button_fragment"
             app:layout_constraintRight_toRightOf="parent" >
 
             <LinearLayout
@@ -65,7 +66,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
-                android:padding="14dp"
+                android:paddingVertical="8dp"
+                android:orientation="vertical" />
+
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/overlayScrollView"
+            android:layout_width="58dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="6dp"
+            app:layout_constraintTop_toBottomOf="@id/compassView"
+            app:layout_constraintBottom_toTopOf="@id/rightSideContainer"
+            app:layout_constraintRight_toRightOf="@id/rightSideContainer" >
+
+            <LinearLayout
+                android:id="@+id/overlayLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:paddingVertical="8dp"
                 android:orientation="vertical" />
 
         </ScrollView>
@@ -205,24 +225,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <HorizontalScrollView
-            android:id="@+id/overlayScrollView"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            app:layout_constraintLeft_toRightOf="@id/createButton"
-            app:layout_constraintBottom_toBottomOf="@id/rightSideContainer"
-            app:layout_constraintRight_toLeftOf="@id/rightSideContainer" >
-
-            <LinearLayout
-                android:id="@+id/overlayLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:elevation="2dp"
-                android:paddingHorizontal="4dp"
-                android:orientation="horizontal" />
-
-        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

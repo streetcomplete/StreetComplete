@@ -20,7 +20,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AnyThread
@@ -436,10 +435,11 @@ class MainFragment :
             binding.overlayScrollView.isGone = true
             return
         }
-        binding.overlayScrollView.isVisible = true
+        if (bottomSheetFragment == null) // always fill, but only show if no quest, overlay, etc... is showing
+            binding.overlayScrollView.isVisible = true
 
         val overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, requireContext())
-        val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
+        val params = ViewGroup.LayoutParams(requireContext().dpToPx(58).toInt(), requireContext().dpToPx(58).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())
             val isActive = selectedOverlaySource.selectedOverlay == overlay
@@ -472,12 +472,6 @@ class MainFragment :
             }
             view.layoutParams = params
             binding.overlayLayout.addView(view)
-//            if (isActive) { // scroll to enabled overlay if not visible... but not working on app start, which would be the main purpose
-//                val scrollBounds = Rect()
-//                binding.overlayScrollView.getHitRect(scrollBounds)
-//                if (!view.isShown)
-//                    binding.overlayScrollView.scrollX = requireContext().dpToPx(52).toInt() * binding.overlayLayout.indexOfChild(view)
-//            }
         }
     }
 
@@ -1263,6 +1257,8 @@ class MainFragment :
             binding.otherQuestsScrollView.visibility = View.GONE
             binding.compassView.isInvisible = abs(binding.compassView.rotation) < 2 && binding.compassView.rotationX < 2
         }
+        if (prefs.getBoolean(Prefs.OVERLAY_QUICK_SELECTOR, false))
+            binding.overlayScrollView.isVisible = true
         clearHighlighting()
         unfreezeMap()
         mapFragment?.endFocus()
@@ -1272,6 +1268,7 @@ class MainFragment :
      *  played and the highlighting of the previous bottom sheet is cleared. */
     private fun showInBottomSheet(f: Fragment, clearPreviousHighlighting: Boolean = true) {
         activity?.currentFocus?.hideKeyboard()
+        binding.overlayScrollView.isGone = true
         freezeMap()
         if (bottomSheetFragment != null && clearPreviousHighlighting) {
             clearHighlighting()
@@ -1398,7 +1395,7 @@ class MainFragment :
         val element = if (quest is OsmQuest) withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
             else null
         val highlightedElementMarkers = viewLifecycleScope.async(Dispatchers.IO) { getHighlightedElements(quest, element) }
-        val otherQuestMarkers = viewLifecycleScope.async { showOtherQuests(quest) }
+        val otherQuestMarkers = viewLifecycleScope.async(Dispatchers.IO) { showOtherQuests(quest) }
         if (quest is OsmQuest) {
             val osmArgs = AbstractOsmQuestForm.createArguments(element!!)
             f.requireArguments().putAll(osmArgs)
@@ -1494,7 +1491,6 @@ class MainFragment :
             .filterNot { it == quest || it.type.dotColor != null } // ignore current quest and poi dots
             .sortedBy { it.thatKey() != quest.thatKey() }
         if (quests.isEmpty()) return emptyList()
-        binding.compassView.isInvisible = true
 
         val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<Quest>>>()
         val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.BLUE, ColorUtils.blendARGB(Color.RED, Color.YELLOW, 0.5f))
@@ -1509,31 +1505,35 @@ class MainFragment :
                 Pair(color, mutableListOf())
             }.second.add(it)
         }
-        questsAndColorByElement.values.forEach {
-            val color = it.first
-            it.second.forEach { q ->
-                val questView = ImageButton(context).apply {
-                    setBackgroundColor(Color.TRANSPARENT)
-                    scaleType = ImageView.ScaleType.FIT_CENTER
-                    adjustViewBounds = true
-                    setOnClickListener {
-                        binding.otherQuestsLayout.removeAllViews()
-                        viewLifecycleScope.launch { showQuestDetails(q) }
-                    }
+        val params = ViewGroup.LayoutParams(requireContext().dpToPx(58).toInt(), requireContext().dpToPx(58).toInt())
+        activity?.runOnUiThread {
+            questsAndColorByElement.values.forEach {
+                val color = it.first
+                it.second.forEach { q ->
+                    val questView = ImageView(context).apply {
+                        layoutParams = params
+                        scaleX = 0.95f
+                        scaleY = 0.95f
+                        setOnClickListener {
+                            binding.otherQuestsLayout.removeAllViews()
+                            viewLifecycleScope.launch { showQuestDetails(q) }
+                        }
 
-                    // create layerDrawable from quest icon and ring
-                    val ring = ContextCompat.getDrawable(context, R.drawable.pin_selection_ring)!! // thanks google for not providing documentation WHEN this can be null... is it instead of resourceNotFoundException?
-                    ring.colorFilter = if (color == Color.WHITE) null
-                        else PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
-                    val icon = ContextCompat.getDrawable(context, q.type.icon)!!
-                    icon.colorFilter = PorterDuffColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.8f), PorterDuff.Mode.MULTIPLY)
-                    setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
+                        // create layerDrawable from quest icon and ring
+                        val ring = ContextCompat.getDrawable(context, R.drawable.pin_selection_ring)!! // thanks google for not providing documentation WHEN this can be null... is it instead of resourceNotFoundException?
+                        ring.colorFilter = if (color == Color.WHITE) null
+                            else PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+                        val icon = ContextCompat.getDrawable(context, q.type.icon)!!
+                        icon.colorFilter = PorterDuffColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.8f), PorterDuff.Mode.MULTIPLY)
+                        setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
+                    }
+                    binding.otherQuestsLayout.addView(questView)
                 }
-                binding.otherQuestsLayout.addView(questView)
             }
+            binding.compassView.isInvisible = true
+            binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP) // scroll up when the quest changes
+            binding.otherQuestsScrollView.visibility = View.VISIBLE
         }
-        binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP) // scroll up when the quest changes
-        binding.otherQuestsScrollView.visibility = View.VISIBLE
         return markers
     }
 
