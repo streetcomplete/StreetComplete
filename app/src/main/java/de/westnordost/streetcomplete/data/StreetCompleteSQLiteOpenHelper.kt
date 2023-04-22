@@ -62,6 +62,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(ElementEditsTable.CREATE)
         db.execSQL(ElementIdProviderTable.CREATE)
         db.execSQL(ElementIdProviderTable.INDEX_CREATE)
+        db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
 
         db.execSQL(CreatedElementsTable.CREATE)
 
@@ -193,6 +194,8 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             // the serialized actions all changed
             db.execSQL("DROP TABLE ${ElementEditsTable.NAME};")
             db.execSQL(ElementEditsTable.CREATE)
+
+            db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
         }
     }
 }

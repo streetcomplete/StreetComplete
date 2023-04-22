@@ -51,10 +51,12 @@ class ElementEditsController(
         synchronized(this) {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
-            val ids = deleteEdits.map { it.id }
-            deletedCount = editsDB.deleteAll(ids)
+            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
         }
         onDeletedEdits(deleteEdits)
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.deleteAll(deleteEdits.map { it.id })
         return deletedCount
     }
 
@@ -69,10 +71,7 @@ class ElementEditsController(
     fun markSynced(edit: ElementEdit, updates: MapDataUpdates) {
         val syncSuccess = synchronized(this) { editsDB.markSynced(edit.id) }
         if (syncSuccess) onSyncedEdit(edit)
-
-        /* must be deleted after the callback because the callback might want to get the id provider
-           for that edit */
-        elementIdProviderDB.delete(edit.id)
+        elementIdProviderDB.updateIds(updates.idUpdates)
     }
 
     fun markSyncFailed(edit: ElementEdit) {
@@ -118,7 +117,6 @@ class ElementEditsController(
     }
 
     private fun delete(edit: ElementEdit) {
-
         synchronized(this) { editsDB.delete(edit.id) }
         onDeletedEdits(listOf(edit))
         /* must be deleted after the callback because the callback might want to get the id provider

@@ -74,7 +74,7 @@ class ElementEditsControllerTest {
         ctrl.markSynced(edit0, updates)
 
         verify(db).markSynced(edit0.id)
-        verify(idProvider).delete(edit0.id)
+        verify(idProvider).updateIds(updates.idUpdates)
         verify(listener).onSyncedEdit(edit0)
     }
 
