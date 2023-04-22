@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -190,6 +192,12 @@ class MapDataWithEditsSource internal constructor(
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
                         deletedElementKeys.add(key)
+                    }
+                }
+
+                for (edit in edits) {
+                    for (element in getElementsWithChangedGeometry(edit)) {
+                        mapData.put(element, getGeometry(element.type, element.id))
                     }
                 }
             }
@@ -425,7 +433,11 @@ class MapDataWithEditsSource internal constructor(
         /* sorting by element type: first nodes, then ways, then relations. This is important
            because the geometry of (new) nodes is necessary to create the geometry of ways etc
          */
-        val updates = (mapDataChanges.creations + mapDataChanges.modifications).sortedBy { it.type.ordinal }
+        val updates = (
+            mapDataChanges.creations +
+            mapDataChanges.modifications +
+            getElementsWithChangedGeometry(edit)
+        ).sortedBy { it.type.ordinal }
 
         for (element in updates) {
             val key = element.key
@@ -435,6 +447,23 @@ class MapDataWithEditsSource internal constructor(
         }
 
         return MapDataUpdates(updated = updates, deleted = deletedKeys)
+    }
+
+    private fun getElementsWithChangedGeometry(edit: ElementEdit): Sequence<Element> {
+        val movedNode = when (edit.action) {
+            is MoveNodeAction -> edit.action.originalNode
+            is RevertMoveNodeAction -> edit.action.originalNode
+            else -> return emptySequence()
+        }
+        return sequence {
+            val waysContainingNode = getWaysForNode(movedNode.id)
+            val relationsContainingNode = getRelationsForNode(movedNode.id)
+            val relationsContainingWayContainingNode = waysContainingNode.flatMap { getRelationsForWay(it.id) }
+
+            yieldAll(waysContainingNode)
+            yieldAll(relationsContainingNode)
+            yieldAll(relationsContainingWayContainingNode)
+        }
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
