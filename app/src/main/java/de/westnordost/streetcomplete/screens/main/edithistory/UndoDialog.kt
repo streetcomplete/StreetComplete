@@ -141,7 +141,11 @@ class UndoDialog(
                 is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
                 is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
                 is MoveNodeAction ->          createTextView(ResText(R.string.move_node_action_description))
-                is InsertNodeIntoWayAction -> createCreateNodeDescriptionView(action.position, action.tags)
+                is InsertNodeIntoWayAction -> {
+                    val tags = mutableMapOf<String, String>()
+                    action.changes.applyTo(tags)
+                    createCreateNodeDescriptionView(action.position, tags)
+                }
                 else -> throw IllegalArgumentException()
             }
         }

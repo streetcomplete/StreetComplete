@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.changesApplied
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.equalsInOsm
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -34,6 +35,7 @@ import kotlinx.serialization.Serializable
  *  */
 @Serializable
 data class InsertNodeIntoWayAction(
+    val originalWay: Way,
     val position: LatLon,
     val changes: StringMapChanges,
     val insertBetween: InsertBetween? = null
@@ -42,26 +44,27 @@ data class InsertNodeIntoWayAction(
     override val newElementsCount get() =
         NewElementsCount(if (insertBetween != null) 1 else 0, 0, 0)
 
+    override val elementKeys get() = listOf(originalWay.key)
+
+
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        originalWay = originalWay.copy(id = updatedIds[originalWay.key] ?: originalWay.id)
+    )
+
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
+        val wayId = originalWay.id
+        val completeWay = mapDataRepository.getWayComplete(wayId)
+        val currentWay = completeWay?.getWay(wayId)
+            ?: throw ConflictException("Way #$wayId has been deleted")
 
-        // element is the way where we insert the node
-        val way = element as? Way ?: throw ConflictException("Element deleted")
-        val originalWay = originalElement as Way
-
-        val completeWay = mapDataRepository.getWayComplete(way.id)
-        val updatedWay = completeWay?.getWay(way.id)
-            ?: throw ConflictException("Way #${way.id} has been deleted")
-
-        if (isGeometrySubstantiallyDifferent(originalWay, updatedWay)) {
-            throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
+        if (isGeometrySubstantiallyDifferent(originalWay, currentWay)) {
+            throw ConflictException("Way #$wayId has been changed and the conflict cannot be solved automatically")
         }
 
-        val wayPositions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
+        val wayPositions = currentWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
 
         if (insertBetween != null) {
             val node1Index = wayPositions.indexOfFirst { it.equalsInOsm(insertBetween.pos1) }
@@ -80,12 +83,12 @@ data class InsertNodeIntoWayAction(
             val node = Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
 
             // insert node into the way
-            val nodeIds = way.nodeIds.toMutableList()
+            val nodeIds = currentWay.nodeIds.toMutableList()
             nodeIds.add(node1Index + 1, node.id)
 
             return MapDataChanges(
                 creations = listOf(node),
-                modifications = listOf(way.copy(
+                modifications = listOf(currentWay.copy(
                     nodeIds = nodeIds,
                     timestampEdited = nowAsEpochMilliseconds()
                 ))
@@ -95,11 +98,12 @@ data class InsertNodeIntoWayAction(
             val nodeIndex = wayPositions.indexOfFirst { it.equalsInOsm(position) }
             if (nodeIndex == -1) throw ConflictException("Node in way at insert position has been moved or deleted")
 
-            val node = completeWay.getNode(way.nodeIds[nodeIndex])!!
+            val node = completeWay.getNode(currentWay.nodeIds[nodeIndex])!!
 
             return MapDataChanges(modifications = listOf(node.changesApplied(changes)))
         }
     }
+
 }
 
 @Serializable

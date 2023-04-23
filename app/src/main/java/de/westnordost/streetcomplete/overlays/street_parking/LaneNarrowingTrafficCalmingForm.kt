@@ -70,7 +70,7 @@ class LaneNarrowingTrafficCalmingForm :
         val maxDistance = metersPerPixel * requireContext().dpToPx(32)
         val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(32)
         pointOnWay = position.getPointOnWays(geometriesByWayId, maxDistance, snapToVertexDistance)
-        setMarkerIcon(....)
+        //setMarkerIcon(....)
         TODO("Not yet implemented")
     }
 
@@ -87,11 +87,11 @@ class LaneNarrowingTrafficCalmingForm :
         if (element != null) {
             val tagChanges = StringMapChangesBuilder(element.tags)
             narrowingTrafficCalming.applyTo(tagChanges)
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+            applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
         } else if (pointOnWay != null) {
             val tagChanges = StringMapChangesBuilder(mapOf())
             narrowingTrafficCalming.applyTo(tagChanges)
-            applyEdit(InsertNodeIntoWayAction(pointOnWay, tagChanges))
+            // TODO applyEdit(InsertNodeIntoWayAction(way, pointOnWay, tagChanges))
         }
     }
 }
