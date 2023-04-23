@@ -37,9 +37,11 @@ data class MoveNodeAction(
         val currentNode = mapDataRepository.getNode(originalNode.id)
             ?: throw ConflictException("Element deleted")
         val node = currentNode as? Node ?: throw ConflictException("Element deleted")
+
         if (isGeometrySubstantiallyDifferent(originalNode, currentNode)) {
             throw ConflictException("Element geometry changed substantially")
         }
+
         return MapDataChanges(modifications = listOf(node.copy(
             position = position,
             timestampEdited = nowAsEpochMilliseconds()

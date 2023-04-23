@@ -30,6 +30,7 @@ data class RevertMoveNodeAction(
     ): MapDataChanges {
         val currentNode = mapDataRepository.getNode(originalNode.id)
             ?: throw ConflictException("Element deleted")
+
         return MapDataChanges(modifications = listOf(currentNode.copy(
             position = originalNode.position,
             timestampEdited = nowAsEpochMilliseconds()
