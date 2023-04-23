@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -21,15 +21,20 @@ data class CreateNodeAction(
 
     override val newElementsCount get() = NewElementsCount(1, 0, 0)
 
+    override val elementKeys get() = emptyList<ElementKey>()
+
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = this
+
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val node = Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
-        return MapDataChanges(creations = listOf(node))
+        val newNode = Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
+        return MapDataChanges(creations = listOf(newNode))
     }
 
-    override fun createReverted(): ElementEditAction = RevertCreateNodeAction
+    override fun createReverted(idProvider: ElementIdProvider) =
+        RevertCreateNodeAction(
+            Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
+        )
 }

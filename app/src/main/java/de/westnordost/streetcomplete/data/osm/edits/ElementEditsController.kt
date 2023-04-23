@@ -2,14 +2,14 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
+    private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
 ) : ElementEditsSource, AddElementEditsController {
@@ -23,21 +23,20 @@ class ElementEditsController(
     /** Add new unsynced edit to the to-be-uploaded queue */
     override fun add(
         type: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, nowAsEpochMilliseconds(), false, action))
+        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action))
     }
 
-    fun get(id: Long): ElementEdit? =
+    override fun get(id: Long): ElementEdit? =
         editsDB.get(id)
 
-    fun getAll(): List<ElementEdit> =
+    override fun getAll(): List<ElementEdit> =
         editsDB.getAll()
 
-    fun getAllUnsynced(): List<ElementEdit> =
+    override fun getAllUnsynced(): List<ElementEdit> =
         editsDB.getAllUnsynced()
 
     fun getOldestUnsynced(): ElementEdit? =
@@ -54,9 +53,14 @@ class ElementEditsController(
         synchronized(this) {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
-            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+            val ids = deleteEdits.map { it.id }
+            deletedCount = editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
         }
         onDeletedEdits(deleteEdits)
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.deleteAll(deleteEdits.map { it.id })
         return deletedCount
     }
 
@@ -69,18 +73,27 @@ class ElementEditsController(
     }
 
     fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+        val idUpdatesMap = elementUpdates.idUpdates.associate {
+            ElementKey(it.elementType, it.oldElementId) to it.newElementId
+        }
         val syncSuccess: Boolean
         synchronized(this) {
-            for (update in elementUpdates.idUpdates) {
-                editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
+            val editIdsToUpdate = HashSet<Long>()
+            elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
+                editElementsDB.getAllByElement(it.elementType, it.oldElementId)
+            }
+            for (id in editIdsToUpdate) {
+                val oldEdit = editsDB.get(id) ?: continue
+                val updatedEdit = oldEdit.copy(action = oldEdit.action.idsUpdatesApplied(idUpdatesMap))
+                editsDB.put(updatedEdit)
+                // must clear first because the element ids associated with this id are different now
+                editElementsDB.delete(id)
+                editElementsDB.put(id, updatedEdit.action.elementKeys)
             }
             syncSuccess = editsDB.markSynced(edit.id)
         }
         if (syncSuccess) onSyncedEdit(edit)
-
-        /* must be deleted after the callback because the callback might want to get the id provider
-           for that edit */
-        elementIdProviderDB.delete(edit.id)
+        elementIdProviderDB.updateIds(elementUpdates.idUpdates)
     }
 
     fun markSyncFailed(edit: ElementEdit) {
@@ -99,7 +112,8 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, action.createReverted()))
+            val reverted = action.createReverted(getIdProvider(edit.id))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
         }
         // not uploaded yet
         else {
@@ -112,24 +126,15 @@ class ElementEditsController(
 
     private fun add(edit: ElementEdit) {
         synchronized(this) {
-            editsDB.add(edit)
-            val id = edit.id
+            editsDB.put(edit)
+            editElementsDB.put(edit.id, edit.action.elementKeys)
             val createdElementsCount = edit.action.newElementsCount
             elementIdProviderDB.assign(
-                id,
+                edit.id,
                 createdElementsCount.nodes,
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
-            // set proper assigned id of the new element
-            val hasDummyElement = edit.elementId == 0L
-            if (hasDummyElement) {
-                if (edit.elementType != ElementType.NODE) {
-                    throw IllegalStateException("Element creation only supported for nodes")
-                }
-                val idProvider = elementIdProviderDB.get(id)
-                editsDB.updateElementId(id, idProvider.nextNodeId())
-            }
         }
         onAddedEdit(edit)
     }
@@ -143,6 +148,7 @@ class ElementEditsController(
             ids = edits.map { it.id }
 
             editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
         }
 
         onDeletedEdits(edits)
@@ -157,7 +163,8 @@ class ElementEditsController(
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
         val editsBasedOnThese = createdElementKeys
-            .flatMap { editsDB.getByElement(it.type, it.id) }
+            .flatMapTo(HashSet()) { editElementsDB.getAllByElement(it.type, it.id) }
+            .mapNotNull { editsDB.get(it) }
             .filter { it.id != edit.id }
 
         // deep first

@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -22,15 +21,14 @@ internal class CreateNodeActionTest {
         provider = mock()
     }
 
-    @Test fun `add node`() {
+    @Test fun `create node`() {
         on(provider.nextNodeId()).thenReturn(-123)
 
         val tags = mapOf("amenity" to "atm")
         val position = LatLon(12.0, 34.0)
-        val dummyNode = node(0, position, tags, 1)
         val action = CreateNodeAction(position, tags)
 
-        val data = action.createUpdates(dummyNode, null, repos, provider)
+        val data = action.createUpdates(repos, provider)
 
         assertTrue(data.deletions.isEmpty())
         assertTrue(data.modifications.isEmpty())

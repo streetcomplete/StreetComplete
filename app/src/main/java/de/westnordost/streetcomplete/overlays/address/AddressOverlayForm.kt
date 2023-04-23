@@ -263,7 +263,7 @@ private fun createAddressElementEditAction(
     tagChanges.remove("nohousenumber")
 
     return if (element != null) {
-        UpdateElementTagsAction(tagChanges.create())
+        UpdateElementTagsAction(element!!, tagChanges.create())
     } else {
         CreateNodeAction(geometry.center, tagChanges)
     }
@@ -271,7 +271,7 @@ private fun createAddressElementEditAction(
 
 private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {
     if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
-        return DeletePoiNodeAction
+        return DeletePoiNodeAction(element)
     }
     val tagChanges = StringMapChangesBuilder(element.tags)
     for (tag in tagChanges) {
@@ -285,7 +285,7 @@ private fun createRemoveAddressElementEditAction(element: Element): ElementEditA
         tagChanges["noaddress"] = "yes"
     }
 
-    return UpdateElementTagsAction(tagChanges.create())
+    return UpdateElementTagsAction(element, tagChanges.create())
 }
 
 private fun isAddressTag(key: String, value: String): Boolean =
