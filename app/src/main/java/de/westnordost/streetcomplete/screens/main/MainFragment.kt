@@ -1117,7 +1117,6 @@ class MainFragment :
     }
 
     private fun selectPoiType(pos: LatLon) {
-        val fd = featureDictionaryFuture.get()
         val country = countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull()
         val defaultFeatureIds: List<String>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
             .split("§").filter { it.isNotBlank() }
@@ -1125,7 +1124,7 @@ class MainFragment :
 
         SearchFeaturesDialog(
             requireContext(),
-            fd,
+            featureDictionaryFuture.get(),
             GeometryType.POINT,
             country,
             null, // pre-filled search text

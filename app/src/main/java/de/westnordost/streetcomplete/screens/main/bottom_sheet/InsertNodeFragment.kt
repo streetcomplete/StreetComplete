@@ -131,7 +131,7 @@ class InsertNodeFragment :
         val country = countryBoundaries.get().getIds(il.first.longitude, il.first.latitude).firstOrNull()
         val defaultFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!
             .split("§").filter { it.isNotBlank() }
-            .ifEmpty { listOf("amenity/post_box", "highway/crossing/unmarked", "barrier/bollard", "traffic_calming/table") }
+            .ifEmpty { listOf("amenity/post_box", "barrier/gate", "highway/crossing/unmarked", "highway/crossing/uncontrolled", "highway/traffic_signals", "barrier/bollard", "traffic_calming/table") }
 
         // also allow empty somehow?
         SearchFeaturesDialog(
@@ -155,7 +155,7 @@ class InsertNodeFragment :
             if (recentFeatureIds.lastOrNull() != feature.id) {
                 recentFeatureIds.remove(feature.id)
                 recentFeatureIds.add(feature.id)
-                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(20).joinToString("§")).apply()
+                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§")).apply()
             }
             val mapData = mapDataSource.getMapDataWithGeometry(insertLocation.first.enclosingBoundingBox(20.0))
             val nearbySimilarElements = mapData.filter { e -> feature.tags.all { e.tags[it.key] == it.value } }

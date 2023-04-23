@@ -224,7 +224,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 ?.let { prefs.getString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, "") }
                 ?.let { Json.decodeFromString(it) }
             } catch (e: Exception) { null }
-            if (previousTagsForFeature?.isNotEmpty() == true)
+            if (previousTagsForFeature?.isNotEmpty() == true && previousTagsForFeature != newTags)
                 binding.questsGrid.addView(ImageView(requireContext()).apply {
                     setImageResource(R.drawable.ic_undo_24dp)
                     scaleX = -0.7f // mirror to have a redo icon
