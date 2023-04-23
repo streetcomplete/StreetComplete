@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
@@ -45,7 +46,8 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, S
         if (countryInfo.hasAdvisorySpeedLimitSign) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
-        result.add(AnswerItem(R.string.quest_maxspeed_conditional) { addConditional() })
+        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
+            result.add(AnswerItem(R.string.quest_maxspeed_conditional) { addConditional() })
         return result
     }
 
