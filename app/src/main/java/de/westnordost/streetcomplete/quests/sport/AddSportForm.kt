@@ -15,7 +15,7 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
     override val items get() = Sport.values()
         .mapNotNull { it.asItem() }
-        .sortedBy { countryInfo.popularSports.indexOf(it.value!!.osmValue) }
+        .sortedBy { sportPosition(it.value!!.osmValue) }
 
     override val maxSelectableItems = -1
 
@@ -39,5 +39,14 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
     private fun applyMultiAnswer() {
         applyAnswer(listOf(MULTI))
+    }
+
+    private fun sportPosition(osmValue: String): Int {
+        val position = countryInfo.popularSports.indexOf(osmValue)
+        if (position < 0) {
+            // not present at all in config, so should be put at the end
+            return Integer.MAX_VALUE
+        }
+        return position
     }
 }

@@ -111,6 +111,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
+                false,
                 null,
                 geometry.center
             ).show()

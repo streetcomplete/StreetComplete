@@ -142,6 +142,7 @@ class InsertNodeFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { onSelectedFeature(it, il) },
+            false,
             defaultFeatureIds.reversed(), // features shown without entering text
             il.first,
         ).show()

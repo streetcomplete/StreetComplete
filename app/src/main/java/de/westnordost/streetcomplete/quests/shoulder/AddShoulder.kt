@@ -31,7 +31,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
                 or sidewalk ~ no|none
                 or !maxspeed and highway = trunk
                 or maxspeed > 50
-                or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
+                or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(rural|trunk|motorway|nsl_single|nsl_dual)"
               )
             ) or (
               highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified

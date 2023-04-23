@@ -184,6 +184,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
                 featureCtrl.feature?.name,
                 ::filterOnlySpecialitiesOfMedicalDoctors,
                 ::onSelectedFeature,
+                false,
                 getSuggestions(),
                 geometry.center
             ).show()

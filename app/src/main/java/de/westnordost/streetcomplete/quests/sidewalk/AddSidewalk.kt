@@ -155,7 +155,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
           and (
             lit = yes
             or highway = residential
-            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+            or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|.*zone.*|nsl_restricted)"
             or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
           )
           and foot != use_sidepath

@@ -57,6 +57,7 @@ class ShopGoneDialog(
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
+                true,
                 null,
                 pos
             ).show()

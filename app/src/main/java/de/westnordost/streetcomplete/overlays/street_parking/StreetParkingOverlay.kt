@@ -71,7 +71,7 @@ private val streetParkingTaggingNotExpected by lazy { """
       or motorroad = yes
       or expressway = yes
       or junction = roundabout
-      or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*rural.*
+      or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(rural|nsl_single|nsl_dual)"
       or maxspeed >= 70
 """.toElementFilterExpression() }
 

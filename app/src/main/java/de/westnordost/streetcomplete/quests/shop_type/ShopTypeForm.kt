@@ -47,6 +47,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
+                false,
                 null,
                 geometry.center
             ).show()

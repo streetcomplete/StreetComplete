@@ -1131,6 +1131,7 @@ class MainFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { addPoi(pos, it) },
+            false,
             defaultFeatureIds?.reversed(), // features shown without entering text
             pos,
         ).show()

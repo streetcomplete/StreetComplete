@@ -32,6 +32,7 @@ class MaxspeedKtTest {
         assertEquals(120f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:motorway")))
         assertEquals(30f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone30")))
         assertEquals(10f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone:10")))
+        assertEquals(20f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:20")))
     }
 
     @Test fun `guess maxspeed mph zone`() {
@@ -39,6 +40,9 @@ class MaxspeedKtTest {
         val countryInfo: CountryInfo = mock()
         on(countryInfo.speedUnits).thenReturn(listOf(SpeedMeasurementUnit.MILES_PER_HOUR))
         on(countryInfos.get(any())).thenReturn(countryInfo)
+
         assertEquals(32.18688f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone:20"), countryInfos)!!, 0.1f)
+        assertEquals(48.28032f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone30"), countryInfos)!!, 0.1f)
+        assertEquals(16.09344f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:10"), countryInfos)!!, 0.1f)
     }
 }
