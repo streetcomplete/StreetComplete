@@ -23,6 +23,8 @@ data class CreateNodeAction(
 
     override val elementKeys get() = emptyList<ElementKey>()
 
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = this
+
     override fun createUpdates(
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider

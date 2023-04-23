@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
+import de.westnordost.streetcomplete.data.osm.edits.EditElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable
@@ -63,6 +64,9 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(ElementIdProviderTable.CREATE)
         db.execSQL(ElementIdProviderTable.INDEX_CREATE)
         db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
+
+        db.execSQL(EditElementsTable.CREATE)
+        db.execSQL(EditElementsTable.INDEX_CREATE)
 
         db.execSQL(CreatedElementsTable.CREATE)
 
@@ -194,6 +198,9 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             // the serialized actions all changed
             db.execSQL("DROP TABLE ${ElementEditsTable.NAME};")
             db.execSQL(ElementEditsTable.CREATE)
+
+            db.execSQL(EditElementsTable.CREATE)
+            db.execSQL(EditElementsTable.INDEX_CREATE)
 
             db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
         }

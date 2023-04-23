@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.move
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -18,6 +19,10 @@ data class RevertMoveNodeAction(
 ) : ElementEditAction, IsRevertAction {
 
     override val elementKeys get() = listOf(originalNode.key)
+
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        originalNode = originalNode.copy(id = updatedIds[originalNode.key] ?: originalNode.id)
+    )
 
     override fun createUpdates(
         mapDataRepository: MapDataRepository,

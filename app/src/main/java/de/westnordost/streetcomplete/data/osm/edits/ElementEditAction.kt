@@ -25,6 +25,10 @@ interface ElementEditAction {
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges
+
+    /** return a copy of this action where the temporary ids of the elements referred to have been
+     *  replaced with the updated ones */
+    fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>): ElementEditAction
 }
 
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)
