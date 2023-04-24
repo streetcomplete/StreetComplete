@@ -43,24 +43,30 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
             val string = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, prefs), "")?.takeIf { it.isNotBlank() }
             string?.let { "ways with $it".toElementFilterExpression() }
         } catch (_: Exception) { null }
+        val missingColor = if (prefs.getBoolean(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA, prefs), true))
+                Color.DATA_REQUESTED
+            else
+                Color.INVISIBLE
         return mapData
             .filter(filter)
-            .map { it to getStyle(it, colorKeySelector, dashFilter) }
+            .map { it to getStyle(it, colorKeySelector, dashFilter, missingColor) }
     }
 
     override fun createForm(element: Element?) = CustomOverlayForm()
 }
 
-private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: ElementFilterExpression?): Style {
+private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: ElementFilterExpression?, defaultMissingColor: String): Style {
     val color by lazy {
         if (colorKeySelector == null) Color.LIME
-        else createColorFromString(element.tags.mapNotNull {
+        else {
+            val colorString = element.tags.mapNotNull {
                 // derive color from all matching tags
-                if (it.key.matches(colorKeySelector))
-                    it.value + it.key
+                if (it.key.matches(colorKeySelector)) it.value + it.key
                 else null
-            // sort because tags hashMap doesn't have a defined order
-            }.sorted().joinToString().takeIf { it.isNotEmpty() })
+            }.sorted().joinToString() // sort because tags hashMap doesn't have a defined order
+            if (colorString.isEmpty()) defaultMissingColor
+            else createColorFromString(colorString)
+        }
     }
 
     var leftColor = ""
@@ -114,8 +120,7 @@ private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: Ele
     }
 }
 
-private fun createColorFromString(string: String?): String {
-    if (string == null) return Color.DATA_REQUESTED
+private fun createColorFromString(string: String): String {
     val c = string.hashCode().toString(16)
     return when {
         c.length >= 6 -> "#${c.subSequence(c.length - 6, c.length)}"

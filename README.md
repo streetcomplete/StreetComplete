@@ -1,4 +1,5 @@
 SCEE is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
+By default, most of the additional capabilities are disabled. Go through the settings (either in the app or [below](#differences-to-streetcomplete)) for details.
 
 Please be aware that SCEE is not suitable for people used to discard warning messages without reading!
 Users new to OpenStreetMap are best advised to use StreetComplete.
@@ -92,6 +93,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.
   * UI settings
     * Quick settings button for switching preset, background and reverse quest order. Also contains a level filter for displayed quests / overlay elements
+    * Quick selector for overlays
     * Show next quest for this element immediately
     * Show nearby quests / other quests for same element when quest form is open
     * Hide button for temporarily hiding quests (long press for permanent hide)

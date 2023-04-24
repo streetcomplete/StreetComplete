@@ -88,6 +88,7 @@ object Prefs {
     const val CUSTOM_OVERLAY_IDX_NAME = "custom_overlay_idx_name"
     const val CUSTOM_OVERLAY_IDX_ICON = "custom_overlay_idx_icon"
     const val CUSTOM_OVERLAY_IDX_DASH_FILTER = "custom_overlay_idx_dash_filter"
+    const val CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA = "custom_overlay_idx_highlight_missing_data"
     const val CUSTOM_OVERLAY_INDICES = "custom_overlay_indices"
     const val CUSTOM_OVERLAY_SELECTED_INDEX = "custom_overlay_selected_index"
     const val SHOW_SOLVED_ANIMATION = "show_solved_animation"

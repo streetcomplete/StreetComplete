@@ -364,7 +364,7 @@
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_building_entrance_parking">Parking entrance</string>
     <string name="quest_maxspeed_conditional">Depends on…</string>
-    <string name="quest_maxspeed_time_limited_enter_default">Select the default limit before selecting this answer</string>
+    <string name="quest_maxspeed_conditional_limited_enter_default">Select the default limit before selecting this answer</string>
     <string name="time_limited_from">From</string>
     <string name="time_limited_to">To</string>
 
@@ -393,6 +393,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
         \n\"surface\" shows surface=asphalt in the same color, and surface=concrete in a different color
         \n\".*surface\" is similar, but also shows sidewalk:(left/right/both):surface=asphalt in one color, and cycleway:(left/right/both):surface=asphalt in another color</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
+    <string name="custom_overlay_highlight_missing">Highlight missing data</string>
     <string name="custom_overlay_dash_filter_hint">Dashed element filter</string>
     <string name="custom_overlay_color_info">Coloring details</string>
     <string name="custom_overlay_filter_info">Filtering details</string>

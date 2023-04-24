@@ -78,7 +78,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, S
         // first require selecting sth for normal limit
         if (!isFormComplete()) {
             AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_maxspeed_time_limited_enter_default)
+                .setMessage(R.string.quest_maxspeed_conditional_limited_enter_default)
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
             return

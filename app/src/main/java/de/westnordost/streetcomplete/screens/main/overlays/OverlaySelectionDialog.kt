@@ -19,6 +19,7 @@ import android.widget.SpinnerAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.edit
@@ -251,6 +252,10 @@ fun showOverlayCustomizer(
             }
         }
     }
+    val highlightMissingSwitch = SwitchCompat(ctx).apply {
+        setText(R.string.custom_overlay_highlight_missing)
+        isChecked = prefs.getBoolean(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA, index), true)
+    }
     val dashFilter = EditText(ctx).apply {
         setHint(R.string.custom_overlay_dash_filter_hint)
         setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), "")!!)
@@ -287,6 +292,7 @@ fun showOverlayCustomizer(
         addView(relations)
         addView(colorText)
         addView(color)
+        addView(highlightMissingSwitch)
         addView(dashFilter)
         setPadding(30,10,30,10)
     }
@@ -303,7 +309,8 @@ fun showOverlayCustomizer(
                 putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
                 putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
                 putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
-                if (index !in indices) { // add if it's new, and selet it immediately
+                putBoolean(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA, index), highlightMissingSwitch.isChecked)
+                if (index !in indices) { // add if it's new, and select it immediately
                     putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
                     putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
                 }
