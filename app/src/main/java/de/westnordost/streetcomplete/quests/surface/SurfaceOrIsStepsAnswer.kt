@@ -6,4 +6,3 @@ sealed interface SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
 object IsIndoorsAnswer : SurfaceOrIsStepsAnswer
 data class SurfaceAnswer(val value: SurfaceAndNote) : SurfaceOrIsStepsAnswer
-
