@@ -73,7 +73,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 selectedOverlayController.selectedOverlay = selectedOverlay // only set same overlay if it's custom, as setting same one now reloads
             dismiss()
         }
-        adapter.onCustomizeOverlay = { showOverlayCustomizer(it) }
+        adapter.onCustomizeOverlay = { customizer(it) }
 
         val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
 
@@ -90,212 +90,31 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add_button)) { _,_ ->
                 val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isNullOrBlank()) 0
                     else getCustomOverlayIndices(prefs).max() + 1
-                showOverlayCustomizer(newIdx)
+                customizer(newIdx)
             }
 
         setView(binding.root)
     }
 
-    @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
-    @Suppress("KotlinConstantConditions") // because this is simply incorrect...
-    private fun showOverlayCustomizer(index: Int) {
-        var d: AlertDialog? = null
-
-        val title = EditText(ctx).apply {
-            setHint(R.string.name_label)
-            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ""))
-        }
-        val iconList = LinkedHashSet<Int>(questTypeRegistry.size).apply {
-            add(R.drawable.ic_custom_overlay)
-            questTypeRegistry.forEach { add(it.icon) }
-        }.toList()
-        val iconSpinner = Spinner(ctx).apply {
-            adapter = ArrayImageAdapter(ctx, iconList)
-            val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
-            setSelection(iconList.indexOf(selectedIcon))
-            dropDownWidth = ctx.dpToPx(48).toInt()
-            layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
-        }
-        val filterText = TextView(ctx).apply {
-            setText(R.string.custom_overlay_filter_info)
-            setPadding(10, 10, 10, 5)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
-            setTextColor(ContextCompat.getColor(ctx, R.color.accent))
-            setOnClickListener {
-                val dialog = Builder(ctx)
-                    .setMessage(R.string.custom_overlay_filter_message)
-                    .setPositiveButton(R.string.close, null)
-                    .setNeutralButton("link") { _, _ ->
-                        val intent = Intent(Intent.ACTION_VIEW, "https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection".toUri())
-                        try { startActivity(ctx, intent, null) } catch (_: Exception) { }
-                    }
-                    .create()
-                dialog.show()
-            }
-        }
-        val overlayFilter = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), "")?.split(" with ")?.takeIf { it.size == 2 }
-        val tag = EditText(ctx).apply {
-            setHint(R.string.element_selection_button)
-            setText(overlayFilter?.get(1) ?: "")
-        }
-        val nodes = CheckBox(ctx).apply {
-            text = "nodes"
-            isChecked = overlayFilter?.get(0)?.contains("nodes") ?: true
-        }
-        val ways = CheckBox(ctx).apply {
-            text = "ways"
-            isChecked = overlayFilter?.get(0)?.contains("ways") ?: true
-        }
-        val relations = CheckBox(ctx).apply {
-            text = "relations"
-            isChecked = overlayFilter?.get(0)?.contains("relations") ?: true
-        }
-        fun filterString(): String {
-            val types = listOfNotNull(
-                if (nodes.isChecked) "nodes" else null,
-                if (ways.isChecked) "ways" else null,
-                if (relations.isChecked) "relations" else null,
-            ).joinToString(", ")
-            return "$types with ${tag.text}"
-        }
-        // need to add this after filterString, which needs to be added after tag
-        tag.doAfterTextChanged { text ->
-            if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
-                d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
-                return@doAfterTextChanged
-            }
-            try {
-                filterString().toElementFilterExpression()
-                d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
-            }
-            catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
-                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-                d?.getButton(BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
-            }
-        }
-        val colorText = TextView(ctx).apply {
-            setText(R.string.custom_overlay_color_info)
-            setPadding(10, 10, 10, 5)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
-            setTextColor(ContextCompat.getColor(ctx, R.color.accent))
-            setOnClickListener {
-                val dialog = Builder(ctx)
-                    .setMessage(R.string.custom_overlay_color_message)
-                    .setPositiveButton(R.string.close, null)
-                    .create()
-                dialog.show()
-            }
-        }
-        val color = EditText(ctx).apply {
-            setHint(R.string.custom_overlay_color_hint)
-            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), "")!!)
-            doAfterTextChanged {text ->
-                if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
-                    return@doAfterTextChanged
-                }
-                try {
-                    text.toString().toRegex()
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
-                }
-                catch (e: Exception) {
-                    Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
-                }
-            }
-        }
-        val dashFilter = EditText(ctx).apply {
-            setHint(R.string.custom_overlay_dash_filter_hint)
-            setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), "")!!)
-            doAfterTextChanged { text ->
-                if (text.isNullOrBlank()) {
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
-                    return@doAfterTextChanged
-                }
-
-                if (text.count { it == '(' } != text.count { it == ')' }) {
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
-                    return@doAfterTextChanged
-                }
-                try {
-                    "ways with $text".toElementFilterExpression()
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
-                }
-                catch (e: Exception) {
-                    Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
-                }
-            }
-        }
-        val linearLayout = LinearLayout(ctx).apply {
-            orientation = LinearLayout.VERTICAL
-            addView(LinearLayout(ctx).apply {
-                addView(iconSpinner)
-                addView(title)
-            })
-            addView(filterText)
-            addView(tag)
-            addView(nodes)
-            addView(ways)
-            addView(relations)
-            addView(colorText)
-            addView(color)
-            addView(dashFilter)
-            setPadding(30,10,30,10)
-        }
-        val indices = getCustomOverlayIndices(prefs).sorted()
-        val b = Builder(ctx)
-            .setTitle(R.string.custom_overlay_title)
-            .setView(ScrollView(ctx).apply { addView(linearLayout) })
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                // update prefs and enable this overlay
-                prefs.edit {
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
-                    putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
-                    if (index !in indices) { // add if it's new, and selet it immediately
-                        putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
-                        putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
-                    }
-                }
+    private fun customizer(index: Int) = showOverlayCustomizer(index, ctx, prefs, questTypeRegistry,
+        { isCurrentCustomOverlay ->
+            if (isCurrentCustomOverlay && selectedOverlayController.selectedOverlay is CustomOverlay) {
                 // switch to overlay if we're editing current one or if it's new
-                if (index !in indices || (index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) && selectedOverlayController.selectedOverlay is CustomOverlay)) {
-                    selectedOverlayController.selectedOverlay = null
-                    selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
-                    dismiss()
-                } else {
-                    // otherwise reload overlay list because of icon and name
-                    adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
-                }
+                selectedOverlayController.selectedOverlay = null
+                selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                dismiss()
+            } else {
+                // otherwise reload overlay list because of icon and name
+                adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
             }
-        if (index in indices)
-            b.setNeutralButton(R.string.delete_confirmation) { _, _ ->
-                val overlayName = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(R.string.custom_overlay_title))
-                Builder(ctx)
-                    .setMessage(ctx.getString(R.string.custom_overlay_delete, overlayName))
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .setPositiveButton(R.string.delete_confirmation) { _, _ ->
-                        prefs.edit {
-                            prefs.all.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) remove(it) }
-                            putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
-                            if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index) {
-                                putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
-                                if (selectedOverlayController.selectedOverlay is CustomOverlay) {
-                                    selectedOverlayController.selectedOverlay = null
-                                    //adapter.selectedOverlay = null // can't change overlay, as any change will dismiss overlay selection dialog...
-                                }
-                            }
-                        }
-                        adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
-                    }
-                    .show()
-            }
-        d = b.create()
-        d.show()
-    }
+        },
+        { wasCurrentOverlay ->
+            if (wasCurrentOverlay && selectedOverlayController.selectedOverlay is CustomOverlay)
+                selectedOverlayController.selectedOverlay = null // can't change overlay in adapter, as any change will dismiss overlay selection dialog...
+            // still always reload overlay list
+            adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
+        }
+    )
 }
 
 private class ArrayImageAdapter(context: Context, private val items: List<Int>) : ArrayAdapter<Int>(context, android.R.layout.select_dialog_item, items), SpinnerAdapter {
@@ -315,6 +134,202 @@ private class ArrayImageAdapter(context: Context, private val items: List<Int>) 
         v.layoutParams = params
         return v
     }
+}
+
+@SuppressLint("SetTextI18n") // this is about element type, don't want translation here
+@Suppress("KotlinConstantConditions") // because this is simply incorrect...
+fun showOverlayCustomizer(
+    index: Int,
+    ctx: Context,
+    prefs: SharedPreferences,
+    questTypeRegistry: QuestTypeRegistry,
+    onChanged: (Boolean) -> Unit, // true if overlay is currently set custom overlay
+    onDeleted: (Boolean) -> Unit, // true if overlay was currently set custom overlay
+) {
+    var d: AlertDialog? = null
+
+    val title = EditText(ctx).apply {
+        setHint(R.string.name_label)
+        setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ""))
+    }
+    val iconList = LinkedHashSet<Int>(questTypeRegistry.size).apply {
+        add(R.drawable.ic_custom_overlay)
+        questTypeRegistry.forEach { add(it.icon) }
+    }.toList()
+    val iconSpinner = Spinner(ctx).apply {
+        adapter = ArrayImageAdapter(ctx, iconList)
+        val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
+        setSelection(iconList.indexOf(selectedIcon))
+        dropDownWidth = ctx.dpToPx(48).toInt()
+        layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
+    }
+    val filterText = TextView(ctx).apply {
+        setText(R.string.custom_overlay_filter_info)
+        setPadding(10, 10, 10, 5)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        setTextColor(ContextCompat.getColor(ctx, R.color.accent))
+        setOnClickListener {
+            val dialog = AlertDialog.Builder(ctx)
+                .setMessage(R.string.custom_overlay_filter_message)
+                .setPositiveButton(R.string.close, null)
+                .setNeutralButton("link") { _, _ ->
+                    val intent = Intent(Intent.ACTION_VIEW, "https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection".toUri())
+                    try { startActivity(ctx, intent, null) } catch (_: Exception) { }
+                }
+                .create()
+            dialog.show()
+        }
+    }
+    val overlayFilter = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), "")?.split(" with ")?.takeIf { it.size == 2 }
+    val tag = EditText(ctx).apply {
+        setHint(R.string.element_selection_button)
+        setText(overlayFilter?.get(1) ?: "")
+    }
+    val nodes = CheckBox(ctx).apply {
+        text = "nodes"
+        isChecked = overlayFilter?.get(0)?.contains("nodes") ?: true
+    }
+    val ways = CheckBox(ctx).apply {
+        text = "ways"
+        isChecked = overlayFilter?.get(0)?.contains("ways") ?: true
+    }
+    val relations = CheckBox(ctx).apply {
+        text = "relations"
+        isChecked = overlayFilter?.get(0)?.contains("relations") ?: true
+    }
+    fun filterString(): String {
+        val types = listOfNotNull(
+            if (nodes.isChecked) "nodes" else null,
+            if (ways.isChecked) "ways" else null,
+            if (relations.isChecked) "relations" else null,
+        ).joinToString(", ")
+        return "$types with ${tag.text}"
+    }
+    // need to add this after filterString, which needs to be added after tag
+    tag.doAfterTextChanged { text ->
+        if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
+            d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+            return@doAfterTextChanged
+        }
+        try {
+            filterString().toElementFilterExpression()
+            d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+        }
+        catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
+            Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
+        }
+    }
+    val colorText = TextView(ctx).apply {
+        setText(R.string.custom_overlay_color_info)
+        setPadding(10, 10, 10, 5)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        setTextColor(ContextCompat.getColor(ctx, R.color.accent))
+        setOnClickListener {
+            val dialog = AlertDialog.Builder(ctx)
+                .setMessage(R.string.custom_overlay_color_message)
+                .setPositiveButton(R.string.close, null)
+                .create()
+            dialog.show()
+        }
+    }
+    val color = EditText(ctx).apply {
+        setHint(R.string.custom_overlay_color_hint)
+        setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), "")!!)
+        doAfterTextChanged {text ->
+            if (text == null || text.count { it == '(' } != text.count { it == ')' }) {
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+                return@doAfterTextChanged
+            }
+            try {
+                text.toString().toRegex()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+            }
+            catch (e: Exception) {
+                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+            }
+        }
+    }
+    val dashFilter = EditText(ctx).apply {
+        setHint(R.string.custom_overlay_dash_filter_hint)
+        setText(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), "")!!)
+        doAfterTextChanged { text ->
+            if (text.isNullOrBlank()) {
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+                return@doAfterTextChanged
+            }
+
+            if (text.count { it == '(' } != text.count { it == ')' }) {
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+                return@doAfterTextChanged
+            }
+            try {
+                "ways with $text".toElementFilterExpression()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+            }
+            catch (e: Exception) {
+                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
+            }
+        }
+    }
+    val linearLayout = LinearLayout(ctx).apply {
+        orientation = LinearLayout.VERTICAL
+        addView(LinearLayout(ctx).apply {
+            addView(iconSpinner)
+            addView(title)
+        })
+        addView(filterText)
+        addView(tag)
+        addView(nodes)
+        addView(ways)
+        addView(relations)
+        addView(colorText)
+        addView(color)
+        addView(dashFilter)
+        setPadding(30,10,30,10)
+    }
+    val indices = getCustomOverlayIndices(prefs).sorted()
+    val b = AlertDialog.Builder(ctx)
+        .setTitle(R.string.custom_overlay_title)
+        .setView(ScrollView(ctx).apply { addView(linearLayout) })
+        .setNegativeButton(android.R.string.cancel, null)
+        .setPositiveButton(android.R.string.ok) { _, _ ->
+            // update prefs and enable this overlay
+            prefs.edit {
+                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
+                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
+                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
+                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
+                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
+                if (index !in indices) { // add if it's new, and selet it immediately
+                    putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
+                    putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
+                }
+            }
+            onChanged(index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)) // todo: also if overlay is new?
+        }
+    if (index in indices)
+        b.setNeutralButton(R.string.delete_confirmation) { _, _ ->
+            val overlayName = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(R.string.custom_overlay_title))
+            AlertDialog.Builder(ctx)
+                .setMessage(ctx.getString(R.string.custom_overlay_delete, overlayName))
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.delete_confirmation) { _, _ ->
+                    val isActive = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index
+                    prefs.edit {
+                        prefs.all.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) remove(it) }
+                        putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
+                        if (isActive)
+                            putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
+                    }
+                    onDeleted(isActive)
+                }
+                .show()
+        }
+    d = b.create()
+    d.show()
 }
 
 fun getFakeCustomOverlays(prefs: SharedPreferences, ctx: Context): List<Overlay> {

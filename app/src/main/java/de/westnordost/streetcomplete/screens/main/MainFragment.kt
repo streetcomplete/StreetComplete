@@ -86,6 +86,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -126,6 +127,7 @@ import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.main.overlays.getFakeCustomOverlays
+import de.westnordost.streetcomplete.screens.main.overlays.showOverlayCustomizer
 import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
@@ -220,6 +222,7 @@ class MainFragment :
     private val levelFilter: LevelFilter by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
 
     private lateinit var locationManager: FineLocationManager
@@ -442,8 +445,9 @@ class MainFragment :
         val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())
+            val index = overlay.wikiLink?.toIntOrNull()
             val isActive = selectedOverlaySource.selectedOverlay == overlay
-                || (selectedOverlaySource.selectedOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
+                || (selectedOverlaySource.selectedOverlay is CustomOverlay && index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
             if (isActive) {
                 val ring = ContextCompat.getDrawable(requireContext(), R.drawable.pin_selection_ring)!!
                 val icon = ContextCompat.getDrawable(requireContext(), overlay.icon)!!
@@ -452,18 +456,36 @@ class MainFragment :
                 view.setImageResource(overlay.icon)
             view.scaleX = 0.95f
             view.scaleY = 0.95f
-//            if (overlay.title == 0) // todo: show overlay customizer... but need to disentangle it from overlay selection dialog first
-//                view.setOnLongClickListener {  }
+            if (overlay.title == 0 && index != null)
+                view.setOnLongClickListener {
+                    showOverlayCustomizer(index, requireContext(), prefs, questTypeRegistry,
+                        { isCurrentCustomOverlay ->
+                            viewLifecycleScope.launch(Dispatchers.IO) {
+                                if (isCurrentCustomOverlay && selectedOverlaySource.selectedOverlay is CustomOverlay) {
+                                    selectedOverlaySource.selectedOverlay = null
+                                    selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                                }
+                                reloadOverlaySelector()
+                            }
+                        },
+                        { wasCurrentOverlay ->
+                            if (wasCurrentOverlay && selectedOverlaySource.selectedOverlay is CustomOverlay)
+                                selectedOverlaySource.selectedOverlay = null
+                            reloadOverlaySelector()
+                        },
+                    )
+                    true
+                }
             view.setOnClickListener {
                 val oldOverlay = selectedOverlaySource.selectedOverlay
 
                 // if active overlay was tapped, disable it
-                if (oldOverlay == overlay || (oldOverlay is CustomOverlay && overlay.wikiLink?.toIntOrNull() == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
+                if (oldOverlay == overlay || (oldOverlay is CustomOverlay && index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
                     selectedOverlaySource.selectedOverlay = null
                 } else {
                     // if other overlay was tapped, enable it
                     if (overlay.title == 0) {
-                        prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, overlay.wikiLink!!.toInt()) }
+                        prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index!!) }
                         selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
                     } else
                         selectedOverlaySource.selectedOverlay = overlay
@@ -471,7 +493,7 @@ class MainFragment :
                 reloadOverlaySelector()
             }
             view.layoutParams = params
-            binding.overlayLayout.addView(view)
+            requireActivity().runOnUiThread { binding.overlayLayout.addView(view) }
         }
     }
 
