@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeTagEditor
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.EditTagsAdapter
@@ -255,6 +256,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         viewLifecycleScope.launch(Dispatchers.IO) { waitForQuests() }
+        focusKey()
         showOk()
     }
 
@@ -268,6 +270,28 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             icon.setOnClickListener { showQuest(q) }
             binding.questsGrid.addView(icon)
         } }
+    }
+
+    // focus value field of a key if desired, create entry if it doesn't exist
+    private fun focusKey() {
+        val focus = CustomOverlayForm.focusKey?.takeIf { it.startsWith("!") } ?: return
+        CustomOverlayForm.focusKey = null
+        val tag = focus.substringAfterLast("!")
+        if (!newTags.containsKey(tag)) {
+            tagList.add(tag to "") // don't add it to newTags, this will happen if the user changes anything
+            binding.editTags.adapter?.notifyItemInserted(tagList.lastIndex)
+        }
+        // select that field
+        val position = tagList.indexOfLast { it.first == tag }
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            delay(30)
+            activity?.runOnUiThread {
+                val view = (binding.editTags.findViewHolderForAdapterPosition(position) as? EditTagsAdapter.ViewHolder)?.valueView ?: return@runOnUiThread
+                view.requestFocus()
+                if (newTags.containsKey(tag))
+                    view.selectAll()
+            }
+        }
     }
 
     @UiThread

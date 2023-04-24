@@ -33,10 +33,12 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
             prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, prefs), "")
                 ?.toElementFilterExpression() ?: return emptySequence()
         } catch (e: ParseException) { return emptySequence() }
-        val colorKeySelector = try {
-            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")
-                ?.takeIf { it.isNotBlank() }?.toRegex()
-        } catch (_: Exception) { null }
+        val colorKeyPref = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")!!.let {
+            if (it.startsWith("!")) it.substringAfter("!")
+            else it
+        }
+        val colorKeySelector = try { colorKeyPref.takeIf { it.isNotBlank() }?.toRegex() }
+            catch (_: Exception) { null }
         val dashFilter = try {
             val string = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, prefs), "")?.takeIf { it.isNotBlank() }
             string?.let { "ways with $it".toElementFilterExpression() }

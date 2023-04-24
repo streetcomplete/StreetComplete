@@ -388,6 +388,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_filter_message">Click the link below to open information about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result.
         \nThe checkboxes replace the \"nodes, ways with\" part.</string>
     <string name="custom_overlay_color_message">Select key(s) to get color from. Accepts regex and uses matching tags to get a color. The color is derived from key and value of the all matching keys. In case a matching key contains :left/right/both, it will be used to color the respective sides of a way, but not the center line. If there is no match, the color is always red, indicating missing data. Knowledge on regular expressions is very helpful for this feature.
+        \nIf the expression is not a regex, prefix \'!\' to start with the value focused when editing tags.
         \n\nExample:
         \n\"surface\" shows surface=asphalt in the same color, and surface=concrete in a different color
         \n\".*surface\" is similar, but also shows sidewalk:(left/right/both):surface=asphalt in one color, and cycleway:(left/right/both):surface=asphalt in another color</string>

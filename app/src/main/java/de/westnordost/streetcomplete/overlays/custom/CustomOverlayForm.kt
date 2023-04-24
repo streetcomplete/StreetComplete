@@ -18,8 +18,12 @@ class CustomOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val colorKeyPref = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")!!
         val colorKeySelector = try {
-            prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")?.takeIf { it.isNotEmpty() }?.toRegex()
+            val actualColorKeyPref = if (colorKeyPref.startsWith("!"))
+                    colorKeyPref.substringAfter("!")
+                else colorKeyPref
+            actualColorKeyPref.takeIf { it.isNotEmpty() }?.toRegex()
         } catch (_: Exception) { null }
         val colorTags = if (colorKeySelector != null)
             element?.tags?.filter { it.key.matches(colorKeySelector) }
@@ -28,7 +32,11 @@ class CustomOverlayForm : AbstractOverlayForm() {
             binding.text.text = colorTags.entries.sortedBy { it.key }.joinToString("\n") { "${it.key} = ${it.value}" }
         else
             binding.text.isGone = true
-        binding.editButton.setOnClickListener { element?.let { editTags(it, "CustomOverlay") } }
+        binding.editButton.setOnClickListener {
+            if (colorKeyPref.startsWith("!") && !colorKeyPref.contains(' '))
+                focusKey = colorKeyPref
+            element?.let { editTags(it, "CustomOverlay") }
+        }
     }
 
     override fun hasChanges() = false
@@ -36,4 +44,8 @@ class CustomOverlayForm : AbstractOverlayForm() {
     override fun isFormComplete() = false
 
     override fun onClickOk() {}
+
+    companion object {
+        var focusKey: String? = null
+    }
 }
