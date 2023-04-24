@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -108,5 +110,23 @@ class UpdateElementTagsActionTest {
         ).createUpdates(repos, provider)
         val updatedWay = data.modifications.single() as Way
         assertEquals(mapOf("highway" to "living_street"), updatedWay.tags)
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val way = way(id = -1)
+        val action = UpdateElementTagsAction(way, StringMapChanges(listOf()))
+        val idUpdates = mapOf(ElementKey(WAY, -1) to 5L)
+
+        assertEquals(
+            UpdateElementTagsAction(way.copy(id = 5), StringMapChanges(listOf())),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(WAY, -1)),
+            UpdateElementTagsAction(way(id = -1), StringMapChanges(listOf())).elementKeys
+        )
     }
 }

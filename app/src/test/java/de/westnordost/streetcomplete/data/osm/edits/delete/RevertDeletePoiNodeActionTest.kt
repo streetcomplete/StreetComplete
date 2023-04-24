@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
@@ -54,5 +56,23 @@ class RevertDeletePoiNodeActionTest {
         on(repos.getNode(1)).thenReturn(e.copy(version = 4))
         // version 3 would be the deletion
         RevertDeletePoiNodeAction(e).createUpdates(repos, provider)
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val node = node(id = -1)
+        val action = RevertDeletePoiNodeAction(node)
+        val idUpdates = mapOf(ElementKey(ElementType.NODE, -1) to 5L)
+
+        assertEquals(
+            RevertDeletePoiNodeAction(node.copy(id = 5)),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(ElementType.NODE, -1)),
+            RevertDeletePoiNodeAction(node(id = -1)).elementKeys
+        )
     }
 }

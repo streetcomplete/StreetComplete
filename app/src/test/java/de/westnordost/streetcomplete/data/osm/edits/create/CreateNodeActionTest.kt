@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
@@ -10,6 +12,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -195,5 +198,35 @@ internal class CreateNodeActionTest {
         assertEquals(-123, createdNode.id)
 
         assertEquals(listOf<Long>(1,2), data.modifications.map { it.id })
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val action = CreateNodeAction(
+            p(),
+            mapOf(),
+            listOf(InsertIntoWayAt(-1, p(1.0, 1.0), p(0.0, 1.0)))
+        )
+        val idUpdates = mapOf(ElementKey(ElementType.WAY, -1) to 99L)
+
+
+        assertEquals(
+            CreateNodeAction(
+                p(),
+                mapOf(),
+                listOf(InsertIntoWayAt(99, p(1.0, 1.0), p(0.0, 1.0)))
+            ),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(ElementType.WAY, -1)),
+            CreateNodeAction(
+                p(),
+                mapOf(),
+                listOf(InsertIntoWayAt(-1, p(1.0, 1.0), p(0.0, 1.0)))
+            ).elementKeys
+        )
     }
 }

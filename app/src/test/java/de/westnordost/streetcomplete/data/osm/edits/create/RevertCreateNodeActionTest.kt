@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -132,5 +134,32 @@ class RevertCreateNodeActionTest {
 
         val deletedNode = data.deletions.single() as Node
         assertEquals(node, deletedNode)
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val node = node(id = -1)
+        val action = RevertCreateNodeAction(node, listOf(-1, -2, 3))
+        val idUpdates = mapOf(
+            ElementKey(ElementType.WAY, -1) to 99L,
+            ElementKey(ElementType.WAY, -2) to 5L,
+            ElementKey(ElementType.NODE, -1) to 999L,
+        )
+
+        assertEquals(
+            RevertCreateNodeAction(node.copy(id = 999), listOf(99, 5, 3)),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(
+                ElementKey(ElementType.WAY, -1),
+                ElementKey(ElementType.WAY, -2),
+                ElementKey(ElementType.WAY, 3),
+                ElementKey(ElementType.NODE, -1),
+            ),
+            RevertCreateNodeAction(node(id = -1), listOf(-1, -2, 3)).elementKeys
+        )
     }
 }

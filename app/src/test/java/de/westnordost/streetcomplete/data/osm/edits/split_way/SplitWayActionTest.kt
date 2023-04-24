@@ -642,6 +642,24 @@ class SplitWayActionTest {
         `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "from")
     }
 
+    @Test fun idsUpdatesApplied() {
+        val way = way(id = -1)
+        val action = SplitWayAction(way, listOf())
+        val idUpdates = mapOf(ElementKey(WAY, -1) to 5L)
+
+        assertEquals(
+            SplitWayAction(way.copy(id = 5), listOf()),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(WAY, -1)),
+            SplitWayAction(way(id = -1), listOf()).elementKeys
+        )
+    }
+
     private fun doSplit(
         vararg splits: SplitPolylineAtPosition = arrayOf(split),
         originalWay: Way = way

@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
@@ -48,5 +50,23 @@ class DeletePoiNodeActionTest {
     fun `moved element creates conflict`() {
         on(repos.getNode(e.id)).thenReturn(e.copy(position = p(1.0, 1.0)))
         DeletePoiNodeAction(e).createUpdates(repos, provider)
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val node = node(id = -1)
+        val action = DeletePoiNodeAction(node)
+        val idUpdates = mapOf(ElementKey(ElementType.NODE, -1) to 5L)
+
+        assertEquals(
+            DeletePoiNodeAction(node.copy(id = 5)),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(ElementType.NODE, -1)),
+            DeletePoiNodeAction(node(id = -1)).elementKeys
+        )
     }
 }

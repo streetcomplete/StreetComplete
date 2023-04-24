@@ -24,7 +24,8 @@ data class RevertCreateNodeAction(
     val insertedIntoWayIds: List<Long> = emptyList()
 ) : ElementEditAction, IsRevertAction {
 
-    override val elementKeys get() = listOf(originalNode.key)
+    override val elementKeys get() =
+        insertedIntoWayIds.map { ElementKey(ElementType.WAY, it) } + listOf(originalNode.key)
 
     override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
         originalNode = originalNode.copy(id = updatedIds[originalNode.key] ?: originalNode.id),

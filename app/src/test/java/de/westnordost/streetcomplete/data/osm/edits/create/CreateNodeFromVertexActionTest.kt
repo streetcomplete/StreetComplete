@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.changesApplied
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -60,5 +62,44 @@ internal class CreateNodeFromVertexActionTest {
         val n2 = n.changesApplied(changes)
 
         assertEquals(MapDataChanges(modifications = listOf(n2)), data)
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val node = node(id = -1)
+        val action = CreateNodeFromVertexAction(
+            node,
+            StringMapChanges(listOf()),
+            listOf(-1, -2, 3) // and one that doesn't get updated
+        )
+        val idUpdates = mapOf(
+            ElementKey(ElementType.WAY, -1) to 99L,
+            ElementKey(ElementType.WAY, -2) to 5L,
+            ElementKey(ElementType.NODE, -1) to 999L,
+        )
+
+        assertEquals(
+            CreateNodeFromVertexAction(
+                node.copy(id = 999),
+                StringMapChanges(listOf()),
+                listOf(99, 5, 3)
+            ),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(
+                ElementKey(ElementType.WAY, -1),
+                ElementKey(ElementType.WAY, -2),
+                ElementKey(ElementType.WAY, 3),
+                ElementKey(ElementType.NODE, -1),
+            ),
+            CreateNodeFromVertexAction(
+                node(id = -1),
+                StringMapChanges(listOf()),
+                listOf(-1, -2, 3) // and one that doesn't get updated
+            ).elementKeys
+        )
     }
 }

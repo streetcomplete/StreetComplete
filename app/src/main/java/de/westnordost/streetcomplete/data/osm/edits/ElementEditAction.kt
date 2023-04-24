@@ -29,7 +29,6 @@ interface ElementEditAction {
     /** return a copy of this action where the temporary ids of the elements referred to have been
      *  replaced with the updated ones */
     fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>): ElementEditAction
-    // TODO test
 }
 
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)

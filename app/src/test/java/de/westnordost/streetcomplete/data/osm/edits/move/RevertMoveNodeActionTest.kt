@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.move
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
@@ -31,5 +33,23 @@ class RevertMoveNodeActionTest {
         assertTrue(updates.creations.isEmpty())
         assertTrue(updates.deletions.isEmpty())
         assertEquals(n, updates.modifications.single().copy(timestampEdited = n.timestampEdited))
+    }
+
+    @Test fun idsUpdatesApplied() {
+        val node = node(id = -1)
+        val action = RevertMoveNodeAction(node)
+        val idUpdates = mapOf(ElementKey(ElementType.NODE, -1) to 5L)
+
+        assertEquals(
+            RevertMoveNodeAction(node.copy(id = 5)),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(ElementType.NODE, -1)),
+            RevertMoveNodeAction(node(id = -1)).elementKeys
+        )
     }
 }
