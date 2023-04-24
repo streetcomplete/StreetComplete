@@ -18,6 +18,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.get
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,10 +84,9 @@ import kotlin.math.min
 // todo: ideas for improvements
 //  ability to copy and paste everything
 //   see https://stackoverflow.com/questions/19177231/android-copy-paste-from-clipboard-manager
-//   button that copies all tags into clipboard: tagsList.joinToString("\n")
+//   button that copies all tags into clipboard: tagsList.joinToString("\n") { "${it.first} = ${it.second}" }
 //   and one that pastes clipboard into tags: newTags.putAll(clipboard.toTags())
-//    overwrite existing tags and add others, don't delete
-//    only show button if clipboard contains data
+//    only show button if clipboard contains data that can be parsed to tags
 //  undo button, for undoing delete or paste (and maybe other changes? but will not work well with typing)
 
 open class TagEditor : Fragment(), IsCloseableBottomSheet {
@@ -166,6 +168,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 binding.lastEditDate.layoutParams.height = LayoutParams.WRAP_CONTENT
             }
             minBottomInset = min(it.bottom, minBottomInset)
+            if (keyboardShowing || activity?.currentFocus == null)
+                binding.questsGrid[1].isGone = true
+            else binding.questsGrid[1].isVisible = true
         }
         val date = Date(originalElement.timestampEdited)
         val dateText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
@@ -219,14 +224,16 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             scaleX = 0.8f
             scaleY = 0.8f
             layoutParams = questIconParameters
-            setOnClickListener {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                    && WindowInsetsCompat.toWindowInsetsCompat(rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime()))
-                    requireActivity().currentFocus?.hideKeyboard()
-                else
-                    requireActivity().currentFocus?.showKeyboard()
-            }
+            isGone = true // initially always gone, because by default nothing is focused
+            setOnClickListener { requireActivity().currentFocus?.showKeyboard() }
         })
+        binding.editTags.viewTreeObserver.addOnGlobalFocusChangeListener { _, _ ->
+            if (activity?.currentFocus == null || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && WindowInsetsCompat.toWindowInsetsCompat(binding.root.rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime())
+            ))
+                _binding?.questsGrid?.get(1)?.isGone = true // hide keyboard button if keyboard showing or nothing focused
+            else _binding?.questsGrid?.get(1)?.isVisible = true
+        }
 
         if (element.id == 0L) {
             val previousTagsForFeature: Map<String, String>? = try { featureDictionaryFuture.get()
