@@ -452,8 +452,10 @@ class MainFragment :
                 val ring = ContextCompat.getDrawable(requireContext(), R.drawable.pin_selection_ring)!!
                 val icon = ContextCompat.getDrawable(requireContext(), overlay.icon)!!
                 view.setImageDrawable(LayerDrawable(arrayOf(icon, ring)))
-            } else
+            } else {
                 view.setImageResource(overlay.icon)
+                view.colorFilter = PorterDuffColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY)
+            }
             view.scaleX = 0.95f
             view.scaleY = 0.95f
             if (overlay.title == 0 && index != null)
