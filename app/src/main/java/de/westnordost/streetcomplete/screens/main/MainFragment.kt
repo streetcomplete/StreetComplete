@@ -439,7 +439,7 @@ class MainFragment :
             binding.overlayScrollView.isVisible = true
 
         val overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, requireContext())
-        val params = ViewGroup.LayoutParams(requireContext().dpToPx(58).toInt(), requireContext().dpToPx(58).toInt())
+        val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())
             val isActive = selectedOverlaySource.selectedOverlay == overlay
@@ -1505,7 +1505,7 @@ class MainFragment :
                 Pair(color, mutableListOf())
             }.second.add(it)
         }
-        val params = ViewGroup.LayoutParams(requireContext().dpToPx(58).toInt(), requireContext().dpToPx(58).toInt())
+        val params = ViewGroup.LayoutParams(requireContext().dpToPx(54).toInt(), requireContext().dpToPx(54).toInt())
         activity?.runOnUiThread {
             questsAndColorByElement.values.forEach {
                 val color = it.first

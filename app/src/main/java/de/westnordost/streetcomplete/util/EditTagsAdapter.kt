@@ -67,7 +67,7 @@ class EditTagsAdapter(
             val keys = linkedSetOf(text)
             val pref = "EditTagsAdapter_${name}_" + if (isKey) "keys" else "values"
             keys.addAll(prefs.getString(pref, "")!!.split("§§"))
-            prefs.edit { putString(pref, keys.filter { it.isNotEmpty() }.take(10).joinToString("§§")) }
+            prefs.edit { putString(pref, keys.filter { it.isNotEmpty() }.take(15).joinToString("§§")) }
         }
 
         val keyView: AutoCompleteTextView = binding.keyText.apply {

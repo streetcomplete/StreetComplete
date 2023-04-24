@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -53,7 +54,7 @@ class DisplaySettingsFragment :
                 setText(R.string.pref_gpx_track_provide)
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
-                    type = "*/*"
+                    type = "application/octet-stream" // allows too many files, but application/gpx+xml doesn't work
                 }
                 setOnClickListener {
                     d?.dismiss()
@@ -112,7 +113,7 @@ class DisplaySettingsFragment :
             d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_gpx_track_title)
                 .setView(layout)
-                .setPositiveButton(android.R.string.ok, null)
+                .setPositiveButton(R.string.close, null)
                 .create()
             d.show()
             true
@@ -124,6 +125,16 @@ class DisplaySettingsFragment :
         if (resultCode != Activity.RESULT_OK || requestCode != GPX_TRACK_CODE || uri == null) {
             context?.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
             return
+        }
+        // fail if file doesn't have gpx ending
+        activity?.contentResolver?.query(uri, null, null, null, null).use {
+            if (it != null && it.moveToFirst()) {
+                val idx = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (idx >= 0 && !it.getString(idx).endsWith(".gpx")) {
+                    context?.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
+                    return
+                }
+            }
         }
         try {
             activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->

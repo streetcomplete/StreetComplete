@@ -251,7 +251,8 @@ layers:
             draw:
               geometry-lines:
                     color: global.gpx_track_color
-                    width: [[14, 6px],[18, 12px]]
+                    width: 3px # make narrower than paths, because it has really bad interaction with overlays
+                    extrude: 0.5 # additional help against confusing track with path color in overlay
                     collide: false
                     join: round
                     order: 900
