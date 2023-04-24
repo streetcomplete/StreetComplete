@@ -16,11 +16,9 @@ import kotlinx.serialization.Serializable
 /** Contains the information necessary to apply a revert of tag changes made on an element */
 @Serializable
 data class RevertUpdateElementTagsAction(
-    private val originalElement: Element,
-    private val changes: StringMapChanges
+    val originalElement: Element,
+    val changes: StringMapChanges
 ) : ElementEditAction, IsRevertAction {
-
-    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override val elementKeys get() = listOf(originalElement.key)
 

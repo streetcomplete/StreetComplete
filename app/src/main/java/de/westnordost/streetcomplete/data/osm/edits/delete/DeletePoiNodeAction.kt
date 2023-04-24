@@ -26,7 +26,7 @@ import kotlinx.serialization.Serializable
  *  */
 @Serializable
 data class DeletePoiNodeAction(
-    private val originalNode: Node
+    val originalNode: Node
 ) : ElementEditAction, IsActionRevertable {
 
     override val elementKeys get() = listOf(originalNode.key)

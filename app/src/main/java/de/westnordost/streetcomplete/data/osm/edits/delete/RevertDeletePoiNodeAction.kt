@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class RevertDeletePoiNodeAction(
-    private val originalNode: Node
+    val originalNode: Node
 ) : ElementEditAction, IsRevertAction {
 
     /** No "new" elements are created, instead, an old one is being revived */

@@ -33,8 +33,8 @@ import kotlinx.serialization.Serializable
  *  */
 @Serializable
 data class SplitWayAction(
-    private val originalWay: Way,
-    private val splits: List<SplitPolylineAtPosition>
+    val originalWay: Way,
+    val splits: List<SplitPolylineAtPosition>
 ) : ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
