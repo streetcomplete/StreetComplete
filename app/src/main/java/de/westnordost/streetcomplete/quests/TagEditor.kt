@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests
 import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
 import android.content.SharedPreferences
-import android.graphics.drawable.LayerDrawable
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
@@ -18,6 +17,7 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +54,7 @@ import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.util.ktx.updateMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -65,7 +66,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -165,7 +165,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 binding.lastEditDate.layoutParams.height = LayoutParams.WRAP_CONTENT
             }
             minBottomInset = min(it.bottom, minBottomInset)
-
         }
         val date = Date(originalElement.timestampEdited)
         val dateText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
@@ -174,7 +173,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             date.toString()
         binding.lastEditDate.text = resources.getString(R.string.tag_editor_last_edited, dateText)
         binding.lastEditDate.layoutParams.height = LayoutParams.WRAP_CONTENT
-
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
@@ -193,6 +191,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         binding.questsGrid.columnCount = resources.displayMetrics.widthPixels / (questIconWidth + 3 * (resources.displayMetrics.density * 2 + 0.5f).toInt()) // last part is for the margins of icons and view
+        // add "new tag" button
         binding.questsGrid.addView(ImageButton(requireContext()).apply {
             setImageResource(R.drawable.ic_add_24dp)
             setBackgroundColor(ContextCompat.getColor(context, R.color.background))
@@ -211,6 +210,20 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                     (binding.editTags.findViewHolderForAdapterPosition(tagList.lastIndex) as? EditTagsAdapter.ViewHolder)?.keyView?.requestFocus()
                 }
                 showOk()
+            }
+        })
+        // add "show keyboard" button (actually may also hide keyboard)
+        binding.questsGrid.addView(ImageView(requireContext()).apply {
+            setImageResource(android.R.drawable.ic_menu_edit) // is there no nice default keyboard drawable?
+            scaleX = 0.8f
+            scaleY = 0.8f
+            layoutParams = questIconParameters
+            setOnClickListener {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && WindowInsetsCompat.toWindowInsetsCompat(rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime()))
+                    requireActivity().currentFocus?.hideKeyboard()
+                else
+                    requireActivity().currentFocus?.showKeyboard()
             }
         })
 
@@ -235,22 +248,26 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                         binding.editTags.adapter?.notifyDataSetChanged()
                         tagList.clear()
                         tagList.addAll(newTags.toList().sortedBy { it.first })
-                        viewLifecycleScope.launch { updateQuests(0) }
+                        viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(0) }
                         showOk()
                     }
                 })
         }
 
-        val quests = runBlocking { deferredQuests.await() } // should still be fine, doesn't take that long
-        quests.forEach { q ->
+        viewLifecycleScope.launch(Dispatchers.IO) { waitForQuests() }
+        showOk()
+    }
+
+    private suspend fun waitForQuests() {
+        val quests = deferredQuests.await()
+        requireActivity().runOnUiThread { quests.forEach { q ->
             val icon = ImageView(requireContext())
             icon.setImageResource(q.type.icon)
             icon.layoutParams = questIconParameters
             icon.tag = q.type.name
             icon.setOnClickListener { showQuest(q) }
             binding.questsGrid.addView(icon)
-        }
-        showOk()
+        } }
     }
 
     @UiThread
@@ -364,7 +381,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             if (!isActive) return@launch
             requireActivity().runOnUiThread {
                 // form might be closed while quests were created, so we better not crash on binding == null
-                _binding?.questsGrid?.removeViews(1, binding.questsGrid.childCount - 1)
+                _binding?.questsGrid?.removeViews(2, binding.questsGrid.childCount - 2) // remove all except the first 2 views
                 q.forEach { _binding?.questsGrid?.addView(it) }
             }
         }

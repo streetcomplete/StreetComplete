@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.edit
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.Feature
@@ -19,6 +20,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.RowEditTagBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.spToPx
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -36,8 +38,11 @@ class EditTagsAdapter(
 ) :
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
     val suggestionHeight = TypedValue().apply { context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, this, false) }
-        .getDimension(context.resources.displayMetrics)
-    val suggestionMaxHeight = context.resources.displayMetrics.heightPixels - context.dpToPx(100)
+        .getDimension(context.resources.displayMetrics).toInt()
+    val suggestionMaxHeight = (context.resources.displayMetrics.heightPixels * 0.8).toInt()
+    // used to avoid covering keyboard button by tag dropdown
+    // autocomplete view height is sth like 18sp text size, 16sp edit date text size + some padding
+    val keyViewOffset = (context.spToPx(34) + context.dpToPx(32)).toInt()
 
     init {
         if (keySuggestionsForFeatureId.isEmpty() && valueSuggestionsByKey.isEmpty()) {
@@ -57,7 +62,7 @@ class EditTagsAdapter(
         }
     }
 
-    inner class ViewHolder(private val binding: RowEditTagBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: RowEditTagBinding) : RecyclerView.ViewHolder(binding.root) {
         private fun storeRecentlyUsed(text: String, name: String, isKey: Boolean) { // will be value if not key
             val keys = linkedSetOf(text)
             val pref = "EditTagsAdapter_${name}_" + if (isKey) "keys" else "values"
@@ -88,12 +93,20 @@ class EditTagsAdapter(
                 lastFeature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
                 lastSuggestions.clear()
                 lastSuggestions.addAll(getKeySuggestions(lastFeature?.id, dataSet).filter { it.startsWith(search) })
-                val h = TypedValue()
-                context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
                 // limit the height of suggestions, because when all are shown the ones on top are hard to reach
-                val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
-                else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * lastSuggestions.size).toInt()
+                //  top should be suggestionMaxHeight from screen bottom
+                // additionally, if the keyboard is not shown, dropdown should not block show keyboard button
+                var minus = 0
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    val showingKeyboard = WindowInsetsCompat.toWindowInsetsCompat(rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime())
+                    dropDownVerticalOffset = if (showingKeyboard) -9 // reading offset that has not been set gives -9 (why?)
+                        else keyViewOffset
+                    minus = if (showingKeyboard) rootWindowInsets.systemWindowInsetBottom
+                        // insets minus offset plus distance of bottom of recycler view from screen bottom
+                        else rootWindowInsets.systemWindowInsetBottom - keyViewOffset + ((parent.parent as? RecyclerView)?.let { resources.displayMetrics.heightPixels - it.bottom } ?: 0)
+                }
+                dropDownHeight = (suggestionHeight * lastSuggestions.size).coerceAtMost(suggestionMaxHeight - minus)
+
                 lastSuggestions.toList()
             }, { it }))
             doAfterTextChanged {
@@ -139,8 +152,8 @@ class EditTagsAdapter(
                     }
                 lastSuggestions.addAll(valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) })
                 val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
-                else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * lastSuggestions.size).toInt()
+                    else 0
+                dropDownHeight = (suggestionHeight * lastSuggestions.size).coerceAtMost(suggestionMaxHeight - minus)
                 lastSuggestions.toList()
             }, { it }))
             doAfterTextChanged {
