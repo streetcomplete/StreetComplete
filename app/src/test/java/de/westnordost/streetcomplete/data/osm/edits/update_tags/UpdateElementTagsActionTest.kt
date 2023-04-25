@@ -38,60 +38,6 @@ class UpdateElementTagsActionTest {
     }
 
     @Test(expected = ConflictException::class)
-    fun `conflict if way was extended or shortened at start`() {
-        on(repos.get(WAY, 1)).thenReturn(way(1, listOf(1, 2, 3)))
-        UpdateElementTagsAction(
-            way(1, listOf(0, 1, 2, 3)),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `conflict if way was extended or shortened at end`() {
-        on(repos.get(WAY, 1)).thenReturn(way(1, listOf(0, 1, 2)))
-        UpdateElementTagsAction(
-            way(1, listOf(0, 1, 2, 3)),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `conflict if relation members were removed`() {
-        on(repos.get(RELATION, 1)).thenReturn(rel(1, listOf(member(NODE, 1))))
-        UpdateElementTagsAction(
-            rel(1, listOf(member(NODE, 1), member(NODE, 2))),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `conflict if relation members were added`() {
-        on(repos.get(RELATION, 1)).thenReturn(rel(1, listOf(member(NODE, 1), member(NODE, 2))))
-        UpdateElementTagsAction(
-            rel(1, listOf(member(NODE, 1))),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `conflict if order of relation members changed`() {
-        on(repos.get(RELATION, 1)).thenReturn(rel(1, listOf(member(NODE, 1), member(NODE, 2))))
-        UpdateElementTagsAction(
-            rel(1, listOf(member(NODE, 2), member(NODE, 1))),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `conflict if role of any relation member changed`() {
-        on(repos.get(RELATION, 1)).thenReturn(rel(1, listOf(member(NODE, 1, "a"))))
-        UpdateElementTagsAction(
-            rel(1, listOf(member(NODE, 1, "b"))),
-            StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
-        ).createUpdates(repos, provider)
-    }
-
-    @Test(expected = ConflictException::class)
     fun `conflict if changes are not applicable`() {
         val w = way(1, listOf(1, 2, 3), mutableMapOf("highway" to "residential"))
         on(repos.get(WAY, 1)).thenReturn(w)

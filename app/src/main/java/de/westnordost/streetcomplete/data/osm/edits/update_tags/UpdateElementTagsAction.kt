@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
-import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
@@ -26,8 +25,6 @@ data class UpdateElementTagsAction(
     val originalElement: Element,
     val changes: StringMapChanges
 ) : ElementEditAction, IsActionRevertable {
-
-    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override val elementKeys get() = listOf(originalElement.key)
 

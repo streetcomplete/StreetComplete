@@ -45,6 +45,7 @@ data class CreateNodeFromVertexAction(
     val containingWayIds: List<Long>,
 ) : ElementEditAction, IsActionRevertable {
 
+    // no new node is created, just a vertex (which is also a node) gets some tags now
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override val elementKeys get() =
