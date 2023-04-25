@@ -18,8 +18,8 @@ class RecentLocationStore {
                 previousLocation = it
                 return@filter true
             }
-            if (abs(it.elapsedRealtimeNanos - loc.elapsedRealtimeNanos) < LOCATION_MIN_TIME_DIFFERENCE_NANOS
-                || !loc.isTooCloseTo(it)
+            if (abs(it.elapsedRealtimeNanos - loc.elapsedRealtimeNanos) > LOCATION_MIN_TIME_DIFFERENCE_NANOS
+                && !loc.isTooCloseTo(it)
             ) {
                 previousLocation = it
                 true
