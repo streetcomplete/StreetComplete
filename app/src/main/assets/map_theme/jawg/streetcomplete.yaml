@@ -65,6 +65,10 @@ styles:
     map_data-lines:
         base: lines
         blend: translucent
+    map_data-steps-dashes:
+        base: lines
+        blend: translucent
+        dash: [0.6,0.4]
     map_data-lines-dashed:
         base: lines
         blend: translucent
@@ -321,6 +325,14 @@ layers:
                           color: function() { return feature.strokeColor; }
                           width: 1m
                           order: function() { return 702 + Number(feature.layer)*5; }
+        steps-dashes:
+            filter: { type: [line], color: true, steps: true }
+            draw:
+                map_data-steps-dashes:
+                    order: function() { return 702 + Number(feature.layer)*5; }
+                    cap: butt
+                    color: function() { return feature.strokeColor; }
+                    width: function() { return feature.width; }
         line-left:
             filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:
