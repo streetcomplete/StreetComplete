@@ -4,7 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -41,9 +44,19 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val buildingsWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        mapData
             .filter { buildingWaysFilter.matches(it) }
-            .flatMapTo(buildingsWayNodeIds) { it.nodeIds }
+            .flatMapTo(buildingsWayNodeIds) {
+                when (it) {
+                    is Way -> it.nodeIds
+                    is Relation -> it.members.flatMap { member ->
+                        if (member.type == ElementType.WAY)
+                            mapData.getWay(member.ref)?.nodeIds ?: emptyList()
+                        else emptyList()
+                    }
+                    else -> emptyList()
+                }
+            }
 
         val incomingWayNodeIds = mutableSetOf<Long>()
         mapData.ways
