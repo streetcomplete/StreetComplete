@@ -84,7 +84,7 @@ Considerations for choosing these values:
   "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
 */
 
-private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
+const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
 // "static" values, i.e. persisted per application start
 private var dontShowAgain = false
