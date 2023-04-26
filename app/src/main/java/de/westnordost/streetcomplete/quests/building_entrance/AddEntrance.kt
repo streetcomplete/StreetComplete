@@ -49,11 +49,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
             .flatMapTo(buildingsWayNodeIds) {
                 when (it) {
                     is Way -> it.nodeIds
-                    is Relation -> it.members.flatMap { member ->
-                        if (member.type == ElementType.WAY)
-                            mapData.getWay(member.ref)?.nodeIds ?: emptyList()
-                        else emptyList()
-                    }
+                    is Relation -> it.getMultipolygonNodeIds(mapData)
                     else -> emptyList()
                 }
             }
@@ -86,4 +82,16 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
             is EntranceExistsAnswer -> tags["entrance"] = answer.osmValue
         }
     }
+}
+
+private fun Relation.getMultipolygonNodeIds(mapData: MapDataWithGeometry): List<Long> {
+    if (tags["type"] != "multipolygon") return emptyList()
+    val nodeIds = mutableListOf<Long>()
+    for (member in members) {
+        if (member.type != ElementType.WAY) continue
+        val wayNodeIds = mapData.getWay(member.ref)?.nodeIds
+        if (wayNodeIds != null)
+            nodeIds.addAll(wayNodeIds)
+    }
+    return nodeIds
 }
