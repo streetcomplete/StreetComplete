@@ -45,7 +45,6 @@ import org.koin.android.ext.android.inject
 import org.koin.core.component.KoinComponent
 import kotlin.math.max
 
-// will be created every time the app is put to background... actually that's not good
 class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
     private val locationManager: LocationManager by lazy { applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager }
@@ -106,7 +105,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             }
             val notification = NotificationCompat.Builder(this, MONITOR_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_notification)
-                .setContentTitle(ApplicationConstants.NAME)
+                .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.quest_monitor_running))
                 .setContentIntent(pi)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
@@ -147,12 +146,12 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
                 val ignoreOlderThan = nowAsEpochMilliseconds() - dataRetainTime
                 val tile = loc.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM).toTilesRect()
                 if (downloadedTilesDb.get(tile, ignoreOlderThan).contains(DownloadedTilesType.ALL)) return // we already have the area
-                downloadController.download(loc.enclosingBoundingBox(max(150.0, searchRadius))) // download quests in at least 150 m radius (will likely be single z16 tile)
+                downloadController.download(loc.enclosingBoundingBox(max(150.0, searchRadius))) // download quests in at least 150 m radius (will likely be a single z16 tile)
             }
             return
         }
         val closest = quests.minBy {
-//            loc.distanceTo(it.position) // no need to do the relatively heavy exact distance calculation
+            // square distance in lat/lon is enough
             val lonDiff = loc.latitude - it.position.latitude
             val latDiff = loc.longitude - it.position.longitude
             latDiff * latDiff + lonDiff * lonDiff
