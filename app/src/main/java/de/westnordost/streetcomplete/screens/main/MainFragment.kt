@@ -433,11 +433,11 @@ class MainFragment :
     private fun clearOverlaySelector() = binding.overlayLayout.removeAllViews()
 
     private fun reloadOverlaySelector() {
-        clearOverlaySelector()
         if (!prefs.getBoolean(Prefs.OVERLAY_QUICK_SELECTOR, false)) {
             binding.overlayScrollView.isGone = true
             return
         }
+        requireActivity().runOnUiThread { clearOverlaySelector() }
         if (bottomSheetFragment == null) // always fill, but only show if no quest, overlay, etc... is showing
             binding.overlayScrollView.isVisible = true
 
