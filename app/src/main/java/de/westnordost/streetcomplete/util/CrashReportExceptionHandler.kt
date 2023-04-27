@@ -91,7 +91,7 @@ class CrashReportExceptionHandler(
 
         Log warnings and errors: ${Log.logLines.filter {
             val firstPart = it.substringBefore(":")
-            firstPart.contains(" W ") || firstPart.contains(" W ")
+            firstPart.contains(" E ") || firstPart.contains(" W ")
         }.joinToString("\n")}
 
         MapDataWithEditsSource listeners: ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
