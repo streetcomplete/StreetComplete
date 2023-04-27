@@ -203,10 +203,8 @@ class MainActivity :
         uploadController.showNotification = false
         // try to stop more often than it seems necessary, because sometime android is slow to react, e.g. when quickly switching between SC and other app
         if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
-            try { unbindService(questMonitorConnection) } catch (e: IllegalArgumentException) {
-                // wtf is going on? it's not destroyed, but not registered?
-                // anyway, this check whether service is running doesn't work properly -> try every time, not just if running
-            }
+            try { applicationContext.unbindService(questMonitorConnection) }
+            catch (_: IllegalArgumentException) {} // happens on first start, and maybe if there is some issue
     }
 
     @Deprecated("Deprecated in Java")
@@ -262,14 +260,9 @@ class MainActivity :
         downloadController.showNotification = true
         uploadController.showNotification = true
         if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running && !backPressed)
-            bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
+            applicationContext.bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
         backPressed = false // as an easy way to avoid quest monitor: don't start it if SC was closed using back button
     }
-
-    private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
-        override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {}
-        override fun onServiceDisconnected(p0: ComponentName?) {}
-    } }
 
     override fun onNewIntent(newIntent: Intent?) {
         super.onNewIntent(newIntent)
@@ -288,7 +281,8 @@ class MainActivity :
         super.onDestroy()
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
-        try { unbindService(questMonitorConnection) } catch (_: IllegalArgumentException) { }
+        try { applicationContext.unbindService(questMonitorConnection) }
+        catch (_: IllegalArgumentException) {}
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -426,5 +420,11 @@ class MainActivity :
 
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false
+
+        // quest monitor connection needs to survive activity being stopped
+        private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
+            override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {}
+            override fun onServiceDisconnected(p0: ComponentName?) {}
+        } }
     }
 }
