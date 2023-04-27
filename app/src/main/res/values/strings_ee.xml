@@ -260,9 +260,9 @@
     <string name="quest_poi_vending_title">POI: Vending %s</string>
     <string name="quest_poi_machine_title">POI: Machine</string>
     <string name="quest_poi_has_atm_title">POI: Has ATM</string>
-    <string name="default_disabled_msg_poi_machine">This \"quest\" shows POIs like ATMs, phones or vending machines as dots. Click the dot to show details and other answers.</string>
+    <string name="default_disabled_msg_poi_machine">This \"quest\" shows POIs like ATMs, phones or vending machines as blue dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_misc_title">POI: Miscellaneous</string>
-    <string name="default_disabled_msg_poi_other">This \"quest\" shows miscellaneous POIs like hydrants, viewpoints or toilets as dots. Click the dot to show details and other answers.</string>
+    <string name="default_disabled_msg_poi_other">This \"quest\" shows miscellaneous POIs like hydrants, viewpoints or toilets as yellow dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_recycling_title">POI: Recycling %s</string>
     <string name="default_disabled_msg_poi_recycling">This \"quest\" shows recycling/garbage related POIs as green dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_traffic_title">POI: Traffic %s</string>
