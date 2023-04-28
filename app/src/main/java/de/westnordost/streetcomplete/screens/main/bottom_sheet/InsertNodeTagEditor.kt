@@ -45,7 +45,8 @@ class InsertNodeTagEditor : TagEditor() {
         elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between))
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_FEATURE_ID)?.let {
-            if (!IS_SHOP_EXPRESSION.matches(element))
+            val initialTags: Map<String, String> = arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
+            if (!IS_SHOP_EXPRESSION.matches(element) && initialTags != element.tags)
                 prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
         }
     }

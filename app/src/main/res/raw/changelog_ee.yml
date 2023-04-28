@@ -1,17 +1,17 @@
 v53.0: |
   <ul>
   <li>Simplify adding / updating (conditional) road and path access</li>
-  <li>Allow selecting icon for custom overlay</li>
-  <li>Add dash filter for custom overlay (only for center line)</li>
-  <li>Show tags matching color selector in custom overlay form</li>
   <li>Add more conditional maxspeed options</li>
-  <li>Add optional overlay quick selector</li>
-  <li>Show some features as icon-only when adding nodes</li>
-  <li>Add button to show keyboard in tag editor, as sometimes the input view is covered by a dropdown</li>
-  <li>Add redo button in create node tag editor, to copy tags from last time creating the same feature</li>
-  <li>Allow hiding missing data in custom overlay instead of highlighting in red</li>
-  <li>Allow focusing value of color key in custom overlay (enable be adding ! before color key, does not work with regex)</li>
+  <li>Show some more frequent features as icon-only when adding nodes</li>
   <li>Option to show all notes now only hides SCEE notes if they were created with the same version</li>
+  <li>Add button to show keyboard in tag editor, as sometimes the input view is covered by a dropdown</li>
+  <li>Add redo button in create node tag editor, use it to copy additional tags from last time creating the same feature</li>
+  <li>Allow selecting icon (from quest icons) for custom overlay</li>
+  <li>Add optional overlay quick selector</li>
+  <li>Add dash filter for custom overlay (only for center line)</li>
+  <li>Allow hiding missing data in custom overlay instead of highlighting in red</li>
+  <li>Show all tags matching color key regex already in custom overlay form</li>
+  <li>Allow auto-focusing the value of the color key in custom overlay when editing tags (enable be adding "!" before color key, does not work with regex)</li>
   </ul>
 
 v52.1: |

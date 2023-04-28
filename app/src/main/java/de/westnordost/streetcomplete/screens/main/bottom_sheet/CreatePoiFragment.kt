@@ -77,7 +77,8 @@ class CreatePoiFragment : TagEditor() {
         elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_ID)?.let {
-            if (!IS_SHOP_EXPRESSION.matches(element))
+            val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
+            if (!IS_SHOP_EXPRESSION.matches(element) && prefillTags != element.tags)
                 prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
         }
     }
