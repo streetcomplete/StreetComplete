@@ -218,8 +218,8 @@ class AddBuildingEntranceTest {
                 way(1L, listOf(3, 30), mapOf(
                     "highway" to "footway",
                 )),
-                way(2L, listOf(1, 2)),
-                way(3L, listOf(3, 4)),
+                way(2L, listOf(1, 2, 3)),
+                way(3L, listOf(3, 4, 1)),
                 rel(1L, listOf(member(ElementType.WAY, 2), member(ElementType.WAY, 3)), mapOf(
                     "building" to "apartments",
                     "type" to "multipolygon"
