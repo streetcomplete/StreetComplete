@@ -215,22 +215,22 @@ class AddBuildingEntranceTest {
                 node(3),
                 node(4),
                 node(30),
-                rel(1L, listOf(member(ElementType.WAY, 2), member(ElementType.WAY, 3)), mapOf(
-                    "building" to "apartments",
-                    "type" to "multipolygon"
-                )),
                 way(1L, listOf(3, 30), mapOf(
                     "highway" to "footway",
                 )),
                 way(2L, listOf(1, 2)),
                 way(3L, listOf(3, 4)),
+                rel(1L, listOf(member(ElementType.WAY, 2), member(ElementType.WAY, 3)), mapOf(
+                    "building" to "apartments",
+                    "type" to "multipolygon"
+                )),
             ),
         )
         Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
-    fun `not applicable to non-multipolygon buildings`() {
+    fun `not applicable to non-multipolygon building relations`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1),
