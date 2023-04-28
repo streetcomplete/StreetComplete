@@ -19,7 +19,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
           !entrance and !barrier and noexit != yes and !railway
     """.toElementFilterExpression() }
 
-    private val buildingWaysFilter by lazy { """
+    private val buildingFilter by lazy { """
         ways, relations with
           building and building !~ yes|no|service|shed|house|detached|terrace|semi|semidetached_house|roof|carport|construction
           and location != underground
@@ -45,7 +45,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val buildingsWayNodeIds = mutableSetOf<Long>()
         mapData
-            .filter { buildingWaysFilter.matches(it) }
+            .filter { buildingFilter.matches(it) }
             .flatMapTo(buildingsWayNodeIds) {
                 when (it) {
                     is Way -> it.nodeIds
@@ -90,8 +90,9 @@ private fun Relation.getMultipolygonNodeIds(mapData: MapDataWithGeometry): List<
     for (member in members) {
         if (member.type != ElementType.WAY) continue
         val wayNodeIds = mapData.getWay(member.ref)?.nodeIds
-        if (wayNodeIds != null)
+        if (wayNodeIds != null) {
             nodeIds.addAll(wayNodeIds)
+        }
     }
     return nodeIds
 }
