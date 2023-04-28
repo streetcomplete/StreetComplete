@@ -35,7 +35,7 @@ class AddBuildingEntranceReferenceTest {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1, LatLon(50.0, 20.0), mapOf("entrance" to "staircase")),
-                node(2, LatLon(50.0, 20.0), mapOf("entrance" to "staircase")),
+                node(2, LatLon(50.0, 20.01), mapOf("entrance" to "staircase")),
                 node(3),
                 node(4),
                 node(10),
