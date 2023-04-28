@@ -69,7 +69,9 @@ open class FragmentContainerActivity(
             return
         }
         // when switching to other app and back from sub-settings fragment, back button in settings closes the app, but we want to return to main activity
-        startActivity(Intent(this, MainActivity::class.java))
+        val i = Intent(this, MainActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivity(i)
         super.onBackPressed()
     }
 
