@@ -35,12 +35,10 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -154,10 +152,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
         }
 
-        if (element.couldBeSteps()) {
-            answers.add(AnswerItem(R.string.quest_generic_answer_is_actually_steps) { onClickIsActuallySteps() })
-        }
-
         answers.addAll(otherAnswers)
         return answers
     }
@@ -222,16 +216,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 listener?.onMoveNode(osmElementQuestType, element as Node)
             }
             .show()
-        }
-    }
-
-    private fun onClickIsActuallySteps() {
-        viewLifecycleScope.launch {
-            val builder = StringMapChangesBuilder(element.tags)
-            builder["highway"] = "steps"
-            builder.remove("smoothness")
-            builder.removeCheckDatesForKey("smoothness")
-            solve(UpdateElementTagsAction(builder.create()))
         }
     }
 

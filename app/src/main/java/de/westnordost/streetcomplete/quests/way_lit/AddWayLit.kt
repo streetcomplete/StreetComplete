@@ -6,10 +6,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.applyTo
 
-class AddWayLit : OsmFilterQuestType<LitStatus>() {
+class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     /* Using sidewalk, source:maxspeed=*urban etc and a urban-like maxspeed as tell-tale tags for
        (urban) streets which reached a certain level of development. I.e. non-urban streets will
@@ -53,8 +52,11 @@ class AddWayLit : OsmFilterQuestType<LitStatus>() {
 
     override fun createForm() = WayLitForm()
 
-    override fun applyAnswerTo(answer: LitStatus, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+    override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is IsActuallyStepsAnswer -> tags["highway"] = "steps"
+            is WayLit -> answer.litStatus.applyTo(tags)
+        }
     }
 
     companion object {

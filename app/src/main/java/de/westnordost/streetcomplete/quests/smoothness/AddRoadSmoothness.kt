@@ -36,6 +36,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun createForm() = AddSmoothnessForm()
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer is IsActuallyStepsAnswer) throw IllegalStateException()
         answer.applyTo(tags)
     }
 }

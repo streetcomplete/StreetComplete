@@ -8,6 +8,7 @@ sealed interface SmoothnessAnswer
 
 data class SmoothnessValueAnswer(val value: Smoothness) : SmoothnessAnswer
 
+object IsActuallyStepsAnswer : SmoothnessAnswer
 object WrongSurfaceAnswer : SmoothnessAnswer
 
 fun SmoothnessAnswer.applyTo(tags: Tags) {
@@ -20,6 +21,11 @@ fun SmoothnessAnswer.applyTo(tags: Tags) {
         }
         is WrongSurfaceAnswer -> {
             tags.remove("surface")
+            tags.remove("smoothness")
+            tags.removeCheckDatesForKey("smoothness")
+        }
+        is IsActuallyStepsAnswer -> {
+            tags["highway"] = "steps"
             tags.remove("smoothness")
             tags.removeCheckDatesForKey("smoothness")
         }
