@@ -263,7 +263,7 @@ private fun createAddressElementEditAction(
     tagChanges.remove("nohousenumber")
 
     return if (element != null) {
-        UpdateElementTagsAction(element!!, tagChanges.create())
+        UpdateElementTagsAction(element, tagChanges.create())
     } else {
         CreateNodeAction(geometry.center, tagChanges)
     }

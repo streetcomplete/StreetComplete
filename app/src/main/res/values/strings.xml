@@ -1668,5 +1668,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_island">Traffic island</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
+    <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
 
 </resources>
