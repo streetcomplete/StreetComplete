@@ -91,7 +91,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val displayedMapLocation: Location?
 
         /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
         fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
@@ -300,7 +300,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 addElementEditsController.add(osmElementQuestType, geometry, "survey", action)
             }
         }
-        listener?.onEdited(osmElementQuestType, element, geometry)
+        listener?.onEdited(osmElementQuestType, geometry)
     }
 
     companion object {

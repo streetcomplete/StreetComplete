@@ -180,7 +180,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             longitude = pos.longitude
         }
 
-    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+    override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
         popQuestForm()
     }
 

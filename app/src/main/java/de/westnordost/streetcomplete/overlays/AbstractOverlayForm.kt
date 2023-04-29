@@ -145,7 +145,7 @@ abstract class AbstractOverlayForm :
         val metersPerPixel: Double?
 
         /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
         fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
@@ -398,13 +398,10 @@ abstract class AbstractOverlayForm :
             return
         }
 
-        // use dummy element if element is null
-        val element = element ?: Node(0, geometry.center)
-
         withContext(Dispatchers.IO) {
             addElementEditsController.add(overlay, geometry, "survey", action)
         }
-        listener?.onEdited(overlay, element, geometry)
+        listener?.onEdited(overlay, geometry)
     }
 
     private fun setLocked(locked: Boolean) {
