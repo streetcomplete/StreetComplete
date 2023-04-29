@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.util.math
 
+import de.westnordost.streetcomplete.data.osm.edits.create.InsertIntoWayAt
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -26,6 +27,7 @@ data class PositionOnWaySegment(
     val segment: Pair<LatLon, LatLon>
 ): PositionOnWay
 
+fun PositionOnWaySegment.toInsertIntoWayAt() = InsertIntoWayAt(wayId, segment.first, segment.second)
 
 /** Returns the point on any of the given ways that is nearest to this point and at most
  *  [maxDistance] meters away from this point or null if there is no such point.

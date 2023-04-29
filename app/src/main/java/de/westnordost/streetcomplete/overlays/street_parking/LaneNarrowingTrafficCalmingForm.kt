@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
 import de.westnordost.streetcomplete.util.math.VertexOfWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
+import de.westnordost.streetcomplete.util.math.toInsertIntoWayAt
 import org.koin.android.ext.android.inject
 
 class LaneNarrowingTrafficCalmingForm :
@@ -60,10 +61,10 @@ class LaneNarrowingTrafficCalmingForm :
 
     override val otherAnswers get() = listOfNotNull(
         if (element != null) {
-            AnswerItem(R.string.lane_narrowing_traffic_calming_none) { confirmRemoveLaneNarrowingTrafficCalming() }
-        } else {
-            null
-        }
+            AnswerItem(R.string.lane_narrowing_traffic_calming_none) {
+                confirmRemoveLaneNarrowingTrafficCalming()
+            }
+        } else null
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,7 +83,7 @@ class LaneNarrowingTrafficCalmingForm :
     }
 
     private fun initCreatingPointOnWay() {
-        val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(150.0))
+        val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(100.0))
         roads = data
             .filter(allRoadsFilter)
             .mapNotNull { element ->
@@ -105,7 +106,7 @@ class LaneNarrowingTrafficCalmingForm :
     private fun checkCurrentCursorPosition() {
         val roads = roads ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(32)
+        val maxDistance = metersPerPixel * requireContext().dpToPx(24)
         val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
         positionOnWay = geometry.center.getPositionOnWays(roads, maxDistance, snapToVertexDistance)
         checkIsFormComplete()
@@ -120,36 +121,26 @@ class LaneNarrowingTrafficCalmingForm :
     override fun onClickOk() {
         val narrowingTrafficCalming = selectedItem!!.value!!
         val element = element
-        val pointOnWay = positionOnWay
+        val positionOnWay = positionOnWay
         if (element != null) {
             val tagChanges = createChanges(narrowingTrafficCalming, element.tags)
             applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
-        } else if (pointOnWay != null) {
-            val geometry = ElementPointGeometry(pointOnWay.position)
-            when (pointOnWay) {
+        } else if (positionOnWay != null) {
+            val geometry = ElementPointGeometry(positionOnWay.position)
+            when (positionOnWay) {
                 is PositionOnWaySegment -> {
-                    val insertIntoWayAt = InsertIntoWayAt(
-                        pointOnWay.wayId,
-                        pointOnWay.segment.first,
-                        pointOnWay.segment.second
-                    )
-                    val tags = createChanges(narrowingTrafficCalming, mapOf())
-                    applyEdit(CreateNodeAction(pointOnWay.position, tags, listOf(insertIntoWayAt)), geometry)
+                    val tagChanges = createChanges(narrowingTrafficCalming, mapOf())
+                    val insertIntoWayAt = positionOnWay.toInsertIntoWayAt()
+                    applyEdit(CreateNodeAction(positionOnWay.position, tagChanges, listOf(insertIntoWayAt)), geometry)
                 }
                 is VertexOfWay -> {
-                    val node = mapDataWithEditsSource.getNode(pointOnWay.nodeId) ?: return
+                    val node = mapDataWithEditsSource.getNode(positionOnWay.nodeId) ?: return
                     val tagChanges = createChanges(narrowingTrafficCalming, node.tags)
-                    val containingWayIds = mapDataWithEditsSource.getWaysForNode(pointOnWay.nodeId).map { it.id }
+                    val containingWayIds = mapDataWithEditsSource.getWaysForNode(positionOnWay.nodeId).map { it.id }
                     applyEdit(CreateNodeFromVertexAction(node, tagChanges.create(), containingWayIds), geometry)
                 }
             }
         }
-    }
-
-    private fun createChanges(value: LaneNarrowingTrafficCalming?, source: Map<String, String>): StringMapChangesBuilder {
-        val tagChanges = StringMapChangesBuilder(source)
-        value.applyTo(tagChanges)
-        return tagChanges
     }
 
     private fun confirmRemoveLaneNarrowingTrafficCalming() {
@@ -162,4 +153,10 @@ class LaneNarrowingTrafficCalmingForm :
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
+}
+
+private fun createChanges(value: LaneNarrowingTrafficCalming?, source: Map<String, String>): StringMapChangesBuilder {
+    val tagChanges = StringMapChangesBuilder(source)
+    value.applyTo(tagChanges)
+    return tagChanges
 }
