@@ -26,13 +26,13 @@
   <path
       android:pathData="M17.41,19L22.808,19A1,1.301 90,0 1,24.109 20L24.109,27A1,1.301 90,0 1,22.808 28L17.41,28A1,1.301 90,0 1,16.109 27L16.109,20A1,1.301 90,0 1,17.41 19z"
       android:strokeWidth="2"
-      android:strokeColor="#666"/>
+      android:strokeColor="#ccc"/>
   <path
       android:pathData="M20.109,23.5m-1.75,0a1.75,1.75 0,1 1,3.5 0a1.75,1.75 0,1 1,-3.5 0"
       android:fillColor="#80684d"/>
   <path
       android:pathData="m25.109,23.5l-5,0"
       android:strokeWidth="1.5"
-      android:strokeColor="#555"
+      android:strokeColor="#aaa"
       android:strokeLineCap="round"/>
 </vector>

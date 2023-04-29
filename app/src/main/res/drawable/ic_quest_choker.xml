@@ -35,14 +35,14 @@
     <path
         android:pathData="M53.2,60L74.8,60A5.2,4 0,0 1,80 64L80,92A5.2,4 0,0 1,74.8 96L53.2,96A5.2,4 0,0 1,48 92L48,64A5.2,4 0,0 1,53.2 60z"
         android:strokeWidth="8"
-        android:strokeColor="#666"/>
+        android:strokeColor="#ccc"/>
     <path
         android:pathData="M64,78m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
         android:fillColor="#80684d"/>
     <path
         android:pathData="m84,78h-20"
         android:strokeWidth="6"
-        android:strokeColor="#555"
+        android:strokeColor="#aaa"
         android:strokeLineCap="round"/>
   </group>
 </vector>
