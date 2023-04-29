@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.quests.building_entrance
 
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert
 import org.junit.Test
@@ -201,5 +204,51 @@ class AddBuildingEntranceTest {
             "location" to "rooftop",
         ))
         Assert.assertEquals(0, questType.getApplicableElements(mapDataWithRooftop).toList().size)
+    }
+
+    @Test
+    fun `applicable to multipolygon buildings`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1),
+                node(2),
+                node(3),
+                node(4),
+                node(30),
+                way(1L, listOf(3, 30), mapOf(
+                    "highway" to "footway",
+                )),
+                way(2L, listOf(1, 2, 3)),
+                way(3L, listOf(3, 4, 1)),
+                rel(1L, listOf(member(ElementType.WAY, 2), member(ElementType.WAY, 3)), mapOf(
+                    "building" to "apartments",
+                    "type" to "multipolygon"
+                )),
+            ),
+        )
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test
+    fun `not applicable to non-multipolygon building relations`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1),
+                node(2),
+                node(3),
+                node(4),
+                node(30),
+                rel(1L, listOf(member(ElementType.WAY, 2), member(ElementType.WAY, 3)), mapOf(
+                    "building" to "apartments",
+                    "type" to "site"
+                )),
+                way(1L, listOf(3, 30), mapOf(
+                    "highway" to "footway",
+                )),
+                way(2L, listOf(1, 2)),
+                way(3L, listOf(3, 4)),
+            ),
+        )
+        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }
