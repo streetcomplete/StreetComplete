@@ -20,8 +20,8 @@ import kotlinx.serialization.Serializable
 /** Action that transforms a way vertex into a node, i.e. adds tags to a vertex in a way.
  *
  *  A node in a way (a vertex) without any tags has no meaning in itself but just serves to define
- *  the geometry of a way. Hence, if we add tags to such a node, it is like creating a new node
- *  - not on the technical level, but on the semantic level.
+ *  the geometry of a way. Hence, if we add tags to such a node, it is like creating a new node -
+ *  not on the technical level, but on the semantic level.
  *
  *  So, when this is edit is applied, it should be made sure that the vertex didn't change its
  *  meaning in the definition of the geometry: I.e. its position and the ways it is part of.
