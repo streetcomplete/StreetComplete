@@ -55,7 +55,7 @@ class LaneNarrowingTrafficCalmingForm :
     }
     private var roads: Collection<Pair<Way, ElementGeometry>>? = null
     private val allRoadsFilter = """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")}
+        ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
     """.toElementFilterExpression()
 
     override val otherAnswers get() = listOfNotNull(
