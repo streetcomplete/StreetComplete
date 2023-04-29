@@ -315,9 +315,9 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    protected fun applyEdit(answer: ElementEditAction) {
+    protected fun applyEdit(answer: ElementEditAction, geometry: ElementGeometry = this.geometry) {
         viewLifecycleScope.launch {
-            solve(answer)
+            solve(answer, geometry)
         }
     }
 
@@ -401,7 +401,7 @@ abstract class AbstractOverlayForm :
 
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
-    private suspend fun solve(action: ElementEditAction) {
+    private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
             setLocked(false)
