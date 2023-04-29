@@ -157,6 +157,7 @@ abstract class AbstractOverlayForm :
         fun onMoveNode(editType: ElementEditType, node: Node)
 
         fun getMapPositionAt(screenPos: PointF): LatLon?
+        fun getPointOf(pos: LatLon): PointF?
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 

@@ -470,6 +470,9 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    override fun getPointOf(pos: LatLon): PointF? =
+        mapFragment?.getPointOf(pos)
+
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
     override fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
