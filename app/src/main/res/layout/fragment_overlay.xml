@@ -6,9 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/markerCreateLayout"
-        layout="@layout/marker_create_note"/>
+    <RelativeLayout
+        android:id="@+id/createMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:src="@drawable/pin"
+            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+        <ImageView
+            android:id="@+id/createMarkerIconView"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="7dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_quest_create_note" />
+
+    </RelativeLayout>
 
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_alignParentLeft="true"

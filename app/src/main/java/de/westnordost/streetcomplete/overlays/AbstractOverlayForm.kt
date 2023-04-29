@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
+import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
@@ -46,7 +46,6 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -124,7 +123,7 @@ abstract class AbstractOverlayForm :
         private set
     private var _geometry: ElementGeometry? = null
     protected val geometry: ElementGeometry
-    get() = _geometry ?: ElementPointGeometry(getMarkerPosition()!!)
+    get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
@@ -187,7 +186,8 @@ abstract class AbstractOverlayForm :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.markerCreateLayout.root.isInvisible = _geometry != null
+        setMarkerVisibility(_geometry == null)
+        binding.createMarker.doOnLayout { setMarkerPosition(null) }
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -220,12 +220,7 @@ abstract class AbstractOverlayForm :
 
         binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
 
-        binding.markerCreateLayout.centeredMarkerLayout.setPadding(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
+        setMarkerPosition(null)
     }
 
     override fun onStart() {
@@ -293,7 +288,21 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun setMarkerIcon(iconResId: Int) {
-        binding.markerCreateLayout.createNoteIconView.setImageResource(iconResId)
+        binding.createMarkerIconView.setImageResource(iconResId)
+    }
+
+    protected fun setMarkerVisibility(isVisible: Boolean) {
+        binding.createMarker.isInvisible = !isVisible
+    }
+
+    protected fun setMarkerPosition(position: LatLon?) {
+        val point = if (position == null) {
+            getDefaultMarkerScreenPosition()
+        } else {
+            listener?.getPointOf(position)
+        } ?: return
+        binding.createMarker.x = point.x - binding.createMarker.width / 2
+        binding.createMarker.y = point.y - binding.createMarker.height
     }
 
     private fun updateContentPadding() {
@@ -411,11 +420,20 @@ abstract class AbstractOverlayForm :
 
     /* ------------------------------------- marker position ------------------------------------ */
 
-    private fun getMarkerPosition(): LatLon? {
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
-        val screenPos = createNoteMarker.getLocationInWindow()
-        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos.toPointF())
+    private fun getDefaultMarkerPosition(): LatLon? {
+        val point = getDefaultMarkerScreenPosition() ?: return null
+        return listener?.getMapPositionAt(point)
+    }
+
+    private fun getDefaultMarkerScreenPosition(): PointF? {
+        val view = view ?: return null
+        val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
+        val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
+        val top = resources.getDimensionPixelSize(R.dimen.quest_form_topOffset)
+        val bottom = resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        val x = (view.width + left - right) / 2f
+        val y = (view.height + top - bottom) / 2f
+        return PointF(x, y)
     }
 
     companion object {
