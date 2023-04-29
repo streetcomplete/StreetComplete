@@ -24,12 +24,14 @@ internal class CreateNodeActionTest {
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @Before fun setUp() {
+    @Before
+    fun setUp() {
         repos = mock()
         provider = mock()
     }
 
-    @Test fun `create node`() {
+    @Test
+    fun `create node`() {
         on(provider.nextNodeId()).thenReturn(-123)
 
         val tags = mapOf("amenity" to "atm")
@@ -49,8 +51,9 @@ internal class CreateNodeActionTest {
         assertNotEquals(0, createdNode.timestampEdited)
     }
 
-    @Test fun `create node and add to way`() {
-        val way = way(id = 1, nodes = listOf(1,2))
+    @Test
+    fun `create node and add to way`() {
+        val way = way(id = 1, nodes = listOf(1, 2))
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
         val node1 = node(id = 1, pos = pos1)
@@ -77,7 +80,7 @@ internal class CreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if way the node should be inserted into does not exist`() {
-        val way = way(id = 1, nodes = listOf(1,2))
+        val way = way(id = 1, nodes = listOf(1, 2))
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
 
@@ -93,7 +96,7 @@ internal class CreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if node 2 is not successive to node 1`() {
-        val way = way(id = 1, nodes = listOf(1,2,3))
+        val way = way(id = 1, nodes = listOf(1, 2, 3))
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
         val pos3 = LatLon(0.0, 3.0)
@@ -111,8 +114,9 @@ internal class CreateNodeActionTest {
         action.createUpdates(repos, provider)
     }
 
-    @Test fun `no conflict if node 2 is first node within closed way`() {
-        val way = way(id = 1, nodes = listOf(1,2,3,1))
+    @Test
+    fun `no conflict if node 2 is first node within closed way`() {
+        val way = way(id = 1, nodes = listOf(1, 2, 3, 1))
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
         val pos3 = LatLon(0.0, 3.0)
@@ -133,7 +137,7 @@ internal class CreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if node 1 has been moved`() {
-        val way = way(id = 1, nodes = listOf(1,2))
+        val way = way(id = 1, nodes = listOf(1, 2))
         val oldPos1 = LatLon(0.0, 0.0)
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
@@ -145,14 +149,15 @@ internal class CreateNodeActionTest {
 
         val tags = mapOf("entrance" to "yes")
         val position = LatLon(0.0, 1.5)
-        val action = CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, oldPos1, pos2)))
+        val action =
+            CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, oldPos1, pos2)))
 
         action.createUpdates(repos, provider)
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict if node 2 has been moved`() {
-        val way = way(id = 1, nodes = listOf(1,2))
+        val way = way(id = 1, nodes = listOf(1, 2))
         val oldPos2 = LatLon(0.0, 0.0)
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
@@ -164,14 +169,16 @@ internal class CreateNodeActionTest {
 
         val tags = mapOf("entrance" to "yes")
         val position = LatLon(0.0, 1.5)
-        val action = CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, pos1, oldPos2)))
+        val action =
+            CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, pos1, oldPos2)))
 
         action.createUpdates(repos, provider)
     }
 
-    @Test fun `create node and add to ways`() {
-        val way1 = way(id = 1, nodes = listOf(1,2))
-        val way2 = way(id = 2, nodes = listOf(3,4))
+    @Test
+    fun `create node and add to ways`() {
+        val way1 = way(id = 1, nodes = listOf(1, 2))
+        val way2 = way(id = 2, nodes = listOf(3, 4))
         val pos1 = LatLon(0.0, -1.0)
         val pos2 = LatLon(0.0, +1.0)
         val pos3 = LatLon(-1.0, 0.0)
@@ -187,17 +194,46 @@ internal class CreateNodeActionTest {
 
         val tags = mapOf("entrance" to "yes")
         val position = LatLon(0.0, 0.0)
-        val action = CreateNodeAction(position, tags, listOf(
-            InsertIntoWayAt(way1.id, pos1, pos2),
-            InsertIntoWayAt(way2.id, pos3, pos4),
-        ))
+        val action = CreateNodeAction(
+            position, tags, listOf(
+                InsertIntoWayAt(way1.id, pos1, pos2),
+                InsertIntoWayAt(way2.id, pos3, pos4),
+            )
+        )
 
         val data = action.createUpdates(repos, provider)
 
         val createdNode = data.creations.single() as Node
         assertEquals(-123, createdNode.id)
 
-        assertEquals(listOf<Long>(1,2), data.modifications.map { it.id })
+        assertEquals(listOf<Long>(1, 2), data.modifications.map { it.id })
+    }
+
+    @Test
+    fun `create node on closed way`() {
+        val way1 = way(id = 1, nodes = listOf(1, 2, 3, 4, 1))
+        val pos1 = LatLon(-1.0, -1.0)
+        val pos2 = LatLon(+1.0, -1.0)
+        val pos3 = LatLon(+1.0, +1.0)
+        val pos4 = LatLon(-1.0, +1.0)
+        val node1 = node(id = 1, pos = pos1)
+        val node2 = node(id = 2, pos = pos2)
+        val node3 = node(id = 3, pos = pos3)
+        val node4 = node(id = 4, pos = pos4)
+
+        on(provider.nextNodeId()).thenReturn(-123)
+        on(repos.getWayComplete(1)).thenReturn(MutableMapData(listOf(way1, node1, node2, node3, node4)))
+
+        val tags = mapOf("entrance" to "yes")
+        val position = LatLon(-1.0, 0.0)
+        val action = CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way1.id, pos4, pos1)))
+
+        val data = action.createUpdates(repos, provider)
+
+        val createdNode = data.creations.single() as Node
+        assertEquals(-123, createdNode.id)
+
+        assertEquals(listOf<Long>(1, 2, 3, 4, -123, 1), (data.modifications.single() as Way).nodeIds)
     }
 
     @Test fun idsUpdatesApplied() {
