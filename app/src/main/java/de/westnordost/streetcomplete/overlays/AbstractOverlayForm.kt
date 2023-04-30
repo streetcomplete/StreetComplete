@@ -30,8 +30,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -48,7 +46,6 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -362,10 +359,6 @@ abstract class AbstractOverlayForm :
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
 
-            if (element.couldBeSteps()) {
-                answers.add(AnswerItem(R.string.quest_generic_answer_is_actually_steps) { isActuallySteps(element) })
-            }
-
             if (element is Node // add moveNodeAnswer only if it's a free floating node
                 && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
                 && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
@@ -389,12 +382,6 @@ abstract class AbstractOverlayForm :
         val overlayTitle = englishResources.getString(overlay.title)
         val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
-    }
-
-    private fun isActuallySteps(element: Element) {
-        val tagChanges = StringMapChangesBuilder(element.tags)
-        tagChanges["highway"] = "steps"
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     /* -------------------------------------- Apply edit  -------------------------------------- */
