@@ -111,4 +111,62 @@
     <string name="pref_advanced_resurvey_summary">Примусове повторне опитування для вибраних тегів</string>
     <string name="advanced_resurvey_title">Встановіть дату повторного опитування та ключі</string>
     <string name="import_presets_overlays_add">Додати</string>
+    <string name="import_export_settings">Інші налаштування програми</string>
+    <string name="quest_monitor_gps">Активно запитувати GPS-локацію\?</string>
+    <string name="import_export_custom_overlays">Користувацькі шари</string>
+    <string name="import_export_hidden_quests">Приховані квести</string>
+    <string name="pref_search_more_languages_title">Функції пошуку на інших мовах</string>
+    <string name="pref_dynamic_quest_creation_title">Динамічне створення квестів</string>
+    <string name="tree_custom_quest_import">Надати</string>
+    <string name="pref_dynamic_quest_creation_summary">Квести створюються при завантаженні переглянутої області. Дещо повільно, але одразу застосовує змінені налаштування квесту.</string>
+    <string name="quest_monitor_net">Активно запитувати мережеві локації\?</string>
+    <string name="pref_quest_monitor_download">Завантажувати дані за необхідності\? Це може призвести до значного споживання даних і заряду акумулятора, а також може бути заборонено Android з міркувань економії заряду акумулятора.</string>
+    <string name="theme_dark_contrast">Темний (підвищена контрастність)</string>
+    <string name="resurvey_intervals_even_less_often">Запитувати ще рідше</string>
+    <string name="pref_gps_interval_title">Інтервал оновлення GPS-координат</string>
+    <string name="pref_network_interval_title">Інтервал оновлення мережевого розташування</string>
+    <string name="pref_interval_summary">%d секунд</string>
+    <string name="quest_settings_osmose_level_high">Високий</string>
+    <string name="quest_settings_osmose_level_low">Низький</string>
+    <string name="quest_settings_resurvey_all_opening_hours_title">Переглянути всі години роботи</string>
+    <string name="quest_generic_answer_show_edit_tags">Показати/редагувати теги</string>
+    <string name="pref_import">Імпорт налаштувань</string>
+    <string name="import_export_presets">Заготовки</string>
+    <string name="quest_settings_sidewalk_distance_button">Відстань</string>
+    <string name="action_scee_quests">Показувати лише квести SCEE</string>
+    <string name="pref_interval_message">Інтервал оновлення в секундах</string>
+    <string name="quest_settings_level_title">Показати цей квест для:</string>
+    <string name="quest_settings_level_default">Магазини та подібні заклади в торгових центрах (за замовчуванням)</string>
+    <string name="quest_generic_surface_message">Дозволити загальні поверхневі відповіді без необхідності робити примітки\?</string>
+    <string name="quest_building_demolished">Знесено (видно сліди)</string>
+    <string name="pref_export">Експорт налаштувань</string>
+    <string name="import_export_presets_select">Виберіть заготовки для експорту</string>
+    <string name="quest_monitor_search_radius_text">Встановити радіус пошуку квестів поблизу. Зауважте, що квести з дещо більшою відстанню також можуть бути знайдені. Локації з точністю нижче цього значення ігноруються.</string>
+    <string name="quest_monitor_active_request">Активний запит місцезнаходжень збільшує витрату заряду акумулятора. Якщо ви не запитуєте місця розташування активно, місця розташування, запитані іншими програмами, все одно будуть використовуватися.</string>
+    <string name="delete_confirmation_data">Дані OSM та квестів</string>
+    <string name="delete_confirmation_both">Обидва</string>
+    <string name="restore_dialog_hint">Ви також можете вручну вибрати, які квести відновити, затиснувши кнопку скасування.</string>
+    <string name="quest_settings_reset">Скидання</string>
+    <string name="quest_settings_element_selection">Встановіть елементи, що підходять для цього квесту.<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Натисніть тут</a>, щоб відкрити інформацію про синтаксис виділення елементів у браузері.</string>
+    <string name="quest_settings_eligible_highways">Через кому перерахувати магістралі, які підходять для цього квесту</string>
+    <string name="quest_settings_what_to_edit">Що встановити\?</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">Встановити мінімальну відстань від окремих шляхів, якщо менше, то квест не буде показано</string>
+    <string name="quest_settings_max_roof_levels">Максимальне значення для (поверхи будівлі) мінус (поверхи даху) для квесту, який буде показано</string>
+    <string name="quest_settings_max_steps_length">Максимальна довжина сходів у метрах для показу квесту</string>
+    <string name="quest_settings_level_more">Лікарі та багато інших точок всередині багатоповерхових будівель</string>
+    <string name="quest_generic_surface_yes">Дозволити без примітки</string>
+    <string name="quest_generic_surface_no">Тільки з приміткою (за замовчуванням)</string>
+    <string name="quest_settings_osmose_level_title">Виберіть рівень важливості проблеми для завантаження та відображення</string>
+    <string name="quest_settings_osmose_level_medium">Середній</string>
+    <string name="quest_settings_fixme_title">Виберіть значення виправлень для ігнорування</string>
+    <string name="pref_expert_mode_message">Це дозволить використовувати квести, додані у SCEE, та способи
+\n <li>редагування необроблених тегів</li>
+\n <li>переміщення точок, які є частиною ліній або відношень</li>
+\n <li>видалення будь-якої вільно плаваючої точки</li>
+\n <li>редагування елементів, які мають бути заблоковані приміткою</li>
+\n <li>додавання вільно плаваючих точок у будь-якому місці</li>
+\n <li>зміна вибору елементів квестів</li>
+\n
+\n Це все ще менше, ніж дозволяє більшість інших редакторів, але необережне використання може призвести до пошкодження даних у спосіб, який неможливий у StreetComplete. Майте на увазі, що увімкнувши експертний режим, ви несете значно більшу відповідальність за свої правки.
+\n Будь ласка, вмикайте цей параметр лише якщо ви маєте досвід роботи з OSM поза StreetComplete і розумієте, що ви робите. </string>
 </resources>

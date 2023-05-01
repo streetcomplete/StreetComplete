@@ -2,6 +2,7 @@ v52.2: |
   <ul>
   <li>Simplify adding / updating (conditional) road and path access</li>
   <li>Add more conditional maxspeed options</li>
+  <li>Add Russian and French translations, and update Ukrainian translation. Thanks to un-logic, m-martin, mike140, bublov and Evgenii</li>
   <li>Fix issue with StreetMeasure on some phones (#426)</li>
   <li>Show some more frequent features as icon-only when adding nodes</li>
   <li>Option to show all notes now only hides SCEE notes if they were created with the same version</li>
