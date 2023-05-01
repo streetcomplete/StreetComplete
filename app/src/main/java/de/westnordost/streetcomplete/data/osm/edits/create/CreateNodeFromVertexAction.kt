@@ -19,12 +19,16 @@ import kotlinx.serialization.Serializable
 
 /** Action that transforms a way vertex into a node, i.e. adds tags to a vertex in a way.
  *
- *  A node in a way (a vertex) without any tags has no meaning in itself but just serves to define
- *  the geometry of a way. Hence, if we add tags to such a node, it is like creating a new node -
- *  not on the technical level, but on the semantic level.
+ *  A node in a way (a vertex) always serves to define the geometry of a way, regardless whether
+ *  it has tags on its own and thus describes an own feature or not. In other words, the meaning of
+ *  a vertex is always strongly bound to its location and membership in way(s), exclusively so if
+ *  the vertex has no tags at all: If we add tags to a vertex without tags, it is like creating a
+ *  new node - not on the technical level, but on the semantic level.
  *
- *  So, when this is edit is applied, it should be made sure that the vertex didn't change its
- *  meaning in the definition of the geometry: I.e. its position and the ways it is part of.
+ *  The user intention represented by this action is to add meaning (=tags) to a vertex at a certain
+ *  position and membership in certain way(s). So, when this is edit is applied, it is made sure
+ *  that the vertex didn't change its meaning in the definition of the geometry: I.e. its position
+ *  and the ways it is part of.
  *
  *  So, a conflict will be thrown if:
  *
