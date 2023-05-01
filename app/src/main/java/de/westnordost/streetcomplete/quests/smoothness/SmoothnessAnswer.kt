@@ -26,7 +26,7 @@ fun SmoothnessAnswer.applyTo(tags: Tags) {
             tags.removeCheckDatesForKey("smoothness")
         }
         is IsActuallyStepsAnswer -> {
-            tags.changeToSteps(tags)
+            tags.changeToSteps()
         }
     }
 }

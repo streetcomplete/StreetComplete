@@ -50,7 +50,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
                 answer.value.applyTo(tags)
             }
             is IsActuallyStepsAnswer -> {
-                tags.changeToSteps(tags)
+                tags.changeToSteps()
             }
             is IsIndoorsAnswer -> {
                 tags["indoor"] = "yes"

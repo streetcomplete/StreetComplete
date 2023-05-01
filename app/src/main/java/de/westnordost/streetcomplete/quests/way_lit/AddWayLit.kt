@@ -55,7 +55,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsActuallyStepsAnswer -> tags.changeToSteps(tags)
+            is IsActuallyStepsAnswer -> tags.changeToSteps()
             is WayLit -> answer.litStatus.applyTo(tags)
         }
     }
