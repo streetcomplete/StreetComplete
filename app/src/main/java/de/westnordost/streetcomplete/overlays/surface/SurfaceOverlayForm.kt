@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
@@ -22,6 +23,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.getFeatureName
+import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 
 class SurfaceOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_surface_select
@@ -37,41 +39,10 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private var isSegregatedLayout = false
 
-    override val otherAnswers: List<IAnswerItem> get() =
-        if (isSegregatedLayout) {
-            /*
-            No option to switch back to single surface. Removing info about separate cycleway is
-            too complicated.
-
-            Typically it requires editing not only surface info but also an access info as it
-            happens in cases where bicycle access is gone. May require also removal of
-            cycleway=separate, bicycle=use_sidepath from the road.
-
-            And in cases where there is a segregated cycleway with the same surface as footway
-            then StreetComplete will anyway ask for cycleway:surface and footway:surface.
-
-            Fortunately need for this change are really rare. Notes can be left as usual.
-            */
-            listOf()
-        } else if (isBothFootAndBicycleTraffic(element!!)) {
-            /*
-            Only where bicycle access is already present because adding bicycle access typically
-            requires adding proper access tags, interconnections with roads and often also other
-            geometry changes.
-
-            In case where path is not clearly marked as carrying both foot and bicycle traffic
-            mapper can leave a note
-            */
-            listOf(
-                AnswerItem(R.string.overlay_path_surface_segregated) {
-                    // reset previous data
-                    surfaceCtrl.value = originalSurface
-                    switchToFootwayCyclewaySurfaceLayout()
-                }
-            )
-        } else {
-            listOf()
-        }
+    override val otherAnswers: List<IAnswerItem> get() = listOfNotNull(
+        createSegregatedAnswer(),
+        createConvertToStepsAnswer()
+    )
 
     private val isBothFootAndBicycleTrafficFilter by lazy { """
         ways, relations with
@@ -211,6 +182,50 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         applyEdit(UpdateElementTagsAction(changesBuilder.create()))
+    }
+
+    private fun createSegregatedAnswer(): AnswerItem? =
+        if (isSegregatedLayout) {
+            /*
+            No option to switch back to single surface. Removing info about separate cycleway is
+            too complicated.
+
+            Typically it requires editing not only surface info but also an access info as it
+            happens in cases where bicycle access is gone. May require also removal of
+            cycleway=separate, bicycle=use_sidepath from the road.
+
+            And in cases where there is a segregated cycleway with the same surface as footway
+            then StreetComplete will anyway ask for cycleway:surface and footway:surface.
+
+            Fortunately need for this change are really rare. Notes can be left as usual.
+            */
+            null
+        } else if (isBothFootAndBicycleTraffic(element!!)) {
+            /*
+            Only where bicycle access is already present because adding bicycle access typically
+            requires adding proper access tags, interconnections with roads and often also other
+            geometry changes.
+
+            In case where path is not clearly marked as carrying both foot and bicycle traffic
+            mapper can leave a note
+            */
+            AnswerItem(R.string.overlay_path_surface_segregated) {
+                // reset previous data
+                surfaceCtrl.value = originalSurface
+                switchToFootwayCyclewaySurfaceLayout()
+            }
+        } else {
+            null
+        }
+
+    private fun createConvertToStepsAnswer(): AnswerItem? =
+        if (element!!.couldBeSteps()) AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
+        else null
+
+    private fun changeToSteps() {
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        tagChanges.changeToSteps()
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     companion object {
