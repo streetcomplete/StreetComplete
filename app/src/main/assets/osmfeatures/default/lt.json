@@ -2425,9 +2425,6 @@
                 "landuse/military/barracks": {
                     "name": "Barakai"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Pavojaus zona"
-                },
                 "landuse/orchard": {
                     "name": "Vaismedžių sodas",
                     "terms": "sodas,vaisių sodas"

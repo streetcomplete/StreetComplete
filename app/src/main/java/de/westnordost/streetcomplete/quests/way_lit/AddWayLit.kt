@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.applyTo
 
 class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
@@ -56,7 +57,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsActuallyStepsAnswer -> tags["highway"] = "steps"
+            is IsActuallyStepsAnswer -> tags.changeToSteps()
             is WayLit -> answer.litStatus.applyTo(tags)
         }
     }

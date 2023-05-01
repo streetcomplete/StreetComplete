@@ -1095,6 +1095,9 @@
                 "ref": {
                     "label": "Kode referensi"
                 },
+                "ref_room_number": {
+                    "label": "Nomor Ruangan"
+                },
                 "relation": {
                     "label": "Tipe"
                 },
@@ -1147,6 +1150,12 @@
                     },
                     "placeholder": "Tidak, Terpisah, Ya..."
                 },
+                "social_facility": {
+                    "label": "Tipe"
+                },
+                "social_facility_for": {
+                    "label": "Orang yang Dilayankan"
+                },
                 "source": {
                     "label": "Sumber"
                 },
@@ -1167,6 +1176,9 @@
                 "surface": {
                     "label": "Permukaan"
                 },
+                "surveillance/type": {
+                    "label": "Tipe Pengawasan"
+                },
                 "takeaway": {
                     "label": "Bawa pulang",
                     "options": {
@@ -1178,6 +1190,9 @@
                 },
                 "toilets/disposal": {
                     "label": "Tempat Pembuangan"
+                },
+                "tomb": {
+                    "label": "Tipe"
                 },
                 "tourism": {
                     "label": "Tipe"
@@ -1197,6 +1212,9 @@
                 },
                 "trees": {
                     "label": "Pepohonan"
+                },
+                "wall": {
+                    "label": "Tipe"
                 },
                 "water": {
                     "label": "Tipe"
@@ -1253,6 +1271,9 @@
                 "aeroway/taxiway": {
                     "name": "Landas hubung",
                     "terms": "landas gelinding,jalan rayap,landas ancang"
+                },
+                "aeroway/terminal": {
+                    "name": "Terminal Bandar Udara,Terminal Bandara"
                 },
                 "amenity": {
                     "name": "Keramahan"
@@ -1340,6 +1361,9 @@
                 },
                 "amenity/dojo": {
                     "name": "Sasana Bela Diri"
+                },
+                "amenity/dressing_room": {
+                    "name": "Ruang Ganti Pakaian"
                 },
                 "amenity/drinking_water": {
                     "name": "Air Minum"
@@ -1462,6 +1486,9 @@
                     "name": "Teater",
                     "terms": "teater"
                 },
+                "amenity/toilets": {
+                    "name": "Kamar Kecil,Kamar Mandi,Toilet"
+                },
                 "amenity/townhall": {
                     "name": "Balai Kota",
                     "terms": "balai kota"
@@ -1556,7 +1583,8 @@
                     "name": "Pintu Masuk/Keluar"
                 },
                 "building/garage": {
-                    "name": "Garasi tunggal"
+                    "name": "Garasi tunggal",
+                    "terms": "garasi"
                 },
                 "building/garages": {
                     "name": "Garasi jamak"
@@ -1782,7 +1810,8 @@
                     "terms": "rest area"
                 },
                 "highway/road": {
-                    "name": "Jalan Tak Diketahui"
+                    "name": "Jalan Tak Diketahui",
+                    "terms": "jalan tidak diketahui"
                 },
                 "highway/secondary": {
                     "name": "Jalan Kabupaten",
@@ -1793,7 +1822,8 @@
                     "terms": "jalan penghubung sekunder"
                 },
                 "highway/service": {
-                    "name": "Jalan Layanan"
+                    "name": "Jalan Layanan",
+                    "terms": "jalan layanan"
                 },
                 "highway/service/alley": {
                     "name": "Gang",
@@ -1801,7 +1831,12 @@
                 },
                 "highway/service/drive-through": {
                     "name": "kendara lewat",
+                    "terms": "layanan tanpa turun,lantatur",
                     "aliases": "drive-through\ndrive-thru\nberkendara melewati"
+                },
+                "highway/service/driveway": {
+                    "name": "Jalan Masuk",
+                    "terms": "jalan masuk"
                 },
                 "highway/service/emergency_access": {
                     "name": "Akses Darurat",
@@ -1850,7 +1885,8 @@
                     "terms": "putar balik"
                 },
                 "highway/unclassified": {
-                    "name": "Minor/Jalan Tak Diklasifikasi"
+                    "name": "Minor/Jalan Tak Diklasifikasi",
+                    "terms": "jalanan yang tak ada klasifikasi/kecil"
                 },
                 "historic": {
                     "name": "Situs Bersejarah",
@@ -1887,6 +1923,9 @@
                 "historic/wayside_shrine": {
                     "name": "Kuil Pinggir Jalan",
                     "terms": "kuil pinggir jalan"
+                },
+                "indoor/room": {
+                    "name": "Ruangan"
                 },
                 "junction": {
                     "name": "Persimpangan",
@@ -1966,6 +2005,9 @@
                 "landuse/vineyard": {
                     "name": "Kebun Anggur",
                     "terms": "kebun anggur"
+                },
+                "leisure": {
+                    "name": "Fitur Santai"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Pusat permainan dewasa"
@@ -2059,9 +2101,15 @@
                     "name": "Garis",
                     "terms": "garis"
                 },
+                "man_made": {
+                    "name": "Fitur Buatan Manusia"
+                },
                 "man_made/breakwater": {
                     "name": "Pemecah Gelombang",
                     "terms": "pemecah ombak,tembok laut"
+                },
+                "man_made/cutline": {
+                    "name": "Garis Putus"
                 },
                 "man_made/flagpole": {
                     "name": "Tiang Bendera"
@@ -2340,6 +2388,9 @@
                     "name": "Juru Taruh",
                     "terms": "tukang taruh,taruhan,judi"
                 },
+                "shop/books": {
+                    "name": "Toko Buku"
+                },
                 "shop/boutique": {
                     "name": "Butik"
                 },
@@ -2363,6 +2414,9 @@
                 },
                 "shop/cheese": {
                     "name": "Toko Keju"
+                },
+                "shop/chemist": {
+                    "name": "Toko Obat"
                 },
                 "shop/chocolate": {
                     "name": "Toko Cokelat"
@@ -2505,6 +2559,9 @@
                 "shop/musical_instrument": {
                     "name": "Toko Alat Musik"
                 },
+                "shop/newsagent": {
+                    "name": "Kios Koran"
+                },
                 "shop/optician": {
                     "name": "Optik",
                     "terms": "mata"
@@ -2546,7 +2603,7 @@
                     "name": "Toko Alat Tulis"
                 },
                 "shop/supermarket": {
-                    "name": "Supermarket",
+                    "name": "Pasar Besar",
                     "terms": "pasar swalayan"
                 },
                 "shop/tailor": {
@@ -2580,6 +2637,9 @@
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Toko Pengisap Debu"
+                },
+                "shop/variety_store": {
+                    "name": "Toko Diskon"
                 },
                 "shop/video": {
                     "name": "Toko Video",
@@ -2682,6 +2742,9 @@
                 },
                 "type/route": {
                     "name": "Rute"
+                },
+                "type/route/bicycle": {
+                    "name": "Rute Pesepeda,Rute Sepeda"
                 },
                 "type/route/bus": {
                     "name": "Rute Bus"

@@ -660,7 +660,7 @@
                 },
                 "fire_hydrant/type": {
                     "options": {
-                        "pillar": "Stub/nadzemni",
+                        "pillar": "Stup/nadzemni",
                         "underground": "Podzemni",
                         "wall": "Zid"
                     }
@@ -1160,17 +1160,6 @@
                         "surface": "Površinski",
                         "underground": "Podzemni"
                     }
-                },
-                "parking/orientation": {
-                    "label": "Orijentacija",
-                    "options": {
-                        "diagonal": "Dijagonalno na ulicu",
-                        "parallel": "Paralelno sa ulicom",
-                        "perpendicular": "Okomito na ulicu"
-                    }
-                },
-                "parking/side/orientation": {
-                    "label": "Orijentacija parkiranja"
                 },
                 "payment_multi": {
                     "label": "Načini plaćanja",
@@ -2096,7 +2085,7 @@
                     "name": "Košara za pseći izmet"
                 },
                 "amenity/waste_basket": {
-                    "name": "Kanta za smeće",
+                    "name": "Koš za smeće",
                     "terms": "smeće,koš za smeće,kanta za smeće"
                 },
                 "amenity/waste_disposal": {

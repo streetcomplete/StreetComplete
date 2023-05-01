@@ -17,7 +17,7 @@ ast:
    Víctor Suárez: 11946
    Xuacu Saturio: 840
 bg: 
-   Plamen: 36989
+   Plamen: 37136
    Dimitar: 2020
    Kalin: 883
    Rhhsmits: 202
@@ -35,21 +35,21 @@ ca:
    pataquets: 718
    Gabriel Fernández Fernández: 53
 cs: 
-   leschek: 27791
-   Lukáš Jelínek: 11810
-   Stanislav Tichý: 2467
-   Petr Kristof: 738
-   Petr Kadlec: 666
-   Jakub: 317
+   leschek: 26280
+   Lukáš Jelínek: 13901
+   Stanislav Tichý: 2190
+   Petr Kadlec: 648
+   Petr Kristof: 575
+   Jakub: 231
    MartinPulec: 150
-   Vojtik69: 144
+   Vojtik69: 82
    Vladankudlac: 19
    Lukas852: 14
 da: 
-   ERyPTION: 28494
+   ERyPTION: 28518
    Dennis Kjær Jensen: 6394
    Soren: 3647
-   Leonora: 2785
+   Leonora: 2741
    Jens Hyllegaard: 907
    Cookieblues: 718
    Jonas Storgaard: 680
@@ -95,8 +95,9 @@ en:
 en-AU: 
    Didz: 9071
    Tech Dec: 5775
-   Declan: 2642
+   Declan: 4416
    Baku: 1875
+   Andrew: 1278
    Peter Newman: 53
 en-GB: 
    Oliver Hawes: 6869
@@ -106,7 +107,7 @@ en-GB:
    legofahrrad: 1447
    Jay Turner: 1065
    Andi Chandler: 1014
-   Andrew: 976
+   Andrew: 488
    Chris Lane: 327
    Ian Rutson: 285
    عثمان: 251
@@ -125,10 +126,10 @@ en-GB:
    Ferdi: 5
    Luka: 4
 eo: 
-   Jolesh: 19789
+   Jolesh: 19784
    Jan: 6284
-   Martin Constantino-Bodin: 4712
-   Hanna: 3796
+   Martin Constantino-Bodin: 4684
+   Hanna: 4374
    g: 1443
    Robin van der Vliet: 659
    Hendursaga: 569
@@ -136,8 +137,9 @@ eo:
    Ralf Kleiner: 52
    Voltinus: 6
 es: 
-   Swyter: 31244
+   Swyter: 31077
    sanchi: 11300
+   bletroca: 1733
    Hugoren Martinako: 1100
    Jose Luis Infante: 671
    Roboe: 600
@@ -157,7 +159,7 @@ es:
    Manu: 11
 eu: 
    Osoitz: 17336
-   alexgabi: 10969
+   alexgabi: 12558
    Galder: 6729
    Gari Araolaza: 1386
    Alexander Gabilondo: 1185
@@ -167,7 +169,7 @@ eu:
    Jokin: 224
    Etzharai: 213
 fa: 
-   Mohammad Mehdi Maliki: 17498
+   Mohammad Mehdi Maliki: 17545
    ARA2020: 13481
    Iman: 11132
    Ahmad: 759
@@ -175,16 +177,17 @@ fa:
    mojtaba: 134
    Goudarz Jafari: 45
 fi: 
-   Jiri Grönroos: 13923
+   Jiri Grönroos: 13469
    OpenKartat: 7959
-   Aleksi.klasila: 4688
    Juhana Uuttu: 4508
-   Jarmo Sutinen: 2673
+   Aleksi.klasila: 4458
+   Jarmo Sutinen: 2628
    Jimi Viita-aho: 1795
    Kantele: 1440
    Demian Wright: 1299
    Harri: 1118
    Niko Böckerman: 795
+   Lasse: 728
    Ikx: 686
    Toni: 596
    Risto: 577
@@ -239,7 +242,7 @@ fr:
 gl: 
    Iváns: 18207
    ccpr1l: 14320
-   Xose M.: 2274
+   José M.: 2274
 hr: 
    Matija Nalis: 46410
    Nemanja Bračko: 59
@@ -256,7 +259,7 @@ hu:
 hy: 
    Alexander and Vasak87: 36848
 id: 
-   TA: 15947
+   TA: 17506
    Froyobread: 15167
    Ismail Sunni: 3584
    Novalhidayat: 559
@@ -299,6 +302,7 @@ ja:
    Maksymilian: 153
    ssotoen: 61
    Morgan: 8
+   Ishihara: 3
 ko: 
    imsesaok: 14090
    Depth221: 4384
@@ -315,7 +319,7 @@ lt:
    Jurkis: 449
    Ignas Kiela: 278
 lv: 
-   Rudolfs. mazurs: 40862
+   Rudolfs. mazurs: 40994
    ForestEnjoyer: 3221
    Kārlis: 538
 ml: 
@@ -355,7 +359,7 @@ nl:
    Amy: 458
    Hsl H: 383
    Kammah: 315
-   jhtm: 180
+   jhtm: 280
    Kenny: 144
    Edootje1: 141
    Simon Bor: 134
@@ -367,12 +371,12 @@ nn:
    Karl Ove Hufthammer: 32578
    10992: 12
 pl: 
-   Mateusz Konieczny: 13093
+   Mateusz Konieczny: 13135
    Ilona Sadowska: 8309
    Tomasz Maciejewski: 3210
    Kamil: 3074
    Piotr Strębski: 2853
-   Konrad W: 2262
+   Konrad W: 2220
    Dominik Danelski: 1861
    Marek-M: 1674
    skepticalknowledge: 1548
@@ -390,15 +394,16 @@ pl:
    Daniel Koć: 179
    Orlyyt: 174
    Czapkofan: 108
+   Michał: 91
    PoiuyPL: 72
    Saibamen: 72
    psokol: 50
    Marek: 39
    Michal: 38
 pt: 
-   Carnum: 36268
+   Carnum: 36474
    NunoCaldeira: 5941
-   Rui: 3262
+   Rui: 3294
    waldyrious: 2609
    diogodinisf: 751
    Aurelio Pires: 652
@@ -417,6 +422,7 @@ pt-BR:
    André Alvarenga: 819
    Diego Biavati: 632
    Douglas: 435
+   Infelizmente ninguém: 295
 ro: 
    Georgian Iosef: 29181
    Dancojocaru2010: 2363
@@ -480,7 +486,7 @@ sk:
    Zaijo: 198
    Brano: 31
 sr-cyrl: 
-   Nemanja Bračko: 19411
+   Nemanja Bračko: 19426
    Mario: 17197
    Branko Kokanovic: 6461
    Nikola: 169
@@ -522,7 +528,7 @@ uk:
    andygol: 7235
    nikiforovpizza: 6754
    Ілля: 5110
-   Serhii. Muchychka: 4819
+   Serhii. Muchychka: 4828
    Евгений: 3952
    slayzex: 1813
    zimirrrr: 1046

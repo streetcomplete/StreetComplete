@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Livello amministrativo"
                 },
+                "advertising": {
+                    "label": "Tipo"
+                },
                 "aerialway": {
                     "label": "Tipo"
                 },
@@ -244,7 +247,15 @@
                     "label": "Animali"
                 },
                 "archaeological_site": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "baths": "Bagni",
+                        "city": "Città storica",
+                        "crannog": "Crannóg",
+                        "enclosure": "Recinto",
+                        "fortification": "Fortificazione",
+                        "necropolis": "Necropoli"
+                    }
                 },
                 "architect": {
                     "label": "Architetto",
@@ -278,7 +289,11 @@
                     "label": "Bancomat"
                 },
                 "attraction": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "animal": "Recinto per animali",
+                        "maze": "Labirinto"
+                    }
                 },
                 "automated": {
                     "label": "Automatizzato"
@@ -308,6 +323,14 @@
                 "barrier": {
                     "label": "Tipo",
                     "options": {
+                        "ditch": "Fossato",
+                        "entrance": "Ingresso",
+                        "gate": "Cancello",
+                        "hedge": "Siepe",
+                        "kerb": "Cordolo",
+                        "stile": "Scaletta",
+                        "swing_gate": "Sbarra orizzontale",
+                        "toll_booth": "Casello",
                         "wall": "Muro"
                     }
                 },
@@ -384,7 +407,12 @@
                     "label": "Tipo",
                     "options": {
                         "art": "Arte",
-                        "nature": "Natura"
+                        "astronomy": "Astronomia",
+                        "geology": "Geologia",
+                        "history": "Storia",
+                        "nature": "Natura",
+                        "plants": "Piante",
+                        "welcome_sign": "Cartello di benvenuto"
                     }
                 },
                 "bollard": {
@@ -426,6 +454,35 @@
                 },
                 "building": {
                     "label": "Edificio",
+                    "options": {
+                        "bungalow": "Bungalow",
+                        "bunker": "Bunker",
+                        "cathedral": "Cattedrale",
+                        "chapel": "Cappella",
+                        "church": "Chiesa",
+                        "construction": "Edificio in costruzione",
+                        "dormitory": "Dormitorio",
+                        "fire_station": "Vigili del fuoco",
+                        "garage": "Garage",
+                        "garages": "Serie di garage",
+                        "hangar": "Hangar",
+                        "hospital": "Ospedale",
+                        "hotel": "Hotel",
+                        "industrial": "Capannone industriale",
+                        "mosque": "Moschea",
+                        "office": "Uffici",
+                        "residential": "Residenziale",
+                        "roof": "Tettoia",
+                        "ruins": "Rovine di un edificio",
+                        "school": "Scuola",
+                        "stable": "Stalla",
+                        "stadium": "Stadio",
+                        "synagogue": "Sinagoga",
+                        "temple": "Tempio",
+                        "train_station": "Stazione ferroviaria",
+                        "university": "Università",
+                        "warehouse": "Magazzino"
+                    },
                     "terms": "edificio,palazzo,stabile,costruzione"
                 },
                 "building/flats": {
@@ -558,6 +615,23 @@
                 },
                 "clothes": {
                     "label": "Abbigliamento",
+                    "options": {
+                        "babies": "Abiti per neonati",
+                        "children": "Abiti per bambini",
+                        "denim": "Jeans",
+                        "fur": "Pellicce",
+                        "hats": "Cappelli",
+                        "maternity": "Abiti per la maternità",
+                        "men": "Abiti da uomo",
+                        "motorcycle": "Abiti da moto",
+                        "socks": "Calzini",
+                        "sports": "Abbigliamento sportivo",
+                        "swimwear": "Costumi da bagno",
+                        "underwear": "Intimo",
+                        "wedding": "Abiti nuziali",
+                        "women": "Abiti da donna",
+                        "workwear": "Abiti da lavoro"
+                    },
                     "terms": "abbigliamento,vestiti,vestiario,abiti,maglie,camicie,pantaloni,giacche,cappotti,pullover,cardigan"
                 },
                 "club": {
@@ -635,10 +709,20 @@
                     "label": "Tipo",
                     "options": {
                         "bookbinder": "Rilegatore",
+                        "brewery": "Birrificio",
                         "carpenter": "Carpentiere",
+                        "clockmaker": "Orologiaio",
+                        "distillery": "Distilleria",
                         "electrician": "Elettricista",
+                        "electronics_repair": "Riparatore elettronico",
                         "gardener": "Giardiniere",
-                        "photographer": "Fotografo"
+                        "jeweller": "Gioielliere",
+                        "painter": "Pittore",
+                        "photographer": "Fotografo",
+                        "photographic_laboratory": "Laboratorio fotografico",
+                        "plumber": "Idraulico",
+                        "sculptor": "Scultore",
+                        "watchmaker": "Orologiaio"
                     }
                 },
                 "crane/type": {
@@ -854,6 +938,9 @@
                 },
                 "deposit/trolley": {
                     "label": "Deposito"
+                },
+                "depot": {
+                    "label": "Tipo"
                 },
                 "depth": {
                     "label": "Profondità (metri)"
@@ -1179,7 +1266,25 @@
                         "GTL_diesel": "GTL Diesel",
                         "LH2": "Idrogeno liquido",
                         "biodiesel": "Biodiesel",
-                        "diesel": "Diesel"
+                        "diesel": "Diesel",
+                        "e10": "Benzina E10",
+                        "e85": "Benzina E85",
+                        "h70": "Idrogeno gassoso (700 bar)",
+                        "lpg": "Gas naturale liquefatto (LPG)",
+                        "octane_100": "Benzina (100 ottani)",
+                        "octane_80": "Benzina (80 ottani)",
+                        "octane_85": "Benzina (85 ottani)",
+                        "octane_87": "Benzina (87 ottani)",
+                        "octane_88": "Benzina (88 ottani)",
+                        "octane_89": "Benzina (89 ottani)",
+                        "octane_90": "Benzina (90 ottani)",
+                        "octane_91": "Benzina (91 ottani)",
+                        "octane_92": "Benzina (92 ottani)",
+                        "octane_93": "Benzina (93 ottani)",
+                        "octane_95": "Benzina (95 ottani)",
+                        "octane_97": "Benzina (97 ottani)",
+                        "octane_98": "Benzina (98 ottani)",
+                        "propane": "Propano"
                     }
                 },
                 "gambling": {
@@ -1205,7 +1310,9 @@
                     "options": {
                         "combustion": "Combustione",
                         "fission": "Fissione",
-                        "fusion": "Fusione"
+                        "fusion": "Fusione",
+                        "photovoltaic": "Fotovoltaico",
+                        "wind_turbine": "Turbina eolica"
                     }
                 },
                 "generator/output/electricity": {
@@ -1221,6 +1328,8 @@
                         "diesel": "Diesel",
                         "gas": "Gas naturale",
                         "gasoline": "Gasolio",
+                        "hydro": "Idroelettrica",
+                        "nuclear": "Energia nucleare",
                         "oil": "Olio",
                         "solar": "Radiazione solare",
                         "waste": "Rifiuti",
@@ -1270,6 +1379,10 @@
                 "healthcare/speciality": {
                     "label": "Specialità",
                     "options": {
+                        "acupuncture": "Agopuntura",
+                        "allergology": "Allergia e asma",
+                        "aromatherapy": "Aromaterapia",
+                        "ayurveda": "Ayurveda",
                         "biology": "Biologia",
                         "blood_check": "Analisi del sangue",
                         "cardiology": "Cardiologia",
@@ -1279,6 +1392,7 @@
                         "diagnostic_radiology": "Radiologia diagnostica",
                         "emergency": "Medicina d’urgenza",
                         "endocrinology": "Endocrinologia",
+                        "fertility": "Fertilità",
                         "gastroenterology": "Gastroenterologia",
                         "geriatrics": "Geriatria",
                         "gynaecology": "Ostetricia e ginecologia",
@@ -1292,11 +1406,13 @@
                         "oncology": "Oncologia",
                         "paediatric_surgery": "Chirurgia pediatrica",
                         "paediatrics": "Pediatria",
+                        "palliative": "Cure palliative",
                         "plastic_surgery": "Chirurgia plastica",
                         "psychiatry": "Psichiatria",
                         "pulmonology": "Pneumologia",
                         "radiology": "Radiologia",
                         "radiotherapy": "Radioterapia",
+                        "shiatsu": "Shiatsu",
                         "stomatology": "Stomatologia",
                         "urology": "Urologia",
                         "vaccination": "Vaccinazioni",
@@ -1372,8 +1488,7 @@
                         "critical": "Intermedio: effettuabile solo da cavalieri esperti e cavalli in forma. Ostacoli importanti. I ponti vanno esaminati accuratamente.",
                         "dangerous": "Pericoloso: solo per cavalieri molto esperti e cavalli in forma se le condizioni meteo lo permettono. È necessario scendere da cavallo.",
                         "demanding": "Da praticare con cautela: strada disconnessa con passaggi occasionalmente difficili.",
-                        "difficult": "Difficile: percorso stretto ed esposto. Possono esserci ostacoli da saltare e passaggi stretti.",
-                        "impossible": "Impraticabile: il percorso/ponte non è adatto ai cavalli. Troppo stretto, non può tenere il peso dell’animale oppure ci sono ostacoli come scale. Pericolo di vita."
+                        "difficult": "Difficile: percorso stretto ed esposto. Possono esserci ostacoli da saltare e passaggi stretti."
                     },
                     "placeholder": "Difficile, pericoloso..."
                 },
@@ -1540,6 +1655,13 @@
                 "liaison": {
                     "label": "Tipo"
                 },
+                "lift_gate/type": {
+                    "label": "Tipo",
+                    "options": {
+                        "double": "Sbarre opposte",
+                        "single": "Sbarra singola"
+                    }
+                },
                 "line_attachment": {
                     "label": "Aggancio della linea"
                 },
@@ -1597,6 +1719,23 @@
                 },
                 "material": {
                     "label": "Materiale",
+                    "options": {
+                        "aluminium": "Alluminio",
+                        "brick": "Mattone",
+                        "bronze": "Bronzo",
+                        "glass": "Vetro",
+                        "iron": "Ferro",
+                        "marble": "Marmo",
+                        "metal": "Metallo",
+                        "plastic": "Plastica",
+                        "reinforced_conrete": "Cemento rinforzato",
+                        "rock": "Roccia",
+                        "sand": "Sabbia",
+                        "soil": "Terra",
+                        "steel": "Acciaio",
+                        "stone": "Pietre",
+                        "wood": "Legno"
+                    },
                     "terms": "materiale,materia,sostanza"
                 },
                 "max_age": {
@@ -1628,7 +1767,19 @@
                     "label": "Larghezza massima"
                 },
                 "memorial": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "obelisk": "Obelisco",
+                        "plaque": "Targa commemorativa",
+                        "sculpture": "Scultura",
+                        "statue": "Statua",
+                        "stele": "Stele",
+                        "stolperstein": "Pietra d’inciampo",
+                        "stone": "Pietra"
+                    }
+                },
+                "message": {
+                    "label": "Messaggio"
                 },
                 "microbrewery": {
                     "label": "Microbirrificio"
@@ -1830,14 +1981,6 @@
                         "street_side": "Lato strada",
                         "surface": "Superficie",
                         "underground": "Sotterraneo"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Disposizione veicoli",
-                    "options": {
-                        "diagonal": "A lisca di pesce",
-                        "parallel": "In parallelo",
-                        "perpendicular": "A pettine"
                     }
                 },
                 "parking_entrance": {
@@ -2482,38 +2625,16 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Sport",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Hockey su ghiaccio",
-                        "ice_skating": "Pattinaggio sul ghiaccio",
-                        "ice_stock": "Birilli su ghiaccio",
-                        "multi": "Multiplo"
-                    }
+                    "label": "Sport"
                 },
                 "sport_pub": {
-                    "label": "Sport",
-                    "options": {
-                        "billiards": "Biliardo"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_motor": {
-                    "label": "Sport",
-                    "options": {
-                        "karting": "Go kart",
-                        "motocross": "Motocross",
-                        "motor": "Sport motoristici"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sport",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Ciclismo",
-                        "dog_racing": "Corse di cani",
-                        "horse_racing": "Corse di cavalli",
-                        "running": "Corsa"
-                    }
+                    "label": "Sport"
                 },
                 "stars": {
                     "label": "Stelle"
@@ -3524,7 +3645,8 @@
                     "terms": "denaro,moneta,ordini,banconota,banconote,assegno,assegni,bollette,valuta,finanza,privati,scambio,contante"
                 },
                 "amenity/mortuary": {
-                    "name": "Obitorio"
+                    "name": "Obitorio",
+                    "terms": "morgue,camera mortuaria,commiato,crematorio,becchino,necroforo,funerale,funebri,sepoltura,defunto,cadavere"
                 },
                 "amenity/motorcycle_parking": {
                     "name": "Parcheggio moto",
@@ -4461,6 +4583,10 @@
                 "building_point": {
                     "name": "Edificio"
                 },
+                "cemetery/sector": {
+                    "name": "Sezione cimitero",
+                    "terms": "cimitero,cimiteriale,colombario,tomba,campo,camposanto,sepoltura,mausoleo"
+                },
                 "club": {
                     "name": "Club",
                     "terms": "sociale,centro,centro sociale,centro aggregazione,centro culturale"
@@ -4518,7 +4644,7 @@
                 },
                 "craft/clockmaker": {
                     "name": "Costruttore di orologi",
-                    "terms": "orologi"
+                    "terms": "orologi,orologiaio,costruttore,riparatore,riparazione"
                 },
                 "craft/confectionery": {
                     "name": "Mercato delle caramelle",
@@ -4656,7 +4782,8 @@
                 },
                 "craft/watchmaker": {
                     "name": "Orologiaio",
-                    "terms": "orologi,riparazione"
+                    "terms": "orologi,riparazione,riparatore",
+                    "aliases": "riparatore di orologi"
                 },
                 "craft/window_construction": {
                     "name": "Serramentista",
@@ -5337,7 +5464,7 @@
                 },
                 "landuse/cemetery": {
                     "name": "Cimitero",
-                    "terms": "cimitero"
+                    "terms": "cimitero,sepoltura,camposanto,tombe,necropoli,colombario,loculi,cripta,gentilizia,fossa,mausoleo"
                 },
                 "landuse/churchyard": {
                     "name": "Area parrocchiale"
@@ -5427,10 +5554,6 @@
                 },
                 "landuse/military/base/navy": {
                     "name": "Base navale"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Zona militare pericolosa",
-                    "terms": "militari,pericolo,soldati,esercito"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Percorso ad ostacoli militare"
@@ -5624,7 +5747,8 @@
                     "terms": "pista di pattinaggio su ghiaccio,campo da hockey su ghiaccio"
                 },
                 "leisure/indoor_play": {
-                    "name": "Parco giochi interno"
+                    "name": "Centro giochi al chiuso",
+                    "terms": "centro giochi,ludoteca,bambini,interno,chiuso"
                 },
                 "leisure/marina": {
                     "name": "Marina",
@@ -5745,10 +5869,12 @@
                     "name": "Campo da pallavolo"
                 },
                 "leisure/playground": {
-                    "name": "Parco giochi"
+                    "name": "Parco giochi",
+                    "terms": "area giochi,parco giochi,esterno,aperto"
                 },
                 "leisure/playground/indoor": {
-                    "name": "Parco giochi interno"
+                    "name": "Parco giochi interno",
+                    "terms": "centro giochi,ludoteca,bambini,chiuso,interno"
                 },
                 "leisure/resort": {
                     "name": "Resort",
@@ -5855,6 +5981,10 @@
                     "name": "Area disboscata",
                     "terms": "taglio,bosco,foresta,legna,legname,legno,albero,alberi,tronchi,disboscamento,deforestazione,selvicoltura"
                 },
+                "man_made/compass_rose": {
+                    "name": "Rosa dei venti",
+                    "terms": "bussola,est,nord,ovest,sud,rosa,tramontana,grecale,libeccio,ostro,scirocco,levante,ponente,maestrale"
+                },
                 "man_made/courtyard": {
                     "name": "Cortile"
                 },
@@ -5944,6 +6074,10 @@
                 "man_made/mast/communication/television": {
                     "name": "Torre della televisione"
                 },
+                "man_made/mast/lighting": {
+                    "name": "Palo d’illuminazione",
+                    "terms": "luci,fari,illuminazione,stadio,riflettore"
+                },
                 "man_made/mineshaft": {
                     "name": "Galleria verticale",
                     "terms": "cava,miniera,tunnel,galleria,sotterraneo,verticale,profondità,buco,fossa,entrata,ingresso"
@@ -5976,6 +6110,10 @@
                 "man_made/pipeline/underground": {
                     "name": "Tubatura sotterranea",
                     "terms": "oleodotto,metanodotto,petrolio,metano,gas naturale,acqua,fognatura,fogne"
+                },
+                "man_made/planter": {
+                    "name": "Fioriera",
+                    "terms": "fioriera,vaso,fiori"
                 },
                 "man_made/pumping_station": {
                     "name": "Stazione di pompaggio",
@@ -6031,6 +6169,10 @@
                 "man_made/tower/defensive": {
                     "name": "Torre fortificata"
                 },
+                "man_made/tower/diving": {
+                    "name": "Trampolino",
+                    "terms": "tuffo,torre,tuffarsi"
+                },
                 "man_made/tower/minaret": {
                     "name": "Minareto",
                     "terms": "islam,moschea,muezzin,musulmano,mussulmano"
@@ -6047,6 +6189,10 @@
                 },
                 "man_made/utility_pole": {
                     "name": "Palo per utenze pubbliche"
+                },
+                "man_made/video_wall": {
+                    "name": "Schermo digitale",
+                    "terms": "schermo,televisore,tv,muro led,monitor"
                 },
                 "man_made/wastewater_plant": {
                     "name": "Impianto di depurazione delle acque",
@@ -6083,6 +6229,10 @@
                 "man_made/works": {
                     "name": "Fabbrica",
                     "terms": "industria,manifattura,officina,opificio,stabilimento,laboratorio"
+                },
+                "man_made/works/brewery": {
+                    "name": "Birrificio industriale",
+                    "terms": "alcool,birra,bevuta,sidro"
                 },
                 "man_made/yes": {
                     "name": "Elemento creato dall'uomo (Tipo non specificato)"
@@ -6226,6 +6376,10 @@
                     "name": "Roccia non fissata",
                     "terms": "roccia,pietra"
                 },
+                "natural/strait": {
+                    "name": "Stretto",
+                    "terms": "canale,passo,passaggio,braccio"
+                },
                 "natural/tree": {
                     "name": "Albero",
                     "terms": "albero"
@@ -6235,7 +6389,8 @@
                     "terms": "alberi,filare,fila,cipressi,viale alberato"
                 },
                 "natural/tree_stump": {
-                    "name": "Troncone"
+                    "name": "Troncone",
+                    "terms": "albero,rimosso,tagliato,ceppo,tronco"
                 },
                 "natural/valley": {
                     "name": "Valle",
@@ -7002,6 +7157,10 @@
                 "shop/anime": {
                     "name": "Negozio di Anime / Manga"
                 },
+                "shop/antiques": {
+                    "name": "Negozio di oggetti antichi",
+                    "terms": "anticaglia,antichi,antichità,desueti,disuso"
+                },
                 "shop/appliance": {
                     "name": "Negozio di elettrodomestici",
                     "terms": "condizionatori,apparecchi,lavatrici,asciugatori,freezer,frigo,congelatori"
@@ -7314,8 +7473,7 @@
                     "terms": "negozio hi-fi"
                 },
                 "shop/hobby": {
-                    "name": "Negozio di hobbystica",
-                    "terms": "manga,figurine,modellini,hobby"
+                    "name": "Negozio di hobbystica"
                 },
                 "shop/household_linen": {
                     "name": "Negozio di biancheria per la casa",

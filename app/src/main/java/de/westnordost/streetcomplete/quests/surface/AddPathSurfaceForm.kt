@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
-import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 
 class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
     override val items get() = SELECTABLE_WAY_SURFACES.toItems()
@@ -32,12 +32,11 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
-        val way = element as? Way ?: return null
-        if (way.isArea() || way.tags["highway"] == "steps") return null
-
-        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IsActuallyStepsAnswer, true)
-        }
+        return if (element.couldBeSteps()) {
+            AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+                applyAnswer(IsActuallyStepsAnswer, true)
+            }
+        } else null
     }
 
     private fun createMarkAsIndoorsAnswer(): AnswerItem? {

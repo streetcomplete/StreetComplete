@@ -378,7 +378,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_housenumber_multiple_numbers">"Ĝi havas plurajn domnumerojn"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Vi povas simple enigi domnumerojn disigitajn per komoj aŭ intervalojn.\nEkzemple 1,3 aŭ 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Arko (kiu subtenas biciklan kadron)"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas radion)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas radon)"</string>
     <string name="quest_bicycle_parking_type_shed">"Ŝedo"</string>
     <string name="quest_bicycle_parking_type_locker">"Ŝlosilita"</string>
     <string name="quest_bicycle_parking_type_building">"Konstruaĵo"</string>
@@ -857,7 +857,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_type_cattle_grid">"Krado blokanta brutaron de promenado supren"</string>
     <string name="quest_barrier_type_block">"Granda senmova objekto"</string>
     <string name="quest_barrier_jersey_barrier">"Antaŭfabrikita barilo"</string>
-    <string name="quest_barrier_type_log">"Ŝtipo"</string>
+    <string name="quest_barrier_type_log">"Trunko"</string>
     <string name="quest_barrier_type_kerb">"trotuarrando"</string>
     <string name="quest_barrier_type_height_restrictor">"Alteca barilo"</string>
     <string name="quest_barrier_full_height_turnstile">"Homalta turnokruco"</string>
@@ -867,7 +867,10 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_type_stile_squeezer">"Mallarĝega pasejo"</string>
     <string name="quest_barrier_type_stile_ladder">"Ŝtupareto"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Bicikla baro"</string>
+    <string name="quest_barrier_type_kissing_gate">"Svinga kradpordeto"</string>
+    <string name="quest_barrier_type_swing_gate">"Bariero ŝovebla"</string>
     <string name="quest_policeType_title">"Kiu speco de policejo estas ĉi tio?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Alikonstruita al svinga kradpordeto"</string>
     <string name="quest_stile_type_title">"Kia bestobarilo estas ĉi tio?"</string>
     <string name="quest_buildingType_semi_detached_description2">"du unufamiliaj loĝejoj, havantaj unu komunan muron"</string>
     <string name="pref_title_quests2">"Taskelekto kaj vidiga ordo"</string>
@@ -900,6 +903,8 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="team_mode_choose_color2">"Poste, ĉiu persono devas elekti malsaman koloron. Elektu vian:"</string>
     <string name="link_organic_maps_description">"Mapa apliko por vojaĝantoj kaj biciklantoj, kiu funkcias eksterrete"</string>
     <string name="quest_kerb_height_no">"Ne estas trotuarrando"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Ligna ŝtupetaro"</string>
+    <string name="quest_barrier_type_stepover_stone">"Mura ŝtupetaro"</string>
     <string name="quest_bollard_type_removable">"Forprenebla (kun aŭ sen ŝlosilo)"</string>
     <string name="quest_bollard_type_foldable2">"Faldebla (kun aŭ sen ŝlosilo)"</string>
     <string name="no_search_results">"Nenio trovita"</string>
@@ -918,6 +923,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_laundrySelfService_title2">"Ĉu ĉi tiu lavejo disponigas memservon?"</string>
     <string name="quest_picnicTableCover_title">"Ĉu ĉi tiu piknika tablo estas kovrita (protektita kontraŭ pluvo)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ĉi tiu parto estas ŝtuparo"</string>
+    <string name="quest_barrier_type_passage_conversion">"Alikonstruita al transirejo tra muro/barilo/ktp."</string>
     <string name="quest_barrier_type_gate_conversion">"Konvertita en pordegon"</string>
     <string name="quest_traffic_calming_type_title">"Kia tipo de trankviliga trafiko estas ĉi tio?"</string>
     <string name="quest_traffic_calming_type_bump">"Stratĝibo (mallonga)"</string>
@@ -971,6 +977,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
 
 Alternative, vi povas lasi noton (kun foto)."</string>
     <string name="quest_address_house_number_label">"Domnumero:"</string>
+    <string name="quest_shoulder_title">"Ĉu ĉi tiu vojo havas vojflankon aŭ lenon por halti okaze de paneo?"</string>
     <string name="quest_fireHydrant_position_title">"Kie troviĝas tiu ĉi fajrohidranto?"</string>
     <string name="quest_fireHydrant_position_green">"En herbo aŭ malpuraĵo"</string>
     <string name="quest_fireHydrant_position_lane">"Sur la vojo"</string>
@@ -1013,6 +1020,8 @@ Alternative, vi povas lasi noton (kun foto)."</string>
     <string name="quest_barrier_path_intersection">"Kiel ĉi tiu vojo transiras la baron ĉi tie?"</string>
     <string name="quest_barrier_road_intersection">"Kiel ĉi tiu vojo transiras la baron ĉi tie?"</string>
     <string name="quest_sidewalk_value_separate">"montrata aparte sur mapo"</string>
+    <string name="quest_shoulder_value_yes">"vojflanko"</string>
+    <string name="quest_shoulder_value_no">"neniu vojflanko"</string>
     <string name="no_camera_permission_warning_title">"Fotila permeso"</string>
     <string name="no_camera_permission_warning">"La permeso estas necesa por povi fari fotojn kaj mezuri distancojn per la fotilo."</string>
     <string name="ar_core_error_sdk_too_old">"Ĉi tiu aplikaĵo estas tro malnova, provu ĝisdatigi."</string>
@@ -1103,6 +1112,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_barrier_type_gate_any_size">"Pordego, ia grandeco"</string>
     <string name="quest_air_pump_compressor_title">"Ĉu estas aera kompresoro disponebla ĉi tie?"</string>
     <string name="quest_step_count_stile_hint">"Nur la nombro de ŝtupoj por atingi la supron. Se ne estas samkvante da ŝtupoj ambaŭflanke, indiku la plej altan nombron."</string>
+    <string name="quest_shoulder_explanation2">"Ĉi tiu tasko celas vojflankojn kiujn estas asignitaj por halto okaze de danĝero. La vojflanko nek devas esti kovrita tute per pavimo nek devas esti sufiĉe vasta por parkumi aŭton tie."</string>
     <string name="quest_cycleway_value_none_and_oneway">"neniu, neniu biciklado permesita en ĉi tiu direkto"</string>
     <string name="map_btn_create_track">"Kreu novan trakan registradon"</string>
     <string name="map_btn_stop_track">"Haltu registri spuron"</string>
@@ -1231,10 +1241,12 @@ Movu ĝin nun?"</string>
     <string name="node_moved">"Moviĝis je %s"</string>
     <string name="move_node_description">"Ŝovu la mapon por meti la simbolon al la ĝusta loko. Provu uzi la zom-funkcion por esti plej preciza. Bonvole pripensu ke via montrita pozicio estus malakurata."</string>
     <string name="move_node_action_description">"Vi movis la punkton"</string>
+    <string name="quest_cycleway_value_shoulder">"neniu, sed la vojflanko estas usebla biciklante"</string>
     <string name="quest_placeName_no_name_answer">"Neniu signo kun nomo ĉi tie…"</string>
     <string name="overlay_cycleway">"biciklovojoj"</string>
     <string name="bicycle_boulevard_is_a">"Estas %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ne estas %1$s"</string>
+    <string name="bicycle_boulevard">"Bicikla vojo"</string>
     <string name="separate_cycleway_no">"Biciklado malpermesata"</string>
     <string name="separate_cycleway_allowed">"Biciklistoj estas permesataj"</string>
     <string name="separate_cycleway_no_or_allowed">"Ne farita por biciklistoj (sed eblas ke oni tamen povu biciklumi)"</string>
@@ -1246,6 +1258,8 @@ Movu ĝin nun?"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
     <string name="quest_gritBinSeasonal_title">"Ĉu ĝi ankaŭ estas malvintre ĉi tie?"</string>
+    <string name="street_parking_staggered_on_street">"Sur la vojo ĉe alternaj flankoj"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Parte sur la vojo ĉe alternaj flankoj"</string>
     <string name="quest_traffic_signals_sound_description">"Avizo: Rigardu ĉu estas laŭtparoliloj ĉe la semaforo. Sona signalo ne ĉiam estas ŝaltebla per butono."</string>
     <string name="quest_presets_duplicate">"Kopii"</string>
     <string name="label_block">"dombloko"</string>

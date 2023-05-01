@@ -145,8 +145,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayManager?.onNewScreenPosition()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
     }
 

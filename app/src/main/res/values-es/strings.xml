@@ -57,7 +57,7 @@
     <string name="about_title_report_error">"Notificar errores"</string>
     <string name="about_title_feedback">"Tu opinión importa"</string>
     <string name="about_title_license">"Licencia"</string>
-    <string name="about_summary_license">"Pública General de GNU (GPL)"</string>
+    <string name="about_summary_license">"Licencia Pública General de GNU"</string>
     <string name="offline">"No hay conexión a Internet"</string>
     <string name="confirmation_authorize_now">"Necesitas iniciar sesión con tu cuenta de OSM para enviar tus respuestas. ¿Quieres hacerlo ahora?"</string>
     <string name="not_authorized">"Sin autorización"</string>
@@ -526,7 +526,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_ferry_pedestrian_title">"¿Transporta personas?"</string>
     <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Añadir una foto hará que la nota sea mucho más útil."</string>
-    <string name="create_new_note_hint">"Si puedes utiliza el idioma de la zona. Si no, en inglés."</string>
+    <string name="create_new_note_hint">"Lo ideal es escribir la nota en el idioma local o, si no, en inglés."</string>
     <string name="quest_leafType_title">"¿Estos árboles tienen agujas u hojas?"</string>
     <string name="quest_leaf_type_needles">"Agujas de conífera"</string>
     <string name="quest_leaf_type_broadleaved">"Planifolio, de hoja ancha y plana"</string>
@@ -536,7 +536,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_split_way_description">"Si difiere a lo largo de la vía el primer paso es trocearla, luego puedes responder en cada trozo por separado. ¿Quieres empezar ahora?"</string>
     <string name="quest_split_way_tutorial">"Toca en la vía para trocearla en los puntos donde hay un cambio. Intenta hacerlo con precisión. Puedes acercarte un poco para verlo mejor, si quieres."</string>
     <string name="quest_split_way_too_imprecise">"Prueba acercando el mapa un poco más"</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"Parece que has hecho demasiadas divisiones, puedes seguir dividiendo más adelante."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Parece que has hecho demasiadas divisiones. Siempre se puede dividir el camino más adelante."</string>
     <string name="quest_footwayPartSurface_title">"¿Cuál es la superficie de la acera en este punto?"</string>
     <string name="quest_maxweight_title">"¿Cuál es el límite de peso?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso no parece estar bien. ¿Estás seguro de que es correcto?"</string>
@@ -1185,6 +1185,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="lit_value_automatic">"Se ilumina cuando alguien pasa"</string>
     <string name="overlay_sidewalk">"Aceras"</string>
     <string name="quest_generic_answer_is_indoors">"Esto está en el interior"</string>
+    <string name="quest_summit_cross_title">"¿Aquí hay una cruz de la cumbre?"</string>
     <string name="quest_entrance_reference">"¿Qué está señalizado en esta entrada?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta de entrada y rango de pisos"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Rango de pisos"</string>
@@ -1201,11 +1202,13 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_camp_type_tents_and_caravans">"Tanto tiendas de campaña como autocaravanas, caravanas, …"</string>
     <string name="quest_camp_type_caravans_only">"Solo autocaravanas, caravanas, ..."</string>
     <string name="quest_camp_type_tents_only">"Solo tiendas de campaña"</string>
+    <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro parece inverosímil, por lo general está entre %1$d y %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta respuesta no coincide con lo que ya está mapeado sobre este camino. ¿Estás seguro de que estás respondiendo sobre el camino correcto? ¿Está seguro de que usted personalmente inspeccionó a lo largo de toda la longitud, como siempre es necesario?"</string>
     <string name="quest_recycling_type_pet">"Solo PET"</string>
     <string name="street_parking_street_width">"Ancho de calle: %s"</string>
     <string name="overlay_street_parking">"Aparcamientos en la calle"</string>
+    <string name="link_ohsomehex_description">"Explora los datos de OSM en todas las categorías, desde la perspectiva general hasta los objetos individuales en el espacio y el tiempo"</string>
     <string name="link_opencampingmap_description">"Un mapa de campings"</string>
     <string name="quest_atm_cashin_title">"¿Se puede depositar efectivo en este cajero automático?"</string>
     <string name="create_node_action_description">"Ha creado un nodo con …"</string>
@@ -1250,8 +1253,10 @@ También puedes dejar una nota (con foto)."</string>
     <string name="urlconfig_apply_message">"¿Aplicar y seleccionar el ajuste preestablecido %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
     <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Aparcabicicletas de dos niveles"</string>
     <string name="user_profile_current_week_title">"Últimos 7 días"</string>
     <string name="user_profile_dates_mapped">"Días en los que ha mapeado recientemente"</string>
+    <string name="quest_cycleway_value_advisory_lane">"carril-bici prioritario"</string>
     <string name="urlconfig_scan_qr_code_again2">"Después de instalar la aplicación, vuelva a escanear el código QR o haga clic en &lt;a href=\"%s\"&gt;este enlace&lt;/a&gt; para aplicar el ajuste preestablecido."</string>
     <string name="confirmation_replace_shop_title">"¿Es un lugar diferente ahora?"</string>
     <string name="confirmation_replace_shop_message">"En ese caso, el horario de apertura, la información de contacto, etc. también habrán cambiado."</string>
@@ -1265,21 +1270,43 @@ También puedes dejar una nota (con foto)."</string>
     <string name="node_moved">"Movido %s"</string>
     <string name="move_node_description">"Arrastra el mapa para localizar el elemento en la posición correcta. Usa el zoom y trata de ser lo más preciso posible. Por favor, ten en cuenta que tu posición mostrada puede ser menos precisa que la real."</string>
     <string name="move_node_action_description">"Ha movido el nodo"</string>
+    <string name="quest_cycleway_value_shoulder">"no hay nada, pero el arcén puede ser utilizado por los ciclistas"</string>
     <string name="quest_placeName_no_name_answer">"No hay señal con el nombre"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Esta anchura parece poco realista. Recuerda que tiene que ser la distancia de una acera a la otra, incluidos los aparcamientos en la calle, los carriles bici, etc."</string>
     <string name="overlay_cycleway">"Carriles bici"</string>
     <string name="bicycle_boulevard_is_a">"Es un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"No es un %1$s"</string>
+    <string name="bicycle_boulevard">"Calle ciclista"</string>
     <string name="separate_cycleway_no">"No permitida la bici"</string>
     <string name="separate_cycleway_allowed">"Ciclistas permitidos"</string>
     <string name="separate_cycleway_no_or_allowed">"No pensado para ciclistas (no significa que esté prohibido)"</string>
     <string name="separate_cycleway_non_segregated">"Camino de uso compartido"</string>
     <string name="separate_cycleway_segregated">"Camino peatonal y ciclista por separado"</string>
     <string name="separate_cycleway_exclusive">"Camino exclusivamente ciclista"</string>
+    <string name="separate_cycleway_with_sidewalk">"Carril exclusivo para bicicletas con acera adyacente (separada por un bordillo)"</string>
     <string name="cycleway_reverse_direction">"Carril bici en sentido contrario"</string>
     <string name="cycleway_reverse_direction_warning">"Un carril bici que va en la otra dirección es extremadamente raro."</string>
+    <string name="cycleway_reverse_direction_toast">"Toque el lado que desea invertir"</string>
     <string name="separate_cycleway_path">"Camino o sendero"</string>
+    <string name="quest_fireHydrant_type_pipe">"Tubería"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
+    <string name="measure_info_title">"Consiguiendo una precisión óptima"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore en ocasiones (de forma inicial) presume que el suelo está un poco más bajo o más alto de lo que realmente está. Esto provoca un error de medición que aumenta cuanto más se inclina el teléfono hacia el horizonte.
+&lt;p&gt;Establezca tanto el punto inicial como el final mientras apunta el teléfono directamente hacia abajo (de modo que vea la flecha blanca desde arriba) para evitar por completo este problema en las mediciones horizontales.&lt;/p&gt;
+&lt;p&gt;Para las mediciones verticales, debe comprobar que el punto de inicio no parece moverse en relación con el suelo mirándolo desde diferentes direcciones.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Esta aplicación se ejecuta en &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que es proporcionado por Google y se rige por la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privacidad de Google&lt;/a&gt;."</string>
     <string name="default_disabled_msg_seasonal">"Este tipo de misión está deshabilitado de forma predeterminada porque puede requerir re-verificar la situación en una época específica del año."</string>
+    <string name="quest_gritBinSeasonal_title">"¿Esto también está aquí cuando no es invierno?"</string>
+    <string name="street_parking_staggered_on_street">"En la calle en lados alternados"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Parcialmente en la calle en lados alternados"</string>
     <string name="quest_traffic_signals_sound_description">"Pista: Busca altavoces (pueden ser grandes o pequeños). No siempre suenan permanentemente."</string>
+    <string name="quest_presets_duplicate">"Duplicado"</string>
+    <string name="label_block">"Bloque"</string>
+    <string name="quest_address_answer_block">"Está a una manzana"</string>
+    <string name="quest_address_answer_no_block">"No está a una manzana"</string>
+    <string name="quest_surface_value_mud">"Barro permanente"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Aquí no hay baño"</string>
+    <string name="unknown_surface_title">"Otro tipo de superficie"</string>
+    <string name="overlay_surface">"Superficies"</string>
+    <string name="overlay_path_surface_segregated">"Dividido entre ciclismo y senderismo"</string>
 </resources>

@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 401261
-  linesOfInterfaceMarkupChanged: 142843
-  assetFilesChanged: 1952
+  linesOfCodeChanged: 402570
+  linesOfInterfaceMarkupChanged: 142889
+  assetFilesChanged: 1958
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20256
+  linesOfCodeChanged: 20491
   linesOfInterfaceMarkupChanged: 5176
   assetFilesChanged: 634
 - name: "Flo Edelmann"
@@ -15,7 +15,7 @@
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 11108
+  linesOfCodeChanged: 11197
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -26,16 +26,16 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
+- name: "arrival-spring"
+  githubUsername: "arrival-spring"
+  linesOfCodeChanged: 3110
+  linesOfInterfaceMarkupChanged: 2180
+  assetFilesChanged: 5
 - name: "Matija Nalis"
   githubUsername: "mnalis"
   linesOfCodeChanged: 2987
   linesOfInterfaceMarkupChanged: 229
   assetFilesChanged: 69
-- name: "arrival-spring"
-  githubUsername: "arrival-spring"
-  linesOfCodeChanged: 2933
-  linesOfInterfaceMarkupChanged: 2180
-  assetFilesChanged: 5
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -77,6 +77,10 @@
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
+- name: "Tim"
+  githubUsername: "tapetis"
+  linesOfCodeChanged: 407
+  linesOfInterfaceMarkupChanged: 64
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -91,10 +95,6 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
-- name: "Tim"
-  githubUsername: "tapetis"
-  linesOfCodeChanged: 341
-  linesOfInterfaceMarkupChanged: 11
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 286
@@ -189,6 +189,9 @@
 - name: "tiptoptom"
   githubUsername: "tiptoptom"
   linesOfCodeChanged: 13
+- name: "Ben Wiederhake"
+  githubUsername: "BenWiederhake"
+  linesOfCodeChanged: 8
 - name: "klemens"
   linesOfCodeChanged: 8
 - name: "Aidan Pieper"

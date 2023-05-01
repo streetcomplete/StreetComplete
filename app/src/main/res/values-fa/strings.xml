@@ -1309,6 +1309,9 @@
     <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. تمام هشدارهای صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
     <string name="quest_presets_duplicate">"کپی کردن"</string>
     <string name="label_block">"بلوک"</string>
+    <string name="quest_address_answer_block">"در داخل یک بلوک است..."</string>
+    <string name="quest_address_answer_no_block">"در یک بلوک نیست..."</string>
+    <string name="quest_surface_value_mud">"خاک سخت"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"اینجا سرویس بهداشتی نیست"</string>
     <string name="unknown_surface_title">"نوع دیگری از سطح"</string>
     <string name="overlay_surface">"سطوح"</string>

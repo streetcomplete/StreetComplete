@@ -292,6 +292,31 @@
                     "label": "累積上昇量（リレーション）",
                     "terms": "累積上昇量（リレーション）"
                 },
+                "athletics_pitch": {
+                    "label": "競技種目",
+                    "options": {
+                        "discus_throw": "円盤投",
+                        "hammer_throw": "ハンマー投",
+                        "high_jump": "走高跳",
+                        "javelin_throw": "やり投",
+                        "long_jump": "走幅跳",
+                        "pole_vault": "棒高跳",
+                        "shot_put": "砲丸投",
+                        "triple_jump": "三段跳"
+                    }
+                },
+                "athletics_track": {
+                    "label": "競技種目",
+                    "options": {
+                        "javelin_throw": "やり投",
+                        "long_jump": "走幅跳",
+                        "pole_vault": "棒高跳",
+                        "running": "トラック競技",
+                        "sprint": "スプリント",
+                        "steeplechase": "障害走",
+                        "triple_jump": "三段跳"
+                    }
+                },
                 "atm": {
                     "label": "ATM"
                 },
@@ -769,7 +794,15 @@
                     "label": "種類"
                 },
                 "consulate": {
-                    "label": "領事館の種類"
+                    "label": "領事館の種類",
+                    "options": {
+                        "consular_agency": "代理領事事務所",
+                        "consular_office": "領事事務所",
+                        "consulate_general": "総領事館",
+                        "honorary_consul": "名誉領事",
+                        "residence": "領事公邸",
+                        "yes": "領事館"
+                    }
                 },
                 "consulting": {
                     "label": "コンサルティング領域"
@@ -1077,6 +1110,9 @@
                 "dance/style": {
                     "label": "ダンススタイル"
                 },
+                "dance/teaching": {
+                    "label": "ダンス教室"
+                },
                 "date": {
                     "label": "日付"
                 },
@@ -1164,7 +1200,12 @@
                     "terms": "食事制限の種類,食事制限,ビーガン,ベジタビリアン,菜食"
                 },
                 "diplomatic": {
-                    "label": "外交組織の種類"
+                    "label": "外交組織の種類",
+                    "options": {
+                        "consulate": "領事館",
+                        "embassy": "大使館",
+                        "liaison": "連絡事務所"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "サービスの種類"
@@ -1384,6 +1425,35 @@
                         "pipe": "キャップ付きパイプ",
                         "underground": "地下",
                         "wall": "壁"
+                    }
+                },
+                "fire_mains": {
+                    "label": "送水配管の種別",
+                    "options": {
+                        "dry": "乾式",
+                        "no": "なし",
+                        "wet": "湿式",
+                        "yes": "あり（種別不明）"
+                    }
+                },
+                "fire_service_inlet": {
+                    "label": "送水口の種別",
+                    "options": {
+                        "pillar": "スタンド式",
+                        "pipe": "配管直付け",
+                        "underground": "地下式",
+                        "wall": "壁面埋込式"
+                    },
+                    "terms": "送水口,連結送水管,消防設備"
+                },
+                "fire_sprinkler": {
+                    "label": "スプリンクラー設備用送水口",
+                    "options": {
+                        "dry": "乾式",
+                        "no": "なし",
+                        "pre-action": "予作動式",
+                        "wet": "湿式",
+                        "yes": "あり（種別不明）"
                     }
                 },
                 "fireplace": {
@@ -1721,7 +1791,33 @@
                     }
                 },
                 "historic": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "archaeological_site": "遺跡",
+                        "bomb_crater": "爆撃跡",
+                        "boundary_stone": "境界標",
+                        "building": "歴史的建造物",
+                        "castle": "城",
+                        "charcoal_pile": "炭焼き窯",
+                        "church": "教会",
+                        "city_gate": "城門",
+                        "citywalls": "城壁",
+                        "fort": "要塞",
+                        "manor": "邸宅",
+                        "memorial": "記念碑",
+                        "milestone": "マイルストーン",
+                        "mine": "坑道",
+                        "mine_shaft": "立坑",
+                        "monument": "記念建造物",
+                        "pillory": "さらし台",
+                        "railway": "鉄道",
+                        "ruins": "廃墟",
+                        "shieling": "放牧地",
+                        "tomb": "墓",
+                        "wayside_cross": "路傍の十字架",
+                        "wayside_shrine": "路傍の祠",
+                        "wreck": "難破船"
+                    }
                 },
                 "historic/civilization": {
                     "label": "文明"
@@ -2143,6 +2239,16 @@
                 "monitoring_multi": {
                     "label": "観測対象"
                 },
+                "mooring": {
+                    "label": "係留",
+                    "options": {
+                        "commercial": "商用",
+                        "guest": "来訪者用",
+                        "no": "不可",
+                        "private": "私用",
+                        "yes": "可能"
+                    }
+                },
                 "mtb/scale": {
                     "label": "マウンテンバイク難易度",
                     "options": {
@@ -2294,7 +2400,7 @@
                         "property_management": "資産管理会社",
                         "quango": "準非政府機関",
                         "religion": "教団事務所",
-                        "research": "研究所",
+                        "research": "研究開発オフィス",
                         "security": "警備会社",
                         "surveyor": "測量会社",
                         "tax_advisor": "税理士事務所",
@@ -2362,6 +2468,9 @@
                     },
                     "terms": "自然食品,無添加,オーガニック,有機"
                 },
+                "orientation/orientation_parking": {
+                    "label": "駐車の向き"
+                },
                 "outdoor_seating": {
                     "label": "屋外の席",
                     "terms": "屋外席,屋外の座席,座席,シート,屋外"
@@ -2401,14 +2510,6 @@
                         "street_side": "道路脇",
                         "surface": "地面",
                         "underground": "地下"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "駐車の向き",
-                    "options": {
-                        "diagonal": "斜め",
-                        "parallel": "平行",
-                        "perpendicular": "直角"
                     }
                 },
                 "parking/side/orientation": {
@@ -2665,11 +2766,11 @@
                 "post_box/type": {
                     "label": "郵便ポストの種類",
                     "options": {
-                        "community": "集合郵便受け付き",
                         "lamp": "柱上",
                         "pillar": "箱形自立",
                         "wall": "壁面設置"
-                    }
+                    },
+                    "terms": "郵便ポストの種類"
                 },
                 "power": {
                     "label": "種類"
@@ -3224,31 +3325,43 @@
                         "baseball": "野球",
                         "basketball": "バスケットボール",
                         "beachvolleyball": "ビーチバレー",
+                        "bmx": "BMX",
                         "boules": "ブール、ペタンク",
                         "bowls": "ローンボウルズ",
+                        "canoe": "カヌー",
                         "climbing": "クライミング",
                         "cricket": "クリケット",
+                        "curling": "カーリング",
                         "cycling": "サイクリング",
+                        "disc_golf": "ディスクゴルフ",
+                        "dog_racing": "ドッグレース",
                         "equestrian": "馬術",
                         "fitness": "フィットネス",
                         "free_flying": "ハンググライダー",
                         "futsal": "フットサル",
+                        "gaelic_games": "ゲーリック・ゲームス",
                         "golf": "ゴルフ",
                         "gymnastics": "体操競技",
                         "handball": "ハンドボール",
                         "horse_racing": "競馬",
+                        "ice_hockey": "アイスホッケー",
+                        "ice_skating": "アイススケート",
+                        "ice_stock": "アイスストック",
                         "karting": "カートレース",
                         "motocross": "モトクロス",
                         "motor": "モータースポーツ",
                         "netball": "ネットボール",
                         "padel": "パデル",
+                        "pelota": "ペロタ",
                         "rugby_union": "ラグビーユニオン",
                         "running": "ランニング",
+                        "scuba_diving": "スクーバダイビング",
                         "shooting": "射撃",
                         "skateboard": "スケートボード",
                         "skiing": "スキー",
                         "soccer": "サッカー",
                         "softball": "ソフトボール",
+                        "speedway": "スピードウェイ",
                         "swimming": "水泳",
                         "table_tennis": "卓球",
                         "tennis": "テニス",
@@ -3256,42 +3369,17 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "種目",
-                    "options": {
-                        "curling": "カーリング",
-                        "ice_hockey": "アイスホッケー",
-                        "ice_skating": "アイススケート",
-                        "ice_stock": "アイスストック",
-                        "multi": "複数競技"
-                    }
+                    "label": "種目"
                 },
                 "sport_pub": {
                     "label": "スポーツ",
-                    "options": {
-                        "billiards": "ビリヤード",
-                        "darts": "ダーツ",
-                        "table_soccer": "テーブルサッカー"
-                    },
                     "terms": "サッカー"
                 },
                 "sport_racing_motor": {
-                    "label": "種目",
-                    "options": {
-                        "karting": "カート",
-                        "motocross": "モトクロス",
-                        "motor": "モータースポーツ",
-                        "speedway": "スピードウェイ競技"
-                    }
+                    "label": "種目"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "種目",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "サイクリング",
-                        "dog_racing": "ドッグレース",
-                        "horse_racing": "競馬",
-                        "running": "ランニング"
-                    }
+                    "label": "種目"
                 },
                 "stars": {
                     "label": "星の数",
@@ -3612,9 +3700,9 @@
                     "label": "種類",
                     "options": {
                         "bump": "スピードバンプ",
-                        "chicane": "シケイン",
+                        "chicane": "シケイン（屈曲部）",
                         "choked_table": "狭小化隆起台（減速用）",
-                        "choker": "チョーカー",
+                        "choker": "チョーカー（狭窄部）",
                         "cushion": "スピードクッション",
                         "dip": "ディップ",
                         "double_dip": "ディップ2つ",
@@ -3883,6 +3971,11 @@
                     "label": "ウェブサイト",
                     "placeholder": "https://example.com",
                     "terms": "ウェブサイト,ホームページ"
+                },
+                "website/menu": {
+                    "label": "ウェブサイト上でのメニュー",
+                    "placeholder": "https://example.com",
+                    "terms": "オンラインメニュー,メニューurl,ウェブサイトメニュー"
                 },
                 "wetland": {
                     "label": "種類",
@@ -4818,7 +4911,7 @@
                 },
                 "amenity/research_institute": {
                     "name": "研究所",
-                    "terms": "研究所,研究施設"
+                    "terms": "ラボ,研究所,研究施設,研究機関,実験所,実験施設"
                 },
                 "amenity/restaurant": {
                     "name": "レストラン全般",
@@ -4864,6 +4957,10 @@
                     "name": "レストラン・日本料理",
                     "terms": "レストラン,日本料理,和食,飲食店,食事,食べる,料理,食堂,割烹,料亭,ランチ,ディナー,日本酒"
                 },
+                "amenity/restaurant/korean": {
+                    "name": "レストラン・韓国料理",
+                    "terms": "レストラン,韓国料理,コリアン,飲食店,食事,食べる,料理,ランチ,ディナー"
+                },
                 "amenity/restaurant/mexican": {
                     "name": "レストラン・メキシコ料理",
                     "terms": "レストラン,メキシコ料理,メキシカン,タコス,飲食店,食事,食べる,料理,ランチ,ディナー"
@@ -4879,6 +4976,10 @@
                 "amenity/restaurant/seafood": {
                     "name": "レストラン・シーフード",
                     "terms": "レストラン,シーフード,海鮮,海鮮料理,飲食店,食事,食べる,料理,魚,魚介,ランチ,ディナー"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "レストラン・スペイン料理",
+                    "terms": "レストラン,スペイン料理,スパニッシュ,飲食店,食事,食べる,料理,ランチ,ディナー"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "レストラン・ステーキ",
@@ -5390,7 +5491,8 @@
                     "terms": "遮断機,門,障害物,バリア"
                 },
                 "barrier/log": {
-                    "name": "倒木"
+                    "name": "倒木",
+                    "terms": "倒木,障害物"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "バイク止め",
@@ -5720,6 +5822,10 @@
                     "name": "クラブ",
                     "terms": "クラブ"
                 },
+                "club/scout": {
+                    "name": "スカウト団",
+                    "terms": "ボーイスカウト,ガールスカウト"
+                },
                 "club/sport": {
                     "name": "スポーツクラブ",
                     "terms": "スポーツクラブ,アスレチック,スポーツ,運動,クラブ,同好会"
@@ -5853,7 +5959,7 @@
                 },
                 "craft/photographic_laboratory": {
                     "name": "現像所",
-                    "terms": "現像所,職人,工房,カメラ,写真"
+                    "terms": "現像ラボ,ラボ,職人,工房,カメラ,写真"
                 },
                 "craft/plasterer": {
                     "name": "左官",
@@ -5942,16 +6048,16 @@
                     "name": "建物（取り壊し済み）"
                 },
                 "disc_golf/basket": {
-                    "name": "かご(ディスクゴルフ)",
-                    "terms": "かご(ディスクゴルフ),ディスクゴルフ"
+                    "name": "ターゲット (ディスクゴルフ)",
+                    "terms": "バスケット,かご,ゴール,ディスクゴルフ,フリスビー,フライングディスク"
                 },
                 "disc_golf/hole": {
-                    "name": "穴(ディスクゴルフ)",
-                    "terms": "穴(ディスクゴルフ),ディスクゴルフ"
+                    "name": "ディスクゴルフホール",
+                    "terms": "ホール,ディスクゴルフ,フリスビー,フライングディスク"
                 },
                 "disc_golf/tee": {
-                    "name": "木(ディスクゴルフ)",
-                    "terms": "木(ディスクゴルフ),ディスクゴルフ"
+                    "name": "ティーエリア (ディスクゴルフ)",
+                    "terms": "ティー,ティーライン,ディスクゴルフ,フリスビー,フライングディスク"
                 },
                 "disused/amenity": {
                     "name": "閉鎖施設"
@@ -6001,6 +6107,10 @@
                 "emergency/fire_hydrant": {
                     "name": "消火栓/消防水利",
                     "terms": "消火栓,消防,消防水利,救命,緊急,火災,道路,歩道"
+                },
+                "emergency/fire_service_inlet": {
+                    "name": "消防用送水口",
+                    "terms": "連結送水管送水口,送水口,消火栓,消防,緊急,火災"
                 },
                 "emergency/first_aid_kit": {
                     "name": "救命キット",
@@ -6194,8 +6304,8 @@
                     "terms": "ホスピス,医療,福祉,介護,福祉施設,介護施設,医療施設,安楽死"
                 },
                 "healthcare/laboratory": {
-                    "name": "医学研究室",
-                    "terms": "医学研究室,医療研究室,研究室,健康,医療"
+                    "name": "衛生検査所",
+                    "terms": "検査ラボ,ラボ,検査センター,検体検査,病理学的検査,臨床検査,健康,医療"
                 },
                 "healthcare/midwife": {
                     "name": "助産婦",
@@ -6781,7 +6891,7 @@
                 },
                 "landuse/landfill": {
                     "name": "最終処分場",
-                    "terms": "最終処分場,廃棄物,ゴミ,ゴミ処理"
+                    "terms": "最終処分場,処分場,埋立地,埋め立て,廃棄物,ゴミ,ゴミ処理"
                 },
                 "landuse/meadow": {
                     "name": "牧草地",
@@ -6808,9 +6918,8 @@
                     "terms": "海軍基地,軍艦,海軍,海自,海上自衛隊,軍事基地"
                 },
                 "landuse/military/danger_area": {
-                    "name": "（軍事的）危険区域",
-                    "terms": "危険区域",
-                    "aliases": "地雷原"
+                    "name": "危険区域",
+                    "terms": "立入禁止区域,立入制限区域"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "障害物コース（軍用）",
@@ -6826,18 +6935,18 @@
                 },
                 "landuse/orchard": {
                     "name": "果樹園",
-                    "terms": "果樹園,果物畑,リンゴ畑,ミカン畑,農業,樹木,森林"
+                    "terms": "果樹園,果物畑,リンゴ畑,ミカン畑,茶畑,農園,農業,樹木,森林"
                 },
                 "landuse/plant_nursery": {
-                    "name": "育苗所",
-                    "terms": "育苗所,苗床"
+                    "name": "植物育成場",
+                    "terms": "樹木園,育苗所,苗床,植木,芝生,花卉,花き,花"
                 },
                 "landuse/pond": {
                     "name": "池"
                 },
                 "landuse/quarry": {
-                    "name": "露天掘り鉱山",
-                    "terms": "採石場,石切り場,露天掘り鉱山,鉱山"
+                    "name": "露天掘り",
+                    "terms": "採石場,石切り場,砂利採取場,採掘場,採鉱場,露天掘り鉱山,鉱山"
                 },
                 "landuse/railway": {
                     "name": "鉄道用地",
@@ -7081,6 +7190,41 @@
                     "name": "矢場",
                     "terms": "弓,アーチェリー,洋弓,弓道場"
                 },
+                "leisure/pitch/athletics": {
+                    "name": "陸上競技場"
+                },
+                "leisure/pitch/athletics/discus_throw": {
+                    "name": "円盤投擲場",
+                    "terms": "投擲場,投てき場,陸上競技場"
+                },
+                "leisure/pitch/athletics/hammer_throw": {
+                    "name": "ハンマー投擲場",
+                    "terms": "投擲場,投てき場,陸上競技場"
+                },
+                "leisure/pitch/athletics/high_jump": {
+                    "name": "走高跳ピット",
+                    "terms": "跳躍場,陸上競技場"
+                },
+                "leisure/pitch/athletics/javelin_throw": {
+                    "name": "槍投擲場",
+                    "terms": "投擲場,投てき場,陸上競技場"
+                },
+                "leisure/pitch/athletics/long_jump": {
+                    "name": "走幅跳ピット",
+                    "terms": "跳躍場,陸上競技場"
+                },
+                "leisure/pitch/athletics/pole_vault": {
+                    "name": "棒高跳ピット",
+                    "terms": "跳躍場,陸上競技場"
+                },
+                "leisure/pitch/athletics/shot_put": {
+                    "name": "砲丸投擲場",
+                    "terms": "投擲場,投てき場,陸上競技場"
+                },
+                "leisure/pitch/athletics/triple_jump": {
+                    "name": "三段跳ピット",
+                    "terms": "跳躍場,陸上競技場"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "オーストラリアフットボール場",
                     "terms": "オーストラリアフットボール場,競技場,球技場"
@@ -7277,6 +7421,36 @@
                     "name": "競技トラック（モータースポーツ以外）",
                     "terms": "競技トラック,スポーツ,運動,競技"
                 },
+                "leisure/track/athletics": {
+                    "name": "陸上競技用走路"
+                },
+                "leisure/track/athletics/javelin_throw": {
+                    "name": "やり投助走路",
+                    "terms": "槍投助走路,助走路,走路"
+                },
+                "leisure/track/athletics/long_jump": {
+                    "name": "走幅跳助走路",
+                    "terms": "助走路,走路"
+                },
+                "leisure/track/athletics/pole_vault": {
+                    "name": "棒高跳助走路",
+                    "terms": "助走路,走路"
+                },
+                "leisure/track/athletics/running": {
+                    "name": "陸上競技トラック"
+                },
+                "leisure/track/athletics/sprint": {
+                    "name": "スプリント走路",
+                    "terms": "短距離走路,競走路,走路"
+                },
+                "leisure/track/athletics/steeplechase": {
+                    "name": "障害物競走路",
+                    "terms": "障害走路,競走路,走路,水濠"
+                },
+                "leisure/track/athletics/triple_jump": {
+                    "name": "三段跳助走路",
+                    "terms": "助走路,走路"
+                },
                 "leisure/track/cycling": {
                     "name": "自転車競技場",
                     "terms": "自転車競技場,自転車,自転車トラック,自転車レース場"
@@ -7306,7 +7480,7 @@
                 },
                 "man_made/adit": {
                     "name": "坑口",
-                    "terms": "坑口,坑道"
+                    "terms": "坑口,坑道,鉱山,横坑道"
                 },
                 "man_made/antenna": {
                     "name": "アンテナ",
@@ -7507,6 +7681,10 @@
                 "man_made/pumping_station": {
                     "name": "ポンプ場",
                     "terms": "ポンプ場,揚水施設,汲み上げ,排水機場"
+                },
+                "man_made/quay": {
+                    "name": "埠頭",
+                    "terms": "埠頭,波止場,港湾施設"
                 },
                 "man_made/reservoir_covered": {
                     "name": "地下の貯水槽",
@@ -7754,6 +7932,10 @@
                     "name": "山頂",
                     "terms": "山頂,頂"
                 },
+                "natural/peninsula": {
+                    "name": "半島",
+                    "terms": "半島"
+                },
                 "natural/reef": {
                     "name": "礁",
                     "terms": "礁,岩礁,サンゴ礁,砂礁,暗礁,海"
@@ -7872,11 +8054,11 @@
                 },
                 "natural/wetland/bog": {
                     "name": "高層湿原",
-                    "terms": "湿地,泥地,湿原"
+                    "terms": "湿地,ボグ,泥炭地,泥地,降水栄養性湿原,湿原"
                 },
                 "natural/wetland/fen": {
                     "name": "低層湿原",
-                    "terms": "沼地,湿原"
+                    "terms": "鉱物質栄養性湿原,沼地,湿原"
                 },
                 "natural/wetland/mangrove": {
                     "name": "マングローブ林",
@@ -7975,14 +8157,14 @@
                 },
                 "office/diplomatic/consulate": {
                     "name": "領事館",
-                    "terms": "領事館,外交"
+                    "terms": "領事館,総領事館,副領事館,領事事務所,代理領事事務所,領事公邸,名誉領事,外交"
                 },
                 "office/diplomatic/embassy": {
                     "name": "大使館",
-                    "terms": "大使館,外交"
+                    "terms": "大使館,政府代表部,利益代表部,代表部,高等弁務官事務所,大使公邸,外交"
                 },
                 "office/diplomatic/liaison": {
-                    "name": "交流組織",
+                    "name": "連絡事務所",
                     "terms": "交流組織,交流使節,外交,オフィス,事務所"
                 },
                 "office/educational_institution": {
@@ -8100,8 +8282,8 @@
                     "terms": "教団事務所,宗教団体事務所,宗教,教団,オフィス,事務所,寺務所,社務所"
                 },
                 "office/research": {
-                    "name": "研究所",
-                    "terms": "研究所,ラボ,オフィス,事務所,リサーチ"
+                    "name": "研究開発オフィス",
+                    "terms": "研究開発センター,r&dセンター,研究所,ラボ,オフィス,事務所,リサーチ"
                 },
                 "office/security": {
                     "name": "警備会社",
@@ -9178,8 +9360,7 @@
                     "terms": "音響機器店,オーディオ店,音楽"
                 },
                 "shop/hobby": {
-                    "name": "ホビーショップ",
-                    "terms": "ホビーショップ,ホビー店,プラモデル,フィギュア,マンガ,ミリタリー,模型,店舗,お店,サブカル"
+                    "name": "ホビーショップ"
                 },
                 "shop/household_linen": {
                     "name": "家庭用布製品店",
@@ -9470,7 +9651,8 @@
                     "terms": "タイヤ店,タイヤ販売店,自動車,カー用品"
                 },
                 "shop/vacant": {
-                    "name": "空き店舗"
+                    "name": "空き店舗",
+                    "terms": "空き店舗,未入居店舗,店舗"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "掃除機店",
@@ -9710,11 +9892,11 @@
                     "terms": "スピードバンプ,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/chicane": {
-                    "name": "シケイン",
+                    "name": "シケイン（屈曲部）",
                     "terms": "シケイン,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/choker": {
-                    "name": "チョーカー",
+                    "name": "チョーカー（狭窄部）",
                     "terms": "チョーカー,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/cushion": {

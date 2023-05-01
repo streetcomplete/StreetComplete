@@ -905,8 +905,7 @@
                         "critical": "Límite: só transitábel para xinetes e cabalos experimentados. Obstáculos importantes. As pontes teñen que examinarse coidadosamente.",
                         "dangerous": "Perigoso: só axeitado para xinetes e cabalos moi experimentados e só cando vai bo tempo. Desmontar.",
                         "demanding": "Empregar con coidado: Vía irregular, pasaxes ocasionalmente difíciles.",
-                        "difficult": "Difícil: Camiño estreito e exposto. Pode ter obstáculos para pasar e corredoiras estreitas.",
-                        "impossible": "Imposíbel: camiño ou ponte non transitábel para cabalos. Moi estreito, soporte insuficiente, obstáculos coma chanzos. Perigo de morte."
+                        "difficult": "Difícil: Camiño estreito e exposto. Pode ter obstáculos para pasar e corredoiras estreitas."
                     },
                     "placeholder": "Difícil, perigoso..."
                 },
@@ -4356,10 +4355,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Barracóns"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Área perigosa",
-                    "terms": "zona de perigo,bombas,minas,munición,explosivo,militar,exército,forza aérea,mariña,armada,forza naval,área perigosa,zona de exclusión"
                 },
                 "landuse/military/range": {
                     "name": "Campo de tiro militar"

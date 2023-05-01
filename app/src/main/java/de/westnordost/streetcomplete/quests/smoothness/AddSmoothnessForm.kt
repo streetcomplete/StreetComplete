@@ -10,7 +10,6 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -18,7 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.asImageSpan
-import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
@@ -96,15 +95,11 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
-        val way = element as? Way ?: return null
-        if (way.isArea()) return null
-
-        // only in AddPathSmoothness quest
-        if (!ALL_PATHS_EXCEPT_STEPS.contains(way.tags["highway"])) return null
-
-        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IsActuallyStepsAnswer, true)
-        }
+        return if (element.couldBeSteps()) {
+            AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+                applyAnswer(IsActuallyStepsAnswer, true)
+            }
+        } else null
     }
 }
 
