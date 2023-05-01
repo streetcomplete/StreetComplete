@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.shops
 
 import android.content.SharedPreferences
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -69,7 +68,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         val element = element
         originalFeature = element?.let {
             if (IS_DISUSED_SHOP_EXPRESSION.matches(element)) {
-                createVacantShop(requireContext().resources)
+                featureDictionary.byId("shop/vacant").get()
             } else {
                 featureDictionary
                     .byTags(element.tags)
@@ -169,7 +168,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     }
 
     private fun setVacant() {
-        onSelectedFeature(createVacantShop(requireContext().resources))
+        onSelectedFeature(featureDictionary.byId("shop/vacant").get())
     }
 
     private fun createNoNameAnswer(): AnswerItem? =
@@ -312,10 +311,3 @@ private suspend fun createEditAction(
         CreateNodeAction(geometry.center, tagChanges)
     }
 }
-
-private fun createVacantShop(resources: Resources) = DummyFeature(
-    "shop/vacant",
-    resources.getString(R.string.vacant_shop_title),
-    "maki-shop",
-    mapOf("disused:shop" to "yes")
-)
