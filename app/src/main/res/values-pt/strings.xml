@@ -1212,7 +1212,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_camp_type_tents_only">"Apenas tendas"</string>
     <string name="quest_camp_type_backcountry">"Campismo remoto (sem instalações)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro não parece plausível, normalmente é entre %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não corresponde ao que já está mapeado sobre esta estrada. Tem a certeza de que está a responder sobre a estrada correta? Tem a certeza que confirmou longo de toda a extensão da estrada?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não corresponde ao que já está mapeado sobre esta estrada. Tem a certeza que está a responder sobre a estrada correta? Como sempre necessário, tem a certeza que confirmou ao longo de toda a extensão da estrada?"</string>
     <string name="quest_recycling_type_pet">"Apenas PET"</string>
     <string name="street_parking_street_width">"Largura da estrada: %s"</string>
     <string name="overlay_street_parking">"Estacionamento na estrada"</string>
@@ -1307,4 +1307,13 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="street_parking_staggered_on_street">"Na estrada em lados alternados"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente na estrada em lados alternados"</string>
     <string name="quest_traffic_signals_sound_description">"Dica: observe se existe algum altifalante. Nem todos os sinais sonoros são ativados por um botão."</string>
+    <string name="quest_presets_duplicate">"Duplicar"</string>
+    <string name="label_block">"quarteirão"</string>
+    <string name="quest_address_answer_block">"Está num quarteirão…"</string>
+    <string name="quest_address_answer_no_block">"Não está num quarteirão…"</string>
+    <string name="quest_surface_value_mud">"Lama permanente"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Não existem aqui casas de banho"</string>
+    <string name="unknown_surface_title">"Outro tipo de superfície"</string>
+    <string name="overlay_surface">"Superfícies"</string>
+    <string name="overlay_path_surface_segregated">"Dividir em ciclovia e passeio separados"</string>
 </resources>

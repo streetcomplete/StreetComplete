@@ -298,8 +298,8 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit …"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel2">"Dach­geschosse"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke (ohne Dach­geschosse)"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Dach­­­­geschosse"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Stock­werke (ohne Dach­­geschosse)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
     <string name="quest_buildingLevels_answer_description">"In diesem Fall einfach die Werte für den höchsten Gebäudeteil eingeben."</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sind die gegenläufigen Fahrtrichtungen durch eine physische Barriere oder eine Grünfläche getrennt? Davon hängt die Geschwindigkeitsbegrenzung ab."</string>
@@ -739,8 +739,8 @@ Erfolge"</string>
     <string name="about_title_translate">"App übersetzen"</string>
     <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt"</string>
     <string name="quest_oneway2_title">"Ist dies eine Einbahnstraße? In welche Richtung?"</string>
-    <string name="quest_oneway2_dir">"Einbahnstraße in diese Richtung"</string>
-    <string name="quest_oneway2_no_oneway">"Keine Einbahnstraße"</string>
+    <string name="quest_oneway2_dir">"Einbahn­­­straße in diese Richtung"</string>
+    <string name="quest_oneway2_no_oneway">"Keine Einbahn­­­straße"</string>
     <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
     <string name="quest_steps_incline_title">"Welche Richtung führt auf dieser Treppe nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>

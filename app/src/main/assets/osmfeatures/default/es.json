@@ -292,6 +292,31 @@
                     "label": "Ascenso total",
                     "terms": "ascenso,ganancia,elevación,acumulativa,escala,total,cuesta"
                 },
+                "athletics_pitch": {
+                    "label": "Evento",
+                    "options": {
+                        "discus_throw": "Disco",
+                        "hammer_throw": "Lanzamiento de martillo",
+                        "high_jump": "Salto de altura / Salto en alto",
+                        "javelin_throw": "Jabalina",
+                        "long_jump": "Salto de longitud / Salto en largo",
+                        "pole_vault": "Salto con pértiga / Salto con garrocha",
+                        "shot_put": "Lanzamiento de bala",
+                        "triple_jump": "Triple salto"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Evento",
+                    "options": {
+                        "javelin_throw": "Jabalina",
+                        "long_jump": "Salto de longitud / Salto en largo",
+                        "pole_vault": "Salto con pértiga / Salto con garrocha",
+                        "running": "Running / Carrera a pie",
+                        "sprint": "Correr a toda velocidad",
+                        "steeplechase": "Carrera de vallas / Carrera de obstáculos",
+                        "triple_jump": "Triple salto"
+                    }
+                },
                 "atm": {
                     "label": "Cajero automático"
                 },
@@ -1077,6 +1102,9 @@
                 "dance/style": {
                     "label": "Estilos de baile"
                 },
+                "dance/teaching": {
+                    "label": "Ofrece clases de baile"
+                },
                 "date": {
                     "label": "Fecha"
                 },
@@ -1380,10 +1408,39 @@
                 "fire_hydrant/type": {
                     "label": "Forma",
                     "options": {
-                        "pillar": "Pilar/Sobre la tierra",
+                        "pillar": "Pilar / Sobre el suelo",
                         "pipe": "Tubo tapado",
                         "underground": "Subterráneo",
                         "wall": "Pared"
+                    }
+                },
+                "fire_mains": {
+                    "label": "Tipo de red",
+                    "options": {
+                        "dry": "Red dedicada (Normalmente seca)",
+                        "no": "No",
+                        "wet": "Conectado a la red (Permanentemente lleno)",
+                        "yes": "Tipo desconocido"
+                    }
+                },
+                "fire_service_inlet": {
+                    "label": "Forma",
+                    "options": {
+                        "pillar": "Pilar / Sobre el suelo",
+                        "pipe": "Tubo tapado",
+                        "underground": "Subterráneo",
+                        "wall": "Pared"
+                    },
+                    "terms": "forma,tipo"
+                },
+                "fire_sprinkler": {
+                    "label": "Entrada de rociadores contra incendios",
+                    "options": {
+                        "dry": "Red dedicada (Normalmente seca)",
+                        "no": "No",
+                        "pre-action": "Conectado a la red (Sistema de preacción)",
+                        "wet": "Conectado a la red (Permanentemente lleno)",
+                        "yes": "Tipo desconocido"
                     }
                 },
                 "fireplace": {
@@ -1721,7 +1778,33 @@
                     }
                 },
                 "historic": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "archaeological_site": "Yacimiento arqueológico",
+                        "bomb_crater": "Cráter de bomba",
+                        "boundary_stone": "Mojón fronterizo",
+                        "building": "Edificio histórico",
+                        "castle": "Castillo",
+                        "charcoal_pile": "Carbonera",
+                        "church": "Iglesia",
+                        "city_gate": "Puerta de la ciudad",
+                        "citywalls": "Muralla",
+                        "fort": "Fuerte histórico",
+                        "manor": "Casa solariega",
+                        "memorial": "Monumento conmemorativo",
+                        "milestone": "Mojón",
+                        "mine": "Mina",
+                        "mine_shaft": "Pozo minero",
+                        "monument": "Monumento",
+                        "pillory": "Picota histórica",
+                        "railway": "Ferrocarril",
+                        "ruins": "Ruinas",
+                        "shieling": "Shieling",
+                        "tomb": "Tumba",
+                        "wayside_cross": "Cruz de término",
+                        "wayside_shrine": "Santuario junto al camino",
+                        "wreck": "Naufragio"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Civilización histórica"
@@ -1769,7 +1852,7 @@
                         "dangerous": "Peligroso: solo apto para jinetes y caballos muy experimentados y solo cuando hace buen tiempo. Desmontar.",
                         "demanding": "Usar con precaución: Vía irregular, pasajes ocasionalmente difíciles.",
                         "difficult": "Difícil: Camino angosto y expuesto. Puede tener obstáculos para pasar y pasadizos estrechos.",
-                        "impossible": "Imposible: camino o puente no transitable para caballos. Demasiado estrecho, soporte insuficiente, obstáculos como escaleras. Peligro de muerte."
+                        "impossible": "Intransitable: Camino o puente no transitable para los caballos. Demasiado estrecho, soporte insuficiente, obstáculos como escaleras. Peligro de muerte."
                     },
                     "placeholder": "Difícil, Peligroso...",
                     "terms": "dificultad para montar a caballo,caballo,montar"
@@ -2142,6 +2225,16 @@
                 "monitoring_multi": {
                     "label": "Supervisando"
                 },
+                "mooring": {
+                    "label": "Amarre",
+                    "options": {
+                        "commercial": "Comercial",
+                        "guest": "Invitados",
+                        "no": "No",
+                        "private": "Privado",
+                        "yes": "Si"
+                    }
+                },
                 "mtb/scale": {
                     "label": "Dificultad de ciclismo de montaña",
                     "options": {
@@ -2402,22 +2495,12 @@
                         "underground": "Subterráneo"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientación",
-                    "options": {
-                        "diagonal": "Diagonal a la calzada",
-                        "parallel": "Paralelo a la calzada",
-                        "perpendicular": "En ángulo recto a la calzada"
-                    }
-                },
                 "parking/side/orientation": {
-                    "label": "Orientación del estacionamiento",
                     "options": {
                         "diagonal": "Diagonal con respecto a la calzada (~45°)",
                         "parallel": "Paralelo a la calzada",
                         "perpendicular": "Se encuentra con la calzada en ángulo recto (~90°)"
                     },
-                    "terms": "orientación de estacionamiento,orientación de aparcamiento",
                     "types": {
                         "parking:left:orientation": "Lado izquierdo",
                         "parking:right:orientation": "Lado derecho"
@@ -2661,6 +2744,15 @@
                 "post": {
                     "label": "Dirección de entrega"
                 },
+                "post_box/type": {
+                    "label": "Tipo",
+                    "options": {
+                        "lamp": "Sujeto a un poste",
+                        "pillar": "Caja independiente",
+                        "wall": "Montado en una pared"
+                    },
+                    "terms": "tipo,tipos,género"
+                },
                 "power": {
                     "label": "Tipo"
                 },
@@ -2898,6 +2990,20 @@
                 },
                 "route_master": {
                     "label": "Tipo"
+                },
+                "royal_cypher": {
+                    "label": "Monograma real",
+                    "options": {
+                        "CIIIR": "CIIIR (Carlos III)",
+                        "EIIR": "EIIR (Isabel II)",
+                        "EVIIIR": "EVIIIR (Eduardo VIII)",
+                        "EVIIR": "EVIIR (Eduardo VII)",
+                        "GR": "GR (Jorge V)",
+                        "GVIR": "GVIR (Jorge VI)",
+                        "VR": "VR (Victoria)",
+                        "no": "No",
+                        "scottish_crown": "Corona escocesa"
+                    }
                 },
                 "ruins": {
                     "label": "Tipo"
@@ -3200,31 +3306,44 @@
                         "baseball": "Béisbol",
                         "basketball": "Baloncesto / Básquetbol",
                         "beachvolleyball": "Voleibol de playa",
+                        "bmx": "BMX (Ciclocross)",
                         "boules": "Bolos",
                         "bowls": "Bolo césped / Bochas",
+                        "canoe": "Piragüismo / Canotaje",
                         "climbing": "Escalada",
                         "cricket": "Críquet",
+                        "curling": "Curling",
                         "cycling": "Ciclismo",
+                        "disc_golf": "Golf de disco",
+                        "dog_racing": "Carreras de perros",
                         "equestrian": "Ecuestre",
                         "fitness": "Entrenamiento físico",
                         "free_flying": "Parapente / Ala Delta",
                         "futsal": "Futsal / Fútbol sala",
+                        "gaelic_games": "Juegos gaélicos",
                         "golf": "Golf",
                         "gymnastics": "Gimnasia",
                         "handball": "Handball / Balonmano por equipos",
                         "horse_racing": "Carreras de caballos",
+                        "ice_hockey": "Hockey sobre hielo",
+                        "ice_skating": "Patinaje sobre hielo",
+                        "ice_stock": "Ice stock",
                         "karting": "Carreras de karts / Karting",
                         "motocross": "Motocross",
                         "motor": "Deportes de motor (Motorsports)",
+                        "multi": "Otros deportes no especificados",
                         "netball": "Balonred / Netball",
                         "padel": "Pádel",
+                        "pelota": "Pelota",
                         "rugby_union": "Rugby union",
                         "running": "Running",
+                        "scuba_diving": "Buceo",
                         "shooting": "Tiro deportivo",
                         "skateboard": "Skateboard / Monopatinaje",
                         "skiing": "Esquí",
                         "soccer": "Fútbol",
                         "softball": "Sóftbol",
+                        "speedway": "Motociclismo",
                         "swimming": "Natación",
                         "table_tennis": "Tenis de mesa",
                         "tennis": "Tenis",
@@ -3232,42 +3351,17 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Deportes",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Hockey sobre hielo",
-                        "ice_skating": "Patinaje sobre hielo",
-                        "ice_stock": "Ice stock",
-                        "multi": "Múltiple"
-                    }
+                    "label": "Deportes"
                 },
                 "sport_pub": {
                     "label": "Deportes",
-                    "options": {
-                        "billiards": "Billar americano",
-                        "darts": "Dardos",
-                        "table_soccer": "Fútbol de mesa"
-                    },
                     "terms": "deportes,deportivo"
                 },
                 "sport_racing_motor": {
-                    "label": "Deportes",
-                    "options": {
-                        "karting": "Carreras de karts / karting",
-                        "motocross": "Motocross",
-                        "motor": "Deportes de motor (Motorsports)",
-                        "speedway": "Pista de carreras de motos"
-                    }
+                    "label": "Deportes"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Deportes",
-                    "options": {
-                        "bmx": "BMX (Ciclocross)",
-                        "cycling": "Ciclismo",
-                        "dog_racing": "Carreras de perros",
-                        "horse_racing": "Carreras de caballos",
-                        "running": "Running"
-                    }
+                    "label": "Deportes"
                 },
                 "stars": {
                     "label": "Estrellas",
@@ -3864,6 +3958,11 @@
                     "label": "Sitio web",
                     "placeholder": "https://ejemplo.com/",
                     "terms": "sitio web,sitio,web,presencia en internet,uri,url,página web"
+                },
+                "website/menu": {
+                    "label": "Enlace del menú",
+                    "placeholder": "https://ejemplo.com/",
+                    "terms": "menú online,menú en línea,uri del menú,url del menú,web del menú,menú web,menú,menu,carta"
                 },
                 "wetland": {
                     "label": "Tipo",
@@ -4843,6 +4942,10 @@
                     "name": "Restaurante japonés",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe"
                 },
+                "amenity/restaurant/korean": {
+                    "name": "Restaurante coreano",
+                    "terms": "comida coreana,gastronomía coreana,parrilla coreana,cocina coreana"
+                },
                 "amenity/restaurant/mexican": {
                     "name": "Restaurante mexicano",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,tacos,burritos,enchiladas,fajitas,nachos,tortillas,salsa,tamales,quesadillas"
@@ -4858,6 +4961,10 @@
                 "amenity/restaurant/seafood": {
                     "name": "Restaurante de mariscos",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,pescados,mariscos,moluscos,crustáceos,almejas,ostras,langostas,cangrejos,camarones,calamares,pulpos"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "Restaurante español",
+                    "terms": "restaurante,restorán,mesón,taberna,ambigú,bufé"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Asador / Parrilla",
@@ -5369,7 +5476,8 @@
                     "terms": "barrera levadiza,pluma"
                 },
                 "barrier/log": {
-                    "name": "Árbol caído"
+                    "name": "Obstrucción de árbol caído",
+                    "terms": "árbol caído,árboles caídos,árbol derribado"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Barrera para motos",
@@ -5978,6 +6086,10 @@
                 "emergency/fire_hydrant": {
                     "name": "Hidrante contra incendios",
                     "terms": "boca de incendio,hidrante de incendio,hidrante contra incendios"
+                },
+                "emergency/fire_service_inlet": {
+                    "name": "Conexión con los bomberos",
+                    "terms": "entrada de hidrante de edificio,tubo ascendente cargado,entrada de tubo ascendente seco,tubo vertical seco,fdc,entrada de servicio contra incendios,entrada de rociador contra incendios,entrada de tubo ascendente,entrada de tubo ascendente húmedo,tubo vertical húmedo"
                 },
                 "emergency/first_aid_kit": {
                     "name": "Kit de primeros auxilios",
@@ -6757,7 +6869,7 @@
                     "terms": "matadero,carne,carnicería,becerro,pollo,vaca,cerdo,aves de corral,corral"
                 },
                 "landuse/landfill": {
-                    "name": "Relleno sanitario",
+                    "name": "Vertedero",
                     "terms": "relleno sanitario,relleno municipal,vertedero de basura,desperdicio,basurales,vertederos,tiraderos,basureros"
                 },
                 "landuse/meadow": {
@@ -6785,8 +6897,8 @@
                     "terms": "base,lucha,fuerza,guardia,marina,armada,barco,submarino,tropa,guerra"
                 },
                 "landuse/military/danger_area": {
-                    "name": "Área de peligro",
-                    "terms": "zona de peligro,bombas,minas,munición,explosivo,militar,ejército,fuerza aérea,marina,armada,fuerza naval"
+                    "name": "Zona peligrosa, acceso prohibido",
+                    "terms": "fuerza aérea,ejército,base,explosión,bomba,explosivo,guardia,marina,mina,tropa,guerra,peligro"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Carrera de obstáculos militares",
@@ -7057,6 +7169,41 @@
                     "name": "Campo de tiro con arco",
                     "terms": "arco y flecha,ballesta,rango de arquería,tiro con arco"
                 },
+                "leisure/pitch/athletics": {
+                    "name": "Pista de atletismo"
+                },
+                "leisure/pitch/athletics/discus_throw": {
+                    "name": "Anillo de disco",
+                    "terms": "anillo de disco,anillo de discos,zona de discos"
+                },
+                "leisure/pitch/athletics/hammer_throw": {
+                    "name": "Anillo de lanzamiento de martillo",
+                    "terms": "anillo de lanzamiento de martillo,círculo de lanzamiento de martillo,zona de lanzamiento de martillo,sector de lanzamiento de martillo"
+                },
+                "leisure/pitch/athletics/high_jump": {
+                    "name": "Pozo de salto de altura",
+                    "terms": "pozo de salto de altura,foso de salto de altura"
+                },
+                "leisure/pitch/athletics/javelin_throw": {
+                    "name": "Sector de jabalina",
+                    "terms": "sector de jabalina,sector jabalina"
+                },
+                "leisure/pitch/athletics/long_jump": {
+                    "name": "Pozo de salto de longitud",
+                    "terms": "pozo de salto de longitud,foso de salto de longitud"
+                },
+                "leisure/pitch/athletics/pole_vault": {
+                    "name": "Pozo de salto con pértiga",
+                    "terms": "pozo de pértiga,foso de pértiga"
+                },
+                "leisure/pitch/athletics/shot_put": {
+                    "name": "Anillo de lanzamiento de bala",
+                    "terms": "anillo de lanzamiento de bala,hollo de lanzamiento de bala,anillo de lanzamiento de peso,hollo de lanzamiento de peso"
+                },
+                "leisure/pitch/athletics/triple_jump": {
+                    "name": "Pozo de triple salto",
+                    "terms": "pozo de triple salto,foso de triple salto"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Campo de fútbol australiano",
                     "terms": "australia,afl,fútbol,futbol,australiano"
@@ -7252,6 +7399,36 @@
                 "leisure/track": {
                     "name": "Pista de carrera (no motorizada)",
                     "terms": "pista,circuito,carrera,atletismo,caminata,correr,equestre,hipódromo,perro,bicicleta,caballo,galgo"
+                },
+                "leisure/track/athletics": {
+                    "name": "Pista de atletismo"
+                },
+                "leisure/track/athletics/javelin_throw": {
+                    "name": "Pista de jabalina",
+                    "terms": "pista de jabalina,pista jabalina"
+                },
+                "leisure/track/athletics/long_jump": {
+                    "name": "Pista de salto de longitud",
+                    "terms": "pista de salto de longitud"
+                },
+                "leisure/track/athletics/pole_vault": {
+                    "name": "Pista de salto con pértiga",
+                    "terms": "pista de salto con pértiga"
+                },
+                "leisure/track/athletics/running": {
+                    "name": "Pista de atletismo"
+                },
+                "leisure/track/athletics/sprint": {
+                    "name": "Pista de velocidad",
+                    "terms": "pista de velocidad,pista de sprint,sprint,sprinting"
+                },
+                "leisure/track/athletics/steeplechase": {
+                    "name": "Pista de carrera de vallas",
+                    "terms": "pista de carrera de vallas,pista de carrera de obstáculos"
+                },
+                "leisure/track/athletics/triple_jump": {
+                    "name": "Pista de triple salto",
+                    "terms": "pista de triple salto"
                 },
                 "leisure/track/cycling": {
                     "name": "Circuito de ciclismo",
@@ -7482,6 +7659,10 @@
                 "man_made/pumping_station": {
                     "name": "Estación de bombeo",
                     "terms": "estación de bombeo,bomba,aguas residuales,aguas riego,aguas drenaje,agua potable,agua industrial,agua para energía,agua de lluvia,aguas servidas,aguas negras,aguas residuos urbanos,alcantarillado"
+                },
+                "man_made/quay": {
+                    "name": "Muelle",
+                    "terms": "muelle,embarcadero,atracadero"
                 },
                 "man_made/reservoir_covered": {
                     "name": "Depósito de agua cubierto",
@@ -7728,6 +7909,10 @@
                 "natural/peak": {
                     "name": "Pico",
                     "terms": "pico,montaña,cresta,cima,cúspide,cumbre,picacho,aguja,alpes,corona,colina,monte"
+                },
+                "natural/peninsula": {
+                    "name": "Península",
+                    "terms": "península"
                 },
                 "natural/reef": {
                     "name": "Arrecife",
@@ -9153,8 +9338,7 @@
                     "terms": "sonido,hifi,alta fidelidad,altavoz,amplificador,equipos hifi"
                 },
                 "shop/hobby": {
-                    "name": "Tienda de pasatiempos",
-                    "terms": "manga,figuras,modelo"
+                    "name": "Tienda de pasatiempos"
                 },
                 "shop/household_linen": {
                     "name": "Tienda de ropa de hogar",
@@ -9445,7 +9629,8 @@
                     "terms": "neumático,llanta,goma,gomería"
                 },
                 "shop/vacant": {
-                    "name": "Local disponible"
+                    "name": "Local disponible",
+                    "terms": "tienda libre,vacante,libre,vacío,desocupado,disponible,en alquiler"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Tienda de aspiradoras",

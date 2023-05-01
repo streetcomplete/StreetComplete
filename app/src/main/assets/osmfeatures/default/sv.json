@@ -292,6 +292,31 @@
                     "label": "Total stigning",
                     "terms": "total stigning,stigning,klättring,möh,lutning"
                 },
+                "athletics_pitch": {
+                    "label": "Gren",
+                    "options": {
+                        "discus_throw": "Diskus",
+                        "hammer_throw": "Slägga",
+                        "high_jump": "Höjdhopp",
+                        "javelin_throw": "Spjut",
+                        "long_jump": "Längdhopp",
+                        "pole_vault": "Stavhopp",
+                        "shot_put": "Kulstötning",
+                        "triple_jump": "Tresteg"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Gren",
+                    "options": {
+                        "javelin_throw": "Spjut",
+                        "long_jump": "Längdhopp",
+                        "pole_vault": "Stavhopp",
+                        "running": "Löpning",
+                        "sprint": "Kortdistanslöpning",
+                        "steeplechase": "Hinderlöpning",
+                        "triple_jump": "Tresteg"
+                    }
+                },
                 "atm": {
                     "label": "Uttagsautomat"
                 },
@@ -748,7 +773,12 @@
                     "label": "Hämtningstider"
                 },
                 "collector": {
-                    "label": "Föremål"
+                    "label": "Föremål",
+                    "options": {
+                        "coins": "Mynt",
+                        "comics": "Seriertidningar",
+                        "stamps": "Frimärken"
+                    }
                 },
                 "colour": {
                     "label": "Färg",
@@ -769,7 +799,10 @@
                     "label": "Typ"
                 },
                 "consulate": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "yes": "Konsulat"
+                    }
                 },
                 "consulting": {
                     "label": "Expertis"
@@ -1077,6 +1110,9 @@
                 "dance/style": {
                     "label": "Dansstilar"
                 },
+                "dance/teaching": {
+                    "label": "Erbjuder danslektioner"
+                },
                 "date": {
                     "label": "Datum"
                 },
@@ -1164,7 +1200,12 @@
                     "terms": "typ av diet,diet,gluten,glutenfri,frukt,halal,kosher,laktosfri,mjölkfri,kött,pescetarianism,rå,vegan,vegetarisk,vegetarian"
                 },
                 "diplomatic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "consulate": "Konsulat",
+                        "embassy": "Ambassad",
+                        "liaison": "Kontaktkontor"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Tjänster"
@@ -1229,7 +1270,10 @@
                     "label": "Typ"
                 },
                 "dock": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "drydock": "Torrdocka"
+                    }
                 },
                 "dog": {
                     "label": "Hundar",
@@ -1384,6 +1428,32 @@
                         "pipe": "Kapslat rör",
                         "underground": "Underjordisk",
                         "wall": "Vägg"
+                    }
+                },
+                "fire_mains": {
+                    "options": {
+                        "dry": "Dedikerat system (normalt torrt)",
+                        "no": "Nej",
+                        "wet": "Ansluten till huvudvattenledning (permanent fyllt)",
+                        "yes": "Okänd typ"
+                    }
+                },
+                "fire_service_inlet": {
+                    "options": {
+                        "pillar": "Stolpe/Ovan jord",
+                        "pipe": "Kapslat rör",
+                        "underground": "Underjordisk",
+                        "wall": "Vägg"
+                    }
+                },
+                "fire_sprinkler": {
+                    "label": "Stigarledning",
+                    "options": {
+                        "dry": "Dedikerat system (normalt torrt)",
+                        "no": "Nej",
+                        "pre-action": "Ansluten till huvudvattenledning (Förutlösnings-/Pre-actionsystem)",
+                        "wet": "Ansluten till huvudvattenledning (permanent fyllt)",
+                        "yes": "Okänd typ"
                     }
                 },
                 "fireplace": {
@@ -1721,7 +1791,33 @@
                     }
                 },
                 "historic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "archaeological_site": "Arkeologisk plats",
+                        "bomb_crater": "Bombkrater",
+                        "boundary_stone": "Gränssten",
+                        "building": "Historisk byggnad",
+                        "castle": "Slott",
+                        "charcoal_pile": "Kolmila",
+                        "church": "Kyrka",
+                        "city_gate": "Stadsport",
+                        "citywalls": "Stadsmur",
+                        "fort": "Historiskt fort",
+                        "manor": "Herrgård",
+                        "memorial": "Minnesmärke",
+                        "milestone": "Milsten",
+                        "mine": "Gruva",
+                        "mine_shaft": "Gruvschakt",
+                        "monument": "Monument",
+                        "pillory": "Historisk skampåle",
+                        "railway": "Järnväg",
+                        "ruins": "Ruiner",
+                        "shieling": "Fäbod",
+                        "tomb": "Grav",
+                        "wayside_cross": "Kors vid väg",
+                        "wayside_shrine": "Helgedom vid väg",
+                        "wreck": "Skeppsvrak"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Historisk civilization"
@@ -2109,6 +2205,10 @@
                         "war_memorial": "Krigsmonument"
                     }
                 },
+                "message": {
+                    "label": "Meddelande",
+                    "terms": "meddelande,typ av meddelande"
+                },
                 "microbrewery": {
                     "label": "Microbryggeri",
                     "terms": "microbryggeri,bryggeri,hantverksbryggeri,öl"
@@ -2138,6 +2238,16 @@
                 },
                 "monitoring_multi": {
                     "label": "Mäter"
+                },
+                "mooring": {
+                    "label": "Förtöjning",
+                    "options": {
+                        "commercial": "Kommersiellt",
+                        "guest": "Gäst",
+                        "no": "Nej",
+                        "private": "Privat",
+                        "yes": "Ja"
+                    }
                 },
                 "mtb/scale": {
                     "label": "Svårighetsgrad – Mountainbike",
@@ -2358,6 +2468,9 @@
                     },
                     "terms": "organiska produkter,organiskt,naturligt,icke gmo,gmo"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Orientering"
+                },
                 "outdoor_seating": {
                     "label": "Utomhusplatser",
                     "terms": "utomhusplatser,uteplatser,uteservering,servering,al fresco,beer garden,ölträdgård,café,restaurang,pub,bar,utomhusmatsal,terrass,utomhus,glassbar"
@@ -2399,22 +2512,12 @@
                         "underground": "Underjordisk"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientering",
-                    "options": {
-                        "diagonal": "Diagonalt i förhållande till gatan",
-                        "parallel": "Parallellt med gatan",
-                        "perpendicular": "Möter gatan i en rät vinkel"
-                    }
-                },
                 "parking/side/orientation": {
-                    "label": "Parkeringsorientering",
                     "options": {
                         "diagonal": "Diagonalt i förhållande till gatan (~45°)",
                         "parallel": "Parallellt med gatan",
                         "perpendicular": "Möter gatan i en rät vinkel (~90°)"
                     },
-                    "terms": "parkeringsorientering,orientering,parkering,fickparkering,paring längs gata",
                     "types": {
                         "parking:left:orientation": "Vänster sida",
                         "parking:right:orientation": "Höger sida"
@@ -2658,6 +2761,15 @@
                 "post": {
                     "label": "Leveransadress"
                 },
+                "post_box/type": {
+                    "label": "Typ",
+                    "options": {
+                        "lamp": "Monterad på stolpe",
+                        "pillar": "Fristående låda",
+                        "wall": "Monterad på vägg"
+                    },
+                    "terms": "typ,postlådetyp,postlåda,brevlåda,typ av postlåda,typ av brevlåda"
+                },
                 "power": {
                     "label": "Typ"
                 },
@@ -2754,6 +2866,10 @@
                 },
                 "ref/isil": {
                     "label": "ISIL-kod"
+                },
+                "ref/linz/place_id-NZ": {
+                    "label": "Plats-ID i NZGB",
+                    "terms": "plats-id i nzgb,nzgb-platsidentitet,new zealand gazetteer,nya zealand,landinformation på nya zealand,geografiska gränser på nya zealand"
                 },
                 "ref/vatin": {
                     "label": "VAT ID-nummer",
@@ -2891,6 +3007,20 @@
                 },
                 "route_master": {
                     "label": "Typ"
+                },
+                "royal_cypher": {
+                    "label": "Kungligt monogram",
+                    "options": {
+                        "CIIIR": "CIIIR (Charles III)",
+                        "EIIR": "EIIR (Elizabeth II)",
+                        "EVIIIR": "EVIIIR (Edward VIII)",
+                        "EVIIR": "EVIIR (Edward VII)",
+                        "GR": "GR (Georg V)",
+                        "GVIR": "GVIR (Georg VI)",
+                        "VR": "VR (Viktoria)",
+                        "no": "Nej",
+                        "scottish_crown": "Skotska kronan"
+                    }
                 },
                 "ruins": {
                     "label": "Typ"
@@ -3193,31 +3323,42 @@
                         "baseball": "Baseball",
                         "basketball": "Basket",
                         "beachvolleyball": "Beachvolleyboll",
+                        "bmx": "BMX",
                         "boules": "Boule",
                         "bowls": "Bowls",
                         "climbing": "Klättring",
                         "cricket": "Cricket",
+                        "curling": "Curling",
                         "cycling": "Cycling",
+                        "disc_golf": "Discgolf",
+                        "dog_racing": "Hundkpplöpning",
                         "equestrian": "Ryttare",
                         "fitness": "Fitness-träning",
                         "free_flying": "Skärmflygning / Paragliding",
                         "futsal": "Futsal",
+                        "gaelic_games": "Gaelisk fotboll",
                         "golf": "Golf",
                         "gymnastics": "Gymnastik",
                         "handball": "Handboll",
                         "horse_racing": "Hästkapplöpning",
+                        "ice_hockey": "Ishockey",
+                        "ice_skating": "Skridskor",
+                        "ice_stock": "Isstock",
                         "karting": "Go-kart racing",
                         "motocross": "Motocross",
                         "motor": "Motorsport",
+                        "multi": "Ospecificerade andra sporter",
                         "netball": "Nätboll",
                         "padel": "Padel",
                         "rugby_union": "Rugby Union",
                         "running": "Löpning",
+                        "scuba_diving": "Nöjesdykning",
                         "shooting": "Skytte",
                         "skateboard": "Skateboard",
                         "skiing": "Skidåkning",
                         "soccer": "Fotboll",
                         "softball": "Softboll",
+                        "speedway": "Motorcykel Speedway",
                         "swimming": "Simning",
                         "table_tennis": "Bordtennis",
                         "tennis": "Tennis",
@@ -3225,42 +3366,17 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Sporter",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Ishockey",
-                        "ice_skating": "Skridskor",
-                        "ice_stock": "Isstock",
-                        "multi": "Flera"
-                    }
+                    "label": "Sporter"
                 },
                 "sport_pub": {
                     "label": "Sporter",
-                    "options": {
-                        "billiards": "Biljard",
-                        "darts": "Dart",
-                        "table_soccer": "Bordsfotboll"
-                    },
                     "terms": "sporer,idrotter,lekar,aktiviteter"
                 },
                 "sport_racing_motor": {
-                    "label": "Sporter",
-                    "options": {
-                        "karting": "Gokart",
-                        "motocross": "Motocross",
-                        "motor": "Motorsport",
-                        "speedway": "Motorcykel Speedway"
-                    }
+                    "label": "Sporter"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sporter",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Cykling",
-                        "dog_racing": "Hundkpplöpning",
-                        "horse_racing": "Hästkapplöpning",
-                        "running": "Löpning"
-                    }
+                    "label": "Sporter"
                 },
                 "stars": {
                     "label": "Stjärnor",
@@ -3856,6 +3972,11 @@
                     "label": "Hemsida",
                     "placeholder": "https://exempel.se",
                     "terms": "webbsida,webbsite,website,hemsida,www,url,uri,internet,internetsida,internetsite"
+                },
+                "website/menu": {
+                    "label": "Menylänk",
+                    "placeholder": "https://exempel.se",
+                    "terms": "menylänk,länk till meny,meny,matsedel,url till meny,meny-url"
                 },
                 "wetland": {
                     "label": "Typ",
@@ -4777,15 +4898,15 @@
                 },
                 "amenity/restaurant": {
                     "name": "Restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta"
                 },
                 "amenity/restaurant/american": {
                     "name": "Amerikansk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,amerikansk restaurang,amerikansk mat,usa"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,amerikansk restaurang,amerikansk mat,usa,hamburgare"
                 },
                 "amenity/restaurant/asian": {
                     "name": "Asiatisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,asiatisk restaurang,asiatisk mat"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,asiatisk restaurang,asiatisk mat"
                 },
                 "amenity/restaurant/barbeque": {
                     "name": "Grillrestaurang",
@@ -4793,67 +4914,75 @@
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Kinesisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,kinesisk restaurang,kina,kinesisk,kinamat"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,kinesisk restaurang,kina,kinesisk,kinamat"
                 },
                 "amenity/restaurant/french": {
                     "name": "Fransk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,fransk restaurang,fransk mat,frankrike"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,fransk restaurang,fransk mat,frankrike"
                 },
                 "amenity/restaurant/german": {
                     "name": "Tysk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,tysk restaurang,tysk mat,tyskland"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,tysk restaurang,tysk mat,tyskland"
                 },
                 "amenity/restaurant/greek": {
                     "name": "Grekisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,grekisk restaurang,grekisk mat,grekland"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,grekisk restaurang,grekisk mat,grekland,gyros,pitas,oliver"
                 },
                 "amenity/restaurant/indian": {
                     "name": "Indisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,indisk restaurang,indisk mat,indien"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,indisk restaurang,indisk mat,indien,curry"
                 },
                 "amenity/restaurant/italian": {
                     "name": "Italiensk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,italiensk restaurang,italiensk mat,italien"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,italiensk restaurang,italiensk mat,italien,pizza,pasta"
                 },
                 "amenity/restaurant/japanese": {
                     "name": "Japansk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,japansk restaurang,japansk mat,japan"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,japansk restaurang,japansk mat,japan"
+                },
+                "amenity/restaurant/korean": {
+                    "name": "Koreansk restaurang",
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,koreansk restaurang,koreansk mat,korea"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "Mexikansk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,mexikansk restaurang,mexikansk mat,mexiko"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,mexikansk restaurang,mexikansk mat,mexiko,tacos,burritos,enchiladas,fajitas,nachos,tortillas,salsa,tamales,quesadillas"
                 },
                 "amenity/restaurant/noodle": {
                     "name": "Nudelrestaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,nudelrestaurang,nudlar,ris,risnudlar"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,nudelrestaurang,nudlar,ris,risnudlar,nudelsoppa,ramennudlar,soppa,sobanudlar,cellofannudlar"
                 },
                 "amenity/restaurant/pizza": {
                     "name": "Pizzarestaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,pizzarestaurang,pizza,pan-pizza,panpizza,pan pizza"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,pizzarestaurang,pizza,pan-pizza,panpizza,pan pizza"
                 },
                 "amenity/restaurant/seafood": {
                     "name": "Fisk- och skaldjursrestaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,fisk- och skaldjursrestaurang,fiskerestaurang,skaldjursrestaurang,seafood,fisk,skaldjur,blötdjur,kräftdjur,musslor,ostron,hummer,krabba,krabbor,räkor,bläckfisk"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,fisk- och skaldjursrestaurang,fiskerestaurang,skaldjursrestaurang,seafood,fisk,skaldjur,blötdjur,kräftdjur,musslor,ostron,hummer,krabba,krabbor,räkor,bläckfisk"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "Spansk restaurang",
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,spansk restaurang,spanien,paella,gazpacho,salmorejo,croquetas,empanada,bacalao"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Stekhus",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,stekhus,steak house,steakhouse,slakthus,kött,biff"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,stekhus,steak house,steakhouse,slakthus,kött,biff,köttrestaurang"
                 },
                 "amenity/restaurant/sushi": {
                     "name": "Sushi-restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,asiatisk restaurang,asiatisk mat,sushi-restaurang,sushi"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,asiatisk restaurang,asiatisk mat,sushi-restaurang,sushi"
                 },
                 "amenity/restaurant/thai": {
                     "name": "Thai-restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,asiatisk restaurang,asiatisk mat,thai-restaurang,thai,thaimat,thailand"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,asiatisk restaurang,asiatisk mat,thai-restaurang,thai,thaimat,thailand"
                 },
                 "amenity/restaurant/turkish": {
                     "name": "Turkisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,turkisk restaurang,turkisk mat,turkisk,turkiet"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,turkisk restaurang,turkisk mat,turkisk,turkiet"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamesisk restaurang",
-                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café. matsal,kaffe,lunch,vietnamesisk restaurang,vietnamesisk mat,vietnam,asiatisk restaurang,asiatisk mat"
+                    "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,vietnamesisk restaurang,vietnamesisk mat,vietnam,asiatisk restaurang,asiatisk mat"
                 },
                 "amenity/sanitary_dump_station": {
                     "name": "Latrintömning för campingfordon",
@@ -5335,9 +5464,6 @@
                 "barrier/lift_gate": {
                     "name": "Bom-bariär",
                     "terms": "bom-bariär,bombariär,bomgrind,bom,lyftbom,bomlyft,lyftgrind,vägbom,spärr,avspärrning,vridbar stolpe"
-                },
-                "barrier/log": {
-                    "name": "Fallet träd"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Motorcykelbarriär",
@@ -6745,10 +6871,6 @@
                     "name": "Marinbas",
                     "terms": "marinbas,marint förband,marinen,flottan,amfibiekåren,kustartilleriet,flottilj,flottbas,örlogsbas"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Farligt område",
-                    "terms": "farligt område,skjutbana,säkerhetszon,militärt skyddsområde,militärt övningsområde"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Militär hinderbana",
                     "terms": "militär hinderbana,militär,armé,militärbas,vakt,marin,hinderbana,hoppbana,hinderlöpning,hinderlopp"
@@ -7017,6 +7139,9 @@
                 "leisure/pitch/archery": {
                     "name": "Bågskyttebana",
                     "terms": "bågskyttebana,pilbågsbana,bågskytte,pilbåge,bågskyttsbana"
+                },
+                "leisure/pitch/athletics": {
+                    "name": "Friidrottsplan"
                 },
                 "leisure/pitch/australian_football": {
                     "name": "Australisk fotbollsplan",
@@ -9086,8 +9211,7 @@
                     "terms": "hifi-butik,hifi,ljud,ljudåtergivning,förstärkare,högtalare,ljudanläggning,audio,stereo,stereoanläggning,video"
                 },
                 "shop/hobby": {
-                    "name": "Hobbyaffär",
-                    "terms": "hobbyaffär,hobby,manga,model,modellbygge,modellflyg,modelljärnväg"
+                    "name": "Hobbyaffär"
                 },
                 "shop/household_linen": {
                     "name": "Affär för hushållstextilier",

@@ -1234,9 +1234,6 @@
                         "underground": "Подземни"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Оријентација"
-                },
                 "parking_space": {
                     "label": "Врста"
                 },
@@ -3336,10 +3333,6 @@
                 "landuse/military/barracks": {
                     "name": "Бараке",
                     "terms": "бараке,касарне,дашчаре"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Опасна област",
-                    "terms": "опасна област,опасна зона,опасност"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Војни полигон са препрекама"

@@ -1301,4 +1301,9 @@ Nu verplaatsen?"</string>
     <string name="street_parking_staggered_on_street">"Op de straat aan afwisselende zijden"</string>
     <string name="street_parking_staggered_half_on_kerb">"Gedeeltelijk op de straat aan afwisselende zijden"</string>
     <string name="quest_traffic_signals_sound_description">"Hint: Zoek naar luidsprekers. Niet alle geluidssignalen kunnen via een knop worden geactiveerd."</string>
+    <string name="quest_presets_duplicate">"Dupliceren"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Er is hier geen toilet"</string>
+    <string name="unknown_surface_title">"Ander soort oppervlakte"</string>
+    <string name="overlay_surface">"Oppervlakten"</string>
+    <string name="overlay_path_surface_segregated">"Split in fiets- en wandelgedeelte"</string>
 </resources>

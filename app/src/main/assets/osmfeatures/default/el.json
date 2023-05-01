@@ -248,7 +248,10 @@
                         "city": "Ιστορική Πόλη",
                         "fortification": "Οχύρωση",
                         "necropolis": "Νεκρόπολη",
-                        "roman_villa": "Ρωμαϊκή Βίλα"
+                        "roman_circus": "Ρωμαϊκός ιππόδρομος",
+                        "roman_villa": "Ρωμαϊκή Βίλα",
+                        "settlement": "Ιστορικός Οικισμός",
+                        "tumulus": "Τύμβος"
                     }
                 },
                 "architect": {
@@ -264,10 +267,12 @@
                 "artwork_type": {
                     "label": "Τύπος",
                     "options": {
+                        "bust": "Προτομή",
                         "graffiti": "Γραφίτι",
                         "mosaic": "Μωσαϊκό",
                         "mural": "Τοιχογραφία",
                         "painting": "Πίνακας",
+                        "relief": "Ανάγλυφο",
                         "sculpture": "Γλυπτό",
                         "statue": "Άγαλμα"
                     }
@@ -275,11 +280,41 @@
                 "ascent": {
                     "label": "Συνολική Άνοδος"
                 },
+                "athletics_pitch": {
+                    "label": "Διοργάνωση",
+                    "options": {
+                        "discus_throw": "Δίσκος",
+                        "hammer_throw": "Σφύρα",
+                        "high_jump": "Άλμα εις ύψος",
+                        "javelin_throw": "Ακόντιο",
+                        "long_jump": "Άλμα εις μήκος",
+                        "triple_jump": "Άλμα Τριπλούν"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Διοργάνωση",
+                    "options": {
+                        "javelin_throw": "Ακόντιο",
+                        "long_jump": "Άλμα εις μήκος",
+                        "running": "Δρόμος",
+                        "triple_jump": "Άλμα τριπλούν"
+                    }
+                },
                 "atm": {
                     "label": "Μηχάνημα Αυτόματης Ανάληψης"
                 },
                 "attraction": {
-                    "label": "Τύπος"
+                    "label": "Τύπος",
+                    "options": {
+                        "animal": "Κλουβί ζώου",
+                        "big_wheel": "Ρόδα λούνα παρκ",
+                        "bumper_car": "Συγκρουόμενα",
+                        "bungee_jumping": "Μπάντζι",
+                        "carousel": "Καρουζέλ",
+                        "maze": "Λαβύρινθος",
+                        "train": "Τουριστικό Τραίνο",
+                        "water_slide": "Νεροτσουλήθρα"
+                    }
                 },
                 "automated": {
                     "label": "Αυτοματοποημένο"
@@ -317,7 +352,10 @@
                         "guard_rail": "Προστατευτικό Κιγκλίδωμα",
                         "hedge": "Θαμνώδης Περίφραξη",
                         "height_restrictor": "Περιοριστής Ύψους",
-                        "kerb": "Κράσπεδο"
+                        "kerb": "Κράσπεδο",
+                        "retaining_wall": "Αναλημματικός τοίχος",
+                        "toll_booth": "Ταμείο Διοδίων",
+                        "wall": "Τοίχος"
                     }
                 },
                 "barrier_planter": {
@@ -328,7 +366,10 @@
                     }
                 },
                 "basin": {
-                    "label": "Τύπος"
+                    "label": "Τύπος",
+                    "options": {
+                        "detention": "Λεκάνη δέσμευσης"
+                    }
                 },
                 "bath/open_air": {
                     "label": "Υπαίθριο"
@@ -339,6 +380,8 @@
                 "bath/type": {
                     "label": "Ειδικότητα",
                     "options": {
+                        "hammam": "χαμάμ",
+                        "hot_spring": "Θερμή Πηγή",
                         "lake": "Λίμνη",
                         "thermal": "Θερμά Λουτρά"
                     }
@@ -436,6 +479,18 @@
                 },
                 "building": {
                     "label": "Κτήριο\nΚτίριο",
+                    "options": {
+                        "apartments": "Κτίριο διαμερισμάτων",
+                        "barn": "Αχυρώνας",
+                        "bungalow": "Μπανγκαλόου",
+                        "bunker": "Οχυρό καταφύγιο",
+                        "cabin": "Καλύβα",
+                        "carport": "Υπόστεγο αυτοκινήτου",
+                        "cathedral": "Καθεδρικός",
+                        "chapel": "Παρεκκλήσιο",
+                        "church": "Εκκλησία",
+                        "dormitory": "Εστία "
+                    },
                     "terms": "κτίριο,κτήριο,οικοδόμημα"
                 },
                 "building/flats": {
@@ -1458,7 +1513,30 @@
                     }
                 },
                 "historic": {
-                    "label": "Είδος"
+                    "label": "Είδος",
+                    "options": {
+                        "archaeological_site": "Αρχαιολογικός Τόπος",
+                        "bomb_crater": "Κρατήρας Βόμβας",
+                        "building": "Ιστορικό Κτίριο",
+                        "castle": "Κάστρο",
+                        "church": "Εκκλησία",
+                        "city_gate": "Πύλη Πόλης",
+                        "citywalls": "Τείχος Πόλης",
+                        "fort": "Ιστορικό Οχυρό",
+                        "manor": "Αρχοντικό",
+                        "memorial": "Μνημείο",
+                        "milestone": "Οδόσημο",
+                        "mine": "Ορυχείο",
+                        "mine_shaft": "Φρεάτιο ορυχείου",
+                        "monument": "Μνημείο",
+                        "pillory": "Ιστορικός Κύφωνας",
+                        "railway": "Σιδηρόδρομος",
+                        "ruins": "Ερείπια",
+                        "tomb": "Τάφος",
+                        "wayside_cross": "Σταυρός στην άκρη του δρόμου",
+                        "wayside_shrine": "Εικονοστάσιο στην άκρη του δρόμου",
+                        "wreck": "Ναυάγιο πλοίου"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Ιστορικός Πολιτισμός"
@@ -1505,8 +1583,7 @@
                         "critical": "Σύνορο : Πέρασμα μόνο για έμπειρους αναβάτες και άλογα. Σημαντικά εμπόδια. Οι γέφυρες πρέπει να εξεταστούν προσεκτικά.",
                         "dangerous": "Επικίνδυνο: Πέρασμα μόνο για πολύ έμπειρους αναβάτες και άλογα και μόνο σε καλό καιρό. Αφιππεύστε.",
                         "demanding": "Χρησιμοποιήστε με προσοχή: Ανώμαλος δρόμος, περιστασιακά δύσκολα περάσματα.",
-                        "difficult": "Δύσκολο: Ο δρόμος είναι στενός και εκτεθειμένος. Μπορεί να περιέχει εμπόδια για να περάσετε και τα στενά περάσματα.",
-                        "impossible": "Αδιάβατο: Στον δρόμο ή και την γέφυρα δεν περνάνε τα άλογα. Πολύ στενά με ανεπαρκή υποστήριξη και εμπόδια όπως σκάλες. Κίνδυνος ζωής."
+                        "difficult": "Δύσκολο: Ο δρόμος είναι στενός και εκτεθειμένος. Μπορεί να περιέχει εμπόδια για να περάσετε και τα στενά περάσματα."
                     },
                     "placeholder": "Δύσκολο, Επικίνδυνο ..."
                 },
@@ -1742,18 +1819,24 @@
                 "material": {
                     "label": "Υλικό",
                     "options": {
+                        "adobe": "Πλίνθος",
                         "aluminium": "Αλουμίνιο",
+                        "brass": "Ορείχαλκος",
                         "brick": "Τούβλο",
                         "bronze": "Μπρούτζος",
                         "concrete": "Τσιμέντο",
                         "glass": "Γυαλί",
                         "granite": "Γρανίτης",
                         "iron": "Σίδερο",
+                        "limestone": "Ασβεστόλιθος",
                         "marble": "Μάρμαρο",
                         "metal": "Μέταλλο",
                         "plastic": "Πλαστικό",
+                        "reinforced_conrete": "Οπλισμένο Σκυρόδεμα",
                         "rock": "Βράχος",
                         "sand": "Άμμος",
+                        "sandstone": "Αμμόπετρα",
+                        "soil": "Χώμα, Γη",
                         "steel": "Ατσάλι",
                         "stone": "Πέτρα",
                         "wood": "Ξύλο"
@@ -1800,12 +1883,21 @@
                 "memorial": {
                     "label": "Είδος",
                     "options": {
+                        "blue_plaque": "Blue Plaque",
+                        "bust": "Προτομή",
+                        "cross": "Μνημειακός Σταυρός",
                         "obelisk": "Οβελίσκος",
                         "plaque": "Αναμνηστική Πλακέτα",
                         "sculpture": "Γλυπτό",
                         "statue": "Άγαλμα",
+                        "stele": "Στήλη",
+                        "stolperstein": "Λίθος Μνήμης",
+                        "stone": "Λίθος",
                         "war_memorial": "Μνημείο Πολέμου"
                     }
+                },
+                "message": {
+                    "label": "Μήνυμα"
                 },
                 "microbrewery": {
                     "label": "Μικροζυθοποιία",
@@ -1930,8 +2022,26 @@
                     "label": "Σημείωση",
                     "terms": "σημείωση"
                 },
+                "nudism": {
+                    "label": "Γυμνισμός",
+                    "options": {
+                        "no": "Απαγορεύεται",
+                        "obligatory": "Υποχρεωτικό",
+                        "permissive": "Υπό άδεια",
+                        "yes": "Επιτρέπεται"
+                    }
+                },
                 "office": {
-                    "label": "Είδος"
+                    "label": "Είδος",
+                    "options": {
+                        "accountant": "Λογιστήριο",
+                        "advertising_agency": "Διαφημιστικό γραφείο",
+                        "architect": "Αρχιτεκτονικό γραφείο",
+                        "association": "Μη κυβερνητική οργάνωση",
+                        "notary": "Συμβολαιογράφος",
+                        "political_party": "Γραφείο πολιτικού κόμματος",
+                        "religion": "Θρησκευτικό γραφείο"
+                    }
                 },
                 "oneway": {
                     "label": "Μονόδρομος",
@@ -2023,14 +2133,6 @@
                         "street_side": "Παραπλεύρως του δρόμου",
                         "surface": "Επίγειο",
                         "underground": "Υπόγειο"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Προσανατολισμός",
-                    "options": {
-                        "diagonal": "Διαγώνια σε σχέση με τον δρόμο",
-                        "parallel": "Παράλληλα με τον δρόμο",
-                        "perpendicular": "Συναντά τον δρόμο σε ευθεία γωνία"
                     }
                 },
                 "parking_entrance": {
@@ -2726,41 +2828,16 @@
                     "label": "Αθλήματα"
                 },
                 "sport_ice": {
-                    "label": "Αθλήματα",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Χόκεϊ επί πάγου",
-                        "ice_skating": "Πατινάζ επί πάγου\nΠαγοδρομία",
-                        "ice_stock": "Ice Stock",
-                        "multi": "Πολλαπλά"
-                    }
+                    "label": "Αθλήματα"
                 },
                 "sport_pub": {
-                    "label": "Αθλήματα",
-                    "options": {
-                        "billiards": "Μπιλιάρδο",
-                        "darts": "Βελάκια",
-                        "table_soccer": "Επιτραπέζιο ποδοσφαιράκι"
-                    }
+                    "label": "Αθλήματα"
                 },
                 "sport_racing_motor": {
-                    "label": "Αθλήματα",
-                    "options": {
-                        "karting": "Karting",
-                        "motocross": "Μοτοκρός",
-                        "motor": "Μηχανοκίνητος Αθλητισμός",
-                        "speedway": "Αγώνες ταχύτητας μοτοσυκλετών"
-                    }
+                    "label": "Αθλήματα"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Αθλήματα",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Ποδηλασία",
-                        "dog_racing": "Κυνοδρομίες",
-                        "horse_racing": "Ιπποδρομίες",
-                        "running": "Τρέξιμο"
-                    }
+                    "label": "Αθλήματα"
                 },
                 "stars": {
                     "label": "Αστέρια"
@@ -3528,7 +3605,7 @@
                     "name": "Σταθμός Φόρτισης"
                 },
                 "amenity/childcare": {
-                    "name": "Παιδιατρική"
+                    "name": "Παιδικός σταθμός"
                 },
                 "amenity/cinema": {
                     "name": "Κινηματογράφος",
@@ -4419,9 +4496,6 @@
                 "barrier/kissing_gate": {
                     "name": "Πόρτα Παγίδευσης"
                 },
-                "barrier/log": {
-                    "name": "Πεσμένο Δέντρο"
-                },
                 "barrier/motorcycle_barrier": {
                     "name": "Εμπόδιο Μοτοσυκλετών"
                 },
@@ -5124,6 +5198,9 @@
                 "highway/crossing/traffic_signals": {
                     "name": "Διάβαση Με Φανάρια Πεζών"
                 },
+                "highway/crossing/uncontrolled": {
+                    "name": "Διαγραμμισμένη Δάβαση Πεζών Χωρίς Σήμανση"
+                },
                 "highway/crossing/unmarked": {
                     "name": "Διάβαση Χωρίς Διαγράμμιση"
                 },
@@ -5564,10 +5641,6 @@
                 "landuse/military/base/navy": {
                     "name": "Ναυτική Βάση"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Επικίνδυνη Περιοχή",
-                    "terms": "επικίνδυνη περιοχή,περιοχή κινδύνου"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Στρατιωτικός Στίβος Μάχης"
                 },
@@ -5890,7 +5963,7 @@
                     "terms": "παιδότοπος,παιδική χαρά,κούνιες"
                 },
                 "leisure/playground/indoor": {
-                    "name": "Παιδική Χαρά Εσωτερικού Χώρου"
+                    "name": "Παιδότοπος (εσωτερικός)"
                 },
                 "leisure/resort": {
                     "name": "Θέρετρο"
@@ -7039,6 +7112,9 @@
                 },
                 "railway/tram_stop": {
                     "name": "Τοποθεσία Στάσης Τραμ πάνω στις ράγες"
+                },
+                "railway/turntable": {
+                    "name": "Σιδηροδρομική Περιστροφική Πλάκα"
                 },
                 "railway/yard": {
                     "name": "Διαλογή"

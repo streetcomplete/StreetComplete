@@ -1309,6 +1309,7 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="label_block">"blok"</string>
     <string name="quest_address_answer_block">"U krugu bloka…"</string>
     <string name="quest_address_answer_no_block">"Nije u krugu bloka…"</string>
+    <string name="quest_surface_value_mud">"Postojano blato"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Ovde nema toaleta"</string>
     <string name="unknown_surface_title">"Drugi tip podloge"</string>
     <string name="overlay_surface">"Podloge"</string>

@@ -1309,6 +1309,7 @@
     <string name="label_block">"блок"</string>
     <string name="quest_address_answer_block">"У кругу блока…"</string>
     <string name="quest_address_answer_no_block">"Није у кругу блока…"</string>
+    <string name="quest_surface_value_mud">"Постојано блато"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Овде нема тоалета"</string>
     <string name="unknown_surface_title">"Други тип подлоге"</string>
     <string name="overlay_surface">"Подлоге"</string>

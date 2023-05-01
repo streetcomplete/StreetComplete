@@ -1857,7 +1857,8 @@
                     "name": "Връзка с второкласен път"
                 },
                 "highway/service": {
-                    "name": "Сервизна улица"
+                    "name": "Сервизна улица",
+                    "terms": "обслужваща улица,обслужващ път"
                 },
                 "highway/service/alley": {
                     "name": "Тясна уличка между имоти"
@@ -2145,6 +2146,9 @@
                 },
                 "man_made/lighthouse": {
                     "name": "Морски фар"
+                },
+                "man_made/mast/communication/radio": {
+                    "name": "Радио кула"
                 },
                 "man_made/mast/communication/television": {
                     "name": "Телевизионна кула",

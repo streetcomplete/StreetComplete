@@ -580,6 +580,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="user_login">"ログイン"</string>
     <string name="user_logout">"ログアウト"</string>
     <string name="osm_profile">"OSM プロフィール"</string>
+    <string name="next">"つぎへ"</string>
     <string name="tutorial_welcome_to_osm">"OpenStreetMapにようこそ"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"フリーなwikiの世界地図"</string>
     <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。

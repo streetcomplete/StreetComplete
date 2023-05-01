@@ -1416,9 +1416,6 @@
                         "underground": "地下"
                     }
                 },
-                "parking/orientation": {
-                    "label": "方向"
-                },
                 "parking_entrance": {
                     "label": "種類"
                 },
@@ -1932,32 +1929,13 @@
                     "label": "運動"
                 },
                 "sport_ice": {
-                    "label": "運動",
-                    "options": {
-                        "curling": "冰壺",
-                        "ice_hockey": "冰上曲棍球",
-                        "ice_skating": "溜冰",
-                        "ice_stock": "冰上滑盤",
-                        "multi": "多重"
-                    }
+                    "label": "運動"
                 },
                 "sport_racing_motor": {
-                    "label": "運動",
-                    "options": {
-                        "karting": "卡丁車",
-                        "motocross": "越野電車車",
-                        "motor": "賽車"
-                    }
+                    "label": "運動"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "運動",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "騎單車",
-                        "dog_racing": "賽狗",
-                        "horse_racing": "賽馬",
-                        "running": "跑步"
-                    }
+                    "label": "運動"
                 },
                 "stars": {
                     "label": "星級"
@@ -4143,10 +4121,6 @@
                 "landuse/military/barracks": {
                     "name": "軍營",
                     "terms": "barracks,兵房,兵營,營房,軍營"
-                },
-                "landuse/military/danger_area": {
-                    "name": "危險區",
-                    "terms": "danger area,危險地區,危險區域,危險範圍"
                 },
                 "landuse/military/range": {
                     "name": "軍事靶場",
