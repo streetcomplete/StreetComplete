@@ -386,11 +386,12 @@ class DataManagementSettingsFragment :
                 context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
                 return emptyList()
             }
-            input.readLines()
+            input.readLines().renameUpdateQuests()
         } } ?: emptyList()
 
     @SuppressLint("ApplySharedPref") // we want to commit, so that setting is written before the immediately following restart
     private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean) {
+        val lines = lines.renameUpdateQuests()
         val presets = mutableListOf<Array<Any?>>()
         val orders = mutableListOf<Array<Any?>>()
         val visibilities = mutableListOf<Array<Any?>>()
@@ -633,7 +634,7 @@ class DataManagementSettingsFragment :
     }
 
     private fun importSettings(uri: Uri): Boolean {
-        val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() } ?: return false
+        val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines().renameUpdateQuests() } ?: return false
         if (lines.firstOrNull()?.startsWith("<?xml version") == true) {
             // we have an xml file, just replace current settings file
             val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
@@ -725,6 +726,13 @@ class DataManagementSettingsFragment :
     }
 }
 
+// when importing, names should be updated!
+private fun List<String>.renameUpdateQuests() = map { it.renameUpdateQuests() }
+
+fun String.renameUpdateQuests() = replace("ExternalQuest", "CustomQuest")
+    .replace("AddPicnicTableCover", "AddAmenityCover")
+val oldQuestNames = listOf("ExternalQuest", "AddPicnicTableCover")
+
 private const val REQUEST_CODE_SETTINGS_EXPORT = 532527
 private const val REQUEST_CODE_HIDDEN_EXPORT = 532528
 private const val REQUEST_CODE_PRESETS_EXPORT = 532529
@@ -739,7 +747,7 @@ private const val REQUEST_CODE_CUSTOM_QUEST_IMPORT = 5333
 private const val REQUEST_CODE_CUSTOM_QUEST_EXPORT = 5334
 
 // TODO: adjust this every time the version changes, and adjust data handling if necessary!
-private const val LAST_KNOWN_DB_VERSION = 8L
+private const val LAST_KNOWN_DB_VERSION = 9L
 
 private const val BACKUP_HIDDEN_OSM_QUESTS = "quests"
 private const val BACKUP_HIDDEN_NOTES = "notes"

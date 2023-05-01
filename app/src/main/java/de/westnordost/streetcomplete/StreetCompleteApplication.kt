@@ -51,6 +51,8 @@ import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.screens.settings.oldQuestNames
+import de.westnordost.streetcomplete.screens.settings.renameUpdateQuests
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.Log
@@ -180,6 +182,24 @@ class StreetCompleteApplication : Application() {
                     putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + newIndex).sorted().joinToString(","))
                 }
             }
+            // update prefs referring to renamed quests
+            val prefsToRename = prefs.all.filter { pref ->
+                val v = pref.value
+                oldQuestNames.any { pref.key.contains(it) || (v is String && v.contains(it)) }
+            }
+            val e = prefs.edit()
+            prefsToRename.forEach {
+                e.remove(it.key)
+                when (it.value) {
+                    is String -> e.putString(it.key.renameUpdateQuests(), (it.value as String).renameUpdateQuests())
+                    is Boolean -> e.putBoolean(it.key.renameUpdateQuests(), it.value as Boolean)
+                    is Int -> e.putInt(it.key.renameUpdateQuests(), it.value as Int)
+                    is Long -> e.putLong(it.key.renameUpdateQuests(), it.value as Long)
+                    is Float -> e.putFloat(it.key.renameUpdateQuests(), it.value as Float)
+                    is Set<*> -> e.putStringSet(it.key.renameUpdateQuests(), it.value as? Set<String>?)
+                }
+            }
+            e.apply()
         }
 
     }

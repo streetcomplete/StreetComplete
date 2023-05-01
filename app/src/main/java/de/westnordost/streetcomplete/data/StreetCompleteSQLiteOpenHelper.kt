@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import io.requery.android.database.sqlite.SQLiteDatabase
 import io.requery.android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
@@ -116,9 +117,6 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         // create osmose table
         writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
         writableDatabase.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
-        // delete previous version of osmose db
-        writableDatabase.execSQL("DROP TABLE IF EXISTS osmose_issues;")
-
         // create osm quests element id index if not existing
         writableDatabase.execSQL(OsmQuestTable.CREATE_ELEMENT_ID_INDEX_IF_NOT_EXISTS)
     }
@@ -212,7 +210,26 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 7 && newVersion > 7) {
             db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = 'AddShoulder'", null)
         }
+        if (oldVersion <= 8 && newVersion > 8) {
+            db.renameQuest("AddPicnicTableCover", "AddAmenityCover")
+            db.renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE,"ExternalQuest", "CustomQuest")
+        }
     }
 }
 
-private const val DB_VERSION = 8
+private const val DB_VERSION = 9
+
+private fun SQLiteDatabase.renameQuest(old: String, new: String) {
+    renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)
+    renameValue(OsmQuestTable.NAME, OsmQuestTable.Columns.QUEST_TYPE, old, new)
+    renameValue(OsmQuestsHiddenTable.NAME, OsmQuestsHiddenTable.Columns.QUEST_TYPE, old, new)
+    renameValue(VisibleQuestTypeTable.NAME, VisibleQuestTypeTable.Columns.QUEST_TYPE, old, new)
+    renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
+    renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, old, new)
+    renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)
+    renameValue(EditTypeStatisticsTables.NAME, EditTypeStatisticsTables.Columns.ELEMENT_EDIT_TYPE, old, new)
+}
+
+private fun SQLiteDatabase.renameValue(table: String, column: String, oldValue: String, newValue: String) {
+    update(table, contentValuesOf(column to newValue), "$column = ?", arrayOf(oldValue))
+}

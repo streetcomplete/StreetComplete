@@ -3,30 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:key="communication"
-        android:title="@string/pref_category_communication">
-
-        <ListPreference
-            android:key="autosync"
-            android:title="@string/pref_title_sync2"
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="ON"
-            android:entries="@array/pref_entries_autosync"
-            android:entryValues="@array/pref_entryvalues_autosync"
-            android:persistent="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="quests_overlays"
         android:title="@string/pref_category_quests_overlays">
 
-        <Preference
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
+            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment"
             android:key="quest_presets"
             android:title="@string/action_manage_presets"
             android:widgetLayout="@layout/widget_image_next" />
 
-        <Preference
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
+            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment"
             android:key="quests"
             android:title="@string/pref_title_quests2"
             android:widgetLayout="@layout/widget_image_next" />
@@ -45,6 +32,21 @@
             android:title="@string/pref_title_show_notes_not_phrased_as_questions"
             android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
             android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="communication"
+        android:title="@string/pref_category_communication">
+
+        <ListPreference
+            android:key="autosync"
+            android:title="@string/pref_title_sync2"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="ON"
+            android:entries="@array/pref_entries_autosync"
+            android:entryValues="@array/pref_entryvalues_autosync"
             android:persistent="true" />
 
     </PreferenceCategory>
@@ -70,7 +72,7 @@
         <ListPreference
             android:key="language.select"
             android:title="@string/pref_title_language_select"
-            android:summary="%s"
+            app:useSimpleSummaryProvider="true"
             android:defaultValue=""
             android:persistent="true" />
 
@@ -101,7 +103,6 @@
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="map.tilecache"
             android:title="@string/pref_title_map_cache"
-            android:summary="@string/pref_tilecache_size_summary"
             android:defaultValue="50"
             android:persistent="true"
             app:minValue="10"
@@ -190,14 +191,6 @@
         <Preference
             android:key="debug.links"
             android:title="Show Achievement Links" />
-
-        <Preference
-            android:key="debug.ar_measure_horizontal"
-            android:title="AR Measure Horizontal" />
-
-        <Preference
-            android:key="debug.ar_measure_vertical"
-            android:title="AR Measure Vertical" />
 
     </PreferenceCategory>
 

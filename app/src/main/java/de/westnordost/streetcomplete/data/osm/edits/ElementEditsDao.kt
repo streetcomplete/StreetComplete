@@ -61,10 +61,6 @@ class ElementEditsDao(
         }
     }
 
-    init {
-        db.update(NAME, listOf(QUEST_TYPE to "CustomQuest"), "$QUEST_TYPE = 'ExternalQuest'") // quest was renamed
-    }
-
     fun add(edit: ElementEdit) {
         val rowId = db.insert(NAME, edit.toPairs())
         edit.id = rowId
