@@ -6,8 +6,9 @@ v52.1: |
   <li>Fix keyboard was not dismissed after selecting a POI in the dialog on certain Android versions (#4961, #4952), by @tapetis</li>
   <li>Do not treat <code>surface=ground</code> + <code>tracktype=grade2</code> as sure mistake (#4863), by @matkoniecz</li>
   <li>Recognize zone 30 (etc.) streets tagged with a more uncommon tag combination, too (#4960)</li>
-  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, ...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
-  <li></li>
+  <li>Specify type of entrance, entrance ref: Also ask for buildings with an inner courtyard (#4971, #4968), by @Helium314</li>
+  <li>Surface & lit overlay: Can now change footways to steps in overlays (#4973, #4938), by @arrival-spring</li>
+  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, #4972...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
   </ul>
 
 v52.0: |
