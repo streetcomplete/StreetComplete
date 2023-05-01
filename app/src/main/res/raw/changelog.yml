@@ -1,3 +1,15 @@
+v52.1: |
+  <ul>
+  <li>Surface overlay: Make paving stones and asphalt distinguishable by color (#4946, #4888)</li>
+  <li>Another overlay can now be selected from the dialog with one tap only (#4949), by @tapetis</li>
+  <li>Pitch sports: Fix sports were not shown in the order of their popularity (#4962, #4922), by @tapetis</li>
+  <li>Fix keyboard was not dismissed after selecting a POI in the dialog on certain Android versions (#4961, #4952), by @tapetis</li>
+  <li>Do not treat <code>surface=ground</code> + <code>tracktype=grade2</code> as sure mistake (#4863), by @matkoniecz</li>
+  <li>Recognize zone 30 (etc.) streets tagged with a more uncommon tag combination, too (#4960)</li>
+  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, ...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
+  <li></li>
+  </ul>
+
 v52.0: |
   <h3>New overlay for surfaces!</h3>
   <p>

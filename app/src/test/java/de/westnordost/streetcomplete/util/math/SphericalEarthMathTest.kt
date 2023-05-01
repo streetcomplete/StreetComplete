@@ -506,12 +506,12 @@ class SphericalEarthMathTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun `intersectsWith requires line`() {
-        listOf(p(0.0,0.0)).intersectsWith(listOf(p(1.0, 0.0), p(0.0, 1.0)))
+        listOf(p(0.0, 0.0)).intersectsWith(listOf(p(1.0, 0.0), p(0.0, 1.0)))
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun `intersectsWith requires line for the parameter too`() {
-        listOf(p(1.0, 0.0), p(0.0, 1.0)).intersectsWith(listOf(p(0.0,0.0)))
+        listOf(p(1.0, 0.0), p(0.0, 1.0)).intersectsWith(listOf(p(0.0, 0.0)))
     }
 
     @Test fun `intersectsWith finds intersection`() {

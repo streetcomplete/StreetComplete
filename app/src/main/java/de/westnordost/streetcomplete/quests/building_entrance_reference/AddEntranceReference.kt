@@ -4,8 +4,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
@@ -15,7 +18,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
     private val buildingFilter by lazy { """
-        ways with
+        ways, relations with
           building = apartments
           and ruins != yes and disused != yes
     """.toElementFilterExpression() }
@@ -81,12 +84,19 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         mapData.ways
             .filter { privateFootwaysFilter.matches(it) }
             .flatMapTo(excludedWayNodeIds) { it.nodeIds }
-        val buildings = mapData.ways.asSequence()
-            .filter { buildingFilter.matches(it) }
+        val buildings = mapData.filter { buildingFilter.matches(it) }
         val result = mutableListOf<Node>()
         for (building in buildings) {
-            val buildingEntrances = building.nodeIds
-                .mapNotNull { mapData.getNode(it) }
+            val buildingsWayNodeIds = mutableSetOf<Long>()
+            mapData
+                .flatMapTo(buildingsWayNodeIds) {
+                    when (it) {
+                        is Way -> it.nodeIds
+                        is Relation -> it.getMultipolygonNodeIds(mapData)
+                        else -> emptyList()
+                    }
+                }
+            val buildingEntrances =  buildingsWayNodeIds.mapNotNull { mapData.getNode(it) }
                 .filter { entrancesFilter.matches(it) }
             if (buildingEntrances.count() < 2) continue
             result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) && it.id !in excludedWayNodeIds })
@@ -112,5 +122,18 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                 tags["ref:signed"] = "no"
             }
         }
+    }
+
+    private fun Relation.getMultipolygonNodeIds(mapData: MapDataWithGeometry): List<Long> {
+        if (tags["type"] != "multipolygon") return emptyList()
+        val nodeIds = mutableListOf<Long>()
+        for (member in members) {
+            if (member.type != ElementType.WAY) continue
+            val wayNodeIds = mapData.getWay(member.ref)?.nodeIds
+            if (wayNodeIds != null) {
+                nodeIds.addAll(wayNodeIds)
+            }
+        }
+        return nodeIds
     }
 }

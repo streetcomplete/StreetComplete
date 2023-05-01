@@ -213,9 +213,9 @@ private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
 """.toElementFilterExpression() }
 // highway=construction included, as situation often changes during and after construction
 
-private val notInZone30OrLess =
-    "~\"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})\"" +
-    " ~ \".*(urban|rural|trunk|motorway|nsl_single|nsl_dual)\""
+private val notInZone30OrLess = """
+   ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+"""
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 
