@@ -1,3 +1,11 @@
+v53.0-beta1: |
+  <ul>
+  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
+  <li>Crossing: Different wording and use `crossing=informal` for points at which there are no crossings but people can still cross (#4944)</li>
+  <li>Other small fixes and enhancements (#4842, #4970)</li>
+  </ul>
+
 v52.1: |
   <h3>Note</h3>
   <p>If you turned off auto upload in the settings:<br><br>
