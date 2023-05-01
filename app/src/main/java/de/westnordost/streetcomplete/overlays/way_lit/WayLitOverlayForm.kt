@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.overlays.way_lit
 
 import android.os.Bundle
 import android.view.View
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
@@ -14,6 +16,8 @@ import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.lit.asItem
 import de.westnordost.streetcomplete.osm.lit.createLitStatus
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
@@ -22,6 +26,10 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
     private var originalLitStatus: LitStatus? = null
+
+    override val otherAnswers get() = listOfNotNull(
+        createConvertToStepsAnswer()
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,6 +45,16 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+    }
+
+    private fun createConvertToStepsAnswer(): AnswerItem? =
+        if (element!!.couldBeSteps()) AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
+        else null
+
+    private fun changeToSteps() {
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        tagChanges.changeToSteps()
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 }
