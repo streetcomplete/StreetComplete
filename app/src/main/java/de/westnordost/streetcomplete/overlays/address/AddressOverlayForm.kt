@@ -1,21 +1,29 @@
 package de.westnordost.streetcomplete.overlays.address
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
@@ -32,15 +40,21 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.PositionOnWay
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.koin.android.ext.android.inject
 
-class AddressOverlayForm : AbstractOverlayForm() {
+class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     override val contentLayoutResId = R.layout.fragment_overlay_address
     private val binding by contentViewBinding(FragmentOverlayAddressBinding::bind)
 
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
     private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
@@ -54,6 +68,20 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private var isShowingHouseName: Boolean = false
     private var isShowingPlaceName: Boolean = false
     private var isShowingBlock: Boolean = false
+
+    private var positionOnWay: PositionOnWay? = null
+        set(value) {
+            field = value
+            if (value != null) {
+                setMarkerPosition(value.position)
+                setMarkerIcon(R.drawable.ic_quest_door)
+            } else {
+                setMarkerIcon(R.drawable.ic_quest_housenumber)
+                setMarkerPosition(null)
+            }
+        }
+    private var buildings: Collection<Pair<Way, List<LatLon>>>? = null
+    private val allBuildingsFilter = "ways, relations with building".toElementFilterExpression()
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
@@ -82,10 +110,16 @@ class AddressOverlayForm : AbstractOverlayForm() {
             ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val element = element
+        if (element == null) {
+            initCreatingPointOnWay()
+            checkCurrentCursorPosition()
+        }
+
         if (element != null) {
             setTitleHintLabel(getNameAndLocationLabel(
                 element, resources, featureDictionary,
@@ -119,6 +153,51 @@ class AddressOverlayForm : AbstractOverlayForm() {
         val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
             ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
         showNumberOrNameInput(layoutResId)
+    }
+
+    private fun initCreatingPointOnWay() {
+        val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(100.0))
+        buildings = data
+            .filter(allBuildingsFilter)
+            // we want the ways of the building relations, not the building relation itself
+            .flatMap { element ->
+                when (element) {
+                    is Relation -> {
+                        element.members.asSequence()
+                            .filter { it.type == ElementType.WAY }
+                            .mapNotNull { data.getWay(it.ref) }
+                    }
+                    is Way -> sequenceOf(element)
+                    else -> sequenceOf()
+                }
+            }
+            .mapNotNull { way ->
+                val positions = way.nodeIds.map {
+                    // TODO actually it SHOULD never be null, but it is, due to #4980
+                    val node = data.getNode(it) ?: return@mapNotNull null
+                    node.position
+                }
+                way to positions
+            }
+            .toList()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        checkCurrentCursorPosition()
+    }
+
+    override fun onMapMoved(position: LatLon) {
+        if (element != null) return
+        checkCurrentCursorPosition()
+    }
+
+    private fun checkCurrentCursorPosition() {
+        val buildings = buildings ?: return
+        val metersPerPixel = metersPerPixel ?: return
+        val maxDistance = metersPerPixel * requireContext().dpToPx(24)
+        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
+        positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
 
     private fun showNumberOrNameInput(layoutResId: Int) {
@@ -191,7 +270,26 @@ class AddressOverlayForm : AbstractOverlayForm() {
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
-        applyEdit(createAddressElementEditAction(element, geometry, number, name, streetOrPlaceName))
+        val element = element
+        val positionOnWay = positionOnWay
+
+        if (element != null) {
+            val tagChanges = StringMapChangesBuilder(element.tags)
+            addChanges(tagChanges, number, name, streetOrPlaceName)
+            applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
+        } else if (positionOnWay != null) {
+            val geometry = ElementPointGeometry(positionOnWay.position)
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
+                addChanges(tagChanges, number, name, streetOrPlaceName)
+                if (!tagChanges.containsKey("entrance")) tagChanges["entrance"] = "yes"
+            } ?: return
+
+            applyEdit(action, geometry)
+        } else {
+            val tagChanges = StringMapChangesBuilder(mapOf())
+            addChanges(tagChanges, number, name, streetOrPlaceName)
+            applyEdit(CreateNodeAction(geometry.center, tagChanges))
+        }
     }
 
     /* --------------------------------- Show/Toggle block input -------------------------------- */
@@ -247,26 +345,17 @@ class AddressOverlayForm : AbstractOverlayForm() {
     }
 }
 
-private fun createAddressElementEditAction(
-    element: Element?,
-    geometry: ElementGeometry,
+private fun addChanges(
+    tagChanges: StringMapChangesBuilder,
     number: AddressNumber?,
     name: String?,
     streetOrPlaceName: StreetOrPlaceName?
-): ElementEditAction {
-    val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
-
+) {
     number?.applyTo(tagChanges)
     name?.let { tagChanges["addr:housename"] = it }
     streetOrPlaceName?.applyTo(tagChanges)
     tagChanges.remove("noaddress")
     tagChanges.remove("nohousenumber")
-
-    return if (element != null) {
-        UpdateElementTagsAction(element, tagChanges.create())
-    } else {
-        CreateNodeAction(geometry.center, tagChanges)
-    }
 }
 
 private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {

@@ -7,8 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
+import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -25,11 +24,8 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.math.PositionOnWay
-import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
-import de.westnordost.streetcomplete.util.math.VertexOfWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
-import de.westnordost.streetcomplete.util.math.toInsertIntoWayAt
 import org.koin.android.ext.android.inject
 
 class LaneNarrowingTrafficCalmingForm :
@@ -84,10 +80,14 @@ class LaneNarrowingTrafficCalmingForm :
         val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(100.0))
         roads = data
             .filter(allRoadsFilter)
-            .mapNotNull { element ->
-                if (element !is Way) return@mapNotNull null
-                val positions = element.nodeIds.map { data.getNode(it)!!.position }
-                element to positions
+            .filterIsInstance<Way>()
+            .mapNotNull { way ->
+                val positions = way.nodeIds.map {
+                    // TODO actually it SHOULD never be null, but it is, due to #4980
+                    val node = data.getNode(it) ?: return@mapNotNull null
+                    node.position
+                }
+                way to positions
             }.toList()
     }
 
@@ -117,27 +117,17 @@ class LaneNarrowingTrafficCalmingForm :
         selectedItem?.value != originalLaneNarrowingTrafficCalming
 
     override fun onClickOk() {
-        val narrowingTrafficCalming = selectedItem!!.value!!
+        val answer = selectedItem!!.value!!
         val element = element
         val positionOnWay = positionOnWay
         if (element != null) {
-            val tagChanges = createChanges(narrowingTrafficCalming, element.tags)
+            val tagChanges = StringMapChangesBuilder(element.tags)
+            answer.applyTo(tagChanges)
             applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
         } else if (positionOnWay != null) {
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { answer.applyTo(it) } ?: return
             val geometry = ElementPointGeometry(positionOnWay.position)
-            when (positionOnWay) {
-                is PositionOnWaySegment -> {
-                    val tagChanges = createChanges(narrowingTrafficCalming, mapOf())
-                    val insertIntoWayAt = positionOnWay.toInsertIntoWayAt()
-                    applyEdit(CreateNodeAction(positionOnWay.position, tagChanges, listOf(insertIntoWayAt)), geometry)
-                }
-                is VertexOfWay -> {
-                    val node = mapDataWithEditsSource.getNode(positionOnWay.nodeId) ?: return
-                    val tagChanges = createChanges(narrowingTrafficCalming, node.tags)
-                    val containingWayIds = mapDataWithEditsSource.getWaysForNode(positionOnWay.nodeId).map { it.id }
-                    applyEdit(CreateNodeFromVertexAction(node, tagChanges.create(), containingWayIds), geometry)
-                }
-            }
+            applyEdit(action, geometry)
         }
     }
 
@@ -145,16 +135,11 @@ class LaneNarrowingTrafficCalmingForm :
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                val tagChanges = createChanges(null, element!!.tags)
+                val tagChanges = StringMapChangesBuilder(element!!.tags)
+                (null as LaneNarrowingTrafficCalming?).applyTo(tagChanges)
                 applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
             }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
-}
-
-private fun createChanges(value: LaneNarrowingTrafficCalming?, source: Map<String, String>): StringMapChangesBuilder {
-    val tagChanges = StringMapChangesBuilder(source)
-    value.applyTo(tagChanges)
-    return tagChanges
 }
