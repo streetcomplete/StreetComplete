@@ -1,5 +1,6 @@
 v52.2: |
   <ul>
+  <li>Note: When you upgrade to the next release, your local edits will be cleared. So please upload them before updating</li>
   <li>Simplify adding / updating (conditional) road and path access</li>
   <li>Add more conditional maxspeed options</li>
   <li>Add Russian and French translations, and update Ukrainian translation. Thanks to un-logic, m-martin, mike140, bublov and Evgenii</li>
@@ -16,7 +17,7 @@ v52.2: |
   <li>Allow auto-focusing the value of the color key in custom overlay when editing tags (enable be adding "!" before color key, does not work with regex)</li>
   </ul>
 
-v52.1: |
+v52.01: |
   <ul>
   <li>Several crash fixes</li>
   <li>Allow closing notes</li>
