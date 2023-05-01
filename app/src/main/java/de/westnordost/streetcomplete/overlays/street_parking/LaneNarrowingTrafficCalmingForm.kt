@@ -9,10 +9,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
-import de.westnordost.streetcomplete.data.osm.edits.create.InsertIntoWayAt
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -54,7 +52,7 @@ class LaneNarrowingTrafficCalmingForm :
             setMarkerPosition(null)
         }
     }
-    private var roads: Collection<Pair<Way, ElementGeometry>>? = null
+    private var roads: Collection<Pair<Way, List<LatLon>>>? = null
     private val allRoadsFilter = """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
     """.toElementFilterExpression()
@@ -88,8 +86,8 @@ class LaneNarrowingTrafficCalmingForm :
             .filter(allRoadsFilter)
             .mapNotNull { element ->
                 if (element !is Way) return@mapNotNull null
-                val geometry = data.getWayGeometry(element.id) ?: return@mapNotNull null
-                element to geometry
+                val positions = element.nodeIds.map { data.getNode(it)!!.position }
+                element to positions
             }.toList()
     }
 

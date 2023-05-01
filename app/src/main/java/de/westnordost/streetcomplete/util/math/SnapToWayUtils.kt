@@ -36,7 +36,7 @@ fun PositionOnWaySegment.toInsertIntoWayAt() = InsertIntoWayAt(wayId, segment.fi
  *  vertex is chosen instead, even if it is not closest to this point.
  *   */
 fun LatLon.getPositionOnWays(
-    ways: Collection<Pair<Way, ElementGeometry>>,
+    ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double,
     snapToVertexDistance: Double = 0.0
 ): PositionOnWay? {
@@ -48,24 +48,23 @@ fun LatLon.getPositionOnWays(
     return getNearestPositionToWays(ways, maxDistance)
 }
 
-/** Returns the nearest vertex of any of the ways given in [mapData] that is at  most [maxDistance]
+/** Returns the nearest vertex of any of the ways given in [ways] that is at  most [maxDistance]
  *  away from this point or null if there isn't any */
 private fun LatLon.getNearestVertexOfWays(
-    ways: Collection<Pair<Way, ElementGeometry>>,
+    ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double,
 ): VertexOfWay? {
     var minDistance = Double.MAX_VALUE
     var nearestNodeId: Long? = null
     var nearestPoint: LatLon? = null
     var nearestWayIds = mutableSetOf<Long>()
-    for ((way, geometry) in ways) {
-        val latLons = geometry.wayLatLons
+    for ((way, positions) in ways) {
         for ((i, nodeId) in way.nodeIds.withIndex()) {
             if (nodeId == nearestNodeId) {
                 nearestWayIds.add(way.id)
                 continue
             }
-            val point = latLons[i]
+            val point = positions[i]
 
             val distance = distanceTo(point)
             if (distance < minDistance && distance <= maxDistance) {
@@ -86,15 +85,14 @@ private fun LatLon.getNearestVertexOfWays(
 /** Returns the nearest point on any of the ways given in [ways] that is at most [maxDistance]
  *  away from this point or null if there isn't any */
 private fun LatLon.getNearestPositionToWays(
-    ways: Collection<Pair<Way, ElementGeometry>>,
+    ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double
 ): PositionOnWaySegment? {
     var minDistance = Double.MAX_VALUE
     var nearestWay: Way? = null
     var nearestSegment: Pair<LatLon, LatLon>? = null
-    for ((way, geometry) in ways) {
-        val latLons = geometry.wayLatLons
-        for (segment in latLons.asSequenceOfPairs()) {
+    for ((way, positions) in ways) {
+        for (segment in positions.asSequenceOfPairs()) {
             val distance = distanceToArc(segment.first, segment.second)
             if (distance < minDistance && distance <= maxDistance) {
                 minDistance = distance
