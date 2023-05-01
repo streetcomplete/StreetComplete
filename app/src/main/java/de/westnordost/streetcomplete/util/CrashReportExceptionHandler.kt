@@ -78,6 +78,13 @@ class CrashReportExceptionHandler(
 
     override fun uncaughtException(t: Thread, e: Throwable) {
         val stackTrace = StringWriter()
+        val logLines = Log.logLines.toList() // to avoid issues if log is modified while working with it
+        val last100WithoutQuestCreation = mutableListOf<String>()
+        for (line in logLines.asReversed()) {
+            if (last100WithoutQuestCreation.size >= 100) break
+            if (line.tag == "OsmQuestController" && line.message.contains("Found") && line.message.contains(" quests in ")) continue
+            last100WithoutQuestCreation.add(line.toString())
+        }
         e.printStackTrace(PrintWriter(stackTrace))
         writeCrashReportToFile("""
         Thread: ${t.name}
@@ -87,14 +94,14 @@ class CrashReportExceptionHandler(
         Stack trace:
         $stackTrace
 
-        Last log before crash: ${Log.logLines.takeLast(100).joinToString("\n")}
+        Last log before crash:
+        ${last100WithoutQuestCreation.joinToString("\n")}
 
-        Log warnings and errors: ${Log.logLines.filter {
-            val firstPart = it.substringBefore(":")
-            firstPart.contains(" E ") || firstPart.contains(" W ")
-        }.joinToString("\n")}
+        Log warnings and errors:
+        ${logLines.filter { it.level == 'E' || it.level == 'W' }.joinToString("\n")}
 
-        MapDataWithEditsSource listeners: ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
+        MapDataWithEditsSource listeners:
+        ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
         """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }

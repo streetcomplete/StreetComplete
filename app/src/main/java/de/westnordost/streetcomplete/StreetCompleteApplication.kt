@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete
 
+import android.app.ActivityManager
+import android.app.ActivityManager.MemoryInfo
 import android.app.Application
 import android.content.ComponentCallbacks2
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
+import androidx.core.content.getSystemService
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -50,6 +53,7 @@ import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
@@ -196,12 +200,20 @@ class StreetCompleteApplication : Application() {
             ComponentCallbacks2.TRIM_MEMORY_COMPLETE, ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
                 // very low on memory -> drop caches
                 cacheTrimmer.clearCaches()
+                Log.i("StreetCompleteApplication", "onTrimMemory, level $level: ${getMemString()}")
             }
             ComponentCallbacks2.TRIM_MEMORY_MODERATE, ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> {
                 // memory needed, but not critical -> trim only
+                Log.i("StreetCompleteApplication", "onTrimMemory, level $level: ${getMemString()}")
                 cacheTrimmer.trimCaches()
             }
         }
+    }
+
+    private fun getMemString(): String {
+        val memInfo = MemoryInfo()
+        getSystemService<ActivityManager>()?.getMemoryInfo(memInfo)
+        return "${memInfo.availMem / 0x100000L} MB of ${memInfo.totalMem / 0x100000L} available, mem low: ${memInfo.lowMemory}, mem low threshold: ${memInfo.threshold / 0x100000L} MB"
     }
 
     private fun setDefaultLocales() {

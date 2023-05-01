@@ -131,15 +131,15 @@ class SettingsFragment :
 
         findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
             var reversed = false
-            var filter = ""
+            var filter = "" // todo: separate filter by level or tag?
             var maxLines = 200
             val log = TextView(requireContext())
             log.setTextIsSelectable(true)
             log.text = Log.logLines.take(maxLines).joinToString("\n")
             fun reloadText() {
                 log.text = when {
-                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.contains(filter, true) }
-                    filter.isNotBlank() -> Log.logLines.filter { line -> line.contains(filter, true) }
+                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.toString().contains(filter, true) }
+                    filter.isNotBlank() -> Log.logLines.filter { line -> line.toString().contains(filter, true) }
                     reversed -> Log.logLines.asReversed()
                     else -> Log.logLines
                 }.take(maxLines).joinToString("\n")
