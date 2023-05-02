@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -41,6 +42,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -51,6 +53,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var styleableOverlayMapComponent: StyleableOverlayMapComponent? = null
     private var styleableOverlayManager: StyleableOverlayManager? = null
     private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
+    private var downloadedAreaManager: DownloadedAreaManager? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -122,7 +125,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
-        downloadedAreaMapComponent?.set()
+        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
+        viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
 

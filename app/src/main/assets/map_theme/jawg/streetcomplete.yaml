@@ -121,7 +121,15 @@ styles:
     downloaded_area:
         base: polygons
         blend: overlay
-
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float z = u_map_position.z;
+                    color.a *= pow(max(1.0, z - 6.0) / (19.0 - 6.0), 2.0);
+                    // for hatching effect:
+                    float x = fract((v_texcoord.x + v_texcoord.y) * 50.0);
+                    color.a *= step(0.75, x);
 layers:
     # quest pins & dots
     streetcomplete_selected_pins:
@@ -392,5 +400,5 @@ layers:
         data: { source: streetcomplete_downloaded_area }
         draw:
             downloaded_area:
-                color: [0.3, 0.3, 0.3, 0.2]
                 order: 500
+                color: [0.5, 0.5, 0.5, 0.3]
