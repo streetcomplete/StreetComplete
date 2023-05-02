@@ -55,6 +55,6 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     private fun changeToSteps() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         tagChanges.changeToSteps()
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
