@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class DownloadedTilesController(
@@ -8,31 +10,48 @@ class DownloadedTilesController(
 
     private val listeners = CopyOnWriteArrayList<DownloadedTilesSource.Listener>()
 
-    fun put(tilesRect: TilesRect) {
-        dao.put(tilesRect, DownloadedTilesType.ALL)
-        listeners.forEach { it.onUpdated() }
-    }
-
     override fun contains(tilesRect: TilesRect, ignoreOlderThan: Long): Boolean =
-        dao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.ALL)
+        dao.contains(tilesRect, ignoreOlderThan)
 
     override fun getAll(ignoreOlderThan: Long): List<TilePos> =
-        dao.getAll(DownloadedTilesType.ALL, ignoreOlderThan)
+        dao.getAll(ignoreOlderThan)
 
-    fun remove(tile: TilePos) {
-        dao.remove(tile)
-        listeners.forEach { it.onUpdated() }
+    fun put(tilesRect: TilesRect) {
+        dao.put(tilesRect)
+        onUpdated()
     }
 
-    fun removeAll() {
-        dao.removeAll()
-        listeners.forEach { it.onUpdated() }
+    fun clear() {
+        dao.deleteAll()
+        onUpdated()
     }
+
+    fun invalidate(tilePos: TilePos) {
+        dao.updateTime(tilePos, getOldTime())
+        onUpdated()
+    }
+
+    fun invalidateAll() {
+        dao.updateAllTimes(getOldTime())
+        onUpdated()
+    }
+
+    fun deleteOlderThan(time: Long) {
+        dao.deleteOlderThan(time)
+        onUpdated()
+    }
+
+    private fun getOldTime() =
+        nowAsEpochMilliseconds() - ApplicationConstants.REFRESH_DATA_AFTER - 1
 
     override fun addListener(listener: DownloadedTilesSource.Listener) {
         listeners.add(listener)
     }
     override fun removeListener(listener: DownloadedTilesSource.Listener) {
         listeners.remove(listener)
+    }
+
+    private fun onUpdated() {
+        listeners.forEach { it.onUpdated() }
     }
 }

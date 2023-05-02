@@ -236,7 +236,7 @@ class SettingsFragment :
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         context?.externalCacheDir?.purge()
-        downloadedTilesController.removeAll()
+        downloadedTilesController.clear()
         mapDataController.clear()
         noteController.clear()
     }

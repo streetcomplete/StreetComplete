@@ -154,7 +154,7 @@ class StreetCompleteApplication : Application() {
 
     private fun onNewVersion() {
         // on each new version, invalidate quest cache
-        downloadedTilesController.removeAll()
+        downloadedTilesController.invalidateAll()
     }
 
     override fun onTerminate() {

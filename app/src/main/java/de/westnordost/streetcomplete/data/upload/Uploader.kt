@@ -69,7 +69,7 @@ class Uploader(
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
         val tile = pos.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-        downloadedTilesController.remove(tile)
+        downloadedTilesController.invalidate(tile)
     }
 
     companion object {

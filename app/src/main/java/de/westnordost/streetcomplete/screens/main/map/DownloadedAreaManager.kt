@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import kotlinx.coroutines.CoroutineScope
@@ -41,7 +42,7 @@ class DownloadedAreaManager(
 
     private fun update() {
         viewLifecycleScope.launch {
-            mapComponent.set(downloadedTilesSource.getAll(0))
+            mapComponent.set(downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER))
         }
     }
 }
