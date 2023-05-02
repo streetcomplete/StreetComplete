@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 
@@ -11,12 +12,15 @@ open class FragmentContainerActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_fragment_container,
 ) : BaseActivity(contentLayoutId) {
 
-    var mainFragment: Fragment?
-        get() = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        set(value) {
-            supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            if (value != null) {
-                supportFragmentManager.commit { replace(R.id.fragment_container, value) }
-            }
+    protected fun replaceMainFragment(
+        f: Fragment,
+        customOptions: (FragmentTransaction.() -> Unit)? = null,
+    ) {
+        supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        supportFragmentManager.commit {
+            customOptions?.invoke(this)
+            replace(R.id.fragment_container, f)
+            setPrimaryNavigationFragment(f)
         }
+    }
 }

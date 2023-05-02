@@ -8,7 +8,7 @@ class AboutActivity : FragmentContainerActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            mainFragment = TwoPaneAboutFragment()
+            replaceMainFragment(TwoPaneAboutFragment())
         }
     }
 
