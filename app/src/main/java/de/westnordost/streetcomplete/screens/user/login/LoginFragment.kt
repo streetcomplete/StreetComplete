@@ -17,9 +17,7 @@ import de.westnordost.streetcomplete.data.osmConnection
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
-import de.westnordost.streetcomplete.screens.BackPressedListener
 import de.westnordost.streetcomplete.screens.HasTitle
-import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
@@ -34,7 +32,6 @@ import org.koin.android.ext.android.inject
 class LoginFragment :
     Fragment(R.layout.fragment_login),
     HasTitle,
-    BackPressedListener,
     OAuthFragment.Listener {
 
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
@@ -44,9 +41,6 @@ class LoginFragment :
     override val title: String get() = getString(R.string.user_login)
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
-
-    private val oAuthFragment: OAuthFragment? get() =
-        childFragmentManagerOrNull?.findFragmentById(R.id.oauthFragmentContainer) as? OAuthFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,16 +60,6 @@ class LoginFragment :
             binding.unpublishedEditCountText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
             binding.unpublishedEditCountText.isGone = unsyncedChanges <= 0
         }
-    }
-
-    override fun onBackPressed(): Boolean {
-        val f = oAuthFragment
-        if (f != null) {
-            if (f.onBackPressed()) return true
-            childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-            return true
-        }
-        return false
     }
 
     /* ------------------------------- OAuthFragment.Listener ----------------------------------- */
