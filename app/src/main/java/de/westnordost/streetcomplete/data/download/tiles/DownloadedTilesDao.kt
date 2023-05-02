@@ -52,4 +52,11 @@ class DownloadedTilesDao(private val db: Database) {
             having = "COUNT(*) >= $tileCount"
         ) { it.getString(TYPE) }
     }
+
+    fun getAll(typeName: String, ignoreOlderThan: Long): List<TilePos> =
+        db.query(NAME,
+            columns = arrayOf(X, Y),
+            where = "$DATE > ? AND $TYPE = ?",
+            args = arrayOf(ignoreOlderThan, typeName),
+        ) { TilePos(it.getInt(X), it.getInt(Y)) }
 }

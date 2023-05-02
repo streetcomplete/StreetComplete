@@ -17,30 +17,42 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetOne() {
         dao.put(r(5, 8, 5, 8), "Huhu")
-        val huhus = dao.get(r(5, 8, 5, 8), 0)
 
-        assertEquals(1, huhus.size)
-        assertTrue(huhus.contains("Huhu"))
+        assertEquals(
+            listOf("Huhu"),
+            dao.get(r(5, 8, 5, 8), 0)
+        )
+
+        assertEquals(
+            listOf(TilePos(5, 8)),
+            dao.getAll("Huhu", 0)
+        )
     }
 
     @Test fun putGetOld() {
         dao.put(r(5, 8, 5, 8), "Huhu")
-        val huhus = dao.get(r(5, 8, 5, 8), nowAsEpochMilliseconds() + 1000)
-        assertTrue(huhus.isEmpty())
+        val then = nowAsEpochMilliseconds() + 1000
+        assertTrue(dao.get(r(5, 8, 5, 8), then).isEmpty())
+        assertTrue(dao.getAll("Huhu", then).isEmpty())
     }
 
     @Test fun putSomeOld() {
         dao.put(r(0, 0, 1, 3), "Huhu")
         Thread.sleep(2000)
         dao.put(r(1, 3, 5, 5), "Huhu")
-        val huhus = dao.get(r(0, 0, 2, 2), nowAsEpochMilliseconds() - 1000)
-        assertTrue(huhus.isEmpty())
+        val before = nowAsEpochMilliseconds() - 1000
+        assertTrue(dao.get(r(0, 0, 2, 2), before).isEmpty())
+        assertTrue(dao.getAll("Huhu", before).isEmpty())
     }
 
     @Test fun putMoreGetOne() {
         dao.put(r(5, 8, 6, 10), "Huhu")
-        assertFalse(dao.get(r(5, 8, 5, 8), 0).isEmpty())
-        assertFalse(dao.get(r(6, 10, 6, 10), 0).isEmpty())
+        assertEquals(
+            listOf(TilePos(5, 8)),
+            dao.get(r(5, 8, 5, 8), 0)
+        )
+        assertEquals(6, dao.get(r(6, 10, 6, 10), 0).size)
+        assertEquals(6, dao.getAll("Huhu", 0).size)
     }
 
     @Test fun putOneGetMore() {
