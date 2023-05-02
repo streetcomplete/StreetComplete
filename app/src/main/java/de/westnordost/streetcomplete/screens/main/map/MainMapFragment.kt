@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
@@ -49,6 +50,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
     private var styleableOverlayMapComponent: StyleableOverlayMapComponent? = null
     private var styleableOverlayManager: StyleableOverlayManager? = null
+    private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -118,6 +120,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
+
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
+        downloadedAreaMapComponent?.set()
 
         selectedOverlaySource.addListener(overlayListener)
 
