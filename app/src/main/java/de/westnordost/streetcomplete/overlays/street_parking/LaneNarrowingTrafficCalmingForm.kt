@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -65,8 +67,10 @@ class LaneNarrowingTrafficCalmingForm :
         super.onViewCreated(view, savedInstanceState)
 
         if (element == null) {
-            initCreatingPointOnWay()
-            checkCurrentCursorPosition()
+            view.doOnLayout {
+                initCreatingPointOnWay()
+                checkCurrentCursorPosition()
+            }
         }
 
         setMarkerIcon(R.drawable.ic_quest_choker)

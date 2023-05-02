@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -116,8 +117,10 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
         val element = element
         if (element == null) {
-            initCreatingPointOnWay()
-            checkCurrentCursorPosition()
+            view.doOnLayout {
+                initCreatingPointOnWay()
+                checkCurrentCursorPosition()
+            }
         }
 
         if (element != null) {
