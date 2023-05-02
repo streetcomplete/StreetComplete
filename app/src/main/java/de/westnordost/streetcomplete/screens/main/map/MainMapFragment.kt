@@ -125,7 +125,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
-        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
+        downloadedAreaManager = DownloadedAreaManager(ctrl, downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
@@ -137,6 +137,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
+        downloadedAreaManager?.onNewScreenPosition()
     }
 
     override fun onDestroyView() {
