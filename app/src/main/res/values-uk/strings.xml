@@ -1229,7 +1229,7 @@
     <string name="quest_drinking_water_type_water_well_no_pump">"Криниця без помпи"</string>
     <string name="quest_drinking_water_type_spring">"Джерело"</string>
     <string name="quest_drinking_water_type_disused">"Об'єкт питної води, що не використовується"</string>
-    <string name="overlay_addresses">"Адреса"</string>
+    <string name="overlay_addresses">"Адреси"</string>
     <string name="overlay_shops">"Магазини"</string>
     <string name="name_label">"Назва:"</string>
     <string name="vacant_shop_title">"Незайнятий магазин"</string>
@@ -1299,6 +1299,7 @@
     <string name="default_disabled_msg_seasonal">"Цей тип квесту вимкнено за замовчуванням, оскільки може знадобитися повторна перевірка ситуації в певну пору року."</string>
     <string name="quest_gritBinSeasonal_title">"Це також тут не взимку?"</string>
     <string name="quest_traffic_signals_sound_description">"Підказка: зверніть увагу на динаміки. Не всі звукові сигнали можна активувати кнопкою."</string>
+    <string name="quest_presets_duplicate">"Копіювати"</string>
     <string name="label_block">"блок"</string>
     <string name="quest_address_answer_block">"Це в межах блоку…"</string>
     <string name="quest_address_answer_no_block">"Це за межами блоку…"</string>

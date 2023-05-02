@@ -184,6 +184,9 @@
                 "admin_level": {
                     "label": "Nivell administratiu"
                 },
+                "advertising": {
+                    "label": "Tipus"
+                },
                 "aerialway": {
                     "label": "Tipus"
                 },
@@ -289,6 +292,31 @@
                     "label": "Desnivell total",
                     "terms": "desnivell,guany d'elevació acumulat"
                 },
+                "athletics_pitch": {
+                    "label": "Event",
+                    "options": {
+                        "discus_throw": "Llançament de disc",
+                        "hammer_throw": "Llançament de martell",
+                        "high_jump": "Salt d'alçada",
+                        "javelin_throw": "Llançament de javelina",
+                        "long_jump": "Salt de llargada",
+                        "pole_vault": "Salt de perxa",
+                        "shot_put": "Llançament de pes",
+                        "triple_jump": "Triple salt"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Event",
+                    "options": {
+                        "javelin_throw": "Llançament de javelina",
+                        "long_jump": "Salt de llargada",
+                        "pole_vault": "Salt de perxa",
+                        "running": "Cursa a peu",
+                        "sprint": "Cursa de velocitat",
+                        "steeplechase": "Cursa d'obstacles",
+                        "triple_jump": "Triple salt"
+                    }
+                },
                 "atm": {
                     "label": "Caixer automàtic"
                 },
@@ -392,8 +420,11 @@
                 "bath/type": {
                     "label": "Especialitat",
                     "options": {
+                        "hammam": "Bany turc",
                         "hot_spring": "Font Càlida",
-                        "lake": "Llac"
+                        "lake": "Llac",
+                        "onsen": "Onsen",
+                        "thermal": "Bany Termal"
                     }
                 },
                 "beauty": {
@@ -547,6 +578,7 @@
                         "manufacture": "Edifici per a producció industrial",
                         "mosque": "Mesquita",
                         "office": "Edifci d'oficines",
+                        "pavilion": "Pavelló",
                         "public": "Edifici públic",
                         "residential": "Edifici residencial",
                         "retail": "Edifici comercial",
@@ -718,6 +750,7 @@
                         "oversize": "Roba de talles grans",
                         "socks": "Calcetins",
                         "sports": "Roba d'esport",
+                        "suits": "Vestits",
                         "swimwear": "Roba de bany",
                         "traditional": "Roba Tradicional / Vestuari Popular",
                         "underwear": "Llenceria",
@@ -1063,6 +1096,9 @@
                 "dance/style": {
                     "label": "Estils de ball"
                 },
+                "dance/teaching": {
+                    "label": "Ofereix classes de dansa"
+                },
                 "date": {
                     "label": "Data"
                 },
@@ -1092,6 +1128,9 @@
                 },
                 "deposit/trolley": {
                     "label": "Dipòsit"
+                },
+                "depot": {
+                    "label": "Tipus"
                 },
                 "depth": {
                     "label": "Profunditat (Metres)"
@@ -1367,6 +1406,31 @@
                         "pipe": "Tub Tapat",
                         "underground": "Subterrani",
                         "wall": "Mur"
+                    }
+                },
+                "fire_mains": {
+                    "label": "Tipus de xarxa",
+                    "options": {
+                        "dry": "Xarxa dedicada (normalment seca)",
+                        "no": "No",
+                        "yes": "Tipus desconegut"
+                    }
+                },
+                "fire_service_inlet": {
+                    "label": "Forma",
+                    "options": {
+                        "pillar": "Pilar",
+                        "pipe": "Tub Tapat",
+                        "underground": "Subterrani",
+                        "wall": "Paret"
+                    }
+                },
+                "fire_sprinkler": {
+                    "label": "Entrada dels aspersor contra incendis",
+                    "options": {
+                        "dry": "Dedicated Network (Normally Dry)",
+                        "no": "No",
+                        "yes": "Tipus desconegut"
                     }
                 },
                 "fireplace": {
@@ -1704,7 +1768,28 @@
                     }
                 },
                 "historic": {
-                    "label": "Tipus"
+                    "label": "Tipus",
+                    "options": {
+                        "archaeological_site": "Jaciment Arqueològic",
+                        "bomb_crater": "Cràter de bombes",
+                        "building": "Edifici històric",
+                        "castle": "Castell",
+                        "charcoal_pile": "Pila de carbó",
+                        "church": "Església",
+                        "city_gate": "Porta de la vila",
+                        "citywalls": "Muralla de la ciutat",
+                        "fort": "Historic Fort",
+                        "manor": "Casa senyorial",
+                        "memorial": "Memorial",
+                        "milestone": "Fita",
+                        "mine": "Mina",
+                        "mine_shaft": "Pou d'una mina",
+                        "monument": "Monument",
+                        "ruins": "Ruïnes",
+                        "wayside_cross": "Creu al camí",
+                        "wayside_shrine": "Santuari al camí",
+                        "wreck": "Naufragi"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Civilització històrica"
@@ -1751,8 +1836,7 @@
                         "critical": "Límit: Sols transitable per a genets i cavalls experimentats. Obstàcles importants. Els ponts s'ha d'examinar amb molta cura.",
                         "dangerous": "Perillos: Sols transitable per a genets i cavalls molt experimetats i amb bon oratge. Desmontat.",
                         "demanding": "Utilitzar amb precaució: Via irregular, ocasionalment passatges complicats",
-                        "difficult": "Difícil: Via estreta i exposat. Pot tenir obstacles que passar-hi i passatges estrets.",
-                        "impossible": "Impossible: Camí o pont no transitable par a caballs. Massa estret, soport insuficient, obstables com escales. Perill de mort"
+                        "difficult": "Difícil: Via estreta i exposat. Pot tenir obstacles que passar-hi i passatges estrets."
                     },
                     "placeholder": "Difícil, perillós...",
                     "terms": "dificultat per a muntar a cavall,difucultat de l'equitació"
@@ -2196,9 +2280,21 @@
                 "note": {
                     "label": "Nota"
                 },
+                "nudism": {
+                    "label": "Nudisme",
+                    "options": {
+                        "no": "Prohibit",
+                        "obligatory": "Obligatori",
+                        "yes": "Permés"
+                    }
+                },
                 "office": {
                     "label": "Tipus",
                     "options": {
+                        "accountant": "Oficina d'un comptable",
+                        "adoption_agency": "Agència d'adopció",
+                        "advertising_agency": "Agència de publicitat",
+                        "architect": "Oficina d'un arquitecte",
                         "insurance": "Oficina d'una Companyia Asseguradora",
                         "it": "Oficina de tecnologies de la informació",
                         "lawyer": "Bufet d'advocats",
@@ -2314,16 +2410,7 @@
                         "underground": "Subterrani"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientació",
-                    "options": {
-                        "diagonal": "Diagonal respecte la carretera",
-                        "parallel": "Paral·lel a la carreterera",
-                        "perpendicular": "Perpendicular a la carretera"
-                    }
-                },
                 "parking/side/orientation": {
-                    "label": "Orientació de l'aparcament",
                     "options": {
                         "diagonal": "Diagonal en relació al carrer (~45°)",
                         "parallel": "Paral·lel al carrer",
@@ -3029,7 +3116,6 @@
                     "label": "Esports",
                     "options": {
                         "american_football": "Futbol Americà",
-                        "athletics": "Atletisme",
                         "badminton": "Bàdminton",
                         "baseball": "Beisbol",
                         "basketball": "Bàsquet",
@@ -3065,41 +3151,16 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Esports",
-                    "options": {
-                        "curling": "Cúrling",
-                        "ice_hockey": "Hockey sobre gel",
-                        "ice_skating": "Patinatge sobre gel",
-                        "ice_stock": "Cúrling bàvar",
-                        "multi": "Diversos"
-                    }
+                    "label": "Esports"
                 },
                 "sport_pub": {
-                    "label": "Esports",
-                    "options": {
-                        "billiards": "Billar",
-                        "darts": "Dards",
-                        "table_soccer": "Futbolí"
-                    }
+                    "label": "Esports"
                 },
                 "sport_racing_motor": {
-                    "label": "Esports",
-                    "options": {
-                        "karting": "Carting",
-                        "motocross": "Motocròs",
-                        "motor": "Esport de motor",
-                        "speedway": "Autòdrom per a moto cicletes"
-                    }
+                    "label": "Esports"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Esports",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Ciclisme",
-                        "dog_racing": "Curses de gossos",
-                        "horse_racing": "Curses de cavalls",
-                        "running": "Correr"
-                    }
+                    "label": "Esports"
                 },
                 "stars": {
                     "label": "Estrelles"
@@ -3145,6 +3206,7 @@
                     "placeholder": "Desconegut"
                 },
                 "structure_power": {
+                    "label": "Estructura",
                     "options": {
                         "lattice": "Gelosia",
                         "solid": "Sólida",
@@ -3363,7 +3425,7 @@
                 "traffic_calming": {
                     "label": "Tipus",
                     "options": {
-                        "table": "Pas elevat"
+                        "table": "Pas de vianants elevat"
                     }
                 },
                 "traffic_sign": {
@@ -4698,9 +4760,6 @@
                     "name": "Porta giratòria",
                     "terms": "porta giratòria,porta sense retorn,accés giratori,porta de no retorn"
                 },
-                "barrier/log": {
-                    "name": "Arbre caigut"
-                },
                 "barrier/motorcycle_barrier": {
                     "name": "Barrera per a motocicletes"
                 },
@@ -5683,9 +5742,6 @@
                 "landuse/military/base/navy": {
                     "name": "Base naval"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Àrea de perill"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Cursa d'obstacles militar"
                 },
@@ -6110,6 +6166,10 @@
                 "man_made/pipeline/underground": {
                     "name": "Canonada subterrània"
                 },
+                "man_made/planter": {
+                    "name": "Maceter",
+                    "terms": "maceta,maceter,jardinera"
+                },
                 "man_made/pumping_station": {
                     "name": "Estació de bombament"
                 },
@@ -6142,9 +6202,15 @@
                     "name": "Punt referencial",
                     "terms": "punt de salvació,punt de salvament,punt d'evacuació"
                 },
+                "man_made/torii": {
+                    "name": "Torii"
+                },
                 "man_made/tower": {
                     "name": "Torre",
                     "terms": "torre,torres"
+                },
+                "man_made/tower/bell_tower": {
+                    "name": "Campanar"
                 },
                 "man_made/tower/communication": {
                     "name": "Torre de comunicacions"
@@ -6268,6 +6334,9 @@
                 "natural/peak": {
                     "name": "Pic",
                     "terms": "pic,cim,cimadal,pollegó,agulla."
+                },
+                "natural/peninsula": {
+                    "name": "Peninsula"
                 },
                 "natural/reef": {
                     "name": "Escull"
@@ -7015,7 +7084,7 @@
                 },
                 "shop/bookmaker": {
                     "name": "Casa d'apostes",
-                    "terms": "apostes,joc d'atzar,escurabujaques,jocs d'atzar,apostar,joc"
+                    "terms": "apostes,joc d'atzar,escurabujaques,jocs d'atzar,apostar,joc,saló,sala"
                 },
                 "shop/books": {
                     "name": "Llibreria"
@@ -7278,7 +7347,7 @@
                     "name": "Centre de massatges"
                 },
                 "shop/medical_supply": {
-                    "name": "Farmàcia"
+                    "name": "Botiga d'equipament mèdic"
                 },
                 "shop/military_surplus": {
                     "name": "Botiga d'excedents militars"
@@ -7570,7 +7639,8 @@
                     "name": "Mapa"
                 },
                 "tourism/information/office": {
-                    "name": "Centre de visitants"
+                    "name": "Centre de visitants",
+                    "terms": "oficina de turisme,turisme,tourist info"
                 },
                 "tourism/information/terminal": {
                     "name": "Terminal d'informació"

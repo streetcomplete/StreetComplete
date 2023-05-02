@@ -1124,7 +1124,7 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_lit_title">"Czy to miejsce jest oświetlone?"</string>
     <string name="quest_openingHours_title">"Jakie są tutaj godziny otwarcia?"</string>
     <string name="quest_openingHours_signed_title">"Czy jest tutaj informacja o godzinach otwarcia?"</string>
-    <string name="quest_openingHours_resurvey_title">"Czy tę godziny otwarcia są dalej poprawne?"</string>
+    <string name="quest_openingHours_resurvey_title">"Czy te godziny otwarcia są dalej poprawne?"</string>
     <string name="quest_placeName_title">"Jaka jest nazwa tego miejsca?"</string>
     <string name="quest_shop_type_title2">"Jaki jest to rodzaj sklepu?"</string>
     <string name="quest_smoking_title2">"Czy palenie jest tutaj dozwolone?"</string>
@@ -1309,4 +1309,9 @@ Przesunąć go teraz?"</string>
     <string name="street_parking_staggered_on_street">"Na ulicy po naprzemiennych stronach"</string>
     <string name="street_parking_staggered_half_on_kerb">"Częściowo na ulicy po naprzemiennych stronach"</string>
     <string name="quest_traffic_signals_sound_description">"Wskazówka: uważaj na głośniki. Nie wszystkie sygnały dźwiękowe można aktywować przyciskiem."</string>
+    <string name="quest_presets_duplicate">"Duplikuj"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Tutaj nie ma toalety"</string>
+    <string name="unknown_surface_title">"Inna nawierzchnia"</string>
+    <string name="overlay_surface">"Nawierzchnie"</string>
+    <string name="overlay_path_surface_segregated">"Podziel na część rowerową i pieszą"</string>
 </resources>

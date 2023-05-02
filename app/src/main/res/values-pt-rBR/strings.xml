@@ -1292,7 +1292,13 @@ Movê-lo agora?"</string>
     <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
     <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
     <string name="separate_cycleway_exclusive">"Caminho somente para bicicletas"</string>
+    <string name="cycleway_reverse_direction">"Direção invertida da ciclovia"</string>
     <string name="separate_cycleway_path">"Caminho ou trilha"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"Compartilhada explicitamente com calçada, ambas as direções"</string>
     <string name="measure_info_title">"Alcançando a precisão ideal"</string>
+    <string name="default_disabled_msg_seasonal">"Este tipo de missão está desativado por padrão porque pode exigir uma nova verificação da situação numa parte específica do ano."</string>
+    <string name="quest_traffic_signals_sound_description">"Dica: observe se existe algum altofalante. Nem todos os sinais sonoros são ativados por um botão."</string>
+    <string name="quest_presets_duplicate">"Duplicar"</string>
+    <string name="label_block">"Quarteirão"</string>
+    <string name="unknown_surface_title">"Superfície desconhecida"</string>
 </resources>

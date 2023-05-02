@@ -247,6 +247,8 @@
                     "label": "Típus",
                     "options": {
                         "city": "Történelmi város",
+                        "fortification": "Erődítmény",
+                        "megalith": "Megalit",
                         "necropolis": "Nekropolisz",
                         "petroglyph": "Sziklafaragás",
                         "roman_villa": "Római kori villa",
@@ -273,7 +275,7 @@
                         "mural": "Freskó",
                         "painting": "Festmény",
                         "relief": "Dombormű",
-                        "sculpture": "Absztrakt szobor",
+                        "sculpture": "Szobor",
                         "statue": "Szobor"
                     }
                 },
@@ -290,7 +292,8 @@
                         "big_wheel": "Óriáskerék",
                         "bumper_car": "Dodzsem",
                         "maze": "Labirintus",
-                        "roller_coaster": "Hullámvasút"
+                        "roller_coaster": "Hullámvasút",
+                        "train": "Turistavonat"
                     }
                 },
                 "automated": {
@@ -322,6 +325,7 @@
                 "barrier": {
                     "label": "Típus",
                     "options": {
+                        "chain": "Lánc",
                         "city_wall": "Városfal",
                         "entrance": "Bejárat",
                         "fence": "Kerítés",
@@ -355,6 +359,7 @@
                 "bath/type": {
                     "label": "Fürdőtípus",
                     "options": {
+                        "lake": "Tó",
                         "thermal": "Termálfürdő"
                     }
                 },
@@ -419,7 +424,13 @@
                     }
                 },
                 "bollard": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "flexible": "Rugalmas akadály",
+                        "foldable": "Összehajtható akadály",
+                        "removable": "Elmozdítható akadály",
+                        "rising": "Felemelhető akadály"
+                    }
                 },
                 "booth": {
                     "label": "Fülke"
@@ -637,6 +648,21 @@
                 },
                 "clothes": {
                     "label": "Ruha",
+                    "options": {
+                        "babies": "Csecsemőruházat",
+                        "children": "Gyermekruházat",
+                        "hats": "Kalapok",
+                        "maternity": "Kismama ruházat",
+                        "men": "Férfiruhák",
+                        "motorcycle": "Motoros öltözet",
+                        "oversize": "Nagy méretű ruhák",
+                        "socks": "Zoknik",
+                        "sports": "Sportruházat",
+                        "swimwear": "Úszóöltözet",
+                        "wedding": "Esküvői ruhák",
+                        "women": "Nőiruhák",
+                        "workwear": "Munkaruhák"
+                    },
                     "terms": "ruha,öltözet,öltözék,viselet,ruházat,ruhanemű"
                 },
                 "club": {
@@ -714,6 +740,7 @@
                 "craft": {
                     "label": "Típus",
                     "options": {
+                        "agricultural_engines": "Mezőgazdasági gép szerelő",
                         "basket_maker": "Kosárfonó",
                         "beekeeper": "Méhész",
                         "blacksmith": "Kovács",
@@ -724,6 +751,8 @@
                         "caterer": "Partyszerviz",
                         "chimney_sweeper": "Kéményseprő",
                         "cleaning": "Takarító",
+                        "clockmaker": "Órás",
+                        "confectionery": "Édességkészítő",
                         "distillery": "Szeszfőzde",
                         "electrician": "Villanyszerelő",
                         "floorer": "Parkettás",
@@ -1361,6 +1390,8 @@
                     "options": {
                         "fission": "Maghasadás",
                         "fusion": "Magfúzió",
+                        "photovoltaic": "Fotovoltaikus",
+                        "water-storage": "Víztározó",
                         "wind_turbine": "Szélturbina"
                     }
                 },
@@ -1440,8 +1471,10 @@
                         "allergology": "Allergia és asztma",
                         "anaesthetics": "Aneszteziológia",
                         "angiology": "Angiológia",
+                        "applied_kinesiology": "Alkalmazott kineziológia",
                         "aromatherapy": "Aromaterápia",
                         "ayurveda": "Ájurvéda",
+                        "behavior": "Viselkedésterápia",
                         "biochemistry": "Biokémia",
                         "biology": "Biológia",
                         "blood_check": "Vérvizsgálat",
@@ -1473,7 +1506,27 @@
                         "neurology": "Ideggyógyászat",
                         "neuropsychiatry": "Idegpszichiátria",
                         "neurosurgery": "Idegsebészet",
-                        "nuclear": "Nukleáris gyógyászat"
+                        "nuclear": "Nukleáris gyógyászat",
+                        "ophthalmology": "Szemészet",
+                        "orthodontics": "Fogszabályozás",
+                        "orthopaedics": "Ortopéd sebészet",
+                        "osteopathy": "Csontkovácsolás",
+                        "otolaryngology": "Fül-orr-gégészet",
+                        "paediatric_surgery": "Gyermeksebészet",
+                        "paediatrics": "Gyermekgyógyászat",
+                        "pathology": "Patológia",
+                        "plastic_surgery": "Plasztikai sebészet",
+                        "proctology": "Vastagbélsebészet",
+                        "psychiatry": "Pszichiátria",
+                        "rheumatology": "Reumatológia",
+                        "stomatology": "Fogászat",
+                        "surgery": "Általános sebészet",
+                        "traditional_chinese_medicine": "Hagyományos kínai gyógyászat",
+                        "trauma": "Baleseti sebészet",
+                        "tropical": "Trópusi orvoslás",
+                        "urology": "Urológia",
+                        "vaccination": "Védőoltás",
+                        "vascular_surgery": "Érsebészet"
                     }
                 },
                 "heating": {
@@ -1553,8 +1606,7 @@
                         "critical": "Közepes: csak tapasztalt lovak és lovasok számára járható. Nagyobb akadályok. A hidakat gondosan meg kell vizsgálni.",
                         "dangerous": "Veszélyes: csak nagyon tapasztalt lovak és lovasok számára járható és csak jó időjárás esetén. Le kell szállni.",
                         "demanding": "Vigyázva használható: egyenetlen út, időnként nehezebb útszakaszok.",
-                        "difficult": "Nehéz: az út keskeny és nyitott. Akadályok lehetnek, amiket át kell lépni és szűk szakaszokon haladni.",
-                        "impossible": "Járhatatlan: az út vagy híd lovak számára járhatatlan. Túl keskeny, nincs hova lépni, vagy olyan akadályok vannak, mint például létra. Életveszélyes."
+                        "difficult": "Nehéz: az út keskeny és nyitott. Akadályok lehetnek, amiket át kell lépni és szűk szakaszokon haladni."
                     },
                     "placeholder": "Nehéz, veszélyes…"
                 },
@@ -1853,7 +1905,15 @@
                     "terms": "max szélesség,legnagyobb szélesség"
                 },
                 "memorial": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "bust": "Mellszobor",
+                        "obelisk": "Obeliszk",
+                        "plaque": "Emléktábla",
+                        "sculpture": "Szobor",
+                        "statue": "Szobor",
+                        "stele": "Sztélé"
+                    }
                 },
                 "microbrewery": {
                     "label": "Házi sörfőzés",
@@ -2071,14 +2131,6 @@
                         "street_side": "Úttest melletti",
                         "surface": "Felszíni",
                         "underground": "Föld alatti"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Irány",
-                    "options": {
-                        "diagonal": "Útra nézve harántirányban",
-                        "parallel": "Úttal párhuzamosan",
-                        "perpendicular": "Útra merőlegesen"
                     }
                 },
                 "parking_entrance": {
@@ -2699,41 +2751,16 @@
                     "label": "Sport"
                 },
                 "sport_ice": {
-                    "label": "Sport",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Jégkorong",
-                        "ice_skating": "Jégkorcsolya",
-                        "ice_stock": "Ice stock",
-                        "multi": "Többféle"
-                    }
+                    "label": "Sport"
                 },
                 "sport_pub": {
-                    "label": "Sport",
-                    "options": {
-                        "billiards": "Biliárd",
-                        "darts": "Darts",
-                        "table_soccer": "Csocsó"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_motor": {
-                    "label": "Sport",
-                    "options": {
-                        "karting": "Gokart",
-                        "motocross": "Motokrossz",
-                        "motor": "Motorversenyzés",
-                        "speedway": "Salakmotorpálya"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sport",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Kerékpározás",
-                        "dog_racing": "Kutyaverseny",
-                        "horse_racing": "Lóverseny",
-                        "running": "Futás"
-                    }
+                    "label": "Sport"
                 },
                 "stars": {
                     "label": "Csillagok",
@@ -4560,9 +4587,6 @@
                     "name": "Lengőkapu",
                     "terms": "ütközős csapóajtó"
                 },
-                "barrier/log": {
-                    "name": "Kidőlt fa"
-                },
                 "barrier/planter": {
                     "name": "Virágláda (akadály)"
                 },
@@ -5337,6 +5361,10 @@
                 "highway/crossing/traffic_signals": {
                     "name": "Jelzőlámpás gyalogátkelőhely"
                 },
+                "highway/crossing/uncontrolled": {
+                    "name": "Jelzett kereszteződés",
+                    "aliases": "Jelölt kereszteződés\nJelzett gyalogátkelő\nJelölt gyalogátkelő"
+                },
                 "highway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"
                 },
@@ -5383,6 +5411,13 @@
                 },
                 "highway/footway/crossing": {
                     "name": "Gyalogosátkelő"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "Jelzett kereszteződés",
+                    "aliases": "Jelölt kereszteződés\nJelzett gyalogátkelő\nJelölt gyalogátkelő"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "Jelöletlen gyalogosátkelő"
                 },
                 "highway/footway/informal": {
                     "name": "Nem hivatalos ösvény"
@@ -5798,10 +5833,6 @@
                 "landuse/military/base/navy": {
                     "name": "Haditengerészeti támaszpont",
                     "terms": "flottatámaszpont,hadikikötő"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Katonai veszélyzóna",
-                    "terms": "veszély,veszélyes,terület"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Katonai akadálypálya",
@@ -6355,7 +6386,7 @@
                 },
                 "man_made/obelisk": {
                     "name": "Obeliszk",
-                    "terms": "oszlop"
+                    "terms": "oszlop,obeliszk"
                 },
                 "man_made/observatory": {
                     "name": "Obszervatórium"
@@ -8157,7 +8188,7 @@
                     "terms": "falfestmény"
                 },
                 "tourism/artwork/sculpture": {
-                    "name": "Absztrakt szobor"
+                    "name": "Szobor"
                 },
                 "tourism/artwork/statue": {
                     "name": "Szobor"

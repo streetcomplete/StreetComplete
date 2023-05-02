@@ -1248,8 +1248,7 @@
                         "critical": "Malfacilega: transrajdebla nur por spertaj rajdistoj kaj ĉevaloj, grandaj obstakloj, pontoj povas ne subteni vian pezon.",
                         "dangerous": "Tre malfacilega: transrajdebla nur por tre spertaj rajdistoj kaj ĉevaloj dum bona vetero, deĉevaliĝu.",
                         "demanding": "Ete malfacila: malebena vojo, kelkaj malfacilaj pasejoj.",
-                        "difficult": "Malfacila: mallarĝa kaj malebena vojo, povas enhavi transsaltendajn baraĵojn kaj mallarĝajn pasejojn.",
-                        "impossible": "Netransrajdebla: vojo aŭ ponto netrairebla por ĉevaloj.; tre mallarĝa, malhelpaĵoj kiel ŝtupetaroj; danĝera por vivo."
+                        "difficult": "Malfacila: mallarĝa kaj malebena vojo, povas enhavi transsaltendajn baraĵojn kaj mallarĝajn pasejojn."
                     },
                     "placeholder": "Malfacila, danĝera…",
                     "terms": "malfacilo,facileco"
@@ -1737,14 +1736,6 @@
                         "street_side": "Apudstrata",
                         "surface": "Supraĵa",
                         "underground": "Subtera"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Orientiĝo",
-                    "options": {
-                        "diagonal": "Diagonale al strato",
-                        "parallel": "Laŭlonge de strato",
-                        "perpendicular": "Orte al strato"
                     }
                 },
                 "parking_entrance": {
@@ -2357,33 +2348,13 @@
                     "label": "Sportoj"
                 },
                 "sport_ice": {
-                    "label": "Sportoj",
-                    "options": {
-                        "curling": "glitŝtonludo (curling)",
-                        "ice_hockey": "glacihokeo",
-                        "ice_skating": "glitkurado",
-                        "ice_stock": "glitŝtonludo bavara (Eisstockschießen)",
-                        "multi": "pluraj sportoj"
-                    }
+                    "label": "Sportoj"
                 },
                 "sport_racing_motor": {
-                    "label": "Sportoj",
-                    "options": {
-                        "karting": "karting",
-                        "motocross": "motokroso",
-                        "motor": "aŭtosportoj",
-                        "speedway": "Spidvejo"
-                    }
+                    "label": "Sportoj"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sportoj",
-                    "options": {
-                        "bmx": "biciklado akrobata (BMX)",
-                        "cycling": "biciklado",
-                        "dog_racing": "hund-kurado",
-                        "horse_racing": "ĉeval-kurado",
-                        "running": "kurado"
-                    }
+                    "label": "Sportoj"
                 },
                 "stars": {
                     "label": "Steloj",
@@ -5359,10 +5330,6 @@
                     "name": "Soldatejo",
                     "terms": "soldathejmo,kazerno"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Danĝerejo",
-                    "terms": "dangherejo,dangxerejo,minkampo,pafaĵejo"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Obstakl-kurejo armea",
                     "terms": "obstaklkurejo,soldatkurejo,termilitistoj"
@@ -7471,8 +7438,7 @@
                     "terms": "hifi,altfidela,hi-fi,stereo,video"
                 },
                 "shop/hobby": {
-                    "name": "Hobia vendejo",
-                    "terms": "hobio,ŝatokupo,modelfarado,figuroj,animeo"
+                    "name": "Hobia vendejo"
                 },
                 "shop/household_linen": {
                     "name": "Tuka vendejo",

@@ -97,6 +97,7 @@
                         }
                     },
                     "placeholder": "Belirtilmemiş",
+                    "terms": "i̇zinli erişim,i̇zin verilmiş,onaylanmış,onaylı",
                     "types": {
                         "access": "Tüm",
                         "bicycle": "Bisikletler",
@@ -113,12 +114,13 @@
                     "options": {
                         "customers": "Yalnızca Müşteriler",
                         "no": "Yok",
-                        "permissive": "İzin veren",
+                        "permissive": "İzne Bağlı",
                         "permit": "Sadece izinle",
                         "private": "Özel",
                         "unknown": "Bilinmiyor",
                         "yes": "Genel"
-                    }
+                    },
+                    "terms": "i̇zne bağlı,i̇zin gerekli"
                 },
                 "activity": {
                     "label": "Aktivite",
@@ -180,6 +182,9 @@
                 },
                 "admin_level": {
                     "label": "Yönetim Düzeyi"
+                },
+                "advertising": {
+                    "label": "Tür"
                 },
                 "aerialway": {
                     "label": "Tür"
@@ -319,7 +324,8 @@
                         "no": "Hiçbiri",
                         "room": "Ayrılmış Oda",
                         "yes": "İşaretli Alan"
-                    }
+                    },
+                    "terms": "bebek bakım odası,emzirme odası"
                 },
                 "baby_seat": {
                     "label": "Bebek Koltuğu"
@@ -406,7 +412,8 @@
                     }
                 },
                 "bench": {
-                    "label": "Bank"
+                    "label": "Bank",
+                    "terms": "bank,tabure,oturak"
                 },
                 "bicycle_parking": {
                     "label": "Tür",
@@ -467,7 +474,8 @@
                     }
                 },
                 "booth": {
-                    "label": "Stand"
+                    "label": "Stand",
+                    "terms": "çardak,kulübe"
                 },
                 "bottle": {
                     "label": "Şişe Dolumu"
@@ -477,6 +485,10 @@
                 },
                 "boundary": {
                     "label": "Tür"
+                },
+                "branch_brand": {
+                    "label": "Dal",
+                    "terms": "şube,dal,kol,branş,sınıf"
                 },
                 "brand": {
                     "label": "Marka"
@@ -497,8 +509,10 @@
                 "building": {
                     "label": "Bina",
                     "options": {
+                        "allotment_house": "Tahsisli Ev",
                         "apartments": "Apartman",
                         "barn": "Ambar",
+                        "boathouse": "Kayıkhane",
                         "bungalow": "Bungalov",
                         "bunker": "Sığınak",
                         "cabin": "Kabin",
@@ -513,16 +527,43 @@
                         "cowshed": "Ahır",
                         "detached": "Müstakil ev",
                         "dormitory": "Yurt",
+                        "farm": "Çiftlik Evi",
+                        "farm_auxiliary": "Çiftlik Binası",
                         "fire_station": "İtfaiye binası",
+                        "garage": "Garaj",
+                        "garages": "Garajlar",
+                        "ger": "Yurt Çadırı",
                         "grandstand": "Tribün",
+                        "greenhouse": "Sera",
                         "hangar": "Hangar binası",
+                        "hospital": "Hastane Binası",
+                        "hotel": "Otel Yapısı",
                         "house": "Ev",
+                        "houseboat": "Yüzen Ev",
+                        "hut": "Baraka",
+                        "industrial": "Endüstriyel Yapı",
+                        "kindergarten": "Okul Öncesi / Anaokulu Yapısı",
+                        "manufacture": "Endüstriyel Üretim Binası",
+                        "mosque": "Cami Binası",
+                        "office": "Ofis Binası",
+                        "outbuilding": "Ek Bina",
+                        "pavilion": "Köşk Yapısı",
+                        "public": "Kamu Yapısı",
                         "residential": "Konut",
+                        "retail": "Perakende Yapı",
                         "roof": "Çatı",
                         "ruins": "Bina yıkıntıları",
+                        "school": "Okul Yapısı",
                         "semidetached_house": "Yarı müstakil ev",
+                        "service": "Servis Yapısı",
+                        "shed": "Baraka",
+                        "stable": "Ahır",
+                        "stadium": "Stadyum Yapısı",
+                        "static_caravan": "Mobil Ev",
+                        "sty": "Domuz Ahırı",
                         "synagogue": "Sinagog",
                         "temple": "Tapınak",
+                        "terrace": "Sıra Evler",
                         "train_station": "Tren istasyonu binası",
                         "transportation": "Ulaştırma hizmetleri binası",
                         "university": "Üniversite binası",
@@ -544,8 +585,18 @@
                 "building/material": {
                     "label": "Materyal"
                 },
+                "building/part": {
+                    "label": "Yapı Parçası"
+                },
+                "building/prefabricated": {
+                    "label": "Prefabrikasyon",
+                    "terms": "ön,fabrikasyon,önceden,hazırlanmış,hazır,yapılmış"
+                },
                 "bunker_type": {
                     "label": "Tür"
+                },
+                "button_operated": {
+                    "label": "Arama Tuşu"
                 },
                 "cables": {
                     "label": "Kablo",
@@ -581,9 +632,21 @@
                     "label": "Kapasite",
                     "placeholder": "50, 100, 200..."
                 },
+                "capacity/caravans": {
+                    "label": "Kapasite (Karavan / Kamp Karavanı)",
+                    "placeholder": "10, 20, 50..."
+                },
                 "capacity/disabled_parking": {
                     "label": "Erişilebilir Alanlar",
                     "placeholder": "1, 2, 3..."
+                },
+                "capacity/persons": {
+                    "label": "Kapasite (İnsan)",
+                    "placeholder": "50, 100, 200..."
+                },
+                "capacity/tents": {
+                    "label": "Kapasite (Çadır)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
                     "label": "Toplam Alanlar",
@@ -593,16 +656,22 @@
                     "label": "Kapasite (Metreküp)",
                     "placeholder": "50, 100, 200..."
                 },
+                "caravans": {
+                    "label": "Karavan / Kamp Karavanı",
+                    "terms": "römork,römorkör"
+                },
                 "castle_type": {
                     "label": "Tür",
                     "options": {
-                        "castrum": "Roma kalesi",
-                        "defensive": "Savunma kalesi",
-                        "fortress": "Taarruz kalesi",
-                        "kremlin": "Rus sarayı",
+                        "castrum": "Roma Kalesi",
+                        "defensive": "Savunma Kalesi",
+                        "fortress": "Taarruz Kalesi",
+                        "hillfort": "İyi Korunan Kale",
+                        "kremlin": "Rus Sarayı",
                         "manor": "Köşk",
                         "palace": "Saray",
-                        "shiro": "Şiro"
+                        "shiro": "Şiro",
+                        "stately": "Görkemli Ev"
                     }
                 },
                 "changing_table": {
@@ -614,15 +683,25 @@
                 },
                 "charge_toll": {
                     "label": "Ücret Tutarı",
-                    "placeholder": "1 EUR, 5 USD, 10 JPY…"
+                    "placeholder": "1 EUR, 5 USD, 10 JPY…",
+                    "terms": "geçit ücreti,fiyatı,meblağsı"
                 },
                 "check_date": {
                     "label": "Son Kontrol Tarihi",
                     "placeholder": "GG-AA-YYYY"
                 },
+                "circumference": {
+                    "placeholder": "1 m, 20 cm, 30\"…"
+                },
                 "clothes": {
                     "label": "Çamaşırlar",
                     "options": {
+                        "babies": "Bebek Giyim",
+                        "children": "Çocuk Giyim",
+                        "denim": "Kot Giyim",
+                        "fur": "Kürklü Giyim",
+                        "hats": "Şapka",
+                        "maternity": "Hamile Giyim",
                         "men": "Erkek giyim",
                         "motorcycle": "Motosikletçi giysileri",
                         "oversize": "Aşırı büyük boy giysiler",
@@ -1272,8 +1351,7 @@
                         "critical": "Sınır: Sadece tecrübeli binici ve atlar geçebilir. Büyük engeller. Köprüler dikkatlice incelenmelidir.",
                         "dangerous": "Tehlikeli: Sadece uygun hava koşullarında çok tecrübeli binici ve atlar geçebilir. Attan inmek.",
                         "demanding": "Dikkatli kullanın: Düzensiz yol, ara sıra zor geçitler.",
-                        "difficult": "Zor: yol dar ve korumasız. Üstünden geçilecek engeller ve dar geçitleri içerebilir.",
-                        "impossible": "İmkansız: Yol veya köprü atlar için geçilebilir değil. Çok dar, yetersiz destek, basamak benzeri engeller var. Hayati tehlike."
+                        "difficult": "Zor: yol dar ve korumasız. Üstünden geçilecek engeller ve dar geçitleri içerebilir."
                     },
                     "placeholder": "Zor, Tehlikeli..."
                 },
@@ -2223,32 +2301,13 @@
                     "label": "Spor"
                 },
                 "sport_ice": {
-                    "label": "Spor",
-                    "options": {
-                        "curling": "Körling",
-                        "ice_hockey": "Buz Hokeyi",
-                        "ice_skating": "Buz Pateni",
-                        "ice_stock": "Buz Stoğu",
-                        "multi": "Çoklu"
-                    }
+                    "label": "Spor"
                 },
                 "sport_racing_motor": {
-                    "label": "Spor",
-                    "options": {
-                        "karting": "Karting",
-                        "motocross": "Motokros",
-                        "motor": "Motorsport"
-                    }
+                    "label": "Spor"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Spor",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Bisiklet binme",
-                        "dog_racing": "Köpek yarışı",
-                        "horse_racing": "At yarışı",
-                        "running": "Koşma"
-                    }
+                    "label": "Spor"
                 },
                 "stars": {
                     "label": "Yıldızlar"
@@ -4413,8 +4472,13 @@
                 "highway/bus_stop": {
                     "name": "Otobüs Durağı"
                 },
+                "highway/busway": {
+                    "name": "Otobüs Güzerhâhı",
+                    "terms": "otobüs yolu,otobüs hattı"
+                },
                 "highway/construction": {
-                    "name": "Yol inşaatı"
+                    "name": "Yapım Aşamasında Yol",
+                    "terms": "yol i̇nşaatı,yol çalışması"
                 },
                 "highway/corridor": {
                     "name": "Koridor",
@@ -4422,6 +4486,10 @@
                 },
                 "highway/crossing": {
                     "name": "Geçit"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "İşaretli Yaya Geçidi",
+                    "terms": "i̇şaretlenmiş yaya geçidi,yaya geçidi,zebra çizgili yaya geçidi,zebra desenli yaya geçidi,sinyalizasyonlu yaya geçidi"
                 },
                 "highway/crossing/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
@@ -4431,19 +4499,29 @@
                     "terms": "bisiklet yolu"
                 },
                 "highway/cycleway/bicycle_foot": {
-                    "name": "Bisiklet & Yaya Yolu"
+                    "name": "Bisiklet ve Yaya Yolu",
+                    "terms": "bisiklet yolu,yaya yolu,bisikletli yolu"
                 },
                 "highway/cycleway/crossing": {
                     "name": "Bisiklet Geçidi"
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
-                    "name": "Bisiklet ve Yaya Geçidi"
+                    "name": "Bisiklet ve Yaya Geçidi",
+                    "terms": "bisiklet geçidi,yaya geçidi,çok amaçlı geçit"
+                },
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "Trafik Lambası Olan Bisiklet Geçidi",
+                    "terms": "trafik lambalı bisiklet geçidi,trafik i̇şaretli bisiklet geçidi"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
+                    "name": "İşaretli Bisiklet Geçidi",
+                    "terms": "i̇şaretlenmiş bisiklet geçidi,zebra çizgili bisiklet geçidi"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "İşaretsiz Bisiklet Geçidi"
                 },
                 "highway/cycleway/moped_link-NL": {
-                    "name": "Moped bağlantı yolu"
+                    "name": "Moped Bağlantı Yolu"
                 },
                 "highway/elevator": {
                     "name": "Asansör",
@@ -4628,9 +4706,8 @@
                     "name": "Açık Yol Geçiş Ücreti"
                 },
                 "highway/track": {
-                    "name": "Araba patikası / arazi yolu",
-                    "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu",
-                    "aliases": "Araba patikası\nArazi yolu"
+                    "name": "Dağ Aracı / Karadan Erişim Yolu",
+                    "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu"
                 },
                 "highway/traffic_mirror": {
                     "name": "Trafik Aynası",
@@ -4872,10 +4949,6 @@
                 },
                 "landuse/military/base/navy": {
                     "name": "Deniz üssü"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Tehlikeli Bölge",
-                    "terms": "tehlikeli bölge"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Askeri Engel Sahası"

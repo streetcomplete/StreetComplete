@@ -661,8 +661,7 @@
                         "critical": "Borderline: Passable only for experienced riders and horses. Major obstacles. Bridges should be examined carefully.",
                         "dangerous": "Dangerous: Passable only for very experienced riders and horses and only in good weather. Dismount.",
                         "demanding": "Use with caution: Uneven way, occasional difficult passages.",
-                        "difficult": "Difficult: Way narrow and exposed. May contain obstacles to step over and narrow passages.",
-                        "impossible": "Impassable: Way or bridge not passable for horses. Too narrow, insuffient support, obstacles like ladders. Danger of life."
+                        "difficult": "Difficult: Way narrow and exposed. May contain obstacles to step over and narrow passages."
                     },
                     "placeholder": "Difficult, Dangerous..."
                 },
@@ -2634,9 +2633,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Barracks"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Danger Area"
                 },
                 "landuse/military/range": {
                     "name": "Military Range"

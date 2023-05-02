@@ -46,9 +46,9 @@
     <string name="close">"luk"</string>
     <string name="download_error">"Fejl under hentning af opgaver"</string>
     <string name="upload_error">"Fejl mens der blev uploadet svar"</string>
-    <string name="download_area_too_big">"Zoom venligst længere ind"</string>
+    <string name="download_area_too_big">"Zoom længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbryd den nuværende søgning og søg her i stedet?"</string>
-    <string name="turn_on_location_request">"Placering er slået fra. Gå til indstillinger og slå det til nu?"</string>
+    <string name="turn_on_location_request">"Placering er slået fra. Gå til indstillinger og slå den til nu?"</string>
     <string name="no_location_permission_warning">"Tilladelse til at se din placering er nødvendig for at søge efter opgaver i dit nærområde."</string>
     <string name="about_title_authors">"Kreditering"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick og bidragsydere"</string>
@@ -59,8 +59,8 @@
     <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er offline"</string>
-    <string name="confirmation_authorize_now">"Du er nødt til at autentificere med din OSM-brugerkonto for at publicere dine svar. Autentificer nu?"</string>
-    <string name="not_authorized">"Ikke autentificeret"</string>
+    <string name="confirmation_authorize_now">"Du skal autorisere dig med din OSM-brugerkonto for at offentliggøre dine svar. Autorisér nu?"</string>
+    <string name="not_authorized">"Ikke autoriseret"</string>
     <string name="version_banned_message">"Denne version af StreetComplete er for gammel. Opdater venligst!"</string>
     <string name="no_gps_no_quests">"For at søge efter opgaver tæt på dig, skal du slå placering til"</string>
     <string name="later">"Senere"</string>

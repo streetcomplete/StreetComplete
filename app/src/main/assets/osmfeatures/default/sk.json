@@ -252,6 +252,7 @@
                         "hut_circle": "Osada chatrčí",
                         "megalith": "Megalit",
                         "necropolis": "Nekropola",
+                        "petroglyph": "Petroglyf",
                         "roman_villa": "Rímska vila",
                         "settlement": "Historické osídlenie"
                     }
@@ -332,7 +333,10 @@
                         "height_restrictor": "Obmedzenie výšky",
                         "jersey_barrier": "Prenosná betónová zábrana ",
                         "kerb": "Obrubník",
+                        "kissing_gate": "Zábrana pre dobytok",
+                        "lift_gate": "Zdvíhacia závora",
                         "retaining_wall": "Oporná stena",
+                        "swing_gate": "Otočná závora",
                         "wall": "Múr"
                     }
                 },
@@ -384,15 +388,15 @@
                     "options": {
                         "building": "V budove",
                         "handlebar_holder": "Stojan na riadidlá",
-                        "lockers": "Samostatne uzamknuteľné",
+                        "lockers": "Samostatne uzamknuteľný box",
                         "shed": "Uzavretý prístrešok",
                         "stands": "Stojan (opiera sa oň rám bicykla)",
                         "wall_loops": "Stojan na koleso"
                     }
                 },
                 "bin": {
-                    "label": "Odpadová nádoba",
-                    "terms": "kos,kôš,odpadkový kôš,odpadkovy kos,kontajner,smetiak,odpad,odpadky"
+                    "label": "Odpadkový kôš",
+                    "terms": "kos,kôš,odpadkový kôš,odpadkovy kos,smetiak,odpad,odpadky"
                 },
                 "blind": {
                     "label": "Prístup nevidiacím",
@@ -422,7 +426,8 @@
                         "nature": "Príroda",
                         "notice": "Oznamy",
                         "plants": "Rastlinstvo",
-                        "welcome_sign": "Vitajte"
+                        "welcome_sign": "Uvítacia tabuľa",
+                        "wildlife": "Divoké zvieratá"
                     }
                 },
                 "bollard": {
@@ -472,7 +477,10 @@
                     "label": "Budova",
                     "options": {
                         "construction": "Budova vo výstavbe",
-                        "fire_station": "Budova hasičskej stanice"
+                        "fire_station": "Budova hasičskej stanice",
+                        "industrial": "Priemyselná budova",
+                        "manufacture": "Budova priemyselnej výroby",
+                        "warehouse": "Sklad"
                     },
                     "terms": "budova,stavba"
                 },
@@ -525,6 +533,7 @@
                     "terms": "kapacita"
                 },
                 "capacity/caravans": {
+                    "label": "Kapacita (Karavanov / Obytných prívesov)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -547,6 +556,9 @@
                     "label": "Objem (v metroch kubických)",
                     "placeholder": "50, 100, 200..."
                 },
+                "caravans": {
+                    "label": "Karaveny / Obytné prívesy"
+                },
                 "cash_in": {
                     "label": "Vklad hotovosti"
                 },
@@ -556,7 +568,8 @@
                         "defensive": "Obranný hrad",
                         "fortress": "Pevnosť",
                         "kremlin": "Kremeľ",
-                        "palace": "Palác"
+                        "palace": "Palác",
+                        "stately": "Zámok"
                     }
                 },
                 "changing_table": {
@@ -655,7 +668,11 @@
                     }
                 },
                 "craft": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "metal_construction": "Zámočníctvo",
+                        "stonemason": "Kamenárstvo"
+                    }
                 },
                 "crane/type": {
                     "label": "Typ žeriavu",
@@ -799,7 +816,8 @@
                             "description": "Cyklopruh neodelený od zvyšku dopravy"
                         },
                         "track": {
-                            "description": "Cyklopruh oddelený od dopravy fyzickou prekážkou"
+                            "description": "Cyklopruh oddelený od dopravy fyzickou prekážkou",
+                            "title": "Cyklocesta"
                         }
                     },
                     "terms": "cyklopruhy,cyklo pruhy,jazdné pruhy"
@@ -1195,7 +1213,8 @@
                 "generator/source": {
                     "label": "Zdroj",
                     "options": {
-                        "battery": "Batéria"
+                        "battery": "Batéria",
+                        "waste": "Odpad"
                     }
                 },
                 "generator/type": {
@@ -1238,6 +1257,10 @@
                 "healthcare/speciality": {
                     "label": "Špeciality",
                     "options": {
+                        "clinical_pathology": "Klinická patológia",
+                        "homeopathy": "Homeopatia",
+                        "naturopathy": "Naturopatia",
+                        "osteopathy": "Osteopatia",
                         "pathology": "Patológia",
                         "psychiatry": "Psychiatria",
                         "radiology": "Rádiológia",
@@ -1268,8 +1291,18 @@
                 "highway": {
                     "label": "Typ"
                 },
+                "highway_cartpath": {
+                    "label": "Typ cestičky",
+                    "options": {
+                        "path": "Cestička pre golfové vozíky"
+                    }
+                },
                 "historic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "city_gate": "Mestská brána",
+                        "citywalls": "Mestské opevnenie (historické)"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Historická civilizácia"
@@ -1316,8 +1349,7 @@
                         "critical": "Hraničné: Prejazdné len pre skúsených jazdcov a kone. Hlavné prekážky. Mosty by sa mali starostlivo preskúmať.",
                         "dangerous": "Nebezpečné: Prejazdné len pre veľmi skúsených jazdcov a kone a len za dobrého počasia. Zosadnúť.",
                         "demanding": "Opatrné: Hrboľatá cesta, občasné náročné pasáže.",
-                        "difficult": "Náročné: Úzka a exponovaná cesta. Môže obsahovať prekážky pri prekračovaní a úzke pasáže.",
-                        "impossible": "Neprejazdné: Cesta alebo most nie sú pre kone priechodné. Príliš úzka, nedostatočné spevnenie, prekážky ako rebríky. Životu nebezpečné."
+                        "difficult": "Náročné: Úzka a exponovaná cesta. Môže obsahovať prekážky pri prekračovaní a úzke pasáže."
                     },
                     "placeholder": "Obtiažne, nebezpečné",
                     "terms": "obtiažnosť jazdy na koni"
@@ -1555,6 +1587,30 @@
                 },
                 "material": {
                     "label": "Materiál",
+                    "options": {
+                        "adobe": "Nepálená hlina",
+                        "aluminium": "Hliník",
+                        "brass": "Mosadz",
+                        "brick": "Tehla",
+                        "bronze": "Bronz",
+                        "concrete": "Betón",
+                        "dry_stone": "Suchá kamenné murivo",
+                        "glass": "Sklo",
+                        "granite": "Žula (granit)",
+                        "iron": "Železo",
+                        "limestone": "Vápenec",
+                        "marble": "Mramor",
+                        "metal": "Kov",
+                        "plastic": "Plast",
+                        "reinforced_conrete": "Železobetón",
+                        "rock": "Skala",
+                        "sand": "Piesok",
+                        "sandstone": "Pieskovec",
+                        "soil": "Pôda, zem",
+                        "steel": "Oceľ",
+                        "stone": "Kameň",
+                        "wood": "Drevo"
+                    },
                     "terms": "material,materiál"
                 },
                 "max_age": {
@@ -1591,7 +1647,20 @@
                     "label": "Maximálna šírka"
                 },
                 "memorial": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "blue_plaque": "Modrá plaketa",
+                        "bust": "Busta",
+                        "cross": "Pamätný kríž",
+                        "obelisk": "Obelisk",
+                        "plaque": "Pamätná tabuľa",
+                        "sculpture": "Skulptúra",
+                        "statue": "Socha",
+                        "stele": "Stéla",
+                        "stolperstein": "Stolpersteine",
+                        "stone": "Kameň",
+                        "war_memorial": "Vojenský pamätník"
+                    }
                 },
                 "microbrewery": {
                     "label": "Minipivovar",
@@ -1715,7 +1784,13 @@
                     "terms": "poznámka,poznamka,pripomienka"
                 },
                 "office": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "diplomatic": "Diplomatický úrad",
+                        "property_management": "Správa nehnuteľnotí",
+                        "union": "Odborová organizácia zamestnancov",
+                        "water_utility": "Kancelária vodohospodárskej spoločnosti"
+                    }
                 },
                 "oneway": {
                     "label": "Jednosmerná",
@@ -1810,14 +1885,6 @@
                         "street_side": "Pri ceste",
                         "surface": "Povrchové",
                         "underground": "Podzemné"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Orientácia",
-                    "options": {
-                        "diagonal": "Diagonálne",
-                        "parallel": "Paralelné",
-                        "perpendicular": "Kolmé"
                     }
                 },
                 "parking_entrance": {
@@ -1968,6 +2035,12 @@
                 "plant/method": {
                     "label": "Metóda generovania"
                 },
+                "plant/output": {
+                    "options": {
+                        "cold_water": "Studená voda",
+                        "hot_water": "Teplá voda"
+                    }
+                },
                 "plant/output/electricity": {
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
@@ -2062,8 +2135,14 @@
                         "cans": "Plechovky",
                         "cardboard": "Kartón",
                         "clothes": "Oblečenie",
+                        "cooking_oil": "Kuchynský olej",
+                        "engine_oil": "Motorový olej",
+                        "glass": "Akékoľvek sklo (kalené sklo, okná, zrkadlá, atď.)",
+                        "glass_bottles": "Sklené fľaše a poháre",
                         "green_waste": "Bioodpad",
                         "paper": "Papier",
+                        "plastic": "Plast",
+                        "plastic_bottles": "Plastové fľaše",
                         "plastic_packaging": "Plastové obaly",
                         "scrap_metal": "Kovový šrot",
                         "shoes": "Topánky"
@@ -2150,7 +2229,13 @@
                     "label": "Typ"
                 },
                 "resource": {
-                    "label": "Zdroje"
+                    "label": "Zdroje",
+                    "options": {
+                        "aggregate": "Kamenivo",
+                        "iron_ore": "Železná ruda",
+                        "limestone": "Vápenec",
+                        "sand": "Piesok"
+                    }
                 },
                 "restriction": {
                     "label": "Typ"
@@ -2425,42 +2510,25 @@
                     "terms": "wikidata druhu"
                 },
                 "sport": {
-                    "label": "Športy"
+                    "label": "Športy",
+                    "options": {
+                        "athletics": "Atletika",
+                        "horse_racing": "Dostihy",
+                        "motocross": "Motokros",
+                        "skateboard": "Skejtbording"
+                    }
                 },
                 "sport_ice": {
-                    "label": "Športy",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Ľadový hokej",
-                        "ice_skating": "Korčuľovanie na ľade",
-                        "ice_stock": "Bavorský curling",
-                        "multi": "Rôzne športy"
-                    }
+                    "label": "Športy"
                 },
                 "sport_pub": {
-                    "label": "Športy",
-                    "options": {
-                        "billiards": "Biliard",
-                        "darts": "Šípky"
-                    }
+                    "label": "Športy"
                 },
                 "sport_racing_motor": {
-                    "label": "Športy",
-                    "options": {
-                        "karting": "Motokáry",
-                        "motocross": "Motokros",
-                        "motor": "Motoristický šport"
-                    }
+                    "label": "Športy"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Športy",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Cyklistika",
-                        "dog_racing": "Preteky psov",
-                        "horse_racing": "Dostihy",
-                        "running": "Beh"
-                    }
+                    "label": "Športy"
                 },
                 "stars": {
                     "label": "Hviezdičky"
@@ -2468,6 +2536,9 @@
                 "start_date": {
                     "label": "Počiatočný dátum",
                     "placeholder": "RRRR-MM-DD"
+                },
+                "static_caravans": {
+                    "label": "Statické karavany"
                 },
                 "step_count": {
                     "label": "Počet schodov",
@@ -2516,7 +2587,12 @@
                     "label": "Typ"
                 },
                 "substance": {
-                    "label": "Substancia"
+                    "label": "Substancia",
+                    "options": {
+                        "hot_water": "Teplá voda",
+                        "rainwater": "Dažďová voda",
+                        "water": "Pitná voda"
+                    }
                 },
                 "substation": {
                     "label": "Typ"
@@ -2567,6 +2643,11 @@
                 },
                 "survey/date": {
                     "label": "Dátum posledného prezretia"
+                },
+                "survey_point/structure": {
+                    "options": {
+                        "bracket": "Držiak"
+                    }
                 },
                 "swimming_pool": {
                     "label": "Typ"
@@ -2731,6 +2812,12 @@
                     },
                     "terms": "druh využitia,využitie,použitie"
                 },
+                "utility": {
+                    "options": {
+                        "sewerage": "Odpadová voda",
+                        "water": "Voda"
+                    }
+                },
                 "valve": {
                     "label": "Typ"
                 },
@@ -2800,7 +2887,10 @@
                     "label": "Typ"
                 },
                 "waste": {
-                    "label": "Odpad"
+                    "label": "Odpad",
+                    "options": {
+                        "organic": "Organický odpad"
+                    }
                 },
                 "water": {
                     "label": "Typ"
@@ -2887,7 +2977,7 @@
                     "terms": "bilbord,bilboardy,billboardy,reklama,pútač,putac"
                 },
                 "advertising/board": {
-                    "name": "Poznámkova tabuľa"
+                    "name": "Reklamná plocha"
                 },
                 "advertising/column": {
                     "name": "Reklamný stĺp",
@@ -3200,6 +3290,13 @@
                 "amenity/doctors": {
                     "name": "Lekár",
                     "terms": "lekar,doktor"
+                },
+                "amenity/doctors/pathology": {
+                    "name": "Patológ",
+                    "terms": "patolog"
+                },
+                "amenity/doctors/plastic_surgery": {
+                    "name": "Plastický chirurg"
                 },
                 "amenity/dojo": {
                     "name": "Škola bojových umení",
@@ -3531,15 +3628,16 @@
                     "name": "Kontajner na elektroodpad"
                 },
                 "amenity/recycling/container/green_waste": {
-                    "name": "Kontajner na zelený odpad"
+                    "name": "Kontajner na zelený odpad",
+                    "terms": "kontajner na bioodpad,bioodpad"
                 },
                 "amenity/recycling_centre": {
                     "name": "Recyklačné centrum",
-                    "terms": "recyklacne centrum"
+                    "terms": "recyklacne centrum,zberný dvor,zberny dvor"
                 },
                 "amenity/recycling_container": {
                     "name": "Kontajner na recyklovaný odpad",
-                    "terms": "kôš,kontajner,fľaša,sklo,odpad,smeti"
+                    "terms": "kontajner,fľaša,flasa,sklo,odpad,smeti,recyklácia,recyklacia"
                 },
                 "amenity/refugee_site": {
                     "name": "Utečenecký tábor"
@@ -3821,8 +3919,8 @@
                     "name": "Odpadkový kontajner"
                 },
                 "amenity/waste_transfer_station": {
-                    "name": "Zberný dvor",
-                    "terms": "zberny dvor,recyklácia,recyklacia,cirkulárna ekonomika,cirkularna ekonomika"
+                    "name": "Prekládková stanica odpadu",
+                    "terms": "prekladkova stanica odpadu,odpad,recyklácia,recyklacia"
                 },
                 "amenity/water_point": {
                     "name": "Pitná voda pre karavany",
@@ -3837,6 +3935,10 @@
                 "area": {
                     "name": "Plocha",
                     "terms": "územie,uzemie"
+                },
+                "area/footway": {
+                    "name": "Plocha chodníka",
+                    "terms": "plocha chodnika"
                 },
                 "area/highway": {
                     "name": "Plocha cesty"
@@ -3904,6 +4006,10 @@
                 "barrier/border_control": {
                     "name": "Hraničná kontrola"
                 },
+                "barrier/bump_gate": {
+                    "name": "Brána otváraná nárazom",
+                    "terms": "brana otvarana narazom,bump gate"
+                },
                 "barrier/cable_barrier": {
                     "name": "Káblová bariéra",
                     "terms": "kablova bariera,drôtená bariéra,drotena bariera,lanová bariéra,lanova bariera"
@@ -3944,6 +4050,10 @@
                 "barrier/guard_rail": {
                     "name": "Zvodidlá"
                 },
+                "barrier/hampshire_gate": {
+                    "name": "Drôtená brána",
+                    "terms": "drotena brana"
+                },
                 "barrier/hedge": {
                     "name": "Živý plot",
                     "terms": "zivy plot,kríky,kriky,okrasný plot,okrasny plot"
@@ -3969,11 +4079,21 @@
                 },
                 "barrier/kissing_gate": {
                     "name": "Zábrana pre dobytok",
-                    "terms": "zabrana pre dobytok,kravy"
+                    "terms": "zabrana pre dobytok,kissing gate,bránka,branka"
+                },
+                "barrier/lift_gate": {
+                    "name": "Zdvíhacia závora",
+                    "terms": "zdvihacia zavora,závora,zavora,rampa"
+                },
+                "barrier/planter": {
+                    "name": "Kvetináč (bariéra)"
                 },
                 "barrier/retaining_wall": {
                     "name": "Oporný múr",
                     "terms": "podporna stena,múr,mur,vyrovnávacia stena,vyrovnavacia stena,oporny mur,podporná stena"
+                },
+                "barrier/rope": {
+                    "name": "Povrazový plot"
                 },
                 "barrier/sally_port": {
                     "name": "Výpadová brána"
@@ -3986,7 +4106,8 @@
                     "terms": "prielaz,rebrík,rebrik,stupačky,stupacky"
                 },
                 "barrier/swing_gate": {
-                    "name": "Krídlová brána"
+                    "name": "Otočná závora",
+                    "terms": "otocna zavora,závora,zavora"
                 },
                 "barrier/toll_booth": {
                     "name": "Výber mýta",
@@ -4002,6 +4123,10 @@
                 "barrier/wall/noise_barrier": {
                     "name": "Protihluková stena",
                     "terms": "protihlukova stena,hluk,stena,múr,mur,bariéra,bariera,protihlukova bariera,protihluková bariéra"
+                },
+                "barrier/wicket_gate": {
+                    "name": "Bránka pre peších",
+                    "terms": "branka pre pesich"
                 },
                 "boundary": {
                     "name": "Hranica"
@@ -4135,6 +4260,9 @@
                 },
                 "building/kindergarten": {
                     "name": "Budova skôlky / jasiel"
+                },
+                "building/manufacture": {
+                    "name": "Budova priemyselnej výroby"
                 },
                 "building/mosque": {
                     "name": "Mešita",
@@ -4586,6 +4714,15 @@
                 "healthcare/alternative/chiropractic": {
                     "name": "Chiropraktik"
                 },
+                "healthcare/alternative/homeopathy": {
+                    "name": "Homeopat"
+                },
+                "healthcare/alternative/naturopathy": {
+                    "name": "Naturopat"
+                },
+                "healthcare/alternative/osteopathy": {
+                    "name": "Osteopat"
+                },
                 "healthcare/audiologist": {
                     "name": "Ušný lekár"
                 },
@@ -4666,16 +4803,20 @@
                 },
                 "highway/cycleway": {
                     "name": "Cyklocesta",
-                    "terms": "cesta pre bicykle,cestička,cesticka,cyklopruh,cyklocesta"
+                    "terms": "cesta pre bicykle,cykliistická cesta,cyklisticka cesta,cyklopruh,cyklocesta,cyklochodník,cyklochodnik"
                 },
                 "highway/cycleway/bicycle_foot": {
-                    "name": "Cyklistický a peší chodník"
+                    "name": "Cyklistický a peší chodník",
+                    "terms": "cyklisticky a pesi chodnik,chodník pre cyklistov a peších,chodník pre cyklistov a pesich,cyklochodník,cyklochodnik"
                 },
                 "highway/cycleway/crossing": {
                     "name": "Prechod pre cyklistov"
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "Priechod pre cyklistov a peších"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
+                    "name": "Prechod pre cyklistiov (vyznačený)"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Neznačený priechod pre cyklistov"
@@ -4690,8 +4831,8 @@
                     "name": "Núdzová odstavná plocha"
                 },
                 "highway/footway": {
-                    "name": "Oddelený chodník",
-                    "terms": "cesta,cestička,chodník,turistický chodník,horská cesta,chodníček,cesta pre peších,cesticka,chodnik,horska cesta,chodnicek,cesta pre pesich"
+                    "name": "Samostatný chodník",
+                    "terms": "chodník,chodnik,chodníček,chodnicek,cesta pre peších,cesta pre pesich,cestička,cesticka"
                 },
                 "highway/footway/access_aisle": {
                     "name": "Prístupová ulička"
@@ -4702,8 +4843,15 @@
                 "highway/footway/crossing": {
                     "name": "Priechod pre chodcov"
                 },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "Prechod pre chodcov (vyznačený)"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "Prechod pre chodcov (bez značenia)"
+                },
                 "highway/footway/sidewalk": {
-                    "name": "Chodník pri ceste"
+                    "name": "Chodník popri ceste",
+                    "terms": "chodnik popri ceste"
                 },
                 "highway/give_way": {
                     "name": "Značka daj prednosť",
@@ -4912,7 +5060,8 @@
                     "name": "Zámok"
                 },
                 "historic/city_gate": {
-                    "name": "Mestská brána"
+                    "name": "Mestská brána",
+                    "terms": "mestska brana"
                 },
                 "historic/fort": {
                     "name": "Historická vojenská pevnosť"
@@ -4926,7 +5075,8 @@
                     "terms": "pamätihodnosť,pamatihodnost,pamatnik,pomnik,pamätník,pomník,snp,hrdina"
                 },
                 "historic/memorial/plaque": {
-                    "name": "Pamätná tabuľa"
+                    "name": "Pamätná tabuľa",
+                    "terms": "pamatna tabula,pamätná plaketa,pamatna plaketa,plaketa"
                 },
                 "historic/monument": {
                     "name": "Pamätihodnosť",
@@ -4994,7 +5144,8 @@
                     "name": "Záhradkárska osada"
                 },
                 "landuse/aquaculture": {
-                    "name": "Akvakultúra"
+                    "name": "Akvakultúra",
+                    "terms": "akvakultura,rybia farma,sádka,sádky,sadka,sadky,chov rýb,chov ryb"
                 },
                 "landuse/basin": {
                     "name": "Zadržiavacia nádrž"
@@ -5028,7 +5179,8 @@
                     "terms": "družstvo,druztvo,jrd,jzd,kravín,kravin,statok,gazdovstvo"
                 },
                 "landuse/flowerbed": {
-                    "name": "Záhon"
+                    "name": "Kvetinový záhon",
+                    "terms": "kvetinovy zahon,záhon,zahon,kvety"
                 },
                 "landuse/forest": {
                     "name": "Hospodársky les"
@@ -5078,9 +5230,6 @@
                 "landuse/military/barracks": {
                     "name": "Kasárne"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Nebezpečná zóna"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Vojenská prekážková dráha"
                 },
@@ -5102,8 +5251,8 @@
                     "name": "Rybník"
                 },
                 "landuse/quarry": {
-                    "name": "Kameňolom",
-                    "terms": "kamenolom,lom,kamene,strk,kameňe,štrk"
+                    "name": "Lom",
+                    "terms": "kameňolom,kamenolom,kamene,strk,štrk,piesok,ťažba,tazba"
                 },
                 "landuse/railway": {
                     "name": "Zóna železnice"
@@ -5259,6 +5408,9 @@
                 "leisure/hackerspace": {
                     "name": "Hackerspace"
                 },
+                "leisure/horse_riding": {
+                    "name": "Jazdecký areál"
+                },
                 "leisure/ice_rink": {
                     "name": "Klzisko",
                     "terms": "ľadová plocha,ladova plocha,korčulovanie,korculovanie,ľad,lad"
@@ -5300,6 +5452,9 @@
                     "name": "Ihrisko pre americký futbal",
                     "terms": "ihrisko americkeho futbalu,americky futbal,americký futbal,rugby"
                 },
+                "leisure/pitch/athletics": {
+                    "name": "Atletický štadión"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Ihrisko pre austrálsky futbal"
                 },
@@ -5328,6 +5483,9 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Kriketové ihrisko"
+                },
+                "leisure/pitch/equestrian": {
+                    "name": "Jazdecká aréna"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Ihrisko pre pozemný hokej"
@@ -5408,6 +5566,9 @@
                 "leisure/sports_centre/climbing": {
                     "name": "Lezecká stena"
                 },
+                "leisure/sports_centre/horse_racing": {
+                    "name": "Dostihové závodisko"
+                },
                 "leisure/sports_centre/swimming": {
                     "name": "Plavecký areál",
                     "terms": "plaváreň,plavaren,kúpalisko,kupalisko"
@@ -5429,8 +5590,17 @@
                 "leisure/track": {
                     "name": "Pretekárska dráha (nemotorové športy)"
                 },
+                "leisure/track/athletics": {
+                    "name": "Atletická dráha"
+                },
+                "leisure/track/athletics/running": {
+                    "name": "Bežecká atletická dráha"
+                },
                 "leisure/track/cycling": {
                     "name": "Cyklodráha"
+                },
+                "leisure/track/horse_racing": {
+                    "name": "Dostihová dráha"
                 },
                 "leisure/track/running": {
                     "name": "Bežecká dráha"
@@ -5600,6 +5770,10 @@
                 "man_made/pipeline/underground": {
                     "name": "Podzemné potrubie"
                 },
+                "man_made/planter": {
+                    "name": "Kvetináč",
+                    "terms": "kvetinac,kvety"
+                },
                 "man_made/pumping_station": {
                     "name": "Prečerpávacia stanica",
                     "terms": "precerpavacia stanica"
@@ -5622,6 +5796,9 @@
                 },
                 "man_made/street_cabinet": {
                     "name": "Rozvodná skriňa"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "Súkromná skriňa na kontajnery"
                 },
                 "man_made/surveillance": {
                     "name": "Monitorovacia kamera"
@@ -5705,6 +5882,9 @@
                 "man_made/works": {
                     "name": "Fabrika",
                     "terms": "závod,zavod,továreň,tovaren"
+                },
+                "man_made/works/brewery": {
+                    "name": "Pivovar"
                 },
                 "military/bunker": {
                     "name": "Vojenský bunker"
@@ -6037,6 +6217,9 @@
                 "office/private_investigator": {
                     "name": "Kancelária súkromného detektíva"
                 },
+                "office/property_management": {
+                    "name": "Správa nehnuteľností"
+                },
                 "office/religion": {
                     "name": "Náboženský úrad",
                     "terms": "nabozensky urad,farský úrad,farsky urad,fara"
@@ -6060,6 +6243,10 @@
                 },
                 "office/travel_agent": {
                     "name": "Cestovná agentúra"
+                },
+                "office/union": {
+                    "name": "Odborová organizácia zamestnancov",
+                    "terms": "odborova organizacia,odbory,zamestnanecké odbory,zamestnanecke odobry"
                 },
                 "office/water_utility": {
                     "name": "Kancelária vodohospodárskej spoločnosti"
@@ -6165,6 +6352,9 @@
                 },
                 "playground/swing": {
                     "name": "Hojdačka"
+                },
+                "playground/water": {
+                    "name": "Archimedova skrutka"
                 },
                 "playground/zipwire": {
                     "name": "Detská lanovka"
@@ -6909,8 +7099,8 @@
                     "terms": "obchod s potapacskym vybavemin,potapacske vybavenie,potapačské vybanie"
                 },
                 "shop/seafood": {
-                    "name": "Obchod s morskými špecialitami",
-                    "terms": "obchod s morskymi specialitami,plody mora,ryby,morské ryby,morske ryby,kreverty,treska,tuniak"
+                    "name": "Obchod s rybami alebo morskými plodmi",
+                    "terms": "rybáreň,rybaren,rybárňa,rybarna,obchod s morskými špecialitami,obchod s morskymi specialitami,plody mora,ryby,morské ryby,morske ryby,kreverty,treska,tuniak"
                 },
                 "shop/sewing": {
                     "name": "Galantéria"
@@ -7133,7 +7323,8 @@
                     "name": "Informačná tabuľa"
                 },
                 "tourism/information/board/welcome_sign": {
-                    "name": "Tabuľa Vitajte"
+                    "name": "Uvítacia tabuľa",
+                    "terms": "uvitacia tabula,tabuľa vitajte,tabula vitajte,vitajte,nápis,napis"
                 },
                 "tourism/information/guidepost": {
                     "name": "Smerovník"

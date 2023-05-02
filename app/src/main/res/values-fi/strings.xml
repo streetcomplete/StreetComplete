@@ -125,12 +125,12 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
     <string name="quest_address_title">"Mikä on tämän rakennuksen numero?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap-kyselyssovellus"</string>
+    <string name="store_listing_short_description">"OpenStreetMap-kyselysovellus"</string>
     <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella! Näin voit osallistua vapaan kartan kehittämiseen helposti.
 
 Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
 
-Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovelluksen lisäksi erillistä OpenStreetMap-editoria."</string>
+Vastauksesi täydentävät OpenStreetMapia omalla nimelläsi. Et tarvitse sovelluksen lisäksi erillistä OpenStreetMap-editoria."</string>
     <string name="quest_name_answer_noName">"Sillä ei ole nimeä…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Ei ollenkaan nimeä?"</string>
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
@@ -1041,7 +1041,7 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa)."</string>
     <string name="achievement_lifesaver_title">"Hengenpelastaja"</string>
     <string name="achievement_lifesaver_solved_X">"Ratkaisit %d tehtävää, jotka auttavat pelastuspalveluja ja ensiapuhenkilöitä!"</string>
     <string name="quest_fuelSelfService_title">"Onko tämä itsepalveluasema?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Tämä tehtävätyyppi on oletuksena poissa käytöstä, koska se on melko aikaa vievää ja usein vaikeaa tehdä oikean valinnan. Sinun tulisi ottaa tämä tehtävätyyppi käyttöön vain, jos olet todella sitoutunut lisäämään tällaisia tietoja."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Tämä tehtävätyyppi on oletuksena poissa käytöstä, koska se on melko aikaa vievä ja on usein vaikeaa tehdä oikea valinta. Sinun tulisi ottaa tämä tehtävätyyppi käyttöön vain, jos olet todella sitoutunut lisäämään tällaisia tietoja."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Kovapintainen, hyvin vähän irtonaista soraa tai hiekkaa"</string>
     <string name="quest_barrier_path_intersection">"Miten tämä polku ylittää esteen täällä?"</string>
     <string name="quest_barrier_road_intersection">"Miten tämä tie ylittää esteen täällä?"</string>
@@ -1127,7 +1127,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_summit_register_title2">"Onko tällä vuorenhuipulla vieraskirjaa?"</string>
     <string name="quest_surface_title">"Millainen päällyste täällä on?"</string>
     <string name="quest_toiletAvailability_title">"Onko täällä WC:tä?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörtuolilla vessaan?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörätuolilla vessaan?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Oletko varma, etteivät pyöräilijät saa käyttää tätä yksisuuntaista katua molempiin suuntiin? Jos olet epävarma, tarkista onko kadun päässä merkkiä."</string>
     <string name="link_backofyourhand_description">"Kuinka hyvin tunnet ympäristösi? Testaa tietämystäsi paikantamalla kadut."</string>
     <string name="link_notesreview_description">"Näe, suodata ja kommentoi sinun ja muiden tekemiä ilmoituksia. Ilmoitukset on mahdollista selvittää asettamalla ilmoitusten sisältämä tieto kartalle käyttäen iD:tä tai JOSM:ia"</string>

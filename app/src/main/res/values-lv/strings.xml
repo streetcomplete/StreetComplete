@@ -1306,4 +1306,13 @@ Pārvietot tagad?"</string>
     <string name="street_parking_staggered_on_street">"Uz ielas pārmijus dažādās pusēs"</string>
     <string name="street_parking_staggered_half_on_kerb">"Daļēji uz ielas pārmijus dažādās pusēs"</string>
     <string name="quest_traffic_signals_sound_description">"Padoms: skatieties, vai ir skaļruņi. Ne visus skaņas signālus var aktivizēt ar pogu."</string>
+    <string name="quest_presets_duplicate">"Dublēt"</string>
+    <string name="label_block">"kvartāls"</string>
+    <string name="quest_address_answer_block">"Ir kvartālā…"</string>
+    <string name="quest_address_answer_no_block">"Nav kvartālā…"</string>
+    <string name="quest_surface_value_mud">"Pastāvīgi dubļi"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Šeit nav labierīcību"</string>
+    <string name="unknown_surface_title">"Cita veida virsma"</string>
+    <string name="overlay_surface">"Virsmas"</string>
+    <string name="overlay_path_surface_segregated">"Sadalīt velosipēdu un gājēju daļās"</string>
 </resources>

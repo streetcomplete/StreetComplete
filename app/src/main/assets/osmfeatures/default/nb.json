@@ -61,7 +61,7 @@
                         },
                         "designated": {
                             "description": "Tilgang i amsvar med skilt eller spesifikke lokale lover",
-                            "title": "Brukertype"
+                            "title": "Utpekt"
                         },
                         "destination": {
                             "description": "Tilgang kun tillatt for å nå et mål",
@@ -283,6 +283,20 @@
                 },
                 "ascent": {
                     "label": "Total stigning"
+                },
+                "athletics_pitch": {
+                    "options": {
+                        "long_jump": "Lengdehopp",
+                        "pole_vault": "Stangsprang",
+                        "shot_put": "Kulestøt"
+                    }
+                },
+                "athletics_track": {
+                    "options": {
+                        "long_jump": "Lengdehopp",
+                        "running": "Løping",
+                        "sprint": "Sprintløp"
+                    }
                 },
                 "atm": {
                     "label": "Minibank"
@@ -1183,8 +1197,8 @@
                         "delegation": "Delegasjon",
                         "high_commission": "Høykommisjon",
                         "interests_section": "Interesseseksjon",
-                        "mission": "Diplomatisk oppdrag",
-                        "nunciature": "Den hellige stols diplomatisk oppdrag",
+                        "mission": "Utenriksstasjon",
+                        "nunciature": "Den hellige stols utenriksstasjon",
                         "residence": "Offisiell residens for en ambassadør",
                         "yes": "ambassade"
                     }
@@ -1545,8 +1559,7 @@
                         "critical": "På grense: kan bare passeres med erfaren rider og hester. Større hindringer. Bruer bør undersøkes nøye.",
                         "dangerous": "Farlig: Brukbar bare for veldig erfarne ryttere og hester og bare i godt vær. Avstig.",
                         "demanding": "Vær forsiktig: Ujevn vei, tidvis vanskelige passasjer.",
-                        "difficult": "Vanskelig: Stien er smal og utsatt. Kan inneholde hindringer man må tråkke over og smale passasjer.",
-                        "impossible": "Umulig: Vei eller bro ikke farbar for hester. For smal, utilstrekkelig støtte, hindringer som stiger. Livsfare."
+                        "difficult": "Vanskelig: Stien er smal og utsatt. Kan inneholde hindringer man må tråkke over og smale passasjer."
                     },
                     "placeholder": "Vanskelig, Farlig ..."
                 },
@@ -1942,7 +1955,7 @@
                     "label": "Naturisme",
                     "options": {
                         "customary": "Vanlig",
-                        "designated": "Dedikert",
+                        "designated": "Utpekt",
                         "no": "Forbudt",
                         "obligatory": "Påbudt",
                         "permissive": "Permissiv",
@@ -2040,16 +2053,7 @@
                         "underground": "Under overflaten"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientering",
-                    "options": {
-                        "diagonal": "Diagonal i forhold til gate",
-                        "parallel": "Parallelt med gate",
-                        "perpendicular": "Møter gata ved rett vinkel"
-                    }
-                },
                 "parking/side/orientation": {
-                    "label": "Oppstilling av parkeringsplass",
                     "options": {
                         "diagonal": "Diagonal i forhold til gate (~45°)",
                         "parallel": "Parallelt med gate",
@@ -2064,6 +2068,7 @@
                     "label": "Parkering",
                     "options": {
                         "no": "Nei",
+                        "street_side": "Sidegate",
                         "yes": "Ja"
                     }
                 },
@@ -2653,7 +2658,6 @@
                     "label": "Sport",
                     "options": {
                         "american_football": "Amerikansk fotball",
-                        "athletics": "Friidrett",
                         "baseball": "Baseball",
                         "beachvolleyball": "Strandvolleyball",
                         "cycling": "Sykling",
@@ -2676,39 +2680,16 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Sport",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Ishockey",
-                        "ice_skating": "Skøyting",
-                        "multi": "Flere "
-                    }
+                    "label": "Sport"
                 },
                 "sport_pub": {
-                    "label": "Sport",
-                    "options": {
-                        "billiards": "Billiard",
-                        "darts": "Dart",
-                        "table_soccer": "Bordfotball"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_motor": {
-                    "label": "Sport",
-                    "options": {
-                        "karting": "Karting",
-                        "motocross": "Motocross",
-                        "motor": "Motorsport"
-                    }
+                    "label": "Sport"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sport",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Sykling",
-                        "dog_racing": "Hundeløp ",
-                        "horse_racing": "Hesteløp",
-                        "running": "Løping"
-                    }
+                    "label": "Sport"
                 },
                 "stars": {
                     "label": "Stjerner"
@@ -2782,7 +2763,7 @@
                         "minor_distribution": "Distribusjonsnett",
                         "traction": "Banestrømforsyning",
                         "transition": "Overgang mellom luftledning og bakkeledning",
-                        "transmission": "Høyspentoverføring"
+                        "transmission": "Transmisjonsnett"
                     }
                 },
                 "substation_pipeline": {
@@ -2791,7 +2772,7 @@
                         "distribution": "Regionalnett",
                         "industrial": "Industriell",
                         "minor_distribution": "Distribusjonsnett",
-                        "transmission": "Sentralnett",
+                        "transmission": "Transmisjonsnett",
                         "valve": "Ventil",
                         "valve_group": "Ventilgruppe"
                     }
@@ -3011,6 +2992,7 @@
                 "transformer": {
                     "label": "Type",
                     "options": {
+                        "distribution": "Fordeling: fordeler strømmen til sluttforbrukere, montert utenfor transformatorstasjoner",
                         "main": "Hoved: viderefører strømmen",
                         "yes": "Ukjent rolle"
                     }
@@ -3049,7 +3031,7 @@
                 "usage_rail": {
                     "label": "Brukstype",
                     "options": {
-                        "branch": "Avgreningsbane",
+                        "branch": "Avgrening",
                         "industrial": "Industriell",
                         "main": "Hoved",
                         "military": "Militær",
@@ -3069,6 +3051,7 @@
                         "oil": "Olje",
                         "power": "Strøm",
                         "sewerage": "Avløpsvann",
+                        "street_lighting": "Gatebelysning",
                         "telecom": "Telekom",
                         "water": "Vann"
                     }
@@ -3170,6 +3153,9 @@
                 "website": {
                     "label": "Nettside",
                     "placeholder": "https://example.com"
+                },
+                "website/menu": {
+                    "label": "Menylenke"
                 },
                 "wetland": {
                     "label": "Type"
@@ -4606,9 +4592,6 @@
                 "highway/primary": {
                     "name": "Primær hovedvei"
                 },
-                "highway/primary_link": {
-                    "name": "Primær lenke"
-                },
                 "highway/raceway": {
                     "name": "Racerbane for motorsport"
                 },
@@ -4631,7 +4614,7 @@
                     "name": "Sekundær hovedvei"
                 },
                 "highway/secondary_link": {
-                    "name": "Sekundær lenke"
+                    "name": "Innfart"
                 },
                 "highway/service": {
                     "name": "Stikkvei"
@@ -4689,9 +4672,6 @@
                 },
                 "highway/trunk": {
                     "name": "Stamvei"
-                },
-                "highway/trunk_link": {
-                    "name": "Stamvei-lenke"
                 },
                 "highway/turning_circle": {
                     "name": "Snuplass"
@@ -4833,9 +4813,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Brakker"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Fareområde"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Militær hinderløype"

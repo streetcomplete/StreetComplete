@@ -1,4 +1,19 @@
+v53.0-beta1: |
+  <ul>
+  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
+  <li>Crossing: Different wording and use `crossing=informal` for points at which there are no crossings but people can still cross (#4944)</li>
+  <li>Other small fixes and enhancements (#4842, #4970)</li>
+  </ul>
+
 v52.1: |
+  <h3>Note</h3>
+  <p>If you turned off auto upload in the settings:<br><br>
+     When you upgrade to the next release, your local edits will be cleared because
+     incompatible changes were made to the data model. So, be sure to upload them before. The release
+     is scheduled for Wednesday, May 10th. The public beta for May 3rd.
+  </p>
+  <h3>Enhancements & Fixes</h3>
   <ul>
   <li>Surface overlay: Make paving stones and asphalt distinguishable by color (#4946, #4888)</li>
   <li>Another overlay can now be selected from the dialog with one tap only (#4949), by @tapetis</li>
@@ -6,8 +21,9 @@ v52.1: |
   <li>Fix keyboard was not dismissed after selecting a POI in the dialog on certain Android versions (#4961, #4952), by @tapetis</li>
   <li>Do not treat <code>surface=ground</code> + <code>tracktype=grade2</code> as sure mistake (#4863), by @matkoniecz</li>
   <li>Recognize zone 30 (etc.) streets tagged with a more uncommon tag combination, too (#4960)</li>
-  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, ...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
-  <li></li>
+  <li>Specify type of entrance, entrance ref: Also ask for buildings with an inner courtyard (#4971, #4968), by @Helium314</li>
+  <li>Surface & lit overlay: Can now change footways to steps in overlays (#4973, #4938), by @arrival-spring</li>
+  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, #4972, #4981...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
   </ul>
 
 v52.0: |
