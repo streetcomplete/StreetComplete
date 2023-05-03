@@ -908,7 +908,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="about_title_faq">"Perguntas frequentes"</string>
     <string name="quest_buildingLevels_title2">"Quantos andares acima do solo tem este edifício? (incluindo r/c)"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quantos andares acima do solo tem esta parte do edifício? (incluindo r/c)"</string>
-    <string name="quest_crossing_title">"Existe aqui algum lancil onde esta via pedonal cruza com esta estrada? De que tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Conjunto: %s"</string>
     <string name="default_disabled_msg_roofShape">"Esta missão está desativada de origem porque as formas dos telhados são muitas vezes difíceis de ver ao nível da rua. Além disso este tipo de missão leva bastante tempo. Na maioria dos casos é mais fácil e mais eficiente mapear isto num computador em casa com imagens de satélites."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -942,7 +941,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_buildingType_bridge">"Ponte entre edifícios (passadiço elevado)"</string>
     <string name="quest_laundrySelfService_title2">"Esta lavandaria tem auto-serviço?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal devem ser preparados de acordo com regras especiais, com as agências de certificação Halal a marcar os produtos em conformidade."</string>
-    <string name="quest_picnicTableCover_title">"Esta mesa de piqueniques é coberta (protegida dos elementos)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"São degraus"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido numa passagem num muro/vedação/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido numa cancela"</string>
@@ -1239,7 +1237,6 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="overlay_addresses">"Endereços"</string>
     <string name="overlay_shops">"Lojas"</string>
     <string name="name_label">"Nome:"</string>
-    <string name="vacant_shop_title">"Loja vaga"</string>
     <string name="unknown_shop_title">"Outro tipo de local"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta (com ou sem uma chave)?"</string>

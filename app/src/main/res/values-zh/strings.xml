@@ -908,7 +908,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="about_title_faq">"常见问题与解答"</string>
     <string name="quest_buildingLevels_title2">"这座建筑的地下室以上有几层？"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"这个建筑部分在地下室以上有几层？"</string>
-    <string name="quest_crossing_title">"这条小道与这条路的交汇处有路缘吗？是什么类型的？"</string>
     <string name="pref_subtitle_quests_preset_name">"预设: %s"</string>
     <string name="default_disabled_msg_roofShape">"这种任务类型在默认情况下是禁用的，因为屋顶的形状往往不容易从街上看到。这种任务类型也相当耗时；在大多数情况下，从家里的航空图像中进行测绘会更容易、更有效。"</string>
     <string name="quest_religion_animist">"万物有灵论/泛灵论者"</string>
@@ -942,7 +941,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_bridge">"位于建筑之间的桥梁（人行天桥）"</string>
     <string name="quest_laundrySelfService_title2">"这个洗衣房提供自助服务吗？"</string>
     <string name="quest_dietType_explanation_halal">"清真制品必须按照特殊规则处理，并由清真认证机构对符合要求的产品进行标识。"</string>
-    <string name="quest_picnicTableCover_title">"野餐桌有遮蔽吗（不受雨淋）？"</string>
     <string name="quest_generic_answer_is_actually_steps">"这部分是台阶"</string>
     <string name="quest_barrier_type_passage_conversion">"改为墙/栅栏/等的通道。"</string>
     <string name="quest_barrier_type_gate_conversion">"改建成大门"</string>
@@ -1240,7 +1238,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="overlay_addresses">"地址"</string>
     <string name="overlay_shops">"商店"</string>
     <string name="name_label">"名称："</string>
-    <string name="vacant_shop_title">"闲置商铺"</string>
     <string name="unknown_shop_title">"其他类型的场所"</string>
     <string name="quest_address_answer_no_address">"这里没有地址"</string>
     <string name="quest_bicycle_barrier_installation_title">"这个自行车阻车柱能否被打开（有或没有钥匙）？"</string>

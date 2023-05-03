@@ -898,7 +898,6 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_board_type_sport">"Olahraga, Pelatihan"</string>
     <string name="quest_buildingType_bridge">"Jembatan di antara bangunan (skyway)"</string>
     <string name="quest_dietType_explanation_halal">"Produk-produk Halal harus disiapkan dengan aturan khusus, dengan lembaga sertifikasi Halal menandai bahwa produk sesuai."</string>
-    <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
     <string name="quest_barrier_type_passage_conversion">"Dikonversi menjadi lorong di dinding/pagar/dll."</string>
     <string name="quest_fireHydrant_diameter_title">"Berapa diameter yang dijelaskan pada tanda di hidran kebakaran ini?"</string>
     <string name="quest_diet_answer_no_food">"Tidak ada makanan"</string>
@@ -1106,7 +1105,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="overlay_addresses">"Alamat"</string>
     <string name="overlay_shops">"Toko"</string>
     <string name="name_label">"Nama:"</string>
-    <string name="vacant_shop_title">"Toko kosong"</string>
     <string name="unknown_shop_title">"Jenis tempat lain"</string>
     <string name="quest_address_answer_no_address">"Tidak ada alamat di sini"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Tetap"</string>

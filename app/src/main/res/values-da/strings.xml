@@ -907,7 +907,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="about_title_faq">"Ofte stillede spørgsmål"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etager, over jorden, har denne bygning?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
-    <string name="quest_crossing_title">"Er der en kantsten, hvor disse veje møder hinanden? Hvilken slags?"</string>
     <string name="pref_subtitle_quests_preset_name">"Forudindstilling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne opgavetype er slået fra som standard, da formen på bygningers tage kan være svære at se fra gadeplan. Opgavetypen er også meget tidskrævende; ofte er det nemmere og mere effektivt at kortlægge dette udfra luftfotos derhjemme."</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -941,7 +940,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_buildingType_bridge">"Gangbro mellem bygninger"</string>
     <string name="quest_laundrySelfService_title2">"Er der selvbetjening i dette vaskeri?"</string>
     <string name="quest_dietType_explanation_halal">"Halaprodukter skal være lavet efter specielle regler  og skal være med en halalcertificering som markeres på produkterne."</string>
-    <string name="quest_picnicTableCover_title">"Er dette bord- og bænkesæt overdækket (beskyttet mod regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne del er trapper"</string>
     <string name="quest_barrier_type_passage_conversion">"Omdannet til en passage i mur/hegn/osv."</string>
     <string name="quest_barrier_type_gate_conversion">"Omdannet til en låge"</string>
@@ -1237,7 +1235,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="overlay_addresses">"Adresser"</string>
     <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
-    <string name="vacant_shop_title">"Tom butik"</string>
     <string name="unknown_shop_title">"Ukendt type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes (med eller uden nøgle)?"</string>
@@ -1315,4 +1312,19 @@ Vil du flytte det nu?"</string>
     <string name="unknown_surface_title">"Anden type overflade"</string>
     <string name="overlay_surface">"Overflader"</string>
     <string name="overlay_path_surface_segregated">"Opdelt i dele til cykling og gang"</string>
+    <string name="quest_crossing_title2">"Er der en overgang her?"</string>
+    <string name="quest_crossing_yes">"Ja (f.eks. er kantstenen sænket her, eller der er markeringer)"</string>
+    <string name="quest_crossing_no">"Nej, men det er muligt at krydse"</string>
+    <string name="quest_crossing_prohibited">"Nej, det er forbudt eller umuligt at krydse"</string>
+    <string name="quest_hairdresser_title">"Hvilke kunder besøger denne frisør?"</string>
+    <string name="quest_hairdresser_male_and_female">"Alle"</string>
+    <string name="quest_hairdresser_female_only">"Kvinder"</string>
+    <string name="quest_hairdresser_male_only">"Mænd"</string>
+    <string name="quest_hairdresser_not_signed">"Ikke angivet"</string>
+    <string name="quest_amenityCover_title">"Er dette overdækket (beskyttet mod regn)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Forlængelse af kantsten"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Midterhelle"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chikane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Forlængelse af kantsten + midterhelle"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ingen indsnævring af kørebane her"</string>
 </resources>

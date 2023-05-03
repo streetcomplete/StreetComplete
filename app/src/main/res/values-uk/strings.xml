@@ -903,7 +903,6 @@
     <string name="about_title_faq">"ЧаПи"</string>
     <string name="quest_buildingLevels_title2">"Скільки поверхів над підвалом має цей будинок?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Скільки поверхів над підвалом має ця частина будинку?"</string>
-    <string name="quest_crossing_title">"Чи є бордюри, де цей шлях перетинається з дорогою? Якого типу?"</string>
     <string name="pref_subtitle_quests_preset_name">"Заготовка: %s"</string>
     <string name="default_disabled_msg_roofShape">"Цей тип квесту вимкнено за замовчуванням, оскільки форми даху часто нелегко побачити з вулиці. Цей тип квесту також займає більше часу; здебільшого простіше та ефективніше розпізнати з аерознімків удома."</string>
     <string name="quest_religion_animist">"Анімізм"</string>
@@ -937,7 +936,6 @@
     <string name="quest_buildingType_bridge">"Міст між будівлями"</string>
     <string name="quest_laundrySelfService_title2">"Чи надає ця пральня самообслуговування?"</string>
     <string name="quest_dietType_explanation_halal">"Халяльна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Халяль повинні маркувати продукцію відповідно."</string>
-    <string name="quest_picnicTableCover_title">"Цей стіл для пікніку має накриття (захищений від дощу)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
     <string name="quest_barrier_type_passage_conversion">"Перетворено на прохід у стіні/паркані тощо."</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
@@ -1232,7 +1230,6 @@
     <string name="overlay_addresses">"Адреси"</string>
     <string name="overlay_shops">"Магазини"</string>
     <string name="name_label">"Назва:"</string>
-    <string name="vacant_shop_title">"Незайнятий магазин"</string>
     <string name="unknown_shop_title">"Щось інше"</string>
     <string name="quest_address_answer_no_address">"Тут немає адреси"</string>
     <string name="quest_bicycle_barrier_installation_title">"Цей велобарʼєр відчиняється?"</string>
@@ -1307,4 +1304,19 @@
     <string name="unknown_surface_title">"Інший тип поверхні"</string>
     <string name="overlay_surface">"Покриття"</string>
     <string name="overlay_path_surface_segregated">"Поділено на вело- та пішохідну смуги"</string>
+    <string name="quest_crossing_title2">"Тут є перехід?"</string>
+    <string name="quest_crossing_yes">"Так (наприклад, занижений бордюр або є розмітка)"</string>
+    <string name="quest_crossing_no">"Ні, але перехід можливий"</string>
+    <string name="quest_crossing_prohibited">"Ні, перехід заборонений чи неможливий"</string>
+    <string name="quest_hairdresser_title">"Для яких клієнтів ця перукарня?"</string>
+    <string name="quest_hairdresser_male_and_female">"Будь-хто"</string>
+    <string name="quest_hairdresser_female_only">"Жінки"</string>
+    <string name="quest_hairdresser_male_only">"Чоловіки"</string>
+    <string name="quest_hairdresser_not_signed">"Не підписано"</string>
+    <string name="quest_amenityCover_title">"Тут накрито (захищено від дощу)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Звуження"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Острівець безпеки"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Шикана"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Звуження + острівець безпеки"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Тут немає звуження смуги"</string>
 </resources>

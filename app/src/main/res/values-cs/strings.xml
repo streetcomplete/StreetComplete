@@ -913,7 +913,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Kolik pater nad suterénem má tato budova?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kolik pater nad suterénem má tato část budovy?"</string>
-    <string name="quest_crossing_title">"Jsou na tomto křížení cesty se silnicí obrubníky? Jakého druhu?"</string>
     <string name="pref_subtitle_quests_preset_name">"Předvolba: %s"</string>
     <string name="default_disabled_msg_roofShape">"Tento typ úkolů je ve výchozím nastavení zakázán, protože tvar střechy často není snadno viditelný z ulice. Tento typ úkolů je také poněkud časově náročný; ve většině případů je snazší a efektivnější toto mapovat doma podle leteckých snímků."</string>
     <string name="quest_religion_animist">"Animismus"</string>
@@ -947,7 +946,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_buildingType_bridge">"Most mezi budovami (spojovací lávka)"</string>
     <string name="quest_laundrySelfService_title2">"Nabízí tato prádelna samoobslužné praní?"</string>
     <string name="quest_dietType_explanation_halal">"Halal výrobky se musí připravovat podle zvláštních pravidel. Speciální agentury dávají certifikáty těm Halal výrobkům, které jsou s těmito pravidly v souladu."</string>
-    <string name="quest_picnicTableCover_title">"Je tento stůl pro piknik krytý (chráněný před deštěm)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Toto jsou schody"</string>
     <string name="quest_barrier_type_passage_conversion">"Přeměněno na průchod ve zdi/plotu/apod."</string>
     <string name="quest_barrier_type_gate_conversion">"Přeměněno na bránu"</string>
@@ -1244,7 +1242,6 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="overlay_addresses">"Adresy"</string>
     <string name="overlay_shops">"Obchody"</string>
     <string name="name_label">"Název:"</string>
-    <string name="vacant_shop_title">"Prázdný obchod"</string>
     <string name="unknown_shop_title">"Jiný druh místa"</string>
     <string name="quest_address_answer_no_address">"Není tu žádná adresa"</string>
     <string name="quest_bicycle_barrier_installation_title">"Lze tuto bariéru pro kola otvírat (s klíčem nebo bez něj)?"</string>
@@ -1322,4 +1319,19 @@ Chcete ho posunout?"</string>
     <string name="unknown_surface_title">"Jiný druh povrchu"</string>
     <string name="overlay_surface">"Povrchy"</string>
     <string name="overlay_path_surface_segregated">"Rozděleno na části pro cyklisty a chodce"</string>
+    <string name="quest_crossing_title2">"Je zde přechod?"</string>
+    <string name="quest_crossing_yes">"Ano (např. je zde snížený obrubník nebo je zde značení)"</string>
+    <string name="quest_crossing_no">"Ne, ale přecházení je možné"</string>
+    <string name="quest_crossing_prohibited">"Ne, přecházení je zakázáno nebo nemožné"</string>
+    <string name="quest_hairdresser_title">"Jací zákazníci navštěvují toto kadeřnictví?"</string>
+    <string name="quest_hairdresser_male_and_female">"Kdokoli"</string>
+    <string name="quest_hairdresser_female_only">"Ženy"</string>
+    <string name="quest_hairdresser_male_only">"Muži"</string>
+    <string name="quest_hairdresser_not_signed">"Nedefinováno"</string>
+    <string name="quest_amenityCover_title">"Je to kryté (chráněné před deštěm)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Rozšíření obrubníku"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Dopravní ostrůvek"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Rozšíření obrubníku + dopravní ostrůvek"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Žádný zúžený pruh"</string>
 </resources>

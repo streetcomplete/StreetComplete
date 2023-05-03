@@ -908,7 +908,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"이 건물은 지하층 위로 몇층인가요?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"이 건물 부분은 지하층 위로 몇층인가요?"</string>
-    <string name="quest_crossing_title">"이 길이 도로와 만나는 지점에 연석이 있나교? 어떤 종류인가요?"</string>
     <string name="pref_subtitle_quests_preset_name">"프리셋: %s"</string>
     <string name="default_disabled_msg_roofShape">"지붕 형태를 길거리에서 보는 것이 쉽지 않기 때문에 이 과제는 기본적으로 비활성화 되어있습니다. 이 과제는 또 시간을 많이 소모합니다; 대부분의 경우 집에서 위성사진을 통해 정보를 채워넣는 게 더 쉽고 효율적입니다."</string>
     <string name="quest_religion_animist">"애니미즘"</string>
@@ -942,7 +941,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_bridge">"건물 사이에 위치한 다리 (구름다리)"</string>
     <string name="quest_laundrySelfService_title2">"이 세탁소는 셀프 빨래방인가요?"</string>
     <string name="quest_dietType_explanation_halal">"할랄 제품은 특수 규정에 따라 제조되어야 하며, 할랄 인증 기관에서 적합 평가를 받아야 합니다."</string>
-    <string name="quest_picnicTableCover_title">"이 소풍 탁자에 (비를 막아주는) 지붕이 있나요?"</string>
     <string name="quest_generic_answer_is_actually_steps">"이 부분은 계단입니다"</string>
     <string name="quest_barrier_type_passage_conversion">"벽이나 울타리를 통과하는 통로로 변환합니다."</string>
     <string name="quest_barrier_type_gate_conversion">"출입구로 바뀜"</string>
@@ -1233,7 +1231,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="overlay_addresses">"주소"</string>
     <string name="overlay_shops">"상점"</string>
     <string name="name_label">"이름:"</string>
-    <string name="vacant_shop_title">"빈 상점"</string>
     <string name="unknown_shop_title">"다른 유형의 장소"</string>
     <string name="quest_address_answer_no_address">"주소 없음"</string>
     <string name="quest_bicycle_barrier_installation_title">"이 사이클 배리어를 열 수 있습니까(열쇠가 있든 없든)?"</string>

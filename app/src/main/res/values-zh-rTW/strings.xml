@@ -906,7 +906,6 @@
     <string name="about_title_faq">"常見問題"</string>
     <string name="quest_buildingLevels_title2">"這棟建築地下室之上有幾層？"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"這棟建築部分的地下室之上有幾層？"</string>
-    <string name="quest_crossing_title">"這邊這條路與這條路的交匯處是否有路緣石？ 哪一種呢？ "</string>
     <string name="pref_subtitle_quests_preset_name">"預設組合：%s"</string>
     <string name="default_disabled_msg_roofShape">"這個任務類型已經預設關閉，因為屋頂形狀常常無法直接從街上看出來。這個任務類型也相當花時間；大部分的情形之下，直接在家從空照圖繪製更簡單也更有效率。"</string>
     <string name="quest_religion_animist">"泛靈論"</string>
@@ -940,7 +939,6 @@
     <string name="quest_buildingType_bridge">"建築之間的橋樑 (天橋)"</string>
     <string name="quest_laundrySelfService_title2">"這間洗衣店是否有提供自助服務？"</string>
     <string name="quest_dietType_explanation_halal">"清真產品的準備需符合特別的規則，清真認證單位需要認證產品。"</string>
-    <string name="quest_picnicTableCover_title">"這個野餐桌是否有遮蓋 (能夠擋雨)？"</string>
     <string name="quest_generic_answer_is_actually_steps">"這部分是階梯"</string>
     <string name="quest_barrier_type_passage_conversion">"轉換成牆壁/圍欄/當中的通道。 "</string>
     <string name="quest_barrier_type_gate_conversion">"轉換成閘門"</string>
@@ -1236,7 +1234,6 @@
     <string name="overlay_addresses">"地址"</string>
     <string name="overlay_shops">"商店"</string>
     <string name="name_label">"名稱："</string>
-    <string name="vacant_shop_title">"閒置店面"</string>
     <string name="unknown_shop_title">"其他類型"</string>
     <string name="quest_address_answer_no_address">"這裡沒有地址"</string>
     <string name="quest_bicycle_barrier_installation_title">"這裡的單車障礙物是否能開啟 (有或沒有鑰匙)？"</string>

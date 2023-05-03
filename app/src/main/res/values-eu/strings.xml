@@ -906,7 +906,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Zenbat solairu ditu eraikin honek lurretik gora?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Zenbat solairu ditu eraikin honek lurretik gora zati honetan?"</string>
-    <string name="quest_crossing_title">"Ba al dago zintarririk bidea espaloiarekin batzen denean? Nolakoa da?"</string>
     <string name="pref_subtitle_quests_preset_name">"Berezkoa: %s"</string>
     <string name="default_disabled_msg_roofShape">"Erronka mota hau desgaitua dago berez, teilatuaren formak ez direlako erraz ikusten kaletik. Bilaketa mota hau ere oso luzea izaten da, eta, gehienetan, errazagoa eta eraginkorragoa da hau etxeko aireko irudietatik mapatzea."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -940,7 +939,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_buildingType_bridge">"Eraikinen arteko zubia"</string>
     <string name="quest_laundrySelfService_title2">"Garbileku honek norberak zerbitzatzeko aukera ematen al du?"</string>
     <string name="quest_dietType_explanation_halal">"Halal produktuak arau berezien arabera prestatu behar dira, eta Halal ziurtagiri bat behar du sarreran hala dela ziurtatuz."</string>
-    <string name="quest_picnicTableCover_title">"Picnic mahai hau estalia al dago (euritik babestua)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Atal honetan eskailerak daude"</string>
     <string name="quest_barrier_type_passage_conversion">"Horma/langa/etab. baten pasabide batean bilakatu da."</string>
     <string name="quest_barrier_type_gate_conversion">"Ate batean eraldatu da"</string>
@@ -1238,7 +1236,6 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="overlay_addresses">"Helbideak"</string>
     <string name="overlay_shops">"Dendak"</string>
     <string name="name_label">"Izena:"</string>
-    <string name="vacant_shop_title">"Denda hutsik"</string>
     <string name="unknown_shop_title">"Beste leku mota bat"</string>
     <string name="quest_address_answer_no_address">"Hemen ez dago helbiderik"</string>
     <string name="quest_bicycle_barrier_installation_title">"Ireki al daiteke bizikleta-hesi hori (giltzarekin ala gabe)?"</string>

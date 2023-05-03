@@ -902,7 +902,6 @@
     <string name="about_title_faq">"คำถามที่ถามบ่อย"</string>
     <string name="quest_buildingLevels_title2">"อาคารนี้มีความสูงเหนือชั้นใต้ดินกี่ชั้น?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"อาคารส่วนนี้มีความสูงเหนือชั้นใต้ดินกี่ชั้น?"</string>
-    <string name="quest_crossing_title">"มีขอบถนนตรงที่ทางนี้ไปบรรจบกับถนนไหม? แบบไหน?"</string>
     <string name="pref_subtitle_quests_preset_name">"ค่าที่ตั้งไว้: %s"</string>
     <string name="default_disabled_msg_roofShape">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะคุณอาจจะมองรูปร่างของหลังคาไม่เห็นจากถนน และภารกิจประเภทนี้มักใช้เวลามาก โดยปกติแล้ว ภารกิจแบบนี้จะทำได้ง่ายกว่าที่บ้านโดยใช้ข้อมูลจากภาพถ่ายทางอากาศ"</string>
     <string name="quest_religion_animist">"วิญญาณนิยม"</string>
@@ -936,7 +935,6 @@
     <string name="quest_buildingType_bridge">"สะพานเชื่อมอาคาร (โพยมวิถี)"</string>
     <string name="quest_laundrySelfService_title2">"ร้านซักรีดมีบริการตนเองหรือไม่?"</string>
     <string name="quest_dietType_explanation_halal">"ผลิตภัณฑ์ฮาลาลเป็นผลิตภัณฑ์ที่ถูกควบคุมตามบทบัญญัติของศาสนาอิสลาม และต้องได้รับการรับรองจากหน่วยงานที่รับผิดชอบ"</string>
-    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีหลังคาคลุม (กันฝน) หรือไม่?"</string>
     <string name="quest_generic_answer_is_actually_steps">"ส่วนนี้น่าจะเป็นขั้นบันได"</string>
     <string name="quest_barrier_type_passage_conversion">"ดัดแปลงเป็นทางเดินผ่านกำแพง/รั้ว/ฯลฯ"</string>
     <string name="quest_barrier_type_gate_conversion">"ดัดแปลงเป็นประตู"</string>

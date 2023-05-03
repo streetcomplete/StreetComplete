@@ -908,7 +908,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="about_title_faq">"Perguntas frequentes"</string>
     <string name="quest_buildingLevels_title2">"Quantos andares acima do porão este edifício tem?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quantos andares acima do porão esta edificação tem?"</string>
-    <string name="quest_crossing_title">"Existem meios-fios onde este caminho encontra a estrada aqui? Que tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Predefinição: %s"</string>
     <string name="default_disabled_msg_roofShape">"Este tipo de missão é desabilitado por padrão porque as formas do telhado geralmente não são facilmente visíveis da rua. Esse tipo de missão também consome muito tempo; na maioria dos casos, é mais fácil e eficiente mapear isso a partir de imagens aéreas em casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -942,7 +941,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_buildingType_bridge">"Ponte entre edifícios (passagem aérea)"</string>
     <string name="quest_laundrySelfService_title2">"Esta lavanderia oferece autoatendimento?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal devem ser preparados de acordo com regras especiais, com agências de certificação Halal marcando os produtos em conformidade."</string>
-    <string name="quest_picnicTableCover_title">"Esta mesa de piquenique está coberta (protegida da chuva)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Esta parte são etapas"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido em uma passagem, em uma parede/cerca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido em um portão"</string>
@@ -1240,7 +1238,6 @@ Que tipo de memorial é esse?"</string>
     <string name="overlay_addresses">"Endereços"</string>
     <string name="overlay_shops">"Shoppings"</string>
     <string name="name_label">"Nome:"</string>
-    <string name="vacant_shop_title">"Loja desocupada"</string>
     <string name="unknown_shop_title">"Outro tipo de lugar"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicleta pode ser aberta?"</string>

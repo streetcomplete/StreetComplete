@@ -649,7 +649,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_type_kerb">"Kerb"</string>
     <string name="no_camera_app">"No camera application available"</string>
     <string name="about_title_faq">"Frequently Asked Questions"</string>
-    <string name="quest_crossing_title">"Are there kerbs where this way meets this road here? What kind?"</string>
     <string name="team_mode_choose_color2">"Next, each person must pick a different colour. Choose yours:"</string>
     <string name="quest_kerb_height_no">"No kerb at all"</string>
     <string name="quest_selection_hint_message">"Contributing should primarily be fun! If you are overwhelmed by the number of quests you can always fine-tune which quests are displayed to you and in what order in the settings."</string>
@@ -691,7 +690,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="overlay_addresses">"Addresses"</string>
     <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
-    <string name="vacant_shop_title">"Vacant shop"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
     <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>

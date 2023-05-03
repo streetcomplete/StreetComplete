@@ -880,7 +880,6 @@
     <string name="about_title_faq">"ՀՏՀ"</string>
     <string name="quest_buildingLevels_title2">"Քանի մակարդակ ունի նկուղը այս շենքը:"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Քանի մակարդակ է նկուղից վերեւում:"</string>
-    <string name="quest_crossing_title">"Կան այն եզրաքարեր, որտեղ այս ճանապարհը այստեղ է հանդիպում այս ճանապարհին: Ինչպիսի?"</string>
     <string name="pref_subtitle_quests_preset_name">"Նախադրված. %s"</string>
     <string name="default_disabled_msg_roofShape">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ տանիքի ձեւերը հաճախ հեշտությամբ չեն երեւում փողոցից: Այս որոնման տեսակը նույնպես բավականին ժամանակատար է. Շատ դեպքերում դա ավելի հեշտ է եւ ավելի արդյունավետ, դա տանը քարտեզագրելու համար:"</string>
     <string name="quest_religion_animist">"Անիմիստ"</string>
@@ -914,7 +913,6 @@
     <string name="quest_buildingType_bridge">"Bridge շենքերի միջեւ (Skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Այս լվացքը ապահովում է ինքնասպասարկում:"</string>
     <string name="quest_dietType_explanation_halal">"Հալալ արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, հետ կապված է Հալալ սերտիֆիկացման գործակալություններ, որոնք համապատասխանեցնում են արտադրանքը:"</string>
-    <string name="quest_picnicTableCover_title">"Արդյոք ծածկված է այս խնջույքի սեղանը (պաշտպանված անձրեւից):"</string>
     <string name="quest_generic_answer_is_actually_steps">"Այս մասը քայլեր է"</string>
     <string name="quest_barrier_type_passage_conversion">"Վերածվել է պատի / ցանկապատի / եւ այլնի հատվածի:"</string>
     <string name="quest_barrier_type_gate_conversion">"Վերածվել է դարպասի"</string>

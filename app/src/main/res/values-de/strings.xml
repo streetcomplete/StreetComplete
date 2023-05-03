@@ -40,14 +40,14 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Eingaben verwerfen?"</string>
     <string name="confirmation_discard_positive">"Verwerfen"</string>
-    <string name="action_download">"Hier nach Aufgaben suchen"</string>
+    <string name="action_download">"Hier herunterladen"</string>
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="close">"Schließen"</string>
     <string name="download_error">"Fehler beim Suchen nach Aufgaben"</string>
     <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
-    <string name="confirmation_cancel_prev_download_title">"Aktuelle Suche abbrechen und stattdessen hier suchen?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Aktuellen Download abbrechen und stattdessen hier herunterladen?"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
@@ -278,7 +278,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht suchen. Zoome weiter hinein oder kippe die Karte weniger."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht herunterladen. Zoome weiter hinein oder kippe die Karte weniger."</string>
     <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
     <string name="quest_crossing_type_unmarked">"Ohne Markierungen"</string>
     <string name="action_undo">"Rückgängig machen"</string>
@@ -572,8 +572,8 @@ Jetzt aufspalten?"</string>
     <string name="about_title_donate">"Spenden"</string>
     <string name="about_summary_donate">"Zeige dich erkenntlich! ❤️"</string>
     <string name="about_description_donate">"Danke, dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Hier suchen"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Aktuelle Suche fortsetzen"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Hier herunterladen"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Aktuellen Download fortsetzen"</string>
     <string name="quest_buildingType_garages_description">"Getrennte Stellplätze für verschiedene Besitzer oder Mieter"</string>
     <string name="quest_tourism_information_title">"Was für eine Touristeninformation ist das?"</string>
     <string name="quest_tourism_information_office">"Tourismusbüro"</string>
@@ -910,7 +910,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Wie viele Stockwerke (ohne Keller) hat dieses Gebäude?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Wie viele Stockwerke (ohne Keller) hat dieser Gebäudeteil?"</string>
-    <string name="quest_crossing_title">"Gibt es hier, wo dieser Weg auf die Straße trifft, Bordsteine? Was für welche?"</string>
     <string name="pref_subtitle_quests_preset_name">"Voreinstellung: %s"</string>
     <string name="default_disabled_msg_roofShape">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil die Dachformen oft nicht gut von der Straße aus sichtbar sind. Dieser Aufgabentyp ist außerdem recht zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese von zuhause von Luftbildern zu erfassen."</string>
     <string name="quest_religion_animist">"Animistisch"</string>
@@ -944,7 +943,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_buildingType_bridge">"Verbindungsbrücke zwischen Gebäuden"</string>
     <string name="quest_laundrySelfService_title2">"Bietet diese Wäscherei Selbstbedienung an?"</string>
     <string name="quest_dietType_explanation_halal">"Halale Produkte werden nach den muslimischen Speisegesetzen hergestellt, wobei spezielle Halal-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
-    <string name="quest_picnicTableCover_title">"Ist dieser Picknicktisch überdacht (regengeschützt)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Das ist eine Treppe"</string>
     <string name="quest_barrier_type_passage_conversion">"Durch Mauer-/Zaun-Durchgang ersetzt"</string>
     <string name="quest_barrier_type_gate_conversion">"Durch Tor ersetzt"</string>
@@ -1240,7 +1238,6 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="overlay_addresses">"Adressen"</string>
     <string name="overlay_shops">"Geschäfte"</string>
     <string name="name_label">"Name:"</string>
-    <string name="vacant_shop_title">"Leerstehendes Geschäft"</string>
     <string name="unknown_shop_title">"Andere Art von Ort"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden (mit oder ohne Schlüssel)?"</string>
@@ -1318,4 +1315,17 @@ Jetzt verschieben?"</string>
     <string name="unknown_surface_title">"Andere Art von Oberfläche"</string>
     <string name="overlay_surface">"Oberflächen"</string>
     <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Fuß- und Fahrradweg"</string>
+    <string name="quest_crossing_title2">"Ist hier ein Fußgängerüberweg?"</string>
+    <string name="quest_crossing_yes">"Ja (der Bordstein ist z.B. abgesenkt oder es gibt Markierungen)"</string>
+    <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
+    <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
+    <string name="quest_hairdresser_male_and_female">"Alle"</string>
+    <string name="quest_hairdresser_female_only">"Frauen"</string>
+    <string name="quest_hairdresser_male_only">"Männer"</string>
+    <string name="quest_hairdresser_not_signed">"Nicht beschildert"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Fahrbahnverengung"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Verkehrsinsel"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Schikane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Fahrbahnverengung + Verkehrsinsel"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Hier keinerlei Fahrbahnversatz"</string>
 </resources>

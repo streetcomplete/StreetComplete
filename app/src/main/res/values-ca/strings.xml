@@ -908,7 +908,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Quants nivells per sobre del soterrani té aquest edifici?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quants nivells per sobre del soterrani té aquesta part de l'edifici?"</string>
-    <string name="quest_crossing_title">"Hi han vorades per on aquest camí creua la carretera? De quina mena?"</string>
     <string name="pref_subtitle_quests_preset_name">"Predefinit: %s"</string>
     <string name="default_disabled_msg_roofShape">"Aquest tipus de missió està desactivada per defecte perquè les formes del sostre sovint no són fàcilment visibles des del carrer. Aquest tipus de missió també consumeix molt temps; en la majoria dels casos és més fàcil i eficient traçar-ho a partir d'imatges aèries a casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -942,7 +941,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_buildingType_bridge">"Pont entre edificis (penjant)"</string>
     <string name="quest_laundrySelfService_title2">"Aquesta bugaderia és d'autoservei?"</string>
     <string name="quest_dietType_explanation_halal">"Els productes Halal han d'estar preparats seguint unes regles especials, amb el certificat Halal de les agències de certificació corresponent."</string>
-    <string name="quest_picnicTableCover_title">"Està aquesta taula de picnic coberta (protegida de la plutja)? "</string>
     <string name="quest_generic_answer_is_actually_steps">"Aquesta part són escales"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertit en un pas en una paret/tanca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"S'ha convertit a una porta"</string>
@@ -1247,7 +1245,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="overlay_addresses">"Adreces"</string>
     <string name="overlay_shops">"Botigues"</string>
     <string name="name_label">"Nom:"</string>
-    <string name="vacant_shop_title">"Local vacant"</string>
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
     <string name="quest_address_answer_no_address">"No hi ha adreça"</string>
     <string name="quest_bicycle_barrier_installation_title">"Es pot obrir la barrera per a bicletes?"</string>

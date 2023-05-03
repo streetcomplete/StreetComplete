@@ -761,7 +761,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="no_search_results">"Hiçbir şey bulunamadı"</string>
     <string name="quest_presets_default_name">"Varsayılan"</string>
     <string name="notification_channel_sync">"Verileri Senkronize Et"</string>
-    <string name="quest_picnicTableCover_title">"Bu piknik masası kapalı mı (yağmurdan korunuyor mu)?"</string>
     <string name="quest_traffic_calming_type_island">"Ada"</string>
     <string name="short_no_answer_on_button">"Hayır"</string>
     <string name="restore_confirmation">"Eski haline getir"</string>

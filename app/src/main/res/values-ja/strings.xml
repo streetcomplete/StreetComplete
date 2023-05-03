@@ -791,7 +791,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_presets_selected">"選択中"</string>
     <string name="quest_presets_delete_message">"プリセット “%s”を削除しますか？探索の選択と表示順は失われ取り返しはつきません。"</string>
     <string name="quest_buildingType_bridge">"建物間の橋（渡り廊下）"</string>
-    <string name="quest_picnicTableCover_title">"このピクニックテーブルには屋根がありますか（雨をしのげますか）？"</string>
     <string name="quest_surface_value_concrete_plates">"コンクリート平板"</string>
     <string name="quest_surface_value_concrete_lanes">"コンクリート・レーン"</string>
     <string name="quest_parking_access_title2">"ここに駐車できるのは誰ですか？有料または無料の場合があります"</string>

@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 402570
-  linesOfInterfaceMarkupChanged: 142889
-  assetFilesChanged: 1958
+  linesOfCodeChanged: 409842
+  linesOfInterfaceMarkupChanged: 143250
+  assetFilesChanged: 1966
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 20491
@@ -15,7 +15,7 @@
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 11197
+  linesOfCodeChanged: 11242
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -33,9 +33,9 @@
   assetFilesChanged: 5
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 2987
-  linesOfInterfaceMarkupChanged: 229
-  assetFilesChanged: 69
+  linesOfCodeChanged: 3092
+  linesOfInterfaceMarkupChanged: 488
+  assetFilesChanged: 70
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -51,6 +51,10 @@
   linesOfCodeChanged: 1639
   linesOfInterfaceMarkupChanged: 262
   assetFilesChanged: 48
+- name: "Tim"
+  githubUsername: "tapetis"
+  linesOfCodeChanged: 1590
+  linesOfInterfaceMarkupChanged: 606
 - name: "smichel17"
   githubUsername: "smichel17"
   linesOfCodeChanged: 1332
@@ -77,10 +81,6 @@
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
-- name: "Tim"
-  githubUsername: "tapetis"
-  linesOfCodeChanged: 407
-  linesOfInterfaceMarkupChanged: 64
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -219,6 +219,8 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "Julien Lepiller"
+  linesOfCodeChanged: 4
 - name: "cyclingcat"
   linesOfCodeChanged: 4
 - name: "MegaArthur"
@@ -244,10 +246,10 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "gileri"
+  linesOfCodeChanged: 2
 - name: "Benoit Maggi"
   githubUsername: "bmaggi"
-  linesOfCodeChanged: 2
-- name: "gileri"
   linesOfCodeChanged: 2
 - name: "Alexander Bantyev"
   githubUsername: "balsoft"

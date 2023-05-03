@@ -907,7 +907,6 @@ Podaci se osvežavaju svakih %1$s dana, dok se nekorišćeni podaci automatski b
     <string name="about_title_faq">"Česta pitanja"</string>
     <string name="quest_buildingLevels_title2">"Koliko spratova iznad podruma ima ova građevina?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Koliko spratova iznad podruma ima ova građevina?"</string>
-    <string name="quest_crossing_title">"Postoje li ivičnjaci između ovih puteva? Koje vrste?"</string>
     <string name="pref_subtitle_quests_preset_name">"Grupa zadataka: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ova vrsta zadataka je onemogućena jer se oblici krovova često ne vide dobro sa ulice. Takođe, oduzimaju dosta vrmena. Uglavnom je lakše i efikasnije krovove označiti od kuće, preko snimaka iz vazduha."</string>
     <string name="quest_religion_animist">"Animizam"</string>
@@ -941,7 +940,6 @@ Podaci se osvežavaju svakih %1$s dana, dok se nekorišćeni podaci automatski b
     <string name="quest_buildingType_bridge">"Most između zgrada (topla veza)"</string>
     <string name="quest_laundrySelfService_title2">"Da li je ovo samouslužna perionica/vešeraj?"</string>
     <string name="quest_dietType_explanation_halal">"Halal proizvodi se spremaju po posebnoj recepturi, uz odgovarajuće sertifikate za Halal proizvode."</string>
-    <string name="quest_picnicTableCover_title">"Da li je ovaj sto za piknik natkriven (pruža li zaštitu od kiše)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ovaj segment su stepenice"</string>
     <string name="quest_barrier_type_passage_conversion">"Konvertovano u prolaz kroz zid/ogradu/itd."</string>
     <string name="quest_barrier_type_gate_conversion">"Konvertovano u kapiju"</string>
@@ -1237,7 +1235,6 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="overlay_addresses">"Adrese"</string>
     <string name="overlay_shops">"Prodavnice"</string>
     <string name="name_label">"Naziv:"</string>
-    <string name="vacant_shop_title">"Prazan lokal"</string>
     <string name="unknown_shop_title">"Nepoznata namena lokala"</string>
     <string name="quest_address_answer_no_address">"Ovde nema adrese"</string>
     <string name="quest_bicycle_barrier_installation_title">"Može li se ova biciklistička barijera pomeriti?"</string>
@@ -1314,4 +1311,19 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="unknown_surface_title">"Drugi tip podloge"</string>
     <string name="overlay_surface">"Podloge"</string>
     <string name="overlay_path_surface_segregated">"Podeljeno na biciklističke i pešačke delove"</string>
+    <string name="quest_crossing_title2">"Da li je ovde prelaz?"</string>
+    <string name="quest_crossing_yes">"Da (npr. spušten ivičnjak ili postoji zebra)"</string>
+    <string name="quest_crossing_no">"Ne, ali je moguće preći"</string>
+    <string name="quest_crossing_prohibited">"Ne, prelaz je izričito zabranjen ili nije moguć"</string>
+    <string name="quest_hairdresser_title">"Koja klijentela posećuje ovog frizera?"</string>
+    <string name="quest_hairdresser_male_and_female">"Svako"</string>
+    <string name="quest_hairdresser_female_only">"Žene"</string>
+    <string name="quest_hairdresser_male_only">"Muškarci"</string>
+    <string name="quest_hairdresser_not_signed">"Nije naznačeno"</string>
+    <string name="quest_amenityCover_title">"Da li je natkriveno (pruža li zaštitu od kiše)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Produžetak ivičnjaka"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Saobraćajno ostrvo"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Produžetak ivičnjaka + saobraćajno ostrvo"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ovde nema uske trake"</string>
 </resources>

@@ -910,7 +910,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Ile poziomów powyżej piwnicy ma budynek?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Ile poziomów powyżej piwnicy ma ta część budynku? "</string>
-    <string name="quest_crossing_title">"Czy na połączeniu chodnika z drogą jest krawężnik? Jakiego rodzaju?"</string>
     <string name="pref_subtitle_quests_preset_name">"Zestaw: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ten typ zadania jest domyślnie wyłączony, ponieważ kształty dachu często nie są dobrze widoczne z ulicy. Ten typ zadania jest również dość czasochłonny. W większości przypadków łatwiej i wydajniej jest zmapować to na podstawie zdjęć lotniczych w domu."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -944,7 +943,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_buildingType_bridge">"Most między budynkami (przełączka)"</string>
     <string name="quest_laundrySelfService_title2">"Czy w tej pralni obsługuje się pralki samodzielnie?"</string>
     <string name="quest_dietType_explanation_halal">"Produkty halal przygotowane są według specjalnych zasad z organizacjami które zajmują się kontrolą i nadzorem produktem oznaczonych jako zgodnymi z tymi zasadami."</string>
-    <string name="quest_picnicTableCover_title">"Czy ten stół piknikowy jest kryty (chroniony przed deszczem)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"To są schody"</string>
     <string name="quest_barrier_type_passage_conversion">"Zamienione w przejście przez mur/płot/itp."</string>
     <string name="quest_barrier_type_gate_conversion">"Zamienione w bramę"</string>
@@ -1240,7 +1238,6 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="overlay_addresses">"Adresy"</string>
     <string name="overlay_shops">"Sklepy"</string>
     <string name="name_label">"Nazwa:"</string>
-    <string name="vacant_shop_title">"Zlikwidowany sklep"</string>
     <string name="unknown_shop_title">"Inny rodzaj miejsca"</string>
     <string name="quest_address_answer_no_address">"Brak adresu"</string>
     <string name="quest_bicycle_barrier_installation_title">"Czy tę barierę rowerową można otworzyć (z kluczem/bez)?"</string>
