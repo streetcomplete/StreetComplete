@@ -18,7 +18,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update puts way`() {
         val way = way(1)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way))
         val elementDB: ElementDao = mock()
         on(elementDB.get(ElementType.WAY, 1L)).thenThrow(IllegalStateException())
@@ -27,7 +27,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update puts relation`() {
         val relation = rel(1)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(relation))
         val elementDB: ElementDao = mock()
         on(elementDB.get(ElementType.RELATION, 1L)).thenThrow(IllegalStateException())
@@ -38,7 +38,7 @@ internal class MapDataCacheTest {
         val p = p(0.0, 0.0)
         val geo = ElementPolylinesGeometry(listOf(listOf(p)), p)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedGeometries = listOf(ElementGeometryEntry(ElementType.WAY, 1, geo)))
         val geometryDB: ElementGeometryDao = mock()
         on(geometryDB.get(ElementType.WAY, 1L)).thenThrow(IllegalStateException())
@@ -49,7 +49,7 @@ internal class MapDataCacheTest {
         val p = p(0.0, 0.0)
         val geo = ElementPolygonsGeometry(listOf(listOf(p)), p)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedGeometries = listOf(ElementGeometryEntry(ElementType.RELATION, 1, geo)))
         val geometryDB: ElementGeometryDao = mock()
         on(geometryDB.get(ElementType.RELATION, 1L)).thenThrow(IllegalStateException())
@@ -58,7 +58,7 @@ internal class MapDataCacheTest {
 
     @Test fun `getElement fetches node if not in spatialCache`() {
         val node = node(1)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val elementDB: ElementDao = mock()
         on(elementDB.get(ElementType.NODE, 1L)).thenReturn(node).thenReturn(null)
         assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB.get(type, id) })
@@ -73,7 +73,7 @@ internal class MapDataCacheTest {
 
     @Test fun `getElement fetches and caches way`() {
         val way = way(2L)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val elementDB: ElementDao = mock()
         on(elementDB.get(ElementType.WAY, 2L)).thenReturn(way).thenThrow(IllegalStateException())
         // get way 2 and verify the fetch function is called, but only once
@@ -86,7 +86,7 @@ internal class MapDataCacheTest {
 
     @Test fun `getElement fetches and caches relation`() {
         val rel = rel(1L)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val elementDB: ElementDao = mock()
         on(elementDB.get(ElementType.RELATION, 1L)).thenReturn(rel).thenThrow(IllegalStateException())
         // get rel 1 and verify the fetch function is called, but only once
@@ -101,7 +101,7 @@ internal class MapDataCacheTest {
         val p = p(0.0, 0.0)
         val geo = ElementPointGeometry(p)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val geometryDB: ElementGeometryDao = mock()
         on(geometryDB.get(ElementType.NODE, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
         // get node 2 and verify the fetch function is called, but only once
@@ -119,7 +119,7 @@ internal class MapDataCacheTest {
         val p = p(0.0, 0.0)
         val geo = ElementPolylinesGeometry(listOf(listOf(p)), p)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val geometryDB: ElementGeometryDao = mock()
         on(geometryDB.get(ElementType.WAY, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
         // get geo and verify the fetch function is called, but only once
@@ -134,7 +134,7 @@ internal class MapDataCacheTest {
         val p = p(0.0, 0.0)
         val geo = ElementPolygonsGeometry(listOf(listOf(p)), p)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val geometryDB: ElementGeometryDao = mock()
         on(geometryDB.get(ElementType.RELATION, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
         // get way 2 and verify the fetch function is called, but only once
@@ -153,7 +153,7 @@ internal class MapDataCacheTest {
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
         assertTrue(cache.getNodes(nodes.map { it.id }) { throw IllegalStateException() }.containsExactlyInAnyOrder(nodes))
@@ -168,7 +168,7 @@ internal class MapDataCacheTest {
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
         val nodeDB: NodeDao = mock()
@@ -184,7 +184,7 @@ internal class MapDataCacheTest {
         val node4 = node(4, LatLon(1.0, 1.0))
         val nodes = listOf(node1, node2, node3, node4)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes)
 
         val nodeDB: NodeDao = mock()
@@ -203,7 +203,7 @@ internal class MapDataCacheTest {
         val rel2 = rel(2)
         val elements = listOf(node1, way1, way2, way3, rel1, rel2)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(bbox = node1.position.enclosingTilePos(16).asBoundingBox(16))
         cache.update(updatedElements = elements)
 
@@ -220,7 +220,7 @@ internal class MapDataCacheTest {
         val elements = listOf(node1, way1, way2, way3, rel1, rel2)
         val cachedElements = listOf(way1, rel1)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = cachedElements)
         val keysNotInCache = elements.filterNot { it in cachedElements }.map { ElementKey(it.type, it.id) }.toHashSet()
 
@@ -244,7 +244,7 @@ internal class MapDataCacheTest {
         val rel2 = rel(2)
         val elements = listOf(node1, way1, way2, way3, rel1, rel2)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val keys = elements.map { ElementKey(it.type, it.id) }.toHashSet()
 
         val elementDB: ElementDao = mock()
@@ -269,7 +269,7 @@ internal class MapDataCacheTest {
         val nodeEntry = ElementGeometryEntry(ElementType.NODE, 1L, nodeGeo)
         val entries = listOf(entry1, entry2, nodeEntry)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(bbox = node.position.enclosingTilePos(16).asBoundingBox(16))
         cache.update(updatedElements = listOf(node), updatedGeometries = entries)
 
@@ -288,7 +288,7 @@ internal class MapDataCacheTest {
         val entries = listOf(entry1, entry2, nodeEntry)
         val cachedEntries = listOf(entry1)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedGeometries = cachedEntries)
         val keysNotInCache = entries.filterNot { it in cachedEntries }.map { ElementKey(it.elementType, it.elementId) }.toHashSet()
 
@@ -314,7 +314,7 @@ internal class MapDataCacheTest {
         val nodeEntry = ElementGeometryEntry(ElementType.NODE, 1L, nodeGeo)
         val entries = listOf(entry1, entry2, nodeEntry)
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val keys = entries.map { ElementKey(it.elementType, it.elementId) }.toHashSet()
 
         val geometryDB: ElementGeometryDao = mock()
@@ -330,7 +330,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update only puts nodes if tile is cached`() {
         val node = node(1, LatLon(0.0, 0.0))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         val nodeTile = node.position.enclosingTilePos(16)
         assertEquals(0, cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).size)
         // now we have nodeTile cached
@@ -359,7 +359,7 @@ internal class MapDataCacheTest {
         val nodeKey = ElementKey(ElementType.NODE, 1L)
         val wayKey = ElementKey(ElementType.WAY, 2L)
         val relationKey = ElementKey(ElementType.RELATION, 3L)
-        val cache = MapDataCache(16, 4, 10) { listOf(node) to emptyList() }
+        val cache = MapDataCache(16, 4, 10, { listOf(node) to emptyList() }, { emptyList() })
         cache.getMapDataWithGeometry(node.position.enclosingTilePos(16).asBoundingBox(16))
         cache.update(updatedElements = listOf(way, rel))
         assertTrue(
@@ -376,7 +376,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
         val way3 = way(3, nodes = listOf(3L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1, way2, way3))
         val wayDB: WayDao = mock()
         on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1, way2)).thenThrow(IllegalStateException())
@@ -396,7 +396,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
         val way3 = way(3, nodes = listOf(3L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, node3, way1, way2, way3), bbox = nodesRect.asBoundingBox(16))
 
         assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
@@ -413,7 +413,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
         val way3 = way(3, nodes = listOf(3L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, node3, way1, way2, way3), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
 
@@ -430,7 +430,7 @@ internal class MapDataCacheTest {
         assertTrue(nodesRect.size <= 4) // fits in cache
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, node3, way1, way2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
         assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
@@ -450,7 +450,7 @@ internal class MapDataCacheTest {
         assertTrue(nodesRect.size <= 4) // fits in cache
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, node3, way1, way2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
         assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
@@ -471,7 +471,7 @@ internal class MapDataCacheTest {
         assertTrue(nodesRect.size <= 4) // fits in cache
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, node3, way1, way2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
         assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
@@ -492,7 +492,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getRelationsForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(rel1)))
         assertTrue(cache.getRelationsForWay(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(rel2)))
@@ -511,7 +511,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.NODE, 1L, ""), RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel2)))
@@ -529,7 +529,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1)))
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel2)))
@@ -548,7 +548,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, ""), RelationMember(ElementType.WAY, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, ""), RelationMember(ElementType.NODE, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
@@ -576,7 +576,7 @@ internal class MapDataCacheTest {
         val outsideWay = way(4, nodes = listOf(4L, 5L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, ""), RelationMember(ElementType.WAY, 5L, "")))
         val outsideRel = rel(2, members = listOf(RelationMember(ElementType.NODE, 4L, ""), RelationMember(ElementType.WAY, 5L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes + ways + listOf(outsideNode, outsideWay, rel1, outsideRel), bbox = nodesRect.asBoundingBox(16))
 
         val expectedMapData = MutableMapDataWithGeometry(nodes + ways + rel1, emptyList())
@@ -603,7 +603,7 @@ internal class MapDataCacheTest {
         val nodeRectBbox = node.position.enclosingBoundingBox(0.1).asBoundingBoxOfEnclosingTiles(16)
 
         val way = way(1, nodes = listOf(1L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way, node), bbox = nodeRectBbox)
 
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1, "")))
@@ -622,7 +622,7 @@ internal class MapDataCacheTest {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
 
         // not empty
@@ -634,7 +634,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update doesn't create waysByNodeId entry if node is not in spatialCache`() {
         val way1 = way(1, nodes = listOf(1L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1))
 
         val wayDB: WayDao = mock()
@@ -655,7 +655,7 @@ internal class MapDataCacheTest {
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
         val way1 = way(1, nodes = listOf(1L, 2L))
@@ -667,7 +667,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update does add way to waysByNodeId entry if entry already exists`() {
         val way1 = way(1, nodes = listOf(1L, 2L))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1))
 
         val wayDB: WayDao = mock()
@@ -689,7 +689,7 @@ internal class MapDataCacheTest {
         val node2 = node(2)
         val way1 = way(1, nodes = listOf(1L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 2L, ""), RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1))
 
         val relationDB: RelationDao = mock()
@@ -709,7 +709,7 @@ internal class MapDataCacheTest {
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
 
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
         val way1 = way(1, nodes = listOf(1L, 2L))
@@ -722,7 +722,7 @@ internal class MapDataCacheTest {
 
     @Test fun `update does add way to relationsByElementKey entry if entry already exists`() {
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(rel1))
 
         val relationDB: RelationDao = mock()
@@ -754,7 +754,7 @@ internal class MapDataCacheTest {
         val elementsInsideBBox = listOf(node1, node2, node3, way1, way2, way3, rel1, rel2)
         val elementDB: ElementDao = mock()
         on(elementDB.getAll(nodesRect.asBoundingBox(16))).thenReturn(elementsInsideBBox)
-        val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
+        val cache = MapDataCache(16, 4, 10, { elementDB.getAll(it) to emptyList() }, { emptyList() })
 
         val expectedMapData = MutableMapDataWithGeometry().apply {
             listOf(node1, node2, node3).forEach { put(it, ElementPointGeometry(it.position)) }
@@ -784,7 +784,7 @@ internal class MapDataCacheTest {
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
         val elementDB: ElementDao = mock()
         on(elementDB.getAll(node1rect.asBoundingBox(16))).thenReturn(listOf(node1, node3, way2, way3, rel1))
-        val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
+        val cache = MapDataCache(16, 4, 10, { elementDB.getAll(it) to emptyList() }, { emptyList() })
 
         cache.update(updatedElements = listOf(node2, way1, rel2), bbox = node2rect.asBoundingBox(16))
 
@@ -816,7 +816,7 @@ internal class MapDataCacheTest {
         val outsideNode = node(4, LatLon(1.0, 1.0))
         val outsideWay = way(4)
         val outsideRel = rel(3)
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        val cache = getEmptyMapDataCache()
 
         cache.update(updatedElements = elementsInsideBBox + outsideNode + outsideWay + outsideRel, bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getMapDataWithGeometry(nodesBBox).toList().containsExactlyInAnyOrder(elementsInsideBBox))
@@ -830,7 +830,7 @@ internal class MapDataCacheTest {
         val rect2 = TilesRect(x, y + 1, x, y + 2).asBoundingBox(16)
         val node1 = node(1, LatLon(rect.min.latitude + 0.00001, rect.min.longitude + 0.00001)) // node in rect and rect2
         val node2 = node(2, LatLon(rect.max.latitude - 0.00001, rect.max.longitude - 0.00001)) // node in rect only
-        val cache = MapDataCache(16, 24, 10) {
+        val cache = MapDataCache(16, 24, 10, {
             val elements = when {
                 it == rect -> listOf(node1, node2) // may not be true if the bbox is extended because of the tilesRect issue (happens for x=2, y=5, but not for x=2, y=1)
                 rect.isCompletelyInside(it) -> listOf(node1, node2) // fix for above
@@ -838,7 +838,7 @@ internal class MapDataCacheTest {
                 else -> emptyList()
             }
             elements to emptyList()
-        }
+        }, { emptyList() })
         // fill cache
         assertTrue(cache.getMapDataWithGeometry(rect).toList().containsExactlyInAnyOrder(listOf(node1, node2)))
 
@@ -849,3 +849,5 @@ internal class MapDataCacheTest {
         assertTrue(cache.getMapDataWithGeometry(rect).toList().containsExactlyInAnyOrder(listOf(node1, node2)))
     }
 }
+
+private fun getEmptyMapDataCache() = MapDataCache(16, 4, 10, { emptyList<Element>() to emptyList() }, { emptyList() })
