@@ -201,7 +201,6 @@ abstract class AbstractOverlayForm :
             element?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
         )
 
-        binding.moreButton.isGone = assembleOtherAnswers().isEmpty()
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
         }
