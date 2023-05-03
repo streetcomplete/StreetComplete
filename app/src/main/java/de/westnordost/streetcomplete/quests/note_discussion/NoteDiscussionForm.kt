@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
@@ -87,10 +85,6 @@ class NoteDiscussionForm : AbstractQuestForm() {
         viewLifecycleScope.launch {
             val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
             inflateNoteDiscussion(comments)
-        }
-
-        if (savedInstanceState == null) {
-            childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
     }
 
