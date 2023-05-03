@@ -347,30 +347,6 @@ internal class MapDataCacheTest {
         verify(geometryDB).getAllEntries(listOf(ElementKey(node1.type, node1.id)))
     }
 
-    @Test fun `update only puts nodes if tile is cached`() {
-        val node = node(1, LatLon(0.0, 0.0))
-        val cache = getEmptyMapDataCache()
-        val nodeTile = node.position.enclosingTilePos(16)
-        assertEquals(0, cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).size)
-        // now we have nodeTile cached
-        cache.update(updatedElements = listOf(node))
-        assertTrue(cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).nodes.containsExactlyInAnyOrder(listOf(node)))
-        assertEquals(node, cache.getElement(ElementType.NODE, 1L) { _, _ -> null })
-
-        val otherNode = node(2, LatLon(0.0, 1.0))
-        val otherNodeTile = otherNode.position.enclosingTilePos(16)
-        cache.update(updatedElements = listOf(otherNode))
-        assertNull(cache.getElement(ElementType.NODE, 2L) { _, _ -> null })
-        assertTrue(cache.getMapDataWithGeometry(otherNodeTile.asBoundingBox(16)).nodes.isEmpty())
-
-        val movedNode = node(1, LatLon(1.0, 0.0))
-        val movedNodeTile = movedNode.position.enclosingTilePos(16)
-        cache.update(updatedElements = listOf(movedNode))
-        assertNull(cache.getElement(ElementType.NODE, 1L) { _, _ -> null })
-        assertTrue(cache.getMapDataWithGeometry(movedNodeTile.asBoundingBox(16)).nodes.isEmpty())
-        assertTrue(cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).nodes.isEmpty())
-    }
-
     @Test fun `update removes elements`() {
         val node = node(1, LatLon(0.0, 0.0))
         val way = way(2)
@@ -579,6 +555,38 @@ internal class MapDataCacheTest {
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1updated)))
     }
 
+    @Test fun `cache returns nodes outside the BBox if part of ways`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodes = listOf(node1, node2, node3)
+        val outsideNode = node(4, LatLon(1.0, 1.0))
+        val fullyOutsideNode = node(5, LatLon(2.0, 2.0))
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L, 4L))
+        val ways = listOf(way1, way2, way3)
+        val outsideWay = way(4, nodes = listOf(4L, 5L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, ""), RelationMember(ElementType.WAY, 5L, "")))
+        val outsideRel = rel(2, members = listOf(RelationMember(ElementType.NODE, 4L, ""), RelationMember(ElementType.WAY, 5L, "")))
+        val cache = getEmptyMapDataCache()
+        cache.update(updatedElements = nodes + ways + listOf(outsideNode, fullyOutsideNode, outsideWay, rel1, outsideRel), bbox = nodesRect.asBoundingBox(16))
+
+        // outsideNode is expected because it's part of returned way1
+        val expectedMapData = MutableMapDataWithGeometry(nodes + ways + rel1 + outsideNode, emptyList())
+        // node geometries get created when getting the data
+        nodes.forEach { expectedMapData.putGeometry(it.type, it.id, ElementPointGeometry(it.position)) }
+        expectedMapData.putGeometry(outsideNode.type, outsideNode.id, ElementPointGeometry(outsideNode.position))
+        // way and relation geometries are also put, though null
+        ways.forEach { expectedMapData.putGeometry(it.type, it.id, null) }
+        expectedMapData.putGeometry(rel1.type, rel1.id, null)
+        expectedMapData.boundingBox = nodesRect.asBoundingBox(16)
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesRect.asBoundingBox(16)))
+    }
+
     @Test fun `trim removes everything not referenced by spatialCache`() {
         val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
@@ -598,22 +606,26 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes + ways + listOf(outsideNode, outsideWay, rel1, outsideRel), bbox = nodesRect.asBoundingBox(16))
 
-        val expectedMapData = MutableMapDataWithGeometry(nodes + ways + rel1, emptyList())
+        // outsideNode is expected because it's part of returned way1
+        val expectedMapData = MutableMapDataWithGeometry(nodes + ways + rel1 + outsideNode, emptyList())
         // node geometries get created when getting the data
         nodes.forEach { expectedMapData.putGeometry(it.type, it.id, ElementPointGeometry(it.position)) }
+        expectedMapData.putGeometry(outsideNode.type, outsideNode.id, ElementPointGeometry(outsideNode.position))
         // way and relation geometries are also put, though null
         ways.forEach { expectedMapData.putGeometry(it.type, it.id, null) }
         expectedMapData.putGeometry(rel1.type, rel1.id, null)
         expectedMapData.boundingBox = nodesRect.asBoundingBox(16)
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesRect.asBoundingBox(16)))
 
-        assertEquals(null, cache.getElement(ElementType.NODE, 4L) { _, _ -> null }) // node not in spatialCache
+        assertEquals(outsideNode, cache.getElement(ElementType.NODE, 4L) { _, _ -> null }) // node in nodeCache
         assertEquals(outsideWay, cache.getElement(ElementType.WAY, 4L) { _, _ -> null })
         assertEquals(outsideRel, cache.getElement(ElementType.RELATION, 2L) { _, _ -> null })
         cache.trim(4)
-        // outside way and relation removed
+        // outside node, way and relation removed
+        assertEquals(null, cache.getElement(ElementType.NODE, 4L) { _, _ -> null })
         assertEquals(null, cache.getElement(ElementType.WAY, 4L) { _, _ -> null })
         assertEquals(null, cache.getElement(ElementType.RELATION, 2L) { _, _ -> null })
+        // but relation partially in spatial cache area is not removed
         assertEquals(rel1, cache.getElement(ElementType.RELATION, 1L) { _, _ -> null })
     }
 
