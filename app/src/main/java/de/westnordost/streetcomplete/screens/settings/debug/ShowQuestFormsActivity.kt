@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,15 +65,20 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
         binding.toolbarLayout.toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
-        binding.toolbarLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
+        binding.toolbarLayout.toolbar.setNavigationOnClickListener { finish() }
         binding.toolbarLayout.toolbar.title = "Show Quest Forms"
 
-        binding.questFormContainer.setOnClickListener { onBackPressed() }
+        binding.questFormContainer.setOnClickListener { popQuestForm() }
 
         binding.showQuestFormsList.apply {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(context)
             adapter = showQuestFormAdapter
+        }
+
+        updateContainerVisibility()
+        supportFragmentManager.addOnBackStackChangedListener {
+            updateContainerVisibility()
         }
     }
 
@@ -84,19 +90,14 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         )
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            popQuestForm()
-        } else {
-            super.onBackPressed()
-        }
-    }
-
     private fun popQuestForm() {
         binding.questFormContainer.visibility = View.GONE
         supportFragmentManager.popBackStack()
         currentQuestType = null
+    }
+
+    private fun updateContainerVisibility() {
+        binding.questFormContainer.isGone = supportFragmentManager.findFragmentById(R.id.questForm) == null
     }
 
     inner class ShowQuestFormAdapter : ListAdapter<QuestType>() {

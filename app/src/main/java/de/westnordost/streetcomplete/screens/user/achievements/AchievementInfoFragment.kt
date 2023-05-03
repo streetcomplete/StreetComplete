@@ -12,6 +12,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import androidx.activity.OnBackPressedCallback
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -19,7 +20,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.user.links.LinksAdapter
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.viewBinding
@@ -43,22 +43,23 @@ import de.westnordost.streetcomplete.view.applyTransforms
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment :
-    Fragment(R.layout.fragment_achievement_info),
-    HandlesOnBackPressed {
+class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
 
     private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
 
     /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
 
-    var isShowing: Boolean = false
-        private set
-
     private var animatorsPlayer: ViewPropertyAnimatorsPlayer? = null
     private var shineAnimation: TimeAnimator? = null
 
     private val layoutTransition: LayoutTransition = LayoutTransition()
+
+    private val backPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            dismiss()
+        }
+    }
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
@@ -75,14 +76,7 @@ class AchievementInfoFragment :
         binding.unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
             override fun canScrollVertically() = false
         }
-    }
-
-    override fun onBackPressed(): Boolean {
-        if (isShowing) {
-            dismiss()
-            return true
-        }
-        return false
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
     override fun onDestroyView() {
@@ -98,7 +92,7 @@ class AchievementInfoFragment :
     /** Show as details of a tapped view */
     fun show(achievement: Achievement, level: Int, achievementBubbleView: View): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = true
+        backPressedCallback.isEnabled = true
         this.achievementIconBubble = achievementBubbleView
 
         bind(achievement, level, false)
@@ -109,7 +103,7 @@ class AchievementInfoFragment :
     /** Show as new achievement achieved/unlocked */
     fun showNew(achievement: Achievement, level: Int): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = true
+        backPressedCallback.isEnabled = true
 
         bind(achievement, level, true)
         animateIn()
@@ -118,7 +112,7 @@ class AchievementInfoFragment :
 
     fun dismiss(): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = false
+        backPressedCallback.isEnabled = false
         animateOut(achievementIconBubble)
         return true
     }

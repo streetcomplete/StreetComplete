@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.upload
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
-    private val downloadedTilesDB: DownloadedTilesDao,
+    private val downloadedTilesController: DownloadedTilesController,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex
@@ -69,7 +69,7 @@ class Uploader(
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
         val tile = pos.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-        downloadedTilesDB.remove(tile)
+        downloadedTilesController.invalidate(tile)
     }
 
     companion object {

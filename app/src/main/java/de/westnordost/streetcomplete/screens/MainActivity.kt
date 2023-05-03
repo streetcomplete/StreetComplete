@@ -198,23 +198,6 @@ class MainActivity :
         uploadController.showNotification = false
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (!forwardBackPressedToChildren()) super.onBackPressed()
-    }
-
-    private fun forwardBackPressedToChildren(): Boolean {
-        val messagesContainerFragment = messagesContainerFragment
-        if (messagesContainerFragment != null) {
-            if (messagesContainerFragment.onBackPressed()) return true
-        }
-        val mainFragment = mainFragment
-        if (mainFragment != null) {
-            if (mainFragment.onBackPressed()) return true
-        }
-        return false
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val mainFragment = mainFragment
         if (event.keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
