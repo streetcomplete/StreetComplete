@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
+import de.westnordost.streetcomplete.util.math.contains
 
 /**
  * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
@@ -373,6 +374,8 @@ class MapDataCache(
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
 
+            // get(bbox) for tiles not in spatialCache calls spatialCache.fetch, but this is still
+            // safe as tiles are replaced and properly filled as part of the following update
             nodes = HashSet<Node>(spatialCache.get(bbox))
             update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
 
@@ -383,8 +386,13 @@ class MapDataCache(
                 return result
             }
 
-            // get nodes again, this contains the newly added nodes, but maybe not the old ones if cache was trimmed
-            nodes.addAll(spatialCache.get(bbox))
+            // add newly fetched nodes from elements
+            // getting nodes from spatialCache can cause issues, as tiles in the bbox may now be removed unexpectedly
+            // see https://github.com/streetcomplete/StreetComplete/issues/4980#issuecomment-1531960544
+            for (element in elements) {
+                if (element !is Node) continue
+                if (element.position in bbox) nodes.add(element)
+            }
         } else {
             nodes = spatialCache.get(bbox)
         }
@@ -393,7 +401,7 @@ class MapDataCache(
         val relationIds = HashSet<Long>(nodes.size / 10)
         for (node in nodes) {
             wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
-            relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
+            relationIdsByElementKeyCache[node.key]?.let { relationIds.addAll(it) }
             result.put(node, ElementPointGeometry(node.position))
         }
         for (wayId in wayIds) {
@@ -406,7 +414,7 @@ class MapDataCache(
         }
 
         // trim if we fetched new data, and spatialCache is full
-        // trim to 90%, so trim is (probably) not immediately called on next fetch
+        // trim to 66%, so trim is (probably) not immediately called on next fetch
         if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
             trim((maxTiles * 2) / 3)
         }
