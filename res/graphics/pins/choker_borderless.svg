@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="32" height="32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
- <path d="m5.9998 10.985c1.8e-4 -4.9847 20-4.9847 20 0.01535v4.0004h-20l5.5e-4 -3.985c-3.9e-5 -0.01028-0.0011-0.02051-0.0011-0.03074z" fill="#80684c"/>
- <path d="m0 0v4l8 8v8l-8 8v4h32v-4l-8-8v-8l8-8v-4z" fill="#999"/>
- <path d="m1 0v4c1 2 6 7 8 8v8c-2 1-7 6-8 8v4m30 0v-4c-1-2-6-7-8-8v-8c2-1 7-6 8-8v-4" fill="none" stroke="#777" stroke-linejoin="round" stroke-width="2"/>
- <path d="m6 11c0 2.5447 4 4 10 4v9c-6 0-10-2.4553-10-5z" fill="#a58868"/>
- <path d="m16 15v8.9998c6 0 9.9808-2.4553 10-5l0.048-8c2e-6 2.5447-4.048 4.0002-10.048 4.0002z" fill="#947859"/>
- <rect x="11" y="15" width="10" height="8" rx="2" ry="2" fill="none" stroke="#ccc" stroke-width="2"/>
- <circle cx="16" cy="19" r="2" fill="#80684d"/>
- <path d="m22 19h-6" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+ <g transform="matrix(.25 0 0 .25 .1089 0)">
+  <path d="m28 56.836c4.72e-4 -13.085 72-13.085 72 0.04029v10.501h-72l0.0014-10.461c-1.03e-4 -0.02699-0.0029-0.05384-0.0029-0.08069z" fill="#80684c" stroke-width="2.625"/>
+  <path d="m20 0v32l16 16v32l-16 16v32h88v-32l-16-16v-32l16-16v-32z" color="#000000" fill="#999" style="-inkscape-stroke:none"/>
+  <path d="m111.56 128v-33.656l-16-16v-28.688l16-16v-33.656h-8v30.344l-16 16v35.312l16 16v30.344zm-96-128v33.656l16 16v28.688l-16 16v33.656h8v-30.344l16-16v-35.312l-16-16v-30.344z" color="#000000" fill="#777" style="-inkscape-stroke:none"/>
+  <path d="m28 56.062c0 6.6798 20 10 36 10v24c-16 0-36-3.4452-36-10.125z" fill="#a58868" stroke-width="2.625"/>
+  <path d="m64 66.063v24c16 0 35.887-3.4457 35.937-10.126l0.126-23.874c1e-5 6.6798-20.063 10-36.063 10z" fill="#947859" stroke-width="2.625"/>
+  <rect x="48" y="60" width="32" height="36" rx="5.2046" ry="4" fill="none" stroke="#ccc" stroke-width="8"/>
+  <circle cx="64" cy="78" r="7" fill="#80684d" stroke-width="1.1667"/>
+  <path d="m84 78h-20" fill="none" stroke="#aaa" stroke-linecap="round" stroke-width="6"/>
+ </g>
 </svg>

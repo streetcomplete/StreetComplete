@@ -445,7 +445,9 @@ class MainFragment :
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
-    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+    override val metersPerPixel: Double? get() = mapFragment?.getMetersPerPixel()
+
+    override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
         closeBottomSheet()
     }
@@ -468,6 +470,9 @@ class MainFragment :
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
         closeBottomSheet()
     }
+
+    override fun getPointOf(pos: LatLon): PointF? =
+        mapFragment?.getPointOf(pos)
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 

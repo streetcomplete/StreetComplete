@@ -156,9 +156,7 @@ class StyleableOverlayManager(
         synchronized(mapDataInView) {
             mapDataInView.clear()
             createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
-                if (styledElement != null) {
-                    mapDataInView[key] = styledElement
-                }
+                mapDataInView[key] = styledElement
             }
             if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
@@ -168,18 +166,30 @@ class StyleableOverlayManager(
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val layer = overlay ?: return
+        val overlay = overlay ?: return
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         var changedAnything = false
         synchronized(mapDataInView) {
-            createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
-                if (styledElement != null) mapDataInView[key] = styledElement
-                else                       mapDataInView.remove(key)
-                if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
+            deleted.forEach {
+                if (mapDataInView.remove(it) != null) {
                     changedAnything = true
                 }
             }
-            deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
+            val styledElementsByKey = createStyledElementsByKey(overlay, updated).toMap()
+            // for elements that used to be displayed in the overlay but now not anymore
+            updated.forEach {
+                if (!styledElementsByKey.containsKey(it.key)) {
+                    mapDataInView.remove(it.key)
+                    changedAnything = true
+                }
+            }
+            styledElementsByKey.forEach { (key, styledElement) ->
+                mapDataInView[key] = styledElement
+                if (!changedAnything && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
+                    changedAnything = true
+                }
+            }
+
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
                 ctrl.requestRender()
@@ -187,11 +197,14 @@ class StyleableOverlayManager(
         }
     }
 
-    private fun createStyledElementsByKey(overlay: Overlay, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
-        overlay.getStyledElements(mapData).map { (element, style) ->
+    private fun createStyledElementsByKey(
+        overlay: Overlay,
+        mapData: MapDataWithGeometry
+    ): Sequence<Pair<ElementKey, StyledElement>> =
+        overlay.getStyledElements(mapData).mapNotNull { (element, style) ->
             val key = element.key
-            val geometry = mapData.getGeometry(element.type, element.id)
-            key to geometry?.let { StyledElement(element, geometry, style) }
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@mapNotNull null
+            key to StyledElement(element, geometry, style)
         }
 
     companion object {

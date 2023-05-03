@@ -153,9 +153,9 @@ class SplitWayFragment :
         if (splits.size <= 2 || confirmManySplits()) {
             val location = listOfNotNull(listener?.displayedMapLocation)
             if (checkIsSurvey(requireContext(), geometry, location)) {
-                val action = SplitWayAction(ArrayList(splits.map { it.first }))
+                val action = SplitWayAction(way, ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
-                    elementEditsController.add(editType, way, geometry, "survey", action)
+                    elementEditsController.add(editType, geometry, "survey", action)
                 }
                 listener?.onSplittedWay(editType, way, geometry)
                 return

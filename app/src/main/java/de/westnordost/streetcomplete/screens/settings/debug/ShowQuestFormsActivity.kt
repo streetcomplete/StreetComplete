@@ -150,7 +150,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         f.addElementEditsController = object : AddElementEditsController {
             override fun add(
                 type: ElementEditType,
-                element: Element,
                 geometry: ElementGeometry,
                 source: String,
                 action: ElementEditAction,
@@ -182,7 +181,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             longitude = pos.longitude
         }
 
-    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+    override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
         popQuestForm()
     }
 

@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.createNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -25,6 +27,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAnd
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -40,6 +43,7 @@ class StreetParkingOverlay : Overlay {
     override val changesetComment = "Specify whether there is street parking and what kind"
     override val wikiLink: String = "Key:parking:lane"
     override val achievements = listOf(CAR)
+    override val isCreateNodeEnabled = true
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
         // roads
@@ -53,13 +57,20 @@ class StreetParkingOverlay : Overlay {
             amenity = parking
         """).map { it to if (it is Node) parkingLotPointStyle else parkingLotAreaStyle } +
         // chokers
-        mapData.filter(
-            "nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table"
-        ).map { it to chokerStyle }
+        mapData.filter("""
+            nodes with
+            traffic_calming ~ "(choker|chicane|island|choked_.*)"
+            or crossing:island = yes
+        """).mapNotNull {
+            val style = getNarrowingTrafficCalmingStyle(it)
+            if (style != null) it to style else null
+        }
 
-    override fun createForm(element: Element?) =
+    override fun createForm(element: Element?): AbstractOverlayForm? =
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
+        } else if (element == null || createNarrowingTrafficCalming(element.tags) != null) {
+            LaneNarrowingTrafficCalmingForm()
         } else {
             null
         }
@@ -77,8 +88,15 @@ private val streetParkingTaggingNotExpected by lazy { """
 
 private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
 private val parkingLotPointStyle = PointStyle("ic_pin_parking_borderless")
-
 private val chokerStyle = PointStyle("ic_pin_choker_borderless")
+private val islandStyle = PointStyle("ic_pin_island_borderless")
+
+private fun getNarrowingTrafficCalmingStyle(element: Element): Style? =
+    when (createNarrowingTrafficCalming(element.tags)) {
+        LaneNarrowingTrafficCalming.ISLAND -> islandStyle
+        null -> null
+        else -> chokerStyle
+    }
 
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)

@@ -10,6 +10,15 @@ interface ElementEditsSource {
         fun onDeletedEdits(edits: List<ElementEdit>)
     }
 
+    /** Get an edit by its id */
+    fun get(id: Long): ElementEdit?
+
+    /** Get all edits (synced and unsynced) */
+    fun getAll(): List<ElementEdit>
+
+    /** Get all unsynced edits */
+    fun getAllUnsynced(): List<ElementEdit>
+
     /** Count of unsynced edits that count towards the statistics. That is, reverts of edits
      *  count negative */
     fun getPositiveUnsyncedCount(): Int

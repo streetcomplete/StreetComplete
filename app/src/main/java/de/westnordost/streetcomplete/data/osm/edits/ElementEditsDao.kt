@@ -4,9 +4,6 @@ import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.CREATED_TIMESTAMP
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT_ID
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.GEOMETRY
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.IS_SYNCED
@@ -24,7 +21,7 @@ import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -52,24 +49,18 @@ class ElementEditsDao(
                 subclass(RevertCreateNodeAction::class)
                 subclass(MoveNodeAction::class)
                 subclass(RevertMoveNodeAction::class)
+                subclass(CreateNodeFromVertexAction::class)
             }
         }
     }
 
-    fun add(edit: ElementEdit) {
+    fun put(edit: ElementEdit) {
         val rowId = db.insert(NAME, edit.toPairs())
         edit.id = rowId
     }
 
     fun get(id: Long): ElementEdit? =
         db.queryOne(NAME, where = "$ID = $id") { it.toElementEdit() }
-
-    fun getByElement(elementType: ElementType, elementId: Long): List<ElementEdit> =
-        db.query(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(elementType.name, elementId),
-            orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP"
-        ) { it.toElementEdit() }
 
     fun getOldestUnsynced(): ElementEdit? =
         db.queryOne(NAME,
@@ -103,27 +94,8 @@ class ElementEditsDao(
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
-    fun updateElementId(id: Long, newElementId: Long): Int =
-        db.update(
-            NAME,
-            values = listOf(ELEMENT_ID to newElementId),
-            where = "$ID = ?",
-            args = arrayOf(id)
-        )
-
-    fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
-        db.update(
-            NAME,
-            values = listOf(ELEMENT_ID to newElementId),
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(elementType.name, oldElementId)
-        )
-
     private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOf(
         QUEST_TYPE to type.name,
-        ELEMENT_TYPE to elementType.name,
-        ELEMENT_ID to elementId,
-        ELEMENT to json.encodeToString(originalElement),
         GEOMETRY to json.encodeToString(originalGeometry),
         SOURCE to source,
         LATITUDE to position.latitude,
@@ -137,9 +109,6 @@ class ElementEditsDao(
         getLong(ID),
         questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
             ?: overlayRegistry.getByName(getString(QUEST_TYPE))!!,
-        ElementType.valueOf(getString(ELEMENT_TYPE)),
-        getLong(ELEMENT_ID),
-        json.decodeFromString(getString(ELEMENT)),
         json.decodeFromString(getString(GEOMETRY)),
         getString(SOURCE),
         getLong(CREATED_TIMESTAMP),

@@ -175,32 +175,34 @@ class MapDataWithEditsSource internal constructor(
 
         override fun onDeletedEdits(edits: List<ElementEdit>) {
             val mapData = MutableMapDataWithGeometry()
-            val elementsToDelete: MutableList<ElementKey>
+            val deletedElementKeys: MutableList<ElementKey>
             synchronized(this) {
                 rebuildLocalChanges()
 
-                elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
+                deletedElementKeys = edits
+                    .flatMap { elementEditsController.getIdProvider(it.id).getAll() }
+                    .toMutableList()
 
-                for (edit in edits) {
-                    val element = get(edit.elementType, edit.elementId)
+                val editedElementKeys = edits.flatMap { it.action.elementKeys }.toSet()
+
+                for (key in editedElementKeys) {
+                    val element = get(key.type, key.id)
                     if (element != null) {
-                        mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                        mapData.put(element, getGeometry(key.type, key.id))
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-                        elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                        deletedElementKeys.add(key)
                     }
+                }
 
-                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-                        val waysContainingNode = getWaysForNode(edit.elementId)
-                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-                        for (elem in waysContainingNode + affectedRelations) {
-                            mapData.put(elem, getGeometry(elem.type, elem.id))
-                        }
+                for (edit in edits) {
+                    for (element in getElementsWithChangedGeometry(edit)) {
+                        mapData.put(element, getGeometry(element.type, element.id))
                     }
                 }
             }
 
-            callOnUpdated(updated = mapData, deleted = elementsToDelete)
+            callOnUpdated(updated = mapData, deleted = deletedElementKeys)
         }
     }
 
@@ -210,7 +212,7 @@ class MapDataWithEditsSource internal constructor(
         elementEditsController.addListener(elementEditsListener)
     }
 
-    fun get(type: ElementType, id: Long): Element? = synchronized(this) {
+    override fun get(type: ElementType, id: Long): Element? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -414,11 +416,10 @@ class MapDataWithEditsSource internal constructor(
 
     private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
         val idProvider = elementEditsController.getIdProvider(edit.id)
-        val editElement = get(edit.elementType, edit.elementId)
 
         val mapDataChanges: MapDataChanges
         try {
-            mapDataChanges = edit.action.createUpdates(edit.originalElement, editElement, this, idProvider)
+            mapDataChanges = edit.action.createUpdates(this, idProvider)
         } catch (e: ConflictException) {
             return null
         }
@@ -432,7 +433,11 @@ class MapDataWithEditsSource internal constructor(
         /* sorting by element type: first nodes, then ways, then relations. This is important
            because the geometry of (new) nodes is necessary to create the geometry of ways etc
          */
-        val updates = (mapDataChanges.creations + mapDataChanges.modifications).sortedBy { it.type.ordinal }
+        val updates = (
+            mapDataChanges.creations +
+            mapDataChanges.modifications +
+            getElementsWithChangedGeometry(edit)
+        ).sortedBy { it.type.ordinal }
 
         for (element in updates) {
             val key = element.key
@@ -441,20 +446,24 @@ class MapDataWithEditsSource internal constructor(
             updatedGeometries[key] = createGeometry(element)
         }
 
-        // get affected ways and relations and update geometries if a node was moved
-        val elementsWithChangedGeometry = mutableListOf<Element>()
-        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-            val waysContainingNode = getWaysForNode(edit.elementId)
-            val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-            for (element in waysContainingNode + affectedRelations) {
-                val key = element.key
-                deletedElements.remove(key)
-                updatedElements[key] = element
-                updatedGeometries[key] = createGeometry(element)
-                elementsWithChangedGeometry.add(element) // questController needs to know that element was affected (though it was not updated in OSM sense)
-            }
+        return MapDataUpdates(updated = updates, deleted = deletedKeys)
+    }
+
+    private fun getElementsWithChangedGeometry(edit: ElementEdit): Sequence<Element> {
+        val movedNode = when (edit.action) {
+            is MoveNodeAction -> edit.action.originalNode
+            is RevertMoveNodeAction -> edit.action.originalNode
+            else -> return emptySequence()
         }
-        return MapDataUpdates(updated = updates + elementsWithChangedGeometry, deleted = deletedKeys)
+        return sequence {
+            val waysContainingNode = getWaysForNode(movedNode.id)
+            val relationsContainingNode = getRelationsForNode(movedNode.id)
+            val relationsContainingWayContainingNode = waysContainingNode.flatMap { getRelationsForWay(it.id) }
+
+            yieldAll(waysContainingNode)
+            yieldAll(relationsContainingNode)
+            yieldAll(relationsContainingWayContainingNode)
+        }
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
