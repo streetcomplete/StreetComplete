@@ -16,64 +16,74 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun putGetOne() {
-        dao.put(r(5, 8, 5, 8), "Huhu")
-        val huhus = dao.get(r(5, 8, 5, 8), 0)
+        dao.put(r(5, 8, 5, 8))
 
-        assertEquals(1, huhus.size)
-        assertTrue(huhus.contains("Huhu"))
+        assertTrue(dao.contains(r(5, 8, 5, 8), 0))
+
+        assertEquals(
+            listOf(TilePos(5, 8)),
+            dao.getAll(0)
+        )
     }
 
     @Test fun putGetOld() {
-        dao.put(r(5, 8, 5, 8), "Huhu")
-        val huhus = dao.get(r(5, 8, 5, 8), nowAsEpochMilliseconds() + 1000)
-        assertTrue(huhus.isEmpty())
+        dao.put(r(5, 8, 5, 8))
+        val then = nowAsEpochMilliseconds() + 1000
+        assertFalse(dao.contains(r(5, 8, 5, 8), then))
+        assertTrue(dao.getAll(then).isEmpty())
     }
 
     @Test fun putSomeOld() {
-        dao.put(r(0, 0, 1, 3), "Huhu")
+        dao.put(r(0, 0, 1, 3))
         Thread.sleep(2000)
-        dao.put(r(1, 3, 5, 5), "Huhu")
-        val huhus = dao.get(r(0, 0, 2, 2), nowAsEpochMilliseconds() - 1000)
-        assertTrue(huhus.isEmpty())
+        dao.put(r(2, 0, 5, 5))
+        val before = nowAsEpochMilliseconds() - 1000
+        assertFalse(dao.contains(r(0, 0, 2, 2), before))
+        assertEquals(24, dao.getAll(before).size)
     }
 
     @Test fun putMoreGetOne() {
-        dao.put(r(5, 8, 6, 10), "Huhu")
-        assertFalse(dao.get(r(5, 8, 5, 8), 0).isEmpty())
-        assertFalse(dao.get(r(6, 10, 6, 10), 0).isEmpty())
+        dao.put(r(5, 8, 6, 10))
+        assertTrue(dao.contains(r(5, 8, 5, 8), 0))
+        assertTrue(dao.contains(r(6, 10, 6, 10), 0))
+        assertEquals(6, dao.getAll(0).size)
     }
 
     @Test fun putOneGetMore() {
-        dao.put(r(5, 8, 5, 8), "Huhu")
-        assertTrue(dao.get(r(5, 8, 5, 9), 0).isEmpty())
+        dao.put(r(5, 8, 5, 8))
+        assertFalse(dao.contains(r(5, 8, 5, 9), 0))
     }
 
     @Test fun remove() {
-        dao.put(r(0, 0, 3, 3), "Huhu")
-        dao.put(r(0, 0, 0, 0), "Haha")
-        dao.put(r(1, 1, 3, 3), "Hihi")
-        assertEquals(2, dao.remove(TilePos(0, 0))) // removes huhu, haha at 0,0
+        dao.put(r(0, 0, 3, 3))
+        assertEquals(1, dao.delete(TilePos(0, 0)))
     }
 
-    @Test fun putSeveralQuestTypes() {
-        dao.put(r(0, 0, 5, 5), "Huhu")
-        dao.put(r(4, 4, 6, 6), "hoho")
-        dao.put(r(4, 0, 4, 7), "hihi")
+    @Test fun putRemoveAll() {
+        dao.put(r(0, 0, 3, 3))
+        dao.deleteAll()
+        assertTrue(dao.getAll(0).isEmpty())
+    }
 
-        var check = dao.get(r(0, 0, 2, 2), 0)
-        assertEquals(1, check.size)
-        assertTrue(check.contains("Huhu"))
+    @Test fun updateTime() {
+        dao.put(r(0, 0, 0, 1))
+        dao.updateTime(TilePos(0, 0), 0)
+        assertEquals(
+            listOf(TilePos(0, 1)),
+            dao.getAll(1)
+        )
+    }
 
-        check = dao.get(r(4, 4, 4, 4), 0)
-        assertEquals(3, check.size)
+    @Test fun updateAllTimes() {
+        dao.put(r(0, 0, 0, 1))
+        dao.updateAllTimes(0)
+        assertTrue(dao.getAll(1).isEmpty())
+    }
 
-        check = dao.get(r(5, 5, 5, 5), 0)
-        assertEquals(2, check.size)
-        assertTrue(check.contains("hoho"))
-        assertTrue(check.contains("Huhu"))
-
-        check = dao.get(r(0, 0, 6, 6), 0)
-        assertTrue(check.isEmpty())
+    @Test fun deleteOlderThan() {
+        dao.put(r(0, 0, 1, 0))
+        dao.updateTime(TilePos(0, 0), 1)
+        assertEquals(1, dao.deleteOlderThan(2))
     }
 
     private fun r(left: Int, top: Int, right: Int, bottom: Int) = TilesRect(left, top, right, bottom)

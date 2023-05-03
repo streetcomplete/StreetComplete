@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -56,7 +56,7 @@ class SettingsFragment :
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val prefs: SharedPreferences by inject()
-    private val downloadedTilesDao: DownloadedTilesDao by inject()
+    private val downloadedTilesController: DownloadedTilesController by inject()
     private val noteController: NoteController by inject()
     private val mapDataController: MapDataController by inject()
     private val osmQuestController: OsmQuestController by inject()
@@ -236,7 +236,7 @@ class SettingsFragment :
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         context?.externalCacheDir?.purge()
-        downloadedTilesDao.removeAll()
+        downloadedTilesController.clear()
         mapDataController.clear()
         noteController.clear()
     }
