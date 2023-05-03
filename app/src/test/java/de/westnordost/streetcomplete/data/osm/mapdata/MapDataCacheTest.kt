@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.Mockito.verifyNoMoreInteractions
 
 internal class MapDataCacheTest {
@@ -56,7 +57,7 @@ internal class MapDataCacheTest {
         assertEquals(geo, cache.getGeometry(ElementType.RELATION, 1L) { type, id -> geometryDB.get(type, id) })
     }
 
-    @Test fun `getElement fetches node if not in spatialCache`() {
+    @Test fun `getElement also caches node if not in spatialCache`() {
         val node = node(1)
         val cache = getEmptyMapDataCache()
         val elementDB: ElementDao = mock()
@@ -64,11 +65,11 @@ internal class MapDataCacheTest {
         assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB.get(type, id) })
         verify(elementDB).get(ElementType.NODE, 1L)
 
-        // getting a second time fetches again
+        // getting a second time does not fetches again
         val elementDB2: ElementDao = mock()
         on(elementDB2.get(ElementType.NODE, 1L)).thenReturn(node).thenReturn(null)
         assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB2.get(type, id) })
-        verify(elementDB2).get(ElementType.NODE, 1L)
+        verifyNoInteractions(elementDB2)
     }
 
     @Test fun `getElement fetches and caches way`() {
@@ -163,8 +164,10 @@ internal class MapDataCacheTest {
         val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val node3 = node(3, LatLon(0.0002, 0.0002))
-        val outsideNode = node(4, LatLon(1.0, 1.0))
+        val outsideNode = node(4, LatLon(1.0, 1.0)) // will be put to nodeCache
+        val uncachedNode = node(5, LatLon(1.0, 1.0)) // not in update, so needs to be fetched from DB
         val nodes = listOf(node1, node2, node3, outsideNode)
+        val allNodes = nodes + uncachedNode
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
 
@@ -172,12 +175,12 @@ internal class MapDataCacheTest {
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
         val nodeDB: NodeDao = mock()
-        on(nodeDB.getAll(listOf(outsideNode.id))).thenReturn(listOf(outsideNode))
-        assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it) }.containsExactlyInAnyOrder(nodes))
-        verify(nodeDB).getAll(listOf(outsideNode.id))
+        on(nodeDB.getAll(listOf(uncachedNode.id))).thenReturn(listOf(uncachedNode))
+        assertTrue(cache.getNodes(allNodes.map { it.id }) { nodeDB.getAll(it) }.containsExactlyInAnyOrder(allNodes))
+        verify(nodeDB).getAll(listOf(uncachedNode.id))
     }
 
-    @Test fun `getNodes fetches all nodes if none are cached`() {
+    @Test fun `getNodes does not fetch cached nodes`() {
         val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val node3 = node(3, LatLon(0.0002, 0.0002))
@@ -188,9 +191,25 @@ internal class MapDataCacheTest {
         cache.update(updatedElements = nodes)
 
         val nodeDB: NodeDao = mock()
-        val nodeIds = nodes.map { it.id }.toHashSet() // use hashSet to avoid issues with order
+        assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it) }.containsExactlyInAnyOrder(nodes))
+        verifyNoInteractions(nodeDB)
+    }
+
+    @Test fun `getNodes fetches formerly cached nodes outside spatial cache after trim`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val node4 = node(4, LatLon(1.0, 1.0))
+        val nodes = listOf(node1, node2, node3, node4)
+
+        val cache = getEmptyMapDataCache()
+        cache.update(updatedElements = nodes)
+        cache.trim(4)
+
+        val nodeDB: NodeDao = mock()
+        val nodeIds = nodes.map { it.id }.sorted() // use sorted to avoid issues with order
         on(nodeDB.getAll(nodeIds)).thenReturn(nodes)
-        assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it.toHashSet()) }.containsExactlyInAnyOrder(nodes))
+        assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it.sorted()) }.containsExactlyInAnyOrder(nodes))
         verify(nodeDB).getAll(nodeIds)
     }
 
@@ -229,10 +248,10 @@ internal class MapDataCacheTest {
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it.toHashSet()) }.containsExactlyInAnyOrder(elements))
         verify(elementDB).getAll(keysNotInCache)
 
-        // check whether elements except node1 are cached now
+        // check whether elements are cached now
         on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id)))
+        verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getElements fetches all elements if none are cached`() {
@@ -252,10 +271,10 @@ internal class MapDataCacheTest {
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it.toHashSet()) }.containsExactlyInAnyOrder(elements))
         verify(elementDB).getAll(keys)
 
-        // check whether elements except node1 are cached now
+        // check whether elements are cached now
         on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id)))
+        verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getGeometries doesn't fetch cached geometries`() {
