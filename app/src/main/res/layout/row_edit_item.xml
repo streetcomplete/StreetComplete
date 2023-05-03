@@ -13,20 +13,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="2dp">
+        android:layout_marginBottom="4dp">
 
         <TextView
             android:id="@+id/todayText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:layout_gravity="left"
-            tools:text="10/14/21"
-            tools:ignore="RtlHardcoded,RtlSymmetry" />
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:gravity="center"
+            tools:text="10/14/21" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:background="@color/divider" />
 
     </LinearLayout>
@@ -37,39 +37,34 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="2dp">
+        android:layout_marginBottom="4dp">
 
         <TextView
             android:id="@+id/timeText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:layout_gravity="left"
-            tools:text="12:23 AM"
-            tools:ignore="RtlHardcoded,RtlSymmetry" />
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:gravity="center"
+            tools:text="12:23 AM" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:background="@color/divider" />
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clickArea"
-        app:layout_constraintTop_toBottomOf="@id/timeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="8dp"
-        android:paddingLeft="16dp"
-        android:background="?android:attr/selectableItemBackground"
-        tools:ignore="RtlHardcoded,RtlSymmetry">
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/questIcon"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:clickable="false"
             android:scaleType="fitCenter"
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/pin_selection_ring"
-            android:visibility="visible"/>
+            android:src="@drawable/pin_selection_ring" />
 
         <ImageView
             android:id="@+id/overlayIcon"
@@ -96,7 +90,6 @@
             app:layout_constraintEnd_toEndOf="@id/questIcon"
             app:layout_constraintBottom_toBottomOf="@id/questIcon"
             android:scaleType="fitCenter"
-            android:clickable="false"
             tools:src="@drawable/ic_undo_delete" />
 
         <ImageView
@@ -108,7 +101,6 @@
             android:scaleType="centerInside"
             android:src="@drawable/ic_undo_24dp"
             app:tint="#000"
-            android:clickable="false"
             android:layout_margin="2dp"
             android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="@id/questIcon"
