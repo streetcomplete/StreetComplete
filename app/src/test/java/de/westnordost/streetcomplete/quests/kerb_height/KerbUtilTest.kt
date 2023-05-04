@@ -171,6 +171,7 @@ class KerbUtilTest {
 
     // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/sidewalk-end.svg
     @Test fun `endpoints of crossings do not count if they already have a non-endnode with a kerb`() {
+        val kerb = node(id = 2, tags = mapOf("barrier" to "kerb"))
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1),
             node(id = 2, tags = mapOf("barrier" to "kerb")),
@@ -183,7 +184,10 @@ class KerbUtilTest {
                 "footway" to "sidewalk"
             )),
         ))
-        assertEquals(0, mapData.findAllKerbNodes().toList().size)
+        // only the kerb tagged as such is found, not node 1 (intersection node between way 1 and 2)
+        assertEquals(
+            listOf(kerb),
+            mapData.findAllKerbNodes().toList())
     }
 
     // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/crossing-style2.svg
