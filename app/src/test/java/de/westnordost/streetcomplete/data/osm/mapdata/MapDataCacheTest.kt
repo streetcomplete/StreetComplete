@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -7,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.*
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -818,5 +820,32 @@ internal class MapDataCacheTest {
 
         cache.update(updatedElements = elementsInsideBBox + outsideNode + outsideWay + outsideRel, bbox = nodesRect.asBoundingBox(16))
         assertTrue(cache.getMapDataWithGeometry(nodesBBox).toList().containsExactlyInAnyOrder(elementsInsideBBox))
+    }
+
+    @Test fun `cache is resistant to unexpected spatial cache tile removal`() {
+        // see https://github.com/streetcomplete/StreetComplete/pull/4985 and the linked issue comment
+        val x = 2
+        val y = 5
+        val rect = TilesRect(x, y, x, y + 1).asBoundingBox(16)
+        val rect2 = TilesRect(x, y + 1, x, y + 2).asBoundingBox(16)
+        val node1 = node(1, LatLon(rect.min.latitude + 0.00001, rect.min.longitude + 0.00001)) // node in rect and rect2
+        val node2 = node(2, LatLon(rect.max.latitude - 0.00001, rect.max.longitude - 0.00001)) // node in rect only
+        val cache = MapDataCache(16, 24, 10) {
+            val elements = when {
+                it == rect -> listOf(node1, node2) // may not be true if the bbox is extended because of the tilesRect issue (happens for x=2, y=5, but not for x=2, y=1)
+                rect.isCompletelyInside(it) -> listOf(node1, node2) // fix for above
+                it == TilesRect(x, y + 1, x, y + 1).asBoundingBox(16) -> listOf(node1)
+                else -> emptyList()
+            }
+            elements to emptyList()
+        }
+        // fill cache
+        assertTrue(cache.getMapDataWithGeometry(rect).toList().containsExactlyInAnyOrder(listOf(node1, node2)))
+
+        // trigger the tilesRect issue, which may remove TilesRect(x, y + 1, x, y + 1) (only for some x and y values)
+        assertTrue(cache.getMapDataWithGeometry(rect2).toList().containsExactlyInAnyOrder(listOf(node1)))
+
+        // cache should still return the same result as initially, fetching TilesRect(x, y + 1, x, y + 1) if necessary
+        assertTrue(cache.getMapDataWithGeometry(rect).toList().containsExactlyInAnyOrder(listOf(node1, node2)))
     }
 }

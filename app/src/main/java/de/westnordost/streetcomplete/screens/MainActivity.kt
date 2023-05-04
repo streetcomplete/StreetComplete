@@ -56,6 +56,8 @@ import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragmen
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -63,6 +65,7 @@ import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -87,7 +90,6 @@ class MainActivity :
     private val prefs: SharedPreferences by inject()
 
     private var mainFragment: MainFragment? = null
-    private var backPressed = false
 
     private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -195,36 +197,18 @@ class MainActivity :
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
+
+        // try to stop quest monitor more often than it seems necessary, because sometime android
+        // is slow to react, e.g. when quickly switching between SC and other app
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
+            try { applicationContext.unbindService(questMonitorConnection) }
+            catch (_: IllegalArgumentException) {} // happens on first start, and maybe if there is some issue
     }
 
     public override fun onResume() {
         super.onResume()
         downloadController.showNotification = false
         uploadController.showNotification = false
-        // try to stop more often than it seems necessary, because sometime android is slow to react, e.g. when quickly switching between SC and other app
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
-            try { applicationContext.unbindService(questMonitorConnection) }
-            catch (_: IllegalArgumentException) {} // happens on first start, and maybe if there is some issue
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (!forwardBackPressedToChildren()) {
-            backPressed = true
-            super.onBackPressed()
-        }
-    }
-
-    private fun forwardBackPressedToChildren(): Boolean {
-        val messagesContainerFragment = messagesContainerFragment
-        if (messagesContainerFragment != null) {
-            if (messagesContainerFragment.onBackPressed()) return true
-        }
-        val mainFragment = mainFragment
-        if (mainFragment != null) {
-            if (mainFragment.onBackPressed()) return true
-        }
-        return false
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -259,9 +243,6 @@ class MainActivity :
         }
         downloadController.showNotification = true
         uploadController.showNotification = true
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running && !backPressed)
-            applicationContext.bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
-        backPressed = false // as an easy way to avoid quest monitor: don't start it if SC was closed using back button
     }
 
     override fun onNewIntent(newIntent: Intent?) {
@@ -275,12 +256,19 @@ class MainActivity :
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
+
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running)
+            lifecycleScope.launch {
+                delay(1000) // wait, as we don't want do start the monitor if onDestroy follows (and then lifecycleScope will be canceled)
+                applicationContext.bindService(Intent(this@MainActivity, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
+            }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
+        // stop quest monitor: it should be easy to avoid having it running, because going to settings all the time is annoying
         try { applicationContext.unbindService(questMonitorConnection) }
         catch (_: IllegalArgumentException) {}
     }

@@ -214,10 +214,14 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             db.renameQuest("AddPicnicTableCover", "AddAmenityCover")
             db.renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE,"ExternalQuest", "CustomQuest")
         }
+        if (oldVersion <= 9 && newVersion > 9) {
+            db.execSQL("DROP TABLE ${DownloadedTilesTable.NAME};")
+            db.execSQL(DownloadedTilesTable.CREATE)
+        }
     }
 }
 
-private const val DB_VERSION = 9
+private const val DB_VERSION = 10
 
 private fun SQLiteDatabase.renameQuest(old: String, new: String) {
     renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)

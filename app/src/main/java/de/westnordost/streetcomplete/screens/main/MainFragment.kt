@@ -22,6 +22,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
@@ -106,7 +107,6 @@ import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeFragment
@@ -207,7 +207,6 @@ class MainFragment :
     MapDataWithEditsSource.Listener,
     SelectedOverlaySource.Listener,
     // rest
-    HandlesOnBackPressed,
     ShowsGeometryMarkers,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -251,6 +250,25 @@ class MainFragment :
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
+
+    private val historyBackPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            mapFragment?.endFocus(0L)
+            closeEditHistorySidebar()
+        }
+    }
+
+    private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            val f = childFragmentManager.fragments.lastOrNull()
+            if (f is IsCloseableBottomSheet) {
+                if (f != bottomSheetFragment && f is AbstractQuestForm)
+                    f.onClickClose { TagEditor.changes = StringMapChanges(emptySet()) }
+                else if (f == bottomSheetFragment)
+                    f.onClickClose { closeBottomSheet() }
+            }
+        }
+    }
 
     //region Lifecycle - Android Lifecycle Callbacks
 
@@ -332,6 +350,13 @@ class MainFragment :
         binding.quickSettingsButton.setOnClickListener { onClickQuickSettings() }
 
         updateOffsetWithOpenBottomSheet()
+
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, historyBackPressedCallback)
+        historyBackPressedCallback.isEnabled = editHistoryFragment != null
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
+        sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
     }
 
     override fun onResume() {
@@ -382,27 +407,6 @@ class MainFragment :
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
         prefs.registerOnSharedPreferenceChangeListener(this)
         reloadOverlaySelector()
-    }
-
-    /** Called by the activity when the user presses the back button.
-     *  Returns true if the event should be consumed. */
-    override fun onBackPressed(): Boolean {
-        if (editHistoryFragment != null) {
-            mapFragment?.endFocus(0L)
-            closeEditHistorySidebar()
-            return true
-        }
-
-        val f = childFragmentManager.fragments.lastOrNull()
-        if (f is IsCloseableBottomSheet) {
-            if (f != bottomSheetFragment && f is AbstractQuestForm)
-                f.onClickClose { TagEditor.changes = StringMapChanges(emptySet()) }
-            else if (f == bottomSheetFragment)
-                f.onClickClose { closeBottomSheet() }
-            return true
-        }
-
-        return false
     }
 
     override fun onStop() {
@@ -1255,6 +1259,7 @@ class MainFragment :
         }
         mapFragment?.hideOverlay()
         mapFragment?.pinMode = if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else MainMapFragment.PinMode.EDITS
+        historyBackPressedCallback.isEnabled = true
     }
 
     private fun closeEditHistorySidebar() {
@@ -1264,6 +1269,7 @@ class MainFragment :
         clearHighlighting()
         mapFragment?.clearFocus()
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
+        historyBackPressedCallback.isEnabled = false
     }
 
     //endregion
@@ -1286,6 +1292,7 @@ class MainFragment :
         clearHighlighting()
         unfreezeMap()
         mapFragment?.endFocus()
+        sheetBackPressedCallback.isEnabled = false
     }
 
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
@@ -1304,6 +1311,7 @@ class MainFragment :
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
         }
+        sheetBackPressedCallback.isEnabled = f is IsCloseableBottomSheet
     }
 
     /** Make the map not follow the user's location anymore temporarily */

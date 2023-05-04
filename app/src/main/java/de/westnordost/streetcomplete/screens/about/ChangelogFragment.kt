@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogWhatsNewBinding
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.screens.HasTitle
@@ -50,7 +51,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
-        val binding = FragmentChangelogBinding.inflate(LayoutInflater.from(context))
+        val binding = DialogWhatsNewBinding.inflate(LayoutInflater.from(context))
         binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         setTitle(R.string.title_whats_new)

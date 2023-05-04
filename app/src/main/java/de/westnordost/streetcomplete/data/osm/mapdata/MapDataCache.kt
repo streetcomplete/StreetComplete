@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
+import de.westnordost.streetcomplete.util.math.contains
 
 /**
  * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
@@ -398,6 +399,9 @@ class MapDataCache(
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
+
+            // get(bbox) for tiles not in spatialCache calls spatialCache.fetch, but this is still
+            // safe as tiles are replaced and properly filled as part of the following update
             spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
 
             // fetch needed data and put it to cache
@@ -410,10 +414,14 @@ class MapDataCache(
                     result.putAll(elements, geometries + elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() })
                     return result
                 }
+                // add newly fetched nodes from elements
+                // getting nodes from spatialCache can cause issues, as tiles in the bbox may now be removed unexpectedly
+                // see https://github.com/streetcomplete/StreetComplete/issues/4980#issuecomment-1531960544
+                for (element in elements) {
+                    if (element !is Node) continue
+                    if (element.position in bbox) result.put(element, ElementPointGeometry(element.position))
+                }
             }
-
-            // get nodes again, this contains the newly added nodes, but maybe not the old ones if cache was trimmed
-            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
         } else {
             spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
         }
@@ -422,7 +430,7 @@ class MapDataCache(
         val relationIds = HashSet<Long>(result.nodes.size / 10)
         for (node in result.nodes) {
             wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
-            relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
+            relationIdsByElementKeyCache[node.key]?.let { relationIds.addAll(it) }
         }
         for (wayId in wayIds) {
             result.put(wayCache[wayId]!!, wayGeometryCache[wayId])
@@ -434,7 +442,7 @@ class MapDataCache(
         }
 
         // trim if we fetched new data, and spatialCache is full
-        // trim to 90%, so trim is (probably) not immediately called on next fetch
+        // trim to 66%, so trim is (probably) not immediately called on next fetch
         if (spatialCache.size >= maxTiles && tilesRectsToFetch != null) {
             trim((maxTiles * 2) / 3)
         }

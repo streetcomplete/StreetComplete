@@ -27,8 +27,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -51,7 +50,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
     private val prefs: SharedPreferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val downloadController: DownloadController by inject()
-    private val downloadedTilesDb: DownloadedTilesDao by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
     private var lastScanCenter = LatLon(0.0, 0.0)
     private val searchRadius = prefs.getFloat(Prefs.QUEST_MONITOR_RADIUS, 50f).toDouble()
     private val download = prefs.getBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, false)
@@ -145,7 +144,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
                 if (!activeNetworkInfo.isConnected) return // we are not connected
                 val ignoreOlderThan = nowAsEpochMilliseconds() - dataRetainTime
                 val tile = loc.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM).toTilesRect()
-                if (downloadedTilesDb.get(tile, ignoreOlderThan).contains(DownloadedTilesType.ALL)) return // we already have the area
+                if (downloadedTilesSource.contains(tile, ignoreOlderThan)) return // we already have the area
                 downloadController.download(loc.enclosingBoundingBox(max(150.0, searchRadius))) // download quests in at least 150 m radius (will likely be a single z16 tile)
             }
             return

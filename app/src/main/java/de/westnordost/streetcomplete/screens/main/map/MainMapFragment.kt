@@ -5,6 +5,7 @@ import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import com.mapzen.tangram.geometry.Polyline
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -18,6 +19,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
@@ -47,6 +49,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val prefs: SharedPreferences by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
     private val levelFilter: LevelFilter by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
@@ -57,6 +60,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
     private var styleableOverlayMapComponent: StyleableOverlayMapComponent? = null
     private var styleableOverlayManager: StyleableOverlayManager? = null
+    private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
+    private var downloadedAreaManager: DownloadedAreaManager? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -133,6 +138,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, levelFilter)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
+        downloadedAreaManager = DownloadedAreaManager(ctrl, downloadedAreaMapComponent!!, downloadedTilesSource, prefs)
+        viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
+
         selectedOverlaySource.addListener(overlayListener)
         loadGpxTrack()
 
@@ -143,6 +152,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
+        downloadedAreaManager?.onNewScreenPosition()
     }
 
     override fun onDestroyView() {
