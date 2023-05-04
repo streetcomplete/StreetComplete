@@ -27,12 +27,12 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="user_profile">My Profile</string>
 
     <string name="team_mode">Enter Team Mode</string>
-    <string name="action_download">"Scan for quests here"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
+    <string name="action_download">"Download data here"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t download here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
-    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current download and download here instead?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Download here instead"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continue current download"</string>
 
     <!-- Elements on map view -->
 
@@ -927,7 +927,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this path completed?</string>
 
-    <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
+    <string name="quest_crossing_title2">Is there a crossing here?</string>
+    <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
+    <string name="quest_crossing_no">No, but crossing is possible</string>
+    <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
 
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
@@ -1020,6 +1023,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
+
+    <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
+    <string name="quest_hairdresser_male_and_female">Anyone</string>
+    <string name="quest_hairdresser_female_only">Women</string>
+    <string name="quest_hairdresser_male_only">Men</string>
+    <string name="quest_hairdresser_not_signed">Not signed</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
@@ -1236,7 +1245,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 
-    <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_amenityCover_title">Is this covered (protected from rain)?</string>
 
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
     <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
@@ -1622,7 +1631,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>
-    <string name="vacant_shop_title">Vacant shop</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>
     <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
@@ -1662,5 +1670,12 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="street_parking_street_width">Street width: %s</string>
+
+    <string name="lane_narrowing_traffic_calming_choker">Curb extension</string>
+    <!-- More commonly known as "pedestrian refuge", however, not all traffic islands are accessible to pedestrians -->
+    <string name="lane_narrowing_traffic_calming_island">Traffic island</string>
+    <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
+    <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
 
 </resources>

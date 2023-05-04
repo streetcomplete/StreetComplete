@@ -1,3 +1,43 @@
+v53.0-beta1: |
+  <h3>Quest & Overlay Enhancements</h3>
+  <ul>
+  <li>(Note for beta users: The following two features currently only work on objects that do not extend beyond 100m from the cursor position when tapped. A fix is in review.)</li>
+  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)<br>
+  <li>Address overlay: You can now add addresses as entrances directly to building outlines (#4976)</li>
+  <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
+  <li>Crossing: Different wording and use `crossing=informal` for points at which there are no crossings but people can still cross (#4944)</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Which customers visit this hairdresser?</i> (#4833, #4909), by @mnalis</li>
+  </ul>
+  <h3>General Enhancements</h3>
+  <ul>
+  <li>It is now visible on the map which areas have been downloaded already (#4970, #4986)</li>
+  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>Other small fixes and enhancements (#4842, #4970, #4984, #4985, #4991, #4992), thanks @tapetis, @Helium314</li>
+  </ul>
+
+v52.1: |
+  <h3>Note</h3>
+  <p>If you turned off auto upload in the settings:<br><br>
+     When you upgrade to the next release, your local edits will be cleared because
+     incompatible changes were made to the data model. So, be sure to upload them before. The release
+     is scheduled for Wednesday, May 10th. The public beta for May 3rd.
+  </p>
+  <h3>Enhancements & Fixes</h3>
+  <ul>
+  <li>Surface overlay: Make paving stones and asphalt distinguishable by color (#4946, #4888)</li>
+  <li>Another overlay can now be selected from the dialog with one tap only (#4949), by @tapetis</li>
+  <li>Pitch sports: Fix sports were not shown in the order of their popularity (#4962, #4922), by @tapetis</li>
+  <li>Fix keyboard was not dismissed after selecting a POI in the dialog on certain Android versions (#4961, #4952), by @tapetis</li>
+  <li>Do not treat <code>surface=ground</code> + <code>tracktype=grade2</code> as sure mistake (#4863), by @matkoniecz</li>
+  <li>Recognize zone 30 (etc.) streets tagged with a more uncommon tag combination, too (#4960)</li>
+  <li>Specify type of entrance, entrance ref: Also ask for buildings with an inner courtyard (#4971, #4968), by @Helium314</li>
+  <li>Surface & lit overlay: Can now change footways to steps in overlays (#4973, #4938), by @arrival-spring</li>
+  <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, #4972, #4981...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
+  </ul>
+
 v52.0: |
   <h3>New overlay for surfaces!</h3>
   <p>

@@ -162,7 +162,8 @@
                     "aliases": "Petrol Station"
                 },
                 "amenity/parking": {
-                    "name": "Car Park"
+                    "name": "Car Park",
+                    "aliases": "Parking Lot"
                 },
                 "amenity/parking/multi-storey": {
                     "name": "Multistorey Car Park"
@@ -172,7 +173,7 @@
                     "aliases": "Commuter Car Park"
                 },
                 "amenity/parking_entrance": {
-                    "name": "Carpark Building Entrance / Exit"
+                    "name": "Car Park Building Entrance / Exit"
                 },
                 "amenity/payment_centre": {
                     "name": "Payment Centre"

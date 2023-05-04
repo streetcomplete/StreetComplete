@@ -22,7 +22,7 @@ fun getMaxspeedInKmh(tags: Map<String, String>): Float? {
     }
 }
 
-private val zoneRegex = Regex("([A-Z-]*):zone:?([0-9]+)")
+private val zoneRegex = Regex("([A-Z-]*):(?:zone)?:?([0-9]+)")
 
 fun guessMaxspeedInKmh(tags: Map<String, String>, countryInfos: CountryInfos? = null): Float? {
     for (key in (MAXSPEED_TYPE_KEYS + "maxspeed")) {

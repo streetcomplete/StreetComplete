@@ -43,7 +43,12 @@ class AddLanesTest {
             "surface" to "asphalt"
         ))))
         assertFalse(questType.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:zone30",
+            "source:maxspeed" to "DE:zone:30",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(questType.isApplicableTo(way(tags = mapOf(
+            "maxspeed:type" to "DE:30",
             "highway" to "residential",
             "surface" to "asphalt"
         ))))

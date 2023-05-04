@@ -1892,7 +1892,12 @@
                     }
                 },
                 "dock": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "drydock": "Dry Dock",
+                        "floating": "Floating Dry Dock",
+                        "tidal": "Impounded Tidal Dock"
+                    }
                 },
                 "distance": {
                     "label": "Distance",
@@ -1943,7 +1948,12 @@
                     "placeholder": "45, 90, 180, 270"
                 },
                 "diplomatic": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "consulate": "Consulate",
+                        "embassy": "Embassy",
+                        "liaison": "Liaison Office"
+                    }
                 },
                 "diet_multi": {
                     "label": "Diet Types",
@@ -2265,7 +2275,15 @@
                     "label": "Expertise"
                 },
                 "consulate": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "consulate_general": "Consulate General",
+                        "honorary_consul": "Honorary Consul",
+                        "yes": "Consulate",
+                        "consular_office": "Consular Services Office",
+                        "consular_agency": "Consular Services Agency",
+                        "residence": "Official Residence of a Consul"
+                    }
                 },
                 "construction": {
                     "label": "Type"
@@ -2284,7 +2302,12 @@
                     "label": "Color"
                 },
                 "collector": {
-                    "label": "Items"
+                    "label": "Items",
+                    "options": {
+                        "coins": "Coins",
+                        "stamps": "Stamps",
+                        "comics": "Comics"
+                    }
                 },
                 "collection_times": {
                     "label": "Collection Times"
@@ -3352,14 +3375,6 @@
                         "extreme": "Extreme"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientation",
-                    "options": {
-                        "parallel": "Parallel to the Street",
-                        "diagonal": "Diagonal in Relation to the Street",
-                        "perpendicular": "Meets the Street at a Straight Angle"
-                    }
-                },
                 "parking/side/parking": {
                     "label": "Parking",
                     "types": {
@@ -3378,7 +3393,7 @@
                     }
                 },
                 "parking/side/orientation": {
-                    "label": "Parking orientation",
+                    "label": "Parking Orientation",
                     "types": {
                         "parking:left:orientation": "Left side",
                         "parking:right:orientation": "Right side"
@@ -3388,6 +3403,9 @@
                         "diagonal": "Diagonal in Relation to the Street (~45°)",
                         "perpendicular": "Meets the Street at a Straight Angle (~90°)"
                     }
+                },
+                "orientation/orientation_parking": {
+                    "label": "Orientation"
                 },
                 "operator/type": {
                     "label": "Operator Type"
@@ -4521,11 +4539,12 @@
                     "name": "Watches Shop"
                 },
                 "shop/video_games": {
-                    "name": "Video Game Store"
+                    "name": "Video Game Store",
+                    "terms": "hobby"
                 },
                 "shop/video": {
                     "name": "Video Store",
-                    "terms": "dvd,vhs,video cassette,video casette"
+                    "terms": "dvd,hobby,vhs,video cassette,video casette"
                 },
                 "shop/variety_store": {
                     "name": "Discount Store",
@@ -4551,7 +4570,7 @@
                 },
                 "shop/toys": {
                     "name": "Toy Store",
-                    "terms": "games,teddy"
+                    "terms": "games,hobby,teddy"
                 },
                 "shop/tool_hire": {
                     "name": "Tool Rental"
@@ -4602,7 +4621,7 @@
                 },
                 "shop/sports": {
                     "name": "Sporting Goods Store",
-                    "terms": "athletics"
+                    "terms": "athletics,hobby"
                 },
                 "shop/spices": {
                     "name": "Spice Shop",
@@ -4701,7 +4720,7 @@
                 },
                 "shop/outdoor": {
                     "name": "Outdoors Store",
-                    "terms": "camping,climbing,hiking,outfitter,outdoor equipment,outdoor supplies"
+                    "terms": "camping,climbing,hiking,hobby,outfitter,outdoor equipment,outdoor supplies"
                 },
                 "shop/optician": {
                     "name": "Optician",
@@ -4721,11 +4740,11 @@
                 },
                 "shop/musical_instrument": {
                     "name": "Musical Instrument Store",
-                    "terms": "accordion,brass instruments,cello,clarinet,drum,flute,guitar,keyboard,piano,saxophone,trumpet,violin"
+                    "terms": "accordion,brass instruments,cello,clarinet,drum,flute,guitar,hobby,keyboard,piano,saxophone,trumpet,violin"
                 },
                 "shop/music": {
                     "name": "Music Store",
-                    "terms": "tape cassettes,cds,compact discs,vinyl records,cd store,casette,casette store"
+                    "terms": "tape cassettes,cds,compact discs,hobby,vinyl records,cd store,casette,casette store"
                 },
                 "shop/motorcycle_repair": {
                     "name": "Motorcycle Repair Shop",
@@ -4798,7 +4817,7 @@
                 },
                 "shop/hunting": {
                     "name": "Hunting Shop",
-                    "terms": "arrows,bows,bullets,crossbows,rifles,traps"
+                    "terms": "arrows,bows,bullets,crossbows,hobby,rifles,traps"
                 },
                 "shop/houseware": {
                     "name": "Houseware Store",
@@ -4808,10 +4827,6 @@
                 "shop/household_linen": {
                     "name": "Household Linen Shop",
                     "terms": "bedspreads,blankets,domestic cloths,curtains,handkerchieves,napkins,pillow cases,robes,sheets,towels"
-                },
-                "shop/hobby": {
-                    "name": "Hobby Shop",
-                    "terms": "manga,figurine,model"
                 },
                 "shop/hifi": {
                     "name": "Hifi Store",
@@ -4868,7 +4883,7 @@
                 },
                 "shop/games": {
                     "name": "Tabletop Game Store",
-                    "terms": "board game,card game,dice game,game shop,larp,live action role-playing game,miniature wargame,role-playing,strategy game,wargame"
+                    "terms": "board game,card game,dice game,game shop,hobby,larp,live action role-playing game,miniature wargame,role-playing,strategy game,wargame"
                 },
                 "shop/furniture": {
                     "name": "Furniture Store",
@@ -4899,7 +4914,7 @@
                 },
                 "shop/fishing": {
                     "name": "Fishing Shop",
-                    "terms": "bait,fishing line,flies,fly,lure,reel,rod,tackle"
+                    "terms": "bait,fishing line,flies,fly,hobby,lure,reel,rod,tackle"
                 },
                 "shop/fireplace": {
                     "name": "Fireplace Store",
@@ -4942,7 +4957,7 @@
                 },
                 "shop/doityourself": {
                     "name": "DIY Store",
-                    "terms": "craft,diy,do it yourself,hardware,home improvement,tools"
+                    "terms": "craft,diy,do it yourself,hardware,hobby,home improvement,tools"
                 },
                 "shop/department_store": {
                     "name": "Department Store"
@@ -4993,7 +5008,7 @@
                 },
                 "shop/collector": {
                     "name": "Collectibles Shop",
-                    "terms": "antiques,coins,collection,collectors,comics,dolls,figurines,numismatics,philately,stamps,thrift"
+                    "terms": "antiques,coins,collection,collectors,comics,dolls,figurines,hobby,numismatics,philately,stamps,thrift"
                 },
                 "shop/coffee": {
                     "name": "Coffee Store"
@@ -5061,11 +5076,12 @@
                 },
                 "shop/brewing_supplies": {
                     "name": "Brewing Supply Store",
-                    "terms": "brew shop,homebrew supply store"
+                    "terms": "brew shop,hobby,homebrew supply store"
                 },
                 "shop/books": {
                     "name": "Bookstore",
-                    "aliases": "Bookshop\nBookseller\nBook Store\nBook Shop\nBook Seller"
+                    "aliases": "Bookshop\nBookseller\nBook Store\nBook Shop\nBook Seller",
+                    "terms": "hobby"
                 },
                 "shop/bookmaker": {
                     "name": "Bookmaker",
@@ -5074,12 +5090,12 @@
                 },
                 "shop/boat": {
                     "name": "Boat Store",
-                    "terms": "fishing boat,jetski,motorboat,rowboat,sailboat,vessel,watercraft"
+                    "terms": "fishing boat,hobby,jetski,motorboat,rowboat,sailboat,vessel,watercraft"
                 },
                 "shop/bicycle": {
                     "name": "Bicycle Shop",
                     "aliases": "Bike Shop",
-                    "terms": "bicycle store,bike,bike store,repair,tricycle,unicycle"
+                    "terms": "bicycle store,bike,bike store,hobby,repair,tricycle,unicycle"
                 },
                 "shop/beverages": {
                     "name": "Beverage Store",
@@ -5121,7 +5137,7 @@
                 },
                 "shop/anime": {
                     "name": "Anime / Manga Shop",
-                    "terms": "manga,japan,cosplay,figurine,dakimakura"
+                    "terms": "cosplay,dakimakura,figurine,hobby,japan,manga"
                 },
                 "shop/alcohol": {
                     "name": "Liquor Store",
@@ -5136,6 +5152,9 @@
                 },
                 "shop/vacant": {
                     "name": "Vacant Shop"
+                },
+                "shop/hobby": {
+                    "name": "Hobby Shop"
                 },
                 "shop/fashion": {
                     "name": "Fashion Store"
@@ -6108,7 +6127,8 @@
                     "terms": "barrier,coral,ocean,sand,shoal"
                 },
                 "natural/peninsula": {
-                    "name": "Peninsula"
+                    "name": "Peninsula",
+                    "terms": "bay,cape,coastline,erosion,headland,island,islet,promontory"
                 },
                 "natural/peak": {
                     "name": "Peak",
@@ -6156,7 +6176,7 @@
                 },
                 "natural/cape": {
                     "name": "Cape",
-                    "terms": "bay,coastline,erosion,headland,promontory"
+                    "terms": "bay,coastline,erosion,headland,peninsula,promontory"
                 },
                 "natural/beach": {
                     "name": "Beach",
@@ -6268,7 +6288,7 @@
                 },
                 "marker/utility": {
                     "name": "Utility Marker",
-                    "terms": "gas line marker,identifier,marking,oil marker,pipline marker,plate,pole,post,sign"
+                    "terms": "gas line marker,identifier,marking,oil marker,pipeline marker,plate,pole,post,sign"
                 },
                 "marker/utility/power": {
                     "name": "Power Marker",
@@ -8167,6 +8187,10 @@
                     "name": "Sports Club",
                     "terms": "athletics club,sporting club,sports association,sports society"
                 },
+                "club/scout": {
+                    "name": "Scout Group",
+                    "terms": "guide,pathfinder,scouting"
+                },
                 "cemetery/sector": {
                     "name": "Cemetery Section",
                     "terms": "burial ground,cemetary,cemetery,churchyard,columbarium,grave yard,graveyard,mausoleum,tomb"
@@ -8423,6 +8447,10 @@
                 "barrier/motorcycle_barrier": {
                     "name": "Motorcycle Barrier"
                 },
+                "barrier/log": {
+                    "name": "Fallen Tree Obstruction",
+                    "terms": "downed tree"
+                },
                 "barrier/lift_gate": {
                     "name": "Boom Barrier",
                     "terms": "boom gate,boom lift,hinged bar,lift gate,pivoted pole"
@@ -8511,9 +8539,6 @@
                 },
                 "barrier/planter": {
                     "name": "Planter (Barrier)"
-                },
-                "barrier/log": {
-                    "name": "Fallen Tree"
                 },
                 "barrier/handrail": {
                     "name": "Handrail"
@@ -9835,7 +9860,8 @@
                     "terms": "advertising,announcements,blackboard,bulletinboard,cork board,corkboard,fliers,flyers,noticeboard,pinboard,sign,whiteboard"
                 },
                 "advertising/billboard": {
-                    "name": "Billboard"
+                    "name": "Billboard",
+                    "terms": "ad,advertising,spam"
                 },
                 "addr/interpolation": {
                     "name": "Address Interpolation"

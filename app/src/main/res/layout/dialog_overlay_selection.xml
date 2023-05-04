@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingTop="@dimen/dialog_vertical_margin"
-    android:paddingLeft="@dimen/dialog_horizontal_margin"
-    android:paddingRight="@dimen/dialog_horizontal_margin"
-    android:showDividers="middle"
-    android:divider="@drawable/space_8dp"
-    >
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/overlaysList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:itemCount="8"
-        tools:listitem="@layout/row_overlay_selection" />
-
-</LinearLayout>
-
+    android:id="@+id/overlaysList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:itemCount="8"
+    tools:listitem="@layout/row_overlay_selection" />

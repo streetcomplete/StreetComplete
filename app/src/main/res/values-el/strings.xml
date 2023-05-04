@@ -897,7 +897,6 @@
     <string name="about_title_faq">"Συχνές ερωτήσεις"</string>
     <string name="quest_buildingLevels_title2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>
-    <string name="quest_crossing_title">"Υπάρχουν κράσπεδα εκεί που συναντάει εκείνος ο δρόμος αυτόν εδώ; Τι είδους;"</string>
     <string name="pref_subtitle_quests_preset_name">"Προεπιλογή: %s"</string>
     <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
     <string name="quest_religion_animist">"Ανιμισμός"</string>
@@ -931,7 +930,6 @@
     <string name="quest_buildingType_bridge">"Γέφυρα μεταξύ κτιρίων (πεζογέφυρα)"</string>
     <string name="quest_laundrySelfService_title2">"Αυτό το πλυντήριο παρέχει αυτοεξυπηρέτηση;"</string>
     <string name="quest_dietType_explanation_halal">"Τα προϊόντα Χαλάλ πρέπει να παρασκευάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης να σηματοδοτούν τα συμβατά προϊόντα."</string>
-    <string name="quest_picnicTableCover_title">"Είναι αυτό το τραπέζι πικνίκ καλυμμένο (προστατεύεται από τη βροχή);"</string>
     <string name="quest_generic_answer_is_actually_steps">"Αυτό το μέρος είναι σκαλιά"</string>
     <string name="quest_barrier_type_passage_conversion">"Μετατράπηκε σε πέρασμα σε τοίχο/φράχτη/κ.λπ."</string>
     <string name="quest_barrier_type_gate_conversion">"Μετατράπηκε σε πύλη"</string>
@@ -1226,7 +1224,6 @@
     <string name="overlay_addresses">"Διευθύνσεις"</string>
     <string name="overlay_shops">"Καταστήματα"</string>
     <string name="name_label">"Όνομα:"</string>
-    <string name="vacant_shop_title">"Άδειο κατάστημα"</string>
     <string name="unknown_shop_title">"Άλλου είδους μέρος"</string>
     <string name="quest_address_answer_no_address">"Καμία διεύθυνση εδώ"</string>
     <string name="quest_bicycle_barrier_installation_title">"Μπορεί να ανοίξει αυτό το εμπόδιο ποδηλάτων;"</string>

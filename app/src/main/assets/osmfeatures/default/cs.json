@@ -1768,8 +1768,7 @@
                         "critical": "Hraniční: Pouze pro zkušené jezdce a koně. Zjevné překážky. Mosty by měly být pečlivě zkontrolovány.",
                         "dangerous": "Nebezpečné: Udržitelné pouze pro zkušené jezdce a koně a pouze za dobrého počasí. Sesednout.",
                         "demanding": "Používejte s opatrností: Nerovná cesta, občas těžké průchody.",
-                        "difficult": "Obtížné: cesta úzká a odkrytá. Může obsahovat překážky na cestě a těsné průchody.",
-                        "impossible": "Neprůchodné: cesta nebo most nevhodný pro koně. Příliš úzká, nedostatečná podpora, překážky jako žebříky. Ohrožení života."
+                        "difficult": "Obtížné: cesta úzká a odkrytá. Může obsahovat překážky na cestě a těsné průchody."
                     },
                     "placeholder": "Obtížné, nebezpečné…",
                     "terms": "koně,obtížnost,jízda na koni,náročnost,kůň,koňská,jezdec,jezdectví"
@@ -2403,22 +2402,12 @@
                         "underground": "Podzemní"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientace",
-                    "options": {
-                        "diagonal": "Šikmo k ulici",
-                        "parallel": "Rovnoběžně s ulicí",
-                        "perpendicular": "Kolmo k ulici"
-                    }
-                },
                 "parking/side/orientation": {
-                    "label": "Orientace parkování",
                     "options": {
                         "diagonal": "Šikmo k ulici (~45°)",
                         "parallel": "Rovnoběžně s ulicí",
                         "perpendicular": "Kolmo k ulici (~90°)"
                     },
-                    "terms": "směr parkování,orientace,parkovací směr,parkovací orientace,parkování",
                     "types": {
                         "parking:left:orientation": "Po levé straně",
                         "parking:right:orientation": "Po pravé straně"
@@ -2662,6 +2651,14 @@
                 "post": {
                     "label": "Poštovní adresa"
                 },
+                "post_box/type": {
+                    "label": "Typ",
+                    "options": {
+                        "lamp": "Připojena ke sloupu",
+                        "pillar": "Volně stojící schránka",
+                        "wall": "Namontovaná na zdi"
+                    }
+                },
                 "power": {
                     "label": "Typ"
                 },
@@ -2899,6 +2896,20 @@
                 },
                 "route_master": {
                     "label": "Typ"
+                },
+                "royal_cypher": {
+                    "label": "Královská šifra",
+                    "options": {
+                        "CIIIR": "CIIIR (Karel III.)",
+                        "EIIR": "EIIR (Alžběta II.)",
+                        "EVIIIR": "EVIIIR (Eduard VIII.)",
+                        "EVIIR": "EVIIR (Eduard VII.)",
+                        "GR": "GR (Jiří V.)",
+                        "GVIR": "GVIR (Jiří VI.)",
+                        "VR": "VR (Viktorie)",
+                        "no": "Ne",
+                        "scottish_crown": "Skotská koruna"
+                    }
                 },
                 "ruins": {
                     "label": "Typ"
@@ -3196,7 +3207,6 @@
                     "label": "Sporty",
                     "options": {
                         "american_football": "Americký fotbal",
-                        "athletics": "Atletika",
                         "badminton": "Badminton",
                         "baseball": "Baseball",
                         "basketball": "Basketbal",
@@ -3233,42 +3243,17 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Sporty",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Lední hokej",
-                        "ice_skating": "Bruslení na ledu",
-                        "ice_stock": "Bavorský curling",
-                        "multi": "Více sportů"
-                    }
+                    "label": "Sporty"
                 },
                 "sport_pub": {
                     "label": "Sporty",
-                    "options": {
-                        "billiards": "Kulečník",
-                        "darts": "Šipky",
-                        "table_soccer": "Stolní fotbal"
-                    },
                     "terms": "sport,sportovní"
                 },
                 "sport_racing_motor": {
-                    "label": "Sporty",
-                    "options": {
-                        "karting": "Motokáry",
-                        "motocross": "Motokros",
-                        "motor": "Motoristický sport",
-                        "speedway": "Plochá dráha pro motocykly"
-                    }
+                    "label": "Sporty"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sporty",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Cyklistika",
-                        "dog_racing": "Psí běžecké závody",
-                        "horse_racing": "Dostihy",
-                        "running": "Běh"
-                    }
+                    "label": "Sporty"
                 },
                 "stars": {
                     "label": "Hvězdiček",
@@ -3865,6 +3850,11 @@
                     "label": "Webová stránka",
                     "placeholder": "https://priklad.cz",
                     "terms": "přítomnost na internetu,uri,adresa url,stránka"
+                },
+                "website/menu": {
+                    "label": "Odkaz na nabídku",
+                    "placeholder": "https://priklad.cz",
+                    "terms": "online menu,uri menu,adresa url menu,menu webu,nabídka"
                 },
                 "wetland": {
                     "label": "Typ",
@@ -5369,9 +5359,6 @@
                     "name": "Zvedací závora",
                     "terms": "brána se závorou,závora na cestě,tyč závory,zvedací brána,závora přes cestu"
                 },
-                "barrier/log": {
-                    "name": "Spadlý strom"
-                },
                 "barrier/motorcycle_barrier": {
                     "name": "Zábrana proti motorkám",
                     "terms": "bariéra proti motorkám,motorková zábrana,bariéra"
@@ -6774,10 +6761,6 @@
                 "landuse/military/base/navy": {
                     "name": "Námořní základna",
                     "terms": "základna,boj,síla,stráž,mariňák,námořnictvo,loď,ponorka,vojska,válka"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Nebezpečné území",
-                    "terms": "letectvo,armáda,námořnictvo,válka,výbuch,exploze"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Vojenská překážková dráha",
@@ -9103,8 +9086,7 @@
                     "terms": "obchod se zvukovými systémy,obchod s ozvučením,ozvučení,hifi"
                 },
                 "shop/hobby": {
-                    "name": "Obchod s potřebami pro volný čas",
-                    "terms": "manga,figurína,model"
+                    "name": "Obchod s potřebami pro volný čas"
                 },
                 "shop/household_linen": {
                     "name": "Bytový textil",

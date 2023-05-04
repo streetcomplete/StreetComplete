@@ -133,7 +133,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.applyTo(tagChanges)
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
 

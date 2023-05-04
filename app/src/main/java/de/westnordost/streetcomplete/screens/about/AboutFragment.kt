@@ -2,57 +2,41 @@ package de.westnordost.streetcomplete.screens.about
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBinding
 import de.westnordost.streetcomplete.databinding.DialogDonateBinding
+import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.screens.TwoPaneListFragment
+import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.ListAdapter
 import java.util.Locale
 
-/** Shows the about screen */
-class AboutFragment : PreferenceFragmentCompat() {
+/** Shows the about screen list. */
+class AboutFragment : TwoPaneListFragment(), HasTitle {
 
-    interface Listener {
-        fun onClickedChangelog()
-        fun onClickedCredits()
-        fun onClickedPrivacyStatement()
-    }
-
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+    override val title: String get() = getString(R.string.action_about2)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.about)
 
         findPreference<Preference>("version")?.summary =
             getString(R.string.about_summary_current_version, "v" + BuildConfig.VERSION_NAME)
-        findPreference<Preference>("version")?.setOnPreferenceClickListener {
-            listener?.onClickedChangelog()
-            true
-        }
+
         findPreference<Preference>("authors")?.summary =
             getString(R.string.about_summary_authors, COPYRIGHT_YEARS)
 
         findPreference<Preference>("license")?.setOnPreferenceClickListener {
             openUrl("https://www.gnu.org/licenses/gpl-3.0.html")
-        }
-
-        findPreference<Preference>("authors")?.setOnPreferenceClickListener {
-            listener?.onClickedCredits()
-            true
-        }
-
-        findPreference<Preference>("privacy")?.setOnPreferenceClickListener {
-            listener?.onClickedPrivacyStatement()
-            true
         }
 
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
@@ -91,9 +75,9 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        activity?.setTitle(R.string.action_about2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpToolbarTitleAndIcon(view.findViewById(R.id.toolbar))
     }
 
     private fun isInstalledViaGooglePlay(): Boolean {

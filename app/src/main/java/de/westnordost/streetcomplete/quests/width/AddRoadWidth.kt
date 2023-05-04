@@ -35,7 +35,7 @@ class AddRoadWidth(
             and (
               maxspeed < 33
               or maxspeed = walk
-              or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*zone:?([1-9]|[1-2][0-9]|30)"
+              or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)"
             )
             and lane_markings != yes and (!lanes or lanes < 2)
           )

@@ -8,12 +8,12 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
-import de.westnordost.streetcomplete.screens.BackPressedListener
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -35,7 +35,7 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
-class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, HasTitle {
+class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
     private val provider: OAuthProvider by inject()
     private val callbackScheme: String by inject(named("OAuthCallbackScheme"))
@@ -56,6 +56,12 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
     private lateinit var consumer: OAuthConsumer
     private var authorizeUrl: String? = null
     private var oAuthVerifier: String? = null
+
+    private val backPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            binding.webView.goBack()
+        }
+    }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */
 
@@ -81,6 +87,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         binding.webView.settings.setSupportZoom(false)
         binding.webView.webViewClient = webViewClient
         viewLifecycleScope.launch { continueAuthentication() }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
     override fun onPause() {
@@ -91,14 +99,6 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
     override fun onResume() {
         super.onResume()
         binding.webView.onResume()
-    }
-
-    override fun onBackPressed(): Boolean {
-        if (binding.webView.canGoBack()) {
-            binding.webView.goBack()
-            return true
-        }
-        return false
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -187,8 +187,10 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
             )
         }
 
-        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+        override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
             binding.progressView.visibility = View.VISIBLE
+
+            backPressedCallback.isEnabled = view.canGoBack()
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {

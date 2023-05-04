@@ -796,8 +796,7 @@
                         "critical": "Muga: Bakarrik zaldizko eta zaldi esperimentatuak ibiltzeko modukoa. Oztopo nagusiak. Zubiek arretaz aztertuak izan behar dute.",
                         "dangerous": "Arriskutsua: Bakarrik oso zaldizko eta zaldi trebeek ibiltzeko modukoa eta soilik eguraldi ona egiten duenean. Desmuntatu.",
                         "demanding": "Kontuz ibili: bide malkartsua, noizean behin pasabide zailak.",
-                        "difficult": "Zaila: bide estu eta arriskutsua. Bidea estutzen eta zailtzen duten oztopoak egon daitezke.",
-                        "impossible": "Zeharkaezina: Zaldiek igaro ezin duten bide edo zubia. Estuegia, euskarri nahikorik gabea, eskilarak bezalako oztopoekin. Hiltzeko arriskua."
+                        "difficult": "Zaila: bide estu eta arriskutsua. Bidea estutzen eta zailtzen duten oztopoak egon daitezke."
                     },
                     "placeholder": "Zaila, Arriskutsua..."
                 },

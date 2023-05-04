@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTa
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
+/** Persists the keys of the elements created by this app already uploaded to the OSM API */
 class CreatedElementsDao(private val db: Database) {
 
     fun putAll(entries: Collection<ElementKey>) {

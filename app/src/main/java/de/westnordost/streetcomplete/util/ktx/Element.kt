@@ -39,3 +39,8 @@ fun Element.isSplittable(): Boolean = when (this) {
     is Way -> !isClosed || !IS_AREA_EXPRESSION.matches(this)
     else -> false
 }
+
+fun Element.couldBeSteps(): Boolean = when (this) {
+    is Way -> !isArea() && (tags["highway"] == "footway" || tags["highway"] == "path")
+    else -> false
+}

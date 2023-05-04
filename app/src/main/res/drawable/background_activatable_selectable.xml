@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <selector>
+            <item android:state_activated="true">
+                <color android:color="@color/greyed_out" />
+            </item>
+        </selector>
+    </item>
+    <item android:drawable="?attr/selectableItemBackground" />
+</layer-list>

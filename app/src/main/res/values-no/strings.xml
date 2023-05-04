@@ -910,7 +910,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="about_title_faq">"Ofte stilte spørsmål"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etasjer over kjeller har denne bygningen?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etasjer over kjeller har denne bygningsdelen?"</string>
-    <string name="quest_crossing_title">"Er det kantstein der denne veien møter kjørebanen? Hvilken type?"</string>
     <string name="pref_subtitle_quests_preset_name">"Standardvalg: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformen ofte er vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto."</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -944,7 +943,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_buildingType_bridge">"Bro mellom bygninger (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Tilbyr dette vaskeriet selvbetjent vaskefasiliteter?"</string>
     <string name="quest_dietType_explanation_halal">"Halalretter må være tilberedt etter gjeldende regler, og produkter må ha merking og være sertifisert."</string>
-    <string name="quest_picnicTableCover_title">"Er piknikbordet tildekket (beskyttet mot regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne delen er trapper"</string>
     <string name="quest_barrier_type_passage_conversion">"Endret til en passasje i en vegg, gjerde, e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
@@ -1239,7 +1237,6 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="overlay_addresses">"Adresser"</string>
     <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
-    <string name="vacant_shop_title">"Tomt lokale"</string>
     <string name="unknown_shop_title">"Annet type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan denne sykkelbarrieren bli åpnet?"</string>

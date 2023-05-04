@@ -17,7 +17,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
             or highway = residential and (
               maxspeed > 33
-              or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+              or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
             )
           )
           and area != yes

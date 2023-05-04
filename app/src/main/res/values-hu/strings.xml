@@ -903,7 +903,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="about_title_faq">"GYIK"</string>
     <string name="quest_buildingLevels_title2">"A pince fölött hány szintje van az épületnek?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"A pince fölött hány szintje van az épületrésznek?"</string>
-    <string name="quest_crossing_title">"Van-e járdaszegély ott, ahol ez a vonal találkozik ezzel az úttal? Ha igen, milyen?"</string>
     <string name="pref_subtitle_quests_preset_name">"Előre beállított érték: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ez a kérdéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Ez a kérdéstípus ráadásul meglehetősen időigényes is; az esetek többségében könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -937,7 +936,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_buildingType_bridge">"Épületek közötti híd"</string>
     <string name="quest_laundrySelfService_title2">"Ez a mosoda önkiszolgáló?"</string>
     <string name="quest_dietType_explanation_halal">"A halal termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
-    <string name="quest_picnicTableCover_title">"Fedett (esőtől védett) ez a piknikezőasztal?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ezek lépcsők"</string>
     <string name="quest_barrier_type_passage_conversion">"Falon/kerítésen lévő átjáróvá alakítva"</string>
     <string name="quest_barrier_type_gate_conversion">"Kapuvá alakítva"</string>
@@ -1233,7 +1231,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="overlay_addresses">"Cím"</string>
     <string name="overlay_shops">"Üzlet"</string>
     <string name="name_label">"Név:"</string>
-    <string name="vacant_shop_title">"Üres üzlethelyiség"</string>
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
     <string name="quest_address_answer_no_address">"Nincs cím"</string>
     <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a kerékpáros akadályt?"</string>

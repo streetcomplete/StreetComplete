@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.data.download.strategy
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -23,7 +22,7 @@ import kotlin.math.sqrt
 /** Auto download strategy decides how big of an area to download based on the OSM map data density */
 abstract class AVariableRadiusStrategy(
     private val mapDataController: MapDataController,
-    private val downloadedTilesDao: DownloadedTilesDao
+    private val downloadedTilesSource: DownloadedTilesSource
 ) : AutoDownloadStrategy {
 
     protected abstract val maxDownloadAreaInKm2: Double
@@ -81,9 +80,7 @@ abstract class AVariableRadiusStrategy(
     private suspend fun hasMissingDataFor(tilesRect: TilesRect): Boolean {
         val dataExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - dataExpirationTime)
-        val downloadedTiles =
-            withContext(Dispatchers.IO) { downloadedTilesDao.get(tilesRect, ignoreOlderThan) }
-        return !downloadedTiles.contains(DownloadedTilesType.ALL)
+        return withContext(Dispatchers.IO) { !downloadedTilesSource.contains(tilesRect, ignoreOlderThan) }
     }
 
     companion object {

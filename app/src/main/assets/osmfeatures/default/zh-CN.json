@@ -243,6 +243,11 @@
                 "animal_shelter": {
                     "label": "收留动物类型"
                 },
+                "archaeological_site": {
+                    "options": {
+                        "city": "古城遗址"
+                    }
+                },
                 "architect": {
                     "label": "建筑设计师",
                     "terms": "建筑设计师,建筑家,设计师"
@@ -260,11 +265,25 @@
                     "label": "总上升高度",
                     "terms": "上升总量"
                 },
+                "athletics_pitch": {
+                    "options": {
+                        "hammer_throw": "链球",
+                        "high_jump": "跳高",
+                        "javelin_throw": "标枪",
+                        "long_jump": "跳远",
+                        "shot_put": "铅球",
+                        "triple_jump": "三级跳"
+                    }
+                },
                 "atm": {
                     "label": "自动提款机（ATM）"
                 },
                 "attraction": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "big_wheel": "摩天轮",
+                        "maze": "迷宫"
+                    }
                 },
                 "automated": {
                     "label": "自动化"
@@ -293,7 +312,10 @@
                     "terms": "吧台,酒吧"
                 },
                 "barrier": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "lift_gate": "升降杆"
+                    }
                 },
                 "barrier_planter": {
                     "label": "屏障",
@@ -636,7 +658,9 @@
                 "crossing": {
                     "label": "类型",
                     "options": {
-                        "traffic_signals": "有交通信号的人行横道"
+                        "traffic_signals": "有交通信号的人行横道",
+                        "uncontrolled": "仅道路标志",
+                        "unmarked": "无道路标志或红绿灯"
                     }
                 },
                 "crossing/barrier": {
@@ -660,6 +684,23 @@
                 },
                 "crossing/markings": {
                     "label": "人行横道",
+                    "options": {
+                        "dashes": "横向虚线",
+                        "dots": "点状横虚线",
+                        "ladder": "梯状斑马线",
+                        "ladder:paired": "成对梯状斑马线",
+                        "ladder:skewed": "斜纹梯状斑马线",
+                        "lines": "横向线",
+                        "lines:paired": "双横向线",
+                        "no": "无标志",
+                        "pictograms": "涂刷象形图标",
+                        "surface": "仅表面处理",
+                        "yes": "以某种方式标记",
+                        "zebra": "斑马线",
+                        "zebra:bicolour": "双色斑马线",
+                        "zebra:double": "双行斑马线",
+                        "zebra:paired": "成对斑马线"
+                    },
                     "terms": "人行横道,斑马线"
                 },
                 "crossing_raised": {
@@ -734,7 +775,8 @@
                     "label": "自行车道",
                     "options": {
                         "lane": {
-                            "description": "通过交通标线与机动车隔开的自行车道"
+                            "description": "通过交通标线与机动车隔开的自行车道",
+                            "title": "标准自行车道"
                         },
                         "opposite": {
                             "description": "单行路上可双向通行的自行车道"
@@ -936,7 +978,7 @@
                     "terms": "饮水处,提供饮用水"
                 },
                 "drive_through": {
-                    "label": "免下车",
+                    "label": "得来速",
                     "terms": "免下车,得来速"
                 },
                 "duration": {
@@ -1155,7 +1197,21 @@
                 "generator/source": {
                     "label": "来源",
                     "options": {
-                        "solar": "太阳辐射"
+                        "battery": "电池",
+                        "biofuel": "生物燃料",
+                        "biogas": "沼气",
+                        "biomass": "生物质",
+                        "coal": "煤",
+                        "diesel": "柴油",
+                        "gas": "天然气",
+                        "gasoline": "汽油",
+                        "geothermal": "地热能",
+                        "hydro": "水力",
+                        "nuclear": "核能",
+                        "oil": "石油",
+                        "solar": "太阳辐射",
+                        "tidal": "潮汐能",
+                        "waste": "废弃物"
                     }
                 },
                 "generator/type": {
@@ -1284,8 +1340,7 @@
                         "critical": "临界：仅适用于有经验的骑手和马匹。有主要的障碍。需要仔细检查桥梁。",
                         "dangerous": "危险：仅适用于在天气好的时候，非常有经验的骑手和马匹。需要下马。",
                         "demanding": "谨慎：不平缓的路面，偶尔有困难的路径。",
-                        "difficult": "困难：狭窄并裸露的路径。可能有需要跨越的障碍物和狭窄的通道。",
-                        "impossible": "无法通行：不适合马匹的路径或桥梁。路径太过狭窄，有不足的支撑物，和如梯子般的障碍。会有生命危险。"
+                        "difficult": "困难：狭窄并裸露的路径。可能有需要跨越的障碍物和狭窄的通道。"
                     },
                     "placeholder": "简单, 困难, 危险...",
                     "terms": "骑马难度"
@@ -1750,6 +1805,9 @@
                     },
                     "terms": "有机,有机食品,有机农业"
                 },
+                "orientation/orientation_parking": {
+                    "label": "朝向"
+                },
                 "outdoor_seating": {
                     "label": "室外座位",
                     "terms": "户外公共座椅,公共座椅,长椅"
@@ -1786,14 +1844,6 @@
                         "street_side": "路边",
                         "surface": "地面",
                         "underground": "地下"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "方向",
-                    "options": {
-                        "diagonal": "与街道呈对角线（斜着停）",
-                        "parallel": "与街道平行（正着停）",
-                        "perpendicular": "与街道垂直（横着停）"
                     }
                 },
                 "parking_entrance": {
@@ -2041,6 +2091,9 @@
                 },
                 "ref/isil": {
                     "label": "ISIL 编码"
+                },
+                "ref/linz/place_id-NZ": {
+                    "label": "新西兰地理委员会地名编号"
                 },
                 "ref/vatin": {
                     "label": "VAT ID Number"
@@ -2316,7 +2369,7 @@
                     "label": "类型",
                     "options": {
                         "alley": "巷",
-                        "drive-through": "免下车",
+                        "drive-through": "得来速",
                         "driveway": "车道",
                         "emergency_access": "消防通道",
                         "parking_aisle": "停车场通道"
@@ -2431,42 +2484,17 @@
                     "label": "运动"
                 },
                 "sport_ice": {
-                    "label": "冰上项目",
-                    "options": {
-                        "curling": "冰壶",
-                        "ice_hockey": "冰球",
-                        "ice_skating": "滑冰",
-                        "ice_stock": "冰上滑盘",
-                        "multi": "多个"
-                    }
+                    "label": "冰上项目"
                 },
                 "sport_pub": {
                     "label": "运动",
-                    "options": {
-                        "billiards": "台球",
-                        "darts": "飞镖",
-                        "table_soccer": "桌上足球"
-                    },
                     "terms": "运动,运动项目"
                 },
                 "sport_racing_motor": {
-                    "label": "赛车项目",
-                    "options": {
-                        "karting": "卡丁车",
-                        "motocross": "越野摩托车",
-                        "motor": "赛车",
-                        "speedway": "竞速摩托车"
-                    }
+                    "label": "赛车项目"
                 },
                 "sport_racing_nonmotor": {
-                    "label": "运动项目",
-                    "options": {
-                        "bmx": "小轮车",
-                        "cycling": "骑行",
-                        "dog_racing": "赛狗",
-                        "horse_racing": "赛马",
-                        "running": "跑步"
-                    }
+                    "label": "运动项目"
                 },
                 "stars": {
                     "label": "星级"
@@ -4220,8 +4248,9 @@
                     "name": "单人转门",
                     "terms": "单人转门"
                 },
-                "barrier/log": {
-                    "name": "倒在路上的树"
+                "barrier/lift_gate": {
+                    "name": "道闸",
+                    "terms": "道闸,挡车,拦车,升降杆"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "阻摩托车器",
@@ -5125,8 +5154,8 @@
                     "terms": "胡同,巷,弄堂,里弄,小巷,弄,窄路,巷弄（可通行机动车）"
                 },
                 "highway/service/drive-through": {
-                    "name": "免下车",
-                    "terms": "免下车,免下车餐馆,免下车银行"
+                    "name": "得来速",
+                    "terms": "免下车,免下车餐馆,免下车银行,得来速"
                 },
                 "highway/service/driveway": {
                     "name": "车道",
@@ -5426,10 +5455,6 @@
                 },
                 "landuse/military/base/navy": {
                     "name": "军港"
-                },
-                "landuse/military/danger_area": {
-                    "name": "军事危险区域",
-                    "terms": "危险区"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "军用障碍训练场"

@@ -182,6 +182,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- is a RelativeLayout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
     <RelativeLayout
         android:id="@+id/edit_history_container"
         android:layout_width="match_parent"
@@ -196,15 +197,11 @@
         android:layout_height="0dp"
         tools:ignore="MissingConstraints" />
 
-    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <!-- is a RelativeLayout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
     <RelativeLayout
         android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        tools:ignore="RtlHardcoded">
-    </RelativeLayout>
-
-    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+        android:clipChildren="false" />
 
 </RelativeLayout>

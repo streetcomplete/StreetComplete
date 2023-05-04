@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
+import de.westnordost.streetcomplete.util.math.contains
 
 /**
  * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
@@ -80,8 +81,7 @@ class MapDataCache(
                 ElementType.RELATION -> {
                     val deletedRelationMembers = relationCache.remove(key.id)?.members.orEmpty()
                     for (member in deletedRelationMembers) {
-                        val memberKey = ElementKey(member.type, member.ref)
-                        relationIdsByElementKeyCache[memberKey]?.remove(key.id)
+                        relationIdsByElementKeyCache[member.key]?.remove(key.id)
                     }
                     relationGeometryCache.remove(key.id)
                 }
@@ -140,15 +140,14 @@ class MapDataCache(
                 val oldRelation = relationCache[relation.id]
                 if (oldRelation != null) {
                     for (oldMember in oldRelation.members) {
-                        val memberKey = ElementKey(oldMember.type, oldMember.ref)
-                        relationIdsByElementKeyCache[memberKey]?.remove(relation.id)
+                        relationIdsByElementKeyCache[oldMember.key]?.remove(relation.id)
                     }
                 }
                 relationCache[relation.id] = relation
 
                 // ...and then the new members added
                 for (member in relation.members) {
-                    val memberKey = ElementKey(member.type, member.ref)
+                    val memberKey = member.key
                     // only if the node member is already in the spatial cache or any node of a member
                     // is, the relation ids it refers to must be known:
                     // relationIdsByElementKeyCache is required for getMapDataWithGeometry(bbox),
@@ -224,7 +223,7 @@ class MapDataCache(
         if (keys.size == cachedElements.size) return cachedElements
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
+        val cachedKeys = cachedElements.map { it.key }.toSet()
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
@@ -290,7 +289,7 @@ class MapDataCache(
         if (keys.size == cachedEntries.size) return cachedEntries
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
+        val cachedKeys = cachedEntries.map { it.key }.toSet()
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedEntries = fetch(keysToFetch)
         for (entry in fetchedEntries) {
@@ -375,6 +374,8 @@ class MapDataCache(
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
 
+            // get(bbox) for tiles not in spatialCache calls spatialCache.fetch, but this is still
+            // safe as tiles are replaced and properly filled as part of the following update
             nodes = HashSet<Node>(spatialCache.get(bbox))
             update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
 
@@ -385,8 +386,13 @@ class MapDataCache(
                 return result
             }
 
-            // get nodes again, this contains the newly added nodes, but maybe not the old ones if cache was trimmed
-            nodes.addAll(spatialCache.get(bbox))
+            // add newly fetched nodes from elements
+            // getting nodes from spatialCache can cause issues, as tiles in the bbox may now be removed unexpectedly
+            // see https://github.com/streetcomplete/StreetComplete/issues/4980#issuecomment-1531960544
+            for (element in elements) {
+                if (element !is Node) continue
+                if (element.position in bbox) nodes.add(element)
+            }
         } else {
             nodes = spatialCache.get(bbox)
         }
@@ -395,7 +401,7 @@ class MapDataCache(
         val relationIds = HashSet<Long>(nodes.size / 10)
         for (node in nodes) {
             wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
-            relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
+            relationIdsByElementKeyCache[node.key]?.let { relationIds.addAll(it) }
             result.put(node, ElementPointGeometry(node.position))
         }
         for (wayId in wayIds) {
@@ -408,7 +414,7 @@ class MapDataCache(
         }
 
         // trim if we fetched new data, and spatialCache is full
-        // trim to 90%, so trim is (probably) not immediately called on next fetch
+        // trim to 66%, so trim is (probably) not immediately called on next fetch
         if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
             trim((maxTiles * 2) / 3)
         }

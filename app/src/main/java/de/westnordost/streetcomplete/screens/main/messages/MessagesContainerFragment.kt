@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
 import de.westnordost.streetcomplete.data.messages.NewVersionMessage
 import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
@@ -16,9 +15,7 @@ import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFr
 /** A fragment that contains any fragments that would show messages.
  *  Usually, messages are shown as dialogs, however there is currently one exception which
  *  makes this necessary as a fragment */
-class MessagesContainerFragment :
-    Fragment(R.layout.fragment_messages_container),
-    HandlesOnBackPressed {
+class MessagesContainerFragment : Fragment(R.layout.fragment_messages_container) {
 
     fun showMessage(message: Message) {
         val ctx = context ?: return
@@ -49,12 +46,4 @@ class MessagesContainerFragment :
         }
     }
 
-    override fun onBackPressed(): Boolean {
-        for (f in childFragmentManager.fragments) {
-            if (f is HandlesOnBackPressed) {
-                if (f.onBackPressed()) return true
-            }
-        }
-        return false
-    }
 }

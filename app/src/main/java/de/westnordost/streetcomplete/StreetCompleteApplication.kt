@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
@@ -68,7 +68,7 @@ class StreetCompleteApplication : Application() {
     private val preloader: Preloader by inject()
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
-    private val downloadedTilesDao: DownloadedTilesDao by inject()
+    private val downloadedTilesController: DownloadedTilesController by inject()
     private val prefs: SharedPreferences by inject()
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
@@ -154,7 +154,7 @@ class StreetCompleteApplication : Application() {
 
     private fun onNewVersion() {
         // on each new version, invalidate quest cache
-        downloadedTilesDao.removeAll()
+        downloadedTilesController.invalidateAll()
     }
 
     override fun onTerminate() {

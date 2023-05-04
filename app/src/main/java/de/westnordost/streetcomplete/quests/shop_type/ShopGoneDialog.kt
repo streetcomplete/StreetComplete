@@ -55,7 +55,8 @@ class ShopGoneDialog(
                 countryCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                true
             ).show()
         }
 

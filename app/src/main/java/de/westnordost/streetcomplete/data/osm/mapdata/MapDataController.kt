@@ -45,7 +45,7 @@ class MapDataController internal constructor(
     ) { bbox ->
         val elements = elementDB.getAll(bbox)
         val elementGeometries = geometryDB.getAllEntries(
-            elements.mapNotNull { if (it !is Node) ElementKey(it.type, it.id) else null }
+            elements.mapNotNull { if (it !is Node) it.key else null }
         )
         elements to elementGeometries
     }
@@ -67,7 +67,7 @@ class MapDataController internal constructor(
             // don't use cache here, because if not everything is already cached, db call will be faster
             oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
-                oldElementKeys.remove(ElementKey(element.type, element.id))
+                oldElementKeys.remove(element.key)
             }
 
             // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
@@ -160,8 +160,6 @@ class MapDataController internal constructor(
         mapData.addAll(ways)
     }
 
-    fun get(type: ElementType, id: Long): Element? = cache.getElement(type, id, elementDB::get)
-
     fun getGeometry(type: ElementType, id: Long): ElementGeometry? = cache.getGeometry(type, id, geometryDB::get)
 
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries)
@@ -185,9 +183,9 @@ class MapDataController internal constructor(
         )
     }
 
-    override fun getNode(id: Long): Node? = get(ElementType.NODE, id) as? Node
-    override fun getWay(id: Long): Way? = get(ElementType.WAY, id) as? Way
-    override fun getRelation(id: Long): Relation? = get(ElementType.RELATION, id) as? Relation
+    override fun getNode(id: Long): Node? = cache.getElement(ElementType.NODE, id, elementDB::get) as? Node
+    override fun getWay(id: Long): Way? = cache.getElement(ElementType.WAY, id, elementDB::get) as? Way
+    override fun getRelation(id: Long): Relation? = cache.getElement(ElementType.RELATION, id, elementDB::get) as? Relation
 
     fun getAll(elementKeys: Collection<ElementKey>): List<Element> =
         cache.getElements(elementKeys, elementDB::getAll)
@@ -211,7 +209,7 @@ class MapDataController internal constructor(
 
     override fun getRelationComplete(id: Long): MapData? {
         val relation = getRelation(id) ?: return null
-        val elementKeys = relation.members.map { ElementKey(it.type, it.ref) }.toSet()
+        val elementKeys = relation.members.map { it.key }.toSet()
         val elements = getAll(elementKeys)
         if (elements.size < elementKeys.size) return null
         return MutableMapData(elements + relation)

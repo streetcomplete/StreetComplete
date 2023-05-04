@@ -27,6 +27,7 @@
 
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
         <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
+        <item name="preferenceTheme">@style/Theme.Preferences</item>
     </style>
 
     <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
@@ -75,6 +76,10 @@
 
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="Theme.Preferences" parent="PreferenceThemeOverlay">
+        <item name="android:layout">@layout/fragment_preferences</item>
     </style>
 
 </resources>

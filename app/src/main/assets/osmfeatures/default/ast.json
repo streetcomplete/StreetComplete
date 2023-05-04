@@ -2188,9 +2188,6 @@
                 "landuse/military/barracks": {
                     "name": "Cuartel"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Área de peligru"
-                },
                 "landuse/military/range": {
                     "name": "Campu de tiru"
                 },

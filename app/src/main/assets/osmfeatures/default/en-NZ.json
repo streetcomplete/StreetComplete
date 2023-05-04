@@ -29,6 +29,19 @@
                         "forward": "Forwards"
                     }
                 },
+                "fire_mains": {
+                    "options": {
+                        "dry": "Dry Riser Inlet",
+                        "wet": "Wet Riser Inlet"
+                    }
+                },
+                "fire_sprinkler": {
+                    "options": {
+                        "dry": "Dry System",
+                        "pre-action": "Pre-action System",
+                        "wet": "Wet System"
+                    }
+                },
                 "healthcare/speciality": {
                     "label": "Specialities"
                 },
@@ -46,11 +59,6 @@
                 },
                 "opening_hours": {
                     "label": "Opening Hours"
-                },
-                "parking/orientation": {
-                    "options": {
-                        "perpendicular": "Meets the Street at a Right Angle "
-                    }
                 },
                 "railway/signal/direction": {
                     "options": {
@@ -222,6 +230,9 @@
                 },
                 "emergency/fire_hose": {
                     "terms": "fire hose reel,fhr,riser,dry riser,standpipe,stand pipe"
+                },
+                "emergency/fire_service_inlet": {
+                    "name": "Building Inlet"
                 },
                 "healthcare/birthing_center": {
                     "name": "Birthing Centre"

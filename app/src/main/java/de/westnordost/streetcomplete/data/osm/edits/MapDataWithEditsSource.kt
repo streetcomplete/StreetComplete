@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
@@ -74,7 +75,7 @@ class MapDataWithEditsSource internal constructor(
                  */
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
                 val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
-                    val key = ElementKey(element.type, element.id)
+                    val key = element.key
                     if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
                         null // we already have the updated version, so this element is unchanged
                     } else {
@@ -96,7 +97,7 @@ class MapDataWithEditsSource internal constructor(
                 }
 
                 for (element in updated) {
-                    val key = ElementKey(element.type, element.id)
+                    val key = element.key
                     // an element contained in the update that was deleted by an edit shall be deleted
                     if (deletedElements.contains(key)) {
                         modifiedDeleted.add(key)
@@ -174,32 +175,34 @@ class MapDataWithEditsSource internal constructor(
 
         override fun onDeletedEdits(edits: List<ElementEdit>) {
             val mapData = MutableMapDataWithGeometry()
-            val elementsToDelete: MutableList<ElementKey>
+            val deletedElementKeys: MutableList<ElementKey>
             synchronized(this) {
                 rebuildLocalChanges()
 
-                elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
+                deletedElementKeys = edits
+                    .flatMap { elementEditsController.getIdProvider(it.id).getAll() }
+                    .toMutableList()
 
-                for (edit in edits) {
-                    val element = get(edit.elementType, edit.elementId)
+                val editedElementKeys = edits.flatMap { it.action.elementKeys }.toSet()
+
+                for (key in editedElementKeys) {
+                    val element = get(key.type, key.id)
                     if (element != null) {
-                        mapData.put(element, getGeometry(edit.elementType, edit.elementId))
+                        mapData.put(element, getGeometry(key.type, key.id))
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-                        elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                        deletedElementKeys.add(key)
                     }
+                }
 
-                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-                        val waysContainingNode = getWaysForNode(edit.elementId)
-                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-                        for (elem in waysContainingNode + affectedRelations) {
-                            mapData.put(elem, getGeometry(elem.type, elem.id))
-                        }
+                for (edit in edits) {
+                    for (element in getElementsWithChangedGeometry(edit)) {
+                        mapData.put(element, getGeometry(element.type, element.id))
                     }
                 }
             }
 
-            callOnUpdated(updated = mapData, deleted = elementsToDelete)
+            callOnUpdated(updated = mapData, deleted = deletedElementKeys)
         }
     }
 
@@ -209,7 +212,7 @@ class MapDataWithEditsSource internal constructor(
         elementEditsController.addListener(elementEditsListener)
     }
 
-    fun get(type: ElementType, id: Long): Element? = synchronized(this) {
+    override fun get(type: ElementType, id: Long): Element? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -413,16 +416,15 @@ class MapDataWithEditsSource internal constructor(
 
     private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
         val idProvider = elementEditsController.getIdProvider(edit.id)
-        val editElement = get(edit.elementType, edit.elementId)
 
         val mapDataChanges: MapDataChanges
         try {
-            mapDataChanges = edit.action.createUpdates(edit.originalElement, editElement, this, idProvider)
+            mapDataChanges = edit.action.createUpdates(this, idProvider)
         } catch (e: ConflictException) {
             return null
         }
 
-        val deletedKeys = mapDataChanges.deletions.map { ElementKey(it.type, it.id) }
+        val deletedKeys = mapDataChanges.deletions.map { it.key }
         for (key in deletedKeys) {
             deletedElements.add(key)
             updatedElements.remove(key)
@@ -431,29 +433,37 @@ class MapDataWithEditsSource internal constructor(
         /* sorting by element type: first nodes, then ways, then relations. This is important
            because the geometry of (new) nodes is necessary to create the geometry of ways etc
          */
-        val updates = (mapDataChanges.creations + mapDataChanges.modifications).sortedBy { it.type.ordinal }
+        val updates = (
+            mapDataChanges.creations +
+            mapDataChanges.modifications +
+            getElementsWithChangedGeometry(edit)
+        ).sortedBy { it.type.ordinal }
 
         for (element in updates) {
-            val key = ElementKey(element.type, element.id)
+            val key = element.key
             deletedElements.remove(key)
             updatedElements[key] = element
             updatedGeometries[key] = createGeometry(element)
         }
 
-        // get affected ways and relations and update geometries if a node was moved
-        val elementsWithChangedGeometry = mutableListOf<Element>()
-        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
-            val waysContainingNode = getWaysForNode(edit.elementId)
-            val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
-            for (element in waysContainingNode + affectedRelations) {
-                val key = ElementKey(element.type, element.id)
-                deletedElements.remove(key)
-                updatedElements[key] = element
-                updatedGeometries[key] = createGeometry(element)
-                elementsWithChangedGeometry.add(element) // questController needs to know that element was affected (though it was not updated in OSM sense)
-            }
+        return MapDataUpdates(updated = updates, deleted = deletedKeys)
+    }
+
+    private fun getElementsWithChangedGeometry(edit: ElementEdit): Sequence<Element> {
+        val movedNode = when (edit.action) {
+            is MoveNodeAction -> edit.action.originalNode
+            is RevertMoveNodeAction -> edit.action.originalNode
+            else -> return emptySequence()
         }
-        return MapDataUpdates(updated = updates + elementsWithChangedGeometry, deleted = deletedKeys)
+        return sequence {
+            val waysContainingNode = getWaysForNode(movedNode.id)
+            val relationsContainingNode = getRelationsForNode(movedNode.id)
+            val relationsContainingWayContainingNode = waysContainingNode.flatMap { getRelationsForWay(it.id) }
+
+            yieldAll(waysContainingNode)
+            yieldAll(relationsContainingNode)
+            yieldAll(relationsContainingWayContainingNode)
+        }
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {

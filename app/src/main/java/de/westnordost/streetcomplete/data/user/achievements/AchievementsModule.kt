@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -49,6 +50,7 @@ private val typeAliases = listOf(
     "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
     "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
+    "AddPicnicTableCover"                to AddAmenityCover::class.simpleName!!,
     // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
     "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
     "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,

@@ -527,8 +527,7 @@
                         "critical": "Robežojas: Izjājams tikai pieredzējušiem jājējiem un zirgiem. Lieli šķēršļi. Tilti itsevisķi būtu rūpīgi jāpārbauda.",
                         "dangerous": "Bīstams: Izjājams tikai ļoti pieredzējušiem jātniekiem un zirgiem tikai labos laikapstākļos. Jānokāpj pirms.",
                         "demanding": "Jājiet piesardzīgi: Nevienmērīga taka, dažkārt sarežģītas vietas.",
-                        "difficult": "Grūts: Pārlieku šaurs un atvērts. Var saturēt šķēršļus, kam jāpārkāpj un šauras pārejas.",
-                        "impossible": "Necaurjājams: Ceļš vai tilts nav izejams ar zirgu. Pārāk šaurs, nepietiekams atbalsts, šķērsļi kā trepes. Dzīvībai bīstams."
+                        "difficult": "Grūts: Pārlieku šaurs un atvērts. Var saturēt šķēršļus, kam jāpārkāpj un šauras pārejas."
                     },
                     "placeholder": "Grūts, Bīstams..."
                 },
