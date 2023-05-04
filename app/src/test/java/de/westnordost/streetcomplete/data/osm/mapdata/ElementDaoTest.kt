@@ -139,7 +139,7 @@ class ElementDaoTest {
         val relations = listOf(rel(1))
 
         on(nodeDao.getAll(bbox)).thenReturn(nodes)
-        on(wayDao.getAllForNodes(eq(nodeIds))).thenReturn(ways)
+        on(wayDao.getAllForNodes(eq(nodeIds.toSet()))).thenReturn(ways)
         on(relationDao.getAllForElements(
             nodeIds = eq(nodeIds),
             wayIds = eq(wayIds),
