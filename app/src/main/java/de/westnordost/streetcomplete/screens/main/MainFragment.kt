@@ -650,12 +650,14 @@ class MainFragment :
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
-    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+    override val metersPerPixel: Double? get() = mapFragment?.getMetersPerPixel()
+
+    override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
         if (editType is OsmElementQuestType<*> && prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             visibleQuestsSource.getAllVisible(geometry.center.enclosingBoundingBox(1.0))
                 .filterIsInstance<OsmQuest>()
-                .firstOrNull { it.elementType == element.type && it.elementId == element.id }
+                .firstOrNull { it.geometry == geometry } // this is not great, but we don't have key on the edited element any more
                 ?.let { runBlocking { viewLifecycleScope.launch { showQuestDetails(it) } } }
                 ?: closeBottomSheet()
         }
@@ -680,6 +682,9 @@ class MainFragment :
     override fun onQuestHidden(questKey: QuestKey) {
         closeBottomSheet()
     }
+
+    override fun getPointOf(pos: LatLon): PointF? =
+        mapFragment?.getPointOf(pos)
 
     override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?, editTypeName: String?) {
         val f = TagEditor()

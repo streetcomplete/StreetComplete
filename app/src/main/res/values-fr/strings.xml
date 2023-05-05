@@ -910,7 +910,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Combien d’étages au-dessus du sous-sol compte ce bâtiment ?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Combien d’étages au-dessus du sous-sol compte cette partie du bâtiment ?"</string>
-    <string name="quest_crossing_title">"Y a-t-il des trottoirs à l’endroit où ce chemin rencontre cette route ? De quel type ?"</string>
     <string name="pref_subtitle_quests_preset_name">"Préréglages : %s"</string>
     <string name="default_disabled_msg_roofShape">"Ce type de quête est désactivé par défaut car la forme des toits est souvent peu visible depuis la rue. Cette quête est également très chronophage. Il est souvent plus efficace de renseigner ces informations depuis des images satellitaires."</string>
     <string name="quest_religion_animist">"Animiste"</string>
@@ -944,7 +943,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_buildingType_bridge">"Pont entre des bâtiments"</string>
     <string name="quest_laundrySelfService_title2">"Cette laverie offre-t-elle un libre-service ?"</string>
     <string name="quest_dietType_explanation_halal">"Les produits halal doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification."</string>
-    <string name="quest_picnicTableCover_title">"Cette table de pique-nique est-elle couverte (protégée de la pluie) ?"</string>
     <string name="quest_generic_answer_is_actually_steps">"C’est un escalier"</string>
     <string name="quest_barrier_type_passage_conversion">"Changé en un passage dans un mur/une clôture/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Changé en porte"</string>
@@ -1240,7 +1238,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="overlay_addresses">"Adresses"</string>
     <string name="overlay_shops">"Magasins"</string>
     <string name="name_label">"Nom :"</string>
-    <string name="vacant_shop_title">"Emplacement vacant"</string>
     <string name="unknown_shop_title">"Type de lieu non non défini"</string>
     <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
     <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos ?"</string>

@@ -74,7 +74,7 @@ class CreatePoiFragment : TagEditor() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
-        elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
+        elementEditsController.add(createPoiEdit, ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_ID)?.let {
             val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()

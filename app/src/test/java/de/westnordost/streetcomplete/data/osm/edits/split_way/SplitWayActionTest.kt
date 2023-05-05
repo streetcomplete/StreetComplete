@@ -642,18 +642,37 @@ class SplitWayActionTest {
         `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "from")
     }
 
+    @Test fun idsUpdatesApplied() {
+        val way = way(id = -1)
+        val action = SplitWayAction(way, listOf())
+        val idUpdates = mapOf(ElementKey(WAY, -1) to 5L)
+
+        assertEquals(
+            SplitWayAction(way.copy(id = 5), listOf()),
+            action.idsUpdatesApplied(idUpdates)
+        )
+    }
+
+    @Test fun elementKeys() {
+        assertEquals(
+            listOf(ElementKey(WAY, -1)),
+            SplitWayAction(way(id = -1), listOf()).elementKeys
+        )
+    }
+
     private fun doSplit(
         vararg splits: SplitPolylineAtPosition = arrayOf(split),
         originalWay: Way = way
     ): MapData {
-        val action = SplitWayAction(ArrayList(splits.toList()))
+        val action = SplitWayAction(originalWay, ArrayList(splits.toList()))
         val counts = action.newElementsCount
         val elementKeys = ArrayList<ElementKey>()
         for (i in 1L..counts.nodes) { elementKeys.add(ElementKey(NODE, -i)) }
         for (i in 1L..counts.ways) { elementKeys.add(ElementKey(WAY, -i)) }
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
-        val data = action.createUpdates(originalWay, way, repos, provider)
+        on(repos.getWay(way.id)).thenReturn(way)
+        val data = action.createUpdates(repos, provider)
         return MutableMapData(data.creations + data.modifications)
     }
 

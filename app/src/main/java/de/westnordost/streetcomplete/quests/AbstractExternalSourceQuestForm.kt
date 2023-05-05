@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -94,9 +93,8 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         if (e != null) {
             if ((otherAnswers + buttonPanelAnswers).none { it.titleResourceId == R.string.quest_generic_answer_show_edit_tags })
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
-            if (e.type == ElementType.NODE)
+            if (e is Node) {
                 answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })
-            if (e is Node) { // ExternalSourceQuests require expert mode to be enabled at least temporarily, so no need to check
                 answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
             }
             if (e.isSplittable()) {
@@ -107,16 +105,16 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         return answers
     }
 
-    protected fun deletePoiNode(element: Element) {
+    protected fun deletePoiNode(node: Node) {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.osm_element_gone_description)
-            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed(element) }
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed(node) }
             .setNeutralButton(R.string.leave_note) { _, _ -> composeNote() }
             .show()
     }
 
-    private fun onDeletePoiNodeConfirmed(element: Element) {
-        viewLifecycleScope.launch { editElement(element, DeletePoiNodeAction) }
+    private fun onDeletePoiNodeConfirmed(node: Node) {
+        viewLifecycleScope.launch { editElement(DeletePoiNodeAction(node)) }
     }
 
     private fun onClickMoveNodeAnswer() {
@@ -197,7 +195,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         listener?.onEditTags(e, geo, questKey)
     }
 
-    protected suspend fun editElement(element: Element, action: ElementEditAction) {
+    protected suspend fun editElement(action: ElementEditAction) {
         // currently no way to set source to "survey,extra" because even other answers are likely part of the quest for both existing quests
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
@@ -207,8 +205,8 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         tempHideQuest() // make it disappear. the questType should take care the quest does not appear again
 
         withContext(Dispatchers.IO) {
-            elementEditsController.add(externalQuestType, element, geometry, "survey", action, questKey)
+            elementEditsController.add(externalQuestType, geometry, "survey", action, questKey)
         }
-        listener?.onEdited(externalQuestType, element, geometry)
+        listener?.onEdited(externalQuestType, geometry)
     }
 }

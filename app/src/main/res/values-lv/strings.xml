@@ -907,7 +907,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="about_title_faq">"B.U.J."</string>
     <string name="quest_buildingLevels_title2">"Cik daudz stāvu virs pagraba ir šai ēkai?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Cik daudz stāvu virs pagraba ir šai ēkas daļai?"</string>
-    <string name="quest_crossing_title">"Vai ir apmales tajā vietā, kur tiekas šis ceļš ar ielu? Kāda veida?"</string>
     <string name="pref_subtitle_quests_preset_name">"Priekšiestatījums: %s"</string>
     <string name="default_disabled_msg_roofShape">"Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo jumtu formas no ielas puses nereti ir grūti saskatīt. Šis uzdevumu veids arī ir diezgan laikietilpīgs; vairumā gadījumu šo informāciju ir vieglāk iegūt mājās no aerofoto."</string>
     <string name="quest_religion_animist">"Animisms"</string>
@@ -941,7 +940,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_buildingType_bridge">"Tilts starp divām ēkām (gaisa ceļš)"</string>
     <string name="quest_laundrySelfService_title2">"Vai šajā veļas mazgātuvē ir pašapkalpošanās?"</string>
     <string name="quest_dietType_explanation_halal">"Halāla ēdienus jāpagatavo pēc noteiktiem noteikumiem; halāla sertifikācijas aģentūras apzīmē atbilstošus produktus."</string>
-    <string name="quest_picnicTableCover_title">"Vai šis piknika galds ir nosegts (pasargāts no lietus)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Šie ir pakāpieni"</string>
     <string name="quest_barrier_type_passage_conversion">"Pārveidot par eju sienā, žogā vai kur citur."</string>
     <string name="quest_barrier_type_gate_conversion">"Pārveidot par vārtiem"</string>
@@ -1237,7 +1235,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="overlay_addresses">"Adreses"</string>
     <string name="overlay_shops">"Veikali"</string>
     <string name="name_label">"Nosaukums:"</string>
-    <string name="vacant_shop_title">"Tukšs veikals"</string>
     <string name="unknown_shop_title">"Cita veida vieta"</string>
     <string name="quest_address_answer_no_address">"Šeit nav adreses"</string>
     <string name="quest_bicycle_barrier_installation_title">"Vai šo velosipēda barjeru var atvērt (ar vai bez atslēgas)?"</string>

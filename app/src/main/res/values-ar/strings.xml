@@ -910,7 +910,6 @@
     <string name="about_title_faq">"التعليمات"</string>
     <string name="quest_buildingLevels_title2">"كم عدد المستويات التي فوق القبو والتي يحتوي عليها هذا المبنى؟"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"كم عدد المستويات التي فوق الطابق السفلي الذي يحتويه جزء المبنى هذا؟"</string>
-    <string name="quest_crossing_title">"هل توجد حواجز في نقطة إلتقاء هذا الطريق بهذا الطريق هنا؟  ومن اي نوع؟"</string>
     <string name="pref_subtitle_quests_preset_name">"القالب: %s"</string>
     <string name="default_disabled_msg_roofShape">"يتم تعطيل نوع المهمة هذا افتراضيًا لأن أشكال السقف غالبًا ما تكون غير مرئية بسهولة من الشارع، كما أن هذا النوع من المهام أيضًا يستغرق وقتًا طويلاً؛ لذا في معظم الحالات ، يكون من الأسهل والأكثر كفاءة تحديد هذا الأمر من خلال الصور الجوية في المنزل."</string>
     <string name="quest_religion_animist">"روحاني"</string>
@@ -944,7 +943,6 @@
     <string name="quest_buildingType_bridge">"جسر بين المباني (سكاي واي)"</string>
     <string name="quest_laundrySelfService_title2">","</string>
     <string name="quest_dietType_explanation_halal">"يتم تحضير المنتجات الحلال وفقًا لقواعد خاصة، كما تقوم منظمات بمنح شهادات الحلال وذلك من خلال وضع علامة على المنتجات."</string>
-    <string name="quest_picnicTableCover_title">"هل طاولة النزهة هذه مغطاة (محمية من المطر)؟"</string>
     <string name="quest_generic_answer_is_actually_steps">"هذا درج/سلم"</string>
     <string name="quest_barrier_type_passage_conversion">"تحول إلى ممر في جدارأو سياج/ الخ."</string>
     <string name="quest_barrier_type_gate_conversion">"تحول إلى بوابة"</string>
@@ -1244,7 +1242,6 @@
     <string name="overlay_addresses">"عناوين"</string>
     <string name="overlay_shops">"محلات"</string>
     <string name="name_label">"اسم:"</string>
-    <string name="vacant_shop_title">"محل شاغر"</string>
     <string name="unknown_shop_title">"نوع آخر من الأماكن"</string>
     <string name="quest_address_answer_no_address">"لا يوجد عنوان هنا"</string>
     <string name="quest_bicycle_barrier_installation_title">"هل يمكن فتح حاجز الدورة هذا (بمفتاح أو بدونه)؟"</string>

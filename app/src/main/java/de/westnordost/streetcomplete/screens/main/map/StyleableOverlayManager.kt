@@ -109,7 +109,7 @@ class StyleableOverlayManager(
         val overlay = overlay ?: return emptyList()
         val data = hashMapOf<ElementKey, StyledElement>()
         createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
-            if (styledElement == null || !levelFilter.levelAllowed(styledElement.element)) return@forEach
+            if (!levelFilter.levelAllowed(styledElement.element)) return@forEach
             data[key] = styledElement
         }
 
@@ -222,29 +222,36 @@ class StyleableOverlayManager(
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val layer = overlay ?: return
+        val overlay = overlay ?: return
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         var changedAnything = false
         m.withLock {
             val bboxes = cache.keys.associateWith { it.asBoundingBox(TILES_ZOOM) }
-            var empty = true
-            createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
-                empty = false
-                if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
-
-                if (styledElement != null) cache.forEach {
+            deleted.forEach { key ->
+                cache.values.forEach {
+                    if (it.remove(key) != null) changedAnything = true
+                }
+            }
+            val styledElementsByKey = HashMap<ElementKey, StyledElement>(updated.size, 1f)
+            createStyledElementsByKey(overlay, updated).forEach { styledElementsByKey[it.first] = it.second }
+            // for elements that used to be displayed in the overlay but now not anymore
+            updated.forEach { element ->
+                val key = element.key
+                if (!styledElementsByKey.containsKey(key)) {
+                    cache.values.forEach { if (it.remove(key) != null) changedAnything = true }
+                }
+            }
+            styledElementsByKey.forEach { (key, styledElement) ->
+                if (!levelFilter.levelAllowed(styledElement.element)) return@forEach
+                cache.forEach {
                     if (styledElement.geometry.getBounds().intersect(bboxes[it.key]!!))
                         it.value[key] = styledElement
-                } else
-                    cache.values.forEach { if (it.remove(key) != null) changedAnything = true }
-                if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
+                }
+                if (!changedAnything && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
                     changedAnything = true
                 }
             }
-            if (empty) // we updated elements, but none was in styled elements -> maybe element is not applicable any more
-                (deleted + updated.map { ElementKey(it.type, it.id) }).forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
-            else
-                deleted.forEach { key -> cache.values.forEach { if (it.remove(key) != null) changedAnything = true } }
+
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(lastDisplayedRect?.let { getFromCache(it) } ?: cache.values.flatMap { it.values }.toHashSet())
                 ctrl.requestRender()
@@ -252,11 +259,14 @@ class StyleableOverlayManager(
         }
     }
 
-    private fun createStyledElementsByKey(overlay: Overlay, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
-        overlay.getStyledElements(mapData).map { (element, style) ->
+    private fun createStyledElementsByKey(
+        overlay: Overlay,
+        mapData: MapDataWithGeometry
+    ): Sequence<Pair<ElementKey, StyledElement>> =
+        overlay.getStyledElements(mapData).mapNotNull { (element, style) ->
             val key = element.key
-            val geometry = mapData.getGeometry(element.type, element.id)
-            key to geometry?.let { StyledElement(element, geometry, style) }
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@mapNotNull null
+            key to StyledElement(element, geometry, style)
         }
 
     companion object {

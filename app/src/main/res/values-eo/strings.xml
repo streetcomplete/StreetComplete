@@ -889,7 +889,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="about_title_faq">"Oftaj Demandoj"</string>
     <string name="quest_buildingLevels_title2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵo?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵparto?"</string>
-    <string name="quest_crossing_title">"Ĉu estas trotuarrando kie la vojo kunigas kun la strato? Kia?"</string>
     <string name="pref_subtitle_quests_preset_name">"Antaŭdifino: %s"</string>
     <string name="quest_religion_animist">"Animismo"</string>
     <string name="quest_construction_steps_title">"Ĉu ĉi tiuj paŝoj estas finitaj?"</string>
@@ -921,7 +920,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_generic_hasFeature_optional">"Laŭvole"</string>
     <string name="quest_buildingType_bridge">"Ponto inter konstruaĵoj (ĉielvojo)"</string>
     <string name="quest_laundrySelfService_title2">"Ĉu ĉi tiu lavejo disponigas memservon?"</string>
-    <string name="quest_picnicTableCover_title">"Ĉu ĉi tiu piknika tablo estas kovrita (protektita kontraŭ pluvo)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Ĉi tiu parto estas ŝtuparo"</string>
     <string name="quest_barrier_type_passage_conversion">"Alikonstruita al transirejo tra muro/barilo/ktp."</string>
     <string name="quest_barrier_type_gate_conversion">"Konvertita en pordegon"</string>
@@ -1203,7 +1201,6 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="overlay_addresses">"Adresoj"</string>
     <string name="overlay_shops">"Vendejoj"</string>
     <string name="name_label">"Nomo:"</string>
-    <string name="vacant_shop_title">"Vaka vendejo"</string>
     <string name="unknown_shop_title">"Alia kategorio"</string>
     <string name="quest_address_answer_no_address">"Ne estas adreso"</string>
     <string name="quest_bicycle_barrier_installation_title">"Ĉu oni povas malfermi ĉi tiun biciklan baron (kun aŭ sen ŝlosilo)?"</string>

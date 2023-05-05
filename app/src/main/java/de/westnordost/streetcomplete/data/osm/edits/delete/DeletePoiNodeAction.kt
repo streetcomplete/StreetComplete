@@ -4,10 +4,11 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
@@ -24,34 +25,44 @@ import kotlinx.serialization.Serializable
  *     just "degraded" to be a vertex, i.e. the tags are cleared.
  *  */
 @Serializable
-object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
+data class DeletePoiNodeAction(
+    val originalNode: Node
+) : ElementEditAction, IsActionRevertable {
+
+    override val elementKeys get() = listOf(originalNode.key)
+
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        originalNode = originalNode.copy(id = updatedIds[originalNode.key] ?: originalNode.id)
+    )
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val node = element as? Node ?: throw ConflictException("Element deleted")
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        val currentNode = mapDataRepository.getNode(originalNode.id)
+            ?: throw ConflictException("Element deleted")
+
+        if (isGeometrySubstantiallyDifferent(originalNode, currentNode)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
         // delete free-floating node
         return if (
-            mapDataRepository.getWaysForNode(node.id).isEmpty()
-            && mapDataRepository.getRelationsForNode(node.id).isEmpty()
+            mapDataRepository.getWaysForNode(currentNode.id).isEmpty()
+            && mapDataRepository.getRelationsForNode(currentNode.id).isEmpty()
         ) {
-            MapDataChanges(deletions = listOf(node))
+            MapDataChanges(deletions = listOf(currentNode))
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            MapDataChanges(modifications = listOf(node.copy(
+            val emptyNode = currentNode.copy(
                 tags = emptyMap(),
                 timestampEdited = nowAsEpochMilliseconds()
-            )))
+            )
+            MapDataChanges(modifications = listOf(emptyNode))
         }
     }
 
-    override fun createReverted(): ElementEditAction = RevertDeletePoiNodeAction
+    override fun createReverted(idProvider: ElementIdProvider) =
+        RevertDeletePoiNodeAction(originalNode)
 }

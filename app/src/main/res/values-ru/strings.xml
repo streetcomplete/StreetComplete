@@ -910,7 +910,6 @@
     <string name="about_title_faq">"ЧаВо"</string>
     <string name="quest_buildingLevels_title2">"Сколько этажей над подвалом у этого здания?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Сколько этажей над подвалом у этой части здания?"</string>
-    <string name="quest_crossing_title">"Есть ли бордюры в месте пересечения этого пути с дорогой? Какого типа?"</string>
     <string name="pref_subtitle_quests_preset_name">"Преднастройка: %s"</string>
     <string name="default_disabled_msg_roofShape">"Этот тип квеста отключён по умолчанию, потому что форму крыши часто нелегко распознать с улицы. Этот тип задания также довольно трудоёмкий; в большинстве случаев проще и эффективнее сопоставить его с помощью аэрофотоснимков дома."</string>
     <string name="quest_religion_animist">"Анимист"</string>
@@ -944,7 +943,6 @@
     <string name="quest_buildingType_bridge">"Мост между зданиями (эстакада)"</string>
     <string name="quest_laundrySelfService_title2">"Эта прачечная с самообслуживанием?"</string>
     <string name="quest_dietType_explanation_halal">"Халяльные продукты должны быть приготовлены в соответствии со специальными правилами, а агентства по сертификации Халяль должны маркировать продукцию в соответствии с ними."</string>
-    <string name="quest_picnicTableCover_title">"Столик для пикника под навесом (укрыт от дождя)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Эта часть является лестницей"</string>
     <string name="quest_barrier_type_passage_conversion">"Превращён в проход в стене/заборе/и т.п."</string>
     <string name="quest_barrier_type_gate_conversion">"Преобразовано в ворота"</string>
@@ -1242,7 +1240,6 @@
     <string name="overlay_addresses">"Адреса"</string>
     <string name="overlay_shops">"Магазины"</string>
     <string name="name_label">"Название"</string>
-    <string name="vacant_shop_title">"Свободный магазин"</string>
     <string name="unknown_shop_title">"Другой тип места"</string>
     <string name="quest_address_answer_no_address">"Тут нет адреса"</string>
     <string name="quest_bicycle_barrier_installation_title">"Может ли эта преграда для велосипедов быть открыта (с ключом или без)?"</string>
@@ -1295,8 +1292,21 @@
     <string name="separate_cycleway_with_sidewalk">"Вело дорожка с отдельным тротуаром для пешеходов"</string>
     <string name="cycleway_reverse_direction">"Развернуть направление велосипедной дорожки"</string>
     <string name="cycleway_reverse_direction_warning">"Велосипедная дорожка, идущая в противоположном направлении бывает крайне редко."</string>
+    <string name="cycleway_reverse_direction_toast">"Нажмите, на какую сторону повернуть"</string>
     <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
     <string name="privacy_html_arcore">"Данное приложение использует &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сервисы Google Play для дополненной реальности&lt;/a&gt; (ARCore), предоставленные Google в соответствии с &lt;a href=\"https://policies.google.com/privacy\"&gt;политикой приватности Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Этот тип квеста по умолчанию отключен, поскольку может потребоваться повторная проверка ситуации в определенное время года."</string>
+    <string name="quest_presets_duplicate">"Дублировать"</string>
+    <string name="quest_surface_value_mud">"Стойкая грязь"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Здесь нет туалета"</string>
+    <string name="unknown_surface_title">"Другой вид поверхности"</string>
+    <string name="overlay_surface">"Покрытие"</string>
+    <string name="quest_crossing_title2">"Здесь есть переправа?"</string>
+    <string name="quest_hairdresser_title">"Какие клиенты посещают эту парикмахерскую?"</string>
+    <string name="quest_hairdresser_male_and_female">"Любые"</string>
+    <string name="quest_hairdresser_female_only">"Женщины"</string>
+    <string name="quest_hairdresser_male_only">"Мужчины"</string>
+    <string name="quest_hairdresser_not_signed">"Не подписано"</string>
 </resources>

@@ -907,7 +907,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Quanti piani sopra il seminterrato ha questo edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quanti piani sopra il seminterrato ha questa parte di edificio?"</string>
-    <string name="quest_crossing_title">"Ci sono cordoli dove questa via incontra la strada? Di che tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preimpostazione: %s"</string>
     <string name="default_disabled_msg_roofShape">"Questo tipo di missione è disabilitata perché la forma del tetto non è sempre facilmente visibile dalla strada. Questo tipo di missione è anche gravosa; nella maggior parte dei casi è più facile ed efficiente mappare queste informazioni usando le immagini satellitari da casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -941,7 +940,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_buildingType_bridge">"Ponte tra edifici"</string>
     <string name="quest_laundrySelfService_title2">"Questa lavanderia ha il servizio self service?"</string>
     <string name="quest_dietType_explanation_halal">"I prodotti Halal devono essere preparati in osservanza di speciali regole, le agenzie di certificazione Halal marchiano i prodotti che le rispettano."</string>
-    <string name="quest_picnicTableCover_title">"Questo tavolo da picnic è coperto (riparato dalla pioggia)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Questi sono scalini"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertito in un passaggio in un muro/barriera"</string>
     <string name="quest_barrier_type_gate_conversion">"Convertito in cancello"</string>
@@ -1237,7 +1235,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="overlay_addresses">"Indirizzi"</string>
     <string name="overlay_shops">"Negozi"</string>
     <string name="name_label">"Nome:"</string>
-    <string name="vacant_shop_title">"Negozio vuoto"</string>
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
     <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta (eventualmente con una chiave)?"</string>

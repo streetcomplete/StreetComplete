@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -16,6 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
+    private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
 ) : ElementEditsSource, AddElementEditsController {
@@ -41,32 +41,32 @@ class ElementEditsController(
     /** Add new unsynced edit to the to-be-uploaded queue */
     override fun add(
         type: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction,
         key: QuestKey?
     ) {
-        val newAction = if (action is UpdateElementTagsAction && element.tags.keys.any { it in DISCARDABLE_TAGS }) {
-            val builder = StringMapChangesBuilder(element.tags)
+        // removes discardable tags if they were part of original element, but not if user added them
+        val newAction = if (action is UpdateElementTagsAction && action.originalElement.tags.keys.any { it in DISCARDABLE_TAGS }) {
+            val builder = StringMapChangesBuilder(action.originalElement.tags)
             action.changes.changes.forEach { when (it) {
                 is StringMapEntryDelete -> builder.remove(it.key)
                 is StringMapEntryAdd -> builder[it.key] = it.value
                 is StringMapEntryModify -> builder[it.key] = it.value
             } }
             DISCARDABLE_TAGS.forEach { builder.remove(it) }
-            UpdateElementTagsAction(builder.create())
+            UpdateElementTagsAction(action.originalElement, builder.create())
         } else
             action
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, nowAsEpochMilliseconds(), false, newAction), key)
+        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, newAction), key)
     }
 
-    fun get(id: Long): ElementEdit? =
+    override fun get(id: Long): ElementEdit? =
         getAll().firstOrNull { it.id == id }
 
-    fun getAll(): List<ElementEdit> = synchronized(this) { editCache.values.toList() }
+    override fun getAll(): List<ElementEdit> = synchronized(this) { editCache.values.toList() }
 
-    fun getAllUnsynced(): List<ElementEdit> =
+    override fun getAllUnsynced(): List<ElementEdit> =
         getAll().filterNot { it.isSynced }
 
     fun getOldestUnsynced(): ElementEdit? =
@@ -87,10 +87,16 @@ class ElementEditsController(
         synchronized(this) {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
-            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
-            editCache.values.removeAll { it.isSynced && it.createdTimestamp < timestamp }
+            val ids = deleteEdits.map { it.id }
+//            editCache.values.removeAll { it.isSynced && it.createdTimestamp < timestamp }
+            editCache.keys.removeAll(ids) // todo: is this ok? why didn't i do it initially?
+            deletedCount = editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
         }
         onDeletedEdits(deleteEdits)
+        /* must be deleted after the callback because the callback might want to get the id provider
+           for that edit */
+        elementIdProviderDB.deleteAll(deleteEdits.map { it.id })
         return deletedCount
     }
 
@@ -103,31 +109,47 @@ class ElementEditsController(
     }
 
     fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+        val idUpdatesMap = elementUpdates.idUpdates.associate {
+            ElementKey(it.elementType, it.oldElementId) to it.newElementId
+        }
         val syncSuccess: Boolean
         synchronized(this) {
-            for (update in elementUpdates.idUpdates) {
-                editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
+            val editIdsToUpdate = HashSet<Long>()
+            elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
+                editElementsDB.getAllByElement(it.elementType, it.oldElementId)
+            }
+            for (id in editIdsToUpdate) {
+                val oldEdit = editsDB.get(id) ?: continue
+                val updatedEdit = oldEdit.copy(action = oldEdit.action.idsUpdatesApplied(idUpdatesMap))
+                editsDB.put(updatedEdit)
+                // must clear first because the element ids associated with this id are different now
+                editElementsDB.delete(id)
+                editElementsDB.put(id, updatedEdit.action.elementKeys)
             }
             syncSuccess = editsDB.markSynced(edit.id)
 
             // now adjust cached edits, and update involved ids
             // alternatively (simpler, safer and slower): just reload editCache if idUpdates is not empty
-            for (update in elementUpdates.idUpdates) {
-                for (entry in editCache) {
-                    if (entry.value.elementType == edit.elementType && entry.value.elementId == update.oldElementId)
-                        entry.setValue(entry.value.copy(elementId = update.newElementId))
-                }
+//            for (update in elementUpdates.idUpdates) {
+//                for (entry in editCache) {
+//                    if (entry.value.elementType == edit.elementType && entry.value.elementId == update.oldElementId)
+//                        entry.setValue(entry.value.copy(elementId = update.newElementId))
+//                }
+//            }
+            if (elementUpdates.idUpdates.isNotEmpty()) { // todo: using alternative for now, need to figure out how to update ids in cache
+                // -> action has elementKeys, could use this?
+                // maybe simply reload some affected edits from db? if element key is the same as some old key, reload!
+                //  but this is not fast enough
+                editCache.clear()
+                editsDB.getAll().associateByTo(editCache) { it.id }
             }
             if (syncSuccess)
                 editCache[edit.id] = edit.copy(isSynced = true)
         }
 
         if (syncSuccess) onSyncedEdit(edit)
-
-        /* must be deleted after the callback because the callback might want to get the id provider
-           for that edit */
+        elementIdProviderDB.updateIds(elementUpdates.idUpdates)
         synchronized(emptyIdProviderCache) { emptyIdProviderCache.remove(edit.id) }
-        elementIdProviderDB.delete(edit.id)
     }
 
     fun markSyncFailed(edit: ElementEdit) {
@@ -146,7 +168,8 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, action.createReverted()))
+            val reverted = action.createReverted(getIdProvider(edit.id))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
         }
         // not uploaded yet
         else {
@@ -158,31 +181,21 @@ class ElementEditsController(
     /* ------------------------------------ add/sync/delete ------------------------------------- */
 
     private fun add(edit: ElementEdit, key: QuestKey? = null) {
-        val newEdit: ElementEdit // elementId might change, but upstream this happens only in database
         synchronized(this) {
-            editsDB.add(edit)
-            val id = edit.id
+            editsDB.put(edit)
+            editElementsDB.put(edit.id, edit.action.elementKeys)
             val createdElementsCount = edit.action.newElementsCount
             elementIdProviderDB.assign(
-                id,
+                edit.id,
                 createdElementsCount.nodes,
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
-            // set proper assigned id of the new element
-            val hasDummyElement = edit.elementId == 0L
-            if (hasDummyElement) {
-                if (edit.elementType != ElementType.NODE) {
-                    throw IllegalStateException("Element creation only supported for nodes")
-                }
-                val idProvider = elementIdProviderDB.get(id)
-                val newElementId = idProvider.nextNodeId()
-                editsDB.updateElementId(id, newElementId)
-                newEdit = edit.copy(elementId = newElementId) // updating the id in the edit is important for proper caching
-            } else newEdit = edit
-            editCache[edit.id] = newEdit
+            editCache[edit.id] = edit // todo: this cached edit is broken if it contains a newly created element
+            // because the element key is different now, right? -> how to fix it?
+            // maybe just reload the edit from database? should be fast anyway, and still save time
         }
-        onAddedEdit(newEdit, key)
+        onAddedEdit(edit, key)
     }
 
     private fun delete(edit: ElementEdit) {
@@ -194,6 +207,7 @@ class ElementEditsController(
             ids = edits.map { it.id }
 
             editsDB.deleteAll(ids)
+            editElementsDB.deleteAll(ids)
             editCache.keys.removeAll(ids)
         }
 
@@ -207,14 +221,13 @@ class ElementEditsController(
 
     private fun getEditsBasedOnElementsCreatedByEdit(edit: ElementEdit): List<ElementEdit> {
         val result = mutableListOf<ElementEdit>()
-        val createdElementKeys = getIdProvider(edit.id).getAll()
-        val editsBasedOnThese = synchronized(editCache) { // synchronized so there is no need to acquire a lock for each "getAll"
-            createdElementKeys.flatMap {
-                // copy of db ordering behavior: first synced, then unsynced, and each part sorted by timestamp
-                getAll().filter { edit -> edit.elementId == it.id && edit.elementType == it.type }
-                    .sortedBy { it.createdTimestamp }.sortedBy { it.isSynced }
-            }.filter { it.id != edit.id }
-        }
+
+        val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
+        val editsBasedOnThese = createdElementKeys
+            .flatMapTo(HashSet()) { editElementsDB.getAllByElement(it.type, it.id) }
+//            .mapNotNull { editsDB.get(it) }
+            .mapNotNull { editCache[it] } // todo: this should work, right?
+            .filter { it.id != edit.id }
 
         // deep first
         for (e in editsBasedOnThese) {

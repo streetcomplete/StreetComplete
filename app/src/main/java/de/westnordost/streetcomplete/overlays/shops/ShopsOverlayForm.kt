@@ -309,7 +309,7 @@ private suspend fun createEditAction(
     }
 
     return if (element != null) {
-        UpdateElementTagsAction(tagChanges.create())
+        UpdateElementTagsAction(element!!, tagChanges.create())
     } else {
         CreateNodeAction(geometry.center, tagChanges)
     }

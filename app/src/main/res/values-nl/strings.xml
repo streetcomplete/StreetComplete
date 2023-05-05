@@ -902,7 +902,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="about_title_faq">"Veelgestelde vragen"</string>
     <string name="quest_buildingLevels_title2">"Hoeveel verdiepingen boven de kelder heeft dit gebouw?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hoeveel verdiepingen boven de kelder heeft dit gebouwdeel?"</string>
-    <string name="quest_crossing_title">"Zijn er stoepranden waar dit pad de weg kruist? Welke soort?"</string>
     <string name="pref_subtitle_quests_preset_name">"Voorinstelling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen"</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -936,7 +935,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_buildingType_bridge">"Brug tussen gebouwen (luchtbrug)"</string>
     <string name="quest_laundrySelfService_title2">"Biedt deze wasserij self-service aan?"</string>
     <string name="quest_dietType_explanation_halal">"Halal producten moeten bereid worden volgens speciale regels en door halal certificatie-agentschappen wordt aangegeven of producten hieraan voldoen."</string>
-    <string name="quest_picnicTableCover_title">"Is deze picknicktafel overdekt?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Dit deel is een trap"</string>
     <string name="quest_barrier_type_passage_conversion">"Omgebouwd tot een doorgang in een muur/hek/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Omgebouwd tot een poort"</string>
@@ -1232,7 +1230,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="overlay_addresses">"Adressen"</string>
     <string name="overlay_shops">"Winkels"</string>
     <string name="name_label">"Naam:"</string>
-    <string name="vacant_shop_title">"Leegstaande winkel"</string>
     <string name="unknown_shop_title">"Ander soort winkel"</string>
     <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan deze fietssluis geopend worden (met of zonder sleutel)?"</string>

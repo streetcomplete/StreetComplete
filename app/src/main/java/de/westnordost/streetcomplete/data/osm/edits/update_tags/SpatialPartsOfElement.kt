@@ -14,10 +14,11 @@ internal fun isGeometrySubstantiallyDifferent(element: Element, newElement: Elem
     }
 
 private fun isNodeGeometrySubstantiallyDifferent(node: Node, newNode: Node) =
-    /* Moving the node a distance beyond what would pass as adjusting the position within a
+    /* Moving the node a distance beyond what would pass as adjusting the position within a large
        building counts as substantial change. Also, the maximum distance should be not (much)
-       bigger than the usual GPS inaccuracy in the city. */
-    node.position.distanceTo(newNode.position) > 20
+       bigger than the usual GPS inaccuracy in the city.
+       Current value is equal to max move distance of the MoveNodeAction */
+    node.position.distanceTo(newNode.position) > 30
 
 private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way): Boolean {
    /* if the first or last node is different, it means that the way has either been extended or

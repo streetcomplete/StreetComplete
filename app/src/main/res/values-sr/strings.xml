@@ -907,7 +907,6 @@
     <string name="about_title_faq">"Честа питања"</string>
     <string name="quest_buildingLevels_title2">"Колико спратова изнад подрума има ова грађевина?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колико спратова изнад подрума има ова грађевина?"</string>
-    <string name="quest_crossing_title">"Постоје ли ивичњаци између ових путева? Које врсте?"</string>
     <string name="pref_subtitle_quests_preset_name">"Група задатака: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ова врста задатака је онемогућена јер се облици кровова често не виде добро са улице. Такође, одузимају доста врмена. Углавном је лакше и ефикасније кровове означити од куће, преко снимака из ваздуха."</string>
     <string name="quest_religion_animist">"Анимизам"</string>
@@ -941,7 +940,6 @@
     <string name="quest_buildingType_bridge">"Мост између зграда (топла веза)"</string>
     <string name="quest_laundrySelfService_title2">"Да ли је ово самоуслужна перионица/вешерај?"</string>
     <string name="quest_dietType_explanation_halal">"Халал производи се спремају по посебној рецептури, уз одговарајуће сертификате за Халал производе."</string>
-    <string name="quest_picnicTableCover_title">"Да ли је овај сто за пикник наткривен (пружа ли заштиту од кише)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Овај сегмент су степенице"</string>
     <string name="quest_barrier_type_passage_conversion">"Конвертовано у пролаз кроз зид/ограду/итд."</string>
     <string name="quest_barrier_type_gate_conversion">"Конвертовано у капију"</string>
@@ -1237,7 +1235,6 @@
     <string name="overlay_addresses">"Адресе"</string>
     <string name="overlay_shops">"Продавнице"</string>
     <string name="name_label">"Назив:"</string>
-    <string name="vacant_shop_title">"Празан локал"</string>
     <string name="unknown_shop_title">"Непозната намена локала"</string>
     <string name="quest_address_answer_no_address">"Овде нема адресе"</string>
     <string name="quest_bicycle_barrier_installation_title">"Може ли се ова бициклистичка баријера померити?"</string>
@@ -1314,4 +1311,19 @@
     <string name="unknown_surface_title">"Други тип подлоге"</string>
     <string name="overlay_surface">"Подлоге"</string>
     <string name="overlay_path_surface_segregated">"Подељено на бициклистичке и пешачке делове"</string>
+    <string name="quest_crossing_title2">"Да ли је овде прелаз?"</string>
+    <string name="quest_crossing_yes">"Да (нпр. спуштен ивичњак или постоји зебра)"</string>
+    <string name="quest_crossing_no">"Не, али је могуће прећи"</string>
+    <string name="quest_crossing_prohibited">"Не, прелаз је изричито забрањен или није могућ"</string>
+    <string name="quest_hairdresser_title">"Која клијентела посећује овог фризера?"</string>
+    <string name="quest_hairdresser_male_and_female">"Свако"</string>
+    <string name="quest_hairdresser_female_only">"Жене"</string>
+    <string name="quest_hairdresser_male_only">"Мушкарци"</string>
+    <string name="quest_hairdresser_not_signed">"Није назначено"</string>
+    <string name="quest_amenityCover_title">"Да ли је наткривено (пружа ли заштиту од кише)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Продужетак ивичњака"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Саобраћајно острво"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Шикана"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Продужетак ивичњака + саобраћајно острво"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Овде нема уске траке"</string>
 </resources>

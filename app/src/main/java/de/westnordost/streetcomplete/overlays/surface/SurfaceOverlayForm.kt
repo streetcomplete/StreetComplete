@@ -182,7 +182,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             surfaceCtrl.value!!.applyTo(changesBuilder)
         }
 
-        applyEdit(UpdateElementTagsAction(changesBuilder.create()))
+        applyEdit(UpdateElementTagsAction(element!!, changesBuilder.create()))
     }
 
     private fun createSegregatedAnswer(): AnswerItem? =
@@ -226,7 +226,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private fun changeToSteps() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         tagChanges.changeToSteps()
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 
     companion object {

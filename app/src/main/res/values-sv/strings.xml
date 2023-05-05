@@ -910,7 +910,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Hur många våningar ovanför källaren har den här byggnaden?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hur många våningar ovanför källaren har den här byggnadsdelen?"</string>
-    <string name="quest_crossing_title">"Finns det någon trottoarkant där vägarna korsar? Vilken sort?"</string>
     <string name="pref_subtitle_quests_preset_name">"Grupp: %s"</string>
     <string name="default_disabled_msg_roofShape">"Uppdragstypen är inaktiverad som standard eftersom det kan vara svårt att se takformen. Uppdraget är också ganska tidskrävande och det kan vara enklare att kartlägga detta från flygfoton hemma vid datorn."</string>
     <string name="quest_religion_animist">"Animism"</string>
@@ -944,7 +943,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_buildingType_bridge">"Bro mellan byggnader (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Kan man själv tvätta sina kläder här?"</string>
     <string name="quest_dietType_explanation_halal">"Halalprodukter måste beredas enligt särskilda religiösa regler och brukar märkas med en symbol som visar att produkten är halal."</string>
-    <string name="quest_picnicTableCover_title">"Har det här picknickbordet ett regnskydd?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denna del är en trappa"</string>
     <string name="quest_barrier_type_passage_conversion">"Omvandlad till öppning i stängsel/mur/osv."</string>
     <string name="quest_barrier_type_gate_conversion">"Omvandlad till grind"</string>
@@ -1240,7 +1238,6 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="overlay_addresses">"Adresser"</string>
     <string name="overlay_shops">"Butiker"</string>
     <string name="name_label">"Namn:"</string>
-    <string name="vacant_shop_title">"Tom butikslokal"</string>
     <string name="unknown_shop_title">"Annan slags plats"</string>
     <string name="quest_address_answer_no_address">"Ingen adress här"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan den här cykelgrinden öppnas?"</string>

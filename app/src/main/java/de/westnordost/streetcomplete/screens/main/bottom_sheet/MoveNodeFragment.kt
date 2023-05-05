@@ -159,8 +159,8 @@ class MoveNodeFragment :
         if (!checkIsDistanceOkAndUpdateText(pos)) return
         restoreBackground()
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(pos)
-            elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey,extra", action)
+            val action = MoveNodeAction(node, pos)
+            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey,extra", action)
             listener?.onMovedNode(editType, pos)
         }
     }

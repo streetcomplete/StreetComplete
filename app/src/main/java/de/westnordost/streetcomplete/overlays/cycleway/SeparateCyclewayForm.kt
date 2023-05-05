@@ -63,6 +63,6 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }

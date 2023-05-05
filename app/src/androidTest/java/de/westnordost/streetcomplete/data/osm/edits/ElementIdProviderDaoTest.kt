@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
@@ -79,6 +82,24 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
         assertEquals(9, dao.deleteAll(listOf(1L, 2L)))
         assertTrue(dao.get(1L).isEmpty())
         assertTrue(dao.get(2L).isEmpty())
+    }
+
+    @Test fun updateIds() {
+        dao.assign(1L, 1, 1, 1)
+        dao.updateIds(listOf(
+            ElementIdUpdate(ElementType.NODE, -1, 99),
+            ElementIdUpdate(ElementType.WAY, -2, 999),
+            ElementIdUpdate(ElementType.RELATION, -3, 9999),
+        ))
+
+        assertEquals(
+            listOf(
+                ElementKey(ElementType.NODE, 99),
+                ElementKey(ElementType.WAY, 999),
+                ElementKey(ElementType.RELATION, 9999),
+            ),
+            dao.get(1L).getAll()
+        )
     }
 
     private fun assertThrows(block: () -> Unit) {

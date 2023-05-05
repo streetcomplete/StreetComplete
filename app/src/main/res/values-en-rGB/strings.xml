@@ -910,7 +910,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"How many levels above the basement does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"How many levels above the basement does this building part have?"</string>
-    <string name="quest_crossing_title">"Are there kerbs where this way meets this road here? What kind?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preset: %s"</string>
     <string name="default_disabled_msg_roofShape">"This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases, it is easier and more efficient to map this from aerial imagery at home."</string>
     <string name="quest_religion_animist">"Animist"</string>
@@ -944,7 +943,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_buildingType_bridge">"Bridge between buildings (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Does this laundry provide self-service?"</string>
     <string name="quest_dietType_explanation_halal">"Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance."</string>
-    <string name="quest_picnicTableCover_title">"Is this picnic table covered (protected from rain)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
     <string name="quest_barrier_type_passage_conversion">"Converted into a passage in a wall/fence/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Converted into a gate"</string>
@@ -1240,7 +1238,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="overlay_addresses">"Addresses"</string>
     <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
-    <string name="vacant_shop_title">"Vacant shop"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
     <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened (with or without a key)?"</string>

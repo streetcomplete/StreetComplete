@@ -1,9 +1,21 @@
 v53.0-beta1: |
+  <h3>Quest & Overlay Enhancements</h3>
   <ul>
-  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>(Note for beta users: The following two features currently only work on objects that do not extend beyond 100m from the cursor position when tapped. A fix is in review.)</li>
+  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)<br>
+  <li>Address overlay: You can now add addresses as entrances directly to building outlines (#4976)</li>
   <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
   <li>Crossing: Different wording and use `crossing=informal` for points at which there are no crossings but people can still cross (#4944)</li>
-  <li>Other small fixes and enhancements (#4842, #4970)</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Which customers visit this hairdresser?</i> (#4833, #4909), by @mnalis</li>
+  </ul>
+  <h3>General Enhancements</h3>
+  <ul>
+  <li>It is now visible on the map which areas have been downloaded already (#4970, #4986)</li>
+  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>Other small fixes and enhancements (#4842, #4970, #4984, #4985, #4991, #4992), thanks @tapetis, @Helium314</li>
   </ul>
 
 v52.1: |

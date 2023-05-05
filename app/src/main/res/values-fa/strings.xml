@@ -908,7 +908,6 @@
     <string name="about_title_faq">"پرسش"</string>
     <string name="quest_buildingLevels_title2">"این ساختمان چند طبقه از روی سطح زمین دارد؟"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"این بخش از ساختمان چند طبقه روی زمین دارد؟"</string>
-    <string name="quest_crossing_title">"آیا در جایی که این مسیر به این جاده می‌رسد جداولی وجود دارد؟ از چه نوعی؟"</string>
     <string name="pref_subtitle_quests_preset_name">"پیش‌تنظیم: %s"</string>
     <string name="default_disabled_msg_roofShape">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا شکل سقف، معمولاً از خیابان به راحتی دیده نمی‌شود. همچنین این نوع جُستار بسیار وقت‌گیر است؛ در بیشتر موارد ترسیم آن در خانه و از روی تصاویر هوایی آسان‌تر و کارآمدتر است."</string>
     <string name="quest_religion_animist">"متحرک"</string>
@@ -942,7 +941,6 @@
     <string name="quest_buildingType_bridge">"پل بین بُرج‌ها (آسمان راه)"</string>
     <string name="quest_laundrySelfService_title2">"آیا این لباسشویی خدمات سلف سرویس ارائه می‌دهد؟"</string>
     <string name="quest_dietType_explanation_halal">"محصولات حلال بر اساس قوانین ویژه‌ای تهیه می‌شوند و مراکز صدور گواهینامه حلال، محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
-    <string name="quest_picnicTableCover_title">"آیا این میز مسافرتی سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
     <string name="quest_generic_answer_is_actually_steps">"این‌ها پله هستند"</string>
     <string name="quest_barrier_type_passage_conversion">"تبدیل به گذرگاه بر روی دیوار/حصار/غیره."</string>
     <string name="quest_barrier_type_gate_conversion">"تبدیل به دروازه"</string>
@@ -1238,7 +1236,6 @@
     <string name="overlay_addresses">"آدرس‌ها"</string>
     <string name="overlay_shops">"فروشگاه‌ها"</string>
     <string name="name_label">"نام:"</string>
-    <string name="vacant_shop_title">"مغازه خالی"</string>
     <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
     <string name="quest_address_answer_no_address">"بدون آدرس"</string>
     <string name="quest_bicycle_barrier_installation_title">"آیا می‌توان این مانع دوچرخه را (با یا بدون کلید) باز کرد؟"</string>
@@ -1316,4 +1313,19 @@
     <string name="unknown_surface_title">"نوع دیگری از سطح"</string>
     <string name="overlay_surface">"سطوح"</string>
     <string name="overlay_path_surface_segregated">"به دو بخش دوچرخه‌سواری و پیاده‌روی تقسیم می‌شود"</string>
+    <string name="quest_crossing_title2">"آیا اینجا گذرگاهی وجود دارد؟"</string>
+    <string name="quest_crossing_yes">"بله (به عنوان مثال، حاشیه در اینجا پایین آمده است یا علامت گذاری وجود دارد)"</string>
+    <string name="quest_crossing_no">"خیر، اما عبور امکان پذیر است"</string>
+    <string name="quest_crossing_prohibited">"خیر، عبور ممنوع یا غیرممکن است"</string>
+    <string name="quest_hairdresser_title">"چه مشتریانی به این آرایشگاه مراجعه می‌کنند؟"</string>
+    <string name="quest_hairdresser_male_and_female">"هر کسی"</string>
+    <string name="quest_hairdresser_female_only">"زنان"</string>
+    <string name="quest_hairdresser_male_only">"مردان"</string>
+    <string name="quest_hairdresser_not_signed">"نامشخص"</string>
+    <string name="quest_amenityCover_title">"آیا این پوشیده شده است (محافظت در برابر باران)؟"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"محدود کردن پسوند"</string>
+    <string name="lane_narrowing_traffic_calming_island">"جزیره ترافیک وسط خیابان"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"مانع"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"امتداد حاشیه + جزیره ترافیک"</string>
+    <string name="lane_narrowing_traffic_calming_none">"اینجا هیچ خط باریکی وجود ندارد"</string>
 </resources>

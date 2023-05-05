@@ -113,7 +113,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val displayedMapLocation: Location?
 
         /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
         fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
@@ -296,7 +296,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
                 TagEditor.changes = changesBuilder.create()
             } else
-                solve(UpdateElementTagsAction(createQuestChanges(answer)), extra)
+                solve(UpdateElementTagsAction(element, createQuestChanges(answer)), extra)
         }
     }
 
@@ -350,7 +350,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
             builder.replaceShop(tags)
-            solve(UpdateElementTagsAction(builder.create()), extra)
+            solve(UpdateElementTagsAction(element, builder.create()), extra)
         }
     }
 
@@ -364,7 +364,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun onDeletePoiNodeConfirmed(extra: Boolean = true) {
         viewLifecycleScope.launch {
-            solve(DeletePoiNodeAction, extra)
+            solve(DeletePoiNodeAction(element as Node), extra)
         }
     }
 
@@ -374,7 +374,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 viewLifecycleScope.launch {
                     val builder = StringMapChangesBuilder(element.tags)
                     builder["access"] = "private"
-                    solve(UpdateElementTagsAction(builder.create()), true)
+                    solve(UpdateElementTagsAction(element, builder.create()), true)
                 }
             }
         else null
@@ -387,7 +387,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             else R.string.add_access
         return AnswerItem(title) {
             AccessManagerDialog(requireContext(), element.tags) {
-                viewLifecycleScope.launch { solve(UpdateElementTagsAction(it.create()), true) }
+                viewLifecycleScope.launch { solve(UpdateElementTagsAction(element, it.create()), true) }
             }.show()
         }
     }
@@ -411,7 +411,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 if (diff < 200) { // we arbitrarily set the few months to 200 days
                     val f = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.US)
                     builder["access:conditional"] = "no @ (${f.format(today.toJavaLocalDate())}-${f.format(finishDate.toJavaLocalDate())})"
-                    viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                    viewLifecycleScope.launch { solve(UpdateElementTagsAction(element, builder.create()), true) }
                 } else {
                     // if we actually change the highway to construction, we let the user set a construction value
                     val t = EditText(requireContext()).apply {
@@ -427,7 +427,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                         .setNegativeButton(android.R.string.cancel, null)
                         .setPositiveButton(android.R.string.ok) { _, _ ->
                             t.text.toString().takeIf { it.isNotBlank() }?.let { builder["construction"] = it }
-                            viewLifecycleScope.launch { solve(UpdateElementTagsAction(builder.create())) }
+                            viewLifecycleScope.launch { solve(UpdateElementTagsAction(element, builder.create()), true) }
                         }
                         .show()
                 }
@@ -445,7 +445,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                     val builder = StringMapChangesBuilder(element.tags)
                     builder["demolished:building"] = builder["building"] ?: "yes"
                     builder.remove("building")
-                    solve(UpdateElementTagsAction(builder.create()), true)
+                    solve(UpdateElementTagsAction(element, builder.create()), true)
                 }
             }
         else null
@@ -473,10 +473,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {
-                addElementEditsController.add(osmElementQuestType, element, geometry, source, action)
+                addElementEditsController.add(osmElementQuestType, geometry, source, action)
             }
         }
-        listener?.onEdited(osmElementQuestType, element, geometry)
+        listener?.onEdited(osmElementQuestType, geometry)
     }
 
     companion object {

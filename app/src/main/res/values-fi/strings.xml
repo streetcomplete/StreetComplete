@@ -844,7 +844,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode_team_size_hint">"Työryhmätila toimii 2–12 ihmisen ryhmissä."</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
-    <string name="quest_crossing_type_signals_controlled">"Ylistys ohjataan liikennevaloilla"</string>
+    <string name="quest_crossing_type_signals_controlled">"Ylitys ohjataan liikennevaloilla"</string>
     <string name="undo_confirm_title2">"Kumotaanko seuraava muutos?"</string>
     <string name="synced">"Synkronoitu"</string>
     <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
@@ -905,7 +905,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="about_title_faq">"UKK"</string>
     <string name="quest_buildingLevels_title2">"Kuinka monta tasoa rakennuksessa on kellarin yläpuolella?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kuinka monta tasoa rakennuksen osassa on kellarin yläpuolella?"</string>
-    <string name="quest_crossing_title">"Onko tämän väylän ja tien välissä reunakivetys? Minkälainen?"</string>
     <string name="pref_subtitle_quests_preset_name">"Esiasetus: %s"</string>
     <string name="default_disabled_msg_roofShape">"Tämä kysymystyyppi on oletuksena pois päältä, koska kattojen muotoa ei yleensä näe helposti kadulta. Tämä kysymystyyppi vie myös melko paljon aikaa: monissa tapauksissa se on helpompaa ja tehokkaampaa tehdä kotoa ilmakuvien avulla."</string>
     <string name="quest_religion_animist">"Animismi"</string>
@@ -939,7 +938,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_buildingType_bridge">"Rakennusten välinen silta"</string>
     <string name="quest_laundrySelfService_title2">"Onko tässä pesulassa itsepalvelumahdollisuus?"</string>
     <string name="quest_dietType_explanation_halal">"Halal-tuotteet on valmistettava erityisten sääntöjen mukaisesti, ja Halal-sertifiointilaitokset merkitsevät tuotteet vaatimustenmukaisiksi."</string>
-    <string name="quest_picnicTableCover_title">"Onko tämä pöytä katettu (sateelta suojassa)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Tässä on portaat"</string>
     <string name="quest_barrier_type_passage_conversion">"Muutettu käytäväksi seinällä."</string>
     <string name="quest_barrier_type_gate_conversion">"Muutettu portiksi"</string>
@@ -1233,7 +1231,6 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="overlay_addresses">"Osoitteet"</string>
     <string name="overlay_shops">"Kaupat"</string>
     <string name="name_label">"Nimi:"</string>
-    <string name="vacant_shop_title">"Tyhjä/vapaa kauppatila"</string>
     <string name="unknown_shop_title">"Muunkaltainen paikka"</string>
     <string name="quest_address_answer_no_address">"Täällä ei ole osoitetta"</string>
     <string name="quest_bicycle_barrier_installation_title">"Voiko tämän pyöräilyesteen avata (avaimella tai ilman)?"</string>
@@ -1307,4 +1304,15 @@ Haluatko siirtää nyt?"</string>
     <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
     <string name="overlay_surface">"Pinnat"</string>
     <string name="overlay_path_surface_segregated">"Jaa pyöräily- ja kävelyosuuksiin"</string>
+    <string name="quest_crossing_title2">"Onko tässä suojatietä?"</string>
+    <string name="quest_crossing_yes">"Kyllä (esim. reunakiveys on madallutettu tai tiessä on merkinnät)"</string>
+    <string name="quest_crossing_no">"Ei, mutta ylittäminen on mahdollista"</string>
+    <string name="quest_crossing_prohibited">"Ei, ylittäminen ei ole sallittua tai mahdollista"</string>
+    <string name="quest_hairdresser_title">"Kenelle tämä kampaamo on tarkoitettu?"</string>
+    <string name="quest_hairdresser_male_and_female">"Kaikille"</string>
+    <string name="quest_hairdresser_female_only">"Naisille"</string>
+    <string name="quest_hairdresser_male_only">"Miehille"</string>
+    <string name="quest_hairdresser_not_signed">"Ei ilmoitettu"</string>
+    <string name="quest_amenityCover_title">"Onko tämä katettu? (suojattu sateelta)"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ei kavennettua kaistaa tässä"</string>
 </resources>

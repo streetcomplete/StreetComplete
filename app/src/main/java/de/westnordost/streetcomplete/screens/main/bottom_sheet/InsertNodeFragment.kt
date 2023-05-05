@@ -2,14 +2,21 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.PointF
+import android.graphics.Rect
+import android.graphics.RectF
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.annotation.UiThread
 import androidx.core.content.edit
+import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
+import androidx.core.view.doOnLayout
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
@@ -23,30 +30,29 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
-import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
+import de.westnordost.streetcomplete.databinding.FragmentInsertNodeBinding
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
+import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.math.alongTrackDistanceTo
-import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
-import de.westnordost.streetcomplete.util.math.distanceTo
-import de.westnordost.streetcomplete.util.math.distanceToArcs
+import de.westnordost.streetcomplete.util.math.PositionOnWay
+import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
+import de.westnordost.streetcomplete.util.math.VertexOfWay
+import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.math.measuredLength
-import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
-import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -57,15 +63,13 @@ import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
-import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
 class InsertNodeFragment :
-    Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet {
+    Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsMapPositionAware {
 
-    private var insertLocation: Triple<LatLon, InsertBetween, Way>? = null
-
-    private val binding by viewBinding(FragmentSplitWayBinding::bind)
+    private var _binding: FragmentInsertNodeBinding? = null
+    private val binding get() = _binding!!
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
@@ -73,10 +77,11 @@ class InsertNodeFragment :
     private val prefs: SharedPreferences by inject()
     private val levelFilter: LevelFilter by inject()
 
-    private val isFormComplete get() = insertLocation != null
+    private val isFormComplete get() = positionOnWay != null
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
+    private val overlayFormListener: AbstractOverlayForm.Listener? get() = parentFragment as? AbstractOverlayForm.Listener ?: activity as? AbstractOverlayForm.Listener
     private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
     private val tagsText by lazy { binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText).apply {
         maxLines = 10
@@ -87,10 +92,34 @@ class InsertNodeFragment :
     private val mapFragment by lazy {
         (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
     }
+    private lateinit var mapData: MapDataWithGeometry
+    private lateinit var ways: List<Pair<Way, List<LatLon>>>
+    private var positionOnWay: PositionOnWay? = null
+        set(value) {
+            field = value
+            if (value != null) {
+                setMarkerPosition(value.position)
+                binding.createMarkerIconView.setImageResource(R.drawable.ic_quest_door) // todo: icon
+            } else {
+                binding.createMarkerIconView.setImageResource(R.drawable.ic_quest_housenumber) // todo: x or just hide?
+                setMarkerPosition(null)
+            }
+        }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentInsertNodeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.createMarker.doOnLayout { setMarkerPosition(null) }
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         binding.okButton.setOnClickListener { onClickOk() }
@@ -107,14 +136,25 @@ class InsertNodeFragment :
             cornerRadius, margin, margin, margin, margin
         )
 
+        val args = requireArguments()
+        val pos: LatLon = Json.decodeFromString(args.getString(ARG_POS)!!)
+        getMapData(pos)
+
         if (savedInstanceState == null) {
             binding.speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+        val offsetRect = Rect(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset) / 2
+        ).toRectF()
+        mapFragment?.getPositionThatCentersPosition(pos, offsetRect)
+            ?.let { mapFragment?.updateCameraPosition { position = it } }
 
-        val args = requireArguments()
-        onClickMapAt(Json.decodeFromString(args.getString(ARG_POS)!!), CLICK_AREA_SIZE_AT_MAX_ZOOM) // start with position already clicked
+        onMapMoved(pos)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -126,9 +166,9 @@ class InsertNodeFragment :
     }
 
     private fun onClickOk() {
-        val il = insertLocation ?: return
+        val pow = positionOnWay ?: return
         val fd = featureDictionaryFuture.get()
-        val country = countryBoundaries.get().getIds(il.first.longitude, il.first.latitude).firstOrNull()
+        val country = countryBoundaries.get().getIds(pow.position.longitude, pow.position.latitude).firstOrNull()
         val defaultFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!
             .split("§").filter { it.isNotBlank() }
             .ifEmpty { listOf("amenity/post_box", "barrier/gate", "highway/crossing/unmarked", "highway/crossing/uncontrolled", "highway/traffic_signals", "barrier/bollard", "traffic_calming/table") }
@@ -141,15 +181,15 @@ class InsertNodeFragment :
             country,
             null, // pre-filled search text
             { true }, // filter, but we want everything
-            { onSelectedFeature(it, il) },
+            { onSelectedFeature(it, pow) },
             false,
             defaultFeatureIds.reversed(), // features shown without entering text
-            il.first,
+            pow.position,
         ).show()
         restoreBackground()
     }
 
-    private fun onSelectedFeature(feature: Feature, insertLocation: Triple<LatLon, InsertBetween, Way>) {
+    private fun onSelectedFeature(feature: Feature, positionOnWay: PositionOnWay) {
         viewLifecycleScope.launch {
             val recentFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
             if (recentFeatureIds.lastOrNull() != feature.id) {
@@ -157,7 +197,12 @@ class InsertNodeFragment :
                 recentFeatureIds.add(feature.id)
                 prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§")).apply()
             }
-            val mapData = mapDataSource.getMapDataWithGeometry(insertLocation.first.enclosingBoundingBox(20.0))
+            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting( // currently not done, but still need it
+                ElementPointGeometry(positionOnWay.position),
+                R.drawable.crosshair_marker,
+                null
+            )
+            val mapData = mapDataSource.getMapDataWithGeometry(positionOnWay.position.enclosingBoundingBox(30.0))
             val nearbySimilarElements = mapData.filter { e -> feature.tags.all { e.tags[it.key] == it.value } }
             nearbySimilarElements.forEach {
                 val geo = mapData.getGeometry(it.type, it.id) ?: return@forEach
@@ -168,7 +213,7 @@ class InsertNodeFragment :
                 )
             }
         }
-        val f = InsertNodeTagEditor.create(insertLocation.first, feature, insertLocation.second, insertLocation.third)
+        val f = InsertNodeTagEditor.create(positionOnWay, feature)
         parentFragmentManager.commit {
             replace(id, f, "bottom_sheet")
             addToBackStack("bottom_sheet")
@@ -191,88 +236,117 @@ class InsertNodeFragment :
             prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
     }
 
-    @UiThread
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        val mapData = mapDataSource.getMapDataWithGeometry(position.enclosingBoundingBox(50.0))
-        tagsText.scrollY = 0
-        val waysAndGeometries = mapData.ways.mapNotNull {
-            val geo = mapData.getWayGeometry(it.id) ?: return@mapNotNull null
-            if (!levelFilter.levelAllowed(it)) return@mapNotNull null
-            it to geo
-        }
-        val closeWays = hashSetOf<Triple<Way, List<List<LatLon>>, Double>>()
-        waysAndGeometries.forEach {
-            val geoLines = when (it.second) {
-                is ElementPolylinesGeometry -> (it.second as ElementPolylinesGeometry).polylines
-                is ElementPolygonsGeometry -> (it.second as ElementPolygonsGeometry).polygons
-                else -> return@forEach
-            }
-            val distance = geoLines.minOf { position.distanceToArcs(it) }
-            if (distance <= clickAreaSizeInMeters)
-                closeWays.add(Triple(it.first, geoLines, distance))
-        }
-        if (closeWays.isEmpty()) {
-            tagsText.setText(R.string.insert_node_select_way)
-            insertLocation = null
-            showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
-            mapFragment?.clearHighlighting()
-            animateButtonVisibilities()
-            return true
-        }
-        // quite often we have several ways using the same nodes
-        // prefer highways, then barriers
-        val minDistance = closeWays.minOf { it.third }
-        closeWays.removeAll { it.third > minDistance + 0.001 } // without the 0.001 this is not reliable
-        val closestWay = closeWays.firstOrNull { it.first.tags.containsKey("highway") }
-            ?: closeWays.firstOrNull { it.first.tags.containsKey("barrier") } ?: closeWays.first()
+    override fun onMapMoved(position: LatLon) {
+        newPosition(position)
+    }
 
-        val result = mutableSetOf<Pair<LatLon, InsertBetween>>()
-        closestWay.second.forEach { it.asSequenceOfPairs().forEach { (first, second) ->
-            val crossTrackDistance = abs(position.crossTrackDistanceTo(first, second))
-            if (clickAreaSizeInMeters > crossTrackDistance) {
-                val alongTrackDistance = position.alongTrackDistanceTo(first, second)
-                val distance = first.distanceTo(second)
-                if (distance > alongTrackDistance && alongTrackDistance > 0) {
-                    val delta = alongTrackDistance / distance
-                    val line = listOf(first, second)
-                    val positionOnLine = line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
-                    result.add(positionOnLine to InsertBetween(first, second))
-                }
-            }
-        } }
-        val here = result.minByOrNull { position.distanceTo(it.first) }
-        if (here == null) { // actually this should not happen
-            tagsText.setText(R.string.insert_node_select_way)
-            insertLocation = null
-            showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
-            mapFragment?.clearHighlighting()
-            animateButtonVisibilities()
-            return true
+    private fun newPosition(position: LatLon, forceMoveMarker: Boolean = false) {
+        if (position !in mapData.boundingBox!!)
+            getMapData(position)
+        val metersPerPixel = overlayFormListener?.metersPerPixel ?: return
+        val maxDistance = metersPerPixel * requireContext().dpToPx(24)
+        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
+
+        // todo: switch to something similar that allows inserting a node into multiple ways
+        positionOnWay = if (forceMoveMarker) position.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
+            else getDefaultMarkerPosition()?.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
+        val pow = positionOnWay
+        if (pow == null) {
+            noWaySelected()
+            return
         }
-        insertLocation = Triple(here.first, here.second, closestWay.first)
+        Log.i("test", "selected: $positionOnWay")
+        val ways = when (pow) {
+            is PositionOnWaySegment -> listOf(mapData.getWay(pow.wayId)!!)
+            is VertexOfWay -> pow.wayIds.map { mapData.getWay(it)!! }
+        }
 
-        tagsText.text = closestWay.first.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
-        animateButtonVisibilities()
+        selectedPositionOnWays(pow.position, ways)
 
-        // highlight way and position
+        // todo:
+        //  positionOnWay should be changed a bit, because I want to allow multiple ways
+        //   also snap to crossings that don't have a node?
+        //  description text needs to be adjusted in here (also containing multiple ways)
+        //   and a way to remove single ways out of these
+        //  highlight selected ways
+    }
+
+    // todo:
+    //  actually this should be sth like positionOnWay, just with multiple ways
+    //  maybe use positionOnWay first
+    private fun selectedPositionOnWays(position: LatLon, ways: List<Way>) {
+        if (ways.isEmpty()) {
+            noWaySelected()
+            return
+        }
+        val texts = ways.map { it.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n") }
+        val text = texts.joinToString("\n\n")
+        if (tagsText.text != text) {
+            tagsText.text = text
+            tagsText.scrollY = 0
+        }
+
+        // highlight ways and position
         viewLifecycleScope.launch {
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
-            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-                ElementPointGeometry(here.first),
-                R.drawable.crosshair_marker,
-                null
-            )
-            mapFragment?.highlightGeometry(mapData.getWayGeometry(closestWay.first.id)!!)
-            closestWay.first.nodeIds.forEach {
-                val node = mapData.getNode(it) ?: return@forEach
-                if (node.tags.isEmpty()) return@forEach
-                showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-                    ElementPointGeometry(node.position),
-                    getPinIcon(node.tags),
-                    getTitle(node.tags)
-                )
+            // todo: no crosshair as we have the marker? but it may hide nodes...
+            //  just change the marker to a crosshair?
+//            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
+//                ElementPointGeometry(position),
+//                R.drawable.crosshair_marker,
+//                null
+//            )
+            mapFragment?.highlightGeometries(ways.map { mapData.getWayGeometry(it.id)!! }) // todo: can't be null, right?
+            ways.forEach { way ->
+                way.nodeIds.forEach {
+                    val node = mapData.getNode(it)!!
+                    if (node.tags.isNotEmpty())
+                        showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
+                            ElementPointGeometry(node.position),
+                            getPinIcon(node.tags),
+                            getTitle(node.tags)
+                        )
+                }
             }
         }
+        animateButtonVisibilities()
+    }
+
+    private fun noWaySelected() {
+        tagsText.setText(R.string.insert_node_select_way)
+        showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
+        mapFragment?.clearHighlighting()
+        animateButtonVisibilities()
+    }
+
+    private fun setMarkerPosition(position: LatLon?) {
+        val point = if (position == null) {
+            getDefaultMarkerScreenPosition()
+        } else {
+            overlayFormListener?.getPointOf(position)
+        } ?: return
+        binding.createMarker.x = point.x - binding.createMarker.width / 2
+        binding.createMarker.y = point.y - binding.createMarker.height
+    }
+
+    private fun getDefaultMarkerPosition(): LatLon? {
+        val point = getDefaultMarkerScreenPosition() ?: return null
+        return overlayFormListener?.getMapPositionAt(point)
+    }
+
+    private fun getDefaultMarkerScreenPosition(): PointF? {
+        val view = view ?: return null
+        val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
+        val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
+        val top = resources.getDimensionPixelSize(R.dimen.quest_form_topOffset)
+        val bottom = resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset) / 2
+        val x = (view.width + left - right) / 2f
+        val y = (view.height + top - bottom) / 2f
+        return PointF(x, y)
+    }
+
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        newPosition(position, forceMoveMarker = true)
         return true
     }
 
@@ -281,13 +355,20 @@ class InsertNodeFragment :
         onConfirmed()
     }
 
+    private fun getMapData(position: LatLon) {
+        mapData = mapDataSource.getMapDataWithGeometry(position.enclosingBoundingBox(100.0))
+        ways = mapData.ways.mapNotNull { way ->
+            if (!levelFilter.levelAllowed(way)) return@mapNotNull null
+            val positions = way.nodeIds.map { mapData.getNode(it)?.position ?: return@mapNotNull null } // todo: use getNode!! after merging latest
+            way to positions
+        }
+    }
+
     private fun animateButtonVisibilities() {
         if (isFormComplete) binding.okButton.popIn() else binding.okButton.popOut()
     }
 
     companion object {
-        private const val CLICK_AREA_SIZE_AT_MAX_ZOOM = 2.6
-
         private const val ARG_POS = "pos"
 
         fun create(position: LatLon): InsertNodeFragment {

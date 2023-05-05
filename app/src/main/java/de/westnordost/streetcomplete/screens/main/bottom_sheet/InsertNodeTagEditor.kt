@@ -6,14 +6,16 @@ import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
-import de.westnordost.streetcomplete.data.osm.edits.insert.InsertNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.TagEditor
+import de.westnordost.streetcomplete.util.math.PositionOnWay
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -39,11 +41,13 @@ class InsertNodeTagEditor : TagEditor() {
 
     override fun applyEdit() {
         val args = requireArguments()
-        val position: LatLon = Json.decodeFromString(args.getString(ARG_POS)!!)
-        val between: InsertBetween = Json.decodeFromString(args.getString(ARG_BETWEEN)!!)
-        val way: Way = Json.decodeFromString(args.getString(ARG_WAY)!!)
-        elementEditsController.add(createPoiEdit, way, ElementPointGeometry(position), "survey", InsertNodeAction(position, element.tags, between))
-        listener?.onCreatedNote(position)
+        val positionOnWay: PositionOnWay = Json.decodeFromString(args.getString(ARG_POSITION_ON_WAY)!!)
+        val action = createNodeAction(positionOnWay, mapDataSource) { changeBuilder ->
+            element.tags.forEach { changeBuilder[it.key] = it.value } // todo: also need to remove tags, but first show "starting tags"
+        } ?: return // todo: null should not be possible... right?
+
+        elementEditsController.add(createPoiEdit, ElementPointGeometry(positionOnWay.position), "survey", action)
+        listener?.onCreatedNote(positionOnWay.position)
         arguments?.getString(ARG_FEATURE_ID)?.let {
             val initialTags: Map<String, String> = arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
             if (!IS_SHOP_EXPRESSION.matches(element) && initialTags != element.tags)
@@ -52,20 +56,17 @@ class InsertNodeTagEditor : TagEditor() {
     }
 
     companion object {
-        private const val ARG_POS = "pos"
-        private const val ARG_WAY = "way"
+        private const val ARG_POSITION_ON_WAY = "position_on_way"
         private const val ARG_FEATURE_NAME = "feature_name"
         private const val ARG_FEATURE_ID = "feature_id"
-        private const val ARG_BETWEEN = "between"
         private const val ARG_TAGS = "tags"
 
-        fun create(position: LatLon, feature: Feature?, between: InsertBetween, way: Way): InsertNodeTagEditor {
+        // todo: what if a node with tags is re-used (user choice!)
+        fun create(positionOnWay: PositionOnWay, feature: Feature?): InsertNodeTagEditor {
             val f = InsertNodeTagEditor()
-            val args = createArguments(Node(0L, position), ElementPointGeometry(position), null, null)
+            val args = createArguments(Node(0L, positionOnWay.position), ElementPointGeometry(positionOnWay.position), null, null)
             args.putAll(bundleOf(
-                ARG_POS to Json.encodeToString(position),
-                ARG_BETWEEN to Json.encodeToString(between),
-                ARG_WAY to Json.encodeToString(way),
+                ARG_POSITION_ON_WAY to Json.encodeToString(positionOnWay),
                 ARG_TAGS to feature?.addTags,
             ))
             feature?.let {

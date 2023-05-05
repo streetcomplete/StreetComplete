@@ -99,7 +99,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val prefs: SharedPreferences by inject()
     protected val elementEditsController: ElementEditsController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
-    private val mapDataSource: MapDataWithEditsSource by inject()
+    protected val mapDataSource: MapDataWithEditsSource by inject()
     private val externalSourceQuestController: ExternalSourceQuestController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
@@ -368,7 +368,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             builder[key] = value
         }
 
-        val action = UpdateElementTagsAction(builder.create())
+        val action = UpdateElementTagsAction(originalElement, builder.create())
         val questKey = questKey
         val editType = when {
             questKey is ExternalSourceQuestKey -> externalSourceQuestController.getQuestType(questKey)!!
@@ -378,8 +378,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         if (questKey is OsmQuestKey && prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
             OsmQuestController.lastAnsweredQuestKey = questKey
         // always use "survey", because either it's tag editor or some external quest that's most like supposed to allow this
-        elementEditsController.add(editType, originalElement, geometry, "survey", action, questKey)
-        listener?.onEdited(editType, element, geometry)
+        elementEditsController.add(editType, geometry, "survey", action, questKey)
+        listener?.onEdited(editType, geometry)
     }
 
     private fun tagsChangedAndOk(): Boolean =
