@@ -41,14 +41,16 @@ class MapDataController internal constructor(
     private val cache = MapDataCache(
         SPATIAL_CACHE_TILE_ZOOM,
         SPATIAL_CACHE_TILES,
-        SPATIAL_CACHE_INITIAL_CAPACITY
-    ) { bbox ->
-        val elements = elementDB.getAll(bbox)
-        val elementGeometries = geometryDB.getAllEntries(
-            elements.mapNotNull { if (it !is Node) it.key else null }
-        )
-        elements to elementGeometries
-    }
+        SPATIAL_CACHE_INITIAL_CAPACITY,
+        { bbox ->
+            val elements = elementDB.getAll(bbox)
+            val elementGeometries = geometryDB.getAllEntries(
+                elements.mapNotNull { if (it !is Node) it.key else null }
+            )
+            elements to elementGeometries
+        },
+        { nodeDB.getAll(it) },
+    )
 
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
