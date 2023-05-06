@@ -5,10 +5,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
@@ -35,6 +31,9 @@ class EditHistoryController(
     private val osmElementEditsListener = object : ElementEditsSource.Listener {
         override fun onAddedEdit(edit: ElementEdit) {
             if (edit.action !is IsRevertAction) onAdded(edit)
+        }
+        override fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Collection<Long>) {
+            if (edit.action !is IsRevertAction) onSynced(edit, updatedEditIds)
         }
         override fun onSyncedEdit(edit: ElementEdit) {
             if (edit.action !is IsRevertAction) onSynced(edit)
@@ -134,7 +133,6 @@ class EditHistoryController(
     // difference to upstream: may contain older hidden quests
     // but that really doesn't matter
     override fun getAll(allHidden: Boolean): List<Edit> =
-
         if (allHidden)
             (noteQuestController.getAllHiddenNewerThan(0L)
                 + osmQuestController.getAllHiddenNewerThan(0L)
@@ -142,9 +140,7 @@ class EditHistoryController(
             ).sortedByDescending { it.createdTimestamp }
         else synchronized(cache) { cache.toList() }
 
-    override fun getCount(): Int =
-        // could be optimized later too...
-        cache.size
+    override fun getCount(): Int = cache.size
 
     override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)
@@ -157,25 +153,20 @@ class EditHistoryController(
         synchronized(cache) { cache.add(edit) }
         listeners.forEach { it.onAdded(edit) }
     }
-    private fun onSynced(edit: Edit) {
+    private fun onSynced(edit: Edit, updatedEditIds: Collection<Long> = emptyList()) {
         synchronized(cache) {
-            if (edit is ElementEdit && edit.action !in noIdModifyActions) {
-                // reload, because element ids of multiple edits may have changed after split way
-                // this should never happen for other edit types, as they don't affect more than
-                // a single element
-                // or maybe remove this cache and do separate caches for all controllers?
-                cache.apply {
-                    removeAll { it is ElementEdit }
-                    addAll(elementEditsController.getAll())
+            if (edit is ElementEdit && updatedEditIds.isNotEmpty()) {
+                // reload updated edits from elementEditsController
+                cache.removeAll { it is ElementEdit && it.id in updatedEditIds }
+                updatedEditIds.forEach { editId ->
+                    elementEditsController.get(editId)?.let { cache.add(it) }
                 }
-                Unit // make compiler happy
-            } else {
-                if (!cache.remove(edit)) // remove first is really important!
-                    cache.removeAll { it.key == edit.key } // fallback, never found it triggered
-                if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
-                if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
-                // can't be called for (un)hiding, so no need to care about it
             }
+            if (!cache.remove(edit)) // remove first is really important!
+                cache.removeAll { it.key == edit.key } // fallback, never found it triggered
+            if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
+            if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
+            // can't be called for (un)hiding, so no need to care about it
         }
         listeners.forEach { it.onSynced(edit) }
     }
@@ -189,5 +180,3 @@ class EditHistoryController(
         listeners.forEach { it.onInvalidated() }
     }
 }
-
-private val noIdModifyActions = setOf(UpdateElementTagsAction, DeletePoiNodeAction, RevertDeletePoiNodeAction, RevertUpdateElementTagsAction)

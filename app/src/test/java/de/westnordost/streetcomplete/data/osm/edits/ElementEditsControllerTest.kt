@@ -117,10 +117,10 @@ class ElementEditsControllerTest {
 
     @Test fun `delete edits based on the the one being undone`() {
         val edit1 = edit(action = mock(), id = 1L)
-        val edit2 = edit(action = mock(), id = 2L, element = node(-1))
-        val edit3 = edit(action = mock(), id = 3L, element = node(-1))
-        val edit4 = edit(action = mock(), id = 4L, element = node(-2))
-        val edit5 = edit(action = mock(), id = 5L, element = node(-3))
+        val edit2 = edit(action = mock(), id = 2L)
+        val edit3 = edit(action = mock(), id = 3L)
+        val edit4 = edit(action = mock(), id = 4L)
+        val edit5 = edit(action = mock(), id = 5L)
 
         on(idProvider.get(1L)).thenReturn(ElementIdProvider(listOf(
             ElementKey(NODE, -1),

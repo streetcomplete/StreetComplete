@@ -79,7 +79,6 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         if (!entrancesFilter.matches(element)) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // note: it does not support multipolygon buildings
         val excludedWayNodeIds = mutableSetOf<Long>()
         mapData.ways
             .filter { privateFootwaysFilter.matches(it) }
@@ -87,15 +86,11 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         val buildings = mapData.filter { buildingFilter.matches(it) }
         val result = mutableListOf<Node>()
         for (building in buildings) {
-            val buildingsWayNodeIds = mutableSetOf<Long>()
-            mapData
-                .flatMapTo(buildingsWayNodeIds) {
-                    when (it) {
-                        is Way -> it.nodeIds
-                        is Relation -> it.getMultipolygonNodeIds(mapData)
-                        else -> emptyList()
-                    }
-                }
+            val buildingsWayNodeIds = when (building) {
+                is Way -> building.nodeIds.toSet()
+                is Relation -> building.getMultipolygonNodeIds(mapData).toSet()
+                else -> emptyList()
+            }
             val buildingEntrances =  buildingsWayNodeIds.mapNotNull { mapData.getNode(it) }
                 .filter { entrancesFilter.matches(it) }
             if (buildingEntrances.count() < 2) continue

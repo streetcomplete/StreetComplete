@@ -7,12 +7,8 @@ import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.math.PositionOnWay
@@ -43,8 +39,8 @@ class InsertNodeTagEditor : TagEditor() {
         val args = requireArguments()
         val positionOnWay: PositionOnWay = Json.decodeFromString(args.getString(ARG_POSITION_ON_WAY)!!)
         val action = createNodeAction(positionOnWay, mapDataSource) { changeBuilder ->
-            element.tags.forEach { changeBuilder[it.key] = it.value } // todo: also need to remove tags, but first show "starting tags"
-        } ?: return // todo: null should not be possible... right?
+            element.tags.forEach { changeBuilder[it.key] = it.value } // todo: also need to remove tags, but first show "starting tags" if i allow them
+        } ?: return // todo: null should not be possible... right? that's only if the node doesn't exist for a VertexOnWay
 
         elementEditsController.add(createPoiEdit, ElementPointGeometry(positionOnWay.position), "survey", action)
         listener?.onCreatedNote(positionOnWay.position)
@@ -61,7 +57,11 @@ class InsertNodeTagEditor : TagEditor() {
         private const val ARG_FEATURE_ID = "feature_id"
         private const val ARG_TAGS = "tags"
 
-        // todo: what if a node with tags is re-used (user choice!)
+        // todo:
+        //  what if a node with tags is re-used (user choice!)
+        //   this should also add the relevant tags to tag editor
+        //   only if i want to allow this...
+        //   maybe add the tags to positionOnWay?
         fun create(positionOnWay: PositionOnWay, feature: Feature?): InsertNodeTagEditor {
             val f = InsertNodeTagEditor()
             val args = createArguments(Node(0L, positionOnWay.position), ElementPointGeometry(positionOnWay.position), null, null)

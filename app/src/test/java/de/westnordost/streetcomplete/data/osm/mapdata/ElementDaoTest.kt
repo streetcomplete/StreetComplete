@@ -139,7 +139,7 @@ class ElementDaoTest {
         val relations = listOf(rel(1))
 
         on(nodeDao.getAll(bbox)).thenReturn(nodes)
-        on(wayDao.getAllForNodes(eq(nodeIds))).thenReturn(ways)
+        on(wayDao.getAllForNodes(eq(nodeIds.toSet()))).thenReturn(ways)
         on(relationDao.getAllForElements(
             nodeIds = eq(nodeIds),
             wayIds = eq(wayIds),
@@ -147,6 +147,30 @@ class ElementDaoTest {
         )).thenReturn(relations)
         assertEquals(
             nodes + ways + relations,
+            dao.getAll(bbox)
+        )
+    }
+
+    @Test fun `getAllElementsByBbox includes nodes that are not in bbox, but part of ways contained in bbox`() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val bboxNodes = listOf(node(1), node(2), node(3))
+        val bboxNodeIds = bboxNodes.map { it.id }
+        val outsideBboxNodes = listOf(node(4), node(5))
+        val outsideBboxNodeIds = outsideBboxNodes.map { it.id }
+        val ways = listOf(way(1), way(2, nodes = listOf(3L, 4L, 5L)))
+        val wayIds = ways.map { it.id }
+        val relations = listOf(rel(1))
+
+        on(nodeDao.getAll(bbox)).thenReturn(bboxNodes)
+        on(nodeDao.getAll(outsideBboxNodeIds)).thenReturn(outsideBboxNodes)
+        on(wayDao.getAllForNodes(eq(bboxNodeIds.toSet()))).thenReturn(ways)
+        on(relationDao.getAllForElements(
+            nodeIds = eq(outsideBboxNodeIds + bboxNodeIds),
+            wayIds = eq(wayIds),
+            relationIds = eq(emptyList())
+        )).thenReturn(relations)
+        assertEquals(
+            bboxNodes + outsideBboxNodes + ways + relations,
             dao.getAll(bbox)
         )
     }

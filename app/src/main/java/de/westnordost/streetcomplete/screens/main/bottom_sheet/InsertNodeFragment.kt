@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.Rect
-import android.graphics.RectF
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -28,7 +27,6 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.edits.insert.InsertBetween
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -41,7 +39,6 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -97,13 +94,7 @@ class InsertNodeFragment :
     private var positionOnWay: PositionOnWay? = null
         set(value) {
             field = value
-            if (value != null) {
-                setMarkerPosition(value.position)
-                binding.createMarkerIconView.setImageResource(R.drawable.ic_quest_door) // todo: icon
-            } else {
-                binding.createMarkerIconView.setImageResource(R.drawable.ic_quest_housenumber) // todo: x or just hide?
-                setMarkerPosition(null)
-            }
+            setMarkerPosition(value?.position)
         }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -145,7 +136,7 @@ class InsertNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
-        val offsetRect = Rect(
+        val offsetRect = Rect( // slightly lower position of marker than usual
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
@@ -245,9 +236,9 @@ class InsertNodeFragment :
             getMapData(position)
         val metersPerPixel = overlayFormListener?.metersPerPixel ?: return
         val maxDistance = metersPerPixel * requireContext().dpToPx(24)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
+        val snapToVertexDistance = maxDistance / 2
 
-        // todo: switch to something similar that allows inserting a node into multiple ways
+        // todo: switch to something similar that possibly allows inserting a node into multiple ways
         positionOnWay = if (forceMoveMarker) position.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
             else getDefaultMarkerPosition()?.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
         val pow = positionOnWay
@@ -255,30 +246,36 @@ class InsertNodeFragment :
             noWaySelected()
             return
         }
-        Log.i("test", "selected: $positionOnWay")
         val ways = when (pow) {
             is PositionOnWaySegment -> listOf(mapData.getWay(pow.wayId)!!)
             is VertexOfWay -> pow.wayIds.map { mapData.getWay(it)!! }
         }
 
-        selectedPositionOnWays(pow.position, ways)
-
         // todo:
         //  positionOnWay should be changed a bit, because I want to allow multiple ways
         //   also snap to crossings that don't have a node?
+        //    how to really do? always snap to parallel way segments, and optionally snap to crossings?
+        //   don't snap to nodes with tags? or show the tags?
+        //    this could be an option in getPositionOnWays?
+        //   adding another sub-class should be fine i think, just make sure that it's accessible only if an option was set
         //  description text needs to be adjusted in here (also containing multiple ways)
         //   and a way to remove single ways out of these
-        //  highlight selected ways
-    }
+        //   maybe sth like list of ways on top, and tap to show tags below (and highlight tags for which way are shown)
+        //  existing tags of nodes need to be shown!
 
-    // todo:
-    //  actually this should be sth like positionOnWay, just with multiple ways
-    //  maybe use positionOnWay first
-    private fun selectedPositionOnWays(position: LatLon, ways: List<Way>) {
-        if (ways.isEmpty()) {
+        if (ways.isEmpty()) { // actually this should never happen
             noWaySelected()
             return
         }
+        // view:
+        //  tag view on bottom, like now (but with other text)
+        //  element view on top, contains
+        //   node if it has tags
+        //   each way
+        //   on click, show tags
+        //   switch (or delete button?) on right side to not include this way if it's possible (the new positionOnWay)
+        val node = if (pow is VertexOfWay) mapData.getNode(pow.nodeId) else null
+        val nodeTags = node?.tags?.takeIf { it.isNotEmpty() }
         val texts = ways.map { it.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n") }
         val text = texts.joinToString("\n\n")
         if (tagsText.text != text) {
@@ -326,7 +323,7 @@ class InsertNodeFragment :
             overlayFormListener?.getPointOf(position)
         } ?: return
         binding.createMarker.x = point.x - binding.createMarker.width / 2
-        binding.createMarker.y = point.y - binding.createMarker.height
+        binding.createMarker.y = point.y - binding.createMarker.height / 2
     }
 
     private fun getDefaultMarkerPosition(): LatLon? {
@@ -359,7 +356,7 @@ class InsertNodeFragment :
         mapData = mapDataSource.getMapDataWithGeometry(position.enclosingBoundingBox(100.0))
         ways = mapData.ways.mapNotNull { way ->
             if (!levelFilter.levelAllowed(way)) return@mapNotNull null
-            val positions = way.nodeIds.map { mapData.getNode(it)?.position ?: return@mapNotNull null } // todo: use getNode!! after merging latest
+            val positions = way.nodeIds.map { mapData.getNode(it)!!.position }
             way to positions
         }
     }
