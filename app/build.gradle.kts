@@ -155,7 +155,7 @@ dependencies {
     implementation("androidx.work:work-runtime:2.7.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:1.6")
+    implementation("de.westnordost:countryboundaries:2.0")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
