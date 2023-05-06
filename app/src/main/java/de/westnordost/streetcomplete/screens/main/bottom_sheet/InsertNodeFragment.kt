@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.annotation.UiThread
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
@@ -28,9 +29,11 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.databinding.FragmentInsertNodeBinding
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -43,6 +46,7 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.spToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
@@ -80,7 +84,7 @@ class InsertNodeFragment :
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
     private val overlayFormListener: AbstractOverlayForm.Listener? get() = parentFragment as? AbstractOverlayForm.Listener ?: activity as? AbstractOverlayForm.Listener
     private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
-    private val tagsText by lazy { binding.speechbubbleContentContainer.findViewById<TextView>(R.id.contentText).apply {
+    private val tagsText by lazy { binding.tagsText.apply {
         maxLines = 10
         isClickable = true
         scrollBarFadeDuration = 0
@@ -95,6 +99,7 @@ class InsertNodeFragment :
         set(value) {
             field = value
             setMarkerPosition(value?.position)
+            onSelectedWays()
         }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -144,6 +149,7 @@ class InsertNodeFragment :
         ).toRectF()
         mapFragment?.getPositionThatCentersPosition(pos, offsetRect)
             ?.let { mapFragment?.updateCameraPosition { position = it } }
+        mapFragment?.show3DBuildings = false
 
         onMapMoved(pos)
     }
@@ -204,7 +210,8 @@ class InsertNodeFragment :
                 )
             }
         }
-        val f = InsertNodeTagEditor.create(positionOnWay, feature)
+        val startTags = (positionOnWay as? VertexOfWay)?.let { mapData.getNode(it.nodeId) }?.tags
+        val f = InsertNodeTagEditor.create(positionOnWay, feature, startTags)
         parentFragmentManager.commit {
             replace(id, f, "bottom_sheet")
             addToBackStack("bottom_sheet")
@@ -238,62 +245,56 @@ class InsertNodeFragment :
         val maxDistance = metersPerPixel * requireContext().dpToPx(24)
         val snapToVertexDistance = maxDistance / 2
 
-        // todo: switch to something similar that possibly allows inserting a node into multiple ways
-        positionOnWay = if (forceMoveMarker) position.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
-            else getDefaultMarkerPosition()?.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
+        // todo:
+        //  positionOnWay should be changed a bit, because I want to allow multiple ways
+        //   add something like PositionOnWaySegment, but with multiple ways (because the may share both segment nodes)
+        //   snap to crossings that don't have a node
+        //    another PositionOnWay with two segments
+        //    how to really do the snapping?
+        //   don't snap to nodes with tags? or show the tags?
+        //    this could be an option in getPositionOnWays, but not relevant for now
+        //   adding more PositionOnWay-classes should be fine i think, just make sure that they are accessible only if an option was set
+        positionOnWay =
+            if (forceMoveMarker) position.getPositionOnWays(ways, maxDistance, snapToVertexDistance)
+            else getDefaultMarkerPosition()?.getPositionOnWays(
+                ways,
+                maxDistance,
+                snapToVertexDistance
+            )
+    }
+
+    private fun onSelectedWays() {
         val pow = positionOnWay
         if (pow == null) {
             noWaySelected()
             return
         }
-        val ways = when (pow) {
-            is PositionOnWaySegment -> listOf(mapData.getWay(pow.wayId)!!)
-            is VertexOfWay -> pow.wayIds.map { mapData.getWay(it)!! }
-        }
-
-        // todo:
-        //  positionOnWay should be changed a bit, because I want to allow multiple ways
-        //   also snap to crossings that don't have a node?
-        //    how to really do? always snap to parallel way segments, and optionally snap to crossings?
-        //   don't snap to nodes with tags? or show the tags?
-        //    this could be an option in getPositionOnWays?
-        //   adding another sub-class should be fine i think, just make sure that it's accessible only if an option was set
-        //  description text needs to be adjusted in here (also containing multiple ways)
-        //   and a way to remove single ways out of these
-        //   maybe sth like list of ways on top, and tap to show tags below (and highlight tags for which way are shown)
-        //  existing tags of nodes need to be shown!
+        val ways = pow.getWays()
 
         if (ways.isEmpty()) { // actually this should never happen
             noWaySelected()
             return
         }
-        // view:
-        //  tag view on bottom, like now (but with other text)
-        //  element view on top, contains
-        //   node if it has tags
-        //   each way
-        //   on click, show tags
-        //   switch (or delete button?) on right side to not include this way if it's possible (the new positionOnWay)
-        val node = if (pow is VertexOfWay) mapData.getNode(pow.nodeId) else null
-        val nodeTags = node?.tags?.takeIf { it.isNotEmpty() }
-        val texts = ways.map { it.tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n") }
-        val text = texts.joinToString("\n\n")
-        if (tagsText.text != text) {
-            tagsText.text = text
-            tagsText.scrollY = 0
+        binding.elements.removeAllViews()
+
+        val vertex = if (pow is VertexOfWay) mapData.getNode(pow.nodeId) else null
+        // show tags of node, or of a way if node has no tags
+        if (vertex?.tags?.isNotEmpty() == true) {
+            addViewForElement(vertex)
+            setTagsText(vertex.tags)
+        } else {
+            setTagsText(ways.first().tags)
+            if (ways.size > 1)
+                mapData.getWayGeometry(ways.first().id)?.let {
+                    showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(it, null, null, null)
+                }
         }
+        ways.forEach { addViewForElement(it) }
 
         // highlight ways and position
         viewLifecycleScope.launch {
             showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
-            // todo: no crosshair as we have the marker? but it may hide nodes...
-            //  just change the marker to a crosshair?
-//            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-//                ElementPointGeometry(position),
-//                R.drawable.crosshair_marker,
-//                null
-//            )
-            mapFragment?.highlightGeometries(ways.map { mapData.getWayGeometry(it.id)!! }) // todo: can't be null, right?
+            mapFragment?.highlightGeometries(ways.map { mapData.getWayGeometry(it.id)!! })
             ways.forEach { way ->
                 way.nodeIds.forEach {
                     val node = mapData.getNode(it)!!
@@ -309,7 +310,37 @@ class InsertNodeFragment :
         animateButtonVisibilities()
     }
 
+    // todo: actually this should be a horizontal layout with delete button on the right side (or maybe a switch?)
+    //  delete button: same positionOnWays, but with that way removed
+    //  only set the button if this is possible (currently not, as multiple ways work only for existing nodes)
+    private fun addViewForElement(element: Element) {
+        binding.elements.addView(TextView(requireContext()).apply {
+            text = element.key.toString()
+            textSize = context.spToPx(12)
+            // todo: some padding?
+            setTextColor(ContextCompat.getColor(context, R.color.text))
+            setOnClickListener {
+                setTagsText(element.tags)
+                // highlight the selected way, but not in orange (because that should stay)
+                positionOnWay?.getWays()?.forEach {
+                    if (it == element) return@forEach
+                    mapData.getGeometry(it.type, it.id)?.let { mapFragment?.deleteMarkerForCurrentHighlighting(it) }
+                }
+                if (element is Way) // highlighting nodes may remove other markers, e.g. for a crossing
+                    mapData.getGeometry(element.type, element.id)?.let { mapFragment?.putMarkerForCurrentHighlighting(it, null, null, null) }
+            }
+        })
+    }
+    private fun setTagsText(tags: Map<String, String>) {
+        val text = tags.map { "${it.key} = ${it.value}" }.sorted().joinToString("\n")
+        if (tagsText.text != text) {
+            tagsText.text = text
+            tagsText.scrollY = 0
+        }
+    }
+
     private fun noWaySelected() {
+        binding.elements.removeAllViews()
         tagsText.setText(R.string.insert_node_select_way)
         showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
         mapFragment?.clearHighlighting()
@@ -363,6 +394,11 @@ class InsertNodeFragment :
 
     private fun animateButtonVisibilities() {
         if (isFormComplete) binding.okButton.popIn() else binding.okButton.popOut()
+    }
+
+    private fun PositionOnWay.getWays() = when (this) {
+        is PositionOnWaySegment -> listOf(mapData.getWay(wayId)!!)
+        is VertexOfWay -> wayIds.map { mapData.getWay(it)!! }
     }
 
     companion object {

@@ -747,7 +747,7 @@ private const val REQUEST_CODE_CUSTOM_QUEST_IMPORT = 5333
 private const val REQUEST_CODE_CUSTOM_QUEST_EXPORT = 5334
 
 // TODO: adjust this every time the version changes, and adjust data handling if necessary!
-private const val LAST_KNOWN_DB_VERSION = 9L
+private const val LAST_KNOWN_DB_VERSION = 11L
 
 private const val BACKUP_HIDDEN_OSM_QUESTS = "quests"
 private const val BACKUP_HIDDEN_NOTES = "notes"

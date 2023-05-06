@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -22,6 +23,8 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
+import de.westnordost.streetcomplete.quests.show_poi.ShowBusiness
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -53,6 +56,7 @@ class QuestPinsManager(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: SharedPreferences,
     private val mapDataSource: MapDataWithEditsSource,
+    private val selectedOverlaySource: SelectedOverlaySource,
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
@@ -265,6 +269,8 @@ class QuestPinsManager(
     }
 
     private fun getLabel(quest: OsmQuest): String? {
+        if (quest.type is ShowBusiness && selectedOverlaySource.selectedOverlay is ShopsOverlay)
+            return null // avoid duplicate business labels if shops overlay is active
         val labelSources = quest.type.dotLabelSources.ifEmpty { return null }
         val tags = mapDataSource.get(quest.elementType, quest.elementId)?.tags ?: return null
         return labelSources.firstNotNullOfOrNull {

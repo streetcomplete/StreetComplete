@@ -84,7 +84,7 @@ class OsmQuestController internal constructor(
     }
 
     // must be valid names!
-    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance", "AddHousenumber")
+    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance", "AddEntranceReference", "AddHousenumber")
 
     private val hiddenCache by lazy { hiddenDB.getAllIds().toHashSet() }
 

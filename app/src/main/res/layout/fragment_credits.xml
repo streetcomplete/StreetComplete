@@ -49,6 +49,16 @@
                     android:text="Tobias Zwick"
                     tools:ignore="HardcodedText" />
 
+                <TextView
+                    android:id="@+id/authorText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:textStyle="bold"
+                    android:textIsSelectable="true"
+                    android:text="Helium314"
+                    tools:ignore="HardcodedText" />
+
             </LinearLayout>
 
             <LinearLayout

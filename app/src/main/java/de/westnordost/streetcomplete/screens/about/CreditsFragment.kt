@@ -39,8 +39,9 @@ class CreditsFragment : TwoPaneDetailFragment(R.layout.fragment_credits), HasTit
             val mainContributorUsernames = mainContributors.map { it.githubUsername }
             val mainContributorLinks = mainContributors.map { it.toTextWithLink() }
 
-            binding.authorText.setHtml(mainContributorLinks.first())
-            addContributorsTo(mainContributorLinks.drop(1), binding.mainCredits)
+            binding.authorText.setHtml("StreetComplete: " + mainContributorLinks.first())
+            binding.authorText2.setHtml("SCEE: " + mainContributorLinks[1])
+            addContributorsTo(mainContributorLinks.drop(2), binding.mainCredits)
             addContributorsTo(readProjectsContributors(), binding.projectsCredits)
             addContributorsTo(readArtContributors(), binding.artCredits)
             addContributorsTo(readCodeContributors(mainContributorUsernames), binding.codeCredits)

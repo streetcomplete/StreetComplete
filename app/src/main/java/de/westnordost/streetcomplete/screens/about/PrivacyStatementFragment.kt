@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.about
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.upload.BANNED_VERSION_URL
 import de.westnordost.streetcomplete.databinding.FragmentShowHtmlBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
@@ -23,7 +24,7 @@ class PrivacyStatementFragment : TwoPaneDetailFragment(R.layout.fragment_show_ht
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textView.setHtml(
-            getString(R.string.privacy_html) +
+            getString(R.string.privacy_html).replace("https://www.westnordost.de/streetcomplete/banned_versions.txt", BANNED_VERSION_URL) +
             getString(R.string.privacy_html_tileserver2, vectorTileProvider.title, vectorTileProvider.privacyStatementLink) +
             getString(R.string.privacy_html_statistics) +
             getString(R.string.privacy_html_third_party_quest_sources) +

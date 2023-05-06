@@ -468,6 +468,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             OsmQuestController.lastAnsweredQuestKey = questKey as? OsmQuestKey
 
         withContext(Dispatchers.IO) {
+            val l = listener // form is closed after adding the edit, so the listener is null, but we may need it
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
                 val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
@@ -475,6 +476,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             } else {
                 addElementEditsController.add(osmElementQuestType, geometry, source, action)
             }
+            if (prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false))
+                l?.onEdited(osmElementQuestType, geometry)
         }
         listener?.onEdited(osmElementQuestType, geometry)
     }

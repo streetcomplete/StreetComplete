@@ -48,7 +48,6 @@ class MapDataCache(
     private val relationGeometryCache = HashMap<Long, ElementGeometry>(initialCapacity / 10)
     private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>(initialCapacity / 2)
     private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>(initialCapacity / 10)
-  // todo remove  private val nodeCache = HashMap<Long, Node>()
 
     fun noTrimPlus(bbox: BoundingBox) = synchronized(this) {
         // bbox to tiles, and increase all by 1

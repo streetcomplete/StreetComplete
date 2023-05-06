@@ -62,12 +62,15 @@ class InsertNodeTagEditor : TagEditor() {
         //   this should also add the relevant tags to tag editor
         //   only if i want to allow this...
         //   maybe add the tags to positionOnWay?
-        fun create(positionOnWay: PositionOnWay, feature: Feature?): InsertNodeTagEditor {
+        fun create(positionOnWay: PositionOnWay, feature: Feature?, startTags: Map<String, String>?): InsertNodeTagEditor {
             val f = InsertNodeTagEditor()
             val args = createArguments(Node(0L, positionOnWay.position), ElementPointGeometry(positionOnWay.position), null, null)
+            val tags = HashMap<String, String>()
+            feature?.addTags?.forEach { tags[it.key] = it.value }
+            startTags?.forEach { tags[it.key] = it.value } // todo: how to handle conflicts? e.g. if user wants to insert speed table, but there is a speed bump already?
             args.putAll(bundleOf(
                 ARG_POSITION_ON_WAY to Json.encodeToString(positionOnWay),
-                ARG_TAGS to feature?.addTags,
+                ARG_TAGS to tags,
             ))
             feature?.let {
                 args.putString(ARG_FEATURE_NAME, it.name)
