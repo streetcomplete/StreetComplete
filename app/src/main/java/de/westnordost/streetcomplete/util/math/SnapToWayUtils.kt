@@ -71,7 +71,7 @@ private fun LatLon.getNearestVertexOfWays(
                 minDistance = distance
                 nearestNodeId = nodeId
                 nearestPoint = point
-                nearestWayIds = mutableSetOf()
+                nearestWayIds = mutableSetOf(way.id)
             }
         }
     }
