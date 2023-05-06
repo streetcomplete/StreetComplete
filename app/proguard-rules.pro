@@ -24,9 +24,6 @@
     @androidx.lifecycle.OnLifecycleEvent public *;
 }
 
-# CountryInfo filled via reflection
--keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
-
 # just leave my stuff alone
 -keep class de.westnordost.* { *; }
 -keep class de.westnordost.** { *; }

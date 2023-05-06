@@ -6,6 +6,7 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.annotation.Keep
 import androidx.core.content.withStyledAttributes
 import de.westnordost.streetcomplete.R
 import kotlin.math.sqrt
@@ -17,6 +18,7 @@ open class CircularMaskFrameLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    @Keep
     var circularity: Float = 1f
         set(value) {
             val newVal = value.coerceIn(0f, 1f)

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+
 object ApplicationConstants {
     const val NAME = "StreetComplete"
     const val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
@@ -8,7 +10,7 @@ object ApplicationConstants {
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
 
-    const val COPYRIGHT_YEARS = "2016-2022"
+    const val COPYRIGHT_YEARS = "2016-2023"
 
     const val DATABASE_NAME = "streetcomplete_v2.db"
     const val OLD_DATABASE_NAME = "streetcomplete.db"
@@ -62,5 +64,11 @@ object ApplicationConstants {
         "person",
         // no wiki entry, sounds like it could span large areas
         "power", "pipeline", "railway"
+    )
+
+    val EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES = setOf(
+        /* because this action may edit route relations but route relations are not persisted
+           locally for performance reasons */
+        SplitWayAction::class
     )
 }

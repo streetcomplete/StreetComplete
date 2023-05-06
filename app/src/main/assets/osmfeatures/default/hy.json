@@ -1,0 +1,398 @@
+{
+    "hy": {
+        "presets": {
+            "categories": {
+                "category-building": {
+                    "name": "Շինութեան Յատկութիւններ"
+                },
+                "category-landuse": {
+                    "name": "Տիրոյթի օգտագործման յատկութիւններ"
+                },
+                "category-restriction": {
+                    "name": "Սահմանափակումների յատկութիւններ"
+                },
+                "category-route": {
+                    "name": "Ուղու Յատկութիւններ "
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "Անցումն թոյլատրուած է։",
+                    "options": {
+                        "designated": {
+                            "title": "Նշանակուած"
+                        },
+                        "destination": {
+                            "title": "Նշանակման վայր"
+                        },
+                        "dismount": {
+                            "title": "Հեծեալի իջնելը"
+                        },
+                        "no": {
+                            "title": "Արգելուած է"
+                        },
+                        "permissive": {
+                            "title": "Թոյլատրելի"
+                        },
+                        "private": {
+                            "title": "Մասնաւոր"
+                        },
+                        "yes": {
+                            "title": "Թոյլատրուած է"
+                        }
+                    },
+                    "placeholder": "Նշուած չէ",
+                    "types": {
+                        "access": "Ամէնը",
+                        "bicycle": "Հեծանիւներ",
+                        "foot": "Ոտքով",
+                        "horse": "Ձիեր",
+                        "motor_vehicle": "Շարժիչով տրանսպորտային միջոցներ"
+                    }
+                },
+                "access_simple": {
+                    "label": "Անցումն թոյլատրուած է"
+                },
+                "address": {
+                    "label": "Հասցէ",
+                    "placeholders": {
+                        "city": "Քաղաք",
+                        "conscriptionnumber": "123",
+                        "country": "Երկիր",
+                        "district": "Շրջան",
+                        "hamlet": "Գիւղակ",
+                        "housename": "Շէնքի անուանում",
+                        "housenumber": "123",
+                        "place": "Վայր",
+                        "postcode": "Ինդեքս",
+                        "province": "Մարզ",
+                        "state": "Նահանգ",
+                        "street": "Փողոց",
+                        "subdistrict": "Ենթաշրջան",
+                        "suburb": "Արուարձան"
+                    }
+                },
+                "admin_level": {
+                    "label": "Վարչական դաս"
+                },
+                "aerialway": {
+                    "label": "Տեսակ"
+                },
+                "aerialway/access": {
+                    "label": "Մատչելիութիւն",
+                    "options": {
+                        "both": "Երկուսն էլ",
+                        "entry": "Մուտք",
+                        "exit": "Ելք"
+                    }
+                },
+                "aerialway/bubble": {
+                    "label": "Պղպջակ"
+                },
+                "aerialway/capacity": {
+                    "label": "Կարողութիւն (ժամը)",
+                    "placeholder": "500, 2500, 5000..."
+                },
+                "aerialway/duration": {
+                    "label": "Տեւողութիւն (րոպէ)",
+                    "placeholder": "1, 2, 3..."
+                },
+                "aerialway/heating": {
+                    "label": "Տաքացուող"
+                },
+                "aerialway/occupancy": {
+                    "label": "Զբաղուածութիւն",
+                    "placeholder": "2, 4, 8..."
+                },
+                "aerialway/summer/access": {
+                    "label": "Անցում (ամառը)",
+                    "options": {
+                        "both": "Երկուսն էլ",
+                        "entry": "Մուտք",
+                        "exit": "Ելք"
+                    }
+                },
+                "aeroway": {
+                    "label": "Տեսակ"
+                },
+                "amenity": {
+                    "label": "Տեսակ"
+                },
+                "area/highway": {
+                    "label": "Տեսակ"
+                },
+                "artist": {
+                    "label": "Արուեստագէտ"
+                },
+                "artwork_type": {
+                    "label": "Տեսակ"
+                },
+                "atm": {
+                    "label": "Բանկոմատ"
+                },
+                "backrest": {
+                    "label": "Մէջք"
+                },
+                "barrier": {
+                    "label": "Տեսակ"
+                },
+                "bench": {
+                    "label": "Նստարան"
+                },
+                "bicycle_parking": {
+                    "label": "Տեսակ"
+                },
+                "boundary": {
+                    "label": "Տեսակ"
+                },
+                "building": {
+                    "label": "Շինություն"
+                },
+                "capacity": {
+                    "label": "Կարողութիւն",
+                    "placeholder": "50, 100, 200..."
+                },
+                "collection_times": {
+                    "label": "Հաւաքելու ժամանակները"
+                },
+                "construction": {
+                    "label": "Տեսակ"
+                },
+                "country": {
+                    "label": "Երկիր"
+                },
+                "covered": {
+                    "label": "Ծածկուած"
+                },
+                "craft": {
+                    "label": "Տեսակ"
+                },
+                "crossing": {
+                    "label": "Տեսակ"
+                },
+                "cycleway": {
+                    "label": "Հեծանուային կածաններ ",
+                    "options": {
+                        "lane": {
+                            "description": "Հեծանուային կածան, որը տարանջատուած է աւտոմոբիլային երթեւեկութիւնից նկարած գծով"
+                        },
+                        "opposite": {
+                            "description": "Հեծանուային ուղի երկու ուղղութեամբ էլ, միակողմանի ճանապարհի վրայ"
+                        },
+                        "opposite_lane": {
+                            "description": "Հեծանուային ուղի, որ տանում է երթեւեկութեանը հակառակ ուղղութեամբ"
+                        },
+                        "share_busway": {
+                            "description": "Հեծանուային ուղին օգտագործւում է աւտոբուսների հետ միասին"
+                        },
+                        "shared_lane": {
+                            "description": "Հեծանուային ուղի որն առանձնացուած չէ աւտոերթեւեկութիւնից։"
+                        },
+                        "track": {
+                            "description": "Հեծանուային ուղի, որը բաժանուած է երթեւեկութիւնից ֆիզիկական պատնէշով"
+                        }
+                    }
+                },
+                "delivery": {
+                    "label": "Առաքում"
+                },
+                "description": {
+                    "label": "Նկարագրութիւն"
+                },
+                "dock": {
+                    "label": "Տեսակ"
+                },
+                "electrified": {
+                    "options": {
+                        "no": "Ոչ"
+                    }
+                },
+                "entrance": {
+                    "label": "Տեսակ"
+                },
+                "gender": {
+                    "placeholder": "Անյայտ"
+                },
+                "generator/type": {
+                    "label": "Տեսակ"
+                },
+                "highway": {
+                    "label": "Տեսակ"
+                },
+                "historic": {
+                    "label": "Տեսակ"
+                },
+                "information": {
+                    "label": "Տեսակ"
+                },
+                "internet_access": {
+                    "options": {
+                        "no": "Ոչ",
+                        "yes": "Այո"
+                    }
+                },
+                "lamp_type": {
+                    "label": "Տեսակ"
+                },
+                "landuse": {
+                    "label": "Տեսակ"
+                },
+                "leaf_type": {
+                    "label": "Տերեւի Տեսակ"
+                },
+                "leaf_type_singular": {
+                    "label": "Տերեւի Տեսակ"
+                },
+                "leisure": {
+                    "label": "Տեսակ"
+                },
+                "location": {
+                    "label": "Տեղանք"
+                },
+                "man_made": {
+                    "label": "Տեսակ"
+                },
+                "maxspeed": {
+                    "label": "Արագության սահմանափակում"
+                },
+                "office": {
+                    "label": "Տեսակ"
+                },
+                "oneway": {
+                    "options": {
+                        "no": "Ոչ",
+                        "yes": "Այո"
+                    }
+                },
+                "oneway_yes": {
+                    "options": {
+                        "no": "Ոչ",
+                        "yes": "Այո"
+                    }
+                },
+                "opening_hours": {
+                    "label": "Աշխատանքային ժամեր"
+                },
+                "parking": {
+                    "label": "Տեսակ"
+                },
+                "piste/type": {
+                    "label": "Տեսակ"
+                },
+                "place": {
+                    "label": "Տեսակ"
+                },
+                "power": {
+                    "label": "Տեսակ"
+                },
+                "railway": {
+                    "label": "Տեսակ"
+                },
+                "relation": {
+                    "label": "Տեսակ"
+                },
+                "restriction": {
+                    "label": "Տեսակ"
+                },
+                "route": {
+                    "label": "Տեսակ"
+                },
+                "route_master": {
+                    "label": "Տեսակ"
+                },
+                "service": {
+                    "label": "Տեսակ"
+                },
+                "service_rail": {
+                    "label": "Սպասարկման տեսակ"
+                },
+                "shelter_type": {
+                    "label": "Տեսակ"
+                },
+                "shop": {
+                    "label": "Տեսակ"
+                },
+                "site": {
+                    "label": "Տեսակ"
+                },
+                "structure": {
+                    "placeholder": "Անյայտ"
+                },
+                "substation": {
+                    "label": "Տեսակ"
+                },
+                "takeaway": {
+                    "options": {
+                        "no": "Ոչ",
+                        "yes": "Այո"
+                    }
+                },
+                "tourism": {
+                    "label": "Տեսակ"
+                },
+                "tracktype": {
+                    "label": "Արահետի Տեսակ"
+                },
+                "traffic_signals": {
+                    "label": "Տեսակ"
+                },
+                "water": {
+                    "label": "Տեսակ"
+                },
+                "waterway": {
+                    "label": "Տեսակ"
+                },
+                "website": {
+                    "label": "Կայք"
+                },
+                "wetland": {
+                    "label": "Տեսակ"
+                }
+            },
+            "presets": {
+                "aeroway/aerodrome": {
+                    "name": "Օդանավակայան"
+                },
+                "aeroway/helipad": {
+                    "name": "Ուղաթիռային հրապարակ"
+                },
+                "amenity/bank": {
+                    "name": "Բանկ"
+                },
+                "amenity/bar": {
+                    "name": "Բար"
+                },
+                "amenity/bicycle_parking": {
+                    "name": "Հեծանվային կայանատեղի"
+                },
+                "amenity/bicycle_rental": {
+                    "name": "Հեծանիվի վարձակալություն"
+                },
+                "amenity/cafe": {
+                    "name": "Սրճարան"
+                },
+                "amenity/cinema": {
+                    "name": "Կինոթատրոն"
+                },
+                "amenity/fast_food": {
+                    "name": "Արագ սնունդ"
+                },
+                "area": {
+                    "name": "Տիրույթ"
+                },
+                "barrier/gate": {
+                    "name": "Դարպաս"
+                },
+                "barrier/wall": {
+                    "name": "Պատ"
+                },
+                "highway/steps": {
+                    "name": "Աստիճաններ"
+                },
+                "relation": {
+                    "name": "Յարաբերութիւն"
+                }
+            }
+        }
+    }
+}

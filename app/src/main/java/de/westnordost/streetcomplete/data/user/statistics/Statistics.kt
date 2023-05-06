@@ -1,16 +1,25 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.data.quest.QuestType
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Statistics(
-    val questTypes: List<QuestTypeStatistics>,
+    val types: List<EditTypeStatistics>,
     val countries: List<CountryStatistics>,
     val rank: Int,
     val daysActive: Int,
+    val currentWeekRank: Int,
+    val currentWeekTypes: List<EditTypeStatistics>,
+    val currentWeekCountries: List<CountryStatistics>,
+    val activeDatesRange: Int,
+    val activeDates: List<LocalDate>,
     val lastUpdate: Long,
-    val isAnalyzing: Boolean
+    val isAnalyzing: Boolean,
 )
 
-data class CountryStatistics(val countryCode: String, val solvedCount: Int, val rank: Int?)
+@Serializable
+data class CountryStatistics(val countryCode: String, val count: Int, val rank: Int?)
 
-data class QuestTypeStatistics(val questType: QuestType<*>, val solvedCount: Int)
+@Serializable
+data class EditTypeStatistics(val type: String, val count: Int)

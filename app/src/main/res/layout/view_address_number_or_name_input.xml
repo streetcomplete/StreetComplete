@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/space_8dp">
+
+    <TextView
+        android:id="@+id/toggleAddressNumberButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:drawableStartCompat="@drawable/ic_arrow_expand_down_24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text"
+        android:text="@string/quest_address_house_number_label"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addressNumberContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/countrySpecificContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/toggleKeyboardButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/toggleKeyboardButton"
+            android:layout_width="64dp"
+            android:layout_height="56dp"
+            tools:text="abc"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/toggleHouseNameButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:drawableStartCompat="@drawable/ic_arrow_expand_right_24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text"
+        android:text="@string/quest_address_house_name_label" />
+
+    <EditText
+        android:id="@+id/houseNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:imeOptions="actionDone"
+        tools:text="Cool House"
+        style="@style/HouseNameEditText" />
+
+</LinearLayout>

@@ -7,10 +7,12 @@ class CreatedElementsController(
     private val db: CreatedElementsDao
 ) : CreatedElementsSource {
 
-    private val cache: MutableSet<ElementKey> by lazy { db.getAll().toMutableSet() }
+    private val cache: MutableSet<ElementKey> by lazy {
+        synchronized(this) { db.getAll().toMutableSet() }
+    }
 
     override fun contains(elementType: ElementType, elementId: Long): Boolean =
-        cache.contains(ElementKey(elementType, elementId))
+        synchronized(this) { cache.contains(ElementKey(elementType, elementId)) }
 
     fun putAll(entries: Collection<ElementKey>) {
         synchronized(this) {
@@ -21,9 +23,8 @@ class CreatedElementsController(
 
     fun deleteAll(entries: Collection<ElementKey>) {
         synchronized(this) {
-            val result = db.deleteAll(entries)
-            cache.removeAll(entries)
-            return result
+            db.deleteAll(entries)
+            cache.removeAll(entries.toSet())
         }
     }
 

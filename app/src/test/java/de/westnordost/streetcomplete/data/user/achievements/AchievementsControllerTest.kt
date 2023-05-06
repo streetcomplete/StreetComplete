@@ -1,9 +1,15 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -21,6 +27,7 @@ class AchievementsControllerTest {
     private var allLinks: List<Link> = listOf()
     private var allAchievements: List<Achievement> = listOf()
     private lateinit var questTypeRegistry: QuestTypeRegistry
+    private lateinit var overlayRegistry: OverlayRegistry
 
     private lateinit var statisticsListener: StatisticsSource.Listener
     private lateinit var listener: AchievementsSource.Listener
@@ -30,7 +37,8 @@ class AchievementsControllerTest {
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
         userLinksDao = mock()
         statisticsSource = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(QuestOne, QuestTwo))
+        questTypeRegistry = QuestTypeRegistry(listOf(0 to QuestOne, 1 to QuestTwo))
+        overlayRegistry = OverlayRegistry(listOf(0 to OverlayOne))
 
         listener = mock()
 
@@ -46,7 +54,7 @@ class AchievementsControllerTest {
     private fun createAchievementsController(): AchievementsController =
         AchievementsController(
             statisticsSource, userAchievementsDao, userLinksDao,
-            questTypeRegistry, allAchievements, allLinks
+            questTypeRegistry, overlayRegistry, allAchievements, allLinks
         ).also { it.addListener(listener) }
 
     @Test fun `unlocks DaysActive achievement`() {
@@ -61,36 +69,43 @@ class AchievementsControllerTest {
         verify(listener).onAchievementUnlocked(achievement, 1)
     }
 
-    @Test fun `unlocks TotalSolvedQuests achievement`() {
-        on(statisticsSource.getSolvedCount()).thenReturn(1)
-        val achievement = achievement("allQuests", TotalSolvedQuests)
+    @Test fun `unlocks TotalEditCount achievement`() {
+        on(statisticsSource.getEditCount()).thenReturn(1, 2)
+        val achievement = achievement("allQuests", TotalEditCount)
         allAchievements = listOf(achievement)
 
         createAchievementsController()
-        statisticsListener.onAddedOne(QuestOne)
-
+        statisticsListener.onAddedOne("QuestOne")
         verify(userAchievementsDao).put("allQuests", 1)
         verify(listener).onAchievementUnlocked(achievement, 1)
+
+        statisticsListener.onAddedOne("OverlayOne")
+        verify(userAchievementsDao).put("allQuests", 2)
+        verify(listener).onAchievementUnlocked(achievement, 2)
     }
 
-    @Test fun `unlocks QuestType achievement`() {
-        on(statisticsSource.getSolvedCount(listOf(QuestOne, QuestTwo))).thenReturn(1)
-        val achievement = achievement("mixedAchievement", SolvedQuestsOfTypes)
+    @Test fun `unlocks EditsOfTypeCount achievement`() {
+        on(statisticsSource.getEditCount(listOf("QuestOne", "QuestTwo", "OverlayOne"))).thenReturn(1, 2)
+        val achievement = achievement("mixedAchievement", EditsOfTypeCount)
         allAchievements = listOf(achievement)
 
         createAchievementsController()
-        statisticsListener.onAddedOne(QuestTwo)
 
+        statisticsListener.onAddedOne("QuestTwo")
         verify(userAchievementsDao).put("mixedAchievement", 1)
         verify(listener).onAchievementUnlocked(achievement, 1)
+
+        statisticsListener.onAddedOne("OverlayOne")
+        verify(userAchievementsDao).put("mixedAchievement", 2)
+        verify(listener).onAchievementUnlocked(achievement, 2)
     }
 
     @Test fun `unlocks multiple locked levels of an achievement and grants those links`() {
         on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
-        on(statisticsSource.getSolvedCount()).thenReturn(5)
+        on(statisticsSource.getEditCount()).thenReturn(5)
         val achievement = achievement(
             id = "allQuests",
-            condition = TotalSolvedQuests,
+            condition = TotalEditCount,
             unlockedLinks = mapOf(
                 1 to links("a", "b"),
                 2 to links("c"),
@@ -102,7 +117,7 @@ class AchievementsControllerTest {
         allAchievements = listOf(achievement)
 
         createAchievementsController()
-        statisticsListener.onAddedOne(QuestOne)
+        statisticsListener.onAddedOne("QuestOne")
 
         verify(userAchievementsDao).put("allQuests", 5)
         verify(userLinksDao).addAll(listOf("d", "e", "f"))
@@ -115,7 +130,7 @@ class AchievementsControllerTest {
         on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
         allAchievements = listOf(achievement(
             id = "allQuests",
-            condition = TotalSolvedQuests,
+            condition = TotalEditCount,
             unlockedLinks = mapOf(
                 1 to links("a", "b"),
                 2 to links("c"),
@@ -148,19 +163,19 @@ class AchievementsControllerTest {
     @Test fun `only updates achievements for given questType`() {
         // all achievements below should usually be granted
         on(statisticsSource.daysActive).thenReturn(1)
-        on(statisticsSource.getSolvedCount(any<List<QuestType<*>>>())).thenReturn(1)
-        on(statisticsSource.getSolvedCount()).thenReturn(1)
+        on(statisticsSource.getEditCount(any<List<String>>())).thenReturn(1)
+        on(statisticsSource.getEditCount()).thenReturn(1)
 
         allAchievements = listOf(
             achievement("daysActive", DaysActive),
-            achievement("otherAchievement", SolvedQuestsOfTypes),
-            achievement("thisAchievement", SolvedQuestsOfTypes),
-            achievement("mixedAchievement", SolvedQuestsOfTypes),
-            achievement("allQuests", TotalSolvedQuests)
+            achievement("otherAchievement", EditsOfTypeCount),
+            achievement("thisAchievement", EditsOfTypeCount),
+            achievement("mixedAchievement", EditsOfTypeCount),
+            achievement("allQuests", TotalEditCount)
         )
 
         createAchievementsController()
-        statisticsListener.onAddedOne(QuestOne)
+        statisticsListener.onAddedOne("QuestOne")
 
         verify(userAchievementsDao).getAll()
         verify(userAchievementsDao).put("thisAchievement", 1)
@@ -171,14 +186,14 @@ class AchievementsControllerTest {
 
     @Test fun `only updates daysActive achievements`() {
         on(statisticsSource.daysActive).thenReturn(1)
-        on(statisticsSource.getSolvedCount(any<List<QuestType<*>>>())).thenReturn(1)
-        on(statisticsSource.getSolvedCount()).thenReturn(1)
+        on(statisticsSource.getEditCount(any<List<String>>())).thenReturn(1)
+        on(statisticsSource.getEditCount()).thenReturn(1)
 
         allAchievements = listOf(
             achievement("daysActive", DaysActive),
             achievement("daysActive2", DaysActive),
-            achievement("mixedAchievement", SolvedQuestsOfTypes),
-            achievement("allQuests", TotalSolvedQuests)
+            achievement("mixedAchievement", EditsOfTypeCount),
+            achievement("allQuests", TotalEditCount)
         )
 
         createAchievementsController()
@@ -211,7 +226,7 @@ class AchievementsControllerTest {
     @Test fun `get all unlocked achievements`() {
         allAchievements = listOf(
             achievement("daysActive", DaysActive),
-            achievement("otherAchievement", SolvedQuestsOfTypes)
+            achievement("otherAchievement", EditsOfTypeCount)
         )
         on(userAchievementsDao.getAll()).thenReturn(mapOf(
             "daysActive" to 3
@@ -235,25 +250,36 @@ private fun achievement(
 private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }
 
-private fun questTypeAchievements(achievementIds: List<String>): List<QuestTypeAchievement> =
+private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAchievement> =
     achievementIds.map {
-        val questTypeAchievement: QuestTypeAchievement = mock()
-        on(questTypeAchievement.id).thenReturn(it)
-        questTypeAchievement
+        val editTypeAchievement: EditTypeAchievement = mock()
+        on(editTypeAchievement.id).thenReturn(it)
+        editTypeAchievement
     }
 
-private object QuestOne : QuestType<Int> {
+private object QuestOne : QuestType {
     override val icon = 0
     override val title = 0
-    override fun createForm(): AbstractQuestAnswerFragment<Int> = mock()
-    override val questTypeAchievements =
-        questTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
+    override val wikiLink: String? = null
+    override fun createForm(): AbstractQuestForm = mock()
+    override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
 }
 
-private object QuestTwo : QuestType<Int> {
+private object QuestTwo : QuestType {
     override val icon = 0
     override val title = 0
-    override fun createForm(): AbstractQuestAnswerFragment<Int> = mock()
-    override val questTypeAchievements =
-        questTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
+    override val wikiLink: String? = null
+    override fun createForm(): AbstractQuestForm = mock()
+    override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
+}
+
+private object OverlayOne : Overlay {
+    override val icon = 0
+    override val title = 0
+    override val wikiLink: String? = null
+    override val changesetComment = ""
+    override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
+    override fun createForm(element: Element?): AbstractOverlayForm? = null
+
+    override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

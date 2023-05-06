@@ -2,18 +2,21 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours(
@@ -23,7 +26,7 @@ class AddOpeningHours(
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
     private val filter by lazy { ("""
-        nodes, ways, relations with
+        nodes, ways with
         (
           (
             (
@@ -31,6 +34,7 @@ class AddOpeningHours(
               or amenity = bicycle_parking and bicycle_parking = building
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
+              or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
               or tourism = information and information = office
               or """ +
 
@@ -41,13 +45,19 @@ class AddOpeningHours(
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
+                "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
+                "cooking_school",
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & opening hours
                 "boat_rental"
@@ -66,16 +76,15 @@ class AddOpeningHours(
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
 
-                // name & opening hours
-                "horse_riding"
-
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times
             ),
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic"
+                "employment_agency", "diplomatic", "coworking", "energy_supplier",
+                "estate_agent", "lawyer", "telecommunication", "educational_institution",
+                "association", "ngo", "it", "accountant"
             ),
             "craft" to arrayOf(
                 // common
@@ -84,11 +93,11 @@ class AddOpeningHours(
             ),
             "healthcare" to arrayOf(
                 // common
-                "audiologist", "optometrist", "counselling", "speech_therapist",
-                "sample_collection", "blood_donation",
-
-                // name & opening hours
-                "physiotherapist", "podiatrist",
+                "pharmacy", "doctor", "clinic", "dentist", "centre", "physiotherapist",
+                "laboratory", "alternative", "psychotherapist", "optometrist", "podiatrist",
+                "nurse", "counselling", "speech_therapist", "blood_donation", "sample_collection",
+                "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
+                "blood_bank", "nutrition_counselling",
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
@@ -99,7 +108,7 @@ class AddOpeningHours(
             and (
               leisure = park
               or barrier
-              or amenity ~ toilets|bicycle_rental
+              or amenity ~ toilets|bicycle_rental|charging_station
             )
           )
         )
@@ -112,44 +121,19 @@ class AddOpeningHours(
         and opening_hours:signed != no
     """).toElementFilterExpression() }
 
-    private val nameTags = listOf("name", "brand")
-
-    override val changesetComment = "Add opening hours"
+    override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override val isReplaceShopEnabled = true
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
+    private val olderThan1Year = TagOlderThan("opening_hours", RelativeDate(-365f))
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasProperName = hasProperName(tags)
-        val hasFeatureName = hasFeatureName(tags)
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
-        return if (hasValidOpeningHours) {
-            when {
-                !hasProperName  -> R.string.quest_openingHours_resurvey_no_name_title
-                !hasFeatureName -> R.string.quest_openingHours_resurvey_name_title
-                else            -> R.string.quest_openingHours_resurvey_name_type_title
-            }
-        } else {
-            when {
-                !hasProperName  -> R.string.quest_openingHours_no_name_title
-                !hasFeatureName -> R.string.quest_openingHours_name_title
-                else            -> R.string.quest_openingHours_name_type_title
-            }
-        }
-    }
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        val hasProperName = name != null
-        val hasFeatureName = hasFeatureName(tags)
-        return when {
-            !hasProperName  -> arrayOf(featureName.value.toString())
-            !hasFeatureName -> arrayOf(name!!)
-            else            -> arrayOf(name!!, featureName.value.toString())
-        }
+        return if (hasValidOpeningHours) R.string.quest_openingHours_resurvey_title
+               else                      R.string.quest_openingHours_title
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
@@ -162,6 +146,9 @@ class AddOpeningHours(
         if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
         val oh = tags["opening_hours"] ?: return true
+        /* don't show if it was recently checked (actually already checked by filter, but it is a
+           performance improvement to avoid parsing the opening hours en masse if possible) */
+        if (!olderThan1Year.matches(element)) return false
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
@@ -169,15 +156,14 @@ class AddOpeningHours(
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " +
-            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
-        )
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is NoOpeningHoursSign) {
             tags["opening_hours:signed"] = "no"
+            tags.updateCheckDateForKey("opening_hours")
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
             val openingHoursString = when (answer) {
@@ -190,13 +176,16 @@ class AddOpeningHours(
             if (tags["opening_hours:signed"] == "no") {
                 tags.remove("opening_hours:signed")
             }
+            if ("opening_hours:covid19" in tags) {
+                tags.remove("opening_hours:covid19")
+            }
         }
     }
 
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(nameTags)
+        tags.containsKey("name") || tags.containsKey("brand")
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()

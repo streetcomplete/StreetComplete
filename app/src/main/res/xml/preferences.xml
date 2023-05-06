@@ -3,26 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:key="communication"
-        android:title="@string/pref_category_communication">
+        android:key="quests_overlays"
+        android:title="@string/pref_category_quests_overlays">
 
-        <ListPreference
-            android:key="autosync"
-            android:title="@string/pref_title_sync2"
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="ON"
-            android:entries="@array/pref_entries_autosync"
-            android:entryValues="@array/pref_entryvalues_autosync"
-            android:persistent="true"
-            />
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
+            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment"
+            android:key="quest_presets"
+            android:title="@string/action_manage_presets"
+            android:widgetLayout="@layout/widget_image_next" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="display"
-        android:title="@string/pref_category_display">
-
-        <Preference
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
+            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment"
             android:key="quests"
             android:title="@string/pref_title_quests2"
             android:widgetLayout="@layout/widget_image_next" />
@@ -34,74 +25,84 @@
             android:defaultValue="DEFAULT"
             android:entries="@array/pref_entries_resurvey_intervals"
             android:entryValues="@array/pref_entryvalues_resurvey_intervals"
-            android:persistent="true"
-            />
+            android:persistent="true" />
 
         <SwitchPreference
             android:key="display.nonQuestionNotes"
             android:title="@string/pref_title_show_notes_not_phrased_as_questions"
             android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
             android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
-            android:persistent="true"
-            />
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="communication"
+        android:title="@string/pref_category_communication">
+
+        <ListPreference
+            android:key="autosync"
+            android:title="@string/pref_title_sync2"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="ON"
+            android:entries="@array/pref_entries_autosync"
+            android:entryValues="@array/pref_entryvalues_autosync"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/pref_category_display">
 
         <SwitchPreference
             android:key="display.keepScreenOn"
             android:title="@string/pref_title_keep_screen_on"
-            android:persistent="true"
-            />
+            android:persistent="true" />
 
         <ListPreference
             android:key="theme.select"
             android:title="@string/pref_title_theme_select"
             app:useSimpleSummaryProvider="true"
-            android:defaultValue="AUTO"
+            android:defaultValue="@string/default_theme"
             android:entries="@array/pref_entries_theme_select"
             android:entryValues="@array/pref_entryvalues_theme_select"
-            android:persistent="true"
-            />
+            android:persistent="true" />
 
         <ListPreference
             android:key="language.select"
             android:title="@string/pref_title_language_select"
-            android:summary="%s"
+            app:useSimpleSummaryProvider="true"
             android:defaultValue=""
-            android:persistent="true"
-            />
+            android:persistent="true" />
 
-    <!--
-        <ListPreference
+        <!-- <ListPreference
             android:key="theme.background_type"
             android:title="@string/pref_background_type_select"
             app:useSimpleSummaryProvider="true"
             android:defaultValue="MAP"
             android:entries="@array/pref_entries_background_type_select"
             android:entryValues="@array/pref_entryvalues_background_type_select"
-            android:persistent="true"
-            />
-    -->
+            android:persistent="true" /> -->
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="advanced"
-        android:title="@string/pref_category_advanced"
-        >
+        android:title="@string/pref_category_advanced">
 
         <Preference
             android:key="delete_cache"
             android:title="@string/pref_title_delete_cache"
-            android:summary="@string/pref_title_delete_cache_summary"
-            />
+            android:summary="@string/pref_title_delete_cache_summary" />
 
         <Preference
             android:key="quests.restore.hidden"
-            android:title="@string/pref_title_quests_restore_hidden"
-            />
+            android:title="@string/pref_title_quests_restore_hidden" />
 
-        <de.westnordost.streetcomplete.settings.NumberPickerPreference
+        <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="map.tilecache"
             android:title="@string/pref_title_map_cache"
-            android:summary="@string/pref_tilecache_size_summary"
             android:defaultValue="50"
             android:persistent="true"
             app:minValue="10"
@@ -110,8 +111,7 @@
             android:dialogMessage="@string/pref_tilecache_size_message"
             android:dialogLayout="@layout/dialog_number_picker_preference"
             android:positiveButtonText="@android:string/ok"
-            android:negativeButtonText="@android:string/cancel"
-            />
+            android:negativeButtonText="@android:string/cancel" />
 
     </PreferenceCategory>
 
@@ -121,8 +121,11 @@
 
         <Preference
             android:key="debug.quests"
-            android:title="Show Quest Forms"
-            />
+            android:title="Show Quest Forms" />
+
+        <Preference
+            android:key="debug.links"
+            android:title="Show Achievement Links" />
 
     </PreferenceCategory>
 

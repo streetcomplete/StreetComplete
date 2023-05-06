@@ -2,29 +2,40 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
+import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeConflicting
+import de.westnordost.streetcomplete.osm.surface.toItems
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
-    override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_SURFACES).toItems()
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
+    override val items get() = SELECTABLE_WAY_SURFACES.toItems()
 
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
-        val value = selectedItems.single()
-        if (value.shouldBeDescribed) {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(value, description))
-                    }.show()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-            return
+        val surface = selectedItems.single()
+        confirmPotentialTracktypeMismatch(surface) {
+            collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
+                applyAnswer(SurfaceAndNote(surface, description))
+            }
         }
-        applyAnswer(SurfaceAnswer(value))
+    }
+
+    private fun confirmPotentialTracktypeMismatch(surface: Surface, onConfirmed: () -> Unit) {
+        val tracktype = element.tags["tracktype"]
+        if (isSurfaceAndTracktypeConflicting(surface.osmValue!!, tracktype)) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                    onConfirmed()
+                }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        } else {
+            onConfirmed()
+        }
     }
 }

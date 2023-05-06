@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <Button
+            android:id="@+id/select_flat_range_and_code"
+            android:text="@string/quest_entrance_reference_select_flat_range_and_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+
+        <Button
+            android:id="@+id/select_flat_range_only"
+            android:text="@string/quest_entrance_reference_select_flat_range_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+
+        <Button
+            android:id="@+id/select_code_only"
+            android:text="@string/quest_entrance_reference_select_code_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+
+        <Button
+            android:id="@+id/nothing_signed"
+            android:text="@string/quest_entrance_reference_nothing_signed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

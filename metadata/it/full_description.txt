@@ -1,5 +1,5 @@
-Aiuta a migliorare la mappa di OpenStreetMap con StreetComplete!
+Aiuta a migliorare OpenStreetMap con StreetComplete!
 
-Questa app trova dati da verificare e da completare vicino a te e li mostra c su una mappa. Ciascuno di questi dati presenta delle domande a cui rispondere per completare le informazioni sul posto.
+Questa app trova dati da verificare e da completare vicino a te e li mostra su una mappa come compiti. Risolvi ciascuno di questi compiti con un sopralluogo e dando risposta alle semplici domande per aggiornare la mappa.
 
 Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo nome senza aver bisogno di utilizzare un altro editor.

@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.util.enclosingTilesRect
 
 /** Controls downloading */
 class DownloadController(

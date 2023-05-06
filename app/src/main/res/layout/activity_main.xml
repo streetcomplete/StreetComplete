@@ -3,22 +3,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".screens.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map_fragment"
-        android:name="de.westnordost.streetcomplete.map.MainFragment"
+        android:name="de.westnordost.streetcomplete.screens.main.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/notifications_container_fragment"
-        android:name="de.westnordost.streetcomplete.notifications.NotificationsContainerFragment"
+        android:id="@+id/messages_container_fragment"
+        android:name="de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone"/>

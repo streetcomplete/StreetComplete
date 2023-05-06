@@ -44,12 +44,31 @@
         android:layout_marginStart="@dimen/dialog_horizontal_margin"
         android:layout_toEndOf="@id/icon"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="@id/icon"
         tools:ignore="RtlSymmetry"
         tools:text="@string/quest_address_title" />
+
+    <TextView
+        android:id="@+id/titleHintText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_horizontal_margin"
+        android:layout_toEndOf="@id/icon"
+        android:textAppearance="@style/TextAppearance.Title.Hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        tools:ignore="RtlSymmetry"
+        tools:text="Store with a crazy long name (Danube river steam boat captain's hat souvenir store),Donaudampfschiffahrtsstraßenweg 123" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="titleHintText,icon,overlayIcon"
+        android:id="@+id/dividerBarrier"
+        app:barrierDirection="bottom" />
 
     <View
         android:id="@+id/divider"
@@ -57,7 +76,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/dialog_vertical_margin"
         android:background="@color/divider"
-        app:layout_constraintTop_toBottomOf="@id/icon"
+        app:layout_constraintTop_toBottomOf="@id/dividerBarrier"
         tools:layout_editor_absoluteX="24dp" />
 
     <FrameLayout

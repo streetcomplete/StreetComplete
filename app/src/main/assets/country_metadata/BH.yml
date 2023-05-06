@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [HSBC, BISB, BBK, BBK Online, NBB, Ithmaar Bank, Kuwait Finance House]
 centerLineStyle: yellow
@@ -8,6 +8,7 @@ mobileCountryCode: 426
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [date, tomato, lemon, lime, banana, grape, chilli_pepper, sweet_pepper]
+orchardProduces: [date, lemon, lime, banana, tomato, grape, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
+postboxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true

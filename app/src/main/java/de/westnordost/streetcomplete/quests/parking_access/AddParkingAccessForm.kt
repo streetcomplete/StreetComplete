@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.CUSTOMERS
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.PRIVATE
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.YES
 
-class AddParkingAccessForm : AListQuestAnswerFragment<ParkingAccess>() {
+class AddParkingAccessForm : AListQuestForm<ParkingAccess>() {
 
     override val items = listOf(
         TextItem(YES, R.string.quest_access_yes),

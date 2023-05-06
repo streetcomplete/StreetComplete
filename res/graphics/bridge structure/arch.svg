@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 320 96" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-	<style type="text/css">
-		.cables{fill: none; stroke:#AA0000;stroke-width:4;}
-		.support{fill:#E44848;stroke:#AA0000;stroke-width:2;}
-		.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
-		.land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
-	</style>
-    
+    <style type="text/css">
+        .cables{fill: none; stroke:#AA0000;stroke-width:4;}
+        .support{fill:#E44848;stroke:#AA0000;stroke-width:2;}
+        .struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+        .land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
+    </style>
+
     <path class="support" d="m-4 44 30.125 21.378c8.7616-13.272 48.424-13.512 62.875 26.622h15c14.834-47.205 96.479-47.561 112 0h16c13.932-40.116 47.858-40.149 60.411-23.556l31.589-24.444z"/>
     <path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
     <rect class="struct" x="216" y="48" width="16" height="52"/>

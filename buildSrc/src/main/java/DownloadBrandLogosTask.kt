@@ -10,16 +10,23 @@ import java.io.FileOutputStream
 import java.lang.Exception
 import java.net.URL
 
+/** Download all the brand logos referred to in the name suggestion index.
+ *
+ *  Unused, it is just too much to deliver them with the app. */
 open class DownloadBrandLogosTask : DefaultTask() {
-    @get:Input var presetsPath: String? = null
     @get:Input var targetDir: String? = null
+    @get:Input var version: String? = null
 
     @TaskAction fun run() {
-        val presetsPath = presetsPath ?: return
         val targetDir = targetDir ?: return
+        val version = version ?: return
 
-        val presetsJson = Parser.default().parse(presetsPath) as JsonObject
-        for (entry in presetsJson.entries) {
+        val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
+        val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
+        /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
+           a sub-object called "presets" */
+        val presets = nsiPresetsJson.obj("presets")!!
+        for (entry in presets.entries) {
             val id = entry.key
             val presetJson = entry.value as JsonObject
             val imageURL = presetJson["imageURL"] as String?

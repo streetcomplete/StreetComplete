@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
-sealed class ShopTypeAnswer
+sealed interface ShopTypeAnswer
 
-object IsShopVacant : ShopTypeAnswer()
-data class ShopType(val tags: Map<String, String>) : ShopTypeAnswer()
+object IsShopVacant : ShopTypeAnswer
+data class ShopType(val tags: Map<String, String>) : ShopTypeAnswer

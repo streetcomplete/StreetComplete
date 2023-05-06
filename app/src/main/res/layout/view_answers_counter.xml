@@ -5,8 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clipChildren="false"
-    android:clipToPadding="false"
-    tools:background="#666">
+    android:clipToPadding="false">
 
     <ProgressBar
         android:id="@+id/progressView"
@@ -30,25 +29,45 @@
         android:src="@drawable/ic_star_white_shadow_32dp"
         tools:ignore="RtlHardcoded" />
 
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_toRightOf="@id/iconView"
+        android:layout_marginLeft="-12dp"
         android:layout_centerVertical="true"
-        android:textAppearance="@style/TextAppearance.BigBody"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_marginLeft="-8dp"
-        tools:scaleX="1.6"
-        tools:scaleY="1.6"
-        android:shadowColor="#000"
-        android:shadowRadius="8"
-        android:shadowDy="2"
-        tools:text="1583"
-        tools:ignore="RtlHardcoded"/>
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/labelView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_profile_current_week_title"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#fff"
+            android:shadowColor="#000"
+            android:shadowRadius="6"
+            android:shadowDy="2"
+            android:textStyle="bold"
+            tools:visibility="visible"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@+id/labelView"
+            android:textAppearance="@style/TextAppearance.BigBody"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:shadowColor="#000"
+            android:shadowRadius="6"
+            android:shadowDy="2"
+            tools:text="1583"/>
+
+    </RelativeLayout>
 
 </merge>

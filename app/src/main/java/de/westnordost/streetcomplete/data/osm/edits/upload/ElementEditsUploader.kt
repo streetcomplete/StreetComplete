@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
@@ -12,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
@@ -25,6 +27,7 @@ import kotlinx.coroutines.withContext
 
 class ElementEditsUploader(
     private val elementEditsController: ElementEditsController,
+    private val noteEditsController: NoteEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
@@ -38,44 +41,55 @@ class ElementEditsUploader(
     suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
             val edit = elementEditsController.getOldestUnsynced() ?: break
-            val idProvider = elementEditsController.getIdProvider(edit.id)
+            val getIdProvider: () -> ElementIdProvider = { elementEditsController.getIdProvider(edit.id) }
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
-            withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
+            withContext(scope.coroutineContext) { uploadEdit(edit, getIdProvider) }
         }
     } }
 
-    private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
-        val questTypeName = edit.questType::class.simpleName!!
+    private suspend fun uploadEdit(edit: ElementEdit, getIdProvider: () -> ElementIdProvider) {
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
-            val updates = singleUploader.upload(edit, idProvider)
+            val updates = singleUploader.upload(edit, getIdProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
-            uploadedChangeListener?.onUploaded(questTypeName, edit.position)
+            uploadedChangeListener?.onUploaded(edit.type.name, edit.position)
 
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
+            noteEditsController.updateElementIds(updates.idUpdates)
 
             if (edit.action is IsRevertAction) {
-                statisticsController.subtractOne(edit.questType, edit.position)
+                statisticsController.subtractOne(edit.type.name, edit.position)
             } else {
-                statisticsController.addOne(edit.questType, edit.position)
+                statisticsController.addOne(edit.type.name, edit.position)
             }
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
-            uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
+            uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
 
             elementEditsController.markSyncFailed(edit)
 
-            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
-            if (mapData != null) {
-                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
-            } else {
-                val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
+            /* fetching the current version of the element(s) edited on conflict and persisting
+               them is not really optional, as when the edit has been deleted due to the conflict,
+               the quests etc. would otherwise just be displayed again as if the user didn't solve
+               them */
+            val updated = mutableListOf<Element>()
+            val deleted = mutableListOf<ElementKey>()
+
+            for (elementKey in edit.action.elementKeys) {
+                val mapData = fetchElementComplete(elementKey.type, elementKey.id)
+                if (mapData != null) {
+                    updated.addAll(mapData)
+                } else {
+                    deleted.add(elementKey)
+                }
+            }
+            if (updated.isNotEmpty() || deleted.isNotEmpty()) {
+                mapDataController.updateAll(MapDataUpdates(updated = updated, deleted = deleted))
             }
         }
     }

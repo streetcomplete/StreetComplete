@@ -1,18 +1,25 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
-         toilets = yes
-         and name
+        nodes, ways with
+          wheelchair = limited
+          and (
+           toilets = yes
+           or !toilets and (
+             amenity ~ restaurant|pub|bar
+             or amenity ~ cafe|fast_food and indoor_seating = yes
+           )
+         )
          and access !~ no|private
          and (
            !toilets:wheelchair
@@ -20,19 +27,26 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
            or toilets:wheelchair older today -8 years
          )
     """
-    override val changesetComment = "Add wheelchair access to toilets"
+    override val changesetComment = "Specify wheelchair accessibility of toilets in places"
     override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val isReplaceShopEnabled = true
+    override val achievements = listOf(RARE, WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
-    override val questTypeAchievements = listOf(RARE, WHEELCHAIR)
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title2
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title
+    override fun createForm() = AddWheelchairAccessToiletsPartForm()
 
-    override fun createForm() = AddWheelchairAccessToiletsForm()
-
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("toilets:wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccessToiletsPartAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is WheelchairAccessToiletsPart -> {
+                tags.updateWithCheckDate("toilets:wheelchair", answer.access.osmValue)
+                tags["toilets"] = "yes"
+            }
+            NoToilet -> {
+                tags.updateWithCheckDate("toilets", "no")
+            }
+        }
     }
 }

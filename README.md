@@ -14,9 +14,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 * See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
 
 ## Screenshots
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot09.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot10.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot11.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot12.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot13.png" width="170"/> <a href="http://www.youtube.com/watch?v=lcPuL7nj7e0"><img src="http://img.youtube.com/vi/lcPuL7nj7e0/0.jpg" width="340"/></a>
+<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot6.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot7.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot8.png" width="240"/>
 
 ## Download
 
@@ -54,7 +52,7 @@ This software is released under the terms of the [GNU General Public License](ht
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="100"/> <img src=".github/images/logo_ngi0.svg" height="100"/></a><br/>
 <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation which sponsored the development on this app in three individual grants:<br/>
 Grants given to Mateusz Konieczny in <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a> enabled him to work on StreetComplete for about one year in total.
-Furthermore, yet another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> is enabling Tobias Zwick to work on the app for about 4-5 months!<br/>
+Furthermore, yet another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> enabled Tobias Zwick to work on the app for about 4-5 months!<br/>
 <br/>
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="160"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" height="160"/></a><br/>

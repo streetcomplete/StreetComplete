@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, Quick Cash, Quickcash, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
 centerLineStyle: white
@@ -9,10 +9,13 @@ hasSlowZone: true
 isLeftHandTraffic: true
 livingStreetSignStyle: australia
 mobileCountryCode: 530
+noEntrySignStyle: no entry on white
 noParkingLineStyle: dashed yellow
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [apple, grape, kiwi, tomato, avocado, pear, orange, lemon, lime, strawberry, apricot, blueberry, chilli_pepper, sweet_pepper, cherry, persimmon, peach]
+orchardProduces: [grape, kiwi, apple, avocado, cherry, blueberry, peach, orange, tomato, apricot, walnut, plum, hop, lemon, lime, pear]
 popularReligions: [christian, hindu, buddhist]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: true

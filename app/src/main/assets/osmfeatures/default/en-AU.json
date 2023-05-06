@@ -2,14 +2,64 @@
     "en-AU": {
         "presets": {
             "fields": {
+                "bin": {
+                    "label": "Rubbish Bin",
+                    "terms": "waste bin,garbage bin"
+                },
+                "brewery": {
+                    "label": "Draught Beers"
+                },
+                "building/flats": {
+                    "label": "Unit Count"
+                },
+                "capacity_volume": {
+                    "label": "Capacity (Cubic Metres)"
+                },
                 "changing_table": {
                     "label": "Nappy Changing Table"
                 },
                 "colour": {
                     "label": "Colour"
                 },
+                "cuisine": {
+                    "options": {
+                        "donut": "Doughnut"
+                    }
+                },
+                "cycleway": {
+                    "options": {
+                        "lane": {
+                            "description": "A bike lane separated from motor traffic by a painted line"
+                        },
+                        "shared_lane": {
+                            "description": "A bike lane with no separation from motor traffic"
+                        }
+                    }
+                },
+                "depth": {
+                    "label": "Depth (Metres)"
+                },
+                "direction_clock": {
+                    "options": {
+                        "anticlockwise": "Anticlockwise"
+                    }
+                },
+                "display": {
+                    "options": {
+                        "analog": "Analogue"
+                    }
+                },
+                "ele": {
+                    "label": "Elevation (Metres)"
+                },
                 "fax": {
                     "placeholder": "+61 1 2345 6789"
+                },
+                "fire_hydrant/position": {
+                    "options": {
+                        "parking_lot": "Car Park",
+                        "sidewalk": "Footpath"
+                    }
                 },
                 "height": {
                     "label": "Height (Metres)"
@@ -17,11 +67,20 @@
                 "height_building": {
                     "label": "Building Height (Metres)"
                 },
+                "historic/civilization": {
+                    "label": "Historic Civilisation"
+                },
                 "kerb": {
                     "label": "Kerb"
                 },
                 "length": {
                     "label": "Length (Metres)"
+                },
+                "maxspeed/hgv": {
+                    "label": "Heavy Vehicle Speed Limit"
+                },
+                "min_height": {
+                    "label": "Height of Bottom (Metres)"
                 },
                 "phone": {
                     "placeholder": "+61 1 2345 6789"
@@ -32,11 +91,37 @@
                     },
                     "placeholder": "Container, Centre"
                 },
+                "roof/colour": {
+                    "label": "Roof Colour"
+                },
+                "seamark/beacon_lateral/colour": {
+                    "label": "Colour"
+                },
+                "seamark/buoy_lateral/colour": {
+                    "label": "Colour"
+                },
+                "stroller": {
+                    "label": "Pram Access"
+                },
+                "surveillance/type": {
+                    "options": {
+                        "ALPR": "Automatic Number Plate Reader"
+                    }
+                },
+                "water_tank/volume": {
+                    "label": "Volume (Litres)"
+                },
                 "width": {
                     "label": "Width (Metres)"
                 }
             },
             "presets": {
+                "aerialway/zip_line": {
+                    "name": "Flying Fox"
+                },
+                "aeroway/jet_bridge": {
+                    "name": "Aerobridge"
+                },
                 "amenity/arts_centre": {
                     "name": "Arts Centre"
                 },
@@ -44,11 +129,24 @@
                     "name": "Barbeque",
                     "aliases": "BBQ"
                 },
+                "amenity/bicycle_parking/building": {
+                    "name": "Bicycle Parking Building"
+                },
+                "amenity/cafe/bubble_tea": {
+                    "name": "Bubble Tea Shop"
+                },
+                "amenity/childcare": {
+                    "name": "Childcare",
+                    "aliases": "Daycare"
+                },
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
                 "amenity/community_centre/lgbtq": {
                     "name": "LGBTQ+ Community Centre"
+                },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Youth Centre"
                 },
                 "amenity/conference_centre": {
                     "name": "Convention Centre"
@@ -56,13 +154,26 @@
                 "amenity/dive_centre": {
                     "name": "Dive Centre"
                 },
+                "amenity/fast_food/donut": {
+                    "name": "Doughnut Fast Food"
+                },
                 "amenity/fuel": {
                     "name": "Service Station",
                     "aliases": "Petrol Station"
                 },
+                "amenity/parking": {
+                    "name": "Car Park",
+                    "aliases": "Parking Lot"
+                },
+                "amenity/parking/multi-storey": {
+                    "name": "Multistorey Car Park"
+                },
                 "amenity/parking/park_ride": {
                     "name": "Park & Ride Car Park",
                     "aliases": "Commuter Car Park"
+                },
+                "amenity/parking_entrance": {
+                    "name": "Car Park Building Entrance / Exit"
                 },
                 "amenity/payment_centre": {
                     "name": "Payment Centre"
@@ -76,8 +187,32 @@
                 "amenity/social_centre": {
                     "name": "Social Centre"
                 },
+                "amenity/social_facility/group_home": {
+                    "name": "Retirement Home"
+                },
+                "amenity/taxi": {
+                    "name": "Taxi Rank"
+                },
+                "amenity/theatre": {
+                    "name": "Theatre"
+                },
+                "amenity/toilets": {
+                    "name": "Toilets",
+                    "aliases": "Bathroom\nLavatory\nWater Closet\nRestroom"
+                },
+                "amenity/trolley_bay": {
+                    "name": "Trolley Bay"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump"
+                },
+                "amenity/waste_basket": {
+                    "name": "Rubbish Bin",
+                    "terms": "waste,bin,garbage,rubbish,litter,trash"
+                },
+                "amenity/weighbridge": {
+                    "name": "Weighbridge",
+                    "aliases": "Truck Scale"
                 },
                 "barrier/kerb": {
                     "name": "Kerb"
@@ -88,29 +223,49 @@
                 "barrier/kerb/lowered": {
                     "name": "Lowered Kerb"
                 },
+                "barrier/kerb/raised": {
+                    "name": "Raised Kerb"
+                },
+                "barrier/kerb/rolled": {
+                    "name": "Rolled Kerb"
+                },
+                "building/terrace": {
+                    "name": "Terraced Houses",
+                    "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
+                },
                 "healthcare/birthing_center": {
                     "name": "Birthing Centre"
                 },
                 "healthcare/blood_donation": {
                     "name": "Blood Donor Centre"
                 },
-                "highway/crossing/marked": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Marked Crossing"
+                "healthcare/counselling": {
+                    "name": "Counselling Centre"
                 },
                 "highway/cycleway/bicycle_foot": {
                     "name": "Shared Path"
                 },
-                "highway/footway/marked": {
-                    "name": "Marked Crossing"
+                "highway/cycleway/crossing/bicycle_foot": {
+                    "name": "Shared Path Crossing"
+                },
+                "highway/elevator": {
+                    "name": "Lift",
+                    "terms": "elevator"
+                },
+                "highway/elevator_line": {
+                    "name": "Inclined Lift",
+                    "terms": "inclined elevator,cable railway"
+                },
+                "highway/footway": {
+                    "name": "Walkway",
+                    "aliases": "Footpath"
+                },
+                "highway/footway/informal": {
+                    "name": "Informal Walkway",
+                    "aliases": "Informal Footpath"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Footpath (sidewalk)"
-                },
-                "highway/footway/zebra": {
-                    "name": "Marked Zebra Crossing"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
@@ -118,8 +273,23 @@
                 "highway/living_street": {
                     "name": "Shared Zone Road"
                 },
+                "highway/street_lamp": {
+                    "name": "Street Light",
+                    "terms": "streetlamp,street lamp,lamp,light,gaslight"
+                },
                 "highway/track": {
-                    "name": "Track Road"
+                    "name": "Track / Land-Access Road",
+                    "terms": "fire trail",
+                    "aliases": "Fire Trail"
+                },
+                "highway/traffic_signals": {
+                    "name": "Traffic Lights"
+                },
+                "indoor/elevator": {
+                    "name": "Indoor Lift Shaft"
+                },
+                "landuse/harbour": {
+                    "name": "Harbour"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Adult Gaming Centre"
@@ -127,8 +297,33 @@
                 "leisure/fitness_centre": {
                     "name": "Gym / Fitness Centre"
                 },
+                "leisure/fitness_station": {
+                    "name": "Outdoor Exercise Equipment"
+                },
+                "leisure/horse_riding": {
+                    "name": "Horseback Riding Centre"
+                },
+                "leisure/indoor_play": {
+                    "name": "Indoor Play Centre"
+                },
                 "leisure/sports_centre": {
                     "name": "Sports Centre / Complex"
+                },
+                "place/neighbourhood": {
+                    "name": "Neighbourhood"
+                },
+                "place/suburb": {
+                    "name": "Suburb"
+                },
+                "playground/slide": {
+                    "name": "Slide",
+                    "aliases": "Slippery Dip"
+                },
+                "playground/zipwire": {
+                    "name": "Playground Flying Fox"
+                },
+                "shop/caravan": {
+                    "name": "Caravan Dealership"
                 },
                 "shop/cheese": {
                     "name": "Cheese Shop",
@@ -145,8 +340,14 @@
                 "shop/garden_centre": {
                     "name": "Garden Centre"
                 },
+                "shop/jewelry": {
+                    "name": "Jewellery Store"
+                },
                 "shop/mall": {
                     "name": "Shopping Centre"
+                },
+                "shop/newsagent": {
+                    "name": "Newsagency"
                 },
                 "shop/tyres": {
                     "name": "Tyre Shop"

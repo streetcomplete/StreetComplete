@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/diameterInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:maxLength="4"
+        android:ems="4"
+        android:textSize="@dimen/x_large_input"
+        tools:text="1600" />
+
+    <ImageView
+        android:id="@+id/suggestionsButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-48dp"
+        android:src="@drawable/ic_arrow_expand_down_24dp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless" />
+
+    <TextView
+        android:id="@+id/diameterInputUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mm"
+        android:textSize="@dimen/x_large_input"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

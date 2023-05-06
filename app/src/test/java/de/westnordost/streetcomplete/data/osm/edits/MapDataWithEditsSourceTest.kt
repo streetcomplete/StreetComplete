@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -12,9 +13,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
@@ -26,7 +29,8 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.intersect
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.math.intersect
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -35,6 +39,7 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import org.mockito.Mockito.verifyNoMoreInteractions
 
 class MapDataWithEditsSourceTest {
 
@@ -126,11 +131,7 @@ class MapDataWithEditsSourceTest {
                     WAY -> mapData.getWayGeometry(key.id)
                     RELATION -> mapData.getRelationGeometry(key.id)
                 }?.let {
-                    ElementGeometryEntry(
-                        key.type,
-                        key.id,
-                        it
-                    )
+                    ElementGeometryEntry(key.type, key.id, it)
                 }
             }
         }
@@ -161,7 +162,7 @@ class MapDataWithEditsSourceTest {
         }
     }
 
-    //region get
+    //region get and getAll
 
     @Test
     fun `get returns nothing`() {
@@ -204,12 +205,12 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3),
+            edit(action = action2),
+            edit(action = action3),
         ))
 
         val s = create()
@@ -235,8 +236,8 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(eq(nd), eq(nd), any(), any())).thenThrow(ConflictException())
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(element = nd, action = action)))
+        on(action.createUpdates(any(), any())).thenThrow(ConflictException())
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
@@ -244,7 +245,7 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
-    //region getGeometry
+    //region getGeometry and getGeometries
 
     @Test
     fun `getGeometry returns nothing`() {
@@ -305,12 +306,12 @@ class MapDataWithEditsSourceTest {
         originalGeometriesAre(ElementGeometryEntry(NODE, 1, p))
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3)
+            edit(action = action2),
+            edit(action = action3)
         ))
 
         val s = create()
@@ -853,12 +854,49 @@ class MapDataWithEditsSourceTest {
         assertNull(s.getGeometry(NODE, 1))
     }
 
+    @Test
+    fun `onAddedEdit relays elements if only their geometry is updated`() {
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val p = p(1.0, 10.0)
+        val n = node(1, p)
+        val g = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0, 10.0))
+        val p2 = p(0.0, 0.0)
+        val n2 = node(2, p2)
+        val g2 = ElementGeometryEntry(elementType = NODE, elementId = 2, geometry = pGeom(0.0, 0.0))
+        val w = way(1, listOf(1, 2))
+        val wg = geometryCreator.create(w, listOf(p, p2))!!
+        val l = ElementGeometryEntry(elementType = WAY, elementId = 1, geometry = wg)
+        val r = rel(1, listOf(RelationMember(WAY, 1, "")))
+        val rg = ElementGeometryEntry(elementType = RELATION, elementId = 1, geometry = wg)
+        originalElementsAre(n, n2, w, r)
+        originalGeometriesAre(g, g2, l, rg)
+        val pNew = p(1.0, 1.0)
+
+        editsListener.onAddedEdit(edit(action = MoveNodeAction(n, pNew)))
+
+        verify(listener).onUpdated(
+            updated = argThat {
+                val wgNew = geometryCreator.create(w, listOf(pNew, p2))
+                it.nodes.single().copy(timestampEdited = 0) == n.copy(position = pNew, timestampEdited = 0)
+                    && it.ways.single() == w
+                    && it.relations.single() == r
+                    && it.getNodeGeometry(1) == pGeom(1.0, 1.0)
+                    && it.getWayGeometry(1) == wgNew
+                    && it.getRelationGeometry(1) == wgNew
+            },
+            deleted = eq(listOf())
+        )
+    }
+
     //endregion
 
-    //region ElementEditsSource.Listener ::onDeletedEdit
+    //region ElementEditsSource.Listener ::onDeletedEdits
 
     @Test
-    fun `onDeletedEdit relays updated element`() {
+    fun `onDeletedEdits relays updated element`() {
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
@@ -868,7 +906,7 @@ class MapDataWithEditsSourceTest {
 
         mapDataChangesAre(modifications = listOf(n))
 
-        editsControllerNotifiesDeletedEdit(n, listOf())
+        editsControllerNotifiesDeletedEdit(listOf(n.key), listOf())
 
         verify(listener).onUpdated(
             updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
@@ -877,7 +915,7 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test
-    fun `onDeletedEdit relays elements created by edit as deleted elements`() {
+    fun `onDeletedEdits relays elements created by edit as deleted elements`() {
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
@@ -892,12 +930,53 @@ class MapDataWithEditsSourceTest {
         )
 
         mapDataChangesAre(modifications = listOf(n))
-        editsControllerNotifiesDeletedEdit(n, delElements)
+        editsControllerNotifiesDeletedEdit(listOf(n.key), delElements)
 
         verify(listener).onUpdated(
             updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
             deleted = eq(delElements)
         )
+    }
+
+    @Test
+    fun `onDeletedEdit relays elements if only their geometry is updated`() {
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val p = p(1.0, 10.0)
+        val n = node(1, p)
+        val g = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0, 10.0))
+        val p2 = p(0.0, 0.0)
+        val n2 = node(2, p2)
+        val g2 = ElementGeometryEntry(elementType = NODE, elementId = 2, geometry = pGeom(0.0, 0.0))
+        val w = way(1, listOf(1, 2))
+        val wg = geometryCreator.create(w, listOf(p, p2))!!
+        val l = ElementGeometryEntry(elementType = WAY, elementId = 1, geometry = wg)
+        val r = rel(1, listOf(RelationMember(WAY, 1, "")))
+        val rg = ElementGeometryEntry(elementType = RELATION, elementId = 1, geometry = wg)
+        originalElementsAre(n, n2, w, r)
+        originalGeometriesAre(g, g2, l, rg)
+        val pNew = p(1.0, 1.0)
+
+        editsListener.onAddedEdit(edit(action = MoveNodeAction(n, pNew)))
+
+        verify(listener).onUpdated(
+            updated = argThat {
+                val wgNew = geometryCreator.create(w, listOf(pNew, p2))
+                it.nodes.single().copy(timestampEdited = 0) == n.copy(position = pNew, timestampEdited = 0)
+                    && it.ways.single() == w
+                    && it.relations.single() == r
+                    && it.getNodeGeometry(1) == pGeom(1.0, 1.0)
+                    && it.getWayGeometry(1) == wgNew
+                    && it.getRelationGeometry(1) == wgNew
+            },
+            deleted = eq(listOf())
+        )
+
+        editsListener.onDeletedEdits(listOf(edit(action = MoveNodeAction(n, pNew))))
+
+        verify(listener).onUpdated(updated = eq(MutableMapDataWithGeometry(listOf(n, w, r), listOf(g, l, rg))), deleted = eq(listOf()))
     }
 
     //endregion
@@ -975,6 +1054,130 @@ class MapDataWithEditsSourceTest {
             ElementKey(NODE, 3)
         )
         verify(listener).onUpdated(eq(expectedMapDataWithGeometry), eq(expectedDeletions))
+    }
+
+    @Test
+    fun `does not call onUpdated when all deleted elements are already deleted`() {
+        mapDataChangesAre(deletions = listOf(node(4)))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry()
+        val deletions = listOf(ElementKey(NODE, 4))
+
+        mapDataListener.onUpdated(updatedMapData, deletions)
+
+        verifyNoInteractions(listener)
+    }
+
+    @Test
+    fun `does call onUpdated when not all deleted elements are already deleted`() {
+        mapDataChangesAre(deletions = listOf(node(4)))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry()
+        val deletions = listOf(ElementKey(NODE, 3), ElementKey(NODE, 4))
+        mapDataListener.onUpdated(updatedMapData, deletions)
+
+        val expectedDeletions = listOf(
+            ElementKey(NODE, 3),
+            ElementKey(NODE, 4)
+        )
+        verify(listener).onUpdated(eq(updatedMapData), eq(expectedDeletions))
+    }
+
+    @Test
+    fun `does not call onUpdated when all updated elements stayed the same`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified))
+        // 2. update map data
+        originalElementsAre(ndModified, ndModified4)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModified, ndModified4),
+            geometryEntries = listOf(pModified, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verifyNoInteractions(listener)
+    }
+
+    @Test
+    fun `does not call onUpdated when all updated elements stayed the same except for version and timestamp`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        val ndModifiedWithVersion = node(1, p(0.3, 0.0), version = 2)
+        val ndModified4WithTimestamp = node(4, p(0.5, 0.4), timestamp = 123L)
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 1 and node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        thereAreNoMapDataChanges()
+        // 2. update map data
+        originalElementsAre(ndModifiedWithVersion, ndModified4WithTimestamp)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModifiedWithVersion, ndModified4WithTimestamp),
+            geometryEntries = listOf(pModified, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verifyNoMoreInteractions(listener)
+    }
+
+    @Test
+    fun `does call onUpdated when not all updated elements stayed the same`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        val ndModifiedMoved = node(1, p(0.3, 0.1))
+        val pModifiedMoved = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.1))
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 1 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified4))
+        // 2. update map data
+        originalElementsAre(ndModifiedMoved, ndModified4)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModifiedMoved, ndModified4),
+            geometryEntries = listOf(pModifiedMoved, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verify(listener).onUpdated(eq(updatedMapData), eq(emptyList()))
     }
 
     //endregion
@@ -1083,11 +1286,8 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(
-            element = node(-1),
-            action = action
-        )))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
     }
 
     private fun thereAreNoMapDataChanges() {
@@ -1100,15 +1300,14 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        editsListener.onAddedEdit(edit(
-            element = node(-1),
-            action = action
-        ))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        editsListener.onAddedEdit(edit(action = action))
     }
 
-    private fun editsControllerNotifiesDeletedEdit(element: Element, createdElementKeys: List<ElementKey>) {
+    private fun editsControllerNotifiesDeletedEdit(editedElementKeys: List<ElementKey>, createdElementKeys: List<ElementKey>) {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
-        editsListener.onDeletedEdits(listOf(edit(element = element)))
+        val action = mock<ElementEditAction>()
+        on(action.elementKeys).thenReturn(editedElementKeys)
+        editsListener.onDeletedEdits(listOf(edit(action = action)))
     }
 }

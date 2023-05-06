@@ -1,38 +1,50 @@
 
+import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.util.Locale
 
 /** Update the Android string resources (translations) for all the given language codes */
-open class UpdateAppTranslationsTask : AUpdateFromPOEditorTask() {
+open class UpdateAppTranslationsTask : DefaultTask() {
 
+    @get:Input var projectId: String? = null
+    @get:Input var apiToken: String? = null
     @get:Input var languageCodes: Collection<String>? = null
     @get:Input var targetFiles: ((androidResCode: String) -> String)? = null
 
     @TaskAction fun run() {
         val targetFiles = targetFiles ?: return
-        val exportLangs = languageCodes
-            ?.map { it.toLowerCase(Locale.US) }
-            // don't export en, it is the source language
-            ?.filter { it != "en" }
+        val apiToken = apiToken ?: return
+        val projectId = projectId ?: return
+        val exportLanguages = languageCodes?.map { Locale.forLanguageTag(it) }
 
-        val languageCodes = fetchLocalizations { it["code"] as String }
-        for (languageCode in languageCodes) {
+        val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
+        for (languageTag in languageTags) {
+            val locale = Locale.forLanguageTag(languageTag)
 
-            if (exportLangs == null || exportLangs.contains(languageCode.toLowerCase(Locale.US))) {
-                println(languageCode)
+            if (exportLanguages != null && !exportLanguages.any { it == locale }) continue
+            // en-us is the source language
+            if (locale == Locale.US) continue
 
-                val javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(languageCode)
-                val androidResCodes = javaLanguageTagToAndroidResCodes(javaLanguageTag)
+            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
 
-                // download the translation and save it in the appropriate directory
-                val text = fetchLocalization(languageCode, "android_strings") { inputStream ->
-                    inputStream.readBytes().toString(Charsets.UTF_8)
-                }
-                for (androidResCode in androidResCodes) {
-                    File(targetFiles(androidResCode)).writeText(text)
-                }
+            print(languageTag)
+            if (androidResCodes.singleOrNull() != languageTag) print(" -> " + androidResCodes.joinToString(", "))
+            println()
+
+            // download the translation and save it in the appropriate directory
+            val translations = fetchLocalizationJson(apiToken, projectId, languageTag)
+            val text = """<?xml version="1.0" encoding="utf-8"?>
+<resources>
+${translations.entries.joinToString("\n") { (key, value) ->
+"    <string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
+} }
+</resources>"""
+            for (androidResCode in androidResCodes) {
+                val file = File(targetFiles(androidResCode))
+                File(file.parent).mkdirs()
+                file.writeText(text)
             }
         }
     }

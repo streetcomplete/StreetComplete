@@ -240,9 +240,8 @@ private fun Rule.collidesWith(other: Rule): Boolean {
     val dates1 = dates
     if (dates1 != null) {
         val dates2 = other.dates
-        if (dates2 != null) {
-            if (dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) } })
-                return false
+        if (dates2 != null && dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) } }) {
+            return false
         }
     }
     // if no weekdays specified: collides with everything

@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-sealed class Fee
+sealed interface Fee
 
-object HasFee : Fee()
-object HasNoFee : Fee()
-data class HasFeeAtHours(val openingHours: OpeningHoursRuleList) : Fee()
-data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
+object HasFee : Fee
+object HasNoFee : Fee
+data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee
+data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {
@@ -23,11 +23,11 @@ fun Fee.applyTo(tags: Tags) {
         }
         is HasFeeAtHours -> {
             tags.updateWithCheckDate("fee", "no")
-            tags["fee:conditional"] = "yes @ ($openingHours)"
+            tags["fee:conditional"] = "yes @ ($hours)"
         }
         is HasFeeExceptAtHours -> {
             tags.updateWithCheckDate("fee", "yes")
-            tags["fee:conditional"] = "no @ ($openingHours)"
+            tags["fee:conditional"] = "no @ ($hours)"
         }
     }
 }

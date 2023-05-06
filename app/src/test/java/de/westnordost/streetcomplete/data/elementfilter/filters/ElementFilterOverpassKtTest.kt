@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.osm.toCheckDateString
+import kotlinx.datetime.LocalDate
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
 
 class ElementFilterOverpassKtTest {
 
-    private val date2000_11_11 = FixedDate(LocalDate.of(2000, 11, 11))
+    private val date2000_11_11 = FixedDate(LocalDate(2000, 11, 11))
 
     @Test fun tagOlderThan() {
         val date = dateDaysAgo(100f).toCheckDateString()
@@ -69,7 +69,7 @@ class ElementFilterOverpassKtTest {
         assertEquals("[!'name:old']", NotHasKey("name:old").toOverpassString())
     }
 
-    @Test(expected = UnsupportedOperationException::class) fun notHasKeyLike() {
+    @Test fun notHasKeyLike() {
         assertEquals(
             "[!~'^(na[ms]e)$' ~ '.*']",
             NotHasKeyLike("na[ms]e").toOverpassString()
@@ -109,6 +109,13 @@ class ElementFilterOverpassKtTest {
         )
     }
 
+    @Test fun notHasTagLike() {
+        assertEquals(
+            "[~'^(.ame)$' !~ '^(y.s)$']",
+            NotHasTagLike(".ame", "y.s").toOverpassString()
+        )
+    }
+
     @Test fun hasTagLessThan() {
         assertEquals(
             "[width](if: number(t['width']) < 3.5)",
@@ -117,6 +124,10 @@ class ElementFilterOverpassKtTest {
         assertEquals(
             "['wid th'](if: number(t['wid th']) < 3.5)",
             HasTagLessThan("wid th", 3.5f).toOverpassString()
+        )
+        assertEquals(
+            "[width](if: number(t['width']) < 3)",
+            HasTagLessThan("width", 3f).toOverpassString()
         )
     }
 
@@ -129,6 +140,10 @@ class ElementFilterOverpassKtTest {
             "['wid th'](if: number(t['wid th']) <= 3.5)",
             HasTagLessOrEqualThan("wid th", 3.5f).toOverpassString()
         )
+        assertEquals(
+            "[width](if: number(t['width']) <= 3)",
+            HasTagLessOrEqualThan("width", 3f).toOverpassString()
+        )
     }
 
     @Test fun hasTagGreaterThan() {
@@ -140,6 +155,10 @@ class ElementFilterOverpassKtTest {
             "['wid th'](if: number(t['wid th']) > 3.5)",
             HasTagGreaterThan("wid th", 3.5f).toOverpassString()
         )
+        assertEquals(
+            "[width](if: number(t['width']) > 3)",
+            HasTagGreaterThan("width", 3f).toOverpassString()
+        )
     }
 
     @Test fun hasTagGreaterOrEqualThan() {
@@ -150,6 +169,10 @@ class ElementFilterOverpassKtTest {
         assertEquals(
             "['wid th'](if: number(t['wid th']) >= 3.5)",
             HasTagGreaterOrEqualThan("wid th", 3.5f).toOverpassString()
+        )
+        assertEquals(
+            "[width](if: number(t['width']) >= 3)",
+            HasTagGreaterOrEqualThan("width", 3f).toOverpassString()
         )
     }
 

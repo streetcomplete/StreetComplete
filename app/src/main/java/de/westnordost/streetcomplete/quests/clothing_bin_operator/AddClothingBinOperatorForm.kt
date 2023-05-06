@@ -7,6 +7,6 @@ class AddClothingBinOperatorForm : ANameWithSuggestionsForm<String>() {
     override val suggestions: List<String>? get() = countryInfo.clothesContainerOperators
 
     override fun onClickOk() {
-        applyAnswer(name)
+        applyAnswer(name!!)
     }
 }

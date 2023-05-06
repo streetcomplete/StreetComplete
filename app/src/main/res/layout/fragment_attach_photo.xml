@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginEnd="72dp">
 
     <com.google.android.material.button.MaterialButton
@@ -21,9 +21,22 @@
         android:contentDescription="@string/quest_leave_new_note_photo"
         android:layout_centerVertical="true"/>
 
+    <ImageView
+        android:id="@+id/attachedGpxView"
+        android:layout_toEndOf="@id/takePhotoButton"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/ic_attach_gpx_24dp"
+        app:tint="@color/disabled_text"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_centerVertical="true" />
+
     <TextView
         android:id="@+id/photosAreUsefulExplanation"
-        android:layout_toEndOf="@id/takePhotoButton"
+        android:layout_toEndOf="@id/attachedGpxView"
         android:layout_marginStart="8dp"
         android:text="@string/quest_leave_new_note_photos_are_useful"
         android:layout_width="match_parent"
@@ -32,12 +45,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/photosList"
-        android:layout_toEndOf="@id/takePhotoButton"
+        android:layout_toEndOf="@id/attachedGpxView"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:scrollbars="horizontal"
+        tools:listitem="@layout/cell_image_thumbnail"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>

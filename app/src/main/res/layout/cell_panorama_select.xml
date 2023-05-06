@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        tools:src="@drawable/panorama_surface_unpaved"/>
+        tools:src="@drawable/surface_paving_stones"/>
 
     <View
         android:layout_width="wrap_content"

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <rect width="512" height="512" fill="#a8ca5c"/>
+ <path d="m0 416h512v-192h-512z" fill="#666"/>
+ <path d="m0 416h512v48h-512z" fill="#999"/>
+ <path d="m0 176h512v48h-512z" fill="#999"/>
+ <path d="m160 0v192c0 17.673-14.327 32-32 32h256c-17.673 0-32-14.327-32-32v-192z" fill="#666"/>
+ <g stroke-width="3">
+  <path d="m0 200h160" stroke="#f00000"/>
+  <path d="m0 440h512" stroke="#f00000"/>
+  <path d="m160 200h192" fill="none" stroke="#0f0"/>
+  <path d="m352 200h160" stroke="#f00000"/>
+ </g>
+ <text x="384" y="480" fill="#f00f0f" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="384" y="480" fill="#f00f0f" font-family="sans-serif" font-size="21.333px">sidewalk</tspan></text>
+ <text x="208" y="240" fill="#00ff00" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="208" y="240" fill="#00ff00" font-family="sans-serif" font-size="21.333px">crossing</tspan></text>
+ <g stroke-width="3">
+  <path d="m64 224v-24" fill="#999" stroke="#f00000"/>
+  <path d="m64 224v192" fill="none" stroke="#0ff000"/>
+  <text x="80" y="316" fill="#00ff00" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="80" y="316" fill="#00ff00" font-family="sans-serif" font-size="21.333px">crossing</tspan></text>
+  <rect x="56" y="216" width="16" height="16" fill="none" stroke="#12b9e4"/>
+  <path d="m64 440v-24" fill="#999" stroke="#f00000"/>
+ </g>
+ <g fill="none" stroke-width="3">
+  <rect x="56" y="408" width="16" height="16" stroke="#12b9e4"/>
+  <rect transform="rotate(90)" x="192" y="-360" width="16" height="16" stroke="#00cbff"/>
+  <rect x="152" y="192" width="16" height="16" stroke="#00cbff"/>
+ </g>
+ <text x="400" y="160" fill="#f00f0f" font-family="serif" font-size="21.333px" xml:space="preserve"><tspan x="400" y="160" fill="#f00f0f" font-family="sans-serif" font-size="21.333px">sidewalk</tspan></text>
+</svg>

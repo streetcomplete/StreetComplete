@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LocalizedName
 import org.koin.android.ext.android.inject
 import java.lang.IllegalStateException
 import java.util.LinkedList
@@ -36,8 +36,8 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
-    override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
-        val polyline = when (val geom = elementGeometry) {
+    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
+        val polyline = when (val geom = geometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
@@ -50,7 +50,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
-        for ((languageTag, name) in adapter.localizedNames) {
+        for ((languageTag, name) in adapter?.names.orEmpty()) {
             val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
             val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
@@ -61,12 +61,12 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            val points = when (val g = elementGeometry) {
+            val points = when (val g = geometry) {
                 is ElementPolylinesGeometry -> g.polylines.first()
                 is ElementPolygonsGeometry -> g.polygons.first()
                 is ElementPointGeometry -> listOf(g.center)
             }
-            applyAnswer(RoadName(names, osmElement!!.id, points))
+            applyAnswer(RoadName(names, element.id, points))
         }
     }
 
@@ -77,7 +77,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         val noName = resources.getString(R.string.quest_streetName_answer_noName_noname)
         val leaveNote = resources.getString(R.string.quest_streetName_answer_noProperStreet_leaveNote)
 
-        val highwayValue = osmElement!!.tags["highway"]
+        val highwayValue = element.tags["highway"]
         val mayBeLink = highwayValue?.matches("primary|secondary|tertiary".toRegex()) == true
 
         val answers = mutableListOf<String>()

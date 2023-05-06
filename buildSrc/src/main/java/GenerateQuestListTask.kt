@@ -34,21 +34,24 @@ open class GenerateQuestListTask : DefaultTask() {
     @get:InputDirectory lateinit var iconsDirectory: File
     @get:InputFile lateinit var noteQuestFile: File
 
+    private lateinit var wikiQuests: List<WikiQuest>
+
     @TaskAction
     fun run() {
+        wikiQuests = parseWikiTable(getWikiTableContent())
+
         val questFileContent = sourceDirectory.resolve("quests/QuestsModule.kt").readText()
-        val questNameRegex = Regex("(?<=^ {4})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
+        val questNameRegex = Regex("(?<=^ {4}\\d+ to )[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
         val questNames =
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
         val questFiles = sourceDirectory.resolve("quests/").listFilesRecursively()
         val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
-        val wikiQuests = parseWikiTable(getWikiTableContent())
         val repoQuests = questNames.mapIndexed { defaultPriority, name ->
-            getRepoQuest(name, defaultPriority, questFiles, strings, wikiQuests)
+            getRepoQuest(name, defaultPriority, questFiles, strings)
         }.sortedBy { it.wikiOrder }
 
-        writeCsvFile(repoQuests, wikiQuests)
+        writeCsvFile(repoQuests)
     }
 
     private fun getStrings(stringsFile: File): Map<String, String> {
@@ -71,13 +74,12 @@ open class GenerateQuestListTask : DefaultTask() {
         defaultPriority: Int,
         questFiles: List<File>,
         strings: Map<String, String>,
-        wikiQuests: List<WikiQuest>
     ): RepoQuest {
         val file = getQuestFile(questName, questFiles)
         val questFileContent = file.readText()
 
         val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
-        val wikiOrder = wikiQuests.indexOfFirst { questions.contains(it.question) }
+        val wikiOrder = getRepoQuestWikiOrder(questName, questions)
         val title = if (wikiOrder > -1) wikiQuests[wikiOrder].question else questions.last()
 
         val icon = getQuestIcon(questName, questFileContent)
@@ -107,6 +109,15 @@ open class GenerateQuestListTask : DefaultTask() {
         }
 
         return stringResourceNames.filter { it.contains("title") }
+    }
+
+    private fun getRepoQuestWikiOrder(questName: String, questions: List<String>): Int {
+        // first choose the one with an icon description containing the quest name
+        val wikiOrder = wikiQuests.indexOfFirst { it.icon.contains(Regex("\\b$questName\\b")) }
+        if (wikiOrder > -1) return wikiOrder
+
+        // if not found, choose the one with a matching title
+        return wikiQuests.indexOfFirst { questions.contains(it.question) }
     }
 
     private fun getQuestIcon(questName: String, questFileContent: String): File {
@@ -161,14 +172,14 @@ open class GenerateQuestListTask : DefaultTask() {
         return cells.mapIndexed { rowIndex, rowCells -> WikiQuest(rowCells, rowIndex) }
     }
 
-    private fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
+    private fun writeCsvFile(repoQuests: List<RepoQuest>) {
         val outdatedWikiQuests = wikiQuests.filter { it.isOutdated(repoQuests) }
 
         val (updatedRepoQuests, existingRepoQuests) = repoQuests.partition { repoQuest ->
-            repoQuest.wikiOrder == -1 // repo quests not yet in wiki
-                || outdatedWikiQuests.any { // repo quests not up-to-date in wiki
-                it.wikiOrder == repoQuest.wikiOrder
-            }
+            // repo quests not yet in wiki
+            repoQuest.wikiOrder == -1
+            // repo quests not up-to-date in wiki
+            || outdatedWikiQuests.any { it.wikiOrder == repoQuest.wikiOrder }
         }
 
         val csvLines = listOf(
@@ -191,7 +202,7 @@ private data class RepoQuest(
     val icon: File,
     val title: String,
     val defaultPriority: Int,
-    val wikiOrder: Int
+    val wikiOrder: Int,
 ) {
     val packageName: String get() =
         if (name == noteQuestName) noteQuestPackageName
@@ -208,7 +219,7 @@ private data class RepoQuest(
 
 private class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     val wikiOrder: Int = rowIndex
-    private val icon: String
+    val icon: String
     val question: String
     private val askedForElements: String
     private val modifiedTags: String
@@ -266,7 +277,11 @@ private class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     }
 
     fun isOutdated(repoQuests: List<RepoQuest>): Boolean =
-        !repoQuests.any { it.wikiOrder == wikiOrder && it.packageName == packageName }
+        repoQuests.filter {
+            it.wikiOrder == wikiOrder
+            && it.packageName == packageName
+            && it.title == question
+        }.size != 1
 
     val csvString: String get() =
         "\"???\", \"$question\", \"${packageName ?: "–"}\", \"???\", ${wikiOrder + 1}, \"???\""

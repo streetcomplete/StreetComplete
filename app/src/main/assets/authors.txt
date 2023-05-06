@@ -1,8 +1,13 @@
-File                  License / Source (if not given, follow link for license info)
+File                      License / Source (if not given, follow link for license info)
 ===============================================================================
 
-boundaries.ser        ODbL 1.0            from https://josm.openstreetmap.de/browser/josm/trunk/data/boundaries.osm
-                                          which is traced from the OpenStreetMap
-map_theme/fonts/*.*   SIL  OFL-1.1        from https://github.com/ENT8R/streetcomplete-mapstyle/tree/master/fonts (The Montserrat Project Authors)
-map_theme/*.*         GPL 3.0             from https://github.com/ENT8R/streetcomplete-mapstyle/
-osmfeatures/*.json    ISC license         from https://github.com/openstreetmap/iD/tree/master/dist/locales
+boundaries.ser              ODbL-1.0        from https://josm.openstreetmap.de/browser/josm/trunk/data/boundaries.osm
+                                            which is traced from the OpenStreetMap
+
+country_metadata/*.*        CC-0 1.0        from https://github.com/streetcomplete/countrymetadata
+
+map_theme/*.*               GPL-3.0-only    from https://github.com/streetcomplete/streetcomplete-mapstyle
+
+osmfeatures/brands/*.*      BSD-3-Clause    from https://github.com/osmlab/name-suggestion-index/tree/main/dist/presets
+
+osmfeatures/default/*.*     ISC             from https://github.com/openstreetmap/id-tagging-schema/tree/main/dist

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -41,7 +41,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.RELATION, 1, geometry),
             ElementGeometryEntry(ElementType.WAY, 2, geometry)
         ))
-        nodeDao.put(Node(1, LatLon(0.0,0.0)))
+        nodeDao.put(Node(1, LatLon(0.0, 0.0)))
 
         assertNotNull(dao.get(ElementType.WAY, 2))
         assertNotNull(dao.get(ElementType.RELATION, 1))

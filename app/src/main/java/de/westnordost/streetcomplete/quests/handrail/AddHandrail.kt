@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.handrail
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddHandrail : OsmFilterQuestType<Boolean>() {
 
@@ -24,18 +25,16 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
          )
     """
 
-    override val changesetComment = "Add whether steps have a handrail"
+    override val changesetComment = "Specify whether steps have handrails"
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.ic_quest_steps_handrail
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR)
+    override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("handrail", answer.toYesNo())
         if (!answer) {
             tags.remove("handrail:left")

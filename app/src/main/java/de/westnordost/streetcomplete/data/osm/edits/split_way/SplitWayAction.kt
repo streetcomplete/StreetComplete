@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -12,14 +12,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.ktx.findNext
-import de.westnordost.streetcomplete.ktx.findPrevious
-import de.westnordost.streetcomplete.ktx.firstAndLast
-import de.westnordost.streetcomplete.ktx.indexOfMaxBy
+import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.findNext
+import de.westnordost.streetcomplete.util.ktx.findPrevious
+import de.westnordost.streetcomplete.util.ktx.firstAndLast
+import de.westnordost.streetcomplete.util.ktx.indexOfMaxBy
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
 
 /** Action that performs a split on a way.
  *
@@ -31,7 +32,10 @@ import java.lang.System.currentTimeMillis
  *  end, it is not considered compatible anymore
  *  */
 @Serializable
-data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : ElementEditAction {
+data class SplitWayAction(
+    val originalWay: Way,
+    val splits: List<SplitPolylineAtPosition>
+) : ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
         nodes = splits.count { it is SplitAtLinePosition },
@@ -39,28 +43,33 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
         relations = 0
     )
 
+    override val elementKeys get() = listOf(originalWay.key)
+
+    override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
+        originalWay = originalWay.copy(id = updatedIds[originalWay.key] ?: originalWay.id)
+    )
+
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val way = element as? Way ?: throw ConflictException("Element deleted")
-        val originalWay = originalElement as Way
-        val completeWay = mapDataRepository.getWayComplete(way.id)
+        val wayId = originalWay.id
+        val wayComplete = mapDataRepository.getWayComplete(wayId)
+            ?: throw ConflictException("Element deleted")
 
-        var updatedWay = completeWay?.getWay(way.id)
-            ?: throw ConflictException("Way #${way.id} has been deleted")
+        var currentWay = wayComplete.getWay(wayId)
+            ?: throw ConflictException("Way #$wayId has been deleted")
 
-        if (isGeometrySubstantiallyDifferent(originalWay, updatedWay)) {
-            throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
+        if (isGeometrySubstantiallyDifferent(originalWay, currentWay)) {
+            throw ConflictException("Way #$wayId has been changed and the conflict cannot be solved automatically")
         }
 
-        if (updatedWay.isClosed && splits.size < 2)
+        if (currentWay.isClosed && splits.size < 2) {
             throw ConflictException("Must specify at least two split positions for a closed way")
+        }
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
-        val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
+        val positions = currentWay.nodeIds.map { nodeId -> wayComplete.getNode(nodeId)!!.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
         val sortedSplits = splits.map { it.toSplitWayAt(positions) }.sorted()
@@ -75,13 +84,13 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, currentTimeMillis())
+                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, nowAsEpochMilliseconds())
                     createdNodes.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
-                    val nodeIds = updatedWay.nodeIds.toMutableList()
+                    val nodeIds = currentWay.nodeIds.toMutableList()
                     nodeIds.add(nodeIndex, splitNode.id)
-                    updatedWay = updatedWay.copy(nodeIds = nodeIds)
+                    currentWay = currentWay.copy(nodeIds = nodeIds)
                     splitAtIndices.add(nodeIndex)
                     ++insertedNodeCount
                 }
@@ -89,10 +98,10 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
         }
 
         // step 2: split up the ways into several ways
-        val updatedWays = getSplitWayAtIndices(updatedWay, splitAtIndices, idProvider)
+        val updatedWays = getSplitWayAtIndices(currentWay, splitAtIndices, idProvider)
 
         // step 3: update all relations the original way was member of, if any
-        val updatedRelations = getUpdatedRelations(updatedWay, updatedWays, mapDataRepository)
+        val updatedRelations = getUpdatedRelations(currentWay, updatedWays, mapDataRepository)
 
         return MapDataChanges(
             creations = createdNodes + updatedWays.filter { it.id < 0 },
@@ -120,7 +129,7 @@ private fun getSplitWayAtIndices(
         nodesChunks.first().addAll(0, lastChunk)
     }
 
-    /* Instead of deleting the old way and replacing it with the new splitted chunks, one of the
+    /* Instead of deleting the old way and replacing it with the new split chunks, one of the
        chunks should use the id of the old way, so that it inherits the OSM history of the previous
        way. The chunk with the most nodes is selected for this.
        This is the same behavior as JOSM and Vespucci. */
@@ -129,10 +138,11 @@ private fun getSplitWayAtIndices(
     removeTagsThatArePotentiallyWrongAfterSplit(tags)
 
     return nodesChunks.mapIndexed { index, nodes ->
+        // keep the original timestampEdited, so resurvey quests are still shown after splitting (only when auto-sync is off)
         if (index == indexOfChunkToKeep) {
-            Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
+            Way(originalWay.id, nodes, tags, originalWay.version, originalWay.timestampEdited)
         } else {
-            Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
+            Way(idProvider.nextWayId(), nodes, tags, 0, originalWay.timestampEdited)
         }
     }
 }
@@ -196,7 +206,7 @@ private fun getUpdatedRelations(
         }
         result.add(relation.copy(
             members = updatedRelationMembers,
-            timestampEdited = currentTimeMillis()
+            timestampEdited = nowAsEpochMilliseconds()
         ))
     }
     return result

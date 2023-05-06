@@ -6,6 +6,5 @@
  <path d="m200-0h8v256h-8z" fill="#999"/>
  <path d="m112-0h8v256h-8z" fill="#666"/>
  <path d="m0-0h112v256h-112z" fill="#808080"/>
- <path d="m144 140 32 32 56-64" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="20"/>
- <path d="m144 128 32 32 56-64" fill="none" stroke="#3c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+ <path d="m209.96 85.374-44.736 51.129-19.908-19.908c-6.2486-6.2494-16.38-6.2494-22.629 0-6.2494 6.2486-6.2494 16.38 0 22.629l32 32c6.5455 6.5435 17.261 6.186 23.355-0.77929l56-64c5.818-6.6502 5.1438-16.758-1.5059-22.576-7.0173-5.682-17.172-4.4702-22.576 1.5059z" color="#000000" fill="#3c0" stroke="#fff" stroke-linecap="round" stroke-width="12"/>
 </svg>

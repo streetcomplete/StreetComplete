@@ -10,6 +10,13 @@ class QuestPresetsDao(private val db: Database) {
     fun add(name: String): Long =
         db.insert(NAME, listOf(QUEST_PRESET_NAME to name))
 
+    fun rename(id: Long, name: String) {
+        db.update(NAME,
+            values = listOf(QUEST_PRESET_NAME to name),
+            where = "$QUEST_PRESET_ID = $id"
+        )
+    }
+
     fun delete(id: Long) {
         db.delete(NAME, "$QUEST_PRESET_ID = $id")
     }

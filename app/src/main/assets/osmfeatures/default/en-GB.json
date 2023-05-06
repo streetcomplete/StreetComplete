@@ -81,7 +81,8 @@
                     }
                 },
                 "access_simple": {
-                    "label": "Allowed Access"
+                    "label": "Allowed Access",
+                    "terms": "permitted,private,public"
                 },
                 "activity": {
                     "options": {
@@ -130,7 +131,8 @@
                         "suburb": "Suburb",
                         "suburb!jp": "Ward",
                         "unit": "Unit"
-                    }
+                    },
+                    "terms": "location"
                 },
                 "admin_level": {
                     "label": "Admin Level"
@@ -179,7 +181,8 @@
                     "label": "Products"
                 },
                 "air_conditioning": {
-                    "label": "Air Conditioning"
+                    "label": "Air Conditioning",
+                    "terms": "cooling system,refrigeration"
                 },
                 "amenity": {
                     "label": "Type"
@@ -267,23 +270,19 @@
                     "label": "Brand"
                 },
                 "brewery": {
-                    "label": "Draught Beers"
+                    "label": "Draught Beers",
+                    "terms": "on tap"
                 },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Default"
                 },
                 "building": {
-                    "label": "Building"
+                    "label": "Building",
+                    "terms": "structure"
                 },
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
-                },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
-                "building_area": {
-                    "label": "Building"
                 },
                 "bunker_type": {
                     "label": "Type"
@@ -320,15 +319,14 @@
                 "castle_type": {
                     "label": "Type"
                 },
+                "changing_table": {
+                    "label": "Nappy Changing Table"
+                },
                 "charge_fee": {
                     "placeholder": "1 EUR, 5 USD, 10 JPY…"
                 },
                 "charge_toll": {
                     "placeholder": "1 EUR, 5 USD, 10 JPY…"
-                },
-                "circumference": {
-                    "label": "Circumference",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "Clothes"
@@ -386,7 +384,8 @@
                     "label": "Type"
                 },
                 "cuisine": {
-                    "label": "Cuisines"
+                    "label": "Cuisines",
+                    "terms": "fare,food types"
                 },
                 "currency_multi": {
                     "label": "Currency Types"
@@ -402,38 +401,23 @@
                     "label": "Bike Lanes",
                     "options": {
                         "lane": {
-                            "description": "A bike lane separated from motor traffic by a painted line",
-                            "title": "Standard bike lane"
-                        },
-                        "none": {
-                            "description": "No bike lane",
-                            "title": "None"
+                            "description": "A bike lane separated from motor traffic by a painted line"
                         },
                         "opposite": {
-                            "description": "A bike lane that travels in both directions on a one-way street",
-                            "title": "Contraflow bike lane"
+                            "description": "A bike lane that travels in both directions on a one-way street"
                         },
                         "opposite_lane": {
-                            "description": "A bike lane that travels in the opposite direction of traffic",
-                            "title": "Opposite bike lane"
+                            "description": "A bike lane that travels in the opposite direction of traffic"
                         },
                         "share_busway": {
-                            "description": "A bike lane shared with a bus lane",
-                            "title": "Bike lane shared with bus"
+                            "description": "A bike lane shared with a bus lane"
                         },
                         "shared_lane": {
-                            "description": "A bike lane with no separation from motor traffic",
-                            "title": "Shared bike lane"
+                            "description": "A bike lane with no separation from motor traffic"
                         },
                         "track": {
-                            "description": "A bike lane separated from traffic by a physical barrier",
-                            "title": "Bike track"
+                            "description": "A bike lane separated from traffic by a physical barrier"
                         }
-                    },
-                    "placeholder": "none",
-                    "types": {
-                        "cycleway:left": "Left side",
-                        "cycleway:right": "Right side"
                     }
                 },
                 "dance/style": {
@@ -460,7 +444,8 @@
                     }
                 },
                 "description": {
-                    "label": "Description"
+                    "label": "Description",
+                    "terms": "summary"
                 },
                 "devices": {
                     "label": "Devices",
@@ -497,7 +482,8 @@
                     "label": "Type"
                 },
                 "dog": {
-                    "label": "Dogs"
+                    "label": "Dogs",
+                    "terms": "animals,pets"
                 },
                 "door": {
                     "label": "Door"
@@ -552,6 +538,11 @@
                 "fence_type": {
                     "label": "Type"
                 },
+                "fire_hydrant/position": {
+                    "options": {
+                        "sidewalk": "Pavement"
+                    }
+                },
                 "fire_hydrant/type": {
                     "label": "Shape",
                     "options": {
@@ -581,9 +572,6 @@
                 },
                 "fuel": {
                     "label": "Fuel"
-                },
-                "fuel_multi": {
-                    "label": "Fuel Types"
                 },
                 "gambling": {
                     "label": "Games"
@@ -673,8 +661,7 @@
                         "critical": "Borderline: Passable only for experienced riders and horses. Major obstacles. Bridges should be examined carefully.",
                         "dangerous": "Dangerous: Passable only for very experienced riders and horses and only in good weather. Dismount.",
                         "demanding": "Use with caution: Uneven way, occasional difficult passages.",
-                        "difficult": "Difficult: Way narrow and exposed. May contain obstacles to step over and narrow passages.",
-                        "impossible": "Impassable: Way or bridge not passable for horses. Too narrow, insuffient support, obstacles like ladders. Danger of life."
+                        "difficult": "Difficult: Way narrow and exposed. May contain obstacles to step over and narrow passages."
                     },
                     "placeholder": "Difficult, Dangerous..."
                 },
@@ -689,7 +676,6 @@
                     "label": "Incline"
                 },
                 "incline_steps": {
-                    "label": "Incline",
                     "options": {
                         "down": "Down",
                         "up": "Up"
@@ -762,15 +748,6 @@
                         "semi_evergreen": "Semi-Evergreen"
                     }
                 },
-                "leaf_cycle_singular": {
-                    "label": "Leaf Cycle",
-                    "options": {
-                        "deciduous": "Deciduous",
-                        "evergreen": "Evergreen",
-                        "semi_deciduous": "Semi-Deciduous",
-                        "semi_evergreen": "Semi-Evergreen"
-                    }
-                },
                 "leaf_type": {
                     "label": "Leaf Type",
                     "options": {
@@ -781,12 +758,7 @@
                     }
                 },
                 "leaf_type_singular": {
-                    "label": "Leaf Type",
-                    "options": {
-                        "broadleaved": "Broadleaved",
-                        "leafless": "Leafless",
-                        "needleleaved": "Needleleaved"
-                    }
+                    "label": "Leaf Type"
                 },
                 "leisure": {
                     "label": "Type"
@@ -804,7 +776,6 @@
                     "label": "Location"
                 },
                 "location_pool": {
-                    "label": "Location",
                     "options": {
                         "indoor": "Indoor",
                         "outdoor": "Outdoor",
@@ -861,13 +832,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Trail Difficulty",
-                    "options": {
-                        "0": "Easiest (white circle)",
-                        "1": "Easy (green circle)",
-                        "2": "Medium (blue square)",
-                        "3": "Difficult (black diamond)",
-                        "4": "Extremely Difficult (double black diamond)"
-                    },
                     "placeholder": "Easy, Medium, Difficult..."
                 },
                 "mtb/scale/uphill": {
@@ -939,7 +903,6 @@
                     }
                 },
                 "oneway_yes": {
-                    "label": "One Way",
                     "options": {
                         "alternating": "Alternating",
                         "no": "No",
@@ -1023,7 +986,6 @@
                     "label": "Plant"
                 },
                 "plant/output/electricity": {
-                    "label": "Power Output",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -1115,6 +1077,9 @@
                 "restrictions": {
                     "label": "Turn Restrictions"
                 },
+                "roof/colour": {
+                    "label": "Roof Colour"
+                },
                 "rooms": {
                     "label": "Rooms"
                 },
@@ -1159,9 +1124,6 @@
                 },
                 "service": {
                     "label": "Type"
-                },
-                "service/bicycle": {
-                    "label": "Services"
                 },
                 "service/vehicle": {
                     "label": "Services"
@@ -1324,6 +1286,9 @@
                     },
                     "placeholder": "Yes, No, Takeaway Only..."
                 },
+                "toilets": {
+                    "label": "Toilets"
+                },
                 "toilets/disposal": {
                     "label": "Toilet Disposal",
                     "options": {
@@ -1351,7 +1316,6 @@
                 "tracktype": {
                     "label": "Track Type",
                     "options": {
-                        "grade1": "Solid: paved or heavily compacted hardcore surface",
                         "grade2": "Mostly Solid: gravel/rock with some soft material mixed in",
                         "grade3": "Even mixture of hard and soft materials",
                         "grade4": "Mostly Soft: soil/sand/grass with some hard material mixed in",
@@ -1388,17 +1352,7 @@
                     "placeholder": "Excellent, Good, Bad..."
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "auto": "Autotransformer",
-                        "auxiliary": "Auxiliary",
-                        "converter": "Converter",
-                        "distribution": "Distribution",
-                        "generator": "Generator",
-                        "phase_angle_regulator": "Phase Angle Regulator",
-                        "traction": "Traction",
-                        "yes": "Unknown"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Trees"
@@ -1655,6 +1609,9 @@
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Youth Centre"
+                },
                 "amenity/compressed_air": {
                     "name": "Compressed Air"
                 },
@@ -1750,7 +1707,7 @@
                     "name": "Car Park"
                 },
                 "amenity/parking/multi-storey": {
-                    "name": "Multistory Car Park"
+                    "name": "Multistorey Car Park"
                 },
                 "amenity/parking_space": {
                     "name": "Parking Space"
@@ -1788,6 +1745,9 @@
                 "amenity/post_office": {
                     "name": "Post Office"
                 },
+                "amenity/prep_school": {
+                    "name": "Exam Preparation"
+                },
                 "amenity/prison": {
                     "name": "Prison Grounds"
                 },
@@ -1806,8 +1766,14 @@
                 "amenity/recycling_centre": {
                     "name": "Recycling Centre"
                 },
+                "amenity/recycling_container": {
+                    "name": "Recycling Bin"
+                },
                 "amenity/restaurant": {
                     "name": "Restaurant"
+                },
+                "amenity/restaurant/american": {
+                    "name": "American Restaurant"
                 },
                 "amenity/sanitary_dump_station": {
                     "name": "RV Toilet Disposal"
@@ -1823,6 +1789,9 @@
                 },
                 "amenity/smoking_area": {
                     "name": "Smoking Area"
+                },
+                "amenity/social_centre": {
+                    "name": "Social Centre"
                 },
                 "amenity/social_facility": {
                     "name": "Social Facility"
@@ -1854,11 +1823,20 @@
                 "amenity/toilets": {
                     "name": "Toilets"
                 },
+                "amenity/toilets/portable": {
+                    "name": "Portable Toilet"
+                },
                 "amenity/townhall": {
                     "name": "Town Hall"
                 },
+                "amenity/trolley_bay": {
+                    "name": "Trolley Bay"
+                },
                 "amenity/university": {
                     "name": "University Grounds"
+                },
+                "amenity/vacuum_cleaner": {
+                    "name": "Car Hoover Service"
                 },
                 "amenity/vehicle_inspection": {
                     "terms": "car inspection,mot test,mot centre"
@@ -1884,8 +1862,13 @@
                 "amenity/vending_machine/elongated_coin": {
                     "name": "Elongated Coin Vending Machine"
                 },
+                "amenity/vending_machine/excrement_bags": {
+                    "name": "Poo Bag Dispenser",
+                    "terms": "poo,excrement bags,poop,waste,dog,animal,pet"
+                },
                 "amenity/vending_machine/feminine_hygiene": {
-                    "name": "Feminine Hygiene Vending Machine"
+                    "name": "Feminine Hygiene Vending Machine",
+                    "terms": "condom,tampon,pad,woman,women,menstrual hygiene products,personal care,rubber"
                 },
                 "amenity/vending_machine/food": {
                     "name": "Food Vending Machine"
@@ -1937,9 +1920,6 @@
                 },
                 "attraction/amusement_ride": {
                     "name": "Amusement Ride"
-                },
-                "attraction/big_wheel": {
-                    "name": "Big Wheel"
                 },
                 "attraction/bungee_jumping": {
                     "name": "Bungee Jumping"
@@ -2016,9 +1996,6 @@
                 "barrier/kissing_gate": {
                     "name": "Kissing Gate"
                 },
-                "barrier/lift_gate": {
-                    "name": "Lift Gate"
-                },
                 "barrier/retaining_wall": {
                     "name": "Retaining Wall"
                 },
@@ -2036,6 +2013,10 @@
                 },
                 "building": {
                     "name": "Building"
+                },
+                "building/apartments": {
+                    "name": "Block of Flats",
+                    "terms": "flat building,flats"
                 },
                 "building/barn": {
                     "name": "Barn"
@@ -2115,6 +2096,9 @@
                 "building/industrial": {
                     "name": "Industrial Building"
                 },
+                "building/kindergarten": {
+                    "name": "Nursery School Building"
+                },
                 "building/mosque": {
                     "name": "Mosque Building"
                 },
@@ -2151,9 +2135,6 @@
                 "building/stadium": {
                     "name": "Stadium Building"
                 },
-                "building/static_caravan": {
-                    "name": "Static Caravan"
-                },
                 "building/temple": {
                     "name": "Temple Building"
                 },
@@ -2171,6 +2152,9 @@
                 },
                 "club": {
                     "name": "Club"
+                },
+                "club/sport": {
+                    "terms": "athletics club,sporting club,sports association,sports society,sport club"
                 },
                 "craft": {
                     "name": "Craft"
@@ -2190,9 +2174,6 @@
                 "craft/bookbinder": {
                     "name": "Bookbinder"
                 },
-                "craft/brewery": {
-                    "name": "Brewery"
-                },
                 "craft/carpenter": {
                     "name": "Carpenter"
                 },
@@ -2204,6 +2185,9 @@
                 },
                 "craft/chimney_sweeper": {
                     "name": "Chimney Sweeper"
+                },
+                "craft/cleaning": {
+                    "name": "Cleaner"
                 },
                 "craft/clockmaker": {
                     "name": "Clockmaker"
@@ -2380,6 +2364,9 @@
                 "healthcare/blood_donation": {
                     "name": "Blood Donor Centre"
                 },
+                "healthcare/counselling": {
+                    "name": "Counselling Centre"
+                },
                 "healthcare/hospice": {
                     "name": "Hospice"
                 },
@@ -2419,29 +2406,20 @@
                 "highway/corridor": {
                     "name": "Indoor Corridor"
                 },
-                "highway/crossing/marked": {
-                    "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra": {
-                    "name": "Marked Crossing"
-                },
                 "highway/cycleway": {
                     "name": "Cycle Path"
                 },
                 "highway/elevator": {
                     "name": "Lift"
                 },
+                "highway/elevator_line": {
+                    "name": "Inclined Lift"
+                },
                 "highway/footway": {
                     "name": "Foot Path"
                 },
-                "highway/footway/marked": {
-                    "name": "Marked Crossing"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Pavement"
-                },
-                "highway/footway/zebra": {
-                    "name": "Marked Crossing"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
@@ -2532,9 +2510,6 @@
                 },
                 "highway/tertiary_link": {
                     "name": "Tertiary Link"
-                },
-                "highway/track": {
-                    "name": "Track"
                 },
                 "highway/traffic_mirror": {
                     "name": "Traffic Mirror"
@@ -2659,12 +2634,6 @@
                 "landuse/military/barracks": {
                     "name": "Barracks"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Danger Area"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Naval Base"
-                },
                 "landuse/military/range": {
                     "name": "Military Range"
                 },
@@ -2694,6 +2663,9 @@
                 },
                 "landuse/residential": {
                     "name": "Residential Area"
+                },
+                "landuse/residential/apartments": {
+                    "name": "Flat Complex"
                 },
                 "landuse/retail": {
                     "name": "Retail Area"
@@ -2789,7 +2761,8 @@
                     "name": "Hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horse Riding Facility"
+                    "name": "Horse Riding Centre",
+                    "aliases": "Horse Riding Stables"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink"
@@ -2839,9 +2812,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Cricket Field"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Riding Arena"
-                },
                 "leisure/pitch/netball": {
                     "name": "Netball Court"
                 },
@@ -2880,6 +2850,10 @@
                 },
                 "leisure/sports_centre": {
                     "name": "Sports Centre / Complex"
+                },
+                "leisure/sports_centre/horse_racing": {
+                    "name": "Horse Racecourse",
+                    "aliases": "Hippodrome"
                 },
                 "leisure/sports_centre/swimming": {
                     "name": "Swimming Pool Facility"
@@ -3266,7 +3240,7 @@
                     "name": "Locality"
                 },
                 "place/neighbourhood": {
-                    "name": "Neighborhood"
+                    "name": "Neighbourhood"
                 },
                 "place/plot": {
                     "name": "Plot"
@@ -3336,6 +3310,9 @@
                 },
                 "power/transformer": {
                     "name": "Transformer"
+                },
+                "public_transport/platform/subway": {
+                    "terms": "metro,platform,public transit,public transportation,rail,subway,track,transit,transportation,underground,tube"
                 },
                 "public_transport/station": {
                     "name": "Transit Station"
@@ -3446,10 +3423,8 @@
                     "name": "Shop"
                 },
                 "shop/alcohol": {
-                    "name": "Off licence (Alcohol shop)"
-                },
-                "shop/antiques": {
-                    "name": "Antiques Shop"
+                    "name": "Off licence (Alcohol shop)",
+                    "terms": "alcohol,beer,booze,wine,off licence,off license"
                 },
                 "shop/appliance": {
                     "name": "Appliance Shop"
@@ -3489,9 +3464,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Bookmaker"
-                },
-                "shop/books": {
-                    "name": "Book Shop"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -3556,9 +3528,6 @@
                 "shop/dairy": {
                     "name": "Dairy Shop"
                 },
-                "shop/deli": {
-                    "name": "Deli"
-                },
                 "shop/department_store": {
                     "name": "Department Store"
                 },
@@ -3611,13 +3580,11 @@
                     "name": "Greengrocer"
                 },
                 "shop/hairdresser": {
-                    "name": "Hairdresser"
+                    "name": "Hairdresser",
+                    "terms": "barber"
                 },
                 "shop/hardware": {
                     "name": "Hardware Shop"
-                },
-                "shop/health_food": {
-                    "name": "Health Food Shop"
                 },
                 "shop/hearing_aids": {
                     "name": "Hearing Aids Shop"
@@ -3651,7 +3618,8 @@
                     "name": "Lottery Shop"
                 },
                 "shop/mall": {
-                    "name": "Mall"
+                    "name": "Shopping Centre",
+                    "terms": "mall,shopping center"
                 },
                 "shop/massage": {
                     "name": "Massage Shop"
@@ -3677,9 +3645,6 @@
                 "shop/musical_instrument": {
                     "name": "Musical Instrument Shop"
                 },
-                "shop/newsagent": {
-                    "name": "Newspaper/Magazine Shop"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Nutrition Supplements Shop"
                 },
@@ -3695,17 +3660,11 @@
                 "shop/pastry": {
                     "name": "Pastry Shop"
                 },
-                "shop/pawnbroker": {
-                    "name": "Pawn Shop"
-                },
                 "shop/perfumery": {
                     "name": "Perfume Shop"
                 },
                 "shop/pet": {
                     "name": "Pet Shop"
-                },
-                "shop/pet_grooming": {
-                    "name": "Pet Grooming Shop"
                 },
                 "shop/photo": {
                     "name": "Photography Shop"
@@ -3724,9 +3683,6 @@
                 },
                 "shop/seafood": {
                     "name": "Seafood Shop"
-                },
-                "shop/second_hand": {
-                    "name": "Second Hand Shop"
                 },
                 "shop/shoes": {
                     "name": "Shoe Shop"
@@ -3777,10 +3733,7 @@
                     "name": "Vacant Shop"
                 },
                 "shop/vacuum_cleaner": {
-                    "name": "Vacuum Cleaner Shop"
-                },
-                "shop/variety_store": {
-                    "name": "Variety Store"
+                    "name": "Hoover Shop"
                 },
                 "shop/video": {
                     "name": "Video/DVD Shop"
@@ -3805,9 +3758,6 @@
                 },
                 "shop/wine": {
                     "name": "Wine Shop"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Alpine Hut"
                 },
                 "tourism/apartment": {
                     "name": "Guest Apartment / Condo"
@@ -3941,6 +3891,9 @@
                 "type/route/hiking": {
                     "name": "Hiking Route"
                 },
+                "type/route/horse": {
+                    "name": "Horse Riding Route"
+                },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"
                 },
@@ -4006,9 +3959,6 @@
                 },
                 "waterway/river": {
                     "name": "River"
-                },
-                "waterway/riverbank": {
-                    "name": "Riverbank"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Marine Toilet Disposal"

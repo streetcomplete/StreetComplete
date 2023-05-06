@@ -8,8 +8,8 @@ interface OsmNoteQuestSource {
         fun onInvalidated()
     }
 
-    /** get single quest by id */
-    fun get(questId: Long): OsmNoteQuest?
+    /** get single quest by id if not hidden by user */
+    fun getVisible(questId: Long): OsmNoteQuest?
 
     /** Get all quests in given bounding box */
     fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest>

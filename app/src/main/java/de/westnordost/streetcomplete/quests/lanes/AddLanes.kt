@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -13,28 +16,29 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           (
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
             or highway = residential and (
-              maxspeed > 30
-              or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
+              maxspeed > 33
+              or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
             )
           )
           and area != yes
-          and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+          and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
+          and placement != transition
+          and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add road lanes"
+
+    override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 
     override fun createForm() = AddLanesForm()
 
-    override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
 
         val laneCount = answer.total
 

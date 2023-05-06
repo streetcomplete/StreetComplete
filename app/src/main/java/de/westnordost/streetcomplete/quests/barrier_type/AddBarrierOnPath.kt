@@ -2,21 +2,22 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy { """
         ways with
-          barrier ~ wall|fence|hedge|guard_rail|retaining_wall|city_wall
+          barrier ~ wall|fence|hedge|guard_rail|city_wall
           and area != yes
     """.toElementFilterExpression() }
 
@@ -26,10 +27,10 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add how path and barrier intersect"
+    override val changesetComment = "Specify how paths and barriers intersect"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier_on_path
-    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
+    override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_path_intersection
 
@@ -41,6 +42,6 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

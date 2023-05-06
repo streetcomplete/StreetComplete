@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.format.DateFormat
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
@@ -30,22 +30,29 @@ data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) 
 @Serializable
 data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
-class RegularOpeningHoursAdapter(
-    private val context: Context,
-    private val countryInfo: CountryInfo
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OpeningHoursAdapter(private val context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var rows: MutableList<OpeningHoursRow> = mutableListOf()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     var isEnabled = true
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
+    var firstDayOfWorkweek: String = "Mo"
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
+    var regularShoppingDays: Int = 6
+    /** Locale of the weekday names etc. */
+    var locale: Locale = Locale.getDefault()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -94,7 +101,7 @@ class RegularOpeningHoursAdapter(
         notifyItemRemoved(position)
 
         val rowHere = if (position < rows.size) rows[position] else null
-        val rowAbove =  if (position > 0) rows[position - 1] else null
+        val rowAbove = if (position > 0) rows[position - 1] else null
 
         // this weekday row must be updated because it might be the first one with the same weekdays
         // and thus it is the one that should show the weekdays now
@@ -189,7 +196,7 @@ class RegularOpeningHoursAdapter(
         fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
             binding.monthsLabel.text =
                 if (row.months.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
-                else row.months.toLocalizedString()
+                else row.months.toLocalizedString(locale)
             binding.monthsLabel.setOnClickListener {
                 openSetMonthsRangeDialog(row.months) { months ->
                     row.months = months
@@ -217,7 +224,7 @@ class RegularOpeningHoursAdapter(
     }
 
     private fun openSetMonthsRangeDialog(months: Months, callback: (Months) -> Unit) {
-        MonthsPickerDialog.show(context, months, callback)
+        MonthsPickerDialog.show(context, months, locale, callback)
     }
 
     /* ------------------------------------ weekdays select --------------------------------------*/
@@ -236,12 +243,18 @@ class RegularOpeningHoursAdapter(
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else if (row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
-                else row.weekdays.toLocalizedString(context.resources)
+                else if (rowBefore != null && row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
+                else row.weekdays.toLocalizedString(context.resources, locale)
+
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
+                    // rows that had the same weekdays as this one need to be updated
+                    val rowsThatNeedUpdate = rows
+                        .subList(adapterPosition, rows.size)
+                        .takeWhile { (it as? OpeningWeekdaysRow)?.weekdays == row.weekdays }
+                        .size
                     row.weekdays = weekdays
-                    notifyItemChanged(adapterPosition)
+                    notifyItemRangeChanged(adapterPosition, rowsThatNeedUpdate)
                 }
             }
 
@@ -274,7 +287,7 @@ class RegularOpeningHoursAdapter(
         }
 
         fun update(row: OffDaysRow, isEnabled: Boolean) {
-            binding.weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources)
+            binding.weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources, locale)
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     if (!weekdays.isSelectionEmpty()) {
@@ -292,9 +305,9 @@ class RegularOpeningHoursAdapter(
 
     private fun getWeekdaysSuggestion(isFirst: Boolean): Weekdays {
         if (isFirst) {
-            val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
+            val firstWorkDayIdx = Weekdays.getWeekdayIndex(firstDayOfWorkweek)
             val result = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
-            for (i in 0 until countryInfo.regularShoppingDays) {
+            for (i in 0 until regularShoppingDays) {
                 result[(i + firstWorkDayIdx) % Weekdays.WEEKDAY_COUNT] = true
             }
             return Weekdays(result)
@@ -303,7 +316,7 @@ class RegularOpeningHoursAdapter(
     }
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays?, callback: (Weekdays) -> Unit) {
-        WeekdaysPickerDialog.show(context, weekdays, callback)
+        WeekdaysPickerDialog.show(context, weekdays, locale, callback)
     }
 
     private fun openSetTimeRangeDialog(timeRange: TimeRange, callback: (TimeRange) -> Unit) {

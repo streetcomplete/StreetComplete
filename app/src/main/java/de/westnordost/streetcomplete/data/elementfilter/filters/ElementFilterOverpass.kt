@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.toCheckDateString
 
 fun ElementFilter.toOverpassString(): String = when (this) {
     is CombineFilters -> filters.joinToString("") { it.toOverpassString() }
@@ -51,13 +51,10 @@ fun ElementFilter.toOverpassString(): String = when (this) {
     is HasKeyLike -> "[~%s ~ '.*']".formatQuoted("^($key)$")
     is HasTag -> "[%s = %s]".formatQuoted(key, value)
     is HasTagLike -> "[~%s ~ %s]".formatQuoted("^($key)$", "^($value)$")
+    is NotHasTagLike -> "[~%s !~ %s]".formatQuoted("^($key)$", "^($value)$")
     is HasTagValueLike -> "[%s ~ %s]".formatQuoted(key, "^($value)$")
     is NotHasKey -> "[!%s]".formatQuoted(key)
-    is NotHasKeyLike -> {
-        // not supported (conveniently) by overpass (yet): https://github.com/drolbr/Overpass-API/issues/589
-        // "[!~%s ~ '.*']".formatQuoted("^($key)$")
-        throw UnsupportedOperationException()
-    }
+    is NotHasKeyLike -> "[!~%s ~ '.*']".formatQuoted("^($key)$")
     is NotHasTag -> "[%s != %s]".formatQuoted(key, value)
     is NotHasTagValueLike -> "[%s !~ %s]".formatQuoted(key, "^($value)$")
 }

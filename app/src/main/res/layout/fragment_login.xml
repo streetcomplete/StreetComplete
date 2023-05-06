@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/unpublishedQuestsText"
+            android:id="@+id/unpublishedEditCountText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/loginButton"
@@ -41,7 +41,7 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/oauthFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

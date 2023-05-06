@@ -6,13 +6,18 @@
             <corners android:radius="10dp" />
         </shape>
     </item>
-    <item android:top="3dp" android:left="3dp" android:bottom="3dp" android:right="3dp">
+    <item android:top="4dp" android:left="4dp" android:bottom="4dp" android:right="4dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/traffic_white"/>
             <stroke
                 android:color="@color/traffic_black"
                 android:width="4dp"/>
-            <corners android:radius="8dp" />
+            <corners android:radius="4dp" />
+            <padding
+                android:bottom="12dp"
+                android:left="16dp"
+                android:right="16dp"
+                android:top="12dp" />
         </shape>
     </item>
 </layer-list>

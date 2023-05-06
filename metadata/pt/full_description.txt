@@ -1,5 +1,5 @@
 Ajude a melhorar o OpenStreetMap com o StreetComplete!
 
-Esta aplicação procura dados incorretos ou incompletos num dado local e mostra-os no mapa como marcadores. Cada um destes marcadores são missões que podem ser resolvidos através de simples respostas que complementam a informação existente no site.
+Esta aplicação, muito fácil de utilizar, procura dados que faltam num dado local e mostra-os no mapa como missões. Resolva cada uma destas missões respondendo a questões simples para adicionar ao mapa mais informação útil.
 
-A informação que submeter nesta aplicação é adicionada diretamente ao OpenStreetMap com o seu nome, sem ser necessário utilizar outro editor.
+A informação que submeter nesta aplicação é enviada diretamente para o OpenStreetMap com a sua conta de utilizador, sem ser necessário utilizar outro programa.

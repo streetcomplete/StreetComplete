@@ -25,11 +25,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/background_rectangular_sign"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:background="@drawable/background_rectangular_sign_white"
         android:gravity="center">
 
         <me.grantland.widget.AutofitLayout
@@ -45,10 +41,12 @@
                 android:background="#0fff"
                 android:gravity="center"
                 android:inputType="numberDecimal"
+                android:digits="0123456789.,"
                 android:textColor="@color/traffic_black"
                 android:textSize="24dp"
                 android:textStyle="bold"
                 android:minEms="1"
+                android:maxLines="1"
                 tools:text="8"
                 tools:ignore="SpUsage" />
 

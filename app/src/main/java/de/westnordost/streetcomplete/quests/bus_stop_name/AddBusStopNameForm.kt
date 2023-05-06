@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LocalizedName
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
@@ -16,7 +16,7 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_name_answer_noName) { confirmNoName() },
+        AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 

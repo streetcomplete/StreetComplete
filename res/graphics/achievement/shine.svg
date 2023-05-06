@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="SVGRoot" version="1.1" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
- <path d="m566.91 116.2a320 320 0 0 1 57.523 104.97l-304.44 98.582z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
- <path d="m44.711 482.89a320 320 0 0 1-32.01-73.886l307.3-89.258z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
- <path d="m238.88 10.2a320 320 0 0 1 45.918-8.5109l35.204 318.06z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
- <path d="m579.65 506.78a320 320 0 0 1-54.993 58.966l-204.66-246z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
- <path d="m317.74 639.74a320 320 0 0 1-159.92-44.137l162.19-275.85z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
- <path d="m60.254 132.85a320 320 0 0 1 77.694-76.266l182.05 263.17z" fill="#ffc" fill-opacity=".49804" style="paint-order:normal"/>
+ <path d="m566.91 116.2a320 320 0 0 1 57.523 104.97l-304.44 98.582z" fill="#ffc" fill-opacity=".49804"/>
+ <path d="m44.711 482.89a320 320 0 0 1-32.01-73.886l307.3-89.258z" fill="#ffc" fill-opacity=".49804"/>
+ <path d="m238.88 10.2a320 320 0 0 1 45.918-8.5109l35.204 318.06z" fill="#ffc" fill-opacity=".49804"/>
+ <path d="m579.65 506.78a320 320 0 0 1-54.993 58.966l-204.66-246z" fill="#ffc" fill-opacity=".49804"/>
+ <path d="m317.74 639.74a320 320 0 0 1-159.92-44.137l162.19-275.85z" fill="#ffc" fill-opacity=".49804"/>
+ <path d="m60.254 132.85a320 320 0 0 1 77.694-76.266l182.05 263.17z" fill="#ffc" fill-opacity=".49804"/>
 </svg>

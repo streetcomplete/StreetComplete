@@ -2,19 +2,21 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.osm.isCrossing
-import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 
-class AddCrossing : OsmElementQuestType<KerbHeight> {
+class AddCrossing : OsmElementQuestType<CrossingAnswer> {
 
     private val roadsFilter by lazy { """
         ways with
@@ -36,19 +38,18 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     *  tagging crossing=no on the vertex.
     *  See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203 */
 
-    override val changesetComment = "Add whether there is a crossing"
+    override val changesetComment = "Specify whether there are crossings at intersections of paths and roads"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
+    override val achievements = listOf(PEDESTRIAN)
 
-    override val questTypeAchievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossing() }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (element !is Node || element.tags.isNotEmpty()) false else null
+        if (element is Node && element.tags.isEmpty()) null else false
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val barrierWays = mapData.ways.asSequence()
@@ -73,21 +74,13 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         return crossings.map { it.node }.filter { it.tags.isEmpty() }
     }
 
-    override fun createForm() = AddKerbHeightForm()
+    override fun createForm() = AddCrossingForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("kerb", answer.osmValue)
-        /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
-
-           As most actual crossings will have at least lowered kerbs, this is a good indicator.
-
-           When there is no kerb at all, it is likely that this is a situation where the footway
-           or road drawn in OSM are just virtual, to connect the geometry. In other words, it may be
-           just e.g. an asphalted area, which does not really classify as a crossing.
-         */
-
-        if (answer.osmValue in listOf("lowered", "flush")) {
-            tags["highway"] = "crossing"
+    override fun applyAnswerTo(answer: CrossingAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            YES -> tags["highway"] = "crossing"
+            NO -> tags["crossing"] = "informal"
+            PROHIBITED -> tags["crossing"] = "no"
         }
     }
 }

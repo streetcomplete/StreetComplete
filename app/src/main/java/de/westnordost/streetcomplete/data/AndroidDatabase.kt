@@ -11,26 +11,22 @@ import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_ROLLBACK
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteStatement
+import androidx.core.database.getBlobOrNull
+import androidx.core.database.getDoubleOrNull
+import androidx.core.database.getFloatOrNull
+import androidx.core.database.getIntOrNull
+import androidx.core.database.getLongOrNull
+import androidx.core.database.getShortOrNull
+import androidx.core.database.getStringOrNull
+import androidx.core.database.sqlite.transaction
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
-import de.westnordost.streetcomplete.ktx.getBlob
-import de.westnordost.streetcomplete.ktx.getBlobOrNull
-import de.westnordost.streetcomplete.ktx.getDouble
-import de.westnordost.streetcomplete.ktx.getDoubleOrNull
-import de.westnordost.streetcomplete.ktx.getFloat
-import de.westnordost.streetcomplete.ktx.getFloatOrNull
-import de.westnordost.streetcomplete.ktx.getInt
-import de.westnordost.streetcomplete.ktx.getIntOrNull
-import de.westnordost.streetcomplete.ktx.getLong
-import de.westnordost.streetcomplete.ktx.getLongOrNull
-import de.westnordost.streetcomplete.ktx.getShort
-import de.westnordost.streetcomplete.ktx.getShortOrNull
-import de.westnordost.streetcomplete.ktx.getString
-import de.westnordost.streetcomplete.ktx.getStringOrNull
 
+/** Implementation of Database using android's SQLiteOpenHelper. Since the minimum API version is
+ *  21, the minimum SQLite version is 3.8. */
 @SuppressLint("Recycle")
 class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     private val db get() = dbHelper.writableDatabase
@@ -140,14 +136,7 @@ class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     }
 
     override fun <T> transaction(block: () -> T): T {
-        db.beginTransaction()
-        try {
-            val result = block()
-            db.setTransactionSuccessful()
-            return result
-        } finally {
-            db.endTransaction()
-        }
+        return db.transaction { block() }
     }
 }
 
@@ -173,20 +162,22 @@ private inline fun <T> Cursor.toSequence(crossinline transform: (CursorPosition)
 }
 
 class AndroidCursorPosition(private val cursor: Cursor) : CursorPosition {
-    override fun getShort(columnName: String): Short = cursor.getShort(columnName)
-    override fun getInt(columnName: String): Int = cursor.getInt(columnName)
-    override fun getLong(columnName: String): Long = cursor.getLong(columnName)
-    override fun getDouble(columnName: String): Double = cursor.getDouble(columnName)
-    override fun getFloat(columnName: String): Float = cursor.getFloat(columnName)
-    override fun getBlob(columnName: String): ByteArray = cursor.getBlob(columnName)
-    override fun getString(columnName: String): String = cursor.getString(columnName)
-    override fun getShortOrNull(columnName: String): Short? = cursor.getShortOrNull(columnName)
-    override fun getIntOrNull(columnName: String): Int? = cursor.getIntOrNull(columnName)
-    override fun getLongOrNull(columnName: String): Long? = cursor.getLongOrNull(columnName)
-    override fun getDoubleOrNull(columnName: String): Double? = cursor.getDoubleOrNull(columnName)
-    override fun getFloatOrNull(columnName: String): Float? = cursor.getFloatOrNull(columnName)
-    override fun getBlobOrNull(columnName: String): ByteArray? = cursor.getBlobOrNull(columnName)
-    override fun getStringOrNull(columnName: String): String? = cursor.getStringOrNull(columnName)
+    override fun getShort(columnName: String): Short = cursor.getShort(index(columnName))
+    override fun getInt(columnName: String): Int = cursor.getInt(index(columnName))
+    override fun getLong(columnName: String): Long = cursor.getLong(index(columnName))
+    override fun getDouble(columnName: String): Double = cursor.getDouble(index(columnName))
+    override fun getFloat(columnName: String): Float = cursor.getFloat(index(columnName))
+    override fun getBlob(columnName: String): ByteArray = cursor.getBlob(index(columnName))
+    override fun getString(columnName: String): String = cursor.getString(index(columnName))
+    override fun getShortOrNull(columnName: String): Short? = cursor.getShortOrNull(index(columnName))
+    override fun getIntOrNull(columnName: String): Int? = cursor.getIntOrNull(index(columnName))
+    override fun getLongOrNull(columnName: String): Long? = cursor.getLongOrNull(index(columnName))
+    override fun getDoubleOrNull(columnName: String): Double? = cursor.getDoubleOrNull(index(columnName))
+    override fun getFloatOrNull(columnName: String): Float? = cursor.getFloatOrNull(index(columnName))
+    override fun getBlobOrNull(columnName: String): ByteArray? = cursor.getBlobOrNull(index(columnName))
+    override fun getStringOrNull(columnName: String): String? = cursor.getStringOrNull(index(columnName))
+
+    private fun index(columnName: String): Int = cursor.getColumnIndexOrThrow(columnName)
 }
 
 private fun Collection<Pair<String, Any?>>.toContentValues() = ContentValues(size).also {

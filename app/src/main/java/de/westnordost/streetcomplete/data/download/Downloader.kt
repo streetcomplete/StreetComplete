@@ -2,19 +2,18 @@ package de.westnordost.streetcomplete.data.download
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.util.TilesRect
-import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.math.area
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.lang.System.currentTimeMillis
 import kotlin.math.max
 
 /** Downloads all the things */
@@ -22,7 +21,7 @@ class Downloader(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
-    private val downloadedTilesDb: DownloadedTilesDao,
+    private val downloadedTilesController: DownloadedTilesController,
     private val mutex: Mutex
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
@@ -36,7 +35,7 @@ class Downloader(
         }
         Log.i(TAG, "Starting download ($sqkm km², bbox: $bboxString)")
 
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         mutex.withLock {
             coroutineScope {
@@ -48,18 +47,18 @@ class Downloader(
         }
         putDownloadedAlready(tiles)
 
-        val seconds = (currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
     }
 
     private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
-        val ignoreOlderThan = max(0, currentTimeMillis() - freshTime)
-        return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
+        val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - freshTime)
+        return downloadedTilesController.contains(tiles, ignoreOlderThan)
     }
 
     private fun putDownloadedAlready(tiles: TilesRect) {
-        downloadedTilesDb.put(tiles, DownloadedTilesType.ALL)
+        downloadedTilesController.put(tiles)
     }
 
     companion object {

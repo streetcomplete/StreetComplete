@@ -1,7 +1,9 @@
+// we want to use the greek letters to stay close to the mathematical examples linked below
+@file:Suppress("NonAsciiCharacters")
+
 package de.westnordost.streetcomplete.util.math
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.normalizeRadians
 import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -49,7 +51,7 @@ fun Vector3d.initialBearingTo(o: Vector3d): Double {
 
 /** Returns the final bearing from one point to another */
 fun Vector3d.finalBearingTo(o: Vector3d): Double {
-    return (o.initialBearingTo(this) + PI).normalizeRadians(0.0)
+    return normalizeRadians(o.initialBearingTo(this) + PI, 0.0)
 }
 
 fun arcIntersection(a: Vector3d, b: Vector3d, p: Vector3d, q: Vector3d): Vector3d? {

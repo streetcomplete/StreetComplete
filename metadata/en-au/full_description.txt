@@ -1,0 +1,5 @@
+Help improve OpenStreetMap with StreetComplete!
+
+This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.
+
+The info you enter is directly added to OpenStreetMap in your name without the need to use another editor.
