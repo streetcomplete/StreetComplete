@@ -98,12 +98,13 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Show next quest for this element immediately
     * Show nearby quests / other quests for same element when quest form is open
     * Hide button for temporarily hiding quests (long press for permanent hide)
-    * Zoom using volume buttons
+    * Show keyboard automatically on showing feature search dialog when adding a node
     * Auto-select first edit when opening edit history
     * Search features in local language and all languages enabled in the system
     * Select how many lines the form needs to have to move recent selection to front
     * Show all main menu items as grid
     * Capitalize words when entering names
+    * Zoom using volume buttons
   * Display settings
     * Disable 3D buildings
     * Show arrows indicating direction of highlighted way

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -18,7 +19,6 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -56,6 +56,7 @@ class SearchFeaturesDialog(
     private val adapter = FeaturesAdapter()
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val prefs: SharedPreferences by inject()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 
@@ -85,11 +86,12 @@ class SearchFeaturesDialog(
 
         setView(binding.root)
 
-        window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        if (prefs.getBoolean(Prefs.CREATE_NODE_SHOW_KEYBOARD, true) || text != null || preSelect.isNullOrEmpty())
+            window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         val params = ViewGroup.LayoutParams(context.dpToPx(58).toInt(), context.dpToPx(58).toInt())
         preSelect?.forEach {
-            val resId = coolFeatures[it] ?: return@forEach
+            val resId = iconOnlyFeatures[it] ?: return@forEach
             val feature = featureDictionary.byId(it).get() ?: return@forEach
             binding.shortcuts.addView(ImageView(context).apply {
                 setImageResource(resId)
@@ -107,7 +109,7 @@ class SearchFeaturesDialog(
     }
 
     private fun getFeatures(startsWith: String): List<Feature> {
-        return if (StreetCompleteApplication.preferences.getBoolean(Prefs.SEARCH_MORE_LANGUAGES, false)) {
+        return if (prefs.getBoolean(Prefs.SEARCH_MORE_LANGUAGES, false)) {
             // even if there are many languages, UI stuff will likely be slower than the multiple searches
             val otherLocales = locales.toList().allExceptFirstAndLast() + // first is default, last is null
                 (pos?.let { p ->
@@ -141,7 +143,7 @@ class SearchFeaturesDialog(
 
     private fun updateSearchResults() {
         val text = searchText
-        val list = if (text == null) (preSelect?.filterNot { it in coolFeatures } ?: defaultFeatures).mapNotNull {
+        val list = if (text == null) (preSelect?.filterNot { it in iconOnlyFeatures } ?: defaultFeatures).mapNotNull {
             featureDictionary
                 .byId(it)
                 .forLocale(*locales)
@@ -188,7 +190,7 @@ class SearchFeaturesDialog(
 // todo: weird mix of pin icons, quest icons, temaki icons
 //  ideally all would be same style, especially avoid monochrome temaki icons
 //  the colors really help a lot for finding the right icon very quickly
-private val coolFeatures = mapOf(
+private val iconOnlyFeatures = mapOf(
     "amenity/bench" to R.drawable.ic_pin_bench,
     "amenity/lounger" to R.drawable.ic_preset_temaki_lounger,
     "amenity/bicycle_parking" to R.drawable.ic_quest_bicycle_parking,

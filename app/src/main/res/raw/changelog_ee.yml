@@ -6,6 +6,7 @@ v53.0: |
   <li>New nodes can be inserted into multiple ways if they are overlapping or crossing</li>
   <li>For overlapping ways, you can choose to not include the node in particular ways (e.g. avoid inserting a crossing into residential area overlapping a road)</li>
   </ul>
+  <li>Allow to avoid auto-showing keyboard when adding a poi</li>
   <li>Small fixes and improvements</li>
   </ul>
 
