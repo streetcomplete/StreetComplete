@@ -77,7 +77,8 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
   * Log reader (not a setting, but it's in the menu)
   * Expert mode that enables capabilities, some of which can be dangerous when used by inexperienced OSM contributors
     * Directly edit tags, with suggestions from iD and last used values
-    * Add nodes everywhere, either free-floating or as part of a single way
+    * Add nodes everywhere, either free-floating or as part of a ways
+      * inserting nodes into a way may actually re-use existing nodes at that position
     * Delete free-floating nodes
     * Additional "other answers"
       * add `access=private` to benches, bicycle parkings, picnic tables, pitches, (leisure) tracks and recycling containers
@@ -168,7 +169,10 @@ Further SCEE adds new answers leading to such a changeset comment:
   * All quest types related to buildings may change `building` to `demolished:building`
 * SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
   * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
-  * There are the further quest types _TagEditor_ (may modify any tag), _CreatePoiEditType_ (adds nodes, free floating or to a single way) and _CustomOverlay_ (may modify tags, delete or move nodes)
+  * There are the further quest types
+  * _TagEditor_: may modify any tag
+  * _CreatePoiEditType_: adds nodes, free floating or part of ways, (may change tags of existing way node instead of inserting a new one under some circumstances)
+  * _CustomOverlay_: may modify tags, delete or move nodes
 
 # original StreetComplete readme below
 

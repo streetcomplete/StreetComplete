@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.data.osm.edits.create
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.util.math.PositionOnCrossingWaySegments
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
+import de.westnordost.streetcomplete.util.math.PositionOnWaysSegment
 import de.westnordost.streetcomplete.util.math.VertexOfWay
 
 fun createNodeAction(
@@ -29,6 +31,16 @@ fun createNodeAction(
             createChanges(tagChanges)
             val containingWayIds = mapDataWithEditsSource.getWaysForNode(positionOnWay.nodeId).map { it.id }
             return CreateNodeFromVertexAction(node, tagChanges.create(), containingWayIds)
+        }
+        is PositionOnWaysSegment -> {
+            val tagChanges = StringMapChangesBuilder(mapOf())
+            createChanges(tagChanges)
+            return CreateNodeAction(positionOnWay.position, tagChanges, positionOnWay.insertIntoWaysAt)
+        }
+        is PositionOnCrossingWaySegments -> {
+            val tagChanges = StringMapChangesBuilder(mapOf())
+            createChanges(tagChanges)
+            return CreateNodeAction(positionOnWay.position, tagChanges, positionOnWay.insertIntoWaysAt)
         }
     }
 }

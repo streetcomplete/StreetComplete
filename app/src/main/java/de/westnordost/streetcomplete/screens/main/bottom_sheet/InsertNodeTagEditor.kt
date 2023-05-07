@@ -23,7 +23,6 @@ class InsertNodeTagEditor : TagEditor() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        newTags.clear() // they are filled from the original element, which is unwanted...
         newTags.putAll(arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap())
         tagList.clear()
         tagList.addAll(newTags.toList())
@@ -39,8 +38,9 @@ class InsertNodeTagEditor : TagEditor() {
         val args = requireArguments()
         val positionOnWay: PositionOnWay = Json.decodeFromString(args.getString(ARG_POSITION_ON_WAY)!!)
         val action = createNodeAction(positionOnWay, mapDataSource) { changeBuilder ->
-            element.tags.forEach { changeBuilder[it.key] = it.value } // todo: also need to remove tags, but first show "starting tags" if i allow them
-        } ?: return // todo: null should not be possible... right? that's only if the node doesn't exist for a VertexOnWay
+            changeBuilder.keys.forEach { if (it !in element.tags) changeBuilder.remove(it) } // remove tags, only relevant if there are startTags
+            element.tags.forEach { changeBuilder[it.key] = it.value } // and add changes
+        } ?: return
 
         elementEditsController.add(createPoiEdit, ElementPointGeometry(positionOnWay.position), "survey", action)
         listener?.onCreatedNote(positionOnWay.position)
@@ -57,17 +57,12 @@ class InsertNodeTagEditor : TagEditor() {
         private const val ARG_FEATURE_ID = "feature_id"
         private const val ARG_TAGS = "tags"
 
-        // todo:
-        //  what if a node with tags is re-used (user choice!)
-        //   this should also add the relevant tags to tag editor
-        //   only if i want to allow this...
-        //   maybe add the tags to positionOnWay?
-        fun create(positionOnWay: PositionOnWay, feature: Feature?, startTags: Map<String, String>?): InsertNodeTagEditor {
+        fun create(positionOnWay: PositionOnWay, feature: Feature?, startTags: Map<String, String> = emptyMap()): InsertNodeTagEditor {
             val f = InsertNodeTagEditor()
-            val args = createArguments(Node(0L, positionOnWay.position), ElementPointGeometry(positionOnWay.position), null, null)
+            val args = createArguments(Node(0L, positionOnWay.position, startTags), ElementPointGeometry(positionOnWay.position), null, null)
             val tags = HashMap<String, String>()
+            startTags.forEach { tags[it.key] = it.value } // only relevant if a an existing node with non-empty tags is re-used
             feature?.addTags?.forEach { tags[it.key] = it.value }
-            startTags?.forEach { tags[it.key] = it.value } // todo: how to handle conflicts? e.g. if user wants to insert speed table, but there is a speed bump already?
             args.putAll(bundleOf(
                 ARG_POSITION_ON_WAY to Json.encodeToString(positionOnWay),
                 ARG_TAGS to tags,

@@ -102,6 +102,8 @@ class TangramPinsSpriteSheet(
         private val ADDITIONAL_ICONS = listOf(
             R.drawable.ic_quest_create_note,
             R.drawable.ic_quest_close_note,
+            R.drawable.ic_add_poi,
+            R.drawable.ic_edit_tags
         )
     }
 }

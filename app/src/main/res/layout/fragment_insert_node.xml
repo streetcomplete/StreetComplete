@@ -70,7 +70,7 @@
                             android:layout_height="wrap_content">
                         <ScrollView
                             app:layout_constrainedHeight="true"
-                            app:layout_constraintHeight_max="90dp"
+                            app:layout_constraintHeight_max="100dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" >
@@ -90,7 +90,7 @@
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
                             android:paddingTop="10dp"
-                            android:paddingBottom="24dp">
+                            android:paddingBottom="12dp">
 
                             <TextView
                                 android:id="@+id/tagsText"
