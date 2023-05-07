@@ -171,8 +171,8 @@ Further SCEE adds new answers leading to such a changeset comment:
 * SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
   * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
   * There are the further quest types
-  * _TagEditor_: may modify any tag
-  * _CreatePoiEditType_: adds nodes, free floating or part of ways, (may change tags of existing way node instead of inserting a new one under some circumstances)
+  * _TagEdit_: may modify any tag
+  * _AddNode_: adds nodes, free floating or part of ways, (may change tags of existing way node instead of inserting a new one under some circumstances)
   * _CustomOverlay_: may modify tags, delete or move nodes
 
 # original StreetComplete readme below

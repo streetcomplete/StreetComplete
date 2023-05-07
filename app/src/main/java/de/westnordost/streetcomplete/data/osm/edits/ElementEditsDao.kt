@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.tagEdit
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.createPoiEdit
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.addNodeEdit
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -113,7 +113,7 @@ class ElementEditsDao(
         questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
             ?: overlayRegistry.getByName(getString(QUEST_TYPE))
             ?: questTypeRegistry.getByName(getString(QUEST_TYPE)) as? ExternalSourceQuestType
-            ?: createPoiEdit.takeIf { getString(QUEST_TYPE) == createPoiEdit.name }
+            ?: addNodeEdit.takeIf { getString(QUEST_TYPE) == addNodeEdit.name }
             ?: tagEdit, // always assume it's a tagEdit if nothing matches, to avoid crashes if SCEE quests are removed
         json.decodeFromString(getString(GEOMETRY)),
         getString(SOURCE),

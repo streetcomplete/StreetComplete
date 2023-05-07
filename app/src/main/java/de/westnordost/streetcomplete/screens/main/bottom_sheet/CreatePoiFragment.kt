@@ -74,7 +74,7 @@ class CreatePoiFragment : TagEditor() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
-        elementEditsController.add(createPoiEdit, ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
+        elementEditsController.add(addNodeEdit, ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_ID)?.let {
             val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
@@ -101,12 +101,12 @@ class CreatePoiFragment : TagEditor() {
     }
 }
 
-val createPoiEdit = object : ElementEditType {
+val addNodeEdit = object : ElementEditType {
     override val icon: Int = R.drawable.ic_add_poi
     override val title: Int = R.string.create_poi
     override val wikiLink: String? = null
     override val changesetComment: String = "Add node"
-    override val name: String = "CreatePoiEditType" // keep old class name to avoid crash on startup if edit is in database
+    override val name: String = "AddNode"
 }
 
 // convert simple key = value pairs into tags, and understand simple filter expressions

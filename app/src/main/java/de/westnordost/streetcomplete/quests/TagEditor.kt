@@ -19,8 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.get
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -111,6 +110,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private lateinit var geometry: ElementGeometry
     protected var questKey: QuestKey? = null
     protected var editTypeName: String? = null
+    private val keyboardButton by lazy { ImageView(requireContext()).apply {
+        setImageResource(android.R.drawable.ic_menu_edit) // is there no nice default keyboard drawable?
+        scaleX = 0.8f
+        scaleY = 0.8f
+        layoutParams = questIconParameters
+        setOnClickListener { requireActivity().currentFocus?.showKeyboard() }
+    } }
 
     // those 2 are lazy because resources require context to be initialized
     private val questIconWidth by lazy { (resources.displayMetrics.density * 56 + 0.5f).toInt() }
@@ -169,8 +175,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             }
             minBottomInset = min(it.bottom, minBottomInset)
             if (keyboardShowing || activity?.currentFocus == null)
-                binding.questsGrid[1].isGone = true
-            else binding.questsGrid[1].isVisible = true
+                binding.questsGrid.removeView(keyboardButton)
+            else if (binding.questsGrid[1] != keyboardButton)
+                binding.questsGrid.addView(keyboardButton, 1)
         }
         val date = Date(originalElement.timestampEdited)
         val dateText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
@@ -218,21 +225,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 showOk()
             }
         })
-        // add "show keyboard" button (actually may also hide keyboard)
-        binding.questsGrid.addView(ImageView(requireContext()).apply {
-            setImageResource(android.R.drawable.ic_menu_edit) // is there no nice default keyboard drawable?
-            scaleX = 0.8f
-            scaleY = 0.8f
-            layoutParams = questIconParameters
-            isGone = true // initially always gone, because by default nothing is focused
-            setOnClickListener { requireActivity().currentFocus?.showKeyboard() }
-        })
         binding.editTags.viewTreeObserver.addOnGlobalFocusChangeListener { _, _ ->
             if (activity?.currentFocus == null || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && WindowInsetsCompat.toWindowInsetsCompat(binding.root.rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime())
             ))
-                _binding?.questsGrid?.get(1)?.isGone = true // hide keyboard button if keyboard showing or nothing focused
-            else _binding?.questsGrid?.get(1)?.isVisible = true
+                _binding?.questsGrid?.removeView(keyboardButton)
+            else if ((_binding?.questsGrid?.size ?: 0) < 2 || _binding?.questsGrid?.get(1) != keyboardButton)
+                _binding?.questsGrid?.addView(keyboardButton, 1)
         }
 
         if (element.id == 0L) {
@@ -412,7 +411,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             if (!isActive) return@launch
             requireActivity().runOnUiThread {
                 // form might be closed while quests were created, so we better not crash on binding == null
-                _binding?.questsGrid?.removeViews(2, binding.questsGrid.childCount - 2) // remove all except the first 2 views
+                val viewsToKeep = if ((_binding?.questsGrid?.size ?: 0) > 1 && _binding?.questsGrid?.get(1) == keyboardButton) 2
+                    else 1
+                _binding?.questsGrid?.removeViews(viewsToKeep, binding.questsGrid.childCount - viewsToKeep) // remove all quest views
                 q.forEach { _binding?.questsGrid?.addView(it) }
             }
         }
@@ -464,11 +465,11 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
 
 val tagEdit = object : ElementEditType {
-    override val changesetComment get() = "Edit element"
-    override val icon get() = R.drawable.ic_edit_tags
-    override val title get() = R.string.quest_generic_answer_show_edit_tags
-    override val wikiLink: String? get() = null
-    override val name get() = "TagEditor"
+    override val changesetComment = "Edit element"
+    override val icon = R.drawable.ic_edit_tags
+    override val title = R.string.quest_generic_answer_show_edit_tags
+    override val wikiLink: String? = null
+    override val name = "TagEdit"
 }
 
 private val emptyEntry = "" to ""

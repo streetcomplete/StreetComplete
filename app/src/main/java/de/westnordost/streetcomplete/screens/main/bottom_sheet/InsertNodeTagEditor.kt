@@ -42,7 +42,7 @@ class InsertNodeTagEditor : TagEditor() {
             element.tags.forEach { changeBuilder[it.key] = it.value } // and add changes
         } ?: return
 
-        elementEditsController.add(createPoiEdit, ElementPointGeometry(positionOnWay.position), "survey", action)
+        elementEditsController.add(addNodeEdit, ElementPointGeometry(positionOnWay.position), "survey", action)
         listener?.onCreatedNote(positionOnWay.position)
         arguments?.getString(ARG_FEATURE_ID)?.let {
             val initialTags: Map<String, String> = arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
