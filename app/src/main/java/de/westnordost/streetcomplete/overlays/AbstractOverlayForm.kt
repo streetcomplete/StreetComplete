@@ -59,6 +59,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.accessKeys
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
@@ -531,6 +532,7 @@ abstract class AbstractOverlayForm :
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry, extra: Boolean = false) {
+        Log.i(TAG, "solve ${overlay.name} for ${element?.key}, extra: $extra")
         val source = if (extra) "survey,extra" else "survey"
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
@@ -594,3 +596,5 @@ data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit)
 data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
     override val title: Text get() = CharSequenceText(titleString)
 }
+
+private const val TAG = "AbstractOverlayForm"

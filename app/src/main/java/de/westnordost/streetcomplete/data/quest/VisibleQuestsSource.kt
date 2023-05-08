@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.SpatialCache
 import java.util.concurrent.CopyOnWriteArrayList
@@ -175,6 +176,8 @@ class VisibleQuestsSource(
 
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+        if (addedQuests.size > 10 || deletedQuestKeys.size > 10) Log.i(TAG, "added ${addedQuests.size}, deleted ${deletedQuestKeys.size}")
+            else Log.i(TAG, "added ${addedQuests.map { it.type.name }}, deleted: $deletedQuestKeys")
         cache.update(addedQuests, deletedQuestKeys)
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }
@@ -193,3 +196,5 @@ private const val SPATIAL_CACHE_TILE_ZOOM = 16
 private const val SPATIAL_CACHE_TILES = 128
 // in a city this is the approximate number of quests in ~30 tiles on default visibilities
 private const val SPATIAL_CACHE_INITIAL_CAPACITY = 10000
+
+private const val TAG = "VisibleQuestsSource"

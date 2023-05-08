@@ -274,7 +274,7 @@ class MainFragment :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.i("MainFragment", "onAttach")
+        Log.i(TAG, "onAttach")
         locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
@@ -288,47 +288,47 @@ class MainFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("MainFragment", "onCreate")
+        Log.i(TAG, "onCreate")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.i("MainFragment", "onCreateView")
+        Log.i(TAG, "onCreateView")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        Log.i("MainFragment", "onViewStateRestored")
+        Log.i(TAG, "onViewStateRestored")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.i("MainFragment", "onPause")
+        Log.i(TAG, "onPause")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.i("MainFragment", "onSaveInstanceState")
+        Log.i(TAG, "onSaveInstanceState")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.i("MainFragment", "onDestroyView")
+        Log.i(TAG, "onDestroyView")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("MainFragment", "onDestroy")
+        Log.i(TAG, "onDestroy")
     }
 
     override fun onDetach() {
         super.onDetach()
-        Log.i("MainFragment", "onDetach")
+        Log.i(TAG, "onDetach")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("MainFragment", "onViewCreated")
+        Log.i(TAG, "onViewCreated")
 
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
@@ -361,7 +361,7 @@ class MainFragment :
 
     override fun onResume() {
         super.onResume()
-        Log.i("MainFragment", "onResume")
+        Log.i(TAG, "onResume")
         binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
             View.VISIBLE
         else
@@ -377,7 +377,7 @@ class MainFragment :
     @UiThread
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.i("MainFragment", "onConfigurationChanged")
+        Log.i(TAG, "onConfigurationChanged")
         val mapFragment = this.mapFragment ?: return
         /* when rotating the screen and the bottom sheet is open, the view
            should not rotate around its proper center but around the center
@@ -398,7 +398,7 @@ class MainFragment :
 
     override fun onStart() {
         super.onStart()
-        Log.i("MainFragment", "onStart (add listeners)")
+        Log.i(TAG, "onStart (add listeners)")
         wasFollowingPosition = mapFragment?.isFollowingPosition // use value from mapFragment if already loaded
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
@@ -411,7 +411,7 @@ class MainFragment :
 
     override fun onStop() {
         super.onStop()
-        Log.i("MainFragment", "onStop (remove listeners)")
+        Log.i(TAG, "onStop (remove listeners)")
         wasFollowingPosition = mapFragment?.isFollowingPosition
         wasNavigationMode = mapFragment?.isNavigationMode
         visibleQuestsSource.removeListener(this)
@@ -653,6 +653,7 @@ class MainFragment :
     override val metersPerPixel: Double? get() = mapFragment?.getMetersPerPixel()
 
     override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
+        Log.i(TAG, "edited: ${editType.name}")
         showQuestSolvedAnimation(editType.icon, geometry.center)
         if (editType is OsmElementQuestType<*> && prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             visibleQuestsSource.getAllVisible(geometry.center.enclosingBoundingBox(1.0))
@@ -782,6 +783,7 @@ class MainFragment :
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
+        Log.i(TAG, "created note at $position")
         showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
         closeBottomSheet()
     }
@@ -1284,6 +1286,8 @@ class MainFragment :
      *  view (e.g. if it was zoomed in before to focus on an element) */
     @UiThread
     private fun closeBottomSheet() {
+        val showing = (bottomSheetFragment as? IsShowingElement)?.elementKey ?: (bottomSheetFragment as? IsShowingQuestDetails)?.questKey
+        Log.i(TAG, "closeBottomSheet while showing $showing")
         activity?.currentFocus?.hideKeyboard()
         if (bottomSheetFragment != null) {
             childFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
@@ -1369,6 +1373,7 @@ class MainFragment :
 
     @UiThread
     private suspend fun showElementDetails(elementKey: ElementKey) {
+        Log.i(TAG, "showElementDetails for $elementKey")
         if (isElementCurrentlyDisplayed(elementKey)) return
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
@@ -1416,6 +1421,7 @@ class MainFragment :
 
     @UiThread
     private suspend fun showQuestDetails(quest: Quest) {
+        Log.i(TAG, "showQuestDetails for ${quest.key}")
         val mapFragment = mapFragment ?: return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
 
@@ -1670,3 +1676,6 @@ private data class Marker(
     val title: String? = null,
     val color: Int? = null,
 )
+
+private const val TAG = "MainFragment" +
+    ""

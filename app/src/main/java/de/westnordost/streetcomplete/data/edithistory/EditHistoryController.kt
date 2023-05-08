@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
+import de.westnordost.streetcomplete.util.Log
 import java.util.TreeSet
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -150,6 +151,8 @@ class EditHistoryController(
     }
 
     private fun onAdded(edit: Edit) {
+        if (edit is ElementEdit) Log.i(TAG, "history: add edit ${edit.type.name} for ${edit.action.elementKeys}")
+        else Log.i(TAG, "history: add edit ${edit.key}")
         synchronized(cache) { cache.add(edit) }
         listeners.forEach { it.onAdded(edit) }
     }
@@ -178,3 +181,5 @@ class EditHistoryController(
         listeners.forEach { it.onInvalidated() }
     }
 }
+
+private const val TAG = "EditHistoryController"

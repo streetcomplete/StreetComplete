@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
@@ -47,6 +48,7 @@ import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.AccessManagerDialog
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.accessKeys
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
@@ -452,6 +454,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     private suspend fun solve(action: ElementEditAction, extra: Boolean = false) {
+        Log.i(TAG, "solve ${questType.name} for ${element.key}, extra: $extra, in TagEditor: ${TagEditor.showingTagEditor}")
         if (TagEditor.showingTagEditor) return
 
         // really bad hacky way of using separate changesets for some "other answers",
@@ -529,3 +532,5 @@ nodes, ways with
     """.toElementFilterExpression()
     }
 }
+
+private const val TAG = "AbstractOsmQuestForm"

@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -502,6 +503,8 @@ class MapDataWithEditsSource internal constructor(
 
     private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
         if (updated.size == 0 && deleted.isEmpty()) return
+        if (updated.size > 10 || deleted.size > 10) Log.i(TAG, "updated ${updated.size}, deleted ${deleted.size}")
+        else Log.i(TAG, "updated: ${updated.map { it.key }}, deleted: $deleted")
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
     private fun callOnReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
@@ -523,3 +526,5 @@ private fun Element.isEqualExceptVersionAndTimestamp(element: Element?): Boolean
         is Way -> nodeIds == (element as Way).nodeIds
         is Relation -> members == (element as Relation).members
     }
+
+private const val TAG = "MapDataWithEditsSource"
