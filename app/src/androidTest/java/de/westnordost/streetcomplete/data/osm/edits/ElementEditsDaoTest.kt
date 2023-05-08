@@ -209,6 +209,17 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(listOf(oldEnough), dao.getSyncedOlderThan(1000))
     }
+
+    @Test fun put_with_same_id_overwrites() {
+        val edit = updateTags()
+        dao.put(edit)
+        val updatedEdit = edit.copy(createdTimestamp = 999L)
+        dao.put(updatedEdit)
+
+        assertEquals(edit.id, updatedEdit.id)
+
+        assertEquals(999L, dao.get(edit.id)!!.createdTimestamp)
+    }
 }
 
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { put(it) }
