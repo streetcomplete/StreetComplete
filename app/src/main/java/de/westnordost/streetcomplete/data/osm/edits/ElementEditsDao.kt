@@ -58,8 +58,9 @@ class ElementEditsDao(
     }
 
     fun put(edit: ElementEdit) {
-        val rowId = db.insert(NAME, edit.toPairs())
-        edit.id = rowId
+        val rowId = db.replace(NAME, edit.toPairs())
+        // only set id if it was "undefined" before
+        if (edit.id <= 0) edit.id = rowId
     }
 
     fun get(id: Long): ElementEdit? =
@@ -97,7 +98,8 @@ class ElementEditsDao(
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
-    private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOf(
+    private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOfNotNull(
+        if (id <= 0) null else ID to id,
         QUEST_TYPE to type.name,
         GEOMETRY to json.encodeToString(originalGeometry),
         SOURCE to source,
