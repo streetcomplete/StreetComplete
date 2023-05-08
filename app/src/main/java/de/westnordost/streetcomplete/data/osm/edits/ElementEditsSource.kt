@@ -8,7 +8,7 @@ interface ElementEditsSource {
         fun onAddedEdit(edit: ElementEdit)
         fun onAddedEdit(edit: ElementEdit, key: QuestKey?) = onAddedEdit(edit) // need to do it this weird way, otherwise must change everything that implement listener
         fun onSyncedEdit(edit: ElementEdit)
-        fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Boolean) = onSyncedEdit(edit) // see above
+        fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Collection<Long>) = onSyncedEdit(edit) // see above
         // may be several because deleting one element edit leads to the deletion of all edits that
         // are based on that edit. E.g. splitting a way, then editing the newly created way segments
         fun onDeletedEdits(edits: List<ElementEdit>)

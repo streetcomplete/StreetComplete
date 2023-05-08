@@ -121,7 +121,6 @@ class ElementEditsController(
                 val updatedEdit = oldEdit.copy(action = oldEdit.action.idsUpdatesApplied(idUpdatesMap))
                 editsDB.put(updatedEdit)
                 editCache[updatedEdit.id] = updatedEdit
-                //editCache.remove(id) // todo: not removed from db, so don't remove it from cache... but why actually?
                 // must clear first because the element ids associated with this id are different now
                 editElementsDB.delete(id)
                 editElementsDB.put(id, updatedEdit.action.elementKeys)
@@ -134,7 +133,7 @@ class ElementEditsController(
                 editCache[edit.id] = edit.copy(isSynced = true)
         }
 
-        if (syncSuccess) onSyncedEdit(edit, editIdsToUpdate.isNotEmpty()) // forward whether ids were updated, because history controller needs the new edits
+        if (syncSuccess) onSyncedEdit(edit, editIdsToUpdate) // forward which ids were updated, because history controller needs to reload those edits
         elementIdProviderDB.updateIds(elementUpdates.idUpdates)
         synchronized(emptyIdProviderCache) { emptyIdProviderCache.remove(edit.id) }
     }
@@ -236,7 +235,7 @@ class ElementEditsController(
         listeners.forEach { it.onAddedEdit(edit, key) }
     }
 
-    private fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Boolean) {
+    private fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Collection<Long>) {
         listeners.forEach { it.onSyncedEdit(edit, updatedEditIds) }
     }
 
