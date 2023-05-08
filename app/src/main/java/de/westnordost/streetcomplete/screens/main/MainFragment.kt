@@ -657,7 +657,7 @@ class MainFragment :
         if (editType is OsmElementQuestType<*> && prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             visibleQuestsSource.getAllVisible(geometry.center.enclosingBoundingBox(1.0))
                 .filterIsInstance<OsmQuest>()
-                .firstOrNull { it.geometry == geometry } // this is not great, but we don't have key on the edited element any more
+                .firstOrNull { it.geometry == geometry && it.type.dotColor == null } // this is not great, but we don't have key on the edited element any more
                 ?.let { runBlocking { viewLifecycleScope.launch { showQuestDetails(it) } } }
                 ?: closeBottomSheet()
         }

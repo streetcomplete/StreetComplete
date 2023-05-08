@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAM
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.toInternedHashMap
 
 /** Stores OSM nodes */
 class NodeDao(private val db: Database) {
@@ -99,11 +100,7 @@ private fun CursorPosition.toNode() = Node(
     LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
     // copying from the moshi-"LinkedTreeHashMap" to a normal HashMap is slightly slower than keeping
     // the moshi map, but tag search then is a little faster, so overall it's better, plus using less memory
-    getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let {
-        HashMap<String, String>(it.size, 1.0f).apply {
-            it.forEach { (k, v) -> put(k.intern(), v.intern()) }
-        }
-    } } ?: emptyMap(),
+    getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.toInternedHashMap() } ?: emptyMap(),
     getInt(VERSION),
     getLong(TIMESTAMP),
 )

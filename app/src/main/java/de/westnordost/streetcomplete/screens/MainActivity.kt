@@ -56,8 +56,6 @@ import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragmen
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.Log
-import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -243,12 +241,6 @@ class MainActivity :
         }
         downloadController.showNotification = true
         uploadController.showNotification = true
-    }
-
-    override fun onNewIntent(newIntent: Intent?) {
-        super.onNewIntent(newIntent)
-        intent = newIntent
-        handleGeoUri()
     }
 
     public override fun onStop() {

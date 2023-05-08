@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.toInternedHashMap
 
 /** Stores OSM ways */
 class WayDao(private val db: Database) {
@@ -75,11 +76,7 @@ class WayDao(private val db: Database) {
                 Way(
                     cursor.getLong(ID),
                     nodeIdsByWayId.getValue(cursor.getLong(ID)),
-                    cursor.getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let {
-                        HashMap<String, String>(it.size, 1.0f).apply {
-                            it.forEach { (k, v) -> put(k.intern(), v.intern()) }
-                        }
-                    } } ?: emptyMap(),
+                    cursor.getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.toInternedHashMap() } ?: emptyMap(),
                     cursor.getInt(VERSION),
                     cursor.getLong(TIMESTAMP)
                 )

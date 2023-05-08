@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VER
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.toInternedHashMap
 
 /** Stores OSM relations */
 class RelationDao(private val db: Database) {
@@ -79,7 +80,7 @@ class RelationDao(private val db: Database) {
                     RelationMember(
                         ElementType.valueOf(cursor.getString(TYPE)),
                         cursor.getLong(REF),
-                        cursor.getString(ROLE)
+                        cursor.getString(ROLE).intern()
                     )
                 )
             }
@@ -88,11 +89,7 @@ class RelationDao(private val db: Database) {
                 Relation(
                     cursor.getLong(ID),
                     membersByRelationId.getValue(cursor.getLong(ID)),
-                    cursor.getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let {
-                        HashMap<String, String>(it.size, 1.0f).apply {
-                            it.forEach { (k, v) -> put(k.intern(), v.intern()) }
-                        }
-                    } } ?: emptyMap(),
+                    cursor.getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.toInternedHashMap() } ?: emptyMap(),
                     cursor.getInt(VERSION),
                     cursor.getLong(TIMESTAMP)
                 )
