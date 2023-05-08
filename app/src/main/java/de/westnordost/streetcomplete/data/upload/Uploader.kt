@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.R
@@ -69,7 +70,7 @@ class Uploader(
         }
 
         // let's fail early in case of no authorization
-        if (!userLoginStatusSource.isLoggedIn) {
+        if (!userLoginStatusSource.isLoggedIn && !BuildConfig.DEBUG) {
             throw AuthorizationException("User is not authorized")
         }
 

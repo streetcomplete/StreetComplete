@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
@@ -45,7 +46,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
         super.onViewCreated(view, savedInstanceState)
 
         uploadButton.setOnClickListener {
-            if (isConnected()) {
+            if (isConnected() || BuildConfig.DEBUG) {
                 uploadChanges()
             } else {
                 context?.toast(R.string.offline)
@@ -86,7 +87,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     private fun uploadChanges() {
         // because the app should ask for permission even if there is nothing to upload right now
-        if (!userLoginStatusSource.isLoggedIn) {
+        if (!userLoginStatusSource.isLoggedIn && !BuildConfig.DEBUG) { // in debug mode, upload is fake-success if not logged in
             context?.let { RequestLoginDialog(it).show() }
         } else {
             uploadController.upload()

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.content.Context
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.UploadService
+import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.util.Log
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineName
@@ -62,6 +64,8 @@ class ElementEditsUploader(
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
             withContext(scope.coroutineContext) { uploadEdit(edit, getIdProvider) }
+            if (BuildConfig.DEBUG && !UserLoginStatusController.loggedIn)
+                break // slow uploading is much better to read in logs
         }
     } }
 
@@ -73,14 +77,14 @@ class ElementEditsUploader(
                 throw(ConflictException())
             val updates = singleUploader.upload(edit, getIdProvider)
 
-            Log.d(TAG, "Uploaded a $editActionClassName")
+            Log.d(TAG, "Uploaded a $editActionClassName for ${edit.action.elementKeys}")
             uploadedChangeListener?.onUploaded(edit.type.name, edit.position)
 
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
             noteEditsController.updateElementIds(updates.idUpdates)
         } catch (e: ConflictException) {
-            Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
+            Log.d(TAG, "Dropped a $editActionClassName for ${edit.action.elementKeys}: ${e.message}")
             uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
 
             externalSourceQuestController.onSyncEditFailed(edit)

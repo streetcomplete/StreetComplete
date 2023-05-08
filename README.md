@@ -136,6 +136,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
       * Quest presets, including per-preset quest settings
       * Hidden quests
       * All other settings, including quest settings and recently selected answers. Does not export login data.
+* When uploading from a debug build without being logged in, all uploads return fake success without contacting OSM API. This is used for testing parts of the uploader.
 
 Database and preferences files are compatible with StreetComplete, so if you have root privileges you can transfer them in either direction.
 

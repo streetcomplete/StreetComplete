@@ -5,6 +5,7 @@ import android.location.Location
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -87,5 +88,5 @@ Considerations for choosing these values:
 private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
 // "static" values, i.e. persisted per application start
-private var dontShowAgain = false
+private var dontShowAgain = BuildConfig.DEBUG
 private var timesShown = 0

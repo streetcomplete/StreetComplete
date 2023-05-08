@@ -15,7 +15,10 @@ class UserLoginStatusController(
 
     private val listeners: MutableList<UserLoginStatusSource.Listener> = CopyOnWriteArrayList()
 
-    override val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
+    override val isLoggedIn: Boolean get() {
+        loggedIn = oAuthStore.isAuthorized
+        return loggedIn
+    }
 
     fun logIn(consumer: OAuthConsumer) {
         oAuthStore.oAuthConsumer = consumer
@@ -36,5 +39,9 @@ class UserLoginStatusController(
     }
     override fun removeListener(listener: UserLoginStatusSource.Listener) {
         listeners.remove(listener)
+    }
+
+    companion object {
+        var loggedIn = true // used for debugging: allows fake-uploading edits of logged out, always making them as success
     }
 }

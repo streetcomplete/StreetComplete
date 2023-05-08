@@ -32,7 +32,7 @@ class EditHistoryController(
         override fun onAddedEdit(edit: ElementEdit) {
             if (edit.action !is IsRevertAction) onAdded(edit)
         }
-        override fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Collection<Long>) {
+        override fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Boolean) {
             if (edit.action !is IsRevertAction) onSynced(edit, updatedEditIds)
         }
         override fun onSyncedEdit(edit: ElementEdit) {
@@ -153,14 +153,12 @@ class EditHistoryController(
         synchronized(cache) { cache.add(edit) }
         listeners.forEach { it.onAdded(edit) }
     }
-    private fun onSynced(edit: Edit, updatedEditIds: Collection<Long> = emptyList()) {
+    private fun onSynced(edit: Edit, updatedEditIds: Boolean = false) {
         synchronized(cache) {
-            if (edit is ElementEdit && updatedEditIds.isNotEmpty()) {
-                // reload updated edits from elementEditsController
-                cache.removeAll { it is ElementEdit && it.id in updatedEditIds }
-                updatedEditIds.forEach { editId ->
-                    elementEditsController.get(editId)?.let { cache.add(it) }
-                }
+            if (edit is ElementEdit && updatedEditIds) {
+                // reload all ElementEdits, because when updating element ids, new edits are created in elementEditsController
+                cache.removeAll { it is ElementEdit }
+                cache.addAll(elementEditsController.getAll().filter { it.action !is IsRevertAction })
             }
             if (!cache.remove(edit)) // remove first is really important!
                 cache.removeAll { it.key == edit.key } // fallback, never found it triggered
