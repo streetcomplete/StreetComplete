@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -253,19 +254,18 @@ class MapDataWithEditsSource internal constructor(
 
     override fun getWayComplete(id: Long): MapData? = synchronized(this) {
         val way = getWay(id) ?: return null
-        val mapData = getWayElements(way) ?: return null
-        mapData.addAll(listOf(way))
-        return mapData
+        val nodes = getWayNodes(way) ?: return null
+        return MutableMapData(nodes + way)
     }
 
-    private fun getWayElements(way: Way): MutableMapData? = synchronized(this) {
+    private fun getWayNodes(way: Way): Collection<Node>? = synchronized(this) {
         val ids = way.nodeIds.toSet()
         val nodes = getNodes(ids)
 
         /* If the way is (now) not complete, this is not acceptable */
         if (nodes.size < ids.size) return null
 
-        return MutableMapData(nodes)
+        return nodes
     }
 
     private fun getNodes(ids: Set<Long>): Collection<Node> = synchronized(this) {
@@ -385,12 +385,14 @@ class MapDataWithEditsSource internal constructor(
     /* ------------------------------------------------------------------------------------------ */
 
     private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
+        val addWays = ArrayList<Way>()
         for ((key, geometry) in updatedGeometries) {
             // add the modified data if it is in the bbox
             if (geometry != null && geometry.getBounds().intersect(bbox)) {
                 val element = updatedElements[key]
                 if (element != null) {
                     mapData.put(element, geometry)
+                    if (element is Way) addWays.add(element)
                 }
             }
             // or otherwise remove if it is not (anymore)
@@ -401,6 +403,14 @@ class MapDataWithEditsSource internal constructor(
         // and remove elements that have been deleted
         for (key in deletedElements) {
             mapData.remove(key.type, key.id)
+        }
+
+        for (way in addWays) {
+            // It should be possible that a node referred to by a way is missing, as when a node is
+            // removed, it is removed from the way, too
+            val nodes = getWayNodes(way)!!
+            val geometries = nodes.map { ElementGeometryEntry(it.type, it.id, ElementPointGeometry(it.position)) }
+            mapData.putAll(nodes, geometries)
         }
     }
 
@@ -472,8 +482,8 @@ class MapDataWithEditsSource internal constructor(
                 elementGeometryCreator.create(element)
             }
             is Way -> {
-                val wayMapData = getWayElements(element) ?: return null
-                elementGeometryCreator.create(element, wayMapData)
+                val wayNodes = getWayNodes(element) ?: return null
+                elementGeometryCreator.create(element, MutableMapData(wayNodes))
             }
             is Relation -> {
                 val relationMapData = getRelationElements(element)
