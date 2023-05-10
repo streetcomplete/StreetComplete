@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -86,7 +85,7 @@ class LaneNarrowingTrafficCalmingForm :
             .filter(allRoadsFilter)
             .filterIsInstance<Way>()
             .map { way ->
-                val positions = way.nodeIds.map {data.getNode(it)!!.position }
+                val positions = way.nodeIds.map { data.getNode(it)!!.position }
                 way to positions
             }.toList()
     }

@@ -36,7 +36,7 @@ class DownloadedTilesControllerTest {
     }
 
     @Test fun invalidate() {
-        val t = TilePos(0,0)
+        val t = TilePos(0, 0)
         ctrl.invalidate(t)
         verify(dao).updateTime(eq(t), anyLong()) // hm, difficult to test the exact time...
         verify(listener).onUpdated()
@@ -55,7 +55,7 @@ class DownloadedTilesControllerTest {
     }
 
     @Test fun getAll() {
-        val r = listOf(TilePos(0,1))
+        val r = listOf(TilePos(0, 1))
         on(dao.getAll(123)).thenReturn(r)
         assertEquals(r, ctrl.getAll(123))
     }

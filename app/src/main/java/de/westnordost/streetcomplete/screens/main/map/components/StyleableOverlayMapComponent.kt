@@ -78,8 +78,9 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     if (style.stroke.dashed) props["dashed"] = "1"
                     props["color"] = style.stroke.color
                     props["strokeColor"] = getDarkenedColor(style.stroke.color)
-                    if (element.tags["highway"] == "steps")
+                    if (element.tags["highway"] == "steps") {
                         props["steps"] = "1"
+                    }
                 } else if (style.strokeLeft != null || style.strokeRight != null) {
                     // must have a color for the center if left or right is defined because
                     // there are really ugly overlaps in tangram otherwise

@@ -68,9 +68,8 @@ class RevertCreateNodeActionTest {
         on(repos.getWaysForNode(1)).thenReturn(listOf(way(1), way(2), way(3)))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        RevertCreateNodeAction(node, listOf(1,2)).createUpdates(repos, provider)
+        RevertCreateNodeAction(node, listOf(1, 2)).createUpdates(repos, provider)
     }
-
 
     @Test(expected = ConflictException::class)
     fun `conflict when node was moved at all`() {
@@ -103,21 +102,21 @@ class RevertCreateNodeActionTest {
         on(repos.getWaysForNode(1)).thenReturn(listOf(way(1)))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        RevertCreateNodeAction(node, listOf(1,2)).createUpdates(repos, provider)
+        RevertCreateNodeAction(node, listOf(1, 2)).createUpdates(repos, provider)
     }
 
     @Test
     fun `removes to be deleted node from ways`() {
         val node = node(1)
 
-        val way1 = way(1, nodes = listOf(1,2,3), timestamp = 0)
-        val way2 = way(2, nodes = listOf(4,1,6), timestamp = 0)
+        val way1 = way(1, nodes = listOf(1, 2, 3), timestamp = 0)
+        val way2 = way(2, nodes = listOf(4, 1, 6), timestamp = 0)
 
         on(repos.getNode(node.id)).thenReturn(node)
         on(repos.getWaysForNode(1)).thenReturn(listOf(way1, way2))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        val data = RevertCreateNodeAction(node, listOf(1,2,3)).createUpdates(repos, provider)
+        val data = RevertCreateNodeAction(node, listOf(1, 2, 3)).createUpdates(repos, provider)
 
         assertEquals(2, data.modifications.size)
         val updatedWays = data.modifications.toList()
@@ -125,12 +124,12 @@ class RevertCreateNodeActionTest {
         val updatedWay1 = updatedWays[0] as Way
         assertEquals(way1.id, updatedWay1.id)
         assertNotEquals(0, updatedWay1.timestampEdited)
-        assertEquals(listOf<Long>(2,3), updatedWay1.nodeIds)
+        assertEquals(listOf<Long>(2, 3), updatedWay1.nodeIds)
 
         val updatedWay2 = updatedWays[1] as Way
         assertEquals(way2.id, updatedWay2.id)
         assertNotEquals(0, updatedWay2.timestampEdited)
-        assertEquals(listOf<Long>(4,6), updatedWay2.nodeIds)
+        assertEquals(listOf<Long>(4, 6), updatedWay2.nodeIds)
 
         val deletedNode = data.deletions.single() as Node
         assertEquals(node, deletedNode)

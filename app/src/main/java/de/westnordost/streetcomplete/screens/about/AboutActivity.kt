@@ -11,5 +11,4 @@ class AboutActivity : FragmentContainerActivity() {
             replaceMainFragment(TwoPaneAboutFragment())
         }
     }
-
 }

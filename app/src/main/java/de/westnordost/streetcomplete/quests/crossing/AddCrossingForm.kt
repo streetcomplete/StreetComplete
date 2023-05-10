@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
 import de.westnordost.streetcomplete.quests.TextItem
+import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
 
 class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
 

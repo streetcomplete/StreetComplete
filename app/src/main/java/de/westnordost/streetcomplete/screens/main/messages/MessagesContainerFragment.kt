@@ -45,5 +45,4 @@ class MessagesContainerFragment : Fragment(R.layout.fragment_messages_container)
             }
         }
     }
-
 }
