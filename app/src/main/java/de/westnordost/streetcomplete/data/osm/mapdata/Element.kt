@@ -10,6 +10,7 @@ sealed class Element {
     abstract val tags: Map<String, String>
     abstract val timestampEdited: Long
     abstract val type: ElementType
+    abstract val key: ElementKey
 }
 
 @Serializable
@@ -23,6 +24,7 @@ data class Node(
 ) : Element() {
     @SerialName("elementType")
     override val type get() = ElementType.NODE
+    override val key: ElementKey = ElementKey(ElementType.NODE, id)
 }
 
 @Serializable
@@ -36,6 +38,7 @@ data class Way(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.WAY
+    override val key: ElementKey = ElementKey(ElementType.WAY, id)
 
     val isClosed get() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
 }
@@ -51,6 +54,7 @@ data class Relation(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.RELATION
+    override val key: ElementKey = ElementKey(ElementType.RELATION, id)
 }
 
 @Serializable
