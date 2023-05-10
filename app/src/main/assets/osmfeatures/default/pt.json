@@ -769,7 +769,12 @@
                     "label": "Horário de recolha"
                 },
                 "collector": {
-                    "label": "Itens"
+                    "label": "Itens",
+                    "options": {
+                        "coins": "Moedas",
+                        "comics": "Banda desenhada",
+                        "stamps": "Selos"
+                    }
                 },
                 "colour": {
                     "label": "Cor",
@@ -790,10 +795,23 @@
                     "label": "Tipo"
                 },
                 "consulate": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "consular_agency": "Agência consular",
+                        "consular_office": "Escritório de serviços consulares",
+                        "consulate_general": "Consulado geral",
+                        "honorary_consul": "Cônsul honorário",
+                        "residence": "Residência oficial do cônsul",
+                        "yes": "Consulado"
+                    }
                 },
                 "consulting": {
                     "label": "Especialidade"
+                },
+                "contact/facebook": {
+                    "label": "Nome de utilizador ou URL do Facebook",
+                    "placeholder": "https://www.facebook.com/empresa",
+                    "terms": "facebook,meta,rede social,redes sociais,contacto,contato"
                 },
                 "contact/webcam": {
                     "label": "URL da câmara web",
@@ -1005,8 +1023,10 @@
                         "coffee_shop": "Serve café",
                         "dessert": "Sobremesas",
                         "donut": "Donuts",
+                        "filipino": "Filipina",
                         "fish": "Peixe",
                         "french": "Francesa",
+                        "georgian": "Georgiana",
                         "german": "Alemã",
                         "greek": "Grega",
                         "hot_dog": "Cachorros-quentes",
@@ -1023,6 +1043,7 @@
                         "mexican": "Mexicana",
                         "pankcake": "Panquecas",
                         "pasta": "Massas",
+                        "peruvian": "Peruana",
                         "pizza": "Piza",
                         "polish": "Polaca",
                         "portuguese": "Portuguesa",
@@ -1035,8 +1056,10 @@
                         "steak_house": "Steakhouse",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesa",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Tailandesa",
                         "turkish": "Turca",
+                        "ukrainian": "Ucraniana",
                         "vietnamese": "Vietnamita"
                     },
                     "terms": "gastronomias,pratos,tipos de comida,culinárias"
@@ -1188,7 +1211,12 @@
                     "terms": "dietas"
                 },
                 "diplomatic": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "consulate": "Consulado",
+                        "embassy": "Embaixada",
+                        "liaison": "Gabinete de ligação"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Serviços"
@@ -1253,7 +1281,12 @@
                     "label": "Tipo"
                 },
                 "dock": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "drydock": "Doca seca",
+                        "floating": "Doca seca flutuante",
+                        "tidal": "Doca de maré"
+                    }
                 },
                 "dog": {
                     "label": "Cães",
@@ -1317,6 +1350,7 @@
                 "embassy": {
                     "label": "Tipo",
                     "options": {
+                        "branch_embassy": "Ramo de embaixada",
                         "delegation": "Delegação",
                         "high_commission": "Alto comissariado",
                         "mission": "Missão diplomática",
@@ -1944,7 +1978,8 @@
                     "terms": "intersecção,interseção,cruzamento"
                 },
                 "kerb": {
-                    "label": "Lancil"
+                    "label": "Lancil",
+                    "terms": "lancil,meio-fio,berma"
                 },
                 "kerb/height": {
                     "label": "Altura"
@@ -1954,7 +1989,12 @@
                     "terms": "cozinha,cozinhar"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Tipos de piscinas"
+                    "label": "Tipos de piscinas",
+                    "options": {
+                        "arm": "Braços",
+                        "face": "Rosto",
+                        "foot": "Pés"
+                    }
                 },
                 "label": {
                     "label": "Rótulo"
@@ -2444,6 +2484,9 @@
                     },
                     "terms": "produtos naturais,biológicos,sem ogm"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Orientação"
+                },
                 "outdoor_seating": {
                     "label": "Cadeiras exteriores",
                     "terms": "lugares externos,esplanada,bancos,ar livre"
@@ -2486,11 +2529,13 @@
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Orientação",
                     "options": {
                         "diagonal": "Diagonal em relação à rua",
                         "parallel": "Paralelo em relação à rua",
                         "perpendicular": "Perpendicular em relação à rua"
                     },
+                    "terms": "orientation,posição,direção,inclinação,parqueamento,estacionar,estacionamento,parquear",
                     "types": {
                         "parking:left:orientation": "Lado esquerdo",
                         "parking:right:orientation": "Lado direito"
@@ -3305,7 +3350,7 @@
                         "cycling": "Ciclismo",
                         "disc_golf": "Golfe de disco",
                         "dog_racing": "Corridas de cães",
-                        "equestrian": "Hipismo",
+                        "equestrian": "Desportos equestres",
                         "fitness": "Fitness",
                         "free_flying": "Voo livre",
                         "futsal": "Futsal",
@@ -3339,17 +3384,17 @@
                         "volleyball": "Voleibol"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "Desportos"
                 },
-                "sport_pub": {
-                    "label": "Desportos",
-                    "terms": "sport,esporte,modalidades,desporto,desportivo"
+                "sport/sport_pub": {
+                    "label": "Desporto",
+                    "terms": "sport,modalidade,desportivo,desportivas,esporte,esportivo"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "Desportos"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "Desportos"
                 },
                 "stars": {
@@ -4206,7 +4251,8 @@
                 },
                 "amenity/bbq": {
                     "name": "Grelhador",
-                    "terms": "grill,barbacue,carne assada,churrasqueira,churrasco"
+                    "terms": "grill,barbacue,carne assada,churrasqueira,churrasco",
+                    "aliases": "Assador\nChurrasqueira\nBarbecue\nGrill\nBBQ"
                 },
                 "amenity/bench": {
                     "name": "Banco",
@@ -4327,6 +4373,10 @@
                     "name": "Relógio de sol",
                     "terms": "relógio,sol,solar,relógio solar,relógios solares"
                 },
+                "amenity/college": {
+                    "name": "Centro de formação tecnológica",
+                    "terms": "educação,escolar,instituto,colégio,especialização,cet,superior,cursos,tecnológicos,qualificações,educar,escola"
+                },
                 "amenity/community_centre": {
                     "name": "Centro comunitário",
                     "terms": "community center,espaço social,centro social"
@@ -4395,8 +4445,7 @@
                     "terms": "cuidados de saúde primários,atenção primária à saúde,cuidados primários,médico de cuidados primários"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Ginecologista",
-                    "terms": "medicina,médico,ginecológico,ginecologia,médica,consultório"
+                    "name": "Ginecologista / Obstetra"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hematologista",
@@ -4624,8 +4673,8 @@
                     "terms": "preschool,kindergarten,grounds,pré-escola,pré escola,creche,jardim de infância,jardim-de-infância,jardim infantil,pré-escolar,infantário"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Balneário Kneippiano",
-                    "terms": "termas,balneário,kneippiano,kneipp"
+                    "name": "Espaço de terapia Kneipp",
+                    "terms": "kneipp,hidroterapia,kneippismo,banho"
                 },
                 "amenity/language_school": {
                     "name": "Escola de línguas",
@@ -4905,6 +4954,10 @@
                     "name": "Restaurante francês",
                     "terms": "restaurante de comida francesa,restaurante,comida francesa,francesa,francês,cozinha francesa"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Restaurante georgiano",
+                    "terms": "comida,repasto,comer,jantar,almoço,geórgia,georgia,georgian,alimentação,alimentar,lanche,lanchar"
+                },
                 "amenity/restaurant/german": {
                     "name": "Restaurante alemão",
                     "terms": "restaurante de comida alemã,restaurante,comida alemã,alemã,cozinha alemã,alemão"
@@ -4964,6 +5017,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Restaurante turco",
                     "terms": "restaurante de comida turca,comida turca,cozinha turca,turco,turca"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Restaurante ucraniano",
+                    "terms": "comida,repasto,comer,jantar,almoço,ucrânia,ukraine,alimentação,alimentar,lanche,lanchar"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Restaurante vietnamita",
@@ -5454,6 +5511,10 @@
                     "name": "Cancela elevatória",
                     "terms": "boom gate,lift,barreita,pivoted,barra,braço,passagem,passar"
                 },
+                "barrier/log": {
+                    "name": "Tronco",
+                    "terms": "árvore,caída,tombada,obstrução,obstáculo,tree,fallen"
+                },
                 "barrier/motorcycle_barrier": {
                     "name": "Barreira para motas",
                     "terms": "motos,motas,motocicleta,motorcycle"
@@ -5527,6 +5588,10 @@
                     "name": "Edifício",
                     "terms": "edifício,prédio,moradia,residência,casa,habitação,edificação,edificado,arranha céu,arranha-céu"
                 },
+                "building/allotment_house": {
+                    "name": "Casa de jardim",
+                    "terms": "edifício,allotment,casa,horta,rural,quintal"
+                },
                 "building/apartments": {
                     "name": "Edifício de apartamentos",
                     "terms": "edifício,apartamento,prédio,habitações,edificação,edificado,arranha céu,arranha-céu"
@@ -5569,6 +5634,9 @@
                 "building/civic": {
                     "name": "Edifício cívico",
                     "terms": "civil,centro cívico"
+                },
+                "building/college": {
+                    "terms": "edifício,escolar"
                 },
                 "building/commercial": {
                     "name": "Edifício empresarial",
@@ -5772,6 +5840,10 @@
                 "club": {
                     "name": "Clube/Associação",
                     "terms": "club,clube,aeromodelismo,radioamador,filatelia,xadrez,astronomia,automobilismo,associação,fã-clube,fã,templo maçónico,maçonaria,maçom,caça,moto clube,nudismo,fotografia,escoteiro,escotismo,hobby,escutismo,escuteiros,escoteiros,grupo,recreativo,desportivo,cultural,social"
+                },
+                "club/scout": {
+                    "name": "Grupo de escuteiros",
+                    "terms": "scout,escuteiros,escoteiros,escutismo,escotismo,baden"
                 },
                 "club/sport": {
                     "name": "Clube desportivo",
@@ -6054,6 +6126,10 @@
                 "emergency/fire_hydrant": {
                     "name": "Boca de incêndio",
                     "terms": "hidrante,marco de água,marco de incêndio,fogo,chamas,extintor"
+                },
+                "emergency/fire_service_inlet": {
+                    "name": "Válvula para bombeiros",
+                    "terms": "boca,edifício,incêndio,fogo,bombeiros,sprinkler,aspersor,combate,hidrante,inlet,torneira,standpipe,tubo,canalização"
                 },
                 "emergency/first_aid_kit": {
                     "name": "Caixa de primeiros socorros",
@@ -9261,6 +9337,10 @@
                 },
                 "shop/hobby": {
                     "name": "Loja de modelismo"
+                },
+                "shop/honey": {
+                    "name": "Loja de mel",
+                    "terms": "honey,mel,abelhas,apicultura"
                 },
                 "shop/household_linen": {
                     "name": "Loja de têxteis para o lar",

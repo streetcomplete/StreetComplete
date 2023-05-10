@@ -1845,15 +1845,6 @@
                 "sport": {
                     "label": "Deportes"
                 },
-                "sport_ice": {
-                    "label": "Deportes"
-                },
-                "sport_racing_motor": {
-                    "label": "Deportes"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Deportes"
-                },
                 "stars": {
                     "label": "Estrelas"
                 },
@@ -2672,10 +2663,6 @@
                 "amenity/kindergarten": {
                     "name": "Área escolar infantil",
                     "terms": "preescolar,xardín de infancia,guardería,infantil,párvulos,garderia,gardería,gardaria,parvulos,gardaría,párvulo,xardin de infancia,xardín infantil,xardin infantil,zona,area,área,escola infantil"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Augas termais Kneipp",
-                    "terms": "cura,kneipp,kneippiano,auga,agua,hidroterapia,termas,balneario,terma"
                 },
                 "amenity/language_school": {
                     "name": "Escola de idiomas",

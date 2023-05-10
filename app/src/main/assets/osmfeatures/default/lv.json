@@ -943,15 +943,6 @@
                 "sport": {
                     "label": "Sports"
                 },
-                "sport_ice": {
-                    "label": "Sports"
-                },
-                "sport_racing_motor": {
-                    "label": "Sports"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sports"
-                },
                 "start_date": {
                     "label": "Sākuma datums"
                 },

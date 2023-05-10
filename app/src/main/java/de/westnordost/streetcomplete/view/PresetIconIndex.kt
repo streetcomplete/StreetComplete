@@ -249,6 +249,7 @@ val presetIconIndex = mapOf(
     "ic_preset_maki_horse_riding" to R.drawable.ic_preset_maki_horse_riding,
     "ic_preset_maki_hospital" to R.drawable.ic_preset_maki_hospital,
     "ic_preset_maki_hot_spring" to R.drawable.ic_preset_maki_hot_spring,
+    "ic_preset_maki_ice_cream" to R.drawable.ic_preset_maki_ice_cream,
     "ic_preset_maki_industry" to R.drawable.ic_preset_maki_industry,
     "ic_preset_maki_information" to R.drawable.ic_preset_maki_information,
     "ic_preset_maki_jewelry_store" to R.drawable.ic_preset_maki_jewelry_store,

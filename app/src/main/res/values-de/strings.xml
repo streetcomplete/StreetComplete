@@ -1319,13 +1319,19 @@ Jetzt verschieben?"</string>
     <string name="quest_crossing_yes">"Ja (der Bordstein ist z.B. abgesenkt oder es gibt Markierungen)"</string>
     <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
+    <string name="quest_hairdresser_title">"Welche Kunden hat dieser Frisör?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
     <string name="quest_hairdresser_female_only">"Frauen"</string>
     <string name="quest_hairdresser_male_only">"Männer"</string>
     <string name="quest_hairdresser_not_signed">"Nicht beschildert"</string>
+    <string name="quest_amenityCover_title">"Ist das hier überdacht (regengeschützt)?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Fahrbahnverengung"</string>
     <string name="lane_narrowing_traffic_calming_island">"Verkehrsinsel"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Schikane"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Fahrbahnverengung + Verkehrsinsel"</string>
     <string name="lane_narrowing_traffic_calming_none">"Hier keinerlei Fahrbahnversatz"</string>
+    <string name="quest_tactilePaving_title_steps">"Gibt es für diese Treppe oben und unten eine taktile Pflasterung für Blinde?"</string>
+    <string name="quest_tactilePaving_steps_top">"Nur oben"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Nur unten"</string>
+    <string name="overlay_addresses_no_entrance">"Ist kein Eingang…"</string>
 </resources>

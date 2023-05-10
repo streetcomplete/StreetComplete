@@ -331,6 +331,9 @@
                         "fence": "Kerítés",
                         "gate": "Kapu",
                         "height_restrictor": "Magasságkorlátozó",
+                        "kissing_gate": "Lengőkapu",
+                        "lift_gate": "Sorompó",
+                        "swing_gate": "Forgó sorompó",
                         "wall": "Fal"
                     }
                 },
@@ -827,7 +830,7 @@
                 "crossing": {
                     "label": "Típus",
                     "options": {
-                        "traffic_signals": "Lámpás útkereszteződés"
+                        "traffic_signals": "Lámpás gyalogosátkelő"
                     }
                 },
                 "crossing/barrier": {
@@ -850,6 +853,7 @@
                     "label": "Fényjelzés"
                 },
                 "crossing/markings": {
+                    "label": "Átkelőjelzések",
                     "options": {
                         "no": "Jelöletlen"
                     }
@@ -2750,18 +2754,6 @@
                 "sport": {
                     "label": "Sport"
                 },
-                "sport_ice": {
-                    "label": "Sport"
-                },
-                "sport_pub": {
-                    "label": "Sport"
-                },
-                "sport_racing_motor": {
-                    "label": "Sport"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sport"
-                },
                 "stars": {
                     "label": "Csillagok",
                     "terms": "michelin-csillag,szállodai csillag"
@@ -3687,10 +3679,6 @@
                     "name": "Orvosi rendelő",
                     "terms": "doktor,orvos,szakorvos,rendelő,háziorvos,gyerekorvos"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Nőgyógyászat",
-                    "terms": "nőorvos"
-                },
                 "amenity/dojo": {
                     "name": "Harcművészeti edzőterem / dodzso",
                     "terms": "kick-box,karate,kung fu,aikido,taekwando,judo,jujitsu,kendo,capoeira,dzsudo,baranta,zenbukan,kempo,boksz,krav maga,csikung,vusu,saolin,kungfu"
@@ -3821,10 +3809,6 @@
                 "amenity/kindergarten": {
                     "name": "Óvoda / óvodai terület",
                     "terms": "iskolai előkészítő területe,óvoda terület,ovi terület,bölcsőde terület,kisdedóvó terület"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Kneipp-medence",
-                    "terms": "hidroterápia,vízgyógyászat"
                 },
                 "amenity/language_school": {
                     "name": "Nyelviskola",
@@ -4121,6 +4105,9 @@
                     "name": "Japán étterem",
                     "terms": "japán étterem,szusi"
                 },
+                "amenity/restaurant/korean": {
+                    "name": "Koreai étterem"
+                },
                 "amenity/restaurant/mexican": {
                     "name": "Mexikói étterem",
                     "terms": "mexikói étterem,tortilla,taco,chilli,quesadilla"
@@ -4136,6 +4123,9 @@
                     "name": "Tengeri ételek étterme",
                     "terms": "halvendéglő"
                 },
+                "amenity/restaurant/spanish": {
+                    "name": "Spanyol étterem"
+                },
                 "amenity/restaurant/steakhouse": {
                     "name": "Bifsztek étterem",
                     "terms": "marhahús"
@@ -4149,6 +4139,9 @@
                 },
                 "amenity/restaurant/turkish": {
                     "name": "Török étterem"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrán étterem"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnámi étterem"
@@ -4214,6 +4207,9 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Ápolóotthon",
                     "terms": "öregek otthona,fogyatékosok otthona"
+                },
+                "amenity/stripclub": {
+                    "name": "Sztriptízbár"
                 },
                 "amenity/studio": {
                     "name": "Stúdió",
@@ -4587,6 +4583,9 @@
                     "name": "Lengőkapu",
                     "terms": "ütközős csapóajtó"
                 },
+                "barrier/lift_gate": {
+                    "name": "Sorompó"
+                },
                 "barrier/planter": {
                     "name": "Virágláda (akadály)"
                 },
@@ -4608,7 +4607,8 @@
                     "terms": "létra"
                 },
                 "barrier/swing_gate": {
-                    "name": "Elforduló sorompó"
+                    "name": "Elforduló sorompó",
+                    "terms": "forgó sorompó"
                 },
                 "barrier/toll_booth": {
                     "name": "Útdíjfizető-kapu",
@@ -5359,11 +5359,11 @@
                     "name": "Gyalogosátkelő"
                 },
                 "highway/crossing/traffic_signals": {
-                    "name": "Jelzőlámpás gyalogátkelőhely"
+                    "name": "Jelzőlámpás gyalogosátkelő"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "Jelzett kereszteződés",
-                    "aliases": "Jelölt kereszteződés\nJelzett gyalogátkelő\nJelölt gyalogátkelő"
+                    "name": "Jelzett gyalogosátkelő",
+                    "aliases": "Jelzett gyalogátkelő\nJelölt gyalogosátkelő\nJelölt gyalogátkelő"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"
@@ -5376,13 +5376,20 @@
                     "name": "Gyalog- és kerékpárút"
                 },
                 "highway/cycleway/crossing": {
-                    "name": "Kerékpárosátkelő"
+                    "name": "Kerékpáros-átkelő"
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
-                    "name": "Gyalogos- és kerékpárosátkelő"
+                    "name": "Gyalogos- és kerékpáros-átkelő"
+                },
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "Lámpás kerékpáros-átkelő"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
+                    "name": "Jelzett kerékpáros-átkelő",
+                    "aliases": "Jelölt kerékpáros-átkelő"
                 },
                 "highway/cycleway/crossing/unmarked": {
-                    "name": "Nem jelölt kerékpárosátkelő"
+                    "name": "Nem jelölt kerékpáros-átkelő"
                 },
                 "highway/elevator": {
                     "name": "Lift",
@@ -5412,9 +5419,12 @@
                 "highway/footway/crossing": {
                     "name": "Gyalogosátkelő"
                 },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "Gyalogosátkelő gyalogos jelzésekkel"
+                },
                 "highway/footway/crossing/uncontrolled": {
-                    "name": "Jelzett kereszteződés",
-                    "aliases": "Jelölt kereszteződés\nJelzett gyalogátkelő\nJelölt gyalogátkelő"
+                    "name": "Jelzett gyalogosátkelő",
+                    "aliases": "Jelölt gyalogosátkelő"
                 },
                 "highway/footway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"

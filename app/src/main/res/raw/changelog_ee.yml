@@ -1,10 +1,10 @@
 v53.0: |
   <ul>
-  <li>Re-worked way of inserting a node:
+  <li>Re-worked inserting a node into way:
   <ul>
-  <li>Existing nodes at insert position are now re-used (if it has tags, they are shown)</li>
+  <li>Existing node at insert position are is re-used (if it has tags, they are shown)</li>
   <li>New nodes can be inserted into multiple ways if they are overlapping or crossing</li>
-  <li>For overlapping ways, you can choose to not include the node in particular ways (e.g. avoid inserting a crossing into residential area overlapping a road)</li>
+  <li>For overlapping ways, you can choose to which ways the node is added (e.g. avoid inserting a crossing into residential area overlapping a road)</li>
   </ul></li>
   <li>Allow to avoid auto-showing keyboard when adding a poi</li>
   <li>Small fixes and improvements</li>

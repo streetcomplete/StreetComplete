@@ -158,6 +158,9 @@
                         "exit": "Keluar"
                     }
                 },
+                "aerialway/bubble": {
+                    "label": "Gelembung"
+                },
                 "aerialway/capacity": {
                     "label": "Kapasitas (per jam)",
                     "placeholder": "500, 2500, 5000..."
@@ -236,7 +239,10 @@
                     "label": "Bar"
                 },
                 "barrier": {
-                    "label": "Tipe"
+                    "label": "Tipe",
+                    "options": {
+                        "hedge": "Pagar Tanaman"
+                    }
                 },
                 "basin": {
                     "label": "Tipe"
@@ -650,8 +656,8 @@
                     "label": "Bisa diminum"
                 },
                 "drive_through": {
-                    "label": "Kendara-Lewat",
-                    "terms": "kendara lewat\ndrive-through\ndrive-thru\nberkendara melewati"
+                    "label": "Layanan Tanpa Turun\nLantatur",
+                    "terms": "layanan tanpa turun,pelayanan mobil,pelayanan kendaraan"
                 },
                 "duration": {
                     "label": "Durasi",
@@ -693,7 +699,10 @@
                     "label": "Tipe"
                 },
                 "entrance": {
-                    "label": "Tipe"
+                    "label": "Tipe",
+                    "options": {
+                        "emergency": "Pintu Keluar Darurat"
+                    }
                 },
                 "except": {
                     "label": "Pengecualian"
@@ -822,7 +831,10 @@
                     "terms": "pegangan tangan,rel tangan,pagar tangga,pagar"
                 },
                 "healthcare/speciality": {
-                    "label": "Keahlian"
+                    "label": "Keahlian",
+                    "options": {
+                        "emergency": "Obat-obatan Darurat"
+                    }
                 },
                 "height": {
                     "label": "Tinggi (Meter)"
@@ -877,6 +889,10 @@
                         "down": "Bawah",
                         "up": "Atas"
                     }
+                },
+                "indoor": {
+                    "label": "Dalam Ruangan",
+                    "terms": "dalam ruangan,dalam bangunan"
                 },
                 "informal": {
                     "label": "Tidak formal"
@@ -958,6 +974,7 @@
                 },
                 "location_pool": {
                     "options": {
+                        "indoor": "Dalam Ruangan",
                         "outdoor": "Luar Ruangan",
                         "roof": "Atap"
                     }
@@ -1116,11 +1133,18 @@
                 "route_master": {
                     "label": "Tipe"
                 },
+                "sac_scale": {
+                    "label": "Kesulitan Mendaki"
+                },
                 "seasonal": {
                     "label": "Musiman"
                 },
                 "service": {
-                    "label": "Tipe"
+                    "label": "Tipe",
+                    "options": {
+                        "drive-through": "Layanan Tanpa Turun\nLantatur",
+                        "emergency_access": "Akses Darurat"
+                    }
                 },
                 "service_rail": {
                     "label": "Jenis pelayanan",
@@ -1173,6 +1197,9 @@
                     },
                     "placeholder": "Tak Diketahui"
                 },
+                "supervised": {
+                    "label": "Diawasi"
+                },
                 "surface": {
                     "label": "Permukaan"
                 },
@@ -1208,6 +1235,7 @@
                     "placeholder": "Padat, Kebanyakan Padat, Lembut..."
                 },
                 "trail_visibility": {
+                    "label": "Visibilitas Jejak",
                     "placeholder": "Terbaik, Baik, Buruk..."
                 },
                 "trees": {
@@ -1251,8 +1279,9 @@
                     "name": "Fitur Landasan Udara"
                 },
                 "aeroway/aerodrome": {
-                    "name": "Bandar udara",
-                    "terms": "bandara,lapangan terbang"
+                    "name": "Bandar Udara",
+                    "terms": "bandara,lapangan terbang",
+                    "aliases": "Bandara"
                 },
                 "aeroway/gate": {
                     "name": "Gerbang Bandara",
@@ -1262,8 +1291,9 @@
                     "name": "Hanggar"
                 },
                 "aeroway/helipad": {
-                    "name": "Helipad",
-                    "terms": "helikopter,pendaratan helikopter,bandar helikopter"
+                    "name": "Pendaratan Helikopter",
+                    "terms": "helikopter,pendaratan helikopter,bandar helikopter",
+                    "aliases": "Helipad"
                 },
                 "aeroway/runway": {
                     "name": "Landas pacu"
@@ -1324,6 +1354,9 @@
                 "amenity/car_rental": {
                     "name": "Penyewaan Mobil",
                     "terms": "penyewaan mobil"
+                },
+                "amenity/car_sharing": {
+                    "name": "Stasiun Berbagi Mobil"
                 },
                 "amenity/car_wash": {
                     "name": "Pencucian Mobil",
@@ -1487,7 +1520,9 @@
                     "terms": "teater"
                 },
                 "amenity/toilets": {
-                    "name": "Kamar Kecil,Kamar Mandi,Toilet"
+                    "name": "Toilet",
+                    "terms": "kamar kecil,kamar mandi,toilet",
+                    "aliases": "Kamar Kecil\nKamar Mandi"
                 },
                 "amenity/townhall": {
                     "name": "Balai Kota",
@@ -1537,14 +1572,16 @@
                     "name": "Gerbang"
                 },
                 "barrier/hedge": {
-                    "name": "Tanaman pagar",
-                    "aliases": "Pagar hidup"
+                    "name": "Pagar Tanaman"
                 },
                 "barrier/kissing_gate": {
                     "name": "Gerbang pertemuan"
                 },
+                "barrier/lift_gate": {
+                    "name": "Palang"
+                },
                 "barrier/retaining_wall": {
-                    "name": "Dinding penahan"
+                    "name": "Dinding Penahan"
                 },
                 "barrier/toll_booth": {
                     "name": "Gerbang Tol"
@@ -1556,7 +1593,12 @@
                     "name": "Batas Administrasi"
                 },
                 "building": {
-                    "name": "Bangunan"
+                    "name": "Bangunan",
+                    "terms": "bangunan,struktur,gedung"
+                },
+                "building/apartments": {
+                    "name": "Bangunan Apartemen",
+                    "aliases": "Gedung Apartemen"
                 },
                 "building/barn": {
                     "name": "Lumbung"
@@ -1599,7 +1641,8 @@
                     "name": "Bangunan Hotel"
                 },
                 "building/house": {
-                    "name": "Rumah"
+                    "name": "Rumah",
+                    "terms": "rumah,keluarga,perumahan"
                 },
                 "building/hut": {
                     "name": "Gubuk"
@@ -1729,28 +1772,81 @@
                     "name": "Penghasil Anggur",
                     "terms": "minuman keras,miras,alkohol"
                 },
+                "emergency": {
+                    "name": "Fitur Kedaruratan"
+                },
                 "emergency/ambulance_station": {
                     "name": "Pos Ambulans",
                     "terms": "ambulan"
+                },
+                "emergency/assembly_point": {
+                    "name": "Titik Kumpul Darurat",
+                    "terms": "titik kumpul darurat,titik pertemuan,titik kumpul gempa,titik kumpul tsunami",
+                    "aliases": "Titik Kumpul Gempa\nTitik Kumpul Tsunami"
+                },
+                "emergency/designated": {
+                    "name": "Akses Darurat Khusus"
+                },
+                "emergency/destination": {
+                    "name": "Destinasi Akses Darurat"
                 },
                 "emergency/fire_hydrant": {
                     "name": "Keran Pemadam Kebakaran",
                     "terms": "hidran,pompa air"
                 },
+                "emergency/landing_site": {
+                    "name": "Tempat Pendaratan Darurat",
+                    "terms": "tempat pendaratan darurat"
+                },
+                "emergency/no": {
+                    "name": "Tak Ada Akses Darurat"
+                },
+                "emergency/official": {
+                    "name": "Akses Darurat Resmi"
+                },
                 "emergency/phone": {
                     "name": "Telepon Darurat"
                 },
+                "emergency/private": {
+                    "name": "Akses Darurat Pribadi"
+                },
+                "emergency/water_reservoir": {
+                    "name": "Waduk Darurat",
+                    "terms": "waduk darurat,pemadan kebakaran"
+                },
+                "emergency/water_reservoir_covered": {
+                    "name": "Waduk Darurat (Bawah Tanah)",
+                    "terms": "waduk,darurat,pemadam kebakaran"
+                },
+                "emergency/water_tank": {
+                    "name": "Tangki Air Darurat",
+                    "terms": "tangki air darurat,pemadam kebakaran,pemadam api"
+                },
+                "emergency/yes": {
+                    "name": "Terdapat Akses Darurat"
+                },
                 "entrance": {
                     "name": "Pintu Masuk / Keluar"
+                },
+                "entrance/emergency": {
+                    "name": "Pintu Keluar Darurat",
+                    "terms": "pintu keluar darurat,pintu kebakaran,pintu,kedaruratan,pintu keselamatan"
+                },
+                "entrance/emergency_ward_entrance": {
+                    "name": "Pintu Masuk Ruang Kedaruratan",
+                    "terms": "pintu masuk ruang kedaruratan,ruangan kedaruratan,departemen kecelakaan & kedarutatan"
                 },
                 "ford": {
                     "name": "Ford"
                 },
                 "golf/fairway": {
-                    "name": "Jalan damai"
+                    "name": "Jalur Golf"
+                },
+                "golf/green": {
+                    "name": "Lapangan Rumput Datar"
                 },
                 "golf/hole": {
-                    "name": "Lubang golf"
+                    "name": "Lubang Golf"
                 },
                 "highway": {
                     "name": "Fitur Jalan Raya"
@@ -1763,10 +1859,25 @@
                     "name": "Perhentian Bus"
                 },
                 "highway/corridor": {
-                    "name": "Lorong dalam"
+                    "name": "Selasar dalam Ruangan",
+                    "terms": "selasar,lorong",
+                    "aliases": "Lorong dalam Ruangan"
                 },
                 "highway/cycleway": {
                     "name": "Jalur Sepeda"
+                },
+                "highway/emergency_access_point": {
+                    "name": "Titik Akses Darurat",
+                    "terms": "titik akses darurat,penyelamatan,penanda darurat"
+                },
+                "highway/emergency_bay": {
+                    "name": "Tempat Berhenti Darurat",
+                    "terms": "tempat berhenti darurat,tempat stop darurat,tempat mobil berhenti"
+                },
+                "highway/escape": {
+                    "name": "Jalur Penyelamat Rem Blong",
+                    "terms": "jalur rem blong,jalur penyelamat,jalur darurat rem blong",
+                    "aliases": "Jalur Rem Blong\nEmergency Safety Area"
                 },
                 "highway/footway": {
                     "name": "Jalur Pejalan Kaki",
@@ -1830,9 +1941,9 @@
                     "terms": "gang"
                 },
                 "highway/service/drive-through": {
-                    "name": "kendara lewat",
-                    "terms": "layanan tanpa turun,lantatur",
-                    "aliases": "drive-through\ndrive-thru\nberkendara melewati"
+                    "name": "Layanan Tanpa Turun",
+                    "terms": "layanan tanpa turun,pelayanan mobil,pelayanan kendaraan",
+                    "aliases": "Lantatur"
                 },
                 "highway/service/driveway": {
                     "name": "Jalan Masuk",
@@ -1867,6 +1978,9 @@
                 "highway/tertiary_link": {
                     "name": "Jalan Penghubung Tersier",
                     "terms": "jalan penghubung tersier"
+                },
+                "highway/track": {
+                    "name": "Jalur / Jalan Akses Lahan"
                 },
                 "highway/traffic_signals": {
                     "name": "Lampu Lalu lintas",
@@ -1924,8 +2038,41 @@
                     "name": "Kuil Pinggir Jalan",
                     "terms": "kuil pinggir jalan"
                 },
+                "indoor": {
+                    "name": "Fitur dalam Ruangan"
+                },
+                "indoor/area": {
+                    "name": "Wilayah dalam Ruangan",
+                    "terms": "ruang dalam ruangan,area dalam ruangan,wilayah dalam ruangan",
+                    "aliases": "Area dalam Ruangan"
+                },
+                "indoor/corridor": {
+                    "name": "Selasar dalam Ruangan",
+                    "terms": "selasar,lorong",
+                    "aliases": "Lorong dalam Ruangan"
+                },
+                "indoor/corridor_line": {
+                    "name": "Selasar dalam Ruangan",
+                    "aliases": "Lorong dalam Ruangan"
+                },
+                "indoor/door": {
+                    "name": "Pintu dalam Ruangan",
+                    "terms": "pintu dalam ruangan,akses ruangan,pintu ruang"
+                },
+                "indoor/elevator": {
+                    "name": "Elevator dalam Ruangan",
+                    "terms": "elevator,lift"
+                },
                 "indoor/room": {
                     "name": "Ruangan"
+                },
+                "indoor/stairs": {
+                    "name": "Tangga dalam Ruangan",
+                    "terms": "tangga"
+                },
+                "indoor/wall": {
+                    "name": "Dinding dalam Ruangan",
+                    "terms": "penghalang dalam ruangan,dinding dalam ruangan"
                 },
                 "junction": {
                     "name": "Persimpangan",
@@ -1933,6 +2080,9 @@
                 },
                 "landuse": {
                     "name": "Fitur Lahan"
+                },
+                "landuse/allotments": {
+                    "name": "Bidang Tanah Kebun Komunitas"
                 },
                 "landuse/basin": {
                     "name": "Cekungan"
@@ -2022,6 +2172,9 @@
                 "leisure/dog_park": {
                     "name": "Taman Anjing"
                 },
+                "leisure/escape_game": {
+                    "name": "Ruangan Melarikan Diri (Permainan)"
+                },
                 "leisure/garden": {
                     "name": "Kebun",
                     "terms": "kebun"
@@ -2033,6 +2186,10 @@
                 "leisure/ice_rink": {
                     "name": "Arena Seluncur Es",
                     "terms": "ice skating"
+                },
+                "leisure/indoor_play": {
+                    "name": "Tempat Bermain dalam Ruangan",
+                    "terms": "tempat bermain dalam ruangan,anak-anak"
                 },
                 "leisure/marina": {
                     "name": "Marina",
@@ -2084,6 +2241,10 @@
                 "leisure/playground": {
                     "name": "Lapangan Bermain",
                     "terms": "tempat bermain"
+                },
+                "leisure/playground/indoor": {
+                    "name": "Lapangan Bermain dalam Ruangan",
+                    "terms": "lapangan bermain dalam ruangan"
                 },
                 "leisure/slipway": {
                     "name": "Slipway",
@@ -2330,12 +2491,18 @@
                     "name": "Monorel",
                     "aliases": "Rel Mono\nRel Monorel\nRel Tunggal\nTrek Rel Mono"
                 },
+                "railway/platform": {
+                    "name": "Platform Kereta"
+                },
                 "railway/rail": {
                     "name": "Rel Kereta",
                     "aliases": "Trek Kereta"
                 },
+                "railway/station": {
+                    "name": "Stasiun Kereta"
+                },
                 "railway/subway": {
-                    "name": "Rel kereta bawah tanah",
+                    "name": "Rel Kereta Bawah Tanah",
                     "aliases": "Rel Subway\nTrek Subway"
                 },
                 "railway/subway_entrance": {
@@ -2401,7 +2568,8 @@
                     "name": "Toko Lilin"
                 },
                 "shop/car": {
-                    "name": "Dealer Mobil"
+                    "name": "Dealer Mobil",
+                    "aliases": "Pedagang Mobil"
                 },
                 "shop/car_parts": {
                     "name": "Toko Peralatan Mobil"
@@ -2462,6 +2630,9 @@
                 },
                 "shop/fabric": {
                     "name": "Toko Kain"
+                },
+                "shop/farm": {
+                    "name": "Kios Tanaman"
                 },
                 "shop/fashion": {
                     "name": "Toko Mode"
@@ -2667,6 +2838,10 @@
                     "name": "Fitur Pariwisata",
                     "aliases": "Pariwisata"
                 },
+                "tourism/alpine_hut": {
+                    "name": "Pondok Gunung",
+                    "aliases": "Tempat Berlindung di Gunung"
+                },
                 "tourism/artwork": {
                     "name": "Karya Seni"
                 },
@@ -2677,6 +2852,9 @@
                 "tourism/camp_site": {
                     "name": "Perkemahan",
                     "aliases": "Tempat Berkemah"
+                },
+                "tourism/caravan_site": {
+                    "name": "Taman RV"
                 },
                 "tourism/chalet": {
                     "name": "Vila Liburan",

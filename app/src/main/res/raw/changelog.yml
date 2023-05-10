@@ -4,7 +4,7 @@ v53.0: |
   <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)<br>
   <li>Address overlay: You can now add addresses as entrances directly to building outlines (#4976, #4995)</li>
   <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
-  <li>Crossing: Different wording and use `crossing=informal` for points at which there are no crossings but people can still cross (#4944)</li>
+  <li>Crossing: Different wording and use <code>crossing=informal</code> for points at which there are no crossings but people can still cross (#4944)</li>
   </ul>
   <h3>New Quests</h3>
   <ul>
@@ -16,6 +16,7 @@ v53.0: |
   <li>Add Belarusian translation, by Yau, Андрей and more</li>
   <li>In the various bi-lingual republics and autonomous regions of Russia, allow inputting names in the respective languages</li>
   <li>It is now visible on the map which areas have been downloaded already (#4970, #4986)</li>
+  <li>Animate current selection for better visibility (#4417)</li>
   <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
   <li>Other small fixes and enhancements (#4842, #4970, #4984, #4985, #4991, #4992, #4939, #4989, #4988, #4980), thanks @tapetis, @Helium314, @matkoniecz</li>
   </ul>

@@ -2565,19 +2565,6 @@
                 "sport": {
                     "label": "الرياضات"
                 },
-                "sport_ice": {
-                    "label": "الرياضات"
-                },
-                "sport_pub": {
-                    "label": "الرياضات",
-                    "terms": "رياضات"
-                },
-                "sport_racing_motor": {
-                    "label": "الرياضات"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "الرياضة"
-                },
                 "stars": {
                     "label": "نجوم",
                     "terms": "نجوم"
@@ -3514,10 +3501,6 @@
                     "name": "طبيب",
                     "terms": "طبيب"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "طبيب أمراض نساء",
-                    "terms": "طبيب أمراض نساء"
-                },
                 "amenity/dojo": {
                     "name": "دوجو /  أكاديمية الفنون القتالية",
                     "terms": "دوجو,أكاديمية الفنون القتالية"
@@ -3650,10 +3633,6 @@
                 "amenity/kindergarten": {
                     "name": "أرض حضانة / روض",
                     "terms": "روضة,رياض أطفال,تمهيدي ، حضانة ، روض"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "بركة علاج القدم بالماء",
-                    "terms": "بركة علاج القدم بالماء"
                 },
                 "amenity/language_school": {
                     "name": "مدرسة لغات",

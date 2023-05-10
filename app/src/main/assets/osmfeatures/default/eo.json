@@ -2347,15 +2347,6 @@
                 "sport": {
                     "label": "Sportoj"
                 },
-                "sport_ice": {
-                    "label": "Sportoj"
-                },
-                "sport_racing_motor": {
-                    "label": "Sportoj"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sportoj"
-                },
                 "stars": {
                     "label": "Steloj",
                     "terms": "klaso,luksa"
@@ -3176,10 +3167,6 @@
                     "name": "Kabineto de kuracisto",
                     "terms": "kuracistejo,sanigejo,doktoro"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Kabineto de ginekologiisto",
-                    "terms": "ginekologiisto,ginekologo,virinkuracisto"
-                },
                 "amenity/dojo": {
                     "name": "Doĵo / batalart-lernejo",
                     "terms": "dojho,dojxo,batalarto,luktoarto,luktarto"
@@ -3312,10 +3299,6 @@
                 "amenity/kindergarten": {
                     "name": "Infanvartejo (ISCED 0)",
                     "terms": "infanoghardeno,infanogxardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanghardeno,infangxardeno,infanvartejo,lernludejo"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Naĝejeto",
-                    "terms": "nahgejeto,nagxejeto,piedbano,banejo,baseneto"
                 },
                 "amenity/language_school": {
                     "name": "Lingva lernejo",

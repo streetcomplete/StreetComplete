@@ -177,7 +177,7 @@ class VisibleQuestsSource(
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
         if (addedQuests.size > 10 || deletedQuestKeys.size > 10) Log.i(TAG, "added ${addedQuests.size}, deleted ${deletedQuestKeys.size}")
-            else Log.i(TAG, "added ${addedQuests.map { it.type.name }}, deleted: $deletedQuestKeys")
+            else Log.i(TAG, "added ${addedQuests.map { it.key }}, deleted: $deletedQuestKeys")
         cache.update(addedQuests, deletedQuestKeys)
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }

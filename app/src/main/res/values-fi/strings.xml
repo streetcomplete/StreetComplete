@@ -1104,7 +1104,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_busStopName_title2">"Mikä tämän pysäkin nimi on?"</string>
     <string name="quest_busStopRef_title2">"Mikä numero tai koodi yksilöi tätä bussipysäkkiä?"</string>
     <string name="quest_busStopShelter_title2">"Onko tällä pysäkillä katosta?"</string>
-    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä taktiilista päällystettä?"</string>
+    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä kosketuspäällystettä?"</string>
     <string name="quest_dietType_halal_name_title2">"Saako täältä halal-tuotteita?"</string>
     <string name="quest_dietType_kosher_name_title2">"Saako täältä kosher-tuotteita?"</string>
     <string name="quest_dietType_vegan_title2">"Onko ruokalistalla vegaanituotteita?"</string>
@@ -1315,4 +1315,8 @@ Haluatko siirtää nyt?"</string>
     <string name="quest_hairdresser_not_signed">"Ei ilmoitettu"</string>
     <string name="quest_amenityCover_title">"Onko tämä katettu? (suojattu sateelta)"</string>
     <string name="lane_narrowing_traffic_calming_none">"Ei kavennettua kaistaa tässä"</string>
+    <string name="quest_tactilePaving_title_steps">"Onko näiden portaiden ylä- ja alapäässä kosketuspäällystettä?"</string>
+    <string name="quest_tactilePaving_steps_top">"Vain ylhäällä"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Vain alhaalla"</string>
+    <string name="overlay_addresses_no_entrance">"Se ei ole sisäänkäynti…"</string>
 </resources>

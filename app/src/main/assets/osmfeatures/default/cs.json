@@ -292,6 +292,30 @@
                     "label": "Celkové stoupání",
                     "terms": "výstup,stoupání,kumulativní převýšení"
                 },
+                "athletics_pitch": {
+                    "label": "Událost",
+                    "options": {
+                        "hammer_throw": "Hod kladivem",
+                        "high_jump": "Skok do výšky",
+                        "javelin_throw": "hod Oštěpem",
+                        "long_jump": "Skok do dálky",
+                        "pole_vault": "Skok o tyči",
+                        "shot_put": "Vrh koulí",
+                        "triple_jump": "Trojskok"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Událost",
+                    "options": {
+                        "javelin_throw": "Oštěp",
+                        "long_jump": "Skok do dálky",
+                        "pole_vault": "Skok o tyči",
+                        "running": "Běh",
+                        "sprint": "Sprint",
+                        "steeplechase": "Steeplechase",
+                        "triple_jump": "Trojskok"
+                    }
+                },
                 "atm": {
                     "label": "Bankomat"
                 },
@@ -748,7 +772,11 @@
                     "label": "Čas výběru"
                 },
                 "collector": {
-                    "label": "Druh předmětů"
+                    "label": "Druh předmětů",
+                    "options": {
+                        "coins": "Mince",
+                        "comics": "Komiksy"
+                    }
                 },
                 "colour": {
                     "label": "Barva",
@@ -769,10 +797,21 @@
                     "label": "Typ"
                 },
                 "consulate": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "consular_agency": "Úřad pro konzulární služby",
+                        "consular_office": "Kancelář konzulárních služeb",
+                        "consulate_general": "Generální konzulát",
+                        "honorary_consul": "Honorární konzul",
+                        "residence": "Úřední sídlo konzula",
+                        "yes": "Konzulát"
+                    }
                 },
                 "consulting": {
                     "label": "Odbornost"
+                },
+                "contact/facebook": {
+                    "placeholder": "https://www.facebook.com/LocalBusiness"
                 },
                 "contact/webcam": {
                     "label": "URL webkamery",
@@ -1077,6 +1116,9 @@
                 "dance/style": {
                     "label": "Taneční styly"
                 },
+                "dance/teaching": {
+                    "label": "Nabídka tanečních lekcí"
+                },
                 "date": {
                     "label": "Datum"
                 },
@@ -1164,7 +1206,12 @@
                     "terms": "bezlepkové,ovocné,halal,košer,bez laktózy,maso,pescovegetariánské,syrové,veganské,vegetariánské"
                 },
                 "diplomatic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "consulate": "Konzulát",
+                        "embassy": "Velvyslanectví",
+                        "liaison": "Styčný úřad"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Služby"
@@ -1384,6 +1431,27 @@
                         "pipe": "Zakrytá trubka",
                         "underground": "Podzemní",
                         "wall": "Nástěnný"
+                    }
+                },
+                "fire_mains": {
+                    "label": "Typ sítě",
+                    "options": {
+                        "dry": "Vyhrazená síť (normálně suchá)",
+                        "no": "Ne",
+                        "yes": "Neznámý typ"
+                    }
+                },
+                "fire_service_inlet": {
+                    "options": {
+                        "pillar": "Sloup/pozemek",
+                        "pipe": "Potrubí s uzávěrem",
+                        "wall": "Stěna"
+                    }
+                },
+                "fire_sprinkler": {
+                    "options": {
+                        "no": "Ne",
+                        "yes": "Neznámý typ"
                     }
                 },
                 "fireplace": {
@@ -1721,7 +1789,33 @@
                     }
                 },
                 "historic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "archaeological_site": "Archeologické naleziště",
+                        "bomb_crater": "Kráter po bombě",
+                        "boundary_stone": "Hraniční kámen",
+                        "building": "Historická stavba",
+                        "castle": "Zámek",
+                        "charcoal_pile": "Hromada dřevěného uhlí",
+                        "church": "Kostel",
+                        "city_gate": "Městská brána",
+                        "citywalls": "Městské hradby",
+                        "fort": "Historická pevnost",
+                        "manor": "Panský dům",
+                        "memorial": "Památník",
+                        "milestone": "Milník",
+                        "mine": "Důl",
+                        "mine_shaft": "Důlní šachta",
+                        "monument": "Monument",
+                        "pillory": "Historické sloupoví",
+                        "railway": "Železnice",
+                        "ruins": "Ruiny",
+                        "shieling": "Pastevecká chýše",
+                        "tomb": "Hrobka",
+                        "wayside_cross": "Kříž u cesty",
+                        "wayside_shrine": "Kaplička u cesty",
+                        "wreck": "Vrak lodi"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Historická civilizace"
@@ -2142,6 +2236,16 @@
                 "monitoring_multi": {
                     "label": "Monitorování"
                 },
+                "mooring": {
+                    "label": "Kotviště",
+                    "options": {
+                        "commercial": "Komerční",
+                        "guest": "Hosté",
+                        "no": "Ne",
+                        "private": "Soukromé",
+                        "yes": "Ano"
+                    }
+                },
                 "mtb/scale": {
                     "label": "Klasifikace obtížnosti pro MTB",
                     "options": {
@@ -2361,6 +2465,9 @@
                     },
                     "terms": "přírodní,bio"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Orientace"
+                },
                 "outdoor_seating": {
                     "label": "Venkovní sezení",
                     "terms": "lavičky,zahrádka,posezení,stolky,stolečky,stoly,venku,letní,slunečník,terasa"
@@ -2403,6 +2510,7 @@
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Orientace při parkování",
                     "options": {
                         "diagonal": "Šikmo k ulici (~45°)",
                         "parallel": "Rovnoběžně s ulicí",
@@ -3211,12 +3319,14 @@
                         "baseball": "Baseball",
                         "basketball": "Basketbal",
                         "beachvolleyball": "Plážový volejbal",
+                        "bmx": "BMX",
                         "boules": "Koule",
                         "bowls": "Bowls",
                         "climbing": "Horolezectví",
                         "cricket": "Kriket",
                         "cycling": "Cyklistika",
-                        "equestrian": "Jezdecké",
+                        "disc_golf": "Disc Golf",
+                        "equestrian": "Jezdecké sporty",
                         "fitness": "Fitness cvičení",
                         "free_flying": "Paragliding / Závěsné létání",
                         "futsal": "Futsal",
@@ -3224,11 +3334,14 @@
                         "gymnastics": "Gymnastika",
                         "handball": "Týmová házená",
                         "horse_racing": "Dostihy",
+                        "ice_hockey": "Lední hokej",
+                        "ice_skating": "Bruslení na ledě",
                         "karting": "Motokárové závody",
                         "motocross": "Motokros",
                         "motor": "Motoristický sport",
                         "netball": "Netball",
                         "padel": "Padel",
+                        "pelota": "Pelota",
                         "rugby_union": "Patnáctkové ragby",
                         "running": "Běh",
                         "shooting": "Střelba",
@@ -3236,24 +3349,12 @@
                         "skiing": "Lyžování",
                         "soccer": "Fotbal",
                         "softball": "Softball",
+                        "speedway": "Motocyklová rychlostní dráha",
                         "swimming": "Plavání",
                         "table_tennis": "Stolní tenis",
                         "tennis": "Tenis",
                         "volleyball": "Volejbal"
                     }
-                },
-                "sport_ice": {
-                    "label": "Sporty"
-                },
-                "sport_pub": {
-                    "label": "Sporty",
-                    "terms": "sport,sportovní"
-                },
-                "sport_racing_motor": {
-                    "label": "Sporty"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sporty"
                 },
                 "stars": {
                     "label": "Hvězdiček",
@@ -4304,8 +4405,7 @@
                     "terms": "doktor,rodinný lékař,rodinný praktický lékař,rodinný doktor"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Gynekolog",
-                    "terms": "vajíčko,gynekologista,gynekologie,gynekologický,porodnictví,ovulace,reprodukční,lékař pro ženy,lékař pro dámy"
+                    "name": "Porodník / gynekolog"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hematolog",
@@ -4531,10 +4631,6 @@
                 "amenity/kindergarten": {
                     "name": "Prostor školky / předškolního zařízení",
                     "terms": "mateřská škola,školka,předškolní"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Kneippova lázeň",
-                    "terms": "hydroterapie"
                 },
                 "amenity/language_school": {
                     "name": "Jazyková škola",
@@ -4834,6 +4930,9 @@
                     "name": "Japonská restaurace",
                     "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
+                "amenity/restaurant/korean": {
+                    "name": "Korejská restaurace"
+                },
                 "amenity/restaurant/mexican": {
                     "name": "Mexická restaurace",
                     "terms": "bar,snídaně,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,tacos,burritos,enchiladas,fajitas,nachos,tortilly,salsa,tamales,quesadillas"
@@ -4849,6 +4948,9 @@
                 "amenity/restaurant/seafood": {
                     "name": "Restaurace s mořskými rybami",
                     "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,ryby,mlži,měkkýši,korýši,škeble,ústřice,humři,kraby,krevety,hlavonožci,chobotnice"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "Španělská restaurace"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steakhouse",
@@ -5359,6 +5461,9 @@
                     "name": "Zvedací závora",
                     "terms": "brána se závorou,závora na cestě,tyč závory,zvedací brána,závora přes cestu"
                 },
+                "barrier/log": {
+                    "name": "Překážka ve formě spadlého stromu"
+                },
                 "barrier/motorcycle_barrier": {
                     "name": "Zábrana proti motorkám",
                     "terms": "bariéra proti motorkám,motorková zábrana,bariéra"
@@ -5685,6 +5790,9 @@
                 "club": {
                     "name": "Klub",
                     "terms": "sociální"
+                },
+                "club/scout": {
+                    "name": "Skautský oddíl"
                 },
                 "club/sport": {
                     "name": "Sportovní klub",
@@ -6672,7 +6780,7 @@
                     "terms": "kancelář,kancelářský,kancelářská,podnikový,podnik,komerční"
                 },
                 "landuse/construction": {
-                    "name": "Stavební plocha",
+                    "name": "Staveniště",
                     "terms": "budova,buldozer,staveniště,stavební zóna,jeřáb,demolice,výstavba,infrastruktura"
                 },
                 "landuse/education": {
@@ -6761,6 +6869,9 @@
                 "landuse/military/base/navy": {
                     "name": "Námořní základna",
                     "terms": "základna,boj,síla,stráž,mariňák,námořnictvo,loď,ponorka,vojska,válka"
+                },
+                "landuse/military/danger_area": {
+                    "name": "Nebezpečná zóna, zákaz vstupu"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Vojenská překážková dráha",
@@ -7448,6 +7559,9 @@
                     "name": "Čerpací stanice",
                     "terms": "přečerpávací stanice,benzín,motorest,pohonné hmoty,nafta"
                 },
+                "man_made/quay": {
+                    "name": "Nábřeží"
+                },
                 "man_made/reservoir_covered": {
                     "name": "Krytá vodní nádrž",
                     "terms": "podzemní nádrž,vodní nádrž,krytá nádrž,rezervoár"
@@ -7692,6 +7806,9 @@
                 "natural/peak": {
                     "name": "Vrchol",
                     "terms": "hora,vrch,vrchol,vrcholek,kopec,kopeček,kóta,mont,mount,pik"
+                },
+                "natural/peninsula": {
+                    "name": "Poloostrov"
                 },
                 "natural/reef": {
                     "name": "Útes",

@@ -797,7 +797,11 @@
                             "description": "有物理隔离的自行车道"
                         }
                     },
-                    "terms": "自行车道,单车道,自行车,单车"
+                    "terms": "自行车道,单车道,自行车,单车",
+                    "types": {
+                        "cycleway:left": "左侧",
+                        "cycleway:right": "右侧"
+                    }
                 },
                 "dance/style": {
                     "label": "舞蹈类型"
@@ -1973,6 +1977,7 @@
                     "label": "发电方式"
                 },
                 "plant/output/electricity": {
+                    "label": "电力输出",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2482,19 +2487,6 @@
                 },
                 "sport": {
                     "label": "运动"
-                },
-                "sport_ice": {
-                    "label": "冰上项目"
-                },
-                "sport_pub": {
-                    "label": "运动",
-                    "terms": "运动,运动项目"
-                },
-                "sport_racing_motor": {
-                    "label": "赛车项目"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "运动项目"
                 },
                 "stars": {
                     "label": "星级"
@@ -3350,10 +3342,6 @@
                     "name": "医师",
                     "terms": "医生,医师,护士,医院,医护,医疗,治疗,办公室,技师"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "妇科医生",
-                    "terms": "妇科诊所,妇产科医生,妇产科诊所"
-                },
                 "amenity/dojo": {
                     "name": "道场/武术学院",
                     "terms": "道场,武术学院"
@@ -3486,9 +3474,6 @@
                 "amenity/kindergarten": {
                     "name": "幼儿园场地",
                     "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "克奈圃水疗"
                 },
                 "amenity/language_school": {
                     "name": "语言学校"
@@ -4250,7 +4235,7 @@
                 },
                 "barrier/lift_gate": {
                     "name": "道闸",
-                    "terms": "道闸,挡车,拦车,升降杆"
+                    "terms": "道闸,挡车,拦车,升降杆,门"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "阻摩托车器",
@@ -5455,6 +5440,9 @@
                 },
                 "landuse/military/base/navy": {
                     "name": "军港"
+                },
+                "landuse/military/danger_area": {
+                    "name": "危险区域，禁止进入"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "军用障碍训练场"
@@ -7699,6 +7687,9 @@
                 "shop/vacuum_cleaner": {
                     "name": "吸尘器店",
                     "terms": "吸尘器店"
+                },
+                "shop/variety_store": {
+                    "name": "折扣商店"
                 },
                 "shop/video": {
                     "name": "影像店",

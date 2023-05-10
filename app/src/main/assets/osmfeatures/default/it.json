@@ -254,7 +254,11 @@
                         "crannog": "Crannóg",
                         "enclosure": "Recinto",
                         "fortification": "Fortificazione",
-                        "necropolis": "Necropoli"
+                        "megalith": "Megalite",
+                        "necropolis": "Necropoli",
+                        "petroglyph": "Incisione",
+                        "roman_circus": "Circo romano",
+                        "roman_villa": "Villa romana"
                     }
                 },
                 "architect": {
@@ -284,6 +288,16 @@
                 "ascent": {
                     "label": "Salita totale",
                     "terms": "salita,ascesa,dislivello"
+                },
+                "athletics_pitch": {
+                    "label": "Disciplina",
+                    "options": {
+                        "discus_throw": "Lancio del disco",
+                        "hammer_throw": "Lancio del martello",
+                        "high_jump": "Salto in alto",
+                        "javelin_throw": "Lancio del giavellotto",
+                        "long_jump": "Salto in lungo"
+                    }
                 },
                 "atm": {
                     "label": "Bancomat"
@@ -2624,18 +2638,6 @@
                         "boules": "Bocce"
                     }
                 },
-                "sport_ice": {
-                    "label": "Sport"
-                },
-                "sport_pub": {
-                    "label": "Sport"
-                },
-                "sport_racing_motor": {
-                    "label": "Sport"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sport"
-                },
                 "stars": {
                     "label": "Stelle"
                 },
@@ -3470,10 +3472,6 @@
                     "name": "Medico di base",
                     "terms": "dottore,medico,studio medico,ambulatorio"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Ginecologo",
-                    "terms": "ginecologa"
-                },
                 "amenity/dojo": {
                     "name": "Dojo/Accademia di arti marziali",
                     "terms": "dojo,karate,judo,arti marziali"
@@ -3557,7 +3555,7 @@
                 },
                 "amenity/food_court": {
                     "name": "Zona ristorazione",
-                    "terms": "food court,zona ristorazione,area cibo,ristoranti,cibo"
+                    "terms": "food court,zona ristorazione,area cibo,ristoranti,cibo,food lounge"
                 },
                 "amenity/fountain": {
                     "name": "Fontana (decorativa)",
@@ -3603,9 +3601,6 @@
                 "amenity/kindergarten": {
                     "name": "Area dell'asilo/scuola d'infanzia",
                     "terms": "asilo,infanzia,scuola,materna,nido,prescolastico,mamma,bebè,piccoli,cuccioli"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Cura Acquatica Kneipp"
                 },
                 "amenity/language_school": {
                     "name": "Scuola di lingue straniere",
@@ -4111,8 +4106,7 @@
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parcometro",
-                    "terms": "distributore automatico,macchinetta,parcheggio,ticket,biglietto,parchimetro,parcometro,biglietti parcheggio",
-                    "aliases": "Parchimetro"
+                    "terms": "distributore automatico,macchinetta,parcheggio,ticket,biglietto,parchimetro,biglietti parcheggio"
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Distributore automatico di biglietti per trasporto pubblico",
@@ -5068,11 +5062,16 @@
                     "terms": "corridoio"
                 },
                 "highway/crossing": {
-                    "name": "Attraversamento"
+                    "name": "Attraversamento",
+                    "terms": "strisce,pedonale,attraversamento,zebra,incrocio,passaggio,piedi"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Attraversamento pedonale semaforizzato",
                     "terms": "semaforo,piedi,pedonale,strisce pedonali,attraversamento,bici,ciclabile,marciapiede"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "Attraversamento pedonale segnalato",
+                    "terms": "attraversamento,strisce,zebra,pedonale,pedoni,piedi,incrocio,passaggio"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
@@ -5098,7 +5097,8 @@
                     "terms": "attraversamento ciclabile con semaforo"
                 },
                 "highway/cycleway/crossing/uncontrolled": {
-                    "name": "Attraversamento ciclabile segnalato"
+                    "name": "Attraversamento ciclabile segnalato",
+                    "terms": "attraversamento,bici,biciclette,ciclabile,incrocio,passaggio"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Attraversamento ciclabile non segnalato",
@@ -5142,7 +5142,8 @@
                     "terms": "strisce pedonali"
                 },
                 "highway/footway/crossing/unmarked": {
-                    "name": "Attraversamento pedonale non segnalato"
+                    "name": "Attraversamento pedonale non segnalato",
+                    "terms": "attraversamento,pedonale,pedoni,piedi,incrocio,passaggio,non segnato,senza strisce"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Marciapiede",
@@ -6973,10 +6974,10 @@
                     "name": "Area della fermata del trasporto pubblico"
                 },
                 "public_transport/stop_position": {
-                    "name": "Punto di stop del trasporto pubblico"
+                    "name": "Punto di fermata del trasporto pubblico"
                 },
                 "public_transport/stop_position_aerialway": {
-                    "name": "Punto di stop del trasporto a fune"
+                    "name": "Punto di fermata del trasporto a fune"
                 },
                 "public_transport/stop_position_bus": {
                     "name": "Fermata autobus"
@@ -6985,23 +6986,23 @@
                     "name": "Fermata battello"
                 },
                 "public_transport/stop_position_light_rail": {
-                    "name": "Punto di stop della metropolitana di superficie",
+                    "name": "Punto di fermata della metropolitana di superficie",
                     "terms": "elettrico,metrotranvia,metropolitana,transito pubblico,trasporto pubblico,binari,ferrovia,tram,filobus,transito,trasporto"
                 },
                 "public_transport/stop_position_monorail": {
-                    "name": "Punto di stop della monorotaia"
+                    "name": "Punto di fermata della monorotaia"
                 },
                 "public_transport/stop_position_subway": {
-                    "name": "Punto di stop della metropolitana"
+                    "name": "Punto di fermata della metropolitana"
                 },
                 "public_transport/stop_position_train": {
                     "name": "Posizione fermata del treno"
                 },
                 "public_transport/stop_position_tram": {
-                    "name": "Punto di stop del tram"
+                    "name": "Punto di fermata del tram"
                 },
                 "public_transport/stop_position_trolleybus": {
-                    "name": "Punto di stop del filobus"
+                    "name": "Punto di fermata del filobus"
                 },
                 "railway": {
                     "name": "Elemento ferroviario"
@@ -8021,7 +8022,7 @@
                     "name": "Multipoligono"
                 },
                 "type/public_transport/stop_area_group": {
-                    "name": "Area della fermata del trasporto pubblico per gruppi"
+                    "name": "Raggruppamento aree di fermata del trasporto pubblico"
                 },
                 "type/restriction": {
                     "name": "Limitazione",

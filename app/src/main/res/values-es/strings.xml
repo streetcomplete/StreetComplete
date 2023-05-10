@@ -1306,4 +1306,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="unknown_surface_title">"Otro tipo de superficie"</string>
     <string name="overlay_surface">"Superficies"</string>
     <string name="overlay_path_surface_segregated">"Dividido entre ciclismo y senderismo"</string>
+    <string name="quest_crossing_no">"No, pero se puede cruzar"</string>
+    <string name="quest_hairdresser_female_only">"Mujeres"</string>
+    <string name="quest_hairdresser_male_only">"Hombres"</string>
 </resources>

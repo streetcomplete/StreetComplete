@@ -6,12 +6,14 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.view.doOnLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import kotlinx.coroutines.delay
@@ -47,6 +49,7 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
         }
 
         binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
+        binding.cuisineInput.doOnLayout { binding.cuisineInput.dropDownWidth = binding.cuisineInput.width - requireContext().dpToPx(60).toInt() }
 
         binding.addCuisineButton.setOnClickListener {
             if (!isFormComplete() || binding.cuisineInput.text.isBlank()) return@setOnClickListener

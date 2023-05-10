@@ -1928,15 +1928,6 @@
                 "sport": {
                     "label": "運動"
                 },
-                "sport_ice": {
-                    "label": "運動"
-                },
-                "sport_racing_motor": {
-                    "label": "運動"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "運動"
-                },
                 "stars": {
                     "label": "星級"
                 },
@@ -2608,9 +2599,6 @@
                 "amenity/doctors": {
                     "name": "醫生",
                     "terms": "醫師"
-                },
-                "amenity/doctors/gynaecology": {
-                    "name": "婦科醫生"
                 },
                 "amenity/dojo": {
                     "name": "道場/武術學院",

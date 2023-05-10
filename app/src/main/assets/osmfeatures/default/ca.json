@@ -793,6 +793,9 @@
                 "consulting": {
                     "label": "Expertesa"
                 },
+                "contact/facebook": {
+                    "label": "Nom d'usuari de Facebook o URL"
+                },
                 "contact/webcam": {
                     "label": "URL de la webcam",
                     "placeholder": "http://example.com/"
@@ -1511,7 +1514,7 @@
                         "HGV_diesel": "Gasoil per a camions",
                         "LH2": "Hidrogen Líquid",
                         "adblue": "AdBlue / AUS 32",
-                        "adblue:canister": "AdBlue / AUS 32 (venut en pots)",
+                        "adblue:canister": "AdBlue / AUS 32 (venut en envasos)",
                         "biodiesel": "Biodièsel",
                         "cng": "Gas Natural Comprimit (GNC)",
                         "diesel": "Gasoil",
@@ -2744,7 +2747,7 @@
                     "label": "Nombre d'encreuament"
                 },
                 "ref_platform": {
-                    "label": "Nombre de plataforma"
+                    "label": "Nombre d'andana"
                 },
                 "ref_road_number": {
                     "label": "Nombre de carretera"
@@ -3125,7 +3128,6 @@
                         "climbing": "Escalada",
                         "cricket": "Criquet",
                         "cycling": "Ciclisme",
-                        "equestrian": "Hípica",
                         "free_flying": "Parapent / Ala delta",
                         "futsal": "Futbol sala",
                         "golf": "Golf",
@@ -3149,18 +3151,6 @@
                         "tennis": "Tenis",
                         "volleyball": "Voleibol"
                     }
-                },
-                "sport_ice": {
-                    "label": "Esports"
-                },
-                "sport_pub": {
-                    "label": "Esports"
-                },
-                "sport_racing_motor": {
-                    "label": "Esports"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Esports"
                 },
                 "stars": {
                     "label": "Estrelles"
@@ -3301,7 +3291,7 @@
                     "options": {
                         "ALPR": "Lector de matrícules automàtic",
                         "camera": "Càmera",
-                        "guard": "Vigilat"
+                        "guard": "Guàrdia"
                     }
                 },
                 "surveillance/zone": {
@@ -3982,10 +3972,6 @@
                     "name": "Metge d'atenció primària",
                     "terms": "metge de família,metge,atenció primària,cap"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Ginecòleg",
-                    "terms": "ginecòloga,ou,ginecologia,obstetrícia,obstètric,òvul,ovulació,reproducció,embaràs"
-                },
                 "amenity/doctors/haematology": {
                     "name": "Hematòleg",
                     "terms": "hematòloga,anèmia,sang,òs,os,òssos,ossos,hematologia,leucèmia,linfoma"
@@ -4588,7 +4574,8 @@
                     "terms": "cubitos,cubs,gel"
                 },
                 "amenity/vending_machine/newspapers": {
-                    "name": "Màquina expenedora de diaris"
+                    "name": "Màquina expenedora de diaris",
+                    "terms": "diari,periòdic,premsa"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Màquina de cobrament del tiquet d'aparcament"
@@ -6529,7 +6516,7 @@
                 },
                 "office/newspaper": {
                     "name": "Oficines d'un Diari",
-                    "terms": "sala de premsa,redacció"
+                    "terms": "sala de premsa,redacció,diari,periòdic,premsa"
                 },
                 "office/ngo": {
                     "name": "Oficina d'una ONG",
@@ -6940,6 +6927,9 @@
                     "name": "Via fèrria abandonada",
                     "terms": "via ferroviaria abandonada,via de ferrocarril abandonada"
                 },
+                "railway/buffer_stop": {
+                    "name": "Topall"
+                },
                 "railway/construction": {
                     "name": "Via fèrria en construcció"
                 },
@@ -6959,6 +6949,9 @@
                 },
                 "railway/light_rail": {
                     "name": "Via de tren lleuger"
+                },
+                "railway/milestone": {
+                    "name": "Fita quilomètrica ferroviaria"
                 },
                 "railway/monorail": {
                     "name": "Via de monoraïl"
@@ -7371,7 +7364,8 @@
                     "name": "Botiga d'instruments musicals"
                 },
                 "shop/newsagent": {
-                    "name": "Quiosc de premsa"
+                    "name": "Quiosc de premsa",
+                    "terms": "quiosc,diari,periòdic,premsa"
                 },
                 "shop/nutrition_supplements": {
                     "name": "Botiga de suplements nutricionals"
@@ -7394,6 +7388,10 @@
                 },
                 "shop/pet": {
                     "name": "Botiga d'animals"
+                },
+                "shop/pet_grooming": {
+                    "name": "Perruqueria d'animals",
+                    "terms": "peluqueria d'animals,gos,gat,perruqueria de gats,perruqueria de gosssos,peluquria de gats,peluqueria de gossos"
                 },
                 "shop/photo": {
                     "name": "Botiga de fotografia"
@@ -7699,6 +7697,9 @@
                 "traffic_calming/island": {
                     "name": "Refugi viari"
                 },
+                "traffic_calming/mini_bumps": {
+                    "name": "Xinxeta reductora de velocitat"
+                },
                 "traffic_calming/rumble_strip": {
                     "name": "Bandes rugoses",
                     "terms": "banda,bandes,rugós,rugoses"
@@ -7732,6 +7733,12 @@
                 },
                 "type/destination_sign": {
                     "name": "Senyal de destinació"
+                },
+                "type/enforcement": {
+                    "name": "Control de compliment"
+                },
+                "type/enforcement/maxspeed": {
+                    "name": "Control del límit de velocitat"
                 },
                 "type/multipolygon": {
                     "name": "Multipolígon"

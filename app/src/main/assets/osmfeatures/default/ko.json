@@ -1848,18 +1848,6 @@
                 "sport": {
                     "label": "스포츠"
                 },
-                "sport_ice": {
-                    "label": "스포츠"
-                },
-                "sport_pub": {
-                    "label": "스포츠"
-                },
-                "sport_racing_motor": {
-                    "label": "스포츠"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "스포츠"
-                },
                 "stars": {
                     "label": "스타"
                 },
@@ -2544,9 +2532,6 @@
                     "name": "의원",
                     "terms": "병원,내과,외과,소아청소년과,산부인과,정신건강의학과"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "산부인과 의원"
-                },
                 "amenity/dojo": {
                     "name": "도장 / 무술 학원",
                     "terms": "도장 / 무술 학원"
@@ -2667,9 +2652,6 @@
                 },
                 "amenity/kindergarten": {
                     "name": "유치원 부지"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "크나이프 물 치료"
                 },
                 "amenity/language_school": {
                     "name": "언어 학원",

@@ -773,7 +773,12 @@
                     "label": "Horario de recolección"
                 },
                 "collector": {
-                    "label": "Artículos"
+                    "label": "Artículos",
+                    "options": {
+                        "coins": "Monedas",
+                        "comics": "Comics",
+                        "stamps": "Sellos / Estampillas"
+                    }
                 },
                 "colour": {
                     "label": "Color",
@@ -794,10 +799,23 @@
                     "label": "Tipo"
                 },
                 "consulate": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "consular_agency": "Agencia de Servicios Consulares",
+                        "consular_office": "Oficina de Servicios Consulares",
+                        "consulate_general": "Consulado General",
+                        "honorary_consul": "Cónsul Honorario",
+                        "residence": "Residencia oficial de un cónsul",
+                        "yes": "Consulado"
+                    }
                 },
                 "consulting": {
                     "label": "Pericia"
+                },
+                "contact/facebook": {
+                    "label": "Nombre de usuario o URL de Facebook",
+                    "placeholder": "https://www.facebook.com/LocalBusiness",
+                    "terms": "facebook,fb,nombre de usuario,usuario,url"
                 },
                 "contact/webcam": {
                     "label": "Cámara web URL",
@@ -1009,8 +1027,10 @@
                         "coffee_shop": "Cafetería",
                         "dessert": "Postre",
                         "donut": "Dona / Rosquilla",
+                        "filipino": "Filipina",
                         "fish": "Pescado",
                         "french": "Francesa",
+                        "georgian": "Georgiana",
                         "german": "Alemana",
                         "greek": "Griega",
                         "hot_dog": "Perro caliente",
@@ -1027,6 +1047,7 @@
                         "mexican": "Mexicana",
                         "pankcake": "Panqueque / Crep",
                         "pasta": "Pasta",
+                        "peruvian": "Peruana",
                         "pizza": "Pizza",
                         "polish": "Polaca",
                         "portuguese": "Portuguesa",
@@ -1039,8 +1060,10 @@
                         "steak_house": "Asador / Parrilla",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesa",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Tailandesa",
                         "turkish": "Turca",
+                        "ukrainian": "Ucraniana",
                         "vietnamese": "Vietnamita"
                     },
                     "terms": "cocina,comida,tipos de comida,platos,platillos"
@@ -1192,7 +1215,12 @@
                     "terms": "sin gluten,sin tacc,celiaco,fruitario,halal,kosher,sin lactosa,carne,pescado,crudo,vegano,vegetariano,pescetariano,crudivegano,dieta,régimen,saludable"
                 },
                 "diplomatic": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "consulate": "Consulado",
+                        "embassy": "Embajada",
+                        "liaison": "Oficina de enlace"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Servicios"
@@ -1257,7 +1285,12 @@
                     "label": "Tipo"
                 },
                 "dock": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "drydock": "Dique seco",
+                        "floating": "Dique seco flotante",
+                        "tidal": "Dique de mareas"
+                    }
                 },
                 "dog": {
                     "label": "Perros",
@@ -1955,7 +1988,8 @@
                     "terms": "cruce,unión,empalme"
                 },
                 "kerb": {
-                    "label": "Bordillo"
+                    "label": "Bordillo",
+                    "terms": "bordillo,borde,cuneta,sardinel,cordón,vereda"
                 },
                 "kerb/height": {
                     "label": "Altura"
@@ -1965,7 +1999,12 @@
                     "terms": "cocina"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Tipos de cuenca"
+                    "label": "Tipos de cuenca",
+                    "options": {
+                        "arm": "Lavabo para el brazo",
+                        "face": "Lavabo para la cara",
+                        "foot": "Lavabo para el pie"
+                    }
                 },
                 "label": {
                     "label": "Etiqueta"
@@ -2454,6 +2493,9 @@
                     },
                     "terms": "natural,no transgénico,ecológico,bio"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Orientación"
+                },
                 "outdoor_seating": {
                     "label": "Asientos al aire libre",
                     "terms": "asientos al aire libre,silla,terraza,jardín,mesas"
@@ -2496,11 +2538,13 @@
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Orientación del estacionamiento",
                     "options": {
                         "diagonal": "Diagonal con respecto a la calzada (~45°)",
                         "parallel": "Paralelo a la calzada",
                         "perpendicular": "Se encuentra con la calzada en ángulo recto (~90°)"
                     },
+                    "terms": "orientación de estacionamiento,orientación de aparcamiento",
                     "types": {
                         "parking:left:orientation": "Lado izquierdo",
                         "parking:right:orientation": "Lado derecho"
@@ -3316,7 +3360,7 @@
                         "cycling": "Ciclismo",
                         "disc_golf": "Golf de disco",
                         "dog_racing": "Carreras de perros",
-                        "equestrian": "Ecuestre",
+                        "equestrian": "Deportes ecuestres",
                         "fitness": "Entrenamiento físico",
                         "free_flying": "Parapente / Ala Delta",
                         "futsal": "Futsal / Fútbol sala",
@@ -3350,17 +3394,17 @@
                         "volleyball": "Voleibol"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "Deportes"
                 },
-                "sport_pub": {
+                "sport/sport_pub": {
                     "label": "Deportes",
                     "terms": "deportes,deportivo"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "Deportes"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "Deportes"
                 },
                 "stars": {
@@ -4412,8 +4456,8 @@
                     "terms": "médico de atención primaria,médico de familia,médico de cabecera,médico primario"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Ginecólogo",
-                    "terms": "óvulo,ginecólogo,ginecologo,ginecóloga,ginecologa ginecología,ginecologia,obstetricia,ovulación,ovulacion,reproductiva,médico de la mujer,medicina de la mujer"
+                    "name": "Obstetra / ginecólogo",
+                    "terms": "ginecólogo,ginecóloga,ginecología,gine,obstetricia,ovulación,ovarios,reproductivo,reproductor"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hematólogo",
@@ -4534,6 +4578,10 @@
                     "name": "Comida rápida",
                     "terms": "comida rápida,comida chatarra,comida basura,comida preparada,platos preparados,comida en la calle,comida de paso,comida al paso,restaurante,comida para llevar,para llevar,takeaway,snack bar"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel (Comida rápida)",
+                    "terms": "bagelm,desayuno,salmón"
+                },
                 "amenity/fast_food/burger": {
                     "name": "Hamburguesa (Comida rápida)",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,comida rápida,comida al paso"
@@ -4580,6 +4628,10 @@
                 "amenity/fast_food/sandwich": {
                     "name": "Sándwich / Bocadillo (Comida rápida)",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,sandwich,emparedado,bocadillo,comida rápida,comida al paso"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Alitas de pollo (Comida rápida)",
+                    "terms": "chicken wings,alitas,pollo,cenar,cena,comer,comida,mesa"
                 },
                 "amenity/ferry_terminal": {
                     "name": "Terminal de ferry"
@@ -4628,6 +4680,10 @@
                     "name": "Heladería",
                     "terms": "nevería,helado,sorbete,nieve,raspadillo,frozen,yogur,copas,tarta helada,postre"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Tienda de yogures helados",
+                    "terms": "frogurt,froyo,yogur congelado,helado,yogur,yogurt"
+                },
                 "amenity/internet_cafe": {
                     "name": "Cibercafé",
                     "terms": "internet,terminales,cafe,cyber,cyber cafe,cybercafe,ciber,ciber café,cibercafé,juegos,juegos en red"
@@ -4641,8 +4697,8 @@
                     "terms": "preescolar,pre primaria,jardín de infancia,jardín de niños,kinder,parvulario,párvulos,educación inicial,jardín de infantes,jardín maternal"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Cura de agua Kneipp",
-                    "terms": "cura,agua,hidroterapia,kneipp"
+                    "name": "Instalación Kneipp",
+                    "terms": "baño de pies,hidroterapia,cura kneipp,hidroterapia kneipp,kneippismo"
                 },
                 "amenity/language_school": {
                     "name": "Escuela de idiomas",
@@ -4922,6 +4978,10 @@
                     "name": "Restaurante francés",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Restaurante georgiano",
+                    "terms": "bar,desayuno,cenar,cena,comer,almuerzo,mesa,restaurante,restorán"
+                },
                 "amenity/restaurant/german": {
                     "name": "Restaurante aleman",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe"
@@ -4958,6 +5018,10 @@
                     "name": "Restaurante de pizza",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe. porción"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Restaurante de ramen",
+                    "terms": "bar,cenar,cena,comer,almuerzo,mesa,japonés,sopa,fideos"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Restaurante de mariscos",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,pescados,mariscos,moluscos,crustáceos,almejas,ostras,langostas,cangrejos,camarones,calamares,pulpos"
@@ -4981,6 +5045,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Restaurante turco",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Restaurante ucraniano",
+                    "terms": "bar,desayuno,cenar,cena,comer,almuerzo,mesa,restaurante,restorán"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Restaurante vietnamita",
@@ -5805,6 +5873,10 @@
                     "name": "Clubs",
                     "terms": "asociación,logia,social,voluntariado,servicio,religioso,político,intercambio,cultural,deportivo,caridad,radio,arte,astronomía,juegos,ajedrez,bicicleta,cine,cocina,gastronomía,fan,anime,música,pesca,linux,caza,motocicletas,nudismo,veteranos"
                 },
+                "club/scout": {
+                    "name": "Grupo de exploradores / Scout",
+                    "terms": "guía,explorador,exploración,scout,boy scout,niño explorador"
+                },
                 "club/sport": {
                     "name": "Club de deportes",
                     "terms": "club de atletismo,club deportivo,asociación deportiva,sociedad deportiva"
@@ -6352,7 +6424,8 @@
                     "terms": "pasillo,corredor,interior,pasillo interior,corredor interior"
                 },
                 "highway/crossing": {
-                    "name": "Cruce"
+                    "name": "Cruce",
+                    "terms": "cruce,paso,peatón,peatonal,cebra,paso peatonal,cruce peatonal,paso de peatones,paso de cebra"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Cruce con señales para peatones",
@@ -9339,6 +9412,10 @@
                 },
                 "shop/hobby": {
                     "name": "Tienda de pasatiempos"
+                },
+                "shop/honey": {
+                    "name": "Tienda de miel",
+                    "terms": "tienda de miel,miel,apicultura"
                 },
                 "shop/household_linen": {
                     "name": "Tienda de ropa de hogar",

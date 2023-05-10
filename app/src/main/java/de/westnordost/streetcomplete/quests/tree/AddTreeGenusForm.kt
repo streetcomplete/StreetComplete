@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.tree
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.doOnLayout
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -19,6 +20,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.SearchAdapter
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import java.io.File
 
@@ -55,6 +57,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         binding.nameInput.setOnFocusChangeListener { _, focused ->
             if (focused) binding.nameInput.setText(" ", true)
         }
+        binding.nameInput.doOnLayout { binding.nameInput.dropDownWidth = binding.nameInput.width - requireContext().dpToPx(60).toInt() }
         binding.nameInput.requestFocus()
     }
 
