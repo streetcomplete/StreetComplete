@@ -179,7 +179,7 @@ class OsmQuestController internal constructor(
         // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
         // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
         // This shortcut reduces time for creating quests by ~15-30%.
-        val onlyMapDataWithTags = MutableMapDataWithGeometry().apply {
+        val onlyMapDataWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.size).apply {
             mapDataWithGeometry.forEach { if (it.tags.isNotEmpty()) put(it, mapDataWithGeometry.getGeometry(it.type, it.id)) }
             boundingBox = mapDataWithGeometry.boundingBox
         }

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import java.lang.Integer.min
 
 /**
  * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
@@ -406,8 +407,7 @@ class MapDataCache(
         val cachedTiles = spatialCache.getTiles()
         val tilesRectsToFetch = requiredTiles.filterNot { it in cachedTiles }.upToTwoMinTileRects()
 
-        val result = MutableMapDataWithGeometry()
-        result.boundingBox = bbox
+        val result: MutableMapDataWithGeometry
         if (tilesRectsToFetch != null) {
             // get nodes from spatial cache
             // this may not contain all nodes, but tiles that were cached initially might
@@ -416,7 +416,10 @@ class MapDataCache(
 
             // get(bbox) for tiles not in spatialCache calls spatialCache.fetch, but this is still
             // safe as tiles are replaced and properly filled as part of the following update
-            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
+            spatialCache.get(bbox).also {
+                result = MutableMapDataWithGeometry(min(it.size * 2, 1000))
+                it.forEach { result.put(it, ElementPointGeometry(it.position)) }
+            }
 
             // fetch needed data and put it to cache
             tilesRectsToFetch.forEach { tilesRect ->
@@ -426,6 +429,7 @@ class MapDataCache(
                 if (fetchBBox == bbox) {
                     // return data if we need exactly the bbox that was just fetched
                     result.putAll(elements, geometries + elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() })
+                    result.boundingBox = bbox
                     return result
                 }
                 // add newly fetched nodes from elements
@@ -437,8 +441,12 @@ class MapDataCache(
                 }
             }
         } else {
-            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
+            spatialCache.get(bbox).also {
+                result = MutableMapDataWithGeometry(it.size)
+                it.forEach { result.put(it, ElementPointGeometry(it.position)) }
+            }
         }
+        result.boundingBox = bbox
 
         val wayKeys = HashSet<ElementKey>(result.nodes.size / 5)
         val relationKeys = HashSet<ElementKey>(result.nodes.size / 10)

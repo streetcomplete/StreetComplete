@@ -4,18 +4,18 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 
-class MutableMapDataWithGeometry() : MapDataWithGeometry {
+class MutableMapDataWithGeometry(capacity: Int = 50) : MapDataWithGeometry {
 
-    constructor(elements: Iterable<Element>, geometryEntries: Iterable<ElementGeometryEntry>) : this() {
+    constructor(elements: Iterable<Element>, geometryEntries: Iterable<ElementGeometryEntry>) : this((elements as? Collection)?.size ?: 50) {
         putAll(elements, geometryEntries)
     }
 
-    private val nodesById = HashMap<Long, Node>()
-    private val waysById = HashMap<Long, Way>()
-    private val relationsById = HashMap<Long, Relation>()
-    private val nodeGeometriesById = HashMap<Long, ElementPointGeometry?>()
-    private val wayGeometriesById = HashMap<Long, ElementGeometry?>()
-    private val relationGeometriesById = HashMap<Long, ElementGeometry?>()
+    private val nodesById = HashMap<Long, Node>(capacity)
+    private val waysById = HashMap<Long, Way>(capacity / 2)
+    private val relationsById = HashMap<Long, Relation>(capacity / 5)
+    private val nodeGeometriesById = HashMap<Long, ElementPointGeometry?>(capacity)
+    private val wayGeometriesById = HashMap<Long, ElementGeometry?>(capacity / 2)
+    private val relationGeometriesById = HashMap<Long, ElementGeometry?>(capacity / 5)
 
     override var boundingBox: BoundingBox? = null
 
