@@ -68,7 +68,7 @@ class LaneNarrowingTrafficCalmingParserKtTest {
             expandTrafficCalmingValue("choker;table;horny_cows")
         )
         assertEquals(
-            listOf("choker","table", "horny_cows"),
+            listOf("choker", "table", "horny_cows"),
             expandTrafficCalmingValue("choked_table;horny_cows")
         )
         assertEquals(

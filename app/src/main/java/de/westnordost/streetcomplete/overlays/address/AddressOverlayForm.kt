@@ -123,7 +123,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -189,7 +188,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
                 }
             }
             .map { way ->
-                val positions = way.nodeIds.map {data.getNode(it)!!.position }
+                val positions = way.nodeIds.map { data.getNode(it)!!.position }
                 way to positions
             }
             .toList()
