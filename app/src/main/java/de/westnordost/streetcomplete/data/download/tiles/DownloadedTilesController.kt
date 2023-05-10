@@ -6,7 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 class DownloadedTilesController(
     private val dao: DownloadedTilesDao
-): DownloadedTilesSource {
+) : DownloadedTilesSource {
 
     private val listeners = CopyOnWriteArrayList<DownloadedTilesSource.Listener>()
 

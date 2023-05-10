@@ -29,7 +29,7 @@ data class PositionOnWaySegment(
     val wayId: Long,
     override val position: LatLon,
     val segment: Pair<LatLon, LatLon>
-): PositionOnWay
+) : PositionOnWay
 
 /** A point on one or ways on top of each other (typically but not necessarily sharing segments) */
 @kotlinx.serialization.Serializable

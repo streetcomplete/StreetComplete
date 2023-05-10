@@ -67,7 +67,7 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         assertEquals(1, dao.delete(9))
         assertTrue(dao.getAllByElement(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(7)))
 
-        assertEquals(3, dao.deleteAll(listOf(7,3)))
+        assertEquals(3, dao.deleteAll(listOf(7, 3)))
         assertTrue(dao.getAllByElement(ElementType.NODE, 0).isEmpty())
         assertTrue(dao.getAllByElement(ElementType.WAY, 1).isEmpty())
         assertTrue(dao.getAllByElement(ElementType.WAY, 2).isEmpty())

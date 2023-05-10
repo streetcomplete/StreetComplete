@@ -70,25 +70,37 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private var isShowingPlaceName: Boolean = false
     private var isShowingBlock: Boolean = false
 
+    private var addEntrance: Boolean = true
+        set(value) {
+            field = value
+            updateMarker()
+        }
+
     private var positionOnWay: PositionOnWay? = null
         set(value) {
             field = value
-            if (value != null) {
-                setMarkerPosition(value.position)
-                setMarkerIcon(R.drawable.ic_quest_door)
-            } else {
-                setMarkerIcon(R.drawable.ic_quest_housenumber)
-                setMarkerPosition(null)
-            }
+            updateMarker()
         }
     private var buildings: Collection<Pair<Way, List<LatLon>>>? = null
     private val allBuildingsFilter = "ways, relations with building".toElementFilterExpression()
+
+    private fun updateMarker() {
+        val positionOnWay = positionOnWay
+        if (positionOnWay != null) {
+            setMarkerPosition(positionOnWay.position)
+            setMarkerIcon(if (addEntrance) R.drawable.ic_quest_door else R.drawable.ic_quest_housenumber)
+        } else {
+            setMarkerIcon(R.drawable.ic_quest_housenumber)
+            setMarkerPosition(null)
+        }
+    }
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() },
         createBlockAnswerItem(),
         if (element != null) AnswerItem(R.string.quest_address_answer_no_address) { confirmRemoveAddress() } else null,
+        if (element == null && addEntrance) AnswerItem(R.string.overlay_addresses_no_entrance) { addEntrance = false } else null
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,7 +122,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK)
             ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -156,6 +167,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
             ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
         showNumberOrNameInput(layoutResId)
+
+        addEntrance = savedInstanceState?.getBoolean(ADD_ENTRANCE) ?: true
     }
 
     private fun initCreatingPointOnWay() {
@@ -175,7 +188,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
                 }
             }
             .map { way ->
-                val positions = way.nodeIds.map {data.getNode(it)!!.position }
+                val positions = way.nodeIds.map { data.getNode(it)!!.position }
                 way to positions
             }
             .toList()
@@ -195,7 +208,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         val buildings = buildings ?: return
         val metersPerPixel = metersPerPixel ?: return
         val maxDistance = metersPerPixel * requireContext().dpToPx(12)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(6)
+        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(8)
         positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
 
@@ -243,6 +256,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         outState.putBoolean(SHOW_PLACE_NAME, isShowingPlaceName)
         outState.putBoolean(SHOW_HOUSE_NAME, isShowingHouseName)
         outState.putBoolean(SHOW_BLOCK, isShowingBlock)
+        outState.putBoolean(ADD_ENTRANCE, addEntrance)
     }
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -280,7 +294,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             val geometry = ElementPointGeometry(positionOnWay.position)
             val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
                 addChanges(tagChanges, number, name, streetOrPlaceName)
-                if (!tagChanges.containsKey("entrance")) tagChanges["entrance"] = "yes"
+                if (addEntrance && !tagChanges.containsKey("entrance")) tagChanges["entrance"] = "yes"
             } ?: return
 
             applyEdit(action, geometry)
@@ -341,6 +355,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         private const val SHOW_PLACE_NAME = "show_place_name"
         private const val SHOW_HOUSE_NAME = "show_house_name"
         private const val SHOW_BLOCK = "show_block_number"
+        private const val ADD_ENTRANCE = "add_entrance"
     }
 }
 

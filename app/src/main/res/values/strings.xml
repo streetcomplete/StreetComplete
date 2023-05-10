@@ -1631,6 +1631,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_addresses">Addresses</string>
+    <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>

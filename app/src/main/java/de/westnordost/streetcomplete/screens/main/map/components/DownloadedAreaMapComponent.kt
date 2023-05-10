@@ -31,7 +31,7 @@ class DownloadedAreaMapComponent(private val ctrl: KtMapController) {
 
         layer.setFeatures(listOf(
             Polygon(
-                polygons.map { polygon -> polygon.map { it.toLngLat() }},
+                polygons.map { polygon -> polygon.map { it.toLngLat() } },
                 mapOf()
             )
         ))

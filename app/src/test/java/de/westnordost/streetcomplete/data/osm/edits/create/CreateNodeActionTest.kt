@@ -244,7 +244,6 @@ internal class CreateNodeActionTest {
         )
         val idUpdates = mapOf(ElementKey(ElementType.WAY, -1) to 99L)
 
-
         assertEquals(
             CreateNodeAction(
                 p(),

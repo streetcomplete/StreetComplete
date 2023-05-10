@@ -800,6 +800,29 @@ class MapDataWithEditsSourceTest {
         assertTrue(data.nodes.isEmpty())
     }
 
+    @Test fun `getMapDataWithGeometry returns also the nodes of an updated way`() {
+        val nd1 = node(1, p(0.5, 0.5))
+        val nd2 = node(2, p(2.5, 2.5))
+        originalElementsAre(nd1, nd2)
+        originalGeometriesAre(
+            ElementGeometryEntry(NODE, 1, pGeom(0.5, 0.5)),
+            ElementGeometryEntry(NODE, 2, pGeom(2.5, 2.5))
+        )
+        val newNode = node(-1, p(-1.5, -1.5))
+        val movedNode = node(1, p(2.0, -2.0))
+        // node 1 has been moved out of the bbox
+        // node 2 has always been outside of the bbox
+        // node -1 is created outside of the bbox
+        // but way intersects with bbox, so all three nodes must be in the result data
+        val newWay = way(1, listOf(1, 2, -1))
+        mapDataChangesAre(creations = listOf(newWay, newNode, movedNode))
+        val s = create()
+        val data = s.getMapDataWithGeometry(bbox())
+
+        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(movedNode, nd2, newNode)))
+        assertEquals(newWay, data.ways.single())
+    }
+
     //endregion
 
     //region ElementEditsSource.Listener ::onAddedEdit
