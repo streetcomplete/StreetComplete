@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginTop
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.Feature
@@ -43,6 +44,7 @@ class EditTagsAdapter(
     // used to avoid covering keyboard button by tag dropdown
     // autocomplete view height is sth like 18sp text size, 16sp edit date text size + some padding
     val keyViewOffset = (context.spToPx(34) + context.dpToPx(32)).toInt()
+    val topMargin = context.dpToPx(60).toInt() // for id/editorContainer
 
     init {
         if (keySuggestionsForFeatureId.isEmpty() && valueSuggestionsByKey.isEmpty()) {
@@ -103,7 +105,8 @@ class EditTagsAdapter(
                         else keyViewOffset
                     minus = if (showingKeyboard) rootWindowInsets.systemWindowInsetBottom
                         // insets minus offset plus distance of bottom of recycler view from screen bottom
-                        else rootWindowInsets.systemWindowInsetBottom - keyViewOffset + ((parent.parent as? RecyclerView)?.let { resources.displayMetrics.heightPixels - it.bottom } ?: 0)
+                        // last one needs to consider that view.bottom is relative to parent, which has a 60 dp margin from top
+                        else rootWindowInsets.systemWindowInsetBottom - keyViewOffset + ((parent.parent as? RecyclerView)?.let { resources.displayMetrics.heightPixels - topMargin - it.bottom } ?: 0)
                 }
                 dropDownHeight = (suggestionHeight * lastSuggestions.size).coerceAtMost(suggestionMaxHeight - minus)
 
@@ -224,7 +227,7 @@ class EditTagsAdapter(
         val fieldSuggestions = mutableListOf<String>()
         val moreFieldSuggestions = mutableListOf<String>()
         fields.forEach {
-            if (it == "building" ) return@forEach // happens for node shops...
+            if (it == "building" || it.startsWith("gnis:feature_id") ) return@forEach
             if (it.startsWith('{')) // does this actually trigger? or is it unnecessary?
                 fieldSuggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
             else fieldSuggestions.add(it)
@@ -233,16 +236,18 @@ class EditTagsAdapter(
             // ignore some moreFields that often are inappropriate (but keep if in fields!)
             if (it.startsWith("ref:") || it.startsWith("building") || it == "gnis:feature_id" || it == "ele" || it == "height" ) return@forEach
             if (it.startsWith('{'))
-                suggestions.addAll(getSecondarySuggestions(it.substringAfter('{').substringBefore('}')))
-            else suggestions.add(it)
+                moreFieldSuggestions.addAll(getSecondarySuggestions(it.substringAfter('{').substringBefore('}')))
+            else moreFieldSuggestions.add(it)
         }
 
         // suggestions should not be cluttered with all those address tags, but we don't want to ignore them completely
         // but we want to ignore some refs, and building which shows up for shops, but is usually not a good idea because we ignore geometry
-        val fieldsMoveToEnd = fieldSuggestions.filter { it.startsWith("addr:") }
+        val fieldsMoveToEnd = fieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
         fieldSuggestions.removeAll(fieldsMoveToEnd)
-        val moreFieldsMoveToEnd = moreFieldSuggestions.filter { it.startsWith("addr:")}
+        fieldSuggestions.removeAll { it.startsWith("{") } // appeared in the latest presets update, maybe we should actually go deeper for this '{'?
+        val moreFieldsMoveToEnd = moreFieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
         moreFieldSuggestions.removeAll(moreFieldsMoveToEnd)
+        moreFieldSuggestions.removeAll { it.startsWith("{") }
 
         // order: previously entered values, fields, moreFields, addr fields, addr moreFields
         // do it in this complicated way because we don't want to (re)move keys the user has entered
