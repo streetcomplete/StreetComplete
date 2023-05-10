@@ -1,0 +1,2 @@
+- Warning: your local edits will be dropped on upgrade, so upload them before upgrading!
+- Improve inserting nodes into ways
