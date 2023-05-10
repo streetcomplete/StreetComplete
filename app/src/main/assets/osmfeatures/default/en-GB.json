@@ -1188,16 +1188,10 @@
                     "label": "Sources"
                 },
                 "sport": {
-                    "label": "Sports"
-                },
-                "sport_ice": {
-                    "label": "Sports"
-                },
-                "sport_racing_motor": {
-                    "label": "Sports"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sports"
+                    "label": "Sports",
+                    "options": {
+                        "equestrian": "Equestrian Sport"
+                    }
                 },
                 "stars": {
                     "label": "Stars"
@@ -2811,6 +2805,9 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Cricket Field"
+                },
+                "leisure/pitch/equestrian": {
+                    "name": "Horse Riding / Rodeo Arena"
                 },
                 "leisure/pitch/netball": {
                     "name": "Netball Court"

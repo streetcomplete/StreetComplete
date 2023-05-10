@@ -56,16 +56,16 @@
                     "label": "通行可否",
                     "options": {
                         "customers": {
-                            "description": "目的地にいる顧客専用",
+                            "description": "行き先の顧客専用",
                             "title": "利用客用"
                         },
                         "designated": {
                             "description": "標識等や特定の地方条例で通行が許可されている",
-                            "title": "特定種の通行禁止"
+                            "title": "指定"
                         },
                         "destination": {
                             "description": "特定の目的地へ移動する用途でのみ通行が許可されている",
-                            "title": "目的外通行の禁止"
+                            "title": "通り抜け禁止"
                         },
                         "dismount": {
                             "description": "降りれば通行可能",
@@ -73,15 +73,15 @@
                         },
                         "no": {
                             "description": "一般の通行が許可されていない",
-                            "title": "制限あり"
+                            "title": "禁止"
                         },
                         "permissive": {
                             "description": "所有者が通行制限しない限り通行可",
-                            "title": "所有者許諾あり"
+                            "title": "許容"
                         },
                         "permit": {
                             "description": "妥当な許可や利用許諾がある場合のみ通行が許可されている",
-                            "title": "許可"
+                            "title": "許可制"
                         },
                         "private": {
                             "description": "通行時には所有者から個々に許可を得る必要がある",
@@ -92,7 +92,7 @@
                             "title": "不明"
                         },
                         "yes": {
-                            "description": "法律上の許可あり; 正当利用",
+                            "description": "法律上の許可あり; 通行権あり",
                             "title": "通行可"
                         }
                     },
@@ -113,12 +113,12 @@
                     "label": "アクセス制限",
                     "options": {
                         "customers": "利用客専用",
-                        "no": "なし",
+                        "no": "利用不可",
                         "permissive": "所有者許諾あり",
                         "permit": "要許可",
-                        "private": "私有",
+                        "private": "関係者のみ",
                         "unknown": "不明",
-                        "yes": "アクセス可"
+                        "yes": "一般利用可"
                     },
                     "terms": "アクセス,許可"
                 },
@@ -773,7 +773,12 @@
                     "label": "収集時刻"
                 },
                 "collector": {
-                    "label": "収集アイテム"
+                    "label": "収集アイテム",
+                    "options": {
+                        "coins": "コイン",
+                        "comics": "マンガ",
+                        "stamps": "切手"
+                    }
                 },
                 "colour": {
                     "label": "色",
@@ -806,6 +811,11 @@
                 },
                 "consulting": {
                     "label": "コンサルティング領域"
+                },
+                "contact/facebook": {
+                    "label": "FacebookのURLまたはユーザー名",
+                    "placeholder": "https://www.facebook.com/LocalBusiness",
+                    "terms": "フェイスブック"
                 },
                 "contact/webcam": {
                     "label": "ウェブカメラのURL",
@@ -970,7 +980,7 @@
                     "label": "警報音"
                 },
                 "crossing/island": {
-                    "label": "交通島"
+                    "label": "安全島"
                 },
                 "crossing/light": {
                     "label": "警報灯"
@@ -999,8 +1009,8 @@
                 "crossing_raised": {
                     "label": "速度抑制用の隆起",
                     "options": {
-                        "table": "Yes",
-                        "undefined": "No"
+                        "table": "あり",
+                        "undefined": "なし"
                     }
                 },
                 "cuisine": {
@@ -1017,8 +1027,10 @@
                         "coffee_shop": "コーヒー店",
                         "dessert": "デザート",
                         "donut": "ドーナツ",
+                        "filipino": "フィリピン料理",
                         "fish": "魚料理",
                         "french": "フランス料理",
+                        "georgian": "ジョージア料理",
                         "german": "ドイツ料理",
                         "greek": "ギリシア料理",
                         "hot_dog": "ホットドッグ",
@@ -1035,6 +1047,7 @@
                         "mexican": "メキシコ料理",
                         "pankcake": "パンケーキ",
                         "pasta": "パスタ",
+                        "peruvian": "ペルー料理",
                         "pizza": "ピザ",
                         "polish": "ポーランド料理",
                         "portuguese": "ポルトガル料理",
@@ -1047,8 +1060,10 @@
                         "steak_house": "ステーキハウス",
                         "sushi": "寿司",
                         "taiwanese": "台湾料理",
+                        "tex-mex": "テキサス風メキシコ料理",
                         "thai": "タイ料理",
                         "turkish": "トルコ料理",
+                        "ukrainian": "ウクライナ料理",
                         "vietnamese": "ベトナム料理"
                     },
                     "terms": "料理,食事,飲食"
@@ -1270,7 +1285,12 @@
                     "label": "閉鎖店舗の種類"
                 },
                 "dock": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "drydock": "乾ドック",
+                        "floating": "浮ドック",
+                        "tidal": "荷役用ドック"
+                    }
                 },
                 "dog": {
                     "label": "犬の同行許可",
@@ -1968,7 +1988,8 @@
                     "terms": "交差点,ジャンクション"
                 },
                 "kerb": {
-                    "label": "縁石の詳細"
+                    "label": "縁石の詳細",
+                    "terms": "縁石,へり"
                 },
                 "kerb/height": {
                     "label": "縁石の高さ"
@@ -1978,7 +1999,12 @@
                     "terms": "キッチン,台所,厨房"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "arm": "腕浴",
+                        "face": "顔浴",
+                        "foot": "足浴"
+                    }
                 },
                 "label": {
                     "label": "ラベル"
@@ -2351,7 +2377,7 @@
                     "label": "全裸での利用",
                     "options": {
                         "customary": "習慣的",
-                        "designated": "専用",
+                        "designated": "指定",
                         "no": "禁止",
                         "obligatory": "必須",
                         "permissive": "許容",
@@ -3335,7 +3361,7 @@
                         "cycling": "サイクリング",
                         "disc_golf": "ディスクゴルフ",
                         "dog_racing": "ドッグレース",
-                        "equestrian": "馬術",
+                        "equestrian": "馬術競技",
                         "fitness": "フィットネス",
                         "free_flying": "ハンググライダー",
                         "futsal": "フットサル",
@@ -3367,19 +3393,6 @@
                         "tennis": "テニス",
                         "volleyball": "バレーボール"
                     }
-                },
-                "sport_ice": {
-                    "label": "種目"
-                },
-                "sport_pub": {
-                    "label": "スポーツ",
-                    "terms": "サッカー"
-                },
-                "sport_racing_motor": {
-                    "label": "種目"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "種目"
                 },
                 "stars": {
                     "label": "星の数",
@@ -3699,18 +3712,18 @@
                 "traffic_calming": {
                     "label": "種類",
                     "options": {
-                        "bump": "スピードバンプ",
+                        "bump": "スピードバンプ（帯状）",
                         "chicane": "シケイン（屈曲部）",
-                        "choked_table": "狭小化隆起台（減速用）",
+                        "choked_table": "狭窄した台形ハンプ",
                         "choker": "チョーカー（狭窄部）",
                         "cushion": "スピードクッション",
-                        "dip": "ディップ",
-                        "double_dip": "ディップ2つ",
-                        "hump": "スピードハンプ",
+                        "dip": "ディップ（凹部）",
+                        "double_dip": "2連続のディップ（凹部）",
+                        "hump": "弓形ハンプ（凸部）",
                         "island": "交通島",
-                        "mini_bumps": "スピードバンプ(小)",
+                        "mini_bumps": "スピードバンプ（こぶ状）",
                         "rumble_strip": "ランブルストリップ",
-                        "table": "隆起台（減速用）"
+                        "table": "台形ハンプ（凸部）"
                     }
                 },
                 "traffic_sign": {
@@ -4086,7 +4099,7 @@
                 },
                 "aerialway/cable_car": {
                     "name": "交走式ロープウェイ",
-                    "terms": "ロープウェイ,ロープウェー,ゴンドラ,ゴンドラリフト,索道"
+                    "terms": "ロープウェイ,ロープウェー,ゴンドラ,ゴンドラリフト,リフト,索道"
                 },
                 "aerialway/chair_lift": {
                     "name": "チェアリフト",
@@ -4097,8 +4110,8 @@
                     "terms": "ドラッグリフト,牽引リフト"
                 },
                 "aerialway/gondola": {
-                    "name": "ゴンドラ",
-                    "terms": "ゴンドラ"
+                    "name": "循環式ロープウェイ",
+                    "terms": "ゴンドラ,ゴンドラリフト,リフト,ロープウェイ,ロープウェー,索道"
                 },
                 "aerialway/goods": {
                     "name": "貨物索道",
@@ -4426,8 +4439,8 @@
                     "terms": "総合診療科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "婦人科医",
-                    "terms": "婦人科医,婦人科,産婦人科"
+                    "name": "産婦人科医",
+                    "terms": "産科医,婦人科医,産科,婦人科,産婦人科"
                 },
                 "amenity/doctors/haematology": {
                     "name": "血液科",
@@ -4548,6 +4561,10 @@
                     "name": "ファストフード全般",
                     "terms": "ファストフード店,ファストフード,ジャンクフード,ジャンク,ファーストフード,飲食店,軽食,食事,料理,食べる. ハンバーガー,フライドチキン,立ち食い,ランチ"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "ファストフード・ベーグル",
+                    "terms": "ファストフード,ベーグル,サンドイッチ,飲食,食べる,軽食,飲食店,食事,料理"
+                },
                 "amenity/fast_food/burger": {
                     "name": "ファストフード・ハンバーガー",
                     "terms": "ファストフード,ハンバーガー,飲食店,食事,食べる,料理,ランチ"
@@ -4594,6 +4611,10 @@
                 "amenity/fast_food/sandwich": {
                     "name": "ファストフード・サンドイッチ",
                     "terms": "ファストフード,サンドイッチ,飲食店,食事,食べる,料理,サンドウィッチ,ランチ"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "ファストフード・バッファローウィング",
+                    "terms": "ファストフード,チキンウィング,バッファローウィング,飲食店,食事,食べる,料理,ランチ"
                 },
                 "amenity/ferry_terminal": {
                     "name": "フェリー乗り場"
@@ -4642,6 +4663,10 @@
                     "name": "アイスクリーム店",
                     "terms": "アイスクリームパーラー,飲食店,食べる,軽食,食事"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "フローズンヨーグルト店",
+                    "terms": "フローズンヨーグルト,アイスクリーム,飲食店,食べる,軽食,食事"
+                },
                 "amenity/internet_cafe": {
                     "name": "インターネットカフェ",
                     "terms": "ネカフェ,ネットカフェ,漫画喫茶,漫喫,休憩,カフェ"
@@ -4655,8 +4680,8 @@
                     "terms": "幼稚園の敷地,保育園の敷地,保育園,幼稚園,教育,学校,育児"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "歩行プール",
-                    "terms": "歩行プール,水中ウォーキング,水治療法,足浴場,足浴,水浴,足湯"
+                    "name": "クナイプ療法施設",
+                    "terms": "歩行プール,水中ウォーキング,水中歩行療法施設,水治療法,歩行浴,足浴場,足浴,水浴"
                 },
                 "amenity/language_school": {
                     "name": "外国語教室",
@@ -4876,7 +4901,7 @@
                 },
                 "amenity/public_bath": {
                     "name": "公衆浴場",
-                    "terms": "公衆浴場,大衆浴場,銭湯,外湯,温泉,露天風呂,お風呂,風呂,休憩,娯楽,レジャー"
+                    "terms": "公衆浴場,大衆浴場,銭湯,外湯,足湯,温泉,露天風呂,お風呂,風呂,休憩,娯楽,レジャー"
                 },
                 "amenity/public_bookcase": {
                     "name": "公共の本棚",
@@ -4937,6 +4962,10 @@
                     "name": "レストラン・フランス料理",
                     "terms": "レストラン,フランス料理,フレンチ,フレンチレストラン,飲食店,食事,食べる,料理,フランス,ランチ,ディナー"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "レストラン・ジョージア料理",
+                    "terms": "レストラン,ジョージア料理,グルジア料理,ジョージア,グルジア,飲食店,食事,食べる,料理,ランチ,ディナー"
+                },
                 "amenity/restaurant/german": {
                     "name": "レストラン・ドイツ料理",
                     "terms": "レストラン,ドイツ料理,ドイツレストラン,飲食店,食事,食べる,料理,ランチ,ディナー"
@@ -4973,6 +5002,10 @@
                     "name": "レストラン・ピザ",
                     "terms": "レストラン,ピザ,ピッツァ,飲食店,食事,食べる,料理,ランチ,ディナー"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "レストラン・ラーメン",
+                    "terms": "レストラン,ラーメン,麺類,飲食店,食事,食べる,料理,麺,ランチ,ディナー"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "レストラン・シーフード",
                     "terms": "レストラン,シーフード,海鮮,海鮮料理,飲食店,食事,食べる,料理,魚,魚介,ランチ,ディナー"
@@ -4996,6 +5029,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "レストラン・トルコ料理",
                     "terms": "レストラン,トルコ料理,トルコ,飲食店,食事,食べる,料理,ランチ,ディナー"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "レストラン・ウクライナ料理",
+                    "terms": "レストラン,ウクライナ料理,ウクライナ,飲食店,食事,食べる,料理,ランチ,ディナー"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "レストラン・ベトナム料理",
@@ -6350,7 +6387,7 @@
                     "name": "道路関連"
                 },
                 "highway/bridleway": {
-                    "name": "乗馬道",
+                    "name": "乗馬コース",
                     "terms": "乗馬道"
                 },
                 "highway/bus_guideway": {
@@ -6373,7 +6410,8 @@
                     "terms": "建物内の通り抜け道路,屋内,インドア"
                 },
                 "highway/crossing": {
-                    "name": "横断歩道"
+                    "name": "横断歩道",
+                    "terms": "横断歩道"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "横断歩道(信号あり)",
@@ -6423,7 +6461,7 @@
                     "terms": "エレベーター,エレベータ,昇降機"
                 },
                 "highway/elevator_line": {
-                    "name": "エレベータ（傾斜）",
+                    "name": "斜行エレベーター",
                     "terms": "エレベータ（傾斜）,傾斜エレベータ,傾斜,エレベータ,リフト式,ケーブル式"
                 },
                 "highway/emergency_access_point": {
@@ -6473,8 +6511,8 @@
                     "terms": "歩道（車道の脇）,歩道"
                 },
                 "highway/footway/traffic_island": {
-                    "name": "交通島",
-                    "terms": "交通島,交通安全,交通静穏化,道路設備,減速,二段階横断"
+                    "name": "安全島",
+                    "terms": "交通島,安全島,待避島,交通安全,道路設備,二段階横断,横断歩道"
                 },
                 "highway/give_way": {
                     "name": "ゆずれ標識（前方優先道路）",
@@ -6664,12 +6702,12 @@
                     "terms": "国道,接続路,車道,幹線,公道"
                 },
                 "highway/turning_circle": {
-                    "name": "転回場",
-                    "terms": "転回場,車回し"
+                    "name": "転回広場",
+                    "terms": "転回場,転回所,クルドサック,車回し"
                 },
                 "highway/turning_loop": {
-                    "name": "転回所(交通島あり)",
-                    "terms": "転回所"
+                    "name": "転回用ループ(交通島あり)",
+                    "terms": "転回場,転回所,転回路,クルドサック,車回し"
                 },
                 "highway/unclassified": {
                     "name": "一般道（2車線未満）",
@@ -7136,7 +7174,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "乗馬施設",
-                    "terms": "乗馬施設,馬事公苑,乗馬クラブ,スポーツ,運動,娯楽,レジャー"
+                    "terms": "乗馬施設,馬事公苑,乗馬センター,乗馬クラブ,スポーツ,運動,娯楽,レジャー"
                 },
                 "leisure/ice_rink": {
                     "name": "アイススケート場",
@@ -7263,7 +7301,7 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "乗馬場",
-                    "terms": "乗馬施設,馬術場,乗馬アリーナ,スポーツ,運動,娯楽,レジャー,乗馬"
+                    "terms": "乗馬施設,馬術場,乗馬アリーナ,競技馬場,スポーツ,運動,娯楽,レジャー,乗馬"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "フィールドホッケー場",
@@ -7390,8 +7428,8 @@
                     "terms": "クライミングジム,クライミング,スポーツ,ボルダリング,トレーニング"
                 },
                 "leisure/sports_centre/horse_racing": {
-                    "name": "馬場",
-                    "terms": "競馬コース"
+                    "name": "競馬場",
+                    "terms": "競馬コース,馬場"
                 },
                 "leisure/sports_centre/shooting": {
                     "name": "射撃競技用施設",
@@ -7402,7 +7440,7 @@
                     "terms": "遊泳プール,プール,水泳場,スポーツ,運動,競技,スポーツセンター,屋内プール,娯楽,水浴び,水遊び,競泳"
                 },
                 "leisure/sports_hall": {
-                    "name": "体育館",
+                    "name": "屋内運動場",
                     "terms": "体育館,ジム,屋内運動施設,スポーツ,トレーニング,運動"
                 },
                 "leisure/stadium": {
@@ -7922,7 +7960,7 @@
                 },
                 "natural/hot_spring": {
                     "name": "温泉の湧出",
-                    "terms": "自然湧出,泉源,源泉,温泉"
+                    "terms": "自然湧出,泉源,源泉,温泉,熱水泉"
                 },
                 "natural/mud": {
                     "name": "泥地",
@@ -8627,7 +8665,7 @@
                 },
                 "power/plant/source/method/photovoltaic": {
                     "name": "太陽光発電所",
-                    "terms": "太陽光発電所"
+                    "terms": "太陽光発電所,メガソーラー"
                 },
                 "power/plant/source/nuclear": {
                     "name": "原子力発電所",
@@ -8638,8 +8676,8 @@
                     "terms": "石油発電所,火力発電所,発電所,電力,石油"
                 },
                 "power/plant/source/solar": {
-                    "name": "太陽光発電所",
-                    "terms": "メガソーラー"
+                    "name": "太陽エネルギープラント",
+                    "terms": "太陽光発電,太陽熱発電,太陽熱利用,集熱器,ソーラー,電力,発電所"
                 },
                 "power/plant/source/waste": {
                     "name": "廃棄物発電所",
@@ -9362,6 +9400,10 @@
                 "shop/hobby": {
                     "name": "ホビーショップ"
                 },
+                "shop/honey": {
+                    "name": "蜂蜜販売店",
+                    "terms": "蜂蜜販売店,ハチミツ,はちみつ"
+                },
                 "shop/household_linen": {
                     "name": "家庭用布製品店",
                     "terms": "家庭用布製品店,布製品,リネン,タオル,ハンカチ,店舗,お店,寝具,シーツ,ナプキン,カーテン,ローブ,パジャマ,ショッピング,小売,布,木綿"
@@ -9888,44 +9930,44 @@
                     "terms": "交通静穏化,交通安全,道路設備,減速"
                 },
                 "traffic_calming/bump": {
-                    "name": "スピードバンプ",
-                    "terms": "スピードバンプ,交通安全,交通静穏化,道路設備,減速"
+                    "name": "スピードバンプ（帯状）",
+                    "terms": "スピードバンプ,バンプ,ハンプ,凸部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/chicane": {
                     "name": "シケイン（屈曲部）",
-                    "terms": "シケイン,交通安全,交通静穏化,道路設備,減速"
+                    "terms": "シケイン,屈曲部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/choker": {
                     "name": "チョーカー（狭窄部）",
-                    "terms": "チョーカー,交通安全,交通静穏化,道路設備,減速"
+                    "terms": "チョーカー,狭窄部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/cushion": {
                     "name": "スピードクッション",
                     "terms": "スピードクッション,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/dip": {
-                    "name": "ディップ",
-                    "terms": "ディップ,交通安全,交通静穏化,道路設備,減速"
+                    "name": "ディップ（凹部）",
+                    "terms": "ディップ,凹部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/hump": {
-                    "name": "スピードハンプ",
-                    "terms": "スピードハンプ,交通安全,交通静穏化,道路設備,減速"
+                    "name": "弓形ハンプ",
+                    "terms": "スピードハンプ,ハンプ,凸部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/island": {
                     "name": "交通島",
-                    "terms": "交通島,交通安全,交通静穏化,道路設備,減速"
+                    "terms": "交通島,導流島,誘導島,分離島,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/mini_bumps": {
-                    "name": "スピードバンプ(小)",
+                    "name": "スピードバンプ（こぶ状）",
                     "terms": "スピードバンプ,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "ランブルストリップ",
-                    "terms": "ランブルストリップ,交通安全,交通静穏化,道路設備,減速"
+                    "terms": "ランブルストリップ,メロディーロード,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/table": {
-                    "name": "隆起台（減速用）",
-                    "terms": "隆起台,スピードテーブル,減速テーブル,交通安全,交通静穏化,道路設備,減速"
+                    "name": "台形ハンプ（凸部）",
+                    "terms": "隆起台,スピードテーブル,減速テーブル,スムーズ横断歩道,ハンプ,凸部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/yes": {
                     "name": "交通静穏化設備"

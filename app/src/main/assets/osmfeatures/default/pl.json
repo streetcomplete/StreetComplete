@@ -158,18 +158,18 @@
                         "district!cn": "Dzielnica/Powiat/Chorągiew",
                         "district!vn": "Okręg/Miejscowość/Dystrykt",
                         "floor": "Nr piętra",
-                        "hamlet": "Osada",
+                        "hamlet": "Przysiółek/Kolonia/Osada",
                         "housename": "Nazwa domu",
                         "housenumber": "123",
                         "housenumber!jp": "Nr budynku/działki",
                         "neighbourhood": "Osiedle",
                         "neighbourhood!jp": "Chōme/Aza/Koaza",
-                        "place": "Miejsc. (adres bez ulicy)",
+                        "place": "Miejscowość (adres bez ulicy)",
                         "postcode": "Kod pocztowy",
-                        "province": "Prowincja/województwo",
+                        "province": "Prowincja/Województwo",
                         "province!cn": "Prowincja/Region/Miasto wydzielone",
                         "province!jp": "Prefektura",
-                        "quarter": "Dzielnica/kwartał/wyższy okręg",
+                        "quarter": "Dzielnica/Kwartał/Wyższy okręg",
                         "quarter!jp": "Ōaza/Machi",
                         "state": "Stan",
                         "street": "Ulica",
@@ -177,12 +177,12 @@
                         "subdistrict!vn": "Osiedle/Wspólnota/Miasteczko",
                         "suburb": "Dzielnica",
                         "suburb!jp": "Osiedle",
-                        "unit": "Blok/oddział"
+                        "unit": "Blok/Oddział"
                     },
                     "terms": "adres"
                 },
                 "admin_level": {
-                    "label": "Poziom administracyjny"
+                    "label": "Poziom podziału administracyjnego"
                 },
                 "advertising": {
                     "label": "Rodzaj"
@@ -206,11 +206,11 @@
                     "placeholder": "500, 2500, 5000..."
                 },
                 "aerialway/duration": {
-                    "label": "Czas trwania (w minutach)",
+                    "label": "Czas przejazdu (w minutach)",
                     "placeholder": "1, 2, 3..."
                 },
                 "aerialway/heating": {
-                    "label": "Ogrzewany"
+                    "label": "Ogrzewanie"
                 },
                 "aerialway/occupancy": {
                     "label": "Liczba miejsc",
@@ -232,19 +232,19 @@
                 },
                 "air_conditioning": {
                     "label": "Klimatyzacja",
-                    "terms": "klimatyzacja"
+                    "terms": "klimatyzacja,chłodzenie"
                 },
                 "amenity": {
                     "label": "Rodzaj"
                 },
                 "animal_boarding": {
-                    "label": "Dla zwierząt"
+                    "label": "Gatunki zwierząt"
                 },
                 "animal_breeding": {
-                    "label": "Dla zwierząt"
+                    "label": "Gatunki zwierząt"
                 },
                 "animal_shelter": {
-                    "label": "Dla zwierząt"
+                    "label": "Gatunki zwierząt"
                 },
                 "archaeological_site": {
                     "label": "Typ",
@@ -266,7 +266,7 @@
                 },
                 "architect": {
                     "label": "Architekt",
-                    "terms": "architekt"
+                    "terms": "architekt,projektant,budowniczy"
                 },
                 "area/highway": {
                     "label": "Rodzaj"
@@ -289,8 +289,8 @@
                     }
                 },
                 "ascent": {
-                    "label": "W górę",
-                    "terms": "w górę,pod górę"
+                    "label": "Suma przewyższeń",
+                    "terms": "suma przewyższeń,suma podejść,suma podjazdów,przewyższenie,podejścia,podjazdy,wspinaczka"
                 },
                 "athletics_pitch": {
                     "label": "Konkurencja",
@@ -350,7 +350,7 @@
                 "baby_feeding": {
                     "label": "Miejsce do karmienia niemowlęcia",
                     "options": {
-                        "no": "Nie",
+                        "no": "Brak",
                         "room": "Osobny pokój",
                         "yes": "Wyznaczone miejsce"
                     },
@@ -360,8 +360,8 @@
                     "label": "Dla niemowląt"
                 },
                 "backcountry": {
-                    "label": "Dziki kemping bez udogodnień",
-                    "terms": "dziki kemping bez udogodnień"
+                    "label": "Bez udogodnień",
+                    "terms": "bez udogodnień"
                 },
                 "backrest": {
                     "label": "Oparcie"
@@ -380,7 +380,7 @@
                         "city_wall": "Mur miejski",
                         "cycle_barrier": "Bariera rowerowa",
                         "ditch": "Rów",
-                        "entrance": "Przejście",
+                        "entrance": "Przejście\nPrzerwa",
                         "fence": "Ogrodzenie",
                         "gate": "Brama",
                         "guard_rail": "Bariera energochłonna",
@@ -434,12 +434,12 @@
                     "label": "Usługi",
                     "options": {
                         "cosmetics": "Zabiegi kosmetyczne",
-                        "hair_removal": "Usuwanie owłosienia",
+                        "hair_removal": "Depilacja",
                         "nails": "Manicure / Pedicure",
                         "skin_care": "Pielęgnacja skóry",
-                        "spa": "Dzienne spa",
+                        "spa": "Zabiegi spa",
                         "tanning": "Solarium",
-                        "waxing": "Woskowanie"
+                        "waxing": "Depilacja woskiem"
                     }
                 },
                 "bench": {
@@ -452,7 +452,7 @@
                         "building": "W budynku",
                         "handlebar_holder": "Uchwyty na kierownicę",
                         "lockers": "Indywidualne szafki",
-                        "shed": "Zamknięta wiata",
+                        "shed": "Zamykana wiata",
                         "stands": "Stojaki (podtrzymują ramę roweru)",
                         "wall_loops": "Wyrwikółka (podtrzymują wyłącznie koło)"
                     }
@@ -472,7 +472,7 @@
                         "no": "Nie",
                         "yes": "Tak"
                     },
-                    "terms": "niewidomi"
+                    "terms": "dostęp dla niewidomych,niewidomi,niedowidzący"
                 },
                 "blood_components": {
                     "label": "Składniki krwi",
@@ -508,17 +508,17 @@
                     }
                 },
                 "booth": {
-                    "label": "Budka",
-                    "terms": "budka"
+                    "label": "Model budki",
+                    "terms": "model budki,budka telefoniczna,budka"
                 },
                 "bottle": {
                     "label": "Napełnianie butelek"
                 },
                 "boules": {
-                    "label": "Rodzaj"
+                    "label": "Odmiana gry w bule"
                 },
                 "boundary": {
-                    "label": "Typ"
+                    "label": "Rodzaj"
                 },
                 "branch_brand": {
                     "label": "Oddział",
@@ -526,11 +526,11 @@
                 },
                 "brand": {
                     "label": "Marka",
-                    "terms": "marka"
+                    "terms": "marka,sieć"
                 },
                 "brewery": {
                     "label": "Piwo z beczki",
-                    "terms": "piwo lane"
+                    "terms": "piwo z beczki,piwo lane"
                 },
                 "bridge": {
                     "label": "Rodzaj",
@@ -636,7 +636,7 @@
                     "label": "Rodzaj"
                 },
                 "button_operated": {
-                    "label": "Przycisk wzywający"
+                    "label": "Przycisk aktywujący"
                 },
                 "cables": {
                     "label": "Kable",
@@ -659,10 +659,10 @@
                     "placeholder": "45, 90, 180, 270"
                 },
                 "camera/mount": {
-                    "label": "Mocowanie kamery"
+                    "label": "Mocowanie"
                 },
                 "camera/type": {
-                    "label": "Rodzaj kamery",
+                    "label": "Rodzaj",
                     "options": {
                         "dome": "Kopułkowa",
                         "fixed": "Stacjonarna",
@@ -708,29 +708,29 @@
                 "castle_type": {
                     "label": "Rodzaj",
                     "options": {
-                        "castrum": "Fort rzymski",
-                        "defensive": "Zamek obronny",
-                        "fortress": "Twierdza",
-                        "hillfort": "Zamek na wzgórzu",
-                        "kremlin": "Kreml / Cytadela",
+                        "castrum": "Rzymski obóz warowny",
+                        "defensive": "Zamek (obronny)",
+                        "fortress": "Warownia",
+                        "hillfort": "Grodzisko na wzgórzu",
+                        "kremlin": "Kreml",
                         "manor": "Dwór",
                         "palace": "Pałac",
                         "shiro": "Zamek japoński",
-                        "stately": "Dostojny Dom"
+                        "stately": "Pałac (rezydencja ziemiańska)"
                     }
                 },
                 "changing_table": {
                     "label": "Przewijak"
                 },
                 "charge_fee": {
-                    "label": "Kwota",
+                    "label": "Wysokość opłaty",
                     "placeholder": "1 EUR, 5 USD, 10 JPY…",
-                    "terms": "kwota,cena"
+                    "terms": "wysokość opłaty,opłata,cena,kwota"
                 },
                 "charge_toll": {
-                    "label": "Kwota",
+                    "label": "Wysokość opłaty",
                     "placeholder": "1 EUR, 5 USD, 10 JPY…",
-                    "terms": "kwota,cena"
+                    "terms": "wysokość opłaty,opłata,cena,kwota"
                 },
                 "check_date": {
                     "label": "Data ostatniego sprawdzenia",
@@ -773,7 +773,12 @@
                     "label": "Godziny odbioru"
                 },
                 "collector": {
-                    "label": "Przedmioty"
+                    "label": "Przedmioty",
+                    "options": {
+                        "coins": "Monety",
+                        "comics": "Komiksy",
+                        "stamps": "Znaczki pocztowe"
+                    }
                 },
                 "colour": {
                     "label": "Kolor",
@@ -784,8 +789,8 @@
                     "placeholder": "Krótki opis twoich zmian (wymagany)"
                 },
                 "communication_multi": {
-                    "label": "Rodzaj komunikacji",
-                    "terms": "rodzaj komunikacji"
+                    "label": "Rodzaje komunikacji",
+                    "terms": "rodzaje komunikacji,rodzaj komunikacji,rodzaje transmisji,rodzaj transmisji,transmisja"
                 },
                 "connectivity": {
                     "label": "Łączność"
@@ -794,10 +799,23 @@
                     "label": "Rodzaj"
                 },
                 "consulate": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "consular_agency": "Agencja konsularna",
+                        "consular_office": "Biuro konsularne",
+                        "consulate_general": "Konsulat generalny",
+                        "honorary_consul": "Konsulat honorowy",
+                        "residence": "Rezydencja konsula",
+                        "yes": "Konsulat"
+                    }
                 },
                 "consulting": {
-                    "label": "Rodzaj ekspertyz"
+                    "label": "Specjalność"
+                },
+                "contact/facebook": {
+                    "label": "Nazwa lub adres strony na Facebooku",
+                    "placeholder": "https://www.facebook.com/NazwaStrony",
+                    "terms": "nazwa strony na facebooku,adres strony na facebooku,strona na facebooku,nazwa profilu na facebooku,adres profilu na facebooku,profil na facebooku,facebook"
                 },
                 "contact/webcam": {
                     "label": "Adres kamery internetowej",
@@ -811,7 +829,7 @@
                     "options": {
                         "backward": "Wstecz",
                         "forward": "W przód",
-                        "reversible": "Odwracalne"
+                        "reversible": "Odwracalny"
                     }
                 },
                 "conveying_escalator": {
@@ -821,7 +839,7 @@
                     "label": "Kraj"
                 },
                 "country_flag": {
-                    "label": "Państwo"
+                    "label": "Kraj"
                 },
                 "couplings": {
                     "label": "Liczba złączek",
@@ -829,12 +847,12 @@
                 },
                 "covered": {
                     "label": "Zadaszenie",
-                    "terms": "zadaszenie,dach"
+                    "terms": "zadaszenie,dach,kryty,kryta,kryte"
                 },
                 "covered_no": {
                     "options": {
-                        "no": "Nie",
-                        "undefined": "Zakłada się, że Nie",
+                        "no": "Brak",
+                        "undefined": "Nieokreślone (przyjmuje się, że brak)",
                         "yes": "Tak"
                     }
                 },
@@ -943,7 +961,7 @@
                 "crossing": {
                     "label": "Rodzaj",
                     "options": {
-                        "traffic_signals": "Przejście z sygnalizacją świetlną",
+                        "traffic_signals": "Z sygnalizacją świetlną",
                         "uncontrolled": "Oznakowane",
                         "unmarked": "Nieoznakowane"
                     }
@@ -968,7 +986,7 @@
                     "label": "Sygnalizacja świetlna"
                 },
                 "crossing/markings": {
-                    "label": "Oznaczenie przejścia",
+                    "label": "Oznakowanie przejścia",
                     "options": {
                         "dashes": "Linie przerywane w poprzek jezdni",
                         "dots": "Linie kropkowane w poprzek jezdni",
@@ -986,7 +1004,7 @@
                         "zebra:double": "Pasy z przerwami na osi przejścia",
                         "zebra:paired": "Pasy rozmieszczone parami"
                     },
-                    "terms": "oznakowanie przejścia,oznaczenie,styl przejścia,rodzaj przejścia"
+                    "terms": "oznakowanie przejścia,oznaczenie przejścia,styl przejścia,rodzaj przejścia"
                 },
                 "crossing_raised": {
                     "label": "Podniesione",
@@ -998,52 +1016,57 @@
                 "cuisine": {
                     "label": "Kuchnia",
                     "options": {
-                        "american": "amerykańska",
-                        "asian": "azjatycka",
+                        "american": "Amerykańska",
+                        "asian": "Azjatycka",
                         "bubble_tea": "Bubble Tea",
-                        "burger": "burgery",
-                        "cake": "ciasta",
-                        "chicken": "kurczaki",
-                        "chinese": "chińska",
-                        "chocolate": "czekolada",
-                        "coffee_shop": "kawy",
+                        "burger": "Burgery",
+                        "cake": "Ciasta",
+                        "chicken": "Kurczaki",
+                        "chinese": "Chińska",
+                        "chocolate": "Czekolada",
+                        "coffee_shop": "Kawy",
                         "dessert": "Desery",
                         "donut": "Pączki / Donuty",
-                        "fish": "Ryba",
-                        "french": "francuska",
-                        "german": "niemiecka",
-                        "greek": "grecka",
+                        "filipino": "Filipińska",
+                        "fish": "Ryby",
+                        "french": "Francuska",
+                        "georgian": "Gruzińska",
+                        "german": "Niemiecka",
+                        "greek": "Grecka",
                         "hot_dog": "Hot dogi",
-                        "ice_cream": "lody",
-                        "indian": "indyjska",
+                        "ice_cream": "Lody",
+                        "indian": "Indyjska",
                         "indonesian": "Indonezyjska",
-                        "italian": "włoska",
-                        "japanese": "japońska",
-                        "juice": "soki",
-                        "kebab": "kebab",
+                        "italian": "Włoska",
+                        "japanese": "Japońska",
+                        "juice": "Soki",
+                        "kebab": "Kebab",
                         "korean": "Koreańska",
                         "lebanese": "Libańska",
                         "malaysian": "Malezyjska",
-                        "mexican": "meksykańska",
+                        "mexican": "Meksykańska",
                         "pankcake": "Naleśniki",
                         "pasta": "Makarony",
-                        "pizza": "pizza",
+                        "peruvian": "Peruwiańska",
+                        "pizza": "Pizza",
                         "polish": "Polska",
                         "portuguese": "Portugalska",
-                        "regional": "regionalna",
+                        "regional": "Regionalna",
                         "russian": "Rosyjska",
                         "salad": "Sałatki",
-                        "sandwich": "kanapki",
+                        "sandwich": "Kanapki",
                         "seafood": "Owoce morza",
                         "spanish": "Hiszpańska",
-                        "steak_house": "Steak House",
-                        "sushi": "sushi",
+                        "steak_house": "Steki",
+                        "sushi": "Sushi",
                         "taiwanese": "Tajwańska",
-                        "thai": "tajska",
-                        "turkish": "turecka",
-                        "vietnamese": "wietnamska"
+                        "tex-mex": "Tex-Mex",
+                        "thai": "Tajska",
+                        "turkish": "Turecka",
+                        "ukrainian": "Ukraińska",
+                        "vietnamese": "Wietnamska"
                     },
-                    "terms": "kuchnia"
+                    "terms": "kuchnia,rodzaj dań,rodzaj restauracji,rodzaj baru,pochodzenie"
                 },
                 "currency_multi": {
                     "label": "Waluty",
@@ -1109,7 +1132,7 @@
                     "label": "Data"
                 },
                 "defibrillator/location": {
-                    "label": "Opis lokalizacji"
+                    "label": "Opis położenia"
                 },
                 "delivery": {
                     "label": "Dostawa",
@@ -1127,9 +1150,9 @@
                     "label": "Tablica odjazdów/przyjazdów",
                     "options": {
                         "no": "Brak",
-                        "realtime": "Tablica elektroniczna",
-                        "timetable": "Papierowy rozkład jazdy",
-                        "yes": "Tak"
+                        "realtime": "Aktualizowana w czasie rzeczywistym",
+                        "timetable": "Rozkład jazdy",
+                        "yes": "Tak (nieokreślona)"
                     }
                 },
                 "deposit/trolley": {
@@ -1142,24 +1165,24 @@
                     "label": "Głębokość (metry)"
                 },
                 "descent": {
-                    "label": "W dół",
-                    "terms": "w dół"
+                    "label": "Suma spadków",
+                    "terms": "suma spadków,sumaryczny spadek,suma zejść,deniwelacja,w dół"
                 },
                 "description": {
-                    "label": "Opis obiektu",
+                    "label": "Opis",
                     "terms": "opis"
                 },
                 "design": {
                     "label": "Konstrukcja"
                 },
                 "destination": {
-                    "label": "Miejsca docelowe"
+                    "label": "Kierunek"
                 },
                 "destination/ref": {
-                    "label": "Miejsca docelowe (numery dróg)"
+                    "label": "Kierunek (numery dróg)"
                 },
                 "destination/symbol": {
-                    "label": "Miejsca docelowe (symbole)"
+                    "label": "Kierunek (symbole)"
                 },
                 "destination_waterway": {
                     "label": "Ujście"
@@ -1179,7 +1202,7 @@
                     "terms": "średnica korony"
                 },
                 "diet_multi": {
-                    "label": "Rodzaj diety",
+                    "label": "Rodzaje diety",
                     "options": {
                         "gluten_free": "bezglutenowa",
                         "halal": "muzułmańska",
@@ -1189,10 +1212,15 @@
                         "vegan": "wegańska",
                         "vegetarian": "wegetariańska"
                     },
-                    "terms": "dieta"
+                    "terms": "rodzaj diety,dieta"
                 },
                 "diplomatic": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "consulate": "Konsulat",
+                        "embassy": "Ambasada",
+                        "liaison": "Biuro łącznikowe"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Usługi"
@@ -1245,7 +1273,7 @@
                 },
                 "distance": {
                     "label": "Odległość",
-                    "terms": "odległość"
+                    "terms": "odległość,długość"
                 },
                 "disused/amenity": {
                     "label": "Rodzaj"
@@ -1257,7 +1285,12 @@
                     "label": "Rodzaj"
                 },
                 "dock": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "drydock": "Suchy",
+                        "floating": "Pływający",
+                        "tidal": "Portowy"
+                    }
                 },
                 "dog": {
                     "label": "Psy",
@@ -1286,7 +1319,7 @@
                     "terms": "dostępna woda pitna"
                 },
                 "drive_through": {
-                    "label": "Drive-through (zakupy)",
+                    "label": "Drive-through",
                     "terms": "drive-through"
                 },
                 "duration": {
@@ -1324,15 +1357,15 @@
                         "branch_embassy": "Oddział Ambasady",
                         "delegation": "Delegacja",
                         "high_commission": "Wysoka Komisja",
-                        "interests_section": "Sekcja zainteresowań",
+                        "interests_section": "Sekcja interesów",
                         "mission": "Misja dyplomatyczna",
-                        "nunciature": "Misja Dyplomatyczna Stolicy Apostolskiej",
-                        "residence": "Oficjalna rezydencja ambasadora",
+                        "nunciature": "Nuncjatura",
+                        "residence": "Rezydencja ambasadora",
                         "yes": "Ambasada"
                     }
                 },
                 "emergency": {
-                    "label": "W razie niebezpieczeństwa"
+                    "label": "W razie zagrożenia"
                 },
                 "emergency_combo": {
                     "label": "Rodzaj"
@@ -1363,10 +1396,10 @@
                     "label": "Wyjątki"
                 },
                 "expected_rcn_route_relations": {
-                    "label": "Sąsiednie węzły rowerowe"
+                    "label": "Liczba sąsiadujących węzłów sieci rowerowej"
                 },
                 "expected_rwn_route_relations": {
-                    "label": "Sąsiednie węzły piesze"
+                    "label": "Liczba sąsiadujących węzłów sieci pieszej"
                 },
                 "expressway-US": {
                     "label": "Droga ekspresowa",
@@ -1479,7 +1512,7 @@
                         },
                         "button;sensor": {
                             "description": "Światła aktywowane czujnikiem lub naciśnięciem przycisku",
-                            "title": "Aktywowane przyciskiem i czujnikiem"
+                            "title": "Aktywowane przyciskiem lub czujnikiem"
                         },
                         "no": "Brak",
                         "sensor": {
@@ -1491,7 +1524,7 @@
                     "terms": "światła ostrzegawcze,migające światła"
                 },
                 "floating": {
-                    "label": "Pływające"
+                    "label": "Pływający"
                 },
                 "flood_prone": {
                     "label": "Zagrożona zalaniem",
@@ -1549,7 +1582,7 @@
                     "label": "Gry"
                 },
                 "garden/type": {
-                    "label": "Rodzaj ogrodu"
+                    "label": "Rodzaj"
                 },
                 "gauge": {
                     "label": "Rozstaw szyn"
@@ -1562,7 +1595,7 @@
                         "unisex": "Unisex"
                     },
                     "placeholder": "Nieznana",
-                    "terms": "płeć"
+                    "terms": "płeć,gender"
                 },
                 "generator/method": {
                     "label": "Technologia",
@@ -1640,7 +1673,7 @@
                     "label": "Rodzaj"
                 },
                 "handicap": {
-                    "label": "Upośledzenie",
+                    "label": "Handicap",
                     "placeholder": "1-18"
                 },
                 "handrail": {
@@ -1784,7 +1817,7 @@
                         "bomb_crater": "Krater po bombie",
                         "boundary_stone": "Kamień graniczny",
                         "building": "Budynek",
-                        "castle": "Zamek",
+                        "castle": "Zamek / Warownia / Pałac",
                         "charcoal_pile": "Mielerz",
                         "church": "Kościół",
                         "city_gate": "Brama miejska",
@@ -1868,10 +1901,10 @@
                     "label": "Ciepła woda"
                 },
                 "iata": {
-                    "label": "Kod lotniska – IATA"
+                    "label": "Kod lotniska IATA"
                 },
                 "icao": {
-                    "label": "Kod lotniska – ICAO"
+                    "label": "Kod lotniska ICAO"
                 },
                 "image": {
                     "label": "Zdjęcie",
@@ -1900,7 +1933,7 @@
                 },
                 "informal": {
                     "label": "Nieoficjalna",
-                    "terms": "nieoficjalna,nieoficjalny,nieoficjalne"
+                    "terms": "nieoficjalna,nieoficjalny,nieoficjalne,nieformalna,nieformalny,nieformalne"
                 },
                 "information": {
                     "label": "Rodzaj"
@@ -1931,15 +1964,15 @@
                         "no": "Darmowy",
                         "yes": "Płatny"
                     },
-                    "terms": "internet,opłata"
+                    "terms": "opłata za dostęp do internetu,internet"
                 },
                 "internet_access/ssid": {
-                    "label": "Wi-Fi (nazwa sieci)",
+                    "label": "Nazwa sieci Wi-Fi",
                     "terms": "wi-fi,wifi"
                 },
                 "interval": {
-                    "label": "Czas między odjazdami",
-                    "terms": "czas między odjazdami"
+                    "label": "Częstotliwość",
+                    "terms": "częstotliwość,czas między odjazdami"
                 },
                 "junction/ref_oneway": {
                     "label": "Numer węzła",
@@ -1952,10 +1985,11 @@
                         "jughandle": "Jughandle",
                         "roundabout": "Rondo"
                     },
-                    "terms": "skrzyżowanie"
+                    "terms": "rodzaj skrzyżowania,kształt skrzyżowania,skrzyżowanie"
                 },
                 "kerb": {
-                    "label": "Krawężnik"
+                    "label": "Krawężnik",
+                    "terms": "krawężnik"
                 },
                 "kerb/height": {
                     "label": "Wysokość"
@@ -1965,7 +1999,12 @@
                     "terms": "kuchnia"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Rodzaje"
+                    "label": "Rodzaje",
+                    "options": {
+                        "arm": "Zbiornik do zanurzania ramion",
+                        "face": "Zbiornik do obmywania twarzy",
+                        "foot": "Zbiornik do zanurzania stóp"
+                    }
                 },
                 "label": {
                     "label": "Etykieta"
@@ -2066,8 +2105,8 @@
                     "terms": "oświetlenie,światło"
                 },
                 "location": {
-                    "label": "Lokalizacja",
-                    "terms": "lokalizacja,lokacja,miejsce"
+                    "label": "Położenie",
+                    "terms": "położenie,lokalizacja,lokacja,miejsce"
                 },
                 "location_pool": {
                     "options": {
@@ -2080,8 +2119,8 @@
                     "label": "Śluza wodna"
                 },
                 "lockable": {
-                    "label": "Zakluczalny",
-                    "terms": "zakluczalny,zakluczalna,zakluczalne,możliwy do zamknięcia na klucz,dający się zamknąć na klucz"
+                    "label": "Zamykany na klucz",
+                    "terms": "zamykany na klucz,zamykana na klucz,zamykane na klucz,możliwy do zamknięcia na klucz,dający się zamknąć na klucz"
                 },
                 "locked": {
                     "label": "Zamknięty"
@@ -2198,14 +2237,14 @@
                 },
                 "microbrewery": {
                     "label": "Browar restauracyjny",
-                    "terms": "browar restauracyjny"
+                    "terms": "browar restauracyjny,minibrowar"
                 },
                 "military_service": {
                     "label": "Rodzaj sił zbrojnych"
                 },
                 "mimics": {
-                    "label": "Imitator",
-                    "terms": "imitator,kamuflaż"
+                    "label": "Kamuflaż",
+                    "terms": "kamuflaż"
                 },
                 "min_age": {
                     "label": "Minimalny wiek",
@@ -2291,27 +2330,27 @@
                     "terms": "sieć"
                 },
                 "network/type": {
-                    "label": "Typ sieci"
+                    "label": "Rodzaj sieci"
                 },
                 "network_bicycle": {
                     "label": "Sieć",
                     "options": {
-                        "icn": "Międzypaństwowa",
+                        "icn": "Międzynarodowa",
                         "lcn": "Lokalna",
-                        "ncn": "Państwowa",
+                        "ncn": "Krajowa",
                         "rcn": "Regionalna"
                     },
-                    "placeholder": "Lokalna, Regionalna, Państwowa, Międzypaństwowa"
+                    "placeholder": "Lokalna, Regionalna, Krajowa, Międzynarodowa"
                 },
                 "network_foot": {
                     "label": "Sieć",
                     "options": {
-                        "iwn": "Międzypaństwowa",
+                        "iwn": "Międzynarodowa",
                         "lwn": "Lokalna",
-                        "nwn": "Państwowa",
+                        "nwn": "Krajowa",
                         "rwn": "Regionalna"
                     },
-                    "placeholder": "Lokalna, Regionalna, Państwowa, Międzypaństwowa"
+                    "placeholder": "Lokalna, Regionalna, Krajowa, Międzynarodowa"
                 },
                 "network_horse": {
                     "label": "Sieć",
@@ -2331,8 +2370,8 @@
                     "terms": "niepoprawne nazwy"
                 },
                 "note": {
-                    "label": "Uwagi własne",
-                    "terms": "uwagi własne,komentarz,note"
+                    "label": "Uwagi",
+                    "terms": "uwagi,komentarz,note"
                 },
                 "nudism": {
                     "label": "Naturyzm",
@@ -2403,11 +2442,11 @@
                     "options": {
                         "alternating": "Ruch wahadłowy",
                         "no": "Nie",
-                        "reversible": "Okresowo zmieniana",
+                        "reversible": "O zmiennym kierunku",
                         "undefined": "Domyślnie nie",
                         "yes": "Tak"
                     },
-                    "terms": "jednokierunkowa"
+                    "terms": "jednokierunkowa,jednokierunkowy"
                 },
                 "oneway/bicycle": {
                     "label": "Jednokierunkowa dla rowerów",
@@ -2417,13 +2456,13 @@
                     "options": {
                         "alternating": "Ruch wahadłowy",
                         "no": "Nie",
-                        "reversible": "Okresowo zmieniana",
+                        "reversible": "O zmiennym kierunku",
                         "undefined": "Domyślnie tak",
                         "yes": "Tak"
                     }
                 },
                 "openfire": {
-                    "label": "Rozpalanie ognia dozwolone?",
+                    "label": "Rozpalanie ognia dozwolone",
                     "terms": "rozpalanie ognia,ognisko,grill"
                 },
                 "opening_date": {
@@ -2431,7 +2470,7 @@
                     "placeholder": "YYYY-MM-DD"
                 },
                 "opening_hours": {
-                    "label": "Godziny otwarcia w formacie podanym na Wiki",
+                    "label": "Godziny otwarcia",
                     "placeholder": "24/7, sunrise-sunset, Mo-Sa 08:00-20:00",
                     "terms": "godziny otwarcia"
                 },
@@ -2441,7 +2480,7 @@
                 },
                 "operator": {
                     "label": "Zarządca",
-                    "terms": "zarządca,zarządzający"
+                    "terms": "zarządca,zarządzający,organ prowadzący"
                 },
                 "operator/type": {
                     "label": "Zarządca (rodzaj)"
@@ -2454,6 +2493,9 @@
                         "yes": "Niektóre"
                     },
                     "terms": "produkty ekologiczne,żywność ekologiczna"
+                },
+                "orientation/orientation_parking": {
+                    "label": "Sposób ustawienia pojazdu"
                 },
                 "outdoor_seating": {
                     "label": "Ogródek restauracyjny",
@@ -2470,7 +2512,7 @@
                     "label": "Odbiór przesyłek",
                     "options": {
                         "no": "Nie",
-                        "undefined": "Przypuszcza się, że tak",
+                        "undefined": "Przyjmuje się, że tak",
                         "yes": "Tak"
                     }
                 },
@@ -2481,7 +2523,7 @@
                 "parking": {
                     "label": "Rodzaj",
                     "options": {
-                        "carports": "Wiaty",
+                        "carports": "Zadaszenia",
                         "garage_boxes": "Boksy garażowe",
                         "half_on_kerb": "W połowie na chodniku",
                         "lane": "Pas na jezdni",
@@ -2489,7 +2531,7 @@
                         "multi-storey": "Wielopoziomowy",
                         "on_kerb": "Na chodniku",
                         "rooftop": "Na dachu",
-                        "sheds": "Garaże",
+                        "sheds": "Wiaty",
                         "shoulder": "Na poboczu",
                         "street_side": "Obok jezdni",
                         "surface": "Naziemny",
@@ -2497,11 +2539,13 @@
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Sposób ustawienia pojazdu",
                     "options": {
                         "diagonal": "Skośnie",
                         "parallel": "Równolegle",
                         "perpendicular": "Prostopadle"
                     },
+                    "terms": "sposób ustawienia pojazdu,parkowanie,kierunek,orientacja,prostopadłe,równoległe,skośne,wjazd przodem,wyjazd tyłem",
                     "types": {
                         "parking:left:orientation": "Po lewej stronie",
                         "parking:right:orientation": "Po prawej stronie"
@@ -2594,97 +2638,97 @@
                     "label": "Rodzaj"
                 },
                 "piste/difficulty": {
-                    "label": "Stopień trudności",
+                    "label": "Stopień trudności trasy",
                     "options": {
-                        "advanced": "Trudny",
-                        "easy": "Łatwy",
-                        "expert": "Dla zawodowców",
-                        "extreme": "Ekstremalny",
-                        "freeride": "Swobodna jazda",
-                        "intermediate": "Średni",
+                        "advanced": "Trudna",
+                        "easy": "Łatwa",
+                        "expert": "Ekspercka",
+                        "extreme": "Ekstremalnie trudna",
+                        "freeride": "Freeride",
+                        "intermediate": "Średnia",
                         "novice": "Dla początkujących"
                     },
-                    "placeholder": "Łatwa, Średnia, Zaawansowana..."
+                    "placeholder": "Łatwa, Średnia, Trudna..."
                 },
                 "piste/difficulty_downhill": {
                     "options": {
-                        "advanced": "Zaawansowana (czarny romb)",
-                        "easy": "Łatwa (zielony okrąg)",
-                        "expert": "Ekspercka (podwójny czarny romb)",
-                        "extreme": "Ekstremalna (konieczne wyposażenie wspinaczkowe)",
-                        "freeride": "Swobodna jazda (poza trasą)",
-                        "intermediate": "Średnia (niebieski kwadrat)",
-                        "novice": "Początkujący (ośla łączka)"
+                        "advanced": "Trudna (czarna)",
+                        "easy": "Łatwa (niebieska)",
+                        "expert": "Ekspercka (np. podwójny czarny romb)",
+                        "extreme": "Ekstremalnie trudna (konieczne wyposażenie wspinaczkowe)",
+                        "freeride": "Freeride (poza przygotowaną trasą)",
+                        "intermediate": "Średnia (czerwona)",
+                        "novice": "Dla początkujących (ośla łączka)"
                     },
-                    "placeholder": "Łatwa, Średnia, Zaawansowana..."
+                    "placeholder": "Łatwa, Średnia, Trudna..."
                 },
                 "piste/difficulty_nordic": {
                     "options": {
-                        "advanced": "Zaawansowana – wąska, strome lub oblodzone fragmenty, ostre zakręty",
+                        "advanced": "Trudna – wąska, strome lub oblodzone fragmenty, ostre zakręty",
                         "easy": "Łatwa – delikatne pagórki, krótkie strome odcinki",
                         "expert": "Ekspercka – niebezpieczny teren dookoła",
                         "intermediate": "Średnia – strome fragmenty",
-                        "novice": "Początkujący – płaska, niewymagająca wysiłku"
+                        "novice": "Dla początkujących – płaska, niewymagająca wysiłku"
                     },
-                    "placeholder": "Łatwa, Średnia, Zaawansowana..."
+                    "placeholder": "Łatwa, Średnia, Trudna..."
                 },
                 "piste/difficulty_skitour": {
                     "options": {
-                        "advanced": "Zaawansowana – S: 40-45° nachylenia",
+                        "advanced": "Trudna – S: 40-45° nachylenia",
                         "easy": "Łatwa – WS: 30-35° nachylenia",
                         "expert": "Ekspercka – SS: 45–50° nachylenia",
-                        "extreme": "Ekstremalna – EX: >55° nachylenia",
+                        "extreme": "Ekstremalnie trudna – EX: >55° nachylenia",
                         "freeride": "Freeride – AS: 50–55° nachylenia",
                         "intermediate": "Średnia – ZS: 35-40° nachylenia",
-                        "novice": "Początkujący – L: <30° nachylenia"
+                        "novice": "Dla początkujących – L: <30° nachylenia"
                     },
-                    "placeholder": "Łatwa, Średnia, Zaawansowana..."
+                    "placeholder": "Łatwa, Średnia, Trudna..."
                 },
                 "piste/grooming": {
-                    "label": "Ratrakowanie",
+                    "label": "Przygotowanie trasy",
                     "options": {
-                        "backcountry": "Obozowisko",
-                        "classic": "Frez klasyczny",
-                        "classic+skating": "Multifrez",
+                        "backcountry": "Dzika – bez ratrakowania",
+                        "classic": "Tradycyjne",
+                        "classic+skating": "Do stylu klasycznego i łyżwowego",
                         "mogul": "Muldy",
-                        "scooter": "Dla skuterów śnieżnych",
-                        "skating": "Łyżwiarstwo"
+                        "scooter": "Ślady do stylu klasycznego (przez skuter śnieżny)",
+                        "skating": "Do stylu łyżwowego"
                     }
                 },
                 "piste/grooming_downhill": {
                     "options": {
                         "backcountry": "Dzika – bez ratrakowania",
-                        "classic": "Klasycznie",
+                        "classic": "Ratrakowana",
                         "mogul": "Muldy"
                     }
                 },
                 "piste/grooming_hike": {
                     "options": {
                         "backcountry": "Dzika – rakiety śnieżne",
-                        "classic": "Klasyczna – zimowa wspinaczka"
+                        "classic": "Ubita mechanicznie"
                     }
                 },
                 "piste/grooming_nordic": {
                     "options": {
-                        "backcountry": "Dzika, bez ratrakowania",
-                        "classic": "Klasyczna",
-                        "classic+skating": "Klasyczna i skating",
-                        "scooter": "Dla skuterów śnieżnych",
-                        "skating": "Skating"
+                        "backcountry": "Dzika – bez ratrakowania",
+                        "classic": "Ślady do stylu klasycznego",
+                        "classic+skating": "Do stylu klasycznego i łyżwowego",
+                        "scooter": "Ślady do stylu klasycznego (przez skuter śnieżny)",
+                        "skating": "Do stylu łyżwowego"
                     }
                 },
                 "piste/type": {
                     "label": "Rodzaj",
                     "options": {
-                        "connection": "Połączenie",
-                        "downhill": "Downhill",
-                        "hike": "Turystyka piesza",
-                        "ice_skate": "Łyżwiarstwo",
-                        "nordic": "Kombinacja norweska",
-                        "playground": "Nauka jazdy na nartach",
-                        "skitour": "Skitour",
+                        "connection": "Łącznik między wyciągami",
+                        "downhill": "Zjazdowa",
+                        "hike": "Piesza",
+                        "ice_skate": "Łyżwiarska (na lodzie)",
+                        "nordic": "Biegowa",
+                        "playground": "Narciarski plac zabaw",
+                        "skitour": "Skiturowa",
                         "sled": "Tor saneczkowy",
-                        "sleigh": "Sanie",
+                        "sleigh": "Dla zaprzęgów z saniami lub skuterów śnieżnych",
                         "snow_park": "Snowpark"
                     }
                 },
@@ -2758,8 +2802,8 @@
                     "label": "Rodzaj"
                 },
                 "power_supply": {
-                    "label": "Zasilacz",
-                    "terms": "zasilacz"
+                    "label": "Elektryczność",
+                    "terms": "elektryczność"
                 },
                 "preschool": {
                     "label": "Przedszkole"
@@ -2779,7 +2823,7 @@
                     "options": {
                         "manual": "Ręczna",
                         "no": "Brak",
-                        "powered": "Z napędem",
+                        "powered": "Z napędem maszynowym",
                         "yes": "Tak"
                     }
                 },
@@ -2787,8 +2831,8 @@
                     "label": "Rodzaj"
                 },
                 "railway/position": {
-                    "label": "Słupek pikietażu kolejowego",
-                    "placeholder": "Odległość do jednego miejsca po przecinku (123.4)"
+                    "label": "Kilometraż",
+                    "placeholder": "Odległość zaokrąglona do jednego miejsca po przecinku (123.4)"
                 },
                 "railway/signal/direction": {
                     "label": "Kierunek",
@@ -2799,8 +2843,8 @@
                     }
                 },
                 "ramp": {
-                    "label": "Rampa",
-                    "terms": "rampa"
+                    "label": "Pochylnia",
+                    "terms": "pochylnia,rampa,podjazd"
                 },
                 "rating": {
                     "label": "Moc"
@@ -2817,17 +2861,17 @@
                     "options": {
                         "batteries": "Baterie",
                         "cans": "Puszki",
-                        "cardboard": "Karton",
+                        "cardboard": "Kartony",
                         "clothes": "Ubrania",
                         "cooking_oil": "Olej do gotowania",
                         "engine_oil": "Olej silnikowy",
-                        "glass": "Szkło",
-                        "glass_bottles": "Szklane butelki i słoiki",
+                        "glass": "Szkło (hartowane, szyby, lustra itp.)",
+                        "glass_bottles": "Butelki i słoiki szklane",
                         "green_waste": "Bioodpady",
                         "paper": "Papier",
                         "plastic": "Plastik",
-                        "plastic_bottles": "Plastikowe butelki",
-                        "plastic_packaging": "Plastikowe opakowania",
+                        "plastic_bottles": "Butelki plastikowe",
+                        "plastic_packaging": "Opakowania plastikowe",
                         "scrap_metal": "Złom",
                         "shoes": "Obuwie"
                     }
@@ -2841,8 +2885,8 @@
                     "placeholder": "Kontener, Centrum"
                 },
                 "ref": {
-                    "label": "Kod odniesienia",
-                    "terms": "kod referencyjny"
+                    "label": "Oznaczenie (kod/numer)",
+                    "terms": "oznaczenie,kod,numer"
                 },
                 "ref/FR/siret-FR": {
                     "label": "Numer SIRET",
@@ -2863,7 +2907,7 @@
                     "label": "Numer bramki"
                 },
                 "ref_disc_golf_hole": {
-                    "label": "Numer otworu",
+                    "label": "Numer dołka",
                     "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
@@ -2884,11 +2928,11 @@
                     "label": "Numer pomieszczenia"
                 },
                 "ref_route": {
-                    "label": "Numer referencyjny trasy",
-                    "terms": "numer referencyjny trasy"
+                    "label": "Numer trasy",
+                    "terms": "numer trasy"
                 },
                 "ref_runway": {
-                    "label": "Numer pasa startowego",
+                    "label": "Oznaczenie pasa startowego",
                     "placeholder": "np. 01L/19P"
                 },
                 "ref_sector": {
@@ -2898,7 +2942,7 @@
                     "label": "Numer referencyjny przystanku"
                 },
                 "ref_taxiway": {
-                    "label": "Nazwa drogi kołowania",
+                    "label": "Oznaczenie drogi kołowania",
                     "placeholder": "np. A5"
                 },
                 "relation": {
@@ -2933,14 +2977,14 @@
                     "terms": "religia,wyznanie,wierzenie,kult"
                 },
                 "reservation": {
-                    "label": "Rezerwacje",
+                    "label": "Rezerwacja",
                     "options": {
-                        "no": "Nie",
-                        "recommended": "Zalecane",
-                        "required": "Wymagane",
-                        "yes": "Tak"
+                        "no": "Niemożliwa",
+                        "recommended": "Zalecana",
+                        "required": "Wymagana",
+                        "yes": "Możliwa"
                     },
-                    "terms": "rezerwacje"
+                    "terms": "rezerwacja"
                 },
                 "residential": {
                     "label": "Rodzaj"
@@ -2963,7 +3007,7 @@
                     }
                 },
                 "restriction": {
-                    "label": "Rodzaj ograniczenia"
+                    "label": "Rodzaj"
                 },
                 "restrictions": {
                     "label": "Zakazy/nakazy skrętu"
@@ -2987,7 +3031,7 @@
                     "terms": "trasa okólna,trasa okrężna,pętla"
                 },
                 "route": {
-                    "label": "Rodzaj trasy"
+                    "label": "Rodzaj"
                 },
                 "route_master": {
                     "label": "Rodzaj"
@@ -3015,19 +3059,19 @@
                 "sac_scale": {
                     "label": "Stopień trudności turystyki pieszej",
                     "options": {
-                        "alpine_hiking": "T4: Wspinaczka Alpejska",
-                        "demanding_alpine_hiking": "T5: Wymagająca Wspinaczka Alpejska",
-                        "demanding_mountain_hiking": "T3: Wymagająca Wspinaczka Górska",
-                        "difficult_alpine_hiking": "T6: Trudna Wspinaczka Alpejska",
-                        "hiking": "T1: Wędrówki",
-                        "mountain_hiking": "T2: Wspinaczka Górska"
+                        "alpine_hiking": "T4: Wędrówka Alpejska",
+                        "demanding_alpine_hiking": "T5: Wymagająca Wędrówka Alpejska",
+                        "demanding_mountain_hiking": "T3: Wymagająca Wędrówka Górska",
+                        "difficult_alpine_hiking": "T6: Trudna Wędrówka Alpejska",
+                        "hiking": "T1: Wędrówka",
+                        "mountain_hiking": "T2: Wędrówka Górska"
                     },
-                    "placeholder": "Wspinaczka górska, Wspinaczka alpejska...",
+                    "placeholder": "Wędrówka górska, Wędrówka alpejska...",
                     "terms": "stopień trudności turystyki pieszej"
                 },
                 "salt": {
                     "label": "Słone",
-                    "terms": "słone,słony"
+                    "terms": "słone,słony,słona"
                 },
                 "sample_collection": {
                     "label": "Próbki"
@@ -3351,17 +3395,17 @@
                         "volleyball": "Siatkówka"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "Sport"
                 },
-                "sport_pub": {
+                "sport/sport_pub": {
                     "label": "Sport",
-                    "terms": "sport,sporty"
+                    "terms": "sport,sporty,dyscyplina sportowa"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "Sport"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "Sport"
                 },
                 "stars": {
@@ -4043,7 +4087,7 @@
                 },
                 "address": {
                     "name": "Adres",
-                    "terms": "namiar,numer"
+                    "terms": "adres,namiar,numer"
                 },
                 "advertising": {
                     "name": "Nośnik reklamowy",
@@ -4417,8 +4461,8 @@
                     "aliases": "Lekarz medycyny rodzinnej"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Ginekolog",
-                    "terms": "ginekolog,ginekologia"
+                    "name": "Ginekolog / Położnik",
+                    "terms": "ginekolog,ginekologia,położnik,położna,położnictwo"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hematolog",
@@ -4543,6 +4587,10 @@
                     "name": "Bar / fast food",
                     "terms": "bar,fast food,bar mleczny,jadalnia,bistro,knajpa,karczma,gospoda,zajazd,drive-in"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bar z bajglami",
+                    "terms": "bar z bajglami,bajgle"
+                },
                 "amenity/fast_food/burger": {
                     "name": "Bar z burgerami",
                     "terms": "bar z burgerami,burgery"
@@ -4590,6 +4638,10 @@
                     "name": "Bar kanapkowy",
                     "terms": "bar kanapkowy,kanapki,zapiekanki"
                 },
+                "amenity/fast_food/wings": {
+                    "name": "Bar ze skrzydełkami kurczaka",
+                    "terms": "bar ze skrzydełkami kurczaka,skrzydełka kurczaka,kurczak"
+                },
                 "amenity/ferry_terminal": {
                     "name": "Terminal promowy"
                 },
@@ -4635,7 +4687,11 @@
                 },
                 "amenity/ice_cream": {
                     "name": "Lodziarnia",
-                    "terms": "lodziarnia,sklep z lodami,lody,gofry,sorbety,mrożone jogurty"
+                    "terms": "lodziarnia,sklep z lodami,lody,sorbety"
+                },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Bar z mrożonym jogurtem",
+                    "terms": "bar z mrożonym jogurtem,mrożony jogurt"
                 },
                 "amenity/internet_cafe": {
                     "name": "Kafejka internetowa",
@@ -4938,6 +4994,10 @@
                     "name": "Restauracja francuska",
                     "terms": "restauracja francuska,francuska"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Restauracja gruzińska",
+                    "terms": "restauracja gruzińska,kuchnia gruzińska"
+                },
                 "amenity/restaurant/german": {
                     "name": "Restauracja niemiecka",
                     "terms": "restauracja niemiecka,kuchnia niemiecka"
@@ -4974,6 +5034,10 @@
                     "name": "Pizzeria (restauracja)",
                     "terms": "pizzeria,pizzernia,restauracja z pizzą,pizza"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Restauracja z ramenem",
+                    "terms": "restauracja z ramenem,ramen"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Restauracja z owocami morza",
                     "terms": "restauracja z owocami morza,restauracja rybna,owoce morza,ryby"
@@ -4997,6 +5061,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Restauracja turecka",
                     "terms": "restauracja turecka,kuchnia turecka"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Restauracja ukraińska",
+                    "terms": "restauracja ukraińska,kuchnia ukraińska"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Restauracja wietnamska",
@@ -5500,6 +5568,10 @@
                     "name": "Szlaban",
                     "terms": "szlaban"
                 },
+                "barrier/log": {
+                    "name": "Powalone drzewo (przeszkoda na drodze)",
+                    "terms": "powalone drzewo,pień,kłoda"
+                },
                 "barrier/motorcycle_barrier": {
                     "name": "Przegroda przeciw motocyklom",
                     "terms": "przegroda przeciw motocyklom,przegroda motocyklowa,przeszkoda"
@@ -5830,6 +5902,10 @@
                 "club": {
                     "name": "Klub",
                     "terms": "klub"
+                },
+                "club/scout": {
+                    "name": "Harcówka",
+                    "terms": "harcówka,harcerstwo,drużyna harcerska,gromada zuchowa"
                 },
                 "club/sport": {
                     "name": "Klub sportowy",
@@ -6387,18 +6463,19 @@
                     "terms": "korytarz,hall"
                 },
                 "highway/crossing": {
-                    "name": "Przejście"
+                    "name": "Przejście dla pieszych",
+                    "terms": "przejście dla pieszych,przejście,zebra,pasy"
                 },
                 "highway/crossing/traffic_signals": {
-                    "name": "Przejście z sygnałami dla pieszych",
+                    "name": "Przejście dla pieszych z sygnalizacją świetlną",
                     "terms": "przejście dla pieszych z sygnalizacją świetlną,zebra z sygnalizacją świetlną,pasy z sygnalizacją świetlną,przejście dla pieszych ze światłami,zebra ze światłami,pasy ze światłami"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "Oznaczone przejście",
-                    "terms": "oznaczone przejście dla pieszych,oznakowane przejście dla pieszych,oznaczony przejazd rowerowy,oznakowany przejazd rowerowy,zebra"
+                    "name": "Oznakowane przejście dla pieszych",
+                    "terms": "oznakowane przejście dla pieszych,zebra,pasy"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "Nieoznaczone przejście",
+                    "name": "Nieoznakowane przejście przejście dla pieszych",
                     "terms": "nieoznakowane przejście dla pieszych"
                 },
                 "highway/cycleway": {
@@ -6422,12 +6499,16 @@
                     "terms": "przejazd rowerowy z sygnalizacją świetlną,przejazd rowerowy ze światłami"
                 },
                 "highway/cycleway/crossing/uncontrolled": {
-                    "name": "Oznaczony przejazd rowerowy",
+                    "name": "Oznakowany przejazd rowerowy",
                     "terms": "oznakowany przejazd rowerowy"
                 },
                 "highway/cycleway/crossing/unmarked": {
-                    "name": "Nieoznaczony przejazd rowerowy",
+                    "name": "Nieoznakowany przejazd rowerowy",
                     "terms": "nieoznakowany przejazd rowerowy,przejście rowerowe"
+                },
+                "highway/cycleway/moped_link-NL": {
+                    "name": "Łącznik dla motorowerów",
+                    "terms": "łącznik dla motorowerów"
                 },
                 "highway/elevator": {
                     "name": "Winda",
@@ -6469,12 +6550,12 @@
                     "terms": "przejście dla pieszych z sygnalizacją świetlną,zebra z sygnalizacją świetlną,pasy z sygnalizacją świetlną,przejście dla pieszych ze światłami,zebra ze światłami,pasy ze światłami"
                 },
                 "highway/footway/crossing/uncontrolled": {
-                    "name": "Oznaczone przejście",
+                    "name": "Oznakowane przejście dla pieszych",
                     "terms": "oznakowane przejście dla pieszych,zebra,pasy"
                 },
                 "highway/footway/crossing/unmarked": {
-                    "name": "Nieoznaczone przejście",
-                    "terms": "nieoznaczone przejście dla pieszych,nieoznakowane przejście przejście dla pieszych"
+                    "name": "Nieoznakowane przejście przejście dla pieszych",
+                    "terms": "nieoznakowane przejście dla pieszych,nieoznaczone przejście przejście dla pieszych"
                 },
                 "highway/footway/informal": {
                     "name": "Nieformalna ścieżka dla pieszych"
@@ -8131,7 +8212,8 @@
                     "terms": "drzewa,las,puszcza,tajga,las pierwotny,las tropikalny,dżungla,bór,knieja,gaj,zagaj,zagajnik,młodnik,młodniak,zadrzewienie,zalesienie"
                 },
                 "network/type/node_network-DE-NL-BE-LU": {
-                    "name": "Węzeł sieci rekreacyjnej"
+                    "name": "Rekreacyjna sieć węzłowa",
+                    "terms": "rekreacyjna sieć węzłowa"
                 },
                 "noexit/yes": {
                     "name": "Brak przejścia/przejazdu",
@@ -8404,7 +8486,7 @@
                 },
                 "place/city": {
                     "name": "Duże miasto",
-                    "terms": "miasto",
+                    "terms": "miasto,metropolia",
                     "aliases": "Miasto\nMetropolia"
                 },
                 "place/city_block": {
@@ -8416,14 +8498,15 @@
                 },
                 "place/hamlet": {
                     "name": "Przysiółek",
-                    "terms": "mała wioska,przysiółek"
+                    "terms": "przysiółek,kolonia,osada,sioło,wioska",
+                    "aliases": "Kolonia\nOsada"
                 },
                 "place/island": {
                     "name": "Wyspa",
                     "terms": "wyspa"
                 },
                 "place/islet": {
-                    "name": "Wysepka na wodzie",
+                    "name": "Wysepka",
                     "terms": "wysepka,mała wyspa"
                 },
                 "place/isolated_dwelling": {
@@ -8432,11 +8515,12 @@
                 },
                 "place/locality": {
                     "name": "Miejsce nazwane",
-                    "terms": "miejsce"
+                    "terms": "miejsce nazwane"
                 },
                 "place/neighbourhood": {
                     "name": "Sąsiedztwo",
-                    "terms": "osiedle,okolica"
+                    "terms": "sąsiedztwo,osiedle,okolica",
+                    "aliases": "Osiedle"
                 },
                 "place/plot": {
                     "name": "Działka",
@@ -8452,12 +8536,12 @@
                 },
                 "place/suburb": {
                     "name": "Dzielnica",
-                    "terms": "dzielnica,osiedle,gmina"
+                    "terms": "dzielnica,osiedle"
                 },
                 "place/town": {
                     "name": "Małe miasto",
-                    "terms": "miasteczko",
-                    "aliases": "Miasteczko\nProwincja"
+                    "terms": "miasteczko,miasto",
+                    "aliases": "Miasteczko"
                 },
                 "place/village": {
                     "name": "Wieś",
@@ -9399,6 +9483,10 @@
                 "shop/hobby": {
                     "name": "Sklep hobbystyczny"
                 },
+                "shop/honey": {
+                    "name": "Sklep z miodem",
+                    "terms": "sklep z miodem,miód,miody"
+                },
                 "shop/household_linen": {
                     "name": "Sklep z pościelą/ręcznikami",
                     "terms": "sklep z pościelą,sklep z ręcznikami,pościel,prześcieradła,kołdry,poduszki,poszewki,koce,ręczniki,szlafroki,fartuchy,ścierki,ściereczki,obrusy,serwety,serwetki,firany,firanki,zasłony,artykuły gospodarstwa domowego,agd"
@@ -9688,7 +9776,8 @@
                     "terms": "sklep z oponami,wulkanizacja,wulkanizator,wymiana opon,opony,samochody"
                 },
                 "shop/vacant": {
-                    "name": "Pusty lokal sklepowy"
+                    "name": "Pusty lokal sklepowy",
+                    "terms": "pusty lokal sklepowy,nieużytkowany lokal"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Sklep z odkurzaczami",
@@ -9809,8 +9898,8 @@
                     "terms": "kemping,pole kempingowe,pole namiotowe"
                 },
                 "tourism/camp_site/backcountry": {
-                    "name": "Dziki kemping",
-                    "terms": "dziki kemping bez udogodnień,kemping z dala od drogi,nieformalny kemping"
+                    "name": "Obozowisko",
+                    "terms": "obozowisko,baza namiotowa,binduga,dziki kemping,kemping bez udogodnień,kemping z dala od drogi"
                 },
                 "tourism/camp_site/group_only": {
                     "name": "Kemping tylko dla grup",

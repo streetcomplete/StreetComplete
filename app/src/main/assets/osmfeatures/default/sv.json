@@ -807,6 +807,11 @@
                 "consulting": {
                     "label": "Expertis"
                 },
+                "contact/facebook": {
+                    "label": "Facebook-användare eller URL",
+                    "placeholder": "https://www.facebook.com/LokaltFöretag",
+                    "terms": "facebook,facebookanvändare,facebook-användare,url,facebook-url,facebook-address,webb-address"
+                },
                 "contact/webcam": {
                     "label": "URL till webbkamera",
                     "placeholder": "http://exempel.se/"
@@ -1017,8 +1022,10 @@
                         "coffee_shop": "Kaffeaffär",
                         "dessert": "Dessert",
                         "donut": "Munkar",
+                        "filipino": "Filipinsk",
                         "fish": "Fisk",
                         "french": "Fransk",
+                        "georgian": "Georgisk",
                         "german": "Tysk",
                         "greek": "Grekisk",
                         "hot_dog": "Varmkorv",
@@ -1035,6 +1042,7 @@
                         "mexican": "Mexikansk",
                         "pankcake": "Pannkakor",
                         "pasta": "Pasta",
+                        "peruvian": "Peruansk",
                         "pizza": "Pizza",
                         "polish": "Polsk",
                         "portuguese": "Portugisisk",
@@ -1047,8 +1055,10 @@
                         "steak_house": "Stekhus",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesisk",
+                        "tex-mex": "Tex-mex",
                         "thai": "Thai",
                         "turkish": "Turkisk",
+                        "ukrainian": "Ukrainsk",
                         "vietnamese": "Vitnamesisk"
                     },
                     "terms": "mat,kök,matgrupp,regional mat,världens,kost,kostalternativ,meny,menyutbud"
@@ -1272,7 +1282,8 @@
                 "dock": {
                     "label": "Typ",
                     "options": {
-                        "drydock": "Torrdocka"
+                        "drydock": "Torrdocka",
+                        "floating": "Flytande torrdocka"
                     }
                 },
                 "dog": {
@@ -1431,6 +1442,7 @@
                     }
                 },
                 "fire_mains": {
+                    "label": "Distributionstyp",
                     "options": {
                         "dry": "Dedikerat system (normalt torrt)",
                         "no": "Nej",
@@ -2513,11 +2525,13 @@
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Parkeringsorientering",
                     "options": {
                         "diagonal": "Diagonalt i förhållande till gatan (~45°)",
                         "parallel": "Parallellt med gatan",
                         "perpendicular": "Möter gatan i en rät vinkel (~90°)"
                     },
+                    "terms": "parkeringsorientering,orientering,parkering,fickparkering,paring längs gata",
                     "types": {
                         "parking:left:orientation": "Vänster sida",
                         "parking:right:orientation": "Höger sida"
@@ -3332,7 +3346,6 @@
                         "cycling": "Cycling",
                         "disc_golf": "Discgolf",
                         "dog_racing": "Hundkpplöpning",
-                        "equestrian": "Ryttare",
                         "fitness": "Fitness-träning",
                         "free_flying": "Skärmflygning / Paragliding",
                         "futsal": "Futsal",
@@ -3364,19 +3377,6 @@
                         "tennis": "Tennis",
                         "volleyball": "Volleyball"
                     }
-                },
-                "sport_ice": {
-                    "label": "Sporter"
-                },
-                "sport_pub": {
-                    "label": "Sporter",
-                    "terms": "sporer,idrotter,lekar,aktiviteter"
-                },
-                "sport_racing_motor": {
-                    "label": "Sporter"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sporter"
                 },
                 "stars": {
                     "label": "Stjärnor",
@@ -4413,10 +4413,6 @@
                     "name": "Primärvårdsläkare",
                     "terms": "primärvårdsläkare,husläkare,familjeläkare,allmänläkare"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Gynekolog",
-                    "terms": "gynekolog,gynekologi,obstetrik,ägglossning,reproduktiv,kvinnoläkare,kvinnodoktor,kvinnovård"
-                },
                 "amenity/doctors/haematology": {
                     "name": "Hematolog",
                     "terms": "hematolog,anemi,blod,benmärg,hematologi,leukemi,lymfom"
@@ -4637,10 +4633,6 @@
                 "amenity/kindergarten": {
                     "name": "Förskoleområde",
                     "terms": "förskola,dagis,daghem,lekskola,kindergarten,lekis,lekplats"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Kneipp vattenterapi",
-                    "terms": "kneipp vattenterapi,hydrotherapie,kneipp,fotbad. vatten,kallvattenkuranstalt,vattenkur,kallvattenkur"
                 },
                 "amenity/language_school": {
                     "name": "Språkskola",

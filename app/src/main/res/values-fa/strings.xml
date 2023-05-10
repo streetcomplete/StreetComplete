@@ -1328,4 +1328,8 @@
     <string name="lane_narrowing_traffic_calming_chicane">"مانع"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"امتداد حاشیه + جزیره ترافیک"</string>
     <string name="lane_narrowing_traffic_calming_none">"اینجا هیچ خط باریکی وجود ندارد"</string>
+    <string name="quest_tactilePaving_title_steps">"آیا سنگفرش لمسی در بالا و پایین این پله‌ها وجود دارد؟"</string>
+    <string name="quest_tactilePaving_steps_top">"فقط در بالا"</string>
+    <string name="quest_tactilePaving_steps_bottom">"فقط در پایین"</string>
+    <string name="overlay_addresses_no_entrance">"این یک ورودی نیست…"</string>
 </resources>

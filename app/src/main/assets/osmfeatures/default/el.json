@@ -2827,18 +2827,6 @@
                 "sport": {
                     "label": "Αθλήματα"
                 },
-                "sport_ice": {
-                    "label": "Αθλήματα"
-                },
-                "sport_pub": {
-                    "label": "Αθλήματα"
-                },
-                "sport_racing_motor": {
-                    "label": "Αθλήματα"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Αθλήματα"
-                },
                 "stars": {
                     "label": "Αστέρια"
                 },
@@ -3679,9 +3667,6 @@
                 },
                 "amenity/doctors/gastroenterology": {
                     "name": "Γαστρεντερολόγος"
-                },
-                "amenity/doctors/gynaecology": {
-                    "name": "Γυναικολόγος"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Αιματολόγος"

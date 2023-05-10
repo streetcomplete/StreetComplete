@@ -44,29 +44,19 @@
             "phone"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
             "brand",
             "building/levels_building",
             "currency_multi",
             "ele",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "not/name",
-            "opening_hours/covid19",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "second_hand",
             "stroller",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -100,12 +90,9 @@
             "phone"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "air_conditioning",
-            "email",
-            "fax",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours/covid19",
             "wheelchair"
@@ -142,17 +129,14 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "air_conditioning",
             "baby_feeding",
             "building/levels_building",
             "ele",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "height_building",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "not/name",
             "opening_hours/covid19",
@@ -186,8 +170,7 @@
         "moreFields": [
             "height",
             "location",
-            "manufacturer",
-            "material"
+            "manufacturer"
         ],
         "geometry": [
             "point"
@@ -252,11 +235,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "branch_brand",
             "brand",
             "building/levels_building",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "height_building",
             "level",
@@ -323,21 +305,12 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "building/levels_building",
-            "ele",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "product",
-            "ref/vatin",
-            "wheelchair"
+            "product"
         ],
         "geometry": [
             "point",
@@ -360,22 +333,13 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "access_simple",
             "building/levels_building",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "max_age",
-            "min_age",
-            "opening_hours/covid19",
-            "phone",
-            "website",
-            "wheelchair"
+            "min_age"
         ],
         "geometry": [
             "point",
@@ -851,13 +815,10 @@
             "charge_fee"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
-            "opening_hours",
             "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "payment_multi"
         ],
         "geometry": [
             "point",
@@ -1137,14 +1098,12 @@
             "fuel/fuel_multi"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "branch_brand",
             "brand",
             "building",
-            "email",
-            "fax",
             "payment_multi",
             "opening_hours/covid19",
-            "phone",
             "seamark/type",
             "wheelchair"
         ],
@@ -1281,11 +1240,9 @@
             "operator"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -2167,7 +2124,8 @@
         ],
         "tags": {
             "traffic_calming": "table"
-        }
+        },
+        "matchScore": 0.9
     },
     "traffic_calming/rumble_strip": {
         "icon": "temaki-rumble_strip",
@@ -2324,19 +2282,10 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "payment_multi",
-            "opening_hours/covid19",
-            "phone",
-            "ref/vatin",
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -2359,13 +2308,11 @@
             "fireplace"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
             "address",
             "capacity",
             "drinking_water_available",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "kitchen",
             "mattress",
             "reservation",
@@ -2405,16 +2352,12 @@
             "horse_dressage"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "address",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "opening_hours",
-            "opening_hours/covid19",
-            "phone"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "point",
@@ -2435,18 +2378,11 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "branch_brand",
             "brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "point",
@@ -2466,12 +2402,10 @@
             "capacity"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
             "charge_fee",
             "fee",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "payment_multi_fee",
             "phone",
@@ -2500,24 +2434,15 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "building/levels_building",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -2538,18 +2463,15 @@
             "phone",
             "building_area_yes",
             "rooms",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
-            "brand",
             "building/levels_building",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access/ssid",
             "operator",
             "payment_multi",
             "ref/vatin",
@@ -2632,21 +2554,16 @@
             "phone",
             "building_area_yes",
             "rooms",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "building/levels_building",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access/ssid",
-            "payment_multi",
-            "ref/vatin",
             "reservation",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -2666,19 +2583,10 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -2698,20 +2606,17 @@
             "email",
             "phone",
             "building_area_yes",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "building/levels_building",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access/ssid",
             "payment_multi",
             "reservation",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -2729,22 +2634,16 @@
             "capacity/caravans",
             "sanitary_dump_station",
             "power_supply",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
-            "gnis/feature_id-US",
-            "internet_access/ssid",
             "operator",
-            "payment_multi_fee",
-            "phone",
             "reservation",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -2773,21 +2672,17 @@
             "charge_fee"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "backcountry",
             "dog",
             "drinking_water_available",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "group_only",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "nudism",
             "openfire",
             "opening_hours",
             "opening_hours/covid19",
-            "phone",
             "picnic_table",
             "power_supply",
             "ref/vatin",
@@ -2874,22 +2769,13 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours/covid19",
-            "payment_multi_fee",
-            "phone",
-            "ref/vatin",
             "smoking",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -2910,19 +2796,15 @@
             "phone",
             "building_area_yes",
             "rooms",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "building/levels_building",
-            "fax",
             "height_building",
-            "internet_access/ssid",
-            "level",
-            "payment_multi",
             "reservation",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -2940,19 +2822,15 @@
             "address",
             "phone",
             "building_area_yes",
-            "internet_access",
-            "internet_access/fee",
+            "{@templates/internet_access}",
             "fee",
             "payment_multi_fee",
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access/ssid",
-            "reservation",
-            "wheelchair"
+            "{@templates/internet_access}",
+            "{@templates/poi}",
+            "reservation"
         ],
         "geometry": [
             "point",
@@ -3069,20 +2947,15 @@
             "operator",
             "address",
             "building_area_yes",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "building/levels_building",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "height_building",
-            "internet_access/ssid",
-            "phone",
             "toilets",
-            "toilets/wheelchair",
-            "wheelchair"
+            "toilets/wheelchair"
         ],
         "geometry": [
             "point",
@@ -4281,6 +4154,16 @@
             "shop": "household_linen"
         }
     },
+    "shop/honey": {
+        "icon": "maki-shop",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "shop": "honey"
+        }
+    },
     "shop/hifi": {
         "icon": "temaki-speaker",
         "geometry": [
@@ -4355,7 +4238,7 @@
             "opening_hours",
             "payment_multi",
             "phone",
-            "gender"
+            "gender_simple"
         ],
         "tags": {
             "shop": "hairdresser"
@@ -6527,18 +6410,15 @@
             "vehicles",
             "address",
             "building_area",
-            "internet_access"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "air_conditioning",
             "baby_feeding",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -8434,7 +8314,7 @@
         "fields": [
             "name",
             "piste/type",
-            "sport_ice",
+            "sport/sport_ice",
             "oneway",
             "lit"
         ],
@@ -8911,11 +8791,11 @@
         "icon": "maki-suitcase",
         "fields": [
             "{office}",
-            "internet_access"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}",
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -10218,10 +10098,8 @@
             "product"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -10360,10 +10238,8 @@
             "ref"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -10701,7 +10577,6 @@
         ],
         "moreFields": [
             "{highway/footway}",
-            "access",
             "fishing",
             "gnis/feature_id-US",
             "incline"
@@ -10743,10 +10618,8 @@
             "building_area_yes"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -10857,11 +10730,9 @@
             "height"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "phone",
             "seamark/type"
         ],
         "geometry": [
@@ -11431,8 +11302,7 @@
             "mimics"
         ],
         "moreFields": [
-            "{man_made/tower}",
-            "mimics"
+            "{man_made/tower}"
         ],
         "geometry": [
             "point",
@@ -11898,19 +11768,13 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "branch_brand",
             "brand",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours/covid19",
-            "operator",
-            "payment_multi"
+            "operator"
         ],
         "geometry": [
             "point",
@@ -11924,7 +11788,7 @@
         "icon": "temaki-racetrack_oval",
         "fields": [
             "surface",
-            "sport_racing_nonmotor",
+            "sport/sport_racing_nonmotor",
             "lit",
             "width",
             "lanes"
@@ -12003,10 +11867,8 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -12059,13 +11921,8 @@
             "charge_fee"
         ],
         "moreFields": [
-            "access_simple",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "phone"
+            "{@templates/poi}",
+            "access_simple"
         ],
         "geometry": [
             "point",
@@ -12137,12 +11994,10 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "level",
-            "opening_hours/covid19",
-            "phone"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "point",
@@ -12162,16 +12017,10 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "access_simple",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "point",
@@ -12265,13 +12114,11 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "access_simple",
             "dog",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "opening_hours/covid19",
-            "phone",
             "smoking"
         ],
         "geometry": [
@@ -12318,13 +12165,11 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "access_simple",
             "dog",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "phone"
+            "opening_hours/covid19"
         ],
         "tags": {
             "leisure": "nature_reserve"
@@ -12342,11 +12187,9 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "phone"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "area",
@@ -12369,14 +12212,10 @@
             "power_supply"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "phone",
             "seamark/type",
             "vhf"
         ],
@@ -12405,24 +12244,17 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "blind",
             "branch_brand",
             "brand",
             "charge_fee",
             "dog",
-            "email",
-            "fax",
             "fee",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "max_age",
             "min_age",
-            "opening_hours/covid19",
-            "operator",
-            "payment_multi",
-            "wheelchair"
+            "operator"
         ],
         "geometry": [
             "point",
@@ -12437,23 +12269,19 @@
         "fields": [
             "name",
             "seasonal",
-            "sport_ice",
+            "sport/sport_ice",
             "operator",
             "address",
             "building",
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "payment_multi"
         ],
         "geometry": [
             "area",
@@ -12472,13 +12300,11 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "opening_hours",
             "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "payment_multi"
         ],
         "geometry": [
             "point",
@@ -12499,20 +12325,13 @@
             "fee",
             "payment_multi_fee",
             "charge_fee",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -12531,12 +12350,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "{@templates/poi}"
         ],
         "geometry": [
             "area",
@@ -12559,10 +12373,8 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -12613,19 +12425,12 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "branch_brand",
             "brand",
             "charge_fee",
-            "email",
-            "fax",
-            "fee",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi"
+            "fee"
         ],
         "geometry": [
             "point",
@@ -12680,19 +12485,13 @@
             "fee",
             "payment_multi_fee",
             "charge_fee",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -12713,14 +12512,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "dog",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "phone",
             "ref"
         ],
         "geometry": [
@@ -12743,14 +12538,12 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
             "dog",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "lit",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -12776,13 +12569,7 @@
             "dance/style"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -12804,13 +12591,7 @@
             "dance/teaching"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -12847,20 +12628,11 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "min_age",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -12909,11 +12681,9 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "opening_hours/covid19",
-            "phone",
             "smoking"
         ],
         "geometry": [
@@ -12951,22 +12721,12 @@
             "building_area_yes"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "max_age",
             "min_age",
-            "opening_hours",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -12997,7 +12757,7 @@
         "fields": [
             "name",
             "surface",
-            "sport_racing_nonmotor",
+            "sport/sport_racing_nonmotor",
             "lit",
             "width",
             "lanes"
@@ -13021,7 +12781,7 @@
         "fields": [
             "name",
             "surface",
-            "sport_racing_nonmotor",
+            "sport/sport_racing_nonmotor",
             "lit",
             "width",
             "lanes"
@@ -13045,7 +12805,7 @@
         "fields": [
             "name",
             "surface",
-            "sport_racing_nonmotor",
+            "sport/sport_racing_nonmotor",
             "lit",
             "width",
             "lanes"
@@ -14319,10 +14079,8 @@
             "grape_variety"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14362,10 +14120,8 @@
             "name"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "retail"
@@ -14397,10 +14153,8 @@
             "denomination"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "religious"
@@ -14415,10 +14169,8 @@
             "name"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "recreation_ground"
@@ -14448,10 +14200,8 @@
             "resource"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "quarry"
@@ -14465,10 +14215,8 @@
             "plant"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14485,10 +14233,8 @@
             "trees"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
-            "phone",
             "species/wikidata"
         ],
         "geometry": [
@@ -14504,10 +14250,8 @@
             "name"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14539,10 +14283,8 @@
             "operator"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "landfill"
@@ -14555,11 +14297,9 @@
             "industrial"
         ],
         "moreFields": [
-            "operator",
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
-            "phone"
+            "operator"
         ],
         "geometry": [
             "area"
@@ -14576,10 +14316,8 @@
             "operator"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14595,10 +14333,8 @@
             "operator"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14639,10 +14375,8 @@
             "name"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "garages"
@@ -14657,10 +14391,8 @@
             "produce"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14691,10 +14423,8 @@
             "operator"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14712,10 +14442,8 @@
             "produce"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14750,10 +14478,8 @@
             "note"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14768,10 +14494,8 @@
             "name"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14789,10 +14513,8 @@
             "denomination"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area",
@@ -14823,10 +14545,8 @@
             "produce"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "area"
@@ -14846,10 +14566,8 @@
             "plots"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "tags": {
             "landuse": "allotments"
@@ -16265,14 +15983,13 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "address",
             "bin",
             "caravans",
             "drinking_water_available",
-            "email",
-            "fax",
             "opening_hours/covid19",
-            "phone",
             "picnic_table",
             "toilets",
             "wheelchair"
@@ -16330,7 +16047,7 @@
             "name",
             "oneway",
             "surface",
-            "sport_racing_motor",
+            "sport/sport_racing_motor",
             "lit",
             "width",
             "lanes",
@@ -16729,9 +16446,7 @@
             "ref",
             "direction_vertex"
         ],
-        "moreFields": [
-            "ref"
-        ],
+        "moreFields": [],
         "tags": {
             "highway": "milestone"
         }
@@ -16878,7 +16593,9 @@
             "opening_hours/covid19"
         ],
         "geometry": [
-            "vertex"
+            "vertex",
+            "point",
+            "area"
         ],
         "tags": {
             "highway": "elevator"
@@ -16911,6 +16628,25 @@
         ],
         "tags": {
             "highway": "cycleway"
+        }
+    },
+    "highway/crossing": {
+        "fields": [
+            "crossing",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised"
+        ],
+        "moreFields": [
+            "flashing_lights",
+            "kerb"
+        ],
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "highway": "crossing"
         }
     },
     "highway/corridor": {
@@ -17031,19 +16767,6 @@
         "tags": {
             "highway": "bridleway"
         }
-    },
-    "highway/crossing": {
-        "fields": [
-            "crossing"
-        ],
-        "geometry": [
-            "vertex"
-        ],
-        "tags": {
-            "highway": "crossing"
-        },
-        "searchable": false,
-        "matchScore": 0.95
     },
     "highway/bus_stop": {
         "icon": "temaki-bus",
@@ -17825,9 +17548,6 @@
             "crossing/island",
             "crossing_raised"
         ],
-        "moreFields": [
-            "flashing_lights"
-        ],
         "geometry": [
             "vertex"
         ],
@@ -17854,9 +17574,6 @@
             "crossing/markings_yes",
             "crossing_raised"
         ],
-        "moreFields": [
-            "flashing_lights"
-        ],
         "geometry": [
             "vertex"
         ],
@@ -17882,6 +17599,7 @@
             "traffic_signals/vibration"
         ],
         "moreFields": [
+            "kerb",
             "traffic_signals/arrow",
             "traffic_signals/countdown",
             "traffic_signals/minimap"
@@ -17929,9 +17647,6 @@
             "crossing/island",
             "crossing/markings",
             "crossing_raised"
-        ],
-        "moreFields": [
-            "flashing_lights"
         ],
         "geometry": [
             "vertex"
@@ -18400,13 +18115,11 @@
             "access_simple"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
             "air_conditioning",
             "fee",
             "payment_multi_fee",
             "charge_fee",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours",
             "opening_hours/covid19",
@@ -18625,13 +18338,12 @@
             "address",
             "operator",
             "building_area_yes",
-            "email",
+            "phone",
             "website"
         ],
         "moreFields": [
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -18673,8 +18385,7 @@
             "website"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "wheelchair"
         ],
@@ -18882,10 +18593,8 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -20544,12 +20253,10 @@
             "currency_multi"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
             "opening_hours",
-            "opening_hours/covid19",
-            "phone"
+            "opening_hours/covid19"
         ],
         "geometry": [
             "vertex",
@@ -20959,10 +20666,8 @@
             "building_area_yes"
         ],
         "moreFields": [
-            "address",
-            "email",
-            "fax",
-            "phone"
+            "{@templates/contact}",
+            "address"
         ],
         "geometry": [
             "vertex",
@@ -21096,9 +20801,6 @@
             "line"
         ],
         "tags": {
-            "kerb": "rolled"
-        },
-        "addTags": {
             "barrier": "kerb",
             "kerb": "rolled"
         },
@@ -21120,9 +20822,6 @@
             "line"
         ],
         "tags": {
-            "kerb": "raised"
-        },
-        "addTags": {
             "barrier": "kerb",
             "kerb": "raised"
         },
@@ -21144,9 +20843,6 @@
             "line"
         ],
         "tags": {
-            "kerb": "lowered"
-        },
-        "addTags": {
             "barrier": "kerb",
             "kerb": "lowered"
         },
@@ -21167,9 +20863,6 @@
             "line"
         ],
         "tags": {
-            "kerb": "flush"
-        },
-        "addTags": {
             "barrier": "kerb",
             "kerb": "flush"
         },
@@ -21472,6 +21165,10 @@
             "operator",
             "species/wikidata"
         ],
+        "moreFields": [
+            "{attraction}",
+            "opening_hours"
+        ],
         "geometry": [
             "point",
             "area"
@@ -21604,10 +21301,8 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -21675,16 +21370,9 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "charge_fee",
-            "email",
-            "fax",
-            "fee",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi_fee",
-            "phone",
-            "wheelchair"
+            "fee"
         ],
         "geometry": [
             "point",
@@ -21704,7 +21392,6 @@
             "currency_multi"
         ],
         "moreFields": [
-            "ref",
             "blind",
             "branch_brand",
             "brand",
@@ -21733,14 +21420,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "payment_multi",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -21847,10 +21527,8 @@
         ],
         "moreFields": [
             "baby_feeding",
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "polling_station",
             "smoking",
             "wheelchair"
@@ -21925,19 +21603,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "min_age",
-            "payment_multi",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "min_age"
         ],
         "geometry": [
             "point",
@@ -21956,12 +21625,10 @@
             "covered"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
             "booth",
             "fee",
             "indoor",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "lit",
             "model",
@@ -22013,14 +21680,10 @@
             "website"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -22043,16 +21706,8 @@
             "smoking"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "payment_multi",
-            "opening_hours/covid19",
-            "phone",
-            "ref/FR/siret-FR",
-            "wheelchair",
             "fee"
         ],
         "geometry": [
@@ -22074,19 +21729,10 @@
             "social_facility_for"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "baby_feeding",
-            "building_area",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "building_area"
         ],
         "geometry": [
             "point",
@@ -22107,19 +21753,12 @@
             "building_area_yes"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "baby_feeding",
             "branch_brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "phone",
-            "polling_station",
-            "wheelchair"
+            "polling_station"
         ],
         "geometry": [
             "point",
@@ -22222,16 +21861,15 @@
             "building_area"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "capacity",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
             "gnis/feature_id-US",
             "internet_access",
             "internet_access/ssid",
             "level",
-            "phone",
             "polling_station",
             "wheelchair"
         ],
@@ -22279,6 +21917,8 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "bar",
             "branch_brand",
@@ -22286,31 +21926,18 @@
             "brewery",
             "capacity",
             "delivery",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "highchair",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "microbrewery",
             "min_age",
-            "not/name",
-            "opening_hours/covid19",
             "outdoor_seating",
-            "payment_multi",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "reservation",
             "smoking",
-            "sport_pub",
+            "sport/sport_pub",
             "stars",
             "takeaway",
             "toilets",
             "toilets/wheelchair",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -22328,15 +21955,14 @@
             "operator/type",
             "address",
             "website",
-            "internet_access",
-            "internet_access/fee"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "gnis/feature_id-US",
-            "internet_access/ssid",
-            "phone",
+            "toilets",
+            "toilets/wheelchair",
             "wheelchair"
         ],
         "geometry": [
@@ -22361,9 +21987,7 @@
             "source/population"
         ],
         "moreFields": [
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "geometry": [
             "point",
@@ -22416,13 +22040,11 @@
             "recycling_accepts"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "charge_fee",
-            "email",
-            "fax",
             "fee",
             "opening_hours/covid19",
             "payment_multi_fee",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -22448,14 +22070,10 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -22512,18 +22130,8 @@
             "charge_fee"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "opening_hours",
-            "opening_hours/covid19",
-            "payment_multi_fee",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/internet_access}",
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -22544,30 +22152,19 @@
             "brewery"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "cuisine",
             "diet_multi",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "microbrewery",
             "min_age",
-            "opening_hours/covid19",
             "outdoor_seating",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "real_fire-GB-IE",
-            "sport_pub",
+            "sport/sport_pub",
             "toilets",
             "toilets/wheelchair",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -22586,10 +22183,8 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -22610,14 +22205,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -22637,19 +22225,15 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "branch_brand",
             "brand",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours/covid19",
             "ref/FR/siret-FR",
             "payment_multi",
-            "phone",
             "polling_station",
             "wheelchair"
         ],
@@ -22671,8 +22255,7 @@
             "phone"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "opening_hours",
             "opening_hours/covid19",
@@ -22734,16 +22317,12 @@
             "building_area_yes"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "air_conditioning",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -22768,12 +22347,10 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "level",
             "opening_hours/covid19",
-            "phone",
             "polling_station",
             "wheelchair"
         ],
@@ -22795,16 +22372,10 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
             "charge_fee",
-            "email",
-            "fax",
-            "fee",
-            "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "payment_multi_fee",
-            "phone",
-            "wheelchair"
+            "fee"
         ],
         "geometry": [
             "point",
@@ -22825,17 +22396,15 @@
             "service_times"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "air_conditioning",
             "baby_feeding",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "internet_access",
             "internet_access/ssid",
             "level",
             "opening_hours",
             "opening_hours/covid19",
-            "phone",
             "polling_station",
             "wheelchair"
         ],
@@ -22881,17 +22450,9 @@
             "drive_through"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "branch_brand",
-            "brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "brand"
         ],
         "geometry": [
             "point",
@@ -22946,14 +22507,9 @@
             "payment_multi"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "branch_brand",
-            "currency_multi",
-            "email",
-            "fax",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "currency_multi"
         ],
         "geometry": [
             "point",
@@ -23010,15 +22566,13 @@
             "surface"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
             "covered",
-            "email",
-            "fax",
             "maxstay",
             "opening_hours",
             "opening_hours/covid19",
             "park_ride",
-            "phone",
             "ref",
             "supervised",
             "wheelchair"
@@ -23071,16 +22625,8 @@
             "smoking"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "payment_multi",
-            "opening_hours/covid19",
-            "phone",
-            "ref/FR/siret-FR",
-            "wheelchair",
             "fee"
         ],
         "geometry": [
@@ -23101,14 +22647,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -23128,13 +22667,9 @@
             "payment_multi"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "branch_brand",
-            "brand",
-            "email",
-            "fax",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "brand"
         ],
         "geometry": [
             "point",
@@ -23192,13 +22727,8 @@
             "currency_multi"
         ],
         "moreFields": [
-            "branch_brand",
-            "email",
-            "fax",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}",
+            "branch_brand"
         ],
         "geometry": [
             "point",
@@ -23217,10 +22747,8 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -23241,11 +22769,9 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -23264,20 +22790,13 @@
             "address",
             "building_area_yes",
             "rooms",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "min_age",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -23343,24 +22862,15 @@
             "opening_hours",
             "address",
             "ref/isil",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "access_simple",
             "air_conditioning",
             "baby_feeding",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "not/name",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "polling_station",
-            "wheelchair"
+            "polling_station"
         ],
         "geometry": [
             "point",
@@ -23431,16 +22941,12 @@
             "language_multi"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "opening_hours/covid19",
             "payment_multi",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -23454,12 +22960,16 @@
     "amenity/kneipp_water_cure": {
         "icon": "maki-hospital",
         "fields": [
+            "name",
             "kneipp_water_cure_multi",
+            "access_simple",
             "opening_hours",
             "fee"
         ],
         "moreFields": [
-            "opening_hours/covid19"
+            "address",
+            "level",
+            "wheelchair"
         ],
         "geometry": [
             "point",
@@ -23467,10 +22977,6 @@
         ],
         "tags": {
             "amenity": "kneipp_water_cure"
-        },
-        "reference": {
-            "key": "amenity",
-            "value": "kneipp_water_cure"
         }
     },
     "amenity/kindergarten": {
@@ -23484,12 +22990,10 @@
             "preschool"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "capacity",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "internet_access",
-            "internet_access/fee",
             "internet_access/ssid",
             "level",
             "max_age",
@@ -23519,18 +23023,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
             "min_age",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -23548,27 +23044,17 @@
             "operator/type",
             "address",
             "building_area_yes",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
+            "{@templates/internet_access}",
             "phone",
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
             "min_age",
-            "opening_hours",
-            "opening_hours/covid19",
             "outdoor_seating",
-            "payment_multi",
-            "ref/vatin",
-            "ref/FR/siret-FR",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -23588,23 +23074,13 @@
             "outdoor_seating"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "delivery",
             "diet_multi",
             "drive_through",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "ref/FR/siret-FR",
-            "phone",
             "takeaway",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -23640,14 +23116,8 @@
             "emergency"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "phone",
-            "wheelchair"
+            "{@templates/internet_access}",
+            "{@templates/poi}"
         ],
         "geometry": [
             "area",
@@ -23693,10 +23163,8 @@
             "address"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "point",
@@ -23767,17 +23235,8 @@
             "building_area"
         ],
         "moreFields": [
-            "branch_brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "opening_hours",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "ref/FR/siret-FR",
-            "wheelchair"
+            "{@templates/poi}",
+            "branch_brand"
         ],
         "geometry": [
             "point",
@@ -23819,24 +23278,16 @@
             "address",
             "building_area_yes",
             "opening_hours",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "capacity",
             "diet_multi",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "not/name",
-            "opening_hours/covid19",
             "outdoor_seating",
-            "phone",
             "smoking",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -23855,10 +23306,8 @@
             "building_area"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
-            "phone",
             "polling_station",
             "smoking",
             "wheelchair"
@@ -23886,28 +23335,18 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
             "brand",
             "capacity",
             "delivery",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "highchair",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
             "outdoor_seating",
-            "payment_multi",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "smoking",
             "takeaway",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -23926,19 +23365,13 @@
             "building_area_yes",
             "address",
             "website",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "not/name",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -23956,20 +23389,14 @@
             "building_area_yes",
             "address",
             "website",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
             "min_age",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -23990,16 +23417,8 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "license_classes",
-            "opening_hours/covid19",
-            "payment_multi",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}",
+            "license_classes"
         ],
         "geometry": [
             "point",
@@ -24019,14 +23438,8 @@
             "opening_hours"
         ],
         "moreFields": [
-            "license_classes",
-            "email",
-            "fax",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "website",
-            "wheelchair"
+            "{@templates/poi}",
+            "license_classes"
         ],
         "geometry": [
             "point",
@@ -24096,14 +23509,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24124,14 +23530,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24160,14 +23559,7 @@
             "scuba_diving"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24188,14 +23580,7 @@
             "opening_hours"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24217,22 +23602,18 @@
         "icon": "maki-cemetery",
         "fields": [
             "name",
-            "website",
-            "phone",
             "opening_hours",
-            "wheelchair"
+            "wheelchair",
+            "phone",
+            "website"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "address",
-            "email",
-            "fax",
             "gnis/feature_id-US",
             "level",
             "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "website",
-            "wheelchair"
+            "ref/FR/siret-FR"
         ],
         "geometry": [
             "point",
@@ -24251,11 +23632,9 @@
             "building_area_yes"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "gnis/feature_id-US",
             "level",
-            "phone",
             "polling_station",
             "smoking",
             "wheelchair"
@@ -24277,19 +23656,13 @@
             "building_area_yes",
             "address",
             "website",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "not/name",
-            "phone",
-            "smoking",
-            "wheelchair"
+            "smoking"
         ],
         "geometry": [
             "point",
@@ -24335,15 +23708,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
             "baby_feeding",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "phone",
-            "polling_station",
-            "wheelchair"
+            "polling_station"
         ],
         "geometry": [
             "point",
@@ -24361,19 +23729,13 @@
             "operator/type",
             "address",
             "website",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "denomination",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "not/name",
-            "phone",
-            "religion",
-            "wheelchair"
+            "religion"
         ],
         "geometry": [
             "area",
@@ -24421,17 +23783,10 @@
             "opening_hours"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
-            "brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "brand"
         ],
         "geometry": [
             "point",
@@ -24460,18 +23815,11 @@
             "payment_multi"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
             "brand",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "min_age",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "min_age"
         ],
         "geometry": [
             "point",
@@ -24493,21 +23841,17 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/contact}",
+            "{@templates/internet_access}",
             "baby_feeding",
             "capacity",
-            "email",
-            "fax",
             "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
             "max_age",
             "min_age",
             "not/name",
             "opening_hours/covid19",
             "payment_multi",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -24556,21 +23900,11 @@
             "smoking"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
             "level",
-            "min_age",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "ref/FR/siret-FR",
-            "wheelchair"
+            "min_age"
         ],
         "geometry": [
             "point",
@@ -24593,13 +23927,7 @@
             "automated"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24621,12 +23949,10 @@
             "supervised"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "branch_brand",
             "brand",
-            "email",
-            "fax",
             "lit",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -24647,14 +23973,9 @@
             "payment_multi"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "branch_brand",
-            "brand",
-            "email",
-            "fax",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "brand"
         ],
         "geometry": [
             "point",
@@ -24676,10 +23997,8 @@
             "lit"
         ],
         "moreFields": [
-            "email",
-            "fax",
+            "{@templates/contact}",
             "opening_hours/covid19",
-            "phone",
             "wheelchair"
         ],
         "geometry": [
@@ -24699,13 +24018,13 @@
             "building_area_yes",
             "opening_hours",
             "outdoor_seating",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
+            "{@templates/internet_access}",
             "phone",
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "bar",
             "branch_brand",
@@ -24714,24 +24033,14 @@
             "delivery",
             "diet_multi",
             "drive_through",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
             "highchair",
-            "level",
             "min_age",
-            "not/name",
-            "opening_hours/covid19",
-            "payment_multi",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "reservation",
             "smoking",
             "takeaway",
             "toilets",
             "toilets/wheelchair",
-            "website/menu",
-            "wheelchair"
+            "website/menu"
         ],
         "geometry": [
             "point",
@@ -24752,14 +24061,7 @@
             "building_area"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "level",
-            "opening_hours",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -24797,14 +24099,9 @@
             "charge_fee"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "access_simple",
-            "address",
-            "email",
-            "fax",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "address"
         ],
         "geometry": [
             "point",
@@ -24904,15 +24201,9 @@
             "payment_multi_fee"
         ],
         "moreFields": [
+            "{@templates/poi}",
             "address",
-            "covered",
-            "email",
-            "fax",
-            "level",
-            "opening_hours",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "covered"
         ],
         "geometry": [
             "point",
@@ -25008,25 +24299,14 @@
             "brewery"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
             "microbrewery",
-            "opening_hours/covid19",
             "operator",
             "outdoor_seating",
-            "payment_multi",
-            "phone",
-            "ref/vatin",
-            "ref/FR/siret-FR",
             "smoking",
-            "sport_pub",
-            "wheelchair"
+            "sport/sport_pub"
         ],
         "geometry": [
             "point",
@@ -25048,22 +24328,12 @@
             "drive_through"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "air_conditioning",
             "branch_brand",
             "brand",
-            "currency_multi",
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "ref/vatin",
-            "ref/FR/siret-FR",
-            "wheelchair"
+            "currency_multi"
         ],
         "geometry": [
             "point",
@@ -25114,20 +24384,10 @@
             "website"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
+            "{@templates/poi}",
             "charge_fee",
-            "email",
-            "fax",
-            "fee",
-            "gnis/feature_id-US",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "website",
-            "wheelchair"
+            "fee"
         ],
         "geometry": [
             "point",
@@ -25148,13 +24408,7 @@
             "animal_shelter"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -25175,14 +24429,7 @@
             "animal_breeding"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "ref/FR/siret-FR",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -25203,14 +24450,7 @@
             "animal_boarding"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "level",
-            "opening_hours/covid19",
-            "payment_multi",
-            "phone",
-            "wheelchair"
+            "{@templates/poi}"
         ],
         "geometry": [
             "point",
@@ -25285,9 +24525,7 @@
             "building_area_yes"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "phone",
+            "{@templates/contact}",
             "wheelchair"
         ],
         "geometry": [
@@ -25306,11 +24544,10 @@
             "address",
             "building_area_yes",
             "opening_hours",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
+            "{@templates/internet_access}",
             "opening_hours/covid19",
             "ref/FR/siret-FR"
         ],
@@ -25329,9 +24566,11 @@
             "name",
             "building_area",
             "operator",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
+        ],
+        "moreFields": [
+            "{@templates/internet_access}",
+            "{amenity}"
         ],
         "geometry": [
             "point",
@@ -26091,6 +25330,21 @@
             "value": "vietnamese"
         }
     },
+    "amenity/restaurant/ukrainian": {
+        "icon": "maki-restaurant",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "restaurant",
+            "cuisine": "ukrainian"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "ukrainian"
+        }
+    },
     "amenity/restaurant/turkish": {
         "icon": "maki-restaurant",
         "geometry": [
@@ -26179,6 +25433,21 @@
         "reference": {
             "key": "cuisine",
             "value": "seafood"
+        }
+    },
+    "amenity/restaurant/ramen": {
+        "icon": "maki-restaurant-noodle",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "restaurant",
+            "cuisine": "ramen"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "ramen"
         }
     },
     "amenity/restaurant/pizza": {
@@ -26314,6 +25583,21 @@
         "reference": {
             "key": "cuisine",
             "value": "german"
+        }
+    },
+    "amenity/restaurant/georgian": {
+        "icon": "maki-restaurant",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "restaurant",
+            "cuisine": "georgian"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "georgian"
         }
     },
     "amenity/restaurant/french": {
@@ -26864,6 +26148,36 @@
             "lgbtq": "primary"
         }
     },
+    "amenity/ice_cream/frozen_yogurt": {
+        "icon": "maki-ice-cream",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "ice_cream",
+            "cuisine": "frozen_yogurt"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "frozen_yogurt"
+        }
+    },
+    "amenity/fast_food/wings": {
+        "icon": "maki-fast_food",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "fast_food",
+            "cuisine": "wings"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "wings"
+        }
+    },
     "amenity/fast_food/sandwich": {
         "icon": "temaki-sandwich",
         "geometry": [
@@ -27027,6 +26341,21 @@
         "reference": {
             "key": "cuisine",
             "value": "burger"
+        }
+    },
+    "amenity/fast_food/bagel": {
+        "icon": "maki-fast_food",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "fast_food",
+            "cuisine": "bagel"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "bagel"
         }
     },
     "amenity/fast_food/ice_cream": {
@@ -27883,12 +27212,8 @@
             "wikidata"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid",
-            "phone"
+            "{@templates/contact}",
+            "{@templates/internet_access}"
         ],
         "geometry": [
             "area",
@@ -28042,15 +27367,12 @@
             "address",
             "operator",
             "operator/type",
-            "internet_access",
-            "internet_access/fee",
-            "internet_access/ssid"
+            "{@templates/internet_access}"
         ],
         "moreFields": [
-            "email",
-            "fax",
-            "gnis/feature_id-US",
-            "phone"
+            "{@templates/contact}",
+            "{@templates/internet_access}",
+            "gnis/feature_id-US"
         ],
         "geometry": [
             "area",
@@ -28356,5 +27678,90 @@
         },
         "searchable": false,
         "matchScore": 0.2
+    },
+    "@templates/poi": {
+        "fields": [],
+        "moreFields": [
+            "{@templates/contact}",
+            "address",
+            "contact/facebook",
+            "gnis/feature_id-US",
+            "level",
+            "not/name",
+            "opening_hours",
+            "opening_hours/covid19",
+            "payment_multi",
+            "ref/vatin",
+            "ref/FR/siret-FR",
+            "wheelchair"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "@template": "poi"
+        },
+        "searchable": false,
+        "locationSet": {
+            "include": [
+                "999"
+            ],
+            "exclude": [
+                "999"
+            ]
+        },
+        "name": "{point}"
+    },
+    "@templates/internet_access": {
+        "fields": [
+            "internet_access",
+            "internet_access/fee"
+        ],
+        "moreFields": [
+            "internet_access",
+            "internet_access/fee",
+            "internet_access/ssid"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "@template": "internet_access"
+        },
+        "searchable": false,
+        "locationSet": {
+            "include": [
+                "999"
+            ],
+            "exclude": [
+                "999"
+            ]
+        },
+        "name": "{point}"
+    },
+    "@templates/contact": {
+        "fields": [],
+        "moreFields": [
+            "email",
+            "fax",
+            "phone",
+            "website"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "@template": "contact"
+        },
+        "searchable": false,
+        "locationSet": {
+            "include": [
+                "999"
+            ],
+            "exclude": [
+                "999"
+            ]
+        },
+        "name": "{point}"
     }
 }

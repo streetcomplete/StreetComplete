@@ -374,7 +374,7 @@
                     "label": "Type",
                     "options": {
                         "block": "Gros bloc",
-                        "bollard": "Bollard",
+                        "bollard": "Borne",
                         "cattle_grid": "Barrière à bétail",
                         "chain": "Chaîne",
                         "city_wall": "Mur d'enceinte",
@@ -605,7 +605,7 @@
                         "university": "Université - bâtiment universitaire",
                         "warehouse": "Entrepôt"
                     },
-                    "terms": "bâtiment,construction,batiment"
+                    "terms": "batiment,bâtiment,édifice"
                 },
                 "building/flats": {
                     "label": "Unités",
@@ -699,7 +699,8 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "caravans": {
-                    "label": "Camping-car / caravane"
+                    "label": "Camping-car / caravane",
+                    "terms": "camping-car,van aménagé,caravane,remorque de camping,roulotte,mobil-home,fourgon aménagé"
                 },
                 "cash_in": {
                     "label": "Versements"
@@ -771,7 +772,12 @@
                     "label": "Horaires de collecte"
                 },
                 "collector": {
-                    "label": "Objets"
+                    "label": "Objets",
+                    "options": {
+                        "coins": "Pièces",
+                        "comics": "Comics",
+                        "stamps": "Timbres"
+                    }
                 },
                 "colour": {
                     "label": "Couleur",
@@ -804,6 +810,11 @@
                 },
                 "consulting": {
                     "label": "Expertise"
+                },
+                "contact/facebook": {
+                    "label": "Nom d'utilisateur Facebook ou URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness",
+                    "terms": "nom d'utilisateur facebook ou url"
                 },
                 "contact/webcam": {
                     "label": "adresse de visioconférence",
@@ -906,11 +917,11 @@
                     }
                 },
                 "crane/type": {
-                    "label": "Type de Grue",
+                    "label": "Type de grue",
                     "options": {
                         "floor-mounted_crane": "Grue à flèche au sol",
                         "gantry_crane": "Portique de manutention",
-                        "portal_crane": "Grue chargeant un porte-conteneur",
+                        "portal_crane": "Pont roulant",
                         "tower_crane": "Grue à tour",
                         "travel_lift": "Chariot de manutention de bateaux"
                     }
@@ -1015,8 +1026,10 @@
                         "coffee_shop": "Boutique de vente de cafés",
                         "dessert": "Desserts",
                         "donut": "Donuts",
+                        "filipino": "Philippine",
                         "fish": "Poissons",
                         "french": "Française",
+                        "georgian": "Géorgienne",
                         "german": "Allemande",
                         "greek": "Grecque",
                         "hot_dog": "Hot dogs",
@@ -1033,6 +1046,7 @@
                         "mexican": "Mexicaine",
                         "pankcake": "Pancakes",
                         "pasta": "Pâtes",
+                        "peruvian": "Péruvienne",
                         "pizza": "Pizza",
                         "polish": "Polonaise",
                         "portuguese": "Portugaise",
@@ -1045,8 +1059,10 @@
                         "steak_house": "Viandes",
                         "sushi": "Sushi",
                         "taiwanese": "Taïwanais",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Thaïlandaise",
                         "turkish": "Turque",
+                        "ukrainian": "Ukrainienne",
                         "vietnamese": "Vietnamienne"
                     },
                     "terms": "cuisines,types de nourriture,nourriture,type de nourriture"
@@ -1268,7 +1284,12 @@
                     "label": "Type"
                 },
                 "dock": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "drydock": "Cale sèche",
+                        "floating": "Cale sèche flottante",
+                        "tidal": "Dock à marée"
+                    }
                 },
                 "dog": {
                     "label": "Accès aux chiens",
@@ -1966,7 +1987,8 @@
                     "terms": "jonction routière,jonction,carrefour,intersection routière,intersection"
                 },
                 "kerb": {
-                    "label": "Aménagement de trottoir, Abaissement (bateau)"
+                    "label": "Aménagement de trottoir, Abaissement (bateau)",
+                    "terms": "trottoir,bord,bordure"
                 },
                 "kerb/height": {
                     "label": "Hauteur"
@@ -1976,7 +1998,12 @@
                     "terms": "cuisine"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Types de bassin"
+                    "label": "Types de bassin",
+                    "options": {
+                        "arm": "Bassin pour les bras",
+                        "face": "Bassin pour le visage",
+                        "foot": "Bassin pour les pieds"
+                    }
                 },
                 "label": {
                     "label": "Étiquette"
@@ -2382,7 +2409,7 @@
                         "forestry": "Administration forestière",
                         "foundation": "Fondation",
                         "government": "Administration publique",
-                        "graphic_design": "Designer",
+                        "graphic_design": "Graphiste",
                         "guide": "Bureau des guides",
                         "insurance": "Agence d'assurance",
                         "it": "Spécialiste en informatique",
@@ -2867,7 +2894,8 @@
                     "label": "Code ISIL"
                 },
                 "ref/linz/place_id-NZ": {
-                    "label": "Numéro d'identification NZGB"
+                    "label": "Numéro d'identification NZGB",
+                    "terms": "id,ref,référence,lieu,nzgb"
                 },
                 "ref/vatin": {
                     "label": "Numéro d'identifiant TVA",
@@ -3331,7 +3359,7 @@
                         "cycling": "Cyclisme",
                         "disc_golf": "Disc golf",
                         "dog_racing": "Course de chiens",
-                        "equestrian": "Équestre",
+                        "equestrian": "Sports équestres",
                         "fitness": "Fitness",
                         "free_flying": "Parapente",
                         "futsal": "Futsal",
@@ -3365,17 +3393,17 @@
                         "volleyball": "Volley-ball"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "Sports"
                 },
-                "sport_pub": {
-                    "label": "Jeux",
-                    "terms": "jeux,amusements,bar"
+                "sport/sport_pub": {
+                    "label": "Sport",
+                    "terms": "jeux,amusements,sport,sports,eps"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "Sports"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "Sports"
                 },
                 "stars": {
@@ -4199,7 +4227,7 @@
                     "name": "Infrastructure"
                 },
                 "amenity/animal_boarding": {
-                    "name": "Plateforme de chargement d'animaux",
+                    "name": "Pension animalière",
                     "terms": "chargement,animaux,plateforme,cheval,vache,mouton,rampe"
                 },
                 "amenity/animal_breeding": {
@@ -4400,27 +4428,32 @@
                     "terms": "docteur,médecin,medecin,cabinet médical,médecine générale,dermatologue,cardiologue,gynécologue,spécialiste,doctors,doctor"
                 },
                 "amenity/doctors/allergology": {
-                    "name": "Allergologue"
+                    "name": "Allergologue",
+                    "terms": "allergologue,allergie"
                 },
                 "amenity/doctors/cardiology": {
                     "name": "Cardiologue",
                     "terms": "cardiologue,cœur,cardiologie,médecin,docteur"
                 },
                 "amenity/doctors/child_psychiatry": {
-                    "name": "Pédopsychiatre"
+                    "name": "Pédopsychiatre",
+                    "terms": "psychiatre,pédopsychiatre,enfant,ado,adolescent,adolescente"
                 },
                 "amenity/doctors/dermatology": {
-                    "name": "Dermatologue"
+                    "name": "Dermatologue",
+                    "terms": "peau,cheveux,dermatologie,dermatologiste"
                 },
                 "amenity/doctors/gastroenterology": {
-                    "name": "Gastroentérologue"
+                    "name": "Gastroentérologue",
+                    "terms": "gastroentérologue,gastroentérologie,estomac,digestion"
                 },
                 "amenity/doctors/general": {
-                    "name": "Médecin généraliste"
+                    "name": "Médecin généraliste",
+                    "terms": "médecin,médecine,docteur,soignant,soin,généraliste,générale"
                 },
                 "amenity/doctors/gynaecology": {
                     "name": "Gynécologue",
-                    "terms": "gynécologue,santé,femme,reproduction,ovulation,génital"
+                    "terms": "obstétricien,gynécologue,obstétricienne"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hématologue"
@@ -4429,19 +4462,24 @@
                     "name": "Interniste"
                 },
                 "amenity/doctors/nephrology": {
-                    "name": "Néphrologue"
+                    "name": "Néphrologue",
+                    "terms": "néphrologie,néphrologue"
                 },
                 "amenity/doctors/neurology": {
-                    "name": "Neurologue"
+                    "name": "Neurologue",
+                    "terms": "neurologie,neurologue"
                 },
                 "amenity/doctors/neurosurgery": {
-                    "name": "Neurochirurgien"
+                    "name": "Neurochirurgien",
+                    "terms": "neurochirurgien,neurochirurgie,cerveau"
                 },
                 "amenity/doctors/oncology": {
-                    "name": "Oncologue"
+                    "name": "Oncologue",
+                    "terms": "oncologiste,oncologie,tumeur,cancer,chimiothérapie"
                 },
                 "amenity/doctors/ophthalmology": {
-                    "name": "Ophtalmologue"
+                    "name": "Ophtalmologue",
+                    "terms": "ophtalmologie,ophtalmologue"
                 },
                 "amenity/doctors/orthopaedics": {
                     "name": "Chirurgien orthopédique"
@@ -4450,13 +4488,15 @@
                     "name": "Otorhinolaryngologiste"
                 },
                 "amenity/doctors/paediatrics": {
-                    "name": "Pédiatre"
+                    "name": "Pédiatre",
+                    "terms": "pédiatrie,pédiatre"
                 },
                 "amenity/doctors/pathology": {
                     "name": "Anatomopathologiste"
                 },
                 "amenity/doctors/plastic_surgery": {
-                    "name": "Chirurgien plastique"
+                    "name": "Chirurgien plastique",
+                    "terms": "chirurgien plasticien,plasticien,chirurgie plastique"
                 },
                 "amenity/doctors/podiatry": {
                     "name": "Podologue"
@@ -4465,16 +4505,20 @@
                     "name": "Proctologue"
                 },
                 "amenity/doctors/psychiatrist": {
-                    "name": "Psychiatre"
+                    "name": "Psychiatre",
+                    "terms": "psychiatrie,psychiatre"
                 },
                 "amenity/doctors/pulmonology": {
-                    "name": "Pneumologue"
+                    "name": "Pneumologue",
+                    "terms": "pneumologue"
                 },
                 "amenity/doctors/radiology": {
-                    "name": "Radiologue"
+                    "name": "Radiologue",
+                    "terms": "radiologie,radiologue"
                 },
                 "amenity/doctors/rheumatology": {
-                    "name": "Rhumatologue"
+                    "name": "Rhumatologue",
+                    "terms": "rhumatologiste"
                 },
                 "amenity/doctors/surgery": {
                     "name": "Chirurgien généraliste"
@@ -4483,7 +4527,8 @@
                     "name": "Chirurgien traumatologue"
                 },
                 "amenity/doctors/urology": {
-                    "name": "Urologue"
+                    "name": "Urologue",
+                    "terms": "urine,urologue,urologie"
                 },
                 "amenity/dojo": {
                     "name": "Dojo",
@@ -4519,6 +4564,10 @@
                 "amenity/fast_food": {
                     "name": "Restauration rapide",
                     "terms": "fast food,restauration rapide,service au comptoir,vente à emporter,à emporter,a emporter,burger,sandwich,kebab,kébab,panini,tacos"
+                },
+                "amenity/fast_food/bagel": {
+                    "name": "Restaurant de bagel",
+                    "terms": "restaurant,fast-food,bagel"
                 },
                 "amenity/fast_food/burger": {
                     "name": "Fast food de burger",
@@ -4567,6 +4616,10 @@
                     "name": "Sandwicherie",
                     "terms": "sandwich,salade,panini"
                 },
+                "amenity/fast_food/wings": {
+                    "name": "Restaurant d'ailes de poulet",
+                    "terms": "restaurant d'ailes de poulet,wings,poulet,fast-food"
+                },
                 "amenity/ferry_terminal": {
                     "name": "Terminal de ferry"
                 },
@@ -4614,6 +4667,10 @@
                     "name": "Magasin de crèmes glacées",
                     "terms": "magasin de glaces"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Magasin de yaourt glacé",
+                    "terms": "yaourt glacé,restaurant,frozen yogurt"
+                },
                 "amenity/internet_cafe": {
                     "name": "Cybercafé",
                     "terms": "café internet,cybercafé,internet café"
@@ -4627,8 +4684,8 @@
                     "terms": "créche,crêche,creche,nurserie,garde d'enfants,halte-garderie,nourricerie,childcare,kindergarten,jardin d'enfants,enfant"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Cure par l'eau Kneipp",
-                    "terms": "cure,kneipp"
+                    "name": "Bain Kneipp",
+                    "terms": "bain,piscine,eau,pied,hydrothérapie,thérapie,soin,kneipp"
                 },
                 "amenity/language_school": {
                     "name": "École de langues",
@@ -4907,6 +4964,10 @@
                     "name": "Restaurant français",
                     "terms": "restaurant français,restaurant francais,cuisine française,cuisine francaise"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Restaurant géorgien",
+                    "terms": "restaurant géorgien,géorgie"
+                },
                 "amenity/restaurant/german": {
                     "name": "Restaurant allemand",
                     "terms": "restaurant allemand,café,bar"
@@ -4928,7 +4989,8 @@
                     "terms": "restaurant japonais,café,bar,sushi,maki,miso"
                 },
                 "amenity/restaurant/korean": {
-                    "name": "Restaurant coréen"
+                    "name": "Restaurant coréen",
+                    "terms": "restaurant coréen,corée,café,bar"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "Restaurant mexicain",
@@ -4942,12 +5004,17 @@
                     "name": "Pizzeria",
                     "terms": "pizzeria,pizza"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Restaurant de ramen",
+                    "terms": "restaurant,ramen,nouilles"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Restaurant de fruits de mer",
                     "terms": "restaurant de fruits de mer,bar,café,poisson,crabe,crustacés,huitres,moules,coquillages"
                 },
                 "amenity/restaurant/spanish": {
-                    "name": "Restaurant espagnol"
+                    "name": "Restaurant espagnol",
+                    "terms": "restaurant espagnol,castillan,café,bar"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steakhouse",
@@ -4964,6 +5031,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Restaurant turc",
                     "terms": "restaurant turc,café,bar"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Restaurant ukrainien",
+                    "terms": "restaurant ukrainien"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Restaurant vietnamien",
@@ -5018,7 +5089,8 @@
                     "terms": "soins ambulatoires"
                 },
                 "amenity/social_facility/assisted_living": {
-                    "name": "EPHAD"
+                    "name": "EPHAD",
+                    "terms": "maison de retraite,ehpad,maison de repos"
                 },
                 "amenity/social_facility/food_bank": {
                     "name": "Banque alimentaire",
@@ -5037,7 +5109,8 @@
                     "terms": "maison de repis,maison de convalescence,maison de retraite médicalisée"
                 },
                 "amenity/stripclub": {
-                    "name": "Club de strip-tease"
+                    "name": "Club de strip-tease",
+                    "terms": "strip club,club de strip-tease,strip-tease"
                 },
                 "amenity/studio": {
                     "name": "Studio",
@@ -5343,11 +5416,11 @@
                     "terms": "bloc de béton,rocher,obstacle,block"
                 },
                 "barrier/bollard": {
-                    "name": "Poteau",
+                    "name": "Borne",
                     "terms": "poteau,potelet,borne escamotable,borne,bollard,pilier"
                 },
                 "barrier/bollard_line": {
-                    "name": "Ligne de poteaux",
+                    "name": "Rangée de bornes",
                     "terms": "alignement de poteaux,poteaux,potelet,borne,bollard,pilier"
                 },
                 "barrier/border_control": {
@@ -5530,7 +5603,7 @@
                 },
                 "building": {
                     "name": "Bâtiment",
-                    "terms": "bâtiment,batiment,édifice,construction,bâtisse,building,immeuble,maison,tour,résidence,habitation,hlm"
+                    "terms": "batiment,édifice,construction,bâtisse,building,immeuble,maison,tour,résidence,habitation,hlm"
                 },
                 "building/allotment_house": {
                     "name": "Maison de lotissement",
@@ -5787,7 +5860,8 @@
                     "terms": "club,association,mouvement de jeunesse,scout,guide"
                 },
                 "club/scout": {
-                    "name": "Groupe de scout"
+                    "name": "Groupe de scout",
+                    "terms": "groupe de scout,scouts,scoutisme"
                 },
                 "club/sport": {
                     "name": "Club de sport",
@@ -6147,7 +6221,8 @@
                     "terms": "entrée,porte,accès,principal,principale"
                 },
                 "entrance/staircase": {
-                    "name": "Entrée d'escalier"
+                    "name": "Entrée d'escalier",
+                    "terms": "escaliers,escalier,cage d'escalier,vestibule,entrée d'escalier,accès d'escalier"
                 },
                 "ford": {
                     "name": "Gué",
@@ -6223,13 +6298,16 @@
                     "terms": "chiropraticien,chiropracteur"
                 },
                 "healthcare/alternative/homeopathy": {
-                    "name": "Homéopathe"
+                    "name": "Homéopathe",
+                    "terms": "homéopathe,homéopathie"
                 },
                 "healthcare/alternative/naturopathy": {
-                    "name": "Naturopathe"
+                    "name": "Naturopathe",
+                    "terms": "naturopathe,naturopathie"
                 },
                 "healthcare/alternative/osteopathy": {
-                    "name": "Ostéopathe"
+                    "name": "Ostéopathe",
+                    "terms": "ostéopathe,ostéopathie"
                 },
                 "healthcare/alternative/traditional_chinese_medicine": {
                     "name": "Médecine traditionnelle chinoise"
@@ -6328,7 +6406,8 @@
                     "terms": "corridor intérieur"
                 },
                 "highway/crossing": {
-                    "name": "Passage piéton"
+                    "name": "Passage piéton",
+                    "terms": "passage piéton"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Passage piéton avec feux de signalisation",
@@ -7077,7 +7156,8 @@
                     "terms": "jardin,communautaire,familial,partagé,associatif,collectif"
                 },
                 "leisure/garden/residential": {
-                    "name": "Jardin résidentiel"
+                    "name": "Jardin résidentiel",
+                    "terms": "jardin résidentiel,jardin domestique,jardin privé,cour arrière,cour avant,espace vert,parterre"
                 },
                 "leisure/golf_course": {
                     "name": "Parcours de golf",
@@ -7207,7 +7287,7 @@
                     "terms": "terrain de cricket"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Terrain de rodéo",
+                    "name": "Terrain d'équitation",
                     "terms": "terrain,arène,cheval,équitation,rodéo"
                 },
                 "leisure/pitch/field_hockey": {
@@ -7469,13 +7549,15 @@
                 },
                 "man_made/crane": {
                     "name": "Grue",
-                    "terms": "grue"
+                    "terms": "grue,portique,pont roulant,palan"
                 },
                 "man_made/crane/gantry_crane": {
-                    "name": "Portique de manutention"
+                    "name": "Portique de manutention",
+                    "terms": "portique,grue,pont roulant,levage"
                 },
                 "man_made/crane/portal_crane": {
-                    "name": "Grue"
+                    "name": "Pont roulant",
+                    "terms": "pont,roulant,manutention,levage,grue"
                 },
                 "man_made/cross": {
                     "name": "Croix",
@@ -7502,7 +7584,8 @@
                     "terms": "mât de drapeau,hampe,drapeau"
                 },
                 "man_made/gantry": {
-                    "name": "Portique"
+                    "name": "Portique de signalisation",
+                    "terms": "portique,support,structure,signalisation,routier,routière,autoroute"
                 },
                 "man_made/gasometer": {
                     "name": "Gazomètre",
@@ -7617,7 +7700,8 @@
                     "terms": "station de pompage,pompage,pompe"
                 },
                 "man_made/quay": {
-                    "name": "Quai"
+                    "name": "Quai",
+                    "terms": "quai,docks"
                 },
                 "man_made/reservoir_covered": {
                     "name": "Réservoir couvert",
@@ -7640,7 +7724,8 @@
                     "terms": "armoire,box,cabinet,technique,fibre,télécommunication,contrôle,lampadaires,électrique,gaz,électricité"
                 },
                 "man_made/street_cabinet/postal_service": {
-                    "name": "Relais postal"
+                    "name": "Relais postal",
+                    "terms": "boîte postale,dépôt postal,courrier,boîte aux lettres,service postal,envoi postal,distribution du courrier"
                 },
                 "man_made/street_cabinet/traffic_control": {
                     "name": "Système de régulation du trafic"
@@ -7861,7 +7946,8 @@
                     "terms": "pic,mont"
                 },
                 "natural/peninsula": {
-                    "name": "Péninsule"
+                    "name": "Péninsule",
+                    "terms": "baie,cap,littoral,érosion,promontoire,île,îlot,presqu'île"
                 },
                 "natural/reef": {
                     "name": "Récif",
@@ -8107,7 +8193,8 @@
                     "terms": "fournisseur d'énergie,électricité"
                 },
                 "office/engineer": {
-                    "name": "Bureau d'études et d'ingénierie"
+                    "name": "Bureau d'études et d'ingénierie",
+                    "terms": "ingénieur civil,ingénieur électricien,ingénieur,bureau d'études,ingénieur mécanique,ingénieur structure,ingénieur technique,cabinet d'ingénierie,société d'ingénierie"
                 },
                 "office/estate_agent": {
                     "name": "Agence immobilière",
@@ -8146,7 +8233,8 @@
                     "terms": "bureau des impôts"
                 },
                 "office/graphic_design": {
-                    "name": "Designer"
+                    "name": "Graphiste",
+                    "terms": "bureau,cabinet,graphiste,designer,graphique"
                 },
                 "office/guide": {
                     "name": "Bureau des guides",
@@ -8162,7 +8250,7 @@
                 },
                 "office/lawyer": {
                     "name": "Cabinet d'avocats",
-                    "terms": "cabinet d'avocats"
+                    "terms": "cabinet,bureau,avocat,juriste"
                 },
                 "office/lawyer/notary": {
                     "name": "Notaire"
@@ -8252,7 +8340,8 @@
                     "terms": "infrastructure,batiment,sous-station,valve,inspection,pipeline,canalisation,oléoduc"
                 },
                 "pipeline/valve": {
-                    "name": "Valve pour canalisations"
+                    "name": "Vanne de canalisation",
+                    "terms": "vanne,déversoir,bonde,robinet,obturateur,pipeline,canalisation,tuyau"
                 },
                 "piste/downhill": {
                     "name": "Piste de ski alpin",
@@ -8579,7 +8668,8 @@
                     "terms": "pylone électrique,poteau électrique"
                 },
                 "power/portal": {
-                    "name": "Portail d'ancrage"
+                    "name": "Portique (électricité)",
+                    "terms": "portique,support,structure,câble,électrique,électricité"
                 },
                 "power/substation": {
                     "name": "Sous-station",
@@ -9284,6 +9374,10 @@
                 "shop/hobby": {
                     "name": "Magasin pour hobby (non spécifié)"
                 },
+                "shop/honey": {
+                    "name": "Magasin de miel",
+                    "terms": "magasin de miel,miel,apiculture,apiculteur,apicultrice"
+                },
                 "shop/household_linen": {
                     "name": "Magasin de linge de maison",
                     "terms": "magasin de linge de maison,linge,lit,toilette,ménage,table,rideaux,voilage,mouchoir,drap,couverture,taie,gants,serviette,torchon,nappe"
@@ -9573,7 +9667,8 @@
                     "terms": "magasin de pneus"
                 },
                 "shop/vacant": {
-                    "name": "Commerce désaffecté"
+                    "name": "Commerce désaffecté",
+                    "terms": "espace vacant,lot vacant"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Magasin d'électroménager de nettoyage",
@@ -9654,7 +9749,7 @@
                 },
                 "tourism/artwork": {
                     "name": "Œuvre d'art",
-                    "terms": "œuvre d'art,œuvre artistique,statue,peinture,sculpture,fresque,mosaïque,graffiti"
+                    "terms": "oeuvre d'art,oeuvre,artistique,art,statue,peinture,sculpture,fresque,mosaïque,graffiti"
                 },
                 "tourism/artwork/bust": {
                     "name": "Buste",
@@ -9801,7 +9896,7 @@
                     "terms": "parc safari,safari,zoo,parc animalier"
                 },
                 "tourism/zoo/wildlife": {
-                    "name": "Réserve naturelle",
+                    "name": "Parc animalier",
                     "terms": "réserve naturelle,parc animalier,zoo,parc naturel,parc faunique"
                 },
                 "traffic_calming": {
@@ -9864,7 +9959,8 @@
                     "terms": "limitation de vitesse,limite de vitesse,vitesse max,vitesse limite"
                 },
                 "traffic_sign/variable_message": {
-                    "name": "Panneau numérique"
+                    "name": "Panneau à messages variables",
+                    "terms": "panneau,signalisation,pmv,message,lumineux"
                 },
                 "type/boundary": {
                     "name": "Frontière",

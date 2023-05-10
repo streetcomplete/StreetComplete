@@ -2316,15 +2316,6 @@
                 "sport": {
                     "label": "Urheilulajit"
                 },
-                "sport_ice": {
-                    "label": "Urheilulajit"
-                },
-                "sport_racing_motor": {
-                    "label": "Urheilulajit"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Urheilulajit"
-                },
                 "stars": {
                     "label": "Tähtiluokitus"
                 },

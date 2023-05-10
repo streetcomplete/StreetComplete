@@ -1299,4 +1299,5 @@ Most akarja elmozdítani?"</string>
     <string name="street_parking_staggered_on_street">"Az utcán felváltva, mindkét oldalon"</string>
     <string name="street_parking_staggered_half_on_kerb">"Részben az utca váltakozó oldalain"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Keresse a hangszórókat. Nem minden hangjelzés aktiválható gombnyomással."</string>
+    <string name="quest_amenityCover_title">"Ez fedett (védett az esőtől)?"</string>
 </resources>

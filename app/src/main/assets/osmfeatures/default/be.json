@@ -1,0 +1,108 @@
+{
+    "be": {
+        "presets": {
+            "categories": {
+                "category-barrier": {
+                    "name": "Перашкоды"
+                },
+                "category-building": {
+                    "name": "Будынкі"
+                },
+                "category-golf": {
+                    "name": "Аб'екты на полі для гольфа"
+                },
+                "category-landuse": {
+                    "name": "Аб'екты землекарыстання"
+                },
+                "category-natural": {
+                    "name": "Прыродныя аб'екты"
+                },
+                "category-path": {
+                    "name": "Шлях"
+                },
+                "category-playground": {
+                    "name": "Абсталяванне дзіцячай пляцоўкі"
+                },
+                "category-rail": {
+                    "name": "Рэйкі"
+                },
+                "category-restriction": {
+                    "name": "Забароненыя аб'екты"
+                },
+                "category-road_major": {
+                    "name": "Асноўныя дарогі"
+                },
+                "category-road_minor": {
+                    "name": "Малазначныя дарогі"
+                },
+                "category-road_service": {
+                    "name": "Службовыя дарогі"
+                },
+                "category-route": {
+                    "name": "Аб'екты маршрутаў"
+                },
+                "category-utility": {
+                    "name": "Іншыя аб'екты"
+                },
+                "category-water": {
+                    "name": "Водныя паверхні"
+                },
+                "category-waterway": {
+                    "name": "Водныя шляхі"
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "Агульны доступ"
+                },
+                "address": {
+                    "label": "Адрас",
+                    "placeholders": {
+                        "city": "Горад",
+                        "postcode": "Паштовы індэкс",
+                        "street": "Вуліца"
+                    }
+                },
+                "atm": {
+                    "label": "Банкамат"
+                },
+                "bin": {
+                    "label": "Кошык для смецця"
+                },
+                "building/levels": {
+                    "label": "Колькасць паверхаў"
+                },
+                "charge_fee": {
+                    "placeholder": "1 BYN, 2 USD, 10 EUR…"
+                },
+                "charge_toll": {
+                    "placeholder": "1 BYN, 2 USD, 10 EUR…"
+                },
+                "check_date": {
+                    "placeholder": "ГГГГ-ММ-ДД"
+                },
+                "clothes": {
+                    "label": "Адзенне",
+                    "options": {
+                        "babies": "Адзенне для немаўлят",
+                        "children": "Дзіцячае адзенне",
+                        "denim": "Джынсы",
+                        "fur": "Футра",
+                        "hats": "Капелюшы",
+                        "maternity": "Адзенне для цяжарных",
+                        "men": "Мужчынскае адзенне",
+                        "socks": "Шкарпеткі",
+                        "sports": "Спартыўнае адзенне",
+                        "traditional": "Народны строй / Традыцыйнае адзенне",
+                        "underwear": "Майткі",
+                        "wedding": "Шлюбнае адзенне",
+                        "women": "Жаночае адзенне"
+                    }
+                },
+                "country_flag": {
+                    "label": "Дзяржаўны сцяг"
+                }
+            }
+        }
+    }
+}

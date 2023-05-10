@@ -1327,4 +1327,8 @@ Vil du flytte det nu?"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chikane"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Forlængelse af kantsten + midterhelle"</string>
     <string name="lane_narrowing_traffic_calming_none">"Ingen indsnævring af kørebane her"</string>
+    <string name="quest_tactilePaving_title_steps">"Er der taktil belægning ved toppen og bunden af disse trin?"</string>
+    <string name="quest_tactilePaving_steps_top">"Kun ved toppen"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Kun ved bunden"</string>
+    <string name="overlay_addresses_no_entrance">"Det er ikke en indgang…"</string>
 </resources>

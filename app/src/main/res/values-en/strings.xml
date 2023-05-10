@@ -1534,6 +1534,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
+    <string name="quest_tactilePaving_title_steps">Is there tactile paving at the top and bottom of these steps?</string>
+    <string name="quest_tactilePaving_steps_top">"Only at the top"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Only at the bottom"</string>
 
     <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
 
@@ -1628,6 +1631,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_addresses">Addresses</string>
+    <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>

@@ -1312,4 +1312,5 @@ Pārvietot tagad?"</string>
     <string name="unknown_surface_title">"Cita veida virsma"</string>
     <string name="overlay_surface">"Virsmas"</string>
     <string name="overlay_path_surface_segregated">"Sadalīt velosipēdu un gājēju daļās"</string>
+    <string name="quest_crossing_title2">"Vai šeit ir pāreja?"</string>
 </resources>

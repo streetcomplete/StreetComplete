@@ -1171,7 +1171,7 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_building_entrance_emergency_exit">"Pouze nouzový východ"</string>
     <string name="quest_building_entrance_shop">"Vstup do obchodu"</string>
     <string name="quest_building_entrance_yes">"Jiný druh vchodu"</string>
-    <string name="quest_building_entrance_dead_end">"Slepá ulička, žádný vstup"</string>
+    <string name="quest_building_entrance_dead_end">"Slepá ulička, žádný vchod"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotkněte se pro zahájení měření"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Je tu veřejně přístupná pumpička (alespoň pokud je otevřeno)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Je tam fungující pumpička na kolo?"</string>
@@ -1334,4 +1334,8 @@ Chcete ho posunout?"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Rozšíření obrubníku + dopravní ostrůvek"</string>
     <string name="lane_narrowing_traffic_calming_none">"Žádný zúžený pruh"</string>
+    <string name="quest_tactilePaving_title_steps">"Mají tyto schody nahoře a dole hmatovou dlažbu?"</string>
+    <string name="quest_tactilePaving_steps_top">"Jen nahoře"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Jen dole"</string>
+    <string name="overlay_addresses_no_entrance">"Toto není vchod…"</string>
 </resources>

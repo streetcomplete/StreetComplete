@@ -2186,15 +2186,6 @@
                 "sport": {
                     "label": "ورزش‌ها"
                 },
-                "sport_ice": {
-                    "label": "ورزش‌ها"
-                },
-                "sport_racing_motor": {
-                    "label": "ورزش‌ها"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "ورزش‌ها"
-                },
                 "stars": {
                     "label": "ستاره ها",
                     "terms": "چندستاره، ستاره، رتبه، امتیاز"
@@ -3087,10 +3078,6 @@
                 "amenity/kindergarten": {
                     "name": "محوطه پیش‌دبستانی / مهدکودک",
                     "terms": "پیش‌دبستانی ، مهد کودک"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "تصفیه آب سباستین کنیپ / آب درمانی Kneipp",
-                    "terms": "روش درمانی ابداع شده توسط سباستین کنیپ در آلمان ، نوعی آبدرمانی"
                 },
                 "amenity/language_school": {
                     "name": "آموزشگاه زبان",

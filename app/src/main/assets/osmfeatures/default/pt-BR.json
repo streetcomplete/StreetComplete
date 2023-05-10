@@ -289,24 +289,25 @@
                 "athletics_pitch": {
                     "label": "Modalidade",
                     "options": {
-                        "discus_throw": "Lançamento de Disco",
+                        "discus_throw": "Lançamento de disco",
                         "hammer_throw": "Lançamento de Martelo",
-                        "high_jump": "Salto em Altura",
-                        "javelin_throw": "Lançamento de Dardo",
-                        "long_jump": "Salto em Distância",
+                        "high_jump": "Salto em altura",
+                        "javelin_throw": "Lançamento de dardo",
+                        "long_jump": "Salto em distância",
                         "pole_vault": "Salto com Vara",
-                        "shot_put": "Arremesso de Peso",
+                        "shot_put": "Arremesso de peso",
                         "triple_jump": "Salto Triplo"
                     }
                 },
                 "athletics_track": {
                     "label": "Modalidade",
                     "options": {
-                        "javelin_throw": "Lançamento de Dardo",
+                        "javelin_throw": "Lançamento de dardo",
                         "long_jump": "Salto em Distância",
                         "pole_vault": "Salto com Vara",
                         "running": "Corrida",
                         "sprint": "Corridas de Velocidade",
+                        "steeplechase": "Corridas com obstáculos",
                         "triple_jump": "Salto triplo"
                     }
                 },
@@ -316,13 +317,19 @@
                 "attraction": {
                     "label": "Tipo",
                     "options": {
+                        "alpine_coaster": "Montanha russa alpina",
+                        "amusement_ride": "Brinquedo de parque de diversões",
+                        "animal": "Cercado para animais",
                         "big_wheel": "Roda gigante",
                         "bumper_car": "Carrinhos de choque",
+                        "bungee_jumping": "Bungee jump",
                         "carousel": "Carrossel",
+                        "dark_ride": "Trem fantasma",
                         "drop_tower": "Torre de queda livre",
                         "kiddie_ride": "Atração infantil",
+                        "log_flume": "Splash (parque de diversão)",
                         "maze": "Labirinto",
-                        "pirate_ship": "Navio Pirata (Parque de diversões)",
+                        "pirate_ship": "Navio pirata (parque de diversões)",
                         "roller_coaster": "Montanha Russa",
                         "train": "Trem turístico",
                         "water_slide": "Toboágua"
@@ -369,7 +376,11 @@
                         "height_restrictor": "Limitador de altura",
                         "jersey_barrier": "Barreira Jersey",
                         "kerb": "Meio-fio ou guia",
+                        "kissing_gate": "Quebra-corpo",
+                        "lift_gate": "Cancela elevatória",
                         "retaining_wall": "Muro de contenção\nMuro de arrimo",
+                        "stile": "Passagem em cerca/muro",
+                        "swing_gate": "Cancela giratória",
                         "toll_booth": "Cabine de pedágio",
                         "turnstile": "Catraca",
                         "wall": "Muro"
@@ -400,6 +411,7 @@
                 "bath/type": {
                     "label": "Especialidade",
                     "options": {
+                        "hammam": "Banho turco",
                         "hot_spring": "Fonte termal",
                         "lake": "Lago"
                     }
@@ -422,12 +434,12 @@
                 "bicycle_parking": {
                     "label": "Tipo",
                     "options": {
-                        "building": "Dentro de Edifício",
+                        "building": "Dentro de edifício",
                         "handlebar_holder": "Trava de guidão",
-                        "lockers": "Compartimento Individual",
+                        "lockers": "Compartimento individual",
                         "shed": "Abrigo Fechado",
-                        "stands": "U invertido (apoio de quadro)",
-                        "wall_loops": "Apoio de Roda"
+                        "stands": "U invertido (apoio de quadro de bicicleta)",
+                        "wall_loops": "Apoio de roda"
                     }
                 },
                 "bike_ride": {
@@ -447,7 +459,7 @@
                     "terms": "acesso para deficientes visuais"
                 },
                 "blood_components": {
-                    "label": "Componentes do Sangue",
+                    "label": "Componentes do sangue",
                     "options": {
                         "plasma": "plasma",
                         "platelets": "plaquetas",
@@ -517,6 +529,7 @@
                 "building": {
                     "label": "Edifício",
                     "options": {
+                        "allotment_house": "Casa de horta urbana/comunitária",
                         "apartments": "Edifício de apartamentos",
                         "barn": "Celeiro",
                         "boathouse": "Guarderia para embarcações",
@@ -540,7 +553,7 @@
                         "garage": "Garagem",
                         "garages": "Garagens",
                         "ger": "Yurt",
-                        "grandstand": "Arquibancada (edifício)",
+                        "grandstand": "Arquibancada (edifícação)",
                         "greenhouse": "Estufa",
                         "hangar": "Hangar",
                         "hospital": "Edifício hospitalar",
@@ -714,7 +727,7 @@
                         "denim": "Jeans",
                         "fur": "Casacos de Pelo",
                         "hats": "Chapéus",
-                        "maternity": "Recém Nascidos",
+                        "maternity": "Recém-nascidos",
                         "men": "Masculinas",
                         "motorcycle": "Roupas para motociclistas",
                         "oversize": "Plus Size",
@@ -737,7 +750,12 @@
                     "label": "Horários de coleta"
                 },
                 "collector": {
-                    "label": "Itens"
+                    "label": "Itens",
+                    "options": {
+                        "coins": "Moedas",
+                        "comics": "Revista em quadrinhos",
+                        "stamps": "Selos"
+                    }
                 },
                 "colour": {
                     "label": "Cor",
@@ -769,8 +787,12 @@
                 "consulting": {
                     "label": "Perícia"
                 },
+                "contact/facebook": {
+                    "label": "Nome de usuário ou URL do Facebook",
+                    "placeholder": "https://www.facebook.com/NegocioLocal"
+                },
                 "contact/webcam": {
-                    "label": "URL da Webcam",
+                    "label": "URL da webcam",
                     "placeholder": "http://exemplo.com.br/"
                 },
                 "content": {
@@ -837,6 +859,7 @@
                         "hvac": "Técnico de ar condicionado",
                         "jeweller": "Joalheiro",
                         "joiner": "Marceneiro",
+                        "key_cutter": "Chaveiro",
                         "locksmith": "Chaveiro",
                         "metal_construction": "Metalurgia",
                         "oil_mill": "Lagar de óleo",
@@ -848,7 +871,7 @@
                         "pottery": "Olaria",
                         "roofer": "Telhadista",
                         "saddler": "Selaria ",
-                        "sailmaker": "Fabricante de Velas Náuticas",
+                        "sailmaker": "Fabricante de velas náuticas",
                         "sawmill": "Serraria",
                         "sculptor": "Escultor",
                         "shoemaker": "Sapateiro",
@@ -934,18 +957,18 @@
                 "crossing/markings": {
                     "label": "Marcação da travessia",
                     "options": {
-                        "dashes": "Linhas transversais tracejadas",
-                        "dots": "Linhas transversais pontilhadas",
+                        "dashes": "Linhas tracejadas transversais",
+                        "dots": "Linhas pontilhadas transversais",
                         "ladder": "Escada",
                         "ladder:paired": "Escada com pares de barras",
-                        "ladder:skewed": "Escada com barras diagonais",
-                        "lines": "Linhas transversais",
-                        "lines:paired": "Linhas transversais duplas",
+                        "ladder:skewed": "Escada com barras diagonais (zebrada)",
+                        "lines": "Linhas paralelas transversais",
+                        "lines:paired": "Linhas paralelas transversais duplas",
                         "no": "Sem marcação",
                         "pictograms": "Pictograma",
                         "surface": "Revestimento da superfície",
                         "yes": "Possui marcação (não especificado)",
-                        "zebra": "Faixa tradicional",
+                        "zebra": "Faixa tradicional (zebrada)",
                         "zebra:bicolour": "Faixa com cores alternadas",
                         "zebra:double": "Faixa dupla",
                         "zebra:paired": "Pares de barras longitudinais"
@@ -1505,7 +1528,7 @@
                         "fusion": "Fusão",
                         "gasification": "Gasificação",
                         "photovoltaic": "Fotovoltaico",
-                        "thermal": "Térmico Solar",
+                        "thermal": "Térmico solar",
                         "water-storage": "Reservatório",
                         "wind_turbine": "Turbina Eólica"
                     }
@@ -1529,7 +1552,7 @@
                         "hydro": "Energia Hidroelétrica",
                         "nuclear": "Energia Nuclear",
                         "oil": "Óleo",
-                        "solar": "Radiação Solar",
+                        "solar": "Radiação solar",
                         "tidal": "Energia das Marés",
                         "waste": "Resíduos",
                         "wave": "Energia das Ondas",
@@ -1607,7 +1630,7 @@
                         "dermatology": "Dermatologia",
                         "dermatovenereology": "Dermatovenereologia",
                         "diabetology": "Diabetologia",
-                        "diagnostic_radiology": "Diagnóstico Radiológico",
+                        "diagnostic_radiology": "Diagnóstico radiológico",
                         "emergency": "Emergência Médica",
                         "endocrinology": "Endocrinologia",
                         "fertility": "Fertilidade",
@@ -1887,7 +1910,7 @@
                 },
                 "lane_markings": {
                     "label": "Marcas longitudinais",
-                    "terms": "lanes,vias,faixa,rodagem,estrada,rodovia,rodoviária,rodoviário,trânsito,veículos,linha,pintura,pintada,linha de bordo,linha simples,linha contínua,linha dupla"
+                    "terms": "sinalização horizontal,marcas de solo,lanes,vias,faixa,rodagem,estrada,rodovia,rodoviária,rodoviário,trânsito,veículos,linha,pintura,pintada,linha de bordo,linha simples,linha contínua,linha dupla"
                 },
                 "lanes": {
                     "label": "Total de faixas",
@@ -2282,21 +2305,56 @@
                     }
                 },
                 "park_ride": {
-                    "label": "Estacionamento de intercâmbio"
+                    "label": "Estacionamento de intercâmbio",
+                    "terms": "estacionamento de intercâmbio,estacionamento,transporte,público,park & ride,incentivo,dissuasor,bolsão"
                 },
                 "parking": {
                     "label": "Tipo",
                     "options": {
                         "carports": "Abrigo de carros",
                         "garage_boxes": "Vagas de estacionamento",
+                        "half_on_kerb": "Metade na calçada",
                         "lane": "Faixa de acostamento",
                         "layby": "Separado/Alça de acesso",
                         "multi-storey": "Estacionamento vertical",
+                        "on_kerb": "Na calçada",
                         "rooftop": "Telhado",
                         "sheds": "Cabanas",
+                        "shoulder": "Acostamento",
                         "street_side": "Lado da rua",
                         "surface": "Superfície",
                         "underground": "Subterrâneo"
+                    }
+                },
+                "parking/side/orientation": {
+                    "label": "Orientação",
+                    "options": {
+                        "diagonal": "Diagonal à rua",
+                        "parallel": "Paralelo à rua",
+                        "perpendicular": "Perpendicular à rua"
+                    },
+                    "terms": "orientação,orientation,posição,direção,inclinação",
+                    "types": {
+                        "parking:left:orientation": "Lado esquerdo",
+                        "parking:right:orientation": "Lado direito"
+                    }
+                },
+                "parking/side/parking": {
+                    "label": "Estacionamento",
+                    "options": {
+                        "half_on_kerb": "Metade na calçada",
+                        "lane": "Faixa de estacionamento",
+                        "no": "Não",
+                        "on_kerb": "Na calçada",
+                        "separate": "Mapeado em separado",
+                        "shoulder": "Acostamento",
+                        "street_side": "Lado da rua",
+                        "yes": "Sim (não especificado)"
+                    },
+                    "terms": "estacionar,estacionamento,parking,park,parquear,parqueamento",
+                    "types": {
+                        "parking:left": "Lado esquerdo",
+                        "parking:right": "Lado direito"
                     }
                 },
                 "parking_entrance": {
@@ -2348,7 +2406,8 @@
                         "visa_debit": "Visa Debit",
                         "visa_electron": "Visa Electron",
                         "wechat": "WeChat Pay"
-                    }
+                    },
+                    "terms": "cobrança"
                 },
                 "phases": {
                     "label": "Fases",
@@ -2356,7 +2415,12 @@
                 },
                 "phone": {
                     "label": "Telefone",
-                    "placeholder": "+55 11 0982 1098"
+                    "placeholder": "+55 11 0982 1098",
+                    "terms": "número de telefone,celular,phone,fone,contato telefônico"
+                },
+                "picnic_table": {
+                    "label": "Mesa de piquenique",
+                    "terms": "mesa de piquenique,picnic,pique-nique,mesa externa"
                 },
                 "pipeline": {
                     "label": "Tipo"
@@ -2606,6 +2670,10 @@
                 "ref/isil": {
                     "label": "Código ISIL"
                 },
+                "ref/linz/place_id-NZ": {
+                    "label": "ID de Local NZGB",
+                    "terms": "nz,linz,land information new zealand,toitū te whenua,nzgb,new zealand geographic board,ngā pou taunaha o aotearoa"
+                },
                 "ref/vatin": {
                     "label": "Número de identificação IVA"
                 },
@@ -2740,8 +2808,17 @@
                     "label": "Tipo"
                 },
                 "royal_cypher": {
+                    "label": "Monograma real",
                     "options": {
-                        "no": "Não"
+                        "CIIIR": "CIIIR (Charles III)",
+                        "EIIR": "EIIR (Elizabeth II)",
+                        "EVIIIR": "EVIIIR (Eduardo VIII)",
+                        "EVIIR": "EVIIR (Eduardo VII)",
+                        "GR": "GR (George V)",
+                        "GVIR": "GVIR (George VI)",
+                        "VR": "VR (Vitória)",
+                        "no": "Não",
+                        "scottish_crown": "Coroa da Escócia"
                     }
                 },
                 "ruins": {
@@ -2760,10 +2837,12 @@
                         "hiking": "T1: Caminhada",
                         "mountain_hiking": "T2: Caminhada de montanha"
                     },
-                    "placeholder": "Caminhada de montanha, caminhada alpina"
+                    "placeholder": "Caminhada de montanha, caminhada alpina",
+                    "terms": "nível de dificuldade,grau de dificuldade,caminhada,trekking,caminhar"
                 },
                 "salt": {
-                    "label": "Sal"
+                    "label": "Sal",
+                    "terms": "salino,salobra,salinidade"
                 },
                 "sample_collection": {
                     "label": "Amostras"
@@ -2985,7 +3064,11 @@
                     "label": "SMS"
                 },
                 "social_facility": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "group_home": "Casa da família",
+                        "nursing_home": "Casa de repouso"
+                    }
                 },
                 "social_facility_for": {
                     "label": "Público alvo"
@@ -3013,25 +3096,58 @@
                 "sport": {
                     "label": "Esportes",
                     "options": {
+                        "american_football": "Futebol americano",
+                        "athletics": "Atletismo",
+                        "badminton": "Badminton",
+                        "baseball": "Baseball",
+                        "basketball": "Basquetebol",
+                        "beachvolleyball": "Vôlei de praia",
                         "bmx": "BMX",
-                        "speedway": "Pista de motovelocidade"
+                        "boules": "Boules",
+                        "bowls": "Bowls",
+                        "canoe": "Canoagem",
+                        "climbing": "Escalada",
+                        "cricket": "Críquete",
+                        "curling": "Curling",
+                        "cycling": "Ciclismo",
+                        "disc_golf": "Golfe de disco",
+                        "dog_racing": "Corrida de cães",
+                        "fitness": "Fitness",
+                        "free_flying": "Voo livre",
+                        "futsal": "Futsal",
+                        "gaelic_games": "Jogos gaélicos",
+                        "golf": "Golfe",
+                        "gymnastics": "Ginástica",
+                        "handball": "Handebol",
+                        "horse_racing": "Corrida de cavalos",
+                        "ice_hockey": "Hóquei no gelo",
+                        "ice_skating": "Patinação no gelo",
+                        "ice_stock": "Curling bávaro",
+                        "karting": "Kart",
+                        "motocross": "Motocross",
+                        "motor": "Esportes motorizados",
+                        "multi": "Poliesportivo/vários",
+                        "netball": "Netbol",
+                        "padel": "Pádel",
+                        "pelota": "Pelota basca",
+                        "rugby_union": "Rúgbi",
+                        "running": "Corrida",
+                        "scuba_diving": "Mergulho",
+                        "shooting": "Tiro",
+                        "skateboard": "Skate",
+                        "skiing": "Esqui",
+                        "soccer": "Futebol",
+                        "softball": "Softbol",
+                        "speedway": "Pista de motovelocidade",
+                        "swimming": "Natação",
+                        "table_tennis": "Tênis de mesa",
+                        "tennis": "Tênis",
+                        "volleyball": "Voleibol"
                     }
                 },
-                "sport_ice": {
-                    "label": "Esportes"
-                },
-                "sport_pub": {
-                    "label": "Esportes",
-                    "terms": "sport,esporte,modalidades,desporto,esportivo"
-                },
-                "sport_racing_motor": {
-                    "label": "Esportes"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Esportes"
-                },
                 "stars": {
-                    "label": "Estrelas"
+                    "label": "Estrelas",
+                    "terms": "classificação"
                 },
                 "start_date": {
                     "label": "Data de início",
@@ -3098,7 +3214,16 @@
                     "label": "Wikidata do assunto"
                 },
                 "substance": {
-                    "label": "Substância"
+                    "label": "Substância",
+                    "options": {
+                        "fuel": "Combustível",
+                        "gas": "Gás natural",
+                        "hot_water": "Água quente",
+                        "oil": "Petróleo",
+                        "rainwater": "Águas pluviais",
+                        "sewage": "Águas residuais",
+                        "water": "Água potável"
+                    }
                 },
                 "substation": {
                     "label": "Tipo",
@@ -3428,7 +3553,7 @@
                 "usage_rail": {
                     "label": "Tipo de utilização",
                     "options": {
-                        "branch": "Filial",
+                        "branch": "Ramal",
                         "industrial": "Industrial",
                         "main": "Principal",
                         "military": "Militar",
@@ -3445,7 +3570,16 @@
                     }
                 },
                 "utility": {
-                    "label": "Utilitário"
+                    "label": "Utilitário",
+                    "options": {
+                        "gas": "Gás",
+                        "oil": "Petróleo",
+                        "power": "Energia",
+                        "sewerage": "Águas residuais",
+                        "street_lighting": "Iluminação pública",
+                        "telecom": "Telecomunicações",
+                        "water": "Água"
+                    }
                 },
                 "utility_semi": {
                     "label": "Utilitários"
@@ -3470,13 +3604,15 @@
                     "label": "Tipos de produtos"
                 },
                 "vhf": {
-                    "label": "Canal VHF"
+                    "label": "Canal VHF",
+                    "terms": "very high frequency,frequência"
                 },
                 "via": {
                     "label": "Via"
                 },
                 "video_calls": {
-                    "label": "Chamada de Vídeo"
+                    "label": "Chamada de Vídeo",
+                    "terms": "chamadas por vídeo,câmera"
                 },
                 "visibility": {
                     "label": "Visibilidade",
@@ -3550,6 +3686,10 @@
                 "website": {
                     "label": "Página da internet",
                     "placeholder": "https://exemplo.com"
+                },
+                "website/menu": {
+                    "placeholder": "http://exemplo.com.br/",
+                    "terms": "website,link,ligação,http,url,menu,ementa,cardápio,online,on-line,internet"
                 },
                 "wetland": {
                     "label": "Tipo",
@@ -3972,10 +4112,6 @@
                 "amenity/doctors/general": {
                     "name": "Clínico Geral"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Ginecologista",
-                    "terms": "médico ginecologista,obstetrícia,clínica ginecológica,ginecológica,reprodução,saúde da mulher"
-                },
                 "amenity/doctors/haematology": {
                     "name": "Hematologista"
                 },
@@ -4175,10 +4311,6 @@
                     "name": "Escola de educação infantil",
                     "terms": "escola de educação infantil,educação infantil,pré-escola"
                 },
-                "amenity/kneipp_water_cure": {
-                    "name": "Cura da água do Kneipp",
-                    "terms": "cura da água do kneipp"
-                },
                 "amenity/language_school": {
                     "name": "Escola de idiomas",
                     "terms": "escola de idiomas"
@@ -4243,7 +4375,8 @@
                     "terms": "boate lgbtq+"
                 },
                 "amenity/nursing_home": {
-                    "name": "Casa de Repouso"
+                    "name": "Casa de repouso",
+                    "aliases": "Asilo\nLar de idosos\nLar de terceira idade\nClínica geriátrica\nAncionato com cuidado médico permanente"
                 },
                 "amenity/parcel_locker": {
                     "name": "Locker postal",
@@ -4602,7 +4735,7 @@
                     "terms": "estúdio de filmagem"
                 },
                 "amenity/taxi": {
-                    "name": "Ponto de Táxi",
+                    "name": "Ponto de táxi",
                     "terms": "táxi,cooperativa"
                 },
                 "amenity/telephone": {
@@ -4814,7 +4947,7 @@
                     "terms": "adesivos para carros"
                 },
                 "attraction/bungee_jumping": {
-                    "name": "Ponto de Bungee Jumping",
+                    "name": "Ponto de bungee jumping",
                     "terms": "bungue,bangue,bung,bang,jump,salto,parque de diversões,aventura,esporte de aventura,radical"
                 },
                 "attraction/carousel": {
@@ -5616,6 +5749,11 @@
                     "name": "Entrada principal",
                     "terms": "entrada principal"
                 },
+                "entrance/staircase": {
+                    "name": "Entrada com escadaria",
+                    "terms": "rolar,rolante,escadaria,stairway",
+                    "aliases": "Entrada com escada\nAcesso com escada"
+                },
                 "ford": {
                     "name": "Vau",
                     "terms": "vau,lugar em um rio no qual se pode passar a pé,baixio"
@@ -5672,7 +5810,7 @@
                     "terms": "perigo de água,água,lago"
                 },
                 "healthcare": {
-                    "name": "Assistência Médica",
+                    "name": "Assistência médica",
                     "terms": "posto de saúde,unidade de pronto atendimento,unidade básica de saúde,enfermaria,clínica,doutor,consultório médico,serviços médicos,serviço médico,serviço de saúde,atendimento médico,médico,médica,saúde,hospital,dentista,fisioterapia"
                 },
                 "healthcare/alternative": {
@@ -5751,7 +5889,7 @@
                     "terms": "psicólogo,psicologia"
                 },
                 "healthcare/rehabilitation": {
-                    "name": "Clínica de Reabilitação",
+                    "name": "Clínica de reabilitação",
                     "terms": "terapia,reabilitação"
                 },
                 "healthcare/speech_therapist": {
@@ -5773,7 +5911,8 @@
                     "terms": "ônibus guiado,trilho de ônibus,via exclusiva de ônibus,tróleibus guiado,carril de ônibus"
                 },
                 "highway/bus_stop": {
-                    "name": "Ponto de ônibus"
+                    "name": "Ponto de ônibus",
+                    "aliases": "Parada de ônibus"
                 },
                 "highway/busway": {
                     "name": "Via exclusiva de ônibus",
@@ -5857,7 +5996,8 @@
                 },
                 "highway/footway/conveying": {
                     "name": "Esteira rolante",
-                    "terms": "esteira rolante"
+                    "terms": "esteira rolante",
+                    "aliases": "Passarela rolante"
                 },
                 "highway/footway/crossing": {
                     "name": "Travessia de pedestres"
@@ -6024,7 +6164,8 @@
                 },
                 "highway/steps": {
                     "name": "Escada",
-                    "terms": "degraus,escada,escadaria"
+                    "terms": "degraus,escada,escadaria",
+                    "aliases": "Escadaria"
                 },
                 "highway/steps/conveying": {
                     "name": "Escada rolante",
@@ -6192,8 +6333,8 @@
                     "terms": "quarto"
                 },
                 "indoor/stairs": {
-                    "name": "Vão das escadas interior",
-                    "terms": "vão das escadas interior"
+                    "name": "Caixa de escada interior",
+                    "terms": "caixa de escada interior"
                 },
                 "indoor/wall": {
                     "name": "Parede interior",
@@ -6211,8 +6352,9 @@
                     "name": "Elemento de uso do solo"
                 },
                 "landuse/allotments": {
-                    "name": "Horta urbana",
-                    "terms": "loteamentos de jardim"
+                    "name": "Horta urbana/comunitária",
+                    "terms": "loteamentos de jardim",
+                    "aliases": "Horta urbana\nHorta comunitária"
                 },
                 "landuse/aquaculture": {
                     "name": "Aquicultura",
@@ -6511,7 +6653,7 @@
                     "terms": "escadas de exercício"
                 },
                 "leisure/garden": {
-                    "name": "Jardim / Horta",
+                    "name": "Jardim/Horta",
                     "terms": "jardim,plantas,horta,vegetais,flores"
                 },
                 "leisure/garden/botanical": {
@@ -6748,7 +6890,7 @@
                     "terms": "campo de tiro,tiro,tiro-ao-alvo"
                 },
                 "leisure/sports_centre/swimming": {
-                    "name": "Academia de Natação",
+                    "name": "Academia de natação",
                     "terms": "natação,nado,esportes aquáticos,desportos aquáticos,piscina,centro de natação"
                 },
                 "leisure/sports_hall": {
@@ -6916,8 +7058,8 @@
                     "terms": "bueiro"
                 },
                 "man_made/manhole/drain": {
-                    "name": "Dreno de tempestade",
-                    "terms": "dreno de tempestade"
+                    "name": "Bueiro",
+                    "terms": "boca de lobo,sumidouro,sumidoiro,sarjeta,dreno,drenagem,esgoto"
                 },
                 "man_made/manhole/gas": {
                     "name": "Bueiro de serviço de gás",
@@ -7681,7 +7823,7 @@
                     "terms": "ilha,arquipélago,coral,corais"
                 },
                 "place/isolated_dwelling": {
-                    "name": "Moradia Isolada",
+                    "name": "Moradia isolada",
                     "terms": "moradia isolada,casa isolada,habitação isolada"
                 },
                 "place/locality": {
@@ -7960,8 +8102,9 @@
                     "terms": "ônibus,ponto de ônibus,transporte público,plataforma,trânsito"
                 },
                 "public_transport/platform/bus_point": {
-                    "name": "Ponto de Ônibus",
-                    "terms": "ponto de ônibus,parada de ônibus"
+                    "name": "Ponto de ônibus",
+                    "terms": "ponto de ônibus,parada de ônibus",
+                    "aliases": "Parada de ônibus\nPlataforma de ônibus"
                 },
                 "public_transport/platform/bus_tram_point": {
                     "name": "Ponto de bonde e ônibus",
@@ -8737,6 +8880,10 @@
                     "name": "Loja de Suplementos Nutricionais",
                     "terms": "loja de suplementos"
                 },
+                "shop/nuts": {
+                    "name": "Loja de frutos secos",
+                    "terms": "castanhas,nozes,pinhões,figos,tâmaras,pinhão,amêndoas,amendoins,amendoim,cajus,frutos,fruta,pecã,pistacho,pistache,pistacio,almonds,cashews,brazil nuts,chestnuts,coconuts,dried fruits,hazelnuts,macadamia,nuts,peanuts,pecans,pistachios,seeds,walnuts"
+                },
                 "shop/optician": {
                     "name": "Ótica",
                     "terms": "ótica,óculos,lentes"
@@ -8762,7 +8909,8 @@
                     "terms": "doceria,doces,bolos"
                 },
                 "shop/pawnbroker": {
-                    "name": "Loja de penhor"
+                    "name": "Loja de penhor",
+                    "terms": "pawn shop,penhores,penhoras,penhorar"
                 },
                 "shop/perfumery": {
                     "name": "Perfumaria",
@@ -8771,6 +8919,10 @@
                 "shop/pet": {
                     "name": "Loja de animais ou artigos para animais",
                     "terms": "pet shop,veterinário,animais de estimação,cão,cães,gato"
+                },
+                "shop/pet_grooming": {
+                    "name": "Banho e tosa",
+                    "terms": "grooming,groomer,cães,cão,gatos,animais,tosa,tosquiaria,tosquia,higiênica,higiênico,estética,asseio,higiene,limpeza"
                 },
                 "shop/photo": {
                     "name": "Loja de Fotografia",
@@ -8817,11 +8969,13 @@
                     "terms": "peixaria,pescado,petisqueira,loja de frutos do mar,camarão,lagosta,peixes,peixeiro"
                 },
                 "shop/second_hand": {
-                    "name": "Brechó"
+                    "name": "Brechó",
+                    "terms": "consignment,thrift store,loja de consignação,2ª mão,usados,usado,segunda mão,consignação,roupa usada,2.ª mão"
                 },
                 "shop/sewing": {
-                    "name": "Loja de suprimentos de costura",
-                    "terms": "loja de suprimentos de costura,armarinho"
+                    "name": "Loja de aviamentos",
+                    "terms": "loja de suprimentos de costura,armarinho",
+                    "aliases": "Loja de suprimentos de costura\nLoja de armarinhos"
                 },
                 "shop/shoe_repair": {
                     "name": "Loja de conserto de calçados",

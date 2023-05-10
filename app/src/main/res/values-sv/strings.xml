@@ -1315,4 +1315,22 @@ Flytta den?"</string>
     <string name="unknown_surface_title">"Annan slags beläggning"</string>
     <string name="overlay_surface">"Beläggningar"</string>
     <string name="overlay_path_surface_segregated">"Uppdelad gång- och cykelbana"</string>
+    <string name="quest_crossing_title2">"Finns det en passage/korsning här?"</string>
+    <string name="quest_crossing_yes">"Ja (t.ex. är vägkanten sänkt eller så finns det markeringar)"</string>
+    <string name="quest_crossing_no">"Nej, men det är möjligt att korsa ändå"</string>
+    <string name="quest_crossing_prohibited">"Nej, det är förbjudet eller omöjligt att korsa"</string>
+    <string name="quest_hairdresser_title">"Vilka kan klippa sig här?"</string>
+    <string name="quest_hairdresser_male_and_female">"Alla"</string>
+    <string name="quest_hairdresser_female_only">"Kvinnor"</string>
+    <string name="quest_hairdresser_male_only">"Män"</string>
+    <string name="quest_hairdresser_not_signed">"Ej skyltat"</string>
+    <string name="quest_amenityCover_title">"Är detta täckt (skyddat från väder och vind)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Avsmalning"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Refug"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chikan"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Avsmalning och refug"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Inga hinder"</string>
+    <string name="quest_tactilePaving_title_steps">"Finns det taktil beläggning på denna trappa?"</string>
+    <string name="quest_tactilePaving_steps_top">"Bara högst upp"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Bara längst ned"</string>
 </resources>

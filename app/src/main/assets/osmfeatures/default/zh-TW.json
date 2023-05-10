@@ -773,7 +773,12 @@
                     "label": "收集時間"
                 },
                 "collector": {
-                    "label": "項目"
+                    "label": "項目",
+                    "options": {
+                        "coins": "硬幣",
+                        "comics": "漫畫",
+                        "stamps": "郵票"
+                    }
                 },
                 "colour": {
                     "label": "顏色",
@@ -806,6 +811,11 @@
                 },
                 "consulting": {
                     "label": "專長"
+                },
+                "contact/facebook": {
+                    "label": "Facebook 使用者名稱或 URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness",
+                    "terms": "facebook 使用者名稱或 url"
                 },
                 "contact/webcam": {
                     "label": "網路攝影機 URL",
@@ -1017,8 +1027,10 @@
                         "coffee_shop": "咖啡店",
                         "dessert": "點心",
                         "donut": "甜甜圈",
+                        "filipino": "菲律賓菜",
                         "fish": "魚類",
                         "french": "法式",
+                        "georgian": "喬治亞菜",
                         "german": "德國料理",
                         "greek": "希臘料理",
                         "hot_dog": "熱狗",
@@ -1035,6 +1047,7 @@
                         "mexican": "墨西哥",
                         "pankcake": "鬆餅",
                         "pasta": "義大利麵",
+                        "peruvian": "秘魯菜",
                         "pizza": "披薩",
                         "polish": "波蘭",
                         "portuguese": "葡萄牙",
@@ -1047,8 +1060,10 @@
                         "steak_house": "牛排館",
                         "sushi": "壽司",
                         "taiwanese": "台灣菜",
+                        "tex-mex": "德州-墨西哥菜",
                         "thai": "泰式料理",
                         "turkish": "土耳其",
+                        "ukrainian": "烏克蘭菜",
                         "vietnamese": "越南料理"
                     },
                     "terms": "菜系,菜式"
@@ -1270,7 +1285,12 @@
                     "label": "類型"
                 },
                 "dock": {
-                    "label": "碼頭種類"
+                    "label": "碼頭種類",
+                    "options": {
+                        "drydock": "旱塢",
+                        "floating": "浮動船塢",
+                        "tidal": "固定潮汐碼頭"
+                    }
                 },
                 "dog": {
                     "label": "狗",
@@ -1968,7 +1988,8 @@
                     "terms": "路口"
                 },
                 "kerb": {
-                    "label": "路邊斜坡"
+                    "label": "路邊斜坡",
+                    "terms": "路緣"
                 },
                 "kerb/height": {
                     "label": "高度"
@@ -1978,7 +1999,12 @@
                     "terms": "廚房"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "盆地類型"
+                    "label": "盆地類型",
+                    "options": {
+                        "arm": "手臂盆",
+                        "face": "臉盆",
+                        "foot": "足盆"
+                    }
                 },
                 "label": {
                     "label": "標籤"
@@ -3369,17 +3395,17 @@
                         "volleyball": "排球"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "運動"
                 },
-                "sport_pub": {
+                "sport/sport_pub": {
                     "label": "運動",
                     "terms": "運動"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "運動"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "運動"
                 },
                 "stars": {
@@ -4430,8 +4456,8 @@
                     "terms": "初級照護醫師,全科醫師"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "婦科醫生",
-                    "terms": "婦科醫生"
+                    "name": "婦產科",
+                    "terms": "婦產科"
                 },
                 "amenity/doctors/haematology": {
                     "name": "血液科",
@@ -4552,6 +4578,10 @@
                     "name": "速食餐廳",
                     "terms": "速食店"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "貝果速食店",
+                    "terms": "貝果速食店"
+                },
                 "amenity/fast_food/burger": {
                     "name": "漢堡速食店",
                     "terms": "漢堡店,速食店"
@@ -4598,6 +4628,10 @@
                 "amenity/fast_food/sandwich": {
                     "name": "三明治快餐廳",
                     "terms": "三明治快餐廳"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "雞翅速食店",
+                    "terms": "雞翅速食店"
                 },
                 "amenity/ferry_terminal": {
                     "name": "渡輪碼頭"
@@ -4646,6 +4680,10 @@
                     "name": "冰淇淋店",
                     "terms": "冰淇淋店,冰淇淋"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "霜凍優格商店",
+                    "terms": "霜凍優格商店"
+                },
                 "amenity/internet_cafe": {
                     "name": "網咖",
                     "terms": "網咖,網吧,網路咖啡店,internet cafe"
@@ -4659,8 +4697,8 @@
                     "terms": "幼稚園,幼兒園"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Kneipp 水療",
-                    "terms": "kneipp 水療"
+                    "name": "Kneipp 設施",
+                    "terms": "kneipp 設施"
                 },
                 "amenity/language_school": {
                     "name": "語言學校",
@@ -4938,6 +4976,10 @@
                     "name": "法國餐廳",
                     "terms": "法式餐廳"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "喬治亞餐廳",
+                    "terms": "喬治亞餐廳"
+                },
                 "amenity/restaurant/german": {
                     "name": "德國餐廳",
                     "terms": "德式餐廳"
@@ -4974,6 +5016,10 @@
                     "name": "批薩餐廳",
                     "terms": "批薩店"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "拉麵餐廳",
+                    "terms": "拉麵餐廳"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "海鮮餐廳",
                     "terms": "海鮮餐廳"
@@ -4997,6 +5043,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "土耳其餐廳",
                     "terms": "土耳其餐廳"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "烏克蘭餐廳",
+                    "terms": "烏克蘭餐廳"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "越南餐廳",
@@ -6363,7 +6413,8 @@
                     "terms": "室內通道"
                 },
                 "highway/crossing": {
-                    "name": "穿越道"
+                    "name": "穿越道",
+                    "terms": "人行穿越道"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "有行人燈號的十字路口",
@@ -9328,6 +9379,10 @@
                 },
                 "shop/hobby": {
                     "name": "嗜好商店"
+                },
+                "shop/honey": {
+                    "name": "蜂蜜商店",
+                    "terms": "蜂蜜商店"
                 },
                 "shop/household_linen": {
                     "name": "家用亞麻布商店",

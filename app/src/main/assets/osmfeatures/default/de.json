@@ -115,7 +115,7 @@
                         "customers": "Nur für Kunden",
                         "no": "Kein Zugang",
                         "permissive": "Bis auf Widerruf",
-                        "permit": "Nur für Berechtigte",
+                        "permit": "Nur für Berechtige, Berechtigung wird i. d. R. erteilt",
                         "private": "Privat",
                         "unknown": "Unbekannt",
                         "yes": "Öffentlich"
@@ -812,6 +812,11 @@
                 "consulting": {
                     "label": "Expertise"
                 },
+                "contact/facebook": {
+                    "label": "Facebook Benutzername oder URL",
+                    "placeholder": "https://www.facebook.com/LokalesGeschäft",
+                    "terms": "facebook,fb"
+                },
                 "contact/webcam": {
                     "label": "Webcam-URL",
                     "placeholder": "http://example.com/"
@@ -1022,8 +1027,10 @@
                         "coffee_shop": "Kaffeehaus",
                         "dessert": "Nachtisch",
                         "donut": "Donut",
+                        "filipino": "Philippinisch",
                         "fish": "Fisch",
                         "french": "Französisch",
+                        "georgian": "Georgisch",
                         "german": "Deutsch",
                         "greek": "Griechisch",
                         "hot_dog": "Hotdog",
@@ -1040,6 +1047,7 @@
                         "mexican": "Mexikanisch",
                         "pankcake": "Pfannkuchen",
                         "pasta": "Teigwaren",
+                        "peruvian": "Peruanisch",
                         "pizza": "Pizza",
                         "polish": "Polnisch",
                         "portuguese": "Portugiesisch",
@@ -1052,8 +1060,10 @@
                         "steak_house": "Steakhaus",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanisch",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Thailändisch",
                         "turkish": "Türkisch",
+                        "ukrainian": "Ukrainisch",
                         "vietnamese": "Vietnamesisch"
                     },
                     "terms": "essensrichtung,küchenstil,essensart,gerichte,kulinarische richtung,landesküche,küche"
@@ -1978,7 +1988,8 @@
                     "terms": "kreuzung"
                 },
                 "kerb": {
-                    "label": "Bordstein"
+                    "label": "Bordstein",
+                    "terms": "bordstein,kantstein,randstein,bordsteinkante"
                 },
                 "kerb/height": {
                     "label": "Höhe"
@@ -1988,7 +1999,12 @@
                     "terms": "küchenzeile,kochgelegenheit,pantry"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Kneippbeckentyp"
+                    "label": "Kneippbecken",
+                    "options": {
+                        "arm": "Armbad",
+                        "face": "Gesichtsbecken",
+                        "foot": "Wassertreten"
+                    }
                 },
                 "label": {
                     "label": "Label"
@@ -3379,17 +3395,17 @@
                         "volleyball": "Volleyball"
                     }
                 },
-                "sport_ice": {
+                "sport/sport_ice": {
                     "label": "Sportarten"
                 },
-                "sport_pub": {
+                "sport/sport_pub": {
                     "label": "Sportarten",
                     "terms": "sport,sportart,sportarten"
                 },
-                "sport_racing_motor": {
+                "sport/sport_racing_motor": {
                     "label": "Sportarten"
                 },
-                "sport_racing_nonmotor": {
+                "sport/sport_racing_nonmotor": {
                     "label": "Sportarten"
                 },
                 "stars": {
@@ -4442,7 +4458,7 @@
                 },
                 "amenity/doctors/gynaecology": {
                     "name": "Gynäkologe",
-                    "terms": "gynäkologe",
+                    "terms": "gynäkologe,gynäkologie",
                     "aliases": "Frauenarzt\nFacharzt für Frauenheilkunde"
                 },
                 "amenity/doctors/haematology": {
@@ -4568,6 +4584,10 @@
                     "name": "Schnellimbiss",
                     "terms": "fast food,imbiss,schnellrestaurant"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel Fast Food",
+                    "terms": "bagel,frühstück"
+                },
                 "amenity/fast_food/burger": {
                     "name": "Burger Fast Food",
                     "terms": "burger fast food,hamburgerstand,burgerstand"
@@ -4614,6 +4634,10 @@
                 "amenity/fast_food/sandwich": {
                     "name": "Sandwich Fast Food",
                     "terms": "sandwich fast food,sandwich takeaway"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Chicken Wings Fast Food",
+                    "terms": "chickenwings,chicken-wings,geflügel,hähnchen,hühnchen,hühnerflügel,pouletflügel,flieten"
                 },
                 "amenity/ferry_terminal": {
                     "name": "Schiffsanleger"
@@ -4662,6 +4686,10 @@
                     "name": "Eisgeschäft",
                     "terms": "eisgeschäft,eisladen,schleckeisladen,schleckeishändler,eisdiele"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Frozen Yogurt Geschäft",
+                    "terms": "frozen yogurt,froyo,frogurt,joghurt,joghurteis"
+                },
                 "amenity/internet_cafe": {
                     "name": "Internetcafé",
                     "terms": "internetcafé,cybercafé"
@@ -4675,8 +4703,8 @@
                     "terms": "kindergarten,vorschule,kindertagesstätte,kinderkrippe,hort"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Kneippanlage",
-                    "terms": "kneippanlage"
+                    "name": "Kneipp-Anlage",
+                    "terms": "kneipp,kneippbecken,kneipp-therapie,wassertreten,wassertretanlage,wassertretstelle,wassertretbecken,hydrotherapie,fußbad,barfuß,barfußlaufen,armbecken,kneipp-einrichtung,wasserkur,kneippkur"
                 },
                 "amenity/language_school": {
                     "name": "Sprachschule",
@@ -4958,6 +4986,10 @@
                     "name": "Französisches Restaurant",
                     "terms": "französisches restaurant"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Georgisches Restaurant",
+                    "terms": "restaurant,essen,georgien"
+                },
                 "amenity/restaurant/german": {
                     "name": "Deutsches Restaurant",
                     "terms": "deutsches restaurant"
@@ -4994,6 +5026,10 @@
                     "name": "Pizzeria",
                     "terms": "pizza restaurant"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Ramen Restaurant",
+                    "terms": "ramen,nudel,suppe,japan"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Meeresfrüchte-Restaurant",
                     "terms": "meeresfrüchte restaurant"
@@ -5017,6 +5053,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Türkisches Restaurant",
                     "terms": "türkisches restaurant"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrainisches Restaurant",
+                    "terms": "ukrainisches restaurant"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamesisches Restaurant",
@@ -6402,7 +6442,8 @@
                     "aliases": "Korridor im Innenraum"
                 },
                 "highway/crossing": {
-                    "name": "Übergang"
+                    "name": "Übergang",
+                    "terms": "überweg,übergang,überquerung,querung,fußgängerüberweg,fußgängerübergang,fußgängerüberquerung,fußgängerquerung"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Kreuzung mit Fußgängerampel",
@@ -6530,7 +6571,7 @@
                 },
                 "highway/motorway_junction": {
                     "name": "Autobahnkreuzungspunkt",
-                    "terms": "autobahnkreuz,autobahnanschluss,autobahnzubringer,autobahnabfahrt (kreuzungspunkt)"
+                    "terms": "autobahnkreuz,autobahnanschluss,autobahnzubringer,autobahnabfahrt (kreuzungspunkt),abfahrt,ausfahrt,anschlussstelle"
                 },
                 "highway/motorway_link": {
                     "name": "Autobahnauffahrt, Autobahnabfahrt",
@@ -6625,7 +6666,7 @@
                     "terms": "rettungsweg,zufahrtsstraße für rettungskräfte,rettungszufahrt,feuerwehrzufahrt"
                 },
                 "highway/service/parking_aisle": {
-                    "name": "Parkplatzweg",
+                    "name": "Parkplatz-Nebenfahrgasse",
                     "terms": "parkplatzfahrgasse,fahrweg auf parkplatzflächen"
                 },
                 "highway/service_area": {
@@ -7167,7 +7208,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Reitanlage",
-                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
+                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
                     "aliases": "Reiterhof\nReitstall\nReitzentrum"
                 },
                 "leisure/ice_rink": {
@@ -9404,6 +9445,10 @@
                 },
                 "shop/hobby": {
                     "name": "Bastelgeschäft"
+                },
+                "shop/honey": {
+                    "name": "Honiggeschäft",
+                    "terms": "honig,biene,wachs,propolis,mel"
                 },
                 "shop/household_linen": {
                     "name": "Haushaltswäschegeschäft",

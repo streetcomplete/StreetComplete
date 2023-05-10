@@ -2228,10 +2228,6 @@
                     "name": "แพทย์",
                     "aliases": "หมอ"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "นรีแพทย์",
-                    "aliases": "แพทย์ผู้ชำนาญโรคสตรี"
-                },
                 "amenity/dojo": {
                     "name": "โรงเรียนสอนศิลปะป้องกันตัว",
                     "aliases": "สถาบันศิลปะการป้องกันตัว"

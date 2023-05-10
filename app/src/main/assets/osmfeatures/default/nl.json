@@ -543,25 +543,59 @@
                 "building": {
                     "label": "Gebouw",
                     "options": {
+                        "allotment_house": "Volkstuinhuis",
                         "apartments": "Appartementencomplex",
                         "barn": "Schuur",
+                        "boathouse": "Boothuis",
                         "bungalow": "Bungalow",
                         "bunker": "Bunker",
                         "cabin": "Blokhut",
                         "carport": "Carport",
+                        "cathedral": "Kathedraal",
+                        "chapel": "Kapel",
+                        "church": "Kerk",
+                        "civic": "Openbaar gebouw",
+                        "college": "Middelbare schoolgebouw",
+                        "commercial": "Commercieel gebouw",
+                        "construction": "Gebouw in aanbouw",
                         "cowshed": "Koeienstal",
                         "detached": "Alleenstaand huis",
+                        "dormitory": "Studentenhuisvesting",
                         "farm": "Boerderijhuis",
+                        "farm_auxiliary": "Boederijgebouw",
+                        "fire_station": "Brandweergebouw",
                         "garage": "Garage",
                         "garages": "Garages",
+                        "ger": "Joert",
+                        "grandstand": "Tribune",
                         "greenhouse": "Broeikas",
+                        "hangar": "Hangaar",
+                        "hospital": "Ziekenhuisgebouw",
+                        "hotel": "Hotelgebouw",
                         "house": "Huis",
                         "houseboat": "Woonboot",
                         "hut": "Hut",
+                        "industrial": "Industrieel gebouw",
+                        "kindergarten": "Kleuterschoolgebouw",
+                        "manufacture": "Gebouw voor industriële productie",
+                        "mosque": "Moskee",
+                        "office": "Kantoorgebouw",
+                        "outbuilding": "Bijgebouw",
+                        "pavilion": "Paviljoen",
+                        "public": "Openbaar gebouw",
                         "roof": "Dak",
+                        "school": "Schoolgebouw",
+                        "semidetached_house": "Twee-onder-een-kapwoning",
+                        "service": "Dienstgebouw",
                         "shed": "Schuurtje",
                         "stable": "Stal",
-                        "sty": "Varkensstal"
+                        "stadium": "Stadiongebouw",
+                        "sty": "Varkensstal",
+                        "synagogue": "Synagoge",
+                        "temple": "Tempel",
+                        "terrace": "Rijtjeshuizen",
+                        "train_station": "Treinstation",
+                        "university": "Universiteitsgebouw"
                     },
                     "terms": "gebouw,structuur"
                 },
@@ -719,7 +753,12 @@
                     "label": "Lichtingstijden"
                 },
                 "collector": {
-                    "label": "Voorwerpen"
+                    "label": "Voorwerpen",
+                    "options": {
+                        "coins": "Munten",
+                        "comics": "Stripboeken",
+                        "stamps": "Postzegels"
+                    }
                 },
                 "colour": {
                     "label": "Kleur",
@@ -740,7 +779,13 @@
                     "label": "Type"
                 },
                 "consulate": {
-                    "label": "Soort consulaat"
+                    "label": "Soort consulaat",
+                    "options": {
+                        "consulate_general": "Consulaat-generaal",
+                        "honorary_consul": "Ereconsul",
+                        "residence": "Officiële residentie van de ambassadeur",
+                        "yes": "Consulaat"
+                    }
                 },
                 "consulting": {
                     "label": "Expertise"
@@ -934,7 +979,7 @@
                         "german": "Duits",
                         "greek": "Grieks",
                         "hot_dog": "Hotdog",
-                        "ice_cream": "IJssalon",
+                        "ice_cream": "IJs",
                         "indian": "Indiaas",
                         "indonesian": "Indonesisch",
                         "italian": "Italiaans",
@@ -1095,7 +1140,11 @@
                     "terms": "dieet types"
                 },
                 "diplomatic": {
-                    "label": "Diplomatietype"
+                    "label": "Diplomatietype",
+                    "options": {
+                        "consulate": "Consulaat",
+                        "embassy": "Ambassade"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Diplomatieke diensten"
@@ -1160,7 +1209,10 @@
                     "label": "Type"
                 },
                 "dock": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "drydock": "Droogdok"
+                    }
                 },
                 "dog": {
                     "label": "Honden",
@@ -1974,7 +2026,10 @@
                     "label": "Maximale breedte"
                 },
                 "memorial": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "stolperstein": "Stolperstein"
+                    }
                 },
                 "message": {
                     "label": "Bericht"
@@ -2176,6 +2231,9 @@
                     },
                     "terms": "organisch,groen,natuurlijk"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Richting"
+                },
                 "outdoor_seating": {
                     "label": "Terras",
                     "terms": "terras,buiten,tuin,zitplaats"
@@ -2213,6 +2271,9 @@
                         "surface": "Oppervlak",
                         "underground": "Ondergronds"
                     }
+                },
+                "parking/side/orientation": {
+                    "label": "Parkeerrichting"
                 },
                 "parking_entrance": {
                     "label": "Type"
@@ -2930,18 +2991,6 @@
                         "tennis": "Tennis",
                         "volleyball": "Volleybal"
                     }
-                },
-                "sport_ice": {
-                    "label": "Sporten"
-                },
-                "sport_pub": {
-                    "label": "Sporten"
-                },
-                "sport_racing_motor": {
-                    "label": "Sporten"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sporten"
                 },
                 "stars": {
                     "label": "Aantal sterren",
@@ -3726,7 +3775,7 @@
                     "name": "Busstation"
                 },
                 "amenity/cafe": {
-                    "name": "Brasserie",
+                    "name": "Café",
                     "terms": "tea-room,tearoom,koffiehuis,cafetaria,koffie,thee,vieruurtje,cake,taart,brasserie,lunchroom,bistro"
                 },
                 "amenity/cafe/bubble_tea": {
@@ -3842,10 +3891,6 @@
                 "amenity/doctors/child_psychiatry": {
                     "name": "Kinder- en jeugdpsychiater"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Gynaecoloog",
-                    "terms": "gynaecoloog,vrouw,vrouwenarts,bevalling"
-                },
                 "amenity/doctors/psychiatrist": {
                     "name": "Psychiater"
                 },
@@ -3908,7 +3953,7 @@
                     "name": "Hotdogzaak"
                 },
                 "amenity/fast_food/ice_cream": {
-                    "name": "IJszaak"
+                    "name": "IJskraam"
                 },
                 "amenity/fast_food/juice": {
                     "name": "Sap",
@@ -3974,7 +4019,7 @@
                     "terms": "jachttoren,hoogzit"
                 },
                 "amenity/ice_cream": {
-                    "name": "Ĳskraam",
+                    "name": "IJssalon",
                     "terms": "ijskraam,ijskraampje,ijscowinkel,ijsventer"
                 },
                 "amenity/internet_cafe": {
@@ -3986,9 +4031,6 @@
                 },
                 "amenity/kindergarten": {
                     "name": "Gebied van Crèche/Kleuterschool"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Kneipp Waterbad"
                 },
                 "amenity/language_school": {
                     "name": "Taalschool",
@@ -4785,6 +4827,12 @@
                     "name": "Voetgangershek",
                     "terms": "veehek,kushek,kusjeshek,kissing gate"
                 },
+                "barrier/lift_gate": {
+                    "name": "Slagboom"
+                },
+                "barrier/log": {
+                    "name": "Blokkade door omgevallen boom"
+                },
                 "barrier/motorcycle_barrier": {
                     "name": "Motorfietsbarrière"
                 },
@@ -5090,6 +5138,9 @@
                 "club": {
                     "name": "Club",
                     "terms": "vereniging"
+                },
+                "club/scout": {
+                    "name": "Scouting"
                 },
                 "club/sport": {
                     "name": "Sportclub",
@@ -6965,6 +7016,9 @@
                     "name": "Top",
                     "terms": "bergtop,heuveltop,piek,bergspits"
                 },
+                "natural/peninsula": {
+                    "name": "Schiereiland"
+                },
                 "natural/reef": {
                     "name": "Rif",
                     "terms": "ondiepte,koraalrif,zandbank"
@@ -8218,8 +8272,8 @@
                     "terms": "bloemist,bloemenzaak"
                 },
                 "shop/frame": {
-                    "name": "Kaderwinkel",
-                    "terms": "schilderijen,kunst,kadrering"
+                    "name": "Lijstenmakerij",
+                    "terms": "schilderijen,kunst,kadering,inlijsten,lijsten,lijstenmaker"
                 },
                 "shop/frozen_food": {
                     "name": "Winkel voor bevroren voedsel",

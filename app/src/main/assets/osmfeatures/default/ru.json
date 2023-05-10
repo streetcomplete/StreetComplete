@@ -2070,15 +2070,6 @@
                 "sport": {
                     "label": "Вид спорта"
                 },
-                "sport_ice": {
-                    "label": "Вид спорта"
-                },
-                "sport_racing_motor": {
-                    "label": "Вид спорта"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Вид спорта"
-                },
                 "stars": {
                     "label": "Звёзды"
                 },
@@ -3739,6 +3730,9 @@
                 "entrance/main": {
                     "name": "Главный вход",
                     "terms": "дверь"
+                },
+                "entrance/staircase": {
+                    "name": "Дверь в подъезд"
                 },
                 "ford": {
                     "name": "Брод",

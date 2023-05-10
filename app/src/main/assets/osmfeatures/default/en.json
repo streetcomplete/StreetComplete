@@ -507,18 +507,6 @@
                     "label": "Stars",
                     "terms": "rating"
                 },
-                "sport_racing_nonmotor": {
-                    "label": "Sports"
-                },
-                "sport_racing_motor": {
-                    "label": "Sports"
-                },
-                "sport_pub": {
-                    "label": "Sports"
-                },
-                "sport_ice": {
-                    "label": "Sports"
-                },
                 "sport": {
                     "label": "Sports",
                     "options": {
@@ -538,7 +526,7 @@
                         "cycling": "Cycling",
                         "disc_golf": "Disc Golf",
                         "dog_racing": "Dog Racing",
-                        "equestrian": "Equestrian",
+                        "equestrian": "Equestrian Sports",
                         "fitness": "Fitness Training",
                         "free_flying": "Paragliding / Hang Gliding",
                         "futsal": "Futsal",
@@ -1463,7 +1451,12 @@
                     "label": "Label"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Basin Types"
+                    "label": "Basin Types",
+                    "options": {
+                        "foot": "Foot Basin",
+                        "arm": "Arm Basin",
+                        "face": "Face Basin"
+                    }
                 },
                 "kitchen": {
                     "label": "Kitchen"
@@ -1664,6 +1657,7 @@
                     "label": "Genus",
                     "placeholder": "Acer, Platanus, Quercus …"
                 },
+                "gender_simple": {},
                 "gender": {
                     "label": "Gender",
                     "terms": "access,female,male,unisex",
@@ -2109,6 +2103,8 @@
                         "seafood": "Seafood",
                         "sushi": "Sushi",
                         "ice_cream": "Ice Cream",
+                        "filipino": "Filipino",
+                        "georgian": "Georgian",
                         "german": "German",
                         "greek": "Greek",
                         "vietnamese": "Vietnamese",
@@ -2117,6 +2113,9 @@
                         "indonesian": "Indonesian",
                         "malaysian": "Malaysian",
                         "taiwanese": "Taiwanese",
+                        "ukrainian": "Ukrainian",
+                        "peruvian": "Peruvian",
+                        "tex-mex": "Tex-Mex",
                         "juice": "Juice",
                         "bubble_tea": "Bubble Tea",
                         "hot_dog": "Hot Dog",
@@ -3080,6 +3079,18 @@
                 "subject/wikidata": {
                     "label": "Subject Wikidata"
                 },
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sports"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "Sports"
+                },
+                "sport/sport_pub": {
+                    "label": "Sports"
+                },
+                "sport/sport_ice": {
+                    "label": "Sports"
+                },
                 "species/wikidata": {
                     "label": "Species Wikidata"
                 },
@@ -3815,6 +3826,10 @@
                 "contact/webcam": {
                     "label": "Webcam URL",
                     "placeholder": "http://example.com/"
+                },
+                "contact/facebook": {
+                    "label": "Facebook Username or URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness"
                 },
                 "capacity/tents": {
                     "label": "Capacity (Tents)",
@@ -4828,6 +4843,9 @@
                     "name": "Household Linen Shop",
                     "terms": "bedspreads,blankets,domestic cloths,curtains,handkerchieves,napkins,pillow cases,robes,sheets,towels"
                 },
+                "shop/honey": {
+                    "name": "Honey Store"
+                },
                 "shop/hifi": {
                     "name": "Hifi Store",
                     "terms": "audio,hi-fi,high fidelity,stereo,video"
@@ -5129,7 +5147,7 @@
                 },
                 "shop/appliance": {
                     "name": "Appliance Store",
-                    "terms": "air conditioner,appliance,dishwasher,dryer,freezer,fridge,grill,kitchen,oven,refrigerator,stove,washer,washing machine"
+                    "terms": "air conditioner,appliance,dishwasher,dryer,freezer,fridge,grill,kitchen,oven,refrigerator,stove,washer,washing machine,white goods"
                 },
                 "shop/antiques": {
                     "name": "Antique Shop",
@@ -5436,7 +5454,7 @@
                 },
                 "public_transport/station_bus": {
                     "name": "Bus Station / Terminal",
-                    "terms": "bus,public transit,public transportation,station,terminal,transit,transportation"
+                    "terms": "bus,bus terminal,public transit,public transportation,station,terminal,transit,transportation"
                 },
                 "public_transport/station_aerialway": {
                     "name": "Aerialway Station",
@@ -6725,7 +6743,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Horseback Riding Center",
-                    "terms": "equestrian facility,equestrian,horse farm,horse park,horse ranch,horse riding center,horse riding facility,horse riding,horse stables,riding facility,stables"
+                    "terms": "equestrian facility,equestrian,horse farm,horse park,horse ranch,horse riding center,horse riding facility,horse riding,riding facility,riding stables,stables"
                 },
                 "leisure/hackerspace": {
                     "name": "Hackerspace",
@@ -7589,6 +7607,10 @@
                     "name": "Cycle Path",
                     "terms": "bicycle path,bike path,cycling path"
                 },
+                "highway/crossing": {
+                    "name": "Crossing",
+                    "terms": "crosswalk,foot path crossing,pedestrian crossing"
+                },
                 "highway/corridor": {
                     "name": "Indoor Corridor",
                     "terms": "gallery,hall,hallway,indoor,passage,passageway"
@@ -7609,9 +7631,6 @@
                 "highway/bridleway": {
                     "name": "Bridle Path",
                     "terms": "bridleway,equestrian,horse,trail"
-                },
-                "highway/crossing": {
-                    "name": "Crossing"
                 },
                 "highway/bus_stop": {
                     "name": "Bus Stop"
@@ -7656,7 +7675,7 @@
                 },
                 "highway/footway/traffic_island": {
                     "name": "Refuge Island",
-                    "aliases": "Crosswalk Island\nTraffic Island",
+                    "aliases": "Crosswalk Island\nTraffic Island\nPedestrian Island",
                     "terms": "crossing island"
                 },
                 "highway/footway/sidewalk": {
@@ -7746,7 +7765,8 @@
                 },
                 "healthcare/psychotherapist": {
                     "name": "Psychotherapist",
-                    "terms": "anxiety,counselor,depression,mental health,mind,suicide,therapist,therapy"
+                    "aliases": "Clinical Psychologist",
+                    "terms": "anxiety,counselor,depression,mental health,mind,psychology,psychotherapy,suicide,therapist,therapy"
                 },
                 "healthcare/podiatrist": {
                     "name": "Podiatrist",
@@ -8922,8 +8942,9 @@
                     "terms": "esl"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Kneipp Water Cure",
-                    "terms": "hydrotherapy"
+                    "name": "Kneipp Facility",
+                    "aliases": "Kneipp Water Cure",
+                    "terms": "foot bath,hydrotherapy,kneipp cure,kneipp hydrotherapy,kneippism"
                 },
                 "amenity/kindergarten": {
                     "name": "Preschool / Kindergarten Grounds",
@@ -9351,6 +9372,10 @@
                     "name": "Vietnamese Restaurant",
                     "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
                 },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrainian Restaurant",
+                    "terms": "bar,breakfast,dine,dining,dinner,drive-in,eat,lunch,table"
+                },
                 "amenity/restaurant/turkish": {
                     "name": "Turkish Restaurant",
                     "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
@@ -9375,6 +9400,10 @@
                     "name": "Seafood Restaurant",
                     "terms": "bar,breakfast,cafe,café,dine,dining,dinner,drive-in,eat,grill,lunch,table,fish,shellfish,molluscs,crustaceans,clams,oysters,lobsters,crab,shrimp,squid,octopus"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Ramen Restaurant",
+                    "terms": "bar,dine,dining,dinner,eat,lunch,table,japanese,soup,noodles"
+                },
                 "amenity/restaurant/pizza": {
                     "name": "Pizza Restaurant",
                     "aliases": "Pizzeria",
@@ -9382,7 +9411,7 @@
                 },
                 "amenity/restaurant/noodle": {
                     "name": "Noodle Restaurant",
-                    "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table,ramen noodles,soup,soba noodles,cellophane noodles,rice noodles"
+                    "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table,soup,soba noodles,cellophane noodles,rice noodles"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "Mexican Restaurant",
@@ -9411,6 +9440,10 @@
                 "amenity/restaurant/german": {
                     "name": "German Restaurant",
                     "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
+                },
+                "amenity/restaurant/georgian": {
+                    "name": "Georgian Restaurant",
+                    "terms": "bar,breakfast,dine,dining,dinner,drive-in,eat,lunch,table"
                 },
                 "amenity/restaurant/french": {
                     "name": "French Restaurant",
@@ -9522,6 +9555,14 @@
                     "name": "LGBTQ+ Nightclub",
                     "terms": "gay nightclub,lesbian nightclub,lgbtq nightclub,lgbt nightclub,lgb nightclub"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Frozen Yogurt Shop",
+                    "terms": "frogurt,froyo,frozen yoghurt,ice cream,yogurt,yoghurt"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Chicken Wings Fast Food",
+                    "terms": "chicken,dine,dining,dinner,eat,lunch,table"
+                },
                 "amenity/fast_food/sandwich": {
                     "name": "Sandwich Fast Food",
                     "terms": "breakfast,cafe,café,deli,deli sandwich,dine,dining,dinner,drive-in,eat,grill,lunch,meat,table"
@@ -9566,6 +9607,10 @@
                     "name": "Burger Fast Food",
                     "terms": "breakfast,dine,dining,dinner,drive-in,eat,grill,lunch,table"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel Fast Food",
+                    "terms": "breakfast,lox"
+                },
                 "amenity/fast_food/ice_cream": {
                     "name": "Ice Cream Fast Food"
                 },
@@ -9593,11 +9638,11 @@
                 "amenity/doctors/pulmonology": {
                     "name": "Pulmonologist",
                     "aliases": "Pneumologist\nRespiratory Physician\nRespirologist",
-                    "terms": "asthma,chest medicine,lung,pneumology,pneumonology,pneumonia,pulmonology,respiratory tract,respirology,respiratory medicine"
+                    "terms": "asthma,chest medicine,lung,lungs,pneumology,pneumonologist,pneumonology,pneumonia,pulmonology,respiratory tract,respirology,respiratory medicine"
                 },
                 "amenity/doctors/psychiatrist": {
                     "name": "Psychiatrist",
-                    "terms": "psychiatry"
+                    "terms": "psychiatry,psychology,psychotherapy"
                 },
                 "amenity/doctors/proctology": {
                     "name": "Colorectal Surgeon",
@@ -9663,8 +9708,9 @@
                     "terms": "anemia,blood,bone marrow,haematology,leukemia,lymphoma"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Gynecologist",
-                    "terms": "egg,gynaecologist,gynaecology,gynecology,obstetrics,ovulation,reproductive,woman's doctor,women's doctor"
+                    "name": "Obstetrician/Gynecologist",
+                    "aliases": "Gynecologist\nObstetrician",
+                    "terms": "egg,gynaecologist,gynaecology,gynecology,obgyn,ob/gyn,obstetrics,ovulation,reproductive,woman's doctor,women's doctor"
                 },
                 "amenity/doctors/general": {
                     "name": "Primary Care Physician",
@@ -9846,18 +9892,21 @@
                     "terms": "aerial cable,lift,ropeway,skiing,snowboarding,tramway"
                 },
                 "advertising/totem": {
-                    "name": "Advertising Totem"
+                    "name": "Advertising Totem",
+                    "terms": "ad,advertising,spam"
                 },
                 "advertising/poster_box": {
-                    "name": "Poster Box"
+                    "name": "Poster Box",
+                    "terms": "ad,advertising,spam"
                 },
                 "advertising/column": {
-                    "name": "Advertising Column"
+                    "name": "Advertising Column",
+                    "terms": "ad,advertising,spam"
                 },
                 "advertising/board": {
                     "name": "Notice Board",
                     "aliases": "Bulletin Board\nPin Board",
-                    "terms": "advertising,announcements,blackboard,bulletinboard,cork board,corkboard,fliers,flyers,noticeboard,pinboard,sign,whiteboard"
+                    "terms": "ad,advertising,announcements,blackboard,bulletinboard,cork board,corkboard,fliers,flyers,noticeboard,pinboard,sign,spam,whiteboard"
                 },
                 "advertising/billboard": {
                     "name": "Billboard",
@@ -9865,7 +9914,10 @@
                 },
                 "addr/interpolation": {
                     "name": "Address Interpolation"
-                }
+                },
+                "@templates/poi": {},
+                "@templates/internet_access": {},
+                "@templates/contact": {}
             }
         }
     }

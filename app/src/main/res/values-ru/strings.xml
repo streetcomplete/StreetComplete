@@ -1284,6 +1284,7 @@
     <string name="overlay_cycleway">"Велодорожки"</string>
     <string name="bicycle_boulevard_is_a">"Это %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Это не %1$s"</string>
+    <string name="bicycle_boulevard">"Велосипедная зона"</string>
     <string name="separate_cycleway_no">"Проезд на велосипеде запрещён"</string>
     <string name="separate_cycleway_allowed">"Движение на велосипеде разрешено"</string>
     <string name="separate_cycleway_no_or_allowed">"Не предназначено для велосипедистов (проезд на велосипеде может быть разрешён)"</string>
@@ -1296,17 +1297,30 @@
     <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore иногда (в начале) предполагает, что земля немного ниже или выше, чем на самом деле. Это приводит к ошибке измерения, которая увеличивается, когда вы наклоняете телефон к горизонту.&lt;/p&gt; &lt;p&gt;Установите начальную и конечную точки, указывая телефон прямо внизу (чтобы видеть белую стрелку сверху), чтобы полностью избежать этой проблемы для горизонтальных измерений.&lt;/p&gt; &lt;p&gt;Для вертикальных измерений вам нужно вместо этого проверить, не кажется ли стартовая точка движущейся относительно земли, смотря на нее с разных направлений.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Данное приложение использует &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сервисы Google Play для дополненной реальности&lt;/a&gt; (ARCore), предоставленные Google в соответствии с &lt;a href=\"https://policies.google.com/privacy\"&gt;политикой приватности Google&lt;/a&gt;."</string>
     <string name="default_disabled_msg_seasonal">"Этот тип квеста по умолчанию отключен, поскольку может потребоваться повторная проверка ситуации в определенное время года."</string>
+    <string name="quest_gritBinSeasonal_title">"Есть ли это здесь кроме зимнего сезона?"</string>
+    <string name="quest_traffic_signals_sound_description">"Подсказка: обратите внимание на динамики.  Не все звуковые сигналы можно активировать с помощью кнопки."</string>
     <string name="quest_presets_duplicate">"Дублировать"</string>
+    <string name="quest_address_answer_block">"Это внутри одного квартала (домовладения)..."</string>
+    <string name="quest_address_answer_no_block">"Это находится за пределами одного квартала..."</string>
     <string name="quest_surface_value_mud">"Стойкая грязь"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Здесь нет туалета"</string>
     <string name="unknown_surface_title">"Другой вид поверхности"</string>
     <string name="overlay_surface">"Покрытие"</string>
-    <string name="quest_crossing_title2">"Здесь есть переправа?"</string>
+    <string name="overlay_path_surface_segregated">"Разделить на велосипедную и пешеходную части"</string>
+    <string name="quest_crossing_title2">"Здесь есть переход?"</string>
+    <string name="quest_crossing_yes">"Да (например, здесь опущен бордюр или есть разметка)"</string>
+    <string name="quest_crossing_no">"Нет, но пересечение возможно"</string>
+    <string name="quest_crossing_prohibited">"Нет, пересечение запрещено или невозможно"</string>
     <string name="quest_hairdresser_title">"Какие клиенты посещают эту парикмахерскую?"</string>
     <string name="quest_hairdresser_male_and_female">"Любые"</string>
     <string name="quest_hairdresser_female_only">"Женщины"</string>
     <string name="quest_hairdresser_male_only">"Мужчины"</string>
     <string name="quest_hairdresser_not_signed">"Не подписано"</string>
+    <string name="quest_amenityCover_title">"Защищен ли данный объект от дождя?"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Остров безопасности"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Преднамеренно круто изогнутая улица или ряд поворотов, которые вы должны объехать."</string>
+    <string name="lane_narrowing_traffic_calming_none">"Тут нет суженной полосы"</string>
 </resources>
