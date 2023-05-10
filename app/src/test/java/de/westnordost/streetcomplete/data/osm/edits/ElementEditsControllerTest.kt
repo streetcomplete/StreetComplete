@@ -102,7 +102,7 @@ class ElementEditsControllerTest {
 
         verify(db).markSynced(edit0.id)
         verify(idProvider).updateIds(updates.idUpdates)
-        verify(listener).onSyncedEdit(edit0)
+        verify(listener).onSyncedEdit(edit0, hashSetOf(9L)) // forwards the edits with updated elements
     }
 
     @Test fun `undo unsynced`() {
