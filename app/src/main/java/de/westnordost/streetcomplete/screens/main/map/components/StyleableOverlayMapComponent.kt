@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Color
+import androidx.collection.ArrayMap
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Geometry
 import de.westnordost.streetcomplete.Prefs
@@ -53,7 +54,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         val element = styledElement.element
         val geometry = styledElement.geometry
         val style = styledElement.style
-        val props = HashMap<String, String>()
+        val props = ArrayMap<String, String>(6)
         props[ELEMENT_ID] = element.id.toString()
         props[ELEMENT_TYPE] = element.type.name
         val layer = element.tags["layer"]?.toIntOrNull()?.takeIf { it.absoluteValue <= 20 } ?: 0
@@ -110,7 +111,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         return if (style is PolygonStyle && (style.icon != null || style.label != null)) {
             // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
             // issue that icons for polygons are shown on every single vertex
-            val properties = HashMap<String, String>(4, 1.0f)
+            val properties = ArrayMap<String, String>(4)
             properties[ELEMENT_ID] = element.id.toString()
             properties[ELEMENT_TYPE] = element.type.name
             style.icon?.let { properties["icon"] = it }

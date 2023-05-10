@@ -15,7 +15,7 @@ data class ExternalSourceQuest(
     override val type: ExternalSourceQuestType,
     override val position: LatLon = geometry.center // allow setting position to arbitrary LatLon, because e.g. Osmose issues are often located at outline of building instead of in center
 ) : Quest() {
-    override val key by lazy { ExternalSourceQuestKey(id, source) }
+    override val key = ExternalSourceQuestKey(id, source)
     override val markerLocations: Collection<LatLon> get() = listOf(position)
     val source get() = type.source
 

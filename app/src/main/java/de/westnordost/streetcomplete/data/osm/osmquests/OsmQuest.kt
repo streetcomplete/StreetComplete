@@ -17,13 +17,13 @@ data class OsmQuest(
     override val geometry: ElementGeometry
 ) : Quest(), OsmQuestDaoEntry {
 
-    override val key: OsmQuestKey by lazy { OsmQuestKey(elementType, elementId, questTypeName.intern()) }
+    override val key: OsmQuestKey = OsmQuestKey(elementType, elementId, questTypeName.intern())
 
     override val questTypeName: String get() = type.name
 
     override val position: LatLon get() = geometry.center
 
-    override val markerLocations: Collection<LatLon> by lazy {
+    override val markerLocations: Collection<LatLon> get() {
         if (geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
@@ -36,13 +36,13 @@ data class OsmQuest(
                 val between = (length - (2 * MARKER_FROM_END_DISTANCE)) / (count - 1)
                 // space markers `between` apart, starting with `MARKER_FROM_END_DISTANCE` (the
                 // final marker will end up at `MARKER_FROM_END_DISTANCE` from the other end)
-                return@lazy polyline.pointsOnPolylineFromStart(
+                return polyline.pointsOnPolylineFromStart(
                     (0 until count).map { MARKER_FROM_END_DISTANCE + (it * between) }
                 )
             }
         }
         // fall through to a single marker in the middle
-        listOf(position)
+        return listOf(position)
     }
 }
 

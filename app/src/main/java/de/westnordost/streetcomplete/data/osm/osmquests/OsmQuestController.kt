@@ -265,7 +265,7 @@ class OsmQuestController internal constructor(
         questsPreviously: Collection<OsmQuestDaoEntry>,
         deletedQuestKeys: Collection<OsmQuestKey>
     ): List<OsmQuestKey> {
-        val obsoleteQuestKeys = HashSet<OsmQuestKey>(questsPreviously.size, 1.0f)
+        val obsoleteQuestKeys = HashSet<OsmQuestKey>(questsPreviously.size, 0.9f)
         questsPreviously.forEach { obsoleteQuestKeys.add(it.key) }
 
         for (quest in questsNow) {
@@ -331,7 +331,7 @@ class OsmQuestController internal constructor(
                     it.position.truncateTo5Decimals() !in hiddenPositions
                 }
 
-        val elementKeys = HashSet<ElementKey>(entries.size, 1.0f)
+        val elementKeys = HashSet<ElementKey>(entries.size, 0.9f)
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
 
         val geometriesByKey = mapDataSource.getGeometries(elementKeys).associateBy { it.key }

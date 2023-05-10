@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import androidx.collection.ArrayMap
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Geometry
 import com.mapzen.tangram.geometry.Point
@@ -59,21 +60,19 @@ data class Pin(
     val geometry: ElementGeometry? = null,
     val color: String? = null,
 ) {
-    val tangramPoint by lazy {
-        // avoid creation of intermediate HashMaps.
-        val tangramProperties = listOfNotNull(
+    val tangramPoint = Point(
+        position.toLngLat(),
+        listOfNotNull(
             "type" to "point",
             "kind" to iconName,
             "importance" to importance.toString(),
             color?.let { "poi_color" to color }
-        )
-        val props = HashMap<String, String>(properties.size + tangramProperties.size, 1f)
-        props.putAll(tangramProperties)
-        props.putAll(properties)
-        Point(position.toLngLat(), props)
-    }
-    val tangramGeometry by lazy {
-        if (geometry == null) null
+        ).let { ArrayMap<String, String>(it.size + properties.size).apply {
+            putAll(it)
+            putAll(properties)
+        } }
+    )
+
+    val tangramGeometry = if (geometry == null) null
         else geometry to geometry.toTangramGeometry()
-    }
 }

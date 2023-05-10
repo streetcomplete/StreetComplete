@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.util.ktx.toInternedHashMap
+import de.westnordost.streetcomplete.util.ktx.toInternedMap
 import kotlinx.datetime.Instant
 import kotlinx.datetime.toJavaInstant
 import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
@@ -198,15 +198,15 @@ private fun BoundingBox.toOsmApiBoundingBox() =
 /* --------------------------------- OsmApiElement -> Element ----------------------------------- */
 
 private fun OsmApiNode.toNode() =
-    Node(id, LatLon(position.latitude, position.longitude), tags.toInternedHashMap(), version, editedAt.toEpochMilli())
+    Node(id, LatLon(position.latitude, position.longitude), tags.toInternedMap(), version, editedAt.toEpochMilli())
 
 private fun OsmApiWay.toWay() =
-    Way(id, ArrayList(nodeIds), tags.toInternedHashMap(), version, editedAt.toEpochMilli())
+    Way(id, ArrayList(nodeIds), tags.toInternedMap(), version, editedAt.toEpochMilli())
 
 private fun OsmApiRelation.toRelation() = Relation(
     id,
     members.map { it.toRelationMember() },
-    tags.toInternedHashMap(),
+    tags.toInternedMap(),
     version,
     editedAt.toEpochMilli()
 )

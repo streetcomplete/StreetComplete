@@ -252,7 +252,7 @@ class QuestPinsManager(
     }
 
     private fun createQuestPins(quest: Quest): List<Pin> {
-        val iconName = resources.getResourceEntryName(quest.type.icon)
+        val iconName = resources.getResourceEntryName(quest.type.icon).intern()
         val color = quest.type.dotColor
         val importance = getQuestImportance(quest)
         val label = if (color != null && quest is OsmQuest) getLabel(quest) else null

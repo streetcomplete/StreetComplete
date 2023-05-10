@@ -54,7 +54,7 @@ class StyleableOverlayManager(
 
     // cache recent queries in some sort of crappy chaotic spatial cache
     // don't do it by tile, because this can be much slower to load in some cases
-    private val cache = LinkedHashMap<TilesRect, HashMap<ElementKey, StyledElement>>(16, 1f, true)
+    private val cache = LinkedHashMap<TilesRect, HashMap<ElementKey, StyledElement>>(16, 0.9f, true)
 
     // return styledElements, and cache the ones from rects we don't have
     private fun getFromCache(tilesRect: TilesRect): Collection<StyledElement> {
@@ -107,7 +107,7 @@ class StyleableOverlayManager(
     private fun fetchAndCache(tilesRect: TilesRect): Collection<StyledElement> {
         val mapData = mapDataSource.getMapDataWithGeometry(tilesRect.asBoundingBox(TILES_ZOOM))
         val overlay = overlay ?: return emptyList()
-        val data = hashMapOf<ElementKey, StyledElement>()
+        val data = HashMap<ElementKey, StyledElement>(mapData.size / 20, 0.9f)
         createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
             if (!levelFilter.levelAllowed(styledElement.element)) return@forEach
             data[key] = styledElement

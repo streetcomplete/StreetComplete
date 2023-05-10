@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.util.ktx
 /** Returns true if the map contains any of the specified [keys]. */
 fun <K, V> Map<K, V>.containsAnyKey(vararg keys: K): Boolean = keys.any { this.keys.contains(it) }
 
-fun Map<String, String>.toInternedHashMap() = HashMap<String, String>(size, 0.9f).apply {
-    forEach { (k, v) -> put(k.intern(), v.intern()) }
-}
+// saves memory by interning the strings
+// could save (noticeably!) more by using ArrayMap, but this slows down quest creation by ca. 15%
+fun Map<String, String>.toInternedMap() = if (isEmpty()) emptyMap()
+    else HashMap<String, String>(size, 0.9f).also {
+        forEach { (k, v) -> it[k.intern()] = v.intern() }
+    }
