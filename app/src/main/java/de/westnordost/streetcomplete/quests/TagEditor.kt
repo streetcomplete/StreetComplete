@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.createChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
@@ -357,15 +358,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 
     protected open fun applyEdit() {
-        val builder = StringMapChangesBuilder(originalElement.tags)
-        for (key in originalElement.tags.keys) {
-            if (!element.tags.containsKey(key))
-                builder.remove(key)
-        }
-        for ((key, value) in element.tags) {
-            if (originalElement.tags[key] == value) continue
-            builder[key] = value
-        }
+        val builder = element.tags.createChanges(originalElement.tags)
 
         val action = UpdateElementTagsAction(originalElement, builder.create())
         val questKey = questKey
