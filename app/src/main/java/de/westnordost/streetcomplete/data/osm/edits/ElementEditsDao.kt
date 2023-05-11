@@ -24,6 +24,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElem
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeleteRelationAction
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.tagEdit
@@ -53,6 +55,8 @@ class ElementEditsDao(
                 subclass(MoveNodeAction::class)
                 subclass(RevertMoveNodeAction::class)
                 subclass(CreateNodeFromVertexAction::class)
+                subclass(CreateRelationAction::class)
+                subclass(DeleteRelationAction::class)
             }
         }
     }

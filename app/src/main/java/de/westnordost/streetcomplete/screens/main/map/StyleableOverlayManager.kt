@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -143,6 +144,11 @@ class StyleableOverlayManager(
             updateJob = viewLifecycleScope.launch {
                 oldUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
                 updateStyledElements(updated, deleted)
+                if (overlay is RestrictionOverlay)
+                    lastDisplayedRect?.let {
+                        cache.clear() // reload all, because it doesn't work well if relations are updated (maybe bother with it later)
+                        onNewTilesRect(it)
+                    }
             }
         }
 

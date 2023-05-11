@@ -756,9 +756,10 @@ class MainFragment :
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?,
-        color: Int?
+        color: Int?,
+        rotation: Double?
     ) {
-        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title, color)
+        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title, color, rotation)
     }
 
     override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {

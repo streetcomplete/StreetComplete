@@ -369,22 +369,10 @@
     <string name="time_limited_from">From</string>
     <string name="time_limited_to">To</string>
 
-    <!-- other -->
-    <string name="hide_button">Hide</string>
-    <string name="tag_editor_last_edited">Last edited: %s</string>
-    <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b>\n\n
-This is a modified version of StreetComplete. It is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
-This especially applies to the possibility of editing raw tags and deleting nodes, but also for modification of element selection for quests.
-Quests added in SCEE <i>may not be answerable</i> in all cases and are disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
-Out of the box SCEE is configured to behave very similar to StreetComplete.\n
-You have access to your StreetComplete user statistics, but any quests solved using SCEE <i>will not affect</i> statistics and star count.</string>
-    <string name="fork_about_title_repository">SCEE project home</string>
-    <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
-    <string name="enqueue_download">Start after current search is done</string>
-    <string name="create_poi">Add POI</string>
-    <string name="insert_node">Insert node into way</string>
-    <string name="insert_node_select_way">Select a position on a way</string>
+
+    <!-- new overlays -->
+
+    <!-- custom overlay -->
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_filter_message">Click the link below to open information about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result.
         \nThe checkboxes replace the \"nodes, ways with\" part.</string>
@@ -401,6 +389,29 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_delete">Really delete %s?</string>
     <!-- custom_overlay_add_button should be short, so the button can be displayed in same line with the cancel button -->
     <string name="custom_overlay_add_button">New custom</string>
+
+    <!-- turn restriction overlay -->
+    <string name="restriction_overlay_title">Turn restrictions</string>
+    <string name="restriction_overlay_exceptions">Exceptions: %s</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
+
+
+    <!-- other -->
+    <string name="hide_button">Hide</string>
+    <string name="tag_editor_last_edited">Last edited: %s</string>
+    <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b>\n\n
+This is a modified version of StreetComplete. It is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
+This especially applies to the possibility of editing raw tags and deleting nodes, but also for modification of element selection for quests.
+Quests added in SCEE <i>may not be answerable</i> in all cases and are disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
+Out of the box SCEE is configured to behave very similar to StreetComplete.\n
+You have access to your StreetComplete user statistics, but any quests solved using SCEE <i>will not affect</i> statistics and star count.</string>
+    <string name="fork_about_title_repository">SCEE project home</string>
+    <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
+    <string name="enqueue_download">Start after current search is done</string>
+    <string name="create_poi">Add POI</string>
+    <string name="insert_node">Insert node into way</string>
+    <string name="insert_node_select_way">Select a position on a way</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>
     <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>
     <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
@@ -426,5 +437,6 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="access_weight_limit">Weight</string>
     <string name="access_width_limit">Width</string>
     <string name="access_time_limit">Time</string>
+    <string name="create_relation_action_description">You created a relation with …</string>
 
 </resources>

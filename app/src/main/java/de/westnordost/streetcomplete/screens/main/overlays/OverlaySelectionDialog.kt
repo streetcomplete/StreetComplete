@@ -41,6 +41,7 @@ import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.view.ArrayImageAdapter
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -118,25 +119,6 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     )
 }
 
-private class ArrayImageAdapter(context: Context, private val items: List<Int>) : ArrayAdapter<Int>(context, android.R.layout.select_dialog_item, items), SpinnerAdapter {
-    val params = ViewGroup.LayoutParams(context.dpToPx(48).toInt(), context.dpToPx(48).toInt())
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // for non-dropdown
-        val view = super.getView(position, convertView, parent)
-        val tv = view.findViewById<TextView>(android.R.id.text1)
-        tv.text = ""
-        tv.background = context.getDrawable(items[position])
-        tv.layoutParams = params
-        return view
-    }
-
-    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val v = (convertView as? ImageView) ?: ImageView(context)
-        v.setImageResource(items[position])
-        v.layoutParams = params
-        return v
-    }
-}
-
 @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
 @Suppress("KotlinConstantConditions") // because this is simply incorrect...
 fun showOverlayCustomizer(
@@ -158,7 +140,7 @@ fun showOverlayCustomizer(
         questTypeRegistry.forEach { add(it.icon) }
     }.toList()
     val iconSpinner = Spinner(ctx).apply {
-        adapter = ArrayImageAdapter(ctx, iconList)
+        adapter = ArrayImageAdapter(ctx, iconList, 48)
         val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
         setSelection(iconList.indexOf(selectedIcon))
         dropDownWidth = ctx.dpToPx(48).toInt()

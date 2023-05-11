@@ -652,6 +652,9 @@ tutorial/
 note/
     create_note_black_24dp.svg
 
+restriction/
+    France_road_sign_B2*.svg            Roulex 45 (CC-BY-SA 4.0) from https://wiki.openstreetmap.org/wiki/Relation:restriction#Road_signs
+
 lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 
 mail.svg

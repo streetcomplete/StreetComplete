@@ -30,7 +30,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int? = null,
         title: String? = null,
-        questColor: Int? = null
+        questColor: Int? = null,
+        rotation: Double? = null
     ) {
         val center = geometry.center
         delete(geometry)
@@ -51,14 +52,25 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 iconSize = pointSize
                 color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 100)) } ?: pointColor
             }
-            marker.setStylingFromString("""
-            {
-                style: 'geometry-points',
-                color: '$color',
-                size: ${iconSize}px,
-                collide: false
-            }
-            """.trimIndent())
+            if (rotation == null)
+                marker.setStylingFromString("""
+                {
+                    style: 'geometry-points',
+                    color: '$color',
+                    size: ${iconSize}px,
+                    collide: false
+                }
+                """.trimIndent())
+            else
+                marker.setStylingFromString("""
+                {
+                    style: 'geometry-points',
+                    color: '$color',
+                    size: ${iconSize}px,
+                    collide: false,
+                    angle: $rotation
+                }
+                """.trimIndent())
             marker.setPoint(geometry.center)
             markers.add(marker)
         }

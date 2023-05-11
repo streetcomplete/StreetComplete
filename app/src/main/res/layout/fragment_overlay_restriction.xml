@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="160dp"
+    android:divider="@drawable/space_16dp"
+    android:showDividers="middle|beginning|end"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/restriction_type_spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        android:dropDownWidth="80dp"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_restriction" />
+
+    <ImageView
+        android:id="@+id/swap_from_to_roles"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_arrow_up_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/add_restriction"
+        app:layout_constraintRight_toLeftOf="@id/swap_from_to_roles"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        android:src="@drawable/ic_add_48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/implicit_switch"
+        android:text="there is a sign"
+        android:textAppearance="@style/TextAppearance.BigBody"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restriction_type_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/exceptions"
+        android:text="exceptions: none"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/implicit_switch"
+        android:textAppearance="@style/TextAppearance.BigBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exceptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

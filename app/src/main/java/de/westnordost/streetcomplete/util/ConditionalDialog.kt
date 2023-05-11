@@ -80,6 +80,8 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
                 }
             }
 
+    // todo: < > switch, enabled if box checked
+    //  -> how to align switch right? which layout? or better from res?
     fun numericBox(type: String, textResId: Int) = CheckBox(context).apply {
         setText(textResId)
         setOnCheckedChangeListener { _, checked ->

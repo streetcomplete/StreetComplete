@@ -8,7 +8,8 @@ interface ShowsGeometryMarkers {
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?,
-        color: Int? = null
+        color: Int? = null,
+        rotation: Double? = null
     )
     fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry)
 

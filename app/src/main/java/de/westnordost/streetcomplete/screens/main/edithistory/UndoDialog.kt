@@ -37,6 +37,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeleteRelationAction
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
@@ -144,7 +146,7 @@ class UndoDialog(
             when (action) {
                 is UpdateElementTagsAction ->
                     createListOfTagUpdates(action.changes.changes)
-                is DeletePoiNodeAction ->
+                is DeletePoiNodeAction, is DeleteRelationAction ->
                     createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction ->
                     createTextView(ResText(R.string.split_way_action_description))
@@ -154,6 +156,8 @@ class UndoDialog(
                     createListOfTagUpdates(action.changes.changes)
                 is MoveNodeAction ->
                     createTextView(ResText(R.string.move_node_action_description))
+                is CreateRelationAction ->
+                    createCreateRelationDescriptionView(action.tags)
                 else -> throw IllegalArgumentException()
             }
         }
@@ -204,6 +208,18 @@ class UndoDialog(
 
         txt.setHtml(
             context.resources.getString(R.string.create_node_action_description) +
+            tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
+                "<li><tt>" + linkedTagString(key, value) + "</tt></li>"
+            }
+        )
+        return txt
+    }
+    private fun createCreateRelationDescriptionView(tags: Map<String, String>): TextView {
+        val txt = TextView(context)
+        txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+
+        txt.setHtml(
+        context.resources.getString(R.string.create_relation_action_description) +
             tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
                 "<li><tt>" + linkedTagString(key, value) + "</tt></li>"
             }
