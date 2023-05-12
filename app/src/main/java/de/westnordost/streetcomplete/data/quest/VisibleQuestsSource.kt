@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
@@ -117,7 +118,8 @@ class VisibleQuestsSource(
         if (visibleQuestTypes.isEmpty()) return emptyList()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypes)
-        val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
+        val osmNoteQuests = if (visibleQuestTypes.none { it is OsmNoteQuestType }) emptyList()
+            else osmNoteQuestSource.getAllVisibleInBBox(bbox)
         val externalSourceQuests = externalSourceQuestController.getAllInBBox(bbox, visibleQuestTypes)
 
         return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {

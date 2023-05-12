@@ -23,6 +23,9 @@ Due to the different name used in changesets ("StreetComplete_ee"), edits made w
 
 F-Droid releases of SCEE make use of reproducible builds, so releases on F-Droid and GitHub are signed with the same keys. This means you can switch between GitHub and F-Droid releases anytime without needing to uninstall first.
 
+F-Droid anti-feature: non-free network
+SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com.)
+
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
 

@@ -10,7 +10,9 @@ import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
@@ -144,7 +146,7 @@ class StyleableOverlayManager(
             updateJob = viewLifecycleScope.launch {
                 oldUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
                 updateStyledElements(updated, deleted)
-                if (overlay is RestrictionOverlay)
+                if (overlay is RestrictionOverlay && (updated.any { it is Relation } || deleted.any { it.type == ElementType.RELATION }))
                     lastDisplayedRect?.let {
                         cache.clear() // reload all, because it doesn't work well if relations are updated (maybe bother with it later)
                         onNewTilesRect(it)
