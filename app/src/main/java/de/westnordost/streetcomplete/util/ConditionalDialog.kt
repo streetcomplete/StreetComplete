@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.LinearLayout.LayoutParams
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
@@ -80,41 +82,61 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
                 }
             }
 
-    // todo: < > switch, enabled if box checked
-    //  -> how to align switch right? which layout? or better from res?
-    fun numericBox(type: String, textResId: Int) = CheckBox(context).apply {
-        setText(textResId)
-        setOnCheckedChangeListener { _, checked ->
-            if (checked) {
-                // allow selecting < and >? just let the user type it manually for now
-                var textDialog: AlertDialog? = null
-                val text = EditText(context).apply {
-                    hint = type
-                    inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
-                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-                    doAfterTextChanged { textDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = it?.toString()?.toFloatOrNull() != null }
-                }
-                textDialog = AlertDialog.Builder(context)
-                    .setView(text)
-                    .setPositiveButton(android.R.string.ok) { _, _ ->
-                        conditions[type] = "$type<${text.text}"
-                        createFullValue()
-                    }
-                    .setOnCancelListener { isChecked = false }
-                    .create()
-                textDialog.setOnShowListener {
-                    dialog?.lifecycleScope?.launch {
-                        delay(20) // without this, the keyboard sometimes isn't showing
-                        text.requestFocus()
-                        text.showKeyboard()
-                    }
-                    textDialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
-                }
-                textDialog.show()
-            } else {
-                conditions.remove(type)
+    fun numericBox(type: String, textResId: Int): View {
+        val box = CheckBox(context)
+        var conditionText = ""
+        val switch = SwitchCompat(context).apply {
+            layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.4f)
+            isEnabled = false
+            text = "<"
+            setOnCheckedChangeListener { _, b ->
+                text = if (b) ">" else "<"
+                conditions[type] = "$type$text$conditionText"
                 createFullValue()
             }
+        }
+        box.apply {
+            layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.6f)
+            setText(textResId)
+            setOnCheckedChangeListener { _, checked ->
+                if (checked) {
+                    // allow selecting < and >? just let the user type it manually for now
+                    var textDialog: AlertDialog? = null
+                    val text = EditText(context).apply {
+                        hint = type
+                        inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+                        setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+                        doAfterTextChanged { textDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = it?.toString()?.toFloatOrNull() != null }
+                    }
+                    textDialog = AlertDialog.Builder(context)
+                        .setView(text)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            conditionText = text.text.toString()
+                            conditions[type] = "$type${switch.text}${text.text}"
+                            createFullValue()
+                        }
+                        .setOnCancelListener { isChecked = false }
+                        .create()
+                    textDialog.setOnShowListener {
+                        dialog?.lifecycleScope?.launch {
+                            delay(20) // without this, the keyboard sometimes isn't showing
+                            text.requestFocus()
+                            text.showKeyboard()
+                        }
+                        textDialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+                    }
+                    textDialog.show()
+                } else {
+                    conditions.remove(type)
+                    createFullValue()
+                }
+                switch.isEnabled = checked
+            }
+        }
+        return LinearLayout(context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            addView(box)
+            addView(switch)
         }
     }
 
@@ -152,6 +174,7 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
         addView(keySpinner)
         addView(valueView)
         // todo: more numeric things? there is stay, but this is not really numeric... has hours / minutes
+        //  though this could be translated and only take minutes?
         addView(numericBox("weight", de.westnordost.streetcomplete.R.string.access_weight_limit))
         addView(numericBox("length", de.westnordost.streetcomplete.R.string.access_length_limit))
         addView(numericBox("width", de.westnordost.streetcomplete.R.string.access_width_limit))
