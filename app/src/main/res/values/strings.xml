@@ -108,7 +108,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is either time-consuming or difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data.</string>
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
-    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
 
 
     <!-- Quest interface -->
