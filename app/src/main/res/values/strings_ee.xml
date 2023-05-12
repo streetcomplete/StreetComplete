@@ -394,6 +394,7 @@
     <string name="restriction_overlay_title">Turn restrictions</string>
     <string name="restriction_overlay_exceptions">Exceptions: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
+    <string name="restriction_overlay_signed_switch">There is a sign</string>
 
 
     <!-- other -->

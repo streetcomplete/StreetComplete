@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:minHeight="160dp"
     android:divider="@drawable/space_16dp"
     android:showDividers="middle|beginning|end"
@@ -38,7 +39,7 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/implicit_switch"
-        android:text="there is a sign"
+        android:text="@string/restriction_overlay_signed_switch"
         android:textAppearance="@style/TextAppearance.BigBody"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/restriction_type_spinner"
@@ -47,7 +48,7 @@
 
     <Button
         android:id="@+id/exceptions"
-        android:text="exceptions: none"
+        tools:text="exceptions"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/implicit_switch"
         android:textAppearance="@style/TextAppearance.BigBody"

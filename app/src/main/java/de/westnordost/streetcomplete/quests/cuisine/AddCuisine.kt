@@ -14,8 +14,8 @@ class AddCuisine : OsmFilterQuestType<String>() {
     override val elementFilter = """
         nodes, ways with
         (
-            amenity ~ restaurant|fast_food
-            or amenity = pub and food = yes
+          amenity ~ restaurant|fast_food
+          or (amenity = pub and food = yes)
         )
         and !cuisine
     """
