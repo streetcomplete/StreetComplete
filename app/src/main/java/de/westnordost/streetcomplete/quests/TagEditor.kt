@@ -165,6 +165,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         // interestingly this is called several times on showing/hiding keyboard
         view.respectSystemInsets {
             val keyboardShowing = minBottomInset < it.bottom
+            val binding = _binding ?: return@respectSystemInsets
             binding.editorContainer.updateMargins(bottom = it.bottom)
             if (keyboardShowing) {
                 // setting layout params or requestLayout is unneeded? though some sources say it is...
@@ -227,12 +228,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             }
         })
         binding.editTags.viewTreeObserver.addOnGlobalFocusChangeListener { _, _ ->
+            val binding = _binding ?: return@addOnGlobalFocusChangeListener
             if (activity?.currentFocus == null || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && WindowInsetsCompat.toWindowInsetsCompat(binding.root.rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime())
             ))
-                _binding?.questsGrid?.removeView(keyboardButton)
-            else if ((_binding?.questsGrid?.size ?: 0) < 2 || _binding?.questsGrid?.get(1) != keyboardButton)
-                _binding?.questsGrid?.addView(keyboardButton, 1)
+                binding.questsGrid.removeView(keyboardButton)
+            else if ((binding.questsGrid.size) < 2 || binding.questsGrid[1] != keyboardButton)
+                binding.questsGrid.addView(keyboardButton, 1)
         }
 
         if (element.id == 0L) {
@@ -269,13 +271,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
     private suspend fun waitForQuests() {
         val quests = deferredQuests.await()
-        requireActivity().runOnUiThread { quests.forEach { q ->
+        activity?.runOnUiThread { quests.forEach { q ->
             val icon = ImageView(requireContext())
             icon.setImageResource(q.type.icon)
             icon.layoutParams = questIconParameters
             icon.tag = q.type.name
             icon.setOnClickListener { showQuest(q) }
-            binding.questsGrid.addView(icon)
+            _binding?.questsGrid?.addView(icon)
         } }
     }
 
@@ -402,12 +404,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 icon
             }
             if (!isActive) return@launch
-            requireActivity().runOnUiThread {
+            activity?.runOnUiThread {
                 // form might be closed while quests were created, so we better not crash on binding == null
-                val viewsToKeep = if ((_binding?.questsGrid?.size ?: 0) > 1 && _binding?.questsGrid?.get(1) == keyboardButton) 2
+                val binding = _binding ?: return@runOnUiThread
+                val viewsToKeep = if ((binding.questsGrid.size) > 1 && binding.questsGrid[1] == keyboardButton) 2
                     else 1
-                _binding?.questsGrid?.removeViews(viewsToKeep, binding.questsGrid.childCount - viewsToKeep) // remove all quest views
-                q.forEach { _binding?.questsGrid?.addView(it) }
+                binding.questsGrid.removeViews(viewsToKeep, binding.questsGrid.childCount - viewsToKeep) // remove all quest views
+                q.forEach { binding.questsGrid.addView(it) }
             }
         }
     }
