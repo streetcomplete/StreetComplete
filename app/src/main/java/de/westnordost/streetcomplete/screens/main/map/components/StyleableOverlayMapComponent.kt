@@ -80,6 +80,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     props["colorRight"] = it.color
                 }
                 if (style.stroke != null) {
+                    if (element.tags["access"] in privateWays) props["private"] = "1"
                     if (style.stroke.dashed) props["dashed"] = "1"
                     props["color"] = style.stroke.color
                     if (style.stroke.dashed)
@@ -180,3 +181,6 @@ data class StyledElement(
     // however, storing is not an issue as styled elements are cleared on theme switch (both automatic and manual)
     var tangramGeometries: List<Geometry>? = null
 }
+
+// same as in roads.yaml
+private val privateWays = hashSetOf("no", "private", "destination", "customers", "delivery", "agricultural", "forestry", "emergency")

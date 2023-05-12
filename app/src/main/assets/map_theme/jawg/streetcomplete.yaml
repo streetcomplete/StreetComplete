@@ -84,6 +84,10 @@ styles:
         base: lines
         blend: translucent
         dash: [2, 1.333]
+    map_data-private-way:
+        base: lines
+        dash: [1.0,0.5]
+        blend: translucent
     map_data-polygons:
         base: polygons
         blend: translucent
@@ -413,7 +417,7 @@ layers:
                         size: global.text_size
                         stroke: { color: global.text_stroke_color, width: 4px }
         line:
-            filter: { type: [line], color: true, dashed: false }
+            filter: { type: [line], color: true, dashed: false, private: false }
             draw:
                 map_data-lines:
                     interactive: true
@@ -423,6 +427,23 @@ layers:
                     cap: round
                     join: round
                     outline:
+                        color: function() { return feature.strokeColor; }
+                        width: 1m
+                        order: function() { return 702 + Number(feature.layer)*5; }
+        # For some reason this is not working with dashed lines. The outline dashes are always
+        # there if the main line is dashed, and look horrible
+        line-private:
+            filter: { type: [line], color: true, dashed: false, private: true }
+            draw:
+                map_data-lines:
+                    interactive: true
+                    color: function() { return feature.color; }
+                    width: function() { return feature.width; }
+                    order: function() { return 701 + Number(feature.layer)*5; }
+                    cap: round
+                    join: round
+                    outline:
+                        style: map_data-private-way
                         color: function() { return feature.strokeColor; }
                         width: 1m
                         order: function() { return 702 + Number(feature.layer)*5; }
