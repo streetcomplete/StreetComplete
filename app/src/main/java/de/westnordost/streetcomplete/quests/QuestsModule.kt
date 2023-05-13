@@ -122,6 +122,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.roof_colour.AddRoofColour
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
@@ -491,6 +492,7 @@ fun questTypeRegistry(
     150 to AddBuildingType(),
     151 to AddBuildingLevels(),
     152 to AddRoofShape(countryInfos, countryBoundariesFuture),
+    200 to AddRoofColour(countryInfos, countryBoundariesFuture),
 
     153 to AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 

@@ -1328,6 +1328,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bicycle lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bicycle paths."</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from curb to curb, including on-street parking, bicycle lanes etc."</string>
 
+    <string name="quest_roofColour_title">"What overall colour does this building’s roof have?"</string>
+    <string name="quest_roofColour_answer_many">"It has several different colours"</string>
+    <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colours are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
+
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="default_disabled_msg_roofShape">This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
