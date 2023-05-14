@@ -428,7 +428,8 @@ layers:
                     join: round
                     outline:
                         color: function() { return feature.strokeColor; }
-                        width: 1m
+                        # outlines are a little wider than without overlay to work around some visual glitches
+                        width: function() { if (feature.width < 2) { return 0.75 } else { return 1.2 }; }
                         order: function() { return 702 + Number(feature.layer)*5; }
         # For some reason this is not working with dashed lines. The outline dashes are always
         # there if the main line is dashed, and look horrible
@@ -445,7 +446,7 @@ layers:
                     outline:
                         style: map_data-private-way
                         color: function() { return feature.strokeColor; }
-                        width: 1m
+                        width: function() { if (feature.width < 2) { return 0.75 } else { return 1.2 }; }
                         order: function() { return 702 + Number(feature.layer)*5; }
         line-dashed:
             filter: { type: [line], color: true, dashed: true }

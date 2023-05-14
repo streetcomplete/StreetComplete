@@ -67,7 +67,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
             }
             is PolylineStyle -> {
-                val width = getLineWidth(element.tags)
+                val width = getLineWidth(element.tags) + 0.15f // slightly wider to work around some visual glitches
                 // thin lines should be rendered on top (see #4291)
                 if (width <= 2f) props["layer"] = (layer + 1).toString()
                 props["width"] = width.toString()
@@ -80,17 +80,22 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     props["colorRight"] = it.color
                 }
                 if (style.stroke != null) {
-                    if (element.tags["access"] in privateWays) props["private"] = "1"
                     if (style.stroke.dashed) props["dashed"] = "1"
                     props["color"] = style.stroke.color
                     if (style.stroke.dashed)
-                            // dashed and stroke creates different dash length for outline and actual line, which looks very strange
-                            // but not setting a strokeColor results in the line not being selectable, so just use INVISIBLE
-                            props["strokeColor"] = INVISIBLE
-                        else
-                            props["strokeColor"] = getDarkenedColor(style.stroke.color)
+                        // dashed and stroke creates different dash length for outline and actual line, which looks very strange
+                        // but not setting a strokeColor results in the line not being selectable, so just use INVISIBLE
+                        props["strokeColor"] = INVISIBLE
+                    else
+                        props["strokeColor"] = getDarkenedColor(style.stroke.color)
                     if (element.tags["highway"] == "steps") {
                         props["steps"] = "1"
+                    }
+                    if (element.tags["access"] in privateWays){
+                        props["private"] = "1"
+                        if (props["strokeColor"] == INVISIBLE)
+                            // fix weird issue with private ways not showing outline at all
+                            props["strokeColor"] = resources.getString(R.string.road_outline_color)
                     }
                 } else if (style.strokeLeft != null || style.strokeRight != null) {
                     // must have a color for the center if left or right is defined because
