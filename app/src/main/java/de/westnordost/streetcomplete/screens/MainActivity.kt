@@ -198,9 +198,17 @@ class MainActivity :
 
         // try to stop quest monitor more often than it seems necessary, because sometime android
         // is slow to react, e.g. when quickly switching between SC and other app
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running)
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running) {
             try { applicationContext.unbindService(questMonitorConnection) }
-            catch (_: IllegalArgumentException) {} // happens on first start, and maybe if there is some issue
+            catch (_: IllegalArgumentException) { } // happens on first start, and maybe if there is some issue
+            lifecycleScope.launch {
+                delay(5000)
+                // sometimes it just doesn't stop, or is started with considerable delay for some reason
+                // try to catch this here
+                try { applicationContext.unbindService(questMonitorConnection) }
+                catch (_: IllegalArgumentException) { }
+            }
+        }
     }
 
     public override fun onResume() {
@@ -401,7 +409,7 @@ class MainActivity :
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false
 
-        // quest monitor connection needs to survive activity being stopped
+        // quest monitor connection needs to work with multiple main activities
         private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
             override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {}
             override fun onServiceDisconnected(p0: ComponentName?) {}
