@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
@@ -16,7 +17,7 @@ import kotlinx.serialization.Serializable
 data class CreateRelationAction (
     val tags: Map<String, String>,
     val members: List<RelationMember>
-) : ElementEditAction/*, IsActionRevertable*/ {
+) : ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(0, 0, 1)
 
@@ -35,9 +36,8 @@ data class CreateRelationAction (
         return MapDataChanges(creations = listOf(newRelation))
     }
 
-    // todo: make revertable, no reason not to
-//    override fun createReverted(idProvider: ElementIdProvider) =
-//        RevertCreateNodeAction(createNode(idProvider), insertIntoWays.map { it.wayId })
+    override fun createReverted(idProvider: ElementIdProvider) =
+        RevertCreateRelationAction(createRelation(idProvider))
 
     private fun createRelation(idProvider: ElementIdProvider) =
         Relation(idProvider.nextRelationId(), members, tags, 1, nowAsEpochMilliseconds())

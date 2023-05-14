@@ -7,11 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubsta
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
@@ -28,7 +25,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DeleteRelationAction(
     val originalRelation: Relation
-) : ElementEditAction/*, IsActionRevertable*/ {
+) : ElementEditAction, IsActionRevertable {
 
     override val elementKeys get() = listOf(originalRelation.key)
 
@@ -53,7 +50,6 @@ data class DeleteRelationAction(
         return MapDataChanges(deletions = listOf(currentRelation))
     }
 
-    // todo: revertable
-//    override fun createReverted(idProvider: ElementIdProvider) =
-//        RevertDeletePoiNodeAction(originalNode)
+    override fun createReverted(idProvider: ElementIdProvider) =
+        RevertDeleteRelationAction(originalRelation)
 }

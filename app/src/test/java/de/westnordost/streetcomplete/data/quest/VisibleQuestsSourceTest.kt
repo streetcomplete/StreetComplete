@@ -4,10 +4,12 @@ import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosin
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
@@ -51,7 +53,7 @@ class VisibleQuestsSourceTest {
     private lateinit var listener: VisibleQuestsSource.Listener
 
     private val bbox = bbox(0.0, 0.0, 1.0, 1.0)
-    private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC())
+    private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC(), OsmNoteQuestType)
     private val questTypeNames = questTypes.map { it.name }
 
     @Before fun setUp() {
@@ -98,7 +100,7 @@ class VisibleQuestsSourceTest {
 
     @Test fun getAllVisible() {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
-        val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
+        val osmQuests = questTypes.filterIsInstance<OsmElementQuestType<*>>().map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
         val noteQuests = listOf(OsmNoteQuest(0L, LatLon(0.0, 0.0)), OsmNoteQuest(1L, LatLon(1.0, 1.0)))
         on(osmQuestSource.getAllVisibleInBBox(bboxCacheWillRequest, questTypes)).thenReturn(osmQuests)
         on(osmNoteQuestSource.getAllVisibleInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
@@ -121,7 +123,7 @@ class VisibleQuestsSourceTest {
 
     @Test fun `getAllVisible does not return those that are invisible because of an overlay`() {
         val qta = questTypes.first() // we need the same instance as in the registry
-        on(osmQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16), listOf(qta)))
+        on(osmQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16), listOf(qta, OsmNoteQuestType)))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16))).thenReturn(listOf())
 
