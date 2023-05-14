@@ -35,7 +35,7 @@ class CustomOverlayForm : AbstractOverlayForm() {
         binding.editButton.setOnClickListener {
             if (colorKeyPref.startsWith("!") && !colorKeyPref.contains(' '))
                 focusKey = colorKeyPref
-            element?.let { editTags(it, "CustomOverlay") }
+            element?.let { editTags(it, editTypeName = overlay.name) }
         }
     }
 

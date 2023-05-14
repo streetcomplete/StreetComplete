@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -31,9 +30,9 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.firstAndLast
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.finalBearingTo
@@ -41,6 +40,12 @@ import de.westnordost.streetcomplete.util.showAddConditionalDialog
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
 import org.koin.android.ext.android.inject
 
+// todo:
+//  currently adding a relation allows only 2 (different!) ways, and simply sets via node
+//   not allowing via ways, and requiring from/to ways to be different is bad for u-turn restrictions
+//  which icon to use for unknown restriction values? currently it's the note quest icon
+//  any safety measures against users doing stupid things?
+//   for now: no. if (expert!) users add insane relations, they would do the same in id/josm
 class RestrictionOverlayForm : AbstractOverlayForm() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
@@ -77,7 +82,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         set(value) {
             field?.first?.let { mapFragment?.deleteMarkerForCurrentHighlighting(ElementPointGeometry(it)) }
             field = value
-            val icon = getIconForType(newTags.getShortRestrictionValue() ?: "") // todo: what on unknown values
+            val icon = getIconForType(newTags.getShortRestrictionValue() ?: "")
             value?.let { mapFragment?.putMarkerForCurrentHighlighting(ElementPointGeometry(it.first), icon, null, null, it.second) }
         }
 
@@ -87,15 +92,18 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
             if (value) {
                 mapFragment?.hideOverlay()
                 mapFragment?.highlightGeometry(geometry) // highlight initially selected way only
-                binding.swapFromToRoles.isVisible = true
+                binding.exceptions.isVisible = true
+                binding.exceptions.text = getString(R.string.restriction_overlay_exceptions, getString(R.string.overlay_none))
                 binding.addRestriction.isGone = true
-                context?.toast("click the next way. needs a common end node with the current way. split if necessary", Toast.LENGTH_LONG)
+                binding.infoText.setText(R.string.restriction_overlay_select_way)
+                binding.infoText.isVisible = true
             }
         }
 
     override val otherAnswers get() = listOfNotNull(
         createDoesntExistAnswer(),
         createConditionalAnswer(),
+        relationDetailsAnswer(),
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -105,8 +113,9 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         binding.restrictionTypeSpinner.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 if (newTags.containsKey("restriction:conditional") && !newTags.containsKey("restriction")) {
-                    newTags["restriction:conditional"] = restrictionTypeList[p2]
-                    showRestriction() // for reloading text
+                    val old = newTags["restriction:conditional"]!!.substringBefore("@").trim()
+                    newTags["restriction:conditional"] = newTags["restriction:conditional"]!!.replace(old, restrictionTypeList[p2])
+                    showRestriction() // reloads text
                 } else
                     newTags["restriction"] = restrictionTypeList[p2]
                 via = via // reload icon
@@ -126,7 +135,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
             } }
             relation = rel.copy(members = newMembers)
         }
-        binding.implicitSwitch.isEnabled = false
+        binding.implicitSwitch.isGone = true
         binding.implicitSwitch.setOnCheckedChangeListener { _, b ->
             if (b)
                 newTags.remove("implicit")
@@ -136,11 +145,30 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         binding.addRestriction.setOnClickListener { selectionMode = true }
         binding.exceptions.setOnClickListener { showExceptionsDialog() }
 
-        // ignore multiple restrictions... maybe deal with it later
-        val rel = mapDataSource.getRelationsForWay(element!!.id).firstOrNull { it.isSupportedRestrictionRelation() } ?: return
-        newTags.putAll(rel.tags)
-        selectedRelation = rel
-        relation = rel
+        initializeRestrictionRelation()
+    }
+
+    private fun initializeRestrictionRelation() {
+        val relations = mapDataSource.getRelationsForWay(element!!.id).filter { it.tags["type"] == "restriction" }
+            .ifEmpty { return }
+        // if we have a full and complete relation, use it (only the first one...)
+        val fullSupportedRelation = relations.firstOrNull { it.isSupportedRestrictionRelation() && it.isRelationComplete() }
+        if (fullSupportedRelation != null) {
+            newTags.putAll(fullSupportedRelation.tags)
+            selectedRelation = fullSupportedRelation
+            relation = fullSupportedRelation
+            return
+        }
+        val complete = relations.filter { it.isRelationComplete() }
+        binding.infoText.isVisible = true
+        if (complete.isEmpty()) {
+            // we only have incomplete relations
+            binding.infoText.setText(R.string.restriction_overlay_relation_incomplete)
+            return
+        }
+
+        binding.infoText.text = getString(R.string.restriction_overlay_relation_unsupported, complete.first().getDetailsText())
+        getGeometry(complete.first())?.let { mapFragment?.highlightGeometry(it) }
     }
 
     private fun showExceptionsDialog() {
@@ -148,7 +176,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         val selected = exceptions.map { it in selectedExceptions }
         val newSelected = selected.toMutableList()
         AlertDialog.Builder(requireContext())
-            .setMultiChoiceItems(exceptions.toTypedArray(), selected.toBooleanArray()) { d, i, s ->
+            .setMultiChoiceItems(exceptions.toTypedArray(), selected.toBooleanArray()) { _, i, s ->
                 newSelected[i] = s
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -167,13 +195,12 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         if (idx != binding.restrictionTypeSpinner.selectedItemPosition) {
             binding.restrictionTypeSpinner.setSelection(idx) // any issue if not existing (probably -1)?
         }
-        binding.implicitSwitch.isEnabled = true
-
         getGeometry(rel)?.let { mapFragment?.highlightGeometry(it) }
 
         // set info
         binding.implicitSwitch.isVisible = true
         binding.implicitSwitch.isChecked = newTags["implicit"] != "yes"
+        binding.exceptions.isVisible = true
         binding.exceptions.text = getString(R.string.restriction_overlay_exceptions, newTags["except"]?.replace(";", ", ") ?: getString(R.string.overlay_none))
 
         // show other restrictions, but they can be modified only using the tag editor
@@ -210,12 +237,12 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         return ElementGeometryCreator().create(rel, mapDataSource.getGeometries(ways).associate { it.elementId to (it.geometry as ElementPolylinesGeometry).polylines.single() })
     }
 
-    // todo: currently simply sets via node, and doesn't allow selecting via ways (especially bad for u-turn restrictions)
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         if (!selectionMode) return false
         val bbox = position.enclosingBoundingBox(clickAreaSizeInMeters.coerceAtLeast(10.0))
         val data = mapDataSource.getMapDataWithGeometry(bbox)
         val initialWay = element as Way // this must be correct
+
         // first and last nodes, but only if they are shared by at least 3 roads (otherwise a restriction doesn't make sense)
         val firstAndLastNodes = initialWay.nodeIds.firstAndLast().sorted().filter { mapDataSource.getWaysForNode(it).count { it.tags["highway"] in ALL_ROADS } > 2 }
         if (firstAndLastNodes.isEmpty()) return true
@@ -236,9 +263,36 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         val viaNodeAsMember = RelationMember(viaNode.type, viaNode.id, "via")
         newTags["type"] = "restriction"
         val newRelation = Relation(0L, listOf(initialWayAsMember, otherWayAsMember, viaNodeAsMember), newTags)
+        binding.swapFromToRoles.isVisible = true
         relation = newRelation
         return true
     }
+
+    private fun Relation.isRelationComplete(): Boolean =
+        members.all { mapDataSource.get(it.type, it.ref) != null }
+
+    private fun Relation.getDetailsText(): String {
+        val tagsText = tags.entries.sortedBy { it.key }.joinToString("\n") { "${it.key} = ${it.value}" }
+        val membersText = members.joinToString("\n") { member ->
+            val element = mapDataSource.get(member.type, member.ref)!!
+            val memberDetails = getNameAndLocationLabel(element, resources, featureDictionary, false)
+                ?.let { "${element.key}: $it" } ?: element.key.toString()
+            "${member.role}: $memberDetails"
+        }
+        return "$tagsText\n\n$membersText"
+    }
+
+    private fun relationDetailsAnswer() = if ((relation?.id ?: 0L) == 0L) null
+        else AnswerItem(R.string.restriction_overlay_show_details) {
+            val rel = relation ?: return@AnswerItem
+            AlertDialog.Builder(requireContext())
+                .setMessage(rel.getDetailsText())
+                .setPositiveButton(android.R.string.ok, null)
+                .setNeutralButton(R.string.quest_generic_answer_show_edit_tags) { _, _ ->
+                    editTags(rel, elementGeometry = getGeometry(rel), editTypeName = overlay.name)
+                }
+                .show()
+        }
 
     private fun createDoesntExistAnswer() = if ((relation?.id ?: 0L) == 0L) null
         else AnswerItem(R.string.quest_generic_answer_does_not_exist) {
@@ -302,11 +356,12 @@ private fun getIconForType(type: String) = when(type) {
     "only_right_turn" -> R.drawable.ic_restriction_only_right_turn
     "only_left_turn" -> R.drawable.ic_restriction_only_left_turn
     "only_straight_on" -> R.drawable.ic_restriction_only_straight_on
-    else -> R.drawable.ic_street_side_unknown
+    else -> R.drawable.ic_quest_notes
 }
 
 fun Map<String, String>.getShortRestrictionValue(): String? {
     get("restriction")?.let { return it }
     get("restriction:conditional")?.let { return it.substringBefore("@").trim() }
+    entries.firstOrNull { it.key.startsWith("restriction:") }?.let { return it.value } // restriction:hgv and similar
     return null
 }

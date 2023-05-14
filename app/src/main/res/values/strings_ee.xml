@@ -395,6 +395,10 @@
     <string name="restriction_overlay_exceptions">Exceptions: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
     <string name="restriction_overlay_signed_switch">There is a sign</string>
+    <string name="restriction_overlay_show_details">Show relation details</string>
+    <string name="restriction_overlay_relation_incomplete">Restriction relation is incomplete, download of surrounding area required</string>
+    <string name="restriction_overlay_relation_unsupported">Unsupported relation type:\n%s</string>
+    <string name="restriction_overlay_select_way">Click the next way on the map. It needs an end note in common with the current way. Split if necessary.</string>
 
 
     <!-- other -->

@@ -48,6 +48,7 @@
 
     <Button
         android:id="@+id/exceptions"
+        android:visibility="gone"
         tools:text="exceptions"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/implicit_switch"
@@ -57,7 +58,6 @@
 
     <TextView
         android:id="@+id/info_text"
-        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exceptions"
         android:layout_width="wrap_content"

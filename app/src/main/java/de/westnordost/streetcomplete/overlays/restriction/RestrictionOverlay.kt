@@ -19,8 +19,10 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 class RestrictionOverlay : Overlay {
+    // show restriction icons? will need to add property for rotation / angle
+    // but according to tangram docs, angle is a number or string, this would need a function...
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val restrictions = mapData.relations.filter { it.isSupportedRestrictionRelation() }
+        val restrictions = mapData.relations.filter { it.tags["type"] == "restriction" }
         val restrictionsByWayMemberId = HashMap<Long, MutableList<Relation>>(restrictions.size)
         restrictions.forEach { restriction ->
             for (member in restriction.members) {
@@ -30,6 +32,8 @@ class RestrictionOverlay : Overlay {
             }
         }
         // don't highlight via nodes... or do they matter?
+        //  actually the do matter in some cases, e.g. no-u-turn with from and to being the same way
+        //  ideally the via nodes would have the correct icon, and then of course need rotation too
         return mapData.filter("ways with highway ~ ${ALL_ROADS.joinToString("|")}").map { it to getStyle(it as Way, restrictionsByWayMemberId) }
     }
 
@@ -60,25 +64,25 @@ class RestrictionOverlay : Overlay {
 }
 
 private fun Relation.getColor(wayId: Long): String {
+    if (!isSupportedRestrictionRelation()) return Color.BLACK
     val role = members.firstOrNull { it.type == ElementType.WAY && it.ref == wayId }?.role ?: return Color.INVISIBLE
-    return getColor(role, getRestrictionTags()!!).replace("#", "#90") // make it transparent for at least some support of multiple relations on a single way
+    return getColor(role, getRestrictionType()!!).replace("#", "#90") // make it transparent for at least some support of multiple relations on a single way
 }
 
 private fun getColor(role: String, restriction: String): String = when {
     restriction.startsWith("no_") && role == "from" -> Color.GOLD
     restriction.startsWith("no_") && role == "to" -> Color.ORANGE
-    restriction.startsWith("only_") && role == "from" -> Color.BLUE
-    restriction.startsWith("only_") && role == "to" -> Color.AQUAMARINE
+    restriction.startsWith("only_") && role == "from" -> Color.AQUAMARINE
+    restriction.startsWith("only_") && role == "to" -> Color.BLUE
     role == "via" -> Color.LIME
-    else -> Color.BLACK // can this happen?
+    else -> Color.BLACK
 }
 
-// maybe some isValidRestriction filter?
-// 1 from way, 1 to way, 1 via node or 1+ via ways
+// support restrictions with 1 from way, 1 to way, 1 via node or 1+ via ways
 // and additionally, ways need to be connected (but that is more complicated, and not checked)
 fun Relation.isSupportedRestrictionRelation(): Boolean {
     if (tags["type"] != "restriction") return false
-    if (getRestrictionTags() !in restrictionTypes) return false
+    if (getRestrictionType() !in restrictionTypes) return false
     if (members.count { it.type == ElementType.WAY && it.role == "from" } != 1) return false
     if (members.count { it.type == ElementType.WAY && it.role == "to" } != 1) return false
     val viaWayCount = members.count { it.type == ElementType.WAY && it.role == "via" }
@@ -88,4 +92,5 @@ fun Relation.isSupportedRestrictionRelation(): Boolean {
     return true
 }
 
-fun Relation.getRestrictionTags() = tags["restriction"] ?: tags["restriction:conditional"] ?: tags["restriction:hgv"] ?: tags["restriction:bus"]
+fun Relation.getRestrictionType() = tags["restriction"] ?: tags["restriction:conditional"]?.substringBefore("@")?.trim()
+    ?: tags["restriction:hgv"] ?: tags["restriction:bus"]

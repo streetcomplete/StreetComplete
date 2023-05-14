@@ -445,7 +445,11 @@ class MainFragment :
         if (bottomSheetFragment == null) // always fill, but only show if no quest, overlay, etc... is showing
             binding.overlayScrollView.isVisible = true
 
-        val overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, requireContext())
+        val overlays = overlayRegistry.filter {
+            val eeAllowed = if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) true
+                else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
+            eeAllowed && it !is CustomOverlay
+        } + getFakeCustomOverlays(prefs, requireContext())
         val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())

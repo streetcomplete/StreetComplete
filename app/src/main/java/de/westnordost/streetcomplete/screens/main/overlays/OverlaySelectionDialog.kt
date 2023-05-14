@@ -26,6 +26,7 @@ import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -59,7 +60,11 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         val currentOverlay = selectedOverlayController.selectedOverlay
 
         val fakeOverlays = getFakeCustomOverlays(prefs, ctx)
-        adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + fakeOverlays
+        adapter.overlays = overlayRegistry.filter {
+            val eeAllowed = if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) true
+                else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
+            eeAllowed && it !is CustomOverlay
+        } + fakeOverlays
         adapter.selectedOverlay = if (currentOverlay is CustomOverlay)
             fakeOverlays.singleOrNull { it.wikiLink == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() }
         else

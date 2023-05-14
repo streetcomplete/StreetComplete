@@ -95,7 +95,7 @@ class CrashReportExceptionHandler(
         $stackTrace
 
         Last log before crash:
-        ${last100WithoutQuestCreation.joinToString("\n")}
+        ${last100WithoutQuestCreation.reversed().joinToString("\n")}
 
         Log warnings and errors:
         ${logLines.filter { it.level == 'E' || it.level == 'W' }.joinToString("\n")}

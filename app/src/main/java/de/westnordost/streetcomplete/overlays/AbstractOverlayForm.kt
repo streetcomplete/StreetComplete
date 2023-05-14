@@ -425,8 +425,8 @@ abstract class AbstractOverlayForm :
         return answers
     }
 
-    protected fun editTags(element: Element, editTypeName: String? = null) {
-        listener?.onEditTags(element, geometry, editTypeName = editTypeName)
+    protected fun editTags(element: Element, elementGeometry: ElementGeometry? = null, editTypeName: String? = null) {
+        listener?.onEditTags(element, elementGeometry ?: geometry, editTypeName = editTypeName)
     }
 
     protected fun splitWay(element: Element) {
