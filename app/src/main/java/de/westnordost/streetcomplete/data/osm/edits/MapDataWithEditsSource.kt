@@ -386,10 +386,10 @@ class MapDataWithEditsSource internal constructor(
 
     private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
         val addWays = ArrayList<Way>()
-        for ((key, geometry) in updatedGeometries) {
+        for ((key, geometry) in updatedGeometries.entries.sortedBy { it.key.type.ordinal }) {
             // add the modified data if it is in the bbox
+            val element = updatedElements[key]
             if (geometry != null && geometry.getBounds().intersect(bbox)) {
-                val element = updatedElements[key]
                 if (element != null) {
                     mapData.put(element, geometry)
                     if (element is Way) addWays.add(element)
@@ -397,7 +397,13 @@ class MapDataWithEditsSource internal constructor(
             }
             // or otherwise remove if it is not (anymore)
             else {
-                mapData.remove(key.type, key.id)
+                if (key.type == NODE && element != null && getWaysForNode(key.id).any { mapData.getWay(it.id) != null }) {
+                    // put instead of remove the node if it is part of a way in mapData
+                    // for this, mapData needs to contain the updated way (thus the sorted loop)
+                    mapData.put(element, geometry)
+                } else {
+                    mapData.remove(key.type, key.id)
+                }
             }
         }
         // and remove elements that have been deleted
