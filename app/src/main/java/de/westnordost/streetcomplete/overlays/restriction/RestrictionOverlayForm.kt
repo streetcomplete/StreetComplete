@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
@@ -38,6 +41,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.finalBearingTo
 import de.westnordost.streetcomplete.util.showAddConditionalDialog
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 // todo:
@@ -54,6 +58,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
     }
     override val contentLayoutResId = R.layout.fragment_overlay_restriction
     private val binding by contentViewBinding(FragmentOverlayRestrictionBinding::bind)
+    private val restrictions by lazy { mapDataSource.getRelationsForWay(element!!.id).filter { it.tags["type"] == "restriction" } }
     private val newTags = hashMapOf<String, String>()
     private var selectedRelation: Relation? = null
     private var relation: Relation? = null
@@ -106,6 +111,11 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         relationDetailsAnswer(),
     )
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycleScope.launch { restrictions } // load restrictions in background, so ui thread needs to wait less
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -121,7 +131,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
                 via = via // reload icon
                 checkIsFormComplete()
             }
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
+            override fun onNothingSelected(p0: AdapterView<*>?) { }
         }
 
         // switching roles for an existing relation requires another new action...
@@ -145,30 +155,52 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         binding.addRestriction.setOnClickListener { selectionMode = true }
         binding.exceptions.setOnClickListener { showExceptionsDialog() }
 
-        initializeRestrictionRelation()
+        getInitialRestrictionRelation()?.let { setRestrictionRelation(it) }
     }
 
-    private fun initializeRestrictionRelation() {
-        val relations = mapDataSource.getRelationsForWay(element!!.id).filter { it.tags["type"] == "restriction" }
-            .ifEmpty { return }
-        // if we have a full and complete relation, use it (only the first one...)
-        val fullSupportedRelation = relations.firstOrNull { it.isSupportedRestrictionRelation() && it.isRelationComplete() }
-        if (fullSupportedRelation != null) {
-            newTags.putAll(fullSupportedRelation.tags)
-            selectedRelation = fullSupportedRelation
-            relation = fullSupportedRelation
-            return
-        }
-        val complete = relations.filter { it.isRelationComplete() }
-        binding.infoText.isVisible = true
-        if (complete.isEmpty()) {
-            // we only have incomplete relations
-            binding.infoText.setText(R.string.restriction_overlay_relation_incomplete)
-            return
-        }
+    private fun getInitialRestrictionRelation(): Relation? {
+        if (restrictions.isEmpty()) return null
+        // prefer supported and complete relations
+        return restrictions.firstOrNull { it.isSupportedRestrictionRelation() && it.isRelationComplete() }
+            ?: restrictions.first()
+    }
 
-        binding.infoText.text = getString(R.string.restriction_overlay_relation_unsupported, complete.first().getDetailsText())
-        getGeometry(complete.first())?.let { mapFragment?.highlightGeometry(it) }
+    private fun setRestrictionRelation(rel: Relation) {
+        val isComplete = rel.isRelationComplete()
+        if (restrictions.size > 1)
+            showOtherRestrictions(restrictions.filterNot { it == rel })
+        if (isComplete) {
+            if (rel.isSupportedRestrictionRelation()) {
+                binding.infoText.isGone = true
+            } else {
+                binding.infoText.text = getString(R.string.restriction_overlay_relation_unsupported, rel.getDetailsText())
+                binding.infoText.isVisible = true
+            }
+            newTags.putAll(rel.tags)
+            selectedRelation = rel
+            relation = rel
+            return
+        }
+        binding.infoText.isVisible = true
+        binding.infoText.setText(R.string.restriction_overlay_relation_incomplete)
+        getGeometry(rel)?.let { mapFragment?.highlightGeometry(it) }
+    }
+
+    private fun showOtherRestrictions(restrictions: List<Relation>) {
+        if (restrictions.isEmpty()) return
+        binding.otherRestrictions.isVisible = true
+        binding.otherRestrictions.removeAllViews()
+        binding.otherRestrictions.addView(TextView(requireContext()).apply {
+            setText(R.string.restriction_overlay_other_restrictions)
+        })
+        for (restriction in restrictions) {
+            binding.otherRestrictions.addView(Button(requireContext()).apply {
+                text = restriction.members.filter { it.type == ElementType.WAY && it.ref == element!!.id }
+                    .joinToString(", ") { it.role }
+                setCompoundDrawablesWithIntrinsicBounds(getIconForType(restriction.tags.getShortRestrictionValue()), 0, 0, 0)
+                setOnClickListener { setRestrictionRelation(restriction) }
+            })
+        }
     }
 
     private fun showExceptionsDialog() {
@@ -193,7 +225,8 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
         val rel = relation ?: return // should not happen
         val idx = restrictionTypes.indexOf(newTags.getShortRestrictionValue())
         if (idx != binding.restrictionTypeSpinner.selectedItemPosition) {
-            binding.restrictionTypeSpinner.setSelection(idx) // any issue if not existing (probably -1)?
+            // if -1 selected (unknown restriction), view gets very small... not nice, but not worth the work
+            binding.restrictionTypeSpinner.setSelection(idx)
         }
         getGeometry(rel)?.let { mapFragment?.highlightGeometry(it) }
 
@@ -348,7 +381,7 @@ val exceptions = listOf(
 )
 
 // actually this may be country specific!
-private fun getIconForType(type: String) = when(type) {
+private fun getIconForType(type: String?) = when(type) {
     "no_right_turn" -> R.drawable.ic_restriction_no_right_turn
     "no_left_turn" -> R.drawable.ic_restriction_no_left_turn
     "no_u_turn" -> R.drawable.ic_restriction_no_u_turn
@@ -356,7 +389,7 @@ private fun getIconForType(type: String) = when(type) {
     "only_right_turn" -> R.drawable.ic_restriction_only_right_turn
     "only_left_turn" -> R.drawable.ic_restriction_only_left_turn
     "only_straight_on" -> R.drawable.ic_restriction_only_straight_on
-    else -> R.drawable.ic_quest_notes
+    else -> R.drawable.ic_restriction_unknown // currently the note icon, but half size
 }
 
 fun Map<String, String>.getShortRestrictionValue(): String? {
