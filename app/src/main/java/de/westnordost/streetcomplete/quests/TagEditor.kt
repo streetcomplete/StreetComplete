@@ -178,7 +178,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             minBottomInset = min(it.bottom, minBottomInset)
             if (keyboardShowing || activity?.currentFocus == null)
                 binding.questsGrid.removeView(keyboardButton)
-            else if (binding.questsGrid[1] != keyboardButton)
+            else if (binding.questsGrid.size > 1 && binding.questsGrid[1] != keyboardButton)
                 binding.questsGrid.addView(keyboardButton, 1)
         }
         val date = Date(originalElement.timestampEdited)
@@ -233,7 +233,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 && WindowInsetsCompat.toWindowInsetsCompat(binding.root.rootWindowInsets).isVisible(WindowInsetsCompat.Type.ime())
             ))
                 binding.questsGrid.removeView(keyboardButton)
-            else if ((binding.questsGrid.size) < 2 || binding.questsGrid[1] != keyboardButton)
+            else if (binding.questsGrid.size < 2 || binding.questsGrid[1] != keyboardButton)
                 binding.questsGrid.addView(keyboardButton, 1)
         }
 
@@ -407,7 +407,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             activity?.runOnUiThread {
                 // form might be closed while quests were created, so we better not crash on binding == null
                 val binding = _binding ?: return@runOnUiThread
-                val viewsToKeep = if ((binding.questsGrid.size) > 1 && binding.questsGrid[1] == keyboardButton) 2
+                val viewsToKeep = if (binding.questsGrid.size > 1 && binding.questsGrid[1] == keyboardButton) 2
                     else 1
                 binding.questsGrid.removeViews(viewsToKeep, binding.questsGrid.childCount - viewsToKeep) // remove all quest views
                 q.forEach { binding.questsGrid.addView(it) }
