@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
@@ -470,8 +469,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             // necessary because otherwise pins may remain if quest is not in database
             OsmQuestController.lastAnsweredQuestKey = questKey as? OsmQuestKey
 
+        val l = listener // form is closed after adding the edit, so the listener may already be null when called
         withContext(Dispatchers.IO) {
-            val l = listener // form is closed after adding the edit, so the listener is null, but we may need it
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
                 val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
@@ -479,10 +478,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             } else {
                 addElementEditsController.add(osmElementQuestType, geometry, source, action)
             }
-            if (prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false))
-                l?.onEdited(osmElementQuestType, geometry)
         }
-        listener?.onEdited(osmElementQuestType, geometry)
+        l?.onEdited(osmElementQuestType, geometry)
     }
 
     companion object {
