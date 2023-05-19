@@ -72,5 +72,5 @@ object ApplicationConstants {
         SplitWayAction::class
     )
 
-    const val EE_QUEST_OFFSET = 2222
+    const val EE_QUEST_OFFSET = 2222 // must be larger than the largest SC ordinal, and should not be changed to allow preset transfer
 }
