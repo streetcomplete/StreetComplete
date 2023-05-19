@@ -63,6 +63,7 @@ import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -88,6 +89,7 @@ class MainActivity :
     private val prefs: SharedPreferences by inject()
 
     private var mainFragment: MainFragment? = null
+    private var questMonitorJob: Job? = null
 
     private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -201,7 +203,8 @@ class MainActivity :
         if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running) {
             try { applicationContext.unbindService(questMonitorConnection) }
             catch (_: IllegalArgumentException) { } // happens on first start, and maybe if there is some issue
-            lifecycleScope.launch {
+            questMonitorJob?.cancel()
+            questMonitorJob = lifecycleScope.launch {
                 delay(5000)
                 // sometimes it just doesn't stop, or is started with considerable delay for some reason
                 // try to catch this here
@@ -257,11 +260,13 @@ class MainActivity :
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
 
-        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running)
-            lifecycleScope.launch {
-                delay(1000) // wait, as we don't want do start the monitor if onDestroy follows (and then lifecycleScope will be canceled)
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running) {
+            questMonitorJob?.cancel()
+            questMonitorJob = lifecycleScope.launch {
+                delay(1000) // wait, as we don't want do start the monitor if onDestroy follows
                 applicationContext.bindService(Intent(this@MainActivity, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
             }
+        }
     }
 
     override fun onDestroy() {
@@ -269,6 +274,7 @@ class MainActivity :
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
         // stop quest monitor: it should be easy to avoid having it running, because going to settings all the time is annoying
+        questMonitorJob?.cancel()
         try { applicationContext.unbindService(questMonitorConnection) }
         catch (_: IllegalArgumentException) {}
     }
