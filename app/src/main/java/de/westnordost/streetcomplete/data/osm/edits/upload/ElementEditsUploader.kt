@@ -17,10 +17,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
+import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.util.Log
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineName
@@ -39,6 +41,7 @@ class ElementEditsUploader(
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
+    private val statisticsController: StatisticsController,
     private val downloadController: DownloadController,
     private val externalSourceQuestController: ExternalSourceQuestController,
 ) {
@@ -83,6 +86,12 @@ class ElementEditsUploader(
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
             noteEditsController.updateElementIds(updates.idUpdates)
+
+            if (edit.action is IsRevertAction) {
+                statisticsController.subtractOne(edit.type.name, edit.position)
+            } else {
+                statisticsController.addOne(edit.type.name, edit.position)
+            }
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName for ${edit.action.elementKeys}: ${e.message}")
             uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)

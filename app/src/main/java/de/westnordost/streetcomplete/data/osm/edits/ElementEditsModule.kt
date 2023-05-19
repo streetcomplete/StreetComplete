@@ -22,7 +22,7 @@ val elementEditsModule = module {
 
     single { OpenChangesetsManager(get(), get(), get(), get()) }
 
-    single { ElementEditsUploader(get(), get(), get(), get(), get(), get(), get()) }
+    single { ElementEditsUploader(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
     single { ElementEditsController(get(), get(), get(), get()) }

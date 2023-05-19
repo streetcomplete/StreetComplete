@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 object ApplicationConstants {
     const val NAME = "StreetComplete_ee"
     const val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
-    const val QUESTTYPE_TAG_KEY = NAME + ":quest_type"
+    const val QUESTTYPE_TAG_KEY = "StreetComplete:quest_type" // use original SC here, so statistics are counted
 
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1

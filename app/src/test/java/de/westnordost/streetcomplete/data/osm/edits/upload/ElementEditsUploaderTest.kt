@@ -49,7 +49,7 @@ class ElementEditsUploaderTest {
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, noteEditsController, mapDataController, singleUploader, mapDataApi, mock(), mock())
+        uploader = ElementEditsUploader(elementEditsController, noteEditsController, mapDataController, singleUploader, mapDataApi, statisticsController, mock(), mock())
         uploader.uploadedChangeListener = listener
     }
 
