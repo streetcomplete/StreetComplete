@@ -15,6 +15,4 @@ enum class RoofColour(val osmValue: String) {
     TRADITIONAL_CHINESE("#21373d"),
 
     WHITE("white"),
-
-    MANY("many"),
 }

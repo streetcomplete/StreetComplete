@@ -337,7 +337,6 @@
 
     <!-- building colour -->
     <string name="quest_roofColour_title">"What overall colour does this building’s roof have?"</string>
-    <string name="quest_roofColour_answer_many">"It has several different colours"</string>
     <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colours are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
     <!-- additional strings for quests available in StreetComplete -->

@@ -8,11 +8,7 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun RoofColour.asItem(context: Context): DisplayItem<RoofColour>? {
-    if (this == RoofColour.MANY) {
-        return null;
-    }
-
+fun RoofColour.asItem(context: Context): DisplayItem<RoofColour> {
     val color = Color.parseColor(this.osmValue)
     val drawable = context.getDrawable(R.drawable.ic_roof_colour)!!
     drawable.colorFilter = LightingColorFilter(color, Color.BLACK)
