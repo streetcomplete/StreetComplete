@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -32,7 +33,8 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
 
     private val specialities = mutableListOf<String>()
 
-    override val otherAnswers = listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
+    // the hacky UI switch breaks when using tag editor...
+    override val otherAnswers get() = if (TagEditor.showingTagEditor) emptyList() else listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
         val f = MedicalSpecialityTypeForm()
         if (f.arguments == null) f.arguments = bundleOf()
         val args = createArguments(questKey, questType, geometry, 0f, 0f)
@@ -129,7 +131,8 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
     private var selectedRadioButtonId: Int = 0
     private lateinit var featureCtrl: FeatureViewController
 
-    override val otherAnswers = listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
+    // the hacky UI switch breaks when using tag editor...
+    override val otherAnswers = if (TagEditor.showingTagEditor) emptyList() else listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
         val f = AddHealthcareSpecialityForm()
         if (f.arguments == null) f.arguments = bundleOf()
         val args = createArguments(questKey, questType, geometry, 0f, 0f)

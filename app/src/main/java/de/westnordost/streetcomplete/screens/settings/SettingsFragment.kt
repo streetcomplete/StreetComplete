@@ -180,7 +180,7 @@ class SettingsFragment :
             reverseButton.setOnClickListener {
                 reversed = !reversed
                 reloadText()
-                scrollLog.fullScroll(View.FOCUS_UP)
+                scrollLog.scrollY = 0
             }
             val filterView = EditText(requireContext()).apply {
                 setHint(R.string.pref_read_filter_hint)

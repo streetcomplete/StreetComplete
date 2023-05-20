@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 class RestrictionOverlay : Overlay {
@@ -34,7 +35,8 @@ class RestrictionOverlay : Overlay {
         // don't highlight via nodes... or do they matter?
         //  actually the do matter in some cases, e.g. no-u-turn with from and to being the same way
         //  ideally the via nodes would have the correct icon, and then of course need rotation too
-        return mapData.filter("ways with highway ~ ${ALL_ROADS.joinToString("|")}").map { it to getStyle(it as Way, restrictionsByWayMemberId) }
+        return mapData.filter("ways with highway ~ ${ALL_ROADS.joinToString("|")}")
+            .mapNotNull { way -> getStyle(way as Way, restrictionsByWayMemberId)?.let { way to it } }
     }
 
     override fun createForm(element: Element?): AbstractOverlayForm = RestrictionOverlayForm()
@@ -46,7 +48,9 @@ class RestrictionOverlay : Overlay {
 
     // may return the same way multiple times if it has more than one restriction
     // though maybe only once with some sort of mixed color would be better?
-    private fun getStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style {
+    private fun getStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
+        // don't allow selecting areas
+        if (way.isArea()) return null
         // no highlight if road has no restrictions
         val relations = restrictionsByWayMemberId[way.id] ?: return PolylineStyle(StrokeStyle(Color.INVISIBLE))
 

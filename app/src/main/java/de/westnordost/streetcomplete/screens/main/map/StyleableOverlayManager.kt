@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
@@ -146,11 +147,15 @@ class StyleableOverlayManager(
             updateJob = viewLifecycleScope.launch {
                 oldUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
                 updateStyledElements(updated, deleted)
-                if (overlay is RestrictionOverlay && (updated.any { it is Relation } || deleted.any { it.type == ElementType.RELATION }))
+                if (overlay is RestrictionOverlay
+                        // reload all if relation is updated, because normal update doesn't change ways
+                        // and reload if ways are updated, because without knowing the relation it will not be highlighted
+                        && (updated.any { it is Relation || it.tags["highway"] in ALL_ROADS } || deleted.any { it.type == ElementType.RELATION })) {
                     lastDisplayedRect?.let {
-                        cache.clear() // reload all, because it doesn't work well if relations are updated (maybe bother with it later)
+                        cache.clear()
                         onNewTilesRect(it)
                     }
+                }
             }
         }
 

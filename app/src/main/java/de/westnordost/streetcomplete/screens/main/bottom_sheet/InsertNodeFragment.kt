@@ -159,8 +159,6 @@ class InsertNodeFragment :
         mapFragment?.getPositionThatCentersPosition(pos, offsetRect)
             ?.let { mapFragment?.updateCameraPosition { position = it } }
         mapFragment?.show3DBuildings = false
-
-        newPosition(pos, forceMoveMarker = true)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
