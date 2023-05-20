@@ -577,5 +577,5 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 20 to ShowCamera(),
     EE_QUEST_OFFSET + 21 to ShowFixme(),
     // Building quests
-    EE_QUEST_OFFSET + 24 to AddRoofColour(countryInfos, countryBoundariesFuture),
+    EE_QUEST_OFFSET + 24 to AddRoofColour(),
 )
