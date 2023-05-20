@@ -545,7 +545,6 @@ fun getQuestTypeList(
     150 to AddBuildingType(),
     151 to AddBuildingLevels(),
     152 to AddRoofShape(countryInfos, countryBoundariesFuture),
-    200 to AddRoofColour(countryInfos, countryBoundariesFuture),
 
     153 to AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 
@@ -577,4 +576,6 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 19 to ShowSeating(),
     EE_QUEST_OFFSET + 20 to ShowCamera(),
     EE_QUEST_OFFSET + 21 to ShowFixme(),
+    // Building quests
+    EE_QUEST_OFFSET + 24 to AddRoofColour(countryInfos, countryBoundariesFuture),
 )
