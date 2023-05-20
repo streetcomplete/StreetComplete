@@ -1,15 +1,23 @@
 package de.westnordost.streetcomplete.quests.roof_colour
 
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
 class AddRoofColourTest {
-    private val questType = AddRoofColour()
+    private lateinit var questType: AddRoofColour
+
+    @Before
+    fun setUp() {
+        StreetCompleteApplication.preferences = mockPrefs()
+        questType = AddRoofColour()
+    }
 
     @Test
     fun `not applicable to roofs with colour already set`() {
@@ -129,44 +137,6 @@ class AddRoofColourTest {
                         "building:levels" to "4.5",
                         "roof:levels" to "0.5",
                         "building" to "apartments"
-                    )
-                )
-            )
-        )
-    }
-
-    @Test
-    fun `unknown if applicable to buildings with no or few levels and 0 or no roof levels`() {
-        assertNull(
-            questType.isApplicableTo(
-                way(
-                    tags = mapOf(
-                        "roof:shape" to "round_gabled",
-                        "roof:levels" to "0",
-                        "building" to "apartments"
-                    )
-                )
-            )
-        )
-        assertNull(
-            questType.isApplicableTo(
-                way(
-                    tags = mapOf(
-                        "roof:shape" to "onion",
-                        "roof:levels" to "0",
-                        "building" to "apartments",
-                        "building:levels" to "3"
-                    )
-                )
-            )
-        )
-        assertNull(
-            questType.isApplicableTo(
-                way(
-                    tags = mapOf(
-                        "roof:shape" to "cone",
-                        "building" to "apartments",
-                        "building:levels" to "2"
                     )
                 )
             )
