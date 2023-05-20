@@ -99,9 +99,6 @@ class CrashReportExceptionHandler(
 
         Log warnings and errors:
         ${logLines.filter { it.level == 'E' || it.level == 'W' }.joinToString("\n")}
-
-        MapDataWithEditsSource listeners:
-        ${try {MapDataWithEditsSource.l2} catch (e: Throwable) {null}}
         """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }

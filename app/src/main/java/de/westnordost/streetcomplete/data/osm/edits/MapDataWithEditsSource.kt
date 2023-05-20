@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.math.intersect
@@ -504,11 +503,9 @@ class MapDataWithEditsSource internal constructor(
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
-        l2.add(listener)
     }
     fun removeListener(listener: Listener) {
         listeners.remove(listener)
-        l2.remove(listener)
     }
 
     private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
@@ -523,10 +520,6 @@ class MapDataWithEditsSource internal constructor(
     }
     private fun callOnCleared() {
         listeners.forEach { it.onCleared() }
-    }
-
-    companion object {
-        val l2: MutableList<Listener> = CopyOnWriteArrayList()
     }
 }
 
