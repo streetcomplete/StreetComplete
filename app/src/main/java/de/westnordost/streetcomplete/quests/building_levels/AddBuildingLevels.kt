@@ -24,6 +24,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
                    else ""
                }
            )
+           and !building:min_level
            and !man_made
            and location != underground
            and ruins != yes
