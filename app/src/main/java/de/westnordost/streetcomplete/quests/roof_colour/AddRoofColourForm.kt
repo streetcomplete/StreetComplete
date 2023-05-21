@@ -12,7 +12,7 @@ class AddRoofColourForm : AImageListQuestForm<RoofColour, RoofColour>() {
         get() {
         val context = requireContext()
         val shape = element.tags["roof:shape"];
-        val roofShape = RoofShape.values().firstOrNull{ it.name == shape }
+        val roofShape = RoofShape.values().firstOrNull{ it.osmValue == shape }
         return RoofColour.values().map { it.asItem(context, roofShape) }
     }
 
