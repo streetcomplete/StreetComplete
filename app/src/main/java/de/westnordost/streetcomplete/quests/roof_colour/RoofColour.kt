@@ -18,12 +18,12 @@ enum class RoofColour(val osmValue: String, val androidValue: String?) {
 
     // Rest of the recommended 3D palette
     OLIVE("olive", "#808000"),
-    GREEN("green", "#00ff00"),
+    GREEN("green", "#008000"),
     TEAL("teal", "#008080"),
     NAVY("navy", "#000080"),
     PURPLE("purple", "#800080"),
     YELLOW("yellow", "#ffff00"),
-    LIME("lime", "#008000"),
+    LIME("lime", "#00ff00"),
     AQUA("aqua", "#00ffff"),
     FUCHSIA("fuchsia", "#ff00ff"),
 }
