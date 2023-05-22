@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
@@ -60,6 +61,13 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     /* cannot be determined because of the associated street relations */
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            nodes, ways, relations with
+            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+            and !name and !brand and !operator and !ref
+        """.toElementFilterExpression())
 
     override fun createForm() = AddAddressStreetForm()
 
