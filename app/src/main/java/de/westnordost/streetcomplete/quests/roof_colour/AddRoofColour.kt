@@ -11,11 +11,9 @@ class AddRoofColour : OsmFilterQuestType<RoofColour>() {
 
     override val elementFilter = """
         ways, relations with
-          ((building:levels or roof:levels) or (building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}))
-          and roof:shape
+          roof:shape
           and roof:shape != flat
           and !roof:colour
-          and building
           and building !~ no|construction
           and location != underground
           and ruins != yes
