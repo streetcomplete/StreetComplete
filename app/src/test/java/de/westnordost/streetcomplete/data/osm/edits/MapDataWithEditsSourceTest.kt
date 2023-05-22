@@ -823,6 +823,25 @@ class MapDataWithEditsSourceTest {
         assertEquals(newWay, data.ways.single())
     }
 
+    @Test fun `getMapDataWithGeometry returns updated nodes of unchanged way`() {
+        val nd1 = node(1, p(0.5, 0.5))
+        val nd2 = node(2, p(2.5, 2.5))
+        val w1 = way(1, listOf(1, 2))
+        originalElementsAre(nd1, nd2, w1)
+        originalGeometriesAre(
+            ElementGeometryEntry(NODE, 1, pGeom(0.5, 0.5)),
+            ElementGeometryEntry(NODE, 2, pGeom(2.5, 2.5)),
+            ElementGeometryEntry(WAY, 1, geometryCreator.create(w1, listOf(nd1.position, nd2.position))!!)
+        )
+        val updatedNode = node(2, p(2.5, 2.5), version = 2)
+        mapDataChangesAre(creations = listOf(updatedNode))
+        val s = create()
+        val data = s.getMapDataWithGeometry(bbox())
+
+        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(nd1, updatedNode)))
+        assertEquals(w1, data.ways.single())
+    }
+
     //endregion
 
     //region ElementEditsSource.Listener ::onAddedEdit

@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -387,6 +388,9 @@ class MapDataWithEditsSource internal constructor(
     private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
         val addWays = ArrayList<Way>()
         for ((key, geometry) in updatedGeometries) {
+            // we will deal with nodes at the end
+            if (key.type == NODE) continue
+
             // add the modified data if it is in the bbox
             if (geometry != null && geometry.getBounds().intersect(bbox)) {
                 val element = updatedElements[key]
@@ -406,11 +410,23 @@ class MapDataWithEditsSource internal constructor(
         }
 
         for (way in addWays) {
-            // It should be possible that a node referred to by a way is missing, as when a node is
-            // removed, it is removed from the way, too
+            // !!: It should not be possible that a node referred to by a way is missing,
+            // as when a node is removed, it is removed from the way, too
             val nodes = getWayNodes(way)!!
             val geometries = nodes.map { ElementGeometryEntry(it.type, it.id, ElementPointGeometry(it.position)) }
             mapData.putAll(nodes, geometries)
+        }
+
+        val wayNodes = mapData.ways.flatMapTo(HashSet()) { it.nodeIds }
+        for (node in updatedElements.values) {
+            if (node !is Node) continue
+            // nodes are included if they are either within the bbox or part of a way that is
+            // (partly) within the bbox)
+            if (node.position in bbox || node.id in wayNodes) {
+                mapData.put(node, ElementPointGeometry(node.position))
+            } else {
+                mapData.remove(node.type, node.id)
+            }
         }
     }
 
