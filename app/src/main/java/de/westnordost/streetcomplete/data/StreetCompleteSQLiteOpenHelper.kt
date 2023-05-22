@@ -225,7 +225,6 @@ private fun SQLiteDatabase.renameQuest(old: String, new: String) {
     renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)
-    renameValue(EditTypeStatisticsTables.NAME, EditTypeStatisticsTables.Columns.ELEMENT_EDIT_TYPE, old, new)
 }
 
 private fun SQLiteDatabase.renameValue(table: String, column: String, oldValue: String, newValue: String) {
