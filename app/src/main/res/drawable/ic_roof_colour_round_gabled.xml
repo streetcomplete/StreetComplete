@@ -9,7 +9,7 @@
       android:strokeLineJoin="round"
       android:strokeWidth="2"
       android:fillColor="#ccc"
-      android:strokeColor="#bbb"/>
+      android:strokeColor="#00f"/>
   <path
       android:pathData="m29.27,67.63 l61.65,-20.55c0,-13.7 -5.48,-32.88 -12.33,-39.73l-61.65,20.55c6.85,6.85 12.33,26.03 12.33,39.73z">
     <aapt:attr name="android:fillColor">
@@ -20,8 +20,8 @@
           android:endX="48.451008"
           android:type="linear"
           android:tileMode="mirror">
-        <item android:offset="0" android:color="#fff"/>
-        <item android:offset="1" android:color="#bbb"/>
+        <item android:offset="0" android:color="#f00"/>
+        <item android:offset="1" android:color="#00f"/>
       </gradient>
     </aapt:attr>
   </path>
@@ -29,5 +29,5 @@
       android:pathData="m29.27,67.63 l61.65,-20.55c0,-13.7 -5.48,-32.88 -12.33,-39.73l-61.65,20.55c6.85,6.85 12.33,26.03 12.33,39.73z"
       android:strokeLineJoin="round"
       android:strokeWidth="2"
-      android:strokeColor="#bbb"/>
+      android:strokeColor="#00f"/>
 </vector>
