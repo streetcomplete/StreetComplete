@@ -134,6 +134,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.roof_colour.AddRoofColour
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.seating.AddOutdoorSeatingType
 import de.westnordost.streetcomplete.quests.seating.AddSeating
@@ -575,4 +576,6 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 19 to ShowSeating(),
     EE_QUEST_OFFSET + 20 to ShowCamera(),
     EE_QUEST_OFFSET + 21 to ShowFixme(),
+    // Building quests
+    EE_QUEST_OFFSET + 24 to AddRoofColour(),
 )
