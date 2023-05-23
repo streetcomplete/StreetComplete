@@ -1,6 +1,9 @@
-next: |
+v53.1: |
   <ul>
-  <li>Add overlay for adding/adjusting/removing turn restrictions</li>
+  <li>Add roof color quest, thanks to @hangy</li>
+  <li>Add overlay for turn restrictions</li>
+  <li>Fix crash when showing next quest immediately</li>
+  <li>Change name used for quest type in changesets, so statistics are working again</li>
   <li>Small fixes and improvements</li>
   </ul>
 

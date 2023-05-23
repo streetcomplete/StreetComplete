@@ -20,6 +20,7 @@ class ShowOther : OsmFilterQuestType<Boolean>() {
          or club
          or information and information !~ office
          or tourism ~ viewpoint|artwork|wilderness_hut
+         or summit:cross = yes
          or """.trimIndent() +
 
         mapOf(
@@ -31,8 +32,8 @@ class ShowOther : OsmFilterQuestType<Boolean>() {
                 "fountain", "public_bookcase"
             ),
             "leisure" to arrayOf(
-                "sports_centre", "stadium", "marina",
-                "horse_riding", "dance", "nature_reserve","pitch","playground"
+                "sports_centre", "stadium", "marina", "horse_riding",
+                "dance", "nature_reserve", "pitch", "playground", "fitness_station"
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
@@ -43,6 +44,10 @@ class ShowOther : OsmFilterQuestType<Boolean>() {
             "emergency" to arrayOf(
                 "fire_hydrant", "defibrillator", "phone", "life_ring",
                 "fire_extinguisher", "water_tank", "suction_point"
+            ),
+            "man_made" to arrayOf(
+                "communications_tower", "cross", "flagpole", "insect_hotel", "mast", "obelisk",
+                "tower", "water_tap", "water_tower", "water_well"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "\n)"

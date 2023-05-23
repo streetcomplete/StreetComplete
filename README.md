@@ -34,8 +34,8 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
 
 ## Differences to StreetComplete
 * Non-optional differences to StreetComplete
-  * No statistics: To avoid unfair competition, a slightly changed name avoids changes being counted towards StreetComplete statistics, making the star count rather useless (thus it is not shown)
-    * When using auto-upload, an indicator now shows when there are changes waiting to be uploaded
+  * No star count on main screen
+  * When using auto-upload, an indicator now shows when there are changes waiting to be uploaded
   * Dark theme uses dark buttons
   * Prevent short scroll to user location at app start when map was at a different position
   * Downloading data will interrupt upload queue (will resume afterwards)
@@ -69,10 +69,11 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Osmose quest showing Osmose issues as quests, with filter options
     * Custom quest from CSV file, allows creating nodes (see in-app description)
   * Show POI quests with the sole purpose of indicating existence of elements of chosen type (may show labels)
-  * Colour of build roofs
+  * Colour of building roofs
   * Option to show only quests added in SCEE in quest selection menu
   * Some "other answers" result in a modified changeset comment (because in SCEE they may contain more unexpected changes)
 * Customizable overlays: Choose which elements are highlighted, and which tag is used to determine the color
+* Turn restriction overlay
 * Settings
   * Additional darker dark theme
   * Background map can be changed to aerial / satellite imagery
@@ -179,6 +180,7 @@ Further SCEE adds new answers leading to such a changeset comment:
   * _TagEdit_: may modify any tag
   * _AddNode_: adds nodes, free floating or part of ways, (may change tags of existing way node instead of inserting a new one under some circumstances)
   * _CustomOverlay_: may modify tags, delete or move nodes
+  * _TurnRestrictionOverlay_: may add, modify or remove turn restrictions
 
 # original StreetComplete readme below
 

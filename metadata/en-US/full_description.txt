@@ -4,10 +4,9 @@ Please be aware that SCEE is not suitable for people used to discard warning mes
 Users new to OpenStreetMap are best advised to use StreetComplete: https://f-droid.org/en/packages/de.westnordost.streetcomplete/
 
 Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
-
-Extra features may cause SCEE to behave in highly modified way compared to StreetComplete. One of effects is that edits made with this version do not contribute to the displayed StreetComplete statistics and star count.
+Extra features may cause SCEE to behave in highly modified way compared to StreetComplete.
 
 For a full list of differences to StreetComplete see https://github.com/Helium314/SCEE#differences-to-streetcomplete
 
-F-Droid anti-feature: non-free network
-SCEE uses map tiles provided by jawg, and optionally aerial / satellite imagery by Esri.
+F-Droid anti-feature: non-free network,
+SCEE uses background map tiles provided by jawg, and optionally aerial / satellite imagery by Esri.

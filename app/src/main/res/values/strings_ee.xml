@@ -314,6 +314,10 @@
     <string name="quest_artwork_fountain">Fountain</string>
     <string name="quest_artwork_land_art">Land art</string>
 
+    <!-- roof colour -->
+    <string name="quest_roofColour_title">"What overall color does this building’s roof have?"</string>
+    <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colors are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
+
     <!-- other -->
     <string name="quest_contact_phone">What is the phone number of this place?</string>
     <string name="quest_contact_website">What is the website of this place?</string>
@@ -334,10 +338,6 @@
     <string name="quest_disabled_msg_railway_platform_ref">Note that which tag to use best is not entirely clear in the wiki and thus left to the user. Choose between \'ref\' (default) and \'local_ref\' in the quest settings.\n
     If there are two tracks along a platform, use semicolon separated values, e.g. 2;3
     </string>
-
-    <!-- building colour -->
-    <string name="quest_roofColour_title">"What overall color does this building’s roof have?"</string>
-    <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colors are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
     <!-- additional strings for quests available in StreetComplete -->
     <string name="quest_surface_value_metal_grid">Metal grid</string>
@@ -398,7 +398,7 @@
     <string name="restriction_overlay_title">Turn restrictions</string>
     <string name="restriction_overlay_exceptions">Exceptions: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
-    <string name="restriction_overlay_signed_switch">There is a sign</string>
+    <string name="restriction_overlay_signed_switch">There is a sign or road marking</string>
     <string name="restriction_overlay_show_details">Show relation details</string>
     <string name="restriction_overlay_relation_incomplete">Restriction relation is incomplete, download of surrounding area required</string>
     <string name="restriction_overlay_relation_unsupported">Unsupported relation type:\n%s</string>

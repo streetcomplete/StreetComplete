@@ -173,6 +173,7 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "shop=yes is unspecific. Please replace ''yes'' by a specific value." + "§§" +
 //    alternative for all languages: 9002/9002007 and contains "shop=yes" or "shop = yes" (thanks, translator)
     "barrier=yes is unspecific. Please replace ''yes'' by a specific value." + "§§" +
+    "traffic_calming=yes is unspecific. Please replace ''yes'' by a specific value" + "§§" +
     "amenity=recycling without recycling:*" + "§§" +
 //    alternative for all languages: 9001/9001001 and contains "recycling:*"
     "amenity=recycling without recycling_type=container or recycling_type=centre" + "§§" +

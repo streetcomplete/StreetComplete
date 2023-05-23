@@ -24,9 +24,9 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
     override val contentLayoutResId = R.layout.quest_cuisine_suggestion
     private val binding by contentViewBinding(QuestCuisineSuggestionBinding::bind)
 
-    val cuisines = mutableSetOf<String>()
+    private val cuisines = mutableSetOf<String>()
 
-    val cuisine get() = binding.cuisineInput.text?.toString().orEmpty().trim()
+    private val cuisine get() = binding.cuisineInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
