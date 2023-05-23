@@ -115,7 +115,7 @@ private fun MutableMap<Long, MutableList<Way>>.removeEndNodes() {
 }
 
 /** groups the sequence of ways to a map of node id -> list of ways */
-private fun Sequence<Way>.groupByNodeIds(): MutableMap<Long, MutableList<Way>> {
+fun Sequence<Way>.groupByNodeIds(): MutableMap<Long, MutableList<Way>> {
     val result = mutableMapOf<Long, MutableList<Way>>()
     forEach { way ->
         way.nodeIds.forEach { nodeId ->

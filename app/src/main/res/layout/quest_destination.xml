@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/current_destinations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="@dimen/quest_form_vertical_margin"
+        tools:text=""/>
+
+    <AutoCompleteTextView
+        android:id="@+id/destination_input"
+        android:textSize="28sp"
+        android:completionThreshold="0"
+        android:dropDownAnchor="@id/current_destinations"
+        tools:text="Brno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/add_destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/BottomSheetButtonBarItem"
+        android:text="@string/quest_destination_add_more" />
+
+    <include
+        android:id="@+id/side_select"
+        android:visibility="gone"
+        layout="@layout/quest_street_lanes_puzzle"/>
+
+    <!-- container currently unused, planned for destination:lanes -->
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/lanes_container"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </HorizontalScrollView>
+
+</LinearLayout>

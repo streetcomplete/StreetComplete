@@ -78,6 +78,7 @@ import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.custom.CustomQuest
+import de.westnordost.streetcomplete.quests.destination.AddDestination
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
@@ -553,6 +554,7 @@ fun getQuestTypeList(
 
     // quests added in SCEE
     EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
+    EE_QUEST_OFFSET + 24 to AddRoofColour(),
     EE_QUEST_OFFSET + 1 to AddContactPhone(),
     EE_QUEST_OFFSET + 2 to AddContactWebsite(),
     EE_QUEST_OFFSET + 4 to AddCuisine(),
@@ -560,6 +562,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
     EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
     EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
+    EE_QUEST_OFFSET + 25 to AddDestination(),
     EE_QUEST_OFFSET + 22 to AddArtworkType(),
     EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
     EE_QUEST_OFFSET + 9 to AddTreeGenus(),
@@ -576,6 +579,4 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 19 to ShowSeating(),
     EE_QUEST_OFFSET + 20 to ShowCamera(),
     EE_QUEST_OFFSET + 21 to ShowFixme(),
-    // Building quests
-    EE_QUEST_OFFSET + 24 to AddRoofColour(),
 )

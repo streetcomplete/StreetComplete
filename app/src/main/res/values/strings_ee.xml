@@ -338,6 +338,10 @@
     <string name="quest_disabled_msg_railway_platform_ref">Note that which tag to use best is not entirely clear in the wiki and thus left to the user. Choose between \'ref\' (default) and \'local_ref\' in the quest settings.\n
     If there are two tracks along a platform, use semicolon separated values, e.g. 2;3
     </string>
+    <string name="quest_destination_title">Which destinations are signed for this road?</string>
+    <string name="quest_destination_add_more">Add another destination</string>
+    <!-- use 2 lines for the button so it doesn't get too wide -->
+    <string name="quest_destination_all_lanes_button">All\nlanes</string>
 
     <!-- additional strings for quests available in StreetComplete -->
     <string name="quest_surface_value_metal_grid">Metal grid</string>
