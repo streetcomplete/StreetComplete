@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5301
-        versionName = "53.0"
+        versionCode = 5302
+        versionName = "53.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

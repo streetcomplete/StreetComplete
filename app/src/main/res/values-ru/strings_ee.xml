@@ -63,7 +63,7 @@
     <string name="pref_interval_summary">%d секунд(-ы)</string>
     <string name="pref_interval_message">Частота замера в секундах</string>
     <string name="quest_settings_osmose_level_high">Высокая</string>
-    <string name="element_selection_button">Выбор элемента</string>
+    <string name="element_selection_button">Отбор элементов</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">По умолчанию</string>
     <string name="quest_benchMaterial_title">Из чего это сделано\?</string>
     <string name="quest_custom_quest_add_node_text">Можете добавить узел с тегами: %s</string>
@@ -166,7 +166,7 @@
     <string name="quest_osmose_message_for_element">Элемент типа %1$s: %2$s</string>
     <string name="quest_osmose_remove_checked">Убрать</string>
     <string name="quest_osmose_no_undo">Уверенны\? Это действие не обратимо!</string>
-    <string name="quest_custom_quest_title">Свой квест: %s</string>
+    <string name="quest_custom_quest_title">Свои квесты: %s</string>
     <string name="quest_custom_quest_osmose_not_found">Запись удалена, убираем квест</string>
     <string name="quest_osmose_delete_this_issue">Скрыть проблему локально</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">Всех</string>
@@ -251,7 +251,7 @@
 \n <li>удалять любые несвязанные узлы</li>
 \n <li>править элементы, которые были заблокированы заметкой</li>
 \n <li>добавлять несвязанные узлы где угодно</li>
-\n <li>изменять выбор элементов квестов</li>
+\n <li>изменять правила отбора элементов квестов</li>
 \n
 \n Хотя другие редакторы позволяют больше, не осторожность может привести с порче данных, невозможной в StreetComplete. Имейте в виду, что включая режим эксперта Вы несёте существенно больше ответственности за свои правки.
 \n Включайте данный режим только при наличии опыта работы с OSM помимо StreetComplete и, если Вы понимаете, что делаете. </string>
@@ -282,7 +282,7 @@
     <string name="delete_cache_dialog_message2">Стереть все скачанные данные карт, а также квестов\?
 \nДанные автоматически обновляются через %1$s дня(-ей), а неиспользуемые данные — через %2$s дня(-ей).
 \nВыберите, что стереть.</string>
-    <string name="quest_settings_element_selection">Укажите подходящие для этого квеста элементы. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Нажмите</a>, чтобы открыть сведения о правилах выбора элементов в браузере.</string>
+    <string name="quest_settings_element_selection">Укажите подходящие для этого квеста элементы. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection"> Нажмите</a>, чтобы открыть сведения о правилах выбора элементов в браузере.</string>
     <string name="quest_generic_surface_message">Не требовать заметку для ответов о покрытии без конкретики\?</string>
     <string name="quest_settings_osmose_level_title">Выберите степень критичности для скачивания и показа</string>
     <string name="quest_order_normal">Нормальный порядок квестов</string>
@@ -306,4 +306,46 @@
     <string name="quest_seating_parklet">Вдоль бордюра или на месте парковки</string>
     <string name="quest_settings_level_title">Показать этот квест для:</string>
     <string name="level_filter_title">Выберите ключи для проверки</string>
+    <string name="quest_healthcare_speciality_title">Какие медицинские специальности есть в этом месте\?</string>
+    <string name="level_filter_message">Введите значение уровня или фильтра с помощью &gt; and &lt;. Используйте * для сопоставления всех элементов, содержащих разрешенный ключ уровня</string>
+    <string name="quest_settings_eligible_highways">Укажите дороги, подходящие для этого квеста, через запятую</string>
+    <string name="quest_traffic_stuff_raised">Это возвышенный переход</string>
+    <string name="quest_artwork_architecture">Архитектура</string>
+    <string name="quest_railwayPlatformRef_message">Какой тег использовать для треков, доступных с этой платформы\? Согласно вики OSM, local_ref может быть предпочтительнее, но фактическое использование в основном ref.</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Обратите внимание, что в вики не совсем ясно, какой тег использовать лучше всего, и поэтому он остается на усмотрение пользователя. Выберите между «ref» (по умолчанию) и «local_ref» в настройках квеста.
+\nЕсли вдоль платформы есть две дорожки, используйте значения, разделенные точкой с запятой, например, 2;3</string>
+    <string name="quest_construction_value">Установите «construction=…» или оставьте пустым, если неизвестно</string>
+    <string name="quest_maxspeed_conditional_limited_enter_default">Выберите ограничение по умолчанию, прежде чем выбрать этот ответ</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
+\n
+\n \u0020Это модифицированная версия StreetComplete, предназначенная для опытных пользователей с расширенными знаниями об OSM. Это дает вам больше контроля, но и больше <i>ответственности</i>.
+\n \u0020Это особенно относится к возможности редактирования необработанных тегов и удаления узлов, а также к изменению выбора элементов для квестов. Квесты, добавленные в SCEE, <i>могут не отвечать</i> во всех случаях и отключены по умолчанию. Пожалуйста, скройте их, если вы не можете на них ответить, и <i>не спамьте заметки</i>.
+\n
+\n \u0020По умолчанию SCEE настроен так, чтобы вести себя очень похоже на StreetComplete.
+\n \u0020У вас есть доступ к вашей пользовательской статистике StreetComplete, но любые квесты, решенные с помощью SCEE, <i>не повлияют</i> на статистику и количество звезд.</string>
+    <string name="level_filter_hint">Оставьте пустым, чтобы показать не помеченные</string>
+    <string name="quest_osmose_settings_items">Черный список</string>
+    <string name="quest_osmose_use_app_language">Загружать на языке приложения</string>
+    <string name="quest_settings_level_default">Магазины и подобное в торговых центрах (по умолчанию)</string>
+    <string name="quest_artwork_title">Что это за произведение\?</string>
+    <string name="quest_artwork_mural">Фреска</string>
+    <string name="quest_artwork_graffiti">Граффити</string>
+    <string name="quest_healthcare_speciality_add_more">Добавить еще одну специальность</string>
+    <string name="quest_buildingType_cowshed">Коровник</string>
+    <string name="quest_buildingType_sty">Свинарник</string>
+    <string name="quest_buildingType_sports_hall">Спортивный зал</string>
+    <string name="quest_buildingType_elevator">Лифт</string>
+    <string name="quest_building_entrance_parking">Въезд на парковку</string>
+    <string name="ban_check_fails">Не удалось пройти проверку на запрещенные версии. Возможно, вы используете устаревшую версию, рассмотрите возможность ее обновления.</string>
+    <string name="enqueue_download">Начать по завершении текущего поиска</string>
+    <string name="quest_maxspeed_conditional">Зависит от…</string>
+    <string name="quest_settings_max_roof_levels">Наибольшее значение для (этажности здания) за вычетом (этажности крыши) при котором квест будет показан</string>
+    <string name="quest_settings_max_steps_length">Наибольшая длина лестниц в метрах при котором квест будет показан</string>
+    <string name="quest_settings_building_levels_optional_roof">Пропускать ввод количества этажей в составе крыши для всех стран</string>
+    <string name="pref_create_node_show_keyboard_title">Поаазывать клавиатуру при добавлении узла</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">Задайте наименьшее расстояние разделяющее дорожки, при котором квест ещё будет показан</string>
+    <string name="quest_settings_building_levels_mandatory_roof">Требовать ввода количества этажей в составе крыши для большинства стран (по умолчанию)</string>
+    <string name="quest_settings_level_more">Врачи и многие другие узлы внутри многоуровневых зданий</string>
+    <string name="quest_surface_value_metal_grid">Металлическая сетка</string>
+    <string name="quest_buildingType_barn">Сарай</string>
 </resources>

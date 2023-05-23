@@ -27,11 +27,11 @@
     <string name="pref_save_gpx">Obtenir les notes GPX, photos et traces</string>
     <string name="pref_create_custom_quest_title">Permettre la création de quêtes personnalisées</string>
     <string name="pref_show_solved_animation">Afficher une animation après la résolution d\'une quête</string>
-    <string name="pref_volume_zoom_title">Zoom avec les boutons de volume</string>
-    <string name="pref_hide_button_title">Afficher cacher le bouton</string>
+    <string name="pref_volume_zoom_title">Zoomer avec les boutons de volume</string>
+    <string name="pref_hide_button_title">Afficher le bouton de masquage des quêtes</string>
     <string name="pref_import">Importer les paramètres</string>
     <string name="pref_export">Exporter les paramètres</string>
-    <string name="pref_delete_old_data_after">Supprimer les données après</string>
+    <string name="pref_delete_old_data_after">Supprimer les données après :</string>
     <string name="import_export_presets">Préréglages</string>
     <string name="pref_auto_download_title">Téléchargement auto</string>
     <string name="show_nearby_quests_all_types">Afficher tous les types de quêtes</string>
@@ -40,17 +40,17 @@
     <string name="import_error">Erreur d\'importation</string>
     <string name="import_error_db_version">Erreur d\'importation : version inconnue</string>
     <string name="import_presets_overlays_add">Ajouter</string>
-    <string name="pref_auto_download_summary">Téléchargement automatique des données autour de vous</string>
+    <string name="pref_auto_download_summary">Télécharge automatiquement les données autour de vous</string>
     <string name="pref_manual_download_cache_title">Toujours re-télécharger les données</string>
     <string name="pref_screen_quests">Quêtes</string>
     <string name="pref_custom_title">Charger un fichier de quête personnalisé</string>
     <string name="show_nearby_quests_disable">Ne pas afficher les quêtes à proximité</string>
     <string name="import_export_presets_select">Sélectionner les préréglages à exporter</string>
     <string name="import_export_hidden_quests">Quêtes cachées</string>
-    <string name="pref_tile_source_title">Source du serveur de tuile pour les orthophotographie</string>
+    <string name="pref_tile_source_title">Source du serveur de tuile (images satellites ou cartes)</string>
     <string name="pref_tile_source_message">L\'adresse doit contenir {x}, {y} et {z}</string>
     <string name="pref_tile_source_hide_labels">Cacher les libellés</string>
-    <string name="pref_use_sd_summary">Changer ce paramètre transférera les données, ce qui peut prendre un certain temps</string>
+    <string name="pref_use_sd_summary">Changer ce paramètre transférera les données. Cela peut prendre un peu de temps suivant le volume de donnée</string>
     <string name="moving">Transfert des tuiles.…</string>
     <string name="import_export_custom_overlays">Surcouche personnalisée</string>
     <string name="show_nearby_quests_even_hidden">Afficher les quêtes de tous types et cachées</string>
@@ -92,9 +92,9 @@
     <string name="quest_benchMaterial_brick">Briques</string>
     <string name="quest_poi_misc_title">POI : Divers</string>
     <string name="quest_fixme_title">FixMe : %1$s</string>
-    <string name="default_disabled_msg_poi_business">Cette \"quête\" montre les commerces, restaurants, docteurs,... sous forme de points orange. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_business">Cette \"quête\" montre les commerces, restaurants, docteurs,... avec des points orange. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
     <string name="quest_poi_camera_title">POI : Caméra de surveillance</string>
-    <string name="default_disabled_msg_poi_fixme">Cette \"quête\" montre les points avec un tag fixme (en dehors des valeurs \'yes\' et \'continue\'). Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_fixme">Cette \"quête\" affiche les éléments avec un tag fixme avec un point rouge (en dehors des valeurs \'yes\' et \'continue\'). Cliquez sur le point pour afficher les détails et les réponses possibles.</string>
     <string name="quest_artwork_fountain">Fontaine</string>
     <string name="quest_artwork_statue">Statue</string>
     <string name="quest_seating_street">Dans une zone de rue</string>
@@ -154,7 +154,7 @@
     <string name="access_width_limit">Largeur</string>
     <string name="access_manager_button_add_conditional">Ajouter une condition</string>
     <string name="access_time_limit">Temps</string>
-    <string name="dialog_button_understood">Compris</string>
+    <string name="dialog_button_understood">Ok j\'ai compris</string>
     <string name="close_note_checkbox">Fermer la note (seulement si vous avez réellement résolu la note !)</string>
     <string name="closed_note_action_title">Vous l\'avez fermé</string>
     <string name="manage_access">Gérer l\'accès…</string>
@@ -164,7 +164,7 @@
     <string name="custom_overlay_highlight_missing">Mettre en surbrillance les données manquantes</string>
     <string name="custom_overlay_filter_info">Détails à filtrer</string>
     <string name="pref_delete_old_data_after_message">Supprimer les données OSM téléchargées âgées de plusieurs jours</string>
-    <string name="pref_advanced_resurvey_summary">Forcer la revérification sur le terrain pour les tags sélectionnés</string>
+    <string name="pref_advanced_resurvey_summary">Forcer la revérification sur le terrain pour les attributs sélectionnés</string>
     <string name="pref_hide_notes_title">Cacher les notes de certains utilisateurs</string>
     <string name="pref_show_next_quest_summary">Afficher une autre quête pour le même élément juste après sa résolution</string>
     <string name="access_manager_button_add">Ajouter</string>
@@ -186,12 +186,186 @@
     <string name="quest_service_building_operator_title">Qui est le gestionnaire de ce bâtiment de service \?</string>
     <string name="quest_monitor_gps">Activer la localisation GPS continue \?</string>
     <string name="pref_tree_custom_quest_summary">Voir le message pour plus de détails lors de l\'activation de la quête</string>
-    <string name="default_disabled_msg_poi_bike">Cette \"quête\" montre les points d\'intérêt (POI) liés au vélo sous forme de points violets. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_bike">Cette \"quête\" montre les points d\'intérêt (POI) liés au vélo avec des points violets. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
     <string name="quest_poi_cycling_title">POI : Vélo</string>
-    <string name="default_disabled_msg_poi_camera">Cette \"quête\" montre les équipements de surveillance sous forme de points rose. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_camera">Cette \"quête\" montre les équipements de surveillance avec des points rose. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
     <string name="quick_switch_preset">Changer de préréglage</string>
     <string name="quest_wheelchair_description_answer">Ajouter une description</string>
     <string name="pref_overlay_quick_selector_title">Afficher le sélecteur rapide de type de fond</string>
     <string name="custom_overlay_color_hint">Laisser vide pour tout voir avec la même couleur</string>
     <string name="quick_switch_map_background">Basculer entre la carte satellite et le plan</string>
+    <string name="pref_way_direction_summary">Affiche des flèches sur les lignes en surbrillance lors de l\'ouverture d\'une quête. Utile par exemple lors de l\'ajout d\'une voie à sens unique.</string>
+    <string name="pref_quest_geometries_summary">Affiche en surbrillance les chemins et zones pour lesquels il existe une quête</string>
+    <string name="pref_offset_fix_title">Supprimer le décalage sur les marqueurs de quête</string>
+    <string name="pref_offset_fix_summary">Ils existent pour que les points blancs soient cachés par les icônes de quêtes</string>
+    <string name="pref_swap_gpx_note_button">Inverser les boutons de notes OSM et GPX</string>
+    <string name="pref_hide_button_summary">Un clic masque temporairement la quête, un clic long la masque définitivement</string>
+    <string name="pref_select_first_edit_summary">Permet une annulation plus rapide, mais déplace la caméra automatiquement</string>
+    <string name="pref_recent_answers_first_min_lines">Mettre les réponses récentes au premier plan</string>
+    <string name="pref_select_first_edit_title">Sélectionner la première modification à l\'ouverture de l\'historique</string>
+    <string name="import_presets_overlays_message">Ajouter les données importées ou remplacer les données existantes \? Si vous choisissez de les remplacer, toutes les données existantes seront supprimées.</string>
+    <string name="show_nearby_quests_visible">Afficher tous les types de quêtes activés</string>
+    <string name="export_warning_db_version">Attention : la version de la base de données est inconnue, l\'importation peut ne pas fonctionner. Veuillez demander une mise à jour de l\'application.</string>
+    <string name="tree_custom_quest_import">Importer</string>
+    <string name="tree_custom_quest_export">Exporter</string>
+    <string name="pref_recent_answers_first_min_lines_summary">Si le formulaire comporte plus de %d ligne(s)</string>
+    <string name="pref_search_more_languages_title">Rechercher des fonctions dans plus de langues</string>
+    <string name="pref_search_more_languages_summary">Recherche les fonctions et affiche les résultats pour tous les systèmes et langue locale</string>
+    <string name="advanced_resurvey_message_date">Au lieu d\'utiliser les fréquences des relevés par défaut, relever les éléments avec les clés ci-dessus si la date de vérification est postérieur au :</string>
+    <string name="pref_quest_settings_preset_summary">Lorsque cette option est activée, les paramètres de quête ne sont valables que pour le préréglage de la quête en cours</string>
+    <string name="pref_quest_settings_preset_title">Paramètres de quête par présélection</string>
+    <string name="day_night_ignore">Ignorer le moment de la journée</string>
+    <string name="day_night_priority">Augmenter la priorité des quêtes en fonction du moment actuel de la journée</string>
+    <string name="day_night_visibility">Ne pas afficher les quêtes inadaptées au moment actuel de la journée</string>
+    <string name="delete_cache_dialog_message2">Supprimer toutes les données téléchargées des cartes, y compris les quêtes \?
+\nLes données sont actualisées tous les %1$s jours et les données inutilisées sont supprimées automatiquement après %2$s jours.
+\nChoisissez ce que vous souhaitez supprimer.</string>
+    <string name="quest_settings_eligible_highways">Définissez les chemins concernés par cette quête, en les séparant par des virgules</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">Définir la distance minimale entre les chemins distincts ; si elle est inférieure, la quête ne sera pas affichée</string>
+    <string name="pref_gps_interval_title">Intervalle de mise à jour de la localisation GPS</string>
+    <string name="pref_network_interval_title">Intervalle de mise à jour de la localisation à partir du réseau</string>
+    <string name="restore_dialog_hint">Vous pouvez également choisir manuellement les quêtes à restaurer en appuyant longuement sur le bouton d\'annulation.</string>
+    <string name="pref_day_night_title">Filtrer les quêtes suivant le moment de la journée</string>
+    <string name="pref_dynamic_quest_creation_title">Créer des quêtes dynamiquement</string>
+    <string name="pref_quest_monitor_download">Télécharger des données si nécessaire \? Cela peut consommer une quantité importante de données et de batterie, et peut être rendu inopérant par Android pour des raisons d\'économie de la batterie.</string>
+    <string name="quest_settings_per_preset_rescan">Pour appliquer correctement tous les paramètres modifiés de la quête, il est nécessaire de scanner à nouveau les quêtes.</string>
+    <string name="quest_monitor_search_radius_text">Définir le rayon de recherche des quêtes à proximité. Notez que des quêtes situées à une distance légèrement supérieure peuvent également être trouvées. Les emplacements dont la précision est inférieure à cette valeur sont ignorés.</string>
+    <string name="quest_monitor_permission_warning">La localisation en arrière-plan doit être autorisée afin que le moniteur de quête à proximité fonctionne</string>
+    <string name="quest_osmose_delete_this_issue">Retirer cette erreur localement</string>
+    <string name="quest_osmose_use_app_language">Télécharger les questions dans la langue de l\'application</string>
+    <string name="quest_settings_max_steps_length">Longueur maximale des pas en mètre pour l\'affichage de la quête</string>
+    <string name="quest_osmose_use_app_language_information">Cela risque de gêner les éléments qui sont ignorés par le sous-titre</string>
+    <string name="quest_osmose_hide_type">Ignorer les erreurs avec le même…</string>
+    <string name="quest_settings_level_default">Magasins et assimilés dans les centres commerciaux (par défaut)</string>
+    <string name="quest_generic_surface_message">Permettre des réponses génériques pour les surfaces sans exiger une note \?</string>
+    <string name="quest_settings_osmose_level_title">Sélectionnez le(s) niveau(x) de gravité des erreurs à télécharger et à afficher</string>
+    <string name="level_filter_title">Choisir les clés à utiliser</string>
+    <string name="quest_settings_building_levels_optional_roof">Omettre les niveaux de toit partout</string>
+    <string name="quest_settings_building_levels_mandatory_roof">Exiger de préciser le nombre de niveaux du toit dans la plupart des pays (par défaut)</string>
+    <string name="quest_order_normal">Retour à l\'ordre normal des quêtes</string>
+    <string name="level_filter_hint">Laisser vide pour indiquer qu\'il n\'y a pas d\'attribut</string>
+    <string name="quest_osmose_title">Quête Osmose : %s</string>
+    <string name="quest_osmose_message_for_element">Type d\'élément %1$s : %2$s</string>
+    <string name="quest_osmose_settings_items">Modifier les types d\'éléments à ignorer</string>
+    <string name="quest_osmose_select_element">Sélectionner l\'élément</string>
+    <string name="quest_custom_quest_remove">Supprimer de la liste</string>
+    <string name="quest_custom_quest_osmose_not_found">Entrée supprimée, suppression de la quête</string>
+    <string name="quest_custom_quest_add_node_text">Vous pouvez ajouter un nœud avec : %s</string>
+    <string name="quest_custom_quest_add_node">Ajouter un nœud</string>
+    <string name="quest_benchMaterial_title">En quelle matière est-il \?</string>
+    <string name="quest_poi_seating_title">POI : Places assises</string>
+    <string name="quest_poi_business_title">POI : Entreprises</string>
+    <string name="quest_poi_has_atm_title">POI : Dispose d\'un DAB</string>
+    <string name="quest_poi_recycling_title">POI : Recyclage %s</string>
+    <string name="quest_poi_vacant_title">POI : Emplacement vacant</string>
+    <string name="quest_traffic_stuff_raised">C\'est un passage surélevé</string>
+    <string name="quest_service_building_type_title">Quel type de bâtiment de service est-ce %s \?</string>
+    <string name="quest_service_building_type_pressure">Sous-station de distribution de gaz</string>
+    <string name="quest_recycling_excrement_bag_dispenser">Il dispose d\'un distributeur de sacs à excréments</string>
+    <string name="quest_tree_error">Non reconnu. Essayez de saisir le genre, l\'espèce ou le nom anglais de l\'arbre. Sinon, laissez une note.</string>
+    <string name="quest_tree_genus_title">Quel est le genre ou l\'espèce de cet arbre \?</string>
+    <string name="quest_seating_parklet">A côté du trottoir, ou à l\'endroit où se trouvait le parking</string>
+    <string name="quest_seating_garden">Dans un espace vert</string>
+    <string name="quest_outdoor_seating_name_title">Quel genre de places assises en extérieur y a-t-il dans cet établissement \?</string>
+    <string name="quest_seating_veranda">Sous une véranda/un porche</string>
+    <string name="ban_check_fails">La vérification des versions non autorisées continue d\'échouer. Il se peut que vous utilisiez une version obsolète, pensez à mettre à jour.</string>
+    <string name="hide_button">Cacher</string>
+    <string name="time_limited_from">De</string>
+    <string name="time_limited_to">À</string>
+    <string name="quest_construction_value">Définir le type de construction \"construction=…\", ou laisser vide si inconnu</string>
+    <string name="fork_about_title_repository">Page d\'accueil du projet SCEE</string>
+    <string name="quest_seating_no">Pas de places assises, mais pas de commandes à emporter uniquement</string>
+    <string name="quest_wheelchair_description_no_language">aucune langue spécifiée</string>
+    <string name="quest_wheelchair_description_title">Remplissez au moins une langue</string>
+    <string name="quest_lanes_answer_noLanes_known_count">Pas de marquage, nombre de voies évident</string>
+    <string name="quest_crossing_type_raised">Passage surélevé</string>
+    <string name="quest_crossing_type_signals_controlled_zebra">Feux de circulation et zébra</string>
+    <string name="quest_crossing_type_zebra">Zébra</string>
+    <string name="quest_buildingType_tent">Tente fixe</string>
+    <string name="quest_buildingType_transit_shelter">Abri de transport en commun</string>
+    <string name="quest_buildingType_riding_hall">Manège d\'équitation</string>
+    <string name="quest_surface_value_metal_grid">Grille métallique</string>
+    <string name="tag_editor_duplicate_key">Ignorer le changement de clé dupliquée %s</string>
+    <string name="access_manager_message">Choisir les clés d\'accès. N\'oubliez d\'indiquer seulement les accès précisé sur le terrain, et d\'éviter autant que possible le marquage générique avec la clé \"access\"</string>
+    <string name="custom_overlay_dash_filter_hint">Filtrer les éléments en pointillés</string>
+    <string name="custom_overlay_color_info">Détails à afficher en couleur</string>
+    <string name="quest_monitor_running">Suivi de la localisation</string>
+    <string name="quest_monitor_channel_name">Surveiller les quêtes à proximité</string>
+    <string name="quest_monitor_found">%d quêtes à proximité, la plus proche :</string>
+    <string name="move_node_with_geometry">Le déplacement de ce nœud modifiera la géométrie des voies ou des relations multipolygonales suivantes : %s.
+\n Attention, les modifications ne seront pas immédiatement visibles sur le fond de carte.</string>
+    <string name="pref_hide_keyboard_title">Masquer le clavier avant de créer une note</string>
+    <string name="quest_monitor_active_request">La mise à jour en continue de la localisations augmente l\'utilisation de la batterie. Lorsqu\'il n\'y a pas de localisation en continue, les localisations demandées par les autres applications sont toujours utilisées.</string>
+    <string name="level_filter_message">Saisir la valeur du niveau ou filtrer à l\'aide de &gt; and &lt;. Utiliser * pour faire correspondre tous les éléments contenant une clé de niveau permise</string>
+    <string name="pref_hide_keyboard_summary">Cache le clavier lorsqu\'il est ouvert avant que la note ne soit créée (pour permettre de revoir la position géographique de la note)</string>
+    <string name="quest_settings_level_title">Afficher cette quête pour :</string>
+    <string name="quest_settings_dot_labels_message">Définir les attributs à utiliser dans l\'ordre donné pour la désignation. Une chaîne vide n\'affichera aucune désignation, \"label\" affichera l\'étiquette par défaut du nom de StreetComplete en utilisant name, brand, ref, local_ref et operator.</string>
+    <string name="pref_quest_geometries_title">Afficher en surbrillance les chemins et zone avec une quête</string>
+    <string name="quest_settings_element_selection">Définir les éléments utilisé dans cette quête. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Cliquez ici</a> pour obtenir plus d\'informations dans un navigateur sur la syntaxe de sélection des éléments.</string>
+    <string name="quest_custom_quest_title">Quête personnalisée : %s</string>
+    <string name="pref_show_solved_animation_summary">Cela permet également de contrôler le son lors de la résolution de la quête</string>
+    <string name="quest_settings_level_more">Médecins et beaucoup d\'autres nœuds à l\'intérieur des bâtiments à plusieurs niveaux</string>
+    <string name="quest_poi_traffic_title">POI : Circulation %s</string>
+    <string name="import_export_settings">Autres paramètres de l\'application</string>
+    <string name="quest_monitor_error">Impossible de démarrer la surveillance, problème potentiel d\'autorisation</string>
+    <string name="pref_manual_download_cache_summary">Si cette option est désactivée, seul les données de plus de 12 heures seront retéléchargées lors d\'un téléchargement manuel</string>
+    <string name="custom_overlay_add_button">Nouveau personnalisé</string>
+    <string name="default_disabled_msg_poi_vacant">Cette \"quête\" affiche les commerces vacants avec un point gris. Cliquez sur le point pour afficher les détails et les réponses possibles.</string>
+    <string name="move_node_of_other_relation">Ce nœud fait partie des relations non multipolygonales suivantes : %s</string>
+    <string name="insert_node_select_way">Sélectionnez une position sur le chemin</string>
+    <string name="pref_show_nearby_quests_summary">Permettre de passer d\'une quête à l\'autre lorsqu\'un formulaire de saisie de quête est affiché</string>
+    <string name="quest_maxspeed_conditional_limited_enter_default">Sélectionnez la limite par défaut avant de choisir cette réponse</string>
+    <string name="pref_recent_answers_first_min_lines_message">Déplacer les réponses récentes au premier plan si le formulaire de quête comporte plus que ce nombre de lignes d\'images</string>
+    <string name="advanced_resurvey_hint_keys">Séparer les clés par une virgule</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
+\n
+\n Il s\'agit d\'une version modifiée de StreetComplete. Elle est destinée aux utilisateurs expérimentés ayant une connaissance avancée d\'OSM. Elle vous offre plus de liberté et de possibilité, mais aussi plus de <i>responsabilités</i>.
+\n Cela concerne en particulier la possibilité d\'éditer des balises brutes et de supprimer des nœuds, mais aussi de modifier les tags des éléments sélectionnés lors des quêtes. Les quêtes ajoutées dans SCEE <i>peuvent ne pas trouver de réponse</i> dans tous les cas et sont désactivées par défaut. Veuillez les masquer si vous ne pouvez pas y répondre et <i>ne pas spammer les notes</i>.
+\n
+\nÀ l\'installation, SCEE est configuré afin de se comporter très similairement à StreetComplete.
+\nVous avez accès à vos statistiques d\'utilisateur StreetComplete, mais les quêtes résolues à l\'aide de SCEE <i>ne sont pas prises en compte</i> dans les statistiques et le nombre d\'étoiles dans StreetComplete.</string>
+    <string name="pref_show_gpx_button_summary">Contrairement aux notes OSM, ajouter un fichier GPX ne masquera aucune quête à l\'endroit concerné</string>
+    <string name="pref_dynamic_quest_creation_summary">Les quêtes sont créées lors du chargement de la zone visualisée. Un peu plus lent, mais permet d\'appliquer immédiatement les paramètres modifiés de la quête.</string>
+    <string name="pref_quest_monitor_summary">Surveille la localisation lorsque l\'application est en arrière-plan, sauf si elle est mise en arrière-plan à l\'aide du bouton \"retour\"</string>
+    <string name="quest_railwayPlatformRef_message">Quel tag utiliser pour indiquer les voies accessibles depuis ce quai \? D\'après le wiki OSM, local_ref est préférable, mais l\'usage actuel le plus répandu est surtout ref.</string>
+    <string name="default_disabled_msg_ee">Les quêtes ajoutées dans SCEE sont toujours désactivées par défaut, car il n\'est pas toujours possible d\'y répondre facilement, et elles peuvent nécessiter une connaissance plus approfondi du sujet et des tags à utiliser.</string>
+    <string name="quest_healthcare_speciality_disabled_message">Cette quête nécessite des connaissances à propos des tags healthcare:speciality. Sans ces connaissances, il peut être très difficile de répondre à cette quête.</string>
+    <string name="pref_expert_mode_message">Elle permet d\'utiliser les quêtes ajoutées dans SCEE, ainsi que la possibilité
+\n<li>d\'éditer les attributs au format brut</li>
+\n<li>déplacer des nœuds qui font partie de chemins ou de relations</li>
+\n<li>de supprimer tout nœud non lié à un chemin ou une relation</li>
+\n<li>d\'éditer des éléments qui devraient être bloqués par une note</li>
+\n<li>d\'ajouter des nœuds non lié à un chemin ou une relation n\'importe où</li>
+\n<li>de modifier la sélection des éléments des quêtes</li>
+\n
+\nC\'est toujours moins que ce que permettent la plupart des autres éditeurs, mais une utilisation incorrecte peut aboutir à endommager les données d\'une telle façon qu\'il n\'est pas possible de le faire avec StreetComplete. Sachez qu\'en activant le mode expert, vous avez d\'autant plus de responsabilité quant à vos modifications.
+\nN\'activez ce paramètre que si vous avez une expérience d\'OSM en dehors de StreetComplete et que vous comprenez ce que vous faites. </string>
+    <string name="pref_trees_title">Charge un fichier d\'arborescence de quêtes</string>
+    <string name="tree_custom_quest_import_export_message">Obtenir le fichier actuellement utilisé ou en fournir un nouveau \? Consultez le message d\'activation de la quête correspondant pour plus de détails.</string>
+    <string name="quest_settings_what_to_edit">Que faut-il définir \?</string>
+    <string name="advanced_resurvey_message_keys">Toujours rechercher ces clés si il n\'y a pas de clé de vérification de la date. La date de vérification sera toujours ajoutée lorsque vous répondrez aux quêtes</string>
+    <string name="quest_settings_max_roof_levels">Valeur maximum pour (niveaux du bâtiment) moins (niveaux du toit) pour la quête à afficher</string>
+    <string name="quest_settings_resurvey_all_opening_hours_message">Réexaminer toutes les heures d\'ouverture, y compris les valeurs non reconnues par SCEE \? Il se peut que vous deviez utiliser l\'éditeur d\'attributs pour saisir les valeurs correctes.</string>
+    <string name="quest_osmose_message">Ces quêtes sont téléchargées à partir du service Osmose et signalent les problèmes potentiels avec les données OSM. Le téléchargement n\'a lieu que si au moins un niveau de gravité est sélectionné dans les paramètres de la quête.
+\nLe message d\'Osmose est affiché avec la quête, toute modification de tag signale l\'erreur comme résolu.
+\nIl est également possible de signaler le problème comme étant un faux positif, attention ceci ne peut pas être annulé par la suite.</string>
+    <string name="quest_poi_vending_title">POI : Distributeurs automatiques %s</string>
+    <string name="quest_poi_machine_title">POI : Distributeur automatique</string>
+    <string name="default_disabled_msg_poi_machine">Cette \"quête\" montre les points d\'intérêt (POI) distributeurs de billets ou automatiques avec des points bleus. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_other">Cette \"quête\" montre divers points d\'intérêt (POI) comme les bornes d\'incendie, les points de vue ou les toilettes avec des points jaune. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_bench">Cette \"quête\" montre les points d\'intérêt (POI) comme les bancs ou tables de pique-nique avec des points marrons. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="quest_custom_quest_message">Utilisé pour vérifier des éléments ou des emplacements spécifiques prédéfinis. Vous pouvez également ajouter des nœuds en définissants des tags. Pour l\'utiliser, chargez un fichier dans le menu principal des paramètres, contenant soit le type, l\'id, le message (par exemple NODE,1234,check position) ou la latitude, la longitude, le message. Pour ajouter des nœuds, placez les tags dans le message après \"addNode\", par exemple addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="default_disabled_msg_poi_recycling">Cette \"quête\" montre les points d\'intérêt (POI) liés au recyclage et aux déchets avec des points verts. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="default_disabled_msg_poi_traffic">Cette \"quête\" montre les points d\'intérêt (POI) liés à la circulation avec des points bleus. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
+    <string name="quest_healthcare_speciality_switch_ui">Changer d\'interface</string>
+    <string name="quest_cuisine_add_more">Ajouter un autre type de nourriture</string>
+    <string name="quest_cuisine_title">Quel est le type de nourriture que l\'on trouve dans cet endroit \? Utilisez les balises OSM suggérées !</string>
+    <string name="quest_tree_disabled_msg">Cette quête est désactivée par défaut car il n\'est pas facile d\'y répondre. L\'espèce/le genre doit être choisi parmi les suggestions, qui sont extraites des valeurs les plus utilisées. Vous pouvez fournir plus de suggestions à partir de votre propre liste de noms d\'espèces pouvant être recherchés en fournissant un fichier dans le menu des paramètres de gestion des données, contenant &lt;espèce&gt; (&lt;nom&gt;).</string>
+    <string name="quest_buildingType_sports_hall">Gymnase</string>
+    <string name="quest_buildingType_digester">Centrale biogaz</string>
+    <string name="quest_buildingType_transformer_tower">Tour transformateur électrique</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Notez que la balise à utiliser n\'est pas tout à fait claire dans le wiki et qu\'elle est donc laissée à l\'appréciation de l\'utilisateur. Choisissez entre \'ref\' (par défaut) et \'local_ref\' dans les paramètres de la quête.
+\nS\'il y a deux voies le long d\'une plate-forme, utilisez des valeurs séparées par des points-virgules, par exemple 2;3</string>
+    <string name="custom_overlay_filter_message">Cliquez sur le lien ci-dessous pour afficher des informations sur la syntaxe de sélection des éléments dans un navigateur. Notez que lors de la sélection d\'éléments par ancienneté, le réglage de l\'intervalle de ré-enquête peut influencer le résultat.
+\nLes cases à cocher remplacent la partie \"nœuds, chemins avec\".</string>
 </resources>
