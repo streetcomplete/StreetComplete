@@ -11,16 +11,23 @@ class TilesRectTest {
 
     @Test
     fun `convert bbox to tiles rect and back results in same bbox`() {
-        val p = p(53.0, 9.0)
-        val tile = p.enclosingTilePos(15)
-        val bbox = tile.asBoundingBox(15)
-        assertTrue(bbox.min.latitude <= p.latitude)
-        assertTrue(bbox.max.latitude >= p.latitude)
-        assertTrue(bbox.min.longitude <= p.longitude)
-        assertTrue(bbox.max.longitude >= p.longitude)
-        val r = bbox.enclosingTilesRect(15)
-        val bbox2 = r.asBoundingBox(15)
-        assertEquals(bbox, bbox2)
+        val points = listOf(
+            p(53.0, 9.0),
+            p(0.0, 0.0),
+            p(48.179, 16.414),
+            //p(85.049, -179.989), // fails
+        )
+        for (p in points) {
+            val tile = p.enclosingTilePos(15)
+            val bbox = tile.asBoundingBox(15)
+            assertTrue(bbox.min.latitude <= p.latitude)
+            assertTrue(bbox.max.latitude >= p.latitude)
+            assertTrue(bbox.min.longitude <= p.longitude)
+            assertTrue(bbox.max.longitude >= p.longitude)
+            val r = bbox.enclosingTilesRect(15)
+            val bbox2 = r.asBoundingBox(15)
+            assertEquals(bbox, bbox2)
+        }
     }
 
     @Test

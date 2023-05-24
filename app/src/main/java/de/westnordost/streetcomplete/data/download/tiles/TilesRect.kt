@@ -18,12 +18,13 @@ data class TilePos(val x: Int, val y: Int) {
      *  Note that the edges of a `BoundingBox`es are inclusive (a bounding box of 0,0 to 1,1 contains
      *  both position 0,0 and 1,1) while the edges of `TilePos`itions are inclusive only on the
      *  lower two edges but not on the upper two edges (a tile pos covering the area of 0,0 to 1,1
-     *  contains 0,0 and only 0.999...,0.999... but not 1,1 */
+     *  contains 0,0 and only 0.999...,0.999... but not 1,1.
+     *  So, a bounding box is always marginally smaller than a `TilePos` */
     fun asBoundingBox(zoom: Int) = BoundingBox(
-        tile2lat(y + 1, zoom) + 1e-13,
+        tile2lat(y + 1, zoom) + 1e-12,
         tile2lon(x, zoom),
         tile2lat(y, zoom),
-        tile2lon(x + 1, zoom) - 1e-13
+        tile2lon(x + 1, zoom) - 1e-12
     )
 
     fun toTilesRect() = TilesRect(x, y, x, y)
@@ -70,12 +71,13 @@ data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: In
      *  Note that the edges of a `BoundingBox`es are inclusive (a bounding box of 0,0 to 1,1 contains
      *  both position 0,0 and 1,1) while the edges of `TilesRect`s are inclusive only on the
      *  lower two edges but not on the upper two edges (a tile pos covering the area of 0,0 to 1,1
-     *  contains 0,0 and only 0.999...,0.999... but not 1,1  */
+     *  contains 0,0 and only 0.999...,0.999... but not 1,1
+     *  So, a bounding box is always marginally smaller than a `TileRect` */
     fun asBoundingBox(zoom: Int) = BoundingBox(
-        tile2lat(bottom + 1, zoom) + 1e-13,
+        tile2lat(bottom + 1, zoom) + 1e-12,
         tile2lon(left, zoom),
         tile2lat(top, zoom),
-        tile2lon(right + 1, zoom) - 1e-13
+        tile2lon(right + 1, zoom) - 1e-12
     )
 
     fun contains(other: TilesRect): Boolean =
@@ -109,18 +111,15 @@ private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: I
 }
 
 private fun tile2lon(x: Int, zoom: Int): Double =
-    x / numTiles(zoom).toDouble() * 360.0 - 180.0
+    360.0 * x / numTiles(zoom).toDouble() - 180.0
 
 private fun tile2lat(y: Int, zoom: Int): Double =
-    atan(sinh(PI - 2.0 * PI * y / numTiles(zoom))).toDegrees()
+    180.0 * atan(sinh(PI - 2.0 * PI * y / numTiles(zoom))) / PI
 
 private fun lon2tile(lon: Double, zoom: Int): Int =
     (numTiles(zoom) * (lon + 180.0) / 360.0).toInt()
 
 private fun lat2tile(lat: Double, zoom: Int): Int =
-    (numTiles(zoom) * (1.0 - asinh(tan(lat.toRadians())) / PI) / 2.0).toInt()
+    (numTiles(zoom) * (1.0 - asinh(tan(PI * lat / 180.0)) / PI) / 2.0).toInt()
 
 private fun numTiles(zoom: Int): Int = 1 shl zoom
-
-private fun Double.toDegrees() = this / PI * 180.0
-private fun Double.toRadians() = this / 180.0 * PI
