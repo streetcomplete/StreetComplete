@@ -1,6 +1,6 @@
 v53.2: |
   <ul>
-  <li>Fox broken quest filter that would cause a crash when scanning for quests</li>
+  <li>Fix broken quest filter that would cause a crash when scanning for quests</li>
   </ul>
 
 v53.1: |
