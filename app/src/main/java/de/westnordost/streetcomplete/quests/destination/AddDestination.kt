@@ -30,7 +30,7 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
           and !destination and !~ destination:.*
           and junction !~ roundabout|circular
           and (oneway = yes or (!oneway and (!lanes or lanes = 2)))
-          and cycleway != lane and and !cycleway:lane !cycleway:lanes and !bicycle:lanes and cycleway:left != lane and cycleway:right != lane and cycleway:both != lane and cycleway != opposite_lane
+          and cycleway != lane and !cycleway:lane and !cycleway:lanes and !bicycle:lanes and cycleway:left != lane and cycleway:right != lane and cycleway:both != lane and cycleway != opposite_lane
           and !motorcycle:lanes
     """.toElementFilterExpression()
     }

@@ -74,7 +74,8 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         updateBicycleBoulevard()
 
         streetSideSelect.transformLastSelection = { item: CyclewayAndDirection, isRight: Boolean ->
-            CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
+            if (item.direction == Direction.BOTH) item
+            else CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
         }
     }
 

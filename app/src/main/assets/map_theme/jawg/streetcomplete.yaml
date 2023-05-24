@@ -44,7 +44,7 @@ styles:
         blend: overlay
         blend_order: 1
     # highlighted geometry (when tapping on quest etc.)
-    geometry-lines:
+    geometry-lines-animate:
         base: lines
         blend: overlay
         shaders:
@@ -53,7 +53,7 @@ styles:
                     color.a = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
                 width: |
                     width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
-    geometry-lines-stable: # same as normal, but not animated
+    geometry-lines:
         base: lines
         blend: overlay
     geometry-polygons:
@@ -233,7 +233,7 @@ layers:
         line:
             filter: { type: [poly, line] }
             draw:
-                geometry-lines:
+                geometry-lines-animate:
                     color: global.geometry_line_color
                     width: 9px
                     collide: false
@@ -337,7 +337,7 @@ layers:
                 type: line
                 $zoom: { min: 16 }
             draw:
-                geometry-lines-stable:
+                geometry-lines:
                     color: global.quest_geometry_color
                     width: 9px
                     collide: false

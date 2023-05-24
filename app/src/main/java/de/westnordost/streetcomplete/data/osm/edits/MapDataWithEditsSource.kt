@@ -392,11 +392,11 @@ class MapDataWithEditsSource internal constructor(
     private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
         val addWays = ArrayList<Way>()
         for ((key, geometry) in updatedGeometries) {
+            // we will deal with nodes at the end
+            if (key.type == NODE) continue
+
             // add the modified data if it is in the bbox
             if (geometry != null && geometry.getBounds().intersect(bbox)) {
-                // we will deal with nodes at the end
-                if (key.type == NODE) continue
-
                 val element = updatedElements[key]
                 if (element != null) {
                     mapData.put(element, geometry)

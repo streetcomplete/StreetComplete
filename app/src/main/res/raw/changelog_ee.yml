@@ -1,3 +1,8 @@
+v53.2: |
+  <ul>
+  <li>Fox broken quest filter that would cause a crash when scanning for quests</li>
+  </ul>
+
 v53.1: |
   <ul>
   <li>This release is marked as pre-release because the new quests might need some tuning. Feedback is highly welcome.</li>
