@@ -406,7 +406,7 @@
     <string name="restriction_overlay_show_details">Show relation details</string>
     <string name="restriction_overlay_relation_incomplete">Restriction relation is incomplete, download of surrounding area required</string>
     <string name="restriction_overlay_relation_unsupported">Unsupported relation type:\n%s</string>
-    <string name="restriction_overlay_select_way">Click the next way on the map. It needs an end note in common with the current way. Split if necessary.</string>
+    <string name="restriction_overlay_select_way">Click the next way on the map. It needs an end node in common with the current way. Split if necessary.</string>
     <string name="restriction_overlay_other_restrictions">Other restrictions on this way:</string>
 
 
