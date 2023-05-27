@@ -24,7 +24,7 @@ class AddIsPharmacyDispensing : OsmFilterQuestType<Boolean>() {
     """
     override val changesetComment = "Determine whether pharmacies are dispensing prescription drugs"
     override val wikiLink = "Key:dispensing"
-    override val icon = R.drawable.ic_quest_maki_pharmacy
+    override val icon = R.drawable.ic_preset_maki_pharmacy
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
