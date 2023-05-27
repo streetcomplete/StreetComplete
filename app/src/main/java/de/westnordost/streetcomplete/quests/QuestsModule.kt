@@ -118,6 +118,7 @@ import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
+import de.westnordost.streetcomplete.quests.pharmacy.AddIsPharmacyDispensing
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
@@ -428,6 +429,7 @@ fun getQuestTypeList(
     81 to AddOpeningHours(featureDictionaryFuture),
     82 to AddSeating(), // easily visible from outside, but only seasonally
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
+    999 to AddIsPharmacyDispensing(), // usually signed on the doors, but only exists is some countries
 
     84 to AddAtmOperator(),
     85 to AddAtmCashIn(),
