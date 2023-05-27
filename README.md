@@ -157,7 +157,6 @@ The original [contributing guidelines](#contributing) are still valid, but note 
 This section is aimed for people trying to decide whether a bad edit done in SCEE is fault of the user or of the app (SCEE modifications).
 In general, SCEE changesets will contain changes very similar to StreetComplete changesets, with following differences:
 * `created_by` is set to `StreetComplete_ee <version>`
-* Quest type is given in `StreetComplete_ee:quest_type`
 * _AddBuildingType_ has additional answers `barn`, `sty`, `stable`, `cowshed`, `digester`, `presbytery`, `riding_hall`, `sports_hall`, `tent`, `elevator`, and `transformer_tower`
 * _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
@@ -175,13 +174,11 @@ Further SCEE adds new answers leading to such a changeset comment:
   * All quest types related to roads / paths may adjust access tags
   * Quests types asking about about benches, picnic tables, recycling containers, bicycle parkings and sports tracks/pitches may tag `access=private`
   * All quest types related to buildings may change `building` to `demolished:building`
-* SCEE contains some additional quests, see [here (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt)
-  * These quests usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first.
-  * There are the further quest types
+* SCEE contains some additional [quests (scroll to bottom)](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) and [overlays](app/src/main/java/de/westnordost/streetcomplete/overlays/OverlaysModule.kt), recognizable in the files by `EE_QUEST_OFFSET`
+  * They usually do not fulfill the requirements for StreetComplete, and need to be enabled by the user first
+* There are further "quest types" (though neither quests nor overlays, they are identified in `StreetComplete:quest_type` changeset tag)
   * _TagEdit_: may modify any tag
   * _AddNode_: adds nodes, free floating or part of ways, (may change tags of existing way node instead of inserting a new one under some circumstances)
-  * _CustomOverlay_: may modify tags, delete or move nodes
-  * _TurnRestrictionOverlay_: may add, modify or remove turn restrictions
 
 # original StreetComplete readme below
 
