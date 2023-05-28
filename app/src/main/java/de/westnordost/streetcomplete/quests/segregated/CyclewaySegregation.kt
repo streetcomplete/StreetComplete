@@ -1,4 +1,3 @@
 package de.westnordost.streetcomplete.quests.segregated
 
-@JvmInline
-value class CyclewaySegregation(val value: Boolean)
+enum class CyclewaySegregation { YES, NO, SIDEWALK }

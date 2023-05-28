@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
 
 class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
@@ -36,6 +36,10 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
     override fun createForm() = AddCyclewaySegregationForm()
 
     override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("segregated", answer.value.toYesNo())
+        when (answer) {
+            YES -> tags.updateWithCheckDate("segregated", "yes")
+            NO -> tags.updateWithCheckDate("segregated", "no")
+            SIDEWALK -> tags["sidewalk"] = "yes"
+        }
     }
 }
