@@ -1,15 +1,13 @@
 package de.westnordost.streetcomplete.data.sync
 
 import android.app.Notification
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
+import androidx.core.app.PendingIntentCompat
 import de.westnordost.streetcomplete.ApplicationConstants.NAME
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC
 import de.westnordost.streetcomplete.R
@@ -19,11 +17,10 @@ import de.westnordost.streetcomplete.screens.MainActivity
  *  and by the download service. */
 fun createSyncNotification(context: Context): Notification {
     val intent = Intent(context, MainActivity::class.java)
-    val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE)
-    } else {
-        PendingIntent.getActivity(context, 0, intent, 0)
-    }
+    intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+    // Intent has to be mutable, otherwise the intent flags defined above are not applied
+    val pendingIntent = PendingIntentCompat.getActivity(context, 0, intent, 0, true)
+
     val manager = NotificationManagerCompat.from(context)
     if (manager.getNotificationChannelCompat(NOTIFICATIONS_CHANNEL_SYNC) == null) {
         manager.createNotificationChannel(
