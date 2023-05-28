@@ -45,7 +45,7 @@ class DownloadedAreaManager(
 
     private fun update() {
         viewLifecycleScope.launch {
-            if (ctrl.cameraPosition.zoom < 7f) {
+            if (ctrl.cameraPosition.zoom <= 8) {
                 hasUpdated = false
             } else {
                 mapComponent.set(downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER))
