@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -66,14 +67,10 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
     private fun intent(position: LatLon): PendingIntent {
         val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         intent.action = Intent.ACTION_VIEW
         intent.data = buildGeoUri(position.latitude, position.longitude)
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
-        } else {
-            PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
+        return PendingIntentCompat.getActivity(applicationContext, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT, true)
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -95,12 +92,8 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             )
         try {
             val int = Intent(this, MainActivity::class.java)
-            int.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            val pi = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                PendingIntent.getActivity(this, 0, int, PendingIntent.FLAG_MUTABLE)
-            } else {
-                PendingIntent.getActivity(this, 0, int, 0)
-            }
+            int.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            val pi = PendingIntentCompat.getActivity(applicationContext, 0, int, 0, true)
             val notification = NotificationCompat.Builder(this, MONITOR_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_notification)
                 .setContentTitle(getString(R.string.app_name))
