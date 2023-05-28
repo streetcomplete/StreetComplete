@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
@@ -28,6 +29,7 @@ class AddIsPharmacyDispensing : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_pharmacy
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
+    override val enabledInCountries = AllCountriesExcept('AT', 'DE', 'PL')
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_pharmacy_dispensing_title
 
