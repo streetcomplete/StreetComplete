@@ -395,6 +395,7 @@ quest/
     pedestrian.svg
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   2020 Kai Michael Poppe and Tobias Zwick
+    pharmacy.svg                     2023 Matija Nalis, modified from CC-BY Howieart https://www.svgrepo.com/svg/475523/pharmacy
     phone.svg
     picnic_table_cover.svg           Flo Edelmann (CC0)
     pitch_lantern.svg
