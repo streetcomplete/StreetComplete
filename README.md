@@ -63,14 +63,15 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
   * Service building operator
   * Artwork type
   * Railway platform number
-  * Tree genus / species quest
+  * Genus / species of trees
     * Allows providing a file containing translated tree names instead of the default english ones
+  * Colour of building roofs
+  * Whether pharmacy is dispensing prescription drugs
+  * Destination of some road types after intersections
   * Quests based on external sources
     * Osmose quest showing Osmose issues as quests, with filter options
     * Custom quest from CSV file, allows creating nodes (see in-app description)
   * Show POI quests with the sole purpose of indicating existence of elements of chosen type (may show labels)
-  * Colour of building roofs
-  * Destination of some road types after intersections
   * Option to show only quests added in SCEE in quest selection menu
   * Some "other answers" result in a modified changeset comment (because in SCEE they may contain more unexpected changes)
 * Customizable overlays: Choose which elements are highlighted, and which tag is used to determine the color

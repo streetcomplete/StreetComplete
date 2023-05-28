@@ -29,7 +29,7 @@ class AddIsPharmacyDispensing : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_pharmacy
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
-    override val enabledInCountries = AllCountriesExcept('AT', 'DE', 'PL')
+    override val enabledInCountries = AllCountriesExcept("AT", "DE", "FR", "PL")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_pharmacy_dispensing_title
 
