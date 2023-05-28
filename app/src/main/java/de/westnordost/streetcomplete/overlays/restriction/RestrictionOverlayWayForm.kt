@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.databinding.FragmentOverlayRestrictionBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayRestrictionWayBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -50,15 +50,16 @@ import org.koin.android.ext.android.inject
 //  which icon to use for unknown restriction values? currently it's the note quest icon
 //  any safety measures against users doing stupid things?
 //   for now: no. if (expert!) users add insane relations, they would do the same in id/josm
-class RestrictionOverlayForm : AbstractOverlayForm() {
+class RestrictionOverlayWayForm : AbstractOverlayForm() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val mapFragment by lazy {
         (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
     }
-    override val contentLayoutResId = R.layout.fragment_overlay_restriction
-    private val binding by contentViewBinding(FragmentOverlayRestrictionBinding::bind)
-    private val restrictions by lazy { mapDataSource.getRelationsForWay(element!!.id).filter { it.tags["type"] == "restriction" } }
+    override val contentLayoutResId = R.layout.fragment_overlay_restriction_way
+    private val binding by contentViewBinding(FragmentOverlayRestrictionWayBinding::bind)
+
+    private val originalRestrictions by lazy { mapDataSource.getRelationsForWay(element!!.id).filter { it.tags["type"] == "restriction" } }
     private val newTags = hashMapOf<String, String>()
     private var selectedRelation: Relation? = null
     private var relation: Relation? = null
@@ -113,7 +114,7 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch { restrictions } // load restrictions in background, so ui thread needs to wait less
+        lifecycleScope.launch { originalRestrictions } // load restrictions in background, so ui thread needs to wait less
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -159,16 +160,16 @@ class RestrictionOverlayForm : AbstractOverlayForm() {
     }
 
     private fun getInitialRestrictionRelation(): Relation? {
-        if (restrictions.isEmpty()) return null
+        if (originalRestrictions.isEmpty()) return null
         // prefer supported and complete relations
-        return restrictions.firstOrNull { it.isSupportedRestrictionRelation() && it.isRelationComplete() }
-            ?: restrictions.first()
+        return originalRestrictions.firstOrNull { it.isSupportedRestrictionRelation() && it.isRelationComplete() }
+            ?: originalRestrictions.first()
     }
 
     private fun setRestrictionRelation(rel: Relation) {
         val isComplete = rel.isRelationComplete()
-        if (restrictions.size > 1)
-            showOtherRestrictions(restrictions.filterNot { it == rel })
+        if (originalRestrictions.size > 1)
+            showOtherRestrictions(originalRestrictions.filterNot { it == rel })
         if (isComplete) {
             if (rel.isSupportedRestrictionRelation()) {
                 binding.infoText.isGone = true

@@ -219,7 +219,7 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
                 }
                 if (currentLane == lane) return@setOnClickListener
 
-                b.lane.colorFilter =  PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
+                b.lane.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
                 val previousView: View? = binding.lanesContainer.findViewWithTag(currentLane)
                 previousView?.findViewById<ImageView>(R.id.lane)?.colorFilter = null
 

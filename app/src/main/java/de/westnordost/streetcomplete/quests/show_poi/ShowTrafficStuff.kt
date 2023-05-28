@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.getLabelSources
 
 class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
          barrier and barrier !~ wall|fence|retaining_wall|hedge
          or traffic_calming
          or traffic_sign
@@ -22,7 +22,6 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
          or public_transport
          or highway ~ crossing|stop|give_way|elevator
          or amenity ~ taxi|parking|parking_entrance|motorcycle_parking
-         or type = restriction
          """
 
     override val changesetComment = "Adjust traffic related elements"

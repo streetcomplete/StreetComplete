@@ -1,6 +1,7 @@
 next: |
   <ul>
   <li>Add pharmacy dispensing quests, thanks @mnalis</li>
+  <li>Allow adding stop and give way signs in restriction overlay</li>
   </ul>
 
 v53.2: |

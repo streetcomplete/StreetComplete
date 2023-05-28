@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
@@ -32,23 +34,26 @@ class RestrictionOverlay : Overlay {
                 list.add(restriction)
             }
         }
+
         // don't highlight via nodes... or do they matter?
         //  actually the do matter in some cases, e.g. no-u-turn with from and to being the same way
         //  ideally the via nodes would have the correct icon, and then of course need rotation too
         return mapData.filter("ways with highway ~ ${ALL_ROADS.joinToString("|")}")
-            .mapNotNull { way -> getStyle(way as Way, restrictionsByWayMemberId)?.let { way to it } }
+            .mapNotNull { way -> getWayStyle(way as Way, restrictionsByWayMemberId)?.let { way to it } } +
+            mapData.nodes.mapNotNull { node -> getNodeStyle(node)?.let { node to it } }
     }
 
-    override fun createForm(element: Element?): AbstractOverlayForm = RestrictionOverlayForm()
+    override fun createForm(element: Element?): AbstractOverlayForm =
+        if (element is Way) RestrictionOverlayWayForm()
+        else RestrictionOverlayNodeForm() // node or null when inserting (though not yet enabled)
 
-    override val changesetComment: String = "Specify turn restrictions"
+    override val changesetComment: String = "Specify traffic restrictions"
     override val icon: Int = R.drawable.ic_overlay_restriction
-    override val title: Int = R.string.restriction_overlay_title
+    override val title: Int = R.string.restriction_overlay_title2
     override val wikiLink: String = "Relation:restriction"
+    override val isCreateNodeEnabled = true
 
-    // may return the same way multiple times if it has more than one restriction
-    // though maybe only once with some sort of mixed color would be better?
-    private fun getStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
+    private fun getWayStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
         // don't allow selecting areas
         if (way.isArea()) return null
         // no highlight if road has no restrictions
@@ -64,6 +69,17 @@ class RestrictionOverlay : Overlay {
         } else
             relations.first().getColor(way.id)
         return PolylineStyle(StrokeStyle(color))
+    }
+
+    // todo: maybe color? or different icons?
+    private fun getNodeStyle(node: Node): Style? {
+        val highway = node.tags["highway"] ?: return null
+        val icon = when (highway) {
+            "stop" -> "ic_preset_temaki_stop"
+            "give_way" -> "ic_preset_temaki_yield"
+            else -> return null
+        }
+        return PointStyle(icon)
     }
 }
 

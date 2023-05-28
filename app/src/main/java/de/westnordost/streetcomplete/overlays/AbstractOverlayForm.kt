@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.PointF
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -319,6 +320,10 @@ abstract class AbstractOverlayForm :
 
     protected fun setMarkerIcon(iconResId: Int) {
         binding.createMarkerIconView.setImageResource(iconResId)
+    }
+
+    protected fun setMarkerImage(icon: Drawable) {
+        binding.createMarkerIconView.setImageDrawable(icon)
     }
 
     protected fun setMarkerVisibility(isVisible: Boolean) {
