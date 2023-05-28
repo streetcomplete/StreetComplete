@@ -429,7 +429,6 @@ fun getQuestTypeList(
     81 to AddOpeningHours(featureDictionaryFuture),
     82 to AddSeating(), // easily visible from outside, but only seasonally
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
-    999 to AddIsPharmacyDispensing(), // usually signed on the doors, but only exists is some countries
 
     84 to AddAtmOperator(),
     85 to AddAtmCashIn(),
@@ -568,6 +567,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 22 to AddArtworkType(),
     EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
     EE_QUEST_OFFSET + 9 to AddTreeGenus(),
+    EE_QUEST_OFFSET + 26 to AddIsPharmacyDispensing(),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests

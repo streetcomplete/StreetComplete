@@ -19,7 +19,7 @@ class AddIsPharmacyDispensing : OsmFilterQuestType<Boolean>() {
         nodes,ways with
         (
             amenity = pharmacy
-            or healthcare = pharmacy 
+            or healthcare = pharmacy
         )
         and (!dispensing or dispensing older today -8 years)
     """
