@@ -114,7 +114,7 @@ private fun tile2lon(x: Int, zoom: Int): Double =
     360.0 * x / numTiles(zoom).toDouble() - 180.0
 
 private fun tile2lat(y: Int, zoom: Int): Double =
-    180.0 * atan(sinh(PI - 2.0 * PI * y / numTiles(zoom))) / PI
+    180.0 * atan(sinh(PI * (1.0 - 2.0 * y / numTiles(zoom)))) / PI
 
 private fun lon2tile(lon: Double, zoom: Int): Int =
     (numTiles(zoom) * (lon + 180.0) / 360.0).toInt()
