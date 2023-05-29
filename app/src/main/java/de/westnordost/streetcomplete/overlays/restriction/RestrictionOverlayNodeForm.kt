@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.restriction
 
 import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
@@ -25,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.FragmentOverlayRestrictionNodeBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
@@ -52,12 +52,11 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
     override val contentLayoutResId = R.layout.fragment_overlay_restriction_node
     private val binding by contentViewBinding(FragmentOverlayRestrictionNodeBinding::bind)
     private val items = listOf(
-        Item2(Type.GIVE_WAY, ResImage(R.drawable.ic_preset_temaki_yield), ResText(R.string.restriction_overlay_sign_give_way)),
-        Item2(Type.STOP, ResImage(R.drawable.ic_preset_temaki_stop), ResText(R.string.restriction_overlay_sign_stop)),
-        Item2(Type.ALL_WAY_STOP, ResImage(R.drawable.ic_preset_temaki_stop), ResText(R.string.restriction_overlay_sign_stop_all_way)),
-        Item2(Type.MINOR_STOP, ResImage(R.drawable.ic_preset_temaki_stop), ResText(R.string.restriction_overlay_sign_stop_minor)),
+        Item2(Type.GIVE_WAY, ResImage(R.drawable.ic_restriction_give_way), ResText(R.string.restriction_overlay_sign_give_way)),
+        Item2(Type.STOP, ResImage(R.drawable.ic_restriction_stop), ResText(R.string.restriction_overlay_sign_stop)),
+        Item2(Type.ALL_WAY_STOP, ResImage(R.drawable.ic_restriction_stop), ResText(R.string.restriction_overlay_sign_stop_all_way)),
     )
-    private val selectableItems = items.filterNot { it.value == Type.MINOR_STOP || it.value == Type.ALL_WAY_STOP }
+    private val selectableItems = items.filterNot { it.value == Type.ALL_WAY_STOP }
 
     private var positionOnWay: PositionOnWay? = null
         set(value) {
@@ -92,11 +91,8 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             field = value
             checkCurrentCursorPosition()
             if (element == null) {
-                val resId = if (type == Type.GIVE_WAY) R.drawable.ic_preset_temaki_yield
-                    else R.drawable.ic_preset_temaki_stop
-                val drawable = ContextCompat.getDrawable(requireContext(), resId)!!
-                drawable.colorFilter = PorterDuffColorFilter(Color.parseColor("#c1121c"), PorterDuff.Mode.MULTIPLY)
-                setMarkerImage(drawable)
+                if (type == Type.GIVE_WAY) setMarkerIcon(R.drawable.ic_restriction_give_way)
+                    else setMarkerIcon(R.drawable.ic_restriction_stop)
             }
             checkIsFormComplete()
             updateForm()
@@ -127,7 +123,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
                 initCreatingPointOnWay()
                 checkCurrentCursorPosition()
             }
-            setMarkerIcon(R.drawable.ic_preset_temaki_stop)
+            setMarkerIcon(R.drawable.ic_restriction_stop)
             setMarkerVisibility(false)
         } else {
             val td = getTypeAndDirection(element!!.tags)
@@ -170,7 +166,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             binding.selectedCellView.isGone = true
         }
         // and direction
-        if (type == Type.ALL_WAY_STOP || type == Type.MINOR_STOP) {
+        if (type == Type.ALL_WAY_STOP) {
             binding.directionText.isGone = true
             binding.directionContainer.isGone = true
         } else if (type != null) {
@@ -187,7 +183,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             pow is PositionOnWaySegment -> mapDataWithEditsSource.getWay(pow.wayId)!!
             else -> null
         }
-        if (way?.tags?.let { isOneway(it) || it["oneway:bicycle"] == "yes" } != false) {
+        if (way?.tags?.let { (isOneway(it) || it["highway"] !in ALL_ROADS) && !isNotOnewayForCyclists(it, countryInfo.isLeftHandTraffic) } != false) {
             binding.directionText.isGone = true
             binding.directionContainer.isGone = true
             return
@@ -226,23 +222,6 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
                 checkIsFormComplete()
             }
         })
-        if (type == Type.STOP) {
-            binding.directionContainer.addView(ImageView(requireContext()).apply {
-                // both
-                val drawable = RotatedCircleDrawable(context.getDrawable(R.drawable.ic_oneway_no)!!)
-                drawable.rotation = mapRotation + wayRotation
-                setImageDrawable(drawable)
-                colorFilter = if (direction == Direction.BOTH)
-                        PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
-                    else null
-                setOnClickListener {
-                    direction = Direction.BOTH
-                    binding.directionContainer.children.forEach { (it as ImageView).colorFilter = null }
-                    colorFilter = PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
-                    checkIsFormComplete()
-                }
-            })
-        }
     }
 
     private fun checkCurrentCursorPosition() {
@@ -267,7 +246,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
                     type = Type.ALL_WAY_STOP // no normal stop if there is more than one way
                 pos
             }
-            Type.MINOR_STOP, Type.ALL_WAY_STOP -> {
+            Type.ALL_WAY_STOP -> {
                 if (pos !is VertexOfWay || roads.count { it.first.nodeIds.contains(pos.nodeId) } == 1)
                     type = Type.STOP // normal stop if there is only one way
                 pos
@@ -345,7 +324,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
 }
 
 private fun applyTo(tagChanges: StringMapChangesBuilder, type: Type, direction: Direction?) {
-    val newDirection = direction?.osmValue
+    val newDirection = direction?.takeIf { type != Type.ALL_WAY_STOP }?.osmValue
     if (tagChanges["direction"] != newDirection) {
         if (newDirection == null)
             tagChanges.remove("direction")
@@ -355,19 +334,15 @@ private fun applyTo(tagChanges: StringMapChangesBuilder, type: Type, direction: 
         else "stop"
     if (tagChanges["highway"] != newHighway)
         tagChanges["highway"] = newHighway
-    when (type) {
-        Type.ALL_WAY_STOP -> tagChanges["stop"] = "all"
-        Type.MINOR_STOP -> tagChanges["stop"] = "minor"
-        else -> tagChanges.remove("stop")
-    }
-
+    if (type == Type.ALL_WAY_STOP) tagChanges["stop"] = "all" // according to wiki, also minor is possible, but it seems that it's not used on intersection nodes
+    else if (type == Type.GIVE_WAY) tagChanges.remove("stop")
 }
 
 private fun getTypeAndDirection(tags: Map<String, String>): Pair<Type?, Direction?> {
     val type = when {
         tags["highway"] == "give_way" -> Type.GIVE_WAY
-        tags["highway"] == "stop" && tags["stop"] == "all" -> Type.ALL_WAY_STOP
-        tags["highway"] == "stop" && tags["stop"] == "minor" -> Type.MINOR_STOP
+        // direction = both seems to be used like stop = all
+        tags["highway"] == "stop" && (tags["stop"] == "all" || tags["direction"] == "both") -> Type.ALL_WAY_STOP
         tags["highway"] == "stop" -> Type.STOP
         else -> null
     }
@@ -378,6 +353,5 @@ private fun getTypeAndDirection(tags: Map<String, String>): Pair<Type?, Directio
     return type to direction
 }
 
-private enum class Type { GIVE_WAY, STOP, MINOR_STOP, ALL_WAY_STOP }
-private enum class Direction(val osmValue: String) { FORWARD("forward"), BACKWARD("backward"), BOTH("both") }
-
+private enum class Type { GIVE_WAY, STOP, ALL_WAY_STOP }
+private enum class Direction(val osmValue: String) { FORWARD("forward"), BACKWARD("backward") }

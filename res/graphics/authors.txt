@@ -655,6 +655,8 @@ note/
 
 restriction/
     France_road_sign_B2*.svg            Roulex 45 (CC-BY-SA 4.0) from https://wiki.openstreetmap.org/wiki/Relation:restriction#Road_signs
+    MUTCD_R1-1.svg                      Fredddie (public domain) from https://wiki.openstreetmap.org/wiki/File:MUTCD_R1-1.svg
+    Vienna_Convention_road_sign_B1-V1.svg Fry1989 (public domain) from https://commons.wikimedia.org/wiki/File:Vienna_Convention_road_sign_B1-V1.svg
 
 lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 

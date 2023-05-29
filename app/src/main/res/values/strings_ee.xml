@@ -402,8 +402,7 @@
     <string name="custom_overlay_add_button">New custom</string>
 
     <!-- restriction overlay -->
-    <!-- not used any more <string name="restriction_overlay_title">Turn restrictions</string> -->
-    <string name="restriction_overlay_title2">Traffic restrictions</string>
+    <string name="restriction_overlay_title">Traffic restrictions</string>
     <string name="restriction_overlay_exceptions">Exceptions: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
     <string name="restriction_overlay_signed_switch">There is a sign or road marking</string>
@@ -411,14 +410,11 @@
     <string name="restriction_overlay_relation_incomplete">Restriction relation is incomplete, download of surrounding area required</string>
     <string name="restriction_overlay_relation_unsupported">Unsupported relation type:\n%s</string>
     <string name="restriction_overlay_select_way">Click the next way on the map. It needs an end node in common with the current way. Split if necessary.</string>
-    <string name="restriction_overlay_other_restrictions">Other restrictions on this way:</string>
+    <string name="restriction_overlay_other_restrictions">Other turn restrictions on this way:</string>
     <string name="restriction_overlay_direction_text">Applies to travel direction:</string>
     <string name="restriction_overlay_sign_give_way">Give way</string>
     <string name="restriction_overlay_sign_stop">Stop</string>
-    <!-- stop=all -->
     <string name="restriction_overlay_sign_stop_all_way">All-way stop</string>
-    <!-- stop=minor -->
-    <string name="restriction_overlay_sign_stop_minor">Stop for minor roads</string>
 
 
     <!-- other -->

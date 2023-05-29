@@ -47,7 +47,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
@@ -320,10 +319,6 @@ abstract class AbstractOverlayForm :
 
     protected fun setMarkerIcon(iconResId: Int) {
         binding.createMarkerIconView.setImageResource(iconResId)
-    }
-
-    protected fun setMarkerImage(icon: Drawable) {
-        binding.createMarkerIconView.setImageDrawable(icon)
     }
 
     protected fun setMarkerVisibility(isVisible: Boolean) {

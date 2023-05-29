@@ -49,7 +49,7 @@ class RestrictionOverlay : Overlay {
 
     override val changesetComment: String = "Specify traffic restrictions"
     override val icon: Int = R.drawable.ic_overlay_restriction
-    override val title: Int = R.string.restriction_overlay_title2
+    override val title: Int = R.string.restriction_overlay_title
     override val wikiLink: String = "Relation:restriction"
     override val isCreateNodeEnabled = true
 
@@ -71,12 +71,11 @@ class RestrictionOverlay : Overlay {
         return PolylineStyle(StrokeStyle(color))
     }
 
-    // todo: maybe color? or different icons?
     private fun getNodeStyle(node: Node): Style? {
         val highway = node.tags["highway"] ?: return null
         val icon = when (highway) {
-            "stop" -> "ic_preset_temaki_stop"
-            "give_way" -> "ic_preset_temaki_yield"
+            "stop" -> "ic_restriction_stop"
+            "give_way" -> "ic_restriction_give_way"
             else -> return null
         }
         return PointStyle(icon)
