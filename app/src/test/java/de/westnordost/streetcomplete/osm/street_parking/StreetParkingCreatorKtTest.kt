@@ -39,6 +39,35 @@ class StreetParkingCreatorKtTest {
         )
     }
 
+    @Test fun `remove extra tags being present when applying no parking`() {
+        verifyAnswer(
+            mapOf("parking:both:fee" to "no"),
+            LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
+            arrayOf(
+                StringMapEntryAdd("parking:both", "no"),
+                StringMapEntryDelete("parking:both:fee", "no"),
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:both:fee" to "no"),
+            LeftAndRightStreetParking(NoStreetParking, null),
+            arrayOf(
+                StringMapEntryAdd("parking:left", "no"),
+                StringMapEntryAdd("parking:right:fee", "no"),
+                StringMapEntryDelete("parking:both:fee", "no"),
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:both:fee" to "no"),
+            LeftAndRightStreetParking(null, NoStreetParking),
+            arrayOf(
+                StringMapEntryAdd("parking:right", "no"),
+                StringMapEntryAdd("parking:left:fee", "no"),
+                StringMapEntryDelete("parking:both:fee", "no"),
+            )
+        )
+    }
+
     @Test fun `apply parking`() {
         val orientations = listOf(
             "parallel" to PARALLEL,

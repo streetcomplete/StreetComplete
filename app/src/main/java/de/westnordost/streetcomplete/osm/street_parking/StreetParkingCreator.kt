@@ -22,6 +22,7 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     tags.expandSides("parking", "orientation", includeBareTag = false)
     tags.expandSides("parking", "markings", includeBareTag = false)
     tags.expandSides("parking", "staggered", includeBareTag = false)
+    tags.expandSides("parking", "fee", includeBareTag = false)
 
     // parking:<left/right>
     left?.applyTo(tags, "left")
@@ -31,6 +32,7 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     tags.mergeSides("parking", "orientation")
     tags.mergeSides("parking", "markings")
     tags.mergeSides("parking", "staggered")
+    tags.mergeSides("parking", "fee")
 
     if (!tags.hasChanges || tags.hasCheckDateForKey("parking")) {
         tags.updateCheckDateForKey("parking")
@@ -68,6 +70,7 @@ private fun StreetParking.applyTo(tags: Tags, side: String) {
         tags.remove("parking:$side:orientation")
         tags.remove("parking:$side:markings")
         tags.remove("parking:$side:staggered")
+        tags.remove("parking:$side:fee")
     }
 }
 
