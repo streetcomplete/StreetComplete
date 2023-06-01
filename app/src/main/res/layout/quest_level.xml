@@ -18,7 +18,7 @@
             android:minWidth="96dp"
             android:gravity="center"
             android:inputType="number|numberSigned|numberDecimal"
-            android:digits="0123456789.,"
+            android:digits="0123456789.,-"
             android:textSize="@dimen/x_large_input"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
