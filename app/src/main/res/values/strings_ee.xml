@@ -317,6 +317,10 @@
     <string name="quest_artwork_fountain">Fountain</string>
     <string name="quest_artwork_land_art">Land art</string>
 
+    <!-- building colour -->
+    <string name="quest_buildingColour_title">"What overall color does this building have?"</string>
+    <string name="quest_buildingPartColour_title">"What overall color does this building part have?"</string>
+
     <!-- roof colour -->
     <string name="quest_roofColour_title">"What overall color does this building’s roof have?"</string>
     <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colors are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>

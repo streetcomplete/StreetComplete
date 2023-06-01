@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvaila
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
+import de.westnordost.streetcomplete.quests.building_colour.AddBuildingColour
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
@@ -555,7 +556,8 @@ fun getQuestTypeList(
 
     // quests added in SCEE
     EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
-    EE_QUEST_OFFSET + 24 to AddRoofColour(),
+    EE_QUEST_OFFSET + 24 to AddBuildingColour(),
+    EE_QUEST_OFFSET + 25 to AddRoofColour(),
     EE_QUEST_OFFSET + 1 to AddContactPhone(),
     EE_QUEST_OFFSET + 2 to AddContactWebsite(),
     EE_QUEST_OFFSET + 4 to AddCuisine(),
@@ -563,11 +565,11 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
     EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
     EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
-    EE_QUEST_OFFSET + 25 to AddDestination(),
+    EE_QUEST_OFFSET + 26 to AddDestination(),
     EE_QUEST_OFFSET + 22 to AddArtworkType(),
     EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
     EE_QUEST_OFFSET + 9 to AddTreeGenus(),
-    EE_QUEST_OFFSET + 26 to AddIsPharmacyDispensing(),
+    EE_QUEST_OFFSET + 27 to AddIsPharmacyDispensing(),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests
