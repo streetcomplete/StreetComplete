@@ -1,3 +1,10 @@
+v53.1: |
+  <ul>
+  <li>Fix a crash (#5040, #5026), thanks @Helium314</li>
+  <li>Don't start a new instance when tapping on the "Syncing..." notification (#4975, #5044), by @tapetis</li>
+  <li>Other small fixes and enhancements (#5008, #5012, #5013, #5030, #5028, #5012, ...), thanks @arrival-spring, @HolgerJeromin</li>
+  </ul>
+
 v53.0: |
   <h3>Quest & Overlay Enhancements</h3>
   <ul>
