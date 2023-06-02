@@ -38,9 +38,10 @@ abstract class FilteredDisplayItem<T>(override val value: T, val context: Contex
             return DrawableImage(drawable)
         }
 
-    override fun hashCode(): Int = value.androidValue.hashCode()
+    override fun hashCode(): Int = (value.androidValue ?: value.osmValue).hashCode()
     override fun equals(other: Any?): Boolean =
-        (other is FilteredDisplayItem<*>) && (other.value.androidValue == value.androidValue)
+        (other is FilteredDisplayItem<*>) && ((other.value.androidValue
+            ?: value.osmValue) == (value.androidValue ?: value.osmValue))
 }
 
 private fun isDarkMode(context: Context): Boolean {
