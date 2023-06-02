@@ -410,7 +410,7 @@
     <string name="restriction_overlay_relation_incomplete">Restriction relation is incomplete, download of surrounding area required</string>
     <string name="restriction_overlay_relation_unsupported">Unsupported relation type:\n%s</string>
     <string name="restriction_overlay_select_way">Click the next way on the map. It needs an end node in common with the current way. Split if necessary.</string>
-    <string name="restriction_overlay_other_restrictions">Other turn restrictions on this way:</string>
+    <string name="restriction_overlay_other_restrictions">Other restrictions on this way:</string>
     <string name="restriction_overlay_direction_text">Applies to travel direction:</string>
     <string name="restriction_overlay_sign_give_way">Give way</string>
     <string name="restriction_overlay_sign_stop">Stop</string>
@@ -425,8 +425,7 @@
 This is a modified version of StreetComplete. It is intended for experienced users with advanced knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
 This especially applies to the possibility of editing raw tags and deleting nodes, but also for modification of element selection for quests.
 Quests added in SCEE <i>may not be answerable</i> in all cases and are disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
-Out of the box SCEE is configured to behave very similar to StreetComplete.\n
-You have access to your StreetComplete user statistics, but any quests solved using SCEE <i>will not affect</i> statistics and star count.</string>
+Out of the box SCEE is configured to behave very similar to StreetComplete.</string>
     <string name="fork_about_title_repository">SCEE project home</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>

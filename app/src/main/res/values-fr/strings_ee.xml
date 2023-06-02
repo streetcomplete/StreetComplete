@@ -322,8 +322,7 @@
 \n Il s\'agit d\'une version modifiée de StreetComplete. Elle est destinée aux utilisateurs expérimentés ayant une connaissance avancée d\'OSM. Elle vous offre plus de liberté et de possibilité, mais aussi plus de <i>responsabilités</i>.
 \n Cela concerne en particulier la possibilité d\'éditer des balises brutes et de supprimer des nœuds, mais aussi de modifier les tags des éléments sélectionnés lors des quêtes. Les quêtes ajoutées dans SCEE <i>peuvent ne pas trouver de réponse</i> dans tous les cas et sont désactivées par défaut. Veuillez les masquer si vous ne pouvez pas y répondre et <i>ne pas spammer les notes</i>.
 \n
-\nÀ l\'installation, SCEE est configuré afin de se comporter très similairement à StreetComplete.
-\nVous avez accès à vos statistiques d\'utilisateur StreetComplete, mais les quêtes résolues à l\'aide de SCEE <i>ne sont pas prises en compte</i> dans les statistiques et le nombre d\'étoiles dans StreetComplete.</string>
+\nÀ l\'installation, SCEE est configuré afin de se comporter très similairement à StreetComplete.</string>
     <string name="pref_show_gpx_button_summary">Contrairement aux notes OSM, ajouter un fichier GPX ne masquera aucune quête à l\'endroit concerné</string>
     <string name="pref_dynamic_quest_creation_summary">Les quêtes sont créées lors du chargement de la zone visualisée. Un peu plus lent, mais permet d\'appliquer immédiatement les paramètres modifiés de la quête.</string>
     <string name="pref_quest_monitor_summary">Surveille la localisation lorsque l\'application est en arrière-plan, sauf si elle est mise en arrière-plan à l\'aide du bouton \"retour\"</string>
