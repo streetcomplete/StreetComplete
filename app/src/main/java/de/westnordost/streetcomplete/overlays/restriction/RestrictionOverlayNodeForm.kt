@@ -102,17 +102,17 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
         super.onViewCreated(view, savedInstanceState)
 
         binding.selectedCellView.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, R.layout.cell_icon_select_with_label_below, 2) { item ->
+            ImageListPickerDialog(requireContext(), selectableItems) { item ->
                 type = item.value
             }.show()
         }
         binding.selectTextView.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, R.layout.cell_icon_select_with_label_below, 2) { item ->
+            ImageListPickerDialog(requireContext(), selectableItems) { item ->
                 type = item.value
             }.show()
         }
         binding.dropDownArrowImageView.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, R.layout.cell_icon_select_with_label_below, 2) { item ->
+            ImageListPickerDialog(requireContext(), selectableItems) { item ->
                 type = item.value
             }.show()
         }

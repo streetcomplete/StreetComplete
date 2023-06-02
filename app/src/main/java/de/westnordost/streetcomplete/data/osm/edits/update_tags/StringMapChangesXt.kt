@@ -29,7 +29,6 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
     )
 }
 
-// todo: use in tag editor and i think some other places
 fun Map<String, String>.createChanges(originalTags: Map<String, String>): StringMapChangesBuilder {
     val builder = StringMapChangesBuilder(originalTags)
     for (key in originalTags.keys) {

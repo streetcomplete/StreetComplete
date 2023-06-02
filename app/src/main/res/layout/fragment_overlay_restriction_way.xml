@@ -9,57 +9,103 @@
     android:showDividers="middle|beginning|end"
     android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/restriction_type_spinner"
-        app:layout_constraintTop_toTopOf="parent"
-        android:dropDownWidth="80dp"
-        android:layout_width="130dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/turn_restriction_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add_restriction" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/turn_restriction_type_spinner"
+            app:layout_constraintTop_toTopOf="parent"
+            android:dropDownWidth="80dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/swap_from_to_roles"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_arrow_up_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/implicit_switch"
+            android:text="@string/restriction_overlay_signed_switch"
+            android:textAppearance="@style/TextAppearance.BigBody"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/turn_restriction_type_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/exceptions"
+            android:visibility="gone"
+            tools:text="exceptions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/implicit_switch"
+            android:textAppearance="@style/TextAppearance.BigBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/max_weight_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/turn_restriction_container"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/info_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/max_weight_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/swap_from_to_roles"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
-        android:visibility="gone"
-        android:src="@drawable/ic_arrow_up_down"
+        android:id="@+id/remove_restriction"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_text"
+        android:padding="14dp"
+        tools:visibility="visible"
+        android:visibility="invisible"
+        android:src="@drawable/ic_delete_24dp"
+        android:scaleX="2"
+        android:scaleY="2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/add_restriction"
-        app:layout_constraintRight_toLeftOf="@id/swap_from_to_roles"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/remove_restriction"
+        app:layout_constraintBottom_toBottomOf="@id/remove_restriction"
+        app:layout_constraintTop_toTopOf="@id/remove_restriction"
         android:padding="10dp"
         android:src="@drawable/ic_add_48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/implicit_switch"
-        android:text="@string/restriction_overlay_signed_switch"
-        android:textAppearance="@style/TextAppearance.BigBody"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/restriction_type_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <Button
-        android:id="@+id/exceptions"
+        android:id="@+id/conditional_button"
         android:visibility="gone"
-        tools:text="exceptions"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/implicit_switch"
-        android:textAppearance="@style/TextAppearance.BigBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/info_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exceptions"
+        android:text="@string/access_manager_button_add_conditional"
+        app:layout_constraintLeft_toRightOf="@id/add_restriction"
+        app:layout_constraintBottom_toBottomOf="@id/remove_restriction"
+        app:layout_constraintTop_toTopOf="@id/remove_restriction"
+        tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -68,8 +114,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remove_restriction"
         android:orientation="vertical"
+        tools:visibility="visible"
         android:visibility="gone" />
 
     <TextView

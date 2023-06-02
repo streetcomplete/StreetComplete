@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign
+import de.westnordost.streetcomplete.quests.max_weight.osmKey
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
@@ -56,8 +58,15 @@ class RestrictionOverlay : Overlay {
     private fun getWayStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
         // don't allow selecting areas
         if (way.isArea()) return null
-        // no highlight if road has no restrictions
-        val relations = restrictionsByWayMemberId[way.id] ?: return PolylineStyle(StrokeStyle(Color.INVISIBLE))
+        val relations = restrictionsByWayMemberId[way.id]
+        if (relations == null) {
+            // no turn restriction, but maybe weight
+            // todo: adjust colors... this is not so nice
+            val color = if (MaxWeightSign.values().any { it.osmKey in way.tags.keys })
+                    Color.GRAY
+                else Color.INVISIBLE
+            return PolylineStyle(StrokeStyle(color))
+        }
 
         // merge colors if we have 2 relations on one way
         val color = if (relations.size == 2) {
@@ -83,7 +92,7 @@ class RestrictionOverlay : Overlay {
 }
 
 private fun Relation.getColor(wayId: Long): String {
-    if (!isSupportedRestrictionRelation()) return Color.BLACK
+    if (!isSupportedTurnRestriction()) return Color.BLACK
     val role = members.firstOrNull { it.type == ElementType.WAY && it.ref == wayId }?.role ?: return Color.INVISIBLE
     return getColor(role, getRestrictionType()!!).replace("#", "#90") // make it transparent for at least some support of multiple relations on a single way
 }
@@ -99,9 +108,9 @@ private fun getColor(role: String, restriction: String): String = when {
 
 // support restrictions with 1 from way, 1 to way, 1 via node or 1+ via ways
 // and additionally, ways need to be connected (but that is more complicated, and not checked)
-fun Relation.isSupportedRestrictionRelation(): Boolean {
+fun Relation.isSupportedTurnRestriction(): Boolean {
     if (tags["type"] != "restriction") return false
-    if (getRestrictionType() !in restrictionTypes) return false
+    if (getRestrictionType() !in turnRestrictionTypes) return false
     if (members.count { it.type == ElementType.WAY && it.role == "from" } != 1) return false
     if (members.count { it.type == ElementType.WAY && it.role == "to" } != 1) return false
     val viaWayCount = members.count { it.type == ElementType.WAY && it.role == "via" }
@@ -113,3 +122,13 @@ fun Relation.isSupportedRestrictionRelation(): Boolean {
 
 fun Relation.getRestrictionType() = tags["restriction"] ?: tags["restriction:conditional"]?.substringBefore("@")?.trim()
     ?: tags["restriction:hgv"] ?: tags["restriction:bus"]
+
+val turnRestrictionTypes = linkedSetOf(
+    "no_right_turn",
+    "no_left_turn",
+    "no_u_turn",
+    "no_straight_on",
+    "only_right_turn",
+    "only_left_turn",
+    "only_straight_on",
+)
