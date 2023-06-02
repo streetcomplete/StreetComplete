@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
-import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddRoofColour : OsmFilterQuestType<RoofColour>() {
@@ -28,7 +27,12 @@ class AddRoofColour : OsmFilterQuestType<RoofColour>() {
 
     override fun createForm() = AddRoofColourForm()
 
-    override fun applyAnswerTo(answer: RoofColour, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(
+        answer: RoofColour,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long,
+    ) {
         tags["roof:colour"] = answer.osmValue
     }
 }

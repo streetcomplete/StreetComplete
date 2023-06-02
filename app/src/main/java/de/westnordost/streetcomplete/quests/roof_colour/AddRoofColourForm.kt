@@ -13,11 +13,11 @@ class AddRoofColourForm : AImageListQuestForm<RoofColour, RoofColour>() {
 
     override val items: List<DisplayItem<RoofColour>>
         get() {
-        val context = requireContext()
-        val shape = element.tags["roof:shape"];
-        val roofShape = RoofShape.values().firstOrNull{ it.osmValue == shape }
-        return RoofColour.values().map { it.asItem(context, roofShape) }
-    }
+            val context = requireContext()
+            val shape = element.tags["roof:shape"]
+            val roofShape = RoofShape.values().firstOrNull { it.osmValue == shape }
+            return RoofColour.values().map { it.asItem(context, roofShape) }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
