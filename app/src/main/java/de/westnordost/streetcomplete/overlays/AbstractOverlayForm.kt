@@ -168,7 +168,8 @@ abstract class AbstractOverlayForm :
         val args = requireArguments()
         overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!!
         element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
-        _geometry = args.getString(ARG_GEOMETRY)?.let { Json.decodeFromString(it) }
+        _geometry = (savedInstanceState?.getString(ARG_GEOMETRY) ?: args.getString(ARG_GEOMETRY))
+            ?.let { Json.decodeFromString(it) }
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -236,6 +237,11 @@ abstract class AbstractOverlayForm :
 
     override fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(ARG_GEOMETRY, Json.encodeToString(geometry))
     }
 
     override fun onDestroyView() {
