@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.PositionOnWaySegment
 import de.westnordost.streetcomplete.util.math.VertexOfWay
@@ -179,11 +180,16 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
         val pow = positionOnWay
         val way = when {
             element != null -> mapDataWithEditsSource.getWaysForNode(element.id).firstOrNull { waysFilter.matches(it) }
-            pow is VertexOfWay -> mapDataWithEditsSource.getWay(pow.wayIds.first())!!
-            pow is PositionOnWaySegment -> mapDataWithEditsSource.getWay(pow.wayId)!!
+            pow is VertexOfWay -> mapDataWithEditsSource.getWay(pow.wayIds.first())
+            pow is PositionOnWaySegment -> mapDataWithEditsSource.getWay(pow.wayId)
             else -> null
         }
-        if (way?.tags?.let { (isOneway(it) || it["highway"] !in ALL_ROADS) && !isNotOnewayForCyclists(it, countryInfo.isLeftHandTraffic) } != false) {
+        if (way?.tags?.let {
+                if (it["highway"] in ALL_ROADS)
+                    isOneway(it) && !isNotOnewayForCyclists(it, countryInfo.isLeftHandTraffic)
+                else // cycleways, though doesn't catch oneway = yes and oneway:bicycle = no
+                    isOneway(it) || it["oneway:bicycle"] in listOf("yes", "-1")
+        } != false) {
             binding.directionText.isGone = true
             binding.directionContainer.isGone = true
             return
@@ -235,19 +241,27 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             if (node.tags.containsKey("highway") || node.tags.containsKey("crossing"))
                 return
         }
+        // get number of roads on this vertex
+        // but count only 1 road if count is 2 and it's an end node of both
+        val wayCountOnVertex = if (pos !is VertexOfWay) null
+        else {
+            val r = roads.filter { it.first.nodeIds.contains(pos.nodeId) }
+            if (r.size == 2 && r.all { it.first.nodeIds.firstAndLast().contains(pos.nodeId) }) 1
+            else r.size
+        }
         positionOnWay = when (type) {
             Type.GIVE_WAY -> {
-                if (pos is VertexOfWay && roads.count { it.first.nodeIds.contains(pos.nodeId) } > 1)
+                if (wayCountOnVertex != null && wayCountOnVertex > 1)
                     null // don't allow on more than a single way
                 else pos
             }
             Type.STOP -> {
-                if (pos is VertexOfWay && roads.count { it.first.nodeIds.contains(pos.nodeId) } > 1)
+                if (wayCountOnVertex != null && wayCountOnVertex > 1)
                     type = Type.ALL_WAY_STOP // no normal stop if there is more than one way
                 pos
             }
             Type.ALL_WAY_STOP -> {
-                if (pos !is VertexOfWay || roads.count { it.first.nodeIds.contains(pos.nodeId) } == 1)
+                if (wayCountOnVertex == null || wayCountOnVertex == 1)
                     type = Type.STOP // normal stop if there is only one way
                 pos
             }
