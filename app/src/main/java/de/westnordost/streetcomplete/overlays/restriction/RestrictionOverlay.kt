@@ -20,8 +20,11 @@ import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign
 import de.westnordost.streetcomplete.quests.max_weight.osmKey
+import de.westnordost.streetcomplete.util.ktx.containsAnyKey
+import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.toARGBString
+import de.westnordost.streetcomplete.util.ktx.toRGBString
 
 class RestrictionOverlay : Overlay {
     // show restriction icons? will need to add property for rotation / angle
@@ -47,7 +50,7 @@ class RestrictionOverlay : Overlay {
 
     override fun createForm(element: Element?): AbstractOverlayForm =
         if (element is Way) RestrictionOverlayWayForm()
-        else RestrictionOverlayNodeForm() // node or null when inserting (though not yet enabled)
+        else RestrictionOverlayNodeForm() // node or null when inserting
 
     override val changesetComment: String = "Specify traffic restrictions"
     override val icon: Int = R.drawable.ic_overlay_restriction
@@ -55,15 +58,18 @@ class RestrictionOverlay : Overlay {
     override val wikiLink: String = "Relation:restriction"
     override val isCreateNodeEnabled = true
 
+    // todo: better coloring if there are multiple restrictions on the same way
+    //  merge any 2 restrictions?
+    //  always take a "first" one?
+    //  sth else, like dashed way?
     private fun getWayStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
         // don't allow selecting areas
         if (way.isArea()) return null
         val relations = restrictionsByWayMemberId[way.id]
         if (relations == null) {
             // no turn restriction, but maybe weight
-            // todo: adjust colors... this is not so nice
-            val color = if (MaxWeightSign.values().any { it.osmKey in way.tags.keys })
-                    Color.GRAY
+            val color = if (way.tags.containsAnyKey(*maxWeightKeys))
+                    Color.TEAL
                 else Color.INVISIBLE
             return PolylineStyle(StrokeStyle(color))
         }
@@ -98,10 +104,10 @@ private fun Relation.getColor(wayId: Long): String {
 }
 
 private fun getColor(role: String, restriction: String): String = when {
-    restriction.startsWith("no_") && role == "from" -> Color.GOLD
-    restriction.startsWith("no_") && role == "to" -> Color.ORANGE
-    restriction.startsWith("only_") && role == "from" -> Color.AQUAMARINE
-    restriction.startsWith("only_") && role == "to" -> Color.BLUE
+    restriction.startsWith("no_") && role == "from" -> Color.ORANGE
+    restriction.startsWith("no_") && role == "to" -> darkerOrange
+    restriction.startsWith("only_") && role == "from" -> Color.GOLD
+    restriction.startsWith("only_") && role == "to" -> darkerGold
     role == "via" -> Color.LIME
     else -> Color.BLACK
 }
@@ -132,3 +138,9 @@ val turnRestrictionTypes = linkedSetOf(
     "only_left_turn",
     "only_straight_on",
 )
+
+private val maxWeightKeys = MaxWeightSign.values().map { it.osmKey }.toTypedArray()
+
+private val darkerBlue = toRGBString(darken(parseColor(Color.BLUE), 0.75f))
+private val darkerGold = toRGBString(darken(parseColor(Color.GOLD), 0.75f))
+private val darkerOrange = toRGBString(darken(parseColor(Color.ORANGE), 0.75f))

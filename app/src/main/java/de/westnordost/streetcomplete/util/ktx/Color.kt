@@ -24,3 +24,8 @@ fun toARGBString(color: Int): String =
         color.red.toString(16).padStart(2, '0') +
         color.green.toString(16).padStart(2, '0') +
         color.blue.toString(16).padStart(2, '0')
+
+fun toRGBString(color: Int): String =
+    "#" + color.red.toString(16).padStart(2, '0') +
+        color.green.toString(16).padStart(2, '0') +
+        color.blue.toString(16).padStart(2, '0')
