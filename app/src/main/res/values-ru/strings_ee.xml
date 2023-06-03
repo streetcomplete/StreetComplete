@@ -247,14 +247,14 @@
     <string name="custom_overlay_highlight_missing">Подсветка недостающих данных</string>
     <string name="pref_expert_mode_message">Разрешит использовать квесты созданные для SCEE и позволит:
 \n <li>править сами теги</li>
-\n <li>передвигать узлы, являющимися частью линий или отношений</li>
+\n <li>передвигать узлы, являющиеся частью линий или отношений</li>
 \n <li>удалять любые несвязанные узлы</li>
 \n <li>править элементы, которые были заблокированы заметкой</li>
 \n <li>добавлять несвязанные узлы где угодно</li>
 \n <li>изменять правила отбора элементов квестов</li>
 \n
-\n Хотя другие редакторы позволяют больше, не осторожность может привести с порче данных, невозможной в StreetComplete. Имейте в виду, что включая режим эксперта Вы несёте существенно больше ответственности за свои правки.
-\n Включайте данный режим только при наличии опыта работы с OSM помимо StreetComplete и, если Вы понимаете, что делаете. </string>
+\n Хотя другие редакторы позволяют больше, не осторожность может привести к порче данных, невозможной в StreetComplete. Имейте в виду, что включая режим эксперта Вы несёте существенно больше ответственности за свои правки.
+\n Включайте данный режим только при наличии опыта работы с OSM помимо StreetComplete и, если Вы понимаете что делаете. </string>
     <string name="pref_hide_keyboard_summary">Скрывает клавиатуру до момента создания заметки (для проверки положения)</string>
     <string name="pref_create_custom_quest_summary">…вместо размещения заметки. Будет полезно в качестве хранимой на устройстве отметки на карте. Для этого необходимо включить собственные квесты.</string>
     <string name="pref_save_photos_summary">Хранить полные версии фотографий, снятых для заметок, сохраняя данные EXIF</string>
@@ -307,13 +307,13 @@
     <string name="quest_settings_level_title">Показать этот квест для:</string>
     <string name="level_filter_title">Выберите ключи для проверки</string>
     <string name="quest_healthcare_speciality_title">Какие медицинские специальности есть в этом месте\?</string>
-    <string name="level_filter_message">Введите значение уровня или фильтра с помощью &gt; and &lt;. Используйте * для сопоставления всех элементов, содержащих разрешенный ключ уровня</string>
+    <string name="level_filter_message">Введите число этажей или выражения &gt; и &lt;. Используйте * для выбора всех элементов, содержащих допустимый ключ level</string>
     <string name="quest_settings_eligible_highways">Укажите дороги, подходящие для этого квеста, через запятую</string>
     <string name="quest_traffic_stuff_raised">Это возвышенный переход</string>
     <string name="quest_artwork_architecture">Архитектура</string>
     <string name="quest_railwayPlatformRef_message">Какой тег использовать для треков, доступных с этой платформы\? Согласно вики OSM, local_ref может быть предпочтительнее, но фактическое использование в основном ref.</string>
-    <string name="quest_disabled_msg_railway_platform_ref">Обратите внимание, что в вики не совсем ясно, какой тег использовать лучше всего, и поэтому он остается на усмотрение пользователя. Выберите между «ref» (по умолчанию) и «local_ref» в настройках квеста.
-\nЕсли вдоль платформы есть две дорожки, используйте значения, разделенные точкой с запятой, например, 2;3</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Обратите внимание, что вики не даёт однозначного ответа какой тег предпочесть, поэтому выбор остается за пользователем. Выберите либо «ref» (по умолчанию) либо «local_ref» в настройках квеста.
+\nЕсли вдоль платформы идут два пути, используйте значения, разделенные точкой с запятой, например, 2;3</string>
     <string name="quest_construction_value">Установите «construction=…» или оставьте пустым, если неизвестно</string>
     <string name="quest_maxspeed_conditional_limited_enter_default">Выберите ограничение по умолчанию, прежде чем выбрать этот ответ</string>
     <string name="tutorial_info_fork_message"><b>SCEE</b>
@@ -322,7 +322,7 @@
 \n \u0020Это особенно относится к возможности редактирования необработанных тегов и удаления узлов, а также к изменению выбора элементов для квестов. Квесты, добавленные в SCEE, <i>могут не отвечать</i> во всех случаях и отключены по умолчанию. Пожалуйста, скройте их, если вы не можете на них ответить, и <i>не спамьте заметки</i>.
 \n
 \n \u0020По умолчанию SCEE настроен так, чтобы вести себя очень похоже на StreetComplete.</string>
-    <string name="level_filter_hint">Оставьте пустым, чтобы показать не помеченные</string>
+    <string name="level_filter_hint">Для показа элементов без тега оставьте пустым</string>
     <string name="quest_osmose_settings_items">Черный список</string>
     <string name="quest_osmose_use_app_language">Загружать на языке приложения</string>
     <string name="quest_settings_level_default">Магазины и подобное в торговых центрах (по умолчанию)</string>
@@ -347,4 +347,41 @@
     <string name="quest_settings_level_more">Врачи и многие другие узлы внутри многоуровневых зданий</string>
     <string name="quest_surface_value_metal_grid">Металлическая сетка</string>
     <string name="quest_buildingType_barn">Сарай</string>
+    <string name="restriction_overlay_show_details">Показать отношение</string>
+    <string name="default_disabled_msg_roofColour">Этот квест отключён по умолчанию, поскольку рассмотреть цвет крыши на улице бывает не просто. Кроме того, этот квест отнимает не мало времени, как правило, такое проще отметить из дома, пользуясь аэрофотоснимками.</string>
+    <string name="quest_roofColour_title">Какой цвет является основным для крыши этого здания\?</string>
+    <string name="quest_buildingType_presbytery">Пресвитерий</string>
+    <string name="quest_buildingType_stable">Конюшня</string>
+    <string name="quest_healthcare_speciality_switch_ui">Переключить интерфейс</string>
+    <string name="quest_destination_title">Какие направления указаны для этой дороги\?</string>
+    <string name="quest_destination_add_more">Добавить направление</string>
+    <string name="quest_destination_all_lanes_button">Все
+\nполосы</string>
+    <string name="custom_overlay_filter_message">Нажмите на ссылку, чтобы открыть сведения о правилах выбора элементов в браузере.
+\nИмейте в виду, что на отбор элементов по дате может влиять настройка частоты повторного обследования.
+\nГалочки заменяют собой такие части кода как \"nodes, ways with\".</string>
+    <string name="quest_surface_value_stepping_stones">Камни для перехода</string>
+    <string name="restriction_overlay_exceptions">Исключения: %s</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">Убрать условия</string>
+    <string name="restriction_overlay_relation_incomplete">Отношение ограничения неполно, требуется загрузка области вокруг</string>
+    <string name="restriction_overlay_other_restrictions">Прочие ограничения для этой линии:</string>
+    <string name="create_relation_action_description">Создано отношение с участием…</string>
+    <string name="restriction_overlay_title">Ограничения поворотов</string>
+    <string name="restriction_overlay_signed_switch">Есть знак или дорожная разметка</string>
+    <string name="restriction_overlay_relation_unsupported">Неподдерживаемый тип ограничения:
+\n%s</string>
+    <string name="restriction_overlay_select_way">Коснитесь следующей линии на карте. Она должна иметь общий конечный узел с текущей линией. Делите линии по необходимости.</string>
+    <string name="access_manager_message">Выберите теги ограничения доступа. Отмечайте только предписанное знаками, по возможности, не применяйте простой тег \"access\".</string>
+    <string name="level_filter">Фильтр этажности</string>
+    <string name="level_filter_enable">Включить фильтр этажности</string>
+    <string name="quest_osmose_hide_type">Пропускать такие проблемы…</string>
+    <string name="quest_recycling_excrement_bag_dispenser">С держателем пакетов для сбора экскрементов</string>
+    <string name="custom_overlay_dash_filter_hint">Отбор штриховых элементов</string>
+    <string name="quest_artwork_installation">Инсталляция</string>
+    <string name="quest_artwork_relief">Рельеф</string>
+    <string name="quest_artwork_land_art">Ленд-арт</string>
+    <string name="quest_buildingType_tent">Тент</string>
+    <string name="quest_buildingType_riding_hall">Конный манеж</string>
+    <string name="quest_buildingType_digester">Реактор (биореактор)</string>
+    <string name="quest_buildingType_transit_shelter">Остановка общественного транспорта</string>
 </resources>
