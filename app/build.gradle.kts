@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5301
-        versionName = "53.0"
+        versionCode = 5302
+        versionName = "53.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -106,10 +106,7 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
-    val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.3"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
@@ -125,8 +122,8 @@ dependencies {
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
     // dependency injection
-    implementation("io.insert-koin:koin-android-compat:$koinVersion")
-    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    implementation("io.insert-koin:koin-android-compat:3.4.1")
+    implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
@@ -144,9 +141,9 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.6")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")

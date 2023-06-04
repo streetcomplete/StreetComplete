@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 410098
-  linesOfInterfaceMarkupChanged: 143288
+  linesOfCodeChanged: 410299
+  linesOfInterfaceMarkupChanged: 143293
   assetFilesChanged: 1967
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20531
+  linesOfCodeChanged: 20563
   linesOfInterfaceMarkupChanged: 5176
   assetFilesChanged: 634
 - name: "Flo Edelmann"
@@ -28,7 +28,7 @@
   linesOfCodeChanged: 3950
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 3260
+  linesOfCodeChanged: 3268
   linesOfInterfaceMarkupChanged: 2280
   assetFilesChanged: 7
 - name: "Matija Nalis"
@@ -53,7 +53,7 @@
   assetFilesChanged: 48
 - name: "Tim"
   githubUsername: "tapetis"
-  linesOfCodeChanged: 1590
+  linesOfCodeChanged: 1603
   linesOfInterfaceMarkupChanged: 606
 - name: "smichel17"
   githubUsername: "smichel17"
@@ -199,6 +199,10 @@
 - name: "ferdinand0101"
   githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
+- name: "Holger Jeromin"
+  githubUsername: "HolgerJeromin"
+  linesOfCodeChanged: 6
+  assetFilesChanged: 4
 - name: "legofahrrad"
   githubUsername: "legofahrrad"
   linesOfCodeChanged: 6
@@ -211,10 +215,6 @@
 - name: "rolag"
   githubUsername: "rolag"
   linesOfCodeChanged: 6
-- name: "Holger Jeromin"
-  githubUsername: "HolgerJeromin"
-  linesOfCodeChanged: 5
-  assetFilesChanged: 4
 - name: "Sam Smith"
   githubUsername: "sams96"
   linesOfCodeChanged: 5

@@ -1300,4 +1300,16 @@
     <string name="unknown_surface_title">"Друга повърхност"</string>
     <string name="overlay_surface">"Повърхности"</string>
     <string name="overlay_path_surface_segregated">"Разделяне на велоалея и пешеходна алея"</string>
+    <string name="quest_crossing_no">"Не, но пресичането е възможно"</string>
+    <string name="quest_crossing_prohibited">"Не, пресичането е забранено или невъзможно "</string>
+    <string name="quest_hairdresser_title">"Какви са клиентите на този фризьорски салон?"</string>
+    <string name="quest_hairdresser_male_and_female">"Всички"</string>
+    <string name="quest_hairdresser_female_only">"Жени"</string>
+    <string name="quest_hairdresser_male_only">"Мъже"</string>
+    <string name="quest_hairdresser_not_signed">"Не е отбелязано "</string>
+    <string name="quest_amenityCover_title">"Покрито ли е (защитено ли е от дъжд)?"</string>
+    <string name="quest_tactilePaving_title_steps">"Има ли тактилна настилка на най-горното и най-долното стъпало?"</string>
+    <string name="quest_tactilePaving_steps_top">"Само на най-горното"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Само на най-долното"</string>
+    <string name="overlay_addresses_no_entrance">"Това не е вход"</string>
 </resources>

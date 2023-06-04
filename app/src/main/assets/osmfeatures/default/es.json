@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Nro. de edificio / Nro. de lote",
                         "neighbourhood": "Barrio pequeño",
-                        "neighbourhood!jp": "Chōme / Aza / Koaza - Japón",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Lugar",
                         "postcode": "Código postal",
                         "province": "Provincia",
                         "province!cn": "Provincia / Municipio / AR / SAR",
                         "province!jp": "Prefectura - Japón",
                         "quarter": "Quarter",
-                        "quarter!jp": "Ōaza / Machi - Japón",
+                        "quarter!jp": "Ōaza",
                         "state": "Estado",
                         "street": "Calle",
                         "subdistrict": "Subdistrito",
                         "subdistrict!vn": "Barrio / Comuna / Pueblito - Japón",
                         "suburb": "Suburbio",
-                        "suburb!jp": "Ward - Japón",
+                        "suburb!jp": "Pabellón (政令市)",
                         "unit": "Unidad"
                     },
                     "terms": "dirección,ubicación,localización,posición"
@@ -457,6 +457,14 @@
                         "wall_loops": "Doblador de ruedas (sólo soporta la rueda)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Calle para bicicletas",
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Sí"
+                    },
+                    "terms": "calle para bicicletas,calle ciclista,carretera para bicicletas,vía ciclista,carril bici,ciclovía,carril verde,carril bici vecinal,carril verde vecinal"
+                },
                 "bike_ride": {
                     "label": "Aparcamiento disuasorio para bicicletas",
                     "terms": "estacionar,estacionamiento,parking,transporte público,aparcar,aparcamiento,sistemas disuasorios,aparcamiento disuasorio,zona,bicicleta"
@@ -536,6 +544,10 @@
                     "label": "Tipo",
                     "placeholder": "Predeterminado"
                 },
+                "bridge/ref": {
+                    "label": "Número de puente",
+                    "terms": "número de puente,número puente,referencia,puente"
+                },
                 "bridge/support": {
                     "label": "Tipo"
                 },
@@ -606,6 +618,10 @@
                         "warehouse": "Almacén"
                     },
                     "terms": "edificio,construcción,casa,estructura"
+                },
+                "building/colour": {
+                    "label": "Color de la fachada",
+                    "terms": "color del edificio,color de la fachada,fachada"
                 },
                 "building/flats": {
                     "label": "Unidades",
@@ -2257,6 +2273,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "velocidad,límite mínimo de velocidad,mínima"
                 },
+                "mobile": {
+                    "label": "Teléfono móvil",
+                    "placeholder": "+31 42 123 4567",
+                    "terms": "teléfono móvil,número de teléfono,número telefónico"
+                },
                 "model": {
                     "label": "Modelo",
                     "terms": "modelo"
@@ -2271,7 +2292,7 @@
                         "guest": "Invitados",
                         "no": "No",
                         "private": "Privado",
-                        "yes": "Si"
+                        "yes": "Sí"
                     }
                 },
                 "mtb/scale": {
@@ -3159,6 +3180,14 @@
                         "iala-b": "IALA B",
                         "other": "Otro"
                     }
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "Instalaciones domésticas",
+                    "options": {
+                        "marina": "Sí",
+                        "marina_no_facilities": "No"
+                    },
+                    "terms": "servicios domésticos"
                 },
                 "seamark/mooring/category": {
                     "label": "Categoría"
@@ -6503,7 +6532,8 @@
                     "terms": "móvil,autwalk,pasarela,travolator,travelator,travellator,transportador"
                 },
                 "highway/footway/crossing": {
-                    "name": "Cruce peatonal"
+                    "name": "Cruce peatonal",
+                    "terms": "cruce,paso,peatón,peatones,peatonal,cebra,cruce peatonal,paso de peatones,paso de cebra"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Cruce con señales para peatones",
@@ -7201,6 +7231,10 @@
                 "leisure/marina": {
                     "name": "Puerto deportivo",
                     "terms": "marina,puerto,embarcadero,puerto deportivo,dársena"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "Amarres para yates",
+                    "terms": "barcos,muelles,puerto,puerto deportivo,amarres,yates"
                 },
                 "leisure/miniature_golf": {
                     "name": "Mini golf",

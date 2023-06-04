@@ -1323,4 +1323,8 @@
     <string name="lane_narrowing_traffic_calming_island">"Остров безопасности"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Преднамеренно круто изогнутая улица или ряд поворотов, которые вы должны объехать."</string>
     <string name="lane_narrowing_traffic_calming_none">"Тут нет суженной полосы"</string>
+    <string name="quest_tactilePaving_title_steps">"Есть ли тактильное покрытие вверху и внизу этих ступеней?"</string>
+    <string name="quest_tactilePaving_steps_top">"Только наверху"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Только внизу"</string>
+    <string name="overlay_addresses_no_entrance">"Это не вход..."</string>
 </resources>

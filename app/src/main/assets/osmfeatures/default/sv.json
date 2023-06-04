@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Husnummer",
                         "neighbourhood": "Grannskap",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Plats",
                         "postcode": "Postnummer",
                         "province": "Provins",
                         "province!cn": "Provins/Kommun/AR/SAR",
                         "province!jp": "Prefektur",
                         "quarter": "Stadsdel",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Stat",
                         "street": "Gata",
                         "subdistrict": "Deldistrikt",
                         "subdistrict!vn": "Stadsdel/Kommun/Ort",
                         "suburb": "Stadsdel",
-                        "suburb!jp": "Stadsdel",
+                        "suburb!jp": "Stadsdel (政令市)",
                         "unit": "Enhet/port/trappa"
                     },
                     "terms": "adress,husnummer,destination,gatuadress,postnummer,postort,postadress"
@@ -457,6 +457,14 @@
                         "wall_loops": "Cykelställsbåge (stöder endast hjul)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Cykelgata",
+                    "options": {
+                        "undefined": "Nej",
+                        "yes": "Ja"
+                    },
+                    "terms": "cykelgata,cykelboulevard,cykelväg,cykelstråk,cykelfält,cykelled,cykelvägstrafik,cykelkorridor,cykelpassage"
+                },
                 "bike_ride": {
                     "label": "Pendelparkering för cykel",
                     "terms": "pendelparkering för cykel,cykelparkering,kollektivtrafik,cykelställ"
@@ -536,6 +544,10 @@
                     "label": "Typ",
                     "placeholder": "Standard"
                 },
+                "bridge/ref": {
+                    "label": "Bronummer",
+                    "terms": "bronummer,broreferens,nummer på bro,referens för bro,bro,viaduktnummer,viaduktreferens"
+                },
                 "bridge/support": {
                     "label": "Typ"
                 },
@@ -606,6 +618,10 @@
                         "warehouse": "Lagerhus"
                     },
                     "terms": "byggnad,hus,konstruktion,byggnadsverk,bygge,anläggning,fastighet,kåk"
+                },
+                "building/colour": {
+                    "label": "Fasadfärg",
+                    "terms": "fasadfärg,färg,husfärg,väggfärg,byggnadsfärg,exteriörfärg"
                 },
                 "building/flats": {
                     "label": "Lägenheter",
@@ -2244,6 +2260,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "hastighetsbegränsning,hastighet,fart,lägsta hastighet,minfart,minhastighet"
                 },
+                "mobile": {
+                    "label": "Mobiltelefon",
+                    "placeholder": "+46 70 123 456",
+                    "terms": "mobil,mobiltelefon,telefon,telefonnummer,mobilnummer"
+                },
                 "model": {
                     "label": "Modell",
                     "terms": "model,typ,variant"
@@ -3145,6 +3166,12 @@
                         "iala-a": "IALA A",
                         "iala-b": "IALA B",
                         "other": "Annat"
+                    }
+                },
+                "seamark/harbour/category_marina": {
+                    "options": {
+                        "marina": "Ja",
+                        "marina_no_facilities": "Nej"
                     }
                 },
                 "seamark/mooring/category": {

@@ -851,6 +851,7 @@
                     "label": "Hole Number",
                     "placeholder": "1-18"
                 },
+                "ref_bridge_number": {},
                 "ref_aeroway_gate": {
                     "label": "Gate Number"
                 },
@@ -1233,6 +1234,11 @@
                 },
                 "model": {
                     "label": "Model"
+                },
+                "mobile": {
+                    "label": "Mobile Phone",
+                    "terms": "phone number",
+                    "placeholder": "+31 42 123 4567"
                 },
                 "minspeed": {
                     "label": "Minimum Speed Limit",
@@ -2063,6 +2069,7 @@
                         }
                     }
                 },
+                "cyclestreet-BE-NL": {},
                 "cycle_network": {
                     "label": "Network"
                 },
@@ -2557,6 +2564,14 @@
                 "bike_ride": {
                     "label": "Bike and Ride"
                 },
+                "bicycle_road": {
+                    "label": "Cycle Street",
+                    "terms": "bicycle boulevard,bicycle road,cyclestreet,neighborhood bikeway,neighborhood byway,neighborhood greenway,neighborway",
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Yes"
+                    }
+                },
                 "bicycle_parking": {
                     "label": "Type",
                     "options": {
@@ -2801,20 +2816,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Building No./Lot No.",
                         "neighbourhood": "Neighbourhood",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Place",
                         "postcode": "Postcode",
                         "province": "Province",
                         "province!cn": "Province/Municipality/AR/SAR",
                         "province!jp": "Prefecture",
                         "quarter": "Quarter",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "State",
                         "street": "Street",
                         "subdistrict": "Subdistrict",
                         "subdistrict!vn": "Ward/Commune/Townlet",
                         "suburb": "Suburb",
-                        "suburb!jp": "Ward",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Unit"
                     }
                 },
@@ -3138,6 +3153,13 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Category"
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "Domestic Facilities",
+                    "options": {
+                        "marina": "Yes",
+                        "marina_no_facilities": "No"
+                    }
                 },
                 "seamark/buoy_lateral/system": {
                     "label": "System",
@@ -3774,6 +3796,8 @@
                     "label": "Dance Styles"
                 },
                 "crossing/markings_yes": {},
+                "crossing/markings_yes-DE-AT-CH": {},
+                "crossing/markings_yes-BG": {},
                 "crossing/markings": {
                     "label": "Crossing Markings",
                     "options": {
@@ -3794,6 +3818,8 @@
                         "ladder:paired": "Ladder With Paired Longitudinal Bars"
                     }
                 },
+                "crossing/markings-DE-AT-CH": {},
+                "crossing/markings-BG": {},
                 "crossing/light": {
                     "label": "Lights"
                 },
@@ -3881,6 +3907,10 @@
                     "label": "Units",
                     "placeholder": "2, 4, 6, 8..."
                 },
+                "building/colour": {
+                    "label": "Façade Color",
+                    "terms": "building color,facade color"
+                },
                 "building/levels/underground": {
                     "label": "Underground Levels",
                     "terms": "basement levels",
@@ -3888,6 +3918,9 @@
                 },
                 "bridge/support": {
                     "label": "Type"
+                },
+                "bridge/ref": {
+                    "label": "Bridge Number"
                 },
                 "bath/type": {
                     "label": "Specialty",
@@ -6729,6 +6762,10 @@
                     "name": "Miniature Golf",
                     "terms": "crazy golf,mini golf,putt-putt"
                 },
+                "leisure/marina_no_facilities": {
+                    "name": "Yacht Berths",
+                    "terms": "boats,docks,harbor,harbour,marina,moorings,yachts"
+                },
                 "leisure/marina": {
                     "name": "Marina",
                     "terms": "boats,docks,harbor,harbour,moorings,yachts"
@@ -7682,6 +7719,10 @@
                     "name": "Sidewalk",
                     "terms": "pavement,sidepath"
                 },
+                "highway/footway/crossing": {
+                    "name": "Pedestrian Crossing",
+                    "terms": "crosswalk,foot path crossing"
+                },
                 "highway/footway/conveying": {
                     "name": "Moving Walkway",
                     "terms": "moving sidewalk,autwalk,skywalk,travolator,travelator,travellator,conveyor"
@@ -7692,9 +7733,6 @@
                 },
                 "highway/footway/informal": {
                     "name": "Informal Foot Path"
-                },
-                "highway/footway/crossing": {
-                    "name": "Pedestrian Crossing"
                 },
                 "highway/footway/crossing/unmarked": {
                     "name": "Unmarked Crossing",
@@ -9402,7 +9440,8 @@
                 },
                 "amenity/restaurant/ramen": {
                     "name": "Ramen Restaurant",
-                    "terms": "bar,dine,dining,dinner,eat,lunch,table,japanese,soup,noodles"
+                    "aliases": "Ramen Shop",
+                    "terms": "japanese,noodles,ramen-ten,ramen-ya,soup"
                 },
                 "amenity/restaurant/pizza": {
                     "name": "Pizza Restaurant",
@@ -9917,7 +9956,9 @@
                 },
                 "@templates/poi": {},
                 "@templates/internet_access": {},
-                "@templates/contact": {}
+                "@templates/contact": {},
+                "@templates/crossing/markings_yes": {},
+                "@templates/crossing/markings": {}
             }
         }
     }

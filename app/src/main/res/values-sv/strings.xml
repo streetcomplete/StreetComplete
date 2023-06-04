@@ -1330,7 +1330,8 @@ Flytta den?"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chikan"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Avsmalning och refug"</string>
     <string name="lane_narrowing_traffic_calming_none">"Inga hinder"</string>
-    <string name="quest_tactilePaving_title_steps">"Finns det taktil beläggning på denna trappa?"</string>
+    <string name="quest_tactilePaving_title_steps">"Finns det taktil beläggning längst upp och längst ned på denna trappa?"</string>
     <string name="quest_tactilePaving_steps_top">"Bara högst upp"</string>
     <string name="quest_tactilePaving_steps_bottom">"Bara längst ned"</string>
+    <string name="overlay_addresses_no_entrance">"Det är inte en entré…"</string>
 </resources>

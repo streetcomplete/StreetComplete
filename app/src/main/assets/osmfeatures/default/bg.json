@@ -108,19 +108,16 @@
                         "housenumber": "123",
                         "housenumber!jp": "Сграда Номер/Имот Номер",
                         "neighbourhood": "Квартал",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Място",
                         "postcode": "Пощенски код",
                         "province": "Област",
                         "province!jp": "Перфектура",
                         "quarter": "Жилищен квартал",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Икономически район NUT2",
                         "street": "Улица",
                         "subdistrict": "Землище",
                         "subdistrict!vn": "Район/Комуна/Град под 10 000",
                         "suburb": "Квартал",
-                        "suburb!jp": "Район",
                         "unit": "Административна единица"
                     }
                 },
@@ -602,14 +599,37 @@
                     "placeholder": "Неизвестен"
                 },
                 "generator/method": {
-                    "label": "Метод на генерация"
+                    "label": "Метод на генерация",
+                    "options": {
+                        "anaerobic_digestion": "Анаеробно разграждане",
+                        "combustion": "Изгаряне",
+                        "fission": "Ядрено делене",
+                        "fusion": "Ядрен синтез",
+                        "gasification": "Газификация",
+                        "photovoltaic": "Фотоволтаици",
+                        "wind_turbine": "Вятърна турбина"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "Изходна мощност",
                     "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "Източник на енергия"
+                    "label": "Източник на енергия",
+                    "options": {
+                        "battery": "Батерия / Акумулатор",
+                        "biogas": "Биогаз",
+                        "coal": "Въглища",
+                        "diesel": "Дизел",
+                        "gas": "Природен газ",
+                        "gasoline": "Бензин",
+                        "geothermal": "Геотермална енергия",
+                        "nuclear": "Ядрена енергия",
+                        "oil": "Петрол",
+                        "tidal": "Енергия от морския прилив",
+                        "wave": "Енергия от морски вълни",
+                        "wind": "Вятър"
+                    }
                 },
                 "generator/type": {
                     "label": "Вид"
@@ -637,30 +657,64 @@
                     "label": "Направления",
                     "options": {
                         "acupuncture": "Акупунктура",
-                        "anaesthetics": "Анестизиология",
+                        "anaesthetics": "Анестезиология",
+                        "angiology": "Ангиология",
+                        "aromatherapy": "Ароматерапия",
+                        "behavior": "Поведенческа терапия",
+                        "biochemistry": "Биохимия",
+                        "biology": "Биология",
                         "blood_check": "Кръвни изследвания",
                         "cardiology": "Кардиология",
+                        "cardiothoracic_surgery": "Кардиотораксиална хирургия ",
+                        "clinical_pathology": "Клинична патология",
                         "community": "Обществено здраве",
+                        "dental_oral_maxillo_facial_surgery": "Дентална, орална и лицево-челюстна хирургия",
                         "dermatology": "Дерматология",
+                        "dermatovenereology": "Дерматовенерология",
+                        "diabetology": "Диабетология",
                         "diagnostic_radiology": "Диагностична радиология",
                         "emergency": "Спешна медицина",
                         "endocrinology": "Ендокринология",
+                        "gastroenterology": "Гастроентерология",
+                        "general": "Обща практика",
+                        "geriatrics": "Гериатрична медицина",
+                        "gynaecology": "Акушерство и гинекология",
+                        "haematology": "Хематология",
+                        "hepatology": "Хепатология",
+                        "homeopathy": "Хомеопатия",
                         "infectious_diseases": "Инфекциозни болести",
                         "intensive": "Интензивна грижа",
                         "internal": "Вътрешни болести",
+                        "nephrology": "Нефрология",
                         "neurology": "Неврология",
+                        "neuropsychiatry": "Невропсихиатрия",
                         "neurosurgery": "Неврохирургия",
+                        "nuclear": "Ядрена медицина",
                         "oncology": "Онкология",
+                        "ophthalmology": "Офтамология",
+                        "orthodontics": "Ортодонтия",
+                        "orthopaedics": "Ортопедична хирургия",
                         "otolaryngology": "Уши, нос гърло (УНГ)",
                         "paediatric_surgery": "Педиатрична хирургия",
                         "paediatrics": "Педиатрия",
                         "palliative": "Палиативни грижи",
+                        "pathology": "Патология",
+                        "physiatry": "Физическа медицина и рехабилитация",
                         "plastic_surgery": "Пластична хирургия",
+                        "psychiatry": "Психиатрия",
+                        "pulmonology": "Пулмология",
                         "radiology": "Радиология",
+                        "radiotherapy": "Радиотерапия",
+                        "reflexology": "Рефлексология",
+                        "rheumatology": "Ревматология",
                         "shiatsu": "Шиатсу",
                         "stomatology": "Стоматология",
+                        "surgery": "Обща хирургия",
+                        "transplant": "Трансплантация",
                         "tropical": "Тропическа медицина",
-                        "urology": "Урология"
+                        "urology": "Урология",
+                        "vaccination": "Ваксинация",
+                        "vascular_surgery": "Съдова хирургия"
                     }
                 },
                 "heating": {

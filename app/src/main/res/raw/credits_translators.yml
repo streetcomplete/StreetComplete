@@ -17,17 +17,17 @@ ast:
    Víctor Suárez: 11946
    Xuacu Saturio: 840
 be: 
-   Yau: 28582
+   Yau: 28677
    Андрей: 13200
    Serge: 3446
    Дмитрий: 479
 bg: 
-   Plamen: 37066
+   Plamen: 37363
    Dimitar: 1951
    Kalin: 883
-   Rhhsmits: 202
+   Rhhs: 202
 ca: 
-   Pau Nofuentes Sendra: 17989
+   Pau Nofuentes Sendra: 18173
    jmaspons: 12387
    Joan Montané: 10179
    Josep: 1914
@@ -38,18 +38,19 @@ ca:
    pataquets: 718
    Gabriel Fernández Fernández: 53
 cs: 
-   leschek: 26226
-   Lukáš Jelínek: 13996
-   Stanislav Tichý: 2190
+   leschek: 25931
+   Lukáš Jelínek: 14129
+   Stanislav Tichý: 2149
    Petr Kadlec: 648
    Petr Kristof: 575
    Lukas852: 287
    Jakub: 231
+   Bilykralik16: 201
    MartinPulec: 150
    Vojtik69: 57
    Vladankudlac: 19
 da: 
-   ERyPTION: 28868
+   ERyPTION: 28885
    Dennis Kjær Jensen: 6394
    Soren: 3647
    Leonora: 2741
@@ -57,13 +58,13 @@ da:
    Cookieblues: 718
    Jonas Storgaard: 680
    Runeors: 472
-   Rhhsmits: 177
+   Rhhs: 177
    Pelle Rosenbeck Gøeg: 145
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 18970
-   legofahrrad: 2027
+   Flo Edelmann: 19062
+   legofahrrad: 1967
    Andre Thum: 979
    papojari: 761
    Lenni: 530
@@ -89,7 +90,7 @@ de:
    rugk: 11
    mrab: 9
 el: 
-   makmar: 39357
+   makmar: 40139
    jimkats: 9871
    Nelli.k.21: 613
    tinigrillion: 186
@@ -101,6 +102,7 @@ en-AU:
    Declan: 4416
    Baku: 1864
    Andrew: 1278
+   Jean-Baptiste Marchat: 113
    Peter Newman: 53
 en-GB: 
    Oliver Hawes: 6831
@@ -147,7 +149,7 @@ es:
    Jose Luis Infante: 671
    Roboe: 600
    Javi: 551
-   jaimeMF: 366
+   jaimeMF: 536
    Renzo: 209
    10992: 182
    Leo Alcaraz: 137
@@ -162,8 +164,8 @@ es:
    rugk: 30
    Manu: 11
 eu: 
-   Osoitz: 17336
-   alexgabi: 12546
+   Osoitz: 17268
+   alexgabi: 15107
    Galder: 6608
    Gari Araolaza: 1386
    Alexander Gabilondo: 1185
@@ -172,26 +174,27 @@ eu:
    obibon: 272
    Jokin: 224
    Etzharai: 213
+   Egoitz: 67
 fa: 
-   Mohammad Mehdi Maliki: 17487
-   ARA2020: 13937
-   Iman: 11060
+   Mohammad Mehdi Maliki: 18644
+   ARA2020: 12902
+   Iman: 10901
    Ahmad: 759
-   Mostafa Ahangarha: 336
+   Mostafa Ahangarha: 386
    mojtaba: 134
    Goudarz Jafari: 45
 fi: 
    Jiri Grönroos: 13942
    OpenKartat: 7926
    Juhana Uuttu: 4508
-   Aleksi.klasila: 4414
+   Aleksi.klasila: 4401
    Jarmo Sutinen: 2628
    Jimi Viita-aho: 1795
    Kantele: 1440
    Demian Wright: 1239
    Harri: 1118
    Niko Böckerman: 795
-   Lasse: 728
+   Lasse: 742
    Ikx: 686
    Risto: 577
    Toni: 550
@@ -199,20 +202,22 @@ fi:
    Vepa: 82
    Otto: 45
 fr: 
-   Florian Stosse: 8655
-   David Chionne: 4389
-   rouelibre: 2771
-   Binnette: 1886
+   Florian Stosse: 8537
+   David Chionne: 4339
+   rouelibre: 2558
+   Binnette: 1876
    Obny: 1363
    Ceciestunepoubelle: 1105
    Frédéric Bourgeon: 930
    Lejun: 929
    Lucas 🐱: 836
    James. mcmahon: 775
+   Timothée Goguely: 761
    whatismoss: 623
+   Yoldc22: 532
    Alex: 459
    Paul: 448
-   Julien: 355
+   Julien: 331
    Nicomem: 288
    Jean-Baptiste Holcroft: 286
    Jamie Nadeau: 257
@@ -252,28 +257,29 @@ hr:
    Nemanja Bračko: 59
    Mario: 9
 hu: 
-   Zachár Benjámin: 17928
-   Gábor Babos: 13648
-   Hungarian_user: 8037
-   Antissimo: 1784
+   Zachár Benjámin: 17816
+   Gábor Babos: 13282
+   Hungarian_user: 8933
    Meskó Balázs: 1758
+   Antissimo: 1692
    ursus: 680
    Máté: 380
    majdnemkocka: 156
+   infeeeee: 61
 hy: 
    Akamar87: 36707
 id: 
-   TA: 17464
-   Froyobread: 15156
+   TA: 18445
+   Froyobread: 14809
    Ismail Sunni: 3584
    Novalhidayat: 559
-   Wijayaa16d: 438
+   Wijayaa16d: 414
    Agha Pradipta: 405
    zmni: 85
    Suryamudti0128: 17
 it: 
-   Mannivu: 12807
-   Marco: 9814
+   Mannivu: 12815
+   Marco: 10327
    napo: 6399
    Ittiti: 3385
    mircozorzo: 3142
@@ -299,20 +305,22 @@ it:
    Mathieu. farine: 23
    Fabio Mazza: 7
 ja: 
-   soaraught: 3687
-   naofumi: 3612
-   ika: 2822
-   ネオ: 711
-   Maksymilian: 153
+   Amuk: 4961
+   naofumi: 2966
+   soaraught: 2798
+   ika: 2389
+   ネオ: 629
    ssotoen: 61
    Morgan: 8
    Ishihara: 3
 ko: 
-   imsesaok: 14024
-   Depth221: 4384
-   태석: 1134
+   imsesaok: 13711
+   Depth221: 4324
+   태석: 1074
    crem2y: 858
+   ryush00: 735
    Seungjun Lee: 415
+   5oskz83: 217
    Rkdclgh: 165
    다운: 69
    Jin: 48
@@ -350,16 +358,16 @@ nb:
    Borge: 25
    Martin Moen: 13
 nl: 
-   Alert Bouterse: 12027
-   Peter: 8565
-   Rhhsmits: 6439
+   Alert Bouterse: 12107
+   Peter: 8508
+   Rhhs: 7049
    Daniel: 4046
    FritsP: 2838
    Richard: 2273
    Pander: 1447
-   Olivier: 1276
+   Olivier: 1225
    Robin: 1063
-   Jan. lammertyn: 1029
+   Jan. lammertyn: 964
    Amy: 458
    Hsl H: 383
    Kammah: 315
@@ -415,18 +423,19 @@ pt:
    Alexandre de Menezes: 54
    Pedro: 31
 pt-BR: 
-   Suburbanno: 13230
-   Eduardo Addad de Oliviera: 10978
-   Alexandre de Menezes: 7601
-   Patrick: 3275
-   Rodrigo Tavares: 2752
-   Vandersdg: 2165
-   Lucas Pereria: 1897
-   Rui: 1010
-   André Alvarenga: 819
-   Diego Biavati: 632
-   Douglas: 435
+   Dalton Scavassa: 18434
+   Suburbanno: 10143
+   Eduardo Addad de Oliviera: 8212
+   Alexandre de Menezes: 3798
+   Patrick: 1754
+   Lucas Pereria: 1723
+   Rodrigo Tavares: 1583
+   Vandersdg: 702
+   Diego Biavati: 540
+   Douglas: 325
    Infelizmente ninguém: 295
+   André Alvarenga: 266
+   Rui: 250
 ro: 
    Georgian Iosef: 29037
    Dancojocaru2010: 2363
@@ -436,14 +445,13 @@ ro:
    Ciprian: 62
 ru: 
    NetFarmer: 12892
-   Alex: 4011
    Anton Shestakov: 2993
    Akamar87: 2193
    Pavel Gavrilov: 1967
    Igorpolyakov: 1811
    zetx16: 1747
    Astra: 1729
-   Kirill: 1291
+   Kirill: 1388
    Grass-snake: 983
    Bzzzil: 941
    Silka123: 920
@@ -453,6 +461,7 @@ ru:
    ksetdekov: 612
    quyse: 567
    Константин: 554
+   Alex: 412
    argz: 407
    Roman. deev06: 365
    Vano111ru: 361
@@ -497,7 +506,7 @@ sr-cyrl:
    Branko Kokanovic: 6461
    Nikola: 169
 sv: 
-   riiga: 24824
+   riiga: 24871
    Jonatan Nyberg: 8317
    rindlerblabla: 6207
    Erik: 1135
@@ -538,6 +547,7 @@ uk:
    Евгений: 3952
    slayzex: 1813
    zimirrrr: 1046
+   Github: 822
    Asdfpoiu: 778
    ANT Berezhnyi: 577
    Mihajlo0743: 467

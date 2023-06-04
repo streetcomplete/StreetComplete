@@ -161,19 +161,16 @@
                         "housenumber": "123",
                         "housenumber!jp": "N.º do edifício ou lote",
                         "neighbourhood": "Bairro",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Localidade",
                         "postcode": "Código postal",
                         "province": "Província",
                         "province!jp": "Prefeitura",
                         "quarter": "Bairro",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Estado",
                         "street": "Rua",
                         "subdistrict": "Subdistrito",
                         "subdistrict!vn": "Ward/Commune/Townlet",
                         "suburb": "Subúrbio ",
-                        "suburb!jp": "Ward",
                         "unit": "Unidade / Bloco"
                     },
                     "terms": "endereço,morada,endereçamento,código postal,localização,número de porta,nº de porta,n.º de porta,número de polícia,nº de polícia,n.º de polícia,número"
@@ -454,6 +451,14 @@
                         "wall_loops": "Suporte de roda"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Rua para ciclistas",
+                    "options": {
+                        "undefined": "Não",
+                        "yes": "Sim"
+                    },
+                    "terms": "bicicletas,biclas,binas,bicycle,arruamento,estrada,caminho,avenida,ciclismo,cycle"
+                },
                 "bike_ride": {
                     "label": "Bike and Ride",
                     "terms": "estacionamento,bicicletas,bicicleta,bike,biclas,binas,parque,parquemanto,transporte,público,park & ride,incentivo,dissuasor"
@@ -533,6 +538,10 @@
                     "label": "Tipo",
                     "placeholder": "Padrão"
                 },
+                "bridge/ref": {
+                    "label": "Referência",
+                    "terms": "ponte,número,valor,ref,bridge,viaduto"
+                },
                 "bridge/support": {
                     "label": "Tipo"
                 },
@@ -602,6 +611,10 @@
                         "warehouse": "Armazém"
                     },
                     "terms": "estrutura,casa,prédio,moradia,residência,habitação,edificação,edificado,arranha-céus,arranha céus"
+                },
+                "building/colour": {
+                    "label": "Cor",
+                    "terms": "fachada,frente,fronte,coloração,pintura,paint,color,colour"
                 },
                 "building/flats": {
                     "label": "Unidades",
@@ -2248,6 +2261,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "velocidade mínima"
                 },
+                "mobile": {
+                    "label": "Telefone móvel",
+                    "placeholder": "+351 91 234 567",
+                    "terms": "mobile,celular,telemóvel,phone,fone,número,numero"
+                },
                 "model": {
                     "label": "Modelo",
                     "terms": "model"
@@ -3150,6 +3168,14 @@
                         "iala-b": "IALA B",
                         "other": "Outro"
                     }
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "Instalações domésticas",
+                    "options": {
+                        "marina": "Sim",
+                        "marina_no_facilities": "Não"
+                    },
+                    "terms": "infraestruturas,infra-estruturas,edifícios"
                 },
                 "seamark/mooring/category": {
                     "label": "Categoria"
@@ -7152,7 +7178,7 @@
                     "terms": "ice rink,ringue de gelo,gelo,pista de gelo,pista de patinagem,patinagem,patins,patinador"
                 },
                 "leisure/indoor_play": {
-                    "name": "Centro de Diversões Interior",
+                    "name": "Centro de diversões interior",
                     "terms": "crianças,parque,brincar,brincadeiras,interno,jogos,aniversários,aniversário,filhos"
                 },
                 "leisure/marina": {

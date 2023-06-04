@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"設定"</string>
-    <string name="oauth_communication_error">"認証サーバーに到達できない
-"</string>
-    <string name="oauth_failed_permissions">"認証に失敗しました。表示されたすべての権限を付与する必要があります
-"</string>
-    <string name="pref_category_communication">"コミュニケーション"</string>
-    <string name="pref_category_display">"ディスプレイ"</string>
+    <string name="oauth_communication_error">"認証サーバーに到達できません"</string>
+    <string name="oauth_failed_permissions">"認証に失敗しました: 表示されたすべての権限を許可する必要があります"</string>
+    <string name="pref_category_communication">"通信"</string>
+    <string name="pref_category_display">"表示"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"マップタイルをキャッシュするために外部ストレージに確保した容量（メガバイト）。
-"</string>
-    <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのノートを表示する
-"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"また、質問として表現されていないメモを表示
-"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問形式でないメモを無視する
-"</string>
+    <string name="pref_tilecache_size_message">"マップタイルをキャッシュするために外部ストレージに確保する容量（MB）"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのメモを表示する"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"質問形式でないメモも表示する"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問形式でないメモを無視する"</string>
     <string name="pref_title_map_cache">"マップキャッシュサイズ"</string>
-    <string name="map_btn_gps_tracking">"フォローしてださい"</string>
+    <string name="map_btn_gps_tracking">"フォローしてください"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 貢献者"</string>
     <string name="quest_generic_otherAnswers">"他の回答…"</string>
-    <string name="quest_generic_answer_notApplicable">"言えない…"</string>
+    <string name="quest_generic_answer_notApplicable">"答えられない…"</string>
     <string name="quest_generic_confirmation_title">"よろしいですか?"</string>
     <string name="quest_generic_confirmation_yes">"はい、確かに"</string>
     <string name="quest_generic_confirmation_no">"確認します"</string>
     <string name="quest_leave_new_note_title">"代わりにメモを残しますか?"</string>
-    <string name="quest_leave_new_note_description">"この場所に公開メモを残しておくと、他のマッパーがコメントして、うまくいけば解決できます:"</string>
-    <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"いいえ、非表示にします"</string>
-    <string name="quest_streetName_title">"この道の名前は何ですか?"</string>
+    <string name="quest_leave_new_note_description">"他のマッパーが解決するように公開メモを残しておくか、このクエストを非表示にします"</string>
+    <string name="quest_leave_new_note_yes">"メモを残す"</string>
+    <string name="quest_leave_new_note_no">"非表示にする"</string>
+    <string name="quest_streetName_title">"この通りの名前は何ですか?"</string>
     <string name="quest_streetName_description">"通りの標識に書かれているように、略語が展開されます:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"ときどき通りの標識は通りの片端にしかないことがあります。 また、大きな通りに属する側は追加の標識がないことがあることに注意してください。 通常、店がある通りには名前があります。"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"ときどき標識は通りの片方の端にしかないことがあります。また、大きな通りに属する側は追加の標識がないことがあることに注意してください。ふつう、住宅のある通りには名前があります。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"名前を略語で綴ることができない場合は、展開する必要があります。 入力時に一般的な略語の多くは自動的に展開されますが、すべてではありません。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"略語はありません"</string>
     <string name="quest_openingHours_start_time">"開店時間"</string>
@@ -42,25 +36,25 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">"曜日を選択"</string>
     <string name="quest_openingHours_24_7_confirmation">"言い換えれば、毎日いつでも開いていますか?"</string>
     <string name="quest_noteDiscussion_title">"このメモに貢献できますか?"</string>
-    <string name="quest_noteDiscussion_no">"いいえ、非表示にする"</string>
+    <string name="quest_noteDiscussion_no">"いいえ、非表示にします"</string>
     <string name="quest_noteDiscussion_anonymous">"匿名"</string>
     <string name="confirmation_discard_title">"入力を破棄しますか?"</string>
-    <string name="confirmation_discard_positive">"破棄"</string>
-    <string name="action_download">"スキャンしてここを探索"</string>
+    <string name="confirmation_discard_positive">"破棄する"</string>
+    <string name="action_download">"ここのデータをダウンロードする"</string>
     <string name="action_upload">"回答をアップロード"</string>
     <string name="no_changes">"フォームを空のままにしました"</string>
     <string name="close">"閉じる"</string>
-    <string name="download_error">"探索のスキャン中にエラーが発生しました"</string>
+    <string name="download_error">"クエストのスキャン中にエラーが発生しました"</string>
     <string name="upload_error">"回答のアップロード中にエラーが発生しました"</string>
     <string name="download_area_too_big">"ズームインしてみてください"</string>
-    <string name="confirmation_cancel_prev_download_title">"現在の検索をキャンセルして、代わりにここでスキャンしますか?"</string>
+    <string name="confirmation_cancel_prev_download_title">"現在の検索をキャンセルして、代わりにここをスキャンしますか?"</string>
     <string name="turn_on_location_request">"位置情報がオフです。 設定に移動して今すぐオンにしますか?"</string>
-    <string name="no_location_permission_warning">"近くの探索をスキャンするには、あなたの場所が必要です。"</string>
+    <string name="no_location_permission_warning">"マップにあなたの位置を表示して付近のクエストをスキャンするには、位置情報の許可が必要です。"</string>
     <string name="about_title_authors">"作者"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick と貢献者"</string>
     <string name="about_title_repository">"ソースリポジトリ"</string>
     <string name="about_summary_repository">"GitHub で開く"</string>
-    <string name="about_title_report_error">"エラーを報告"</string>
+    <string name="about_title_report_error">"エラーを報告する"</string>
     <string name="about_title_feedback">"フィードバックする"</string>
     <string name="about_title_license">"ライセンス"</string>
     <string name="about_summary_license">"GNU 一般公衆利用許諾"</string>
@@ -68,10 +62,10 @@
     <string name="confirmation_authorize_now">"あなたの回答を公開するには OSM ユーザーアカウントで認証する必要があります。 今すぐ認証しますか?"</string>
     <string name="not_authorized">"認証されていません"</string>
     <string name="version_banned_message">"このバージョンの StreetComplete は古すぎます。 更新してください!"</string>
-    <string name="no_gps_no_quests">"周囲の探索を自動的にスキャンするには、位置情報をオンにしてください"</string>
+    <string name="no_gps_no_quests">"周囲のクエストを自動的にスキャンするには、位置情報をオンにしてください"</string>
     <string name="later">"後で"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"2 つの道路を結ぶだけです"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"他の何か (メモを残してください)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"他の何か (メモを残す)"</string>
     <string name="about_title_privacy_statement">"プライバシーに関する声明"</string>
     <string name="about_summary_privacy_statement">"とデータの使用"</string>
     <string name="quest_openingHours_public_holidays">"祝日"</string>
@@ -92,25 +86,25 @@
 &lt;p&gt;&lt;b&gt;直接の貢献&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 まず、このアプリで OpenStreetMap に実際に、直接貢献していることを理解してください。&lt;br/&gt;
-このアプリであなたが提供するものはすべて地図に直接追加され の場合のように、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません
+このアプリであなたが提供するものはすべて地図に直接追加され、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMap を匿名で編集することはできないため、変更は OSM ユーザーアカウントで行います。これは、日付、コンテンツ、および暗黙的に変更した場所が openstreetmap ウェブサイトに公開され、あなたのアカウントに帰属することを意味します。
+OpenStreetMap を匿名で編集することはできないため、変更は OSM ユーザーアカウントで行います。これは、日付、コンテンツ、および暗黙的に変更した場所が openstreetmap.org ウェブサイトに公開され、あなたのアカウントに帰属することを意味します。
 &lt;/p&gt;
 
-&lt;b&gt;場所&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;位置情報&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-あなたの場所は、あなたの周辺の探索を自動的にスキャンするためにのみ使用されます。心配しなくても、アプリは自分の位置を内部に保持します。
+このアプリはあなたの位置情報を他の人とシェアすることはありません。あなたの位置情報は、あなたの周辺のクエストを自動的にスキャンするためにのみ使用されます。
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;データの使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。
-ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するめの予防措置です。
+このアプリは OSM インフラストラクチャと直接通信します。
+ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するための予防措置です。
 &lt;/p&gt;
 "</string>
     <string name="autosync_on">"オン"</string>
-    <string name="autosync_only_on_wifi">"Wifi 接続時のみ"</string>
+    <string name="autosync_only_on_wifi">"Wi-Fi 接続時のみ"</string>
     <string name="autosync_off">"オフ"</string>
     <string name="quest_streetSurface_title">"この道路の路面は何ですか?"</string>
     <string name="quest_surface_value_paved">"舗装 (全般)"</string>
@@ -136,7 +130,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="store_listing_short_description">"OpenStreetMap 検査アプリ"</string>
     <string name="store_listing_full_description">"StreetComplete で OpenStreetMap の改善を手伝ってください!
 
-このアプリは、あなたの周辺で不完全で拡張可能なデータを見つけて、それをマーカーとして地図に表示します。 サイトの情報を完成させるための簡単な質問に答えることで、そのそれぞれを解決することができます。
+このアプリは、あなたの付近の不完全な地図データを見つけて、クエストとして地図に表示します。各クエストを解決するには、現地に足を運び、簡単な質問に答えてマップを更新する必要があります。
 
 入力した情報は、別のエディターを使わずに、あなたの名前で直接 OpenStreetMap に追加されます。"</string>
     <string name="quest_name_answer_noName">"名前がありません…"</string>
@@ -185,7 +179,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_select_hint">"選択:"</string>
     <string name="quest_sport_manySports_confirmation_description">"このピッチは、これらのスポーツのために特別に設計されていますか（マーキングや設備が存在するか）、あらゆる種類のゲーム用の一般的なピッチとして使用できますか？"</string>
     <string name="quest_manySports_confirmation_specific">"具体的にこれらは"</string>
-    <string name="quest_manySports_confirmation_generic">"一般用途"</string>
+    <string name="quest_manySports_confirmation_generic">"汎用"</string>
     <string name="quest_sport_manySports_confirmation_title">"多くのスポーツを選んています"</string>
     <string name="quest_toiletsFee_title">"これらのトイレは有料ですか?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"この横断歩道には点字ブロックがありますか?"</string>
@@ -312,7 +306,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingLevels_answer_description">"この場合、最も高い建物部分の値を入力するだけです。"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"この道路の車道は物理的に分離されていますか (つまり分離帯で)? 既定の速度制限は、これが該当するかどうかによって異なります。"</string>
     <string name="about_category_feedback">"フィードバック"</string>
-    <string name="quest_leave_new_note_photo">"写真を添付"</string>
+    <string name="quest_leave_new_note_photo">"写真を添付する"</string>
     <string name="quest_leave_new_note_photo_delete_title">"この写真を削除しますか?"</string>
     <string name="quest_cycleway_value_track">"自転車道"</string>
     <string name="quest_cycleway_value_lane">"自転車レーン"</string>
@@ -323,22 +317,22 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_leave_new_note_create_image_error">"写真のファイルを作成できません"</string>
     <string name="quest_cycleway_value_lane_dual">"自転車レーン、両方向"</string>
     <string name="quest_cycleway_value_track_dual">"自転車道、両方向"</string>
-    <string name="pref_category_advanced">"詳細"</string>
+    <string name="pref_category_advanced">"高度な設定"</string>
     <string name="quest_enabled">"有効"</string>
-    <string name="quest_type">"探求タイプ"</string>
+    <string name="quest_type">"クエストタイプ"</string>
     <string name="action_reset">"リセット"</string>
     <string name="undo_confirm_positive">"元に戻す"</string>
     <string name="undo_confirm_negative">"キャンセル"</string>
     <string name="quest_hasFeature_only">"のみ"</string>
-    <string name="quest_dietType_explanation_vegan">"ビーガンの食事には動物製品が含まれません (肉なし、乳製品なし、卵なし…)。"</string>
+    <string name="quest_dietType_explanation_vegan">"ヴィーガンの食事には動物製品が含まれません (肉、魚、鶏、乳製品、卵、蜂蜜…)。"</string>
     <string name="quest_dietType_explanation_vegetarian">"ベジタリアンの食事には肉、魚、鳥肉が含まれません。"</string>
-    <string name="quest_dietType_explanation">"この場所が適切な食事の選択肢を提供し、初心者を無視している場合にのみ、はいと答えてください。"</string>
+    <string name="quest_dietType_explanation">"この場所が適切な食事の選択肢を提供している場合にのみ、はいと答えてください"</string>
     <string name="quest_carWashType_title">"これはどんな洗車ですか?"</string>
     <string name="quest_carWashType_automated">"自動"</string>
     <string name="quest_carWashType_selfService">"セルフサービス"</string>
     <string name="quest_carWashType_service">"スタッフが車を清掃"</string>
-    <string name="enable_quest_confirmation_title">"この探求タイプを有効にしますか?"</string>
-    <string name="default_disabled_msg_go_inside">"このタイプの質問に答えるためにはその場所に入る必要があるため、質問はデフォルトで無効になっています。"</string>
+    <string name="enable_quest_confirmation_title">"このクエストタイプを有効にしますか?"</string>
+    <string name="default_disabled_msg_go_inside">"このクエストタイプの質問に答えるためにはおそらくその場所に入る必要があるため、質問はデフォルトで無効になっています。"</string>
     <string name="quest_housenumber_conscription_number">"徴収番号"</string>
     <string name="quest_housenumber_street_number_optional">"オリエンテーション番号 (オプション)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"反対側も自転車道…"</string>
@@ -352,7 +346,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
  車椅子がトイレに入り、使用することができるが、手すりや適合した洗面台が存在しないことがあります。"</string>
     <string name="map_btn_create_note">"新しいメモを作成"</string>
     <string name="create_new_note_unprecise">"さらにズームインしてメモを作成する"</string>
-    <string name="create_new_note_description">"ここにメモを残して、他のマッパーに問題を知らせることができます。 地図を移動してノートの位置を調整してください:"</string>
+    <string name="create_new_note_description">"ここにメモを残して、他のマッパーに問題を知らせることができます。地図を移動してノートの位置を調整してください:"</string>
     <string name="quest_generic_looks_like_this">"通常はこのように見えます:"</string>
     <string name="quest_surface_value_metal">"金属"</string>
     <string name="quest_cycleway_title2">"ここに自転車道はありますか? どんな種類ですか?"</string>
@@ -402,9 +396,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_construction_building_title">"この建物は完成していますか?"</string>
     <string name="questList_disabled_in_country">"%s では非表示"</string>
     <string name="quest_select_hint_most_specific">"最も近いものを選択してください："</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部の探索ではサードパーティから追加のデータをダウンロードします。特に一方通行の探索では westnordost.de にホストされているAPIに一方通行の候補を問い合わせます。&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部のクエストではサードパーティから追加のデータをダウンロードします。特に一方通行のクエストでは westnordost.de にホストされているAPIに一方通行の候補を問い合わせます。&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"いいえ（メモを残す）"</string>
-    <string name="pref_quests_reset">"探索の有効化と表示順を両方とも規定値にリセットしますか？"</string>
+    <string name="pref_quests_reset">"クエストの有効/無効と表示順を既定値にリセットしますか？"</string>
     <string name="quest_generic_item_invalid_value">"より具体的な値を選択してください。"</string>
     <string name="quest_buildingType_answer_multiple_types">"複数の用途で利用されている"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"この建物の主な利用を選択してください。例えば1階に店舗があって2階以上がアパートになっているならその建物はアパートです。"</string>
@@ -490,7 +484,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxheight_answer_noSign_question">"この場所には高いトラック(少なくとも4.5メートル / 15フィート)が通る余裕がありますか?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"その高さは変です。本当に正しいですか?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;ノートに添付した写真は開発者のサーバにアップロードされ、ノートが解決すればその数日後に削除されます。写真のメタデータはアップロードの前に除去されます。&lt;/p&gt;"</string>
+    <string name="quest_noteDiscussion_closed2">"%1$s, %2$s がクローズした"</string>
+    <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s が再オープンした"</string>
+    <string name="quest_noteDiscussion_hide2">"%1$s, %2$s が非表示にした"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;メモに添付した写真は開発者のサーバにアップロードされ、メモが解決されれば数日後に削除されます。写真のメタデータはアップロードの前に除去されます。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"全て選択解除"</string>
     <string name="quest_buildingType_retail_description">"レストランやカフェなどの建物を含む"</string>
     <string name="quest_openingHours_timeSelect_next">"次"</string>
@@ -501,9 +498,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_traffic_signals_button_title">"この信号には歩行者用の押ボタンがありますか?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"ここに何台のオートバイを駐車できますか?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"このオートバイの駐車場に屋根はありますか? (雨から守られていますか)"</string>
-    <string name="default_disabled_msg_maxspeed">"このタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つの探索を完了するのに非常に労力がかかるでしょう。"</string>
-    <string name="pref_title_quests_restore_hidden">"非表示にした探索を戻す"</string>
-    <string name="restore_hidden_success">"非表示にした探索 %d 件を戻しました"</string>
+    <string name="default_disabled_msg_maxspeed">"このクエストタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つのクエストを解決するのに非常に労力がかかるでしょう。"</string>
+    <string name="pref_title_quests_restore_hidden">"非表示にしたクエストを元に戻す"</string>
+    <string name="restore_hidden_success">"非表示にしたクエスト %d 件を元に戻しました"</string>
     <string name="on_level">"レベル %s です"</string>
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"歩道"</string>
@@ -515,7 +512,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="theme_automatic">"自動"</string>
     <string name="theme_light">"ライト"</string>
     <string name="theme_dark">"ダーク"</string>
-    <string name="theme_system_default">"システム規定値"</string>
+    <string name="theme_system_default">"システム既定値"</string>
     <string name="action_open_location">"他のアプリでこの場所を開く"</string>
     <string name="map_application_missing">"他の地図アプリがインストールされていません"</string>
     <string name="label_housenumber">"住居番号(号)"</string>
@@ -523,8 +520,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
     <string name="quest_ferry_pedestrian_title">"このフェリー航路は歩行者を運びますか？"</string>
     <string name="quest_ferry_motor_vehicle_title">"このフェリールートでは自動車を移動できますか？"</string>
-    <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとノートがより役に立ちます。"</string>
-    <string name="create_new_note_hint">"ノートは現地で話されている言語で書くのが最善ですが、そうでなければ英語で書いてください。"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとメモがより役に立ちます。"</string>
+    <string name="create_new_note_hint">"メモは現地の言語で書くのが理想的ですが、そうでなければ英語で書いてください。"</string>
     <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
     <string name="quest_leaf_type_needles">"針葉樹"</string>
     <string name="quest_leaf_type_broadleaved">"広葉樹"</string>
@@ -539,12 +536,13 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxweight_title">"ここの重量制限はいくつですか？"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"この重さは信じ難いです。本当に合っていますか？"</string>
     <string name="quest_maxweight_answer_other_sign">"違う標識です…"</string>
-    <string name="quest_maxweight_unsupported_sign_request_photo">"メモを残しますか？写真付きのメモを残せば、他のマッパーの助けになります"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"メモを残しますか？写真付きのメモを残せば、他のマッパーが対処する助けになります。"</string>
     <string name="quest_handrail_title">"この階段に手すりはありますか?"</string>
     <string name="about_summary_current_version">"現在のバージョン: %s"</string>
     <string name="quest_ref_answer_noRef">"番号は見当たらない…"</string>
     <string name="quest_street_side_puzzle_tutorial">"この図に示される道路はピンの位置での地図上の向きと同じように回転されています。"</string>
     <string name="quest_recycling_materials_title">"ここに出せばリサイクルできるものは何ですか？"</string>
+    <string name="quest_recycling_materials_note">"ここでリサイクルできるものがリストになければ、代わりにメモを残してください。"</string>
     <string name="quest_recycling_type_batteries">"電池"</string>
     <string name="quest_recycling_type_cans">"缶"</string>
     <string name="quest_recycling_type_clothes">"衣類"</string>
@@ -564,10 +562,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_determineRecyclingGlass_description_any_glass">"たいていの場合、強化ガラス、窓ガラス、ガラス器具、電球、鏡は回収されません。"</string>
     <string name="about_title_changelog">"バージョン履歴"</string>
     <string name="title_whats_new">"新着情報"</string>
-    <string name="about_title_rate">"アプリを評価"</string>
+    <string name="about_title_rate">"アプリを評価する"</string>
     <string name="about_summary_rate">"Google Playで"</string>
     <string name="about_title_donate">"寄付"</string>
     <string name="about_description_donate">"アプリの支援を検討してくださりありがとうございます! 現在の寄付を確認したり、寄付をするには各プラットフォームをタップしてください:"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"代わりにここをダウンロードする"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"現在のダウンロードを続ける"</string>
     <string name="quest_buildingType_garages_description">"異なるオーナー、借り手が使うための区切られた場所"</string>
     <string name="quest_tourism_information_title">"ここはどんなタイプの観光案内ですか?"</string>
     <string name="quest_tourism_information_office">"観光案内所"</string>
@@ -576,7 +576,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_tourism_information_map">"地図"</string>
     <string name="quest_tourism_information_guidepost">"道標"</string>
     <string name="quest_recycling_materials_answer_waste">"一般廃棄物用"</string>
-    <string name="user_profile">"自分のプロフィール"</string>
+    <string name="user_profile">"プロフィール"</string>
     <string name="user_login">"ログイン"</string>
     <string name="user_logout">"ログアウト"</string>
     <string name="osm_profile">"OSM プロフィール"</string>
@@ -585,14 +585,23 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="tutorial_welcome_to_osm_subtitle">"フリーなwikiの世界地図"</string>
     <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。
 このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など…)を自動で探します。"</string>
-    <string name="tutorial_solving_quests">"発見次第、不足している詳細が地図上に探求として表示される。
+    <string name="tutorial_solving_quests">"発見次第、不足している詳細情報が地図上にクエストとして表示されます。
 
-すぐに回答を始められ、ログイン後に回答を公開できます。"</string>
+すぐに回答を始めることができ、ログイン後に回答を公開できます。"</string>
+    <string name="tutorial_stay_safe">"不安なときは、いつでも「答えられない」と返答してメモを残すことができます。
+
+最後に、安全を確保することを忘れないでください : 周囲に気を配り、私有地には立ち入らないでください。"</string>
     <string name="tutorial_happy_mapping">"楽しい地図作成を！"</string>
-    <string name="user_quests_title">"解決済みの探索"</string>
+    <string name="achievements_empty">"まだ実績がありません"</string>
+    <string name="links_empty">"まだリンクがありません"</string>
+    <string name="quests_empty">"まだ編集を公開していません"</string>
+    <string name="unsynced_quests_not_logged_in_description">"まだ公開していない変更が %d 件あります。アップロードするには、ログインする必要があります。"</string>
+    <string name="user_quests_title">"解決済みのクエスト"</string>
     <string name="user_achievements_title">"実績"</string>
+    <string name="user_profile_title">"プロフィール"</string>
+    <string name="user_statistics_quest_wiki_link">"ドキュメント"</string>
     <string name="link_category_intro_title">"はじめに"</string>
-    <string name="link_category_intro_description">"OSMとそのコミュニティについて詳細を学ぶ"</string>
+    <string name="link_category_intro_description">"OSMとコミュニティについて詳細を知る"</string>
     <string name="link_category_editors_title">"貢献度"</string>
     <string name="link_category_editors_description">"編集とその他の方法によりOpenStreetMapへ貢献する"</string>
     <string name="link_category_maps_title">"地図"</string>
@@ -613,24 +622,27 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="link_welcome_mat_description">"OpenStreetMapの一般情報および組織としてOSMと連携する方法"</string>
     <string name="link_openinframap_description">"電力、通信、ガス、石油インフラを示す地図"</string>
     <string name="link_weeklyosm_description">"OpenStreetMapの世界で起きていることを伝える週刊ニュースブログ"</string>
-    <string name="achievement_first_edit_title">"最初の探求を解決した"</string>
-    <string name="achievement_first_edit_description">"OpenStreetMap コミュニティへようこそ! プロフィール画面では解決した探索タイプについての詳しい情報を確認することが出来ます。"</string>
+    <string name="achievement_first_edit_title">"初めてのクエスト解決"</string>
+    <string name="achievement_first_edit_description">"OpenStreetMap コミュニティへようこそ! プロフィール画面では解決した各種クエストについての詳しい情報を見ることが出来ます。"</string>
     <string name="achievement_surveyor_title">"測量士"</string>
+    <string name="achievement_surveyor_solved_X">"あなたは %d 件のクエストを解決しました！OSMやその他の地図関連アプリ、プロジェクトにリンクしている実績をさらにアンロックするために続けてください！"</string>
     <string name="achievement_regular_title">"常連"</string>
+    <string name="achievement_regular_description">"あなたはこのアプリでOSMに %d 日間貢献しました！常連の貢献者はOSMのバックボーンです、あなたの献身に感謝します！❤"</string>
     <string name="achievement_bicyclist_title">"自転車乗り"</string>
-    <string name="achievement_bicyclist_solved_X">"サイクリストのための探索を %d 件解決しました!"</string>
+    <string name="achievement_bicyclist_solved_X">"サイクリストのためのクエストを %d 件解決しました!"</string>
     <string name="achievement_wheelchair_title">"機動性"</string>
-    <string name="achievement_wheelchair_solved_X">"車椅子の人が街を移動するのを手助けする探索を %d 件解決しました！"</string>
+    <string name="achievement_wheelchair_solved_X">"車椅子の人が街を移動するのを手助けするクエストを %d 件解決しました！"</string>
     <string name="achievement_postman_title">"郵便屋"</string>
     <string name="achievement_building_title">"高層ビル"</string>
-    <string name="achievement_building_solved_X">"建物に関する探索を %d 件解決しました。このアプリは建物の種類が分かっている場合のみ住居番号について質問することを留意してください。"</string>
+    <string name="achievement_building_solved_X">"建物に関するクエストを %d 件解決しました。このアプリは建物の種類が分かっている場合のみ住居番号について尋ねることに留意してください。"</string>
     <string name="achievement_blind_title">"第六感"</string>
-    <string name="achievement_blind_solved_X">"視覚障害者のための探索を %d 件解決しました。"</string>
+    <string name="achievement_blind_solved_X">"視覚障害者のためのクエストを %d 件解決しました。"</string>
     <string name="achievement_pedestrian_title">"走者"</string>
-    <string name="achievement_pedestrian_solved_X">"歩行者のための探索を %d 件解決しました!"</string>
+    <string name="achievement_pedestrian_solved_X">"歩行者のためのクエストを %d 件解決しました!"</string>
     <string name="achievement_veg_title">"動物愛護"</string>
-    <string name="achievement_veg_solved_X">"肉なしの食事で生活している人のための探索を %d 件解決しました！"</string>
+    <string name="achievement_veg_solved_X">"肉なしの食事で生活している人のためのクエストを %d 件解決しました！"</string>
     <string name="achievement_car_title">"路上"</string>
+    <string name="achievement_car_solved_X">"通りのインフラの詳細を改善するクエストを%d 件解決し、OpenStreetMap に「通り」を掲載しました！"</string>
     <string name="unread_messages_message">"受信トレイに %d 件の未読メッセージがあります"</string>
     <string name="unread_messages_button">"受信トレイを開く"</string>
     <string name="action_about2">"アプリについて"</string>
@@ -640,6 +652,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_art_contributors_title">"アート寄稿者"</string>
     <string name="credits_projects_contributors_title">"StreetCompleteのために作成されたプロジェクト"</string>
     <string name="credits_main_contributors_title">"主な貢献者"</string>
+    <string name="user_statistics_filter_by_country">"国別"</string>
+    <string name="user_statistics_filter_by_quest_type">"タイプ別"</string>
+    <string name="user_profile_global_rank">"グローバル
+順位"</string>
+    <string name="user_profile_days_active">"日間
+アクティブ"</string>
     <string name="user_profile_achievement_levels">"実績
 レベル"</string>
     <string name="quest_address_street_no_named_streets">"名前の付いた通りには属していません"</string>
@@ -647,6 +665,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;地図を表示するためにベクタータイルを %1$s から取得します。詳しくは %1$s の &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; を参照してください。&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"スポンサー"</string>
     <string name="quest_board_type_history">"歴史"</string>
     <string name="quest_board_type_plants">"植物"</string>
     <string name="quest_board_type_wildlife">"野生生物"</string>
@@ -669,7 +688,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_cycleway_resurvey_title">"ここは今でも自転車が乗れる状況ですか？"</string>
     <string name="pref_title_resurvey_intervals">"再調査間隔"</string>
     <string name="resurvey_intervals_less_often">"質問頻度を減らす"</string>
-    <string name="resurvey_intervals_default">"初期設定"</string>
+    <string name="resurvey_intervals_default">"デフォルト"</string>
     <string name="resurvey_intervals_more_often">"質問頻度を増やす"</string>
     <string name="quest_is_defibrillator_inside_title">"この除細動器 (AED) は建物内にありますか?"</string>
     <string name="about_title_translate">"アプリの翻訳を手伝う"</string>
@@ -680,9 +699,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxweight_select_sign">"標識を選ぶ"</string>
     <string name="quest_steps_incline_title">"階段はどの方向に上っていますか?"</string>
     <string name="quest_steps_incline_up">"この方向に上る"</string>
-    <string name="quest_step_count_title">"階段の何段ですか?"</string>
+    <string name="quest_step_count_title">"階段は何段ありますか?"</string>
     <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
-    <string name="quest_traffic_signals_vibrate_title">"この信号機は視覚障害者のために、振動で安全に横断できることを知らせますか?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"この信号機は視覚障害者が安全に渡れるように、振動などで知らせるものがありますか?"</string>
     <string name="quest_buildingType_bungalow_description2">"小さな一軒家（サマーハウス、コテージ、キャビン…）"</string>
     <string name="quest_railway_crossing_barrier_title2">"この踏切にはどのような障壁がありますか？"</string>
     <string name="quest_railway_crossing_barrier_none2">"障壁なし"</string>
@@ -695,10 +714,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_clothes_container_operator_title">"この衣類収集箱への寄付は誰が受け取りますか?"</string>
     <string name="quest_charging_station_operator_title">"この充電ステーションはどこが運営していますか?"</string>
     <string name="achievement_rare_title">"宝探し"</string>
+    <string name="achievement_rare_solved_X">"めったに完了できない %d 件のクエストを発見して解決しました。おめでとうございます！"</string>
     <string name="achievement_citizen_title">"市民"</string>
-    <string name="achievement_citizen_solved_X">"街での日常生活に役立つ探索を %d 件解決しました！"</string>
+    <string name="achievement_citizen_solved_X">"街での日常生活に役立つクエストを %d 件解決しました！"</string>
     <string name="achievement_outdoors_title">"アウトドア"</string>
-    <string name="achievement_outdoors_solved_X">"アウトドア愛好家に役立つ探索を %d 件解決しました！"</string>
+    <string name="achievement_outdoors_solved_X">"アウトドア愛好家に役立つクエストを %d 件解決しました！"</string>
     <string name="quest_pedestrian_crossing_island">"横断歩道に交通島はありますか?"</string>
     <string name="quest_generic_answer_noSign">"標識はありません"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"車いす用のスロープは別のウェイとして表示されていますか?"</string>
@@ -706,6 +726,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_steps_ramp_separate_wheelchair_decline">"いいえ"</string>
     <string name="pref_title_sync2">"回答の自動アップロード"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"表面の説明"</string>
+    <string name="open_url">"URLを開く"</string>
     <string name="quest_buildingType_silo">"サイロ"</string>
     <string name="quest_buildingType_abandoned">"放棄された建物"</string>
     <string name="quest_buildingType_abandoned_description">"役割や役目が不明な使用されていない建物"</string>
@@ -726,7 +747,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description2">"自動車が通行できる車線 (両方) の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
-バス専用車線がある場合は、代わりにノートを残してください。"</string>
+バス専用車線がある場合は、代わりメモを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
     <string name="quest_crossing_type_marked">"横断歩道がある"</string>
     <string name="quest_parkingType_street_side">"路傍の駐車用区画"</string>
@@ -739,7 +760,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_shop_gone_replaced_answer_hint">"この場所の種類を入れて下さい。"</string>
     <string name="quest_shop_vacant_type_title">"以前は空き店舗でしたが、現在は何がありますか?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"レーンの数が反対方向と違います"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"通常通り、図の片側について適切な回答を選び、もう一方も同じようにしてください。自転車が両方向に通行できる一方通行路など、分かりづらい場合があるので、全ての選択肢に注意してください。"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"このクエストタイプは、地域によっては役に立たず、質問に答えるためにはおそらくその場所に入る必要があるため、デフォルトで無効になっています。"</string>
+    <string name="quest_dietType_explanation_kosher">"コーシャ製品は特別なルールに従って調理する必要があり、カシュルート認証機関が準拠していることを評価したものになります。"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"自転車専用レーンや自転車専用道路が全くない"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"通常通り、図の片側について適切な回答を選び、もう一方も同じようにしてください。
+
+全ての選択肢に注意してください : 自転車は両方向に通行できる一方通行路など、分かりづらい場合があります！"</string>
     <string name="quest_surface_value_clay">"クレー"</string>
     <string name="quest_surface_value_artificial_turf">"人工芝"</string>
     <string name="quest_surface_value_tartan">"全天候型"</string>
@@ -757,7 +783,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"プラスチックボトル・紙パックのみ"</string>
     <string name="team_mode">"チームモード"</string>
     <string name="team_mode_exit">"チームモードを終了"</string>
-    <string name="team_mode_description">"同じ範囲を複数人で一緒にマッピングする場合、チームモードを使うことで探索を参加者全員で分担できます。"</string>
+    <string name="team_mode_description">"同じ範囲を複数人で一緒にマッピングする場合、チームモードを使うことでクエストを参加者全員で分担できます。"</string>
     <string name="team_mode_team_size_hint">"チームモードは2人から12人で利用できます。"</string>
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
@@ -767,39 +793,69 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="toast_undo_unavailable">"この編集は既に同期されており、元に戻す事はできません"</string>
     <string name="created_note_action_title">"作成したメモ"</string>
     <string name="commented_note_action_title">"コメントしたメモ"</string>
+    <string name="hid_action_description">"非表示にしました"</string>
+    <string name="split_way_action_description">"道路を分割しました"</string>
+    <string name="deleted_poi_action_description">"削除しました"</string>
+    <string name="added_tag_action_title">"%s を追加しました"</string>
+    <string name="removed_tag_action_title">"%s を削除しました"</string>
+    <string name="changed_tag_action_title">"%s を更新しました"</string>
     <string name="pref_title_delete_cache">"キャッシュ削除"</string>
-    <string name="pref_title_delete_cache_summary">"幾つかのデータが古くなっていると考えられる場合"</string>
+    <string name="pref_title_delete_cache_summary">"データが古くなっていると思われる場合"</string>
+    <string name="delete_confirmation">"削除する"</string>
+    <string name="delete_cache_dialog_message">"クエストを含む全てのダウンロードした地図データを削除しますか？
+データは %1$s 日後にリフレッシュされ、未使用のデータは %2$s 日後に自動的に削除されます。"</string>
     <string name="pref_background_type_select">"背景タイプ選択"</string>
     <string name="background_type_map">"地図"</string>
     <string name="background_type_aerial_esri">"空中（Esriによる）"</string>
-    <string name="pref_title_quests2">"探索の選択と表示順"</string>
+    <string name="quest_barrier_type_bollard">"ボラード（係船柱）"</string>
+    <string name="quest_barrier_type_chain">"チェーン"</string>
+    <string name="quest_barrier_type_rope">"ロープ"</string>
+    <string name="quest_barrier_type_block">"大きな動かない物体"</string>
+    <string name="quest_barrier_type_log">"丸太"</string>
+    <string name="quest_barrier_type_kerb">"縁石"</string>
+    <string name="pref_title_quests2">"クエストの選択と表示順"</string>
+    <string name="pref_subtitle_quests">"%2$d 個中 %1$d 個が有効"</string>
+    <string name="no_location_permission_warning_title">"位置情報の権限"</string>
     <string name="quest_surface_value_woodchips">"ウッドチップ"</string>
+    <string name="no_camera_app">"利用可能なカメラアプリがありません"</string>
     <string name="quest_bollard_type_title">"どのようなタイプの杭（車止め）ですか？"</string>
     <string name="quest_bollard_type_rising">"昇降式"</string>
     <string name="quest_bollard_type_flexible">"フレキシブル素材"</string>
     <string name="quest_bollard_type_fixed">"固定式（移動不可）"</string>
+    <string name="about_title_faq">"FAQ"</string>
     <string name="pref_subtitle_quests_preset_name">"プリセット: %s"</string>
-    <string name="pref_quests_deselect_all">"全ての探索を選択解除しますか？"</string>
+    <string name="default_disabled_msg_roofShape">"屋根の形は道路から見えにくいことが多いため、このクエストタイプはデフォルトで無効になっています。また、このクエストタイプは非常に時間がかかります。ほとんどの場合、自宅で航空写真からマッピングする方が簡単で効率的です。"</string>
+    <string name="pref_quests_deselect_all">"全てのクエストを選択解除しますか？"</string>
     <string name="quest_buildingType_boathouse">"ボートハウス"</string>
+    <string name="action_search">"検索"</string>
     <string name="action_manage_presets">"プリセット管理"</string>
+    <string name="team_mode_team_size_label2">"何人でマッピングしますか？全員の携帯電話に同じ番号を入力してください。"</string>
     <string name="quest_kerb_height_no">"縁石なし"</string>
     <string name="quest_bollard_type_removable">"移動可能（鍵付き・鍵なし）"</string>
     <string name="quest_bollard_type_foldable2">"折りたたみ式（鍵付き・鍵なし）"</string>
+    <string name="no_search_results">"検索結果なし"</string>
     <string name="quest_presets_preset_add">"プリセット追加"</string>
     <string name="quest_presets_preset_name">"プリセット名"</string>
-    <string name="quest_presets_default_name">"既定"</string>
+    <string name="quest_presets_default_name">"デフォルト"</string>
     <string name="quest_presets_selected">"選択中"</string>
-    <string name="quest_presets_delete_message">"プリセット “%s”を削除しますか？探索の選択と表示順は失われ取り返しはつきません。"</string>
+    <string name="quest_presets_delete_message">"プリセット “%s”を削除しますか？クエストの選択と表示順は完全に失われます。"</string>
+    <string name="notification_syncing">"データ同期中..."</string>
     <string name="quest_buildingType_bridge">"建物間の橋（渡り廊下）"</string>
+    <string name="quest_dietType_explanation_halal">"ハラール製品は特別なルールに従って調理する必要があり、ハラール認証機関が準拠していることを評価したものになります。"</string>
+    <string name="quest_generic_answer_is_actually_steps">"階段あり"</string>
     <string name="quest_surface_value_concrete_plates">"コンクリート平板"</string>
     <string name="quest_surface_value_concrete_lanes">"コンクリート・レーン"</string>
-    <string name="quest_parking_access_title2">"ここに駐車できるのは誰ですか？有料または無料の場合があります"</string>
+    <string name="quest_diet_answer_no_food">"食事なし"</string>
+    <string name="short_no_answer_on_button">"いいえ"</string>
+    <string name="restore_confirmation">"元に戻す"</string>
+    <string name="restore_dialog_message">"非表示にした全てのクエストを元に戻しますか？"</string>
+    <string name="quest_parking_access_title2">"誰がここに駐車できますか？駐車場は有料と無料の場合があります。"</string>
     <string name="quest_access_yes">"一般向け"</string>
     <string name="quest_access_customers">"利用者向け（例：店舗利用者用）"</string>
     <string name="quest_access_private">"許可を受けた人のみ"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"この回収箱の集荷時間は今でも正しいですか？"</string>
-    <string name="pref_title_language_select">"言語選択"</string>
-    <string name="language_default">"システム規定値"</string>
+    <string name="pref_title_language_select">"言語を選択"</string>
+    <string name="language_default">"システム既定値"</string>
     <string name="select_street_parking_orientation">"車道に面する方向を選択して下さい："</string>
     <string name="select_street_parking_position">"位置を選択："</string>
     <string name="select_street_parking_no">"ここに何らかの標識または路面標識がありますか？"</string>
@@ -818,16 +874,41 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="street_parking_no_other_reasons">"明確な標識なし／駐車不可"</string>
     <string name="quest_address_house_number_label">"家屋番号："</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"はい（メモを残す）"</string>
+    <string name="quest_smoothness_title_excellent">"滑らかで平ら"</string>
+    <string name="quest_smoothness_title_good">"おおむね平ら"</string>
+    <string name="quest_smoothness_title_intermediate">"少しでこぼこ"</string>
+    <string name="quest_smoothness_title_bad">"でこぼこ"</string>
+    <string name="quest_smoothness_title_very_bad">"とてもでこぼこ"</string>
+    <string name="quest_smoothness_title_horrible">"とてもでこぼこで平らでない"</string>
+    <string name="quest_smoothness_title_very_horrible">"ほとんど通行不能"</string>
+    <string name="quest_smoothness_title_impassable">"通行不能"</string>
     <string name="quest_smoothness_description_excellent_paved">"デコボコやひび割れなし"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"ほとんど継ぎ目なし"</string>
     <string name="quest_smoothness_description_good_paved">"小さなひび割れ、隙間、補修または表面の小さな荒れ"</string>
-    <string name="achievement_lifesaver_solved_X">"緊急サービスと救急隊に役立つ探索を %d 件解決しました！"</string>
+    <string name="quest_smoothness_obstacle">"障害物あり"</string>
+    <string name="achievement_lifesaver_title">"ライフセーバー"</string>
+    <string name="achievement_lifesaver_solved_X">"緊急サービスと救急隊に役立つクエストを %d 件解決しました！"</string>
     <string name="quest_fuelSelfService_title">"このガソリンスタンドはセルフサービスを許可していますか？"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"このクエストタイプは、時間がかかるか、正しい選択をするのが難しいため、デフォルトでは無効になっています。 あなたがこの種のデータを追加することに真剣に取り組んでいる場合にのみ、このクエストタイプを有効にしてください。"</string>
+    <string name="no_camera_permission_warning_title">"カメラの権限"</string>
+    <string name="no_camera_permission_warning">"カメラで距離を測るにはカメラの権限が必要です。"</string>
+    <string name="ar_core_error_sdk_too_old">"このアプリは古くなっているため、更新してください。"</string>
+    <string name="ar_core_tracking_error_insufficient_light">"暗すぎます"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"動き過ぎです"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"十分な視覚的特徴がありません"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"カメラは他のアプリで使われています"</string>
     <string name="quest_playground_access_title2">"この遊び場を利用できるのはどんな人ですか？"</string>
+    <string name="ar_measure">"計測"</string>
+    <string name="default_disabled_msg_no_ar">"このデバイスではカメラでの計測をサポートしていないため、クエストを解決するには巻尺が必要です。"</string>
     <string name="quest_cycleway_width_title">"このサイクリングロードの道幅は？"</string>
     <string name="quest_road_width_title">"この道路の幅は？"</string>
+    <string name="about_description_donate_google_play2">"このアプリへの支援をご検討いただき、ありがとうございます！
+残念ながら、Google Playストアのポリシーにより、アプリ内で寄付につながるリンクを表示することができません。これに関連して、私たちのプロジェクトのホームへのリンクも許可されていません。"</string>
+    <string name="quest_tactilePaving_incorrect">"片側のみ"</string>
     <string name="unit_days">"日"</string>
     <string name="unit_hours">"時間"</string>
     <string name="unit_minutes">"分"</string>
+    <string name="at_any_time">"いつでも"</string>
     <string name="quest_smoking_no">"いいえ、禁止されています"</string>
     <string name="quest_smoking_outside">"屋外でのみ"</string>
     <string name="quest_smoking_separated">"区切られたエリアでのみ"</string>
@@ -837,6 +918,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_seating_indoor_only">"屋内席のみ"</string>
     <string name="quest_seating_outdoor_only">"屋外席のみ"</string>
     <string name="quest_seating_indoor_and_outdoor">"屋内席と屋外席が両方あり"</string>
+    <string name="no_camera_permission_toast">"カメラの権限がありません"</string>
     <string name="quest_accepts_cash_title2">"ここは現金での支払いが可能ですか？"</string>
     <string name="quest_address_street_title2">"ここは何通りにありますか？"</string>
     <string name="quest_airConditioning_title">"この場所は空調されていますか？"</string>
@@ -851,7 +933,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_dietType_halal_name_title2">"ここにハラール製品はありますか？"</string>
     <string name="quest_dietType_kosher_name_title2">"ここにコーシャ製品はありますか？"</string>
     <string name="quest_dietType_vegan_title2">"ヴィーガン向けのメニューはありますか？"</string>
-    <string name="quest_dietType_vegetarian_title2">"ベジタリアン向けのメニューがありますか？"</string>
+    <string name="quest_dietType_vegetarian_title2">"ベジタリアン向けのメニューはありますか？"</string>
     <string name="quest_existence_title2">"これは今もありますか？"</string>
     <string name="quest_generalFee_title2">"ここは入場料が必要ですか？"</string>
     <string name="quest_lit_title">"ここに街灯がありますか？"</string>
@@ -866,9 +948,14 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_accepts_cards">"クレジットまたはデビットカードは使用できますか？"</string>
     <string name="quest_accepts_cards_debit_and_credit">"デビットカードとクレジットカードの両方"</string>
     <string name="quest_accepts_cards_credit_only">"クレジットカードのみ"</string>
+    <string name="quest_accepts_cards_dedit_only">"デビットカードのみ"</string>
     <string name="quest_accepts_cards_unavailable">"デビットカードもクレジットカードもありません"</string>
     <string name="quest_air_pump_compressor_title">"ここはエアーコンプレッサーが使用できますか？"</string>
     <string name="quest_cycleway_value_none_and_oneway">"この向きでの自転車走行は禁止されている"</string>
+    <string name="map_btn_create_track">"新しい移動記録を作成"</string>
+    <string name="map_btn_stop_track">"移動記録を停止"</string>
+    <string name="quest_bicycle_rental_capacity_title">"レンタルサイクルスペースは何台ありますか？"</string>
+    <string name="quest_building_entrance_dead_end">"行き止まり、入り口なし"</string>
     <string name="action_overlays">"オーバーレイ"</string>
     <string name="quest_memorialType_title">"この場所にある記念碑はどのような種類ですか？"</string>
     <string name="quest_memorialType_statue">"彫像"</string>
@@ -884,7 +971,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="overlay_none">"なし"</string>
     <string name="overlay_lit">"街灯"</string>
     <string name="overlay_sidewalk">"歩道"</string>
-    <string name="quest_presets_rename">"改名"</string>
+    <string name="default_disabled_msg_overlay">"このクエストタイプは、このデータの入力と更新をより効果的かつ効率的に行えるオーバーレイがすでに存在するため、デフォルトてわは無効になっています。"</string>
+    <string name="quest_camp_type_tents_only">"テントのみ"</string>
+    <string name="pref_category_quests_overlays">"クエストとオーバーレイ"</string>
+    <string name="quest_presets_rename">"名前変更"</string>
     <string name="quest_presets_share">"共有"</string>
     <string name="quest_presets_delete">"削除"</string>
     <string name="urlconfig_qr_code_description">"このQRコードを読み込むとプリセットを共有できます。"</string>
@@ -892,7 +982,14 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="urlconfig_apply_message">"選択したプリセット %1$sを適用しますか？"</string>
     <string name="urlconfig_apply_message_overwrite">"注意：同じ名前のプリセットは上書きされます！"</string>
     <string name="urlconfig_switch_hint">"プリセットの変更は設定でいつでも可能です。"</string>
-    <string name="user_profile_current_week_title">"最近の７日間"</string>
+    <string name="user_profile_current_week_title">"過去７日間"</string>
+    <string name="user_profile_dates_mapped">"最近マップした日"</string>
     <string name="urlconfig_scan_qr_code_again2">"アプリのインストール後、再度QRコードを読み取るか、&lt;a href=\"%s\"&gt;このリンク&lt;/a&gt;をクリックしてプリセットを適用して下さい。"</string>
+    <string name="node_moved_too_far">"遠すぎます。メモを残すことを検討してください"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"明示的に歩道と共有、両方向"</string>
+    <string name="default_disabled_msg_seasonal">"このクエストタイプは、特定の時期に状況を再確認する必要がある場合があるため、デフォルトでは無効になっています。"</string>
+    <string name="quest_presets_duplicate">"複製"</string>
+    <string name="quest_tactilePaving_title_steps">"この階段の上下には点字ブロックはありますか？"</string>
+    <string name="quest_tactilePaving_steps_top">"上のみ"</string>
+    <string name="quest_tactilePaving_steps_bottom">"下のみ"</string>
 </resources>

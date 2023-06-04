@@ -161,20 +161,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Nº do edifício/lote",
                         "neighbourhood": "Vizinhança/bairro pequeno",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Local",
                         "postcode": "CEP",
                         "province": "Província",
                         "province!cn": "Província/Municipalidade/AR/SAR",
                         "province!jp": "Prefeitura",
                         "quarter": "Quadra",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Estado",
                         "street": "Rua",
                         "subdistrict": "Sub-Bairro",
                         "subdistrict!vn": "Ward/Comuna/Vila",
                         "suburb": "Bairro",
-                        "suburb!jp": "Ward",
                         "unit": "Unidade"
                     }
                 },
@@ -342,7 +339,7 @@
                     "label": "Área de amamentação",
                     "options": {
                         "no": "Nenhum",
-                        "room": "Quarto dedicado",
+                        "room": "Sala ou espaço dedicado",
                         "yes": "Possui área de amamentação"
                     }
                 },
@@ -505,7 +502,7 @@
                     "label": "Tipo"
                 },
                 "branch_brand": {
-                    "label": "Filial",
+                    "label": "Filial ou sucursal",
                     "terms": "sucursal,agência,departamento,seção,divisão,subsidiária,concessionário,concessionária"
                 },
                 "brand": {
@@ -568,7 +565,7 @@
                         "office": "Edifício de escritórios",
                         "outbuilding": "Edícula",
                         "pavilion": "Pavilhão",
-                        "public": "Edifício Público",
+                        "public": "Edifício público",
                         "residential": "Edifício Residencial",
                         "retail": "Edifício de comércio varejista",
                         "roof": "Telhado ou cobertura",
@@ -585,7 +582,7 @@
                         "temple": "Templo",
                         "terrace": "Renque de casas",
                         "train_station": "Edifício de estação de trem",
-                        "transportation": "Edifício de Transporte Público",
+                        "transportation": "Edifício de transporte público",
                         "university": "Edifício universitário",
                         "warehouse": "Armazém"
                     },
@@ -2699,7 +2696,7 @@
                     "terms": "numero da via"
                 },
                 "ref_room_number": {
-                    "label": "Número do quarto"
+                    "label": "Número da sala"
                 },
                 "ref_route": {
                     "label": "Número da rota"
@@ -2792,7 +2789,7 @@
                     "label": "Tipo"
                 },
                 "rooms": {
-                    "label": "Número de quartos ou apartamentos"
+                    "label": "Número de salas ou apartamentos"
                 },
                 "rotor/diameter": {
                     "label": "Diâmetro do rotor (em metros)",
@@ -5207,8 +5204,9 @@
                     "terms": "edifício de igreja,igreja,paróquia,lugar de adoração,templo,capela,catedral,prédio de igreja"
                 },
                 "building/civic": {
-                    "name": "Edifício de uso público",
-                    "terms": "edifício cívico"
+                    "name": "Edifício cívico",
+                    "terms": "edifício cívico",
+                    "aliases": "Edifício de uso cívico\nEdifício institucional"
                 },
                 "building/college": {
                     "name": "Edifício de escola técnica",
@@ -5317,8 +5315,9 @@
                     "terms": "edifício esportivo,anexo esportivo,pavilhão esportivo,vestiário"
                 },
                 "building/public": {
-                    "name": "Edifício Público",
-                    "terms": "edifício público,prédio público"
+                    "name": "Edifício público",
+                    "terms": "edifício público,prédio público",
+                    "aliases": "Prédio público"
                 },
                 "building/residential": {
                     "name": "Edifício residencial",
@@ -5382,9 +5381,8 @@
                     "name": "Edifício de estação de trem"
                 },
                 "building/transportation": {
-                    "name": "Edifício logístico",
-                    "terms": "edifício de transporte",
-                    "aliases": "Edifício de transporte"
+                    "name": "Edifício de transporte público",
+                    "terms": "edifício de transporte"
                 },
                 "building/university": {
                     "name": "Edifício universitário",
@@ -5742,8 +5740,8 @@
                     "terms": "saída de emergência"
                 },
                 "entrance/emergency_ward_entrance": {
-                    "name": "Entrada do quarto de emergência",
-                    "terms": "entrada do quarto de emergência"
+                    "name": "Entrada da sala de emergência",
+                    "terms": "departamento de acidentes e emergência,departamento de emergência,sala de emergência,enfermaria de emergência"
                 },
                 "entrance/main": {
                     "name": "Entrada principal",
@@ -5930,9 +5928,9 @@
                     "name": "Travessia"
                 },
                 "highway/crossing/traffic_signals": {
-                    "name": "Travessia de pedestres com semáforo",
+                    "name": "Faixa de pedestres com semáforo",
                     "terms": "sinal de travessia de pedestres,travessia de pedestres com sinal,travessia de bicicletas com sinal",
-                    "aliases": "Travessia de pedestres com sinal de tráfego"
+                    "aliases": "Travessia de pedestres com semáforo\nTravessia de pedestres com sinal de tráfego"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "Faixa de pedestres sem semáforo",
@@ -6031,7 +6029,7 @@
                     "terms": "dê a preferência,dar a preferência,preferência,preferencial"
                 },
                 "highway/living_street": {
-                    "name": "Via Compartilhada",
+                    "name": "Via compartilhada",
                     "terms": "rua de convivência,rua preferencial a pedestres,espaço compartilhado,rua compartilhada,vila,beco"
                 },
                 "highway/milestone": {
@@ -6219,7 +6217,7 @@
                     "terms": "balão de retorno,cul de sac,cul-de-sac,rotunda,rotatória,giradouro,retorno,rótula"
                 },
                 "highway/turning_loop": {
-                    "name": "Balão de Retorno (com Ilha Central)",
+                    "name": "Balão de Retorno (com ilha central)",
                     "terms": "retorno"
                 },
                 "highway/unclassified": {
@@ -6329,8 +6327,9 @@
                     "terms": "eixo de elevador interno"
                 },
                 "indoor/room": {
-                    "name": "Quarto",
-                    "terms": "quarto"
+                    "name": "Sala",
+                    "terms": "antecâmara,ante-sala,átrio,cela,câmara,saguão,vestíbulo,sala interna,ambiente,quarto",
+                    "aliases": "Ambiente\nCômodo\nEspaço\nQuarto"
                 },
                 "indoor/stairs": {
                     "name": "Caixa de escada interior",
@@ -6388,11 +6387,13 @@
                     "terms": "campus,escola,colégio,área educacional,faculdade,universidade"
                 },
                 "landuse/farm": {
-                    "name": "Área de lavoura"
+                    "name": "Área de lavoura",
+                    "aliases": "Plantação\nFazenda\nÁrea de cultivo\nÁrea agrícola"
                 },
                 "landuse/farmland": {
-                    "name": "Área de Lavoura",
-                    "terms": "campo agrícola,agricultura,campanha,quinta,agrícola,rural,terra arável,fazenda,lavoura"
+                    "name": "Área de lavoura",
+                    "terms": "campo agrícola,agricultura,campanha,quinta,agrícola,rural,terra arável,fazenda,lavoura",
+                    "aliases": "Plantação\nFazenda\nÁrea de cultivo\nÁrea agrícola"
                 },
                 "landuse/farmyard": {
                     "name": "Pátio de fazenda",
@@ -7706,8 +7707,9 @@
                     "name": "Administradora imobiliária ou escritório de locação"
                 },
                 "office/quango": {
-                    "name": "Escritório de Organização Não Governamental Quase Autônoma",
-                    "terms": "ong,não governamental,quase-autônoma,organização"
+                    "name": "Escritório de autarquia autônoma",
+                    "terms": "ong,não governamental,quase-autônoma,organização",
+                    "aliases": "Autarquia autônoma\nAutoridade administrativa independente\nOrganização não governamental quase autônoma\nQuango"
                 },
                 "office/religion": {
                     "name": "Escritório religioso",
@@ -8522,8 +8524,9 @@
                     "terms": "cannabis,canábis,cânabis,canabis,liamba,marijuana,suruma,maconha,ganja,ganza"
                 },
                 "shop/car": {
-                    "name": "Revenda de Automóveis",
-                    "terms": "concessionária de automóveis,carro,automóveis,loja de carros,carros novos"
+                    "name": "Concessionária de carros",
+                    "terms": "concessionária de automóveis,carro,automóveis,loja de carros,carros novos",
+                    "aliases": "Revenda de automóveis\nLoja de revenda de automóveis\nLoja de automóveis\nLoja de carros"
                 },
                 "shop/car/second_hand": {
                     "name": "Concessionária de carros usados",
@@ -8858,8 +8861,9 @@
                     "terms": "financiadora,casa de empréstimos,loja de empréstimos"
                 },
                 "shop/motorcycle": {
-                    "name": "Revenda de Motos",
-                    "terms": "concessionária de motos"
+                    "name": "Loja de motocicletas",
+                    "terms": "concessionária de motos",
+                    "aliases": "Loja de motos\nRevenda de motos\nMoto peças\nConcessionária de motos"
                 },
                 "shop/motorcycle_repair": {
                     "name": "Oficina de motocicletas",
@@ -9322,7 +9326,7 @@
                     "terms": "lombada tipo ii,lomba,quebra-molas,ondulação transversal,lombada tipo 2,quebra mola"
                 },
                 "traffic_calming/island": {
-                    "name": "Ilha Divisória",
+                    "name": "Ilha divisória",
                     "terms": "ilha separadora de tráfego,canteiro"
                 },
                 "traffic_calming/mini_bumps": {

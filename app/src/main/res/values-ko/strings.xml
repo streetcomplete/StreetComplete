@@ -6,7 +6,7 @@
     <string name="pref_category_communication">"통신"</string>
     <string name="pref_category_display">"화면"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"지정한 메가바이트 단위 용량만큼 외부 저장소에 지도 타일 캐시를 저장합니다"</string>
+    <string name="pref_tilecache_size_message">"맵 타일 캐시를 위해 위해 외부 저장소에 예약된 메가바이트 단위 공간"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"모든 참고 보기"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"질문이 아닌 참고 표시"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"질문이 아닌 참고 무시"</string>
@@ -19,9 +19,9 @@
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
-    <string name="quest_leave_new_note_description">"다른 편집자들의 의견을 받아 문제 해결의 실마리를 찾도록 공개된 참고를 작성하거나 그냥 이 기기에서만 숨길 수 있습니다."</string>
-    <string name="quest_leave_new_note_yes">"예"</string>
-    <string name="quest_leave_new_note_no">"아니오, 그냥 숨기기"</string>
+    <string name="quest_leave_new_note_description">"다른 매퍼가 이 위치를 해결하도록 공개 메모를 남길까요, 아니면 이 퀘스트를 숨길 수도 있습니다"</string>
+    <string name="quest_leave_new_note_yes">"메모 남기기"</string>
+    <string name="quest_leave_new_note_no">"숨기기"</string>
     <string name="quest_streetName_title">"이 도로의 이름은 무엇인가요?"</string>
     <string name="quest_streetName_description">"도로명 표지판에 표기된 명칭 그대로, 약자는 풀어서 입력하세요:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"도로명 표지판은 도로의 한쪽 끝에만 있는 경우가 종종 있습니다. 또한, 더 큰 도로에 속한 주변 도로의 경우에는 도로명 표지판이 없을 수도 있다는 점을 상기하세요. 집이 있는 도로의 대다수는 이름이 있습니다."</string>
@@ -35,17 +35,17 @@
     <string name="quest_openingHours_chooseMonthsTitle">"월 선택"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"요일 선택"</string>
     <string name="quest_openingHours_24_7_confirmation">"24시간 내내 쉬는 날 없이 열려 있나요?"</string>
-    <string name="quest_noteDiscussion_title">"이 참고에 기여할 수 있나요?"</string>
+    <string name="quest_noteDiscussion_title">"이 메모에 기여할 수 있는 내용이 있나요?"</string>
     <string name="quest_noteDiscussion_no">"아니오, 숨깁니다"</string>
     <string name="quest_noteDiscussion_anonymous">"익명 사용자"</string>
     <string name="confirmation_discard_title">"대답을 취소하시겠습니까?"</string>
     <string name="confirmation_discard_positive">"버리기"</string>
-    <string name="action_download">"이 구역의 과제 찾기"</string>
+    <string name="action_download">"이곳의 데이터 내려받기"</string>
     <string name="action_upload">"답변 올리기"</string>
     <string name="no_changes">"답변을 하지 않았습니다"</string>
     <string name="close">"닫기"</string>
-    <string name="download_error">"과제를 찾는 중 오류 발생"</string>
-    <string name="upload_error">"답변을 올리는 중 오류가 발생했습니다"</string>
+    <string name="download_error">"퀘스트를 찾는 중 오류 발생"</string>
+    <string name="upload_error">"퀘스트를 올리는 중 오류가 발생했습니다"</string>
     <string name="download_area_too_big">"더 확대해 주세요"</string>
     <string name="confirmation_cancel_prev_download_title">"지금 하는 탐색을 멈추고 대신 여기에서 찾을까요?"</string>
     <string name="turn_on_location_request">"위치가 꺼져 있습니다. 설정 화면을 여시겠습니까?"</string>
@@ -135,12 +135,12 @@
     <string name="quest_name_answer_noName_confirmation_title">"정말로 이름이 없나요?"</string>
     <string name="quest_name_noName_confirmation_positive">"예, 이름 없음"</string>
     <string name="quest_openingHours_add_times">"영업 시간 추가"</string>
-    <string name="crash_message">"오류 보고서를 개발자에게 보내 주실 수 있으신가요?"</string>
+    <string name="crash_message">"오류 보고서를 개발자에게 보내시겠어요?"</string>
     <string name="crash_title">"이런, StreetComplete가 오류로 종료되었어요!"</string>
     <string name="crash_compose_email">"이메일 보내기"</string>
     <string name="no_email_client">"설치된 이메일 앱이 없습니다."</string>
     <string name="pref_title_keep_screen_on">"화면 계속 켜기"</string>
-    <string name="download_server_error">"과제를 찾는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
+    <string name="download_server_error">"퀘스트를 찾는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
     <string name="upload_server_error">"답변을 업로드하는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
     <string name="quest_generic_hasFeature_yes">"예"</string>
     <string name="quest_generic_hasFeature_no">"아니오"</string>
@@ -180,7 +180,7 @@
     <string name="quest_manySports_confirmation_generic">"다용도 시설"</string>
     <string name="quest_sport_manySports_confirmation_title">"여러 운동종목을 선택했습니다"</string>
     <string name="quest_toiletsFee_title">"화장실 요금이 있나요?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"횡단보도 양쪽 모두에 점자 타일이 있나요?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"횡단보도 양쪽 모두에 점자 블럭이 있나요?"</string>
     <string name="quest_source_dialog_title">"현장에서 확인한 게 맞나요?"</string>
     <string name="quest_source_dialog_note">"현장 조사로 얻은 정보만 입력해야 합니다."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"자전거 주차장에 (비를 막아주는) 지붕이 있나요?"</string>
@@ -344,7 +344,7 @@
 휠체어가 화장실에 들어와 사용할 수는 있으나, 손잡이가 없거나 전용 세면대가 없는 경우 '제한 있음'을 선택하세요."</string>
     <string name="map_btn_create_note">"새 참고 만들기"</string>
     <string name="create_new_note_unprecise">"참고를 만들려면 더 확대하세요"</string>
-    <string name="create_new_note_description">"참고를 남겨 이 곳의 문제를 다른 기여자들에게 알릴 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요:"</string>
+    <string name="create_new_note_description">"메모를 남겨 이 곳의 문제를 다른 기여자들에게 알릴 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요:"</string>
     <string name="quest_generic_looks_like_this">"주로 이렇게 생겼습니다:"</string>
     <string name="quest_surface_value_metal">"금속"</string>
     <string name="quest_cycleway_title2">"여기에 자전거 도로가 있나요? 어떤 종류인가요?"</string>
@@ -566,7 +566,7 @@
     <string name="quest_recycling_glass_title">"유리병만 넣을 수 있나요, 아니면 모든 종류의 유리를 넣을 수 있나요?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"넣을 수 없는 유리의 예시: 강화유리, 창문, 유리 제품(그릇 등), 전구, 거울 등."</string>
     <string name="about_title_changelog">"버전 역사"</string>
-    <string name="title_whats_new">"무엇이 바뀌었나요?"</string>
+    <string name="title_whats_new">"새로운 기능"</string>
     <string name="about_title_rate">"이 앱 평가하기"</string>
     <string name="about_summary_rate">"구글 플레이에서"</string>
     <string name="about_title_donate">"기부"</string>
@@ -599,7 +599,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="tutorial_stay_safe">"대답에 확신이 들지 않으면, 언제든지 \"답할 수 없음\"을 선택해 참고를 남기세요.
 
 마지막으로, 안전하게 활동하세요: 주변 상황에 유의하고, 사유지에 들어가지 마세요."</string>
-    <string name="tutorial_happy_mapping">"즐거운 지도 제작 시간 보내세요!"</string>
+    <string name="tutorial_happy_mapping">"즐거운 매핑 되세요!"</string>
     <string name="achievements_empty">"아직 달성한 업적이 없습니다"</string>
     <string name="links_empty">"아직 링크가 없습니다"</string>
     <string name="quests_empty">"아직 아무 답변도 업로드하지 않았습니다"</string>
@@ -670,7 +670,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="achievement_building_title">"고층 건물"</string>
     <string name="achievement_building_solved_X">"건물 관련 과제를 %d 개 해결했습니다.
 이 앱은 건물의 용도가 결정된 후에만 건물번호를 물어본다는 점을 참고하세요."</string>
-    <string name="achievement_blind_title">"여섯 번째 감각"</string>
+    <string name="achievement_blind_title">"육감"</string>
     <string name="achievement_blind_solved_X">"시각 장애인을 위한 과제를 %d개 해결했습니다."</string>
     <string name="achievement_pedestrian_title">"달리기 선수"</string>
     <string name="achievement_pedestrian_solved_X">"걸어다니는 사람을 위한 과제를 %d개 해결했습니다!"</string>
@@ -694,8 +694,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="user_statistics_filter_by_quest_type">"과제 유형별"</string>
     <string name="user_profile_global_rank">"전 세계
 순위"</string>
-    <string name="user_profile_local_rank">"%s
-순위"</string>
+    <string name="user_profile_local_rank">"%s등"</string>
     <string name="user_profile_days_active">"활동한
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
@@ -1132,6 +1131,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"이 일방통행로에서 자전거 양방향 통행이 불가능한 게 맞나요? 확실하지 않으면, 도로 끝에 표지판이 있는지 확인하세요."</string>
     <string name="link_valhalla_description">"메모리 사용량이 매우 작은 길찾기 엔진, 교통수단 혼용, 등시선 등 지원."</string>
     <string name="link_backofyourhand_description">"여러분의 동네를 얼마나 알고 계신가요? 도로 찾기를 통해 당신의 지식을 시험해보세요."</string>
+    <string name="link_notesreview_description">"자신과 다른 사람들이 만든 노트를 편리하게 보고, 필터링하고, 댓글을 달 수 있습니다. 노트에 포함된 정보를 iD 또는 JOSM을 사용해 지도에 표시하면 많은 문제를 해결할 수 있습니다"</string>
     <string name="quest_accepts_cards">"이곳에서 신용카드나 체크카드를 사용할 수 있나요?"</string>
     <string name="quest_accepts_cards_debit_and_credit">"신용카드와 체크카드 모두"</string>
     <string name="quest_accepts_cards_credit_only">"신용카드만"</string>
@@ -1140,17 +1140,21 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_barrier_type_gate_any_size">"문, 크기 무관"</string>
     <string name="quest_air_pump_compressor_title">"이곳에 사용할 수 있는 공기 펌프가 있나요?"</string>
     <string name="quest_step_count_stile_hint">"정상까지 도달하는 계단 수입니다. 양쪽이 다른 경우 더 높은 숫자를 지정합니다."</string>
+    <string name="quest_shoulder_explanation2">"갓길 또는 고장 차선은 명확하게 표시된 긴급 정차 차선입니다. 갓길로 지정된 구역은 반드시 전체 폭이 포장되어 있는 것은 아니며, 차가 차선에서 완전히 정차할 수 있을 만큼 넓지 않을 수도 있습니다."</string>
     <string name="quest_cycleway_value_none_and_oneway">"없음, 이 방향으로 자전거 통행 금지"</string>
     <string name="map_btn_create_track">"새 경로 기록 생성"</string>
     <string name="map_btn_stop_track">"경로 기록 정지"</string>
     <string name="quest_bicycle_rental_capacity_title">"이곳에 자전거 대여 장소가 얼마나 있나요?"</string>
     <string name="quest_bicycle_rental_type_title">"어떤 자전거 대여점인가요?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"자전거를 고정하는 도킹 스테이션"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"지정 장소 (자전거 개별 잠금)"</string>
     <string name="quest_bicycle_rental_type_human">"유인 자전거 대여점"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"자전거를 대여할 수 있는 자전거 판매점"</string>
     <string name="quest_bicycle_shop_repair_title">"이곳에서 자전거 수리를 받을 수 있나요?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"이곳에서 중고 자전거를 판매하나요?"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"아니오, 새 자전거만 판매합니다"</string>
     <string name="quest_bicycle_shop_second_hand_new_and_used">"네, 새 자전거와 같이 판매합니다"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"예, 독점적으로"</string>
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"자전거를 판매하지 않음"</string>
     <string name="quest_building_entrance_title">"이 건물의 입구는 어떤 종류인가요?"</string>
     <string name="quest_building_entrance_main">"공공 건물의 주 출입구"</string>
@@ -1233,7 +1237,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="name_label">"이름:"</string>
     <string name="unknown_shop_title">"다른 유형의 장소"</string>
     <string name="quest_address_answer_no_address">"주소 없음"</string>
-    <string name="quest_bicycle_barrier_installation_title">"이 사이클 배리어를 열 수 있습니까(열쇠가 있든 없든)?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"이 사이클 배리어를 키 유무에 관계없이 열 수 있나요?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"고정형"</string>
     <string name="quest_barrier_bicycle_installation_openable">"분리형"</string>
     <string name="quest_barrier_bicycle_installation_removable">"이동할 수 있는"</string>
@@ -1269,7 +1273,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="node_moved">"%s이(가) 옮김"</string>
     <string name="move_node_description">"맵을 드래그하여 피처를 올바른 위치에 배치합니다. 확대/축소 기능을 사용하고 가능한 한 정확하게 시도하십시오. 표시된 위치는 표시된 것보다 정확하지 않을 수 있습니다."</string>
     <string name="move_node_action_description">"옮겼습니다"</string>
-    <string name="quest_cycleway_value_shoulder">"없음, 그러나 어깨는 자전거 타는 사람에게 사용 가능"</string>
+    <string name="quest_cycleway_value_shoulder">"없음, 그러나 갓길은 자전거 타는 사람에게 사용 가능"</string>
     <string name="quest_placeName_no_name_answer">"이름표가 없다..."</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"너비가 비현실적입니다. 너비를 잴 때, 주차 차로와 자전거 차선을 포함해 연석 끝에서 끝까지 재야 한다는 점을 유념하세요."</string>
     <string name="overlay_cycleway">"자전거 도로"</string>
@@ -1299,4 +1303,32 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="street_parking_staggered_on_street">"교차로의 거리에서"</string>
     <string name="street_parking_staggered_half_on_kerb">"부분적으로 교대로 거리에 있음"</string>
     <string name="quest_traffic_signals_sound_description">"힌트: 스피커를 찾으십시오. 버튼을 통해 모든 소리 신호를 활성화할 수 있는 것은 아닙니다."</string>
+    <string name="quest_presets_duplicate">"복제하다"</string>
+    <string name="label_block">"차단하다"</string>
+    <string name="quest_address_answer_block">"한 블럭 안에 있습니다..."</string>
+    <string name="quest_address_answer_no_block">"블록 내에 있지 않습니다…"</string>
+    <string name="quest_surface_value_mud">"영구 진흙"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"여기는 화장실이 없어요"</string>
+    <string name="unknown_surface_title">"기타 표면"</string>
+    <string name="overlay_surface">"표면"</string>
+    <string name="overlay_path_surface_segregated">"자전거와 보행 부분이 나눠져있음"</string>
+    <string name="quest_crossing_title2">"여기에 교차로가 있나요?"</string>
+    <string name="quest_crossing_yes">"예(예: 여기에서 연석이 낮아지거나 표시가 있음)"</string>
+    <string name="quest_crossing_no">"아니요, 하지만 건널 수 있습니다"</string>
+    <string name="quest_crossing_prohibited">"아니요, 횡단이 금지되거나 불가능합니다"</string>
+    <string name="quest_hairdresser_title">"어떤 고객들이 이 미용실에 방문하나요?"</string>
+    <string name="quest_hairdresser_male_and_female">"누구나"</string>
+    <string name="quest_hairdresser_female_only">"여성"</string>
+    <string name="quest_hairdresser_male_only">"남성"</string>
+    <string name="quest_hairdresser_not_signed">"서명되지 않음"</string>
+    <string name="quest_amenityCover_title">"지붕이 있나요(비를 막을 수 있나요)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"연석 확장"</string>
+    <string name="lane_narrowing_traffic_calming_island">"교통섬"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"발뺌"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"연석 확장 + 교통섬"</string>
+    <string name="lane_narrowing_traffic_calming_none">"여기에 좁아진 차선이 없음"</string>
+    <string name="quest_tactilePaving_title_steps">"이 계단의 상단과 하단에 점자 블록이 설치되어 있나요?"</string>
+    <string name="quest_tactilePaving_steps_top">"위쪽에만 있음"</string>
+    <string name="quest_tactilePaving_steps_bottom">"아래쪽에만 있음"</string>
+    <string name="overlay_addresses_no_entrance">"입구가 아님"</string>
 </resources>

@@ -163,26 +163,26 @@
                         "housenumber": "123",
                         "housenumber!jp": "Budova číslo/Miesto čislo",
                         "neighbourhood": "Susedstvo",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Miesto s názvom",
                         "postcode": "PSČ",
                         "province": "Provincia",
                         "province!cn": "Provincia/Obec/Administratívna oblasť",
                         "province!jp": "Prefektúra",
                         "quarter": "Štvrť",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Štát",
                         "street": "Ulica",
                         "subdistrict": "Podoblasť",
                         "subdistrict!vn": "Okrsok/Komúna/Mestečko",
                         "suburb": "Predmestie",
-                        "suburb!jp": "Okrsok",
                         "unit": "Bytová jednotka"
                     },
                     "terms": "adresa,adresný bod,adresy,adresné body,ulica,číslo,adresny bod,cislo"
                 },
                 "admin_level": {
                     "label": "Administratívna úroveň"
+                },
+                "advertising": {
+                    "label": "Typ"
                 },
                 "aerialway": {
                     "label": "Typ"
@@ -285,11 +285,15 @@
                     "terms": "celkové stúpanie"
                 },
                 "athletics_pitch": {
+                    "label": "Udalosť",
                     "options": {
-                        "hammer_throw": "Hod kladivom"
+                        "hammer_throw": "Hod kladivom",
+                        "long_jump": "Dlhý skok",
+                        "triple_jump": "Trojitý skok"
                     }
                 },
                 "athletics_track": {
+                    "label": "Udalosť",
                     "options": {
                         "sprint": "Šprint"
                     }
@@ -301,7 +305,9 @@
                     "label": "Type",
                     "options": {
                         "bumper_car": "Autodrom",
+                        "maze": "Labyrint",
                         "roller_coaster": "Horská dráha",
+                        "train": "Turistický vlak",
                         "water_slide": "Tobogán"
                     }
                 },
@@ -370,7 +376,8 @@
                     "label": "Typ",
                     "options": {
                         "detention": "Zadržiavacia nádrž",
-                        "evaporation": "Vyparovacia nádrž"
+                        "evaporation": "Vyparovacia nádrž",
+                        "infiltration": "Infiltrácia"
                     }
                 },
                 "bath/open_air": {
@@ -382,6 +389,7 @@
                 "bath/type": {
                     "label": "Typ",
                     "options": {
+                        "hot_spring": "Termálny prameň",
                         "lake": "Jazero",
                         "thermal": "Termálne kúpele"
                     }
@@ -411,6 +419,12 @@
                         "shed": "Uzamykateľný prístrešok pre bicykle",
                         "stands": "Stojan (opiera sa oň rám bicykla)",
                         "wall_loops": "Stojan na koleso"
+                    }
+                },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "Nie",
+                        "yes": "Áno"
                     }
                 },
                 "bin": {
@@ -495,7 +509,9 @@
                 "building": {
                     "label": "Budova",
                     "options": {
+                        "apartments": "Bytový dom",
                         "barn": "Stodola",
+                        "cabin": "Chata",
                         "construction": "Budova vo výstavbe",
                         "cowshed": "Kravín",
                         "dormitory": "Internát",
@@ -4878,6 +4894,9 @@
                 "golf/lateral_water_hazard": {
                     "name": "Postranná vodná prekážka",
                     "terms": "postranna vodna prekazka"
+                },
+                "golf/path": {
+                    "name": "Golfová cestička pre peších"
                 },
                 "golf/rough": {
                     "name": "Vysoká tráva",

@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "建築物號碼／地號",
                         "neighbourhood": "鄰",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "地方",
                         "postcode": "郵遞區號",
                         "province": "省",
                         "province!cn": "省／直轄市／自治區／特別行政區",
                         "province!jp": "州",
                         "quarter": "地方",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "州",
                         "street": "街道",
                         "subdistrict": "分區",
                         "subdistrict!vn": "行政區／社區／小市鎮",
                         "suburb": "細區",
-                        "suburb!jp": "行政區",
+                        "suburb!jp": "政令市 (Ward)",
                         "unit": "單位"
                     },
                     "terms": "地址,住址"
@@ -457,6 +457,14 @@
                         "wall_loops": "自行車駐輪式停放架"
                     }
                 },
+                "bicycle_road": {
+                    "label": "自行車街道",
+                    "options": {
+                        "undefined": "否",
+                        "yes": "是"
+                    },
+                    "terms": "單車街道"
+                },
                 "bike_ride": {
                     "label": "停自行車轉乘",
                     "terms": "停自行車轉乘"
@@ -536,6 +544,10 @@
                     "label": "類型",
                     "placeholder": "預設"
                 },
+                "bridge/ref": {
+                    "label": "橋樑編號",
+                    "terms": "橋編號"
+                },
                 "bridge/support": {
                     "label": "類型"
                 },
@@ -606,6 +618,10 @@
                         "warehouse": "倉庫"
                     },
                     "terms": "建築"
+                },
+                "building/colour": {
+                    "label": "立面顏色",
+                    "terms": "立面顏色"
                 },
                 "building/flats": {
                     "label": "戶數",
@@ -2258,6 +2274,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "最低速限"
                 },
+                "mobile": {
+                    "label": "手機號碼",
+                    "placeholder": "+31 42 123 4567",
+                    "terms": "手機號碼"
+                },
                 "model": {
                     "label": "型號",
                     "terms": "型號"
@@ -3160,6 +3181,14 @@
                         "iala-b": "IALA A",
                         "other": "其他"
                     }
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "內部設施",
+                    "options": {
+                        "marina": "是",
+                        "marina_no_facilities": "否"
+                    },
+                    "terms": "內部設施"
                 },
                 "seamark/mooring/category": {
                     "label": "類別"
@@ -4661,8 +4690,8 @@
                     "terms": "禮物盒"
                 },
                 "amenity/grave_yard": {
-                    "name": "墓地",
-                    "terms": "墳場,墓地"
+                    "name": "教堂墓地",
+                    "terms": "教堂,墳場,墓地"
                 },
                 "amenity/grit_bin": {
                     "name": "沙盒",
@@ -6492,7 +6521,8 @@
                     "terms": "移動人行道"
                 },
                 "highway/footway/crossing": {
-                    "name": "行人穿越道"
+                    "name": "行人穿越道",
+                    "terms": "行人穿越道"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "有行人燈號的十字路口",
@@ -6856,7 +6886,7 @@
                     "terms": "棕土,棕地,再利用,拆除"
                 },
                 "landuse/cemetery": {
-                    "name": "殯葬用地",
+                    "name": "墓地",
                     "terms": "公墓、墓地、墓園、納骨塔、墳墓"
                 },
                 "landuse/churchyard": {
@@ -7188,6 +7218,10 @@
                 "leisure/marina": {
                     "name": "遊艇碼頭",
                     "terms": "遊艇碼頭"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "遊艇停泊處",
+                    "terms": "遊艇停泊處"
                 },
                 "leisure/miniature_golf": {
                     "name": "迷你高爾夫",

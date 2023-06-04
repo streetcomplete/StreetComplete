@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Číslo budovy/Číslo parcely",
                         "neighbourhood": "Část městské čtvrti, obce",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Místo",
                         "postcode": "Poštovní směrovací číslo",
                         "province": "Provincie",
                         "province!cn": "Provincie/Obec/Administrativní oblast/Zvláštní admin. oblast",
                         "province!jp": "Prefektura",
                         "quarter": "Čtvrť",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Stát (v rámci federace)",
                         "street": "Ulice",
                         "subdistrict": "Subdistrikt",
                         "subdistrict!vn": "Okrsek/Komuna/Městys",
                         "suburb": "Městská část (obvod)",
-                        "suburb!jp": "Okrsek",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Jednotka"
                     },
                     "terms": "umístění"
@@ -295,6 +295,7 @@
                 "athletics_pitch": {
                     "label": "Událost",
                     "options": {
+                        "discus_throw": "Disk",
                         "hammer_throw": "Hod kladivem",
                         "high_jump": "Skok do výšky",
                         "javelin_throw": "hod Oštěpem",
@@ -456,6 +457,14 @@
                         "wall_loops": "Držák kol (podpírá pouze kolo)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Silnice pro bicykly",
+                    "options": {
+                        "undefined": "Ne",
+                        "yes": "Ano"
+                    },
+                    "terms": "cyklistický bulvár,cyklostezka,cyklistická ulice,cyklistická cesta,silnice pro kola,kolo"
+                },
                 "bike_ride": {
                     "label": "Parkoviště B+R",
                     "terms": "b+r,b a r,vezmi si kolo a jeď,mhd,přestup,dojíždějící,kapacitní,odstavné,hromadná doprava,na kraji města,b + r,parkandride,b/r,vem si kolo a jeď,městská,metro,tram,bus"
@@ -535,6 +544,10 @@
                     "label": "Typ",
                     "placeholder": "Výchozí"
                 },
+                "bridge/ref": {
+                    "label": "Číslo mostu",
+                    "terms": "označení mostu,most,označení,číslo"
+                },
                 "bridge/support": {
                     "label": "Typ"
                 },
@@ -605,6 +618,10 @@
                         "warehouse": "Skladiště"
                     },
                     "terms": "struktura"
+                },
+                "building/colour": {
+                    "label": "Barva fasády",
+                    "terms": "barva budovy,barva omítky"
                 },
                 "building/flats": {
                     "label": "Jednotky",
@@ -775,7 +792,8 @@
                     "label": "Druh předmětů",
                     "options": {
                         "coins": "Mince",
-                        "comics": "Komiksy"
+                        "comics": "Komiksy",
+                        "stamps": "Známky"
                     }
                 },
                 "colour": {
@@ -811,7 +829,9 @@
                     "label": "Odbornost"
                 },
                 "contact/facebook": {
-                    "placeholder": "https://www.facebook.com/LocalBusiness"
+                    "label": "Uživatelské jméno Facebooku nebo URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness",
+                    "terms": "facebook,uživatelské jméno facebooku,url,url adresa,adresa url,jméno,uživatel facebooku"
                 },
                 "contact/webcam": {
                     "label": "URL webkamery",
@@ -1023,8 +1043,10 @@
                         "coffee_shop": "Kavárna",
                         "dessert": "Dezerty",
                         "donut": "Donuty",
+                        "filipino": "Filipínská",
                         "fish": "Ryba",
                         "french": "Francouzská",
+                        "georgian": "Gruzínská",
                         "german": "Německá",
                         "greek": "Řecká",
                         "hot_dog": "Párek v rohlíku",
@@ -1041,6 +1063,7 @@
                         "mexican": "Mexická",
                         "pankcake": "Lívance",
                         "pasta": "Těstoviny",
+                        "peruvian": "Peruánská",
                         "pizza": "Pizza",
                         "polish": "Polská",
                         "portuguese": "Portugalská",
@@ -1053,8 +1076,10 @@
                         "steak_house": "Steaková restaurace",
                         "sushi": "Suši",
                         "taiwanese": "Tchajwanská",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Thajská",
                         "turkish": "Turecká",
+                        "ukrainian": "Ukrajinská",
                         "vietnamese": "Vietnamská"
                     },
                     "terms": "strava,druhy jídel"
@@ -1276,7 +1301,12 @@
                     "label": "Typ"
                 },
                 "dock": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "drydock": "Suchý dok",
+                        "floating": "Plovoucí suchý dok",
+                        "tidal": "Ponorný přílivový dok"
+                    }
                 },
                 "dog": {
                     "label": "Psi",
@@ -1438,19 +1468,27 @@
                     "options": {
                         "dry": "Vyhrazená síť (normálně suchá)",
                         "no": "Ne",
+                        "wet": "Připojeno k síti (trvale připojeno)",
                         "yes": "Neznámý typ"
                     }
                 },
                 "fire_service_inlet": {
+                    "label": "Tvar",
                     "options": {
                         "pillar": "Sloup/pozemek",
                         "pipe": "Potrubí s uzávěrem",
+                        "underground": "Podzemní",
                         "wall": "Stěna"
-                    }
+                    },
+                    "terms": "obrys,hydrant,sloup,potrubí,podzemní,požární"
                 },
                 "fire_sprinkler": {
+                    "label": "Vstup požárního postřikovače",
                     "options": {
+                        "dry": "Vyhrazená síť (normálně suchá)",
                         "no": "Ne",
+                        "pre-action": "Připojeno k síti (systém před akcí)",
+                        "wet": "Připojeno k síti (trvale připojeno)",
                         "yes": "Neznámý typ"
                     }
                 },
@@ -1862,7 +1900,8 @@
                         "critical": "Hraniční: Pouze pro zkušené jezdce a koně. Zjevné překážky. Mosty by měly být pečlivě zkontrolovány.",
                         "dangerous": "Nebezpečné: Udržitelné pouze pro zkušené jezdce a koně a pouze za dobrého počasí. Sesednout.",
                         "demanding": "Používejte s opatrností: Nerovná cesta, občas těžké průchody.",
-                        "difficult": "Obtížné: cesta úzká a odkrytá. Může obsahovat překážky na cestě a těsné průchody."
+                        "difficult": "Obtížné: cesta úzká a odkrytá. Může obsahovat překážky na cestě a těsné průchody.",
+                        "impossible": "Neprůchodné: cesta nebo most nevhodný pro koně. Příliš úzká, nedostatečná podpora, překážky jako žebříky. Ohrožení života."
                     },
                     "placeholder": "Obtížné, nebezpečné…",
                     "terms": "koně,obtížnost,jízda na koni,náročnost,kůň,koňská,jezdec,jezdectví"
@@ -1965,7 +2004,8 @@
                     "terms": "křížit,odbočka,odbočit,spojit,spojení,křížení,kruhový objezd,mimoúrovňová,úrovňová"
                 },
                 "kerb": {
-                    "label": "Obrubník"
+                    "label": "Obrubník",
+                    "terms": "okraj chodníku,okraj silnice"
                 },
                 "kerb/height": {
                     "label": "Výška"
@@ -1975,7 +2015,12 @@
                     "terms": "kuchyň,kuchyńská,kuchyňská linka,místo na vaření,vaření"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Typy nádrží"
+                    "label": "Typy nádrží",
+                    "options": {
+                        "arm": "Lázeň pro paže",
+                        "face": "Lázeň pro obličej",
+                        "foot": "Lázeň pro nohy"
+                    }
                 },
                 "label": {
                     "label": "Štítek"
@@ -2228,6 +2273,11 @@
                     "label": "Minimální povolená rychlost",
                     "placeholder": "20, 30, 40...",
                     "terms": "minimální rychlost,povolená rychlost,rychle,nejnižší,nejpomaleji,nejpomalejší,omezení rychlosti"
+                },
+                "mobile": {
+                    "label": "Mobilní telefon",
+                    "placeholder": "+420 123 456 789",
+                    "terms": "telefonní číslo"
                 },
                 "model": {
                     "label": "Model",
@@ -2516,6 +2566,7 @@
                         "parallel": "Rovnoběžně s ulicí",
                         "perpendicular": "Kolmo k ulici (~90°)"
                     },
+                    "terms": "směr parkování,orientace,parkovací směr,parkovací orientace,parkování",
                     "types": {
                         "parking:left:orientation": "Po levé straně",
                         "parking:right:orientation": "Po pravé straně"
@@ -2765,7 +2816,8 @@
                         "lamp": "Připojena ke sloupu",
                         "pillar": "Volně stojící schránka",
                         "wall": "Namontovaná na zdi"
-                    }
+                    },
+                    "terms": "lampa,pilíř,komunita,zeď,metr"
                 },
                 "power": {
                     "label": "Typ"
@@ -3130,6 +3182,14 @@
                         "other": "Ostatní"
                     }
                 },
+                "seamark/harbour/category_marina": {
+                    "label": "Domácí zařízení",
+                    "options": {
+                        "marina": "Ano",
+                        "marina_no_facilities": "Ne"
+                    },
+                    "terms": "přístav,loď,člun,zařízení,domácí"
+                },
                 "seamark/mooring/category": {
                     "label": "Kategorie"
                 },
@@ -3315,6 +3375,7 @@
                     "label": "Sporty",
                     "options": {
                         "american_football": "Americký fotbal",
+                        "athletics": "Lehká atletika",
                         "badminton": "Badminton",
                         "baseball": "Baseball",
                         "basketball": "Basketbal",
@@ -3322,28 +3383,35 @@
                         "bmx": "BMX",
                         "boules": "Koule",
                         "bowls": "Bowls",
+                        "canoe": "Kanoistika",
                         "climbing": "Horolezectví",
                         "cricket": "Kriket",
+                        "curling": "Curling",
                         "cycling": "Cyklistika",
                         "disc_golf": "Disc Golf",
+                        "dog_racing": "Psí závody",
                         "equestrian": "Jezdecké sporty",
                         "fitness": "Fitness cvičení",
                         "free_flying": "Paragliding / Závěsné létání",
                         "futsal": "Futsal",
+                        "gaelic_games": "Gaelské hry",
                         "golf": "Golf",
                         "gymnastics": "Gymnastika",
                         "handball": "Týmová házená",
                         "horse_racing": "Dostihy",
                         "ice_hockey": "Lední hokej",
                         "ice_skating": "Bruslení na ledě",
+                        "ice_stock": "Bavorský curling",
                         "karting": "Motokárové závody",
                         "motocross": "Motokros",
                         "motor": "Motoristický sport",
+                        "multi": "Nespecifikované jiné sporty",
                         "netball": "Netball",
                         "padel": "Padel",
                         "pelota": "Pelota",
                         "rugby_union": "Patnáctkové ragby",
                         "running": "Běh",
+                        "scuba_diving": "Potápění",
                         "shooting": "Střelba",
                         "skateboard": "Skateboard",
                         "skiing": "Lyžování",
@@ -3355,6 +3423,19 @@
                         "tennis": "Tenis",
                         "volleyball": "Volejbal"
                     }
+                },
+                "sport/sport_ice": {
+                    "label": "Sporty"
+                },
+                "sport/sport_pub": {
+                    "label": "Sporty",
+                    "terms": "sport,sportovní"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "Sporty"
+                },
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sporty"
                 },
                 "stars": {
                     "label": "Hvězdiček",
@@ -3499,7 +3580,7 @@
                         "paving_stones": "Dlažba",
                         "salt": "Sůl",
                         "sand": "Písek",
-                        "sett": "Dlažba",
+                        "sett": "Dlažební kostky",
                         "unhewn_cobblestone": "Dlažební kostky (neotesané, nezaoblené)",
                         "unpaved": "Nezpevněný",
                         "wood": "Dřevo",
@@ -4405,7 +4486,8 @@
                     "terms": "doktor,rodinný lékař,rodinný praktický lékař,rodinný doktor"
                 },
                 "amenity/doctors/gynaecology": {
-                    "name": "Porodník / gynekolog"
+                    "name": "Porodník / gynekolog",
+                    "terms": "vajíčko,gynekolog,gynekologie,gynekologický,porodnice,porodní,porodnictví,ovulace,reprodukční,lékař pro ženy,lékař na ženy"
                 },
                 "amenity/doctors/haematology": {
                     "name": "Hematolog",
@@ -4526,9 +4608,13 @@
                     "name": "Rychlé občerstvení",
                     "terms": "restaurace,s sebou"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel rychlé občerstvení",
+                    "terms": "snídaně,lox"
+                },
                 "amenity/fast_food/burger": {
                     "name": "Burger rychlé občerstvení",
-                    "terms": "snídaně,večeře,stolování,odvoz,jídlo,gril,oběd,stůl"
+                    "terms": "snídaně,stolovat,stolování,večeře,drive-in,jídlo,gril,oběd,stůl"
                 },
                 "amenity/fast_food/cafeteria": {
                     "name": "Kafeterie",
@@ -4536,7 +4622,7 @@
                 },
                 "amenity/fast_food/chicken": {
                     "name": "Kuřecí rychlé občerstvení",
-                    "terms": "snídaně,kantýna,večeřet,jídelna,večeře,odjezd,jíst,gril,oběd,stůl"
+                    "terms": "snídaně,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/fast_food/donut": {
                     "name": "Kiosek s donuty",
@@ -4544,7 +4630,7 @@
                 },
                 "amenity/fast_food/fish_and_chips": {
                     "name": "Fish & Chips rychlé občerstvení",
-                    "terms": "snídaně,kavárna,kafé,večeřet,jídelna,večeře,zajížďka,jíst,gril,oběd,stůl,hranolky"
+                    "terms": "snídaně,kavárna,kafe,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,hranolky"
                 },
                 "amenity/fast_food/hot_dog": {
                     "name": "Párek v rohlíku rychlé občerstvení",
@@ -4559,19 +4645,23 @@
                 },
                 "amenity/fast_food/kebab": {
                     "name": "Kebab rychlé občerstvení",
-                    "terms": "bar,snídaně,kavárna,kafé,jídelna,večeřet,jídlo,večeře,odjezd,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/fast_food/mexican": {
                     "name": "Mexické rychlé občerstvení",
-                    "terms": "snídaně,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,tacos,burritos,enchiladas,fajitas,nachos,tortilly,salsa,tamales,quesadillas"
+                    "terms": "snídaně,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,tacos,burritos,enchiladas,fajitas,nachos,tortilly,salsa,tamales,quesadillas"
                 },
                 "amenity/fast_food/pizza": {
                     "name": "Pizza rychlé občerstvení",
-                    "terms": "večeřet,večeře,jízda,jíst,oběd,stůl,hluboká mísa,tenká kůrka,plátek"
+                    "terms": "stolovat,stolování,večeře,drive-in,jíst,oběd,stůl,hluboká mísa,tenká kůrka,plátek"
                 },
                 "amenity/fast_food/sandwich": {
                     "name": "Sandwichové rychlé občerstvení",
-                    "terms": "snídaně,kavárna,kafe,večeřet,jídelní,večeře,zajížďka,jíst,gril,oběd,stůl"
+                    "terms": "snídaně,kavárna,kafe,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Kuřecí křídla rychlé občerstvení",
+                    "terms": "kuře,stolovat,stolování,večeře,jíst,oběd,stůl"
                 },
                 "amenity/ferry_terminal": {
                     "name": "Terminál přívozu/trajektu"
@@ -4620,6 +4710,10 @@
                     "name": "Zmrzlina",
                     "terms": "zmrzka,sorbet,sherbet,mražený,jogurt"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Prodej mraženého jogurtu",
+                    "terms": "mrogurt,mrojo,mražený jogurt,zmrzlina,jogurt,zmrzka"
+                },
                 "amenity/internet_cafe": {
                     "name": "Internetová kavárna",
                     "terms": "kyberkavárna,taxifon,telebutika,káva,kavárna,net,lanhouse"
@@ -4631,6 +4725,10 @@
                 "amenity/kindergarten": {
                     "name": "Prostor školky / předškolního zařízení",
                     "terms": "mateřská škola,školka,předškolní"
+                },
+                "amenity/kneipp_water_cure": {
+                    "name": "Kneippova lázeň",
+                    "terms": "lázeň nohou,hydroterapie,kneippova péče,kneippova hydroterapie,kneippismus"
                 },
                 "amenity/language_school": {
                     "name": "Jazyková škola",
@@ -4888,89 +4986,103 @@
                 },
                 "amenity/restaurant": {
                     "name": "Restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/american": {
                     "name": "Americká restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/asian": {
                     "name": "Asijská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/barbeque": {
                     "name": "Grilovací restaurace",
-                    "terms": "bar,grilovací,jídelna,večeře,večeřet,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,grilovací,jídelna,stolování,stolovat,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Čínská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/french": {
                     "name": "Francouzská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
+                },
+                "amenity/restaurant/georgian": {
+                    "name": "Gruzínská restaurace",
+                    "terms": "bar,snídaně,stolovat,stolování,večeře,drive-in,jíst,oběd,stůl"
                 },
                 "amenity/restaurant/german": {
                     "name": "Německá restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/greek": {
                     "name": "Řecká restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,káva,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,gyros,pitas,olivy"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,gyros,pitas,olivy"
                 },
                 "amenity/restaurant/indian": {
                     "name": "Indická restaurace",
-                    "terms": "bar,snídaně,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,kari"
+                    "terms": "bar,snídaně,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,kari"
                 },
                 "amenity/restaurant/italian": {
                     "name": "Italská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,těstoviny,pizza"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,těstoviny,pizza"
                 },
                 "amenity/restaurant/japanese": {
                     "name": "Japonská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/korean": {
-                    "name": "Korejská restaurace"
+                    "name": "Korejská restaurace",
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "Mexická restaurace",
-                    "terms": "bar,snídaně,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,tacos,burritos,enchiladas,fajitas,nachos,tortilly,salsa,tamales,quesadillas"
+                    "terms": "bar,snídaně,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,tacos,burritos,enchiladas,fajitas,nachos,tortilly,salsa,tamales,quesadillas"
                 },
                 "amenity/restaurant/noodle": {
                     "name": "Nudlová restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,ramen nudle,polévka,soba nudle,celofánové nudle,rýžové nudle"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,ramen nudle,polévka,soba nudle,celofánové nudle,rýžové nudle"
                 },
                 "amenity/restaurant/pizza": {
                     "name": "Pizzerie",
-                    "terms": "bar,večeřet,jídelna,večeře,drive-in,jíst,oběd,stůl,hluboká miska,tenká kůrka,plátek"
+                    "terms": "bar,stolovat,stolování,večeře,drive-in,jíst,oběd,stůl,hluboká miska,tenká kůrka,plátek"
+                },
+                "amenity/restaurant/ramen": {
+                    "name": "Restaurace Ramen",
+                    "terms": "japonská,nudle,ramen-ten,ramen-ya,polévka"
                 },
                 "amenity/restaurant/seafood": {
                     "name": "Restaurace s mořskými rybami",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,ryby,mlži,měkkýši,korýši,škeble,ústřice,humři,kraby,krevety,hlavonožci,chobotnice"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,ryby,mlži,měkkýši,korýši,škeble,ústřice,humři,kraby,krevety,hlavonožci,chobotnice"
                 },
                 "amenity/restaurant/spanish": {
-                    "name": "Španělská restaurace"
+                    "name": "Španělská restaurace",
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steakhouse",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl,steakhouse,chophouse,hovězí maso"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl,steakhouse,chophouse,hovězí maso"
                 },
                 "amenity/restaurant/sushi": {
                     "name": "Sushi restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/thai": {
                     "name": "Thajská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/restaurant/turkish": {
                     "name": "Turecká restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrajinská restaurace",
+                    "terms": "bar,snídaně,stolovat,stolování,večeře,drive-in,jíst,oběd,stůl"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamská restaurace",
-                    "terms": "bar,snídaně,kavárna,kafe,kantýna,večeřet,jídelna,večeře,drive-in,jíst,gril,oběd,stůl"
+                    "terms": "bar,snídaně,kavárna,kafe,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
                 },
                 "amenity/sanitary_dump_station": {
                     "name": "Výlevka pro karavany",
@@ -5462,7 +5574,8 @@
                     "terms": "brána se závorou,závora na cestě,tyč závory,zvedací brána,závora přes cestu"
                 },
                 "barrier/log": {
-                    "name": "Překážka ve formě spadlého stromu"
+                    "name": "Překážka ve formě spadlého stromu",
+                    "terms": "spadlý strom"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Zábrana proti motorkám",
@@ -5792,7 +5905,8 @@
                     "terms": "sociální"
                 },
                 "club/scout": {
-                    "name": "Skautský oddíl"
+                    "name": "Skautský oddíl",
+                    "terms": "průvodce,průkopník,skauting"
                 },
                 "club/sport": {
                     "name": "Sportovní klub",
@@ -6075,6 +6189,10 @@
                 "emergency/fire_hydrant": {
                     "name": "Požární hydrant",
                     "terms": "požární hydrant,hasičský hydrant,pumpa"
+                },
+                "emergency/fire_service_inlet": {
+                    "name": "Přípojka hasičského sboru",
+                    "terms": "přívod stavebního hydrantu,nabitá stoupačka,přívod suchého stoupacího potrubí,suché stoupací potrubí,fdc,přívod požární ochrany,přívod požárního sprinkleru,přívod stoupačky,stoupací potrubí,přívod mokré stoupačky,mokré stoupací potrubí"
                 },
                 "emergency/first_aid_kit": {
                     "name": "Lékárnička první pomoci",
@@ -6595,7 +6713,7 @@
                     "terms": "sledování průjezdu,automatická mýtná brána,výběr mýta,dálniční portál,čtecí zařízení,průjezdná mýtná brána,kamera,kamery,spz,čtečka spz,mýto,placená dálnice,placená silnice,radar"
                 },
                 "highway/track": {
-                    "name": "Nezpevněná lesní, polní cesta",
+                    "name": "Lesní / polní cesta",
                     "terms": "4wd,4x4,zemědělská silnice,atv,vozová cesta,polní cesta,dvoukolejka,farmářská cesta,požární cesta,lesní cesta,cesta v lese,náhon na čtyři kola,odvozní cesta,nákladní cesta,vysoká světlá výška,džíp,těžba dřeva,těžební linka,offroad,terénní,zarostlý,primitivní,čtyřkolka,ranch road,vyjetá kolej,dvoukolejné,kolejné,neudržované,vozová stezka,lesní stezka"
                 },
                 "highway/traffic_mirror": {
@@ -7140,6 +7258,18 @@
                     "name": "Lukostřelba",
                     "terms": "luk a šíp,kuše"
                 },
+                "leisure/pitch/athletics": {
+                    "name": "Atletický stadion"
+                },
+                "leisure/pitch/athletics/discus_throw": {
+                    "name": "Sektor pro hod diskem"
+                },
+                "leisure/pitch/athletics/hammer_throw": {
+                    "name": "Sektor pro hod kladivem"
+                },
+                "leisure/pitch/athletics/javelin_throw": {
+                    "name": "Hřiště pro hod oštěpem"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Hřiště pro australský fotbal",
                     "terms": "australský,afl,fotbal"
@@ -7333,6 +7463,15 @@
                 "leisure/track": {
                     "name": "Závodní dráha (ne pro motorsport)",
                     "terms": "jezdit na kole,pes,chrt,kůň,koně,chrti,chrtů,závod*,dráha"
+                },
+                "leisure/track/athletics": {
+                    "name": "Atletická dráha"
+                },
+                "leisure/track/athletics/running": {
+                    "name": "Bežecká atletická dráha"
+                },
+                "leisure/track/athletics/sprint": {
+                    "name": "Sprinterská dráha"
                 },
                 "leisure/track/cycling": {
                     "name": "Cyklistická dráha",
@@ -9587,8 +9726,8 @@
                     "terms": "freska,nástěnná malba"
                 },
                 "tourism/artwork/sculpture": {
-                    "name": "Skulptura",
-                    "terms": "socha,plastika"
+                    "name": "Socha",
+                    "terms": "skulptura,plastika"
                 },
                 "tourism/artwork/statue": {
                     "name": "Socha (osoba nebo zvíře)",

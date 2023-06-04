@@ -9,8 +9,8 @@
     <string name="pref_tilecache_size_message">"Maparen lauzak kanpo-biltegian gordetzeko espazioa megabytetan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Erakutsi ohar guztiak"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Galdera forma ez dituzten oharrak erakusten ere"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Galdera forma ez dituzten oharrak ezikusten"</string>
-    <string name="pref_title_map_cache">"Maparen cachearen tamaina"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Galdera forma ez dituzten oharrak ez ikuso"</string>
+    <string name="pref_title_map_cache">"Maparen katxearen tamaina"</string>
     <string name="map_btn_gps_tracking">"Jarraitu nazazu"</string>
     <string name="map_attribution_osm">"© OpenStreetMap laguntzaileak"</string>
     <string name="quest_generic_otherAnswers">"Beste erantzunak…"</string>
@@ -1224,6 +1224,7 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_address_street_street_name_label">"Kalearen izena:"</string>
     <string name="quest_address_street_hint2">"Ukitu kalea mapan hautatzeko"</string>
     <string name="quest_bicycle_incline_title">"Zein norantz doa hemen gorantz?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Gora eta beherako saltoak"</string>
     <string name="quest_drinking_water_type_title">"Nola hornitzen da edateko ura hemen?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Beste ur iturria"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Ur iturriak ur-zorrotada txikia ematen du"</string>
@@ -1241,6 +1242,25 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_bicycle_barrier_installation_title">"Ireki al daiteke bizikleta-hesi hori (giltzarekin ala gabe)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Konponduta"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Ireki daiteke"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Ken daiteke"</string>
+    <string name="quest_buildingType_guardhouse">"Guardetxea"</string>
+    <string name="quest_genericRef_title">"Zein da hemengo identifikazio-zenbakia?"</string>
+    <string name="quest_sidewalk_answer_different">"Espaloiaren egoera ezberdina da"</string>
+    <string name="about_title_get_involved">"Parte hartu"</string>
+    <string name="pref_category_quests_overlays">"Bilaketak eta gainjartzeak"</string>
+    <string name="quest_presets_rename">"Aldatu izena"</string>
+    <string name="quest_presets_share">"Partekatu"</string>
+    <string name="quest_presets_delete">"Ezabatu"</string>
+    <string name="urlconfig_qr_code_description">"Utzi besteei QR kode hau eskaneatzen zure aurrezarpena partekatzeko."</string>
+    <string name="urlconfig_as_url">"Edo URL gisa:"</string>
+    <string name="urlconfig_url_copied">"URLa arbelean kopiatu da"</string>
+    <string name="urlconfig_apply_title">"Aplikatu aurrezarpena"</string>
+    <string name="urlconfig_apply_message">"%1$s aurrez ezarritakoa aplikatu eta hautatu nahi duzu?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Oharra: izen bereko aurrezarpena gainidatziko da!"</string>
+    <string name="urlconfig_switch_hint">"Ezarpenetan aurrezarpenak alda ditzakezu edozein unetan."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Bi mailatako bizikleta-euskarria"</string>
+    <string name="user_profile_current_week_title">"Azken 7 egunak"</string>
+    <string name="user_profile_dates_mapped">"Duela gutxi mapatu dituzun egunak"</string>
     <string name="quest_cycleway_value_advisory_lane">"bidegorri abisua"</string>
     <string name="urlconfig_scan_qr_code_again2">"Aplikazioa instalatu ondoren, eskaneatu QR kodea berriro edo egin klik &lt;a href=\"%s\"&gt;esteka honetan&lt;/a&gt; aurrez ezarpena aplikatzeko."</string>
     <string name="confirmation_replace_shop_title">"Leku desberdin batean al dago orain?"</string>
@@ -1255,6 +1275,7 @@ Orain mugitu?"</string>
     <string name="node_moved">"%s-k eraman du"</string>
     <string name="move_node_description">"Arrastatu mapa ezaugarria posizio egokian kokatzeko. Erabili zoom funtzioa eta saiatu ahalik eta zehatzena izaten. Kontuan izan bistaratzen den kokapenak zehaztasun txikiagoa izan dezakeela."</string>
     <string name="move_node_action_description">"Nodoa mugitu duzu"</string>
+    <string name="quest_cycleway_value_shoulder">"bat ere ez, baina txirrindulariek espaloia erabil dezakete"</string>
     <string name="quest_placeName_no_name_answer">"Ez dago izenen seinalerik..."</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Zabalera hori sinesgaitza dirudi. Gogoan izan, bihurguneen arteko zabalera izan behar dela, kaleko aparkalekuak, bizikleta bideak eta abar barne."</string>
     <string name="overlay_cycleway">"Bizikleta bideak"</string>
@@ -1268,7 +1289,48 @@ Orain mugitu?"</string>
     <string name="separate_cycleway_segregated">"Bizikleta eta oinezko bidea bereizita"</string>
     <string name="separate_cycleway_exclusive">"Bizikletentzako bide esklusiboa"</string>
     <string name="separate_cycleway_with_sidewalk">"Bidegorria aldamenean espaloia duena (zintarri batek bereizita)"</string>
+    <string name="cycleway_reverse_direction">"Alderantzikatu bizikleta bidearen norabidea"</string>
+    <string name="cycleway_reverse_direction_warning">"Beste norabidean doan bidegorria oso arraroa da."</string>
+    <string name="cycleway_reverse_direction_toast">"Sakatu zein alde alderantzizkatu"</string>
+    <string name="separate_cycleway_path">"Bidea edo pista"</string>
+    <string name="quest_fireHydrant_type_pipe">"Hodia"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"esplizituki partekatutako espaloia, norabide bikoa"</string>
+    <string name="measure_info_title">"Zehaztasun optimoa lortzea"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore-k batzuetan (hasieran) lurra orain dagoena baino pixka bat beherago edo altuagoa zegoela suposatzen du. Honek neurketa-errore bat sartzen du, telefonoa zenbat eta gehiago okertu horizonterantz handiagoa dena.&lt;/p&gt;
+&lt;p&gt;Ezarri bakoitza hasierako eta amaierako puntua telefonoa zuzenean beherantz zuzentzen duzun bitartean (gezi zuria goitik ikus dezazun) neurketa horizontaletan arazo hau guztiz saihesteko.&lt;/p&gt;
+&lt;p&gt;Neurketa bertikalak egiteko, abiapuntua lurrarekiko ez dela higitzen egiaztatu behar duzu norabide ezberdinetatik begiratuz.&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"Aplikazio hau &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) aplikazioan exekutatzen da. Google-k eskaintzen du eta &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Pribatutasun-gidalerroek&lt;/a&gt; arautzen dute."</string>
+    <string name="default_disabled_msg_seasonal">"Bilaketa mota hau lehenespenez desgaituta dago, balitekeelako egoera berriro egiaztatzea urtearen zati zehatz batean."</string>
+    <string name="quest_gritBinSeasonal_title">"Hau hemen dago negutik kanpo ere?"</string>
+    <string name="street_parking_staggered_on_street">"Kalean, alde txandakatuetan"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Partzialki kalean alde txandakatuetan"</string>
+    <string name="quest_traffic_signals_sound_description">"Aholkua: bilatu bozgorailuak. Soinu-seinale guztiak ezin dira botoi baten bidez aktibatu."</string>
+    <string name="quest_presets_duplicate">"Bikoiztu"</string>
+    <string name="label_block">"blokea"</string>
+    <string name="quest_address_answer_block">"Bloke baten barruan dago..."</string>
+    <string name="quest_address_answer_no_block">"Ez dago bloke baten barruan..."</string>
+    <string name="quest_surface_value_mud">"Lokatza iraunkorra"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Hemen ez dago komunik"</string>
     <string name="unknown_surface_title">"Beste azalera mota bat"</string>
     <string name="overlay_surface">"Azalerak"</string>
+    <string name="overlay_path_surface_segregated">"Banatu bizikletaz eta oinez ibiltzeko zatietan"</string>
+    <string name="quest_crossing_title2">"Hemen zeharbiderik dago?"</string>
+    <string name="quest_crossing_yes">"Bai (adibidez, zintarria hemen jaitsita dago edo markak daude)"</string>
+    <string name="quest_crossing_no">"Ez, baina zeharkatzea posible da"</string>
+    <string name="quest_crossing_prohibited">"Ez, zeharkatzea debekatuta edo ezinezkoa da"</string>
+    <string name="quest_hairdresser_title">"Zein bezerok bisitatzen dute ile-apaindegia?"</string>
+    <string name="quest_hairdresser_male_and_female">"Edozein"</string>
+    <string name="quest_hairdresser_female_only">"Emakumeak"</string>
+    <string name="quest_hairdresser_male_only">"Gizonak"</string>
+    <string name="quest_hairdresser_not_signed">"Ez da ageri"</string>
+    <string name="quest_amenityCover_title">"Estalita al dago (euritik babestuta)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Zintarriaren luzapena"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Trafiko uhartea"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Txikanera"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Zintarriaren luzapena + trafiko uhartea"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Hemen ez dago errei esturik"</string>
+    <string name="quest_tactilePaving_title_steps">"Maila hauen goiko eta beheko aldean ukimenezko zoladura ba al dago?"</string>
+    <string name="quest_tactilePaving_steps_top">"Goian bakarrik"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Behean bakarrik"</string>
+    <string name="overlay_addresses_no_entrance">"Ez da sarrera..."</string>
 </resources>
