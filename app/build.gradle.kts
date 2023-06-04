@@ -130,7 +130,7 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.6.0")
@@ -152,7 +152,7 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.7.1")
+    implementation("androidx.work:work-runtime:2.8.1")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -179,7 +179,7 @@ dependencies {
     implementation("com.google.zxing:core:3.5.0")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("com.charleskorn.kaml:kaml:0.48.0")
 
     // map and location
@@ -202,7 +202,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230508"
+val nsiVersion = "v6.0.20230529"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.2.0"
 
