@@ -13,7 +13,7 @@ class AddBuildingColour : OsmFilterQuestType<BuildingColour>() {
           or (building:part and building:part !~ no|construction))
           and !building:colour
     """
-    override val changesetComment = "Add building colour"
+    override val changesetComment = "Specify building colour"
     override val wikiLink = "Key:building:colour"
     override val icon = R.drawable.ic_quest_building_colour
     override val defaultDisabledMessage: Int = R.string.default_disabled_msg_ee
