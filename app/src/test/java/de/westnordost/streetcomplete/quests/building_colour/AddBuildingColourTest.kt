@@ -56,7 +56,7 @@ class AddBuildingColourTest {
     }
 
     @Test
-    fun `not applicable to building under construction `() {
+    fun `not applicable to building under construction`() {
         assertFalse(
             questType.isApplicableTo(
                 way(tags = mapOf("building" to "construction"))
@@ -65,10 +65,82 @@ class AddBuildingColourTest {
     }
 
     @Test
-    fun `not applicable to building part under construction `() {
+    fun `not applicable to building part under construction`() {
         assertFalse(
             questType.isApplicableTo(
                 way(tags = mapOf("building:part" to "construction"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to indoor room`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building" to "yes", "indoor" to "yes"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to building part indoor room`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building:part" to "yes", "indoor" to "yes"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to building without wall`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building" to "yes", "wall" to "no"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to building part without wall`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building:part" to "yes", "wall" to "no"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to roof building`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building" to "roof"))
+            )
+        )
+    }
+
+    @Test
+    fun `not applicable to roof building part`() {
+        assertFalse(
+            questType.isApplicableTo(
+                way(tags = mapOf("building:part" to "roof"))
+            )
+        )
+    }
+
+    @Test
+    fun `applicable to building with indoor=no`() {
+        assertTrue(
+            questType.isApplicableTo(
+                way(tags = mapOf("building" to "yes", "indoor" to "no"))
+            )
+        )
+    }
+
+    @Test
+    fun `applicable to building part with indoor=no`() {
+        assertTrue(
+            questType.isApplicableTo(
+                way(tags = mapOf("building:part" to "yes", "indoor" to "no"))
             )
         )
     }
@@ -128,8 +200,8 @@ class AddBuildingColourTest {
     @Test
     fun `apply hex answer`() {
         questType.verifyAnswer(
-            BuildingColour.DESERT_SAND,
-            StringMapEntryAdd("building:colour", BuildingColour.DESERT_SAND.osmValue)
+            BuildingColour.BEIGEISH,
+            StringMapEntryAdd("building:colour", BuildingColour.BEIGEISH.osmValue)
         )
     }
 

@@ -9,9 +9,11 @@ class AddBuildingColour : OsmFilterQuestType<BuildingColour>() {
 
     override val elementFilter = """
         ways, relations with
-          ((building and building !~ no|construction)
-          or (building:part and building:part !~ no|construction))
+          ((building and building !~ no|construction|roof)
+          or (building:part and building:part !~ no|construction|roof))
           and !building:colour
+          and (!indoor or indoor = no)
+          and wall !~ no
     """
     override val changesetComment = "Specify building colour"
     override val wikiLink = "Key:building:colour"
