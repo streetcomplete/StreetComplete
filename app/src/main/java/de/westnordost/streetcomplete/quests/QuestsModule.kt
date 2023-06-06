@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvaila
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
+import de.westnordost.streetcomplete.quests.building_colour.AddBuildingColour
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
@@ -555,6 +556,7 @@ fun getQuestTypeList(
 
     // quests added in SCEE
     EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
+    EE_QUEST_OFFSET + 27 to AddBuildingColour(),
     EE_QUEST_OFFSET + 24 to AddRoofColour(),
     EE_QUEST_OFFSET + 1 to AddContactPhone(),
     EE_QUEST_OFFSET + 2 to AddContactWebsite(),

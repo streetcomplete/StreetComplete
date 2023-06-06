@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.roof_colour
 
-enum class RoofColour(val osmValue: String, val androidValue: String?) {
+import de.westnordost.streetcomplete.view.image_select.OsmColour
+
+enum class RoofColour(override val osmValue: String, override val androidValue: String?) :
+    OsmColour {
     // Top used roof colours
     DARK_GREY("darkgrey", "#a9a9a9"),
     GREY("grey", "#808080"),
