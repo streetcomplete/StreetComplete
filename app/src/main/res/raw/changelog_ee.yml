@@ -1,16 +1,17 @@
-next: |
+v53.3: |
   <ul>
   <li>Add pharmacy dispensing quests, thanks @mnalis</li>
-  <li>Allow setting maxweight and stop / give way signs in restriction overlay</li>
-  <li>Add Spanish translation, thanks to Sanchi</li>
+  <li>Add building color quest, thanks to @hangy</li>
+  <li>Allow specifying maxweight and stop / give way signs in restriction overlay</li>
+  <li>Add Spanish, Chinese (Traditional) translations, thanks to Sanchi and Supaplextw</li>
   </ul>
 
-v53.2: |
+v53.02: |
   <ul>
   <li>Fix broken quest filter that would cause a crash when scanning for quests</li>
   </ul>
 
-v53.1: |
+v53.01: |
   <ul>
   <li>This release is marked as pre-release because the new quests might need some tuning. Feedback is highly welcome.</li>
   <li>Add roof color quest, thanks to @hangy</li>

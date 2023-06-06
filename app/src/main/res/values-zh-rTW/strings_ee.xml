@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_expert_mode_title">專家模式</string>
+    <string name="pref_read_filter_hint">過濾…</string>
+    <string name="pref_screen_notes">註解</string>
+    <string name="pref_hide_notes_title">隱藏特定使用者的註解</string>
+    <string name="pref_category_mods">SCEE設定</string>
+    <string name="pref_expert_mode_summary">啟用進階編輯能力</string>
+</resources>
