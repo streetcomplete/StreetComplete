@@ -8,7 +8,7 @@ labels: bug
 <!-- 
 Please provide a clear and concise description of the bug. 
 
-Maybe it is not a bug? Check the FAQ: https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ
+Maybe it is not a bug? Check the FAQ: https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ and the SCEE readme https://github.com/Helium314/SCEE#readme
 
 Attaching screenshots / videos:
 Large images / videos can be very disturbing when reading, so please avoid attaching unnecessary screenshots and videos.

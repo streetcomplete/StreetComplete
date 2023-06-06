@@ -6,7 +6,7 @@ about: Suggest a new question to ask the user
 
 <!-- 
 Please read the guidelines for new quest suggestions before posting one: 
-https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md
+https://github.com/Helium314/SCEE/blob/modified/QUEST_GUIDELINES.md
 
 Attaching screenshots / videos:
 Large images / videos can be very disturbing when reading, so please avoid attaching unnecessary screenshots and videos.

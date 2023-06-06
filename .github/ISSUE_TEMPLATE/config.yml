@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Discussions
-    url: https://github.com/streetcomplete/StreetComplete/discussions
-    about: For discussions about the usage of StreetComplete, asking questions or talking about ideas which are not yet actionable.
+    url: https://github.com/Helium314/SCEE/discussions
+    about: For discussions about the usage of SCEE, asking questions or talking about ideas which are not yet actionable.
   - name: Translations
-    url: https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#translating-the-app
-    about: For contributing and discussing translations of StreetComplete
+    url: https://github.com/Helium314/SCEE#translations
+    about: For contributing and discussing translations of SCEE
