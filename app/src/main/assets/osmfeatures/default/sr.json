@@ -163,20 +163,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Бр. зграде/Бр. парцеле",
                         "neighbourhood": "Комшилук",
-                        "neighbourhood!jp": "Чоме/Аза/Коаза",
                         "place": "Место",
                         "postcode": "Поштански број",
                         "province": "Провинција",
                         "province!cn": "Покрајина/Општина/Аутономна покрајна/Посебан административни регион",
                         "province!jp": "Префектура",
                         "quarter": "Четврт",
-                        "quarter!jp": "Оаза/Маћи",
                         "state": "Савезна држава",
                         "street": "Улица",
                         "subdistrict": "Подокруг",
                         "subdistrict!vn": "Вард/Комуна/Градић",
                         "suburb": "Предграђе",
-                        "suburb!jp": "Вард",
                         "unit": "Јединица"
                     },
                     "terms": "adresa,локација,место,lokacija,mesto"
@@ -342,7 +339,7 @@
                     "label": "Седиште за бебу"
                 },
                 "backrest": {
-                    "label": "Наслон за пецање"
+                    "label": "Наслон"
                 },
                 "bar": {
                     "label": "Бар",
@@ -1557,6 +1554,9 @@
                 "liaison": {
                     "label": "Врста"
                 },
+                "lifeguard": {
+                    "label": "Спасилац"
+                },
                 "lit": {
                     "label": "Осветљење"
                 },
@@ -1598,7 +1598,31 @@
                     "label": "Врста"
                 },
                 "material": {
-                    "label": "Материјал"
+                    "label": "Материјал",
+                    "options": {
+                        "adobe": "Ћерпич",
+                        "aluminium": "Алуминијум",
+                        "brass": "Месинг",
+                        "brick": "Цигла",
+                        "bronze": "Бронза",
+                        "concrete": "Бетон",
+                        "dry_stone": "Сувозид",
+                        "glass": "Стакло",
+                        "granite": "Гранит",
+                        "iron": "Гвожђе",
+                        "limestone": "Кречњак",
+                        "marble": "Мермер",
+                        "metal": "Метал",
+                        "plastic": "Пластика",
+                        "reinforced_conrete": "Армирани бетон",
+                        "rock": "Стена",
+                        "sand": "Песак",
+                        "sandstone": "Пешчар",
+                        "soil": "Земља",
+                        "steel": "Челик",
+                        "stone": "Камен",
+                        "wood": "Дрво"
+                    }
                 },
                 "max_age": {
                     "label": "Максимално годиште"
@@ -1614,18 +1638,36 @@
                     "label": "Препоручено ограничење брзине",
                     "placeholder": "40, 50, 60..."
                 },
+                "maxspeed/hgv": {
+                    "placeholder": "40, 50, 60..."
+                },
                 "maxstay": {
                     "label": "Максимално задржавање"
                 },
                 "maxweight": {
                     "label": "Максимална тежина"
                 },
+                "maxwidth": {
+                    "label": "Максимална ширина"
+                },
                 "memorial": {
                     "label": "Врста",
                     "options": {
+                        "blue_plaque": "Плава плоча",
+                        "bust": "Биста",
                         "cross": "Меморијални крст",
+                        "obelisk": "Обелиск",
+                        "plaque": "Спомен-плоча",
+                        "sculpture": "Скулптура",
+                        "statue": "Статуа",
+                        "stele": "Стела",
+                        "stolperstein": "Камен спотицања",
+                        "stone": "Камен",
                         "war_memorial": "Ратни меморијал"
                     }
+                },
+                "message": {
+                    "label": "Порука"
                 },
                 "microbrewery": {
                     "label": "Микропивара"
@@ -1707,6 +1749,9 @@
                 "note": {
                     "label": "Напомена"
                 },
+                "nudism": {
+                    "label": "Нудизам"
+                },
                 "office": {
                     "label": "Врста",
                     "options": {
@@ -1735,6 +1780,7 @@
                     }
                 },
                 "opening_date": {
+                    "label": "Очекивани датум отварања",
                     "placeholder": "ГГГГ-ММ-ДД"
                 },
                 "opening_hours": {
@@ -1758,6 +1804,9 @@
                         "yes": "Неки"
                     }
                 },
+                "orientation/orientation_parking": {
+                    "label": "Оријентација"
+                },
                 "par": {
                     "placeholder": "3, 4, 5..."
                 },
@@ -1769,6 +1818,7 @@
                     "options": {
                         "carports": "Складиште аутомобила",
                         "multi-storey": "Вишеспратно",
+                        "on_kerb": "На ивишњаку",
                         "rooftop": "Кровни простор",
                         "sheds": "Наткривени",
                         "surface": "Подлога",
@@ -1776,7 +1826,10 @@
                     }
                 },
                 "parking/side/parking": {
-                    "label": "Паркинг"
+                    "label": "Паркинг",
+                    "options": {
+                        "on_kerb": "На ивишњаку"
+                    }
                 },
                 "parking_space": {
                     "label": "Врста"
@@ -2639,7 +2692,7 @@
                     "name": "Ваздушна гондола"
                 },
                 "aerialway/zip_line": {
-                    "name": "Зип лајн"
+                    "name": "Зип-лајн"
                 },
                 "aeroway": {
                     "name": "Ваздухопловство"
@@ -3579,6 +3632,9 @@
                 },
                 "building/office": {
                     "name": "Канцеларијска зграда"
+                },
+                "building/outbuilding": {
+                    "name": "Споредни објекат"
                 },
                 "building/pavilion": {
                     "name": "Павиљон"
@@ -5201,7 +5257,7 @@
                     "name": "Некоришћена железница"
                 },
                 "railway/level_crossing": {
-                    "name": "Железнички и друмски прелаз"
+                    "name": "Укрштање пута и железничке пруге"
                 },
                 "railway/light_rail": {
                     "name": "Пруга лаке железнице"

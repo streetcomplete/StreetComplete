@@ -163,20 +163,20 @@
                         "housenumber": "住居番号",
                         "housenumber!jp": "住居番号 / 号 / 支号 / 枝番号",
                         "neighbourhood": "字",
-                        "neighbourhood!jp": "丁目/字/小字",
+                        "neighbourhood!jp": "町字（市内の町/丁目/大字/字/小字）",
                         "place": "地名",
                         "postcode": "郵便番号",
                         "province": "都道府県",
                         "province!cn": "Province/Municipality/AR/SAR",
                         "province!jp": "都道府県",
                         "quarter": "大字",
-                        "quarter!jp": "大字 / (市内の)町",
+                        "quarter!jp": "大字（小字を併用する場合）",
                         "state": "州",
                         "street": "所属する街路名",
                         "subdistrict": "Subdistrict",
                         "subdistrict!vn": "Ward/Commune/Townlet",
                         "suburb": "区",
-                        "suburb!jp": "区",
+                        "suburb!jp": "行政区（政令市）",
                         "unit": "単位"
                     },
                     "terms": "住所,アドレス"
@@ -457,6 +457,9 @@
                         "wall_loops": "片輪挿入型"
                     }
                 },
+                "bicycle_road": {
+                    "label": "自転車道"
+                },
                 "bike_ride": {
                     "label": "駐輪＆ライド",
                     "terms": "バイク＆ライド,駐輪＆バイク"
@@ -536,6 +539,10 @@
                     "label": "種類",
                     "placeholder": "デフォルト"
                 },
+                "bridge/ref": {
+                    "label": "橋の番号",
+                    "terms": "橋の番号"
+                },
                 "bridge/support": {
                     "label": "種類"
                 },
@@ -606,6 +613,10 @@
                         "warehouse": "倉庫"
                     },
                     "terms": "建物,ビル"
+                },
+                "building/colour": {
+                    "label": "建物正面の色",
+                    "terms": "建物の色,ファサードの色"
                 },
                 "building/flats": {
                     "label": "単位",
@@ -1104,11 +1115,11 @@
                         },
                         "share_busway": {
                             "description": "バス車線と共有の自転車通行帯",
-                            "title": "自転車通行帯(バスと共有)"
+                            "title": "自転車通行帯(バスと共用)"
                         },
                         "shared_lane": {
                             "description": "自動車交通と隔てられていない自転車通行帯",
-                            "title": "自転車通行帯(共有)"
+                            "title": "自転車通行帯(共用)"
                         },
                         "track": {
                             "description": "物理的な障害物で隔てられた自転車通行帯",
@@ -2258,6 +2269,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "最低速度,最低速度制限,速度制限"
                 },
+                "mobile": {
+                    "label": "携帯電話",
+                    "placeholder": "+81 90 1234 5678",
+                    "terms": "携帯電話,携帯,ケータイ,スマホ"
+                },
                 "model": {
                     "label": "モデル",
                     "terms": "モデル"
@@ -3161,6 +3177,14 @@
                         "other": "その他"
                     }
                 },
+                "seamark/harbour/category_marina": {
+                    "label": "陸上設備",
+                    "options": {
+                        "marina": "あり",
+                        "marina_no_facilities": "なし"
+                    },
+                    "terms": "陸上設備"
+                },
                 "seamark/mooring/category": {
                     "label": "カテゴリー"
                 },
@@ -3376,6 +3400,7 @@
                         "karting": "カートレース",
                         "motocross": "モトクロス",
                         "motor": "モータースポーツ",
+                        "multi": "不明・その他のスポーツ",
                         "netball": "ネットボール",
                         "padel": "パデル",
                         "pelota": "ペロタ",
@@ -3393,6 +3418,19 @@
                         "tennis": "テニス",
                         "volleyball": "バレーボール"
                     }
+                },
+                "sport/sport_ice": {
+                    "label": "スポーツ"
+                },
+                "sport/sport_pub": {
+                    "label": "スポーツ",
+                    "terms": "スポーツ,運動,競技"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "スポーツ"
+                },
+                "sport/sport_racing_nonmotor": {
+                    "label": "スポーツ"
                 },
                 "stars": {
                     "label": "星の数",
@@ -5508,11 +5546,11 @@
                     "terms": "縁石,平坦,まっ平,道路,歩道,バリアフリー,段差,横断歩道,車椅子"
                 },
                 "barrier/kerb/lowered": {
-                    "name": "低位縁石(2cm以下)",
+                    "name": "低位縁石(3cm以下)",
                     "terms": "低位縁石,縁石,低くなった縁石,段差,歩道,横断歩道,車椅子,バリア"
                 },
                 "barrier/kerb/raised": {
-                    "name": "高位縁石(3cm以上)",
+                    "name": "高位縁石(3cm超)",
                     "terms": "高位縁石,縁石,カッセル縁石,高くなった縁石,段差,歩道,横断歩道,車椅子,バリア"
                 },
                 "barrier/kerb/rolled": {
@@ -6411,7 +6449,7 @@
                 },
                 "highway/crossing": {
                     "name": "横断歩道",
-                    "terms": "横断歩道"
+                    "terms": "横断歩道,歩道"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "横断歩道(信号あり)",
@@ -6489,7 +6527,8 @@
                     "terms": "動く歩道,歩道,水平型エスカレーター,オートウォーク,ムービングウォーク,トラベレーター,ムービングサイドウォーク,オートスロープ,エスカレータ,ベルトコンベア"
                 },
                 "highway/footway/crossing": {
-                    "name": "横断歩道"
+                    "name": "横断歩道",
+                    "terms": "横断歩道,歩道"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "横断歩道(信号あり)",
@@ -7187,6 +7226,10 @@
                 "leisure/marina": {
                     "name": "マリーナ",
                     "terms": "マリーナ,ヨットハーバー,スポーツ,運動,娯楽,レジャー"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "ヨットバース",
+                    "terms": "ボート,船舶,ドック,ハーバー,港,マリーナ,係船,係留,ヨット,バース"
                 },
                 "leisure/miniature_golf": {
                     "name": "ミニゴルフ",
@@ -9036,8 +9079,8 @@
                     "terms": "赤のブイ"
                 },
                 "seamark/mooring": {
-                    "name": "係船",
-                    "terms": "係船"
+                    "name": "係船設備",
+                    "terms": "ドルフィン,係船杭,ボラード,係柱,係船柱,繋船柱,ブイ,係船ブイ,係船浮標,係船岸,係留"
                 },
                 "shop": {
                     "name": "店舗",

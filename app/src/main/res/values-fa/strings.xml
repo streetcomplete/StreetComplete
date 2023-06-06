@@ -12,7 +12,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده‌گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه متن باز OSM"</string>
     <string name="quest_generic_otherAnswers">"پاسخ‌های دیگر…"</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -85,11 +85,11 @@
     <string name="privacy_html">"&lt;p&gt; درود، شخصی هستید که به حریم خصوصی اهمیت می‌دهد، عالی است! فکر می‌کنم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در نقشه‌متن‌باز  (OSM) مشارکت می‌کنید. &lt;br/&gt;
+ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در نقشه متن باز (OSM) مشارکت می‌کنید.&lt;br/&gt;
 هر مشارکتی که در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت OSM وجود ندارد.
 &lt;/p&gt;
 &lt;p&gt;
-ویرایش نقشه‌متن‌باز (osm) به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
+ویرایش نقشه متن باز OSM به صورت ناشناس امکان‌پذیر نیست. هر تغییری که ایجاد می‌کنید (با تاریخ و مکان آن) به نام حساب کاربری OSM شما ذخیره می‌شود و به شکل عمومی در وبسایت openstreetmap.org قابل مشاهده است. از آنجایی که StreetComplete باید فقط برای نقشه‌برداری در محل استفاده شود، بنابراین مکان و زمان استفادهٔ شما از برنامه فاش می‌شود.
 &lt;/p&gt;
 
 &lt;b&gt;موقعیت مکانی&lt;/b&gt;&lt;br/&gt;
@@ -127,12 +127,12 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_oneway_title">"آیا این خیابان یکطرفه است؟"</string>
     <string name="quest_address_title">"شماره این ساختمان چیست؟"</string>
-    <string name="store_listing_short_description">"برنامه نقشه‌کش نقشه‌متن‌باز (osm)"</string>
-    <string name="store_listing_full_description">"نقشه‌متن‌باز (osm) را با کمک StreetComplete بهبود دهید!
+    <string name="store_listing_short_description">"برنامه نقشه‌کش نقشه متن باز OSM"</string>
+    <string name="store_listing_full_description">"نقشه متن باز OSM را با کمک StreetComplete بهبود دهید!
 
 این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جُستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
 
-اطلاعاتی که وارد می‌کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در OSM اضافه می‌شود."</string>
+اطلاعاتی که وارد می‌کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در نقشه متن باز OSM اضافه می‌شود."</string>
     <string name="quest_name_answer_noName">"بدون نام…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"واقعا نامی ندارد؟"</string>
     <string name="quest_name_noName_confirmation_positive">"بله، بدون نام است"</string>
@@ -395,7 +395,7 @@
     <string name="questList_disabled_in_country">"در %s نشان داده نمی‌شود"</string>
     <string name="quest_select_hint_most_specific">"مشخص‌ترین مورد متناسب را انتخاب کنید:"</string>
     <string name="quest_generic_item_confirmation">"مطمئن هستید که مشخص‌تر از این نمی‌شود انتخاب کرد؟"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص ثالث بارگیری می‌شود. به طور خاص، جُستار یکطرفه درمورد نامزدهای احتمالی یکطرفه‌بودن از یک API پرس‌وجو می‌کند که روی westnordost.de میزبانی می‌شود.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص سوم بارگیری می‌شود. به طور ویژه، جُستار یکطرفه درمورد نامزدهای احتمالی یکطرفه‌بودن از یک API پرس‌وجو می‌کند که روی westnordost.de میزبانی می‌شود.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"نه (یادداشت بگذارید)"</string>
     <string name="pref_quests_reset">"بازنشانی هر دو جُستار فعال شده و سفارشی شده به حالت پیشفرض؟"</string>
     <string name="quest_generic_item_invalid_value">"لطفا یک مقدار واضح‌تر را انتخاب کنید."</string>
@@ -464,7 +464,7 @@
     <string name="quest_buildingType_service">"ساختمان خدماتی"</string>
     <string name="quest_buildingType_service_description">"ساختمان با ماشین آلات مانند پمپ و یا مبدل برق"</string>
     <string name="quest_buildingType_hangar">"آشیانه"</string>
-    <string name="quest_buildingType_hangar_description">"آشیانه برای هواپیما، هلیکوپتر یا فضاپیما"</string>
+    <string name="quest_buildingType_hangar_description">"آشیانه برای هواپیما، بالگرد یا فضاپیما"</string>
     <string name="quest_buildingType_bunker">"پناهگاه"</string>
     <string name="quest_address_answer_no_housenumber">"این ساختمان شماره ندارد…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"ساختمان به این عنوان برچسب‌گذاری شده بود:"</string>
@@ -489,7 +489,7 @@
     <string name="quest_noteDiscussion_closed2">"‏%1$s بست، %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"‏%1$s دوباره فعال کرد، %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"‏%1$s پنهان کرد، %2$s"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;تصاویری که به یادداشت اضافه می‌کنید روی سرور ما بارگذاری می‌شوند و چند روز بعد از حل‌شدن یادداشت حذف می‌شوند. فرادادهٔ آن‌ها قبل از بارگذاری حذف می‌شود.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;تصاویری که به یادداشت اضافه می‌نمایید روی سرور ما بارگذاری می‌شوند و چند روز بعد از حل‌شدن یادداشت حذف می‌شوند. فرادادهٔ آن‌ها قبل از بارگذاری حذف می‌شود.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"بدون انتخاب"</string>
     <string name="quest_buildingType_retail_description">"شامل ساختمان‌هایی برای رستوران‌ها، کافه‌ها، فروشگاه‌ها…"</string>
     <string name="quest_openingHours_timeSelect_next">"بعدی"</string>
@@ -589,9 +589,9 @@
     <string name="osm_profile">"نمایه osm"</string>
     <string name="next">"بعدی"</string>
     <string name="letsgo">"بزن بریم!"</string>
-    <string name="tutorial_welcome_to_osm">"به نقشه‌متن‌باز (osm) خوش‌آمدید"</string>
+    <string name="tutorial_welcome_to_osm">"به نقشه متن باز OSM خوش‌آمدید"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"نقشه جهانی ویکی رایگان"</string>
-    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در نقشه‌متن‌باز (osm) را آسان‌تر می‌کند.
+    <string name="tutorial_intro">"برنامه StreetComplete مشارکت در نقشه متن باز OSM را آسان‌تر می‌کند.
 این برنامه به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، پلاک خانه‌ها، ساعات کار و بسیاری موارد دیگر…"</string>
     <string name="tutorial_solving_quests">"جزئیاتی که در نقشه از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
 
@@ -615,11 +615,11 @@
     <string name="link_category_intro_title">"مقدمه"</string>
     <string name="link_category_intro_description">"کسب اطلاعات بیشتر در مورد OSM و جامعه آن"</string>
     <string name="link_category_editors_title">"مشارکت"</string>
-    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در نقشه‌متن‌باز (osm)"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
     <string name="link_category_maps_title">"نقشه‌ها"</string>
-    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
+    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه متن باز OSM"</string>
     <string name="link_category_showcase_title">"ويترين"</string>
-    <string name="link_category_showcase_description">"خدمات و برنامه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
+    <string name="link_category_showcase_description">"خدمات و برنامه‌های مبتنی بر نقشه متن باز OSM"</string>
     <string name="link_category_goodies_title">"موارد کاربردی"</string>
     <string name="link_category_goodies_description">"مطالبی جالب و سرگرم‌کننده مربوط به نقشه برای شما؛ امتحانشان کنید"</string>
     <string name="link_cyclosm_description">"نقشه دوچرخه‌سواری"</string>
@@ -634,10 +634,10 @@
     <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید."</string>
     <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه‌های حمل‌ونقل عمومی"</string>
     <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید."</string>
-    <string name="link_wiki_description">"سایت ویکی osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با نقشه‌متن‌باز (osm) است."</string>
-    <string name="link_learnosm_description">"تازه با نقشه‌متن‌باز (osm) آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است."</string>
-    <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در نقشه‌متن‌باز (osm)، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
-    <string name="link_welcome_mat_description">"اطلاعات کلی در مورد نقشه‌متن‌باز (osm) و نحوه کار با آن به عنوان یک سازمان"</string>
+    <string name="link_wiki_description">"تارنمای راهنمای osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با نقشه متن باز OSM است."</string>
+    <string name="link_learnosm_description">"به‌تازگی با نقشه متن باز OSM آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
+    <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در نقشه متن باز OSM، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
+    <string name="link_welcome_mat_description">"اطلاعات کلی در مورد نقشه متن باز OSM و نحوه کار با آن به عنوان یک سازمان"</string>
     <string name="link_mapillary_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
     <string name="link_openstreetcam_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
     <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
@@ -655,7 +655,7 @@
     <string name="link_weeklyosm_description">"تارنمای اخبار هفتگی درباره اتفاقات رخ داده در دنیای OSM"</string>
     <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید."</string>
     <string name="achievement_first_edit_title">"اولین جُستار حل شد"</string>
-    <string name="achievement_first_edit_description">"به جامعه نقشه‌متن‌باز (osm) خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
+    <string name="achievement_first_edit_description">"به اجتماع نقشه متن باز OSM خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
     <string name="achievement_surveyor_title">"نقشه‌بردار"</string>
     <string name="achievement_surveyor_solved_X">"شما به %d جُستار پاسخ داده‌اید! ادامه دهید تا دستاوردهای بیشتری حاوی پیوندهایی به OSM و سایر برنامه‌ها و پروژه‌های مرتبط با نقشه کسب نمایید!"</string>
     <string name="achievement_regular_title">"منظم"</string>
@@ -676,12 +676,12 @@
     <string name="achievement_veg_title">"مهربان با حیوانات"</string>
     <string name="achievement_veg_solved_X">"شما %d جُستار موردعلاقهٔ افراد با رژیم غذایی بدون گوشت را پاسخ دادید!"</string>
     <string name="achievement_car_title">"در جاده"</string>
-    <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در نقشه‌متن‌باز (osm) ثبت کردید!"</string>
+    <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در نقشه متن باز OSM ثبت کردید!"</string>
     <string name="unread_messages_message">"شما %d پیام ناخوانده در صندوق پیام دارید"</string>
     <string name="unread_messages_button">"گشودن صندوق پیام"</string>
     <string name="action_about2">"درباره"</string>
     <string name="map_btn_menu">"منو"</string>
-    <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در نقشه‌متن‌باز (osm) جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در نقشه متن باز OSM جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"همچنین می‌توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
     <string name="credits_art_contributors_title">"مشارکت‌کنندگان در بخش هنری"</string>
     <string name="credits_projects_contributors_title">"پروژه‌های ساخته شده برای StreetComplete"</string>
@@ -702,7 +702,7 @@
     <string name="link_photon_description">"یک افزونه مستقل به نام Nominatim ، در برگیرنده جستجوی فازی و جستجو براساس نوشتار شما می باشد."</string>
     <string name="link_graphhopper_description">"یک موتور مسیریابی انعطاف پذیر و بهینه"</string>
     <string name="link_qwant_maps_description">"نقشه‌ای با مکانها و مسیرهای قابل جستجو"</string>
-    <string name="privacy_html_tileserver2">"&lt;p&gt;برای نمایش نقشه، قطعات نقشه از %1$s بازیابی می‌شوند. برای اطلاعات بیشتر به &lt;ahref=\"%2$s\"&gt;بیانیه حریم خصوصی&lt;/a&gt; مراجعه کنید.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;برای نمایش نقشه، کاشی‌های نقشه از %1$s بازیابی می‌شوند. برای اطلاعات بیشتر به &lt;ahref=\"%2$s\"&gt;بیانیه حریم خصوصی&lt;/a&gt; مراجعه کنید.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"حامیان مالی"</string>
     <string name="quest_board_type_history">"تاریخچه"</string>
     <string name="quest_board_type_geology">"زمین‌شناسی"</string>
@@ -1182,7 +1182,7 @@
     <string name="quest_memorialType_stele_stone">"ایستاسنگ سنگی (لوح یادبود)"</string>
     <string name="quest_memorialType_sculpture">"مجسمهٔ دیگر"</string>
     <string name="select_overlay">"انتخاب پوشش"</string>
-    <string name="overlay_none">"هیچیک"</string>
+    <string name="overlay_none">"هیچکدام"</string>
     <string name="overlay_lit">"روشنایی خیابان"</string>
     <string name="lit_value_yes">"روشن"</string>
     <string name="lit_value_no">"روشنایی ندارد"</string>
@@ -1217,7 +1217,7 @@
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
     <string name="create_node_action_description">"شما یک گره ایجاد کردید با ..."</string>
-    <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان گردهمایی است"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"اینجا یک مکان گردهمایی است"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطه تجمع جایی است که افراد در مواقع اضطراری در آن جمع می‌شوند. معمولاً شبیه این به نظر می‌رسد:"</string>
     <string name="quest_address_answer_house_name2">"نشانی دارای شماره خانه است..."</string>
     <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
@@ -1233,7 +1233,7 @@
     <string name="quest_drinking_water_type_water_well_no_pump">"آب چاه بدون پمپ"</string>
     <string name="quest_drinking_water_type_spring">"چشمه"</string>
     <string name="quest_drinking_water_type_disused">"آب نوشیدنی بلا استفاده"</string>
-    <string name="overlay_addresses">"آدرس‌ها"</string>
+    <string name="overlay_addresses">"نشانی‌ها"</string>
     <string name="overlay_shops">"فروشگاه‌ها"</string>
     <string name="name_label">"نام:"</string>
     <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
@@ -1304,7 +1304,7 @@
     <string name="street_parking_staggered_on_street">"به صورت متناوب در دو طرف خیابان"</string>
     <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
     <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. تمام هشدارهای صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
-    <string name="quest_presets_duplicate">"کپی کردن"</string>
+    <string name="quest_presets_duplicate">"رونوشت برداشتن"</string>
     <string name="label_block">"بلوک"</string>
     <string name="quest_address_answer_block">"در داخل یک بلوک است..."</string>
     <string name="quest_address_answer_no_block">"در یک بلوک نیست..."</string>
@@ -1324,9 +1324,9 @@
     <string name="quest_hairdresser_not_signed">"نامشخص"</string>
     <string name="quest_amenityCover_title">"آیا این پوشیده شده است (محافظت در برابر باران)؟"</string>
     <string name="lane_narrowing_traffic_calming_choker">"محدود کردن پسوند"</string>
-    <string name="lane_narrowing_traffic_calming_island">"جزیره ترافیک وسط خیابان"</string>
+    <string name="lane_narrowing_traffic_calming_island">"محدوده عبور و مرور وسط خیابان"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"مانع"</string>
-    <string name="lane_narrowing_traffic_calming_choked_island">"امتداد حاشیه + جزیره ترافیک"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"امتداد حاشیه و محدوده عبور و مرور"</string>
     <string name="lane_narrowing_traffic_calming_none">"اینجا هیچ خط باریکی وجود ندارد"</string>
     <string name="quest_tactilePaving_title_steps">"آیا سنگفرش لمسی در بالا و پایین این پله‌ها وجود دارد؟"</string>
     <string name="quest_tactilePaving_steps_top">"فقط در بالا"</string>

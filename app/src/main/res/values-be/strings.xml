@@ -19,8 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Так, я ўпэўнены"</string>
     <string name="quest_generic_confirmation_no">"Я праверу"</string>
     <string name="quest_leave_new_note_title">"Замест гэтага пакінуць заўвагу?"</string>
-    <string name="quest_leave_new_note_description">"Вы можаце пакінуць агульнадаступную заўвагу ў гэтым мейсцы для вырашэння iншымi ўдзельнікамi альбо  схаваць квэст толькі для сябе
-"</string>
+    <string name="quest_leave_new_note_description">"Вы можаце пакінуць агульнадаступную заўвагу ў гэтым месцы для вырашэння iншымi ўдзельнікамi альбо  схаваць квэст толькі для сябе"</string>
     <string name="quest_leave_new_note_yes">"Пакінуць нататку"</string>
     <string name="quest_leave_new_note_no">"Не, толькі згарнуць"</string>
     <string name="quest_streetName_title">"Як называецца гэтая дарога?"</string>
@@ -739,7 +738,7 @@
     <string name="resurvey_intervals_default">"Па змаўчанні"</string>
     <string name="resurvey_intervals_more_often">"Пытацца часцей"</string>
     <string name="quest_is_defibrillator_inside_title">"Дэфібрылятар (AED) знаходзіцца ўнутры будынка?"</string>
-    <string name="about_title_translate">"Дапамажыце перакласцi гэта дадатак"</string>
+    <string name="about_title_translate">"Дапамажыце перакласцi гэты дадатак"</string>
     <string name="about_description_translate">"%1$s перакладзены на %2$d%%"</string>
     <string name="quest_oneway2_title">"Гэта вуліца з аднабаковым рухам? Калі так, то ў якім напрамку?"</string>
     <string name="quest_oneway2_dir">"Аднабаковы ў гэтым кірунку"</string>
@@ -1315,7 +1314,7 @@
     <string name="unknown_surface_title">"Іншы від паверхні"</string>
     <string name="overlay_surface">"Пакрыццё"</string>
     <string name="overlay_path_surface_segregated">"Падзяліць на веласіпедную і пешаходную часткі"</string>
-    <string name="quest_crossing_title2">"Тут ёсць пераправа?"</string>
+    <string name="quest_crossing_title2">"Тут ёсць пераход?"</string>
     <string name="quest_crossing_yes">"Так (напрыклад, тут апушчаны бардзюр ці ёсць разметка)"</string>
     <string name="quest_crossing_no">"Не, але пераход магчымы"</string>
     <string name="quest_crossing_prohibited">"Не, пераход забаронены або немагчымы"</string>
@@ -1330,4 +1329,8 @@
     <string name="lane_narrowing_traffic_calming_chicane">"Наўмысна рэзкая крывая вуліца або серыя паваротаў, якую вы павінны аб'ехаць."</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Пашыраны бардзюр + астравок бяспекі"</string>
     <string name="lane_narrowing_traffic_calming_none">"Тут няма звужанай паласы"</string>
+    <string name="quest_tactilePaving_title_steps">"Ці ёсць тактыльнае пакрыццё ўверсе і ўнізе гэтых прыступак?"</string>
+    <string name="quest_tactilePaving_steps_top">"Толькi зверху"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Толькi знiзу"</string>
+    <string name="overlay_addresses_no_entrance">"Гэта не ўваход…"</string>
 </resources>

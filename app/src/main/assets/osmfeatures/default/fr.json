@@ -163,7 +163,7 @@
                         "housenumber": "123",
                         "housenumber!jp": "Bâtiment No./Lot No.",
                         "neighbourhood": "Quartier de voisinage",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza (Quartier de voisinage)",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza (Quartier de voisinage)",
                         "place": "attribut d'adresse (Place)",
                         "postcode": "Code postal",
                         "province": "Province",
@@ -457,6 +457,14 @@
                         "wall_loops": "Râteliers (support de roue uniquement)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Rue cyclable",
+                    "options": {
+                        "undefined": "Non",
+                        "yes": "Oui"
+                    },
+                    "terms": "vélo,cyclable,route,rue,allée,chemin"
+                },
                 "bike_ride": {
                     "label": "Garage à vélos relais",
                     "terms": "parking,parc,vélo,bicyclette,location,relais"
@@ -536,6 +544,10 @@
                     "label": "Type",
                     "placeholder": "Défaut"
                 },
+                "bridge/ref": {
+                    "label": "Numéro du pont",
+                    "terms": "numéro du pont,numéro,identifiant,code,pont"
+                },
                 "bridge/support": {
                     "label": "Type"
                 },
@@ -606,6 +618,10 @@
                         "warehouse": "Entrepôt"
                     },
                     "terms": "batiment,bâtiment,édifice"
+                },
+                "building/colour": {
+                    "label": "Couleur de la façade",
+                    "terms": "couleur de la façade"
                 },
                 "building/flats": {
                     "label": "Unités",
@@ -734,7 +750,8 @@
                 },
                 "check_date": {
                     "label": "Dernière date de vérification",
-                    "placeholder": "AAAA-MM-JJ"
+                    "placeholder": "AAAA-MM-JJ",
+                    "terms": "dernière date de vérification"
                 },
                 "circumference": {
                     "label": "Circonférence (à hauteur de poitrine)",
@@ -2257,6 +2274,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "limitation de vitesse,limite de vitesse,vitesse minimale,vitesse limite"
                 },
+                "mobile": {
+                    "label": "Téléphone mobile",
+                    "placeholder": "+33 1 23 45 67 89",
+                    "terms": "téléphone portable"
+                },
                 "model": {
                     "label": "Modèle",
                     "terms": "modèle"
@@ -2544,6 +2566,7 @@
                         "parallel": "En créneau par rapport à la chaussée",
                         "perpendicular": "En bataille par rapport à la chaussée (~90°)"
                     },
+                    "terms": "orientation du stationnement",
                     "types": {
                         "parking:left:orientation": "Côté gauche",
                         "parking:right:orientation": "Côté droit"
@@ -3158,6 +3181,14 @@
                         "iala-b": "IALA B",
                         "other": "Autre"
                     }
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "Équipements domestiques",
+                    "options": {
+                        "marina": "Oui",
+                        "marina_no_facilities": "Non"
+                    },
+                    "terms": "équipements domestiques"
                 },
                 "seamark/mooring/category": {
                     "label": "Catégorie"
@@ -4004,7 +4035,8 @@
                 },
                 "website/menu": {
                     "label": "Lien vers le menu",
-                    "placeholder": "https://example.com"
+                    "placeholder": "https://example.com",
+                    "terms": "lien vers le menu"
                 },
                 "wetland": {
                     "label": "Type",
@@ -4366,7 +4398,8 @@
                     "terms": "clinique d'avortement,avortement,clinique ivg,clinique img,hopital d'avortement,hopital ivg,hopital img"
                 },
                 "amenity/clinic/dialysis": {
-                    "name": "Centre de dialyse"
+                    "name": "Centre de dialyse",
+                    "terms": "centre de dialyse"
                 },
                 "amenity/clinic/fertility": {
                     "name": "Clinique de fertilité",
@@ -4456,10 +4489,12 @@
                     "terms": "obstétricien,gynécologue,obstétricienne"
                 },
                 "amenity/doctors/haematology": {
-                    "name": "Hématologue"
+                    "name": "Hématologue",
+                    "terms": "hématologue,sang,maladie,leucémie,lymphome,anémie"
                 },
                 "amenity/doctors/internal": {
-                    "name": "Interniste"
+                    "name": "Interniste",
+                    "terms": "interniste,médecine interne,systémique,auto-immune"
                 },
                 "amenity/doctors/nephrology": {
                     "name": "Néphrologue",
@@ -4482,27 +4517,32 @@
                     "terms": "ophtalmologie,ophtalmologue"
                 },
                 "amenity/doctors/orthopaedics": {
-                    "name": "Chirurgien orthopédique"
+                    "name": "Chirurgien orthopédique",
+                    "terms": "chirurgien,articulation,pied,genou,hanche,main,coude,épaule,colonne vertébrale"
                 },
                 "amenity/doctors/otolaryngology": {
-                    "name": "Otorhinolaryngologiste"
+                    "name": "Otorhinolaryngologiste",
+                    "terms": "orl,oreille,nez,larynx,gorge,tête,cou"
                 },
                 "amenity/doctors/paediatrics": {
                     "name": "Pédiatre",
                     "terms": "pédiatrie,pédiatre"
                 },
                 "amenity/doctors/pathology": {
-                    "name": "Anatomopathologiste"
+                    "name": "Anatomopathologiste",
+                    "terms": "pathologiste,anat-patho,anapath,lésion,tissu"
                 },
                 "amenity/doctors/plastic_surgery": {
                     "name": "Chirurgien plastique",
                     "terms": "chirurgien plasticien,plasticien,chirurgie plastique"
                 },
                 "amenity/doctors/podiatry": {
-                    "name": "Podologue"
+                    "name": "Podologue",
+                    "terms": "pédicure-podologue,podologue"
                 },
                 "amenity/doctors/proctology": {
-                    "name": "Proctologue"
+                    "name": "Proctologue",
+                    "terms": "chirurgie colorectale,proctologue"
                 },
                 "amenity/doctors/psychiatrist": {
                     "name": "Psychiatre",
@@ -4521,10 +4561,12 @@
                     "terms": "rhumatologiste"
                 },
                 "amenity/doctors/surgery": {
-                    "name": "Chirurgien généraliste"
+                    "name": "Chirurgien généraliste",
+                    "terms": "chirurgien généraliste"
                 },
                 "amenity/doctors/trauma": {
-                    "name": "Chirurgien traumatologue"
+                    "name": "Chirurgien traumatologue",
+                    "terms": "chirurgien traumatologue"
                 },
                 "amenity/doctors/urology": {
                     "name": "Urologue",
@@ -5530,7 +5572,8 @@
                     "terms": "barrière,levante,sécurité,automatique,manuelle"
                 },
                 "barrier/log": {
-                    "name": "Arbre couché"
+                    "name": "Arbre couché",
+                    "terms": "arbre couché,arbre tombé"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Portail anti motos",
@@ -6146,7 +6189,8 @@
                     "terms": "borne incendie,borne-fontaine,borne fontaine,bouche d'incendie,poteau incendie,hydrant,fire hydrant,point d'eau incendie"
                 },
                 "emergency/fire_service_inlet": {
-                    "name": "Colonne sèche"
+                    "name": "Colonne sèche",
+                    "terms": "colonne sèche"
                 },
                 "emergency/first_aid_kit": {
                     "name": "Kit de premiers secours",
@@ -6288,10 +6332,12 @@
                     "terms": "techniques de bien-être alternatives"
                 },
                 "healthcare/alternative/acupuncture": {
-                    "name": "Acupuncteur"
+                    "name": "Acupuncteur",
+                    "terms": "acupuncteur"
                 },
                 "healthcare/alternative/ayurveda": {
-                    "name": "Praticien ayurvédique"
+                    "name": "Praticien ayurvédique",
+                    "terms": "praticien ayurvédique"
                 },
                 "healthcare/alternative/chiropractic": {
                     "name": "Chiropraticien",
@@ -6310,7 +6356,8 @@
                     "terms": "ostéopathe,ostéopathie"
                 },
                 "healthcare/alternative/traditional_chinese_medicine": {
-                    "name": "Médecine traditionnelle chinoise"
+                    "name": "Médecine traditionnelle chinoise",
+                    "terms": "techniques de bien-être alternatives,médecine alternative chinoise,médecine chinoise,orientale"
                 },
                 "healthcare/audiologist": {
                     "name": "Audiologiste",
@@ -6485,7 +6532,8 @@
                     "terms": "tapis roulant"
                 },
                 "highway/footway/crossing": {
-                    "name": "Passage piéton"
+                    "name": "Passage piéton",
+                    "terms": "passage piéton"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Passage piéton avec feux de signalisation",
@@ -6912,7 +6960,8 @@
                     "terms": "usines"
                 },
                 "landuse/industrial/depot": {
-                    "name": "Dépôt"
+                    "name": "Dépôt",
+                    "terms": "dépôt"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "Casse automobile",
@@ -7183,6 +7232,10 @@
                     "name": "Marina",
                     "terms": "marina"
                 },
+                "leisure/marina_no_facilities": {
+                    "name": "Mouillage",
+                    "terms": "mouillage"
+                },
                 "leisure/miniature_golf": {
                     "name": "Mini-golf",
                     "terms": "mini golf"
@@ -7227,28 +7280,36 @@
                     "name": "Terrain d'athlétisme"
                 },
                 "leisure/pitch/athletics/discus_throw": {
-                    "name": "Terrain de lancer de disque"
+                    "name": "Terrain de lancer de disque",
+                    "terms": "terrain de lancer de disque"
                 },
                 "leisure/pitch/athletics/hammer_throw": {
-                    "name": "Terrain de lancer de marteau"
+                    "name": "Terrain de lancer de marteau",
+                    "terms": "terrain de lancer de marteau,zone,secteur,lancer de marteau"
                 },
                 "leisure/pitch/athletics/high_jump": {
-                    "name": "Terrain de saut en hauteur"
+                    "name": "Terrain de saut en hauteur",
+                    "terms": "terrain de saut en hauteur"
                 },
                 "leisure/pitch/athletics/javelin_throw": {
-                    "name": "Terrain de lancer de javelot"
+                    "name": "Terrain de lancer de javelot",
+                    "terms": "terrain de lancer de javelot"
                 },
                 "leisure/pitch/athletics/long_jump": {
-                    "name": "Terrain de saut en longueur"
+                    "name": "Terrain de saut en longueur",
+                    "terms": "terrain de saut en longueur,zone,secteur,terrain,saut en longueur"
                 },
                 "leisure/pitch/athletics/pole_vault": {
-                    "name": "Terrain de saut à la perche"
+                    "name": "Terrain de saut à la perche",
+                    "terms": "terrain de saut à la perche"
                 },
                 "leisure/pitch/athletics/shot_put": {
-                    "name": "Terrain de lancer de poids"
+                    "name": "Terrain de lancer de poids",
+                    "terms": "terrain de lancer de poids"
                 },
                 "leisure/pitch/athletics/triple_jump": {
-                    "name": "Terrain de triple-saut"
+                    "name": "Terrain de triple-saut",
+                    "terms": "terrain de triple-saut"
                 },
                 "leisure/pitch/australian_football": {
                     "name": "Terrain de football australien",
@@ -7449,25 +7510,31 @@
                     "name": "Piste d'athlétisme"
                 },
                 "leisure/track/athletics/javelin_throw": {
-                    "name": "Piste de lancer de javelot"
+                    "name": "Piste de lancer de javelot",
+                    "terms": "piste de lancer de javelot"
                 },
                 "leisure/track/athletics/long_jump": {
-                    "name": "Piste de saut en longueur"
+                    "name": "Piste de saut en longueur",
+                    "terms": "piste de saut en longueur"
                 },
                 "leisure/track/athletics/pole_vault": {
-                    "name": "Piste de saut à la perche"
+                    "name": "Piste de saut à la perche",
+                    "terms": "piste de saut à la perche"
                 },
                 "leisure/track/athletics/running": {
                     "name": "Piste de course"
                 },
                 "leisure/track/athletics/sprint": {
-                    "name": "Piste de sprint"
+                    "name": "Piste de sprint",
+                    "terms": "piste de sprint"
                 },
                 "leisure/track/athletics/steeplechase": {
-                    "name": "Piste de steeple"
+                    "name": "Piste de steeple",
+                    "terms": "piste de steeple"
                 },
                 "leisure/track/athletics/triple_jump": {
-                    "name": "Piste de triple-saut"
+                    "name": "Piste de triple-saut",
+                    "terms": "piste de triple-saut"
                 },
                 "leisure/track/cycling": {
                     "name": "Piste de cyclisme",
@@ -7728,16 +7795,20 @@
                     "terms": "boîte postale,dépôt postal,courrier,boîte aux lettres,service postal,envoi postal,distribution du courrier"
                 },
                 "man_made/street_cabinet/traffic_control": {
-                    "name": "Système de régulation du trafic"
+                    "name": "Système de régulation du trafic",
+                    "terms": "système de régulation du trafic"
                 },
                 "man_made/street_cabinet/traffic_monitoring": {
-                    "name": "Système de contrôle du trafic"
+                    "name": "Système de contrôle du trafic",
+                    "terms": "système de contrôle du trafic"
                 },
                 "man_made/street_cabinet/transport_management": {
-                    "name": "Système de gestion du trafic"
+                    "name": "Système de gestion du trafic",
+                    "terms": "système de gestion du trafic"
                 },
                 "man_made/street_cabinet/waste": {
-                    "name": "Collecteur d'ordures privé"
+                    "name": "Collecteur d'ordures privé",
+                    "terms": "collecteur d'ordures privé"
                 },
                 "man_made/surveillance": {
                     "name": "Appareil de surveillance",
@@ -7963,7 +8034,7 @@
                 },
                 "natural/saddle": {
                     "name": "Col",
-                    "terms": "passe"
+                    "terms": "passe,col"
                 },
                 "natural/sand": {
                     "name": "Sable",
@@ -8972,7 +9043,8 @@
                     "name": "Emplacement où s'arrête le tram"
                 },
                 "railway/turntable": {
-                    "name": "Voie de retournement"
+                    "name": "Voie de retournement",
+                    "terms": "voie de retournement"
                 },
                 "railway/yard": {
                     "name": "Dépôt ferroviaire",

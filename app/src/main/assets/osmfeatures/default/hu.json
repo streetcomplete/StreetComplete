@@ -163,20 +163,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Épületszám",
                         "neighbourhood": "Környék",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Hely",
                         "postcode": "Irányítószám",
                         "province": "Tartomány",
                         "province!cn": "Tartomány/község/adminisztratív körzet/különleges adminisztratív körzet",
                         "province!jp": "Prefektúra",
                         "quarter": "Negyed",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Tartomány, állam",
                         "street": "Utca",
                         "subdistrict": "Városrész",
                         "subdistrict!vn": "Körzet/közösség/városrész",
                         "suburb": "Városrész",
-                        "suburb!jp": "Kerület",
                         "unit": "Egység"
                     },
                     "terms": "cím,lakcím,házszám,utca,lakhely,lakóhely,postacím"
@@ -813,6 +810,7 @@
                         "grass": "Fű",
                         "hop": "Komló",
                         "lavender": "Levendula",
+                        "maize": "Kukorica",
                         "potato": "Burgonya",
                         "rape": "Repce",
                         "rice": "Rizs",
@@ -1395,6 +1393,7 @@
                         "fission": "Maghasadás",
                         "fusion": "Magfúzió",
                         "photovoltaic": "Fotovoltaikus",
+                        "run-of-the-river": "Folyóvíz áramlása",
                         "water-storage": "Víztározó",
                         "wind_turbine": "Szélturbina"
                     }
@@ -1610,7 +1609,8 @@
                         "critical": "Közepes: csak tapasztalt lovak és lovasok számára járható. Nagyobb akadályok. A hidakat gondosan meg kell vizsgálni.",
                         "dangerous": "Veszélyes: csak nagyon tapasztalt lovak és lovasok számára járható és csak jó időjárás esetén. Le kell szállni.",
                         "demanding": "Vigyázva használható: egyenetlen út, időnként nehezebb útszakaszok.",
-                        "difficult": "Nehéz: az út keskeny és nyitott. Akadályok lehetnek, amiket át kell lépni és szűk szakaszokon haladni."
+                        "difficult": "Nehéz: az út keskeny és nyitott. Akadályok lehetnek, amiket át kell lépni és szűk szakaszokon haladni.",
+                        "impossible": "Átjárhatatlan: Lovak számára nem járható út vagy híd. Túl keskeny, nincs elegendő támasz, akadályok vannak, például létrák. Életveszélyes."
                     },
                     "placeholder": "Nehéz, veszélyes…"
                 },
@@ -2145,6 +2145,34 @@
                 },
                 "payment_multi": {
                     "label": "Fizetési típusok",
+                    "options": {
+                        "alipay": "Alipay",
+                        "american_express": "American Express",
+                        "apple_pay": "Apple Pay",
+                        "cash": "Készpénz",
+                        "cheque": "Csekk",
+                        "coins": "Pénzérme",
+                        "contactless": "Érintésmentes fizetés",
+                        "credit_cards": "Hitelkártya",
+                        "cryptocurrencies": "Kriptovaluta",
+                        "debit_cards": "Hitelkártya",
+                        "diners_club": "Diners Club",
+                        "ep_easycard": "悠遊卡EasyCard",
+                        "ep_geldkarte": "GeldKarte",
+                        "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
+                        "google_pay": "Google Pay",
+                        "maestro": "Maestro",
+                        "mastercard": "Mastercard",
+                        "mastercard_contactless": "Mastercard érintésmentes",
+                        "notes": "Bankjegy",
+                        "paypal": "PayPal",
+                        "telephone_cards": "Telefonkártya",
+                        "unionpay": "UnionPay",
+                        "visa": "Visa",
+                        "visa_electron": "Visa Electron",
+                        "wechat": "WeChat Pay"
+                    },
                     "terms": "fizetési módok"
                 },
                 "phases": {
@@ -2260,7 +2288,16 @@
                 "plant/method": {
                     "label": "Áramfejlesztés módja"
                 },
+                "plant/output": {
+                    "options": {
+                        "hot_air": "Forró levegő",
+                        "hot_water": "Forró víz",
+                        "steam": "Gőz",
+                        "vacuum": "Vákuum"
+                    }
+                },
                 "plant/output/electricity": {
+                    "label": "Villamos kimenő teljesítmény",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2282,6 +2319,9 @@
                 },
                 "population": {
                     "label": "Népesség"
+                },
+                "population/date": {
+                    "placeholder": "ÉÉÉÉÉ-HH-NN"
                 },
                 "portable": {
                     "label": "Hordozható",
@@ -2744,6 +2784,9 @@
                     },
                     "terms": "forrás,térképezés forrása,ismeretek forrása"
                 },
+                "source/population": {
+                    "label": "Népességadat forrása"
+                },
                 "species": {
                     "label": "Fajok",
                     "terms": "fajok"
@@ -3118,7 +3161,9 @@
                 "tunnel_combo": {
                     "label": "Típus",
                     "options": {
-                        "culvert": "Áteresz"
+                        "avalanche_protector": "Lavinavédelmi létesítmény",
+                        "culvert": "Áteresz",
+                        "flooded": "Elárasztott alagút"
                     }
                 },
                 "turning_circle": {
@@ -4424,6 +4469,9 @@
                     "name": "Állatkifutó",
                     "terms": "kétéltű,állatpark,akvárium,medve,madár,hal,rovar,oroszlán,emlős,majom,pingvin,hüllő,szafari,tematikus park,tigris,állatkert"
                 },
+                "attraction/big_wheel": {
+                    "name": "Óriáskerék"
+                },
                 "attraction/bumper_car": {
                     "name": "Dodzsem",
                     "terms": "dodgem"
@@ -4585,6 +4633,9 @@
                 },
                 "barrier/lift_gate": {
                     "name": "Sorompó"
+                },
+                "barrier/log": {
+                    "name": "Kidőlt fa akadály"
                 },
                 "barrier/planter": {
                     "name": "Virágláda (akadály)"
@@ -5844,6 +5895,9 @@
                     "name": "Haditengerészeti támaszpont",
                     "terms": "flottatámaszpont,hadikikötő"
                 },
+                "landuse/military/danger_area": {
+                    "name": "Veszélyzóna, belépés tilos"
+                },
                 "landuse/military/obstacle_course": {
                     "name": "Katonai akadálypálya",
                     "terms": "hadsereg,haderő,partiőrség,tengerészet,haditengerészet,háború"
@@ -6379,13 +6433,16 @@
                     "terms": "mobiltorony,mobilcella"
                 },
                 "man_made/mast/communication/radio": {
-                    "name": "Rádió adótorony"
+                    "name": "Rádió adótorony",
+                    "terms": "antenna,rádióantenna,rádióadó"
                 },
                 "man_made/mast/communication/television": {
-                    "name": "Tévé adótorony"
+                    "name": "Tévé adótorony",
+                    "terms": "antenna,tévéantenna,tévéadó"
                 },
                 "man_made/mast/lighting": {
-                    "name": "Reflektoroszlop"
+                    "name": "Reflektoroszlop",
+                    "terms": "világítás"
                 },
                 "man_made/mineshaft": {
                     "name": "Bányaakna (függőleges)",
@@ -7974,6 +8031,9 @@
                 "shop/pet": {
                     "name": "Kisállatkereskedés",
                     "terms": "állat,kisállat,állateledel"
+                },
+                "shop/pet_grooming": {
+                    "name": "Kisállat fodrász"
                 },
                 "shop/photo": {
                     "name": "Fotósbolt",

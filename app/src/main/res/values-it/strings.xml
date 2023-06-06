@@ -1188,7 +1188,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="lit_value_24_7">"Illuminato giorno e notte"</string>
     <string name="lit_value_automatic">"Illuminato quando qualcuno passa"</string>
     <string name="overlay_sidewalk">"Marciapiedi"</string>
-    <string name="quest_generic_answer_is_indoors">"Si trova all'interno"</string>
+    <string name="quest_generic_answer_is_indoors">"È all'interno di un edificio"</string>
     <string name="quest_summit_cross_title">"C'è una croce di vetta qui?"</string>
     <string name="quest_entrance_reference">"Che scritta è presente su questo ingresso?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Un nome e un intervallo di appartamenti"</string>
@@ -1312,4 +1312,23 @@ Spostarlo ora?"</string>
     <string name="unknown_surface_title">"Altri tipi di supeficie"</string>
     <string name="overlay_surface">"Superfici"</string>
     <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
+    <string name="quest_crossing_title2">"C'è un attraversamento qui?"</string>
+    <string name="quest_crossing_yes">"Sì (ad es. qui il cordolo è abbassato oppure ci sono le strisce)"</string>
+    <string name="quest_crossing_no">"No, però è possibile attraversare"</string>
+    <string name="quest_crossing_prohibited">"No, è proibito oppure impossibile attraversare"</string>
+    <string name="quest_hairdresser_title">"Quali clienti vanno da questo parrucchiere?"</string>
+    <string name="quest_hairdresser_male_and_female">"Chiunque"</string>
+    <string name="quest_hairdresser_female_only">"Donne"</string>
+    <string name="quest_hairdresser_male_only">"Uomini"</string>
+    <string name="quest_hairdresser_not_signed">"Non è indicato"</string>
+    <string name="quest_amenityCover_title">"È coperto (protetto dalla pioggia)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Prolungamento del cordolo"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Isola di traffico"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Prolungamento del cordolo + isola di traffico"</string>
+    <string name="lane_narrowing_traffic_calming_none">"La corsia qui non è ristretta"</string>
+    <string name="quest_tactilePaving_title_steps">"C'è una pavimentazione tattile in cima e in fondo a questi gradini?"</string>
+    <string name="quest_tactilePaving_steps_top">"Solo in cima"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Solo in fondo"</string>
+    <string name="overlay_addresses_no_entrance">"Non è un'entrata…"</string>
 </resources>

@@ -40,7 +40,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
     <string name="confirmation_discard_title">"Batalkan perubahan?"</string>
     <string name="confirmation_discard_positive">"Batalkan"</string>
-    <string name="action_download">"Pindai pencarian di sini"</string>
+    <string name="action_download">"Unduh data di sini"</string>
     <string name="action_upload">"Unggah jawaban"</string>
     <string name="no_changes">"Kamu tidak menjawab apapun"</string>
     <string name="close">"tutup"</string>
@@ -181,7 +181,7 @@ Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu
     <string name="quest_manySports_confirmation_specific">"Dikhususkan hanya untuk ini"</string>
     <string name="quest_manySports_confirmation_generic">"Fungsi umum"</string>
     <string name="quest_sport_manySports_confirmation_title">"Kamu memilih banyak cabang olahraga"</string>
-    <string name="quest_toiletsFee_title">"Apakah kamar kecil ini bayar?"</string>
+    <string name="quest_toiletsFee_title">"Apakah toilet ini berbayar?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Apakah penyeberangan ini mempunyai ubin pemandu di dua sisi?"</string>
     <string name="quest_source_dialog_title">"Apakah kamu yakin sudah memeriksa ini di tempat?"</string>
     <string name="quest_source_dialog_note">"Hanya informasi yang ditemukan di survei yang boleh dimasukkan."</string>
@@ -280,7 +280,7 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="produce_vanilla">"Vanila"</string>
     <string name="produce_walnuts">"Kenari"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat mengunduh di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
     <string name="action_undo">"Urungkan"</string>
@@ -342,7 +342,7 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_streetName_answer_noProperStreet_service2">"Ini semacam jalan khusus atau jalan parkir"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ini jalan agrikultural atau jalan hutan"</string>
     <string name="quest_streetName_answer_noName_noname">"Bukan semuanya, hanya tidak ada namanya"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Tanda kursi roda seperti ini mungkin terlihat apabila kamar kecil dapat diakses.
+    <string name="quest_wheelchairAccess_description_toilets">"Tanda kursi roda seperti ini mungkin terlihat apabila toilet dapat diakses.
 Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegangan tangan atau cuci tangan khusus."</string>
     <string name="map_btn_create_note">"Buat catatan baru"</string>
     <string name="create_new_note_unprecise">"Zum masuk lagi untuk membuat catatan"</string>
@@ -576,8 +576,8 @@ Pisah sekarang?"</string>
     <string name="about_title_donate">"Donasi"</string>
     <string name="about_summary_donate">"Beri apresiasimu! ❤️"</string>
     <string name="about_description_donate">"Terima kasih sudah memilih untuk mendukung aplikasi ini! Untuk melihat donasi sekarang dan donasimu sendiri, tekan di platform yang sesuai"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Pindai di sini saja"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Lanjutkan pindaian sekarang"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Unduh di sini saja"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Lanjutkan pengunduhan saat ini"</string>
     <string name="quest_buildingType_garages_description">"Pisahkan nama pemilik/penyewa dengan spasi"</string>
     <string name="quest_tourism_information_title">"Apa tipe informasi turis di sini?"</string>
     <string name="quest_tourism_information_office">"Kantor informasi turis"</string>
@@ -785,6 +785,7 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_lanes_answer_noLanes">"Jalur tak ditandai"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Apakah ini benar?"</string>
     <string name="quest_maxheight_below_bridge_title">"Berapa batas ketinggian di bawah jembatan?"</string>
+    <string name="quest_maxheight_split_way_hint">"Jika hal ini tidak cocok sepanjang jalan, coba jawab “%s”."</string>
     <string name="quest_kerb_height_title">"Berapa tinggi trotoar ini?"</string>
     <string name="quest_kerb_height_flush">"Sama tingginya dengan permukaan jalan"</string>
     <string name="quest_kerb_height_lowered">"Sedikit lebih tinggi daripada permukaan jalan"</string>
@@ -824,6 +825,7 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_drinking_water_not_potable_signed">"Tak aman untuk diminum (tertanda)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Tak aman untuk diminum (tak tertanda)"</string>
     <string name="quest_buildingType_fire_station">"Stasiun damkar"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Hanya botol plastik dan karton"</string>
     <string name="team_mode">"Masuk ke Mode Kelompok"</string>
     <string name="team_mode_exit">"Keluar dari Mode Kelompok"</string>
     <string name="team_mode_description">"Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok."</string>
@@ -949,6 +951,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_smoothness_title_horrible">"Sangat bergelombang dan tidak rata"</string>
     <string name="quest_smoothness_title_very_horrible">"Hampir tak bisa dilewati"</string>
     <string name="quest_smoothness_title_impassable">"Tak bisa dilewati"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Tidak ada retakan atau benjolan"</string>
     <string name="quest_smoothness_description_excellent_paving_stones">" "</string>
     <string name="quest_smoothness_description_very_bad_paved">"Lubang yang dalam atau kerusakan berbahaya lainnya"</string>
     <string name="quest_smoothness_description_horrible">"Hanya dapat dilalui menggunakan kendaraan off-road atau dengan berjalan kaki"</string>
@@ -979,6 +982,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="ar_measure">"Ukur"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Sudutnya terlalu curam, menjauhlah sedikit"</string>
     <string name="default_disabled_msg_no_ar">"Anda memerlukan pita pengukur untuk menyelesaikan misi ini karena pengukuran dengan kamera tidak didukung di perangkat ini."</string>
+    <string name="quest_cycleway_width_title">"Seberapa lebar jalur sepeda di sini?"</string>
     <string name="quest_road_width_title">"Berapa lebar jalan di sini?"</string>
     <string name="quest_sidewalk_answer_none">"Tak ada trotoar sama sekali"</string>
     <string name="about_description_donate_google_play2">"Terima kasih karena telah ingin mendukung aplikasi ini! Sayangnya, karena peraturan Google Play Store, tautan yang ditujukan untuk berdonasi tidak diizinkan untuk ditampilkan dalam aplikasi. Dalam konteks ini, bahkan menambahkan tautan ke beranda proyek kami tidak diizinkan."</string>
@@ -1032,8 +1036,8 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_smoking_title2">"Apakah merokok diizinkan di sini?"</string>
     <string name="quest_smoothness_title">"Bagaimana kualitas jalan di sini?"</string>
     <string name="quest_surface_title">"Terbuat dari apa permukaan ini?"</string>
-    <string name="quest_toiletAvailability_title">"Apakah tersedia kamar kecil di sini?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title2">"Apakah kamar kecil pada tempat ini ramah kursi roda?"</string>
+    <string name="quest_toiletAvailability_title">"Apakah tersedia toilet di sini?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Apakah toilet pada tempat ini ramah kursi roda?"</string>
     <string name="link_valhalla_description">"Mesin perutean dengan jejak memori yang sangat kecil, perutean multi-modal, isokron, dan lainnya."</string>
     <string name="link_backofyourhand_description">"Sebaik apa kamu mengenal daerahmu? Uji pengetahuanmu dengan memposisikan jalanan."</string>
     <string name="link_notesreview_description">"Lihat, filter, dan komentari catatan yang dibuat oleh Anda dan orang lain dengan nyaman. Banyak catatan yang dapat diselesaikan dengan menempatkan informasi yang terkandung di dalamnya pada peta dengan iD atau JOSM"</string>
@@ -1059,6 +1063,9 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_building_entrance_main">"Pintu masuk utama dari bangunan umum"</string>
     <string name="quest_building_entrance_exit">"Hanya untuk keluar"</string>
     <string name="quest_building_entrance_emergency_exit">"Pintu keluar darurat"</string>
+    <string name="quest_building_entrance_shop">"Pintu masuk toko"</string>
+    <string name="quest_building_entrance_yes">"Pintu masuk jenis lain"</string>
+    <string name="quest_building_entrance_dead_end">"Buntu, tak ada pintu masuk"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Ketuk layar untuk mulai mengukur"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Apakah ada pompa sepeda umum di sini (setidaknya saat buka)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Apa ada pompa sepeda yang bekerja di sini?"</string>
@@ -1083,6 +1090,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_entrance_reference">"Apa yang tertulis di pintu masuk ini?"</string>
     <string name="quest_entrance_reference_flat_range_label">"Biaya flat:"</string>
     <string name="default_disabled_msg_overlay">"Jenis pencarian ini dinonaktifkan secara default karena sudah ada overlay yang lebih efektif dan efisien untuk memasukkan dan memperbarui data ini."</string>
+    <string name="quest_camp_drinking_water_title">"Apa air minum tersedia secara bebas ke orang yang berkemah di sini?"</string>
     <string name="quest_camp_shower_title">"Apa ada shower di sini?"</string>
     <string name="quest_camp_power_supply_title">"Apakah pelanggan dapat mengisi daya ponsel, laptop, dsb di sini?"</string>
     <string name="quest_camp_type_title">"Siapa yang diizinkan untuk berkemah di sini?"</string>
@@ -1095,6 +1103,8 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="link_opencampingmap_description">"Peta tempat perkemahan"</string>
     <string name="quest_atm_cashin_title">"Bisakah Anda menyetor uang tunai di ATM ini?"</string>
     <string name="create_node_action_description">"Anda membuat simpul dengan ..."</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Ini adalah Assembly Point (titik berkumpul)"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Assembly Point adalah tempat di mana orang-orang berkumpul saat darurat. Biasanya terlihat seperti ini:"</string>
     <string name="quest_address_street_street_name_label">"Nama jalan:"</string>
     <string name="quest_address_street_hint2">"Ketuk jalan di peta untuk memilihnya"</string>
     <string name="quest_bicycle_incline_title">"Ke mana arah yang mengarah ke atas?"</string>
@@ -1152,5 +1162,12 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_cycleway_value_sidewalk_dual">"trotoar berbagi jelas, kedua arah"</string>
     <string name="privacy_html_arcore">"Aplikasi ini berjalan dengan &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), yang disediakan oleh Google dan diatur oleh &lt;a href=\"https://policies.google.com/privacy\"&gt;Kebijakan Privasi Google&lt;/a&gt;."</string>
     <string name="quest_gritBinSeasonal_title">"Apa ini juga terdapat di sini pada selain musim dingin?"</string>
+    <string name="quest_traffic_signals_sound_description">"Petunjuk: Carilah pengeras suara/speaker. Tak semua suara perlu diaktifkan melalui tombol."</string>
     <string name="quest_presets_duplicate">"Duplikasi"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Tidak ada toilet di sini"</string>
+    <string name="quest_hairdresser_title">"Siapa yang bisa mengunjungi penata rambut ini?"</string>
+    <string name="quest_hairdresser_male_and_female">"Siapa saja"</string>
+    <string name="quest_hairdresser_female_only">"Wanita"</string>
+    <string name="quest_hairdresser_male_only">"Pria"</string>
+    <string name="quest_hairdresser_not_signed">"Tak ada pada tanda"</string>
 </resources>

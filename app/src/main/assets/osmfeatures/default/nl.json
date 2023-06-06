@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Gebouwnummer/Perceelnummer",
                         "neighbourhood": "Woonwijk",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Plaats",
                         "postcode": "Postcode",
                         "province": "Provincie",
                         "province!cn": "Provincie/Gemeente/AR/SAR",
                         "province!jp": "Prefectuur",
                         "quarter": "Wijk",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Staat",
                         "street": "Straat",
                         "subdistrict": "Sub-arrondissement",
                         "subdistrict!vn": "Wijk/Commune/Steedje",
                         "suburb": "Stadsdeel",
-                        "suburb!jp": "Wijk",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Bus"
                     },
                     "terms": "locatie"
@@ -457,6 +457,14 @@
                         "wall_loops": "Fietsenrek (om voorwiel in te plaatsen)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Fietsstraat",
+                    "options": {
+                        "undefined": "Nee",
+                        "yes": "Ja"
+                    },
+                    "terms": "auto te gast,fiets,fietslaan,bike lane"
+                },
                 "bike_ride": {
                     "label": "Bike and Ride"
                 },
@@ -583,21 +591,31 @@
                         "outbuilding": "Bijgebouw",
                         "pavilion": "Paviljoen",
                         "public": "Openbaar gebouw",
+                        "residential": "Residentieel gebouw",
+                        "retail": "Winkelpand",
                         "roof": "Dak",
+                        "ruins": "Ruïne van een gebouw",
                         "school": "Schoolgebouw",
                         "semidetached_house": "Twee-onder-een-kapwoning",
                         "service": "Dienstgebouw",
                         "shed": "Schuurtje",
                         "stable": "Stal",
                         "stadium": "Stadiongebouw",
+                        "static_caravan": "Stacaravan",
                         "sty": "Varkensstal",
                         "synagogue": "Synagoge",
                         "temple": "Tempel",
                         "terrace": "Rijtjeshuizen",
                         "train_station": "Treinstation",
-                        "university": "Universiteitsgebouw"
+                        "transportation": "Openbaar vervoersgebouw",
+                        "university": "Universiteitsgebouw",
+                        "warehouse": "Magazijn"
                     },
                     "terms": "gebouw,structuur"
+                },
+                "building/colour": {
+                    "label": "Gevelkleur",
+                    "terms": "gebouw kleur,kleur"
                 },
                 "building/flats": {
                     "label": "Aantal eenheden",
@@ -736,13 +754,22 @@
                     "options": {
                         "babies": "Babykleding",
                         "children": "Kinderkleding",
+                        "denim": "Jeans",
+                        "fur": "Bont",
                         "hats": "Hoeden",
                         "maternity": "Zwangerschapskleding",
+                        "men": "Herenkleding",
+                        "motorcycle": "Motorkleding",
                         "oversize": "Grote maten kleding",
                         "socks": "Sokken",
                         "sports": "Sportkleding",
                         "suits": "Pakken",
-                        "swimwear": "Badkleding"
+                        "swimwear": "Badkleding",
+                        "traditional": "Traditionele kleding",
+                        "underwear": "Ondergoed",
+                        "wedding": "Bruidskleding",
+                        "women": "Dameskleding",
+                        "workwear": "Werkkleding"
                     },
                     "terms": "kleding,kleren,broek,jas,shirt"
                 },
@@ -781,6 +808,8 @@
                 "consulate": {
                     "label": "Soort consulaat",
                     "options": {
+                        "consular_agency": "Consulair agentschap",
+                        "consular_office": "Consulair dienstencentrum",
                         "consulate_general": "Consulaat-generaal",
                         "honorary_consul": "Ereconsul",
                         "residence": "Officiële residentie van de ambassadeur",
@@ -789,6 +818,10 @@
                 },
                 "consulting": {
                     "label": "Expertise"
+                },
+                "contact/facebook": {
+                    "label": "Facebook gebruikersnaam of URL",
+                    "placeholder": "https://www.facebook.com/LokaalBedrijf"
                 },
                 "contact/webcam": {
                     "label": "Webcam-url",
@@ -932,7 +965,12 @@
                     }
                 },
                 "crossing": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "traffic_signals": "Kruispunt met verkeerslichten",
+                        "uncontrolled": "Alleen markeringen op de weg",
+                        "unmarked": "Geen markeringen op de weg en geen verkeerslichten"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "Slagboom",
@@ -952,6 +990,26 @@
                 },
                 "crossing/light": {
                     "label": "Lampen"
+                },
+                "crossing/markings": {
+                    "label": "Markering van oversteekplaats",
+                    "options": {
+                        "dashes": "Gestreepte lijnen dwars op de weg",
+                        "dots": "Gestippelde lijnen dwars op de weg",
+                        "ladder": "Ladder met dwarsbalken",
+                        "ladder:paired": "Ladder met sets dwarsbalken",
+                        "ladder:skewed": "Ladder met diagonale dwarsbalken",
+                        "lines": "Lijnen dwars op de weg",
+                        "lines:paired": "Dubbele dwarslijnen",
+                        "no": "Zonder markeringen op de weg",
+                        "pictograms": "Geschilderde pictogrammen",
+                        "surface": "Alleen afwijkend oppervlak",
+                        "yes": "Met markeringen",
+                        "zebra": "Zebrapad",
+                        "zebra:bicolour": "Tweekleurig zebrapad",
+                        "zebra:double": "Dubbel zebrapad (triple-four)",
+                        "zebra:paired": "Zebrapad met strepen in sets (double paired)"
+                    }
                 },
                 "crossing_raised": {
                     "label": "Verhoogd",
@@ -974,8 +1032,10 @@
                         "coffee_shop": "Koffiehuis",
                         "dessert": "Dessert",
                         "donut": "Donut",
+                        "filipino": "Filipijns",
                         "fish": "Vis",
                         "french": "Frans",
+                        "georgian": "Georgisch",
                         "german": "Duits",
                         "greek": "Grieks",
                         "hot_dog": "Hotdog",
@@ -992,6 +1052,7 @@
                         "mexican": "Mexicaans",
                         "pankcake": "Pannenkoek",
                         "pasta": "Pasta",
+                        "peruvian": "Peruaans",
                         "pizza": "Pizza",
                         "polish": "Pools",
                         "portuguese": "Portugees",
@@ -1004,8 +1065,10 @@
                         "steak_house": "Steakhouse",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanees",
+                        "tex-mex": "Tex-mex",
                         "thai": "Thaïs",
                         "turkish": "Turks",
+                        "ukrainian": "Oekraïens",
                         "vietnamese": "Vietnamees"
                     },
                     "terms": "keukens"
@@ -1025,28 +1088,44 @@
                     "label": "Fietspaden",
                     "options": {
                         "lane": {
-                            "description": "Een fietspad, afgescheiden van het autoverkeer door een geverfde lijn"
+                            "description": "Een fietspad, afgescheiden van het autoverkeer door een geverfde lijn",
+                            "title": "Fietsstrook"
+                        },
+                        "no": {
+                            "description": "Geen fietsstrook",
+                            "title": "Geen"
                         },
                         "opposite": {
-                            "description": "Een fietspad in beide richtingen op een eenrichtingsweg"
+                            "description": "Een fietspad in beide richtingen op een eenrichtingsweg",
+                            "title": "Fietsen toegestaan in tegengestelde richting"
                         },
                         "opposite_lane": {
-                            "description": "Een fietspad in de andere richting dan de hoofdweg"
+                            "description": "Een fietspad in de andere richting dan de hoofdweg",
+                            "title": "Fietsstrook in tegengestelde richting"
                         },
                         "separate": {
-                            "description": "Geeft aan dat het fietspad los is uitgetekend"
+                            "description": "Geeft aan dat het fietspad los is uitgetekend",
+                            "title": "Fietspad apart in kaart gebracht"
                         },
                         "share_busway": {
-                            "description": "Een rijstrook voor bussen en fietsers"
+                            "description": "Een rijstrook voor bussen en fietsers",
+                            "title": "Gedeelde bus-fietsbaan"
                         },
                         "shared_lane": {
-                            "description": "Overrijdbare aanduidingen om auto's attent te maken op fietsers"
+                            "description": "Overrijdbare aanduidingen om auto's attent te maken op fietsers",
+                            "title": "Gedeelde fietsstrook"
                         },
                         "track": {
-                            "description": "Een fietspad dat fysiek is afgescheiden van het verkeer. Niet op de hoofdweg aanduiden als het fietspad al afzonderlijk getekend is."
+                            "description": "Een fietspad dat fysiek is afgescheiden van het verkeer. Niet op de hoofdweg aanduiden als het fietspad al afzonderlijk getekend is.",
+                            "title": "Vrijliggend fietspad"
                         }
                     },
-                    "terms": "fietspad"
+                    "placeholder": "Strook, pad, tegengestelde richting, ...",
+                    "terms": "fietspad",
+                    "types": {
+                        "cycleway:left": "Linkerkant",
+                        "cycleway:right": "Rechterkant"
+                    }
                 },
                 "dance/style": {
                     "label": "Dansstijlen"
@@ -1849,7 +1928,12 @@
                     "terms": "keuken"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Types opvangbekken"
+                    "label": "Types opvangbekken",
+                    "options": {
+                        "arm": "Armbassin",
+                        "face": "Gezichtsbassin",
+                        "foot": "Voetbassin"
+                    }
                 },
                 "label": {
                     "label": "Markering"
@@ -2056,6 +2140,10 @@
                     "label": "Minimale snelheidslimiet",
                     "placeholder": "20, 30, 40 ...",
                     "terms": "minimumsnelheid,onderste snelheidsgrens,minimumsnelheidslimiet"
+                },
+                "mobile": {
+                    "label": "Mobiele telefoon",
+                    "placeholder": "+31 42 123 4567"
                 },
                 "model": {
                     "label": "Model"
@@ -2800,6 +2888,12 @@
                         "other": "Overig"
                     }
                 },
+                "seamark/harbour/category_marina": {
+                    "options": {
+                        "marina": "Ja",
+                        "marina_no_facilities": "Nee"
+                    }
+                },
                 "seamark/mooring/category": {
                     "label": "Categorie"
                 },
@@ -2972,6 +3066,7 @@
                         "curling": "Curling",
                         "disc_golf": "Discgolf",
                         "dog_racing": "Hondenrennen",
+                        "equestrian": "Paardensport",
                         "gaelic_games": "Gaelic Games",
                         "ice_hockey": "IJshockey",
                         "ice_skating": "Schaatsen",
@@ -2991,6 +3086,18 @@
                         "tennis": "Tennis",
                         "volleyball": "Volleybal"
                     }
+                },
+                "sport/sport_ice": {
+                    "label": "Sport"
+                },
+                "sport/sport_pub": {
+                    "label": "Sport"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "Sport"
+                },
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sport"
                 },
                 "stars": {
                     "label": "Aantal sterren",
@@ -3891,6 +3998,9 @@
                 "amenity/doctors/child_psychiatry": {
                     "name": "Kinder- en jeugdpsychiater"
                 },
+                "amenity/doctors/gynaecology": {
+                    "name": "Verloskundige/Gynaecoloog"
+                },
                 "amenity/doctors/psychiatrist": {
                     "name": "Psychiater"
                 },
@@ -3929,6 +4039,9 @@
                     "name": "Fastfoodrestaurant",
                     "terms": "hamburgers,frieten,pizza",
                     "aliases": "Snackbar\nCafetaria"
+                },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagelwinkel"
                 },
                 "amenity/fast_food/burger": {
                     "name": "Burgerrestaurant",
@@ -3974,6 +4087,9 @@
                 "amenity/fast_food/sandwich": {
                     "name": "Broodjesfastfoodzaak",
                     "terms": "smos,smoske,broodje,broodjeszaak"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Fastfoodrestaurant voor chicken wings"
                 },
                 "amenity/ferry_terminal": {
                     "name": "Veerbootterminal"
@@ -4022,6 +4138,9 @@
                     "name": "IJssalon",
                     "terms": "ijskraam,ijskraampje,ijscowinkel,ijsventer"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Frozen yoghurt-winkel"
+                },
                 "amenity/internet_cafe": {
                     "name": "Internetcafé",
                     "terms": "cyberspace,cybercafé"
@@ -4031,6 +4150,9 @@
                 },
                 "amenity/kindergarten": {
                     "name": "Gebied van Crèche/Kleuterschool"
+                },
+                "amenity/kneipp_water_cure": {
+                    "name": "Kneipp-faciliteit"
                 },
                 "amenity/language_school": {
                     "name": "Taalschool",
@@ -4303,6 +4425,9 @@
                     "name": "Frans restaurant",
                     "terms": "kaas,frans,eten,avondeten,wijn"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Georgisch restaurant"
+                },
                 "amenity/restaurant/german": {
                     "name": "Duits restaurant",
                     "terms": "duits,worst"
@@ -4337,6 +4462,9 @@
                     "name": "Pizzarestaurant",
                     "terms": "pizzeria"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Ramen-restaurant"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Visrestaurant",
                     "terms": "zeevruchtenrestaurant"
@@ -4357,6 +4485,9 @@
                 },
                 "amenity/restaurant/turkish": {
                     "name": "Turks restaurant"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Oekraïens restaurant"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamees restaurant"
@@ -6378,6 +6509,9 @@
                     "name": "Jachthaven",
                     "terms": "marina"
                 },
+                "leisure/marina_no_facilities": {
+                    "name": "Ligplaatsen voor jachten"
+                },
                 "leisure/miniature_golf": {
                     "name": "Minigolf",
                     "terms": "golf,midgetgolf,miniatuurgolf,hole"
@@ -7586,11 +7720,11 @@
                 },
                 "power/generator/method/photovoltaic/building/roof": {
                     "name": "Zonnepaneel als luifel",
-                    "terms": "zonnepaneel carport,zonnepaneel overdekking"
+                    "terms": "zonnepaneel,carport,overdekking,overkapping"
                 },
                 "power/generator/method/photovoltaic/location/roof": {
                     "name": "Zonnepaneel op dak",
-                    "terms": "zonnepaneel"
+                    "terms": "huis,dak,zonnepaneel"
                 },
                 "power/generator/source/hydro": {
                     "name": "Waterturbine",
@@ -7628,6 +7762,9 @@
                     "name": "Hydro-elektrische centrale",
                     "terms": "hydro-elektrische elektriciteitscentrale"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "Zonnepark"
+                },
                 "power/plant/source/nuclear": {
                     "name": "Nucleaire centrale",
                     "terms": "nucleaire elektriciteitscentrale"
@@ -7635,6 +7772,9 @@
                 "power/plant/source/oil": {
                     "name": "Oliecentrale",
                     "terms": "elektriciteitscentrale op olie,olie elektriciteitscentrale"
+                },
+                "power/plant/source/solar": {
+                    "name": "Zonnepark"
                 },
                 "power/plant/source/waste": {
                     "name": "Afvalenergiecentrale",
@@ -8346,6 +8486,9 @@
                 "shop/hobby": {
                     "name": "Hobbywinkel"
                 },
+                "shop/honey": {
+                    "name": "Honingwinkel"
+                },
                 "shop/household_linen": {
                     "name": "Winkel voor huishoudelijk linnen",
                     "terms": "lakens,dekens,vaatdoeken,handdoeken,washandjes,tafelkleden,bedovertrekken,gordijnen,kussenslopen"
@@ -8906,8 +9049,8 @@
                     "terms": "signalisatie,verkeerssignalisatie,verticale signalisatie"
                 },
                 "traffic_sign/city_limit": {
-                    "name": "Verkeersbord stadsgrens",
-                    "terms": "plaats,dorp,nederzetting,grens,rand,bord stadsgrens"
+                    "name": "Plaatsnaambord",
+                    "terms": "kombord,plaats,dorp,nederzetting,grens,rand,stadsgrens"
                 },
                 "traffic_sign/maxspeed": {
                     "name": "Verkeersbord maximumsnelheid",

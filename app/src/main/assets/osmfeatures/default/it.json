@@ -152,7 +152,7 @@
                         "city!vn": "Città/Cittadina",
                         "conscriptionnumber": "123",
                         "country": "Nazione",
-                        "county": "Contea (in Italia NON usare)",
+                        "county": "Contea",
                         "county!jp": "Distretto",
                         "district": "Distretto",
                         "district!cn": "Distretto/Contea/Bandiera",
@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Num. edificio/Num. lotto",
                         "neighbourhood": "Quartiere",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Luogo",
                         "postcode": "Codice postale",
                         "province": "Provincia",
                         "province!cn": "Provincia/Municipalità/AR/SAR",
                         "province!jp": "Prefettura",
                         "quarter": "Circoscrizione",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Stato/Regione",
                         "street": "Strada",
                         "subdistrict": "Sottodistretto",
                         "subdistrict!vn": "Rione/Comune/Cittadina",
                         "suburb": "Circoscrizione",
-                        "suburb!jp": "Rione",
+                        "suburb!jp": "Rione (政令市)",
                         "unit": "Unità"
                     },
                     "terms": "posizione,luogo,ubicazione,indirizzo"
@@ -258,7 +258,9 @@
                         "necropolis": "Necropoli",
                         "petroglyph": "Incisione",
                         "roman_circus": "Circo romano",
-                        "roman_villa": "Villa romana"
+                        "roman_villa": "Villa romana",
+                        "settlement": "Insediamento storico",
+                        "tumulus": "Tumulo"
                     }
                 },
                 "architect": {
@@ -296,7 +298,22 @@
                         "hammer_throw": "Lancio del martello",
                         "high_jump": "Salto in alto",
                         "javelin_throw": "Lancio del giavellotto",
-                        "long_jump": "Salto in lungo"
+                        "long_jump": "Salto in lungo",
+                        "pole_vault": "Salto con l’asta",
+                        "shot_put": "Getto del peso",
+                        "triple_jump": "Salto triplo"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Evento",
+                    "options": {
+                        "javelin_throw": "Giavellotto",
+                        "long_jump": "Salto in lungo",
+                        "pole_vault": "Salto con l’asta",
+                        "running": "Corsa",
+                        "sprint": "Scatto",
+                        "steeplechase": "Corsa a ostacoli",
+                        "triple_jump": "Salto triplo"
                     }
                 },
                 "atm": {
@@ -305,7 +322,13 @@
                 "attraction": {
                     "label": "Tipo",
                     "options": {
+                        "alpine_coaster": "Ottovolante alpino",
+                        "amusement_ride": "Giostra",
                         "animal": "Recinto per animali",
+                        "big_wheel": "Ruota panoramica",
+                        "bumper_car": "Autoscontro",
+                        "bungee_jumping": "Bungee Jumping",
+                        "carousel": "Carosello",
                         "maze": "Labirinto"
                     }
                 },
@@ -313,12 +336,13 @@
                     "label": "Automatizzato"
                 },
                 "baby_feeding": {
-                    "label": "Area per la Cura dei Bambini",
+                    "label": "Area per la cura dei bambini",
                     "options": {
                         "no": "Nessuno",
-                        "room": "Stanza Dedicata",
+                        "room": "Stanza dedicata",
                         "yes": "Spazio contrassegnato"
-                    }
+                    },
+                    "terms": "nursery,allattamento,cura,bambini"
                 },
                 "baby_seat": {
                     "label": "Seggiolino"
@@ -337,11 +361,20 @@
                 "barrier": {
                     "label": "Tipo",
                     "options": {
+                        "block": "Blocco",
+                        "bollard": "Paletto",
+                        "cattle_grid": "Griglia per il bestiame",
+                        "chain": "Catena",
+                        "city_wall": "Muro ccittadino",
+                        "cycle_barrier": "Barriera per le bici",
                         "ditch": "Fossato",
                         "entrance": "Ingresso",
                         "gate": "Cancello",
+                        "guard_rail": "Guard Rail",
                         "hedge": "Siepe",
+                        "jersey_barrier": "Barriera Jersey",
                         "kerb": "Cordolo",
+                        "retaining_wall": "Muro di contenimento",
                         "stile": "Scaletta",
                         "swing_gate": "Sbarra orizzontale",
                         "toll_booth": "Casello",
@@ -356,7 +389,13 @@
                     }
                 },
                 "basin": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "detention": "Contenimento",
+                        "evaporation": "Evaporazione",
+                        "infiltration": "Infiltrazione",
+                        "retention": "Ritenzione"
+                    }
                 },
                 "bath/open_air": {
                     "label": "all'aperto"
@@ -367,13 +406,17 @@
                 "bath/type": {
                     "label": "Specialità",
                     "options": {
-                        "lake": "Lago"
+                        "hammam": "Hammam",
+                        "hot_spring": "Sorgente calda",
+                        "lake": "Lago",
+                        "onsen": "Onsen",
+                        "thermal": "Bagno termale"
                     }
                 },
                 "beauty": {
                     "label": "Servizi",
                     "options": {
-                        "cosmetics": "Cosmetica",
+                        "cosmetics": "Cosmesi",
                         "hair_removal": "Depilazione",
                         "nails": "Manicure / Pedicure",
                         "skin_care": "Cura della pelle",
@@ -393,6 +436,12 @@
                         "lockers": "Armadietti individuali",
                         "shed": "Capanno chiuso",
                         "stands": "Supporti verticali"
+                    }
+                },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Sì"
                     }
                 },
                 "bin": {
@@ -425,12 +474,21 @@
                         "geology": "Geologia",
                         "history": "Storia",
                         "nature": "Natura",
+                        "notice": "Pannello informativo",
                         "plants": "Piante",
-                        "welcome_sign": "Cartello di benvenuto"
+                        "welcome_sign": "Cartello di benvenuto",
+                        "wildlife": "Animali selvatici"
                     }
                 },
                 "bollard": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "fixed": "Paletto fisso",
+                        "flexible": "Paletto flessibile",
+                        "foldable": "Paletto ripiegabile",
+                        "removable": "Paletto removibile",
+                        "rising": "Paletto a scomparsa"
+                    }
                 },
                 "booth": {
                     "label": "Cabina"
@@ -454,7 +512,7 @@
                 },
                 "brewery": {
                     "label": "Birre alla spina",
-                    "terms": "birre alla spina"
+                    "terms": "birre alla spina,spina"
                 },
                 "bridge": {
                     "label": "Tipo",
@@ -469,35 +527,63 @@
                 "building": {
                     "label": "Edificio",
                     "options": {
+                        "apartments": "Condominio",
+                        "barn": "Fienile",
                         "bungalow": "Bungalow",
                         "bunker": "Bunker",
+                        "cabin": "Baita",
                         "cathedral": "Cattedrale",
                         "chapel": "Cappella",
                         "church": "Chiesa",
+                        "civic": "Edificio civico",
+                        "college": "Edificio di un college",
+                        "commercial": "Edificio per uffici",
                         "construction": "Edificio in costruzione",
+                        "detached": "Casa indipendente",
                         "dormitory": "Dormitorio",
+                        "farm": "Casa di fattoria",
+                        "farm_auxiliary": "Edificio di fattoria",
                         "fire_station": "Vigili del fuoco",
                         "garage": "Garage",
                         "garages": "Serie di garage",
+                        "ger": "Yurta",
+                        "grandstand": "Spalti",
+                        "greenhouse": "Serra",
                         "hangar": "Hangar",
                         "hospital": "Ospedale",
                         "hotel": "Hotel",
+                        "house": "Casa",
+                        "hut": "Capanna",
                         "industrial": "Capannone industriale",
+                        "kindergarten": "Edificio di un asilo",
+                        "manufacture": "Edificio industriale",
                         "mosque": "Moschea",
                         "office": "Uffici",
+                        "pavilion": "Padiglione",
+                        "public": "Edificio pubblico",
                         "residential": "Residenziale",
+                        "retail": "Edificio per il commercio al dettaglio",
                         "roof": "Tettoia",
                         "ruins": "Rovine di un edificio",
                         "school": "Scuola",
+                        "semidetached_house": "Casa semi-indipendente",
+                        "service": "Edificio di servizio",
                         "stable": "Stalla",
                         "stadium": "Stadio",
+                        "static_caravan": "Caravan",
                         "synagogue": "Sinagoga",
                         "temple": "Tempio",
+                        "terrace": "Villette a schiera",
                         "train_station": "Stazione ferroviaria",
+                        "transportation": "Stazione del trasporto pubblico",
                         "university": "Università",
                         "warehouse": "Magazzino"
                     },
                     "terms": "edificio,palazzo,stabile,costruzione"
+                },
+                "building/colour": {
+                    "label": "Colore della facciata",
+                    "terms": "facciata,colore"
                 },
                 "building/flats": {
                     "label": "Unità abitative",
@@ -511,7 +597,7 @@
                 "building/levels/underground": {
                     "label": "Piani sotterranei",
                     "placeholder": "2, 4, 6...",
-                    "terms": "livelli sotterranei"
+                    "terms": "livelli sotterranei,sotterraneo,cantina"
                 },
                 "building/material": {
                     "label": "Materiale",
@@ -2007,27 +2093,36 @@
                     "label": "Modalità di pagamento",
                     "options": {
                         "alipay": "Alipay",
+                        "american_express": "American Express",
                         "app": "Applicazione mobile",
                         "apple_pay": "Apple Pay",
                         "bancomat": "Bancomat",
                         "blik": "Blik",
+                        "cards": "Carte di pagamento",
                         "cash": "Contanti",
                         "cheque": "Assegno",
+                        "clipper": "Clipper",
                         "coins": "Monete",
+                        "contactless": "Pagamento contactless",
                         "credit_cards": "Carta di credito",
                         "cryptocurrencies": "Criptovaluta",
                         "debit_cards": "Carta di debito",
                         "diners_club": "Diners Club",
+                        "discover_card": "Discover",
                         "dkv": "DKV",
+                        "electronic_purses": "Borsellino elettronico",
                         "ep_easycard": "悠遊卡EasyCard",
                         "ep_geldkarte": "GeldKarte",
                         "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
                         "google_pay": "Google Pay",
                         "jcb": "JCB",
                         "maestro": "Maestro",
                         "mastercard": "Mastercard",
                         "mastercard_contactless": "Mastercard contactless",
+                        "notes": "Banconote",
                         "paypal": "PayPal",
+                        "prepaid_ticket": "Biglietto prepagato",
                         "telephone_cards": "Schede telefoniche",
                         "unionpay": "UnionPay",
                         "uta": "UTA",
@@ -2280,12 +2375,14 @@
                     "label": "Codice ISIL"
                 },
                 "ref/vatin": {
-                    "label": "Numero Partita IVA"
+                    "label": "Numero Partita IVA",
+                    "terms": "partita iva,iva,vatin"
                 },
                 "ref_aeroway_gate": {
-                    "label": "Numero del cancello"
+                    "label": "Numero del gate"
                 },
                 "ref_disc_golf_hole": {
+                    "label": "Numero della buca",
                     "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
@@ -2741,7 +2838,8 @@
                         "sand": "Sabbia",
                         "sett": "Pavé",
                         "unpaved": "Sterrato",
-                        "wood": "Legno"
+                        "wood": "Legno",
+                        "woodchips": "Trucioli di legno"
                     }
                 },
                 "surveillance": {
@@ -4155,6 +4253,10 @@
                     "name": "Area",
                     "terms": "area,poligono"
                 },
+                "area/footway": {
+                    "name": "Area pedonale",
+                    "terms": "pedoni,pedonale,cordolo,forma,area pavimento,area marciapiedi"
+                },
                 "area/highway": {
                     "name": "Area stradale"
                 },
@@ -4162,8 +4264,8 @@
                     "name": "Attrazione"
                 },
                 "attraction/amusement_ride": {
-                    "name": "Parco divertimenti",
-                    "terms": "parco a tema,parco tematico,parco di divertimento,parco divertimenti,parco dei divertimenti,giostra,giostre,attrazione,ruota panoramica"
+                    "name": "Giostra",
+                    "terms": "parco a tema,parco tematico,parco di divertimento,parco divertimenti,parco dei divertimenti,luna park,lunapark,giostra,giostre,attrazione,ruota panoramica"
                 },
                 "attraction/animal": {
                     "name": "Recinto animali",
@@ -5626,7 +5728,7 @@
                 },
                 "leisure/amusement_arcade": {
                     "name": "Sala giochi",
-                    "terms": "videogiochi"
+                    "terms": "videogiochi,videogame,simulatori,guida,flipper,gettoni"
                 },
                 "leisure/bandstand": {
                     "name": "Chiosco della musica"
@@ -5788,6 +5890,10 @@
                 },
                 "leisure/pitch/archery": {
                     "name": "Campo di tiro con l'arco"
+                },
+                "leisure/pitch/athletics/shot_put": {
+                    "name": "Pedana del getto del peso",
+                    "terms": "ring,pedana,area,cerchio,lancio,getto,peso"
                 },
                 "leisure/pitch/australian_football": {
                     "name": "Campo di calcio australiano",
@@ -6454,7 +6560,7 @@
                     "aliases": "Torbiera\nArea umida"
                 },
                 "natural/wood": {
-                    "name": "Bosco Naturale",
+                    "name": "Bosco naturale",
                     "terms": "alberi,albero,bosco,boscaglia,foresta,arboreo,boreale,taiga,selva,macchia,fratta"
                 },
                 "noexit/yes": {
@@ -6519,7 +6625,7 @@
                 },
                 "office/employment_agency": {
                     "name": "Agenzia per l'impiego",
-                    "terms": "interinale,impiego,lavoro,ufficio per l'impiego,ufficio interinale"
+                    "terms": "interinale,impiego,lavoro,ufficio per l'impiego,ufficio interinale,agenzia per il lavoro,agenzia del lavoro"
                 },
                 "office/energy_supplier": {
                     "name": "Ufficio azienda fornitrice di energia",
@@ -7919,7 +8025,7 @@
                 },
                 "tourism/theme_park": {
                     "name": "Parco a tema",
-                    "terms": "parco a tema"
+                    "terms": "parco a tema,parco tematico,parco divertimenti,parco divertimento,luna park,lunapark,giostre"
                 },
                 "tourism/trail_riding_station": {
                     "name": "Stazione di sosta per cavalli",

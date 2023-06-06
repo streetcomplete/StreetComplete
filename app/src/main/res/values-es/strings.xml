@@ -1306,7 +1306,14 @@ También puedes dejar una nota (con foto)."</string>
     <string name="unknown_surface_title">"Otro tipo de superficie"</string>
     <string name="overlay_surface">"Superficies"</string>
     <string name="overlay_path_surface_segregated">"Dividido entre ciclismo y senderismo"</string>
+    <string name="quest_crossing_title2">"¿Hay un cruce aquí?"</string>
     <string name="quest_crossing_no">"No, pero se puede cruzar"</string>
+    <string name="quest_crossing_prohibited">"No, está prohibido cruzar o es imposible"</string>
+    <string name="quest_hairdresser_title">"¿A quién atiende esta peluquería?"</string>
+    <string name="quest_hairdresser_male_and_female">"Cualquiera"</string>
     <string name="quest_hairdresser_female_only">"Mujeres"</string>
     <string name="quest_hairdresser_male_only">"Hombres"</string>
+    <string name="quest_hairdresser_not_signed">"Sin indicar"</string>
+    <string name="quest_amenityCover_title">"¿Está cubierto (protegido de la lluvia)?"</string>
+    <string name="overlay_addresses_no_entrance">"No es una entrada"</string>
 </resources>

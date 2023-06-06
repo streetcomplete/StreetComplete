@@ -1322,4 +1322,12 @@ Menejar ara?"</string>
     <string name="unknown_surface_title">"Un altre tipus de superfície"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
+    <string name="quest_crossing_no">"No, però és possible creuar"</string>
+    <string name="quest_crossing_prohibited">"No, creuar està prohibit o és impossible"</string>
+    <string name="quest_hairdresser_title">"Quin tipus de clients visita aquesta perruqueria?"</string>
+    <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
+    <string name="quest_hairdresser_female_only">"Dones"</string>
+    <string name="quest_hairdresser_male_only">"Homens"</string>
+    <string name="quest_tactilePaving_steps_top">"Només a la part superior"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Només a la part inferior"</string>
 </resources>

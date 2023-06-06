@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Hausnr.",
                         "neighbourhood": "Viertel",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Ort",
                         "postcode": "Postleitzahl",
                         "province": "Regierungsbezirk, Provinz",
                         "province!cn": "Provinz/Gemeinde/AR/SAR",
                         "province!jp": "Präfektur",
                         "quarter": "Quartier",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Bundesland",
                         "street": "Straße",
                         "subdistrict": "Stadtbezirk",
                         "subdistrict!vn": "Bezirk/Gemeinde/Städtchen",
                         "suburb": "Stadtteil",
-                        "suburb!jp": "Bezirk",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Stiege/Bauteil"
                     },
                     "terms": "adresse"
@@ -457,6 +457,14 @@
                         "wall_loops": "Vorderradklemme"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Fahrradstraße",
+                    "options": {
+                        "undefined": "Nein",
+                        "yes": "Ja"
+                    },
+                    "terms": "fahrradstraße"
+                },
                 "bike_ride": {
                     "label": "Bike and Ride",
                     "terms": "b+r,radeln und mitfahren,fahrradbahnhof"
@@ -536,6 +544,10 @@
                     "label": "Typ",
                     "placeholder": "Standard"
                 },
+                "bridge/ref": {
+                    "label": "Bauwerksnummer",
+                    "terms": "brückennummer,anlagennummer,bauwerknummer"
+                },
                 "bridge/support": {
                     "label": "Typ"
                 },
@@ -606,6 +618,10 @@
                         "warehouse": "Lagerhalle"
                     },
                     "terms": "gebäude,haus,bauwerk"
+                },
+                "building/colour": {
+                    "label": "Fassadenfarbe",
+                    "terms": "fassade,wandfarbe,außenwandfarbe,aussenwandfarbe,gebäudefarbe"
                 },
                 "building/flats": {
                     "label": "Wohnungen",
@@ -2258,6 +2274,11 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "minimalgeschwindigkeit"
                 },
+                "mobile": {
+                    "label": "Mobiltelefon",
+                    "placeholder": "+49 170 123 4567",
+                    "terms": "handy,handynummer,mobilnummer,mobilfunk,mobilfunknummer,telefon,smartfone,smartphone"
+                },
                 "model": {
                     "label": "Modell",
                     "terms": "modell"
@@ -3160,6 +3181,14 @@
                         "iala-b": "IALA B",
                         "other": "Andere"
                     }
+                },
+                "seamark/harbour/category_marina": {
+                    "label": "Liegeplatz mit Ausstattung",
+                    "options": {
+                        "marina": "Ja",
+                        "marina_no_facilities": "Nein"
+                    },
+                    "terms": "liegeplatz mit ausstattung"
                 },
                 "seamark/mooring/category": {
                     "label": "Kategorie"
@@ -6522,7 +6551,8 @@
                     "terms": "fahrsteig,rolltreppe,rollsteig,laufband,bewegter bürgersteig,rollender bürgersteig"
                 },
                 "highway/footway/crossing": {
-                    "name": "Fußgängerüberweg (eigener Weg)"
+                    "name": "Fußgängerüberweg (eigener Weg)",
+                    "terms": "fußgängerübergang,fußgängerüberweg,fußgängerquerung,fußgängerkreuzung"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Gehweg-Querung mit Ampel",
@@ -7222,6 +7252,10 @@
                 "leisure/marina": {
                     "name": "Yachthafen",
                     "terms": "yachthafen,jachthafen,marina"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "Liegeplatz ohne Ausstattung",
+                    "terms": "liegeplatz ohne ausstattung"
                 },
                 "leisure/miniature_golf": {
                     "name": "Minigolfanlage",

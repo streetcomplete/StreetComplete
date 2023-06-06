@@ -19,11 +19,11 @@
     <string name="quest_generic_confirmation_yes">"Oui, je confirme"</string>
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
-    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique ici. D’autres cartographes pourront y répondre et la résoudre. Sinon, vous pouvez cacher la quête uniquement pour vous."</string>
+    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique pour que d’autres cartographes puisse y répondre et la résoudre, ou vous pouvez cacher cette quête uniquement pour vous"</string>
     <string name="quest_leave_new_note_yes">"Laisser une note"</string>
     <string name="quest_leave_new_note_no">"Cacher"</string>
     <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
-    <string name="quest_streetName_description">"Tel qu’écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
+    <string name="quest_streetName_description">"Tel qu’écrit sur le panneau, les abréviations sont automatiquement développées :"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Parfois le panneau ne se trouve qu’à une seule extrémité de la rue. Souvent, il n’y a pas de panneau dans les petites voies annexes qui font partie de rues plus grandes. D’habitude, toutes les rues avec des maisons portent un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. De nombreuses abréviations courantes sont automatiquement développées pendant que vous les tapez, mais probablement pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d’abréviation"</string>
@@ -186,7 +186,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) qu’aucune limite n’est indiquée ?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr·e qu’aucune limite n’est indiquée ?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la voie ?
 S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les limites de vitesse par défaut s’appliquent."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Oui, aucun panneau"</string>
@@ -302,7 +302,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingLevels_levelsLabel2">"étages (sans compter ceux du toit)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diffère selon la partie du bâtiment"</string>
     <string name="quest_buildingLevels_answer_description">"Dans ce cas, il suffit de saisir les valeurs de la partie la plus élevée du bâtiment."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles séparées physiquement (par une barrière) ? La limite de vitesse par défaut en dépend."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles séparées physiquement par une barrière ? La limite de vitesse par défaut en dépend."</string>
     <string name="about_category_feedback">"Commentaire"</string>
     <string name="quest_leave_new_note_photo">"Joindre une photo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Voulez-vous supprimer cette photo ?"</string>
@@ -391,7 +391,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_construction_footway_title">"Ce trottoir est-il achevé ?"</string>
     <string name="quest_construction_generic_title">"Cette voie est-elle achevée ?"</string>
     <string name="quest_construction_building_title">"Ce bâtiment est-il achevé ?"</string>
-    <string name="questList_disabled_in_country">"Jamais affiché pour : %s"</string>
+    <string name="questList_disabled_in_country">"Jamais affiché pour %s"</string>
     <string name="quest_select_hint_most_specific">"Sélectionnez celui qui convient le mieux :"</string>
     <string name="quest_generic_item_confirmation">"Êtes-vous sûr que vous ne pouvez pas le déterminer plus précisément ?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pour certaines quêtes, des données supplémentaires provenant de tiers sont téléchargées. En particulier, les quêtes relatives aux voies à sens unique interrogent une API, hébergée sur westnordost.de, afin de détecter les voies à sens uniques probables.&lt;/p&gt;"</string>
@@ -420,7 +420,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_industrial">"Industriel"</string>
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
-    <string name="quest_buildingType_retail">"Magasin(s)"</string>
+    <string name="quest_buildingType_retail">"Magasin·s"</string>
     <string name="quest_buildingType_warehouse">"Entrepôt"</string>
     <string name="quest_buildingType_kiosk">"Kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
@@ -534,7 +534,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
     <string name="quest_split_way_description">"S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
-    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Essayez d’être aussi précis que possible, vous pouvez zoomer comme d’habitude."</string>
+    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au·x point·s où la réponse diffère. Essayez d’être aussi précis que possible, vous pouvez zoomer comme d’habitude."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Il y a eu plusieurs découpages. Vous pouvez toujours redécouper le chemin ultérieurement."</string>
     <string name="quest_footwayPartSurface_title">"Quel est le revêtement du chemin piéton ici ?"</string>
@@ -603,8 +603,8 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="achievements_empty">"Vous n’avez aucun succès pour le moment"</string>
     <string name="links_empty">"Vous n’avez aucun lien pour le moment"</string>
     <string name="quests_empty">"Vous n’avez pas encore publié de réponses aux quêtes"</string>
-    <string name="unsynced_quests_description">"plus que %d modification(s) non encore publiée(s)."</string>
-    <string name="unsynced_quests_not_logged_in_description">"Vous avez %d modification(s) non publiée(s). Vous devez vous connecter pour les envoyer."</string>
+    <string name="unsynced_quests_description">"plus que %d modification·s non encore publiée·s."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Vous avez %d modification·s non publiée·s. Vous devez vous connecter pour les envoyer."</string>
     <string name="user_quests_title">"Modifications"</string>
     <string name="user_achievements_title">"Succès"</string>
     <string name="user_links_title">"Liens"</string>
@@ -893,7 +893,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_policeType_title">"Quel type de poste de police est-ce ?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Changé en un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d’échalier est-ce ?"</string>
-    <string name="quest_buildingType_semi_detached_description2">"maison(s) unifamiliale(s) contiguë(s)"</string>
+    <string name="quest_buildingType_semi_detached_description2">"maison·s unifamiliale·s contiguë·s"</string>
     <string name="pref_title_quests2">"Sélection et priorité des quêtes"</string>
     <string name="pref_subtitle_quests">"%1$d sur %2$d activées"</string>
     <string name="no_location_permission_warning_title">"Permission de localisation"</string>
@@ -1314,4 +1314,23 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="unknown_surface_title">"Autre type de surface"</string>
     <string name="overlay_surface">"Surfaces"</string>
     <string name="overlay_path_surface_segregated">"Séparé entre voies cyclables et piétonnes"</string>
+    <string name="quest_crossing_title2">"Y a-t-il un passage à niveau ici ?"</string>
+    <string name="quest_crossing_yes">"Oui (par exemple, la bordure est abaissée à cet endroit ou il y a des marquages)"</string>
+    <string name="quest_crossing_no">"Non, mais le passage est possible"</string>
+    <string name="quest_crossing_prohibited">"Non, le passage est impossible ou interdit"</string>
+    <string name="quest_hairdresser_title">"Quels sont les clients qui fréquentent ce salon de coiffure ?"</string>
+    <string name="quest_hairdresser_male_and_female">"Toute personne"</string>
+    <string name="quest_hairdresser_female_only">"Femmes"</string>
+    <string name="quest_hairdresser_male_only">"Hommes"</string>
+    <string name="quest_hairdresser_not_signed">"Non signé"</string>
+    <string name="quest_amenityCover_title">"Est ce couvert (protégé de la pluie) ?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Extension de trottoir"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Îlot de circulation"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Extension de trottoir + îlot de circulation"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Pas de voie rétrécie ici"</string>
+    <string name="quest_tactilePaving_title_steps">"Y a-t-il des pavés tactiles en haut et en bas de ces marches ?"</string>
+    <string name="quest_tactilePaving_steps_top">"Seulement en haut"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Seulement en bas"</string>
+    <string name="overlay_addresses_no_entrance">"Ce n’est pas une entrée…"</string>
 </resources>

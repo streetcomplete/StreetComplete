@@ -48,7 +48,7 @@ class DownloadedAreaManager(
 
     private fun update() {
         viewLifecycleScope.launch {
-            if (ctrl.cameraPosition.zoom < 7f) {
+            if (ctrl.cameraPosition.zoom <= 8) {
                 hasUpdated = false
             } else {
                 val deleteOldDataAfter = prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS) * 24L * 60 * 60 * 1000

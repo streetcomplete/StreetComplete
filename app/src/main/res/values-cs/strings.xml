@@ -184,9 +184,9 @@ Aplikace StreetComplete je plně přeložená do češtiny a je vyvíjena s důr
     <string name="quest_sport_manySports_confirmation_title">"Vybrali jste více sportů"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu na obou stranách?"</string>
-    <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval(a) na místě?"</string>
+    <string name="quest_source_dialog_title">"Opravdu jste to zkontrolovali na místě?"</string>
     <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné osobně na místě."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola zakryté (chráněno proti dešti)?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola kryté (chráněné proti dešti)?"</string>
     <string name="dialog_session_dont_show_again">"V této relaci znovu nezobrazovat"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto omezení rychlosti se zdá nepravděpodobné."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Opravdu tu není žádná značka omezující rychlost?"</string>
@@ -357,7 +357,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_internet_access_wired">"Drátové (LAN)"</string>
     <string name="quest_internet_access_terminal">"Počítač s připojením k internetu"</string>
     <string name="quest_internet_access_no">"Žádné připojení"</string>
-    <string name="quest_bench_backrest_title">"Má tato lavička opěrák?"</string>
+    <string name="quest_bench_backrest_title">"Má tato lavička opěradlo?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to stůl pro piknik"</string>
     <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství je tu praktikováno?"</string>
     <string name="quest_religion_christian">"Křesťanství"</string>
@@ -661,14 +661,14 @@ A nakonec, nezapomeňte na bezpečnost – všímejte si vašeho okolí a nevstu
     <string name="link_weeklyosm_description">"Novinkový blog s týdenními zprávami o tom, co se děje v OpenStreetMap světě"</string>
     <string name="link_figuregrounder_description">"Vytvořte obrázek zjednodušeného plánu města nebo okolí"</string>
     <string name="achievement_first_edit_title">"Vyřešili jste první úkol"</string>
-    <string name="achievement_first_edit_description">"Vítejte v  OpenStreetMap komunitě! Na vaší profilové obrazovce naleznete více informací týkajících se všech vámi vyřešených typů úkolů."</string>
+    <string name="achievement_first_edit_description">"Vítejte v OpenStreetMap komunitě! Na své profilové obrazovce naleznete více informací týkajících se všech vámi vyřešených typů úkolů."</string>
     <string name="achievement_surveyor_title">"Topograf"</string>
     <string name="achievement_surveyor_solved_X">"Vyřešili jste %d úkolů! Pokračujte dál, abyste odemkli další úspěchy, které obsahují odkazy na OSM a další map se týkající aplikace a projekty!"</string>
     <string name="achievement_regular_title">"Pravidelný přispěvatel"</string>
     <string name="achievement_regular_description">"Pomocí této aplikace jste přispívali do OSM po dobu %d dní! Pravidelní přispěvatelé jsou pro OSM velmi důležití. Děkujeme vám za vaše odhodlání!"</string>
     <string name="achievement_bicyclist_title">"Cyklista"</string>
     <string name="achievement_bicyclist_solved_X">"Vyřešili jste %d úkolů, které pomůžou cyklistům!"</string>
-    <string name="achievement_wheelchair_title">"Mobilnost"</string>
+    <string name="achievement_wheelchair_title">"Mobilita"</string>
     <string name="achievement_wheelchair_solved_X">"Vyřešili jste %d úkolů, které zjednoduší vozíčkářům pohyb po městě!"</string>
     <string name="achievement_postman_title">"Pošťák"</string>
     <string name="achievement_postman_solved_X">"Pomohli jste lokalizovat %d  adres!
@@ -770,7 +770,7 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="achievement_citizen_title">"Občan"</string>
     <string name="achievement_citizen_solved_X">"Vyřešili jste %d úkolů užitečných pro každodenní život ve městě!"</string>
     <string name="achievement_outdoors_title">"Outdoorák"</string>
-    <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, co rádi chodí do přírody!"</string>
+    <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, kteří rádi chodí do přírody!"</string>
     <string name="quest_pedestrian_crossing_island">"Má tento přechod pro chodce ostrůvek?"</string>
     <string name="quest_generic_answer_noSign">"Není tu žádná značka"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Je rampa pro invalidní vozíky na mapě zobrazená jako samostatná cesta?"</string>

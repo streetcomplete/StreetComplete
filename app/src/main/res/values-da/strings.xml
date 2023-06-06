@@ -1002,8 +1002,8 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
-    <string name="quest_smoothness_square_title">"Hvad er overfladekvaliteten på denne plads?"</string>
-    <string name="quest_smoothness_road_title">"Hvad er overfladekvaliteten af denne vej her?"</string>
+    <string name="quest_smoothness_square_title">"Hvordan er overfladekvaliteten på denne plads?"</string>
+    <string name="quest_smoothness_road_title">"Hvordan er overfladekvaliteten af denne vej her?"</string>
     <string name="quest_smoothness_title_excellent">"Jævn og plan"</string>
     <string name="quest_smoothness_title_good">"Hovedsageligt jævn"</string>
     <string name="quest_smoothness_title_intermediate">"Lidt ujævn"</string>
@@ -1016,7 +1016,7 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"Næsten uden mellemrum"</string>
     <string name="quest_smoothness_description_good_paved">"Kun små revner, huller, reparationer eller en lidt jævn overflade"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Overfladiske eller smalle mellemrum"</string>
-    <string name="quest_smoothness_description_good_sett">"Usædvanligt flade sten, regelmæssigt mønster, meget overfladiske eller smalle mellemrum"</string>
+    <string name="quest_smoothness_description_good_sett">"Ualmindeligt flade sten, regelmæssigt mønster, meget overfladiske eller smalle mellemrum"</string>
     <string name="quest_smoothness_description_intermediate_paved">"Usædvanlig ujævn overflade, større mellemrum, revner, overfladiske spor, huller eller andre skader"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Brede mellemrum, muligvis nogle forskudte sten eller andre skader"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Flade sten eller med firkantede kanter, overfladiske eller smalle mellemrum"</string>
@@ -1316,7 +1316,7 @@ Vil du flytte det nu?"</string>
     <string name="quest_crossing_yes">"Ja (f.eks. er kantstenen sænket her, eller der er markeringer)"</string>
     <string name="quest_crossing_no">"Nej, men det er muligt at krydse"</string>
     <string name="quest_crossing_prohibited">"Nej, det er forbudt eller umuligt at krydse"</string>
-    <string name="quest_hairdresser_title">"Hvilke kunder besøger denne frisør?"</string>
+    <string name="quest_hairdresser_title">"Hvilke kunder henvender denne frisør sig til?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
     <string name="quest_hairdresser_female_only">"Kvinder"</string>
     <string name="quest_hairdresser_male_only">"Mænd"</string>

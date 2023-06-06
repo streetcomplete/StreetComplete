@@ -790,7 +790,7 @@ Erfolge"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Was ist die Durchfahrtshöhe unter dieser Brücke?"</string>
     <string name="quest_maxheight_split_way_hint">"Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
-    <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein?"</string>
     <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Straße"</string>
     <string name="quest_kerb_height_lowered">"etwas höher als die Straße"</string>
@@ -1109,7 +1109,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_busStopName_title2">"Wie heißt diese Haltestelle?"</string>
     <string name="quest_busStopRef_title2">"Was ist die Referenznummer dieser Haltestelle?"</string>
     <string name="quest_busStopShelter_title2">"Gibt es bei dieser Haltestelle einen Unterstand?"</string>
-    <string name="quest_busStopTactilePaving_title">"Hat diese Haltestelle eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_busStopTactilePaving_title">"Hat diese Haltestelle eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_dietType_halal_name_title2">"Bietet dieser Ort halale Produkte an?"</string>
     <string name="quest_dietType_kosher_name_title2">"Bietet dieser Ort koschere Produkte an?"</string>
     <string name="quest_dietType_vegan_title2">"Hat dieser Ort veganes Essen auf der Karte?"</string>
@@ -1319,7 +1319,7 @@ Jetzt verschieben?"</string>
     <string name="quest_crossing_yes">"Ja (der Bordstein ist z.B. abgesenkt oder es gibt Markierungen)"</string>
     <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
-    <string name="quest_hairdresser_title">"Welche Kunden hat dieser Frisör?"</string>
+    <string name="quest_hairdresser_title">"Wer sind die Kunden dieses Friseurs?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
     <string name="quest_hairdresser_female_only">"Frauen"</string>
     <string name="quest_hairdresser_male_only">"Männer"</string>

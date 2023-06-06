@@ -291,6 +291,7 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="quest_parkingType_title">"What kind of parking is this?"</string>
     <string name="quest_parkingType_surface">"Car park"</string>
     <string name="quest_parkingType_underground">"Underground car park"</string>
+    <string name="quest_parkingType_multiStorage">"Parking garage"</string>
     <string name="quest_powerPolesMaterial_title">"What is this pole made of?"</string>
     <string name="quest_powerPolesMaterial_wood">"Wood"</string>
     <string name="quest_powerPolesMaterial_metal">"Steel"</string>
@@ -305,6 +306,7 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Attach photo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Do you want to delete this image?"</string>
+    <string name="quest_cycleway_value_track">"sidepath or protected bicycle lane"</string>
     <string name="quest_cycleway_value_lane">"bicycle lane"</string>
     <string name="quest_cycleway_value_none">"none"</string>
     <string name="quest_cycleway_value_shared">"lane shared explicitly with other traffic"</string>
@@ -312,6 +314,7 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="quest_cycleway_value_sidewalk">"explicitly shared footpath"</string>
     <string name="quest_leave_new_note_create_image_error">"Unable to create file for image"</string>
     <string name="quest_cycleway_value_lane_dual">"bicycle lane, both directions"</string>
+    <string name="quest_cycleway_value_track_dual">"sidepath or protected bicycle lane, both directions"</string>
     <string name="pref_category_advanced">"Advanced"</string>
     <string name="quest_enabled">"Enabled"</string>
     <string name="quest_type">"Quest type"</string>
@@ -429,6 +432,7 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_temple">"Temple building"</string>
     <string name="quest_buildingType_pagoda">"Pagoda building"</string>
     <string name="quest_buildingType_synagogue">"Synagogue building"</string>
+    <string name="quest_buildingType_civic">"Civic building"</string>
     <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
     <string name="quest_buildingType_kindergarten">"Kindergarten building"</string>
     <string name="quest_buildingType_college">"Tertiary education building"</string>

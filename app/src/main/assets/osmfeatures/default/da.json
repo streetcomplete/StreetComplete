@@ -163,20 +163,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Bygningsnr. /Etage nr.",
                         "neighbourhood": "Kvarter",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Sted",
                         "postcode": "Postnummer",
                         "province": "Landsdel",
                         "province!cn": "Provins/Kommune/AR/SAR",
                         "province!jp": "Præfekturet",
                         "quarter": "Bydel",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Delstat",
                         "street": "Gade",
                         "subdistrict": "Kvarter",
                         "subdistrict!vn": "Afdeling/Kommune/Townlet",
                         "suburb": "Forstad",
-                        "suburb!jp": "Afdeling",
                         "unit": "Enhed"
                     },
                     "terms": "adresse,adgang,nummer,husnummer"
@@ -832,29 +829,40 @@
                     "label": "Cykelbaner",
                     "options": {
                         "lane": {
-                            "description": "Cykelbane adskilt fra trafikken med en opmalet linje"
+                            "description": "Cykelbane adskilt fra trafikken med en opmalet linje",
+                            "title": "Standard cykelsti"
                         },
                         "no": {
                             "title": "Ingen"
                         },
                         "opposite": {
-                            "description": "Cykelbane hvor det er tilladt at køre i begge retninger på en ensrettet gade"
+                            "description": "Cykelbane hvor det er tilladt at køre i begge retninger på en ensrettet gade",
+                            "title": "Modsatrettet cykelsti, dobbelt"
                         },
                         "opposite_lane": {
-                            "description": "Cykelbane der kører i modsat retning af biltrafikken"
+                            "description": "Cykelbane der kører i modsat retning af biltrafikken",
+                            "title": "Modsatrettet cykelsti, enkelt"
                         },
                         "separate": {
                             "description": "Indikerer at cykelsti blev kortlagt som en separat geometri"
                         },
                         "share_busway": {
-                            "description": "En cykelbane delt med en busvejbane"
+                            "description": "En cykelbane delt med en busvejbane",
+                            "title": "Cykelsti deles med bus"
                         },
                         "shared_lane": {
-                            "description": "Cykelbane uden adskillelse fra biltrafikken"
+                            "description": "Cykelbane uden adskillelse fra biltrafikken",
+                            "title": "Delt cykelsti"
                         },
                         "track": {
-                            "description": "Cykelsti adskilt fra trafikken med en fysisk barriere"
+                            "description": "Cykelsti adskilt fra trafikken med en fysisk barriere",
+                            "title": "Cykelsti"
                         }
+                    },
+                    "placeholder": "Bane, sti, modsatrettet, ...",
+                    "types": {
+                        "cycleway:left": "Venstre side",
+                        "cycleway:right": "Højre side"
                     }
                 },
                 "dance/style": {
@@ -1815,11 +1823,14 @@
                     "options": {
                         "carports": "Carporte",
                         "garage_boxes": "Garagebokse",
+                        "half_on_kerb": "Halvt på fortovet",
                         "lane": "Vejsidespor",
                         "layby": "Mindre rasteplads",
                         "multi-storey": "Multiniveau",
+                        "on_kerb": "På fortovet",
                         "rooftop": "Tag",
                         "sheds": "Læskure",
+                        "shoulder": "Nødspor",
                         "street_side": "Kantsten",
                         "surface": "Overflade",
                         "underground": "Underjordisk"
@@ -1832,7 +1843,10 @@
                 },
                 "parking/side/parking": {
                     "options": {
+                        "half_on_kerb": "Halvt på fortovet",
                         "no": "Nej",
+                        "on_kerb": "På fortovet",
+                        "shoulder": "Nødspor",
                         "yes": "Ja (uspecificeret)"
                     }
                 },
@@ -1907,6 +1921,7 @@
                     "label": "Kraftværk"
                 },
                 "plant/output/electricity": {
+                    "label": "Elektrisk udgangseffekt",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -2294,7 +2309,10 @@
                     "label": "Art Wikidata"
                 },
                 "sport": {
-                    "label": "Sportsgren"
+                    "label": "Sportsgren",
+                    "options": {
+                        "running": "Løb"
+                    }
                 },
                 "stars": {
                     "label": "Stjerner"
@@ -2304,7 +2322,7 @@
                     "placeholder": "ÅÅÅÅ-MM-DD"
                 },
                 "static_caravans": {
-                    "label": "Mobilehomes"
+                    "label": "Autocampere"
                 },
                 "step_count": {
                     "label": "Antal trappetrin"
@@ -2581,7 +2599,13 @@
                     "placeholder": "Standard"
                 },
                 "tunnel_combo": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "avalanche_protector": "Lavinebeskyttelse",
+                        "building_passage": "Bygningspassage",
+                        "culvert": "Underføring",
+                        "flooded": "Oversvmømmet tunnel"
+                    }
                 },
                 "two_sided": {
                     "options": {
@@ -3064,6 +3088,10 @@
                     "name": "Selskabslokale",
                     "terms": "balsal,festsal,riddersal,aula,gildesal"
                 },
+                "amenity/exhibition_centre": {
+                    "name": "Udstillings- og kongrescenter",
+                    "terms": "udstillings- og kongrescenter,messecenter"
+                },
                 "amenity/fast_food": {
                     "name": "Fast food",
                     "terms": "fastfood,grillbar,pølsevogn"
@@ -3240,6 +3268,10 @@
                 "amenity/place_of_worship/christian": {
                     "name": "Kristen kirke",
                     "terms": "kristendom,kirke,katedral,kapel,gud,præst,sogn,tempel"
+                },
+                "amenity/place_of_worship/christian/jehovahs_witness": {
+                    "name": "Jehovas Vidners Rigssal",
+                    "terms": "jehovas vidners rigssal,rigssal"
                 },
                 "amenity/place_of_worship/hindu": {
                     "name": "Hindu-tempel",
@@ -3937,6 +3969,10 @@
                     "name": "Stadionbygning",
                     "terms": "stadion,sport,hal"
                 },
+                "building/static_caravan": {
+                    "name": "Beboelsestrailer",
+                    "terms": "trailer,tiny house,campingvogn"
+                },
                 "building/sty": {
                     "name": "Grisestald",
                     "terms": "grisestald,svinestald,grisesti,svinefarm,grisefarm"
@@ -4107,6 +4143,10 @@
                     "name": "Blikkenslager",
                     "terms": "blikkenslager"
                 },
+                "craft/pottery": {
+                    "name": "Keramiker",
+                    "terms": "keramik,ler"
+                },
                 "craft/rigger": {
                     "name": "Rebslager",
                     "terms": "rebslager"
@@ -4272,6 +4312,10 @@
                     "name": "Skadestueindgang",
                     "terms": "indgang,skadestue,akut,læge,hospital,hjælp"
                 },
+                "entrance/main": {
+                    "name": "Hovedindgang",
+                    "terms": "hovedindgang,indgang,døråbning"
+                },
                 "ford": {
                     "name": "Vadested",
                     "terms": "vadested"
@@ -4364,6 +4408,9 @@
                 "healthcare/rehabilitation": {
                     "name": "Rehabiliteringsfacilitet"
                 },
+                "healthcare/speech_therapist": {
+                    "name": "Taleterapeut"
+                },
                 "healthcare/yes": {
                     "name": "Sundhedsfacilitet (uspecificeret type)"
                 },
@@ -4436,8 +4483,8 @@
                     "terms": "fodgænger,flise"
                 },
                 "highway/give_way": {
-                    "name": "Advarselsskilt",
-                    "terms": "advarselsskilt,stopskilt"
+                    "name": "Vigepligtsmarkering",
+                    "terms": "vigepligtsmarkering,vigepligtstavle,hajtænder,advarselsskilt,stopskilt"
                 },
                 "highway/living_street": {
                     "name": "Stillevej",
@@ -4465,6 +4512,10 @@
                 "highway/path": {
                     "name": "Sti",
                     "terms": "sti"
+                },
+                "highway/path/boardwalk": {
+                    "name": "Plankebro",
+                    "terms": "plankebro,boardwalk,gangbro"
                 },
                 "highway/pedestrian_area": {
                     "name": "Gågade areal"
@@ -5105,6 +5156,9 @@
                     "name": "Løbsbane (Ej motorsport)",
                     "terms": "løbsbane (ej motorsport)"
                 },
+                "leisure/track/athletics/running": {
+                    "name": "Løbebane"
+                },
                 "leisure/track/cycling": {
                     "name": "Cykelbane",
                     "terms": "cykling,cyklist,løb,bane"
@@ -5442,7 +5496,7 @@
                 },
                 "natural/grassland": {
                     "name": "Overdrev eller græshede",
-                    "terms": "overdrev,græshede,græsslette,græsland"
+                    "terms": "overdrev,græshede,græsslette,græsland,slette"
                 },
                 "natural/heath": {
                     "name": "Hede",
@@ -5458,6 +5512,10 @@
                 "natural/peak": {
                     "name": "Højdedrag",
                     "terms": "højdedrag,bakketop,bjergtop"
+                },
+                "natural/peninsula": {
+                    "name": "Halvø",
+                    "terms": "halvø,odde,næs,pynt,tange,landtange,sandtange,landtunge"
                 },
                 "natural/reef": {
                     "name": "Rev"
@@ -5848,6 +5906,10 @@
                 "playground/swing": {
                     "name": "Gynge"
                 },
+                "playground/tunnel_tube": {
+                    "name": "Legetunnel",
+                    "terms": "leg,legeplads,tunnel,rør"
+                },
                 "point": {
                     "name": "Punkt",
                     "terms": "punkt"
@@ -5926,6 +5988,10 @@
                     "name": "Transformer",
                     "terms": "transformer"
                 },
+                "public_transport/platform": {
+                    "name": "Perron",
+                    "terms": "platform,spor,terminal,transport,skift"
+                },
                 "public_transport/platform/aerialway": {
                     "name": "Svævebaneplatform"
                 },
@@ -5976,6 +6042,10 @@
                 "public_transport/stop_area": {
                     "name": "Stoppestedsområde",
                     "terms": "stop,stoppested,station"
+                },
+                "public_transport/stop_position": {
+                    "name": "Stoppested",
+                    "terms": "stop,busstop"
                 },
                 "public_transport/stop_position_aerialway": {
                     "name": "Svævebanestop"
@@ -6032,6 +6102,9 @@
                 "railway/milestone": {
                     "name": "Jernbanemilepæl"
                 },
+                "railway/platform": {
+                    "name": "Togperron"
+                },
                 "railway/rail": {
                     "name": "Togspor"
                 },
@@ -6062,6 +6135,9 @@
                 "railway/tram_crossing": {
                     "name": "Sporvejsovergang",
                     "terms": "sporvejsovergang,letbaneovergang"
+                },
+                "railway/tram_stop": {
+                    "name": "Sporvognsstoppested"
                 },
                 "railway/turntable": {
                     "name": "Drejeskive",
@@ -6473,6 +6549,9 @@
                     "name": "Musikinstrumentbutik",
                     "terms": "musikinstrumentbutik,musikinstrumentforretning"
                 },
+                "shop/newsagent": {
+                    "name": "Aviskiosk"
+                },
                 "shop/nutrition_supplements": {
                     "name": "Helsekostbutik",
                     "terms": "helsekostbutik,helsekostforretning"
@@ -6877,8 +6956,23 @@
                     "name": "Ingen højresving",
                     "terms": "ingen højresving"
                 },
+                "type/restriction/no_straight_on": {
+                    "name": "Ingen ligeud"
+                },
                 "type/restriction/no_u_turn": {
                     "name": "Ingen U-vending"
+                },
+                "type/restriction/only_left_turn": {
+                    "name": "Kun venstresving",
+                    "terms": "venstre"
+                },
+                "type/restriction/only_right_turn": {
+                    "name": "Kun højresving",
+                    "terms": "højre"
+                },
+                "type/restriction/only_straight_on": {
+                    "name": "Kun ligeud",
+                    "terms": "ligefrem,frem"
                 },
                 "type/route": {
                     "name": "Rute",

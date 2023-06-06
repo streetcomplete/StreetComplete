@@ -1,4 +1,4 @@
-Readme of [StreetComplete] (https://github.com/streetcomplete/StreetComplete)
+Readme of [StreetComplete](https://github.com/streetcomplete/StreetComplete)
 
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
