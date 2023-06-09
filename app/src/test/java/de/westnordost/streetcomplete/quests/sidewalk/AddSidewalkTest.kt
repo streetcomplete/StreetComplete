@@ -128,8 +128,18 @@ class AddSidewalkTest {
 
     @Test fun `applicable to road with implicit speed limit`() {
         val road = way(tags = mapOf(
-            "highway" to "residential",
+            "highway" to "primary",
             "maxspeed" to "DE:zone30",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road))
+    }
+
+    @Test fun `applicable to road with urban speed limit`() {
+        val road = way(tags = mapOf(
+            "highway" to "primary",
+            "maxspeed" to "60",
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
