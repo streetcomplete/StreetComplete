@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -36,6 +37,16 @@ class AddCycleway(
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            ways with (
+                highway ~ cycleway|path
+                or highway ~ footway|bridleway and bicycle ~ yes|designated
+              )
+              and bicycle !~ no|private
+              and access !~ no|private
+        """)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:

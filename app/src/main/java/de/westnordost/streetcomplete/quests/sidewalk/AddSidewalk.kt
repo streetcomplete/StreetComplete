@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
@@ -22,6 +23,16 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     override val icon = R.drawable.ic_quest_sidewalk
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            ways with (
+                highway ~ path|footway|steps
+                or highway ~ cycleway|bridleway and foot ~ yes|designated
+              )
+              and foot !~ no|private
+              and access !~ no|private
+        """)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
