@@ -12,7 +12,7 @@ val COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON = NoCountriesExcept(
     // America
     "US", "CA", "AR",
     // Asia
-    "HK", "SG", "KR", "JP",
+    "HK", "SG", "KR", "JP", "IL",
     // Oceania
     "AU", "NZ"
 )

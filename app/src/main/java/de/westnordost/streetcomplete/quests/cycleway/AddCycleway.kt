@@ -53,6 +53,8 @@ class AddCycleway(
         "GB", "IE", "NL", "BE", "FR", "LU",
         "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
         "ES", "IT", "HR",
+        // Middle east
+        "IL",
         // East Asia
         "JP", "KR", "TW",
         // some of China (East Coast)
