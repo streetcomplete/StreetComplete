@@ -268,7 +268,10 @@ class MapDataWithEditsSource internal constructor(
         val nodes = getNodes(ids)
 
         /* If the way is (now) not complete, this is not acceptable */
-        if (nodes.size < ids.size) return null
+        if (nodes.size < ids.size) {
+            Log.w(TAG, "could not find nodes ${ids - nodes.map { it.id }} for way $way")
+            return null
+        }
 
         return nodes
     }

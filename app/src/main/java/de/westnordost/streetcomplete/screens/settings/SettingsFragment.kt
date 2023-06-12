@@ -154,21 +154,24 @@ class SettingsFragment :
             var filter = "" // todo: separate filter by level or tag?
             var maxLines = 200
             val log = TextView(requireContext())
+            var lines = Log.getLog().take(maxLines)
             log.setTextIsSelectable(true)
-            log.text = Log.logLines.take(maxLines).joinToString("\n")
+            log.text = lines.joinToString("\n")
             fun reloadText() {
-                log.text = when {
-                    filter.isNotBlank() && reversed -> Log.logLines.asReversed().filter { line -> line.toString().contains(filter, true) }
-                    filter.isNotBlank() -> Log.logLines.filter { line -> line.toString().contains(filter, true) }
-                    reversed -> Log.logLines.asReversed()
-                    else -> Log.logLines
-                }.take(maxLines).joinToString("\n")
+                val l = Log.getLog()
+                lines = when {
+                    filter.isNotBlank() && reversed -> l.asReversed().filter { line -> line.toString().contains(filter, true) }
+                    filter.isNotBlank() -> l.filter { line -> line.toString().contains(filter, true) }
+                    reversed -> l.asReversed()
+                    else -> l
+                }.take(maxLines)
+                log.text = lines.joinToString("\n")
             }
             val scrollLog = ScrollView(requireContext()).apply {
                 addView(log)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     setOnScrollChangeListener { _, _, _, _, _ ->
-                        if (log.bottom - (height + scrollY) <= 0 && Log.logLines.size > maxLines) {
+                        if (log.bottom - (height + scrollY) <= 0 && lines.size > maxLines) {
                             maxLines *= 2
                             reloadText()
                         }
@@ -342,7 +345,7 @@ class SettingsFragment :
             return
         val uri = data.data ?: return
         activity?.contentResolver?.openOutputStream(uri)?.use { os ->
-            os.bufferedWriter().use { it.write(Log.logLines.joinToString("\n")) }
+            os.bufferedWriter().use { it.write(Log.getLog().joinToString("\n")) }
         }
     }
 

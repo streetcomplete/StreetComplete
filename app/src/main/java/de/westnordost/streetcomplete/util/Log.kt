@@ -48,7 +48,10 @@ object Log {
 //        println(logLine) // would be nice for testing only, but how to do?
     }
 
-    val logLines: MutableList<LogLine> = ArrayList(2000)
+    private val logLines: MutableList<LogLine> = ArrayList(2000)
+
+    /** returns a copy of [logLines] */
+    fun getLog() = synchronized(logLines) { logLines.toList() }
 }
 
 data class LogLine(val level: Char, val tag: String, val message: String,) {

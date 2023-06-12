@@ -7,7 +7,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import java.io.IOException
@@ -78,7 +77,7 @@ class CrashReportExceptionHandler(
 
     override fun uncaughtException(t: Thread, e: Throwable) {
         val stackTrace = StringWriter()
-        val logLines = Log.logLines.toList() // to avoid issues if log is modified while working with it
+        val logLines = Log.getLog()
         val last100WithoutQuestCreation = mutableListOf<String>()
         for (line in logLines.asReversed()) {
             if (last100WithoutQuestCreation.size >= 100) break

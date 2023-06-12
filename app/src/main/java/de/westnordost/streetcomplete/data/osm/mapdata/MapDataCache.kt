@@ -6,10 +6,11 @@ import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SpatialCache
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
-import java.lang.Integer.min
+import kotlin.math.min
 
 /**
  * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
@@ -22,7 +23,7 @@ import java.lang.Integer.min
  */
 class MapDataCache(
     private val tileZoom: Int,
-    val maxTiles: Int,
+    private val maxTiles: Int,
     initialCapacity: Int,
     private val fetchMapData: (BoundingBox) -> Pair<Collection<Element>, Collection<ElementGeometryEntry>>, // used if the tile is not contained
     private val fetchNodes: (Collection<Long>) -> Collection<Node>,
@@ -409,6 +410,7 @@ class MapDataCache(
 
         val result: MutableMapDataWithGeometry
         if (tilesRectsToFetch != null) {
+            Log.i(TAG, "need to fetch data in $tilesRectsToFetch from database")
             // get nodes from spatial cache
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
@@ -496,6 +498,7 @@ class MapDataCache(
 
     /** Clears the cache */
     fun clear() { synchronized(this) {
+        Log.i(TAG, "clear cache")
         spatialCache.clear()
         notSpatialCache.clear()
         wayRelationGeometryCache.clear()
@@ -507,6 +510,8 @@ class MapDataCache(
      *  not contained in the remaining tiles.
      */
     fun trim(tiles: Int) { synchronized(this) {
+        Log.i(TAG, "trim to $tiles tiles")
+
         // spatialCache does not remove tiles contained in noTrim
         spatialCache.trim(tiles)
 
@@ -589,5 +594,8 @@ class MapDataCache(
     private fun getCachedNode(key: ElementKey): Node? = spatialCache.get(key) ?: (notSpatialCache[key] as? Node)
 
     private val ElementGeometryEntry.reuseKey get() = key.let { notSpatialCache[it]?.key ?: it }
-    private val RelationMember.reuseKey get() = key.let { notSpatialCache[it]?.key ?: it }
+
+    companion object {
+        private const val TAG = "MapDataCache"
+    }
 }
