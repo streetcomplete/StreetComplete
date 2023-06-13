@@ -199,11 +199,20 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val oldRestriction = currentRestriction as? TurnRestriction ?: return
                 val newTags = oldRestriction.relation.tags.toMutableMap()
-                if (newTags.containsKey("restriction:conditional") && !newTags.containsKey("restriction")) {
-                    val old = newTags["restriction:conditional"]!!.substringBefore("@").trim()
-                    newTags["restriction:conditional"] = newTags["restriction:conditional"]!!.replace(old, turnRestrictionTypeList[p2])
-                } else
-                    newTags["restriction"] = turnRestrictionTypeList[p2]
+                val conditionalKey = if (newTags.containsKey("restriction:conditional")) "restriction:conditional"
+                    else newTags.keys.firstOrNull { it.startsWith("restriction:") && it.endsWith(":conditional") }
+                if (conditionalKey != null && !newTags.containsKey(conditionalKey.substringBefore(":conditional"))) {
+                    val old = newTags[conditionalKey]!!.substringBefore("@").trim()
+                    newTags[conditionalKey] = newTags[conditionalKey]!!.replace(old, turnRestrictionTypeList[p2])
+                } else {
+                    if (newTags.containsKey("restriction"))
+                        newTags["restriction"] = turnRestrictionTypeList[p2]
+                    else {
+                        val k = newTags.keys.firstOrNull { key -> key.startsWith("restriction:") && onlyTurnRestriction.any { key.endsWith(it) } }
+                            ?: "restriction"
+                        newTags[k] = turnRestrictionTypeList[p2]
+                    }
+                }
                 if (newTags != oldRestriction.relation.tags)
                     currentRestriction = TurnRestriction(oldRestriction.relation.copy(tags = newTags))
             }
@@ -352,7 +361,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
                         }
                     }.show()
                 }
-                else -> { }
+                null -> { }
             }
         }.show()
     }
@@ -375,9 +384,11 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
         when (restriction) {
             is TurnRestriction -> {
                 val newTags = restriction.relation.tags.toMutableMap()
-                if (!newTags.containsKey("restriction"))
-                    newTags["restriction"] = newTags.getShortRestrictionValue()!!
-                newTags.remove("restriction:conditional")
+                val oldConditionalKey = if (newTags.containsKey("restriction:conditional")) "restriction:conditional"
+                    else newTags.keys.firstOrNull { it.startsWith("restriction:") && it.endsWith(":conditional") } ?: "restriction:conditional"
+                if (!newTags.containsKey(oldConditionalKey.substringBefore(":conditional")))
+                    newTags[oldConditionalKey.substringBefore(":conditional")] = newTags.getShortRestrictionValue()!!
+                newTags.remove(oldConditionalKey)
                 currentRestriction = TurnRestriction(restriction.relation.copy(tags = newTags))
             }
             is WeightRestriction -> {
@@ -395,11 +406,13 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             is TurnRestriction -> {
                 val newTags = restriction.relation.tags.toMutableMap()
                 // either it's only conditional, then value is same as restriction, or it's an exception then it's "none"
-                val values = newTags["restriction"]?.let { listOf(it, "none") }
+                val restrictionKey = if (newTags.containsKey("restriction")) "restriction"
+                    else newTags.keys.firstOrNull { key -> onlyTurnRestriction.any { key =="restriction:$it" } } ?: "restriction"
+                val values = newTags[restrictionKey]?.let { listOf(it, "none") }
                     ?: listOf(turnRestrictionTypeList[binding.turnRestrictionTypeSpinner.selectedItemPosition])
-                showAddConditionalDialog(requireContext(), listOf("restriction:conditional"), values, null) { _, v ->
-                    newTags["restriction:conditional"] = v
-                    if (!v.startsWith("none")) newTags.remove("restriction")
+                showAddConditionalDialog(requireContext(), listOf("$restrictionKey:conditional"), values, null) { _, v ->
+                    newTags["$restrictionKey:conditional"] = v
+                    if (!v.startsWith("none")) newTags.remove(restrictionKey)
                     currentRestriction = TurnRestriction(restriction.relation.copy(tags = newTags))
                 }
             }
@@ -506,6 +519,9 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             .map { "${it.key} = ${it.value}" }
             .joinToString("\n")
         displayConditionalRestrictions(restrictionInfo)
+
+        // todo: only-button for maxweight:hgv and stuff
+        //  but needs to work a bit different than for turn because of the maxweight keys
     }
 
     // ---------------- turn restriction ----------------------
@@ -533,8 +549,8 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             binding.turnRestrictionTypeSpinner.post { binding.turnRestrictionTypeSpinner.setSelection(idx) }
         }
 
-        // switching roles for an existing relation requires another new action...
-        // maybe do that later, but currently this is not allowed
+        // todo: switching roles for an existing relation requires another new action...
+        //  maybe do that later, but currently this is only allowed when adding a new relation
         binding.swapFromToRoles.setOnClickListener {
             val rel = (currentRestriction as? TurnRestriction)?.relation ?: return@setOnClickListener
             val newMembers = rel.members.map { when (it.role) {
@@ -550,12 +566,42 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
         val args = restriction.relation.tags["except"]?.replace(";", ", ") ?: getString(R.string.overlay_none)
         binding.exceptions.text = getString(R.string.restriction_overlay_exceptions, args)
 
-        // show other restriction parts like conditional or hgv, but they can be modified only using the tag editor
+        // show other restriction parts like conditional or unknown values
         val restrictionInfo = restriction.relation.tags
-            .filterKeys { it.startsWith("restriction:") }
+            .filterKeys { key -> key.startsWith("restriction:") && onlyTurnRestriction.none { key.endsWith(it) } }
             .map { "${it.key} = ${it.value}" }
             .joinToString("\n")
         displayConditionalRestrictions(restrictionInfo)
+
+        // show only-restriction (restriction:hgv and similar)
+        binding.onlyButton.isVisible = true
+        val onlyFor = restriction.relation.tags.keys
+            .firstOrNull { it.startsWith("restriction") && it.substringAfter("restriction:").substringBefore(":conditional") in onlyTurnRestriction }
+        val onlyForText = onlyFor?.substringAfter("restriction:")?.substringBefore(":conditional") ?: "-"
+        binding.onlyButton.text = getString(R.string.restriction_overlay_only_for, onlyForText)
+        binding.onlyButton.setOnClickListener {
+            // move restriction and restriction:conditional
+            val d = AlertDialog.Builder(requireContext())
+                .setSingleChoiceItems(onlyTurnRestriction.toTypedArray(), onlyTurnRestriction.indexOf(onlyFor)) { d, i ->
+                    // using tags may not have been the best decision here... but whatever
+                    val newOnly = onlyTurnRestriction[i]
+                    val switchFrom = onlyFor?.let { ":$it" } ?: ""
+                    val newTags = restriction.relation.tags.toMutableMap()
+                    newTags.remove("restriction$switchFrom")?.let { newTags["restriction:$newOnly"] = it }
+                    newTags.remove("restriction$switchFrom:conditional")?.let { newTags["restriction:$newOnly:conditional"] = it }
+                    d.dismiss()
+                    currentRestriction = TurnRestriction(restriction.relation.copy(tags = newTags))
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+            if (onlyFor != null)
+                d.setNeutralButton(R.string.delete_confirmation) { _, _ ->
+                    val newTags = restriction.relation.tags.toMutableMap()
+                    newTags.remove("restriction:$onlyFor")?.let { newTags["restriction"] = it }
+                    newTags.remove("restriction:$onlyFor:conditional")?.let { newTags["restriction:conditional"] = it }
+                    currentRestriction = TurnRestriction(restriction.relation.copy(tags = newTags))
+                }
+            d.show()
+        }
     }
 
     // get bearing of last segment of "from" member for via icon
@@ -652,6 +698,13 @@ private val exceptions = listOf(
     "bicycle", "psv", "bus", "emergency", "agricultural", "hgv", "moped", "destination", "motorcar"
 )
 
+// restriction:* list from wiki
+private val onlyTurnRestriction = listOf(
+    "hgv", "caravan", "motorcar", "bus", "agricultural", "motorcycle", "bicycle", "hazmat"
+)
+
+val onlyTurnRestrictionSet = onlyTurnRestriction.toHashSet()
+
 // actually this may be country specific!
 private fun getIconForTurnRestriction(type: String?) = when(type) {
     "no_right_turn" -> R.drawable.ic_restriction_no_right_turn
@@ -667,10 +720,11 @@ private fun getIconForTurnRestriction(type: String?) = when(type) {
 fun Map<String, String>.getShortRestrictionValue(): String? {
     get("restriction")?.let { return it }
     get("restriction:conditional")?.let { return it.substringBefore("@").trim() }
-    entries.firstOrNull { it.key.startsWith("restriction:") }?.let { return it.value } // restriction:hgv and similar
+    entries.firstOrNull { it.key.startsWith("restriction:") }?.let { return it.value.substringBefore("@").trim() } // restriction:hgv and similar, may be conditional
     return null
 }
 
+// todo: switch form changing tags to sth else, this is getting way too complicated to handle
 private sealed interface Restriction {
     val type: RestrictionType
     val element: Element
@@ -695,8 +749,9 @@ private enum class RestrictionType { TURN, WEIGHT }
 private fun getWeightRestrictions(way: Way): List<WeightRestriction> {
     val restrictions = mutableListOf<WeightRestriction>()
     for (sign in MaxWeightSign.values()) {
-        if (sign.osmKey !in way.tags.keys) continue
-        val weight = way.tags[sign.osmKey]!!
+        val key = if (way.tags.containsKey(sign.osmKey)) sign.osmKey
+            else way.tags.keys.firstOrNull { it == "${sign.osmKey}:conditional" } ?: continue
+        val weight = way.tags[key]!!
         restrictions.add(WeightRestriction(way, sign, weight))
     }
     return restrictions

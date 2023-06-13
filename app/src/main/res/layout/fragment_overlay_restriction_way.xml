@@ -48,12 +48,22 @@
 
         <Button
             android:id="@+id/exceptions"
-            android:visibility="gone"
             tools:text="exceptions"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/implicit_switch"
             android:textAppearance="@style/TextAppearance.BigBody"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/only_button"
+            android:visibility="gone"
+            tools:text="only for ..."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exceptions"
+            android:textAppearance="@style/TextAppearance.BigBody"
+            tools:visibility="visible"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,11 +110,12 @@
 
     <Button
         android:id="@+id/conditional_button"
-        android:visibility="gone"
         android:text="@string/access_manager_button_add_conditional"
         app:layout_constraintLeft_toRightOf="@id/add_restriction"
         app:layout_constraintBottom_toBottomOf="@id/remove_restriction"
         app:layout_constraintTop_toTopOf="@id/remove_restriction"
+        android:textAppearance="@style/TextAppearance.BigBody"
+        android:visibility="gone"
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

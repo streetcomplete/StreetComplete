@@ -1,3 +1,8 @@
+next: |
+  <ul>
+  <li>Improve restriction overlay</li>
+  </ul>
+
 v53.3: |
   <ul>
   <li>Add pharmacy dispensing quests, thanks @mnalis</li>

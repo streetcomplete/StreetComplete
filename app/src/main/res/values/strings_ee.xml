@@ -408,6 +408,7 @@
     <!-- restriction overlay -->
     <string name="restriction_overlay_title">Traffic restrictions</string>
     <string name="restriction_overlay_exceptions">Exceptions: %s</string>
+    <string name="restriction_overlay_only_for">Only for: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Remove conditional</string>
     <string name="restriction_overlay_signed_switch">There is a sign or road marking</string>
     <string name="restriction_overlay_show_details">Show relation details</string>

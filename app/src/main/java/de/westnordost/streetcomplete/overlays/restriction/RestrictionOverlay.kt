@@ -68,6 +68,7 @@ class RestrictionOverlay : Overlay {
         val relations = restrictionsByWayMemberId[way.id]
         if (relations == null) {
             // no turn restriction, but maybe weight
+//            val color = if (way.tags.keys.filter { it.startsWith("max") }.any { key -> maxWeightKeys.any { key.startsWith(it) } })
             val color = if (way.tags.containsAnyKey(*maxWeightKeys))
                     Color.TEAL
                 else Color.INVISIBLE
@@ -127,7 +128,7 @@ fun Relation.isSupportedTurnRestriction(): Boolean {
 }
 
 fun Relation.getRestrictionType() = tags["restriction"] ?: tags["restriction:conditional"]?.substringBefore("@")?.trim()
-    ?: tags["restriction:hgv"] ?: tags["restriction:bus"]
+    ?: tags.entries.firstOrNull { it.key.substringAfter("restriction:").substringBefore(":conditional") in onlyTurnRestrictionSet }?.value?.substringBefore("@")?.trim()
 
 val turnRestrictionTypes = linkedSetOf(
     "no_right_turn",
@@ -141,6 +142,5 @@ val turnRestrictionTypes = linkedSetOf(
 
 private val maxWeightKeys = MaxWeightSign.values().map { it.osmKey }.toTypedArray()
 
-private val darkerBlue = toRGBString(darken(parseColor(Color.BLUE), 0.75f))
 private val darkerGold = toRGBString(darken(parseColor(Color.GOLD), 0.75f))
 private val darkerOrange = toRGBString(darken(parseColor(Color.ORANGE), 0.75f))
