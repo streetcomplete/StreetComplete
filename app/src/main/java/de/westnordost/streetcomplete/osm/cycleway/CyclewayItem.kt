@@ -146,8 +146,8 @@ private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): I
         else                   R.string.quest_cycleway_value_track
     }
     SIDEWALK_EXPLICIT -> {
-        if (direction == BOTH) R.string.quest_cycleway_value_sidewalk_dual
-        else                   R.string.quest_cycleway_value_sidewalk
+        if (direction == BOTH) R.string.quest_cycleway_value_sidewalk_dual2
+        else                   R.string.quest_cycleway_value_sidewalk2
     }
     NONE -> {
         if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
