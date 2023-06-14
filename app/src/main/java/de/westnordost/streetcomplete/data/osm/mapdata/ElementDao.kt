@@ -85,15 +85,6 @@ class ElementDao(
         wayDao.clear()
         nodeDao.clear()
     }
-
-    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<ElementKey> {
-        val result = mutableListOf<ElementKey>()
-        // get relations first, then ways, then nodes because relations depend on ways depend on nodes.
-        result.addAll(relationDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(RELATION, it) })
-        result.addAll(wayDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(WAY, it) })
-        result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
-        return result
-    }
 }
 
 private fun Iterable<ElementKey>.filterByType(type: ElementType) =
