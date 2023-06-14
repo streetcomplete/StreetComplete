@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -71,6 +72,19 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         assertEquals(
             listOf(TilePos(0, 1)),
             dao.getAll(1)
+        )
+    }
+
+    @Test fun oldTilesNotUpdated() {
+        dao.put(r(0, 0, 0, 1))
+        dao.updateTimeNewerThan(TilePos(0, 0), 10)
+        dao.updateAllTimesNewerThan(100)
+        assertEquals(
+            listOf(TilePos(0, 1)),
+            dao.getAll(50)
+        )
+        assertTrue(
+            dao.getAll(5).containsExactlyInAnyOrder(listOf(TilePos(0, 1), TilePos(0, 0)))
         )
     }
 
