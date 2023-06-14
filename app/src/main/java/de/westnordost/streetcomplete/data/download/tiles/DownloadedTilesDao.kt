@@ -31,7 +31,7 @@ class DownloadedTilesDao(private val db: Database) {
         db.exec("DELETE FROM $NAME")
     }
 
-    fun updateTimeIfNewer(tile: TilePos, time: Long) {
+    fun updateTimeNewerThan(tile: TilePos, time: Long) {
         db.update(NAME,
             values = listOf(DATE to time),
             where = "$X = ? AND $Y = ? AND $DATE > ?",
@@ -39,7 +39,7 @@ class DownloadedTilesDao(private val db: Database) {
         )
     }
 
-    fun updateAllTimesIfNewer(time: Long) {
+    fun updateAllTimesNewerThan(time: Long) {
         db.update(NAME,
             values = listOf(DATE to time),
             where = "$DATE > ?",

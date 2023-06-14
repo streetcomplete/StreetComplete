@@ -65,24 +65,24 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.getAll(0).isEmpty())
     }
 
-    @Test fun updateTime() {
+    @Test fun updateTimeNewerThan() {
         dao.put(r(0, 0, 0, 1))
-        dao.updateTimeIfNewer(TilePos(0, 0), 0)
+        dao.updateTimeNewerThan(TilePos(0, 0), 0)
         assertEquals(
             listOf(TilePos(0, 1)),
             dao.getAll(1)
         )
     }
 
-    @Test fun updateAllTimes() {
+    @Test fun updateAllTimesNewerThan() {
         dao.put(r(0, 0, 0, 1))
-        dao.updateAllTimesIfNewer(0)
+        dao.updateAllTimesNewerThan(0)
         assertTrue(dao.getAll(1).isEmpty())
     }
 
     @Test fun deleteOlderThan() {
         dao.put(r(0, 0, 1, 0))
-        dao.updateTimeIfNewer(TilePos(0, 0), 1)
+        dao.updateTimeNewerThan(TilePos(0, 0), 1)
         assertEquals(1, dao.deleteOlderThan(2))
     }
 
