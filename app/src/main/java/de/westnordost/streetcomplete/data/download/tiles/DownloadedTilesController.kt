@@ -27,12 +27,12 @@ class DownloadedTilesController(
     }
 
     fun invalidate(tilePos: TilePos) {
-        dao.updateTime(tilePos, getOldTime())
+        dao.updateTimeIfNewer(tilePos, getOldTime())
         onUpdated()
     }
 
     fun invalidateAll() {
-        dao.updateAllTimes(getOldTime())
+        dao.updateAllTimesIfNewer(getOldTime())
         onUpdated()
     }
 
