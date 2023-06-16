@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ktx
+package de.westnordost.streetcomplete.util.ktx
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
