@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListene
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.containsAll
+import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -353,8 +354,8 @@ open class MapFragment :
             putFloat(PREF_ROTATION, camera.rotation)
             putFloat(PREF_TILT, camera.tilt)
             putFloat(PREF_ZOOM, camera.zoom)
-            putLong(PREF_LAT, java.lang.Double.doubleToRawLongBits(camera.position.latitude))
-            putLong(PREF_LON, java.lang.Double.doubleToRawLongBits(camera.position.longitude))
+            putDouble(PREF_LAT, camera.position.latitude)
+            putDouble(PREF_LON, camera.position.longitude)
         }
     }
 

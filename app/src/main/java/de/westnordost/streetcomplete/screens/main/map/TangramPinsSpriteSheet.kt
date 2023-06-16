@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.util.ktx.getDouble
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
 import kotlin.math.sqrt
@@ -88,7 +89,7 @@ class TangramPinsSpriteSheet(
     }
 
     private fun shouldBeUpsideDown(): Boolean {
-        val isBelowEquator = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits())) < 0.0
+        val isBelowEquator = prefs.getDouble(Prefs.MAP_LATITUDE) < 0.0
         return isBelowEquator && isApril1st()
     }
 

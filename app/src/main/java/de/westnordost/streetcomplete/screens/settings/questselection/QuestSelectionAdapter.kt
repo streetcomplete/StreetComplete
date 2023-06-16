@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.getDouble
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -57,7 +58,8 @@ class QuestSelectionAdapter(
     prefs: SharedPreferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
-    private val currentCountryCodes: List<String>
+    private val currentCountryCodes = countryBoundaries.get()
+        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -123,12 +125,6 @@ class QuestSelectionAdapter(
             // all/many quest orders have been changed - reinit list
             viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
         }
-    }
-
-    init {
-        val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
-        val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-        currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
     }
 
     override fun onStart(owner: LifecycleOwner) {
