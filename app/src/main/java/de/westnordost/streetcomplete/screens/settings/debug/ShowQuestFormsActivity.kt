@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.util.ktx.getDouble
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -84,10 +85,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override fun onStart() {
         super.onStart()
-        pos = LatLon(
-            Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits())),
-            Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-        )
+        pos = LatLon(prefs.getDouble(Prefs.MAP_LATITUDE), prefs.getDouble(Prefs.MAP_LONGITUDE))
     }
 
     private fun popQuestForm() {

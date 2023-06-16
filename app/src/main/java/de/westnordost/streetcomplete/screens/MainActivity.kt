@@ -54,6 +54,7 @@ import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -213,8 +214,8 @@ class MainActivity :
         super.onPause()
         val pos = mainFragment?.getCameraPosition()?.position ?: return
         prefs.edit {
-            putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
-            putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
+            putDouble(Prefs.MAP_LATITUDE, pos.latitude)
+            putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
         }
         downloadController.showNotification = true
         uploadController.showNotification = true
