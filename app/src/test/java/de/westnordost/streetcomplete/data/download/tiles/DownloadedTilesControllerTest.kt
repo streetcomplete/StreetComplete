@@ -38,13 +38,13 @@ class DownloadedTilesControllerTest {
     @Test fun invalidate() {
         val t = TilePos(0, 0)
         ctrl.invalidate(t)
-        verify(dao).updateTime(eq(t), anyLong()) // hm, difficult to test the exact time...
+        verify(dao).updateTimeNewerThan(eq(t), anyLong()) // hm, difficult to test the exact time...
         verify(listener).onUpdated()
     }
 
     @Test fun invalidateAll() {
         ctrl.invalidateAll()
-        verify(dao).updateAllTimes(anyLong()) // hm, difficult to test the exact time...
+        verify(dao).updateAllTimesNewerThan(anyLong()) // hm, difficult to test the exact time...
         verify(listener).onUpdated()
     }
 

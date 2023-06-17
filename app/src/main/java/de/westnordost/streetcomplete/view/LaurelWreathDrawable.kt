@@ -9,7 +9,7 @@ import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.withRotation
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.flipHorizontally
+import de.westnordost.streetcomplete.util.ktx.flipHorizontally
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import kotlin.math.min
 

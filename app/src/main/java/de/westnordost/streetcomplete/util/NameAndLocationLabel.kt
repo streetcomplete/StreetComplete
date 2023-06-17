@@ -32,9 +32,9 @@ fun getNameAndLocationLabel(
         name ?: feature
     }
 
-    // only show house number if there is no name information
+    // only show house number if there is no name
     val location = getLocationHtml(element.tags, resources, showHouseNumber =
-        if (showHouseNumber == null && nameAndFeatureName != null) false else showHouseNumber
+        if (showHouseNumber == null && name != null) false else showHouseNumber
     )
 
     val label = if (nameAndFeatureName != null && location != null) {

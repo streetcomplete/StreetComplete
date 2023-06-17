@@ -31,16 +31,20 @@ class DownloadedTilesDao(private val db: Database) {
         db.exec("DELETE FROM $NAME")
     }
 
-    fun updateTime(tile: TilePos, time: Long) {
+    fun updateTimeNewerThan(tile: TilePos, time: Long) {
         db.update(NAME,
             values = listOf(DATE to time),
-            where = "$X = ? AND $Y = ?",
-            args = arrayOf(tile.x.toString(), tile.y.toString()),
+            where = "$X = ? AND $Y = ? AND $DATE > ?",
+            args = arrayOf(tile.x.toString(), tile.y.toString(), time.toString()),
         )
     }
 
-    fun updateAllTimes(time: Long) {
-        db.update(NAME, values = listOf(DATE to time))
+    fun updateAllTimesNewerThan(time: Long) {
+        db.update(NAME,
+            values = listOf(DATE to time),
+            where = "$DATE > ?",
+            args = arrayOf(time.toString()),
+        )
     }
 
     fun deleteOlderThan(time: Long): Int =
