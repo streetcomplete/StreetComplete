@@ -87,8 +87,7 @@ class QuestSelectionAdapter(
             val words = f.lowercase().split(' ')
             submitList(questTypes.filter { questVisibility ->
                 val question = genericQuestTitle(context.resources, questVisibility.questType).lowercase()
-                val questionWords = question.split(' ')
-                words.all { filterWord -> questionWords.any { it.startsWith(filterWord) } }
+                words.all { question.contains(it) }
             })
         }
     }
