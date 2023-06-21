@@ -167,7 +167,6 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
     //  orientation is confusing
     //  when selecting other side and going back the marks are missing and "all lanes" is showing again
     //  and sometimes the current destination view stays when switching sides
-    // but anyway, more than 2 lanes for one side are currently not allowed anyway
     private fun showInput(laneCount: Int) {
         // initialize forward/backward if necessary
         if (currentIsBackward) {

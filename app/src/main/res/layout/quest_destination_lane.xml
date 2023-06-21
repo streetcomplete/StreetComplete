@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/lane"
-        android:src="@drawable/ic_lanes_marked"
+        android:src="@drawable/ic_lanes_no_center_line"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginHorizontal="8dp"
