@@ -133,7 +133,7 @@
 این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جُستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
 
 اطلاعاتی که وارد می‌کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در نقشه متن باز OSM اضافه می‌شود."</string>
-    <string name="quest_name_answer_noName">"بدون نام…"</string>
+    <string name="quest_name_answer_noName">"نامی ندارد..."</string>
     <string name="quest_name_answer_noName_confirmation_title">"واقعا نامی ندارد؟"</string>
     <string name="quest_name_noName_confirmation_positive">"بله، بدون نام است"</string>
     <string name="quest_openingHours_add_times">"افزودن زمان ساعات کار"</string>

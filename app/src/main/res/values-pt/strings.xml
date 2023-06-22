@@ -1313,4 +1313,23 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="unknown_surface_title">"Outro tipo de superfície"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividir em ciclovia e passeio separados"</string>
+    <string name="quest_crossing_title2">"Existe uma passadeira aqui?"</string>
+    <string name="quest_crossing_yes">"Sim (p.ex. o lancil é rebaixado ou existem marcações)"</string>
+    <string name="quest_crossing_no">"Não, mas o atravessamento é possível"</string>
+    <string name="quest_crossing_prohibited">"Não, o atravessamento é proibido ou impossível"</string>
+    <string name="quest_hairdresser_title">"Que clientes visitam este cabeleireiro/a?"</string>
+    <string name="quest_hairdresser_male_and_female">"Qualquer pessoa"</string>
+    <string name="quest_hairdresser_female_only">"Mulheres"</string>
+    <string name="quest_hairdresser_male_only">"Homens"</string>
+    <string name="quest_hairdresser_not_signed">"Não indica"</string>
+    <string name="quest_amenityCover_title">"É coberto (protegido da chuva)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Extensão do lancil"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Ilha de trânsito"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chincana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Extensão do lancil + ilha de trânsito"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Nenhuma via estreita aqui"</string>
+    <string name="quest_tactilePaving_title_steps">"Existe um pavimento tátil no topo e no fundo destas escadas?"</string>
+    <string name="quest_tactilePaving_steps_top">"Apenas no topo"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Apenas no fundo"</string>
+    <string name="overlay_addresses_no_entrance">"Não é uma entrada…"</string>
 </resources>

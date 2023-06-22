@@ -1297,4 +1297,30 @@
 &lt;p&gt;設定每一次的開始 - 以及結束點，要將你手直直朝下 (因此你會在上面看到白色箭頭) 來完全避免水平測量的問題。&lt;/p&gt;
 &lt;p&gt;而垂直測量部分，你需要透過不同方向檢視，檢查開始點相較地面沒有跑掉。&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"這應用程式 &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) 來運作，並且由 Google 採用 &lt;a href=\"https://policies.google.com/privacy\"&gt;Google 隱私政策&lt;/a&gt; 提供服務與管理。"</string>
+    <string name="default_disabled_msg_seasonal">"這類型的任務已經預設關閉，因為需要在一年特定時間再次檢查狀況。"</string>
+    <string name="quest_gritBinSeasonal_title">"除了冬天之外這裡也有嗎？"</string>
+    <string name="street_parking_staggered_on_street">"在道路的另一側"</string>
+    <string name="street_parking_staggered_half_on_kerb">"部分道路的另一側"</string>
+    <string name="quest_traffic_signals_sound_description">"提示：檢查是否有擴音器，不是所有的警示音都是透過按鈕啟用。"</string>
+    <string name="quest_presets_duplicate">"重覆"</string>
+    <string name="label_block">"街區"</string>
+    <string name="quest_address_answer_block">"一個街區以內…"</string>
+    <string name="quest_address_answer_no_block">"超過一個街區距離…"</string>
+    <string name="quest_surface_value_mud">"強固泥巴"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"這裡沒有廁所"</string>
+    <string name="unknown_surface_title">"其他種類的舖面"</string>
+    <string name="overlay_surface">"舖面"</string>
+    <string name="overlay_path_surface_segregated">"分隔為單車與步行部分"</string>
+    <string name="quest_crossing_title2">"這種有穿越道嗎？"</string>
+    <string name="quest_crossing_yes">"是 (例如這邊路緣比較低或是有標示)"</string>
+    <string name="quest_crossing_no">"無，但仍可以穿越"</string>
+    <string name="quest_crossing_prohibited">"無，禁止穿越或是無法"</string>
+    <string name="quest_hairdresser_title">"那種類型的顧戶會來光顧剪頭髮？"</string>
+    <string name="quest_hairdresser_male_and_female">"任何人"</string>
+    <string name="quest_hairdresser_female_only">"女性"</string>
+    <string name="quest_hairdresser_male_only">"男性"</string>
+    <string name="quest_hairdresser_not_signed">"沒有標示"</string>
+    <string name="quest_amenityCover_title">"這裡有遮避嗎 (能夠遮雨)？"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"路緣延伸"</string>
+    <string name="lane_narrowing_traffic_calming_island">"槽化島"</string>
 </resources>

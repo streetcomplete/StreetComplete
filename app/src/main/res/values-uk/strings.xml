@@ -1253,7 +1253,7 @@
     <string name="urlconfig_switch_hint">"Ви можете будь-коли змінити пресети в налаштуваннях."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Двоярусна стоянка для велосипеда"</string>
     <string name="user_profile_current_week_title">"Останні 7 днів"</string>
-    <string name="user_profile_dates_mapped">"Дні, які ви нещодавно нанесли на карту"</string>
+    <string name="user_profile_dates_mapped">"Дні, що ви займались картографуванням"</string>
     <string name="quest_cycleway_value_advisory_lane">"рекомеднована смуга для велосипедів"</string>
     <string name="urlconfig_scan_qr_code_again2">"Після встановлення програми знову відскануйте QR-код або натисніть &lt;a href=\"%s\"&gt;це посилання&lt;/a&gt;, щоб застосувати попередні налаштування."</string>
     <string name="confirmation_replace_shop_title">"Зараз тут інший заклад?"</string>

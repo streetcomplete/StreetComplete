@@ -996,7 +996,7 @@
     <string name="quest_fireHydrant_position_lane">"อยู่บนถนน"</string>
     <string name="quest_fireHydrant_position_sidewalk">"อยู่บนทางเท้า"</string>
     <string name="quest_fireHydrant_position_parking_lot">"อยู่ในที่จอดรถ"</string>
-    <string name="quest_generic_hasFeature_yes_leave_note">"มี (สร้างโน๊ตไว้)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"มี (ใส่หมายเหตุ)"</string>
     <string name="quest_smoothness_square_title">"คุณภาพพื้นผิวของสี่เหลี่ยมตรงนี้เป็นอย่างไร?"</string>
     <string name="quest_smoothness_road_title">"คุณภาพพื้นผิวของเส้นทางนี้เป็นอย่างไร?"</string>
     <string name="quest_smoothness_title_excellent">"เรียบและสม่ำเสมอ"</string>
@@ -1138,15 +1138,31 @@
     <string name="quest_cycleway_value_none_and_oneway">"ไม่มี ไม่อนุญาตให้ปั่นจักรยานในทิศทางนี้"</string>
     <string name="map_btn_create_track">"สร้างการบันทึกเส้นทางใหม่"</string>
     <string name="map_btn_stop_track">"หยุดการบันทึกเส้นทาง"</string>
+    <string name="quest_bicycle_rental_capacity_title">"ที่นี่มีช่องจักรยานให้เช่ากี่ช่อง?"</string>
+    <string name="quest_bicycle_rental_type_title">"พื้นที่จักรยานให้เช่านี้เป็นแบบใด?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"แท่นวางที่ล็อกจักรยาน"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"จุดที่กำหนด (ล็อกจักรยานทีละคัน)"</string>
+    <string name="quest_bicycle_rental_type_human">"มีเจ้าหน้าที่ให้บริการ"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"ร้านขายจักรยานที่ให้เช่าจักรยานด้วย"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"ไม่ มีแค่จักรยานใหม่"</string>
     <string name="quest_bicycle_shop_second_hand_new_and_used">"ใช่ รวมถึงจักรยานใหม่"</string>
     <string name="quest_bicycle_shop_second_hand_only_used">"ใช่ เฉพาะมือสอง"</string>
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
+    <string name="quest_building_entrance_title">"ทางเข้าอาคารเป็นแบบไหน?"</string>
+    <string name="quest_building_entrance_main">"ทางเข้าหลักของอาคารสาธารณะ"</string>
+    <string name="quest_building_entrance_staircase">"ทางเข้าบันได (เช่น ไปยังอาคารอพาร์ตเมนต์)"</string>
     <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
     <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
+    <string name="quest_building_entrance_emergency_exit">"ทางออกฉุกเฉินเท่านั้น"</string>
+    <string name="quest_building_entrance_shop">"ทางเข้าร้านค้า"</string>
+    <string name="quest_building_entrance_yes">"ทางเข้าประเภทอื่น"</string>
+    <string name="quest_building_entrance_dead_end">"ทางตัน ไม่มีทางเข้า"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"แตะหน้าจอเพื่อเริ่มวัด"</string>
+    <string name="action_overlays">"ภาพซ้อนทับ"</string>
     <string name="split_way">"แยกทางเป็นสองส่วน"</string>
     <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
     <string name="quest_memorialType_statue">"อนุสาวรีย์"</string>
+    <string name="select_overlay">"เลือกภาพซ้อนทับ"</string>
     <string name="overlay_none">"ไม่มี"</string>
     <string name="overlay_lit">"ไฟถนน"</string>
     <string name="lit_value_yes">"มี"</string>
@@ -1155,5 +1171,41 @@
     <string name="lit_value_automatic">"ส่องสว่างเฉพาะเมื่อมีคนผ่าน"</string>
     <string name="overlay_sidewalk">"ทางเท้า"</string>
     <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
+    <string name="quest_address_street_street_name_label">"ชื่อถนน:"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"เติมขวดเท่านั้น"</string>
+    <string name="overlay_addresses">"ที่อยู่"</string>
+    <string name="overlay_shops">"ร้านค้า"</string>
+    <string name="name_label">"ชื่อ:"</string>
+    <string name="unknown_shop_title">"สถานที่ประเภทอื่น"</string>
+    <string name="quest_address_answer_no_address">"ไม่มีที่อยู่ที่นี่"</string>
+    <string name="about_title_get_involved">"มีส่วนเกี่ยวข้อง"</string>
+    <string name="quest_presets_rename">"เปลี่ยนชื่อ"</string>
+    <string name="quest_presets_share">"แชร์"</string>
+    <string name="quest_presets_delete">"ลบ"</string>
+    <string name="user_profile_current_week_title">"7 วันที่ผ่านมา"</string>
+    <string name="confirmation_replace_shop_title">"ที่นี่เป็นร้านอื่นหรือยัง?"</string>
+    <string name="confirmation_replace_shop_message">"หากเปลี่ยนเป็นร้านอื่นแล้ว เวลาทำการ ข้อมูลติดต่อ ฯลฯ จะเปลี่ยนไปด้วยเช่นกัน"</string>
+    <string name="confirmation_replace_shop_yes">"เป็นร้านอื่นแล้ว"</string>
+    <string name="confirmation_replace_shop_no">"ยังเป็นร้านเดิม"</string>
+    <string name="move_node">"อยู่ที่อื่นที่ไม่ไกลนัก…"</string>
+    <string name="quest_move_node_message">"คุณสามารถแก้ไขตำแหน่งได้โดยการย้ายคุณสมบัติ
+ย้ายเลยไหม?"</string>
+    <string name="node_moved_not_far_enough">"กรุณาย้ายไกลกว่านี้"</string>
+    <string name="node_moved_too_far">"ย้ายไกลเกินไป โปรดพิจารณาใส่หมายเหตุ"</string>
+    <string name="node_moved">"ย้ายไป %s แล้ว"</string>
+    <string name="move_node_description">"ลากแผนที่เพื่อวางคุณสมบัติในตำแหน่งที่ถูกต้อง ใช้ฟังก์ชันซูมและพยายามให้แม่นยำที่สุด โปรดทราบว่าตำแหน่งที่แสดงของคุณอาจแม่นยำน้อยกว่าที่แสดง"</string>
+    <string name="quest_placeName_no_name_answer">"ไม่มีป้ายชื่อ…"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"ทางเท้าที่ใช้ร่วมกันอย่างชัดเจนทั้งสองทิศทาง"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;บางครั้ง ARCore (ในตอนแรก) จะสันนิษฐานว่าพื้นต่ำกว่าหรือสูงกว่าที่เป็นจริงเล็กน้อย ซึ่งทำให้เกิดข้อผิดพลาดในการวัดที่มากขึ้นเมื่อคุณเอียงโทรศัพท์ไปทางเส้นขอบฟ้ามากขึ้น&lt;/p&gt;
+&lt;p&gt;ตั้งค่าจุดเริ่มต้นและจุดสิ้นสุดแต่ละจุดในขณะที่ชี้โทรศัพท์ลงไปตรง ๆ (เพื่อให้คุณเห็นลูกศรสีขาวจากด้านบน) เพื่อหลีกเลี่ยงปัญหานี้อย่างสมบูรณ์สำหรับการวัดในแนวนอน&lt;/p&gt;
+&lt;p&gt;สำหรับการวัดในแนวตั้ง คุณต้องตรวจสอบแทนว่าจุดเริ่มต้นไม่เคลื่อนที่สัมพันธ์กับพื้น โดยดูจากทิศทางที่ต่างกัน&lt;/p&gt;"</string>
+    <string name="privacy_html_arcore">"แอปพลิเคชันนี้ทำงานบน &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;บริการ Google Play สำหรับ AR&lt;/a&gt; (ARCore) ซึ่งให้บริการโดย Google และอยู่ภายใต้&lt;a href=\"https://policies.google.com/privacy\"&gt;นโยบายความเป็นส่วนตัวของ Google&lt;/a&gt;"</string>
+    <string name="default_disabled_msg_seasonal">"ประเภทของภารกิจนี้ถูกปิดใช้งานโดยค่าเริ่มต้น เนื่องจากอาจต้องตรวจสอบสถานการณ์อีกครั้งในช่วงใดช่วงหนึ่งของปี"</string>
+    <string name="quest_traffic_signals_sound_description">"คำแนะนำ: มองหาลำโพง สัญญาณเสียงทั้งหมดไม่สามารถเปิดใช้งานผ่านปุ่มได้"</string>
+    <string name="quest_presets_duplicate">"ทำสำเนา"</string>
+    <string name="label_block">"บล็อก"</string>
+    <string name="unknown_surface_title">"พื้นผิวประเภทอื่น"</string>
+    <string name="overlay_surface">"พื้นผิว"</string>
+    <string name="quest_crossing_title2">"ตรงนี้มีทางข้ามหรือไม่?"</string>
+    <string name="overlay_addresses_no_entrance">"ไม่ใช่ทางเข้า…"</string>
 </resources>

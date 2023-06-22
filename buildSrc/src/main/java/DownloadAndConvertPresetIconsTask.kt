@@ -37,7 +37,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val indexTargetFile = File(indexFile)
         indexTargetFile.parentFile.mkdirs()
 
-        val prefix = transformName("")
+        val prefix = transformName("").toLowerCase()
         for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
             file.delete()
         }
@@ -45,7 +45,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         for (icon in icons) {
             val urls = getDownloadUrls(icon) ?: continue
 
-            val iconName = transformName(icon)
+            val iconName = transformName(icon).toLowerCase()
             val targetFile = File("$targetDir/$iconName.xml")
             targetFile.parentFile.mkdirs()
 
@@ -110,26 +110,33 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         require(root != null) { "No root node found" }
         require(root.tagName  == "svg") { "Root must be <svg>" }
 
+        var width = root.getAttribute("width")
+        var height = root.getAttribute("height")
+
         val viewBox = root.getAttribute("viewBox")
-        require(viewBox.isNotEmpty()) { "viewBox is missing" }
-        val rect = viewBox.split(' ')
+        if (viewBox.isNotEmpty()) {
+            val rect = viewBox.split(' ')
 
-        require(rect.size == 4) { "Expected viewBox to have 4 values" }
-        require(rect[0] == "0") { "unsupported viewBox x" }
-        require(rect[1] == "0") { "unsupported viewBox y" }
-        val width = rect[2]
-        val height = rect[3]
+            require(rect.size == 4) { "Expected viewBox to have 4 values" }
+            require(rect[0] == "0") { "unsupported viewBox x" }
+            require(rect[1] == "0") { "unsupported viewBox y" }
+            val viewBoxWidth = rect[2]
+            val viewBoxHeight = rect[3]
 
-        val x = root.getAttribute("x")
-        require(x == "" || x == "0" || x == "0px") { "x must be 0" }
-        val y = root.getAttribute("y")
-        require(y == "" || y == "0" || y == "0px") { "y must be 0" }
+            val x = root.getAttribute("x")
+            require(x == "" || x == "0" || x == "0px") { "x must be 0" }
+            val y = root.getAttribute("y")
+            require(y == "" || y == "0" || y == "0px") { "y must be 0" }
 
-        val width2 = root.getAttribute("width")
-        val height2 = root.getAttribute("height")
+            require(width == "" || viewBoxWidth == width) { "expect viewBox width and width to be identical" }
+            require(height == "" || viewBoxHeight == height) { "expect viewBox height and height to be identical" }
 
-        require(width2 == "" || width2 == width) { "expect viewBox width and width to be identical" }
-        require(height2 == "" || height2 == height) { "expect viewBox height and height to be identical" }
+            width = viewBoxWidth
+            height = viewBoxHeight
+        } else {
+            require(width.isNotEmpty()) { "missing width or viewBox" }
+            require(height.isNotEmpty()) { "missing height or viewBox" }
+        }
 
         val vector = drawable.createElement("vector")
         vector.setAttribute("xmlns:android", "http://schemas.android.com/apk/res/android")
@@ -147,6 +154,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
 
         for (i in 0 until root.childNodes.length) {
             val element = root.childNodes.item(i) as? Element ?: continue
+            // defs are okay (as long as they are not used, which is by attribute in paths etc.)
+            if (element.tagName == "defs") continue
             require(element.tagName == "path") { "Only paths are supported" }
             for (a in 0 until element.attributes.length) {
                 val attr = element.attributes.item(a) as Attr
@@ -164,7 +173,11 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         return drawable
     }
 
-    private val supportedPathAttributes = setOf("d", "id")
+    private val supportedPathAttributes = setOf(
+        "d",
+        "id",
+        "fill" // is ignored (all icons are monochrome)
+    )
 
     private fun makePathCompatible(path: String): String {
         val scientificNotation = Regex("\\d*\\.\\d+e-\\d+")
