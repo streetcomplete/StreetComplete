@@ -1328,6 +1328,8 @@ Menejar ara?"</string>
     <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
     <string name="quest_hairdresser_female_only">"Dones"</string>
     <string name="quest_hairdresser_male_only">"Homens"</string>
+    <string name="quest_amenityCover_title">"Està cobert (protegit de la pluja)?"</string>
     <string name="quest_tactilePaving_steps_top">"Només a la part superior"</string>
     <string name="quest_tactilePaving_steps_bottom">"Només a la part inferior"</string>
+    <string name="overlay_addresses_no_entrance">"No és una entrada..."</string>
 </resources>

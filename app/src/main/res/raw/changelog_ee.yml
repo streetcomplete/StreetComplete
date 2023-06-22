@@ -1,11 +1,12 @@
-next: |
+v53.31: |
   <ul>
   <li>Improve restriction overlay</li>
+  <li>Update Spanish translation, thanks to Sanchi and gallegonovato</li>
   </ul>
 
-v53.3: |
+v53.03: |
   <ul>
-  <li>Add pharmacy dispensing quests, thanks @mnalis</li>
+  <li>Add pharmacy dispensing quests, thanks to @mnalis</li>
   <li>Add building color quest, thanks to @hangy</li>
   <li>Allow specifying maxweight and stop / give way signs in restriction overlay</li>
   <li>Add Spanish, Chinese (Traditional) translations, thanks to Sanchi and Supaplextw</li>

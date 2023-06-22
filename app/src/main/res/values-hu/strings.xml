@@ -1317,6 +1317,10 @@ Most akarja elmozdítani?"</string>
     <string name="quest_amenityCover_title">"Ez fedett (védett az esőtől)?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"A járdaszegély meghosszabbítva"</string>
     <string name="lane_narrowing_traffic_calming_island">"Terelősziget"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Akadály"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Járdabővítés + forgalmi sziget"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Nincs sávszűkítés"</string>
+    <string name="quest_tactilePaving_title_steps">"Van-e tapintható felület a lépcső tetején és alján?"</string>
     <string name="quest_tactilePaving_steps_top">"Csak fent"</string>
     <string name="quest_tactilePaving_steps_bottom">"Csak lent"</string>
     <string name="overlay_addresses_no_entrance">"Ez nem egy bejárat..."</string>

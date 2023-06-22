@@ -1,3 +1,11 @@
+v53.2: |
+  <ul>
+  <li>Fix a crash (#5066, #5073) by @Helium314</li>
+  <li>Multilingual (street) names: More and more fine-grained suggestions which languages to add in which regions. E.g. German in Italy only selectable in Trentino-Südtirol, etc.</li>
+  <li>Fix edits done in the shop overlay (and more) didn't actually count in the statistics (#5074)</li>
+  <li>Other small fixes and enhancements (#5062, #5076, #5068, #5071, #5010, #5082...), thanks @Helium314, @tapetis</li>
+  </ul>
+
 v53.1: |
   <ul>
   <li>Fix a crash (#5040, #5026), thanks @Helium314</li>

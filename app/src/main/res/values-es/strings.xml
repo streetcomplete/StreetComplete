@@ -1292,7 +1292,7 @@ También puedes dejar una nota (con foto)."</string>
 &lt;p&gt;Establezca tanto el punto inicial como el final mientras apunta el teléfono directamente hacia abajo (de modo que vea la flecha blanca desde arriba) para evitar por completo este problema en las mediciones horizontales.&lt;/p&gt;
 &lt;p&gt;Para las mediciones verticales, debe comprobar que el punto de inicio no parece moverse en relación con el suelo mirándolo desde diferentes direcciones.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Esta aplicación se ejecuta en &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), que es proporcionado por Google y se rige por la &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de privacidad de Google&lt;/a&gt;."</string>
-    <string name="default_disabled_msg_seasonal">"Este tipo de misión está deshabilitado de forma predeterminada porque puede requerir re-verificar la situación en una época específica del año."</string>
+    <string name="default_disabled_msg_seasonal">"Este tipo de tarea está deshabilitado de forma predeterminada porque puede requerir re-verificar la situación en una época específica del año."</string>
     <string name="quest_gritBinSeasonal_title">"¿Esto también está aquí cuando no es invierno?"</string>
     <string name="street_parking_staggered_on_street">"En la calle en lados alternados"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente en la calle en lados alternados"</string>
@@ -1307,6 +1307,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="overlay_surface">"Superficies"</string>
     <string name="overlay_path_surface_segregated">"Dividido entre ciclismo y senderismo"</string>
     <string name="quest_crossing_title2">"¿Hay un cruce aquí?"</string>
+    <string name="quest_crossing_yes">"Sí (por ej. el bordillo está rebajado aquí o hay marcas)"</string>
     <string name="quest_crossing_no">"No, pero se puede cruzar"</string>
     <string name="quest_crossing_prohibited">"No, está prohibido cruzar o es imposible"</string>
     <string name="quest_hairdresser_title">"¿A quién atiende esta peluquería?"</string>
@@ -1315,5 +1316,13 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_hairdresser_male_only">"Hombres"</string>
     <string name="quest_hairdresser_not_signed">"Sin indicar"</string>
     <string name="quest_amenityCover_title">"¿Está cubierto (protegido de la lluvia)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Ensanchamiento de acera"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Mediana"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Mediana + Ensanchamiento de acera "</string>
+    <string name="lane_narrowing_traffic_calming_none">"No hay estrechamiento de carriles aquí"</string>
+    <string name="quest_tactilePaving_title_steps">"¿Hay pavimento táctil en la parte más alta y más baja de estas escaleras?"</string>
+    <string name="quest_tactilePaving_steps_top">"Sólo en la más alta"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Sólo en la más baja"</string>
     <string name="overlay_addresses_no_entrance">"No es una entrada"</string>
 </resources>

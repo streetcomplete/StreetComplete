@@ -31,7 +31,7 @@
     <string name="pref_3d_buildings_title">Mostrar edificios 3D</string>
     <string name="pref_way_direction">Mostrar la dirección de las vías</string>
     <string name="pref_gpx_track_enable">Mostrar pista GPX</string>
-    <string name="pref_show_quick_settings_title">Mostrar botón de configuración rápida</string>
+    <string name="pref_show_quick_settings_title">Mostrar botón de ajustes rápidos</string>
     <string name="pref_main_menu_grid">Mostrar todos los elementos del menú principal como cuadrícula</string>
     <string name="pref_show_next_quest_summary">Mostrar más tareas para el mismo elemento justo después de resolver</string>
     <string name="pref_recent_answers_first_min_lines">Mover respuestas recientes al frente</string>
@@ -51,11 +51,11 @@
     <string name="pref_select_first_edit_title">Seleccione la primera edición en el historial de apertura</string>
     <string name="show_nearby_quests_all_types">Mostrar todos los tipos de tareas</string>
     <string name="pref_search_more_languages_title">Funciones de búsqueda en más idiomas</string>
-    <string name="pref_overlay_quick_selector_title">Mostrar selector rápido superpuesto</string>
+    <string name="pref_overlay_quick_selector_title">Mostrar selector rápido de superposiciones</string>
     <string name="pref_screen_data_management">Gestión de datos</string>
     <string name="pref_auto_download_title">Auto descarga</string>
     <string name="pref_manual_download_cache_title">Re-descargar siempre los datos</string>
-    <string name="pref_export">Configuración de exportación</string>
+    <string name="pref_export">Exportar ajustes</string>
     <string name="pref_import">Importar ajustes</string>
     <string name="import_export_presets">Preajustes</string>
     <string name="import_export_presets_select">Seleccionar preajustes a exportar</string>
@@ -82,7 +82,7 @@
     <string name="advanced_resurvey_message_date">En lugar de usar intervalos de repregunta, vuelva a preguntar las claves anteriores si la fecha de verificación es anterior a:</string>
     <string name="advanced_resurvey_hint_date">Usar formato: YYY-MM-DD</string>
     <string name="pref_dynamic_quest_creation_summary">Las tareas se crean al cargar el área vista. Algo lento, pero aplica inmediatamente la configuración de tareas modificada.</string>
-    <string name="pref_use_sd_summary">Cambiar esta configuración moverá los datos, lo que puede llevar un tiempo</string>
+    <string name="pref_use_sd_summary">Cambiar este ajuste moverá los datos, lo que puede llevar un tiempo</string>
     <string name="moving">Moviendo teselas …</string>
     <string name="pref_trees_title">Cargar archivo de tarea de árbol</string>
     <string name="pref_custom_title">Cargar archivo de tarea personalizado</string>
@@ -357,7 +357,7 @@
 \n <li>cambiar la selección de elementos de las tareas</li>
 \n
 \n Esto sigue siendo menos de lo que permiten la mayoría de los otros editores, pero el uso imprudente puede dañar los datos de formas que no son posibles en StreetComplete. Tenga en cuenta que al habilitar el modo experto, usted asume una responsabilidad significativamente mayor por sus ediciones.
-\n Solo habilite esta configuración si tiene experiencia con OSM fuera de StreetComplete y entiende lo que está haciendo. </string>
+\n Solo habilite este ajuste si tiene experiencia con OSM fuera de StreetComplete y entiende lo que está haciendo. </string>
     <string name="restriction_overlay_relation_incomplete">La relación de restricción está incompleta, se requiere la descarga del área circundante</string>
     <string name="show_nearby_quests_distance">Mostrar tareas dentro de esta distancia (limitado a 10 metros)</string>
     <string name="import_presets_overlays_message">¿Añadir importado o reemplazar el existente\? Si elige reemplazar, se eliminarán todos los existentes actualmente.</string>
@@ -380,4 +380,23 @@
 \n Tenga en cuenta que los cambios no se verán inmediatamente en el mapa de fondo.</string>
     <string name="access_manager_message">Elija etiquetas de acceso. Recuerde etiquetar solo el acceso firmado y evite la etiqueta genérica de \"acceso\" si es posible</string>
     <string name="quest_custom_quest_message">Úselo para verificar elementos o ubicaciones predefinidos específicos. También puede especificar etiquetas y agregar un nodo con ellas. Para usarlo, cargue un archivo en el menú de configuración principal, que contenga tipo, id, mensaje (por ejemplo, NODO, 1234, posición de verificación) o latitud, longitud, mensaje. Para agregar nodos, coloque las etiquetas en el mensaje después de \'addNode\', p. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="pref_read_reverse_button">Invertir</string>
+    <string name="pref_offset_fix_title">Eliminar el desplazamiento en los marcadores de tarea</string>
+    <string name="pref_day_night_title">Filtro de tareas diurnas</string>
+    <string name="day_night_priority">Aumenta la prioridad de las tareas adecuadas para la hora del día actual</string>
+    <string name="day_night_visibility">No mostrar tareas inadecuadas para la hora del día actual</string>
+    <string name="day_night_ignore">Ignorar hora del día</string>
+    <string name="quest_settings_fixme_title">Seleccionar valores fixme a ignorar</string>
+    <string name="quest_settings_dot_labels_message">Establezca qué etiquetas deben usarse para la etiqueta, en el orden dado. Una cadena vacía nunca mostrará ninguna etiqueta, \"label\" mostrará la etiqueta de nombre predeterminada de StreetComplete usando el nombre, la marca, la referencia, la referencia local y el operador.</string>
+    <string name="quest_settings_what_to_edit">¿Qué configurar\?</string>
+    <string name="quest_poi_vending_title">POI: Máquina expendedora %s</string>
+    <string name="quest_fixme_title">FixMe: %1$s</string>
+    <string name="default_disabled_msg_poi_fixme">Esta \"tarea\" muestra FixMes como puntos rojos (con excepciones predeterminadas de \'sí\' y \'continuar\'). Haga clic en el punto para mostrar detalles y otras respuestas.</string>
+    <string name="quest_fixme_remove">Eliminar este fixme</string>
+    <string name="quest_railwayPlatformRef_abc">ABC</string>
+    <string name="custom_overlay_dash_filter_hint">Filtro de elementos discontinuos</string>
+    <string name="restriction_overlay_direction_text">Se aplica a la dirección de viaje:</string>
+    <string name="quest_buildingColour_title">¿Qué color general tiene este edificio\?</string>
+    <string name="quest_buildingPartColour_title">¿Qué color general tiene esta parte del edificio\?</string>
+    <string name="restriction_overlay_only_for">Sólo para: %s</string>
 </resources>
