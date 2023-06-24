@@ -128,6 +128,8 @@
     <string name="pref_tile_source_message">Tile URL must contain {x}, {y} and {z}</string>
     <string name="pref_tile_source_hide_labels">Hide labels</string>
     <string name="pref_tree_custom_quest_summary">See message when enabling quest for details</string>
+    <string name="pref_update_local_statistics">Update statistics on upload</string>
+    <string name="pref_update_local_statistics_summary">Disabling accelerates upload and stops achievement messages</string>
 
     <!-- quests settings -->
     <string name="pref_screen_quests">Quests</string>

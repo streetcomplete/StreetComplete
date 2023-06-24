@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -44,6 +46,7 @@ class ElementEditsUploader(
     private val statisticsController: StatisticsController,
     private val downloadController: DownloadController,
     private val externalSourceQuestController: ExternalSourceQuestController,
+    private val prefs: SharedPreferences,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -87,10 +90,12 @@ class ElementEditsUploader(
             mapDataController.updateAll(updates)
             noteEditsController.updateElementIds(updates.idUpdates)
 
-            if (edit.action is IsRevertAction) {
-                statisticsController.subtractOne(edit.type.name, edit.position)
-            } else {
-                statisticsController.addOne(edit.type.name, edit.position)
+            if (prefs.getBoolean(Prefs.UPDATE_LOCAL_STATISTICS, true)) {
+                if (edit.action is IsRevertAction) {
+                    statisticsController.subtractOne(edit.type.name, edit.position)
+                } else {
+                    statisticsController.addOne(edit.type.name, edit.position)
+                }
             }
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName for ${edit.action.elementKeys}: ${e.message}")

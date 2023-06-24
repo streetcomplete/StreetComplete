@@ -137,6 +137,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Choose tile URL for aerial imagery
     * Set data retention time
     * Store map tiles on SD card
+    * Disable local statistics updates (hides achievement messages)
     * Import / export
       * Custom overlays
       * Quest presets, including per-preset quest settings

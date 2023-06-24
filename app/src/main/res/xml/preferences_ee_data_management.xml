@@ -41,6 +41,13 @@
         android:defaultValue="false"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="update_local_statistics"
+        android:title="@string/pref_update_local_statistics"
+        android:summary="@string/pref_update_local_statistics_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
     <Preference
         android:key="trees"
         android:title="@string/pref_trees_title"

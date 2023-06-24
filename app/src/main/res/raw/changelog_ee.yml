@@ -1,3 +1,8 @@
+next: |
+  <ul>
+  <li>Allow disabling achievement messages</li>
+  </ul>
+
 v53.31: |
   <ul>
   <li>Improve restriction overlay</li>
