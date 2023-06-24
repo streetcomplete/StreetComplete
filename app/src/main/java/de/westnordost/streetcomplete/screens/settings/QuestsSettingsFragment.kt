@@ -162,7 +162,7 @@ class QuestsSettingsFragment :
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            Prefs.DYNAMIC_QUEST_CREATION -> {
+            Prefs.DYNAMIC_QUEST_CREATION, Prefs.HIDE_OVERLAY_QUESTS -> {
                 lifecycleScope.launch(Dispatchers.IO) { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
             }
             Prefs.DAY_NIGHT_BEHAVIOR -> {

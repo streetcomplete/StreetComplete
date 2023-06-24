@@ -157,6 +157,7 @@
     <string name="quest_monitor_net">Actively request network locations?</string>
     <string name="quest_monitor_active_request">Actively requesting locations will increase battery use. When not actively requesting locations, locations requested by other apps will still be used.</string>
     <string name="pref_quest_monitor_download">Download data if necessary? This may considerably consume data and battery, and may be rendered useless by Android for battery saving reasons.</string>
+    <string name="pref_hide_overlay_quests">Hide overlay-specific quests</string>
 
     <!-- other settings -->
     <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>

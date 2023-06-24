@@ -116,6 +116,7 @@ object Prefs {
     const val CREATE_NODE_LAST_TAGS_FOR_FEATURE = "create_node_last_tags_for_"
     const val CREATE_NODE_SHOW_KEYBOARD = "create_node_show_keyboard"
     const val UPDATE_LOCAL_STATISTICS = "update_local_statistics"
+    const val HIDE_OVERLAY_QUESTS = "hide_overlay_quests"
 
     enum class Autosync {
         ON, WIFI, OFF

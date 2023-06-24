@@ -35,4 +35,10 @@
         android:title="@string/pref_quest_monitor_title"
         android:summary="@string/pref_quest_monitor_summary" />
 
+    <SwitchPreference
+        android:key="hide_overlay_quests"
+        android:title="@string/pref_hide_overlay_quests"
+        android:defaultValue="true"
+        android:persistent="true" />
+
 </PreferenceScreen>

@@ -44,7 +44,8 @@ class VisibleQuestsSource(
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
+            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
+            updateVisibleQuests(addedQuests.filter { isVisible(it, hideOverlayQuests) }, deletedQuestKeys)
         }
         override fun onInvalidated() {
             // apparently the visibility of many different quests have changed
@@ -54,7 +55,8 @@ class VisibleQuestsSource(
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds.map { OsmNoteQuestKey(it) })
+            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
+            updateVisibleQuests(addedQuests.filter { isVisible(it, hideOverlayQuests) }, deletedQuestIds.map { OsmNoteQuestKey(it) })
         }
         override fun onInvalidated() {
             // apparently the visibility of many different notes have changed
@@ -88,7 +90,8 @@ class VisibleQuestsSource(
 
     private val otherQuestListener = object : ExternalSourceQuestController.QuestListener {
         override fun onUpdated(addedQuests: Collection<ExternalSourceQuest>, deletedQuestKeys: Collection<ExternalSourceQuestKey>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
+            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
+            updateVisibleQuests(addedQuests.filter { isVisible(it, hideOverlayQuests) }, deletedQuestKeys)
         }
         override fun onInvalidate() = invalidate()
     }
@@ -114,7 +117,8 @@ class VisibleQuestsSource(
 
     /** Retrieve all visible quests in the given bounding box from local database */
     private fun getAllVisibleFromDatabase(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypes = questTypeRegistry.filter { isVisible(it) }
+        val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
+        val visibleQuestTypes = questTypeRegistry.filter { isVisible(it, hideOverlayQuests) }
         if (visibleQuestTypes.isEmpty()) return emptyList()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypes)
@@ -133,14 +137,14 @@ class VisibleQuestsSource(
         is OsmNoteQuestKey -> osmNoteQuestSource.getVisible(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.getVisible(questKey)
         is ExternalSourceQuestKey -> externalSourceQuestController.getVisible(questKey)
-    }?.takeIf { isVisible(it) }
+    }?.takeIf { isVisible(it, prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)) }
 
-    private fun isVisible(questType: QuestType): Boolean =
+    private fun isVisible(questType: QuestType, hideOverlayQuests: Boolean): Boolean =
         visibleQuestTypeSource.isVisible(questType) &&
-        selectedOverlaySource.selectedOverlay?.let { questType.name !in it.hidesQuestTypes } ?: true
+        selectedOverlaySource.selectedOverlay?.let { !hideOverlayQuests || questType.name !in it.hidesQuestTypes } ?: true
 
-    private fun isVisible(quest: Quest): Boolean =
-        isVisibleInTeamMode(quest) && isVisible(quest.type)
+    private fun isVisible(quest: Quest, hideOverlayQuests: Boolean): Boolean =
+        isVisibleInTeamMode(quest) && isVisible(quest.type, hideOverlayQuests)
 
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)

@@ -124,6 +124,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Different quest settings for each preset
     * Dynamic quest creation for immediately applying changed quest settings and resurvey intervals
     * Notifications about nearby quests when app is in background
+    * Hide overlay-specific quests when overlay is enabled
   * Note settings
     * Create personal notes in a GPX file (adds a new button when creating a note)
     * Swap OSM and GPX note buttons, for switching default notes

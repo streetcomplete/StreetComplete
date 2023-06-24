@@ -1,6 +1,7 @@
 next: |
   <ul>
   <li>Allow disabling achievement messages</li>
+  <li><Allow overriding whether some quests are hidden by overlays</li>
   </ul>
 
 v53.31: |
