@@ -20,7 +20,7 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
          or crossing
          or entrance
          or public_transport
-         or highway ~ crossing|stop|give_way|elevator
+         or highway ~ crossing|stop|give_way|elevator|traffic_signals|turning_circle
          or amenity ~ taxi|parking|parking_entrance|motorcycle_parking
          """
 
