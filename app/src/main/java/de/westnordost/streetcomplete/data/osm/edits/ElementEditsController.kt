@@ -109,10 +109,11 @@ class ElementEditsController(
         if (edit.isSynced) {
             val action = edit.action
             if (action !is IsActionRevertable) return false
+            // first create the revert action, as ElementIdProvider will be deleted when deleting the edit
+            val reverted = action.createReverted(getIdProvider(edit.id))
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            val reverted = action.createReverted(getIdProvider(edit.id))
             add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
         }
         // not uploaded yet
