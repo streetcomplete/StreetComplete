@@ -135,10 +135,10 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
                         && rel.members.any { it.type == ElementType.WAY && it.ref == otherWay.id && it.role == "to" }
                     ) continue
 
-                    // ignore if we would need to turn by more than 130°
+                    // ignore if we would need to turn by more than 115°
                     // we want the bearing when leaving from nodeId on otherWay
                     val otherWayBearings = otherWay.getAllowedBearingStartingAt(nodeId, mapData)
-                    if (wayBearings.any { b -> otherWayBearings.any { abs(normalizeDegrees(b - it, -180.0)) < 130 } })
+                    if (wayBearings.any { b -> otherWayBearings.any { abs(normalizeDegrees(b - it, -180.0)) < 115 } })
                         otherAvailableWays.add(otherWay)
                 }
 
