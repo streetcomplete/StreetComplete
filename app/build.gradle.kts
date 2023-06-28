@@ -5,7 +5,6 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
     kotlin("plugin.serialization") version "1.8.0"
 }
 
