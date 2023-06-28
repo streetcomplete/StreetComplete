@@ -5,7 +5,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.view.DefaultTextWatcher
-import java.util.Locale
 
 /** Automatically expands abbreviations when finishing a word (via space, "-" or ".")  */
 class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
