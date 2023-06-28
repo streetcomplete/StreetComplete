@@ -38,10 +38,9 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val excludedWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val excludedWayNodeIds = mapData.ways
             .filter { excludedWaysFilter.matches(it) }
-            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
 
         return mapData.nodes
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }

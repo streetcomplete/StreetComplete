@@ -43,10 +43,9 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrance_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val buildingsWayNodeIds = mutableSetOf<Long>()
-        mapData
+        val buildingsWayNodeIds = mapData
             .filter { buildingFilter.matches(it) }
-            .flatMapTo(buildingsWayNodeIds) {
+            .flatMapTo(HashSet()) {
                 when (it) {
                     is Way -> it.nodeIds
                     is Relation -> it.getMultipolygonNodeIds(mapData)
@@ -54,21 +53,20 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
                 }
             }
 
-        val incomingWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val incomingWayNodeIds = mapData.ways
             .filter { incomingWaysFilter.matches(it) }
-            .flatMapTo(incomingWayNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
 
-        val excludedWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val excludedWayNodeIds = mapData.ways
             .filter { excludedWaysFilter.matches(it) }
-            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
 
-        return mapData.nodes
-            .filter { it.id in buildingsWayNodeIds && it.id in incomingWayNodeIds
-                && it.id !in excludedWayNodeIds
-                && withoutEntranceFilter.matches(it)
-            }
+        return mapData.nodes.filter {
+            it.id in buildingsWayNodeIds
+            && it.id in incomingWayNodeIds
+            && it.id !in excludedWayNodeIds
+            && withoutEntranceFilter.matches(it)
+        }
     }
 
     override fun isApplicableTo(element: Element): Boolean? =

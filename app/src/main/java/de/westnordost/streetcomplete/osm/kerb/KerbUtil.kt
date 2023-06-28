@@ -77,10 +77,9 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
             getNode(nodeId)?.takeIf { it.couldBeAKerb() }
         }
 
-    val kerbBarrierNodeIds = mutableSetOf<Long>()
-    ways.asSequence()
+    val kerbBarrierNodeIds = ways.asSequence()
         .filter { it.tags["barrier"] == "kerb" }
-        .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
+        .flatMapTo(HashSet()) { it.nodeIds }
 
     val anyWays = ways.filter { waysFilter.matches(it) }
     val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)

@@ -78,8 +78,7 @@ class ElementEditsController(
         }
         val syncSuccess: Boolean
         synchronized(this) {
-            val editIdsToUpdate = HashSet<Long>()
-            elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
+            val editIdsToUpdate = elementUpdates.idUpdates.flatMapTo(HashSet()) {
                 editElementsDB.getAllByElement(it.elementType, it.oldElementId)
             }
             for (id in editIdsToUpdate) {
