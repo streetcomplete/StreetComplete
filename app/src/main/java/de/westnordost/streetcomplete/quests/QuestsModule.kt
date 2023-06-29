@@ -336,7 +336,7 @@ fun questTypeRegistry(
     58 to AddBollardType(), // useful for first responders
 
     82 to AddSeating(), // easily visible from outside, but only seasonally
-    
+
     59 to AddSelfServiceLaundry(),
 
     60 to AddGeneralFee(),
