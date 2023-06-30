@@ -25,17 +25,6 @@
             app:drawableTopCompat="@drawable/ic_profile_48dp" />
 
         <TextView
-            android:id="@+id/overlays_button"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="144dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_vertical"
-            android:padding="16dp"
-            android:text="@string/action_overlays"
-            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-            app:drawableTopCompat="@drawable/ic_overlay_48dp" />
-
-        <TextView
             android:id="@+id/settingsButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="144dp"

@@ -12,6 +12,8 @@ class SelectedOverlayController(
 
     override var selectedOverlay: Overlay?
     set(value) {
+        if (selectedOverlay == value) return
+
         if (value != null && value in overlayRegistry) {
             selectedOverlayStore.set(value.name)
         } else {
