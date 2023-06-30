@@ -16,11 +16,11 @@ import org.koin.dsl.module
 val overlaysModule = module {
     single { OverlayRegistry(listOf(
         0 to WayLitOverlay(),
+        6 to SurfaceOverlay(),
         1 to SidewalkOverlay(),
+        5 to CyclewayOverlay(get(), get(named("CountryBoundariesFuture"))),
         2 to StreetParkingOverlay(),
         3 to AddressOverlay(get(named("CountryBoundariesFuture"))),
         4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
-        5 to CyclewayOverlay(get(), get(named("CountryBoundariesFuture"))),
-        6 to SurfaceOverlay(),
     )) }
 }
