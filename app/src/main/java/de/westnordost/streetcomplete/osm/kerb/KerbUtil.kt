@@ -70,7 +70,7 @@ fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
  *  3. certain shared nodes between a footway=sidewalk and a footway=crossing */
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
-    val kerbBarrierNodeIds = mutableSetOf<Long>()
+    val kerbBarrierNodeIds = ways.asSequence()
     val anyWays = mutableListOf<Way>()
     ways.forEach { way ->
         if (way.tags["barrier"] == "kerb")

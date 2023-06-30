@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
+import de.westnordost.streetcomplete.view.image_select.Item
 
 fun CyclewaySegregation.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getIconResId(isLeftHandTraffic), titleResId)

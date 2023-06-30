@@ -36,6 +36,7 @@ class CheckShopExistence(
           older today -2 years
           or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -2 years" }}
         )
+        and (name or brand or noname = yes or name:signed = no)
     """) }
 
     override val changesetComment = "Survey if places (shops and other shop-like) still exist"

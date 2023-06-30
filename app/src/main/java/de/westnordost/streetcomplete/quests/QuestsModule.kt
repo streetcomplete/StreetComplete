@@ -392,6 +392,8 @@ fun getQuestTypeList(
 
     58 to AddBollardType(), // useful for first responders
 
+    82 to AddSeating(), // easily visible from outside, but only seasonally
+
     59 to AddSelfServiceLaundry(),
 
     60 to AddGeneralFee(),
@@ -422,13 +424,12 @@ fun getQuestTypeList(
     76 to AddAddressStreet(),
 
     // shops: text input / opening hours input take longer than other quests
-    77 to CheckOpeningHoursSigned(featureDictionaryFuture),
+    157 to AddHairdresserCustomers(), // almost always marked on sign outside
     78 to SpecifyShopType(), // above add place name as some brand presets will set the name too
     79 to CheckShopType(),
     80 to AddPlaceName(featureDictionaryFuture),
-    157 to AddHairdresserCustomers(), // almost always marked on sign outside
+    77 to CheckOpeningHoursSigned(featureDictionaryFuture),
     81 to AddOpeningHours(featureDictionaryFuture),
-    82 to AddSeating(), // easily visible from outside, but only seasonally
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
 
     84 to AddAtmOperator(),

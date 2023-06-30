@@ -79,10 +79,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         if (!entrancesFilter.matches(element)) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val excludedWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val excludedWayNodeIds = mapData.ways
             .filter { privateFootwaysFilter.matches(it) }
-            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
         val buildings = mapData.filter { buildingFilter.matches(it) }
         val result = mutableListOf<Node>()
         for (building in buildings) {
