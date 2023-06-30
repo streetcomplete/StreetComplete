@@ -109,6 +109,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Search features in local language and all languages enabled in the system
     * Select how many lines the form needs to have to move recent selection to front
     * Show all main menu items as grid
+    * Add a _switch preset_ button to main menu (only if not a grid)
     * Capitalize words when entering names
     * Zoom using volume buttons
   * Display settings

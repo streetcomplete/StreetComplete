@@ -74,6 +74,12 @@
         android:persistent="true" />
 
     <SwitchPreference
+        android:key="main_menu_switch_presets"
+        android:title="@string/pref_main_menu_switch_presets_title"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="caps_word_name_input"
         android:title="@string/pref_caps_word_name_input"
         android:defaultValue="false"

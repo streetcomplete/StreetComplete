@@ -127,6 +127,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/switchPresetButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/quick_switch_preset"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
+
     </LinearLayout>
 
 </RelativeLayout>

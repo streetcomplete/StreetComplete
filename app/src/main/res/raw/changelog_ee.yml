@@ -1,7 +1,8 @@
 next: |
   <ul>
   <li>Allow disabling achievement messages</li>
-  <li><Allow overriding whether some quests are hidden by overlays</li>
+  <li>Allow overriding whether some quests are hidden by overlays (#434)</li>
+  <li>Optionally add <i>switch presets</i> button to (non-grid) main menu (#433)</li>
   </ul>
 
 v53.31: |

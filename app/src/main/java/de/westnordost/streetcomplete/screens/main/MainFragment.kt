@@ -43,7 +43,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -75,7 +74,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -90,7 +88,6 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
@@ -132,6 +129,7 @@ import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
+import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -964,7 +962,7 @@ class MainFragment :
         popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
-                1 -> showProfileSelector()
+                1 -> showProfileSelectionDialog(requireContext(), questPresetsController, prefs)
                 2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
                 3 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
                 4 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
@@ -972,34 +970,6 @@ class MainFragment :
             true
         }
         popupMenu.show()
-    }
-
-    private fun showProfileSelector() {
-        val c = context ?: return
-        val presets = mutableListOf<QuestPreset>()
-        presets.add(QuestPreset(0, c.getString(R.string.quest_presets_default_name)))
-        presets.addAll(questPresetsController.getAll())
-        var selected = -1
-        (presets).forEachIndexed { index, questPreset ->
-            if (questPreset.id == questPresetsController.selectedId)
-                selected = index
-        }
-        var dialog: AlertDialog? = null
-        val array = presets.map { it.name }.toTypedArray()
-        val builder = AlertDialog.Builder(c)
-            .setTitle(R.string.quest_presets_preset_name)
-            .setSingleChoiceItems(array, selected) { _, i ->
-                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)) {
-                    OsmQuestController.reloadQuestTypes()
-                    if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
-                        context?.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
-                }
-                lifecycleScope.launch(Dispatchers.IO) { questPresetsController.selectedId = presets[i].id }
-                dialog?.dismiss()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-        dialog = builder.create()
-        dialog.show()
     }
 
     fun onClickZoomOut() {

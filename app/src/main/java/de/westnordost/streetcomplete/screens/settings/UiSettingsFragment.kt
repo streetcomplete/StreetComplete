@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 import org.koin.android.ext.android.inject
 
-class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
+class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPreferenceChangeListener {
 
     private val prefs: SharedPreferences by inject()
 
@@ -31,7 +32,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_ui, false)
         addPreferencesFromResource(R.xml.preferences_ee_ui)
 
-        findPreference<Preference>("show_nearby_quests")?.setOnPreferenceClickListener {
+        findPreference<Preference>(Prefs.SHOW_NEARBY_QUESTS)?.setOnPreferenceClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle(R.string.pref_show_nearby_quests_title)
             val linearLayout = LinearLayout(context)
@@ -83,6 +84,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             builder.show()
             true
         }
+        setGridPrefEnabled()
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
@@ -96,4 +98,12 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
         }
     }
 
+    override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
+        if (key == Prefs.MAIN_MENU_SWITCH_PRESETS)
+            setGridPrefEnabled()
+    }
+
+    private fun setGridPrefEnabled() {
+        findPreference<Preference>(Prefs.MAIN_MENU_FULL_GRID)?.isEnabled = !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false)
+    }
 }

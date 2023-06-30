@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
@@ -31,6 +32,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
     private val prefs: SharedPreferences by inject()
+    private val questPresetsController: QuestPresetsController by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -89,6 +91,8 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
                 teamModeQuestFilter::enableTeamMode,
                 teamModeQuestFilter::disableTeamMode,
                 this::onClickOverlays,
+                prefs,
+                questPresetsController
             )
         d.setOnKeyListener { _, _, keyEvent ->
             if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {

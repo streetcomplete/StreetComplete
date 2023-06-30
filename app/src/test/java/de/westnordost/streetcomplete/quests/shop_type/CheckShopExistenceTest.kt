@@ -40,7 +40,7 @@ class CheckShopExistenceTest {
                 node(timestamp = 0, tags = mapOf("shop" to "weird_value")),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test

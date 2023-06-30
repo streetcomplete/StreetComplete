@@ -117,6 +117,7 @@ object Prefs {
     const val CREATE_NODE_SHOW_KEYBOARD = "create_node_show_keyboard"
     const val UPDATE_LOCAL_STATISTICS = "update_local_statistics"
     const val HIDE_OVERLAY_QUESTS = "hide_overlay_quests"
+    const val MAIN_MENU_SWITCH_PRESETS = "main_menu_switch_presets"
 
     enum class Autosync {
         ON, WIFI, OFF
