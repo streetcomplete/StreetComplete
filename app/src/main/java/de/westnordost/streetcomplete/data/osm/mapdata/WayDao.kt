@@ -66,7 +66,7 @@ class WayDao(private val db: Database) {
         val idsString = ids.joinToString(",")
 
         return db.transaction {
-            val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
+            val nodeIdsByWayId = hashMapOf<Long, MutableList<Long>>()
             db.query(NAME_NODES, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX", columns = arrayOf(ID, NODE_ID)) { c ->
                 val nodeIds = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
                 nodeIds.add(c.getLong(NODE_ID))
@@ -109,7 +109,7 @@ class WayDao(private val db: Database) {
         val idsString = nodeIds.joinToString(",")
 
         return db.transaction {
-            val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
+            val nodeIdsByWayId = hashMapOf<Long, MutableList<Long>>()
             db.query(NAME_NODES, where = "$ID IN (SELECT $ID FROM $NAME_NODES WHERE $NODE_ID IN ($idsString))", orderBy = "$ID, $INDEX", columns = arrayOf(ID, NODE_ID)) { c ->
                 val nodeIds2 = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
                 nodeIds2.add(c.getLong(NODE_ID))

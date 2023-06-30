@@ -122,7 +122,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         for (areaWithAddress in areasWithAddresses + areasWithAddressesOnOutline) {
             val nearbyBuildings = buildingPositions.getAll(areaWithAddress.getBounds())
             val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
-            val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }.toSet()
+            val buildingsInArea = buildingPositionsInArea.mapNotNullTo(HashSet(buildingPositionsInArea.size)) { buildingsByCenterPosition[it] }
 
             buildings.removeAll(buildingsInArea)
         }

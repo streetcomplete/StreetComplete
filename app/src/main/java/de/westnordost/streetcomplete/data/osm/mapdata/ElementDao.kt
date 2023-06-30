@@ -45,7 +45,7 @@ class ElementDao(
 
     fun getAll(bbox: BoundingBox): List<Element> {
         val nodes = nodeDao.getAll(bbox)
-        val nodeIds = nodes.map { it.id }.toSet()
+        val nodeIds = nodes.map { it.id }.toHashSet()
         val ways = wayDao.getAllForNodes(nodeIds)
         val wayIds = ways.map { it.id }
         val additionalWayNodeIds = ways

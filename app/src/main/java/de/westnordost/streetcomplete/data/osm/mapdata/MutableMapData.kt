@@ -6,9 +6,9 @@ open class MutableMapData() : MapData {
         addAll(other)
     }
 
-    protected val nodesById: MutableMap<Long, Node> = mutableMapOf()
-    protected val waysById: MutableMap<Long, Way> = mutableMapOf()
-    protected val relationsById: MutableMap<Long, Relation> = mutableMapOf()
+    protected val nodesById: MutableMap<Long, Node> = hashMapOf()
+    protected val waysById: MutableMap<Long, Way> = hashMapOf()
+    protected val relationsById: MutableMap<Long, Relation> = hashMapOf()
     override var boundingBox: BoundingBox? = null
 
     override val nodes get() = nodesById.values

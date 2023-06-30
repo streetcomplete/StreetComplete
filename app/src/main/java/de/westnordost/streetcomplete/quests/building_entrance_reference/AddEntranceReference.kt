@@ -87,8 +87,8 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         val result = mutableListOf<Node>()
         for (building in buildings) {
             val buildingsWayNodeIds = when (building) {
-                is Way -> building.nodeIds.toSet()
-                is Relation -> building.getMultipolygonNodeIds(mapData).toSet()
+                is Way -> building.nodeIds.toHashSet()
+                is Relation -> building.getMultipolygonNodeIds(mapData).toHashSet()
                 else -> emptyList()
             }
             val buildingEntrances =  buildingsWayNodeIds.mapNotNull { mapData.getNode(it) }

@@ -23,7 +23,7 @@ import kotlin.coroutines.resume
 class MarkerManager(private val c: MapController) {
 
     private var markerIdCounter = 0L
-    private val markers = mutableMapOf<Long, Marker>()
+    private val markers = hashMapOf<Long, Marker>()
 
     private val markerPickContinuations = ConcurrentLinkedQueue<Continuation<MarkerPickResult?>>()
 

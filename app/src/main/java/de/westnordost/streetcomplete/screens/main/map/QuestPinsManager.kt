@@ -60,11 +60,11 @@ class QuestPinsManager(
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
-    private val questTypeOrders: MutableMap<QuestType, Int> = mutableMapOf()
+    private val questTypeOrders: MutableMap<QuestType, Int> = hashMapOf()
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
     // quests in current view: key -> [pin, ...]
-    private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
+    private val questsInView: MutableMap<QuestKey, List<Pin>> = hashMapOf()
     var reversedOrder = false
         private set
 

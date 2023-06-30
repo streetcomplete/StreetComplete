@@ -264,7 +264,7 @@ class MapDataWithEditsSource internal constructor(
     }
 
     private fun getWayNodes(way: Way): Collection<Node>? = synchronized(this) {
-        val ids = way.nodeIds.toSet()
+        val ids = way.nodeIds.toHashSet()
         val nodes = getNodes(ids)
 
         /* If the way is (now) not complete, this is not acceptable */

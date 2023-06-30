@@ -276,7 +276,7 @@ class MapDataCache(
         if (keys.size == cachedElements.size) return cachedElements
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedElements.map { it.key }.toSet()
+        val cachedKeys = cachedElements.mapTo(HashSet(cachedElements.size)) { it.key }
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
@@ -292,7 +292,7 @@ class MapDataCache(
         if (ids.size == cachedNodes.size) return cachedNodes
 
         // not all in cache: must fetch the rest from db
-        val cachedNodeIds = cachedNodes.map { it.id }.toSet()
+        val cachedNodeIds = cachedNodes.mapTo(HashSet(cachedNodes.size)) { it.id }
         val missingNodeIds = ids.filterNot { it in cachedNodeIds }
         val fetchedNodes = fetch(missingNodeIds)
         fetchedNodes.forEach { notSpatialCache[it.key] = it }
@@ -339,7 +339,7 @@ class MapDataCache(
         if (keys.size == cachedEntries.size) return cachedEntries
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedEntries.map { it.key }.toSet()
+        val cachedKeys = cachedEntries.mapTo(HashSet(cachedEntries.size)) { it.key }
         val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedEntries = fetch(keysToFetch.filterNot { it.type == ElementType.NODE }) // only fetch non-nodes
         for (entry in fetchedEntries) {

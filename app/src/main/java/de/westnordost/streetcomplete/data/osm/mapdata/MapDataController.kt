@@ -77,7 +77,7 @@ class MapDataController internal constructor(
             geometryEntries = createGeometries(mapData, mapData)
 
             // don't use cache here, because if not everything is already cached, db call will be faster
-            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toHashSet()
             for (element in mapData) {
                 oldElementKeys.remove(element.key)
             }
@@ -249,7 +249,7 @@ class MapDataController internal constructor(
 
     override fun getWayComplete(id: Long): MapData? {
         val way = getWay(id) ?: return null
-        val nodeIds = way.nodeIds.toSet()
+        val nodeIds = way.nodeIds.toHashSet()
         val nodes = getNodes(nodeIds)
         if (nodes.size < nodeIds.size) return null
         return MutableMapData(nodes + way)
@@ -257,7 +257,7 @@ class MapDataController internal constructor(
 
     override fun getRelationComplete(id: Long): MapData? {
         val relation = getRelation(id) ?: return null
-        val elementKeys = relation.members.map { it.key }.toSet()
+        val elementKeys = relation.members.mapTo(HashSet(relation.members.size)) { it.key }
         val elements = getAll(elementKeys)
         if (elements.size < elementKeys.size) return null
         return MutableMapData(elements + relation)

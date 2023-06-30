@@ -40,7 +40,7 @@ class SpatialCache<K, T>(
     fun getItems(): List<T> = synchronized(this) { byKey.values.toList() }
 
     /** @return a new set of all tilePos in the cache */
-    fun getTiles(): Set<TilePos> = synchronized(this) { byTile.keys.toSet() }
+    fun getTiles(): Set<TilePos> = synchronized(this) { byTile.keys.toHashSet() }
 
     /** @return the item with the given [key] if in cache */
     fun get(key: K): T? = synchronized(this) {
