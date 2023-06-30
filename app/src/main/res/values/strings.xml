@@ -927,7 +927,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this path completed?</string>
 
-    <string name="quest_crossing_kerb_height_title">What’s the height of the curbs of this crossing?</string>
+    <string name="quest_crossing_kerb_height_title">What’s the height of the curbs at this crossing?</string>
 
     <string name="quest_crossing_title2">Is there a crossing here?</string>
     <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
