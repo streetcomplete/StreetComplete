@@ -19,6 +19,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
@@ -30,6 +31,7 @@ import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.showOutsideDownloadedAreaDialog
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,6 +42,7 @@ import org.koin.android.ext.android.inject
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     private val noteEditsController: NoteEditsController by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
 
     private var _binding: FragmentCreateNoteBinding? = null
     private val binding: FragmentCreateNoteBinding get() = _binding!!
@@ -162,7 +165,10 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
+        showOutsideDownloadedAreaDialog(requireContext(), position, downloadedTilesSource) { reallyCreateNote(text, imagePaths, isGpxNote, position) }
+    }
 
+    private fun reallyCreateNote(text: String, imagePaths: List<String>, isGpxNote: Boolean, position: LatLon) {
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
         val fullText = if (isGpxNote) text else "$text\n\nvia ${ApplicationConstants.USER_AGENT}"

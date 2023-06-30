@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -19,8 +20,8 @@ import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.showOutsideDownloadedAreaDialog
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 
@@ -30,6 +31,7 @@ class CreatePoiFragment : TagEditor() {
     // keep the listener from note fragment, there is nothing note-specific happening anyway
     private val listener: CreateNoteFragment.Listener? get() = parentFragment as? CreateNoteFragment.Listener ?: activity as? CreateNoteFragment.Listener
     private val levelFilter: LevelFilter by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +76,10 @@ class CreatePoiFragment : TagEditor() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
+        showOutsideDownloadedAreaDialog(requireContext(), position, downloadedTilesSource) { reallyApplyEdit(position) }
+    }
+
+    private fun reallyApplyEdit(position: LatLon) {
         elementEditsController.add(addNodeEdit, ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey)
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_ID)?.let {

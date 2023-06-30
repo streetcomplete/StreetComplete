@@ -466,5 +466,6 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="access_width_limit">Width</string>
     <string name="access_time_limit">Time</string>
     <string name="create_relation_action_description">You created a relation with …</string>
+    <string name="outside_downloaded_area_warning">This position is outside the downloaded area. Continue?</string>
 
 </resources>
