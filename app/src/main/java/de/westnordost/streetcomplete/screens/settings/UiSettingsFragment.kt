@@ -98,6 +98,16 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPrefere
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        prefs.registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        prefs.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
     override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
         if (key == Prefs.MAIN_MENU_SWITCH_PRESETS)
             setGridPrefEnabled()

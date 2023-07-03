@@ -75,7 +75,10 @@ class MainMenuDialog(
         }
 
         binding.switchPresetButton.isGone = !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false)
-        binding.switchPresetButton.setOnClickListener { showProfileSelectionDialog(context, questPresetsController, prefs) }
+        binding.switchPresetButton.setOnClickListener {
+            showProfileSelectionDialog(context, questPresetsController, prefs)
+            dismiss()
+        }
 
         setView(binding.root)
     }

@@ -74,7 +74,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     /* ------------------------------------------------------------------------------------------ */
 
     internal fun onClickMainMenu() {
-        val d = if (prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false))
+        val d = if (prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false) && !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
             MainMenuGridDialog(
                 requireContext(),
                 if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
