@@ -11,7 +11,7 @@ v53.31: |
   <li>Update Spanish translation, thanks to Sanchi and gallegonovato</li>
   </ul>
 
-v53.03: |
+v53.3: |
   <ul>
   <li>Add pharmacy dispensing quests, thanks to @mnalis</li>
   <li>Add building color quest, thanks to @hangy</li>
@@ -19,12 +19,12 @@ v53.03: |
   <li>Add Spanish, Chinese (Traditional) translations, thanks to Sanchi and Supaplextw</li>
   </ul>
 
-v53.02: |
+v53.2: |
   <ul>
   <li>Fix broken quest filter that would cause a crash when scanning for quests</li>
   </ul>
 
-v53.01: |
+v53.1: |
   <ul>
   <li>This release is marked as pre-release because the new quests might need some tuning. Feedback is highly welcome.</li>
   <li>Add roof color quest, thanks to @hangy</li>
@@ -67,7 +67,7 @@ v52.2: |
   <li>Allow auto-focusing the value of the color key in custom overlay when editing tags (enable be adding "!" before color key, does not work with regex)</li>
   </ul>
 
-v52.01: |
+v52.1: |
   <ul>
   <li>Several crash fixes</li>
   <li>Allow closing notes</li>

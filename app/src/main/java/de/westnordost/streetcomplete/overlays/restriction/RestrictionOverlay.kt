@@ -115,6 +115,7 @@ private fun getColor(role: String, restriction: String): String = when {
 
 // support restrictions with 1 from way, 1 to way, 1 via node or 1+ via ways
 // and additionally, ways need to be connected (but that is more complicated, and not checked)
+// there are some more restrictions which are not supported currently, e.g. no_entry, stop, give_way
 fun Relation.isSupportedTurnRestriction(): Boolean {
     if (tags["type"] != "restriction") return false
     if (getRestrictionType() !in turnRestrictionTypes) return false

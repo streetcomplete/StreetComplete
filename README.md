@@ -88,10 +88,10 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Delete free-floating nodes
     * Additional "other answers"
       * add `access=private` to benches, bicycle parkings, picnic tables, pitches, (leisure) tracks and recycling containers
-      * tag/adjust highway access
+      * add/adjust highway access
       * tag highways as under construction (with finish date)
       * tag buildings as demolished
-      * add conditional maxspeed
+      * add conditional maxspeed (maxspeed quest only)
     * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
     * Allow disabling and moving the note quest
     * Allow closing notes
@@ -100,7 +100,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.
   * UI settings
     * Quick settings button for switching preset, background and reverse quest order. Also contains a level filter for displayed quests / overlay elements
-    * Quick selector for overlays
+    * Quick selector for overlays (on main screen)
     * Show next quest for this element immediately
     * Show nearby quests / other quests for same element when quest form is open
     * Hide button for temporarily hiding quests (long press for permanent hide)
