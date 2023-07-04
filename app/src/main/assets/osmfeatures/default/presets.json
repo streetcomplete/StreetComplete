@@ -13124,6 +13124,28 @@
             "value": "table_soccer"
         }
     },
+    "leisure/pitch/teqball": {
+        "fields": [
+            "name",
+            "lit",
+            "access_simple",
+            "covered",
+            "indoor",
+            "surface"
+        ],
+        "geometry": [
+            "area",
+            "point"
+        ],
+        "tags": {
+            "leisure": "pitch",
+            "sport": "teqball"
+        },
+        "reference": {
+            "key": "sport",
+            "value": "teqball"
+        }
+    },
     "leisure/pitch/softball": {
         "icon": "maki-baseball",
         "geometry": [

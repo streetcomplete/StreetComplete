@@ -1446,6 +1446,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sport_gaelic_games">Gaelic games</string>
     <string name="quest_sport_sepak_takraw">Sepak takraw</string>
     <string name="quest_sport_roller_skating">Roller skating</string>
+    <string name="quest_sport_teqball">Teqball</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
     <string name="quest_sport_manySports_confirmation_description">"Is this sports field designed for exactly these sports specifically (markings and equipment are present) or as a general purpose sports field for all kinds of games?"</string>
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>

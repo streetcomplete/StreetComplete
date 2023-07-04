@@ -6946,6 +6946,10 @@
                     "name": "Foosball Table",
                     "terms": "kicker,table football,table soccer,tecball"
                 },
+                "leisure/pitch/teqball": {
+                    "name": "Teqball Table",
+                    "terms": "teqball,table teqball"
+                },
                 "leisure/pitch/softball": {
                     "name": "Softball Field",
                     "terms": "baseball,diamond,softball"

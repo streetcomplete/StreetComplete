@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.quests.sport.Sport.SOCCER
 import de.westnordost.streetcomplete.quests.sport.Sport.SOFTBALL
 import de.westnordost.streetcomplete.quests.sport.Sport.TABLE_TENNIS
 import de.westnordost.streetcomplete.quests.sport.Sport.TENNIS
+import de.westnordost.streetcomplete.quests.sport.Sport.TEQBALL
 import de.westnordost.streetcomplete.quests.sport.Sport.VOLLEYBALL
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -79,6 +80,7 @@ val Sport.titleResId: Int? get() = when (this) {
     NETBALL ->             R.string.quest_sport_netball
     GAELIC_GAMES ->        R.string.quest_sport_gaelic_games
     SEPAK_TAKRAW ->        R.string.quest_sport_sepak_takraw
+    TEQBALL ->             R.drawable.ic_sport_ teqball
 }
 
 val Sport.iconResId: Int? get() = when (this) {
@@ -116,4 +118,5 @@ val Sport.iconResId: Int? get() = when (this) {
     NETBALL ->             R.drawable.ic_sport_netball
     GAELIC_GAMES ->        R.drawable.ic_sport_gaelic_games
     SEPAK_TAKRAW ->        R.drawable.ic_sport_sepak_takraw
+    TEQBALL ->             R.drawable.ic_sport_ teqball
 }

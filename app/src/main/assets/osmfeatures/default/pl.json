@@ -7487,6 +7487,10 @@
                     "name": "Boisko do tetherballa",
                     "terms": "boisko do tetherballa,tetherball"
                 },
+                "leisure/pitch/teqball": {
+                    "name": "Boisko do teqballa",
+                    "terms": "boisko do teqballa,teqball"
+                },
                 "leisure/pitch/volleyball": {
                     "name": "Boisko do siatkówki",
                     "terms": "boisko do siatkówki,siatkówka"

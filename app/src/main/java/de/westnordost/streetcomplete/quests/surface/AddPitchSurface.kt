@@ -18,7 +18,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAndNote>() {
         "gaelic_games", "australian_football", "racquet", "rugby_league", "rugby_union", "rugby",
         "canadian_football", "softball", "sepak_takraw", "cricket", "pickleball", "lacrosse",
         "roller_skating", "baseball", "shuffleboard", "paddle_tennis", "korfball", "petanque",
-        "croquet", "four_square", "shot-put",
+        "croquet", "four_square", "shot-put", "teqball"
 
         // #2468
         "running", "dog_racing", "toboggan",

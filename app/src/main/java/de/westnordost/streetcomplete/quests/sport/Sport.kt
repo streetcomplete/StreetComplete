@@ -40,4 +40,5 @@ enum class Sport(val osmValue: String) {
     NETBALL("netball"),
     GAELIC_GAMES("gaelic_games"),
     SEPAK_TAKRAW("sepak_takraw"),
+    TEQBALL("teqball"),
 }
