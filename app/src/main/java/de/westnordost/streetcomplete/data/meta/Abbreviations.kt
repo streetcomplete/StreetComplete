@@ -36,7 +36,7 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
         for ((regex, replacement) in abbreviations) {
             if (!regex.matches(word, isFirstWord, isLastWord)) continue
             val result = regex.replaceFirst(word, replacement)
-            return result.firstLetterToUppercase()
+            return if (word.first().isTitleCase()) result.titlecase(locale) else result
         }
         return null
     }
@@ -72,6 +72,6 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
 
         return this.matches(word)
     }
-
-    private fun String.firstLetterToUppercase() = get(0).titlecase(locale) + substring(1)
 }
+
+private fun String.titlecase(locale: Locale) = get(0).titlecase(locale) + substring(1)
