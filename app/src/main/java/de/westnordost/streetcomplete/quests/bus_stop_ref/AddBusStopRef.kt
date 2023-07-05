@@ -25,6 +25,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
         "AU", // see https://github.com/streetcomplete/StreetComplete/issues/4487
         "TR", // see https://github.com/streetcomplete/StreetComplete/issues/4489
         "US",
+        "IL", // see https://github.com/streetcomplete/StreetComplete/issues/5119
     )
     override val changesetComment = "Determine bus/tram stop refs"
     override val wikiLink = "Tag:public_transport=platform"
