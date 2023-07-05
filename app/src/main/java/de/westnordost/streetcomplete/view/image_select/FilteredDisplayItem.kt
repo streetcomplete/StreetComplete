@@ -9,13 +9,14 @@ import androidx.annotation.DrawableRes
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.Text
 
 abstract class FilteredDisplayItem<T>(override val value: T, val context: Context) :
     DisplayItem<T> where T : OsmColour {
-    override val title: Text? = null
+    override val title: Text? get() = CharSequenceText(value.osmValue)
     override val description: Text? = null
 
     @DrawableRes
@@ -25,7 +26,7 @@ abstract class FilteredDisplayItem<T>(override val value: T, val context: Contex
         get() {
             val color = Color.parseColor(value.androidValue ?: value.osmValue)
             val contrastColor = getBestContrast(context)
-            val drawable = context.getDrawable(iconResId)!!
+            val drawable = context.getDrawable(iconResId)!!.mutate()
             val matrix = ColorMatrix(
                 floatArrayOf(
                     color.red / 255f, 0f, contrastColor.red / 255f, 0f, 0f,
