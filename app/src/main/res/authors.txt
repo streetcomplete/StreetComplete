@@ -250,7 +250,7 @@ surface_mud.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
 surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
-surface_rock.jpg               CC0               Elliot Plack
+surface_rock.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Rock_Trail_Surface_at_Patapsco_Valley_State_Park.jpg
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
 surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
 surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:200_metres_track_running_start_line.jpg (Santeri Viinamäki)
