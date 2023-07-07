@@ -164,6 +164,7 @@ const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
 const val PREF_OSMOSE_APP_LANGUAGE = "qs_OsmoseQuest_app_language" // do not use the quest settings prefix here, as it doesn't make sense for language
 
 // items that have associated SC quests/overlays are disabled by default
+// same for issues related to ignored relation types
 const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "3230/32301" + "§§" + // "Probably only for bottles, not any type of glass"
     "4061/40610" + "§§" + // "object needs review" (fixme poi "quest")
@@ -189,7 +190,12 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "The tag `parking:lane:right` is deprecated in favour of `parking:right`" + "§§" +
 //    alternative for all languages and types: 4010 and contains "parking:lane:*" and "parking:<same>"
     "The tag `parking:orientation` is deprecated in favour of `orientation`" + "§§" +
-    "Same value of cycleway:left and cycleway:right" // there is no quest, but SC may cause this and does not understand the "fix"
+    "Same value of cycleway:left and cycleway:right" + "§§" + // there is no quest, but SC may cause this and does not understand the "fix"
 //    alternative for all languages: 9001 and contains "cycleway:left" and "cycleway:right"
 // "tracktype=grade4 together with surface=asphalt" -> how to do it properly? current system won't work, or needs blacklisting all combinations
 //    alternative for all languages and types: 9001/9001001 and contains "tracktype=" and "surface="
+    "female=yes together with male=yes" + "§§" + // this is not necessarily the same as unisex
+    // relation-related stuff below
+    "1260" + "§§" + // Osmosis_Relation_Public_Transport
+    "2140" + "§§" // missing tags on public transport relations / stops
+
