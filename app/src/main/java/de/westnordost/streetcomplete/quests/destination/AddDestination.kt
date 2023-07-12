@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.destination
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -13,6 +15,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.groupByNodeIds
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 import de.westnordost.streetcomplete.util.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.util.math.finalBearingTo
 import de.westnordost.streetcomplete.util.math.initialBearingTo
@@ -26,7 +30,7 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
     // later lanes could be counted from available data if possible
     private val roadsFilter by lazy { """
         ways with
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link
+          highway ~ ${prefs.getString(questPrefix(prefs) + PREF_DESTINATION_ROADS, ROADS_FOR_DESTINATION.joinToString("|"))}
           and !destination and !~ destination:.*
           and junction !~ roundabout|circular
           and (oneway = yes or (!oneway and (!lanes or lanes = 2)))
@@ -40,7 +44,7 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
     // is there any reason not to use ALL_ROADS?
     private val branchingOffFromFilter by lazy { """
         ways with
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link
+          highway ~ ${prefs.getString(questPrefix(prefs) + PREF_DESTINATION_ROADS, ROADS_FOR_DESTINATION.joinToString("|"))}
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add destination"
@@ -50,9 +54,6 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_destination_title
 
-    // todo: we should take care the eligible way doesn't have any node shared with another road, except for the end nodes
-    //  also means that the ways needs to be in bbox entirely!
-    //  and means we should check also for shared nodes with residential and unclassified, and maybe track and service, so roadsByNodeId is not enough
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // we need the bbox because we only want ways fully in bbox (less strict in overlay...)
         val bbox = mapData.boundingBox ?: return emptyList()
@@ -161,7 +162,21 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
         answer.first?.applyTo(tags, false)
         answer.second?.applyTo(tags, true)
     }
+
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog {
+        return singleTypeElementSelectionDialog(context,
+            prefs,
+            questPrefix(prefs) + PREF_DESTINATION_ROADS,
+            ROADS_FOR_DESTINATION.joinToString("|"),
+            R.string.quest_settings_eligible_highways)
+    }
 }
+
+private const val PREF_DESTINATION_ROADS = "qs_AddDestination_road_selection"
+private val ROADS_FOR_DESTINATION = listOf("motorway", "motorway_link", "trunk", "trunk_link",
+    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link")
 
 // returns bearings going from [nodeId] to a neighboring node
 // but only towards nodes allowed by oneway
