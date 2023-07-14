@@ -5,7 +5,7 @@ v53.3: |
   <li>Do not automatically title-case (street) names as it is not correct to title-case them in all languages (#4784)</li>
   <li>Enable bus stop number quest in Israel (#4784), by @FloEdelmann</li>
   <li>Street lanes: Fix input different lane count per side when user language is set to a right-to-left language (#5118)</li>
-  <li>Other small fixes and enhancements (#5059, #5065, #5112, #5117, #5094, ...)</li>
+  <li>Other small fixes and enhancements (#5059, #5065, #5112, #5117, #5094, #5128...)</li>
   </ul>
   <h3>Unmaintained translations</h3>
   <p>Translations to Turkish, Malayalam, Amharic, Armenian, Bosnian, Norwegian Nyorsk and Japanese

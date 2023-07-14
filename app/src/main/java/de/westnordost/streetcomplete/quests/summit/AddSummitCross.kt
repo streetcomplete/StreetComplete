@@ -32,6 +32,7 @@ class AddSummitCross : OsmElementQuestType<Boolean> {
         // Europe
         "AT", // https://de.wikipedia.org/wiki/Gipfelkreuz
         "CH", // https://de.wikipedia.org/wiki/Gipfelkreuz
+        "CO", // https://github.com/streetcomplete/StreetComplete/issues/5128
         "DE", // https://de.wikipedia.org/wiki/Gipfelbuch
         "ES", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre
         "FR", // https://fr.wikipedia.org/wiki/Croix_sommitale
