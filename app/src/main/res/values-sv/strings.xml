@@ -1334,4 +1334,6 @@ Flytta den?"</string>
     <string name="quest_tactilePaving_steps_top">"Bara högst upp"</string>
     <string name="quest_tactilePaving_steps_bottom">"Bara längst ned"</string>
     <string name="overlay_addresses_no_entrance">"Det är inte en entré…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"gång- och cykelbana, båda riktningarna"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"gång- och cykelbana"</string>
 </resources>

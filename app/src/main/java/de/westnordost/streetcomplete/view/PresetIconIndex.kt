@@ -411,6 +411,7 @@ val presetIconIndex = mapOf(
     "ic_preset_temaki_campfire" to R.drawable.ic_preset_temaki_campfire,
     "ic_preset_temaki_cape_landform" to R.drawable.ic_preset_temaki_cape_landform,
     "ic_preset_temaki_capitol" to R.drawable.ic_preset_temaki_capitol,
+    "ic_preset_temaki_car_dealer" to R.drawable.ic_preset_temaki_car_dealer,
     "ic_preset_temaki_car_parked" to R.drawable.ic_preset_temaki_car_parked,
     "ic_preset_temaki_car_pool" to R.drawable.ic_preset_temaki_car_pool,
     "ic_preset_temaki_car_structure" to R.drawable.ic_preset_temaki_car_structure,

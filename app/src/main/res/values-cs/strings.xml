@@ -1338,4 +1338,6 @@ Chcete ho posunout?"</string>
     <string name="quest_tactilePaving_steps_top">"Jen nahoře"</string>
     <string name="quest_tactilePaving_steps_bottom">"Jen dole"</string>
     <string name="overlay_addresses_no_entrance">"Toto není vchod…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"sdílená cesta"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"sdílená cesta, oba směry"</string>
 </resources>

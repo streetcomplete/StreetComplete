@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Oui, je confirme"</string>
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
-    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique pour que d’autres cartographes puisse y répondre et la résoudre, ou vous pouvez cacher cette quête uniquement pour vous"</string>
+    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique pour que d’autres cartographes puissent y répondre et la résoudre, ou vous pouvez cacher cette quête uniquement pour vous"</string>
     <string name="quest_leave_new_note_yes">"Laisser une note"</string>
     <string name="quest_leave_new_note_no">"Cacher"</string>
     <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
@@ -313,8 +313,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_cycleway_value_bus_lane">"sur la voie de bus"</string>
     <string name="quest_cycleway_value_sidewalk">"trottoir partagé"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossible de créer un fichier pour cette photo"</string>
-    <string name="quest_cycleway_value_lane_dual">"bande cyclable, dans les deux sens"</string>
-    <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les deux sens"</string>
+    <string name="quest_cycleway_value_lane_dual">"bande cyclable bidirectionnelle"</string>
+    <string name="quest_cycleway_value_track_dual">"piste cyclable bidirectionnelle"</string>
     <string name="pref_category_advanced">"Avancé"</string>
     <string name="quest_enabled">"Activée"</string>
     <string name="quest_type">"Type de quête"</string>
@@ -1316,8 +1316,8 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="overlay_path_surface_segregated">"Séparé entre voies cyclables et piétonnes"</string>
     <string name="quest_crossing_title2">"Y a-t-il un passage à niveau ici ?"</string>
     <string name="quest_crossing_yes">"Oui (par exemple, la bordure est abaissée à cet endroit ou il y a des marquages)"</string>
-    <string name="quest_crossing_no">"Non, mais le passage est possible"</string>
-    <string name="quest_crossing_prohibited">"Non, le passage est impossible ou interdit"</string>
+    <string name="quest_crossing_no">"Non, mais la traversée est possible"</string>
+    <string name="quest_crossing_prohibited">"Non, la traversée est impossible ou interdite"</string>
     <string name="quest_hairdresser_title">"Quels sont les clients qui fréquentent ce salon de coiffure ?"</string>
     <string name="quest_hairdresser_male_and_female">"Toute personne"</string>
     <string name="quest_hairdresser_female_only">"Femmes"</string>
@@ -1333,4 +1333,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_tactilePaving_steps_top">"Seulement en haut"</string>
     <string name="quest_tactilePaving_steps_bottom">"Seulement en bas"</string>
     <string name="overlay_addresses_no_entrance">"Ce n’est pas une entrée…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"chemin partagé"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"chemin partagé, deux sens"</string>
 </resources>

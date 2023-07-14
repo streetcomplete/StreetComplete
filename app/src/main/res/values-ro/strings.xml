@@ -982,11 +982,17 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="street_parking_separate">"Parcarea este afișată separat pe hartă"</string>
     <string name="street_parking_no">"Nu este parcare / nu este permisă parcarea"</string>
     <string name="street_parking_prohibited">"Parcarea interzisă"</string>
+    <string name="street_stopping_prohibited">"Oprirea Interzisă"</string>
+    <string name="street_standing_prohibited">"Staționarea Interzisă"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Se poate parca sau opri aici, vă ru"</string>
     <string name="quest_address_house_number_label">"Numărul casei:"</string>
     <string name="quest_fireHydrant_position_title">"Unde se află hidrantul?"</string>
     <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Pe trotuar"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Într-un loc de parcare"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Da (lasă o notă)"</string>
+    <string name="quest_smoothness_title_excellent">"Neted și plat"</string>
+    <string name="quest_smoothness_title_good">"În mare parte plat"</string>
     <string name="unit_days">"zile"</string>
     <string name="unit_hours">"ore"</string>
     <string name="unit_minutes">"minute"</string>

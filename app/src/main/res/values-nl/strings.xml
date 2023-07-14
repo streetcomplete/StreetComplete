@@ -1326,4 +1326,6 @@ Nu verplaatsen?"</string>
     <string name="quest_tactilePaving_steps_top">"Alleen bovenaan"</string>
     <string name="quest_tactilePaving_steps_bottom">"Alleen onderaan"</string>
     <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Gezamelijk padgebruik"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Gezamelijk padgebruik, beide richtingen"</string>
 </resources>
