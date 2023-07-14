@@ -41,12 +41,12 @@ import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -143,14 +143,13 @@ class DataManagementSettingsFragment :
             }
             val layout = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
-                setPadding(30,10,30,10)
                 addView(TextView(requireContext()).apply { setText(R.string.pref_tile_source_message) })
                 addView(urlText)
                 addView(hideLabelsSwitch)
             }
             d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_tile_source_title)
-                .setView(layout)
+                .setViewWithDefaultPadding(layout)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setNeutralButton(R.string.action_reset) { _, _ ->
                     prefs.edit {

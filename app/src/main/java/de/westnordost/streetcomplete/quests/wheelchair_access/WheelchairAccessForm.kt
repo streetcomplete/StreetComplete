@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.LIMITED
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 
 open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 
@@ -34,10 +35,7 @@ open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 fun createAddDescriptionAnswer(element: Element, descriptions: MutableMap<String, String>, context: Context, countryInfo: CountryInfo) =
     AnswerItem(R.string.quest_wheelchair_description_answer) {
         val languages = (countryInfo.officialLanguages.map { ":$it" } + ":en" + "").toMutableSet()
-        val layout = LinearLayout(context).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(30,10,30,10)
-        }
+        val layout = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
         val fields = languages.associateWith {
             val e = EditText(context).apply {
                 hint = it.substringAfter(':').ifEmpty { context.getString(R.string.quest_wheelchair_description_no_language) }
@@ -49,7 +47,7 @@ fun createAddDescriptionAnswer(element: Element, descriptions: MutableMap<String
         }
         AlertDialog.Builder(context)
             .setTitle(R.string.quest_wheelchair_description_title)
-            .setView(layout)
+            .setViewWithDefaultPadding(layout)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _,_ ->
                 fields.forEach { (s, editText) ->

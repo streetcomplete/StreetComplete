@@ -6,16 +6,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.util.TypedValue
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.Spinner
-import android.widget.SpinnerAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -41,6 +37,7 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
 import org.koin.core.component.KoinComponent
@@ -153,7 +150,7 @@ fun showOverlayCustomizer(
     }
     val filterText = TextView(ctx).apply {
         setText(R.string.custom_overlay_filter_info)
-        setPadding(10, 10, 10, 5)
+        setPadding(5, 10, 5, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))
         setOnClickListener {
@@ -210,7 +207,7 @@ fun showOverlayCustomizer(
     }
     val colorText = TextView(ctx).apply {
         setText(R.string.custom_overlay_color_info)
-        setPadding(10, 10, 10, 5)
+        setPadding(5, 10, 5, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))
         setOnClickListener {
@@ -281,12 +278,11 @@ fun showOverlayCustomizer(
         addView(color)
         addView(highlightMissingSwitch)
         addView(dashFilter)
-        setPadding(30,10,30,10)
     }
     val indices = getCustomOverlayIndices(prefs).sorted()
     val b = AlertDialog.Builder(ctx)
         .setTitle(R.string.custom_overlay_title)
-        .setView(ScrollView(ctx).apply { addView(linearLayout) })
+        .setViewWithDefaultPadding(ScrollView(ctx).apply { addView(linearLayout) })
         .setNegativeButton(android.R.string.cancel, null)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             // update prefs and enable this overlay

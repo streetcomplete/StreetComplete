@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.hasPermission
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,9 +52,7 @@ class QuestsSettingsFragment :
         findPreference<Preference>("advanced_resurvey")?.apply {
             isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
             setOnPreferenceClickListener {
-                val layout = LinearLayout(context)
-                layout.setPadding(30,10,30,10)
-                layout.orientation = LinearLayout.VERTICAL
+                val layout = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
                 val keyText = TextView(context)
                 keyText.setText(R.string.advanced_resurvey_message_keys)
                 val keyEditText = EditText(context)
@@ -75,7 +74,7 @@ class QuestsSettingsFragment :
 
                 AlertDialog.Builder(requireContext())
                     .setTitle(R.string.advanced_resurvey_title)
-                    .setView(layout)
+                    .setViewWithDefaultPadding(layout)
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(android.R.string.ok) { _, _ ->
                         prefs.edit {
@@ -90,9 +89,7 @@ class QuestsSettingsFragment :
         }
 
         findPreference<Preference>(Prefs.QUEST_MONITOR)?.setOnPreferenceClickListener {
-            val layout = LinearLayout(context)
-            layout.setPadding(30, 10, 30, 10)
-            layout.orientation = LinearLayout.VERTICAL
+            val layout = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
             val enable = SwitchCompat(requireContext()).apply {
                 isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR, false)
                 setText(R.string.pref_quest_monitor_title)
@@ -141,7 +138,7 @@ class QuestsSettingsFragment :
 
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_quest_monitor_title)
-                .setView(ScrollView(context).apply { addView(layout) })
+                .setViewWithDefaultPadding(ScrollView(context).apply { addView(layout) })
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     prefs.edit {

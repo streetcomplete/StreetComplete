@@ -19,6 +19,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import org.koin.android.ext.android.inject
 
 class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPreferenceChangeListener {
@@ -74,8 +75,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPrefere
             linearLayout.addView(distanceText)
             linearLayout.addView(distance)
 
-            linearLayout.setPadding(30,10,30,10)
-            builder.setView(linearLayout)
+            builder.setViewWithDefaultPadding(linearLayout)
             builder.setPositiveButton(android.R.string.ok) { _, _ ->
                 distance.text.toString().toFloatOrNull()?.let {
                     prefs.edit { putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it.coerceAtLeast(0.0f).coerceAtMost(10.0f)) }

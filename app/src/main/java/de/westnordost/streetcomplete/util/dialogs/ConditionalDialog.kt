@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRule
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -171,7 +172,6 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
     }
     val layout = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
-        setPadding(30, 10, 30, 10)
         addView(keySpinner)
         addView(valueView)
         // todo: more numeric things? there is stay, but this is not really numeric... has hours / minutes
@@ -183,7 +183,7 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
         addView(valueEditText)
     }
     dialog = AlertDialog.Builder(context)
-        .setView(layout)
+        .setViewWithDefaultPadding(layout)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             val fullValue = valueEditText.text.toString()
             if (isOk(fullValue))
@@ -295,7 +295,6 @@ fun showOtherConditionalDialog(context: Context, keys: List<String>, values: Lis
     }
     val layout = LinearLayout(context).apply {
         orientation = LinearLayout.VERTICAL
-        setPadding(30, 10, 30, 10)
         addView(keySpinner)
         addView(valueView)
         addView(timeBox)
@@ -303,7 +302,7 @@ fun showOtherConditionalDialog(context: Context, keys: List<String>, values: Lis
         addView(valueEditText)
     }
     dialog = AlertDialog.Builder(context)
-        .setView(layout)
+        .setViewWithDefaultPadding(layout)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             val fullValue = valueEditText.text.toString()
             if (isOk(fullValue))

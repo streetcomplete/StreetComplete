@@ -205,7 +205,7 @@ class SettingsFragment :
             layout.addView(scrollLog)
             val d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_read_log_title)
-                .setView(layout)
+                .setView(layout) // not using default padding to allow longer log lines (looks ugly, but is very convenient)
                 .setPositiveButton(android.R.string.ok, null)
                 .setNegativeButton(R.string.pref_read_log_save) { _, _ ->
                     val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {

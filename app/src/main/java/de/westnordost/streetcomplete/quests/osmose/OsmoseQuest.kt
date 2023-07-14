@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 
 class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
 
@@ -94,6 +95,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         }
         val appLanguageInfo = TextView(context).apply {
             setText(R.string.quest_osmose_use_app_language_information)
+            setPadding(10, 0, 10, 0)
         }
         val layout = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
@@ -104,12 +106,11 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
             addView(hide)
             addView(appLanguage)
             addView(appLanguageInfo)
-            setPadding(30, 10, 30, 10)
         }
 
         return AlertDialog.Builder(context)
             .setTitle(context.resources.getString(R.string.quest_osmose_title, "…"))
-            .setView(ScrollView(context).apply { addView(layout) })
+            .setViewWithDefaultPadding(ScrollView(context).apply { addView(layout) })
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val levelString = listOfNotNull(

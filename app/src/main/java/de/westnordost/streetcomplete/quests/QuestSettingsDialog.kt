@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import java.util.regex.PatternSyntaxException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -67,11 +68,10 @@ fun singleTypeElementSelectionDialog(
 fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: Int, messageId: Int): AlertDialog {
     val numberInput = EditText(context)
     numberInput.inputType = InputType.TYPE_CLASS_NUMBER
-    numberInput.setPaddingRelative(30,10,30,10)
     numberInput.setText(prefs.getInt(pref, defaultValue).toString())
     val dialog = AlertDialog.Builder(context)
         .setMessage(messageId)
-        .setView(numberInput)
+        .setViewWithDefaultPadding(numberInput)
         .setNegativeButton(android.R.string.cancel, null)
         .setPositiveButton(android.R.string.ok) { _,_ ->
             numberInput.text.toString().toIntOrNull()?.let {
@@ -194,7 +194,7 @@ fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref:
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-    input.setPadding(20,10,20,10)
+    input.setPadding(20,10,20,10) // should be less than default padding to allow more text per line
     input.setText(initialValue)
     input.maxLines = 15 // if lines are not limited, the edit text might get so big that buttons are off screen (thanks, google for allowing this)
     return AlertDialog.Builder(context)
@@ -214,7 +214,7 @@ fun getLabelOrElementSelectionDialog(context: Context, questType: OsmFilterQuest
     }
     var d: AlertDialog? = null
     d = AlertDialog.Builder(context)
-        .setView(LinearLayout(context).apply {
+        .setViewWithDefaultPadding(LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             addView(description)
             addView(labels)
@@ -225,7 +225,6 @@ fun getLabelOrElementSelectionDialog(context: Context, questType: OsmFilterQuest
                     d?.dismiss()
                 }
             })
-            setPadding(30, 10, 30, 10)
         })
         .setPositiveButton(android.R.string.ok) { _, _ ->
             labels.text.toString().split(",")

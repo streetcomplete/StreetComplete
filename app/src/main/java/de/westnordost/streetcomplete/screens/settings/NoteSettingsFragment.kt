@@ -16,6 +16,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 import java.io.File
@@ -40,9 +41,10 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             text.setHint(R.string.pref_hide_notes_hint)
             text.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
 
+            // using a layout to contain the text because setting padding on text directly doesn't affect the line at the bottom
             val layout = LinearLayout(context)
-            layout.setPadding(30,10,30,10)
             layout.addView(text)
+            layout.setDefaultDialogPadding()
 
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_hide_notes_message)

@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -47,10 +48,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                 if (elements.isEmpty()) null
                 else
                     AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
-                        val l = LinearLayout(requireContext()).apply {
-                            orientation = LinearLayout.VERTICAL
-                            setPadding(30, 10, 30, 10)
-                        }
+                        val l = LinearLayout(requireContext()).apply { orientation = LinearLayout.VERTICAL }
                         var d: AlertDialog? = null
                         elements.forEach { e ->
                             l.addView(Button(requireContext()).apply {
@@ -63,7 +61,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                         }
                         d = AlertDialog.Builder(requireContext())
                             .setTitle(R.string.quest_osmose_select_element)
-                            .setView(l)
+                            .setViewWithDefaultPadding(l)
                             .setNegativeButton(android.R.string.cancel, null)
                             .create()
                         d?.show()

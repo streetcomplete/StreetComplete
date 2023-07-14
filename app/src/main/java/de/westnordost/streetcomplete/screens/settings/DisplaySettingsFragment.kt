@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -105,14 +106,13 @@ class DisplaySettingsFragment :
             }
             val layout = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
-                setPadding(30,10,30,10)
                 addView(downloadButton)
                 addView(selectFileButton)
                 addView(enableSwitch)
             }
             d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_gpx_track_title)
-                .setView(layout)
+                .setViewWithDefaultPadding(layout)
                 .setPositiveButton(R.string.close, null)
                 .create()
             d.show()

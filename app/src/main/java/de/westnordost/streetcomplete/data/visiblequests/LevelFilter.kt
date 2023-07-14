@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -123,8 +124,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         linearLayout.addView(levelText)
         linearLayout.addView(level)
         linearLayout.addView(enable)
-        linearLayout.setPadding(30,10,30,10)
-        builder.setView(ScrollView(context).apply { addView(linearLayout) })
+        builder.setViewWithDefaultPadding(ScrollView(context).apply { addView(linearLayout) })
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             val levelTagList = mutableListOf<String>()

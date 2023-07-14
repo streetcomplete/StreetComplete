@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.PointF
-import android.graphics.drawable.Drawable
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -61,6 +60,7 @@ import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.accessKeys
+import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -86,7 +86,6 @@ import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.plus
 import kotlinx.datetime.toJavaLocalDate
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -492,14 +491,13 @@ abstract class AbstractOverlayForm :
                     // if we actually change the highway to construction, we let the user set a construction value
                     val t = EditText(requireContext()).apply {
                         setText(element.tags["highway"])
-                        setPadding(30, 10, 30, 10)
                     }
                     val f = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)
                     builder["opening_date"] = f.format(finishDate.toJavaLocalDate())
                     builder["highway"] = "construction"
                     AlertDialog.Builder(requireContext())
                         .setTitle(R.string.quest_construction_value)
-                        .setView(t)
+                        .setViewWithDefaultPadding(t)
                         .setNegativeButton(android.R.string.cancel, null)
                         .setPositiveButton(android.R.string.ok) { _, _ ->
                             t.text.toString().takeIf { it.isNotBlank() }
