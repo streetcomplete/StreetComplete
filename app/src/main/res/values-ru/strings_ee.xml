@@ -66,17 +66,17 @@
     <string name="element_selection_button">Отбор элементов</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">По умолчанию</string>
     <string name="quest_benchMaterial_title">Из чего это сделано\?</string>
-    <string name="quest_custom_quest_add_node_text">Можете добавить узел с тегами: %s</string>
+    <string name="quest_custom_quest_add_node_text">Можете добавить точку с тегами: %s</string>
     <string name="custom_overlay_color_hint">Всё будет одноцветным, если не заполнить</string>
-    <string name="insert_node">Поместить узел на линию</string>
+    <string name="insert_node">Поместите точку на линии</string>
     <string name="fork_about_title_repository">Страница проекта SCEE</string>
     <string name="tag_editor_duplicate_key">Пропущено изменение дубликата параметра %s</string>
     <string name="time_limited_to">До</string>
     <string name="time_limited_from">С</string>
     <string name="manage_access">Управление ограничениями доступа…</string>
-    <string name="move_node_message_external_source_addition">Имейте в виду, что положение этого квеста не может быть изменено вслед за смещением узла.</string>
-    <string name="move_node_of_other_relation">Этот узел является частью многополигональных отношений: %s</string>
-    <string name="move_node_with_geometry">Перемещение этого узла изменит очертания следующих линий и многополигональных отношений: %s.
+    <string name="move_node_message_external_source_addition">Имейте в виду, что положение этого квеста может не измениться вслед за смещением точки.</string>
+    <string name="move_node_of_other_relation">Эта точка является частью этих многополигональных отношений: %s</string>
+    <string name="move_node_with_geometry">Перемещение этой точки изменит очертания следующих линий и многополигональных отношений: %s.
 \n Имейте в виду, что изменения не сразу отразятся на фоновой карте.</string>
     <string name="custom_overlay_add_button">Новое своё</string>
     <string name="general_warning">Внимание</string>
@@ -176,7 +176,7 @@
     <string name="quest_seating_street">На улице</string>
     <string name="quest_osmose_select_element">Выбрать элемент</string>
     <string name="quest_fixme_title">Исправить: %1$s</string>
-    <string name="quest_service_building_type_substation">Подстанция</string>
+    <string name="quest_service_building_type_substation">Подстанция (ПС, ТП, РП)</string>
     <string name="quest_service_building_type_well">Водяная скважина</string>
     <string name="quest_benchMaterial_wood">Дерево</string>
     <string name="quest_benchMaterial_metal">Металл</string>
@@ -184,14 +184,14 @@
     <string name="quest_benchMaterial_concrete">Бетон</string>
     <string name="quest_benchMaterial_stone">Камень</string>
     <string name="quest_benchMaterial_brick">Кирпич</string>
-    <string name="quest_custom_quest_add_node">Добавить узел</string>
+    <string name="quest_custom_quest_add_node">Добавить точку</string>
     <string name="quest_custom_quest_remove">Удалить из списка</string>
-    <string name="default_disabled_msg_poi_bench">Этот \"квест\" делает точки таких мест как скамейки или столики для пикника коричневыми. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_bike">Этот \"квест\" делает точки мест относящихся к велосипедам фиолетовыми. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_camera">Этот \"квест\" делает точки систем наблюдения розовыми. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_other">Этот \"квест\" делает точки прочих мест как гидранты, смотровые площадки или туалеты жёлтыми. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_recycling">Этот \"квест\" делает точки мест относящихся к мусору/переработке зелёным. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_vacant">Этот \"квест\" делает точки пустующих магазинов серыми. Нажатие на точку покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_bench">Этот \"квест\" покажет такие места как скамейки или столики для пикника коричневыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_bike">Этот \"квест\" покажет места относящихся к велосипедам фиолетовыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_camera">Этот \"квест\" покажет системы наблюдения розовыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_other">Этот \"квест\" покажет прочие места такие как гидранты, смотровые площадки или туалеты жёлтыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_recycling">Этот \"квест\" покажет места относящиеся к мусору/переработке зелёными кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_vacant">Этот \"квест\" покажет пустующие магазины серыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
     <string name="quest_poi_seating_title">Места: сидячие места</string>
     <string name="quest_poi_cycling_title">Места: велосипед</string>
     <string name="quest_poi_business_title">Места: торговля</string>
@@ -247,10 +247,10 @@
     <string name="custom_overlay_highlight_missing">Подсветка недостающих данных</string>
     <string name="pref_expert_mode_message">Разрешит использовать квесты созданные для SCEE и позволит:
 \n <li>править сами теги</li>
-\n <li>передвигать узлы, являющиеся частью линий или отношений</li>
-\n <li>удалять любые несвязанные узлы</li>
+\n <li>передвигать точки, являющиеся частью линий или отношений</li>
+\n <li>удалять любые несвязанные точки</li>
 \n <li>править элементы, которые были заблокированы заметкой</li>
-\n <li>добавлять несвязанные узлы где угодно</li>
+\n <li>добавлять несвязанные точки где угодно</li>
 \n <li>изменять правила отбора элементов квестов</li>
 \n
 \n Хотя другие редакторы позволяют больше, не осторожность может привести к порче данных, невозможной в StreetComplete. Имейте в виду, что включая режим эксперта Вы несёте существенно больше ответственности за свои правки.
@@ -273,8 +273,8 @@
     <string name="restore_dialog_hint">Долгим удержанием кнопки Отмена можно вручную указать какие из квестов восстановить.</string>
     <string name="quest_artwork_fountain">Фонтан</string>
     <string name="quest_fixme_remove">Снять тег fixme</string>
-    <string name="quest_service_building_type_title">Какого типа служебная постройка %s\?</string>
-    <string name="default_disabled_msg_poi_fixme">Этот \"квест\" делает точки Исправить красными (кроме значений \"yes\" и \"continue\" по умолчанию). Нажатие на точку покажет подробности и другие ответы.</string>
+    <string name="quest_service_building_type_title">Какого типа эта служебная постройка %s\?</string>
+    <string name="default_disabled_msg_poi_fixme">Этот \"квест\" покажет теги Исправить красными кружками (кроме значений \"yes\" и \"continue\" по умолчанию). Нажатие на кружок покажет подробности и другие ответы.</string>
     <string name="pref_custom_title">Загрузить файл своих квестов</string>
     <string name="quest_monitor_permission_warning">Требуется разрешение на определение местоположения в фоне для отслеживания квестов неподалёку</string>
     <string name="quest_monitor_search_radius_text">Укажите радиус поиска квестов неподалёку. Знайте, что могут быть найдены и квесты чуть дальше. Местоположения с погрешностью позиционирования больше этого значения отбрасываются.</string>
@@ -289,15 +289,15 @@
     <string name="quest_osmose_message">Эти квесты скачиваются из сервиса Osmose и указывают на возможные проблемы в данных OSM. Скачивание происходит если в настройках квеста выбрана хотя бы одна из степеней важности.
 \n Квест покажет сообщение из Osmose, любое изменение помечает проблему как решённую.
 \n Также можно сообщить об излишнем обнаружении проблемы; эта операция не обратима.</string>
-    <string name="quest_custom_quest_message">Используйте для проверки предопределённых элементов и мест. К тому же можно указать теги и добавлять узлы с этими тегами. Для этого загрузите файл в главном меню настроек, содержащий либо тип,id,сообщение (например, NODE,1234,проверить положение) либо широту,долготу,сообщение. Для добавления узлов добавьте теги в сообщение после \"addNode\", например, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_custom_quest_message">Используйте для проверки предопределённых элементов и мест. К тому же можно указать теги и добавлять точки с этими тегами. Для этого загрузите файл в главном меню настроек, содержащий либо тип,id,сообщение (например, NODE,1234,проверить положение) либо широту,долготу,сообщение. Для добавления точек впишите теги в сообщение после \"addNode\", например, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_cuisine_title">Блюда какой кухни здесь предлагают\? Пользуйтесь предлагаемыми тегами OSM!</string>
     <string name="quest_service_building_operator_title">Какая организация обслуживает эту служебную постройку\?</string>
     <string name="quest_tree_error">Не опознан. Попробуйте ввести род, вид или название дерева на английском языке. Либо оставьте заметку.</string>
     <string name="quest_tree_disabled_msg">Этот квест отключён по умолчанию, поскольку ответить на него не просто. Род/вид должны выбираться из предложений, являющихся наиболее частыми значениями. Можно добавить предложения видов из собственного списка названий, содержащего &lt;вид&gt; (&lt;название&gt;) и загружаемого в меню настроек управления данными.</string>
     <string name="tree_custom_quest_import_export_message">Получить используемый файл или передать новый\? Подробнее в сообщении при включении соответствующего квеста.</string>
-    <string name="default_disabled_msg_poi_business">Этот \"квест\" делает точки таких мест как магазины, кафе, кабинеты врачей и т. п. коричневыми. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_machine">Этот \"квест\" делает точки таких мест как банкоматы, телефоны или торговые автоматы синими. Нажатие на точку покажет подробности и другие ответы.</string>
-    <string name="default_disabled_msg_poi_traffic">Этот \"квест\" делает точки мест относящихся к дорожному движению голубыми. Нажатие на точку покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_business">Этот \"квест\" покажет такие места как магазины, кафе, кабинеты врачей и т. п. оранжевыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_machine">Этот \"квест\" покажет такие места как банкоматы, телефоны или торговые автоматы синими кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
+    <string name="default_disabled_msg_poi_traffic">Этот \"квест\" покажет места относящиеся к дорожному движению голубыми кружками. Нажатие на кружок покажет подробности и другие ответы.</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">Обследовать повторно все часы работы, даже те значения, что не ясны SCEE\? Возможно придётся воспользоваться редактором тегов для ввода верных значений.</string>
     <string name="quest_settings_dot_labels_message">Указать какие теги применять для надписей и в каком порядке. Пустая строка скроет все надписи, \"label\" покажет именование StreetComplete по умолчанию с надписью из name, brand, ref, local_ref и operator.</string>
     <string name="quest_poi_machine_title">Места: автоматы</string>
@@ -318,12 +318,12 @@
     <string name="quest_maxspeed_conditional_limited_enter_default">Выберите ограничение по умолчанию, прежде чем выбрать этот ответ</string>
     <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n
-\n \u0020Это модифицированная версия StreetComplete, предназначенная для опытных пользователей с расширенными знаниями об OSM. Это дает вам больше контроля, но и больше <i>ответственности</i>.
-\n \u0020Это особенно относится к возможности редактирования необработанных тегов и удаления узлов, а также к изменению выбора элементов для квестов. Квесты, добавленные в SCEE, <i>могут не отвечать</i> во всех случаях и отключены по умолчанию. Пожалуйста, скройте их, если вы не можете на них ответить, и <i>не спамьте заметки</i>.
+\n \u0020Это изменённая версия StreetComplete, предназначенная для опытных пользователей с расширенными знаниями об OSM. Она даёт вам больше инструментов, но и возлагает больше <i>ответственности</i>.
+\n \u0020В особенности это касается возможности редактирования необработанных тегов и удаления точек, а также изменения выбора элементов для квестов. Квесты, добавленные в SCEE, иногда <i>могут не иметь решения</i> и по умолчанию отключены. Если не можете на них ответить, пожалуйста, скройте их, а <i>не плодите заметки</i>.
 \n
-\n \u0020По умолчанию SCEE настроен так, чтобы вести себя очень похоже на StreetComplete.</string>
+\n \u0020По умолчанию SCEE настроен так, чтобы быть очень похожим на StreetComplete.</string>
     <string name="level_filter_hint">Для показа элементов без тега оставьте пустым</string>
-    <string name="quest_osmose_settings_items">Черный список</string>
+    <string name="quest_osmose_settings_items">Править чёрный список</string>
     <string name="quest_osmose_use_app_language">Загружать на языке приложения</string>
     <string name="quest_settings_level_default">Магазины и подобное в торговых центрах (по умолчанию)</string>
     <string name="quest_artwork_title">Что это за произведение\?</string>
@@ -341,10 +341,10 @@
     <string name="quest_settings_max_roof_levels">Наибольшее значение для (этажности здания) за вычетом (этажности крыши) при котором квест будет показан</string>
     <string name="quest_settings_max_steps_length">Наибольшая длина лестниц в метрах при котором квест будет показан</string>
     <string name="quest_settings_building_levels_optional_roof">Пропускать ввод количества этажей в составе крыши для всех стран</string>
-    <string name="pref_create_node_show_keyboard_title">Поаазывать клавиатуру при добавлении узла</string>
+    <string name="pref_create_node_show_keyboard_title">Показывать клавиатуру при добавлении точки</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Задайте наименьшее расстояние разделяющее дорожки, при котором квест ещё будет показан</string>
     <string name="quest_settings_building_levels_mandatory_roof">Требовать ввода количества этажей в составе крыши для большинства стран (по умолчанию)</string>
-    <string name="quest_settings_level_more">Врачи и многие другие узлы внутри многоуровневых зданий</string>
+    <string name="quest_settings_level_more">Врачи и многие другие точки внутри многоэтажных зданий</string>
     <string name="quest_surface_value_metal_grid">Металлическая сетка</string>
     <string name="quest_buildingType_barn">Сарай</string>
     <string name="restriction_overlay_show_details">Показать отношение</string>
@@ -370,7 +370,7 @@
     <string name="restriction_overlay_signed_switch">Есть знак или дорожная разметка</string>
     <string name="restriction_overlay_relation_unsupported">Неподдерживаемый тип ограничения:
 \n%s</string>
-    <string name="restriction_overlay_select_way">Коснитесь следующей линии на карте. Она должна иметь общий конечный узел с текущей линией. Делите линии по необходимости.</string>
+    <string name="restriction_overlay_select_way">Коснитесь следующей линии на карте. Она должна иметь общую крайнюю точку с текущей линией. Делите линии по необходимости.</string>
     <string name="access_manager_message">Выберите теги ограничения доступа. Отмечайте только предписанное знаками, по возможности, не применяйте простой тег \"access\".</string>
     <string name="level_filter">Фильтр этажности</string>
     <string name="level_filter_enable">Включить фильтр этажности</string>
@@ -384,4 +384,21 @@
     <string name="quest_buildingType_riding_hall">Конный манеж</string>
     <string name="quest_buildingType_digester">Реактор (биореактор)</string>
     <string name="quest_buildingType_transit_shelter">Остановка общественного транспорта</string>
+    <string name="pref_update_local_statistics">Обновлять статистику при отправке</string>
+    <string name="pref_main_menu_switch_presets_title">Переключатель предустановок в главном меню</string>
+    <string name="pref_update_local_statistics_summary">Отключение ускоряет отправку и блокирует сообщения о достижениях</string>
+    <string name="pref_hide_overlay_quests">Прятать квесты, связанные с наложением</string>
+    <string name="quest_buildingColour_title">Какой цвет преобладает в окраске этого здания\?</string>
+    <string name="outside_downloaded_area_warning">Это место за пределами подгруженной зоны. Продолжить\?</string>
+    <string name="restriction_overlay_only_for">Только для: %s</string>
+    <string name="quest_buildingPartColour_title">Какой цвет преобладает в окраске этой части здания\?</string>
+    <string name="custom_overlay_color_message">Выберите ключ(и) для окраски. Допускаются регулярные выражения и подстановка тегов определяющих цвет. Цвет подбирается на основании ключа и значения всех искомых ключей. Когда искомый ключ содержит :left/right/both, он будет использован для окраски соответствующих сторон линии, а не её середины. Если искомого нет, всегда окрашивается красным, указывая на неполны данные. Знание регулярных выражений будет крайне полезным.
+\nЕсли выражение не является регулярным, припишите \'!\' перед значением выделяемым при правке тегов.
+\n
+\nПример:
+\n\"surface\" окрасит surface=asphalt в один цвет, а surface=concrete - в другой
+\n\".*surface\" аналогичен, но также окрасит sidewalk:(left/right/both):surface=asphalt в один цвет, а cycleway:(left/right/both):surface=asphalt в другой</string>
+    <string name="restriction_overlay_sign_stop">Стоп</string>
+    <string name="restriction_overlay_direction_text">Только в направлении:</string>
+    <string name="restriction_overlay_sign_give_way">Уступи дорогу</string>
 </resources>

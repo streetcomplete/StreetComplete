@@ -228,7 +228,7 @@
     <string name="quest_surface_value_stepping_stones">Piedras pasaderas</string>
     <string name="quest_buildingType_presbytery">Casa parroquial</string>
     <string name="quest_buildingType_barn">Granero</string>
-    <string name="quest_buildingType_stable">Establo</string>
+    <string name="quest_buildingType_stable">Estable</string>
     <string name="quest_buildingType_sty">Pocilga</string>
     <string name="quest_buildingType_riding_hall">Sala de equitación</string>
     <string name="quest_lanes_answer_noLanes_known_count">Sin marcas, conteo de carriles obvio</string>
@@ -390,7 +390,7 @@
     <string name="quest_settings_dot_labels_message">Establezca qué etiquetas deben usarse para la etiqueta, en el orden dado. Una cadena vacía nunca mostrará ninguna etiqueta, \"label\" mostrará la etiqueta de nombre predeterminada de StreetComplete usando el nombre, la marca, la referencia, la referencia local y el operador.</string>
     <string name="quest_settings_what_to_edit">¿Qué configurar\?</string>
     <string name="quest_poi_vending_title">POI: Máquina expendedora %s</string>
-    <string name="quest_fixme_title">FixMe: %1$s</string>
+    <string name="quest_fixme_title">Corrigeme: %1$s</string>
     <string name="default_disabled_msg_poi_fixme">Esta \"tarea\" muestra FixMes como puntos rojos (con excepciones predeterminadas de \'sí\' y \'continuar\'). Haga clic en el punto para mostrar detalles y otras respuestas.</string>
     <string name="quest_fixme_remove">Eliminar este fixme</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
@@ -399,4 +399,9 @@
     <string name="quest_buildingColour_title">¿Qué color general tiene este edificio\?</string>
     <string name="quest_buildingPartColour_title">¿Qué color general tiene esta parte del edificio\?</string>
     <string name="restriction_overlay_only_for">Sólo para: %s</string>
+    <string name="pref_update_local_statistics">Actualizar las estadísticas al subir</string>
+    <string name="pref_update_local_statistics_summary">La desactivación acelera la carga y detiene los mensajes de logros</string>
+    <string name="pref_hide_overlay_quests">Ocultar las funciones específicas de la superposición</string>
+    <string name="pref_main_menu_switch_presets_title">Cambiar el botón preestablecido en el menú principal</string>
+    <string name="outside_downloaded_area_warning">Este lugar está fuera de la zona cargada. ¿Continuar\?</string>
 </resources>

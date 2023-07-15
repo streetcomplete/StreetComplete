@@ -39,7 +39,15 @@ class ChangelogFragment : TwoPaneDetailFragment(R.layout.fragment_changelog), Ha
         binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         viewLifecycleScope.launch {
-            val changelog = readChangelog(resources)
+            val r = "(?:\\d+(?:\\.\\d*)?|\\.\\d+)".toRegex()
+            // merge changelogs and sort by version
+            val changelog = (readScChangelog(resources) + readSceeChangelog(resources)).sortedBy {
+                val version = r.find(it.title)?.value?.toDoubleOrNull() ?: 0.0
+                val modifier1 = if (it.title.startsWith("SCEE")) -0.001 else 0.0
+                val modifier2 = if (it.title.contains("beta")) 0.0001 else 0.0
+                val modifier3 = if (it.title.contains("alpha")) 0.0002 else 0.0
+                0.0 - version + modifier1 + modifier2 + modifier3
+            }
             binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
     }
@@ -59,11 +67,12 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
         setButton(DialogInterface.BUTTON_POSITIVE, context.resources.getText(android.R.string.ok), null, null)
 
         scope.launch {
-            val fullChangelog = readChangelog(context.resources)
-            var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
+            val changelogScee = readSceeChangelog(context.resources)
+            val changelogSc = readScChangelog(context.resources)
+            var currentVersionIndex = changelogScee.indexOfFirst { it.title == "SCEE $sinceVersion" }
             // if version not found, just show the last one
-            if (currentVersionIndex == -1) currentVersionIndex = 2
-            val changelog = fullChangelog.subList(0, currentVersionIndex)
+            if (currentVersionIndex == -1) currentVersionIndex = 1
+            val changelog = changelogScee.subList(0, currentVersionIndex) + changelogSc.first()
 
             binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
@@ -90,17 +99,12 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 
 data class Release(val title: String, val description: String)
 
-private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    val upstreamChangelog = resources.getYamlStringMap(R.raw.changelog).map { Release("StreetComplete " + it.key, addedLinks(it.value)) }
-    val eeChangelog = resources.getYamlStringMap(R.raw.changelog_ee).map { Release("SCEE " + it.key, addedLinksEE(it.value)) }
-    val r = "(?:\\d+(?:\\.\\d*)?|\\.\\d+)".toRegex()
-    (upstreamChangelog + eeChangelog).sortedBy {
-        val version = r.find(it.title)?.value?.toDoubleOrNull() ?: 0.0
-        val modifier1 = if (it.title.startsWith("SCEE")) -0.001 else 0.0
-        val modifier2 = if (it.title.contains("beta")) 0.0001 else 0.0
-        val modifier3 = if (it.title.contains("alpha")) 0.0002 else 0.0
-        0.0 - version + modifier1 + modifier2 + modifier3
-    }
+private suspend fun readSceeChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
+    resources.getYamlStringMap(R.raw.changelog_ee).map { Release("SCEE " + it.key, addedLinksEE(it.value)) }
+}
+
+private suspend fun readScChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
+    resources.getYamlStringMap(R.raw.changelog).map { Release("StreetComplete " + it.key, addedLinks(it.value)) }
 }
 
 private fun addedLinks(description: String): String {

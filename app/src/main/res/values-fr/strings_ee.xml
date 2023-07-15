@@ -367,4 +367,30 @@
 \nS\'il y a deux voies le long d\'une plate-forme, utilisez des valeurs séparées par des points-virgules, par exemple 2;3</string>
     <string name="custom_overlay_filter_message">Cliquez sur le lien ci-dessous pour afficher des informations sur la syntaxe de sélection des éléments dans un navigateur. Notez que lors de la sélection d\'éléments par ancienneté, le réglage de l\'intervalle de ré-enquête peut influencer le résultat.
 \nLes cases à cocher remplacent la partie \"nœuds, chemins avec\".</string>
+    <string name="pref_update_local_statistics">Mettre à jour les statistiques lors de l\'envoi</string>
+    <string name="pref_hide_overlay_quests">Masquer les quêtes spécifiques aux surcouches</string>
+    <string name="pref_main_menu_switch_presets_title">Changer le bouton de présélection dans le menu principal</string>
+    <string name="quest_is_pharmacy_dispensing_title">Cette pharmacie délivre-t-elle tous les types de médicaments prescrits \?</string>
+    <string name="quest_buildingPartColour_title">Quelle est la couleur dominante de cette partie du bâtiment \?</string>
+    <string name="quest_buildingColour_title">Quelle est la couleur dominante de ce bâtiment \?</string>
+    <string name="quest_roofColour_title">Quelle est la couleur dominante du toit de ce bâtiment \?</string>
+    <string name="quest_destination_add_more">Ajouter une autre destination</string>
+    <string name="quest_destination_all_lanes_button">Toutes
+\nles voies</string>
+    <string name="quest_destination_title">Quelles sont les directions indiquées pour cette route \?</string>
+    <string name="restriction_overlay_other_restrictions">Autres restrictions sur ce chemin :</string>
+    <string name="create_relation_action_description">Vous avez créé une relation avec …</string>
+    <string name="outside_downloaded_area_warning">Ce lieu est situé en dehors de la zone téléchargée. Poursuivre \?</string>
+    <string name="restriction_overlay_only_for">Seulement pour : %s</string>
+    <string name="restriction_overlay_show_details">Afficher les détails de la relation</string>
+    <string name="restriction_overlay_relation_unsupported">Type de relation non supporté :
+\n%s</string>
+    <string name="restriction_overlay_exceptions">Exceptions : %s</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">Supprimer la condition</string>
+    <string name="restriction_overlay_sign_stop_all_way">Stop (toutes voies)</string>
+    <string name="restriction_overlay_title">Restrictions de circulation</string>
+    <string name="restriction_overlay_direction_text">S\'applique au sens de circulation :</string>
+    <string name="restriction_overlay_sign_give_way">Cédez-le-passage</string>
+    <string name="restriction_overlay_sign_stop">Stop</string>
+    <string name="pref_create_node_show_keyboard_title">Afficher automatiquement le clavier lors de l\'ajout d\'un nœud</string>
 </resources>

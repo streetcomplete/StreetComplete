@@ -203,4 +203,16 @@
 \n Повідомлення Osmose відображається разом з квестом, будь-яке редагування повідомляє про проблему як вирішену.
 \n Також можна повідомити про проблему як про хибнопозитивну; це не можна скасувати.</string>
     <string name="insert_node">Додати точку до лінії</string>
+    <string name="pref_update_local_statistics">Оновлення статистики при відправці</string>
+    <string name="pref_create_node_show_keyboard_title">Автоматично показувати клавіатуру під час додавання точки</string>
+    <string name="pref_update_local_statistics_summary">Вимкнення прискорює відправку та зупиняє повідомлення про досягнення</string>
+    <string name="pref_main_menu_switch_presets_title">Кнопка перемикання пресетів у головному меню</string>
+    <string name="quest_construction">Будується до…</string>
+    <string name="restriction_overlay_exceptions">Винятки: %s</string>
+    <string name="access_manager_button_add_conditional">Додати умови</string>
+    <string name="restriction_overlay_only_for">Лише для: %s</string>
+    <string name="restriction_overlay_show_details">Показати деталі зв\'язку</string>
+    <string name="restriction_overlay_signed_switch">Існує знак або дорожня розмітка</string>
+    <string name="restriction_overlay_other_restrictions">Інші обмеження цього шляху:</string>
+    <string name="add_access">Додати доступ…</string>
 </resources>
