@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Настройки"</string>
     <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
-    <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
+    <string name="oauth_failed_permissions">"Авторизация не удалась: должны быть предоставлены все указанные разрешения"</string>
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
@@ -868,7 +868,7 @@
 Данные обновляются через %1$s дней, а неиспользованные данные автоматически удаляются через %2$s дней."</string>
     <string name="pref_background_type_select">"Выберите тип фона"</string>
     <string name="background_type_map">"Карта"</string>
-    <string name="background_type_aerial_esri">"Воздушная (Esri)"</string>
+    <string name="background_type_aerial_esri">"Аэрофото (Esri)"</string>
     <string name="quest_barrier_type_title">"Что это за барьер?"</string>
     <string name="quest_barrier_type_lift_gate">"Шлагбаум"</string>
     <string name="quest_barrier_type_bollard">"Боллард(ы)"</string>
@@ -1288,6 +1288,7 @@
     <string name="separate_cycleway_no">"Проезд на велосипеде запрещён"</string>
     <string name="separate_cycleway_allowed">"Движение на велосипеде разрешено"</string>
     <string name="separate_cycleway_no_or_allowed">"Не предназначено для велосипедистов (проезд на велосипеде может быть разрешён)"</string>
+    <string name="separate_cycleway_non_segregated">"Совмещённая дорожка"</string>
     <string name="separate_cycleway_segregated">"Велосипеда и пешеходная дорожки разделены"</string>
     <string name="separate_cycleway_exclusive">"Только для велосипедов"</string>
     <string name="separate_cycleway_with_sidewalk">"Вело дорожка с отдельным тротуаром для пешеходов"</string>
@@ -1302,6 +1303,8 @@
     <string name="privacy_html_arcore">"Данное приложение использует &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сервисы Google Play для дополненной реальности&lt;/a&gt; (ARCore), предоставленные Google в соответствии с &lt;a href=\"https://policies.google.com/privacy\"&gt;политикой приватности Google&lt;/a&gt;."</string>
     <string name="default_disabled_msg_seasonal">"Этот тип квеста по умолчанию отключен, поскольку может потребоваться повторная проверка ситуации в определенное время года."</string>
     <string name="quest_gritBinSeasonal_title">"Есть ли это здесь кроме зимнего сезона?"</string>
+    <string name="street_parking_staggered_on_street">"На проезжей части, если оставляет возможность проехать"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Частично на проезжей части, если оставляет возможность проехать"</string>
     <string name="quest_traffic_signals_sound_description">"Подсказка: обратите внимание на динамики.  Не все звуковые сигналы можно активировать с помощью кнопки."</string>
     <string name="quest_presets_duplicate">"Дублировать"</string>
     <string name="label_block">"блок"</string>

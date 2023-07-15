@@ -1323,4 +1323,11 @@
     <string name="quest_amenityCover_title">"這裡有遮避嗎 (能夠遮雨)？"</string>
     <string name="lane_narrowing_traffic_calming_choker">"路緣延伸"</string>
     <string name="lane_narrowing_traffic_calming_island">"槽化島"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"S形彎道"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"路緣延伸 + 安全島"</string>
+    <string name="lane_narrowing_traffic_calming_none">"這裡沒有窄車道"</string>
+    <string name="quest_tactilePaving_title_steps">"這些階梯頂部與最底部的地方有導盲磚嗎？"</string>
+    <string name="quest_tactilePaving_steps_top">"只有在頂部"</string>
+    <string name="quest_tactilePaving_steps_bottom">"只有在底部"</string>
+    <string name="overlay_addresses_no_entrance">"這裡不是入口..."</string>
 </resources>

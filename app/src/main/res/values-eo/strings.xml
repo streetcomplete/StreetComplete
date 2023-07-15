@@ -1267,4 +1267,10 @@ Movu ĝin nun?"</string>
     <string name="unknown_surface_title">"Alia tipo de surfaco"</string>
     <string name="overlay_surface">"Surfacoj"</string>
     <string name="overlay_path_surface_segregated">"Dividi la biciklan kaj piedpaŝan partojn"</string>
+    <string name="quest_hairdresser_title">"Kiuj estas la klientoj de ĉi tiu frizisto?"</string>
+    <string name="quest_hairdresser_male_and_female">"Ĉiuj"</string>
+    <string name="quest_hairdresser_female_only">"Virinoj"</string>
+    <string name="quest_hairdresser_male_only">"Viroj"</string>
+    <string name="quest_hairdresser_not_signed">"Ne estas indikita"</string>
+    <string name="overlay_addresses_no_entrance">"Ne estas enirejo…"</string>
 </resources>

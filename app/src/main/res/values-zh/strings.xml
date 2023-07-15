@@ -893,7 +893,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_stile_type_title">"这是什么类型的通行门？"</string>
     <string name="quest_buildingType_semi_detached_description2">"相邻的单户住宅"</string>
     <string name="pref_title_quests2">"任务选择与优先度"</string>
-    <string name="pref_subtitle_quests">"%2$d 分之 %1$d 已经启用"</string>
+    <string name="pref_subtitle_quests">"%2$d 中的 %1$d 已启用"</string>
     <string name="no_location_permission_warning_title">"位置授权"</string>
     <string name="quest_surface_value_woodchips">"碎木屑"</string>
     <string name="no_camera_app">"没有相机APP可用"</string>
@@ -1300,4 +1300,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 &lt;p&gt;设置每个起点和终点，同时将手机直直地指向下方（以便您从上方看到白色箭头），以完全避免水平测量中的该问题。&lt;/p&gt;
 &lt;p&gt;对于垂直测量，您需要通过从不同方向观察来检查起点是否与地面有关联。&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"此应用程序在&lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore)上运行，该服务由Google提供，并受&lt;a href=\"https://policies.google.com/privacy\"&gt;Google隐私政策&lt;/a&gt;的约束。"</string>
+    <string name="default_disabled_msg_seasonal">"这种探索类型默认是禁用的，因为它可能需要在一年中的不同时期重新检查情况。"</string>
+    <string name="quest_traffic_signals_sound_description">"提示：注意扬声器。不是所有的声音信号都可以通过按钮激活。"</string>
+    <string name="quest_presets_duplicate">"复制"</string>
+    <string name="overlay_surface">"道路表面"</string>
+    <string name="quest_hairdresser_male_and_female">"任何人"</string>
 </resources>

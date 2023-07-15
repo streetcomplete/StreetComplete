@@ -1334,4 +1334,6 @@ Move it now?"</string>
     <string name="quest_tactilePaving_steps_top">"Only at the top"</string>
     <string name="quest_tactilePaving_steps_bottom">"Only at the bottom"</string>
     <string name="overlay_addresses_no_entrance">"It’s not an entrance…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"shared-use path"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"shared-use path, both directions"</string>
 </resources>

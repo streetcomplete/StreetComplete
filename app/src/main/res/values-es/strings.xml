@@ -1319,10 +1319,12 @@ También puedes dejar una nota (con foto)."</string>
     <string name="lane_narrowing_traffic_calming_choker">"Ensanchamiento de acera"</string>
     <string name="lane_narrowing_traffic_calming_island">"Mediana"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chicana"</string>
-    <string name="lane_narrowing_traffic_calming_choked_island">"Mediana + Ensanchamiento de acera "</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Ensanchamiento de acera + Mediana"</string>
     <string name="lane_narrowing_traffic_calming_none">"No hay estrechamiento de carriles aquí"</string>
     <string name="quest_tactilePaving_title_steps">"¿Hay pavimento táctil en la parte más alta y más baja de estas escaleras?"</string>
     <string name="quest_tactilePaving_steps_top">"Sólo en la más alta"</string>
     <string name="quest_tactilePaving_steps_bottom">"Sólo en la más baja"</string>
     <string name="overlay_addresses_no_entrance">"No es una entrada"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Camino de uso compartido"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Camino de uso compartido, ambas direcciones"</string>
 </resources>

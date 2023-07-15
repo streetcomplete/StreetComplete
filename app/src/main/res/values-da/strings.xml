@@ -1331,4 +1331,6 @@ Vil du flytte det nu?"</string>
     <string name="quest_tactilePaving_steps_top">"Kun ved toppen"</string>
     <string name="quest_tactilePaving_steps_bottom">"Kun ved bunden"</string>
     <string name="overlay_addresses_no_entrance">"Det er ikke en indgang…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"sti til fælles brug"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"sti til fælles brug, begge retninger"</string>
 </resources>

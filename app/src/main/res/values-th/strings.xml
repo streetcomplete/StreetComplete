@@ -22,7 +22,7 @@
     <string name="quest_leave_new_note_description">"คุณสามารถบันทึกหมายเหตุแบบสาธารณะสำหรับสถานที่นี้ไว้ได้ ซึ่งนักทำแผนที่คนอื่นสามารถให้ความเห็นเพิ่มเติม และอาจนำไปสู่ข้อสรุป หรือคุณอาจซ่อนภารกิจนี้ไว้สำหรับตัวคุณเองก็ได้"</string>
     <string name="quest_leave_new_note_yes">"ตกลง"</string>
     <string name="quest_leave_new_note_no">"ไม่ต้อง ซ่อนไปเลย"</string>
-    <string name="quest_streetName_title">"ถนนเส้นนี้ชื่ออะไร"</string>
+    <string name="quest_streetName_title">"ถนนเส้นนี้ชื่ออะไร?"</string>
     <string name="quest_streetName_description">"ชื่อตามที่ระบุบนป้ายบอกชื่อทาง ใช้คำเต็มแทนตัวย่อ:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"บางครั้งป้ายบอกชื่อทางก็มีแต่ที่ปากทางที่เดียว และอาจไม่มีป้ายบอกชื่อทางปักไว้บนเส้นย่อยที่เป็นส่วนหนึ่งของถนนใหญ่ โดยปกติแล้ว ถนนที่มีอาคารบ้านเรือนมักจะมีชื่อโดยเสมอ"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"ถ้าชื่อถนนสามารถสะกดโดยไม่ใช้อักษรย่อได้ ก็ควรใช้คำเต็ม อักษรย่อที่พบบ่อยจะถูกขยายโดยอัตโนมัติขณะพิมพ์ แต่ก็ไม่ทุกตัว"</string>
@@ -499,7 +499,7 @@
     <string name="quest_wheelchairAccess_outside_title">"สถานที่แห่งนี้เข้าถึงโดยรถเข็นได้หรือไม่?"</string>
     <string name="quest_traffic_signals_button_title">"ไฟจราจรมีปุ่มขอสัญญาณเดินหรือไม่"</string>
     <string name="quest_motorcycleParkingCapacity_title">"ที่นี่สามารถจอดมอเตอร์ไซค์ได้กี่คัน?"</string>
-    <string name="quest_motorcycleParkingCoveredStatus_title">"ที่จอดมอเตอร์ไซค์ที่นี่มีหลังคาคลุม (กันฝน) หรือไม่?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"ที่จอดมอเตอร์ไซค์ที่นี่มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
     <string name="default_disabled_msg_maxspeed">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะคุณต้องตรวจสอบถนนทั้งเส้นสำหรับป้ายจำกัดความเร็ว ไม่ใช่แค่ส่วนที่เน้นสีเอาไว้ ซึ่งอาจะเป็นอะไรที่ยากในหนึ่งภารกิจ"</string>
     <string name="pref_title_quests_restore_hidden">"กู้คืนภารกิจที่ซ่อนอยู่"</string>
     <string name="restore_hidden_success">"กู้คืน %d ภารกิจที่ถูกซ่อน"</string>
@@ -739,7 +739,7 @@
     <string name="quest_steps_incline_title">"ทิศทางไหนเป็นทางขึ้นสำหรับบันไดที่นี่?"</string>
     <string name="quest_steps_incline_up">"ขึ้นทางนี้"</string>
     <string name="quest_step_count_title">"ที่นี่มีกี่ขั้น"</string>
-    <string name="quest_traffic_signals_sound_title">"มีสัญญานเสียงสำหรับคนตาบอดที่นี่หรือไม่?"</string>
+    <string name="quest_traffic_signals_sound_title">"มีสัญญาณเสียงสำหรับคนตาบอดที่นี่หรือไม่?"</string>
     <string name="quest_traffic_signals_vibrate_title">"ขอบทางเดินที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
     <string name="quest_traffic_signals_vibrate_description">"คำแนะนำ: บ่อยครั้งนี่จะเป็นปุ่มสั่นหรือกรวยหมุนที่ติดไว้ใต้ปุ่มไฟจราจร"</string>
     <string name="quest_buildingType_bungalow_description2">"บ้านเดี่ยวหลังเล็ก (บ้านพักฤดูร้อน กระท่อมตากอากาศ กระท่อม …)"</string>
@@ -1144,6 +1144,8 @@
     <string name="quest_bicycle_rental_type_dropoff_point">"จุดที่กำหนด (ล็อกจักรยานทีละคัน)"</string>
     <string name="quest_bicycle_rental_type_human">"มีเจ้าหน้าที่ให้บริการ"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"ร้านขายจักรยานที่ให้เช่าจักรยานด้วย"</string>
+    <string name="quest_bicycle_shop_repair_title">"ที่นี่ให้บริการซ่อมจักรยานหรือไม่?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"ที่นี่มีจักรยานมือสองขายหรือไม่?"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"ไม่ มีแค่จักรยานใหม่"</string>
     <string name="quest_bicycle_shop_second_hand_new_and_used">"ใช่ รวมถึงจักรยานใหม่"</string>
     <string name="quest_bicycle_shop_second_hand_only_used">"ใช่ เฉพาะมือสอง"</string>
@@ -1171,7 +1173,12 @@
     <string name="lit_value_automatic">"ส่องสว่างเฉพาะเมื่อมีคนผ่าน"</string>
     <string name="overlay_sidewalk">"ทางเท้า"</string>
     <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
+    <string name="quest_entrance_reference">"ทางเข้านี้มีป้ายระบุอะไร?"</string>
+    <string name="quest_recycling_type_pet">"PET เท่านั้น"</string>
+    <string name="street_parking_street_width">"ความกว้างถนน: %s"</string>
     <string name="quest_address_street_street_name_label">"ชื่อถนน:"</string>
+    <string name="quest_address_street_hint2">"แตะถนนบนแผนที่เพื่อเลือก"</string>
+    <string name="quest_drinking_water_type_title">"ที่นี่ให้บริการน้ำดื่มแบบไหน?"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"เติมขวดเท่านั้น"</string>
     <string name="overlay_addresses">"ที่อยู่"</string>
     <string name="overlay_shops">"ร้านค้า"</string>
@@ -1194,7 +1201,10 @@
     <string name="node_moved_too_far">"ย้ายไกลเกินไป โปรดพิจารณาใส่หมายเหตุ"</string>
     <string name="node_moved">"ย้ายไป %s แล้ว"</string>
     <string name="move_node_description">"ลากแผนที่เพื่อวางคุณสมบัติในตำแหน่งที่ถูกต้อง ใช้ฟังก์ชันซูมและพยายามให้แม่นยำที่สุด โปรดทราบว่าตำแหน่งที่แสดงของคุณอาจแม่นยำน้อยกว่าที่แสดง"</string>
+    <string name="move_node_action_description">"คุณได้ย้ายโหนด"</string>
     <string name="quest_placeName_no_name_answer">"ไม่มีป้ายชื่อ…"</string>
+    <string name="overlay_cycleway">"เส้นทางจักรยาน"</string>
+    <string name="quest_fireHydrant_type_pipe">"ท่อ"</string>
     <string name="quest_cycleway_value_sidewalk_dual">"ทางเท้าที่ใช้ร่วมกันอย่างชัดเจนทั้งสองทิศทาง"</string>
     <string name="measure_info_html_description">"&lt;p&gt;บางครั้ง ARCore (ในตอนแรก) จะสันนิษฐานว่าพื้นต่ำกว่าหรือสูงกว่าที่เป็นจริงเล็กน้อย ซึ่งทำให้เกิดข้อผิดพลาดในการวัดที่มากขึ้นเมื่อคุณเอียงโทรศัพท์ไปทางเส้นขอบฟ้ามากขึ้น&lt;/p&gt;
 &lt;p&gt;ตั้งค่าจุดเริ่มต้นและจุดสิ้นสุดแต่ละจุดในขณะที่ชี้โทรศัพท์ลงไปตรง ๆ (เพื่อให้คุณเห็นลูกศรสีขาวจากด้านบน) เพื่อหลีกเลี่ยงปัญหานี้อย่างสมบูรณ์สำหรับการวัดในแนวนอน&lt;/p&gt;
@@ -1204,8 +1214,15 @@
     <string name="quest_traffic_signals_sound_description">"คำแนะนำ: มองหาลำโพง สัญญาณเสียงทั้งหมดไม่สามารถเปิดใช้งานผ่านปุ่มได้"</string>
     <string name="quest_presets_duplicate">"ทำสำเนา"</string>
     <string name="label_block">"บล็อก"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"ที่นี่ไม่มีห้องน้ำ"</string>
     <string name="unknown_surface_title">"พื้นผิวประเภทอื่น"</string>
     <string name="overlay_surface">"พื้นผิว"</string>
     <string name="quest_crossing_title2">"ตรงนี้มีทางข้ามหรือไม่?"</string>
+    <string name="quest_hairdresser_male_and_female">"ใครก็ได้"</string>
+    <string name="quest_hairdresser_female_only">"ผู้หญิง"</string>
+    <string name="quest_hairdresser_male_only">"ผู้ชาย"</string>
+    <string name="quest_hairdresser_not_signed">"ไม่มีป้ายระบุ"</string>
+    <string name="quest_amenityCover_title">"ที่นี่มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
+    <string name="quest_tactilePaving_steps_bottom">"เฉพาะที่ด้านล่าง"</string>
     <string name="overlay_addresses_no_entrance">"ไม่ใช่ทางเข้า…"</string>
 </resources>

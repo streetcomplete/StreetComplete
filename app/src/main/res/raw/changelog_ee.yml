@@ -1,4 +1,4 @@
-next: |
+v53.32: |
   <ul>
   <li>Allow disabling achievement messages</li>
   <li>Allow overriding whether some quests are hidden by overlays (#434)</li>

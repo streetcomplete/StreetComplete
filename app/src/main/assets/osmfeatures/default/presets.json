@@ -257,7 +257,7 @@
         "matchScore": 0.4
     },
     "ford": {
-        "icon": "temaki-pedestrian",
+        "icon": "roentgen-ford",
         "fields": [
             "name",
             "depth",
@@ -356,6 +356,7 @@
             "building/levels",
             "height",
             "building/material",
+            "building/colour",
             "roof/colour"
         ],
         "moreFields": [
@@ -380,6 +381,7 @@
         ],
         "moreFields": [
             "architect",
+            "building/colour",
             "building/levels/underground",
             "building/material",
             "building/prefabricated",
@@ -742,6 +744,7 @@
         "searchable": false
     },
     "ford_line": {
+        "icon": "roentgen-ford",
         "geometry": [
             "line"
         ],
@@ -4785,7 +4788,7 @@
         }
     },
     "shop/car": {
-        "icon": "maki-car",
+        "icon": "temaki-car_dealer",
         "fields": [
             "name",
             "brand",
@@ -5233,7 +5236,7 @@
         }
     },
     "shop/car/second_hand": {
-        "icon": "maki-car",
+        "icon": "temaki-car_dealer",
         "geometry": [
             "point",
             "area"
@@ -5656,6 +5659,7 @@
             "usage_rail"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "frequency_electrified",
             "incline",
@@ -5694,6 +5698,7 @@
             "service_rail"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "electrified",
             "frequency_electrified",
@@ -5766,6 +5771,7 @@
             "electrified"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "frequency_electrified",
             "highspeed",
@@ -5801,6 +5807,7 @@
             "usage_rail"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "incline"
         ],
@@ -10129,9 +10136,12 @@
     "man_made/windmill": {
         "icon": "maki-windmill",
         "fields": [
+            "name",
+            "start_date",
             "building_area_yes"
         ],
         "moreFields": [
+            "address",
             "gnis/feature_id-US"
         ],
         "geometry": [
@@ -10145,9 +10155,13 @@
     "man_made/watermill": {
         "icon": "maki-watermill",
         "fields": [
-            "building_area_yes"
+            "name",
+            "start_date",
+            "building_area_yes",
+            "address"
         ],
         "moreFields": [
+            "{@templates/contact}",
             "gnis/feature_id-US"
         ],
         "geometry": [
@@ -11011,7 +11025,8 @@
             "name",
             "bridge_combo",
             "layer",
-            "maxweight"
+            "maxweight",
+            "ref_bridge_number"
         ],
         "moreFields": [
             "gnis/feature_id-US",
@@ -12199,6 +12214,37 @@
             "leisure": "miniature_golf"
         }
     },
+    "leisure/marina_no_facilities": {
+        "icon": "temaki-sailboat",
+        "fields": [
+            "name",
+            "operator",
+            "capacity",
+            "fee",
+            "payment_multi_fee",
+            "charge_fee"
+        ],
+        "moreFields": [
+            "{@templates/contact}",
+            "address",
+            "gnis/feature_id-US",
+            "seamark/harbour/category_marina",
+            "seamark/type"
+        ],
+        "geometry": [
+            "area",
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "seamark:harbour:category": "marina_no_facilities"
+        },
+        "addTags": {
+            "leisure": "marina",
+            "seamark:type": "harbour",
+            "seamark:harbour:category": "marina_no_facilities"
+        }
+    },
     "leisure/marina": {
         "icon": "temaki-sailboat",
         "fields": [
@@ -12216,6 +12262,7 @@
             "{@templates/contact}",
             "address",
             "gnis/feature_id-US",
+            "seamark/harbour/category_marina",
             "seamark/type",
             "vhf"
         ],
@@ -14486,6 +14533,10 @@
         ],
         "tags": {
             "landuse": "construction"
+        },
+        "removeTags": {
+            "landuse": "construction",
+            "construction": "*"
         }
     },
     "landuse/commercial": {
@@ -15593,6 +15644,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "incline",
@@ -15682,6 +15734,7 @@
             "smoothness"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "flood_prone",
             "horse_scale",
@@ -15745,7 +15798,9 @@
             "{highway/primary}"
         ],
         "moreFields": [
-            "{highway/primary}"
+            "{highway/primary}",
+            "bicycle_road",
+            "cyclestreet-BE-NL"
         ],
         "geometry": [
             "line"
@@ -15876,6 +15931,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "flood_prone",
             "lit",
@@ -15905,6 +15961,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "flood_prone",
             "incline",
@@ -16015,8 +16072,11 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "cycleway",
+            "bicycle_road",
+            "cyclestreet-BE-NL",
             "flood_prone",
             "incline",
             "junction_line",
@@ -16078,6 +16138,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "cycleway",
@@ -16127,6 +16188,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "cycleway",
@@ -16173,6 +16235,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "cycleway",
@@ -16215,6 +16278,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "incline",
             "maxweight_bridge",
@@ -16237,6 +16301,9 @@
             "structure",
             "access"
         ],
+        "moreFields": [
+            "bridge/ref"
+        ],
         "geometry": [
             "area"
         ],
@@ -16255,6 +16322,7 @@
             "incline"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "dog",
             "gnis/feature_id-US",
@@ -16303,6 +16371,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "destination/symbol_oneway",
@@ -16346,6 +16415,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "destination/symbol_oneway",
@@ -16400,6 +16470,7 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "charge_toll",
             "covered_no",
             "incline",
@@ -16463,7 +16534,10 @@
             "access"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
+            "bicycle_road",
+            "cyclestreet-BE-NL",
             "cycleway",
             "flood_prone",
             "junction_line",
@@ -16508,6 +16582,7 @@
             "incline"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "dog",
             "informal",
@@ -16614,6 +16689,7 @@
             "incline"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "dog",
             "lit",
@@ -16635,7 +16711,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised"
         ],
         "moreFields": [
@@ -16686,6 +16762,9 @@
             "structure",
             "note"
         ],
+        "moreFields": [
+            "bridge/ref"
+        ],
         "geometry": [
             "line"
         ],
@@ -16707,6 +16786,7 @@
             "covered"
         ],
         "moreFields": [
+            "bridge/ref",
             "trolley_wire"
         ],
         "geometry": [
@@ -16725,6 +16805,7 @@
             "structure"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "trolley_wire",
             "width"
@@ -16752,6 +16833,7 @@
             "horse_scale"
         ],
         "moreFields": [
+            "bridge/ref",
             "covered_no",
             "dog",
             "lit",
@@ -17026,6 +17108,31 @@
             "value": "sidewalk"
         }
     },
+    "highway/footway/crossing": {
+        "fields": [
+            "crossing",
+            "surface",
+            "tactile_paving",
+            "crossing/island",
+            "{@templates/crossing/markings}",
+            "crossing_raised",
+            "access"
+        ],
+        "moreFields": [
+            "flashing_lights"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "highway": "footway",
+            "footway": "crossing"
+        },
+        "reference": {
+            "key": "footway",
+            "value": "crossing"
+        }
+    },
     "highway/footway/conveying": {
         "icon": "temaki-pedestrian",
         "fields": [
@@ -17113,29 +17220,6 @@
         },
         "searchable": false
     },
-    "highway/footway/crossing": {
-        "fields": [
-            "crossing",
-            "surface",
-            "tactile_paving",
-            "crossing/island",
-            "crossing/markings",
-            "crossing_raised",
-            "access"
-        ],
-        "geometry": [
-            "line"
-        ],
-        "tags": {
-            "highway": "footway",
-            "footway": "crossing"
-        },
-        "reference": {
-            "key": "footway",
-            "value": "crossing"
-        },
-        "searchable": false
-    },
     "highway/footway/crossing/unmarked": {
         "icon": "temaki-pedestrian",
         "fields": [
@@ -17175,7 +17259,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings_yes",
+            "{@templates/crossing/markings_yes}",
             "crossing_raised",
             "access"
         ],
@@ -17202,7 +17286,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "button_operated",
             "traffic_signals/sound",
@@ -17234,7 +17318,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "access"
         ],
@@ -17260,7 +17344,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "access"
         ],
@@ -17355,6 +17439,12 @@
             "foot": "designated",
             "bicycle": "designated"
         },
+        "removeTags": {
+            "highway": "cycleway",
+            "foot": "designated",
+            "bicycle": "designated",
+            "segregated": "*"
+        },
         "matchScore": 0.9
     },
     "highway/cycleway/crossing": {
@@ -17364,7 +17454,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "access"
         ],
         "geometry": [
@@ -17422,7 +17512,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings_yes",
+            "{@templates/crossing/markings_yes}",
             "crossing_raised",
             "access"
         ],
@@ -17446,13 +17536,16 @@
             "oneway",
             "crossing",
             "surface",
-            "tactile_paving",
             "crossing/island",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "button_operated",
             "traffic_signals/sound",
             "traffic_signals/vibration",
             "access"
+        ],
+        "moreFields": [
+            "tactile_paving"
         ],
         "geometry": [
             "line"
@@ -17483,7 +17576,7 @@
             "smoothness",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "access"
         ],
@@ -17514,7 +17607,7 @@
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "access"
         ],
@@ -17571,7 +17664,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings_yes",
+            "{@templates/crossing/markings_yes}",
             "crossing_raised"
         ],
         "geometry": [
@@ -17592,7 +17685,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised",
             "button_operated",
             "traffic_signals/sound",
@@ -17622,7 +17715,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised"
         ],
         "geometry": [
@@ -17645,7 +17738,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
-            "crossing/markings",
+            "{@templates/crossing/markings}",
             "crossing_raised"
         ],
         "geometry": [
@@ -18027,6 +18120,9 @@
             "structure",
             "access",
             "incline"
+        ],
+        "moreFields": [
+            "bridge/ref"
         ],
         "geometry": [
             "line"
@@ -19925,6 +20021,10 @@
         "tags": {
             "building": "construction"
         },
+        "removeTags": {
+            "building": "construction",
+            "construction": "*"
+        },
         "matchScore": 0.5
     },
     "building/commercial": {
@@ -20369,6 +20469,7 @@
         ],
         "geometry": [
             "vertex",
+            "point",
             "line"
         ],
         "tags": {
@@ -23407,7 +23508,7 @@
         }
     },
     "amenity/driving_school": {
-        "icon": "maki-car",
+        "icon": "temaki-car_pool",
         "fields": [
             "name",
             "operator",
@@ -27744,6 +27845,7 @@
         "moreFields": [
             "email",
             "fax",
+            "mobile",
             "phone",
             "website"
         ],
@@ -27752,6 +27854,52 @@
         ],
         "tags": {
             "@template": "contact"
+        },
+        "searchable": false,
+        "locationSet": {
+            "include": [
+                "999"
+            ],
+            "exclude": [
+                "999"
+            ]
+        },
+        "name": "{point}"
+    },
+    "@templates/crossing/markings_yes": {
+        "fields": [
+            "crossing/markings_yes",
+            "crossing/markings_yes-BG",
+            "crossing/markings_yes-DE-AT-CH"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "@template": "crossing/markings_yes"
+        },
+        "searchable": false,
+        "locationSet": {
+            "include": [
+                "999"
+            ],
+            "exclude": [
+                "999"
+            ]
+        },
+        "name": "{point}"
+    },
+    "@templates/crossing/markings": {
+        "fields": [
+            "crossing/markings",
+            "crossing/markings-BG",
+            "crossing/markings-DE-AT-CH"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "@template": "crossing/markings"
         },
         "searchable": false,
         "locationSet": {
