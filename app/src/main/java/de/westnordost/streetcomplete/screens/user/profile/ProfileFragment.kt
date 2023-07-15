@@ -241,7 +241,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView ) {
-        container.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
+        val shouldHide = rank <= 0 || statisticsSource.getEditCount() <= 100
+        container.isGone = shouldHide
+        if (shouldHide) return
+
         val updateRank = { r: Int ->
             circle.text = "#$r"
             circle.background.level = getScaledGlobalRank(r)
