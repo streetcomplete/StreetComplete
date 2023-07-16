@@ -57,7 +57,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     }
 
     private fun updateOverlayButtonIcon() {
-        val iconRes = selectedOverlayController.selectedOverlay?.icon ?: R.drawable.ic_overlay_24dp
+        val iconRes = selectedOverlayController.selectedOverlay?.icon ?: R.drawable.ic_overlay_black_24dp
         (view as ImageView).setImageResource(iconRes)
     }
 }

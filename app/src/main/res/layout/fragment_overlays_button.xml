@@ -5,6 +5,6 @@
     android:layout_height="@dimen/map_button_size"
     android:background="@drawable/round_white_button"
     android:elevation="4dp"
-    android:src="@drawable/ic_overlay_24dp"
+    android:src="@drawable/ic_overlay_black_24dp"
     android:contentDescription="@string/action_overlays"
     android:scaleType="centerInside" />
