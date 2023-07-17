@@ -7,6 +7,8 @@ about: Suggest a new question to ask the user
 <!-- 
 Please read the guidelines for new quest suggestions before posting one: 
 https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md
+
+Also please search existing issues (both open and closed) to see if such quest was already suggested before.
 -->
 
 ### General
