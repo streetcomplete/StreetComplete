@@ -69,3 +69,5 @@ Many people are currently supporting this app through <a href="https://github.co
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="58"/></a><br/>
 The <a href="https://osmfoundation.org/">OpenStreetMap foundation</a> was funding the development of doing <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">map maintenance with StreetComplete</a> (~ 3 weeks) in their <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">first round</a> of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">microgrant program</a> in 2020.
+echo : update workflow 
+href=https://crosslink/connectedpairs
