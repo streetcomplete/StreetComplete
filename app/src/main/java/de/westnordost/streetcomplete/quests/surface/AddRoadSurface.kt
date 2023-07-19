@@ -14,18 +14,14 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
+import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
 
     override val elementFilter = """
         ways with (
-          highway ~ ${listOf(
-            "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track",
-            ).joinToString("|")
-          }
-          or highway = service and service !~ driveway|slipway
+          ${prefs.getString("${questPrefix(prefs)}qs_${name}_element_selection", highwaySelection)}
         )
         and (
           !surface
@@ -63,11 +59,30 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD,
-            R.string.quest_generic_surface_message,
-            R.string.quest_generic_surface_yes,
-            R.string.quest_generic_surface_no
-        )
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_what_to_edit)
+            .setPositiveButton(R.string.quest_generic_surface_button) { _, _ ->
+                booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD,
+                    R.string.quest_generic_surface_message,
+                    R.string.quest_generic_surface_yes,
+                    R.string.quest_generic_surface_no
+                ).show()
+            }
+            .setNeutralButton(android.R.string.cancel, null)
+            .setNegativeButton(R.string.element_selection_button) { _, _ ->
+                fullElementSelectionDialog(context, prefs, "${questPrefix(prefs)}qs_${name}_element_selection", R.string.quest_settings_element_selection, highwaySelection)
+                    .show()
+            }
+            .create()
 }
 
 const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"
+
+private val highwaySelection = """
+    highway ~ ${listOf(
+    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+    "unclassified", "residential", "living_street", "pedestrian", "track",
+).joinToString("|")
+}
+          or highway = service and service !~ driveway|slipway
+""".trimIndent()

@@ -188,6 +188,7 @@
     <string name="quest_settings_level_default">Shops &amp; similar in malls (default)</string>
     <string name="quest_settings_level_more">Doctors and many more nodes inside multi-level buildings</string>
     <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note?</string>
+    <string name="quest_generic_surface_button">Generic surface answers</string>
     <string name="quest_generic_surface_yes">Allow without note</string>
     <string name="quest_generic_surface_no">Only with note (default)</string>
     <string name="quest_settings_osmose_level_title">Select issue severity levels to download and display</string>

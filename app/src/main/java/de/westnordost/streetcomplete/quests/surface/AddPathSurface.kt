@@ -16,11 +16,12 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ path|footway|cycleway|bridleway|steps
+        ways with highway ~ ${prefs.getString("${questPrefix(prefs)}qs_${name}_highway_selection", HIGHWAY_TYPES)}
         and segregated != yes
         and access !~ private|no
         and (!conveying or conveying = no)
@@ -65,11 +66,23 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_PATH,
-            R.string.quest_generic_surface_message,
-            R.string.quest_generic_surface_yes,
-            R.string.quest_generic_surface_no
-        )
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_what_to_edit)
+            .setPositiveButton(R.string.quest_generic_surface_button) { _, _ ->
+                booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD,
+                    R.string.quest_generic_surface_message,
+                    R.string.quest_generic_surface_yes,
+                    R.string.quest_generic_surface_no
+                ).show()
+            }
+            .setNeutralButton(android.R.string.cancel, null)
+            .setNegativeButton(R.string.element_selection_button) { _, _ ->
+                singleTypeElementSelectionDialog(context, prefs, "${questPrefix(prefs)}qs_${name}_highway_selection", HIGHWAY_TYPES, R.string.quest_settings_eligible_highways)
+                    .show()
+            }
+            .create()
 }
 
 const val ALLOW_GENERIC_PATH = "qs_AddPathSurface_allow_generic"
+
+private const val HIGHWAY_TYPES = "path|footway|cycleway|bridleway|steps"
