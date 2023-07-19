@@ -1428,8 +1428,10 @@ class MainFragment :
         mapFragment.hideNonHighlightedPins()
         mapFragment.hideOverlay()
 
-        val markers = mergeMarkersAtSamePosition(highlightedElementMarkers.await(), otherQuestMarkers.await())
-        markers.forEach { mapFragment.putMarkerForCurrentHighlighting(it.geometry, it.drawableResId, it.title, it.color) }
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            val markers = mergeMarkersAtSamePosition(highlightedElementMarkers.await(), otherQuestMarkers.await())
+            markers.forEach { mapFragment.putMarkerForCurrentHighlighting(it.geometry, it.drawableResId, it.title, it.color) }
+        }
     }
 
     // if quest and highlight marker at same position, set color of highlight marker to quest color
