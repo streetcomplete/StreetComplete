@@ -1080,7 +1080,7 @@ class MainFragment :
 
         val levels = createLevelsOrNull(element.tags)
 
-        viewLifecycleScope.launch {
+        viewLifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
                 quest.type.getHighlightedElements(element, ::getMapData)
             }
