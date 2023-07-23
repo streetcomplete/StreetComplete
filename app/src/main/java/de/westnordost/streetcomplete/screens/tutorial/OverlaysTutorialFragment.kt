@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
+import android.animation.TimeAnimator
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.BounceInterpolator
+import android.view.animation.AnticipateInterpolator
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.LinearInterpolator
+import android.view.animation.OvershootInterpolator
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
-import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
+import de.westnordost.streetcomplete.databinding.FragmentOverlaysTutorialBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -20,15 +23,16 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-/** Shows a short tutorial for first-time users */
-class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
+class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
 
     private var currentPage: Int = 0
 
-    private val binding by viewBinding(FragmentTutorialBinding::bind)
+    private var shineAnimation: TimeAnimator? = null
+
+    private val binding by viewBinding(FragmentOverlaysTutorialBinding::bind)
 
     interface Listener {
-        fun onTutorialFinished()
+        fun onOverlaysTutorialFinished()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -43,6 +47,19 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         view.respectSystemInsets()
         updateIndicatorDots()
         enableNextButton()
+
+        val anim = TimeAnimator()
+        anim.setTimeListener { _, _, deltaTime ->
+            binding.shineView1.rotation += deltaTime / 25f
+            binding.shineView2.rotation -= deltaTime / 50f
+        }
+        anim.start()
+        shineAnimation = anim
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        shineAnimation?.cancel()
     }
 
     override fun onDestroy() {
@@ -62,7 +79,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 step2Transition()
             }
             MAX_PAGE_INDEX -> {
-                listener?.onTutorialFinished()
+                listener?.onOverlaysTutorialFinished()
             }
         }
     }
@@ -82,107 +99,88 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
         updateIndicatorDots()
 
-        // magnifier flies towards viewer and fades out
-        binding.magnifierImageView.animate()
-            .setDuration(500)
-            .setInterpolator(AccelerateInterpolator())
-            .scaleX(6f).scaleY(6f)
-            .alpha(0f)
-            .start()
-
-        // map zooms in and tilts
-        val mapTranslate = ctx.dpToPx(-50)
-        val mapRotate = 50f
-        val mapScale = 1.5f
-
-        binding.mapImageView.animate()
-            .setDuration(800)
-            .setInterpolator(AccelerateDecelerateInterpolator())
-            .rotationX(mapRotate)
-            .scaleY(mapScale).scaleX(mapScale)
-            .translationY(mapTranslate)
-            .start()
-
-        binding.mapLightingImageView.animate()
-            .setDuration(800)
-            .setInterpolator(AccelerateDecelerateInterpolator())
-            .rotationX(mapRotate)
-            .alpha(0f)
-            .scaleY(mapScale).scaleX(mapScale)
-            .translationY(mapTranslate)
-            .start()
-
-        // 1st text fade out
         disappearText(binding.tutorialStepIntro)
 
-        delay(200)
-
-        // flashing GPS button appears
-        binding.tutorialGpsButton.state = LocationStateButton.State.SEARCHING
-        binding.tutorialGpsButton.animate()
-            .alpha(1f)
-            .setDuration(200)
+        // "explode" overlay button
+        binding.overlaysButton.animate()
+            .setInterpolator(AnticipateInterpolator())
+            .setDuration(450)
+            .alpha(0f)
+            .scaleX(3f)
+            .scaleY(3f)
             .start()
+
+        listOf(binding.shineView1, binding.shineView2).forEach {
+            it.animate()
+                .setDuration(250)
+                .alpha(0f)
+                .start()
+        }
+
+        // reveal paint roller "behind" the button
+        binding.paintRollerView.isInvisible = false
+        binding.paintRollerView.rotation = -15f
+        binding.paintRollerView.scaleX = 0.1f
+        binding.paintRollerView.scaleY = 0.1f
+        binding.paintRollerView.translationX = ctx.dpToPx(132)
+        binding.paintRollerView.translationY = ctx.dpToPx(66)
+
+        delay(300)
+
+        // move paint roller to start position
+        binding.paintRollerView.animate()
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .setDuration(700)
+            .translationX(-binding.paintRollerView.width/4f)
+            .translationY(-binding.paintRollerView.height/4f)
+            .rotation(-45f)
+            .scaleX(1f)
+            .scaleY(1f)
+            .start()
+
+        delay(700)
+
+        // move the paint roller from left to right
+        (binding.paintRollerView.drawable as? AnimatedVectorDrawable)?.start()
+
+        binding.paintRollerView.animate()
+            .setInterpolator(LinearInterpolator())
+            .setDuration(1000)
+            .translationX(binding.paintRollerView.width.toFloat())
+            .translationY(binding.paintRollerView.height.toFloat())
+            .start()
+
+        // reveal overlay colors
+        binding.overlayImageView.isInvisible = false
+        (binding.overlayImageView.drawable as? AnimatedVectorDrawable)?.start()
 
         delay(400)
 
-        // 2nd text fade in
-        appearText(binding.tutorialStepSolvingQuests)
-
-        delay(1400)
-
-        // ...and after a few seconds, stops flashing
-        binding.tutorialGpsButton.state = LocationStateButton.State.UPDATING
-
-        delay(800)
-
-        // quest pins fall into place
-        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
-
-            delay(400)
-
-            pin.translationY = ctx.pxToDp(-200)
-            pin.animate()
-                .setInterpolator(BounceInterpolator())
-                .setDuration(400)
-                .translationY(0f)
-                .alpha(1f)
-                .start()
-        }
+        appearText(binding.tutorialStepDisplay)
 
         enableNextButton()
     }
 
     private fun step2Transition() = viewLifecycleScope.launch {
         updateIndicatorDots()
+
         binding.nextButton.setText(R.string.letsgo)
 
-        // 2nd text fade out
-        disappearText(binding.tutorialStepSolvingQuests)
+        disappearText(binding.tutorialStepDisplay)
 
         delay(400)
 
-        // 3rd text fade in
-        appearText(binding.tutorialStepStaySafe)
+        binding.overlaySelectedImageView.isInvisible = false
+        (binding.overlaySelectedImageView.drawable as? AnimatedVectorDrawable)?.start()
 
-        // quest pins fade out
-        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
-            pin.animate()
-                .setInterpolator(AccelerateInterpolator())
-                .setDuration(300)
-                .alpha(0f)
-                .start()
-        }
+        delay(400)
 
-        delay(1400)
-        // checkmark fades in and animates
+        appearText(binding.tutorialStepEdit)
 
-        binding.checkmarkView.animate()
-            .setDuration(600)
-            .alpha(1f)
-            .start()
+        delay(3000)
 
-        (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
+        binding.overlaySelectedImageView.setImageResource(R.drawable.overlay_osm_map_edit_done_animated)
+        (binding.overlaySelectedImageView.drawable as? AnimatedVectorDrawable)?.start()
 
         enableNextButton()
     }
