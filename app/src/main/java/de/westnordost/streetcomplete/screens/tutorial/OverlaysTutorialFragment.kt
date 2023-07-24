@@ -154,7 +154,11 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
         binding.overlayImageView.isInvisible = false
         (binding.overlayImageView.drawable as? AnimatedVectorDrawable)?.start()
 
+        delay(200)
+        binding.overlayIcon1.isInvisible = false
+
         delay(400)
+        binding.overlayIcon2.isInvisible = false
 
         appearText(binding.tutorialStepDisplay)
 

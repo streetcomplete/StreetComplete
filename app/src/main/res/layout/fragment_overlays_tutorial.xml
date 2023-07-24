@@ -24,7 +24,7 @@
         android:src="@drawable/logo_osm_map"
         app:layout_constraintBottom_toTopOf="@id/tutorialTextContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/overlayImageView"
@@ -37,6 +37,28 @@
         app:layout_constraintTop_toTopOf="@id/mapImageView"
         app:layout_constraintBottom_toBottomOf="@id/mapImageView"
         />
+
+    <ImageView
+        android:id="@+id/overlayIcon1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_preset_fas_shopping_cart"
+        app:layout_constraintLeft_toLeftOf="@+id/mapImageView"
+        app:layout_constraintTop_toTopOf="@+id/mapImageView"
+        android:visibility="invisible"
+        android:translationX="80dp"
+        android:translationY="40dp" />
+
+    <ImageView
+        android:id="@+id/overlayIcon2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_preset_maki_fuel"
+        app:layout_constraintLeft_toLeftOf="@+id/mapImageView"
+        app:layout_constraintTop_toTopOf="@+id/mapImageView"
+        android:visibility="invisible"
+        android:translationX="180dp"
+        android:translationY="170dp" />
 
     <ImageView
         android:id="@+id/overlaySelectedImageView"
