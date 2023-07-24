@@ -17,60 +17,58 @@
         app:layout_constraintGuide_percent="0.40"
         android:orientation="horizontal"/>
 
-    <ImageView
-        android:id="@+id/mapImageView"
+    <FrameLayout
+        android:id="@+id/mapImageContainer"
         android:layout_width="226dp"
         android:layout_height="222dp"
-        android:src="@drawable/logo_osm_map"
         app:layout_constraintBottom_toTopOf="@id/tutorialTextContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <ImageView
-        android:id="@+id/overlayImageView"
-        android:layout_width="226dp"
-        android:layout_height="222dp"
-        android:src="@drawable/overlay_osm_map_animated"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@id/mapImageView"
-        app:layout_constraintEnd_toEndOf="@id/mapImageView"
-        app:layout_constraintTop_toTopOf="@id/mapImageView"
-        app:layout_constraintBottom_toBottomOf="@id/mapImageView"
-        />
+        <ImageView
+            android:id="@+id/mapImageView"
+            android:layout_width="226dp"
+            android:layout_height="222dp"
+            android:src="@drawable/logo_osm_map" />
 
-    <ImageView
-        android:id="@+id/overlayIcon1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_preset_fas_shopping_cart"
-        app:layout_constraintLeft_toLeftOf="@+id/mapImageView"
-        app:layout_constraintTop_toTopOf="@+id/mapImageView"
-        android:visibility="invisible"
-        android:translationX="80dp"
-        android:translationY="40dp" />
+        <ImageView
+            android:id="@+id/overlayImageView"
+            android:layout_width="226dp"
+            android:layout_height="222dp"
+            android:src="@drawable/overlay_osm_map_animated"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/overlayIcon2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_preset_maki_fuel"
-        app:layout_constraintLeft_toLeftOf="@+id/mapImageView"
-        app:layout_constraintTop_toTopOf="@+id/mapImageView"
-        android:visibility="invisible"
-        android:translationX="180dp"
-        android:translationY="170dp" />
+        <ImageView
+            android:id="@+id/overlayIcon1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_preset_fas_shopping_cart"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:translationX="80dp"
+            android:translationY="40dp" />
 
-    <ImageView
-        android:id="@+id/overlaySelectedImageView"
-        android:layout_width="226dp"
-        android:layout_height="222dp"
-        android:src="@drawable/overlay_osm_map_edit_animated"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@id/mapImageView"
-        app:layout_constraintEnd_toEndOf="@id/mapImageView"
-        app:layout_constraintTop_toTopOf="@id/mapImageView"
-        app:layout_constraintBottom_toBottomOf="@id/mapImageView"
-        />
+        <ImageView
+            android:id="@+id/overlayIcon2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_preset_maki_fuel"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:translationX="180dp"
+            android:translationY="170dp" />
+
+        <ImageView
+            android:id="@+id/overlaySelectedImageView"
+            android:layout_width="226dp"
+            android:layout_height="222dp"
+            android:src="@drawable/overlay_osm_map_edit_animated"
+            android:visibility="invisible"
+            tools:visibility="visible"  />
+
+    </FrameLayout>
+
 
     <ImageView
         android:id="@+id/paintRollerView"
@@ -80,8 +78,8 @@
         android:rotation="-45"
         android:visibility="invisible"
         tools:visibility="visible"
-        app:layout_constraintLeft_toLeftOf="@id/mapImageView"
-        app:layout_constraintTop_toTopOf="@id/mapImageView" />
+        app:layout_constraintLeft_toLeftOf="@id/mapImageContainer"
+        app:layout_constraintTop_toTopOf="@id/mapImageContainer" />
 
     <ImageView
         android:id="@+id/shineView1"
@@ -116,8 +114,8 @@
         android:clickable="false"
         android:focusable="false"
         android:elevation="4dp"
-        app:layout_constraintLeft_toRightOf="@id/mapImageView"
-        app:layout_constraintBottom_toBottomOf="@id/mapImageView"
+        app:layout_constraintLeft_toRightOf="@id/mapImageContainer"
+        app:layout_constraintBottom_toBottomOf="@id/mapImageContainer"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_overlay_black_24dp"
         android:scaleType="centerInside" />

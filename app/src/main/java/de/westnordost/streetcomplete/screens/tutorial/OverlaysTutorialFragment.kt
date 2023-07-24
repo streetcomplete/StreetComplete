@@ -8,9 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnticipateInterpolator
-import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.view.animation.OvershootInterpolator
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
@@ -166,6 +165,8 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
     }
 
     private fun step2Transition() = viewLifecycleScope.launch {
+        val ctx = requireContext()
+
         updateIndicatorDots()
 
         binding.nextButton.setText(R.string.letsgo)
@@ -174,10 +175,20 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
 
         delay(400)
 
+        binding.mapImageContainer.animate()
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .setDuration(900)
+            .scaleX(2f)
+            .scaleY(2f)
+            .rotation(-15f)
+            .translationX(ctx.dpToPx(+60))
+            .translationY(ctx.dpToPx(-120))
+            .start()
+
         binding.overlaySelectedImageView.isInvisible = false
         (binding.overlaySelectedImageView.drawable as? AnimatedVectorDrawable)?.start()
 
-        delay(400)
+        delay(600)
 
         appearText(binding.tutorialStepEdit)
 
