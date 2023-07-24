@@ -181,7 +181,7 @@ The data is highlighted in different colors to give you a good overview over wha
 Missing data is always shown in red."</string>
     <string name="overlays_tutorial_edit">"Tap on any highlighted data to edit it. You can also split ways or report notes, like with quests.
 
-Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such in the addresses overlay."</string>
+Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay."</string>
 
     <!-- Add note interface-->
 
