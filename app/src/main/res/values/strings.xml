@@ -177,7 +177,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
     <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
 
-The data is highlighted in different colors to give you a good overview over what has been recorded so far.
+The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red."</string>
     <string name="overlays_tutorial_edit">"Tap on any highlighted data to edit it. You can also split ways or report notes, like with quests.
 
