@@ -16,7 +16,7 @@ class AddParkingFee : OsmFilterQuestType<FeeAndMaxStay>() {
             or fee older today -8 years
         )
     """
-    override val changesetComment = "Specify whether parking require a fee"
+    override val changesetComment = "Specify whether parking requires a fee"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_fee
     override val achievements = listOf(CAR)
