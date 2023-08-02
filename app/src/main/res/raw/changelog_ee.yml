@@ -1,6 +1,7 @@
 next: |
   <ul>
   <li>Enable element selection for road and path surface quests in quest settings</li>
+  <li>Allow disabling navigation mode</li>
   </ul>
 
 v53.32: |

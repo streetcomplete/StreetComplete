@@ -1017,7 +1017,8 @@ class MainFragment :
                 setIsFollowingPosition(true)
             }
             else -> {
-                setIsNavigationMode(!mapFragment.isNavigationMode)
+                if (!prefs.getBoolean(Prefs.DISABLE_NAVIGATION_MODE, false) || mapFragment.isNavigationMode)
+                    setIsNavigationMode(!mapFragment.isNavigationMode)
             }
         }
     }

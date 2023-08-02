@@ -94,6 +94,8 @@
     <string name="pref_overlay_quick_selector_title">Show overlay quick selector</string>
     <string name="pref_create_node_show_keyboard_title">Automatically show keyboard when adding a node</string>
     <string name="pref_main_menu_switch_presets_title">Switch preset button in main menu</string>
+    <string name="pref_disable_navigation_mode_title">Disable navigation mode</string>
+    <string name="pref_disable_navigation_mode_summary">Disables the mode that tilts and auto-rotates the map</string>
 
     <!-- data management settings -->
     <string name="pref_screen_data_management">Data management</string>

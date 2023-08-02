@@ -68,6 +68,13 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <SwitchPreference
+        android:key="disable_navigation_mode"
+        android:title="@string/pref_disable_navigation_mode_title"
+        android:summary="@string/pref_disable_navigation_mode_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="main_menu_full_grid"
         android:title="@string/pref_main_menu_grid"
         android:defaultValue="false"
