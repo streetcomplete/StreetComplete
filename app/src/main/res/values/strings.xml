@@ -1532,7 +1532,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">This answer does not match what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?</string>
 
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both ends?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
     <string name="quest_tactilePaving_title_steps">Is there tactile paving at the top and bottom of these steps?</string>
     <string name="quest_tactilePaving_steps_top">"Only at the top"</string>
