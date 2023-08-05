@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
@@ -19,12 +21,18 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
 
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
             viewLifecycleScope.launch { updateOverlayButtonIcon() }
         }
     }
+
+    interface Listener {
+        fun onShowOverlaysTutorial()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +51,19 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     }
 
     private fun onClickButton() {
+        val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, false)
+        if (!hasShownTutorial) {
+            showOverlaysTutorial()
+        } else {
+            showOverlaysMenu()
+        }
+    }
+
+    private fun showOverlaysTutorial() {
+        listener?.onShowOverlaysTutorial()
+    }
+
+    private fun showOverlaysMenu() {
         val adapter = OverlaySelectionAdapter(overlayRegistry)
         val popupWindow = ListPopupWindow(requireContext())
 

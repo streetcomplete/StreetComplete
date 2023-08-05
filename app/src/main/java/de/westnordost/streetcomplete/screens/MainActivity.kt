@@ -49,7 +49,9 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
+import de.westnordost.streetcomplete.screens.main.controls.OverlaysButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -67,6 +69,8 @@ class MainActivity :
     BaseActivity(),
     MainFragment.Listener,
     TutorialFragment.Listener,
+    OverlaysButtonFragment.Listener,
+    OverlaysTutorialFragment.Listener,
     MessagesButtonFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
@@ -340,7 +344,14 @@ class MainActivity :
         requestLocation()
 
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
+        removeTutorialFragment()
+    }
 
+    private fun requestLocation() {
+        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    }
+
+    private fun removeTutorialFragment() {
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
             supportFragmentManager.commit {
@@ -350,8 +361,20 @@ class MainActivity :
         }
     }
 
-    private fun requestLocation() {
-        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    /* ---------------------------- OverlaysButtonFragment.Listener ----------------------------- */
+
+    override fun onShowOverlaysTutorial() {
+        supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+            add(R.id.fragment_container, OverlaysTutorialFragment())
+        }
+    }
+
+    /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
+
+    override fun onOverlaysTutorialFinished() {
+        prefs.edit { putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true) }
+        removeTutorialFragment()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */
