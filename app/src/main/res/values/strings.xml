@@ -267,10 +267,10 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
 
-    <string name="download_server_error">"Connection error while scanning for quests. Try again later."</string>
+    <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
 
-    <string name="download_error">"Error while scanning for quests"</string>
+    <string name="download_error">"Error while downloading data"</string>
     <string name="upload_error">"Error while uploading answers"</string>
 
     <string name="crash_title">"Oh no, StreetComplete crashed last time!"</string>
