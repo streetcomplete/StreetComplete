@@ -12,7 +12,7 @@ class RecentLocationStore {
     /** returns a sequence of recent locations, with some minimum time and distance from each other */
     fun get(): Sequence<Location> = synchronized(recentLocations) {
         var previousLocation: Location? = null
-        recentLocations.asReversed().asSequence().filter {
+        recentLocations.reversed().asSequence().filter {
             val loc = previousLocation
             if (loc == null) {
                 previousLocation = it
