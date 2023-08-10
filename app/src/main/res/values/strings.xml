@@ -44,7 +44,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_gps_tracking">"Follow me"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning_title">"Location Permission"</string>
-    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and download data in your vicinity."</string>
 
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="open_url">Open URL</string>
@@ -265,7 +265,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
 
-    <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
+    <string name="no_gps_no_quests">"To download data around you automatically, turn on location"</string>
 
     <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
@@ -350,7 +350,7 @@ Editing OpenStreetMap anonymously is not possible. Any changes you make (and the
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-The app does not share your GPS location with anyone. It is used to automatically scan for and download quests around you, and position the map at your location.
+The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
