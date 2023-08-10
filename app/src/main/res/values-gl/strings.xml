@@ -906,7 +906,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Cantos pisos por enriba do soto ten este edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Cantos pisos por enriba do soto ten esta parte do edificio?"</string>
-    <string name="quest_crossing_title">"Existe bordo aquí onde este camiño se atopa coa estrada? de que tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preaxuste: %s"</string>
     <string name="default_disabled_msg_roofShape">"Este tipo de pregunta está desactivada por defecto porque as formas dos tellados normalmente non se distinguen desde a rúa. Esta pregunta tamén consume moito tempo, é máis doado respondela desde a casa vendo imaxe aéreas."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -940,7 +939,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_buildingType_bridge">"Ponte entre edificios (corredor elevado)"</string>
     <string name="quest_laundrySelfService_title2">"Esta lavandería ten autoservizo?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal deben prepararse segundo reglas especiais e ser marcadas por axencias de certificación Halal."</string>
-    <string name="quest_picnicTableCover_title">"Esta mesa de picnic está cuberta (protexida da chuvia)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Este tramo son escaleiras"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido nun acceso nun muro/valado/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido nunha cancela"</string>

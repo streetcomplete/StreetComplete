@@ -49,9 +49,36 @@
                         "no": "Non",
                         "yes": "Oui"
                     }
+                },
+                "generator/source": {
+                    "options": {
+                        "waste": "Déchets"
+                    }
+                },
+                "recycling_accepts": {
+                    "options": {
+                        "green_waste": "Déchets verts"
+                    }
+                },
+                "utility": {
+                    "options": {
+                        "sewerage": "Eaux usées"
+                    }
+                },
+                "waste": {
+                    "label": "Déchets",
+                    "options": {
+                        "organic": "Déchet biodégradable"
+                    }
                 }
             },
             "presets": {
+                "amenity/recycling/container/electrical_items": {
+                    "name": "Benne pour déchets d'équipements électriques et électroniques (DEEE)"
+                },
+                "amenity/recycling/container/green_waste": {
+                    "name": "Benne pour déchets verts"
+                },
                 "waterway/river": {
                     "name": "Rivière"
                 }

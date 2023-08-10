@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -24,11 +24,7 @@ import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
-import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
-import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
-import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.util.math.isNearAndAligned
 import java.util.concurrent.FutureTask
 
 class AddCycleway(
@@ -41,6 +37,16 @@ class AddCycleway(
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            ways with (
+                highway ~ cycleway|path
+                or highway ~ footway|bridleway and bicycle ~ yes|designated
+              )
+              and bicycle !~ no|private
+              and access !~ no|private
+        """)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
@@ -77,43 +83,7 @@ class AddCycleway(
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }
-
-        /* we want to return two sets of roads: Those that do not have any cycleway tags, and those
-         * that do but have been checked more than 4 years ago. */
-
-        /* For the first, the roadsWithMissingCycleway filter is not enough. In OSM, cycleways may be
-         * mapped as separate ways as well and it is not guaranteed that in this case,
-         * cycleway = separate or something is always tagged on the main road then. So, all roads
-         * should be excluded whose center is within of ~15 meters of a cycleway, to be on the safe
-         * side. */
-
-        val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }.toMutableList()
-
-        if (roadsWithMissingCycleway.isNotEmpty()) {
-
-            val maybeSeparatelyMappedCyclewayGeometries = mapData.ways
-                .filter { maybeSeparatelyMappedCyclewaysFilter.matches(it) }
-                .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
-
-            val minAngleToWays = 25.0
-
-            if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
-                // filter out roads with missing cycleways that are near footways
-                roadsWithMissingCycleway.removeAll { road ->
-                    val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
-                    val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
-                    roadGeometry?.isNearAndAligned(
-                        minDistToWays,
-                        minAngleToWays,
-                        maybeSeparatelyMappedCyclewayGeometries
-                    ) ?: true
-                }
-            }
-        }
-
-        /* For the second, nothing special. Filter out ways that have been checked less then 4
-        *  years ago or have no known cycleway tags */
-
+        val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
             val countryInfo = mapData.getWayGeometry(way.id)?.center?.let { p ->
                 countryInfos.getByLocation(
@@ -128,22 +98,9 @@ class AddCycleway(
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
-    private fun getMinDistanceToWays(tags: Map<String, String>): Float =
-        (
-            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
-            (estimateParkingOffRoadWidth(tags) ?: 0f)
-        ) / 2f +
-        4f // + generous buffer for possible grass verge
-
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
-
-        /* can't determine for yet untagged roads by the tags alone because we need info about
-           surrounding geometry */
-        if (untaggedRoadsFilter.matches(element)) return null
-
-        /* but if already tagged and old, we don't need to look at surrounding geometry to see if
-           it is applicable or not */
+        if (untaggedRoadsFilter.matches(element)) return true
         return element.hasOldInvalidOrAmbiguousCyclewayTags(null)
     }
 
@@ -180,10 +137,6 @@ private val roadsFilter by lazy { """
       and bicycle != no
       and bicycle != designated
       and access !~ private|no
-      and bicycle != use_sidepath
-      and bicycle:backward != use_sidepath
-      and bicycle:forward != use_sidepath
-      and sidewalk != separate
 """.toElementFilterExpression() }
 
 // streets that do not have cycleway tagging yet
@@ -206,16 +159,13 @@ private val untaggedRoadsFilter by lazy { """
         or $notInZone30OrLess
       )
       and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+      and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
+      and sidewalk != separate
 """.toElementFilterExpression() }
 
-private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-    ways with highway ~ path|footway|cycleway|construction
-""".toElementFilterExpression() }
-// highway=construction included, as situation often changes during and after construction
-
-private val notInZone30OrLess =
-    "~\"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})\"" +
-    " ~ \".*(urban|rural|trunk|motorway|nsl_single|nsl_dual)\""
+private val notInZone30OrLess = """
+   ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+"""
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 

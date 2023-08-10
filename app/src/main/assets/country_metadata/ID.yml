@@ -5,7 +5,7 @@ isLeftHandTraffic: true
 mobileCountryCode: 510
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
-officialLanguages: [id, ms, jv, su, mad, min]
+officialLanguages: [id]
 orchardProduces: [rubber, coconut, cacao, coffee, cashew_nut, chilli_pepper, sweet_pepper, guava, mango, mangosteen, nutmeg, pepper, banana, areca_nut, tea, orange, tomato, avocado]
 popularReligions: [muslim, christian, hindu, buddhist, chinese_folk]
 popularSports: [soccer, tennis, basketball, volleyball, badminton]

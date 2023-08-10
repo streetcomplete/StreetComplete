@@ -125,12 +125,12 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
     <string name="quest_address_title">"Mikä on tämän rakennuksen numero?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap-kyselyssovellus"</string>
+    <string name="store_listing_short_description">"OpenStreetMap-kyselysovellus"</string>
     <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella! Näin voit osallistua vapaan kartan kehittämiseen helposti.
 
 Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
 
-Vastauksesi täydentävät OpenStreetMapsia omalla nimelläsi. Et tarvitse sovelluksen lisäksi erillistä OpenStreetMap-editoria."</string>
+Vastauksesi täydentävät OpenStreetMapia omalla nimelläsi. Et tarvitse sovelluksen lisäksi erillistä OpenStreetMap-editoria."</string>
     <string name="quest_name_answer_noName">"Sillä ei ole nimeä…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Ei ollenkaan nimeä?"</string>
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
@@ -522,7 +522,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="label_housenumber">"talon numero"</string>
     <string name="label_blocknumber">"korttelin numero"</string>
     <string name="quest_busStopShelter_covered">"Koko pysäkki on katettu"</string>
-    <string name="quest_ferry_pedestrian_title">"Sopiiko tämä lauttareitti jalakulkijoille?"</string>
+    <string name="quest_ferry_pedestrian_title">"Sopiiko tämä lauttareitti jalankulkijoille?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Sopiiko tämä lautta moottoriajoneuvojen reitiksi?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Kuvan lisääminen tekee ilmoituksesta paljon käyttökelpoisemman."</string>
     <string name="create_new_note_hint">"Paras on kirjoittaa ilmoitus paikallisella kielellä, tai vaihtoehtoisesti englanniksi."</string>
@@ -844,7 +844,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode_team_size_hint">"Työryhmätila toimii 2–12 ihmisen ryhmissä."</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
-    <string name="quest_crossing_type_signals_controlled">"Ylistys ohjataan liikennevaloilla"</string>
+    <string name="quest_crossing_type_signals_controlled">"Ylitys ohjataan liikennevaloilla"</string>
     <string name="undo_confirm_title2">"Kumotaanko seuraava muutos?"</string>
     <string name="synced">"Synkronoitu"</string>
     <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
@@ -905,7 +905,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="about_title_faq">"UKK"</string>
     <string name="quest_buildingLevels_title2">"Kuinka monta tasoa rakennuksessa on kellarin yläpuolella?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kuinka monta tasoa rakennuksen osassa on kellarin yläpuolella?"</string>
-    <string name="quest_crossing_title">"Onko tämän väylän ja tien välissä reunakivetys? Minkälainen?"</string>
     <string name="pref_subtitle_quests_preset_name">"Esiasetus: %s"</string>
     <string name="default_disabled_msg_roofShape">"Tämä kysymystyyppi on oletuksena pois päältä, koska kattojen muotoa ei yleensä näe helposti kadulta. Tämä kysymystyyppi vie myös melko paljon aikaa: monissa tapauksissa se on helpompaa ja tehokkaampaa tehdä kotoa ilmakuvien avulla."</string>
     <string name="quest_religion_animist">"Animismi"</string>
@@ -939,7 +938,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_buildingType_bridge">"Rakennusten välinen silta"</string>
     <string name="quest_laundrySelfService_title2">"Onko tässä pesulassa itsepalvelumahdollisuus?"</string>
     <string name="quest_dietType_explanation_halal">"Halal-tuotteet on valmistettava erityisten sääntöjen mukaisesti, ja Halal-sertifiointilaitokset merkitsevät tuotteet vaatimustenmukaisiksi."</string>
-    <string name="quest_picnicTableCover_title">"Onko tämä pöytä katettu (sateelta suojassa)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Tässä on portaat"</string>
     <string name="quest_barrier_type_passage_conversion">"Muutettu käytäväksi seinällä."</string>
     <string name="quest_barrier_type_gate_conversion">"Muutettu portiksi"</string>
@@ -972,7 +970,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_barrier_bicycle_type_multiple">"Sikaani - yli kaksi estettä"</string>
     <string name="pref_title_language_select">"Valitse kieli"</string>
     <string name="language_default">"Järjestelmän oletus"</string>
-    <string name="on_floor">"lattialla %s:"</string>
+    <string name="on_floor">"kerroksessa %s"</string>
     <string name="select_street_parking_orientation">"Valitse suunta ajoradalle:"</string>
     <string name="select_street_parking_position">"Valitse sijainti:"</string>
     <string name="select_street_parking_no">"Onko täällä liikenne- tai katumerkintöjä?"</string>
@@ -1041,7 +1039,7 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa)."</string>
     <string name="achievement_lifesaver_title">"Hengenpelastaja"</string>
     <string name="achievement_lifesaver_solved_X">"Ratkaisit %d tehtävää, jotka auttavat pelastuspalveluja ja ensiapuhenkilöitä!"</string>
     <string name="quest_fuelSelfService_title">"Onko tämä itsepalveluasema?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Tämä tehtävätyyppi on oletuksena poissa käytöstä, koska se on melko aikaa vievää ja usein vaikeaa tehdä oikean valinnan. Sinun tulisi ottaa tämä tehtävätyyppi käyttöön vain, jos olet todella sitoutunut lisäämään tällaisia tietoja."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Tämä tehtävätyyppi on oletuksena poissa käytöstä, koska se on melko aikaa vievä ja on usein vaikeaa tehdä oikea valinta. Sinun tulisi ottaa tämä tehtävätyyppi käyttöön vain, jos olet todella sitoutunut lisäämään tällaisia tietoja."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Kovapintainen, hyvin vähän irtonaista soraa tai hiekkaa"</string>
     <string name="quest_barrier_path_intersection">"Miten tämä polku ylittää esteen täällä?"</string>
     <string name="quest_barrier_road_intersection">"Miten tämä tie ylittää esteen täällä?"</string>
@@ -1106,7 +1104,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_busStopName_title2">"Mikä tämän pysäkin nimi on?"</string>
     <string name="quest_busStopRef_title2">"Mikä numero tai koodi yksilöi tätä bussipysäkkiä?"</string>
     <string name="quest_busStopShelter_title2">"Onko tällä pysäkillä katosta?"</string>
-    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä taktiilista päällystettä?"</string>
+    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä kosketuspäällystettä?"</string>
     <string name="quest_dietType_halal_name_title2">"Saako täältä halal-tuotteita?"</string>
     <string name="quest_dietType_kosher_name_title2">"Saako täältä kosher-tuotteita?"</string>
     <string name="quest_dietType_vegan_title2">"Onko ruokalistalla vegaanituotteita?"</string>
@@ -1127,7 +1125,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_summit_register_title2">"Onko tällä vuorenhuipulla vieraskirjaa?"</string>
     <string name="quest_surface_title">"Millainen päällyste täällä on?"</string>
     <string name="quest_toiletAvailability_title">"Onko täällä WC:tä?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörtuolilla vessaan?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörätuolilla vessaan?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Oletko varma, etteivät pyöräilijät saa käyttää tätä yksisuuntaista katua molempiin suuntiin? Jos olet epävarma, tarkista onko kadun päässä merkkiä."</string>
     <string name="link_backofyourhand_description">"Kuinka hyvin tunnet ympäristösi? Testaa tietämystäsi paikantamalla kadut."</string>
     <string name="link_notesreview_description">"Näe, suodata ja kommentoi sinun ja muiden tekemiä ilmoituksia. Ilmoitukset on mahdollista selvittää asettamalla ilmoitusten sisältämä tieto kartalle käyttäen iD:tä tai JOSM:ia"</string>
@@ -1233,7 +1231,6 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="overlay_addresses">"Osoitteet"</string>
     <string name="overlay_shops">"Kaupat"</string>
     <string name="name_label">"Nimi:"</string>
-    <string name="vacant_shop_title">"Tyhjä/vapaa kauppatila"</string>
     <string name="unknown_shop_title">"Muunkaltainen paikka"</string>
     <string name="quest_address_answer_no_address">"Täällä ei ole osoitetta"</string>
     <string name="quest_bicycle_barrier_installation_title">"Voiko tämän pyöräilyesteen avata (avaimella tai ilman)?"</string>
@@ -1307,4 +1304,19 @@ Haluatko siirtää nyt?"</string>
     <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
     <string name="overlay_surface">"Pinnat"</string>
     <string name="overlay_path_surface_segregated">"Jaa pyöräily- ja kävelyosuuksiin"</string>
+    <string name="quest_crossing_title2">"Onko tässä suojatietä?"</string>
+    <string name="quest_crossing_yes">"Kyllä (esim. reunakiveys on madallutettu tai tiessä on merkinnät)"</string>
+    <string name="quest_crossing_no">"Ei, mutta ylittäminen on mahdollista"</string>
+    <string name="quest_crossing_prohibited">"Ei, ylittäminen ei ole sallittua tai mahdollista"</string>
+    <string name="quest_hairdresser_title">"Kenelle tämä kampaamo on tarkoitettu?"</string>
+    <string name="quest_hairdresser_male_and_female">"Kaikille"</string>
+    <string name="quest_hairdresser_female_only">"Naisille"</string>
+    <string name="quest_hairdresser_male_only">"Miehille"</string>
+    <string name="quest_hairdresser_not_signed">"Ei ilmoitettu"</string>
+    <string name="quest_amenityCover_title">"Onko tämä katettu? (suojattu sateelta)"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ei kavennettua kaistaa tässä"</string>
+    <string name="quest_tactilePaving_title_steps">"Onko näiden portaiden ylä- ja alapäässä kosketuspäällystettä?"</string>
+    <string name="quest_tactilePaving_steps_top">"Vain ylhäällä"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Vain alhaalla"</string>
+    <string name="overlay_addresses_no_entrance">"Se ei ole sisäänkäynti…"</string>
 </resources>

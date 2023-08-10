@@ -47,7 +47,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
         val sidewalks = LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         sidewalks.applyTo(tagChanges)
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 
     override fun hasChanges(): Boolean =

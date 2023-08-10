@@ -77,10 +77,9 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
             getNode(nodeId)?.takeIf { it.couldBeAKerb() }
         }
 
-    val kerbBarrierNodeIds = mutableSetOf<Long>()
-    ways.asSequence()
+    val kerbBarrierNodeIds = ways.asSequence()
         .filter { it.tags["barrier"] == "kerb" }
-        .flatMapTo(kerbBarrierNodeIds) { it.nodeIds }
+        .flatMapTo(HashSet()) { it.nodeIds }
 
     val anyWays = ways.filter { waysFilter.matches(it) }
     val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)
@@ -103,7 +102,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
-private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
+private fun MapData.findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     /* using asSequence in this function so to not copy potentially huge amounts (e.g. almost all
        nodes of all ways in the data set) of data into temporary lists */
 
@@ -146,6 +145,18 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
         .flatMap { it.nodeIds.allExceptFirstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()
+
+    // skip nodes of ways that already have barrier=kerb node as not one of their endnodes
+    ways.asSequence()
+        .forEach { way ->
+            val hasKerbAsNonEndNode = way.nodeIds.allExceptFirstAndLast().any {
+                getNode(it)?.tags?.get("barrier") == "kerb"
+            }
+            if (hasKerbAsNonEndNode) {
+                connectionsById.remove(way.nodeIds.first())
+                connectionsById.remove(way.nodeIds.last())
+            }
+        }
 
     return connectionsById.keys
 }

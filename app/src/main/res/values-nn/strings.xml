@@ -853,7 +853,6 @@
     <string name="about_title_faq">"Spørsmål og svar"</string>
     <string name="quest_buildingLevels_title2">"Kor mange etasjar over jorda har denne bygningen?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kor mange etasjar over jorda har denne bygningsdelen?"</string>
-    <string name="quest_crossing_title">"Er det ein fortauskant der denne vegen møter vegbana her? Kva type?"</string>
     <string name="pref_subtitle_quests_preset_name">"Oppdragsutval: %s"</string>
     <string name="quest_construction_steps_title">"Er denne trappa no ferdigstilt?"</string>
     <string name="pref_quests_deselect_all">"Vil du fjerna merkinga på alle oppdraga?"</string>

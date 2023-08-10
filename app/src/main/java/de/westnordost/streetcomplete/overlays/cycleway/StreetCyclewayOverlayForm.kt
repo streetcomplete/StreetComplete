@@ -74,7 +74,8 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         updateBicycleBoulevard()
 
         streetSideSelect.transformLastSelection = { item: CyclewayAndDirection, isRight: Boolean ->
-            CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
+            if (item.direction == Direction.BOTH) item
+            else CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
         }
     }
 
@@ -191,7 +192,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         if (bicycleBoulevard == BicycleBoulevard.YES) {
             val tags = StringMapChangesBuilder(element!!.tags)
             bicycleBoulevard.applyTo(tags, countryInfo.countryCode)
-            applyEdit(UpdateElementTagsAction(tags.create()))
+            applyEdit(UpdateElementTagsAction(element!!, tags.create()))
         } else {
             // only tag the cycleway if that is what is currently displayed
             val cycleways = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
@@ -216,7 +217,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         val tags = StringMapChangesBuilder(element!!.tags)
         cycleways.applyTo(tags, countryInfo.isLeftHandTraffic)
         bicycleBoulevard.applyTo(tags, countryInfo.countryCode)
-        applyEdit(UpdateElementTagsAction(tags.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tags.create()))
     }
 
     /* ----------------------------- AStreetSideSelectOverlayForm ------------------------------- */

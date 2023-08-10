@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
@@ -26,10 +24,6 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (savedInstanceState == null) {
-            childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
-        }
 
         noteInput.doAfterTextChanged { updateOkButtonEnablement() }
         okButton.setOnClickListener { onClickOk() }

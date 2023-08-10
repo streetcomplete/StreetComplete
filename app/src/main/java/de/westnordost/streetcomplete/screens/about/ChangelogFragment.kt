@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogWhatsNewBinding
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
+import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
@@ -25,22 +27,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /** Shows the full changelog */
-class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
+class ChangelogFragment : TwoPaneDetailFragment(R.layout.fragment_changelog), HasTitle {
 
     private val binding by viewBinding(FragmentChangelogBinding::bind)
 
+    override val title: String get() = getString(R.string.about_title_changelog)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         viewLifecycleScope.launch {
             val changelog = readChangelog(resources)
             binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        activity?.setTitle(R.string.about_title_changelog)
     }
 }
 
@@ -50,7 +51,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
-        val binding = FragmentChangelogBinding.inflate(LayoutInflater.from(context))
+        val binding = DialogWhatsNewBinding.inflate(LayoutInflater.from(context))
         binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         setTitle(R.string.title_whats_new)

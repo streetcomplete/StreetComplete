@@ -17,8 +17,9 @@
         android:background="@drawable/background_edittext_outline"
         />
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/attachPhotoFragment"
+        android:name="de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

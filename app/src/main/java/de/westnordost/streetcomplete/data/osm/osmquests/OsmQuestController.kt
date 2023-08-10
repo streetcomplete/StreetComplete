@@ -349,8 +349,7 @@ class OsmQuestController internal constructor(
     fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
         val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
 
-        val elementKeys = HashSet<ElementKey>()
-        questKeysWithTimestamp.mapTo(elementKeys) {
+        val elementKeys = questKeysWithTimestamp.mapTo(HashSet()) {
             ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
         }
 

@@ -908,7 +908,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="about_title_faq">"DUK"</string>
     <string name="quest_buildingLevels_title2">"Kiek rūsio aukštų turi šis pastatas?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kiek aukštų virš rūsio turi ši pastato dalis?"</string>
-    <string name="quest_crossing_title">"Ar čia, kur šis kelias jungiasi su šiuo keliu, yra borteliai? Kokie?"</string>
     <string name="pref_subtitle_quests_preset_name">"Išankstinis nustatymas: %s"</string>
     <string name="default_disabled_msg_roofShape">"Šis paieškos tipas pagal numatytuosius nustatymus yra išjungtas, nes stogo formos dažnai nėra gerai matomos iš gatvės. Šis užduoties tipas taip pat užima nemažai laiko; daugeliu atvejų paprasčiau ir efektyviau tai kartografuoti iš aerofotografinių nuotraukų namuose."</string>
     <string name="quest_religion_animist">"Animistai"</string>
@@ -942,7 +941,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_buildingType_bridge">"Tiltas tarp pastatų (dangoraižis)"</string>
     <string name="quest_laundrySelfService_title2">"Ar šioje skalbykloje teikiamos savitarnos paslaugos?"</string>
     <string name="quest_dietType_explanation_halal">"Halal produktai turi būti ruošiami pagal specialias taisykles, o Halal sertifikavimo agentūros pažymi, kad produktai atitinka reikalavimus."</string>
-    <string name="quest_picnicTableCover_title">"Ar šis pikniko stalas yra dengtas (apsaugotas nuo lietaus)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Šie žingsniai"</string>
     <string name="quest_barrier_type_passage_conversion">"Paversta perėjimu sienoje, tvoroje ir pan."</string>
     <string name="quest_barrier_type_gate_conversion">"Paversta į vartus"</string>

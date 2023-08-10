@@ -281,7 +281,9 @@
                         "gate": "Kapija",
                         "hedge": "Živica",
                         "kerb": "Rubnjak",
+                        "lift_gate": "Rampa",
                         "retaining_wall": "Potporni zid",
+                        "swing_gate": "Zakretna rampa",
                         "wall": "Zid"
                     }
                 },
@@ -291,12 +293,26 @@
                 "bath/sand_bath": {
                     "label": "Pješčano kupalište (Suna Yu)"
                 },
+                "beauty": {
+                    "label": "Usluge",
+                    "options": {
+                        "cosmetics": "Kozmetika",
+                        "hair_removal": "Depilacija",
+                        "nails": "Manikura/pedikura",
+                        "skin_care": "Njega kože",
+                        "tanning": "Solarij",
+                        "waxing": "Depilacija voskom"
+                    }
+                },
                 "bench": {
                     "label": "Klupa",
                     "terms": "klupa"
                 },
                 "bicycle_parking": {
-                    "label": "Vrsta"
+                    "label": "Vrsta",
+                    "options": {
+                        "building": "U zgradi"
+                    }
                 },
                 "bin": {
                     "label": "Kanta za smeće",
@@ -345,6 +361,7 @@
                     "terms": "zgrada,građevina"
                 },
                 "building/levels": {
+                    "label": "Broj katova zajedno sa prizemljem",
                     "terms": "razine,katovi"
                 },
                 "building/levels/underground": {
@@ -660,7 +677,7 @@
                 },
                 "fire_hydrant/type": {
                     "options": {
-                        "pillar": "Stub/nadzemni",
+                        "pillar": "Stup/nadzemni",
                         "underground": "Podzemni",
                         "wall": "Zid"
                     }
@@ -898,6 +915,7 @@
                     "terms": "razina,kat"
                 },
                 "level_semi": {
+                    "label": "Kat",
                     "terms": "razine,katovi"
                 },
                 "lifeguard": {
@@ -1160,17 +1178,6 @@
                         "surface": "Površinski",
                         "underground": "Podzemni"
                     }
-                },
-                "parking/orientation": {
-                    "label": "Orijentacija",
-                    "options": {
-                        "diagonal": "Dijagonalno na ulicu",
-                        "parallel": "Paralelno sa ulicom",
-                        "perpendicular": "Okomito na ulicu"
-                    }
-                },
-                "parking/side/orientation": {
-                    "label": "Orijentacija parkiranja"
                 },
                 "payment_multi": {
                     "label": "Načini plaćanja",
@@ -1467,15 +1474,6 @@
                     "options": {
                         "handball": "Rukomet"
                     }
-                },
-                "sport_ice": {
-                    "label": "Sportovi"
-                },
-                "sport_racing_motor": {
-                    "label": "Sportovi"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sportovi"
                 },
                 "stars": {
                     "label": "Zvjezdice",
@@ -2096,7 +2094,7 @@
                     "name": "Košara za pseći izmet"
                 },
                 "amenity/waste_basket": {
-                    "name": "Kanta za smeće",
+                    "name": "Koš za smeće",
                     "terms": "smeće,koš za smeće,kanta za smeće"
                 },
                 "amenity/waste_disposal": {

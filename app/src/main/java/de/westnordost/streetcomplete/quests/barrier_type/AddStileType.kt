@@ -26,10 +26,9 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     """.toElementFilterExpression() }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val excludedWayNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val excludedWayNodeIds = mapData.ways
             .filter { excludedWaysFilter.matches(it) }
-            .flatMapTo(excludedWayNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
 
         return mapData.nodes
             .filter { stileNodeFilter.matches(it) && it.id !in excludedWayNodeIds }

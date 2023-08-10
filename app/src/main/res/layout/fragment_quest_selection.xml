@@ -4,7 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <RelativeLayout
+        android:layout_below="@id/toolbar"
         android:id="@+id/tableHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +28,7 @@
 
         <TextView
             android:id="@+id/column_enabled"
-            android:layout_width="64dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="@string/quest_enabled"

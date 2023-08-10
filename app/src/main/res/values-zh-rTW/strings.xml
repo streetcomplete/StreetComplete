@@ -906,7 +906,6 @@
     <string name="about_title_faq">"常見問題"</string>
     <string name="quest_buildingLevels_title2">"這棟建築地下室之上有幾層？"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"這棟建築部分的地下室之上有幾層？"</string>
-    <string name="quest_crossing_title">"這邊這條路與這條路的交匯處是否有路緣石？ 哪一種呢？ "</string>
     <string name="pref_subtitle_quests_preset_name">"預設組合：%s"</string>
     <string name="default_disabled_msg_roofShape">"這個任務類型已經預設關閉，因為屋頂形狀常常無法直接從街上看出來。這個任務類型也相當花時間；大部分的情形之下，直接在家從空照圖繪製更簡單也更有效率。"</string>
     <string name="quest_religion_animist">"泛靈論"</string>
@@ -940,7 +939,6 @@
     <string name="quest_buildingType_bridge">"建築之間的橋樑 (天橋)"</string>
     <string name="quest_laundrySelfService_title2">"這間洗衣店是否有提供自助服務？"</string>
     <string name="quest_dietType_explanation_halal">"清真產品的準備需符合特別的規則，清真認證單位需要認證產品。"</string>
-    <string name="quest_picnicTableCover_title">"這個野餐桌是否有遮蓋 (能夠擋雨)？"</string>
     <string name="quest_generic_answer_is_actually_steps">"這部分是階梯"</string>
     <string name="quest_barrier_type_passage_conversion">"轉換成牆壁/圍欄/當中的通道。 "</string>
     <string name="quest_barrier_type_gate_conversion">"轉換成閘門"</string>
@@ -1236,7 +1234,6 @@
     <string name="overlay_addresses">"地址"</string>
     <string name="overlay_shops">"商店"</string>
     <string name="name_label">"名稱："</string>
-    <string name="vacant_shop_title">"閒置店面"</string>
     <string name="unknown_shop_title">"其他類型"</string>
     <string name="quest_address_answer_no_address">"這裡沒有地址"</string>
     <string name="quest_bicycle_barrier_installation_title">"這裡的單車障礙物是否能開啟 (有或沒有鑰匙)？"</string>
@@ -1300,4 +1297,37 @@
 &lt;p&gt;設定每一次的開始 - 以及結束點，要將你手直直朝下 (因此你會在上面看到白色箭頭) 來完全避免水平測量的問題。&lt;/p&gt;
 &lt;p&gt;而垂直測量部分，你需要透過不同方向檢視，檢查開始點相較地面沒有跑掉。&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"這應用程式 &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) 來運作，並且由 Google 採用 &lt;a href=\"https://policies.google.com/privacy\"&gt;Google 隱私政策&lt;/a&gt; 提供服務與管理。"</string>
+    <string name="default_disabled_msg_seasonal">"這類型的任務已經預設關閉，因為需要在一年特定時間再次檢查狀況。"</string>
+    <string name="quest_gritBinSeasonal_title">"除了冬天之外這裡也有嗎？"</string>
+    <string name="street_parking_staggered_on_street">"在道路的另一側"</string>
+    <string name="street_parking_staggered_half_on_kerb">"部分道路的另一側"</string>
+    <string name="quest_traffic_signals_sound_description">"提示：檢查是否有擴音器，不是所有的警示音都是透過按鈕啟用。"</string>
+    <string name="quest_presets_duplicate">"重覆"</string>
+    <string name="label_block">"街區"</string>
+    <string name="quest_address_answer_block">"一個街區以內…"</string>
+    <string name="quest_address_answer_no_block">"超過一個街區距離…"</string>
+    <string name="quest_surface_value_mud">"強固泥巴"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"這裡沒有廁所"</string>
+    <string name="unknown_surface_title">"其他種類的舖面"</string>
+    <string name="overlay_surface">"舖面"</string>
+    <string name="overlay_path_surface_segregated">"分隔為單車與步行部分"</string>
+    <string name="quest_crossing_title2">"這種有穿越道嗎？"</string>
+    <string name="quest_crossing_yes">"是 (例如這邊路緣比較低或是有標示)"</string>
+    <string name="quest_crossing_no">"無，但仍可以穿越"</string>
+    <string name="quest_crossing_prohibited">"無，禁止穿越或是無法"</string>
+    <string name="quest_hairdresser_title">"那種類型的顧戶會來光顧剪頭髮？"</string>
+    <string name="quest_hairdresser_male_and_female">"任何人"</string>
+    <string name="quest_hairdresser_female_only">"女性"</string>
+    <string name="quest_hairdresser_male_only">"男性"</string>
+    <string name="quest_hairdresser_not_signed">"沒有標示"</string>
+    <string name="quest_amenityCover_title">"這裡有遮避嗎 (能夠遮雨)？"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"路緣延伸"</string>
+    <string name="lane_narrowing_traffic_calming_island">"槽化島"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"S形彎道"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"路緣延伸 + 安全島"</string>
+    <string name="lane_narrowing_traffic_calming_none">"這裡沒有窄車道"</string>
+    <string name="quest_tactilePaving_title_steps">"這些階梯頂部與最底部的地方有導盲磚嗎？"</string>
+    <string name="quest_tactilePaving_steps_top">"只有在頂部"</string>
+    <string name="quest_tactilePaving_steps_bottom">"只有在底部"</string>
+    <string name="overlay_addresses_no_entrance">"這裡不是入口..."</string>
 </resources>

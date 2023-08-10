@@ -125,8 +125,9 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 * [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
-* [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
-  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - used by osmfeatures. In StreetComplete it powers display of feature type, object classification in shop overlay and more
+* [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
+  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
+  * [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
 * [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 
 ### Created for StreetComplete

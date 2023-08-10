@@ -8,8 +8,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, CyclewaySegregation>() {
 
     override val items get() =
-        listOf(CyclewaySegregation(true), CyclewaySegregation(false))
-            .map { it.asItem(countryInfo.isLeftHandTraffic) }
+        CyclewaySegregation.values().map { it.asItem(countryInfo.isLeftHandTraffic) }
 
     override val itemsPerRow = 2
 

@@ -2,3 +2,7 @@ import:
     - streetcomplete.yaml
     - streetcomplete-dark-style.yaml
 
+global:
+    geometry_area_color: '#22ff6600' # accent color + alpha
+    geometry_line_color: '#44ff6600'
+    geometry_point_color: '#88ff6600'

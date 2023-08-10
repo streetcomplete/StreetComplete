@@ -163,20 +163,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "رقم المبنى/ رقم القطعة",
                         "neighbourhood": "حي",
-                        "neighbourhood!jp": "تشومي / عزة / كوازا",
                         "place": "المكان",
                         "postcode": "الرمز البريدي",
                         "province": "المحافظة",
                         "province!cn": "المحافظة/البلدية/AR/SAR",
                         "province!jp": "العمالة (تقسيم إداري)",
                         "quarter": "مربع",
-                        "quarter!jp": "أزا / ماشي",
                         "state": "ولاية",
                         "street": "شارع",
                         "subdistrict": "مديرية فرعية",
                         "subdistrict!vn": "جناح/جمعية/بلدة صغيرة",
                         "suburb": "ضاحية",
-                        "suburb!jp": "جناح",
                         "unit": "وحدة"
                     },
                     "terms": "العنوان,عنوان"
@@ -1385,8 +1382,7 @@
                         "critical": "يتجاوز المألوف: مسموح فقط للفرسان والخيول ذوي الخبرة، يوجد عقبات كبيرة، ويجب فحص الجسور بعناية.",
                         "dangerous": "خطيرة: مقبول فقط للراكبين والخيول ذوي الخبرة الكبيرة، وفقط في الطقس الجيد.",
                         "demanding": "بحذر: طريق غير مستوي، عوائق صعبة في بعض الأحيان.",
-                        "difficult": "صعبة: طريق ضيق ومكشوف. قد يحتوي على عوائق لتخطيها، وممرات ضيقة.",
-                        "impossible": "وعرة: الطرق والجسور غير مقبولة للخيول. ضيق جدا، ودعم غير كاف، وعوائق كالسلالم. خطر على الحياة."
+                        "difficult": "صعبة: طريق ضيق ومكشوف. قد يحتوي على عوائق لتخطيها، وممرات ضيقة."
                     },
                     "placeholder": "صعب، خطير...",
                     "terms": "صعوبة ركوب الخيل"
@@ -1895,14 +1891,6 @@
                         "street_side": "جانب الشارع",
                         "surface": "أرضية",
                         "underground": "تحت الأرض"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "الاتجاه",
-                    "options": {
-                        "diagonal": "قطري بالنسبة للشارع",
-                        "parallel": "موازية للشارع",
-                        "perpendicular": "يلتقي مع الشارع بزاوية مستقيمة"
                     }
                 },
                 "parking_entrance": {
@@ -2573,44 +2561,6 @@
                 },
                 "sport": {
                     "label": "الرياضات"
-                },
-                "sport_ice": {
-                    "label": "الرياضات",
-                    "options": {
-                        "curling": "كيرلنغ",
-                        "ice_hockey": "الهوكى الجليدى",
-                        "ice_skating": "التزحلق على الجليد",
-                        "ice_stock": "مخزون الجليد",
-                        "multi": "متعددة"
-                    }
-                },
-                "sport_pub": {
-                    "label": "الرياضات",
-                    "options": {
-                        "billiards": "البلياردو",
-                        "darts": "رمي الاسهم المريشة",
-                        "table_soccer": "كرة قدم الطاولة"
-                    },
-                    "terms": "رياضات"
-                },
-                "sport_racing_motor": {
-                    "label": "الرياضات",
-                    "options": {
-                        "karting": "الكارتينج",
-                        "motocross": "موتوكروس",
-                        "motor": "رياضة السيارات",
-                        "speedway": "طريق سريع للدراجات النارية"
-                    }
-                },
-                "sport_racing_nonmotor": {
-                    "label": "الرياضة",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "ركوب الدراجات",
-                        "dog_racing": "سباق الكلاب",
-                        "horse_racing": "سباق خيول",
-                        "running": "جري"
-                    }
                 },
                 "stars": {
                     "label": "نجوم",
@@ -3548,10 +3498,6 @@
                     "name": "طبيب",
                     "terms": "طبيب"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "طبيب أمراض نساء",
-                    "terms": "طبيب أمراض نساء"
-                },
                 "amenity/dojo": {
                     "name": "دوجو /  أكاديمية الفنون القتالية",
                     "terms": "دوجو,أكاديمية الفنون القتالية"
@@ -3684,10 +3630,6 @@
                 "amenity/kindergarten": {
                     "name": "أرض حضانة / روض",
                     "terms": "روضة,رياض أطفال,تمهيدي ، حضانة ، روض"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "بركة علاج القدم بالماء",
-                    "terms": "بركة علاج القدم بالماء"
                 },
                 "amenity/language_school": {
                     "name": "مدرسة لغات",
@@ -4457,10 +4399,6 @@
                 "barrier/kissing_gate": {
                     "name": "بوابة لا تسمح بعبور الماشية",
                     "terms": "بوابة منع الماشية"
-                },
-                "barrier/log": {
-                    "name": "شجرة ساقطة",
-                    "aliases": "شجرة واقعة"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "حاجز منع مرور الدراجات النارية",
@@ -5784,10 +5722,6 @@
                 "landuse/military/base/navy": {
                     "name": "قاعدة بحرية",
                     "terms": "قاعدة بحرية,قاعدة مائية"
-                },
-                "landuse/military/danger_area": {
-                    "name": "منطقة خطرة",
-                    "terms": "منطقة خطر; خطر"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "تدريب عسكري لتجاوز العقبات",
@@ -8021,8 +7955,7 @@
                     "terms": "محل بيع أجهزة عالية الدقة"
                 },
                 "shop/hobby": {
-                    "name": "متاجر الهوايات",
-                    "terms": "متاجر الهوايات"
+                    "name": "متاجر الهوايات"
                 },
                 "shop/household_linen": {
                     "name": "محل المفروشات والأغطية المنزلية",

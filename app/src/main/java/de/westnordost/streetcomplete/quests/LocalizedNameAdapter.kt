@@ -288,8 +288,7 @@ class LocalizedNameAdapter(
                 if (emptyNamesHint == null) input.requestFocus()
             }
             input.setText(localizedName.name)
-            val languageTag = localizedName.languageTag
-            buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
+            updateLanguage(localizedName.languageTag)
 
             // first entry is bold (the first entry is supposed to be the "default language", I
             // hope that comes across to the users like this. Otherwise, a text hint is necessary)
@@ -307,13 +306,14 @@ class LocalizedNameAdapter(
 
                 showLanguageSelectMenu(v, notAddedLanguageTags) { languageTag ->
                     localizedName.languageTag = languageTag
-                    buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
+                    updateLanguage(languageTag)
                     updateAddLanguageButtonVisibility()
-                    updateNameSuggestions()
-                    updateAbbreviations()
                 }
             }
+        }
 
+        private fun updateLanguage(languageTag: String) {
+            buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
             updateNameSuggestions()
             updateAbbreviations()
         }
@@ -335,6 +335,7 @@ class LocalizedNameAdapter(
         }
 
         private fun updateAbbreviations() {
+            autoCorrectAbbreviations.abbreviations = null
             // load abbreviations from file in background
             viewLifecycleScope.launch {
                 autoCorrectAbbreviations.abbreviations = withContext(Dispatchers.IO) {

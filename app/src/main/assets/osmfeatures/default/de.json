@@ -115,7 +115,7 @@
                         "customers": "Nur für Kunden",
                         "no": "Kein Zugang",
                         "permissive": "Bis auf Widerruf",
-                        "permit": "Nur für Berechtigte",
+                        "permit": "Nur für Berechtige, Berechtigung wird i. d. R. erteilt",
                         "private": "Privat",
                         "unknown": "Unbekannt",
                         "yes": "Öffentlich"
@@ -163,20 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Hausnr.",
                         "neighbourhood": "Viertel",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Ort",
                         "postcode": "Postleitzahl",
                         "province": "Regierungsbezirk, Provinz",
                         "province!cn": "Provinz/Gemeinde/AR/SAR",
                         "province!jp": "Präfektur",
                         "quarter": "Quartier",
-                        "quarter!jp": "Ōaza/Machi",
+                        "quarter!jp": "Ōaza",
                         "state": "Bundesland",
                         "street": "Straße",
                         "subdistrict": "Stadtbezirk",
                         "subdistrict!vn": "Bezirk/Gemeinde/Städtchen",
                         "suburb": "Stadtteil",
-                        "suburb!jp": "Bezirk",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Stiege/Bauteil"
                     },
                     "terms": "adresse"
@@ -291,6 +291,31 @@
                 "ascent": {
                     "label": "Anstieg",
                     "terms": "anstieg,kumulierter positiver höhenunterschied,höhenmeter,aufstieg"
+                },
+                "athletics_pitch": {
+                    "label": "Disziplin",
+                    "options": {
+                        "discus_throw": "Diskuswurf",
+                        "hammer_throw": "Hammerwurf",
+                        "high_jump": "Hochsprung",
+                        "javelin_throw": "Speerwurf",
+                        "long_jump": "Weitsprung",
+                        "pole_vault": "Stabhochsprung",
+                        "shot_put": "Kugelstoßen",
+                        "triple_jump": "Dreisprung"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Disziplin",
+                    "options": {
+                        "javelin_throw": "Speerwurf",
+                        "long_jump": "Weitsprung",
+                        "pole_vault": "Stabhochsprung",
+                        "running": "Laufen",
+                        "sprint": "Kurzstreckenlauf",
+                        "steeplechase": "Hindernislauf",
+                        "triple_jump": "Dreisprung"
+                    }
                 },
                 "atm": {
                     "label": "Geldautomat"
@@ -432,6 +457,14 @@
                         "wall_loops": "Vorderradklemme"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Fahrradstraße",
+                    "options": {
+                        "undefined": "Nein",
+                        "yes": "Ja"
+                    },
+                    "terms": "fahrradstraße"
+                },
                 "bike_ride": {
                     "label": "Bike and Ride",
                     "terms": "b+r,radeln und mitfahren,fahrradbahnhof"
@@ -511,6 +544,10 @@
                     "label": "Typ",
                     "placeholder": "Standard"
                 },
+                "bridge/ref": {
+                    "label": "Bauwerksnummer",
+                    "terms": "brückennummer,anlagennummer,bauwerknummer"
+                },
                 "bridge/support": {
                     "label": "Typ"
                 },
@@ -581,6 +618,10 @@
                         "warehouse": "Lagerhalle"
                     },
                     "terms": "gebäude,haus,bauwerk"
+                },
+                "building/colour": {
+                    "label": "Fassadenfarbe",
+                    "terms": "fassade,wandfarbe,außenwandfarbe,aussenwandfarbe,gebäudefarbe"
                 },
                 "building/flats": {
                     "label": "Wohnungen",
@@ -748,7 +789,12 @@
                     "label": "Leerungszeiten"
                 },
                 "collector": {
-                    "label": "Art der Sammlerartikel"
+                    "label": "Art der Sammlerartikel",
+                    "options": {
+                        "coins": "Münzen",
+                        "comics": "Comic-Hefte",
+                        "stamps": "Briefmarken"
+                    }
                 },
                 "colour": {
                     "label": "Farbe",
@@ -769,10 +815,23 @@
                     "label": "Typ"
                 },
                 "consulate": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "consular_agency": "Konsularagentur",
+                        "consular_office": "Konsularbüro",
+                        "consulate_general": "Generalkonsulat",
+                        "honorary_consul": "Honorarkonsul",
+                        "residence": "Offizielle Residenz eines Konsuls",
+                        "yes": "Konsulat"
+                    }
                 },
                 "consulting": {
                     "label": "Expertise"
+                },
+                "contact/facebook": {
+                    "label": "Facebook Benutzername oder URL",
+                    "placeholder": "https://www.facebook.com/LokalesGeschäft",
+                    "terms": "facebook,fb"
                 },
                 "contact/webcam": {
                     "label": "Webcam-URL",
@@ -984,8 +1043,10 @@
                         "coffee_shop": "Kaffeehaus",
                         "dessert": "Nachtisch",
                         "donut": "Donut",
+                        "filipino": "Philippinisch",
                         "fish": "Fisch",
                         "french": "Französisch",
+                        "georgian": "Georgisch",
                         "german": "Deutsch",
                         "greek": "Griechisch",
                         "hot_dog": "Hotdog",
@@ -1002,6 +1063,7 @@
                         "mexican": "Mexikanisch",
                         "pankcake": "Pfannkuchen",
                         "pasta": "Teigwaren",
+                        "peruvian": "Peruanisch",
                         "pizza": "Pizza",
                         "polish": "Polnisch",
                         "portuguese": "Portugiesisch",
@@ -1014,8 +1076,10 @@
                         "steak_house": "Steakhaus",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanisch",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Thailändisch",
                         "turkish": "Türkisch",
+                        "ukrainian": "Ukrainisch",
                         "vietnamese": "Vietnamesisch"
                     },
                     "terms": "essensrichtung,küchenstil,essensart,gerichte,kulinarische richtung,landesküche,küche"
@@ -1076,6 +1140,9 @@
                 },
                 "dance/style": {
                     "label": "Tanzstile"
+                },
+                "dance/teaching": {
+                    "label": "Bietet Tanzunterricht"
                 },
                 "date": {
                     "label": "Datum"
@@ -1164,7 +1231,12 @@
                     "terms": "glutenfrei,frutarisch,halal,koscherm,lactosefrei,fleisch,fisch,roh,vegetarisch,vegan,ernährungsbesonderheiten,ernährungseinschränkungen"
                 },
                 "diplomatic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "consulate": "Konsulat",
+                        "embassy": "Botschaft",
+                        "liaison": "Diplomatisches Verbindungsbüro"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "diplomatische Dienste"
@@ -1229,7 +1301,12 @@
                     "label": "Typ"
                 },
                 "dock": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "drydock": "Trockendock",
+                        "floating": "Schwimmdock",
+                        "tidal": "Dockhafen"
+                    }
                 },
                 "dog": {
                     "label": "Hunde",
@@ -1384,6 +1461,35 @@
                         "pipe": "verschlossenes Rohr",
                         "underground": "Unterirdisch",
                         "wall": "Wandanschluss"
+                    }
+                },
+                "fire_mains": {
+                    "label": "Netzwerk-Typ",
+                    "options": {
+                        "dry": "Trockene Steigleitung",
+                        "no": "Nein",
+                        "wet": "Nasse Steigleitung",
+                        "yes": "unbekannter Typ"
+                    }
+                },
+                "fire_service_inlet": {
+                    "label": "Form",
+                    "options": {
+                        "pillar": "Überflurhydrant",
+                        "pipe": "Standrohr",
+                        "underground": "Unterflurhydrant",
+                        "wall": "Wand"
+                    },
+                    "terms": "form"
+                },
+                "fire_sprinkler": {
+                    "label": "Sprinkleranlage",
+                    "options": {
+                        "dry": "Trockenanlage",
+                        "no": "Nein",
+                        "pre-action": "Vorgesteuerte Sprinkleranlage (Preaction System)",
+                        "wet": "Nassanlage (mit Wasser gefüllt)",
+                        "yes": "Unbekannter Typ"
                     }
                 },
                 "fireplace": {
@@ -1721,7 +1827,33 @@
                     }
                 },
                 "historic": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "archaeological_site": "Archäologische Stätte",
+                        "bomb_crater": "Bombenkrater",
+                        "boundary_stone": "Grenzstein",
+                        "building": "Historisches Gebäude",
+                        "castle": "Burg/Schloss",
+                        "charcoal_pile": "Kohlenmeiler",
+                        "church": "Historische Kirche",
+                        "city_gate": "Stadttor",
+                        "citywalls": "Stadtmauer",
+                        "fort": "Historisches Fort",
+                        "manor": "Herrenhaus",
+                        "memorial": "Denkmal",
+                        "milestone": "Meilenstein",
+                        "mine": "Mine",
+                        "mine_shaft": "Minenschacht",
+                        "monument": "Großdenkmal",
+                        "pillory": "Pranger",
+                        "railway": "Historische Eisenbahn",
+                        "ruins": "Ruinen",
+                        "shieling": "Alm",
+                        "tomb": "Grabstätte",
+                        "wayside_cross": "Wegkreuz",
+                        "wayside_shrine": "Bildstock",
+                        "wreck": "Schiffswrack"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Historische Zivilisation"
@@ -1769,7 +1901,7 @@
                         "dangerous": "Gefährlich: Nur für erfahrenen Reiter und Pferde und nur bei gutem Wetter passierbar. Absteigen.",
                         "demanding": "Mit Vorsicht benutzen: Unebener Weg, teilweise schwierige Passagen.",
                         "difficult": "Schwierig: Weg schmal und ausgesetzt. Kann Hindernisse zum Übersteigen und schmale Passagen beeinhalten.",
-                        "impossible": "Unpassierbar: Weg oder Brücke für Pferde nicht benutzbar. Zu schmal, unzureichende Unterstützung, Hindernisse wie Leitern. Lebensgefahr."
+                        "impossible": "Unpassierbar: Der Weg oder die Brücke ist für Pferde nicht passierbar. Zu schmal, unzureichende Unterstützung, Hindernisse wie Leitern. Lebensgefahr."
                     },
                     "placeholder": "schwierig, gefährlich ...",
                     "terms": "reitschwierigkeitsgrad,reitschwierigkeit"
@@ -1872,7 +2004,8 @@
                     "terms": "kreuzung"
                 },
                 "kerb": {
-                    "label": "Bordstein"
+                    "label": "Bordstein",
+                    "terms": "bordstein,kantstein,randstein,bordsteinkante"
                 },
                 "kerb/height": {
                     "label": "Höhe"
@@ -1882,7 +2015,12 @@
                     "terms": "küchenzeile,kochgelegenheit,pantry"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Kneippbeckentyp"
+                    "label": "Kneippbecken",
+                    "options": {
+                        "arm": "Armbad",
+                        "face": "Gesichtsbecken",
+                        "foot": "Wassertreten"
+                    }
                 },
                 "label": {
                     "label": "Label"
@@ -2136,12 +2274,27 @@
                     "placeholder": "20, 30, 40...",
                     "terms": "minimalgeschwindigkeit"
                 },
+                "mobile": {
+                    "label": "Mobiltelefon",
+                    "placeholder": "+49 170 123 4567",
+                    "terms": "handy,handynummer,mobilnummer,mobilfunk,mobilfunknummer,telefon,smartfone,smartphone"
+                },
                 "model": {
                     "label": "Modell",
                     "terms": "modell"
                 },
                 "monitoring_multi": {
                     "label": "Messung"
+                },
+                "mooring": {
+                    "label": "Festmachen",
+                    "options": {
+                        "commercial": "Nur Berufsschifffahrt",
+                        "guest": "Nur Gäste",
+                        "no": "Verboten",
+                        "private": "Nur Privat",
+                        "yes": "Erlaubt"
+                    }
                 },
                 "mtb/scale": {
                     "label": "Mountainbike-Schwierigkeitsgrad",
@@ -2362,6 +2515,9 @@
                     },
                     "terms": "biologische produkte,naturprodukte"
                 },
+                "orientation/orientation_parking": {
+                    "label": "Ausrichtung"
+                },
                 "outdoor_seating": {
                     "label": "Außenbestuhlung",
                     "terms": "gastgarten,schanigarten"
@@ -2401,14 +2557,6 @@
                         "street_side": "Straßenrand",
                         "surface": "Ebenerdig",
                         "underground": "Tiefgarage"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Ausrichtung",
-                    "options": {
-                        "diagonal": "Diagonal zur Straße",
-                        "parallel": "Parallel zur Straße",
-                        "perpendicular": "Quer zur Straße"
                     }
                 },
                 "parking/side/orientation": {
@@ -2668,7 +2816,8 @@
                         "lamp": "Befestigt an Pfosten/Mast",
                         "pillar": "Freistehender Kasten",
                         "wall": "Eingemauert"
-                    }
+                    },
+                    "terms": "typ"
                 },
                 "power": {
                     "label": "Typ"
@@ -3033,6 +3182,14 @@
                         "other": "Andere"
                     }
                 },
+                "seamark/harbour/category_marina": {
+                    "label": "Liegeplatz mit Ausstattung",
+                    "options": {
+                        "marina": "Ja",
+                        "marina_no_facilities": "Nein"
+                    },
+                    "terms": "liegeplatz mit ausstattung"
+                },
                 "seamark/mooring/category": {
                     "label": "Kategorie"
                 },
@@ -3223,74 +3380,62 @@
                         "baseball": "Baseball",
                         "basketball": "Basketball",
                         "beachvolleyball": "Beachvolleyball",
+                        "bmx": "BMX",
                         "boules": "Boule/Boccia",
                         "bowls": "Bowls",
+                        "canoe": "Kanusport",
                         "climbing": "Klettern",
                         "cricket": "Cricket",
+                        "curling": "Curling",
                         "cycling": "Radfahren",
+                        "disc_golf": "Discgolf",
+                        "dog_racing": "Hunderennen",
                         "equestrian": "Pferdesport",
                         "fitness": "Fitness Training",
                         "free_flying": "Paragliding / Gleitschirmfliegen",
                         "futsal": "Futsal",
+                        "gaelic_games": "Gälische Sportarten",
                         "golf": "Golf",
                         "gymnastics": "Turnen / Gymnastik",
                         "handball": "Handball",
                         "horse_racing": "Pferderennen",
+                        "ice_hockey": "Eishockey",
+                        "ice_skating": "Eislaufen",
+                        "ice_stock": "Eisstockschießen",
                         "karting": "Kartsport",
                         "motocross": "Motocross",
                         "motor": "Motorsport",
+                        "multi": "Mehrere Sportarten",
                         "netball": "Netball",
                         "padel": "Padel",
+                        "pelota": "Pelota",
                         "rugby_union": "Rugby Union",
                         "running": "Laufsport",
+                        "scuba_diving": "Tauchen",
                         "shooting": "Schießsport",
                         "skateboard": "Skateboard",
                         "skiing": "Skisport",
                         "soccer": "Fussball",
                         "softball": "Softball",
+                        "speedway": "Speedway (Motorradrennsport)",
                         "swimming": "Schwimmsport",
                         "table_tennis": "Tischtennis",
                         "tennis": "Tennis",
                         "volleyball": "Volleyball"
                     }
                 },
-                "sport_ice": {
-                    "label": "Sportarten",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Eishockey",
-                        "ice_skating": "Eislaufen",
-                        "ice_stock": "Eisstockschießen",
-                        "multi": "Mehrere"
-                    }
+                "sport/sport_ice": {
+                    "label": "Sportarten"
                 },
-                "sport_pub": {
+                "sport/sport_pub": {
                     "label": "Sportarten",
-                    "options": {
-                        "billiards": "Billard",
-                        "darts": "Darts",
-                        "table_soccer": "Tischfußball"
-                    },
                     "terms": "sport,sportart,sportarten"
                 },
-                "sport_racing_motor": {
-                    "label": "Sportarten",
-                    "options": {
-                        "karting": "Go-Kart",
-                        "motocross": "Motocross",
-                        "motor": "Motorsport",
-                        "speedway": "Speedway (Bahnsport)"
-                    }
+                "sport/sport_racing_motor": {
+                    "label": "Sportarten"
                 },
-                "sport_racing_nonmotor": {
-                    "label": "Sportarten",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Radfahren",
-                        "dog_racing": "Hunderennen",
-                        "horse_racing": "Pferderennen",
-                        "running": "Laufsport"
-                    }
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sportarten"
                 },
                 "stars": {
                     "label": "Sterne",
@@ -3888,6 +4033,11 @@
                     "placeholder": "https://example.com",
                     "terms": "website,internetauftritt,url,uri"
                 },
+                "website/menu": {
+                    "label": "Link zur Speisekarte",
+                    "placeholder": "https://example.com",
+                    "terms": "speisekarte"
+                },
                 "wetland": {
                     "label": "Typ",
                     "options": {
@@ -4337,7 +4487,7 @@
                 },
                 "amenity/doctors/gynaecology": {
                     "name": "Gynäkologe",
-                    "terms": "gynäkologe",
+                    "terms": "gynäkologe,gynäkologie",
                     "aliases": "Frauenarzt\nFacharzt für Frauenheilkunde"
                 },
                 "amenity/doctors/haematology": {
@@ -4440,8 +4590,9 @@
                     "terms": "brunnen,trinkwasserbrunnen,wasserhahn,trinkbrunnen"
                 },
                 "amenity/driver_training": {
-                    "name": "Fahrschulgeländd",
-                    "terms": "fahrschulgelände"
+                    "name": "Verkehrsübungsplatz",
+                    "terms": "fahrschulgelände,verkehrsübungsplatz,fahrsicherheitstraining,fahrsicherheitszentrum,fahrsicherheit,fahrertraining,sht,fahrtechnikzentrum,fahrsicherheitsanlage",
+                    "aliases": "Fahrsicherheitszentrum"
                 },
                 "amenity/driving_school": {
                     "name": "Fahrschule",
@@ -4461,6 +4612,10 @@
                 "amenity/fast_food": {
                     "name": "Schnellimbiss",
                     "terms": "fast food,imbiss,schnellrestaurant"
+                },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel Fast Food",
+                    "terms": "bagel,frühstück"
                 },
                 "amenity/fast_food/burger": {
                     "name": "Burger Fast Food",
@@ -4509,11 +4664,15 @@
                     "name": "Sandwich Fast Food",
                     "terms": "sandwich fast food,sandwich takeaway"
                 },
+                "amenity/fast_food/wings": {
+                    "name": "Chicken Wings Fast Food",
+                    "terms": "chickenwings,chicken-wings,geflügel,hähnchen,hühnchen,hühnerflügel,pouletflügel,flieten"
+                },
                 "amenity/ferry_terminal": {
                     "name": "Schiffsanleger"
                 },
                 "amenity/fire_station": {
-                    "name": "Feuerwehrhaus",
+                    "name": "Feuerwache",
                     "terms": "feuerwehr,feuerwehrstation,feuerwache,feuerwehrhaus,feuerwehrgerätehaus,feuerwehrstandort,feuerwehrmagazin"
                 },
                 "amenity/food_court": {
@@ -4556,6 +4715,10 @@
                     "name": "Eisgeschäft",
                     "terms": "eisgeschäft,eisladen,schleckeisladen,schleckeishändler,eisdiele"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Frozen Yogurt Geschäft",
+                    "terms": "frozen yogurt,froyo,frogurt,joghurt,joghurteis"
+                },
                 "amenity/internet_cafe": {
                     "name": "Internetcafé",
                     "terms": "internetcafé,cybercafé"
@@ -4569,8 +4732,8 @@
                     "terms": "kindergarten,vorschule,kindertagesstätte,kinderkrippe,hort"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "Kneippanlage",
-                    "terms": "kneippanlage"
+                    "name": "Kneipp-Anlage",
+                    "terms": "kneipp,kneippbecken,kneipp-therapie,wassertreten,wassertretanlage,wassertretstelle,wassertretbecken,hydrotherapie,fußbad,barfuß,barfußlaufen,armbecken,kneipp-einrichtung,wasserkur,kneippkur"
                 },
                 "amenity/language_school": {
                     "name": "Sprachschule",
@@ -4852,6 +5015,10 @@
                     "name": "Französisches Restaurant",
                     "terms": "französisches restaurant"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Georgisches Restaurant",
+                    "terms": "restaurant,essen,georgien"
+                },
                 "amenity/restaurant/german": {
                     "name": "Deutsches Restaurant",
                     "terms": "deutsches restaurant"
@@ -4872,6 +5039,10 @@
                     "name": "Japanisches Restaurant",
                     "terms": "japanisches restaurant"
                 },
+                "amenity/restaurant/korean": {
+                    "name": "Koreanisches Restaurant",
+                    "terms": "korea,südkorea,nordkorea,koreaner,kimchi,bulgogi,bibimbab,choen"
+                },
                 "amenity/restaurant/mexican": {
                     "name": "Mexikanisches Restaurant",
                     "terms": "mexicanisches restaurant"
@@ -4884,9 +5055,17 @@
                     "name": "Pizzeria",
                     "terms": "pizza restaurant"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Ramen Restaurant",
+                    "terms": "ramen,nudel,suppe,japan"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Meeresfrüchte-Restaurant",
                     "terms": "meeresfrüchte restaurant"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "Spanisches Restaurant",
+                    "terms": "spanisch,spanier,tortilla,paella,tapas"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steakhouse",
@@ -4903,6 +5082,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Türkisches Restaurant",
                     "terms": "türkisches restaurant"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrainisches Restaurant",
+                    "terms": "ukrainisches restaurant"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamesisches Restaurant",
@@ -5402,8 +5585,8 @@
                     "aliases": "Schlagbaum"
                 },
                 "barrier/log": {
-                    "name": "Baumstamm",
-                    "aliases": "Baumstumpf"
+                    "name": "Umgefallener Baum",
+                    "terms": "baum,baumstamm,baumhindernis,stamm,ast"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Motorradbarriere",
@@ -5733,6 +5916,10 @@
                     "name": "Verein",
                     "terms": "verein,klub"
                 },
+                "club/scout": {
+                    "name": "Pfadfinder",
+                    "terms": "pfadfinderstamm,pfadfindergruppe,pfadfinderabteilung,pfadfinderverein"
+                },
                 "club/sport": {
                     "name": "Sportverein",
                     "terms": "sportverein,sportclub,sportklub"
@@ -6017,6 +6204,10 @@
                     "name": "Hydrant",
                     "terms": "hydrant,löschwasserentnahmestelle"
                 },
+                "emergency/fire_service_inlet": {
+                    "name": "Feuerwehrkupplung",
+                    "terms": "feuerwehranschluss,schlauchkupplung,storz-kupplung,druckkupplung,saugkupplung,festkupplung,blindkupplung,übergangsstück,einspeisung,löschwasser"
+                },
                 "emergency/first_aid_kit": {
                     "name": "Verbandskasten",
                     "terms": "verbandskasten,erste-hilfe-koffer,sanitätskasten"
@@ -6280,7 +6471,8 @@
                     "aliases": "Korridor im Innenraum"
                 },
                 "highway/crossing": {
-                    "name": "Übergang"
+                    "name": "Übergang",
+                    "terms": "überweg,übergang,überquerung,querung,fußgängerüberweg,fußgängerübergang,fußgängerüberquerung,fußgängerquerung"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Kreuzung mit Fußgängerampel",
@@ -6335,8 +6527,8 @@
                     "terms": "standseilbahn"
                 },
                 "highway/emergency_access_point": {
-                    "name": "Notfall-Zugangspunkt",
-                    "terms": "notfall,rettung"
+                    "name": "Rettungspunkt",
+                    "terms": "notfall,rettung,zugangspunkt"
                 },
                 "highway/emergency_bay": {
                     "name": "Nothaltebucht",
@@ -6359,7 +6551,8 @@
                     "terms": "fahrsteig,rolltreppe,rollsteig,laufband,bewegter bürgersteig,rollender bürgersteig"
                 },
                 "highway/footway/crossing": {
-                    "name": "Fußgängerüberweg (eigener Weg)"
+                    "name": "Fußgängerüberweg (eigener Weg)",
+                    "terms": "fußgängerübergang,fußgängerüberweg,fußgängerquerung,fußgängerkreuzung"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Gehweg-Querung mit Ampel",
@@ -6408,7 +6601,7 @@
                 },
                 "highway/motorway_junction": {
                     "name": "Autobahnkreuzungspunkt",
-                    "terms": "autobahnkreuz,autobahnanschluss,autobahnzubringer,autobahnabfahrt (kreuzungspunkt)"
+                    "terms": "autobahnkreuz,autobahnanschluss,autobahnzubringer,autobahnabfahrt (kreuzungspunkt),abfahrt,ausfahrt,anschlussstelle"
                 },
                 "highway/motorway_link": {
                     "name": "Autobahnauffahrt, Autobahnabfahrt",
@@ -6503,7 +6696,7 @@
                     "terms": "rettungsweg,zufahrtsstraße für rettungskräfte,rettungszufahrt,feuerwehrzufahrt"
                 },
                 "highway/service/parking_aisle": {
-                    "name": "Parkplatzweg",
+                    "name": "Parkplatz-Nebenfahrgasse",
                     "terms": "parkplatzfahrgasse,fahrweg auf parkplatzflächen"
                 },
                 "highway/service_area": {
@@ -6828,8 +7021,8 @@
                     "terms": "basis,kampf,kraft,wache,marine,schiff,u-boot,truppe,krieg,seestreitkraft"
                 },
                 "landuse/military/danger_area": {
-                    "name": "Militärischer Gefahrenbereich",
-                    "terms": "militärischer gefährlicher bereich"
+                    "name": "Sperrgebiet, Zutritt verboten",
+                    "terms": "sperrbereich,sperrzone,sperrbezirk,gefahrbereich,gefahrenbereich,militärisches sperrgebiet,spzo"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Militärischer Hindernisparcours",
@@ -7045,7 +7238,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Reitanlage",
-                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
+                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
                     "aliases": "Reiterhof\nReitstall\nReitzentrum"
                 },
                 "leisure/ice_rink": {
@@ -7059,6 +7252,10 @@
                 "leisure/marina": {
                     "name": "Yachthafen",
                     "terms": "yachthafen,jachthafen,marina"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "Liegeplatz ohne Ausstattung",
+                    "terms": "liegeplatz ohne ausstattung"
                 },
                 "leisure/miniature_golf": {
                     "name": "Minigolfanlage",
@@ -7099,6 +7296,41 @@
                 "leisure/pitch/archery": {
                     "name": "Bogenschießanlage",
                     "terms": "pfeil und bogen,armbrust"
+                },
+                "leisure/pitch/athletics": {
+                    "name": "Leichtathletikanlage"
+                },
+                "leisure/pitch/athletics/discus_throw": {
+                    "name": "Diskusring / Kreissektor",
+                    "terms": "diskusring,kreissektor,wurfkreis,wurfring"
+                },
+                "leisure/pitch/athletics/hammer_throw": {
+                    "name": "Hammerwurfring / Kreissektor",
+                    "terms": "hammerwurfkreis,kreissektor,wurfkreis,wurfring"
+                },
+                "leisure/pitch/athletics/high_jump": {
+                    "name": "Hochsprunganlage",
+                    "terms": "hochsprung,latte,sprungmatte,matte,hochsprunglatte"
+                },
+                "leisure/pitch/athletics/javelin_throw": {
+                    "name": "Speerwurfsektor",
+                    "terms": "speerwurfbereich,abwurf,kreissektor,sektor"
+                },
+                "leisure/pitch/athletics/long_jump": {
+                    "name": "Weitsprunganlage",
+                    "terms": "sprunganlage,anlaufbahn,sprunggrube"
+                },
+                "leisure/pitch/athletics/pole_vault": {
+                    "name": "Stabhochsprunggrube",
+                    "terms": "stabhochsprunggrube"
+                },
+                "leisure/pitch/athletics/shot_put": {
+                    "name": "Kugelstoßring / -grube",
+                    "terms": "kugelstoßring / -grube"
+                },
+                "leisure/pitch/athletics/triple_jump": {
+                    "name": "Dreisprunggrube",
+                    "terms": "dreisprunggrube"
                 },
                 "leisure/pitch/australian_football": {
                     "name": "Australian-Football-Feld",
@@ -7296,6 +7528,36 @@
                 "leisure/track": {
                     "name": "Bahn (Nicht Motorsport)",
                     "terms": "laufbahn,rennbahn (nicht motorsport)"
+                },
+                "leisure/track/athletics": {
+                    "name": "Leichtathletik-Laufbahn"
+                },
+                "leisure/track/athletics/javelin_throw": {
+                    "name": "Speerwurfbahn",
+                    "terms": "speerwurfbahn"
+                },
+                "leisure/track/athletics/long_jump": {
+                    "name": "Weitsprung-Laufbahn",
+                    "terms": "weitsprung-laufbahn"
+                },
+                "leisure/track/athletics/pole_vault": {
+                    "name": "Stabhochsprung-Laufbahn",
+                    "terms": "stabhochsprung-laufbahn"
+                },
+                "leisure/track/athletics/running": {
+                    "name": "Laufbahn"
+                },
+                "leisure/track/athletics/sprint": {
+                    "name": "Sprint-Laufbahn",
+                    "terms": "sprint-laufbahn"
+                },
+                "leisure/track/athletics/steeplechase": {
+                    "name": "Hindernis-Laufbahn",
+                    "terms": "hindernis-laufbahn"
+                },
+                "leisure/track/athletics/triple_jump": {
+                    "name": "Dreisprung-Laufbahn",
+                    "terms": "dreisprung-laufbahn"
                 },
                 "leisure/track/cycling": {
                     "name": "Radrennbahn",
@@ -7532,6 +7794,10 @@
                 "man_made/pumping_station": {
                     "name": "Pumpwerk",
                     "terms": "pumpstation,hebeanlage,hebewerk,schöpfwerk,wasserhebewerk"
+                },
+                "man_made/quay": {
+                    "name": "Kai",
+                    "terms": "kaimauer,quai,kaje,ufer,uferbefestigung,flussufer,spundwand"
                 },
                 "man_made/reservoir_covered": {
                     "name": "Wasserhochbehälter",
@@ -7780,6 +8046,10 @@
                 "natural/peak": {
                     "name": "Berggipfel",
                     "terms": "gipfel,felsnadel,hügel,berg,bergspitze,bergkuppe,zipfel"
+                },
+                "natural/peninsula": {
+                    "name": "Halbinsel",
+                    "terms": "landzunge,nehrung,binnenhalbinsel,landspitze"
                 },
                 "natural/reef": {
                     "name": "Riff",
@@ -8166,7 +8436,7 @@
                     "name": "Büro (nicht spezifizierter Typ)"
                 },
                 "pipeline": {
-                    "name": "Pipeline-Inhalt"
+                    "name": "Pipeline Objekt"
                 },
                 "pipeline/substation": {
                     "name": "Unterstation",
@@ -8430,7 +8700,7 @@
                     "terms": "solarstromanlage,photovoltaikanlage"
                 },
                 "power/generator/method/photovoltaic/building/roof": {
-                    "name": "Photovoltaikanlage",
+                    "name": "Dach-Photovoltaikanlage",
                     "terms": "photovoltaikanlage,dach,carport"
                 },
                 "power/generator/method/photovoltaic/location/roof": {
@@ -9208,8 +9478,11 @@
                     "terms": "hifi-geschäft,hifi-shop"
                 },
                 "shop/hobby": {
-                    "name": "Bastelgeschäft",
-                    "terms": "bastelgeschäft,hobbyshop"
+                    "name": "Bastelgeschäft"
+                },
+                "shop/honey": {
+                    "name": "Honiggeschäft",
+                    "terms": "honig,biene,wachs,propolis,mel"
                 },
                 "shop/household_linen": {
                     "name": "Haushaltswäschegeschäft",
@@ -9501,7 +9774,8 @@
                     "terms": "reifenhandlung,reifenservice"
                 },
                 "shop/vacant": {
-                    "name": "Leerstehendes Geschäft"
+                    "name": "Leerstehendes Geschäft",
+                    "terms": "leerstehendes geschäft,leeres geschäft,leerstand,ungenutztes geschäft"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Staubsaugergeschäft",

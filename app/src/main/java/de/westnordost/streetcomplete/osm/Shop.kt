@@ -126,7 +126,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
     return ("""(
         ${p}shop and ${p}shop !~ no|vacant|mall
         or ${p}office and ${p}office !~ no|vacant
-        or ${p}healthcare and healthcare != hospital
+        or ${p}healthcare and ${p}healthcare != hospital
         or ${p}craft
         or ${p}tourism = information and ${p}information = office
         or ${p}amenity = social_facility and ${p}social_facility ~ ${listOf(
@@ -153,6 +153,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "indoor_play",
             "fitness_centre", // not necessarily purpose-built, esp. the smaller ones
             "hackerspace",
+            // "resort", // a kind of hotel+theme/water/whatever park
             "sauna",
             // "sports_centre", // purpose-built
             "tanning_salon",
@@ -161,10 +162,22 @@ fun isShopExpressionFragment(prefix: String? = null): String {
         ),
         "tourism" to listOf(
             // tourism = information only if it is an office, see above
+            // purpose-built
+            // "aquarium",
+            // "zoo",
+            // "theme_park",
             "gallery", // could be just an artist's show-room
-            "museum" // only the larger ones are purpose-built
-            // tourist accommodations are usually always purpose-built / not in something that could
-            // otherwise be just a showroom, office etc.
+            "museum", // only the larger ones are purpose-built
+            // tourist accommodations are usually not in something that could otherwise be just a showroom, office etc.
+            // "alpine_hut",
+            // "apartment",
+            // "chalet",
+            // "camp_site",
+            // "guest_house",
+            // "hostel",
+            // "hotel",
+            // "motel",
+
         ),
         "amenity" to listOf(
             /* amenity, the "garbage patch in the OSM ocean" - https://media.ccc.de/v/sotm2022-18515-every-door-and-the-future-of-poi-in-openstreetmap#t=528
@@ -180,9 +193,10 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "pub",
             "restaurant",
 
-            /* education (all except school, college, university) */
+            /* education */
             "childcare",
-            "dive_centre", // depends, but can be in a showroom just like a diving school
+            // "college", purpose-built
+            "dive_centre", // depends, but can be in a showroom just like a driving school
             "dojo", // same as fitness_centre
             "driving_school",
             "kindergarten",
@@ -190,15 +204,21 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             "library",
             "music_school",
             "prep_school",
+            // "research_institute", purpose-built
+            // "school", purpose-built
             "toy_library",
             "training",
+            // "university", purpose-built
 
             /* transportation */
+            // "bicycle_rental", // usually outside, could be automatic too
+            // "boat_rental", // usually outside, could be automatic too
             "car_rental",
             "car_wash", // purpose-built, but see fuel
             "fuel", // purpose-built but too much of a shop that it would be weird to leave out
             "motorcycle_rental",
             "vehicle_inspection", // often similar to a car repair shop
+
             /* financial */
             "bank",
             "bureau_de_change",
@@ -207,17 +227,19 @@ fun isShopExpressionFragment(prefix: String? = null): String {
 
             /* healthcare */
             "clinic", // sizes vary a lot, not necessarily purpose-built
+            // "crematorium", // purpose-built
             "dentist",
             "doctors",
+            // "mortuary", // purpose-built
             // "hospital", // purpose-built
             "pharmacy",
-            // social_facility only if it is not residential, see above
+            // "social_facility", only if it is not residential, see above
             "veterinary",
 
             /* entertainment, arts & culture */
             "arts_centre",
             "brothel",
-            // "casino", // as far as I know, always purpose-built
+            "casino", // usually purpose-built, but doesn't have to be
             // "cinema", // typically purpose-built
             "community_centre", // often purpose-built, but not necessarily
             // "conference_centre", // purpose-built
@@ -234,16 +256,21 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             // "theatre",
 
             /* public service */
+            // "courthouse", // purpose-built
+            // "fire_station", // purpose-built
+            // "police", // purpose-built
             "post_office",
-            // fire stations, police stations, townhalls etc. are purpose-built
+            // "ranger_station", // like police station
+            // "townhall", // purpose-built
 
             /* other */
-            // "animal_boarding", // all three are usually purpose-built
+            "animal_boarding", // not necessarily purpose-built
             // "animal_breeding",
-            // "animal_shelter",
+            "animal_shelter", // not necessarily purpose-built
             "coworking_space", // basically an office
-            // "embassy", // usually purpose-built / not a normal commercial room
-            // "place_of_worship" // usually-purpose-built
+            // "embassy", // usually purpose-built / there is also office=diplomatic for those that have services
+            // "monastery", // purpose-built, often historic
+            "place_of_worship" // usually-purpose-built, but not always (also, prayer rooms)
         )
     ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + ")\n"
     ).trimIndent()

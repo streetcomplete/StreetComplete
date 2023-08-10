@@ -49,11 +49,14 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
+import de.westnordost.streetcomplete.screens.main.controls.OverlaysButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -66,6 +69,8 @@ class MainActivity :
     BaseActivity(),
     MainFragment.Listener,
     TutorialFragment.Listener,
+    OverlaysButtonFragment.Listener,
+    OverlaysTutorialFragment.Listener,
     MessagesButtonFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
@@ -198,23 +203,6 @@ class MainActivity :
         uploadController.showNotification = false
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (!forwardBackPressedToChildren()) super.onBackPressed()
-    }
-
-    private fun forwardBackPressedToChildren(): Boolean {
-        val messagesContainerFragment = messagesContainerFragment
-        if (messagesContainerFragment != null) {
-            if (messagesContainerFragment.onBackPressed()) return true
-        }
-        val mainFragment = mainFragment
-        if (mainFragment != null) {
-            if (mainFragment.onBackPressed()) return true
-        }
-        return false
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val mainFragment = mainFragment
         if (event.keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
@@ -230,8 +218,8 @@ class MainActivity :
         super.onPause()
         val pos = mainFragment?.getCameraPosition()?.position ?: return
         prefs.edit {
-            putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
-            putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
+            putDouble(Prefs.MAP_LATITUDE, pos.latitude)
+            putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
         }
         downloadController.showNotification = true
         uploadController.showNotification = true
@@ -356,7 +344,14 @@ class MainActivity :
         requestLocation()
 
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
+        removeTutorialFragment()
+    }
 
+    private fun requestLocation() {
+        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    }
+
+    private fun removeTutorialFragment() {
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
             supportFragmentManager.commit {
@@ -366,8 +361,20 @@ class MainActivity :
         }
     }
 
-    private fun requestLocation() {
-        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    /* ---------------------------- OverlaysButtonFragment.Listener ----------------------------- */
+
+    override fun onShowOverlaysTutorial() {
+        supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+            add(R.id.fragment_container, OverlaysTutorialFragment())
+        }
+    }
+
+    /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
+
+    override fun onOverlaysTutorialFinished() {
+        prefs.edit { putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true) }
+        removeTutorialFragment()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */

@@ -61,7 +61,7 @@
                         },
                         "designated": {
                             "description": "Tilgang i amsvar med skilt eller spesifikke lokale lover",
-                            "title": "Brukertype"
+                            "title": "Utpekt"
                         },
                         "destination": {
                             "description": "Tilgang kun tillatt for å nå et mål",
@@ -102,7 +102,7 @@
                         "bicycle": "Sykler",
                         "foot": "Fot",
                         "horse": "Hester",
-                        "motor_vehicle": "Motorkjøretøy\nMotorvogn"
+                        "motor_vehicle": "Motorkjøretøy"
                     }
                 },
                 "access_aisle": {
@@ -117,7 +117,7 @@
                         "permit": "Kun med tillatelse ",
                         "private": "Privat",
                         "unknown": "Ukjent",
-                        "yes": "Offentlig "
+                        "yes": "Offentlig"
                     }
                 },
                 "activity": {
@@ -161,20 +161,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Bygningsnr. / Lottnr. ",
                         "neighbourhood": "Nabolag",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Sted",
                         "postcode": "Postnummer",
                         "province": "Provins",
                         "province!cn": "Provins/Kommune/Autonom region/Spesiell administrativ region",
                         "province!jp": "Prefektur",
                         "quarter": "Kvartal",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Stat",
                         "street": "Gate",
                         "subdistrict": "Underdistrikt",
                         "subdistrict!vn": "Avdeling/Bokollektiv/Landsby",
                         "suburb": "Forstad",
-                        "suburb!jp": "avdeling",
                         "unit": "Enhet"
                     }
                 },
@@ -284,6 +281,29 @@
                 "ascent": {
                     "label": "Total stigning"
                 },
+                "athletics_pitch": {
+                    "label": "Øvelse",
+                    "options": {
+                        "hammer_throw": "Sleggekast",
+                        "high_jump": "Høydehopp",
+                        "javelin_throw": "Spydkast",
+                        "long_jump": "Lengdehopp",
+                        "pole_vault": "Stangsprang",
+                        "shot_put": "Kulestøt",
+                        "triple_jump": "Tresteg"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Øvelse",
+                    "options": {
+                        "javelin_throw": "Spydkast",
+                        "long_jump": "Lengdehopp",
+                        "pole_vault": "Stavsprang",
+                        "running": "Løping",
+                        "sprint": "Sprintløp",
+                        "triple_jump": "Tresteg"
+                    }
+                },
                 "atm": {
                     "label": "Minibank"
                 },
@@ -332,7 +352,7 @@
                         "cattle_grid": "Ferist",
                         "chain": "Kjetting",
                         "city_wall": "Bymur",
-                        "cycle_barrier": "Cycle Barrier",
+                        "cycle_barrier": "Sykkelhinder",
                         "ditch": "Grøft",
                         "entrance": "Inngang",
                         "fence": "Gjerde",
@@ -591,13 +611,13 @@
                     "placeholder": "45, 90, 180, 270"
                 },
                 "camera/mount": {
-                    "label": "Kamera feste"
+                    "label": "Kamerafeste"
                 },
                 "camera/type": {
                     "label": "Kameratype",
                     "options": {
                         "dome": "Kuppel",
-                        "fixed": "Fikset",
+                        "fixed": "Fast",
                         "panning": "Panorerende"
                     }
                 },
@@ -749,7 +769,7 @@
                 "covered_no": {
                     "options": {
                         "no": "Nei",
-                        "undefined": "Antas å være Nei",
+                        "undefined": "Antatt til å være Nei",
                         "yes": "Ja"
                     }
                 },
@@ -834,7 +854,7 @@
                     }
                 },
                 "crossing/barrier": {
-                    "label": "Bomarm\nBarrierearm",
+                    "label": "Bomarm",
                     "options": {
                         "double_half": "Doble halvbom",
                         "full": "Helbom",
@@ -858,7 +878,7 @@
                         "dashes": "Stiplet tverrgående linjer",
                         "dots": "Prikkete tverrgående linjer",
                         "ladder": "Stige med langsgående striper",
-                        "ladder:paired": "Stiger med parede langsgående striper",
+                        "ladder:paired": "Stige med parede langsgående striper",
                         "ladder:skewed": "Stige med skråstilte striper",
                         "lines": "Tverrgående linjer",
                         "lines:paired": "Doble tverrgående linjer",
@@ -958,6 +978,7 @@
                             "title": "Motsatt sykkelfelt"
                         },
                         "separate": {
+                            "description": "Indikerer at sykkelveien var kartlagt som en egen geometri",
                             "title": "Sykkelfelt kartlagt separat"
                         },
                         "share_busway": {
@@ -1049,7 +1070,7 @@
                     "placeholder": "4 m, 9', …"
                 },
                 "diet_multi": {
-                    "label": "Dietttyper",
+                    "label": "Diettyper",
                     "options": {
                         "gluten_free": "Glutenfritt",
                         "halal": "Halal",
@@ -1057,7 +1078,8 @@
                         "lactose_free": "Laktosefritt",
                         "vegan": "Vegansk",
                         "vegetarian": "Vegetariansk"
-                    }
+                    },
+                    "terms": "type diett"
                 },
                 "diplomatic": {
                     "label": "Type"
@@ -1183,8 +1205,8 @@
                         "delegation": "Delegasjon",
                         "high_commission": "Høykommisjon",
                         "interests_section": "Interesseseksjon",
-                        "mission": "Diplomatisk oppdrag",
-                        "nunciature": "Den hellige stols diplomatisk oppdrag",
+                        "mission": "Utenriksstasjon",
+                        "nunciature": "Den hellige stols utenriksstasjon",
                         "residence": "Offisiell residens for en ambassadør",
                         "yes": "ambassade"
                     }
@@ -1498,7 +1520,12 @@
                     }
                 },
                 "historic": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "church": "Kirke",
+                        "city_gate": "Byport",
+                        "fort": "Historisk fort"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Historisk sivilisasjon"
@@ -1545,8 +1572,7 @@
                         "critical": "På grense: kan bare passeres med erfaren rider og hester. Større hindringer. Bruer bør undersøkes nøye.",
                         "dangerous": "Farlig: Brukbar bare for veldig erfarne ryttere og hester og bare i godt vær. Avstig.",
                         "demanding": "Vær forsiktig: Ujevn vei, tidvis vanskelige passasjer.",
-                        "difficult": "Vanskelig: Stien er smal og utsatt. Kan inneholde hindringer man må tråkke over og smale passasjer.",
-                        "impossible": "Umulig: Vei eller bro ikke farbar for hester. For smal, utilstrekkelig støtte, hindringer som stiger. Livsfare."
+                        "difficult": "Vanskelig: Stien er smal og utsatt. Kan inneholde hindringer man må tråkke over og smale passasjer."
                     },
                     "placeholder": "Vanskelig, Farlig ..."
                 },
@@ -1835,7 +1861,8 @@
                     "label": "Etterligner"
                 },
                 "min_age": {
-                    "label": "Minimum Alder"
+                    "label": "Aldersgrense",
+                    "terms": "minste alder"
                 },
                 "minspeed": {
                     "label": "Minste fartsgrense",
@@ -1846,6 +1873,11 @@
                 },
                 "monitoring_multi": {
                     "label": "Overvåkning"
+                },
+                "mooring": {
+                    "options": {
+                        "yes": "Ja"
+                    }
                 },
                 "mtb/scale": {
                     "label": "Vanskelighetsgrad for terrengsykling",
@@ -1933,7 +1965,7 @@
                     "label": "Nettverk"
                 },
                 "not/name": {
-                    "label": "Feil Navn"
+                    "label": "Feil navn"
                 },
                 "note": {
                     "label": "Notat"
@@ -1942,7 +1974,7 @@
                     "label": "Naturisme",
                     "options": {
                         "customary": "Vanlig",
-                        "designated": "Dedikert",
+                        "designated": "Utpekt",
                         "no": "Forbudt",
                         "obligatory": "Påbudt",
                         "permissive": "Permissiv",
@@ -2020,7 +2052,7 @@
                     "label": "Pakkehenting",
                     "options": {
                         "no": "Nei",
-                        "undefined": "Antas å være Ja",
+                        "undefined": "Antatt til å være Ja",
                         "yes": "Ja"
                     }
                 },
@@ -2040,14 +2072,6 @@
                         "underground": "Under overflaten"
                     }
                 },
-                "parking/orientation": {
-                    "label": "Orientering",
-                    "options": {
-                        "diagonal": "Diagonal i forhold til gate",
-                        "parallel": "Parallelt med gate",
-                        "perpendicular": "Møter gata ved rett vinkel"
-                    }
-                },
                 "parking/side/orientation": {
                     "label": "Oppstilling av parkeringsplass",
                     "options": {
@@ -2064,6 +2088,7 @@
                     "label": "Parkering",
                     "options": {
                         "no": "Nei",
+                        "street_side": "Sidegate",
                         "yes": "Ja"
                     }
                 },
@@ -2271,7 +2296,7 @@
                     "placeholder": "Distanse, innenfor ett desimaltall (123,4)"
                 },
                 "railway/signal/direction": {
-                    "label": "Retning Berørt ",
+                    "label": "Retning berørt ",
                     "options": {
                         "backward": "Bakover",
                         "both": "Begge/alle",
@@ -2432,6 +2457,7 @@
                     "label": "Salt"
                 },
                 "screen": {
+                    "label": "Lerreter",
                     "placeholder": "1, 4, 8…"
                 },
                 "scuba_diving": {
@@ -2556,7 +2582,7 @@
                     "options": {
                         "alley": "Bakgate",
                         "drive-through": "Gjennomkjøring",
-                        "driveway": "innkjørsel",
+                        "driveway": "Innkjørsel",
                         "emergency_access": "Nødtilgang "
                     }
                 },
@@ -2653,11 +2679,9 @@
                     "label": "Sport",
                     "options": {
                         "american_football": "Amerikansk fotball",
-                        "athletics": "Friidrett",
                         "baseball": "Baseball",
                         "beachvolleyball": "Strandvolleyball",
                         "cycling": "Sykling",
-                        "equestrian": "Hesteridning",
                         "futsal": "Futsal",
                         "gymnastics": "Gymnastikk",
                         "horse_racing": "Hesteløp",
@@ -2673,41 +2697,6 @@
                         "softball": "Softball",
                         "swimming": "Svømming",
                         "table_tennis": "Bordtennis"
-                    }
-                },
-                "sport_ice": {
-                    "label": "Sport",
-                    "options": {
-                        "curling": "Curling",
-                        "ice_hockey": "Ishockey",
-                        "ice_skating": "Skøyting",
-                        "multi": "Flere "
-                    }
-                },
-                "sport_pub": {
-                    "label": "Sport",
-                    "options": {
-                        "billiards": "Billiard",
-                        "darts": "Dart",
-                        "table_soccer": "Bordfotball"
-                    }
-                },
-                "sport_racing_motor": {
-                    "label": "Sport",
-                    "options": {
-                        "karting": "Karting",
-                        "motocross": "Motocross",
-                        "motor": "Motorsport"
-                    }
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sport",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "Sykling",
-                        "dog_racing": "Hundeløp ",
-                        "horse_racing": "Hesteløp",
-                        "running": "Løping"
                     }
                 },
                 "stars": {
@@ -2777,12 +2766,14 @@
                 "substation": {
                     "label": "Type",
                     "options": {
+                        "compensation": "Fasekompensering",
                         "converter": "Høyspent AC/DC-omformer",
                         "distribution": "Regionalnett",
+                        "industrial": "Industriell",
                         "minor_distribution": "Distribusjonsnett",
                         "traction": "Banestrømforsyning",
                         "transition": "Overgang mellom luftledning og bakkeledning",
-                        "transmission": "Høyspentoverføring"
+                        "transmission": "Transmisjonsnett"
                     }
                 },
                 "substation_pipeline": {
@@ -2791,7 +2782,7 @@
                         "distribution": "Regionalnett",
                         "industrial": "Industriell",
                         "minor_distribution": "Distribusjonsnett",
-                        "transmission": "Sentralnett",
+                        "transmission": "Transmisjonsnett",
                         "valve": "Ventil",
                         "valve_group": "Ventilgruppe"
                     }
@@ -2810,14 +2801,14 @@
                         "concrete": "Betong",
                         "dirt": "Jord",
                         "grass": "Gress",
-                        "gravel": "Grus\nPukk",
+                        "gravel": "Grus",
                         "ground": "Bakke",
                         "metal": "Metall",
                         "paved": "Brolagt",
                         "paving_stones": "Gateheller",
                         "salt": "Salt",
                         "sand": "Sand",
-                        "sett": "Brostein\nStorgatestein",
+                        "sett": "Brostein",
                         "unhewn_cobblestone": "Kulestein",
                         "unpaved": "Ikke asfaltert",
                         "wood": "Treverk"
@@ -2949,6 +2940,7 @@
                     "label": "Type",
                     "options": {
                         "bump": "Fartshump",
+                        "chicane": "Sideforskyvning",
                         "choker": "Innsnervring",
                         "double_dip": "Doble fartshump",
                         "island": "Trafikkøy",
@@ -3011,6 +3003,7 @@
                 "transformer": {
                     "label": "Type",
                     "options": {
+                        "distribution": "Fordeling: fordeler strømmen til sluttforbrukere, montert utenfor transformatorstasjoner",
                         "main": "Hoved: viderefører strømmen",
                         "yes": "Ukjent rolle"
                     }
@@ -3049,7 +3042,7 @@
                 "usage_rail": {
                     "label": "Brukstype",
                     "options": {
-                        "branch": "Avgreningsbane",
+                        "branch": "Avgrening",
                         "industrial": "Industriell",
                         "main": "Hoved",
                         "military": "Militær",
@@ -3069,6 +3062,7 @@
                         "oil": "Olje",
                         "power": "Strøm",
                         "sewerage": "Avløpsvann",
+                        "street_lighting": "Gatebelysning",
                         "telecom": "Telekom",
                         "water": "Vann"
                     }
@@ -3085,7 +3079,7 @@
                         "monorail": "Monorail",
                         "subway": "T-bane",
                         "train": "Tog",
-                        "tram": "Trikk\nSporvogn",
+                        "tram": "Trikk",
                         "trolleybus": "Trolleybuss"
                     }
                 },
@@ -3171,6 +3165,10 @@
                     "label": "Nettside",
                     "placeholder": "https://example.com"
                 },
+                "website/menu": {
+                    "label": "Menylenke",
+                    "terms": "lenke til meny"
+                },
                 "wetland": {
                     "label": "Type"
                 },
@@ -3203,7 +3201,7 @@
                     "label": "Autotransformator",
                     "options": {
                         "no": "Nei",
-                        "undefined": "Antas å være Nei",
+                        "undefined": "Antatt til å være Nei",
                         "yes": "Ja"
                     }
                 },
@@ -3267,6 +3265,9 @@
                 },
                 "aerialway/zip_line": {
                     "name": "Løypestreng"
+                },
+                "aeroway": {
+                    "name": "Luftfartrelatert egenskap"
                 },
                 "aeroway/aerodrome": {
                     "name": "Flyplass"
@@ -3584,6 +3585,10 @@
                 "amenity/parking_space": {
                     "name": "Parkeringsplass"
                 },
+                "amenity/parking_space/disabled": {
+                    "name": "Parkeringsplass for funksjonshemmede",
+                    "terms": "handikapparkeringplass,handikapparkering"
+                },
                 "amenity/payment_centre": {
                     "name": "Betalingssenter"
                 },
@@ -3895,7 +3900,8 @@
                     "name": "Gangvei-område"
                 },
                 "area/highway": {
-                    "name": "Veiområde"
+                    "name": "Veiområde",
+                    "terms": "gateområde"
                 },
                 "attraction": {
                     "name": "Attraksjon"
@@ -4517,8 +4523,7 @@
                     "name": "Fotgjengerovergang med fotgjengersignal"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "Gangfelt",
-                    "aliases": "Fotgjengerfelt"
+                    "name": "Gangfelt"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Tilrettelagt kryssing"
@@ -4557,7 +4562,7 @@
                     "name": "Rullende fortau"
                 },
                 "highway/footway/crossing": {
-                    "name": "Fotgjengeroverang"
+                    "name": "Fotgjengerovergang"
                 },
                 "highway/footway/crossing/uncontrolled": {
                     "name": "Gangfelt",
@@ -4588,7 +4593,8 @@
                     "name": "Motorveikryss / Avkjøring"
                 },
                 "highway/motorway_link": {
-                    "name": "Motorveirampe"
+                    "name": "Motorveirampe",
+                    "terms": "motorveiforbindelse"
                 },
                 "highway/path": {
                     "name": "Sti",
@@ -4604,10 +4610,12 @@
                     "name": "Gågate"
                 },
                 "highway/primary": {
-                    "name": "Primær hovedvei"
+                    "name": "Primær hovedvei",
+                    "terms": "fylkesvei"
                 },
                 "highway/primary_link": {
-                    "name": "Primær lenke"
+                    "name": "Primærveiforbindelse",
+                    "terms": "primærveirampe,primær hovedveiforbindelse"
                 },
                 "highway/raceway": {
                     "name": "Racerbane for motorsport"
@@ -4628,10 +4636,12 @@
                     "name": "Ukjent veibru"
                 },
                 "highway/secondary": {
-                    "name": "Sekundær hovedvei"
+                    "name": "Sekundær hovedvei",
+                    "terms": "kommunal vei"
                 },
                 "highway/secondary_link": {
-                    "name": "Sekundær lenke"
+                    "name": "Sekundærveiforbindelse",
+                    "terms": "sekundærveirampe,sekundær hovedveiforbindelse"
                 },
                 "highway/service": {
                     "name": "Stikkvei"
@@ -4673,7 +4683,8 @@
                     "name": "Tertiær hovedvei"
                 },
                 "highway/tertiary_link": {
-                    "name": "Utfart"
+                    "name": "Tertiærveiforbindelse",
+                    "terms": "tertiærveirampe,tertiær hovedveiforbindelse"
                 },
                 "highway/toll_gantry": {
                     "name": "Automastisk bomstasjon"
@@ -4688,10 +4699,12 @@
                     "name": "Stihode"
                 },
                 "highway/trunk": {
-                    "name": "Stamvei"
+                    "name": "Stamvei",
+                    "terms": "riksvei"
                 },
                 "highway/trunk_link": {
-                    "name": "Stamvei-lenke"
+                    "name": "Stamveiforbindelse",
+                    "terms": "stamveirampe"
                 },
                 "highway/turning_circle": {
                     "name": "Snuplass"
@@ -4833,9 +4846,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Brakker"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Fareområde"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Militær hinderløype"
@@ -5142,6 +5152,9 @@
                 },
                 "man_made/pipeline": {
                     "name": "Rørledning"
+                },
+                "man_made/pipeline/underground": {
+                    "name": "Bakkerør"
                 },
                 "man_made/pumping_station": {
                     "name": "Pumpestasjon"
@@ -5527,11 +5540,26 @@
                 "polling_station": {
                     "name": "Midlertidig stemmeplass"
                 },
+                "power": {
+                    "name": "Strømrelatert egenskap"
+                },
+                "power/cable": {
+                    "name": "Kraftkabel"
+                },
+                "power/cable/underground": {
+                    "name": "Bakkekabel"
+                },
+                "power/catenary_mast": {
+                    "name": "Kontaktledningsmast"
+                },
                 "power/generator": {
                     "name": "Strømgenerator"
                 },
                 "power/generator/method/photovoltaic": {
                     "name": "Solcellepanel"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Solcellepanel på taket"
                 },
                 "power/generator/source/hydro": {
                     "name": "Vannturbin"
@@ -5546,6 +5574,7 @@
                     "name": "Høyspentlinje"
                 },
                 "power/minor_line": {
+                    "name": "Lavspentlinje",
                     "terms": "stolpe,ledning,strøm,strømlinje,linje,elektrisitet"
                 },
                 "power/plant/source/coal": {
@@ -5575,8 +5604,15 @@
                 "power/pole": {
                     "name": "Høyspentmast"
                 },
+                "power/portal": {
+                    "name": "Forankringsportal"
+                },
                 "power/substation": {
-                    "name": "Transformatorstasjon"
+                    "name": "Transformatorstasjon",
+                    "terms": "trafostasjon"
+                },
+                "power/switch": {
+                    "name": "Strømbryter"
                 },
                 "power/tower": {
                     "name": "Høyspent tårn"
@@ -5588,7 +5624,8 @@
                     "name": "Perrong"
                 },
                 "public_transport/platform/bus": {
-                    "name": "Bussperrong"
+                    "name": "Bussperrong",
+                    "terms": "bussplattform"
                 },
                 "public_transport/platform/bus_point": {
                     "name": "Bussholdeplass"
@@ -5626,7 +5663,8 @@
                     "terms": "holdeplass /-plattform for sporvogn"
                 },
                 "public_transport/platform/trolleybus": {
-                    "name": "Trolleybussperrong"
+                    "name": "Trolleybussperrong",
+                    "terms": "trolleybussplattform"
                 },
                 "public_transport/platform/trolleybus_point": {
                     "name": "Holdeplass for trolleybuss"
@@ -5664,7 +5702,7 @@
                     "terms": "sporvognstasjon"
                 },
                 "public_transport/station_trolleybus": {
-                    "name": "Trolleybusstasjon / -terminal"
+                    "name": "Trolleybusstasjon/-terminal"
                 },
                 "public_transport/stop_area": {
                     "name": "Stoppestedområde for kollektivtrafikk"
@@ -5771,11 +5809,11 @@
                     "name": "Sporveksel"
                 },
                 "railway/train_wash": {
-                    "name": "Tog Vask"
+                    "name": "Togvask"
                 },
                 "railway/tram": {
                     "name": "Trikkespor",
-                    "terms": "sporvognspor"
+                    "terms": "sporvognspor,sporvei"
                 },
                 "railway/tram_crossing": {
                     "name": "Trikk-gang-/sykkelveikryss",
@@ -5800,6 +5838,9 @@
                 },
                 "route/ferry": {
                     "name": "Fergerute"
+                },
+                "seamark": {
+                    "name": "Sjømerke"
                 },
                 "shop": {
                     "name": "Butikk"
@@ -5940,7 +5981,8 @@
                     "name": "Renseri"
                 },
                 "shop/e-cigarette": {
-                    "name": "E-sigarettbutikk"
+                    "name": "E-sigarettbutikk",
+                    "terms": "vapebutikk"
                 },
                 "shop/electrical": {
                     "name": "Elektrisk utstyrsbutikk"
@@ -6387,6 +6429,9 @@
                 },
                 "type/route": {
                     "name": "Rute"
+                },
+                "type/route/bicycle": {
+                    "name": "Sykkelrute"
                 },
                 "type/route/bus": {
                     "name": "Bussrute"

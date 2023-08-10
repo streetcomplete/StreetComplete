@@ -27,12 +27,12 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="user_profile">My Profile</string>
 
     <string name="team_mode">Enter Team Mode</string>
-    <string name="action_download">"Scan for quests here"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
+    <string name="action_download">"Download data here"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t download here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
-    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current download and download here instead?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Download here instead"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continue current download"</string>
 
     <!-- Elements on map view -->
 
@@ -108,7 +108,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is either time-consuming or difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data.</string>
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
-    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
 
 
     <!-- Quest interface -->
@@ -927,7 +927,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this path completed?</string>
 
-    <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
+    <string name="quest_crossing_title2">Is there a crossing here?</string>
+    <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
+    <string name="quest_crossing_no">No, but crossing is possible</string>
+    <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
 
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
@@ -944,8 +947,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
-    <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
-    <string name="quest_cycleway_value_sidewalk_dual">explicitly shared sidewalk, both directions</string>
+    <string name="quest_cycleway_value_sidewalk2">shared-use path</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">shared-use path, both directions</string>
     <string name="quest_cycleway_value_lane_dual">bicycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
@@ -1020,6 +1023,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
+
+    <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
+    <string name="quest_hairdresser_male_and_female">Anyone</string>
+    <string name="quest_hairdresser_female_only">Women</string>
+    <string name="quest_hairdresser_male_only">Men</string>
+    <string name="quest_hairdresser_not_signed">Not signed</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
@@ -1236,7 +1245,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 
-    <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_amenityCover_title">Is this covered (protected from rain)?</string>
 
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
     <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
@@ -1525,6 +1534,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
+    <string name="quest_tactilePaving_title_steps">Is there tactile paving at the top and bottom of these steps?</string>
+    <string name="quest_tactilePaving_steps_top">"Only at the top"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Only at the bottom"</string>
 
     <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
 
@@ -1619,10 +1631,10 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_addresses">Addresses</string>
+    <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>
-    <string name="vacant_shop_title">Vacant shop</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>
     <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
@@ -1662,5 +1674,12 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="street_parking_street_width">Street width: %s</string>
+
+    <string name="lane_narrowing_traffic_calming_choker">Curb extension</string>
+    <!-- More commonly known as "pedestrian refuge", however, not all traffic islands are accessible to pedestrians -->
+    <string name="lane_narrowing_traffic_calming_island">Traffic island</string>
+    <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
+    <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
 
 </resources>

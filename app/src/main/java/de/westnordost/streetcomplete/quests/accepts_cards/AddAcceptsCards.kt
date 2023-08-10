@@ -21,7 +21,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         and !payment:credit_cards and !payment:debit_cards
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
-        and (name or brand or name:signed = no)
+        and (name or brand or noname = yes or name:signed = no)
         and access !~ private|no
     """
     override val changesetComment = "Survey whether payment with cards is accepted"

@@ -5,8 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
-    kotlin("plugin.serialization") version "1.8.0"
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 android {
@@ -35,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5201
-        versionName = "52.0"
+        versionCode = 5304
+        versionName = "53.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -106,12 +105,9 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
-    val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.3"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -125,18 +121,18 @@ dependencies {
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
     // dependency injection
-    implementation("io.insert-koin:koin-android-compat:$koinVersion")
-    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    implementation("io.insert-koin:koin-android-compat:3.4.1")
+    implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.6.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.6")
+    implementation("androidx.fragment:fragment-ktx:1.6.0")
     implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
@@ -144,18 +140,18 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.6")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.7.1")
+    implementation("androidx.work:work-runtime:2.8.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:1.6")
+    implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
@@ -179,7 +175,7 @@ dependencies {
     implementation("com.google.zxing:core:3.5.0")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("com.charleskorn.kaml:kaml:0.48.0")
 
     // map and location
@@ -194,7 +190,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
@@ -202,9 +198,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230320"
+val nsiVersion = "v6.0.20230710"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.0.0"
+val presetsVersion = "v6.3.0"
 
 val poEditorProjectId = "97843"
 

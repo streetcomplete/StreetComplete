@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDialog
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -71,13 +70,8 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
             if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
             this::onClickDownload,
             teamModeQuestFilter::enableTeamMode,
-            teamModeQuestFilter::disableTeamMode,
-            this::onClickOverlays,
+            teamModeQuestFilter::disableTeamMode
         ).show()
-    }
-
-    private fun onClickOverlays() {
-        OverlaySelectionDialog(requireContext()).show()
     }
 
     private fun setTeamMode(enabled: Boolean) {

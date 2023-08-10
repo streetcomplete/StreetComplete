@@ -124,4 +124,10 @@ class WayDao(private val db: Database) {
             limit = limit?.toString()
         ) { it.getLong(ID) }
     }
+
+    fun filterNodeIdsWithoutWays(nodeIds: Collection<Long>): Collection<Long> {
+        val idsString = nodeIds.joinToString(",")
+        val nodeIdsWithWays = db.query(NAME_NODES, where = "$NODE_ID IN ($idsString)", columns = arrayOf(NODE_ID)) { c -> c.getLong(NODE_ID) }
+        return nodeIds - nodeIdsWithWays.toHashSet()
+    }
 }

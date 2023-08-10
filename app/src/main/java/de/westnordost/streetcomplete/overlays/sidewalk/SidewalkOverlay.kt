@@ -98,7 +98,7 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
       or maxspeed <= 10
       or maxspeed = walk
       or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
-      or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*zone:?([1-9]|10)"
+      or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|10)"
 """.toElementFilterExpression() }
 
 private fun sidewalkTaggingNotExpected(element: Element) =

@@ -12,11 +12,13 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
@@ -34,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.getDouble
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -50,11 +53,13 @@ class QuestSelectionAdapter(
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
+    private val onListSizeChanged: (Int) -> Unit,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
-) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), DefaultLifecycleObserver {
+) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
-    private val currentCountryCodes: List<String>
+    private val currentCountryCodes = countryBoundaries.get()
+        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -63,7 +68,7 @@ class QuestSelectionAdapter(
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
         set(value) {
             field = value
-            notifyDataSetChanged()
+            submitList(field)
         }
 
     var filter: String = ""
@@ -71,31 +76,21 @@ class QuestSelectionAdapter(
             val n = value.trim()
             if (n != field) {
                 field = n
-                notifyDataSetChanged()
+                filterQuestTypes(field)
             }
         }
 
-    /** if a filter is active, the filtered quest types, otherwise null */
-    private val filteredQuestTypes: List<QuestVisibility>? get() {
-        val f = filter
-        return if (f.isEmpty()) {
-            null
+    private fun filterQuestTypes(f: String) {
+        if (f.isEmpty()) {
+            submitList(questTypes)
         } else {
             val words = f.lowercase().split(' ')
-            questTypes.filter { questVisibility ->
+            submitList(questTypes.filter { questVisibility ->
                 val question = genericQuestTitle(context.resources, questVisibility.questType).lowercase()
-                words.all { filterWord -> question.contains(filterWord) }
-            }
+                words.all { question.contains(it) }
+            })
         }
     }
-
-    /** during dragging, a mutable copy of the quest types. This is necessary to show the
-     *  dragging animation (where the dragged item pushes aside other items to make room while
-     *  being dragged). */
-    private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
-
-    private val shownQuestTypes: List<QuestVisibility> get() =
-        questTypesDuringDrag ?: filteredQuestTypes ?: questTypes
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
         override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
@@ -131,12 +126,6 @@ class QuestSelectionAdapter(
         }
     }
 
-    init {
-        val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
-        val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-        currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
-    }
-
     override fun onStart(owner: LifecycleOwner) {
         viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
 
@@ -165,10 +154,15 @@ class QuestSelectionAdapter(
     }
 
     override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {
-        holder.onBind(shownQuestTypes[position])
+        holder.onBind(getItem(position))
     }
 
-    override fun getItemCount() = shownQuestTypes.size
+    override fun onCurrentListChanged(
+        previousList: MutableList<QuestVisibility>,
+        currentList: MutableList<QuestVisibility>,
+    ) {
+        onListSizeChanged(currentList.size)
+    }
 
     private suspend fun createQuestTypeVisibilityList() = withContext(Dispatchers.IO) {
         val sortedQuestTypes = questTypeRegistry.toMutableList()
@@ -181,6 +175,11 @@ class QuestSelectionAdapter(
         private var draggedFrom = -1
         private var draggedTo = -1
 
+        /** during dragging, a mutable copy of the quest types. This is necessary to show the
+         *  dragging animation (where the dragged item pushes aside other items to make room while
+         *  being dragged). */
+        private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
+
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
             val qv = (viewHolder as QuestVisibilityViewHolder).item
             if (!qv.isInteractionEnabled) return 0
@@ -190,9 +189,9 @@ class QuestSelectionAdapter(
         }
 
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-            val from = viewHolder.adapterPosition
-            val to = target.adapterPosition
-            if (questTypesDuringDrag == null) questTypesDuringDrag = shownQuestTypes.toMutableList()
+            val from = viewHolder.bindingAdapterPosition
+            val to = target.bindingAdapterPosition
+            if (questTypesDuringDrag == null) questTypesDuringDrag = currentList.toMutableList()
             Collections.swap(questTypesDuringDrag!!, from, to)
             notifyItemMoved(from, to)
             return true
@@ -317,6 +316,19 @@ class QuestSelectionAdapter(
             viewLifecycleScope.launch(Dispatchers.IO) {
                 visibleQuestTypeController.setVisibility(item.questType, item.visible)
             }
+        }
+    }
+
+    private object QuestDiffUtil : DiffUtil.ItemCallback<QuestVisibility>() {
+        override fun areItemsTheSame(oldItem: QuestVisibility, newItem: QuestVisibility): Boolean {
+            return oldItem.questType.name == newItem.questType.name
+        }
+
+        override fun areContentsTheSame(
+            oldItem: QuestVisibility,
+            newItem: QuestVisibility,
+        ): Boolean {
+            return oldItem.visible == newItem.visible
         }
     }
 }

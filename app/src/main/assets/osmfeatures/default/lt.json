@@ -1274,15 +1274,6 @@
                 "sport": {
                     "label": "Sportas"
                 },
-                "sport_ice": {
-                    "label": "Sportas"
-                },
-                "sport_racing_motor": {
-                    "label": "Sportas"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sportas"
-                },
                 "stars": {
                     "label": "Žvaigždutės"
                 },
@@ -2424,9 +2415,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Barakai"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Pavojaus zona"
                 },
                 "landuse/orchard": {
                     "name": "Vaismedžių sodas",

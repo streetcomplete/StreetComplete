@@ -903,7 +903,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="about_title_faq">"Časté otázky"</string>
     <string name="quest_buildingLevels_title2">"Koľko poschodí nad suterénom má táto budova?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Koľko poschodí nad suterénom má táto stavebná časť?"</string>
-    <string name="quest_crossing_title">"Existujú obrubníky, kde sa táto cesta stretáva s touto cestou? Aký druh?"</string>
     <string name="pref_subtitle_quests_preset_name">"Predvoľba: %s"</string>
     <string name="default_disabled_msg_roofShape">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože tvary striech nie sú z ulice často dobre viditeľné. Tento typ úlohy je tiež dosť časovo náročný; vo väčšine prípadov je jednoduchšie a efektívnejšie to zmapovať z leteckých snímok doma."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -937,7 +936,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_buildingType_bridge">"Most medzi budovami"</string>
     <string name="quest_laundrySelfService_title2">"Poskytuje táto práčovňa samoobsluhu?"</string>
     <string name="quest_dietType_explanation_halal">"Halal výrobky sa musia pripravovať podľa zvláštnych pravidiel. Špeciálne agentúry dávajú certifikáty tým Halal produktom, ktoré sú v súlade s týmito pravidlami."</string>
-    <string name="quest_picnicTableCover_title">"Je tento stôl na piknik krytý (chránený pred dažďom)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Toto sú schody"</string>
     <string name="quest_barrier_type_passage_conversion">"Premenené na priechod v stene/plote/a pod."</string>
     <string name="quest_barrier_type_gate_conversion">"Premenené na bránu"</string>
@@ -1233,7 +1231,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="overlay_addresses">"Adresy"</string>
     <string name="overlay_shops">"Obchody"</string>
     <string name="name_label">"Meno:"</string>
-    <string name="vacant_shop_title">"Prázdny obchod"</string>
     <string name="unknown_shop_title">"Iný druh miesta"</string>
     <string name="quest_address_answer_no_address">"Bez adresy"</string>
     <string name="quest_bicycle_barrier_installation_title">"Dá sa táto cyklistická závora otvoriť (s kľúčom alebo bez neho)?"</string>
@@ -1273,7 +1270,7 @@ Presunúť ju teraz?"</string>
     <string name="move_node_description">"Potiahnutím mapy umiestnite prvok na správne miesto. Použite funkciu priblíženia a snažte sa byť čo najpresnejší. Berte na vedomie, že zobrazená poloha môže byť menej presná ako zobrazená."</string>
     <string name="move_node_action_description">"Presunuli ste uzol"</string>
     <string name="quest_cycleway_value_shoulder">"nieje, ale krajnica je použiteľná pre cyklistov"</string>
-    <string name="quest_placeName_no_name_answer">"Nie je tam žiadne označenie mena"</string>
+    <string name="quest_placeName_no_name_answer">"Nie je tam žiadne označenie"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Táto šírka vyzerá nedôveryhodne. Nezabudnite, že by to mala byť šírka od obrubníka k obrubníku vrátane parkovania na ulici, cyklistických pruhov atď."</string>
     <string name="overlay_cycleway">"Cyklotrasy"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
@@ -1297,4 +1294,33 @@ Presunúť ju teraz?"</string>
 &lt;p&gt;Nastavte každý počiatočný a koncový bod, pričom telefón nasmerujte rovno nadol (tak, aby ste zvrchu videli bielu šípku), aby ste sa tomuto problému pri horizontálnych meraniach úplne vyhli.&lt;/p&gt;
 &lt;p&gt;Pri vertikálnych meraniach musíte namiesto toho skontrolovať, či počiatočný bod nie je paralaxe so zemou, a to tak, že sa naň pozriete z rôznych smerov.&lt;/p"</string>
     <string name="privacy_html_arcore">"Táto aplikácia beží na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Tento typ úlohy je predvolene vypnutý, pretože môže vyžadovať opätovné overenie situácie v určitej časti roka."</string>
+    <string name="quest_gritBinSeasonal_title">"Je to tu aj mimo zimy?"</string>
+    <string name="street_parking_staggered_on_street">"Na ulici na striedajúcich sa stranách"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Čiastočne na ulici na striedajúcich sa stranách"</string>
+    <string name="quest_traffic_signals_sound_description">"Tip: Pozrite sa po reproduktoroch. Nie všetky zvukové signály sa dajú aktivovať pomocou tlačidla."</string>
+    <string name="quest_presets_duplicate">"Duplikovať"</string>
+    <string name="label_block">"Blok"</string>
+    <string name="quest_address_answer_block">"Je to v rámci bloku"</string>
+    <string name="quest_address_answer_no_block">"Nie je to v rámci bloku..."</string>
+    <string name="quest_surface_value_mud">"Trvalé blato"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Nie je tu žiadna toaleta"</string>
+    <string name="unknown_surface_title">"Iný druh povrchu"</string>
+    <string name="overlay_surface">"Povrchy"</string>
+    <string name="overlay_path_surface_segregated">"Rozdelené na cyklo a pešiu časť"</string>
+    <string name="quest_crossing_title2">"Nachádza sa tu prechod?"</string>
+    <string name="quest_crossing_yes">"Áno (napr. obrubník je tu znížený alebo sú tu značky)"</string>
+    <string name="quest_crossing_no">"Nie, ale prechod je možný"</string>
+    <string name="quest_crossing_prohibited">"Nie, prechod je zakázaný alebo nemožný"</string>
+    <string name="quest_hairdresser_title">"Akí zákazníci navštevujú kaderníctvo?"</string>
+    <string name="quest_hairdresser_male_and_female">"Ktokoľvek"</string>
+    <string name="quest_hairdresser_female_only">"Ženy"</string>
+    <string name="quest_hairdresser_male_only">"Muži"</string>
+    <string name="quest_hairdresser_not_signed">"Nedefinované"</string>
+    <string name="quest_amenityCover_title">"Je to kryté (chránené pred dažďom)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Rozšírenie chodníka"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Dopravný ostrovček"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Rozšírenie chodníka + dopravný ostrovček"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Žiadny zúžený pruh tu nie je"</string>
 </resources>

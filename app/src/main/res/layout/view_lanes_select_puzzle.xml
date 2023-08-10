@@ -15,11 +15,10 @@
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:layout_alignParentLeft="true"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        tools:ignore="RtlHardcoded">
-
-    </RelativeLayout>
+        tools:ignore="RtlHardcoded"/>
 
     <RelativeLayout
         android:id="@+id/rightSideClickArea"
@@ -29,9 +28,7 @@
         android:layout_alignParentRight="true"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        tools:ignore="RtlHardcoded">
-
-    </RelativeLayout>
+        tools:ignore="RtlHardcoded"/>
 
 </merge>
 

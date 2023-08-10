@@ -113,13 +113,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // 1st text fade out
-        val tutorialStepIntro = binding.tutorialStepIntro
-        tutorialStepIntro.animate()
-            .setDuration(300)
-            .alpha(0f)
-            .translationY(ctx.pxToDp(100))
-            .withEndAction { tutorialStepIntro.visibility = View.GONE }
-            .start()
+        disappearText(binding.tutorialStepIntro)
 
         delay(200)
 
@@ -133,13 +127,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(400)
 
         // 2nd text fade in
-        binding.tutorialStepSolvingQuests.translationY = ctx.pxToDp(-100)
-        binding.tutorialStepSolvingQuests.animate()
-            .withStartAction { binding.tutorialStepSolvingQuests.visibility = View.VISIBLE }
-            .setDuration(300)
-            .alpha(1f)
-            .translationY(0f)
-            .start()
+        appearText(binding.tutorialStepSolvingQuests)
 
         delay(1400)
 
@@ -166,31 +154,16 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
 
     private fun step2Transition() = viewLifecycleScope.launch {
-        val ctx = requireContext()
-
         updateIndicatorDots()
         binding.nextButton.setText(R.string.letsgo)
 
         // 2nd text fade out
-        val tutorialStepSolvingQuests = binding.tutorialStepSolvingQuests
-        tutorialStepSolvingQuests.animate()
-            .setDuration(300)
-            .alpha(0f)
-            .translationY(ctx.pxToDp(100))
-            .withEndAction { tutorialStepSolvingQuests.visibility = View.GONE }
-            .start()
-
-        // 3rd text fade in
-        binding.tutorialStepStaySafe.translationY = ctx.pxToDp(-100)
+        disappearText(binding.tutorialStepSolvingQuests)
 
         delay(400)
 
-        binding.tutorialStepStaySafe.animate()
-            .withStartAction { binding.tutorialStepStaySafe.visibility = View.VISIBLE }
-            .setDuration(300)
-            .alpha(1f)
-            .translationY(0f)
-            .start()
+        // 3rd text fade in
+        appearText(binding.tutorialStepStaySafe)
 
         // quest pins fade out
         listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
@@ -212,6 +185,25 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
 
         enableNextButton()
+    }
+
+    private fun appearText(view: View) {
+        view.translationY = view.context.pxToDp(-100)
+        view.animate()
+            .withStartAction { view.visibility = View.VISIBLE }
+            .setDuration(300)
+            .alpha(1f)
+            .translationY(0f)
+            .start()
+    }
+
+    private fun disappearText(view: View) {
+        view.animate()
+            .setDuration(300)
+            .alpha(0f)
+            .translationY(view.context.pxToDp(100))
+            .withEndAction { view.visibility = View.GONE }
+            .start()
     }
 
     private fun updateIndicatorDots() {

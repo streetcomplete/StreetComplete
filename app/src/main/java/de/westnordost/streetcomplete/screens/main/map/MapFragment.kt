@@ -40,9 +40,11 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListene
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.containsAll
+import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -352,8 +354,8 @@ open class MapFragment :
             putFloat(PREF_ROTATION, camera.rotation)
             putFloat(PREF_TILT, camera.tilt)
             putFloat(PREF_ZOOM, camera.zoom)
-            putLong(PREF_LAT, java.lang.Double.doubleToRawLongBits(camera.position.latitude))
-            putLong(PREF_LON, java.lang.Double.doubleToRawLongBits(camera.position.longitude))
+            putDouble(PREF_LAT, camera.position.latitude)
+            putDouble(PREF_LON, camera.position.longitude)
         }
     }
 
@@ -403,6 +405,15 @@ open class MapFragment :
     }
 
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
+
+    fun getMetersPerPixel(): Double? {
+        val view = view ?: return null
+        val x = view.width / 2f
+        val y = view.height / 2f
+        val pos1 = controller?.screenPositionToLatLon(PointF(x, y)) ?: return null
+        val pos2 = controller?.screenPositionToLatLon(PointF(x + 1, y)) ?: return null
+        return pos1.distanceTo(pos2)
+    }
 
     companion object {
         private const val PREF_ROTATION = "map_rotation"

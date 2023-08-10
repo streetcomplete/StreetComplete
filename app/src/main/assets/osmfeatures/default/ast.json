@@ -76,12 +76,10 @@
                         "housenumber": "123",
                         "housenumber!jp": "Edificiu Núm./Mazana Núm.",
                         "neighbourhood": "Vecinderu",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Llugar",
                         "postcode": "Códigu postal",
                         "province": "Provincia",
                         "province!jp": "Prefeutura",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Estáu",
                         "street": "Cai",
                         "subdistrict": "Subdistritu",
@@ -932,15 +930,6 @@
                     "label": "Fontes"
                 },
                 "sport": {
-                    "label": "Deportes"
-                },
-                "sport_ice": {
-                    "label": "Deportes"
-                },
-                "sport_racing_motor": {
-                    "label": "Deportes"
-                },
-                "sport_racing_nonmotor": {
                     "label": "Deportes"
                 },
                 "stars": {
@@ -2187,9 +2176,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Cuartel"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Área de peligru"
                 },
                 "landuse/military/range": {
                     "name": "Campu de tiru"

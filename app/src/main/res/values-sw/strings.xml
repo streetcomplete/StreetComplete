@@ -5,7 +5,7 @@
     <string name="oauth_failed_permissions">"Uidhinishaji haukufaulu: Ruhusa zote zilizoorodheshwa zinahitaji kutolewa"</string>
     <string name="pref_category_communication">"Mawasiliano"</string>
     <string name="pref_category_display">"Mnyesha"</string>
-    <string name="pref_tilecache_size_summary">"Megabati kwa asilimia"</string>
+    <string name="pref_tilecache_size_summary">"%d Megabati"</string>
     <string name="pref_tilecache_size_message">"Nafasi iliyohifadhiwa katika megabaiti kwenye hifadhi ya nje kwa kuweka akiba ya sehemu ya ramani"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Onyesha vidokezo vyote"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Pia kuonyesha maelezo ambayo hayajaandikwa kama maswali"</string>
@@ -867,7 +867,6 @@
     <string name="about_title_faq">"Maswali Yanayoulizwa Mara kwa Mara"</string>
     <string name="quest_buildingLevels_title2">"Jengo hili lina ngazi ngapi ghorofa ya chini?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Je, sehemu hii ya jengo ina ngazi ghorofa ya chini?"</string>
-    <string name="quest_crossing_title">"Je, kuna viunga ambapo njia hii inakutana na barabara hii hapa? Aina gani?"</string>
     <string name="pref_subtitle_quests_preset_name">"Mpangilio wa awali: %s"</string>
     <string name="default_disabled_msg_roofShape">"Aina hii ya tukio haipo kimakosa kwa i kwa sababu umbile la paa mara nyingi halioonekani kwa urahisi kutoka barabarani. Aina hii ya tukio pia inachukua muda mwingi; katika matukio mengi ni rahisi na ni ufanisi zaidi kulichora kwa picha itakayopigwa angani kwenye nyumba"</string>
     <string name="quest_religion_animist">"Imani za kiroho/ itikadi"</string>
@@ -901,7 +900,6 @@
     <string name="quest_buildingType_bridge">"Daraja kati ya majengo (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Je, sehemu hii ya kufulia hutoa huduma ya kujitegemea?"</string>
     <string name="quest_dietType_explanation_halal">"Bidhaa za Halal lazima zitayarishwe kulingana na sheria maalum, na mashirika ya uthibitishaji ya Halal yanaashiria bidhaa kwa kibali"</string>
-    <string name="quest_picnicTableCover_title">"je,meza hii ya pikniki imefunikwa(inalindwa dhidi ya mvua"</string>
     <string name="quest_generic_answer_is_actually_steps">"Hizi ni ngazi"</string>
     <string name="quest_barrier_type_passage_conversion">"Imegeuzwa kuwa njia katika ukuta/uzio/n.k."</string>
     <string name="quest_barrier_type_gate_conversion">"Imegeuzwa kuwa mlango"</string>
@@ -1193,7 +1191,6 @@
     <string name="overlay_addresses">"Anwani"</string>
     <string name="overlay_shops">"Maduka"</string>
     <string name="name_label">"Jina:"</string>
-    <string name="vacant_shop_title">"Duka lisilo na kitu"</string>
     <string name="unknown_shop_title">"Aina nyingine ya mahali"</string>
     <string name="quest_address_answer_no_address">"Hakuna anwani hapa"</string>
     <string name="quest_bicycle_barrier_installation_title">"Je, kizuizi hiki cha mzunguko kinaweza kufunguliwa (na au bila ufunguo)?"</string>

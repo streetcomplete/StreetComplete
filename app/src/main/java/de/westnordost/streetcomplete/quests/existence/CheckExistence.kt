@@ -37,7 +37,8 @@ class CheckExistence(
             or leisure = picnic_table
             or amenity = bbq
             or leisure = firepit
-            or (leisure = pitch and sport ~ table_tennis|chess)
+            or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
+            or leisure = fitness_station
             or amenity = grit_bin and seasonal = no
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator

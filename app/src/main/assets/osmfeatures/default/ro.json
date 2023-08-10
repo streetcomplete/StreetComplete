@@ -719,15 +719,6 @@
                 "sport": {
                     "label": "Sporturi"
                 },
-                "sport_ice": {
-                    "label": "Sporturi"
-                },
-                "sport_racing_motor": {
-                    "label": "Sporturi"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sporturi"
-                },
                 "stars": {
                     "label": "Stele"
                 },
@@ -1410,9 +1401,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Baraci"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Zonă de Pericol"
                 },
                 "landuse/military/range": {
                     "name": "Gamă Militară"

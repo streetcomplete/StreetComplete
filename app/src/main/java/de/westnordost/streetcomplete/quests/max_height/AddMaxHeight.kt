@@ -73,10 +73,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // amenity = parking_entrance nodes etc. only if they are a vertex in a road
-        val roadsNodeIds = mutableSetOf<Long>()
-        mapData.ways
+        val roadsNodeIds = mapData.ways
             .filter { allRoadsFilter.matches(it) }
-            .flatMapTo(roadsNodeIds) { it.nodeIds }
+            .flatMapTo(HashSet()) { it.nodeIds }
 
         val nodesWithoutHeight = mapData.nodes
             .filter { roadsNodeIds.contains(it.id) && nodeFilter.matches(it) }

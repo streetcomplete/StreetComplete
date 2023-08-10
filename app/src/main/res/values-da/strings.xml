@@ -46,9 +46,9 @@
     <string name="close">"luk"</string>
     <string name="download_error">"Fejl under hentning af opgaver"</string>
     <string name="upload_error">"Fejl mens der blev uploadet svar"</string>
-    <string name="download_area_too_big">"Zoom venligst længere ind"</string>
+    <string name="download_area_too_big">"Zoom længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbryd den nuværende søgning og søg her i stedet?"</string>
-    <string name="turn_on_location_request">"Placering er slået fra. Gå til indstillinger og slå det til nu?"</string>
+    <string name="turn_on_location_request">"Placering er slået fra. Gå til indstillinger og slå den til nu?"</string>
     <string name="no_location_permission_warning">"Tilladelse til at se din placering er nødvendig for at søge efter opgaver i dit nærområde."</string>
     <string name="about_title_authors">"Kreditering"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick og bidragsydere"</string>
@@ -59,8 +59,8 @@
     <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er offline"</string>
-    <string name="confirmation_authorize_now">"Du er nødt til at autentificere med din OSM-brugerkonto for at publicere dine svar. Autentificer nu?"</string>
-    <string name="not_authorized">"Ikke autentificeret"</string>
+    <string name="confirmation_authorize_now">"Du skal autorisere dig med din OSM-brugerkonto for at offentliggøre dine svar. Autorisér nu?"</string>
+    <string name="not_authorized">"Ikke autoriseret"</string>
     <string name="version_banned_message">"Denne version af StreetComplete er for gammel. Opdater venligst!"</string>
     <string name="no_gps_no_quests">"For at søge efter opgaver tæt på dig, skal du slå placering til"</string>
     <string name="later">"Senere"</string>
@@ -907,7 +907,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="about_title_faq">"Ofte stillede spørgsmål"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etager, over jorden, har denne bygning?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
-    <string name="quest_crossing_title">"Er der en kantsten, hvor disse veje møder hinanden? Hvilken slags?"</string>
     <string name="pref_subtitle_quests_preset_name">"Forudindstilling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne opgavetype er slået fra som standard, da formen på bygningers tage kan være svære at se fra gadeplan. Opgavetypen er også meget tidskrævende; ofte er det nemmere og mere effektivt at kortlægge dette udfra luftfotos derhjemme."</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -941,7 +940,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_buildingType_bridge">"Gangbro mellem bygninger"</string>
     <string name="quest_laundrySelfService_title2">"Er der selvbetjening i dette vaskeri?"</string>
     <string name="quest_dietType_explanation_halal">"Halaprodukter skal være lavet efter specielle regler  og skal være med en halalcertificering som markeres på produkterne."</string>
-    <string name="quest_picnicTableCover_title">"Er dette bord- og bænkesæt overdækket (beskyttet mod regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne del er trapper"</string>
     <string name="quest_barrier_type_passage_conversion">"Omdannet til en passage i mur/hegn/osv."</string>
     <string name="quest_barrier_type_gate_conversion">"Omdannet til en låge"</string>
@@ -1004,8 +1002,8 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
-    <string name="quest_smoothness_square_title">"Hvad er overfladekvaliteten på denne plads?"</string>
-    <string name="quest_smoothness_road_title">"Hvad er overfladekvaliteten af denne vej her?"</string>
+    <string name="quest_smoothness_square_title">"Hvordan er overfladekvaliteten på denne plads?"</string>
+    <string name="quest_smoothness_road_title">"Hvordan er overfladekvaliteten af denne vej her?"</string>
     <string name="quest_smoothness_title_excellent">"Jævn og plan"</string>
     <string name="quest_smoothness_title_good">"Hovedsageligt jævn"</string>
     <string name="quest_smoothness_title_intermediate">"Lidt ujævn"</string>
@@ -1018,7 +1016,7 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"Næsten uden mellemrum"</string>
     <string name="quest_smoothness_description_good_paved">"Kun små revner, huller, reparationer eller en lidt jævn overflade"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Overfladiske eller smalle mellemrum"</string>
-    <string name="quest_smoothness_description_good_sett">"Usædvanligt flade sten, regelmæssigt mønster, meget overfladiske eller smalle mellemrum"</string>
+    <string name="quest_smoothness_description_good_sett">"Ualmindeligt flade sten, regelmæssigt mønster, meget overfladiske eller smalle mellemrum"</string>
     <string name="quest_smoothness_description_intermediate_paved">"Usædvanlig ujævn overflade, større mellemrum, revner, overfladiske spor, huller eller andre skader"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Brede mellemrum, muligvis nogle forskudte sten eller andre skader"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Flade sten eller med firkantede kanter, overfladiske eller smalle mellemrum"</string>
@@ -1237,7 +1235,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="overlay_addresses">"Adresser"</string>
     <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
-    <string name="vacant_shop_title">"Tom butik"</string>
     <string name="unknown_shop_title">"Ukendt type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes (med eller uden nøgle)?"</string>
@@ -1315,4 +1312,25 @@ Vil du flytte det nu?"</string>
     <string name="unknown_surface_title">"Anden type overflade"</string>
     <string name="overlay_surface">"Overflader"</string>
     <string name="overlay_path_surface_segregated">"Opdelt i dele til cykling og gang"</string>
+    <string name="quest_crossing_title2">"Er der en overgang her?"</string>
+    <string name="quest_crossing_yes">"Ja (f.eks. er kantstenen sænket her, eller der er markeringer)"</string>
+    <string name="quest_crossing_no">"Nej, men det er muligt at krydse"</string>
+    <string name="quest_crossing_prohibited">"Nej, det er forbudt eller umuligt at krydse"</string>
+    <string name="quest_hairdresser_title">"Hvilke kunder henvender denne frisør sig til?"</string>
+    <string name="quest_hairdresser_male_and_female">"Alle"</string>
+    <string name="quest_hairdresser_female_only">"Kvinder"</string>
+    <string name="quest_hairdresser_male_only">"Mænd"</string>
+    <string name="quest_hairdresser_not_signed">"Ikke angivet"</string>
+    <string name="quest_amenityCover_title">"Er dette overdækket (beskyttet mod regn)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Forlængelse af kantsten"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Midterhelle"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chikane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Forlængelse af kantsten + midterhelle"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ingen indsnævring af kørebane her"</string>
+    <string name="quest_tactilePaving_title_steps">"Er der taktil belægning ved toppen og bunden af disse trin?"</string>
+    <string name="quest_tactilePaving_steps_top">"Kun ved toppen"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Kun ved bunden"</string>
+    <string name="overlay_addresses_no_entrance">"Det er ikke en indgang…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"sti til fælles brug"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"sti til fælles brug, begge retninger"</string>
 </resources>

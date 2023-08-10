@@ -905,7 +905,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Câte niveluri deasupra solului are această clădire?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Câte niveluri deasupra solului are această parte de clădire?"</string>
-    <string name="quest_crossing_title">"Exista borduri aici unde aceasta cale intalneste acest drum? Ce fel de borduri?"</string>
     <string name="pref_subtitle_quests_preset_name">"Prestabilit: %s"</string>
     <string name="default_disabled_msg_roofShape">"Acest tip de misiune este dezactivat în mod implicit, deoarece formele acoperișului nu sunt adesea vizibile cu ușurință de pe stradă. Acest tip de misiune consumă, de asemenea, destul de mult timp; în majoritatea cazurilor, este mai ușor și mai eficient să cartografiați acest lucru din imagini aeriene acasă."</string>
     <string name="quest_religion_animist">"Animist"</string>
@@ -939,7 +938,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_buildingType_bridge">"Punte între clădiri"</string>
     <string name="quest_laundrySelfService_title2">"Această spălătorie este cu autoservire?"</string>
     <string name="quest_dietType_explanation_halal">"Produsele Halal trebuiesc preparate după reguli speciale ale unor agenții certificate Halal ce vor marca produsele corespunzătoare."</string>
-    <string name="quest_picnicTableCover_title">"Este acoperită această masă de picnic (este protejată de ploaie)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Pe această parte sunt scări"</string>
     <string name="quest_barrier_type_passage_conversion">"Transformat într-un pasaj într-un perete/gard/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Transformată într-o poartă"</string>
@@ -984,11 +982,17 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="street_parking_separate">"Parcarea este afișată separat pe hartă"</string>
     <string name="street_parking_no">"Nu este parcare / nu este permisă parcarea"</string>
     <string name="street_parking_prohibited">"Parcarea interzisă"</string>
+    <string name="street_stopping_prohibited">"Oprirea Interzisă"</string>
+    <string name="street_standing_prohibited">"Staționarea Interzisă"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Se poate parca sau opri aici, vă ru"</string>
     <string name="quest_address_house_number_label">"Numărul casei:"</string>
     <string name="quest_fireHydrant_position_title">"Unde se află hidrantul?"</string>
     <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Pe trotuar"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Într-un loc de parcare"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Da (lasă o notă)"</string>
+    <string name="quest_smoothness_title_excellent">"Neted și plat"</string>
+    <string name="quest_smoothness_title_good">"În mare parte plat"</string>
     <string name="unit_days">"zile"</string>
     <string name="unit_hours">"ore"</string>
     <string name="unit_minutes">"minute"</string>
