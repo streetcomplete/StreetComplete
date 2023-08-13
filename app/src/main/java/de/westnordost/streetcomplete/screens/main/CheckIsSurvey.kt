@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.QuestSourceDialogLayoutBinding
-import de.westnordost.streetcomplete.util.math.distanceToArcs
+import de.westnordost.streetcomplete.util.math.flatDistanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
@@ -54,15 +54,15 @@ private suspend fun isWithinSurveyDistance(
     locations: Sequence<Location>
 ): Boolean = withContext(Dispatchers.Default) {
     // suspending because distanceToArcs is slow
+    val polylines: List<List<LatLon>> = when (geometry) {
+        is ElementPolylinesGeometry -> geometry.polylines
+        is ElementPolygonsGeometry -> geometry.polygons
+        else -> listOf(listOf(geometry.center))
+    }
     locations.any { location ->
         val pos = LatLon(location.latitude, location.longitude)
-        val polylines: List<List<LatLon>> = when (geometry) {
-            is ElementPolylinesGeometry -> geometry.polylines
-            is ElementPolygonsGeometry -> geometry.polygons
-            else -> listOf(listOf(geometry.center))
-        }
         polylines.any { polyline ->
-            pos.distanceToArcs(polyline) < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY
+            pos.flatDistanceToArcs(polyline) < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY
         }
     }
 }
