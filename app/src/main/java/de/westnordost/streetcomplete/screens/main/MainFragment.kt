@@ -855,6 +855,11 @@ class MainFragment :
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        // java.lang.IllegalStateException: Can't access the Fragment View's LifecycleOwner for MainFragment [... ]when getView() is null i.e., before onCreateView() or after onDestroyView()
+        // this happened on downloading quests, so not sure where MainFragment is destroyed
+        // the reporting user seems to be very concerned about privacy and removed Android version and device from the crash report
+        // so can't dig deeper, instead just try whether checking view is null helps
+        if (view == null) return
         viewLifecycleScope.launch {
             val f = bottomSheetFragment
             if (f !is IsShowingElement) return@launch
