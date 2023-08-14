@@ -84,7 +84,9 @@ class VisibleQuestsSource(
 
     private val selectedOverlayListener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
-            invalidate()
+            // no need to invalidate if overlay can't hide quests
+            if (prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true))
+                invalidate()
         }
     }
 
