@@ -27,8 +27,10 @@ class RecentLocationStore {
     }
 
     fun add(location: Location) = synchronized(recentLocations) {
-        recentLocations.removeAll {
-            it.elapsedRealtimeNanos <= location.elapsedRealtimeNanos - LOCATION_STORE_TIME_NANOS
+        while (recentLocations.isNotEmpty()
+            && recentLocations.first().elapsedRealtimeNanos <= location.elapsedRealtimeNanos - LOCATION_STORE_TIME_NANOS
+        ) {
+            recentLocations.removeFirst()
         }
         recentLocations.add(location)
     }
