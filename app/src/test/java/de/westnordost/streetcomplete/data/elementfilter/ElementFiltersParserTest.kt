@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.elementfilter
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
+import kotlin.test.assertFailsWith
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Test
 
 class ElementFiltersParserTest {
@@ -498,10 +498,9 @@ class ElementFiltersParserTest {
     }
 
     private fun shouldFail(input: String) {
-        try {
+        assertFailsWith<ParseException> {
             input.toElementFilterExpression()
-            fail()
-        } catch (ignore: ParseException) {}
+        }
     }
 
     private fun parse(input: String): ElementFilterExpression =

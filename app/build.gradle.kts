@@ -114,6 +114,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
+    testImplementation(kotlin("test"))
 
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
