@@ -604,6 +604,7 @@ class MainFragment :
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        if (view == null) return
         viewLifecycleScope.launch {
             val f = bottomSheetFragment
             if (f !is IsShowingElement) return@launch

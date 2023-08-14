@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main
+package de.westnordost.streetcomplete.data.location
 
 import android.location.Location
 import de.westnordost.streetcomplete.util.ktx.toLatLon

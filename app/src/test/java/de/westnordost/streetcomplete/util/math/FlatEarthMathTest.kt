@@ -3,12 +3,8 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import kotlin.math.PI
 import kotlin.math.abs
-import kotlin.math.cos
-import kotlin.math.pow
 import kotlin.random.Random
-import kotlin.system.measureTimeMillis
 
 class FlatEarthMathTest {
 
