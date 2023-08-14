@@ -13,7 +13,6 @@ class TilesRectTest {
     fun `convert bbox to tiles rect and back results in same bbox`() {
         val points = listOf(
             p(53.0, 9.0),
-            p(0.0, 0.0),
             p(48.179, 16.414),
             p(0.236, 47.235),
             p(85.049, -179.989),

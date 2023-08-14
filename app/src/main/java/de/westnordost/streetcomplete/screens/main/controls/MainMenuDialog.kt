@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
@@ -23,7 +24,6 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    onClickOverlays: () -> Unit,
     prefs: SharedPreferences,
     questPresetsController: QuestPresetsController,
 ) : AlertDialog(context) {
@@ -43,6 +43,14 @@ class MainMenuDialog(
             onDisableTeamMode()
             dismiss()
         }
+        binding.enableTeamModeButtonGrid.setOnClickListener {
+            TeamModeDialog(context, onEnableTeamMode).show()
+            dismiss()
+        }
+        binding.disableTeamModeButtonGrid.setOnClickListener {
+            onDisableTeamMode()
+            dismiss()
+        }
         binding.settingsButton.setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             context.startActivity(intent)
@@ -58,9 +66,8 @@ class MainMenuDialog(
             onClickDownload()
             dismiss()
         }
-
-        binding.overlaysButton.setOnClickListener {
-            onClickOverlays()
+        binding.downloadButtonGrid.setOnClickListener {
+            onClickDownload()
             dismiss()
         }
 
@@ -72,6 +79,22 @@ class MainMenuDialog(
 
         binding.root.doOnPreDraw {
             binding.bigMenuItemsContainer.columnCount = binding.root.width / binding.profileButton.width
+        }
+
+        if (prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false)) {
+            binding.downloadButtonGrid.isVisible = true
+            binding.downloadButton.isGone = true
+            binding.enableTeamModeButtonGrid.isVisible = indexInTeam == null
+            binding.disableTeamModeButtonGrid.isVisible = indexInTeam != null
+            binding.enableTeamModeButtonGrid.isGone = indexInTeam != null
+            binding.disableTeamModeButtonGrid.isGone = indexInTeam == null
+            binding.enableTeamModeButton.isGone = true
+            binding.disableTeamModeButton.isGone = true
+            binding.divider.isGone = !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false)
+        } else {
+            binding.downloadButtonGrid.isGone = true
+            binding.enableTeamModeButtonGrid.isGone = true
+            binding.disableTeamModeButtonGrid.isGone = true
         }
 
         binding.switchPresetButton.isGone = !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false)

@@ -157,13 +157,8 @@ private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: I
 private fun tile2lon(x: Int, zoom: Int): Double =
     360.0 * x / numTiles(zoom).toDouble() - 180.0
 
-private fun tile2lat(y: Int, zoom: Int): Double {
-    val nt = numTiles(zoom)
-    return if (y == nt / 2) // 0.0 is a special case...
-        180.0 / PI * atan(sinh(PI * (1.0 - 2.0 * y / nt)))
-    else
-        (180.0 / PI * atan(sinh(PI * (1.0 - 2.0 * y / nt)))).nextDown()
-}
+private fun tile2lat(y: Int, zoom: Int): Double =
+    (180.0 / PI * atan(sinh(PI * (1.0 - 2.0 * y / numTiles(zoom))))).nextDown()
 
 private fun lon2tile(lon: Double, zoom: Int): Int =
     (numTiles(zoom) * (lon + 180.0) / 360.0).toInt()

@@ -123,13 +123,12 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.screens.main.overlays.getFakeCustomOverlays
-import de.westnordost.streetcomplete.screens.main.overlays.showOverlayCustomizer
 import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
+import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -148,6 +147,7 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets

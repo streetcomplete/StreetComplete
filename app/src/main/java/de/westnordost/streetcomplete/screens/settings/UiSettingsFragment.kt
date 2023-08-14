@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
@@ -22,7 +21,7 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import org.koin.android.ext.android.inject
 
-class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPreferenceChangeListener {
+class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
     private val prefs: SharedPreferences by inject()
 
@@ -84,7 +83,6 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPrefere
             builder.show()
             true
         }
-        setGridPrefEnabled()
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
@@ -98,22 +96,4 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle, OnSharedPrefere
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        prefs.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        prefs.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
-        if (key == Prefs.MAIN_MENU_SWITCH_PRESETS)
-            setGridPrefEnabled()
-    }
-
-    private fun setGridPrefEnabled() {
-        findPreference<Preference>(Prefs.MAIN_MENU_FULL_GRID)?.isEnabled = !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false)
-    }
 }

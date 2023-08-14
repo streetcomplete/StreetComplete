@@ -66,6 +66,7 @@ import de.westnordost.streetcomplete.quests.contact.AddContactPhone
 import de.westnordost.streetcomplete.quests.contact.AddContactWebsite
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
+import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cuisine.AddCuisine
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
@@ -363,6 +364,7 @@ fun getQuestTypeList(
     39 to AddCrossingIsland(), // can be done at a glance
     40 to AddCrossingType(),
     41 to AddTactilePavingCrosswalk(),
+    159 to AddCrossingKerbHeight(),
     42 to AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
     43 to AddTrafficSignalsButton(),
     44 to AddTrafficSignalsVibration(),

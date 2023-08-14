@@ -1,11 +1,10 @@
-package de.westnordost.streetcomplete.screens.main.overlays
+package de.westnordost.streetcomplete.util
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.util.TypedValue
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
@@ -17,109 +16,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
-import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.databinding.DialogOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
-import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-
-/** Dialog in which the user selects which overlay to display */
-class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinComponent {
-
-    private val selectedOverlayController: SelectedOverlayController by inject()
-    private val overlayRegistry: OverlayRegistry by inject()
-    private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val prefs: SharedPreferences by inject()
-    private val ctx = context
-    private val adapter = OverlaySelectionAdapter()
-
-    init {
-        val currentOverlay = selectedOverlayController.selectedOverlay
-
-        val fakeOverlays = getFakeCustomOverlays(prefs, ctx)
-        adapter.overlays = overlayRegistry.filter {
-            val eeAllowed = if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) true
-                else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
-            eeAllowed && it !is CustomOverlay
-        } + fakeOverlays
-        adapter.selectedOverlay = if (currentOverlay is CustomOverlay)
-            fakeOverlays.singleOrNull { it.wikiLink == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() }
-        else
-            currentOverlay
-        adapter.onSelectedOverlay = { so ->
-            var selectedOverlay = so
-            if (selectedOverlay?.title == 0) {
-                prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay!!.wikiLink!!.toInt()) }
-                // set the actual custom overlay instead of the fake one
-                selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
-            }
-            if (currentOverlay != selectedOverlay || selectedOverlay is CustomOverlay)
-                selectedOverlayController.selectedOverlay = selectedOverlay // only set same overlay if it's custom, as setting same one now reloads
-            dismiss()
-        }
-        adapter.onCustomizeOverlay = { customizer(it) }
-
-        val binding = DialogOverlaySelectionBinding.inflate(LayoutInflater.from(context))
-
-        binding.overlaysList.adapter = adapter
-        binding.overlaysList.layoutManager = LinearLayoutManager(context)
-
-        setTitle(R.string.select_overlay)
-
-        setButton(BUTTON_NEGATIVE, context.resources.getText(android.R.string.cancel)) { _, _ ->
-            dismiss()
-        }
-
-        if (prefs.getBoolean(Prefs.EXPERT_MODE, false))
-            setButton(BUTTON_NEUTRAL, context.getText(R.string.custom_overlay_add_button)) { _,_ ->
-                val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isNullOrBlank()) 0
-                    else getCustomOverlayIndices(prefs).max() + 1
-                customizer(newIdx)
-            }
-
-        setView(binding.root)
-    }
-
-    private fun customizer(index: Int) = showOverlayCustomizer(index, ctx, prefs, questTypeRegistry,
-        { isCurrentCustomOverlay ->
-            if (isCurrentCustomOverlay && selectedOverlayController.selectedOverlay is CustomOverlay) {
-                // switch to overlay if we're editing current one or if it's new
-                selectedOverlayController.selectedOverlay = null
-                selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
-                dismiss()
-            } else {
-                // otherwise reload overlay list because of icon and name
-                adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
-            }
-        },
-        { wasCurrentOverlay ->
-            if (wasCurrentOverlay && selectedOverlayController.selectedOverlay is CustomOverlay)
-                selectedOverlayController.selectedOverlay = null // can't change overlay in adapter, as any change will dismiss overlay selection dialog...
-            // still always reload overlay list
-            adapter.overlays = overlayRegistry.filterNot { it is CustomOverlay } + getFakeCustomOverlays(prefs, ctx)
-        }
-    )
-}
 
 @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
 @Suppress("KotlinConstantConditions") // because this is simply incorrect...
@@ -143,7 +55,9 @@ fun showOverlayCustomizer(
     }.toList()
     val iconSpinner = Spinner(ctx).apply {
         adapter = ArrayImageAdapter(ctx, iconList, 48)
-        val selectedIcon = ctx.resources.getIdentifier(prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
+        val selectedIcon = ctx.resources.getIdentifier(prefs.getString(
+            getIndexedCustomOverlayPref(
+                Prefs.CUSTOM_OVERLAY_IDX_ICON, index), "ic_custom_overlay"), "drawable", ctx.packageName)
         setSelection(iconList.indexOf(selectedIcon))
         dropDownWidth = ctx.dpToPx(48).toInt()
         layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
@@ -159,7 +73,9 @@ fun showOverlayCustomizer(
                 .setPositiveButton(R.string.close, null)
                 .setNeutralButton("link") { _, _ ->
                     val intent = Intent(Intent.ACTION_VIEW, "https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection".toUri())
-                    try { startActivity(ctx, intent, null) } catch (_: Exception) { }
+                    try {
+                        ContextCompat.startActivity(ctx, intent, null)
+                    } catch (_: Exception) { }
                 }
                 .create()
             dialog.show()
@@ -302,7 +218,9 @@ fun showOverlayCustomizer(
         }
     if (index in indices)
         b.setNeutralButton(R.string.delete_confirmation) { _, _ ->
-            val overlayName = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(R.string.custom_overlay_title))
+            val overlayName = prefs.getString(
+                getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), ctx.getString(
+                    R.string.custom_overlay_title))
             AlertDialog.Builder(ctx)
                 .setMessage(ctx.getString(R.string.custom_overlay_delete, overlayName))
                 .setNegativeButton(android.R.string.cancel, null)
@@ -329,7 +247,8 @@ fun getFakeCustomOverlays(prefs: SharedPreferences, ctx: Context): List<Overlay>
         object : Overlay {
             override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
             override fun createForm(element: Element?) = null
-            override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
+            override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!.ifBlank { ctx.getString(
+                R.string.custom_overlay_title) } // displayed overlay name
             override val icon = ctx.resources.getIdentifier(
                 prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
                 "drawable", ctx.packageName

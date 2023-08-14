@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDialog
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -25,6 +24,8 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+
+// todo: make it work again, maybe join with the grid variant
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
@@ -74,26 +75,15 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     /* ------------------------------------------------------------------------------------------ */
 
     internal fun onClickMainMenu() {
-        val d = if (prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false) && !prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
-            MainMenuGridDialog(
-                requireContext(),
-                if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
-                this::onClickDownload,
-                teamModeQuestFilter::enableTeamMode,
-                teamModeQuestFilter::disableTeamMode,
-                this::onClickOverlays,
-            )
-        else
-            MainMenuDialog(
-                requireContext(),
-                if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
-                this::onClickDownload,
-                teamModeQuestFilter::enableTeamMode,
-                teamModeQuestFilter::disableTeamMode,
-                this::onClickOverlays,
-                prefs,
-                questPresetsController
-            )
+        val d = MainMenuDialog(
+            requireContext(),
+            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+            this::onClickDownload,
+            teamModeQuestFilter::enableTeamMode,
+            teamModeQuestFilter::disableTeamMode,
+            prefs,
+            questPresetsController
+        )
         d.setOnKeyListener { _, _, keyEvent ->
             if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
                 val intent = Intent(requireContext(), SettingsActivity::class.java)
@@ -103,10 +93,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
             } else false
         }
         d.show()
-    }
-
-    private fun onClickOverlays() {
-        OverlaySelectionDialog(requireContext()).show()
     }
 
     private fun setTeamMode(enabled: Boolean) {

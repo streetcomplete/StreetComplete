@@ -42,6 +42,7 @@ object Prefs {
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
     const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
     const val SELECTED_OVERLAY = "selectedOverlay"
+    const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
 
     const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
     const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"

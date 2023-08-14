@@ -242,7 +242,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                 "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/brands/$file.svg",
             )
             "roentgen" -> listOf(
-                "https://raw.githubusercontent.com/openstreetmap/iD/develop/svg/roentgen/$file.svg"
+                "https://raw.githubusercontent.com/enzet/Roentgen/main/icons/roentgen_$file.svg"
             )
             else -> null
         }

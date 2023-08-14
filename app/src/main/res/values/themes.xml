@@ -27,6 +27,8 @@
 
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
         <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
+        <item name="android:listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
+        <item name="listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
         <item name="preferenceTheme">@style/Theme.Preferences</item>
     </style>
 

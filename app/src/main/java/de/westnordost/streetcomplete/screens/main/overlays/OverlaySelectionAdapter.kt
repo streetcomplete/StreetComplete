@@ -1,68 +1,70 @@
 package de.westnordost.streetcomplete.screens.main.overlays
 
+import android.content.SharedPreferences
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.BaseAdapter
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.RowOverlaySelectionBinding
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.showOverlayCustomizer
 
 /** Adapter for the list in which the user can select which overlay he wants to use */
-class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.ViewHolder>() {
+class OverlaySelectionAdapter(
+    private val overlays: List<Overlay>,
+    private val prefs: SharedPreferences,
+    private val questTypeRegistry: QuestTypeRegistry,
+    ) : BaseAdapter() {
 
-    var onSelectedOverlay: ((Overlay?) -> Unit)? = null
 
-    var onCustomizeOverlay: ((Int) -> Unit)? = null
+    override fun getCount() = 1 + overlays.size + if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) 1 else 0
 
-    var overlays: List<Overlay> = emptyList()
-        set(value) {
-            if (field == value) return
-            field = value
-            notifyDataSetChanged()
-        }
+    override fun getItem(position: Int) = if (position > 0 && position <= overlays.size) overlays[position - 1] else null
 
-    var selectedOverlay: Overlay? = null
-        set(value) {
-            // To match other preference dialogs, also invoke callback when nothing changed to allow
-            // dismissing the selection dialog when the active overlay is selected again.
-            onSelectedOverlay?.invoke(value)
-            if (field == value) return
-            field = value
-            notifyDataSetChanged()
-        }
+    override fun getItemId(position: Int) = position.toLong()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(RowOverlaySelectionBinding.inflate(inflater, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(if (position == 0) null else overlays[position - 1])
-    }
-
-    override fun getItemCount() = 1 + overlays.size
-
-    inner class ViewHolder(private val binding: RowOverlaySelectionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun onBind(with: Overlay?) {
-            val ctx = binding.root.context
-            val titleResId = with?.title ?: R.string.overlay_none
-            binding.overlayTitle.text = if (titleResId != 0) ctx.getString(titleResId) else with?.changesetComment // the custom title
-            val icon = with?.icon?.let { ctx.getDrawable(it) }
-            icon?.setBounds(0, 0, ctx.dpToPx(32).toInt(), ctx.dpToPx(32).toInt())
-            binding.overlayTitle.setCompoundDrawables(icon, null, null, null)
-            binding.overlayTitle.compoundDrawablePadding = ctx.dpToPx(4).toInt()
-            binding.radioButton.isChecked = with == selectedOverlay
-            binding.root.setOnClickListener { selectedOverlay = with }
-            binding.customButton.isVisible = titleResId == 0
-            if (titleResId == 0) {
-                binding.customButton.setOnClickListener {
-                    with?.wikiLink?.toIntOrNull()?.let { onCustomizeOverlay?.invoke(it) }
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val overlay = getItem(position)
+        val context = parent.context
+        val view = convertView
+            ?: LayoutInflater.from(context).inflate(R.layout.row_overlay_selection, parent, false)
+        val textView = view.findViewById(R.id.overlay_text) as TextView
+        val isAdd = overlay == null && position != 0
+        val titleResId = overlay?.title ?: if (isAdd) R.string.custom_overlay_add_button else R.string.overlay_none
+        if (titleResId != 0) { // normal overlay
+            textView.setText(titleResId)
+        } else { // custom overlay
+            textView.text = overlay?.changesetComment // the custom title
+            view.findViewById<ImageButton>(R.id.customButton)?.apply {
+                isVisible = true // show settings icon
+                setOnClickListener {
+                    // wikiLink is used for index
+                    showOverlayCustomizer(overlay!!.wikiLink!!.toInt(), context, prefs, questTypeRegistry, {
+                        // changed -> always select
+                        (parent as AdapterView<*>).performItemClick(textView, position, position.toLong())
+                    }, {
+                        // deleted -> set to 0 (none)
+                        // ideally only if it was active, but then popup wouldn't be dismissed
+                        (parent as AdapterView<*>).performItemClick(textView, 0, 0L)
+                    } )
                 }
             }
+            textView.setOnClickListener {
+                (parent as AdapterView<*>).performItemClick(textView, position, position.toLong())
+            }
         }
+
+        val icon = context.getDrawable(overlay?.icon ?: if (isAdd) R.drawable.ic_add_24dp else R.drawable.space_24dp)
+        icon?.setBounds(0, 0, context.dpToPx(38).toInt(), context.dpToPx(38).toInt())
+        textView.setCompoundDrawables(icon, null, null, null)
+        textView.compoundDrawablePadding = context.dpToPx(8).toInt()
+        return view
     }
 }
