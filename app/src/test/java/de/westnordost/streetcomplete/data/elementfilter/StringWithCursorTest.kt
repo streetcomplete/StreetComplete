@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import kotlin.test.assertFailsWith
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Test
 
 class StringWithCursorTest {
@@ -17,10 +17,9 @@ class StringWithCursorTest {
         assertEquals('b', x.advance())
         assertEquals(2, x.cursorPos)
 
-        try {
+        assertFailsWith<IndexOutOfBoundsException> {
             x.advance()
-            fail()
-        } catch (ignore: IndexOutOfBoundsException) {}
+        }
     }
 
     @Test fun advanceBy() {
@@ -29,10 +28,9 @@ class StringWithCursorTest {
         assertEquals(6, x.cursorPos)
         assertEquals("", x.advanceBy(0))
         assertEquals(6, x.cursorPos)
-        try {
+        assertFailsWith<IndexOutOfBoundsException> {
             x.advanceBy(-1)
-            fail()
-        } catch (ignore: IndexOutOfBoundsException) {}
+        }
 
         assertEquals("tuete", x.advanceBy(99999))
         assertEquals(11, x.cursorPos)
@@ -46,10 +44,9 @@ class StringWithCursorTest {
         assertEquals("wunder", x.advanceBy(6))
         x.retreatBy(3)
         assertEquals("dertue", x.advanceBy(6))
-        try {
+        assertFailsWith<IndexOutOfBoundsException> {
             x.retreatBy(-1)
-            fail()
-        } catch (ignore: IndexOutOfBoundsException) {}
+        }
     }
 
     @Test fun nextIsAndAdvance() {
