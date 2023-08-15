@@ -92,6 +92,7 @@ private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]*\\
 private val ESCAPED_QUOTE_REGEX = Regex("\\\\(['\"])")
 private val WHITESPACE_REGEX = Regex("\\s")
 private val WHITESPACES_REGEX = Regex("\\s*")
+private val NOT_WITH_WHITESPACE_AND_OPENING_BRACE = Regex("!\\s*\\(")
 
 private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
     val result = LinkedHashSet<ElementsTypeFilter>()
@@ -138,13 +139,20 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
             throw ParseException("Expected a whitespace or bracket before the tag", cursorPos)
         }
 
+        if (nextMatches(NOT_WITH_WHITESPACE_AND_OPENING_BRACE) != null) {
+            advanceBy(NOT.length)
+            builder.addNot()
+            // continue is required, as !( could be nested
+            continue
+        }
+
         builder.addValue(parseTag())
 
         val separated = parseBracketsAndSpaces(')', builder)
 
         if (isAtEnd()) break
 
-        // same as with the opening bracket, only that if the string is over, its okay
+        // same as with the opening bracket, only that if the string is over, it's okay
         if (!separated) {
             throw ParseException("Expected a whitespace or bracket after the tag", cursorPos)
         }
