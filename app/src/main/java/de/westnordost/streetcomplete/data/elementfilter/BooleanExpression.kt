@@ -70,7 +70,7 @@ abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
         while (it.hasNext()) {
             val child = it.next() as? Chain ?: continue
             if (child is Not<I, T>) {
-                continue;
+                continue
             }
             child.mergeNodesWithSameOperator()
 
