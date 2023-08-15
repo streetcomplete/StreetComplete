@@ -22,9 +22,6 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import java.util.concurrent.FutureTask
 
-private const val HIGHWAY = "highway"
-private const val RESIDENTIAL = "residential"
-
 class AddCyclewayTest {
 
     private lateinit var countryInfo: CountryInfo
