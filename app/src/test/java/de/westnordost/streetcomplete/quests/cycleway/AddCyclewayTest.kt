@@ -22,6 +22,9 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import java.util.concurrent.FutureTask
 
+private const val HIGHWAY = "highway"
+private const val RESIDENTIAL = "residential"
+
 class AddCyclewayTest {
 
     private lateinit var countryInfo: CountryInfo
@@ -265,5 +268,48 @@ class AddCyclewayTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
         assertNull(questType.isApplicableTo(way))
+    }
+
+    @Test
+    fun `applicable to maxspeed 30 zone with zone_traffic urban`() {
+        val residentialWayIn30Zone = way(1L, listOf(1, 2, 3), mapOf(
+            HIGHWAY to RESIDENTIAL,
+            "maxspeed" to "30",
+            "zone:traffic" to "DE:urban",
+            "zone:maxspeed" to "DE:30",
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(residentialWayIn30Zone))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(residentialWayIn30Zone))
+    }
+
+    @Test
+    fun `applicable to maxspeed 30 in built-up area`() {
+        val residentialWayInBuiltUpAreaWithMaxspeed30 = way(tags = mapOf(
+            HIGHWAY to RESIDENTIAL,
+            "maxspeed" to "30",
+            "zone:traffic" to "DE:urban"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(residentialWayInBuiltUpAreaWithMaxspeed30))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(residentialWayInBuiltUpAreaWithMaxspeed30))
+    }
+
+    @Test
+    fun `not applicable to residential way in maxspeed 30 zone`() {
+        val residentialWayIn30Zone = way(1L, listOf(1, 2, 3), mapOf(
+            HIGHWAY to RESIDENTIAL,
+            "maxspeed" to "30",
+            "zone:maxspeed" to "DE:30",
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(residentialWayIn30Zone))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertFalse(questType.isApplicableTo(residentialWayIn30Zone)!!)
     }
 }
