@@ -191,7 +191,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(residentialWayIn30Zone))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(residentialWayIn30Zone))
+        assertTrue(questType.isApplicableTo(residentialWayIn30Zone)!!)
     }
 
     @Test
@@ -205,7 +205,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(residentialWayInBuiltUpAreaWithMaxspeed30))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(residentialWayInBuiltUpAreaWithMaxspeed30))
+        assertTrue(questType.isApplicableTo(residentialWayInBuiltUpAreaWithMaxspeed30)!!)
     }
 
     @Test
