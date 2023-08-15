@@ -99,24 +99,13 @@ class AnyOf<I : Matcher<T>, T> : Chain<I, T>() {
 
 class Not<I : Matcher<T>, T> : Chain<I, T>() {
     override fun addChild(child: BooleanExpression<I, T>) {
-        if (nodes.size > 0)
-        {
-            throw IllegalStateException("Adding a second child to '!' (NOT) operator is not allowed")
-        }
+        check(nodes.isEmpty()) { "Adding a second child to '!' (NOT) operator is not allowed" }
         super.addChild(child)
     }
 
     override fun matches(obj: T) = !nodes.first().matches(obj)
 
-    override fun toString() : String {
-        val childString = when (val firstNode = nodes.firstOrNull()) {
-            is Chain -> "($firstNode)"
-            null -> ""
-            else -> "($firstNode)"
-        }
-
-        return "!$childString"
-    }
+    override fun toString() = "!(${nodes.firstOrNull() ?: ""})"
 }
 
 interface Matcher<in T> {
