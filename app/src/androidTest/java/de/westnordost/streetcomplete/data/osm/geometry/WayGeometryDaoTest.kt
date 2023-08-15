@@ -4,11 +4,11 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import kotlin.test.assertFailsWith
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 
@@ -26,13 +26,13 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
     @Test fun putWrongTypes() {
         val geometry = createSimpleGeometry()
 
-        assertThrows {
+        assertFailsWith<IllegalArgumentException> {
             dao.put(ElementGeometryEntry(ElementType.NODE, 0, geometry))
         }
-        assertThrows {
+        assertFailsWith<IllegalArgumentException> {
             dao.put(ElementGeometryEntry(ElementType.RELATION, 0, geometry))
         }
-        assertThrows {
+        assertFailsWith<IllegalArgumentException> {
             dao.putAll(listOf(
                 ElementGeometryEntry(ElementType.NODE, 1, geometry),
                 ElementGeometryEntry(ElementType.RELATION, 2, geometry)
@@ -120,11 +120,4 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         }
         return result
     }
-}
-
-private fun assertThrows(block: () -> Unit) {
-    try {
-        block()
-        fail("Expected exception")
-    } catch (e: Throwable) {}
 }

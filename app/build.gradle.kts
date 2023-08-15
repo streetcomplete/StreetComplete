@@ -120,6 +120,7 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
+    androidTestImplementation(kotlin("test"))
 
     // dependency injection
     implementation("io.insert-koin:koin-android-compat:3.4.1")
