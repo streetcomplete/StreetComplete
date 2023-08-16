@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.level
 
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -12,8 +13,11 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
+import java.util.concurrent.FutureTask
 
-class AddLevel : OsmElementQuestType<String> {
+class AddLevel(
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+) : OsmElementQuestType<String> {
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
@@ -96,8 +100,12 @@ class AddLevel : OsmElementQuestType<String> {
                 val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
                 if (!mallGeometry.getBounds().contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
-
-                result.add(shop)
+                if (hasName(shop.tags)) {
+                    // if it has neither name nor type that can be described
+                    // and we do no know even its level, then it can not be
+                    // reasonably asked
+                    result.add(shop)
+                }
                 it.remove() // shop can only be in one mall
             }
         }
@@ -106,6 +114,9 @@ class AddLevel : OsmElementQuestType<String> {
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false
+        val tags = element.tags
+        // only show places that can be named somehow
+        if (!hasName(tags)) return false
         // for shops with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
@@ -116,4 +127,12 @@ class AddLevel : OsmElementQuestType<String> {
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["level"] = answer
     }
+
+    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
+
+    private fun hasProperName(tags: Map<String, String>): Boolean =
+        tags.containsKey("name") || tags.containsKey("brand")
+
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }
