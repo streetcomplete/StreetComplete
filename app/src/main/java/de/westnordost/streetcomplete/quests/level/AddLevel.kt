@@ -130,12 +130,15 @@ class AddLevel : OsmElementQuestType<String> {
         }
         if (mallGeometries.isEmpty()) return result
 
+        // find places inside remaining mallGeometries, but not on outline
         for (mallGeometry in mallGeometries) {
             val it = shopsWithoutLevel.iterator()
+            val mallNodePositions = mallGeometry.polygons.flatten().toHashSet()
             while (it.hasNext()) {
                 val shop = it.next()
                 val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
                 if (!mallGeometry.getBounds().contains(pos)) continue
+                if (mallNodePositions.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
                 result.add(shop)
