@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.util.math.flatDistanceTo
 import kotlin.math.abs
 
 class RecentLocationStore {
-    private val recentLocations: MutableList<Location> = mutableListOf()
+    private val recentLocations = ArrayDeque<Location>()
 
     /** returns a sequence of recent locations, with some minimum time and distance from each other */
     fun get(): Sequence<Location> = synchronized(recentLocations) {
