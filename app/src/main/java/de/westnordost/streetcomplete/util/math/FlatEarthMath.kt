@@ -28,18 +28,16 @@ fun LatLon.flatDistanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Doub
 // ~10 times faster than spherical version
 /** Returns the shortest distance between this point and the arc between the given points. */
 fun LatLon.flatDistanceToArc(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double {
-    if (abs(longitude - start.longitude) > 180 || abs(longitude - end.longitude) > 180 || abs(start.longitude - end.longitude) > 180) {
-        // fall back to spherical version
-        return distanceToArc(start, end, globeRadius)
-    }
+    val dLongitudeStart = normalizeLongitude(longitude - start.longitude)
+    val dLongitudeEnd = normalizeLongitude(longitude - end.longitude)
     return abs(
         flatAngularDistanceToArc(
             start.latitude.toRadians(),
-            start.longitude.toRadians(),
+            dLongitudeStart.toRadians(),
             end.latitude.toRadians(),
-            end.longitude.toRadians(),
+            dLongitudeEnd.toRadians(),
             latitude.toRadians(),
-            longitude.toRadians()
+            0.0
         )
     ) * globeRadius
 }
