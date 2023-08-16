@@ -421,7 +421,7 @@ fun questTypeRegistry(
 
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
-    109 to AddLevel(featureDictionaryFuture), // requires to search for the place on several levels (or at least find a mall map)
+    109 to AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
     110 to AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
