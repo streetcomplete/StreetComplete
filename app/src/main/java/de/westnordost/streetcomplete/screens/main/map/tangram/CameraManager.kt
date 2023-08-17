@@ -69,7 +69,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
 
     val isAnimating: Boolean get() = lastAnimator != null
 
-    var maximumTilt: Float = PI.toFloat() / 8f // 45°
+    var maximumTilt: Float = PI.toFloat() / 6f // 60°
 
     interface AnimationsListener {
         @UiThread fun onAnimationsStarted()
