@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.runImmediate
 import kotlin.math.PI
+import kotlin.math.min
 
 /**
  *  Controls the camera of a Tangram MapController. Use in place of the
@@ -67,6 +68,8 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         }
 
     val isAnimating: Boolean get() = lastAnimator != null
+
+    var maximumTilt: Float = PI.toFloat() / 6f // 60°
 
     interface AnimationsListener {
         @UiThread fun onAnimationsStarted()
@@ -115,7 +118,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             _tangramCamera.longitude = it.longitude
         }
         update.rotation?.let { _tangramCamera.rotation = it }
-        update.tilt?.let { _tangramCamera.tilt = it }
+        update.tilt?.let { _tangramCamera.tilt = min(it, maximumTilt) }
         update.zoom?.let { _tangramCamera.zoom = it }
         pushCameraPositionToController()
     }
@@ -133,7 +136,8 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             assignAnimation("rotation", animator)
         }
         update.tilt?.let {
-            propValues.add(PropertyValuesHolder.ofFloat(TangramTiltProperty, it))
+            val tilt = min(it, maximumTilt)
+            propValues.add(PropertyValuesHolder.ofFloat(TangramTiltProperty, tilt))
             assignAnimation("tilt", animator)
         }
         update.zoom?.let {
