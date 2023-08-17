@@ -41,9 +41,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
-import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -61,7 +62,6 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -79,6 +79,7 @@ abstract class AbstractOverlayForm :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -409,7 +410,7 @@ abstract class AbstractOverlayForm :
 
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
+        if (!checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
             setLocked(false)
             return
         }
