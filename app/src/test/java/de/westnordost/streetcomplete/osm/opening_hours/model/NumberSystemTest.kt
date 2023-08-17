@@ -3,10 +3,14 @@ package de.westnordost.streetcomplete.osm.opening_hours.model
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class NumberSystemTest {
-    @Test(expected = IllegalArgumentException::class) fun `illegal arguments`() {
-        NumberSystem(10, 3)
+    @Test
+    fun `illegal arguments`() {
+        assertFailsWith<IllegalArgumentException> {
+            NumberSystem(10, 3)
+        }
     }
 
     @Test fun getSize() {

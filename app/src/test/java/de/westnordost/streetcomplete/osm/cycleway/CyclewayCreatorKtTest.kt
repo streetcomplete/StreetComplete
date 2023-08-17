@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class CyclewayCreatorKtTest {
 
@@ -766,14 +767,18 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying invalid left throws exception`() {
-        cycleway(INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)
+        assertFailsWith<IllegalArgumentException> {
+            cycleway(INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying invalid right throws exception`() {
-        cycleway(null, INVALID).applyTo(StringMapChangesBuilder(mapOf()), false)
+        assertFailsWith<IllegalArgumentException> {
+            cycleway(null, INVALID).applyTo(StringMapChangesBuilder(mapOf()), false)
+        }
     }
 }
 
