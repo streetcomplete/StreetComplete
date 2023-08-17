@@ -47,6 +47,29 @@ class AddMaxHeightTest {
         assertNull(questType.isApplicableTo(parkingEntrance))
     }
 
+    @Test fun `applicable to railway crossing node that is a vertex of an electrified railway`() {
+        val crossing = node(2, tags = mapOf("railway" to "level_crossing"))
+        val railway = way(1, listOf(1, 2), mapOf(
+            "railway" to "rail",
+            "electrified" to "contact_line"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
+    }
+
+    @Test fun `not applicable to railway crossing node that is a vertex of a normal railway`() {
+        val crossing = node(2, tags = mapOf("railway" to "level_crossing"))
+        val railway = way(1, listOf(1, 2), mapOf("railway" to "rail"))
+
+        val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
+    }
+
     @Test fun `applicable to road below bridge`() {
         val mapData = TestMapDataWithGeometry(listOf(
             way(1, listOf(1, 2), mapOf(
