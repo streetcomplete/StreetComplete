@@ -13,6 +13,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class DeletePoiNodeActionTest {
 
@@ -46,10 +47,13 @@ class DeletePoiNodeActionTest {
         assertTrue(data.modifications.single().tags.isEmpty())
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `moved element creates conflict`() {
         on(repos.getNode(e.id)).thenReturn(e.copy(position = p(1.0, 1.0)))
-        DeletePoiNodeAction(e).createUpdates(repos, provider)
+
+        assertFailsWith<ConflictException> {
+            DeletePoiNodeAction(e).createUpdates(repos, provider)
+        }
     }
 
     @Test fun idsUpdatesApplied() {

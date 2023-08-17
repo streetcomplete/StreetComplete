@@ -19,6 +19,7 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 internal class CreateNodeActionTest {
     private lateinit var repos: MapDataRepository
@@ -78,7 +79,7 @@ internal class CreateNodeActionTest {
         assertEquals(listOf<Long>(1, -123, 2), updatedWay.nodeIds)
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict if way the node should be inserted into does not exist`() {
         val way = way(id = 1, nodes = listOf(1, 2))
         val pos1 = LatLon(0.0, 1.0)
@@ -91,10 +92,12 @@ internal class CreateNodeActionTest {
         val position = LatLon(0.0, 1.5)
         val action = CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, pos1, pos2)))
 
-        action.createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            action.createUpdates(repos, provider)
+        }
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict if node 2 is not successive to node 1`() {
         val way = way(id = 1, nodes = listOf(1, 2, 3))
         val pos1 = LatLon(0.0, 1.0)
@@ -111,7 +114,9 @@ internal class CreateNodeActionTest {
         val position = LatLon(0.0, 1.5)
         val action = CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, pos1, pos3)))
 
-        action.createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            action.createUpdates(repos, provider)
+        }
     }
 
     @Test
@@ -135,7 +140,7 @@ internal class CreateNodeActionTest {
         action.createUpdates(repos, provider)
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict if node 1 has been moved`() {
         val way = way(id = 1, nodes = listOf(1, 2))
         val oldPos1 = LatLon(0.0, 0.0)
@@ -152,10 +157,12 @@ internal class CreateNodeActionTest {
         val action =
             CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, oldPos1, pos2)))
 
-        action.createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            action.createUpdates(repos, provider)
+        }
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict if node 2 has been moved`() {
         val way = way(id = 1, nodes = listOf(1, 2))
         val oldPos2 = LatLon(0.0, 0.0)
@@ -172,7 +179,9 @@ internal class CreateNodeActionTest {
         val action =
             CreateNodeAction(position, tags, listOf(InsertIntoWayAt(way.id, pos1, oldPos2)))
 
-        action.createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            action.createUpdates(repos, provider)
+        }
     }
 
     @Test

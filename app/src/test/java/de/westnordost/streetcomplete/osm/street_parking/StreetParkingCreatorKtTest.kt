@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.assertj.core.api.Assertions
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class StreetParkingCreatorKtTest {
 
@@ -547,24 +548,37 @@ class StreetParkingCreatorKtTest {
         )
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying incomplete left throws exception`() {
-        LeftAndRightStreetParking(IncompleteStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightStreetParking(IncompleteStreetParking,null)
+                .applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying incomplete right throws exception`() {
-        LeftAndRightStreetParking(null, IncompleteStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightStreetParking(null, IncompleteStreetParking)
+                .applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying unknown left throws exception`() {
-        LeftAndRightStreetParking(UnknownStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightStreetParking(UnknownStreetParking, null)
+                .applyTo(StringMapChangesBuilder(mapOf())
+            )
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying unknown right throws exception`() {
-        LeftAndRightStreetParking(null, UnknownStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightStreetParking(null, UnknownStreetParking)
+                .applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 }
 

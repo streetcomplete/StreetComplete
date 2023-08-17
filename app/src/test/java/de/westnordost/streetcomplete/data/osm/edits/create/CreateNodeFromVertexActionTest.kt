@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.util.math.translate
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 internal class CreateNodeFromVertexActionTest {
     private lateinit var repos: MapDataRepository
@@ -28,25 +29,29 @@ internal class CreateNodeFromVertexActionTest {
         provider = mock()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict when node position changed`() {
         val n = node()
         val n2 = n.copy(position = n.position.translate(1.0, 0.0)) // moved by 1 meter
         on(repos.getNode(n.id)).thenReturn(n2)
         on(repos.getWaysForNode(n.id)).thenReturn(listOf())
 
-        CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf())
-            .createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf())
+                .createUpdates(repos, provider)
+        }
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict when node is not part of exactly the same ways as before`() {
         val n = node()
         on(repos.getNode(n.id)).thenReturn(n)
         on(repos.getWaysForNode(n.id)).thenReturn(listOf(way(1), way(2)))
 
-        CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf(1L))
-            .createUpdates(repos, provider)
+        assertFailsWith<ConflictException> {
+            CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf(1L))
+                .createUpdates(repos, provider)
+        }
     }
 
     @Test

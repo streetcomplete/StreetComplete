@@ -8,6 +8,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.mockito.Mockito.atLeastOnce
 import org.mockito.Mockito.verify
+import kotlin.test.assertFailsWith
 
 class StringMapChangesTest {
 
@@ -59,7 +60,7 @@ class StringMapChangesTest {
         verify(change2, atLeastOnce()).conflictsWith(someMap)
     }
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun `applying with conflict fails`() {
         val someMap = mutableMapOf<String, String>()
 
@@ -68,7 +69,9 @@ class StringMapChangesTest {
 
         val changes = StringMapChanges(listOf(conflict))
 
-        changes.applyTo(someMap)
+        assertFailsWith<IllegalStateException> {
+            changes.applyTo(someMap)
+        }
     }
 
     @Test fun getConflicts() {
