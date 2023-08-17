@@ -311,7 +311,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_none">"none"</string>
     <string name="quest_cycleway_value_shared">"lane shared explicitly with other traffic"</string>
     <string name="quest_cycleway_value_bus_lane">"on bus lane"</string>
-    <string name="quest_cycleway_value_sidewalk">"explicitly shared-use pavement"</string>
     <string name="quest_leave_new_note_create_image_error">"Unable to create file for photo"</string>
     <string name="quest_cycleway_value_lane_dual">"cycle lane, both directions"</string>
     <string name="quest_cycleway_value_track_dual">"sidepath or protected cycle lane, both directions"</string>
@@ -1183,7 +1182,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
     <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
     <string name="quest_memorialType_sculpture">"Other sculpture"</string>
-    <string name="select_overlay">"Select Overlay"</string>
     <string name="overlay_none">"None"</string>
     <string name="overlay_lit">"Street lighting"</string>
     <string name="lit_value_yes">"Lit"</string>
@@ -1295,7 +1293,6 @@ Move it now?"</string>
     <string name="cycleway_reverse_direction_toast">"Tap which side to reverse"</string>
     <string name="separate_cycleway_path">"Path or trail"</string>
     <string name="quest_fireHydrant_type_pipe">"Pipe"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"explicitly shared-use pavement, both directions"</string>
     <string name="measure_info_title">"Achieving optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;

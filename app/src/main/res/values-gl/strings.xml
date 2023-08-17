@@ -311,7 +311,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_cycleway_value_none">"non hai ren"</string>
     <string name="quest_cycleway_value_shared">"carril compartido co resto do tráfico"</string>
     <string name="quest_cycleway_value_bus_lane">"no carril do bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"compartido cos peóns"</string>
     <string name="quest_leave_new_note_create_image_error">"Non foi posíbel crea-lo ficheiro da imaxe"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, dúas direccións"</string>
     <string name="quest_cycleway_value_track_dual">"senda ciclista, dúas direccións"</string>
@@ -988,6 +987,8 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="street_parking_prohibited">"Non é aparcadoiro"</string>
     <string name="street_stopping_prohibited">"Non pode deterse"</string>
     <string name="street_standing_prohibited">"Non pode permanecer"</string>
+    <string name="street_parking_conditional_restrictions">"Estacionamento / Parada restrinxida"</string>
+    <string name="street_parking_no_other_reasons">"Sen señais/non posible aparcar"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
     <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
@@ -1000,13 +1001,17 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_smoothness_road_title">"Cal é aquí a calidade da superficie da estrada?"</string>
     <string name="quest_smoothness_title_excellent">"Suave e nivelada"</string>
     <string name="quest_smoothness_title_good">"Bastante nivelada"</string>
+    <string name="quest_smoothness_title_intermediate">"Algo irregular"</string>
+    <string name="quest_smoothness_title_bad">"Irregular "</string>
+    <string name="quest_smoothness_title_very_bad">"Moi irregular "</string>
     <string name="quest_smoothness_title_very_horrible">"Case intransitable"</string>
     <string name="quest_smoothness_title_impassable">"Non transitable"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Fochancas fondas, rodeiras ou dano importante"</string>
+    <string name="quest_smoothness_description_impassable">"Inapropiado para vehículos, só andando"</string>
     <string name="link_osmhydrant_description">"Buscar, engadir e editar estacións de bombeiros e bocas de incendio."</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>
     <string name="achievement_lifesaver_solved_X">"Resolviches %d tarefas que axudan aos servizos de emerxencias e aos primeiros auxilios!"</string>
     <string name="quest_fuelSelfService_title">"Podes botar combustible ti mesmo aquí?"</string>
     <string name="quest_barrier_road_intersection">"De que maneira a estrada atravesa aquí a barreira?"</string>
     <string name="quest_sidewalk_value_separate">"amosado por separado no mapa"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"compartido cos peóns, dúas direccións"</string>
 </resources>

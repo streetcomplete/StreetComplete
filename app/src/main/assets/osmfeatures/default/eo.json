@@ -1488,10 +1488,6 @@
                     "label": "Maksimuma aĝo",
                     "terms": "aĝlimo,aĝlimito,agho maksimuma,agxo maksimuma"
                 },
-                "maxheight": {
-                    "label": "Maksimuma alto",
-                    "terms": "alto maksimuma,altlimigo,altolimigo"
-                },
                 "maxspeed": {
                     "label": "Rapidlimo",
                     "placeholder": "40, 50, 60…",
@@ -1504,14 +1500,6 @@
                 },
                 "maxspeed/hgv": {
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Templimo de parkumado",
-                    "terms": "parkumada tempolimo,maksimuma restadtempo,maksimuma parkumtempo"
-                },
-                "maxweight": {
-                    "label": "Maksimuma pezo",
-                    "terms": "pezlimo,pezolimigo"
                 },
                 "memorial": {
                     "label": "Speco"
@@ -1676,10 +1664,6 @@
                     "label": "Malfermaj horoj",
                     "placeholder": "Nekonataj",
                     "terms": "horoj de malfermo,malfermitaj horoj"
-                },
-                "opening_hours/covid19": {
-                    "label": "Malfermaj horoj (KOVIM-19)",
-                    "terms": "horoj de malfermo,malfermitaj horoj,covid-19,kronviruso"
                 },
                 "operator": {
                     "label": "Administranto",
@@ -3539,10 +3523,6 @@
                     "name": "Ricikliga centro",
                     "terms": "recikligejo,recikligo,rubodeponejo,balaaĵejo"
                 },
-                "amenity/recycling_container": {
-                    "name": "Rubujego (recikligo)",
-                    "terms": "rubujo,balaaĵujo,rubujego,recikligujo"
-                },
                 "amenity/refugee_site": {
                     "name": "Kampadejo por rifuĝantoj",
                     "terms": "rifuĝantoj,rifughantoj,rifugxantoj,enmigrantoj"
@@ -3858,10 +3838,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "Rubujo por hund-fekaĵoj",
                     "terms": "rubujo,hundaj fekoj,fekaĵoj,eksrementoj"
-                },
-                "amenity/waste_basket": {
-                    "name": "Rubujo",
-                    "terms": "balaaĵujo,balaaĵkesto,rubkesto,forĵetaĵujo"
                 },
                 "amenity/waste_disposal": {
                     "name": "Rubujego (miksita)",
@@ -4305,10 +4281,6 @@
                 "building/temple": {
                     "name": "Konstruaĵo de templo",
                     "terms": "templo,sanktejo"
-                },
-                "building/terrace": {
-                    "name": "Envicaj domoj",
-                    "terms": "envica domo,ŝtondomo,brikdomo,envicdomo,vica domo,sekvenca domo"
                 },
                 "building/train_station": {
                     "name": "Fervoj-stacia konstruaĵo"

@@ -995,9 +995,6 @@
                 "max_age": {
                     "label": "Umur maksimal"
                 },
-                "maxheight": {
-                    "label": "Tinggi Maksimal"
-                },
                 "maxspeed": {
                     "label": "Batas Kecepatan",
                     "placeholder": "40, 50, 60..."
@@ -1534,9 +1531,6 @@
                 },
                 "amenity/veterinary": {
                     "name": "Dokter Hewan"
-                },
-                "amenity/waste_basket": {
-                    "name": "Tong Sampah"
                 },
                 "area": {
                     "name": "Area",

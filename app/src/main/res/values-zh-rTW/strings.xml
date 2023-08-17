@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"無"</string>
     <string name="quest_cycleway_value_shared">"車道應與其他交通工具共享"</string>
     <string name="quest_cycleway_value_bus_lane">"與公車專用道共用"</string>
-    <string name="quest_cycleway_value_sidewalk">"應與人行道共用"</string>
     <string name="quest_leave_new_note_create_image_error">"無法為照片產生檔案"</string>
     <string name="quest_cycleway_value_lane_dual">"單車車道，雙向"</string>
     <string name="quest_cycleway_value_track_dual">"單車道，雙向"</string>
@@ -1179,7 +1178,6 @@
     <string name="quest_memorialType_stele_wooden">"木碑（紀念板）"</string>
     <string name="quest_memorialType_stele_stone">"石碑（紀念板）"</string>
     <string name="quest_memorialType_sculpture">"其他雕像"</string>
-    <string name="select_overlay">"選擇重疊"</string>
     <string name="overlay_none">"沒有"</string>
     <string name="overlay_lit">"路燈"</string>
     <string name="lit_value_yes">"有路燈"</string>
@@ -1291,7 +1289,6 @@
     <string name="cycleway_reverse_direction_toast">"點一下決定那邊要反轉"</string>
     <string name="separate_cycleway_path">"路徑或山徑"</string>
     <string name="quest_fireHydrant_type_pipe">"管子"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"應與人行道共用"</string>
     <string name="measure_info_title">"達成最佳精確度"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore 有時候 (一開始) 預設地面會低一點或是高一點，這會讓你越讓手機貼近水平線，測量的誤差變得比預期大。&lt;/p&gt;
 &lt;p&gt;設定每一次的開始 - 以及結束點，要將你手直直朝下 (因此你會在上面看到白色箭頭) 來完全避免水平測量的問題。&lt;/p&gt;

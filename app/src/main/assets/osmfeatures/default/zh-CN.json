@@ -181,6 +181,9 @@
                 "admin_level": {
                     "label": "行政级别"
                 },
+                "advertising": {
+                    "label": "类型"
+                },
                 "aerialway": {
                     "label": "类型"
                 },
@@ -241,6 +244,7 @@
                     "label": "收留动物类型"
                 },
                 "archaeological_site": {
+                    "label": "类型",
                     "options": {
                         "city": "古城遗址"
                     }
@@ -279,7 +283,9 @@
                     "label": "类型",
                     "options": {
                         "big_wheel": "摩天轮",
-                        "maze": "迷宫"
+                        "maze": "迷宫",
+                        "summer_toboggan": "夏季平底雪橇",
+                        "swing_carousel": "旋转秋千"
                     }
                 },
                 "automated": {
@@ -331,7 +337,10 @@
                     "label": "沙浴"
                 },
                 "bath/type": {
-                    "label": "特色"
+                    "label": "特色",
+                    "options": {
+                        "lake": "湖泊"
+                    }
                 },
                 "beauty": {
                     "label": "服务",
@@ -350,7 +359,16 @@
                     "terms": "长凳,长椅,座位,座椅,坐,凳,椅"
                 },
                 "bicycle_parking": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "building": "在建筑物内"
+                    }
+                },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "否",
+                        "yes": "是"
+                    }
                 },
                 "bin": {
                     "label": "垃圾箱",
@@ -950,7 +968,10 @@
                     "label": "类型"
                 },
                 "dock": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "tidal": "封闭港池码头"
+                    }
                 },
                 "dog": {
                     "label": "狗",
@@ -1188,6 +1209,8 @@
                 "generator/method": {
                     "label": "模式",
                     "options": {
+                        "barrage": "潮汐",
+                        "stream": "海流",
                         "thermal": "太阳热能"
                     }
                 },
@@ -1587,6 +1610,30 @@
                 },
                 "material": {
                     "label": "材质",
+                    "options": {
+                        "adobe": "土坯",
+                        "aluminium": "铝",
+                        "brass": "黄铜",
+                        "brick": "砖",
+                        "bronze": "青铜",
+                        "concrete": "混凝土",
+                        "dry_stone": "干砌石",
+                        "glass": "玻璃",
+                        "granite": "花岗岩",
+                        "iron": "铁",
+                        "limestone": "石灰石",
+                        "marble": "大理石",
+                        "metal": "金属",
+                        "plastic": "塑料",
+                        "reinforced_conrete": "钢筋混凝土",
+                        "rock": "岩",
+                        "sand": "沙",
+                        "sandstone": "砂岩",
+                        "soil": "土",
+                        "steel": "钢",
+                        "stone": "石",
+                        "wood": "木"
+                    },
                     "terms": "材料,材质"
                 },
                 "mattress": {
@@ -1598,8 +1645,7 @@
                     "terms": "最高年龄,最大年龄,年龄上限"
                 },
                 "maxheight": {
-                    "label": "限制高度",
-                    "terms": "限高,最大高度,高度限制"
+                    "label": "限高"
                 },
                 "maxspeed": {
                     "label": "限制速度",
@@ -1616,16 +1662,8 @@
                     "placeholder": "40, 50, 60...",
                     "terms": "货车限速,卡车限速"
                 },
-                "maxstay": {
-                    "label": "可停留时间"
-                },
                 "maxweight": {
-                    "label": "限制质量",
-                    "terms": "最大重量,最大承重,限重"
-                },
-                "maxwidth": {
-                    "label": "最大宽度",
-                    "terms": "最大宽度,最大允许宽度,最大限宽,限宽"
+                    "label": "限重"
                 },
                 "memorial": {
                     "label": "类型"
@@ -1787,10 +1825,6 @@
                     "label": "开放时间",
                     "placeholder": "未知"
                 },
-                "opening_hours/covid19": {
-                    "label": "COVID-19 流行期间营业时间",
-                    "terms": "冠状病毒,新冠,新冠肺炎,新型冠状病毒,营业时间,隔离,隔离时间,covid-19,sars‑cov‑2,2019冠状病毒病"
-                },
                 "operator": {
                     "label": "经营者"
                 },
@@ -1837,11 +1871,14 @@
                     "options": {
                         "carports": "车棚",
                         "garage_boxes": "车库盒",
+                        "half_on_kerb": "骑路缘",
                         "lane": "路边",
-                        "layby": "单车道邻避处 / 不列颠岛非市区道路路边临停处",
+                        "layby": "公路停车港湾",
                         "multi-storey": "多层",
+                        "on_kerb": "路缘上",
                         "rooftop": "屋顶",
                         "sheds": "车棚",
+                        "shoulder": "路肩",
                         "street_side": "路边",
                         "surface": "地面",
                         "underground": "地下"
@@ -3697,9 +3734,6 @@
                     "name": "回收站",
                     "terms": "回收站,回收中心,循环中心,资源回收中心"
                 },
-                "amenity/recycling_container": {
-                    "name": "回收容器"
-                },
                 "amenity/refugee_site": {
                     "name": "难民营"
                 },
@@ -3717,10 +3751,6 @@
                 "amenity/restaurant/asian": {
                     "name": "亚洲餐馆",
                     "terms": "餐馆,餐厅,亚洲,东亚,东南亚,中亚,西亚,中国,中式,日式,韩式,日本,韩国,饭店,烧烤,酒吧,早餐,早点,早饭,午餐,午饭,下午茶,晚餐,晚饭,食物,食堂"
-                },
-                "amenity/restaurant/barbeque": {
-                    "name": "烧烤餐厅",
-                    "terms": "烧烤餐厅"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "中式餐馆",
@@ -4019,10 +4049,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "狗粪便箱",
                     "terms": "狗,动物,宠物,犬,粪便,大便,屎,排泄,尿,垃圾,箱,盒,垃圾桶,厕所"
-                },
-                "amenity/waste_basket": {
-                    "name": "垃圾桶",
-                    "terms": "垃圾,垃圾桶,垃圾箱"
                 },
                 "amenity/waste_disposal": {
                     "name": "大型垃圾箱",
@@ -4354,7 +4380,7 @@
                 },
                 "building/dormitory": {
                     "name": "宿舍",
-                    "terms": "宿舍,寝室"
+                    "terms": "宿舍,寝室,学生公寓"
                 },
                 "building/entrance": {
                     "name": "入口/出口"
@@ -4470,10 +4496,6 @@
                 },
                 "building/temple": {
                     "name": "庙宇建筑"
-                },
-                "building/terrace": {
-                    "name": "联排式住宅",
-                    "terms": "屋列,房列,一列房,一列屋"
                 },
                 "building/train_station": {
                     "name": "火车站建筑"
@@ -5004,6 +5026,10 @@
                     "name": "应急停车区",
                     "terms": "错车,会车,紧急,应急,停车,停车湾,加宽,车道"
                 },
+                "highway/escape": {
+                    "name": "避险车道",
+                    "terms": "避险车道"
+                },
                 "highway/footway": {
                     "name": "步行道路",
                     "terms": "步行径"
@@ -5437,9 +5463,6 @@
                 },
                 "landuse/military/base/navy": {
                     "name": "军港"
-                },
-                "landuse/military/danger_area": {
-                    "name": "危险区域，禁止进入"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "军用障碍训练场"
@@ -6121,7 +6144,8 @@
                     "name": "Utility Marker"
                 },
                 "marker/utility/power": {
-                    "name": "发电站"
+                    "name": "电力设施标志",
+                    "terms": "电力,发电,输电,保护,标志,警告,牌"
                 },
                 "military/bunker": {
                     "name": "军事掩体"
@@ -6603,7 +6627,7 @@
                     "terms": "地方,地点"
                 },
                 "place/neighbourhood": {
-                    "name": "街坊社区 / 小区",
+                    "name": "街坊社区",
                     "terms": "社区,街坊"
                 },
                 "place/plot": {

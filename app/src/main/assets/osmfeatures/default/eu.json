@@ -1312,6 +1312,12 @@
                         "forward": "Aurrera"
                     }
                 },
+                "ramp": {
+                    "options": {
+                        "no": "Ez",
+                        "yes": "Bai"
+                    }
+                },
                 "recycling_accepts": {
                     "label": "Onartzen du",
                     "options": {
@@ -1977,9 +1983,6 @@
                 },
                 "amenity/recycling_centre": {
                     "name": "Birziklatze zentrua"
-                },
-                "amenity/recycling_container": {
-                    "name": "Birziklatze ontzi"
                 },
                 "amenity/restaurant": {
                     "name": "Jatetxe"

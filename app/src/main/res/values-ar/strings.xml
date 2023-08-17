@@ -314,7 +314,6 @@
     <string name="quest_cycleway_value_none">"لا أحد"</string>
     <string name="quest_cycleway_value_shared">"مسار مشترك للدرجات وغيرها من المركبات الأخرى"</string>
     <string name="quest_cycleway_value_bus_lane">"على مسار الحافلة"</string>
-    <string name="quest_cycleway_value_sidewalk">"الرصيف المشترك"</string>
     <string name="quest_leave_new_note_create_image_error">"تعذر إنشاء ملف للصورة"</string>
     <string name="quest_cycleway_value_lane_dual">"مسار دراجات، لكلا الاتجاهين"</string>
     <string name="quest_cycleway_value_track_dual">"درب دراجات، لكلا الاتجاهين"</string>
@@ -1186,7 +1185,6 @@
     <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
     <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
     <string name="quest_memorialType_sculpture">"منحوتات أخرى"</string>
-    <string name="select_overlay">"تحديد الطبقة"</string>
     <string name="overlay_none">"لا شيء"</string>
     <string name="overlay_lit">"إنارة الشارع"</string>
     <string name="lit_value_yes">"مضاء"</string>

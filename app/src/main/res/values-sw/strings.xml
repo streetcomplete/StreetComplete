@@ -286,7 +286,6 @@
     <string name="quest_cycleway_value_none">"hakuna"</string>
     <string name="quest_cycleway_value_shared">"njia iko wazi na vyombo vyengine vya kusafiria."</string>
     <string name="quest_cycleway_value_bus_lane">"kwenye njia ya basi"</string>
-    <string name="quest_cycleway_value_sidewalk">"njia ilikua wazi ya kutembea"</string>
     <string name="quest_leave_new_note_create_image_error">"Imeshindwa kuunda faili ya picha"</string>
     <string name="quest_cycleway_value_lane_dual">"njia ya baiskeli, pande zote mbili"</string>
     <string name="quest_cycleway_value_track_dual">"njia ya kando au njia ya baiskeli iliyolindwa, pande zote mbili"</string>
@@ -1136,7 +1135,6 @@
     <string name="quest_memorialType_stele_wooden">"Mbao ilioandikwa maandishi (bamba la ukumbusho)"</string>
     <string name="quest_memorialType_stele_stone">"Jiwe lililoandikwa maandishi (bamba la ukumbusho)"</string>
     <string name="quest_memorialType_sculpture">"Uchongaji mwingine"</string>
-    <string name="select_overlay">"Chagua Uwekeleaji"</string>
     <string name="overlay_none">"Hakuna"</string>
     <string name="overlay_lit">"Taa za barabarani"</string>
     <string name="lit_value_yes">"Iliyowasha"</string>
@@ -1247,7 +1245,6 @@
     <string name="cycleway_reverse_direction_toast">"Gusa upande gani ili kujirudia"</string>
     <string name="separate_cycleway_path">"Njia au kijia"</string>
     <string name="quest_fireHydrant_type_pipe">"Bomba"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"njia iliyoshirikiwa kwa uwazi, pande zote mbili"</string>
     <string name="measure_info_title">"
 Kufikia usahihi wa hali ya juu"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore wakati mwingine (mwanzoni) huchukulia ardhi kuwa chini kidogo au juu zaidi kuliko ilivyo mwanzo. Hii inasababisha kutopatika vipimo kwa usahihi ambayo hupatikana kwa wingi kadri unavyoelekeza simu yako kwenye upeo wa macho.&lt;/p&gt;

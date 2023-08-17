@@ -313,7 +313,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_cycleway_value_none">"Tidak ada"</string>
     <string name="quest_cycleway_value_shared">"Lajur dibagi bersama jalan yang lain"</string>
     <string name="quest_cycleway_value_bus_lane">"di lajur bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"trotoar berbagi jelas"</string>
     <string name="quest_leave_new_note_create_image_error">"Tidak dapat membuat berkas untuk foto"</string>
     <string name="quest_cycleway_value_lane_dual">"lajur sepeda, kedua arah"</string>
     <string name="quest_cycleway_value_track_dual">"jalur sepeda, dua arah"</string>
@@ -1078,7 +1077,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_memorialType_war_memorial">"Monumen perang"</string>
     <string name="quest_memorialType_stone">"Batu"</string>
     <string name="quest_memorialType_obelisk">"Tugu"</string>
-    <string name="select_overlay">"Pilih Lapisan"</string>
     <string name="overlay_none">"Tidak ada"</string>
     <string name="overlay_lit">"Lampu jalanan"</string>
     <string name="lit_value_yes">"Menyala"</string>
@@ -1159,7 +1157,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="cycleway_reverse_direction">"Membalikkan arah jalur sepeda"</string>
     <string name="cycleway_reverse_direction_warning">"Bahwa jalur sepeda menuju ke arah lain sangat jarang."</string>
     <string name="cycleway_reverse_direction_toast">"Ketuk sisi mana yang akan dibalik"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"trotoar berbagi jelas, kedua arah"</string>
     <string name="privacy_html_arcore">"Aplikasi ini berjalan dengan &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), yang disediakan oleh Google dan diatur oleh &lt;a href=\"https://policies.google.com/privacy\"&gt;Kebijakan Privasi Google&lt;/a&gt;."</string>
     <string name="quest_gritBinSeasonal_title">"Apa ini juga terdapat di sini pada selain musim dingin?"</string>
     <string name="quest_traffic_signals_sound_description">"Petunjuk: Carilah pengeras suara/speaker. Tak semua suara perlu diaktifkan melalui tombol."</string>

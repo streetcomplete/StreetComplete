@@ -247,7 +247,7 @@
                     "label": "Gatunki zwierząt"
                 },
                 "archaeological_site": {
-                    "label": "Typ",
+                    "label": "Rodzaj",
                     "options": {
                         "baths": "Łaźnie",
                         "city": "Dawne miasto",
@@ -786,7 +786,8 @@
                     "label": "Rodzaj"
                 },
                 "collection_times": {
-                    "label": "Godziny odbioru"
+                    "label": "Godziny odbioru",
+                    "terms": "godziny odbioru,godziny zbiórki,godziny wyjmowania listów"
                 },
                 "collector": {
                     "label": "Przedmioty",
@@ -1445,7 +1446,7 @@
                     "options": {
                         "green": "Łąka/trawa",
                         "lane": "Pas jezdni",
-                        "parking_lot": "Plac parkingowy",
+                        "parking_lot": "Miejsce parkingowe",
                         "sidewalk": "Chodnik"
                     },
                     "terms": "położenie,lokalizacja"
@@ -1700,8 +1701,51 @@
                     "label": "Hashtagi",
                     "placeholder": "#przykład"
                 },
+                "hazard_boundary": {
+                    "label": "Niebezpieczeństwo",
+                    "options": {
+                        "archery_range": "Strzały z łuku",
+                        "avalanche": "Lawiny",
+                        "biohazard": "Zagrożenie biologiczne",
+                        "contamination": "Skażenie chemiczne",
+                        "electricity": "Porażenie prądem",
+                        "hole": "Dziura",
+                        "minefield": "Miny",
+                        "nuclear": "Radioaktywność",
+                        "quicksand": "Ruchome piaski",
+                        "shooting_range": "Strzały z broni palnej"
+                    }
+                },
                 "healthcare": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "alternative": "Medycyna niekonwencjonalna",
+                        "audiologist": "Audiolog",
+                        "birthing_centre": "Izba porodowa",
+                        "blood_bank": "Bank krwi",
+                        "blood_donation": "Centrum krwiodawstwa",
+                        "clinic": "Przychodnia/poliklinika",
+                        "community_health_worker": "Nieprofesjonalna pomoc medyczna",
+                        "counselling": "Poradnia",
+                        "dentist": "Dentysta",
+                        "dialysis": "Stacja dializ",
+                        "doctor": "Gabinet lekarski",
+                        "hospice": "Hospicjum",
+                        "hospital": "Szpital",
+                        "laboratory": "Laboratorium medyczne",
+                        "midwife": "Położna",
+                        "nurse": "Pielęgniarka",
+                        "occupational_therapist": "Terapeuta zajęciowy",
+                        "optometrist": "Optometrysta",
+                        "pharmacy": "Apteka",
+                        "physiotherapist": "Fizjoterapeuta",
+                        "podiatrist": "Podolog",
+                        "psychotherapist": "Psychoterapeuta",
+                        "rehabilitation": "Placówka rehabilitacyjna",
+                        "sample_collection": "Punkt pobierania próbek",
+                        "speech_therapist": "Logopeda",
+                        "vaccination_centre": "Punkt szczepień"
+                    }
                 },
                 "healthcare/speciality": {
                     "label": "Specjalności",
@@ -1915,6 +1959,9 @@
                 },
                 "hot_water": {
                     "label": "Ciepła woda"
+                },
+                "house": {
+                    "label": "Rodzaj"
                 },
                 "iata": {
                     "label": "Kod lotniska IATA"
@@ -2162,7 +2209,33 @@
                     "terms": "mapillary"
                 },
                 "marker": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "aerial": {
+                            "description": "W formie pozwalającej na odczyt z lotu ptaka.",
+                            "title": "Do inspekcji powietrznej"
+                        },
+                        "ground": {
+                            "description": "Płaski znacznik przymocowany do podłoża.",
+                            "title": "Na podłożu"
+                        },
+                        "pedestal": {
+                            "description": "Wyniesiony znacznik stojący na niewielkim postumencie.",
+                            "title": "Słupek (na postumencie)"
+                        },
+                        "plate": {
+                            "description": "Płaski znacznik umieszczony na ścianie itp.",
+                            "title": "Tabliczka"
+                        },
+                        "post": {
+                            "description": "Wyniesiony znacznik w formie niewielkiego słupka lub masztu.",
+                            "title": "Słupek (w ziemi)"
+                        },
+                        "stone": {
+                            "description": "Oznaczania wykute lub namalowane na kamieniu.",
+                            "title": "Kamień"
+                        }
+                    }
                 },
                 "material": {
                     "label": "Tworzywo",
@@ -2200,9 +2273,17 @@
                     "label": "Maksymalny wiek",
                     "terms": "maksymalny wiek dziecka"
                 },
+                "maxaxleload_bridge": {
+                    "label": "Maksymalny nacisk osi",
+                    "terms": "maksymalny nacisk osi"
+                },
                 "maxheight": {
-                    "label": "Maksymalna wysokość",
-                    "terms": "maksymalna wysokość"
+                    "label": "Maksymalna wysokość pojazdu",
+                    "terms": "maksymalna wysokość pojazdu"
+                },
+                "maxlength": {
+                    "label": "Maksymalna długość pojazdu",
+                    "terms": "maksymalna długość pojazdu"
                 },
                 "maxspeed": {
                     "label": "Ograniczenie prędkości",
@@ -2228,8 +2309,8 @@
                     "terms": "maksymalna masa pojazdu"
                 },
                 "maxwidth": {
-                    "label": "Maksymalna szerokość",
-                    "terms": "maksymalna szerokość"
+                    "label": "Maksymalna szerokość pojazdu",
+                    "terms": "maksymalna szerokość pojazdu"
                 },
                 "memorial": {
                     "label": "Rodzaj",
@@ -2256,7 +2337,14 @@
                     "terms": "browar restauracyjny,minibrowar"
                 },
                 "military_service": {
-                    "label": "Rodzaj sił zbrojnych"
+                    "label": "Rodzaj sił zbrojnych",
+                    "options": {
+                        "air_force": "Wojska lotnicze",
+                        "army": "Wojska lądowe",
+                        "coast_guard": "Straż przybrzeżna",
+                        "marines": "Piechota morska",
+                        "navy": "Marynarka wojenna"
+                    }
                 },
                 "mimics": {
                     "label": "Kamuflaż",
@@ -2493,10 +2581,6 @@
                 "opening_hours": {
                     "label": "Godziny otwarcia",
                     "placeholder": "24/7, sunrise-sunset, Mo-Sa 08:00-20:00",
-                    "terms": "godziny otwarcia"
-                },
-                "opening_hours/covid19": {
-                    "label": "Godziny otwarcia COVID-19",
                     "terms": "godziny otwarcia"
                 },
                 "operator": {
@@ -2865,6 +2949,11 @@
                 },
                 "ramp": {
                     "label": "Pochylnia",
+                    "options": {
+                        "no": "Nie",
+                        "separate": "Oznaczona osobno",
+                        "yes": "Tak"
+                    },
                     "terms": "pochylnia,rampa,podjazd"
                 },
                 "rating": {
@@ -3345,7 +3434,29 @@
                     }
                 },
                 "social_facility_for": {
-                    "label": "Grupa docelowa"
+                    "label": "Grupa docelowa",
+                    "options": {
+                        "abused": "Ofiary przemocy",
+                        "child": "Dzieci",
+                        "dementia": "Cierpiący na demencję",
+                        "disabled": "Niepełnosprawni fizycznie",
+                        "diseased": "Cierpiący na choroby somatyczne",
+                        "displaced": "Przesiedleńcy",
+                        "drug_addicted": "Uzależnieni od narkotyków",
+                        "homeless": "Bezdomni",
+                        "juvenile": "Małoletni",
+                        "mental_health": "Cierpiący na choroby psychiczne",
+                        "migrant": "Migranci",
+                        "orphan": "Sieroty",
+                        "refugee": "Uchodźcy",
+                        "senior": "Seniorzy",
+                        "terminally_ill": "Nieuleczalnie chorzy",
+                        "underprivileged": "Przedstawiciele grup nieuprzywilejowanych",
+                        "unemployed": "Bezrobotni",
+                        "veteran": "Weterani",
+                        "victim": "Ofiary przestępstw",
+                        "woman": "Kobiety"
+                    }
                 },
                 "source": {
                     "label": "Źródła",
@@ -3374,16 +3485,20 @@
                 "sport": {
                     "label": "Sport",
                     "options": {
+                        "10pin": "Kręgle (10 pinów)",
+                        "9pin": "Kręgle klasyczne (9 pinów)",
                         "american_football": "Futbol amerykański",
                         "athletics": "Lekkoatletyka",
                         "badminton": "Badminton",
                         "baseball": "Baseball",
                         "basketball": "Koszykówka",
                         "beachvolleyball": "Siatkówka plażowa",
+                        "billiards": "Bilard",
                         "bmx": "BMX",
                         "boules": "Bule",
                         "bowls": "Bowls",
                         "canoe": "Kajakarstwo",
+                        "chess": "Szachy",
                         "climbing": "Wspinaczka",
                         "cricket": "Krykiet",
                         "curling": "Curling",
@@ -3407,6 +3522,7 @@
                         "motor": "Sporty motorowe",
                         "multi": "Wielofunkcyjny",
                         "netball": "Netball",
+                        "orienteering": "Biegi na orientację",
                         "padel": "Padel",
                         "pelota": "Pelota",
                         "rugby_union": "Rugby",
@@ -3421,7 +3537,8 @@
                         "swimming": "Pływanie",
                         "table_tennis": "Tenis stołowy",
                         "tennis": "Tenis",
-                        "volleyball": "Siatkówka"
+                        "volleyball": "Siatkówka",
+                        "yoga": "Joga"
                     }
                 },
                 "sport/sport_ice": {
@@ -3571,6 +3688,7 @@
                         "compacted": "Ubity tłuczeń",
                         "concrete": "Beton",
                         "dirt": "Ziemia / Gleba / Pył",
+                        "fine_gravel": "Drobny żwir",
                         "grass": "Trawa",
                         "gravel": "Żwir",
                         "ground": "Gruntowa (ogólnie)",
@@ -3589,7 +3707,8 @@
                     "terms": "nawierzchnia"
                 },
                 "surveillance": {
-                    "label": "Rodzaj monitoringu"
+                    "label": "Rodzaj monitoringu",
+                    "terms": "rodzaj monitoringu,zasięg monitoringu"
                 },
                 "surveillance/type": {
                     "label": "Sposób monitoringu",
@@ -3664,6 +3783,28 @@
                 "target": {
                     "label": "Kraj przyjmujący"
                 },
+                "taxi_vehicle": {
+                    "label": "Rodzaj pojazdów",
+                    "options": {
+                        "auto_rickshaw": {
+                            "description": "Riksze o napędzie silnikowym (bajak, tuk-tuk, trójkołowce itp.)",
+                            "title": "Autoriksze"
+                        },
+                        "cycle_rickshaw": {
+                            "description": "Riksze napędzane pedałami (padyak, velotaxi itp.)",
+                            "title": "Riksze"
+                        },
+                        "motorcar": {
+                            "description": "Samochody osobowe (wartość domyślna)",
+                            "title": "Samochody"
+                        },
+                        "motorcycle": {
+                            "description": "Jednoślady przewożące pasażera na tylnym siodełku (mototáxi itp.)",
+                            "title": "Motocykle"
+                        }
+                    },
+                    "terms": "rodzaj pojazdów,rodzaj taksówek"
+                },
                 "taxon": {
                     "label": "Takson",
                     "placeholder": "Klon pospolity 'Columnare', Grusza drobnoowocowa 'Chanticleer'...",
@@ -3673,7 +3814,14 @@
                     "label": "Kolor/nazwa tee"
                 },
                 "telecom": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "connection_point": "Przełącznica pośrednia",
+                        "data_center": "Centrum danych",
+                        "distribution_point": "Urządzenie rozdzielcze (abonenckie)",
+                        "exchange": "Centrala",
+                        "service_device": "Urządzenie pomocnicze"
+                    }
                 },
                 "telecom/medium": {
                     "label": "Przewód"
@@ -3723,7 +3871,21 @@
                     "terms": "opłata drogowa"
                 },
                 "tomb": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "columbarium": "Kolumbarium",
+                        "crypt": "Krypta",
+                        "dolmen": "Dolmen",
+                        "hypogeum": "Hypogeum",
+                        "mausoleum": "Mauzoleum",
+                        "pyramid": "Piramida",
+                        "rock-cut": "Grobowiec skalny",
+                        "sarcophagus": "Sarkofag",
+                        "table": "Grobowiec w kształcie stołu",
+                        "tumulus": "Kurhan",
+                        "vault": "Grób murowany",
+                        "war_grave": "Samotny grób wojenny"
+                    }
                 },
                 "tourism": {
                     "label": "Rodzaj"
@@ -3939,7 +4101,32 @@
                     }
                 },
                 "vending": {
-                    "label": "Rodzaje produktów"
+                    "label": "Rodzaje produktów",
+                    "options": {
+                        "bicycle_tube": "Dętki rowerowe",
+                        "bread": "Pieczywo",
+                        "cigarettes": "Papierosy",
+                        "coffee": "Kawa",
+                        "condoms": "Prezerwatywy",
+                        "drinks": "Napoje",
+                        "eggs": "Jajka",
+                        "electronics": "Urządzenia elektroniczne",
+                        "elongated_coin": "Monety pamiątkowe",
+                        "excrement_bags": "Worki na psie odchody",
+                        "feminine_hygiene": "Produkty higieny kobiecej",
+                        "food": "Jedzenie",
+                        "fuel": "Paliwo",
+                        "ice_cream": "Lody",
+                        "ice_cubes": "Lód w kostkach",
+                        "milk": "Mleko",
+                        "newspapers": "Gazety",
+                        "parking_tickets": "Bilety parkingowe",
+                        "pizza": "Pizza",
+                        "public_transport_tickets": "Bilety komunikacji publicznej",
+                        "stamps": "Znaczki pocztowe",
+                        "sweets": "Słodycze",
+                        "water": "Woda pitna"
+                    }
                 },
                 "vhf": {
                     "label": "Kanał VHF",
@@ -4382,7 +4569,7 @@
                 },
                 "amenity/charging_station": {
                     "name": "Stacja ładowania pojazdów",
-                    "terms": "stacja ładowania pojazdów,stacja ładowania samochodów elektrycznych,ładowanie samochodów,samochody elektryczne,pojazdy elektryczne"
+                    "terms": "stacja ładowania pojazdów,stacja ładowania samochodów elektrycznych,ładowanie pojazdów,ładowanie samochodów,samochody elektryczne,pojazdy elektryczne"
                 },
                 "amenity/childcare": {
                     "name": "Punkt opieki nad dziećmi",
@@ -4705,6 +4892,10 @@
                     "name": "Pojemnik z piaskiem lub żwirem",
                     "terms": "pojemnik z piaskiem,pojemnik ze żwirem"
                 },
+                "amenity/hookah_lounge": {
+                    "name": "Shisha Bar",
+                    "terms": "shisha bar,shisha,szisza,hookah,nargila,fajka wodna,palarnia"
+                },
                 "amenity/hospital": {
                     "name": "Teren szpitala",
                     "terms": "teren szpitala,szpital,służba zdrowia,ambulatorium,chirurgia,oddział,chory,leczenie,zdrowie"
@@ -4809,8 +5000,8 @@
                     "terms": "paczkomat,automat przesyłkowy,automat paczkowy,inpost,orlen paczka,aliexpress,cainiao,allegro"
                 },
                 "amenity/parking": {
-                    "name": "Plac parkingowy",
-                    "terms": "plac parkingowy,parking samochodowy,miejsca parkingowe,miejsca postojowe,parking dla pojazdów,parking dla samochodów ciężarowych,parking tir,parking dla ciężarówek"
+                    "name": "Parking samochodowy",
+                    "terms": "parking samochodowy,plac parkingowy,miejsca parkingowe,miejsca postojowe,parking dla pojazdów,parking dla samochodów ciężarowych,parking tir,parking dla ciężarówek"
                 },
                 "amenity/parking/multi-storey": {
                     "name": "Parking wielopoziomowy",
@@ -5008,9 +5199,9 @@
                     "name": "Restauracja azjatycka",
                     "terms": "restauracja azjatycka,kuchnia azjatycka"
                 },
-                "amenity/restaurant/barbeque": {
-                    "name": "Restauracja z mięsami z grilla",
-                    "terms": "restauracja z mięsami z grilla,barbecue,barbeque"
+                "amenity/restaurant/barbecue": {
+                    "name": "Restauracja grillowa",
+                    "terms": "restauracja grillowa,restauracja z grillem,restauracja barbecue,restauracja barbeque,restauracja bbq"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Restauracja chińska",
@@ -5192,6 +5383,18 @@
                     "name": "Postój taksówek",
                     "terms": "postój taksówek,taksówka,taxi"
                 },
+                "amenity/taxi/auto_rickshaw": {
+                    "name": "Postój autoriksz",
+                    "terms": "postój autoriksz,postój autoryksz,riksze,ryksze,bajaj,toda,trójkołowce,tuk-tuk,tuksi"
+                },
+                "amenity/taxi/cycle_rickshaw": {
+                    "name": "Postój riksz",
+                    "terms": "postój riksz,postój ryksz,riksze,ryksze,becak,bikecab,padyak,pedicab,sikad,trisikad,trishaw,velotaxi"
+                },
+                "amenity/taxi/motorcycle_taxi": {
+                    "name": "Postój taksówek motocyklowych",
+                    "terms": "postój taksówek motocyklowych,habal-habal,mototaxi,moto taxi,pillion"
+                },
                 "amenity/telephone": {
                     "name": "Telefon",
                     "terms": "telefon,budka telefoniczna,automat telefoniczny"
@@ -5227,6 +5430,10 @@
                 "amenity/townhall": {
                     "name": "Urząd miasta lub gminy",
                     "terms": "urząd miasta,urząd gminy,ratusz"
+                },
+                "amenity/townhall/barangay-PH": {
+                    "name": "Urząd barangay (Filipiny)",
+                    "terms": "urząd barangay"
                 },
                 "amenity/townhall/city": {
                     "name": "Urząd miasta",
@@ -5318,8 +5525,8 @@
                     "terms": "automat z lodami,lody"
                 },
                 "amenity/vending_machine/ice_cubes": {
-                    "name": "Automat z kostkami lodu",
-                    "terms": "automat z kostkami lodu,kostki lodu,lód w kostkach"
+                    "name": "Automat z lodem w kostkach",
+                    "terms": "automat z lodem w kostkach,automat z kostkami lodu,kostki lodu,lód w kostkach"
                 },
                 "amenity/vending_machine/newspapers": {
                     "name": "Automat z gazetami",
@@ -5531,7 +5738,7 @@
                 },
                 "barrier/fence/railing": {
                     "name": "Barierka",
-                    "terms": "barierka"
+                    "terms": "poręcz"
                 },
                 "barrier/full-height_turnstile": {
                     "name": "Bramka obrotowa (wysoka)",
@@ -5662,6 +5869,10 @@
                     "name": "Granica administracyjna",
                     "terms": "granica administracyjna,granice administracyjne"
                 },
+                "boundary/hazard": {
+                    "name": "Obszar niebezpieczny",
+                    "terms": "obszar niebezpieczny,obszar niebezpieczeństwa,zagrożenie,niebezpieczeństwo"
+                },
                 "bridge/support": {
                     "name": "Podpora mostu",
                     "terms": "podpora mostu,filar mostu,pylon"
@@ -5676,7 +5887,7 @@
                 },
                 "building/allotment_house": {
                     "name": "Domek działkowy",
-                    "terms": "dom na działce,dom na ogródku działkowym,dom działkowy"
+                    "terms": "domek działkowy,dom na działce,dom na ogródku działkowym,dom działkowy"
                 },
                 "building/apartments": {
                     "name": "Budynek wielorodzinny",
@@ -5796,6 +6007,10 @@
                     "name": "Dom jednorodzinny",
                     "terms": "dom jednorodzinny,domek"
                 },
+                "building/house/terraced": {
+                    "name": "Dom szeregowy",
+                    "terms": "dom szeregowy,domek szeregowy,dom w zabudowie szeregowej,szeregówka"
+                },
                 "building/houseboat": {
                     "name": "Łódź mieszkalna",
                     "terms": "łódź mieszkalna,barka mieszkalna,dom na wodzie"
@@ -5892,7 +6107,7 @@
                 },
                 "building/terrace": {
                     "name": "Domy szeregowe",
-                    "terms": "domy szeregowe,domki szeregowe,szeregówki,dom szeregowy,szeregówka"
+                    "terms": "domy szeregowe,domki szeregowe,domy w zabudowie szeregowej,szeregówki,szeregówka"
                 },
                 "building/train_station": {
                     "name": "Budynek dworca kolejowego"
@@ -6502,7 +6717,7 @@
                     "terms": "oznakowane przejście dla pieszych,zebra,pasy"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "Nieoznakowane przejście przejście dla pieszych",
+                    "name": "Nieoznakowane przejście dla pieszych",
                     "terms": "nieoznakowane przejście dla pieszych"
                 },
                 "highway/cycleway": {
@@ -6582,8 +6797,8 @@
                     "terms": "oznakowane przejście dla pieszych,zebra,pasy"
                 },
                 "highway/footway/crossing/unmarked": {
-                    "name": "Nieoznakowane przejście przejście dla pieszych",
-                    "terms": "nieoznakowane przejście dla pieszych,nieoznaczone przejście przejście dla pieszych"
+                    "name": "Nieoznakowane przejście dla pieszych",
+                    "terms": "nieoznakowane przejście dla pieszych,nieoznaczone przejście dla pieszych"
                 },
                 "highway/footway/informal": {
                     "name": "Nieformalna ścieżka dla pieszych"
@@ -7040,8 +7255,8 @@
                     "terms": "port wojenny"
                 },
                 "landuse/military/danger_area": {
-                    "name": "Strefa niebezpieczna (wstęp wzbroniony)",
-                    "terms": "strefa niebezpieczna,obszar niebezpieczny,wstęp wzbroniony"
+                    "name": "Strefa zagrożenia (wojskowa)",
+                    "terms": "strefa zagrożenia,obszar niebezpieczny,obszar niebezpieczeństwa,zagrożenie,niebezpieczeństwo"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Wojskowy tor przeszkód",
@@ -7652,6 +7867,10 @@
                     "name": "Trzepak",
                     "terms": "trzepak"
                 },
+                "man_made/charge_point": {
+                    "name": "Ładowarka pojazdów elektrycznych",
+                    "terms": "ładowarka pojazdów elektrycznych,ładowanie pojazdów,ładowanie samochodów,samochody elektryczne,pojazdy elektryczne"
+                },
                 "man_made/chimney": {
                     "name": "Komin",
                     "terms": "komin"
@@ -7775,6 +7994,10 @@
                 "man_made/mast/lighting": {
                     "name": "Maszt oświetleniowy",
                     "terms": "maszt oświetleniowy,jupiter"
+                },
+                "man_made/milk_churn_stand": {
+                    "name": "Ława na bańki z mlekiem",
+                    "terms": "ława na bańki z mlekiem,ława na mleko,stojak na bańki z mlekiem,stojak na mleko"
                 },
                 "man_made/mineshaft": {
                     "name": "Szyb",
@@ -8133,7 +8356,27 @@
                 },
                 "natural/tree": {
                     "name": "Drzewo",
-                    "terms": "drzewo,dąb,drzewko,pień"
+                    "terms": "drzewo,drzewko,pień"
+                },
+                "natural/tree/broadleaved": {
+                    "name": "Drzewo liściaste"
+                },
+                "natural/tree/broadleaved/deciduous": {
+                    "name": "Drzewo liściaste (gubiące liście)",
+                    "terms": "drzewo liściaste gubiące liście,drzewo liściaste sezonowe"
+                },
+                "natural/tree/broadleaved/evergreen": {
+                    "name": "Drzewo liściaste (zimozielone)"
+                },
+                "natural/tree/needleleaved": {
+                    "name": "Drzewo iglaste"
+                },
+                "natural/tree/needleleaved/deciduous": {
+                    "name": "Drzewo iglaste (gubiące igły)"
+                },
+                "natural/tree/needleleaved/evergreen": {
+                    "name": "Drzewo iglaste (zimozielone)",
+                    "terms": "drzewo iglaste zimozielone,drzewo iglaste wiecznie zielone,choinka"
                 },
                 "natural/tree_row": {
                     "name": "Rząd drzew",
@@ -9649,6 +9892,10 @@
                     "name": "Sklep z artykułami imprezowymi",
                     "terms": "sklep z artykułami imprezowymi,artykuły imprezowe,balony,kostiumy,przebrania,dekoracje,zaproszenia"
                 },
+                "shop/pasta": {
+                    "name": "Sklep z makaronami",
+                    "terms": "sklep z makaronami,makarony,produkty mączne"
+                },
                 "shop/pastry": {
                     "name": "Cukiernia",
                     "terms": "cukiernia,pączkarnia,ciastkarnia,piekarnia,wypieki,ciasta,torty,pączki,precle"
@@ -9704,6 +9951,10 @@
                 "shop/repair": {
                     "name": "Naprawy (nieokreślone)",
                     "terms": "naprawy,serwis"
+                },
+                "shop/rice": {
+                    "name": "Sklep z ryżem",
+                    "terms": "sklep z ryżem,ryż"
                 },
                 "shop/scuba_diving": {
                     "name": "Sklep nurkowy",

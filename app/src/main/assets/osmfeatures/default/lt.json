@@ -258,7 +258,7 @@
                     "label": "Pastatas"
                 },
                 "building/levels": {
-                    "label": "Lygiai",
+                    "label": "Aukštai",
                     "placeholder": "2, 4, 6..."
                 },
                 "building/levels/underground": {
@@ -529,7 +529,7 @@
                     "options": {
                         "pillar": "Kolona/antžeminė",
                         "underground": "Požeminis",
-                        "wall": "Siena"
+                        "wall": "Sieninis"
                     }
                 },
                 "fireplace": {
@@ -620,7 +620,10 @@
                     "label": "Tipas"
                 },
                 "historic": {
-                    "label": "Tipas"
+                    "label": "Tipas",
+                    "options": {
+                        "boundary_stone": "Riboženklis akmuo"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Istorinė civilizacija"
@@ -749,7 +752,7 @@
                     "label": "Lygis"
                 },
                 "level_semi": {
-                    "label": "Lygiai"
+                    "label": "Aukštai"
                 },
                 "liaison": {
                     "label": "Tipas"
@@ -781,9 +784,6 @@
                 "max_age": {
                     "label": "Maksimalus amžius"
                 },
-                "maxheight": {
-                    "label": "Maksimalus aukštis"
-                },
                 "maxspeed": {
                     "label": "Greičio limitas",
                     "placeholder": "40, 50, 60..."
@@ -791,12 +791,6 @@
                 "maxspeed/advisory": {
                     "label": "Rekomenduojamas greičio limitas",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Maksimalus buvimo laikas"
-                },
-                "maxweight": {
-                    "label": "Maksimalus svoris"
                 },
                 "memorial": {
                     "label": "Tipas"
@@ -1478,6 +1472,11 @@
                 "water_point": {
                     "label": "Vandenvietė"
                 },
+                "water_source": {
+                    "options": {
+                        "water_tank": "Vandens rezervuaras"
+                    }
+                },
                 "waterway": {
                     "label": "Tipas"
                 },
@@ -1808,10 +1807,6 @@
                     "name": "Veterinarija",
                     "terms": "veterinaras"
                 },
-                "amenity/waste_basket": {
-                    "name": "Šiukšliadėžė",
-                    "terms": "šiukšliadėžė"
-                },
                 "amenity/waste_disposal": {
                     "name": "Šiukšlių konteineris"
                 },
@@ -1890,6 +1885,9 @@
                 "barrier/wall": {
                     "name": "Siena",
                     "terms": "siena"
+                },
+                "boundary": {
+                    "name": "Riba"
                 },
                 "boundary/administrative": {
                     "name": "Administracinė riba",
@@ -2564,6 +2562,14 @@
                 "man_made/pipeline": {
                     "name": "Vamzdynas"
                 },
+                "man_made/storage_tank": {
+                    "name": "Rezervuaras",
+                    "terms": "rezervuaras,cisterna,saugykla"
+                },
+                "man_made/storage_tank/water": {
+                    "name": "Vandens rezervuaras",
+                    "terms": "vandens rezervuaras,rezervuaras,cisterna,saugykla"
+                },
                 "man_made/survey_point": {
                     "name": "Tyrimų vieta",
                     "terms": "stebėjimo taškas"
@@ -3210,12 +3216,12 @@
                     "name": "Eismo salelė"
                 },
                 "type/boundary": {
-                    "name": "Siena",
+                    "name": "Riba",
                     "terms": "riba,siena"
                 },
                 "type/boundary/administrative": {
-                    "name": "Administracinė siena",
-                    "terms": "administracinė riba"
+                    "name": "Administracinė riba",
+                    "terms": "riba,administracinė riba,siena"
                 },
                 "type/multipolygon": {
                     "name": "Multipoligonas"

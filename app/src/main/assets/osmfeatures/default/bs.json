@@ -499,10 +499,6 @@
                     "name": "Gradska vijećnica",
                     "terms": "gradska vijećnica,vijećnica"
                 },
-                "amenity/waste_basket": {
-                    "name": "Kanta za otpatke",
-                    "terms": "kanta za otpatke,posuda za otpatke,kanta za smeće"
-                },
                 "area": {
                     "name": "Područje",
                     "terms": "područje,zona,oblast"

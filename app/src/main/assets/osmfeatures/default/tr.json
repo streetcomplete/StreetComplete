@@ -163,17 +163,20 @@
                         "housenumber": "No: 123",
                         "housenumber!jp": "Bina No",
                         "neighbourhood": "Mahalle",
+                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Yerleşim Yeri",
                         "postcode": "Posta Kodu",
                         "province": "İl",
                         "province!cn": "İl/Belediye/AR/SAR",
                         "province!jp": "İl",
                         "quarter": "Semt",
+                        "quarter!jp": "Ōaza",
                         "state": "Eyalet",
                         "street": "Cadde/Sokak",
                         "subdistrict": "Muhit",
                         "subdistrict!vn": "Muhit",
                         "suburb": "Yöre",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Birim"
                     }
                 },
@@ -448,6 +451,13 @@
                         "wall_loops": "Bisiklet Tutacağı (sadece tekerlekler için)"
                     }
                 },
+                "bicycle_road": {
+                    "label": "Cycle Street",
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Yes"
+                    }
+                },
                 "bike_ride": {
                     "label": "Bisiklet ve Sürüş"
                 },
@@ -522,6 +532,9 @@
                     "label": "Tür",
                     "placeholder": "Varsayılan"
                 },
+                "bridge/ref": {
+                    "label": "Bridge Number"
+                },
                 "bridge/support": {
                     "label": "Tür"
                 },
@@ -591,6 +604,9 @@
                         "university": "Üniversite binası",
                         "warehouse": "Ambar"
                     }
+                },
+                "building/colour": {
+                    "label": "Façade Color"
                 },
                 "building/flats": {
                     "label": "Birimler",
@@ -787,6 +803,10 @@
                 },
                 "consulting": {
                     "label": "Uzmanlık"
+                },
+                "contact/facebook": {
+                    "label": "Facebook Username or URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness"
                 },
                 "contact/webcam": {
                     "label": "Webcam Adresi",
@@ -996,8 +1016,10 @@
                         "coffee_shop": "Kahve Dükkanı",
                         "dessert": "Dessert",
                         "donut": "Donut",
+                        "filipino": "Filipino",
                         "fish": "Balık",
                         "french": "Fransız",
+                        "georgian": "Georgian",
                         "german": "Alman",
                         "greek": "Yunan",
                         "hot_dog": "Hot Dog",
@@ -1014,6 +1036,7 @@
                         "mexican": "Meksikalı",
                         "pankcake": "Pancake",
                         "pasta": "Pasta",
+                        "peruvian": "Peruvian",
                         "pizza": "Pizza",
                         "polish": "Polonyalı",
                         "portuguese": "Portekizli",
@@ -1026,8 +1049,10 @@
                         "steak_house": "Steak House",
                         "sushi": "Suşi",
                         "taiwanese": "Tayvanlı",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Tayland",
                         "turkish": "Türk",
+                        "ukrainian": "Ukrainian",
                         "vietnamese": "Vietnamlı"
                     }
                 },
@@ -1817,6 +1842,9 @@
                 "hot_water": {
                     "label": "Sıcak Su"
                 },
+                "house": {
+                    "label": "Ev Türü"
+                },
                 "iata": {
                     "label": "IATA Havalimanı Kodu"
                 },
@@ -1858,7 +1886,7 @@
                     "label": "Aralıklı"
                 },
                 "internet_access": {
-                    "label": "İnternet bağlantısı",
+                    "label": "İnternet Erişimi",
                     "options": {
                         "no": "Hayır",
                         "terminal": "Bilgisayar",
@@ -1902,7 +1930,12 @@
                     "label": "Kitchen"
                 },
                 "kneipp_water_cure_multi": {
-                    "label": "Havza Türleri"
+                    "label": "Havza Türleri",
+                    "options": {
+                        "arm": "Arm Basin",
+                        "face": "Face Basin",
+                        "foot": "Foot Basin"
+                    }
                 },
                 "label": {
                     "label": "İsim"
@@ -2062,8 +2095,14 @@
                 "max_age": {
                     "label": "Maksimum Yaş"
                 },
+                "maxaxleload_bridge": {
+                    "label": "Axle Weight Limit"
+                },
                 "maxheight": {
-                    "label": "En Fazla Yükseklik"
+                    "label": "Height Limit"
+                },
+                "maxlength": {
+                    "label": "Length Limit"
                 },
                 "maxspeed": {
                     "label": "Hız Limiti",
@@ -2078,13 +2117,13 @@
                     "placeholder": "40, 50, 60..."
                 },
                 "maxstay": {
-                    "label": "En Fazla Kalma Süresi"
+                    "label": "Time Limit"
                 },
                 "maxweight": {
-                    "label": "En Fazla Ağırlık"
+                    "label": "Weight Limit"
                 },
                 "maxwidth": {
-                    "label": "Max Width"
+                    "label": "Width Limit"
                 },
                 "memorial": {
                     "label": "Tür",
@@ -2123,6 +2162,10 @@
                 "minspeed": {
                     "label": "Minimum Hız Sınırı",
                     "placeholder": "20, 30, 40..."
+                },
+                "mobile": {
+                    "label": "Mobile Phone",
+                    "placeholder": "+31 42 123 4567"
                 },
                 "model": {
                     "label": "Model"
@@ -2326,9 +2369,6 @@
                 "opening_hours": {
                     "label": "Çalışma Saatleri",
                     "placeholder": "Bilinmiyor"
-                },
-                "opening_hours/covid19": {
-                    "label": "COVİD-19 Pandemisi Saatleri"
                 },
                 "operator": {
                     "label": "Kurum"
@@ -2983,6 +3023,13 @@
                         "other": "Diğer"
                     }
                 },
+                "seamark/harbour/category_marina": {
+                    "label": "Domestic Facilities",
+                    "options": {
+                        "marina": "Yes",
+                        "marina_no_facilities": "No"
+                    }
+                },
                 "seamark/mooring/category": {
                     "label": "Kategori"
                 },
@@ -3205,6 +3252,18 @@
                         "tennis": "Tennis",
                         "volleyball": "Volleyball"
                     }
+                },
+                "sport/sport_ice": {
+                    "label": "Sports"
+                },
+                "sport/sport_pub": {
+                    "label": "Sports"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "Sports"
+                },
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sports"
                 },
                 "stars": {
                     "label": "Yıldızlar"
@@ -3470,7 +3529,21 @@
                     "label": "Ücret"
                 },
                 "tomb": {
-                    "label": "Cins"
+                    "label": "Cins",
+                    "options": {
+                        "columbarium": "Güvercinlik",
+                        "crypt": "Mahzen",
+                        "dolmen": "Dolmen",
+                        "hypogeum": "Yeraltı Odaları",
+                        "mausoleum": "Anıt Mezar",
+                        "pyramid": "Piramit",
+                        "rock-cut": "Kaya Mezarı",
+                        "sarcophagus": "Lahit",
+                        "table": "Masa",
+                        "tumulus": "Tümülüs",
+                        "vault": "Tonoz",
+                        "war_grave": "Tekli Şehitlik"
+                    }
                 },
                 "tourism": {
                     "label": "Tür"
@@ -4170,6 +4243,9 @@
                 "amenity/doctors/general": {
                     "name": "Primary Care Physician"
                 },
+                "amenity/doctors/gynaecology": {
+                    "name": "Obstetrician/Gynecologist"
+                },
                 "amenity/doctors/haematology": {
                     "name": "Hematologist"
                 },
@@ -4264,6 +4340,9 @@
                     "name": "Fast Food",
                     "terms": "fast food,hazır yiyecek"
                 },
+                "amenity/fast_food/bagel": {
+                    "name": "Bagel Fast Food"
+                },
                 "amenity/fast_food/burger": {
                     "name": "Hamburger Fast Food"
                 },
@@ -4299,6 +4378,9 @@
                 },
                 "amenity/fast_food/sandwich": {
                     "name": "Sandviç Fast Food"
+                },
+                "amenity/fast_food/wings": {
+                    "name": "Chicken Wings Fast Food"
                 },
                 "amenity/ferry_terminal": {
                     "name": "Feribot Terminali"
@@ -4345,6 +4427,9 @@
                     "name": "Dondurmacı",
                     "terms": "dondurmacı"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Frozen Yogurt Shop"
+                },
                 "amenity/internet_cafe": {
                     "name": "İnternet Kafe",
                     "terms": "i̇nternet kafe"
@@ -4354,6 +4439,9 @@
                 },
                 "amenity/kindergarten": {
                     "name": "Anaokulu Sahası"
+                },
+                "amenity/kneipp_water_cure": {
+                    "name": "Kneipp Facility"
                 },
                 "amenity/language_school": {
                     "name": "Dil Okulu"
@@ -4560,9 +4648,6 @@
                     "name": "Geri Dönüşüm Merkezi",
                     "terms": "yeniden kullanım,yer,yeri"
                 },
-                "amenity/recycling_container": {
-                    "name": "Geridönüşüm Konteynerı"
-                },
                 "amenity/refugee_site": {
                     "name": "Mülteci Kampı"
                 },
@@ -4579,14 +4664,14 @@
                 "amenity/restaurant/asian": {
                     "name": "Asya Restoranı"
                 },
-                "amenity/restaurant/barbeque": {
-                    "name": "Barbeque Restaurant"
-                },
                 "amenity/restaurant/chinese": {
                     "name": "Çin Restoranı"
                 },
                 "amenity/restaurant/french": {
                     "name": "Fransız Restoranı"
+                },
+                "amenity/restaurant/georgian": {
+                    "name": "Georgian Restaurant"
                 },
                 "amenity/restaurant/german": {
                     "name": "Alman Restoranı"
@@ -4615,6 +4700,9 @@
                 "amenity/restaurant/pizza": {
                     "name": "Pizza Restoranı"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Ramen Restaurant"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Deniz Yiyecekleri Restoranı"
                 },
@@ -4632,6 +4720,9 @@
                 },
                 "amenity/restaurant/turkish": {
                     "name": "Türk Restoranı"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrainian Restaurant"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnam Restoranı"
@@ -4855,10 +4946,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "Köpek Dışkı Çöpü",
                     "terms": "köpek dışkı kutusu"
-                },
-                "amenity/waste_basket": {
-                    "name": "Çöp Kutusu",
-                    "terms": "çöp kutusu"
                 },
                 "amenity/waste_disposal": {
                     "name": "Çöp Tenekesi",
@@ -5324,7 +5411,7 @@
                 },
                 "building/terrace": {
                     "name": "Sıra Evler",
-                    "terms": "sıra evler"
+                    "terms": "sıralı,bina,ev,ardı ardına,çizgi,düz,bitişik,birleşik"
                 },
                 "building/train_station": {
                     "name": "Tren İstasyonu Binası"
@@ -6334,9 +6421,6 @@
                 "landuse/military/base/navy": {
                     "name": "Deniz üssü"
                 },
-                "landuse/military/danger_area": {
-                    "name": "Danger Zone, Access Prohibited"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Askeri Engel Sahası"
                 },
@@ -6532,6 +6616,9 @@
                 "leisure/marina": {
                     "name": "Yat Limanı",
                     "terms": "marina"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "Yacht Berths"
                 },
                 "leisure/miniature_golf": {
                     "name": "Mini Golf",
@@ -6838,6 +6925,10 @@
                 },
                 "man_made/carpet_hanger": {
                     "name": "Carpet Hanger"
+                },
+                "man_made/charge_point": {
+                    "name": "Elektrikli Araç Şarj Noktası",
+                    "terms": "elektrik,taşıt,i̇stasyon,i̇stasyonu,bisiklet,skooter,araba,pil"
                 },
                 "man_made/chimney": {
                     "name": "Baca",
@@ -8431,6 +8522,9 @@
                 },
                 "shop/hobby": {
                     "name": "Hobi Mağazası"
+                },
+                "shop/honey": {
+                    "name": "Honey Store"
                 },
                 "shop/household_linen": {
                     "name": "Ev Tekstili Mağazası"

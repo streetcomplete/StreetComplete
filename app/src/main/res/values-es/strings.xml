@@ -312,7 +312,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_cycleway_value_none">"no hay nada"</string>
     <string name="quest_cycleway_value_shared">"carril compartido con el resto del tráfico"</string>
     <string name="quest_cycleway_value_bus_lane">"en el carril del autobús"</string>
-    <string name="quest_cycleway_value_sidewalk">"compartido con viandantes"</string>
     <string name="quest_leave_new_note_create_image_error">"No se pudo crear el archivo de la foto"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, ambas direcciones"</string>
     <string name="quest_cycleway_value_track_dual">"senda ciclista, ambas direcciones"</string>
@@ -1174,7 +1173,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_memorialType_stele_wooden">"Estela de madera (losa conmemorativa)"</string>
     <string name="quest_memorialType_stele_stone">"Estela de piedra (losa conmemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Otra escultura"</string>
-    <string name="select_overlay">"Seleccionar superposición"</string>
     <string name="overlay_none">"Ninguna"</string>
     <string name="overlay_lit">"Alumbrado público"</string>
     <string name="lit_value_yes">"Iluminado"</string>
@@ -1286,7 +1284,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="cycleway_reverse_direction_toast">"Toque el lado que desea invertir"</string>
     <string name="separate_cycleway_path">"Camino o sendero"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubería"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"compartido con viandantes, ambas direcciones"</string>
     <string name="measure_info_title">"Consiguiendo una precisión óptima"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore en ocasiones (de forma inicial) presume que el suelo está un poco más bajo o más alto de lo que realmente está. Esto provoca un error de medición que aumenta cuanto más se inclina el teléfono hacia el horizonte.
 &lt;p&gt;Establezca tanto el punto inicial como el final mientras apunta el teléfono directamente hacia abajo (de modo que vea la flecha blanca desde arriba) para evitar por completo este problema en las mediciones horizontales.&lt;/p&gt;

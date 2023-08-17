@@ -1658,9 +1658,6 @@
                 "max_age": {
                     "label": "Yläikäraja"
                 },
-                "maxheight": {
-                    "label": "Enimmäiskorkeus"
-                },
                 "maxspeed": {
                     "label": "Nopeusrajoitus",
                     "placeholder": "40, 50, 60..."
@@ -1672,15 +1669,6 @@
                 "maxspeed/hgv": {
                     "label": "Rekkojen nopeusrajoitus",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Sallittu enimmäisaika"
-                },
-                "maxweight": {
-                    "label": "Painorajoitus"
-                },
-                "maxwidth": {
-                    "label": "Enimmäisleveys"
                 },
                 "memorial": {
                     "label": "Tyyppi",
@@ -1823,9 +1811,6 @@
                     "label": "Aukioloajat",
                     "placeholder": "Ei tiedossa",
                     "terms": "tunnit"
-                },
-                "opening_hours/covid19": {
-                    "label": "COVID-19-pandemian aukioloajat"
                 },
                 "operator": {
                     "label": "Toimija"
@@ -3608,9 +3593,6 @@
                 "amenity/recycling_centre": {
                     "name": "Kierrätyskeskus"
                 },
-                "amenity/recycling_container": {
-                    "name": "Kierrätyspiste"
-                },
                 "amenity/refugee_site": {
                     "name": "Pakolaisleiri"
                 },
@@ -3881,10 +3863,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "Koiranjätösastia",
                     "terms": "koira,koirankakka,kakka,kakkaroskis,roskis"
-                },
-                "amenity/waste_basket": {
-                    "name": "Roskakori",
-                    "terms": "roska-astia,roskis,roskapönttö,jäte-astia,kierrätyspiste,kierrätyslaatikko,roska,kierrätys,jäte,jätteet"
                 },
                 "amenity/waste_disposal": {
                     "name": "Jäteastia"
@@ -4257,9 +4235,6 @@
                 },
                 "building/temple": {
                     "name": "Temppelirakennus"
-                },
-                "building/terrace": {
-                    "name": "Rivitalo"
                 },
                 "building/train_station": {
                     "name": "Asemarakennus"

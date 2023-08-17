@@ -311,7 +311,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_cycleway_value_none">"žiadne"</string>
     <string name="quest_cycleway_value_shared">"pruh vyslovene zdieľaný s ostatnými druhmi dopravy"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pre autobusy"</string>
-    <string name="quest_cycleway_value_sidewalk">"vyslovene zdieľaný chodník"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodarilo sa vytvoriť fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruhy, oba smery"</string>
     <string name="quest_cycleway_value_track_dual">"Cyklochodník s oddelenými smermi jazdy"</string>
@@ -1176,7 +1175,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_memorialType_stele_wooden">"Drevená stéla (pamätná doska)"</string>
     <string name="quest_memorialType_stele_stone">"Kamenná stéla (pamätná doska)"</string>
     <string name="quest_memorialType_sculpture">"Iná skulptúra"</string>
-    <string name="select_overlay">"Vyberte prekrytie"</string>
     <string name="overlay_none">"Žiadne"</string>
     <string name="overlay_lit">"Pouličné osvetlenie"</string>
     <string name="lit_value_yes">"Osvetlené"</string>
@@ -1288,7 +1286,6 @@ Presunúť ju teraz?"</string>
     <string name="cycleway_reverse_direction_toast">"Kliknite na stranu, ktorú chcete otočiť"</string>
     <string name="separate_cycleway_path">"Cesta alebo chodník"</string>
     <string name="quest_fireHydrant_type_pipe">"Rúra"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"vyslovene zdieľaný chodník, oba smery"</string>
     <string name="measure_info_title">"Dosiahnutie optimálnej presnosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore niekedy (spočiatku) predpokladá, že zem je o niečo nižšie alebo vyššie, než v skutočnosti je. To spôsobuje chybu merania, ktorá je tým väčšia, čím viac nakláňate telefón k horizontu.&lt;/p&gt;
 &lt;p&gt;Nastavte každý počiatočný a koncový bod, pričom telefón nasmerujte rovno nadol (tak, aby ste zvrchu videli bielu šípku), aby ste sa tomuto problému pri horizontálnych meraniach úplne vyhli.&lt;/p&gt;

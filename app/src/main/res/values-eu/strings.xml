@@ -310,7 +310,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_cycleway_value_none">"bat ere ez"</string>
     <string name="quest_cycleway_value_shared">"beste trafikoarekin esplizituki partekatutako erraia"</string>
     <string name="quest_cycleway_value_bus_lane">"autobusaren erraian"</string>
-    <string name="quest_cycleway_value_sidewalk">"esplizituki partekatutako espaloia"</string>
     <string name="quest_leave_new_note_create_image_error">"Ezin izan da argazkiaren fitxategia sortu"</string>
     <string name="quest_cycleway_value_lane_dual">"bizikletentzako erraia, norabide bikoa"</string>
     <string name="quest_cycleway_value_track_dual">"bizikletentzako pista, norabide bikoa"</string>
@@ -1182,7 +1181,6 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_memorialType_stele_wooden">"Egurrezko estela"</string>
     <string name="quest_memorialType_stele_stone">"Harrizko estela"</string>
     <string name="quest_memorialType_sculpture">"Bestelako eskultura"</string>
-    <string name="select_overlay">"Hautatu gainjartzea"</string>
     <string name="overlay_none">"Batere ez"</string>
     <string name="overlay_lit">"Kale argiteria"</string>
     <string name="lit_value_yes">"Argiztatua"</string>
@@ -1294,7 +1292,6 @@ Orain mugitu?"</string>
     <string name="cycleway_reverse_direction_toast">"Sakatu zein alde alderantzizkatu"</string>
     <string name="separate_cycleway_path">"Bidea edo pista"</string>
     <string name="quest_fireHydrant_type_pipe">"Hodia"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"esplizituki partekatutako espaloia, norabide bikoa"</string>
     <string name="measure_info_title">"Zehaztasun optimoa lortzea"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore-k batzuetan (hasieran) lurra orain dagoena baino pixka bat beherago edo altuagoa zegoela suposatzen du. Honek neurketa-errore bat sartzen du, telefonoa zenbat eta gehiago okertu horizonterantz handiagoa dena.&lt;/p&gt;
 &lt;p&gt;Ezarri bakoitza hasierako eta amaierako puntua telefonoa zuzenean beherantz zuzentzen duzun bitartean (gezi zuria goitik ikus dezazun) neurketa horizontaletan arazo hau guztiz saihesteko.&lt;/p&gt;

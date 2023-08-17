@@ -312,7 +312,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_value_none">"brak"</string>
     <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
     <string name="quest_cycleway_value_bus_lane">"na pasie dla autobusów"</string>
-    <string name="quest_cycleway_value_sidewalk">"chodnik współdzielony"</string>
     <string name="quest_leave_new_note_create_image_error">"Nie udało się utworzyć pliku dla zdjęcia"</string>
     <string name="quest_cycleway_value_lane_dual">"pas rowerowy w obu kierunkach"</string>
     <string name="quest_cycleway_value_track_dual">"droga dla rowerów w obu kierunkach"</string>
@@ -813,7 +812,7 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
     <string name="osm_element_gone_confirmation">"Nie istnieje"</string>
     <string name="leave_note">"Zostaw notatkę"</string>
     <string name="quest_shop_gone_title">"Co teraz tutaj jest?"</string>
-    <string name="quest_shop_gone_vacant_answer">"Jest zlikwidowany"</string>
+    <string name="quest_shop_gone_vacant_answer">"Stoi pusty…"</string>
     <string name="quest_shop_gone_replaced_answer">"To"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Wpisz jaki rodzaj obiektu jest teraz tutaj"</string>
     <string name="quest_shop_vacant_type_title">"Ten sklep został zlikwidowany. Co tu teraz jest?"</string>
@@ -1109,7 +1108,7 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_busStopName_title2">"Jaka jest nazwa tego przystanku?"</string>
     <string name="quest_busStopRef_title2">"Jaki jest numer referencyjny tego przystanku?"</string>
     <string name="quest_busStopShelter_title2">"Czy ten przystanek ma schronienie?"</string>
-    <string name="quest_busStopTactilePaving_title">"Czy ten przystanek ma chodnik dla niewidomych?"</string>
+    <string name="quest_busStopTactilePaving_title">"Czy ten przystanek ma wypustki dla niewidomych?"</string>
     <string name="quest_dietType_halal_name_title2">"Czy są tutaj oferowane produkty halal?"</string>
     <string name="quest_dietType_kosher_name_title2">"Czy są tutaj oferowane produkty koszerne?"</string>
     <string name="quest_dietType_vegan_title2">"Czy sá tutaj veganskie produkty na menu?"</string>
@@ -1183,7 +1182,6 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_memorialType_stele_wooden">"Stela drewniana (płyta pamiątkowa)"</string>
     <string name="quest_memorialType_stele_stone">"Stela kamienna (płyta pamiątkowa)"</string>
     <string name="quest_memorialType_sculpture">"Inna rzeźba"</string>
-    <string name="select_overlay">"Wybierz nakładkę"</string>
     <string name="overlay_none">"Żadna"</string>
     <string name="overlay_lit">"Oświetlenie"</string>
     <string name="lit_value_yes">"Oświetlony"</string>
@@ -1295,7 +1293,6 @@ Przesunąć go teraz?"</string>
     <string name="cycleway_reverse_direction_toast">"Wybierz stronę, którą chcesz odwrócić"</string>
     <string name="separate_cycleway_path">"Ścieżka lub szlak"</string>
     <string name="quest_fireHydrant_type_pipe">"Rura"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"chodnik wspóldzielony w obu kierunkach"</string>
     <string name="measure_info_title">"Uzyskiwanie optymalnej precyzji"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore niekiedy (na początku) uznaje, że ziemia znajduje się trochę niżej lub wyżej niż w rzeczywistości. Prowadzi to do błędu pomiaru, który staje się tym większy, im bardziej pochylasz telefon w stronę horyzontu.&lt;/p&gt;
 &lt;p&gt;Aby zapobiec problemowi przy pomiarze poziomym, ustawiaj każdy punkt początkowy i końcowy, kierując telefon prosto w dół (tak, aby widzieć białą strzałkę od góry).&lt;/p&gt;
@@ -1325,12 +1322,12 @@ Przesunąć go teraz?"</string>
     <string name="quest_hairdresser_male_only">"Mężczyźni"</string>
     <string name="quest_hairdresser_not_signed">"Nie oznaczono"</string>
     <string name="quest_amenityCover_title">"Czy to jest kryte (chronione przed deszczem)?"</string>
-    <string name="lane_narrowing_traffic_calming_choker">"Przedłużony krawężnik"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Zwężenie jezdni"</string>
     <string name="lane_narrowing_traffic_calming_island">"Wysepka drogowa"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Szykana"</string>
-    <string name="lane_narrowing_traffic_calming_choked_island">"Przedłużony krawężnik + wysepka drogowa"</string>
-    <string name="lane_narrowing_traffic_calming_none">"Brak wąskiej uliczki"</string>
-    <string name="quest_tactilePaving_title_steps">"Czy góra i dół tych schodów są brukowane?"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Zwężenie jezdni + wysepka drogowa"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Brak zwężenie"</string>
+    <string name="quest_tactilePaving_title_steps">"Czy góra i dół tych schodów mają wypustki dotykowe dla niewidomych?"</string>
     <string name="quest_tactilePaving_steps_top">"Tylko u góry"</string>
     <string name="quest_tactilePaving_steps_bottom">"Tylko na dole"</string>
     <string name="overlay_addresses_no_entrance">"To nie jest wejście..."</string>

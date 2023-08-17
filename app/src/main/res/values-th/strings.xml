@@ -309,7 +309,6 @@
     <string name="quest_cycleway_value_none">"ไม่มี"</string>
     <string name="quest_cycleway_value_shared">"ช่องทางจราจรที่ใช้ร่วมกันอย่างชัดเจนกับพาหนะอื่น ๆ"</string>
     <string name="quest_cycleway_value_bus_lane">"บนช่องทางรถประจำทาง"</string>
-    <string name="quest_cycleway_value_sidewalk">"ทางเท้าที่ใช้ร่วมกันอย่างชัดเจน"</string>
     <string name="quest_leave_new_note_create_image_error">"ไม่สามารถสร้างไฟล์สำหรับภาพถ่าย"</string>
     <string name="quest_cycleway_value_lane_dual">"ช่องทางจักรยานทั้งสองทิศทาง"</string>
     <string name="quest_cycleway_value_track_dual">"ทางจักรยาน สองทิศทาง"</string>
@@ -1164,7 +1163,6 @@
     <string name="split_way">"แยกทางเป็นสองส่วน"</string>
     <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
     <string name="quest_memorialType_statue">"อนุสาวรีย์"</string>
-    <string name="select_overlay">"เลือกภาพซ้อนทับ"</string>
     <string name="overlay_none">"ไม่มี"</string>
     <string name="overlay_lit">"ไฟถนน"</string>
     <string name="lit_value_yes">"มี"</string>
@@ -1174,8 +1172,19 @@
     <string name="overlay_sidewalk">"ทางเท้า"</string>
     <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
     <string name="quest_entrance_reference">"ทางเข้านี้มีป้ายระบุอะไร?"</string>
+    <string name="default_disabled_msg_overlay">"ประเภทภารกิจนี้ถูกปิดใช้งานโดยค่าเริ่มต้น เนื่องจากมีภาพซ้อนทับอยู่แล้ว ซึ่งมีประสิทธิภาพและประสิทธิผลมากกว่าในการป้อนและอัปเดตข้อมูลนี้"</string>
+    <string name="quest_camp_shower_title">"ที่นี่มีที่อาบน้ำหรือไม่?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"เส้นผ่านศูนย์กลางนี้ดูไม่น่าเชื่อ โดยปกติแล้วจะอยู่ระหว่าง %1$d ถึง %2$d"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"คำตอบนี้ไม่ตรงกับข้อมูลที่มีการทำแผนที่สำหรับถนนสายนี้มาก่อน คุณแน่ใจหรือไม่ว่ากำลังตอบถนนเส้นที่ถูกต้อง และแน่ใจว่าคุณได้สำรวจด้วยตนเองตลอดทั้งความยาวตามที่จำเป็นเสมอหรือไม่?"</string>
     <string name="quest_recycling_type_pet">"PET เท่านั้น"</string>
     <string name="street_parking_street_width">"ความกว้างถนน: %s"</string>
+    <string name="overlay_street_parking">"ที่จอดรถริมถนน"</string>
+    <string name="link_ohsomehex_description">"สำรวจข้อมูล OSM ในสเกลต่าง ๆ ตั้งแต่ภาพรวมไปจนถึงวัตถุแต่ละชิ้นในพื้นที่และเวลา"</string>
+    <string name="link_opencampingmap_description">"แผนที่จุดตั้งแคมป์"</string>
+    <string name="quest_atm_cashin_title">"สามารถฝากเงินสดที่ตู้ ATM นี้ได้หรือไม่?"</string>
+    <string name="create_node_action_description">"คุณได้สร้างโหนดพร้อมกับ …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"เป็นจุดรวมพล"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"จุดรวมพลคือจุดที่ผู้คนรวมตัวในกรณีฉุกเฉิน มักจะมีลักษณะประมาณนี้:"</string>
     <string name="quest_address_street_street_name_label">"ชื่อถนน:"</string>
     <string name="quest_address_street_hint2">"แตะถนนบนแผนที่เพื่อเลือก"</string>
     <string name="quest_drinking_water_type_title">"ที่นี่ให้บริการน้ำดื่มแบบไหน?"</string>
@@ -1186,10 +1195,20 @@
     <string name="unknown_shop_title">"สถานที่ประเภทอื่น"</string>
     <string name="quest_address_answer_no_address">"ไม่มีที่อยู่ที่นี่"</string>
     <string name="about_title_get_involved">"มีส่วนเกี่ยวข้อง"</string>
+    <string name="pref_category_quests_overlays">"ภารกิจและภาพซ้อนทับ"</string>
     <string name="quest_presets_rename">"เปลี่ยนชื่อ"</string>
     <string name="quest_presets_share">"แชร์"</string>
     <string name="quest_presets_delete">"ลบ"</string>
+    <string name="urlconfig_qr_code_description">"ให้ผู้อื่นสแกน QR code นี้เพื่อแชร์ค่าที่ตั้งไว้ของคุณ"</string>
+    <string name="urlconfig_as_url">"หรือเป็น URL:"</string>
+    <string name="urlconfig_url_copied">"คัดลอก URL ไปยังคลิปบอร์ดแล้ว"</string>
+    <string name="urlconfig_apply_title">"ใช้ค่าที่ตั้งไว้"</string>
+    <string name="urlconfig_apply_message">"ใช้และเลือกค่าที่ตั้งไว้ %1$s หรือไม่?"</string>
+    <string name="urlconfig_apply_message_overwrite">"หมายเหตุ: ค่าที่ตั้งไว้ของคุณที่ใช้ชื่อเดียวกันจะถูกเขียนทับ!"</string>
+    <string name="urlconfig_switch_hint">"คุณสามารถเปลี่ยนค่าที่ตั้งไว้ในการตั้งค่าได้ทุกเมื่อ"</string>
     <string name="user_profile_current_week_title">"7 วันที่ผ่านมา"</string>
+    <string name="user_profile_dates_mapped">"วันที่คุณได้ทำแผนที่ในช่วงที่ผ่านมา"</string>
+    <string name="urlconfig_scan_qr_code_again2">"หลังจากติดตั้งแอปแล้ว ให้สแกน QR code อีกครั้ง หรือคลิก&lt;a href=\"%s\"&gt;ลิงก์นี้&lt;/a&gt;เพื่อใช้งานค่าที่ตั้งไว้"</string>
     <string name="confirmation_replace_shop_title">"ที่นี่เป็นร้านอื่นหรือยัง?"</string>
     <string name="confirmation_replace_shop_message">"หากเปลี่ยนเป็นร้านอื่นแล้ว เวลาทำการ ข้อมูลติดต่อ ฯลฯ จะเปลี่ยนไปด้วยเช่นกัน"</string>
     <string name="confirmation_replace_shop_yes">"เป็นร้านอื่นแล้ว"</string>
@@ -1203,9 +1222,12 @@
     <string name="move_node_description">"ลากแผนที่เพื่อวางคุณสมบัติในตำแหน่งที่ถูกต้อง ใช้ฟังก์ชันซูมและพยายามให้แม่นยำที่สุด โปรดทราบว่าตำแหน่งที่แสดงของคุณอาจแม่นยำน้อยกว่าที่แสดง"</string>
     <string name="move_node_action_description">"คุณได้ย้ายโหนด"</string>
     <string name="quest_placeName_no_name_answer">"ไม่มีป้ายชื่อ…"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"ความกว้างนี้ดูไม่น่าเชื่อ โปรดจำไว้ว่า ค่านี้ควรเป็นความกว้างจากขอบถนนถึงขอบถนน รวมถึงที่จอดรถริมถนน เลนจักรยาน ฯลฯ"</string>
     <string name="overlay_cycleway">"เส้นทางจักรยาน"</string>
+    <string name="bicycle_boulevard_is_a">"เป็น%1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"ไม่เป็น%1$s"</string>
+    <string name="bicycle_boulevard">"ถนนจักรยาน"</string>
     <string name="quest_fireHydrant_type_pipe">"ท่อ"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"ทางเท้าที่ใช้ร่วมกันอย่างชัดเจนทั้งสองทิศทาง"</string>
     <string name="measure_info_html_description">"&lt;p&gt;บางครั้ง ARCore (ในตอนแรก) จะสันนิษฐานว่าพื้นต่ำกว่าหรือสูงกว่าที่เป็นจริงเล็กน้อย ซึ่งทำให้เกิดข้อผิดพลาดในการวัดที่มากขึ้นเมื่อคุณเอียงโทรศัพท์ไปทางเส้นขอบฟ้ามากขึ้น&lt;/p&gt;
 &lt;p&gt;ตั้งค่าจุดเริ่มต้นและจุดสิ้นสุดแต่ละจุดในขณะที่ชี้โทรศัพท์ลงไปตรง ๆ (เพื่อให้คุณเห็นลูกศรสีขาวจากด้านบน) เพื่อหลีกเลี่ยงปัญหานี้อย่างสมบูรณ์สำหรับการวัดในแนวนอน&lt;/p&gt;
 &lt;p&gt;สำหรับการวัดในแนวตั้ง คุณต้องตรวจสอบแทนว่าจุดเริ่มต้นไม่เคลื่อนที่สัมพันธ์กับพื้น โดยดูจากทิศทางที่ต่างกัน&lt;/p&gt;"</string>
@@ -1225,4 +1247,13 @@
     <string name="quest_amenityCover_title">"ที่นี่มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
     <string name="quest_tactilePaving_steps_bottom">"เฉพาะที่ด้านล่าง"</string>
     <string name="overlay_addresses_no_entrance">"ไม่ใช่ทางเข้า…"</string>
+    <string name="overlays_tutorial_title">"ภาพซ้อนทับ"</string>
+    <string name="overlays_tutorial_intro">"คุณได้ค้นพบวิธีแก้ไขข้อมูลแบบใหม่!"</string>
+    <string name="overlays_tutorial_display">"ภาพซ้อนทับแต่ละแบบจะแสดงข้อมูลประเภทเดียว เช่น ร้านค้า หรือพื้นผิวถนน
+
+ข้อมูลจะถูกเน้นด้วยสีต่าง ๆ เพื่อให้คุณเห็นภาพรวมที่ดีของสิ่งที่บันทึกไว้จนถึงตอนนี้
+ข้อมูลที่หายไปจะแสดงเป็นสีแดงเสมอ"</string>
+    <string name="overlays_tutorial_edit">"แตะที่ข้อมูลที่ถูกเน้นเพื่อแก้ไข คุณยังสามารถแยกทางหรือรายงานโน้ตได้ เช่นเดียวกับภารกิจ
+
+นอกจากนี้ ภาพซ้อนทับบางแบบยังช่วยให้คุณเพิ่มข้อมูลใหม่ที่ตำแหน่งของเป้าเล็งที่แสดงได้ เช่น ภาพซ้อนทับที่อยู่"</string>
 </resources>

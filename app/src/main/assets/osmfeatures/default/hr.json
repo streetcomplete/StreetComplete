@@ -983,10 +983,6 @@
                 "max_age": {
                     "terms": "maksimalna starost"
                 },
-                "maxheight": {
-                    "label": "Max visina",
-                    "terms": "maksimalna visina"
-                },
                 "maxspeed": {
                     "label": "Ograničenje brzine",
                     "placeholder": "40, 50, 60...",
@@ -994,14 +990,6 @@
                 },
                 "maxspeed/advisory": {
                     "terms": "predloženo ograničenje brzine"
-                },
-                "maxstay": {
-                    "label": "Maks. ostanak",
-                    "terms": "maksimalno vrijeme zadržavanja"
-                },
-                "maxweight": {
-                    "label": "Najveća dopuštena težina",
-                    "terms": "maksimalna težina"
                 },
                 "memorial": {
                     "options": {
@@ -1139,9 +1127,6 @@
                     "label": "Radno vrijeme",
                     "placeholder": "Nepoznato",
                     "terms": "sati"
-                },
-                "opening_hours/covid19": {
-                    "terms": "sati covid-19 pandemije,odobreni sati,korona virus,sars‑cov‑2"
                 },
                 "operator": {
                     "label": "Operator",
@@ -1949,9 +1934,6 @@
                 "amenity/recycling_centre": {
                     "name": "Centar za reciklažu"
                 },
-                "amenity/recycling_container": {
-                    "name": "Kontejner za reciklažu"
-                },
                 "amenity/restaurant": {
                     "name": "Restoran",
                     "terms": "restoran,buffet,zdravljak,zalogajnica"
@@ -2092,10 +2074,6 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Košara za pseći izmet"
-                },
-                "amenity/waste_basket": {
-                    "name": "Koš za smeće",
-                    "terms": "smeće,koš za smeće,kanta za smeće"
                 },
                 "amenity/waste_disposal": {
                     "name": "Kontejner za smeće"
@@ -2292,9 +2270,6 @@
                 },
                 "building/stadium": {
                     "name": "Zgrada stadiona"
-                },
-                "building/terrace": {
-                    "name": "Kuće u nizu"
                 },
                 "building/train_station": {
                     "name": "Zgrada željezničkog kolodvora"

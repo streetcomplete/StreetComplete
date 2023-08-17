@@ -311,7 +311,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_cycleway_value_none">"keiner"</string>
     <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit Autos"</string>
     <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
-    <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
     <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>
     <string name="quest_cycleway_value_lane_dual">"Radfahrstreifen, beide Richtungen"</string>
     <string name="quest_cycleway_value_track_dual">"Radweg, beide Richtungen"</string>
@@ -377,8 +376,8 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_fee_add_times">"Zeiten hinzufügen"</string>
     <string name="quest_housenumber_multiple_numbers">"Hat mehrere Hausnummern"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben.\nZum Beispiel 1,3 oder 2-6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Bügel"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller"</string>
+    <string name="quest_bicycle_parking_type_stand">"Bügel (hält den Fahrradrahmen)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller (hält nur das Vorderrad)"</string>
     <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
     <string name="quest_bicycle_parking_type_locker">"Schließfächer"</string>
     <string name="quest_bicycle_parking_type_building">"Gebäude"</string>
@@ -1183,7 +1182,6 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_memorialType_stele_wooden">"Hölzerne Stele"</string>
     <string name="quest_memorialType_stele_stone">"Steinerne Stele"</string>
     <string name="quest_memorialType_sculpture">"Andere Skulptur"</string>
-    <string name="select_overlay">"Overlay auswählen"</string>
     <string name="overlay_none">"Kein"</string>
     <string name="overlay_lit">"Straßenbeleuchtung"</string>
     <string name="lit_value_yes">"Beleuchtet"</string>
@@ -1295,7 +1293,6 @@ Jetzt verschieben?"</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
     <string name="separate_cycleway_path">"Weg oder Pfad"</string>
     <string name="quest_fireHydrant_type_pipe">"Rohr"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"explizite Mitbenutzung des Bürgersteigs, beide Richtungen"</string>
     <string name="measure_info_title">"Optimale Genauigkeit erreichen"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore geht manchmal (anfangs) davon aus, dass der Boden etwas niedriger oder höher ist als in der Realität. Dadurch entsteht ein Messfehler, der umso größer wird, je mehr du das Telefon in Richtung Horizont neigst.&lt;/p&gt;
 &lt;p&gt;Setze den Start- und Endpunkt einfach während das Telefon gerade nach unten zeigt (also so dass der weiße Pfeil von oben zu sehen ist), um dieses Problem bei horizontalen Messungen komplett zu umgehen.&lt;/p&gt;
@@ -1334,4 +1331,16 @@ Jetzt verschieben?"</string>
     <string name="quest_tactilePaving_steps_top">"Nur oben"</string>
     <string name="quest_tactilePaving_steps_bottom">"Nur unten"</string>
     <string name="overlay_addresses_no_entrance">"Ist kein Eingang…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Gemeinsamer Geh- und Radweg"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Gemeinsamer Geh- und Radweg, beide Richtungen"</string>
+    <string name="overlays_tutorial_title">"Overlays"</string>
+    <string name="overlays_tutorial_intro">"Du hast einen neuen Weg gefunden um Daten zu editieren!"</string>
+    <string name="overlays_tutorial_display">"Jedes Overlay zeigt eine Art von Daten an, beispielsweise Geschäfte oder Straßenoberflächen.
+
+Die Daten werden in verschiedenen Farben hervorgehoben, um dir einen guten Überblick über die bisher aufgezeichneten Daten zu geben.
+Fehlende Daten werden immer rot angezeigt."</string>
+    <string name="overlays_tutorial_edit">"Tippe auf alle markierten Daten, um sie zu bearbeiten.  Du kannst auch Wege aufteilen oder Notizen machen, wie bei Quests.
+
+Darüber hinaus ermöglichen einige Overlays das Hinzufügen neuer Daten an der Position eines angezeigten Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"Wie hoch ist der Bordstein an dieser Kreuzung?"</string>
 </resources>

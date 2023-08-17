@@ -312,7 +312,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_cycleway_value_none">"cap"</string>
     <string name="quest_cycleway_value_shared">"el carril és explícitament compartit amb la resta de trànsit"</string>
     <string name="quest_cycleway_value_bus_lane">"al carril de bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"vorera explícitament compartida"</string>
     <string name="quest_leave_new_note_create_image_error">"No s'ha pogut crear un fitxer per fotos"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, doble sentit"</string>
     <string name="quest_cycleway_value_track_dual">"pista per ciclistes, doble sentit"</string>
@@ -1185,7 +1184,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_memorialType_stele_wooden">"Estela de fusta (làpida commemorativa)"</string>
     <string name="quest_memorialType_stele_stone">"Estela de pedra (làpida commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altres escultures"</string>
-    <string name="select_overlay">"Seleccionar superposició"</string>
     <string name="overlay_none">"Cap"</string>
     <string name="overlay_lit">"Il·luminació al carrer"</string>
     <string name="lit_value_yes">"Il·luminat"</string>
@@ -1302,7 +1300,6 @@ Menejar ara?"</string>
     <string name="cycleway_reverse_direction_toast">"Toca el sentit a invertir"</string>
     <string name="separate_cycleway_path">"Camí o pista"</string>
     <string name="quest_fireHydrant_type_pipe">"Tub"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"vorera explícitament compartida, doble sentit"</string>
     <string name="measure_info_title">"Aconseguint precisió òptima"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore de vegades (inicialment) suposa que el sòl és una mica més baix o més alt del que és realment. Això introdueix un error de mesura que es fa més gran com més inclines el telèfon cap a l'horitzó.&lt;/p&gt;
 &lt;p&gt;Definiu cadascun el punt inicial i final mentre apunteu el telèfon cap avall (de manera que vegeu la fletxa blanca des de dalt) per evitar completament aquest problema amb les mesures horitzontals.&lt;/p&gt;
@@ -1322,14 +1319,21 @@ Menejar ara?"</string>
     <string name="unknown_surface_title">"Un altre tipus de superfície"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
+    <string name="quest_crossing_title2">"Hi ha un creuament aquí?"</string>
+    <string name="quest_crossing_yes">"Si (p. ex. el voral està rebaixat o hi ha marques)"</string>
     <string name="quest_crossing_no">"No, però és possible creuar"</string>
     <string name="quest_crossing_prohibited">"No, creuar està prohibit o és impossible"</string>
     <string name="quest_hairdresser_title">"Quin tipus de clients visita aquesta perruqueria?"</string>
     <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
     <string name="quest_hairdresser_female_only">"Dones"</string>
     <string name="quest_hairdresser_male_only">"Homens"</string>
+    <string name="quest_hairdresser_not_signed">"No senyalitzat"</string>
     <string name="quest_amenityCover_title">"Està cobert (protegit de la pluja)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Extensió de la vorera"</string>
+    <string name="quest_tactilePaving_title_steps">"Hi ha un paviment podotàctil a la part superior i inferior d'aquestes escales?"</string>
     <string name="quest_tactilePaving_steps_top">"Només a la part superior"</string>
     <string name="quest_tactilePaving_steps_bottom">"Només a la part inferior"</string>
     <string name="overlay_addresses_no_entrance">"No és una entrada..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Camí d'us compartit"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"camí d'ús compartit, ambdues direccions"</string>
 </resources>

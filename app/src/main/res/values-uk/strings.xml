@@ -112,7 +112,7 @@
     <string name="quest_surface_value_asphalt">"Асфальт"</string>
     <string name="quest_surface_value_compacted">"Втрамбоване"</string>
     <string name="quest_surface_value_concrete">"Бетон"</string>
-    <string name="quest_surface_value_dirt">"Земля"</string>
+    <string name="quest_surface_value_dirt">"Ґрунт"</string>
     <string name="quest_surface_value_fine_gravel">"Дрібний гравій"</string>
     <string name="quest_surface_value_grass">"Трава"</string>
     <string name="quest_surface_value_grass_paver">"Газонна решітка"</string>
@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"ні"</string>
     <string name="quest_cycleway_value_shared">"смуга, явно вказана для спільного руху"</string>
     <string name="quest_cycleway_value_bus_lane">"на смузі для автобусів"</string>
-    <string name="quest_cycleway_value_sidewalk">"тротуар для пішохідів та велосипедистів"</string>
     <string name="quest_leave_new_note_create_image_error">"Не вдалося створити файл для фото"</string>
     <string name="quest_cycleway_value_lane_dual">"велосипедна смуга з двостороннім рухом"</string>
     <string name="quest_cycleway_value_track_dual">"велодоріжка з двостороннім рухом"</string>
@@ -363,7 +362,7 @@
     <string name="quest_religion_shinto">"Синтоїзм"</string>
     <string name="quest_religion_jewish">"Юдаїзм"</string>
     <string name="quest_religion_taoist">"Даосизм"</string>
-    <string name="quest_religion_for_place_of_worship_answer_multi">"буді-які релігії"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"будь-які релігії"</string>
     <string name="quest_religion_sikh">"Сикхізм"</string>
     <string name="quest_religion_jain">"Джайнізм"</string>
     <string name="quest_religion_bahai">"Віра Бахаї"</string>
@@ -406,7 +405,7 @@
     <string name="quest_buildingType_residential_description">"дім, в якому живуть люди"</string>
     <string name="quest_buildingType_house">"Дім"</string>
     <string name="quest_buildingType_apartments_description">"будинок для декількох сімей, може мати роздрібні торговельні точки на першому поверсі"</string>
-    <string name="quest_buildingType_apartments">"Житловий будинок"</string>
+    <string name="quest_buildingType_apartments">"Багатоквартирний будинок"</string>
     <string name="quest_buildingType_detached">"Особняк"</string>
     <string name="quest_buildingType_detached_description">"окремо стоячий дім для однієї сім'ї"</string>
     <string name="quest_buildingType_semi_detached">"Напівособняк"</string>
@@ -801,7 +800,7 @@
     <string name="quest_crossing_type_marked">"Позначений перехід"</string>
     <string name="quest_parkingType_street_side">"Парковка біля проїжджої частини"</string>
     <string name="quest_parkingType_lane">"Парковка на проїжджій частині"</string>
-    <string name="quest_tracktype_grade2a">"Тверде, але грунтове"</string>
+    <string name="quest_tracktype_grade2a">"Тверде, але ґрунтове"</string>
     <string name="quest_tracktype_grade3a">"Переважно тверде"</string>
     <string name="quest_generic_answer_does_not_exist">"Це відсутнє…"</string>
     <string name="osm_element_gone_description">"Ви впевнені що це не існує, навіть у іншому місці? Якщо є сумніви краще залишити нотатку."</string>
@@ -940,7 +939,7 @@
     <string name="quest_barrier_type_passage_conversion">"Перетворено на прохід у стіні/паркані тощо."</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
     <string name="quest_traffic_calming_type_title">"Який тип у цієї дорожньої нерівності?"</string>
-    <string name="quest_traffic_calming_type_bump">"Шишка (коротше)"</string>
+    <string name="quest_traffic_calming_type_bump">"Лежачий поліцейський (вузький)"</string>
     <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
     <string name="quest_traffic_calming_type_table">"Стіл (плаский верх)"</string>
     <string name="quest_traffic_calming_type_cushion">"Лежачий поліцейський з розривами (не заважає широкому транспорту)"</string>
@@ -980,21 +979,21 @@
     <string name="street_parking_on_kerb">"Прилягає до проїзної частини"</string>
     <string name="street_parking_street_side">"Прилягає до проїзної частини тільки у спеціально відведених місцях"</string>
     <string name="street_parking_painted_area_only">"На проїзній частини тільки у спеціально відведених місцях"</string>
-    <string name="street_parking_separate">"Парковка зображена на мапi окремо"</string>
+    <string name="street_parking_separate">"Парковка зображена на мапі окремо"</string>
     <string name="street_parking_no">"Немає парковки / Заборонено"</string>
     <string name="street_parking_prohibited">"Немає парковки"</string>
     <string name="street_stopping_prohibited">"Зупинка заборонена"</string>
     <string name="street_standing_prohibited">"Стояти заборонено"</string>
-    <string name="street_parking_conditional_restrictions">"Паркування/зупинка обмеженi частково"</string>
+    <string name="street_parking_conditional_restrictions">"Паркування/зупинка частково обмежені"</string>
     <string name="street_parking_no_other_reasons">"Немає видимого знака / парковка неможлива"</string>
     <string name="street_parking_conditional_restrictions_hint">"Якщо тут взагалі можна припаркуватися або зупинитися, дайте відповідь, будь ласка, як це зробити тим, хто може тут припаркуватися. Які саме обмеження стосуються, можна буде уточнити пізніше.
 
 Як варіант, можна залишити записку (з фото)."</string>
     <string name="quest_address_house_number_label">"Номер будинку:"</string>
-    <string name="quest_shoulder_title">"Чи має ця дорога узбiччя?"</string>
+    <string name="quest_shoulder_title">"Чи має ця дорога узбіччя?"</string>
     <string name="quest_fireHydrant_position_title">"Де розташовано цей пожежний гідрант?"</string>
-    <string name="quest_fireHydrant_position_green">"У траві, на землі, тощо"</string>
-    <string name="quest_fireHydrant_position_lane">"На дорозi"</string>
+    <string name="quest_fireHydrant_position_green">"У траві, ґрунті чи кущах"</string>
+    <string name="quest_fireHydrant_position_lane">"На дорозі"</string>
     <string name="quest_fireHydrant_position_sidewalk">"На тротуарі"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На стоянцi"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Так (залишити нотатку)"</string>
@@ -1027,7 +1026,7 @@
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Великі каміння, глибокі вибоїни, нерівності, борозни, розмиття чи інші небезпечні нівечення"</string>
     <string name="quest_smoothness_description_horrible">"Придатний тільки для позашляховиків або пішки"</string>
     <string name="quest_smoothness_description_very_horrible">"Придатний тільки для спеціальних позашляховиків або пішки"</string>
-    <string name="quest_smoothness_description_impassable">"Неможливе пересування транспортом, тiльки пiшки"</string>
+    <string name="quest_smoothness_description_impassable">"Неможливе пересування транспортом, тільки пішки"</string>
     <string name="quest_smoothness_wrong_surface">"Інше покриття"</string>
     <string name="quest_smoothness_surface_value">"Покриття позначено як:"</string>
     <string name="quest_smoothness_obstacle">"Перешкода на шляху"</string>
@@ -1041,13 +1040,13 @@
     <string name="quest_smoothness_description_good_compacted_gravel">"Твердоущільнений, трохи сипучого гравію чи піску"</string>
     <string name="quest_barrier_path_intersection">"Як цей шлях перетинає перешкоду?"</string>
     <string name="quest_barrier_road_intersection">"Як ця дорога перетинає перешкоду?"</string>
-    <string name="quest_sidewalk_value_separate">"тротуар, втім показано на картi окремо"</string>
+    <string name="quest_sidewalk_value_separate">"тротуар, втім показано на карті окремо"</string>
     <string name="quest_shoulder_value_yes">"Узбіччя"</string>
     <string name="quest_shoulder_value_no">"Немає узбіччя"</string>
     <string name="no_camera_permission_warning_title">"Дозвіл на зйомку"</string>
     <string name="no_camera_permission_warning">"Необхідно дати дозвіл, щоб фотографувати і вимірювати відстані за допомогою камери."</string>
     <string name="ar_core_error_sdk_too_old">"Цей застосунок застарів, спробуйте його оновити."</string>
-    <string name="ar_core_tracking_error_bad_state">"Щось пiшло не так. Спробуйте ще раз."</string>
+    <string name="ar_core_tracking_error_bad_state">"Щось пішло не так. Спробуйте ще раз."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Тут занадто темно"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Забагато руху"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Недостатньо візуальних характеристик"</string>
@@ -1097,7 +1096,7 @@
     <string name="quest_baby_changing_table_title2">"Чи є тут пеленальний столик?"</string>
     <string name="quest_busStopBench_title2">"Чи є лавка на цій зупинці?"</string>
     <string name="quest_busStopBin_title2">"Чи є сміттєвий кошик на цій зупинці?"</string>
-    <string name="quest_busStopLit_title2">"Чи освiтлена ця зупинка?"</string>
+    <string name="quest_busStopLit_title2">"Чи освітлена ця зупинка?"</string>
     <string name="quest_busStopName_title2">"Яка назва цієї зупинки?"</string>
     <string name="quest_busStopRef_title2">"Який номер цієї зупинки?"</string>
     <string name="quest_busStopShelter_title2">"Чи вкрита ця зупинка?"</string>
@@ -1115,7 +1114,7 @@
     <string name="quest_openingHours_title">"Який тут розклад роботи?"</string>
     <string name="quest_openingHours_signed_title">"Тут написані години роботи?"</string>
     <string name="quest_openingHours_resurvey_title">"Цей розклад роботи все ще правильний?"</string>
-    <string name="quest_placeName_title">"Яка назва цього мiсця?"</string>
+    <string name="quest_placeName_title">"Яка назва цього місця?"</string>
     <string name="quest_shop_type_title2">"Що це за магазин?"</string>
     <string name="quest_smoking_title2">"Чи дозволено тут палити?"</string>
     <string name="quest_smoothness_title">"Яка тут якість покриття?"</string>
@@ -1175,7 +1174,6 @@
     <string name="quest_memorialType_stele_wooden">"Деревʼяна стела (памʼятна плита)"</string>
     <string name="quest_memorialType_stele_stone">"Камʼяна стела (памʼятна плита)"</string>
     <string name="quest_memorialType_sculpture">"Інша скульптура"</string>
-    <string name="select_overlay">"Виберіть накладний шар"</string>
     <string name="overlay_none">"Без шарів"</string>
     <string name="overlay_lit">"Вуличне освітлення"</string>
     <string name="lit_value_yes">"Освітлено"</string>
@@ -1217,7 +1215,7 @@
     <string name="quest_address_street_street_name_label">"Назва вулиці:"</string>
     <string name="quest_address_street_hint2">"Торкніться потрібної вулиці на мапі"</string>
     <string name="quest_bicycle_incline_title">"Який напрямок тут веде вгору?"</string>
-    <string name="quest_bicycle_incline_up_and_down">"Це хміль вгору та вниз"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Стрибає вгору-вниз"</string>
     <string name="quest_drinking_water_type_title">"Який тут тип обʼєкту з питною водою?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Інший тип фонтану"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Фонтан випускає маленький струмінь води"</string>
@@ -1239,7 +1237,7 @@
     <string name="quest_buildingType_guardhouse">"Будинок охоронця"</string>
     <string name="quest_genericRef_title">"Який тут номер обʼєкту?"</string>
     <string name="quest_sidewalk_answer_different">"Ситуація з тротуарами інша"</string>
-    <string name="about_title_get_involved">"Бути втягнутим"</string>
+    <string name="about_title_get_involved">"Взяти участь"</string>
     <string name="pref_category_quests_overlays">"Квести &amp; Накладні шари"</string>
     <string name="quest_presets_rename">"Перейменувати"</string>
     <string name="quest_presets_share">"Поділитися"</string>
@@ -1261,8 +1259,8 @@
     <string name="confirmation_replace_shop_yes">"Тепер тут інший заклад"</string>
     <string name="confirmation_replace_shop_no">"Досі той самий заклад"</string>
     <string name="move_node">"Це трохи в іншому місці…"</string>
-    <string name="quest_move_node_message">"Ви можете виправити положення, перемістивши функцію.
-Перемістити зараз?"</string>
+    <string name="quest_move_node_message">"Ви можете пересунути точку в правильну позицію.
+Спробувати зараз?"</string>
     <string name="node_moved_not_far_enough">"Перемістіть його далі"</string>
     <string name="node_moved_too_far">"Переїхав занадто далеко. Залиште записку"</string>
     <string name="node_moved">"Переміщено %s"</string>
@@ -1287,7 +1285,6 @@
     <string name="cycleway_reverse_direction_toast">"Торкніться сторони, щоб повернути назад"</string>
     <string name="separate_cycleway_path">"Шлях або стежка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"тротуар для пішохідів та велосипедистів"</string>
     <string name="measure_info_title">"Досягнення оптимальної точності"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore інколи (спочатку) припускає, що земля знаходиться трохи нижче або вище, ніж вона є насправді. Це призводить до похибки вимірювання, яка стає більшою, чим більше ви нахиляєте телефон до горизонту.&lt;/p&gt;
 &lt;p&gt;Встановіть кожну початкову та кінцеву точки, спрямовуючи телефон прямо вниз (щоб ви бачили білу стрілку зверху), щоб повністю уникнути цієї проблеми для горизонтальних вимірювань.&lt;/p&gt;
@@ -1328,4 +1325,14 @@
     <string name="overlay_addresses_no_entrance">"Це не вхід…"</string>
     <string name="quest_cycleway_value_sidewalk2">"вело-пішохідна доріжка"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"вело-пішохідна доріжка з 2-стороннім рухом"</string>
+    <string name="overlays_tutorial_title">"Накладні шари"</string>
+    <string name="overlays_tutorial_intro">"Ви спробуєте новий спосіб редагування!"</string>
+    <string name="overlays_tutorial_display">"Кожен шар показує один тип даних, наприклад магазини або покриття доріг.
+
+Дані виділені різними кольорами, щоб ви могли уявити, що було наразі записано.
+Елементи без даних завжди показані червоним."</string>
+    <string name="overlays_tutorial_edit">"Торкніться будь-яких підсвічених даних, щоб редагувати їх. Ви також можете розділяти шляхи або залишати нотатки, як у квестах.
+
+Заразом, деякі шари дозволяють додавати нові дані в позицію екранної хрестовини, наприклад шар адрес."</string>
+    <string name="quest_crossing_kerb_height_title">"Яка висота бордюрів на цьому переході?"</string>
 </resources>

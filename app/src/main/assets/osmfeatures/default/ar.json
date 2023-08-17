@@ -1638,10 +1638,6 @@
                     "label": "الحد الأقصى للعمر",
                     "terms": "الحد الأقصى لسن الشخص,الحد الأعلى لسن الشخص"
                 },
-                "maxheight": {
-                    "label": "أقصى ارتفاع",
-                    "terms": "أقصى ارتفاع"
-                },
                 "maxspeed": {
                     "label": "حدود السرعة",
                     "placeholder": "40, 50, 60...",
@@ -1656,18 +1652,6 @@
                     "label": "الحد الأقصى لسرعة الشاحنة",
                     "placeholder": "40, 50, 60...",
                     "terms": "سرعة الشاحنات القصوى"
-                },
-                "maxstay": {
-                    "label": "أقصى فترة بقاء",
-                    "terms": "أقصى فترة بقاء,أقصى فترة مكوث"
-                },
-                "maxweight": {
-                    "label": "أقصى وزن",
-                    "terms": "أقصى وزن,الوزن الأقصى"
-                },
-                "maxwidth": {
-                    "label": "العرض الأعظمي",
-                    "terms": "العرض الأعظمي,العرض الأقصى,أعظم عرض,أقصى عرض"
                 },
                 "memorial": {
                     "label": "النوع"
@@ -1834,10 +1818,6 @@
                     "label": "ساعات العمل",
                     "placeholder": "غير معروف",
                     "terms": "ساعات العمل,ساعات الدوام"
-                },
-                "opening_hours/covid19": {
-                    "label": "ساعات العمل خلال أزمة كورونا",
-                    "terms": "ساعات العمل خلال أزمة كورونا"
                 },
                 "operator": {
                     "label": "المُشغل",
@@ -3855,10 +3835,6 @@
                     "name": "مركز إعادة تدوير",
                     "terms": "مركز إعادة تدوير"
                 },
-                "amenity/recycling_container": {
-                    "name": "حاوية إعادة التدوير",
-                    "terms": "حاوية إعادة التدوير"
-                },
                 "amenity/refugee_site": {
                     "name": "مخيم لاجئين",
                     "terms": "مخيم لاجئين"
@@ -3878,10 +3854,6 @@
                 "amenity/restaurant/asian": {
                     "name": "مطعم آسيوي",
                     "terms": "مطعم آسيوي"
-                },
-                "amenity/restaurant/barbeque": {
-                    "name": "مطعم باربيكيو",
-                    "terms": "مطعم باربيكيو"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "مطعم صيني",
@@ -4187,10 +4159,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "قمامة لبراز الكلاب",
                     "terms": "حاوية براز الكلاب"
-                },
-                "amenity/waste_basket": {
-                    "name": "سلة مهملات",
-                    "terms": "سلة المهملات,سلة القمامة,قمامة,مهملات,زبالة"
                 },
                 "amenity/waste_disposal": {
                     "name": "حاوية قمامة متحركة",
@@ -4676,10 +4644,6 @@
                 "building/temple": {
                     "name": "مبنى المعبد",
                     "terms": "مبنى المعبد"
-                },
-                "building/terrace": {
-                    "name": "صف منازل متلاصقه",
-                    "terms": "صف منازل"
                 },
                 "building/train_station": {
                     "name": "مبنى محطة القطار"

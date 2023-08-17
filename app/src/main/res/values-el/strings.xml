@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"κανείς"</string>
     <string name="quest_cycleway_value_shared">"η λωρίδα μοιράζεται κατηγορηματικά με άλλες κυκλοφορίες"</string>
     <string name="quest_cycleway_value_bus_lane">"στη λωρίδα των λεωφορείων"</string>
-    <string name="quest_cycleway_value_sidewalk">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο"</string>
     <string name="quest_leave_new_note_create_image_error">"Αδύνατη η δημιουργία αρχείου για τη φωτογραφία"</string>
     <string name="quest_cycleway_value_lane_dual">"ποδηλατική λωρίδα, διπλή κατεύθυνση"</string>
     <string name="quest_cycleway_value_track_dual">"ποδηλατόδρομος, διπλή κατεύθυνση"</string>
@@ -1169,7 +1168,6 @@
     <string name="quest_memorialType_stele_wooden">"Ξύλινη στήλη (αναμνηστική πλάκα)"</string>
     <string name="quest_memorialType_stele_stone">"Λίθινη στήλη (αναμνηστική πλάκα)"</string>
     <string name="quest_memorialType_sculpture">"Άλλο γλυπτό"</string>
-    <string name="select_overlay">"Επιλογή Επικάλυψης"</string>
     <string name="overlay_none">"Καμία"</string>
     <string name="overlay_lit">"Φωτισμός δρόμου"</string>
     <string name="lit_value_yes">"Φωτισμένο"</string>
@@ -1281,7 +1279,6 @@
     <string name="cycleway_reverse_direction_toast">"Πατήστε σε ποια πλευρά θέλετε να αντιστρέψετε"</string>
     <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι"</string>
     <string name="quest_fireHydrant_type_pipe">"σωλήνα"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο, διπλή κατεύθυνση"</string>
     <string name="measure_info_title">"Επίτευξη βέλτιστης ακρίβειας"</string>
     <string name="measure_info_html_description">"&lt;p&gt;Το ARCore μερικές φορές (αρχικά) υποθέτει ότι το έδαφος είναι λίγο χαμηλότερο ή υψηλότερο από ό,τι στην πραγματικά είναι. Αυτό εισάγει ένα σφάλμα μέτρησης που γίνεται μεγαλύτερο όσο περισσότερο γέρνετε το τηλέφωνό σας προς τον ορίζοντα.&lt;/p&gt;
 &lt;p&gt;Ρυθμίστε το σημείο έναρξης και τέλους ενώ στρέφετε το τηλέφωνο ευθεία προς τα κάτω (έτσι ώστε να βλέπετε το λευκό βέλος από πάνω) για να αποφύγετε εντελώς αυτό το ζήτημα για οριζόντιες μετρήσεις.&lt;/p&gt;

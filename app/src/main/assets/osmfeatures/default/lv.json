@@ -647,9 +647,6 @@
                 "material": {
                     "label": "Materiāls"
                 },
-                "maxheight": {
-                    "label": "Maks, Augstums"
-                },
                 "maxspeed": {
                     "label": "Ātruma ierobežojums",
                     "placeholder": "40, 50, 60..."
@@ -657,12 +654,6 @@
                 "maxspeed/advisory": {
                     "label": "Ieteicamais Ātruma Ierobežojums",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Maks. Stāvēšanas Ilgums"
-                },
-                "maxweight": {
-                    "label": "Maks. Smagums"
                 },
                 "memorial": {
                     "label": "Tips"
@@ -1476,10 +1467,6 @@
                     "name": "Suņu ekskrementu tvertne",
                     "terms": "tvertne,kaste,suņu,kaku,maisiņu,atkritumu"
                 },
-                "amenity/waste_basket": {
-                    "name": "Atkritumu grozs",
-                    "terms": "miskaste,papīrgrozs,izmestuve,atkritumi"
-                },
                 "amenity/waste_disposal": {
                     "name": "Atkritumu konteiners",
                     "terms": "miskaste,atkritumi,izgāztuve,tvertne"
@@ -1661,10 +1648,6 @@
                 "building/temple": {
                     "name": "Tempļa Ēka",
                     "terms": "templis,reliģija,piemiņa"
-                },
-                "building/terrace": {
-                    "name": "Rindumājas",
-                    "terms": "rindu mājas,mājas"
                 },
                 "building/university": {
                     "name": "Universitātes Ēka"

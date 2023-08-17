@@ -311,7 +311,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_cycleway_value_none">"aucune"</string>
     <string name="quest_cycleway_value_shared">"bande partagée avec la circulation"</string>
     <string name="quest_cycleway_value_bus_lane">"sur la voie de bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"trottoir partagé"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossible de créer un fichier pour cette photo"</string>
     <string name="quest_cycleway_value_lane_dual">"bande cyclable bidirectionnelle"</string>
     <string name="quest_cycleway_value_track_dual">"piste cyclable bidirectionnelle"</string>
@@ -534,7 +533,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
     <string name="quest_split_way_description">"S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
-    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au·x point·s où la réponse diffère. Essayez d’être aussi précis que possible, vous pouvez zoomer comme d’habitude."</string>
+    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Essayez d’être aussi précis que possible, vous pouvez zoomer comme d’habitude."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Il y a eu plusieurs découpages. Vous pouvez toujours redécouper le chemin ultérieurement."</string>
     <string name="quest_footwayPartSurface_title">"Quel est le revêtement du chemin piéton ici ?"</string>
@@ -766,7 +765,7 @@ accomplis"</string>
     <string name="achievement_citizen_solved_X">"Vous avez résolu %d quêtes utiles pour la vie de tous les jours en ville !"</string>
     <string name="achievement_outdoors_title">"En plein air"</string>
     <string name="achievement_outdoors_solved_X">"Vous avez résolu %d quêtes utiles aux amateurs de plein air !"</string>
-    <string name="quest_pedestrian_crossing_island">"Est ce que ce passage piéton est équipé d’un îlot de refuge ?"</string>
+    <string name="quest_pedestrian_crossing_island">"Est-ce que ce passage piéton est équipé d’un îlot de refuge ?"</string>
     <string name="quest_generic_answer_noSign">"Il n’y a pas de panneau"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Y a t’il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
@@ -1154,7 +1153,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_bicycle_rental_type_human">"Location de vélo avec personnel"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Magasin de vélos qui propose des vélos à louer"</string>
     <string name="quest_bicycle_shop_repair_title">"Des services de réparation de vélos sont-ils proposés ici ?"</string>
-    <string name="quest_bicycle_shop_second_hand_title">"Est ce que des vélos d’occasion sont vendus ici ?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Est-ce que des vélos d’occasion sont vendus ici ?"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"Non, seulement des neufs"</string>
     <string name="quest_bicycle_shop_second_hand_new_and_used">"Oui, avec des neufs également"</string>
     <string name="quest_bicycle_shop_second_hand_only_used">"Oui, exclusivement"</string>
@@ -1183,7 +1182,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_memorialType_stele_wooden">"Stèle en bois (plaque commémorative)"</string>
     <string name="quest_memorialType_stele_stone">"Stèle en pierre (plaque commémorative)"</string>
     <string name="quest_memorialType_sculpture">"Autre sculpture"</string>
-    <string name="select_overlay">"Sélectionner surcouche"</string>
     <string name="overlay_none">"Aucune"</string>
     <string name="overlay_lit">"Éclairage public"</string>
     <string name="lit_value_yes">"Éclairé"</string>
@@ -1294,7 +1292,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="cycleway_reverse_direction_toast">"Tapez sur le côté à inverser"</string>
     <string name="separate_cycleway_path">"Chemin ou piste"</string>
     <string name="quest_fireHydrant_type_pipe">"Colonne"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"trottoir partagé, dans les deux sens"</string>
     <string name="measure_info_title">"Améliorer la précision de mesure"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore présume parfois (à l’initialisation) que le sol est plus bas ou plus haut qu’il ne l’est vraiment. Cela introduit une erreur de mesure qui s’accroit lorsque vous inclinez votre téléphone vers l’horizon.&lt;/p&gt;
 &lt;p&gt;Réglez les points de départ et de terminaison en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
@@ -1314,7 +1311,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="unknown_surface_title">"Autre type de surface"</string>
     <string name="overlay_surface">"Surfaces"</string>
     <string name="overlay_path_surface_segregated">"Séparé entre voies cyclables et piétonnes"</string>
-    <string name="quest_crossing_title2">"Y a-t-il un passage à niveau ici ?"</string>
+    <string name="quest_crossing_title2">"Y a-t-il un croisement ici ?"</string>
     <string name="quest_crossing_yes">"Oui (par exemple, la bordure est abaissée à cet endroit ou il y a des marquages)"</string>
     <string name="quest_crossing_no">"Non, mais la traversée est possible"</string>
     <string name="quest_crossing_prohibited">"Non, la traversée est impossible ou interdite"</string>
@@ -1323,7 +1320,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_hairdresser_female_only">"Femmes"</string>
     <string name="quest_hairdresser_male_only">"Hommes"</string>
     <string name="quest_hairdresser_not_signed">"Non signé"</string>
-    <string name="quest_amenityCover_title">"Est ce couvert (protégé de la pluie) ?"</string>
+    <string name="quest_amenityCover_title">"Est-ce couvert (protégé de la pluie) ?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Extension de trottoir"</string>
     <string name="lane_narrowing_traffic_calming_island">"Îlot de circulation"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
@@ -1335,4 +1332,14 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="overlay_addresses_no_entrance">"Ce n’est pas une entrée…"</string>
     <string name="quest_cycleway_value_sidewalk2">"chemin partagé"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"chemin partagé, deux sens"</string>
+    <string name="overlays_tutorial_title">"Surcouches"</string>
+    <string name="overlays_tutorial_intro">"Vous avez trouvé une nouvelle façon de modifier les données !"</string>
+    <string name="overlays_tutorial_display">"Chaque surcouche affiche un type de données, par exemple des magasins ou des surfaces de rues.
+
+Les données sont mises en évidence dans différentes couleurs pour vous donner un bon aperçu de ce qui a été enregistré jusqu'à présent.
+Les données manquantes sont toujours affichées en rouge."</string>
+    <string name="overlays_tutorial_edit">"Appuyez sur les données en surbrillance pour les modifier.  Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
+
+De plus, certaines surcouches vous permettent d'ajouter de nouvelles données à la position d'un réticule affiché, comme la superposition des adresses."</string>
+    <string name="quest_crossing_kerb_height_title">"Quelle est la hauteur des bordures à ce croisement ?"</string>
 </resources>

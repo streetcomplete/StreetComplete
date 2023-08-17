@@ -662,8 +662,8 @@
                 "conveying": {
                     "label": "Κατεύθυνση Πορείας",
                     "options": {
-                        "backward": "Αντίθετη Φορά",
-                        "forward": "Μπροστινή Φορά",
+                        "backward": "Προς τα πίσω",
+                        "forward": "Προς τα εμπρός",
                         "reversible": "Αναστρεφόμενο"
                     }
                 },
@@ -1006,9 +1006,9 @@
                 "direction_vertex": {
                     "label": "Επηρεαζόμενη Κατεύθυνση",
                     "options": {
-                        "backward": "Αντίθετη Φορά",
+                        "backward": "Προς τα πίσω",
                         "both": "Και τις δύο / Παντού",
-                        "forward": "Προς τα Εμπρός"
+                        "forward": "Προς τα εμπρός"
                     }
                 },
                 "dispensing": {
@@ -1848,10 +1848,6 @@
                     "label": "Μέγιστη Ηλικία",
                     "terms": "μέγιστη ηλικία"
                 },
-                "maxheight": {
-                    "label": "Μέγιστο Ύψος",
-                    "terms": "μέγιστο ύψος"
-                },
                 "maxspeed": {
                     "label": "Όριο Ταχύτητας",
                     "placeholder": "40, 50, 60...",
@@ -1865,17 +1861,6 @@
                 "maxspeed/hgv": {
                     "label": "Όριο Ταχύτητας Φορτηγών",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Μέγιστη παραμονή"
-                },
-                "maxweight": {
-                    "label": "Μέγιστο Βάρος",
-                    "terms": "μέγιστο βάρος"
-                },
-                "maxwidth": {
-                    "label": "Μέγιστο Πλάτος",
-                    "terms": "πλάτος,μέγιστο εύρος,εύρος,μέγιστο άνοιγμα,άνοιγμα"
                 },
                 "memorial": {
                     "label": "Είδος",
@@ -2075,9 +2060,6 @@
                     "label": "Ωράριο",
                     "placeholder": "Άγνωστο",
                     "terms": "ώρες"
-                },
-                "opening_hours/covid19": {
-                    "label": "Ωράριο Λειτουργίας την περίοδο του COVID-19"
                 },
                 "operator": {
                     "label": "Διαχειριστής",
@@ -2380,9 +2362,9 @@
                 "railway/signal/direction": {
                     "label": "Επηρεασμένη Κατεύθυνση ",
                     "options": {
-                        "backward": "Αντίθετη Φορά",
+                        "backward": "Προς τα πίσω",
                         "both": "Και τις δύο / Παντού",
-                        "forward": "Προς τα Εμπρός"
+                        "forward": "Προς τα εμπρός"
                     }
                 },
                 "ramp": {
@@ -3108,9 +3090,9 @@
                 "traffic_sign/direction": {
                     "label": "Επηρεασμένη  Κατεύθυνση",
                     "options": {
-                        "backward": "Αντίθετη Φορά",
+                        "backward": "Προς τα πίσω",
                         "both": "Και τις δύο / Παντού",
-                        "forward": "Προς τα Εμπρός"
+                        "forward": "Προς τα εμπρός"
                     }
                 },
                 "traffic_signals": {
@@ -3125,9 +3107,9 @@
                 "traffic_signals/direction": {
                     "label": "Επηρεασμένη Κατεύθυνση",
                     "options": {
-                        "backward": "Αντίθετη Φορά",
+                        "backward": "Προς τα πίσω",
                         "both": "Και στις δύο / Παντού",
-                        "forward": "Προς τα Εμπρός"
+                        "forward": "Προς τα εμπρός"
                     }
                 },
                 "traffic_signals/minimap": {
@@ -3827,6 +3809,9 @@
                     "name": "Παγωτατζίδικο",
                     "terms": "παγωτά,κατάστημα πώλησης παγωτού,παγωτατζίδικο"
                 },
+                "amenity/ice_cream/frozen_yogurt": {
+                    "name": "Κατάστημα Παγωμένου Γιαουρτιού"
+                },
                 "amenity/internet_cafe": {
                     "name": "Internet Cafe"
                 },
@@ -4033,9 +4018,6 @@
                     "name": "Κέντρο Ανακύκλωσης",
                     "terms": "κέντρο ανακύκλωσης,ανακύκλωση σκουπιδιών"
                 },
-                "amenity/recycling_container": {
-                    "name": "Κάδος Ανακύκλωσης"
-                },
                 "amenity/refugee_site": {
                     "name": "Δομή Προσφύγων"
                 },
@@ -4052,10 +4034,6 @@
                 },
                 "amenity/restaurant/asian": {
                     "name": "Ασιατικό  Εστιατόριο"
-                },
-                "amenity/restaurant/barbeque": {
-                    "name": "Εστιατόριο Barbeque",
-                    "terms": "εστιατόριο bbq,barbeque εστιατόριο,bbq εστιατόριο,ψησταριά,ψητοπωλείο,καντίνα,κάρβουνα,δείπνο"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Κινεζικό Εστιατόριο"
@@ -4298,10 +4276,6 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Κάδος για Περιττώματα Σκύλων"
-                },
-                "amenity/waste_basket": {
-                    "name": "Καλάθι Απορριμμάτων",
-                    "terms": "κάλαθος αχρήστων,καλάθι σκουπιδιών"
                 },
                 "amenity/waste_disposal": {
                     "name": "Κάδος απορριμμάτων",
@@ -4721,9 +4695,6 @@
                 },
                 "building/temple": {
                     "name": "Ναός"
-                },
-                "building/terrace": {
-                    "name": "Ενωμένα Ομοιόμορφα Σπίτια"
                 },
                 "building/train_station": {
                     "name": "Σταθμός Τρένου"
@@ -7248,7 +7219,7 @@
                     "terms": "τυροκομείο,φέτα,κασέρι,τυριά,γραβιέρα"
                 },
                 "shop/chemist": {
-                    "name": "Φαρμακείο"
+                    "name": "Χημικά Είδη Καθαριότητας"
                 },
                 "shop/chocolate": {
                     "name": "Κατάστημα Ειδών Σοκολάτας"
@@ -7324,7 +7295,7 @@
                     "terms": "φτιάξτο μόνος σου,κατάστημα ιδιοκατασκευών"
                 },
                 "shop/doors": {
-                    "name": "Κατάστημα Πορτών"
+                    "name": "Κατάστημα Θυρών"
                 },
                 "shop/dry_cleaning": {
                     "name": "Στεγνοκαθαριστήριο"
@@ -7526,6 +7497,9 @@
                 "shop/nutrition_supplements": {
                     "name": "Κατάστημα με Συμπληρώματα Διατροφής"
                 },
+                "shop/nuts": {
+                    "name": "Κατάστημα Καρπών"
+                },
                 "shop/optician": {
                     "name": "Οπτικός",
                     "terms": "οπτικός"
@@ -7696,7 +7670,7 @@
                     "name": "Κατάστημα Ρολογιών"
                 },
                 "shop/water": {
-                    "name": "Κατάστημα Πόσης Νερού"
+                    "name": "Κατάστημα Πόσιμου Νερού"
                 },
                 "shop/water_sports": {
                     "name": "Κατάστημα Ειδών Θαλάσσιων Σπορ / Κολύμβησης"
