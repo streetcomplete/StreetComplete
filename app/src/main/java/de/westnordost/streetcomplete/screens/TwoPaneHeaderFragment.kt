@@ -60,8 +60,8 @@ abstract class TwoPaneHeaderFragment : PreferenceHeaderFragmentCompat() {
     }
 
     private fun notifyPaneListeners(singlePane: Boolean) {
-        notifyPaneListener(R.id.preferences_header, singlePane)
-        notifyPaneListener(R.id.preferences_detail, singlePane)
+        notifyPaneListener(androidx.preference.R.id.preferences_header, singlePane)
+        notifyPaneListener(androidx.preference.R.id.preferences_detail, singlePane)
     }
 
     private fun notifyPaneListener(@IdRes id: Int, singlePane: Boolean) {

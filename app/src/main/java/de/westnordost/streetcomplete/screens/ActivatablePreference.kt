@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.R
 class ActivatablePreference @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.preferenceStyle,
+    defStyleAttr: Int = androidx.preference.R.attr.preferenceStyle,
     defStyleRes: Int = 0,
 ) : Preference(context, attrs, defStyleAttr, defStyleRes) {
 

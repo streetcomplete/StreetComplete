@@ -30,7 +30,7 @@ fun Fragment.setUpToolbarTitleAndIcon(toolbar: Toolbar) {
     }
 
     val typedArray =
-        toolbar.context.obtainStyledAttributes(intArrayOf(R.attr.homeAsUpIndicator))
+        toolbar.context.obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.homeAsUpIndicator))
     val attributeResourceId = typedArray.getResourceId(0, 0)
     val backIcon = toolbar.context.getDrawable(attributeResourceId)
     typedArray.recycle()
