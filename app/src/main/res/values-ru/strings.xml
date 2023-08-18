@@ -312,7 +312,6 @@
     <string name="quest_cycleway_value_none">"нет"</string>
     <string name="quest_cycleway_value_shared">"полоса явно указанная для совместного движения"</string>
     <string name="quest_cycleway_value_bus_lane">"на выделенной полосе для автобусов"</string>
-    <string name="quest_cycleway_value_sidewalk">"разрешённый знаками тротуар для пешеходов и велосипедистов"</string>
     <string name="quest_leave_new_note_create_image_error">"Не удалось создать файл для фото"</string>
     <string name="quest_cycleway_value_lane_dual">"велосипедная полоса, движение в обе стороны"</string>
     <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
@@ -1185,7 +1184,6 @@
     <string name="quest_memorialType_stele_wooden">"Деревянная стела (мемориальная плита)"</string>
     <string name="quest_memorialType_stele_stone">"Каменная стела (мемориальная плита)"</string>
     <string name="quest_memorialType_sculpture">"Другая скульптура"</string>
-    <string name="select_overlay">"Выбрать наложение"</string>
     <string name="overlay_none">"Нет"</string>
     <string name="overlay_lit">"Уличное освещение"</string>
     <string name="lit_value_yes">"Освещено"</string>
@@ -1297,7 +1295,6 @@
     <string name="cycleway_reverse_direction_toast">"Нажмите, на какую сторону повернуть"</string>
     <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
     <string name="measure_info_title">"Достижение оптимальной точности"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore иногда (в начале) предполагает, что земля немного ниже или выше, чем на самом деле. Это приводит к ошибке измерения, которая увеличивается, когда вы наклоняете телефон к горизонту.&lt;/p&gt; &lt;p&gt;Установите начальную и конечную точки, указывая телефон прямо внизу (чтобы видеть белую стрелку сверху), чтобы полностью избежать этой проблемы для горизонтальных измерений.&lt;/p&gt; &lt;p&gt;Для вертикальных измерений вам нужно вместо этого проверить, не кажется ли стартовая точка движущейся относительно земли, смотря на нее с разных направлений.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Данное приложение использует &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сервисы Google Play для дополненной реальности&lt;/a&gt; (ARCore), предоставленные Google в соответствии с &lt;a href=\"https://policies.google.com/privacy\"&gt;политикой приватности Google&lt;/a&gt;."</string>

@@ -311,7 +311,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_cycleway_value_none">"neniu"</string>
     <string name="quest_cycleway_value_shared">"leno kunuzata eksplicite kun alia trafiko"</string>
     <string name="quest_cycleway_value_bus_lane">"sur busa leno"</string>
-    <string name="quest_cycleway_value_sidewalk">"eksplicite kunuzata trotuaro"</string>
     <string name="quest_leave_new_note_create_image_error">"Ne povas krei dosieron por foto"</string>
     <string name="quest_cycleway_value_lane_dual">"bicikla leno, ambaŭ direktoj"</string>
     <string name="quest_cycleway_value_track_dual">"bicikla trako, ambaŭ direktoj"</string>
@@ -501,6 +500,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_traffic_signals_button_title">"Ĉu ĉi tiuj semaforoj havas butonon por peti marŝan signalon?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kiom da motorbicikloj pvas estas parkitaj ĉi tie?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ĉu ĉi tiu motorcikla parkado estas kovrita (protektita kontraŭ pluvo)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Ĉi tia tasko estas malebiligita defaŭlte ĉar vi kutime devas kontroli la tuton de la vojo, ne nur la markitan parton, por trovi trafikŝildojn kun  rapideclimoj. Tio povas esti multe da laboro por solvi unu tasko."</string>
     <string name="pref_title_quests_restore_hidden">"Remontri kaŝitajn taskojn"</string>
     <string name="restore_hidden_success">"Reestigitaj %d kaŝitaj taskoj"</string>
     <string name="on_level">"je nivelo %s"</string>
@@ -635,8 +635,9 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="link_welcome_mat_description">"Ĝeneralaj informoj pri OpenStreetMap kaj kiel labori kun OSM kiel organizo"</string>
     <string name="link_mapillary_description">"Servo kaj aplikaĵo por kunhavigi amasfontajn stratnivelajn fotojn, kun eksplicita permeso uzi ilin por kontribui al OSM"</string>
     <string name="link_openstreetcam_description">"Servo kaj aplikaĵo por kunhavigi amasfontajn stratnivelajn fotojn, kun eksplicita permeso uzi ilin por kontribui al OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Turno-post-turno navigacio por rulseĝuzantoj"</string>
     <string name="link_nominatim_description">"La geokodilo por OSM-datumoj, uzata de multaj aliaj servoj"</string>
-    <string name="link_city_roads_description">"Bildigi ĉiujn vojojn de urbo, por presado sur T-ĉemizoj, tasoj, …"</string>
+    <string name="link_city_roads_description">"Bildigi ĉiujn vojojn de urbo por presado sur T-ĉemizoj, tasoj, …"</string>
     <string name="link_myosmatic_description">"Generu preseblajn urbomapojn en kelkaj facilaj paŝoj, laŭvole kun stratadresaro"</string>
     <string name="link_show_me_the_way_description">"Rigardu OSM-redaktojn okazi en reala tempo"</string>
     <string name="link_osm_haiku_description">"Uzante OSM-datenojn por generi hajkon (formo de japana poezio)"</string>
@@ -799,6 +800,7 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_shop_gone_replaced_answer_hint">"Tajpu specon de loko ĉi tie"</string>
     <string name="quest_shop_vacant_type_title">"Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Ne estas samkvante da koridoroj ambaŭflanke"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Ĉi tia tasko estas malebiligita defaŭlte ĉar ĝi ne estas utila en kelkaj regionoj kaj vi probable devas eniri la lokon por plenigi tian taskon."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Tute neniu biciklovojo"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kiel kutime, alklaku iaflanke de la ilustraĵo, elektu akuratan respondon, kaj faru same aliflanke.
 
@@ -890,6 +892,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_buildingLevels_title2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵo?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵparto?"</string>
     <string name="pref_subtitle_quests_preset_name">"Antaŭdifino: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Ĉi tia tasko estas malebiligita defaŭlte ĉar la tipoj de tegmentoj estas malfacile videblaj de la strato. Tia tasko ankaŭ estas temporaba. Plejofte estas plifacila mapi tion de aeraj bildaroj hejme."</string>
     <string name="quest_religion_animist">"Animismo"</string>
     <string name="quest_construction_steps_title">"Ĉu ĉi tiuj paŝoj estas finitaj?"</string>
     <string name="pref_quests_deselect_all">"Ĉu malelekti ĉiujn taskojn?"</string>
@@ -932,7 +935,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_traffic_calming_type_island">"Insulo"</string>
     <string name="quest_traffic_calming_type_chicane">"Devigita(j) kurbo(j)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Skuiĝa(j) stripo(j)"</string>
-    <string name="quest_surface_value_concrete_plates">"Konkretaj platoj"</string>
+    <string name="quest_surface_value_concrete_plates">"Betonaj platoj"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonaj vojeroj"</string>
     <string name="quest_fireHydrant_diameter_title">"Kiu diametro estas specifita sur la signo por ĉi tiu fajra hidranto?"</string>
     <string name="quest_diet_answer_no_food">"Ĝi ne havas manĝaĵon"</string>
@@ -1150,7 +1153,6 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_memorialType_stele_wooden">"Ligna steleo"</string>
     <string name="quest_memorialType_stele_stone">"Ŝtona steleo"</string>
     <string name="quest_memorialType_sculpture">"Alia skulpturo"</string>
-    <string name="select_overlay">"Elekti supertavolon"</string>
     <string name="overlay_none">"Neniu"</string>
     <string name="overlay_lit">"Stratlumoj"</string>
     <string name="lit_value_yes">"Lumigita"</string>
@@ -1168,7 +1170,7 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_entrance_reference_reference_label">"Enira etikedo:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Plata gamo:"</string>
     <string name="quest_entrance_reference_flat_range_to">"al"</string>
-    <string name="default_disabled_msg_overlay">"Ĉi tiu tasko estas malebiligita defaŭlte ĉar jam ekzistas supertavolon per tio oni pli efike kaj kompetente povas enigi kaj ĝisdatigi tiajn datumojn."</string>
+    <string name="default_disabled_msg_overlay">"Ĉi tia tasko estas malebiligita defaŭlte ĉar jam ekzistas supertavolon per tio oni pli efike kaj kompetente povas enigi kaj ĝisdatigi tiajn datumojn."</string>
     <string name="quest_camp_drinking_water_title">"Ĉu trinkakvo estas libere havebla al kamploĝantoj ĉi tie?"</string>
     <string name="quest_camp_shower_title">"Ĉu estas duŝoj ĉi tie?"</string>
     <string name="quest_camp_power_supply_title">"Ĉu ekzistas iu maniero por klientoj ŝarĝi sian telefonon, tekkomputilon ktp ĉi tie?"</string>
@@ -1253,7 +1255,7 @@ Movu ĝin nun?"</string>
     <string name="separate_cycleway_with_sidewalk">"Nurbicikla vojo kun apuda trotuaro (dividita per videbla limo)"</string>
     <string name="cycleway_reverse_direction_toast">"Alklaku la alidirektendan flankon"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"eksplicite kunuzata trotuaro, ambaŭ direktoj"</string>
+    <string name="default_disabled_msg_seasonal">"Ĉi tia tasko estas malebiligita defaŭlte ĉar necesus rigardi la situacion ĉe malsamaj tempoj dum la jaro."</string>
     <string name="quest_gritBinSeasonal_title">"Ĉu ĝi ankaŭ estas malvintre ĉi tie?"</string>
     <string name="street_parking_staggered_on_street">"Sur la vojo ĉe alternaj flankoj"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parte sur la vojo ĉe alternaj flankoj"</string>
@@ -1267,10 +1269,18 @@ Movu ĝin nun?"</string>
     <string name="unknown_surface_title">"Alia tipo de surfaco"</string>
     <string name="overlay_surface">"Surfacoj"</string>
     <string name="overlay_path_surface_segregated">"Dividi la biciklan kaj piedpaŝan partojn"</string>
+    <string name="quest_crossing_title2">"Ĉu ĉi tie estas piedira transirejo?"</string>
+    <string name="quest_crossing_yes">"Jes (ekz. la trotuarrando estas malaltigita aŭ markita)"</string>
+    <string name="quest_crossing_no">"Ne, sed transiri eblas"</string>
+    <string name="quest_crossing_prohibited">"Ne, transiri estas malpermesata aŭ ne ebla"</string>
     <string name="quest_hairdresser_title">"Kiuj estas la klientoj de ĉi tiu frizisto?"</string>
     <string name="quest_hairdresser_male_and_female">"Ĉiuj"</string>
     <string name="quest_hairdresser_female_only">"Virinoj"</string>
     <string name="quest_hairdresser_male_only">"Viroj"</string>
     <string name="quest_hairdresser_not_signed">"Ne estas indikita"</string>
+    <string name="quest_amenityCover_title">"Ĉu ĝi estas kovrita (protektita kontraŭ pluvo)?"</string>
+    <string name="quest_tactilePaving_title_steps">"Ĉu estas taktila pavimo ĉe la supro kaj malsupro la de ŝtuparo?"</string>
+    <string name="quest_tactilePaving_steps_top">"Sole ĉe la supro"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Sole ĉe la malsupro"</string>
     <string name="overlay_addresses_no_entrance">"Ne estas enirejo…"</string>
 </resources>

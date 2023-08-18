@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main
+package de.westnordost.streetcomplete.data.location
 
 import android.content.Context
 import android.location.Location
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.QuestSourceDialogLayoutBinding
-import de.westnordost.streetcomplete.util.math.distanceToArcs
+import de.westnordost.streetcomplete.util.math.flatDistanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
@@ -23,7 +23,7 @@ import kotlin.coroutines.resume
 suspend fun checkIsSurvey(
     context: Context,
     geometry: ElementGeometry,
-    locations: List<Location>
+    locations: Sequence<Location>
 ): Boolean {
     if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
         return true
@@ -52,18 +52,18 @@ suspend fun checkIsSurvey(
 
 private suspend fun isWithinSurveyDistance(
     geometry: ElementGeometry,
-    locations: List<Location>
+    locations: Sequence<Location>
 ): Boolean = withContext(Dispatchers.Default) {
     // suspending because distanceToArcs is slow
+    val polylines: List<List<LatLon>> = when (geometry) {
+        is ElementPolylinesGeometry -> geometry.polylines
+        is ElementPolygonsGeometry -> geometry.polygons
+        else -> listOf(listOf(geometry.center))
+    }
     locations.any { location ->
         val pos = LatLon(location.latitude, location.longitude)
-        val polylines: List<List<LatLon>> = when (geometry) {
-            is ElementPolylinesGeometry -> geometry.polylines
-            is ElementPolygonsGeometry -> geometry.polygons
-            else -> listOf(listOf(geometry.center))
-        }
         polylines.any { polyline ->
-            pos.distanceToArcs(polyline) < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY
+            pos.flatDistanceToArcs(polyline) < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY
         }
     }
 }
@@ -85,7 +85,7 @@ Considerations for choosing these values:
   "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
 */
 
-private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
+const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
 // "static" values, i.e. persisted per application start
 private var dontShowAgain = BuildConfig.DEBUG

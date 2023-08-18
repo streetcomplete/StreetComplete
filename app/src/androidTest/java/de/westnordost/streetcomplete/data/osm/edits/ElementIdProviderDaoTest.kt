@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import kotlin.test.assertFailsWith
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 
@@ -29,27 +29,27 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
 
         nodeIdSet.add(p1.nextNodeId())
         nodeIdSet.add(p1.nextNodeId())
-        assertThrows { p1.nextNodeId() }
+        assertFailsWith<NoSuchElementException> { p1.nextNodeId() }
 
         wayIdSet.add(p1.nextWayId())
         wayIdSet.add(p1.nextWayId())
         wayIdSet.add(p1.nextWayId())
-        assertThrows { p1.nextWayId() }
+        assertFailsWith<NoSuchElementException> { p1.nextWayId() }
 
-        assertThrows { p1.nextRelationId() }
+        assertFailsWith<NoSuchElementException> { p1.nextRelationId() }
 
         dao.assign(2L, 1, 1, 2)
         val p2 = dao.get(2L)
 
         nodeIdSet.add(p2.nextNodeId())
-        assertThrows { p2.nextNodeId() }
+        assertFailsWith<NoSuchElementException> { p2.nextNodeId() }
 
         wayIdSet.add(p2.nextWayId())
-        assertThrows { p2.nextWayId() }
+        assertFailsWith<NoSuchElementException> { p2.nextWayId() }
 
         relationIdSet.add(p2.nextRelationId())
         relationIdSet.add(p2.nextRelationId())
-        assertThrows { p2.nextRelationId() }
+        assertFailsWith<NoSuchElementException> { p2.nextRelationId() }
 
         // test if ids are unique
         assertEquals(3, nodeIdSet.size)
@@ -100,12 +100,5 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
             ),
             dao.get(1L).getAll()
         )
-    }
-
-    private fun assertThrows(block: () -> Unit) {
-        try {
-            block()
-            fail("Expected exception")
-        } catch (e: Throwable) {}
     }
 }

@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"не постоји"</string>
     <string name="quest_cycleway_value_shared">"трака која се дели са другим возилима"</string>
     <string name="quest_cycleway_value_bus_lane">"по аутобуској траци"</string>
-    <string name="quest_cycleway_value_sidewalk">"тротоар који се дели са пешацима"</string>
     <string name="quest_leave_new_note_create_image_error">"Није могуће направити датотеку фотографије"</string>
     <string name="quest_cycleway_value_lane_dual">"бициклистичка трака у оба смера"</string>
     <string name="quest_cycleway_value_track_dual">"бициклистичка стаза у оба смера"</string>
@@ -1180,7 +1179,6 @@
     <string name="quest_memorialType_stele_wooden">"Дрвена стела (спомен плоча)"</string>
     <string name="quest_memorialType_stele_stone">"Камена стела (спомен плоча)"</string>
     <string name="quest_memorialType_sculpture">"Други тип скулптуре"</string>
-    <string name="select_overlay">"Одаберите подлогу"</string>
     <string name="overlay_none">"Ниједна"</string>
     <string name="overlay_lit">"Улична расвета"</string>
     <string name="lit_value_yes">"Има га"</string>
@@ -1291,7 +1289,6 @@
     <string name="cycleway_reverse_direction_toast">"Додирните страну коју треба окренути"</string>
     <string name="separate_cycleway_path">"Путић или стаза"</string>
     <string name="quest_fireHydrant_type_pipe">"Цевасти"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"тротоар који се дели са пешацима у оба смера"</string>
     <string name="measure_info_title">"Постизање оптималне прецизности"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore понекад (на почетку) претпоставља да је земља (тло, односно подлога) нешто нижа или виша него у стварности. Ово представља грешку у мерењу која постаје све већа како се телефон усмерава ка хоризонту.&lt;/p&gt;
 &lt;p&gt;Поставите почетну и крајњу тачку тако што ћете усмерити телефон право надоле (тако да белу стрелицу видите одозго) како бисте у потпуности избегли грешку хоризонталног мерења.&lt;/p&gt;
@@ -1326,4 +1323,20 @@
     <string name="lane_narrowing_traffic_calming_chicane">"Шикана"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Продужетак ивичњака + саобраћајно острво"</string>
     <string name="lane_narrowing_traffic_calming_none">"Овде нема уске траке"</string>
+    <string name="quest_tactilePaving_title_steps">"Имају ли степенице траке за навођење слепих особа?"</string>
+    <string name="quest_tactilePaving_steps_top">"Само на врху"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Само у дну"</string>
+    <string name="overlay_addresses_no_entrance">"Није улаз…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"дељена путања"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"дељена путања у оба смера"</string>
+    <string name="overlays_tutorial_title">"Слојеви на карти"</string>
+    <string name="overlays_tutorial_intro">"Пронашли сте нови начин за измену података!"</string>
+    <string name="overlays_tutorial_display">"Сваки слој приказује један тип података, на пример продавнице или површину пута.
+
+Подаци се истичу различитим бојама ради јасног приказа шта је до сада урађено.
+Подаци који недостају се увек обележавају црвеном бојом."</string>
+    <string name="overlays_tutorial_edit">"Дотакните истакнуте податке како бисте их уредили. Можете разделити линије или оставити напомене, попут задатака.
+
+Поред тога, неки слојеви на карти вам пружају могућност додавања нових података на позицији показивача, као што то пружа слој адреса."</string>
+    <string name="quest_crossing_kerb_height_title">"Колико је висок ивичњак на овом прелазу?"</string>
 </resources>

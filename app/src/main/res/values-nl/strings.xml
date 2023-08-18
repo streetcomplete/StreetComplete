@@ -18,7 +18,7 @@
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, ik weet het zeker"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
-    <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
+    <string name="quest_leave_new_note_title">"In plaats hiervan een notitie achterlaten?"</string>
     <string name="quest_leave_new_note_description">"Je kan ofwel een openbare opmerking achterlaten op deze locatie, die andere mappers hopelijk kunnen oplossen, ofwel de vraag voor jezelf verbergen"</string>
     <string name="quest_leave_new_note_yes">"Oké"</string>
     <string name="quest_leave_new_note_no">"Nee, verberg deze vraag"</string>
@@ -182,7 +182,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap onder jou
     <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats voelbare bestrating aan beide zijden?"</string>
     <string name="quest_source_dialog_title">"Ben je dit echt ter plaatse nagegaan?"</string>
     <string name="quest_source_dialog_note">"Alleen antwoorden die tijdens veldwerk zijn gevonden mogen worden ingevoerd."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt (beschermd tegen regen)?"</string>
     <string name="dialog_session_dont_show_again">"Toon dit niet meer voor deze sessie"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximumsnelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
@@ -310,7 +310,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cycleway_value_none">"geen"</string>
     <string name="quest_cycleway_value_shared">"fietssuggestiestrook of expliciet gedeeld met ander verkeer"</string>
     <string name="quest_cycleway_value_bus_lane">"op een busstrook"</string>
-    <string name="quest_cycleway_value_sidewalk">"een fietspad gedeeld met voetgangers"</string>
     <string name="quest_leave_new_note_create_image_error">"Kon geen bestand voor de foto aanmaken"</string>
     <string name="quest_cycleway_value_lane_dual">"fietsstrook op de weg, in beide richtingen"</string>
     <string name="quest_cycleway_value_track_dual">"gescheiden fietspad met tweerichtingsverkeer"</string>
@@ -1175,7 +1174,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
-    <string name="select_overlay">"Kies laag"</string>
     <string name="overlay_none">"Geen"</string>
     <string name="overlay_lit">"Straatverlichting"</string>
     <string name="lit_value_yes">"Verlicht"</string>
@@ -1287,7 +1285,6 @@ Nu verplaatsen?"</string>
     <string name="cycleway_reverse_direction_toast">"Tik de kant waarvan de rijrichting gewijzigd moet worden"</string>
     <string name="separate_cycleway_path">"Pad of spoor"</string>
     <string name="quest_fireHydrant_type_pipe">"Pijp"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"een fietspad gedeeld met voetgangers, in beide richtingen"</string>
     <string name="measure_info_title">"Optimale precisie bereiken"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore gaat er soms (in eerste instantie) van uit dat de grond wat lager of hoger is dan hij in werkelijkheid is. Dit introduceert een meetfout die groter wordt naarmate u uw telefoon meer naar de horizon kantelt.&lt;/p&gt;
 &lt;p&gt;Stel elk begin- en eindpunt in terwijl u de telefoon recht naar beneden richt (zodat u de witte pijl van bovenaf ziet) om dit probleem voor horizontale metingen volledig te voorkomen.&lt;/p&gt;
@@ -1316,7 +1313,7 @@ Nu verplaatsen?"</string>
     <string name="quest_hairdresser_female_only">"Dames"</string>
     <string name="quest_hairdresser_male_only">"Heren"</string>
     <string name="quest_hairdresser_not_signed">"Het staat niet aangegeven"</string>
-    <string name="quest_amenityCover_title">"Is dit overdekt?"</string>
+    <string name="quest_amenityCover_title">"Is dit overdekt (beschermd tegen regen)?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Wegversmalling"</string>
     <string name="lane_narrowing_traffic_calming_island">"Verkeerseiland"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
@@ -1328,4 +1325,13 @@ Nu verplaatsen?"</string>
     <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Gezamelijk padgebruik"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gezamelijk padgebruik, beide richtingen"</string>
+    <string name="overlays_tutorial_intro">"Je hebt een nieuwe manier gevonden om gegevens te bewerken!"</string>
+    <string name="overlays_tutorial_display">"Elke overlay toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
+
+De gegevens worden in verschillende kleuren weergegeven om je een goed overzicht te geven van wat er tot nu toe is geregistreerd.
+Ontbrekende gegevens worden altijd in rood weergegeven."</string>
+    <string name="overlays_tutorial_edit">"Tik op elke opgelichte gegeven om het te bewerken. Je kunt ook wegdelen splitsen of notities noteren, zoals bij quests.
+
+Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
 </resources>

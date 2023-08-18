@@ -311,7 +311,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_cycleway_value_none">"nun hai nada"</string>
     <string name="quest_cycleway_value_shared">"carril compartíu col restu del tránsitu"</string>
     <string name="quest_cycleway_value_bus_lane">"nel carril bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"compartíu con peatones"</string>
     <string name="quest_leave_new_note_create_image_error">"Nun se puede crear l'archivu de la foto"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, dambes direcciones"</string>
     <string name="quest_cycleway_value_track_dual">"sienda ciclista, dambes direcciones"</string>
@@ -717,7 +716,6 @@ Y yá p'acabar, repara: Nun te despistes y mira alredor. Nun entres en finques p
     <string name="cycleway_reverse_direction_toast">"Toca'l llau que quies invertir"</string>
     <string name="separate_cycleway_path">"Camín o sienda"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubería"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"compartíu con peatones, dambes direiciones"</string>
     <string name="measure_info_title">"Llogrando una precisión óptima"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore a vegaes (de mano) entiende que'l suelu ta un poco más baxo o más alto de lo que realmente ta. Esto provoca un error de midición qu'aumenta cuanto más s'inclina'l teléfonu escontra l'horizonte.
 &lt;p&gt;Has d'afitar tanto'l puntu d'aniciu como'l final mientres apuntes el teléfonu directo p'abaxo (de manera que veas la flecha blanca dende arriba) pa evitar del too esti problema nes midiciones horizontales.&lt;/p&gt;

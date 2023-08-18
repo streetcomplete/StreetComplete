@@ -791,9 +791,6 @@
                 "map_type": {
                     "label": "Type"
                 },
-                "maxheight": {
-                    "label": "Max Height"
-                },
                 "maxspeed": {
                     "label": "Speed Limit",
                     "placeholder": "40, 50, 60..."
@@ -801,12 +798,6 @@
                 "maxspeed/advisory": {
                     "label": "Advisory Speed Limit",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Max Stay"
-                },
-                "maxweight": {
-                    "label": "Max Weight"
                 },
                 "memorial": {
                     "label": "Type"
@@ -1757,9 +1748,6 @@
                 "amenity/recycling_centre": {
                     "name": "Recycling Centre"
                 },
-                "amenity/recycling_container": {
-                    "name": "Recycling Bin"
-                },
                 "amenity/restaurant": {
                     "name": "Restaurant"
                 },
@@ -1890,9 +1878,6 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Dog Excrement Bin"
-                },
-                "amenity/waste_basket": {
-                    "name": "Rubbish Bin"
                 },
                 "amenity/waste_disposal": {
                     "name": "Garbage Dumpster"
@@ -2128,9 +2113,6 @@
                 },
                 "building/temple": {
                     "name": "Temple Building"
-                },
-                "building/terrace": {
-                    "name": "Terraced houses"
                 },
                 "building/transportation": {
                     "name": "Transportation Building"

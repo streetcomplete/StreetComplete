@@ -176,7 +176,7 @@
                         "subdistrict": "Deldistrikt",
                         "subdistrict!vn": "Stadsdel/Kommun/Ort",
                         "suburb": "Stadsdel",
-                        "suburb!jp": "Stadsdel (政令市)",
+                        "suburb!jp": "Ward (政令市)",
                         "unit": "Enhet/port/trappa"
                     },
                     "terms": "adress,husnummer,destination,gatuadress,postnummer,postort,postadress"
@@ -579,7 +579,7 @@
                         "farm_auxiliary": "Gårdsbyggnader",
                         "fire_station": "Brandstation",
                         "garage": "Garage",
-                        "garages": "Garage",
+                        "garages": "Garagelänga",
                         "ger": "Jurta",
                         "grandstand": "Huvudläktare",
                         "greenhouse": "Växthus",
@@ -1693,7 +1693,32 @@
                     "placeholder": "#exempel"
                 },
                 "healthcare": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "alternative": "Alternativmedicin",
+                        "audiologist": "Audionomi (hörsel)",
+                        "birthing_centre": "Förlossning",
+                        "blood_donation": "Blodgivarcentral",
+                        "clinic": "Vårdcentral",
+                        "counselling": "Rådgivningscenter",
+                        "dentist": "Tandläkare",
+                        "dialysis": "Dialyscenter",
+                        "doctor": "Doktor",
+                        "hospice": "Hospis (palliativ vård)",
+                        "hospital": "Sjukhus",
+                        "laboratory": "Medicinskt laboratorium",
+                        "midwife": "Barnmorska",
+                        "nurse": "Sjuksköterska",
+                        "optometrist": "Optometri (ögon)",
+                        "pharmacy": "Läkemedel",
+                        "physiotherapist": "Fysioterapi (sjukgymnastik)",
+                        "podiatrist": "Podiatri (fötter)",
+                        "psychotherapist": "Psykoterapi",
+                        "rehabilitation": "Rehabilitering",
+                        "sample_collection": "Provinlämningsplats",
+                        "speech_therapist": "Logoped (röst/tal)",
+                        "vaccination_centre": "Vaccinationscenter"
+                    }
                 },
                 "healthcare/speciality": {
                     "label": "Specialiteter",
@@ -1907,6 +1932,9 @@
                 },
                 "hot_water": {
                     "label": "Varmvatten"
+                },
+                "house": {
+                    "label": "Hustyp"
                 },
                 "iata": {
                     "label": "IATA-flygplatskod"
@@ -2187,8 +2215,12 @@
                     "terms": "maxålder,högsta ålder,ålder,åldersgräns,åldersbegränsning,övre åldersgräns"
                 },
                 "maxheight": {
-                    "label": "Maxhöjd",
-                    "terms": "maxhöjd,höjd,höjdbegränsning,begränsning,max"
+                    "label": "Höjdbegränsning",
+                    "terms": "höjdbegränsning,höjd,maxhöjd"
+                },
+                "maxlength": {
+                    "label": "Längdbegränsning",
+                    "terms": "längdbegränsning,längd,maxlängd"
                 },
                 "maxspeed": {
                     "label": "Hastighetsbegränsning",
@@ -2206,16 +2238,16 @@
                     "terms": "hastighetsbegränsning för tung lastbil,lastbilshastighet,fart för lastbil,lastbilsfart,fart för långtradare,långtradarhastighet,fart för tunga fordon,hastighet för tunga fordon"
                 },
                 "maxstay": {
-                    "label": "Maxtid",
-                    "terms": "maxtid,längsta tid,parkeringstid,förtöjningstid,förtöjning,parkering,tid"
+                    "label": "Tidsbegränsning",
+                    "terms": "tidsbegränsning,maxtid,tid,tidgräns"
                 },
                 "maxweight": {
-                    "label": "Maxvikt",
-                    "terms": "maxvikt,vikt,tyngd,begränsning"
+                    "label": "Viktbegränsning",
+                    "terms": "viktgräns,viktbegränsning,vikt,maxvikt,tyngd,maxtyngd"
                 },
                 "maxwidth": {
-                    "label": "Maxbredd",
-                    "terms": "maxbredd,bredd,maximal bredd,begränsning,begränsad bredd,breddrestrektion"
+                    "label": "Breddbegränsning",
+                    "terms": "breddgräns,breddbegränsning,bredd,maxbredd"
                 },
                 "memorial": {
                     "label": "Typ",
@@ -2480,10 +2512,6 @@
                     "label": "Öppettider ",
                     "placeholder": "Okänd",
                     "terms": "öppettider,öppet"
-                },
-                "opening_hours/covid19": {
-                    "label": "Öppettider under COVID-19-pandemin",
-                    "terms": "covid-19,coronavirus,corona,lockdown,öppettider,sars-cov‑2"
                 },
                 "operator": {
                     "label": "Operatör",
@@ -2851,6 +2879,10 @@
                 },
                 "ramp": {
                     "label": "Inbyggd ramp",
+                    "options": {
+                        "no": "Nej",
+                        "yes": "Ja"
+                    },
                     "terms": "inbyggd ramp,ramp,rullstolsramp,barnvagnsramp,cykelramp"
                 },
                 "rating": {
@@ -3329,7 +3361,29 @@
                     }
                 },
                 "social_facility_for": {
-                    "label": "Människohjälp"
+                    "label": "Människohjälp",
+                    "options": {
+                        "abused": "Misshandelsoffer",
+                        "child": "Barn",
+                        "dementia": "Människor som lider av demens",
+                        "disabled": "Människor med funktionshinder",
+                        "diseased": "Människor som lider av sjukdom",
+                        "displaced": "Människor som fördrivits på grund av katastrofer eller konflikter",
+                        "drug_addicted": "Drogberoende",
+                        "homeless": "Hemlösa",
+                        "juvenile": "Ungdomar",
+                        "mental_health": "Människor med psykiska problem",
+                        "migrant": "Migranter",
+                        "orphan": "Föräldralösa",
+                        "refugee": "Flyktingar",
+                        "senior": "Äldre",
+                        "terminally_ill": "Människor med en dödlig sjukdom",
+                        "underprivileged": "Socioekonomiskt utsatta människor",
+                        "unemployed": "Arbetslösa",
+                        "veteran": "Krigsveteran",
+                        "victim": "Brottsoffer",
+                        "woman": "Kvinnor"
+                    }
                 },
                 "source": {
                     "label": "Källor",
@@ -3358,21 +3412,27 @@
                 "sport": {
                     "label": "Sporter",
                     "options": {
+                        "10pin": "Bowling",
+                        "9pin": "Kägel",
                         "american_football": "Amerikansk fotboll",
                         "athletics": "Friidrott",
                         "badminton": "Badminton",
                         "baseball": "Baseball",
                         "basketball": "Basket",
                         "beachvolleyball": "Beachvolleyboll",
+                        "billiards": "Biljard",
                         "bmx": "BMX",
                         "boules": "Boule",
                         "bowls": "Bowls",
+                        "canoe": "Paddling",
+                        "chess": "Schack",
                         "climbing": "Klättring",
                         "cricket": "Cricket",
                         "curling": "Curling",
                         "cycling": "Cycling",
                         "disc_golf": "Discgolf",
                         "dog_racing": "Hundkpplöpning",
+                        "equestrian": "Hästsport",
                         "fitness": "Fitness-träning",
                         "free_flying": "Skärmflygning / Paragliding",
                         "futsal": "Futsal",
@@ -3389,7 +3449,9 @@
                         "motor": "Motorsport",
                         "multi": "Ospecificerade andra sporter",
                         "netball": "Nätboll",
+                        "orienteering": "Orientering",
                         "padel": "Padel",
+                        "pelota": "Boll",
                         "rugby_union": "Rugby Union",
                         "running": "Löpning",
                         "scuba_diving": "Nöjesdykning",
@@ -3402,8 +3464,22 @@
                         "swimming": "Simning",
                         "table_tennis": "Bordtennis",
                         "tennis": "Tennis",
-                        "volleyball": "Volleyball"
+                        "volleyball": "Volleyball",
+                        "yoga": "Yoga"
                     }
+                },
+                "sport/sport_ice": {
+                    "label": "Sporter"
+                },
+                "sport/sport_pub": {
+                    "label": "Sporter",
+                    "terms": "sporer,idrotter,lekar,aktiviteter"
+                },
+                "sport/sport_racing_motor": {
+                    "label": "Sporter"
+                },
+                "sport/sport_racing_nonmotor": {
+                    "label": "Sporter"
                 },
                 "stars": {
                     "label": "Stjärnor",
@@ -3631,6 +3707,27 @@
                 "target": {
                     "label": "Riktas mot"
                 },
+                "taxi_vehicle": {
+                    "label": "Fordonstyp",
+                    "options": {
+                        "auto_rickshaw": {
+                            "description": "Tuk-tuk (t.ex. bajaj, trehjuling, tuk-tuk, riksha etc.)",
+                            "title": "Tuk-tuk"
+                        },
+                        "cycle_rickshaw": {
+                            "description": "Pedaldrivna rikshas (t.ex. cykeltaxi, cykelriksha, tuk-tuk etc.)",
+                            "title": "Pedaldrivna rikshas"
+                        },
+                        "motorcar": {
+                            "description": "Vanlig bil (underförstått standard)",
+                            "title": "Bil"
+                        },
+                        "motorcycle": {
+                            "description": "Med passagerare där bak",
+                            "title": "Motorcykel"
+                        }
+                    }
+                },
                 "taxon": {
                     "label": "Taxon",
                     "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
@@ -3690,7 +3787,21 @@
                     "terms": "tull,avgift,kostnad"
                 },
                 "tomb": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "columbarium": "Kolumbarium",
+                        "crypt": "Krypta",
+                        "dolmen": "Dös / Dolmen ",
+                        "hypogeum": "Hypogeum",
+                        "mausoleum": "Mausoleum",
+                        "pyramid": "Pyramid",
+                        "rock-cut": "Stenklippsgrav",
+                        "sarcophagus": "Sarkofag",
+                        "table": "Bord",
+                        "tumulus": "Gravhög",
+                        "vault": "Valv",
+                        "war_grave": "Enskild krigsgrav"
+                    }
                 },
                 "tourism": {
                     "label": "Typ"
@@ -3906,7 +4017,32 @@
                     }
                 },
                 "vending": {
-                    "label": "Typ av gods"
+                    "label": "Typ av gods",
+                    "options": {
+                        "bicycle_tube": "Cykelslangar",
+                        "bread": "Bröd",
+                        "cigarettes": "Cigaretter",
+                        "coffee": "Kaffe",
+                        "condoms": "Kondomer",
+                        "drinks": "Drycker",
+                        "eggs": "Ägg",
+                        "electronics": "Elektronik",
+                        "elongated_coin": "Souvenirmynt",
+                        "excrement_bags": "Bajspåsar",
+                        "feminine_hygiene": "Mensskydd",
+                        "food": "Mat",
+                        "fuel": "Bränsle",
+                        "ice_cream": "Glass",
+                        "ice_cubes": "Iskuber",
+                        "milk": "Mjölk",
+                        "newspapers": "Tidningar",
+                        "parking_tickets": "Parkeringsbiljetter",
+                        "pizza": "Pizza",
+                        "public_transport_tickets": "Biljetter till kollektivtrafiken",
+                        "stamps": "Frimärken",
+                        "sweets": "Sötsaker",
+                        "water": "Dricksvatten"
+                    }
                 },
                 "vhf": {
                     "label": "VHF-kanal",
@@ -4903,10 +5039,6 @@
                     "name": "Återvinningscentral",
                     "terms": "återvinning,återbruk,återvinningsstation,sopstation,burkar,flaskor,skrot,skräp,dumpa,glas,sopor"
                 },
-                "amenity/recycling_container": {
-                    "name": "Återvinningscontainer",
-                    "terms": "återvinning,återbruk,återvinningsstation,sopstation,burkar,flaskor,skrot,skräp,sopor,återvinningscontainer,container,metall,glas"
-                },
                 "amenity/refugee_site": {
                     "name": "Flyktingläger",
                     "terms": "flyktingläger,flykting,flyktingar,evakueringsläger,migranter"
@@ -4927,7 +5059,7 @@
                     "name": "Asiatisk restaurang",
                     "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,asiatisk restaurang,asiatisk mat"
                 },
-                "amenity/restaurant/barbeque": {
+                "amenity/restaurant/barbecue": {
                     "name": "Grillrestaurang",
                     "terms": "grillrestaurang,bbq,barbeque,grill,restaurang"
                 },
@@ -5066,6 +5198,10 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Seniorboende",
                     "terms": "vårdhem,ålderdomshem,assistansboende,pensionärshem,servicehus,servicehem,hem för gamla,äldreboende,hem för vård och boende,hvb-hem,seniorboende,pensionär,senior"
+                },
+                "amenity/stripclub": {
+                    "name": "Strippklubb",
+                    "terms": "lapdance,lap dance,vuxen*,gentlemen*,cabaret,strip*"
                 },
                 "amenity/studio": {
                     "name": "Studio",
@@ -5252,8 +5388,8 @@
                     "terms": "sopkärl för hundbajspåsar,hundbajs,hundbajspåsar,hundbajspåse,hund,bajs,bajspåsar,soptunna,sopkärl,hundskit,skitpåse"
                 },
                 "amenity/waste_basket": {
-                    "name": "Soptunna (liten)",
-                    "terms": "soptunna,papperskorg,sopkärl,papperskärl,skräpkorg,avfallskorg,skräp,sopor"
+                    "name": "Soptunna",
+                    "terms": "soptunna,sopkorg,papperskorg,sopkärl,papperskärl,skräpkorg,avfallskorg,skräp,sopor"
                 },
                 "amenity/waste_disposal": {
                     "name": "Soptunna (hushålls- eller industrisopor)",
@@ -5772,10 +5908,6 @@
                 "building/temple": {
                     "name": "Tempelbyggnad",
                     "terms": "tempelbyggnad,tempel,andaktsrum,bönhus,bönehus,böneplats,dyrkan,fristad,gud,guds hus,gudshus,helgedom,mission,religion,religiös,religiös anläggning,religiöst område,tempelområde,tillbedjan,tro"
-                },
-                "building/terrace": {
-                    "name": "Terrasshus",
-                    "terms": "terrasshus"
                 },
                 "building/train_station": {
                     "name": "Stationshus"
@@ -9232,6 +9364,10 @@
                 "shop/hobby": {
                     "name": "Hobbyaffär"
                 },
+                "shop/honey": {
+                    "name": "Honungsaffär",
+                    "terms": "honung,honing,honungsbutik,honungsaffär"
+                },
                 "shop/household_linen": {
                     "name": "Affär för hushållstextilier",
                     "terms": "affär för hushållstextilier,textilier,linne,påslakan,bäddning,överkast,filtar,dukar,gardiner,näsdukar,servetter,örngott,kläder,lakan,handdukar,sängtextilier,hushållstextilier"
@@ -9376,6 +9512,10 @@
                     "name": "Djurbutik",
                     "terms": "djuraffär,djur,husdjur,hund,hundar,katt,katter,djurmat,djurtillbehör,djurburar,akvarium,fisk"
                 },
+                "shop/pet_grooming": {
+                    "name": "Pälsvård för husdjur",
+                    "terms": "pälsvård för husdjur,pälsvård,husdjur,hund,trimning,hundvård,katt,kattskötsel,hundskötsel"
+                },
                 "shop/photo": {
                     "name": "Fotoaffär",
                     "terms": "fotoaffär,bild,foto,video,fotografi,fotoredigering,framkallning,ram,kameratillbehör,kamera,kameror,filmkamera,fotokamera,konvertering,film"
@@ -9411,6 +9551,10 @@
                 "shop/repair": {
                     "name": "Reparatör",
                     "terms": "reparatör,verkstad,trasig,laga,reparera,renovera"
+                },
+                "shop/rice": {
+                    "name": "Risaffär",
+                    "terms": "risaffär,risbutik,ris"
                 },
                 "shop/scuba_diving": {
                     "name": "Dykarbutik",
@@ -9517,7 +9661,8 @@
                     "terms": "däckfirma,däckbyte,hjulbyte,däckförsäljning,hjulförsäljning,fälgar,däck,hjul,fälg,balansering"
                 },
                 "shop/vacant": {
-                    "name": "Tom lokal"
+                    "name": "Tom lokal",
+                    "terms": "tom lokal,tom butik,tom butikslokal,butik för uthyrning,lokal för uthyrning,uthyrning"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Dammsugarbutik",

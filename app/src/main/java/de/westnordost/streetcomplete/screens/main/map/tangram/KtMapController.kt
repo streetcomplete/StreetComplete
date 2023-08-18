@@ -40,6 +40,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.math.PI
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
@@ -207,6 +208,12 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         set(value) { c.maximumZoomLevel = value }
         get() = c.maximumZoomLevel
 
+    var maximumTilt: Float
+        set(value) {
+            cameraManager.maximumTilt = value
+        }
+        get() = cameraManager.maximumTilt
+
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = c.screenPositionToLngLat(screenPosition)?.toLatLon()
     fun latLonToScreenPosition(latLon: LatLon): PointF = c.lngLatToScreenPosition(latLon.toLngLat())
     fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =
@@ -329,7 +336,18 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     /* -------------------------------------- Touch input --------------------------------------- */
 
-    fun setShoveResponder(responder: TouchInput.ShoveResponder?) { gestureManager.setShoveResponder(responder) }
+    fun setShoveResponder(responder: TouchInput.ShoveResponder?) {
+        // enforce maximum tilt
+        gestureManager.setShoveResponder(object : TouchInput.ShoveResponder {
+            override fun onShoveBegin() = responder?.onShoveBegin() ?: false
+            override fun onShoveEnd() = responder?.onShoveEnd() ?: false
+
+            override fun onShove(distance: Float): Boolean {
+                if (cameraPosition.tilt >= maximumTilt && distance < 0) return true
+                return responder?.onShove(distance) ?: false
+            }
+        })
+    }
     fun setScaleResponder(responder: TouchInput.ScaleResponder?) { gestureManager.setScaleResponder(responder) }
     fun setRotateResponder(responder: TouchInput.RotateResponder?) { gestureManager.setRotateResponder(responder) }
     fun setPanResponder(responder: TouchInput.PanResponder?) { gestureManager.setPanResponder(responder) }

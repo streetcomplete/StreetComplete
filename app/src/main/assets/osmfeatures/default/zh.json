@@ -351,9 +351,6 @@
                 "amenity/townhall": {
                     "name": "市政府"
                 },
-                "amenity/waste_basket": {
-                    "name": "垃圾箱"
-                },
                 "area": {
                     "name": "面"
                 },

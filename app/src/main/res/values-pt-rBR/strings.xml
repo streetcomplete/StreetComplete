@@ -311,7 +311,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="quest_cycleway_value_none">"nenhuma"</string>
     <string name="quest_cycleway_value_shared">"faixa compartilhada explicitamente com outro tráfego"</string>
     <string name="quest_cycleway_value_bus_lane">"na faixa de ônibus"</string>
-    <string name="quest_cycleway_value_sidewalk">"calçada compartilhada explicitamente"</string>
     <string name="quest_leave_new_note_create_image_error">"Não foi possível criar o arquivo para foto"</string>
     <string name="quest_cycleway_value_lane_dual">"ciclofaixa, ambos sentidos"</string>
     <string name="quest_cycleway_value_track_dual">"caminho lateral ou ciclofaixa protegida, ambos sentidos"</string>
@@ -1183,7 +1182,6 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_memorialType_stele_wooden">"Estela de madeira (laje memorial)"</string>
     <string name="quest_memorialType_stele_stone">"Estela de pedra (laje memorial)"</string>
     <string name="quest_memorialType_sculpture">"Outra escultura"</string>
-    <string name="select_overlay">"Selecione a sobreposição"</string>
     <string name="overlay_none">"Nenhum"</string>
     <string name="overlay_lit">"Iluminação pública"</string>
     <string name="lit_value_yes">"Iluminado"</string>
@@ -1295,7 +1293,6 @@ Movê-lo agora?"</string>
     <string name="cycleway_reverse_direction_toast">"Toque em qual lado reverter"</string>
     <string name="separate_cycleway_path">"Caminho ou trilha"</string>
     <string name="quest_fireHydrant_type_pipe">"Cano"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"Compartilhada explicitamente com calçada, ambas as direções"</string>
     <string name="measure_info_title">"Alcançando a precisão ideal"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore às vezes (inicialmente) presume que o solo é um pouco mais baixo ou mais alto do que a realidade. Isto ocasiona um erro de medição que fica maior quanto mais inclinar o telefone em direção ao horizonte.&lt;/p&gt;
 &lt;p&gt;Defina tanto o ponto inicial quanto o final enquanto aponta o telefone diretamente para baixo (para que veja a flecha branca por cima) para evitar completamente esta questão em medições horizontais.&lt;/p&gt;
@@ -1334,4 +1331,16 @@ Movê-lo agora?"</string>
     <string name="quest_tactilePaving_steps_top">"Apenas em cima"</string>
     <string name="quest_tactilePaving_steps_bottom">"Apenas embaixo"</string>
     <string name="overlay_addresses_no_entrance">"Não é uma entrada…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"caminho de uso compartilhado"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"caminho de uso compartilhado, ambas as direções"</string>
+    <string name="overlays_tutorial_title">"Sobreposições"</string>
+    <string name="overlays_tutorial_intro">"Você encontrou uma nova maneira de editar dados!"</string>
+    <string name="overlays_tutorial_display">"Cada sobreposição exibe um tipo de dados, por exemplo, lojas ou ruas.
+
+Os dados são destacados em cores diferentes para dar uma boa visão geral do que foi registrado até agora.
+Os dados ausentes são sempre mostrados em vermelho."</string>
+    <string name="overlays_tutorial_edit">"Toque em qualquer dado destacado para editá-lo. Você também pode dividir caminhos ou relatar notas, como nas missões.
+
+Além disso, algumas sobreposições permitem adicionar novos dados na posição de uma mira exibida, como a sobreposição de endereços."</string>
+    <string name="quest_crossing_kerb_height_title">"Qual é a altura do meio-fio neste cruzamento?"</string>
 </resources>

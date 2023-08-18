@@ -312,7 +312,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_cycleway_value_none">"ne postoji"</string>
     <string name="quest_cycleway_value_shared">"traka koja se eksplicitno dijeli s ostalim vozilima (sharrow)"</string>
     <string name="quest_cycleway_value_bus_lane">"po autobusnoj traci"</string>
-    <string name="quest_cycleway_value_sidewalk">"trotoar posebno dijeljen zajedno s pješacima"</string>
     <string name="quest_leave_new_note_create_image_error">"Nije moguće stvoriti datoteku za fotografiju"</string>
     <string name="quest_cycleway_value_lane_dual">"biciklistička traka, u oba smjera"</string>
     <string name="quest_cycleway_value_track_dual">"biciklistička staza, u oba smjera"</string>
@@ -1097,5 +1096,4 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_seating_outdoor_only">"Samo sjedenje na otvorenom"</string>
     <string name="quest_seating_indoor_and_outdoor">"I unutarnje i vanjsko sjedenje"</string>
     <string name="no_camera_permission_toast">"Nema dopuštenja za kameru"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"trotoar posebno dijeljen zajedno s pješacima, u oba smjera"</string>
 </resources>

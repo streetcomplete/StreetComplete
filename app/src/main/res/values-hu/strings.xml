@@ -311,7 +311,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_cycleway_value_none">"nincs"</string>
     <string name="quest_cycleway_value_shared">"kerékpáros nyom (piktogram)"</string>
     <string name="quest_cycleway_value_bus_lane">"busz- és kerékpársáv"</string>
-    <string name="quest_cycleway_value_sidewalk">"gyalog- és kerékpárút"</string>
     <string name="quest_leave_new_note_create_image_error">"Nem sikerült a fényképhez fájlt létrehozni"</string>
     <string name="quest_cycleway_value_lane_dual">"egyoldali kétirányú kerékpársáv"</string>
     <string name="quest_cycleway_value_track_dual">"egyoldali kétirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
@@ -1176,7 +1175,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_memorialType_stele_wooden">"Fából készült"</string>
     <string name="quest_memorialType_stele_stone">"Kőből faragott"</string>
     <string name="quest_memorialType_sculpture">"Más szobor"</string>
-    <string name="select_overlay">"Válassz kiemelést"</string>
     <string name="overlay_none">"Nincs"</string>
     <string name="overlay_lit">"Utcai világítás"</string>
     <string name="lit_value_yes">"Megvilágítva"</string>
@@ -1288,7 +1286,6 @@ Most akarja elmozdítani?"</string>
     <string name="cycleway_reverse_direction_toast">"Érintse meg, hogy melyik oldala legyen fordítva"</string>
     <string name="separate_cycleway_path">"Gyalog- és kerékpárút"</string>
     <string name="quest_fireHydrant_type_pipe">"Cső"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"kétirányú  gyalog- és kerékpárút"</string>
     <string name="measure_info_title">"Az optimális pontosság elérése"</string>
     <string name="measure_info_html_description">"&lt;p&gt;AzARCore néha (kezdetben) feltételezi, hogy a talaj egy kicsit alacsonyabb vagy magasabb, mint amilyen valójában. Ez mérési hibát eredményez, amely annál nagyobb lesz, minél inkább a horizont felé döntöd a telefonodat.&lt;/p&gt;
 &lt;p&gt;A vízszintes méréseknél ennek a problémának a teljes kiküszöböléséhez állítsd be a kezdő- és végpontokat úgy, hogy közben a telefont egyenesen lefelé irányítod (úgy, hogy felülről a fehér nyilat lásd).&lt;/p&gt;
@@ -1299,6 +1296,7 @@ Most akarja elmozdítani?"</string>
     <string name="street_parking_staggered_on_street">"Az utcán felváltva, mindkét oldalon"</string>
     <string name="street_parking_staggered_half_on_kerb">"Részben az utca váltakozó oldalain"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Keresse a hangszórókat. Nem minden hangjelzés aktiválható gombnyomással."</string>
+    <string name="quest_presets_duplicate">"Másolat"</string>
     <string name="label_block">"tömb"</string>
     <string name="quest_surface_value_mud">"Tartós iszap"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Itt nincsen mosdó"</string>
@@ -1324,4 +1322,6 @@ Most akarja elmozdítani?"</string>
     <string name="quest_tactilePaving_steps_top">"Csak fent"</string>
     <string name="quest_tactilePaving_steps_bottom">"Csak lent"</string>
     <string name="overlay_addresses_no_entrance">"Ez nem egy bejárat..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Közösen használt út"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Közösen használt út mindkét irányba"</string>
 </resources>

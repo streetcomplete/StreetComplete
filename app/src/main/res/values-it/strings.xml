@@ -311,7 +311,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_cycleway_value_none">"nessuna"</string>
     <string name="quest_cycleway_value_shared">"corsia condivisa esplicitamente con altro traffico"</string>
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
-    <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il percorso pedonale"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossibile creare un file per la foto"</string>
     <string name="quest_cycleway_value_lane_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
@@ -1180,7 +1179,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_memorialType_stele_wooden">"Stele di legno (lastra commemorativa)"</string>
     <string name="quest_memorialType_stele_stone">"Stele di pietra (lastra commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altra scultura"</string>
-    <string name="select_overlay">"Seleziona livello sovrapposto"</string>
     <string name="overlay_none">"Nessuno"</string>
     <string name="overlay_lit">"Illuminazione delle strade"</string>
     <string name="lit_value_yes">"Illuminato"</string>
@@ -1292,7 +1290,6 @@ Spostarlo ora?"</string>
     <string name="cycleway_reverse_direction_toast">"Clicca il lato da invertire"</string>
     <string name="separate_cycleway_path">"Sentiero"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
     <string name="measure_info_title">"Ottenere la precisione ottimale"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore talvolta rileva (inizialmente) il terreno ad una distanza leggermente maggiore o minore di quella reale, introducendo così un errore di misurazione il quale aumenta man mano che si ruota il telefono verso l'orizzonte.&lt;/p&gt;
 &lt;p&gt;Per evitare questo tipo di errori nelle misurazioni orizzontali, imposta i punti di inizio e fine con il telefono rivolto esattamente verso il basso (in modo da vedere la freccia bianca dall'alto).&lt;/p&gt;

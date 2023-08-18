@@ -311,7 +311,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_cycleway_value_none">"ne postoji"</string>
     <string name="quest_cycleway_value_shared">"traka koja se eksplicitno dijeli s ostalim vozilima (sharrow)"</string>
     <string name="quest_cycleway_value_bus_lane">"po autobusnoj traci"</string>
-    <string name="quest_cycleway_value_sidewalk">"nogostup eksplicitno dijeljen zajedno s pješacima"</string>
     <string name="quest_leave_new_note_create_image_error">"Nije moguće stvoriti datoteku za fotografiju"</string>
     <string name="quest_cycleway_value_lane_dual">"biciklistička traka, u oba smjera"</string>
     <string name="quest_cycleway_value_track_dual">"biciklistička staza, u oba smjera"</string>
@@ -1183,7 +1182,6 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_memorialType_stele_wooden">"Drvena stela (spomen-ploča)"</string>
     <string name="quest_memorialType_stele_stone">"Kamena stela (spomen-ploča)"</string>
     <string name="quest_memorialType_sculpture">"Druga skulptura"</string>
-    <string name="select_overlay">"Odaberi Nadsloj"</string>
     <string name="overlay_none">"Ništa"</string>
     <string name="overlay_lit">"Ulična rasvjeta"</string>
     <string name="lit_value_yes">"Osvijetljeno"</string>
@@ -1295,7 +1293,6 @@ Pomaknuti sada?"</string>
     <string name="cycleway_reverse_direction_toast">"Dotaknite stranu koju želite preokrenuti"</string>
     <string name="separate_cycleway_path">"Staza ili puteljak"</string>
     <string name="quest_fireHydrant_type_pipe">"Cijev"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"nogostup eksplicitno dijeljen zajedno s pješacima, u oba smjera"</string>
     <string name="measure_info_title">"Postizanje optimalne preciznosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore ponekad (inicijalno) pretpostavlja da je tlo malo niže ili više nego što zapravo jest. Ovo uvodi mjernu pogrešku koja raste čim više telefon usmjeravate prema horizontu.&lt;/p&gt;
 &lt;p&gt;Postavite i početnu i krajnju točku usmjeravajući telefon ravno prema dolje (tako da vidite bijelu strelicu odozgo) kako biste u potpunosti izbjegli ovaj problem za horizontalna mjerenja.&lt;/p&gt;
@@ -1336,4 +1333,14 @@ Pomaknuti sada?"</string>
     <string name="overlay_addresses_no_entrance">"To nije ulaz…"</string>
     <string name="quest_cycleway_value_sidewalk2">"biciklističko-pješačka staza"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"biciklističko-pješačka staza, u oba smjera"</string>
+    <string name="overlays_tutorial_title">"Nadslojevi"</string>
+    <string name="overlays_tutorial_intro">"Pronašli ste novi način za uređivanje podataka!"</string>
+    <string name="overlays_tutorial_display">"Svaki Nadsloj prikazuje jednu vrstu podataka, na primjer trgovine ili cestovne površine.
+
+Različiti podaci su označeni različitim bojama kako biste imali dobar pregled onoga što je do sada označeno.
+Podaci koji nedostaju uvijek su prikazani crvenom bojom."</string>
+    <string name="overlays_tutorial_edit">"Dotaknite bilo koji obojani element da biste ga uredili. Također možete razdvojiti put ili ostaviti bilješku, kao kod Zadataka.
+
+Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikazanog križića, kao npr. Nadsloj \"Adrese\"."</string>
+    <string name="quest_crossing_kerb_height_title">"Koliko je visok rubnik na ovom prijelazu?"</string>
 </resources>

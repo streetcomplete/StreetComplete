@@ -44,7 +44,7 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 
-    if (foot == "no" || foot == null) return EXCLUSIVE
+    if (foot == "no" || foot == "use_sidepath" || foot == null) return EXCLUSIVE
 
     val segregated = tags["segregated"] == "yes"
     return if (segregated) SEGREGATED else NON_SEGREGATED

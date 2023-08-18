@@ -312,7 +312,6 @@
     <string name="quest_cycleway_value_none">"не"</string>
     <string name="quest_cycleway_value_shared">"паласа відавочна паказаная для сумеснага руху"</string>
     <string name="quest_cycleway_value_bus_lane">"на выдзеленай паласе для аўтобусаў"</string>
-    <string name="quest_cycleway_value_sidewalk">"дазволены знакамі тратуар для пешаходаў і раварыстаў"</string>
     <string name="quest_leave_new_note_create_image_error">"Не ўдалося стварыць файл для фота"</string>
     <string name="quest_cycleway_value_lane_dual">"веласіпедная паласа, рух у абодва бакі"</string>
     <string name="quest_cycleway_value_track_dual">"веладарожка, рух у абодва бакі"</string>
@@ -1184,7 +1183,6 @@
     <string name="quest_memorialType_stele_wooden">"Драўляная стэла (мемарыяльная пліта)"</string>
     <string name="quest_memorialType_stele_stone">"Каменная стэла (мемарыяльная пліта)"</string>
     <string name="quest_memorialType_sculpture">"Іншая скульптура"</string>
-    <string name="select_overlay">"Абраць накладку"</string>
     <string name="overlay_none">"Няма"</string>
     <string name="overlay_lit">"Вулічнае асвятленне"</string>
     <string name="lit_value_yes">"Асветлена"</string>
@@ -1296,7 +1294,6 @@
     <string name="cycleway_reverse_direction_toast">"Націсніце, на які бок павярнуць"</string>
     <string name="separate_cycleway_path">"Дарожка ці сцежка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"дазволены знакамі тратуар для пешаходаў і веласіпедыстаў, рух у абодва бакі"</string>
     <string name="measure_info_title">"Дасягненне аптымальнай дакладнасці"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore часам (у пачатку) мяркуе, што зямля крыху ніжэй або вышэй, чым на самай справе. Гэта прыводзіць да памылкі вымярэння, якая павялічваецца, калі вы нахіляе тэлефон да гарызонту.&lt;/p&gt; &lt;p&gt;Усталюйце пачатковую і канчатковую кропкі, паказваючы тэлефон прама ўнізе (каб бачыць белую стрэлку зверху), каб цалкам пазбегнуць гэтай праблемы для гарызантальных вымярэнняў. &lt;/p&gt; &lt;p&gt;Для вертыкальных вымярэнняў вам трэба замест гэтага праверыць, ці не рухаецца стартавая кропка адносна зямлі, гледзячы на яе з розных кірункаў.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Дадзенае прыкладанне выкарыстоўвае &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сэрвісы Google Play для дапоўненай рэальнасці&lt;/a&gt; (ARCore), прадстаўленыя Google у адпаведнасці з &lt;a href=\"https://policies.google.com/privacy\"&gt;палітыкай прыватнасці Google&lt;/a&gt;."</string>
@@ -1333,4 +1330,6 @@
     <string name="quest_tactilePaving_steps_top">"Толькi зверху"</string>
     <string name="quest_tactilePaving_steps_bottom">"Толькi знiзу"</string>
     <string name="overlay_addresses_no_entrance">"Гэта не ўваход…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Шлях агульнага карыстання"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Шлях агульнага карыстання ў абодва бакі"</string>
 </resources>

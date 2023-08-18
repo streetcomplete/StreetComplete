@@ -315,7 +315,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_cycleway_value_none">"Není"</string>
     <string name="quest_cycleway_value_shared">"pruh výslovně sdílený s jinou dopravou"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pro autobusy"</string>
-    <string name="quest_cycleway_value_sidewalk">"výslovně sdílená s chodníkem"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodařilo se vytvořit fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruh, oba směry"</string>
     <string name="quest_cycleway_value_track_dual">"Cyklostezka s oddělenými směry jízdy"</string>
@@ -1187,7 +1186,6 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_memorialType_stele_wooden">"Dřevěná stéla (pamětní deska)"</string>
     <string name="quest_memorialType_stele_stone">"Kamenná stéla (pamětní deska)"</string>
     <string name="quest_memorialType_sculpture">"Jiná skulptura"</string>
-    <string name="select_overlay">"Vyberte překrytí"</string>
     <string name="overlay_none">"Žádné"</string>
     <string name="overlay_lit">"Pouliční osvětlení"</string>
     <string name="lit_value_yes">"Osvětleno"</string>
@@ -1299,7 +1297,6 @@ Chcete ho posunout?"</string>
     <string name="cycleway_reverse_direction_toast">"Dotkněte se strany, kterou chcete obrátit"</string>
     <string name="separate_cycleway_path">"Stezka nebo dráha"</string>
     <string name="quest_fireHydrant_type_pipe">"Zakrytá trubka"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"výslovně sdílená s chodníkem, oba směry"</string>
     <string name="measure_info_title">"Dosažení optimální přesnosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore někdy (na začátku) předpokládá, že země je trochu níže nebo výše, než skutečně je. To do měření zanáší chybu, která je tím větší, čím víc odkláníte telefon od horizontu.&lt;/p&gt;
 &lt;p&gt;Tuto chybu pro horizontální měření zcela odstraníte tím, že každý počáteční a koncový bod nastavíte zamířením telefonu kolmo dolů (takže vidíte bílou šipku směřující shora).&lt;/p&gt;
@@ -1340,4 +1337,14 @@ Chcete ho posunout?"</string>
     <string name="overlay_addresses_no_entrance">"Toto není vchod…"</string>
     <string name="quest_cycleway_value_sidewalk2">"sdílená cesta"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"sdílená cesta, oba směry"</string>
+    <string name="overlays_tutorial_title">"Překryvné vrstvy"</string>
+    <string name="overlays_tutorial_intro">"Našli jste novou cestu k úpravě dat!"</string>
+    <string name="overlays_tutorial_display">"Každá překryvná vrstva zobrazuje jeden druh dat, například obchody nebo povrchy cest.
+
+Data jsou zvýrazněna různými barvami, abyste měli dobrý přehled, co už bylo zaznamenáno.
+Chybějící data se vždy zobrazují červeně."</string>
+    <string name="overlays_tutorial_edit">"Dotkněte se kterýchkoliv zvýrazněných dat k jejich úpravě. Můžete také dělit cesty nebo vkládat poznámky, tak jako u úkolů.
+
+Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici zobrazeného kříže, například v případě vrstvy adres."</string>
+    <string name="quest_crossing_kerb_height_title">"Jaká je výška obrubníků u tohoto přechodu?"</string>
 </resources>

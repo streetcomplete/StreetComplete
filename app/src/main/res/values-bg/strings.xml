@@ -310,7 +310,6 @@
     <string name="quest_cycleway_value_none">"няма"</string>
     <string name="quest_cycleway_value_shared">"Лентата е споделена с други ППС"</string>
     <string name="quest_cycleway_value_bus_lane">"по автобусната лента"</string>
-    <string name="quest_cycleway_value_sidewalk">"тротоарът е споделен"</string>
     <string name="quest_leave_new_note_create_image_error">"Невъзможен запис на снимката"</string>
     <string name="quest_cycleway_value_lane_dual">"велоалея, в двете посоки"</string>
     <string name="quest_cycleway_value_track_dual">"двупосочна велопътека (отделена от пътя)"</string>
@@ -1168,7 +1167,6 @@
     <string name="quest_memorialType_stele_wooden">"Дървен мемориал"</string>
     <string name="quest_memorialType_stele_stone">"Каменен мемориал "</string>
     <string name="quest_memorialType_sculpture">"Друго"</string>
-    <string name="select_overlay">"Изберете слой"</string>
     <string name="overlay_none">"Без"</string>
     <string name="overlay_lit">"Улично осветление "</string>
     <string name="lit_value_yes">"Осветено"</string>
@@ -1280,7 +1278,6 @@
     <string name="cycleway_reverse_direction_toast">"Докоснете коя страна да обърнете"</string>
     <string name="separate_cycleway_path">"Пътека"</string>
     <string name="quest_fireHydrant_type_pipe">"Тръбен"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"Тротоарът е споделен в двете посоки"</string>
     <string name="measure_info_title">"Постигане на оптимална точност"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore понякога (първоначално) предполага, че земята е малко по-ниско или по-високо, отколкото е в действителност. Това въвежда грешка в измерването, която става по-голяма, колкото повече накланяте телефона си към хоризонта.&lt;/p&gt;
 &lt;p&gt;Задайте всяка начална и крайна точка, като насочвате телефона право надолу (така че да виждате бялата стрелка отгоре), за да избегнете напълно този проблем при хоризонтални измервания.&lt;/p&gt;
@@ -1310,8 +1307,14 @@
     <string name="quest_hairdresser_male_only">"Мъже"</string>
     <string name="quest_hairdresser_not_signed">"Не е отбелязано"</string>
     <string name="quest_amenityCover_title">"Покрито ли е (защитено ли е от дъжд)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Разширен бордюр"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Остров"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Шикан"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Няма стеснение на пътя"</string>
     <string name="quest_tactilePaving_title_steps">"Има ли тактилна настилка на най-горното и най-долното стъпало?"</string>
     <string name="quest_tactilePaving_steps_top">"Само на най-горното"</string>
     <string name="quest_tactilePaving_steps_bottom">"Само на най-долното"</string>
     <string name="overlay_addresses_no_entrance">"Това не е вход"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Споделено ползване"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Споделено ползване, двупосочно"</string>
 </resources>

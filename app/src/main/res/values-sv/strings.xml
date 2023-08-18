@@ -311,7 +311,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_cycleway_value_none">"ingen"</string>
     <string name="quest_cycleway_value_shared">"cykelkörfält delad med annan trafik"</string>
     <string name="quest_cycleway_value_bus_lane">"i busskörfältet"</string>
-    <string name="quest_cycleway_value_sidewalk">"gång- och cykelbana"</string>
     <string name="quest_leave_new_note_create_image_error">"Fel vid skapandet av foto"</string>
     <string name="quest_cycleway_value_lane_dual">"cykelkörfält, båda riktningarna"</string>
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
@@ -1183,7 +1182,6 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="quest_memorialType_stele_wooden">"Stele i trä"</string>
     <string name="quest_memorialType_stele_stone">"Rest sten (stele)"</string>
     <string name="quest_memorialType_sculpture">"Annan skulptur"</string>
-    <string name="select_overlay">"Välj extralager"</string>
     <string name="overlay_none">"Inget"</string>
     <string name="overlay_lit">"Gatubelysning"</string>
     <string name="lit_value_yes">"Belyst"</string>
@@ -1295,7 +1293,6 @@ Flytta den?"</string>
     <string name="cycleway_reverse_direction_toast">"Välj sida att vända på"</string>
     <string name="separate_cycleway_path">"Stig eller spår"</string>
     <string name="quest_fireHydrant_type_pipe">"Rör"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"gång- och cykelbana, båda riktningarna"</string>
     <string name="measure_info_title">"Uppnå optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;Ibland antar ARCore att marken (initialt) är lite högre eller lägre än vad den egentligen är. Det skapar en felmarginal som blir större ju mer du lutar mobilen mot horisonten.&lt;/p&gt;
 &lt;p&gt;Sätt därför start- och slutpunkter medan du lutar mobilen rakt ner (så att du ser den vita pilen ovanifrån) för att helt undvika detta felet för horisontella mätningar.&lt;/p&gt;
@@ -1336,4 +1333,14 @@ Flytta den?"</string>
     <string name="overlay_addresses_no_entrance">"Det är inte en entré…"</string>
     <string name="quest_cycleway_value_sidewalk2">"gång- och cykelbana, båda riktningarna"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"gång- och cykelbana"</string>
+    <string name="overlays_tutorial_title">"Extralager"</string>
+    <string name="overlays_tutorial_intro">"Du hittade ett nytt sätt att kartlägga!"</string>
+    <string name="overlays_tutorial_display">"Varje extralager visar en viss sorts data, t.ex. butiker eller vägars beläggning.
+
+Extralagret använder färgkodning för att du enkelt ska kunna urskilja olika detaljer och vad som ännu inte är kartlagt.
+Saknad data visas alltid i rött."</string>
+    <string name="overlays_tutorial_edit">"Tryck på datan som visas för att redigera. Du kan också klippa i vägar och lämna anteckningar på samma sätt som i den vanliga vyn.
+
+Vissa extralager låter dig också lägga till ny data på hårkorsets position, t.ex. lägga till saknade adresser."</string>
+    <string name="quest_crossing_kerb_height_title">"Hur höga är kanterna i den här korsningen?"</string>
 </resources>

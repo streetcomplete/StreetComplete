@@ -838,18 +838,9 @@
                 "material": {
                     "label": "Материал"
                 },
-                "maxheight": {
-                    "label": "Максимална височина"
-                },
                 "maxspeed": {
                     "label": "Ограничение на скоростта",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Максимален престой"
-                },
-                "maxweight": {
-                    "label": "Максимално тегло"
                 },
                 "memorial": {
                     "label": "Вид"
@@ -1371,7 +1362,7 @@
                     "name": "Бензиностанция"
                 },
                 "amenity/grave_yard": {
-                    "name": "Гробище"
+                    "name": "Църковно гробище"
                 },
                 "amenity/hospital": {
                     "name": "Болница"
@@ -1560,9 +1551,6 @@
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Автомат за талони за паркиране"
                 },
-                "amenity/waste_basket": {
-                    "name": "Кошче за боклук"
-                },
                 "amenity/waste_disposal": {
                     "name": "Контейнер за боклук"
                 },
@@ -1716,6 +1704,9 @@
                 },
                 "building_point": {
                     "name": "Сграда"
+                },
+                "cemetery/sector": {
+                    "name": "Гробищен сектор"
                 },
                 "craft/agricultural_engines": {
                     "name": "Механик на селскостопански двигатели"
@@ -2406,6 +2397,9 @@
                     "name": "Соларен панел",
                     "terms": "слънчев панел,фотоволтаичен панел"
                 },
+                "power/generator/method/photovoltaic/building/roof": {
+                    "name": "Навес със слънчеви панели"
+                },
                 "power/generator/method/photovoltaic/location/roof": {
                     "name": "Слънчеви панели на покрив"
                 },
@@ -2433,12 +2427,16 @@
                     "name": "ВЕЦ",
                     "terms": "водноелектрическа централа,водно-електрическа централа,водно електрическа централа"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "Фотоволтаична ферма",
+                    "terms": "фотоволтаици,фотоволтаична централа"
+                },
                 "power/plant/source/nuclear": {
                     "name": "АЕЦ"
                 },
                 "power/plant/source/solar": {
                     "name": "Соларна електроцентрала",
-                    "terms": "слънчева,фотоволтаична"
+                    "terms": "слънчева,слънчева електроцентрала"
                 },
                 "power/plant/source/waste": {
                     "name": "Инсинератор за отпадъци",

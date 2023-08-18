@@ -311,7 +311,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_cycleway_value_none">"无"</string>
     <string name="quest_cycleway_value_shared">"车道与其他交通工具共享"</string>
     <string name="quest_cycleway_value_bus_lane">"与公交车专用道共用"</string>
-    <string name="quest_cycleway_value_sidewalk">"与人行道共用"</string>
     <string name="quest_leave_new_note_create_image_error">"无法为照片创建文件"</string>
     <string name="quest_cycleway_value_lane_dual">"双向自行车车道（cycle lane）"</string>
     <string name="quest_cycleway_value_track_dual">"双向自行车专用侧道（cycle track）"</string>
@@ -1183,7 +1182,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_memorialType_stele_wooden">"木碑（纪念板）"</string>
     <string name="quest_memorialType_stele_stone">"石碑（纪念板）"</string>
     <string name="quest_memorialType_sculpture">"其他雕塑"</string>
-    <string name="select_overlay">"选择叠加"</string>
     <string name="overlay_none">"无"</string>
     <string name="overlay_lit">"街道照明"</string>
     <string name="lit_value_yes">"点亮"</string>
@@ -1294,7 +1292,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="cycleway_reverse_direction_warning">"这条自行车道进入另一条的方向是极其罕见的。"</string>
     <string name="cycleway_reverse_direction_toast">"点选哪一面来反转"</string>
     <string name="separate_cycleway_path">"道路或小径"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"与人行道共用"</string>
     <string name="measure_info_title">"实现最佳精确度"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore有时（最初）会假定地面比实际情况稍低或稍高。这就引入了一个测量误差，当你把手机向地平线倾斜得越多，误差就越大。&lt;/p&gt;
 &lt;p&gt;设置每个起点和终点，同时将手机直直地指向下方（以便您从上方看到白色箭头），以完全避免水平测量中的该问题。&lt;/p&gt;

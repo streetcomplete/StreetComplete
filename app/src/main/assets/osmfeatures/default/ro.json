@@ -499,15 +499,9 @@
                 "map_type": {
                     "label": "Tip"
                 },
-                "maxheight": {
-                    "label": "Înălțime Maximă"
-                },
                 "maxspeed": {
                     "label": "Limită de viteză",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxweight": {
-                    "label": "Greutate Maximă"
                 },
                 "mtb/scale": {
                     "placeholder": "0, 1, 2, 3..."
@@ -1173,9 +1167,6 @@
                 },
                 "building/semidetached_house": {
                     "name": "Casă Semi-detașată"
-                },
-                "building/terrace": {
-                    "name": "Case în Rând"
                 },
                 "building/university": {
                     "name": "Universitate"

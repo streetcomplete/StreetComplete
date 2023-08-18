@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"없음"</string>
     <string name="quest_cycleway_value_shared">"다른 교통수단과 차로 공유 명시"</string>
     <string name="quest_cycleway_value_bus_lane">"버스 차로 공유"</string>
-    <string name="quest_cycleway_value_sidewalk">"인도 겸용 포장"</string>
     <string name="quest_leave_new_note_create_image_error">"사진 파일을 생성할 수 없음"</string>
     <string name="quest_cycleway_value_lane_dual">"양방향 자전거 차로"</string>
     <string name="quest_cycleway_value_track_dual">"양방향 자전거 도로"</string>
@@ -1180,7 +1179,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_memorialType_stele_wooden">"나무비 (기념비)"</string>
     <string name="quest_memorialType_stele_stone">"비석 (기념석판)"</string>
     <string name="quest_memorialType_sculpture">"기타 조각품"</string>
-    <string name="select_overlay">"오버레이 선택"</string>
     <string name="overlay_none">"없음"</string>
     <string name="overlay_lit">"거리 조명"</string>
     <string name="lit_value_yes">"빛남"</string>
@@ -1292,7 +1290,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="cycleway_reverse_direction_toast">"변경할 쪽을 누르세요"</string>
     <string name="separate_cycleway_path">"경로 또는 트레일"</string>
     <string name="quest_fireHydrant_type_pipe">"파이프"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"양방향 인도 겸용 포장"</string>
     <string name="measure_info_title">"최적의 정밀도 달성"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore는 때때로 (처음에) 접지가 실제보다 약간 낮거나 높다고 가정합니다. 이로 인해 휴대전화를 수평선 쪽으로 기울일수록 측정 오차가 커집니다.&lt;/p&gt;
 &lt;p&gt;수평 측정 시 이 문제를 완전히 방지하려면 휴대전화를 똑바로 아래로 향하게 하여(위에서 흰색 화살표가 보이도록) 각각의 시작점과 끝점을 설정하세요.&lt;/p&gt;

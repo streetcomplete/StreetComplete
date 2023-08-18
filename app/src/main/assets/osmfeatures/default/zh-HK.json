@@ -1215,9 +1215,6 @@
                 "max_age": {
                     "label": "最大年齡"
                 },
-                "maxheight": {
-                    "label": "最大高度"
-                },
                 "maxspeed": {
                     "label": "速度限制",
                     "placeholder": "40, 50, 60..."
@@ -1225,12 +1222,6 @@
                 "maxspeed/advisory": {
                     "label": "建議限速",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "可停留時間"
-                },
-                "maxweight": {
-                    "label": "最大承重"
                 },
                 "memorial": {
                     "label": "種類"
@@ -1364,9 +1355,6 @@
                 "opening_hours": {
                     "label": "時間",
                     "placeholder": "未知"
-                },
-                "opening_hours/covid19": {
-                    "label": "COVID-19 流行期間營業時間"
                 },
                 "operator": {
                     "label": "營辦商"
@@ -2884,10 +2872,6 @@
                     "name": "回收中心",
                     "terms": "recycling center,廢物回收中心,資源回收中心"
                 },
-                "amenity/recycling_container": {
-                    "name": "回收桶",
-                    "terms": "回收桶,三色桶,回收箱"
-                },
                 "amenity/restaurant": {
                     "name": "餐廳",
                     "terms": "restaurant,茶樓,酒家,酒樓,飯店,飯館,餐廳,餐館"
@@ -3149,10 +3133,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "狗糞收集箱",
                     "terms": "dog excrement bin,狗屎收集箱"
-                },
-                "amenity/waste_basket": {
-                    "name": "垃圾桶",
-                    "terms": "waste basket,垃圾桶,垃圾箱,廢物箱"
                 },
                 "amenity/waste_disposal": {
                     "name": "大型垃圾箱",
@@ -3447,10 +3427,6 @@
                 },
                 "building/temple": {
                     "name": "寺廟建築物"
-                },
-                "building/terrace": {
-                    "name": "排屋",
-                    "terms": "行列式房屋,連棟式住宅"
                 },
                 "building/train_station": {
                     "name": "鐵路車站建築物"

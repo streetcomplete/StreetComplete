@@ -311,7 +311,6 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="quest_cycleway_value_none">"none"</string>
     <string name="quest_cycleway_value_shared">"lane shared explicitly with other traffic"</string>
     <string name="quest_cycleway_value_bus_lane">"on bus lane"</string>
-    <string name="quest_cycleway_value_sidewalk">"explicitly shared footpath"</string>
     <string name="quest_leave_new_note_create_image_error">"Unable to create file for image"</string>
     <string name="quest_cycleway_value_lane_dual">"bicycle lane, both directions"</string>
     <string name="quest_cycleway_value_track_dual">"sidepath or protected bicycle lane, both directions"</string>
@@ -435,13 +434,20 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_civic">"Civic building"</string>
     <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
     <string name="quest_buildingType_kindergarten">"Kindergarten building"</string>
+    <string name="quest_buildingType_school">"School building"</string>
     <string name="quest_buildingType_college">"Tertiary education building"</string>
+    <string name="quest_buildingType_hospital">"Hospital building"</string>
+    <string name="quest_buildingType_stadium">"Stadium"</string>
+    <string name="quest_buildingType_train_station">"Train station"</string>
     <string name="quest_buildingType_transportation">"Public transportation building"</string>
     <string name="quest_buildingType_university">"University building"</string>
     <string name="quest_buildingType_government">"Government building"</string>
     <string name="quest_buildingType_cars">"For cars"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"roof for a car"</string>
+    <string name="quest_buildingType_garage">"Single garage"</string>
+    <string name="quest_buildingType_garages">"Multiple garages"</string>
+    <string name="quest_buildingType_parking">"Parking building"</string>
     <string name="quest_buildingType_farm">"On a farm"</string>
     <string name="quest_buildingType_farmhouse">"Farmhouse"</string>
     <string name="quest_buildingType_farmhouse_description">"the residential building on a farm"</string>
@@ -460,10 +466,16 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"It has no address number…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"The building was tagged as:"</string>
+    <string name="quest_buildingType_shrine">"Shrine building"</string>
     <string name="quest_maxspeed_title_short2">"What is the speed limit for this street?"</string>
+    <string name="quest_maxspeed_answer_sign">"A sign"</string>
+    <string name="quest_openingHours_no_sign">"No opening hours sign"</string>
     <string name="quest_buildingType_sports_centre">"Sports centre"</string>
     <string name="quest_buildingType_toilets">"Toilets"</string>
+    <string name="quest_maxspeed_sign_question">"What defines the speed limit?"</string>
     <string name="quest_segregated_title">"How are the footpath and bicycle path laid out here?"</string>
+    <string name="dialog_tutorial_upload">"To upload your changes manually, use the button in the toolbar that looks like this."</string>
+    <string name="quest_segregated_mixed">"Cyclists and pedestrians share the same space"</string>
     <string name="quest_maxheight_title">"What is the height limit here?"</string>
     <string name="quest_maxheight_answer_noSign">"There is no sign…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Is there easily enough space for even the tallest trucks (at least about 4.5 meters) to pass through?"</string>
@@ -533,10 +545,20 @@ Split it now?"</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
     <string name="quest_recycling_materials_note">"If anything not listed can be recycled here, please leave a note instead."</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
+    <string name="quest_recycling_type_cans">"Cans"</string>
+    <string name="quest_recycling_type_clothes">"Clothes"</string>
+    <string name="quest_recycling_type_green_waste">"Garden waste"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glass bottles and jars"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Bottles and jars"</string>
+    <string name="quest_recycling_type_paper">"Paper"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
+    <string name="quest_recycling_type_plastic">"Any plastic"</string>
     <string name="quest_recycling_type_shoes">"Shoes"</string>
     <string name="quest_recycling_type_electric_appliances">"Electric appliances"</string>
     <string name="quest_recycling_type_plastic_bottles">"Plastic bottles only"</string>
     <string name="quest_recycling_type_plastic_packaging">"Plastic packaging only"</string>
+    <string name="quest_recycling_type_scrap_metal">"Scrap metal"</string>
+    <string name="quest_recycling_type_any_glass">"Any glass"</string>
     <string name="quest_recycling_glass_title">"Can only glass bottles and jars be recycled here or any type of glass?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Types of glass that are often not accepted: tempered glass, window panes, glassware, light bulbs, or mirrors."</string>
     <string name="about_title_changelog">"Version History"</string>
@@ -549,6 +571,8 @@ Split it now?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
     <string name="quest_buildingType_garages_description">"Separate spaces for different owners/tenants"</string>
+    <string name="quest_tourism_information_title">"What type of tourist information is this?"</string>
+    <string name="quest_tourism_information_office">"Tourist information centre"</string>
     <string name="quest_tourism_information_board">"Information board"</string>
     <string name="quest_tourism_information_terminal">"Information terminal"</string>
     <string name="quest_tourism_information_map">"Map"</string>
@@ -590,6 +614,10 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="link_category_editors_description">"Editors and other ways to contribute to OpenStreetMap"</string>
     <string name="link_category_maps_title">"Maps"</string>
     <string name="link_category_maps_description">"OpenStreetMap-based maps"</string>
+    <string name="link_category_showcase_title">"Showcase"</string>
+    <string name="link_category_showcase_description">"OpenStreetMap-based services and apps"</string>
+    <string name="link_category_goodies_title">"Goodies"</string>
+    <string name="link_category_goodies_description">"Interesting map-related stuff for you to try out"</string>
     <string name="link_josm_description">"Fully-featured OpenStreetMap editor for the desktop. This is the power tool for regular contributors."</string>
     <string name="link_vespucci_description">"Advanced OpenStreetMap editor for Android"</string>
     <string name="link_ideditor_description">"Simple OSM editor for the browser. Optimised for the desktop or large tablets"</string>
@@ -605,7 +633,11 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="link_show_me_the_way_description">"Watch OpenStreetMap edits happen in real time"</string>
     <string name="link_openinframap_description">"A map showing power, telecoms, gas and oil infrastructure"</string>
     <string name="link_figuregrounder_description">"Create figure-ground diagram posters of a city or neighbourhood"</string>
+    <string name="achievement_first_edit_title">"First Quest Solved"</string>
     <string name="achievement_first_edit_description">"Welcome to the OpenStreetMap community! In your profile screen you can see more about each type of quest you’ve solved."</string>
+    <string name="achievement_surveyor_title">"Surveyor"</string>
+    <string name="achievement_surveyor_solved_X">"You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!"</string>
+    <string name="achievement_regular_title">"Regular"</string>
     <string name="achievement_postman_solved_X">"You helped to locate %d addresses!
 This data is essential not only for the postie but also for any navigation system."</string>
     <string name="achievement_building_solved_X">"You solved %d building related quests.
@@ -615,7 +647,11 @@ Note that this app asks for the address number of a building only after its type
     <string name="action_about2">"About"</string>
     <string name="map_btn_menu">"Menu"</string>
     <string name="stats_are_syncing">"Your statistics are still syncing. Check this screen later."</string>
+    <string name="quest_board_type_notice_board">"It is a notice board"</string>
+    <string name="quest_board_type_public_transport">"Public transport"</string>
     <string name="quest_board_type_title">"What is the topic of this information board?"</string>
+    <string name="quest_board_type_map">"It is a map"</string>
+    <string name="quest_surface_detailed_answer_impossible">"Multiple surfaces…"</string>
     <string name="quest_buildingType_terrace2">"Terrace houses"</string>
     <string name="at_housename">"house or building name %s"</string>
     <string name="at_housenumber">"address number %s"</string>
@@ -708,5 +744,4 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="node_moved_too_far">"Moved too far. Consider leaving a note"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from kerb to kerb, including on-street parking, bicycle lanes etc."</string>
     <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent footpath (separated by a kerb)"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"explicitly shared footpath, both directions"</string>
 </resources>

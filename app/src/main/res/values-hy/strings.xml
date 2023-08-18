@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Կարգավորումներ"</string>
     <string name="oauth_communication_error">"Անհնար է միանալ թույլտվության սերվերին"</string>
-    <string name="oauth_failed_permissions">"Թույլտվությունը ձախողվեց: բոլոր թվարկված թույլտվությունները պետք է տրամադրվեն"</string>
+    <string name="oauth_failed_permissions">"Թույլտվությունը ձախողվեց. բոլոր թվարկված թույլտվությունները պետք է տրամադրվեն:"</string>
     <string name="pref_category_communication">"Հաղորդակցություն"</string>
     <string name="pref_category_display">"Պատկեր"</string>
     <string name="pref_tilecache_size_summary">"%d ՄԲ"</string>
@@ -15,7 +15,7 @@
     <string name="map_attribution_osm">"© OpenStreetMap-ի անդամներ"</string>
     <string name="quest_generic_otherAnswers">"Այլ պատասխաններ…"</string>
     <string name="quest_generic_answer_notApplicable">"Չգիտեմ…"</string>
-    <string name="quest_generic_confirmation_title">"Համոզված ես?"</string>
+    <string name="quest_generic_confirmation_title">"Համոզված եք?"</string>
     <string name="quest_generic_confirmation_yes">"Այո, վստահ եմ"</string>
     <string name="quest_generic_confirmation_no">"Ես կստուգեմ"</string>
     <string name="quest_leave_new_note_title">"Փոխարենը գրառում թողնե՞լ:"</string>
@@ -287,7 +287,6 @@
     <string name="quest_cycleway_value_none">"ոչ ոք"</string>
     <string name="quest_cycleway_value_shared">"Lane- ը բացահայտորեն տարածվեց այլ երթեւեկության հետ"</string>
     <string name="quest_cycleway_value_bus_lane">"ավտոբուսի գոտում"</string>
-    <string name="quest_cycleway_value_sidewalk">"բացահայտորեն համօգտագործված մայթ"</string>
     <string name="quest_leave_new_note_create_image_error">"Անհնար է լուսանկար ստեղծել լուսանկարում"</string>
     <string name="quest_cycleway_value_lane_dual">"ցիկլի նրբանցք, երկու ուղղություններ"</string>
     <string name="quest_cycleway_value_track_dual">"ցիկլի ուղին, երկու ուղղություններ"</string>
@@ -1102,5 +1101,18 @@
     <string name="quest_toiletAvailability_title">"Այստեղ կա որեւէ հանգստի սենյակ"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Այս վայրում զուգարանը մատչելի է սայլակով:"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Համոզված եք, որ հեծանվորդներին թույլ չեն տալիս երկու ուղղություններով օգտագործել այս մեկ ճանապարհի փողոցը: Կասկածում, ստուգեք, թե արդյոք փողոցում նշան կա:"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"բացահայտորեն համօգտագործված մայթ, երկու ուղղություններ"</string>
+    <string name="quest_accepts_cards">"Այստեղ ընդունվո՞ւմ են բանկային քարտեր։"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Այո"</string>
+    <string name="quest_accepts_cards_credit_only">"Միայն վարկային (կրեդիտային)"</string>
+    <string name="quest_accepts_cards_dedit_only">"Միայն դեբետային"</string>
+    <string name="quest_accepts_cards_unavailable">"Ոչ"</string>
+    <string name="quest_bicycle_rental_type_title">"Ինչպիսի՞ հեծանվային"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Այստեղ վաճառվու՞մ են օգտագործած հեծանիվներ։"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Ոչ, միայն նոր"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Այո, նոր հեծանիվների հետ"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Այո, միայն"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Հեծանիվ չի վաճառվում"</string>
+    <string name="quest_building_entrance_title">"Սա ինչպիսի՞ մուտք է։"</string>
+    <string name="quest_building_entrance_main">"Հիմնական մուտք"</string>
+    <string name="quest_building_entrance_staircase">"Աստիճաններով մուտք"</string>
 </resources>

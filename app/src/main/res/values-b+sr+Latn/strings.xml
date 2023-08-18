@@ -311,7 +311,6 @@ U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularn
     <string name="quest_cycleway_value_none">"ne postoji"</string>
     <string name="quest_cycleway_value_shared">"traka koja se deli sa drugim vozilima"</string>
     <string name="quest_cycleway_value_bus_lane">"po autobuskoj traci"</string>
-    <string name="quest_cycleway_value_sidewalk">"trotoar koji se deli sa pešacima"</string>
     <string name="quest_leave_new_note_create_image_error">"Nije moguće napraviti datoteku fotografije"</string>
     <string name="quest_cycleway_value_lane_dual">"biciklistička traka u oba smera"</string>
     <string name="quest_cycleway_value_track_dual">"biciklistička staza u oba smera"</string>
@@ -1180,7 +1179,6 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="quest_memorialType_stele_wooden">"Drvena stela (spomen ploča)"</string>
     <string name="quest_memorialType_stele_stone">"Kamena stela (spomen ploča)"</string>
     <string name="quest_memorialType_sculpture">"Drugi tip skulpture"</string>
-    <string name="select_overlay">"Odaberite podlogu"</string>
     <string name="overlay_none">"Nijedna"</string>
     <string name="overlay_lit">"Ulična rasveta"</string>
     <string name="lit_value_yes">"Ima ga"</string>
@@ -1291,7 +1289,6 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="cycleway_reverse_direction_toast">"Dodirnite stranu koju treba okrenuti"</string>
     <string name="separate_cycleway_path">"Putić ili staza"</string>
     <string name="quest_fireHydrant_type_pipe">"Cevasti"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"trotoar koji se deli sa pešacima u oba smera"</string>
     <string name="measure_info_title">"Postizanje optimalne preciznosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore ponekad (na početku) pretpostavlja da je zemlja (tlo, odnosno podloga) nešto niža ili viša nego u stvarnosti. Ovo predstavlja grešku u merenju koja postaje sve veća kako se telefon usmerava ka horizontu.&lt;/p&gt;
 &lt;p&gt;Postavite početnu i krajnju tačku tako što ćete usmeriti telefon pravo nadole (tako da belu strelicu vidite odozgo) kako biste u potpunosti izbegli grešku horizontalnog merenja.&lt;/p&gt;
@@ -1326,4 +1323,20 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Produžetak ivičnjaka + saobraćajno ostrvo"</string>
     <string name="lane_narrowing_traffic_calming_none">"Ovde nema uske trake"</string>
+    <string name="quest_tactilePaving_title_steps">"Imaju li stepenice trake za navođenje slepih osoba?"</string>
+    <string name="quest_tactilePaving_steps_top">"Samo na vrhu"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Samo u dnu"</string>
+    <string name="overlay_addresses_no_entrance">"Nije ulaz…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"deljena putanja"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"deljena putanja u oba smera"</string>
+    <string name="overlays_tutorial_title">"Slojevi na karti"</string>
+    <string name="overlays_tutorial_intro">"Pronašli ste novi način za izmenu podataka!"</string>
+    <string name="overlays_tutorial_display">"Svaki sloj prikazuje jedan tip podataka, na primer prodavnice ili površinu puta.
+
+Podaci se ističu različitim bojama radi jasnog prikaza šta je do sada urađeno.
+Podaci koji nedostaju se uvek obeležavaju crvenom bojom."</string>
+    <string name="overlays_tutorial_edit">"Dotaknite istaknute podatke kako biste ih uredili. Možete razdeliti linije ili ostaviti napomene, poput zadataka.
+
+Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podataka na poziciji pokazivača, kao što to pruža sloj adresa."</string>
+    <string name="quest_crossing_kerb_height_title">"Koliko je visok ivičnjak na ovom prelazu?"</string>
 </resources>

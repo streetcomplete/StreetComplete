@@ -312,7 +312,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_cycleway_value_none">"nėra"</string>
     <string name="quest_cycleway_value_shared">"juosta, kuria dalinamasi su kitu transportu"</string>
     <string name="quest_cycleway_value_bus_lane">"autobusų juostoje"</string>
-    <string name="quest_cycleway_value_sidewalk">"išskirtinai bendras šaligatvis"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepavyko sukurti failo arba nuotraukos"</string>
     <string name="quest_cycleway_value_lane_dual">"dviračių juosta į abi puses"</string>
     <string name="quest_cycleway_value_track_dual">"dviračių takas į abi puses"</string>
@@ -1181,7 +1180,6 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_memorialType_stele_wooden">"Medinė stela (paminklinė plokštė)"</string>
     <string name="quest_memorialType_stele_stone">"Akmeninė stela (paminklinė plokštė)"</string>
     <string name="quest_memorialType_sculpture">"Kitos skulptūros"</string>
-    <string name="select_overlay">"Pasirinkite perdangą"</string>
     <string name="overlay_none">"Nėra"</string>
     <string name="overlay_lit">"Gatvių apšvietimas"</string>
     <string name="lit_value_yes">"Lit"</string>
@@ -1238,5 +1236,4 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="separate_cycleway_non_segregated">"Bendro naudojimo kelias"</string>
     <string name="separate_cycleway_segregated">"Atskiras pėsčiųjų ir dviratininkų kelias"</string>
     <string name="separate_cycleway_exclusive">"Kelias tik dviratininkams"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"išskirtinai bendras šaligatvis į abi puses"</string>
 </resources>

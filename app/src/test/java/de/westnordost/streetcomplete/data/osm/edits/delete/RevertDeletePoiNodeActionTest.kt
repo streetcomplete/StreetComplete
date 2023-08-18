@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.copy
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class RevertDeletePoiNodeActionTest {
 
@@ -51,11 +52,14 @@ class RevertDeletePoiNodeActionTest {
         )
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `conflict if there is already a newer version`() {
         on(repos.getNode(1)).thenReturn(e.copy(version = 4))
-        // version 3 would be the deletion
-        RevertDeletePoiNodeAction(e).createUpdates(repos, provider)
+
+        assertFailsWith<ConflictException> {
+            // version 3 would be the deletion
+            RevertDeletePoiNodeAction(e).createUpdates(repos, provider)
+        }
     }
 
     @Test fun idsUpdatesApplied() {

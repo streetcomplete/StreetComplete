@@ -312,7 +312,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_cycleway_value_none">"ingen"</string>
     <string name="quest_cycleway_value_shared">"bane delt med anden trafik"</string>
     <string name="quest_cycleway_value_bus_lane">"i busbane"</string>
-    <string name="quest_cycleway_value_sidewalk">"fællessti"</string>
     <string name="quest_leave_new_note_create_image_error">"Kunne ikke oprette fil til foto"</string>
     <string name="quest_cycleway_value_lane_dual">"cykelbane, begge retninger"</string>
     <string name="quest_cycleway_value_track_dual">"cykelsti, begge retninger"</string>
@@ -1180,7 +1179,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_memorialType_stele_wooden">"Træstele (mindesmærkeplade)"</string>
     <string name="quest_memorialType_stele_stone">"Stenstele (mindesmærkeplade)"</string>
     <string name="quest_memorialType_sculpture">"Anden skulptur"</string>
-    <string name="select_overlay">"Vælg overlejring"</string>
     <string name="overlay_none">"Ingen"</string>
     <string name="overlay_lit">"Gadebelysning"</string>
     <string name="lit_value_yes">"Oplyst"</string>
@@ -1292,7 +1290,6 @@ Vil du flytte det nu?"</string>
     <string name="cycleway_reverse_direction_toast">"Tryk på den side, der skal vendes"</string>
     <string name="separate_cycleway_path">"Sti eller spor"</string>
     <string name="quest_fireHydrant_type_pipe">"Rør"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"fællessti, begge retninger"</string>
     <string name="measure_info_title">"Sådan opnår du optimal præcision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore antager nogle gange (indledningsvis), at jordoverfladen ligger en smule lavere eller højere, end den faktisk gør. Dette medfører en målefejl, der bliver større, jo mere du hælder telefonen mod horisonten.&lt;/p&gt;
 &lt;p&gt;Afsæt hvert start- og slutpunkt, mens du peger telefonen lige nedad (så du kan se den hvide pil fra oven) for helt at undgå dette problem ved horisontale målinger.&lt;/p&gt;
@@ -1333,4 +1330,14 @@ Vil du flytte det nu?"</string>
     <string name="overlay_addresses_no_entrance">"Det er ikke en indgang…"</string>
     <string name="quest_cycleway_value_sidewalk2">"sti til fælles brug"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"sti til fælles brug, begge retninger"</string>
+    <string name="overlays_tutorial_title">"Overlejringer"</string>
+    <string name="overlays_tutorial_intro">"Du har fundet en ny måde at redigere data på!"</string>
+    <string name="overlays_tutorial_display">"Hver overlejring viser én slags data, f.eks. butikker eller vejoverflader.
+
+Dataene er fremhævet i forskellige farver for at give dig et godt overblik over, hvad der er blevet registreret indtil videre.
+Manglende data vises altid med rødt."</string>
+    <string name="overlays_tutorial_edit">"Tryk på de fremhævede data for at redigere dem. Du kan også opdele veje eller indrapportere noter, ligesom med opgaver.
+
+Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på positionen for et vist trådkors, som f.eks. adresseoverlejringen."</string>
+    <string name="quest_crossing_kerb_height_title">"Hvad er højden på kantstenene ved denne overgang?"</string>
 </resources>

@@ -106,11 +106,12 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
     }
 
     private fun getInitiallyShownSides(cycleways: LeftAndRightCycleway?): StreetSideSelectWithLastAnswerButtonViewController.Sides {
-        val bothSidesWereDefinedBefore = cycleways?.left != null && cycleways.right != null
+        val contraflowSide = if (isLeftHandTraffic) cycleways?.right else cycleways?.left
+        val contraflowSideWasDefinedBefore = contraflowSide != null
         val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
 
         return when {
-            bothSidesWereDefinedBefore || bicycleTrafficOnBothSidesIsLikely -> BOTH
+            contraflowSideWasDefinedBefore || bicycleTrafficOnBothSidesIsLikely -> BOTH
             isLeftHandTraffic -> LEFT
             else -> RIGHT
         }

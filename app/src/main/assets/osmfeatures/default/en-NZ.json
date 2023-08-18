@@ -203,10 +203,6 @@
                     "name": "Fuel Pump",
                     "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel,gas pump"
                 },
-                "amenity/waste_basket": {
-                    "name": "Rubbish Bin",
-                    "terms": "waste basket"
-                },
                 "amenity/water_point": {
                     "terms": "water faucet,water point,water tap,water source,water spigot,rv drinking water,campervan drinking water"
                 },
@@ -223,10 +219,6 @@
                 "building/pavilion": {
                     "name": "Sports Pavilion",
                     "terms": "sports,pavilion"
-                },
-                "building/terrace": {
-                    "name": "Terraced Houses",
-                    "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
                 },
                 "emergency/fire_hose": {
                     "terms": "fire hose reel,fhr,riser,dry riser,standpipe,stand pipe"

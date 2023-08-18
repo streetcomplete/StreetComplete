@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
+import kotlin.test.assertFailsWith
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Test
 
 class ElementFiltersParserTest {
-
     @Test fun `fail if no space after or before and or`() {
         shouldFail("shop andfail")
         shouldFail("'shop'and fail")
@@ -497,11 +498,80 @@ class ElementFiltersParserTest {
         notMatchesTags(mapOfKeys("b", "c"), expr)
     }
 
+    @Test fun `not with leaf`() {
+        val expr = "!(a)"
+        matchesTags(mapOfKeys("b"), expr)
+        notMatchesTags(mapOfKeys("a"), expr)
+        notMatchesTags(mapOfKeys("a", "b"), expr)
+    }
+
+    @Test fun `not without braces`() {
+        val expr = "ways with !highway = residential or access = yes"
+        shouldFail(expr)
+    }
+
+    @Test fun `not and with space`() {
+        val expr = "! (a and b)"
+        matchesTags(mapOfKeys("a"), expr)
+        matchesTags(mapOfKeys("b"), expr)
+        matchesTags(mapOfKeys("b", "c"), expr)
+        matchesTags(mapOfKeys("c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c"), expr)
+    }
+
+    @Test fun `not and`() {
+        val expr = "!(a and b)"
+        matchesTags(mapOfKeys("a"), expr)
+        matchesTags(mapOfKeys("b"), expr)
+        matchesTags(mapOfKeys("b", "c"), expr)
+        matchesTags(mapOfKeys("c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c"), expr)
+    }
+
+    @Test fun `not or`() {
+        val expr = "!(a or b)"
+        matchesTags(mapOfKeys("c"), expr)
+        matchesTags(mapOfKeys("c", "d", "e"), expr)
+        notMatchesTags(mapOfKeys("a"), expr)
+        notMatchesTags(mapOfKeys("b"), expr)
+        notMatchesTags(mapOfKeys("b", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c"), expr)
+    }
+
+    @Test fun `nested not`() {
+        val expr = "!(!(a))" // equals the expression "a"
+        matchesTags(mapOfKeys("a"), expr)
+        matchesTags(mapOfKeys("a", "b"), expr)
+        notMatchesTags(mapOfKeys("b"), expr)
+    }
+
+    @Test fun `nested not with or`() {
+        val expr = "!(!(a and b) or c)" // equals a and b and !(c)
+        matchesTags(mapOfKeys("a", "b"), expr)
+        matchesTags(mapOfKeys("a", "b", "d"), expr)
+        notMatchesTags(mapOfKeys("a"), expr)
+        notMatchesTags(mapOfKeys("c"), expr)
+        notMatchesTags(mapOfKeys("b", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c", "d"), expr)
+    }
+
+    @Test fun `nested not with or and switched operands`() {
+        val expr = "!(c or !(a and b))" // equals a and b and !(c)
+        matchesTags(mapOfKeys("a", "b"), expr)
+        matchesTags(mapOfKeys("a", "b", "d"), expr)
+        notMatchesTags(mapOfKeys("a"), expr)
+        notMatchesTags(mapOfKeys("c"), expr)
+        notMatchesTags(mapOfKeys("b", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c"), expr)
+        notMatchesTags(mapOfKeys("a", "b", "c", "d"), expr)
+    }
+
     private fun shouldFail(input: String) {
-        try {
+        assertFailsWith<ParseException> {
             input.toElementFilterExpression()
-            fail()
-        } catch (ignore: ParseException) {}
+        }
     }
 
     private fun parse(input: String): ElementFilterExpression =

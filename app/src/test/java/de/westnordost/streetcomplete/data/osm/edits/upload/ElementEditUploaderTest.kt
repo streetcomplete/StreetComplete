@@ -15,6 +15,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow
+import kotlin.test.assertFailsWith
 
 class ElementEditUploaderTest {
 
@@ -31,17 +32,20 @@ class ElementEditUploaderTest {
         uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataController)
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `passes on conflict exception`() {
         val edit: ElementEdit = mock()
         val action: ElementEditAction = mock()
         on(edit.action).thenReturn(action)
         on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
-        uploader.upload(edit, { mock() })
+
+        assertFailsWith<ConflictException> {
+            uploader.upload(edit, { mock() })
+        }
     }
 
-    @Test(expected = ConflictException::class)
+    @Test
     fun `passes on element conflict exception`() {
         val edit: ElementEdit = mock()
         val action: ElementEditAction = mock()
@@ -52,9 +56,10 @@ class ElementEditUploaderTest {
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         on(mapDataApi.uploadChanges(anyLong(), any(), any()))
             .thenThrow(ConflictException())
-            .thenThrow(ConflictException())
 
-        uploader.upload(edit, { mock() })
+        assertFailsWith<ConflictException> {
+            uploader.upload(edit, { mock() })
+        }
     }
 
     @Test fun `handles changeset conflict exception`() {

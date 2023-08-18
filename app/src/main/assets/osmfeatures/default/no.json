@@ -1821,9 +1821,6 @@
                 "max_age": {
                     "label": "Øvrig aldersgrense"
                 },
-                "maxheight": {
-                    "label": "Maks høyde"
-                },
                 "maxspeed": {
                     "label": "Fartsgrense",
                     "placeholder": "40, 50, 60 …"
@@ -1835,15 +1832,6 @@
                 "maxspeed/hgv": {
                     "label": "Fartsgrense for lastebiler",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Maks oppholdstid"
-                },
-                "maxweight": {
-                    "label": "Maksvekt"
-                },
-                "maxwidth": {
-                    "label": "Maks bredde"
                 },
                 "memorial": {
                     "label": "Type",
@@ -2020,9 +2008,6 @@
                 "opening_hours": {
                     "label": "Åpningstider",
                     "placeholder": "Ukjent"
-                },
-                "opening_hours/covid19": {
-                    "label": "Covid-19-åpningstider"
                 },
                 "operator": {
                     "label": "Betjener"
@@ -3683,9 +3668,6 @@
                 "amenity/recycling_centre": {
                     "name": "Gjenvinningssenter"
                 },
-                "amenity/recycling_container": {
-                    "name": "Resirkuleringskonteiner"
-                },
                 "amenity/refugee_site": {
                     "name": "Flyktningeleir"
                 },
@@ -3877,9 +3859,6 @@
                 },
                 "amenity/veterinary": {
                     "name": "Veterinær"
-                },
-                "amenity/waste_basket": {
-                    "name": "Søppel"
                 },
                 "amenity/waste_disposal": {
                     "name": "Søppelkonteiner"
@@ -4187,9 +4166,6 @@
                 },
                 "building/temple": {
                     "name": "Tempelbygning"
-                },
-                "building/terrace": {
-                    "name": "Rekkehus"
                 },
                 "building/train_station": {
                     "name": "Togstasjonsbygning"

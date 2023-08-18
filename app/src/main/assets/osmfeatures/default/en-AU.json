@@ -206,10 +206,6 @@
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump"
                 },
-                "amenity/waste_basket": {
-                    "name": "Rubbish Bin",
-                    "terms": "waste,bin,garbage,rubbish,litter,trash"
-                },
                 "amenity/weighbridge": {
                     "name": "Weighbridge",
                     "aliases": "Truck Scale"
@@ -228,10 +224,6 @@
                 },
                 "barrier/kerb/rolled": {
                     "name": "Rolled Kerb"
-                },
-                "building/terrace": {
-                    "name": "Terraced Houses",
-                    "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
                 },
                 "healthcare/birthing_center": {
                     "name": "Birthing Centre"

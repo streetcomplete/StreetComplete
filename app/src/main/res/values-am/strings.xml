@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"የለም"</string>
     <string name="quest_cycleway_value_shared">"ከሌሎች ትራፊክ ጋር በግልጽ የተጋራ መስመር"</string>
     <string name="quest_cycleway_value_bus_lane">"በአውቶቡስ መስመር ላይ"</string>
-    <string name="quest_cycleway_value_sidewalk">"በግልፅ የእግረኛ መንገድን መጋራት"</string>
     <string name="quest_leave_new_note_create_image_error">"ለፎቶ ፋይል መፍጠር አልተቻለም"</string>
     <string name="quest_cycleway_value_lane_dual">"የብስክሌት መስመር ፣ ሁለቱም አቅጣጫዎች"</string>
     <string name="quest_cycleway_value_track_dual">"የብስክሌት መንገድ፣ ሁለቱም አቅጣጫዎች"</string>
@@ -905,5 +904,4 @@
     <string name="quest_camera_type_dome">"ግማሽ ክብ"</string>
     <string name="quest_camera_type_fixed">"ተስተካክሏል"</string>
     <string name="quest_camera_type_panning">"ማንጠፍ"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"በግልፅ የእግረኛ መንገድን መጋራት፣ ሁለቱም አቅጣጫዎች"</string>
 </resources>
