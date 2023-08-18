@@ -7,6 +7,7 @@ v54.0-beta1: |
   <ul>
   <li>Moved the overlay button to the main screen (#5109).<br>
       Enjoy the short tutorial first time you tap on that button (#5158)!</li>
+  <li>Never ask <i>"Are you sure you checked this on-site?"</i> for places you've just been to up to ten minutes ago (#4947), by @Helium314</li>
   <li>Max height: Also ask for crossings with rails electrified with overhead wires (#5180)</li>
   <li>Bus stop refs: Also ask in Colombia (#5124)</li>
   <li>Sidewalks, bike paths: Also ask on roads that have a foot path or bike path nearby.<br>
