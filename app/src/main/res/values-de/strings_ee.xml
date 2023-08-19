@@ -6,4 +6,25 @@
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
     <string name="pref_expert_mode_title">Expertenmodus</string>
     <string name="pref_expert_mode_summary">Aktiviere erweiterte Bearbeitungsmöglichkeiten</string>
+    <string name="custom_overlay_color_hint">Feld leer lassen um alles in einer Farbe anzuzeigen</string>
+    <string name="pref_hide_notes_message">Gib Usernamen oder IDs ein, die ignoriert werden sollen</string>
+    <string name="pref_read_filter_hint">Filter…</string>
+    <string name="pref_hide_notes_hint">Benutze Kommas um Usernamen oder IDs zu trennen</string>
+    <string name="pref_show_gpx_button_title">Button für GPX-Notiz anzeigen</string>
+    <string name="pref_swap_gpx_note_button">Tausche OSM und GPX-Notiz Buttons</string>
+    <string name="pref_hide_keyboard_title">vor dem Erstellen einer Notiz die Tastatur ausblenden</string>
+    <string name="pref_files_not_found">keine Dateien gefunden</string>
+    <string name="pref_read_log_save">vollständige Logdatei speichern</string>
+    <string name="pref_save_photos_title">Speichere Fotos, die für Notizen aufgenommen wurden</string>
+    <string name="pref_save_photos_summary">Speichere Fotos, die für Notizen aufgenommen wurden, in voller Auflösung ohne EXIF Daten zu bereinigen</string>
+    <string name="pref_3d_buildings_title">3D-Gebäude anzeigen</string>
+    <string name="pref_way_direction">Richtung von Wegen anzeigen</string>
+    <string name="pref_quest_monitor_title">Benachrichtigung bei Quests in der Nähe</string>
+    <string name="pref_create_node_show_keyboard_title">Beim Erstellen eines Knotens Tastatur automatisch einblenden</string>
+    <string name="pref_auto_download_title">Automatischer Download</string>
+    <string name="pref_export">Einstellungen exportieren</string>
+    <string name="pref_import">Einstellungen importieren</string>
+    <string name="time_limited_to">bis</string>
+    <string name="custom_overlay_highlight_missing">Fehlende Daten markieren</string>
+    <string name="custom_overlay_title">individuelles Overlay</string>
 </resources>

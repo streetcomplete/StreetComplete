@@ -404,4 +404,6 @@
     <string name="pref_hide_overlay_quests">Ocultar las funciones específicas de la superposición</string>
     <string name="pref_main_menu_switch_presets_title">Cambiar el botón preestablecido en el menú principal</string>
     <string name="outside_downloaded_area_warning">Este lugar está fuera de la zona cargada. ¿Continuar\?</string>
+    <string name="quest_generic_surface_button">Respuestas genéricas de superficiales</string>
+    <string name="pref_disable_navigation_mode_title">Deshabilitar el modo navegador</string>
 </resources>
