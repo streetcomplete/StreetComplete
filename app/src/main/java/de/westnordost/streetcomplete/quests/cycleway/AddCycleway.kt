@@ -164,7 +164,7 @@ private val untaggedRoadsFilter by lazy { """
 """.toElementFilterExpression() }
 
 private val notInZone30OrLess = """
-   ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+   !(~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(30|20)")
 """
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
