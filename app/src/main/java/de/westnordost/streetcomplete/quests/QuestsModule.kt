@@ -354,7 +354,7 @@ fun questTypeRegistry(
     66 to AddFireHydrantDiameter(),
     67 to AddFireHydrantRef(),
 
-    155 to AddBBQFuel(),
+    160 to AddBBQFuel(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
