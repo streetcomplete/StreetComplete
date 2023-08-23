@@ -284,7 +284,8 @@ quest/
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
     barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
     barrier_on_road.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
-    beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie
+    bbq_fuel.svg                     based on https://github.com/gravitystorm/openstreetmap-carto/blob/master/symbols/amenity/bbq.svg (License: CC0 1.0)
+    beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie    
     beer.svg                         modified from Twemoji: U+1F37A
     bench_poi.svg
     bench_public_transport.svg
