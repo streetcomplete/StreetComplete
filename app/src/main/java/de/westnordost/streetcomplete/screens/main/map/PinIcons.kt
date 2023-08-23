@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
         "atm" ->                return R.drawable.ic_pin_money
+        "bbq" ->                return R.drawable.ic_pin_bbq
         "bench" ->              return R.drawable.ic_pin_bench
         "bicycle_parking" ->    return R.drawable.ic_pin_bicycle_parking
         "bicycle_rental" ->     return R.drawable.ic_pin_bicycle_rental
