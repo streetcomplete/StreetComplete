@@ -36,6 +36,7 @@ class AddLevel : OsmElementQuestType<String> {
         nodes with
          (${isShopExpressionFragment()})
          and !level
+         and (name or brand or noname = yes or name:signed = no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level shops are in a building"
