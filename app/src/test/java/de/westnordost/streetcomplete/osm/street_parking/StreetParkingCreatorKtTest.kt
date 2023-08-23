@@ -551,7 +551,7 @@ class StreetParkingCreatorKtTest {
     @Test
     fun `applying incomplete left throws exception`() {
         assertFailsWith<IllegalArgumentException> {
-            LeftAndRightStreetParking(IncompleteStreetParking,null)
+            LeftAndRightStreetParking(IncompleteStreetParking, null)
                 .applyTo(StringMapChangesBuilder(mapOf()))
         }
     }

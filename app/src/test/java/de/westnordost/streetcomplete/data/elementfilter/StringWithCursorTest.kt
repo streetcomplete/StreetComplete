@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import kotlin.test.assertFailsWith
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class StringWithCursorTest {
     @Test fun advance() {
