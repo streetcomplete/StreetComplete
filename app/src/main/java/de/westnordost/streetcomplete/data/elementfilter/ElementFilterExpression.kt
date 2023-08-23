@@ -52,7 +52,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop and name`                | has both a tag with key `shop` and one with key `name`                        |
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
- *  | `shop and !(ref or name)`      | hat a tag with key `shop` but not either a tag with key `ref` or `name`       |
+ *  | `shop and !(ref or name)`      | has a tag with key `shop` but not either a tag with key `ref` or `name`       |
  *
  *  Note that regexes have to match the whole string, i.e. `~shop|craft` does not match `shop_type`.
  *
