@@ -21,7 +21,7 @@ class AddBBQFuel : OsmFilterQuestType<BBQFuel>() {
     """
 
 
-    override val changesetComment = "Specify what grill is powered by"
+    override val changesetComment = "Specify barbecue fuel"
     override val wikiLink = "Key:amenity=bbq"
     override val icon = R.drawable.ic_quest_bbq_fuel
     override val achievements = listOf(OUTDOORS)
