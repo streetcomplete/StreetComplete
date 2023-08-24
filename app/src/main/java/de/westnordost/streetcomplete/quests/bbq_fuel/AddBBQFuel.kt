@@ -13,11 +13,9 @@ class AddBBQFuel : OsmFilterQuestType<BBQFuel>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
           amenity = bbq
           and !fuel
-        )
-        and access !~ no|private
+          and access !~ no|private
     """
 
 
