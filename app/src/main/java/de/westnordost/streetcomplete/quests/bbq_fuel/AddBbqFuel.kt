@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBBQFuel : OsmFilterQuestType<BBQFuel>() {
+class AddBbqFuel : OsmFilterQuestType<BbqFuel>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -29,9 +29,9 @@ class AddBBQFuel : OsmFilterQuestType<BBQFuel>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = bbq")
 
-    override fun createForm() = AddBBQFuelForm()
+    override fun createForm() = AddBbqFuelForm()
 
-    override fun applyAnswerTo(answer: BBQFuel, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BbqFuel, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["fuel"] = answer.osmValue
     }
 }
