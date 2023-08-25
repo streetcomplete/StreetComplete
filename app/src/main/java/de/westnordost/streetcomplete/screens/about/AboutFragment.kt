@@ -33,9 +33,12 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
         findPreference<Preference>("authors")?.summary =
             getString(R.string.about_summary_authors, COPYRIGHT_YEARS)
 
-        setUrlClickListener("license", "https://www.gnu.org/licenses/gpl-3.0.html")
-        setUrlClickListener("repository", "https://github.com/streetcomplete/StreetComplete")
-        setUrlClickListener("faq", "https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
+        findPreference<Preference>("license")
+            ?.setClickOpensUrl("https://www.gnu.org/licenses/gpl-3.0.html")
+        findPreference<Preference>("repository")
+            ?.setClickOpensUrl("https://github.com/streetcomplete/StreetComplete")
+        findPreference<Preference>("faq")
+            ?.setClickOpensUrl("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
 
         val translatePreference = findPreference<Preference>("translate")
         translatePreference?.summary = resources.getString(
@@ -43,10 +46,12 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
             Locale.getDefault().displayLanguage,
             resources.getInteger(R.integer.translation_completeness)
         )
-        setUrlClickListener(translatePreference, "https://poeditor.com/join/project/IE4GC127Ki")
+        translatePreference?.setClickOpensUrl("https://poeditor.com/join/project/IE4GC127Ki")
 
-        setUrlClickListener("report_error", "https://github.com/streetcomplete/StreetComplete/issues")
-        setUrlClickListener("give_feedback", "https://github.com/streetcomplete/StreetComplete/discussions")
+        findPreference<Preference>("report_error")
+            ?.setClickOpensUrl("https://github.com/streetcomplete/StreetComplete/issues")
+        findPreference<Preference>("give_feedback")
+            ?.setClickOpensUrl("https://github.com/streetcomplete/StreetComplete/discussions")
 
         val ratePreference = findPreference<Preference>("rate")
         ratePreference?.isVisible = isInstalledViaGooglePlay()
@@ -72,12 +77,8 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
         return installerPackageName == "com.android.vending"
     }
 
-    private fun setUrlClickListener(preferenceKey: String, url: String) {
-        setUrlClickListener(findPreference(preferenceKey), url)
-    }
-
-    private fun setUrlClickListener(preference: Preference?, url: String) {
-        preference?.setOnPreferenceClickListener {
+    private fun Preference.setClickOpensUrl(url: String) {
+        setOnPreferenceClickListener {
             openUri(url)
             true
         }
