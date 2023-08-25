@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.width
 
 import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +13,7 @@ import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.screens.measure.MeasureContract
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 import org.koin.android.ext.android.inject
 
@@ -61,7 +60,7 @@ class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
         try {
             launcher.launch(MeasureContract.Params(lengthUnit, false))
         } catch (e: ActivityNotFoundException) {
-            context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
+            context?.openUri("market://details?id=de.westnordost.streetmeasure")
         }
     }
 

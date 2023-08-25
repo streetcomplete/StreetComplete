@@ -2,18 +2,16 @@ package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.content.Intent
 import android.graphics.Outline
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentCountryInfoDialogBinding
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.viewBinding
 import java.util.Locale
 import kotlin.math.min
@@ -96,7 +94,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
         binding.wikiLinkButton.text = resources.getString(R.string.user_statistics_country_wiki_link, countryLocale.displayCountry)
         binding.wikiLinkButton.setOnClickListener {
-            openUrl("https://wiki.openstreetmap.org/wiki/${countryLocale.getDisplayCountry(Locale.UK)}")
+            openUri("https://wiki.openstreetmap.org/wiki/${countryLocale.getDisplayCountry(Locale.UK)}")
         }
 
         counterAnimation?.cancel()
@@ -138,10 +136,5 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         anim.interpolator = DecelerateInterpolator()
         anim.duration = ANIMATION_TIME_OUT_MS
         return anim
-    }
-
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
     }
 }
