@@ -931,6 +931,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
     <string name="quest_crossing_no">No, but crossing is possible</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
+    <string name="quest_crossing_prohibited_but_on_sidewalk_or_crossing">This position is on a sidewalk or crossing. Please leave a note to explain the situation.</string>
 
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
