@@ -31,15 +31,15 @@ import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.intersect
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.Mockito.verifyNoMoreInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class MapDataWithEditsSourceTest {
 
@@ -52,7 +52,7 @@ class MapDataWithEditsSourceTest {
     private lateinit var editsListener: ElementEditsSource.Listener
     private lateinit var mapDataListener: MapDataController.Listener
 
-    @Before
+    @BeforeTest
     fun setUp() {
         editsCtrl = mock()
         mapDataCtrl = mock()

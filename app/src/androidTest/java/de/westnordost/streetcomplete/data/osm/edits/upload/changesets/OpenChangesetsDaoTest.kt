@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class OpenChangesetsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OpenChangesetsDao
@@ -15,7 +15,7 @@ class OpenChangesetsDaoTest : ApplicationDbTestCase() {
     private val P = "Brasliweks"
     private val SOURCE = "test"
 
-    @Before fun createDao() {
+    @BeforeTest fun createDao() {
         dao = OpenChangesetsDao(database)
     }
 

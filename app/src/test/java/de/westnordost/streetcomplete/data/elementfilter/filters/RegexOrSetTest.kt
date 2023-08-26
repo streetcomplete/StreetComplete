@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class RegexOrSetTest {
     @Test fun pipesMatch() {

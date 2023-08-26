@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.osm.opening_hours.parser
 
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class OpeningHoursParserAndGeneratorTest {
 

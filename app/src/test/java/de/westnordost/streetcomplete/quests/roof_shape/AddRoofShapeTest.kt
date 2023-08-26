@@ -11,19 +11,19 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import java.util.concurrent.FutureTask
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class AddRoofShapeTest {
     private lateinit var countryInfos: CountryInfos
     private lateinit var questType: AddRoofShape
     private lateinit var countryBoundaries: CountryBoundaries
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         countryBoundaries = mock()
         val futureTask = FutureTask { countryBoundaries }
         futureTask.run()

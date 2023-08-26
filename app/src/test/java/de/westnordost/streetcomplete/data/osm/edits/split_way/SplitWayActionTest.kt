@@ -20,12 +20,12 @@ import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.testutils.waysAsMembers
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.createTranslated
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.reset
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class SplitWayActionTest {
 
@@ -63,7 +63,7 @@ class SplitWayActionTest {
         on(repos.getRelationsForWay(0)).thenReturn(listOf())
     }
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         reset(repos)
         updateRepos(way)
     }

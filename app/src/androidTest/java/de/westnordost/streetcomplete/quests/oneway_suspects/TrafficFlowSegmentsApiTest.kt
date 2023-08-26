@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.ONEWAY_API_URL
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertTrue
 
 class TrafficFlowSegmentsApiTest {
 
