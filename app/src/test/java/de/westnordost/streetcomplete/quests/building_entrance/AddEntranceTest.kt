@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert
-import org.junit.Test
+import kotlin.test.Assert
+import kotlin.test.Test
 
 class AddBuildingEntranceTest {
 

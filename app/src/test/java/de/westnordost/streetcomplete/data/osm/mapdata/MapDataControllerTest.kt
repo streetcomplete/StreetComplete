@@ -16,14 +16,14 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.anyBoolean
 import org.mockito.Mockito.verify
 import java.lang.Thread.sleep
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class MapDataControllerTest {
 
@@ -36,7 +36,7 @@ class MapDataControllerTest {
     private lateinit var geometryCreator: ElementGeometryCreator
     private lateinit var createdElementsController: CreatedElementsController
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         nodeDB = mock()
         wayDB = mock()
         relationDB = mock()

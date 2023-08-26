@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 /** Integration test for the filter parser, filter expression and creator, the whole way from
  *  parsing the tag filters expression to returning it as a OQL string. More convenient this way

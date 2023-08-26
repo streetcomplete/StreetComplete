@@ -1,23 +1,23 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
-import org.junit.Assert.assertArrayEquals
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertContentEquals
+import kotlin.test.assertEquals
 
 internal class OrdinalsKtTest {
 
     @Test fun `ordinals to boolean array`() {
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(),
             Ordinals(setOf()).toBooleanArray()
         )
 
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(0, 1),
             Ordinals(setOf(1)).toBooleanArray()
         )
 
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1),
             Ordinals(setOf(0, 1, 4, 10)).toBooleanArray()
         )
@@ -58,17 +58,17 @@ internal class OrdinalsKtTest {
     }
 
     @Test fun `big integer to boolean array`() {
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(),
             0.toBigInteger().toBooleanArray()
         )
 
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(0, 0, 1),
             4.toBigInteger().toBooleanArray()
         )
 
-        assertArrayEquals(
+        assertContentEquals(
             booleanArrayOf(0, 0, 1, 0, 1),
             20.toBigInteger().toBooleanArray()
         )

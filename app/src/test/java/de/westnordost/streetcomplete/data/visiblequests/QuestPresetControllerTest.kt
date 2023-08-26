@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.visiblequests
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class QuestPresetControllerTest {
 
@@ -17,7 +17,7 @@ class QuestPresetControllerTest {
 
     private val preset = QuestPreset(1, "test")
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         questPresetsDao = mock()
         selectedQuestPresetStore = mock()
         ctrl = QuestPresetsController(questPresetsDao, selectedQuestPresetStore)

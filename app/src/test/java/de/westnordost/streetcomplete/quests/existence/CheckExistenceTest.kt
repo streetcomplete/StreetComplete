@@ -10,9 +10,9 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import org.junit.Assert
-import org.junit.Test
 import java.util.concurrent.FutureTask
+import kotlin.test.Assert
+import kotlin.test.Test
 
 class CheckExistenceTest {
     private val questType = CheckExistence(mockOfFeatureDictionary())

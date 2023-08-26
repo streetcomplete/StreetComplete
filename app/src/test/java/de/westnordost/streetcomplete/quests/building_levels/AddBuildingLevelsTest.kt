@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert
-import org.junit.Test
+import kotlin.test.Assert
+import kotlin.test.Test
 
 class AddBuildingLevelsTest {
 

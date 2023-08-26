@@ -30,12 +30,12 @@ import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import java.util.concurrent.FutureTask
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class OsmQuestControllerTest {
 
@@ -53,7 +53,7 @@ class OsmQuestControllerTest {
     private lateinit var mapDataListener: MapDataWithEditsSource.Listener
     private lateinit var notesListener: NotesWithEditsSource.Listener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         db = mock()
 
         hiddenDB = mock()

@@ -15,12 +15,12 @@ import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class NotesWithEditsSourceTest {
 
@@ -31,7 +31,7 @@ class NotesWithEditsSourceTest {
     private lateinit var noteEditsListener: NoteEditsSource.Listener
     private lateinit var userDataSource: UserDataSource
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         noteController = mock()
         noteEditsController = mock()
         userDataSource = mock()

@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.data.download.tiles
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.anyLong
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class DownloadedTilesControllerTest {
 
@@ -15,7 +16,7 @@ class DownloadedTilesControllerTest {
     private lateinit var listener: DownloadedTilesSource.Listener
     private lateinit var ctrl: DownloadedTilesController
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         dao = mock()
         listener = mock()
         ctrl = DownloadedTilesController(dao)
