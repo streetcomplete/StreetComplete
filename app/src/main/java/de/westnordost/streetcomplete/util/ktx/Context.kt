@@ -95,3 +95,12 @@ fun Context.sendEmail(email: String, subject: String, text: String? = null) {
         toast(R.string.no_email_client)
     }
 }
+
+fun Context.openUri(uri: String): Boolean {
+    return try {
+        startActivity(Intent(Intent.ACTION_VIEW, uri.toUri()))
+        true
+    } catch (e: ActivityNotFoundException) {
+        false
+    }
+}

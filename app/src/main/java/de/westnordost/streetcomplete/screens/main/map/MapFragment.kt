@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import android.app.Activity
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.PointF
 import android.graphics.RectF
@@ -14,7 +13,6 @@ import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.mapzen.tangram.TouchInput.DoubleTapResponder
 import com.mapzen.tangram.TouchInput.LongPressResponder
@@ -40,9 +38,9 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListene
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.containsAll
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.setMargins
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
@@ -145,16 +143,9 @@ open class MapFragment :
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.open_url)
             .setMessage(url)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                openUrl(url)
-            }
+            .setPositiveButton(android.R.string.ok) { _, _ -> openUri(url) }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-    }
-
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
