@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
 class StreetParkingCreatorKtTest {
@@ -551,7 +551,7 @@ class StreetParkingCreatorKtTest {
     @Test
     fun `applying incomplete left throws exception`() {
         assertFailsWith<IllegalArgumentException> {
-            LeftAndRightStreetParking(IncompleteStreetParking,null)
+            LeftAndRightStreetParking(IncompleteStreetParking, null)
                 .applyTo(StringMapChangesBuilder(mapOf()))
         }
     }

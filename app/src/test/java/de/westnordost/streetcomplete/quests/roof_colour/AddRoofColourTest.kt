@@ -5,19 +5,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.Assert.assertFalse
+import kotlin.test.Assert.assertTrue
+import kotlin.test.Test
 
 class AddRoofColourTest {
     private lateinit var questType: AddRoofColour
-
-    @Before
-    fun setUp() {
-        StreetCompleteApplication.preferences = mockPrefs()
-        questType = AddRoofColour()
-    }
 
     @Test
     fun `not applicable to roofs with colour already set`() {

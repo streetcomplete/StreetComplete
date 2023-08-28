@@ -6,14 +6,14 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.node
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.Assert
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class AddAcceptsCardsTest {
     private lateinit var questType: AddAcceptsCards
 
-    @Before
+    @BeforeTest
     fun setUp() {
         StreetCompleteApplication.preferences = mockPrefs()
         questType = AddAcceptsCards()

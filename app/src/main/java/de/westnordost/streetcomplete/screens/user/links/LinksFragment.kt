@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.links
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,8 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
@@ -46,7 +44,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
             val spanCount = (viewWidth / minCellWidth).toInt()
 
             val links = withContext(Dispatchers.IO) { achievementsSource.getLinks() }
-            val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
+            val adapter = GroupedLinksAdapter(links, ::openUri)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int =
@@ -75,10 +73,5 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
         } else {
             binding.emptyText.setText(R.string.links_empty)
         }
-    }
-
-    private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        tryStartActivity(intent)
     }
 }

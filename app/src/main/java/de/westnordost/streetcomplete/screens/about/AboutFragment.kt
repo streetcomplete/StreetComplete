@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.screens.about
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
 import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
@@ -16,8 +14,8 @@ import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBindi
 import de.westnordost.streetcomplete.databinding.DialogDonateBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.ListAdapter
 import java.util.Locale
 
@@ -35,21 +33,14 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
         findPreference<Preference>("authors")?.summary =
             getString(R.string.about_summary_authors, COPYRIGHT_YEARS)
 
-        findPreference<Preference>("license")?.setOnPreferenceClickListener {
-            openUrl("https://www.gnu.org/licenses/gpl-3.0.html")
-        }
-
-        findPreference<Preference>("fork_repository")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/SCEE/")
-        }
-
-        findPreference<Preference>("repository")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/streetcomplete/StreetComplete/")
-        }
-
-        findPreference<Preference>("faq")?.setOnPreferenceClickListener {
-            openUrl("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
-        }
+        findPreference<Preference>("license")
+            ?.setClickOpensUrl("https://www.gnu.org/licenses/gpl-3.0.html")
+        findPreference<Preference>("repository")
+            ?.setClickOpensUrl("https://github.com/streetcomplete/StreetComplete")
+        findPreference<Preference>("faq")
+            ?.setClickOpensUrl("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
+        findPreference<Preference>("fork_repository")
+            ?.setClickOpensUrl("https://github.com/Helium314/SCEE/")
 
         findPreference<Preference>("translate")?.setOnPreferenceClickListener {
             AlertDialog.Builder(requireContext())
@@ -58,23 +49,22 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
                     Locale.getDefault().displayLanguage,
                     resources.getInteger(R.integer.translation_completeness)
                 ))
-                .setPositiveButton("StreetComplete") { _, _ -> openUrl("https://poeditor.com/join/project/IE4GC127Ki")}
-                .setNegativeButton("SCEE") { _, _ -> openUrl("https://translate.codeberg.org/projects/scee/")}
+                .setPositiveButton("StreetComplete") { _, _ -> openUri("https://poeditor.com/join/project/IE4GC127Ki")}
+                .setNegativeButton("SCEE") { _, _ -> openUri("https://translate.codeberg.org/projects/scee/")}
                 .show()
             true
         }
 
-        findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/SCEE/issues/")
-        }
+        findPreference<Preference>("report_error")
+            ?.setClickOpensUrl("https://github.com/Helium314/SCEE/issues/")
+        findPreference<Preference>("give_feedback")
+            ?.setClickOpensUrl("https://github.com/Helium314/SCEE/discussions/")
 
-        findPreference<Preference>("give_feedback")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/Helium314/SCEE/discussions/")
-        }
-
-        findPreference<Preference>("rate")?.isVisible = isInstalledViaGooglePlay()
-        findPreference<Preference>("rate")?.setOnPreferenceClickListener {
+        val ratePreference = findPreference<Preference>("rate")
+        ratePreference?.isVisible = isInstalledViaGooglePlay()
+        ratePreference?.setOnPreferenceClickListener {
             openGooglePlayStorePage()
+            true
         }
 
         findPreference<Preference>("donate")?.setOnPreferenceClickListener {
@@ -94,15 +84,16 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
         return installerPackageName == "com.android.vending"
     }
 
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        tryStartActivity(intent)
-        return true
+    private fun Preference.setClickOpensUrl(url: String) {
+        setOnPreferenceClickListener {
+            openUri(url)
+            true
+        }
     }
 
-    private fun openGooglePlayStorePage(): Boolean {
-        val appPackageName = context?.applicationContext?.packageName ?: return false
-        return openUrl("market://details?id=$appPackageName")
+    private fun openGooglePlayStorePage() {
+        val appPackageName = context?.packageName ?: return
+        openUri("market://details?id=$appPackageName")
     }
 
     private fun showDonateDialog() {
@@ -131,7 +122,7 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
             override fun onBind(with: DonationPlatform) {
                 binding.imageView.setImageResource(with.iconId)
                 binding.textView.text = with.title
-                binding.root.setOnClickListener { openUrl(with.url) }
+                binding.root.setOnClickListener { openUri(with.url) }
                 TextViewCompat.setTextAppearance(binding.textView, R.style.TextAppearance_Title)
             }
         }

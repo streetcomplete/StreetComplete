@@ -27,6 +27,8 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -49,14 +51,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
-import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.Log

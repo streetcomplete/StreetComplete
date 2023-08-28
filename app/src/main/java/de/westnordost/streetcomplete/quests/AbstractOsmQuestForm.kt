@@ -17,6 +17,8 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -45,8 +47,6 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
-import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.accessKeys

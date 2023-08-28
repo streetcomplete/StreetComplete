@@ -14,12 +14,12 @@ import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class OsmNoteQuestControllerTest {
 
@@ -36,7 +36,7 @@ class OsmNoteQuestControllerTest {
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginStatusSource.Listener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         noteSource = mock()
         hiddenDB = mock()
         userDataSource = mock()

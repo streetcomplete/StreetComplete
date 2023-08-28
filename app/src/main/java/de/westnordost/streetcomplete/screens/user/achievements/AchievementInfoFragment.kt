@@ -4,7 +4,6 @@ import android.animation.LayoutTransition
 import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewPropertyAnimator
@@ -13,7 +12,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.activity.OnBackPressedCallback
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +19,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
 import de.westnordost.streetcomplete.screens.user.links.LinksAdapter
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.Transforms
 import de.westnordost.streetcomplete.view.ViewPropertyAnimatorsPlayer
@@ -143,7 +141,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
             )
-            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
+            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, ::openUri)
         }
     }
 
@@ -315,11 +313,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             .withEndAction {
                 binding.dialogAndBackgroundContainer.visibility = View.INVISIBLE
             }
-
-    private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        tryStartActivity(intent)
-    }
 
     private fun playAll(vararg animators: ViewPropertyAnimator) {
         animatorsPlayer = ViewPropertyAnimatorsPlayer(animators.toMutableList()).also {

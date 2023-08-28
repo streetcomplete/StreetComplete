@@ -8,10 +8,10 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import org.junit.Assert.assertEquals
-import org.junit.Test
 import java.util.Locale
 import java.util.concurrent.FutureTask
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class CheckExistenceLabelTest {
     private var featureDictionaryFuture: FutureTask<FeatureDictionary>

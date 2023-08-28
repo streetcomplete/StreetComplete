@@ -26,12 +26,12 @@ import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.pGeom
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class VisibleQuestsSourceTest {
 
@@ -57,7 +57,7 @@ class VisibleQuestsSourceTest {
     private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC(), OsmNoteQuestType)
     private val questTypeNames = questTypes.map { it.name }
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         osmNoteQuestSource = mock()
         osmQuestSource = mock()
         visibleQuestTypeSource = mock()

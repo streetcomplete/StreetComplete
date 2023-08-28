@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming
 
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming.*
-import org.junit.Assert.*
-import org.junit.Test
+import kotlin.test.*
+import kotlin.test.Test
 
 class LaneNarrowingTrafficCalmingParserKtTest {
     @Test fun none() {

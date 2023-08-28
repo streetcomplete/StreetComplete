@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
-import org.junit.Assert.*
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.Mockito.verifyNoMoreInteractions
+import kotlin.test.*
+import kotlin.test.Test
 
 internal class MapDataCacheTest {
 

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class SidewalkKtTest {
     @Test fun validOrNullValues() {

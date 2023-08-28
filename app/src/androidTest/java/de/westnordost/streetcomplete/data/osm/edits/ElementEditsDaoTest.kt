@@ -29,18 +29,18 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class ElementEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementEditsDao
 
-    @Before fun createDao() {
+    @BeforeTest fun createDao() {
         val list = listOf(1 to TEST_QUEST_TYPE, 2 to TEST_QUEST_TYPE2)
         val list2 = listOf(1 to TestOverlay)
         dao = ElementEditsDao(database, QuestTypeRegistry(list), OverlayRegistry(list2))

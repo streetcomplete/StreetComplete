@@ -18,10 +18,10 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class ElementEditsControllerTest {
 
@@ -32,7 +32,7 @@ class ElementEditsControllerTest {
     private lateinit var lastEditTimeStore: LastEditTimeStore
     private lateinit var idProvider: ElementIdProviderDao
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         db = mock()
         on(db.delete(anyLong())).thenReturn(true)
         on(db.markSynced(anyLong())).thenReturn(true)

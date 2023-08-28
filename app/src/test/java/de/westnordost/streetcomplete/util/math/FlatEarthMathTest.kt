@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.util.math
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import org.junit.Assert.assertEquals
-import org.junit.Test
 import kotlin.random.Random
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class FlatEarthMathTest {
 

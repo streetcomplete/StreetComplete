@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
-import org.junit.Assert
-import org.junit.Test
+import kotlin.test.Assert
+import kotlin.test.Test
 
 class AddWheelchairAccessToiletsPartTest {
     private val questType = AddWheelchairAccessToiletsPart()

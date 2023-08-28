@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
 
 internal class SidewalkSurfaceCreatorKtTest {
 

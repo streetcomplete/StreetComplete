@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_colour
 
 import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.assertNotNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertNotNull
 
 class BuildingColourItemTest {
     @Test

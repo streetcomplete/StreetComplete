@@ -46,8 +46,7 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
         }
         node = node.parent!!
 
-        if (node is Not)
-        {
+        if (node is Not) {
             node = node.parent!!
         }
 

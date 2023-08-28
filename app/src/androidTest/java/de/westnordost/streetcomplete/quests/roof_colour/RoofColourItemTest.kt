@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.roof_colour
 
 import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape
-import org.junit.Assert.assertNotNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertNotNull
 
 class RoofColourItemTest {
     @Test

@@ -303,7 +303,7 @@ fun getQuestTypeList(
     9 to AddCarWashType(),
 
     10 to AddBenchBackrest(),
-    11 to AddAmenityCover(),
+    11 to AddAmenityCover(featureDictionaryFuture),
 
     12 to AddBridgeStructure(),
 

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
-import org.junit.Assert.*
-import org.junit.Test
+import kotlin.test.*
+import kotlin.test.Test
 
 class SeparateCyclewayParserKtTest {
 

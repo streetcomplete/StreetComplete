@@ -58,8 +58,9 @@ private fun flatAngularDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Doub
     // https://en.wikipedia.org/wiki/Geographical_distance#Spherical_Earth_projected_to_a_plane
     val δφ = φ1 - φ2
     var δλ = abs(λ1 - λ2)
-    if (δλ > PI)
+    if (δλ > PI) {
         δλ = 2 * PI - δλ
+    }
     val cosδλ = approximateCos((φ1 + φ2) / 2) * δλ
     return sqrt(δφ * δφ + cosδλ * cosδλ)
 }
@@ -72,8 +73,9 @@ private fun flatAngularDistanceToArc(φ1: Double, λ1: Double, φ2: Double, λ2:
     val δφ12 = φ2 - φ1
     val δλ12 = λ2 - λ1
 
-    if (δφ12 == 0.0 && δλ12 == 0.0)
+    if (δφ12 == 0.0 && δλ12 == 0.0) {
         return flatAngularDistance(φ1, λ1, φ3, λ3)
+    }
 
     val δλ13 = λ3 - λ1
     val c = approximateCos(φ3)

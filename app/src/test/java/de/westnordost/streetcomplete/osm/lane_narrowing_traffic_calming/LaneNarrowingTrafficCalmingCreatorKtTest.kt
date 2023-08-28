@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
 
 class LaneNarrowingTrafficCalmingCreatorKtTest {
     @Test fun `set traffic_calming`() {

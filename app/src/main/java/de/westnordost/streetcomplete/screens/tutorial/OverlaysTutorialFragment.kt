@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnticipateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
@@ -130,8 +129,8 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
         binding.paintRollerView.animate()
             .setInterpolator(AccelerateDecelerateInterpolator())
             .setDuration(700)
-            .translationX(-binding.paintRollerView.width/4f)
-            .translationY(-binding.paintRollerView.height/4f)
+            .translationX(-binding.paintRollerView.width / 4f)
+            .translationY(-binding.paintRollerView.height / 4f)
             .rotation(-45f)
             .scaleX(1f)
             .scaleY(1f)
