@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.quests.onlyInANoneMaxSpeed30OrLessZone
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import java.util.concurrent.FutureTask
 
@@ -143,7 +144,7 @@ private val roadsFilter by lazy { """
 private val untaggedRoadsFilter by lazy { """
     ways with (
         highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-        or highway = residential and (maxspeed > 33 or $notInZone30OrLess)
+        or highway = residential and (maxspeed > 33 or $onlyInANoneMaxSpeed30OrLessZone)
       )
       and !cycleway
       and !cycleway:left
@@ -156,7 +157,7 @@ private val untaggedRoadsFilter by lazy { """
       and (
         !maxspeed
         or maxspeed > 20
-        or $notInZone30OrLess
+        or $onlyInANoneMaxSpeed30OrLessZone
       )
       and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
       and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
@@ -164,7 +165,7 @@ private val untaggedRoadsFilter by lazy { """
 """.toElementFilterExpression() }
 
 private val notInZone30OrLess = """
-   !(~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(30|20)")
+   ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
 """
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
