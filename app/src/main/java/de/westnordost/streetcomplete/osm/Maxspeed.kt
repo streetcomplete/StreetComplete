@@ -10,6 +10,18 @@ val MAXSPEED_TYPE_KEYS = setOf(
     "zone:traffic"
 )
 
+val anyMaxSpeedTagKey = "~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}"
+
+val explicitlyInSlowZone = """$anyMaxSpeedTagKey ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)""""
+
+// This assumes that elements only tagged with 'maxspeed' and no other maxspeed tags are in a slow zone.
+val notInSlowZone = """
+  !(
+    maxspeed ~ "walk|(\d+( ?mph)?)" and !(~${(MAXSPEED_TYPE_KEYS).joinToString("|")})
+    or $explicitlyInSlowZone
+  )
+"""
+
 /** Functions to get speed in km/h from tags */
 
 fun getMaxspeedInKmh(tags: Map<String, String>): Float? {
