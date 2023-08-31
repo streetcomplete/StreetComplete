@@ -1,4 +1,4 @@
-v54.0-beta1: |
+v54.0: |
   <ul>
   <li>Enable element selection for road and path surface quests in quest settings</li>
   <li>Allow disabling navigation mode, #442</li>
