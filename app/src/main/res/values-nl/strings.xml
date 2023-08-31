@@ -1325,6 +1325,7 @@ Nu verplaatsen?"</string>
     <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Gezamelijk padgebruik"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gezamelijk padgebruik, beide richtingen"</string>
+    <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"Je hebt een nieuwe manier gevonden om gegevens te bewerken!"</string>
     <string name="overlays_tutorial_display">"Elke overlay toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
 
