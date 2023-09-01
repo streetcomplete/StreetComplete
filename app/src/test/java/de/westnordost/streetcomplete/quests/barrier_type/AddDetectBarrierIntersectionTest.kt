@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class AddDetectBarrierIntersectionTest {
@@ -14,7 +14,7 @@ class AddDetectBarrierIntersectionTest {
         val mapData = TestMapDataWithGeometry(listOf(
             node(1)
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -31,7 +31,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "wall")),
         ))
-        Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
+        assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
 
     /*
@@ -48,7 +48,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "wall")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -64,7 +64,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "fence")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -80,7 +80,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2), tags = mapOf("barrier" to "city_wall")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -99,7 +99,7 @@ class AddDetectBarrierIntersectionTest {
             way(3, nodes = listOf(4, 2), tags = mapOf("barrier" to "guard_rail")),
             way(4, nodes = listOf(2, 5), tags = mapOf("barrier" to "wall"))
         ))
-        Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
+        assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
 
     /*
@@ -118,7 +118,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "fence")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -137,7 +137,7 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "wall")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*
@@ -161,7 +161,7 @@ class AddDetectBarrierIntersectionTest {
             way(4, nodes = listOf(6, 2), tags = mapOf("barrier" to "hedge")),
             way(5, nodes = listOf(7, 2), tags = mapOf("barrier" to "guard_rail")),
         ))
-        Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
+        assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
 
     /*
@@ -183,7 +183,7 @@ class AddDetectBarrierIntersectionTest {
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("highway" to "unclassified")),
             way(3, nodes = listOf(6, 2, 7), tags = mapOf("barrier" to "city_wall")),
         ))
-        Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
+        assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
 
     /*
@@ -204,6 +204,6 @@ class AddDetectBarrierIntersectionTest {
             way(2, nodes = listOf(3, 2), tags = mapOf("highway" to "unclassified")),
             way(3, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "retaining_wall")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

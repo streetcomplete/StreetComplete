@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class AddBuildingEntranceTest {
@@ -37,7 +37,7 @@ class AddBuildingEntranceTest {
         val mapData = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "corridor",
         ))
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -46,7 +46,7 @@ class AddBuildingEntranceTest {
             "highway" to "corridor",
             "access" to "private",
         ))
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -56,7 +56,7 @@ class AddBuildingEntranceTest {
             "indoor" to "yes",
         ))
         // 2 because both ends of way through building generated quest
-        Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(2, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -65,7 +65,7 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
         ))
         // 2 because both ends of way through building generated quest
-        Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(2, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -74,7 +74,7 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
             "access" to "private",
         ))
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -85,7 +85,7 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
             "tunnel" to "building_passage",
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -94,7 +94,7 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
             "covered" to "weird_value",
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -103,7 +103,7 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
             "tunnel" to "weird_value",
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -123,7 +123,7 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -144,7 +144,7 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -165,7 +165,7 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -187,7 +187,7 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -197,13 +197,13 @@ class AddBuildingEntranceTest {
             "highway" to "footway",
             "location" to "roof",
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapDataWithRoof).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapDataWithRoof).toList().size)
 
         val mapDataWithRooftop = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "footway",
             "location" to "rooftop",
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapDataWithRooftop).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapDataWithRooftop).toList().size)
     }
 
     @Test
@@ -226,7 +226,7 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -249,6 +249,6 @@ class AddBuildingEntranceTest {
                 way(3L, listOf(3, 4)),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }
