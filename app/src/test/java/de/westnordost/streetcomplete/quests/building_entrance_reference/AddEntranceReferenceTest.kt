@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Assert
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddBuildingEntranceReferenceTest {
 
@@ -29,7 +29,7 @@ class AddBuildingEntranceReferenceTest {
                 way(2L, listOf(2, 20), mapOf("highway" to "footway")),
             ),
         )
-        Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(2, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -52,7 +52,7 @@ class AddBuildingEntranceReferenceTest {
                 way(201L, listOf(5, 20), mapOf("highway" to "footway")),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -71,7 +71,7 @@ class AddBuildingEntranceReferenceTest {
                 way(2L, listOf(2, 20), mapOf("highway" to "footway", "access" to "no")),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -90,7 +90,7 @@ class AddBuildingEntranceReferenceTest {
                 )),
             ),
         )
-        Assert.assertEquals(2, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(2, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -108,6 +108,6 @@ class AddBuildingEntranceReferenceTest {
                 )),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }
