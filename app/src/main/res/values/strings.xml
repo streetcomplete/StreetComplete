@@ -1052,6 +1052,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_internet_access_no">No connection</string>
 
     <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
