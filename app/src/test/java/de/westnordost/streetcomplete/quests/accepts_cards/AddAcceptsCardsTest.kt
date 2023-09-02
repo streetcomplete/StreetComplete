@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.node
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -36,6 +36,6 @@ class AddAcceptsCardsTest {
                 node(1, tags = mapOf("shop" to "greengrocer", "name" to "Foobar")),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 }

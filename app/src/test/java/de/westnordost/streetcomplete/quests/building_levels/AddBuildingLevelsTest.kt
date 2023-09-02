@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class AddBuildingLevelsTest {
@@ -46,7 +46,7 @@ class AddBuildingLevelsTest {
                 "building" to "industrial"
             ))
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to residential buildings`() {
@@ -55,6 +55,6 @@ class AddBuildingLevelsTest {
                 "building" to "residential"
             ))
         ))
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 }

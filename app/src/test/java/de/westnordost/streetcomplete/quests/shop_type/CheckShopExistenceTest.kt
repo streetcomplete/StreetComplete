@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import java.util.concurrent.FutureTask
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class CheckShopExistenceTest {
@@ -40,7 +40,7 @@ class CheckShopExistenceTest {
                 node(timestamp = 0, tags = mapOf("shop" to "weird_value")),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -50,7 +50,7 @@ class CheckShopExistenceTest {
                 node(timestamp = 0, tags = mapOf("shop" to "weird_value", "name" to "Foobar")),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -60,6 +60,6 @@ class CheckShopExistenceTest {
                 node(timestamp = 0, tags = mapOf("shop" to "greengrocer", "name" to "Foobar")),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 }

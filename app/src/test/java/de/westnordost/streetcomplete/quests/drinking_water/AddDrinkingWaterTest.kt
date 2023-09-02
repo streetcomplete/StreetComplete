@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.drinking_water
 
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class AddDrinkingWaterTest {
@@ -15,7 +15,7 @@ class AddDrinkingWaterTest {
                 node(1, tags = mapOf("natural" to "spring")),
             ),
         )
-        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -25,6 +25,6 @@ class AddDrinkingWaterTest {
                 node(1, tags = mapOf("natural" to "spring", "access" to "no")),
             ),
         )
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

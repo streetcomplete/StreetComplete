@@ -11,8 +11,10 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.FutureTask
-import kotlin.test.Assert
+import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class CheckExistenceTest {
     private val questType = CheckExistence(mockOfFeatureDictionary())
@@ -63,7 +65,7 @@ class CheckExistenceTest {
     }
 
     @Test fun `isApplicableTo returns false for known places with recently edited amenity=telephone`() {
-        Assert.assertFalse(
+        assertFalse(
             questType.isApplicableTo(
                 node(
                     tags = mapOf(
@@ -76,7 +78,7 @@ class CheckExistenceTest {
 
     @Test fun `isApplicableTo returns true for known places with old amenity=telephone`() {
         val milisecondsFor800Days: Long = 1000L * 60 * 60 * 24 * 800
-        Assert.assertTrue(
+        assertTrue(
             questType.isApplicableTo(
                 node(
                     tags = mapOf(
