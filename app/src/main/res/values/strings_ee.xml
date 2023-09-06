@@ -390,6 +390,7 @@
     <string name="quest_maxspeed_conditional_limited_enter_default">Select the default limit before selecting this answer</string>
     <string name="time_limited_from">From</string>
     <string name="time_limited_to">To</string>
+    <string name="quest_name_brand">It has a brand name…</string>
 
 
     <!-- new overlays -->

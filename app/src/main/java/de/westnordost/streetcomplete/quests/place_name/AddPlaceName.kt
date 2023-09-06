@@ -67,6 +67,14 @@ class AddPlaceName(
             is PlaceName -> {
                 answer.localizedNames.applyTo(tags)
             }
+            is FeatureName -> {
+                for (addTag in answer.feature.addTags)
+                    tags[addTag.key] = addTag.value
+            }
+            is BrandName -> {
+                tags["brand"] = answer.name
+                tags["name"] = answer.name
+            }
         }
     }
 
