@@ -10,12 +10,12 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
 
 class DownloadedAreaMapComponent(private val ctrl: KtMapController) {
-    private var layer: MapData = ctrl.addDataLayer(DOWNLOADED_AREA_LAYER)
+    private var layer: MapData? = null
 
-    fun set(tiles: Collection<TilePos>) {
+    fun set(tiles: Collection<TilePos>) = synchronized(this) {
         // tangram does not clear a layer properly on re-setting features on it, so let's remove
         // and re-add the whole layer
-        layer.remove()
+        layer?.remove()
         val layer = ctrl.addDataLayer(DOWNLOADED_AREA_LAYER)
 
         val zoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
