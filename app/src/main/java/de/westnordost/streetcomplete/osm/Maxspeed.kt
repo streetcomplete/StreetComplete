@@ -12,7 +12,7 @@ val MAXSPEED_TYPE_KEYS = setOf(
 
 val anyMaxSpeedTagKey = "~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}"
 
-val explicitlyInSlowZone = """$anyMaxSpeedTagKey ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)""""
+val explicitlyInSlowZone = """$anyMaxSpeedTagKey ~ ".*:(zone:?)?([1-9]|[1-2][0-9]|30)""""
 
 // This assumes that elements only tagged with 'maxspeed' and no other maxspeed tags are in a slow zone.
 val notInSlowZone = """
