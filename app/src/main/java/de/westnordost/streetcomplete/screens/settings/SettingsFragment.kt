@@ -171,7 +171,7 @@ class SettingsFragment :
                 addView(log)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     setOnScrollChangeListener { _, _, _, _, _ ->
-                        if (log.bottom - (height + scrollY) <= 0 && lines.size > maxLines) {
+                        if (log.bottom <= height + scrollY && lines.size >= maxLines) {
                             maxLines *= 2
                             reloadText()
                         }
