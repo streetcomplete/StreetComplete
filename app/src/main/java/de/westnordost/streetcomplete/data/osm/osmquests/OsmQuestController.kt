@@ -41,6 +41,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
@@ -86,7 +87,7 @@ class OsmQuestController internal constructor(
     // must be valid names!
     private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance", "AddEntranceReference", "AddHousenumber", "AddDestination")
 
-    private val hiddenCache by lazy { hiddenDB.getAllIds().toHashSet() }
+    private val hiddenCache by lazy { synchronized(this) { hiddenDB.getAllIds().toHashSet() } }
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 
@@ -118,13 +119,14 @@ class OsmQuestController internal constructor(
                 Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
-                lastAnsweredQuestKey?.let {
+                val questKeysToDelete = lastAnsweredQuestKey?.let {
                     lastAnsweredQuestKey = null
-                    onUpdated(added = quests, deletedKeys = obsoleteQuestKeys + it)
-                }
-                onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+                    obsoleteQuestKeys + it
+                } ?: obsoleteQuestKeys
+                // run onUpdated on a different thread, no need to do it synchronized
+                scope.launch { onUpdated(added = quests, deletedKeys = questKeysToDelete) }
                 // write quests to db only after onUpdated
-                // this might reduces the app being blocked during download / map data persist
+                // this might reduce the time the app app is blocked during download / map data persist
                 // on answering the second quest during a download or persist phase, it's still blocked (but shorter of course)
                 updateQuests(quests, obsoleteQuestKeys)
             }
@@ -361,10 +363,8 @@ class OsmQuestController internal constructor(
 
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: OsmQuestKey) {
-        synchronized(this) {
-            if (hiddenCache.add(key)) // we may already have it hidden, as nearby quests may allow answering hidden quests
-                hiddenDB.add(key)
-        }
+        if (synchronized(hiddenCache) { hiddenCache.add(key) })
+            synchronized(this) { hiddenDB.add(key) } // we may already have it hidden, as nearby quests may allow answering hidden quests
 
         val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
@@ -377,8 +377,8 @@ class OsmQuestController internal constructor(
 
     fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
+        if (!synchronized(hiddenCache) { hiddenCache.remove(key) }) return false
         synchronized(this) {
-            if (!hiddenCache.remove(key)) return false
             hiddenDB.delete(key)
         }
         if (hidden != null) onUnhid(hidden)
@@ -389,10 +389,8 @@ class OsmQuestController internal constructor(
 
     /** Un-hides all previously hidden quests by user interaction */
     fun unhideAll(): Int {
-        val unhidCount = synchronized(this) {
-            hiddenCache.clear()
-            hiddenDB.deleteAll()
-        }
+        synchronized(hiddenCache) { hiddenCache.clear() }
+        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
         onUnhidAll()
         onInvalidated()
         return unhidCount
@@ -444,9 +442,9 @@ class OsmQuestController internal constructor(
             val bbox = added.map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
             if (hiddenPositions.isEmpty())
-                synchronized(this) { added.filter { it.key !in hiddenCache } }
+                synchronized(hiddenCache) { added.filter { it.key !in hiddenCache } }
             else
-                synchronized(this) { added.filter { it.key !in hiddenCache && it.position.truncateTo5Decimals() !in hiddenPositions } }
+                synchronized(hiddenCache) { added.filter { it.key !in hiddenCache && it.position.truncateTo5Decimals() !in hiddenPositions } }
         } else {
             added
         }
