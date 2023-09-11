@@ -61,7 +61,7 @@ class DatesActiveDrawable(
 
         // grid + months
         for (i in 0..datesActiveRange) {
-            val date = time.toLocalDate()
+            val date = time.toLocalDateTime(TimeZone.UTC).date
 
             val y = (height - 1) - (i + dayOffset) % height
             val x = (width - 1) - floor(((i + dayOffset) / height).toDouble()).toInt()
