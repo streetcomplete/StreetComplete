@@ -28,7 +28,7 @@ class AddLevel : OsmElementQuestType<String> {
          or railway = station
          or amenity = bus_station
          or public_transport = station
-         ${if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) "or (building and building:levels != 1 and building !~ roof|house|detached)" else ""}
+         ${if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) "or (building and building:levels != 1 and building !~ roof|house|detached|carport)" else ""}
     """.toElementFilterExpression() }
 
     private val thingsWithLevelOrDoctorsFilter by lazy { """
