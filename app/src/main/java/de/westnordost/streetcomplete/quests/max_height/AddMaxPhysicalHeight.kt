@@ -26,6 +26,9 @@ class AddMaxPhysicalHeight(
         and access !~ private|no
         and vehicle !~ private|no
     """.toElementFilterExpression() }
+    // leaving out railway = level_crossing is deliberate, we do not want people to measure overhead
+    // cables by hand - bzzzt! - but also (if measured with laser) the result would be wrong, as
+    // the (signed) max height is always something like 1.5 meter distance to the cable itself
 
     private val wayFilter by lazy { """
         ways with

@@ -79,8 +79,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             && tags["railway"] != "level_crossing"
         // only the "below the bridge" situation may need some context
         return when {
-            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
-            else          -> R.string.quest_maxheight_title
+            isBelowBridge -> R.string.quest_maxheight_sign_below_bridge_title
+            else          -> R.string.quest_maxheight_sign_title
         }
     }
 
