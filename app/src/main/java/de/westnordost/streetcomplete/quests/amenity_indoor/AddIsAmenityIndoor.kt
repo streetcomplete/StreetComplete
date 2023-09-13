@@ -24,8 +24,7 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
         nodes with
          (
          emergency ~ defibrillator|fire_extinguisher
-         or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator
-         or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
+         or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator|vending_machine
          )
          and access !~ private|no
          and !indoor and !location and !level and !level:ref
