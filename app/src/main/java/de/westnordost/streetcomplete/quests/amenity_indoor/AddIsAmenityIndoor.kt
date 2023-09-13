@@ -4,6 +4,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -11,45 +12,70 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 import java.util.concurrent.FutureTask
 
-class AddIsAmenityIndoor (private val featureDictionaryFuture: FutureTask<FeatureDictionary>)
-    : OsmElementQuestType<Boolean> {
+class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) :
+    OsmElementQuestType<Boolean> {
 
-    private val nodesFilter by lazy { """
+    private val nodesFilter by lazy {
+        """
         nodes with
          (
-         emergency = defibrillator
-         or emergency = fire_extinguisher
-         or amenity = atm
-         or amenity = telephone
-         or amenity = parcel_locker
-         or amenity = luggage_locker
-         or amenity = locker
-         or amenity = clock
-         or amenity = post_box
-         or amenity = public_bookcase
-         or amenity = give_box
+         emergency ~ defibrillator|fire_extinguisher
+         or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator
          or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
-         or amenity = ticket_validator
          )
          and access !~ private|no
-         and !indoor and !location
-    """.toElementFilterExpression() }
+         and !indoor and !location and !level and !level:ref
+    """.toElementFilterExpression()
+    }
 
-    /*
-    *
-    * */
+    /* We only want survey nodes within building outlines. */
+    private val BuildingFilter by lazy {
+        """
+    ways, relations with building
+    """.toElementFilterExpression()
+    }
+
     override val changesetComment = "Determine whether various amenitys are inside buildings"
     override val wikiLink = "Key:indoor"
+
     //TODO: Generisches Item
     override val icon = R.drawable.ic_quest_defibrillator
-    //TODO: Noch schauen, wie man die achievements abhängig vom Element machen kann. AED -> LIFESAVER, parcel_locker->POSTMAN,etc.
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_amenity_inside_title
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val bbox = mapData.boundingBox ?: return listOf()
+        val nodes = mapData.nodes.filter { isApplicableTo(it) }
+        val buildings = mapData.filter { BuildingFilter.matches(it) }.toMutableList()
+
+        val buildingGeometriesById = buildings.associate {
+            it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+        }
+
+        buildings.removeAll { building ->
+            val buildingBounds = buildingGeometriesById[building.id]?.getBounds()
+            (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox))
+        }
+
+        //Reduce all matching nodes to nodes within building outlines
+        val nodesInBuildings = nodes.filter {
+            buildings.any { building ->
+                val buildingGeometry = buildingGeometriesById[building.id]
+
+                if (buildingGeometry != null)
+                    it.position.isInMultipolygon(buildingGeometry.polygons)
+                 else
+                    false
+            }
+
+        }
+
+        return nodesInBuildings
+    }
 
     override fun isApplicableTo(element: Element) =
         nodesFilter.matches(element) && hasAnyName(element.tags)
@@ -73,8 +99,9 @@ class AddIsAmenityIndoor (private val featureDictionaryFuture: FutureTask<Featur
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["indoor"] = answer.toYesNo()
-        }
     }
+}
+
 private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }
 
 
