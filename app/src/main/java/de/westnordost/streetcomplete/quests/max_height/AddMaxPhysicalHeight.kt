@@ -20,7 +20,8 @@ class AddMaxPhysicalHeight(
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*" or maxheight:signed = no)
+        and maxheight != default
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
@@ -29,7 +30,8 @@ class AddMaxPhysicalHeight(
     private val wayFilter by lazy { """
         ways with
         highway ~ ${ALL_ROADS.joinToString("|")}
-        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*" or maxheight:signed = no)
+        and maxheight != default
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
