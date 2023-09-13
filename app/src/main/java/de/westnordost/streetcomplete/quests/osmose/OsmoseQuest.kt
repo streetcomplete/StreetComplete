@@ -166,6 +166,7 @@ const val PREF_OSMOSE_APP_LANGUAGE = "qs_OsmoseQuest_app_language" // do not use
 
 // items that have associated SC quests/overlays are disabled by default
 // same for issues related to ignored relation types
+// §§ is used as separator
 const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "3230/32301" + "§§" + // "Probably only for bottles, not any type of glass"
     "4061/40610" + "§§" + // "object needs review" (fixme poi "quest")
@@ -198,5 +199,8 @@ const val OSMOSE_DEFAULT_IGNORED_ITEMS =
     "female=yes together with male=yes" + "§§" + // this is not necessarily the same as unisex
     // relation-related stuff below
     "1260" + "§§" + // Osmosis_Relation_Public_Transport
-    "2140" + "§§" // missing tags on public transport relations / stops
+    "2140" + "§§" + // missing tags on public transport relations / stops
+    "1140" + "§§" + // missing tag or role
+    "1200" + "§§" + //  1-member relation
+    "9007" + "§§" // various relation related issues, usually missing tags
 
