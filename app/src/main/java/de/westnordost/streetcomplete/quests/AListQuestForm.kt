@@ -40,7 +40,7 @@ abstract class AListQuestForm<T> : AbstractOsmQuestForm<T>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(radioButtonIds.getValue(binding.radioButtonGroup.checkedRadioButtonId).value)
+        applyAnswer(checkedItem!!.value)
     }
 
     override fun isFormComplete() = binding.radioButtonGroup.checkedRadioButtonId != -1
