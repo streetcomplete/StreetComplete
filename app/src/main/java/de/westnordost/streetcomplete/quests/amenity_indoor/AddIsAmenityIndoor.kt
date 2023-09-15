@@ -46,6 +46,7 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_amenity_inside_title
+
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
         val nodes = mapData.nodes.filter { isApplicableTo(it) }
