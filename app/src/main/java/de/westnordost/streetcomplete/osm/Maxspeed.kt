@@ -16,7 +16,7 @@ val explicitlyInSlowZone = """$anyMaxSpeedTagKey ~ ".*:(zone:?)?([1-9]|[1-2][0-9
 
 val notInSlowZoneAndNotPlainMaxspeedTagging = """
   !(
-    maxspeed ~ "walk|(\d+( ?mph)?)" and !(~${(MAXSPEED_TYPE_KEYS).joinToString("|")})
+    maxspeed ~ "walk|(\d+( ?mph)?)" and !~${(MAXSPEED_TYPE_KEYS).joinToString("|")}
     or $explicitlyInSlowZone
   )
 """
