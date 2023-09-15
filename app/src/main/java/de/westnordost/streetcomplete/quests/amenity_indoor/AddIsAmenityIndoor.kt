@@ -38,7 +38,7 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
     """.toElementFilterExpression()
     }
 
-    override val changesetComment = "Determine whether various amenitys are inside buildings"
+    override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
 
     //TODO: Generisches Item
