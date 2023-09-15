@@ -31,7 +31,7 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
     override fun onClickOk() {
         if (checkedItem?.value == PROHIBITED && isOnSidewalkOrCrossing()) {
             AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_crossing_prohibited_but_on_sidewalk_or_crossing)
+                .setMessage(R.string.quest_leave_new_note_as_answer)
                 .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
