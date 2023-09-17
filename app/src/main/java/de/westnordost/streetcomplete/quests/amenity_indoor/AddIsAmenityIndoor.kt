@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.util.math.LatLonRaster
+import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 import java.util.concurrent.FutureTask
@@ -56,9 +58,14 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
             it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
         }
 
+        val nodesPositions = LatLonRaster(bbox, 0.0005)
+        for (node in nodes) {
+            nodesPositions.insert(node.position)
+        }
+
         buildings.removeAll { building ->
             val buildingBounds = buildingGeometriesById[building.id]?.getBounds()
-            (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox))
+            (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox) || nodesPositions.getAll(buildingBounds).count() == 0)
         }
 
         //Reduce all matching nodes to nodes within building outlines
@@ -66,7 +73,7 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
-                if (buildingGeometry != null)
+                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position) )
                     it.position.isInMultipolygon(buildingGeometry.polygons)
                  else
                     false
