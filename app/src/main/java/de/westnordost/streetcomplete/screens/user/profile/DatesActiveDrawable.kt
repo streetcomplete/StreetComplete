@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
