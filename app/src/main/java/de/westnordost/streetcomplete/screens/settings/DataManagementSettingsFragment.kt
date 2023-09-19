@@ -517,15 +517,31 @@ class DataManagementSettingsFragment :
         }
     }
 
-    private fun readFromUriToExternalFile(uri: Uri, filename: String) =
-        activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
-            File(context?.getExternalFilesDir(null), filename).writeText(reader.readText())
-        } }
+    private fun readFromUriToExternalFile(uri: Uri, filename: String) {
+        try {
+            activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
+                File(context?.getExternalFilesDir(null), filename).writeText(reader.readText())
+            } }
+        } catch (_: IOException) {
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.pref_save_file_error)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
+        }
+    }
 
-    private fun writeFromExternalFileToUri(filename: String, uri: Uri) =
-        activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
-            writer.write(File(context?.getExternalFilesDir(null), filename).readText())
-        } }
+    private fun writeFromExternalFileToUri(filename: String, uri: Uri) {
+        try {
+            activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
+                writer.write(File(context?.getExternalFilesDir(null), filename).readText())
+            } }
+        } catch (_: IOException) {
+            AlertDialog.Builder(requireContext())
+                .setMessage(R.string.pref_save_file_error)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
+        }
+    }
 
     private fun exportSettings(uri: Uri) {
         val perPresetQuestSetting = "\\d+_qs_.+".toRegex()

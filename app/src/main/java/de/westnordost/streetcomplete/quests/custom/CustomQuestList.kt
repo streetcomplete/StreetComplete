@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.util.math.contains
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
+import java.io.IOException
 import kotlin.Exception
 
 class CustomQuestList(context: Context) : KoinComponent {
@@ -43,8 +44,13 @@ class CustomQuestList(context: Context) : KoinComponent {
         val file = File(path, FILENAME_CUSTOM_QUEST)
         m.clear()
         if (!file.exists()) {
-            file.parentFile?.mkdirs()
-            file.createNewFile()
+            try {
+                file.parentFile?.mkdirs()
+                file.createNewFile()
+            } catch (_: IOException) {
+                // sometimes can't be created, don't show an error message in this case
+                return
+            }
         }
         m.putAll(file.readLines().asReversed().mapNotNull { line ->
             val rawText = line.substringAfter(',').substringAfter(',')
