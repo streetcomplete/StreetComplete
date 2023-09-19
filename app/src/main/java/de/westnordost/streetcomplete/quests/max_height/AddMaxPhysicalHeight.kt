@@ -20,16 +20,21 @@ class AddMaxPhysicalHeight(
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*" or maxheight:signed = no)
+        and maxheight != default
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
     """.toElementFilterExpression() }
+    // leaving out railway = level_crossing is deliberate, we do not want people to measure overhead
+    // cables by hand - bzzzt! - but also (if measured with laser) the result would be wrong, as
+    // the (signed) max height is always something like 1.5 meter distance to the cable itself
 
     private val wayFilter by lazy { """
         ways with
         highway ~ ${ALL_ROADS.joinToString("|")}
-        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*" or maxheight:signed = no)
+        and maxheight != default
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no

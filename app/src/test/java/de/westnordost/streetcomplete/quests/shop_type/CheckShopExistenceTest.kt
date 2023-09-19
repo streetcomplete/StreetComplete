@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import java.util.concurrent.FutureTask
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class CheckShopExistenceTest {
     private val questType = CheckShopExistence(mockOfFeatureDictionary())

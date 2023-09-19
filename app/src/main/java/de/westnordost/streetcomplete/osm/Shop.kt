@@ -128,6 +128,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
         or ${p}office and ${p}office !~ no|vacant
         or ${p}healthcare and ${p}healthcare != hospital
         or ${p}craft
+        or ${p}club
         or ${p}tourism = information and ${p}information = office
         or ${p}amenity = social_facility and ${p}social_facility ~ ${listOf(
             // only non-residential ones

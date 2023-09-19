@@ -40,7 +40,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
             inchesInput = view.findViewById(R.id.inchInput)
         )
         lengthInput.maxFeetDigits = 2
-        lengthInput.maxMeterDigits = Pair(1, 2)
+        lengthInput.maxMeterDigits = Pair(2, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = { checkIsFormComplete() }
     }

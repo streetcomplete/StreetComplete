@@ -37,7 +37,7 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
         lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
         lengthInput.isCompactMode = true
         lengthInput.maxFeetDigits = 2
-        lengthInput.maxMeterDigits = Pair(1, 2)
+        lengthInput.maxMeterDigits = Pair(2, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = {
             isARMeasurement = false
