@@ -41,7 +41,7 @@ class AddServiceBuildingType : OsmFilterQuestType<String>() {
                 tags["substation"] = "distribution"
                 tags["substance"] = "gas"
             }
-            "well", "reservoir_covered", "pumping_station" -> {
+            "water_well", "reservoir_covered", "pumping_station" -> {
                 tags["man_made"] = answer
             }
         }
