@@ -101,6 +101,7 @@ configurations {
     all {
         // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
+        exclude(group = "xmlpull", module = "xmlpull")
     }
 }
 

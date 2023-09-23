@@ -1,8 +1,5 @@
 -dontobfuscate
 
--dontwarn org.xmlpull.**
--dontnote org.xmlpull.**
-
 # tangram start ------------------------------------------------------------------------------------
 
 # let's just keep everything
