@@ -163,15 +163,11 @@ open class MapFragment :
             delay(50)
             sceneMapComponent?.loadScene()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
         binding.map.onResume()
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         binding.map.onPause()
         saveMapState()
     }
