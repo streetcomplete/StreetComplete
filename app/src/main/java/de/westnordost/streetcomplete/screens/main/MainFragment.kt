@@ -79,6 +79,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -221,6 +222,7 @@ class MainFragment :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
+    private val osmQuestController: OsmQuestController by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -1411,7 +1413,12 @@ class MainFragment :
         val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
         f.requireArguments().putAll(args)
 
-        val element = if (quest is OsmQuest) withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+        val element = if (quest is OsmQuest) withContext(Dispatchers.IO) {
+            val e = mapDataWithEditsSource.get(quest.elementType, quest.elementId)
+            if (e == null) // this sometimes occurred in tests... until reason is found, just remove the quest
+                osmQuestController.delete(quest.key)
+            e
+        } ?: return
             else null
         val highlightedElementMarkers = viewLifecycleScope.async(Dispatchers.IO) { getHighlightedElements(quest, element) }
         val otherQuestMarkers = viewLifecycleScope.async(Dispatchers.IO) { showOtherQuests(quest) }
