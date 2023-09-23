@@ -21,5 +21,12 @@ enum class RoofShape(val osmValue: String) {
     ONION("onion"),
     CONE("cone"),
 
+    SAWTOOTH("sawtooth"),
+    HIPPED_AND_GABLED("hipped-and-gabled"),
+    CROSSPITCHED("crosspitched"),
+    SIDE_HIPPED("side_hipped"),
+    SIDE_HALF_HIPPED("side_half-hipped"),
+    GABLED_HEIGHT_MOVED("gabled_height_moved"),
+
     MANY("many"),
 }

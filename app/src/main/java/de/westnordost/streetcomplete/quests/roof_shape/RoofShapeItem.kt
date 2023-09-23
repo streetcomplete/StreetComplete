@@ -18,6 +18,12 @@ import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.ROUND
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.ROUND_GABLED
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SALTBOX
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SKILLION
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SAWTOOTH
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.GABLED_HEIGHT_MOVED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.CROSSPITCHED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.HIPPED_AND_GABLED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SIDE_HIPPED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SIDE_HALF_HIPPED
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
@@ -43,5 +49,11 @@ private val RoofShape.iconResId: Int? get() = when (this) {
     ROUND_GABLED ->      R.drawable.ic_roof_round_gabled
     ONION ->             R.drawable.ic_roof_onion
     CONE ->              R.drawable.ic_roof_cone
+    SAWTOOTH ->          R.drawable.ic_roof_sawtooth
+    SIDE_HIPPED ->       R.drawable.ic_roof_side_hipped
+    SIDE_HALF_HIPPED ->  R.drawable.ic_roof_side_half_hipped
+    CROSSPITCHED ->      R.drawable.ic_roof_crosspitched
+    HIPPED_AND_GABLED -> R.drawable.ic_roof_hip_and_gable
+    GABLED_HEIGHT_MOVED -> R.drawable.ic_roof_gabled_height_moved
     MANY ->              null
 }
