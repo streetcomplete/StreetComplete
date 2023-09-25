@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.8.21"
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 android {
@@ -63,6 +63,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     bundle {
@@ -101,6 +102,7 @@ configurations {
     all {
         // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
+        exclude(group = "xmlpull", module = "xmlpull")
     }
 }
 

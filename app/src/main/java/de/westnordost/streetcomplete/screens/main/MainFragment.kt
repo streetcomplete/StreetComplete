@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.PointF
@@ -1091,7 +1092,9 @@ class MainFragment :
         val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
 
         val intent = Intent(Intent.ACTION_VIEW, uri)
-        if (intent.resolveActivity(ctx.packageManager) != null) {
+        val otherMapAppInstalled = ctx.packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+            .any { !it.activityInfo.packageName.equals(ctx.packageName) }
+        if (otherMapAppInstalled) {
             startActivity(intent)
         } else {
             ctx.toast(R.string.map_application_missing, Toast.LENGTH_LONG)
