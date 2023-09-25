@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import java.util.concurrent.FutureTask
 
 class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) : Overlay {
@@ -41,10 +42,7 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
             .map { element ->
-                val feature = featureDictionaryFuture.get()
-                    .byTags(element.tags)
-                    .isSuggestion(false) // no suggestions because we just want the icon
-                    .find().firstOrNull()
+                val feature = featureDictionaryFuture.get().getFeature(element.tags)
 
                 val icon = "ic_preset_" + (feature?.icon ?: "maki-shop" ).replace('-', '_')
                 val label = getNameLabel(element.tags)

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.amenity_cover
 
-import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -11,10 +11,9 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
-import java.util.concurrent.FutureTask
 
 class AddAmenityCover (
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val getFeature: (tags: Map<String, String>) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy { """
@@ -38,17 +37,12 @@ class AddAmenityCover (
     override fun isApplicableTo(element: Element) =
         nodesFilter.matches(element) && hasAnyName(element.tags)
 
-    private fun hasAnyName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
+    private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = featureDictionaryFuture.get()
-            .byTags(element.tags)
-            .isSuggestion(false) // not brands
-            .find()
-            .firstOrNull() ?: return emptySequence()
+        val feature = getFeature(element.tags) ?: return emptySequence()
 
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }

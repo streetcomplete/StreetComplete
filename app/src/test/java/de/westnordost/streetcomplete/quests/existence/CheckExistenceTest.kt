@@ -9,16 +9,16 @@ import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.FutureTask
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CheckExistenceTest {
-    private val questType = CheckExistence(mockOfFeatureDictionary())
+    private val questType = CheckExistence { mockOfFeatureDictionary().getFeature(it) }
 
-    private fun mockOfFeatureDictionary(): FutureTask<FeatureDictionary> {
+    private fun mockOfFeatureDictionary(): FeatureDictionary {
         // another option is following CheckExistenceLabelTest
         // and doing it as an androidTest
         val matchFound: FeatureDictionary.QueryByTagBuilder = mock()
@@ -33,9 +33,7 @@ class CheckExistenceTest {
         on(tagFinder.byTags(mapOf("amenity" to "telephone"))).thenReturn(matchFound)
         on(tagFinder.byTags(mapOf("shop" to "weird_value"))).thenReturn(noMatches)
 
-        val tagFinderFutureTask: FutureTask<FeatureDictionary> = mock()
-        on(tagFinderFutureTask.get()).thenReturn(tagFinder)
-        return tagFinderFutureTask
+        return tagFinder
     }
 
     @Test fun `apply answer adds check date`() {

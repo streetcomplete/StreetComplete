@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours_signed
 
-import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -19,10 +19,9 @@ import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import java.util.concurrent.FutureTask
 
 class CheckOpeningHoursSigned(
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val getFeature: (tags: Map<String, String>) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
@@ -92,6 +91,5 @@ class CheckOpeningHoursSigned(
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
+    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
 }
