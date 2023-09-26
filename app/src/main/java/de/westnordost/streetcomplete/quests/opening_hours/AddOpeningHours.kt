@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
+import de.westnordost.osmfeatures.Feature
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -22,10 +22,9 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
-import java.util.concurrent.FutureTask
 
 class AddOpeningHours(
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val getFeature: (tags: Map<String, String>) -> Feature?
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -196,8 +195,7 @@ class AddOpeningHours(
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
+    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
 
     override val hasQuestSettings: Boolean = true
 

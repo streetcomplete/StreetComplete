@@ -1303,7 +1303,7 @@ Nu verplaatsen?"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Er is hier geen toilet"</string>
     <string name="unknown_surface_title">"Ander soort oppervlakte"</string>
     <string name="overlay_surface">"Oppervlakten"</string>
-    <string name="overlay_path_surface_segregated">"Split in fiets- en wandelgedeelte"</string>
+    <string name="overlay_path_surface_segregated">"Het pad heeft gescheiden delen voor fietsers en voetgangers"</string>
     <string name="quest_crossing_title2">"Is hier een oversteekplaats?"</string>
     <string name="quest_crossing_yes">"Ja (de stoeprand is verlaagd, er zijn markeringen, etc.)"</string>
     <string name="quest_crossing_no">"Nee, maar oversteken is mogelijk"</string>
@@ -1331,8 +1331,10 @@ Nu verplaatsen?"</string>
 
 De gegevens worden in verschillende kleuren weergegeven om je een goed overzicht te geven van wat er tot nu toe is geregistreerd.
 Ontbrekende gegevens worden altijd in rood weergegeven."</string>
-    <string name="overlays_tutorial_edit">"Tik op elke opgelichte gegeven om het te bewerken. Je kunt ook wegdelen splitsen of notities noteren, zoals bij quests.
+    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities noteren, zoals bij quests.
 
 Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
     <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
+    <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking staat er op de brug vermeld?"</string>
 </resources>

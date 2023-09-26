@@ -1333,4 +1333,13 @@ Przesunąć go teraz?"</string>
     <string name="overlay_addresses_no_entrance">"To nie jest wejście..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Droga współdzielona"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Droga współdzielona, oba kierunki"</string>
+    <string name="overlays_tutorial_title">"Nakładki"</string>
+    <string name="overlays_tutorial_intro">"Znalazłeś nowy sposób edycji danych!"</string>
+    <string name="overlays_tutorial_display">"Każda nakładka wyświetla jeden rodzaj danych, na przykład sklepy lub nawierzchnię ulic.
+
+Dane są wyróżnione różnymi kolorami, aby zapewnić dobry podgląd tego, co zostało oznaczone do tej pory.
+Brakujące dane są zawsze wyświetlane na czerwono."</string>
+    <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
+    <string name="quest_maxheight_sign_title">"Jaka jest maksymalna dopuszczalna wyskość wskazana tutaj?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Jaka jest maksymalna dopuszczalna wyskość wskazana pod mostem?"</string>
 </resources>

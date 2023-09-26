@@ -81,7 +81,7 @@
     <string name="quest_roofShape_answer_many">"Այն ունի մի քանի տարբեր ձեւեր"</string>
     <string name="map_btn_zoom_out">"Մանրացնել"</string>
     <string name="map_btn_zoom_in">"Խոշորացնել. մոտեցնել"</string>
-    <string name="autosync_on">"Վրա"</string>
+    <string name="autosync_on">"Այո"</string>
     <string name="autosync_only_on_wifi">"Միայն Wi-Fi- ում"</string>
     <string name="autosync_off">"Անկայուն"</string>
     <string name="quest_streetSurface_title">"Ինչ մակերես ունի այս ճանապարհը:"</string>
@@ -106,7 +106,7 @@
     <string name="quest_oneway_title">"Սա միակողմանի փողոց է:"</string>
     <string name="quest_address_title">"Որն է այս շենքի տան թիվը:"</string>
     <string name="store_listing_short_description">"OpenstreetMap Surveyor ծրագիրը"</string>
-    <string name="store_listing_full_description">"Օգնեք բարելավել OpenstreetMap- ը փողոցային ծաղկեփնջով:
+    <string name="store_listing_full_description">"Օգնեք բարելավել OpenStreetMap-ը StreetComplete-ի միջոցով:
 
 Այս ծրագիրը գտնում է թերի եւ ընդլայնվող տվյալներ ձեր հարեւանությամբ եւ այն ցուցադրում է քարտեզի վրա, որպես մարկեր: Դրանցից յուրաքանչյուրը լուծելի է `պատասխանելով մի պարզ հարց` կայքում տեղեկատվությունը լրացնելու համար:
 
@@ -202,6 +202,7 @@
     <string name="quest_fireHydrant_type_pillar">"Սյուն"</string>
     <string name="quest_fireHydrant_type_underground">"Ստորգետնյա"</string>
     <string name="quest_fireHydrant_type_wall">"Պատյան"</string>
+    <string name="credits_contributors">"Տեսեք &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;ամբողջ ցուցակը` GitHub-ում&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Թարգմանություններ"</string>
     <string name="credits_contributors_title">"Կոդ ներդրողներ"</string>
     <string name="credits_author_title">"Հեղինակ եւ պահպանող"</string>
@@ -513,7 +514,7 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"Այս քաշը անհասկանալի է թվում: Համոզված եք, որ ճիշտ է:"</string>
     <string name="quest_maxweight_answer_other_sign">"Նշանը տարբեր տեսք ունի…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Կցանկանայիք նոտա թողնել Լուսանկարով գրությունը հնարավորություն կտա այլ քարտեզներին հոգ տանել դրա մասին:"</string>
-    <string name="quest_handrail_title">"Արդյոք այս քայլերը ունեն ձեռքով:"</string>
+    <string name="quest_handrail_title">"Այս աստիճանները ունե՞ն բազրիք:"</string>
     <string name="about_summary_current_version">"Ընթացիկ տարբերակը %s"</string>
     <string name="quest_ref_answer_noRef">"Ոչ մի տեղեկանքի համար տեսանելի չէ…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Պատկերազարդում գտնվող ճանապարհը պտտվում է նույնը, ինչ Քարտեզի վրա `PIN- ի գտնվելու վայրում:"</string>
@@ -588,7 +589,7 @@
     <string name="link_category_editors_title">"Աջակցող"</string>
     <string name="link_category_editors_description">"Խմբագիրներ եւ այլ եղանակներ `OpenstreetMap- ին նպաստելու համար"</string>
     <string name="link_category_maps_title">"Քարտեզներ"</string>
-    <string name="link_category_maps_description">"OpenstreetMap- ի վրա հիմնված քարտեզներ"</string>
+    <string name="link_category_maps_description">"OpenStreetMap-ի վրա հիմնված քարտեզներ"</string>
     <string name="link_category_showcase_title">"Ցուցափեղկ"</string>
     <string name="link_category_showcase_description">"OpenstreetMap- ի վրա հիմնված ծառայություններ եւ ծրագրեր"</string>
     <string name="link_category_goodies_title">"Բարիքներ"</string>
@@ -632,23 +633,23 @@
     <string name="achievement_regular_title">"Կանոնավոր"</string>
     <string name="achievement_regular_description">"Այս հավելվածով դուք նպաստեցիք %d օրեր OSM- ին: Կանոնավոր ներդրողներն են OSM- ի ողնաշարը, շնորհակալություն ձեր նվիրվածության համար: ❤"</string>
     <string name="achievement_bicyclist_title">"Հեծանվորդ"</string>
-    <string name="achievement_bicyclist_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք օգնում են հեծանվորդներին:"</string>
+    <string name="achievement_bicyclist_solved_X">"Դուք լուծել եք %d որոնում, որոնք օգնում են հեծանվորդներին:"</string>
     <string name="achievement_wheelchair_title">"Շարժականություն"</string>
-    <string name="achievement_wheelchair_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք օգնում են սայլակի օգտագործողներին շրջել քաղաք:"</string>
+    <string name="achievement_wheelchair_solved_X">"Դուք լուծել եք %d որոնում, որոնք օգնում են սայլակի օգտագործողներին շրջել քաղաք:"</string>
     <string name="achievement_postman_title">"Փոստատար"</string>
     <string name="achievement_postman_solved_X">"Դուք օգնեցիք գտնել %d հասցեները:
 Այս տվյալներն անհրաժեշտ են ոչ միայն փոստատարի, այլեւ նավիգացիոն ցանկացած համակարգի համար:"</string>
     <string name="achievement_building_title">"Բարձրահաշվ"</string>
-    <string name="achievement_building_solved_X">"Դուք լուծել եք %d շենքերի հետ կապված որոնումներ:
-Նկատի ունեցեք, որ այս ծրագիրը խնդրում է շենքի տնային տնտեսությունը միայն դրա տեսակից հետո:"</string>
+    <string name="achievement_building_solved_X">"Դուք լուծել եք %d շենքերի հետ կապված որոնում:
+Նկատի ունեցեք, որ այս ծրագիրը խնդրում է շենքի համարը միայն դրա տեսակի որոշելուց հետո:"</string>
     <string name="achievement_blind_title">"Վեցերորդ իմաստ"</string>
-    <string name="achievement_blind_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք հետաքրքիր են տեսողական խնդիրների համար:"</string>
+    <string name="achievement_blind_solved_X">"Դուք լուծել եք %d որոնումն, որոնք հետաքրքիր են տեսողական խնդիր ունեցողների համար:"</string>
     <string name="achievement_pedestrian_title">"Վազող"</string>
     <string name="achievement_pedestrian_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք հետաքրքիր են ոտքով մարդկանց համար:"</string>
     <string name="achievement_veg_title">"Բարի կենդանիներին"</string>
     <string name="achievement_veg_solved_X">"Դուք լուծում եք %d -ի որոնումներից, որոնք հետաքրքիր են ոչ մսի դիետայի վրա ապրող մարդկանց համար:"</string>
     <string name="achievement_car_title">"Ճանապարհին"</string>
-    <string name="achievement_car_solved_X">"Դուք լուծել եք %d -ի որոնումներից, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա, «փողոց» -ը դնելով OpenstreetMap- ում:"</string>
+    <string name="achievement_car_solved_X">"Դուք լուծել եք %d որոնում, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա։"</string>
     <string name="unread_messages_message">"Դուք ունեք %d Race Race հաղորդագրություններ ձեր մուտքի արկղում"</string>
     <string name="unread_messages_button">"Բացեք ներարկղ"</string>
     <string name="action_about2">"Մասին"</string>
@@ -704,7 +705,7 @@
     <string name="quest_cycleway_resurvey_title">"Սա դեռ այստեղ ցիկլի ճանապարհի իրավիճակն է:"</string>
     <string name="pref_title_resurvey_intervals">"Վերականգնել ընդմիջումներով"</string>
     <string name="resurvey_intervals_less_often">"Ավելի քիչ հարցրեք"</string>
-    <string name="resurvey_intervals_default">"Թերություն"</string>
+    <string name="resurvey_intervals_default">"Լռելյայն"</string>
     <string name="resurvey_intervals_more_often">"Ավելի հաճախ հարցրեք"</string>
     <string name="quest_is_defibrillator_inside_title">"Արդյոք այս դեֆիբրիլյատորը (AED) շենքի ներսում է:"</string>
     <string name="about_title_translate">"Օգնեք թարգմանել այս ծրագիրը"</string>
@@ -785,6 +786,7 @@
     <string name="leave_note">"Թողնել նոտա"</string>
     <string name="quest_shop_gone_title">"Ինչ է հիմա այստեղ:"</string>
     <string name="quest_shop_gone_vacant_answer">"Թափուր է"</string>
+    <string name="quest_shop_gone_replaced_answer">" "</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Տեսակը մի տեսակ տեղ այստեղ"</string>
     <string name="quest_shop_vacant_type_title">"Այս խանութը թափուր է եղել: Հիմա ինչ է այստեղ:"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Lane Count- ը տարբերվում է յուրաքանչյուր կողմի համար"</string>
@@ -814,7 +816,7 @@
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Միայն պլաստիկ շշեր եւ ստվարաթուղթ"</string>
     <string name="team_mode">"Թիմային ռեժիմ"</string>
     <string name="team_mode_exit">"Ելքի թիմային ռեժիմ"</string>
-    <string name="team_mode_description">"Միեւնույն տարածքը մի խումբ քարտեզագրելու ժամանակ կարող եք մուտքագրել թիմային ռեժիմ, թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
+    <string name="team_mode_description">"Միեւնույն տարածքը խմբով քարտեզագրելու համար կարող եք մուտքագրել թիմային ռեժիմ` թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
     <string name="team_mode_team_size_hint">"Թիմային ռեժիմն աշխատում է 2-ից 12 հոգու խմբերի համար:"</string>
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
@@ -834,8 +836,8 @@
     <string name="pref_title_delete_cache">"Delete նջել քեշը"</string>
     <string name="pref_title_delete_cache_summary">"Եթե ​​կարծում եք, որ որոշ տվյալներ հնացած են"</string>
     <string name="delete_confirmation">"Ջնջել"</string>
-    <string name="delete_cache_dialog_message">"Delete նջել ներբեռնված քարտեզի բոլոր տվյալները, ներառյալ որոնումները:
-Տվյալները թարմացվում են %1$s օրվա օրերից հետո եւ չօգտագործված տվյալները ջնջվում են %2$s օրերից ինքնաբերաբար:"</string>
+    <string name="delete_cache_dialog_message">"Ջնջե՞լ ներբեռնված քարտեզի բոլոր տվյալները` ներառյալ որոնումները:
+Տվյալները թարմացվում են %1$s օրից եւ չօգտագործված տվյալները ջնջվում են %2$s օրից ինքնաբերաբար:"</string>
     <string name="pref_background_type_select">"Ընտրեք ֆոնի տեսակը"</string>
     <string name="background_type_map">"Քարտեզ"</string>
     <string name="background_type_aerial_esri">"Aerial (ըստ ESRI)"</string>
@@ -864,8 +866,8 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"Վերածվել է համբուրվող դարպասի"</string>
     <string name="quest_stile_type_title">"Ինչպիսի կիլոր է սա:"</string>
     <string name="quest_buildingType_semi_detached_description2">"Կցված միայնակ ընտանիքի տուն (ներ)"</string>
-    <string name="pref_title_quests2">"Quest ընտրություն եւ ցուցադրման կարգ"</string>
-    <string name="pref_subtitle_quests">"%1$d %2$d միացված"</string>
+    <string name="pref_title_quests2">"Որոնումների ընտրություն եւ ցուցադրման կարգ"</string>
+    <string name="pref_subtitle_quests">"%1$d-ից %2$d միացված"</string>
     <string name="no_location_permission_warning_title">"Տեղադրության թույլտվություն"</string>
     <string name="quest_surface_value_woodchips">"Փայտանյութեր"</string>
     <string name="no_camera_app">"Խցիկի հավելված չկա"</string>
@@ -903,7 +905,7 @@
     <string name="quest_selection_hint_message">"Ներդրումները պետք է հիմնականում զվարճալի լինեն: Եթե ​​դուք ծանրաբեռնված եք որոնումների քանակից, միշտ կարող եք մեղմել, թե որ որոնումներն են ցուցադրվում ձեզ եւ ինչ կարգով պարամետրերում:"</string>
     <string name="quest_presets_preset_add">"Ավելացնել նախադրված"</string>
     <string name="quest_presets_preset_name">"Նախադրված անուն"</string>
-    <string name="quest_presets_default_name">"Թերություն"</string>
+    <string name="quest_presets_default_name">"Լռելյայն"</string>
     <string name="quest_presets_selected">"Ընտրված"</string>
     <string name="quest_presets_delete_message">"հանել նջել «%s»: Դրա համար որոնման ընտրությունը եւ պատվերը անփոխարինելի կլինեն:"</string>
     <string name="notification_syncing">"Համաժամեցման տվյալներ …"</string>
@@ -1109,6 +1111,7 @@
     <string name="quest_accepts_cards_unavailable">"Ոչ"</string>
     <string name="quest_barrier_type_gate_any_size">"Դարպաս, որևէ չափի"</string>
     <string name="quest_bicycle_rental_type_title">"Ինչպիսի՞ հեծանվային"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Կայան, որտեղ կողպ"</string>
     <string name="quest_bicycle_shop_repair_title">"Այստեղ տրամադրվու՞մ է հեծանիվի նորոգման ծառայություն։"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Այստեղ վաճառվու՞մ են օգտագործած հեծանիվներ։"</string>
     <string name="quest_bicycle_shop_second_hand_only_new">"Ոչ, միայն նոր"</string>
@@ -1123,21 +1126,39 @@
     <string name="quest_building_entrance_shop">"Խանութի մուտք"</string>
     <string name="quest_building_entrance_yes">"Այլ տեսակի մուտք"</string>
     <string name="quest_building_entrance_dead_end">"Մուտք չկա"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Սեղմեք էկրանի վրա` չափումը սկսելու համար"</string>
     <string name="quest_memorialType_title">"Սա ինչպիսի՞ հուշարձան է։"</string>
     <string name="quest_memorialType_statue">"Քանդակ"</string>
+    <string name="quest_memorialType_bust">"Կիսանդրի"</string>
+    <string name="quest_memorialType_plaque">"Հուշատախտակ"</string>
+    <string name="quest_memorialType_stele_wooden">"Փայտե սալաքար"</string>
+    <string name="quest_memorialType_stele_stone">"Քարե սալաքար"</string>
+    <string name="quest_memorialType_sculpture">"Այլ"</string>
+    <string name="overlay_none">"Ոչ մի"</string>
     <string name="overlay_lit">"Փողոցային լուսավորում"</string>
     <string name="lit_value_yes">"Այո"</string>
     <string name="lit_value_no">"Ոչ"</string>
     <string name="lit_value_24_7">"Օր ու գիշեր"</string>
     <string name="quest_generic_answer_is_indoors">"Ներսում է"</string>
+    <string name="quest_entrance_reference_flat_range_to">"-ից"</string>
+    <string name="quest_camp_drinking_water_title">"Այստեղ կա՞ անվճար խմելու ջուր։"</string>
     <string name="quest_camp_shower_title">"Այստեղ ցնցուղ կա՞:"</string>
     <string name="quest_camp_power_supply_title">"Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։"</string>
+    <string name="quest_camp_type_tents_only">"Միայն վրաններ"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Պատասխանը չի համապատասխանում փողոցի մասին տվյալներին։ Վստա՞հ եք, որ ճիշտ փողոցի մասին եք պատասխանում։ Վստա՞հ եք, որ փողոցի ամբողջ երկարությամբ եք չափում, ինչպես պահանջվում է:"</string>
     <string name="quest_recycling_type_pet">"Միայն PET"</string>
     <string name="street_parking_street_width">"Փողոցի լայնություն` %s"</string>
+    <string name="overlay_street_parking">"Կայանատեղիներ"</string>
+    <string name="link_opencampingmap_description">"Ճամբարների քարտեզ"</string>
     <string name="quest_address_street_street_name_label">"Փողոցի անուն`"</string>
     <string name="quest_drinking_water_type_title">"Ինչպե՞ս է ջուրը տրամադրվում։"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Այլ ցայտաղբյուր"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Միայն շշերի համար"</string>
+    <string name="overlay_addresses">"Հասցեներ"</string>
+    <string name="overlay_shops">"Խանութներ"</string>
+    <string name="name_label">"Անուն`"</string>
+    <string name="unknown_shop_title">"Այլ տեսակի"</string>
     <string name="quest_address_answer_no_address">"Հասցե չկա"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Ֆիքսված"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Բացվող"</string>
@@ -1152,9 +1173,24 @@
     <string name="confirmation_replace_shop_message">"Այս դեպքում կփոխվեն նաև բացման ժամերը և այլն։"</string>
     <string name="confirmation_replace_shop_yes">"Հիմա այլ տեղ է"</string>
     <string name="confirmation_replace_shop_no">"Նույն տեղն է"</string>
+    <string name="move_node">"Այլ տեղում է"</string>
     <string name="node_moved_not_far_enough">"Տեղափոխել ավելի հեռու"</string>
     <string name="quest_placeName_no_name_answer">"Անվան նշան չկա"</string>
     <string name="bicycle_boulevard_is_a">"%1$s է"</string>
     <string name="bicycle_boulevard_is_not_a">"%1$s չէ"</string>
+    <string name="quest_traffic_signals_sound_description">"Հուշում. փնտրեք բարձրախոս։ Ոչ բոլոր ազդանշանները միանում են կոճակով։"</string>
     <string name="unknown_surface_title">"Այլ հարթություն"</string>
+    <string name="quest_crossing_title2">"Այստեղ անցում կա՞:"</string>
+    <string name="quest_crossing_yes">"Այո (օրինակ` եզրը իջեցրած է կամ կան նշումներ)"</string>
+    <string name="quest_crossing_no">"Ոչ, բայց անցումը հնարավոր է"</string>
+    <string name="quest_crossing_prohibited">"Ոչ, անցումը արգելված է կամ անհնար"</string>
+    <string name="quest_hairdresser_title">"Ովքե՞ր են այցելում այս վարսավիրանոցը։"</string>
+    <string name="quest_hairdresser_male_and_female">"Բոլորը"</string>
+    <string name="quest_hairdresser_female_only">"Կանայք"</string>
+    <string name="quest_hairdresser_male_only">"Տղամարդիկ"</string>
+    <string name="quest_amenityCover_title">"Սա անձրևից պաշտպանվա՞ծ է։"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Միայն ներքևը"</string>
+    <string name="overlay_addresses_no_entrance">"Մուտք չի"</string>
+    <string name="overlays_tutorial_intro">"Դուք գտել եք խմբագրելու նոր ձև։"</string>
+    <string name="quest_crossing_kerb_height_title">"Ի՞նչ է այս անցման եզրերի բարձրությունը։"</string>
 </resources>

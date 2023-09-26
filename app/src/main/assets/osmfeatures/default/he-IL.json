@@ -1,0 +1,1373 @@
+{
+    "he-IL": {
+        "presets": {
+            "fields": {
+                "access": {
+                    "label": "הכניסה מותרת"
+                },
+                "access_aisle": {
+                    "label": "סוג"
+                },
+                "addr/interpolation": {
+                    "label": "סוג"
+                },
+                "address": {
+                    "label": "כתובת",
+                    "placeholders": {
+                        "city": "עיר",
+                        "street": "רחוב"
+                    }
+                },
+                "advertising": {
+                    "label": "סוג"
+                },
+                "aerialway": {
+                    "label": "סוג"
+                },
+                "aeroway": {
+                    "label": "סוג"
+                },
+                "amenity": {
+                    "label": "סוג"
+                },
+                "archaeological_site": {
+                    "label": "סוג"
+                },
+                "area/highway": {
+                    "label": "סוג"
+                },
+                "artwork_type": {
+                    "label": "סוג"
+                },
+                "attraction": {
+                    "label": "סוג"
+                },
+                "barrier": {
+                    "label": "סוג"
+                },
+                "basin": {
+                    "label": "סוג"
+                },
+                "bicycle_parking": {
+                    "label": "סוג"
+                },
+                "board_type": {
+                    "label": "סוג"
+                },
+                "bollard": {
+                    "label": "סוג"
+                },
+                "boules": {
+                    "label": "סוג"
+                },
+                "boundary": {
+                    "label": "סוג"
+                },
+                "bridge": {
+                    "label": "סוג"
+                },
+                "bridge/support": {
+                    "label": "סוג"
+                },
+                "bridge_combo": {
+                    "label": "סוג"
+                },
+                "bunker_type": {
+                    "label": "סוג"
+                },
+                "castle_type": {
+                    "label": "סוג",
+                    "options": {
+                        "hillfort": "מבצר גבעה",
+                        "kremlin": "קרמלין",
+                        "manor": "בית אחוזה"
+                    }
+                },
+                "club": {
+                    "label": "סוג"
+                },
+                "construction": {
+                    "label": "סוג"
+                },
+                "consulate": {
+                    "label": "סוג"
+                },
+                "craft": {
+                    "label": "סוג"
+                },
+                "crossing": {
+                    "label": "סוג"
+                },
+                "cutting": {
+                    "label": "סוג"
+                },
+                "depot": {
+                    "label": "סוג"
+                },
+                "devices": {
+                    "placeholder": "1, 2, 3…"
+                },
+                "diameter": {
+                    "label": "קוטר"
+                },
+                "diameter_crown": {
+                    "label": "קוטר הכתר"
+                },
+                "diet_multi": {
+                    "label": "סוגי תזונה",
+                    "options": {
+                        "gluten_free": "ללא-גלוטן",
+                        "halal": "חלאל",
+                        "kosher": "כשר",
+                        "lactose_free": "ללא-לקטוז",
+                        "vegan": "טבעונית",
+                        "vegetarian": "צמחונית"
+                    }
+                },
+                "diplomatic": {
+                    "label": "סוג",
+                    "options": {
+                        "consulate": "קונסוליה",
+                        "embassy": "שגרירות"
+                    }
+                },
+                "diplomatic/services": {
+                    "label": "שירות"
+                },
+                "direction": {
+                    "label": "כיוון (מעלות עם כיוון השעון)",
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "כיוון",
+                    "options": {
+                        "east": "לכיוון מזרח",
+                        "north": "לכיוון צפון",
+                        "south": "לכיוון דרום",
+                        "west": "לכיוון מערב"
+                    }
+                },
+                "direction_clock": {
+                    "label": "כיוון",
+                    "options": {
+                        "anticlockwise": "נגד כיוון השעון",
+                        "clockwise": "עם כיוון השעון"
+                    }
+                },
+                "direction_point": {
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "direction_vertex": {
+                    "label": "הכיוון המושפע",
+                    "options": {
+                        "backward": "אחורה",
+                        "both": "שניהם / כולם",
+                        "forward": "קדימה"
+                    }
+                },
+                "display": {
+                    "label": "הצגה",
+                    "options": {
+                        "analog": "אנלוגית",
+                        "digital": "דיגיטלית"
+                    }
+                },
+                "distance": {
+                    "label": "מרחק"
+                },
+                "disused/amenity": {
+                    "label": "סוג"
+                },
+                "disused/railway": {
+                    "label": "סוג"
+                },
+                "disused/shop": {
+                    "label": "סוג"
+                },
+                "dock": {
+                    "label": "סוג"
+                },
+                "dog": {
+                    "label": "כלבים",
+                    "options": {
+                        "leashed": "רצועה בלבד",
+                        "no": "אסור",
+                        "yes": "מותר"
+                    }
+                },
+                "door": {
+                    "label": "דלת"
+                },
+                "door_type": {
+                    "label": "סוג"
+                },
+                "drink_multi": {
+                    "label": "משקאות"
+                },
+                "drinking_water": {
+                    "label": "לשתייה"
+                },
+                "drinking_water_available": {
+                    "label": "מי שתייה זמינים"
+                },
+                "duration": {
+                    "label": "משך",
+                    "placeholder": "00:00"
+                },
+                "ele": {
+                    "label": "גובה (מטרים)"
+                },
+                "electrified": {
+                    "label": "חישמול",
+                    "options": {
+                        "no": "לא",
+                        "rail": "מסילה מחושמלת",
+                        "yes": "יש (לא צוין)"
+                    },
+                    "placeholder": "קווי מתח, מסילה מחושמלת…"
+                },
+                "email": {
+                    "label": "דוא״ל",
+                    "terms": "דוא״ל,דואר אלקטרוני,דואר,מייל,אימייל"
+                },
+                "embankment": {
+                    "label": "סוג",
+                    "placeholder": "ברירת מחדל"
+                },
+                "embassy": {
+                    "label": "סוג",
+                    "options": {
+                        "branch_embassy": "סניף של שגרירות",
+                        "delegation": "משלחת",
+                        "interests_section": "מדור תחומי עניין",
+                        "mission": "משימה דיפלומטית",
+                        "residence": "מעון רשמי של שגריר",
+                        "yes": "שגרירות"
+                    }
+                },
+                "emergency": {
+                    "label": "חירום"
+                },
+                "emergency_combo": {
+                    "label": "סוג"
+                },
+                "emergency_ward_entrance": {
+                    "label": "סוג"
+                },
+                "enforcement": {
+                    "label": "סוג"
+                },
+                "entrance": {
+                    "label": "סוג",
+                    "options": {
+                        "emergency": "יציאת חירום",
+                        "entrance": "כניסה בלבד",
+                        "exit": "יציאה בלבד",
+                        "garage": "דלת מוסך",
+                        "home": "בית פרטי או דירה",
+                        "main": "ראשי",
+                        "secondary": "משני",
+                        "service": "שירות",
+                        "staircase": "גרם מדרגות"
+                    }
+                },
+                "except": {
+                    "label": "חריגים"
+                },
+                "fax": {
+                    "label": "פקס",
+                    "placeholder": "‎+972 3 123 456",
+                    "terms": "פקס,פקסימיליה,תקשורת,שליחה"
+                },
+                "fee": {
+                    "label": "עמלה"
+                },
+                "fence_type": {
+                    "label": "סוג"
+                },
+                "fire_hydrant/diameter": {
+                    "label": "קוטר (מ״מ, אינץ'׳ או אותיות)"
+                },
+                "fire_hydrant/position": {
+                    "options": {
+                        "parking_lot": "מגרש חנייה",
+                        "sidewalk": "מדרכה"
+                    }
+                },
+                "fire_hydrant/pressure": {
+                    "label": "לחץ (בר)"
+                },
+                "fire_hydrant/type": {
+                    "options": {
+                        "underground": "תת־קרקעי"
+                    }
+                },
+                "fire_service_inlet": {
+                    "options": {
+                        "pipe": "מכסה צינור",
+                        "underground": "תת־קרקעי"
+                    }
+                },
+                "fire_sprinkler": {
+                    "options": {
+                        "no": "לא",
+                        "yes": "סוג לא ידוע"
+                    }
+                },
+                "fireplace": {
+                    "label": "אח"
+                },
+                "fishing": {
+                    "label": "דיג"
+                },
+                "fitness_station": {
+                    "label": "סוג ציוד"
+                },
+                "fixme": {
+                    "label": "תקן אותי"
+                },
+                "flag/name": {
+                    "label": "שם דגל"
+                },
+                "flag/type": {
+                    "label": "סוג דגל"
+                },
+                "flashing_lights": {
+                    "label": "אורות מהבהבים",
+                    "options": {
+                        "always": {
+                            "description": "האורות תמיד מהבהבים",
+                            "title": "תמיד מהבהבים"
+                        },
+                        "button": {
+                            "description": "האורות מופעלים בלחיצת כפתור",
+                            "title": "בלחיצת כפתור"
+                        },
+                        "button;sensor": {
+                            "description": "האורות מופעלים על ידי חיישן או בלחיצת כפתור",
+                            "title": "בהפעלת כפתור וחיישן"
+                        },
+                        "no": "לא",
+                        "sensor": {
+                            "description": "אורות מופעלים על ידי חיישן",
+                            "title": "בהפעלת חיישן"
+                        },
+                        "yes": "כן"
+                    }
+                },
+                "ford": {
+                    "label": "סוג",
+                    "placeholder": "ברירת מחדל"
+                },
+                "fountain": {
+                    "label": "סוג"
+                },
+                "from": {
+                    "label": "מ"
+                },
+                "fuel": {
+                    "label": "דלק"
+                },
+                "fuel/fuel_multi": {
+                    "label": "סוגי דלק",
+                    "options": {
+                        "GTL_diesel": "סולר GTL",
+                        "HGV_diesel": "סולר משאיות",
+                        "LH2": "מימן נוזלי",
+                        "biodiesel": "ביו-דיזל",
+                        "cng": "גז טבעי דחוס (CNG)",
+                        "diesel": "סולר",
+                        "e10": "בנזין E10",
+                        "e85": "בנזין E85",
+                        "h70": "גז מימן (700 בר)",
+                        "lpg": "גז טבעי נוזלי (LPG)",
+                        "octane_100": "בנזין (אוקטן 100)",
+                        "octane_80": "בנזין (אוקטן 80)",
+                        "octane_85": "בנזין (אוקטן 85)",
+                        "octane_87": "בנזין (אוקטן 87)",
+                        "octane_88": "בנזין (אוקטן 88)",
+                        "octane_89": "בנזין (אוקטן 89)",
+                        "octane_90": "בנזין (אוקטן 90)",
+                        "octane_91": "בנזין (אוקטן 91)",
+                        "octane_92": "בנזין (אוקטן 92)",
+                        "octane_93": "בנזין (אוקטן 93)",
+                        "octane_95": "בנזין (אוקטן 95)",
+                        "octane_97": "בנזין (אוקטן 97)",
+                        "octane_98": "בנזין (אוקטן 98)",
+                        "propane": "פרופאן"
+                    }
+                },
+                "gambling": {
+                    "label": "משחקים"
+                },
+                "garden/type": {
+                    "label": "סוג גינה"
+                },
+                "gauge": {
+                    "label": "מדד"
+                },
+                "gender": {
+                    "label": "מגדר",
+                    "options": {
+                        "female": "נקבה",
+                        "male": "זכר",
+                        "unisex": "לשני המינים"
+                    },
+                    "placeholder": "לא ידוע"
+                },
+                "generator/method": {
+                    "label": "שיטה",
+                    "options": {
+                        "fission": "ביקוע",
+                        "fusion": "היתוך",
+                        "photovoltaic": "פוטו-וולטאיים",
+                        "thermal": "תרמית סולארית",
+                        "water-storage": "מאגר",
+                        "wind_turbine": "טורבינת רוח"
+                    }
+                },
+                "generator/output/electricity": {
+                    "label": "הספק חשמל"
+                },
+                "generator/source": {
+                    "label": "מקור",
+                    "options": {
+                        "battery": "סוללה",
+                        "biofuel": "דלקים מבוססי צמח",
+                        "biomass": "חומר צמחי",
+                        "coal": "פחם",
+                        "diesel": "סולר",
+                        "gas": "גז טבעי",
+                        "gasoline": "בנזין",
+                        "geothermal": "אנרגיה גיאותרמית",
+                        "hydro": "כוח הידראולי",
+                        "nuclear": "כוח גרעיני",
+                        "oil": "נפט",
+                        "wind": "רוח"
+                    }
+                },
+                "generator/type": {
+                    "label": "סוג"
+                },
+                "government": {
+                    "label": "סוג"
+                },
+                "group_only": {
+                    "label": "קבוצות בלבד",
+                    "terms": "מדריך,הדרכה,קבוצה,טיול מאורגן"
+                },
+                "guest_house": {
+                    "label": "סוג"
+                },
+                "handrail": {
+                    "label": "מעקה",
+                    "terms": "מעקה,ידית אחיזה,משענת יד וכדו'"
+                },
+                "hashtags": {
+                    "label": "תגיות הקבץ",
+                    "placeholder": "#דוגמה"
+                },
+                "hazard_boundary": {
+                    "label": "מפגע",
+                    "options": {
+                        "archery_range": "חיצים",
+                        "avalanche": "מפולת שלגים",
+                        "biohazard": "סכנה ביולוגית",
+                        "contamination": "זיהום כימי",
+                        "electricity": "התחשמלות",
+                        "hole": "חור",
+                        "nuclear": "גרעיני / רדיואקטיבי",
+                        "quicksand": "חול טובעני",
+                        "shooting_range": "ירי"
+                    }
+                },
+                "healthcare": {
+                    "label": "סוג",
+                    "options": {
+                        "alternative": "רפואה אלטרנטיבית",
+                        "audiologist": "אודיולוג",
+                        "birthing_centre": "מרכז לידה",
+                        "blood_bank": "בנק דם",
+                        "blood_donation": "מרכז תרומת דם",
+                        "clinic": "מרפאה",
+                        "community_health_worker": "עובד בריאות קהילתי",
+                        "counselling": "מרכז ייעוץ",
+                        "dentist": "רופא שיניים",
+                        "dialysis": "מרכז דיאליזה",
+                        "doctor": "רופא",
+                        "hospice": "הוספיס (סופני)",
+                        "hospital": "בית חולים",
+                        "laboratory": "מעבדה רפואית",
+                        "midwife": "מיילדת",
+                        "nurse": "אחות",
+                        "occupational_therapist": "מרפא בעיסוק",
+                        "optometrist": "אופטומטריסט",
+                        "pharmacy": "בית מרקחת",
+                        "physiotherapist": "פיזיותרפיסט",
+                        "podiatrist": "פודיאטר",
+                        "psychotherapist": "פסיכותרפיסט",
+                        "rehabilitation": "מתקן שיקום",
+                        "sample_collection": "מתקן לאיסוף דגימות",
+                        "speech_therapist": "קלינאי תקשורת",
+                        "vaccination_centre": "מרכז חיסונים"
+                    }
+                },
+                "healthcare/speciality": {
+                    "label": "התמחויות",
+                    "options": {
+                        "abortion": "הפלה",
+                        "acupuncture": "אקופונקטורה (דיקור סיני)",
+                        "allergology": "אלרגיה ואסטמה",
+                        "anaesthetics": "הרדמה",
+                        "angiology": "אנגיולוגיה",
+                        "anthroposophical": "רפואה אנתרופוסופית",
+                        "applied_kinesiology": "קינסיולוגיה יישומית",
+                        "aromatherapy": "ארומתרפיה",
+                        "ayurveda": "איורוודה (רפואה ההינדית המסורתית)",
+                        "behavior": "טיפול התנהגותי",
+                        "biochemistry": "ביוכימיה",
+                        "biology": "ביוליוגיה",
+                        "blood_check": "בדיקת דם",
+                        "cardiology": "קרדיולוגיה (לב)",
+                        "cardiothoracic_surgery": "ניתוחי לב וחזה",
+                        "child_psychiatry": "פסיכיאטריה של ילדים ומתבגרים",
+                        "chiropractic": "כירופרקטיקה",
+                        "clinical_pathology": "פתולוגיה קלינית",
+                        "community": "בריאות הציבור והקהילה",
+                        "dental_oral_maxillo_facial_surgery": "כירורגית שיניים, פה ולסת",
+                        "depth": "פסיכולוגיית עומק",
+                        "dermatology": "דרמטולוגיה (עור)",
+                        "dermatovenereology": "דרמטונרולוגיה",
+                        "diabetology": "סוכרת",
+                        "diagnostic_radiology": "רדיולוגיה אבחנתית",
+                        "emergency": "רפואת חירום",
+                        "endocrinology": "אנדוקרינולוגיה",
+                        "fertility": "פוריות",
+                        "gastroenterology": "גסטרואנטרולוגיה",
+                        "geriatrics": "רפואה גריאטרית",
+                        "gynaecology": "מיילדות וגינקולוגיה",
+                        "haematology": "המטולוגיה",
+                        "hepatology": "הפטולוגיה",
+                        "herbalism": "צמחי מרפא",
+                        "homeopathy": "הומיאופתיה",
+                        "humanistic": "פסיכולוגיה הומניסטית",
+                        "hydrotherapy": "הידרותרפיה (טיפול במים)",
+                        "hypnosis": "היפנוזה",
+                        "infectious_diseases": "מחלה מדבקת",
+                        "intensive": "טיפול נמרץ",
+                        "internal": "רפואה פנימית",
+                        "naturopathy": "נטורופתיה",
+                        "neonatology": "ניאונטולוגיה",
+                        "nephrology": "נפרולוגיה (כליות)",
+                        "neurology": "נוירולוגיה",
+                        "neuropsychiatry": "נוירופסיכיאטריה",
+                        "neurosurgery": "נוירוכירורגיה",
+                        "nuclear": "רפואה גרעינית",
+                        "occupational": "רפואה תעסוקתית",
+                        "oncology": "אונקולוגיה",
+                        "ophthalmology": "רפואת עיניים",
+                        "orthodontics": "רפואת שיניים",
+                        "orthopaedics": "ניתוחים אורתופדיים",
+                        "osteopathy": "אוסטאופתיה",
+                        "otolaryngology": "אף אוזן גרון",
+                        "paediatric_surgery": "ניתוחי ילדים",
+                        "paediatrics": "רפואת ילדים",
+                        "palliative": "טיפול פליאטיבי (טיפול מֵקֵל)",
+                        "pathology": "פתולוגיה",
+                        "physiatry": "רפואה פיזיקלית ושיקום",
+                        "plastic_surgery": "ניתוחים פלסטיים",
+                        "podiatry": "פודיאטריה (כף רגל)",
+                        "proctology": "ניתוחי המעי הגס",
+                        "psychiatry": "פסיכיאטריה",
+                        "pulmonology": "ריאות",
+                        "radiology": "רדיולוגיה",
+                        "radiotherapy": "רדיותרפיה",
+                        "reflexology": "רפלקסולוגיה",
+                        "reiki": "רייקי",
+                        "rheumatology": "ראומטולוגיה",
+                        "shiatsu": "שיאצו",
+                        "surgery": "ניתוחים כלליים",
+                        "systemic": "טיפול מערכתי",
+                        "traditional_chinese_medicine": "רפואה סינית אלטרנטיבית",
+                        "transplant": "ניתוחי השתלות",
+                        "trauma": "ניתוחי טראומה",
+                        "tropical": "רפואה טרופית",
+                        "unani": "רפואה הודית (אונאני)",
+                        "urology": "אורולוגיה (דרכי שתן)",
+                        "vaccination": "חיסון",
+                        "vascular_surgery": "ניתוחי כלי דם"
+                    }
+                },
+                "heating": {
+                    "label": "חימום"
+                },
+                "height": {
+                    "label": "גובה (מטרים)"
+                },
+                "height_building": {
+                    "label": "גובה הבניין (מטרים)"
+                },
+                "highchair": {
+                    "label": "כיסא גבוה"
+                },
+                "highspeed": {
+                    "label": "מהירות גבוהה"
+                },
+                "highway": {
+                    "label": "סוג"
+                },
+                "highway_cartpath": {
+                    "label": "סוג הנתיב",
+                    "options": {
+                        "service": "כביש שירות"
+                    }
+                },
+                "historic": {
+                    "label": "סוג",
+                    "options": {
+                        "archaeological_site": "אתר ארכיאולוגי",
+                        "bomb_crater": "מכתש פצצה",
+                        "boundary_stone": "אבן גבול",
+                        "building": "בניין היסטורי",
+                        "castle": "טירה",
+                        "charcoal_pile": "ערימת פחמים",
+                        "city_gate": "שער העיר",
+                        "citywalls": "חומת העיר",
+                        "fort": "מבצר היסטורי",
+                        "manor": "בית אחוזה",
+                        "memorial": "זכרון",
+                        "milestone": "אבן דרך",
+                        "mine": "מכרה",
+                        "mine_shaft": "פיר מכרה",
+                        "monument": "אתר הנצחה",
+                        "railway": "מסילת רכבת",
+                        "ruins": "חורבות",
+                        "shieling": "מיגון",
+                        "tomb": "קבר",
+                        "wreck": "ספינה טרופה"
+                    }
+                },
+                "historic/civilization": {
+                    "label": "תרבות היסטורית"
+                },
+                "historic/wreck/date_sunk": {
+                    "label": "מועד טביעה"
+                },
+                "historic/wreck/visible_at_high_tide": {
+                    "label": "מופיע בגאות"
+                },
+                "historic/wreck/visible_at_low_tide": {
+                    "label": "מופיע בשפל"
+                },
+                "holding_position/type": {
+                    "label": "סוג",
+                    "options": {
+                        "ILS": "מערכת נחיתת מכשירים (ILS)",
+                        "intermediate": "מסלול הסעה- צומת מסלול הסעה",
+                        "runway": "מסלול המראה"
+                    }
+                },
+                "hoops": {
+                    "label": "חישוקים",
+                    "placeholder": "1, 2, 4…"
+                },
+                "horse_dressage": {
+                    "label": "רכיבה אומנותית",
+                    "options": {
+                        "equestrian": "כן",
+                        "undefined": "לא"
+                    }
+                },
+                "horse_riding": {
+                    "label": "רכיבה על סוסים",
+                    "options": {
+                        "horse_riding": "כן",
+                        "undefined": "לא"
+                    }
+                },
+                "horse_scale": {
+                    "label": "קושי ברכיבה על סוסים",
+                    "options": {
+                        "common": "קל: אין בעיות או קשיים. (ברירת מחדל)",
+                        "critical": "גבולי: המעבר אפשרי לרוכבים ולסוסים מנוסים. מכשולים משמעותיים. כדאי לבחון את הגשרים היטב.",
+                        "dangerous": "מסוכן: המעבר אפשרי לרוכבים וסוסים מנוסים מאוד ובמזג אוויר טוב. כנראה מוטב לרדת מהסוס בחלקים מהמסלול.",
+                        "demanding": "להשתמש בזהירות: דרך בלתי מאוזנת, מעבר קשה ברוב המקרים.",
+                        "difficult": "קשה: הדרך צרה וחשופה. עשויה להכיל מכשולים שעשויים להפיל את הרוכב וגם מעברים צרים.",
+                        "impossible": "בלתי אפשרי: דרך או גשר שלא ניתן לעבור על גבי סוסים. צרה מדי, אין מספיק תמיכה, מכשולים כגון סולמות. סכנת חיים."
+                    },
+                    "placeholder": "קשה, מסוכן…"
+                },
+                "horse_stables": {
+                    "label": "אורוות רכיבה",
+                    "options": {
+                        "stables": "כן",
+                        "undefined": "לא"
+                    }
+                },
+                "hot_water": {
+                    "label": "מים חמים"
+                },
+                "house": {
+                    "label": "סוג בית"
+                },
+                "iata": {
+                    "label": "קוד נמל תעופה של IATA"
+                },
+                "icao": {
+                    "label": "קוד נמל תעופה של ICAO"
+                },
+                "image": {
+                    "label": "תמונה"
+                },
+                "incline": {
+                    "label": "שיפוע"
+                },
+                "incline_steps": {
+                    "options": {
+                        "down": "למטה",
+                        "up": "למעלה"
+                    }
+                },
+                "indoor": {
+                    "label": "בתוך מבנה"
+                },
+                "indoor_type": {
+                    "label": "סוג"
+                },
+                "industrial": {
+                    "label": "סוג"
+                },
+                "informal": {
+                    "label": "לא רשמי"
+                },
+                "information": {
+                    "label": "סוג"
+                },
+                "inscription": {
+                    "label": "כתובת"
+                },
+                "intermittent": {
+                    "label": "לסירוגין"
+                },
+                "internet_access": {
+                    "label": "חיבור לאינטרנט",
+                    "options": {
+                        "no": "לא",
+                        "terminal": "מסוף",
+                        "wired": "קווי",
+                        "wlan": "אלחוטי",
+                        "yes": "כן"
+                    }
+                },
+                "internet_access/fee": {
+                    "label": "גישה לאינטרנט",
+                    "options": {
+                        "customers": "לקוחות בלבד",
+                        "no": "חינם",
+                        "yes": "תשלום"
+                    }
+                },
+                "internet_access/ssid": {
+                    "label": "שם הרשת האלחוטית"
+                },
+                "junction/ref_oneway": {
+                    "label": "מספר צומת"
+                },
+                "junction_line": {
+                    "label": "צומת",
+                    "options": {
+                        "circular": "מעגל תנועה",
+                        "roundabout": "כיכר"
+                    }
+                },
+                "kerb": {
+                    "label": "שפת מדרכה"
+                },
+                "kerb/height": {
+                    "label": "גובה"
+                },
+                "kitchen": {
+                    "label": "מטבח"
+                },
+                "label": {
+                    "label": "תווית"
+                },
+                "lamp_type": {
+                    "label": "סוג"
+                },
+                "landuse": {
+                    "label": "סוג"
+                },
+                "lane_markings": {
+                    "label": "סימוני נתיב"
+                },
+                "lanes": {
+                    "label": "נתיבים",
+                    "placeholder": "1, 2, 3…"
+                },
+                "language_multi": {
+                    "label": "שפות"
+                },
+                "layer": {
+                    "label": "שכבה"
+                },
+                "leaf_cycle": {
+                    "label": "מחזור עלים",
+                    "options": {
+                        "deciduous": "נשירים",
+                        "evergreen": "ירוק־עד",
+                        "mixed": "מעורב",
+                        "semi_deciduous": "חצי נשירים",
+                        "semi_evergreen": "חצי ירוק־עד"
+                    }
+                },
+                "leaf_type": {
+                    "label": "סוג עלה",
+                    "options": {
+                        "broadleaved": "עלים רחבים",
+                        "leafless": "ללא עלים",
+                        "mixed": "מעורב",
+                        "needleleaved": "עלים מחטניים"
+                    }
+                },
+                "leaf_type_singular": {
+                    "label": "סוג עלה"
+                },
+                "leisure": {
+                    "label": "סוג"
+                },
+                "length": {
+                    "label": "אורך (מטרים)"
+                },
+                "level": {
+                    "label": "רמה"
+                },
+                "level_semi": {
+                    "label": "רמות"
+                },
+                "liaison": {
+                    "label": "סוג"
+                },
+                "lifeguard": {
+                    "label": "מציל"
+                },
+                "lift_gate/type": {
+                    "label": "סוג"
+                },
+                "line_attachment": {
+                    "label": "חיבור קו"
+                },
+                "line_management": {
+                    "label": "ניהול קו"
+                },
+                "lit": {
+                    "label": "מואר"
+                },
+                "location": {
+                    "label": "מיקום"
+                },
+                "location_pool": {
+                    "options": {
+                        "indoor": "בתוך מבנה",
+                        "outdoor": "מחוץ למבנה",
+                        "roof": "גג"
+                    }
+                },
+                "lock": {
+                    "label": "נעילה"
+                },
+                "lockable": {
+                    "label": "ניתן לנעילה"
+                },
+                "locked": {
+                    "label": "נעול"
+                },
+                "man_made": {
+                    "label": "סוג"
+                },
+                "manhole": {
+                    "label": "סוג"
+                },
+                "manufacturer": {
+                    "label": "יצרן"
+                },
+                "map_size": {
+                    "label": "כיסוי"
+                },
+                "map_type": {
+                    "label": "סוג"
+                },
+                "mapillary": {
+                    "label": "מזהה תמונה ב־Mapillary"
+                },
+                "marker": {
+                    "label": "סוג"
+                },
+                "material": {
+                    "label": "חומר",
+                    "options": {
+                        "aluminium": "אלומיניום",
+                        "brass": "פליז",
+                        "brick": "לבנה",
+                        "bronze": "ברונזה",
+                        "concrete": "בטון",
+                        "dry_stone": "אבן יבשה",
+                        "glass": "זכוכית",
+                        "granite": "גרניט",
+                        "iron": "ברזל",
+                        "limestone": "אבן גיר",
+                        "marble": "שיש",
+                        "metal": "מתכת",
+                        "plastic": "פלסטיק",
+                        "reinforced_conrete": "בטון מזוין",
+                        "rock": "סלע",
+                        "sand": "חול",
+                        "sandstone": "אבן חול",
+                        "soil": "קרקע, אדמה",
+                        "steel": "פלדה",
+                        "stone": "אבן",
+                        "wood": "עץ"
+                    }
+                },
+                "mattress": {
+                    "label": "מזרונים זמינים"
+                },
+                "max_age": {
+                    "label": "גיל מרבי"
+                },
+                "maxaxleload_bridge": {
+                    "label": "הגבלת משקל סרן"
+                },
+                "maxheight": {
+                    "label": "מגבלת גובה"
+                },
+                "maxlength": {
+                    "label": "מגבלת אורך"
+                },
+                "maxspeed": {
+                    "label": "מגבלת מהירות",
+                    "placeholder": "40, 50, 60…"
+                },
+                "maxspeed/advisory": {
+                    "label": "הגבלת מהירות מומלצת",
+                    "placeholder": "40, 50, 60…"
+                },
+                "maxspeed/hgv": {
+                    "label": "מגבלת מהירות למשאיות",
+                    "placeholder": "40, 50, 60…"
+                },
+                "maxstay": {
+                    "label": "מגבלת זמן"
+                },
+                "maxweight": {
+                    "label": "מגבלת משקל"
+                },
+                "maxwidth": {
+                    "label": "מגבלת רוחב"
+                },
+                "memorial": {
+                    "label": "סוג",
+                    "options": {
+                        "cross": "צלב זיכרון",
+                        "obelisk": "אובליסק",
+                        "plaque": "לוח הנצחה",
+                        "sculpture": "פסל",
+                        "stone": "אבן",
+                        "war_memorial": "אנדרטת מלחמה"
+                    }
+                },
+                "message": {
+                    "label": "הודעה"
+                },
+                "military_service": {
+                    "label": "שירות צבאי"
+                },
+                "min_age": {
+                    "label": "גיל מזערי"
+                },
+                "min_height": {
+                    "label": "גובה התחתית (מטרים)"
+                },
+                "minspeed": {
+                    "label": "מגבלת מהירות מזערית",
+                    "placeholder": "20, 30, 40…"
+                },
+                "mobile": {
+                    "label": "טלפון נייד",
+                    "placeholder": "‎+972 3 123 456"
+                },
+                "model": {
+                    "label": "דגם"
+                },
+                "monitoring_multi": {
+                    "label": "ניטור"
+                },
+                "mooring": {
+                    "label": "עגינה",
+                    "options": {
+                        "commercial": "מסחרי",
+                        "guest": "אורחים",
+                        "no": "אין",
+                        "private": "פרטי",
+                        "yes": "יש"
+                    }
+                },
+                "mtb/scale": {
+                    "label": "רמת קושי באופני הרים",
+                    "options": {
+                        "0": "0: חצץ יציב/אדמה דחוסה, ללא מכשולים, פיתולים רחבים",
+                        "1": "1: משטח מעט רופף, מכשולים קטנים, פיתולים רחבים",
+                        "2": "2: משטח רופף במיוחד, מכשולים גדולים, סיבובים קלים",
+                        "3": "3: משטח חלק, מכשולים גדולים, פניות חדות",
+                        "4": "4: משטח רעוע ביותר או סלעים גדולים, פניות מסוכנות",
+                        "5": "5: קושי מירבי, מסלעות, מפולות",
+                        "6": "6: לא ניתן לרכוב עם אופניים מלבד רוכבי אופני הרים מקצוענים"
+                    },
+                    "placeholder": "0, 1, 2, 3…"
+                },
+                "mtb/scale/imba": {
+                    "label": "קושי מסלול לפי IMBA",
+                    "options": {
+                        "0": "⚪ הקל ביותר (עיגול לבן)",
+                        "1": "🟢 קל (עיגול ירוק)",
+                        "2": "🟦 בינוני (ריבוע כחול)",
+                        "3": "◆ קשה (יהלום שחור)",
+                        "4": "◆◆ קשה במיוחד (שני יהלומים שחורים)"
+                    },
+                    "placeholder": "קל, בינוני, קשה…"
+                },
+                "mtb/scale/uphill": {
+                    "label": "רמת קושי באופני הרים בעליה",
+                    "options": {
+                        "0": "0: שיפוע ממוצע <10%, חצץ/אדמה דחוסה, ללא מכשולים",
+                        "1": "1: שיפוע ממוצע <15%, חצץ/אדמה דחוסה, מכשולים מעטים",
+                        "2": "2: שיפוע ממוצע <20%, משטח יציב, שורשים/אבנים בגודל אגרוף",
+                        "3": "3: שיפוע ממוצע <25%, משטח משתנה, אבנים בגודל אגרוף/ענפים",
+                        "4": "4: שיפוע ממוצע <30%, תנאים קשים, אבנים גדולות וענפים",
+                        "5": "5: תלול מאוד, בדרך כלל דוחפים או סוחבים את האופניים"
+                    },
+                    "placeholder": "0, 1, 2, 3…"
+                },
+                "museum": {
+                    "label": "סוג"
+                },
+                "name": {
+                    "label": "שם",
+                    "placeholder": "שם נפוץ (אם יש)"
+                },
+                "natural": {
+                    "label": "טבעי"
+                },
+                "network": {
+                    "label": "רשת"
+                },
+                "network/type": {
+                    "label": "סוג רשת"
+                },
+                "network_bicycle": {
+                    "options": {
+                        "icn": "בינלאומית",
+                        "lcn": "מקומית",
+                        "ncn": "לאומית",
+                        "rcn": "אזורית"
+                    },
+                    "placeholder": "מקומית, אזורית, לאומית, בינלאומית"
+                },
+                "network_foot": {
+                    "options": {
+                        "iwn": "בינלאומית",
+                        "lwn": "מקומית",
+                        "nwn": "לאומית",
+                        "rwn": "אזורית"
+                    },
+                    "placeholder": "מקומית, אזורית, לאומית, בינלאומית"
+                },
+                "network_horse": {
+                    "options": {
+                        "ihn": "בינלאומית",
+                        "lhn": "מקומית",
+                        "nhn": "לאומית",
+                        "rhn": "אזורית"
+                    },
+                    "placeholder": "מקומית, אזורית, לאומית, בינלאומית"
+                },
+                "network_road": {
+                    "label": "רשת"
+                },
+                "not/name": {
+                    "label": "שמות שגויים"
+                },
+                "note": {
+                    "label": "הערה"
+                },
+                "nudism": {
+                    "label": "התערטלות",
+                    "options": {
+                        "customary": "נהוג",
+                        "designated": "יעודי",
+                        "no": "אסור",
+                        "obligatory": "הכרחי",
+                        "permissive": "מתירני",
+                        "yes": "מותר"
+                    },
+                    "terms": "נודיסטים,התפשטות,התערטלות,עירום מלא"
+                },
+                "office": {
+                    "label": "סוג",
+                    "options": {
+                        "accountant": "משרד רואה חשבון",
+                        "adoption_agency": "סוכנות אימוץ",
+                        "advertising_agency": "סוכנות פרסום",
+                        "architect": "משרד אדריכלים",
+                        "association": "משרד ללא מטרת רווח",
+                        "charity": "משרד צדקה",
+                        "company": "משרד תאגידי",
+                        "construction_company": "משרד חברת בניה",
+                        "consulting": "משרד ייעוץ",
+                        "courier": "משרד שליחים",
+                        "coworking": "מתחם עבודה משותף",
+                        "diplomatic": "משרד דיפלומטי",
+                        "educational_institution": "מוסד חינוכי",
+                        "employment_agency": "סוכנות כוח אדם",
+                        "energy_supplier": "משרד ספק חשמל",
+                        "engineer": "משרד הנדסה",
+                        "estate_agent": "משרד תיווך",
+                        "financial": "משרד פיננסי",
+                        "financial_advisor": "ייעוץ כלכלי",
+                        "forestry": "משרד יערות",
+                        "foundation": "משרד קרן",
+                        "government": "משרד ממשלתי",
+                        "graphic_design": "משרד לעיצוב גרפי",
+                        "guide": "משרד מדריכי תיירות",
+                        "insurance": "משרד ביטוח",
+                        "it": "משרד טכנולוגית מידע",
+                        "lawyer": "משרד עורכי דין",
+                        "logistics": "משרד שילוח",
+                        "moving_company": "משרד חברת הובלה",
+                        "newspaper": "משרד עיתונאות",
+                        "ngo": "משרד ארגון לא ממשלתי",
+                        "travel_agent": "סוכנות נסיעות"
+                    }
+                },
+                "oneway": {
+                    "label": "חד־סטרי",
+                    "options": {
+                        "alternating": "מתחלף",
+                        "no": "לא",
+                        "reversible": "הפיך",
+                        "undefined": "כנראה שלא",
+                        "yes": "כן"
+                    }
+                },
+                "oneway/bicycle": {
+                    "label": "חד־סטרי (אופניים)"
+                },
+                "oneway_yes": {
+                    "options": {
+                        "alternating": "מתחלף",
+                        "no": "לא",
+                        "reversible": "הפיך",
+                        "undefined": "כנראה שכן",
+                        "yes": "כן"
+                    }
+                },
+                "openfire": {
+                    "label": "מותר אש גלויה"
+                },
+                "opening_date": {
+                    "placeholder": "יי-חח-שששש"
+                },
+                "opening_hours": {
+                    "label": "שעות",
+                    "placeholder": "לא ידוע"
+                },
+                "operator": {
+                    "label": "מפעיל"
+                },
+                "operator/type": {
+                    "label": "סוג מפעיל"
+                },
+                "organic": {
+                    "label": "מוצרים אורגניים",
+                    "options": {
+                        "no": "ללא",
+                        "only": "בלבד",
+                        "yes": "חלקם"
+                    }
+                },
+                "parking": {
+                    "label": "סוג"
+                },
+                "parking_entrance": {
+                    "label": "סוג"
+                },
+                "parking_space": {
+                    "label": "סוג"
+                },
+                "payment_multi": {
+                    "label": "סוגי תשלום"
+                },
+                "pipeline": {
+                    "label": "סוג"
+                },
+                "piste/type": {
+                    "label": "סוג"
+                },
+                "place": {
+                    "label": "סוג"
+                },
+                "playground": {
+                    "label": "סוג"
+                },
+                "post_box/type": {
+                    "label": "סוג"
+                },
+                "power": {
+                    "label": "סוג"
+                },
+                "public_bookcase/type": {
+                    "label": "סוג"
+                },
+                "railway": {
+                    "label": "סוג"
+                },
+                "recycling_type": {
+                    "label": "סוג"
+                },
+                "relation": {
+                    "label": "סוג"
+                },
+                "residential": {
+                    "label": "סוג"
+                },
+                "resort": {
+                    "label": "סוג"
+                },
+                "restriction": {
+                    "label": "סוג"
+                },
+                "room": {
+                    "label": "סוג"
+                },
+                "route": {
+                    "label": "סוג"
+                },
+                "route_master": {
+                    "label": "סוג"
+                },
+                "ruins": {
+                    "label": "סוג"
+                },
+                "service": {
+                    "label": "סוג"
+                },
+                "service_rail": {
+                    "label": "סוג שירות"
+                },
+                "shelter_type": {
+                    "label": "סוג"
+                },
+                "shop": {
+                    "label": "סוג"
+                },
+                "siren/type": {
+                    "label": "סוג"
+                },
+                "site": {
+                    "label": "סוג"
+                },
+                "social_facility": {
+                    "label": "סוג"
+                },
+                "sport": {
+                    "options": {
+                        "basketball": "כדורסל"
+                    }
+                },
+                "stile": {
+                    "label": "סוג"
+                },
+                "street_cabinet": {
+                    "label": "סוג"
+                },
+                "studio": {
+                    "label": "סוג"
+                },
+                "substation": {
+                    "label": "סוג"
+                },
+                "substation_pipeline": {
+                    "label": "סוג"
+                },
+                "swimming_pool": {
+                    "label": "סוג"
+                },
+                "switch": {
+                    "label": "סוג"
+                },
+                "telecom": {
+                    "label": "סוג"
+                },
+                "tomb": {
+                    "label": "סוג"
+                },
+                "tourism": {
+                    "label": "סוג"
+                },
+                "tower/type": {
+                    "label": "סוג"
+                },
+                "townhall/type": {
+                    "label": "סוג"
+                },
+                "trade": {
+                    "label": "סוג"
+                },
+                "traffic_calming": {
+                    "label": "סוג"
+                },
+                "traffic_signals": {
+                    "label": "סוג"
+                },
+                "transformer": {
+                    "label": "סוג"
+                },
+                "trench": {
+                    "label": "סוג"
+                },
+                "tunnel": {
+                    "label": "סוג"
+                },
+                "tunnel_combo": {
+                    "label": "סוג"
+                },
+                "valve": {
+                    "label": "סוג"
+                },
+                "wall": {
+                    "label": "סוג"
+                },
+                "water": {
+                    "label": "סוג"
+                },
+                "waterway": {
+                    "label": "סוג"
+                },
+                "wetland": {
+                    "label": "סוג"
+                },
+                "wheelchair": {
+                    "label": "גישה לכסא גלגלים"
+                }
+            },
+            "presets": {
+                "highway/footway/crossing/unmarked": {
+                    "name": "מעבר חצייה בלתי מסומן"
+                },
+                "leisure/pitch/basketball": {
+                    "name": "מגרש כדורסל"
+                }
+            }
+        }
+    }
+}

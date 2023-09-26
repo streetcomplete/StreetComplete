@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.quest
 import de.westnordost.streetcomplete.data.ObjectTypeRegistry
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
@@ -11,6 +12,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.qualifier.named
@@ -31,6 +33,9 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
     private val countryInfos: CountryInfos by inject()
     private val countryBoundariesFuture: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val arSupportChecker: ArSupportChecker by inject()
+    private val getFeature: (tags: Map<String, String>) -> Feature? = { tags ->
+        featureDictionaryFuture.get().getFeature(tags)
+    }
     private val osmoseDao: OsmoseDao by inject()
     private val customQuestList: CustomQuestList by inject()
 
@@ -39,10 +44,10 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
         ordinalsAndEntries.addAll(getQuestTypeList(
             trafficFlowSegmentsApi,
             trafficFlowDao,
-            featureDictionaryFuture,
             countryInfos,
             countryBoundariesFuture,
             arSupportChecker,
+            getFeature,
             osmoseDao,
             customQuestList,
         ))

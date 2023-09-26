@@ -745,7 +745,7 @@ Erfolge"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
     <string name="quest_step_count_title">"Wie viele Stufen gibt es hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
-    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Fahrbahn gehen kann?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Bedarfsampel-Kastens."</string>
     <string name="quest_buildingType_bungalow_description2">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus oder -hütte, …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Wie ist dieser Bahnübergang beschrankt?"</string>
@@ -782,7 +782,7 @@ Erfolge"</string>
     <string name="quest_buildingType_ruins_description">"verfallenes oder zerstörtes Gebäude"</string>
     <string name="quest_charging_station_capacity_title">"Wie viele Autos können hier gleichzeitig aufgeladen werden?"</string>
     <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
-    <string name="quest_lanes_title">"Wie viele Fahrstreifen für Autos hat diese Straße?"</string>
+    <string name="quest_lanes_title">"Wie viele Fahrstreifen für Autos hat diese Fahrbahn?"</string>
     <string name="quest_lanes_answer_lanes">"Markierte Fahrstreifen"</string>
     <string name="quest_lanes_answer_noLanes">"Keine markierten Fahrstreifen"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat eine gemeinsame Linksabbiegerspur für beide Richtungen"</string>
@@ -791,8 +791,8 @@ Erfolge"</string>
     <string name="quest_maxheight_split_way_hint">"Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
     <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein?"</string>
-    <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Straße"</string>
-    <string name="quest_kerb_height_lowered">"etwas höher als die Straße"</string>
+    <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Fahrbahn"</string>
+    <string name="quest_kerb_height_lowered">"etwas höher als die Fahrbahn"</string>
     <string name="quest_kerb_height_raised">"hoher Bordstein"</string>
     <string name="quest_kerb_height_lowered_ramp">"Bordsteinrampe"</string>
     <string name="quest_lanes_answer_lanes_description2">"Gib hier die Gesamtzahl (beide Richtungen) aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
@@ -803,8 +803,8 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_maxheight_answer_noSign_question_yes">"Hohe Lastwagen können hindurch"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
     <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
-    <string name="quest_parkingType_street_side">"Parkbuchten am Straßenrand"</string>
-    <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
+    <string name="quest_parkingType_street_side">"Parkbuchten am Fahrbahnrand"</string>
+    <string name="quest_parkingType_lane">"Parken auf der Fahrbahn"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht …"</string>
@@ -950,7 +950,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_traffic_calming_type_hump">"Bremsschwelle (länger)"</string>
     <string name="quest_traffic_calming_type_table">"Schwelle mit Plateau"</string>
     <string name="quest_traffic_calming_type_cushion">"Teller (nicht holprig für breitere Fahrzeuge)"</string>
-    <string name="quest_traffic_calming_type_choker">"Verengte Straße"</string>
+    <string name="quest_traffic_calming_type_choker">"Fahrbahnverengung"</string>
     <string name="quest_traffic_calming_type_island">"Verkehrsinsel"</string>
     <string name="quest_traffic_calming_type_chicane">"Absichtliche Kurve(n)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rüttelstreifen"</string>
@@ -975,14 +975,14 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
     <string name="on_floor">"in Stockwerk %s"</string>
-    <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Straße:"</string>
+    <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Fahrbahn:"</string>
     <string name="select_street_parking_position">"Wähle Position:"</string>
     <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Senkrecht"</string>
-    <string name="street_parking_on_street">"Auf der Straße"</string>
-    <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
+    <string name="street_parking_on_street">"Auf der Fahrbahn"</string>
+    <string name="street_parking_half_on_kerb">"Teilweise auf der Fahrbahn"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
     <string name="street_parking_street_side">"Nur in Parkbuchten am Straßenrand"</string>
     <string name="street_parking_painted_area_only">"Nur in dafür vorgesehenen Plätzen auf der Straße"</string>
@@ -1211,7 +1211,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du die Lage über die gesamte Länge hinweg überprüft hast?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
-    <string name="street_parking_street_width">"Straßenbreite: %s"</string>
+    <string name="street_parking_street_width">"Fahrbahnbreite: %s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
     <string name="link_ohsomehex_description">"Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit"</string>
     <string name="link_opencampingmap_description">"Eine Weltkarte der Campingplätze"</string>
@@ -1300,8 +1300,8 @@ Jetzt verschieben?"</string>
     <string name="privacy_html_arcore">"Diese App nutzt die von Google bereitgestellten &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) welche den &lt;a href=\"https://policies.google.com/privacy\"&gt;Google-Datenschutzrichtlinien&lt;/a&gt; unterliegen."</string>
     <string name="default_disabled_msg_seasonal">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil man die Situation vor Ort möglicherweise nur zu bestimmten Jahreszeiten überprüfen kann."</string>
     <string name="quest_gritBinSeasonal_title">"Ist das auch außerhalb des Winters hier?"</string>
-    <string name="street_parking_staggered_on_street">"Wechselseitig auf der Straße"</string>
-    <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Straße"</string>
+    <string name="street_parking_staggered_on_street">"Wechselseitig auf der Fahrbahn"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Fahrbahn"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Achte auf Lautsprecher. Nicht alle Tonsignale können über eine Taste aktiviert werden."</string>
     <string name="quest_presets_duplicate">"Duplizieren"</string>
     <string name="label_block">"Block"</string>
@@ -1335,7 +1335,7 @@ Jetzt verschieben?"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gemeinsamer Geh- und Radweg, beide Richtungen"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"Du hast einen neuen Weg gefunden, um Daten zu editieren!"</string>
-    <string name="overlays_tutorial_display">"Jedes Overlay zeigt nur bestimmte Daten an, beispielsweise Geschäfte oder Straßenoberflächen.
+    <string name="overlays_tutorial_display">"Jedes Overlay zeigt nur bestimmte Daten an, beispielsweise Geschäfte oder Wegeoberflächen.
 
 Die Hervorhebung der Daten in unterschiedlichen Farben soll dir einen guten Überblick darüber geben, was bisher erfasst wurde.
 Fehlende Daten sind immer rot eingefärbt."</string>
@@ -1343,4 +1343,6 @@ Fehlende Daten sind immer rot eingefärbt."</string>
 
 Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Position des Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
     <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Kreuzung?"</string>
+    <string name="quest_maxheight_sign_title">"Welche Durchfahrtshöhe ist hier angegeben?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Welche Durchfahrtshöhe ist unter der Brücke angegeben?"</string>
 </resources>

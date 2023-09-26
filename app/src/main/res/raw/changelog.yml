@@ -1,3 +1,31 @@
+v54.1: |
+  <h3>New translations</h3>
+  <ul>
+  <li><b>Hebrew</b>, by David, Tal Einat, Slava Sukhochev and more</li>
+  <li><b>Slovenian</b>, by CTJ, Jaka Kranjc, StefanB, SimonG and more</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Bike path segregation: Never ask for paths where biking is prohibited (#5213), by @matkoniecz</li>
+  <li>Max height: Allow input of restrictions of 10m and above (#5232)</li>
+  <li>Max height: Clarify wording – ask what is indicated by a sign (see <a href="https://community.openstreetmap.org/t/streetcomplete-fragt-bei-eisenbahn-weg-kreuzung-nach-durchfahrtshohe/103606">discussion</a>)</li>
+  <li>Max height: Do not ask for crossings with tram lines – too numerous and usually never signed (#5180)</li>
+  <li>Also ask for names of tram stops (#5215)</li>
+  <li>Also ask if a caravan site requires a fee (#5228), by @qugebert</li>
+  <li>in Slovenia: Ask about tactile paving and bike paths – exclusive and advisory bike lanes are differentiated (#5274, #5237), by @CTJoriginal</li>
+  </ul>
+  <h3>Overlay Enhancements</h3>
+  <ul>
+  <li>Shops overlay: Display and allow to add clubs (#5244)</li>
+  <li>Surface overlay: Show missing data for motorways and motorway links (#5247)</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Profile page: For ascribing on which day a user made any one edit, use the UTC timezone (#5245, #4951), by @mnalis</li>
+  <li>Fix a (rare) crash on startup (#5241), by @Helium314</li>
+  <li>Other small enhancements (#5268, #5264, #5262, #5265...), by @tapetis, @Helium314</li>
+  </ul>
+
 v54.0: |
   <h3>New Quests</h3>
   <ul>
@@ -295,7 +323,7 @@ v48.0: |
   <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
   <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
   <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
-  <li><i>What’s the identification number here?</i>, asked for fire hydrants (#3059, #4386), by @mcliquid</li>
+  <li><i>What’s the identification number here?</i>, asked for fire hydrants (#3059, #4440), by @mcliquid</li>
   <li><i>Can this cycle barrier be opened?</i> (#4293, #4406), by @mnalis</li>
   </ul>
   <h3>Enhanced Quests</h3>

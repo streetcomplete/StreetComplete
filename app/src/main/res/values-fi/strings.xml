@@ -20,8 +20,8 @@
     <string name="quest_generic_confirmation_no">"Aion tarkistaa"</string>
     <string name="quest_leave_new_note_title">"Jätä sen sijaan ilmoitus?"</string>
     <string name="quest_leave_new_note_description">"Voit jättää julkisen ilmoituksen tähän sijaintiin, jota muut kartoittajat voivat kommentoida ja toivottavasti ratkaista tai vaihtoehtoisesti piilottaa tehtävän vain itseltäsi"</string>
-    <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"Ei, piilota"</string>
+    <string name="quest_leave_new_note_yes">"Jätä ilmoitus"</string>
+    <string name="quest_leave_new_note_no">"Piilota"</string>
     <string name="quest_streetName_title">"Mikä on tämän tien nimi?"</string>
     <string name="quest_streetName_description">"kuten kirjoitettu tienviitassa, lyhennykset laajennettuna:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Joskus tienviitta on vain tien päässä. Huomioi myös ettei sivuteillä, jotka alkavat isommasta tiestä, ole välttämättä ylimääräisiä tienviittoja. Yleensä kaikilla teillä, joiden varressa on taloja, on myös nimi."</string>
@@ -57,7 +57,7 @@
     <string name="about_title_report_error">"Ilmoita virheestä"</string>
     <string name="about_title_feedback">"Anna palautetta"</string>
     <string name="about_title_license">"Lisenssi"</string>
-    <string name="about_summary_license">"GNU Yleinen Julkinen Lisenssi"</string>
+    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Olet offline-tilassa"</string>
     <string name="confirmation_authorize_now">"Kirjautuminen OSM-käyttäjätiliin vaaditaan, jotta voit lisätä vastauksiasi. Kirjaudutaanko nyt?"</string>
     <string name="not_authorized">"Ei valtuutettu"</string>
@@ -102,7 +102,7 @@ Sijaintiasi käytetään vain automaattiseen täydennettävien tietojen hakemise
 Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapauksessa, ennen lähettämistä sovellus tarkistaa muutoksesi käyttäen &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;yksinkertaista tekstitiedostoa&lt;/a&gt; palvelimellani muutoksien lähettäminen eston varalta. Tämä on ennaltaehkäisevä tarkistus jottei mahdolliset virheelliset sovellusversiot korruptoi OpenStreetMap dataa.&lt;br/&gt;
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Päällä"</string>
-    <string name="autosync_only_on_wifi">"Vain Wifi"</string>
+    <string name="autosync_only_on_wifi">"Vain Wi-Fi"</string>
     <string name="autosync_off">"Pois päältä"</string>
     <string name="quest_streetSurface_title">"Mikä pinta tällä tiellä on?"</string>
     <string name="quest_surface_value_paved">"Päällystetty (yleinen)"</string>
@@ -1126,6 +1126,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_toiletAvailability_title">"Onko täällä WC:tä?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Pääseekö tässä paikassa pyörätuolilla vessaan?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Oletko varma, etteivät pyöräilijät saa käyttää tätä yksisuuntaista katua molempiin suuntiin? Jos olet epävarma, tarkista onko kadun päässä merkkiä."</string>
+    <string name="link_valhalla_description">"Reititysmoottori erittäin pienellä muistitilalla, multimodaalinen reititys, isokronit ja paljon muuta."</string>
     <string name="link_backofyourhand_description">"Kuinka hyvin tunnet ympäristösi? Testaa tietämystäsi paikantamalla kadut."</string>
     <string name="link_notesreview_description">"Näe, suodata ja kommentoi sinun ja muiden tekemiä ilmoituksia. Ilmoitukset on mahdollista selvittää asettamalla ilmoitusten sisältämä tieto kartalle käyttäen iD:tä tai JOSM:ia"</string>
     <string name="quest_accepts_cards">"Kelpaako täällä luotto- tai debit-kortit?"</string>
@@ -1207,6 +1208,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_recycling_type_pet">"Vain PET-muovi"</string>
     <string name="street_parking_street_width">"Kadun leveys: %s"</string>
     <string name="overlay_street_parking">"Katupysäköinti"</string>
+    <string name="link_ohsomehex_description">"Tutki OSM-tietoja eri mittakaavassa kokonaisuudesta yksittäisiin objekteihin tilan ja ajan yli"</string>
     <string name="link_opencampingmap_description">"Kartta leirintäalueista"</string>
     <string name="quest_atm_cashin_title">"Voiko tähän pankkiautomaattiin tallettaa rahaa?"</string>
     <string name="create_node_action_description">"Loit pisteen jossa on…"</string>
@@ -1253,6 +1255,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Kaksikerroksinen pyöräteline"</string>
     <string name="user_profile_current_week_title">"Viimeiset 7 päivää"</string>
     <string name="user_profile_dates_mapped">"Päivät, jolloin olet kartoittanut"</string>
+    <string name="quest_cycleway_value_advisory_lane">"pyöräkaista"</string>
     <string name="urlconfig_scan_qr_code_again2">"Sovelluksen asennuksen jälkeen skannaa QR-koodi uudelleen tai napsauta &lt;a href=\"%s\"&gt;tätä linkkiä&lt;/a&gt; toteuttaaksesi esiasetuksen."</string>
     <string name="confirmation_replace_shop_title">"Onko tämä nyt eri paikka?"</string>
     <string name="confirmation_replace_shop_message">"Siinä tapauksessa aukioloajat, yhteystiedot jne. ovat myös muuttuneet."</string>
@@ -1296,6 +1299,7 @@ Haluatko siirtää nyt?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Osittain kadulla vastakkaisin puolin"</string>
     <string name="quest_traffic_signals_sound_description">"Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella."</string>
     <string name="quest_presets_duplicate">"Kaksoiskappale"</string>
+    <string name="label_block">"este"</string>
     <string name="quest_surface_value_mud">"Pysyvää mutaa"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Täällä ei ole WC:tä"</string>
     <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
@@ -1318,5 +1322,14 @@ Haluatko siirtää nyt?"</string>
     <string name="overlay_addresses_no_entrance">"Se ei ole sisäänkäynti…"</string>
     <string name="overlays_tutorial_title">"Peitteet"</string>
     <string name="overlays_tutorial_intro">"Löysit uuden tavan muokata tietoja!"</string>
+    <string name="overlays_tutorial_display">"Jokainen peite näyttää tietynlaista tietoa, esimerkiksi kauppoja tai  kadunpintoja.
+
+Tiedot korostetaan eri väreissä, jotta saat yleiskuvan, mitä tähän mennessä on tallennettu.
+Puuttuvat tiedot näytetään aina punaisella värillä."</string>
+    <string name="overlays_tutorial_edit">"Napauta mitä tahansa korostettua tietoa katsoaksesi sitä tarkemmin tai muokataksesi sitä. Voit myös jakaa kulkuväyliä tai ilmoittaa havainnoista, kuten kysymysten kanssa.
+
+Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintiin, kuten osoitteiden peitteessä."</string>
     <string name="quest_crossing_kerb_height_title">"Mikä on kadun reunojen korkeus tässä risteyksessä?"</string>
+    <string name="quest_maxheight_sign_title">"Mikä korkeusrajoitus tässä on?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Mikä korkeusrajoitus sillan alapuolella on?"</string>
 </resources>
