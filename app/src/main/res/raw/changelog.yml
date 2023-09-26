@@ -1,4 +1,9 @@
 v54.1: |
+  <h3>New translations</h3>
+  <ul>
+  <li><b>Hebrew</b>, by David, Tal Einat, Slava Sukhochev and more</li>
+  <li><b>Slovenian</b>, by CTJ, Jaka Kranjc, StefanB, SimonG and more</li>
+  </ul>
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Bike path segregation: Never ask for paths where biking is prohibited (#5213), by @matkoniecz</li>

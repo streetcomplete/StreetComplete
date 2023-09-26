@@ -1336,4 +1336,6 @@ A hiányzó adatok mindig pirossal vannak kiemelve."</string>
 
 Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását is lehetővé teszik, a célkereszt pozíciójában."</string>
     <string name="quest_crossing_kerb_height_title">"Milyen magas a járdaszegély ennél a kereszteződésnél?"</string>
+    <string name="quest_maxheight_sign_title">"Mekkora magassági korlátozás van jelezve?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Milyen magassági korlátozás van jelezve a híd alatt?"</string>
 </resources>

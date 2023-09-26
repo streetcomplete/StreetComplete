@@ -1347,4 +1347,6 @@ Chybějící data se vždy zobrazují červeně."</string>
 
 Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici zobrazeného kříže, například v případě vrstvy adres."</string>
     <string name="quest_crossing_kerb_height_title">"Jaká je výška obrubníků u tohoto přechodu?"</string>
+    <string name="quest_maxheight_sign_title">"Jaký výškový limit je tu uveden?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Jaký výškový limit je uveden pod tímto mostem?"</string>
 </resources>

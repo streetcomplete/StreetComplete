@@ -1331,4 +1331,18 @@
     <string name="quest_tactilePaving_steps_top">"Только наверху"</string>
     <string name="quest_tactilePaving_steps_bottom">"Только внизу"</string>
     <string name="overlay_addresses_no_entrance">"Это не вход..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"дорожка общего пользования"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"дорожка общего пользования, в обоих направлениях"</string>
+    <string name="overlays_tutorial_title">"Наложения"</string>
+    <string name="overlays_tutorial_intro">"Вы нашли новый способ редактирования данных!"</string>
+    <string name="overlays_tutorial_display">"Каждое наложение отображает один тип данных, например магазины или улицы.
+
+ Данные выделены разными цветами, чтобы дать вам хорошее представление о том, что было записано на данный момент.
+ Отсутствующие данные всегда отображаются красным цветом."</string>
+    <string name="overlays_tutorial_edit">"Нажмите на выделенные данные, чтобы отобразить или отредактировать их.  Вы также можете разделить пути или оставить заметки, как в случае с квестами.
+
+ Кроме того, некоторые наложения позволяют добавлять новые данные в место отображаемого перекрестия, например адреса."</string>
+    <string name="quest_crossing_kerb_height_title">"Какова высота бордюров на этом переходе?"</string>
+    <string name="quest_maxheight_sign_title">"Какое ограничение по высоте здесь указано?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Какое ограничение по высоте указано под мостом?"</string>
 </resources>

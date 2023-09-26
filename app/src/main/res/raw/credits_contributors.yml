@@ -1,21 +1,21 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 411887
+  linesOfCodeChanged: 411992
   linesOfInterfaceMarkupChanged: 144177
   assetFilesChanged: 1975
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20618
+  linesOfCodeChanged: 20841
   linesOfInterfaceMarkupChanged: 5176
   assetFilesChanged: 634
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 17151
+  linesOfCodeChanged: 17364
   linesOfInterfaceMarkupChanged: 2425
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12125
+  linesOfCodeChanged: 12129
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -33,7 +33,7 @@
   assetFilesChanged: 7
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3092
+  linesOfCodeChanged: 3094
   linesOfInterfaceMarkupChanged: 488
   assetFilesChanged: 70
 - name: "riQQ"
@@ -48,8 +48,8 @@
   linesOfInterfaceMarkupChanged: 3159
 - name: "Tim"
   githubUsername: "tapetis"
-  linesOfCodeChanged: 1832
-  linesOfInterfaceMarkupChanged: 700
+  linesOfCodeChanged: 1864
+  linesOfInterfaceMarkupChanged: 1429
 - name: "Isira Seneviratne"
   githubUsername: "Isira-Seneviratne"
   linesOfCodeChanged: 1751
@@ -165,7 +165,7 @@
   linesOfCodeChanged: 48
 - name: "qugebert"
   githubUsername: "qugebert"
-  linesOfCodeChanged: 39
+  linesOfCodeChanged: 41
 - name: "Muhammad Usama"
   githubUsername: "SMUsamaShah"
   linesOfCodeChanged: 39
@@ -208,6 +208,9 @@
 - name: "ferdinand0101"
   githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
+- name: "CTJoriginal"
+  githubUsername: "CTJoriginal"
+  linesOfCodeChanged: 6
 - name: "Holger Jeromin"
   githubUsername: "HolgerJeromin"
   linesOfCodeChanged: 6

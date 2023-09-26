@@ -1083,6 +1083,8 @@ If any lanes are reserved for buses, please leave a note instead."</string>
 
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
+    <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">What height limit is indicated below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
