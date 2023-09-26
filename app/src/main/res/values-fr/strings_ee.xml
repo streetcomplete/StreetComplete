@@ -393,4 +393,13 @@
     <string name="restriction_overlay_sign_give_way">Cédez-le-passage</string>
     <string name="restriction_overlay_sign_stop">Stop</string>
     <string name="pref_create_node_show_keyboard_title">Afficher automatiquement le clavier lors de l\'ajout d\'un nœud</string>
+    <string name="restriction_overlay_select_way">Sélectionner le chemin suivant sur la carte. Il doit partager un nœud final commun avec le chemin actuel. Découper si nécessaire.</string>
+    <string name="restriction_overlay_signed_switch">Il y a un panneau ou un marquage au sol</string>
+    <string name="pref_disable_navigation_mode_summary">Désactive la rotation automatique de la carte</string>
+    <string name="default_disabled_msg_roofColour">Cette quête est désactivée par défaut, la couleur des tuiles n’étant pas facilement visible depuis la rue. Ce type de quête demande également beaucoup de temps ; il est généralement plus simple de le faire par imagerie aérienne depuis chez soi.</string>
+    <string name="pref_update_local_statistics_summary">La désactivation accélère les téléversements, et bloque les messages de succès</string>
+    <string name="pref_disable_navigation_mode_title">Désactiver le mode navigation</string>
+    <string name="quest_name_brand">Possède une marque…</string>
+    <string name="restriction_overlay_relation_incomplete">La relation est incomplète, le téléchargement des environs est nécessaire</string>
+    <string name="quest_generic_surface_button">Réponses génériques de surfaces</string>
 </resources>
