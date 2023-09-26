@@ -184,10 +184,11 @@ val questsModule = module {
             get(),
             get(named("CountryBoundariesFuture")),
             get(),
-        ) { tags ->
-            get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
-                .get().getFeature(tags)
-        }
+            { tags ->
+                get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
+                    .get().getFeature(tags)
+            }
+        )
     }
 }
 
@@ -252,7 +253,7 @@ fun questTypeRegistry(
     9 to AddCarWashType(),
 
     10 to AddBenchBackrest(),
-    11 to AddAmenityCover { getFeature(it) },
+    11 to AddAmenityCover(getFeature),
 
     12 to AddBridgeStructure(),
 
@@ -328,7 +329,7 @@ fun questTypeRegistry(
     /* pulled up in priority to be before CheckExistence because this is basically the check
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
-    49 to CheckExistence { getFeature(it) },
+    49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
@@ -378,9 +379,9 @@ fun questTypeRegistry(
     157 to AddHairdresserCustomers(), // almost always marked on sign outside
     78 to SpecifyShopType(), // above add place name as some brand presets will set the name too
     79 to CheckShopType(),
-    80 to AddPlaceName { getFeature(it) },
-    77 to CheckOpeningHoursSigned { getFeature(it) },
-    81 to AddOpeningHours { getFeature(it) },
+    80 to AddPlaceName(getFeature),
+    77 to CheckOpeningHoursSigned(getFeature),
+    81 to AddOpeningHours(getFeature),
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
 
     84 to AddAtmOperator(),
@@ -465,7 +466,7 @@ fun questTypeRegistry(
     132 to AddAcceptsCash(),
 
     133 to AddFuelSelfService(),
-    156 to CheckShopExistence { getFeature(it) }, // after opening hours and similar so they will be preferred if enabled
+    156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled
 
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
