@@ -55,7 +55,7 @@ class AddCycleway(
     // http://peopleforbikes.org/get-local/ (US)
     override val enabledInCountries = NoCountriesExcept(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-        "NO", "SE", "FI", "IS", "DK",
+        "NO", "SE", "FI", "IS", "DK", "SI",
         "GB", "IE", "NL", "BE", "FR", "LU",
         "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
         "ES", "IT", "HR",
