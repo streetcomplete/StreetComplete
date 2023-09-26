@@ -307,13 +307,3 @@ tasks.register<GenerateTagSuggestions>("generateTagSuggestions") {
     version = presetsVersion
     targetDir = "$projectDir/src/main/assets/tag_editor"
 }
-
-tasks.whenTaskAdded {
-    if (name.contains("ArtProfile")) {
-        enabled = false
-    }
-}
-
-tasks.withType<com.android.build.gradle.internal.tasks.CompileArtProfileTask>() {
-    enabled = false
-}
