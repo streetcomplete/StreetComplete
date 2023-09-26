@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
@@ -8,8 +9,10 @@ import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import java.util.concurrent.FutureTask
 
 /* Each overlay is assigned an ordinal. This is used for serialization and is thus never changed,
 *  even if the order of overlays is changed.  */
@@ -21,6 +24,9 @@ val overlaysModule = module {
         5 to CyclewayOverlay(get(), get(named("CountryBoundariesFuture"))),
         2 to StreetParkingOverlay(),
         3 to AddressOverlay(get(named("CountryBoundariesFuture"))),
-        4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
+        4 to ShopsOverlay { tags ->
+            get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
+                .get().getFeature(tags)
+        },
     )) }
 }
