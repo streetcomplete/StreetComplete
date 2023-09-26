@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.existence
+package de.westnordost.streetcomplete.util
 
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -7,28 +7,22 @@ import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import java.util.Locale
-import java.util.concurrent.FutureTask
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class CheckExistenceLabelTest {
-    private var featureDictionaryFuture: FutureTask<FeatureDictionary>
+class NameAndLocationLabelTest {
+    private var featureDictionary: FeatureDictionary
     private var englishResources: Resources
-    private var questType: CheckExistence
 
     init {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        featureDictionaryFuture = FutureTask { AndroidFeatureDictionary.create(context.assets, "osmfeatures/default", "osmfeatures/brands") }
-        featureDictionaryFuture.run()
+        featureDictionary = AndroidFeatureDictionary.create(context.assets, "osmfeatures/default", "osmfeatures/brands")
 
         val conf = Configuration(context.resources.configuration)
         conf.setLocale(Locale.ENGLISH)
         val localizedContext = context.createConfigurationContext(conf)
         englishResources = localizedContext.resources
-
-        questType = CheckExistence(featureDictionaryFuture)
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
@@ -90,6 +84,6 @@ class CheckExistenceLabelTest {
         getNameAndLocationLabel(
             Node(0, LatLon(0.0, 0.0), tags),
             englishResources,
-            featureDictionaryFuture.get()
+            featureDictionary
         )?.toString()
 }
