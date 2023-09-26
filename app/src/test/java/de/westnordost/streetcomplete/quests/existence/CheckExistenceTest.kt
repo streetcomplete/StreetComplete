@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
@@ -8,32 +7,14 @@ import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
-import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CheckExistenceTest {
-    private val questType = CheckExistence { mockOfFeatureDictionary().getFeature(it) }
-
-    private fun mockOfFeatureDictionary(): FeatureDictionary {
-        // another option is following CheckExistenceLabelTest
-        // and doing it as an androidTest
-        val matchFound: FeatureDictionary.QueryByTagBuilder = mock()
-        on(matchFound.find()).thenReturn(listOf(mock()))
-        on(matchFound.isSuggestion(false)).thenReturn(matchFound)
-
-        val noMatches: FeatureDictionary.QueryByTagBuilder = mock()
-        on(noMatches.find()).thenReturn(emptyList())
-        on(noMatches.isSuggestion(false)).thenReturn(noMatches)
-
-        val tagFinder: FeatureDictionary = mock()
-        on(tagFinder.byTags(mapOf("amenity" to "telephone"))).thenReturn(matchFound)
-        on(tagFinder.byTags(mapOf("shop" to "weird_value"))).thenReturn(noMatches)
-
-        return tagFinder
+    private val questType = CheckExistence { tags ->
+        if (tags["amenity"] == "telephone") mock() else null
     }
 
     @Test fun `apply answer adds check date`() {
@@ -74,13 +55,13 @@ class CheckExistenceTest {
     }
 
     @Test fun `isApplicableTo returns true for known places with old amenity=telephone`() {
-        val milisecondsFor800Days: Long = 1000L * 60 * 60 * 24 * 800
+        val millisecondsFor800Days: Long = 1000L * 60 * 60 * 24 * 800
         assertTrue(
             questType.isApplicableTo(
                 node(
                     tags = mapOf(
                         "amenity" to "telephone",
-                    ), timestamp = nowAsEpochMilliseconds() - milisecondsFor800Days
+                    ), timestamp = nowAsEpochMilliseconds() - millisecondsFor800Days
                 )
             )
         )
