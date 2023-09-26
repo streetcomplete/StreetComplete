@@ -242,10 +242,10 @@ class EditTagsAdapter(
 
         // suggestions should not be cluttered with all those address tags, but we don't want to ignore them completely
         // but we want to ignore some refs, and building which shows up for shops, but is usually not a good idea because we ignore geometry
-        val fieldsMoveToEnd = fieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
+        val fieldsMoveToEnd = fieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") || it.startsWith("tiger:") }
         fieldSuggestions.removeAll(fieldsMoveToEnd)
         fieldSuggestions.removeAll { it.startsWith("{") } // appeared in the latest presets update, maybe we should actually go deeper for this '{'?
-        val moreFieldsMoveToEnd = moreFieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
+        val moreFieldsMoveToEnd = moreFieldSuggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") || it.startsWith("tiger:") }
         moreFieldSuggestions.removeAll(moreFieldsMoveToEnd)
         moreFieldSuggestions.removeAll { it.startsWith("{") }
 

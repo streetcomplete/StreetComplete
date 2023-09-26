@@ -98,6 +98,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Some of the settings below can only be enabled in expert mode
   * Quest settings for most quests, mostly for customized element selection, but also for other things like allowing generic paved surface answer without note
     * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.
+    * Quests without settings need to be handled individually. Please open an issue if you want specific settings.
   * UI settings
     * Quick settings button for switching preset, background and reverse quest order. Also contains a level filter for displayed quests / overlay elements
     * Quick selector for overlays (on main screen)

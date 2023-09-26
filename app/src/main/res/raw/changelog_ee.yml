@@ -1,7 +1,7 @@
 v54.1: |
   <ul>
   <li>Other answer for name quest: it has a brand name</li>
-  <li>Don't use deprecated tag for wells in service building quest, thanks to @mcliquid (#455)</li>
+  <li>Don't use deprecated tag for wells in the service building quest, thanks to @mcliquid (#455)</li>
   <li>Additional roof shapes, icons by @mxdanger (#450)</li>
   <li>Update translations, thanks to Oil_Station (Chinese), @mcliquid (German), lejun (French), gallegonovato (Spanish)</li>
   <li>Small fixes and improvements</li>
