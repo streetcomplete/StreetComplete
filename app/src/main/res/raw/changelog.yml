@@ -1,3 +1,25 @@
+v54.1: |
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Shops overlay: Display and allow to add clubs (#5244) </li>
+  <li>Bike path segregation: Never ask for paths where biking is prohibited (#5213), by @matkoniecz </li>
+  <li>Max height: Allow input of restrictions of 10m and above (#5232)</li>
+  <li>Max height: Clarify wording - ask what is indicated by a sign (see <a href="https://community.openstreetmap.org/t/streetcomplete-fragt-bei-eisenbahn-weg-kreuzung-nach-durchfahrtshohe/103606">discussion</a></li>
+  <li>Max height: Do not ask for crossings with tram lines - too numerous and usually never signed (#5180)</li>
+  <li>Also ask for names of tram stops (#5215)</li>
+  <li>Also ask if a caravan site requires a fee (#5228), by @qugebert</li>
+  <li>in Slovenia: Ask about tactile paving and bike paths - exclusive and advisory bike lanes are differentiated (#5274, #5237), by @CTJoriginal</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Profile page: For ascribing on which day a user made any one edit, use the UTC timezone (#5245, #4951), by @mnalis</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Fix a (rare) crash on startup (#5241), by @Helium314</li>
+  <li>Other small enhancements (#5268, #5264, #5262, #5265...), by @tapetis, @Helium314</li>
+  </ul>
+
 v54.0: |
   <h3>New Quests</h3>
   <ul>
