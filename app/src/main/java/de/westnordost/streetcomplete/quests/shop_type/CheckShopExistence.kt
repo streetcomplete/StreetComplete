@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
-import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -14,10 +14,9 @@ import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
 import de.westnordost.streetcomplete.osm.updateCheckDate
-import java.util.concurrent.FutureTask
 
 class CheckShopExistence(
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val getFeature: (tags: Map<String, String>) -> Feature?
 ) : OsmElementQuestType<Unit> {
     // opening hours quest acts as a de facto checker of shop existence, but some people disabled it.
     // separate from CheckExistence as very old shop with opening hours should show
@@ -71,6 +70,5 @@ class CheckShopExistence(
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
+    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
 }

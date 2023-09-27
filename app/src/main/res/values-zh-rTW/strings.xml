@@ -1327,4 +1327,15 @@
     <string name="quest_tactilePaving_steps_top">"只有在頂部"</string>
     <string name="quest_tactilePaving_steps_bottom">"只有在底部"</string>
     <string name="overlay_addresses_no_entrance">"這裡不是入口..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"混合通行路徑"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"混合通行路徑，雙向"</string>
+    <string name="overlays_tutorial_title">"套疊"</string>
+    <string name="overlays_tutorial_intro">"你發現新的編輯資料方式！"</string>
+    <string name="overlays_tutorial_display">"每一層套疊代表一種資料，例如店家或是道路舖面。
+
+每種資料會用不同顏色高亮度顯示，能讓你清楚知道記錄的東西是什麼。有遺失資料的路部分則會用紅色顯示。"</string>
+    <string name="overlays_tutorial_edit">"對高亮度顯示的資料按一下來顯示或是編輯。你可以分割路徑或是回報註解，像是回答任務。
+
+除此之外，有些套疊允許你在所在位置的十字符號加新資料，例如地址套疊。"</string>
+    <string name="quest_crossing_kerb_height_title">"這個道路交叉口的路緣多高？"</string>
 </resources>

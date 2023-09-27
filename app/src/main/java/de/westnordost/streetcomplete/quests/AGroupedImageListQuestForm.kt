@@ -134,5 +134,5 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     abstract fun onClickOk(value: I)
 
-    override fun isFormComplete() = selectedItem != null
+    override fun isFormComplete() = selectedItem?.value != null
 }

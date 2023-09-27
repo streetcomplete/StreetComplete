@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.user.profile
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import androidx.core.content.edit
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Prefs
@@ -29,15 +27,14 @@ import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -122,7 +119,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userLoginStatusController.logOut()
         }
         binding.profileButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/user/" + userDataSource.userName)
+            openUri("https://www.openstreetmap.org/user/" + userDataSource.userName)
         }
     }
 
@@ -345,10 +342,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         anim.interpolator = AccelerateDecelerateInterpolator()
         anim.start()
         animations.add(anim)
-    }
-
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
     }
 }

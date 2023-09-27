@@ -1343,4 +1343,6 @@ Saknad data visas alltid i rött."</string>
 
 Vissa extralager låter dig också lägga till ny data på hårkorsets position, t.ex. lägga till saknade adresser."</string>
     <string name="quest_crossing_kerb_height_title">"Hur höga är kanterna i den här korsningen?"</string>
+    <string name="quest_maxheight_sign_title">"Vilken maxhöjd är skyltad här?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Vilken maxhöjd är skyltad under bron?"</string>
 </resources>

@@ -1096,4 +1096,8 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_seating_outdoor_only">"Samo sjedenje na otvorenom"</string>
     <string name="quest_seating_indoor_and_outdoor">"I unutarnje i vanjsko sjedenje"</string>
     <string name="no_camera_permission_toast">"Nema dopuštenja za kameru"</string>
+    <string name="quest_address_street_title2">"U kojoj je ovo ulici?"</string>
+    <string name="quest_airConditioning_title">"Je li ovo mjesto klimatizirano?"</string>
+    <string name="quest_busStopBench_title2">"Postoji li klupa na ovoj stanici?"</string>
+    <string name="quest_busStopBin_title2">"Postoji li kanta za smeče na ovoj stanici?"</string>
 </resources>

@@ -6,18 +6,18 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
 import java.lang.Thread.sleep
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class NoteControllerTest {
     private lateinit var dao: NoteDao
     private lateinit var noteController: NoteController
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         dao = mock()
         noteController = NoteController(dao)
     }

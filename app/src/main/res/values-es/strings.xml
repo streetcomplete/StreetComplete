@@ -19,9 +19,9 @@
     <string name="quest_generic_confirmation_yes">"Sí, del todo"</string>
     <string name="quest_generic_confirmation_no">"Lo revisaré"</string>
     <string name="quest_leave_new_note_title">"¿Quieres dejar una nota?"</string>
-    <string name="quest_leave_new_note_description">"Puedes dejar una nota pública en esta ubicación para que otras personas la comenten y puedan llegar a resolverla, también puedes dejarlo como está y ocultar la tarea para no verla más"</string>
-    <string name="quest_leave_new_note_yes">"Vale"</string>
-    <string name="quest_leave_new_note_no">"No, y ocultar la tarea"</string>
+    <string name="quest_leave_new_note_description">"Puedes dejar una nota pública en esta ubicación para que otras personas la resuelvan, o esconder esta misión solamente para ti"</string>
+    <string name="quest_leave_new_note_yes">"Dejar nota"</string>
+    <string name="quest_leave_new_note_no">"Ocultar"</string>
     <string name="quest_streetName_title">"¿Cómo se llama esta vía?"</string>
     <string name="quest_streetName_description">"tal y como se lee en el letrero de calle, las abreviaturas se amplían:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Algunas veces el letrero solo está en un extremo de la calle. Ten en cuenta que puede que no haya letreros en las vías adyacentes que pertenezcan a una calle grande. Lo normal es que cualquier calle con casas tenga nombre."</string>
@@ -34,23 +34,23 @@
     <string name="quest_openingHours_add_weekdays">"Añadir días de semana"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Elige los meses"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Elige los días de semana"</string>
-    <string name="quest_openingHours_24_7_confirmation">"O, dicho de otra forma, ¿está abierto todos los días a todas horas?"</string>
+    <string name="quest_openingHours_24_7_confirmation">"Dicho de otra forma, ¿está abierto todos los días a todas horas?"</string>
     <string name="quest_noteDiscussion_title">"¿Puedes añadir información útil en la nota?"</string>
     <string name="quest_noteDiscussion_no">"No, ocultar"</string>
     <string name="quest_noteDiscussion_anonymous">"Anónimo"</string>
     <string name="confirmation_discard_title">"¿Quieres descartar los datos añadidos?"</string>
     <string name="confirmation_discard_positive">"Descartar"</string>
-    <string name="action_download">"Descargar tareas cercanas"</string>
+    <string name="action_download">"Descargar datos aquí"</string>
     <string name="action_upload">"Subir respuestas"</string>
-    <string name="no_changes">"El formulario está vacío"</string>
+    <string name="no_changes">"No has dado una respuesta"</string>
     <string name="close">"cerrar"</string>
-    <string name="download_error">"Hubo un error al buscar tareas"</string>
+    <string name="download_error">"Error al descargar datos"</string>
     <string name="upload_error">"Hubo un error al subir las respuestas"</string>
     <string name="download_area_too_big">"Acerca un poco más el mapa"</string>
-    <string name="confirmation_cancel_prev_download_title">"¿Quieres cancelar la descarga actual y empezar a buscar tareas en este lugar?"</string>
+    <string name="confirmation_cancel_prev_download_title">"¿Quieres cancelar la descarga actual y descargar aquí en su lugar?"</string>
     <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Quieres ir a los ajustes para activarla?"</string>
-    <string name="no_location_permission_warning">"Es necesario que el programa acceda a tu ubicación para mostrarla en el mapa y ver tareas cercanas."</string>
-    <string name="about_title_authors">"Agradecimientos"</string>
+    <string name="no_location_permission_warning">"El acceso a la ubicación es necesario para mostrar tu posición en el mapa y descargar datos en tu área."</string>
+    <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick y colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
@@ -61,8 +61,8 @@
     <string name="offline">"No hay conexión a Internet"</string>
     <string name="confirmation_authorize_now">"Necesitas iniciar sesión con tu cuenta de OSM para enviar tus respuestas. ¿Quieres hacerlo ahora?"</string>
     <string name="not_authorized">"Sin autorización"</string>
-    <string name="version_banned_message">"Desde esta versión de StreetComplete ya no se pueden subir respuestas, prueba actualizando la aplicación."</string>
-    <string name="no_gps_no_quests">"Para buscar tareas a tu alrededor automáticamente activa la ubicación"</string>
+    <string name="version_banned_message">"Esta versión de StreetComplete está desactualizada. Por favor actualiza!"</string>
+    <string name="no_gps_no_quests">"Para descargar datos a tu alrededor automáticamente, activa la ubicación."</string>
     <string name="later">"Luego"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Sólo une dos vías"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Otra cosa (dejar nota)"</string>
@@ -75,7 +75,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura fijo…"</string>
     <string name="quest_openingHours_comment_title">"Describe los horarios de apertura"</string>
-    <string name="quest_openingHours_comment_description">"Hay que ser conciso, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
+    <string name="quest_openingHours_comment_description">"Sé conciso, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no necesariamente significa que no haya un horario de apertura habitual."</string>
     <string name="quest_roofShape_title">"¿Qué forma básica tiene el tejado de este edificio?"</string>
     <string name="quest_roofShape_select_one">"Elige una opción:"</string>
     <string name="quest_roofShape_show_more">"Mostrar más…"</string>
@@ -1324,4 +1324,15 @@ También puedes dejar una nota (con foto)."</string>
     <string name="overlay_addresses_no_entrance">"No es una entrada"</string>
     <string name="quest_cycleway_value_sidewalk2">"Camino de uso compartido"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Camino de uso compartido, ambas direcciones"</string>
+    <string name="overlays_tutorial_title">"Capas"</string>
+    <string name="overlays_tutorial_intro">"¡Encontraste una nueva forma de editar datos!"</string>
+    <string name="overlays_tutorial_display">"Cada superposición muestra un tipo de datos diferente, como tiendas o superficies de calles.
+
+Los datos se resaltan en diferentes colores para brindarte una buena visión general de lo que se ha registrado hasta ahora. Los datos faltantes siempre se muestran en rojo."</string>
+    <string name="overlays_tutorial_edit">"Toca cualquier dato resaltado para mostrarlo o editarlo. También puedes dividir caminos o reportar notas, similar a las misiones.
+
+Además, algunas capas te permiten agregar nuevos datos en la posición de una mira mostrada, como en la capa de direcciones."</string>
+    <string name="quest_crossing_kerb_height_title">"¿Cuál es la altura de los bordillos en este cruce?"</string>
+    <string name="quest_maxheight_sign_title">"¿Qué límite de altura está indicado aquí?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"¿Qué límite de altura está indicado debajo del puente?"</string>
 </resources>

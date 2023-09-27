@@ -60,9 +60,7 @@ private fun getStyle(element: Element): Style {
             }
         }
     } else {
-        val mainColor = createSurfaceAndNote(element.tags).getColor(element)
-        // unspecified surface on motorways is okay (assumption is that all motorways are asphalted)
-        if (mainColor == Color.DATA_REQUESTED && isMotorway(element.tags)) Color.INVISIBLE else mainColor
+        createSurfaceAndNote(element.tags).getColor(element)
     }
     return if (isArea) PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 }

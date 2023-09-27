@@ -11,12 +11,12 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.invocation.InvocationOnMock
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class UnsyncedChangesCountSourceTest {
     private lateinit var osmQuestSource: OsmQuestSource
@@ -35,7 +35,7 @@ class UnsyncedChangesCountSourceTest {
 
     private val baseCount = 3 + 4
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         osmQuestSource = mock()
         on(osmQuestSource.addListener(any())).then { invocation: InvocationOnMock ->
             questListener = invocation.arguments[0] as OsmQuestSource.Listener

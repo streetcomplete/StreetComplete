@@ -9,12 +9,12 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import kotlinx.datetime.LocalDate
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify
 import java.util.concurrent.FutureTask
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class StatisticsControllerTest {
 
@@ -34,7 +34,7 @@ class StatisticsControllerTest {
     private val questA = "TestQuestTypeA"
     private val questB = "TestQuestTypeB"
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         editTypeStatisticsDao = mock()
         countryStatisticsDao = mock()
         currentWeekEditTypeStatisticsDao = mock()

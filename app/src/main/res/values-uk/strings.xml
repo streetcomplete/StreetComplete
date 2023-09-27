@@ -1267,7 +1267,7 @@
     <string name="move_node_description">"Перетягніть карту, щоб розмістити об’єкт у правильному місці. Використовуйте функцію масштабування та намагайтеся бути максимально точним. Майте на увазі, що ваше відображене місцезнаходження може бути менш точним, ніж показано."</string>
     <string name="move_node_action_description">"Ви пересунули точку"</string>
     <string name="quest_cycleway_value_shoulder">"немає, але можна їхати по узбіччі"</string>
-    <string name="quest_placeName_no_name_answer">"Таблички з назвою немає"</string>
+    <string name="quest_placeName_no_name_answer">"Таблички з назвою немає…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Така ширина виглядає неймовірно. Пам’ятайте, що це має бути ширина від узбіччя до узбіччя, включаючи паркування на вулиці, велосипедні доріжки тощо."</string>
     <string name="overlay_cycleway">"Велодоріжки"</string>
     <string name="bicycle_boulevard_is_a">"Це %1$s"</string>

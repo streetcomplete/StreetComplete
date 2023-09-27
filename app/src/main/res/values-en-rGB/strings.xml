@@ -1333,4 +1333,16 @@ Move it now?"</string>
     <string name="overlay_addresses_no_entrance">"It’s not an entrance…"</string>
     <string name="quest_cycleway_value_sidewalk2">"shared-use path"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"shared-use path, both directions"</string>
+    <string name="overlays_tutorial_title">"Overlays"</string>
+    <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+
+The data is highlighted in different colors to give you a good overview of what has been recorded so far.
+Missing data is always shown in red."</string>
+    <string name="overlays_tutorial_edit">"Tap on any highlighted data to display or edit it. You can also split ways or report notes, like with quests.
+
+Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"What’s the height of the kerbs at this crossing?"</string>
+    <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"What height limit is indicated below the bridge?"</string>
 </resources>

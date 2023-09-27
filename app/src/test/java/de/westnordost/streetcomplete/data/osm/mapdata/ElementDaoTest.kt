@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.anyCollection
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ElementDaoTest {
     private lateinit var nodeDao: NodeDao
@@ -21,7 +21,7 @@ class ElementDaoTest {
     private lateinit var relationDao: RelationDao
     private lateinit var dao: ElementDao
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         nodeDao = mock()
         wayDao = mock()
         relationDao = mock()

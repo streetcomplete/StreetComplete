@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.osm.cycleway.Direction
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class OnewayKtTest {
 

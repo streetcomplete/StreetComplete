@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -61,7 +60,7 @@ class DatesActiveDrawable(
 
         // grid + months
         for (i in 0..datesActiveRange) {
-            val date = time.toLocalDate()
+            val date = time.toLocalDateTime(TimeZone.UTC).date
 
             val y = (height - 1) - (i + dayOffset) % height
             val x = (width - 1) - floor(((i + dayOffset) / height).toDouble()).toInt()
