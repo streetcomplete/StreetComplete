@@ -4,17 +4,17 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.WayDao
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class WayTrafficFlowDaoTest : ApplicationDbTestCase() {
 
     private lateinit var dao: WayTrafficFlowDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = WayTrafficFlowDao(database)
     }
 

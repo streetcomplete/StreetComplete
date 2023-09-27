@@ -9,17 +9,17 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.copy
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class MoveNodeActionTest {
 
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @BeforeTest fun setUp() {
+    @Before fun setUp() {
         repos = mock()
         provider = mock()
     }

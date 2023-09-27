@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class AddRecyclingContainerMaterialsTest {
 

@@ -9,12 +9,11 @@ import de.westnordost.streetcomplete.data.quest.TestQuestTypeD
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertContentEquals
-import kotlin.test.assertEquals
 
 class QuestTypeOrderControllerTest {
     private lateinit var questTypeOrderDao: QuestTypeOrderDao
@@ -30,7 +29,7 @@ class QuestTypeOrderControllerTest {
     private val questC = TestQuestTypeC()
     private val questD = TestQuestTypeD()
 
-    @BeforeTest fun setUp() {
+    @Before fun setUp() {
         questTypeOrderDao = mock()
         questPresetsSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
@@ -70,7 +69,7 @@ class QuestTypeOrderControllerTest {
         ))
 
         ctrl.sort(list)
-        assertContentEquals(
+        assertEquals(
             listOf(questD, questC, questB, questA),
             list
         )

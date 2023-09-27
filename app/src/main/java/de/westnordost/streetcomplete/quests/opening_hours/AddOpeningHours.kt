@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -17,9 +17,10 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpening
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import java.util.concurrent.FutureTask
 
 class AddOpeningHours(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -186,5 +187,6 @@ class AddOpeningHours(
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

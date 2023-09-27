@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.elementfilter
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Test
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import kotlin.test.assertFailsWith
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 class ElementFiltersParserTest {
     @Test fun `fail if no space after or before and or`() {

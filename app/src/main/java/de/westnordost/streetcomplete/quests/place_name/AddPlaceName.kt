@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -12,9 +12,10 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyTo
+import java.util.concurrent.FutureTask
 
 class AddPlaceName(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
@@ -141,5 +142,6 @@ class AddPlaceName(
         }
     }
 
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

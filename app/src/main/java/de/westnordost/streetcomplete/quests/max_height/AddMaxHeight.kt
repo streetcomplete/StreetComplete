@@ -42,12 +42,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val electrifiedRailwaysFilter by lazy { """
         ways with
-          railway and railway != tram
+          railway
           and electrified = contact_line
     """.toElementFilterExpression() }
-    // not trams because people tell me it is extremely unlikely that it is signed - at least
-    // directly at the crossing, anyway. Also, since a tram crosses with a road so often, it is
-    // kind of spammy, especially if the answer is virtually always(?) "not signed"
 
     private val allRoadsFilter by lazy { """
         ways with highway ~ ${ALL_ROADS.joinToString("|")}
@@ -79,11 +76,10 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             && tags["tunnel"] == null
             && tags["covered"] == null
             && tags["man_made"] != "pipeline"
-            && tags["railway"] != "level_crossing"
         // only the "below the bridge" situation may need some context
         return when {
-            isBelowBridge -> R.string.quest_maxheight_sign_below_bridge_title
-            else          -> R.string.quest_maxheight_sign_title
+            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
+            else          -> R.string.quest_maxheight_title
         }
     }
 

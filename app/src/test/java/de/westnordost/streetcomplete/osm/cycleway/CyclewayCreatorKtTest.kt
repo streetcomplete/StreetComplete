@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import kotlin.test.Test
+import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class CyclewayCreatorKtTest {

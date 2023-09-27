@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
-import kotlin.test.*
-import kotlin.test.Test
+import org.junit.Assert.*
+import org.junit.Test
 
 internal class SpatialPartsOfElementKtTest {
 

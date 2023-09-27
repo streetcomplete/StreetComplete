@@ -7,16 +7,16 @@ import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OsmQuestsHiddenDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = OsmQuestsHiddenDao(database)
     }
 

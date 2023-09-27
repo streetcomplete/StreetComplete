@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class AddRoadSmoothnessTest {
     private val questType = AddRoadSmoothness()

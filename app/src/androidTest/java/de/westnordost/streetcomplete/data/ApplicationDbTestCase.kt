@@ -2,16 +2,16 @@ package de.westnordost.streetcomplete.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.test.platform.app.InstrumentationRegistry
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertNotNull
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
 
 open class ApplicationDbTestCase {
     protected lateinit var dbHelper: SQLiteOpenHelper
     protected lateinit var database: Database
 
-    @BeforeTest fun setUpHelper() {
+    @Before fun setUpHelper() {
         dbHelper = StreetCompleteSQLiteOpenHelper(
             InstrumentationRegistry.getInstrumentation().targetContext,
             DATABASE_NAME
@@ -20,10 +20,10 @@ open class ApplicationDbTestCase {
     }
 
     @Test fun databaseAvailable() {
-        assertNotNull(dbHelper.readableDatabase)
+        Assert.assertNotNull(dbHelper.readableDatabase)
     }
 
-    @AfterTest fun tearDownHelper() {
+    @After fun tearDownHelper() {
         dbHelper.close()
         InstrumentationRegistry.getInstrumentation().targetContext
             .deleteDatabase(DATABASE_NAME)

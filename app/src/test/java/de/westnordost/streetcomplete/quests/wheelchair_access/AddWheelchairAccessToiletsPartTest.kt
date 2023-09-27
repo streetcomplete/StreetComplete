@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import org.junit.Assert
+import org.junit.Test
 
 class AddWheelchairAccessToiletsPartTest {
     private val questType = AddWheelchairAccessToiletsPart()
@@ -24,7 +23,7 @@ class AddWheelchairAccessToiletsPartTest {
                 "wheelchair" to "no"
             )),
         ))
-        assertTrue(questType.getApplicableElements(mapData).toList().isEmpty())
+        Assert.assertTrue(questType.getApplicableElements(mapData).toList().isEmpty())
     }
 
     @Test
@@ -36,7 +35,7 @@ class AddWheelchairAccessToiletsPartTest {
                 "toilets" to "yes"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -47,7 +46,7 @@ class AddWheelchairAccessToiletsPartTest {
                 "amenity" to "restaurant"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -59,7 +58,7 @@ class AddWheelchairAccessToiletsPartTest {
                 "indoor_seating" to "yes"
             ))
         ))
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -71,7 +70,7 @@ class AddWheelchairAccessToiletsPartTest {
                 "toilets" to "no"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test
@@ -83,6 +82,6 @@ class AddWheelchairAccessToiletsPartTest {
                 "toilets" to "customers"
             ))
         ))
-        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

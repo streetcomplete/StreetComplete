@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.createSurfaceAndNote
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.*
-import kotlin.test.Test
+import org.junit.Assert.*
+import org.junit.Test
 
 class SurfaceColorMappingKtTest {
 

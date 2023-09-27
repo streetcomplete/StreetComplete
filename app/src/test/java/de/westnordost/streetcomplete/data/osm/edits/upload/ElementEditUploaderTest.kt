@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
+import org.junit.Before
+import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow
-import kotlin.test.BeforeTest
-import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
 class ElementEditUploaderTest {
@@ -24,7 +24,7 @@ class ElementEditUploaderTest {
     private lateinit var mapDataController: MapDataController
     private lateinit var uploader: ElementEditUploader
 
-    @BeforeTest fun setUp() {
+    @Before fun setUp() {
         changesetManager = mock()
         mapDataApi = mock()
         mapDataController = mock()

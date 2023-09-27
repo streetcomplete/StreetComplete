@@ -4,14 +4,14 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import kotlin.test.*
-import kotlin.test.BeforeTest
-import kotlin.test.Test
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 class EditElementsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: EditElementsDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = EditElementsDao(database)
     }
 

@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
@@ -10,7 +12,6 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.screens.measure.MeasureContract
-import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 import org.koin.android.ext.android.inject
 
@@ -37,7 +38,7 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
         lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
         lengthInput.isCompactMode = true
         lengthInput.maxFeetDigits = 2
-        lengthInput.maxMeterDigits = Pair(2, 2)
+        lengthInput.maxMeterDigits = Pair(1, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = {
             isARMeasurement = false
@@ -52,7 +53,7 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
         try {
             launcher.launch(MeasureContract.Params(lengthUnit, true))
         } catch (e: ActivityNotFoundException) {
-            context?.openUri("market://details?id=de.westnordost.streetmeasure")
+            context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=de.westnordost.streetmeasure")))
         }
     }
 

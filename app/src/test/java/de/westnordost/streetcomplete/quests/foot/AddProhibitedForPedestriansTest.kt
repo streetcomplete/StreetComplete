@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import kotlin.test.Test
+import org.junit.Test
 
 class AddProhibitedForPedestriansTest {
 

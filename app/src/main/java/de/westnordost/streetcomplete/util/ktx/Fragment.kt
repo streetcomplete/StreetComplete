@@ -1,12 +1,22 @@
 package de.westnordost.streetcomplete.util.ktx
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 
-fun Fragment.openUri(uri: String) = context?.openUri(uri) ?: false
+fun Fragment.tryStartActivity(intent: Intent): Boolean {
+    return try {
+        startActivity(intent)
+        true
+    } catch (e: ActivityNotFoundException) {
+        false
+    }
+}
 
 val Fragment.childFragmentManagerOrNull: FragmentManager? get() =
     if (host != null) childFragmentManager else null

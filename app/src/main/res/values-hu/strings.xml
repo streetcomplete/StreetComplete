@@ -1298,8 +1298,6 @@ Most akarja elmozdítani?"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Keresse a hangszórókat. Nem minden hangjelzés aktiválható gombnyomással."</string>
     <string name="quest_presets_duplicate">"Másolat"</string>
     <string name="label_block">"tömb"</string>
-    <string name="quest_address_answer_block">"Egy háztömbön belül található"</string>
-    <string name="quest_address_answer_no_block">"Nem egy háztömbön belül található"</string>
     <string name="quest_surface_value_mud">"Tartós iszap"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Itt nincsen mosdó"</string>
     <string name="unknown_surface_title">"Más anyagú útfelület"</string>
@@ -1326,16 +1324,4 @@ Most akarja elmozdítani?"</string>
     <string name="overlay_addresses_no_entrance">"Ez nem egy bejárat..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Közösen használt út"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Közösen használt út mindkét irányba"</string>
-    <string name="overlays_tutorial_title">"Rétegek"</string>
-    <string name="overlays_tutorial_intro">"Az adatszerkesztés egy új módját fedezted fel!"</string>
-    <string name="overlays_tutorial_display">"Minden réteg egy adatfajta megjelenítésére szolgál, például üzletek, útfelületek.
-
-Az adatok más színnel vannak kiemelve, ezzel mutatva, hogy mi lett már feltérképezve. 
-A hiányzó adatok mindig pirossal vannak kiemelve."</string>
-    <string name="overlays_tutorial_edit">"A kiemelt adatokat rábökéssel tudod szerkeszteni. Tudsz ezenkívül utakat felosztani és jegyzeteket jelenteni, úgy, mint a feladatoknál.
-
-Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását is lehetővé teszik, a célkereszt pozíciójában."</string>
-    <string name="quest_crossing_kerb_height_title">"Milyen magas a járdaszegély ennél a kereszteződésnél?"</string>
-    <string name="quest_maxheight_sign_title">"Mekkora magassági korlátozás van jelezve?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Milyen magassági korlátozás van jelezve a híd alatt?"</string>
 </resources>

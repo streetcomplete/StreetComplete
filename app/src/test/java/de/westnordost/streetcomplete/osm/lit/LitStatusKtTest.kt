@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.lit.LitStatus.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import kotlin.test.Test
+import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class LitStatusKtTest {

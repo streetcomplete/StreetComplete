@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.surface
 
-import kotlin.test.*
-import kotlin.test.Test
+import org.junit.Assert.*
+import org.junit.Test
 
 class SurfaceParserKtTest {
 

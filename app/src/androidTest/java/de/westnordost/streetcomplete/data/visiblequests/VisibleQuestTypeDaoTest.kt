@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class VisibleQuestTypeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: VisibleQuestTypeDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = VisibleQuestTypeDao(database)
     }
 

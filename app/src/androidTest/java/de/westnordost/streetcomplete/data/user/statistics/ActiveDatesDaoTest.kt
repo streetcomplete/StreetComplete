@@ -5,14 +5,14 @@ import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 
 class ActiveDatesDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ActiveDatesDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = ActiveDatesDao(database)
     }
 

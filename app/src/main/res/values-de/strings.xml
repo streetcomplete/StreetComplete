@@ -44,12 +44,12 @@
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="close">"Schließen"</string>
-    <string name="download_error">"Fehler beim Herunterladen"</string>
+    <string name="download_error">"Fehler beim Suchen nach Aufgaben"</string>
     <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuellen Download abbrechen und stattdessen hier herunterladen?"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
-    <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und Daten in deiner Nähe herunterzuladen."</string>
+    <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Projektseite"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"Du musst dich mit deinem OSM-Konto einloggen, um deine Antworten zu veröffentlichen. Jetzt einloggen?"</string>
     <string name="not_authorized">"Nicht eingeloggt"</string>
     <string name="version_banned_message">"Diese Version von StreetComplete ist zu alt. Bitte aktualisiere deine Version!"</string>
-    <string name="no_gps_no_quests">"Um automatisch Daten in deiner Nähe herunterzuladen, schalte Standort an"</string>
+    <string name="no_gps_no_quests">"Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an"</string>
     <string name="later">"Später"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Sie ist eine Verbindung zwischen zwei Straßen"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Etwas anderes (Hinweis hinterlassen)"</string>
@@ -94,7 +94,7 @@ Es ist nicht möglich, OpenStreetMap anonym zu bearbeiten. Alle Änderungen, die
 
 &lt;b&gt;Standort&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Diese App teilt deinen GPS-Standort mit niemandem. Er wird genutzt, um automatisch Daten in deiner Nähe herunterzuladen, sowie die Karte um deinen Standort herum anzuzeigen (und herunterzuladen).
+Diese App teilt deinen GPS-Standort mit niemandem. Er wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen, sowie die Karte um deinen Standort herum anzuzeigen (und herunterzuladen).
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
@@ -140,7 +140,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="crash_compose_email">"E-Mail verfassen"</string>
     <string name="no_email_client">"Du hast keine E-Mail-App installiert."</string>
     <string name="pref_title_keep_screen_on">"Bildschirm immer an"</string>
-    <string name="download_server_error">"Fehler beim Herunterladen. Versuche es später noch einmal."</string>
+    <string name="download_server_error">"Fehler beim Suchen nach Aufgaben. Versuche es später noch einmal."</string>
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
     <string name="quest_generic_hasFeature_no">"Nein"</string>
@@ -723,7 +723,7 @@ Erfolge"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Bist du dir sicher, dass man die genaue Oberfläche nicht angeben kann? Du kannst auch „Entlang des Weges unterschiedlich …“ antworten, um den Weg dort aufzuspalten, wo sich die Oberfläche ändert. Bitte nutze „Nicht beantwortbar“ wenn es eine Oberfläche hat, die nicht als Antwort zur Verfügung steht."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Bitte beschreibe kurz die Beschaffenheit der Oberfläche, zum Beispiel „sandig mit vereinzeltem Kopfsteinpflaster“. Der Text hat eine maximale Länge von 255 Zeichen."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
-    <string name="quest_buildingType_terrace2">"Mehrere Reihenhäuser"</string>
+    <string name="quest_buildingType_terrace2">"Reihenhäuser"</string>
     <string name="at_housename">"Hausname %s"</string>
     <string name="at_housenumber">"Hausnummer %s"</string>
     <string name="quest_openingHours_add_off_days">"Ruhetag hinzufügen"</string>
@@ -745,7 +745,7 @@ Erfolge"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
     <string name="quest_step_count_title">"Wie viele Stufen gibt es hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
-    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Fahrbahn gehen kann?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Bedarfsampel-Kastens."</string>
     <string name="quest_buildingType_bungalow_description2">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus oder -hütte, …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Wie ist dieser Bahnübergang beschrankt?"</string>
@@ -782,7 +782,7 @@ Erfolge"</string>
     <string name="quest_buildingType_ruins_description">"verfallenes oder zerstörtes Gebäude"</string>
     <string name="quest_charging_station_capacity_title">"Wie viele Autos können hier gleichzeitig aufgeladen werden?"</string>
     <string name="link_disaster_ninja_description">"Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind."</string>
-    <string name="quest_lanes_title">"Wie viele Fahrstreifen für Autos hat diese Fahrbahn?"</string>
+    <string name="quest_lanes_title">"Wie viele Fahrstreifen für Autos hat diese Straße?"</string>
     <string name="quest_lanes_answer_lanes">"Markierte Fahrstreifen"</string>
     <string name="quest_lanes_answer_noLanes">"Keine markierten Fahrstreifen"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat eine gemeinsame Linksabbiegerspur für beide Richtungen"</string>
@@ -791,8 +791,8 @@ Erfolge"</string>
     <string name="quest_maxheight_split_way_hint">"Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
     <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein?"</string>
-    <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Fahrbahn"</string>
-    <string name="quest_kerb_height_lowered">"etwas höher als die Fahrbahn"</string>
+    <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Straße"</string>
+    <string name="quest_kerb_height_lowered">"etwas höher als die Straße"</string>
     <string name="quest_kerb_height_raised">"hoher Bordstein"</string>
     <string name="quest_kerb_height_lowered_ramp">"Bordsteinrampe"</string>
     <string name="quest_lanes_answer_lanes_description2">"Gib hier die Gesamtzahl (beide Richtungen) aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
@@ -803,8 +803,8 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_maxheight_answer_noSign_question_yes">"Hohe Lastwagen können hindurch"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
     <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
-    <string name="quest_parkingType_street_side">"Parkbuchten am Fahrbahnrand"</string>
-    <string name="quest_parkingType_lane">"Parken auf der Fahrbahn"</string>
+    <string name="quest_parkingType_street_side">"Parkbuchten am Straßenrand"</string>
+    <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht …"</string>
@@ -950,7 +950,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_traffic_calming_type_hump">"Bremsschwelle (länger)"</string>
     <string name="quest_traffic_calming_type_table">"Schwelle mit Plateau"</string>
     <string name="quest_traffic_calming_type_cushion">"Teller (nicht holprig für breitere Fahrzeuge)"</string>
-    <string name="quest_traffic_calming_type_choker">"Fahrbahnverengung"</string>
+    <string name="quest_traffic_calming_type_choker">"Verengte Straße"</string>
     <string name="quest_traffic_calming_type_island">"Verkehrsinsel"</string>
     <string name="quest_traffic_calming_type_chicane">"Absichtliche Kurve(n)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rüttelstreifen"</string>
@@ -975,14 +975,14 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
     <string name="on_floor">"in Stockwerk %s"</string>
-    <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Fahrbahn:"</string>
+    <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Straße:"</string>
     <string name="select_street_parking_position">"Wähle Position:"</string>
     <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Senkrecht"</string>
-    <string name="street_parking_on_street">"Auf der Fahrbahn"</string>
-    <string name="street_parking_half_on_kerb">"Teilweise auf der Fahrbahn"</string>
+    <string name="street_parking_on_street">"Auf der Straße"</string>
+    <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
     <string name="street_parking_street_side">"Nur in Parkbuchten am Straßenrand"</string>
     <string name="street_parking_painted_area_only">"Nur in dafür vorgesehenen Plätzen auf der Straße"</string>
@@ -1211,7 +1211,7 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du die Lage über die gesamte Länge hinweg überprüft hast?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
-    <string name="street_parking_street_width">"Fahrbahnbreite: %s"</string>
+    <string name="street_parking_street_width">"Straßenbreite: %s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
     <string name="link_ohsomehex_description">"Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit"</string>
     <string name="link_opencampingmap_description">"Eine Weltkarte der Campingplätze"</string>
@@ -1300,8 +1300,8 @@ Jetzt verschieben?"</string>
     <string name="privacy_html_arcore">"Diese App nutzt die von Google bereitgestellten &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) welche den &lt;a href=\"https://policies.google.com/privacy\"&gt;Google-Datenschutzrichtlinien&lt;/a&gt; unterliegen."</string>
     <string name="default_disabled_msg_seasonal">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil man die Situation vor Ort möglicherweise nur zu bestimmten Jahreszeiten überprüfen kann."</string>
     <string name="quest_gritBinSeasonal_title">"Ist das auch außerhalb des Winters hier?"</string>
-    <string name="street_parking_staggered_on_street">"Wechselseitig auf der Fahrbahn"</string>
-    <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Fahrbahn"</string>
+    <string name="street_parking_staggered_on_street">"Wechselseitig auf der Straße"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Wechselseitig teilweise auf der Straße"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Achte auf Lautsprecher. Nicht alle Tonsignale können über eine Taste aktiviert werden."</string>
     <string name="quest_presets_duplicate">"Duplizieren"</string>
     <string name="label_block">"Block"</string>
@@ -1334,15 +1334,13 @@ Jetzt verschieben?"</string>
     <string name="quest_cycleway_value_sidewalk2">"Gemeinsamer Geh- und Radweg"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gemeinsamer Geh- und Radweg, beide Richtungen"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
-    <string name="overlays_tutorial_intro">"Du hast einen neuen Weg gefunden, um Daten zu editieren!"</string>
-    <string name="overlays_tutorial_display">"Jedes Overlay zeigt nur bestimmte Daten an, beispielsweise Geschäfte oder Wegeoberflächen.
+    <string name="overlays_tutorial_intro">"Du hast einen neuen Weg gefunden um Daten zu editieren!"</string>
+    <string name="overlays_tutorial_display">"Jedes Overlay zeigt eine Art von Daten an, beispielsweise Geschäfte oder Straßenoberflächen.
 
-Die Hervorhebung der Daten in unterschiedlichen Farben soll dir einen guten Überblick darüber geben, was bisher erfasst wurde.
-Fehlende Daten sind immer rot eingefärbt."</string>
-    <string name="overlays_tutorial_edit">"Tippe auf hervorgehobene Daten, um sie anzuzeigen oder zu bearbeiten. Du kannst auch Wege aufteilen oder Notizen machen, wie bei Aufgaben.
+Die Daten werden in verschiedenen Farben hervorgehoben, um dir einen guten Überblick über die bisher aufgezeichneten Daten zu geben.
+Fehlende Daten werden immer rot angezeigt."</string>
+    <string name="overlays_tutorial_edit">"Tippe auf alle markierten Daten, um sie zu bearbeiten.  Du kannst auch Wege aufteilen oder Notizen machen, wie bei Quests.
 
-Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Position des Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
-    <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Kreuzung?"</string>
-    <string name="quest_maxheight_sign_title">"Welche Durchfahrtshöhe ist hier angegeben?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Welche Durchfahrtshöhe ist unter der Brücke angegeben?"</string>
+Darüber hinaus ermöglichen einige Overlays das Hinzufügen neuer Daten an der Position eines angezeigten Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"Wie hoch ist der Bordstein an dieser Kreuzung?"</string>
 </resources>

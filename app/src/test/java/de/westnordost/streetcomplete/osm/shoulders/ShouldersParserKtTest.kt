@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.shoulders
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class ShouldersParserKtTest {
     @Test fun `shoulders with normal tagging`() {

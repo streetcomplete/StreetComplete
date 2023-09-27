@@ -1,21 +1,21 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 411992
+  linesOfCodeChanged: 411882
   linesOfInterfaceMarkupChanged: 144177
   assetFilesChanged: 1975
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20841
+  linesOfCodeChanged: 20617
   linesOfInterfaceMarkupChanged: 5176
   assetFilesChanged: 634
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 17364
+  linesOfCodeChanged: 17149
   linesOfInterfaceMarkupChanged: 2425
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12129
+  linesOfCodeChanged: 11697
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -33,12 +33,9 @@
   assetFilesChanged: 7
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3094
+  linesOfCodeChanged: 3092
   linesOfInterfaceMarkupChanged: 488
   assetFilesChanged: 70
-- name: "riQQ"
-  githubUsername: "riQQ"
-  linesOfCodeChanged: 2256
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -46,13 +43,13 @@
   githubUsername: "sumanabhi"
   linesOfCodeChanged: 2014
   linesOfInterfaceMarkupChanged: 3159
-- name: "Tim"
-  githubUsername: "tapetis"
-  linesOfCodeChanged: 1864
-  linesOfInterfaceMarkupChanged: 1429
 - name: "Isira Seneviratne"
   githubUsername: "Isira-Seneviratne"
   linesOfCodeChanged: 1751
+- name: "Tim"
+  githubUsername: "tapetis"
+  linesOfCodeChanged: 1649
+  linesOfInterfaceMarkupChanged: 700
 - name: "Adrien Pavie"
   githubUsername: "PanierAvide"
   linesOfCodeChanged: 1639
@@ -103,6 +100,9 @@
   linesOfCodeChanged: 286
   linesOfInterfaceMarkupChanged: 442
   assetFilesChanged: 8
+- name: "riQQ"
+  githubUsername: "riQQ"
+  linesOfCodeChanged: 267
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
@@ -163,9 +163,6 @@
 - name: "xuiqzy"
   githubUsername: "xuiqzy"
   linesOfCodeChanged: 48
-- name: "qugebert"
-  githubUsername: "qugebert"
-  linesOfCodeChanged: 41
 - name: "Muhammad Usama"
   githubUsername: "SMUsamaShah"
   linesOfCodeChanged: 39
@@ -195,9 +192,6 @@
 - name: "tiptoptom"
   githubUsername: "tiptoptom"
   linesOfCodeChanged: 13
-- name: "burrscurr"
-  githubUsername: "burrscurr"
-  linesOfCodeChanged: 12
 - name: "Ben Wiederhake"
   githubUsername: "BenWiederhake"
   linesOfCodeChanged: 8
@@ -208,9 +202,6 @@
 - name: "ferdinand0101"
   githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
-- name: "CTJoriginal"
-  githubUsername: "CTJoriginal"
-  linesOfCodeChanged: 6
 - name: "Holger Jeromin"
   githubUsername: "HolgerJeromin"
   linesOfCodeChanged: 6

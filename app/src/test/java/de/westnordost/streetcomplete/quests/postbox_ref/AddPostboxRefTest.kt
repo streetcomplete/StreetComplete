@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import kotlin.test.Test
+import org.junit.Test
 
 class AddPostboxRefTest {
 

@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 
 class EditTypeStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var daoType: EditTypeStatisticsDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         daoType = EditTypeStatisticsDao(database, EditTypeStatisticsTables.NAME)
     }
 

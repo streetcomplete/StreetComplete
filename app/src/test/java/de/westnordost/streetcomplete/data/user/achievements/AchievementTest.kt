@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class AchievementTest {
     @Test fun `getPointThreshold for level 0 is 0`() {

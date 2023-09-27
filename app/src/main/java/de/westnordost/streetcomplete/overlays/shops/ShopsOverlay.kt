@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.overlays.shops
 
-import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -16,8 +16,9 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
+import java.util.concurrent.FutureTask
 
-class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Feature?) : Overlay {
+class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) : Overlay {
 
     override val title = R.string.overlay_shops
     override val icon = R.drawable.ic_quest_shop
@@ -40,7 +41,10 @@ class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Featur
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
             .map { element ->
-                val feature = getFeature(element.tags)
+                val feature = featureDictionaryFuture.get()
+                    .byTags(element.tags)
+                    .isSuggestion(false) // no suggestions because we just want the icon
+                    .find().firstOrNull()
 
                 val icon = "ic_preset_" + (feature?.icon ?: "maki-shop" ).replace('-', '_')
                 val label = getNameLabel(element.tags)

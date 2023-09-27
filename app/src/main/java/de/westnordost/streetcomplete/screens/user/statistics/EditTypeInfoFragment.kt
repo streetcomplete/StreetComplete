@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
+import androidx.core.net.toUri
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.databinding.FragmentEditTypeInfoDialogBinding
-import de.westnordost.streetcomplete.util.ktx.openUri
+import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlin.math.min
@@ -58,7 +60,7 @@ class EditTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_ed
         binding.wikiLinkButton.isInvisible = wikiLink == null
         if (wikiLink != null) {
             binding.wikiLinkButton.setOnClickListener {
-                openUri("https://wiki.openstreetmap.org/wiki/$wikiLink")
+                openUrl("https://wiki.openstreetmap.org/wiki/$wikiLink")
             }
         }
 
@@ -72,5 +74,10 @@ class EditTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_ed
         anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()
         counterAnimation = anim
+    }
+
+    private fun openUrl(url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+        return tryStartActivity(intent)
     }
 }

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map.tangram
 
 import de.westnordost.streetcomplete.testutils.p
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class TangramExtensionsTest {
 

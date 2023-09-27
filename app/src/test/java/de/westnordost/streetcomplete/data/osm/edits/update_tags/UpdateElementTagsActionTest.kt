@@ -11,9 +11,9 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class UpdateElementTagsActionTest {
@@ -21,7 +21,7 @@ class UpdateElementTagsActionTest {
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @BeforeTest fun setUp() {
+    @Before fun setUp() {
         repos = mock()
         provider = mock()
     }

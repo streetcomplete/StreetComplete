@@ -4,16 +4,16 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 import kotlin.test.assertFailsWith
-import kotlin.test.assertTrue
 
 class ElementIdProviderDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementIdProviderDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = ElementIdProviderDao(database)
     }
 

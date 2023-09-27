@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.osm.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import kotlin.test.Test
+import org.junit.Test
 
 class AddDrinkingWaterTypeTest {
     private val questType = AddDrinkingWaterType()

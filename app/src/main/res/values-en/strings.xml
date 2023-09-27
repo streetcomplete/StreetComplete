@@ -179,7 +179,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
 The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red."</string>
-    <string name="overlays_tutorial_edit">"Tap on any highlighted data to display or edit it. You can also split ways or report notes, like with quests.
+    <string name="overlays_tutorial_edit">"Tap on any highlighted data to edit it. You can also split ways or report notes, like with quests.
 
 Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay."</string>
 
@@ -1083,8 +1083,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
 
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
-    <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">What height limit is indicated below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>

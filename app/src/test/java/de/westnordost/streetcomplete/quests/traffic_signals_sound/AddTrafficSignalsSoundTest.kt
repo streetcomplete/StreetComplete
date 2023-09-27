@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.traffic_signals_sound
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class AddTrafficSignalsSoundTest {
     private val questType = AddTrafficSignalsSound()

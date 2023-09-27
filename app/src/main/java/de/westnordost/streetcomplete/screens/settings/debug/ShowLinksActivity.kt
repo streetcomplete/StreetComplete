@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
@@ -8,7 +10,6 @@ import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.databinding.FragmentShowLinksBinding
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.user.links.GroupedLinksAdapter
-import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.viewBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -28,7 +29,12 @@ class ShowLinksActivity : BaseActivity() {
         binding.linksList.apply {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(context)
-            adapter = GroupedLinksAdapter(links, ::openUri)
+            adapter = GroupedLinksAdapter(links, ::openUrl)
         }
+    }
+
+    private fun openUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+        startActivity(intent)
     }
 }

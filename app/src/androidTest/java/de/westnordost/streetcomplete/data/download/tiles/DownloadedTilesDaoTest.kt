@@ -3,16 +3,16 @@ package de.westnordost.streetcomplete.data.download.tiles
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 
 class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: DownloadedTilesDao
 
-    @BeforeTest fun createDao() {
+    @Before fun createDao() {
         dao = DownloadedTilesDao(database)
     }
 

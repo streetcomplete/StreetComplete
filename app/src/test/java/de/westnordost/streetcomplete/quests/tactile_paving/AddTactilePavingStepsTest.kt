@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.testutils.way
-import kotlin.test.Test
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class AddTactilePavingStepsTest {
     private val questType = AddTactilePavingSteps()

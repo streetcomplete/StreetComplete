@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Test
 
 class NumberWithUnitParserKtTest {
 

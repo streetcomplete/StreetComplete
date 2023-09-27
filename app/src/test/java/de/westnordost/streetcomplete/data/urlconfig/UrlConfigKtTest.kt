@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeD
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Test
 
 internal class UrlConfigKtTest {
 

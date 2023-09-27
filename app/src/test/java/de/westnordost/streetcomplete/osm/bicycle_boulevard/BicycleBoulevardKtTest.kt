@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.*
 import org.assertj.core.api.Assertions
-import kotlin.test.*
-import kotlin.test.Test
+import org.junit.Assert.*
+import org.junit.Test
 
 class BicycleBoulevardKtTest {
 

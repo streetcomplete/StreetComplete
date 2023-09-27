@@ -1336,10 +1336,10 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="overlays_tutorial_intro">"Vous avez trouvé une nouvelle façon de modifier les données !"</string>
     <string name="overlays_tutorial_display">"Chaque surcouche affiche un type de données, par exemple des magasins ou des surfaces de rues.
 
-Les données sont mises en évidence dans différentes couleurs pour vous donner un bon aperçu de ce qui a été enregistré jusqu’à présent.
+Les données sont mises en évidence dans différentes couleurs pour vous donner un bon aperçu de ce qui a été enregistré jusqu'à présent.
 Les données manquantes sont toujours affichées en rouge."</string>
-    <string name="overlays_tutorial_edit">"Appuyez sur les données en surbrillance pour les modifier. Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
+    <string name="overlays_tutorial_edit">"Appuyez sur les données en surbrillance pour les modifier.  Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
 
-De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la superposition des adresses."</string>
+De plus, certaines surcouches vous permettent d'ajouter de nouvelles données à la position d'un réticule affiché, comme la superposition des adresses."</string>
     <string name="quest_crossing_kerb_height_title">"Quelle est la hauteur des bordures à ce croisement ?"</string>
 </resources>

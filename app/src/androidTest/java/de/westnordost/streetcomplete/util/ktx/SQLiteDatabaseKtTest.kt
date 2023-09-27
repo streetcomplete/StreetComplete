@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
+import org.junit.After
+import org.junit.Before
 
 class SQLiteDatabaseKtTest : ApplicationDbTestCase() {
 
-    @BeforeTest fun setUp() {
+    @Before fun setUp() {
         dbHelper.writableDatabase.execSQL("CREATE TABLE t (a int, b int)")
     }
 
-    @AfterTest fun tearDown() {
+    @After fun tearDown() {
         dbHelper.writableDatabase.execSQL("DROP TABLE t")
     }
 }

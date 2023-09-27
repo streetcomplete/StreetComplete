@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.meta
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import java.util.Locale
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 
 class AbbreviationsTest {
     @Test fun `removes abbreviation dot`() {

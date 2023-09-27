@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm
 
-import kotlin.test.*
+import org.junit.Assert.*
+import org.junit.Test
 
 class TagsKtTest {
 
