@@ -16,7 +16,7 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     val key = "${pre}surface"
     val previousOsmValue = tags[key]
 
-    val shouldRemoveTracktype = prefix == null && isSurfaceAndTracktypeConflicting(osmValue, tags["tracktype"])
+    val shouldRemoveTracktype = prefix == null && isSurfaceAndTracktypeCombinationSuspicious(osmValue, tags["tracktype"])
     if (shouldRemoveTracktype) {
         tags.remove("tracktype")
         tags.removeCheckDatesForKey("tracktype")
