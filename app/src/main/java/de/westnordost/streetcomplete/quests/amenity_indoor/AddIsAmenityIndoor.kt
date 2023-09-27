@@ -21,24 +21,20 @@ import java.util.concurrent.FutureTask
 class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> Feature?) :
     OsmElementQuestType<Boolean> {
 
-    private val nodesFilter by lazy {
-        """
+    private val nodesFilter by lazy { """
         nodes with
-         (
-         emergency ~ defibrillator|fire_extinguisher
-         or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator|vending_machine
-         )
-         and access !~ private|no
-         and !indoor and !location and !level and !level:ref
-    """.toElementFilterExpression()
-    }
+          (
+            emergency ~ defibrillator|fire_extinguisher
+            or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator|vending_machine
+          )
+          and access !~ private|no
+          and !indoor and !location and !level and !level:ref
+    """.toElementFilterExpression() }
 
     /* We only want survey nodes within building outlines. */
-    private val buildingFilter by lazy {
-        """
-    ways, relations with building
-    """.toElementFilterExpression()
-    }
+    private val buildingFilter by lazy { """
+        ways, relations with building
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
