@@ -34,7 +34,7 @@ class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<Feature
     }
 
     /* We only want survey nodes within building outlines. */
-    private val BuildingFilter by lazy {
+    private val buildingFilter by lazy {
         """
     ways, relations with building
     """.toElementFilterExpression()
