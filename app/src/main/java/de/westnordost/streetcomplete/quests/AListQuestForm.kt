@@ -19,6 +19,8 @@ abstract class AListQuestForm<T> : AbstractOsmQuestForm<T>() {
 
     private val radioButtonIds = HashMap<Int, TextItem<T>>()
 
+    val checkedItem get() = radioButtonIds[binding.radioButtonGroup.checkedRadioButtonId]
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         for (item in items) {
@@ -38,7 +40,7 @@ abstract class AListQuestForm<T> : AbstractOsmQuestForm<T>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(radioButtonIds.getValue(binding.radioButtonGroup.checkedRadioButtonId).value)
+        applyAnswer(checkedItem!!.value)
     }
 
     override fun isFormComplete() = binding.radioButtonGroup.checkedRadioButtonId != -1
