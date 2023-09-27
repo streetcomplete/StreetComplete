@@ -22,11 +22,12 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
         "CA",
         "IE",
         "JE",
-        "AU", // see https://github.com/streetcomplete/StreetComplete/issues/4487
-        "TR", // see https://github.com/streetcomplete/StreetComplete/issues/4489
+        "AU", // https://github.com/streetcomplete/StreetComplete/issues/4487
+        "TR", // https://github.com/streetcomplete/StreetComplete/issues/4489
         "US",
-        "IL", // see https://github.com/streetcomplete/StreetComplete/issues/5119
+        "IL", // https://github.com/streetcomplete/StreetComplete/issues/5119
         "CO", // https://github.com/streetcomplete/StreetComplete/issues/5124
+        "NZ", // https://wiki.openstreetmap.org/w/index.php?title=Talk:StreetComplete/Quests&oldid=2599288#Quests_in_New_Zealand
     )
     override val changesetComment = "Determine bus/tram stop refs"
     override val wikiLink = "Tag:public_transport=platform"
