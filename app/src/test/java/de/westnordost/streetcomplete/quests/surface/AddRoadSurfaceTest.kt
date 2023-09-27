@@ -68,4 +68,17 @@ class AddRoadSurfaceTest {
             StringMapEntryDelete("smoothness", "good"),
         )
     }
+
+    @Test fun `tracktype tag is removed when surface match is conflicting`() {
+        questType.verifyAnswer(
+            mapOf(
+                "tracktype" to "grade2",
+                "smoothness" to "good"
+            ),
+            SurfaceAndNote(Surface.SAND),
+            StringMapEntryAdd("surface", "sand"),
+            StringMapEntryDelete("tracktype", "grade2"),
+            StringMapEntryDelete("smoothness", "good"),
+        )
+    }
 }

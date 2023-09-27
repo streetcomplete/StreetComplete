@@ -12,10 +12,12 @@ val SOFT_SURFACES = setOf(
     "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
 )
 
-val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
+val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
     "ground", // see https://community.openstreetmap.org/t/is-tracktype-grade2-also-for-trails-with-large-naturally-occuring-pieces-of-rock/96850
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
 )
+
+val ANYTHING_UNPAVED = SOFT_SURFACES + UNPAVED_BUT_NOT_ALWAYS_SOFT
 
 val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
@@ -43,7 +45,7 @@ fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boole
 
 val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
     "grade1" to ANYTHING_FULLY_PAVED,
-    "grade2" to ANYTHING_UNPAVED,
+    "grade2" to UNPAVED_BUT_NOT_ALWAYS_SOFT,
     "grade3" to ANYTHING_UNPAVED,
     "grade4" to ANYTHING_UNPAVED,
     "grade5" to SOFT_SURFACES,

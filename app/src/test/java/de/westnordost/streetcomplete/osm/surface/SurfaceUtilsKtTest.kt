@@ -39,6 +39,11 @@ class SurfaceUtilsKtTest {
         assertTrue(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", "grade2"))
     }
 
+    @Test fun `sand surface is conflicting and suspicious on tracktype=grade2`() {
+        assertTrue(isSurfaceAndTracktypeConflicting("sand", "grade2"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("sand", "grade2"))
+    }
+
     @Test fun `missing tracktype is not conflicting`() {
         assertFalse(isSurfaceAndTracktypeConflicting("paving_stones", null))
         assertFalse(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", null))
