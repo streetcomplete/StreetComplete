@@ -33,7 +33,7 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
     }
 
     /* We only want survey nodes within building outlines. */
-    private val BuildingFilter by lazy {
+    private val buildingFilter by lazy {
         """
     ways, relations with building
     """.toElementFilterExpression()
