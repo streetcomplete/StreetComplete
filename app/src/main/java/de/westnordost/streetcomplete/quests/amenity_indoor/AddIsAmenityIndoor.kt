@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.amenity_indoor
 
-import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -16,8 +16,9 @@ import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
+import java.util.concurrent.FutureTask
 
-class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> Feature?) :
+class AddIsAmenityIndoor(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) :
     OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy {
@@ -86,12 +87,17 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
     override fun isApplicableTo(element: Element) =
         nodesFilter.matches(element) && hasAnyName(element.tags)
 
-    private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasAnyName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element.tags) ?: return emptySequence()
+        val feature = featureDictionaryFuture.get()
+            .byTags(element.tags)
+            .isSuggestion(false) // not brands
+            .find()
+            .firstOrNull() ?: return emptySequence()
 
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
