@@ -13,10 +13,9 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 import de.westnordost.streetcomplete.util.ktx.getIds
-import java.util.concurrent.FutureTask
 
 class AddressOverlay(
-    private val countryBoundaries: FutureTask<CountryBoundaries>
+    private val getCountryBoundaries: () -> CountryBoundaries
 ) : Overlay {
 
     override val title = R.string.overlay_addresses
@@ -49,7 +48,7 @@ class AddressOverlay(
             .filter("ways, relations with building")
             .filter {
                 val center = mapData.getGeometry(it.type, it.id)?.center ?: return@filter false
-                val country = countryBoundaries.get().getIds(center).firstOrNull()
+                val country = getCountryBoundaries().getIds(center).firstOrNull()
                 country !in noAddressesOnBuildings
             }
             .map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }

@@ -25,11 +25,10 @@ import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
-import java.util.concurrent.FutureTask
 
 class AddCycleway(
     private val countryInfos: CountryInfos,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val getCountryBoundaries: () -> CountryBoundaries,
 ) : OsmElementQuestType<LeftAndRightCycleway> {
 
     override val changesetComment = "Specify whether there are cycleways"
@@ -87,7 +86,7 @@ class AddCycleway(
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
             val countryInfo = mapData.getWayGeometry(way.id)?.center?.let { p ->
                 countryInfos.getByLocation(
-                    countryBoundariesFuture.get(),
+                    getCountryBoundaries(),
                     p.longitude,
                     p.latitude,
                 )
@@ -108,7 +107,7 @@ class AddCycleway(
 
     override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val countryInfo = countryInfos.getByLocation(
-            countryBoundariesFuture.get(),
+            getCountryBoundaries(),
             geometry.center.longitude,
             geometry.center.latitude
         )

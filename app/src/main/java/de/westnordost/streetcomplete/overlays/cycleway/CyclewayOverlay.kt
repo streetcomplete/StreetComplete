@@ -27,11 +27,10 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import java.util.concurrent.FutureTask
 
 class CyclewayOverlay(
     private val countryInfos: CountryInfos,
-    private val countryBoundaries: FutureTask<CountryBoundaries>
+    private val getCountryBoundaries: () -> CountryBoundaries
 ) : Overlay {
 
     override val title = R.string.overlay_cycleway
@@ -50,7 +49,7 @@ class CyclewayOverlay(
         """).mapNotNull {
             val pos = mapData.getWayGeometry(it.id)?.center ?: return@mapNotNull null
             val countryInfo = countryInfos.getByLocation(
-                countryBoundaries.get(),
+                getCountryBoundaries(),
                 pos.longitude,
                 pos.latitude
             )

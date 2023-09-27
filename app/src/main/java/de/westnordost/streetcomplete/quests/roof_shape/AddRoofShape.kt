@@ -12,11 +12,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
-import java.util.concurrent.FutureTask
 
 class AddRoofShape(
     private val countryInfos: CountryInfos,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val getCountryBoundaries: () -> CountryBoundaries,
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
@@ -59,7 +58,7 @@ class AddRoofShape(
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
         return countryInfos.getByLocation(
-            countryBoundariesFuture.get(),
+            getCountryBoundaries(),
             center.longitude,
             center.latitude,
         ).roofsAreUsuallyFlat

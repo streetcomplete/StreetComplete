@@ -23,7 +23,7 @@ val overlaysModule = module {
     single {
         overlaysRegistry(
             get(),
-            get(named("CountryBoundariesFuture")),
+            { get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get() },
             { tags ->
                 get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
                 .get().getFeature(tags)
@@ -34,15 +34,15 @@ val overlaysModule = module {
 
 fun overlaysRegistry(
     countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    getCountryBoundaries: () -> CountryBoundaries,
     getFeature: (tags: Map<String, String>) -> Feature?,
 ) = OverlayRegistry(listOf(
 
     0 to WayLitOverlay(),
     6 to SurfaceOverlay(),
     1 to SidewalkOverlay(),
-    5 to CyclewayOverlay(countryInfos, countryBoundariesFuture),
+    5 to CyclewayOverlay(countryInfos, getCountryBoundaries),
     2 to StreetParkingOverlay(),
-    3 to AddressOverlay(countryBoundariesFuture),
+    3 to AddressOverlay(getCountryBoundaries),
     4 to ShopsOverlay(getFeature),
 ))

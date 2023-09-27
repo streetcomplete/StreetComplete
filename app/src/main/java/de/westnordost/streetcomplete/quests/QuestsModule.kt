@@ -182,8 +182,8 @@ val questsModule = module {
             get(),
             get(),
             get(),
-            get(named("CountryBoundariesFuture")),
             get(),
+            { get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get() },
             { tags ->
                 get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
                     .get().getFeature(tags)
@@ -196,8 +196,8 @@ fun questTypeRegistry(
     trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     trafficFlowDao: WayTrafficFlowDao,
     countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
+    getCountryBoundaries: () -> CountryBoundaries,
     getFeature: (tags: Map<String, String>) -> Feature?,
 ) = QuestTypeRegistry(listOf(
 
@@ -474,7 +474,7 @@ fun questTypeRegistry(
     134 to AddSidewalk(), // for any pedestrian routers, needs minimal thinking
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
-    137 to AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
+    137 to AddCycleway(countryInfos, getCountryBoundaries), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
@@ -500,7 +500,7 @@ fun questTypeRegistry(
     // buildings
     150 to AddBuildingType(),
     151 to AddBuildingLevels(),
-    152 to AddRoofShape(countryInfos, countryBoundariesFuture),
+    152 to AddRoofShape(countryInfos, getCountryBoundaries),
 
     153 to AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 
