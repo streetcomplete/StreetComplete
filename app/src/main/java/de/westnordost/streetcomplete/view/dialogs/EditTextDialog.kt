@@ -15,6 +15,7 @@ class EditTextDialog(
     context: Context,
     title: CharSequence? = null,
     text: String? = null,
+    hint: String? = null,
     @LayoutRes layoutResId: Int = R.layout.dialog_edit_text,
     private val callback: (value: String) -> Unit
 ) : AlertDialog(context) {
@@ -28,6 +29,7 @@ class EditTextDialog(
 
         editText = view.findViewById(R.id.editText)
         editText.setText(text)
+        editText.hint = hint
         editText.doAfterTextChanged {
             updateEditButtonEnablement()
         }
