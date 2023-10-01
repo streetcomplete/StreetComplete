@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeControll
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.getDouble
 import kotlinx.coroutines.CoroutineScope
@@ -62,6 +64,13 @@ class QuestSelectionAdapter(
         .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
+    private val englishResources by lazy {
+        val conf = Configuration(context.resources.configuration)
+        conf.setLocale(Locale.ENGLISH)
+        val localizedContext = context.createConfigurationContext(conf)
+        localizedContext.resources
+    }
+
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     /** all quest types */
@@ -80,15 +89,22 @@ class QuestSelectionAdapter(
             }
         }
 
+    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>): Boolean {
+        val question = genericQuestTitle(context.resources, questType).lowercase()
+        if (question.containsAll(words)) {
+            return true
+        }
+
+        val englishQuestion = genericQuestTitle(englishResources, questType).lowercase()
+        return englishQuestion.containsAll(words)
+    }
+
     private fun filterQuestTypes(f: String) {
         if (f.isEmpty()) {
             submitList(questTypes)
         } else {
             val words = f.lowercase().split(' ')
-            submitList(questTypes.filter { questVisibility ->
-                val question = genericQuestTitle(context.resources, questVisibility.questType).lowercase()
-                words.all { question.contains(it) }
-            })
+            submitList(questTypes.filter { questTypeMatchesSearchWords(it.questType, words) })
         }
     }
 
