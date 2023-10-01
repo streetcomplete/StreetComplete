@@ -170,6 +170,7 @@ class QuestPresetsAdapter(
                 val newPresetId = questPresetsController.add(name)
                 questTypeOrderController.copyOrders(presetId, newPresetId)
                 visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
+                questPresetsController.selectedId = newPresetId
             }
         }
 
