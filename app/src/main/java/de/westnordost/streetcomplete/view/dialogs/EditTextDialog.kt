@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 /** A dialog in which you input a text */
 class EditTextDialog(
@@ -46,6 +47,13 @@ class EditTextDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         updateEditButtonEnablement()
+    }
+
+    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
+        if (hasWindowFocus) {
+            editText.requestFocus()
+            editText.showKeyboard()
+        }
     }
 
     private fun updateEditButtonEnablement() {
