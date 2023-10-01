@@ -52,7 +52,8 @@ class QuestPresetsFragment : TwoPaneDetailFragment(R.layout.fragment_quest_prese
 
     private fun addQuestPreset(name: String) {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            questPresetsController.add(name)
+            val newPresetId = questPresetsController.add(name)
+            questPresetsController.selectedId = newPresetId
         }
     }
 }
