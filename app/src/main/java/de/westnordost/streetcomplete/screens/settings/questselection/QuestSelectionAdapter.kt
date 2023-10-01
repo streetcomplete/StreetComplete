@@ -137,7 +137,7 @@ class QuestSelectionAdapter(
         }
 
         override fun onQuestTypeOrdersChanged() {
-            // all/many quest orders have been changed - reinit list
+            // all/many quest orders have been changed - re-init list
             viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
         }
     }
@@ -319,7 +319,7 @@ class QuestSelectionAdapter(
                 AlertDialog.Builder(compoundButton.context)
                     .setTitle(R.string.enable_quest_confirmation_title)
                     .setMessage(item.questType.defaultDisabledMessage)
-                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(b) }
+                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(true) }
                     .setNegativeButton(android.R.string.cancel) { _, _ -> compoundButton.isChecked = false }
                     .setOnCancelListener { compoundButton.isChecked = false }
                     .show()
