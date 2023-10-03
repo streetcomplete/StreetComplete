@@ -89,15 +89,9 @@ class QuestSelectionAdapter(
             }
         }
 
-    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>): Boolean {
-        val question = genericQuestTitle(context.resources, questType).lowercase()
-        if (question.containsAll(words)) {
-            return true
-        }
-
-        val englishQuestion = genericQuestTitle(englishResources, questType).lowercase()
-        return englishQuestion.containsAll(words)
-    }
+    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
+        genericQuestTitle(context.resources, questType).lowercase().containsAll(words)
+        || genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
 
     private fun filterQuestTypes(f: String) {
         if (f.isEmpty()) {
