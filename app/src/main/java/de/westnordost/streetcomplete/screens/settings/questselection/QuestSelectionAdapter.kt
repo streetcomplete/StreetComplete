@@ -313,7 +313,7 @@ class QuestSelectionAdapter(
                 AlertDialog.Builder(compoundButton.context)
                     .setTitle(R.string.enable_quest_confirmation_title)
                     .setMessage(item.questType.defaultDisabledMessage)
-                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(true) }
+                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(b) }
                     .setNegativeButton(android.R.string.cancel) { _, _ -> compoundButton.isChecked = false }
                     .setOnCancelListener { compoundButton.isChecked = false }
                     .show()
