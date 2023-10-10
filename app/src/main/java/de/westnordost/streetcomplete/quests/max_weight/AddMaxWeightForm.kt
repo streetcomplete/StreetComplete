@@ -84,7 +84,9 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
 
     private fun showSignSelectionDialog() {
         val ctx = context ?: return
-        val items = MaxWeightSign.values().map { it.asItem(layoutInflater) }
+        val items = MaxWeightSign.values().map {
+            it.asItem(layoutInflater, countryInfo.countryCode)
+        }
         ImageListPickerDialog(ctx, items, R.layout.cell_labeled_icon_select, 2) { selected ->
             selected.value?.let { setMaxWeightSign(it) }
             checkIsFormComplete()
@@ -97,7 +99,8 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         binding.selectSignButton.isInvisible = true
         binding.inputSignContainer.removeAllViews()
 
-        layoutInflater.inflate(sign.layoutResourceId, binding.inputSignContainer)
+        val layoutResourceId = sign.getLayoutResourceId(countryInfo.countryCode)
+        layoutInflater.inflate(layoutResourceId, binding.inputSignContainer)
         initMaxWeightInput()
         focusMaxWeightInput()
 

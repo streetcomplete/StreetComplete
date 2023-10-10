@@ -13,23 +13,24 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun MaxWeightSign.asItem(inflater: LayoutInflater): DisplayItem<MaxWeightSign> =
-    Item2(this, DrawableImage(BitmapDrawable(inflater.context.resources, createBitmap(inflater))))
+fun MaxWeightSign.asItem(
+    inflater: LayoutInflater,
+    countryCode: String,
+): DisplayItem<MaxWeightSign> = Item2(
+    this,
+    DrawableImage(BitmapDrawable(
+        inflater.context.resources,
+        createBitmap(inflater, countryCode)
+    )),
+)
 
-val MaxWeightSign.layoutResourceId get() = when (this) {
-    MaxWeightSign.MAX_WEIGHT             -> R.layout.quest_maxweight_sign
-    MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> R.layout.quest_maxweight_mgv_sign
-    MaxWeightSign.MAX_AXLE_LOAD          -> R.layout.quest_maxweight_axleload_sign
-    MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> R.layout.quest_maxweight_tandem_axleload_sign
-}
-
-private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
+private fun MaxWeightSign.createBitmap(inflater: LayoutInflater, countryCode: String): Bitmap {
     val container = FrameLayout(inflater.context)
     container.layoutParams = ViewGroup.LayoutParams(
         ViewGroup.LayoutParams.WRAP_CONTENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
-    inflater.inflate(layoutResourceId, container)
+    inflater.inflate(getLayoutResourceId(countryCode), container)
 
     container.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
@@ -41,4 +42,33 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
     return createBitmap(w, h, Bitmap.Config.ARGB_8888).applyCanvas {
         container.draw(this)
     }
+}
+
+fun MaxWeightSign.getLayoutResourceId(countryCode: String) = when (this) {
+    MaxWeightSign.MAX_WEIGHT             -> getMaxWeightSignLayoutResId(countryCode)
+    MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> getMaxWeightMgvSignLayoutResId(countryCode)
+    MaxWeightSign.MAX_AXLE_LOAD          -> getMaxWeightAxleLoadSignLayoutResId(countryCode)
+    MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> getMaxWeightTandemAxleLoadSignLayoutResId(countryCode)
+}
+
+private fun getMaxWeightSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "AU", "CA", "US" -> R.layout.quest_maxweight_us_sign
+    else -> R.layout.quest_maxweight_sign
+}
+
+private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "AU", "CA", "US" -> R.layout.quest_maxweight_mgv_us_sign
+    "DE" -> R.layout.quest_maxweight_mgv_de_sign
+    "GB" -> R.layout.quest_maxweight_mgv_gb_sign
+    else -> R.layout.quest_maxweight_mgv_sign
+}
+
+private fun getMaxWeightAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_us_sign
+    else -> R.layout.quest_maxweight_axleload_sign
+}
+
+private fun getMaxWeightTandemAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_us_sign
+    else -> R.layout.quest_maxweight_tandem_axleload_sign
 }
