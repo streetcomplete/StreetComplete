@@ -156,8 +156,8 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     private val SpeedType.layoutResId get() = when (this) {
-        SIGN          -> R.layout.quest_maxspeed_sign
-        ZONE          -> R.layout.quest_maxspeed_zone_sign
+        SIGN          -> getMaxSpeedSignLayoutResId(countryInfo.countryCode)
+        ZONE          -> getMaxSpeedZoneSignLayoutResId(countryInfo.countryCode)
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
         NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
         ADVISORY      -> countryInfo.advisorySpeedLimitSignLayoutResId ?: R.layout.quest_maxspeed_advisory_blue
@@ -323,4 +323,15 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
 private enum class SpeedType {
     SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN, NSL
+}
+
+private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "CA" -> R.layout.quest_maxspeed_sign_ca
+    "US" -> R.layout.quest_maxspeed_sign_us
+    else -> R.layout.quest_maxspeed_sign
+}
+
+private fun getMaxSpeedZoneSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "IL" -> R.layout.quest_maxspeed_zone_sign_il
+    else -> R.layout.quest_maxspeed_zone_sign
 }
