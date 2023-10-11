@@ -338,6 +338,7 @@ private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (country
 }
 
 private fun getMaxSpeedZoneSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "IL" -> R.layout.quest_maxspeed_zone_sign_il
-    else -> R.layout.quest_maxspeed_zone_sign
+    "FI", "IS", "SE" -> R.layout.quest_maxspeed_zone_sign_fi
+    "IL" ->             R.layout.quest_maxspeed_zone_sign_il
+    else ->             R.layout.quest_maxspeed_zone_sign
 }
