@@ -1,17 +1,12 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import org.mockito.ArgumentMatchers.anyDouble
-import java.util.concurrent.FutureTask
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -22,19 +17,11 @@ import kotlin.test.assertTrue
 class AddCyclewayTest {
 
     private lateinit var countryInfo: CountryInfo
-    private lateinit var countryInfos: CountryInfos
     private lateinit var questType: AddCycleway
 
     @BeforeTest fun setUp() {
-        val countryBoundaries: CountryBoundaries = mock()
-        val futureTask = FutureTask { countryBoundaries }
-        futureTask.run()
-
         countryInfo = mock()
-        countryInfos = mock()
-        on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(countryInfo)
-
-        questType = AddCycleway(countryInfos, futureTask)
+        questType = AddCycleway { _ -> countryInfo }
     }
 
     @Test fun `applicable to road with missing cycleway`() {
