@@ -332,9 +332,10 @@ private enum class SpeedType {
 }
 
 private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "CA" -> R.layout.quest_maxspeed_sign_ca
-    "US" -> R.layout.quest_maxspeed_sign_us
-    else -> R.layout.quest_maxspeed_sign
+    "FI", "IS", "SE" -> R.layout.quest_maxspeed_sign_fi
+    "CA" ->             R.layout.quest_maxspeed_sign_ca
+    "US" ->             R.layout.quest_maxspeed_sign_us
+    else ->             R.layout.quest_maxspeed_sign
 }
 
 private fun getMaxSpeedZoneSignLayoutResId(countryCode: String): Int = when (countryCode) {
