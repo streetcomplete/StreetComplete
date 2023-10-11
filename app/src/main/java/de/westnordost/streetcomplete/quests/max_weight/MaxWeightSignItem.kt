@@ -52,27 +52,27 @@ fun MaxWeightSign.getLayoutResourceId(countryCode: String) = when (this) {
 }
 
 private fun getMaxWeightSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_us_sign
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_fi_sign
+    "AU", "CA", "US" -> R.layout.quest_maxweight_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_sign_fi
     else ->             R.layout.quest_maxweight_sign
 }
 
 private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_mgv_us_sign
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_mgv_fi_sign
-    "DE" ->             R.layout.quest_maxweight_mgv_de_sign
-    "GB" ->             R.layout.quest_maxweight_mgv_gb_sign
+    "AU", "CA", "US" -> R.layout.quest_maxweight_mgv_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_mgv_sign_fi
+    "DE" ->             R.layout.quest_maxweight_mgv_sign_de
+    "GB" ->             R.layout.quest_maxweight_mgv_sign_gb
     else ->             R.layout.quest_maxweight_mgv_sign
 }
 
 private fun getMaxWeightAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_us_sign
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_axleload_fi_sign
+    "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_axleload_sign_fi
     else ->             R.layout.quest_maxweight_axleload_sign
 }
 
 private fun getMaxWeightTandemAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_us_sign
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_tandem_axleload_fi_sign
+    "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_tandem_axleload_sign_fi
     else ->             R.layout.quest_maxweight_tandem_axleload_sign
 }
