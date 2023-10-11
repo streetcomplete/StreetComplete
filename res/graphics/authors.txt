@@ -315,6 +315,7 @@ quest/
     building.svg
     building_construction.svg
     building_height.svg
+	building_inside.svg
     building_levels.svg
     building_underground.svg
     bus.svg                          modified from Twemoji: U+1F68D
@@ -342,6 +343,7 @@ quest/
     fee.svg
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
+	fire.svg
     fire_hydrant.svg
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
