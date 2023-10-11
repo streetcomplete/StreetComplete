@@ -152,11 +152,12 @@ class MainActivity :
         val data = intent.data ?: return
         val config = urlConfigController.parse(data.toString()) ?: return
 
-        val alreadyExists = questPresetsSource.getByName(config.presetName) != null
+        val alreadyExists = config.presetName == null || questPresetsSource.getByName(config.presetName) != null
+        val name = config.presetName ?: getString(R.string.quest_presets_default_name)
 
-        val name = "<i>" + Html.escapeHtml(config.presetName) + "</i>"
+        val htmlName = "<i>" + Html.escapeHtml(name) + "</i>"
         val text = StringBuilder()
-        text.append(getString(R.string.urlconfig_apply_message, name))
+        text.append(getString(R.string.urlconfig_apply_message, htmlName))
         text.append("<br><br>")
         if (alreadyExists) {
             text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")

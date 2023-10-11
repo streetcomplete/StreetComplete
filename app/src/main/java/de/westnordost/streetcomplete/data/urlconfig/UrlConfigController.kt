@@ -20,8 +20,10 @@ class UrlConfigController(
         parseConfigUrl(url, questTypeRegistry, overlayRegistry)
 
     fun apply(config: UrlConfig) {
-        val existingPreset = questPresetsController.getByName(config.presetName)
-        val presetId = existingPreset?.id ?: questPresetsController.add(config.presetName)
+        val presetId = if (config.presetName != null) {
+            val existingPreset = questPresetsController.getByName(config.presetName)
+            existingPreset?.id ?: questPresetsController.add(config.presetName)
+        } else 0
 
         val questTypes = questTypeRegistry.associateWith { it in config.questTypes }
         visibleQuestTypeController.setVisibilities(questTypes, presetId)
@@ -34,7 +36,7 @@ class UrlConfigController(
 
     fun create(presetId: Long): String {
         val urlConfig = UrlConfig(
-            presetName = questPresetsController.getName(presetId) ?: "Default",
+            presetName = questPresetsController.getName(presetId),
             questTypes = visibleQuestTypeController.getVisible(presetId),
             questTypeOrders = questTypeOrderController.getOrders(presetId),
             overlay = selectedOverlayController.selectedOverlay
