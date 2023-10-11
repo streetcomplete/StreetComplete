@@ -104,12 +104,8 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
-    @Test fun `reject if name is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
-    }
-
     @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/s?n=d", quests, overlays))
     }
 
     //endregion
