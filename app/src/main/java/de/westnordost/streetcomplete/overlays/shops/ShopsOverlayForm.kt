@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
+import de.westnordost.streetcomplete.quests.shop_type.topFeatureCodesOfPopularShoplikePOIs
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -109,7 +110,8 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                topFeatureCodesOfPopularShoplikePOIs(),
             ).show()
         }
 

@@ -45,7 +45,8 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                topFeatureCodesOfPopularShoplikePOIs(),
             ).show()
         }
     }
