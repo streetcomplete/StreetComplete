@@ -146,6 +146,14 @@ memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.w
 memorial_type_stele_stone.jpg  CC-BY-SA 4.0      Alta Falisa https://commons.wikimedia.org/wiki/File:18_June_1815_%E2%80%93_Waterloo_%E2%80%93_27th_(Inniskilling)_Regiment_of_Foot,_stele.jpg modified by Matija Nalis to remove wreath
 memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
 
+mtb_scale0.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_0_doubletrack.jpg (Anders Fougner)
+mtb_scale1.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_1_path_portait.jpg (Anders Fougner)
+mtb_scale2.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S2.jpg (Felix Hartmann)
+mtb_scale3.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S3.jpg (Felix Hartmann)
+mtb_scale4.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S4.jpg (Felix Hartmann)
+mtb_scale5.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S5.jpg (Felix Hartmann)
+mtb_scale6.jpg                 fair use          https://unsplash.com/photos/EiJQdDI_t_Y (Maja Kochanowska)
+
 location_nyan.png              fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
 car_nyan.png                   fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
 
