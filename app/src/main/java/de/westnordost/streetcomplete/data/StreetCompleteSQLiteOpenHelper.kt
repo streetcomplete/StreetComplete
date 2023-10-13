@@ -212,10 +212,28 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
             db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
         }
+        if (oldVersion <= 11 && newVersion > 11) {
+            // Deleting all data related to elements and their geometries, since
+            // the binary format in which `GEOMETRY_{POLYGONS,POLYLINES}` data from
+            // `{Way,Relation}GeometryTable` is stored has changed (see #5307)
+
+            db.execSQL("DELETE FROM ${RelationTables.NAME_MEMBERS};")
+            db.execSQL("DELETE FROM ${RelationTables.NAME};")
+
+            db.execSQL("DELETE FROM ${WayTables.NAME_NODES};")
+            db.execSQL("DELETE FROM ${WayTables.NAME};")
+
+            db.execSQL("DELETE FROM ${NodeTable.NAME};")
+
+            db.execSQL("DELETE FROM ${RelationGeometryTable.NAME};")
+            db.execSQL("DELETE FROM ${WayGeometryTable.NAME};")
+
+            db.execSQL("DELETE FROM ${DownloadedTilesTable.NAME};")
+        }
     }
 }
 
-private const val DB_VERSION = 11
+private const val DB_VERSION = 12
 
 private fun SQLiteDatabase.renameQuest(old: String, new: String) {
     renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)
