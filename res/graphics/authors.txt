@@ -248,6 +248,7 @@ max weight/
     truck.svg
 
 pins/
+    bbq.svg                         modified from https://github.com/gravitystorm/openstreetmap-carto/blob/master/symbols/amenity/bbq.svg (License: CC0 1.0)
     bicycle_parking.svg
     bicycle_pump.svg
     bicycle_rental.svg
