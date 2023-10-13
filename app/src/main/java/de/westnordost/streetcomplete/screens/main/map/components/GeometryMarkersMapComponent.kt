@@ -43,7 +43,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 val drawable = getBitmapDrawable(drawableResId)
                 marker.setDrawable(drawable)
                 iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
-                color = "white"
+                color = pointColorOpaque
             } else {
                 iconSize = pointSize
                 color = pointColor
@@ -159,6 +159,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         private const val areaColor = "#22D140D0"
         private const val lineColor = "#44D140D0"
         private const val pointColor = "#88D140D0"
+        private const val pointColorOpaque = "#FFD140D0"
         private const val lineWidth = 6
         private const val pointSize = 16
     }

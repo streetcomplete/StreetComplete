@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
- <rect x="14" y="3" width="12" height="34" ry="0" fill="none" fill-rule="evenodd" stroke="#fff" stroke-linejoin="round" stroke-width="4"/>
- <rect x="14" y="3" width="12" height="34" ry="0" fill="#c84747" fill-rule="evenodd" stroke="#444" stroke-linejoin="round" stroke-width="2.7143"/>
- <rect x="14" y="9" width="12" height="6" fill="#fff" fill-rule="evenodd" stroke-width="1.3572"/>
- <rect x="13" y="21" width="14" height="6" fill="#fff" fill-rule="evenodd" stroke-width="1.3572"/>
-</svg>
