@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
-import java.util.concurrent.FutureTask
 
 class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> Feature?) :
     OsmElementQuestType<Boolean> {
@@ -46,8 +45,8 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
         val nodes = mapData.nodes.filter {
-             nodesFilter.matches(it) && hasAnyName(it.tags)
-         }
+            nodesFilter.matches(it) && hasAnyName(it.tags)
+        }
         val buildings = mapData.filter { buildingFilter.matches(it) }.toMutableList()
 
         val buildingGeometriesById = buildings.associate {
@@ -64,17 +63,17 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
             (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox) || nodesPositions.getAll(buildingBounds).count() == 0)
         }
 
-        //Reduce all matching nodes to nodes within building outlines
+        // Reduce all matching nodes to nodes within building outlines
         val nodesInBuildings = nodes.filter {
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
-                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position) )
+                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position)) {
                     it.position.isInMultipolygon(buildingGeometry.polygons)
-                 else
+                } else {
                     false
+                }
             }
-
         }
 
         return nodesInBuildings
@@ -101,5 +100,3 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
 }
 
 private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }
-
-

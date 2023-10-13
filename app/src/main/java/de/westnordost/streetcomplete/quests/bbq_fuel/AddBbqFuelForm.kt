@@ -11,5 +11,4 @@ class AddBbqFuelForm : AListQuestForm<BbqFuel>() {
         TextItem(BbqFuel.ELECTRIC, R.string.quest_bbq_fuel_electric),
         TextItem(BbqFuel.CHARCOAL, R.string.quest_bbq_fuel_charcoal),
     )
-
 }
