@@ -99,6 +99,7 @@ import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
+import de.westnordost.streetcomplete.quests.mtb_scale.AddMtbScale
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -497,6 +498,9 @@ fun questTypeRegistry(
     146 to AddCyclewayPartSurface(),
     147 to AddSidewalkSurface(),
     148 to AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
+
+    // Mountain bike trails
+    160 to AddMtbScale(),
 
     /* should best be after road surface because it excludes unpaved roads, also, need to search
     *  for the sign which is one reason why it is disabled by default */
