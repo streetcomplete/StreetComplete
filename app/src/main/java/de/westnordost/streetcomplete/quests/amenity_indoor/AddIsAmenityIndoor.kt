@@ -38,7 +38,6 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
 
     override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
-
     override val icon = R.drawable.ic_quest_building_inside
     override val achievements = listOf(CITIZEN)
 
@@ -46,8 +45,8 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
-        val nodes = mapData.nodes.filter { 
-             nodesFilter.matches(it) && hasAnyName(it.tags) 
+        val nodes = mapData.nodes.filter {
+             nodesFilter.matches(it) && hasAnyName(it.tags)
          }
         val buildings = mapData.filter { buildingFilter.matches(it) }.toMutableList()
 
