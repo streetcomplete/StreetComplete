@@ -1136,6 +1136,16 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
 
+    <string name="quest_mtb_scale_title">What’s the MTB difficulty here?</string>
+    <string name="default_disabled_msg_mtb">This quest type is disabled by default because it requires mountain biking experience.</string>
+    <string name="quest_mtb_scale0">No special skills needed.</string>
+    <string name="quest_mtb_scale1">Obstacles can be ridden over.</string>
+    <string name="quest_mtb_scale2">Requires some advanced riding skills.</string>
+    <string name="quest_mtb_scale3">Concentration and very good skills needed.</string>
+    <string name="quest_mtb_scale4">Some trials techniques will be necessary.</string>
+    <string name="quest_mtb_scale5">Very few can ride here.</string>
+    <string name="quest_mtb_scale6">Not rideable at all.</string>
+
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
     <!-- first placeholder is the person, second placeholder is the date -->

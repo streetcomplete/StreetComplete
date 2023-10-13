@@ -995,4 +995,13 @@
     <string name="quest_building_entrance_shop">"Kundeinngang"</string>
     <string name="quest_building_entrance_yes">"Annan type inngang"</string>
     <string name="quest_building_entrance_dead_end">"Blindgang (ingen inngang)"</string>
+    <string name="quest_mtb_scale_title">Kva er vanskegraden for terrengsykling her?</string>
+    <string name="default_disabled_msg_mtb">Denne oppdragstypen vert som standard ikkje vist, då du treng erfaring med terrengsykling.</string>
+    <string name="quest_mtb_scale0">Ingen spesiell teknikk krevst.</string>
+    <string name="quest_mtb_scale1">Hindringar kan syklast over.</string>
+    <string name="quest_mtb_scale2">Krev noko avansert teknikk.</string>
+    <string name="quest_mtb_scale3">Konsentrasjon og svært god teknikk krevst.</string>
+    <string name="quest_mtb_scale4">Krev ein viss grad av trialsykling.</string>
+    <string name="quest_mtb_scale5">Svært få kan sykle her.</string>
+    <string name="quest_mtb_scale6">Kan ikkje syklast.</string>
 </resources>
