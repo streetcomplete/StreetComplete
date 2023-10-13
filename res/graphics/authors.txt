@@ -376,6 +376,7 @@ quest/
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
+    mtb.svg                          based on https://freesvg.org/mountain-bike-vector-image
     museum.svg
     no_bicycles.svg
     no_cars.svg                      based on car.svg - modified from Twemoji: U+1F698 by Tobias Zwick, negation circle added by Flo Edelmann
