@@ -72,7 +72,7 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will have simple yes/no answer? Take [`AddIsDefibrillatorIndoor`](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting one of presented images.
+Are you trying to implement a quest that will have simple yes/no answer? Take [`AddBusStopLit`](app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting one of presented images.
 
 Is it going to be asked for POIs and should be disabled by default? [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
@@ -152,7 +152,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 At this point prepared template can be modified to achieve the intended effect.
 
-See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
+See for example [simple yes/no quest asking whether AED is indoor or outdoor](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/blob/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8/app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
 ## Element selection
 
@@ -307,7 +307,7 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
     getMapData().filter("nodes with emergency = defibrillator")
 ```
 
-which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/screens/main/map/PinIcons.kt))
+which causes nearby `emergency = defibrillator` nodes to be shown.
 
 See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
