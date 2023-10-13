@@ -12,6 +12,10 @@ val SOFT_SURFACES = setOf(
     "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
 )
 
+val NATURAL_SURFACES = setOf(
+    "ground", "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow"
+)
+
 val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
     "ground", // see https://community.openstreetmap.org/t/is-tracktype-grade2-also-for-trails-with-large-naturally-occuring-pieces-of-rock/96850
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
