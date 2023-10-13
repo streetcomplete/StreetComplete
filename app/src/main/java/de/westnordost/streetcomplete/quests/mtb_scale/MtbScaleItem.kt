@@ -13,13 +13,13 @@ import de.westnordost.streetcomplete.view.image_select.Item
 fun MtbScale.asItem() = Item(this, iconResId, titleResId)
 
 private val MtbScale.titleResId: Int get() = when (this) {
-    SCALE0 -> R.string.quest_tracktype_grade1
-    SCALE1 -> R.string.quest_tracktype_grade2a
-    SCALE2 -> R.string.quest_tracktype_grade3a
-    SCALE3 -> R.string.quest_tracktype_grade4
-    SCALE4 -> R.string.quest_tracktype_grade5
-    SCALE5 -> R.string.quest_tracktype_grade5
-    SCALE6 -> R.string.quest_tracktype_grade5
+    SCALE0 -> R.string.quest_mtb_scale0
+    SCALE1 -> R.string.quest_mtb_scale1
+    SCALE2 -> R.string.quest_mtb_scale2
+    SCALE3 -> R.string.quest_mtb_scale3
+    SCALE4 -> R.string.quest_mtb_scale4
+    SCALE5 -> R.string.quest_mtb_scale5
+    SCALE6 -> R.string.quest_mtb_scale6
 }
 
 private val MtbScale.iconResId: Int get() = when (this) {
