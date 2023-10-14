@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller that handles user login, logout, auth and updated data */
 class UserDataController(
@@ -19,7 +19,7 @@ class UserDataController(
         }
     }
 
-    private val listeners: MutableList<UserDataSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<UserDataSource.Listener>()
 
     override val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
     override val userName: String? get() = prefs.getString(Prefs.OSM_USER_NAME, null)

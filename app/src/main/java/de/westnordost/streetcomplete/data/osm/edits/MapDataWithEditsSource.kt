@@ -26,9 +26,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect
-import java.util.concurrent.CopyOnWriteArrayList
 
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
@@ -52,7 +52,7 @@ class MapDataWithEditsSource internal constructor(
         /** Called when all map data has been cleared */
         fun onCleared()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     /* For thread-safety, all access to these three fields is synchronized. Since there is no hell
      * of parallelism, simply any method that somehow accesses these fields (~just about any method

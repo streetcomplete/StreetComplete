@@ -5,11 +5,11 @@ import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsDownloader
+import de.westnordost.streetcomplete.util.Listeners
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import java.util.concurrent.CopyOnWriteArrayList
 
 class UserUpdater(
     private val userApi: UserApi,
@@ -23,7 +23,7 @@ class UserUpdater(
     interface Listener {
         fun onUserAvatarUpdated()
     }
-    private val userAvatarListeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val userAvatarListeners = Listeners<Listener>()
 
     fun update() = coroutineScope.launch(Dispatchers.IO) {
         try {

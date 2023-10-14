@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSo
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
@@ -26,7 +26,7 @@ class TeamModeQuestFilter internal constructor(
     interface TeamModeChangeListener {
         fun onTeamModeChanged(enabled: Boolean)
     }
-    private val listeners: MutableList<TeamModeChangeListener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<TeamModeChangeListener>()
 
     fun isVisible(quest: Quest): Boolean =
         !isEnabled
