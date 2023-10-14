@@ -23,8 +23,8 @@ class AddMtbScale : OsmFilterQuestType<MtbScale>() {
           surface ~ ${NATURAL_SURFACES.joinToString("|")}
           or smoothness ~ ${SMOOTHNESS_BAD_OR_WORSE_BUT_PASSABLE.joinToString("|")}
         )
-        and ((access and access !~ private|no) or (foot and foot !~ private|no) or (bicycle and bicycle !~ private|no))
-        and (sidewalk and sidewalk !~ both|left|right)
+        and (access !~ private|no or (foot and foot !~ private|no) or (bicycle and bicycle !~ private|no))
+        and (sidewalk !~ both|left|right)
     """
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink = "Key:mtb:scale"
