@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.osmnotes
 import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.CopyOnWriteArrayList
 
 /** Manages access to the notes storage */
 class NoteController(
@@ -21,7 +21,7 @@ class NoteController(
         /** called when all notes have been cleared */
         fun onCleared()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {

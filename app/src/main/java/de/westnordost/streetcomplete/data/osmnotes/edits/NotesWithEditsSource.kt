@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class NotesWithEditsSource(
     private val noteController: NoteController,
@@ -22,7 +22,7 @@ class NotesWithEditsSource(
 
         fun onCleared()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     private val noteControllerListener = object : NoteController.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {

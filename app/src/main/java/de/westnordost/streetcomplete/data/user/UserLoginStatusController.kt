@@ -4,8 +4,8 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.Listeners
 import oauth.signpost.OAuthConsumer
-import java.util.concurrent.CopyOnWriteArrayList
 
 class UserLoginStatusController(
     private val oAuthStore: OAuthStore,
@@ -13,7 +13,7 @@ class UserLoginStatusController(
     private val prefs: SharedPreferences,
 ) : UserLoginStatusSource {
 
-    private val listeners: MutableList<UserLoginStatusSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<UserLoginStatusSource.Listener>()
 
     override val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 

@@ -7,13 +7,13 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
 /** Manages edit statistics - by element edit type and by country */
@@ -28,7 +28,7 @@ class StatisticsController(
     userLoginStatusSource: UserLoginStatusSource
 ) : StatisticsSource {
 
-    private val listeners: MutableList<StatisticsSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<StatisticsSource.Listener>()
 
     private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {}
