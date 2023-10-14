@@ -71,9 +71,19 @@
 
     <style name="Theme.Bubble.Dialog.Alert"/>
 
+    <style name="Theme.Bubble.Dialog.DatePicker" parent="Theme.Bubble.Dialog">
+        <item name="android:buttonBarPositiveButtonStyle">@style/Theme.Button.Alert</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/Theme.Button.Alert</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/Theme.Button.Alert</item>
+    </style>
+
     <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@color/background_transparent</item>
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
+    </style>
+
+    <style name="Theme.Button.Alert" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/accent</item>
     </style>
 
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">

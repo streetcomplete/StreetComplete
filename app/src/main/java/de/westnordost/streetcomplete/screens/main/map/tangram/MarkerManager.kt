@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.map.tangram
 
 import android.graphics.drawable.BitmapDrawable
-import android.util.Log
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation

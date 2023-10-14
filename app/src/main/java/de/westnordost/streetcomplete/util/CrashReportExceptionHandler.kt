@@ -5,8 +5,12 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.screens.about.LogsController
+import de.westnordost.streetcomplete.screens.about.LogsFilters
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import java.io.IOException
@@ -20,6 +24,7 @@ import java.util.Locale
  *  on next startup */
 class CrashReportExceptionHandler(
     private val appCtx: Context,
+    private val logsController: LogsController,
     private val mailReportTo: String,
     private val crashReportFile: String
 ) : Thread.UncaughtExceptionHandler {
@@ -54,12 +59,16 @@ class CrashReportExceptionHandler(
     }
 
     private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, error: String?) {
+        val logText = readLogFromDatabase()
         val report = """
         Describe how to reproduce it here:
 
 
 
         $error
+
+        Log (last ${ApplicationConstants.MAX_LOG_LINES_TO_ATTACH_TO_CRASH_REPORT} lines):
+        $logText
         """.trimIndent()
 
         AlertDialog.Builder(activityCtx)
@@ -109,4 +118,9 @@ class CrashReportExceptionHandler(
     private fun deleteCrashReport() {
         appCtx.deleteFile(crashReportFile)
     }
+
+    private fun readLogFromDatabase(): String = logsController
+        .getLogs(LogsFilters())
+        .take(ApplicationConstants.MAX_LOG_LINES_TO_ATTACH_TO_CRASH_REPORT)
+        .format()
 }

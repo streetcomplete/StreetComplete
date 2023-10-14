@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/dialog_vertical_margin"
+    android:paddingLeft="@dimen/dialog_horizontal_margin"
+    android:paddingRight="@dimen/dialog_horizontal_margin"
+    android:paddingBottom="@dimen/dialog_vertical_margin">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:id="@+id/levelList"
+        tools:listitem="@layout/row_logs_filters_checkbox"
+        tools:itemCount="5"
+        android:overScrollMode="never"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelLabel" />
+
+    <TextView
+        android:text="@string/label_log_level"
+        android:labelFor="@id/levelList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/levelLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:text="@string/label_log_message_contains"
+        android:labelFor="@id/messageContainsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageContainsLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelList"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:text="@string/label_log_newer_than"
+        android:labelFor="@id/newerThanTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newerThanLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messageContainsEditText"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:text="@string/label_log_older_than"
+        android:labelFor="@id/olderThanTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/olderThanLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newerThanTextDate"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:editable="false"
+        android:focusable="false"
+        android:ems="8"
+        tools:text="2022-01-01T13:37"
+        android:id="@+id/newerThanTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/newerThanLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:editable="false"
+        android:focusable="false"
+        android:ems="8"
+        tools:text="2023-01-01T13:37"
+        android:id="@+id/olderThanTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/olderThanLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:contentDescription="@string/action_reset"
+        android:background="?android:selectableItemBackground"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/newerThanClearButton"
+        android:src="@drawable/ic_backspace_24dp"
+        app:layout_constraintStart_toEndOf="@+id/newerThanTextDate"
+        app:layout_constraintBottom_toBottomOf="@+id/newerThanTextDate"
+        app:tint="@color/accent" />
+
+    <ImageButton
+        android:contentDescription="@string/action_reset"
+        android:background="?android:selectableItemBackground"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/messageContainsClearButton"
+        android:src="@drawable/ic_backspace_24dp"
+        app:layout_constraintStart_toEndOf="@+id/messageContainsEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/messageContainsEditText"
+        app:tint="@color/accent" />
+
+    <ImageButton
+        android:contentDescription="@string/action_reset"
+        android:background="?android:selectableItemBackground"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/olderThanClearButton"
+        android:src="@drawable/ic_backspace_24dp"
+        app:layout_constraintStart_toEndOf="@+id/olderThanTextDate"
+        app:layout_constraintBottom_toBottomOf="@+id/olderThanTextDate"
+        app:tint="@color/accent" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="12"
+        android:id="@+id/messageContainsEditText"
+        app:layout_constraintTop_toBottomOf="@+id/messageContainsLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

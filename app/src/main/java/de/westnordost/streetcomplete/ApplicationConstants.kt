@@ -27,6 +27,11 @@ object ApplicationConstants {
      *  database if not used anymore and have not been refreshed in the meantime  */
     const val DELETE_OLD_DATA_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
 
+    /** the duration after which logs will be deleted from the database */
+    const val DELETE_OLD_LOG_AFTER = 3L * 24 * 60 * 60 * 1000 // 3 days in ms
+
+    const val MAX_LOG_LINES_TO_ATTACH_TO_CRASH_REPORT = 100
+
     const val NOTE_MIN_ZOOM = 15
 
     /** when new quests that are appearing due to download of an area, show the hint that he can
