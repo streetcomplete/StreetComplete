@@ -207,6 +207,9 @@
     <string name="quest_settings_building_levels_optional_roof">Allow omitting roof levels everywhere</string>
     <string name="quest_settings_dot_labels_message">Set which tags should be used for the label, in given order. An empty string will never show any labels, \"label\" will show the default StreetComplete name label using name, brand, ref, local_ref and operator.</string>
     <string name="quest_settings_highlight_changes_button">Highlight changes</string>
+    <string name="quest_settings_leaf_type_single_tree_message">Also ask leaf type for single trees?</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Yes</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Only for ways and areas</string>
 
 
     <!-- quick settings -->
