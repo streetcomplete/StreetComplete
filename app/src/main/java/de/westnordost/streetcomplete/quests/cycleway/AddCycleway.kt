@@ -1,15 +1,13 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -25,11 +23,9 @@ import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
-import java.util.concurrent.FutureTask
 
 class AddCycleway(
-    private val countryInfos: CountryInfos,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
 ) : OsmElementQuestType<LeftAndRightCycleway> {
 
     override val changesetComment = "Specify whether there are cycleways"
@@ -85,12 +81,8 @@ class AddCycleway(
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }
         val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
-            val countryInfo = mapData.getWayGeometry(way.id)?.center?.let { p ->
-                countryInfos.getByLocation(
-                    countryBoundariesFuture.get(),
-                    p.longitude,
-                    p.latitude,
-                )
+            val countryInfo = mapData.getWayGeometry(way.id)?.center?.let {
+                getCountryInfoByLocation(it)
             }
             way.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo) == true
         }
@@ -107,11 +99,7 @@ class AddCycleway(
     override fun createForm() = AddCyclewayForm()
 
     override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val countryInfo = countryInfos.getByLocation(
-            countryBoundariesFuture.get(),
-            geometry.center.longitude,
-            geometry.center.latitude
-        )
+        val countryInfo = getCountryInfoByLocation(geometry.center)
         answer.applyTo(tags, countryInfo.isLeftHandTraffic)
     }
 }

@@ -89,13 +89,11 @@ class TangramIconsSpriteSheet(
 
     companion object {
         private const val ICONS_FILE = "icons.png"
-        private val ICONS = listOf(
-            R.drawable.ic_pin_choker_borderless,
-            R.drawable.ic_pin_island_borderless,
-            R.drawable.ic_pin_parking_borderless,
-            R.drawable.ic_custom_overlay_node,
-            R.drawable.ic_restriction_give_way,
-            R.drawable.ic_restriction_stop,
-        )  + presetIconIndex.values
+        private val ICONS = presetIconIndex.values +
+            listOf(
+                R.drawable.ic_custom_overlay_node,
+                R.drawable.ic_restriction_give_way,
+                R.drawable.ic_restriction_stop,
+            )
     }
 }

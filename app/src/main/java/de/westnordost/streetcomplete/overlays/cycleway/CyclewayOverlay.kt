@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -27,11 +25,9 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import java.util.concurrent.FutureTask
 
 class CyclewayOverlay(
-    private val countryInfos: CountryInfos,
-    private val countryBoundaries: FutureTask<CountryBoundaries>
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
 ) : Overlay {
 
     override val title = R.string.overlay_cycleway
@@ -49,11 +45,7 @@ class CyclewayOverlay(
               and area != yes
         """).mapNotNull {
             val pos = mapData.getWayGeometry(it.id)?.center ?: return@mapNotNull null
-            val countryInfo = countryInfos.getByLocation(
-                countryBoundaries.get(),
-                pos.longitude,
-                pos.latitude
-            )
+            val countryInfo = getCountryInfoByLocation(pos)
             it to getStreetCyclewayStyle(it, countryInfo)
         } +
         // separately mapped ways

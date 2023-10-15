@@ -4,7 +4,10 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants.EE_QUEST_OFFSET
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.quests.osmose.OsmoseQuest
@@ -19,6 +22,7 @@ import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
+import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -28,6 +32,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bench_material.AddBenchMaterial
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
@@ -71,7 +76,6 @@ import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerb
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cuisine.AddCuisine
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
@@ -215,8 +219,11 @@ val questsModule = module {
             get(),
             get(),
             get(),
-            get(named("CountryBoundariesFuture")),
-            get(),
+            { location ->
+                val countryInfos = get<CountryInfos>()
+                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
+            },
             { tags ->
                 get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
                     .get().getFeature(tags)
@@ -230,18 +237,16 @@ val questsModule = module {
 fun questTypeRegistry(
     trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     trafficFlowDao: WayTrafficFlowDao,
-    countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
+    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
     getFeature: (tags: Map<String, String>) -> Feature?,
     osmoseDao: OsmoseDao,
     customQuestList: CustomQuestList,
 ) = QuestTypeRegistry(getQuestTypeList(
     trafficFlowSegmentsApi,
     trafficFlowDao,
-    countryInfos,
-    countryBoundariesFuture,
     arSupportChecker,
+    getCountryInfoByLocation,
     getFeature,
     osmoseDao,
     customQuestList,
@@ -250,9 +255,8 @@ fun questTypeRegistry(
 fun getQuestTypeList(
     trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     trafficFlowDao: WayTrafficFlowDao,
-    countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
+    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
     getFeature: (tags: Map<String, String>) -> Feature?,
     osmoseDao: OsmoseDao,
     customQuestList: CustomQuestList,
@@ -417,6 +421,7 @@ fun getQuestTypeList(
     66 to AddFireHydrantDiameter(),
     67 to AddFireHydrantRef(),
 
+    160 to AddBbqFuel(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -495,7 +500,7 @@ fun getQuestTypeList(
 
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
-    113 to AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
+    113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
@@ -531,7 +536,7 @@ fun getQuestTypeList(
     134 to AddSidewalk(), // for any pedestrian routers, needs minimal thinking
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
-    137 to AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
+    137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
@@ -557,7 +562,7 @@ fun getQuestTypeList(
     // buildings
     150 to AddBuildingType(),
     151 to AddBuildingLevels(),
-    152 to AddRoofShape(countryInfos, countryBoundariesFuture),
+    152 to AddRoofShape(getCountryInfoByLocation),
 
     153 to AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 

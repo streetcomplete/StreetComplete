@@ -148,6 +148,7 @@ class QuestPresetsAdapter(
             val dialog = EditTextDialog(ctx,
                 title = ctx.getString(R.string.quest_presets_rename),
                 text = preset.name,
+                hint = ctx.getString(R.string.quest_presets_preset_name),
                 callback = { name -> renameQuestPreset(preset.id, name) }
             )
             dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
@@ -164,6 +165,7 @@ class QuestPresetsAdapter(
             val dialog = EditTextDialog(ctx,
                 title = ctx.getString(R.string.quest_presets_duplicate),
                 text = preset.name,
+                hint = ctx.getString(R.string.quest_presets_preset_name),
                 callback = { name -> duplicateQuestPreset(preset.id, name) }
             )
             dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
@@ -175,6 +177,7 @@ class QuestPresetsAdapter(
                 val newPresetId = questPresetsController.add(name)
                 questTypeOrderController.copyOrders(presetId, newPresetId)
                 visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
+                questPresetsController.selectedId = newPresetId
 
                 val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${presetId}_qs_") }
                 prefs.edit {

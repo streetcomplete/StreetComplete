@@ -30,6 +30,13 @@ internal class UrlConfigKtTest {
 
     //region parse url
 
+    @Test fun `parse config without name`() {
+        assertEquals(
+            UrlConfig(null, listOf(q0, q2, q3), emptyList(), null),
+            parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays)
+        )
+    }
+
     @Test fun `parse simple config`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
@@ -97,17 +104,20 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
-    @Test fun `reject if name is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
-    }
-
     @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/s?n=d", quests, overlays))
     }
 
     //endregion
 
     //region create url
+
+    @Test fun `create url without name`() {
+        assertEquals(
+            "https://streetcomplete.app/s?q=d",
+            createConfigUrl(UrlConfig(null, listOf(q0, q2, q3), emptyList(), null), quests, overlays),
+        )
+    }
 
     @Test fun `create simple url`() {
         assertEquals(

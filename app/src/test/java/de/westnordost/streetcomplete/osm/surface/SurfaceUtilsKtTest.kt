@@ -11,22 +11,42 @@ class SurfaceUtilsKtTest {
 
     @Test fun `poor tracktype conflicts with paved surface`() {
         assertTrue(isSurfaceAndTracktypeConflicting("asphalt", "grade5"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("asphalt", "grade5"))
     }
 
     @Test fun `high quality tracktype conflicts with poor surface`() {
         assertTrue(isSurfaceAndTracktypeConflicting("gravel", "grade1"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("gravel", "grade1"))
     }
 
     @Test fun `high quality tracktype fits good surface`() {
         assertFalse(isSurfaceAndTracktypeConflicting("paving_stones", "grade1"))
+        assertFalse(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", "grade1"))
     }
 
     @Test fun `unknown tracktype does not crash or conflict`() {
         assertFalse(isSurfaceAndTracktypeConflicting("paving_stones", "lorem ipsum"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", "lorem ipsum"))
     }
 
     @Test fun `unknown surface does not crash or conflict`() {
         assertFalse(isSurfaceAndTracktypeConflicting("zażółć", "grade1"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("zażółć", "grade1"))
+    }
+
+    @Test fun `lower tracktype on paved is suspicious but not always conflicting`() {
+        assertFalse(isSurfaceAndTracktypeConflicting("paving_stones", "grade2"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", "grade2"))
+    }
+
+    @Test fun `sand surface is conflicting and suspicious on tracktype=grade2`() {
+        assertTrue(isSurfaceAndTracktypeConflicting("sand", "grade2"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("sand", "grade2"))
+    }
+
+    @Test fun `missing tracktype is not conflicting`() {
+        assertFalse(isSurfaceAndTracktypeConflicting("paving_stones", null))
+        assertFalse(isSurfaceAndTracktypeCombinationSuspicious("paving_stones", null))
     }
 
     @Test fun `update foot and cycleway with identical surface`() {

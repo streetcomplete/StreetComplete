@@ -8,7 +8,7 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 
 data class UrlConfig(
-    val presetName: String,
+    val presetName: String?,
     val questTypes: Collection<QuestType>,
     val questTypeOrders: List<Pair<QuestType, QuestType>>,
     val overlay: Overlay?,
@@ -45,7 +45,7 @@ fun parseConfigUrl(
             keyValue[0].lowercase() to keyValue[1]
         }
 
-    val name = parameters[PARAM_NAME]?.let { URLDecoder.decode(it, "UTF-8") } ?: return null
+    val name = parameters[PARAM_NAME]?.let { URLDecoder.decode(it, "UTF-8") }
 
     val questTypesString = parameters[PARAM_QUESTS] ?: return null
     val questTypes = stringToQuestTypes(questTypesString, questTypeRegistry) ?: return null
@@ -74,13 +74,15 @@ fun createConfigUrl(
     questTypeRegistry: QuestTypeRegistry,
     overlayRegistry: OverlayRegistry
 ): String {
-    val name = urlConfig.presetName
-    val shortenedName = if (name.length > 60) name.substring(0, 57) + "..." else name
+    val parameters = mutableListOf<Pair<String, String>>()
 
-    val parameters = mutableListOf(
-        PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"),
-        PARAM_QUESTS to questTypesToString(urlConfig.questTypes, questTypeRegistry)
-    )
+    val name = urlConfig.presetName
+    if (name != null) {
+        val shortenedName = if (name.length > 60) name.substring(0, 57) + "..." else name
+        parameters.add(PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"))
+    }
+    parameters.add(PARAM_QUESTS to questTypesToString(urlConfig.questTypes, questTypeRegistry))
+
     // Limiting to 100 quest type reorderings and omitting them completely if that limit is exceeded
     // Reading the QR code that long becomes more and more difficult the bigger it gets, the limit
     // needs to be somewhere and 100 reorderings are quite a lofty limit anyway

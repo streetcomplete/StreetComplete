@@ -212,7 +212,7 @@ class InsertNodeFragment :
                 val geo = mapData.getGeometry(it.type, it.id) ?: return@forEach
                 showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                     geo,
-                    getPinIcon(it.tags),
+                    getPinIcon(featureDictionaryFuture.get(), it.tags),
                     getTitle(it.tags)
                 )
             }
@@ -296,7 +296,7 @@ class InsertNodeFragment :
                     if (node.tags.isNotEmpty())
                         showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                             ElementPointGeometry(node.position),
-                            getPinIcon(node.tags),
+                            getPinIcon(featureDictionaryFuture.get(), node.tags),
                             getTitle(node.tags)
                         )
                 }

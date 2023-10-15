@@ -20,6 +20,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
@@ -47,7 +48,7 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign
 import de.westnordost.streetcomplete.quests.max_weight.MetricTons
 import de.westnordost.streetcomplete.quests.max_weight.ShortTons
 import de.westnordost.streetcomplete.quests.max_weight.asItem
-import de.westnordost.streetcomplete.quests.max_weight.layoutResourceId
+import de.westnordost.streetcomplete.quests.max_weight.getLayoutResourceId
 import de.westnordost.streetcomplete.quests.max_weight.osmKey
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
@@ -250,7 +251,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
                         .joinToString(", ") { it.role }
                     is WeightRestriction -> restriction.weight
                 }
-                val drawable = restriction.getDrawable(layoutInflater)
+                val drawable = restriction.getDrawable(layoutInflater, countryInfo)
                 val height = context.dpToPx(56).toInt()
                 val resizedDrawable = drawable
                     ?.createBitmap(height, drawable.intrinsicWidth * height / drawable.intrinsicHeight)
@@ -346,7 +347,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
                     val items = MaxWeightSign.values().mapNotNull { sign ->
                         if (originalRestrictions.any { it is WeightRestriction && it.sign == sign })
                                 null
-                            else sign.asItem(layoutInflater)
+                            else sign.asItem(layoutInflater, countryInfo.countryCode)
                     }
                     ImageListPickerDialog(requireContext(), items) { sign ->
                         currentRestriction = WeightRestriction(element as Way, sign.value!!, "")
@@ -469,8 +470,8 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
         binding.turnRestrictionContainer.isGone = true
         binding.maxWeightContainer.isVisible = true
         binding.maxWeightContainer.removeAllViews()
-        val item = restriction.sign.asItem(layoutInflater)
-        layoutInflater.inflate(item.value!!.layoutResourceId, binding.maxWeightContainer)
+        val item = restriction.sign.asItem(layoutInflater, countryInfo.countryCode)
+        layoutInflater.inflate(item.value!!.getLayoutResourceId(countryInfo.countryCode), binding.maxWeightContainer)
         val units = countryInfo.weightLimitUnits
         weightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, units.map { it.displayString })
         weightUnitSelect?.setSelection(0)
@@ -728,20 +729,21 @@ fun Map<String, String>.getShortRestrictionValue(): String? {
 private sealed interface Restriction {
     val type: RestrictionType
     val element: Element
-    fun getDrawable(inflater: LayoutInflater): Drawable?
+    fun getDrawable(inflater: LayoutInflater, countryInfo: CountryInfo): Drawable?
 }
 
 private data class TurnRestriction(val relation: Relation) : Restriction {
     override val type = RestrictionType.TURN
     override val element get () = relation
-    override fun getDrawable(inflater: LayoutInflater) =
+    override fun getDrawable(inflater: LayoutInflater, countryInfo: CountryInfo) =
         ContextCompat.getDrawable(inflater.context, getIconForTurnRestriction(relation.tags.getShortRestrictionValue()))
 }
 
 private data class WeightRestriction(val way: Way, val sign: MaxWeightSign, val weight: String) : Restriction {
     override val type = RestrictionType.WEIGHT
     override val element get () = way
-    override fun getDrawable(inflater: LayoutInflater) = (sign.asItem(inflater).image as? DrawableImage)?.drawable
+    override fun getDrawable(inflater: LayoutInflater, countryInfo: CountryInfo) =
+        (sign.asItem(inflater, countryInfo.countryCode).image as? DrawableImage)?.drawable
 }
 
 private enum class RestrictionType { TURN, WEIGHT }

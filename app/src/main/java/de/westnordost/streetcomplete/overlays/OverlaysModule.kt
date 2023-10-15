@@ -5,7 +5,10 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants.EE_QUEST_OFFSET
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
@@ -17,6 +20,7 @@ import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverla
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.util.ktx.getFeature
+import de.westnordost.streetcomplete.util.ktx.getIds
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import java.util.concurrent.FutureTask
@@ -26,8 +30,15 @@ import java.util.concurrent.FutureTask
 val overlaysModule = module {
     single {
         overlaysRegistry(
-            get(),
-            get(named("CountryBoundariesFuture")),
+            { location ->
+                val countryInfos = get<CountryInfos>()
+                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
+            },
+            { location ->
+                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                countryBoundaries.getIds(location).firstOrNull()
+            },
             { tags ->
                 get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
                 .get().getFeature(tags)
@@ -38,8 +49,8 @@ val overlaysModule = module {
 }
 
 fun overlaysRegistry(
-    countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+    getCountryCodeByLocation: (location: LatLon) -> String?,
     getFeature: (tags: Map<String, String>) -> Feature?,
     prefs: SharedPreferences,
 ) = OverlayRegistry(listOf(
@@ -47,9 +58,9 @@ fun overlaysRegistry(
     0 to WayLitOverlay(),
     6 to SurfaceOverlay(),
     1 to SidewalkOverlay(),
-    5 to CyclewayOverlay(countryInfos, countryBoundariesFuture),
+    5 to CyclewayOverlay(getCountryInfoByLocation),
     2 to StreetParkingOverlay(),
-    3 to AddressOverlay(countryBoundariesFuture),
+    3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
     (EE_QUEST_OFFSET + 1) to RestrictionOverlay(),
     (EE_QUEST_OFFSET + 0) to CustomOverlay(prefs),

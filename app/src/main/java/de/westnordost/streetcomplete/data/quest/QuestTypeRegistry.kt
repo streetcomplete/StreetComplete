@@ -5,7 +5,10 @@ import de.westnordost.streetcomplete.data.ObjectTypeRegistry
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.getQuestTypeList
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -36,6 +39,9 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
     private val getFeature: (tags: Map<String, String>) -> Feature? = { tags ->
         featureDictionaryFuture.get().getFeature(tags)
     }
+    private val getCountryInfoByLocation:  (location: LatLon) -> CountryInfo = { location ->
+        countryInfos.getByLocation(countryBoundariesFuture.get(), location.longitude, location.latitude)
+    }
     private val osmoseDao: OsmoseDao by inject()
     private val customQuestList: CustomQuestList by inject()
 
@@ -44,9 +50,8 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
         ordinalsAndEntries.addAll(getQuestTypeList(
             trafficFlowSegmentsApi,
             trafficFlowDao,
-            countryInfos,
-            countryBoundariesFuture,
             arSupportChecker,
+            getCountryInfoByLocation,
             getFeature,
             osmoseDao,
             customQuestList,

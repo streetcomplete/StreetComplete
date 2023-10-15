@@ -296,6 +296,12 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_powerPolesMaterial_wood">"Holz"</string>
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
+
+    <string name="quest_bbq_fuel_title">Womit wird dieser Grill betrieben?</string>
+    <string name="quest_bbq_fuel_wood">Holz</string>
+    <string name="quest_bbq_fuel_electric">Elektrisch</string>
+    <string name="quest_bbq_fuel_charcoal">Holzkohle</string>
+
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit …"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dach­­­­geschosse"</string>

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.level
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -24,12 +25,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.concurrent.FutureTask
 import kotlin.math.ceil
 import kotlin.math.floor
 
 class AddLevelForm : AbstractOsmQuestForm<String>() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     override val contentLayoutResId = R.layout.quest_level
     private val binding by contentViewBinding(QuestLevelBinding::bind)
@@ -58,7 +62,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
                 mapData.filter { e ->
                     e.tags["level"] != null && (
                         IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(e)
-                            || getPinIcon(e.tags) != null
+                            || getPinIcon(featureDictionary, e.tags) != null
                         )
                 }
             else
@@ -108,7 +112,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
             if (!createLevelsOrNull(element.tags).levelsIntersect(levels)) continue
-            val icon = getPinIcon(element.tags)
+            val icon = getPinIcon(featureDictionaryFuture.get(), element.tags)
             val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(geometry, icon, title)
         }

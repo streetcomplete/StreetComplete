@@ -131,8 +131,11 @@ import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
+import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.getShortHouseNumber
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -215,11 +218,11 @@ class MainFragment :
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlayController by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
@@ -1170,7 +1173,7 @@ class MainFragment :
                 if (!levelFilter.levelAllowed(e)) continue
 
                 val geometry = data.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(e.tags)
+                val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
@@ -1502,7 +1505,7 @@ class MainFragment :
             if (element?.tags?.get("layer") != e.tags["layer"] && e.tags["bridge"] == null) continue
 
             val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-            val icon = getPinIcon(e.tags)
+            val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
             val title = getTitle(e.tags, localLanguages)
             markers.add(Marker(geometry, icon, title))
         }
