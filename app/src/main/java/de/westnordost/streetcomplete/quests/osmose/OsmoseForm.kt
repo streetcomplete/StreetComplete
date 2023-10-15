@@ -30,11 +30,17 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
 
     private val osmoseDao: OsmoseDao by inject()
 
-    private lateinit var issue: OsmoseIssue
+    private val issue: OsmoseIssue? by lazy {
+        val key = questKey as ExternalSourceQuestKey
+        osmoseDao.getIssue(key.id)
+    }
 
     private val questController: ExternalSourceQuestController by inject()
 
     override val buttonPanelAnswers by lazy {
+        val issue = issue
+        if (issue == null) emptyList()
+        else
         listOfNotNull(
             if (issue.elements.isEmpty()) null
             else if (issue.elements.size == 1) {
@@ -42,8 +48,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                 if (e == null) null
                 else
                     AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) }
-            }
-            else {
+            } else {
                 val elements = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }
                 if (elements.isEmpty()) null
                 else
@@ -87,14 +92,12 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val key = questKey as ExternalSourceQuestKey
-        val i = osmoseDao.getIssue(key.id)
-        if (i == null) {
+        val issue = issue
+        if (issue == null) {
             context?.toast(R.string.quest_custom_quest_osmose_not_found)
-            questController.delete(key)
+            questController.delete(questKey as ExternalSourceQuestKey)
             return
         }
-        issue = i
         setTitle(resources.getString(R.string.quest_osmose_title, issue.title))
         binding.description.text = resources.getString(R.string.quest_osmose_message_for_element, "${issue.item}/${issue.itemClass}", issue.subtitle)
 
@@ -103,6 +106,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     }
 
     private fun highlightElements() {
+        val issue = issue ?: return
         val elementsAndGeometry = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }.mapNotNull { e -> mapDataSource.getGeometry(e.type, e.id)?.let { e to it } }
 
         if (prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false) && elementsAndGeometry.any { it.second is ElementPolylinesGeometry }) {
@@ -129,6 +133,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     }
 
     private fun showIgnoreDialog() {
+        val issue = issue ?: return
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_osmose_hide_type)
             .setItems(arrayOfNotNull("item: ${issue.item}", "item/class: ${issue.item}/${issue.itemClass}", "subtitle: ${issue.subtitle}".takeIf { issue.subtitle.isNotBlank() })) { _, i ->
@@ -137,13 +142,13 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
                     1 -> "${issue.item}/${issue.itemClass}"
                     2 -> issue.subtitle
                     else -> null
-                }?.let { addToIgnorelist(it) }
+                }?.let { addToIgnoreList(it) }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
 
-    private fun addToIgnorelist(item: String) {
+    private fun addToIgnoreList(item: String) {
         val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, OSMOSE_DEFAULT_IGNORED_ITEMS)!!
             .split("§§")
             .mapNotNull { if (it.isNotBlank()) it.trim() else null }
