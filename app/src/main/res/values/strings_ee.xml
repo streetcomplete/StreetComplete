@@ -359,6 +359,7 @@
     <string name="quest_destination_add_more">Add another destination</string>
     <!-- use 2 lines for the button so it doesn't get too wide -->
     <string name="quest_destination_all_lanes_button">All\nlanes</string>
+    <string name="quest_footway_width_title">"How wide is the foot path here?"</string>
 
     <!-- additional strings for quests available in StreetComplete -->
     <string name="quest_surface_value_metal_grid">Metal grid</string>
