@@ -247,29 +247,6 @@ max weight/
     tandem_axleload.svg
     truck.svg
 
-pins/
-    bicycle_parking.svg
-    bicycle_pump.svg
-    bicycle_rental.svg
-    bin.svg                         Flo Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
-    bench.svg
-    car_air_compressor.svg
-    car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
-    choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
-    choker_borderless.svg           modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
-    defibrillator.svg               (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
-    fire_hydrant.svg
-    information.svg
-    island.svg                      modified from https://www.svgrepo.com/svg/62967/island, SVG Repo, License: CC-0
-    mail.svg
-    motorcycle_parking.svg
-    money.svg                       modified from EmojiOne 2: U+1F4B8
-    power.svg
-    recycling_container.svg         modified from Twemoji: U+267B
-    surveillance_camera.svg
-    toilets.svg
-    water.svg                       Flo Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
-
 italian police type/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
     finanza.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_guardia_di_finanza.svg, Gigillo83, License: CC-BY-SA 3.0

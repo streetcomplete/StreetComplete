@@ -1,3 +1,22 @@
+v55.0: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What is this grill powered by?</i> for bbq places (#5211), by @qugebert</li>
+  <li><i>Is this inside a building?</i> for small amenities such as parcel lockers, vending machines, defibrillators, ... (#5278), by @qugebert</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Ask "Is there a crossing here?" for more potential crossings (#5160, #5162), by @Helium314</li>
+  <li>Ask for bus stop refs but don't ask for postbox royal cyphers in New Zealand (#5277), by @FloEdelmann</li>
+  <li>Other small fixes and wording improvements (#5292, #5236, #5171, #5276), thanks @matkoniecz</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Quest selection: Can search by english quest titles too (#5284), by @FloEdelmann</li>
+  <li>It's now easier to tap a road in an overlay on low zoom... (#5282)</li>
+  <li>Various small enhancements and fixes (#5286, ...), thanks @FloEdelmann</li>
+  </ul>
+
 v54.1: |
   <h3>New translations</h3>
   <ul>
