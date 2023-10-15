@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.commit
@@ -38,11 +40,13 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.getDouble
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
 import org.koin.android.ext.android.inject
+import java.util.Locale
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
@@ -65,9 +69,21 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
-        binding.toolbarLayout.toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
-        binding.toolbarLayout.toolbar.setNavigationOnClickListener { finish() }
-        binding.toolbarLayout.toolbar.title = "Show Quest Forms"
+
+        val toolbar = binding.toolbarLayout.toolbar
+        toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
+        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.title = "Show Quest Forms"
+        toolbar.inflateMenu(R.menu.menu_debug_quest_forms)
+
+        val searchView = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                showQuestFormAdapter.filter = newText.orEmpty()
+                return false
+            }
+        })
 
         binding.questFormContainer.setOnClickListener { popQuestForm() }
 
@@ -99,6 +115,35 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     }
 
     inner class ShowQuestFormAdapter : ListAdapter<QuestType>() {
+        private val englishResources by lazy {
+            val conf = Configuration(resources.configuration)
+            conf.setLocale(Locale.ENGLISH)
+            val localizedContext = createConfigurationContext(conf)
+            localizedContext.resources
+        }
+
+        var filter: String = ""
+            set(value) {
+                val n = value.trim()
+                if (n != field) {
+                    field = n
+                    filterQuestTypes(field)
+                }
+            }
+
+        private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
+            genericQuestTitle(resources, questType).lowercase().containsAll(words)
+                || genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
+
+        private fun filterQuestTypes(f: String) {
+            if (f.isEmpty()) {
+                list = questTypeRegistry.toMutableList()
+            } else {
+                val words = f.lowercase().split(' ')
+                list = questTypeRegistry.filter { questTypeMatchesSearchWords(it, words) }.toMutableList()
+            }
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<QuestType> =
             ViewHolder(RowQuestDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
