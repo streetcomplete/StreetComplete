@@ -27,6 +27,11 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        view.findViewById<View?>(R.id.meterInputSign)
+            ?.setBackgroundResource(getSignBackgroundDrawableResId(countryInfo.countryCode))
+        view.findViewById<View?>(R.id.feetInputSign)
+            ?.setBackgroundResource(getSignBackgroundDrawableResId(countryInfo.countryCode))
+
         val splitWayHint = view.findViewById<TextView>(R.id.splitWayHint)
         splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
         splitWayHint?.isGone = element.type == ElementType.NODE
@@ -82,4 +87,9 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
             .show()
         }
     }
+}
+
+private fun getSignBackgroundDrawableResId(countryCode: String): Int = when (countryCode) {
+    "FI", "IS", "SE" -> R.drawable.background_maxheight_sign_yellow
+    else ->             R.drawable.background_maxheight_sign
 }
