@@ -61,8 +61,6 @@ fun View.hideKeyboard(): Boolean? =
 val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationEnabled(locationManager)
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)
 
-val Context.hasCameraPermission: Boolean get() = hasPermission(CAMERA)
-
 private val Context.inputMethodManager get() = getSystemService<InputMethodManager>()!!
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
 

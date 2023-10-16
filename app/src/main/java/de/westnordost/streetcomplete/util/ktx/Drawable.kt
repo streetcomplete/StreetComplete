@@ -25,9 +25,6 @@ fun Drawable.createBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHe
 fun Drawable.asBitmapDrawable(resources: Resources, width: Int = intrinsicWidth, height: Int = intrinsicHeight): BitmapDrawable =
     if (this is BitmapDrawable) this else createBitmap(width, height).toDrawable(resources)
 
-fun Drawable.asBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight): Bitmap =
-    if (this is BitmapDrawable) bitmap else createBitmap(width, height)
-
 fun Drawable.asImageSpan(width: Int = intrinsicWidth, height: Int = intrinsicHeight): ImageSpan {
     this.mutate()
     this.setBounds(0, 0, width, height)
