@@ -58,8 +58,6 @@
 
     <color name="smoothness_vehicle_tyre">#292f33</color>
 
-    <color name="traffic_sign_background">@color/traffic_white</color>
-
     <color name="pressed">#ddd</color>
 
     <color name="disabled_notice">#66999999</color>

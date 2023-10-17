@@ -174,7 +174,10 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, S
         this.speedType = speedType
 
         binding.rightSideContainer.removeAllViews()
-        speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
+        speedType?.layoutResId?.let {
+            layoutInflater.inflate(it, binding.rightSideContainer, true)
+            binding.rightSideContainer.adjustProhibitionSignBackground(countryInfo.countryCode)
+        }
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
         speedInput?.doAfterTextChanged { checkIsFormComplete() }
@@ -301,6 +304,13 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, S
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
             enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
+            dialogBinding.slowZoneImage.removeAllViews()
+            layoutInflater.inflate(
+                getMaxSpeedZoneSignLayoutResId(countryInfo.countryCode),
+                dialogBinding.slowZoneImage,
+                true,
+            )
+            dialogBinding.slowZoneImage.adjustProhibitionSignBackground(countryInfo.countryCode)
             val dialogSpeedInput: EditText = dialogBinding.slowZoneImage.findViewById(R.id.maxSpeedInput)
             dialogSpeedInput.setText("××")
             dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
@@ -407,4 +417,22 @@ private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (country
 private fun getMaxSpeedZoneSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "IL" -> R.layout.quest_maxspeed_zone_sign_il
     else -> R.layout.quest_maxspeed_zone_sign
+}
+
+private fun View.adjustProhibitionSignBackground(countryCode: String) {
+    this.findViewById<View?>(R.id.genericProhibitionSign)
+        ?.setBackgroundResource(getSignBackgroundDrawableResId(countryCode))
+
+    this.findViewById<View?>(R.id.maxSpeedSignNoFrame)
+        ?.setBackgroundResource(getSignNoFrameBackgroundDrawableResId(countryCode))
+}
+
+private fun getSignBackgroundDrawableResId(countryCode: String): Int = when (countryCode) {
+    "FI", "IS", "SE" -> R.drawable.background_generic_prohibition_sign_yellow
+    else ->             R.drawable.background_generic_prohibition_sign
+}
+
+private fun getSignNoFrameBackgroundDrawableResId(countryCode: String): Int = when (countryCode) {
+    "FI", "IS", "SE" -> R.drawable.background_maxspeed_sign_no_frame_small_yellow
+    else ->             R.drawable.background_maxspeed_sign_no_frame_small
 }

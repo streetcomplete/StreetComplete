@@ -58,7 +58,6 @@ import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import de.westnordost.streetcomplete.util.ktx.updateConfiguration
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -182,9 +181,6 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch { originalRestrictions } // load restrictions in background, so ui thread needs to wait less
-
-        // for showing the correct weight layouts
-        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
