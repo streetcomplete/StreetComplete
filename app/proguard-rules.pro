@@ -31,6 +31,9 @@
 # crashes on start after upgrading to gradle 8 (release version only for some reason, though same rules are used)
 -keepclassmembers public class io.requery.android.database.sqlite.SQLiteConnection { *; }
 
+# after upgrading to gradle 8, stack traces contain "unknown source", which is horribly bad making them rather useless
+-keepattributes SourceFile,LineNumberTable
+
 # kotlinx-serialization start ----------------------------------------------------------------------
 
 -keepattributes *Annotation*, InnerClasses
