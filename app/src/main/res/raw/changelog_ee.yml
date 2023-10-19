@@ -1,6 +1,9 @@
-v54.2: |
+v54.12: |
   <ul>
   <li>Optionally ask for leaf type for single trees (#460)</li>
+  <li>Add quest for footway width by @wielandb (#462)</li>
+  <li>Fix a crash in Osmose quest</li>
+  <li>Update translations, thanks to Henry291 (Portuguese, newly added), gallegonovato (Spanish), SomeTr (Ukrainian), @mcliquid (German)</li>
   </ul>
 
 v54.1: |

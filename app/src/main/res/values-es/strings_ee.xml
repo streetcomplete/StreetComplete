@@ -408,4 +408,8 @@
     <string name="pref_disable_navigation_mode_title">Deshabilitar el modo navegador</string>
     <string name="pref_disable_navigation_mode_summary">Desactiva el modo en que se inclina y gira automáticamente el mapa</string>
     <string name="quest_name_brand">Tiene una marca…</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Sólo para caminos y zonas</string>
+    <string name="quest_footway_width_title">¿Qué anchura tiene el sendero\?</string>
+    <string name="quest_settings_leaf_type_single_tree_message">¿Preguntar también por el tipo de hoja de los árboles individuales\?</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Sí</string>
 </resources>

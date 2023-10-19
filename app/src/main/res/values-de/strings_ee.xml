@@ -300,7 +300,7 @@
     <string name="level_filter_title">Zu prüfende Schlüssel auswählen</string>
     <string name="quest_poi_business_title">POI: Unternehmen</string>
     <string name="quick_switch_preset">Voreinstellung wechseln</string>
-    <string name="pref_screen_ui">Darstellung</string>
+    <string name="pref_screen_ui">Oberfläche</string>
     <string name="quest_artwork_title">Was für eine Art von Kunstwerk ist das\?</string>
     <string name="quest_osmose_message_for_element">Artikel-Typ %1$s: %2$s</string>
     <string name="restriction_overlay_relation_unsupported">Nicht unterstützter Relationstyp:
@@ -391,7 +391,7 @@
     <string name="pref_disable_navigation_mode_title">Navigationsmodus deaktivieren</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Bedingung entfernen</string>
     <string name="quest_name_brand">Es hat einen Markennamen…</string>
-    <string name="pref_screen_display">Darstellung</string>
+    <string name="pref_screen_display">Anzeige</string>
     <string name="quest_settings_level_default">Geschäfte und ähnliche Einrichtungen in Einkaufszentren (Standard)</string>
     <string name="quest_buildingType_presbytery">Pfarramt</string>
     <string name="quest_artwork_sculpture">Skulptur</string>
@@ -408,4 +408,8 @@
     <string name="restriction_overlay_relation_incomplete">Einschränkungsrelations ist unvollständig, Download der Umgebung erforderlich</string>
     <string name="ban_check_fails">Die Prüfung auf verbotene Versionen schlägt immer wieder fehl. Möglicherweise wird eine veraltete Version ausgeführt, bitte erwäge ein Upgrade.</string>
     <string name="quest_generic_surface_button">Generische Oberflächenantworten</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Nur für Wege und Flächen</string>
+    <string name="quest_settings_leaf_type_single_tree_message">Auch den Blatttyp für einzelne Bäume abfragen\?</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Ja</string>
+    <string name="quest_footway_width_title">Wie breit ist der Fußweg hier\?</string>
 </resources>

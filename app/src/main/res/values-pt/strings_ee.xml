@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_hide_notes_title">Ocultar notas de utilizadores específicos</string>
+    <string name="pref_show_gpx_button_title">Botão Mostrar nota GPX</string>
+    <string name="pref_save_file_error">Erro ao guardar o ficheiro</string>
+    <string name="pref_swap_gpx_note_button">Trocar botões de notas OSM e GPX</string>
+    <string name="pref_create_custom_quest_title">Permitir a criação de missões personalizadas</string>
+    <string name="pref_read_log_title">Leitor de registos</string>
+    <string name="pref_save_gpx">Obter notas GPX e fotografias e trajetos anexados</string>
+    <string name="pref_save_photos_title">Guardar fotografias utilizadas para notas</string>
+    <string name="pref_hide_notes_hint">Utilizar vírgulas para separar nomes de utilizador ou IDs</string>
+    <string name="pref_hide_keyboard_summary">Oculta o teclado quando aberto antes de a nota ser efetivamente criada (para permitir uma nova visualização da posição)</string>
+    <string name="pref_category_mods">Definições do SCEE</string>
+    <string name="pref_create_custom_quest_summary">...como alternativa a deixar uma nota. Isto pode ser usado como uma nota armazenada localmente e visível no mapa. Nota que terás de ativar as missões personalizadas.</string>
+    <string name="pref_files_not_found">Nenhum ficheiro encontrado</string>
+    <string name="pref_read_reverse_button">Inverter</string>
+    <string name="pref_expert_mode_message">Isto permitirá usar missões adicionadas no SCEE, e formas de
+\n <li>editar tags brutas</li>
+\n <li>mover nós que fazem parte de caminhos ou relações</li>
+\n <li>excluir qualquer nó flutuante</li>
+\n <li>editar elementos que deveriam ser bloqueados por uma nota</li>
+\n <li>adicionar nós flutuantes livres em qualquer lugar</li>
+\n <li>alterando a seleção de elementos das missões</li>
+\n
+\n Isso ainda é menos do que a maioria dos outros editores permite, mas o uso incauto pode resultar em danos aos dados de maneiras que não são possíveis no StreetComplete. Esteja ciente de que, ao ativar o modo especialista, você terá muito mais responsabilidade por suas edições.
+\n Por favor, habilite esta configuração apenas se você tiver experiência com OSM fora do StreetComplete e entender o que está fazendo. </string>
+    <string name="pref_expert_mode_title">Modo de especialista</string>
+    <string name="pref_expert_mode_summary">Ativar capacidades avançadas de edição</string>
+    <string name="pref_hide_keyboard_title">Ocultar o teclado antes de criar uma nota</string>
+    <string name="pref_screen_notes">Notas</string>
+    <string name="pref_read_log_save">Guardar o registo completo em ficheiro</string>
+    <string name="pref_show_gpx_button_summary">Ao contrário das notas do OSM, adicionar um GPX não irá esconder nenhuma missão no local afetado</string>
+    <string name="pref_hide_notes_message">Introduzir nomes de utilizador ou IDs a ignorar</string>
+    <string name="pref_read_filter_hint">Filtro…</string>
+    <string name="pref_get_photos_title">Hole die Fotos in voller Größe</string>
+    <string name="pref_save_photos_summary">Speichere die Vollbildversionen der Fotos, die beim Erstellen von Notizen aufgenommen wurden, ohne die EXIF-Daten zu löschen.</string>
+</resources>

@@ -31,7 +31,7 @@
     <string name="pref_show_solved_animation_summary">Це також керує звуком під час виконання квесту</string>
     <string name="pref_gpx_track_title">Відображення GPX-треку з файлу</string>
     <string name="pref_gpx_track_provide">Вибрати файл GPX</string>
-    <string name="pref_gpx_track_loading_error">Помилка завантаження файлу треку GPX</string>
+    <string name="pref_gpx_track_loading_error">Помилка завантаження файлу GPX-треку</string>
     <string name="pref_gpx_track_enable">Показати GPX-трек</string>
     <string name="pref_gpx_track_download">Область завантаження, яку покриває GPX-трек</string>
     <string name="pref_volume_zoom_title">Масштабування кнопкою гучності</string>
@@ -54,9 +54,9 @@
     <string name="pref_show_nearby_quests_summary">Дозволяє перемикатися між сусідніми квестами, коли показано форму квесту</string>
     <string name="quick_switch_preset">Перемикач заготовок</string>
     <string name="quick_switch_map_background">Перемикач: аерофото / мапа</string>
-    <string name="pref_hide_button_title">Показати кнопку \"Приховати\"</string>
+    <string name="pref_hide_button_title">Показати кнопку «Приховати»</string>
     <string name="show_nearby_quests_visible">Показувати лише увімкнені типи квестів</string>
-    <string name="level_filter_hint">Залишити порожнім, щоб не показувати не позначене</string>
+    <string name="level_filter_hint">Залишити порожнім, щоб показувати непозначене</string>
     <string name="show_nearby_quests_all_types">Показати всі типи квестів</string>
     <string name="level_filter_enable">Увімкнути фільтр рівня</string>
     <string name="show_nearby_quests_disable">Не показувати квести поблизу</string>
@@ -76,8 +76,8 @@
     <string name="pref_quest_settings_preset_summary">Якщо увімкнено, налаштування квесту дійсні лише для поточного пресету квестів</string>
     <string name="quest_settings_per_preset_rescan">Для коректного застосування всіх змінених налаштувань квестів необхідний повторний пошук квестів.</string>
     <string name="pref_quest_monitor_title">Сповіщати про квести поблизу</string>
-    <string name="pref_quest_monitor_summary">Відстежує місцезнаходження, коли програма перебуває у фоновому режимі, за винятком випадків, коли її вимкнено за допомогою кнопки \"Назад\"</string>
-    <string name="quest_monitor_permission_warning">Дозвіл на фонове розташування потрібен для роботи монітора квесту поблизу</string>
+    <string name="pref_quest_monitor_summary">Відстежує місцезнаходження, коли програма перебуває у фоновому режимі, за винятком випадків, коли її вимкнено за допомогою кнопки «Назад»</string>
+    <string name="quest_monitor_permission_warning">Для відстеження квестів поблизу потрібен дозвіл на визачення місцезнаходження у фоні</string>
     <string name="delete_cache_dialog_message2">Видалити всі завантажені дані мапи, включно з квестами\?
 \nДані оновлюються через %1$s днів, а невикористані дані автоматично видаляються через %2$s днів.
 \nВиберіть, які дані видалити.</string>
@@ -93,7 +93,7 @@
     <string name="pref_tree_custom_quest_summary">Детальніше див. у повідомленні при ввімкненні квесту</string>
     <string name="pref_advanced_resurvey_title">Розширене опитування</string>
     <string name="pref_tile_source_hide_labels">Приховати мітки</string>
-    <string name="import_presets_overlays_message">Додати імпортовані або замінити існуючі\? Якщо ви виберете \"замінити\", всі існуючі будуть видалені.</string>
+    <string name="import_presets_overlays_message">Додати імпортовані або замінити існуючі\? Якщо ви виберете «Замінити», всі існуючі будуть видалені.</string>
     <string name="import_presets_overlays_replace">Замінити</string>
     <string name="import_error">Помилка імпорту</string>
     <string name="import_error_db_version">Помилка імпорту: невідома версія</string>
@@ -158,7 +158,7 @@
     <string name="quest_generic_surface_no">Тільки з приміткою (за замовчуванням)</string>
     <string name="quest_settings_osmose_level_title">Виберіть рівень важливості проблеми для завантаження та відображення</string>
     <string name="quest_settings_osmose_level_medium">Середній</string>
-    <string name="quest_settings_fixme_title">Виберіть значення виправлень для ігнорування</string>
+    <string name="quest_settings_fixme_title">Виберіть значення «Виправити» для ігнорування</string>
     <string name="pref_expert_mode_message">Це дозволить використовувати квести, додані у SCEE, та способи
 \n <li>редагування необроблених тегів</li>
 \n <li>переміщення точок, які є частиною ліній або відношень</li>
@@ -200,13 +200,13 @@
     <string name="quest_order_normal">Звичайний порядок квестів</string>
     <string name="quest_osmose_title">Квест з Osmose: %s</string>
     <string name="quest_osmose_message">Ці квести завантажуються з сервісу Osmose і вказують на потенційні проблеми з даними OSM. Завантаження відбувається тільки якщо в налаштуваннях квесту вибрано хоча б один рівень важливості.
-\n Повідомлення Osmose відображається разом з квестом, будь-яке редагування повідомляє про проблему як вирішену.
+\n Повідомлення Osmose відображається разом із квестом, будь-яке редагування повідомляє про проблему як вирішену.
 \n Також можна повідомити про проблему як про хибнопозитивну; це не можна скасувати.</string>
     <string name="insert_node">Додати точку до лінії</string>
     <string name="pref_update_local_statistics">Оновлення статистики при відправці</string>
     <string name="pref_create_node_show_keyboard_title">Автоматично показувати клавіатуру під час додавання точки</string>
     <string name="pref_update_local_statistics_summary">Вимкнення прискорює відправку та зупиняє повідомлення про досягнення</string>
-    <string name="pref_main_menu_switch_presets_title">Кнопка перемикання пресетів у головному меню</string>
+    <string name="pref_main_menu_switch_presets_title">Кнопка перемикання заготовок у головному меню</string>
     <string name="quest_construction">Будується до…</string>
     <string name="restriction_overlay_exceptions">Винятки: %s</string>
     <string name="access_manager_button_add_conditional">Додати умови</string>
@@ -215,4 +215,121 @@
     <string name="restriction_overlay_signed_switch">Існує знак або дорожня розмітка</string>
     <string name="restriction_overlay_other_restrictions">Інші обмеження цього шляху:</string>
     <string name="add_access">Додати доступ…</string>
+    <string name="quest_benchMaterial_metal">Метал</string>
+    <string name="quest_poi_recycling_title">POI: Переробка відходів %s</string>
+    <string name="quest_custom_quest_message">Використовується для перевірки певних заздалегідь визначених елементів або місць. Ви також можете вказати теги і додати точку з ними. Для використання завантажте файл у головному меню налаштувань, що містить або type,id,message (наприклад, NODE,1234,check position), або latitude,longitude,message. Для додавання точок, додайте теги у повідомлення після \"addNode\", наприклад, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_benchMaterial_concrete">Бетон</string>
+    <string name="quest_benchMaterial_plastic">Пластик</string>
+    <string name="default_disabled_msg_poi_bench">Цей \"квест\" показує об\'єкти POI, такі як лавки або столи для пікніка, коричневими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="pref_hide_overlay_quests">Приховати специфічні для накладення квести</string>
+    <string name="default_disabled_msg_poi_other">Цей \"квест\" показує різні POI, такі як гідранти, оглядові майданчики або туалети, жовтими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_recycling">Цей \"квест\" показує POI, пов\'язані з переробкою/сміттям, зеленими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_poi_machine_title">POI: Автомати</string>
+    <string name="quest_osmose_use_app_language">Завантажувати проблеми мовою програми</string>
+    <string name="quest_custom_quest_add_node">Додати точку</string>
+    <string name="quest_benchMaterial_stone">Камінь</string>
+    <string name="quest_custom_quest_remove">Видалити зі списку</string>
+    <string name="pref_disable_navigation_mode_summary">Вимкнути режим нахилу та автоматичного повороту мапи</string>
+    <string name="quest_poi_seating_title">POI: Місця для сидіння</string>
+    <string name="quest_poi_misc_title">POI: Різне</string>
+    <string name="quest_poi_vending_title">POI: Торгові точки %s</string>
+    <string name="quest_benchMaterial_title">З чого це зроблено\?</string>
+    <string name="quest_poi_cycling_title">POI: Велосипед</string>
+    <string name="default_disabled_msg_poi_camera">У цьому \"квесті\" системи спостереження позначені рожевими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_osmose_hide_type">Ігнорувати проблеми з такими ж…</string>
+    <string name="quest_poi_business_title">POI: Бізнес</string>
+    <string name="quest_is_pharmacy_dispensing_title">Чи відпускає ця аптека всі ліки за рецептом\?</string>
+    <string name="default_disabled_msg_poi_machine">Цей \"квест\" показує такі об\'єкти, як банкомати, телефони чи торгові автомати, синіми крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_custom_quest_add_node_text">Ви можете додати точку з: %s</string>
+    <string name="default_disabled_msg_poi_business">Цей \"квест\" показує магазини, ресторани, лікарів і подібні POI у вигляді помаранчевих крапок. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_benchMaterial_brick">Цегла</string>
+    <string name="default_disabled_msg_poi_bike">Цей \"квест\" показує POI, пов\'язані з велосипедом, фіолетовими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_benchMaterial_wood">Деревина</string>
+    <string name="quest_buildingColour_title">Який загальний колір має ця будівля\?</string>
+    <string name="quest_buildingPartColour_title">Який загальний колір має ця частина будівлі\?</string>
+    <string name="quest_settings_dot_labels_message">Вказати, які теги слід використовувати для мітки у заданому порядку. Порожній рядок ніколи не показуватиме жодних міток, \"label\" показуватиме мітку за замовчуванням StreetComplete, використовуючи name, brand, ref, local_ref та operator.</string>
+    <string name="quest_poi_camera_title">POI: Камера</string>
+    <string name="quest_roofColour_title">Який загальний колір даху цієї будівлі\?</string>
+    <string name="pref_disable_navigation_mode_title">Вимкнути режим навігації</string>
+    <string name="quest_poi_has_atm_title">POI: Є банкомат</string>
+    <string name="time_limited_to">До</string>
+    <string name="access_time_limit">Час</string>
+    <string name="access_length_limit">Довжина</string>
+    <string name="dialog_button_understood">Зрозуміло</string>
+    <string name="access_weight_limit">Вага</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Так</string>
+    <string name="access_width_limit">Ширина</string>
+    <string name="time_limited_from">З</string>
+    <string name="general_warning">Попередження</string>
+    <string name="access_manager_button_add">Додати</string>
+    <string name="quest_maxspeed_conditional">Залежно від…</string>
+    <string name="quest_healthcare_speciality_title">Які медичні спеціальності є у цьому закладі\?</string>
+    <string name="tag_editor_last_edited">Востаннє змінено: %s</string>
+    <string name="quest_contact_website">Яка адреса сайту цього закладу\?</string>
+    <string name="pref_show_gpx_button_title">Показувати кнопку нотаток GPX</string>
+    <string name="quest_seating_street">На вулиці</string>
+    <string name="quest_artwork_mural">Мурал</string>
+    <string name="quest_seating_sidewalk">На тротуарі</string>
+    <string name="quest_fixme_remove">Зняти тег «Виправити»</string>
+    <string name="quest_artwork_relief">Рельєф</string>
+    <string name="quest_contact_phone">Який номер телефону цього закладу\?</string>
+    <string name="restriction_overlay_direction_text">Стосується напрямку руху:</string>
+    <string name="quest_monitor_channel_name_found">Знайдено квест поблизу</string>
+    <string name="quest_artwork_graffiti">Графіті</string>
+    <string name="quest_healthcare_speciality_add_more">Додати іншу спеціальність</string>
+    <string name="create_custom_quest_button">Створити свій квест</string>
+    <string name="fork_about_title_repository">Сторінка проєкту SCEE</string>
+    <string name="quest_artwork_installation">Інсталяція</string>
+    <string name="quest_fixme_title">Виправити: %1$s</string>
+    <string name="quest_service_building_operator_title">Якій організації належить ця службова будівля\?</string>
+    <string name="quest_wheelchair_description_answer">Додати опис</string>
+    <string name="quest_artwork_statue">Статуя</string>
+    <string name="restriction_overlay_sign_stop">Стоп</string>
+    <string name="quest_poi_traffic_title">POI: Дорожній рух %s</string>
+    <string name="quest_healthcare_speciality_switch_ui">Перемкнути інтерфейс</string>
+    <string name="quest_wheelchair_description_no_language">мову не вказано</string>
+    <string name="quest_seating_beach">На пляжі</string>
+    <string name="quest_seating_roof">На даху</string>
+    <string name="restriction_overlay_title">Обмеження руху</string>
+    <string name="hide_button">Приховати</string>
+    <string name="quest_artwork_stone">Камінь</string>
+    <string name="quest_artwork_bust">Погруддя</string>
+    <string name="quest_seating_veranda">На веранді/ґанку</string>
+    <string name="quest_artwork_fountain">Фонтан</string>
+    <string name="quest_seating_terrace">На терасі</string>
+    <string name="quest_artwork_architecture">Архітектура</string>
+    <string name="restriction_overlay_sign_give_way">Дати дорогу</string>
+    <string name="quest_monitor_found">%d квестів поблизу, найближче:</string>
+    <string name="quest_wheelchair_description_title">Вкажіть хоча б одну мову</string>
+    <string name="quest_seating_garden">У саду</string>
+    <string name="quest_artwork_land_art">Лендарт</string>
+    <string name="quest_construction_value">Вкажіть \"construction=…\" або залиште порожнім, якщо невідомо</string>
+    <string name="quest_artwork_title">Що це за твір мистецтва\?</string>
+    <string name="restriction_overlay_sign_stop_all_way">Рух без зупинки заборонено</string>
+    <string name="quest_service_building_type_title">Якого типу ця службова будівля %s\?</string>
+    <string name="quest_artwork_painting">Малюнок</string>
+    <string name="quest_cuisine_title">Страви якої кухні пропонують у цьому закладі\? Використовуйте пропоновані теги OSM!</string>
+    <string name="quest_artwork_mosaic">Мозаїка</string>
+    <string name="quest_seating_pedestrian_zone">У пішохідній зоні</string>
+    <string name="quest_seating_balcony">На балконі</string>
+    <string name="quest_seating_patio">У дворику</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">Скинути умови</string>
+    <string name="quest_artwork_sculpture">Скульптура</string>
+    <string name="custom_overlay_delete">Справді видалити %s\?</string>
+    <string name="enqueue_download">Почати після завершення поточного пошуку</string>
+    <string name="quest_cuisine_add_more">Додати іншу кухню</string>
+    <string name="ban_check_fails">Не вдалося пройти перевірку на заборонені версії. Можливо, Ви використовуєте застарілу версію, подумайте про оновлення.</string>
+    <string name="quest_generic_surface_button">Загальні поверхневі відповіді</string>
+    <string name="quest_footway_width_title">Яка тут ширина пішохідної доріжки\?</string>
+    <string name="quest_lanes_answer_noLanes_known_count">Без розмітки, очевидна кількість смуг</string>
+    <string name="default_disabled_msg_poi_traffic">Цей \"квест\" показує POI, пов\'язані з дорожнім рухом, блакитними крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_monitor_running">Відстеження місцезнаходження</string>
+    <string name="quest_monitor_error">Не вдалося почати відстеження, можливо проблема з дозволами</string>
+    <string name="quest_poi_vacant_title">POI: Вільне місце</string>
+    <string name="quest_destination_all_lanes_button">Усі
+\nсмуги</string>
+    <string name="create_custom_quest_title_message">Введіть повідомлення, яке буде показано</string>
+    <string name="default_disabled_msg_poi_fixme">Цей \"квест\" показує теги «Виправити» червоними крапками (крім значень \"yes\" і \"continue\" за замовчуванням). Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="quest_monitor_channel_name">Відстеження квестів поблизу</string>
+    <string name="default_disabled_msg_poi_vacant">Цей \"квест\" показує порожні магазини сірими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
 </resources>
