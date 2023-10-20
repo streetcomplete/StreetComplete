@@ -264,9 +264,8 @@ private suspend fun createEditAction(
             // only a name was added (name was missing before; user wouldn't be able to answer
             // if the place changed or not anyway, so rather keep previous information)
             hasAddedNames && !hasChangedFeature
-            // only the feature was changed, the non-empty name did not change (if it was a
-            // different shop now, it would also have a different name)
-            || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
+            // previously: only the feature was changed, the non-empty name did not change
+            // - see #5195
             // place has been added, nothing to replace
             || element == null
         ) false
