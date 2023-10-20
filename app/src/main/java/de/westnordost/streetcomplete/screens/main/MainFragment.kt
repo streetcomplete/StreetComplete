@@ -104,6 +104,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -1007,7 +1008,9 @@ class MainFragment :
         // open note if it is blocking element
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
-            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+            notesSource
+                .getAll(BoundingBox(center, center).enlargedBy(1.2))
+                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

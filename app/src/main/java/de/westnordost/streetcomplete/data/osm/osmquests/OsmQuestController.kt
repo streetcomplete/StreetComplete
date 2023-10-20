@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -420,11 +421,6 @@ class OsmQuestController internal constructor(
         private const val TAG = "OsmQuestController"
     }
 }
-
-// the resulting precision is about ~1 meter (see #1089)
-private fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
-
-private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
 
 /** an index by which a list of quest types can be sorted so that quests that are the slowest to
  *  evaluate are evaluated first. This is a performance improvement because the evaluation is done
