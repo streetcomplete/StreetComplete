@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.updateConfiguration
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -106,17 +105,6 @@ abstract class AbstractQuestForm :
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
-
-        /* The Android resource system is not designed to offer different resources depending on the
-         * country (code). But what it can do is to offer different resources for different
-         * "mobile country codes" - i.e. in which country your mobile phone network provider
-         * operates.
-         *
-         * A few quest forms want to display different resources depending on the country.
-         *
-         * So what we do here is to override the parent activity's "mobile country code" resource
-         * configuration and use this mechanism to access our country-dependent resources */
-        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

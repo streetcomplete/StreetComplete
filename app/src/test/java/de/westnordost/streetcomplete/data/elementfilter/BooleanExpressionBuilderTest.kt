@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class BooleanExpressionBuilderTest {

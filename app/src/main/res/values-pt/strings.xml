@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
     <string name="quest_leave_new_note_title">"Prefere deixar uma nota?"</string>
-    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolver a questão ou então ocultar a missão apenas para si"</string>
+    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolvam a questão ou então oculte a missão apenas para si"</string>
     <string name="quest_leave_new_note_yes">"Deixar uma nota"</string>
     <string name="quest_leave_new_note_no">"Ocultar"</string>
     <string name="quest_streetName_title">"Qual é o nome desta rua?"</string>
@@ -77,7 +77,7 @@
     <string name="quest_openingHours_comment_title">"Descreva o horário de funcionamento"</string>
     <string name="quest_openingHours_comment_description">"Seja preciso. O ideal é utilizar a descrição do horário afixada, por exemplo \"por marcação\". A ausência de uma afixação do horário de abertura não significa que não tenha um horário."</string>
     <string name="quest_roofShape_title">"Qual é a forma básica do telhado deste edifício?"</string>
-    <string name="quest_roofShape_select_one">"Selecione uma:"</string>
+    <string name="quest_roofShape_select_one">"Selecione uma resposta:"</string>
     <string name="quest_roofShape_show_more">"Mostrar mais…"</string>
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
@@ -116,7 +116,7 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="quest_surface_value_grass">"Erva"</string>
     <string name="quest_surface_value_grass_paver">"Blocos cimento com buracos no meio"</string>
     <string name="quest_surface_value_gravel">"Cascalho"</string>
-    <string name="quest_surface_value_paving_stones">"Blocos de cimento/argamassa"</string>
+    <string name="quest_surface_value_paving_stones">"Blocos de cimento/pedra/argamassa"</string>
     <string name="quest_surface_value_pebblestone">"Seixos"</string>
     <string name="quest_surface_value_sand">"Areia"</string>
     <string name="quest_surface_value_sett">"Paralelos"</string>
@@ -280,7 +280,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível pesquisar aqui. Tente aproximar a visualização com o botão + ou incline menos o mapa."</string>
     <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
-    <string name="quest_crossing_type_unmarked">"Sem qualquer tipo de marcação"</string>
+    <string name="quest_crossing_type_unmarked">"Sem marcas"</string>
     <string name="action_undo">"Desfazer"</string>
     <string name="produce_mangosteen">"Mangostim"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -750,7 +750,7 @@ conquista"</string>
     <string name="quest_buildingType_bungalow_description2">"pequena casa independente (casa de verão, casa de férias, cabana…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Que tipo de barreiras existem nesta passagem de nível?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Sem barreiras"</string>
-    <string name="quest_steps_ramp_title">"Estas escada têm rampa? De que tipo?"</string>
+    <string name="quest_steps_ramp_title">"Estas escadas têm rampa? De que tipo?"</string>
     <string name="quest_steps_ramp_none">"Sem rampa (utilizável)"</string>
     <string name="quest_steps_ramp_bicycle">"Rampa para bicicletas"</string>
     <string name="quest_steps_ramp_stroller">"Rampa para carrinhos de bebé"</string>
@@ -800,9 +800,9 @@ conquista"</string>
     <string name="quest_surface_value_rock">"Pedra"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Camiões altos podem passar"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Camiões altos não cabem"</string>
-    <string name="quest_crossing_type_marked">"Passadeira com marcas pintadas"</string>
-    <string name="quest_parkingType_street_side">"Estacionamento ao lado da estrada"</string>
-    <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
+    <string name="quest_crossing_type_marked">"Com marcas"</string>
+    <string name="quest_parkingType_street_side">"Estacionamento ao lado, fora da estrada"</string>
+    <string name="quest_parkingType_lane">"Estacionamento dentro da estrada"</string>
     <string name="quest_tracktype_grade2a">"Terra compacta"</string>
     <string name="quest_tracktype_grade3a">"Maioritariamente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Não existe…"</string>
@@ -845,7 +845,7 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
-    <string name="quest_crossing_type_signals_controlled">"Passadeira controlada por semáforos"</string>
+    <string name="quest_crossing_type_signals_controlled">"Controlada por semáforos"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
@@ -875,16 +875,16 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_barrier_type_cattle_grid">"Grade que impede o gado atravessar"</string>
     <string name="quest_barrier_type_block">"Grande objeto imóvel"</string>
     <string name="quest_barrier_jersey_barrier">"Barreira de Jersey (bloco de cimento)"</string>
-    <string name="quest_barrier_type_log">"Registo"</string>
+    <string name="quest_barrier_type_log">"Tronco"</string>
     <string name="quest_barrier_type_kerb">"Lancil"</string>
     <string name="quest_barrier_type_height_restrictor">"Pórtico de altura"</string>
     <string name="quest_barrier_full_height_turnstile">"Torniquete de altura total (2m)"</string>
     <string name="quest_barrier_type_turnstile">"Torniquete"</string>
     <string name="quest_barrier_type_passage">"Passagem através de parede/cerca/etc."</string>
     <string name="quest_barrier_type_debris_pile">"Pilha de escombros"</string>
-    <string name="quest_barrier_type_stile_squeezer">"Tipo estreitamento para passar de lado"</string>
-    <string name="quest_barrier_type_stile_ladder">"Tipo escada"</string>
-    <string name="quest_barrier_type_bicycle_barrier">"Barreira de bicicletas"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Estreitamento para passar de lado"</string>
+    <string name="quest_barrier_type_stile_ladder">"Escada"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Gincana de bicicletas"</string>
     <string name="quest_barrier_type_kissing_gate">"Portão de abertura por encosto"</string>
     <string name="quest_barrier_type_swing_gate">"Barra horizontal"</string>
     <string name="quest_policeType_title">"Que tipo de esquadra da polícia é esta?"</string>
@@ -1296,7 +1296,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
 &lt;p&gt;Defina cada ponto inicial e final enquanto aponta o telemóvel diretamente para baixo (para que se veja a seta branca de cima) para evitar completamente este problema para medições horizontais.&lt;/p&gt;
 &lt;p&gt;Para medições verticais, é necessário verificar se o ponto de partida não está em paralaxe ao solo, olhando para ele a partir de diferentes direções.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Esta aplicação funciona em &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services para AR&lt;/a&gt; (ARCore), que é fornecida pelo Google e governada pela &lt;a href=\"https://policies.google.com/privacy\"&gt;Política de Privacidade Google&lt;/a&gt;."</string>
-    <string name="default_disabled_msg_seasonal">"Este tipo de missão está desativado por defeito porque pode exigir uma nova verificação da situação numa parte específica do ano."</string>
+    <string name="default_disabled_msg_seasonal">"Este tipo de missão está desativado por defeito porque pode exigir uma nova verificação da situação em diferentes alturas do ano."</string>
     <string name="quest_gritBinSeasonal_title">"Isto também está aqui fora do Inverno?"</string>
     <string name="street_parking_staggered_on_street">"Na estrada em lados alternados"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente na estrada em lados alternados"</string>
@@ -1331,4 +1331,14 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="overlay_addresses_no_entrance">"Não é uma entrada…"</string>
     <string name="quest_cycleway_value_sidewalk2">"via partilhada"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"via partilhada em ambas as direções"</string>
+    <string name="overlays_tutorial_title">"Camadas"</string>
+    <string name="overlays_tutorial_intro">"Encontrou uma nova forma de editar dados!"</string>
+    <string name="overlays_tutorial_display">"Cada camada apresenta um tipo de dados, por exemplo, lojas ou superfícies de ruas.
+
+Os dados são destacados em cores diferentes para ter uma boa visão geral do que foi registado até agora.
+Os dados em falta são sempre apresentados a vermelho."</string>
+    <string name="overlays_tutorial_edit">"Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões.
+
+Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira."</string>
+    <string name="quest_crossing_kerb_height_title">"Qual é a altura dos passeios neste cruzamento?"</string>
 </resources>

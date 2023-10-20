@@ -1,21 +1,19 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.animation.DecelerateInterpolator
-import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
@@ -39,7 +37,7 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         binding.mailContainer.alpha = 0.0f
         binding.dialogContainer.setOnClickListener { dismiss() }
         binding.readMailButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/messages/inbox")
+            openUri("https://www.openstreetmap.org/messages/inbox")
             dismiss()
         }
         val unreadMessagesCount = arguments?.getInt(ARG_UNREAD_MESSAGE_COUNT, 0) ?: 0
@@ -113,11 +111,6 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
             }
             start()
         }
-    }
-
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
     }
 
     companion object {

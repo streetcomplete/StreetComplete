@@ -1,13 +1,5 @@
 -dontobfuscate
 
--dontwarn org.xmlpull.**
--dontnote org.xmlpull.**
-
-# https://issuetracker.google.com/issues/37070898
--dontnote android.net.http.*
--dontnote org.apache.commons.codec.**
--dontnote org.apache.http.**
-
 # tangram start ------------------------------------------------------------------------------------
 
 # let's just keep everything

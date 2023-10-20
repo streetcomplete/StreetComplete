@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SERVICE
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import org.junit.Test
+import kotlin.test.Test
 
 class AddCarWashTypeTest {
 

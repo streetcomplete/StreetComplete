@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.CAMERA
 import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -61,8 +60,6 @@ fun View.hideKeyboard(): Boolean? =
 val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationEnabled(locationManager)
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)
 
-val Context.hasCameraPermission: Boolean get() = hasPermission(CAMERA)
-
 private val Context.inputMethodManager get() = getSystemService<InputMethodManager>()!!
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
 
@@ -93,5 +90,14 @@ fun Context.sendEmail(email: String, subject: String, text: String? = null) {
         startActivity(intent)
     } catch (e: ActivityNotFoundException) {
         toast(R.string.no_email_client)
+    }
+}
+
+fun Context.openUri(uri: String): Boolean {
+    return try {
+        startActivity(Intent(Intent.ACTION_VIEW, uri.toUri()))
+        true
+    } catch (e: ActivityNotFoundException) {
+        false
     }
 }

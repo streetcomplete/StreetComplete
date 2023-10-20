@@ -43,16 +43,17 @@ class QuestPresetsFragment : TwoPaneDetailFragment(R.layout.fragment_quest_prese
         val ctx = context ?: return
         val dialog = EditTextDialog(ctx,
             title = ctx.getString(R.string.quest_presets_preset_add),
+            hint = ctx.getString(R.string.quest_presets_preset_name),
             callback = { name -> addQuestPreset(name) }
         )
-        dialog.editText.hint = ctx.getString(R.string.quest_presets_preset_name)
         dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
         dialog.show()
     }
 
     private fun addQuestPreset(name: String) {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            questPresetsController.add(name)
+            val newPresetId = questPresetsController.add(name)
+            questPresetsController.selectedId = newPresetId
         }
     }
 }

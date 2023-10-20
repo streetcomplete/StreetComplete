@@ -26,7 +26,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN, OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_type_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_type_title2
 
     override fun createForm() = AddDrinkingWaterTypeForm()
 

@@ -776,8 +776,8 @@ aktiva"</string>
     <string name="quest_kerb_height_title">"Kiom alta estas ĉi tiu trotuarrando?"</string>
     <string name="quest_kerb_height_flush">"Sama nivelo kiel vojsurfaco"</string>
     <string name="quest_kerb_height_lowered">"Iom pli alta ol vojsurfaco"</string>
-    <string name="quest_kerb_height_raised">"alta trotuarrando"</string>
-    <string name="quest_kerb_height_lowered_ramp">"malaltigita trotuarrando"</string>
+    <string name="quest_kerb_height_raised">"Alta trotuarrando"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Malaltigita trotuarrando"</string>
     <string name="quest_lanes_answer_lanes_description2">"Specifu la tutan nombron de markitaj vojeroj (ambaŭ direktoj) uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
 Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specifu la tutan nombron de markitaj vojeroj uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
@@ -1042,6 +1042,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="default_disabled_msg_no_ar">"Vi bezonas mezurilon por solvi ĉi tiun taskon ĉar mezurado per la fotilo ne estas subtenata en ĉi tiu aparato."</string>
     <string name="quest_cycleway_width_title">"Kiom estas la larĝo de ĉi tiu biciklovojo ĉi tie?"</string>
     <string name="quest_road_width_title">"Kiom estas la larĝo de ĉi tiu vojo ĉi tie?"</string>
+    <string name="quest_road_width_explanation">"La larĝo de la veturejo de trotuarrando al trotuarrando: Tio inkluzivas ion sur la surfaco de la strato, ekz. surstrataj parkejoj aŭ biciklokoridoroj, sed exkluzivas ion post la trotuarrandoj kiel la  trotuaroj mem, apuda parkejoj aŭ apuda biciklovojoj."</string>
     <string name="quest_sidewalk_answer_none">"Tute neniu trotuaro"</string>
     <string name="about_description_donate_google_play2">"Dankon, ke vi pripensis subteni ĉi tiun programon!
 Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj povas esti montritaj en-app. En ĉi tiu kunteksto, eĉ ligado al nia projekto hejme ne rajtas."</string>
@@ -1242,6 +1243,7 @@ Movu ĝin nun?"</string>
     <string name="move_node_action_description">"Vi movis la punkton"</string>
     <string name="quest_cycleway_value_shoulder">"neniu, sed la vojflanko estas usebla biciklante"</string>
     <string name="quest_placeName_no_name_answer">"Neniu signo kun nomo ĉi tie…"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Tiu larĝo ŝajnas malebla. Tio devus esti la larĝo inter la trotuarrandoj, enhavante surstratajn parkejojn, biciklokoridoroj, ktp."</string>
     <string name="overlay_cycleway">"biciklovojoj"</string>
     <string name="bicycle_boulevard_is_a">"Estas %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ne estas %1$s"</string>
@@ -1279,8 +1281,11 @@ Movu ĝin nun?"</string>
     <string name="quest_hairdresser_male_only">"Viroj"</string>
     <string name="quest_hairdresser_not_signed">"Ne estas indikita"</string>
     <string name="quest_amenityCover_title">"Ĉu ĝi estas kovrita (protektita kontraŭ pluvo)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Trotuarrandvastaĵo"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Trotuarrandvastaĵo + insulo"</string>
     <string name="quest_tactilePaving_title_steps">"Ĉu estas taktila pavimo ĉe la supro kaj malsupro la de ŝtuparo?"</string>
     <string name="quest_tactilePaving_steps_top">"Sole ĉe la supro"</string>
     <string name="quest_tactilePaving_steps_bottom">"Sole ĉe la malsupro"</string>
     <string name="overlay_addresses_no_entrance">"Ne estas enirejo…"</string>
+    <string name="quest_crossing_kerb_height_title">"Kiom alta estas la trotuarrando ĉe tiu transirejo?"</string>
 </resources>

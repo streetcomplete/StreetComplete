@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.sport.Sport.HANDBALL
 import de.westnordost.streetcomplete.quests.sport.Sport.ICE_SKATING
 import de.westnordost.streetcomplete.quests.sport.Sport.SOCCER
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import org.junit.Test
+import kotlin.test.Test
 
 class AddSportTest {
 

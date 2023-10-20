@@ -20,10 +20,10 @@ import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class ElementEditsUploaderTest {
 
@@ -37,7 +37,7 @@ class ElementEditsUploaderTest {
     private lateinit var uploader: ElementEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         elementEditsController = mock()
         mapDataController = mock()
         noteEditsController = mock()

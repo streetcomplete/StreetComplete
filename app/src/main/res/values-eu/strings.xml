@@ -1330,4 +1330,18 @@ Orain mugitu?"</string>
     <string name="quest_tactilePaving_steps_top">"Goian bakarrik"</string>
     <string name="quest_tactilePaving_steps_bottom">"Behean bakarrik"</string>
     <string name="overlay_addresses_no_entrance">"Ez da sarrera..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"erabilera partekatuko bidea"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"erabilera partekatuko bidea, bi noranzkoetan"</string>
+    <string name="overlays_tutorial_title">"Geruzak"</string>
+    <string name="overlays_tutorial_intro">"Datuak editatzeko modu berri bat aurkitu duzu!"</string>
+    <string name="overlays_tutorial_display">"Geruza bakoitzak datu mota bat erakusten du, adibidez, dendak edo kale-azalera.
+
+Datuak kolore ezberdinez nabarmentzen dira, orain arte grabatutakoaren ikuspegi orokor ona emateko.
+Falta diren datuak gorriz agertzen dira beti."</string>
+    <string name="overlays_tutorial_edit">"Sakatu nabarmendutako edozein datu bera bistaratu edo editatzeko. Bideak ere zati ditzakezu edo oharrak jakinarazi.
+
+Gainera, geruza batzuek datu berriak gehitzeko aukera ematen dute bistaratzen den gurutze-puntu baten posizioan, hala nola helbideen geruza."</string>
+    <string name="quest_crossing_kerb_height_title">"Zein da bidegurutze honen ertzetako altuera?"</string>
+    <string name="quest_maxheight_sign_title">"Zein altuera-muga adierazten da hemen?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Zein altuera muga adierazten da zubiaren azpian?"</string>
 </resources>

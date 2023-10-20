@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import org.junit.Test
+import kotlin.test.Test
 
 class AddParkingFeeTest {
 

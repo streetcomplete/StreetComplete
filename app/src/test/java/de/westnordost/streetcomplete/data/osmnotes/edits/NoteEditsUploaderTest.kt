@@ -16,12 +16,12 @@ import de.westnordost.streetcomplete.testutils.p
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class NoteEditsUploaderTest {
 
@@ -35,7 +35,7 @@ class NoteEditsUploaderTest {
     private lateinit var uploader: NoteEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         notesApi = mock()
         noteController = mock()
         noteEditsController = mock()

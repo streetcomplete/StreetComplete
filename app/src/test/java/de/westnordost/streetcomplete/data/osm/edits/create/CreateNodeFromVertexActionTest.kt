@@ -14,16 +14,16 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 internal class CreateNodeFromVertexActionTest {
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @Before
+    @BeforeTest
     fun setUp() {
         repos = mock()
         provider = mock()

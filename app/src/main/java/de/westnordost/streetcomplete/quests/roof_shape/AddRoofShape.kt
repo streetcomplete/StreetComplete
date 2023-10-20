@@ -1,22 +1,19 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
-import java.util.concurrent.FutureTask
 
 class AddRoofShape(
-    private val countryInfos: CountryInfos,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
@@ -58,11 +55,7 @@ class AddRoofShape(
 
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
-        return countryInfos.getByLocation(
-            countryBoundariesFuture.get(),
-            center.longitude,
-            center.latitude,
-        ).roofsAreUsuallyFlat
+        return getCountryInfoByLocation(center).roofsAreUsuallyFlat
     }
 
     override fun applyAnswerTo(answer: RoofShape, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

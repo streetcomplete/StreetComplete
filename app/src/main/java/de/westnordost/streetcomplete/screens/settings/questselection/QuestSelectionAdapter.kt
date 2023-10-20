@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeControll
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.getDouble
 import kotlinx.coroutines.CoroutineScope
@@ -62,6 +64,13 @@ class QuestSelectionAdapter(
         .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
+    private val englishResources by lazy {
+        val conf = Configuration(context.resources.configuration)
+        conf.setLocale(Locale.ENGLISH)
+        val localizedContext = context.createConfigurationContext(conf)
+        localizedContext.resources
+    }
+
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     /** all quest types */
@@ -80,15 +89,16 @@ class QuestSelectionAdapter(
             }
         }
 
+    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
+        genericQuestTitle(context.resources, questType).lowercase().containsAll(words)
+        || genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
+
     private fun filterQuestTypes(f: String) {
         if (f.isEmpty()) {
             submitList(questTypes)
         } else {
             val words = f.lowercase().split(' ')
-            submitList(questTypes.filter { questVisibility ->
-                val question = genericQuestTitle(context.resources, questVisibility.questType).lowercase()
-                words.all { question.contains(it) }
-            })
+            submitList(questTypes.filter { questTypeMatchesSearchWords(it.questType, words) })
         }
     }
 
@@ -121,7 +131,7 @@ class QuestSelectionAdapter(
         }
 
         override fun onQuestTypeOrdersChanged() {
-            // all/many quest orders have been changed - reinit list
+            // all/many quest orders have been changed - re-init list
             viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
         }
     }

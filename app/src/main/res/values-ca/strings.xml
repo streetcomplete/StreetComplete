@@ -1330,10 +1330,26 @@ Menejar ara?"</string>
     <string name="quest_hairdresser_not_signed">"No senyalitzat"</string>
     <string name="quest_amenityCover_title">"Està cobert (protegit de la pluja)?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Extensió de la vorera"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Illa de trànsit"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Extensió de la vorera + illa de trànsit"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Aquí no hi ha cap carril estret"</string>
     <string name="quest_tactilePaving_title_steps">"Hi ha un paviment podotàctil a la part superior i inferior d'aquestes escales?"</string>
     <string name="quest_tactilePaving_steps_top">"Només a la part superior"</string>
     <string name="quest_tactilePaving_steps_bottom">"Només a la part inferior"</string>
     <string name="overlay_addresses_no_entrance">"No és una entrada..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Camí d'us compartit"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"camí d'ús compartit, ambdues direccions"</string>
+    <string name="overlays_tutorial_title">"Superposicions"</string>
+    <string name="overlays_tutorial_intro">"Heu trobat una nova manera d'editar dades!"</string>
+    <string name="overlays_tutorial_display">"Cada superposició mostra un tipus de dades, per exemple, botigues o superfícies de carrers.
+
+Les dades es destaquen amb diferents colors per oferir-vos una bona visió general del que s'ha registrat fins ara.
+Les dades que falten sempre es mostren en vermell."</string>
+    <string name="overlays_tutorial_edit">"Toqueu les dades destacades per mostrar-les o editar-les. També podeu dividir vies o afegir notes, com amb les missions.
+
+A més, algunes superposicions us permeten afegir dades noves a la posició d'un punt de mira mostrat, com ara la superposició d'adreces."</string>
+    <string name="quest_crossing_kerb_height_title">"Quina és l'alçada dels vorals en aquest pas?"</string>
+    <string name="quest_maxheight_sign_title">"Quin límit d'alçada s'indica aquí?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quin límit d'alçada s'indica a sota del pont?"</string>
 </resources>

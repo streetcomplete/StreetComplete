@@ -8,14 +8,14 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class VisibleQuestTypeControllerTest {
 
@@ -31,7 +31,7 @@ class VisibleQuestTypeControllerTest {
     private val quest1 = TestQuestTypeA()
     private val quest2 = TestQuestTypeB()
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         visibleQuestTypeDao = mock()
         questPresetsSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(

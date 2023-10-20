@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.data.elementfilter.matches
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class TagNewerThanTest {
     private val oldDate = dateDaysAgo(101f)

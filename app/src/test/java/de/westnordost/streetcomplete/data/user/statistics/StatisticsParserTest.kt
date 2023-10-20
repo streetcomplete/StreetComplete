@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data.user.statistics
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class StatisticsParserTest {
 

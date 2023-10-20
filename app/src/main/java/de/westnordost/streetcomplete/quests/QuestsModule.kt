@@ -1,8 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
@@ -14,6 +18,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
+import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -23,6 +28,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
@@ -61,7 +67,6 @@ import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
@@ -167,6 +172,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import de.westnordost.streetcomplete.quests.width.AddCyclewayWidth
 import de.westnordost.streetcomplete.quests.width.AddRoadWidth
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import java.util.concurrent.FutureTask
@@ -175,23 +181,30 @@ val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
 
-    single { questTypeRegistry(
-        get(),
-        get(),
-        get(named("FeatureDictionaryFuture")),
-        get(),
-        get(named("CountryBoundariesFuture")),
-        get(),
-    ) }
+    single {
+        questTypeRegistry(
+            get(),
+            get(),
+            get(),
+            { location ->
+                val countryInfos = get<CountryInfos>()
+                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
+            },
+            { tags ->
+                get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
+                    .get().getFeature(tags)
+            }
+        )
+    }
 }
 
 fun questTypeRegistry(
     trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     trafficFlowDao: WayTrafficFlowDao,
-    featureDictionaryFuture: FutureTask<FeatureDictionary>,
-    countryInfos: CountryInfos,
-    countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    arSupportChecker: ArSupportChecker
+    arSupportChecker: ArSupportChecker,
+    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+    getFeature: (tags: Map<String, String>) -> Feature?,
 ) = QuestTypeRegistry(listOf(
 
     /* The quest types are primarily sorted by how easy they can be solved:
@@ -246,7 +259,7 @@ fun questTypeRegistry(
     9 to AddCarWashType(),
 
     10 to AddBenchBackrest(),
-    11 to AddAmenityCover(),
+    11 to AddAmenityCover(getFeature),
 
     12 to AddBridgeStructure(),
 
@@ -322,7 +335,7 @@ fun questTypeRegistry(
     /* pulled up in priority to be before CheckExistence because this is basically the check
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
-    49 to CheckExistence(featureDictionaryFuture),
+    49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
@@ -353,6 +366,7 @@ fun questTypeRegistry(
     66 to AddFireHydrantDiameter(),
     67 to AddFireHydrantRef(),
 
+    160 to AddBbqFuel(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -372,9 +386,9 @@ fun questTypeRegistry(
     157 to AddHairdresserCustomers(), // almost always marked on sign outside
     78 to SpecifyShopType(), // above add place name as some brand presets will set the name too
     79 to CheckShopType(),
-    80 to AddPlaceName(featureDictionaryFuture),
-    77 to CheckOpeningHoursSigned(featureDictionaryFuture),
-    81 to AddOpeningHours(featureDictionaryFuture),
+    80 to AddPlaceName(getFeature),
+    77 to CheckOpeningHoursSigned(getFeature),
+    81 to AddOpeningHours(getFeature),
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
 
     84 to AddAtmOperator(),
@@ -431,7 +445,7 @@ fun questTypeRegistry(
 
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
-    113 to AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
+    113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
@@ -459,7 +473,7 @@ fun questTypeRegistry(
     132 to AddAcceptsCash(),
 
     133 to AddFuelSelfService(),
-    156 to CheckShopExistence(featureDictionaryFuture), // after opening hours and similar so they will be preferred if enabled
+    156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled
 
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
@@ -467,7 +481,7 @@ fun questTypeRegistry(
     134 to AddSidewalk(), // for any pedestrian routers, needs minimal thinking
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
-    137 to AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
+    137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
@@ -493,7 +507,7 @@ fun questTypeRegistry(
     // buildings
     150 to AddBuildingType(),
     151 to AddBuildingLevels(),
-    152 to AddRoofShape(countryInfos, countryBoundariesFuture),
+    152 to AddRoofShape(getCountryInfoByLocation),
 
     153 to AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 

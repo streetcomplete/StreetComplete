@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeD
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 internal class UrlConfigKtTest {
 
@@ -29,6 +29,13 @@ internal class UrlConfigKtTest {
     private val overlays = OverlayRegistry(listOf(0 to o0, 1 to o1))
 
     //region parse url
+
+    @Test fun `parse config without name`() {
+        assertEquals(
+            UrlConfig(null, listOf(q0, q2, q3), emptyList(), null),
+            parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays)
+        )
+    }
 
     @Test fun `parse simple config`() {
         assertEquals(
@@ -97,17 +104,20 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
-    @Test fun `reject if name is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
-    }
-
     @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/s?n=d", quests, overlays))
     }
 
     //endregion
 
     //region create url
+
+    @Test fun `create url without name`() {
+        assertEquals(
+            "https://streetcomplete.app/s?q=d",
+            createConfigUrl(UrlConfig(null, listOf(q0, q2, q3), emptyList(), null), quests, overlays),
+        )
+    }
 
     @Test fun `create simple url`() {
         assertEquals(

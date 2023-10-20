@@ -25,15 +25,9 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     private val footwaysFilter by lazy { """
         ways with
           (highway ~ footway|steps or highway ~ path|cycleway and foot ~ designated|yes)
-          and footway !~ sidewalk|crossing
           and area != yes
           and access !~ private|no
     """.toElementFilterExpression() }
-
-    /* It is neither asked for sidewalks nor crossings (=separately mapped sidewalk infrastructure)
-    *  because a "no" answer would require to also delete/adapt the crossing ways, rather than just
-    *  tagging crossing=no on the vertex.
-    *  See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203 */
 
     override val changesetComment = "Specify whether there are crossings at intersections of paths and roads"
     override val wikiLink = "Tag:highway=crossing"

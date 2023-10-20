@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.upload
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class VersionIsBannedCheckerTest {
     @Test fun `banned version `() {

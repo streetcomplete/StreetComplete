@@ -12,10 +12,12 @@ val SOFT_SURFACES = setOf(
     "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
 )
 
-val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
+val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
     "ground", // see https://community.openstreetmap.org/t/is-tracktype-grade2-also-for-trails-with-large-naturally-occuring-pieces-of-rock/96850
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
 )
+
+val ANYTHING_UNPAVED = SOFT_SURFACES + UNPAVED_BUT_NOT_ALWAYS_SOFT
 
 val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
@@ -40,6 +42,23 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
  *  E.g. surface=asphalt but tracktype=grade5. */
 fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boolean =
     INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
+
+val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
+    "grade1" to ANYTHING_FULLY_PAVED,
+    "grade2" to UNPAVED_BUT_NOT_ALWAYS_SOFT,
+    "grade3" to ANYTHING_UNPAVED,
+    "grade4" to ANYTHING_UNPAVED,
+    "grade5" to SOFT_SURFACES,
+)
+
+/** @return whether the given tag value for [surface] likely contradicts the tag value for [tracktype].
+ *  E.g. surface=asphalt but tracktype=grade2.
+ *  some such combinations may be actually valid, so should not be assumed to be always be wrong
+ *  but if someone edits surface it is preferable to remove suspicious tracktype and trigger resurvey
+ *  see https://github.com/streetcomplete/StreetComplete/issues/5236
+ *  */
+fun isSurfaceAndTracktypeCombinationSuspicious(surface: String, tracktype: String?): Boolean =
+    tracktype != null && EXPECTED_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) != true
 
 /** Sets the common surface of the foot- and cycleway parts into the surface tag, if any. If the
  *  surfaces of the foot- and cycleway parts have nothing in common, removes the surface tag */

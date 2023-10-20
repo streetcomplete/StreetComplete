@@ -17,12 +17,13 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism = camp_site and (
-            !drinking_water
+          tourism ~ camp_site|caravan_site
+          and (
+            !drinking_water and !water_point
             or drinking_water older today -4 years and drinking_water ~ yes|no
           )
     """
-    override val changesetComment = "Specify whether there is drinking water at camp site"
+    override val changesetComment = "Specify whether there is drinking water at camp or caravan site"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
     override val achievements = listOf(OUTDOORS)
@@ -30,7 +31,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_drinking_water_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism = camp_site")
+        getMapData().filter("nodes, ways with tourism ~ camp_site|caravan_site")
 
     override fun createForm() = YesNoQuestForm()
 
