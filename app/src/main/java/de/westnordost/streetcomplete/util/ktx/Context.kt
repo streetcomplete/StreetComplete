@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.CAMERA
 import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
 import android.content.Context
