@@ -67,7 +67,7 @@ private fun getLocationHtml(
     return if ((level != null || indoor != null) && houseNumber != null) {
         resources.getString(R.string.label_housenumber_location, houseNumber, level ?: indoor)
     } else {
-        level ?: houseNumber
+        level ?: indoor ?: houseNumber
     }
 }
 
