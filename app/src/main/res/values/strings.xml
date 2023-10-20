@@ -119,6 +119,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="underground">underground</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
+    <!-- as in: “Where is the ATM?” - “It is inside” -->
+    <string name="inside">inside</string>
+    <!-- as in: “Where is the ATM?” - “It is outside” -->
+    <string name="outside">outside</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 

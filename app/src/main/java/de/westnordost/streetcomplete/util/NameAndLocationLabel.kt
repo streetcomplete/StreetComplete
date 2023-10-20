@@ -62,9 +62,10 @@ private fun getLocationHtml(
     val level = getLevelLabel(tags, resources)
     // by default only show house number if no level is given
     val houseNumber = if (showHouseNumber ?: (level == null)) getHouseNumberHtml(tags, resources) else null
+    val indoor = getIndoorOutdoorLabel(tags, resources)
 
-    return if (level != null && houseNumber != null) {
-        resources.getString(R.string.label_housenumber_location, houseNumber, level)
+    return if ((level != null || indoor != null) && houseNumber != null) {
+        resources.getString(R.string.label_housenumber_location, houseNumber, level ?: indoor)
     } else {
         level ?: houseNumber
     }
@@ -101,6 +102,13 @@ fun getNameLabel(tags: Map<String, String>): String? {
         ?: operator
         ?: localRef
         ?: ref
+}
+
+/** Returns a text that describes whether it is inside or outside (of a building) */
+fun getIndoorOutdoorLabel(tags: Map<String, String>, resources: Resources): String? = when {
+    tags["indoor"] == "yes" || tags["location"] == "indoor" -> resources.getString(R.string.inside)
+    tags["indoor"] == "no" || tags["location"] == "outdoor" -> resources.getString(R.string.outside)
+    else -> null
 }
 
 /** Returns a text that describes the floor / level, e.g. "on floor 5" */
