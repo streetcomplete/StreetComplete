@@ -10,16 +10,13 @@ val MAXSPEED_TYPE_KEYS = setOf(
     "zone:traffic"
 )
 
-val anyMaxSpeedTagKey = "~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}"
+private val anyMaxSpeedTagKey = "~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}"
 
-val explicitlyInSlowZone = """$anyMaxSpeedTagKey ~ ".*:(zone:?)?([1-9]|[1-2][0-9]|30)""""
+val isImplicitMaxSpeed = "(!maxspeed or $anyMaxSpeedTagKey ~ \"implicit|([A-Z-]+:.*)\")"
 
-val notInSlowZoneAndNotPlainMaxspeedTagging = """
-  !(
-    maxspeed ~ "walk|(\d+( ?mph)?)" and !~${(MAXSPEED_TYPE_KEYS).joinToString("|")}
-    or $explicitlyInSlowZone
-  )
-"""
+val isInSlowZone = "$anyMaxSpeedTagKey ~ \"[A-Z-]+:(zone:?)?([1-9]|[1-2][0-9]|30)\""
+
+val isImplicitMaxSpeedButNotSlowZone = "$isImplicitMaxSpeed and !($isInSlowZone)"
 
 /** Functions to get speed in km/h from tags */
 
@@ -33,7 +30,7 @@ fun getMaxspeedInKmh(tags: Map<String, String>): Float? {
     }
 }
 
-private val zoneRegex = Regex("([A-Z-]*):(?:zone)?:?([0-9]+)")
+private val zoneRegex = Regex("([A-Z-]+):(?:zone:?)?([0-9]+)")
 
 fun guessMaxspeedInKmh(tags: Map<String, String>, countryInfos: CountryInfos? = null): Float? {
     for (key in (MAXSPEED_TYPE_KEYS + "maxspeed")) {

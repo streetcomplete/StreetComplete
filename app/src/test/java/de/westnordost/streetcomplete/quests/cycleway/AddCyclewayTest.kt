@@ -209,7 +209,7 @@ class AddCyclewayTest {
     }
 
     @Test
-    fun `not applicable to residential way in maxspeed 30 zone`() {
+    fun `not applicable to residential road in maxspeed 30 zone`() {
         val residentialWayIn30Zone = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "residential",
             "maxspeed" to "30",
@@ -223,7 +223,7 @@ class AddCyclewayTest {
     }
 
     @Test
-    fun `not applicable to residential way with maxspeed 30`() {
+    fun `not applicable to residential road with maxspeed 30`() {
         val residentialWayWithMaxspeed30 = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "residential",
             "maxspeed" to "30",
