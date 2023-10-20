@@ -63,11 +63,12 @@ private fun getLocationHtml(
     // by default only show house number if no level is given
     val houseNumber = if (showHouseNumber ?: (level == null)) getHouseNumberHtml(tags, resources) else null
     val indoor = getIndoorOutdoorLabel(tags, resources)
+    val location = level ?: indoor
 
-    return if ((level != null || indoor != null) && houseNumber != null) {
-        resources.getString(R.string.label_housenumber_location, houseNumber, level ?: indoor)
+    return if (location != null && houseNumber != null) {
+        resources.getString(R.string.label_housenumber_location, houseNumber, location)
     } else {
-        level ?: indoor ?: houseNumber
+        location ?: houseNumber
     }
 }
 
