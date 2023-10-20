@@ -567,7 +567,7 @@ class ElementFiltersParserTest {
     }
 
     @Test fun `brackets are not dissolved illegally`() {
-        val expr = "a or (b or c) and !(d)"
+        val expr = "a or (b or c) and !d"
         matchesTags(mapOfKeys("a"), expr)
         matchesTags(mapOfKeys("a", "d"), expr)
         matchesTags(mapOfKeys("b"), expr)
