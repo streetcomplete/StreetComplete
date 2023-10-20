@@ -1308,8 +1308,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Any compostable waste</string>
-    <string name="quest_recycling_type_food_waste">Any food waste</string>
+    <string name="quest_recycling_type_green_waste">Compostable waste</string>
+    <string name="quest_recycling_type_food_waste">Food waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>
