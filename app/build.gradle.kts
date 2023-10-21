@@ -263,6 +263,8 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
+    languageCodes = bcp47ExportLanguages
+    mustIncludeLanguagePercentage = 90
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
