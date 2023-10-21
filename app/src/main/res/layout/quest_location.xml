@@ -19,5 +19,6 @@
     android:inputType="textMultiLine|textCapSentences"
     android:minLines="3"
     android:maxLength="253"
+    android:background="@drawable/background_edittext_outline"
     />
 </LinearLayout>
