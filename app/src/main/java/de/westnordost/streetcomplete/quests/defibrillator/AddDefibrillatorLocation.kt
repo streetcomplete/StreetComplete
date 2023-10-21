@@ -34,4 +34,3 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>() {
         tags["defibrillator:location"] = answer
     }
 }
-
