@@ -14,7 +14,8 @@ class AddDefibrillatorLocation : OsmFilterQuestType<DefibrillatorLocation>() {
     override val elementFilter = """
         nodes with
         emergency = defibrillator
-        and !location and !defibrillator:location"
+        and !location and !defibrillator:location
+        and access !~ private|no"
     """
     override val changesetComment = "Specify defibrillator location"
     override val wikiLink = "Tag:emergency=defibrillator"
