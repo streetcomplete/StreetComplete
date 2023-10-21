@@ -24,5 +24,5 @@ class AddDefibrillatorLocationForm : AbstractOsmQuestForm<String>() {
         applyAnswer(location!!)
     }
 
-    override fun isFormComplete() = location != null && location!!.length >= 10
+    override fun isFormComplete() = location != null
 }
