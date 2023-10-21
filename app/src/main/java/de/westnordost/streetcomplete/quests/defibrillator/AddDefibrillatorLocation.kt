@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddDefibrillatorLocation : OsmFilterQuestType<DefibrillatorLocation>() {
+class AddDefibrillatorLocation : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes with
@@ -30,9 +30,8 @@ class AddDefibrillatorLocation : OsmFilterQuestType<DefibrillatorLocation>() {
 
     override fun createForm() = AddDefibrillatorLocationForm()
 
-    override fun applyAnswerTo(answer: DefibrillatorLocation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["defibrillator:location"] = answer.location
+    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["defibrillator:location"] = answer
     }
 }
 
-data class DefibrillatorLocation(val location: String)
