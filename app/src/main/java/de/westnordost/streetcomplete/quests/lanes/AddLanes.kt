@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
@@ -17,7 +17,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
             or highway = residential and (
               maxspeed > 33
-              or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
+              or $isImplicitMaxSpeedButNotSlowZone
             )
           )
           and area != yes
