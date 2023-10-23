@@ -2,6 +2,7 @@
 atmOperators: [CRDB, NMB, NBC, CRDB Bank, Barclays, Stanbic Bank, FNB, Ecobank, National Microfinance Bank (NMB), Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
 centerLineStyle: white
 chargingStationOperators: [Jaza Energy]
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

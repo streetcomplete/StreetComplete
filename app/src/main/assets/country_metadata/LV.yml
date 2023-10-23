@@ -2,6 +2,7 @@
 atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, BlueOrange]
 centerLineStyle: white
 chargingStationOperators: [CSDD, Elektrum]
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false

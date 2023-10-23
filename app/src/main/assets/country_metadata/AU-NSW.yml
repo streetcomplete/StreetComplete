@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationOperators: [NRMA, Chargefox, National Roads and Motorists' Association Limited, Tesla Motors, Evie Networks, Chargepoint]
+defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: false

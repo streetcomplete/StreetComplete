@@ -738,7 +738,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
     <string name="resurvey_intervals_default">"Výchozí"</string>
     <string name="resurvey_intervals_more_often">"Ptát se častěji"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) uvnitř budovy?"</string>
     <string name="about_title_translate">"Pomozte přeložit tuto aplikaci"</string>
     <string name="about_description_translate">"%1$s je přeloženo %2$d%%
 "</string>
@@ -1228,7 +1227,6 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_address_street_hint2">"Klepnutím na ulici v mapě ji vyberete"</string>
     <string name="quest_bicycle_incline_title">"Který směr vede nahoru?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Jsou to hupy nahoru a dolů"</string>
-    <string name="quest_drinking_water_type_title">"Jak je tu k dispozici pitná voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Jiná vodní fontána"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontána vystřikující malý proud vody"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Jen doplňování lahví"</string>
@@ -1349,4 +1347,11 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="quest_crossing_kerb_height_title">"Jaká je výška obrubníků u tohoto přechodu?"</string>
     <string name="quest_maxheight_sign_title">"Jaký výškový limit je tu uveden?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Jaký výškový limit je uveden pod tímto mostem?"</string>
+    <string name="quest_leave_new_note_as_answer">"V tom případě zanechte prosím poznámku, která vysvětlí situaci."</string>
+    <string name="quest_drinking_water_type_title2">"Je tu k dispozici pitná voda? Pokud ano, co je jejím zdrojem?"</string>
+    <string name="quest_is_amenity_inside_title">"Je to uvnitř budovy?"</string>
+    <string name="quest_bbq_fuel_title">"Čím je tento gril vyhříván?"</string>
+    <string name="quest_bbq_fuel_wood">"Dřevo"</string>
+    <string name="quest_bbq_fuel_electric">"Elektřina"</string>
+    <string name="quest_bbq_fuel_charcoal">"Dřevěné uhlí"</string>
 </resources>

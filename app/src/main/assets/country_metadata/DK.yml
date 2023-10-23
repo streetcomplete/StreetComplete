@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [Danske Bank, Nordea, Euronet, Sydbank, Jyske Bank, Arbejdernes Landsbank, Spar Nord, Nykredit, Sparekassen Kronjylland, Nordjyske Bank, Andelskassen, Sparekassen Sjælland, Totalbanken, Lån & Spar, Handelsbanken, SparekassenThy, SparNord, Vestjysk Bank, Skjern Bank, DiBa, Sparekassen Vendsyssel, Jutlander Bank, Sparekassen Thy, Ringkøbing Landbobank, Frøs Herreds Sparekasse, Lån & Spar Bank, Bank Nordik, Djurslands Bank]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

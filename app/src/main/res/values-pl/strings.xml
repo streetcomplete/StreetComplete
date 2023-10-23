@@ -378,7 +378,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_housenumber_multiple_numbers">"Ma wiele numerów domu"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Możesz wypisać wszystkie numery, oddzielając je przecinkami, lub podać ich zakres. Na przykład 1,3 lub 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Barierka / Stojak (przytrzymuje ramę roweru)"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Szeregowy / Wyrwikółka (przytrzymuje tylko koło)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Wyrwikółka (przytrzymuje tylko koło)"</string>
     <string name="quest_bicycle_parking_type_shed">"Wiata"</string>
     <string name="quest_bicycle_parking_type_locker">"Schowek"</string>
     <string name="quest_bicycle_parking_type_building">"Budynek"</string>
@@ -733,7 +733,6 @@ osiągnięć"</string>
     <string name="resurvey_intervals_less_often">"Pytaj rzadziej"</string>
     <string name="resurvey_intervals_default">"Domyślny"</string>
     <string name="resurvey_intervals_more_often">"Pytaj częściej"</string>
-    <string name="quest_is_defibrillator_inside_title">"Czy ten defibrylator (AED) jest wewnątrz budynku?"</string>
     <string name="about_title_translate">"Pomóż w tłumaczeniu"</string>
     <string name="about_description_translate">"%1$s przetłumaczono w %2$d%%"</string>
     <string name="quest_oneway2_title">"Czy ta droga jest jednokierunkowa? W którą stronę?"</string>
@@ -1224,7 +1223,6 @@ Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn
     <string name="quest_address_street_hint2">"Dotknij ulicy na mapie, aby ją wybrać"</string>
     <string name="quest_bicycle_incline_title">"W którą stronę wznosi się ścieżka?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Wznosi się i opada"</string>
-    <string name="quest_drinking_water_type_title">"W jaki sposób dostarczana jest tutaj woda pitna?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Inne poidełko"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontanna emitująca mały strumień wody"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Tylko do napełniania butelek"</string>
@@ -1326,7 +1324,7 @@ Przesunąć go teraz?"</string>
     <string name="lane_narrowing_traffic_calming_island">"Wysepka drogowa"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Szykana"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Zwężenie jezdni + wysepka drogowa"</string>
-    <string name="lane_narrowing_traffic_calming_none">"Brak zwężenie"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Brak zwężenia"</string>
     <string name="quest_tactilePaving_title_steps">"Czy góra i dół tych schodów mają wypustki dotykowe dla niewidomych?"</string>
     <string name="quest_tactilePaving_steps_top">"Tylko u góry"</string>
     <string name="quest_tactilePaving_steps_bottom">"Tylko na dole"</string>
@@ -1339,7 +1337,10 @@ Przesunąć go teraz?"</string>
 
 Dane są wyróżnione różnymi kolorami, aby zapewnić dobry podgląd tego, co zostało oznaczone do tej pory.
 Brakujące dane są zawsze wyświetlane na czerwono."</string>
+    <string name="overlays_tutorial_edit">"Dotknij na wyróżnionych danych by zobaczyć dane i edytować je. Możesz też dzielić linie i zgłaszać uwagi, podobnie jak z zadaniami.
+
+Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczonym punkcie, na przykład warstwa sklepów."</string>
     <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
-    <string name="quest_maxheight_sign_title">"Jaka jest maksymalna dopuszczalna wyskość wskazana tutaj?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Jaka jest maksymalna dopuszczalna wyskość wskazana pod mostem?"</string>
+    <string name="quest_maxheight_sign_title">"Jakie jest ograniczenie wysokości tutaj?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Jakie jest ograniczenie wysokości pod mostem?"</string>
 </resources>

@@ -2,6 +2,7 @@
 atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, BBVA Bancomer, BBVA, Banjercito, Interacciones, Banco Azteca, Inbursa, Afirme, Citibanamex, Coppel, Banco Santander, Multiva, 'BBVA Bancomer, S.A.', Banco Multiva, CIBanco, Santander Serfin, CFE, Bancomer BBVA, Banco del Bajío, 'Santander Consumo, S.A. de C.V.', Bancoppel]
 centerLineStyle: yellow
 chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
+defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: mexico

@@ -731,7 +731,6 @@ d'acompliment"</string>
     <string name="resurvey_intervals_less_often">"Demana-ho menys sovint"</string>
     <string name="resurvey_intervals_default">"Per defecte"</string>
     <string name="resurvey_intervals_more_often">"Demana-ho més sovint"</string>
-    <string name="quest_is_defibrillator_inside_title">"Hi ha un desfibril·lador (DEA) dins l'edifici?"</string>
     <string name="about_title_translate">"Ajudeu a traduir aquesta aplicació"</string>
     <string name="about_description_translate">"%1$s està traduït al %2$d%%"</string>
     <string name="quest_oneway2_title">"Aquest és un carrer de sentit únic? En quin sentit?"</string>
@@ -1229,7 +1228,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_bicycle_incline_title">"Quina direcció va cap amunt aquí?
 "</string>
     <string name="quest_bicycle_incline_up_and_down">"Són salts de pujada i baixada "</string>
-    <string name="quest_drinking_water_type_title">"Com es proporciona l'aigua potable aquí?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Altres fonts d'aigua
 "</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Font que emet un petit raig d'aigua"</string>

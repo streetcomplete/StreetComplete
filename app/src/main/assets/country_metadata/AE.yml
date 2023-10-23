@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, FAB, Al Hilal, NBAD, Union National Bank, HSBC, mashreq, RAKBANK, RAK Bank, Sharjah Islamic Bank, al hilal bank, Commercial Bank of Dubai, Mashreq Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, City Bank, FGB, Bank of Sharjah, Abu Dhabi Distribution Co., Emirates Islamic Bank, nbf, Standard Chartered, Al Masraf]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 424

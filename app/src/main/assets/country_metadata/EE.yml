@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [ru]
 atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
 chargingStationOperators: [Elmo, ELMO]
 clothesContainerOperators: [Tallinna Jäätmekeskus]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

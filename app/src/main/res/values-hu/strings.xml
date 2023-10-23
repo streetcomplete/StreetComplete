@@ -731,7 +731,6 @@ szintek"</string>
     <string name="resurvey_intervals_less_often">"Kérdezzen rá ritkábban"</string>
     <string name="resurvey_intervals_default">"Alapértelmezett"</string>
     <string name="resurvey_intervals_more_often">"Kérdezzen rá gyakrabban"</string>
-    <string name="quest_is_defibrillator_inside_title">"Van defibrillátor (AED) az épületben?"</string>
     <string name="about_title_translate">"Segíts az alkalmazás fordításában"</string>
     <string name="about_description_translate">"A %1$s nyelvű fordítás %2$d%%-ban kész"</string>
     <string name="quest_oneway2_title">"Ez egy egyirányú utca? Melyik irányban?"</string>
@@ -1217,7 +1216,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_address_street_hint2">"Koppints az utcára a kiválasztáshoz"</string>
     <string name="quest_bicycle_incline_title">"Melyik irány vezet felfelé?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Fel-le hullámzik"</string>
-    <string name="quest_drinking_water_type_title">"Mi adja az ivóvizet?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Más vízforrás"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Kis vízsugarat kibocsátó szökőkút"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Csak palacktöltés"</string>
@@ -1338,4 +1336,11 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_crossing_kerb_height_title">"Milyen magas a járdaszegély ennél a kereszteződésnél?"</string>
     <string name="quest_maxheight_sign_title">"Mekkora magassági korlátozás van jelezve?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Milyen magassági korlátozás van jelezve a híd alatt?"</string>
+    <string name="quest_leave_new_note_as_answer">"Ebben az esetben üzenetet kell hagynod, amelyben elmagyarázod a helyzetet."</string>
+    <string name="quest_drinking_water_type_title2">"Van itt ivóvíz? Ha igen, mi a forrása?"</string>
+    <string name="quest_is_amenity_inside_title">"Egy épületen belül van?"</string>
+    <string name="quest_bbq_fuel_title">"Mivel működik ez a grillező?"</string>
+    <string name="quest_bbq_fuel_wood">"Fa"</string>
+    <string name="quest_bbq_fuel_electric">"Elektromos"</string>
+    <string name="quest_bbq_fuel_charcoal">"Faszén"</string>
 </resources>

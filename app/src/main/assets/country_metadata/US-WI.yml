@@ -1,2 +1,3 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationOperators: [MG&E, Tesla Motors]
+defaultSpeedLimitHasUrbanOrRural: true

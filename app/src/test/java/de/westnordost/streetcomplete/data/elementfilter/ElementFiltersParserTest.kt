@@ -566,6 +566,17 @@ class ElementFiltersParserTest {
         notMatchesTags(mapOfKeys("a", "b", "c", "d"), expr)
     }
 
+    @Test fun `brackets are not dissolved illegally`() {
+        val expr = "a or (b or c) and !d"
+        matchesTags(mapOfKeys("a"), expr)
+        matchesTags(mapOfKeys("a", "d"), expr)
+        matchesTags(mapOfKeys("b"), expr)
+        matchesTags(mapOfKeys("c"), expr)
+        notMatchesTags(mapOfKeys("c", "d"), expr)
+        notMatchesTags(mapOfKeys("b", "d"), expr)
+        matchesTags(mapOfKeys("a", "c", "d"), expr)
+    }
+
     private fun shouldFail(input: String) {
         assertFailsWith<ParseException> {
             input.toElementFilterExpression()

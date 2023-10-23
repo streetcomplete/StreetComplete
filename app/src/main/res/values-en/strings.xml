@@ -119,6 +119,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="underground">underground</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
+    <!-- as in: “Where is the ATM?” - “It is inside” -->
+    <string name="inside">inside</string>
+    <!-- as in: “Where is the ATM?” - “It is outside” -->
+    <string name="outside">outside</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
@@ -131,6 +135,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only"</string>
     <string name="quest_leave_new_note_yes">"Leave note"</string>
     <string name="quest_leave_new_note_no">"Hide"</string>
+    <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
+
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
     <!-- aka "not applicable", "not answerable" -->
@@ -997,7 +1003,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
 
-    <string name="quest_drinking_water_type_title">How is drinking water provided here?</string>
+    <string name="quest_drinking_water_type_title2">Is drinking water available here? If so, what is its source?</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Other water fountain</string>
     <string name="quest_drinking_water_type_jet_water_fountain">Water fountain emitting small jet of water</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">Refilling bottles only</string>
@@ -1051,7 +1057,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
 
-    <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
@@ -1286,6 +1294,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
 
+    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_wood">Wood</string>
+    <string name="quest_bbq_fuel_electric">Electric</string>
+    <string name="quest_bbq_fuel_charcoal">Charcoal</string>
+
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
 
@@ -1297,7 +1310,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_green_waste">Compostable waste</string>
+    <string name="quest_recycling_type_food_waste">Food waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>

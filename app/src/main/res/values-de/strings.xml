@@ -296,12 +296,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_powerPolesMaterial_wood">"Holz"</string>
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-
-    <string name="quest_bbq_fuel_title">Womit wird dieser Grill betrieben?</string>
-    <string name="quest_bbq_fuel_wood">Holz</string>
-    <string name="quest_bbq_fuel_electric">Elektrisch</string>
-    <string name="quest_bbq_fuel_charcoal">Holzkohle</string>
-
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit …"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dach­­­­geschosse"</string>
@@ -515,7 +509,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Sollte es doch einen Bürgersteig geben, er aber als separater Weg angezeigt wird, bitte mit „Bürgersteig“ antworten."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Sollte es doch einen Bürgersteig geben, der aber als separater Weg angezeigt wird, bitte mit „Bürgersteig“ antworten."</string>
     <string name="quest_buildingType_title">"Was für ein Gebäude ist das?"</string>
     <string name="pref_title_theme_select">"Design auswählen"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -556,7 +550,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>
     <string name="quest_recycling_type_cans">"Blechdosen"</string>
     <string name="quest_recycling_type_clothes">"Kleidung"</string>
-    <string name="quest_recycling_type_green_waste">"Gartenabfälle"</string>
+    <string name="quest_recycling_type_green_waste">"Kompost"</string>
     <string name="quest_recycling_type_glass_bottles">"Glasflaschen und -gläser"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flaschen und Gläser"</string>
     <string name="quest_recycling_type_paper">"Papier"</string>
@@ -740,7 +734,6 @@ Erfolge"</string>
     <string name="resurvey_intervals_less_often">"Seltener fragen"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Öfter fragen"</string>
-    <string name="quest_is_defibrillator_inside_title">"Befindet sich dieser Defibrillator innerhalb eines Gebäudes?"</string>
     <string name="about_title_translate">"App übersetzen"</string>
     <string name="about_description_translate">"%1$s ist zu %2$d%% übersetzt"</string>
     <string name="quest_oneway2_title">"Ist dies eine Einbahnstraße? In welche Richtung?"</string>
@@ -1230,7 +1223,6 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_address_street_hint2">"Straße auf der Karte antippen, um sie auszuwählen"</string>
     <string name="quest_bicycle_incline_title">"Welche Richtung führt hier nach oben?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Es geht rauf und runter"</string>
-    <string name="quest_drinking_water_type_title">"Wie wird das Trinkwasser hier bereitgestellt?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Anderer Trinkwasserbrunnen"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Trinkbrunnen mit kleinem Wasserstrahl"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Nur Flaschen nachfüllen"</string>
@@ -1351,4 +1343,14 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Kreuzung?"</string>
     <string name="quest_maxheight_sign_title">"Welche Durchfahrtshöhe ist hier angegeben?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Welche Durchfahrtshöhe ist unter der Brücke angegeben?"</string>
+    <string name="quest_leave_new_note_as_answer">"Hinterlasse in diesem Fall einen Hinweis, in dem du die Situation beschreibst."</string>
+    <string name="quest_drinking_water_type_title2">"Gibt es hier Trinkwasser? Wenn ja, aus welcher Quelle?"</string>
+    <string name="quest_is_amenity_inside_title">"Ist das in einem Gebäude?"</string>
+    <string name="quest_bbq_fuel_title">"Womit wird dieser Grill betrieben?"</string>
+    <string name="quest_bbq_fuel_wood">"Holz"</string>
+    <string name="quest_bbq_fuel_electric">"Elektrisch"</string>
+    <string name="quest_bbq_fuel_charcoal">"Holzkohle"</string>
+    <string name="inside">"im Gebäude"</string>
+    <string name="outside">"draußen"</string>
+    <string name="quest_recycling_type_food_waste">"Essensreste"</string>
 </resources>

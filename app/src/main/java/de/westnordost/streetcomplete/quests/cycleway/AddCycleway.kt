@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
@@ -22,6 +21,7 @@ import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 
 class AddCycleway(
@@ -131,7 +131,7 @@ private val roadsFilter by lazy { """
 private val untaggedRoadsFilter by lazy { """
     ways with (
         highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-        or highway = residential and (maxspeed > 33 or $notInZone30OrLess)
+        or highway = residential and (maxspeed > 33 or $isImplicitMaxSpeedButNotSlowZone)
       )
       and !cycleway
       and !cycleway:left
@@ -144,16 +144,12 @@ private val untaggedRoadsFilter by lazy { """
       and (
         !maxspeed
         or maxspeed > 20
-        or $notInZone30OrLess
+        or $isImplicitMaxSpeedButNotSlowZone
       )
       and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
       and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
       and sidewalk != separate
 """.toElementFilterExpression() }
-
-private val notInZone30OrLess = """
-   ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|rural|trunk|motorway|nsl_single|nsl_dual)"
-"""
 
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 

@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [international]
 atmOperators: [Охридска Банка, Шпаркасе, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Stopanska Banka, Комерцијална Банка АД Скопје, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
 chargingStationOperators: [EVN]
+defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

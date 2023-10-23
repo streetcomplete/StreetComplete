@@ -2,6 +2,7 @@
 atmOperators: [BCR, BRD, Banca Transilvania, Raiffeisen Bank, CEC Bank, Raiffeisen, ING, Alpha Bank, UniCredit Bank, Bancpost, ING România, Euronet, BT, ATM Bancpost, First Bank, CEC, ATM RZB, Piraeus Bank, Garanti Bank, UniCredit Bank SA, GarantiBank, OTP Bank, ATM Unicredit Bank, Raiffeisenbank, MKB Nextebank, Vista Bank, Banca Românească, Banca Comercială Română SA, RZB, ATM Dezinstalat, Unicredit Țiriac, ATM, citibank, ProCredit Bank, Credit Europe Bank, Banca Comercială Română, Raifeissen Bank, ING Bank, ATM Alpha Bank, ATM Piraeus Bank, Alpha]
 chargingStationOperators: [STPT, Renovatio, Lidl, Kaufland, Flow, Enel]
 clothesContainerOperators: [Caritas]
+defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

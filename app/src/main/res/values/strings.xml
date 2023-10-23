@@ -119,6 +119,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="underground">underground</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
+    <!-- as in: “Where is the ATM?” - “It is inside” -->
+    <string name="inside">inside</string>
+    <!-- as in: “Where is the ATM?” - “It is outside” -->
+    <string name="outside">outside</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
@@ -1054,6 +1058,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_internet_access_no">No connection</string>
 
     <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
@@ -1304,7 +1310,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_green_waste">Compostable waste</string>
+    <string name="quest_recycling_type_food_waste">Food waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>

@@ -734,7 +734,6 @@ nivoji"</string>
     <string name="resurvey_intervals_less_often">"Vprašaj manj pogosto"</string>
     <string name="resurvey_intervals_default">"Osnovno"</string>
     <string name="resurvey_intervals_more_often">"Vprašaj bolj pogosto"</string>
-    <string name="quest_is_defibrillator_inside_title">"Ali je ta defibrilator (AED) znotraj stavbe?"</string>
     <string name="about_title_translate">"Pomagaj prevesti to aplikacijo"</string>
     <string name="about_description_translate">"%1$s se prevede v %2$d%%"</string>
     <string name="quest_oneway2_title">"Ali je to enosmerna ulica? V katero smer? "</string>
@@ -1224,7 +1223,6 @@ Na žalost zaradi pravil trgovine Google Play, v aplikaciji ne smemo prikazati n
     <string name="quest_address_street_hint2">"Tapni ulico na zemljevidu da jo izbereš"</string>
     <string name="quest_bicycle_incline_title">"Katera smer vodi navzgor?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Gre gor in dol"</string>
-    <string name="quest_drinking_water_type_title">"Kako je tukaj zagotovljena pitna voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Druga vodna fontana"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Pitnik"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Samo polnjenje plastenk"</string>

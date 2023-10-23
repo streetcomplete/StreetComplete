@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco BIC Angola, Banco Keve]
 centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow
 hasLivingStreet: true
 livingStreetSignStyle: sadc

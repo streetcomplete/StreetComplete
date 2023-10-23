@@ -736,7 +736,6 @@
     <string name="resurvey_intervals_less_often">"Пытацца радзей"</string>
     <string name="resurvey_intervals_default">"Па змаўчанні"</string>
     <string name="resurvey_intervals_more_often">"Пытацца часцей"</string>
-    <string name="quest_is_defibrillator_inside_title">"Дэфібрылятар (AED) знаходзіцца ўнутры будынка?"</string>
     <string name="about_title_translate">"Дапамажыце перакласцi гэты дадатак"</string>
     <string name="about_description_translate">"%1$s перакладзены на %2$d%%"</string>
     <string name="quest_oneway2_title">"Гэта вуліца з аднабаковым рухам? Калі так, то ў якім напрамку?"</string>
@@ -1225,7 +1224,6 @@
     <string name="quest_address_street_hint2">"Націсніце на вуліцу на карце каб выбраць яе"</string>
     <string name="quest_bicycle_incline_title">"Які напрамак тут вядзе ўверх?"</string>
     <string name="quest_bicycle_incline_up_and_down">"То ўверх, то ўніз"</string>
-    <string name="quest_drinking_water_type_title">"Як тут атрымаць пiтную ваду?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Іншы пітны фантан"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Пітны фантан з невялікім струменьчыкам вады"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Толькі напаўненне бутэлек"</string>

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Barclays, Standard Chartered, KCB ATM, KCB, Standard Chartered Bank, Equity Bank ATM, Pesa Point, PesaPoint, Barclays Bank ATM, National Bank ATM, Equity Bank, Cooperative Bank, Equity ATM, Cooperative Bank ATM, Diamond Trust Bank, Cooprative Bank, Kenya Commercial Bank, CFC Stanbic, CBA ATM]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 639

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [KBZ, KBZ Bank, CB Bank, AGD Bank, AYA Bank, a, CB, MAB, AGD, AYA, C B Bank, UAB Bank, UAB, KBZ ATM, AYA ATM, CB Bank ATM, MAB Bank, Aya Bank ATM, Ayeyarwaddy Bank, MAB ATM, aa, CB ATM, ATM, ကမ္ဘောဇဘဏ် KBZ Bank, Myanma Apex Bank, 1, MCB, ယူနိုက်တက်အမရာဘဏ် UAB ATM]
+defaultSpeedLimitHasUrbanOrRural: true
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
 noParkingLineStyle: yellow-white on curb

@@ -49,8 +49,6 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
         if (node is Not) {
             node = node.parent!!
         }
-
-        node.flatten()
     }
 
     fun addValue(i: I) {

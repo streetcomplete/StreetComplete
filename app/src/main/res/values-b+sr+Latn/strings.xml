@@ -733,7 +733,6 @@ dani"</string>
     <string name="resurvey_intervals_less_often">"Pitaj ređe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_is_defibrillator_inside_title">"Da li je ovaj defibrilator (AED) unutar zgrade?"</string>
     <string name="about_title_translate">"Pomozite u prevodu ovog programa"</string>
     <string name="about_description_translate">"%1$s je preveden %2$d%%"</string>
     <string name="quest_oneway2_title">"Da li je ovo jednosmerna ulica? U kom smeru?"</string>
@@ -1221,7 +1220,6 @@ Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donac
     <string name="quest_address_street_hint2">"Dodirnite ulicu na karti"</string>
     <string name="quest_bicycle_incline_title">"Koji smer vodi nagore odavde?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Ide gore-dole"</string>
-    <string name="quest_drinking_water_type_title">"Kako je ovde dostupna voda za piće?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Drugi tip fontanice"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontanica slabog pritiska"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Samo za dopunu flašica"</string>
@@ -1339,4 +1337,6 @@ Podaci koji nedostaju se uvek obeležavaju crvenom bojom."</string>
 
 Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podataka na poziciji pokazivača, kao što to pruža sloj adresa."</string>
     <string name="quest_crossing_kerb_height_title">"Koliko je visok ivičnjak na ovom prelazu?"</string>
+    <string name="quest_maxheight_sign_title">"Koja maksimalna visina je ovde navedena?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Koja maksimalna visina je navedena ispod mosta?"</string>
 </resources>

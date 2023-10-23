@@ -734,7 +734,6 @@ conquista"</string>
     <string name="resurvey_intervals_less_often">"Pergunte com menos frequência"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="resurvey_intervals_more_often">"Pergunte com mais frequência"</string>
-    <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
     <string name="about_title_translate">"Ajude a traduzir"</string>
     <string name="about_description_translate">"%1$s está %2$d%% traduzido"</string>
     <string name="quest_oneway2_title">"Esta é uma rua de mão única? Em que direção?"</string>
@@ -1224,7 +1223,6 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_address_street_hint2">"Toque na rua no mapa para selecioná-la"</string>
     <string name="quest_bicycle_incline_title">"Qual direção leva para cima aqui?"</string>
     <string name="quest_bicycle_incline_up_and_down">"É saltos para cima e para baixo"</string>
-    <string name="quest_drinking_water_type_title">"Como a água potável é fornecida aqui?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Outra fonte de água"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fonte de água emitindo pequeno jato de água"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Apenas reabastecimento de garrafas"</string>

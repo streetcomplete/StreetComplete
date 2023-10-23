@@ -2,6 +2,7 @@
 atmOperators: [BCP, Scotiabank, Banco de la Nación, Caja Arequipa, Interbank, Globalnet, BBVA, Multired, Banco de Crédito del Perú, Banco de la Nacion, BBVA Continental, Banco Continental, Banco de Credito, Caja Piura, 1, Multi Red, Caja Cusco, Banco de Crédito, Global Net, Continental, max, Scotia Bank, CODO DE POZUZO]
 centerLineStyle: yellow
 chargingStationOperators: [La Puntilla]
+defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: true
 mobileCountryCode: 716
 noEntrySignStyle: no entre

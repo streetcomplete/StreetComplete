@@ -728,7 +728,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="resurvey_intervals_less_often">"Vraag minder vaak"</string>
     <string name="resurvey_intervals_default">"Standaard"</string>
     <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
-    <string name="quest_is_defibrillator_inside_title">"Is deze defibrilator (AED) binnen een gebouw?"</string>
     <string name="about_title_translate">"Help deze app te vertalen"</string>
     <string name="about_description_translate">"%1$s is %2$d%% vertaald"</string>
     <string name="quest_oneway2_title">"Is hier eenrichtingsverkeer? In welke richting?"</string>
@@ -1216,7 +1215,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_address_street_hint2">"Tik op een straat om deze te selecteren"</string>
     <string name="quest_bicycle_incline_title">"In welke richting gaat het hier naar boven?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Het gaat op en neer"</string>
-    <string name="quest_drinking_water_type_title">"Hoe wordt hier drinkwater aangeboden?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Ander soort drinkfontein"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Drinkfontein die een straaltje water geeft"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Alleen flesjes bijvullen"</string>

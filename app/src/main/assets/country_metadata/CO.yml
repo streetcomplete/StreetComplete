@@ -2,6 +2,7 @@
 atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Banco de Bogotá, Banco Popular, Colpatria, Grupo Aval, Servibanca S.A., Banco Caja Social, Citibank, Av Villas, Banco Agrario, Caja Social, Bacolombia, Banco Agrario de Colombia, Banco Colombia, Cajero Bancolombia, Scotiabank, A Toda Hora (ATH) S.A., cajero BBVA, Banco Pichincha, cespo, BancoBogota, Banco de Occidente, Casa Kennedy, Cajero, polv, VIA baloto, COOMULDESA, Banco AV Villas, CAJERO BANCO POPULAR]
 centerLineStyle: yellow
 chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 732
 noEntrySignStyle: no entre
 noParkingSignStyle: mutcd

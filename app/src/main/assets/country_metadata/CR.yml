@@ -2,6 +2,7 @@
 atmOperators: [Banco de Costa Rica, BCR, Banco Nacional, Banco Popular, BAC Credomatic, ATH, BAC, Banco de Costa Rica (BCR), Cajero BCR, Scotiabank]
 centerLineStyle: yellow
 chargingStationOperators: [Estación de Recarga]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 712
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd

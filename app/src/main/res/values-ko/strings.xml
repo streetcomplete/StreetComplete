@@ -733,7 +733,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="resurvey_intervals_less_often">"더 가끔 물어보기"</string>
     <string name="resurvey_intervals_default">"기본값"</string>
     <string name="resurvey_intervals_more_often">"더 자주 물어보기"</string>
-    <string name="quest_is_defibrillator_inside_title">"이 심장충격기(제세동기, AED)가 건물 안에 있나요?"</string>
     <string name="about_title_translate">"앱 번역을 도와주세요"</string>
     <string name="about_description_translate">"%1$s은(는) %2$d%% 번역되었습니다"</string>
     <string name="quest_oneway2_title">"일방통행 도로인가요? 통행 방향은 어느쪽인가요?"</string>
@@ -1221,7 +1220,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_address_street_hint2">"지도의 길을 눌러 선택하세요"</string>
     <string name="quest_bicycle_incline_title">"여기서 어느 방향이 위쪽으로 이어지나요?"</string>
     <string name="quest_bicycle_incline_up_and_down">"업앤다운 홉이다."</string>
-    <string name="quest_drinking_water_type_title">"여기에 식수 공급이 어떻게 되나요?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"기타 분수"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"작은 물줄기가 나오는 분수"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"물통 급수 전용"</string>

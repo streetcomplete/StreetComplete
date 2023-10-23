@@ -718,7 +718,6 @@ aktiva"</string>
     <string name="resurvey_intervals_less_often">"Demandu malpli ofte"</string>
     <string name="resurvey_intervals_default">"Defaŭlte"</string>
     <string name="resurvey_intervals_more_often">"Demandu pli ofte"</string>
-    <string name="quest_is_defibrillator_inside_title">"Ĉu ĉi tiu malfibrilaciilo (AED) estas ene de konstruaĵo?"</string>
     <string name="about_title_translate">"Helpi traduki ĉi tiun apon"</string>
     <string name="about_description_translate">"%1$s estas tradukita %2$d%%"</string>
     <string name="quest_oneway2_title">"Ĉu ĉi tio estas unudirekta strato? En kiu direkto?"</string>
@@ -1192,7 +1191,6 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
     <string name="quest_bicycle_incline_title">"Kiu direkto iras supren?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Iras supremalsupren"</string>
-    <string name="quest_drinking_water_type_title">"Kiel trinkakvo estas disponigita ĉi tie?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Alia fontano"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontano kie elŝprucas akvoarketon"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Nur por plenigi botelojn"</string>

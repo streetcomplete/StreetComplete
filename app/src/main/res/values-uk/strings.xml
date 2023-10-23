@@ -729,7 +729,6 @@
     <string name="resurvey_intervals_less_often">"Опитувати рідше"</string>
     <string name="resurvey_intervals_default">"Типово"</string>
     <string name="resurvey_intervals_more_often">"Опитувати частіше"</string>
-    <string name="quest_is_defibrillator_inside_title">"Чи є дефібрилятор (АЗД) всередині будівлі?"</string>
     <string name="about_title_translate">"Допоможіть перекласти"</string>
     <string name="about_description_translate">"%1$s перекладено %2$d%%"</string>
     <string name="quest_oneway2_title">"Це вулиця з одностороннім рухом? В якому напрямку?"</string>
@@ -1216,7 +1215,6 @@
     <string name="quest_address_street_hint2">"Торкніться потрібної вулиці на мапі"</string>
     <string name="quest_bicycle_incline_title">"Який напрямок тут веде вгору?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Стрибає вгору-вниз"</string>
-    <string name="quest_drinking_water_type_title">"Який тут тип обʼєкту з питною водою?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Інший тип фонтану"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Фонтан випускає маленький струмінь води"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Лише наповнення пляшок"</string>
@@ -1335,4 +1333,16 @@
 
 Заразом, деякі шари дозволяють додавати нові дані в позицію екранної хрестовини, наприклад шар адрес."</string>
     <string name="quest_crossing_kerb_height_title">"Яка висота бордюрів на цьому переході?"</string>
+    <string name="quest_maxheight_sign_title">"Яке обмеження висоти вказане тут?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Яке обмеження висоти вказане під мостом?"</string>
+    <string name="quest_leave_new_note_as_answer">"У цьому випадку треба залишити нотатку з поясненням ситуації."</string>
+    <string name="quest_drinking_water_type_title2">"Чи є тут питна вода? Якщо є, яке її джерело?"</string>
+    <string name="quest_is_amenity_inside_title">"Це всередині будівлі?"</string>
+    <string name="quest_bbq_fuel_title">"Яким паливом нагрівається цей гриль?"</string>
+    <string name="quest_bbq_fuel_wood">"Дрова"</string>
+    <string name="quest_bbq_fuel_electric">"Електрика"</string>
+    <string name="quest_bbq_fuel_charcoal">"Деревне вугілля"</string>
+    <string name="inside">"всередині"</string>
+    <string name="outside">"зовні"</string>
+    <string name="quest_recycling_type_food_waste">"Харчові відходи"</string>
 </resources>

@@ -732,7 +732,6 @@ dienų"</string>
     <string name="resurvey_intervals_less_often">"Klausti rečiau"</string>
     <string name="resurvey_intervals_default">"Numatytasis"</string>
     <string name="resurvey_intervals_more_often">"Klausti dažniau"</string>
-    <string name="quest_is_defibrillator_inside_title">"Ar defibriliatorius (AED) yra pastato viduje?"</string>
     <string name="about_title_translate">"Padėkite išversti šią programėlę"</string>
     <string name="about_description_translate">"%1$s išversta %2$d%%"</string>
     <string name="quest_oneway2_title">"Ar ši gatvė vienpusė? Į kurią kryptį?"</string>
