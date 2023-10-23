@@ -75,7 +75,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Diferă în funcție de lună…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Fără program stabilit…"</string>
     <string name="quest_openingHours_comment_title">"Detaliați orele de funcționare"</string>
-    <string name="quest_openingHours_comment_description">"Fiți concis(ă), ideal ar fi să utilizați formularea de pe plăcuță, e.g. \"Cu programare\". Absența programului nu semnifică neapărat că nu există un program regulat de lucru."</string>
+    <string name="quest_openingHours_comment_description">"Fiți concis(ă), ideal ar fi să utilizați formularea de pe plăcuță, e.g. “Cu programare”. Absența programului nu semnifică neapărat că nu există un program regulat de lucru."</string>
     <string name="quest_roofShape_title">"Care este forma de bază a acoperișului acestei clădiri?"</string>
     <string name="quest_roofShape_select_one">"Alegeți una:"</string>
     <string name="quest_roofShape_show_more">"Arată mai mult…"</string>
@@ -99,7 +99,8 @@ Aplicația nu trimite nimănui coordonatele dumneavoastră GPS. Ele sunt  folosi
 &lt;p&gt; &lt;b&gt; Utilizarea datelor&lt;/b&gt; &lt;/p&gt;
 &lt;p&gt;
 Această aplicație comunică direct cu serverele OSM.&lt;br/&gt;
-Înainte de a trimite modificările dumneavoastră, ea verifică un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simplu fișier text&lt;/a&gt; de pe serverul meu pentru a se asigura că versiunea curentă a aplicației nu a fost blocată de la trimiterea modificărilor. Aceasta e o măsură de precauție pentru a putea bloca versiuni ce au erori critice, împieducându-le să trimită date corupte către OSM.&lt;/p&gt;"</string>
+Înainte de a trimite modificările dumneavoastră, ea verifică un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simplu fișier text&lt;/a&gt; de pe serverul meu pentru a se asigura că versiunea curentă a aplicației nu a fost blocată de la trimiterea modificărilor. Aceasta e o măsură de precauție pentru a putea bloca versiuni ce au erori critice, împieducându-le să trimită date corupte către OSM.
+&lt;/p&gt;"</string>
     <string name="autosync_on">"Activat"</string>
     <string name="autosync_only_on_wifi">"Doar pe Wi-Fi"</string>
     <string name="autosync_off">"Dezactivat"</string>
@@ -202,8 +203,8 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_wheelchairAccess_limited">"Parțial"</string>
     <string name="quest_bikeParkingCapacity_hint">"Rețineți că majoritatea standurilor pot fi utilizate pe ambele părți pentru a parca câte o bicicletă."</string>
     <string name="quest_sport_roller_skating">"Patine cu rotile"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Prin parțial se înțelege că nu este mai mult de o treaptă (înaltă până la gleznă) pentru a intra în locație și că majoritatea spațiilor din interior sunt accesibile scaunului cu rotile."</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Prin parțial se înțelege că nu este mai mult de o treaptă (înaltă până la gleznă) pentru a îl accesa."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a intra în locație și că majoritatea spațiilor din interior sunt accesibile unui scaun cu rotile."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a-l accesa."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Există abrevieri în numele %s?"</string>
     <string name="quest_recycling_type_title">"Ce tip de unitate pentru reciclare este?"</string>
     <string name="recycling_centre">"Centru de reciclare"</string>
@@ -301,7 +302,7 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_buildingLevels_levelsLabel2">"niveluri (excluzând acoperișul)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diferă în funcție de partea clădirii"</string>
     <string name="quest_buildingLevels_answer_description">"In această situație, introduceți valoarea pentru cea mai înaltă parte a clădirii."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Benzile  acestui drum aici sunt separate fizic (adică printr-o barieră)? Limita de viteză implicită depinde de bandă."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sensurile opuse ale acestui drum sunt separate printr-o barieră fizică sau spațiu verde? Limita de viteză implicită poate depinde de aceasta."</string>
     <string name="about_category_feedback">"Contribuiți"</string>
     <string name="quest_leave_new_note_photo">"Atașează o fotografie"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Doriți sa ștergeți această fotografie?"</string>
@@ -392,12 +393,12 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="questList_disabled_in_country">"Niciodată arătat în %s"</string>
     <string name="quest_select_hint_most_specific">"Selectați ce se potrivește cel mai bine:"</string>
     <string name="quest_generic_item_confirmation">"Sigur nu puteți afla mai exact?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți. În special, pentru misiunea \"sens unic\" se apelează o interfață găzduită pe westnordost.de, despre candidații probabili pentru sensuri unice.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți. În special, pentru misiunea \"Sens unic\" se apelează o interfață găzduită pe westnordost.de, despre candidații probabili pentru sensuri unice.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lasă o notă)"</string>
     <string name="pref_quests_reset">"Resetați la valorile implicite atât tipurile de misiuni activate, cât și ordinea lor?"</string>
     <string name="quest_generic_item_invalid_value">"Selectați o valoare mai exactă."</string>
     <string name="quest_buildingType_answer_multiple_types">"Are mai multe scopuri"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Pur și simplu selectați scopul principal al acestei clădiri. De exemplu, dacă există un magazin la parter, cu apartamente deasupra acestuia, acesta este în continuare un bloc de apartamente."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Selectați scopul principal al acestei clădiri. De exemplu, dacă există un magazin la parter, cu apartamente deasupra acestuia, acesta este în continuare un bloc de apartamente."</string>
     <string name="quest_buildingType_answer_construction_site">"Este încă în construcție"</string>
     <string name="quest_buildingType_residential">"Rezidential"</string>
     <string name="quest_buildingType_residential_description">"clădire în care locuiesc oameni"</string>
@@ -476,7 +477,7 @@ la parter"</string>
     <string name="quest_buildingType_toilets">"Toalete"</string>
     <string name="quest_maxspeed_sign_question">"Ce definește limita de viteză?"</string>
     <string name="quest_segregated_title">"Cum sunt aranjate pistele pietonală și de biciclete?"</string>
-    <string name="dialog_tutorial_upload">"Pentru a trimite modificările dvs. manual, utilizați butonul din bara de instrumente care arată astfel."</string>
+    <string name="dialog_tutorial_upload">"Pentru a trimite manual modificările dumneavoastră, utilizați butonul din bara de instrumente care arată astfel."</string>
     <string name="quest_segregated_separated">"Separate una de alta"</string>
     <string name="quest_segregated_mixed">"Bicliștii și pietonii folosesc același spațiu"</string>
     <string name="quest_maxheight_title">"Care este limita de înălțime?"</string>
@@ -731,7 +732,6 @@ activitate"</string>
     <string name="resurvey_intervals_less_often">"Mai rar"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Mai des"</string>
-    <string name="quest_is_defibrillator_inside_title">"Se află defibrilatorul (DEA) în interiorul unei clădiri?"</string>
     <string name="about_title_translate">"Ajută la traducerea acestei aplicații"</string>
     <string name="about_description_translate">"%1$s este tradusă %2$d%%"</string>
     <string name="quest_oneway2_title">"Este o stradă cu sens unic? În ce direcție?"</string>
@@ -1218,7 +1218,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_address_street_hint2">"Atingeți strada pe hartă pentru a o selecta"</string>
     <string name="quest_bicycle_incline_title">"Ce direcție duce în sus către acest loc?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Hopuri în sus și-n jos"</string>
-    <string name="quest_drinking_water_type_title">"Cum se furnizează apa potabilă?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Alt fel de fântână"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fântână cu jet mic de apă"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Doar reumplere sticle"</string>
@@ -1337,4 +1336,6 @@ Datele lipsă sunt mereu arătate cu roșu."</string>
 
 În plus, unele overlay-uri vă permit să adăugați date noi în poziția indicată, cum ar fi overlay-ul pentru adrese."</string>
     <string name="quest_crossing_kerb_height_title">"Care este înălțimea bordurilor trecerii?"</string>
+    <string name="quest_maxheight_sign_title">"Ce limită de înălțime este indicată aici?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Ce limită de înălțime este indicată sub pod?"</string>
 </resources>

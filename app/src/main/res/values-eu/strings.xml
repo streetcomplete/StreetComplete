@@ -730,7 +730,6 @@ mailak"</string>
     <string name="resurvey_intervals_less_often">"Ez galdetu hain sarritan"</string>
     <string name="resurvey_intervals_default">"Lehenetsia"</string>
     <string name="resurvey_intervals_more_often">"Galdetu sarriago"</string>
-    <string name="quest_is_defibrillator_inside_title">"(AED) desfibriladore hau eraikinaren barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
     <string name="about_description_translate">"%1$s %2$d%% itzuli da"</string>
     <string name="quest_oneway2_title">"Kale hau norabide bakarrekoa da? Zein norabidekoa?"</string>
@@ -1223,7 +1222,6 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_address_street_hint2">"Ukitu kalea mapan hautatzeko"</string>
     <string name="quest_bicycle_incline_title">"Zein norantz doa hemen gorantz?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Gora eta beherako saltoak"</string>
-    <string name="quest_drinking_water_type_title">"Nola hornitzen da edateko ura hemen?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Beste ur iturria"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Ur iturriak ur-zorrotada txikia ematen du"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Botilak betetzea soilik"</string>

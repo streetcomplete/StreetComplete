@@ -723,7 +723,6 @@
     <string name="resurvey_intervals_less_often">"Да се пита по-рядко"</string>
     <string name="resurvey_intervals_default">"По подразбиране"</string>
     <string name="resurvey_intervals_more_often">"Да се пита по-често"</string>
-    <string name="quest_is_defibrillator_inside_title">"Има ли дефибрилатор (AED) в сградата?"</string>
     <string name="about_title_translate">"Помогнете с превода на това приложение"</string>
     <string name="about_description_translate">"Преводът на %1$s е завършен на %2$d%%"</string>
     <string name="quest_oneway2_title">"Това еднопосочна улица ли е? В коя посока?"</string>
@@ -1209,7 +1208,6 @@
     <string name="quest_address_street_hint2">"Докоснете улица на картата, за да я изберете"</string>
     <string name="quest_bicycle_incline_title">"Коя посока е за нагоре?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Това е хмел нагоре и надолу"</string>
-    <string name="quest_drinking_water_type_title">"Как се осигурява питейна вода тук?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Друг фонтан"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Воден фонтан, изпускащ малка водна струя"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само презареждане на бутилки"</string>

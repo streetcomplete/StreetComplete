@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Rawbank, Raw Bank, BIAC]
 centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: short white dashes
 mobileCountryCode: 630
 noParkingSignStyle: vienna

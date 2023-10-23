@@ -732,7 +732,6 @@
     <string name="resurvey_intervals_less_often">"詢問更少資訊"</string>
     <string name="resurvey_intervals_default">"預設"</string>
     <string name="resurvey_intervals_more_often">"詢問更多資訊"</string>
-    <string name="quest_is_defibrillator_inside_title">"這一個去顫器 (AED) 是在建築物裡嗎？"</string>
     <string name="about_title_translate">"幫忙翻譯這款 app"</string>
     <string name="about_description_translate">"%1$s 翻譯 %2$d%%"</string>
     <string name="quest_oneway2_title">"這是單行道嗎？那個方向呢？"</string>
@@ -1220,7 +1219,6 @@
     <string name="quest_address_street_hint2">"點一下道路來選取道路"</string>
     <string name="quest_bicycle_incline_title">"往上的方向是朝向什麼方向？"</string>
     <string name="quest_bicycle_incline_up_and_down">"是上上下下的坡道"</string>
-    <string name="quest_drinking_water_type_title">"這裡的飲水如何提供？"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"其他飲用水泉"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"水泉會放出小流水"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"只有用瓶子裝"</string>

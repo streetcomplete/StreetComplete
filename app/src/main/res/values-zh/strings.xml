@@ -732,7 +732,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="resurvey_intervals_less_often">"减少询问次数"</string>
     <string name="resurvey_intervals_default">"默认"</string>
     <string name="resurvey_intervals_more_often">"增加询问次数"</string>
-    <string name="quest_is_defibrillator_inside_title">"心脏除颤器（AED）位于建筑物内部吗？"</string>
     <string name="about_title_translate">"帮助翻译本应用"</string>
     <string name="about_description_translate">"%1$s 已翻译 %2$d%%"</string>
     <string name="quest_oneway2_title">"这是条单行道吗？沿什么方向？"</string>
@@ -1224,7 +1223,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_address_street_hint2">"点击地图上的街道来选择它"</string>
     <string name="quest_bicycle_incline_title">"哪个方向朝向高处？"</string>
     <string name="quest_bicycle_incline_up_and_down">"它是上下起伏的"</string>
-    <string name="quest_drinking_water_type_title">"这里是如何提供饮用水的？"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"其它饮水装置"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"冒出小水柱的喷水机"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"仅再灌瓶"</string>

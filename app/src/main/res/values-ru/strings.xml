@@ -736,7 +736,6 @@
     <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
-    <string name="quest_is_defibrillator_inside_title">"Дефибриллятор (AED) находится внутри здания?"</string>
     <string name="about_title_translate">"Помогите перевести это приложение"</string>
     <string name="about_description_translate">"%1$s переведён на %2$d%%"</string>
     <string name="quest_oneway2_title">"Это улица с односторонним движением? Если да, то в каком направлении?"</string>
@@ -830,7 +829,7 @@
     <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Это платная парковка для велосипеда?"</string>
-    <string name="quest_buildingType_house_description2">"Частный дом"</string>
+    <string name="quest_buildingType_house_description2">"дом на одну семью, например, находящийся в ряду домов"</string>
     <string name="quest_drinking_water_potable_signed">"Питьевая вода (есть знак)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Питьевая вода (нет знака)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Не питьевая вода (есть знак)"</string>
@@ -892,7 +891,7 @@
     <string name="quest_policeType_title">"Какой это полицейский участок?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Преобразовано в калитку-вертушку"</string>
     <string name="quest_stile_type_title">"Какой это тип приступка?"</string>
-    <string name="quest_buildingType_semi_detached_description2">"примыкающий односемейный дом(а)"</string>
+    <string name="quest_buildingType_semi_detached_description2">"дома на одну семью под одной крышей"</string>
     <string name="pref_title_quests2">"Выбор и приоритет квеста"</string>
     <string name="pref_subtitle_quests">"выбрано %1$d из %2$d"</string>
     <string name="no_location_permission_warning_title">"Разрешение определения местоположения"</string>
@@ -1226,7 +1225,6 @@
     <string name="quest_address_street_hint2">"Нажмите на улицу на карте чтобы выбрать её"</string>
     <string name="quest_bicycle_incline_title">"Какое направление здесь ведёт вверх?"</string>
     <string name="quest_bicycle_incline_up_and_down">"То вверх, то вниз"</string>
-    <string name="quest_drinking_water_type_title">"Как здесь предоставляется питьевая вода?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Другой питьевой фонтан"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Питьевой фонтан с небольшой струйкой воды"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Только наполнение бутылок"</string>

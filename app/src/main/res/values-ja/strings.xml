@@ -736,7 +736,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="resurvey_intervals_less_often">"質問頻度を減らす"</string>
     <string name="resurvey_intervals_default">"デフォルト"</string>
     <string name="resurvey_intervals_more_often">"質問頻度を増やす"</string>
-    <string name="quest_is_defibrillator_inside_title">"この除細動器 (AED) は建物内にありますか?"</string>
     <string name="about_title_translate">"アプリの翻訳を手伝う"</string>
     <string name="about_description_translate">"%2$d%% が %1$s に翻訳されました"</string>
     <string name="quest_oneway2_title">"これは一方通行路ですか? 方向は?"</string>
@@ -1226,7 +1225,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_address_street_hint2">"地図上の通りをタップして選択します"</string>
     <string name="quest_bicycle_incline_title">"どちらの方向がここを上向きに導いていますか?"</string>
     <string name="quest_bicycle_incline_up_and_down">"アップホップとダウンホップです"</string>
-    <string name="quest_drinking_water_type_title">"飲料水はどのように提供されていますか?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"その他の噴水"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"小さな噴水を放つ噴水"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"ボトルの詰め替えのみ"</string>

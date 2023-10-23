@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [بنك الرياض, مصرف الراجحي, SABB, صراف الراجحي, الراجحي, Bank Al-Bilad, Al Rajhi Bank, مصرف الإنماء, NCB, SAMBA, الأهلي, صراف الأهلي, صراف العربي, Bank AlJazira, Al Rajhi, بنك الراجحي, البنك الأهلي التجاري, البنك العربي, مصرف الانماء, البنك الاهلي, صراف الرياض, البنك السعودي للاستثمار, سامبا, Alahli NCB, الإنماء, البنك العربي الوطني, Saudi Hollandi Bank, الاهلي, Al Rajhi ATM, صرافة بنك الرياض, البنك السعودي الفرنسي, Riyad Bank, البنك الاول, Riyadh Bank, Al-Rajhi Bank, Alarabi Bank, Alrajhi Bank, Alinma Bank, العربي, Alinma ATM, Albilad, بنك الجزيرة, بنك البلاد, صراف بنك الراجحي, Al Rayhi Bank, صراف الاهلي, صراف ساب]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 mobileCountryCode: 420
 officialLanguages: [ar]

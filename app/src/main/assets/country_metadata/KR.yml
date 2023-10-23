@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [ko-Latn]
 advisorySpeedLimitSignStyle: white
 atmOperators: [신한은행, 우리은행, 국민은행, 하나은행, 농협, 농협은행, NH농협은행, IBK기업은행, 기업은행, Woori Bank, 부산은행, Citibank, KEB, KB국민은행, 경남은행, Shinhan Bank, KB, IBK]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 450
 officialLanguages: [ko]

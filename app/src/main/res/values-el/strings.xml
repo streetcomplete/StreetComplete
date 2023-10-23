@@ -723,7 +723,6 @@
     <string name="resurvey_intervals_less_often">"Ρωτήστε λιγότερο συχνά"</string>
     <string name="resurvey_intervals_default">"Προκαθορισμένο"</string>
     <string name="resurvey_intervals_more_often">"Ρωτήστε πιο συχνά"</string>
-    <string name="quest_is_defibrillator_inside_title">"Είναι αυτός ο απινιδωτής (AED) μέσα σε ένα κτήριο;"</string>
     <string name="about_title_translate">"Βοηθήστε στη μετάφραση αυτής της εφαρμογής"</string>
     <string name="about_description_translate">"Το %1$s είναι μεταφρασμένο %2$d%%"</string>
     <string name="quest_oneway2_title">"Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;"</string>
@@ -1210,7 +1209,6 @@
     <string name="quest_address_street_hint2">"Πατήστε το δρόμο στο χάρτη για να τον επιλέξετε"</string>
     <string name="quest_bicycle_incline_title">"Ποιά κατεύθυνση οδηγεί προς τα πάνω;"</string>
     <string name="quest_bicycle_incline_up_and_down">"Είναι με αναπηδήσεις"</string>
-    <string name="quest_drinking_water_type_title">"Πώς προσφέρεται το πόσιμο νερό εδώ;"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Άλλη βρύση νερού"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Βρύση που αναδίδει πίδακα νερού"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Για γέμισμα μπουκαλιών μόνο"</string>

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [Ameriabank, Unibank, VTB, ACBA, ABB, HSBC, Ararat Bank, Ardshinbank, Armbusinessbank, ArmEconomBank, Areximbank, AEB, ВТБ, Araratbank, Ameria Bank, Հայբիզնեսբանկ, ASHIB, Ակբա, AcbaCreditAgricole, VTB Bank, Converse Bank, VTB Armenia]
+defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

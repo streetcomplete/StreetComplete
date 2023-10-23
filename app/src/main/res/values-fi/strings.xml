@@ -733,7 +733,6 @@ taso"</string>
     <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
-    <string name="quest_is_defibrillator_inside_title">"Onko tämä defibrillaattori rakennuksen sisällä?"</string>
     <string name="about_title_translate">"Auta sovelluksen suomentamisessa"</string>
     <string name="about_description_translate">"%1$s on %2$d%-prosenttisesti käännetty"</string>
     <string name="quest_oneway2_title">"Onko tämä yksisuuntainen tie? Mihin suuntaan?"</string>
@@ -1219,7 +1218,6 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_address_street_hint2">"Napauta katua valitaksesi sen"</string>
     <string name="quest_bicycle_incline_title">"Missä suunnassa on ylämäki?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Se hyppii ylös ja alas"</string>
-    <string name="quest_drinking_water_type_title">"Kuinka juomavettä saa tästä?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Muu vesilähde"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vesilähde josta suihkuaa pieni vesisuihku"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Vain pullojen täyttö"</string>
@@ -1332,4 +1330,11 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_crossing_kerb_height_title">"Mikä on kadun reunojen korkeus tässä risteyksessä?"</string>
     <string name="quest_maxheight_sign_title">"Mikä korkeusrajoitus tässä on?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Mikä korkeusrajoitus sillan alapuolella on?"</string>
+    <string name="quest_leave_new_note_as_answer">"Tässä tapauksessa sinun pitää jättää viesti, jossa selität tilanteen."</string>
+    <string name="quest_drinking_water_type_title2">"Onko täällä tarjolla juomavettä? Jos on, mistä se on peräisin?"</string>
+    <string name="quest_is_amenity_inside_title">"Onko tämä rakennuksen sisällä?"</string>
+    <string name="quest_bbq_fuel_title">"Millä tämä grilli toimii?"</string>
+    <string name="quest_bbq_fuel_wood">"Puulla"</string>
+    <string name="quest_bbq_fuel_electric">"Sähköllä"</string>
+    <string name="quest_bbq_fuel_charcoal">"Hiilellä"</string>
 </resources>

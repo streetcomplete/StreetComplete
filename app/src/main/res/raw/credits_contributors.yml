@@ -1,21 +1,21 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 411992
-  linesOfInterfaceMarkupChanged: 144177
-  assetFilesChanged: 1975
+  linesOfCodeChanged: 413840
+  linesOfInterfaceMarkupChanged: 145427
+  assetFilesChanged: 2010
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20841
+  linesOfCodeChanged: 20927
   linesOfInterfaceMarkupChanged: 5176
   assetFilesChanged: 634
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 17364
-  linesOfInterfaceMarkupChanged: 2425
+  linesOfCodeChanged: 17802
+  linesOfInterfaceMarkupChanged: 3646
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12129
+  linesOfCodeChanged: 12172
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -38,7 +38,7 @@
   assetFilesChanged: 70
 - name: "riQQ"
   githubUsername: "riQQ"
-  linesOfCodeChanged: 2256
+  linesOfCodeChanged: 2348
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -98,6 +98,11 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "qugebert"
+  githubUsername: "qugebert"
+  linesOfCodeChanged: 319
+  linesOfInterfaceMarkupChanged: 35
+  assetFilesChanged: 1
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 286
@@ -163,9 +168,9 @@
 - name: "xuiqzy"
   githubUsername: "xuiqzy"
   linesOfCodeChanged: 48
-- name: "qugebert"
-  githubUsername: "qugebert"
-  linesOfCodeChanged: 41
+- name: "Krzysztof Zbudniewek"
+  githubUsername: "neonowy"
+  linesOfCodeChanged: 40
 - name: "Muhammad Usama"
   githubUsername: "SMUsamaShah"
   linesOfCodeChanged: 39

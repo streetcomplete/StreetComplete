@@ -733,7 +733,6 @@ aktiv"</string>
     <string name="resurvey_intervals_less_often">"Spørg sjældnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spørg oftere"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i en bygning?"</string>
     <string name="about_title_translate">"Hjælp med at oversætte denne app"</string>
     <string name="about_description_translate">"%1$s er %2$d%% oversat"</string>
     <string name="quest_oneway2_title">"Er denne vej ensrettet? I hvilken retning?"</string>
@@ -1221,7 +1220,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
     <string name="quest_bicycle_incline_title">"Hvilken retning fører opad her?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Det er op og ned hop"</string>
-    <string name="quest_drinking_water_type_title">"Hvordan leveres drikkevand her?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Anden vandfontæne"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandfontæne, der udsender en lille vandstråle"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun genopfyldning af flasker"</string>
@@ -1342,4 +1340,14 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_crossing_kerb_height_title">"Hvad er højden på kantstenene ved denne overgang?"</string>
     <string name="quest_maxheight_sign_title">"Hvilken højdegrænse angives her?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Hvilken højdegrænse er angivet under broen?"</string>
+    <string name="quest_leave_new_note_as_answer">"I så fald skal du efterlade en note, hvor du forklarer situationen."</string>
+    <string name="quest_drinking_water_type_title2">"Er der adgang til drikkevand her? Hvis ja, hvad er så kilden?"</string>
+    <string name="quest_is_amenity_inside_title">"Er dette inde i en bygning?"</string>
+    <string name="quest_bbq_fuel_title">"Hvad drives denne grill af?"</string>
+    <string name="quest_bbq_fuel_wood">"Træ"</string>
+    <string name="quest_bbq_fuel_electric">"El"</string>
+    <string name="quest_bbq_fuel_charcoal">"Kul"</string>
+    <string name="inside">"indenfor"</string>
+    <string name="outside">"udenfor"</string>
+    <string name="quest_recycling_type_food_waste">"Madaffald"</string>
 </resources>

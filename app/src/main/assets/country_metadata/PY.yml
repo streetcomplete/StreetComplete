@@ -2,6 +2,7 @@
 atmOperators: [Itaú, Banco Continental, Itau, BBVA, Banco Itau, Banco Nacional de Fomento, Sudameris Bank, BNF - Dinelco, Banco Itaú, Dinelco, Banco Itaú S.A., Continental, BNF, Bancop, Itaú - Infonet, Banco Sudameris]
 centerLineStyle: yellow
 chargingStationOperators: [Petropar]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 744
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

@@ -733,7 +733,6 @@
     <string name="resurvey_intervals_less_often">"Питај ређе"</string>
     <string name="resurvey_intervals_default">"Уобичајено"</string>
     <string name="resurvey_intervals_more_often">"Питај чешће"</string>
-    <string name="quest_is_defibrillator_inside_title">"Да ли је овај дефибрилатор (AED) унутар зграде?"</string>
     <string name="about_title_translate">"Помозите у преводу овог програма"</string>
     <string name="about_description_translate">"%1$s је преведен %2$d%%"</string>
     <string name="quest_oneway2_title">"Да ли је ово једносмерна улица? У ком смеру?"</string>
@@ -1221,7 +1220,6 @@
     <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
     <string name="quest_bicycle_incline_title">"Који смер води нагоре одавде?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Иде горе-доле"</string>
-    <string name="quest_drinking_water_type_title">"Како је овде доступна вода за пиће?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Други тип фонтанице"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница слабог притиска"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само за допуну флашица"</string>
@@ -1339,4 +1337,6 @@
 
 Поред тога, неки слојеви на карти вам пружају могућност додавања нових података на позицији показивача, као што то пружа слој адреса."</string>
     <string name="quest_crossing_kerb_height_title">"Колико је висок ивичњак на овом прелазу?"</string>
+    <string name="quest_maxheight_sign_title">"Која максимална висина је овде наведена?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Која максимална висина је наведена испод моста?"</string>
 </resources>

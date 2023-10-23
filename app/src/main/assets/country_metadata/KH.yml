@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, AMK, Sathapana]
 centerLineStyle: yellow
 chargingStationOperators: [Green E-Bike]
+defaultSpeedLimitHasUrbanOrRural: true
 hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 456

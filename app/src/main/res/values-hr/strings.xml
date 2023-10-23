@@ -734,7 +734,6 @@ postignuća"</string>
     <string name="resurvey_intervals_less_often">"Pitaj rjeđe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je li ovaj defibrilator (AVD/AED) unutar zgrade?"</string>
     <string name="about_title_translate">"Pomozite prevesti ovu aplikaciju"</string>
     <string name="about_description_translate">"%1$s je %2$d%% preveden"</string>
     <string name="quest_oneway2_title">"Je li ovo jednosmjerna ulica? U kojem smjeru?"</string>
@@ -1224,7 +1223,6 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_address_street_hint2">"Dotaknite ulicu na karti da ju odaberete"</string>
     <string name="quest_bicycle_incline_title">"Koji smjer vodi prema gore odavde?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Svako malo ide gore-dolje"</string>
-    <string name="quest_drinking_water_type_title">"Na koji način je ovdje dostupna pitka voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Neka druga vrsta"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vodoskok sa malim mlazom vode"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Samo za punjenje boca"</string>
@@ -1345,4 +1343,11 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_crossing_kerb_height_title">"Koliko je visok rubnik na ovom prijelazu?"</string>
     <string name="quest_maxheight_sign_title">"Koje je ograničenje visine ovdje naznačeno?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Koje je ograničenje visine naznačeno ispod mosta?"</string>
+    <string name="quest_leave_new_note_as_answer">"U tom slučaju, trebate ostaviti bilješku u kojoj objašnjavate situaciju."</string>
+    <string name="quest_drinking_water_type_title2">"Ima li ovdje pitke vode? Ako ima, koji je njezin izvor?"</string>
+    <string name="quest_is_amenity_inside_title">"Je li ovo unutar zgrade?"</string>
+    <string name="quest_bbq_fuel_title">"Koje gorivo koristi ovaj roštilj?"</string>
+    <string name="quest_bbq_fuel_wood">"Drvo"</string>
+    <string name="quest_bbq_fuel_electric">"Struju"</string>
+    <string name="quest_bbq_fuel_charcoal">"Ugljen"</string>
 </resources>

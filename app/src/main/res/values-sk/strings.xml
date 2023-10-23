@@ -729,7 +729,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="resurvey_intervals_less_often">"Pýtať sa menej často"</string>
     <string name="resurvey_intervals_default">"Predvolené"</string>
     <string name="resurvey_intervals_more_often">"Pýtať sa častejšie"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) vo vnútri budovy?"</string>
     <string name="about_title_translate">"Pomôžte preložiť túto aplikáciu"</string>
     <string name="about_description_translate">"%1$s je preložené %2$d%%"</string>
     <string name="quest_oneway2_title">"Je toto jednosmerná ulica? V akom smere?"</string>
@@ -1217,7 +1216,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_address_street_hint2">"Kliknutím vyberte miesto na mape"</string>
     <string name="quest_bicycle_incline_title">"Ktorý smer vedie nahor?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Je to hopsanie hore dole"</string>
-    <string name="quest_drinking_water_type_title">"Ako je tu zabezpečená pitná voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Iná vodná fontána"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vodná fontána vypúšťajúca malý prúd vody"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Iba doplňovanie fliaš"</string>

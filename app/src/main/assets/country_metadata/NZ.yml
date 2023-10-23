@@ -3,6 +3,7 @@ advisorySpeedLimitSignStyle: yellow
 atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, Quick Cash, Quickcash, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
 centerLineStyle: white
 chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid, Tesla, Powerco, Network Waitaki, Network Tasman]
+defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true

@@ -729,7 +729,6 @@
     <string name="resurvey_intervals_less_often">"کمتر بپرسید"</string>
     <string name="resurvey_intervals_default">"پیشفرض"</string>
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
-    <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
     <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
     <string name="about_description_translate">"%1$s %2$d%% ترجمه شده است"</string>
     <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو؟"</string>
@@ -1222,7 +1221,6 @@
     <string name="quest_address_street_hint2">"برای انتخاب خیابان روی نقشه ضربه بزنید"</string>
     <string name="quest_bicycle_incline_title">"کدام جهت در اینجا به سمت بالا منتهی می‌شود؟"</string>
     <string name="quest_bicycle_incline_up_and_down">"پستی و بلندی دارد"</string>
-    <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"فواره دیگر"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"فواره قطره‌های کوچک آب می‌پاشد"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"فقط پر کردن بطری‌ها"</string>
@@ -1341,4 +1339,13 @@
 
 به‌علاوه، برخی از پوشش‌ها به شما امکان می‌دهند داده‌های جدیدی را در موقعیت یک خط تیره نمایش داده شده اضافه کنید، مانند همپوشانی آدرس‌ها."</string>
     <string name="quest_crossing_kerb_height_title">"ارتفاع حاشیه‌های این گذرگاه چقدر است؟"</string>
+    <string name="quest_maxheight_sign_title">"چه محدودیت ارتفاعی در اینجا مشخص شده است؟"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"چه محدودیت ارتفاعی در زیر پل مشخص شده است؟"</string>
+    <string name="quest_leave_new_note_as_answer">"در این مورد، باید یادداشتی بگذارید که در آن شرایط موقعیت را توضیح دهید."</string>
+    <string name="quest_drinking_water_type_title2">"آیا در اینجا آب آشامیدنی در دسترس است؟ اگر بله، منبع آن چیست؟"</string>
+    <string name="quest_is_amenity_inside_title">"آیا این مورد داخل ساختمان است؟"</string>
+    <string name="quest_bbq_fuel_title">"این کباب‌پز با چه چیزی کار می‌کند؟"</string>
+    <string name="quest_bbq_fuel_wood">"چوب"</string>
+    <string name="quest_bbq_fuel_electric">"برق"</string>
+    <string name="quest_bbq_fuel_charcoal">"زغال"</string>
 </resources>

@@ -696,7 +696,6 @@
     <string name="resurvey_intervals_less_often">"Spør sjeldnare"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftare"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er denne hjarte­startaren innandørs?"</string>
     <string name="about_title_translate">"Hjelp til med å omsetja appen"</string>
     <string name="about_description_translate">"Appen er omsett %2$d %% til %1$s"</string>
     <string name="quest_oneway2_title">"Er dette ei einvegskøyrd gate? I kva retning?"</string>

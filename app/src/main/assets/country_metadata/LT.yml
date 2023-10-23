@@ -3,6 +3,7 @@ atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB'
 centerLineStyle: white
 chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
 clothesContainerOperators: [UAB „VAATC“]
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true

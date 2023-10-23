@@ -44,12 +44,12 @@
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give an answer"</string>
     <string name="close">"close"</string>
-    <string name="download_error">"Error while scanning for quests"</string>
+    <string name="download_error">"Error while downloading data"</string>
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Stop the current download and download here instead?"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
-    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and download data in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Project Home"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
     <string name="not_authorized">"Not authorised"</string>
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
-    <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
+    <string name="no_gps_no_quests">"To download data around you automatically, turn on location"</string>
     <string name="later">"Later"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
@@ -94,7 +94,7 @@ Editing OpenStreetMap anonymously is not possible. Any changes you make (and the
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-The app does not share your GPS location with anyone. It is used to automatically scan for and download quests around you, and position the map at your location.
+The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
@@ -140,7 +140,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="crash_compose_email">"Compose email"</string>
     <string name="no_email_client">"You have no email client installed."</string>
     <string name="pref_title_keep_screen_on">"Keep screen on"</string>
-    <string name="download_server_error">"Connection error while scanning for quests. Try again later."</string>
+    <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
@@ -550,7 +550,7 @@ Split it now?"</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
     <string name="quest_recycling_type_cans">"Cans"</string>
     <string name="quest_recycling_type_clothes">"Clothes"</string>
-    <string name="quest_recycling_type_green_waste">"Garden waste"</string>
+    <string name="quest_recycling_type_green_waste">"Compostable waste"</string>
     <string name="quest_recycling_type_glass_bottles">"Glass bottles and jars"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Bottles and jars"</string>
     <string name="quest_recycling_type_paper">"Paper"</string>
@@ -734,7 +734,6 @@ levels"</string>
     <string name="resurvey_intervals_less_often">"Ask less often"</string>
     <string name="resurvey_intervals_default">"Default"</string>
     <string name="resurvey_intervals_more_often">"Ask more often"</string>
-    <string name="quest_is_defibrillator_inside_title">"Is this defibrillator (AED) inside a building?"</string>
     <string name="about_title_translate">"Help translate this app"</string>
     <string name="about_description_translate">"%1$s is translated %2$d%%"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
@@ -1224,7 +1223,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_address_street_hint2">"Tap street on map to select it"</string>
     <string name="quest_bicycle_incline_title">"Which direction leads upwards here?"</string>
     <string name="quest_bicycle_incline_up_and_down">"It’s up and down hops"</string>
-    <string name="quest_drinking_water_type_title">"How is drinking water provided here?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Other water fountain"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Water fountain emitting small jet of water"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Refilling bottles only"</string>
@@ -1345,4 +1343,14 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_crossing_kerb_height_title">"What’s the height of the kerbs at this crossing?"</string>
     <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"What height limit is indicated below the bridge?"</string>
+    <string name="quest_leave_new_note_as_answer">"In this case, you need to leave a note in which you explain the situation."</string>
+    <string name="quest_drinking_water_type_title2">"Is drinking water available here? If so, what is its source?"</string>
+    <string name="quest_is_amenity_inside_title">"Is this inside a building?"</string>
+    <string name="quest_bbq_fuel_title">"What is this grill powered by?"</string>
+    <string name="quest_bbq_fuel_wood">"Wood"</string>
+    <string name="quest_bbq_fuel_electric">"Electric"</string>
+    <string name="quest_bbq_fuel_charcoal">"Charcoal"</string>
+    <string name="inside">"inside"</string>
+    <string name="outside">"outside"</string>
+    <string name="quest_recycling_type_food_waste">"Food waste"</string>
 </resources>

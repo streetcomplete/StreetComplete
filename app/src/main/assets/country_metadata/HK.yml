@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
+defaultSpeedLimitHasUrbanOrRural: false
 edgeLineStyle: two yellow lines
 isLeftHandTraffic: true
 mobileCountryCode: 454

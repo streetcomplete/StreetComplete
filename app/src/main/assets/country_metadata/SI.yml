@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes
 atmOperators: [NLB, NKBM, Abanka, Nova KBM, SKB, Gorenjska banka, Banka Koper, NKBM d.d., UniCredit Bank, Delavska hranilnica, Banka Celje, Bitnik d.o.o., Euronet, Nova Ljubljanska banka, SKB banka, Nova Ljubljanska banka d.d., NLB d. d., NovaKBM, Addiko Bank, A banka, Bitnik, Intesa San Paolo, Hypo Alpe-Adria-Bank d.d.]
 chargingStationOperators: [SODO, Petrol, Elektro Maribor, unknovn, elektro Celje, dravske elektrarne maribor, Renault, Elektro Ljubljana d.d., Elektro Gorenjska, EM]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

@@ -734,7 +734,6 @@ nivåer"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er det en hjertestarter (AED) i denne bygningen?"</string>
     <string name="about_title_translate">"Hjelp til å oversette denne appen"</string>
     <string name="about_description_translate">"%1$s er %2$d%% oversatt"</string>
     <string name="quest_oneway2_title">"Er dette en enveiskjøring? I hvilken retning?"</string>
@@ -1224,7 +1223,6 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_address_street_hint2">"Trykk på gaten på kartet for å velge den"</string>
     <string name="quest_bicycle_incline_title">"Hvilken retning går oppover her?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Det er småkupert"</string>
-    <string name="quest_drinking_water_type_title">"Hvordan tilbys drikkevann her?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Annen type vannfontene"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vannfontene med en tynn vannstråle"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun påfyll av flasker"</string>

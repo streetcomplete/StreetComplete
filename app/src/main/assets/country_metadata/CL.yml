@@ -2,6 +2,7 @@
 atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, Itaú, Servipag, banco chile, Transbank]
 centerLineStyle: white
 chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 730
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin

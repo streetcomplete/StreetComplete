@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [international]
 atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Raiffeisenbank, Централна кооперативна Банка, Пощенска банка, ДСК, Общинска банка, Райфайзенбанк, Allianz, Piraeus Bank, Райфайзен Банк, Райфайзен]
 chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
 clothesContainerOperators: [БЧК, texcycle]
+defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

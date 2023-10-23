@@ -704,7 +704,6 @@
     <string name="resurvey_intervals_less_often">"שאל בתדירות נמוכה יותר"</string>
     <string name="resurvey_intervals_default">"ברירת מחדל"</string>
     <string name="resurvey_intervals_more_often">"שאל בתדירות גבוהה יותר"</string>
-    <string name="quest_is_defibrillator_inside_title">"האם יש "</string>
     <string name="about_title_translate">"עזרה תרגום יישום זה"</string>
     <string name="about_description_translate">"%1$s מתורגם %2$d%%"</string>
     <string name="quest_oneway2_title">"האם זה רחוב חד-סטרי? באיזה כיוון?"</string>
@@ -1121,7 +1120,6 @@
     <string name="quest_address_street_street_name_label">"שם רחוב:"</string>
     <string name="quest_address_street_hint2">"ניתן להקיש על רחוב במפה כדי לבחור אותו"</string>
     <string name="quest_bicycle_incline_title">"איזה כיוון מוביל כלפי מעלה כאן?"</string>
-    <string name="quest_drinking_water_type_title">"כיצד מסופקים כאן מי שתיה?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"ברזיית מים אחרת"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"ברזיית מים שפולטת זרם מים קטן"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"מילוי בקבוקים בלבד"</string>

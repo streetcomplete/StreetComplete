@@ -731,7 +731,6 @@ līmeņi"</string>
     <string name="resurvey_intervals_less_often">"Prasīt retāk"</string>
     <string name="resurvey_intervals_default">"Noklusējuma"</string>
     <string name="resurvey_intervals_more_often">"Prasīt biežāk"</string>
-    <string name="quest_is_defibrillator_inside_title">"Vai šis defibrilators ir ēkas iekšpusē?"</string>
     <string name="about_title_translate">"Palīdzi tulkot šo lietotni"</string>
     <string name="about_description_translate">"%1$s valodai ir iztulkoti %2$d%%"</string>
     <string name="quest_oneway2_title">"Vai šī ir vienvirziena iela? Kurā virzienā?"</string>
@@ -1221,7 +1220,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="quest_address_street_hint2">"Uzspiediet kartē uz ielas, lai to atlasītu"</string>
     <string name="quest_bicycle_incline_title">"Kurš virziens šeit ved augšup?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Tur ir gan augšup, gan lejup"</string>
-    <string name="quest_drinking_water_type_title">"Kā šeit tiek nodrošināts dzeramais ūdens?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Tikai ūdens strūklaka"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Ūdens strūklakai ir maza ūdens strūkla"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Tikai ūdens pudelēm"</string>

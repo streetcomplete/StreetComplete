@@ -696,7 +696,6 @@
     <string name="resurvey_intervals_less_often">"Uliza mara chache"</string>
     <string name="resurvey_intervals_default">"Chaguomsingi"</string>
     <string name="resurvey_intervals_more_often">"Uliza mara nyingi zaidi"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je, kipunguza moyo (AED) ndani ya jengo?"</string>
     <string name="about_title_translate">"Saidia kutafsiri programu hii"</string>
     <string name="about_description_translate">"%1$s imetafsiriwa %2$d%%"</string>
     <string name="quest_oneway2_title">"Je, hii ni barabara ya njia moja? Katika mwelekeo gani?"</string>
@@ -1177,7 +1176,6 @@
     <string name="quest_address_street_hint2">"Gusa mtaa kwenye ramani ili uchague."</string>
     <string name="quest_bicycle_incline_title">"Je, ni mwelekeo gani unaoelekea juu hapa?"</string>
     <string name="quest_bicycle_incline_up_and_down">"kitu kinachodunda"</string>
-    <string name="quest_drinking_water_type_title">"Maji ya kunywa yanatolewaje hapa?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Chemchemi nyingine ya maji"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Chemchemi inayorusha maji angani"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kujaza chupa tu"</string>

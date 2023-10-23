@@ -2,6 +2,7 @@
 atmOperators: [UOB, POSB, OCBC, DBS, Citibank, OCBC Bank, HSBC, SAM, DBS/POSB, Standard Chartered, AXS, UOB ATM]
 centerLineStyle: white
 chargingStationOperators: [Greenlots]
+defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 mobileCountryCode: 525
 noParkingLineStyle: double yellow

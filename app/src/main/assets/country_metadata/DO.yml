@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banco Popular, Popular, BanReservas, BHD, Banco BHD Leon, Banco BHD, Banco de Reservas, Banco BHD León, Banca Popular, BPD]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 370
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

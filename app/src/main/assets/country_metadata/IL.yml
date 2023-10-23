@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank Hapoalim, בנק לאומי, לאומי, הפועלים, בנק הפועלים, מזרחי טפחות, כספונט, דיסקונט, Bitcoin Change, Hapoalim, Leumi, בנק ירושלים]
+defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 hasLivingStreet: true
 hasSlowZone: true

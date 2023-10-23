@@ -657,7 +657,6 @@ Note that this app asks for the address number of a building only after its type
     <string name="at_housenumber">"address number %s"</string>
     <string name="quest_openingHours_add_off_days">"Add closed days"</string>
     <string name="quest_openingHours_off_day">"Closed"</string>
-    <string name="quest_is_defibrillator_inside_title">"Is this defibrillator (AED) inside a building?"</string>
     <string name="about_title_translate">"Help translate this application"</string>
     <string name="about_description_translate">"%1$s is translated %2$d%%"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>

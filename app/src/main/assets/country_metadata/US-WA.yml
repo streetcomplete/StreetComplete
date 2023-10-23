@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationOperators: [Volta, Tesla, Chargepoint, Blink, SemaConnect, GE, Tesla Motors, City of Seattle, ChargePoint, Bellingham Nissan, AV aerovironment]
 clothesContainerOperators: [USAgain]
+defaultSpeedLimitHasUrbanOrRural: true
