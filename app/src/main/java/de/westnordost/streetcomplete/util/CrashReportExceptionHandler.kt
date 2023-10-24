@@ -48,9 +48,7 @@ class CrashReportExceptionHandler(
     }
 
     fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, e: Exception) {
-        val stackTrace = StringWriter()
-        e.printStackTrace(PrintWriter(stackTrace))
-        askUserToSendErrorReport(activityCtx, titleResourceId, stackTrace.toString())
+        askUserToSendErrorReport(activityCtx, titleResourceId, reportText(e, null))
     }
 
     private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, error: String?) {
@@ -75,7 +73,7 @@ class CrashReportExceptionHandler(
             .show()
     }
 
-    override fun uncaughtException(t: Thread, e: Throwable) {
+    private fun reportText(e: Throwable, t: Thread?): String {
         val stackTrace = StringWriter()
         val logLines = Log.getLog()
         val last100WithoutQuestCreation = mutableListOf<String>()
@@ -85,20 +83,24 @@ class CrashReportExceptionHandler(
             last100WithoutQuestCreation.add(line.toString())
         }
         e.printStackTrace(PrintWriter(stackTrace))
-        writeCrashReportToFile("""
-        Thread: ${t.name}
+        return """
+        Thread: ${t?.name ?: "unknown"}
         App version: ${BuildConfig.VERSION_NAME}
         Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
         Locale: ${Locale.getDefault()}
         Stack trace:
-        $stackTrace
+$stackTrace
 
         Last log before crash:
         ${last100WithoutQuestCreation.reversed().joinToString("\n")}
 
         Log warnings and errors:
         ${logLines.filter { it.level == 'E' || it.level == 'W' }.joinToString("\n")}
-        """.trimIndent())
+        """.trimIndent()
+    }
+
+    override fun uncaughtException(t: Thread, e: Throwable) {
+        writeCrashReportToFile(reportText(e, t))
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }
 
