@@ -1367,6 +1367,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_seating_outdoor_only">Outdoor seating only</string>
     <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>
 
+    <string name="quest_sanitary_dump_station_fee_title">Does this Sanitary Dump Station require a fee?</string>
+
     <string name="quest_segregated_title">How are the footpath and bicycle path laid out here?</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
     <string name="quest_segregated_mixed">Cyclists and pedestrians share the same space</string>
