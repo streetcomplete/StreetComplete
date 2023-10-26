@@ -93,11 +93,11 @@ class MapDataController internal constructor(
         // first call onReplaced, then persist the data
         // this allows quests to be created and displayed before starting to persist data (which slows down quest creation considerably)
         // overall the persist takes a little longer, but it's still perceived as a clear performance improvement
+        cache.noTrimPlus(mapData.boundingBox!!) // quest creation can trigger trim, so we need to set noTrim here
         onReplacedForBBox(bbox, mapDataWithGeometry)
 
         val oldDbJob = dbJob
         dbJob = scope.launch {
-            cache.noTrimPlus(mapData.boundingBox!!)
             downloadController.setPersisting(true)
             oldDbJob?.join()
             synchronized(this@MapDataController) {
@@ -141,33 +141,22 @@ class MapDataController internal constructor(
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
+        val bbox = geometryEntries.flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }.enclosingBoundingBox()
+        cache.noTrimPlus(bbox) // quest creation can trigger trim, so we need to set noTrim here
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
 
         val oldDbJob = dbJob
         dbJob = scope.launch {
             // the background job here is mostly so that a running dbJob (slow persist) doesn't block updateAll
-            if (oldDbJob?.isActive == true) {
-                val bbox = geometryEntries.flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }.enclosingBoundingBox()
-                cache.noTrimPlus(bbox)
-                oldDbJob.join()
-                // no need to set persisting, as this is only few elements at a time
-                synchronized(this@MapDataController) {
-                    elementDB.deleteAll(deletedKeys)
-                    geometryDB.deleteAll(deletedKeys)
-                    geometryDB.putAll(geometryEntries)
-                    elementDB.putAll(elements)
-                }
-                cache.noTrimMinus(bbox)
-            } else {
-                // no need for noTrim, this is fast anyway if there is no persist running
-                oldDbJob?.join() // probably unnecessary, but better be safe
-                synchronized(this@MapDataController) {
-                    elementDB.deleteAll(deletedKeys)
-                    geometryDB.deleteAll(deletedKeys)
-                    geometryDB.putAll(geometryEntries)
-                    elementDB.putAll(elements)
-                }
+            oldDbJob?.join()
+            // no need to set persisting, as this is only few elements at a time
+            synchronized(this@MapDataController) {
+                elementDB.deleteAll(deletedKeys)
+                geometryDB.deleteAll(deletedKeys)
+                geometryDB.putAll(geometryEntries)
+                elementDB.putAll(elements)
             }
+            cache.noTrimMinus(bbox)
         }
     }
 
