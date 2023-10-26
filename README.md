@@ -26,6 +26,7 @@ F-Droid anti-feature, non-free network: SCEE uses map tiles provided by [jawg](h
 
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
+You will need an account to update translations and add languages. Add the language you want to translate to in _Languages_ -> _Manage translated languages_ in the top menu bar.
 
 ## Permissions
 SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in the background.
@@ -173,7 +174,7 @@ In general, SCEE changesets will contain changes very similar to StreetComplete 
 * Most quests may apply to an extended range of elements (user-defined)
 * Starting with SCEE 52.0, some answers create separate changesets with comment `Other edits in context of: <orignal quest changeset comment>`.
 This happens for changes that can occur in StreetComplete, such as moving or deleting a node, changing shop types, removing surface, changing highway to steps and removing sidewalks.
-Further SCEE adds new answers leading to such a changeset comment:
+Furthermore SCEE adds new answers leading to such a changeset comment:
   * All quest types related to roads / paths may adjust access tags
   * Quests types asking about about benches, picnic tables, recycling containers, bicycle parkings and sports tracks/pitches may tag `access=private`
   * All quest types related to buildings may change `building` to `demolished:building`
