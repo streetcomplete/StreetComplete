@@ -1,10 +1,10 @@
 SCEE is a modified version of StreetComplete, aimed at experienced OSM users unhappy about the lack of advanced editing capabilities in normal StreetComplete.
 By default, most of the additional capabilities are disabled. Go through the settings (either in the app or [below](#differences-to-streetcomplete)) for details.
 
-Please be aware that SCEE is not suitable for people used to discard warning messages without reading!
+Please be aware that SCEE is not suitable for people used to discarding warning messages without reading!
 Users new to OpenStreetMap are best advised to use [StreetComplete](https://github.com/streetcomplete/StreetComplete).
 
-Functionality added in SCEE is considerably less tested than what you might be used from StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
+Functionality added in SCEE is considerably less tested than what you might be used to in StreetComplete, so bugs or unexpected behavior may happen. If you encounter any, please report the issue.
 
 1. [Download](#download-scee)
 2. [Translate](#translations)
@@ -22,14 +22,13 @@ Functionality added in SCEE is considerably less tested than what you might be u
 
 F-Droid releases of SCEE make use of reproducible builds, so releases on F-Droid and GitHub are signed with the same keys. This means you can switch between GitHub and F-Droid releases anytime without needing to uninstall first.
 
-F-Droid anti-feature: non-free network
-SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com.)
+F-Droid anti-feature, non-free network: SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com).
 
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
 
 ## Permissions
-SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in background.
+SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and `POST_NOTIFICATIONS`. Both are used only in an experimental feature to notify about nearby quests when the app is in the background.
 
 ## Differences to StreetComplete
 * Non-optional differences to StreetComplete
@@ -38,7 +37,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
   * Dark theme uses dark buttons
   * Prevent short scroll to user location at app start when map was at a different position
   * Downloading data will interrupt upload queue (will resume afterwards)
-  * Manual downloads can be queued instead if always cancelling the previous one
+  * Manual downloads can be queued instead of always cancelling the previous one
   * Show all hidden quests on long press on undo button (works only for downloaded areas)
   * Additional answers for some quests
     * Additional building types
@@ -63,8 +62,8 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
   * Artwork type
   * Railway platform number
   * Genus / species of trees
-    * Allows providing a file containing translated tree names instead of the default english ones
-  * Colour of building roofs
+    * Allows providing a file containing translated tree names instead of the default English ones
+  * Color of building roofs
   * Whether pharmacy is dispensing prescription drugs
   * Destination of some road types after intersections
   * Quests based on external sources
@@ -83,7 +82,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
   * Log reader (not a setting, but it's in the menu)
   * Expert mode that enables capabilities, some of which can be dangerous when used by inexperienced OSM contributors
     * Directly edit tags, with suggestions from iD and last used values
-    * Add nodes everywhere, either free-floating or as part of a ways
+    * Add nodes everywhere, either free-floating or as part of a way
       * inserting nodes into a way may actually re-use existing nodes at that position
     * Delete free-floating nodes
     * Additional "other answers"
@@ -95,7 +94,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Allow moving nodes that are part of a way (including a clear warning about changing geometry)
     * Allow disabling and moving the note quest
     * Allow closing notes
-    * Some of the settings below can only be enabled in expert mode
+  * Some of the settings below can only be enabled in expert mode
   * Quest settings for most quests, mostly for customized element selection, but also for other things like allowing generic paved surface answer without note
     * Such customization should be handled with care. There are some safeguards, but modifying element selection could still lead to inappropriate tagging, quests being asked over and over again, and maybe app crashes.
     * Quests without settings need to be handled individually. Please open an issue if you want specific settings.
@@ -117,7 +116,7 @@ SCEE has more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCATION` and 
     * Disable 3D buildings
     * Show arrows indicating direction of highlighted way
     * Highlight geometries for nearby quests
-    * Put pin to exact location of a quest
+    * Put pin on exact location of a quest
     * Disable quest solved animation
     * Provide GPX track and have it always shown on the map
   * Quest settings
@@ -154,8 +153,8 @@ Database and preferences files are compatible with StreetComplete, so if you hav
 The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
 * Creating, moving and deleting nodes is possible
   * Inserting nodes into a way is not (yet) possible
-* Guidelines are useful suggestions, but not enforced.
-* Quests may be based on external sources like Osmose, not just on element selection.
+* Guidelines are useful suggestions, but not enforced
+* Quests may be based on external sources like Osmose, not just on element selection
 
 ## Changeset differences compared to StreetComplete
 This section is aimed for people trying to decide whether a bad edit done in SCEE is fault of the user or of the app (SCEE modifications).
@@ -165,12 +164,12 @@ In general, SCEE changesets will contain changes very similar to StreetComplete 
 * _AddCrossingType_ may change `crossing_ref`, `crossing:markings`, and `traffic_calming`
 * _AddPathSurface_ and _AddRoadSurface_ have additional surfaces `metal_grid` and `stepping_stones`
 * _AddMaxSpeed_ may tag `maxspeed:conditional`
-* [discardable tags](https://wiki.openstreetmap.org/wiki/Discardable_tags) are removed automatically 
+* [Discardable tags](https://wiki.openstreetmap.org/wiki/Discardable_tags) are removed automatically 
 * Any node may be moved, even if it is part of a way or relation
 * Any node may be deleted, or have all tags removed if it's not free-floating
 * `check_date:*` may be added without resurvey
 * Wheelchair quests may add `wheelchair:description` and `wheelchair:description:<language>`
-* An element at at the same position as a note may be edited (this is blocked in normal SC)
+* An element at the same position as a note may be edited (this is blocked in normal SC)
 * Most quests may apply to an extended range of elements (user-defined)
 * Starting with SCEE 52.0, some answers create separate changesets with comment `Other edits in context of: <orignal quest changeset comment>`.
 This happens for changes that can occur in StreetComplete, such as moving or deleting a node, changing shop types, removing surface, changing highway to steps and removing sidewalks.
