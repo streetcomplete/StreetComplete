@@ -34,7 +34,7 @@ class AddServiceBuildingType : OsmFilterQuestType<ServiceBuildingType>() {
 
     override fun applyAnswerTo(answer: ServiceBuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.tags.forEach { tags[it.first] = it.second }
-        if (answer == ServiceBuildingType.VENTILATION_SHAFT || ServiceBuildingType.RAILWAY_VENTILATION_SHAFT)
+        if (answer == ServiceBuildingType.VENTILATION_SHAFT || answer == ServiceBuildingType.RAILWAY_VENTILATION_SHAFT)
             tags.remove("building") // see https://wiki.openstreetmap.org/wiki/Tag:man_made%3Dventilation_shaft
     }
 }
