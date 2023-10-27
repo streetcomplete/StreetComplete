@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
-import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import okhttp3.Cache
 import okhttp3.CacheControl
 import java.io.File
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 /** Configuration for the common cache shared by tangram-es and the map tile ("pre"-)downloader
  *  integrated into the normal map download process */
-class MapTilesDownloadCacheConfig(context: Context) {
+class MapTilesDownloadCacheConfig(context: Context, prefs: Preferences) {
 
     val cacheControl: CacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
@@ -38,7 +38,7 @@ class MapTilesDownloadCacheConfig(context: Context) {
         }
 
         cache = if (tileCacheDir?.exists() == true) {
-            val mbs = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
+            val mbs = prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
             Cache(tileCacheDir, mbs * 1000L * 1000L)
         } else {
             null

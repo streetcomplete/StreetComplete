@@ -3,14 +3,12 @@ package de.westnordost.streetcomplete.screens.user.profile
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
-import androidx.core.content.edit
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Prefs
@@ -30,6 +28,7 @@ import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +54,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val avatarsCacheDirectory: File by inject(named("AvatarsCacheDirectory"))
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var anonAvatar: Bitmap
 
@@ -225,7 +224,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.globalRankContainer,
             binding.globalRankText
         )
-        prefs.edit { putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, rank) }
+        prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, rank)
 
         val rankCurrentWeek = statisticsSource.currentWeekRank
         updateGlobalRankText(
@@ -234,7 +233,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.currentWeekGlobalRankContainer,
             binding.currentWeekGlobalRankText
         )
-        prefs.edit { putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, rankCurrentWeek) }
+        prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, rankCurrentWeek)
     }
 
     private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView ) {
@@ -283,7 +282,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.localRankLabel,
             binding.localRankText
         )
-        prefs.edit { putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(localRank)) }
+        prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(localRank))
 
         val localRankCurrentWeek = withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount() }
         updateLocalRankText(
@@ -294,7 +293,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.currentWeekLocalRankLabel,
             binding.currentWeekLocalRankText
         )
-        prefs.edit { putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(localRankCurrentWeek)) }
+        prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(localRankCurrentWeek))
     }
 
     private fun updateLocalRankText(

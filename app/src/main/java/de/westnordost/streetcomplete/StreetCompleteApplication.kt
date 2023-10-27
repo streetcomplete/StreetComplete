@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.app.Application
 import android.content.ComponentCallbacks2
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.edit
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -51,6 +49,8 @@ import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.prefs.Preferences
+import de.westnordost.streetcomplete.util.prefs.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -69,7 +69,7 @@ class StreetCompleteApplication : Application() {
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
@@ -104,6 +104,7 @@ class StreetCompleteApplication : Application() {
                 osmApiModule,
                 osmNoteQuestModule,
                 osmQuestModule,
+                preferencesModule,
                 questModule,
                 questPresetsModule,
                 questsModule,
@@ -145,7 +146,7 @@ class StreetCompleteApplication : Application() {
 
         val lastVersion = prefs.getString(Prefs.LAST_VERSION_DATA, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit { putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME) }
+            prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {
                 onNewVersion()
             }
@@ -177,7 +178,7 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun setDefaultLocales() {
-        val locale = getSelectedLocale(this)
+        val locale = getSelectedLocale(prefs)
         if (locale != null) {
             setDefaultLocales(getSystemLocales().addedToFront(locale))
         }

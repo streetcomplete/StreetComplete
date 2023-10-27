@@ -34,8 +34,6 @@ object Prefs {
     // not shown anywhere directly
     const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
     const val LAST_EDIT_TIME = "changesets.lastChangeTime"
-    const val MAP_LATITUDE = "map.latitude"
-    const val MAP_LONGITUDE = "map.longitude"
     const val LAST_PICKED_PREFIX = "imageListLastPicked."
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
@@ -43,6 +41,14 @@ object Prefs {
     const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
     const val SELECTED_OVERLAY = "selectedOverlay"
     const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+
+    const val MAP_LATITUDE = "map.latitude"
+    const val MAP_LONGITUDE = "map.longitude"
+    const val MAP_ROTATION = "map.rotation"
+    const val MAP_TILT = "map.tilt"
+    const val MAP_ZOOM = "map.zoom"
+    const val MAP_FOLLOWING = "map.following"
+    const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 
     const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
     const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"

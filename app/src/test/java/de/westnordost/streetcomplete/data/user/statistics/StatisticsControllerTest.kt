@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
@@ -8,6 +7,7 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.LocalDate
 import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify
@@ -24,7 +24,7 @@ class StatisticsControllerTest {
     private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
     private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var prefs: SharedPreferences
+    private lateinit var prefs: Preferences
     private lateinit var loginStatusSource: UserLoginStatusSource
     private lateinit var loginStatusListener: UserLoginStatusSource.Listener
 
@@ -42,7 +42,6 @@ class StatisticsControllerTest {
         activeDatesDao = mock()
         countryBoundaries = mock()
         prefs = mock()
-        on(prefs.edit()).thenReturn(mock())
         listener = mock()
         loginStatusSource = mock()
 
@@ -120,9 +119,6 @@ class StatisticsControllerTest {
     }
 
     @Test fun `clear all`() {
-        val editor: SharedPreferences.Editor = mock()
-        on(prefs.edit()).thenReturn(editor)
-
         loginStatusListener.onLoggedOut()
 
         verify(editTypeStatisticsDao).clear()
@@ -130,18 +126,15 @@ class StatisticsControllerTest {
         verify(currentWeekCountryStatisticsDao).clear()
         verify(currentWeekEditTypeStatisticsDao).clear()
         verify(activeDatesDao).clear()
-        verify(editor).remove(Prefs.USER_DAYS_ACTIVE)
-        verify(editor).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-        verify(editor).remove(Prefs.USER_GLOBAL_RANK)
-        verify(editor).remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-        verify(editor).remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
+        verify(prefs).remove(Prefs.USER_DAYS_ACTIVE)
+        verify(prefs).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
+        verify(prefs).remove(Prefs.USER_GLOBAL_RANK)
+        verify(prefs).remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
+        verify(prefs).remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
         verify(listener).onCleared()
     }
 
     @Test fun `update all`() {
-        val editor: SharedPreferences.Editor = mock()
-        on(prefs.edit()).thenReturn(editor)
-
         statisticsController.updateAll(Statistics(
             types = listOf(
                 EditTypeStatistics(questA, 123),
@@ -190,12 +183,12 @@ class StatisticsControllerTest {
             LocalDate.parse("1999-04-08"),
             LocalDate.parse("1888-01-02")
         ))
-        verify(editor).putInt(Prefs.ACTIVE_DATES_RANGE, 12)
-        verify(editor).putInt(Prefs.USER_DAYS_ACTIVE, 333)
-        verify(editor).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
-        verify(editor).putInt(Prefs.USER_GLOBAL_RANK, 999)
-        verify(editor).putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, 111)
-        verify(editor).putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 9999999)
+        verify(prefs).putInt(Prefs.ACTIVE_DATES_RANGE, 12)
+        verify(prefs).putInt(Prefs.USER_DAYS_ACTIVE, 333)
+        verify(prefs).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
+        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK, 999)
+        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, 111)
+        verify(prefs).putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 9999999)
         verify(listener).onUpdatedAll()
     }
 }

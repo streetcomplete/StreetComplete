@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.data.user
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import oauth.signpost.OAuthConsumer
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
 /** Manages saving and loading OAuthConsumer persistently  */
 class OAuthStore(
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
 ) : KoinComponent {
     var oAuthConsumer: OAuthConsumer?
         get() {
@@ -22,15 +21,11 @@ class OAuthStore(
         }
         set(value) {
             if (value != null && value.token != null && value.tokenSecret != null) {
-                prefs.edit {
-                    putString(Prefs.OAUTH_ACCESS_TOKEN, value.token)
-                    putString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, value.tokenSecret)
-                }
+                prefs.putString(Prefs.OAUTH_ACCESS_TOKEN, value.token)
+                prefs.putString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, value.tokenSecret)
             } else {
-                prefs.edit {
-                    remove(Prefs.OAUTH_ACCESS_TOKEN)
-                    remove(Prefs.OAUTH_ACCESS_TOKEN_SECRET)
-                }
+                prefs.remove(Prefs.OAUTH_ACCESS_TOKEN)
+                prefs.remove(Prefs.OAUTH_ACCESS_TOKEN_SECRET)
             }
         }
 

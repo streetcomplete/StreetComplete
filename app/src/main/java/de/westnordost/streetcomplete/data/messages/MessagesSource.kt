@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.messages
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserDataController
@@ -9,6 +7,7 @@ import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */
@@ -16,7 +15,7 @@ class MessagesSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
-    private val prefs: SharedPreferences
+    private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
     *  database table*/
@@ -66,7 +65,7 @@ class MessagesSource(
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
-            prefs.edit { putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME) }
+            prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
         }
 
         var messages = 0
@@ -81,7 +80,7 @@ class MessagesSource(
 
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit { putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME) }
+            prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {
                 onNumberOfMessagesUpdated()
                 return NewVersionMessage("v$lastVersion")

@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.presetIconIndex
 import java.lang.Integer.max
 import kotlin.math.ceil
@@ -19,7 +18,7 @@ import kotlin.math.sqrt
  *  the scene updates for tangram to access this sprite sheet  */
 class TangramIconsSpriteSheet(
     private val context: Context,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
@@ -69,10 +68,8 @@ class TangramIconsSpriteSheet(
 
         val sprites = "{${spriteSheetEntries.joinToString(",")}}"
 
-        prefs.edit {
-            putInt(Prefs.ICON_SPRITES_VERSION, BuildConfig.VERSION_CODE)
-            putString(Prefs.ICON_SPRITES, sprites)
-        }
+        prefs.putInt(Prefs.ICON_SPRITES_VERSION, BuildConfig.VERSION_CODE)
+        prefs.putString(Prefs.ICON_SPRITES, sprites)
 
         return sprites
     }

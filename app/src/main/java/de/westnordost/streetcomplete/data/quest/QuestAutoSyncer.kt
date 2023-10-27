@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -26,6 +25,7 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -45,7 +45,7 @@ class QuestAutoSyncer(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginStatusSource: UserLoginStatusSource,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {
