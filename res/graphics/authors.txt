@@ -540,6 +540,35 @@ royal cypher/
     Scottish_Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
     VR.svg                Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
 
+service_building
+	gas.svg    CC0      fire.svg
+	gas_pressure.svg    CC0      fire.svg and https://www.svgrepo.com/svg/84143/manometer (adapted)
+	gas_pump.svg    CC0      fire.svg and https://www.svgrepo.com/svg/82329/valve (adapted)
+	heating.svg    CC-BY      fire.svg and https://www.svgrepo.com/svg/475590/temperature (adapted)
+	industrial_substation.svg    CC0      parts from industrial.svg and https://www.svgrepo.com/svg/421771/energy-flash-lighning (adapted)
+	internet_exchange.svg    CC0      https://www.svgrepo.com/svg/78356/modem (adapted)
+	minor_substation.svg    CC-BY      detached.svg and https://www.svgrepo.com/svg/421771/energy-flash-lighning (adapted)
+	monitoring.svg    Apache      https://www.svgrepo.com/svg/504257/data-monitor
+	oil_pump.svg    CC0      https://www.svgrepo.com/svg/190876/pump-jack-oil
+	other.svg    CC0      https://www.svgrepo.com/svg/292128/wrench
+	power.svg    CC-BY      https://www.svgrepo.com/svg/421771/energy-flash-lighning
+	power_plant.svg    CC0      https://www.svgrepo.com/svg/297056/nuclear-plant-power-plant
+	railway.svg    GPL      https://www.svgrepo.com/svg/375916/train
+	railway_engine_shed.svg    GPL      roof.svg and https://www.svgrepo.com/svg/375916/train (adapted)
+	railway_signal_box.svg    CC-BY/GPL      https://www.svgrepo.com/svg/521844/signal and https://www.svgrepo.com/svg/375916/train (adapted)
+	railway_wash.svg    CC0/GPL      https://www.svgrepo.com/svg/232163/car-wash and https://www.svgrepo.com/svg/375916/train (adapted)
+	reservoir_covered.svg    roof.svg and water.svg (adapted)
+	sewerage.svg    CC0      https://www.svgrepo.com/svg/244724/waste-sewer
+	substation.svg    CC-BY      detached.svg, house.svg, office.svg and https://www.svgrepo.com/svg/421771/energy-flash-lighning (adapted)
+	switchgear.svg    CC-BY      https://www.svgrepo.com/svg/528583/server-minimalistic and https://www.svgrepo.com/svg/421771/energy-flash-lighning (adapted)
+	telecom.svg    phone.svg
+	telecom_exchange.svg    CC0      https://www.svgrepo.com/svg/282004/antenna
+	traction_substation.svg    CC-BY/GPL      power.svg (CC BY) and https://www.svgrepo.com/svg/375916/train (adapted)
+	ventilation.svg    CC0      https://www.svgrepo.com/svg/242669/ventilator-cool
+	water.svg    drinking_water.svg
+	water_pump.svg    CC0      water.svg and https://www.svgrepo.com/svg/82329/valve (adapted)
+	water_well.svg    CC0      https://www.svgrepo.com/svg/197054/well
+
 sidewalk/
     no.svg
     yes.svg

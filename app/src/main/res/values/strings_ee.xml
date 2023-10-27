@@ -289,13 +289,59 @@
     <string name="quest_traffic_stuff_raised">It’s a raised crossing</string>
     <string name="quest_recycling_excrement_bag_dispenser">It has an excrement bag dispenser</string>
 
+    <!-- shared "utility" types for service building type and street cabinet type -->
+    <string name="quest_utility_power">Electricity</string>
+    <string name="quest_utility_water">Water</string>
+    <string name="quest_utility_gas">Gas</string>
+    <string name="quest_utility_sewerage">Sewerage</string>
+    <string name="quest_utility_telecom">Telecommunication</string>
+
     <!-- service building type -->
     <string name="quest_service_building_type_title">What kind of service building is this%s?</string>
-    <string name="quest_service_building_type_substation">Substation</string>
-    <string name="quest_service_building_type_pressure">Gas pressure regulation</string>
+    <string name="quest_service_building_type_substation">Electrical substation</string>
+    <string name="quest_service_building_type_substation_description">Substations that mainly relates to regional distribution networks</string>
+    <string name="quest_service_building_type_minor_substation">Small electrical substation</string>
+    <string name="quest_service_building_type_minor_substation_description">A small substation at the lowest level of transforming in the distribution grid</string>
+    <string name="quest_service_building_type_industrial_substation">Industrial electrical substation</string>
+    <string name="quest_service_building_type_industrial_substation_description">Dedicated to industrial or heavy business activities feeding</string>
+    <string name="quest_service_building_type_traction_substation">Traction substation</string>
+    <string name="quest_service_building_type_traction_substation_description">Electrical substation that converts power to supply railways, trams or trolleybuses with traction current</string>
+    <string name="quest_service_building_type_switchgear">Switchgear</string>
+    <string name="quest_service_building_type_switchgear_description">Control gear of an electric power system</string>
+    <string name="quest_service_building_type_plant">Power plant</string>
     <string name="quest_service_building_type_well">Water well</string>
-    <string name="quest_service_building_type_reservoir">Reservoir</string>
-    <string name="quest_service_building_type_pump">Pumping station</string>
+    <string name="quest_service_building_type_well_description">A structural facility to access ground water, created by digging or drilling</string>
+    <string name="quest_service_building_type_reservoir">Water Reservoir</string>
+    <string name="quest_service_building_type_reservoir_description">Large man-made tank for holding fresh water</string>
+    <string name="quest_service_building_type_pump">Water pumping station</string>
+    <string name="quest_service_building_type_pump_description">Facility including pumps for pumping water from one place to another</string>
+    <string name="quest_service_building_sewerage_description">Service building related to waste water collection, transmission or processing</string>
+    <string name="quest_service_building_oil_pumping_station">Oil pumping station</string>
+    <string name="quest_service_building_oil_pumping_station_description">Facility including pumps for pumping oil from one place to another</string>
+    <string name="quest_service_building_gas_pumping_station">Gas pumping station</string>
+    <string name="quest_service_building_gas_pumping_station_description">Facility including pumps for pumping gas from one place to another</string>
+    <string name="quest_service_building_type_pressure">Gas pressure regulation</string>
+    <string name="quest_service_building_type_pressure_description">Gas distribution substation in a building in charge of dropping pressure towards consumers in surroundings</string>
+    <string name="quest_service_building_heating">Heating</string>
+    <string name="quest_service_building_heating_description">Building for heating transmission and distribution towards industries and domestic consumers (district heating)</string>
+    <string name="quest_service_building_telecom_exchange">Telecom exchange</string>
+    <string name="quest_service_building_telecom_exchange_description">Place to connect landlines subscribers to telecommunication service equipments</string>
+    <string name="quest_service_building_internet_exchange">Internet exchange</string>
+    <string name="quest_service_building_internet_exchange_description">Place to connect internet subscribers to internet service equipments</string>
+    <string name="quest_service_building_railway">Railway</string>
+    <string name="quest_service_building_railway_ventilation_shaft">Railway ventilation</string>
+    <string name="quest_service_building_railway_ventilation_shaft_description">A structure that allows ventilation in railway underground tunnels</string>
+    <string name="quest_service_building_railway_signal_box">Railway signal box</string>
+    <string name="quest_service_building_railway_signal_box_description">Stationary railroad system for control of railway operations</string>
+    <string name="quest_service_building_railway_engine_shed">Railway engine shed</string>
+    <string name="quest_service_building_railway_engine_shed_description">A shed to protect locomotives and rolling stock from the environment</string>
+    <string name="quest_service_building_railway_wash">Railway wash station</string>
+    <string name="quest_service_building_railway_wash_description">A building in which a train washing facility is located</string>
+    <string name="quest_service_building_ventilation">Ventilation shaft</string>
+    <string name="quest_service_building_ventilation_description">Vertical construction allowing air exchange for non-railway infrastructure</string>
+    <string name="quest_service_building_monitoring_station">Monitoring Station</string>
+    <string name="quest_service_building_monitoring_station_description">A station located in a own building that monitors something</string>
+    <string name="quest_service_building_other">Other service building</string>
 
     <!-- outdoor seating type -->
     <string name="quest_seating_parklet">Next to the curb, or where parking used to be</string>

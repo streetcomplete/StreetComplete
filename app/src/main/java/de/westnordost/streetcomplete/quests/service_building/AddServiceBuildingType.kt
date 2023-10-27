@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddServiceBuildingType : OsmFilterQuestType<String>() {
+class AddServiceBuildingType : OsmFilterQuestType<ServiceBuildingType>() {
 
     override val elementFilter = """
         ways, relations with
@@ -15,6 +15,8 @@ class AddServiceBuildingType : OsmFilterQuestType<String>() {
           and !man_made
           and !substation
           and !pipeline
+          and !utility
+          and !railway
     """
     override val changesetComment = "Add service building type"
     override val wikiLink = "Tag:building=service"
@@ -24,26 +26,15 @@ class AddServiceBuildingType : OsmFilterQuestType<String>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_service_building_type_title
 
     override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        val title = tags["operator"]?.let { " ($it)" } ?: ""
-        return arrayOf(title)
+        val operator = tags["operator"]?.let { " ($it)" } ?: ""
+        return arrayOf(operator)
     }
 
     override fun createForm() = AddServiceBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            "substation" -> {
-                tags["power"] = "substation"
-                tags["substation"] = "minor_distribution"
-            }
-            "gas" -> {
-                tags["pipeline"] = "substation"
-                tags["substation"] = "distribution"
-                tags["substance"] = "gas"
-            }
-            "water_well", "reservoir_covered", "pumping_station" -> {
-                tags["man_made"] = answer
-            }
-        }
+    override fun applyAnswerTo(answer: ServiceBuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        answer.tags.forEach { tags[it.first] = it.second }
+        if (answer == ServiceBuildingType.VENTILATION_SHAFT || ServiceBuildingType.RAILWAY_VENTILATION_SHAFT)
+            tags.remove("building") // see https://wiki.openstreetmap.org/wiki/Tag:man_made%3Dventilation_shaft
     }
 }

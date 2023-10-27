@@ -1,16 +1,30 @@
 package de.westnordost.streetcomplete.quests.service_building
 
+import android.os.Bundle
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
+import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 
-class AddServiceBuildingTypeForm : AListQuestForm<String>() {
+class AddServiceBuildingTypeForm : AGroupedImageListQuestForm<ServiceBuildingType, ServiceBuildingType>() {
 
-    override val items = listOf(
-        TextItem("gas", R.string.quest_service_building_type_pressure),
-        TextItem("substation", R.string.quest_service_building_type_substation),
-        TextItem("water_well", R.string.quest_service_building_type_well),
-        TextItem("reservoir_covered", R.string.quest_service_building_type_reservoir),
-        TextItem("pumping_station", R.string.quest_service_building_type_pump),
-    )
+    override val topItems = listOf(
+        ServiceBuildingType.MINOR_SUBSTATION,
+        ServiceBuildingType.GAS_PRESSURE_REGULATION,
+        ServiceBuildingType.VENTILATION_SHAFT,
+        ServiceBuildingType.WATER_WELL,
+        ServiceBuildingType.HEATING,
+    ).toItems()
+
+    override val allItems = ServiceBuildingTypeCategory.values().toItems()
+
+    override val itemsPerRow = 1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        imageSelector.groupCellLayoutId = R.layout.cell_labeled_icon_select_with_description_group
+        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_with_description
+    }
+
+    override fun onClickOk(value: ServiceBuildingType) {
+        applyAnswer(value)
+    }
 }
