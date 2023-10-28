@@ -203,13 +203,13 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             val drawable = RotatedCircleDrawable(context.getDrawable(R.drawable.ic_oneway_yes)!!)
             drawable.rotation = mapRotation + wayRotation
             setImageDrawable(drawable)
-            colorFilter = if (direction == Direction.FORWARD)
-                    PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
-                else null
+            if (direction == Direction.FORWARD)
+                setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
+            else colorFilter = null
             setOnClickListener {
                 direction = Direction.FORWARD
                 binding.directionContainer.children.forEach { (it as ImageView).colorFilter = null }
-                colorFilter = PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
+                setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
                 checkIsFormComplete()
             }
         })
@@ -218,13 +218,13 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             val drawable = RotatedCircleDrawable(context.getDrawable(R.drawable.ic_oneway_yes_reverse)!!)
             drawable.rotation = mapRotation + wayRotation
             setImageDrawable(drawable)
-            colorFilter = if (direction == Direction.BACKWARD)
-                    PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
-                else null
+            if (direction == Direction.BACKWARD)
+                setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
+            else colorFilter = null
             setOnClickListener {
                 direction = Direction.BACKWARD
                 binding.directionContainer.children.forEach { (it as ImageView).colorFilter = null }
-                colorFilter = PorterDuffColorFilter(ContextCompat.getColor(requireContext(), R.color.accent), PorterDuff.Mode.MULTIPLY)
+                setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
                 checkIsFormComplete()
             }
         })
