@@ -15,7 +15,6 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
          tourism ~ caravan_site|camping_site
          and access !~ private|no
          and !sanitary_dump_station
-        )
     """
 
     override val changesetComment = "Specify, if there is a sanitary dump station at camp or caravan site"
