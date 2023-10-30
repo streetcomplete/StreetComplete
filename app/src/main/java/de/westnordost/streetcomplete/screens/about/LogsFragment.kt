@@ -17,8 +17,13 @@ import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.databinding.RowLogMessageBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -30,19 +35,34 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
 
     private val logsController: LogsController by inject()
     private val binding by viewBinding(FragmentLogsBinding::bind)
+    private val adapter = LogsAdapter()
 
     private var filters = LogsFilters()
+
+    private val logsControllerListener = object : LogsController.Listener {
+        override fun onAdded(message: LogMessage) { viewLifecycleScope.launch { onMessageAdded(message) } }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         createOptionsMenu(binding.toolbar.root)
 
+        binding.logsList.adapter = adapter
         binding.logsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        val logs = logsController.getLogs(filters)
-        binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
-        binding.logsList.adapter = LogsAdapter(logs)
+        viewLifecycleScope.launch {
+            val logs = getLogs()
+            adapter.list = logs.toMutableList()
+            binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
+        }
+
+        logsController.addListener(logsControllerListener)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        logsController.removeListener(logsControllerListener)
     }
 
     private fun createOptionsMenu(toolbar: Toolbar) {
@@ -63,9 +83,9 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
         }
     }
 
-    private fun onClickShare() {
+    private fun onClickShare() = viewLifecycleScope.launch {
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
-            val logText = logsController.getLogs(filters).format()
+            val logText = getLogs().format()
             val logTimestamp = LocalDateTime.now().toString()
             val logTitle =
                 "${BuildConfig.APPLICATION_ID}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
@@ -82,14 +102,36 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
         LogsFiltersDialog(requireContext(), filters) { newFilters ->
             filters = newFilters
 
-            val logs = logsController.getLogs(filters)
-            binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
-            binding.logsList.adapter = LogsAdapter(logs)
+            viewLifecycleScope.launch {
+                val logs = getLogs()
+                adapter.list = logs.toMutableList()
+                binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
+            }
         }.show()
+    }
+
+    private fun onMessageAdded(message: LogMessage) {
+        // add log messages live only when user has no custom filters enabled
+        if (filters == LogsFilters()) {
+            val logs = adapter.list.toMutableList()
+            logs.add(0, message)
+
+            adapter.list = logs
+            binding.toolbar.root.title = getString(R.string.about_title_logs, adapter.list.size)
+        }
+    }
+
+    private suspend fun getLogs(): List<LogMessage> = withContext(Dispatchers.IO) {
+        logsController.getLogs(
+            levels = filters.levels,
+            messageContains = filters.messageContains,
+            newerThan = filters.timestampNewerThan?.toEpochMilli(),
+            olderThan = filters.timestampOlderThan?.toEpochMilli()
+        )
     }
 }
 
-class LogsAdapter(logs: List<LogMessage>) : ListAdapter<LogMessage>(logs) {
+class LogsAdapter() : ListAdapter<LogMessage>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(RowLogMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false))

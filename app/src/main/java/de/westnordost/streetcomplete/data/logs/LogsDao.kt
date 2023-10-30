@@ -17,7 +17,8 @@ class LogsDao(private val db: Database) {
         newerThan: Long? = null,
         olderThan: Long? = null,
     ): List<LogMessage> {
-        var where = "$LEVEL IN (${levels.map { it.ordinal } .joinToString(",")})"
+        val levelsString = levels.joinToString(",") { "'${it.name}'" }
+        var where = "$LEVEL IN ($levelsString)"
         var args = arrayOf<Any>()
 
         if (messageContains != null) {
@@ -51,7 +52,7 @@ class LogsDao(private val db: Database) {
 }
 
 private fun LogMessage.toPairs(): List<Pair<String, Any?>> = listOfNotNull(
-    LEVEL to level.ordinal,
+    LEVEL to level.name,
     TAG to tag,
     MESSAGE to message,
     ERROR to error,
@@ -59,7 +60,7 @@ private fun LogMessage.toPairs(): List<Pair<String, Any?>> = listOfNotNull(
 )
 
 private fun CursorPosition.toLogMessage() = LogMessage(
-    LogLevel.values()[getInt(LEVEL)],
+    LogLevel.valueOf(getString(LEVEL)),
     getString(TAG),
     getString(MESSAGE),
     getStringOrNull(ERROR),

@@ -3,17 +3,29 @@ package de.westnordost.streetcomplete.screens.about
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsDao
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.logs.Log
-import kotlinx.datetime.LocalDateTime
+import java.util.concurrent.CopyOnWriteArrayList
 
 class LogsController(private val logsDao: LogsDao) {
-    fun getLogs(filters: LogsFilters): List<LogMessage> {
+
+    /** Interface to be notified of new log messages */
+    interface Listener {
+        fun onAdded(message: LogMessage)
+    }
+
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+
+    fun getLogs(
+        levels: Set<LogLevel> = LogLevel.values().toSet(),
+        messageContains: String? = null,
+        newerThan: Long? = null,
+        olderThan: Long? = null,
+    ): List<LogMessage> {
         return logsDao.getAll(
-            levels = filters.levels,
-            messageContains = filters.messageContains,
-            newerThan = filters.timestampNewerThan?.toEpochMilli(),
-            olderThan = filters.timestampOlderThan?.toEpochMilli()
+            levels = levels,
+            messageContains = messageContains,
+            newerThan = newerThan,
+            olderThan = olderThan,
         )
     }
 
@@ -24,21 +36,24 @@ class LogsController(private val logsDao: LogsDao) {
         }
     }
 
+    fun add(message: LogMessage) {
+        logsDao.add(message)
+        onAdded(message)
+    }
+
+    fun addListener(listener: Listener) {
+        listeners.add(listener)
+    }
+
+    fun removeListener(listener: Listener) {
+        listeners.remove(listener)
+    }
+
+    private fun onAdded(message: LogMessage) {
+        listeners.forEach { it.onAdded(message) }
+    }
+
     companion object {
         private const val TAG = "LogsController"
     }
-}
-
-data class LogsFilters(
-    var levels: MutableSet<LogLevel> = LogLevel.values().toMutableSet(),
-    var messageContains: String? = null,
-    var timestampNewerThan: LocalDateTime? = null,
-    var timestampOlderThan: LocalDateTime? = null
-) {
-    fun copy(): LogsFilters = LogsFilters(
-        levels.toMutableSet(),
-        messageContains,
-        timestampNewerThan,
-        timestampOlderThan
-    )
 }

@@ -147,3 +147,17 @@ class LevelsFilterAdapter(
         }
     }
 }
+
+data class LogsFilters(
+    var levels: MutableSet<LogLevel> = LogLevel.values().toMutableSet(),
+    var messageContains: String? = null,
+    var timestampNewerThan: LocalDateTime? = null,
+    var timestampOlderThan: LocalDateTime? = null
+) {
+    fun copy(): LogsFilters = LogsFilters(
+        levels.toMutableSet(),
+        messageContains,
+        timestampNewerThan,
+        timestampOlderThan
+    )
+}

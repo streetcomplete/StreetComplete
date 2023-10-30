@@ -28,9 +28,10 @@ object ApplicationConstants {
     const val DELETE_OLD_DATA_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
 
     /** the duration after which logs will be deleted from the database */
-    const val DELETE_OLD_LOG_AFTER = 3L * 24 * 60 * 60 * 1000 // 3 days in ms
+    const val DELETE_OLD_LOG_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
 
-    const val MAX_LOG_LINES_TO_ATTACH_TO_CRASH_REPORT = 100
+    /** the duration after which logs won't be attached to the crash report */
+    const val DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER = 5L * 60 * 1000 // 5 minutes in ms
 
     const val NOTE_MIN_ZOOM = 15
 

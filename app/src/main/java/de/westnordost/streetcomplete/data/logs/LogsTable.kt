@@ -4,7 +4,6 @@ object LogsTable {
     const val NAME = "logs"
 
     object Columns {
-        const val ID = "id"
         const val LEVEL = "level"
         const val TAG = "tag"
         const val MESSAGE = "message"
@@ -14,9 +13,8 @@ object LogsTable {
 
     const val CREATE = """
         CREATE TABLE $NAME (
-            ${Columns.ID} int PRIMARY KEY,
-            ${Columns.LEVEL} int NOT NULL,
-            ${Columns.TAG} varchar(255) NOT NULL,
+            ${Columns.LEVEL} text NOT NULL,
+            ${Columns.TAG} text NOT NULL,
             ${Columns.MESSAGE} text NOT NULL,
             ${Columns.ERROR} text,
             ${Columns.TIMESTAMP} int NOT NULL
