@@ -394,6 +394,7 @@ quest/
     restaurant_vegetarian.svg        parts taken from Twemoji: U+1F37D and U+1F955
     road_construction.svg
     roof_shape.svg
+    sanitary_dump_station.svg        parts taken from https://wiki.openstreetmap.org/wiki/File:France_road_sign_CE24.svg
     seating.svg
     shower.svg
     sidewalk.svg
