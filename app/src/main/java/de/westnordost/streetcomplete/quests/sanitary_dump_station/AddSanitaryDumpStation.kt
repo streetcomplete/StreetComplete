@@ -12,7 +12,10 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-         tourism ~ caravan_site|camping_site
+         (
+           tourism = caravan_site
+           or tourism = camping_site and caravans = yes and !backcountry
+         )
          and access !~ private|no
          and !sanitary_dump_station
     """
