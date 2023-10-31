@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.CopyOnWriteArrayList
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
@@ -22,7 +22,7 @@ class ElementEditsController(
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    private val listeners: MutableList<ElementEditsSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<ElementEditsSource.Listener>()
 
     private val editCache by lazy {
         val c = hashMapOf<Long, ElementEdit>()

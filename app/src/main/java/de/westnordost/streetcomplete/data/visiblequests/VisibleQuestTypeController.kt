@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller to set/get quest types as enabled or disabled. This controls only the visibility
  *  of quest types per user preference and does not take anything else into account that may
@@ -14,7 +14,7 @@ class VisibleQuestTypeController(
     private val questTypeRegistry: QuestTypeRegistry
 ) : VisibleQuestTypeSource {
 
-    private val listeners = CopyOnWriteArrayList<VisibleQuestTypeSource.Listener>()
+    private val listeners = Listeners<VisibleQuestTypeSource.Listener>()
 
     init {
         questPresetsSource.addListener(object : QuestPresetsSource.Listener {

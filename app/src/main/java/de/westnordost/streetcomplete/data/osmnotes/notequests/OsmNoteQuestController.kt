@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Used to get visible osm note quests */
 class OsmNoteQuestController(
@@ -25,9 +25,9 @@ class OsmNoteQuestController(
         fun onUnhid(edit: OsmNoteQuestHidden)
         fun onUnhidAll()
     }
-    private val hideListeners: MutableList<HideOsmNoteQuestListener> = CopyOnWriteArrayList()
+    private val hideListeners = Listeners<HideOsmNoteQuestListener>()
 
-    private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         notesPreferences.showOnlyNotesPhrasedAsQuestions
