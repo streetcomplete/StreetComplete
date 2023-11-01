@@ -5,8 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.ONEWAY_API_URL
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
-import org.assertj.core.api.Assertions.assertThat
 import kotlin.test.Test
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class TrafficFlowSegmentsApiTest {
@@ -27,7 +28,7 @@ class TrafficFlowSegmentsApiTest {
             1L to listOf(TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0))),
             2L to listOf(TrafficFlowSegment(LatLon(4.0, 3.0), LatLon(8.0, 7.0)))
         )
-        assertThat(result).containsAllEntriesOf(expected)
+        assertMapsAreEqual(expected, result)
     }
 
     @Test fun parseTwoOfSameWay() {
@@ -41,11 +42,19 @@ class TrafficFlowSegmentsApiTest {
             TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0)),
             TrafficFlowSegment(LatLon(4.0, 3.0), LatLon(8.0, 7.0))
         ))
-        assertThat(result).containsAllEntriesOf(expected)
+        assertMapsAreEqual(expected, result)
     }
 
     @Test fun withSomeRealData() {
         // should just not crash...
         TrafficFlowSegmentsApi(ONEWAY_API_URL).get(BoundingBox(-34.0, 18.0, -33.0, 19.0))
+    }
+
+    private fun <K,V> assertMapsAreEqual(expected: Map<K,V>, actual: Map<K, V>) {
+        assertEquals(expected.size, actual.size)
+        val expectedEntries = expected.entries
+        val actualEntries = actual.entries
+        expectedEntries.forEach{ assertContains(actualEntries, it) }
+        actualEntries.forEach{ assertContains(expectedEntries, it) }
     }
 }

@@ -5,10 +5,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.*
-import org.assertj.core.api.Assertions
-import kotlin.test.*
+import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.NO
+import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.YES
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class BicycleBoulevardKtTest {
 
@@ -83,6 +84,5 @@ private fun verifyAnswer(
 ) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb, countryCode)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

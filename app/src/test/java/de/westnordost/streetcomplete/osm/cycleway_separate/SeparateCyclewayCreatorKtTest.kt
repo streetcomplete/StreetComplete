@@ -5,9 +5,16 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.ALLOWED_ON_FOOTWAY
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.EXCLUSIVE
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.NON_DESIGNATED
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.NON_SEGREGATED
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.NOT_ALLOWED
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.PATH
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.SEGREGATED
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 
 class SeparateCyclewayCreatorKtTest {
@@ -703,6 +710,5 @@ class SeparateCyclewayCreatorKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: SeparateCycleway, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

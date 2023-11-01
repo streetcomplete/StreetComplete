@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -133,6 +133,5 @@ internal class LocalizedNamesKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: List<LocalizedName>, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

@@ -6,9 +6,17 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
@@ -585,6 +593,5 @@ class StreetParkingCreatorKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightStreetParking, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

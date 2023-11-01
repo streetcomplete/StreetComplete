@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.osm.address
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 
 class AddressNumberTest {
@@ -49,6 +49,5 @@ class AddressNumberTest {
 private fun verifyAnswer(answer: AddressNumber, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(emptyMap())
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

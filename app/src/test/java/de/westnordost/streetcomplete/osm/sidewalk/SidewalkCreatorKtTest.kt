@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
@@ -267,6 +267,5 @@ class SidewalkCreatorKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightSidewalk, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }

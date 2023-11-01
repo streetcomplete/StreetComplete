@@ -5,10 +5,23 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.INVALID
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Direction.BACKWARD
+import de.westnordost.streetcomplete.osm.cycleway.Direction.BOTH
+import de.westnordost.streetcomplete.osm.cycleway.Direction.FORWARD
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
@@ -785,8 +798,7 @@ class CyclewayCreatorKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightCycleway, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb, false)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }
 
 private fun cycleway(left: Pair<Cycleway, Direction>?, right: Pair<Cycleway, Direction>?) =

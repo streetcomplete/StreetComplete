@@ -4,9 +4,13 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.lit.LitStatus.*
+import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
+import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
+import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
+import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
+import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.testutils.assertSetsAreEqual
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
@@ -93,6 +97,5 @@ class LitStatusKtTest {
 private fun verifyAnswer(tags: Map<String, String>, answer: LitStatus, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    assertSetsAreEqual(expectedChanges.toSet(), cb.create().changes)
 }
