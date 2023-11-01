@@ -357,6 +357,19 @@
     <string name="quest_seating_beach">At a beach</string>
     <string name="quest_outdoor_seating_name_title">What kind of outdoor seating does this place have?</string>
 
+    <!-- shelter type -->
+    <string name="quest_shelter_type_title">What kind of shelter is this?</string>
+    <string name="quest_shelter_type_disabled_msg">This quest is disabled by default because it’s not easy to answer. The shelter type must be chosen from suggestions, which are taken from most used values and these are often not easy to differentiate.</string>
+    <string name="quest_shelter_type_is_weather_shelter">This is a generic weather shelter</string>
+    <string name="quest_shelter_type_public_transport">Public Transport</string>
+    <string name="quest_shelter_type_picnic_shelter">Picnic Shelter</string>
+    <string name="quest_shelter_type_gazebo">Gazebo</string>
+    <string name="quest_shelter_type_lean_to">Lean-to</string>
+    <string name="quest_shelter_type_basic_hut">Basic hut</string>
+    <string name="quest_shelter_type_sun_shelter">Sun shelter</string>
+    <string name="quest_shelter_type_field_shelter">Field shelter</string>
+    <string name="quest_shelter_type_rock_shelter">Rock shelter</string>
+
     <!-- artwork type -->
     <string name="quest_artwork_title">What kind of artwork is this?</string>
     <string name="quest_artwork_sculpture">Sculpture</string>

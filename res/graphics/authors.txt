@@ -4,7 +4,7 @@ URLs to other sources used:
  - Twemoji 2 (MIT license)      https://github.com/twitter/twemoji/
  - EmojiOne 2 (CC-BY 4 license) https://github.com/emojione/emojione/tree/2.2.7
  - Google Noto Color Emoji      https://github.com/googlefonts/noto-emoji/tree/main
-   (Apache license, version 2.0) 
+   (Apache license, version 2.0)
 
 File                            Author if not Tobias Zwick / Source
 ===============================================================================
@@ -397,6 +397,7 @@ quest/
     road_construction.svg
     roof_shape.svg
     seating.svg
+    shelter_type.svg                 modified from https://wiki.openstreetmap.org/wiki/File:Shelter-14.svg
     shower.svg
     sidewalk.svg
     sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)

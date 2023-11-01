@@ -152,6 +152,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingOperator
 import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingType
+import de.westnordost.streetcomplete.quests.shelter_type.AddShelterType
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
@@ -588,6 +589,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
     EE_QUEST_OFFSET + 9 to AddTreeGenus(),
     EE_QUEST_OFFSET + 26 to AddIsPharmacyDispensing(),
+    EE_QUEST_OFFSET + 30 to AddShelterType(),
     EE_QUEST_OFFSET + 28 to AddFootwayWidth(arSupportChecker),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),

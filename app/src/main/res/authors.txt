@@ -232,6 +232,15 @@ recycling_centre.jpg           Public Domain     https://commons.wikimedia.org/w
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 
+shelter_type_public_transpor…  CC-BY 2.0         Janusz Jakubowski https://commons.wikimedia.org/wiki/File:Bus_shelter_in_Warsaw_(25843621920).jpg
+shelter_type_picnic_shelter.…  CC-BY-SA 3.0      B.navez https://wiki.openstreetmap.org/wiki/File:R%C3%A9union_Ma%C3%AFdo_kiosque_pique-nique.JPG
+shelter_type_gazebo.jpg        CC-BY 2.0         Tim Green https://commons.wikimedia.org/wiki/File:Shelter,_Roundhay_Park_(3511090304).jpg
+shelter_type_lean_to.jpg       CC-BY-SA 3.0      j doll https://commons.wikimedia.org/wiki/File:Keauhou_Shelter_(145211875).jpeg
+shelter_type_basic_hut.jpg     CC-BY-SA 4.0      Eginhard https://commons.wikimedia.org/wiki/File:Schutzh%C3%BCtte_Lauchb%C3%BChl_2021-06-19.jpg
+shelter_type_sun_shelter.jpg   CC-BY-SA 2.0      blmoregon https://commons.wikimedia.org/wiki/File:Oregon_Trail_-_Keeney_Historic_Site.jpg
+shelter_type_field_shelter…    CC-BY-SA 4.0      Kolforn https://commons.wikimedia.org/wiki/File:-2018-10-03_Free_range_pigs,_Southrepps_(1).JPG
+shelter_type_rock_shelter.jpg  CC-BY 2.0         Bureau of Land Management Oregon and Washington https://commons.wikimedia.org/wiki/File:Rock_Shelter_(11410676553).jpg
+
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
