@@ -52,18 +52,12 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addValueButton.setText(addAnotherValueResId)
-        if (suggestions.isEmpty()) { // load suggestions if necessary
-            getConstantSuggestions().forEach {
-                if (it.isNotBlank())
-                    suggestions.add(it.trim().intern())
-            }
-        }
 
         binding.valueInput.setAdapter(
             ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                (getVariableSuggestions() + lastPickedAnswers + suggestions).distinct()
+                (getVariableSuggestions() + lastPickedAnswers + getSuggestions()).distinct()
             )
         )
         binding.valueInput.onItemClickListener = AdapterView.OnItemClickListener { _, t, _, _ ->
@@ -95,7 +89,7 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
 
     override fun isFormComplete() = (value.isNotBlank() || values.isNotEmpty()) && !value.contains(";")
         && !values.contains(value)
-        && (!onlyAllowSuggestions || values.all { suggestions.contains(it) })
+        && (!onlyAllowSuggestions || values.all { getSuggestions().contains(it) })
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
@@ -129,7 +123,10 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
         }
     }
 
+    private fun getSuggestions(): Collection<String> =
+        suggestions.getOrPut(this::class.simpleName!!) { getConstantSuggestions() }
+
     companion object {
-        private val suggestions = mutableListOf<String>()
+        private val suggestions = hashMapOf<String, Collection<String>>()
     }
 }
