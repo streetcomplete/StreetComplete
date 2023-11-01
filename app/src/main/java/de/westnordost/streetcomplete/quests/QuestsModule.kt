@@ -174,6 +174,7 @@ import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
+import de.westnordost.streetcomplete.quests.street_cabinet.AddStreetCabinetType
 import de.westnordost.streetcomplete.quests.summit.AddSummitCross
 import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
@@ -583,6 +584,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 5 to AddHealthcareSpeciality(),
     EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
     EE_QUEST_OFFSET + 7 to AddServiceBuildingOperator(),
+    EE_QUEST_OFFSET + 29 to AddStreetCabinetType(),
     EE_QUEST_OFFSET + 8 to AddOutdoorSeatingType(),
     EE_QUEST_OFFSET + 25 to AddDestination(),
     EE_QUEST_OFFSET + 22 to AddArtworkType(),

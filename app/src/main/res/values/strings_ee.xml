@@ -343,6 +343,17 @@
     <string name="quest_service_building_monitoring_station_description">A station located in a own building that monitors something</string>
     <string name="quest_service_building_other">Other service building</string>
 
+    <!-- street cabinet type -->
+    <string name="quest_street_cabinet_type_title">What kind of street cabinet is this%s?</string>
+    <string name="quest_street_cabinet_traffic">Traffic</string>
+    <string name="quest_street_cabinet_postal_service">Postal Service</string>
+    <string name="quest_street_cabinet_traffic_control">Traffic Control</string>
+    <string name="quest_street_cabinet_traffic_monitoring">Traffic Monitoring</string>
+    <string name="quest_street_cabinet_transport_management">Transport Management</string>
+    <string name="quest_street_cabinet_waste">Waste</string>
+    <string name="quest_street_cabinet_television">Television</string>
+    <string name="quest_street_cabinet_street_lighting">Street Lighting</string>
+
     <!-- outdoor seating type -->
     <string name="quest_seating_parklet">Next to the curb, or where parking used to be</string>
     <string name="quest_seating_pedestrian_zone">In a pedestrian zone</string>

@@ -410,6 +410,7 @@ quest/
     steps_ramp.svg
     steps_handrail.svg
     street.svg
+    street_cabinet.svg               mcliquid (GPL 3) based on https://github.com/JOSM/josm/blob/master/resources/images/presets/misc/street_cabinet.svg)
     street_lanes.svg
     street_name.svg
     street_surface.svg
@@ -635,6 +636,20 @@ sport/
 steps incline/
     up.svg
     up_reversed.svg
+
+street_cabinet/
+    street_cabinet_gas.svg              modified from street_cabinet.svg and gas.svg
+    street_cabinet_postal.svg           modified from street_cabinet.svg and mail.svg
+    street_cabinet_power.svg            modified from street_cabinet.svg and power.svg
+    street_cabinet_sewerage.svg         modified from street_cabinet.svg and sewerage.svg
+    street_cabinet_street_lighting.svg  modified from street_cabinet.svg and latern.svg
+    street_cabinet_telecom.svg          modified from street_cabinet.svg and phone.svg
+    street_cabinet_television.svg       modified from street_cabinet.svg and https://www.svgrepo.com/svg/407598/television (MIT)
+    street_cabinet_traffic_control.svg  modified from street_cabinet.svg and car.svg and traffic_light.svg
+    street_cabinet_traffic_monit....svg modified from street_cabinet.svg and car.svg and camera.svg
+    street_cabinet_transport_mana...svg modified from street_cabinet.svg and bus.svg
+    street_cabinet_waste.svg            modified from street_cabinet.svg and water.svg
+    street_cabinet_water.svg            modified from street_cabinet.svg and water.svg
 
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
