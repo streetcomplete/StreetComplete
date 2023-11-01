@@ -426,6 +426,7 @@ quest/
     toilets_wheelchair.svg
     tractor.svg
     traffic_lights.svg
+    via_ferrata_scale.svg           https://www.svgrepo.com/svg/137349/climbing (CC0) and based on way_surface.svg
     way_surface.svg
     way_surface_detail.svg          Tobias Zwick (CC-BY-SA 4.0) (based on street_surface_detail.svg), recoloured background by Flo Edelmann
     way_width.svg

@@ -333,6 +333,14 @@ tourism_information_map.jpg    CC0               https://commons.wikimedia.org/w
 tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
 tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
 
+via_ferrata_scale_0.jpg        CC-BY-SA-2.0      https://wiki.openstreetmap.org/wiki/File:Super_easy_ferrata.jpg
+via_ferrata_scale_1.jpg        CC-BY-SA-3.0      https://wiki.openstreetmap.org/wiki/File:Alpspitz-ferrata-a.jpg
+via_ferrata_scale_2.jpg        CC-BY-SA-2.0      https://wiki.openstreetmap.org/wiki/File:Alpspitz-ferrata-b.jpg
+via_ferrata_scale_3.jpg        CC-BY-SA-2.0      https://wiki.openstreetmap.org/wiki/File:Absamer_klettersteig.jpg
+via_ferrata_scale_4.jpg        CC-BY-SA-2.0      https://wiki.openstreetmap.org/wiki/File:Mauerlaeufer_ueberhang.jpg
+via_ferrata_scale_5.jpg        CC-BY-SA-2.0      https://wiki.openstreetmap.org/wiki/File:Bergfuehrerquergang.jpg
+via_ferrata_scale_6.jpg        CC-BY-SA-2.5      https://commons.wikimedia.org/wiki/File:Eggst%C3%B6cke_-_H.jpg
+
 vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
 vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
