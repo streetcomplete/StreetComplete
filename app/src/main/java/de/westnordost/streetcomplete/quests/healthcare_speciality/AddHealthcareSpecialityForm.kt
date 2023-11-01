@@ -3,35 +3,27 @@ package de.westnordost.streetcomplete.quests.healthcare_speciality
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.core.os.bundleOf
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.commit
 import androidx.preference.PreferenceManager
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
+import de.westnordost.streetcomplete.quests.AMultiValueQuestForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
+class AddHealthcareSpecialityForm : AMultiValueQuestForm<String>() {
 
-    override val contentLayoutResId = R.layout.quest_cuisine_suggestion
-    private val binding by contentViewBinding(QuestCuisineSuggestionBinding::bind)
-
-    private val specialities = mutableListOf<String>()
+    override fun stringToAnswer(answerString: String) = answerString
 
     // the hacky UI switch breaks when using tag editor...
     override val otherAnswers get() = if (TagEditor.showingTagEditor) emptyList() else listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
@@ -48,77 +40,17 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
         }
     })
 
-    private val speciality get() = binding.cuisineInput.text?.toString().orEmpty().trim()
+    override val addAnotherValueResId = R.string.quest_healthcare_speciality_add_more
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.cuisineInput.setAdapter(
-            ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_dropdown_item_1line,
-                (lastPickedAnswers + suggestions).distinct(),
-            )
-        )
-
-        binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
-
-        binding.addCuisineButton.setOnClickListener {
-            if (isFormComplete() && binding.cuisineInput.text.isNotBlank()) {
-                specialities.add(speciality)
-                binding.currentCuisines.text = specialities.joinToString(";")
-                binding.cuisineInput.text.clear()
-            }
-            viewLifecycleScope.launch {
-                delay(20) // delay, because otherwise dropdown disappears immediately
-                binding.cuisineInput.showDropDown()
-            }
-        }
-        binding.addCuisineButton.setText(R.string.quest_healthcare_speciality_add_more)
-    }
-
-    override fun onClickOk() {
-        specialities.removeAll { it.isBlank() }
-        if (specialities.isNotEmpty()) favs.add(specialities)
-        if (speciality.isNotBlank()) favs.add(speciality)
-        if (speciality.isBlank())
-            applyAnswer(specialities.joinToString(";"))
-        else
-            applyAnswer((specialities + listOf(speciality)).joinToString(";"))
-    }
-
-    override fun isFormComplete() = (speciality.isNotBlank() || specialities.isNotEmpty())
-        && !specialities.contains(speciality)
-        && (speciality.isEmpty() || suggestions.contains(speciality))
-        && specialities.all { suggestions.contains(it) }
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-        )
-    }
-
-    private lateinit var favs: LastPickedValuesStore<String>
-
-    private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
-            .toList()
-    }
-
-    companion object {
-        private val suggestions = (healthcareSpecialityFromWiki.split("\n").mapNotNull {
+    override fun getConstantSuggestions() =
+        (healthcareSpecialityFromWiki.split("\n").mapNotNull {
             if (it.isBlank()) null
             else it.trim()
         } + healthcareSpecialityValuesFromTaginfo.split("\n").mapNotNull {
             if (it.isBlank()) null
             else it.trim()
-        }).toSet().toTypedArray()
-    }
+        }).toSet()
+
 }
 
 

@@ -6,26 +6,26 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/currentCuisines"
+        android:id="@+id/currentValues"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="@dimen/quest_form_vertical_margin"
-        tools:text=""/>
+        tools:text="value1;value2"/>
 
     <AutoCompleteTextView
-        android:id="@+id/cuisineInput"
+        android:id="@+id/valueInput"
         android:textSize="32sp"
         android:completionThreshold="0"
-        android:dropDownAnchor="@id/currentCuisines"
-        tools:text="Beer"
+        android:dropDownAnchor="@id/currentValues"
+        tools:text="value3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/addCuisineButton"
+        android:id="@+id/addValueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/BottomSheetButtonBarItem"
-        android:text="@string/quest_cuisine_add_more" />
+        tools:text="add another value" />
 </LinearLayout>
