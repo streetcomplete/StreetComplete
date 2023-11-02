@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
@@ -38,7 +39,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
@@ -60,9 +60,9 @@ class OsmQuestController internal constructor(
         fun onUnhid(edit: OsmQuestHidden)
         fun onUnhidAll()
     }
-    private val hideListeners: MutableList<HideOsmQuestListener> = CopyOnWriteArrayList()
+    private val hideListeners = Listeners<HideOsmQuestListener>()
 
-    private val listeners: MutableList<OsmQuestSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<OsmQuestSource.Listener>()
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
