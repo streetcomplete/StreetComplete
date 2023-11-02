@@ -22,8 +22,8 @@ class LogsDaoTest : ApplicationDbTestCase() {
 
         listOf(m1, m2, m3).forEach { dao.add(it) }
 
-        // sorted by timestamp descending
-        assertEquals(listOf(m2, m3, m1), dao.getAll())
+        // sorted by timestamp ascending
+        assertEquals(listOf(m1, m3, m2), dao.getAll())
     }
 
     @Test fun getAll_filters_by_levels() {

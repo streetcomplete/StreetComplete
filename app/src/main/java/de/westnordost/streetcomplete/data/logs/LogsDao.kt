@@ -40,7 +40,7 @@ class LogsDao(private val db: Database) {
             NAME,
             where = where,
             args = args,
-            orderBy = "$TIMESTAMP DESC"
+            orderBy = "$TIMESTAMP ASC"
         ) { it.toLogMessage() }
     }
 

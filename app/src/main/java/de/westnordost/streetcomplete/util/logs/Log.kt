@@ -21,27 +21,15 @@ object Log : Logger {
         }
     }
 
-    override fun w(tag: String, message: String) {
+    override fun w(tag: String, message: String, exception: Throwable?) {
         instances.forEach {
-            it.w(tag, message)
+            it.w(tag, message, exception)
         }
     }
 
-    override fun w(tag: String, message: String, e: Throwable) {
+    override fun e(tag: String, message: String, exception: Throwable?) {
         instances.forEach {
-            it.w(tag, message, e)
-        }
-    }
-
-    override fun e(tag: String, message: String) {
-        instances.forEach {
-            it.e(tag, message)
-        }
-    }
-
-    override fun e(tag: String, message: String, e: Throwable) {
-        instances.forEach {
-            it.e(tag, message, e)
+            it.e(tag, message, exception)
         }
     }
 }

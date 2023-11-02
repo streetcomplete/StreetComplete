@@ -15,19 +15,11 @@ class AndroidLogger() : Logger {
         Log.i(tag, message)
     }
 
-    override fun w(tag: String, message: String) {
-        Log.w(tag, message)
+    override fun w(tag: String, message: String, exception: Throwable?) {
+        if (exception != null) Log.w(tag, message, exception) else Log.w(tag, message)
     }
 
-    override fun w(tag: String, message: String, e: Throwable) {
-        Log.w(tag, message, e)
-    }
-
-    override fun e(tag: String, message: String) {
-        Log.e(tag, message)
-    }
-
-    override fun e(tag: String, message: String, e: Throwable) {
-        Log.e(tag, message, e)
+    override fun e(tag: String, message: String, exception: Throwable?) {
+        if (exception != null) Log.e(tag, message, exception) else Log.e(tag, message)
     }
 }

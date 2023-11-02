@@ -1,32 +1,46 @@
 package de.westnordost.streetcomplete.screens.about
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogLevel
+import de.westnordost.streetcomplete.data.logs.LogMessage
+import de.westnordost.streetcomplete.data.logs.colorId
 import de.westnordost.streetcomplete.data.logs.styleResId
 import de.westnordost.streetcomplete.databinding.DialogLogsFiltersBinding
-import de.westnordost.streetcomplete.databinding.RowLogsFiltersCheckboxBinding
+import de.westnordost.streetcomplete.util.dateTimeToString
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
+import kotlinx.serialization.Serializable
+import java.util.Locale
+import kotlin.coroutines.resume
 
 class LogsFiltersDialog(
-    context: Context,
+    private val context: Context,
     initialFilters: LogsFilters,
     onApplyButtonClick: (filters: LogsFilters) -> Unit
 ) : AlertDialog(context) {
 
     private val filters = initialFilters.copy()
     private val binding = DialogLogsFiltersBinding.inflate(LayoutInflater.from(context))
+    private val locale = Locale.getDefault()
 
     init {
         setView(binding.root)
@@ -40,114 +54,130 @@ class LogsFiltersDialog(
             cancel()
         }
 
-        val allLevels = LogLevel.values().toList()
-        binding.levelList.adapter = LevelsFilterAdapter(
-            allLevels,
-            filters.levels
-        ) {
-            when (filters.levels.contains(it)) {
-                true -> filters.levels.remove(it)
-                false -> filters.levels.add(it)
-            }
-        }
+        createLogLevelsChips()
 
         binding.messageContainsEditText.setText(filters.messageContains)
-        updateMessageContainsClearButton()
         binding.messageContainsEditText.doAfterTextChanged {
             filters.messageContains = binding.messageContainsEditText.nonBlankTextOrNull
-            updateMessageContainsClearButton()
-        }
-        binding.messageContainsClearButton.setOnClickListener {
-            filters.messageContains = null
-            binding.messageContainsEditText.setText(null)
-            updateMessageContainsClearButton()
         }
 
         updateNewerThanInput()
-        binding.newerThanTextDate.setOnClickListener {
-            pickLocalDateTime(filters.timestampNewerThan ?: LocalDateTime.now()) {
-                filters.timestampNewerThan = it
+        binding.newerThanEditText.setOnClickListener {
+            lifecycleScope.launch {
+                filters.timestampNewerThan = pickDateTime(
+                    filters.timestampNewerThan ?: LocalDateTime.now()
+                )
                 updateNewerThanInput()
             }
         }
-        binding.newerThanClearButton.setOnClickListener {
+        binding.newerThanEditTextLayout.setEndIconOnClickListener {
             filters.timestampNewerThan = null
             updateNewerThanInput()
         }
 
         updateOlderThanInput()
-        binding.olderThanTextDate.setOnClickListener {
-            pickLocalDateTime(filters.timestampOlderThan ?: LocalDateTime.now()) {
-                filters.timestampOlderThan = it
+        binding.olderThanEditText.setOnClickListener {
+            lifecycleScope.launch {
+                filters.timestampOlderThan = pickDateTime(
+                    filters.timestampOlderThan ?: LocalDateTime.now()
+                )
                 updateOlderThanInput()
             }
         }
-        binding.olderThanClearButton.setOnClickListener {
+        binding.olderThanEditTextLayout.setEndIconOnClickListener {
             filters.timestampOlderThan = null
             updateOlderThanInput()
         }
     }
-    private fun updateMessageContainsClearButton() {
-        binding.messageContainsClearButton.visibility = if (filters.messageContains == null) View.GONE else View.VISIBLE
+
+    private fun createLogLevelsChips() {
+        LogLevel.values().forEach { level ->
+            val chip = LogLevelFilterChip(level, context)
+
+            chip.isChecked = filters.levels.contains(level)
+            chip.isChipIconVisible = !chip.isChecked
+
+            chip.setOnClickListener {
+                chip.isChipIconVisible = !chip.isChecked
+
+                when (filters.levels.contains(level)) {
+                    true -> filters.levels.remove(level)
+                    false -> filters.levels.add(level)
+                }
+            }
+
+            binding.levelChipGroup.addView(chip)
+        }
     }
 
     private fun updateNewerThanInput() {
-        binding.newerThanClearButton.visibility = if (filters.timestampNewerThan == null) View.GONE else View.VISIBLE
-        binding.newerThanTextDate.setText(filters.timestampNewerThan?.toString() ?: "")
+        binding.newerThanEditTextLayout.isEndIconVisible = (filters.timestampNewerThan != null)
+        binding.newerThanEditText.setText(filters.timestampNewerThan?.let {  dateTimeToString(locale, it) } ?: "")
     }
 
     private fun updateOlderThanInput() {
-        binding.olderThanClearButton.visibility = if (filters.timestampOlderThan == null) View.GONE else View.VISIBLE
-        binding.olderThanTextDate.setText(filters.timestampOlderThan?.toString() ?: "")
+        binding.olderThanEditTextLayout.isEndIconVisible = (filters.timestampOlderThan != null)
+        binding.olderThanEditText.setText(filters.timestampOlderThan?.let { dateTimeToString(locale, it) } ?: "")
     }
 
-    private fun pickLocalDateTime(
-        initialDateTime: LocalDateTime,
-        callback: (dateTime: LocalDateTime) -> Unit
-    ) {
-        DatePickerDialog(
-            context,
-            R.style.Theme_Bubble_Dialog_DatePicker,
-            { _, year, month, dayOfMonth ->
-                TimePickerDialog(
-                    context,
-                    initialDateTime.hour,
-                    initialDateTime.minute,
-                    true
-                ) { hour, minute ->
-                    val dateTime = LocalDateTime(year, month, dayOfMonth, hour, minute)
-                    callback(dateTime)
-                }.show()
-            },
-            initialDateTime.year,
-            initialDateTime.monthNumber,
-            initialDateTime.dayOfMonth
-        ).show()
+    private suspend fun pickDateTime(initialDateTime: LocalDateTime): LocalDateTime {
+        val date = pickDate(initialDateTime.date)
+        val time = pickTime(initialDateTime.time)
+
+        return LocalDateTime(date, time)
     }
+
+    private suspend fun pickDate(initialDate: LocalDate): LocalDate =
+        suspendCancellableCoroutine { cont ->
+            DatePickerDialog(
+                context,
+                R.style.Theme_Bubble_Dialog_DatePicker,
+                { _, year, month, dayOfMonth ->
+                    cont.resume(LocalDate(year, month, dayOfMonth))
+                },
+                initialDate.year,
+                initialDate.monthNumber,
+                initialDate.dayOfMonth
+            ).show()
+        }
+
+    private suspend fun pickTime(initialTime: LocalTime): LocalTime =
+        suspendCancellableCoroutine { cont ->
+            TimePickerDialog(
+                context,
+                initialTime.hour,
+                initialTime.minute,
+                true
+            ) { hour, minute ->
+                cont.resume(LocalTime(hour, minute))
+            }.show()
+        }
 }
 
-class LevelsFilterAdapter(
-    levels: List<LogLevel>,
-    private val selectedLevels: Set<LogLevel>,
-    private val onLevelToggle: (LogLevel) -> Unit
-) : ListAdapter<LogLevel>(levels) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(
-            RowLogsFiltersCheckboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+@SuppressLint("ViewConstructor")
+class LogLevelFilterChip(level: LogLevel, context: Context) : Chip(context) {
+    init {
+        val drawable = ChipDrawable.createFromAttributes(
+            context,
+            null,
+            0,
+            com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
         )
 
-    inner class ViewHolder(val binding: RowLogsFiltersCheckboxBinding) : ListAdapter.ViewHolder<LogLevel>(binding) {
-        override fun onBind(with: LogLevel) {
-            binding.checkBox.text = with.name
-            TextViewCompat.setTextAppearance(binding.checkBox, with.styleResId)
-            binding.checkBox.isChecked = selectedLevels.contains(with)
-            binding.checkBox.setOnCheckedChangeListener { _, _ ->
-                onLevelToggle(with)
-            }
-        }
+        setChipDrawable(drawable)
+
+        setCheckedIconResource(R.drawable.ic_check_circle_24dp)
+        checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
+
+        setChipIconResource(R.drawable.ic_circle_outline_24dp)
+        chipIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
+
+        text = level.name
+        TextViewCompat.setTextAppearance(this, level.styleResId)
     }
 }
 
+@Serializable
 data class LogsFilters(
     var levels: MutableSet<LogLevel> = LogLevel.values().toMutableSet(),
     var messageContains: String? = null,
@@ -160,4 +190,33 @@ data class LogsFilters(
         timestampNewerThan,
         timestampOlderThan
     )
+
+    fun matches(message: LogMessage): Boolean {
+        if (!levels.contains(message.level)) {
+            return false
+        }
+
+        if (
+            messageContains != null &&
+            !message.message.contains(messageContains!!, ignoreCase = true)
+        ) {
+            return false
+        }
+
+        if (
+            timestampNewerThan != null &&
+            message.timestamp <= timestampNewerThan!!.toEpochMilli()
+        ) {
+            return false
+        }
+
+        if (
+            timestampOlderThan != null &&
+            message.timestamp >= timestampOlderThan!!.toEpochMilli()
+        ) {
+            return false
+        }
+
+        return true
+    }
 }

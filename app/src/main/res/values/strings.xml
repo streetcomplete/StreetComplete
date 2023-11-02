@@ -1713,9 +1713,10 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="action_filter">Filter</string>
     <string name="action_share">Share logs</string>
     <string name="about_title_show_logs">Show logs</string>
-    <string name="label_log_level">Level:</string>
-    <string name="label_log_newer_than">Newer than:</string>
-    <string name="label_log_older_than">Older than:</string>
-    <string name="label_log_message_contains">Message contains:</string>
+    <string name="label_log_level">Level</string>
+    <string name="label_log_newer_than">From</string>
+    <string name="label_log_older_than">To</string>
+    <string name="label_log_message_contains">Message contains</string>
+    <string name="title_logs_filters">Filter messages</string>
 
 </resources>
