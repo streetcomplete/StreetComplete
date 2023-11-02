@@ -20,4 +20,8 @@ object LogsTable {
             ${Columns.TIMESTAMP} int NOT NULL
         );
     """
+
+    const val INDEX_CREATE = """
+        CREATE INDEX logs_timestamp_index ON $NAME (${Columns.TIMESTAMP});
+    """
 }

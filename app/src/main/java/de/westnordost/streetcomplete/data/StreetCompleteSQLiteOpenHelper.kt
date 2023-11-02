@@ -104,6 +104,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
         // logs
         db.execSQL(LogsTable.CREATE)
+        db.execSQL(LogsTable.INDEX_CREATE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -218,6 +219,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         }
         if (oldVersion <= 11 && newVersion > 11) {
             db.execSQL(LogsTable.CREATE)
+            db.execSQL(LogsTable.INDEX_CREATE)
         }
     }
 }
