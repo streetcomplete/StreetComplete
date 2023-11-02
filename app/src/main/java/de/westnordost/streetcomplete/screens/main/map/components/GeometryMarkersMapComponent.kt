@@ -47,7 +47,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 val drawable = getBitmapDrawable(drawableResId)
                 marker.setDrawable(drawable)
                 iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
-                color = questColor?.let { "#" + Integer.toHexString(ColorUtils.blendARGB(it, Color.WHITE, 0.7f)) } ?: pointColorOpaque
+                color = if (iconSize == 64) "white" // matches only restriction overlay icons, todo: maybe remove this exception and switch to the id icons
+                    else questColor?.let { "#" + Integer.toHexString(ColorUtils.blendARGB(it, Color.WHITE, 0.7f)) } ?: pointColorOpaque
             } else {
                 iconSize = pointSize
                 color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 100)) } ?: pointColor
