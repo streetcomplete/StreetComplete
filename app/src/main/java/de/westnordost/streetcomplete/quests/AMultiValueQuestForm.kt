@@ -89,7 +89,7 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
 
     override fun isFormComplete() = (value.isNotBlank() || values.isNotEmpty()) && !value.contains(";")
         && !values.contains(value)
-        && (!onlyAllowSuggestions || values.all { getSuggestions().contains(it) })
+        && (!onlyAllowSuggestions || (values.all { getSuggestions().contains(it) } && (getSuggestions().contains(value) || value.isBlank())))
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)

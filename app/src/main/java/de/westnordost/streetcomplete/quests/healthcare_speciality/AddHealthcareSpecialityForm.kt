@@ -40,6 +40,8 @@ class AddHealthcareSpecialityForm : AMultiValueQuestForm<String>() {
         }
     })
 
+    override val onlyAllowSuggestions = true
+
     override val addAnotherValueResId = R.string.quest_healthcare_speciality_add_more
 
     override fun getConstantSuggestions() =
