@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
+
+
 class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
     override val elementFilter = """
@@ -17,7 +19,6 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
           and !fuel
           and access !~ no|private
     """
-
     override val changesetComment = "Specify barbecue fuel"
     override val wikiLink = "Key:amenity=bbq"
     override val icon = R.drawable.ic_quest_fire
@@ -32,11 +33,11 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NotBbq -> {
+            NOT_BBQ -> {
                 tags.remove("amenity")
                 tags["leisure"] = "firepit"
             }
-            is BbqFuel -> {
+            else -> {
                 tags["fuel"] = answer.osmValue
             }
         }

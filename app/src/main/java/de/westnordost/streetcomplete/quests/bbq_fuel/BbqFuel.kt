@@ -8,4 +8,4 @@ enum class BbqFuel(val osmValue: String) : BbqFuelAnswer {
     CHARCOAL("charcoal")
 }
 
-object NotBbq : BbqFuelAnswer
+object NOT_BBQ : BbqFuelAnswer
