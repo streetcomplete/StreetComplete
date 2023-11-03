@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBbqFuel : OsmFilterQuestType<BbqFuel>() {
+class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -30,7 +30,15 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuel>() {
 
     override fun createForm() = AddBbqFuelForm()
 
-    override fun applyAnswerTo(answer: BbqFuel, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["fuel"] = answer.osmValue
+    override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is NotBbq -> {
+                tags.remove("amenity")
+                tags["leisure"] = "firepit"
+            }
+            is BbqFuel -> {
+                tags["fuel"] = answer.osmValue
+            }
+        }
     }
 }
