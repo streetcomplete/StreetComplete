@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bbq_fuel
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TextItem
 
 class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
