@@ -75,7 +75,7 @@ class AddOpeningHoursTest {
     @Test fun `apply always open answer`() {
         questType.verifyAnswer(
             AlwaysOpen,
-            StringMapEntryAdd("opening_hours", "24/7")
+            StringMapEntryAdd("opening_hours", "open")
         )
     }
 
@@ -83,7 +83,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "34/3"),
             AlwaysOpen,
-            StringMapEntryModify("opening_hours", "34/3", "24/7")
+            StringMapEntryModify("opening_hours", "34/3", "open")
         )
     }
 
@@ -91,7 +91,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "24/7"),
             AlwaysOpen,
-            StringMapEntryModify("opening_hours", "24/7", "24/7"),
+            StringMapEntryModify("opening_hours", "24/7", "open"),
             StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
         )
     }
@@ -100,7 +100,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours:signed" to "yes"),
             AlwaysOpen,
-            StringMapEntryAdd("opening_hours", "24/7")
+            StringMapEntryAdd("opening_hours", "open")
         )
     }
 
@@ -111,7 +111,7 @@ class AddOpeningHoursTest {
                 "opening_hours:signed" to "yes"
             ),
             AlwaysOpen,
-            StringMapEntryModify("opening_hours", "24/7", "24/7"),
+            StringMapEntryModify("opening_hours", "24/7", "open"),
             StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
         )
     }
@@ -123,7 +123,7 @@ class AddOpeningHoursTest {
                 "opening_hours:signed" to "yes"
             ),
             AlwaysOpen,
-            StringMapEntryModify("opening_hours", "34/3", "24/7")
+            StringMapEntryModify("opening_hours", "34/3", "open")
         )
     }
 

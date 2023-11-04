@@ -167,7 +167,7 @@ class AddOpeningHours(
         } else {
             val openingHoursString = when (answer) {
                 is RegularOpeningHours  -> answer.hours.toString()
-                is AlwaysOpen           -> "24/7"
+                is AlwaysOpen           -> "open"
                 is DescribeOpeningHours -> "\"" + answer.text.replace("\"", "") + "\""
                 NoOpeningHoursSign      -> throw IllegalStateException()
             }
