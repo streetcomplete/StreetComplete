@@ -34,6 +34,9 @@ class NoteQuestsHiddenDao(private val db: Database) {
 
     fun deleteAll(): Int =
         db.delete(NAME)
+
+    fun countAll(): Long =
+        db.countAll(NAME)
 }
 
 private fun CursorPosition.toNoteIdWithTimestamp() =

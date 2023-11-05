@@ -73,6 +73,10 @@ interface Database {
         args: Array<Any>? = null
     ): Int
 
+    fun countAll(
+        table: String
+    ): Long
+
     fun <T> transaction(block: () -> T): T
 }
 

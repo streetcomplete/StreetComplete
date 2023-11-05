@@ -22,7 +22,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -65,6 +67,8 @@ class SettingsFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
+    private val osmQuestsHiddenDao: OsmQuestsHiddenDao by inject()
+    private val noteQuestsHiddenDao: NoteQuestsHiddenDao by inject()
 
     override val title: String get() = getString(R.string.action_settings)
 
@@ -121,10 +125,9 @@ class SettingsFragment :
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.restore_dialog_message)
-                .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
-                    val hidden = unhideQuests()
-                    context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                } }
+                .setPositiveButton(R.string.restore_confirmation) { _, _ ->
+                    onHiddenQuestRestore()
+                }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
@@ -144,6 +147,17 @@ class SettingsFragment :
         }
 
         buildLanguageSelector()
+    }
+
+    private fun onHiddenQuestRestore() {
+        lifecycleScope.launch {
+            val hidden = unhideQuests()
+            context?.toast(
+                getString(R.string.restore_hidden_success, hidden),
+                Toast.LENGTH_LONG
+            )
+            setHiddenQuestsSummary()
+        }
     }
 
     private fun buildLanguageSelector() {
@@ -173,6 +187,7 @@ class SettingsFragment :
     override fun onStart() {
         super.onStart()
 
+        setHiddenQuestsSummary()
         setQuestPreferenceSummary()
         setQuestPresetsPreferenceSummary()
 
@@ -245,6 +260,10 @@ class SettingsFragment :
         osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
+    private fun countHiddenQuests(): Long =
+        osmQuestsHiddenDao.countAll() + noteQuestsHiddenDao.countAll()
+
+
     private fun setQuestPreferenceSummary() {
         val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
         val totalCount = questTypeRegistry.size
@@ -259,6 +278,34 @@ class SettingsFragment :
         val summary = getString(R.string.pref_subtitle_quests_preset_name, presetName)
         viewLifecycleScope.launch {
             findPreference<Preference>("quest_presets")?.summary = summary
+        }
+    }
+
+    private fun setHiddenQuestsSummary() {
+        val amountOfHiddenQuests = countHiddenQuests()
+        viewLifecycleScope.launch {
+            val pref = findPreference<Preference>("quests.restore.hidden")
+            pref?.summary = calculateHiddenQuestsSummary(amountOfHiddenQuests)
+            if (amountOfHiddenQuests == 0L) {
+                pref?.isEnabled = false
+            }
+        }
+    }
+
+    private fun calculateHiddenQuestsSummary(amount: Long): String = when (amount) {
+        0L -> {
+            requireContext().getString(R.string.pref_title_quests_restore_hidden_summary_none_hidden)
+        }
+
+        1L -> {
+            requireContext().getString(R.string.pref_title_quests_restore_hidden_summary_one_hidden)
+        }
+
+        else -> {
+            requireContext().getString(
+                R.string.pref_title_quests_restore_hidden_summary_multiple_hidden,
+                amount
+            )
         }
     }
 }

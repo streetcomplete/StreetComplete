@@ -503,6 +503,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ist der Motorradstellplatz überdacht (regengeschützt)?"</string>
     <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal viel Arbeit für eine einzelne Aufgabe sein."</string>
     <string name="pref_title_quests_restore_hidden">"Versteckte Aufgaben wiederherstellen"</string>
+    <string name="pref_title_quests_restore_hidden_summary_none_hidden">Du hast keine versteckten Aufgaben.</string>
+    <string name="pref_title_quests_restore_hidden_summary_one_hidden">Eine Aufgabe ist aktuell versteckt.</string>
+    <string name="pref_title_quests_restore_hidden_summary_multiple_hidden">%1$d Aufgaben sind aktuell versteckt.</string>
     <string name="restore_hidden_success">"%d versteckte Aufgaben wiederhergestellt"</string>
     <string name="on_level">"auf Ebene %s"</string>
     <string name="underground">"unterirdisch"</string>
