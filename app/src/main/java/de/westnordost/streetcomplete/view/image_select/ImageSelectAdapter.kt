@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Select a number of items from a list of items  */
 class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
@@ -21,7 +21,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
 
     var cellLayoutId = R.layout.cell_labeled_image_select
 
-    val listeners: MutableList<OnItemSelectionListener> = CopyOnWriteArrayList()
+    val listeners = Listeners<OnItemSelectionListener>()
 
     val selectedItems get() = _selectedIndices.map { i -> items[i] }
 
@@ -59,9 +59,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
         if (!_selectedIndices.add(index)) return
 
         notifyItemChanged(index)
-        for (listener in listeners) {
-            listener.onIndexSelected(index)
-        }
+        listeners.forEach { it.onIndexSelected(index) }
     }
 
     fun deselect(index: Int) {
@@ -69,9 +67,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
         if (!_selectedIndices.remove(index)) return
 
         notifyItemChanged(index)
-        for (listener in listeners) {
-            listener.onIndexDeselected(index)
-        }
+        listeners.forEach { it.onIndexDeselected(index) }
     }
 
     fun toggle(index: Int) {

@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.CopyOnWriteArrayList
 
 class NoteEditsController(
     private val editsDB: NoteEditsDao
@@ -14,7 +14,7 @@ class NoteEditsController(
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    private val listeners: MutableList<NoteEditsSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<NoteEditsSource.Listener>()
 
     fun add(
         noteId: Long,
