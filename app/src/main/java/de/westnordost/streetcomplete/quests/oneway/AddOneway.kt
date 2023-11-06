@@ -27,7 +27,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         ways with highway ~ living_street|residential|service|tertiary|unclassified
          and width <= 4 and (!lanes or lanes <= 1)
          and !oneway and area != yes and junction != roundabout
-         and (access !~ private|no or (foot and foot !~ private|no))
+         and (access !~ private|no or (foot and foot !~ private|no) or motor_vehicle != no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether narrow roads are one-ways"
