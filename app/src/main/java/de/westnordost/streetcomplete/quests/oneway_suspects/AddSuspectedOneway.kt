@@ -30,6 +30,7 @@ class AddSuspectedOneway(
           and (
             access !~ private|no
             or (foot and foot !~ private|no)
+            or motor_vehicle != no
           )
     """.toElementFilterExpression() }
 
