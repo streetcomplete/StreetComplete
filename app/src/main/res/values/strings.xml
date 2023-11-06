@@ -923,7 +923,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
-    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank, intended for use by land based users such as operators of motorhomes and long haul trucks. Might look like this:</string>
+    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Might look like this:</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
