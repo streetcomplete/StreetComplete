@@ -20,7 +20,7 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
          and !sanitary_dump_station
     """
 
-    override val changesetComment = "Specify, if there is a sanitary dump station at camp or caravan site"
+    override val changesetComment = "Specify if there is a sanitary dump station at camp or caravan site"
     override val wikiLink = "Key:sanitary_dump_station"
     override val icon = R.drawable.ic_quest_sanitary_dump_station
     override val achievements = listOf(EditTypeAchievement.OUTDOORS)
