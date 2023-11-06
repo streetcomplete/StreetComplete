@@ -228,7 +228,6 @@ recycling_container_undergr... CC0               https://commons.wikimedia.org/w
 sanitary_dump_station_illus... CC BY-SA 4.0 Deed https://commons.wikimedia.org/wiki/File:Karlslunde_%C3%B8st_sanitary_dump_grey.jpg (Elgaard)
                                CC BY-SA 3.0 Deed https://wiki.openstreetmap.org/wiki/File:Entsorgung_Camping_IMG_1510.JPG (Nightflyer)
                                
-
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
