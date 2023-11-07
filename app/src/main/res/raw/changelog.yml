@@ -15,7 +15,7 @@ v55.0: |
   </ul>
   <h3>General Enhancements and Fixes</h3>
   <ul>
-  <li>Quest selection: Can search by english quest titles too (#5284), by @FloEdelmann</li>
+  <li>Quest selection: Can search by English quest titles too (#5284), by @FloEdelmann</li>
   <li>It's now easier to tap a road in an overlay on low zoom... (#5282)</li>
   <li>Various small enhancements and fixes (#5286, #5170...), thanks @FloEdelmann</li>
   </ul>
