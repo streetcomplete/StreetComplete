@@ -18,7 +18,7 @@ class DownloadController(private val context: Context) {
     fun download(bbox: BoundingBox, isUserInitiated: Boolean = false) {
         WorkManager.getInstance(context).enqueueUniqueWork(
             Downloader.TAG,
-            if (isUserInitiated) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP,
+            if (isUserInitiated) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.APPEND,
             DownloadWorker.createWorkRequest(bbox, isUserInitiated)
         )
     }

@@ -5,6 +5,7 @@ global:
     track_color: '#44536dfe'
     track_color_record: '#44fe1616'
     old_track_color: '#22536dfe'
+    imported_track_color: '#44147d14'
 
 textures:
     pins:
@@ -259,6 +260,15 @@ layers:
                     collide: false
                     join: round
                     order: 900
+    streetcomplete_imported_track:
+        data: { source: streetcomplete_imported_track }
+        draw:
+            track-lines:
+                color: global.imported_track_color
+                width: [[14, 6px],[18, 12px]]
+                collide: false
+                join: round
+                order: 900
     # styled map data shown in overlays
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
