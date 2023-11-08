@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gpx_import"
+        android:layout_marginBottom="@dimen/dialog_vertical_margin"
+        android:textAppearance="@style/TextAppearance.TitleLarge.Hint" />
+
+    <CheckBox
+        android:id="@+id/displayTrackCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gpx_import_display_track" />
+
+    <CheckBox
+        android:id="@+id/downloadCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gpx_import_download_along_track" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/minDownloadDistanceSlider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        android:valueTo="3"
+        android:stepSize="1"
+        app:labelBehavior="visible"/>
+
+    <ProgressBar
+        android:id="@+id/importProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@android:string/cancel"
+            style="@style/BottomSheetButtonBarItem" />
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@android:string/ok"
+            style="@style/BottomSheetButtonBarItem" />
+    </LinearLayout>
+</LinearLayout>
+

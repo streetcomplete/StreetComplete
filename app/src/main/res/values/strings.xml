@@ -599,6 +599,17 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 
+    <!-- GPX import dialogs -->
+    <string name="gpx_import">Import GPX track</string>
+    <string name="gpx_import_display_track">Display track on the map</string>
+    <string name="gpx_import_download_along_track">Download data within %s along track</string>
+    <string name="gpx_distance_formatter">%.0fm</string>
+
+    <string name="gpx_import_confirm">Confirm download</string>
+    <string name="gpx_import_number_of_downloads_to_schedule">%d downloads will be scheduled.</string>
+    <string name="gpx_import_area_to_download">%s will be downloaded.</string>
+
+    <string name="gpx_import_download_area_too_big">Please import a shorter track or set a smaller download area</string>
 
     <!-- Quest selection screen -->
 

@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocation
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.ImportedTracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
@@ -86,6 +87,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private var downloadedAreaManager: DownloadedAreaManager? = null
     private var locationMapComponent: CurrentLocationMapComponent? = null
     private var tracksMapComponent: TracksMapComponent? = null
+    private var importedTracksMapComponent: ImportedTracksMapComponent? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -204,6 +206,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
+        importedTracksMapComponent = ImportedTracksMapComponent(map)
+        viewLifecycleOwner.lifecycle.addObserver(importedTracksMapComponent!!)
+
         pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
@@ -235,6 +240,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             downloadedAreaMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
             tracksMapComponent?.layers,
+            importedTracksMapComponent?.layers,
         ).flatten()) {
             style.addLayerBelow(layer, firstLabelLayer)
         }
@@ -277,6 +283,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
+        // TODO [sgr]: adapt to MapLibre
+//        importedTrackMapComponent = ImportedTrackMapComponent(ctrl)
     }
 
     override fun onStop() {
@@ -584,6 +592,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
 
         private const val CLICK_AREA_SIZE_IN_DP = 28
+    }
+
+    /* -------------------------------- Show imported tracks ------------------------------------ */
+    fun replaceImportedTrack(pointsList: List<List<LatLon>>) {
+        importedTracksMapComponent?.replaceImportedTrack(pointsList)
     }
 }
 

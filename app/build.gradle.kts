@@ -111,10 +111,13 @@ dependencies {
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
     androidTestImplementation("androidx.test:runner:1.6.1")
     androidTestImplementation("androidx.test:rules:1.6.1")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
+    androidTestImplementation("org.assertj:assertj-core:3.23.1")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection

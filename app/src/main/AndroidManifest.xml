@@ -46,7 +46,8 @@
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.screens.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout"
-            android:exported="true">
+            android:exported="true"
+            android:documentLaunchMode="never">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -72,6 +73,32 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="streetcomplete" />
+            </intent-filter>
+            <!-- Open GPX from file manager -->
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/gpx+xml" />
+                <data android:mimeType="application/xml+gpx" />
+            </intent-filter>
+            <!-- Receive shared GPX if sent as intent.data -->
+            <!-- Pattern matching in Android is non-greedy, see http://stackoverflow.com/questions/3400072/pathpattern-to-match-file-extension-does-not-work-if-a-period-exists-elsewhere-i -->
+            <!-- => to support filenames with dots before the .gpx extension, multiple patterns are needed -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/gpx+xml" android:scheme="content" />
+                <data android:mimeType="application/xml+gpx"  android:scheme="content" />
+                <data android:mimeType="*/*" android:pathPattern=".*\\.gpx"/>
+                <data android:mimeType="*/*" android:pathPattern="/.*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:pathPattern="/.*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+            <!-- Receive shared GPX if sent as intent.clipData -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/gpx+xml" />
+                <data android:mimeType="application/xml+gpx" />
             </intent-filter>
         </activity>
         <activity
