@@ -10,6 +10,7 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -82,6 +84,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
+import de.westnordost.streetcomplete.screens.main.controls.GpxImportConfirmationDialog
+import de.westnordost.streetcomplete.screens.main.controls.GpxImportSettingsDialog
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment
@@ -117,10 +121,12 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
+import kotlin.coroutines.resume
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -168,6 +174,8 @@ class MainFragment :
     SelectedOverlaySource.Listener,
     // rest
     ShowsGeometryMarkers {
+
+    private val downloadController: DownloadController by inject()
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -1190,6 +1198,39 @@ class MainFragment :
         mapFragment?.isNavigationMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
         setIsFollowingPosition(false)
+    }
+
+    fun importTrack(uri: Uri) {
+        val ctx = context ?: return
+        val fragment = mapFragment ?: return
+        viewLifecycleScope.launch {
+            val importData = suspendCancellableCoroutine { cont ->
+                ctx.contentResolver?.openInputStream(uri)?.let { inputStream ->
+                    val dialog = GpxImportSettingsDialog(
+                        inputStream,
+                    ) { cont.resume(it) }
+                    dialog.show(parentFragmentManager, null)
+                }
+            }.getOrNull() ?: return@launch
+
+            if (!importData.downloadAlongTrack) {
+                fragment.replaceImportedTrack(importData.trackpoints)
+            } else if (importData.areaToDownloadInSqkm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM * 25) {
+                context?.toast(R.string.gpx_import_download_area_too_big, Toast.LENGTH_LONG)
+            } else {
+                suspendCancellableCoroutine { cont ->
+                    GpxImportConfirmationDialog(
+                        ctx,
+                        importData
+                    ) { cont.resume(it) }.show()
+                }
+
+                for (bBox in importData.downloadBBoxes) {
+                    downloadController.download(bBox)
+                }
+                fragment.replaceImportedTrack(importData.trackpoints)
+            }
+        }
     }
 
     //endregion

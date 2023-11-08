@@ -76,6 +76,10 @@
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
     </style>
 
+    <style name="Theme.DialogFragment" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowBackground">@drawable/background_white_corners</item>
+    </style>
+
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">?attr/colorControlNormal</item>
     </style>
