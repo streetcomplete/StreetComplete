@@ -251,8 +251,11 @@ private class MapDataApiHandler(
 
     override fun handle(relation: OsmApiRelation) {
         val relationType = relation.tags?.get("type")
-        if (relationType !in ignoreRelationTypes) {
+        if (relationType !in ignoreRelationTypes
+            || (relation.members.size <= 100 && relation.tags["route"] in allowRouteTypes)) {
             data.add(relation.toRelation())
         }
     }
 }
+
+private val allowRouteTypes = hashSetOf("hiking", "mtb", "piste", "ski", "foot", "bicycle", "horse", "ferry")
