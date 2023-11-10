@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.NOT_BBQ
 
-class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
+class AddBbqFuel : OsmFilterQuestType<BbqFuel>() {
     override val elementFilter = """
         nodes, ways with
           amenity = bbq
@@ -29,7 +29,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
     override fun createForm() = AddBbqFuelForm()
 
-    override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BbqFuel, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             NOT_BBQ -> {
                 tags.remove("amenity")
