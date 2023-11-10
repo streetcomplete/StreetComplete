@@ -10,4 +10,14 @@
         android:layout_height="wrap_content"
         android:text="@string/quest_sanitary_dump_station_description"/>
 
+
+    <ImageView
+        android:id="@+id/sanitaryDumpStationImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sanitary_dump_station_sign" />
+
 </LinearLayout>
