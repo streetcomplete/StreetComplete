@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.NOT_BBQ
 
 class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
     override val elementFilter = """
@@ -34,7 +35,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
                 tags.remove("amenity")
                 tags["leisure"] = "firepit"
             }
-            else -> {
+            is BbqFuel -> {
                 tags["fuel"] = answer.osmValue
             }
         }
