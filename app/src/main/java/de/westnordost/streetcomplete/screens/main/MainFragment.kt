@@ -1213,22 +1213,24 @@ class MainFragment :
                 }
             }.getOrNull() ?: return@launch
 
-            if (!importData.downloadAlongTrack) {
+            if (importData.displayTrack) {
                 fragment.replaceImportedTrack(importData.trackpoints)
-            } else if (importData.areaToDownloadInSqkm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM * 25) {
-                context?.toast(R.string.gpx_import_download_area_too_big, Toast.LENGTH_LONG)
-            } else {
-                suspendCancellableCoroutine { cont ->
-                    GpxImportConfirmationDialog(
-                        ctx,
-                        importData
-                    ) { cont.resume(it) }.show()
-                }
+            }
+            if (importData.downloadAlongTrack) {
+                if (importData.areaToDownloadInSqkm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM * 25) {
+                    context?.toast(R.string.gpx_import_download_area_too_big, Toast.LENGTH_LONG)
+                } else {
+                    suspendCancellableCoroutine { cont ->
+                        GpxImportConfirmationDialog(
+                            ctx,
+                            importData
+                        ) { cont.resume(it) }.show()
+                    }
 
-                for (bBox in importData.downloadBBoxes) {
-                    downloadController.download(bBox)
+                    for (bBox in importData.downloadBBoxes) {
+                        downloadController.download(bBox)
+                    }
                 }
-                fragment.replaceImportedTrack(importData.trackpoints)
             }
         }
     }

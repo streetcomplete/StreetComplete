@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.slider.LabelFormatter
+import com.google.android.material.slider.Slider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.import.GpxImporter
 import de.westnordost.streetcomplete.databinding.DialogGpxImportSettingsBinding
@@ -15,6 +17,7 @@ import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
@@ -40,20 +43,33 @@ class GpxImportSettingsDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.minDownloadDistancePicker.wrapSelectorWheel = false
-        binding.minDownloadDistancePicker.displayedValues =
-            minDownloadDistanceOptions.map { it.roundToInt().toString() }.toTypedArray()
-        binding.minDownloadDistancePicker.minValue = 0
-        binding.minDownloadDistancePicker.maxValue = minDownloadDistanceOptions.size - 1
-        if (android.os.Build.VERSION.SDK_INT >= 29) {
-            binding.minDownloadDistancePicker.textSize = requireContext().spToPx(32)
+        binding.minDownloadDistanceSlider.setLabelFormatter {
+            getString(R.string.gpx_distance_formatter, minDownloadDistanceOptions[it.toInt()])
         }
-        binding.minDownloadDistancePicker.value = 1
-        // do not allow keyboard input
-        binding.minDownloadDistancePicker.disableEditTextsFocus()
+        binding.minDownloadDistanceSlider.addOnChangeListener { _, value, _ ->
+            updateDownloadCheckboxLabel(value.toInt())
+        }
+        binding.minDownloadDistanceSlider.value = INITIAL_MIN_DOWNLOAD_DISTANCE_INDEX.toFloat()
+        updateDownloadCheckboxLabel(INITIAL_MIN_DOWNLOAD_DISTANCE_INDEX)
 
+        binding.downloadCheckBox.setOnClickListener {
+            if (binding.downloadCheckBox.isChecked) {
+                binding.minDownloadDistanceSlider.visibility = View.VISIBLE
+                binding.minDownloadDistanceSlider.labelBehavior = LabelFormatter.LABEL_VISIBLE
+            } else {
+                binding.minDownloadDistanceSlider.visibility = View.GONE
+                binding.minDownloadDistanceSlider.labelBehavior = LabelFormatter.LABEL_GONE
+            }
+            updateOkButtonState()
+        }
+
+        binding.displayTrackCheckBox.setOnClickListener {
+            updateOkButtonState()
+        }
         binding.okButton.setOnClickListener {
-            viewLifecycleScope.launch { callback(processGpxFile()) }
+            viewLifecycleScope.launch {
+                callback(processGpxFile())
+            }
         }
         binding.cancelButton.setOnClickListener {
             worker?.cancel()
@@ -66,14 +82,25 @@ class GpxImportSettingsDialog(
         worker?.cancel()
     }
 
+    private fun updateDownloadCheckboxLabel(index: Int) {
+        binding.downloadCheckBox.text =
+            getString(R.string.gpx_import_download_along_track, minDownloadDistanceOptions[index])
+    }
+
+    private fun updateOkButtonState() {
+        binding.okButton.isEnabled =
+            binding.displayTrackCheckBox.isChecked || binding.downloadCheckBox.isChecked
+    }
+
     private suspend fun processGpxFile(): Result<GpxImporter.GpxImportData> {
         binding.okButton.isEnabled = false
 
         worker = viewLifecycleScope.async {
             return@async gpxImporter.processGpxFile(
                 inputStream,
-                minDownloadDistanceOptions[binding.minDownloadDistancePicker.value],
-                binding.downloadCheckBox.isChecked
+                binding.displayTrackCheckBox.isChecked,
+                binding.downloadCheckBox.isChecked,
+                minDownloadDistanceOptions[binding.minDownloadDistanceSlider.value.toInt()]
             ) { p -> withContext(Dispatchers.Main) { binding.importProgress.progress = p } }
         }
         val importData = worker!!.await()
@@ -84,13 +111,7 @@ class GpxImportSettingsDialog(
         return importData
     }
 
-    private fun ViewGroup.disableEditTextsFocus() {
-        for (child in children) {
-            if (child is ViewGroup) {
-                child.disableEditTextsFocus()
-            } else if (child is EditText) {
-                child.isFocusable = false
-            }
-        }
+    companion object {
+        private const val INITIAL_MIN_DOWNLOAD_DISTANCE_INDEX = 1
     }
 }

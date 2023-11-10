@@ -88,8 +88,8 @@ class GpxTrackSampler private constructor(
      */
     private class Sampler(
         private val coroutineScope: CoroutineScope,
-        private val minDownloadDistance: Double,
         private val findCenterPoints: Boolean,
+        private val minDownloadDistance: Double,
     ) : Handler<GpsTrackpoint> {
 
         val coveringSquareHalfLength: Double
@@ -172,10 +172,10 @@ class GpxTrackSampler private constructor(
 
         operator fun invoke(
             coroutineScope: CoroutineScope,
-            minDownloadDistance: Double,
             findCoveringBoundingBoxes: Boolean,
+            minDownloadDistance: Double,
         ): GpxTrackSampler {
-            val sampler = Sampler(coroutineScope, minDownloadDistance, findCoveringBoundingBoxes)
+            val sampler = Sampler(coroutineScope, findCoveringBoundingBoxes, minDownloadDistance)
             return GpxTrackSampler(sampler)
         }
     }

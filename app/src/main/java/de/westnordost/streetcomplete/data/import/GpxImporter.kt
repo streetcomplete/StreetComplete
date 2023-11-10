@@ -23,6 +23,7 @@ import java.io.InputStream
 class GpxImporter {
 
     data class GpxImportData(
+        val displayTrack: Boolean,
         val downloadAlongTrack: Boolean,
         val trackpoints: List<LatLon>,
         val downloadBBoxes: List<BoundingBox>,
@@ -37,19 +38,20 @@ class GpxImporter {
      */
     suspend fun processGpxFile(
         inputStream: InputStream,
-        minDownloadDistance: Double,
+        displayTrack: Boolean,
         findDownloadBBoxes: Boolean,
+        minDownloadDistance: Double,
         progressCallback: suspend (progress: Int) -> Unit,
     ): Result<GpxImportData> {
         progressCallback(0)
-        val trackSampler = parseTrack(inputStream, minDownloadDistance, findDownloadBBoxes)
+        val trackSampler = parseTrack(inputStream, findDownloadBBoxes, minDownloadDistance)
             .getOrElse { return Result.failure(it) }
         progressCallback(10)
 
         if (!findDownloadBBoxes || trackSampler.getCoveringBoundingBoxes().isEmpty()) {
             progressCallback(100)
             return Result.success(
-                GpxImportData(false, trackSampler.getOriginalPoints(), ArrayList(), 0.0)
+                GpxImportData(displayTrack, false, trackSampler.getOriginalPoints(), ArrayList(), 0.0)
             )
         }
 
@@ -69,6 +71,7 @@ class GpxImporter {
 
         return Result.success(
             GpxImportData(
+                displayTrack,
                 true,
                 trackSampler.getOriginalPoints(),
                 mergedBBoxes.map { it.boundingBox },
@@ -79,10 +82,10 @@ class GpxImporter {
 
     private suspend fun parseTrack(
         inputStream: InputStream,
-        minDownloadDistance: Double,
         findDownloadBoundingBoxes: Boolean,
+        minDownloadDistance: Double,
     ): Result<GpxTrackSampler> = withContext(Dispatchers.Default) {
-        val trackSampler = GpxTrackSampler(this, minDownloadDistance, findDownloadBoundingBoxes)
+        val trackSampler = GpxTrackSampler(this, findDownloadBoundingBoxes, minDownloadDistance)
         trackSampler.parse(inputStream)
         if (!isActive) {
             return@withContext Result.failure(CancellationException())

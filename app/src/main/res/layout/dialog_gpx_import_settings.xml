@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,42 +13,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gpx_import"
+        android:layout_marginBottom="@dimen/dialog_vertical_margin"
         android:textAppearance="@style/TextAppearance.Title" />
 
-    <LinearLayout
+    <CheckBox
+        android:id="@+id/displayTrackCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="8dp"
-            android:text="@string/gpx_import_download_within" />
-
-        <NumberPicker
-            android:id="@+id/minDownloadDistancePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_gravity="center" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="8dp"
-            android:text="@string/gpx_import_meters" />
-    </LinearLayout>
+        android:checked="true"
+        android:text="@string/gpx_import_display_track" />
 
     <CheckBox
         android:id="@+id/downloadCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:padding="8dp"
         android:text="@string/gpx_import_download_along_track" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/minDownloadDistanceSlider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        android:valueTo="3"
+        android:stepSize="1"
+        app:labelBehavior="visible"/>
 
     <ProgressBar
         android:id="@+id/importProgress"
