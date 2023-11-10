@@ -34,7 +34,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
                 tags.remove("amenity")
                 tags["leisure"] = "firepit"
             }
-            is BbqFuel -> {
+            else -> {
                 tags["fuel"] = answer.osmValue
             }
         }
