@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="8dp"
-        android:text="@string/gpx_import_area_to_download_sqkm" />
+        android:text="@string/gpx_import_area_to_download" />
 </LinearLayout>
 

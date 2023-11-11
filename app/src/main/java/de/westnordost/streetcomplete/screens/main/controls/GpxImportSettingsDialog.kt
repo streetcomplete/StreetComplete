@@ -2,27 +2,23 @@ package de.westnordost.streetcomplete.screens.main.controls
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.slider.LabelFormatter
-import com.google.android.material.slider.Slider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.import.GpxImporter
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.DialogGpxImportSettingsBinding
-import de.westnordost.streetcomplete.util.ktx.spToPx
+import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.InputStream
-import kotlin.math.roundToInt
 
 /** A dialog to specify GPX import settings */
 class GpxImportSettingsDialog(
@@ -32,6 +28,9 @@ class GpxImportSettingsDialog(
     private val gpxImporter: GpxImporter by inject()
     private val binding by viewBinding(DialogGpxImportSettingsBinding::bind)
     private var worker: Deferred<Result<GpxImporter.GpxImportData>>? = null
+
+    private val countryInfos: CountryInfos by inject()
+    private var lengthUnit = LengthUnit.METER
 
     private val minDownloadDistanceOptions: List<Double> = listOf(10.0, 100.0, 250.0, 500.0)
 
@@ -43,8 +42,11 @@ class GpxImportSettingsDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        context?.let { getSelectedLocale(it) }?.country?.let { countryInfos.get(listOf(it)) }?.lengthUnits?.first()
+            ?.let { lengthUnit = it }
+
         binding.minDownloadDistanceSlider.setLabelFormatter {
-            getString(R.string.gpx_distance_formatter, minDownloadDistanceOptions[it.toInt()])
+            formatMinDownloadDistance(it.toInt())
         }
         binding.minDownloadDistanceSlider.addOnChangeListener { _, value, _ ->
             updateDownloadCheckboxLabel(value.toInt())
@@ -84,12 +86,31 @@ class GpxImportSettingsDialog(
 
     private fun updateDownloadCheckboxLabel(index: Int) {
         binding.downloadCheckBox.text =
-            getString(R.string.gpx_import_download_along_track, minDownloadDistanceOptions[index])
+            getString(
+                R.string.gpx_import_download_along_track,
+                formatMinDownloadDistance(index)
+            )
     }
 
     private fun updateOkButtonState() {
         binding.okButton.isEnabled =
             binding.displayTrackCheckBox.isChecked || binding.downloadCheckBox.isChecked
+    }
+
+    private fun formatMinDownloadDistance(index: Int): String {
+        val minDownloadDistance = minDownloadDistanceOptions[index].toInt()
+        return when (lengthUnit) {
+            LengthUnit.FOOT_AND_INCH -> "${minDownloadDistance}yd"
+            else -> "${minDownloadDistance}m"
+        }
+    }
+
+    private fun minDownloadDistanceInMeters(): Double {
+        val minDownloadDistance = minDownloadDistanceOptions[binding.minDownloadDistanceSlider.value.toInt()]
+        return when (lengthUnit) {
+            LengthUnit.FOOT_AND_INCH -> minDownloadDistance * YARDS_IN_METER
+            else -> minDownloadDistance
+        }
     }
 
     private suspend fun processGpxFile(): Result<GpxImporter.GpxImportData> {
@@ -100,7 +121,7 @@ class GpxImportSettingsDialog(
                 inputStream,
                 binding.displayTrackCheckBox.isChecked,
                 binding.downloadCheckBox.isChecked,
-                minDownloadDistanceOptions[binding.minDownloadDistanceSlider.value.toInt()]
+                minDownloadDistanceInMeters()
             ) { p -> withContext(Dispatchers.Main) { binding.importProgress.progress = p } }
         }
         val importData = worker!!.await()
@@ -113,5 +134,6 @@ class GpxImportSettingsDialog(
 
     companion object {
         private const val INITIAL_MIN_DOWNLOAD_DISTANCE_INDEX = 1
+        private const val YARDS_IN_METER = 0.9144
     }
 }
