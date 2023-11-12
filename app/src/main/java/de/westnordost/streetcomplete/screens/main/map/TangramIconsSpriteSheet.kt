@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.view.presetIconIndex
 import java.lang.Integer.max
 import kotlin.math.ceil
 import kotlin.math.sqrt
@@ -20,6 +19,7 @@ import kotlin.math.sqrt
 class TangramIconsSpriteSheet(
     private val context: Context,
     private val prefs: SharedPreferences,
+    private val icons: Collection<Int>
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
@@ -32,7 +32,7 @@ class TangramIconsSpriteSheet(
     }
 
     private fun createSpritesheet(): String {
-        val iconResIds = ICONS.toSortedSet()
+        val iconResIds = icons.toSortedSet()
         val iconSize = context.dpToPx(26).toInt()
         val borderWidth = context.dpToPx(3).toInt()
         val safePadding = context.dpToPx(2).toInt()
@@ -84,6 +84,5 @@ class TangramIconsSpriteSheet(
 
     companion object {
         private const val ICONS_FILE = "icons.png"
-        private val ICONS = presetIconIndex.values
     }
 }

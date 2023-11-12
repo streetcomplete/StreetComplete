@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
+import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
@@ -56,4 +57,5 @@ fun overlaysRegistry(
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
+    7 to BuildingsOverlay()
 ))
