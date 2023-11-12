@@ -2,24 +2,18 @@ package de.westnordost.streetcomplete.quests.bbq_fuel
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-//import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-//import de.westnordost.streetcomplete.quests.TextItem
+import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.WOOD
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.ELECTRIC
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.CHARCOAL
 
-class AddBbqFuelForm : AbstractOsmQuestForm<BbqFuelAnswer>() {
-//    override val items = listOf(
-//        TextItem(WOOD, R.string.quest_bbq_fuel_wood),
-//        TextItem(ELECTRIC, R.string.quest_bbq_fuel_electric),
-//        TextItem(CHARCOAL, R.string.quest_bbq_fuel_charcoal),
-//    )
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_bbq_fuel_wood) { applyAnswer(WOOD) },
-        AnswerItem( R.string.quest_bbq_fuel_electric) { applyAnswer(ELECTRIC) },
-        AnswerItem(R.string.quest_bbq_fuel_charcoal) { applyAnswer(CHARCOAL) },
+class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
+    override val items: List<TextItem<BbqFuelAnswer>> = listOf(
+        TextItem(WOOD, R.string.quest_bbq_fuel_wood),
+        TextItem(ELECTRIC, R.string.quest_bbq_fuel_electric),
+        TextItem(CHARCOAL, R.string.quest_bbq_fuel_charcoal),
     )
 
     override val otherAnswers = listOfNotNull(
