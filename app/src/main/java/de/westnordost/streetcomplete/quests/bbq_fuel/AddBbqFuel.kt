@@ -10,12 +10,14 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
+
     override val elementFilter = """
         nodes, ways with
           amenity = bbq
           and !fuel
           and access !~ no|private
     """
+
     override val changesetComment = "Specify barbecue fuel"
     override val wikiLink = "Key:amenity=bbq"
     override val icon = R.drawable.ic_quest_fire
