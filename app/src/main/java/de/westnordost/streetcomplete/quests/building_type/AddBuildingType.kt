@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.building.BuildingType
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 

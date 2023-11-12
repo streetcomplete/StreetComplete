@@ -1,20 +1,24 @@
-package de.westnordost.streetcomplete.quests.building_type
+package de.westnordost.streetcomplete.osm.building
 
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
 
 enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<BuildingType>) {
-    RESIDENTIAL(BuildingType.RESIDENTIAL, listOf(
+    RESIDENTIAL(
+        BuildingType.RESIDENTIAL, listOf(
         DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, HOUSEBOAT,
         STATIC_CARAVAN, DORMITORY
     )),
-    COMMERCIAL(BuildingType.COMMERCIAL, listOf(
+    COMMERCIAL(
+        BuildingType.COMMERCIAL, listOf(
         OFFICE, RETAIL, KIOSK, INDUSTRIAL, WAREHOUSE, HOTEL, STORAGE_TANK, BRIDGE,
     )),
-    CIVIC(BuildingType.CIVIC, listOf(
+    CIVIC(
+        BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
         COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND
     )),
-    RELIGIOUS(BuildingType.RELIGIOUS, listOf(
+    RELIGIOUS(
+        BuildingType.RELIGIOUS, listOf(
         CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
     )),
     FOR_CARS(null, listOf(

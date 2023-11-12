@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.osm.buildingSynonyms
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.quests.building_type.BuildingType
-import de.westnordost.streetcomplete.quests.building_type.asItem
+import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 

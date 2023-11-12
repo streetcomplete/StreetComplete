@@ -1,13 +1,13 @@
-package de.westnordost.streetcomplete.quests.building_type
+package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.CIVIC
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.COMMERCIAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.FOR_CARS
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.FOR_FARMS
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.OTHER
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.RELIGIOUS
-import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.RESIDENTIAL
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.CIVIC
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.COMMERCIAL
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.FOR_CARS
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.FOR_FARMS
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.OTHER
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.RELIGIOUS
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.RESIDENTIAL
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 

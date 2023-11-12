@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import kotlin.test.Test
 

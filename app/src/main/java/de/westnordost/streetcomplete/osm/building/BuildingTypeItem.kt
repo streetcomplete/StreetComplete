@@ -1,7 +1,7 @@
-package de.westnordost.streetcomplete.quests.building_type
+package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
