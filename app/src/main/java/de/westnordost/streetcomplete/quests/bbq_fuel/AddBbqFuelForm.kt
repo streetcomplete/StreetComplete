@@ -16,7 +16,7 @@ class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
         TextItem(CHARCOAL, R.string.quest_bbq_fuel_charcoal),
     )
 
-    override val otherAnswers = listOfNotNull(
+    override val otherAnswers = listOf(
         AnswerItem(R.string.quest_bbq_fuel_not_a_bbq) { confirmNotBbq() },
     )
 
