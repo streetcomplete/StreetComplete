@@ -8,9 +8,8 @@ import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.WOOD
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.ELECTRIC
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.CHARCOAL
-import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.NOT_BBQ
 
-class AddBbqFuelForm : AListQuestForm<BbqFuel>() {
+class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
     override val items = listOf(
         TextItem(WOOD, R.string.quest_bbq_fuel_wood),
         TextItem(ELECTRIC, R.string.quest_bbq_fuel_electric),
