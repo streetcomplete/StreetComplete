@@ -24,7 +24,7 @@ class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
         val ctx = context ?: return
         AlertDialog.Builder(ctx)
             .setTitle(R.string.quest_bbq_fuel_not_a_bbq_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NOT_BBQ) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsFirePitAnswer) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
