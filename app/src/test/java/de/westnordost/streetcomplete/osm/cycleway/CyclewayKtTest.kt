@@ -179,7 +179,6 @@ class CyclewayKtTest {
         }
     }
 
-
     @Test fun `oneway is oneway for cyclists when no cycleway goes in contra-flow direction`() {
         val forwardTrack = CyclewayAndDirection(TRACK, FORWARD)
         val backwardTrack = CyclewayAndDirection(TRACK, BACKWARD)
