@@ -88,7 +88,7 @@ private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHan
         if (tags["oneway:bicycle"] == "no") {
             tags.remove("oneway:bicycle")
         }
-    } else if(isNotOnewayForCyclistsNow == true) {
+    } else if (isNotOnewayForCyclistsNow == true) {
         tags["oneway:bicycle"] = "no"
     }
 }
