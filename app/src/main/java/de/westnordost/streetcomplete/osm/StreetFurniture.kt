@@ -7,7 +7,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         "bicycle_parking", "bicycle_rental", "bench", "longer", "bbq", "grit_bin", "toilets",
         "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
         "parcel_locker", "telephone", "drinking_water", "vending_machine",
-        "atm", "waste_basket", "trolley_bay",
+        "atm", "waste_basket", "trolley_bay", "hunting_stand",
         // "post_box", "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
         // waiting for response in https://github.com/ideditor/schema-builder/issues/94
         // man_made = street_cabinet and street_cabinet = postal_service
