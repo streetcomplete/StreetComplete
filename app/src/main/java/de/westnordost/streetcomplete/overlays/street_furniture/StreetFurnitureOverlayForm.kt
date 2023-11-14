@@ -107,10 +107,6 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
-
     private fun filterOnlyStreetFurniture(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
         return IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION.matches(fakeElement)
