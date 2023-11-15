@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
-/** Select one items from a groupable list of items  */
+/** Select one item from a groupable list of items  */
 class GroupedImageSelectAdapter<T> :
     RecyclerView.Adapter<ItemViewHolder>() {
 
