@@ -17,6 +17,7 @@ class AddFootwayWidth(
         ways with (
           (
             highway = footway
+            and footway !~ link|crossing
             and bicycle !~ yes|designated
             and (!width or source:width ~ ".*estimat.*")
           ) or (
