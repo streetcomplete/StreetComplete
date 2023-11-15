@@ -46,7 +46,7 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
             nearbyBinsFilter.matches(it)
         }
         return nodes.filterNot {
-            nearbyBins.any { bin -> bin.position.distanceTo(it.position) <= 20
+            nearbyBins.any { bin -> bin.position.distanceTo(it.position) <= 5
             }
         }
     }
