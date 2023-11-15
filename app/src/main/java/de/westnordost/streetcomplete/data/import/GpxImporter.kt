@@ -31,10 +31,10 @@ class GpxImporter {
     )
 
     /**
-     * @param[inputStream] GPX track to parse
-     * @param[minDownloadDistance] in meters; points within minDownloadDistance along the track should be downloaded
-     * @param[findDownloadBBoxes]: if true, compute bounding boxes which need to be downloaded to cover the track
-     * @param[progressCallback]: a callback to set progress between 0 .. 100
+     * @param inputStream GPX track to parse
+     * @param minDownloadDistance in meters; points within minDownloadDistance along the track should be downloaded
+     * @param findDownloadBBoxes  if true, compute bounding boxes which need to be downloaded to cover the track
+     * @param progressCallback a callback to set progress between 0 .. 100
      */
     suspend fun processGpxFile(
         inputStream: InputStream,

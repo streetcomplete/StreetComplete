@@ -74,6 +74,8 @@
                 <data android:mimeType="application/xml+gpx" />
             </intent-filter>
             <!-- Receive shared GXP if sent as intent.data -->
+            <!-- Pattern matching in Android is non-greedy, see http://stackoverflow.com/questions/3400072/pathpattern-to-match-file-extension-does-not-work-if-a-period-exists-elsewhere-i -->
+            <!-- => to support filenames with dots before the .gpx extension, multiple patterns are needed -->
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

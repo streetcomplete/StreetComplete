@@ -7,31 +7,24 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.import.GpxImporter
-import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.util.getSelectedLocale
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 /** A dialog to confirm download of (potentially massive) data along imported GPX track */
 class GpxImportConfirmationDialog(
     context: Context,
     importData: GpxImporter.GpxImportData,
+    lengthUnit: LengthUnit,
     private val callback: (confirm: Boolean) -> Unit,
-) : AlertDialog(context), KoinComponent {
-
-    private val countryInfos: CountryInfos by inject()
+) : AlertDialog(context) {
 
     init {
 
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_gpx_import_confirmation, null)
         setView(view)
 
-        val lengthUnit = context?.let { getSelectedLocale(it) }?.country
-            ?.let { countryInfos.get(listOf(it)) }?.lengthUnits?.first() ?: LengthUnit.METER
         val formattedArea = when (lengthUnit) {
             LengthUnit.FOOT_AND_INCH -> "%.0f acres".format(importData.areaToDownloadInSqkm * ACRES_IN_SQUARE_KILOMETER)
-            else -> "%.1f km^2".format(importData.areaToDownloadInSqkm)
+            else -> "%.1f km²".format(importData.areaToDownloadInSqkm)
         }
 
         val downloadsToScheduleTextView = view.findViewById<TextView>(R.id.downloadsToScheduleText)

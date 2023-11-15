@@ -42,6 +42,8 @@ import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosin
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -125,6 +127,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.util.Locale
 import java.util.concurrent.FutureTask
 import kotlin.coroutines.resume
 import kotlin.math.PI
@@ -176,7 +179,7 @@ class MainFragment :
     ShowsGeometryMarkers {
 
     private val downloadController: DownloadController by inject()
-
+    private val countryInfos: CountryInfos by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
@@ -1204,10 +1207,14 @@ class MainFragment :
         val ctx = context ?: return
         val fragment = mapFragment ?: return
         viewLifecycleScope.launch {
+            val lengthUnit = Locale.getDefault().country.takeIf { it.isNotEmpty() }
+                ?.let { countryInfos.get(listOf(it)) }?.lengthUnits?.first() ?: LengthUnit.METER
+
             val importData = suspendCancellableCoroutine { cont ->
                 ctx.contentResolver?.openInputStream(uri)?.let { inputStream ->
                     val dialog = GpxImportSettingsDialog(
                         inputStream,
+                        lengthUnit
                     ) { cont.resume(it) }
                     dialog.show(parentFragmentManager, null)
                 }
@@ -1223,7 +1230,8 @@ class MainFragment :
                     suspendCancellableCoroutine { cont ->
                         GpxImportConfirmationDialog(
                             ctx,
-                            importData
+                            importData,
+                            lengthUnit
                         ) { cont.resume(it) }.show()
                     }
 
