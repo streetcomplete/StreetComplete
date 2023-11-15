@@ -22,7 +22,6 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
           and access !~ private|no
     """.toElementFilterExpression() }
 
-
     private val nearbyBinsFilter by lazy { """
         nodes with
           (
@@ -47,7 +46,7 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
             nearbyBinsFilter.matches(it)
         }
         return nodes.filterNot {
-            nearbyBins.any { bin -> bin.position.distanceTo(it.position) <= 50
+            nearbyBins.any { bin -> bin.position.distanceTo(it.position) <= 20
             }
         }
     }
