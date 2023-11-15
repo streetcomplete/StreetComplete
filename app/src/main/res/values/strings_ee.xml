@@ -505,6 +505,16 @@
     <string name="time_limited_to">To</string>
     <string name="quest_name_brand">It has a brand name…</string>
 
+    <!-- piste difficulty -->
+    <string name="quest_piste_difficulty_title">What is the difficulty of this piste?</string>
+    <string name="quest_piste_difficulty_novice">Novice</string>
+    <string name="quest_piste_difficulty_easy">Easy</string>
+    <string name="quest_piste_difficulty_intermediate">Intermediate</string>
+    <string name="quest_piste_difficulty_advanced">Advanced</string>
+    <string name="quest_piste_difficulty_expert">Expert</string>
+    <string name="quest_piste_difficulty_freeride">Freeride</string>
+    <string name="quest_piste_difficulty_extreme">Extreme</string>
+
 
     <!-- new overlays -->
 

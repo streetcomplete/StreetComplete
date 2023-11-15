@@ -1,0 +1,25 @@
+<svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	.st0{fill:#C8C4B7;}
+	.st1{fill:#999999;}
+	.st2{fill-opacity:0.2;}
+	.st3{fill:#495AAD;}
+	.st4{fill:#CD584C;}
+</style>
+<path class="st0" d="M128,64c0,35.3-28.7,64-64,64S0,99.3,0,64S28.7,0,64,0S128,28.7,128,64"/>
+
+	<rect class="st1" x="89.8" y="50.4" width="3.3" height="59.4"/>
+	<path class="st2" d="m91.2 20c9.4 0 17.1 7.6 17.1 17s-7.6 17-17 17-17-7.6-17-17c-0.1-9.4 7.5-17 16.9-17z"/>
+	<circle class="st3" cx="91.5" cy="35" r="17"/>
+
+
+	<rect class="st1" x="38.2" y="52.4" width="3.3" height="59.4"/>
+	<path class="st2" d="m39.6 22.1c9.4 0 17.1 7.6 17.1 17s-7.6 17-17 17-17-7.6-17-17c-0.1-9.4 7.5-17 16.9-17z"/>
+	<circle cx="39.8" cy="37.1" r="17"/>
+
+
+	<rect class="st1" x="66.2" y="59" width="3.3" height="59.4"/>
+	<path class="st2" d="m67.6 28.6c9.4 0 17.1 7.6 17.1 17s-7.6 17-17 17-17-7.6-17-17c-0.1-9.4 7.5-17 16.9-17z"/>
+	<circle class="st4" cx="67.8" cy="43.6" r="17"/>
+
+</svg>
