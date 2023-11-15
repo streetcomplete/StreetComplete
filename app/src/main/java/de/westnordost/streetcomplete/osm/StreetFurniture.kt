@@ -3,11 +3,13 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 
 fun isStreetFurnitureFragment(prefix: String? = null): String {
+    // note that some entries like amenity=bicycle_wash are not actually appearing in app
+    // as there is no matching iD preset
     val amenities = listOf(
-        "bicycle_parking", "bicycle_rental", "bench", "lounger", "bbq", "grit_bin", "toilets",
+        "bicycle_parking", "bicycle_wash", "bicycle_rental", "bench", "lounger", "bbq", "grit_bin",
         "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
         "parcel_locker", "telephone", "drinking_water", "vending_machine",
-        "atm", "waste_basket", "trolley_bay", "hunting_stand",
+        "atm", "waste_basket", "trolley_bay", "hunting_stand", "toilets",
         // "post_box", "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
         // waiting for response in https://github.com/ideditor/schema-builder/issues/94
         // man_made = street_cabinet and street_cabinet = postal_service
