@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.overlays.street_furniture
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContentProviderCompat
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -16,6 +15,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetFurnitureBinding
 import de.westnordost.streetcomplete.osm.IS_DISUSED_STREET_FURNITURE_EXPRESSION
 import de.westnordost.streetcomplete.osm.IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION
+import de.westnordost.streetcomplete.osm.address.featureBehindPrefix
+import de.westnordost.streetcomplete.osm.address.reconstructFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
@@ -39,29 +40,25 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
 
         val element = element
         originalFeature = element?.let {
-            if (IS_DISUSED_STREET_FURNITURE_EXPRESSION.matches(element)) {
-                DummyFeature(
-                    "street_furniture/unknown_disused",
-                    requireContext().getString(R.string.unknown_disused_street_furniture),
-                    "ic_preset_maki_marker_stroked",
-                    element.tags
-                )
-            } else {
-                featureDictionary
-                    .byTags(element.tags)
-                    .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
-                    .forGeometry(element.geometryType)
-                    .inCountry(countryOrSubdivisionCode)
-                    .find()
-                    .firstOrNull()
-                // if not found anything in the iD presets, then something weird happened
-                ?: DummyFeature(
-                    "street_furniture/unknown",
-                    requireContext().getString(R.string.unknown_street_furniture),
-                    "ic_preset_maki_marker_stroked",
-                    element.tags
-                )
-            }
+            featureDictionary
+                .byTags(element.tags)
+                .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
+                .forGeometry(element.geometryType)
+                .inCountry(countryOrSubdivisionCode)
+                .find()
+                .firstOrNull()
+                ?: if (IS_DISUSED_STREET_FURNITURE_EXPRESSION.matches(element)) {
+                    reconstructFeature(requireContext(), element.tags, "disused:", featureDictionary)
+                } else {
+                    // if not found anything in the iD presets, then something weird happened
+                    // amenity=bicycle_wash ?
+                    DummyFeature(
+                        "street_furniture/unknown",
+                        requireContext().getString(R.string.unknown_object),
+                        "ic_preset_maki_marker_stroked",
+                        element.tags
+                    )
+                }
         }
     }
 

@@ -32,6 +32,12 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         or ${p}man_made = street_cabinet and street_cabinet != postal_service
         )""")
 }
+
+val IS_REGULAR_STREET_FURNITURE_EXPRESSION = """
+    nodes, ways, relations with
+      ${isStreetFurnitureFragment("")}
+""".toElementFilterExpression()
+
 val IS_DISUSED_STREET_FURNITURE_EXPRESSION = """
     nodes, ways, relations with
       ${isStreetFurnitureFragment("disused")}
