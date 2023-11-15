@@ -297,3 +297,15 @@ val IS_DISUSED_SHOP_EXPRESSION = """
       or shop = vacant
       or office = vacant
 """.toElementFilterExpression()
+
+// ordered by usage number according to taginfo
+val popularShopFeatureIds = listOf(
+    "amenity/restaurant",
+    "shop/convenience",
+    "amenity/cafe",
+    "shop/supermarket",
+    "amenity/fast_food",
+    "amenity/pharmacy",
+    "shop/clothes",
+    "shop/hairdresser"
+)
