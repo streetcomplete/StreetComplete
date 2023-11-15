@@ -22,7 +22,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         or ${p}leisure ~ picnic_table|firepit
         or ${p}man_made ~ water_tap|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter
         or ${p}tourism ~ viewpoint|artwork
-        or (${p}tourism ~ information and information ~ guidepost|board|map|terminal)
+        or (${p}tourism = information and information ~ guidepost|board|map|terminal)
         or ${p}historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
         or ${p}highway ~ milestone|street_lamp|emergency_access_point
         or ${p}emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
