@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.excrement_bag_dispenser
 
-
-import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -14,9 +12,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-/*
-* Might be extended to benches,bbq,etc.
-*  */
 class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy { """
@@ -50,7 +45,7 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element) = if (!nodesFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> =
-        getMapData().filter("nodes with amenity = waste_basket or bin != no or vending = excrement_bags")
+        getMapData().filter("nodes with amenity = waste_basket or vending = excrement_bags")
 
     override fun createForm() = YesNoQuestForm()
 
