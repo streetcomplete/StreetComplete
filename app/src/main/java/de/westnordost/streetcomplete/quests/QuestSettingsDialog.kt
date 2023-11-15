@@ -140,7 +140,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             // check other stuff first, because creation filter expression is relatively slow
             (checkPrefix.isEmpty() || it.lowercase().matches(elementSelectionRegex))
                 && it.count { c -> c == '('} == it.count { c -> c == ')'}
-                && (it.contains('=') || it.contains('~'))
+                && (it.contains('=') || it.contains('~') || it.contains('!'))
                 && isValidFilterExpression
         }
     }
