@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.util.math.distanceTo
 
 class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
 
@@ -21,9 +22,13 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
           and access !~ private|no
     """.toElementFilterExpression() }
 
+
     private val nearbyBinsFilter by lazy { """
         nodes with
-          (bin != no or amenity != waste_basket)
+          (
+          amenity = waste_basket
+          or bin = yes
+          )
           and access !~ private|no
     """.toElementFilterExpression() }
 
@@ -35,11 +40,16 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_excrement_bag_dispenser_bin_title
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        //TODO: Alles was schon Mülleimer hat, kann weg gefiltert werden. LatLonRaster, da alle Nachbarn rein und dann wegfiltern. Welche Entfernung macht Sinn?
         val nodes = mapData.nodes.filter {
             nodesFilter.matches(it)
         }
-        return nodes
+        val nearbyBins=mapData.nodes.filter {
+            nearbyBinsFilter.matches(it)
+        }
+        return nodes.filterNot {
+            nearbyBins.any { bin -> bin.position.distanceTo(it.position) <= 50
+            }
+        }
     }
 
     override fun isApplicableTo(element: Element) = if (!nodesFilter.matches(element)) false else null
