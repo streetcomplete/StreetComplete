@@ -35,9 +35,7 @@ class BuildingsOverlay : Overlay {
             it to PolygonStyle(color = building.color, icon = building?.iconResName)
         }
 
-    override fun createForm(element: Element?): AbstractOverlayForm? {
-        TODO("Not yet implemented")
-    }
+    override fun createForm(element: Element?) = BuildingsOverlayForm()
 
     private val BuildingType?.color get() = when(this) {
         // ~detached homes
