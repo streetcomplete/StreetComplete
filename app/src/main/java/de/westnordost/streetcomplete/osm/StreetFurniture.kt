@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 
 fun isStreetFurnitureFragment(prefix: String? = null): String {
     val amenities = listOf(
-        "bicycle_parking", "bicycle_rental", "bench", "longer", "bbq", "grit_bin", "toilets",
+        "bicycle_parking", "bicycle_rental", "bench", "lounger", "bbq", "grit_bin", "toilets",
         "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
         "parcel_locker", "telephone", "drinking_water", "vending_machine",
         "atm", "waste_basket", "trolley_bay", "hunting_stand",
