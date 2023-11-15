@@ -27,7 +27,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         or ${p}highway ~ milestone|street_lamp|emergency_access_point
         or ${p}emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
         or ${p}advertising
-        or ${p}leisure = pitch and sport ~ table_tennis|sport=chess
+        or ${p}leisure = pitch and sport ~ table_tennis|chess
         or ${p}natural ~ tree
         or ${p}man_made = street_cabinet and street_cabinet != postal_service
         )""")
