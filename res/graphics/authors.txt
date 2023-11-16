@@ -379,6 +379,7 @@ quest/
     pharmacy.svg                     2023 Matija Nalis, modified from CC-BY Howieart https://www.svgrepo.com/svg/475523/pharmacy
     phone.svg
     picnic_table_cover.svg           Flo Edelmann (CC0)
+    piste_ref.svg                    mcliquid (CC0)
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg

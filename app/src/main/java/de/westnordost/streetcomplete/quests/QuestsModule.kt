@@ -130,6 +130,7 @@ import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pharmacy.AddIsPharmacyDispensing
 import de.westnordost.streetcomplete.quests.piste_difficulty.AddPisteDifficulty
+import de.westnordost.streetcomplete.quests.piste_ref.AddPisteRef
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
@@ -602,9 +603,10 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 28 to AddFootwayWidth(arSupportChecker),
     EE_QUEST_OFFSET + 31 to AddViaFerrataScale(),
     EE_QUEST_OFFSET + 35 to AddBarrierHeight(arSupportChecker),
+    EE_QUEST_OFFSET + 36 to AddPisteRef(),
+    EE_QUEST_OFFSET + 37 to AddPisteDifficulty(),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
-    EE_QUEST_OFFSET + 37 to AddPisteDifficulty(),
     // POI quests
     EE_QUEST_OFFSET + 12 to ShowBusiness(),
     EE_QUEST_OFFSET + 13 to ShowBicycleStuff(),

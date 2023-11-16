@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <me.grantland.widget.AutofitLayout
+        android:id="@+id/pisteRefInputContainer"
+        android:layout_width="128dp"
+        android:layout_height="128dp">
+
+        <EditText
+            android:id="@+id/pisteRefInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:textColorHint="#6fff"
+            android:ellipsize="start"
+            style="@style/HouseNumberEditText"
+            android:inputType="text"
+            android:singleLine="true"
+            android:hint="1" />
+
+    </me.grantland.widget.AutofitLayout>
+
+</RelativeLayout>

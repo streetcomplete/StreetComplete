@@ -289,6 +289,10 @@
     <string name="quest_traffic_stuff_raised">It’s a raised crossing</string>
     <string name="quest_recycling_excrement_bag_dispenser">It has an excrement bag dispenser</string>
 
+    <!-- piste ref -->
+    <string name="quest_piste_ref_title">"What is the number of this piste?"</string>
+    <string name="quest_piste_ref_connection">"It's a piste connection"</string>
+
     <!-- shared "utility" types for service building type and street cabinet type -->
     <string name="quest_utility_power">Electricity</string>
     <string name="quest_utility_water">Water</string>

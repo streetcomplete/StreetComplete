@@ -1,0 +1,12 @@
+<svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	.st0{fill:#C8C4B7;}
+	.st1{fill-opacity:0.2;}
+	.st2{fill:#495AAD;}
+	.st3{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M128,64c0,35.3-28.7,64-64,64S0,99.3,0,64S28.7,0,64,0S128,28.7,128,64"/>
+<path class="st1" d="m63.9 23.2h0.1c24.3 0 43.9 19.7 43.9 43.9 0 24.3-19.7 43.9-43.9 43.9h-0.1c-24.2 0.1-43.9-19.6-43.9-43.8 0-24.3 19.7-44 43.9-44z"/>
+<circle class="st2" cx="64.5" cy="62" r="44"/>
+<path class="st3" d="m71 44v28c0 1.7 1.2 2.1 2.6 2.1h2.4v6h-20v-6h2.7c1.3 0 2.3-0.6 2.3-2.1v-18c0 2-8 2-8 2v-6c4 0 9-2 9-6h9z"/>
+</svg>
