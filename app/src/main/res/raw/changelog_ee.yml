@@ -1,6 +1,7 @@
 next: |
   <ul>
-  <li>Add quests for street cabinet type (#470), shelter type (#473), brewery (#475) and via ferrata scale (#480), by @mcliquid</li>
+  <li>Add a bunch of quests: street cabinet type (#470), shelter type (#473), brewery (#475) via ferrata scale (#480), piste ref (#487), piste difficulty (#489), trail visibility (#486), by @mcliquid</li>
+  <li>Add barrier height quest, by @wielandb (#483)</li>
   <li>Upgrade and extend service building quest, by @mcliquid (#464)</li>
   <li>Update translations (to be done)</li>
   <li>Bug fixes</li>
