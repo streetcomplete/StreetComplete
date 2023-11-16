@@ -1043,7 +1043,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
 
-    <string name="quest_excrement_bag_dispenser_bin_title">Does this excrement bag dispenser have a bin?</string>
+    <string name="quest_excrement_bag_dispenser_bin_title">Does this poop bag dispenser have a bin?</string>
 
     <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
     <string name="quest_hairdresser_male_and_female">Anyone</string>
