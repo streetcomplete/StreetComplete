@@ -24,10 +24,7 @@ class AddExcrementBagDispenserHasBin() : OsmElementQuestType<Boolean> {
 
     private val nearbyBinsFilter by lazy { """
         nodes with
-          (
-          amenity = waste_basket
-          or bin = yes
-          )
+          (amenity = waste_basket or bin = yes)
           and access !~ private|no
     """.toElementFilterExpression() }
 
