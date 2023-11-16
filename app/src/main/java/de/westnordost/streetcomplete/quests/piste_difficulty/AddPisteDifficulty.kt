@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.isWinter
 
 class AddPisteDifficulty : OsmFilterQuestType<PisteDifficulty>() {
 
@@ -19,6 +20,13 @@ class AddPisteDifficulty : OsmFilterQuestType<PisteDifficulty>() {
     override val wikiLink = "Key:piste:difficulty"
     override val icon = R.drawable.ic_quest_piste_difficulty
     override val defaultDisabledMessage: Int = R.string.default_disabled_msg_ee
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        return if (isWinter(mapData.nodes.first().position)) mapData.filter(filter).asIterable()
+            else emptyList()
+    }
+
+    override fun isApplicableTo(element: Element) = if (filter.matches(element)) null else false
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_piste_difficulty_title
 

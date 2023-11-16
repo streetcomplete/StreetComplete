@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.isWinter
 
 class AddPisteRef : OsmFilterQuestType<PisteRefAnswer>() {
 
@@ -21,6 +22,12 @@ class AddPisteRef : OsmFilterQuestType<PisteRefAnswer>() {
     override val icon = R.drawable.ic_quest_piste_ref
     override val defaultDisabledMessage = R.string.default_disabled_msg_ee
 
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        return if (isWinter(mapData.nodes.first().position)) mapData.filter(filter).asIterable()
+            else emptyList()
+    }
+
+    override fun isApplicableTo(element: Element) = if (filter.matches(element)) null else false
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_piste_ref_title
 
