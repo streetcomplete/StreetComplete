@@ -1299,7 +1299,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_bbq_fuel_electric">Electric</string>
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
     <string name="quest_bbq_fuel_not_a_bbq">"It's a fire enclosure"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosure doesn't have cooking surface (e.g. grate/plate), while grill does. Is this just a fire enclosure?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosure doesn't have cooking surface (e.g. grate/plate), as opposed to grill."</string>
 
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
