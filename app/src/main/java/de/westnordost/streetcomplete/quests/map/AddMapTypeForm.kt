@@ -8,12 +8,7 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class AddMapTypeForm : AImageListQuestForm<MapType, MapType>() {
 
-    override val items: List<DisplayItem<MapType>> get() = listOf(
-        MapType.TOPO,
-        MapType.STREET,
-        MapType.SCHEME,
-        MapType.TOPOSCOPE
-    ).toItems()
+    override val items: List<DisplayItem<MapType>> get() = MapType.values().toItems()
 
     override val itemsPerRow = 1
     override val moveFavoritesToFront = false
@@ -27,5 +22,3 @@ class AddMapTypeForm : AImageListQuestForm<MapType, MapType>() {
         applyAnswer(selectedItems.first())
     }
 }
-
-

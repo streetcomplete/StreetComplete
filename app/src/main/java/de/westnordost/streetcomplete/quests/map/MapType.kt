@@ -11,7 +11,8 @@ enum class MapType(val osmValue: String) {
     SCHEME("scheme"),
     TOPOSCOPE("toposcope")
 }
-fun Collection<MapType>.toItems() = map { it.asItem() }
+
+fun Array<MapType>.toItems() = map { it.asItem() }
 
 fun MapType.asItem(): GroupableDisplayItem<MapType> {
     return Item(this, imageResId, titleResId, descriptionResId)
@@ -31,10 +32,9 @@ private val MapType.titleResId: Int get() = when (this) {
     TOPOSCOPE -> R.string.quest_mapType_toposcope_title
 }
 
-private val MapType.descriptionResId: Int? get() = when (this) {
+private val MapType.descriptionResId: Int get() = when (this) {
     TOPO -> R.string.quest_mapType_topo_description
     STREET -> R.string.quest_mapType_street_description
     SCHEME -> R.string.quest_mapType_scheme_description
     TOPOSCOPE -> R.string.quest_mapType_toposcope_description
-    else -> null
 }

@@ -19,6 +19,7 @@ class AddMapSize : OsmFilterQuestType<String>() {
     override val wikiLink = "Key:map_size"
     override val icon = R.drawable.ic_quest_map_size
     override val achievements = listOf(EditTypeAchievement.OUTDOORS)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_mapSize_title
 
     override fun createForm() = AddMapSizeForm()

@@ -19,11 +19,12 @@ class AddMapType : OsmFilterQuestType<MapType>() {
     override val wikiLink = "Key:map_type"
     override val icon = R.drawable.ic_quest_map_type
     override val achievements = listOf(EditTypeAchievement.OUTDOORS)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_mapType_title
+
     override fun applyAnswerTo(answer: MapType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["map_type"] = answer.osmValue
     }
 
     override fun createForm() = AddMapTypeForm()
 }
-
