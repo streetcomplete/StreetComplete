@@ -52,7 +52,7 @@ private fun fetchLocalizationDownloadUrl(apiToken: String, projectId: String, la
         connection.doOutput = true
         connection.requestMethod = "POST"
         connection.outputStream.bufferedWriter().use { it.write(
-            "api_token=$apiToken&id=$projectId&language=${languageCode.toLowerCase(Locale.US)}&type=$format&filters=translated"
+            "api_token=$apiToken&id=$projectId&language=${languageCode.lowercase()}&type=$format&filters=translated"
         ) }
     }) { inputStream ->
         val response = Parser.default().parse(inputStream) as JsonObject
