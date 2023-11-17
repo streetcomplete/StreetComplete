@@ -425,6 +425,24 @@
     <string name="quest_roofColour_title">"What overall color does this building’s roof have?"</string>
     <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colors are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
+    <!-- map type -->
+    <string name="quest_mapType_title">What kind of map is this?</string>
+    <string name="quest_mapType_topo_title">Topographic</string>
+    <string name="quest_mapType_street_title">Street</string>
+    <string name="quest_mapType_scheme_title">Schematic</string>
+    <string name="quest_mapType_toposcope_title">Toposcope</string>
+    <string name="quest_mapType_topo_description">A map with topographical background for e.g. a historical or hiking map. The map contains contour lines.</string>
+    <string name="quest_mapType_street_description">A map with all streets or ways of an area. The streets are mostly named. The angles, distances etc. are accurate. Used e.g. at tourist offices for the accommodation overview.</string>
+    <string name="quest_mapType_scheme_description">A sketched map with only important ways and POIs. The angles, distances etc. are merely illustrative, not accurate. Used e.g. by travel agencies to explain their tours.</string>
+    <string name="quest_mapType_toposcope_description">A marker erected on high places which indicates the direction to notable landscape features which can be seen from that point. Often used with viewpoints.</string>
+
+    <!-- map size -->
+    <string name="quest_mapSize_title">What area is covered by this map?</string>
+    <string name="quest_mapSize_site">A site, e.g. a park or a zoo</string>
+    <string name="quest_mapSize_city">A whole city</string>
+    <string name="quest_mapSize_region">A larger area with e.g. multiple villages</string>
+    <string name="quest_mapSize_landscape">A whole landscape, mostly used on toposcopes</string>
+
     <!-- via ferrata scale -->
     <string name="quest_viaFerrataScale_title">"What is the Via Ferrata Scale of this ferrata?"</string>
     <string name="default_disabled_msg_viaFerrataScale">"This quest type is disabled by default because the rating of via ferrata routes is highly subjective and needs expert knowledge in the used grading system and when climbing via ferrata, as this requires advanced mountaineering skills. As there is no "world wide scale" for via ferrata difficulty, the German Huesler scale is used here."</string>
