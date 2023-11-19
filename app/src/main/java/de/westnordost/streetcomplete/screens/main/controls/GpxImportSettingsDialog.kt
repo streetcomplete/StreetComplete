@@ -5,7 +5,8 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.slider.LabelFormatter
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.import.GpxImporter
+import de.westnordost.streetcomplete.data.import.GpxImportData
+import de.westnordost.streetcomplete.data.import.importGpx
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.DialogGpxImportSettingsBinding
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -15,18 +16,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
 import java.io.InputStream
 
 /** A dialog to specify GPX import settings */
 class GpxImportSettingsDialog(
     private val inputStream: InputStream,
     private val lengthUnit: LengthUnit,
-    private val callback: (result: Result<GpxImporter.GpxImportData>) -> Unit,
+    private val callback: (result: Result<GpxImportData>) -> Unit,
 ) : DialogFragment(R.layout.dialog_gpx_import_settings) {
-    private val gpxImporter: GpxImporter by inject()
     private val binding by viewBinding(DialogGpxImportSettingsBinding::bind)
-    private var worker: Deferred<Result<GpxImporter.GpxImportData>>? = null
+    private var worker: Deferred<Result<GpxImportData>>? = null
 
     private val minDownloadDistanceOptions: List<Double> = listOf(10.0, 100.0, 250.0, 500.0)
 
@@ -106,11 +105,11 @@ class GpxImportSettingsDialog(
         }
     }
 
-    private suspend fun processGpxFile(): Result<GpxImporter.GpxImportData> {
+    private suspend fun processGpxFile(): Result<GpxImportData> {
         binding.okButton.isEnabled = false
 
         worker = viewLifecycleScope.async {
-            return@async gpxImporter.processGpxFile(
+            return@async importGpx(
                 inputStream,
                 binding.displayTrackCheckBox.isChecked,
                 binding.downloadCheckBox.isChecked,

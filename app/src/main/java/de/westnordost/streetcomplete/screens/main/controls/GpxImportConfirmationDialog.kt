@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.import.GpxImporter
+import de.westnordost.streetcomplete.data.import.GpxImportData
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 
 /** A dialog to confirm download of (potentially massive) data along imported GPX track */
 class GpxImportConfirmationDialog(
     context: Context,
-    importData: GpxImporter.GpxImportData,
+    importData: GpxImportData,
     lengthUnit: LengthUnit,
     private val callback: (confirm: Boolean) -> Unit,
 ) : AlertDialog(context) {
