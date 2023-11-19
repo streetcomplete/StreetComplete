@@ -214,6 +214,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             /* transportation */
             // "bicycle_rental", // usually outside, could be automatic too
             // "boat_rental", // usually outside, could be automatic too
+            // "ski_rental", // seems borderline
             "car_rental",
             "car_wash", // purpose-built, but see fuel
             "fuel", // purpose-built but too much of a shop that it would be weird to leave out

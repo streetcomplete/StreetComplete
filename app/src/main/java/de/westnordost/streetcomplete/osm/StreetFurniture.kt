@@ -8,8 +8,10 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
     val amenities = listOf(
         "bicycle_parking", "bicycle_wash", "bicycle_rental", "bench", "lounger", "bbq", "grit_bin",
         "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
-        "parcel_locker", "telephone", "drinking_water", "vending_machine",
-        "atm", "waste_basket", "trolley_bay", "hunting_stand", "toilets",
+        "parcel_locker", "telephone", "drinking_water", "vending_machine", "sanitary_dump_station",
+        "atm", "waste_basket", "trolley_bay", "hunting_stand", "toilets", "kneipp_water_cure",
+        "luggage_locker", "locker", "shelter", "taxi", "shower",  "grit_bin", "compressed_air",
+        "device_charging_station", "water_point", "watering_place", "dog_toilet", "smoking_area",
         // "post_box", "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
         // waiting for response in https://github.com/ideditor/schema-builder/issues/94
         // man_made = street_cabinet and street_cabinet = postal_service
@@ -19,17 +21,18 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
     return ("""(
         ${p}amenity ~ ${amenities.joinToString("|")}
         or (${p}amenity = recycling and recycling_type = container)
-        or ${p}leisure ~ picnic_table|firepit
-        or ${p}man_made ~ water_tap|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter
-        or ${p}tourism ~ viewpoint|artwork
+        or ${p}leisure ~ picnic_table|firepit|fitness_station
+        or ${p}man_made ~ water_tap|water_well|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter|surveillance|insect_hotel|snow_cannon|cairn
+        or ${p}tourism ~ viewpoint|artwork|picnic_site
         or (${p}tourism = information and information ~ guidepost|board|map|terminal)
         or ${p}historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
-        or ${p}highway ~ milestone|street_lamp|emergency_access_point
+        or ${p}highway ~ milestone|street_lamp|emergency_access_point|cyclist_waiting_aid
         or ${p}emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
         or ${p}advertising
         or ${p}leisure = pitch and sport ~ table_tennis|chess
-        or ${p}natural ~ tree
+        or ${p}natural ~ tree|tree_stump
         or ${p}man_made = street_cabinet and street_cabinet != postal_service
+        or ${p}boundary ~ marker
         )""")
 }
 
