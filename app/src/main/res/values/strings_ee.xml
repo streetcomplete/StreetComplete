@@ -250,6 +250,9 @@
     <string name="quest_custom_quest_add_node">Add node</string>
     <string name="quest_custom_quest_add_node_text">You can add a node with: %s</string>
 
+    <!--barrier locked -->
+    <string name="quest_barrier_locked_title">"Is this barrier (usually) locked?"</string>
+
     <!-- bench material -->
     <string name="quest_benchMaterial_title">What’s this made of?</string>
     <string name="quest_benchMaterial_wood">Wood</string>

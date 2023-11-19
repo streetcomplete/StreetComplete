@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
+import de.westnordost.streetcomplete.quests.barrier_locked.AddBarrierLocked
 import de.westnordost.streetcomplete.quests.barrier_height.AddBarrierHeight
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
@@ -600,6 +601,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 23 to AddRailwayPlatformRef(),
     EE_QUEST_OFFSET + 33 to AddTrailVisibility(),
     EE_QUEST_OFFSET + 9 to AddTreeGenus(),
+    EE_QUEST_OFFSET + 39 to AddBarrierLocked(),
     EE_QUEST_OFFSET + 26 to AddIsPharmacyDispensing(),
     EE_QUEST_OFFSET + 30 to AddShelterType(),
     EE_QUEST_OFFSET + 28 to AddFootwayWidth(arSupportChecker),
