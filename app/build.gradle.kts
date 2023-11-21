@@ -191,12 +191,12 @@ dependencies {
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
     // faster sqlite library (additional capabilities like R*-tree or json1 not used)
-    // putting 25% faster, reading 5% faster than Android 9 built-in sqlite
-    implementation("com.github.requery:sqlite-android:3.39.2")
+    // writing 25% faster, reading 5% faster than Android 9 built-in sqlite (tested with 3.36.0)
+    implementation("com.github.requery:sqlite-android:3.43.0")
     implementation("androidx.sqlite:sqlite:2.3.0")
 
-    // fast json serialization, used to write tags to database (and read)
-    implementation("com.squareup.moshi:moshi:1.14.0")
+    // fast json (de)serialization used for database read and write
+    implementation("com.squareup.moshi:moshi:1.15.0")
 
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
