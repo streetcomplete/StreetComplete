@@ -13,6 +13,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.CALLBACK_HOST
 import de.westnordost.streetcomplete.data.user.CALLBACK_SCHEME
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
@@ -90,7 +91,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     private suspend fun continueAuthentication() {
         try {
             binding.webView.loadUrl(
-                authorizeUrl,
+                createAuthorizeUrl,
                 mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
             )
             val authorizationCode = webViewClient.awaitOAuthCallback()
@@ -128,7 +129,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
                 continuation?.resume(authorizationCode)
             } else {
                 continuation?.resumeWithException(
-                    OAuthExpectationFailedException("oauth_verifier parameter not set by provider")
+                    AuthorizationException("oauth_verifier parameter not set by provider")
                 )
             }
             return true
@@ -137,7 +138,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
         @Deprecated("Deprecated in Java")
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
-                OAuthCommunicationException("Error for URL $url", "$description")
+                AuthorizationException("Error for URL " + url + if (description != null) ": $description" else "")
             )
         }
 
