@@ -5,29 +5,36 @@ import androidx.core.content.edit
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
-import oauth.signpost.OAuthConsumer
 
 class UserLoginStatusController(
-    private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
     private val prefs: SharedPreferences,
 ) : UserLoginStatusSource {
 
     private val listeners = Listeners<UserLoginStatusSource.Listener>()
 
-    override val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
+    override val isLoggedIn: Boolean get() =
+        prefs.getString(Prefs.OAUTH2_ACCESS_TOKEN, null) != null
 
-    fun logIn(consumer: OAuthConsumer) {
-        oAuthStore.oAuthConsumer = consumer
-        osmConnection.oAuth = consumer
-        prefs.edit { putBoolean(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP, true) }
+    fun logIn(accessToken: String) {
+        prefs.edit {
+            putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)
+        }
+        osmConnection.oauthAccessToken = accessToken
         listeners.forEach { it.onLoggedIn() }
     }
 
     fun logOut() {
-        oAuthStore.oAuthConsumer = null
-        osmConnection.oAuth = null
-        prefs.edit { putBoolean(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP, false) }
+        prefs.edit {
+            putString(Prefs.OAUTH2_ACCESS_TOKEN, null)
+            // make sure OAuth 1.0a data is cleared
+            remove(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
+            remove(Prefs.OAUTH1_ACCESS_TOKEN)
+            remove(Prefs.OAUTH1_ACCESS_TOKEN_SECRET)
+        }
+        osmConnection.oauthAccessToken = null
+        // TODO revoke token?
+
         listeners.forEach { it.onLoggedOut() }
     }
 
