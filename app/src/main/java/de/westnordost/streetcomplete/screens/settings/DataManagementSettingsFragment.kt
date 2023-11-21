@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -42,6 +43,7 @@ import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
@@ -228,12 +230,12 @@ class DataManagementSettingsFragment :
 
                     os.bufferedWriter().use {
                         it.write(version.toString())
-                        it.write("\n$BACKUP_HIDDEN_OSM_QUESTS\n")
+                        it.write("\n\n$BACKUP_HIDDEN_OSM_QUESTS\n")
                         it.write(hiddenOsmQuests.joinToString("\n"))
-                        it.write("\n$BACKUP_HIDDEN_NOTES\n")
+                        it.write("\n\n$BACKUP_HIDDEN_NOTES\n")
                         it.write(hiddenNotes.joinToString("\n"))
-                        it.write("\n$BACKUP_HIDDEN_OTHER_QUESTS\n")
-                        it.write(hiddenExternalSourceQuests.joinToString("\n"))
+                        it.write("\n\n$BACKUP_HIDDEN_OTHER_QUESTS\n")
+                        it.write(hiddenExternalSourceQuests.joinToString("\n") + "\n")
                     }
                 }
             }
@@ -243,19 +245,38 @@ class DataManagementSettingsFragment :
                 allPresets.addAll(questPresetsController.getAll())
                 val array = allPresets.map { it.name }.toTypedArray()
                 val selectedPresets = mutableSetOf<Long>()
-                AlertDialog.Builder(requireContext())
+                val d = AlertDialog.Builder(requireContext())
                     .setTitle(R.string.import_export_presets_select)
-                    .setMultiChoiceItems(array, null) { _, which, isChecked ->
+                    .setMultiChoiceItems(array, null) { di, which, isChecked ->
                         if (isChecked) selectedPresets.add(allPresets[which].id)
                         else selectedPresets.remove(allPresets[which].id)
+                        (di as AlertDialog).getButton(Dialog.BUTTON_POSITIVE)?.isEnabled = selectedPresets.isNotEmpty()
                     }
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(android.R.string.ok) { _, _ ->
                         exportPresets(selectedPresets, uri)
                     }
                     .show()
+                d.getButton(Dialog.BUTTON_POSITIVE)?.isEnabled = false
             }
-            REQUEST_CODE_OVERLAYS_EXPORT -> exportCustomOverlays(uri)
+            REQUEST_CODE_OVERLAYS_EXPORT -> {
+                val allOverlays = getFakeCustomOverlays(prefs, requireContext(), false)
+                val array = allOverlays.map { it.changesetComment }.toTypedArray()
+                val selectedOverlays = mutableSetOf<String>()
+                val d = AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.import_export_custom_overlays_select)
+                    .setMultiChoiceItems(array, null) { di, which, isChecked ->
+                        if (isChecked) selectedOverlays.add(allOverlays[which].wikiLink!!)
+                        else selectedOverlays.remove(allOverlays[which].wikiLink!!)
+                        (di as AlertDialog).getButton(Dialog.BUTTON_POSITIVE)?.isEnabled = selectedOverlays.isNotEmpty()
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        exportCustomOverlays(selectedOverlays, uri)
+                    }
+                    .show()
+                d.getButton(Dialog.BUTTON_POSITIVE)?.isEnabled = false
+            }
             REQUEST_CODE_SETTINGS_IMPORT -> if (!importSettings(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
             REQUEST_CODE_HIDDEN_IMPORT -> {
                 // do not delete existing hidden quests; this can be done manually anyway
@@ -266,8 +287,7 @@ class DataManagementSettingsFragment :
                 val externalSourceQuests = mutableListOf<Array<Any?>>()
                 var currentThing = BACKUP_HIDDEN_OSM_QUESTS
                 for (line in lines) {
-
-                    if (line.isEmpty()) continue // happens if a section is completely empty
+                    if (line.isEmpty()) continue
                     if (line == BACKUP_HIDDEN_NOTES || line == BACKUP_HIDDEN_OTHER_QUESTS) {
                         currentThing = line
                         continue
@@ -556,8 +576,12 @@ class DataManagementSettingsFragment :
         activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { settingsToJsonStream(settings, it) } }
     }
 
-    private fun exportCustomOverlays(uri: Uri) {
-        val settings = prefs.all.filterKeys { it.startsWith("custom_overlay") }
+    private fun exportCustomOverlays(indices: Collection<String>, uri: Uri) {
+        val filterRegex = "custom_overlay_(?:${indices.joinToString("|")})_.*".toRegex()
+        val settings = prefs.all.filterKeys { filterRegex.matches(it) }.toMutableMap()
+        settings[Prefs.CUSTOM_OVERLAY_INDICES] = indices.joinToString(",")
+        if (prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0).toString() in indices)
+            settings[Prefs.CUSTOM_OVERLAY_SELECTED_INDEX] = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
         activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use {
             it.appendLine("overlays")
             settingsToJsonStream(settings, it)
@@ -624,8 +648,7 @@ class DataManagementSettingsFragment :
     }
 
     // this will ignore settings with value null
-    // it can be both string and string set, and i have no idea how to tell apart...
-    @Suppress("UNCHECKED_CAST") // it is checked... but whatever (except string set, because can't check for that))
+    @Suppress("UNCHECKED_CAST") // it is checked... but whatever (except string set, because not allowed to check for that)
     private fun settingsToJsonStream(settings: Map<String, Any?>, out: BufferedWriter) {
         val booleans = settings.filterValues { it is Boolean } as Map<String, Boolean>
         val ints = settings.filterValues { it is Int } as Map<String, Int>
@@ -636,29 +659,25 @@ class DataManagementSettingsFragment :
         // now write
         out.appendLine("boolean settings")
         out.appendLine( Json.encodeToString(booleans))
+        out.appendLine()
         out.appendLine("int settings")
         out.appendLine( Json.encodeToString(ints))
+        out.appendLine()
         out.appendLine("long settings")
         out.appendLine( Json.encodeToString(longs))
+        out.appendLine()
         out.appendLine("float settings")
         out.appendLine( Json.encodeToString(floats))
+        out.appendLine()
         out.appendLine("string settings")
         out.appendLine( Json.encodeToString(strings))
+        out.appendLine()
         out.appendLine("string set settings")
         out.appendLine( Json.encodeToString(stringSets))
     }
 
     private fun importSettings(uri: Uri): Boolean {
         val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines().renameUpdateQuests() } ?: return false
-        if (lines.firstOrNull()?.startsWith("<?xml version") == true) {
-            // we have an xml file, just replace current settings file
-            val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-            if (!f.exists()) return false
-            f.writeText(lines.filterNot { it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") }.joinToString("\n"))
-            // need to immediately restart the app to avoid current settings writing to new file
-            restartApp()
-            return true
-        }
         val r = readToSettings(lines)
         preferenceScreen.removeAll()
         onCreatePreferences(null, null)
@@ -670,7 +689,9 @@ class DataManagementSettingsFragment :
         val e = prefs.edit()
         try {
             while (i.hasNext()) {
-                when (i.next()) {
+                val next = i.next()
+                if (next.isBlank()) continue
+                when (next) {
                     "boolean settings" -> Json.decodeFromString<Map<String, Boolean>>(i.next()).forEach { e.putBoolean(it.key, it.value) }
                     "int settings" -> Json.decodeFromString<Map<String, Int>>(i.next()).forEach { e.putInt(it.key, it.value) }
                     "long settings" -> Json.decodeFromString<Map<String, Long>>(i.next()).forEach { e.putLong(it.key, it.value) }

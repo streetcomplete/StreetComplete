@@ -108,6 +108,7 @@
     <string name="import_export_presets">Presets</string>
     <string name="import_export_presets_select">Select presets to export</string>
     <string name="import_export_custom_overlays">Custom Overlays</string>
+    <string name="import_export_custom_overlays_select">Select overlays to export</string>
     <string name="import_export_settings">Other app settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
     <string name="import_presets_overlays_message">Add imported, or replace existing? If you choose replace, all currently existing will be removed.</string>
