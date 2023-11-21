@@ -24,9 +24,10 @@ class TangramIconsSpriteSheet(
     private val prefs: SharedPreferences,
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
+        val lastUpdate = context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
+        val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == lastUpdate
         val spriteSheet = when {
-            !isSpriteSheetCurrent || BuildConfig.DEBUG -> createSpritesheet()
+            !isSpriteSheetCurrent -> createSpritesheet()
             else -> prefs.getString(Prefs.ICON_SPRITES, "")!!
         }
 
@@ -75,7 +76,7 @@ class TangramIconsSpriteSheet(
         val sprites = "{${spriteSheetEntries.joinToString(",")}}"
 
         prefs.edit {
-            putInt(Prefs.ICON_SPRITES_VERSION, BuildConfig.VERSION_CODE)
+            putInt(Prefs.ICON_SPRITES_VERSION, context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt())
             putString(Prefs.ICON_SPRITES, sprites)
         }
 

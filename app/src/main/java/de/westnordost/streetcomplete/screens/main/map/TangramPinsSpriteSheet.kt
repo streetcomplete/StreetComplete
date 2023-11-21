@@ -24,10 +24,11 @@ class TangramPinsSpriteSheet(
     private val prefs: SharedPreferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
+        val lastUpdate = context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
+        val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == lastUpdate
 
         val spriteSheet = when {
-            !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
+            !isSpriteSheetCurrent || shouldBeUpsideDown() -> createSpritesheet()
             else -> prefs.getString(Prefs.PIN_SPRITES, "")!!
         }
 
@@ -81,7 +82,7 @@ class TangramPinsSpriteSheet(
         val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
 
         prefs.edit {
-            putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else BuildConfig.VERSION_CODE)
+            putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt())
             putString(Prefs.PIN_SPRITES, questSprites)
         }
 
