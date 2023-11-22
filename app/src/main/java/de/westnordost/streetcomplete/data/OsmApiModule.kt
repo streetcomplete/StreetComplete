@@ -11,10 +11,11 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
 import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.osmtracks.TracksApiImpl
-import de.westnordost.streetcomplete.data.user.OSM_API_URL
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+
+const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
 
 val osmApiModule = module {
     factory { Cleaner(get(), get(), get(), get()) }
@@ -28,7 +29,7 @@ val osmApiModule = module {
     single { OsmConnection(
         OSM_API_URL,
         ApplicationConstants.USER_AGENT,
-        get<SharedPreferences>().getString(Prefs.OAUTH2_ACCESS_TOKEN)
+        get<SharedPreferences>().getString(Prefs.OAUTH2_ACCESS_TOKEN, null)
     ) }
     single { UnsyncedChangesCountSource(get(), get()) }
 

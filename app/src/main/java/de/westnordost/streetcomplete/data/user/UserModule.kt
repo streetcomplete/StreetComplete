@@ -8,7 +8,6 @@ const val OAUTH2_AUTHORIZATION_URL = "https://www.openstreetmap.org/oauth2/autho
 const val CALLBACK_SCHEME = "streetcomplete"
 const val CALLBACK_HOST = "oauth"
 
-const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
 
 val userModule = module {
 

@@ -20,7 +20,7 @@ class UserLoginStatusController(
         prefs.edit {
             putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)
         }
-        osmConnection.oauthAccessToken = accessToken
+        osmConnection.oAuthAccessToken = accessToken
         listeners.forEach { it.onLoggedIn() }
     }
 
@@ -32,9 +32,7 @@ class UserLoginStatusController(
             remove(Prefs.OAUTH1_ACCESS_TOKEN)
             remove(Prefs.OAUTH1_ACCESS_TOKEN_SECRET)
         }
-        osmConnection.oauthAccessToken = null
-        // TODO revoke token?
-
+        osmConnection.oAuthAccessToken = null
         listeners.forEach { it.onLoggedOut() }
     }
 
