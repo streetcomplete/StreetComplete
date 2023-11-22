@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import java.net.HttpURLConnection
 import java.net.URL
@@ -33,14 +34,12 @@ import java.security.MessageDigest
  *  @param redirectUri the redirect URI (aka callback URI) that the authorization endpoint should
  *                     call when the user allowed the authorization.
  * */
-class OAuthAuthorization(
+@Serializable class OAuthAuthorization(
     private val authorizationUrl: String,
     private val accessTokenUrl: String,
     private val clientId: String,
     private val scopes: List<String>,
-    private val redirectUri: String,
-    codeVerifier: String?,
-    state: String?,
+    private val redirectUri: String
 ) {
     /** For the code challenge as specified in RFC 7636
      *  https://www.rfc-editor.org/rfc/rfc7636
@@ -48,18 +47,13 @@ class OAuthAuthorization(
      *  and required in the OAuth 2.1 draft
      *  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
      */
-    var codeVerifier: String? = null
-        private set
+    private var codeVerifier: String? = null
 
     /** identifies this oauth authorization flow, in case there are several at once */
-    val state: String
+    private val state: String = createRandomAlphanumericString(8)
 
+    @Transient
     private val json = Json { ignoreUnknownKeys = true }
-
-    init {
-        this.codeVerifier = codeVerifier
-        this.state = state ?: createRandomAlphanumericString(8)
-    }
 
     /**
      * Creates the URL to be opened in the browser or a web view in which the user agrees to

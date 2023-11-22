@@ -30,6 +30,9 @@ import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.util.Locale
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
@@ -75,15 +78,14 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
-        oAuth = OAuthAuthorization(
-            OAUTH2_AUTHORIZATION_URL,
-            OAUTH2_TOKEN_URL,
-            OAUTH2_CLIENT_ID,
-            OAUTH2_REQUIRED_SCOPES,
-            OAUTH2_REDIRECT_URI,
-            inState?.getString(CODE_VERIFIER),
-            inState?.getString(STATE)
-        )
+        oAuth = inState?.getString(OAUTH)?.let { Json.decodeFromString(it) }
+            ?: OAuthAuthorization(
+                OAUTH2_AUTHORIZATION_URL,
+                OAUTH2_TOKEN_URL,
+                OAUTH2_CLIENT_ID,
+                OAUTH2_REQUIRED_SCOPES,
+                OAUTH2_REDIRECT_URI
+            )
     }
 
     override fun onPause() {
@@ -97,8 +99,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(CODE_VERIFIER, oAuth.codeVerifier)
-        outState.putString(STATE, oAuth.state)
+        outState.putString(OAUTH, Json.encodeToString(oAuth))
         super.onSaveInstanceState(outState)
     }
 
@@ -134,8 +135,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     companion object {
         const val TAG = "OAuthDialogFragment"
 
-        private const val CODE_VERIFIER = "code_verifier"
-        private const val STATE = "state"
+        private const val OAUTH = "oauth"
     }
 
     private inner class OAuthWebViewClient : WebViewClient() {
