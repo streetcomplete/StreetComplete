@@ -13,7 +13,7 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>() {
 
     override val elementFilter = """
         nodes with
-          (power = tower or power = pole or power = insulator)
+          power ~ tower|pole|insulator
           and !line_attachment
     """
     override val changesetComment = "Specify line_attachment power support"
@@ -26,7 +26,7 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         val mapData = getMapData()
         // and also show the (power) lines themselves
-        return mapData.filter("nodes with power = tower or power = pole or power = insulator") +
+        return mapData.filter("nodes with power ~ tower|pole|insulator") +
             mapData.filter("ways with power ~ line|minor_line")
     }
 
