@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.databinding.CellTeamModeColorCircleSelectBinding
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapter.ViewHolder>() {
     var count: Int = 0
@@ -21,12 +21,10 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
 
             oldIndex?.let { notifyItemChanged(it) }
             index?.let { notifyItemChanged(it) }
-            for (listener in listeners) {
-                listener.onSelectedIndexChanged(index)
-            }
+            listeners.forEach { it.onSelectedIndexChanged(index) }
         }
 
-    val listeners: MutableList<OnSelectedIndexChangedListener> = CopyOnWriteArrayList()
+    val listeners = Listeners<OnSelectedIndexChangedListener>()
 
     interface OnSelectedIndexChangedListener {
         fun onSelectedIndexChanged(index: Int?)

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */
@@ -24,7 +24,7 @@ class MessagesSource(
     interface UpdateListener {
         fun onNumberOfMessagesUpdated(numberOfMessages: Int)
     }
-    private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<UpdateListener>()
 
     /** Achievement levels unlocked since application start. I.e. when restarting the app, the
      *  messages about new achievements unlocked are lost, this is deliberate */
@@ -110,8 +110,6 @@ class MessagesSource(
     }
 
     private fun onNumberOfMessagesUpdated() {
-        for (listener in listeners) {
-            listener.onNumberOfMessagesUpdated(getNumberOfMessages())
-        }
+        listeners.forEach { it.onNumberOfMessagesUpdated(getNumberOfMessages()) }
     }
 }

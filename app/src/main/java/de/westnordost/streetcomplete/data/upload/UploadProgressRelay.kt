@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.upload
 
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class UploadProgressRelay : UploadProgressListener {
-    private val listeners = CopyOnWriteArrayList<UploadProgressListener>()
+    private val listeners = Listeners<UploadProgressListener>()
 
     override fun onStarted() {
         listeners.forEach { it.onStarted() }

@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.CopyOnWriteArrayList
 
 class DownloadedTilesController(
     private val dao: DownloadedTilesDao
 ) : DownloadedTilesSource {
 
-    private val listeners = CopyOnWriteArrayList<DownloadedTilesSource.Listener>()
+    private val listeners = Listeners<DownloadedTilesSource.Listener>()
 
     override fun contains(tilesRect: TilesRect, ignoreOlderThan: Long): Boolean =
         dao.contains(tilesRect, ignoreOlderThan)

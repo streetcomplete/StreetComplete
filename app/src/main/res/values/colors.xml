@@ -49,6 +49,7 @@
     <color name="traffic_blue">#2255BB</color>
     <color name="traffic_green">#008351</color>
     <color name="traffic_yellow">#ffd520</color>
+    <color name="traffic_brown">#73411f</color>
 
     <color name="traffic_white">#fff</color>
     <color name="traffic_black">#000</color>

@@ -407,6 +407,7 @@ quest/
     steps.svg
     steps_ramp.svg
     steps_handrail.svg
+    steps_tactile_paving.svg         combination of parts of kerb_tactile_paving.svg and steps_count.svg made by Tobias Zwick, combined by arrival-spring (so CC-BY-SA 4.0)
     street.svg
     street_lanes.svg
     street_name.svg

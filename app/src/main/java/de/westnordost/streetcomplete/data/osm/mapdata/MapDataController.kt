@@ -6,9 +6,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import java.util.concurrent.CopyOnWriteArrayList
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 class MapDataController internal constructor(
@@ -36,7 +36,7 @@ class MapDataController internal constructor(
         /** Called when all elements have been cleared */
         fun onCleared()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     private val cache = MapDataCache(
         SPATIAL_CACHE_TILE_ZOOM,

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.messages.QuestSelectionHintState.SHOUL
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class QuestSelectionHintController(
     private val visibleQuestsSource: VisibleQuestsSource,
@@ -19,7 +19,7 @@ class QuestSelectionHintController(
     interface Listener {
         fun onQuestSelectionHintStateChanged()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     var state: QuestSelectionHintState
         set(value) {
