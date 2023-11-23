@@ -87,9 +87,9 @@ import kotlin.io.encoding.ExperimentalEncodingApi
      *
      * @throws AuthorizationException if the URI does not contain the authorization code, e.g.
      *                                   the user did not accept the requested permissions
-     *  @throws ConnectionException if there has been an error that is the server's fault (try again
-     *                              later or open a bug report at openstreetmap-website if it
-     *                              persists)
+     * @throws ConnectionException if there has been an error that is the server's fault (try again
+     *                             later or open a bug report at openstreetmap-website if it
+     *                             persists)
      */
     fun extractAuthorizationCode(uri: URI): String {
         val parameters = uri.getQueryParameters()
