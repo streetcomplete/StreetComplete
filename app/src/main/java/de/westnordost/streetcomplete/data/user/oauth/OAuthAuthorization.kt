@@ -157,15 +157,15 @@ import kotlin.io.encoding.ExperimentalEncodingApi
         val token_type: String,
         // OSM does currently not issue refresh tokens and the access token has no expiry date, so
         // we can ignore the below
-        val expires_in: Long?,
-        val refresh_token: String?,
+        val expires_in: Long? = null,
+        val refresh_token: String? = null,
     )
 
     @Serializable
     private data class ErrorResponse(
         val error: String,
-        val error_description: String?,
-        val error_uri: String?,
+        val error_description: String? = null,
+        val error_uri: String? = null,
     ) {
         fun toErrorMessage(): String = listOfNotNull(
             error,
