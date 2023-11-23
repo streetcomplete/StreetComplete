@@ -16,25 +16,26 @@ import java.security.MessageDigest
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-/** One authorization with OAuth. For each authorization request, a new instance must be created
+/**
+ * One authorization with OAuth. For each authorization request, a new instance must be created
  *
- *  Authorization flow:
+ * Authorization flow:
  *
- *  1. createAuthorizationUrl() and open it in a browser (or web view)
- *  2. let user accept or deny the permission request in the browser. Authorization endpoint will
- *     call the redirect URI (aka callback URI) with parameters in either case.
- *  3. check if the URI received is for this instance with itsForMe(uri) and then
- *     extractAuthorizationCode(uri) from that URI
- *  4. retrieveAccessToken(authorizationCode) with the retrieved authorizationCode
+ * 1. createAuthorizationUrl() and open it in a browser (or web view)
+ * 2. let user accept or deny the permission request in the browser. Authorization endpoint will
+ *    call the redirect URI (aka callback URI) with parameters in either case.
+ * 3. check if the URI received is for this instance with itsForMe(uri) and then
+ *    extractAuthorizationCode(uri) from that URI
+ * 4. retrieveAccessToken(authorizationCode) with the retrieved authorizationCode
  *
  *
- *  @param authorizationUrl the OAuth2 server authorization endpoint
- *  @param accessTokenUrl the OAuth2 server token endpoint
- *  @param clientId the OAuth2 client id
- *  @param scopes the scopes (aka permissions) to request
- *  @param redirectUri the redirect URI (aka callback URI) that the authorization endpoint should
- *                     call when the user allowed the authorization.
- * */
+ * @param authorizationUrl the OAuth2 server authorization endpoint
+ * @param accessTokenUrl the OAuth2 server token endpoint
+ * @param clientId the OAuth2 client id
+ * @param scopes the scopes (aka permissions) to request
+ * @param redirectUri the redirect URI (aka callback URI) that the authorization endpoint should
+ *                    call when the user allowed the authorization.
+ */
 @Serializable class OAuthAuthorization(
     private val authorizationUrl: String,
     private val accessTokenUrl: String,
@@ -85,7 +86,7 @@ import kotlin.io.encoding.ExperimentalEncodingApi
      *
      * @throws OAuthException if the URI does not contain the authorization code, e.g.
      *                        the user did not accept the requested permissions
-     *  @throws OAuthConnectionException if the server reply is malformed
+     * @throws OAuthConnectionException if the server reply is malformed
      */
     fun extractAuthorizationCode(uri: URI): String {
         val parameters = uri.getQueryParameters()
@@ -99,10 +100,10 @@ import kotlin.io.encoding.ExperimentalEncodingApi
     }
 
     /**
-     *  Retrieves the access token, using the previously retrieved [authorizationCode]
+     * Retrieves the access token, using the previously retrieved [authorizationCode]
      *
-     *  @throws OAuthException if there has been an OAuth authorization error
-     *  @throws OAuthConnectionException if the server reply is malformed or there is an issue with
+     * @throws OAuthException if there has been an OAuth authorization error
+     * @throws OAuthConnectionException if the server reply is malformed or there is an issue with
      *                                   the connection
      */
     fun retrieveAccessToken(authorizationCode: String): String {
