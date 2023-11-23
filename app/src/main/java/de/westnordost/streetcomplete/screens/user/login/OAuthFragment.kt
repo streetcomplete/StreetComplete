@@ -109,11 +109,14 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
     private suspend fun continueAuthentication() {
         try {
+            binding.webView.visibility = View.VISIBLE
             binding.webView.loadUrl(
                 oAuth.createAuthorizationUrl(),
                 mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
             )
             val authorizationCode = webViewClient.awaitOAuthCallback()
+            binding.webView.visibility = View.INVISIBLE
+
             binding.progressView.visibility = View.VISIBLE
             val accessToken = withContext(Dispatchers.IO) {
                 oAuth.retrieveAccessToken(authorizationCode)
