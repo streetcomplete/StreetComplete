@@ -12,7 +12,7 @@ const val OAUTH2_CALLBACK_HOST = "oauth"
 
 val OAUTH2_REDIRECT_URI = "$OAUTH2_CALLBACK_SCHEME://$OAUTH2_CALLBACK_HOST"
 
-val OAUTH2_REQUIRED_SCOPES = listOf(
+val OAUTH2_REQUESTED_SCOPES = listOf(
     "read_prefs",
     "write_api",
     "write_notes",

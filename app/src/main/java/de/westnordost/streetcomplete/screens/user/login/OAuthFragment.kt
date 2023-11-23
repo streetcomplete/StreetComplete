@@ -16,9 +16,10 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.OAUTH2_AUTHORIZATION_URL
 import de.westnordost.streetcomplete.data.user.OAUTH2_CLIENT_ID
 import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
-import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
+import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorization
+import de.westnordost.streetcomplete.data.user.oauth.OAuthException
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -80,7 +81,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
                 OAUTH2_AUTHORIZATION_URL,
                 OAUTH2_TOKEN_URL,
                 OAUTH2_CLIENT_ID,
-                OAUTH2_REQUIRED_SCOPES,
+                OAUTH2_REQUESTED_SCOPES,
                 OAUTH2_REDIRECT_URI
             )
     }
@@ -124,7 +125,12 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
             listener?.onOAuthSuccess(accessToken)
             binding.progressView.visibility = View.INVISIBLE
         } catch (e: Exception) {
-            activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+            if (e is OAuthException) {
+                activity?.toast(e.description ?: e.error, Toast.LENGTH_LONG)
+            } else {
+                // otherwise it is some connection error the user doesn't need to know the details about
+                activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+            }
             Log.e(TAG, "Error during authorization", e)
             listener?.onOAuthFailed(e)
         }

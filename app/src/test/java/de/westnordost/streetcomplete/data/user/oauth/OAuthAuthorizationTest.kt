@@ -107,6 +107,9 @@ class OAuthAuthorizationTest {
             createOAuth().extractAuthorizationCode(URI("localhost://oauth?code=my%20code"))
         )
     }
+
+    // it's not properly possible to test retrieveAccessToken in isolation because the http client
+    // is not injected (passed in the constructor)
 }
 
 private fun createOAuth() = OAuthAuthorization(

@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.user.AuthorizationException
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
+import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URI
 import java.net.URL
@@ -84,11 +83,9 @@ import kotlin.io.encoding.ExperimentalEncodingApi
     /**
      * Extracts the authorization code from a parameter of the callback uri
      *
-     * @throws AuthorizationException if the URI does not contain the authorization code, e.g.
-     *                                   the user did not accept the requested permissions
-     *  @throws ConnectionException if there has been an error that is the server's fault (try again
-     *                              later or open a bug report at openstreetmap-website if it
-     *                              persists)
+     * @throws OAuthException if the URI does not contain the authorization code, e.g.
+     *                        the user did not accept the requested permissions
+     *  @throws OAuthConnectionException if the server reply is malformed
      */
     fun extractAuthorizationCode(uri: URI): String {
         val parameters = uri.getQueryParameters()
@@ -96,24 +93,17 @@ import kotlin.io.encoding.ExperimentalEncodingApi
         if (authorizationCode != null) return authorizationCode
 
         val error = parameters["error"]
-            ?: throw ConnectionException("OAuth 2 authorization endpoint did not return a valid error response: $uri")
+            ?: throw OAuthConnectionException("OAuth 2 authorization endpoint did not return a valid error response: $uri")
 
-        val errorResponse = ErrorResponse(
-            error,
-            parameters["error_description"],
-            parameters["error_uri"]
-        )
-        throw AuthorizationException(errorResponse.toErrorMessage())
+        throw OAuthException(error, parameters["error_description"], parameters["error_uri"])
     }
 
     /**
      *  Retrieves the access token, using the previously retrieved [authorizationCode]
      *
-     *  @throws IOException if an I/O exception occurs.
-     *  @throws AuthorizationException if there has been an OAuth authorization error
-     *  @throws ConnectionException if there has been an error that is the server's fault (try again
-     *                              later or open a bug report at openstreetmap-website if it
-     *                              persists)
+     *  @throws OAuthException if there has been an OAuth authorization error
+     *  @throws OAuthConnectionException if the server reply is malformed or there is an issue with
+     *                                   the connection
      */
     fun retrieveAccessToken(authorizationCode: String): String {
         val url = accessTokenUrl + "?" + listOfNotNull(
@@ -124,30 +114,32 @@ import kotlin.io.encoding.ExperimentalEncodingApi
             "code_verifier" to codeVerifier,
         ).toUrlParameters()
 
-        val connection = URL(url).openConnection() as HttpURLConnection
-        connection.setRequestProperty("User-Agent", ApplicationConstants.USER_AGENT)
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
-        connection.requestMethod = "POST"
-
         try {
+            val connection = URL(url).openConnection() as HttpURLConnection
+            connection.setRequestProperty("User-Agent", ApplicationConstants.USER_AGENT)
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
+            connection.requestMethod = "POST"
+
             if (connection.responseCode != HttpURLConnection.HTTP_OK) {
                 val body = connection.errorStream.bufferedReader().use { it.readText() }
                 val response = json.decodeFromString<ErrorResponse>(body)
-                throw AuthorizationException(response.toErrorMessage())
+                throw OAuthException(response.error, response.error_description, response.error_uri)
             } else {
                 val body = connection.inputStream.bufferedReader().use { it.readText() }
                 val response = json.decodeFromString<AccessTokenResponse>(body)
                 if (response.token_type.lowercase() != "bearer") {
                     // hey! that's not what we asked for! (according to the RFC, the client MUST check this)
-                    throw ConnectionException("OAuth 2 token endpoint returned an unknown token type (${response.token_type})")
+                    throw OAuthConnectionException("OAuth 2 token endpoint returned an unknown token type (${response.token_type})")
                 }
                 return response.access_token
             }
         // if OSM server does not return valid JSON, it is the server's fault, hence
         } catch (e: SerializationException) {
-            throw ConnectionException("OAuth 2 token endpoint did not return a valid response", e)
-        } catch (e: IllegalArgumentException ) {
-            throw ConnectionException("OAuth 2 token endpoint did not return a valid response", e)
+            throw OAuthConnectionException("OAuth 2 token endpoint did not return a valid response", e)
+        } catch (e: IllegalArgumentException) {
+            throw OAuthConnectionException("OAuth 2 token endpoint did not return a valid response", e)
+        } catch (e: IOException) {
+            throw OAuthConnectionException(cause = e)
         }
     }
 
@@ -166,13 +158,7 @@ import kotlin.io.encoding.ExperimentalEncodingApi
         val error: String,
         val error_description: String? = null,
         val error_uri: String? = null,
-    ) {
-        fun toErrorMessage(): String = listOfNotNull(
-            error,
-            error_description?.let { ": $error_description" },
-            error_uri?.let { " (see $error_uri)" }
-        ).joinToString("")
-    }
+    )
 }
 
 /**
