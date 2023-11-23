@@ -108,13 +108,13 @@ import kotlin.io.encoding.ExperimentalEncodingApi
     }
 
     /**
-     *  Retrieves the access token, using the previously retrieved [authorizationCode]
+     * Retrieves the access token, using the previously retrieved [authorizationCode]
      *
-     *  @throws IOException if an I/O exception occurs.
-     *  @throws AuthorizationException if there has been an OAuth authorization error
-     *  @throws ConnectionException if there has been an error that is the server's fault (try again
-     *                              later or open a bug report at openstreetmap-website if it
-     *                              persists)
+     * @throws IOException if an I/O exception occurs.
+     * @throws AuthorizationException if there has been an OAuth authorization error
+     * @throws ConnectionException if there has been an error that is the server's fault (try again
+     *                             later or open a bug report at openstreetmap-website if it
+     *                             persists)
      */
     fun retrieveAccessToken(authorizationCode: String): String {
         val url = accessTokenUrl + "?" + listOfNotNull(
