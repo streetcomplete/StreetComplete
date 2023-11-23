@@ -120,16 +120,14 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
     override fun isFormComplete(): Boolean = featureCtrl.feature != null
 
     override fun onClickOk() {
-        viewLifecycleScope.launch {
-            applyEdit(createEditAction(
-                element, geometry,
-                featureCtrl.feature!!, originalFeature,
-            ))
-        }
+        applyEdit(createEditAction(
+            element, geometry,
+            featureCtrl.feature!!, originalFeature,
+        ))
     }
 }
 
-private suspend fun createEditAction(
+private fun createEditAction(
     element: Element?,
     geometry: ElementGeometry,
     newFeature: Feature,
