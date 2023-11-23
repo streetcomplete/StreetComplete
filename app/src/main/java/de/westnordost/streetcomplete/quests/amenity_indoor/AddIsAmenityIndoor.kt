@@ -23,19 +23,24 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
     private val nodesFilter by lazy { """
         nodes with
           (
-            emergency ~ defibrillator|fire_extinguisher
+            emergency ~ defibrillator|fire_extinguisher|fire_hose
             or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator|vending_machine
           )
           and access !~ private|no
           and !indoor and !location and !level and !level:ref
     """.toElementFilterExpression() }
 
-    /* We only want survey nodes within building outlines. */
-    // exclude building=roof, see https://github.com/streetcomplete/StreetComplete/issues/5333
+    /* small POIs that tend to be always attached to walls (and where the location is very useful
+     * for verifiability). For these, the question shall always be asked, even when not within a
+     * building outline. */
+    private val nodesOnWalls by lazy { """
+        nodes with emergency ~ defibrillator|fire_extinguisher|fire_hose
+    """.toElementFilterExpression() }
+
+    /* We only want survey nodes within building outlines.
+     * Roofs do not count as inside a building */
     private val buildingFilter by lazy { """
-        ways, relations with 
-            building
-            and building != roof 
+        ways, relations with building and building != roof
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine whether amenities are inside buildings"
@@ -66,8 +71,9 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
             (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox) || nodesPositions.getAll(buildingBounds).count() == 0)
         }
 
-        // Reduce all matching nodes to nodes within building outlines
-        val nodesInBuildings = nodes.filter {
+        // Reduce all matching nodes to nodes within building outlines or small pois on walls
+        val result = nodes.filter {
+            nodesOnWalls.matches(it) ||
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
@@ -79,11 +85,14 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
             }
         }
 
-        return nodesInBuildings
+        return result
     }
 
     override fun isApplicableTo(element: Element) =
-        if (!nodesFilter.matches(element) || !hasAnyName(element.tags)) false else null
+        if (nodesFilter.matches(element) && hasAnyName(element.tags)) {
+            if (nodesOnWalls.matches(element)) true
+            else null
+        } else false
 
     private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
 
