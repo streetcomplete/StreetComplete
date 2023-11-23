@@ -43,11 +43,12 @@ import kotlin.io.encoding.ExperimentalEncodingApi
     private val scopes: List<String>,
     private val redirectUri: String
 ) {
-    /** For the code challenge as specified in RFC 7636
-     *  https://www.rfc-editor.org/rfc/rfc7636
+    /**
+     * For the code challenge as specified in RFC 7636
+     * https://www.rfc-editor.org/rfc/rfc7636
      *
-     *  and required in the OAuth 2.1 draft
-     *  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
+     * and required in the OAuth 2.1 draft
+     * https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
      */
     private val codeVerifier: String = createRandomAlphanumericString(128)
 
