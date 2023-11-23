@@ -1,12 +1,11 @@
-package de.westnordost.streetcomplete.overlays.street_furniture
+package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.osm.IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION
 import kotlin.test.*
 import kotlin.test.Test
 
-class FlagpoleMatching {
+class StreetFurnitureKtTest {
 
     @Test fun `flagpole matches`() {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), mapOf("man_made" to "flagpole"), 0)
