@@ -10,7 +10,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
         "parcel_locker", "telephone", "drinking_water", "vending_machine", "sanitary_dump_station",
         "atm", "waste_basket", "trolley_bay", "hunting_stand", "toilets", "kneipp_water_cure",
-        "luggage_locker", "locker", "shelter", "taxi", "shower",  "grit_bin", "compressed_air",
+        "luggage_locker", "locker", "shelter", "taxi", "shower", "compressed_air",
         "device_charging_station", "water_point", "watering_place", "dog_toilet", "smoking_area",
         // "post_box", "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
         // waiting for response in https://github.com/ideditor/schema-builder/issues/94
