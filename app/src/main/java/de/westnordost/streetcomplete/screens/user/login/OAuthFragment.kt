@@ -9,14 +9,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.OAUTH2_AUTHORIZATION_URL
-import de.westnordost.streetcomplete.data.user.OAUTH2_CALLBACK_HOST
-import de.westnordost.streetcomplete.data.user.OAUTH2_CALLBACK_SCHEME
 import de.westnordost.streetcomplete.data.user.OAUTH2_CLIENT_ID
 import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
@@ -30,12 +27,12 @@ import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import java.net.URI
+import java.net.URISyntaxException
 import java.util.Locale
 import kotlin.coroutines.Continuation
-import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
@@ -144,10 +141,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
         suspend fun awaitOAuthCallback(): String = suspendCoroutine { continuation = it }
 
         @Deprecated("Deprecated in Java")
-        override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            val uri = url?.toUri() ?: return false
-            if (!uri.isHierarchical) return false
-            if (uri.scheme != OAUTH2_CALLBACK_SCHEME || uri.host != OAUTH2_CALLBACK_HOST) return false
+        override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
+            val uri = try { URI(url) } catch (e: URISyntaxException) { return false }
             if (!oAuth.itsForMe(uri)) return false
             continuation?.resumeWith(runCatching { oAuth.extractAuthorizationCode(uri) })
             return true

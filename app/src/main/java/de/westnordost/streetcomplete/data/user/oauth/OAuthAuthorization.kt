@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
-import android.net.Uri
-import android.util.Base64
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -10,12 +8,16 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import java.net.HttpURLConnection
+import java.net.URI
 import java.net.URL
+import java.net.URLDecoder
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
-/** One authorization with OAuth. For each authorization request, a new instance should be created
+/** One authorization with OAuth. For each authorization request, a new instance must be created
  *
  *  Authorization flow:
  *
@@ -47,7 +49,7 @@ import java.security.MessageDigest
      *  and required in the OAuth 2.1 draft
      *  https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
      */
-    private var codeVerifier: String? = null
+    private val codeVerifier: String = createRandomAlphanumericString(128)
 
     /** identifies this oauth authorization flow, in case there are several at once */
     private val state: String = createRandomAlphanumericString(8)
@@ -59,26 +61,25 @@ import java.security.MessageDigest
      * Creates the URL to be opened in the browser or a web view in which the user agrees to
      * authorize the requested permissions.
      */
-    fun createAuthorizationUrl(): String {
-        val codeVerifier = createRandomAlphanumericString(128)
-        this.codeVerifier = codeVerifier
-
-        return authorizationUrl + "?" + listOf(
+    fun createAuthorizationUrl(): String =
+        authorizationUrl + "?" + listOf(
             "response_type" to "code",
             "client_id" to clientId,
             "scope" to scopes.joinToString(" "),
-            "redirect_url" to redirectUri,
+            "redirect_uri" to redirectUri,
             "code_challenge_method" to "S256",
             "code_challenge" to createPKCE_S256CodeChallenge(codeVerifier),
             "state" to state,
         ).toUrlParameters()
-    }
 
     /**
      * Checks whether the given callback uri is meant for this instance
      */
-    fun itsForMe(uri: Uri): Boolean =
-        uri.isHierarchical && uri.getQueryParameter("state") == state
+    fun itsForMe(uri: URI): Boolean {
+        val uri2 = URI(redirectUri)
+        return uri.scheme == uri2.scheme && uri.authority == uri2.authority && uri.path == uri2.path
+            && uri.getQueryParameters()["state"] == state
+    }
 
     /**
      * Extracts the authorization code from a parameter of the callback uri
@@ -89,17 +90,18 @@ import java.security.MessageDigest
      *                              later or open a bug report at openstreetmap-website if it
      *                              persists)
      */
-    fun extractAuthorizationCode(uri: Uri): String {
-        val authorizationCode = (if (uri.isHierarchical) uri.getQueryParameter("code") else null)
+    fun extractAuthorizationCode(uri: URI): String {
+        val parameters = uri.getQueryParameters()
+        val authorizationCode = parameters["code"]
         if (authorizationCode != null) return authorizationCode
 
-        val error = uri.getQueryParameter("error")
+        val error = parameters["error"]
             ?: throw ConnectionException("OAuth 2 authorization endpoint did not return a valid error response: $uri")
 
         val errorResponse = ErrorResponse(
             error,
-            uri.getQueryParameter("error_description"),
-            uri.getQueryParameter("error_uri")
+            parameters["error_description"],
+            parameters["error_uri"]
         )
         throw AuthorizationException(errorResponse.toErrorMessage())
     }
@@ -118,8 +120,8 @@ import java.security.MessageDigest
             "grant_type" to "authorization_code",
             "client_id" to clientId,
             "code" to authorizationCode,
-            "redirect_url" to redirectUri,
-            codeVerifier?.let { "code_verifier" to it },
+            "redirect_uri" to redirectUri,
+            "code_verifier" to codeVerifier,
         ).toUrlParameters()
 
         val connection = URL(url).openConnection() as HttpURLConnection
@@ -178,11 +180,12 @@ import java.security.MessageDigest
  *
  * See https://www.rfc-editor.org/rfc/rfc7636
  */
+@OptIn(ExperimentalEncodingApi::class)
 private fun createPKCE_S256CodeChallenge(codeVerifier: String): String {
     // S256: code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
     val encodedBytes = codeVerifier.toByteArray(StandardCharsets.US_ASCII)
     val sha256 = MessageDigest.getInstance("SHA-256").digest(encodedBytes)
-    return Base64.encodeToString(sha256, Base64.URL_SAFE or Base64.NO_PADDING)
+    return Base64.UrlSafe.encode(sha256).split("=")[0]
 }
 
 private fun Iterable<Pair<String, String>>.toUrlParameters(): String =
@@ -192,3 +195,9 @@ private fun createRandomAlphanumericString(length: Int) : String {
     val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
     return (0 ..< length).map { allowedChars.random() }.joinToString("")
 }
+
+private fun URI.getQueryParameters(): Map<String, String> =
+    query?.split('&')?.associate {
+        val parts = it.split('=')
+        parts[0] to URLDecoder.decode(parts[1], "US-ASCII")
+    }.orEmpty()
