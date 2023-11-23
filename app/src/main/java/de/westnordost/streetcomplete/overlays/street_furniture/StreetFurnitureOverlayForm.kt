@@ -84,21 +84,21 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
                 ::onSelectedFeature,
                 listOf(
                     // ordered by popularity, skipping trees as there are multiple variants of them
-                    "highway/street_lamp",
-                    "amenity/bench",
-                    "emergency/fire_hydrant",
-                    "amenity/bicycle_parking",
-                    "amenity/shelter",
-                    "amenity/toilets",
-                    // "amenity/post_box",
+                    "highway/street_lamp",      // 3.8M
+                    "amenity/bench",            // 2.3M
+                    "emergency/fire_hydrant",   // 1.9M
+                    "amenity/bicycle_parking",  // 0.6M
+                    "amenity/shelter",          // 0.5M
+                    "amenity/toilets",          // 0.4M
+                    // "amenity/post_box",      // 0.4M
                     // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
                     // waiting for response in https://github.com/ideditor/schema-builder/issues/94
-                    "amenity/drinking_water",
-                    "leisure/picnic_table",
+                    "amenity/drinking_water",   // 0.3M
+                    "leisure/picnic_table",     // 0.3M
 
                     // popular, a bit less than some competing entries
                     // but interesting and worth promoting
-                    "emergency/defibrillator",
+                    "emergency/defibrillator",  // 0.08M
                     )
             ).show()
         }
