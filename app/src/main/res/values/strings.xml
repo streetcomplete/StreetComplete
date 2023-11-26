@@ -1038,6 +1038,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
