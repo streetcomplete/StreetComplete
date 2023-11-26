@@ -1,8 +1,5 @@
-package de.westnordost.streetcomplete.screens.about
+package de.westnordost.streetcomplete.data.logs
 
-import de.westnordost.streetcomplete.data.logs.LogLevel
-import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.data.logs.LogsDao
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.util.logs
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogLevel.*
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.screens.about.LogsController
+import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope

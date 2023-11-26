@@ -15,6 +15,7 @@ import com.google.android.material.chip.ChipDrawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogMessage
+import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.data.logs.colorId
 import de.westnordost.streetcomplete.data.logs.styleResId
 import de.westnordost.streetcomplete.databinding.DialogLogsFiltersBinding
@@ -174,49 +175,5 @@ class LogLevelFilterChip(level: LogLevel, context: Context) : Chip(context) {
 
         text = level.name
         TextViewCompat.setTextAppearance(this, level.styleResId)
-    }
-}
-
-@Serializable
-data class LogsFilters(
-    var levels: MutableSet<LogLevel> = LogLevel.values().toMutableSet(),
-    var messageContains: String? = null,
-    var timestampNewerThan: LocalDateTime? = null,
-    var timestampOlderThan: LocalDateTime? = null
-) {
-    fun copy(): LogsFilters = LogsFilters(
-        levels.toMutableSet(),
-        messageContains,
-        timestampNewerThan,
-        timestampOlderThan
-    )
-
-    fun matches(message: LogMessage): Boolean {
-        if (!levels.contains(message.level)) {
-            return false
-        }
-
-        if (
-            messageContains != null &&
-            !message.message.contains(messageContains!!, ignoreCase = true)
-        ) {
-            return false
-        }
-
-        if (
-            timestampNewerThan != null &&
-            message.timestamp <= timestampNewerThan!!.toEpochMilli()
-        ) {
-            return false
-        }
-
-        if (
-            timestampOlderThan != null &&
-            message.timestamp >= timestampOlderThan!!.toEpochMilli()
-        ) {
-            return false
-        }
-
-        return true
     }
 }

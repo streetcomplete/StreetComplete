@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogMessage
+import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
