@@ -266,6 +266,9 @@
     <!-- pharmacy dispensing -->
     <string name="quest_is_pharmacy_dispensing_title">Is this pharmacy dispensing all prescription drugs?</string>
 
+    <!-- piste lit -->
+    <string name="quest_piste_lit_title">"Is this piste lit here?"</string>
+
     <!-- poi quests -->
     <string name="quest_poi_seating_title">POI: Seating</string>
     <string name="default_disabled_msg_poi_bench">This \"quest\" shows POIs like benches or picnic tables as brown dots. Click the dot to show details and other answers.</string>
