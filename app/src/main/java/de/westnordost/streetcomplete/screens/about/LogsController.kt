@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.screens.about
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsDao
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
-import java.util.concurrent.CopyOnWriteArrayList
 
 class LogsController(private val logsDao: LogsDao) {
 
@@ -13,7 +13,7 @@ class LogsController(private val logsDao: LogsDao) {
         fun onAdded(message: LogMessage)
     }
 
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     fun getLogs(
         levels: Set<LogLevel> = LogLevel.values().toSet(),
