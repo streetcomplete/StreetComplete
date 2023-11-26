@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.logs.Log
 import org.koin.android.ext.android.inject
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing

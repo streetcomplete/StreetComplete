@@ -295,7 +295,7 @@ quest/
     building.svg
     building_construction.svg
     building_height.svg
-	building_inside.svg
+    building_inside.svg
     building_levels.svg
     building_underground.svg
     bus.svg                          modified from Twemoji: U+1F68D
@@ -310,6 +310,7 @@ quest/
     car_air_compressor.svg
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
+    caravan.svg
     card.svg
     cash.svg
     check.svg
@@ -323,7 +324,7 @@ quest/
     fee.svg
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
-	fire.svg
+    fire.svg
     fire_hydrant.svg
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
@@ -544,6 +545,10 @@ royal cypher/
     GVIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_George_VI_of_Great_Britain.svg (adapted)
     Scottish_Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
     VR.svg                Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
+
+sanitary dump station/
+    sign1.svg
+    sign2.svg
 
 service_building
 	gas.svg    CC0      fire.svg

@@ -5,6 +5,7 @@ import io.requery.android.database.sqlite.SQLiteDatabase
 import io.requery.android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
+import de.westnordost.streetcomplete.data.logs.LogsTable
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.EditElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
@@ -102,6 +103,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
         // quest specific tables
         db.execSQL(WayTrafficFlowTable.CREATE)
+
+        // logs
+        db.execSQL(LogsTable.CREATE)
+        db.execSQL(LogsTable.INDEX_CREATE)
 
         // external source and osmose tables (get created in init as well, but apparently may still cause issues)
         db.execSQL(ExternalSourceQuestTables.CREATE_HIDDEN)
@@ -236,10 +241,14 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
             db.execSQL(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
         }
+        if (oldVersion <= 11 && newVersion > 11) {
+            db.execSQL(LogsTable.CREATE)
+            db.execSQL(LogsTable.INDEX_CREATE)
+        }
     }
 }
 
-private const val DB_VERSION = 11
+private const val DB_VERSION = 12
 
 private fun SQLiteDatabase.renameQuest(old: String, new: String) {
     renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)

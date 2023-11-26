@@ -21,10 +21,10 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
-import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import org.koin.android.ext.android.inject

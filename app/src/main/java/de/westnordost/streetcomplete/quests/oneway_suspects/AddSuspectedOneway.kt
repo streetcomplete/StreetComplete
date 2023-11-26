@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
-import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlin.math.hypot
 
 class AddSuspectedOneway(

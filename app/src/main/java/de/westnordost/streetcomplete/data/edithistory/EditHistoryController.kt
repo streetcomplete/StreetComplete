@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
-import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.logs.Log
 import java.util.TreeSet
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */

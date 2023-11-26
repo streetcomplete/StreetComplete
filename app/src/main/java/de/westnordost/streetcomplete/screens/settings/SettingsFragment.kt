@@ -44,7 +44,6 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
-import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
@@ -149,7 +148,8 @@ class SettingsFragment :
             true
         }
 
-        findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
+        // todo: remove pref and related strings
+/*        findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
             var reversed = false
             var filter = "" // todo: separate filter by level or tag?
             var maxLines = 200
@@ -222,7 +222,7 @@ class SettingsFragment :
             d.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
 
             true
-        }
+        }*/
 
         findPreference<Preference>("debug")?.isVisible = BuildConfig.DEBUG
 
@@ -340,14 +340,15 @@ class SettingsFragment :
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    // todo: remove
+/*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode != Activity.RESULT_OK || data == null || requestCode != REQUEST_CODE_LOG)
             return
         val uri = data.data ?: return
         activity?.contentResolver?.openOutputStream(uri)?.use { os ->
             os.bufferedWriter().use { it.write(Log.getLog().joinToString("\n")) }
         }
-    }
+    }*/
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesController.clear()

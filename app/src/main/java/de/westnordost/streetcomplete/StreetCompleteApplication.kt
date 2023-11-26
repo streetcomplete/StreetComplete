@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
+import de.westnordost.streetcomplete.data.logs.logsModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -56,12 +57,14 @@ import de.westnordost.streetcomplete.screens.settings.oldQuestNames
 import de.westnordost.streetcomplete.screens.settings.renameUpdateQuests
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.Log
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.AndroidLogger
+import de.westnordost.streetcomplete.util.logs.DatabaseLogger
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -77,6 +80,7 @@ import java.util.concurrent.TimeUnit
 class StreetCompleteApplication : Application() {
 
     private val preloader: Preloader by inject()
+    private val databaseLogger: DatabaseLogger by inject()
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
@@ -104,6 +108,7 @@ class StreetCompleteApplication : Application() {
                 appModule,
                 createdElementsModule,
                 dbModule,
+                logsModule,
                 downloadModule,
                 editHistoryModule,
                 elementEditsModule,
@@ -134,6 +139,8 @@ class StreetCompleteApplication : Application() {
                 externalSourceModule,
             )
         }
+
+        setLoggerInstances()
 
         applicationScope.launch {
             editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
@@ -251,6 +258,11 @@ class StreetCompleteApplication : Application() {
     private fun setDefaultTheme() {
         val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, getDefaultTheme())!!)
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+    }
+
+    private fun setLoggerInstances() {
+        Log.instances.add(AndroidLogger())
+        Log.instances.add(databaseLogger)
     }
 
     private fun enqueuePeriodicCleanupWork() {

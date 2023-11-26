@@ -5,10 +5,19 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -20,6 +29,7 @@ import java.util.Locale
  *  on next startup */
 class CrashReportExceptionHandler(
     private val appCtx: Context,
+    private val logsController: LogsController,
     private val mailReportTo: String,
     private val crashReportFile: String
 ) : Thread.UncaughtExceptionHandler {
@@ -47,24 +57,21 @@ class CrashReportExceptionHandler(
         }
     }
 
-    fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, e: Exception) {
-        askUserToSendErrorReport(activityCtx, titleResourceId, reportText(e, null))
+    fun askUserToSendErrorReport(activityCtx: AppCompatActivity, @StringRes titleResourceId: Int, e: Exception) {
+        activityCtx.lifecycleScope.launch {
+            val reportText = withContext(Dispatchers.IO) { createErrorReport(e, null) }
+            askUserToSendErrorReport(activityCtx, titleResourceId, reportText)
+        }
     }
 
-    private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, error: String?) {
-        val report = """
-        Describe how to reproduce it here:
-
-
-
-        $error
-        """.trimIndent()
+    private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, reportText: String?) {
+        val mailText = "Describe how to reproduce it here:\n\n\n\n$reportText"
 
         AlertDialog.Builder(activityCtx)
             .setTitle(activityCtx.resources.getString(titleResourceId).replace("StreetComplete", "SCEE"))
             .setMessage(R.string.crash_message)
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
-                activityCtx.sendEmail(mailReportTo, "Error Report", report)
+                activityCtx.sendEmail(mailReportTo, "Error Report", mailText)
             }
             .setNegativeButton(android.R.string.cancel) { _, _ ->
                 activityCtx.toast("\uD83D\uDE22")
@@ -73,35 +80,40 @@ class CrashReportExceptionHandler(
             .show()
     }
 
-    private fun reportText(e: Throwable, t: Thread?): String {
+    override fun uncaughtException(thread: Thread, error: Throwable) {
+        val report = createErrorReport(error, thread)
+
+        writeCrashReportToFile(report)
+        defaultUncaughtExceptionHandler!!.uncaughtException(thread, error)
+    }
+
+    private fun createErrorReport(error: Throwable, thread: Thread?): String {
         val stackTrace = StringWriter()
-        val logLines = Log.getLog()
-        val last100WithoutQuestCreation = mutableListOf<String>()
-        for (line in logLines.asReversed()) {
-            if (last100WithoutQuestCreation.size >= 100) break
-            if (line.tag == "OsmQuestController" && line.message.contains("Found") && line.message.contains(" quests in ")) continue
-            last100WithoutQuestCreation.add(line.toString())
+        error.printStackTrace(PrintWriter(stackTrace))
+
+        val logText = readLogFromDatabase()
+
+        var report = ""
+
+        if (thread != null) {
+            report += "Thread: ${thread.name}"
         }
-        e.printStackTrace(PrintWriter(stackTrace))
-        return """
-        Thread: ${t?.name ?: "unknown"}
+
+        report += """
         App version: ${BuildConfig.VERSION_NAME}
         Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
         Locale: ${Locale.getDefault()}
+
         Stack trace:
-$stackTrace
 
-        Last log before crash:
-        ${last100WithoutQuestCreation.reversed().joinToString("\n")}
-
-        Log warnings and errors:
-        ${logLines.filter { it.level == 'E' || it.level == 'W' }.joinToString("\n")}
         """.trimIndent()
-    }
 
-    override fun uncaughtException(t: Thread, e: Throwable) {
-        writeCrashReportToFile(reportText(e, t))
-        defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
+        report += stackTrace
+
+        report += "\nLog:\n"
+        report += logText
+
+        return report
     }
 
     private fun writeCrashReportToFile(text: String) {
@@ -123,5 +135,14 @@ $stackTrace
 
     private fun deleteCrashReport() {
         appCtx.deleteFile(crashReportFile)
+    }
+
+    private fun readLogFromDatabase(): String {
+        val newLogTimestamp =
+            nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
+
+        return logsController
+            .getLogs(newerThan = newLogTimestamp)
+            .format()
     }
 }

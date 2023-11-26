@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.util.Log
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
