@@ -25,7 +25,7 @@
     <LinearLayout
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/background_maxspeed_sign_no_frame_small"
+        android:background="@drawable/background_maxspeed_sign_no_frame_small_yellow"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:paddingTop="8dp"
