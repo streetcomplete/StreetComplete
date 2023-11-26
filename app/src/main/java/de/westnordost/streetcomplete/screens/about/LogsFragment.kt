@@ -97,15 +97,14 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
     }
 
     private fun onClickShare() = viewLifecycleScope.launch {
-        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-            val logText = getLogs().format()
-            val logTimestamp = LocalDateTime.now().toString()
-            val logTitle =
-                "${BuildConfig.APPLICATION_ID}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
+        val logText = getLogs().format()
+        val logTimestamp = LocalDateTime.now().toString()
+        val logTitle = "${BuildConfig.APPLICATION_ID}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
 
-            putExtra(Intent.EXTRA_TEXT, logText)
-            putExtra(Intent.EXTRA_TITLE, logTitle)
-            type = "text/plain"
+        val shareIntent = Intent(Intent.ACTION_SEND).also {
+            it.putExtra(Intent.EXTRA_TEXT, logText)
+            it.putExtra(Intent.EXTRA_TITLE, logTitle)
+            it.type = "text/plain"
         }
 
         startActivity(Intent.createChooser(shareIntent, null))
