@@ -415,7 +415,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_bungalow">"Bâtiment de bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
-    <string name="quest_buildingType_commercial_generic_description">"Bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
+    <string name="quest_buildingType_commercial_generic_description">"bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
@@ -1092,7 +1092,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_smoking_separated">"Seulement dans des zones séparées"</string>
     <string name="quest_smoking_yes">"Oui, partout"</string>
     <string name="quest_seating_name_title">"Quel type d’accueil propose ce restaurant ?"</string>
-    <string name="quest_seating_takeaway">"Pas d'accueil (seulement à emporter)"</string>
+    <string name="quest_seating_takeaway">"Pas d’accueil (seulement à emporter)"</string>
     <string name="quest_seating_indoor_only">"En intérieur seulement"</string>
     <string name="quest_seating_outdoor_only">"En terrasse seulement"</string>
     <string name="quest_seating_indoor_and_outdoor">"En intérieur et en terrasse"</string>
@@ -1352,4 +1352,6 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="inside">"à l’intérieur"</string>
     <string name="outside">"à l’extérieur"</string>
     <string name="quest_recycling_type_food_waste">"Déchets alimentaires"</string>
+    <string name="quest_defibrillator_location">"Où se trouve ce défibrillateur ?"</string>
+    <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la salle des porteurs »)."</string>
 </resources>

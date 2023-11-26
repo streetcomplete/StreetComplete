@@ -1311,7 +1311,7 @@ Jetzt verschieben?"</string>
     <string name="overlay_surface">"Oberflächen"</string>
     <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Fuß- und Fahrradweg"</string>
     <string name="quest_crossing_title2">"Ist hier ein Fußgängerüberweg?"</string>
-    <string name="quest_crossing_yes">"Ja (der Bordstein ist z.B. abgesenkt oder es gibt Markierungen)"</string>
+    <string name="quest_crossing_yes">"Ja (der Bordstein ist z. B. abgesenkt oder es gibt Markierungen)"</string>
     <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
     <string name="quest_hairdresser_title">"Wer sind die Kunden dieses Friseurs?"</string>
@@ -1353,4 +1353,6 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="inside">"im Gebäude"</string>
     <string name="outside">"draußen"</string>
     <string name="quest_recycling_type_food_waste">"Essensreste"</string>
+    <string name="quest_defibrillator_location">"Wo befindet sich dieser Defibrillator?"</string>
+    <string name="quest_defibrillator_location_description">"Bitte beschreibe die Position kurz und präzise (z. B. „in der Empfangshalle“)."</string>
 </resources>

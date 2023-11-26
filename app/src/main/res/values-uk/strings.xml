@@ -1345,4 +1345,6 @@
     <string name="inside">"всередині"</string>
     <string name="outside">"зовні"</string>
     <string name="quest_recycling_type_food_waste">"Харчові відходи"</string>
+    <string name="quest_defibrillator_location">"Де розташований цей дефібрилятор?"</string>
+    <string name="quest_defibrillator_location_description">"Будь ласка, надайте короткий опис його розташування (наприклад, «у кімнаті портьє»)."</string>
 </resources>

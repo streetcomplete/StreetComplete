@@ -1318,4 +1318,34 @@ Presunúť ju teraz?"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
     <string name="lane_narrowing_traffic_calming_choked_island">"Rozšírenie chodníka + dopravný ostrovček"</string>
     <string name="lane_narrowing_traffic_calming_none">"Žiadny zúžený pruh tu nie je"</string>
+    <string name="quest_tactilePaving_title_steps">"Je v hornej a dolnej časti týchto schodov hmatová dlažba?"</string>
+    <string name="quest_tactilePaving_steps_top">"Iba na vrchole"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Iba v dolnej časti"</string>
+    <string name="overlay_addresses_no_entrance">"Nie je to vstup..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Cesta na spoločné používanie"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"zdieľaná cesta v oboch smeroch"</string>
+    <string name="overlays_tutorial_title">"Prekrytie"</string>
+    <string name="overlays_tutorial_intro">"Našli ste nový spôsob úpravy údajov!"</string>
+    <string name="overlays_tutorial_display">"Každé prekrytie zobrazuje jeden druh údajov, napríklad obchody, alebo povrchy ulíc.
+
+Údaje sú zvýraznené rôznymi farbami, aby ste mali dobrý prehľad o tom, čo bolo doteraz zaznamenané.
+Chýbajúce údaje sú vždy zobrazené červenou farbou."</string>
+    <string name="overlays_tutorial_edit">"Ťuknutím na ktorýkoľvek zvýraznený údaj ho zobrazíte, alebo upravíte. Môžete tiež rozdeliť spôsoby, alebo nahlásiť poznámky, podobne ako pri úlohách.
+
+Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu zobrazeného kríža, ako napríklad prekrytie adries."</string>
+    <string name="quest_crossing_kerb_height_title">"Aký vysoký je obrubník na tejto križovatke?"</string>
+    <string name="quest_maxheight_sign_title">"Aký výškový limit je tu uvedený?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Aký výškový limit je uvedený pod mostom?"</string>
+    <string name="quest_leave_new_note_as_answer">"V takom prípade musíte zanechať poznámku, v ktorej vysvetlíte situáciu."</string>
+    <string name="quest_drinking_water_type_title2">"Je tu k dispozícii pitná voda? Ak áno, aký je jej zdroj?"</string>
+    <string name="quest_is_amenity_inside_title">"Je to vo vnútri budovy?"</string>
+    <string name="quest_bbq_fuel_title">"Na aké palivo je tento gril?"</string>
+    <string name="quest_bbq_fuel_wood">"Drevo"</string>
+    <string name="quest_bbq_fuel_electric">"Elektrické"</string>
+    <string name="quest_bbq_fuel_charcoal">"Drevené uhlie"</string>
+    <string name="inside">"vnútri"</string>
+    <string name="outside">"vonku"</string>
+    <string name="quest_recycling_type_food_waste">"Plytvanie potravinami"</string>
+    <string name="quest_defibrillator_location">"Kde sa tento defibrilátor nachádza?"</string>
+    <string name="quest_defibrillator_location_description">"Uveďte stručný opis jeho polohy (napr. \"v salóniku vrátnika\")."</string>
 </resources>

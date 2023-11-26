@@ -1353,4 +1353,6 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="inside">"inomhus"</string>
     <string name="outside">"utomhus"</string>
     <string name="quest_recycling_type_food_waste">"Matavfall"</string>
+    <string name="quest_defibrillator_location">"Var finns denna defibrillator?"</string>
+    <string name="quest_defibrillator_location_description">"Ange en kort och tydlig beskrivning av var den finns (t.ex. \"på entréplan i trapphuset\")."</string>
 </resources>

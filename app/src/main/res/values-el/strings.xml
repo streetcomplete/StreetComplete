@@ -1329,4 +1329,16 @@
     <string name="quest_crossing_kerb_height_title">"Ποιό είναι το ύψος των κρασπέδων σε αυτήν τη διάβαση;"</string>
     <string name="quest_maxheight_sign_title">"Ποιο όριο ύψους αναφέρεται εδώ;"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Ποιο όριο ύψους αναφέρεται κάτω από τη γέφυρα;"</string>
+    <string name="quest_leave_new_note_as_answer">"Σε αυτή την περίπτωση, θα πρέπει να αφήσετε ένα σημείωμα στο οποίο εξηγείτε την κατάσταση."</string>
+    <string name="quest_drinking_water_type_title2">"Υπάρχει πόσιμο νερό εδώ; Αν ναι, ποια είναι η πηγή του;"</string>
+    <string name="quest_is_amenity_inside_title">"Είναι αυτό μέσα σε κτίριο;"</string>
+    <string name="quest_bbq_fuel_title">"Από τι τροφοδοτείται αυτή η ψησταριά;"</string>
+    <string name="quest_bbq_fuel_wood">"Ξύλο"</string>
+    <string name="quest_bbq_fuel_electric">"Ρεύμα"</string>
+    <string name="quest_bbq_fuel_charcoal">"Ξυλοκάρβουνο"</string>
+    <string name="inside">"μέσα"</string>
+    <string name="outside">"έξω"</string>
+    <string name="quest_recycling_type_food_waste">"Απόβλητα τροφίμων"</string>
+    <string name="quest_defibrillator_location">"Πού βρίσκεται αυτός ο απινιδωτής;"</string>
+    <string name="quest_defibrillator_location_description">"Παρακαλούμε δώστε μια συνοπτική περιγραφή της θέσης του (π.χ. \"στο σαλόνι του αχθοφόρου\")."</string>
 </resources>
