@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -88,6 +89,10 @@ class StreetCompleteApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // got a crash report where prefs were not initialized, not sure how this can happen for a
+        // single person and not for everyone, but this should help
+        preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
 
         deleteDatabase(ApplicationConstants.OLD_DATABASE_NAME)
 

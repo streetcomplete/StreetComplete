@@ -2,5 +2,5 @@
 - Add barrier height quest, by wielandb
 - Add quest for map type and map size, by wielandb
 - Upgrade and extend service building quest, by mcliquid
-- Update translations, added Danish
+- Update translations (thanks to gallegonovato, mcliquid, someTr, m-martin), added Danish (thanks to ERYpTION)
 - Bug fixes and minor improvements

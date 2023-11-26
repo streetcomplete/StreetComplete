@@ -2,10 +2,14 @@ package de.westnordost.streetcomplete.quests.piste_lit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.isWinter
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddPisteLit : OsmFilterQuestType<Boolean>() {
@@ -23,6 +27,13 @@ class AddPisteLit : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:piste:lit"
     override val icon = R.drawable.ic_quest_piste_lit
     override val defaultDisabledMessage = R.string.default_disabled_msg_ee
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        return if (isWinter(mapData.nodes.first().position)) mapData.filter(filter).asIterable()
+        else emptyList()
+    }
+
+    override fun isApplicableTo(element: Element) = if (filter.matches(element)) null else false
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_piste_lit_title
 
