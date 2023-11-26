@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="100dp"
+    android:layout_width="112dp"
     android:layout_height="wrap_content"
     android:background="@drawable/background_rectangular_sign_white"
     android:gravity="center">
@@ -28,10 +28,10 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/traffic_black"
-        android:maxLength="2"
+        android:maxLength="3"
         android:textSize="42dp"
         android:layout_marginTop="-12dp"
-        tools:text="80"/>
+        tools:text="999"/>
 
     <Spinner
         android:id="@+id/speedUnitSelect"
