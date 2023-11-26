@@ -1,21 +1,28 @@
 package de.westnordost.streetcomplete.quests.piste_difficulty
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
+import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
 import de.westnordost.streetcomplete.util.isWinter
 
-class AddPisteDifficulty : OsmFilterQuestType<PisteDifficulty>() {
+class AddPisteDifficulty : OsmElementQuestType<PisteDifficulty> {
 
-    override val elementFilter = """
+    val elementFilter = """
         ways, relations with
           piste:type ~ downhill|nordic
           and !piste:difficulty
     """
+    private val filter by lazy { elementFilter.toElementFilterExpression() }
+
     override val changesetComment = "Add piste difficulty"
     override val wikiLink = "Key:piste:difficulty"
     override val icon = R.drawable.ic_quest_piste_difficulty
@@ -45,4 +52,9 @@ class AddPisteDifficulty : OsmFilterQuestType<PisteDifficulty>() {
     override fun applyAnswerTo(answer: PisteDifficulty, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["piste:difficulty"] = answer.osmValue
     }
+
+    override val hasQuestSettings: Boolean = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        fullElementSelectionDialog(context, prefs, this.getPrefixedFullElementSelectionPref(prefs), R.string.quest_settings_element_selection, elementFilter)
 }

@@ -1,22 +1,29 @@
 package de.westnordost.streetcomplete.quests.piste_ref
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
+import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
 import de.westnordost.streetcomplete.util.isWinter
 
-class AddPisteRef : OsmFilterQuestType<PisteRefAnswer>() {
+class AddPisteRef : OsmElementQuestType<PisteRefAnswer> {
 
-    override val elementFilter = """
+    private val elementFilter = """
         ways, relations with
           piste:type = downhill
           and !ref
           and !piste:ref
     """
+    private val filter by lazy { elementFilter.toElementFilterExpression() }
+
     override val changesetComment = "Survey piste ref"
     override val wikiLink = "Key:piste:ref"
     override val icon = R.drawable.ic_quest_piste_ref
@@ -42,4 +49,9 @@ class AddPisteRef : OsmFilterQuestType<PisteRefAnswer>() {
             is PisteConnection ->   tags["piste:type"] = "connection"
         }
     }
+
+    override val hasQuestSettings: Boolean = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        fullElementSelectionDialog(context, prefs, this.getPrefixedFullElementSelectionPref(prefs), R.string.quest_settings_element_selection, elementFilter)
 }
