@@ -80,6 +80,12 @@
     <color name="team_10">#AA335D</color>
     <color name="team_11">#655555</color>
 
+    <color name="log_verbose">#666</color>
+    <color name="log_debug">#2196f3</color>
+    <color name="log_info">#4caf50</color>
+    <color name="log_warning">#ff9800</color>
+    <color name="log_error">#f44336</color>
+
     <color name="star_of_david">#22f</color>
 
     <!-- for fading out images -->

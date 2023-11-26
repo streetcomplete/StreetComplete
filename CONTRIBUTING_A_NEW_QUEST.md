@@ -380,7 +380,7 @@ See "logcat" (bottom left area of the screen) to see stacktrace or logging messa
 ## Adding logs
 
 ```kotlin
-import android.util.Log
+import de.westnordost.streetcomplete.util.logs.Log
 
 Log.w("Unique string for easy grepping in logcat", "Message with whatever you need like #${someVariable.itsProperty}")
 ```

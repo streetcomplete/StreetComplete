@@ -1713,5 +1713,15 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
+    <string name="about_title_logs">Logs (%1$d)</string>
+    <string name="about_summary_logs">for use in error reports</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_share">Share logs</string>
+    <string name="about_title_show_logs">Show logs</string>
+    <string name="label_log_level">Level</string>
+    <string name="label_log_newer_than">From</string>
+    <string name="label_log_older_than">To</string>
+    <string name="label_log_message_contains">Message contains</string>
+    <string name="title_logs_filters">Filter messages</string>
 
 </resources>
