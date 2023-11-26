@@ -14,13 +14,16 @@ import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -32,7 +35,12 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
     private val binding by viewBinding(FragmentLogsBinding::bind)
     private val adapter = LogsAdapter()
 
-    private var filters = LogsFilters()
+    private var filters: LogsFilters
+
+    init {
+        val startOfToday = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
+        filters = LogsFilters(timestampNewerThan = startOfToday)
+    }
 
     private val logsControllerListener = object : LogsController.Listener {
         override fun onAdded(message: LogMessage) { viewLifecycleScope.launch { onMessageAdded(message) } }
