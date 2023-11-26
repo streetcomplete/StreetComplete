@@ -88,7 +88,7 @@ class LogsFiltersDialog(
 
     private fun createLogLevelsChips() {
         LogLevel.values().forEach { level ->
-            val chip = LogLevelFilterChip(level, context)
+            val chip = createLogLevelChip(context, level)
 
             chip.isChecked = filters.levels.contains(level)
             chip.isChipIconVisible = !chip.isChecked
@@ -150,25 +150,22 @@ class LogsFiltersDialog(
         }
 }
 
-@SuppressLint("ViewConstructor")
-class LogLevelFilterChip(level: LogLevel, context: Context) : Chip(context) {
-    init {
-        val drawable = ChipDrawable.createFromAttributes(
-            context,
-            null,
-            0,
-            com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
-        )
+private fun createLogLevelChip(context: Context, level: LogLevel) = Chip(context).apply {
+    val drawable = ChipDrawable.createFromAttributes(
+        context,
+        null,
+        0,
+        com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
+    )
 
-        setChipDrawable(drawable)
+    setChipDrawable(drawable)
 
-        setCheckedIconResource(R.drawable.ic_check_circle_24dp)
-        checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
+    checkedIcon = context.getDrawable(R.drawable.ic_check_circle_24dp)?.mutate()
+    checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
 
-        setChipIconResource(R.drawable.ic_circle_outline_24dp)
-        chipIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
+    chipIcon = context.getDrawable(R.drawable.ic_circle_outline_24dp)?.mutate()
+    chipIconTint = ColorStateList.valueOf(ContextCompat.getColor(context, level.colorId))
 
-        text = level.name
-        TextViewCompat.setTextAppearance(this, level.styleResId)
-    }
+    text = level.name
+    TextViewCompat.setTextAppearance(this, level.styleResId)
 }
