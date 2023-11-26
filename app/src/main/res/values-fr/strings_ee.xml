@@ -402,4 +402,16 @@
     <string name="quest_name_brand">Possède une marque…</string>
     <string name="restriction_overlay_relation_incomplete">La relation est incomplète, le téléchargement des environs est nécessaire</string>
     <string name="quest_generic_surface_button">Réponses génériques de surfaces</string>
+    <string name="quest_brewery_title">Quelles marques de bière sont servies ici \?</string>
+    <string name="quest_brewery_is_not_available">Aucune bière n\'est vendue ici</string>
+    <string name="quest_brewery_is_various">De nombreuses marques de bière sont servies ici</string>
+    <string name="quest_brewery_add_more">Ajoutez une autre brasserie</string>
+    <string name="quest_barrier_height_title">Quelle est la hauteur de cette barrière \?</string>
+    <string name="quest_utility_telecom">Télécommunication</string>
+    <string name="quest_service_building_telecom_exchange">Nœud de raccordement</string>
+    <string name="quest_utility_water">Eau</string>
+    <string name="quest_utility_sewerage">Eaux usées</string>
+    <string name="quest_utility_gas">Gaz naturel</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Oui</string>
+    <string name="quest_utility_power">Électricité</string>
 </resources>

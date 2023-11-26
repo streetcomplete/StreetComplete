@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_hide_notes_title">Skjul noter fra bestemte brugere</string>
+    <string name="pref_show_gpx_button_title">Vis GPX-note-knap</string>
+    <string name="pref_save_file_error">Fejl ved lagring af fil</string>
+    <string name="pref_swap_gpx_note_button">Byt om på OSM- og GPX-noteknapperne</string>
+    <string name="pref_create_custom_quest_title">Gør det muligt at oprette brugerdefinerede opgaver</string>
+    <string name="pref_read_log_title">Log-læser</string>
+    <string name="pref_3d_buildings_title">Vis 3D-bygninger</string>
+    <string name="pref_save_gpx">Hent GPX-noter og vedhæftede fotos og spor</string>
+    <string name="pref_save_photos_title">Gem fotos, der bruges til noter</string>
+    <string name="pref_hide_notes_hint">Brug komma til at adskille brugernavne eller ID\'er</string>
+    <string name="pref_hide_keyboard_summary">Skjuler tastaturet, når det er åbent, før noten faktisk er oprettet (for at gøre det muligt at se positionen igen)</string>
+    <string name="pref_category_mods">SCEE indstillinger</string>
+    <string name="pref_create_custom_quest_summary">…som alternativ til at efterlade en note. Dette kan bruges som en lokalt gemt note, der er synlig på kortet. Bemærk, at du skal aktivere brugerdefinerede opgaver.</string>
+    <string name="pref_files_not_found">Ingen filer fundet</string>
+    <string name="pref_get_photos_title">Hent billeder i fuld størrelse</string>
+    <string name="pref_quest_geometries_summary">Fremhæv ways og områder, der har opgaver</string>
+    <string name="pref_quest_geometries_title">Vis geometrier for opgaver</string>
+    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og muligheder for at
+\n <li>redigere raw tags</li>
+\n <li>flytte punkter der er en del af veje eller relationer</li>
+\n <li>slette ethvert fritflydende punkt</li>
+\n <li>redigere elementer, der skal blokeres af en note</li>
+\n <li>tilføje fritflydende punkter overalt</li>
+\n <li>ændre elementvalg for opgaver</li>
+\n
+\n Det er stadig mindre, end de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer..
+\n Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør.. </string>
+    <string name="pref_expert_mode_title">Ekspert-tilstand</string>
+    <string name="pref_expert_mode_summary">Aktivér avancerede redigeringsfunktioner</string>
+    <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af noter, uden at slette EXIF-data</string>
+    <string name="pref_way_direction">Vis retning af ways</string>
+    <string name="pref_hide_keyboard_title">Skjul tastaturet før oprettelse af note</string>
+    <string name="pref_screen_notes">Noter</string>
+    <string name="pref_read_log_save">Gem fuld log til fil</string>
+    <string name="pref_way_direction_summary">Viser pile på fremhævede linjer, når du åbner en opgave. F.eks. nyttigt når du tilføjer ensretning.</string>
+    <string name="pref_show_gpx_button_summary">I modsætning til OSM-noter vil tilføjelse af en GPX ikke skjule nogen opgaver på det pågældende sted</string>
+    <string name="pref_hide_notes_message">Indtast brugernavne eller ID\'er, der skal ignoreres</string>
+    <string name="pref_manual_download_cache_title">Download altid data igen</string>
+    <string name="pref_delete_old_data_after_summary">%d dage</string>
+    <string name="pref_import">Importindstillinger</string>
+    <string name="pref_update_local_statistics">Opdater statistik ved upload</string>
+    <string name="pref_main_menu_switch_presets_title">Skift knap til forudindstilling i hovedmenuen</string>
+    <string name="pref_offset_fix_summary">De findes for at hvide prikker skjules af opgavenåle</string>
+    <string name="pref_recent_answers_first_min_lines_message">Flyt seneste svar frem forrest, hvis svarformularen har mere end dette antal linjer med billeder</string>
+    <string name="pref_custom_title">Indlæs brugerdefineret opgave-fil</string>
+    <string name="pref_show_next_quest_summary">Vis yderligere opgaver for samme element straks efter løsning</string>
+    <string name="pref_gpx_track_download">Download område dækket af GPX-spor</string>
+    <string name="pref_tile_source_message">Flise-URL skal indeholder {x}, {y} og {z}</string>
+    <string name="pref_recent_answers_first_min_lines_summary">Hvis formularen har mere end %d linje(r)</string>
+    <string name="pref_main_menu_grid">Vis alle hovedmenupunkter som gitter</string>
+    <string name="import_presets_overlays_add">Tilføj</string>
+    <string name="pref_trees_title">Indlæs fil med træopgaver</string>
+    <string name="pref_select_first_edit_summary">Giver mulighed for hurtigere annullering, men flytter kameraet automatisk</string>
+    <string name="pref_delete_old_data_after">Slet gamle data efter</string>
+    <string name="pref_show_solved_animation_summary">Dette styrer også lyden for opgaveløsning</string>
+    <string name="import_error">Importfejl</string>
+    <string name="import_export_presets">Forudindstillinger</string>
+    <string name="pref_show_nearby_quests_summary">Gør det muligt at skifte mellem nærliggende opgaver, når der vises en opgaveformular</string>
+    <string name="import_export_hidden_quests">Skjulte opgaver</string>
+    <string name="show_nearby_quests_distance">Vis opgaver inden for denne afstand (begrænset til 10 meter)</string>
+    <string name="pref_offset_fix_title">Fjern forskydninger af opgavemarkører</string>
+    <string name="pref_tree_custom_quest_summary">Se meddelelsen ved aktivering af opgave for detaljer</string>
+    <string name="pref_advanced_resurvey_title">Avanceret genundersøgelse</string>
+    <string name="export_warning_db_version">Advarsel: databaseversion ukendt, import fungerer muligvis ikke. Bed om at få appen opdateret.</string>
+    <string name="import_presets_overlays_replace">Erstat</string>
+    <string name="show_nearby_quests_even_hidden">Vis alle typer og skjulte opgaver</string>
+    <string name="pref_volume_zoom_summary">Zoom ved hjælp af lydstyrkeknapperne</string>
+    <string name="pref_auto_download_title">Auto download</string>
+    <string name="pref_show_solved_animation">Vis animation efter løsning af en opgave</string>
+    <string name="pref_use_sd">Brug eksternt SD-kort til lagring af kortfliser</string>
+    <string name="pref_use_sd_summary">Hvis du ændrer denne indstilling, flyttes dataene, hvilket kan tage et stykke tid</string>
+    <string name="pref_gpx_track_loading_error">Fejl ved indlæsning af GPX-sporfil</string>
+    <string name="pref_show_quick_settings_title">Vis knappen til hurtige indstillinger</string>
+    <string name="pref_show_nearby_quests_title">Vis opgaver i nærheden</string>
+    <string name="pref_disable_navigation_mode_summary">Deaktiverer den tilstand, der vipper og automatisk roterer kortet</string>
+    <string name="pref_overlay_quick_selector_title">Vis hurtigvælger til overlejring</string>
+    <string name="pref_gpx_track_enable">Vis GPX-spor</string>
+    <string name="pref_gpx_track_title">Vis GPX-spor fra fil</string>
+    <string name="pref_show_next_quest_title">Vis næste opgave med det samme</string>
+    <string name="show_nearby_quests_visible">Vis kun aktiverede opgavetyper</string>
+    <string name="pref_volume_zoom_title">Zoom med lydstyrkeknap</string>
+    <string name="pref_tile_source_hide_labels">Skjul etiketter</string>
+    <string name="moving">Flytter fliser…</string>
+    <string name="pref_select_first_edit_title">Vælg første redigering ved åbning af historik</string>
+    <string name="pref_hide_button_summary">Klik skjuler opgave midlertidigt, langt klik skjuler permanent</string>
+    <string name="pref_recent_answers_first_min_lines">Flyt de seneste svar frem forrest</string>
+    <string name="tree_custom_quest_import_export_message">Hent den aktuelt brugte fil, eller opret en ny\? Tjek den tilsvarende \'Aktivér opgave\'-meddelelse for detaljer.</string>
+    <string name="show_nearby_quests_all_types">Vis alle opgavetyper</string>
+    <string name="import_export_presets_select">Vælg forudindstillinger til eksport</string>
+    <string name="import_presets_overlays_message">Tilføj importerede, eller erstat eksisterende\? Hvis du vælger erstat, vil alle eksisterende blive fjernet.</string>
+    <string name="pref_manual_download_cache_summary">Hvis deaktiveret, vil data ikke blive downloadet igen ved manuel download, medmindre de er over 12 timer gamle</string>
+    <string name="pref_screen_ui">Brugerflade</string>
+    <string name="pref_delete_old_data_after_message">Fjern downloadede OSM-data, hvis de er ældre end så mange dage</string>
+    <string name="import_error_db_version">Importfejl: ukendt version</string>
+    <string name="pref_screen_data_management">Datahåndtering</string>
+    <string name="pref_export">Eksportindstillinger</string>
+    <string name="pref_search_more_languages_title">Søgemuligheder på flere sprog</string>
+    <string name="pref_gpx_track_download_too_big">Download-området er for stort, download venligst manuelt</string>
+    <string name="pref_caps_word_name_input">Skriv alle ord med stort, når du indtaster navne</string>
+    <string name="pref_auto_download_summary">Download automatisk data i det nærliggende område</string>
+    <string name="tree_custom_quest_import">Opret</string>
+    <string name="show_nearby_quests_disable">Vis ikke nærliggende opgaver</string>
+    <string name="pref_gpx_track_provide">Vælg GPX-fil</string>
+    <string name="pref_screen_quests">Opgaver</string>
+    <string name="pref_hide_button_title">Vis skjul-knap</string>
+    <string name="tree_custom_quest_export">Hent</string>
+    <string name="import_export_custom_overlays">Brugerdefinerede overlejringer</string>
+    <string name="pref_tile_source_title">Flisekilde til satellit- og luftbilleder</string>
+    <string name="pref_update_local_statistics_summary">Deaktivering accelererer upload og stopper præstationsbeskeder</string>
+    <string name="pref_create_node_show_keyboard_title">Vis automatisk tastatur, når du tilføjer et punkt</string>
+    <string name="pref_disable_navigation_mode_title">Deaktivér navigationstilstand</string>
+    <string name="import_export_settings">Andre app-indstillinger</string>
+    <string name="pref_search_more_languages_summary">Egenskabssøgning viser resultater på alle system- og lokalsprog</string>
+    <string name="day_night_priority">Øg prioriteten af opgaver, der passer til de aktuelle dagtimer</string>
+    <string name="advanced_resurvey_title">Indstil dato og nøgler for ny undersøgelse</string>
+    <string name="day_night_visibility">Vis ikke opgaver, der ikke passer til de aktuelle dagtimer</string>
+    <string name="day_night_ignore">Ignorér dagtimer</string>
+    <string name="pref_advanced_resurvey_summary">Fremtving ny undersøgelse af udvalgte tags</string>
+    <string name="advanced_resurvey_message_keys">Undersøg altid disse nøgler igen, hvis der ikke er nogen check date-nøgle. Tjekdatoen vil altid blive tilføjet, når du besvarer relaterede opgaver</string>
+    <string name="advanced_resurvey_message_date">I stedet for at bruge intervaller for ny undersøgelse, så undersøg ovenstående nøgler, hvis kontroldatoen er ældre end:</string>
+    <string name="pref_day_night_title">Filter til dagtimer</string>
+    <string name="pref_read_reverse_button">Vend om</string>
+    <string name="advanced_resurvey_hint_keys">Adskil forskellige nøgler med komma</string>
+    <string name="advanced_resurvey_hint_date">Brug formatet: YYYY-MM-DD</string>
+    <string name="quest_monitor_active_request">Aktiv anmodning om placeringer vil øge batteriforbruget. Når der ikke aktivt anmodes om placeringer, vil placeringer, der er anmodet om af andre apps, stadig blive brugt.</string>
+    <string name="quest_monitor_net">Anmod aktivt om netværksplaceringer\?</string>
+    <string name="quest_settings_reset">Nulstil</string>
+    <string name="quest_monitor_gps">Anmod aktivt om GPS-placeringer\?</string>
+    <string name="quest_settings_per_preset_rescan">For at kunne anvende alle ændrede opgave-indstillinger korrekt, er det nødvendigt at scanne efter opgaver igen.</string>
+    <string name="delete_confirmation_both">Begge</string>
+    <string name="pref_network_interval_title">Interval for opdatering af netværksplacering</string>
+    <string name="restore_dialog_hint">Du kan også manuelt vælge, hvilke opgaver der skal gendannes, ved at trykke længe på fortryd-knappen.</string>
+    <string name="delete_confirmation_data">OSM &amp; opgavedata</string>
+    <string name="pref_hide_overlay_quests">Skjul overlejrings-specifikke opgaver</string>
+    <string name="delete_cache_dialog_message2">Slette alle downloadede kortdata, inklusive opgaver\?
+\nData genopfriskes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
+\nVælg, hvad du vil fjerne.</string>
+    <string name="delete_confirmation_tiles">Kortfliser</string>
+    <string name="theme_dark_contrast">Mørk (øget kontrast)</string>
+    <string name="pref_quest_monitor_summary">Overvåger placering, når appen er i baggrunden, undtagen hvis den er i baggrunden ved hjælp af tilbage-knappen</string>
+    <string name="quest_settings_element_selection">Indstil elementer, der er kvalificerede til denne opgave. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klik her</a> for at åbne info om syntaksen for elementvalg i en browser.</string>
+    <string name="action_scee_quests">Vis kun SCEE-opgaver</string>
+    <string name="pref_interval_message">Opdateringsinterval i sekunder</string>
+    <string name="pref_quest_monitor_download">Downloade data, hvis det er nødvendigt\? Det kan forbruge meget data og batteri, og Android kan slå det fra af batteribesparende årsager.</string>
+    <string name="pref_dynamic_quest_creation_title">Opret opgaver dynamisk</string>
+    <string name="pref_dynamic_quest_creation_summary">Opgaver oprettes, når det viste område indlæses. Lidt langsomt, men anvender straks ændrede opgave-indstillinger.</string>
+    <string name="pref_gps_interval_title">Interval for opdatering af GPS-placering</string>
+    <string name="pref_interval_summary">%d sekunder</string>
+    <string name="resurvey_intervals_even_less_often">Spørg endnu sjældnere</string>
+    <string name="quest_monitor_search_radius_text">Indstil radius for søgning efter opgaver i nærheden. Bemærk, at opgaver med lidt større afstand også kan blive fundet. Steder med dårligere nøjagtighed end denne værdi ignoreres.</string>
+    <string name="pref_quest_monitor_title">Giv besked om nærliggende opgaver</string>
+    <string name="quest_monitor_permission_warning">Tilladelse til baggrundsplacering er påkrævet, for at overvågningen af nærliggende opgaver kan fungere</string>
+    <string name="quest_tree_genus_title">Hvilken slægt eller art tilhører dette træ\?</string>
+</resources>

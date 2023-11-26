@@ -1,0 +1,6 @@
+- Add a bunch of quests by mcliquid: street cabinet type, shelter type, brewery, via ferrata scale, piste ref, piste difficulty, piste lit, trail visibility, barrier locked
+- Add barrier height quest, by wielandb
+- Add quest for map type and map size, by wielandb
+- Upgrade and extend service building quest, by mcliquid
+- Update translations, added Danish
+- Bug fixes and minor improvements
