@@ -1354,4 +1354,9 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="quest_bbq_fuel_wood">"Dřevo"</string>
     <string name="quest_bbq_fuel_electric">"Elektřina"</string>
     <string name="quest_bbq_fuel_charcoal">"Dřevěné uhlí"</string>
+    <string name="inside">"uvnitř"</string>
+    <string name="outside">"venku"</string>
+    <string name="quest_recycling_type_food_waste">"Potravinový odpad"</string>
+    <string name="quest_defibrillator_location">"Kde se tento defibrilátor nachází?"</string>
+    <string name="quest_defibrillator_location_description">"Uveďte prosím výstižný popis jeho pozice (např. „v odpočívárně vrátného“)."</string>
 </resources>

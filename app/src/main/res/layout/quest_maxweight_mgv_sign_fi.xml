@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:background="@drawable/background_generic_prohibition_sign_yellow"
+    android:padding="22dp"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_truck"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center">
+
+        <me.grantland.widget.AutofitLayout
+            android:id="@+id/maxWeightInputContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/maxWeightInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0fff"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:digits="0123456789.,"
+                android:textColor="@color/traffic_black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:minEms="1"
+                android:maxLines="1"
+                tools:text="8"
+                tools:ignore="SpUsage" />
+
+        </me.grantland.widget.AutofitLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="t"
+            android:textColor="@color/traffic_black"
+            android:textSize="24dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage" />
+
+    </LinearLayout>
+
+</LinearLayout>

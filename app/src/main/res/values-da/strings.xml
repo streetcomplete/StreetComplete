@@ -1298,7 +1298,7 @@ Vil du flytte det nu?"</string>
     <string name="street_parking_staggered_on_street">"På vejen i skiftende sider"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delvist på vejen i skiftende sider"</string>
     <string name="quest_traffic_signals_sound_description">"Tip: Hold udkig efter højttalere. Ikke alle lydsignaler kan aktiveres via en knap."</string>
-    <string name="quest_presets_duplicate">"Dublet"</string>
+    <string name="quest_presets_duplicate">"Duplikér"</string>
     <string name="label_block">"blok"</string>
     <string name="quest_address_answer_block">"Ligger inden for en blok…"</string>
     <string name="quest_address_answer_no_block">"Ligger ikke inden for en blok…"</string>
@@ -1343,11 +1343,13 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_leave_new_note_as_answer">"I så fald skal du efterlade en note, hvor du forklarer situationen."</string>
     <string name="quest_drinking_water_type_title2">"Er der adgang til drikkevand her? Hvis ja, hvad er så kilden?"</string>
     <string name="quest_is_amenity_inside_title">"Er dette inde i en bygning?"</string>
-    <string name="quest_bbq_fuel_title">"Hvad drives denne grill af?"</string>
+    <string name="quest_bbq_fuel_title">"Hvilken energikilde bruger denne grill?"</string>
     <string name="quest_bbq_fuel_wood">"Træ"</string>
     <string name="quest_bbq_fuel_electric">"El"</string>
     <string name="quest_bbq_fuel_charcoal">"Kul"</string>
     <string name="inside">"indenfor"</string>
     <string name="outside">"udenfor"</string>
     <string name="quest_recycling_type_food_waste">"Madaffald"</string>
+    <string name="quest_defibrillator_location">"Hvor er denne hjertestarter placeret?"</string>
+    <string name="quest_defibrillator_location_description">"Giv en tydelig og kortfattet beskrivelse af dens placering (f.eks. “ved hovedindgangen til biblioteket“)."</string>
 </resources>

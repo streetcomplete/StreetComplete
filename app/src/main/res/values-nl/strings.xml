@@ -1335,4 +1335,16 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
     <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking staat er op de brug vermeld?"</string>
+    <string name="quest_leave_new_note_as_answer">"In dit geval moet je een notitie achterlaten, waarin je de situatie uitlegt"</string>
+    <string name="quest_drinking_water_type_title2">" Is hier drinkwater beschikbaar? Indien ja, wat is zijn bron?"</string>
+    <string name="quest_is_amenity_inside_title">"Is dit binnen een gebouw?"</string>
+    <string name="quest_bbq_fuel_title">"Waardoor wordt deze grill gevoed?"</string>
+    <string name="quest_bbq_fuel_wood">"Hout"</string>
+    <string name="quest_bbq_fuel_electric">"Elelctriciteit"</string>
+    <string name="quest_bbq_fuel_charcoal">"Houtskool"</string>
+    <string name="inside">"Binnen"</string>
+    <string name="outside">"Buiten"</string>
+    <string name="quest_recycling_type_food_waste">"Voedselresten"</string>
+    <string name="quest_defibrillator_location">"Waar bevindt deze defibrilator zich?"</string>
+    <string name="quest_defibrillator_location_description">"Geef een beknopte beschrijving van de locatie (bijv. \"in de portiersloge\")."</string>
 </resources>

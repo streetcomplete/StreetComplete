@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"تنظیمات"</string>
-    <string name="oauth_communication_error">"سرور احراز هویت در دسترس نیست"</string>
-    <string name="oauth_failed_permissions">"خطای مجوز: همهٔ مجوزهای فهرست‌شده باید داده شود"</string>
+    <string name="oauth_communication_error">"سرور احراز هویت در‌دسترس نیست"</string>
+    <string name="oauth_failed_permissions">"خطای مجوز: تایید همه مجوزهای فهرست‌شده باید داده شود"</string>
     <string name="pref_category_communication">"ارتباطات"</string>
     <string name="pref_category_display">"نمایش"</string>
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
-    <string name="pref_tilecache_size_message">"میزان فضای اشغال‌شده (مگابایت) روی حافظهٔ خارجی برای ذخیرهٔ کاشی‌های نقشه"</string>
+    <string name="pref_tilecache_size_message">"میزان فضای اِشغالی (مگابایت) روی حافظهٔ خارجی برای ذخیرهٔ کاشی‌های نقشه"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"نمایش همه یادداشت‌ها"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده‌گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز"</string>
     <string name="quest_generic_otherAnswers">"پاسخ‌های دیگر…"</string>
-    <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
-    <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
+    <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد …"</string>
+    <string name="quest_generic_confirmation_title">"اطمینان دارید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
     <string name="quest_leave_new_note_title">"در عوض یادداشت می‌گذارید؟"</string>
@@ -23,9 +23,9 @@
     <string name="quest_leave_new_note_yes">"یادداشت‌گذاری"</string>
     <string name="quest_leave_new_note_no">"پنهان سازی"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-    <string name="quest_streetName_description">"به همان صورت که روی تابلوی خیابان نوشته شده است. کلمات اختصاری را کامل بنویسید:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"گاهی تابلوی خیابان تنها در یک سمت خیابان است. همچنین توجه داشته باشید که ممکن است برای معابر فرعی که به خیابان اصلی متصل هستند، تابلویی وجود نداشته باشد. معمولاً هر خیابانِ دارای منازل مسکونی، نامی دارد."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر می‌توان نام را بدون اختصار نوشت، می‌بایست آن را کامل بنویسید. هنگام ورود بسیاری از کلمات اختصاری، صفحه‌کلید هوشمند به‌طور خودکار آنها را به شکل کامل تبدیل می‌کند، البته نه همه‌شان را."</string>
+    <string name="quest_streetName_description">"به همان‌شکل که روی تابلوی خیابان نوشته شده است. کلمات اختصاری را کامل بنویسید:"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"گاهی تابلوی خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است برای معابر فرعی که به خیابان اصلی متصل هستند، تابلویی وجود نداشته باشد. معمولاً هر خیابانِ دارای منازل مسکونی، نامی دارد."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر می‌توان نام را بدون اختصار نوشت، می‌بایست آن را کامل بنویسید. هنگام ورود بسیاری از کلمات اختصاری، صفحه‌کلید هوشمند به‌طور خودکار آنها را به شکل کامل تبدیل می‌کند، البته نه همگی را."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
     <string name="quest_openingHours_start_time">"ساعت شروع کار"</string>
     <string name="quest_openingHours_end_time">"زمان پایان کار"</string>
@@ -41,28 +41,28 @@
     <string name="confirmation_discard_title">"ابطال ورودی؟"</string>
     <string name="confirmation_discard_positive">"باطل کردن"</string>
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
-    <string name="action_upload">"بارگذاری پاسخ‌ها"</string>
+    <string name="action_upload">"بارگذاری پاسخ‌ها "</string>
     <string name="no_changes">"شما هیچگونه پاسخی ندادید"</string>
     <string name="close">"بستن"</string>
     <string name="download_error">"خطا هنگام پویش جُستارها"</string>
     <string name="upload_error">"خطا در زمان بارگذاری پاسخ‌ها"</string>
-    <string name="download_area_too_big">"لطفاً بیشتر بزرگنمایی کنید"</string>
+    <string name="download_area_too_big">"لطفاً بزرگنمایی را بیشتر کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را باطل می‌کنید و در عوض اینجا جستجو شود؟"</string>
     <string name="turn_on_location_request">"ردیابی مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
     <string name="no_location_permission_warning">"مجوز استفاده از مکان‌یاب (GPS) برای نمایش مکان شما روی نقشه و جستجوی جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
     <string name="about_title_authors">"اعتبار‌نامه‌ها"</string>
-    <string name="about_summary_authors">"‏ © %s Tobias Zwick و مشارکت‌کنندگان"</string>
-    <string name="about_title_repository">"صفحهٔ پروژه"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick و مشارکت‌کنندگان"</string>
+    <string name="about_title_repository">"صفحه پروژه"</string>
     <string name="about_summary_repository">"روی سامانه میزبان مخزن (github)"</string>
     <string name="about_title_report_error">"گزارش خطا"</string>
     <string name="about_title_feedback">"ارائه بازخورد"</string>
-    <string name="about_title_license">"پروانه"</string>
-    <string name="about_summary_license">"پروانهٔ عمومی همگانی GNU"</string>
+    <string name="about_title_license">"گواهی"</string>
+    <string name="about_summary_license">"گواهی عمومی همگانی GNU"</string>
     <string name="offline">"برون‌خط هستید"</string>
     <string name="confirmation_authorize_now">"برای انتشار پاسخ‌هایتان، باید توسط حساب کاربری OSM خود احراز هویت کنید. اکنون انجام می‌دهید؟"</string>
-    <string name="not_authorized">"احراز هویت نشده"</string>
+    <string name="not_authorized">"احراز هویت‌نشده"</string>
     <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفاً به‌روز کنید!"</string>
-    <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، ردیاب مکان‌ (GPS) را روشن کنید"</string>
+    <string name="no_gps_no_quests">"جهت مرور خودکار جُستارهای اطراف، ردیاب مکان‌ (GPS) را روشن کنید"</string>
     <string name="later">"بعداً"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"مورد دیگری است (یادداشت بگذارید)"</string>
@@ -78,11 +78,11 @@
     <string name="quest_openingHours_comment_description">"مختصر باشد. بهتر است از جمله‌بندی روی علائم استفاده کنید؛ مانند «با وقت قبلی». فقدان علائم لزوماً به این معنی نیست که زمان کاری منظم ندارد."</string>
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
     <string name="quest_roofShape_select_one">"یکی را انتخاب کنید:"</string>
-    <string name="quest_roofShape_show_more">"نمایش بیشتر…"</string>
+    <string name="quest_roofShape_show_more">"نمایش بقیه…"</string>
     <string name="quest_roofShape_answer_many">"این سقف چند شکل مختلف دارد"</string>
     <string name="map_btn_zoom_out">"کوچک‌نمایی"</string>
     <string name="map_btn_zoom_in">"بزرگ‌نمایی"</string>
-    <string name="privacy_html">"&lt;p&gt; درود، شخصی هستید که به حریم خصوصی اهمیت می‌دهد، عالی است! فکر می‌کنم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt; درود، شما شخصی هستید که به حریم خصوصی اهمیت می‌دهد،این عالیست! فکر می‌کنم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که با استفاده از این برنامه، به طور مستقیم و واقعی در نقشه متن باز (OSM) مشارکت می‌کنید.&lt;br/&gt;
@@ -104,7 +104,7 @@
 
 "</string>
     <string name="autosync_on">"روشن"</string>
-    <string name="autosync_only_on_wifi">"فقط با وای‌فای"</string>
+    <string name="autosync_only_on_wifi">"فقط ارتباط بیسیم"</string>
     <string name="autosync_off">"خاموش"</string>
     <string name="quest_streetSurface_title">"جنس سطح این بخش از راه چیست؟"</string>
     <string name="quest_surface_value_paved">"روسازی‌شده (عمومی)"</string>
@@ -598,7 +598,7 @@
     <string name="tutorial_stay_safe">"هر زمانی که درمورد جُستاری اطمینان ندارید، می‌توانید گزینه \"نمی‌توان بیان کرد\" را انتخاب نماید و یادداشت بگذارید.
 
 در آخر، به یاد داشته باشید که حتما از محیط پیرامون خود مطلع باشید و دقت کنید که به مکان‌های خصوصی وارد نشوید."</string>
-    <string name="tutorial_happy_mapping">"نقشه‌کشی مبارک!"</string>
+    <string name="tutorial_happy_mapping">"تبریک بابت ترسیم نقشه‌!"</string>
     <string name="achievements_empty">"شما هنوز دستاوردی ندارید"</string>
     <string name="links_empty">"شما هنوز پیوندی ندارید"</string>
     <string name="quests_empty">"شما پاسخ هیچ جُستاری را نداده‌اید"</string>
@@ -1348,4 +1348,9 @@
     <string name="quest_bbq_fuel_wood">"چوب"</string>
     <string name="quest_bbq_fuel_electric">"برق"</string>
     <string name="quest_bbq_fuel_charcoal">"زغال"</string>
+    <string name="inside">"داخل"</string>
+    <string name="outside">"خارج"</string>
+    <string name="quest_recycling_type_food_waste">"ضایعات موادغذایی"</string>
+    <string name="quest_defibrillator_location">"این دستگاه الکتروشوک کجا قرار دارد؟"</string>
+    <string name="quest_defibrillator_location_description">"لطفاً توضیح مختصری از موقعیت آن ارائه دهید (مثلاً «در سالن پذیرایی باربَر»)."</string>
 </resources>

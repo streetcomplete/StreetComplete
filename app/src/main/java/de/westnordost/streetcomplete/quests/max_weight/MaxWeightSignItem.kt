@@ -32,9 +32,6 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater, countryCode: St
     )
     inflater.inflate(getLayoutResourceId(countryCode), container)
 
-    container.findViewById<View?>(R.id.genericProhibitionSign)
-        ?.setBackgroundResource(getSignBackgroundDrawableResId(countryCode))
-
     container.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
@@ -56,11 +53,13 @@ fun MaxWeightSign.getLayoutResourceId(countryCode: String) = when (this) {
 
 private fun getMaxWeightSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_sign_fi
     else ->             R.layout.quest_maxweight_sign
 }
 
 private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_mgv_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_mgv_sign_fi
     "DE" ->             R.layout.quest_maxweight_mgv_sign_de
     "GB" ->             R.layout.quest_maxweight_mgv_sign_gb
     else ->             R.layout.quest_maxweight_mgv_sign
@@ -68,15 +67,12 @@ private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (cou
 
 private fun getMaxWeightAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_axleload_sign_fi
     else ->             R.layout.quest_maxweight_axleload_sign
 }
 
 private fun getMaxWeightTandemAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_sign_us
+    "FI", "IS", "SE" -> R.layout.quest_maxweight_tandem_axleload_sign_fi
     else ->             R.layout.quest_maxweight_tandem_axleload_sign
-}
-
-private fun getSignBackgroundDrawableResId(countryCode: String): Int = when (countryCode) {
-    "FI", "IS", "SE" -> R.drawable.background_generic_prohibition_sign_yellow
-    else ->             R.drawable.background_generic_prohibition_sign
 }

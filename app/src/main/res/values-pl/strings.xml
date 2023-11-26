@@ -728,7 +728,7 @@ osiągnięć"</string>
     <string name="quest_openingHours_add_off_days">"Dodaj dni gdy jest zamknięte"</string>
     <string name="quest_openingHours_off_day">"Zamknięte"</string>
     <string name="quest_openingHours_unspecified_range">"Nie podano"</string>
-    <string name="quest_cycleway_resurvey_title">"Czy stan ścieżki rowerowej się zmienił?"</string>
+    <string name="quest_cycleway_resurvey_title">"Czy to jest stan ścieżki rowerowej na tym odcinku?"</string>
     <string name="pref_title_resurvey_intervals">"Jak często weryfikować dane?"</string>
     <string name="resurvey_intervals_less_often">"Pytaj rzadziej"</string>
     <string name="resurvey_intervals_default">"Domyślny"</string>
