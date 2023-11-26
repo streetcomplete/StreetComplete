@@ -14,22 +14,17 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogLevel
-import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsFilters
-import de.westnordost.streetcomplete.data.logs.colorId
-import de.westnordost.streetcomplete.data.logs.styleResId
 import de.westnordost.streetcomplete.databinding.DialogLogsFiltersBinding
 import de.westnordost.streetcomplete.util.dateTimeToString
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import kotlinx.serialization.Serializable
 import java.util.Locale
 import kotlin.coroutines.resume
 

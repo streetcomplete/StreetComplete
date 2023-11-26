@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.data.logs.styleResId
 import de.westnordost.streetcomplete.databinding.RowLogMessageBinding
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
