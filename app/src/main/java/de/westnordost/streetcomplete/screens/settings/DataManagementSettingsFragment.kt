@@ -42,9 +42,12 @@ import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.logs.DatabaseLogger
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -68,6 +71,7 @@ class DataManagementSettingsFragment :
     private val cleaner: Cleaner by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsController: QuestPresetsController by inject()
+    private val databaseLogger: DatabaseLogger by inject()
 
     override val title: String get() = getString(R.string.pref_screen_data_management)
 
@@ -176,6 +180,13 @@ class DataManagementSettingsFragment :
         when (key) {
             Prefs.DATA_RETAIN_TIME -> { lifecycleScope.launch(Dispatchers.IO) { cleaner.clean() } }
             Prefs.PREFER_EXTERNAL_SD -> { moveMapTilesToCurrentLocation() }
+            Prefs.TEMP_LOGGER -> { if (prefs.getBoolean(Prefs.TEMP_LOGGER, false)) {
+                Log.instances.removeAll { it is DatabaseLogger }
+                Log.instances.add(TempLogger)
+            } else {
+                Log.instances.remove(TempLogger)
+                Log.instances.add(databaseLogger)
+            }}
         }
     }
 

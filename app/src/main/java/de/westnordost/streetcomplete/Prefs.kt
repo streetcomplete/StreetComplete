@@ -120,6 +120,7 @@ object Prefs {
     const val HIDE_OVERLAY_QUESTS = "hide_overlay_quests"
     const val MAIN_MENU_SWITCH_PRESETS = "main_menu_switch_presets"
     const val DISABLE_NAVIGATION_MODE = "disable_navigation_mode"
+    const val TEMP_LOGGER = "temp_logger"
 
     enum class Autosync {
         ON, WIFI, OFF

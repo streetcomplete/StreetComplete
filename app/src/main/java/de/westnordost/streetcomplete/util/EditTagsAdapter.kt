@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.marginTop
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.Feature
@@ -23,7 +22,7 @@ import de.westnordost.streetcomplete.databinding.RowEditTagBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.spToPx
 import de.westnordost.streetcomplete.util.ktx.toast
-import kotlinx.serialization.decodeFromString
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.serialization.json.Json
 
 // use displaySet and dataSet: displaySet is the sorted map.toList

@@ -42,6 +42,13 @@
         android:persistent="true" />
 
     <SwitchPreference
+        android:key="temp_logger"
+        android:title="Use temp logger"
+        android:summary="Log will not be persisted in database, use old log reader at bottom of settings to read"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
         android:key="update_local_statistics"
         android:title="@string/pref_update_local_statistics"
         android:summary="@string/pref_update_local_statistics_summary"

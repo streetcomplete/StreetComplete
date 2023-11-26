@@ -23,6 +23,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -44,19 +45,25 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
+import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
+import de.westnordost.streetcomplete.util.ktx.minusInSystemTimeZone
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
@@ -149,16 +156,16 @@ class SettingsFragment :
         }
 
         // todo: remove pref and related strings
-/*        findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
+        findPreference<Preference>("read_log")?.setOnPreferenceClickListener {
             var reversed = false
             var filter = "" // todo: separate filter by level or tag?
             var maxLines = 200
             val log = TextView(requireContext())
-            var lines = Log.getLog().take(maxLines)
+            var lines = TempLogger.getLog().take(maxLines)
             log.setTextIsSelectable(true)
             log.text = lines.joinToString("\n")
             fun reloadText() {
-                val l = Log.getLog()
+                val l = TempLogger.getLog()
                 lines = when {
                     filter.isNotBlank() && reversed -> l.asReversed().filter { line -> line.toString().contains(filter, true) }
                     filter.isNotBlank() -> l.filter { line -> line.toString().contains(filter, true) }
@@ -206,7 +213,7 @@ class SettingsFragment :
             val d = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_read_log_title)
                 .setView(layout) // not using default padding to allow longer log lines (looks ugly, but is very convenient)
-                .setPositiveButton(android.R.string.ok, null)
+                .setPositiveButton(R.string.close, null)
                 .setNegativeButton(R.string.pref_read_log_save) { _, _ ->
                     val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                         addCategory(Intent.CATEGORY_OPENABLE)
@@ -222,7 +229,9 @@ class SettingsFragment :
             d.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
 
             true
-        }*/
+        }
+        if (!prefs.getBoolean(Prefs.TEMP_LOGGER, false))
+            findPreference<Preference>("read_log")?.isVisible = false
 
         findPreference<Preference>("debug")?.isVisible = BuildConfig.DEBUG
 
@@ -341,14 +350,14 @@ class SettingsFragment :
     }
 
     // todo: remove
-/*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode != Activity.RESULT_OK || data == null || requestCode != REQUEST_CODE_LOG)
             return
         val uri = data.data ?: return
         activity?.contentResolver?.openOutputStream(uri)?.use { os ->
-            os.bufferedWriter().use { it.write(Log.getLog().joinToString("\n")) }
+            os.bufferedWriter().use { it.write(TempLogger.getLog().joinToString("\n")) }
         }
-    }*/
+    }
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesController.clear()

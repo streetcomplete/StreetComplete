@@ -15,7 +15,7 @@ val appModule = module {
     factory<Resources> { androidContext().resources }
     factory<SharedPreferences> { PreferenceManager.getDefaultSharedPreferences(androidContext()) }
 
-    single { CrashReportExceptionHandler(androidContext(), get(), "helium@vivaldi.net", "crashreport.txt") }
+    single { CrashReportExceptionHandler(androidContext(), get(), get(), "helium@vivaldi.net", "crashreport.txt") }
     single { DatabaseLogger(get()) }
     single { SoundFx(androidContext()) }
 }

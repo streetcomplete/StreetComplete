@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
@@ -9,19 +10,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.util.ktx.minusInSystemTimeZone
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.sendEmail
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 /** Exception handler that takes care of asking the user to send the report of the last crash
  *  to the email address [mailReportTo].
@@ -30,6 +39,7 @@ import java.util.Locale
 class CrashReportExceptionHandler(
     private val appCtx: Context,
     private val logsController: LogsController,
+    private val prefs: SharedPreferences,
     private val mailReportTo: String,
     private val crashReportFile: String
 ) : Thread.UncaughtExceptionHandler {
@@ -138,6 +148,11 @@ class CrashReportExceptionHandler(
     }
 
     private fun readLogFromDatabase(): String {
+        if (prefs.getBoolean(Prefs.TEMP_LOGGER, false)) {
+            val tooOld = systemTimeNow().toLocalDateTime(TimeZone.currentSystemDefault())
+                .minusInSystemTimeZone(ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER, DateTimeUnit.MILLISECOND)
+            return TempLogger.getLog().filter { it.time > tooOld }.joinToString("\n") { it.toString() }
+        }
         val newLogTimestamp =
             nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
 

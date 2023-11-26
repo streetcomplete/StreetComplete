@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.screens.settings.oldQuestNames
 import de.westnordost.streetcomplete.screens.settings.renameUpdateQuests
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
@@ -262,7 +263,10 @@ class StreetCompleteApplication : Application() {
 
     private fun setLoggerInstances() {
         Log.instances.add(AndroidLogger())
-        Log.instances.add(databaseLogger)
+        if (prefs.getBoolean(Prefs.TEMP_LOGGER, false))
+            Log.instances.add(TempLogger)
+        else
+            Log.instances.add(databaseLogger)
     }
 
     private fun enqueuePeriodicCleanupWork() {
