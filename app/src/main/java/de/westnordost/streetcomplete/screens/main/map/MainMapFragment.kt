@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.ImportedTrackMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
@@ -54,6 +55,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var styleableOverlayManager: StyleableOverlayManager? = null
     private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
     private var downloadedAreaManager: DownloadedAreaManager? = null
+    private var importedTrackMapComponent: ImportedTrackMapComponent? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -129,6 +131,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
+
+        importedTrackMapComponent = ImportedTrackMapComponent(ctrl)
 
         super.onMapReady()
     }
@@ -309,5 +313,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val CLICK_AREA_SIZE_IN_DP = 48
+    }
+
+    /* -------------------------------- Show imported tracks ------------------------------------ */
+    fun replaceImportedTrack(trackpoints: List<LatLon>) {
+        importedTrackMapComponent?.replaceImportedTrack(trackpoints)
     }
 }
