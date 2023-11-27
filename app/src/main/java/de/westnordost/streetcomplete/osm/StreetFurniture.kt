@@ -38,7 +38,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
 
 val IS_REGULAR_STREET_FURNITURE_EXPRESSION = """
     nodes, ways, relations with
-      ${isStreetFurnitureFragment("")}
+      ${isStreetFurnitureFragment(null)}
 """.toElementFilterExpression()
 
 val IS_DISUSED_STREET_FURNITURE_EXPRESSION = """

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.street_furniture
 
+import android.util.Log
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -35,6 +36,7 @@ class StreetFurnitureOverlay(private val getFeature: (tags: Map<String, String>)
             .mapNotNull { element ->
                 val feature = getFeature(element.tags)
                 val iconIdentifier = feature?.icon
+                Log.wtf("XXXXXX", element.tags.toString())
                 if ( iconIdentifier != null) {
                     val icon = "ic_preset_" + iconIdentifier.replace('-', '_')
                     val label = getNameLabel(element.tags)
