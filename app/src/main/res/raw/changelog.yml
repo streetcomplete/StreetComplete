@@ -1,11 +1,13 @@
 v55.1: |
-  <h3>Quest Enhancements</h3>
+  <h3>Quest Enhancements and Fixes</h3>
   <ul>
   <li>Charging station operator: Do not ask if the operator is not signed</li>
   <li>Indoor amenities: Don't consider roofs as indoor (#5337), by @qugebert</li>
   <li>Crossing kerbs: Do not ask if the kerb on either side is already specified (#5374), by @FloEdelmann</li>
-  <li>Bike paths overlay: When leaving the contra-flow side of a oneway unspecified, also leave the oneway-for-cyclists status untouched (#5367)</li>
+  <li>Fix bike paths overlay: When leaving the contra-flow side of a oneway unspecified, also leave the oneway-for-cyclists status untouched (#5367)</li>
+  <li>Fix display of max height, max speed and max weight signs in US, Canada and Australia (#5384)</li>
   <li>Speed limits: For trunk roads without speed limit signs, ask whether it is inside an urban area (#5378)</li>
+  <li>Other small improvements (#5336, #5387), thanks @arrival-spring</li>
   </ul>
   <h3>General Enhancements and Fixes</h3>
   <ul>

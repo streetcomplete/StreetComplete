@@ -1350,4 +1350,9 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_bbq_fuel_wood">"Drvo"</string>
     <string name="quest_bbq_fuel_electric">"Struju"</string>
     <string name="quest_bbq_fuel_charcoal">"Ugljen"</string>
+    <string name="inside">"unutra"</string>
+    <string name="outside">"vani"</string>
+    <string name="quest_recycling_type_food_waste">"Otpad od sve hrane"</string>
+    <string name="quest_defibrillator_location">"Gdje se nalazi ovaj defibrilator (AVD/AED)?"</string>
+    <string name="quest_defibrillator_location_description">"Navedite sažet ali precizan opis njegovog položaja (npr. “u portirnici”)."</string>
 </resources>

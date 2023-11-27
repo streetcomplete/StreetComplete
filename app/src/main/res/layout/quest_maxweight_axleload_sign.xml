@@ -5,7 +5,6 @@
     android:layout_width="112dp"
     android:layout_height="112dp"
     android:gravity="center"
-    android:id="@+id/genericProhibitionSign"
     android:background="@drawable/background_generic_prohibition_sign"
     android:layout_centerInParent="true"
     android:padding="18dp"
