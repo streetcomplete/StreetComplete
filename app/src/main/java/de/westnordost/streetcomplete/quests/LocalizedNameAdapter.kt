@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
@@ -359,7 +360,7 @@ class LocalizedNameAdapter(
             } else {
                 input.imeHintLocales = LocaleList(locale)
             }
-            context.getSystemService(InputMethodManager::class.java).restartInput(input)
+            context.getSystemService<InputMethodManager>()?.restartInput(input)
         }
     }
 
