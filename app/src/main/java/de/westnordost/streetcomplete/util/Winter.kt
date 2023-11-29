@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import java.time.Month.*
 
-fun isWinter(location: LatLon): Boolean {
+fun isWinter(location: LatLon?): Boolean {
+    if (location == null) return false
     val now = systemTimeNow().toLocalDate()
     val winterSeason = if (location.latitude > 0)
         listOf(NOVEMBER, DECEMBER, JANUARY, FEBRUARY, MARCH, APRIL)
