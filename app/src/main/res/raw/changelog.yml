@@ -1,3 +1,18 @@
+v56.0: |
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>You can now view, filter and copy logs from within the app. (This helps finding issues.) (#5335), by @neonowy</li>
+  <li>Other small improvements (#5360), by @riQQ</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is there a sanitary dump station?</i> asked for caravan sites (#5363), by @qugebert</li>
+  </ul>
+  <h3>Quest Enhancements and Fixes</h3>
+  <ul>
+  <li>Other small improvements (#5332, #5371), thanks @catdogmat, @mnalis</li>
+  </ul>
+
 v55.1: |
   <h3>Quest Enhancements and Fixes</h3>
   <ul>
