@@ -331,8 +331,8 @@ open class MapFragment :
 
         return CameraPosition(
             LatLon(
-                java.lang.Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LATITUDE, 0)),
-                java.lang.Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LONGITUDE, 0))
+                prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
+                prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
             ),
             prefs.getFloat(Prefs.MAP_ROTATION, 0f),
             prefs.getFloat(Prefs.MAP_TILT, 0f),
