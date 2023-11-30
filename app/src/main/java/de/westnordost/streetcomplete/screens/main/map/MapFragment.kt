@@ -109,20 +109,16 @@ open class MapFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val prefsListener = object : Preferences.Listener {
-        override fun onPreferencesChanged(key: String) {
-            if (key == Prefs.THEME_BACKGROUND) {
-                sceneMapComponent?.isAerialView =
-                    (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
-            }
-        }
+    private val onThemeBackgroundChanged = {
+        sceneMapComponent?.isAerialView =
+            (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
     }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prefs.addListener(prefsListener)
+        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -178,7 +174,7 @@ open class MapFragment :
 
     override fun onDestroy() {
         super.onDestroy()
-        prefs.removeListener(prefsListener)
+        prefs.removeListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onLowMemory() {

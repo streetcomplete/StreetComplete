@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.util.prefs
 
 interface Preferences {
-    interface Listener {
-        fun onPreferencesChanged(key: String)
-    }
-
     val keys: Set<String>
 
     fun putBoolean(key: String, boolean: Boolean)
@@ -21,9 +17,8 @@ interface Preferences {
     fun getDouble(key: String, defaultValue: Double): Double
     fun getStringOrNull(key: String): String?
 
-    fun hasKey(key: String): Boolean
     fun remove(key: String)
 
-    fun addListener(listener: Listener)
-    fun removeListener(listener: Listener)
+    fun addListener(key: String, callback: () -> Unit)
+    fun removeListener(key: String, callback: () -> Unit)
 }

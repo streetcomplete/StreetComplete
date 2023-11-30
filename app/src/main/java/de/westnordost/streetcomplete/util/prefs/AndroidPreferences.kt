@@ -4,14 +4,16 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.util.Listeners
 
-class AndroidPreferences(private val prefs: SharedPreferences) :
-    Preferences,
-    SharedPreferences.OnSharedPreferenceChangeListener {
+class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
 
-    private val listeners = Listeners<Preferences.Listener>()
+    private val listeners = Listeners<Pair<String, () -> Unit>>()
 
     init {
-        prefs.registerOnSharedPreferenceChangeListener(this)
+        prefs.registerOnSharedPreferenceChangeListener { _, key ->
+            listeners.forEach { (k, callback) ->
+                if (k == key) callback()
+            }
+        }
     }
 
     override val keys: Set<String>
@@ -65,23 +67,14 @@ class AndroidPreferences(private val prefs: SharedPreferences) :
         return prefs.getString(key, null)
     }
 
-    override fun hasKey(key: String): Boolean {
-        return prefs.contains(key)
-    }
-
     override fun remove(key: String) {
         prefs.edit { remove(key) }
     }
 
-    override fun addListener(listener: Preferences.Listener) {
-        listeners.add(listener)
+    override fun addListener(key: String, callback: () -> Unit) {
+        listeners.add(key to callback)
     }
-
-    override fun removeListener(listener: Preferences.Listener) {
-        listeners.remove(listener)
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        listeners.forEach { it.onPreferencesChanged(key) }
+    override fun removeListener(key: String, callback: () -> Unit) {
+        listeners.remove(key to callback)
     }
 }

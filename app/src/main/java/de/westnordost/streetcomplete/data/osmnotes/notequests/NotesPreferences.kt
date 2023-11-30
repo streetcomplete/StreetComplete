@@ -11,16 +11,10 @@ class NotesPreferences(private val prefs: Preferences) {
 
     var listener: Listener? = null
 
-    private val preferencesListener = object : Preferences.Listener {
-        override fun onPreferencesChanged(key: String) {
-            if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
-                listener?.onNotesPreferencesChanged()
-            }
-        }
-    }
-
     init {
-        prefs.addListener(preferencesListener)
+        prefs.addListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
+            listener?.onNotesPreferencesChanged()
+        }
     }
 
     val showOnlyNotesPhrasedAsQuestions: Boolean get() =

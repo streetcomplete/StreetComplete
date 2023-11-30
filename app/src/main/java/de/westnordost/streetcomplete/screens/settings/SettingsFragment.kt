@@ -92,31 +92,30 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         }
     }
 
-    private val prefsListener = object : Preferences.Listener {
-        override fun onPreferencesChanged(key: String) {
-            when (key) {
-                Prefs.AUTOSYNC -> {
-                    if (Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") != Prefs.Autosync.ON) {
-                        AlertDialog.Builder(requireContext())
-                            .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show()
-                    }
-                }
-                Prefs.THEME_SELECT -> {
-                    val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
-                    AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
-                    activity?.let { ActivityCompat.recreate(it) }
-                }
-                Prefs.LANGUAGE_SELECT -> {
-                    setDefaultLocales(getSelectedLocales(prefs))
-                    activity?.let { ActivityCompat.recreate(it) }
-                }
-                Prefs.RESURVEY_INTERVALS -> {
-                    resurveyIntervalsUpdater.update()
-                }
-            }
+    private val onAutosyncChanged =  {
+        if (Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") != Prefs.Autosync.ON) {
+            AlertDialog.Builder(requireContext())
+                .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
+    }
+
+    private val onThemeChanged = {
+        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
+        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+        activity?.let { ActivityCompat.recreate(it) }
+        Unit
+    }
+
+    private val onLanguageChanged = {
+        setDefaultLocales(getSelectedLocales(prefs))
+        activity?.let { ActivityCompat.recreate(it) }
+        Unit
+    }
+
+    private val onResurveyIntervalsChanged = {
+        resurveyIntervalsUpdater.update()
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -212,12 +211,18 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
     override fun onResume() {
         super.onResume()
-        prefs.addListener(prefsListener)
+        prefs.addListener(Prefs.AUTOSYNC, onAutosyncChanged)
+        prefs.addListener(Prefs.THEME_SELECT, onThemeChanged)
+        prefs.addListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        prefs.addListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
     }
 
     override fun onPause() {
         super.onPause()
-        prefs.removeListener(prefsListener)
+        prefs.removeListener(Prefs.AUTOSYNC, onAutosyncChanged)
+        prefs.removeListener(Prefs.THEME_SELECT, onThemeChanged)
+        prefs.removeListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        prefs.removeListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
