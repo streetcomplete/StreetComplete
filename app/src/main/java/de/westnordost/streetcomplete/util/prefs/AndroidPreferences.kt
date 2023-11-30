@@ -8,12 +8,15 @@ class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
 
     private val listeners = Listeners<Pair<String, () -> Unit>>()
 
-    init {
-        prefs.registerOnSharedPreferenceChangeListener { _, key ->
+    private val onSharedPreferenceChangeListener =
+        SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             listeners.forEach { (k, callback) ->
                 if (k == key) callback()
             }
-        }
+    }
+
+    init {
+        prefs.registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener)
     }
 
     override val keys: Set<String>
