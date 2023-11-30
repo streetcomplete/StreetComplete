@@ -10,10 +10,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.databinding.DialogAccessManagerBinding
 import de.westnordost.streetcomplete.databinding.RowAccessBinding
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 class AccessManagerDialog(context: Context, tags: Map<String, String>, onClickOk: (StringMapChangesBuilder) -> Unit) : AlertDialog(context) {
     private val binding = DialogAccessManagerBinding.inflate(LayoutInflater.from(context))
-    private val originalAccessTags = tags.filterKeys { key -> accessKeys.any { it.startsWith(key) } }
+    private val originalAccessTags = tags.filterKeys { key -> accessKeys.any { it == key || key.startsWith("$it:") } }
     private val newAccessTags = LinkedHashMap(originalAccessTags)
 
     init {
@@ -69,6 +70,7 @@ class AccessManagerDialog(context: Context, tags: Map<String, String>, onClickOk
             newAccessTags.remove(key)
             createAccessTagViews()
         }
+        view.root.setPadding(0, context.dpToPx(4).toInt(), 0, context.dpToPx(4).toInt())
         return view.root
     }
 

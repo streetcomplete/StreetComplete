@@ -109,7 +109,7 @@ class CrashReportExceptionHandler(
             report += "Thread: ${thread.name}"
         }
 
-        report += """
+        report += "\n" + """
         App version: ${BuildConfig.VERSION_NAME}
         Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
         Locale: ${Locale.getDefault()}
