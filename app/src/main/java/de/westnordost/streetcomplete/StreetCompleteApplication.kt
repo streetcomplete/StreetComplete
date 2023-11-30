@@ -152,7 +152,7 @@ class StreetCompleteApplication : Application() {
 
         resurveyIntervalsUpdater.update()
 
-        val lastVersion = prefs.getString(Prefs.LAST_VERSION_DATA, null)
+        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {
@@ -193,7 +193,7 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun setDefaultTheme() {
-        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, getDefaultTheme())!!)
+        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
 

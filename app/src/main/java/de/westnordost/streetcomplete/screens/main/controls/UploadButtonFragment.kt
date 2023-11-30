@@ -74,7 +74,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     // ---------------------------------------------------------------------------------------------
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private suspend fun updateCount() {
         uploadButton.uploadableCount = unsyncedChangesCountSource.getCount()

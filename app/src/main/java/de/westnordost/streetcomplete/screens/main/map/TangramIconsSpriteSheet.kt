@@ -24,7 +24,7 @@ class TangramIconsSpriteSheet(
         val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
         val spriteSheet = when {
             !isSpriteSheetCurrent || BuildConfig.DEBUG -> createSpritesheet()
-            else -> prefs.getString(Prefs.ICON_SPRITES, "")!!
+            else -> prefs.getStringOrNull(Prefs.ICON_SPRITES) ?: ""
         }
 
         createSceneUpdates(spriteSheet)

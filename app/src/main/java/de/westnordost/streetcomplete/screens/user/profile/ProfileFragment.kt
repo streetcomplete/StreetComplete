@@ -276,7 +276,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val localRank = withContext(Dispatchers.IO) { statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount() }
         updateLocalRankText(
             localRank,
-            prefs.getString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, null)?.let { Json.decodeFromString(it) },
+            prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) },
             50,
             binding.localRankContainer,
             binding.localRankLabel,
@@ -287,7 +287,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val localRankCurrentWeek = withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount() }
         updateLocalRankText(
             localRankCurrentWeek,
-            prefs.getString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, null)?.let { Json.decodeFromString(it) },
+            prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) },
             5,
             binding.currentWeekLocalRankContainer,
             binding.currentWeekLocalRankLabel,

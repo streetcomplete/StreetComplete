@@ -13,7 +13,7 @@ import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
 fun getSelectedLocale(prefs: Preferences): Locale? {
-    val languageTag = prefs.getString(Prefs.LANGUAGE_SELECT, "") ?: ""
+    val languageTag = prefs.getStringOrNull(Prefs.LANGUAGE_SELECT) ?: ""
     return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
 }
 

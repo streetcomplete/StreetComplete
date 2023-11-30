@@ -58,8 +58,8 @@ class AndroidPreferences(private val prefs: SharedPreferences) :
         return Double.fromBits(prefs.getLong(key, defaultValue.toRawBits()))
     }
 
-    override fun getString(key: String, defaultValue: String?): String? {
-        return prefs.getString(key, defaultValue)
+    override fun getStringOrNull(key: String): String? {
+        return prefs.getString(key, null)
     }
 
     override fun contains(key: String): Boolean {

@@ -62,7 +62,7 @@ class MessagesSource(
     fun getNumberOfMessages(): Int {
         val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         val hasUnreadMessages = userDataController.unreadMessagesCount > 0
-        val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
+        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
             prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
@@ -78,7 +78,7 @@ class MessagesSource(
 
     fun popNextMessage(): Message? {
 
-        val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
+        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {

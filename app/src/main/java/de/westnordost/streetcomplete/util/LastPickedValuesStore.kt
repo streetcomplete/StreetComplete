@@ -20,7 +20,7 @@ class LastPickedValuesStore<T : Any>(
     fun get(): Sequence<T?> = getRaw().map(deserialize)
 
     private fun getRaw(): Sequence<String> =
-        prefs.getString(getKey(), null)?.splitToSequence(",") ?: sequenceOf()
+        prefs.getStringOrNull(getKey())?.splitToSequence(",") ?: sequenceOf()
 
     private fun getKey() = Prefs.LAST_PICKED_PREFIX + key
 }

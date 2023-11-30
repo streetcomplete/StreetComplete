@@ -13,8 +13,8 @@ class OAuthStore(
     var oAuthConsumer: OAuthConsumer?
         get() {
             val result = get<OAuthConsumer>()
-            val accessToken = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN, null)
-            val accessTokenSecret = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, null)
+            val accessToken = prefs.getStringOrNull(Prefs.OAUTH_ACCESS_TOKEN)
+            val accessTokenSecret = prefs.getStringOrNull(Prefs.OAUTH_ACCESS_TOKEN_SECRET)
             if (accessToken == null || accessTokenSecret == null) return null
             result.setTokenWithSecret(accessToken, accessTokenSecret)
             return result
@@ -30,5 +30,5 @@ class OAuthStore(
         }
 
     val isAuthorized: Boolean
-        get() = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, null) != null
+        get() = prefs.getStringOrNull(Prefs.OAUTH_ACCESS_TOKEN_SECRET) != null
 }

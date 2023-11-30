@@ -17,7 +17,7 @@ interface Preferences {
     fun getLong(key: String, defaultValue: Long): Long
     fun getFloat(key: String, defaultValue: Float): Float
     fun getDouble(key: String, defaultValue: Double): Double
-    fun getString(key: String, defaultValue: String?): String?
+    fun getStringOrNull(key: String): String?
 
     fun contains(key: String): Boolean
     fun remove(key: String)

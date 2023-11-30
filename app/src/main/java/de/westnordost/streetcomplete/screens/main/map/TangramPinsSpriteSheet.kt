@@ -26,7 +26,7 @@ class TangramPinsSpriteSheet(
 
         val spriteSheet = when {
             !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
-            else -> prefs.getString(Prefs.PIN_SPRITES, "")!!
+            else -> prefs.getStringOrNull(Prefs.PIN_SPRITES) ?: ""
         }
 
         createSceneUpdates(spriteSheet)

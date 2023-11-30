@@ -96,7 +96,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         override fun onPreferencesChanged(key: String) {
             when (key) {
                 Prefs.AUTOSYNC -> {
-                    if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
+                    if (Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") != Prefs.Autosync.ON) {
                         AlertDialog.Builder(requireContext())
                             .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
                             .setPositiveButton(android.R.string.ok, null)
@@ -104,7 +104,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
                     }
                 }
                 Prefs.THEME_SELECT -> {
-                    val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, getDefaultTheme())!!)
+                    val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
                     AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                     activity?.let { ActivityCompat.recreate(it) }
                 }

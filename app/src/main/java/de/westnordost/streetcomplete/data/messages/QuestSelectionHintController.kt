@@ -26,7 +26,7 @@ class QuestSelectionHintController(
             listeners.forEach { it.onQuestSelectionHintStateChanged() }
         }
         get() {
-            val str = prefs.getString(Prefs.QUEST_SELECTION_HINT_STATE, null)
+            val str = prefs.getStringOrNull(Prefs.QUEST_SELECTION_HINT_STATE)
             return if (str == null) NOT_SHOWN else QuestSelectionHintState.valueOf(str)
         }
 

@@ -40,7 +40,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
         val selectableLanguages = getSelectableLanguageTags().toMutableList()
-        val preferredLanguage = prefs.getString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES, null)
+        val preferredLanguage = prefs.getStringOrNull(Prefs.PREFERRED_LANGUAGE_FOR_NAMES)
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
                 selectableLanguages.add(0, preferredLanguage)

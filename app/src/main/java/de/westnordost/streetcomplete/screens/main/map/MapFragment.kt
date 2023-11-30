@@ -114,7 +114,7 @@ open class MapFragment :
         override fun onPreferencesChanged(key: String) {
             if (key == Prefs.THEME_BACKGROUND) {
                 sceneMapComponent?.isAerialView =
-                    prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+                    (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
             }
         }
     }
@@ -201,7 +201,7 @@ open class MapFragment :
         registerResponders(ctrl)
 
         sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
-        sceneMapComponent?.isAerialView = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+        sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()
 

@@ -22,5 +22,5 @@ class ResurveyIntervalsUpdater(private val prefs: Preferences) {
     }
 
     private val intervalsPreference: Prefs.ResurveyIntervals get() =
-        valueOf(prefs.getString(Prefs.RESURVEY_INTERVALS, "DEFAULT")!!)
+        valueOf(prefs.getStringOrNull(Prefs.RESURVEY_INTERVALS) ?: "DEFAULT")
 }
