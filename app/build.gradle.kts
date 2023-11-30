@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5500
-        versionName = "55.0"
+        versionCode = 5600
+        versionName = "56.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,6 +45,7 @@ android {
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            testProguardFile("test-proguard-rules.pro")
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
@@ -109,7 +110,7 @@ configurations {
 dependencies {
     val mockitoVersion = "3.12.4"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
@@ -132,10 +133,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.6.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.annotation:annotation:1.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
@@ -143,7 +144,7 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.6")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
@@ -201,7 +202,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230925"
+val nsiVersion = "v6.0.20231120"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.4.1"
 

@@ -51,7 +51,7 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
         for (languageCode in languageCodes) {
             println(languageCode)
             val translations = fetchLocalizationJson(apiToken, projectId, languageCode)
-            val lang = if (languageCode.toLowerCase() == "en-us") "en" else languageCode.toLowerCase()
+            val lang = if (languageCode.lowercase() == "en-us") "en" else languageCode.lowercase()
             val strings = translations.filterKeys { it in keys || it in requiredKeys }
             // only accept complete translations
             if (requiredKeys.all { it in strings.keys }) {

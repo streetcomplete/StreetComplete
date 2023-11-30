@@ -1,3 +1,20 @@
+v55.1: |
+  <h3>Quest Enhancements and Fixes</h3>
+  <ul>
+  <li>Charging station operator: Do not ask if the operator is not signed</li>
+  <li>Indoor amenities: Don't consider roofs as indoor (#5337), by @qugebert</li>
+  <li>Crossing kerbs: Do not ask if the kerb on either side is already specified (#5374), by @FloEdelmann</li>
+  <li>Fix bike paths overlay: When leaving the contra-flow side of a oneway unspecified, also leave the oneway-for-cyclists status untouched (#5367)</li>
+  <li>Fix display of max height, max speed and max weight signs in US, Canada and Australia (#5384)</li>
+  <li>Speed limits: For trunk roads without speed limit signs, ask whether it is inside an urban area (#5378)</li>
+  <li>Other small improvements (#5336, #5387), thanks @arrival-spring</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Do not offer splitting whole roundabouts, leave a note in that case. See ticket for details (#5372)</li>
+  <li>Various small enhancements, wording improvements and fixes (#5353, #5346, ...), thanks @neonowy, @riQQ, ...</li>
+  </ul>
+
 v55.0: |
   <h3>New Quests</h3>
   <ul>
@@ -15,7 +32,7 @@ v55.0: |
   </ul>
   <h3>General Enhancements and Fixes</h3>
   <ul>
-  <li>Quest selection: Can search by english quest titles too (#5284), by @FloEdelmann</li>
+  <li>Quest selection: Can search by English quest titles too (#5284), by @FloEdelmann</li>
   <li>It's now easier to tap a road in an overlay on low zoom... (#5282)</li>
   <li>Various small enhancements and fixes (#5286, #5170...), thanks @FloEdelmann</li>
   </ul>
@@ -211,7 +228,7 @@ v51.0: |
   <h3>Enhancements</h3>
   <ul>
   <li>The standalone measure app now explains how to achieve optimal precision and warns if the potential for a measuring error becomes too big (#4655)</li>
-  <li>Parking overlay: Support new street parking schema (#4664, #4768)</li>
+  <li>Parking overlay: Support new street parking schema (#4664, #4768), sponsored by @gislars from <a href="https://parkraum.osm-verkehrswende.org/">OpenStreetMap Verkehrswende</a></li>
   <li>Parking overlay: Add option to specify that cars park on alternating sides (i.e. not enough space to park on both sides at the same time)</li>
   <li>Address overlay: Make entering addresses in places with no street names more efficient (#4718, #4751), by @Helium314</li>
   <li>Ask for kerbs also on traffic islands (#3786), by @arrival-spring</li>
@@ -253,7 +270,7 @@ v50.1: |
 
 v50.0: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
-  <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>
+  <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths. Sponsored by <a href="https://www.fixmycity.de/">FixMyCity</a>.</p>
   <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
   <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
       quest and overlay. It lets you correct the position of the POI.</p>
@@ -298,7 +315,7 @@ v49.1: |
 
 v49.0: |
   <h3>QR Codes</h3>
-  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3642, #3481, #4537)</p>
+  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3642, #3481, #4537). Sponsored by <a href="https://www.fixmycity.de/">FixMyCity</a>.</p>
   <h3>My Profile screen</h3>
   <p>The My Profile screen is now more interesting and engaging! New graphics, new animations, weekly ranks and a calendar of your recent activity! (#2946, #3230, #4572, #4569, #3414, #4203), by @matkoniecz</p>
   <h3>Enhanced Overlays</h3>

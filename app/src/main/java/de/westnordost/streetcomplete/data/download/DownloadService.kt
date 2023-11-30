@@ -6,13 +6,12 @@ import android.content.Intent
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject

@@ -525,7 +525,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_ferry_motor_vehicle_title">"Questa linea di traghetti trasporta veicoli a motore?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’aggiunta di una foto renderà la nota molto più utile."</string>
     <string name="create_new_note_hint">"Sarebbe meglio scrivere la nota nella lingua locale oppure in inglese."</string>
-    <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie?"</string>
+    <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie larghe?"</string>
     <string name="quest_leaf_type_needles">"Aghi"</string>
     <string name="quest_leaf_type_broadleaved">"Foglie larghe"</string>
     <string name="quest_leaf_type_mixed">"Sono presenti entrambi"</string>
@@ -1326,6 +1326,29 @@ Spostarlo ora?"</string>
     <string name="quest_tactilePaving_steps_top">"Solo in cima"</string>
     <string name="quest_tactilePaving_steps_bottom">"Solo in fondo"</string>
     <string name="overlay_addresses_no_entrance">"Non è un'entrata…"</string>
-    <string name="quest_cycleway_value_sidewalk2">"condiviso-uso percorso"</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">"condiviso-uso percorso, entrambe direzioni"</string>
+    <string name="quest_cycleway_value_sidewalk2">"percorso condiviso"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"percorso condiviso, entrambe le direzioni"</string>
+    <string name="overlays_tutorial_title">"Livelli sovrapposti"</string>
+    <string name="overlays_tutorial_intro">"Hai trovato un nuovo modo per modificare i dati!"</string>
+    <string name="overlays_tutorial_display">"Ogni livello in sovrapposizione mostra un tipo di dati, per esempio negozi o superfici stradali.
+
+I dati sono evidenziati in colori differenti per dare un'idea generale di cosa è già stato inserito. I dati mancanti vengono mostrati in rosso."</string>
+    <string name="overlays_tutorial_edit">"Premi i dati evidenziati per mostrarli o modificarli. Puoi anche dividere way o lasciare note, come nei compiti.
+
+Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del bersaglio, come il livello \"Indirizzi\"."</string>
+    <string name="quest_crossing_kerb_height_title">"Qual è l'altezza del cordolo a questo attraversamento?"</string>
+    <string name="quest_maxheight_sign_title">"Quale limite di altezza è indicato qui?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quale limite di altezza è indicato sotto questo ponte?"</string>
+    <string name="quest_leave_new_note_as_answer">"In questo caso, devi lasciare una nota per spiegare la situazione."</string>
+    <string name="quest_drinking_water_type_title2">"C'è dell'acqua potabile qui? Se sì, qual è la fonte?"</string>
+    <string name="quest_is_amenity_inside_title">"È all'interno di un edificio?"</string>
+    <string name="quest_bbq_fuel_title">"Cosa dà energia a questa griglia?"</string>
+    <string name="quest_bbq_fuel_wood">"Legno"</string>
+    <string name="quest_bbq_fuel_electric">"Elettricità"</string>
+    <string name="quest_bbq_fuel_charcoal">"Carbone"</string>
+    <string name="inside">"all'interno"</string>
+    <string name="outside">"all'esterno"</string>
+    <string name="quest_recycling_type_food_waste">"Scarti di cibo"</string>
+    <string name="quest_defibrillator_location">"Dove è posizionato questo defibrillatore?"</string>
+    <string name="quest_defibrillator_location_description">"Per favore, fornisci una breve descrizione della posizione (es. \"Nell'androne\")."</string>
 </resources>

@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

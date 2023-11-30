@@ -40,16 +40,16 @@
     <string name="quest_noteDiscussion_anonymous">"Anonimamente"</string>
     <string name="confirmation_discard_title">"Rejeitar alterações?"</string>
     <string name="confirmation_discard_positive">"Rejeitar"</string>
-    <string name="action_download">"Pesquisar missões aqui"</string>
+    <string name="action_download">"Descarregar dados aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Não deu uma resposta"</string>
     <string name="close">"fechar"</string>
-    <string name="download_error">"Erro ao pesquisar missões"</string>
+    <string name="download_error">"Erro ao descarregar dados"</string>
     <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
     <string name="download_area_too_big">"Aproxime mais"</string>
-    <string name="confirmation_cancel_prev_download_title">"Parar a pesquisa atual e pesquisar antes nesta área?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Parar o descarregamento atual e descarregar antes nesta área?"</string>
     <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
-    <string name="no_location_permission_warning">"É preciso conceder a permissão de localização ao StreetComplete para este pesquisar missões nas suas redondezas."</string>
+    <string name="no_location_permission_warning">"É preciso conceder a permissão de localização ao StreetComplete para este poder descarregar dados nas suas redondezas."</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick e colaboradores"</string>
     <string name="about_title_repository">"Página do projeto"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"Tem de autorizar o acesso à sua conta no OpenStreetMap para enviar as suas alterações. Autorizar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
     <string name="version_banned_message">"Esta versão do StreetComplete é muito antiga. Faça a atualização!"</string>
-    <string name="no_gps_no_quests">"Para pesquisar missões automaticamente, ative a localização"</string>
+    <string name="no_gps_no_quests">"Para descarregar dados automaticamente, ative a localização"</string>
     <string name="later">"Mais tarde"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"É apenas uma ligação entre 2 estradas"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Outra coisa qualquer (deixar uma nota)"</string>
@@ -94,7 +94,7 @@ Não é possível editar de forma anónima no OpenStreetMap. Qualquer alteraçã
 
 &lt;b&gt;Localização&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-A aplicação não partilha a sua localização GPS com ninguém. Esta apenas é utilizada para determinar a sua localização no mapa e procurar missões na área em redor dessa localização em que se encontra.
+A aplicação não partilha a sua localização GPS com ninguém. Esta apenas é utilizada para determinar a sua localização no mapa e descarregar dados relativos à área em redor dessa localização em que se encontra.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Utilização de dados&lt;/b&gt;&lt;/p&gt;
@@ -140,7 +140,7 @@ A informação que submeter nesta aplicação é enviada diretamente para o Open
     <string name="crash_compose_email">"Compor email"</string>
     <string name="no_email_client">"Não tem nenhuma aplicação de emails."</string>
     <string name="pref_title_keep_screen_on">"Manter o ecrã ligado"</string>
-    <string name="download_server_error">"Erro de ligação ao pesquisar missões. Volte a tentar mais tarde."</string>
+    <string name="download_server_error">"Erro de ligação ao descarregar dados. Volte a tentar mais tarde."</string>
     <string name="upload_server_error">"Erro de ligação ao enviar as respostas. Volte a tentar mais tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Sim"</string>
     <string name="quest_generic_hasFeature_no">"Não"</string>
@@ -278,7 +278,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível pesquisar aqui. Tente aproximar a visualização com o botão + ou incline menos o mapa."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível descarregar dados aqui. Tente ampliar a visualização com o botão + ou incline menos o mapa."</string>
     <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
     <string name="quest_crossing_type_unmarked">"Sem marcas"</string>
     <string name="action_undo">"Desfazer"</string>
@@ -550,7 +550,7 @@ Dividir agora?"</string>
     <string name="quest_recycling_type_batteries">"Baterias"</string>
     <string name="quest_recycling_type_cans">"Latas"</string>
     <string name="quest_recycling_type_clothes">"Roupas"</string>
-    <string name="quest_recycling_type_green_waste">"Resíduos verdes"</string>
+    <string name="quest_recycling_type_green_waste">"Resíduos compostáveis / verdes"</string>
     <string name="quest_recycling_type_glass_bottles">"Garrafas e frascos de vidro"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Garrafas e frascos"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
@@ -571,8 +571,8 @@ Dividir agora?"</string>
     <string name="about_title_donate">"Doar"</string>
     <string name="about_summary_donate">"Mostre o seu apreço! ❤️"</string>
     <string name="about_description_donate">"Obrigado por considerar apoiar esta aplicação! Para ver os donativos atuais e fazer o seu donativo, toque na respetiva plataforma:"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Pesquisar antes aqui"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continuar a pesquisa atual"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Descarregar antes aqui"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuar o descarregamento atual"</string>
     <string name="quest_buildingType_garages_description">"Espaços separados para diferentes proprietários / inquilinos"</string>
     <string name="quest_tourism_information_title">"Que tipo de informação turística é esta?"</string>
     <string name="quest_tourism_information_office">"Posto turístico"</string>
@@ -1339,4 +1339,18 @@ Os dados em falta são sempre apresentados a vermelho."</string>
 
 Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira."</string>
     <string name="quest_crossing_kerb_height_title">"Qual é a altura dos passeios neste cruzamento?"</string>
+    <string name="quest_maxheight_sign_title">"Qual é o limite de altura indicado aqui?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Qual é o limite de altura por baixo da ponte indicado aqui?"</string>
+    <string name="quest_leave_new_note_as_answer">"Neste caso, é necessário que deixe uma nota a explicar a situação."</string>
+    <string name="quest_drinking_water_type_title2">"Existe aqui água potável? Em caso afirmativo, qual é a origem?"</string>
+    <string name="quest_is_amenity_inside_title">"Isto está dentro de um edifício?"</string>
+    <string name="quest_bbq_fuel_title">"Qual é a fonte de energia deste grelhador?"</string>
+    <string name="quest_bbq_fuel_wood">"Madeira"</string>
+    <string name="quest_bbq_fuel_electric">"Eletricidade"</string>
+    <string name="quest_bbq_fuel_charcoal">"Carvão"</string>
+    <string name="inside">"interior"</string>
+    <string name="outside">"exterior"</string>
+    <string name="quest_recycling_type_food_waste">"Desperdícios alimentares"</string>
+    <string name="quest_defibrillator_location">"Onde se encontra este desfibrilhador?"</string>
+    <string name="quest_defibrillator_location_description">"Forneça uma descrição concisa da sua localização (por exemplo, \"na sala do porteiro\")."</string>
 </resources>

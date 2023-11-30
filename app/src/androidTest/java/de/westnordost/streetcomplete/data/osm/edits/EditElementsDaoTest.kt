@@ -28,7 +28,6 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         // add...
         dao.put(9, listOf(
             ElementKey(ElementType.NODE, 0),
-            ElementKey(ElementType.NODE, 0),  // duplicate ignored
         ))
 
         dao.put(7, listOf(
@@ -43,7 +42,7 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         // get...
         assertTrue(dao.getAllByElement(ElementType.NODE, 0).containsExactlyInAnyOrder(listOf(9, 7)))
         assertTrue(dao.getAllByElement(ElementType.WAY, 1).containsExactlyInAnyOrder(listOf(7)))
-        assertTrue(dao.getAllByElement(ElementType.WAY, 3).containsExactlyInAnyOrder(listOf(3)))
+        assertTrue(dao.getAllByElement(ElementType.WAY, 2).containsExactlyInAnyOrder(listOf(3)))
 
         assertTrue(dao.getAllByElement(ElementType.WAY, 0).isEmpty())
         assertTrue(dao.getAllByElement(ElementType.NODE, 1).isEmpty())
