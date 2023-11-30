@@ -14,6 +14,9 @@ class AndroidPreferences(private val prefs: SharedPreferences) :
         prefs.registerOnSharedPreferenceChangeListener(this)
     }
 
+    override val keys: Set<String>
+        get() = prefs.all.keys
+
     override fun putBoolean(key: String, boolean: Boolean) {
         prefs.edit { putBoolean(key, boolean) }
     }
@@ -62,7 +65,7 @@ class AndroidPreferences(private val prefs: SharedPreferences) :
         return prefs.getString(key, null)
     }
 
-    override fun contains(key: String): Boolean {
+    override fun hasKey(key: String): Boolean {
         return prefs.contains(key)
     }
 

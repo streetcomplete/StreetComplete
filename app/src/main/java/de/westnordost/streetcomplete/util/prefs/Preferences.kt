@@ -5,6 +5,8 @@ interface Preferences {
         fun onPreferencesChanged(key: String)
     }
 
+    val keys: Set<String>
+
     fun putBoolean(key: String, boolean: Boolean)
     fun putInt(key: String, int: Int)
     fun putLong(key: String, long: Long)
@@ -19,11 +21,9 @@ interface Preferences {
     fun getDouble(key: String, defaultValue: Double): Double
     fun getStringOrNull(key: String): String?
 
-    fun contains(key: String): Boolean
+    fun hasKey(key: String): Boolean
     fun remove(key: String)
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
 }
-
-fun Preferences.containsAll(keys: List<String>): Boolean = keys.all { contains(it) }

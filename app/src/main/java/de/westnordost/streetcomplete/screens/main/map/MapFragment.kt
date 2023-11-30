@@ -39,7 +39,6 @@ import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.prefs.Preferences
-import de.westnordost.streetcomplete.util.prefs.containsAll
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -321,7 +320,7 @@ open class MapFragment :
     }
 
     private fun loadCameraPosition(): CameraPosition? {
-        if (!prefs.containsAll(listOf(
+        if (!prefs.keys.containsAll(listOf(
                 Prefs.MAP_LATITUDE,
                 Prefs.MAP_LONGITUDE,
                 Prefs.MAP_ROTATION,
