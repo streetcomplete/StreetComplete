@@ -22,7 +22,7 @@
         android:id="@+id/messageContainsEditTextLayout"
         style="?attr/textInputOutlinedStyle"
         android:hint="@string/label_log_message_contains"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,10 +42,8 @@
         android:id="@+id/newerThanEditTextLayout"
         style="?attr/textInputOutlinedStyle"
         android:hint="@string/label_log_newer_than"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageContainsEditTextLayout"
         android:layout_marginTop="16dp"
         app:startIconDrawable="@drawable/ic_calendar_month_24dp"
@@ -65,10 +63,8 @@
         android:id="@+id/olderThanEditTextLayout"
         style="?attr/textInputOutlinedStyle"
         android:hint="@string/label_log_older_than"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newerThanEditTextLayout"
         android:layout_marginTop="16dp"
         app:startIconDrawable="@drawable/ic_calendar_month_24dp"
@@ -98,9 +94,8 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/levelChipGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/levelLabel"
         android:layout_marginTop="4dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,19 @@ package de.westnordost.streetcomplete.quests
 import android.content.Context
 import android.graphics.Typeface
 import android.text.InputType
+import android.os.Build
+import android.os.LocaleList
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
@@ -319,6 +325,9 @@ class LocalizedNameAdapter(
             buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
             updateNameSuggestions()
             updateAbbreviations()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                updateHintLocales(Locale.forLanguageTag(languageTag))
+            }
 
             if (StreetCompleteApplication.preferences.getBoolean(Prefs.CAPS_WORD_NAME_INPUT, false))
                 input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE or InputType.TYPE_TEXT_FLAG_CAP_WORDS
@@ -348,6 +357,16 @@ class LocalizedNameAdapter(
                     abbreviationsByLocale?.get(Locale(localizedName.languageTag))
                 }
             }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.N)
+        private fun updateHintLocales(locale: Locale) {
+            if (locale.toString().isEmpty()) {
+                input.imeHintLocales = null
+            } else {
+                input.imeHintLocales = LocaleList(locale)
+            }
+            context.getSystemService<InputMethodManager>()?.restartInput(input)
         }
     }
 
