@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Typeface
 import android.os.Build
 import android.os.LocaleList
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
