@@ -141,7 +141,9 @@ class MapDataController internal constructor(
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
-        val bbox = geometryEntries.flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }.enclosingBoundingBox()
+        val bbox = (geometryEntries + getGeometries(mapDataUpdates.deleted))
+            .flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }
+            .enclosingBoundingBox()
         cache.noTrimPlus(bbox) // quest creation can trigger trim, so we need to set noTrim here
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
 
