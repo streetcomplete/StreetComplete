@@ -23,6 +23,7 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         or (${p}amenity = recycling and recycling_type = container)
         or ${p}leisure ~ picnic_table|firepit|fitness_station
         or ${p}man_made ~ water_tap|water_well|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter|surveillance|insect_hotel|snow_cannon|cairn
+        or ${p}man_made = street_cabinet and street_cabinet != postal_service
         or ${p}tourism ~ viewpoint|artwork|picnic_site
         or (${p}tourism = information and information ~ guidepost|board|map|terminal)
         or ${p}historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
@@ -31,7 +32,6 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         or ${p}advertising
         or ${p}leisure = pitch and sport ~ table_tennis|chess|table_soccer
         or ${p}natural ~ tree|tree_stump
-        or ${p}man_made = street_cabinet and street_cabinet != postal_service
         or ${p}boundary ~ marker
         )""")
 }
