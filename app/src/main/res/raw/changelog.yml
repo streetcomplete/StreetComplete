@@ -1,9 +1,24 @@
+v56.0: |
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>You can now view, filter and copy logs from within the app. (This helps finding issues.) (#5335), by @neonowy</li>
+  <li>Other small improvements (#5360), by @riQQ</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is there a sanitary dump station?</i> asked for caravan sites (#5363), by @qugebert</li>
+  </ul>
+  <h3>Quest Enhancements and Fixes</h3>
+  <ul>
+  <li>Other small improvements (#5332, #5371), thanks @catdogmat, @mnalis</li>
+  </ul>
+
 v55.1: |
   <h3>Quest Enhancements and Fixes</h3>
   <ul>
   <li>Charging station operator: Do not ask if the operator is not signed</li>
   <li>Indoor amenities: Don't consider roofs as indoor (#5337), by @qugebert</li>
-  <li>Crossing kerbs: Do not ask if the kerb on either side is already specified (#5374), by @FloEdelmann</li>
+  <li>Crossing kerbs: Do not ask if the kerbs on both sides are already specified (#5374), by @FloEdelmann</li>
   <li>Fix bike paths overlay: When leaving the contra-flow side of a oneway unspecified, also leave the oneway-for-cyclists status untouched (#5367)</li>
   <li>Fix display of max height, max speed and max weight signs in US, Canada and Australia (#5384)</li>
   <li>Speed limits: For trunk roads without speed limit signs, ask whether it is inside an urban area (#5378)</li>
