@@ -35,8 +35,13 @@ class StreetFurnitureOverlay(private val getFeature: (tags: Map<String, String>)
             .filter(IS_REGULAR_STREET_FURNITURE_EXPRESSION)
             .mapNotNull { element ->
                 val feature = getFeature(element.tags)
-                val iconIdentifier = feature?.icon
-                Log.wtf("XXXXXX", element.tags.toString())
+                val presetIcon = feature?.icon
+                val iconIdentifier =
+                    if (presetIcon != "") {
+                        presetIcon
+                    } else {
+                        "maki_marker_stroked"
+                    }
                 if ( iconIdentifier != null) {
                     val icon = "ic_preset_" + iconIdentifier.replace('-', '_')
                     val label = getNameLabel(element.tags)
