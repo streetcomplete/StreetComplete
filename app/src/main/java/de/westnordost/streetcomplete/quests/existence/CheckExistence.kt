@@ -35,6 +35,7 @@ class CheckExistence(
             or amenity = post_box
             or leisure = picnic_table
             or amenity = bbq
+            or amenity = car_sharing
             or leisure = firepit
             or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
             or leisure = fitness_station
