@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -170,10 +169,10 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             if (keyboardShowing) {
                 // setting layout params or requestLayout is unneeded? though some sources say it is...
                 binding.questsGrid.layoutParams.height = questIconWidth
-                binding.lastEditDate.layoutParams.height = 0
+                binding.elementInfo.layoutParams.height = 0
             } else {
                 binding.questsGrid.layoutParams.height = GridLayout.LayoutParams.WRAP_CONTENT
-                binding.lastEditDate.layoutParams.height = LayoutParams.WRAP_CONTENT
+                binding.elementInfo.layoutParams.height = LayoutParams.WRAP_CONTENT
             }
             minBottomInset = min(it.bottom, minBottomInset)
             if (keyboardShowing || activity?.currentFocus == null)
@@ -186,8 +185,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             DateFormat.getDateTimeInstance().format(date)
         else
             date.toString()
-        binding.lastEditDate.text = resources.getString(R.string.tag_editor_last_edited, dateText)
-        binding.lastEditDate.layoutParams.height = LayoutParams.WRAP_CONTENT
+        binding.elementInfo.text = resources.getString(R.string.tag_editor_last_edited, dateText)
+        binding.elementInfo.layoutParams.height = LayoutParams.WRAP_CONTENT
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
@@ -323,7 +322,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         binding.editTags.visibility = View.GONE
         binding.questsGrid.visibility = View.GONE
         binding.okButton.visibility = View.GONE
-        binding.lastEditDate.visibility = View.GONE
+        binding.elementInfo.visibility = View.GONE
 
         viewLifecycleScope.launch {
             // this thread waits while the quest form is showing
@@ -334,7 +333,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             val ch = changes
             binding.editTags.visibility = View.VISIBLE
             binding.questsGrid.visibility = View.VISIBLE
-            binding.lastEditDate.visibility = View.VISIBLE
+            binding.elementInfo.visibility = View.VISIBLE
             f.onClickClose {
                 parentFragmentManager.popBackStack()
                 changes = null

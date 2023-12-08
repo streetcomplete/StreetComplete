@@ -31,7 +31,7 @@ class InsertNodeTagEditor : TagEditor() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lastEditDate.text = arguments?.getString(ARG_FEATURE_NAME) ?: ""
+        binding.elementInfo.text = arguments?.getString(ARG_FEATURE_NAME) ?: ""
     }
 
     override fun applyEdit() {

@@ -53,7 +53,7 @@ class CreatePoiFragment : TagEditor() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lastEditDate.text = arguments?.getString(ARG_NAME) ?: ""
+        binding.elementInfo.text = arguments?.getString(ARG_NAME) ?: ""
         // set editorContainer top margin so the marker is always visible
         val p = binding.editorContainer.layoutParams as RelativeLayout.LayoutParams
         p.topMargin = (resources.displayMetrics.heightPixels - resources.getDimensionPixelOffset(R.dimen.quest_form_bottomOffset)) * 2 / 3

@@ -63,7 +63,7 @@ fun showOverlayCustomizer(
         layoutParams = ViewGroup.LayoutParams(ctx.dpToPx(100).toInt(), ctx.dpToPx(48).toInt())
     }
     val filterText = TextView(ctx).apply {
-        setText(R.string.custom_overlay_filter_info)
+        text = "${ctx.getString(R.string.custom_overlay_filter_info)} ℹ️"
         setPadding(5, 10, 5, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))
@@ -122,7 +122,7 @@ fun showOverlayCustomizer(
         }
     }
     val colorText = TextView(ctx).apply {
-        setText(R.string.custom_overlay_color_info)
+        text = "${ctx.getString(R.string.custom_overlay_color_info)} ℹ️"
         setPadding(5, 10, 5, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))

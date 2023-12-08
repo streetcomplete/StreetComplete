@@ -30,7 +30,7 @@
         <!-- need to set height 0 and then to wrap_content later
          otherwise it will be shown once at bottom and once where it should be -->
         <TextView
-            android:id="@+id/lastEditDate"
+            android:id="@+id/elementInfo"
             android:textAppearance="@style/TextAppearance.Title.Hint"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -43,7 +43,7 @@
             android:id="@+id/editTags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/lastEditDate"
+            android:layout_above="@id/elementInfo"
             android:paddingBottom="2dp"
             android:background="@color/background"
             tools:listitem="@layout/row_edit_tag" />

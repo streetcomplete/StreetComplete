@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
-import android.text.InputType
 import android.os.Build
 import android.os.LocaleList
 import android.text.InputType
