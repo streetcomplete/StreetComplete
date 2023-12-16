@@ -22,8 +22,8 @@ import kotlin.io.encoding.ExperimentalEncodingApi
  * Authorization flow:
  *
  * 1. createAuthorizationUrl() and open it in a browser (or web view)
- * 2. let user accept or deny the permission request in the browser. Authorization endpoint will
- *    call the redirect URI (aka callback URI) with parameters in either case.
+ * 2. let user accept or deny the permission request in the browser (or web view). Authorization
+ *    endpoint will call the redirect URI (aka callback URI) with parameters in either case.
  * 3. check if the URI received is for this instance with itsForMe(uri) and then
  *    extractAuthorizationCode(uri) from that URI
  * 4. retrieveAccessToken(authorizationCode) with the retrieved authorizationCode
@@ -107,7 +107,7 @@ import kotlin.io.encoding.ExperimentalEncodingApi
      * @throws OAuthConnectionException if the server reply is malformed or there is an issue with
      *                                   the connection
      */
-    fun retrieveAccessToken(authorizationCode: String): String {
+    fun retrieveAccessToken(authorizationCode: String): AccessTokenResponse {
         val url = accessTokenUrl + "?" + listOfNotNull(
             "grant_type" to "authorization_code",
             "client_id" to clientId,
@@ -124,16 +124,16 @@ import kotlin.io.encoding.ExperimentalEncodingApi
 
             if (connection.responseCode != HttpURLConnection.HTTP_OK) {
                 val body = connection.errorStream.bufferedReader().use { it.readText() }
-                val response = json.decodeFromString<ErrorResponse>(body)
+                val response = json.decodeFromString<ErrorResponseJson>(body)
                 throw OAuthException(response.error, response.error_description, response.error_uri)
             } else {
                 val body = connection.inputStream.bufferedReader().use { it.readText() }
-                val response = json.decodeFromString<AccessTokenResponse>(body)
+                val response = json.decodeFromString<AccessTokenResponseJson>(body)
                 if (response.token_type.lowercase() != "bearer") {
                     // hey! that's not what we asked for! (according to the RFC, the client MUST check this)
                     throw OAuthConnectionException("OAuth 2 token endpoint returned an unknown token type (${response.token_type})")
                 }
-                return response.access_token
+                return AccessTokenResponse(response.access_token, response.scope?.split(" "))
             }
         // if OSM server does not return valid JSON, it is the server's fault, hence
         } catch (e: SerializationException) {
@@ -144,24 +144,31 @@ import kotlin.io.encoding.ExperimentalEncodingApi
             throw OAuthConnectionException(cause = e)
         }
     }
-
-    @Serializable
-    private data class AccessTokenResponse(
-        val access_token: String,
-        val token_type: String,
-        // OSM does currently not issue refresh tokens and the access token has no expiry date, so
-        // we can ignore the below
-        val expires_in: Long? = null,
-        val refresh_token: String? = null,
-    )
-
-    @Serializable
-    private data class ErrorResponse(
-        val error: String,
-        val error_description: String? = null,
-        val error_uri: String? = null,
-    )
 }
+
+data class AccessTokenResponse(
+    val accessToken: String,
+    /** Granted scopes may be null if all requested scopes were granted */
+    val grantedScopes: List<String>? = null
+)
+
+@Serializable
+private data class AccessTokenResponseJson(
+    val access_token: String,
+    val token_type: String,
+    val scope: String? = null,
+    // OSM does currently not issue refresh tokens and the access token has no expiry date, so
+    // we can ignore the below
+    val expires_in: Long? = null,
+    val refresh_token: String? = null,
+)
+
+@Serializable
+private data class ErrorResponseJson(
+    val error: String,
+    val error_description: String? = null,
+    val error_uri: String? = null,
+)
 
 /**
  * Create the RFC 7636 Proof Key for Code Exchange from a random string.

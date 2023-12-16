@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_AUTHORIZATION_URL
 import de.westnordost.streetcomplete.data.user.OAUTH2_CLIENT_ID
 import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
+import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorization
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
@@ -119,10 +120,17 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
             binding.webView.visibility = View.INVISIBLE
 
             binding.progressView.visibility = View.VISIBLE
-            val accessToken = withContext(Dispatchers.IO) {
+            val accessTokenResponse = withContext(Dispatchers.IO) {
                 oAuth.retrieveAccessToken(authorizationCode)
             }
-            listener?.onOAuthSuccess(accessToken)
+            // not all requires scopes granted
+            if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
+                activity?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
+                listener?.onOAuthFailed(null)
+                return
+            }
+
+            listener?.onOAuthSuccess(accessTokenResponse.accessToken)
             binding.progressView.visibility = View.INVISIBLE
         } catch (e: Exception) {
             if (e is OAuthException) {
