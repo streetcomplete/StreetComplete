@@ -18,7 +18,7 @@ import org.koin.dsl.module
 private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
 
 val osmApiModule = module {
-    factory { Cleaner(get(), get(), get(), get()) }
+    factory { Cleaner(get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
     factory<MapDataApi> { MapDataApiImpl(get()) }
     factory<NotesApi> { NotesApiImpl(get()) }

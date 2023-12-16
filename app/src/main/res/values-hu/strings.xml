@@ -1343,4 +1343,9 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_bbq_fuel_wood">"Fa"</string>
     <string name="quest_bbq_fuel_electric">"Elektromos"</string>
     <string name="quest_bbq_fuel_charcoal">"Faszén"</string>
+    <string name="inside">"beltéren"</string>
+    <string name="outside">"kültéren"</string>
+    <string name="quest_recycling_type_food_waste">"Élelmiszer-hulladék"</string>
+    <string name="quest_defibrillator_location">"Hol található ez a defibrillátor?"</string>
+    <string name="quest_defibrillator_location_description">"Kérlek, add meg az elhelyezés tömör leírását (pl. „a portásfülkében”)."</string>
 </resources>

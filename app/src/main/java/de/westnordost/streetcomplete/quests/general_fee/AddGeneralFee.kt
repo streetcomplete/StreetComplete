@@ -12,7 +12,11 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-         (tourism = museum or leisure = beach_resort or tourism = gallery or tourism = caravan_site)
+         (
+           tourism ~ museum|gallery|caravan_site
+           or leisure = beach_resort
+           or amenity = sanitary_dump_station
+         )
          and access !~ private|no
          and !fee
     """
@@ -21,7 +25,12 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_fee
     override val achievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title2
+    override fun getTitle(tags: Map<String, String>) =
+     if (tags["amenity"] == "sanitary_dump_station") {
+         R.string.quest_generalFee_title
+     } else {
+         R.string.quest_generalFee_title2
+     }
 
     override fun createForm() = YesNoQuestForm()
 

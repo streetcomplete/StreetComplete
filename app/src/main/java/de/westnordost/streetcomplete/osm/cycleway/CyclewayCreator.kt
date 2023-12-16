@@ -83,12 +83,13 @@ private fun Tags.expandBareTagIntoSide(key: String, suffix: String = "", side: S
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
-    if (isOneway(tags) && isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)) {
-        tags["oneway:bicycle"] = "no"
-    } else {
+    val isNotOnewayForCyclistsNow = isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
+    if (!isOneway(tags) || isNotOnewayForCyclistsNow == false) {
         if (tags["oneway:bicycle"] == "no") {
             tags.remove("oneway:bicycle")
         }
+    } else if (isNotOnewayForCyclistsNow == true) {
+        tags["oneway:bicycle"] = "no"
     }
 }
 

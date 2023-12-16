@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import kotlin.test.Test
 import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class CyclewayKtTest {
@@ -62,12 +63,45 @@ class CyclewayKtTest {
         )
     }
 
+    @Test fun `not a oneway for cyclists is still not a oneway for cyclists when contra-flow side is not defined`() {
+        val noOnewayForCyclists = mapOf("oneway" to "yes", "oneway:bicycle" to "no")
+        val noOnewayForCyclistsReverse = mapOf("oneway" to "-1", "oneway:bicycle" to "no")
+        val forwardTrack = CyclewayAndDirection(TRACK, FORWARD)
+        val backwardTrack = CyclewayAndDirection(TRACK, BACKWARD)
+
+        assertNull(
+            LeftAndRightCycleway(null, null)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclists, false)
+        )
+        assertNull(
+            LeftAndRightCycleway(null, forwardTrack)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclists, false)
+        )
+        assertNull(
+            LeftAndRightCycleway(backwardTrack, null)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclistsReverse, false)
+        )
+
+        assertNull(
+            LeftAndRightCycleway(null, null)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclists, true)
+        )
+        assertNull(
+            LeftAndRightCycleway(forwardTrack, null)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclists, true)
+        )
+        assertNull(
+            LeftAndRightCycleway(null, backwardTrack)
+                .isNotOnewayForCyclistsNow(noOnewayForCyclistsReverse, true)
+        )
+    }
+
     @Test fun `not a oneway is no oneway for cyclists`() {
         assertTrue(
             LeftAndRightCycleway(
                 CyclewayAndDirection(NONE, BACKWARD),
                 CyclewayAndDirection(NONE, FORWARD)
-            ).isNotOnewayForCyclistsNow(mapOf(), false)
+            ).isNotOnewayForCyclistsNow(mapOf(), false)!!
         )
     }
 
@@ -76,7 +110,7 @@ class CyclewayKtTest {
             LeftAndRightCycleway(
                 CyclewayAndDirection(NONE, BACKWARD),
                 CyclewayAndDirection(NONE, FORWARD)
-            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)!!
         )
     }
 
@@ -85,7 +119,7 @@ class CyclewayKtTest {
             LeftAndRightCycleway(
                 CyclewayAndDirection(NONE, BACKWARD),
                 CyclewayAndDirection(NONE, FORWARD)
-            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)!!
         )
     }
 
@@ -94,70 +128,80 @@ class CyclewayKtTest {
             LeftAndRightCycleway(
                 CyclewayAndDirection(NONE, BACKWARD),
                 CyclewayAndDirection(TRACK, BOTH)
-            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)!!
         )
         assertTrue(
             LeftAndRightCycleway(
                 CyclewayAndDirection(TRACK, BOTH),
                 CyclewayAndDirection(NONE, FORWARD)
-            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+            ).isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)!!
         )
     }
 
     @Test fun `oneway is no oneway for cyclists when any cycleway goes in contra-flow direction`() {
+        val forwardTrack = CyclewayAndDirection(TRACK, FORWARD)
+        val backwardTrack = CyclewayAndDirection(TRACK, BACKWARD)
+
         assertTrue(
-            LeftAndRightCycleway(CyclewayAndDirection(TRACK, BACKWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+            LeftAndRightCycleway(backwardTrack, null)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)!!
         )
         assertTrue(
-            LeftAndRightCycleway(null, CyclewayAndDirection(TRACK, BACKWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
+            LeftAndRightCycleway(null, backwardTrack)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)!!
         )
         assertTrue(
-            LeftAndRightCycleway(CyclewayAndDirection(TRACK, FORWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+            LeftAndRightCycleway(forwardTrack, null)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)!!
         )
         assertTrue(
-            LeftAndRightCycleway(null, CyclewayAndDirection(TRACK, FORWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
+            LeftAndRightCycleway(null, forwardTrack)
+                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)!!
         )
     }
 
     @Test fun `oneway is a oneway for cyclists when separately mapped cycleway goes in contra-flow direction`() {
-        assertFalse(
-            LeftAndRightCycleway(CyclewayAndDirection(SEPARATE, BACKWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(null, CyclewayAndDirection(SEPARATE, BACKWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(CyclewayAndDirection(SEPARATE, FORWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(null, CyclewayAndDirection(SEPARATE, FORWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
-        )
+        // ... because direction of separate cycleway and no cycleway is ignored
+        val separate = CyclewayAndDirection(SEPARATE, BOTH)
+        val none = CyclewayAndDirection(NONE, BOTH)
+
+        for (isLeftHandTraffic in listOf(false, true)) {
+            for (oneway in listOf(mapOf("oneway" to "yes"), mapOf("oneway" to "-1"))) {
+                assertFalse(
+                    LeftAndRightCycleway(separate, none)
+                        .isNotOnewayForCyclistsNow(oneway, isLeftHandTraffic)!!
+                )
+                assertFalse(
+                    LeftAndRightCycleway(none, separate)
+                        .isNotOnewayForCyclistsNow(oneway, isLeftHandTraffic)!!
+                )
+            }
+        }
     }
 
     @Test fun `oneway is oneway for cyclists when no cycleway goes in contra-flow direction`() {
-        assertFalse(
-            LeftAndRightCycleway(CyclewayAndDirection(TRACK, FORWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(null, CyclewayAndDirection(TRACK, FORWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(CyclewayAndDirection(TRACK, BACKWARD), null)
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
-        )
-        assertFalse(
-            LeftAndRightCycleway(null, CyclewayAndDirection(TRACK, BACKWARD))
-                .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), false)
-        )
+        val forwardTrack = CyclewayAndDirection(TRACK, FORWARD)
+        val backwardTrack = CyclewayAndDirection(TRACK, BACKWARD)
+        // direction does not matter for NONE, best way to test that is to set BOTH
+        val none = CyclewayAndDirection(NONE, BOTH)
+
+        for (isLeftHandTraffic in listOf(false, true)) {
+            assertFalse(
+                LeftAndRightCycleway(forwardTrack, none)
+                    .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), isLeftHandTraffic)!!
+            )
+            assertFalse(
+                LeftAndRightCycleway(none, forwardTrack)
+                    .isNotOnewayForCyclistsNow(mapOf("oneway" to "yes"), isLeftHandTraffic)!!
+            )
+            assertFalse(
+                LeftAndRightCycleway(backwardTrack, none)
+                    .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), isLeftHandTraffic)!!
+            )
+            assertFalse(
+                LeftAndRightCycleway(none, backwardTrack)
+                    .isNotOnewayForCyclistsNow(mapOf("oneway" to "-1"), isLeftHandTraffic)!!
+            )
+        }
     }
 }

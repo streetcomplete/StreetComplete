@@ -1339,4 +1339,14 @@
     <string name="quest_crossing_kerb_height_title">"Колико је висок ивичњак на овом прелазу?"</string>
     <string name="quest_maxheight_sign_title">"Која максимална висина је овде наведена?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Која максимална висина је наведена испод моста?"</string>
+    <string name="quest_drinking_water_type_title2">"Да ли овде има воде за пиће? Ако има, каквог типа је извор?"</string>
+    <string name="quest_is_amenity_inside_title">"Да ли је унутар изграђеног објекта?"</string>
+    <string name="quest_bbq_fuel_title">"Како се користи овај роштиљ?"</string>
+    <string name="quest_bbq_fuel_wood">"На дрва"</string>
+    <string name="quest_bbq_fuel_electric">"На струју"</string>
+    <string name="quest_bbq_fuel_charcoal">"На ћумур"</string>
+    <string name="inside">"унутар"</string>
+    <string name="outside">"споља"</string>
+    <string name="quest_recycling_type_food_waste">"На био отпад"</string>
+    <string name="quest_defibrillator_location">"Где се налази овај дефибрилатор?"</string>
 </resources>

@@ -1353,4 +1353,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="inside">"inside"</string>
     <string name="outside">"outside"</string>
     <string name="quest_recycling_type_food_waste">"Food waste"</string>
+    <string name="quest_defibrillator_location">"Where is this defibrillator located?"</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 </resources>

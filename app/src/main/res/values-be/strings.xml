@@ -1330,4 +1330,28 @@
     <string name="overlay_addresses_no_entrance">"Гэта не ўваход…"</string>
     <string name="quest_cycleway_value_sidewalk2">"Шлях агульнага карыстання"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Шлях агульнага карыстання ў абодва бакі"</string>
+    <string name="overlays_tutorial_title">"Накладкi"</string>
+    <string name="overlays_tutorial_intro">"Вы знайшлі новы спосаб рэдагавання даных!"</string>
+    <string name="overlays_tutorial_display">"Кожная накладка адлюстроўвае адзін тып даных, напрыклад, крамы або вулічныя паверхні.
+
+Дадзеныя вылучаюцца рознымі колерамі, каб даць вам добры агляд таго, што было запісана да гэтага часу.
+Адсутныя даныя заўсёды паказваюцца чырвоным колерам."</string>
+    <string name="overlays_tutorial_edit">"Дакраніцеся да любых вылучаных даных, каб паказаць або адрэдагаваць іх. Вы таксама можаце падзяліць шляхі або зрабіць справаздачу, як у квэстах.
+
+Акрамя таго, некаторыя накладкі дазваляюць дадаваць новыя даныя ў месцы паказанага крыжыка, напрыклад, накладанне адрасоў."</string>
+    <string name="quest_crossing_kerb_height_title">"Якая вышыня бардзюраў у гэтым месцы?"</string>
+    <string name="quest_maxheight_sign_title">"Якая мяжа вышыні тут пазначана?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Якое абмежаванне вышыні пазначана пад мостам?"</string>
+    <string name="quest_leave_new_note_as_answer">"У гэтым выпадку трэба пакінуць нататку, у якой растлумачыць сітуацыю."</string>
+    <string name="quest_drinking_water_type_title2">"Тут ёсць пітная вада? Калі так, то ў якім выглядзе?"</string>
+    <string name="quest_is_amenity_inside_title">"Гэта ўнутры будынка?"</string>
+    <string name="quest_bbq_fuel_title">"На чым працуе гэты грыль?"</string>
+    <string name="quest_bbq_fuel_wood">"Дрэва"</string>
+    <string name="quest_bbq_fuel_electric">"Электра"</string>
+    <string name="quest_bbq_fuel_charcoal">"Вугаль"</string>
+    <string name="inside">"унутры"</string>
+    <string name="outside">"звонку"</string>
+    <string name="quest_recycling_type_food_waste">"Харчовыя адходы"</string>
+    <string name="quest_defibrillator_location">"Дзе знаходзіцца гэты дэфібрылятар?"</string>
+    <string name="quest_defibrillator_location_description">"Калі ласка, дайце кароткае апісанне яго становішча (напрыклад, «у партэры»)."</string>
 </resources>

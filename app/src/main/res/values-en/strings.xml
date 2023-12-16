@@ -162,7 +162,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
-    <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
+    <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
 
