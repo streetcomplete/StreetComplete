@@ -11,9 +11,9 @@ import java.net.URLEncoder
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
-import kotlin.test.assertFalse
 
 class OAuthAuthorizationTest {
     @Test fun createAuthorizationUrl() {
@@ -116,7 +116,7 @@ private fun createOAuth() = OAuthAuthorization(
     "https://test.me/auth",
     "https://test.me/token",
     "ClientId %#+!",
-    listOf("one!","2","THREE+(1/2)"),
+    listOf("one!", "2", "THREE+(1/2)"),
     "localhost://oauth"
 )
 

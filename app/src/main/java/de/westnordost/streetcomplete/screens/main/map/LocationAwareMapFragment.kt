@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore

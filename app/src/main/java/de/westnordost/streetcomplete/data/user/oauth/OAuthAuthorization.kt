@@ -186,9 +186,9 @@ private fun createPKCE_S256CodeChallenge(codeVerifier: String): String {
 private fun Iterable<Pair<String, String>>.toUrlParameters(): String =
     joinToString("&") { (k, v) -> k + "=" + URLEncoder.encode(v, "US-ASCII") }
 
-private fun createRandomAlphanumericString(length: Int) : String {
+private fun createRandomAlphanumericString(length: Int): String {
     val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
-    return (0 ..< length).map { allowedChars.random() }.joinToString("")
+    return (0 until length).map { allowedChars.random() }.joinToString("")
 }
 
 private fun URI.getQueryParameters(): Map<String, String> =
