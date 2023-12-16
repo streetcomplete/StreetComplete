@@ -13,7 +13,7 @@ class UserLoginStatusController(
     private val listeners = Listeners<UserLoginStatusSource.Listener>()
 
     override val isLoggedIn: Boolean get() =
-        prefs.getString(Prefs.OAUTH2_ACCESS_TOKEN, null) != null
+        prefs.getStringOrNull(Prefs.OAUTH2_ACCESS_TOKEN) != null
 
     fun logIn(accessToken: String) {
         prefs.putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)

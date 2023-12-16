@@ -125,11 +125,11 @@ class StreetCompleteApplication : Application() {
                 urlConfigModule
             )
         }
-        
+
         setLoggerInstances()
 
         /* Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2 */
-        if (prefs.getString(Prefs.OAUTH1_ACCESS_TOKEN, null) != null) {
+        if (prefs.getStringOrNull(Prefs.OAUTH1_ACCESS_TOKEN) != null) {
             userLoginStatusController.logOut()
         }
 
