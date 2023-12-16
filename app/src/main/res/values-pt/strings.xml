@@ -114,12 +114,12 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="quest_surface_value_dirt">"Terra batida"</string>
     <string name="quest_surface_value_fine_gravel">"Gravilha"</string>
     <string name="quest_surface_value_grass">"Erva"</string>
-    <string name="quest_surface_value_grass_paver">"Blocos cimento com buracos no meio"</string>
+    <string name="quest_surface_value_grass_paver">"Blocos cimento ou argamassa permeáveis (com buracos)"</string>
     <string name="quest_surface_value_gravel">"Cascalho"</string>
-    <string name="quest_surface_value_paving_stones">"Blocos de cimento/pedra/argamassa"</string>
+    <string name="quest_surface_value_paving_stones">"Blocos de pavimentação (cimento, pedra, tijolo, argamassa...)"</string>
     <string name="quest_surface_value_pebblestone">"Seixos"</string>
     <string name="quest_surface_value_sand">"Areia"</string>
-    <string name="quest_surface_value_sett">"Paralelos"</string>
+    <string name="quest_surface_value_sett">"Paralelos / paralelepípedos"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_sidewalk_title">"Esta estrada tem passeio?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde fica esta rua?"</string>
@@ -306,13 +306,13 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="about_category_feedback">"Reportar erros e comentários"</string>
     <string name="quest_leave_new_note_photo">"Anexar fotografia"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Quer eliminar esta fotografia?"</string>
-    <string name="quest_cycleway_value_track">"ciclovia separada ou faixa na estrada com separador"</string>
-    <string name="quest_cycleway_value_lane">"faixa de ciclovia na estrada"</string>
+    <string name="quest_cycleway_value_track">"ciclovia separada ou corredor na estrada com separador"</string>
+    <string name="quest_cycleway_value_lane">"corredor de ciclovia na estrada"</string>
     <string name="quest_cycleway_value_none">"nenhuma"</string>
-    <string name="quest_cycleway_value_shared">"via explicitamente partilhada com outros veículos"</string>
-    <string name="quest_cycleway_value_bus_lane">"partilhada com a via para autocarros"</string>
+    <string name="quest_cycleway_value_shared">"corredor explicitamente partilhado com outros veículos"</string>
+    <string name="quest_cycleway_value_bus_lane">"partilhada com o corredor de autocarros"</string>
     <string name="quest_leave_new_note_create_image_error">"Não foi possível criar o ficheiro da fotografia"</string>
-    <string name="quest_cycleway_value_lane_dual">"faixa de ciclovia, em ambas as direções"</string>
+    <string name="quest_cycleway_value_lane_dual">"corredor de ciclovia, em ambas as direções"</string>
     <string name="quest_cycleway_value_track_dual">"ciclovia separada da estrada, em ambas as direções"</string>
     <string name="pref_category_advanced">"Avançado"</string>
     <string name="quest_enabled">"Ativado"</string>
@@ -346,7 +346,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="create_new_note_description">"Pode deixar uma nota para informar outros mapeadores que existe um problema aqui. Ajuste a posição da nota movendo o mapa:"</string>
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
-    <string name="quest_cycleway_title2">"Há uma ciclovia numa via dedicada ou numa faixa da estrada aqui? De que tipo?"</string>
+    <string name="quest_cycleway_title2">"Há uma ciclovia numa via dedicada ou num corredor da estrada aqui? De que tipo?"</string>
     <string name="quest_bridge_structure_title">"Qual é a estrutura desta ponte?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Por fio (LAN)"</string>
@@ -370,7 +370,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_religion_chinese_folk">"Religião tradicional chinesa"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Qual é a religião representada neste nicho (alminhas ou capelinha)?"</string>
     <string name="quest_parking_fee_title">"Este estacionamento é pago?"</string>
-    <string name="quest_surface_value_unhewn_cobblestone">"Paralelos toscos (não lisos irregulares)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Pedras toscas (não lisas e irregulares)"</string>
     <string name="quest_streetSurface_square_title">"Qual é o tipo de pavimento desta praça?"</string>
     <string name="quest_fee_answer_hours">"Depende da hora e dia…"</string>
     <string name="quest_fee_add_times">"Adicionar horário"</string>
@@ -403,12 +403,12 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_residential">"Residencial"</string>
     <string name="quest_buildingType_residential_description">"um edifício onde vivem pessoas"</string>
     <string name="quest_buildingType_house">"Casa"</string>
-    <string name="quest_buildingType_apartments_description">"casa de várias famílias, pode ter lojas no rés-do-chão"</string>
+    <string name="quest_buildingType_apartments_description">"edifício de várias habitações, pode ter lojas no rés-do-chão"</string>
     <string name="quest_buildingType_apartments">"Bloco de apartamentos"</string>
     <string name="quest_buildingType_detached">"Casa separada"</string>
     <string name="quest_buildingType_detached_description">"casa unifamiliar sem paredes partilhadas com outras casas"</string>
     <string name="quest_buildingType_semi_detached">"Casa semi-separada"</string>
-    <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em banda com paredes partilhadas"</string>
+    <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em sequência e com paredes partilhadas"</string>
     <string name="quest_buildingType_hotel">"Edifício de um hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
@@ -432,7 +432,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_pagoda">"Pagode"</string>
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifício público"</string>
-    <string name="quest_buildingType_civic_description">"onde se encontra normalmente um organismo/serviço público"</string>
+    <string name="quest_buildingType_civic_description">"onde se encontra um organismo/serviço público"</string>
     <string name="quest_buildingType_kindergarten">"Edifício de um infantário"</string>
     <string name="quest_buildingType_school">"Edifício de uma escola"</string>
     <string name="quest_buildingType_college">"Edifício de um colégio"</string>
@@ -450,7 +450,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_parking">"Edifício-garagem para estacionamento de carros (silo)"</string>
     <string name="quest_buildingType_farm">"Numa quinta"</string>
     <string name="quest_buildingType_farmhouse">"Casa de quinta"</string>
-    <string name="quest_buildingType_farmhouse_description">"o edifício residencial numa quinta"</string>
+    <string name="quest_buildingType_farmhouse_description">"edifício residencial numa quinta"</string>
     <string name="quest_buildingType_farm_auxiliary">"Edifício de uma quinta"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"qualquer edifício numa quinta que não seja um edifício residencial"</string>
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
@@ -489,7 +489,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_noteDiscussion_hide2">"Ocultada por %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a uma nota são enviadas para o meu servidor e eliminadas alguns dias após a nota ser resolvida. Os meta-dados das fotografias são eliminados antes de serem enviadas.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desmarcar tudo"</string>
-    <string name="quest_buildingType_retail_description">"incluindo edifícios de restaurantes, cafés, lojas…"</string>
+    <string name="quest_buildingType_retail_description">"edifícios de restaurantes, cafés, lojas…"</string>
     <string name="quest_openingHours_timeSelect_next">"Seguinte"</string>
     <string name="quest_tracktype_title">"Qual é a firmeza da superfície deste trilho?"</string>
     <string name="quest_tracktype_grade1">"Pavimentado"</string>
@@ -506,7 +506,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
     <string name="on_level">"no piso %s"</string>
     <string name="underground">"subterrâneo"</string>
-    <string name="quest_sidewalk_value_yes">"passeio"</string>
+    <string name="quest_sidewalk_value_yes">"com passeio"</string>
     <string name="quest_sidewalk_value_no">"sem passeio"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi etiquetada como não tendo passeio em nenhum dos lados. Caso tenha passeio, mas este está mapeado em 1 ou 2 linhas à parte de via pedonal, responda \"passeio\"."</string>
@@ -721,7 +721,7 @@ conquista"</string>
     <string name="quest_board_type_map_description">"Se o painel for sobre um determinado tema, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de percursos de autocarro. Se o tema não existir nas respostas possíveis, deixe antes uma nota a especificar."</string>
     <string name="quest_surface_detailed_answer_impossible">"Várias superfícies…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Tem certeza de que é impossível especificar a superfície? Considere a opção de resposta \"Difere ao longo da via\", que permite cortar a via onde a superfície muda. Use a opção \"Não sei\" se houver uma única superfície, mas não estiver disponível na lista de respostas."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifique com clareza o tipo de superfície aqui, por exemplo \"areia com algumas partes em paralelos\". O texto é limitado a 255 caracteres."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifique com clareza o tipo de superfície aqui, por exemplo \"areia e algumas partes em pedras irregulares\". O texto é limitado a 255 caracteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Conjunto de casas em banda"</string>
     <string name="at_housename">"nome do edifício %s"</string>
@@ -796,7 +796,7 @@ conquista"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de lancil"</string>
     <string name="quest_lanes_answer_lanes_description2">"Indique o número total de vias de trânsito marcadas (incluindo ambas as direções) que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Indique o número total de vias de trânsito marcadas que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros."</string>
-    <string name="quest_surface_value_rock">"Pedra"</string>
+    <string name="quest_surface_value_rock">"Pedras toscas amontoadas (trilhos montanhosos)"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Camiões altos podem passar"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Camiões altos não cabem"</string>
     <string name="quest_crossing_type_marked">"Com marcas"</string>
@@ -816,11 +816,11 @@ conquista"</string>
     <string name="quest_lanes_answer_lanes_odd2">"O número de vias de trânsito é diferente nos 2 sentidos"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Este tipo de missão está desativada de origem porque não é útil em algumas regiões e provavelmente terá que entrar no local para poder responder a uma missão deste tipo."</string>
     <string name="quest_dietType_explanation_kosher">"Produtos Kosher devem ser preparados de acordo com regras especiais, com agências de certificação kashrut marcando os produtos em conformidade."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Sem nenhuma ciclovia separada ou na faixa da estrada"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Sem nenhuma ciclovia separada nem corredor na estrada"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como normalmente, toque num lado da ilustração, selecione uma resposta adequada e faça o mesmo para o outro lado.
 
 Veja todas as opções disponíveis: alguns casos não são óbvios, como uma estrada de sentido único que permite ciclistas em ambas as direções!"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecionando que não há ciclovia separada ou na faixa da estrada"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecionar que não existe uma ciclovia ou via para bicicletas"</string>
     <string name="quest_construction_completed_at_known_date">"Será concluída em…"</string>
     <string name="quest_construction_completion_date_title">"Quando termina a construção?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
@@ -889,7 +889,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_policeType_title">"Que tipo de esquadra da polícia é esta?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Convertido num portão abertura por encosto"</string>
     <string name="quest_stile_type_title">"Qual é o tipo de passagem em degraus sobre a vedação aqui?"</string>
-    <string name="quest_buildingType_semi_detached_description2">"casas unifamiliares contíguas"</string>
+    <string name="quest_buildingType_semi_detached_description2">"edifício composto por 2 habitações contíguas que partilham 1 parede"</string>
     <string name="pref_title_quests2">"Visibilidade e ordem das missões"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d ativadas"</string>
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
@@ -913,7 +913,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="pref_quests_deselect_all">"Desselecionar todas as missões?"</string>
     <string name="quest_buildingType_boathouse">"Barco-casa"</string>
     <string name="quest_buildingType_allotment_house">"Barraco de horta"</string>
-    <string name="quest_buildingType_grandstand">"Tribuna principal"</string>
+    <string name="quest_buildingType_grandstand">"Arquibancada (local dos espectadores)"</string>
     <string name="action_search">"Pesquisar"</string>
     <string name="action_manage_presets">"Gerir conjuntos de missões"</string>
     <string name="team_mode_team_size_label2">"Quantas pessoas estão a mapear? Introduza o mesmo número nos telemóveis de toda a gente."</string>
@@ -1044,7 +1044,7 @@ Como alternativa, pode deixar uma nota (com uma fotografia)."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Compactado, muito pouco cascalho ou areia soltos"</string>
     <string name="quest_barrier_path_intersection">"Como é que este caminho se cruza com a barreira aqui?"</string>
     <string name="quest_barrier_road_intersection">"Como é que esta estrada atravessa a barreira aqui?"</string>
-    <string name="quest_sidewalk_value_separate">"passeio, mas mostrado em separado no mapa"</string>
+    <string name="quest_sidewalk_value_separate">"com passeio, mas assinalado noutra linha no mapa"</string>
     <string name="quest_shoulder_value_yes">"berma"</string>
     <string name="quest_shoulder_value_no">"sem berma"</string>
     <string name="no_camera_permission_warning_title">"Permissão da câmara"</string>
@@ -1257,7 +1257,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_bicycle_parking_type_two_tier">"Suporte de bicicletas de dois níveis"</string>
     <string name="user_profile_current_week_title">"Últimos 7 dias"</string>
     <string name="user_profile_dates_mapped">"Dias que mapeou recentemente"</string>
-    <string name="quest_cycleway_value_advisory_lane">"via recomendada para bicicletas"</string>
+    <string name="quest_cycleway_value_advisory_lane">"corredor recomendado para bicicletas"</string>
     <string name="urlconfig_scan_qr_code_again2">"Após instalar a aplicação, digitalize o código QR novamente ou clique &lt;a href=\"%s\"&gt;nesta hiperligação&lt;/a&gt; para aplicar o modelo."</string>
     <string name="confirmation_replace_shop_title">"Agora é um sítio diferente?"</string>
     <string name="confirmation_replace_shop_message">"Nesse caso, o horário de abertura, contactos, etc. terão de ser também alterados."</string>
@@ -1273,16 +1273,16 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_cycleway_value_shoulder">"nenhum, mas a berma é utilizada por ciclistas"</string>
     <string name="quest_placeName_no_name_answer">"Não existe placa toponímica…"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Esta largura, não é plausível. Tenha em conta que deverá ser a largura de lancil a lancil, incluindo os lugares de estacionamentos, ciclovias, etc."</string>
-    <string name="overlay_cycleway">"Caminhos para bicicletas"</string>
+    <string name="overlay_cycleway">"Ciclovias"</string>
     <string name="bicycle_boulevard_is_a">"É %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Ciclovia"</string>
     <string name="separate_cycleway_no">"Sem ciclovia"</string>
     <string name="separate_cycleway_allowed">"São permitidos ciclistas"</string>
     <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (mas podem ser permitidos)"</string>
-    <string name="separate_cycleway_non_segregated">"Caminho com espaço partilhado"</string>
-    <string name="separate_cycleway_segregated">"Caminho pedonal e de bicicleta separados"</string>
-    <string name="separate_cycleway_exclusive">"Caminho apenas para ciclistas"</string>
+    <string name="separate_cycleway_non_segregated">"Via partilhada"</string>
+    <string name="separate_cycleway_segregated">"Via pedonal e de bicicleta separadas"</string>
+    <string name="separate_cycleway_exclusive">"Via apenas para ciclistas"</string>
     <string name="separate_cycleway_with_sidewalk">"Apenas para bicicleta com um passeio adjacente ou separado por lancil"</string>
     <string name="cycleway_reverse_direction">"Inverter direção da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção."</string>

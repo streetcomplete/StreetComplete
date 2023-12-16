@@ -339,9 +339,6 @@
                 "brand": {
                     "label": "品牌"
                 },
-                "brewery": {
-                    "label": "生啤"
-                },
                 "bridge": {
                     "label": "種類",
                     "placeholder": "預設"
@@ -585,7 +582,6 @@
                         "lebanese": "黎巴嫩料理",
                         "malaysian": "馬來西亞料理",
                         "mexican": "墨西哥料理",
-                        "pankcake": "鬆餅",
                         "pasta": "意粉",
                         "pizza": "意大利薄餅",
                         "polish": "波蘭料理",
@@ -1007,15 +1003,7 @@
                     "label": "籃框數量",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "盛裝舞步",
-                    "options": {
-                        "equestrian": "是",
-                        "undefined": "否"
-                    }
-                },
                 "horse_riding": {
-                    "label": "騎馬",
                     "options": {
                         "horse_riding": "是",
                         "undefined": "否"
@@ -1027,13 +1015,6 @@
                         "common": "容易：沒有問題或困難度。（預設）"
                     },
                     "placeholder": "危險, 困難..."
-                },
-                "horse_stables": {
-                    "label": "馬廄",
-                    "options": {
-                        "stables": "是",
-                        "undefined": "否"
-                    }
                 },
                 "hot_water": {
                     "label": "熱水"

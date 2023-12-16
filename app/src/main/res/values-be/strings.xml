@@ -1354,4 +1354,19 @@
     <string name="quest_recycling_type_food_waste">"Харчовыя адходы"</string>
     <string name="quest_defibrillator_location">"Дзе знаходзіцца гэты дэфібрылятар?"</string>
     <string name="quest_defibrillator_location_description">"Калі ласка, дайце кароткае апісанне яго становішча (напрыклад, «у партэры»)."</string>
+    <string name="quest_sanitary_dump_station_title">"Ці ёсць тут санстанцыя?"</string>
+    <string name="quest_sanitary_dump_station_description">"Аб'ект для захоўвання чалавечых адходаў з туалетнага бака аўтадома, далёкіх грузавікоў і г.д. Звычайна пазначаецца такім знакам:"</string>
+    <string name="quest_generalFee_title">"Вам трэба плаціць, каб выкарыстоўваць гэта?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Гэта супрацьпажарны корпус"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Пажарныя агароджы не маюць паверхні для гатавання (напрыклад, рашоткі/пліты), у адрозненне ад грыляў."</string>
+    <string name="about_title_logs">"Лог (%1$d)"</string>
+    <string name="about_summary_logs">"для выкарыстання ў справаздачах аб памылках"</string>
+    <string name="action_filter">"Фiльтар"</string>
+    <string name="action_share">"Падзялiцца логам"</string>
+    <string name="about_title_show_logs">"Праглядзець лог"</string>
+    <string name="label_log_level">"Узровень лога"</string>
+    <string name="label_log_newer_than">"Ад"</string>
+    <string name="label_log_older_than">"Да"</string>
+    <string name="label_log_message_contains">"Паведамленне змяшчае"</string>
+    <string name="title_logs_filters">"Фільтраваць паведамленні"</string>
 </resources>

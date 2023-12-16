@@ -534,10 +534,6 @@
                     "label": "Merk",
                     "terms": "merk,handelsmerk"
                 },
-                "brewery": {
-                    "label": "Brouwerijen waarvan bier beschikbaar",
-                    "terms": "brouwerijen"
-                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Standaard"
@@ -1053,7 +1049,6 @@
                         "lebanese": "Libanees",
                         "malaysian": "Maleisisch",
                         "mexican": "Mexicaans",
-                        "pankcake": "Pannenkoek",
                         "pasta": "Pasta",
                         "peruvian": "Peruaans",
                         "pizza": "Pizza",
@@ -1603,7 +1598,7 @@
                 "generator/method": {
                     "label": "Methode",
                     "options": {
-                        "anaerobic_digestion": "Anaërobe vergisting",
+                        "anaerobic_digestion": "Anaerobe vergisting",
                         "barrage": "Getijdenstuwdam",
                         "combustion": "Verbranding",
                         "fission": "Kernsplijting",
@@ -1650,7 +1645,7 @@
                 "genus": {
                     "label": "Geslacht",
                     "placeholder": "Acer, Platanus, Quercus …",
-                    "terms": "gelacht,soort"
+                    "terms": "geslacht,soort"
                 },
                 "geyser/height": {
                     "label": "Uitbarstingshoogte"
@@ -1694,7 +1689,7 @@
                         "birthing_centre": "Geboortecentrum",
                         "blood_bank": "Bloedbank",
                         "blood_donation": "Centrum voor bloeddonatie",
-                        "clinic": "Dagbehandelcentrum",
+                        "clinic": "Dagbehandelingscentrum",
                         "community_health_worker": "Gemeenschapsgezondheidswerker",
                         "counselling": "Adviescentrum",
                         "dentist": "Tandarts",
@@ -1857,15 +1852,7 @@
                     "label": "Lussen",
                     "placeholder": "1, 2, 4 …"
                 },
-                "horse_dressage": {
-                    "label": "Dressuur",
-                    "options": {
-                        "equestrian": "Ja",
-                        "undefined": "Nee"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Paardrijden",
                     "options": {
                         "horse_riding": "Ja",
                         "undefined": "Nee"
@@ -1883,13 +1870,6 @@
                     },
                     "placeholder": "Moeilijk, Gevaarlijk …",
                     "terms": "paarden,moeilijkheid"
-                },
-                "horse_stables": {
-                    "label": "Rijstal",
-                    "options": {
-                        "stables": "Ja",
-                        "undefined": "Nee"
-                    }
                 },
                 "hot_water": {
                     "label": "Heet water"
@@ -2254,7 +2234,7 @@
                 "mtb/scale/imba": {
                     "label": "IMBA-route-moeilijkheidsgraad",
                     "options": {
-                        "0": "⚪ Zeer envoudig (witte cirkel)",
+                        "0": "⚪ Zeer eenvoudig (witte cirkel)",
                         "1": "🟢 Eenvoudig (groene cirkel)",
                         "2": "🟦 Gemiddeld (blauw vierkant)",
                         "3": "◆ Moeilijk (zwarte ruit)",
@@ -2906,20 +2886,6 @@
                 "route_master": {
                     "label": "Type"
                 },
-                "royal_cypher": {
-                    "label": "Koninklijk monogram",
-                    "options": {
-                        "CIIIR": "CIIIR (Charles III)",
-                        "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIR (Edward VII)",
-                        "GR": "GR (George V)",
-                        "GVIR": "GVIR (George VI)",
-                        "VR": "VR (Victoria)",
-                        "no": "Nee",
-                        "scottish_crown": "Schotse Kroon"
-                    }
-                },
                 "ruins": {
                     "label": "Type"
                 },
@@ -3057,7 +3023,7 @@
                 },
                 "seamark/type": {
                     "label": "Scheepvaartobject",
-                    "terms": "zee,herkennispunt,scheepvaart"
+                    "terms": "zee,herkenningspunt,scheepvaart"
                 },
                 "seamark/wreck/category": {
                     "label": "Categorie"
@@ -3126,7 +3092,7 @@
                 },
                 "shower": {
                     "label": "Douches",
-                    "terms": "douche,sanitair,wassen,storbad,kraan"
+                    "terms": "douche,sanitair,wassen,stortbad,kraan"
                 },
                 "siren/purpose": {
                     "label": "Doel"
@@ -3153,7 +3119,7 @@
                         "yes": "Overal toegestaan"
                     },
                     "placeholder": "Nee, Gescheiden, Ja …",
-                    "terms": "roken,sigaret,pijp,vapen,rook,sigaar,tabac,waterpijp"
+                    "terms": "roken,sigaret,pijp,vapen,rook,sigaar,tabak,waterpijp"
                 },
                 "smoothness": {
                     "label": "Effenheid",
@@ -3212,7 +3178,7 @@
                         "streetlevel imagery": "Foto's op straatniveau",
                         "survey": "Bekeken"
                     },
-                    "terms": "bronnen,refrentie,opzoeking"
+                    "terms": "bronnen,referentie,opzoeking"
                 },
                 "species": {
                     "label": "Soort",
@@ -3301,7 +3267,7 @@
                 },
                 "step_count": {
                     "label": "Aantal treden",
-                    "terms": "aantal,treden,hoeveelheid,opstap,tredes,trede"
+                    "terms": "aantal,hoeveelheid,opstap,afstap,traptrede,trede,traptree,tree,plank"
                 },
                 "stile": {
                     "label": "Type"
@@ -3361,7 +3327,7 @@
                 },
                 "supervised": {
                     "label": "Onder toezicht",
-                    "terms": "bawaakt,bewaking"
+                    "terms": "bewaakt,bewaking"
                 },
                 "support": {
                     "label": "Bevestiging",
@@ -3398,7 +3364,7 @@
                 "surveillance/type": {
                     "label": "Type bewaking",
                     "options": {
-                        "ALPR": "Automatische kentekenplaat herkening",
+                        "ALPR": "Automatische kentekenplaat herkenning",
                         "camera": "Camera",
                         "guard": "Wachter"
                     }
@@ -3998,7 +3964,7 @@
                 },
                 "aeroway/spaceport": {
                     "name": "Ruimtehaven",
-                    "terms": "ruimtevaart,ruimteschip,lanceerinstallatie,rakketinstallatie,lanceerbasis"
+                    "terms": "ruimtevaart,ruimteschip,lanceerinstallatie,raketinstallatie,lanceerbasis"
                 },
                 "aeroway/taxiway": {
                     "name": "Taxibaan",
@@ -4057,7 +4023,7 @@
                 },
                 "amenity/bench": {
                     "name": "Zitbank",
-                    "terms": "bank,bankje,picnictafel"
+                    "terms": "bank,bankje,picnicktafel"
                 },
                 "amenity/bicycle_parking": {
                     "name": "Fietsenstalling",
@@ -4151,8 +4117,8 @@
                     "terms": "cinema,film,theater"
                 },
                 "amenity/clinic": {
-                    "name": "Dagkliniek",
-                    "terms": "dagkliniek"
+                    "name": "Dagbehandelingscentrum",
+                    "terms": "dagbehandelcentrum,dagkliniek,dagziekenhuis,dagbehandeling,dagverpleging,daghospitalisatie"
                 },
                 "amenity/clinic/abortion": {
                     "name": "Abortiecentrum",
@@ -4333,7 +4299,7 @@
                 },
                 "amenity/fuel": {
                     "name": "Tankstation",
-                    "terms": "benzinestation,auto,diesel,nafte,biodiesel,tanken"
+                    "terms": "benzinestation,auto,diesel,nafta,biodiesel,tanken"
                 },
                 "amenity/gambling": {
                     "name": "Gokhal",
@@ -4393,7 +4359,7 @@
                 },
                 "amenity/library": {
                     "name": "Bibliotheek",
-                    "terms": "boeken,lenen,lezen,literatuuur"
+                    "terms": "boeken,lenen,lezen,literatuur"
                 },
                 "amenity/loading_dock": {
                     "name": "Laadkaai"
@@ -4595,7 +4561,7 @@
                 },
                 "amenity/public_bookcase": {
                     "name": "Openbare boekenkast",
-                    "terms": "boeken,literatuur,bibliotheek,publieke boekenkast"
+                    "terms": "publieke boekenkast,boekenruilkast,ruilboekenkast,boekenuitleenkast,straatboekenkast,buurtboekenkast,wijkboekenkast,boekenkast,boekenhuisje,boeknruilhuisje,boekentil,boekenruilbox,leeskast,kabinet,zwerfboek,boek,literatuur,mini-bibliotheek,ruilbibliotheek,straatbibliotheek,buurtbibliotheek,wijkbibliotheek,bibliotheek,minibieb,minibib,mini-bieb,mini bieb,biebbieb,ruilbib,zwerfbib,bieb bieb,straatbieb,buurtbieb,wijkbieb,bieb,bib,boekenruilboom,ruilen,boekwissel,wisselen,leen,lenen,geef,geven,lees,lezen,hergebruiken,tweedehands,boekenbank,lfl"
                 },
                 "amenity/ranger_station": {
                     "name": "Boswachtershut",
@@ -5207,7 +5173,7 @@
                 },
                 "barrier/stile": {
                     "name": "Overstaphek",
-                    "terms": "paal"
+                    "terms": "opstap,afstap,traptrede,trede,traptree,tree,trap,plank,doorgang,paal,schrikkeldraad,schrikdraad,elektrisch draad,electrisch hek,touwdraadhek,touw,draad,afrastering,afscheiding,omheining,hek,hekwerk,omrastering,raster,heining,hekkens,muur,heg,haag"
                 },
                 "barrier/swing_gate": {
                     "name": "Draaipoort",

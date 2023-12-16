@@ -161,17 +161,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "Nº do edifício/lote",
                         "neighbourhood": "Vizinhança/bairro pequeno",
+                        "neighbourhood!jp": "Vila",
                         "place": "Local",
                         "postcode": "CEP",
                         "province": "Província",
                         "province!cn": "Província/Municipalidade/AR/SAR",
                         "province!jp": "Prefeitura",
                         "quarter": "Quadra",
+                        "quarter!jp": "Bloco",
                         "state": "Estado",
                         "street": "Rua",
                         "subdistrict": "Sub-Bairro",
                         "subdistrict!vn": "Ward/Comuna/Vila",
                         "suburb": "Bairro",
+                        "suburb!jp": "Cidade designada",
                         "unit": "Unidade"
                     }
                 },
@@ -327,7 +330,10 @@
                         "log_flume": "Splash (parque de diversão)",
                         "maze": "Labirinto",
                         "pirate_ship": "Navio pirata (parque de diversões)",
+                        "river_rafting": "Rio Loco",
                         "roller_coaster": "Montanha Russa",
+                        "summer_toboggan": "Tobogã de verão",
+                        "swing_carousel": "Chapéu Mexicano",
                         "train": "Trem turístico",
                         "water_slide": "Toboágua"
                     }
@@ -411,6 +417,7 @@
                         "hammam": "Banho turco",
                         "hot_spring": "Fonte termal",
                         "lake": "Lago",
+                        "onsen": "Fontes Termais",
                         "thermal": "Banho termal"
                     }
                 },
@@ -445,7 +452,8 @@
                     "options": {
                         "undefined": "Não",
                         "yes": "Sim"
-                    }
+                    },
+                    "terms": "bicicletas,biclas,binas,bicycle,arruamento,estrada,caminho,avenida,ciclismo,cycle"
                 },
                 "bike_ride": {
                     "label": "Estacionamento de bicicleta integrado",
@@ -518,15 +526,16 @@
                     "terms": "marca,franquia"
                 },
                 "brewery": {
-                    "label": "Chopes",
-                    "terms": "cerveja,chopp,chope,fino,imperial,pressão"
+                    "label": "Marca(s) de cerveja vendida(s)",
+                    "terms": "beer,cerveja,ceva,breja,birra,long neck,chope,marca,brand,produtor"
                 },
                 "bridge": {
                     "label": "Tipo",
                     "placeholder": "Padrão"
                 },
                 "bridge/ref": {
-                    "label": "Número de referência da ponte"
+                    "label": "Número de referência da ponte",
+                    "terms": "ponte,número,valor,ref,bridge,viaduto"
                 },
                 "bridge/support": {
                     "label": "Tipo"
@@ -579,6 +588,7 @@
                         "public": "Edifício público",
                         "residential": "Edifício Residencial",
                         "retail": "Edifício de comércio varejista",
+                        "riding_hall": "Arena de equitação",
                         "roof": "Telhado ou cobertura",
                         "ruins": "Ruinas decorativas/cênicas",
                         "school": "Edifício escolar",
@@ -600,21 +610,22 @@
                     "terms": "prédio,edificação,construção,estrutura"
                 },
                 "building/colour": {
-                    "label": "Cor da fachada"
+                    "label": "Cor da fachada",
+                    "terms": "fachada,frente,fronte,coloração,pintura,paint,color,colour"
                 },
                 "building/flats": {
                     "label": "Unidades",
                     "placeholder": "2, 4, 6, 8..."
                 },
                 "building/levels": {
-                    "label": "Pavimentos",
+                    "label": "Andares",
                     "placeholder": "2, 4, 6...",
                     "terms": "número de andares,pavimentos,pisos,andares"
                 },
                 "building/levels/underground": {
-                    "label": "Pavimentos subterrâneos",
+                    "label": "Andares subterrâneos",
                     "placeholder": "2, 4, 6...",
-                    "terms": "subsolo,pavimentos abaixo do solo,abaixo do solo,subterrâneo,andares"
+                    "terms": "pavimentos subterrâneos,subsolo,pavimentos abaixo do solo,abaixo do solo,subterrâneo,andares"
                 },
                 "building/material": {
                     "label": "Material",
@@ -670,6 +681,7 @@
                     "terms": "capacidade,lotação,número máximo,total de capacidade,total de pessoas,número de pessoas"
                 },
                 "capacity/caravans": {
+                    "label": "Capacidade",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -691,6 +703,10 @@
                 "capacity_volume": {
                     "label": "Capacidade (em metros cúbicos)",
                     "placeholder": "50, 100, 200..."
+                },
+                "caravans": {
+                    "label": "Caravanas",
+                    "terms": "camper,camper trailer,caravan,tourer,campismo,caravanismo,caravana,autocaravana,rouloute,roullote,rulote"
                 },
                 "cash_in": {
                     "label": "Depósitos"
@@ -724,7 +740,8 @@
                 },
                 "check_date": {
                     "label": "Última data de verificação",
-                    "placeholder": "AAAA-MM-DD"
+                    "placeholder": "AAAA-MM-DD",
+                    "terms": "confirmado,confirmação,data,última data,recente"
                 },
                 "circumference": {
                     "label": "Circunferência (na altura do peito)",
@@ -789,6 +806,7 @@
                 "consulate": {
                     "label": "Tipo",
                     "options": {
+                        "consular_office": "Escritório Consular",
                         "consulate_general": "Consulado geral",
                         "honorary_consul": "Cônsul honorário",
                         "residence": "Residência oficial de um embaixador",
@@ -869,6 +887,7 @@
                         "grinding_mill": "Moinho",
                         "handicraft": "Artesanato",
                         "hvac": "Técnico de ar condicionado",
+                        "insulation": "Técnico de isolamento térmico",
                         "jeweller": "Joalheiro",
                         "joiner": "Marceneiro",
                         "key_cutter": "Chaveiro",
@@ -881,6 +900,7 @@
                         "plasterer": "Estucador",
                         "plumber": "Encanador",
                         "pottery": "Olaria",
+                        "rigger": "Armador",
                         "roofer": "Telhadista",
                         "saddler": "Selaria ",
                         "sailmaker": "Fabricante de velas náuticas",
@@ -889,7 +909,7 @@
                         "sculptor": "Escultor",
                         "shoemaker": "Sapateiro",
                         "signmaker": "Criador de Placas",
-                        "stonemason": "Pedreiro",
+                        "stonemason": " Marmoraria",
                         "tailor": "Alfaiate",
                         "tiler": "Azulejista/Ladrilhador",
                         "tinsmith": "Funileiro",
@@ -1009,8 +1029,10 @@
                         "coffee_shop": "Cafeteria",
                         "dessert": "Sobremesa",
                         "donut": "Donut",
+                        "filipino": "Filipina",
                         "fish": "Peixe",
                         "french": "Francês",
+                        "georgian": "Georgiana",
                         "german": "Alemão",
                         "greek": "Grego",
                         "hot_dog": "Cachorro-quente/hot dog",
@@ -1025,8 +1047,8 @@
                         "lebanese": "Libanesa",
                         "malaysian": "Malaia",
                         "mexican": "Mexicano",
-                        "pankcake": "Panqueca",
                         "pasta": "Macarrão",
+                        "peruvian": "Peruana",
                         "pizza": "Pizza",
                         "polish": "Polonesa",
                         "portuguese": "Portuguesa",
@@ -1036,11 +1058,13 @@
                         "sandwich": "Sanduíche",
                         "seafood": "Frutos do mar",
                         "spanish": "Espanhola",
-                        "steak_house": "Churrascaria",
+                        "steak_house": "Steak House",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesa",
+                        "tex-mex": "Tex-Mex",
                         "thai": "Tailandês",
                         "turkish": "Turco",
+                        "ukrainian": "Ucraniana",
                         "vietnamese": "Vietnamita"
                     },
                     "terms": "gastronomias,pratos,tipos de comida,culinárias"
@@ -1188,7 +1212,8 @@
                     "label": "Tipo",
                     "options": {
                         "consulate": "Consulado",
-                        "embassy": "Embaixada"
+                        "embassy": "Embaixada",
+                        "liaison": "Gabinete de ligação"
                     }
                 },
                 "diplomatic/services": {
@@ -1252,7 +1277,10 @@
                     "label": "Tipo"
                 },
                 "dock": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "drydock": "Doca seca"
+                    }
                 },
                 "dog": {
                     "label": "Cães",
@@ -1419,6 +1447,7 @@
                     }
                 },
                 "fire_sprinkler": {
+                    "label": "Ligação de aspersor de incêndio",
                     "options": {
                         "no": "Não",
                         "yes": "Tipo desconhecido"
@@ -1499,6 +1528,7 @@
                         "GTL_diesel": "GPL",
                         "HGV_diesel": "Diesel para veículos pesados",
                         "LH2": "Hidrogênio líquido",
+                        "adblue": "AdBlue / AUS 32",
                         "biodiesel": "Biodiesel",
                         "cng": "Gás Natural Veicular (GNV)",
                         "diesel": "Diesel",
@@ -1548,6 +1578,7 @@
                         "gasification": "Gasificação",
                         "photovoltaic": "Fotovoltaico",
                         "run-of-the-river": "A fio d'água",
+                        "stream": "Fluxo mareal",
                         "thermal": "Térmico solar",
                         "water-pumped-storage": "Usina hidrelétrica reversível",
                         "water-storage": "Reservatório",
@@ -1624,16 +1655,37 @@
                     "label": "Perigo",
                     "options": {
                         "archery_range": "Tiro com arco",
+                        "biohazard": "Risco biológico",
+                        "contamination": "Contaminação química",
+                        "hole": "Buraco",
+                        "minefield": "Campo de minas",
+                        "nuclear": "Radioatividade",
+                        "quicksand": "Areias movediças",
                         "shooting_range": "Campo de tiro"
                     }
                 },
                 "healthcare": {
                     "label": "Tipo",
                     "options": {
+                        "alternative": "Medicina alternativa",
+                        "audiologist": "Audiologista",
+                        "birthing_centre": "Centro de parto",
                         "blood_bank": "Banco de sangue",
                         "blood_donation": "Centro de doação de sangue",
                         "clinic": "Clínica",
-                        "dentist": "Dentista"
+                        "counselling": "Centro de aconselhamento",
+                        "dentist": "Dentista",
+                        "dialysis": "Centro de diálise",
+                        "doctor": "Médico",
+                        "hospice": "Unidades de cuidados paliativos",
+                        "hospital": "Hospital",
+                        "laboratory": "Laboratório médico",
+                        "midwife": "Obstetriz",
+                        "nurse": "Enfermeira",
+                        "occupational_therapist": "Terapeuta ocupacional",
+                        "optometrist": "Optometrista",
+                        "pharmacy": "Farmácia",
+                        "physiotherapist": "Fisioterapeuta"
                     }
                 },
                 "healthcare/speciality": {
@@ -1801,15 +1853,7 @@
                     "label": "Aros de tabela",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Equitação de adestramento",
-                    "options": {
-                        "equestrian": "Sim",
-                        "undefined": "Não"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Hipismo",
                     "options": {
                         "horse_riding": "Sim",
                         "undefined": "Não"
@@ -1826,13 +1870,6 @@
                     },
                     "placeholder": "Difícil, Perigoso...",
                     "terms": "grau de dificuldade,cavalos,equestre"
-                },
-                "horse_stables": {
-                    "label": "Hipismo estável",
-                    "options": {
-                        "stables": "Sim",
-                        "undefined": "Não"
-                    }
                 },
                 "hot_water": {
                     "label": "Água quente"
@@ -1992,7 +2029,8 @@
                     "terms": "piso do edifício,área coberta,andar,história"
                 },
                 "level_semi": {
-                    "label": "Pavimentos"
+                    "label": "Andar",
+                    "terms": "número do andar,número do pavimento,pavimento"
                 },
                 "liaison": {
                     "label": "Tipo"
@@ -2054,10 +2092,37 @@
                     "label": "Tipo"
                 },
                 "mapillary": {
-                    "label": "ID da imagem do Mapillary"
+                    "label": "ID da imagem do Mapillary",
+                    "terms": "mapillary"
                 },
                 "marker": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "aerial": {
+                            "description": "Feito para ser visível do ar.",
+                            "title": "Aéreo"
+                        },
+                        "ground": {
+                            "description": "Marcador plano no chão.",
+                            "title": "Chão"
+                        },
+                        "pedestal": {
+                            "description": "Marcador elevado montado numa pequena base.",
+                            "title": "Pedestal"
+                        },
+                        "plate": {
+                            "description": "Marcador plano montado em uma parede ou similar.",
+                            "title": "Placa"
+                        },
+                        "post": {
+                            "description": "Marcador elevado montado num pequeno poste ou mastro.",
+                            "title": "Poste"
+                        },
+                        "stone": {
+                            "description": "Marcador gravado ou pintado em pedra.",
+                            "title": "Pedra"
+                        }
+                    }
                 },
                 "material": {
                     "label": "Material",
@@ -2068,6 +2133,7 @@
                         "brick": "Tijolo",
                         "bronze": "Bronze",
                         "concrete": "Concreto",
+                        "dry_stone": "Pedras soltas (sem argamassa)",
                         "glass": "Vidros",
                         "granite": "Granito",
                         "iron": "Ferro",
@@ -2083,20 +2149,24 @@
                         "steel": "Aço",
                         "stone": "Rocha",
                         "wood": "Madeira"
-                    }
+                    },
+                    "terms": "material,matéria-prima"
                 },
                 "mattress": {
-                    "label": "Colchões"
+                    "label": "Colchões",
+                    "terms": "colchões,colchão"
                 },
                 "max_age": {
                     "label": "Idade máxima",
                     "terms": "idade máxima"
                 },
                 "maxaxleload_bridge": {
-                    "label": "Limite de peso por eixo"
+                    "label": "Limite de peso por eixo",
+                    "terms": "axle,máx,max,limite,kg,tonelada,tonelagem,eixos,weight"
                 },
                 "maxheight": {
-                    "label": "Limite de altura"
+                    "label": "Limite de altura",
+                    "terms": "altura,máx.,max.,máximo,altitude,espaço,ponte,viaduto,limite"
                 },
                 "maxlength": {
                     "label": "Limite de comprimento"
@@ -2108,40 +2178,67 @@
                 },
                 "maxspeed/advisory": {
                     "label": "Limite de velocidade recomendado",
-                    "placeholder": "40, 50, 60..."
+                    "placeholder": "40, 50, 60...",
+                    "terms": "limite de velocidade aconselhado"
                 },
                 "maxspeed/hgv": {
                     "label": "Velocidade máxima de caminhões",
-                    "placeholder": "40, 50, 60..."
+                    "placeholder": "40, 50, 60...",
+                    "terms": "velocidade,máxima,limite,máximo"
+                },
+                "maxstay": {
+                    "label": "Permanência máxima",
+                    "terms": "tempo,max,máx,stay,limite,limit,time,minutos,horas,duração,estadia,estada"
                 },
                 "maxweight": {
-                    "label": "Limite de peso"
+                    "label": "Limite de peso",
+                    "terms": "peso,máx.,max.,máximo,kg,tonelada,carga,weight,limite"
                 },
                 "maxwidth": {
-                    "label": "Limite de largura"
+                    "label": "Limite de largura",
+                    "terms": "largura,largo,máx.,max.,máximo,metros,cm,width,limite"
                 },
                 "memorial": {
                     "label": "Tipo",
                     "options": {
+                        "blue_plaque": "Placa azul (UK)",
                         "bust": "Busto",
+                        "cross": "Cruz",
                         "obelisk": "Obelisco",
                         "plaque": "Placa comemorativa",
                         "sculpture": "Escultura",
-                        "stele": "Estela"
+                        "statue": "Estátua",
+                        "stele": "Estela",
+                        "stolperstein": "Stolperstein",
+                        "stone": "Pedra",
+                        "war_memorial": "Memorial de guerra"
                     }
                 },
+                "memorial/addr": {
+                    "label": "Endereço do edifício mais próximo",
+                    "terms": "morada,endereço,localização,número,porta,rua"
+                },
                 "message": {
-                    "label": "Mensagem"
+                    "label": "Mensagem",
+                    "terms": "message,intuito,objetivo,tema,assunto,tópico,motivo"
                 },
                 "microbrewery": {
                     "label": "Microcervejaria",
                     "terms": "cerveja artesanal,cervejaria,micro cervejaria"
                 },
                 "military_service": {
-                    "label": "Serviço militar"
+                    "label": "Serviço militar",
+                    "options": {
+                        "air_force": "Força aérea",
+                        "army": "Exército",
+                        "coast_guard": "Guarda costeira",
+                        "marines": "Fuzileiros",
+                        "navy": "Marinha"
+                    }
                 },
                 "mimics": {
-                    "label": "Imita"
+                    "label": "Imita",
+                    "terms": "camuflada,camuflagem,disfarçada,disfarce,telecomunicação,comunicações,telefónica,telefones,torre,mastro"
                 },
                 "min_age": {
                     "label": "Idade mínima",
@@ -2156,7 +2253,9 @@
                     "terms": "velocidade mínima"
                 },
                 "mobile": {
-                    "placeholder": "+55 99 12345-6789"
+                    "label": "Celular",
+                    "placeholder": "+55 99 12345-6789",
+                    "terms": "mobile,celular,telemóvel,phone,fone,número,numero"
                 },
                 "model": {
                     "label": "Modelo",
@@ -2166,7 +2265,10 @@
                     "label": "Tipo de monitoramento"
                 },
                 "mooring": {
+                    "label": "Amarração",
                     "options": {
+                        "commercial": "Comercial",
+                        "guest": "Visitantes",
                         "no": "Não",
                         "private": "Privado",
                         "yes": "Sim"
@@ -2183,7 +2285,8 @@
                         "5": "5: Dificuldade máxima, pedreira, deslizamentos de terra",
                         "6": "6: Não transitável exceto pelos melhores mountain bikers"
                     },
-                    "placeholder": "0, 1, 2, 3..."
+                    "placeholder": "0, 1, 2, 3...",
+                    "terms": "grau de dificuldade,dificuldade para btt,btt,nível de dificuldade"
                 },
                 "mtb/scale/imba": {
                     "label": "Trilha de baixa dificuldade",
@@ -2194,7 +2297,8 @@
                         "3": "◆ Difícil (diamante preto)",
                         "4": "◆◆ Extremamente difícil (duplo diamante preto)"
                     },
-                    "placeholder": "Fácil, Médio, Difícil..."
+                    "placeholder": "Fácil, Médio, Difícil...",
+                    "terms": "imba,dificuldade,nível de dificuldade,grau de dificuldade,btt"
                 },
                 "mtb/scale/uphill": {
                     "label": "Dificuldade do aclive do Mountain Biking",
@@ -2206,20 +2310,23 @@
                         "4": "4: Inclinação média <30%, condição ruim, pedras/galhos grandes",
                         "5": "5: Muito íngreme, geralmente a bicicleta precisa ser empurrada ou carregada"
                     },
-                    "placeholder": "0, 1, 2, 3..."
+                    "placeholder": "0, 1, 2, 3...",
+                    "terms": "imba,dificuldade,nível de dificuldade,grau de dificuldade,btt"
                 },
                 "museum": {
                     "label": "Tipo"
                 },
                 "name": {
                     "label": "Nome",
-                    "placeholder": "Nome (se houver)"
+                    "placeholder": "Nome (se houver)",
+                    "terms": "nome,definição,título,denominação"
                 },
                 "natural": {
                     "label": "Natural"
                 },
                 "network": {
-                    "label": "Rede"
+                    "label": "Rede",
+                    "terms": "rede"
                 },
                 "network/type": {
                     "label": "Tipo de rede"
@@ -2258,21 +2365,69 @@
                     "label": "Rede"
                 },
                 "not/name": {
-                    "label": "Nomes incorretos"
+                    "label": "Nomes incorretos",
+                    "terms": "designação errada,nomes trocados,nome escritos incorretamente"
                 },
                 "note": {
                     "label": "Nota",
                     "terms": "nota,comentário"
                 },
+                "nudism": {
+                    "label": "Nudismo",
+                    "options": {
+                        "customary": "Habitual",
+                        "designated": "Exclusivo",
+                        "no": "Proibido",
+                        "obligatory": "Obrigatório",
+                        "permissive": "Tolerado",
+                        "yes": "Permitido"
+                    },
+                    "terms": "naturismo,nudismo,naturista,nu,despido,despida,sem roupa,naturist,nudism,naturism"
+                },
                 "office": {
                     "label": "Tipo",
                     "options": {
+                        "accountant": "Escritório de contabilidade",
+                        "adoption_agency": "Agência de adoção",
+                        "advertising_agency": "Agência de publicidade",
+                        "architect": "Escritório de arquitetura",
+                        "association": "Escritório de organização sem fins lucrativos",
+                        "charity": "Escritório de instituição de caridade",
+                        "company": "Escritório de empresa",
+                        "construction_company": "Escritório de construtora",
+                        "consulting": "Escritório de consultoria",
+                        "courier": "Empresa de entregas",
                         "diplomatic": "Escritório diplomático",
+                        "energy_supplier": "Escritório de fornecedor de energia",
+                        "engineer": "Escritório de engenharia",
+                        "estate_agent": "Imobiliária",
+                        "financial": "Instituição financeira",
+                        "forestry": "Escritório de gestão florestal",
+                        "foundation": "Escritório de fundação",
                         "government": "Órgão governamental",
+                        "graphic_design": "Empresa de design gráfico",
+                        "guide": "Escritório de guia turístico",
+                        "insurance": "Seguradora",
+                        "it": "Empresa de TI",
                         "lawyer": "Escritório de advocacia",
+                        "moving_company": "Empresa de mudanças",
+                        "newspaper": "Escritório de jornal",
+                        "ngo": "Escritório de ONG",
+                        "notary": "Cartório",
                         "physician": "Médico",
                         "political_party": "Escritório de partido político",
-                        "therapist": "Escritório de terapeuta"
+                        "private_investigator": "Escritório de detetive particular",
+                        "property_management": "Empresa de gestão de condomínios",
+                        "quango": "Escritório de autarquia autônoma",
+                        "religion": "Escritório religioso",
+                        "research": "Centro de pesquisa",
+                        "security": "Empresa de segurança privada",
+                        "surveyor": "Empresa de peritagem",
+                        "tax_advisor": "Empresa de assessoria fiscal",
+                        "telecommunication": "Empresa de telecomunicações",
+                        "therapist": "Escritório de terapeuta",
+                        "union": "Sindicato",
+                        "water_utility": "Escritório de fornecedor de água"
                     }
                 },
                 "oneway": {
@@ -2367,7 +2522,7 @@
                     }
                 },
                 "parking/side/orientation": {
-                    "label": "Orientação",
+                    "label": "Orientação de estacionamento",
                     "options": {
                         "diagonal": "Diagonal à rua",
                         "parallel": "Paralelo à rua",
@@ -2662,7 +2817,13 @@
                     }
                 },
                 "ramp": {
-                    "label": "Rampa embutida"
+                    "label": "Rampa embutida",
+                    "options": {
+                        "no": "Não",
+                        "separate": "Mapeada em separado",
+                        "yes": "Sim"
+                    },
+                    "terms": "rampas,acesso,cadeirantes,cadeira de rodas,cadeira-de-rodas,deficientes,deficiência"
                 },
                 "rating": {
                     "label": "Potência nominal"
@@ -2846,20 +3007,6 @@
                 },
                 "route_master": {
                     "label": "Tipo"
-                },
-                "royal_cypher": {
-                    "label": "Monograma real",
-                    "options": {
-                        "CIIIR": "CIIIR (Charles III)",
-                        "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Eduardo VIII)",
-                        "EVIIR": "EVIIR (Eduardo VII)",
-                        "GR": "GR (George V)",
-                        "GVIR": "GVIR (George VI)",
-                        "VR": "VR (Vitória)",
-                        "no": "Não",
-                        "scottish_crown": "Coroa da Escócia"
-                    }
                 },
                 "ruins": {
                     "label": "Tipo"
@@ -3664,7 +3811,29 @@
                 "vending": {
                     "label": "Tipos de produtos",
                     "options": {
-                        "fuel": "Combustível"
+                        "bicycle_tube": "Câmaras de ar para bicicletas",
+                        "bread": "Pão",
+                        "cigarettes": "Cigarros",
+                        "coffee": "Café",
+                        "condoms": "Preservativos",
+                        "drinks": "Bebidas",
+                        "eggs": "Ovos",
+                        "electronics": "Eletrônicos",
+                        "elongated_coin": "Moedas turísticas",
+                        "excrement_bags": "Sacos para excrementos",
+                        "feminine_hygiene": "Artigos de higiene feminina",
+                        "food": "Comida",
+                        "fuel": "Combustível",
+                        "ice_cream": "Sorvete",
+                        "ice_cubes": "Cubos de gelo",
+                        "milk": "Leite",
+                        "newspapers": "Jornais",
+                        "parking_tickets": "Tíquetes de estacionamento",
+                        "pizza": "Pizza",
+                        "public_transport_tickets": "Bilhetes de transporte público",
+                        "stamps": "Selos postais",
+                        "sweets": "Doces",
+                        "water": "Água potável"
                     }
                 },
                 "vhf": {
@@ -3684,7 +3853,8 @@
                         "area": "Mais de 20m (65 pés)",
                         "house": "Até 5m (16 pés)",
                         "street": "5 a 20m (16 a 65 pés)"
-                    }
+                    },
+                    "terms": "visibilidade"
                 },
                 "volcano/status": {
                     "label": "Estado do vulcão",
@@ -3721,6 +3891,8 @@
                     "label": "Resíduos",
                     "options": {
                         "cigarettes": "Cigarros",
+                        "dog_excrement": "Excrementos de cães",
+                        "organic": "Lixo orgânico",
                         "trash": "Lixo"
                     }
                 },
@@ -3742,7 +3914,8 @@
                 },
                 "water_tank/volume": {
                     "label": "Volume (em litros)",
-                    "placeholder": "10000, 20000, 30000…"
+                    "placeholder": "10000, 20000, 30000…",
+                    "terms": "volume,litros,quantidade"
                 },
                 "waterway": {
                     "label": "Tipo"
@@ -3752,6 +3925,7 @@
                     "placeholder": "https://exemplo.com"
                 },
                 "website/menu": {
+                    "label": "Link do cardápio",
                     "placeholder": "http://exemplo.com.br/",
                     "terms": "website,link,ligação,http,url,menu,ementa,cardápio,online,on-line,internet"
                 },
@@ -4625,6 +4799,10 @@
                     "name": "Centro de reciclagem",
                     "terms": "material reciclável,dejetos,material sólido,reciclagem,resíduos,lixo,vidro,garrafa,lata"
                 },
+                "amenity/recycling_container": {
+                    "name": "Contêiner de reciclagem",
+                    "terms": "ecoponto,reciclar,reciclagem,resíduos,lixo,vidro,plástico,papel,metal,garrafas,embalagens,latas,óleo,roupa"
+                },
                 "amenity/refugee_site": {
                     "name": "Campo de refugiados",
                     "terms": "campo de refugiados"
@@ -4644,6 +4822,9 @@
                 "amenity/restaurant/asian": {
                     "name": "Restaurante asiático",
                     "terms": "asiático,comida asiática,restaurante,ásia"
+                },
+                "amenity/restaurant/barbecue": {
+                    "name": "Churrascaria"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Restaurante chinês",
@@ -4693,8 +4874,9 @@
                     "terms": "pescados,alimentação,frutos do mar,peixes"
                 },
                 "amenity/restaurant/steakhouse": {
-                    "name": "Churrascaria",
-                    "terms": "churrascaria"
+                    "name": "Steak house",
+                    "terms": "churrasco,gado,carne",
+                    "aliases": "Casa de carnes"
                 },
                 "amenity/restaurant/sushi": {
                     "name": "Restaurante de sushi",
@@ -5654,8 +5836,9 @@
                     "terms": "criador de sinais"
                 },
                 "craft/stonemason": {
-                    "name": "Pedreiro",
-                    "terms": "pedreiro"
+                    "name": "Marmoraria",
+                    "terms": "marmoreiro,mármores e granitos,cantaria,canteiro,pedras",
+                    "aliases": "Marmoreiro\nMármores e granitos\nCantaria\nCanteiro\nPedras"
                 },
                 "craft/tailor": {
                     "name": "Alfaiate"
@@ -7363,7 +7546,7 @@
                     "terms": "local de explosão nuclear"
                 },
                 "military/office": {
-                    "name": "Escritório militar",
+                    "name": "Militar",
                     "terms": "escritório militar"
                 },
                 "military/trench": {
@@ -7603,11 +7786,11 @@
                     "terms": "escritório,gabinete,banca,estúdio,repartição,sala,seção"
                 },
                 "office/accountant": {
-                    "name": "Escritório de contabilidade",
+                    "name": "Contabilidade",
                     "terms": "escritório contábil"
                 },
                 "office/administrative": {
-                    "name": "Escritório administrativo"
+                    "name": "Administrativo"
                 },
                 "office/adoption_agency": {
                     "name": "Agência de Adoção",
@@ -7618,26 +7801,26 @@
                     "terms": "publicidade,propaganda,agência de propaganda,marketing"
                 },
                 "office/architect": {
-                    "name": "Escritório de arquitetura",
+                    "name": "Arquitetura",
                     "terms": "arquiteto,arquiteta,urbanismo"
                 },
                 "office/association": {
-                    "name": "Escritório de organização sem fins lucrativos",
+                    "name": "Organização sem fins lucrativos",
                     "terms": "entidade sem fins lucrativos,escritório de associação,associação de profissionais,associação de moradores,instituição beneficente,sem lucro"
                 },
                 "office/bail_bond_agent-US-PH": {
                     "name": "Agente de fiança"
                 },
                 "office/charity": {
-                    "name": "Escritório de caridade",
+                    "name": "Caridade",
                     "terms": "beneficência,instituição beneficente"
                 },
                 "office/company": {
-                    "name": "Escritório de empresa",
+                    "name": "Empresa (não especificada)",
                     "terms": "escritório empresarial,escritório corporativo"
                 },
                 "office/consulting": {
-                    "name": "Gabinete de consultoria",
+                    "name": "Consultoria",
                     "terms": "gabinete de consultoria"
                 },
                 "office/coworking": {
@@ -7645,7 +7828,7 @@
                     "terms": "escritório compartilhado,coworking,lugar de coworking"
                 },
                 "office/diplomatic": {
-                    "name": "Escritório diplomático",
+                    "name": "Diplomático",
                     "terms": "escritório diplomático"
                 },
                 "office/diplomatic/consulate": {
@@ -7669,18 +7852,19 @@
                     "terms": "agência,sine,emprego,empregos,desempregado"
                 },
                 "office/energy_supplier": {
-                    "name": "Escritório de fornecedor de energia",
+                    "name": "Fornecedor de energia",
                     "terms": "eletricidade,empresa de energia,gás"
                 },
                 "office/engineer": {
-                    "name": "Escritório de engenharia"
+                    "name": "Engenharia",
+                    "terms": "engineer,engenheria,engenheiro,engenheira,estruturas,obras,firma,técnico"
                 },
                 "office/estate_agent": {
                     "name": "Imobiliária",
                     "terms": "aluguel,casas,apartamentos,corretora de imóveis,venda de imóveis,imóveis"
                 },
                 "office/financial": {
-                    "name": "Escritório financeiro",
+                    "name": "Instituição financeira",
                     "terms": "escritório financeiro,financeira"
                 },
                 "office/financial_advisor": {
@@ -7688,12 +7872,12 @@
                     "terms": "conselheiro financeiro"
                 },
                 "office/forestry": {
-                    "name": "Escritório de gestão florestal",
+                    "name": "Gestão florestal",
                     "terms": "guarda florestal,floresta,reserva",
-                    "aliases": "Escritório de administração florestal"
+                    "aliases": "Administração florestal"
                 },
                 "office/foundation": {
-                    "name": "Escritório de fundação",
+                    "name": "Fundação",
                     "terms": "escritório de fundação"
                 },
                 "office/government": {
@@ -7709,14 +7893,15 @@
                     "terms": "tabelionato,registro civil,registro de imóveis"
                 },
                 "office/government/tax": {
-                    "name": "Escritório tributário",
+                    "name": "Tributário",
                     "terms": "autoridade fiscal,receita,fazenda,taxas,impostos"
                 },
                 "office/graphic_design": {
-                    "name": "Escritório de design gráfico"
+                    "name": "Design gráfico",
+                    "terms": "designer,designer gráfico,gabinete de design gráfico,visual,ilustração"
                 },
                 "office/guide": {
-                    "name": "Escritório de guia turístico",
+                    "name": "Guia turístico",
                     "terms": "turismo,tour"
                 },
                 "office/insurance": {
@@ -7724,23 +7909,23 @@
                     "terms": "seguro,seguradora,apólice,corretora"
                 },
                 "office/it": {
-                    "name": "Escritório de empresa de tecnologia da informação",
+                    "name": "Empresa de TI",
                     "terms": "informática,computadores,software,tecnologia",
-                    "aliases": "Escritório de TI"
+                    "aliases": "Empresa de tecnologia da informação"
                 },
                 "office/lawyer": {
-                    "name": "Escritório de advocacia",
+                    "name": "Advocacia",
                     "terms": "advocacia,advogado,advogada,justiça,direito,lei"
                 },
                 "office/lawyer/notary": {
                     "name": "Tabelião"
                 },
                 "office/moving_company": {
-                    "name": "Escritório de companhia de mudanças",
-                    "terms": "empresa de mudanças,relocação,mudança"
+                    "name": "Empresa de mudanças",
+                    "terms": "companhia de mudanças,relocação,mudança"
                 },
                 "office/newspaper": {
-                    "name": "Escritório de jornal",
+                    "name": "Jornal",
                     "terms": "escritório de jornal"
                 },
                 "office/ngo": {
@@ -7755,59 +7940,62 @@
                     "name": "Médico"
                 },
                 "office/political_party": {
-                    "name": "Escritório de partido político",
+                    "name": "Partido político",
                     "terms": "escritório de partido político"
                 },
                 "office/private_investigator": {
-                    "name": "Escritório de detetive particular",
+                    "name": "Detetive particular",
                     "terms": "detetive particular,investigador privado"
                 },
                 "office/property_management": {
-                    "name": "Administradora imobiliária ou escritório de locação"
+                    "name": "Gestão de condomínios",
+                    "terms": "property,administração,administrar,condomínio,rendas,arrendamento,propriedades,casas,arrendar,aluguer,inquilinos,senhorio,senhoria,residência,residencial,habitação",
+                    "aliases": "Administradora imobiliária\nEscritório de locação"
                 },
                 "office/quango": {
-                    "name": "Escritório de autarquia autônoma",
+                    "name": "Autarquia autônoma",
                     "terms": "ong,não governamental,quase-autônoma,organização",
-                    "aliases": "Autarquia autônoma\nAutoridade administrativa independente\nOrganização não governamental quase autônoma\nQuango"
+                    "aliases": "Autoridade administrativa independente\nOrganização não governamental quase autônoma\nQuango"
                 },
                 "office/religion": {
-                    "name": "Escritório religioso",
+                    "name": "Religioso",
                     "terms": "escritório religioso"
                 },
                 "office/research": {
-                    "name": "Escritório de pesquisa",
+                    "name": "Pesquisa",
                     "terms": "pesquisa,pesquisas,pesquisador,escritório"
                 },
                 "office/security": {
-                    "name": "Escritório de segurança",
+                    "name": "Segurança privada",
                     "terms": "escritório de segurança"
                 },
                 "office/surveyor": {
-                    "name": "Escritório de pesquisas ou inspeções",
+                    "name": "Peritagem",
                     "terms": "agrimensura,análise de riscos,ibge,estatística,opinião"
                 },
                 "office/tax_advisor": {
-                    "name": "Escritório de assessoria fiscal",
+                    "name": "Assessoria fiscal",
                     "terms": "assessoria fiscal"
                 },
                 "office/telecommunication": {
-                    "name": "Escritório de telecomunicações",
+                    "name": "Telecomunicações",
                     "terms": "escritório de telecomunicações,departamento de telecomunicações"
                 },
                 "office/therapist": {
-                    "name": "Escritório de terapeuta",
+                    "name": "Terapeuta",
                     "terms": "terapia,holístico,terapias alternativas,saúde"
                 },
                 "office/travel_agent": {
                     "name": "Agência de Viagens"
                 },
                 "office/union": {
-                    "name": "Escritório de sindicato"
+                    "name": "Sindicato",
+                    "terms": "union,labor,sindicalismo"
                 },
                 "office/water_utility": {
-                    "name": "Escritório de companhia de água",
+                    "name": "Fornecedor de água",
                     "terms": "águas e esgoto",
-                    "aliases": "Escritório de empresa de saneamento"
+                    "aliases": "Empresa de água\nCompanhia de água\nEmpresa de saneamento"
                 },
                 "office/yes": {
                     "name": "Escritório (tipo não especificado)"

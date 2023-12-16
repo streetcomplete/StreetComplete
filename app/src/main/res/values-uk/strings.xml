@@ -1347,4 +1347,19 @@
     <string name="quest_recycling_type_food_waste">"Харчові відходи"</string>
     <string name="quest_defibrillator_location">"Де розташований цей дефібрилятор?"</string>
     <string name="quest_defibrillator_location_description">"Будь ласка, надайте короткий опис його розташування (наприклад, «у кімнаті портьє»)."</string>
+    <string name="quest_sanitary_dump_station_title">"Тут є місце зливу каналізації?"</string>
+    <string name="quest_sanitary_dump_station_description">"Обʼєкт для зливу відходів із туалетного резервуару будинку на колесах, фури тощо. Зазвичай позначається таким знаком:"</string>
+    <string name="quest_generalFee_title">"Чи потрібно платити за користування цим?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Це місце для вогнища"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"На відміну від грилів, місця для вогнища не мають поверхні для приготування їжі (наприклад, решітки/пластини)."</string>
+    <string name="about_title_logs">"Логи (%1$d)"</string>
+    <string name="about_summary_logs">"використовується в звітах про помилки"</string>
+    <string name="action_filter">"Фільтр"</string>
+    <string name="action_share">"Поділитися логами"</string>
+    <string name="about_title_show_logs">"Показати логи"</string>
+    <string name="label_log_level">"Рівень логування"</string>
+    <string name="label_log_newer_than">"Від"</string>
+    <string name="label_log_older_than">"До"</string>
+    <string name="label_log_message_contains">"Запис з"</string>
+    <string name="title_logs_filters">"Фільтрувати записи"</string>
 </resources>

@@ -537,8 +537,8 @@
                     "terms": "marke"
                 },
                 "brewery": {
-                    "label": "Fassbiere",
-                    "terms": "fassbiere"
+                    "label": "Angebotene Biermarken",
+                    "terms": "biermarke,biersorte"
                 },
                 "bridge": {
                     "label": "Typ",
@@ -599,6 +599,7 @@
                         "public": "Öffentliches Amtsgebäude",
                         "residential": "Allgemeines Wohngebäude",
                         "retail": "Geschäftsgebäude",
+                        "riding_hall": "Reithalle",
                         "roof": "Dach",
                         "ruins": "Künstliche Ruine",
                         "school": "Schulgebäude",
@@ -1062,7 +1063,7 @@
                         "lebanese": "Libanesisch",
                         "malaysian": "Malaysisch",
                         "mexican": "Mexikanisch",
-                        "pankcake": "Pfannkuchen",
+                        "pancake": "Pfannkuchen",
                         "pasta": "Teigwaren",
                         "peruvian": "Peruanisch",
                         "pizza": "Pizza",
@@ -1309,6 +1310,14 @@
                         "tidal": "Dockhafen"
                     }
                 },
+                "dock/height": {
+                    "label": "Höhe der Laderampe (Meter)",
+                    "terms": "laderampenhöhe"
+                },
+                "dock/width": {
+                    "label": "Breite der Laderampe (Meter)",
+                    "terms": "laderampenbreite"
+                },
                 "dog": {
                     "label": "Hunde",
                     "options": {
@@ -1320,6 +1329,14 @@
                 },
                 "door": {
                     "label": "Tür"
+                },
+                "door/height": {
+                    "label": "Türhöhe (Meter)",
+                    "terms": "durchgangshöhe,lichte höhe"
+                },
+                "door/width": {
+                    "label": "Türbreite (Meter)",
+                    "terms": "durchgangsbreite,lichte breite"
                 },
                 "door_type": {
                     "label": "Typ"
@@ -1609,7 +1626,7 @@
                     "options": {
                         "female": "Weiblich ♀",
                         "male": "Männlich ♂",
-                        "unisex": "Beide Geschlechter ♂♀"
+                        "unisex": "Unisex"
                     },
                     "placeholder": "Unbekannt",
                     "terms": "geschlecht,zugang,männlich,weiblich,unisex,egal,divers"
@@ -1739,7 +1756,7 @@
                         "optometrist": "Augenoptiker",
                         "pharmacy": "Apotheke",
                         "physiotherapist": "Physiotherapeut",
-                        "podiatrist": "Podiater",
+                        "podiatrist": "Podologe",
                         "psychotherapist": "Psychotherapeut",
                         "rehabilitation": "Reha-Klinik",
                         "sample_collection": "Probensammlungseinrichtung",
@@ -1808,12 +1825,12 @@
                         "osteopathy": "Osteopathie",
                         "otolaryngology": "Hals-Nasen-Ohren-Heilkunde",
                         "paediatric_surgery": "Kinderchirurgie",
-                        "paediatrics": "Pädiatrie (Kinderarzt)",
+                        "paediatrics": "Pädiatrie (Kinder- und Jugendmedizin)",
                         "palliative": "Palliativmedizin",
                         "pathology": "Pathologie (Gewebeuntersuchung)",
                         "physiatry": "Physikalische und Rehabilitative Medizin",
                         "plastic_surgery": "Plastische Chirurgie (Schönheitsoperationen)",
-                        "podiatry": "Fußmedizin",
+                        "podiatry": "Fußchirurgie",
                         "proctology": "Proktologie (Darmerkrankungen)",
                         "psychiatry": "Psychiatrie",
                         "pulmonology": "Pneumologie (Lungenerkrankungen)",
@@ -1923,15 +1940,8 @@
                     "label": "Ringe",
                     "placeholder": "1, 2, 4 ..."
                 },
-                "horse_dressage": {
-                    "label": "Dressurreiten",
-                    "options": {
-                        "equestrian": "Ja",
-                        "undefined": "Nein"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Pferdereiten",
+                    "label": "Reitanlage",
                     "options": {
                         "horse_riding": "Ja",
                         "undefined": "Nein"
@@ -1949,13 +1959,6 @@
                     },
                     "placeholder": "schwierig, gefährlich ...",
                     "terms": "reitschwierigkeitsgrad,reitschwierigkeit"
-                },
-                "horse_stables": {
-                    "label": "Reitstall",
-                    "options": {
-                        "stables": "Ja",
-                        "undefined": "Nein"
-                    }
                 },
                 "hot_water": {
                     "label": "Heißwasser"
@@ -2242,7 +2245,7 @@
                     "options": {
                         "adobe": "Lehm",
                         "aluminium": "Aluminium",
-                        "brass": "Blech",
+                        "brass": "Messing",
                         "brick": "Backstein",
                         "bronze": "Bronze",
                         "concrete": "Beton",
@@ -2327,6 +2330,10 @@
                         "stone": "Gedenkstein",
                         "war_memorial": "Kriegsmahnmal"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Adresse des nächstgelegenen Gebäudes",
+                    "terms": "adresse des nächstgelegenen gebäudes"
                 },
                 "message": {
                     "label": "Art der Werbebotschaft",
@@ -2873,7 +2880,7 @@
                     "label": "Thema"
                 },
                 "plots": {
-                    "label": "Parzelle",
+                    "label": "Parzellen",
                     "placeholder": "10, 20, 30..."
                 },
                 "polling_station": {
@@ -3146,7 +3153,7 @@
                 "route_master": {
                     "label": "Typ"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monogramm",
                     "options": {
                         "CIIIR": "CIIIR (Charles III)",
@@ -3826,6 +3833,13 @@
                 "telecom/medium": {
                     "label": "Medium"
                 },
+                "telescope/type": {
+                    "label": "Typ",
+                    "options": {
+                        "optical": "Optisches Teleskop",
+                        "radio": "Radioteleskop"
+                    }
+                },
                 "tents": {
                     "label": "Zelte"
                 },
@@ -4465,6 +4479,10 @@
                     "name": "Geldautomat",
                     "terms": "geldautomat,bankautomat,bankomat,bancomat,geldausgabeautomat,atm"
                 },
+                "amenity/baking_oven": {
+                    "name": "Backofen",
+                    "terms": "ofen,pizzaofen,steinofen,holzofen"
+                },
                 "amenity/bank": {
                     "name": "Bank-Filiale",
                     "terms": "bank,kreditinstitut,sparkasse,kreditgenossenschaft,treuhandgesellschaft"
@@ -4731,8 +4749,8 @@
                     "aliases": "Schönheitschirurg"
                 },
                 "amenity/doctors/podiatry": {
-                    "name": "Podiater",
-                    "terms": "fußchirurg"
+                    "name": "Podiater (Fußchirurgie)",
+                    "terms": "fußchirurg,fußchirurgie"
                 },
                 "amenity/doctors/proctology": {
                     "name": "Proktologe",
@@ -4875,6 +4893,10 @@
                 "amenity/fuel": {
                     "name": "Tankstelle",
                     "terms": "tankstelle,tanke"
+                },
+                "amenity/funeral_hall": {
+                    "name": "Trauerhalle",
+                    "terms": "feierhalle,aussegnungshalle,einsegnungshalle,abdankungshalle,beerdigung,bestattung,trauerfeier"
                 },
                 "amenity/gambling": {
                     "name": "Spielhalle",
@@ -5882,6 +5904,10 @@
                     "name": "Mehrfamilienhaus",
                     "terms": "mehrfamilienhaus,apartmenthaus,wohnblock,miethaus,wohnturm,wohnhochhaus,großes wohnhaus,geschosswohnungsbau,wohnungen"
                 },
+                "building/bakehouse": {
+                    "name": "Backhaus",
+                    "terms": "gemeindebackhaus,backes,ofenhaus"
+                },
                 "building/barn": {
                     "name": "Scheune",
                     "terms": "scheune,stadl"
@@ -6045,6 +6071,10 @@
                 "building/retail": {
                     "name": "Geschäftsgebäude",
                     "terms": "geschäftsgebäude,gebäude mit läden"
+                },
+                "building/riding_hall": {
+                    "name": "Reithalle",
+                    "terms": "reitbahn,reiten,longierhalle,longieren"
                 },
                 "building/roof": {
                     "name": "Dach",
@@ -6397,7 +6427,7 @@
                 },
                 "emergency/defibrillator": {
                     "name": "Defibrillator",
-                    "terms": "defibrillator,defi,schockgeber"
+                    "terms": "defibrillator,defi,schockgeber,aed"
                 },
                 "emergency/designated": {
                     "name": "Rettungsweg"
@@ -6642,8 +6672,8 @@
                     "aliases": "Physiotherapeutin"
                 },
                 "healthcare/podiatrist": {
-                    "name": "Fußpflege",
-                    "terms": "podologe,fußheilerin,fußpflege"
+                    "name": "Podologe",
+                    "terms": "podologe,fußheiler,fußpflege,podologie,fußnagel,zehnagel"
                 },
                 "healthcare/psychotherapist": {
                     "name": "Psychotherapeut",
@@ -7052,6 +7082,10 @@
                 "historic/memorial/plaque": {
                     "name": "Gedenktafel",
                     "terms": "gedenktafel"
+                },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Stolperstein",
+                    "terms": "stolperstein"
                 },
                 "historic/monument": {
                     "name": "Monument",
@@ -7462,8 +7496,8 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Reitanlage",
-                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
-                    "aliases": "Reiterhof\nReitstall\nReitzentrum"
+                    "terms": "pferdehof,pferdereitstall,pferdesportanlage,pferdesportzentrum,ponyhof,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsportanlage,reitsportzentrum,reitstall",
+                    "aliases": "Reitzentrum"
                 },
                 "leisure/ice_rink": {
                     "name": "Eislaufbahn",
@@ -7594,7 +7628,8 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "Reitplatz",
-                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz,rodeo"
+                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz,rodeo",
+                    "aliases": "Reitbahn"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Hockeyfeld",
@@ -7720,6 +7755,10 @@
                 "leisure/sports_centre/climbing": {
                     "name": "Kletterhalle",
                     "terms": "kletterhalle"
+                },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Hochseilgarten",
+                    "terms": "kletterpark,seilgarten,waldseilgarten,niedrigseilgarten,kletterwald"
                 },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Pferderennbahn",
@@ -7980,7 +8019,8 @@
                 },
                 "man_made/milk_churn_stand": {
                     "name": "Milchrampe",
-                    "terms": "milchkanne,milchbank,melkbank,milchbock,milchtisch"
+                    "terms": "milchkanne,milchbank,melkbank,milchbock,milchtisch",
+                    "aliases": "Melkbank\nMilchbock\nMilchtisch"
                 },
                 "man_made/mineshaft": {
                     "name": "Bergmännischer Schacht (vertikal)",
@@ -8035,6 +8075,10 @@
                     "name": "Wasserhochbehälter",
                     "terms": "untergrund,unterirdisch,reservoir,wassertank"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Satellitenschüssel",
+                    "terms": "satellitenschüssel"
+                },
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "speicher,silo"
@@ -8086,6 +8130,18 @@
                 "man_made/tailings_pond": {
                     "name": "Absetzbecken",
                     "terms": "absetzteich,staubecken,stauteich,schlamm,schlämme,rotschlamm,deponie"
+                },
+                "man_made/telescope": {
+                    "name": "Teleskop",
+                    "terms": "teleskop"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Optisches Teleskop",
+                    "terms": "optikteleskop"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radioteleskop",
+                    "terms": "radioteleskop"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8797,7 +8853,7 @@
                     "terms": "dorf"
                 },
                 "playground": {
-                    "name": "Spielgeräte des Spielplatz"
+                    "name": "Spielplatzgerät"
                 },
                 "playground/activitypanel": {
                     "name": "Spielwand",
@@ -9034,6 +9090,10 @@
                 "power/switch": {
                     "name": "Hochspannungsschalter",
                     "terms": "netzschalter,ein/ausschalter,hochspannungsschalter"
+                },
+                "power/switchgear": {
+                    "name": "Schaltanlage",
+                    "terms": "stromschaltanlage"
                 },
                 "power/tower": {
                     "name": "Hochspannungsmast",

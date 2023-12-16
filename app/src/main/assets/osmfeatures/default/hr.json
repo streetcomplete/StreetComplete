@@ -346,10 +346,6 @@
                     "label": "Marka",
                     "terms": "marka,trgovinska oznaka"
                 },
-                "brewery": {
-                    "label": "Točena piva",
-                    "terms": "točeno pivo"
-                },
                 "bridge": {
                     "label": "Vrsta"
                 },
@@ -779,12 +775,6 @@
                 "hoops": {
                     "label": "Obruči",
                     "placeholder": "1, 2, 4..."
-                },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da",
-                        "undefined": "Ne"
-                    }
                 },
                 "horse_riding": {
                     "options": {

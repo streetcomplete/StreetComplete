@@ -182,7 +182,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg eine taktile Pflasterung für Blinde auf beiden Seiten?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
-    <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
+    <string name="quest_source_dialog_note">"Nur persönlich vor Ort überprüfte Informationen sollen ergänzt werden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (regengeschützt)?"</string>
     <string name="dialog_session_dont_show_again">"Für diese Sitzung nicht mehr fragen"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit sieht ungewöhnlich aus."</string>
@@ -1355,4 +1355,19 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_recycling_type_food_waste">"Essensreste"</string>
     <string name="quest_defibrillator_location">"Wo befindet sich dieser Defibrillator?"</string>
     <string name="quest_defibrillator_location_description">"Bitte beschreibe die Position kurz und präzise (z. B. „in der Empfangshalle“)."</string>
+    <string name="quest_sanitary_dump_station_title">"Gibt es eine Entsorgungsstation für Sanitäranlagen?"</string>
+    <string name="quest_sanitary_dump_station_description">"Eine Einrichtung zur Entsorgung von menschlichen Abfällen aus dem Toiletten-Sammeltank eines Wohnmobils, LKWs, etc. Normalerweise durch ein Schild wie dieses gekennzeichnet:"</string>
+    <string name="quest_generalFee_title">"Muss man zahlen, um dies nutzen zu dürfen?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Nur eine Feuerstelle"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Feuerstellen haben im Gegensatz zu Grills keine Kochfläche (z. B. Rost/Platte)."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"für Fehlerberichte"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Logs teilen"</string>
+    <string name="about_title_show_logs">"Logs anzeigen"</string>
+    <string name="label_log_level">"Log-Level"</string>
+    <string name="label_log_newer_than">"Von"</string>
+    <string name="label_log_older_than">"Bis"</string>
+    <string name="label_log_message_contains">"Nachricht enthält"</string>
+    <string name="title_logs_filters">"Nachrichten filtern"</string>
 </resources>

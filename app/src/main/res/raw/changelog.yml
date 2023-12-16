@@ -1,4 +1,4 @@
-v56.0: |
+v56.0-beta1: |
   <h3>Replaced Authorization</h3>
   <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0. (#5383, #5322)
   <br>Sponsored by @dirkmueller from SUSE</p>

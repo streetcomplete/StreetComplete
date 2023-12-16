@@ -161,12 +161,14 @@
                         "housenumber": "123",
                         "housenumber!jp": "주거 번호<br>",
                         "neighbourhood": "동",
+                        "neighbourhood!jp": "마치/초메/아자/코아자",
                         "place": "장소",
                         "postcode": "우편번호",
                         "province": "도",
                         "province!cn": "성/직할시/자치구/특별행정구",
                         "province!jp": "도도부현",
                         "quarter": "지구",
+                        "quarter!jp": "오아자",
                         "state": "주",
                         "street": "도로명",
                         "subdistrict": "하위 지구",
@@ -245,11 +247,18 @@
                     "options": {
                         "baths": "목욕탕",
                         "city": "옛 도시",
-                        "petroglyph": "석조각상"
+                        "crannog": "크라노그",
+                        "necropolis": "네크로폴리스",
+                        "petroglyph": "석조각상",
+                        "roman_circus": "고대 로마 전차경기장",
+                        "roman_villa": "고대 로마 빌라",
+                        "settlement": "옛 정착지",
+                        "tumulus": "고분"
                     }
                 },
                 "architect": {
-                    "label": "건축가"
+                    "label": "건축가",
+                    "terms": "건축한 사람,지은이,지은 사람,설계자"
                 },
                 "area/highway": {
                     "label": "유형"
@@ -409,7 +418,11 @@
                     }
                 },
                 "bicycle_road": {
-                    "label": "자전거 도로"
+                    "label": "자전거 도로",
+                    "options": {
+                        "undefined": "아니오",
+                        "yes": "예"
+                    }
                 },
                 "bin": {
                     "label": "쓰레기통"
@@ -459,9 +472,6 @@
                 "brand": {
                     "label": "상표"
                 },
-                "brewery": {
-                    "label": "생맥주"
-                },
                 "bridge": {
                     "label": "유형",
                     "placeholder": "보통"
@@ -491,6 +501,7 @@
                         "farm": "농가",
                         "farm_auxiliary": "농장 건물",
                         "fire_station": "소방서 건물",
+                        "ger": "유르트",
                         "greenhouse": "온실",
                         "hospital": "병원 건물",
                         "hotel": "호텔 건물",
@@ -507,12 +518,18 @@
                         "ruins": "건물 폐허",
                         "school": "학교 건물",
                         "service": "서비스 건물",
+                        "stadium": "스타디움 건물",
                         "synagogue": "시너고그 건물",
                         "temple": "사원 건물",
                         "train_station": "철도역 건물",
                         "transportation": "교통 건물",
                         "university": "종합대학 건물"
-                    }
+                    },
+                    "terms": "건물,빌딩,건축물"
+                },
+                "building/colour": {
+                    "label": "외벽 색상",
+                    "terms": "파사드 색상,외부 색상,건물 색상,건물색,외부색"
                 },
                 "building/flats": {
                     "placeholder": "2, 4, 6, 8..."
@@ -543,6 +560,18 @@
                 "cables": {
                     "label": "케이블 수",
                     "placeholder": "1, 2, 3..."
+                },
+                "cai_scale-IT": {
+                    "label": "등산 경로 난이도 (이탈리아 알파인 클럽 기준)",
+                    "options": {
+                        "E": "E: 일반 등산객용",
+                        "EAI": "EAI: 일반 등산객용 (설원 지대 포함)",
+                        "EE": "EE: 전문 산악인용",
+                        "EEA": "EEA: 전문 산악인용 (등산 장비 필요)",
+                        "T": "T: 관광용"
+                    },
+                    "placeholder": "T, E, EE, …",
+                    "terms": "등산 경로 난이도 (이탈리아 알파인 클럽),하이킹 경로 난이도 (이탈리아 알파인 클럽),하이킹 루트 난이도 (이탈리아 알파인 클럽)"
                 },
                 "camera/direction": {
                     "label": "방향(시계 방향 각도)",
@@ -610,8 +639,13 @@
                     "options": {
                         "babies": "유아복",
                         "children": "아동복",
+                        "denim": "청바지류",
+                        "fur": "모피류",
                         "hats": "모자",
+                        "maternity": "임부복",
                         "men": "남성복",
+                        "motorcycle": "바이크 의류",
+                        "oversize": "빅 사이즈 의류",
                         "socks": "양말",
                         "sports": "운동복",
                         "suits": "정장",
@@ -619,8 +653,10 @@
                         "traditional": "전통의상",
                         "underwear": "속옷",
                         "wedding": "혼례복",
-                        "women": "여성복"
-                    }
+                        "women": "여성복",
+                        "workwear": "작업복"
+                    },
+                    "terms": "옷,의류,의복"
                 },
                 "club": {
                     "label": "유형"
@@ -635,7 +671,8 @@
                     }
                 },
                 "colour": {
-                    "label": "색"
+                    "label": "색",
+                    "terms": "색상,색깔,색"
                 },
                 "comment": {
                     "label": "바뀜집합 댓글",
@@ -651,10 +688,19 @@
                     "label": "유형"
                 },
                 "consulate": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "consular_agency": "영사민원국",
+                        "consular_office": "영사민원 사무소",
+                        "consulate_general": "총영사관",
+                        "honorary_consul": "명예영사관",
+                        "residence": "영사공관",
+                        "yes": "영사관"
+                    }
                 },
                 "contact/facebook": {
-                    "label": "Facebook 사용자명 혹은 URL"
+                    "label": "Facebook 사용자명 혹은 URL",
+                    "placeholder": "https://www.facebook.com/LocalBusiness"
                 },
                 "contact/webcam": {
                     "label": "웹캠 URL",
@@ -777,7 +823,7 @@
                     "label": "경고등"
                 },
                 "crossing/markings": {
-                    "label": "횡단보도 표시",
+                    "label": "횡단보도 표시 형태",
                     "options": {
                         "no": "표시 없음",
                         "yes": "표시 있음",
@@ -786,10 +832,10 @@
                     }
                 },
                 "crossing_raised": {
-                    "label": "과속방지턱",
+                    "label": "고원식 횡단보도",
                     "options": {
                         "table": "예",
-                        "undefined": "아니오"
+                        "undefined": "아니오로 간주"
                     }
                 },
                 "cuisine": {
@@ -822,7 +868,6 @@
                         "lebanese": "레바논 요리",
                         "malaysian": "말레이시아 요리",
                         "mexican": "멕시코 요리",
-                        "pankcake": "팬케이크",
                         "pasta": "파스타",
                         "peruvian": "페루 요리",
                         "pizza": "피자",
@@ -837,6 +882,7 @@
                         "steak_house": "스테이크하우스",
                         "sushi": "초밥",
                         "taiwanese": "대만 요리",
+                        "tex-mex": "텍스멕스",
                         "thai": "태국 요리",
                         "turkish": "터키 요리",
                         "ukrainian": "우크라이나 요리",
@@ -1026,6 +1072,7 @@
                     "label": "유형"
                 },
                 "dog": {
+                    "label": "개",
                     "options": {
                         "leashed": "애완동물 목줄 착용 필수",
                         "no": "허용되지 않음",
@@ -1348,6 +1395,7 @@
                 "healthcare": {
                     "label": "유형",
                     "options": {
+                        "alternative": "대체의학",
                         "blood_bank": "혈액원",
                         "blood_donation": "헌혈의 집",
                         "clinic": "의원",
@@ -1357,7 +1405,10 @@
                         "hospice": "호스피스",
                         "hospital": "병원",
                         "laboratory": "의학 연구소",
-                        "pharmacy": "약국"
+                        "midwife": "조산사",
+                        "nurse": "간호사",
+                        "pharmacy": "약국",
+                        "psychotherapist": "심리치료사"
                     }
                 },
                 "healthcare/speciality": {
@@ -1386,6 +1437,7 @@
                         "infectious_diseases": "감염내과",
                         "internal": "내과",
                         "naturopathy": "세포병리학",
+                        "neonatology": "신생아학",
                         "nephrology": "신장내과",
                         "neurology": "신경내과",
                         "neuropsychiatry": "신경정신과",
@@ -1396,8 +1448,11 @@
                         "ophthalmology": "안과",
                         "orthodontics": "치과교정과",
                         "orthopaedics": "정형외과",
+                        "osteopathy": "정골의학과",
+                        "otolaryngology": "이비인후과",
                         "paediatric_surgery": "소아외과",
                         "paediatrics": "소아청소년과",
+                        "palliative": "완화 치료",
                         "pathology": "병리과",
                         "physiatry": "재활의학과",
                         "plastic_surgery": "성형외과",
@@ -1406,11 +1461,20 @@
                         "psychiatry": "정신건강의학과",
                         "pulmonology": "호흡기내과",
                         "radiology": "영상의학과",
+                        "radiotherapy": "방사선 요법",
+                        "reflexology": "반사학",
+                        "reiki": "레이키",
                         "rheumatology": "류마티스내과",
+                        "shiatsu": "시아추",
                         "stomatology": "구강과",
                         "surgery": "외과",
+                        "systemic": "전신요법",
+                        "traditional_chinese_medicine": "한의학",
                         "transplant": "이식외과",
                         "trauma": "외상외과",
+                        "tropical": "열대의학과",
+                        "tuina": "추나요법",
+                        "unani": "유나니 의학",
                         "urology": "비뇨의학과",
                         "vaccination": "백신 접종",
                         "vascular_surgery": "혈관외과"
@@ -1450,7 +1514,7 @@
                         "mine": "광산",
                         "railway": "철도",
                         "ruins": "폐허",
-                        "tomb": "무덤"
+                        "tomb": "무덤 (역사적 지물)"
                     }
                 },
                 "historic/civilization": {
@@ -1476,15 +1540,7 @@
                     "label": "후프",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "기마술",
-                    "options": {
-                        "equestrian": "예",
-                        "undefined": "아니오"
-                    }
-                },
                 "horse_riding": {
-                    "label": "승마",
                     "options": {
                         "horse_riding": "예",
                         "undefined": "아니오"
@@ -1495,12 +1551,6 @@
                     "options": {
                         "common": "쉬움: 운행하는 데 아무 문제나 어려움이 없다. (기본값)",
                         "critical": "경계선: 숙련된 라이더와 말만 통행할 수 있습니다. 주요 장애물. 교량을주의 깊게 검사해야합니다."
-                    }
-                },
-                "horse_stables": {
-                    "options": {
-                        "stables": "예",
-                        "undefined": "아니오"
                     }
                 },
                 "hot_water": {
@@ -2067,6 +2117,18 @@
                         "skating": "스케이팅"
                     }
                 },
+                "piste/grooming_downhill": {
+                    "options": {
+                        "classic": "클래식",
+                        "mogul": "모굴"
+                    }
+                },
+                "piste/grooming_nordic": {
+                    "options": {
+                        "scooter": "스쿠터/스노모빌",
+                        "skating": "스케이팅"
+                    }
+                },
                 "piste/type": {
                     "label": "유형",
                     "options": {
@@ -2110,6 +2172,9 @@
                 },
                 "population": {
                     "label": "인구"
+                },
+                "population/date": {
+                    "placeholder": "YYYY-MM-DD"
                 },
                 "power": {
                     "label": "유형"
@@ -2225,6 +2290,7 @@
                 "religion": {
                     "label": "종교",
                     "options": {
+                        "bahai": "바하이교",
                         "buddhist": "불교",
                         "caodaism": "까오다이교",
                         "chinese_folk": "중국 토속신앙",
@@ -2238,7 +2304,8 @@
                         "sikh": "시크교",
                         "taoist": "도교",
                         "tenrikyo": "천리교",
-                        "vietnamese_folk": "베트남 토속신앙"
+                        "vietnamese_folk": "베트남 토속신앙",
+                        "voodoo": "부두교"
                     }
                 },
                 "reservation": {
@@ -3351,6 +3418,9 @@
                     "name": "낙태 클리닉",
                     "terms": "미숙아 클리닉"
                 },
+                "amenity/clinic/dialysis": {
+                    "name": "투석 센터"
+                },
                 "amenity/clinic/fertility": {
                     "name": "불임 클리닉",
                     "terms": "불임 클리닉"
@@ -3410,11 +3480,17 @@
                 "amenity/doctors/cardiology": {
                     "name": "순환기내과 의사"
                 },
+                "amenity/doctors/child_psychiatry": {
+                    "name": "아동청소년 정신의학과 의사"
+                },
                 "amenity/doctors/dermatology": {
                     "name": "피부과 의사"
                 },
                 "amenity/doctors/gastroenterology": {
                     "name": "소화기내과 의사"
+                },
+                "amenity/doctors/general": {
+                    "name": "주치의"
                 },
                 "amenity/doctors/gynaecology": {
                     "name": "산부인과 의사"
@@ -3570,7 +3646,7 @@
                     "name": "도박장"
                 },
                 "amenity/grave_yard": {
-                    "name": "묘지",
+                    "name": "묘역 (종교시설 내부)",
                     "terms": "묘지,묘역,산소"
                 },
                 "amenity/grit_bin": {
@@ -4044,6 +4120,9 @@
                     "name": "주차권 발권기",
                     "terms": "주차권 발권기,주차발권기"
                 },
+                "amenity/vending_machine/pizza": {
+                    "name": "피자 자판기"
+                },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "대중교통 승차권 발매기",
                     "terms": "대중교통 승차권 발매기,1회용 승차권 발매기"
@@ -4061,6 +4140,9 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "개 배설물 쓰레기통"
+                },
+                "amenity/waste_basket": {
+                    "name": "쓰레기통"
                 },
                 "amenity/waste_disposal": {
                     "name": "쓰레기 수거함",
@@ -4098,6 +4180,9 @@
                 },
                 "attraction/animal": {
                     "name": "동물 우리"
+                },
+                "attraction/big_wheel": {
+                    "name": "회전관람차"
                 },
                 "attraction/bumper_car": {
                     "name": "범퍼카"
@@ -4460,7 +4545,7 @@
                     "terms": "묘지,묘,산소"
                 },
                 "cemetery/sector": {
-                    "name": "묘소",
+                    "name": "묘역 (묘지 내부)",
                     "terms": "묘소,묘역"
                 },
                 "club": {
@@ -4715,7 +4800,8 @@
                     "terms": "소화전"
                 },
                 "emergency/fire_service_inlet": {
-                    "name": "관할 소방서"
+                    "name": "소방 송수구",
+                    "terms": "송수구"
                 },
                 "emergency/first_aid_kit": {
                     "name": "구급상자"
@@ -4827,9 +4913,27 @@
                 "healthcare/alternative": {
                     "name": "대체의학"
                 },
+                "healthcare/alternative/acupuncture": {
+                    "name": "침사"
+                },
+                "healthcare/alternative/ayurveda": {
+                    "name": "아유르베다"
+                },
                 "healthcare/alternative/chiropractic": {
-                    "name": "카이로프랙틱",
+                    "name": "카이로프랙터",
                     "terms": "허리,요통,척추"
+                },
+                "healthcare/alternative/homeopathy": {
+                    "name": "동종요법사"
+                },
+                "healthcare/alternative/naturopathy": {
+                    "name": "자연요법사"
+                },
+                "healthcare/alternative/osteopathy": {
+                    "name": "정골의학 의사"
+                },
+                "healthcare/alternative/traditional_chinese_medicine": {
+                    "name": "한의사"
                 },
                 "healthcare/audiologist": {
                     "name": "청능사",
@@ -4886,6 +4990,9 @@
                 "healthcare/speech_therapist": {
                     "name": "언어치료사"
                 },
+                "healthcare/yes": {
+                    "name": "의료 시설(기타)"
+                },
                 "highway": {
                     "name": "도로 지물"
                 },
@@ -4894,14 +5001,15 @@
                     "terms": "승마 도로"
                 },
                 "highway/bus_guideway": {
-                    "name": "독립된 버스전용차로",
-                    "terms": "brt"
+                    "name": "버스 가이드웨이",
+                    "terms": "버스 가이드웨이"
                 },
                 "highway/bus_stop": {
                     "name": "버스 정류소"
                 },
                 "highway/busway": {
-                    "name": "버스전용차로"
+                    "name": "분리된 버스 전용로",
+                    "terms": "brt,버스전용도로,간선급행버스체계"
                 },
                 "highway/construction": {
                     "name": "공사 중인 도로"
@@ -4982,7 +5090,7 @@
                 },
                 "highway/living_street": {
                     "name": "주택가 거리",
-                    "terms": "주택가 거리"
+                    "terms": "생활도로,이면도로"
                 },
                 "highway/milestone": {
                     "name": "도로 거리표"
@@ -5046,8 +5154,8 @@
                     "terms": "주거 도로,골목길"
                 },
                 "highway/rest_area": {
-                    "name": "휴게소",
-                    "terms": "졸음쉼터"
+                    "name": "졸음쉼터",
+                    "terms": "소풍 휴게소,임시 휴게소"
                 },
                 "highway/road": {
                     "name": "미확인 도로",
@@ -5089,13 +5197,19 @@
                     "name": "주차장 통로",
                     "terms": "주차장 통로"
                 },
+                "highway/service_area": {
+                    "name": "서비스 도로"
+                },
                 "highway/services": {
-                    "name": "서비스 지역",
-                    "terms": "휴게소"
+                    "name": "휴게소",
+                    "terms": "간이 휴게소"
                 },
                 "highway/speed_camera": {
                     "name": "과속단속 카메라",
                     "terms": "과속 카메라,속도 카메라"
+                },
+                "highway/speed_display": {
+                    "name": "가변속도표출기"
                 },
                 "highway/steps": {
                     "name": "계단",
@@ -5120,12 +5234,17 @@
                     "name": "3차 도로 연결로",
                     "terms": "3차 도로 연결로"
                 },
+                "highway/toll_gantry": {
+                    "name": "통행료 무인수납장치",
+                    "terms": "스마트톨링,원톨링"
+                },
                 "highway/track": {
-                    "name": "트랙 / 육로 접근 도로"
+                    "name": "트랙 / 토지 접근 도로",
+                    "terms": "농도,임도"
                 },
                 "highway/traffic_mirror": {
-                    "name": "차량 거울",
-                    "terms": "차량 거울"
+                    "name": "도로 반사경",
+                    "terms": "도로 거울,도로 반사경"
                 },
                 "highway/traffic_signals": {
                     "name": "신호등",
@@ -5148,7 +5267,7 @@
                     "terms": "루프선 (교통섬)"
                 },
                 "highway/unclassified": {
-                    "name": "미분류 도로",
+                    "name": "미분류 도로(4차 도로)",
                     "terms": "4차 도로,미분류 도로,미등급 도로"
                 },
                 "historic": {
@@ -5201,7 +5320,7 @@
                     "terms": "폐허"
                 },
                 "historic/tomb": {
-                    "name": "무덤",
+                    "name": "무덤 (역사적 지물)",
                     "terms": "무덤"
                 },
                 "historic/wayside_cross": {
@@ -5263,11 +5382,11 @@
                     "name": "재개발 부지"
                 },
                 "landuse/cemetery": {
-                    "name": "산소",
+                    "name": "묘역",
                     "terms": "산소,묘지"
                 },
                 "landuse/churchyard": {
-                    "name": "묘지"
+                    "name": "교회 부지"
                 },
                 "landuse/commercial": {
                     "name": "상업 지역",

@@ -378,10 +378,6 @@
                     "label": "Marko",
                     "terms": "marko,firmao,reto"
                 },
-                "brewery": {
-                    "label": "Verŝataj bieroj",
-                    "terms": "verŝata,krana,barela"
-                },
                 "bridge": {
                     "label": "Speco",
                     "placeholder": "Norma"
@@ -666,7 +662,6 @@
                         "lebanese": "libana",
                         "malaysian": "malajzia",
                         "mexican": "meksika",
-                        "pankcake": "patkukoj",
                         "pasta": "makaronioj",
                         "pizza": "picoj",
                         "polish": "pola",
@@ -1224,15 +1219,7 @@
                     "label": "Korboj",
                     "placeholder": "1, 2, 4…"
                 },
-                "horse_dressage": {
-                    "label": "Dresrajdado",
-                    "options": {
-                        "equestrian": "Jes",
-                        "undefined": "Ne"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Ĉeval-rajdado",
                     "options": {
                         "horse_riding": "Jes",
                         "undefined": "Ne"
@@ -1249,13 +1236,6 @@
                     },
                     "placeholder": "Malfacila, danĝera…",
                     "terms": "malfacilo,facileco"
-                },
-                "horse_stables": {
-                    "label": "Ĉeval-domo",
-                    "options": {
-                        "stables": "Jes",
-                        "undefined": "Ne"
-                    }
                 },
                 "hot_water": {
                     "label": "Varma akvo"

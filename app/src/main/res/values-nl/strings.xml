@@ -1315,7 +1315,7 @@ Nu verplaatsen?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Wegversmalling"</string>
     <string name="lane_narrowing_traffic_calming_island">"Verkeerseiland"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
-    <string name="lane_narrowing_traffic_calming_choked_island">"wegversmalling + verkeerseiland"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Wegversmalling + verkeerseiland"</string>
     <string name="lane_narrowing_traffic_calming_none">"Geen versmalde rijbaan hier"</string>
     <string name="quest_tactilePaving_title_steps">"Is er voelbare bestrating boven- en onderaan deze trap?"</string>
     <string name="quest_tactilePaving_steps_top">"Alleen bovenaan"</string>
@@ -1329,22 +1329,37 @@ Nu verplaatsen?"</string>
 
 De gegevens worden in verschillende kleuren weergegeven om je een goed overzicht te geven van wat er tot nu toe is geregistreerd.
 Ontbrekende gegevens worden altijd in rood weergegeven."</string>
-    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities noteren, zoals bij quests.
+    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities toevoegen, zoals bij quests.
 
 Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
     <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
     <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking staat er op de brug vermeld?"</string>
     <string name="quest_leave_new_note_as_answer">"In dit geval moet je een notitie achterlaten, waarin je de situatie uitlegt"</string>
-    <string name="quest_drinking_water_type_title2">" Is hier drinkwater beschikbaar? Indien ja, wat is zijn bron?"</string>
+    <string name="quest_drinking_water_type_title2">"Is hier drinkwater beschikbaar? Indien ja, wat is de bron?"</string>
     <string name="quest_is_amenity_inside_title">"Is dit binnen een gebouw?"</string>
-    <string name="quest_bbq_fuel_title">"Waardoor wordt deze grill gevoed?"</string>
+    <string name="quest_bbq_fuel_title">"Waardoor wordt deze grill verwarmd?"</string>
     <string name="quest_bbq_fuel_wood">"Hout"</string>
     <string name="quest_bbq_fuel_electric">"Elelctriciteit"</string>
     <string name="quest_bbq_fuel_charcoal">"Houtskool"</string>
-    <string name="inside">"Binnen"</string>
-    <string name="outside">"Buiten"</string>
-    <string name="quest_recycling_type_food_waste">"Voedselresten"</string>
+    <string name="inside">"binnen"</string>
+    <string name="outside">"buiten"</string>
+    <string name="quest_recycling_type_food_waste">"Voedselafval"</string>
     <string name="quest_defibrillator_location">"Waar bevindt deze defibrilator zich?"</string>
     <string name="quest_defibrillator_location_description">"Geef een beknopte beschrijving van de locatie (bijv. \"in de portiersloge\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Kun je hier afvalwater lozen?"</string>
+    <string name="quest_sanitary_dump_station_description">"Een faciliteit voor het lozen van afvalwater van een toilet van een camper, vrachtwagen, enz. Meestal voorzien van een bord als dit:"</string>
+    <string name="quest_generalFee_title">"Moet je betalen om dit te gebruiken?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Het is een vuurplaats"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Vuurplaatsen hebben geen kook-oppervlak (rooster, plaat), in tegenstelling tot grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"voor gebruik in foutrapporten"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Deel logs"</string>
+    <string name="about_title_show_logs">"Laat logs zien"</string>
+    <string name="label_log_level">"Logniveau"</string>
+    <string name="label_log_newer_than">"Van"</string>
+    <string name="label_log_older_than">"Tot"</string>
+    <string name="label_log_message_contains">"Bericht bevat"</string>
+    <string name="title_logs_filters">"Filter berichten"</string>
 </resources>

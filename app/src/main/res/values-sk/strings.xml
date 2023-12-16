@@ -1348,4 +1348,19 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="quest_recycling_type_food_waste">"Plytvanie potravinami"</string>
     <string name="quest_defibrillator_location">"Kde sa tento defibrilátor nachádza?"</string>
     <string name="quest_defibrillator_location_description">"Uveďte stručný opis jeho polohy (napr. \"v salóniku vrátnika\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Nachádza sa tu odtok na splašky?"</string>
+    <string name="quest_sanitary_dump_station_description">"Zariadenie na vyhodenie ľudského odpadu zo záchodovej nádrže obytného vozidla, diaľkového nákladného vozidla atď. Zvyčajne sa označuje takouto značkou:"</string>
+    <string name="quest_generalFee_title">"Musíte za jej používanie platiť?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Je to požiarny kryt"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Na rozdiel od grilov nemajú ohniská varnú plochu (napr. rošt/platňu)."</string>
+    <string name="about_title_logs">"Záznamy (%1$d)"</string>
+    <string name="about_summary_logs">"na použitie v chybových hláseniach"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Zdieľať záznamy"</string>
+    <string name="about_title_show_logs">"Zobraziť záznamy"</string>
+    <string name="label_log_level">"Úroveň záznamov"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Správa obsahuje"</string>
+    <string name="title_logs_filters">"Filtrovanie správ"</string>
 </resources>

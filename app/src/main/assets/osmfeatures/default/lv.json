@@ -507,14 +507,7 @@
                 "hoops": {
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Jā",
-                        "undefined": "Nē"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Zirgu izjāde",
                     "options": {
                         "horse_riding": "Jā",
                         "undefined": "Nē"
@@ -530,13 +523,6 @@
                         "difficult": "Grūts: Pārlieku šaurs un atvērts. Var saturēt šķēršļus, kam jāpārkāpj un šauras pārejas."
                     },
                     "placeholder": "Grūts, Bīstams..."
-                },
-                "horse_stables": {
-                    "label": "Zirgu Stallis",
-                    "options": {
-                        "stables": "Jā",
-                        "undefined": "Nē"
-                    }
                 },
                 "incline": {
                     "label": "Slīpums"
@@ -2022,6 +2008,10 @@
                 },
                 "man_made/mast": {
                     "name": "Masts"
+                },
+                "man_made/milk_churn_stand": {
+                    "name": "piena galds",
+                    "aliases": "piena steķis\npīna golds"
                 },
                 "man_made/observatory": {
                     "name": "Observatorija"

@@ -200,9 +200,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231120"
+val nsiVersion = "v6.0.20231212"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.4.1"
+val presetsVersion = "v6.5.0"
 
 val poEditorProjectId = "97843"
 

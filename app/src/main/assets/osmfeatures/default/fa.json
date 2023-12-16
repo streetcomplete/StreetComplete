@@ -385,9 +385,6 @@
                     "label": "نام تجاری",
                     "terms": "برند، مارک، نمانام، نشان تجاری، مدل"
                 },
-                "brewery": {
-                    "label": "محل آماده سازی آبجو"
-                },
                 "bridge": {
                     "label": "نوع",
                     "placeholder": "پیش فرض"
@@ -658,7 +655,6 @@
                         "lebanese": "لبنانی",
                         "malaysian": "مالزیایی",
                         "mexican": "مکزیکی",
-                        "pankcake": "پن‌کیک",
                         "pasta": "پاستا",
                         "pizza": "پیتزا",
                         "polish": "لهستانی",
@@ -1130,15 +1126,7 @@
                     "label": "حلقه ها",
                     "placeholder": "۱, ۲, ۴..."
                 },
-                "horse_dressage": {
-                    "label": "درساژ سواری (حرکات نمایشی اسب)",
-                    "options": {
-                        "equestrian": "بله",
-                        "undefined": "خیر"
-                    }
-                },
                 "horse_riding": {
-                    "label": "سوارکاری",
                     "options": {
                         "horse_riding": "بله",
                         "undefined": "خیر"
@@ -1155,13 +1143,6 @@
                     },
                     "placeholder": "سخت، خطرناک...",
                     "terms": "سطح سوارکاری، دشواری سوارکاری"
-                },
-                "horse_stables": {
-                    "label": "پایدار سواری (مکانی که اسب‌ها را برای سوار ماندن مردم نگهداری می‌کنند)",
-                    "options": {
-                        "stables": "بله",
-                        "undefined": "خیر"
-                    }
                 },
                 "hot_water": {
                     "label": "آب گرم"
@@ -1947,12 +1928,6 @@
                 "route_master": {
                     "label": "نوع"
                 },
-                "royal_cypher": {
-                    "options": {
-                        "no": "خیر",
-                        "scottish_crown": "تاج اسکاتلند"
-                    }
-                },
                 "ruins": {
                     "label": "نوع"
                 },
@@ -2297,6 +2272,7 @@
                         "ground": "زمین",
                         "paved": "روسازی‌شده",
                         "paving_stones": "سنگ‌فرش هموار",
+                        "salt": "نمک",
                         "sand": "شنی (ریز)",
                         "unpaved": "روسازی‌نشده",
                         "wood": "چوب"
@@ -5133,6 +5109,10 @@
                 "landuse/retail": {
                     "name": "منطقه خرید و فروش جزئی / بازارچه",
                     "terms": "منطقه خرده فروشی ، منطقه بازارچه ، خرید ، فروش ، بازار ، منطقه بازارچه خرده فروشی ، داد و ستد ، آل وِر ، خرید و فروش"
+                },
+                "landuse/salt_pond": {
+                    "name": "حوضچه نمک تبخیری",
+                    "aliases": "حوضچه تبخیر"
                 },
                 "landuse/vineyard": {
                     "name": "باغ انگور",

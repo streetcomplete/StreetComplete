@@ -145,7 +145,7 @@
                     "label": "地址",
                     "placeholders": {
                         "block_number": "街区编号",
-                        "block_number!jp": "街区号",
+                        "block_number!jp": "街区符号/番/番地/地番",
                         "city": "城市",
                         "city!cn": "地级市/地区/自治州/盟",
                         "city!jp": "市/町/村/东京都区部",
@@ -153,7 +153,7 @@
                         "conscriptionnumber": "123",
                         "country": "国家",
                         "county": "郡",
-                        "county!jp": "日本郡",
+                        "county!jp": "郡",
                         "district": "行政区",
                         "district!cn": "市辖区/县/县级市/旗",
                         "district!vn": "郡/镇/区",
@@ -163,17 +163,20 @@
                         "housenumber": "123",
                         "housenumber!jp": "楼号/地段号",
                         "neighbourhood": "街坊",
+                        "neighbourhood!jp": "町/丁目/字/小字",
                         "place": "地方",
                         "postcode": "邮政编码",
                         "province": "省",
                         "province!cn": "省/自治区/直辖市/特别行政区",
-                        "province!jp": "日本县",
+                        "province!jp": "都道府县",
                         "quarter": "地方",
+                        "quarter!jp": "大字",
                         "state": "行政州",
                         "street": "路",
                         "subdistrict": "街道",
                         "subdistrict!vn": "行政区/社区/小镇",
                         "suburb": "城市片区",
+                        "suburb!jp": "区（政令市）",
                         "unit": "户号"
                     },
                     "terms": "地址,方位,住址,居所,地点,住处"
@@ -246,7 +249,19 @@
                 "archaeological_site": {
                     "label": "类型",
                     "options": {
-                        "city": "古城遗址"
+                        "baths": "浴室",
+                        "city": "古城遗址",
+                        "crannog": "Crannog",
+                        "enclosure": "围场",
+                        "fortification": "防御工事",
+                        "hut_circle": "小屋圈",
+                        "megalith": "巨石",
+                        "necropolis": "大墓地",
+                        "petroglyph": "岩石雕刻",
+                        "roman_circus": "罗马竞技场",
+                        "roman_villa": "罗马别墅",
+                        "settlement": "历史定居点",
+                        "tumulus": "陵墓"
                     }
                 },
                 "architect": {
@@ -260,7 +275,12 @@
                     "label": "艺术家"
                 },
                 "artwork_type": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "bust": "半身像",
+                        "graffiti": "涂鸦 ",
+                        "installation": "装置艺术"
+                    }
                 },
                 "ascent": {
                     "label": "总上升高度",
@@ -317,6 +337,9 @@
                 "barrier": {
                     "label": "类型",
                     "options": {
+                        "city_wall": "城墙",
+                        "hedge": "树篱",
+                        "height_restrictor": "限高杆",
                         "lift_gate": "升降杆"
                     }
                 },
@@ -418,10 +441,6 @@
                     "label": "品牌",
                     "terms": "品牌,牌子,商标"
                 },
-                "brewery": {
-                    "label": "生啤酒",
-                    "terms": "生啤,生啤酒,啤酒"
-                },
                 "bridge": {
                     "label": "类型",
                     "placeholder": "默认"
@@ -434,6 +453,9 @@
                 },
                 "building": {
                     "label": "建筑物",
+                    "options": {
+                        "ruins": "建筑废墟"
+                    },
                     "terms": "建筑物,建筑,结构,房子"
                 },
                 "building/flats": {
@@ -755,7 +777,6 @@
                         "lebanese": "黎巴嫩菜",
                         "malaysian": "马来西亚菜",
                         "mexican": "墨西哥料理",
-                        "pankcake": "薄饼",
                         "pasta": "意大利面",
                         "pizza": "比萨",
                         "polish": "波兰菜",
@@ -839,6 +860,7 @@
                     "label": "树木指示性"
                 },
                 "departures_board": {
+                    "label": "出发/到站时刻显示",
                     "options": {
                         "no": "无",
                         "realtime": "实时",
@@ -1235,7 +1257,8 @@
                         "oil": "石油",
                         "solar": "太阳辐射",
                         "tidal": "潮汐能",
-                        "waste": "废弃物"
+                        "waste": "废弃物",
+                        "wave": "波浪能"
                     }
                 },
                 "generator/type": {
@@ -1282,10 +1305,125 @@
                     "placeholder": "#example"
                 },
                 "healthcare": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "alternative": "替代医学",
+                        "audiologist": "听力学家",
+                        "birthing_centre": "分娩中心",
+                        "blood_bank": "血库",
+                        "blood_donation": "献血中心",
+                        "clinic": "诊所",
+                        "community_health_worker": "社区卫生工作者",
+                        "counselling": "咨询中心",
+                        "dentist": "牙医",
+                        "dialysis": "透析中心",
+                        "doctor": "医生",
+                        "hospice": "临终关怀机构",
+                        "hospital": "医院",
+                        "laboratory": "医学实验室",
+                        "midwife": "助产士",
+                        "nurse": "护士",
+                        "occupational_therapist": "职业治疗师",
+                        "optometrist": "验光师",
+                        "pharmacy": "药店",
+                        "physiotherapist": "物理治疗师",
+                        "podiatrist": "足病医生",
+                        "psychotherapist": "心理治疗师",
+                        "rehabilitation": "康复中心",
+                        "sample_collection": "样本采集中心",
+                        "speech_therapist": "言语治疗师",
+                        "vaccination_centre": "疫苗接种中心"
+                    }
                 },
                 "healthcare/speciality": {
-                    "label": "专科"
+                    "label": "专科",
+                    "options": {
+                        "abortion": "人工流产",
+                        "acupuncture": "针灸",
+                        "allergology": "过敏与哮喘",
+                        "anaesthetics": "麻醉学",
+                        "angiology": "血管学",
+                        "anthroposophical": "人智医学",
+                        "applied_kinesiology": "应用运动机能学",
+                        "aromatherapy": "芳香疗法",
+                        "ayurveda": "阿育吠陀医学",
+                        "behavior": "行为疗法",
+                        "biochemistry": "生物化学",
+                        "biology": "生物学",
+                        "blood_check": "血液检测",
+                        "body": "身体疗法",
+                        "cardiology": "心脏病学",
+                        "cardiothoracic_surgery": "心胸外科手术",
+                        "child_psychiatry": "儿童与青少年精神医学",
+                        "chiropractic": "脊椎按摩疗法",
+                        "clinical_pathology": "临床病理学",
+                        "community": "社区与公共卫生",
+                        "dental_oral_maxillo_facial_surgery": "牙科、口腔与颌面外科",
+                        "depth": "深度心理学",
+                        "dermatology": "皮肤科学",
+                        "dermatovenereology": "皮肤性病学",
+                        "diabetology": "糖尿病学",
+                        "diagnostic_radiology": "诊断放射学",
+                        "emergency": "急诊医学",
+                        "endocrinology": "内分泌学",
+                        "fertility": "生育能力",
+                        "gastroenterology": "胃肠病学",
+                        "general": "全科医学",
+                        "geriatrics": "老年医学",
+                        "gynaecology": "妇产科",
+                        "haematology": "血液学",
+                        "hepatology": "肝病学",
+                        "herbalism": "草药疗法",
+                        "homeopathy": "顺势疗法",
+                        "humanistic": "人本心理学",
+                        "hydrotherapy": "水疗法",
+                        "hypnosis": "催眠疗法",
+                        "infectious_diseases": "传染病",
+                        "intensive": "重症监护",
+                        "internal": "内科学",
+                        "naturopathy": "自然疗法",
+                        "neonatology": "新生儿学",
+                        "nephrology": "肾脏病学",
+                        "neurology": "神经学",
+                        "neuropsychiatry": "神经精神病学",
+                        "neurosurgery": "神经外科",
+                        "nuclear": "核医学",
+                        "occupational": "职业医学",
+                        "oncology": "肿瘤学",
+                        "ophthalmology": "眼科学",
+                        "orthodontics": "口腔正畸学",
+                        "orthopaedics": "骨科手术",
+                        "osteopathy": "骨疗法",
+                        "otolaryngology": "耳鼻喉科",
+                        "paediatric_surgery": "小儿外科",
+                        "paediatrics": "儿科学",
+                        "palliative": "姑息治疗",
+                        "pathology": "病理学",
+                        "physiatry": "物理医学与康复",
+                        "plastic_surgery": "整形外科",
+                        "podiatry": "足病学",
+                        "proctology": "结直肠外科",
+                        "psychiatry": "精神病学",
+                        "pulmonology": "肺病学",
+                        "radiology": "放射学",
+                        "radiotherapy": "放射治疗",
+                        "reflexology": "反射疗法",
+                        "reiki": "灵气疗法",
+                        "rheumatology": "风湿病学",
+                        "shiatsu": "指压疗法",
+                        "stomatology": "口腔学",
+                        "surgery": "普通外科",
+                        "systemic": "系统疗法",
+                        "traditional_chinese_medicine": "中医学",
+                        "transplant": "移植外科",
+                        "trauma": "创伤外科",
+                        "tropical": "热带医学",
+                        "tuina": "推拿",
+                        "unani": "优那尼医学",
+                        "urology": "泌尿外科",
+                        "vaccination": "疫苗接种",
+                        "vascular_surgery": "血管外科"
+                    }
                 },
                 "heating": {
                     "label": "供暖"
@@ -1317,7 +1455,10 @@
                     }
                 },
                 "historic": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "ruins": "废墟"
+                    }
                 },
                 "historic/civilization": {
                     "label": "所属文化及历史时期"
@@ -1343,15 +1484,7 @@
                     "label": "篮圈数",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "花式骑术",
-                    "options": {
-                        "equestrian": "是",
-                        "undefined": "否"
-                    }
-                },
                 "horse_riding": {
-                    "label": "马背骑行",
                     "options": {
                         "horse_riding": "是",
                         "undefined": "否"
@@ -1368,13 +1501,6 @@
                     },
                     "placeholder": "简单, 困难, 危险...",
                     "terms": "骑马难度"
-                },
-                "horse_stables": {
-                    "label": "骑马练习",
-                    "options": {
-                        "stables": "是",
-                        "undefined": "否"
-                    }
                 },
                 "hot_water": {
                     "label": "热水"
@@ -1644,8 +1770,17 @@
                     "label": "最高年龄",
                     "terms": "最高年龄,最大年龄,年龄上限"
                 },
+                "maxaxleload_bridge": {
+                    "label": "限制轴重",
+                    "terms": "限制轴重,限制轴承,轴承,最大轴承,限轴,轴重限制,最大轴重,限载,最大重量,最大承重,限重,承重"
+                },
                 "maxheight": {
-                    "label": "限高"
+                    "label": "限高",
+                    "terms": "限高,限制高度,最大高度,高度限制"
+                },
+                "maxlength": {
+                    "label": "限长",
+                    "terms": "限长,限制长度,最大长度,最长长度,长度限制"
                 },
                 "maxspeed": {
                     "label": "限制速度",
@@ -1663,7 +1798,12 @@
                     "terms": "货车限速,卡车限速"
                 },
                 "maxweight": {
-                    "label": "限重"
+                    "label": "限制质量",
+                    "terms": "限制质量,限载,最大重量,最大承重,限重,承重"
+                },
+                "maxwidth": {
+                    "label": "限宽",
+                    "terms": "限宽,限制宽度,最大宽度,最宽宽度,宽度限制"
                 },
                 "memorial": {
                     "label": "类型"
@@ -1884,6 +2024,37 @@
                         "underground": "地下"
                     }
                 },
+                "parking/side/orientation": {
+                    "label": "停车朝向",
+                    "options": {
+                        "diagonal": "与街道呈斜对角（约45度）",
+                        "parallel": "与街道平行",
+                        "perpendicular": "与街道呈直角（约90度）"
+                    },
+                    "terms": "停车朝向,停车方向,停车面向,停车方位,停车位置",
+                    "types": {
+                        "parking:left:orientation": "左侧",
+                        "parking:right:orientation": "右侧"
+                    }
+                },
+                "parking/side/parking": {
+                    "label": "停车位",
+                    "options": {
+                        "half_on_kerb": "骑路缘",
+                        "lane": "路边",
+                        "no": "禁止",
+                        "on_kerb": "路缘上",
+                        "separate": "停车位已单独绘制",
+                        "shoulder": "路肩",
+                        "street_side": "内凹",
+                        "yes": "允许（未指明）"
+                    },
+                    "terms": "停车,停车位,停车带,停车场,侧方,斜线,倒车",
+                    "types": {
+                        "parking:left": "左侧",
+                        "parking:right": "右侧"
+                    }
+                },
                 "parking_entrance": {
                     "label": "类型"
                 },
@@ -1893,8 +2064,46 @@
                 "payment_multi": {
                     "label": "支付类型",
                     "options": {
+                        "account_cards": "账户卡",
+                        "alipay": "支付宝",
+                        "american_express": "美国运通卡",
+                        "app": "手机软件 (app)",
+                        "apple_pay": "Apple Pay",
+                        "bancomat": "Bancomat",
+                        "blik": "Blik",
+                        "cards": "支付卡",
+                        "cash": "现金",
+                        "cheque": "支票",
+                        "clipper": "路路通 (Clipper)",
+                        "coins": "硬币",
                         "contactless": "非接触式支付",
-                        "mastercard_contactless": "万事达卡非接触式支付"
+                        "credit_cards": "信用卡",
+                        "cryptocurrencies": "加密货币",
+                        "debit_cards": "借记卡",
+                        "diners_club": "大来卡 (Diners Club)",
+                        "discover_card": "发现卡 (Discover)",
+                        "dkv": "DKV",
+                        "electronic_purses": "电子钱包",
+                        "ep_easycard": "悠游卡",
+                        "ep_geldkarte": "GeldKarte",
+                        "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
+                        "google_pay": "Google Pay",
+                        "jcb": "JCB",
+                        "maestro": "万事顺卡 (Maestro)",
+                        "mastercard": "万事达卡 (Mastercard)",
+                        "mastercard_contactless": "万事达卡非接触式支付",
+                        "notes": "钞票",
+                        "paypal": "PayPal",
+                        "prepaid_ticket": "预付票款",
+                        "telephone_cards": "电话卡",
+                        "unionpay": "银联卡",
+                        "uta": "UTA",
+                        "v_pay": "V Pay",
+                        "visa": "Visa卡",
+                        "visa_debit": "Visa借记卡",
+                        "visa_electron": "Visa Electron",
+                        "wechat": "微信支付"
                     },
                     "terms": "支付类型,付款类型,收款类型"
                 },
@@ -2748,6 +2957,7 @@
                 "tracktype": {
                     "label": "辙路铺装类型",
                     "options": {
+                        "grade1": "坚固：铺装路面",
                         "grade2": "亚坚固：砾石与软质材料混合",
                         "grade3": "硬质与软质材料等量混合",
                         "grade4": "近软质：土壤、沙地、草地与其他硬质材质混合",
@@ -3305,7 +3515,7 @@
                 },
                 "amenity/childcare": {
                     "name": "托儿所/保育园",
-                    "terms": "幼儿园,学前班,托儿所"
+                    "terms": "托管站,托管机构,学前班,托儿所,小饭桌"
                 },
                 "amenity/cinema": {
                     "name": "电影院",
@@ -3490,8 +3700,8 @@
                     "terms": "医院,急诊,门诊,医务室,医生,场地,治疗,医疗,急救,手术"
                 },
                 "amenity/hunting_stand": {
-                    "name": "狩猎站",
-                    "terms": "狩猎站,狩猎场"
+                    "name": "狩猎台",
+                    "terms": "狩猎,台,架,塔,小屋,猎,寮"
                 },
                 "amenity/ice_cream": {
                     "name": "冰淇淋店",
@@ -4462,7 +4672,7 @@
                     "terms": "大棚,屋顶,上盖,开放式建筑"
                 },
                 "building/ruins": {
-                    "name": "建筑物遗迹",
+                    "name": "建筑废墟",
                     "terms": "遗迹,废墟,遗址,毁坏,考古,建筑,建筑物"
                 },
                 "building/school": {
@@ -4707,8 +4917,8 @@
                     "terms": "锡匠,锡制品手工店"
                 },
                 "craft/upholsterer": {
-                    "name": "室内装潢",
-                    "terms": "室内装潢,室内设计,室内装饰"
+                    "name": "家具装饰",
+                    "terms": "家具,家居,室内,装饰"
                 },
                 "craft/watchmaker": {
                     "name": "制表商",
@@ -5103,7 +5313,7 @@
                     "name": "便道"
                 },
                 "highway/pedestrian_area": {
-                    "name": "行人专用区域",
+                    "name": "步行区",
                     "terms": "徒步,广场,行人,步行,人行,区"
                 },
                 "highway/pedestrian_line": {
@@ -5303,8 +5513,8 @@
                     "name": "拷刑架"
                 },
                 "historic/ruins": {
-                    "name": "遗迹",
-                    "terms": "废墟"
+                    "name": "废墟",
+                    "terms": "废墟,遗迹"
                 },
                 "historic/tomb": {
                     "name": "陵墓",
@@ -5429,6 +5639,10 @@
                 "landuse/industrial": {
                     "name": "工业区",
                     "terms": "工业区,工厂"
+                },
+                "landuse/industrial/depot": {
+                    "name": "车场/货场",
+                    "terms": "车场,公交,集装箱,货场,车辆段,车厂,车辆基地"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "废车场",
@@ -6085,7 +6299,8 @@
                     "name": "瞭望塔"
                 },
                 "man_made/tower/pagoda": {
-                    "name": "Pagoda"
+                    "name": "宝塔",
+                    "terms": "塔,佛塔,舍利塔"
                 },
                 "man_made/tunnel": {
                     "name": "隧道范围",
@@ -6245,8 +6460,8 @@
                     "terms": "沙漠,沙子,沙,沙幕,干旱,沙滩,沙丘,岩滩,风成地貌,缺水,干枯"
                 },
                 "natural/scree": {
-                    "name": "碎石坡",
-                    "terms": "碎石坡"
+                    "name": "岩屑坡",
+                    "terms": "岩屑,坡,流石坡,石流坡,碎石坡"
                 },
                 "natural/scrub": {
                     "name": "灌木丛",
@@ -7461,7 +7676,7 @@
                 },
                 "shop/interior_decoration": {
                     "name": "室内装饰店",
-                    "terms": "室内装饰店"
+                    "terms": "室内,装饰,装修,装潢"
                 },
                 "shop/jewelry": {
                     "name": "珠宝店",
@@ -7736,7 +7951,7 @@
                     "terms": "武器店"
                 },
                 "shop/wholesale": {
-                    "name": "批发市场",
+                    "name": "仓储超市",
                     "terms": "批发,市场,超市,商业,零售,商场,卖场,商城,商品,百货,服装,农贸,菜场,农场"
                 },
                 "shop/wigs": {

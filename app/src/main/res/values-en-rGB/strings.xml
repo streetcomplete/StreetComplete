@@ -182,7 +182,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_toiletsFee_title">"Do you have to pay to use this toilet?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this pedestrian crossing have tactile paving on both sides?"</string>
     <string name="quest_source_dialog_title">"Are you sure you checked this on-site?"</string>
-    <string name="quest_source_dialog_note">"Only information that was found on a survey should be entered."</string>
+    <string name="quest_source_dialog_note">"Only information that was verified in-person should be entered."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">"Don’t show again for this session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
@@ -1355,4 +1355,19 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_recycling_type_food_waste">"Food waste"</string>
     <string name="quest_defibrillator_location">"Where is this defibrillator located?"</string>
     <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Is there a sanitary dump station?"</string>
+    <string name="quest_sanitary_dump_station_description">"Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
+    <string name="quest_generalFee_title">"Do you need to pay to use this?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"It’s a fire enclosure"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"for use in error reports"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Share logs"</string>
+    <string name="about_title_show_logs">"Show logs"</string>
+    <string name="label_log_level">"Log level"</string>
+    <string name="label_log_newer_than">"From"</string>
+    <string name="label_log_older_than">"To"</string>
+    <string name="label_log_message_contains">"Message contains"</string>
+    <string name="title_logs_filters">"Filter messages"</string>
 </resources>
