@@ -1,10 +1,10 @@
 v56.0-beta1: |
-  <h3>Replaced Authorization</h3>
-  <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0. (#5383, #5322)
-  <br>Sponsored by @dirkmueller from SUSE</p>
+  <h3>New Authorization</h3>
+  <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0 (#5383, #5322).
+  <br>Sponsored by @dirkmueller from SUSE.</p>
   <h3>General Enhancements and Fixes</h3>
   <ul>
-  <li>You can now view, filter and copy logs from within the app. (This helps finding issues.) (#5335), by @neonowy</li>
+  <li>You can now view, filter and copy logs from within the app. (This helps finding the cause of issues.) (#5335), by @neonowy</li>
   <li>Other small improvements (#5360), by @riQQ</li>
   </ul>
   <h3>New Quests</h3>

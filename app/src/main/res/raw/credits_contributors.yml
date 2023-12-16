@@ -1,7 +1,7 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 414134
-  linesOfInterfaceMarkupChanged: 145989
+  linesOfCodeChanged: 415681
+  linesOfInterfaceMarkupChanged: 146002
   assetFilesChanged: 2013
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
@@ -15,7 +15,7 @@
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12172
+  linesOfCodeChanged: 12191
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -33,12 +33,16 @@
   assetFilesChanged: 7
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3094
+  linesOfCodeChanged: 3154
   linesOfInterfaceMarkupChanged: 488
   assetFilesChanged: 70
+- name: "Krzysztof Zbudniewek"
+  githubUsername: "neonowy"
+  linesOfCodeChanged: 2565
+  linesOfInterfaceMarkupChanged: 495
 - name: "riQQ"
   githubUsername: "riQQ"
-  linesOfCodeChanged: 2360
+  linesOfCodeChanged: 2361
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -88,6 +92,11 @@
   githubUsername: "naposm"
   linesOfCodeChanged: 399
   linesOfInterfaceMarkupChanged: 1472
+- name: "qugebert"
+  githubUsername: "qugebert"
+  linesOfCodeChanged: 376
+  linesOfInterfaceMarkupChanged: 165
+  assetFilesChanged: 1
 - name: "Jay Turner"
   githubUsername: "TurnrDev"
   linesOfCodeChanged: 364
@@ -98,11 +107,6 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
-- name: "qugebert"
-  githubUsername: "qugebert"
-  linesOfCodeChanged: 324
-  linesOfInterfaceMarkupChanged: 35
-  assetFilesChanged: 1
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 286
@@ -120,9 +124,6 @@
   linesOfCodeChanged: 200
   linesOfInterfaceMarkupChanged: 203
   assetFilesChanged: 44
-- name: "Krzysztof Zbudniewek"
-  githubUsername: "neonowy"
-  linesOfCodeChanged: 196
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -197,6 +198,9 @@
 - name: "Nils Rokita"
   githubUsername: "Akasch"
   linesOfCodeChanged: 16
+- name: "Finn"
+  githubUsername: "catdogmat"
+  linesOfCodeChanged: 13
 - name: "tiptoptom"
   githubUsername: "tiptoptom"
   linesOfCodeChanged: 13
