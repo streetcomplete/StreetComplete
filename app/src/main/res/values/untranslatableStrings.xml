@@ -8,6 +8,8 @@
     <string name="label_housenumber_location">%1$s - %2$s</string>
     <!-- e.g. "McFit (Fitness Centre)" -->
     <string name="label_name_feature">%1$s (%2$s)</string>
+    <!-- e.g. "Coniferous Tree - Eastern white pine" -->
+    <string name="label_feature_taxon">%1$s - %2$s</string>
 
     <!-- Placeholders: e.g. "it - Italian" -->
     <string name="quest_streetName_menuItem_language_simple">%1$s – %2$s</string>

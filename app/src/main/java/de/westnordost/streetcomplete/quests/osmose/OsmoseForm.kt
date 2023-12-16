@@ -149,12 +149,12 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
     }
 
     private fun addToIgnoreList(item: String) {
-        val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, OSMOSE_DEFAULT_IGNORED_ITEMS)!!
+        val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, OSMOSE_DEFAULT_IGNORED_ITEMS)
             .split("§§")
             .mapNotNull { if (it.isNotBlank()) it.trim() else null }
             .toMutableSet()
         types.add(item)
-        prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString("§§")).apply()
+        prefs.putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString("§§"))
         osmoseDao.reloadIgnoredItems()
         questController.invalidate()
     }

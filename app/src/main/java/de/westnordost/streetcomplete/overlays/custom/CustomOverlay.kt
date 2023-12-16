@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
@@ -131,4 +132,6 @@ private fun createColorFromString(string: String): String {
 fun getIndexedCustomOverlayPref(pref: String, index: Int) = pref.replace("idx", index.toString())
 fun getCurrentCustomOverlayPref(pref: String, prefs: SharedPreferences) = getIndexedCustomOverlayPref(pref, prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
 fun getCustomOverlayIndices(prefs: SharedPreferences) = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!
+    .split(",").mapNotNull { it.toIntOrNull() }
+fun getCustomOverlayIndices(prefs: Preferences) = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")
     .split(",").mapNotNull { it.toIntOrNull() }

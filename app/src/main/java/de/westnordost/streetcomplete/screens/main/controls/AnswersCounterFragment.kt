@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,6 +12,7 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,7 +24,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private val uploadProgressSource: UploadProgressSource by inject()
     private val downloadProgressSource: DownloadProgressSource by inject()
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
     private val statisticsSource: StatisticsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
 
@@ -107,7 +107,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private fun updateProgress() {
         answersCounterView.showProgress =

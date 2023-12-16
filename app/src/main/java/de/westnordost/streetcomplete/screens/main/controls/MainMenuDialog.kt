@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.controls
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
@@ -16,6 +15,7 @@ import de.westnordost.streetcomplete.screens.main.teammode.TeamModeDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** Shows a dialog containing the main menu items */
 class MainMenuDialog(
@@ -24,7 +24,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    prefs: SharedPreferences,
+    prefs: Preferences,
     questPresetsController: QuestPresetsController,
 ) : AlertDialog(context) {
     init {

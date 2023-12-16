@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.view.controller
 
-import android.content.SharedPreferences
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.core.content.edit
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewStreetSideLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -24,7 +23,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val puzzleView: StreetSideSelectPuzzle,
     private val compassView: View,
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val lastSelectionPreferencePrefix: String,
     private val serializeLastSelection: (item: I) -> String,
     private val deserializeLastSelection: (str: String) -> I,
@@ -107,13 +106,13 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { str ->
+        lastSelectionLeft = prefs.getStringOrNull("$lastSelectionPreferencePrefix.left")?.let { str ->
             try { deserializeLastSelection(str) } catch (e: Exception) { null }
         }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { str ->
+        lastSelectionRight = prefs.getStringOrNull("$lastSelectionPreferencePrefix.right")?.let { str ->
             try { deserializeLastSelection(str) } catch (e: Exception) { null }
         }
-        lastSelectionOneSide = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { str ->
+        lastSelectionOneSide = prefs.getStringOrNull("$lastSelectionPreferencePrefix.oneSide")?.let { str ->
             try { deserializeLastSelection(str) } catch (e: Exception) { null }
         }
 
@@ -187,13 +186,11 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val l = if (isUpsideDown) right else left
         val r = if (isUpsideDown) left else right
 
-        prefs.edit {
-            if (showSides == Sides.BOTH) {
-                putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
-                putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
-            } else {
-                (l ?: r)?.let { putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
-            }
+        if (showSides == Sides.BOTH) {
+            prefs.putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
+            prefs.putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
+        } else {
+            (l ?: r)?.let { prefs.putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
         }
     }
 

@@ -91,7 +91,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
         favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            prefs,
             key = javaClass.simpleName,
             serialize = { it },
             deserialize = { it },

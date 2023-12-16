@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.app.Activity
-import android.content.SharedPreferences
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Bundle
@@ -12,7 +10,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.mapzen.tangram.TouchInput.DoubleTapResponder
 import com.mapzen.tangram.TouchInput.LongPressResponder
@@ -37,12 +34,11 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListener
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
-import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.openUri
-import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -62,8 +58,7 @@ open class MapFragment :
     PanResponder,
     ScaleResponder,
     ShoveResponder,
-    RotateResponder,
-    SharedPreferences.OnSharedPreferenceChangeListener {
+    RotateResponder {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
@@ -99,7 +94,7 @@ open class MapFragment :
 
     private val vectorTileProvider: VectorTileProvider by inject()
     private val cacheConfig: MapTilesDownloadCacheConfig by inject()
-    private val sharedPrefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -115,11 +110,18 @@ open class MapFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val onThemeBackgroundChanged = {
+        sceneMapComponent?.isAerialView =
+            (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
+        viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
+        Unit
+    }
+
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPrefs.registerOnSharedPreferenceChangeListener(this)
+        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -149,13 +151,6 @@ open class MapFragment :
             .show()
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == Prefs.THEME_BACKGROUND) {
-            sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
-            viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
-        }
-    }
-
     override fun onStart() {
         super.onStart()
         viewLifecycleScope.launch {
@@ -182,7 +177,7 @@ open class MapFragment :
 
     override fun onDestroy() {
         super.onDestroy()
-        sharedPrefs.unregisterOnSharedPreferenceChangeListener(this)
+        prefs.removeListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onLowMemory() {
@@ -204,8 +199,8 @@ open class MapFragment :
         registerResponders(ctrl)
         restoreMapState() // load previous camera position as early as possible
 
-        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider, sharedPrefs)
-        sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider, prefs)
+        sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()
 
@@ -320,32 +315,35 @@ open class MapFragment :
 
     private fun saveMapState() {
         val camera = controller?.cameraPosition ?: return
-        saveCameraPosition(camera, false)
+        saveCameraPosition(camera)
     }
 
     private fun loadCameraPosition(): CameraPosition? {
-        val prefs = activity?.getPreferences(Activity.MODE_PRIVATE) ?: return null
-        if (!prefs.containsAll(listOf(PREF_LAT, PREF_LON, PREF_ROTATION, PREF_TILT, PREF_ZOOM))) return null
+        if (!prefs.keys.containsAll(listOf(
+                Prefs.MAP_LATITUDE,
+                Prefs.MAP_LONGITUDE,
+                Prefs.MAP_ROTATION,
+                Prefs.MAP_TILT,
+                Prefs.MAP_ZOOM,
+        ))) return null
 
         return CameraPosition(
             LatLon(
-                java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LAT, 0)),
-                java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LON, 0))
+                prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
+                prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
             ),
-            prefs.getFloat(PREF_ROTATION, 0f),
-            prefs.getFloat(PREF_TILT, 0f),
-            prefs.getFloat(PREF_ZOOM, 0f)
+            prefs.getFloat(Prefs.MAP_ROTATION, 0f),
+            prefs.getFloat(Prefs.MAP_TILT, 0f),
+            prefs.getFloat(Prefs.MAP_ZOOM, 0f)
         )
     }
 
-    private fun saveCameraPosition(camera: CameraPosition, saveNow: Boolean) {
-        activity?.getPreferences(Activity.MODE_PRIVATE)?.edit(saveNow) {
-            putFloat(PREF_ROTATION, camera.rotation)
-            putFloat(PREF_TILT, camera.tilt)
-            putFloat(PREF_ZOOM, camera.zoom)
-            putDouble(PREF_LAT, camera.position.latitude)
-            putDouble(PREF_LON, camera.position.longitude)
-        }
+    private fun saveCameraPosition(camera: CameraPosition) {
+        prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation)
+        prefs.putFloat(Prefs.MAP_TILT, camera.tilt)
+        prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom)
+        prefs.putDouble(Prefs.MAP_LATITUDE, camera.position.latitude)
+        prefs.putDouble(Prefs.MAP_LONGITUDE, camera.position.longitude)
     }
 
     /* ------------------------------- Controlling the map -------------------------------------- */
@@ -385,7 +383,7 @@ open class MapFragment :
         if (controller != null) {
             controller.setCameraPosition(camera)
         } else {
-            saveCameraPosition(camera, true)
+            saveCameraPosition(camera)
         }
     }
 
@@ -402,13 +400,5 @@ open class MapFragment :
         val pos1 = controller?.screenPositionToLatLon(PointF(x, y)) ?: return null
         val pos2 = controller?.screenPositionToLatLon(PointF(x + 1, y)) ?: return null
         return pos1.distanceTo(pos2)
-    }
-
-    companion object {
-        private const val PREF_ROTATION = "map_rotation"
-        private const val PREF_TILT = "map_tilt"
-        private const val PREF_ZOOM = "map_zoom"
-        private const val PREF_LAT = "map_lat"
-        private const val PREF_LON = "map_lon"
     }
 }

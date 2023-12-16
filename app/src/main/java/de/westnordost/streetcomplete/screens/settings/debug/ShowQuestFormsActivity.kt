@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.location.Location
 import android.location.LocationManager
@@ -42,8 +41,8 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
-import de.westnordost.streetcomplete.util.ktx.getDouble
 import de.westnordost.streetcomplete.util.math.translate
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
 import org.koin.android.ext.android.inject
@@ -53,7 +52,7 @@ import java.util.Locale
 class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 
@@ -102,7 +101,10 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override fun onStart() {
         super.onStart()
-        pos = LatLon(prefs.getDouble(Prefs.MAP_LATITUDE), prefs.getDouble(Prefs.MAP_LONGITUDE))
+        pos = LatLon(
+            prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
+            prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
+        )
     }
 
     private fun popQuestForm() {

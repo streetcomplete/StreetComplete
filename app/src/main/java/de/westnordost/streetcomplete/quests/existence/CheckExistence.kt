@@ -34,6 +34,7 @@ class CheckExistence(
             or amenity = post_box
             or leisure = picnic_table
             or amenity = bbq
+            or amenity = car_sharing
             or leisure = firepit
             or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
             or leisure = fitness_station
@@ -75,6 +76,8 @@ class CheckExistence(
         ))
         and access !~ no|private
         and (!seasonal or seasonal = no)
+        and (!intermittent or intermittent = no)
+        and (!permanent or permanent = yes)
     """
     // - traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that

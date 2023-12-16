@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
@@ -43,7 +42,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
-import de.westnordost.streetcomplete.util.ktx.getDouble
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -63,11 +62,11 @@ class QuestSelectionAdapter(
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
     countryBoundaries: FutureTask<CountryBoundaries>,
-    private val prefs: SharedPreferences
+    private val prefs: Preferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
     private val currentCountryCodes = countryBoundaries.get()
-        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
+        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0), prefs.getDouble(Prefs.MAP_LATITUDE, 0.0))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val englishResources by lazy {
@@ -279,7 +278,7 @@ class QuestSelectionAdapter(
         private val questPrefix by lazy { questPrefix(prefs) + "qs_" }
         private val questTypesWithUsedSettings by lazy {
             val set = hashSetOf<String>()
-            prefs.all.keys.forEach {
+            prefs.keys.forEach {
                 if (it.startsWith(questPrefix))
                     set.add(it.substringAfter(questPrefix).substringBefore("_"))
             }
@@ -317,7 +316,7 @@ class QuestSelectionAdapter(
                         settings?.setOnDismissListener {
                             context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
                             synchronized(questSettingsInUseBackground) {
-                                if (prefs.all.keys.any { it.startsWith(questPrefix + item.questType.name) })
+                                if (prefs.keys.any { it.startsWith(questPrefix + item.questType.name) })
                                     questTypesWithUsedSettings.add(item.questType.name)
                                 else questTypesWithUsedSettings.remove(item.questType.name)
                                 setBackground(item)

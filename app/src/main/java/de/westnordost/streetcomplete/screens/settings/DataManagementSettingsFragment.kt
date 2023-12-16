@@ -47,6 +47,7 @@ import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -64,7 +65,8 @@ class DataManagementSettingsFragment :
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs get() = preferenceManager.sharedPreferences!!
+    private val scPrefs: Preferences by inject()
     private val db: Database by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val cleaner: Cleaner by inject()
@@ -270,7 +272,7 @@ class DataManagementSettingsFragment :
                 d.getButton(Dialog.BUTTON_POSITIVE)?.isEnabled = false
             }
             REQUEST_CODE_OVERLAYS_EXPORT -> {
-                val allOverlays = getFakeCustomOverlays(prefs, requireContext(), false)
+                val allOverlays = getFakeCustomOverlays(scPrefs, requireContext(), false)
                 val array = allOverlays.map { it.changesetComment }.toTypedArray()
                 val selectedOverlays = mutableSetOf<String>()
                 val d = AlertDialog.Builder(requireContext())

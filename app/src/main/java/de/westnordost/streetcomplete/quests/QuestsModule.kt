@@ -227,7 +227,7 @@ val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
     single { CustomQuestList(androidContext()) }
-    single { OsmoseDao(get(), get(), androidContext()) }
+    single { OsmoseDao(get(), get()) }
 
     single {
         questTypeRegistry(

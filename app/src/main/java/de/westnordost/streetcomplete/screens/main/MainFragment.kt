@@ -51,6 +51,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -150,6 +151,7 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -209,6 +211,7 @@ class MainFragment :
     SelectedOverlaySource.Listener,
     // rest
     ShowsGeometryMarkers,
+    // we need the android preferences listener, because the new one can't to what is needed
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
@@ -218,7 +221,7 @@ class MainFragment :
     private val selectedOverlaySource: SelectedOverlayController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val soundFx: SoundFx by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
@@ -407,7 +410,7 @@ class MainFragment :
         selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
-        prefs.registerOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.registerOnSharedPreferenceChangeListener(this)
         reloadOverlaySelector()
     }
 
@@ -421,7 +424,7 @@ class MainFragment :
         mapDataWithEditsSource.removeListener(this)
         selectedOverlaySource.removeListener(this)
         locationManager.removeUpdates()
-        prefs.unregisterOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.unregisterOnSharedPreferenceChangeListener(this)
         clearOverlaySelector()
     }
 
@@ -497,7 +500,7 @@ class MainFragment :
                 } else {
                     // if other overlay was tapped, enable it
                     if (overlay.title == 0) {
-                        prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index!!) }
+                        prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index!!)
                         selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
                     } else
                         selectedOverlaySource.selectedOverlay = overlay
@@ -969,7 +972,7 @@ class MainFragment :
             when(item.itemId) {
                 1 -> showProfileSelectionDialog(requireContext(), questPresetsController, prefs)
                 2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
-                3 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+                3 -> prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
                 4 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
             }
             true
@@ -1616,7 +1619,7 @@ class MainFragment :
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

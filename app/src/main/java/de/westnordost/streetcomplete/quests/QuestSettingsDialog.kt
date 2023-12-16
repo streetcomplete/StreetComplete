@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import java.util.regex.PatternSyntaxException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -248,6 +249,11 @@ fun getLabelSources(defaultValue: String, questType: OsmFilterQuestType<*>, pref
 private fun getPrefixedLabelSourcePref(questType: OsmElementQuestType<*>, prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${questType.name}_label_sources"
 
 fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
+    prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
+else
+    ""
+
+fun questPrefix(prefs: Preferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
@@ -18,6 +17,8 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.prefs.Preferences
+import org.koin.android.ext.android.inject
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
@@ -43,7 +44,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
         favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            prefs,
             key = javaClass.simpleName,
             serialize = { listOfNotNull(it.levels, it.roofLevels).joinToString("#") },
             deserialize = { value ->

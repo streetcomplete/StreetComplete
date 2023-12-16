@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.overlays
 
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +13,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 
 /** Adapter for the list in which the user can select which overlay he wants to use */
 class OverlaySelectionAdapter(
     private val overlays: List<Overlay>,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val questTypeRegistry: QuestTypeRegistry,
     ) : BaseAdapter() {
 

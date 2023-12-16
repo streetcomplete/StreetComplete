@@ -2,37 +2,42 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.StreetCompleteApplication
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
-class NotesPreferences(private val prefs: SharedPreferences) {
+class NotesPreferences(private val prefs: Preferences) {
 
     interface Listener {
         fun onNotesPreferencesChanged()
     }
 
+    private val androidPrefs = StreetCompleteApplication.preferences
+
     var listener: Listener? = null
 
     val blockedIds = mutableListOf<Long>().apply {
-        addAll(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.mapNotNull { it.toLongOrNull() } ?: emptyList())
+        addAll(androidPrefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.mapNotNull { it.toLongOrNull() } ?: emptyList())
     }
 
     val blockedNames = mutableSetOf<String>().apply {
-        addAll(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet()) ?: emptySet())
+        addAll(androidPrefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet()) ?: emptySet())
     }
+
     private val sharedPreferencesListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-        if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
-            listener?.onNotesPreferencesChanged()
-        }
         if (key == Prefs.HIDE_NOTES_BY_USERS) {
             blockedIds.clear()
-            blockedIds.addAll(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.mapNotNull { it.toLongOrNull() } ?: emptyList())
+            blockedIds.addAll(androidPrefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.mapNotNull { it.toLongOrNull() } ?: emptyList())
             blockedNames.clear()
-            blockedNames.addAll(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet()) ?: emptySet())
+            blockedNames.addAll(androidPrefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet()) ?: emptySet())
             listener?.onNotesPreferencesChanged()
         }
     }
 
     init {
-        prefs.registerOnSharedPreferenceChangeListener(sharedPreferencesListener)
+        prefs.addListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
+            listener?.onNotesPreferencesChanged()
+        }
+        androidPrefs.registerOnSharedPreferenceChangeListener(sharedPreferencesListener)
     }
 
     val showOnlyNotesPhrasedAsQuestions: Boolean get() =

@@ -1,12 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.content.SharedPreferences
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -22,6 +19,7 @@ import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapt
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -31,7 +29,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
@@ -88,7 +86,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
         popupWindow.setOnItemClickListener { _, _, position, _ ->
             var selectedOverlay = adapter.getItem(position)
             if (selectedOverlay?.title == 0) {
-                prefs.edit { putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay!!.wikiLink!!.toInt()) }
+                prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay.wikiLink!!.toInt())
                 // set the actual custom overlay instead of the fake one
                 selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }

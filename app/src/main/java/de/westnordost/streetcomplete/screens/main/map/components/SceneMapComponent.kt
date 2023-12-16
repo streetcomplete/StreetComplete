@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
@@ -8,6 +7,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.Locale
@@ -18,7 +18,7 @@ class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
 
@@ -89,7 +89,7 @@ class SceneMapComponent(
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
+        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"))
         val isHighContrastNightMode = theme == Prefs.Theme.DARK_CONTRAST
         val offsetFix = if (prefs.getBoolean(Prefs.OFFSET_FIX, false)) "-offset-fix" else ""
         val noSatelliteLabel = if (prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)) "-no-label" else ""

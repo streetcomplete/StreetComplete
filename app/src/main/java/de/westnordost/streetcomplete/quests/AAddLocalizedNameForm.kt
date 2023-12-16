@@ -1,21 +1,19 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.osm.LocalizedName
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -40,7 +38,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
         val selectableLanguages = getSelectableLanguageTags().toMutableList()
-        val preferredLanguage = prefs.getString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES, null)
+        val preferredLanguage = prefs.getStringOrNull(Prefs.PREFERRED_LANGUAGE_FOR_NAMES)
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
                 selectableLanguages.add(0, preferredLanguage)
@@ -81,7 +79,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
         onClickOk(adapter?.names.orEmpty())
 
         val firstLanguage = adapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
-        if (firstLanguage != null) prefs.edit { putString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage) }
+        if (firstLanguage != null) prefs.putString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage)
     }
 
     abstract fun onClickOk(names: List<LocalizedName>)

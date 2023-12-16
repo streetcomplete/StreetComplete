@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.about
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.res.ColorStateList

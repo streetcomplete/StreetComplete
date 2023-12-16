@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
 
 @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
@@ -38,7 +39,7 @@ import de.westnordost.streetcomplete.view.ArrayImageAdapter
 fun showOverlayCustomizer(
     index: Int,
     ctx: Context,
-    prefs: SharedPreferences,
+    prefs: Preferences,
     questTypeRegistry: QuestTypeRegistry,
     onChanged: (Boolean) -> Unit, // true if overlay is currently set custom overlay
     onDeleted: (Boolean) -> Unit, // true if overlay was currently set custom overlay
@@ -202,17 +203,15 @@ fun showOverlayCustomizer(
         .setNegativeButton(android.R.string.cancel, null)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             // update prefs and enable this overlay
-            prefs.edit {
-                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
-                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
-                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
-                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
-                putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
-                putBoolean(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA, index), highlightMissingSwitch.isChecked)
-                if (index !in indices) { // add if it's new, and select it immediately
-                    putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
-                    putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
-                }
+            prefs.putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_FILTER, index), filterString())
+            prefs.putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, index), color.text.toString())
+            prefs.putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, index), title.text.toString())
+            prefs.putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, index), ctx.resources.getResourceEntryName(iconList[iconSpinner.selectedItemPosition]))
+            prefs.putString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_DASH_FILTER, index), dashFilter.text.toString())
+            prefs.putBoolean(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_HIGHLIGHT_MISSING_DATA, index), highlightMissingSwitch.isChecked)
+            if (index !in indices) { // add if it's new, and select it immediately
+                prefs.putString(Prefs.CUSTOM_OVERLAY_INDICES, (indices + index).joinToString(","))
+                prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index)
             }
             onChanged(index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)) // todo: also if overlay is new?
         }
@@ -226,12 +225,10 @@ fun showOverlayCustomizer(
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(R.string.delete_confirmation) { _, _ ->
                     val isActive = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index
-                    prefs.edit {
-                        prefs.all.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) remove(it) }
-                        putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
-                        if (isActive)
-                            putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
-                    }
+                    prefs.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) prefs.remove(it) }
+                    prefs.putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
+                    if (isActive)
+                        prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
                     onDeleted(isActive)
                 }
                 .show()
@@ -244,14 +241,14 @@ fun showOverlayCustomizer(
 // title is invalid resId 0
 // name and wikiLink are the overlay index as stored in shared preferences
 // changesetComment is the overlay title
-fun getFakeCustomOverlays(prefs: SharedPreferences, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
+fun getFakeCustomOverlays(prefs: Preferences, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
     if (onlyIfExpertMode && !prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
     return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!.split(",").mapNotNull { index ->
         val i = index.toIntOrNull() ?: return@mapNotNull null
         object : Overlay {
             override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
             override fun createForm(element: Element?) = null
-            override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")!!
+            override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")
                 .ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
             override val icon = ctx.resources.getIdentifier(
                 prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
