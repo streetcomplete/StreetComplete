@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast

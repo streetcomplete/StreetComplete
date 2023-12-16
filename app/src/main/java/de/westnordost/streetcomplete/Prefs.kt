@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatDelegate
 
 /** Constant class to have all the identifiers for shared preferences in one place  */
 object Prefs {
-    const val OAUTH = "oauth"
-    const val OAUTH_ACCESS_TOKEN = "oauth.accessToken"
-    const val OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
+    const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
+
     const val MAP_TILECACHE_IN_MB = "map.tilecache"
     const val SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes"
     const val AUTOSYNC = "autosync"
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
-    const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
     const val THEME_SELECT = "theme.select"
     const val LANGUAGE_SELECT = "language.select"
     const val THEME_BACKGROUND = "theme.background_type"
@@ -21,7 +19,7 @@ object Prefs {
     const val OSM_USER_ID = "osm.userid"
     const val OSM_USER_NAME = "osm.username"
     const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
-    const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
+
     const val USER_DAYS_ACTIVE = "days_active"
     const val USER_GLOBAL_RANK = "user_global_rank"
     const val USER_GLOBAL_RANK_CURRENT_WEEK = "user_global_rank_current_week"
@@ -62,6 +60,13 @@ object Prefs {
     const val LAST_SHOWN_USER_LOCAL_RANK = "last_shown.user_local_rank"
     const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
     const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
+
+    // old keys
+    const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
+    const val OAUTH1_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
+    const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
+
+    const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
 
     enum class Autosync {
         ON, WIFI, OFF

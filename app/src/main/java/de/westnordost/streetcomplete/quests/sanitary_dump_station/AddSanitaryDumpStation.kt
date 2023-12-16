@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.sanitary_dump_station;
+package de.westnordost.streetcomplete.quests.sanitary_dump_station
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

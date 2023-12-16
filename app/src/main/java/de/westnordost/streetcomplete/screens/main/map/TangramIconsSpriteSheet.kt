@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.presetIconIndex
-import java.lang.Integer.max
 import kotlin.math.ceil
+import kotlin.math.max
 import kotlin.math.sqrt
 
 /** Creates and saves a sprite sheet of icons used in overlays, provides

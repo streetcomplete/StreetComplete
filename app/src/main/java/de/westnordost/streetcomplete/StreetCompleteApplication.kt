@@ -125,16 +125,12 @@ class StreetCompleteApplication : Application() {
                 urlConfigModule
             )
         }
-
+        
         setLoggerInstances()
 
-        /* Force log out users who use the old OAuth consumer key+secret because it does not exist
-           anymore. Trying to use that does not result in a "not authorized" API response, but some
-           response the app cannot handle */
-        if (!prefs.getBoolean(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP, false)) {
-            if (userLoginStatusController.isLoggedIn) {
-                userLoginStatusController.logOut()
-            }
+        /* Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2 */
+        if (prefs.getString(Prefs.OAUTH1_ACCESS_TOKEN, null) != null) {
+            userLoginStatusController.logOut()
         }
 
         setDefaultLocales()
