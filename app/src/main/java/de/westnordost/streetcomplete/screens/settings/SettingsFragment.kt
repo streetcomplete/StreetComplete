@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -42,6 +40,7 @@ import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,12 +49,9 @@ import org.koin.android.ext.android.inject
 import java.util.Locale
 
 /** Shows the settings lists */
-class SettingsFragment :
-    TwoPaneListFragment(),
-    HasTitle,
-    SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
     private val noteController: NoteController by inject()
     private val mapDataController: MapDataController by inject()
@@ -94,6 +90,32 @@ class SettingsFragment :
         override fun onDeletedQuestPreset(presetId: Long) {
             setQuestPresetsPreferenceSummary()
         }
+    }
+
+    private val onAutosyncChanged =  {
+        if (Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") != Prefs.Autosync.ON) {
+            AlertDialog.Builder(requireContext())
+                .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
+        }
+    }
+
+    private val onThemeChanged = {
+        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
+        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+        activity?.let { ActivityCompat.recreate(it) }
+        Unit
+    }
+
+    private val onLanguageChanged = {
+        setDefaultLocales(getSelectedLocales(prefs))
+        activity?.let { ActivityCompat.recreate(it) }
+        Unit
+    }
+
+    private val onResurveyIntervalsChanged = {
+        resurveyIntervalsUpdater.update()
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -189,38 +211,18 @@ class SettingsFragment :
 
     override fun onResume() {
         super.onResume()
-        prefs.registerOnSharedPreferenceChangeListener(this)
+        prefs.addListener(Prefs.AUTOSYNC, onAutosyncChanged)
+        prefs.addListener(Prefs.THEME_SELECT, onThemeChanged)
+        prefs.addListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        prefs.addListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
     }
 
     override fun onPause() {
         super.onPause()
-        prefs.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    @SuppressLint("InflateParams")
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when (key) {
-            Prefs.AUTOSYNC -> {
-                if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
-                    AlertDialog.Builder(requireContext())
-                        .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
-                        .setPositiveButton(android.R.string.ok, null)
-                        .show()
-                }
-            }
-            Prefs.THEME_SELECT -> {
-                val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, getDefaultTheme())!!)
-                AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
-                activity?.let { ActivityCompat.recreate(it) }
-            }
-            Prefs.LANGUAGE_SELECT -> {
-                setDefaultLocales(getSelectedLocales(requireContext()))
-                activity?.let { ActivityCompat.recreate(it) }
-            }
-            Prefs.RESURVEY_INTERVALS -> {
-                resurveyIntervalsUpdater.update()
-            }
-        }
+        prefs.removeListener(Prefs.AUTOSYNC, onAutosyncChanged)
+        prefs.removeListener(Prefs.THEME_SELECT, onThemeChanged)
+        prefs.removeListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        prefs.removeListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {

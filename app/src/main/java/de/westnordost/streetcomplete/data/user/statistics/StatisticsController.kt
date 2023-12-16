@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import java.util.concurrent.FutureTask
@@ -24,7 +25,7 @@ class StatisticsController(
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     userLoginStatusSource: UserLoginStatusSource
 ) : StatisticsSource {
 
@@ -40,38 +41,38 @@ class StatisticsController(
     override var rank: Int
         get() = prefs.getInt(Prefs.USER_GLOBAL_RANK, -1)
         private set(value) {
-            prefs.edit(true) { putInt(Prefs.USER_GLOBAL_RANK, value) }
+            prefs.putInt(Prefs.USER_GLOBAL_RANK, value)
         }
 
     override var daysActive: Int
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         private set(value) {
-            prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
+            prefs.putInt(Prefs.USER_DAYS_ACTIVE, value)
         }
 
     override var currentWeekRank: Int
         get() = prefs.getInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, -1)
         private set(value) {
-            prefs.edit(true) { putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, value) }
+            prefs.putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, value)
         }
 
     override var activeDatesRange: Int
         get() = prefs.getInt(Prefs.ACTIVE_DATES_RANGE, 100)
         private set(value) {
-            prefs.edit(true) { putInt(Prefs.ACTIVE_DATES_RANGE, value) }
+            prefs.putInt(Prefs.ACTIVE_DATES_RANGE, value)
         }
 
     override var isSynchronizing: Boolean
         // default true because if it is not set yet, the first thing that is done is to synchronize it
         get() = prefs.getBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, true)
         private set(value) {
-            prefs.edit(true) { putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, value) }
+            prefs.putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, value)
         }
 
     private var lastUpdate: Long
         get() = prefs.getLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)
         set(value) {
-            prefs.edit(true) { putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, value) }
+            prefs.putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, value)
         }
 
     init {
@@ -166,14 +167,12 @@ class StatisticsController(
         currentWeekEditTypeStatisticsDao.clear()
         currentWeekCountryStatisticsDao.clear()
         activeDatesDao.clear()
-        prefs.edit(true) {
-            remove(Prefs.USER_DAYS_ACTIVE)
-            remove(Prefs.ACTIVE_DATES_RANGE)
-            remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-            remove(Prefs.USER_GLOBAL_RANK)
-            remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-            remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
-        }
+        prefs.remove(Prefs.USER_DAYS_ACTIVE)
+        prefs.remove(Prefs.ACTIVE_DATES_RANGE)
+        prefs.remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
+        prefs.remove(Prefs.USER_GLOBAL_RANK)
+        prefs.remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
+        prefs.remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
 
         listeners.forEach { it.onCleared() }
     }
