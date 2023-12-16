@@ -397,7 +397,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
 
-
     <!-- User statistics screen -->
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>

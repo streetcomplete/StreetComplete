@@ -8,10 +8,18 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.user.OAUTH2_AUTHORIZATION_URL
+import de.westnordost.streetcomplete.data.user.OAUTH2_CLIENT_ID
+import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
+import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
+import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
+import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
+import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorization
+import de.westnordost.streetcomplete.data.user.oauth.OAuthException
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -21,41 +29,30 @@ import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import oauth.signpost.OAuthConsumer
-import oauth.signpost.OAuthProvider
-import oauth.signpost.exception.OAuthCommunicationException
-import oauth.signpost.exception.OAuthExpectationFailedException
-import org.koin.android.ext.android.get
-import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import java.net.URI
+import java.net.URISyntaxException
 import java.util.Locale
 import kotlin.coroutines.Continuation
-import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
-    private val provider: OAuthProvider by inject()
-    private val callbackScheme: String by inject(named("OAuthCallbackScheme"))
-    private val callbackHost: String by inject(named("OAuthCallbackHost"))
-
     private val binding by viewBinding(FragmentOauthBinding::bind)
 
     interface Listener {
-        fun onOAuthSuccess(consumer: OAuthConsumer)
+        fun onOAuthSuccess(accessToken: String)
         fun onOAuthFailed(e: Exception?)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-    private val callbackUrl get() = "$callbackScheme://$callbackHost"
     private val webViewClient: OAuthWebViewClient = OAuthWebViewClient()
 
-    override val title: String get() = getString(R.string.user_login)
+    private lateinit var oAuth: OAuthAuthorization
 
-    private lateinit var consumer: OAuthConsumer
-    private var authorizeUrl: String? = null
-    private var oAuthVerifier: String? = null
+    override val title: String get() = getString(R.string.user_login)
 
     private val backPressedCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
@@ -64,19 +61,6 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */
-
-    override fun onCreate(inState: Bundle?) {
-        super.onCreate(inState)
-        if (inState != null) {
-            consumer = inState.getSerializable(CONSUMER) as OAuthConsumer
-            authorizeUrl = inState.getString(AUTHORIZE_URL)
-            oAuthVerifier = inState.getString(OAUTH_VERIFIER)
-        } else {
-            consumer = get<OAuthConsumer>()
-            authorizeUrl = null
-            oAuthVerifier = null
-        }
-    }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -91,6 +75,18 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
+    override fun onCreate(inState: Bundle?) {
+        super.onCreate(inState)
+        oAuth = inState?.getString(OAUTH)?.let { Json.decodeFromString(it) }
+            ?: OAuthAuthorization(
+                OAUTH2_AUTHORIZATION_URL,
+                OAUTH2_TOKEN_URL,
+                OAUTH2_CLIENT_ID,
+                OAUTH2_REQUESTED_SCOPES,
+                OAUTH2_REDIRECT_URI
+            )
+    }
+
     override fun onPause() {
         super.onPause()
         binding.webView.onPause()
@@ -102,9 +98,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putSerializable(CONSUMER, consumer)
-        outState.putString(AUTHORIZE_URL, authorizeUrl)
-        outState.putString(OAUTH_VERIFIER, oAuthVerifier)
+        outState.putString(OAUTH, Json.encodeToString(oAuth))
         super.onSaveInstanceState(outState)
     }
 
@@ -117,33 +111,34 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
     private suspend fun continueAuthentication() {
         try {
-            if (authorizeUrl == null) {
-                binding.progressView.visibility = View.VISIBLE
-                authorizeUrl = withContext(Dispatchers.IO) {
-                    provider.retrieveRequestToken(consumer, callbackUrl)
-                }
-                binding.progressView.visibility = View.INVISIBLE
+            binding.webView.visibility = View.VISIBLE
+            binding.webView.loadUrl(
+                oAuth.createAuthorizationUrl(),
+                mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
+            )
+            val authorizationCode = webViewClient.awaitOAuthCallback()
+            binding.webView.visibility = View.INVISIBLE
+
+            binding.progressView.visibility = View.VISIBLE
+            val accessTokenResponse = withContext(Dispatchers.IO) {
+                oAuth.retrieveAccessToken(authorizationCode)
             }
-            val authorizeUrl = authorizeUrl
-            if (authorizeUrl != null && oAuthVerifier == null) {
-                binding.webView.visibility = View.VISIBLE
-                binding.webView.loadUrl(
-                    authorizeUrl,
-                    mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
-                )
-                oAuthVerifier = webViewClient.awaitOAuthCallback()
-                binding.webView.visibility = View.INVISIBLE
+            // not all requires scopes granted
+            if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
+                activity?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
+                listener?.onOAuthFailed(null)
+                return
             }
-            if (oAuthVerifier != null) {
-                binding.progressView.visibility = View.VISIBLE
-                withContext(Dispatchers.IO) {
-                    provider.retrieveAccessToken(consumer, oAuthVerifier)
-                }
-                listener?.onOAuthSuccess(consumer)
-                binding.progressView.visibility = View.INVISIBLE
-            }
+
+            listener?.onOAuthSuccess(accessTokenResponse.accessToken)
+            binding.progressView.visibility = View.INVISIBLE
         } catch (e: Exception) {
-            activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+            if (e is OAuthException) {
+                activity?.toast(e.description ?: e.error, Toast.LENGTH_LONG)
+            } else {
+                // otherwise it is some connection error the user doesn't need to know the details about
+                activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+            }
             Log.e(TAG, "Error during authorization", e)
             listener?.onOAuthFailed(e)
         }
@@ -154,9 +149,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     companion object {
         const val TAG = "OAuthDialogFragment"
 
-        private const val CONSUMER = "consumer"
-        private const val AUTHORIZE_URL = "authorize_url"
-        private const val OAUTH_VERIFIER = "oauth_verifier"
+        private const val OAUTH = "oauth"
     }
 
     private inner class OAuthWebViewClient : WebViewClient() {
@@ -165,31 +158,22 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
         suspend fun awaitOAuthCallback(): String = suspendCoroutine { continuation = it }
 
         @Deprecated("Deprecated in Java")
-        override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            val uri = url?.toUri() ?: return false
-            if (!uri.isHierarchical) return false
-            if (uri.scheme != callbackScheme || uri.host != callbackHost) return false
-            val verifier = uri.getQueryParameter(OAUTH_VERIFIER)
-            if (verifier != null) {
-                continuation?.resume(verifier)
-            } else {
-                continuation?.resumeWithException(
-                    OAuthExpectationFailedException("oauth_verifier parameter not set by provider")
-                )
-            }
+        override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
+            val uri = try { URI(url) } catch (e: URISyntaxException) { return false }
+            if (!oAuth.itsForMe(uri)) return false
+            continuation?.resumeWith(runCatching { oAuth.extractAuthorizationCode(uri) })
             return true
         }
 
         @Deprecated("Deprecated in Java")
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
-                OAuthCommunicationException("Error for URL $url", "$description")
+                AuthorizationException("Error for URL " + url + if (description != null) ": $description" else "")
             )
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
             binding.progressView.visibility = View.VISIBLE
-
             backPressedCallback.isEnabled = view.canGoBack()
         }
 
