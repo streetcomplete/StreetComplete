@@ -35,13 +35,16 @@ import kotlin.io.encoding.ExperimentalEncodingApi
  * @param scopes the scopes (aka permissions) to request
  * @param redirectUri the redirect URI (aka callback URI) that the authorization endpoint should
  *                    call when the user allowed the authorization.
+ * @param state optional string to identify this oauth authorization flow, in case there are
+ *              several at once (using the same redirect URI)
  */
 @Serializable class OAuthAuthorization(
     private val authorizationUrl: String,
     private val accessTokenUrl: String,
     private val clientId: String,
     private val scopes: List<String>,
-    private val redirectUri: String
+    private val redirectUri: String,
+    private val state: String? = null
 ) {
     /**
      * For the code challenge as specified in RFC 7636
@@ -52,9 +55,6 @@ import kotlin.io.encoding.ExperimentalEncodingApi
      */
     private val codeVerifier: String = createRandomAlphanumericString(128)
 
-    /** identifies this oauth authorization flow, in case there are several at once */
-    private val state: String = createRandomAlphanumericString(8)
-
     @Transient
     private val json = Json { ignoreUnknownKeys = true }
 
@@ -63,14 +63,14 @@ import kotlin.io.encoding.ExperimentalEncodingApi
      * authorize the requested permissions.
      */
     fun createAuthorizationUrl(): String =
-        authorizationUrl + "?" + listOf(
+        authorizationUrl + "?" + listOfNotNull(
             "response_type" to "code",
             "client_id" to clientId,
             "scope" to scopes.joinToString(" "),
             "redirect_uri" to redirectUri,
             "code_challenge_method" to "S256",
             "code_challenge" to createPKCE_S256CodeChallenge(codeVerifier),
-            "state" to state,
+            state?.let { "state" to it },
         ).toUrlParameters()
 
     /**
