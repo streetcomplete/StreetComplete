@@ -74,7 +74,7 @@ Find one that has the same type of interface as the one that you are trying to i
 
 Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
 
-Is it going to be asked for POIs and it should be disabled by default? [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
+If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
 Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
