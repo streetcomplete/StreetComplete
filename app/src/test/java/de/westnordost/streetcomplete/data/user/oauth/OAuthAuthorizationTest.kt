@@ -72,31 +72,31 @@ class OAuthAuthorizationTest {
         val oauth = createOAuth()
 
         // server did not respond correctly with "error"
-        assertFailsWith<ConnectionException> {
+        assertFailsWith<OAuthConnectionException> {
             oauth.extractAuthorizationCode(URI("localhost://oauth?e=something"))
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=hey%2Bwhat%27s%2Bup"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("hey what's up", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_description=B%21"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A!: B!", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A! (see http://abc.de)", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A!: B! (see http://abc.de)", e.message)
         }
     }
