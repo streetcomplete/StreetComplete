@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
@@ -30,7 +31,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.expandSides("cycleway", "oneway", false)
     tags.expandSides("cycleway", "segregated", false)
 
-    applyOnewayNotForCyclists(tags, isLeftHandTraffic)
+    applyOnewayNotForCyclists(tags)
     left?.applyTo(tags, false, isLeftHandTraffic)
     right?.applyTo(tags, true, isLeftHandTraffic)
 
@@ -64,6 +65,13 @@ private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
     } else {
         "both"
     }
+    // an important part of expanding bare tags is to expand the cycleway=opposite_* tagging to
+    // oneway:bicyle=no because this information gets lost otherwise
+    val isNoOnewayForCyclists = isNotOnewayForCyclists(tags, isLeftHandTraffic)
+    if (isNoOnewayForCyclists && !tags.containsKey("oneway:bicycle")) {
+        tags["oneway:bicycle"] = "no"
+    }
+
     if (!tags.containsKey("cycleway:$side")) {
         tags["cycleway:$side"] = cycleway
             .removePrefix("opposite_") // opposite_track -> track etc.
@@ -82,8 +90,8 @@ private fun Tags.expandBareTagIntoSide(key: String, suffix: String = "", side: S
     remove("$key$post")
 }
 
-private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
-    val isNotOnewayForCyclistsNow = isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
+private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags) {
+    val isNotOnewayForCyclistsNow = isNotOnewayForCyclistsNow(tags)
     if (!isOneway(tags) || isNotOnewayForCyclistsNow == false) {
         if (tags["oneway:bicycle"] == "no") {
             tags.remove("oneway:bicycle")

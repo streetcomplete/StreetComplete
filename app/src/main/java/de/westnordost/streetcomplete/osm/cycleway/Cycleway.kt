@@ -28,11 +28,13 @@ fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftA
 fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
     isOneway(tags)
     && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-    && isNotOnewayForCyclistsNow(tags, isLeftHandTraffic) == false
+    && isNotOnewayForCyclistsNow(tags) == false
 
-/** Returns whether this is now not a oneway for cyclists. It returns null if the contra-flow side
- *  is null, i.e. no change is being made for the contra-flow side */
-fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean? {
+/** Returns whether this is now not a oneway for cyclists. It returns null if any side
+ *  is null because it is possible that the undefined side has a track in the contra-flow direction
+ *  (e.g. either a normal track on the left side or a dual-track on the right side) */
+fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
+
     val onewayDir = when  {
         isForwardOneway(tags) -> FORWARD
         isReversedOneway(tags) -> BACKWARD
@@ -52,10 +54,7 @@ fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, is
     // right side has contra-flow to oneway
     if (rightDir != null && rightDir != onewayDir) return true
 
-    // if no cycleway is defined for the side that is usually contra to the oneway flow, we
-    // return that we do not know it
-    val contraFlowSide = if (isForwardOneway(tags) xor isLeftHandTraffic) left else right
-    if (contraFlowSide == null) return null
+    if (left == null || right == null) return null
 
     return false
 }
