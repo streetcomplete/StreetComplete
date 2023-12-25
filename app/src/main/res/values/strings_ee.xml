@@ -549,6 +549,13 @@
     <string name="time_limited_from">From</string>
     <string name="time_limited_to">To</string>
     <string name="quest_name_brand">It has a brand name…</string>
+    <string name="quest_guidepostName_title">"What is the name here?"</string>
+    <string name="quest_guidepostEle_title">"What is the elevation here?"</string>
+    <string name="quest_guidepostEle_hint">Do not use GPS altitude, as it typically is too inaccurate and not provided in the correct height reference system.</string>
+    <string name="quest_guidepostRef_hint">Reference number of this map or guidepost, not the reference number of signed routes.</string>
+    <string name="quest_guidepostName_hint">Signed (location) name of this map or guidepost. Do not enter a reference number here.</string>
+    <string name="quest_guidepost_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator. You may need to refine the element selection for your area (e.g. add or remove maps, only select elements with hiking=yes, etc.)</string>
+
 
     <!-- piste difficulty -->
     <string name="quest_piste_difficulty_title">What is the difficulty of this piste?</string>
