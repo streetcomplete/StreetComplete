@@ -126,7 +126,7 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="quest_oneway_title">"S’agit-il d’une voie à sens unique ?"</string>
     <string name="quest_address_title">"Quel est le numéro de maison de ce bâtiment ?"</string>
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
-    <string name="store_listing_full_description">"Aidez à améliorer l’OpenStreetMap avec StreetComplete !
+    <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
@@ -420,7 +420,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
     <string name="quest_buildingType_retail">"Magasin·s"</string>
-    <string name="quest_buildingType_warehouse">"Bâtiment de l’entrepôt"</string>
+    <string name="quest_buildingType_warehouse">"Entrepôt"</string>
     <string name="quest_buildingType_kiosk">"Bâtiment du kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
     <string name="quest_buildingType_religious">"Bâtiment religieux"</string>

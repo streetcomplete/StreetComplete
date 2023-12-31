@@ -1331,4 +1331,37 @@ Vil du flytte den nå?"</string>
     <string name="overlay_addresses_no_entrance">"Dette er ikke en inngang…"</string>
     <string name="quest_cycleway_value_sidewalk2">"delt gang- og sykkelvei"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"delt gang- og sykkelvei, begge retninger"</string>
+    <string name="overlays_tutorial_title">"Kartlag"</string>
+    <string name="overlays_tutorial_intro">"Du fant en ny metode for å redigere kartet!"</string>
+    <string name="overlays_tutorial_display">"Hvert kartlag viser en type kartdata, for eksempel butikker eller veidekke.
+
+Kartdataene er uthevet med ulike farger for å gi deg god oversikt over hva som er registrert allerede.
+Manglende data vises alltid i rødt."</string>
+    <string name="overlays_tutorial_edit">"Trykk på uthevede kartdata for å vise eller redigere det. Du kan også dele veier eller legge inn merknader, akkurat som vanlige oppdrag.
+
+I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset vises, for eksempel adressekartlaget."</string>
+    <string name="quest_maxheight_sign_title">"Hva er maksimal høyde her?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Hva er maksimal høyde under broen?"</string>
+    <string name="quest_leave_new_note_as_answer">"I så fall må du lage en merknad hvor du forklarer situasjonen."</string>
+    <string name="quest_drinking_water_type_title2">"Er drikkevann tilgjengelig her? I så fall, hva slags kilde?"</string>
+    <string name="quest_is_amenity_inside_title">"Er dette inni en bygning?"</string>
+    <string name="quest_bbq_fuel_title">"Hvordan varmes denne grillen?"</string>
+    <string name="quest_bbq_fuel_wood">"Treverk"</string>
+    <string name="quest_bbq_fuel_electric">"Strøm"</string>
+    <string name="quest_bbq_fuel_charcoal">"Trekull"</string>
+    <string name="inside">"inni"</string>
+    <string name="outside">"utenfor"</string>
+    <string name="quest_recycling_type_food_waste">"Matavfall"</string>
+    <string name="quest_defibrillator_location">"Hvor er defibrillatoren?"</string>
+    <string name="quest_defibrillator_location_description">"Vennligst gi en nøyaktig beskrivelse av posisjonen (f.eks. “i resepsjonen“)."</string>
+    <string name="quest_generalFee_title">"Må du betale for å bruke den?"</string>
+    <string name="about_title_logs">"Logger (%1$d)"</string>
+    <string name="about_summary_logs">"for bruk i feilrapporter"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Del logger"</string>
+    <string name="about_title_show_logs">"Vis logger"</string>
+    <string name="label_log_newer_than">"Fra"</string>
+    <string name="label_log_older_than">"Til"</string>
+    <string name="label_log_message_contains">"Meldingen inneholder"</string>
+    <string name="title_logs_filters">"Filtrer meldingene"</string>
 </resources>

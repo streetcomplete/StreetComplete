@@ -1,7 +1,7 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 415681
-  linesOfInterfaceMarkupChanged: 146002
+  linesOfCodeChanged: 415894
+  linesOfInterfaceMarkupChanged: 146020
   assetFilesChanged: 2013
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
@@ -264,6 +264,9 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "sun-geo"
+  githubUsername: "sun-geo"
+  linesOfCodeChanged: 2
 - name: "gileri"
   linesOfCodeChanged: 2
 - name: "Benoit Maggi"

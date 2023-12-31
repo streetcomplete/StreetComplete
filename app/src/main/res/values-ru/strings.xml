@@ -8,7 +8,7 @@
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе в мегабайтах"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показать все заметки"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Показывать все заметки, с вопросами и без"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Также показывать заметки, сформулированные не как вопросы"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
     <string name="pref_title_map_cache">"Размер кэша карты"</string>
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
@@ -58,7 +58,7 @@
     <string name="about_title_feedback">"Отправить отзыв"</string>
     <string name="about_title_license">"Лицензия"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
-    <string name="offline">"Нет подключения к сети"</string>
+    <string name="offline">"Нет подключения к Интернету"</string>
     <string name="confirmation_authorize_now">"Для того, чтобы ваши ответы были переданы в базу данных OSM, необходимо войти в свою учётную запись в OSM. Сделать это сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
     <string name="version_banned_message">"Эта версия StreetComplete устарела. Пожалуйста, обновите её!"</string>
@@ -1343,6 +1343,8 @@
     <string name="quest_crossing_kerb_height_title">"Какова высота бордюров на этом переходе?"</string>
     <string name="quest_maxheight_sign_title">"Какое ограничение по высоте здесь указано?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Какое ограничение по высоте указано под мостом?"</string>
+    <string name="quest_leave_new_note_as_answer">"В этом случае вам нужно оставить заметку, в которой вы объясните ситуацию."</string>
+    <string name="quest_drinking_water_type_title2">"Есть ли здесь питьевая вода? Если да, то каков её источник?"</string>
     <string name="quest_is_amenity_inside_title">"Это внутри здания?"</string>
     <string name="quest_bbq_fuel_title">"На чем работает этот гриль?"</string>
     <string name="quest_bbq_fuel_wood">"Дерево"</string>
@@ -1350,4 +1352,16 @@
     <string name="quest_bbq_fuel_charcoal">"Уголь"</string>
     <string name="inside">"внутри"</string>
     <string name="outside">"снаружи"</string>
+    <string name="quest_recycling_type_food_waste">"Пищевые отходы"</string>
+    <string name="quest_defibrillator_location">"Где находится этот дефибриллятор?"</string>
+    <string name="quest_defibrillator_location_description">"Пожалуйста, кратко опишите его местоположение (например, «в комнате вахтёра»)."</string>
+    <string name="quest_sanitary_dump_station_title">"Есть ли здесь место для слива человеческих отходов?"</string>
+    <string name="quest_sanitary_dump_station_description">"Место для хранения слитых отходов жизнедеятельности человека из бака туалета дома на колёсах, грузовика для дальних перевозок и т.д. Обычно обозначается таким знаком:"</string>
+    <string name="quest_generalFee_title">"Нужно ли заплатить, чтобы воспользоваться этим?"</string>
+    <string name="about_title_logs">"Лог (%1$d)"</string>
+    <string name="about_summary_logs">"для использования в отчетах об ошибках"</string>
+    <string name="action_filter">"Фильтр"</string>
+    <string name="about_title_show_logs">"Показать лог"</string>
+    <string name="label_log_newer_than">"С"</string>
+    <string name="label_log_older_than">"По"</string>
 </resources>

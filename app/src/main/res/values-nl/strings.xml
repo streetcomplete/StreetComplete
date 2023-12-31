@@ -1334,7 +1334,7 @@ Ontbrekende gegevens worden altijd in rood weergegeven."</string>
 Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
     <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
     <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking staat er op de brug vermeld?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking onder de brug staat er vermeld?"</string>
     <string name="quest_leave_new_note_as_answer">"In dit geval moet je een notitie achterlaten, waarin je de situatie uitlegt"</string>
     <string name="quest_drinking_water_type_title2">"Is hier drinkwater beschikbaar? Indien ja, wat is de bron?"</string>
     <string name="quest_is_amenity_inside_title">"Is dit binnen een gebouw?"</string>

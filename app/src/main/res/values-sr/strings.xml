@@ -1349,4 +1349,14 @@
     <string name="outside">"споља"</string>
     <string name="quest_recycling_type_food_waste">"На био отпад"</string>
     <string name="quest_defibrillator_location">"Где се налази овај дефибрилатор?"</string>
+    <string name="quest_generalFee_title">"Да ли је потребно платити за употребу?"</string>
+    <string name="about_title_logs">"Евиденција (%1$d)"</string>
+    <string name="action_filter">"Филтер"</string>
+    <string name="action_share">"Поделите евиденцију"</string>
+    <string name="about_title_show_logs">"Приказ евиденције"</string>
+    <string name="label_log_level">"Ниво евиденције"</string>
+    <string name="label_log_newer_than">"од"</string>
+    <string name="label_log_older_than">"до"</string>
+    <string name="label_log_message_contains">"Да порука садржи"</string>
+    <string name="title_logs_filters">"Филтрирање порука"</string>
 </resources>
