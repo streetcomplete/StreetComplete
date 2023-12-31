@@ -1,4 +1,4 @@
-v56.0-beta1: |
+v56.0: |
   <h3>New Authorization</h3>
   <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0 (#5383, #5322).
   <br>Sponsored by @dirkmueller from SUSE.</p>
@@ -9,7 +9,7 @@ v56.0-beta1: |
   </ul>
   <h3>New Quests</h3>
   <ul>
-  <li><i>Is there a sanitary dump station?</i> asked for caravan sites (#5363), by @qugebert</li>
+  <li><i>Is there a sanitary dump station?</i> asked for caravan sites (#5363), by @qugebert, (#5407) thanks @sun-geo </li>
   </ul>
   <h3>Quest Enhancements and Fixes</h3>
   <ul>
