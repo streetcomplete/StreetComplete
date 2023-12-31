@@ -123,15 +123,17 @@ class LogsFiltersDialog(
     }
 
     private suspend fun pickDate(initialDate: LocalDate): LocalDate =
+        // LocalDate works with with month *number* (1-12), while Android date picker dialog works
+        // with month *index*, hence the +1 / -1
         suspendCancellableCoroutine { cont ->
             DatePickerDialog(
                 context,
                 R.style.Theme_Bubble_Dialog_DatePicker,
-                { _, year, month, dayOfMonth ->
-                    cont.resume(LocalDate(year, month, dayOfMonth))
+                { _, year, monthIndex, dayOfMonth ->
+                    cont.resume(LocalDate(year, monthIndex + 1, dayOfMonth))
                 },
                 initialDate.year,
-                initialDate.monthNumber,
+                initialDate.monthNumber - 1,
                 initialDate.dayOfMonth
             ).show()
         }
