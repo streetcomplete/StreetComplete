@@ -518,10 +518,6 @@
                     "label": "מותג",
                     "terms": "מיתוג,ממותג,שם"
                 },
-                "brewery": {
-                    "label": "בירה מהחבית",
-                    "terms": "בירה בוטיק,בוטיק,חבית,מהחבית,בירה מהחבית,מבשלה"
-                },
                 "bridge": {
                     "label": "סוג",
                     "placeholder": "בררת מחדל"
@@ -849,7 +845,7 @@
                         "caterer": "הסעדה",
                         "chimney_sweeper": "ניקוי ארובות",
                         "cleaning": "שירות ניקיון",
-                        "clockmaker": "שען",
+                        "clockmaker": "שענות קיר",
                         "confectionery": "מייצר ממתקים",
                         "distillery": "מזקקה",
                         "dressmaker": "תופרת",
@@ -1007,7 +1003,6 @@
                         "lebanese": "לבנוני",
                         "malaysian": "מלזי",
                         "mexican": "מקסיקני",
-                        "pankcake": "פנקייק",
                         "pasta": "פסטה",
                         "peruvian": "פרואני",
                         "pizza": "פיצה",
@@ -1809,15 +1804,7 @@
                     "label": "סלים",
                     "placeholder": "1, 2, 4…"
                 },
-                "horse_dressage": {
-                    "label": "רכיבה אומנותית",
-                    "options": {
-                        "equestrian": "יש",
-                        "undefined": "אין"
-                    }
-                },
                 "horse_riding": {
-                    "label": "רכיבה על סוסים",
                     "options": {
                         "horse_riding": "יש",
                         "undefined": "אין"
@@ -1833,13 +1820,6 @@
                         "difficult": "קשה: הדרך צרה וחשופה. עשויה להכיל מכשולים שעשויים להפיל את הרוכב וגם מעברים צרים."
                     },
                     "placeholder": "קשה, מסוכן…"
-                },
-                "horse_stables": {
-                    "label": "אורוות רכיבה",
-                    "options": {
-                        "stables": "יש",
-                        "undefined": "אין"
-                    }
                 },
                 "hot_water": {
                     "label": "מים חמים"
@@ -2063,7 +2043,12 @@
                     "terms": "מאפילרי,מפילרי,מזהה תמונה מאפילרי,מזהה תמונה מפילרי"
                 },
                 "marker": {
-                    "label": "סוג"
+                    "label": "סוג",
+                    "options": {
+                        "stone": {
+                            "title": "אבן"
+                        }
+                    }
                 },
                 "material": {
                     "label": "חומר",
@@ -2138,6 +2123,9 @@
                         "stone": "אבן",
                         "war_memorial": "אנדרטת מלחמה"
                     }
+                },
+                "memorial/addr": {
+                    "label": "כתובת המבנה הקרוב ביותר"
                 },
                 "message": {
                     "label": "הודעה"
@@ -2698,7 +2686,7 @@
                     "label": "סוג"
                 },
                 "railway/position": {
-                    "label": "אבן דרך",
+                    "label": "מקום אבן דרך",
                     "placeholder": "מרחק עד נקודה עשרונית אחת (123.4)"
                 },
                 "railway/signal/direction": {
@@ -2868,14 +2856,6 @@
                 },
                 "route_master": {
                     "label": "סוג"
-                },
-                "royal_cypher": {
-                    "options": {
-                        "CIIIR": "CIIIR (צארלס השלישי)",
-                        "EIIR": "EIIR (אליזבט השניה)",
-                        "VR": "VR (ויקטוריה)",
-                        "no": "אין"
-                    }
                 },
                 "ruins": {
                     "label": "סוג"
@@ -3171,6 +3151,9 @@
                 "source/population": {
                     "label": "מקור אוכלוסייה"
                 },
+                "species": {
+                    "label": "זן"
+                },
                 "species/wikidata": {
                     "label": "מינים בוויקינתונים",
                     "terms": "ויקיזנים,ויקימינים,ויקיחיות,ויקיסוגים,ויקי זנים,ויקי מינים,ויקיספישיז"
@@ -3181,11 +3164,14 @@
                         "10pin": "כדורת 10-פינים (באולינג)",
                         "9pin": "כדורת 9-פינים (באולינג)",
                         "american_football": "פוטבול אמריקאי",
+                        "athletics": "אתלטיקה קלה",
                         "badminton": "בדמינטון",
                         "baseball": "בייסבול",
                         "basketball": "כדורסל",
                         "beachvolleyball": "כדורעף חופים",
                         "billiards": "ביליארד",
+                        "bmx": "אופני פעלולים",
+                        "bowls": "כדורת דשא",
                         "canoe": "שייט בקאנו",
                         "chess": "שחמט",
                         "climbing": "טיפוס",
@@ -3198,6 +3184,7 @@
                         "fitness": "אימון כושר",
                         "free_flying": "מצנחי רחיפה/ גלישת רחיפה",
                         "futsal": "קטרגל",
+                        "gaelic_games": "משחקים גאליים",
                         "golf": "גולף",
                         "gymnastics": "התעמלות",
                         "handball": "כדוריד קבוצתי",
@@ -3327,7 +3314,7 @@
                 "substation": {
                     "label": "סוג",
                     "options": {
-                        "converter": "ממיר מתח גבוה מAC לDC",
+                        "converter": "שנאי מתח גבוה מ־AC ל־DC",
                         "industrial": "תעשייתי",
                         "minor_distribution": "חלוקה מקומית",
                         "traction": "אספקת מערכת הנע",
@@ -3349,7 +3336,8 @@
                     }
                 },
                 "supervised": {
-                    "label": "פיקוח"
+                    "label": "פיקוח",
+                    "terms": "מפקח,מפקחת,פקחית,פקח,השגחה,משגיח,משגיחה"
                 },
                 "support": {
                     "label": "תמיכה",
@@ -3374,7 +3362,7 @@
                         "salt": "מלח",
                         "sand": "חול",
                         "sett": "אבנים תואמות",
-                        "unhewn_cobblestone": "אבן מרוצפת (לא חתוכה או עגולה)",
+                        "unhewn_cobblestone": "אבן מרוצפת (לא חתוכה, עגולה)",
                         "unpaved": "בלתי סלול",
                         "wood": "עץ",
                         "woodchips": "שבבי עץ"
@@ -3399,7 +3387,12 @@
                     "label": "תאריך התשאול האחרון"
                 },
                 "survey_point/purpose": {
-                    "label": "תכלית"
+                    "label": "תכלית",
+                    "options": {
+                        "both": "גם וגם",
+                        "horizontal": "יישור אופקי",
+                        "vertical": "יישור אנכי"
+                    }
                 },
                 "survey_point/structure": {
                     "label": "מבנה",
@@ -3470,6 +3463,13 @@
                 },
                 "telecom/medium": {
                     "label": "צורת תקשורת"
+                },
+                "telescope/type": {
+                    "label": "סוג",
+                    "options": {
+                        "optical": "טלסקופ אופטי",
+                        "radio": "רדיו טלסקופ"
+                    }
                 },
                 "tents": {
                     "label": "אוהלים"
@@ -4257,11 +4257,19 @@
                 "amenity/doctors/haematology": {
                     "name": "המטולוג"
                 },
+                "amenity/doctors/internal": {
+                    "name": "רפואה פנימית",
+                    "terms": "רפואת פנים,רופא פנים,רופאת פנים,רופאי פנים"
+                },
                 "amenity/doctors/nephrology": {
                     "name": "נפרולוג"
                 },
                 "amenity/doctors/neurology": {
                     "name": "נוירולוג"
+                },
+                "amenity/doctors/neurosurgery": {
+                    "name": "נוירוכירורגיה",
+                    "terms": "ניתוח מוח,מנתח מוח,מנתחת מוח,נתיחת מוח,ניתוח מח,מנתח מח,מנתחת מח,נורוכירורגיה,נוירו"
                 },
                 "amenity/doctors/oncology": {
                     "name": "אונקולוג"
@@ -4687,10 +4695,11 @@
                 },
                 "amenity/recycling_centre": {
                     "name": "מרכז מיחזור",
-                    "terms": "מרכז מיחזור"
+                    "terms": "מרכז מיחזור,מרכז מחזור,מיחזור,פסולת"
                 },
                 "amenity/recycling_container": {
-                    "name": "סל מיחזור"
+                    "name": "סל מיחזור",
+                    "terms": "פח אשפה,הפרדת אשפה,פח מופרד,פסולת מופרדת,מחזור"
                 },
                 "amenity/refugee_site": {
                     "name": "מחנה פליטים",
@@ -4748,7 +4757,8 @@
                     "terms": "מסעדת סושי/ראמן"
                 },
                 "amenity/restaurant/korean": {
-                    "name": "מסעדה קוריאנית"
+                    "name": "מסעדה קוריאנית",
+                    "terms": "טוטובוקקי,קימצ׳י,קמצ׳י,קימצ'י,קמצ'י,גימצ׳י,גמצ׳י,גימצ'י,גמצ'י,ביבימבאפ,פאג׳ון,פג׳און,פאג'ון,פג'און"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "מסעדה מקסיקנית",
@@ -4762,9 +4772,17 @@
                     "name": "מסעדת פיצה",
                     "terms": "פיצריה,איטלקי"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "מסעדת ראמן",
+                    "terms": "מסעדה יפנית,מטבח יפנית,מרק ראמן,ראמן"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "מסעדת פרות ים",
                     "terms": "מאכלי ים"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "מסעדה ספרדית",
+                    "terms": "אספניול,מטבח ספרדי,פריטטה,קסדייה,בוקדילו,בוקדיליו,פאייה,פאאיה,פאיה"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "בית סטייק",
@@ -4934,7 +4952,7 @@
                 },
                 "amenity/vehicle_inspection": {
                     "name": "בדיקת כלי רכב",
-                    "terms": "בדיקת מכוניות,בדיקת משאיות,בדיקת אופנועים,בדיקת אוטובוסים,בדיקת מוניות"
+                    "terms": "בדיקת מכוניות,בדיקת משאיות,בדיקת אופנועים,בדיקת אוטובוסים,בדיקת מוניות,מכון טסטים,מכון טסט"
                 },
                 "amenity/vending_machine": {
                     "name": "מכונת ממכר",
@@ -5753,7 +5771,7 @@
                     "terms": "רפדית"
                 },
                 "craft/watchmaker": {
-                    "name": "שען",
+                    "name": "שענות יד",
                     "terms": "שענית"
                 },
                 "craft/window_construction": {
@@ -6172,12 +6190,12 @@
                     "terms": "מתן זכות קדימה,האט"
                 },
                 "highway/living_street": {
-                    "name": "רחוב מגורים",
-                    "terms": "רחוב מגורים"
+                    "name": "רחוב משולב",
+                    "terms": "רחוב משולב,כביש משולב,מדרחוב,רחוב מגורים"
                 },
                 "highway/milestone": {
-                    "name": "אבן דרך",
-                    "terms": "אבן דרך"
+                    "name": "אבן דרך בכביש ראשי",
+                    "terms": "אבן דרך כביש ראשי,אבן דרך"
                 },
                 "highway/mini_roundabout": {
                     "name": "מעגל תנועה קטן",
@@ -6812,14 +6830,16 @@
                     "terms": "מתחם היי טק משותף"
                 },
                 "leisure/horse_riding": {
-                    "name": "מרכז לרכיבה על סוסים"
+                    "name": "מרכז לרכיבה על סוסים",
+                    "terms": "רכיבה,היפודרום,רכיבת סוסים,רכיבה על סוסים"
                 },
                 "leisure/ice_rink": {
                     "name": "החלקרח",
                     "terms": "החלקה על הקרח"
                 },
                 "leisure/indoor_play": {
-                    "name": "מרכז משחקים מקורה"
+                    "name": "מרכז משחקים מקורה",
+                    "terms": "ג׳ימבורי,ג'ימבורי,משחקים בתוך מבנה,משחקים במבנה"
                 },
                 "leisure/marina": {
                     "name": "מרינה",
@@ -6829,8 +6849,8 @@
                     "name": "רציפי יאכטות"
                 },
                 "leisure/miniature_golf": {
-                    "name": "מיני-גולף",
-                    "terms": "מיני-גולף"
+                    "name": "מיני גולף",
+                    "terms": "מיני-גולף,מיני־גולף,מיניגולף,גולף"
                 },
                 "leisure/nature_reserve": {
                     "name": "שמורת טבע",
@@ -6996,6 +7016,9 @@
                     "name": "קיר טיפוס",
                     "terms": "חדר כושר לטיפוס,חדר כושר,כושר"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "פארק הרפתקאות"
+                },
                 "leisure/sports_centre/shooting": {
                     "name": "מתקן מטווחי ירי"
                 },
@@ -7106,6 +7129,14 @@
                     "name": "מנוף",
                     "terms": "מנוף"
                 },
+                "man_made/crane/gantry_crane": {
+                    "name": "עגורן שער",
+                    "terms": "מכולה,מכולות"
+                },
+                "man_made/crane/portal_crane": {
+                    "name": "עגורן גשר",
+                    "terms": "מכולה,מכולות"
+                },
                 "man_made/cross": {
                     "name": "צלב",
                     "terms": "צליבה,נצרות,ישו,צלוב,צליינות,נוצרים"
@@ -7128,7 +7159,7 @@
                 },
                 "man_made/flagpole": {
                     "name": "עמוד דגל",
-                    "terms": "עמוד דגל"
+                    "terms": "תורן,תורן דגל"
                 },
                 "man_made/gasometer": {
                     "name": "מיכל גז",
@@ -7284,6 +7315,9 @@
                     "name": "נקודת גבול",
                     "terms": "נקודת מדד,נקודת מדידה"
                 },
+                "man_made/telescope": {
+                    "name": "טלסקופ"
+                },
                 "man_made/torii": {
                     "name": "טוריאי",
                     "terms": "שער יפני,מקדש שינטו"
@@ -7372,7 +7406,7 @@
                 },
                 "marker": {
                     "name": "סימון",
-                    "terms": "אבן דרך"
+                    "terms": "סמן כביש"
                 },
                 "marker/utility": {
                     "name": "מדגיש תשתית",
@@ -7683,7 +7717,7 @@
                 },
                 "office/estate_agent": {
                     "name": "משרד נדל״ן",
-                    "terms": "משרד נדל״ן"
+                    "terms": "משרד נדל״ן,משרד תיווך"
                 },
                 "office/financial": {
                     "name": "משרד פיננסי",
@@ -7695,7 +7729,7 @@
                 },
                 "office/forestry": {
                     "name": "משרד יעור",
-                    "terms": "יערנות,יערן,יערנית"
+                    "terms": "יערנות,יערן,יערנית,ייעור"
                 },
                 "office/foundation": {
                     "name": "משרד קרן",
@@ -7966,8 +8000,8 @@
                     "terms": "חול,ארגז,משחק,שעשוע,צעצועים,גן ילדים,מתחם חול"
                 },
                 "playground/seesaw": {
-                    "name": "נדנדה",
-                    "terms": "נדנדה"
+                    "name": "נדנדה מאוזנת",
+                    "terms": "נדנדה,נד נד,עלה ורד"
                 },
                 "playground/slide": {
                     "name": "מגלשה",
@@ -7982,8 +8016,8 @@
                     "terms": "בניין צעצוע,מתקן טיפוס"
                 },
                 "playground/swing": {
-                    "name": "נדנדות",
-                    "terms": "נדנדות"
+                    "name": "נדנדה תלויה",
+                    "terms": "נדנדות,נדנדה"
                 },
                 "playground/teenshelter": {
                     "name": "מקלט לנוער"
@@ -8024,7 +8058,7 @@
                 },
                 "power/generator": {
                     "name": "גנרטור",
-                    "terms": "גנרטור"
+                    "terms": "מחולל"
                 },
                 "power/generator/method/photovoltaic": {
                     "name": "לוח סולרי",
@@ -8064,15 +8098,15 @@
                 },
                 "power/plant/source/coal": {
                     "name": "תחנת כוח פחם",
-                    "terms": "תחנת כוח מופעל פחם"
+                    "terms": "תחנת כוח מופעלת פחם"
                 },
                 "power/plant/source/gas": {
                     "name": "תחנת כוח גז",
-                    "terms": "תחנת כוח מופעל גז"
+                    "terms": "תחנת כוח מופעלת גז"
                 },
                 "power/plant/source/hydro": {
-                    "name": "תחנת כוח הידרואלקטרי",
-                    "terms": "תחנת כוח מופעל מים"
+                    "name": "תחנת כוח הידרואלקטרית",
+                    "terms": "תחנת כוח מופעלת מים"
                 },
                 "power/plant/source/method/photovoltaic": {
                     "name": "חווה סולרית"
@@ -8325,8 +8359,8 @@
                     "terms": "רכבת קלה,מסילה"
                 },
                 "railway/milestone": {
-                    "name": "אבן דרך",
-                    "terms": "אבן דרך"
+                    "name": "אבן דרך רכבת",
+                    "terms": "אבן דרך פסי רכבת"
                 },
                 "railway/miniature": {
                     "name": "מסילת רכבת זעירה",
@@ -9109,7 +9143,7 @@
                     "terms": "חנות למשחקי מחשב"
                 },
                 "shop/watches": {
-                    "name": "שען",
+                    "name": "חנות שעונים",
                     "terms": "שענית"
                 },
                 "shop/water": {

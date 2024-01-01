@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon

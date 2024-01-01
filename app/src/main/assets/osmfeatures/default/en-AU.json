@@ -6,8 +6,10 @@
                     "label": "Rubbish Bin",
                     "terms": "waste bin,garbage bin"
                 },
-                "brewery": {
-                    "label": "Draught Beers"
+                "building": {
+                    "options": {
+                        "terrace": "Terrace Houses"
+                    }
                 },
                 "building/flats": {
                     "label": "Unit Count"
@@ -61,6 +63,30 @@
                         "sidewalk": "Footpath"
                     }
                 },
+                "fuel/fuel_multi": {
+                    "options": {
+                        "e10": "E10 Petrol",
+                        "e85": "E85 Petrol",
+                        "octane_100": "Petrol (100 Octane)",
+                        "octane_80": "Petrol (80 Octane)",
+                        "octane_85": "Petrol (85 Octane)",
+                        "octane_87": "Petrol (87 Octane)",
+                        "octane_88": "Petrol (88 Octane)",
+                        "octane_89": "Petrol (89 Octane)",
+                        "octane_90": "Petrol (90 Octane)",
+                        "octane_91": "Petrol (91 Octane)",
+                        "octane_92": "Petrol (92 Octane)",
+                        "octane_93": "Petrol (93 Octane)",
+                        "octane_95": "Petrol (95 Octane)",
+                        "octane_97": "Petrol (97 Octane)",
+                        "octane_98": "Petrol (98 Octane)"
+                    }
+                },
+                "generator/source": {
+                    "options": {
+                        "gasoline": "Petrol"
+                    }
+                },
                 "height": {
                     "label": "Height (Metres)"
                 },
@@ -106,6 +132,11 @@
                 "surveillance/type": {
                     "options": {
                         "ALPR": "Automatic Number Plate Reader"
+                    }
+                },
+                "waste": {
+                    "options": {
+                        "trash": "Rubbish"
                     }
                 },
                 "water_tank/volume": {
@@ -184,6 +215,9 @@
                 "amenity/recycling_centre": {
                     "name": "Recycling Centre"
                 },
+                "amenity/shelter/public_transport": {
+                    "name": "Public Transport Shelter"
+                },
                 "amenity/social_centre": {
                     "name": "Social Centre"
                 },
@@ -206,6 +240,15 @@
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump"
                 },
+                "amenity/vending_machine/public_transport_tickets": {
+                    "name": "Public Transport Ticket Vending Machine"
+                },
+                "amenity/waste_basket": {
+                    "name": "Rubbish Bin"
+                },
+                "amenity/waste_disposal": {
+                    "name": "Skip Bin"
+                },
                 "amenity/weighbridge": {
                     "name": "Weighbridge",
                     "aliases": "Truck Scale"
@@ -224,6 +267,9 @@
                 },
                 "barrier/kerb/rolled": {
                     "name": "Rolled Kerb"
+                },
+                "building/terrace": {
+                    "name": "Terraced Houses"
                 },
                 "healthcare/birthing_center": {
                     "name": "Birthing Centre"
@@ -257,7 +303,7 @@
                     "aliases": "Informal Footpath"
                 },
                 "highway/footway/sidewalk": {
-                    "name": "Footpath (sidewalk)"
+                    "name": "Footpath (alongside a road)"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
@@ -314,6 +360,39 @@
                 "playground/zipwire": {
                     "name": "Playground Flying Fox"
                 },
+                "public_transport/platform": {
+                    "name": "Public Transport Platform"
+                },
+                "public_transport/platform/subway": {
+                    "name": "Metro Train Platform"
+                },
+                "public_transport/platform/subway_point": {
+                    "name": "Metro Train Stop / Platform"
+                },
+                "public_transport/platform_point": {
+                    "name": "Public Transport Stop / Platform"
+                },
+                "public_transport/station": {
+                    "name": "Public Transport Station"
+                },
+                "public_transport/station_subway": {
+                    "name": "Metro Train Station"
+                },
+                "public_transport/stop_area": {
+                    "name": "Public Transport Stop Area"
+                },
+                "public_transport/stop_position": {
+                    "name": "Public Transport Stopping Location"
+                },
+                "public_transport/stop_position_subway": {
+                    "name": "Metro Train Stopping Location"
+                },
+                "railway/subway": {
+                    "name": "Metro Train Track"
+                },
+                "railway/subway_entrance": {
+                    "name": "Metro Train Entrance"
+                },
                 "shop/caravan": {
                     "name": "Caravan Dealership"
                 },
@@ -347,11 +426,20 @@
                 "telecom/data_center": {
                     "name": "Data Centre"
                 },
+                "tourism/apartment": {
+                    "name": "Holiday Apartment"
+                },
                 "tourism/caravan_site": {
                     "name": "Caravan Site"
                 },
                 "tourism/viewpoint": {
                     "name": "Lookout"
+                },
+                "type/public_transport/stop_area_group": {
+                    "name": "Public Transport Stop Area Group"
+                },
+                "type/route/subway": {
+                    "name": "Metro Train Route"
                 }
             }
         }

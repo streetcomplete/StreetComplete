@@ -1355,4 +1355,17 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_recycling_type_food_waste">"Matavfall"</string>
     <string name="quest_defibrillator_location">"Var finns denna defibrillator?"</string>
     <string name="quest_defibrillator_location_description">"Ange en kort och tydlig beskrivning av var den finns (t.ex. \"på entréplan i trapphuset\")."</string>
+    <string name="quest_generalFee_title">"Behöver man betala för att använda detta?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Det är en eldstad"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Eldstäder är öppna/har inget galler till skillnad från en grill."</string>
+    <string name="about_title_logs">"Loggar (%1$d)"</string>
+    <string name="about_summary_logs">"för användning i felrapporter"</string>
+    <string name="action_filter">"Filtrera"</string>
+    <string name="action_share">"Dela loggar"</string>
+    <string name="about_title_show_logs">"Visa loggar"</string>
+    <string name="label_log_level">"Loggnivå"</string>
+    <string name="label_log_newer_than">"Från"</string>
+    <string name="label_log_older_than">"Till"</string>
+    <string name="label_log_message_contains">"Meddelandet innehåller"</string>
+    <string name="title_logs_filters">"Filtrera meddelanden"</string>
 </resources>

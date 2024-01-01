@@ -4,5 +4,4 @@ package de.westnordost.streetcomplete.data.user.oauth
 class OAuthConnectionException @JvmOverloads constructor(
     message: String? = null,
     cause: Throwable? = null
-) : RuntimeException(message, cause) {
-}
+) : RuntimeException(message, cause)

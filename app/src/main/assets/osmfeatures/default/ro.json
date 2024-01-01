@@ -8,97 +8,152 @@
                 "category-building": {
                     "name": "Clădiri"
                 },
+                "category-golf": {
+                    "name": "Golf"
+                },
                 "category-landuse": {
-                    "name": "Utilizări de Teren"
+                    "name": "Utilizarea terenului"
+                },
+                "category-natural": {
+                    "name": "Natură"
+                },
+                "category-path": {
+                    "name": "Căi"
                 },
                 "category-playground": {
                     "name": "Echipament de loc de joacă"
                 },
+                "category-rail": {
+                    "name": "Șine"
+                },
                 "category-restriction": {
                     "name": "Restricții"
                 },
+                "category-road_major": {
+                    "name": "Drumuri de importanță majoră"
+                },
+                "category-road_minor": {
+                    "name": "Drumuri de importanță minoră"
+                },
+                "category-road_service": {
+                    "name": "Drumuri de serviciu"
+                },
                 "category-route": {
                     "name": "Rute"
+                },
+                "category-utility": {
+                    "name": "Utilități"
+                },
+                "category-water": {
+                    "name": "Corpuri de apă"
+                },
+                "category-waterway": {
+                    "name": "Căi maritime"
                 }
             },
             "fields": {
                 "access": {
-                    "label": "Acces Permis",
+                    "label": "Acces permis",
                     "options": {
                         "customers": {
                             "description": "Restricționat clienților la destinație",
                             "title": "Clienți"
                         },
                         "designated": {
-                            "description": "Acces permis după semne și legi locale specifice.",
+                            "description": "Acces permis după semne și legi locale specifice",
                             "title": "Desemnat"
                         },
                         "destination": {
-                            "description": "Acces permis doar pentru a ajunge la o destinație.",
+                            "description": "Acces permis doar pentru a ajunge la o destinație",
                             "title": "Destinație"
                         },
                         "dismount": {
+                            "description": "Acces permis, dar călărețul trebuie să descalece",
                             "title": "Descăleca"
                         },
                         "no": {
-                            "description": "Nu este permis accesul publicului general.",
+                            "description": "Nu este permis accesul publicului general",
                             "title": "Interzis"
                         },
                         "permissive": {
-                            "description": "Acces permis până când proprietarul revocă permisiunea. ",
+                            "description": "Acces permis până când proprietarul revocă permisiunea",
                             "title": "Permisiv"
                         },
                         "permit": {
-                            "description": "Acces permis doar cu un permis valid sau licență.",
+                            "description": "Acces permis doar cu un permis sau licență validă",
                             "title": "Permis"
                         },
                         "private": {
+                            "description": "Acces permis cu acordul proprietarului, dat în mod specific",
                             "title": "Privat"
                         },
                         "unknown": {
-                            "description": "Condițiile de acces sunt necunoscute sau neclare.",
+                            "description": "Condițiile de acces sunt necunoscute sau neclare",
                             "title": "Necunoscut"
                         },
                         "yes": {
+                            "description": "Acces permis prin lege; drept de trecere",
                             "title": "Permis"
                         }
                     },
                     "placeholder": "Nespecificat",
                     "types": {
-                        "access": "Tot",
+                        "access": "Toate",
                         "bicycle": "Biciclete",
-                        "foot": "Pe Jos",
+                        "foot": "Pe jos",
                         "horse": "Cai",
-                        "motor_vehicle": "Vehicule cu Motor"
+                        "motor_vehicle": "Vehicule cu motor"
                     }
                 },
                 "access_aisle": {
                     "label": "Tip"
                 },
                 "access_simple": {
-                    "label": "Acces Permis",
+                    "label": "Acces permis",
                     "options": {
                         "customers": "Doar clienți",
                         "no": "Niciunul",
                         "permissive": "Permisiv",
-                        "permit": "Doar cu permis"
+                        "permit": "Doar cu permis",
+                        "private": "Privat",
+                        "unknown": "Necunoscut",
+                        "yes": "Public"
+                    }
+                },
+                "activity": {
+                    "label": "Activitate",
+                    "options": {
+                        "bicycle": "Ciclism",
+                        "hiking": "Drumeție",
+                        "horse": "Călărit",
+                        "mtb": "Mountain bike",
+                        "ski": "Schiat"
+                    }
+                },
+                "addr/interpolation": {
+                    "label": "Tip",
+                    "options": {
+                        "all": "Toate",
+                        "alphabetic": "Alfabetic",
+                        "even": "Pare",
+                        "odd": "Impare"
                     }
                 },
                 "address": {
                     "label": "Adresă",
                     "placeholders": {
-                        "block_number": "Număr Bloc",
-                        "block_number!jp": "Nr. Bloc",
+                        "block_number": "Număr bloc",
+                        "block_number!jp": "Nr. bloc",
                         "city": "Oraș",
-                        "city!vn": "Oraș/Sat",
+                        "city!vn": "Municipiu/Oraș",
                         "conscriptionnumber": "123",
                         "country": "Țară",
                         "county": "Județ",
                         "county!jp": "District",
                         "district": "District",
                         "floor": "Etaj",
-                        "hamlet": "Hamlet",
-                        "housename": "Nume de Casă",
+                        "hamlet": "Cătun",
+                        "housename": "Nume de casă",
                         "housenumber": "123",
                         "neighbourhood": "Cartier",
                         "place": "Loc",
@@ -113,7 +168,10 @@
                     }
                 },
                 "admin_level": {
-                    "label": "Nivel Administrativ"
+                    "label": "Nivel administrativ"
+                },
+                "advertising": {
+                    "label": "Tip"
                 },
                 "aerialway": {
                     "label": "Tip"
@@ -122,7 +180,7 @@
                     "label": "Acces",
                     "options": {
                         "both": "Amândouă",
-                        "entry": "IIntrare",
+                        "entry": "Intrare",
                         "exit": "Ieșire"
                     }
                 },
@@ -152,17 +210,39 @@
                 "aeroway": {
                     "label": "Tip"
                 },
+                "agrarian": {
+                    "label": "Produse"
+                },
+                "air_conditioning": {
+                    "label": "Aer condiționat"
+                },
                 "amenity": {
                     "label": "Tip"
                 },
                 "animal_boarding": {
-                    "label": "Pentru Animale"
+                    "label": "Pentru animale"
                 },
                 "animal_breeding": {
-                    "label": "Pentru Animale"
+                    "label": "Pentru animale"
                 },
                 "animal_shelter": {
-                    "label": "Pentru Animale"
+                    "label": "Pentru animale"
+                },
+                "archaeological_site": {
+                    "label": "Tip",
+                    "options": {
+                        "baths": "Băi",
+                        "city": "Oraș istoric",
+                        "fortification": "Fortificație",
+                        "megalith": "Megalit",
+                        "necropolis": "Necropolă",
+                        "petroglyph": "Piatră cioplită",
+                        "settlement": "Așezare istorică",
+                        "tumulus": "Tumul"
+                    }
+                },
+                "architect": {
+                    "label": "Arhitect"
                 },
                 "area/highway": {
                     "label": "Tip"
@@ -171,31 +251,159 @@
                     "label": "Artist"
                 },
                 "artwork_type": {
-                    "label": "Tip"
+                    "label": "Tip",
+                    "options": {
+                        "bust": "Bust",
+                        "graffiti": "Grafitti",
+                        "mosaic": "Mozaic",
+                        "painting": "Tablou",
+                        "sculpture": "Sculptură",
+                        "statue": "Statuie"
+                    }
+                },
+                "ascent": {
+                    "label": "Urcuș total"
+                },
+                "athletics_pitch": {
+                    "label": "Eveniment",
+                    "options": {
+                        "discus_throw": "Aruncare disc",
+                        "hammer_throw": "Aruncare ciocan",
+                        "high_jump": "Săritură în înălțime",
+                        "javelin_throw": "Aruncare cu sulița",
+                        "long_jump": "Săritură în lungime",
+                        "pole_vault": "Săritură cu prăjina",
+                        "shot_put": "Aruncarea greutății",
+                        "triple_jump": "Triplu salt"
+                    }
+                },
+                "athletics_track": {
+                    "label": "Probă",
+                    "options": {
+                        "javelin_throw": "Suliță",
+                        "long_jump": "Săritură în lungime",
+                        "pole_vault": "Săritură cu prăjina",
+                        "running": "Alergare",
+                        "sprint": "Sprint",
+                        "steeplechase": "Cursă cu obstacole",
+                        "triple_jump": "Triplu salt"
+                    }
                 },
                 "atm": {
                     "label": "ATM"
                 },
+                "attraction": {
+                    "label": "Tip",
+                    "options": {
+                        "animal": "Țarc animale",
+                        "carousel": "Carusel",
+                        "maze": "Labirint",
+                        "roller_coaster": "Roller coaster",
+                        "water_slide": "Tobogan cu apă"
+                    }
+                },
+                "automated": {
+                    "label": "Automat"
+                },
+                "baby_feeding": {
+                    "label": "Zonă alăptare",
+                    "options": {
+                        "no": "Niciuna",
+                        "room": "Cameră dedicată",
+                        "yes": "Spațiu marcat"
+                    }
+                },
+                "baby_seat": {
+                    "label": "Scaun copil"
+                },
+                "backrest": {
+                    "label": "Spătar"
+                },
+                "bar": {
+                    "label": "Bar"
+                },
                 "barrier": {
-                    "label": "Tip"
+                    "label": "Tip",
+                    "options": {
+                        "block": "Bloc mare",
+                        "bollard": "Bolard",
+                        "chain": "Lanț",
+                        "city_wall": "Zid de apărare",
+                        "ditch": "Șanț",
+                        "entrance": "Intrare",
+                        "fence": "Gard",
+                        "gate": "Poartă",
+                        "guard_rail": "Parapet",
+                        "hedge": "Gard viu",
+                        "height_restrictor": "Limitator de înălțime",
+                        "kerb": "Bordură",
+                        "stile": "Pârleaz",
+                        "wall": "Zid"
+                    }
+                },
+                "barrier_planter": {
+                    "label": "Barieră",
+                    "options": {
+                        "planter": "Da",
+                        "undefined": "Nu"
+                    }
+                },
+                "basin": {
+                    "label": "Tip",
+                    "options": {
+                        "evaporation": "Evaporare",
+                        "infiltration": "Infiltrare",
+                        "retention": "Retenție"
+                    }
                 },
                 "bath/open_air": {
-                    "label": "Aer Liber"
+                    "label": "Aer liber"
                 },
                 "bath/type": {
-                    "label": "Specialitate"
+                    "label": "Specialitate",
+                    "options": {
+                        "lake": "Lac",
+                        "thermal": "Baie termală"
+                    }
+                },
+                "beauty": {
+                    "options": {
+                        "cosmetics": "Cosmetică",
+                        "hair_removal": "Îndepărtare păr",
+                        "nails": "Manichiură / Pedichiură",
+                        "skin_care": "Îngrijirea pielii",
+                        "tanning": "Bronzare",
+                        "waxing": "Epilare cu ceară"
+                    }
                 },
                 "bench": {
                     "label": "Bancă"
                 },
                 "bicycle_parking": {
-                    "label": "Tip"
+                    "label": "Tip",
+                    "options": {
+                        "building": "Într-o clădire",
+                        "lockers": "Dulapuri individuale"
+                    }
+                },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "Nu",
+                        "yes": "Da"
+                    }
                 },
                 "bin": {
-                    "label": "Gunoi"
+                    "label": "Coș gunoi"
+                },
+                "blind": {
+                    "options": {
+                        "limited": "Limitat",
+                        "no": "Nu",
+                        "yes": "Da"
+                    }
                 },
                 "blood_components": {
-                    "label": "Componente de Sânge",
+                    "label": "Componente sangvine",
                     "options": {
                         "plasma": "plasmă",
                         "platelets": "trombocite",
@@ -204,7 +412,29 @@
                     }
                 },
                 "board_type": {
-                    "label": "Tip"
+                    "label": "Tip",
+                    "options": {
+                        "art": "Artă",
+                        "astronomy": "Astronomie",
+                        "geology": "Geologie",
+                        "history": "Istorie",
+                        "nature": "Natură",
+                        "notice": "Avizier",
+                        "plants": "Plante"
+                    }
+                },
+                "bollard": {
+                    "label": "Tip",
+                    "options": {
+                        "fixed": "Bolard fix",
+                        "flexible": "Bolard flexibil",
+                        "foldable": "Bolard pliabil",
+                        "removable": "Bolard îndepărtabil",
+                        "rising": "Bolard ce se ridică"
+                    }
+                },
+                "booth": {
+                    "label": "Cabină"
                 },
                 "boules": {
                     "label": "Tip"
@@ -212,11 +442,56 @@
                 "boundary": {
                     "label": "Tip"
                 },
+                "branch_brand": {
+                    "label": "Sucursală"
+                },
                 "brand": {
                     "label": "Brand"
                 },
+                "bridge": {
+                    "label": "Tip",
+                    "placeholder": "Implicit"
+                },
+                "bridge/ref": {
+                    "label": "Numărul podului"
+                },
+                "bridge/support": {
+                    "label": "Tip"
+                },
+                "bridge_combo": {
+                    "label": "Tip"
+                },
                 "building": {
-                    "label": "Clădire"
+                    "label": "Clădire",
+                    "options": {
+                        "apartments": "Bloc",
+                        "barn": "Hambar",
+                        "bunker": "Buncăr",
+                        "cabin": "Cabană",
+                        "cathedral": "Catedrală",
+                        "chapel": "Capelă",
+                        "church": "Biserică",
+                        "civic": "Clădire civică",
+                        "construction": "Clădire în construcție",
+                        "cowshed": "Grajd",
+                        "detached": "Casă separată",
+                        "dormitory": "Dormitor",
+                        "farm": "Casă la fermă",
+                        "farm_auxiliary": "Clădire a fermei",
+                        "fire_station": "Stație pompieri",
+                        "garage": "Garaj",
+                        "garages": "Garaje",
+                        "ger": "Iurtă",
+                        "grandstand": "Tribună",
+                        "greenhouse": "Seră",
+                        "hangar": "Hangar",
+                        "hospital": "Spital",
+                        "hotel": "Hotel",
+                        "house": "Casă",
+                        "houseboat": "Casă plutitoare",
+                        "hut": "Colibă",
+                        "industrial": "Clădire industrială"
+                    }
                 },
                 "bunker_type": {
                     "label": "Tip"
@@ -414,12 +689,6 @@
                 },
                 "hoops": {
                     "placeholder": "1, 2, 4..."
-                },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da",
-                        "undefined": "Nu"
-                    }
                 },
                 "incline": {
                     "label": "Înclinare"
@@ -1779,7 +2048,8 @@
                     "name": "Magazin de Biciclete"
                 },
                 "shop/bookmaker": {
-                    "name": "Atelier de Cărți"
+                    "name": "Casă de pariuri",
+                    "terms": "pariuri"
                 },
                 "shop/boutique": {
                     "name": "Boutique"

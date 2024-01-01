@@ -11,9 +11,9 @@ import java.net.URLEncoder
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
-import kotlin.test.assertFalse
 
 class OAuthAuthorizationTest {
     @Test fun createAuthorizationUrl() {
@@ -28,22 +28,20 @@ class OAuthAuthorizationTest {
         assertEquals("ClientId %#+!", parameters["client_id"])
         assertEquals("localhost://oauth", parameters["redirect_uri"])
         assertEquals("one! 2 THREE+(1/2)", parameters["scope"])
-        assertNotNull(parameters["state"])
         assertEquals("S256", parameters["code_challenge_method"])
         assertTrue(parameters["code_challenge"]!!.length <= 128)
         assertTrue(parameters["code_challenge"]!!.length >= 43)
+    }
+
+    @Test fun `createAuthorizationUrl with state`() {
+        val parameters = URL(createOAuth("123").createAuthorizationUrl()).queryParameters
+        assertEquals("123", parameters["state"])
     }
 
     @Test fun `generates different code challenge for each instance`() {
         val url1 = URL(createOAuth().createAuthorizationUrl())
         val url2 = URL(createOAuth().createAuthorizationUrl())
         assertTrue(url1.queryParameters["code_challenge"] != url2.queryParameters["code_challenge"])
-    }
-
-    @Test fun `generates different state for each instance`() {
-        val url1 = URL(createOAuth().createAuthorizationUrl())
-        val url2 = URL(createOAuth().createAuthorizationUrl())
-        assertTrue(url1.queryParameters["state"] != url2.queryParameters["state"])
     }
 
     @Test fun `serializes correctly`() {
@@ -55,9 +53,9 @@ class OAuthAuthorizationTest {
         assertEquals(oauth1String, oauth2String)
     }
 
-    @Test fun itsForMe() {
-        val oauth = createOAuth()
-        val state = urlEncode(URL(oauth.createAuthorizationUrl()).queryParameters["state"]!!)
+    @Test fun `itsForMe with state`() {
+        val state = "123"
+        val oauth = createOAuth(state)
 
         assertFalse(oauth.itsForMe(URI("localhost://oauth"))) // no state
         assertFalse(oauth.itsForMe(URI("localhost://oauth?state=abc"))) // different state
@@ -68,35 +66,46 @@ class OAuthAuthorizationTest {
         assertFalse(oauth.itsForMe(URI("localboost://oauth?state=$state")))
     }
 
+    @Test fun `itsForMe without state`() {
+        val oauth = createOAuth()
+
+        assertTrue(oauth.itsForMe(URI("localhost://oauth"))) // no state
+        assertFalse(oauth.itsForMe(URI("localhost://oauth?state=abc"))) // different state
+        // different uri
+        assertFalse(oauth.itsForMe(URI("localhost://oauth3")))
+        assertFalse(oauth.itsForMe(URI("localhost://oauth/path")))
+        assertFalse(oauth.itsForMe(URI("localboost://oauth")))
+    }
+
     @Test fun `extractAuthorizationCode fails with useful error messages`() {
         val oauth = createOAuth()
 
         // server did not respond correctly with "error"
-        assertFailsWith<ConnectionException> {
+        assertFailsWith<OAuthConnectionException> {
             oauth.extractAuthorizationCode(URI("localhost://oauth?e=something"))
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=hey%2Bwhat%27s%2Bup"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("hey what's up", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_description=B%21"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A!: B!", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A! (see http://abc.de)", e.message)
         }
 
         try {
             oauth.extractAuthorizationCode(URI("localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de"))
-        } catch (e: AuthorizationException) {
+        } catch (e: OAuthException) {
             assertEquals("A!: B! (see http://abc.de)", e.message)
         }
     }
@@ -112,12 +121,13 @@ class OAuthAuthorizationTest {
     // is not injected (passed in the constructor)
 }
 
-private fun createOAuth() = OAuthAuthorization(
+private fun createOAuth(state: String? = null) = OAuthAuthorization(
     "https://test.me/auth",
     "https://test.me/token",
     "ClientId %#+!",
-    listOf("one!","2","THREE+(1/2)"),
-    "localhost://oauth"
+    listOf("one!", "2", "THREE+(1/2)"),
+    "localhost://oauth",
+    state
 )
 
 private fun urlEncode(s: String) = URLEncoder.encode(s, "US-ASCII")

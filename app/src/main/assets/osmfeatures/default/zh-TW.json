@@ -537,8 +537,8 @@
                     "terms": "商標,牌子"
                 },
                 "brewery": {
-                    "label": "生啤酒",
-                    "terms": "乾啤酒"
+                    "label": "銷售啤酒品牌",
+                    "terms": "銷售啤酒品牌"
                 },
                 "bridge": {
                     "label": "類型",
@@ -599,6 +599,7 @@
                         "public": "公共建築",
                         "residential": "住宅建築物",
                         "retail": "零售建築物",
+                        "riding_hall": "騎馬場",
                         "roof": "頂棚",
                         "ruins": "建築廢墟",
                         "school": "中小學建築物",
@@ -1062,7 +1063,7 @@
                         "lebanese": "黎巴嫩",
                         "malaysian": "馬來西亞菜",
                         "mexican": "墨西哥",
-                        "pankcake": "鬆餅",
+                        "pancake": "鬆餅",
                         "pasta": "義大利麵",
                         "peruvian": "秘魯菜",
                         "pizza": "披薩",
@@ -1309,6 +1310,14 @@
                         "tidal": "封閉港池碼頭"
                     }
                 },
+                "dock/height": {
+                    "label": "碼頭高度（公尺）",
+                    "terms": "碼頭高度（公尺）"
+                },
+                "dock/width": {
+                    "label": "碼頭寬度（公尺）",
+                    "terms": "碼頭寬度（公尺）"
+                },
                 "dog": {
                     "label": "狗",
                     "options": {
@@ -1320,6 +1329,14 @@
                 },
                 "door": {
                     "label": "門"
+                },
+                "door/height": {
+                    "label": "門高（公尺）",
+                    "terms": "門高（公尺）"
+                },
+                "door/width": {
+                    "label": "門寬（公尺）",
+                    "terms": "門寬（公尺）"
                 },
                 "door_type": {
                     "label": "類型"
@@ -1923,15 +1940,8 @@
                     "label": "藍框數量",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "馬場馬術",
-                    "options": {
-                        "equestrian": "是",
-                        "undefined": "否"
-                    }
-                },
                 "horse_riding": {
-                    "label": "馬背騎乘",
+                    "label": "馬術中心",
                     "options": {
                         "horse_riding": "是",
                         "undefined": "否"
@@ -1949,13 +1959,6 @@
                     },
                     "placeholder": "危險，困難...",
                     "terms": "騎馬困難度"
-                },
-                "horse_stables": {
-                    "label": "騎馬馬房",
-                    "options": {
-                        "stables": "是",
-                        "undefined": "否"
-                    }
                 },
                 "hot_water": {
                     "label": "熱水"
@@ -2327,6 +2330,10 @@
                         "stone": "石頭",
                         "war_memorial": "戰爭紀念物"
                     }
+                },
+                "memorial/addr": {
+                    "label": "最近的建築物地址",
+                    "terms": "最近的建築物地址"
                 },
                 "message": {
                     "label": "訊息類型",
@@ -3146,7 +3153,7 @@
                 "route_master": {
                     "label": "種類"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "皇家暗號",
                     "options": {
                         "CIIIR": "CIIIR（查爾斯三世）",
@@ -3156,7 +3163,7 @@
                         "GR": "GR（喬治五世）",
                         "GVIR": "GVIR（喬治六世）",
                         "VR": "VR（維多利亞女王）",
-                        "no": "無",
+                        "no": "否",
                         "scottish_crown": "蘇格蘭王冠"
                     }
                 },
@@ -3826,6 +3833,13 @@
                 "telecom/medium": {
                     "label": "媒介"
                 },
+                "telescope/type": {
+                    "label": "類型",
+                    "options": {
+                        "optical": "光學望遠鏡",
+                        "radio": "電波望遠鏡"
+                    }
+                },
                 "tents": {
                     "label": "帳篷"
                 },
@@ -4465,6 +4479,10 @@
                     "name": "自動櫃員機",
                     "terms": "提款機,atm"
                 },
+                "amenity/baking_oven": {
+                    "name": "烘烤爐",
+                    "terms": "烘烤爐"
+                },
                 "amenity/bank": {
                     "name": "銀行",
                     "terms": "銀行,信用合作社"
@@ -4867,6 +4885,10 @@
                 "amenity/fuel": {
                     "name": "加油站",
                     "terms": "加油站"
+                },
+                "amenity/funeral_hall": {
+                    "name": "殯儀館",
+                    "terms": "殯儀館"
                 },
                 "amenity/gambling": {
                     "name": "賭博場所",
@@ -5863,6 +5885,10 @@
                     "name": "公寓建築物",
                     "terms": "公寓,建築物,大樓"
                 },
+                "building/bakehouse": {
+                    "name": "麵包房",
+                    "terms": "麵包房"
+                },
                 "building/barn": {
                     "name": "穀倉",
                     "terms": "穀倉,糧倉"
@@ -6025,6 +6051,10 @@
                 "building/retail": {
                     "name": "零售建築物",
                     "terms": "商辦大樓"
+                },
+                "building/riding_hall": {
+                    "name": "室內騎馬場",
+                    "terms": "室內騎馬場"
                 },
                 "building/roof": {
                     "name": "頂棚",
@@ -7013,6 +7043,10 @@
                     "name": "紀念牌匾",
                     "terms": "紀念牌匾"
                 },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "紀念用絆腳石",
+                    "terms": "紀念用絆腳石"
+                },
                 "historic/monument": {
                     "name": "纪念建築物",
                     "terms": "纪念碑,紀念塔,古蹟"
@@ -7677,6 +7711,10 @@
                     "name": "攀岩場",
                     "terms": "攀岩場"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "冒險樂園",
+                    "terms": "冒險樂園"
+                },
                 "leisure/sports_centre/horse_racing": {
                     "name": "賽馬場",
                     "terms": "賽馬場"
@@ -7985,6 +8023,10 @@
                     "name": "有蓋水庫",
                     "terms": "有蓋水庫"
                 },
+                "man_made/satellite_dish": {
+                    "name": "衛星天線",
+                    "terms": "衛星天線"
+                },
                 "man_made/silo": {
                     "name": "地窖",
                     "terms": "地窖,筒倉"
@@ -8035,6 +8077,18 @@
                 "man_made/tailings_pond": {
                     "name": "沉澱池",
                     "terms": "沉澱池"
+                },
+                "man_made/telescope": {
+                    "name": "望遠鏡",
+                    "terms": "望遠鏡"
+                },
+                "man_made/telescope/optical": {
+                    "name": "光學望遠鏡",
+                    "terms": "光學望遠鏡"
+                },
+                "man_made/telescope/radio": {
+                    "name": "電波望遠鏡",
+                    "terms": "電波望遠鏡"
                 },
                 "man_made/torii": {
                     "name": "鳥居",
@@ -8909,7 +8963,7 @@
                 },
                 "power/plant": {
                     "name": "發電廠用地",
-                    "terms": "發電廠用地,發電廠廠區,發電廠範圍,發電廠,power station grounds"
+                    "terms": "發電廠,發電廠廠區,發電,水電,水力,核電,核能,風電,太陽能,垃圾"
                 },
                 "power/plant/source/coal": {
                     "name": "燃煤發電廠",
@@ -8962,6 +9016,10 @@
                 "power/switch": {
                     "name": "電力開關",
                     "terms": "電力開關"
+                },
+                "power/switchgear": {
+                    "name": "配電盤",
+                    "terms": "配電盤"
                 },
                 "power/tower": {
                     "name": "高壓電塔",
@@ -9145,8 +9203,8 @@
                     "terms": "舊鐵路線"
                 },
                 "railway/buffer_stop": {
-                    "name": "緩衝站",
-                    "terms": "緩衝站"
+                    "name": "止衝擋",
+                    "terms": "止衝,擋,器"
                 },
                 "railway/construction": {
                     "name": "施工中的鐵路",

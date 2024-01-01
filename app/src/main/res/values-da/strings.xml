@@ -1352,4 +1352,19 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_recycling_type_food_waste">"Madaffald"</string>
     <string name="quest_defibrillator_location">"Hvor er denne hjertestarter placeret?"</string>
     <string name="quest_defibrillator_location_description">"Giv en tydelig og kortfattet beskrivelse af dens placering (f.eks. “ved hovedindgangen til biblioteket“)."</string>
+    <string name="quest_sanitary_dump_station_title">"Er der en sanitær tømningsstation?"</string>
+    <string name="quest_sanitary_dump_station_description">"Facilitet til deponering af menneskeligt affald fra en toilettank i en autocamper, langturslastbil etc. Normalt angivet med et skilt som dette:"</string>
+    <string name="quest_generalFee_title">"Skal man betale for brug?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Det er et bålsted"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Bålsteder har ikke en overflade til madlavning (f.eks. rist/plade), i modsætning til griller."</string>
+    <string name="about_title_logs">"Logger (%1$d)"</string>
+    <string name="about_summary_logs">"til brug i fejlrapporter"</string>
+    <string name="action_filter">"Filtrér"</string>
+    <string name="action_share">"Del logger"</string>
+    <string name="about_title_show_logs">"Vis logger"</string>
+    <string name="label_log_level">"Log-niveau"</string>
+    <string name="label_log_newer_than">"Fra"</string>
+    <string name="label_log_older_than">"Til"</string>
+    <string name="label_log_message_contains">"Besked indeholder"</string>
+    <string name="title_logs_filters">"Filtrér beskeder"</string>
 </resources>

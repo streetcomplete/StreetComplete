@@ -1353,4 +1353,19 @@
     <string name="quest_recycling_type_food_waste">"ضایعات موادغذایی"</string>
     <string name="quest_defibrillator_location">"این دستگاه الکتروشوک کجا قرار دارد؟"</string>
     <string name="quest_defibrillator_location_description">"لطفاً توضیح مختصری از موقعیت آن ارائه دهید (مثلاً «در سالن پذیرایی باربَر»)."</string>
+    <string name="quest_sanitary_dump_station_title">"آیا ایستگاه تخلیه زباله بهداشتی وجود دارد؟"</string>
+    <string name="quest_sanitary_dump_station_description">"تسهیلات تخلیه زباله‌های انسانی از مخزن نگهداری توالت موتورخانه، کامیون‌های طولانی مدت و غیره معمولاً با علامتی مانند زیر نشان داده می‌شود:"</string>
+    <string name="quest_generalFee_title">"آیا برای استفاده از این مورد نیاز به پرداخت هزینه دارید؟"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"اینجا یک محوطه آتش‌نشانی است"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"محفظه‌های آتش‌نشانی برخلاف کوره‌ها، سطح پخت و پز (مثلاً رنده/صفحه) ندارند."</string>
+    <string name="about_title_logs">"گزارش‌ها (%1$d)"</string>
+    <string name="about_summary_logs">"برای استفاده در گزارش‌های خطا"</string>
+    <string name="action_filter">"فیلتر"</string>
+    <string name="action_share">"گزارش‌ها را به اشتراک بگذارید"</string>
+    <string name="about_title_show_logs">"نمایش گزارش‌ها"</string>
+    <string name="label_log_level">"سطح گزارش"</string>
+    <string name="label_log_newer_than">"از سوی"</string>
+    <string name="label_log_older_than">"به"</string>
+    <string name="label_log_message_contains">"پیام شامل"</string>
+    <string name="title_logs_filters">"فیلتر کردن پیام‌ها"</string>
 </resources>
