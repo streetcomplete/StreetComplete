@@ -1,10 +1,17 @@
+56.0: |
+  <ul>
+  <li>Add quests for guidepost elevation, name and ref by @qugebert (#477, #503) and for guidepost sports by @mcliquid (#496)</li>
+  <li>Update translations (thanks to Mr-Update, @mcliquid, SomeTr, Funmorning46, @ERYpTION), added Norwegian Nynorsk (thanks to bre</li>
+  <li>Crash fixes, minor improvements</li>
+  </ul>
+
 55.1: |
   <ul>
   <li>Add a bunch of quests by @mcliquid: street cabinet type (#470), shelter type (#473), brewery (#475), via ferrata scale (#480), piste ref (#487), piste difficulty (#489), piste lit (#495), trail visibility (#486), barrier locked (#490)</li>
   <li>Add barrier height quest, by @wielandb (#483)</li>
   <li>Add quest for map type and map size, by @wielandb (#482)</li>
   <li>Upgrade and extend service building quest, by @mcliquid (#464)</li>
-  <li>Update translations (thanks to gallegonovato, @mcliquid, someTr, m-martin), added Danish (thanks to @ERYpTION)</li>
+  <li>Update translations (thanks to gallegonovato, @mcliquid, SomeTr, m-martin), added Danish (thanks to @ERYpTION)</li>
   <li>Bug fixes and minor improvements</li>
   </ul>
 

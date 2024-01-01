@@ -15,9 +15,6 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 * See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
 
-## Screenshots
-<img src="metadata/en-US/images/phoneScreenshots/screenshot1.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot2.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot3.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot4.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot5.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot6.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot7.png" width="240"/> <img src="metadata/en-US/images/phoneScreenshots/screenshot8.png" width="240"/>
-
 ## Download
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/streetcomplete/StreetComplete/releases/latest)

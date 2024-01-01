@@ -296,4 +296,9 @@
     <string name="import_export_settings">其他应用设置</string>
     <string name="pref_search_more_languages_summary">功能搜索以所有系统和本地语言显示结果</string>
     <string name="quest_generic_surface_button">通用表面答案</string>
+    <string name="quest_piste_ref_title">这个滑雪到是有那个号码？</string>
+    <string name="quest_utility_water">水</string>
+    <string name="quest_utility_gas">气</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">是</string>
+    <string name="quest_utility_power">电</string>
 </resources>

@@ -217,13 +217,13 @@
     <string name="add_access">Додати доступ…</string>
     <string name="quest_benchMaterial_metal">Метал</string>
     <string name="quest_poi_recycling_title">POI: Переробка відходів %s</string>
-    <string name="quest_custom_quest_message">Використовується для перевірки певних заздалегідь визначених елементів або місць. Ви також можете вказати теги і додати точку з ними. Для використання завантажте файл у головному меню налаштувань, що містить або type,id,message (наприклад, NODE,1234,check position), або latitude,longitude,message. Для додавання точок, додайте теги у повідомлення після \"addNode\", наприклад, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_custom_quest_message">Використовується для перевірки певних заздалегідь визначених елементів або місць. Ви також можете вказати теги і додати точку з ними. Для використання завантажте файл у головному меню налаштувань, що містить або type,id,message (наприклад, NODE,1234,check position), або latitude,longitude,message. Для додавання точок, додайте теги у повідомлення після «addNode», наприклад, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_benchMaterial_concrete">Бетон</string>
     <string name="quest_benchMaterial_plastic">Пластик</string>
-    <string name="default_disabled_msg_poi_bench">Цей \"квест\" показує об\'єкти POI, такі як лавки або столи для пікніка, коричневими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_bench">Цей «квест» показує об\'єкти POI, такі як лавки або столи для пікніка, коричневими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="pref_hide_overlay_quests">Приховати специфічні для накладення квести</string>
-    <string name="default_disabled_msg_poi_other">Цей \"квест\" показує різні POI, такі як гідранти, оглядові майданчики або туалети, жовтими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
-    <string name="default_disabled_msg_poi_recycling">Цей \"квест\" показує POI, пов\'язані з переробкою/сміттям, зеленими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_other">Цей «квест» показує різні POI, такі як гідранти, оглядові майданчики або туалети, жовтими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_recycling">Цей «квест» показує POI, пов\'язані з переробкою/сміттям, зеленими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_poi_machine_title">POI: Автомати</string>
     <string name="quest_osmose_use_app_language">Завантажувати проблеми мовою програми</string>
     <string name="quest_custom_quest_add_node">Додати точку</string>
@@ -235,19 +235,19 @@
     <string name="quest_poi_vending_title">POI: Торгові точки %s</string>
     <string name="quest_benchMaterial_title">З чого це зроблено\?</string>
     <string name="quest_poi_cycling_title">POI: Велосипед</string>
-    <string name="default_disabled_msg_poi_camera">У цьому \"квесті\" системи спостереження позначені рожевими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_camera">У цьому «квесті» системи спостереження позначені рожевими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_osmose_hide_type">Ігнорувати проблеми з такими ж…</string>
     <string name="quest_poi_business_title">POI: Бізнес</string>
     <string name="quest_is_pharmacy_dispensing_title">Чи відпускає ця аптека всі ліки за рецептом\?</string>
-    <string name="default_disabled_msg_poi_machine">Цей \"квест\" показує такі об\'єкти, як банкомати, телефони чи торгові автомати, синіми крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_machine">Цей «квест» показує такі об\'єкти, як банкомати, телефони чи торгові автомати, синіми крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_custom_quest_add_node_text">Ви можете додати точку з: %s</string>
-    <string name="default_disabled_msg_poi_business">Цей \"квест\" показує магазини, ресторани, лікарів і подібні POI у вигляді помаранчевих крапок. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_business">Цей «квест» показує магазини, ресторани, лікарів і подібні POI у вигляді помаранчевих крапок. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_benchMaterial_brick">Цегла</string>
-    <string name="default_disabled_msg_poi_bike">Цей \"квест\" показує POI, пов\'язані з велосипедом, фіолетовими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_bike">Цей «квест» показує POI, пов\'язані з велосипедом, фіолетовими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_benchMaterial_wood">Деревина</string>
     <string name="quest_buildingColour_title">Який загальний колір має ця будівля\?</string>
     <string name="quest_buildingPartColour_title">Який загальний колір має ця частина будівлі\?</string>
-    <string name="quest_settings_dot_labels_message">Вказати, які теги слід використовувати для мітки у заданому порядку. Порожній рядок ніколи не показуватиме жодних міток, \"label\" показуватиме мітку за замовчуванням StreetComplete, використовуючи name, brand, ref, local_ref та operator.</string>
+    <string name="quest_settings_dot_labels_message">Вказати, які теги слід використовувати для мітки у заданому порядку. Порожній рядок не показуватиме жодних міток, «label» показуватиме мітку за замовчуванням StreetComplete, використовуючи name, brand, ref, local_ref та operator.</string>
     <string name="quest_poi_camera_title">POI: Камера</string>
     <string name="quest_roofColour_title">Який загальний колір даху цієї будівлі\?</string>
     <string name="pref_disable_navigation_mode_title">Вимкнути режим навігації</string>
@@ -303,7 +303,7 @@
     <string name="quest_wheelchair_description_title">Вкажіть хоча б одну мову</string>
     <string name="quest_seating_garden">У саду</string>
     <string name="quest_artwork_land_art">Лендарт</string>
-    <string name="quest_construction_value">Вкажіть \"construction=…\" або залиште порожнім, якщо невідомо</string>
+    <string name="quest_construction_value">Вкажіть «construction=…» або залиште порожнім, якщо невідомо</string>
     <string name="quest_artwork_title">Що це за твір мистецтва\?</string>
     <string name="restriction_overlay_sign_stop_all_way">Рух без зупинки заборонено</string>
     <string name="quest_service_building_type_title">Якого типу ця службова будівля %s\?</string>
@@ -322,16 +322,16 @@
     <string name="quest_generic_surface_button">Загальні поверхневі відповіді</string>
     <string name="quest_footway_width_title">Яка тут ширина пішохідної доріжки\?</string>
     <string name="quest_lanes_answer_noLanes_known_count">Без розмітки, очевидна кількість смуг</string>
-    <string name="default_disabled_msg_poi_traffic">Цей \"квест\" показує POI, пов\'язані з дорожнім рухом, блакитними крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_traffic">Цей «квест» показує POI, пов\'язані з дорожнім рухом, блакитними крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_monitor_running">Відстеження місцезнаходження</string>
     <string name="quest_monitor_error">Не вдалося почати відстеження, можливо проблема з дозволами</string>
     <string name="quest_poi_vacant_title">POI: Вільне місце</string>
     <string name="quest_destination_all_lanes_button">Усі
 \nсмуги</string>
     <string name="create_custom_quest_title_message">Введіть повідомлення, яке буде показано</string>
-    <string name="default_disabled_msg_poi_fixme">Цей \"квест\" показує теги «Виправити» червоними крапками (крім значень \"yes\" і \"continue\" за замовчуванням). Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_fixme">Цей «квест» показує теги «Виправити» червоними крапками (крім значень «yes» і «continue» за замовчуванням). Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_monitor_channel_name">Відстеження квестів поблизу</string>
-    <string name="default_disabled_msg_poi_vacant">Цей \"квест\" показує порожні магазини сірими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
+    <string name="default_disabled_msg_poi_vacant">Цей «квест» показує порожні магазини сірими крапками. Натисніть на точку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_utility_telecom">Телекомунікації</string>
     <string name="quest_service_building_type_substation">Електропідстанція</string>
     <string name="quest_utility_water">Вода</string>
@@ -377,4 +377,20 @@
     <string name="quest_barrier_locked_title">Ця огорожа (зазвичай) замкнена\?</string>
     <string name="quest_barrier_height_title">Яка висота цієї огорожі\?</string>
     <string name="import_export_custom_overlays_select">Виберіть накладення для експорту</string>
+    <string name="quest_piste_lit_title">Чи освітлена ця траса тут\?</string>
+    <string name="quest_piste_ref_title">Який номер цієї траси\?</string>
+    <string name="quest_guidepost_sports_note">Залиште примітку, якщо жоден із перелічених варіантів не підходить.</string>
+    <string name="quest_guidepost_sports_winter_hiking">Зимовий пішохідний туризм</string>
+    <string name="quest_guidepost_sports_horse">Верхова їзда</string>
+    <string name="quest_guidepost_sports_title">Для якого виду спорту призначений цей орієнтир?</string>
+    <string name="quest_guidepost_sports_hiking">Пішохідний туризм</string>
+    <string name="quest_guidepost_sports_ski">Лижний спорт</string>
+    <string name="quest_guidepost_sports_answer_simple">Це простий орієнтир</string>
+    <string name="quest_guidepost_sports_answer_simple_description">Це простий орієнтир, не призначений для конкретного виду спорту.</string>
+    <string name="quest_guidepost_sports_nordic_walking">Скандинавська ходьба</string>
+    <string name="quest_guidepost_sports_bicycle">Велоспорт</string>
+    <string name="quest_guidepost_sports_mtb">Гірський велосипед</string>
+    <string name="quest_guidepost_sports_inline_skating">Ролерблейдинг</string>
+    <string name="quest_guidepost_sports_climbing">Скелелазіння</string>
+    <string name="quest_guidepost_sports_running">Біг</string>
 </resources>

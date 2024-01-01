@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_hide_notes_title">Skjul merknadar frå ein brukar</string>
+    <string name="pref_show_gpx_button_title">Vis GPX-merknadsknapp</string>
+    <string name="pref_save_file_error">Feil ved lagring av fil</string>
+    <string name="pref_gpx_track_download">Last ned arealet GPX-spora dekkjer</string>
+    <string name="pref_read_log_title">Logglesar</string>
+    <string name="pref_category_mods">SCEE-innstillingar</string>
+    <string name="pref_files_not_found">Fann ingen filer</string>
+    <string name="pref_gpx_track_enable">Vis GPX-spor</string>
+    <string name="pref_screen_ui">Grensesnitt</string>
+    <string name="pref_read_reverse_button">Snu</string>
+    <string name="pref_expert_mode_message">Dette vil skru på oppdrag lagt til i SCEE, og:
+\n <li>direkte redigering av taggar</li>
+\n <li>flytta nodar som er del av vegar og samhøve</li>
+\n <li>sletta lause nodar</li>
+\n <li>editing elements which should be blocked by a note</li>
+\n <li>leggja til lause nodar kvar som helst</li>
+\n <li>changing element selection of quests</li>
+\n
+\n This is still less than most other editors allow, but incautious use may result in damaging data in ways that are not possible in StreetComplete. Be aware that by enabling expert mode you bear significantly more responsibility for your edits.
+\n Berre skru på dette viss du har anna erfaring frå OSM utanom StreetComplete og veit kva du gjer. </string>
+    <string name="pref_expert_mode_title">Ekspertmodus</string>
+    <string name="pref_expert_mode_summary">Slå på avansert redigering</string>
+    <string name="pref_gpx_track_download_too_big">Nedlastningsarealet er for stort, last ned manuelt istaden</string>
+    <string name="pref_hide_keyboard_title">Skjul tastaturet før oppretting av node</string>
+    <string name="pref_screen_notes">Merknadar</string>
+    <string name="pref_read_log_save">Lagra heile loggen til ei fil</string>
+    <string name="pref_hide_notes_message">Fyll inn brukarnamn eller ID å ignorera</string>
+    <string name="pref_read_filter_hint">Filter…</string>
+</resources>

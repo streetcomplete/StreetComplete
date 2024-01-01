@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.koin.android.ext.android.inject
@@ -148,11 +149,10 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             latDiff * latDiff + lonDiff * lonDiff
         }
         val notification = getQuestFoundNotification(quests.size, closest)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
-            this.toast("Quests found, but no notification permission") // should not happen, not worth a string resource
-        else
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED)
             NotificationManagerCompat.from(this).notify(FOUND_NOTIFICATION_ID, notification)
+        else
+            Log.i("NearbyQuestMonitor", "Quests found, but no notification permission")
     }
 
     // not overriding those causes crashes on Android 10 (only?)

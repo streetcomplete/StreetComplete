@@ -153,4 +153,16 @@
     <string name="pref_quest_monitor_title">Giv besked om nærliggende opgaver</string>
     <string name="quest_monitor_permission_warning">Tilladelse til baggrundsplacering er påkrævet, for at overvågningen af nærliggende opgaver kan fungere</string>
     <string name="quest_tree_genus_title">Hvilken slægt eller art tilhører dette træ\?</string>
+    <string name="quest_settings_eligible_highways">Angiv motorveje, der er tilgængelige til denne opgave, adskilt af komma</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">Indstil minimumsafstanden fra separate stier, hvis den er lavere, vil opgaven ikke blive vist</string>
+    <string name="pref_quest_settings_preset_title">Forudindstillede opgaveindstillinger</string>
+    <string name="quest_settings_sidewalk_distance_button">Afstand</string>
+    <string name="import_export_custom_overlays_select">Vælg overlejringer til eksport</string>
+    <string name="pref_quest_settings_preset_summary">Hvis aktiveret, er opgaveindstillingerne kun gyldige for den aktuelle opgaveforudindstilling</string>
+    <string name="quest_settings_what_to_edit">Hvad skal indstilles?</string>
+    <string name="quest_settings_max_roof_levels">Maksimal værdi for (bygningsetager) minus (tagetager) for den opgave, der skal vises</string>
+    <string name="quest_settings_level_more">Læger og mange flere punkter i bygninger med flere etager</string>
+    <string name="quest_settings_level_title">Vis denne opgave for:</string>
+    <string name="quest_settings_max_steps_length">Maksimal længde af trin i meter for at opgaven vises</string>
+    <string name="quest_settings_level_default">Butikker og lignende i indkøbscentre (standard)</string>
 </resources>
