@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
-import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.user.AuthorizationException
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.net.URI
@@ -12,7 +10,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class OAuthAuthorizationTest {
