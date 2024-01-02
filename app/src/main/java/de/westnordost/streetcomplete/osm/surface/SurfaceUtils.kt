@@ -77,7 +77,7 @@ fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
     }
 }
 
-private fun getCommonSurface(vararg surface: String?): String?  = when {
+private fun getCommonSurface(vararg surface: String?): String? = when {
     surface.any { it == null } -> null
     surface.all { it == surface.firstOrNull() } -> surface.firstOrNull()
     surface.all { it in ANYTHING_PAVED } -> "paved"
