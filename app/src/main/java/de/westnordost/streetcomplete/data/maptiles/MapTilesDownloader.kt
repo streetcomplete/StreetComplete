@@ -82,8 +82,8 @@ class MapTilesDownloader(
         val call = okHttpClient.newCall(builder.build())
 
         /* since we use coroutines and this is in the background anyway, why not use call.execute()?
-        *  Because we want to let the OkHttp dispatcher control how many HTTP requests are made in
-        *  parallel */
+         * Because we want to let the OkHttp dispatcher control how many HTTP requests are made in
+         * parallel */
         val callback = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Log.w(TAG, "Error retrieving tile $zoom/$x/$y: ${e.message}")

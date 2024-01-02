@@ -37,21 +37,21 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
     waysByNodeId.keys.retainAll(barriersByNodeId.keys)
 
     /* finally, filter out all shared nodes where the footway(s) do not actually cross the barrier(s).
-    *  There are two situations which both need to be handled:
-    *
-    *  1. The shared node is contained in a both ways and it is not an end
-    *     node of any of the involved ways, e.g.
-    *     https://www.openstreetmap.org/node/2225781269 (intersecting footways with barriers)
-    *     https://www.openstreetmap.org/node/8418974983 (intersecting footways with roads)
-    *
-    *  2. The barrier way or the footway way or both actually end on the shared node but are
-    *     connected to another which continues the way after
-    *     https://www.openstreetmap.org/node/2458449002 (transition of footway to steps - intersecting with barrier)
-    *     https://www.openstreetmap.org/node/1641565064 (intersecting footways with roads)
-    *
-    *  So, for the algorithm, it should be irrelevant to which way(s) the segments around the
-    *  shared node belong, what count are the positions / angles.
-    */
+     * There are two situations which both need to be handled:
+     *
+     * 1. The shared node is contained in a both ways and it is not an end
+     *    node of any of the involved ways, e.g.
+     *    https://www.openstreetmap.org/node/2225781269 (intersecting footways with barriers)
+     *    https://www.openstreetmap.org/node/8418974983 (intersecting footways with roads)
+     *
+     * 2. The barrier way or the footway way or both actually end on the shared node but are
+     *    connected to another which continues the way after
+     *    https://www.openstreetmap.org/node/2458449002 (transition of footway to steps - intersecting with barrier)
+     *    https://www.openstreetmap.org/node/1641565064 (intersecting footways with roads)
+     *
+     * So, for the algorithm, it should be irrelevant to which way(s) the segments around the
+     * shared node belong, what count are the positions / angles.
+     */
     waysByNodeId.entries.retainAll { (nodeId, ways) ->
 
         val barriers = barriersByNodeId.getValue(nodeId)

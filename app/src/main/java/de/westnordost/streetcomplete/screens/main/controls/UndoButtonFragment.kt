@@ -41,7 +41,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
-    *  also uploading it at the same time) */
+     * also uploading it at the same time) */
     private val uploadProgressListener = object : UploadProgressListener {
         override fun onStarted() { viewLifecycleScope.launch { updateUndoButtonEnablement(false) } }
         override fun onFinished() { viewLifecycleScope.launch { updateUndoButtonEnablement(true) } }

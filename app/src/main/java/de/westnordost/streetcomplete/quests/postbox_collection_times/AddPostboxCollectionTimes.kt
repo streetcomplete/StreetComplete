@@ -24,7 +24,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     """.toElementFilterExpression() }
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
-    *  change and problematic to tag clearly with the check date scheme */
+     * change and problematic to tag clearly with the check date scheme */
 
     override val changesetComment = "Survey postbox collection times"
     override val wikiLink = "Key:collection_times"

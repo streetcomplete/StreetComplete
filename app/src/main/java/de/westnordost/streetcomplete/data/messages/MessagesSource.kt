@@ -18,7 +18,7 @@ class MessagesSource(
     private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
-    *  database table*/
+     * database table*/
 
     interface UpdateListener {
         fun onNumberOfMessagesUpdated(numberOfMessages: Int)

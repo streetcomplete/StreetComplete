@@ -227,7 +227,7 @@ class QuestSelectionAdapter(
         private fun onDropped() {
             val qt = questTypesDuringDrag
             /* since we modify the quest list during move (in onMove) for the animation, the quest
-            *  type we dragged is now already at the position we want it to be. */
+             * type we dragged is now already at the position we want it to be. */
             if (draggedTo != draggedFrom && draggedTo > 0 && qt != null) {
                 val item = qt[draggedTo].questType
                 val toAfter = qt[draggedTo - 1].questType

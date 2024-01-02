@@ -45,8 +45,8 @@ class NotesWithEditsSource(
     private val noteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) {
             /* can't just get the associated note from DB and apply this edit to it because this
-            *  edit might just be the last in a long chain of edits, i.e. if several comments
-            *  are added to a note, or if a note is created through an edit (and then commented) */
+             * edit might just be the last in a long chain of edits, i.e. if several comments
+             * are added to a note, or if a note is created through an edit (and then commented) */
             val note = get(edit.noteId) ?: return
 
             if (edit.action == CREATE) callOnUpdated(added = listOf(note))
