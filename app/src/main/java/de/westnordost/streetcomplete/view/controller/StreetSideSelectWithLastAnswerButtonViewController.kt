@@ -41,63 +41,63 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val lastSelectionOneSide: I?
 
     var transformLastSelection: (item: I, isRight: Boolean) -> I = { item, _ -> item }
-    set(value) {
-        field = value
-        updateLastSelectionButton()
-    }
+        set(value) {
+            field = value
+            updateLastSelectionButton()
+        }
 
     /** Angle in degrees by which the street side select puzzle should be rotated from North */
     var offsetPuzzleRotation: Float = 0f
-    set(value) {
-        field = value
-        puzzleView.streetRotation = value + compassView.rotation
-    }
+        set(value) {
+            field = value
+            puzzleView.streetRotation = value + compassView.rotation
+        }
 
     /** image to display when no selection has been made */
     var defaultPuzzleImageLeft: Image = ResImage(R.drawable.ic_street_side_unknown)
-    set(value) {
-        field = value
-        if (left == null) puzzleView.setLeftSideImage(value)
-    }
+        set(value) {
+            field = value
+            if (left == null) puzzleView.setLeftSideImage(value)
+        }
 
     var defaultPuzzleImageRight: Image = ResImage(R.drawable.ic_street_side_unknown)
-    set(value) {
-        field = value
-        if (right == null) puzzleView.setRightSideImage(value)
-    }
+        set(value) {
+            field = value
+            if (right == null) puzzleView.setRightSideImage(value)
+        }
 
     /** selected item on the left side */
     var left: StreetSideDisplayItem<I>? = null
-    private set(value) {
-        field = value
-        updateLastSelectionButtonVisibility()
-    }
+        private set(value) {
+            field = value
+            updateLastSelectionButtonVisibility()
+        }
 
     /** selected item on the right side */
     var right: StreetSideDisplayItem<I>? = null
-    private set(value) {
-        field = value
-        updateLastSelectionButtonVisibility()
-    }
+        private set(value) {
+            field = value
+            updateLastSelectionButtonVisibility()
+        }
 
     enum class Sides { BOTH, LEFT, RIGHT }
     var showSides: Sides = Sides.BOTH
-    set(value) {
-        field = value
-        when (value) {
-            Sides.BOTH -> puzzleView.showBothSides()
-            Sides.LEFT -> puzzleView.showOnlyLeftSide()
-            Sides.RIGHT -> puzzleView.showOnlyRightSide()
+        set(value) {
+            field = value
+            when (value) {
+                Sides.BOTH -> puzzleView.showBothSides()
+                Sides.LEFT -> puzzleView.showOnlyLeftSide()
+                Sides.RIGHT -> puzzleView.showOnlyRightSide()
+            }
+            updateLastSelectionButton()
         }
-        updateLastSelectionButton()
-    }
 
     var isEnabled: Boolean = true
-    set(value) {
-        field = value
-        puzzleView.isEnabled = value
-        updateLastSelectionButtonVisibility()
-    }
+        set(value) {
+            field = value
+            puzzleView.isEnabled = value
+            updateLastSelectionButtonVisibility()
+        }
 
     val isComplete: Boolean get() = when (showSides) {
         Sides.BOTH -> left != null && right != null

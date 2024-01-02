@@ -27,11 +27,11 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
     protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>
 
     protected var isDisplayingPrevious: Boolean = false
-    set(value) {
-        field = value
-        streetSideSelect.isEnabled = !value
-        updateButtonPanel()
-    }
+        set(value) {
+            field = value
+            streetSideSelect.isEnabled = !value
+            updateButtonPanel()
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

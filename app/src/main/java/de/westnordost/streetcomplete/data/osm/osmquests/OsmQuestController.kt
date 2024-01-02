@@ -166,9 +166,9 @@ class OsmQuestController internal constructor(
                     val questTime = nowAsEpochMilliseconds()
                     var questCount = 0
                     val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags) {
-                            onlyElementsWithTags
+                        onlyElementsWithTags
                     } else {
-                            mapDataWithGeometry
+                        mapDataWithGeometry
                     }
                     for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
