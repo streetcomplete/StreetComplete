@@ -69,7 +69,9 @@ fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
 
 @Serializable
 enum class Direction {
-    FORWARD, BACKWARD, BOTH;
+    FORWARD,
+    BACKWARD,
+    BOTH;
 
     fun reverse(): Direction = when (this) {
         FORWARD -> BACKWARD

@@ -29,7 +29,10 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
     private var switchKeyboardButtonViewController: SwitchKeyboardButtonViewController? = null
 
     enum class InterfaceMode {
-        FLAT_RANGE, ENTRANCE_REFERENCE, FLAT_RANGE_AND_ENTRANCE_REFERENCE, SELECTING
+        FLAT_RANGE,
+        ENTRANCE_REFERENCE,
+        FLAT_RANGE_AND_ENTRANCE_REFERENCE,
+        SELECTING
     }
     private var interfaceMode: InterfaceMode = InterfaceMode.SELECTING
 

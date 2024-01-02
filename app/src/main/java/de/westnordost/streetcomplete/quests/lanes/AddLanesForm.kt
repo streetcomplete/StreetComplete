@@ -306,5 +306,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 }
 
 private enum class LanesType {
-    MARKED, MARKED_SIDES, UNMARKED
+    MARKED,
+    MARKED_SIDES,
+    UNMARKED
 }

@@ -138,7 +138,11 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 }
 
 private enum class ParkingSelection {
-    PARALLEL, DIAGONAL, PERPENDICULAR, SEPARATE, NO
+    PARALLEL,
+    DIAGONAL,
+    PERPENDICULAR,
+    SEPARATE,
+    NO
 }
 
 private val ParkingSelection.titleResId: Int get() = when (this) {

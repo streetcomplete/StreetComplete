@@ -51,5 +51,7 @@ class QuestSelectionHintController(
 }
 
 enum class QuestSelectionHintState {
-    NOT_SHOWN, SHOULD_SHOW, SHOWN
+    NOT_SHOWN,
+    SHOULD_SHOW,
+    SHOWN
 }

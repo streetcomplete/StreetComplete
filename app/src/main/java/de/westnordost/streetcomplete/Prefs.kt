@@ -69,7 +69,9 @@ object Prefs {
     const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
 
     enum class Autosync {
-        ON, WIFI, OFF
+        ON,
+        WIFI,
+        OFF
     }
 
     enum class Theme(val appCompatNightMode: Int) {
@@ -80,6 +82,8 @@ object Prefs {
     }
 
     enum class ResurveyIntervals {
-        LESS_OFTEN, DEFAULT, MORE_OFTEN
+        LESS_OFTEN,
+        DEFAULT,
+        MORE_OFTEN
     }
 }

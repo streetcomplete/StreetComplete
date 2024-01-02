@@ -323,7 +323,12 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 }
 
 private enum class SpeedType {
-    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN, NSL
+    SIGN,
+    ZONE,
+    LIVING_STREET,
+    ADVISORY,
+    NO_SIGN,
+    NSL
 }
 
 private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (countryCode) {
