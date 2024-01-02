@@ -88,8 +88,11 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     /* ------------------------------------ Download Button  ------------------------------------ */
 
     private fun onClickDownload() {
-        if (isConnected()) downloadDisplayedArea()
-        else context?.toast(R.string.offline)
+        if (isConnected()) {
+            downloadDisplayedArea()
+        } else {
+            context?.toast(R.string.offline)
+        }
     }
 
     private fun isConnected(): Boolean {

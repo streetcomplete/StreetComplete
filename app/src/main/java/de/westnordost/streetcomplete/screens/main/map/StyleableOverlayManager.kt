@@ -137,8 +137,11 @@ class StyleableOverlayManager(
         updateJob = viewLifecycleScope.launch {
             val mapData = withContext(Dispatchers.IO) {
                 synchronized(mapDataSource) {
-                    if (!coroutineContext.isActive) null
-                    else mapDataSource.getMapDataWithGeometry(bbox)
+                    if (!coroutineContext.isActive) {
+                        null
+                    } else {
+                        mapDataSource.getMapDataWithGeometry(bbox)
+                    }
                 }
             } ?: return@launch
             setStyledElements(mapData)

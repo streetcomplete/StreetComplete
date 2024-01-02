@@ -45,8 +45,11 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         is OpeningWeekdaysRow -> {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
-                if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
-                else WeekDayRangesAndHolidays()
+                if (!row.weekdays.isSelectionEmpty()) {
+                    row.weekdays.toWeekDayRangesAndHolidays()
+                } else {
+                    WeekDayRangesAndHolidays()
+                }
 
             // new weekdays -> new rule
             if (currentWeekdays != null && weekdays != currentWeekdays) {
@@ -102,8 +105,11 @@ fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     for (row in this) {
         val time = row.time
         val weekdays =
-            if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
-            else WeekDayRangesAndHolidays()
+            if (!row.weekdays.isSelectionEmpty()) {
+                row.weekdays.toWeekDayRangesAndHolidays()
+            } else {
+                WeekDayRangesAndHolidays()
+            }
 
         // new weekdays -> new rule
         if (currentWeekdays != null && weekdays != currentWeekdays) {
@@ -169,8 +175,11 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
     val weekdayRanges = toCircularSections().flatMap { it.toWeekDayRanges() }
 
     val holidays: List<Holiday>? =
-        if (selection[PUBLIC_HOLIDAY]) listOf(Holiday().also { it.type = Holiday.Type.PH })
-        else null
+        if (selection[PUBLIC_HOLIDAY]) {
+            listOf(Holiday().also { it.type = Holiday.Type.PH })
+        } else {
+            null
+        }
 
     return WeekDayRangesAndHolidays(weekdayRanges.takeIf { it.isNotEmpty() }, holidays)
 }

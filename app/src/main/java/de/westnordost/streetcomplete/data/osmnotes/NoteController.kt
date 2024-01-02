@@ -66,8 +66,11 @@ class NoteController(
     fun put(note: Note) {
         val hasNote = synchronized(this) { dao.get(note.id) != null }
 
-        if (hasNote) onUpdated(updated = listOf(note))
-        else onUpdated(added = listOf(note))
+        if (hasNote) {
+            onUpdated(updated = listOf(note))
+        } else {
+            onUpdated(added = listOf(note))
+        }
 
         dao.put(note)
     }

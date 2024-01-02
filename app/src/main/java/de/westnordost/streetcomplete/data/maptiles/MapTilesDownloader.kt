@@ -49,8 +49,11 @@ class MapTilesDownloader(
                     when (result) {
                         is DownloadFailure -> ++failureCount
                         is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
+                            if (result.alreadyCached) {
+                                cachedSize += result.size
+                            } else {
+                                downloadedSize += result.size
+                            }
                         }
                     }
                 }

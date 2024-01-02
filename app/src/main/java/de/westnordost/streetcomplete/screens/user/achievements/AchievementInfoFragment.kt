@@ -138,8 +138,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             binding.unlockedLinksList.adapter = null
         } else {
             binding.unlockedLinkTitleText.setText(
-                if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
-                else R.string.achievements_unlocked_links
+                if (unlockedLinks.size == 1) {
+                    R.string.achievements_unlocked_link
+                } else {
+                    R.string.achievements_unlocked_links
+                }
             )
             binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, ::openUri)
         }

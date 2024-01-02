@@ -48,8 +48,11 @@ class UnsyncedChangesCountSource(
     }
 
     private fun onUpdate(diff: Int) {
-        if (diff > 0) listeners.forEach { it.onIncreased() }
-        else if (diff < 0) listeners.forEach { it.onDecreased() }
+        if (diff > 0) {
+            listeners.forEach { it.onIncreased() }
+        } else if (diff < 0) {
+            listeners.forEach { it.onDecreased() }
+        }
     }
 
     fun addListener(listener: Listener) {

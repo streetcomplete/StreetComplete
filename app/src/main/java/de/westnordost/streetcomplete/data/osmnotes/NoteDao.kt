@@ -61,14 +61,16 @@ class NoteDao(private val db: Database) {
         return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toNote() }
     }
 
-    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
-        if (limit != null && limit <= 0) return emptyList()
-        else return db.query(NAME,
-            columns = arrayOf(ID),
-            where = "$LAST_SYNC < $timestamp",
-            limit = limit?.toString()
-        ) { it.getLong(ID) }
-    }
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> =
+        if (limit != null && limit <= 0) {
+            emptyList()
+        } else {
+            db.query(NAME,
+                columns = arrayOf(ID),
+                where = "$LAST_SYNC < $timestamp",
+                limit = limit?.toString()
+            ) { it.getLong(ID) }
+        }
 
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0

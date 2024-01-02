@@ -154,11 +154,17 @@ class EditHistoryAdapter(
             binding.undoButtonIcon.isInvisible = selectedEdit != edit
             binding.selectionRing.isInvisible = selectedEdit != edit
 
-            if (edit.icon != 0) binding.questIcon.setImageResource(edit.icon)
-            else binding.questIcon.setImageDrawable(null)
+            if (edit.icon != 0) {
+                binding.questIcon.setImageResource(edit.icon)
+            } else {
+                binding.questIcon.setImageDrawable(null)
+            }
 
-            if (edit.overlayIcon != 0) binding.overlayIcon.setImageResource(edit.overlayIcon)
-            else binding.overlayIcon.setImageDrawable(null)
+            if (edit.overlayIcon != 0) {
+                binding.overlayIcon.setImageResource(edit.overlayIcon)
+            } else {
+                binding.overlayIcon.setImageDrawable(null)
+            }
 
             val aboveTimeStr = editAbove?.formatSameDayTime()
             val timeStr = edit.formatSameDayTime()

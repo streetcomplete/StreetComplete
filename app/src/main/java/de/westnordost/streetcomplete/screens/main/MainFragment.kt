@@ -831,8 +831,11 @@ class MainFragment :
         }
 
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose { composeNote(pos) }
-        else composeNote(pos)
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { composeNote(pos) }
+        } else {
+            composeNote(pos)
+        }
     }
 
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {

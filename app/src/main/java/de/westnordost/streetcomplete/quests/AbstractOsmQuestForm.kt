@@ -166,8 +166,11 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
 
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
-            if (isDeletePoiEnabled) deletePoiNode()
-            else if (isReplaceShopEnabled) replaceShop()
+            if (isDeletePoiEnabled) {
+                deletePoiNode()
+            } else if (isReplaceShopEnabled) {
+                replaceShop()
+            }
         }
     }
 

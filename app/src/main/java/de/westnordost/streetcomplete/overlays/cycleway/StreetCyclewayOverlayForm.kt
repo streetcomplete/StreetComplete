@@ -74,8 +74,11 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         updateBicycleBoulevard()
 
         streetSideSelect.transformLastSelection = { item: CyclewayAndDirection, isRight: Boolean ->
-            if (item.direction == Direction.BOTH) item
-            else CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
+            if (item.direction == Direction.BOTH) {
+                item
+            } else {
+                CyclewayAndDirection(item.cycleway, Direction.getDefault(isRight, isLeftHandTraffic))
+            }
         }
     }
 
@@ -139,8 +142,11 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     /* ------------------------------ reverse cycleway direction -------------------------------- */
 
     private fun createReverseCyclewayDirectionAnswer(): IAnswerItem? =
-        if (bicycleBoulevard == BicycleBoulevard.YES) null
-        else AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
+        if (bicycleBoulevard == BicycleBoulevard.YES) {
+            null
+        } else {
+            AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
+        }
 
     private fun selectReverseCyclewayDirection() {
         confirmSelectReverseCyclewayDirection {

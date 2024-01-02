@@ -49,8 +49,11 @@ class NotesWithEditsSource(
              * are added to a note, or if a note is created through an edit (and then commented) */
             val note = get(edit.noteId) ?: return
 
-            if (edit.action == CREATE) callOnUpdated(added = listOf(note))
-            else callOnUpdated(updated = listOf(note))
+            if (edit.action == CREATE) {
+                callOnUpdated(added = listOf(note))
+            } else {
+                callOnUpdated(updated = listOf(note))
+            }
         }
 
         override fun onSyncedEdit(edit: NoteEdit) {

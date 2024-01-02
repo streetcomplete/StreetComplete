@@ -44,8 +44,11 @@ class OsmNoteQuestController(
             }
             for (note in updated) {
                 val q = createQuestForNote(note, hiddenNoteIds)
-                if (q != null) quests.add(q)
-                else deletedQuestIds.add(note.id)
+                if (q != null) {
+                    quests.add(q)
+                } else {
+                    deletedQuestIds.add(note.id)
+                }
             }
             onUpdated(quests, deletedQuestIds)
         }
@@ -205,7 +208,9 @@ private fun Note.shouldShowAsQuest(
     /* don't show notes where user replied last unless he wrote a survey required marker */
     if (comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
        replies yet */
@@ -218,7 +223,9 @@ private fun Note.shouldShowAsQuest(
     if (showOnlyNotesPhrasedAsQuestions
         && !probablyContainsQuestion()
         && !containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     return true
 }

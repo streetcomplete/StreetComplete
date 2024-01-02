@@ -34,11 +34,14 @@ import kotlinx.serialization.json.Json
 class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRightCycleway>() {
 
     override val buttonPanelAnswers get() =
-        if (isDisplayingPrevious) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious = false },
-            AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
-        )
-        else emptyList()
+        if (isDisplayingPrevious) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious = false },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
+            )
+        } else {
+            emptyList()
+        }
 
     override val otherAnswers: List<IAnswerItem> get() = listOfNotNull(
         createShowBothSidesAnswer(),

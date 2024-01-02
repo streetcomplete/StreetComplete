@@ -42,8 +42,11 @@ class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
         if (selectedItems.contains(WHEELCHAIR)) {
             confirmWheelchairRampIsSeparate { isSeparate ->
                 val wheelchairRampStatus =
-                    if (isSeparate) WheelchairRampStatus.SEPARATE
-                    else WheelchairRampStatus.YES
+                    if (isSeparate) {
+                        WheelchairRampStatus.SEPARATE
+                    } else {
+                        WheelchairRampStatus.YES
+                    }
 
                 applyAnswer(
                     StepsRampAnswer(

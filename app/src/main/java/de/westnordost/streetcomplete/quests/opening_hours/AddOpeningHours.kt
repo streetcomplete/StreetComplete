@@ -131,8 +131,11 @@ class AddOpeningHours(
     override fun getTitle(tags: Map<String, String>): Int {
         // treat invalid opening hours like it is not set at all
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
-        return if (hasValidOpeningHours) R.string.quest_openingHours_resurvey_title
-               else                      R.string.quest_openingHours_title
+        return if (hasValidOpeningHours) {
+            R.string.quest_openingHours_resurvey_title
+        } else {
+            R.string.quest_openingHours_title
+        }
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

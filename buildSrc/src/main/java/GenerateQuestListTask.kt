@@ -205,8 +205,11 @@ private data class RepoQuest(
     val wikiOrder: Int,
 ) {
     val packageName: String get() =
-        if (name == noteQuestName) noteQuestPackageName
-        else file.parentFile.name
+        if (name == noteQuestName) {
+            noteQuestPackageName
+        } else {
+            file.parentFile.name
+        }
 
     fun getCsvString(projectDirectory: File): String {
         val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")

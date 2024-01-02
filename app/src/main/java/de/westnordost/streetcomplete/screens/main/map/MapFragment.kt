@@ -322,7 +322,9 @@ open class MapFragment :
                 Prefs.MAP_ROTATION,
                 Prefs.MAP_TILT,
                 Prefs.MAP_ZOOM,
-        ))) return null
+        ))) {
+            return null
+        }
 
         return CameraPosition(
             LatLon(

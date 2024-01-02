@@ -170,8 +170,11 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     }
 
     private fun createNoNameAnswer(): AnswerItem? =
-        if (featureCtrl.feature == null || isNoName) null
-        else AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
+        if (featureCtrl.feature == null || isNoName) {
+            null
+        } else {
+            AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
+        }
 
     private fun setNoName() {
         isNoName = true
@@ -266,7 +269,9 @@ private suspend fun createEditAction(
             // - see #5195
             // place has been added, nothing to replace
             || element == null
-        ) false
+        ) {
+            false
+        }
         // always replace if:
         else if (
             // the feature is a brand feature or was a brand feature (i.e. overwrites the name)
@@ -276,11 +281,15 @@ private suspend fun createEditAction(
             || wasVacant && hasChangedFeature
             // it's vacant now
             || isVacant
-        ) true
+        ) {
+            true
+        }
         // ask whether it is still the same shop if:
         // + the name was changed
         // + the feature was changed and the name was empty before
-        else confirmReplaceShop()
+        else {
+            confirmReplaceShop()
+        }
 
     if (doReplaceShop) {
         tagChanges.replaceShop(newFeature.addTags)

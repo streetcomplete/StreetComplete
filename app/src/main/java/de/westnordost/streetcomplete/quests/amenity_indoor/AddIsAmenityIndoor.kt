@@ -90,8 +90,11 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
 
     override fun isApplicableTo(element: Element) =
         if (nodesFilter.matches(element) && hasAnyName(element.tags)) {
-            if (nodesOnWalls.matches(element)) true
-            else null
+            if (nodesOnWalls.matches(element)) {
+                true
+            } else {
+                null
+            }
         } else {
             false
         }

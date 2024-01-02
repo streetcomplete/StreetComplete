@@ -92,8 +92,11 @@ class OverpassQueryCreator(
             val stmtInputSetId = if (isFirst) inputSetId else workingSet
             val stmtResultSetId = if (isLast) resultSetId else workingSet
 
-            if (child is AnyOf) result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
-            else if (child is AllTagFilters) result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
+            if (child is AnyOf) {
+                result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
+            } else if (child is AllTagFilters) {
+                result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
+            }
         }
         return result.toString()
     }

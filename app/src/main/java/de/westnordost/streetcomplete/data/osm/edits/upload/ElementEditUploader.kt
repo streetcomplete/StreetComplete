@@ -50,8 +50,11 @@ class ElementEditUploader(
 
     private fun uploadChanges(edit: ElementEdit, mapDataChanges: MapDataChanges, newChangeset: Boolean): MapDataUpdates {
         val changesetId =
-            if (newChangeset) changesetManager.createChangeset(edit.type, edit.source)
-            else              changesetManager.getOrCreateChangeset(edit.type, edit.source)
+            if (newChangeset) {
+                changesetManager.createChangeset(edit.type, edit.source)
+            } else {
+                changesetManager.getOrCreateChangeset(edit.type, edit.source)
+            }
         return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
     }
 }

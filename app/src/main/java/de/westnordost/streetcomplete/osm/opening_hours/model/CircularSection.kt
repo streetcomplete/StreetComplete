@@ -11,8 +11,11 @@ data class CircularSection(val start: Int, val end: Int) : Comparable<CircularSe
 
     fun intersects(other: CircularSection): Boolean =
         loops && other.loops ||
-        if (loops || other.loops) other.end >= start || other.start <= end
-        else                      other.end >= start && other.start <= end
+        if (loops || other.loops) {
+            other.end >= start || other.start <= end
+        } else {
+            other.end >= start && other.start <= end
+        }
 
     val loops get() = end < start
 

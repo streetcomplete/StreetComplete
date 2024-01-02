@@ -106,8 +106,11 @@ class NoteEditsUploader(
 
             // should update the note if there was a conflict, so it doesn't happen again
             val updatedNote = notesApi.get(edit.noteId)
-            if (updatedNote != null) noteController.put(updatedNote)
-            else noteController.delete(edit.noteId)
+            if (updatedNote != null) {
+                noteController.put(updatedNote)
+            } else {
+                noteController.delete(edit.noteId)
+            }
 
             deleteImages(edit.imagePaths)
         }
