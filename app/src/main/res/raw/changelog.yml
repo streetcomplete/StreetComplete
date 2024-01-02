@@ -1,7 +1,7 @@
 v56.0: |
   <h3>New Authorization</h3>
   <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0 (#5383, #5322).
-  <br>Sponsored by @dirkmueller from SUSE.</p>
+  <br>Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citizens (OSCC)</a>.</p>
   <h3>General Enhancements and Fixes</h3>
   <ul>
   <li>You can now view, filter and copy logs from within the app. (This helps finding the cause of issues.) (#5335), by @neonowy</li>
