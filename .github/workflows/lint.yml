@@ -18,7 +18,7 @@ jobs:
         id: ktlint-check
         uses: musichin/ktlint-check@v1.2.1
         with:
-          version: '0.46.0'
+          version: '1.1.0'
           reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
           relative: true
           verbose: true

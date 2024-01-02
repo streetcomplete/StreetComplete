@@ -76,7 +76,7 @@ object Prefs {
         LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
         DARK(AppCompatDelegate.MODE_NIGHT_YES),
         AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
-        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 
     enum class ResurveyIntervals {
