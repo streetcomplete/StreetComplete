@@ -36,7 +36,7 @@ class GroupedImageSelectAdapter<T> :
         selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
 
     private fun indexOfItemGivenGroupMembership(item: GroupableDisplayItem<T>, group: GroupableDisplayItem<T>?): Int {
-        var currentGroup: GroupableDisplayItem<T> ? = null
+        var currentGroup: GroupableDisplayItem<T>? = null
         for (i in 0 until _items.size) {
             if (_items[i].isGroup) {
                 currentGroup = _items[i]
