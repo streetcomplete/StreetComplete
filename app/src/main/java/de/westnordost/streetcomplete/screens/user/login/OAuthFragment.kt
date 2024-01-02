@@ -159,7 +159,11 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
         @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
-            val uri = try { URI(url) } catch (e: URISyntaxException) { return false }
+            val uri = try {
+                URI(url)
+            } catch (e: URISyntaxException) {
+                return false
+            }
             if (!oAuth.itsForMe(uri)) return false
             continuation?.resumeWith(runCatching { oAuth.extractAuthorizationCode(uri) })
             return true

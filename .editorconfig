@@ -51,7 +51,6 @@ ktlint_standard_statement-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
 ktlint_standard_trailing-comma-on-call-site = disabled
 ktlint_standard_trailing-comma-on-declaration-site = disabled
-ktlint_standard_try-catch-finally-spacing = disabled
 ktlint_standard_value-argument-comment = disabled
 ktlint_standard_value-parameter-comment = disabled
 ktlint_standard_wrapping = disabled

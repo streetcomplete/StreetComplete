@@ -23,4 +23,8 @@ private fun hasArMeasureSupport(context: Context): Boolean =
         || context.packageManager.isPackageInstalled("com.android.vending"))
 
 private fun PackageManager.isPackageInstalled(packageName: String): Boolean =
-    try { getPackageInfo(packageName, 0) != null } catch (e: NameNotFoundException) { false }
+    try {
+        getPackageInfo(packageName, 0) != null
+    } catch (e: NameNotFoundException) {
+        false
+    }
