@@ -33,7 +33,7 @@ class LaneNarrowingTrafficCalmingParserKtTest {
         assertEquals(ISLAND, parse("highway" to "crossing", "crossing:island" to "yes"))
         assertEquals(ISLAND, parse("highway" to "crossing", "crossing" to "island"))
         // highway=crossing is required
-        assertEquals(null, parse( "crossing:island" to "yes"))
+        assertEquals(null, parse("crossing:island" to "yes"))
     }
 
     @Test fun choked_island() {
