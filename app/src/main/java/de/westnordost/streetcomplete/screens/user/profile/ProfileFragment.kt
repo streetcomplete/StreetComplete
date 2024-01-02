@@ -236,7 +236,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, rankCurrentWeek)
     }
 
-    private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView ) {
+    private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView) {
         val shouldHide = rank <= 0 || statisticsSource.getEditCount() <= 100
         container.isGone = shouldHide
         if (shouldHide) return
