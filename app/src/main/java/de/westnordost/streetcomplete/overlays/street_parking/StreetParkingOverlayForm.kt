@@ -64,7 +64,9 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         binding.hintTextView.text = if (width != null) {
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             getString(R.string.street_parking_street_width, widthFormatted)
-        } else null
+        } else {
+            null
+        }
 
         originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {

@@ -75,7 +75,9 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
                 toggleKeyboardButton,
                 setOfNotNull(referenceCodeInput, flatRangeStartInput, flatRangeEndInput)
             )
-        } else null
+        } else {
+            null
+        }
 
         if (flatRangeStartInput != null) {
             referenceCodeInput?.imeOptions = EditorInfo.IME_ACTION_NEXT

@@ -23,7 +23,9 @@ class UrlConfigController(
         val presetId = if (config.presetName != null) {
             val existingPreset = questPresetsController.getByName(config.presetName)
             existingPreset?.id ?: questPresetsController.add(config.presetName)
-        } else 0
+        } else {
+            0
+        }
 
         val questTypes = questTypeRegistry.associateWith { it in config.questTypes }
         visibleQuestTypeController.setVisibilities(questTypes, presetId)

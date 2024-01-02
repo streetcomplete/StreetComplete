@@ -92,7 +92,9 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
         if (nodesFilter.matches(element) && hasAnyName(element.tags)) {
             if (nodesOnWalls.matches(element)) true
             else null
-        } else false
+        } else {
+            false
+        }
 
     private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
 

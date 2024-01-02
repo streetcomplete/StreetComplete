@@ -90,7 +90,9 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
             AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
                 applyAnswer(IsActuallyStepsAnswer)
             }
-        } else null
+        } else {
+            null
+        }
     }
 }
 

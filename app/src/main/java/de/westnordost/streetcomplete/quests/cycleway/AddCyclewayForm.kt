@@ -102,7 +102,9 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
         val isNoRoundabout = element.tags["junction"] != "roundabout" && element.tags["junction"] != "circular"
         return if (streetSideSelect.showSides != BOTH && isNoRoundabout) {
             AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { streetSideSelect.showSides = BOTH }
-        } else null
+        } else {
+            null
+        }
     }
 
     private fun getInitiallyShownSides(cycleways: LeftAndRightCycleway?): StreetSideSelectWithLastAnswerButtonViewController.Sides {

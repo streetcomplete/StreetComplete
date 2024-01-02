@@ -27,7 +27,6 @@ ktlint_standard_comment-wrapping = disabled
 ktlint_standard_filename = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_function-signature = disabled
-ktlint_standard_if-else-bracing = disabled
 ktlint_standard_if-else-wrapping = disabled
 ktlint_standard_indent = disabled
 ktlint_standard_max-line-length = disabled

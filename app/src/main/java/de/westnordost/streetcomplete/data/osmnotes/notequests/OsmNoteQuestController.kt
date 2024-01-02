@@ -93,7 +93,9 @@ class OsmNoteQuestController(
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)) {
             OsmNoteQuest(note.id, note.position)
-        } else null
+        } else {
+            null
+        }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
