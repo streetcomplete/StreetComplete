@@ -55,9 +55,7 @@ class StreetParkingCreatorKtTest {
         )
 
         for ((orientationStr, orientationValue) in orientations) {
-
             for ((positionStr, positionValue) in positions) {
-
                 val parking = StreetParkingPositionAndOrientation(orientationValue, positionValue)
 
                 // tag new
@@ -202,7 +200,6 @@ class StreetParkingCreatorKtTest {
     }
 
     @Test fun `apply staggered parking on road`() {
-
         val positions = listOf(
             "lane" to STAGGERED_ON_STREET,
             "half_on_kerb" to STAGGERED_HALF_ON_STREET

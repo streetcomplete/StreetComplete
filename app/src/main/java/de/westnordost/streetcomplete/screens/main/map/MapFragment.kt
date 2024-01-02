@@ -371,7 +371,6 @@ open class MapFragment :
         interpolator: Interpolator = defaultCameraInterpolator,
         builder: CameraUpdate.() -> Unit
     ) {
-
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
 

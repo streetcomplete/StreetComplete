@@ -21,7 +21,6 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
     fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
-
         val remoteChanges by lazy { edit.action.createUpdates(mapDataApi, getIdProvider()) }
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
 

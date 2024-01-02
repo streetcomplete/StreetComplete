@@ -37,7 +37,6 @@ ktlint_standard_no-blank-line-in-list = disabled
 ktlint_standard_no-consecutive-comments = disabled
 ktlint_standard_no-empty-file = disabled
 ktlint_standard_no-empty-first-line-in-class-body = disabled
-ktlint_standard_no-empty-first-line-in-method-block = disabled
 ktlint_standard_no-multi-spaces = disabled
 ktlint_standard_no-single-line-block-comment = disabled
 ktlint_standard_no-wildcard-imports = disabled

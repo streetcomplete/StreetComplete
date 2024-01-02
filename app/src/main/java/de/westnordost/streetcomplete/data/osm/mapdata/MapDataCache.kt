@@ -56,7 +56,6 @@ class MapDataCache(
         updatedGeometries: Iterable<ElementGeometryEntry> = emptyList(),
         bbox: BoundingBox? = null
     ) { synchronized(this) {
-
         val updatedNodes = updatedElements.filterIsInstance<Node>()
         val deletedNodeIds = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
         if (bbox == null) {
@@ -139,7 +138,6 @@ class MapDataCache(
         // update relations
         val updatedRelations = updatedElements.filterIsInstance<Relation>()
         if (updatedRelations.isNotEmpty()) {
-
             // for adding relations to relationIdsByElementKeyCache we want the element to be
             // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
             val (wayIds, relationIds) = determineWayAndRelationIdsWithElementsInSpatialCache()
@@ -495,7 +493,6 @@ class MapDataCache(
     /** return the ids of all ways whose nodes are in the spatial cache plus as all ids of
      *  relations referred to by those ways or nodes that are in the spatial cache */
     private fun determineWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> {
-
         // note: wayIdsByNodeIdCache and relationIdsByElementKeyCache cannot be used here to get the
         // result because this method is called in places where the spatial cache has been updated
         // and now the other caches are outdated. So this method exists to find those elements that

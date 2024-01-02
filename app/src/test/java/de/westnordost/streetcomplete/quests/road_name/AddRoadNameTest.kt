@@ -91,7 +91,6 @@ class AddRoadNameTest {
     }
 
     @Test fun `apply is link answer`() {
-
         for (highway in sequenceOf("primary", "secondary", "tertiary")) {
             questType.verifyAnswer(
                 mapOf("highway" to highway),

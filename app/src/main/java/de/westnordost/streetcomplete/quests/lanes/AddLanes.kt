@@ -39,7 +39,6 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override fun createForm() = AddLanesForm()
 
     override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-
         val laneCount = answer.total
 
         laneCount?.let { tags["lanes"] = it.toString() }
