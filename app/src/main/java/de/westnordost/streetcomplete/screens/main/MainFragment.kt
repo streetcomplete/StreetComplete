@@ -44,6 +44,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import androidx.lifecycle.Lifecycle
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -1275,6 +1276,8 @@ class MainFragment :
         val showing = (bottomSheetFragment as? IsShowingElement)?.elementKey ?: (bottomSheetFragment as? IsShowingQuestDetails)?.questKey
         Log.i(TAG, "closeBottomSheet while showing $showing")
         activity?.currentFocus?.hideKeyboard()
+        if (activity?.lifecycle?.currentState?.isAtLeast(Lifecycle.State.STARTED) != true)
+            return // weird crash where a listener that was already removed still called onUpdatedVisibleQuests (after onSaveInstanceState)
         if (bottomSheetFragment != null) {
             childFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             binding.otherQuestsLayout.removeAllViews()
