@@ -103,6 +103,23 @@ class AddOpeningHours(
             and (!opening_hours or opening_hours older today -1 years)
           )
           or (
+            (!opening_hours or opening_hours older today -1 years)
+            and indoor = yes
+            and ( """+
+
+        // amenities inside a building (might depend on opening hours of the containing building),
+        // changes made on this list should probably be adopted to the Element Selection of the AddIsAmenityIndoor-Quest
+        mapOf(
+            "amenity" to arrayOf(
+                "atm", "telephone", "parcel_locker", "luggage_locker", "locker", "post_box", "public_bookcase","give_box","ticket_validator","vending_machine"
+            ),
+            "emergency" to arrayOf(
+                "defibrillator", "fire_extinguisher", "fire_hose"
+            ),
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" +
+        """)
+          )
+          or (
             opening_hours older today -1 years
             and (
               leisure = park
@@ -115,6 +132,7 @@ class AddOpeningHours(
         and (
           name or brand or noname = yes or name:signed = no
           or barrier
+          or indoor = yes
           or amenity ~ toilets|bicycle_rental
         )
         and opening_hours:signed != no
