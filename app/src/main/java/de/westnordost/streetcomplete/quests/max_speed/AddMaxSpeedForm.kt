@@ -96,22 +96,18 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, S
         // if no sign: ask urban/rural
         if (speedType == NO_SIGN) {
             val highwayTag = element.tags["highway"]!!
-            if (countryInfo.countryCode == "GB") {
-                if (ROADS_WITH_DEFINITE_SPEED_LIMIT_GB.contains(highwayTag)) {
-                    showConditionalDialog(highwayTag)
-                } else {
-                    askIsDualCarriageway(
-                        onYes = { showConditionalDialog("nsl_dual") },
-                        onNo = {
-                            determineLit(
-                                onYes = { showConditionalDialog("nsl_restricted", true) },
-                                onNo = { showConditionalDialog("nsl_single", false) }
-                            )
-                        }
-                    )
-                }
-            } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
+            if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
                 showConditionalDialog(highwayTag)
+            } else if (countryInfo.countryCode == "GB") {
+                askIsDualCarriageway(
+                    onYes = { showConditionalDialog("nsl_dual") },
+                    onNo = {
+                        determineLit(
+                            onYes = { showConditionalDialog("nsl_restricted", true) },
+                            onNo = { showConditionalDialog("nsl_single", false) }
+                        )
+                    }
+                )
             } else {
                 askUrbanOrRural(
                     onUrban = { showConditionalDialog("urban") },
