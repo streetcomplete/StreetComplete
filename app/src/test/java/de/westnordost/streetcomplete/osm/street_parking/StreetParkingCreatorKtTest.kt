@@ -568,8 +568,7 @@ class StreetParkingCreatorKtTest {
     fun `applying unknown left throws exception`() {
         assertFailsWith<IllegalArgumentException> {
             LeftAndRightStreetParking(UnknownStreetParking, null)
-                .applyTo(StringMapChangesBuilder(mapOf())
-            )
+                .applyTo(StringMapChangesBuilder(mapOf()))
         }
     }
 

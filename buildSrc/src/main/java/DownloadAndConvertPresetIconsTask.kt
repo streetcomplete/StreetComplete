@@ -161,7 +161,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             require(element.tagName == "path") { "Only paths are supported" }
             for (a in 0 until element.attributes.length) {
                 val attr = element.attributes.item(a) as Attr
-                require (attr.name in supportedPathAttributes) { "path attribute '${attr.name}' not supported" }
+                require(attr.name in supportedPathAttributes) { "path attribute '${attr.name}' not supported" }
             }
             val d = element.getAttribute("d")
             require(d != "") { "no path defined" }

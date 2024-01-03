@@ -16,7 +16,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
         nodes, ways with
          amenity = bicycle_parking
          and access !~ private|no
-         and bicycle_parking !~ floor
+         and bicycle_parking !~ floor|informal
          and (
            !capacity
            or bicycle_parking ~ stands|wall_loops and capacity older today -4 years

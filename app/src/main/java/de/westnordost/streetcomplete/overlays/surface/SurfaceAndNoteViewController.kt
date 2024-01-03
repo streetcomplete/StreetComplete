@@ -32,15 +32,15 @@ class SurfaceAndNoteViewController(
     selectableSurfaces: List<Surface>
 ) {
     var value: SurfaceAndNote?
-    set(value) {
-        selectedSurfaceItem = value?.surface?.asItem()
-        noteText = value?.note
-    }
-    get() {
-        val surface = selectedSurfaceItem?.value
-        val note = noteText
-        return if (surface == null && note == null) null else SurfaceAndNote(surface, note)
-    }
+        set(value) {
+            selectedSurfaceItem = value?.surface?.asItem()
+            noteText = value?.note
+        }
+        get() {
+            val surface = selectedSurfaceItem?.value
+            val note = noteText
+            return if (surface == null && note == null) null else SurfaceAndNote(surface, note)
+        }
 
     private var selectedSurfaceItem: DisplayItem<Surface>? = null
         set(value) {

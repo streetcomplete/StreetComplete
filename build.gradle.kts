@@ -14,33 +14,33 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://www.jitpack.io" ) }
+        maven { url = uri("https://www.jitpack.io") }
     }
 }
 
-tasks.register<SophoxCountValueByCountryTask>("updateAtmOperators") {
+tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
     group = "streetcomplete"
     targetFile = "$projectDir/res/country_metadata/atmOperators.yml"
     osmTag = "operator"
-    sparqlQueryPart = "osmt:amenity 'atm';"
+    sparqlQueryPart = "osmkey:amenity 'atm';"
     minCount = 2
     minPercent = 0.1
 }
 
-tasks.register<SophoxCountValueByCountryTask>("updateClothesContainerOperators") {
+tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators") {
     group = "streetcomplete"
     targetFile = "$projectDir/res/country_metadata/clothesContainerOperators.yml"
     osmTag = "operator"
-    sparqlQueryPart = "osmt:amenity 'recycling'; osmt:recycling_type 'container'; osmt:recycling:clothes 'yes';"
+    sparqlQueryPart = "osmkey:amenity 'recycling'; osmkey:recycling_type 'container'; osmkey:recycling:clothes 'yes';"
     minCount = 2
     minPercent = 0.1
 }
 
-tasks.register<SophoxCountValueByCountryTask>("updateChargingStationOperators") {
+tasks.register<QLeverCountValueByCountryTask>("updateChargingStationOperators") {
     group = "streetcomplete"
     targetFile = "$projectDir/res/country_metadata/chargingStationOperators.yml"
     osmTag = "operator"
-    sparqlQueryPart = "osmt:amenity 'charging_station';"
+    sparqlQueryPart = "osmkey:amenity 'charging_station';"
     minCount = 2
     minPercent = 0.1
 }
@@ -88,9 +88,9 @@ tasks.register("updateStreetCompleteData") {
     dependsOn(
         "updateStoreDescriptions",
         "updateContributorStatistics",
-        // "updateChargingStationOperators",
-        // "updateClothesContainerOperators",
-        // "updateAtmOperators",
+        "updateChargingStationOperators",
+        "updateClothesContainerOperators",
+        "updateAtmOperators",
         "generateQuestList",
         "app:updatePresets",
         "app:updateNsiPresets",

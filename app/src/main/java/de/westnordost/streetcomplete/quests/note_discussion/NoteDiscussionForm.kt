@@ -120,7 +120,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     override fun onClickOk() {
         val close = binding.closeNoteCheckBox.isChecked
-        require(noteText != null || close ) { "NoteQuest has been answered with an empty comment!" }
+        require(noteText != null || close) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {

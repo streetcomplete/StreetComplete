@@ -13,7 +13,7 @@ class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
             listeners.forEach { (k, callback) ->
                 if (k == key) callback()
             }
-    }
+        }
 
     init {
         prefs.registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener)

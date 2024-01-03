@@ -205,6 +205,31 @@ class OsmQuestController internal constructor(
                         else onlyMapDataWithTags
                     } else if (questType.name in questsRequiringElementsWithoutTags) mapDataWithGeometry
                     else onlyMapDataWithTags
+                        if (!mayCreateQuest(questType, geometry, bbox)) continue
+                        questsForType.add(OsmQuest(questType, element.type, element.id, geometry))
+                        questCount++
+                    }
+
+                    val questSeconds = nowAsEpochMilliseconds() - questTime
+                    Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
+                    questsForType
+                }
+            }
+        }
+        val quests = runBlocking { deferredQuests.awaitAll().flatten() }
+
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
+
+        return quests
+    }
+
+    private fun createQuestsForElementDeferred(
+        element: Element,
+        geometry: ElementGeometry,
+        questTypes: Collection<OsmElementQuestType<*>>
+    ): List<Deferred<OsmQuest?>> {
+        val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
                     for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue

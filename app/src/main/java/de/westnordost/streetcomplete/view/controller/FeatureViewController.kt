@@ -26,18 +26,18 @@ class FeatureViewController(
     var countryOrSubdivisionCode: String? = null
 
     var searchText: String? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        update()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            update()
+        }
 
     var feature: Feature? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        update()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            update()
+        }
 
     init {
         update()

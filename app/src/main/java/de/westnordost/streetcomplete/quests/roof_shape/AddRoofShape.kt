@@ -44,7 +44,7 @@ class AddRoofShape(
             filter.matches(element) && (
                 (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) > 0f
                     || roofsAreUsuallyFlatAt(element, mapData) == false
-                ) && levelsOk(element)
+            ) && levelsOk(element)
         }
 
     override fun isApplicableTo(element: Element): Boolean? {

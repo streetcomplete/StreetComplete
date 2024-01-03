@@ -39,16 +39,16 @@ class LaneNarrowingTrafficCalmingForm :
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 
     private var positionOnWay: PositionOnWay? = null
-    set(value) {
-        field = value
-        if (value != null) {
-            setMarkerPosition(value.position)
-            setMarkerVisibility(true)
-        } else {
-            setMarkerVisibility(false)
-            setMarkerPosition(null)
+        set(value) {
+            field = value
+            if (value != null) {
+                setMarkerPosition(value.position)
+                setMarkerVisibility(true)
+            } else {
+                setMarkerVisibility(false)
+                setMarkerPosition(null)
+            }
         }
-    }
     private var roads: Collection<Pair<Way, List<LatLon>>>? = null
     private val allRoadsFilter = """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes

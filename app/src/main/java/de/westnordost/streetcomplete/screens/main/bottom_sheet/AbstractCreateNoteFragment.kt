@@ -46,7 +46,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateOkButtonEnablement() {
-        if (noteText != null ) {
+        if (noteText != null) {
             okButtonContainer.popIn()
             if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
                 floatingBottomView2?.popIn()
