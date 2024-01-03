@@ -108,7 +108,7 @@ class AddOpeningHours(
             and ( """+
 
         // amenities inside a building (might depend on opening hours of the containing building),
-        // changes made on this list should probably be adopted to the Element Selection of the AddIsAmenityIndoor-Quest
+        // changes made to this list should probably also be adopted in the AddIsAmenityIndoor quest's element selection
         mapOf(
             "amenity" to arrayOf(
                 "atm", "telephone", "parcel_locker", "luggage_locker", "locker", "post_box", "public_bookcase","give_box","ticket_validator","vending_machine"
