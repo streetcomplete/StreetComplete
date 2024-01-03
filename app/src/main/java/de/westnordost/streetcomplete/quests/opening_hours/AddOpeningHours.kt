@@ -104,7 +104,7 @@ class AddOpeningHours(
           )
           or (
             (!opening_hours or opening_hours older today -1 years)
-            and indoor = yes
+            and (indoor = yes or addr:floor or level:ref or level)
             and ( """+
 
         // amenities inside a building (might depend on opening hours of the containing building),
@@ -132,7 +132,7 @@ class AddOpeningHours(
         and (
           name or brand or noname = yes or name:signed = no
           or barrier
-          or indoor = yes
+          or (indoor = yes or addr:floor or level:ref or level)
           or amenity ~ toilets|bicycle_rental
         )
         and opening_hours:signed != no
