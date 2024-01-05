@@ -117,6 +117,7 @@ fun getNameLabel(tags: Map<String, String>): String? {
         return if (name != null && localRef != null) "$name [$localRef]" else null
             ?: if (name != null && ref != null) "$name [$ref]" else null
             ?: name
+            ?: localRef
             ?: ref
     }
 
