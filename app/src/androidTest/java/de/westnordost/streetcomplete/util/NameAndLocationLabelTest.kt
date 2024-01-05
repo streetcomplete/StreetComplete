@@ -80,6 +80,28 @@ class NameAndLocationLabelTest {
         )))
     }
 
+    @Test fun roadWithName() {
+        assertEquals("Main Street (Residential Road)", getQuestLabel(mapOf(
+            "highway" to "residential",
+            "name" to "Main Street",
+        )))
+    }
+
+    @Test fun roadWitRef() {
+        assertEquals("A1 (Residential Road)", getQuestLabel(mapOf(
+            "highway" to "residential",
+            "ref" to "A1",
+        )))
+    }
+
+    @Test fun roadWithNameAndRef() {
+        assertEquals("Main Street [A1] (Residential Road)", getQuestLabel(mapOf(
+            "highway" to "residential",
+            "name" to "Main Street",
+            "ref" to "A1"
+        )))
+    }
+
     private fun getQuestLabel(tags: Map<String, String>): String? =
         getNameAndLocationLabel(
             Node(0, LatLon(0.0, 0.0), tags),
