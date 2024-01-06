@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
 
@@ -95,7 +96,8 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         }
         val appLanguageInfo = TextView(context).apply {
             setText(R.string.quest_osmose_use_app_language_information)
-            setPadding(10, 0, 10, 0)
+            val padding = context.dpToPx(8).toInt()
+            setPadding(padding, 0, padding, 0)
         }
         val layout = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL

@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import java.util.regex.PatternSyntaxException
 
@@ -195,7 +196,8 @@ fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref:
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-    input.setPadding(20,10,20,10) // should be less than default padding to allow more text per line
+    val padding = context.dpToPx(8).toInt()
+    input.setPadding(2 * padding, padding, 2 * padding, padding) // should be less than default padding to allow more text per line
     input.setText(initialValue)
     input.maxLines = 15 // if lines are not limited, the edit text might get so big that buttons are off screen (thanks, google for allowing this)
     return AlertDialog.Builder(context)

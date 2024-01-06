@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.screens.TwoPaneListFragment
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.TempLogger
+import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
@@ -238,7 +239,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
                     requestFocus() // focus is lost when scrolling it seems
                     setSelection(previousCursorPosition)
                 }
-                setPadding(30, 10, 30, 10)
+                setDefaultDialogPadding() // not a dialog, but still suitable
             }
             val layout = LinearLayout(requireContext()).apply { orientation = LinearLayout.VERTICAL }
             layout.addView(LinearLayout(requireContext()).apply {

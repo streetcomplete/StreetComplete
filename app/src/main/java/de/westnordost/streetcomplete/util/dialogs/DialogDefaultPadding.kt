@@ -6,6 +6,7 @@ import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 // using setView fills the entire AlertDialog, while setMessage or set*Items add some padding
 // this adds same/similar padding to setView
@@ -18,7 +19,7 @@ fun View.setDefaultDialogPadding() {
     val padding = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
         getDimensionFromAttribute(context, android.R.attr.dialogPreferredPadding)
     } else {
-        30 // was used previously, worked reasonably well, but doesn't adapt to device
+        context.dpToPx(20).toInt()
     }
     // no source for /3, but it looks ok
     setPadding(padding, padding / 3, padding, padding / 3)

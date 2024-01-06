@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.hasPermission
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -112,7 +113,7 @@ class QuestsSettingsFragment :
             val downloadSwitch = SwitchCompat(requireContext()).apply {
                 isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, false)
                 setText(R.string.pref_quest_monitor_download)
-                setPadding(0, 0, 0, 10)
+                setPadding(0, 0, 0, context.dpToPx(8).toInt())
             }
             val activeText = TextView(context).apply { setText(R.string.quest_monitor_active_request) }
             val gpsSwitch = SwitchCompat(requireContext()).apply {

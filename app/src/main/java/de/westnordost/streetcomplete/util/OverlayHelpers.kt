@@ -45,6 +45,8 @@ fun showOverlayCustomizer(
     onDeleted: (Boolean) -> Unit, // true if overlay was currently set custom overlay
 ) {
     var d: AlertDialog? = null
+    val padding = ctx.dpToPx(4).toInt()
+
 
     val title = EditText(ctx).apply {
         setHint(R.string.name_label)
@@ -65,7 +67,7 @@ fun showOverlayCustomizer(
     }
     val filterText = TextView(ctx).apply {
         text = "${ctx.getString(R.string.custom_overlay_filter_info)} ℹ️"
-        setPadding(5, 10, 5, 0)
+        setPadding(padding, 2 * padding, padding, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))
         setOnClickListener {
@@ -124,7 +126,7 @@ fun showOverlayCustomizer(
     }
     val colorText = TextView(ctx).apply {
         text = "${ctx.getString(R.string.custom_overlay_color_info)} ℹ️"
-        setPadding(5, 10, 5, 0)
+        setPadding(padding, 2 * padding, padding, 0)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         setTextColor(ContextCompat.getColor(ctx, R.color.accent))
         setOnClickListener {
