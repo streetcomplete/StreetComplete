@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 class NoteQuestsHiddenDao(private val db: Database) {
 
     fun add(noteId: Long) {
-        db.insert(NAME, listOf(
+        db.insertOrIgnore(NAME, listOf(
             NOTE_ID to noteId,
             TIMESTAMP to nowAsEpochMilliseconds()
         ))
