@@ -218,7 +218,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         accuracySymbol.latLng = locationSymbol.latLng
         symbolManager.update(directionSymbol)
         symbolManager.update(locationSymbol)
-        MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
+//        MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location) // todo: sometimes crahing with The LocationComponent has to be activated with one of the LocationComponent#activateLocationComponent overloads before any other methods are invoked.
 
         updateAccuracy()
     }

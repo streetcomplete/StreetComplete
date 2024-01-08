@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.graphics.PointF
 import android.graphics.RectF
+import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -24,6 +27,7 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -46,6 +50,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
+import de.westnordost.streetcomplete.util.ktx.asBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
@@ -193,18 +198,23 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // add used images for quests pins and other icons
         // todo: here we should use pins, not round icons... simply create LayerDrawables?
+        val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
+        val iconSize = pin.intrinsicWidth
         questTypeRegistry.forEach {
-            val drawable = resources.getDrawable(it.icon)
-            val bitmap = drawable.createBitmap(
-                (drawable.intrinsicWidth*0.35).toInt(),
-                (drawable.intrinsicHeight*0.35).toInt()
+            val iconDrawable = ContextCompat.getDrawable(requireContext(), it.icon)!!
+            val iconBitmap = iconDrawable.asBitmapDrawable(
+                resources,
+                (iconDrawable.intrinsicWidth*0.35).toInt(),
+                (iconDrawable.intrinsicHeight*0.35).toInt()
             ) // MapLibre converts everything to bitmap anyway, see https://github.com/maplibre/maplibre-gl-native/blob/c5992d58f1270f110960b326e2ae2d756d57d6ff/platform/android/MapboxGLAndroidSDK/src/main/java/com/mapbox/mapboxsdk/maps/Style.java#L341-L347
-            style.addImage(resources.getResourceEntryName(it.icon), bitmap)
+            val drawable = LayerDrawable(arrayOf(pin, iconBitmap)) // behaves really weird with inset...
+            drawable.setLayerInset(1, (iconDrawable.intrinsicWidth * 0.35 / 2).toInt(), pin.intrinsicHeight / 10, (iconDrawable.intrinsicWidth * 0.35 / 8).toInt(), pin.intrinsicHeight / 4) // not perfect, but not the right way to do it anyway
+            style.addImage(resources.getResourceEntryName(it.icon), drawable)
         }
         // use sdf here (the true in the end)
         // this is only recommended for monochrome icons, and allows using halo stuff for symbols (for mimicking tangram icons with outline)
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
-        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true) }
+        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true) } // getBitmapDrawable gives a lot of log warnings
         // todo: here also the icons from pinIcons should be loaded
 
         // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
@@ -275,6 +285,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // apply quest(pin) order
             //.withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually somewhat slow...
             .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE))
+            .withProperties(PropertyFactory.iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()))
                 // avoids sort key by setting order to the order the features are added to the source
                 //  this is more performant than symbolSortKey, and appears to be working as intended (test some more?)
 
