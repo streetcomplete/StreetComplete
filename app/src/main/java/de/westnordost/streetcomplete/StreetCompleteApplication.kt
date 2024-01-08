@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.app.Application
 import android.content.ComponentCallbacks2
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.edit
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -13,9 +11,10 @@ import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
+import de.westnordost.streetcomplete.data.logs.logsModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -51,6 +50,11 @@ import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.AndroidLogger
+import de.westnordost.streetcomplete.util.logs.DatabaseLogger
+import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.prefs.Preferences
+import de.westnordost.streetcomplete.util.prefs.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -66,10 +70,11 @@ import java.util.concurrent.TimeUnit
 class StreetCompleteApplication : Application() {
 
     private val preloader: Preloader by inject()
+    private val databaseLogger: DatabaseLogger by inject()
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
-    private val downloadedTilesDao: DownloadedTilesDao by inject()
-    private val prefs: SharedPreferences by inject()
+    private val downloadedTilesController: DownloadedTilesController by inject()
+    private val prefs: Preferences by inject()
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
@@ -89,6 +94,7 @@ class StreetCompleteApplication : Application() {
                 appModule,
                 createdElementsModule,
                 dbModule,
+                logsModule,
                 downloadModule,
                 editHistoryModule,
                 elementEditsModule,
@@ -104,6 +110,7 @@ class StreetCompleteApplication : Application() {
                 osmApiModule,
                 osmNoteQuestModule,
                 osmQuestModule,
+                preferencesModule,
                 questModule,
                 questPresetsModule,
                 questsModule,
@@ -119,13 +126,11 @@ class StreetCompleteApplication : Application() {
             )
         }
 
-        /* Force log out users who use the old OAuth consumer key+secret because it does not exist
-           anymore. Trying to use that does not result in a "not authorized" API response, but some
-           response the app cannot handle */
-        if (!prefs.getBoolean(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP, false)) {
-            if (userLoginStatusController.isLoggedIn) {
-                userLoginStatusController.logOut()
-            }
+        setLoggerInstances()
+
+        /* Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2 */
+        if (prefs.getStringOrNull(Prefs.OAUTH1_ACCESS_TOKEN) != null) {
+            userLoginStatusController.logOut()
         }
 
         setDefaultLocales()
@@ -143,9 +148,9 @@ class StreetCompleteApplication : Application() {
 
         resurveyIntervalsUpdater.update()
 
-        val lastVersion = prefs.getString(Prefs.LAST_VERSION_DATA, null)
+        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit { putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME) }
+            prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {
                 onNewVersion()
             }
@@ -154,7 +159,7 @@ class StreetCompleteApplication : Application() {
 
     private fun onNewVersion() {
         // on each new version, invalidate quest cache
-        downloadedTilesDao.removeAll()
+        downloadedTilesController.invalidateAll()
     }
 
     override fun onTerminate() {
@@ -177,15 +182,20 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun setDefaultLocales() {
-        val locale = getSelectedLocale(this)
+        val locale = getSelectedLocale(prefs)
         if (locale != null) {
             setDefaultLocales(getSystemLocales().addedToFront(locale))
         }
     }
 
     private fun setDefaultTheme() {
-        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, getDefaultTheme())!!)
+        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+    }
+
+    private fun setLoggerInstances() {
+        Log.instances.add(AndroidLogger())
+        Log.instances.add(databaseLogger)
     }
 
     private fun enqueuePeriodicCleanupWork() {

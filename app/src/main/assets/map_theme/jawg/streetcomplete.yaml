@@ -42,6 +42,15 @@ styles:
         blend: overlay
         blend_order: 1
     # highlighted geometry (when tapping on quest etc.)
+    geometry-lines-animate:
+        base: lines
+        blend: overlay
+        shaders:
+            blocks:
+                color: |
+                    color.a = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
+                width: |
+                    width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
     geometry-lines:
         base: lines
         blend: overlay
@@ -65,6 +74,10 @@ styles:
     map_data-lines:
         base: lines
         blend: translucent
+    map_data-steps-dashes:
+        base: lines
+        blend: translucent
+        dash: [0.6,0.4]
     map_data-lines-dashed:
         base: lines
         blend: translucent
@@ -114,7 +127,18 @@ styles:
                     float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
                     float y = step(0.4, mod(v_texcoord.y, 1.0));
                     color.a = color.a * x * y;
-
+    downloaded_area:
+        base: polygons
+        blend: overlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float z = u_map_position.z;
+                    color.a *= pow(max(1.0, z - 6.0) / (19.0 - 6.0), 2.0);
+                    // for hatching effect:
+                    float x = fract((v_texcoord.x + v_texcoord.y) * 50.0);
+                    color.a *= step(0.75, x);
 layers:
     # quest pins & dots
     streetcomplete_selected_pins:
@@ -165,7 +189,7 @@ layers:
         line:
             filter: { type: [poly, line] }
             draw:
-                geometry-lines:
+                geometry-lines-animate:
                     color: global.geometry_line_color
                     width: 9px
                     collide: false
@@ -321,6 +345,14 @@ layers:
                           color: function() { return feature.strokeColor; }
                           width: 1m
                           order: function() { return 702 + Number(feature.layer)*5; }
+        steps-dashes:
+            filter: { type: [line], color: true, steps: true }
+            draw:
+                map_data-steps-dashes:
+                    order: function() { return 702 + Number(feature.layer)*5; }
+                    cap: butt
+                    color: function() { return feature.strokeColor; }
+                    width: function() { return feature.width; }
         line-left:
             filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:
@@ -372,3 +404,10 @@ layers:
                     width: 1m
                     cap: round
                     join: round
+    # downloaded area
+    streetcomplete_downloaded_area:
+        data: { source: streetcomplete_downloaded_area }
+        draw:
+            downloaded_area:
+                order: 500
+                color: [0.5, 0.5, 0.5, 0.3]

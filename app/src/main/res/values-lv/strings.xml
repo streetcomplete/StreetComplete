@@ -139,7 +139,7 @@ Informācija, ko jūs ievadiet, tiek pievienota OpenStreetMap jūsu lietotājvā
     <string name="crash_title">"Ak nē, StreetComplete iepriekšējā reizē pieredzēja neparadzētu kļūdu!"</string>
     <string name="crash_compose_email">"Sastādīt e-pastu"</string>
     <string name="no_email_client">"Jums nav instalēts neviens e-pasta klients."</string>
-    <string name="pref_title_keep_screen_on">"Turiet ekrānu ieslēgtu"</string>
+    <string name="pref_title_keep_screen_on">"Paturēt ekrānu ieslēgtu"</string>
     <string name="download_server_error">"Gadījās kļūda pārlūkojot uzdevumus. Mēģiniet vēlreiz vēlāk."</string>
     <string name="upload_server_error">"Augšupielādējot atbildes gadījās kļūda. Mēģiniet vēlreiz vēlāk."</string>
     <string name="quest_generic_hasFeature_yes">"Jā"</string>
@@ -311,7 +311,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_cycleway_value_none">"nav"</string>
     <string name="quest_cycleway_value_shared">"tiek sagaidīts, ka joslā var piedalīties pārējā satiksme"</string>
     <string name="quest_cycleway_value_bus_lane">"sabiedriskā transporta joslā"</string>
-    <string name="quest_cycleway_value_sidewalk">"skaidri nodalīta ietve"</string>
     <string name="quest_leave_new_note_create_image_error">"Nevar izveidot datni fotogrāfijai"</string>
     <string name="quest_cycleway_value_lane_dual">"velojosla, abi virzieni"</string>
     <string name="quest_cycleway_value_track_dual">"nodalīts veloceliņš vai aizsargāta velojosla, abi virzieni"</string>
@@ -732,7 +731,6 @@ līmeņi"</string>
     <string name="resurvey_intervals_less_often">"Prasīt retāk"</string>
     <string name="resurvey_intervals_default">"Noklusējuma"</string>
     <string name="resurvey_intervals_more_often">"Prasīt biežāk"</string>
-    <string name="quest_is_defibrillator_inside_title">"Vai šis defibrilators ir ēkas iekšpusē?"</string>
     <string name="about_title_translate">"Palīdzi tulkot šo lietotni"</string>
     <string name="about_description_translate">"%1$s valodai ir iztulkoti %2$d%%"</string>
     <string name="quest_oneway2_title">"Vai šī ir vienvirziena iela? Kurā virzienā?"</string>
@@ -907,7 +905,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="about_title_faq">"B.U.J."</string>
     <string name="quest_buildingLevels_title2">"Cik daudz stāvu virs pagraba ir šai ēkai?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Cik daudz stāvu virs pagraba ir šai ēkas daļai?"</string>
-    <string name="quest_crossing_title">"Vai ir apmales tajā vietā, kur tiekas šis ceļš ar ielu? Kāda veida?"</string>
     <string name="pref_subtitle_quests_preset_name">"Priekšiestatījums: %s"</string>
     <string name="default_disabled_msg_roofShape">"Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo jumtu formas no ielas puses nereti ir grūti saskatīt. Šis uzdevumu veids arī ir diezgan laikietilpīgs; vairumā gadījumu šo informāciju ir vieglāk iegūt mājās no aerofoto."</string>
     <string name="quest_religion_animist">"Animisms"</string>
@@ -941,7 +938,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_buildingType_bridge">"Tilts starp divām ēkām (gaisa ceļš)"</string>
     <string name="quest_laundrySelfService_title2">"Vai šajā veļas mazgātuvē ir pašapkalpošanās?"</string>
     <string name="quest_dietType_explanation_halal">"Halāla ēdienus jāpagatavo pēc noteiktiem noteikumiem; halāla sertifikācijas aģentūras apzīmē atbilstošus produktus."</string>
-    <string name="quest_picnicTableCover_title">"Vai šis piknika galds ir nosegts (pasargāts no lietus)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Šie ir pakāpieni"</string>
     <string name="quest_barrier_type_passage_conversion">"Pārveidot par eju sienā, žogā vai kur citur."</string>
     <string name="quest_barrier_type_gate_conversion">"Pārveidot par vārtiem"</string>
@@ -1182,7 +1178,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="quest_memorialType_stele_wooden">"Koka stela (piemiņas plātne)"</string>
     <string name="quest_memorialType_stele_stone">"Akmens stela (piemiņas plātne)"</string>
     <string name="quest_memorialType_sculpture">"Cita skulptūra"</string>
-    <string name="select_overlay">"Izvēlieties pārklājumu"</string>
     <string name="overlay_none">"Nav"</string>
     <string name="overlay_lit">"Ielas apgaismojums"</string>
     <string name="lit_value_yes">"Apgaismots"</string>
@@ -1225,7 +1220,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="quest_address_street_hint2">"Uzspiediet kartē uz ielas, lai to atlasītu"</string>
     <string name="quest_bicycle_incline_title">"Kurš virziens šeit ved augšup?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Tur ir gan augšup, gan lejup"</string>
-    <string name="quest_drinking_water_type_title">"Kā šeit tiek nodrošināts dzeramais ūdens?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Tikai ūdens strūklaka"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Ūdens strūklakai ir maza ūdens strūkla"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Tikai ūdens pudelēm"</string>
@@ -1237,7 +1231,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="overlay_addresses">"Adreses"</string>
     <string name="overlay_shops">"Veikali"</string>
     <string name="name_label">"Nosaukums:"</string>
-    <string name="vacant_shop_title">"Tukšs veikals"</string>
     <string name="unknown_shop_title">"Cita veida vieta"</string>
     <string name="quest_address_answer_no_address">"Šeit nav adreses"</string>
     <string name="quest_bicycle_barrier_installation_title">"Vai šo velosipēda barjeru var atvērt (ar vai bez atslēgas)?"</string>
@@ -1295,7 +1288,6 @@ Pārvietot tagad?"</string>
     <string name="cycleway_reverse_direction_toast">"Spiediet, kuru pusi vērst pretējā virzienā"</string>
     <string name="separate_cycleway_path">"Ceļš vai taka"</string>
     <string name="quest_fireHydrant_type_pipe">"Caurule"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"skaidri nodalīta ietve, abi virzieni"</string>
     <string name="measure_info_title">"Optimālas precizitātes sasniegšana"</string>
     <string name="measure_info_html_description">"&lt;p&gt;APCore dažkārt (sākotnēji) pieņem, ka zeme ir nedaudz augstāk vai zemāk, nekā tā patiesībā ir. Tas rada mērījuma kļūdu, kas pieaug līdz ar tālruņa pagriešanu horizonta virzienā.&lt;/p&gt;
 &lt;p&gt;Iestatiet sākuma un beigu punktus, kamēr tālrunis rāda taisni un leju (tā, lai jūs redzētu balto bultu no augšpuses), lai pilnībā izvairītos no šīs horizontālo mērījumu problēmas.&lt;/p&gt;
@@ -1306,4 +1298,34 @@ Pārvietot tagad?"</string>
     <string name="street_parking_staggered_on_street">"Uz ielas pārmijus dažādās pusēs"</string>
     <string name="street_parking_staggered_half_on_kerb">"Daļēji uz ielas pārmijus dažādās pusēs"</string>
     <string name="quest_traffic_signals_sound_description">"Padoms: skatieties, vai ir skaļruņi. Ne visus skaņas signālus var aktivizēt ar pogu."</string>
+    <string name="quest_presets_duplicate">"Dublēt"</string>
+    <string name="label_block">"kvartāls"</string>
+    <string name="quest_address_answer_block">"Ir kvartālā…"</string>
+    <string name="quest_address_answer_no_block">"Nav kvartālā…"</string>
+    <string name="quest_surface_value_mud">"Pastāvīgi dubļi"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Šeit nav labierīcību"</string>
+    <string name="unknown_surface_title">"Cita veida virsma"</string>
+    <string name="overlay_surface">"Virsmas"</string>
+    <string name="overlay_path_surface_segregated">"Sadalīt velosipēdu un gājēju daļās"</string>
+    <string name="quest_crossing_title2">"Vai šeit ir pāreja?"</string>
+    <string name="quest_crossing_yes">"Jā (apmale ir pazemināta šeit vai te ir marķējumi)"</string>
+    <string name="quest_crossing_no">"Nē, bet pārvietošanās ir iespējama"</string>
+    <string name="quest_crossing_prohibited">"Nē, pārvietošanās ir aizliegts vai neiespējams"</string>
+    <string name="quest_hairdresser_title">"Kuri klienti var apmeklēt frizieri?"</string>
+    <string name="quest_hairdresser_male_and_female">"Jebkurš"</string>
+    <string name="quest_hairdresser_female_only">"Sievietes"</string>
+    <string name="quest_hairdresser_male_only">"Vīrieši"</string>
+    <string name="quest_hairdresser_not_signed">"Nav zīmes"</string>
+    <string name="quest_amenityCover_title">"Vai šis ir pārklāts (aizsargāts no lietus)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Apmales pagarinājumums"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Satiksmes sala"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Šikāns"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Apmales pagarinājums + satiksmes sala"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Šeit nav sašaurināta josla"</string>
+    <string name="quest_tactilePaving_title_steps">"Vai šo pakāpienu augšdaļā un apakšā ir relijefa bruģis?"</string>
+    <string name="quest_tactilePaving_steps_top">"Tikai augšpusē"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Tikai apakšpusē"</string>
+    <string name="overlay_addresses_no_entrance">"Tā nav ieeja…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Koplietošanas ceļš"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Koplietošanas ceļš, abos virzienos"</string>
 </resources>

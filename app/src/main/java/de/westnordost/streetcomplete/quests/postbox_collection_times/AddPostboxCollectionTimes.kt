@@ -24,7 +24,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     """.toElementFilterExpression() }
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
-    *  change and problematic to tag clearly with the check date scheme */
+     * change and problematic to tag clearly with the check date scheme */
 
     override val changesetComment = "Survey postbox collection times"
     override val wikiLink = "Key:collection_times"
@@ -57,8 +57,11 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
            legal tagging for collection times, even though they are not supported in
            this app, i.e. are never asked again */
         val hasValidCollectionTimes = tags["collection_times"]?.toOpeningHoursRules() != null
-        return if (hasValidCollectionTimes) R.string.quest_postboxCollectionTimes_resurvey_title
-               else                         R.string.quest_postboxCollectionTimes_title
+        return if (hasValidCollectionTimes) {
+            R.string.quest_postboxCollectionTimes_resurvey_title
+        } else {
+            R.string.quest_postboxCollectionTimes_title
+        }
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

@@ -312,7 +312,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_cycleway_value_none">"ne postoji"</string>
     <string name="quest_cycleway_value_shared">"traka koja se eksplicitno dijeli s ostalim vozilima (sharrow)"</string>
     <string name="quest_cycleway_value_bus_lane">"po autobusnoj traci"</string>
-    <string name="quest_cycleway_value_sidewalk">"trotoar posebno dijeljen zajedno s pješacima"</string>
     <string name="quest_leave_new_note_create_image_error">"Nije moguće stvoriti datoteku za fotografiju"</string>
     <string name="quest_cycleway_value_lane_dual">"biciklistička traka, u oba smjera"</string>
     <string name="quest_cycleway_value_track_dual">"biciklistička staza, u oba smjera"</string>
@@ -735,7 +734,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="resurvey_intervals_less_often">"Pitaj rjeđe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je li ovaj defibrilator (AVD/AED) unutar zgrade?"</string>
     <string name="about_title_translate">"Pomozite prevesti ovu aplikaciju"</string>
     <string name="about_description_translate">"%1$s je %2$d%% preveden"</string>
     <string name="quest_oneway2_title">"Je li ovo jednosmjerna ulica? U kojem smjeru?"</string>
@@ -908,7 +906,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Koliko katova iznad podruma ima ova građevina?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Koliko katova iznad podruma ima ovaj dio građevine?"</string>
-    <string name="quest_crossing_title">"Postoje li rubnici na ovom spoju puta i cesta? Koja vrsta?"</string>
     <string name="pref_subtitle_quests_preset_name">"Grupa zadataka: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ova vrsta zadatka je inicijalno onemogućena jer se oblici krova često ne vide lako s ulice. Ova vrsta zadatka također oduzima dosta vremena; u većini slučajeva je jednostavnije i efikasne krovove označiti iz zračnih snimaka kod kuće."</string>
     <string name="quest_religion_animist">"Animizam"</string>
@@ -942,7 +939,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_buildingType_bridge">"Most koji spaja zgrade (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Je li ova praonica rublja samoposlužna?"</string>
     <string name="quest_dietType_explanation_halal">"Halal proizvodi se moraju pripremati prema posebnim pravilima, a Halal agencije za certificiranje moraju označavati proizvode u skladu s njima."</string>
-    <string name="quest_picnicTableCover_title">"Je li ovaj stol za piknik natkriven (zaštićen od kiše)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"To su stepenice"</string>
     <string name="quest_barrier_type_passage_conversion">"Pretvoreno u prolaz kroz zid/ogradu/itd."</string>
     <string name="quest_barrier_type_gate_conversion">"Pretvoreno u vrata"</string>
@@ -1099,5 +1095,8 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_seating_outdoor_only">"Samo sjedenje na otvorenom"</string>
     <string name="quest_seating_indoor_and_outdoor">"I unutarnje i vanjsko sjedenje"</string>
     <string name="no_camera_permission_toast">"Nema dopuštenja za kameru"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"trotoar posebno dijeljen zajedno s pješacima, u oba smjera"</string>
+    <string name="quest_address_street_title2">"U kojoj je ovo ulici?"</string>
+    <string name="quest_airConditioning_title">"Je li ovo mjesto klimatizirano?"</string>
+    <string name="quest_busStopBench_title2">"Postoji li klupa na ovoj stanici?"</string>
+    <string name="quest_busStopBin_title2">"Postoji li kanta za smeče na ovoj stanici?"</string>
 </resources>

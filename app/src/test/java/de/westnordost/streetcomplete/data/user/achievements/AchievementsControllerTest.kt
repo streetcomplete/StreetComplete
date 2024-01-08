@@ -13,11 +13,11 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoMoreInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AchievementsControllerTest {
 
@@ -32,7 +32,7 @@ class AchievementsControllerTest {
     private lateinit var statisticsListener: StatisticsSource.Listener
     private lateinit var listener: AchievementsSource.Listener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         userAchievementsDao = mock()
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
         userLinksDao = mock()

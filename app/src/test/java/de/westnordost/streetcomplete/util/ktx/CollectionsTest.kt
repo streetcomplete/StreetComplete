@@ -2,10 +2,11 @@ package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class CollectionsTest {
 
@@ -21,14 +22,18 @@ class CollectionsTest {
         assertNull(listOf<Int>().findNext(0) { true })
     }
 
-    @Test(expected = IndexOutOfBoundsException::class)
+    @Test
     fun `findNext throws if out of bounds index`() {
-        assertNull(listOf(1, 2, 3).findNext(4) { true })
+        assertFailsWith<IndexOutOfBoundsException> {
+            listOf(1, 2, 3).findNext(4) { true }
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException::class)
+    @Test
     fun `findNext throws if negative index`() {
-        assertNull(listOf(1, 2, 3).findNext(-1) { true })
+        assertFailsWith<IndexOutOfBoundsException> {
+            listOf(1, 2, 3).findNext(-1) { true }
+        }
     }
 
     @Test fun `findPrevious starts at index exclusive`() {
@@ -43,14 +48,18 @@ class CollectionsTest {
         assertNull(listOf<Int>().findPrevious(0) { true })
     }
 
-    @Test(expected = IndexOutOfBoundsException::class)
+    @Test
     fun `findPrevious throws if out of bounds index`() {
-        assertNull(listOf(1, 2, 3).findPrevious(4) { true })
+        assertFailsWith<IndexOutOfBoundsException> {
+            listOf(1, 2, 3).findPrevious(4) { true }
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException::class)
+    @Test
     fun `findPrevious throws if negative index`() {
-        assertNull(listOf(1, 2, 3).findPrevious(-1) { true })
+        assertFailsWith<IndexOutOfBoundsException> {
+            listOf(1, 2, 3).findPrevious(-1) { true }
+        }
     }
 
     @Test fun `asSequenceOfPairs with empty list`() {
@@ -67,8 +76,7 @@ class CollectionsTest {
                 p(0.0, 0.0) to p(1.0, 0.0),
                 p(1.0, 0.0) to p(2.0, 0.0),
                 p(2.0, 0.0) to p(3.0, 0.0)
-            )
-            ,listOf(
+            ), listOf(
                 p(0.0, 0.0),
                 p(1.0, 0.0),
                 p(2.0, 0.0),

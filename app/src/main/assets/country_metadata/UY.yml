@@ -2,6 +2,7 @@
 atmOperators: [Banco República, BROU, Santander, Itaú, Banred, BBVA, Devoto Pando, Scotiabank, Casa de Cambio, RedBROU]
 centerLineStyle: yellow
 chargingStationOperators: [UTE]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 748
 noEntrySignStyle: default
 noParkingSignStyle: mutcd latin

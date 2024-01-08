@@ -4,7 +4,6 @@ import android.animation.LayoutTransition
 import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewPropertyAnimator
@@ -12,16 +11,15 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import androidx.core.net.toUri
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.user.links.LinksAdapter
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.Transforms
 import de.westnordost.streetcomplete.view.ViewPropertyAnimatorsPlayer
@@ -43,22 +41,23 @@ import de.westnordost.streetcomplete.view.applyTransforms
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment :
-    Fragment(R.layout.fragment_achievement_info),
-    HandlesOnBackPressed {
+class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
 
     private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
 
     /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
 
-    var isShowing: Boolean = false
-        private set
-
     private var animatorsPlayer: ViewPropertyAnimatorsPlayer? = null
     private var shineAnimation: TimeAnimator? = null
 
     private val layoutTransition: LayoutTransition = LayoutTransition()
+
+    private val backPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            dismiss()
+        }
+    }
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
@@ -75,14 +74,7 @@ class AchievementInfoFragment :
         binding.unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
             override fun canScrollVertically() = false
         }
-    }
-
-    override fun onBackPressed(): Boolean {
-        if (isShowing) {
-            dismiss()
-            return true
-        }
-        return false
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
     override fun onDestroyView() {
@@ -98,7 +90,7 @@ class AchievementInfoFragment :
     /** Show as details of a tapped view */
     fun show(achievement: Achievement, level: Int, achievementBubbleView: View): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = true
+        backPressedCallback.isEnabled = true
         this.achievementIconBubble = achievementBubbleView
 
         bind(achievement, level, false)
@@ -109,7 +101,7 @@ class AchievementInfoFragment :
     /** Show as new achievement achieved/unlocked */
     fun showNew(achievement: Achievement, level: Int): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = true
+        backPressedCallback.isEnabled = true
 
         bind(achievement, level, true)
         animateIn()
@@ -118,7 +110,7 @@ class AchievementInfoFragment :
 
     fun dismiss(): Boolean {
         if (animatorsPlayer != null) return false
-        isShowing = false
+        backPressedCallback.isEnabled = false
         animateOut(achievementIconBubble)
         return true
     }
@@ -146,10 +138,13 @@ class AchievementInfoFragment :
             binding.unlockedLinksList.adapter = null
         } else {
             binding.unlockedLinkTitleText.setText(
-                if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
-                else R.string.achievements_unlocked_links
+                if (unlockedLinks.size == 1) {
+                    R.string.achievements_unlocked_link
+                } else {
+                    R.string.achievements_unlocked_links
+                }
             )
-            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
+            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, ::openUri)
         }
     }
 
@@ -274,10 +269,10 @@ class AchievementInfoFragment :
             it.scaleY = 0.5f
             it.translationY = 0f
             /* For the "show new achievement" mode, only the icon is shown first and only after a
-            *  delay, the dialog with the description etc.
-            *  This icon is in the center at first and should animate up while the dialog becomes
-            *  visible. This movement is solved via a (default) layout transition here for which the
-            *  APPEARING transition type is disabled because we animate the alpha ourselves. */
+             * delay, the dialog with the description etc.
+             * This icon is in the center at first and should animate up while the dialog becomes
+             * visible. This movement is solved via a (default) layout transition here for which the
+             * APPEARING transition type is disabled because we animate the alpha ourselves. */
             it.isGone = startDelay > 0
             it.animate()
                 .setStartDelay(startDelay)
@@ -321,11 +316,6 @@ class AchievementInfoFragment :
             .withEndAction {
                 binding.dialogAndBackgroundContainer.visibility = View.INVISIBLE
             }
-
-    private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        tryStartActivity(intent)
-    }
 
     private fun playAll(vararg animators: ViewPropertyAnimator) {
         animatorsPlayer = ViewPropertyAnimatorsPlayer(animators.toMutableList()).also {

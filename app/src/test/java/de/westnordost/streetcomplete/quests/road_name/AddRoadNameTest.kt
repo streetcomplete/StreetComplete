@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Test
+import kotlin.test.Test
 
 class AddRoadNameTest {
 
@@ -91,7 +91,6 @@ class AddRoadNameTest {
     }
 
     @Test fun `apply is link answer`() {
-
         for (highway in sequenceOf("primary", "secondary", "tertiary")) {
             questType.verifyAnswer(
                 mapOf("highway" to highway),

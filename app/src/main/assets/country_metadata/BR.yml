@@ -2,6 +2,7 @@
 atmOperators: [Banco do Brasil, Banco 24 Horas, Banco24Horas, Bradesco, Caixa Econômica Federal, Itaú, Caixa, Santander, Banco 24H, Banrisul, Tecnologia Bancária S.A., 24 Horas, Banrisul S.A., Saque e Pague, Banco 24Horas, Banco do Brasil S.A., HSBC, Multibanco, Itaú Unibanco, BRB, Banco Bradesco, TecBan, Banco24H, Caixa 24h, Caixa 24 Horas, Banco24, Banese, Caixa Economica Federal, Caixa Econômica, BDN BRADESCO, Banco 24h., Banco 24Hrs, 24Horas, Banco Santander, Dinho, Caixas eletrônicos da Caixa Econômica Federal, Banco 24 horas.]
 centerLineStyle: yellow
 chargingStationOperators: [Ipiranga, Sat, Petrobras, BR, ipiranga, Taurus, Shell, Petrobrás, EDP]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 724
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class StreetParkingTest {
     @Test fun validOrNullValues() {

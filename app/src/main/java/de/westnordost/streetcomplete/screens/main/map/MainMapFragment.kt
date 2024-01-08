@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.maps.MapView
@@ -38,6 +39,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
@@ -67,6 +69,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val downloadedTilesSource: DownloadedTilesSource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -76,6 +79,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
     private var styleableOverlayMapComponent: StyleableOverlayMapComponent? = null
     private var styleableOverlayManager: StyleableOverlayManager? = null
+    private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
+    private var downloadedAreaManager: DownloadedAreaManager? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -128,7 +133,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
         val ctrl = controller ?: return
-        ctrl.setPickRadius(1f)
+        ctrl.setPickRadius(8f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
 
         pinsMapComponent = PinsMapComponent(ctrl)
@@ -146,6 +151,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
+
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
+        downloadedAreaManager = DownloadedAreaManager(ctrl, downloadedAreaMapComponent!!, downloadedTilesSource)
+        viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
 
@@ -440,10 +449,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
+        downloadedAreaManager?.onNewScreenPosition()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
         mapView = null
@@ -456,7 +466,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
-
             if (pinsMapComponent?.isVisible == true) {
                 when (pinMode) {
                     PinMode.QUESTS -> {

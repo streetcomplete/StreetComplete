@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import java.util.Locale
 
 fun getNameAndLocationLabel(
     element: Element,
@@ -25,16 +26,23 @@ fun getNameAndLocationLabel(
     val name = getNameLabel(element.tags)
         ?.withNonBreakingSpaces()
         ?.inBold()
+    val taxon = getTreeTaxon(element.tags, Locale.getDefault().language)
 
-    val nameAndFeatureName = if (name != null && feature != null) {
-        resources.getString(R.string.label_name_feature, name, feature)
+    val featureEx = if (taxon != null && feature != null) {
+        resources.getString(R.string.label_feature_taxon, feature, taxon)
     } else {
-        name ?: feature
+        feature
     }
 
-    // only show house number if there is no name information
+    val nameAndFeatureName = if (name != null && featureEx != null) {
+        resources.getString(R.string.label_name_feature, name, featureEx)
+    } else {
+        name ?: featureEx
+    }
+
+    // only show house number if there is no name
     val location = getLocationHtml(element.tags, resources, showHouseNumber =
-        if (showHouseNumber == null && nameAndFeatureName != null) false else showHouseNumber
+        if (showHouseNumber == null && name != null) false else showHouseNumber
     )
 
     val label = if (nameAndFeatureName != null && location != null) {
@@ -62,11 +70,13 @@ private fun getLocationHtml(
     val level = getLevelLabel(tags, resources)
     // by default only show house number if no level is given
     val houseNumber = if (showHouseNumber ?: (level == null)) getHouseNumberHtml(tags, resources) else null
+    val indoor = getIndoorOutdoorLabel(tags, resources)
+    val location = level ?: indoor
 
-    return if (level != null && houseNumber != null) {
-        resources.getString(R.string.label_housenumber_location, houseNumber, level)
+    return if (location != null && houseNumber != null) {
+        resources.getString(R.string.label_housenumber_location, houseNumber, location)
     } else {
-        level ?: houseNumber
+        location ?: houseNumber
     }
 }
 
@@ -83,6 +93,16 @@ fun FeatureDictionary.getFeatureName(
     .find()
     .firstOrNull()
     ?.name
+
+/** Returns the taxon of a tree or null if unknown */
+fun getTreeTaxon(tags: Map<String, String>, languageTag: String): String? {
+    if (tags["natural"] != "tree") return null
+
+    val names = sequenceOf("taxon", "species", "taxon:species", "genus", "taxon:genus")
+
+    return names.firstNotNullOfOrNull { tags["$it:$languageTag"] }
+        ?: names.firstNotNullOfOrNull { tags[it] }
+}
 
 /** Returns a text that identifies the feature by name, ref, brand or whatever, e.g. "The Leaky Cauldron" */
 fun getNameLabel(tags: Map<String, String>): String? {
@@ -101,6 +121,13 @@ fun getNameLabel(tags: Map<String, String>): String? {
         ?: operator
         ?: localRef
         ?: ref
+}
+
+/** Returns a text that describes whether it is inside or outside (of a building) */
+fun getIndoorOutdoorLabel(tags: Map<String, String>, resources: Resources): String? = when {
+    tags["indoor"] == "yes" || tags["location"] == "indoor" -> resources.getString(R.string.inside)
+    tags["indoor"] == "no" || tags["location"] == "outdoor" -> resources.getString(R.string.outside)
+    else -> null
 }
 
 /** Returns a text that describes the floor / level, e.g. "on floor 5" */

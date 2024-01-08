@@ -29,13 +29,16 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if (isDisplayingPreviousOpeningHours) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
-            AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                applyAnswer(RegularOpeningHours(element.tags["opening_hours"]!!.toOpeningHoursRules()!!))
-            }
-        )
-        else emptyList()
+        if (isDisplayingPreviousOpeningHours) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                    applyAnswer(RegularOpeningHours(element.tags["opening_hours"]!!.toOpeningHoursRules()!!))
+                }
+            )
+        } else {
+            emptyList()
+        }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_openingHours_no_sign) { confirmNoSign() },

@@ -1,15 +1,6 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/achievement_info_fragment"
+    android:name="de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/achievement_info_fragment"
-        android:name="de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone"/>
-
- </RelativeLayout >
+    android:layout_height="match_parent" />

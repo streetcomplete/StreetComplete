@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import android.util.Log
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -72,12 +73,23 @@ class ElementEditsUploader(
 
             elementEditsController.markSyncFailed(edit)
 
-            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
-            if (mapData != null) {
-                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
-            } else {
-                val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
+            /* fetching the current version of the element(s) edited on conflict and persisting
+               them is not really optional, as when the edit has been deleted due to the conflict,
+               the quests etc. would otherwise just be displayed again as if the user didn't solve
+               them */
+            val updated = mutableListOf<Element>()
+            val deleted = mutableListOf<ElementKey>()
+
+            for (elementKey in edit.action.elementKeys) {
+                val mapData = fetchElementComplete(elementKey.type, elementKey.id)
+                if (mapData != null) {
+                    updated.addAll(mapData)
+                } else {
+                    deleted.add(elementKey)
+                }
+            }
+            if (updated.isNotEmpty() || deleted.isNotEmpty()) {
+                mapDataController.updateAll(MapDataUpdates(updated = updated, deleted = deleted))
             }
         }
     }

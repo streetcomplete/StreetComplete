@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationOperators: [Flo, Tesla, Expressway Ford, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Tesla Motors Inc., Tesla Motors, Sun Country, FLO, Electric Circuit, City of Waterloo, City of Stratford, Chargepoint, Cadillac Fairview, Bingemans, Bank of Nova Scotia]
 clothesContainerOperators: [Canadian Diabetes]
+defaultSpeedLimitHasUrbanOrRural: true
 hasNoStandingSign: true
 noStandingSignStyle: mutcd text standing
 officialLanguages: [en]

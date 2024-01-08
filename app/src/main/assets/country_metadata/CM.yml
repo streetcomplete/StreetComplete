@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Société générale]
 centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: short white dashes
 mobileCountryCode: 624
 noParkingSignStyle: vienna

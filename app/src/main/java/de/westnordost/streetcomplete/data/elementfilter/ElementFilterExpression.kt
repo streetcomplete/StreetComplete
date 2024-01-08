@@ -52,6 +52,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop and name`                | has both a tag with key `shop` and one with key `name`                        |
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
+ *  | `shop and !(ref or name)`      | has a tag with key `shop` but not either a tag with key `ref` or `name`       |
  *
  *  Note that regexes have to match the whole string, i.e. `~shop|craft` does not match `shop_type`.
  *
@@ -62,7 +63,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `!shop or shop != boat`        | `shop != boat`                                           |
  *  | `shop = car or shop = boat`    | `shop ~ car|boat`                                        |
  *  | `craft or shop and name`       | `craft or (shop and name)` (`and` has higher precedence) |
- *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |
+ *  | `!(amenity and craft)`         | `!amenity or !craft`                                     |
+ *  | `!(amenity or craft)`          | `!amenity and !craft`                                    |
  *  */
 class ElementFilterExpression(
     internal val elementsTypes: Set<ElementsTypeFilter>,
@@ -92,6 +94,7 @@ private val BooleanExpression<ElementFilter, Element>.mayEvaluateToTrueWithNoTag
         is Leaf -> value.mayEvaluateToTrueWithNoTags
         is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
         is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
+        is Not -> children.first().mayEvaluateToTrueWithNoTags
         else -> throw IllegalStateException("Unexpected expression")
     }
 

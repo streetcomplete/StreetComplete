@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.data.meta
 
 import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.getWeekdayIndex
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class CountryInfosTest {
     private val validWeekdays = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")

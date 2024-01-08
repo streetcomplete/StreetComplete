@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
-import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
@@ -20,12 +20,10 @@ import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
-import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class ElementEditsUploaderTest {
 
@@ -39,7 +37,7 @@ class ElementEditsUploaderTest {
     private lateinit var uploader: ElementEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         elementEditsController = mock()
         mapDataController = mock()
         noteEditsController = mock()
@@ -62,13 +60,9 @@ class ElementEditsUploaderTest {
 
     @Test fun `upload works`() = runBlocking {
         val edit = edit()
-        val idProvider = mock<ElementIdProvider>()
         val updates = mock<MapDataUpdates>()
-        val node = node(1)
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(mapDataController.get(any(), anyLong())).thenReturn(node)
         on(singleUploader.upload(any(), any())).thenReturn(updates)
 
         uploader.upload()
@@ -83,16 +77,22 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
-        val edit = edit()
-        val idProvider = mock<ElementIdProvider>()
-        val updatedNode = node()
-        val localNode = node()
+        // edit modifies node 1 and way 1
+        val node1 = node()
+        val action: ElementEditAction = mock()
+        on(action.elementKeys).thenReturn(listOf(
+            ElementKey(ElementType.NODE, 1),
+            ElementKey(ElementType.WAY, 1),
+        ))
+        val edit = edit(action = action)
 
+        // ...but way 1 is gone
+        on(mapDataApi.getNode(1)).thenReturn(node1)
+        on(mapDataApi.getWayComplete(1)).thenReturn(null)
+
+        // the edit is the first in the upload queue and the uploader throws a conflict exception
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
-        on(mapDataApi.getNode(anyLong())).thenReturn(updatedNode)
-        on(mapDataController.get(any(), anyLong())).thenReturn(localNode)
 
         uploader.upload()
 
@@ -100,34 +100,11 @@ class ElementEditsUploaderTest {
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
+        verifyNoInteractions(statisticsController)
+
         verify(mapDataController).updateAll(eq(MapDataUpdates(
-            updated = listOf(updatedNode)
+            updated = listOf(node1),
+            deleted = listOf(ElementKey(ElementType.WAY, 1))
         )))
-
-        verify(statisticsController, never()).addOne(any(), any())
-    }
-
-    @Test fun `upload catches deleted element exception`() = runBlocking {
-        val edit = edit(element = node(1))
-        val idProvider = mock<ElementIdProvider>()
-        val node = node(1)
-
-        on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
-        on(mapDataApi.getNode(anyLong())).thenReturn(null)
-        on(mapDataController.get(any(), anyLong())).thenReturn(node)
-
-        uploader.upload()
-
-        verify(singleUploader).upload(eq(edit), any())
-        verify(listener).onDiscarded(any(), any())
-
-        verify(elementEditsController).markSyncFailed(edit)
-        verify(mapDataController).updateAll(eq(MapDataUpdates(
-            deleted = listOf(ElementKey(ElementType.NODE, 1L))
-        )))
-
-        verify(statisticsController, never()).addOne(any(), any())
     }
 }

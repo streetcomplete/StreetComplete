@@ -16,14 +16,14 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
 import org.mockito.Mockito.anyBoolean
 import org.mockito.Mockito.verify
 import java.lang.Thread.sleep
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class MapDataControllerTest {
 
@@ -36,7 +36,7 @@ class MapDataControllerTest {
     private lateinit var geometryCreator: ElementGeometryCreator
     private lateinit var createdElementsController: CreatedElementsController
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         nodeDB = mock()
         wayDB = mock()
         relationDB = mock()
@@ -127,17 +127,33 @@ class MapDataControllerTest {
     }
 
     @Test fun deleteOlderThan() {
-        val elementKeys = listOf(
+        val nodeKeys = listOf(
             ElementKey(NODE, 1L),
             ElementKey(NODE, 2L),
+            ElementKey(NODE, 3L),
         )
-        on(elementDB.getIdsOlderThan(123L)).thenReturn(elementKeys)
+        val filteredNodeKeys = listOf(
+            ElementKey(NODE, 1L),
+            ElementKey(NODE, 3L),
+        )
+        val wayKeys = listOf(
+            ElementKey(ElementType.WAY, 1L),
+        )
+        val relationKeys = listOf(
+            ElementKey(ElementType.RELATION, 1L),
+        )
+        val elementKeys = relationKeys + wayKeys + filteredNodeKeys
+        on(nodeDB.getIdsOlderThan(123L)).thenReturn(nodeKeys.map { it.id })
+        on(wayDB.getIdsOlderThan(123L)).thenReturn(wayKeys.map { it.id })
+        on(relationDB.getIdsOlderThan(123L)).thenReturn(relationKeys.map { it.id })
+        on(wayDB.filterNodeIdsWithoutWays(nodeKeys.map { it.id })).thenReturn(filteredNodeKeys.map { it.id })
         val listener = mock<MapDataController.Listener>()
 
         controller.addListener(listener)
         controller.deleteOlderThan(123L)
 
-        verify(elementDB).deleteAll(elementKeys)
+        verify(elementDB).deleteAll(wayKeys + relationKeys)
+        verify(elementDB).deleteAll(filteredNodeKeys)
         verify(geometryDB).deleteAll(elementKeys)
         verify(createdElementsController).deleteAll(elementKeys)
 

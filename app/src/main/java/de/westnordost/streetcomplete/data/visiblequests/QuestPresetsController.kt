@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore
 ) : QuestPresetsSource {
 
-    private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
+    private val listeners = Listeners<QuestPresetsSource.Listener>()
 
     override var selectedId: Long
         get() = selectedQuestPresetStore.get()

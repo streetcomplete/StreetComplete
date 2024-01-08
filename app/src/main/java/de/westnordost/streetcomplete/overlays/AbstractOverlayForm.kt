@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
+import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
@@ -22,6 +22,8 @@ import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -43,10 +45,8 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
-import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -62,7 +62,6 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -80,6 +79,7 @@ abstract class AbstractOverlayForm :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -124,11 +124,13 @@ abstract class AbstractOverlayForm :
         private set
     private var _geometry: ElementGeometry? = null
     protected val geometry: ElementGeometry
-    get() = _geometry ?: ElementPointGeometry(getMarkerPosition()!!)
+        get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
     override val elementKey: ElementKey? get() = element?.key
+
+    protected val metersPerPixel: Double? get() = listener?.metersPerPixel
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
@@ -139,8 +141,11 @@ abstract class AbstractOverlayForm :
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
 
+        /** How many pixels equal one meter on display at the current zoom */
+        val metersPerPixel: Double?
+
         /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
         fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
@@ -152,6 +157,7 @@ abstract class AbstractOverlayForm :
         fun onMoveNode(editType: ElementEditType, node: Node)
 
         fun getMapPositionAt(screenPos: PointF): LatLon?
+        fun getPointOf(pos: LatLon): PointF?
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -163,7 +169,8 @@ abstract class AbstractOverlayForm :
         val args = requireArguments()
         overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!!
         element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
-        _geometry = args.getString(ARG_GEOMETRY)?.let { Json.decodeFromString(it) }
+        _geometry = (savedInstanceState?.getString(ARG_GEOMETRY) ?: args.getString(ARG_GEOMETRY))
+            ?.let { Json.decodeFromString(it) }
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -181,7 +188,8 @@ abstract class AbstractOverlayForm :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.markerCreateLayout.root.isInvisible = _geometry != null
+        setMarkerVisibility(_geometry == null)
+        binding.createMarker.doOnLayout { setMarkerPosition(null) }
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -214,12 +222,7 @@ abstract class AbstractOverlayForm :
 
         binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
 
-        binding.markerCreateLayout.centeredMarkerLayout.setPadding(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
+        setMarkerPosition(null)
     }
 
     override fun onStart() {
@@ -235,6 +238,11 @@ abstract class AbstractOverlayForm :
 
     override fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(ARG_GEOMETRY, Json.encodeToString(geometry))
     }
 
     override fun onDestroyView() {
@@ -287,7 +295,21 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun setMarkerIcon(iconResId: Int) {
-        binding.markerCreateLayout.createNoteIconView.setImageResource(iconResId)
+        binding.createMarkerIconView.setImageResource(iconResId)
+    }
+
+    protected fun setMarkerVisibility(isVisible: Boolean) {
+        binding.createMarker.isInvisible = !isVisible
+    }
+
+    protected fun setMarkerPosition(position: LatLon?) {
+        val point = if (position == null) {
+            getDefaultMarkerScreenPosition()
+        } else {
+            listener?.getPointOf(position)
+        } ?: return
+        binding.createMarker.x = point.x - binding.createMarker.width / 2
+        binding.createMarker.y = point.y - binding.createMarker.height
     }
 
     private fun updateContentPadding() {
@@ -300,9 +322,9 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    protected fun applyEdit(answer: ElementEditAction) {
+    protected fun applyEdit(answer: ElementEditAction, geometry: ElementGeometry = this.geometry) {
         viewLifecycleScope.launch {
-            solve(answer)
+            solve(answer, geometry)
         }
     }
 
@@ -386,20 +408,17 @@ abstract class AbstractOverlayForm :
 
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
-    private suspend fun solve(action: ElementEditAction) {
+    private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
+        if (!checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
             setLocked(false)
             return
         }
 
-        // use dummy element if element is null
-        val element = element ?: Node(0, geometry.center)
-
         withContext(Dispatchers.IO) {
-            addElementEditsController.add(overlay, element, geometry, "survey", action)
+            addElementEditsController.add(overlay, geometry, "survey", action)
         }
-        listener?.onEdited(overlay, element, geometry)
+        listener?.onEdited(overlay, geometry)
     }
 
     private fun setLocked(locked: Boolean) {
@@ -408,11 +427,20 @@ abstract class AbstractOverlayForm :
 
     /* ------------------------------------- marker position ------------------------------------ */
 
-    private fun getMarkerPosition(): LatLon? {
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
-        val screenPos = createNoteMarker.getLocationInWindow()
-        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos.toPointF())
+    private fun getDefaultMarkerPosition(): LatLon? {
+        val point = getDefaultMarkerScreenPosition() ?: return null
+        return listener?.getMapPositionAt(point)
+    }
+
+    private fun getDefaultMarkerScreenPosition(): PointF? {
+        val view = view ?: return null
+        val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
+        val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
+        val top = resources.getDimensionPixelSize(R.dimen.quest_form_topOffset)
+        val bottom = resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        val x = (view.width + left - right) / 2f
+        val y = (view.height + top - bottom) / 2f
+        return PointF(x, y)
     }
 
     companion object {

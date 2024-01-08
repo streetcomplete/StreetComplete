@@ -507,14 +507,7 @@
                 "hoops": {
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Jā",
-                        "undefined": "Nē"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Zirgu izjāde",
                     "options": {
                         "horse_riding": "Jā",
                         "undefined": "Nē"
@@ -527,17 +520,9 @@
                         "critical": "Robežojas: Izjājams tikai pieredzējušiem jājējiem un zirgiem. Lieli šķēršļi. Tilti itsevisķi būtu rūpīgi jāpārbauda.",
                         "dangerous": "Bīstams: Izjājams tikai ļoti pieredzējušiem jātniekiem un zirgiem tikai labos laikapstākļos. Jānokāpj pirms.",
                         "demanding": "Jājiet piesardzīgi: Nevienmērīga taka, dažkārt sarežģītas vietas.",
-                        "difficult": "Grūts: Pārlieku šaurs un atvērts. Var saturēt šķēršļus, kam jāpārkāpj un šauras pārejas.",
-                        "impossible": "Necaurjājams: Ceļš vai tilts nav izejams ar zirgu. Pārāk šaurs, nepietiekams atbalsts, šķērsļi kā trepes. Dzīvībai bīstams."
+                        "difficult": "Grūts: Pārlieku šaurs un atvērts. Var saturēt šķēršļus, kam jāpārkāpj un šauras pārejas."
                     },
                     "placeholder": "Grūts, Bīstams..."
-                },
-                "horse_stables": {
-                    "label": "Zirgu Stallis",
-                    "options": {
-                        "stables": "Jā",
-                        "undefined": "Nē"
-                    }
                 },
                 "incline": {
                     "label": "Slīpums"
@@ -648,9 +633,6 @@
                 "material": {
                     "label": "Materiāls"
                 },
-                "maxheight": {
-                    "label": "Maks, Augstums"
-                },
                 "maxspeed": {
                     "label": "Ātruma ierobežojums",
                     "placeholder": "40, 50, 60..."
@@ -658,12 +640,6 @@
                 "maxspeed/advisory": {
                     "label": "Ieteicamais Ātruma Ierobežojums",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Maks. Stāvēšanas Ilgums"
-                },
-                "maxweight": {
-                    "label": "Maks. Smagums"
                 },
                 "memorial": {
                     "label": "Tips"
@@ -942,15 +918,6 @@
                     "label": "Gludums"
                 },
                 "sport": {
-                    "label": "Sports"
-                },
-                "sport_ice": {
-                    "label": "Sports"
-                },
-                "sport_racing_motor": {
-                    "label": "Sports"
-                },
-                "sport_racing_nonmotor": {
                     "label": "Sports"
                 },
                 "start_date": {
@@ -1486,10 +1453,6 @@
                     "name": "Suņu ekskrementu tvertne",
                     "terms": "tvertne,kaste,suņu,kaku,maisiņu,atkritumu"
                 },
-                "amenity/waste_basket": {
-                    "name": "Atkritumu grozs",
-                    "terms": "miskaste,papīrgrozs,izmestuve,atkritumi"
-                },
                 "amenity/waste_disposal": {
                     "name": "Atkritumu konteiners",
                     "terms": "miskaste,atkritumi,izgāztuve,tvertne"
@@ -1671,10 +1634,6 @@
                 "building/temple": {
                     "name": "Tempļa Ēka",
                     "terms": "templis,reliģija,piemiņa"
-                },
-                "building/terrace": {
-                    "name": "Rindumājas",
-                    "terms": "rindu mājas,mājas"
                 },
                 "building/university": {
                     "name": "Universitātes Ēka"
@@ -2049,6 +2008,10 @@
                 },
                 "man_made/mast": {
                     "name": "Masts"
+                },
+                "man_made/milk_churn_stand": {
+                    "name": "piena galds",
+                    "aliases": "piena steķis\npīna golds"
                 },
                 "man_made/observatory": {
                     "name": "Observatorija"

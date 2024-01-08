@@ -13,7 +13,7 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
     val latitude = match.groupValues[1].toDoubleOrNull() ?: return null
     if (latitude < -90 || latitude > +90) return null
     val longitude = match.groupValues[2].toDoubleOrNull() ?: return null
-    if (longitude < -180 && longitude > +180) return null
+    if (longitude < -180 || longitude > +180) return null
 
     // zoom is optional. If it is invalid, we treat it the same as if it is not there
     val zoom = match.groupValues[3].toFloatOrNull()

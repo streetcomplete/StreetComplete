@@ -3,6 +3,7 @@ atmOperators: [Swedbank, Bankomat AB, Nordea, Bankomat, Handelsbanken, SEB, Kont
 centerLineStyle: white
 chargingStationOperators: [Fortum Charge & Drive, Tesla Motors Inc., Bee, Tesla, Vattenfall, InCharge, CaCharge, Göteborgs Energi, Umeå Energi, Sundsvall Elnät/Green Highway, Karlshamn Energi, Jämtkraft, Clever, CLEVER, Bee Charging Solutions, Ultra, BTEA, inCharge, e-on, charge&drive, VB Energi, SKF, NOVI Ressort, Mönsterås Kommun, Ljusdal Energi, Lidl, Kraftringen, Ionity, IKEA, Gävle Energi, Fyrfasen Energi, Fortum, Enkla Elbolaget, Drive&charge, Charge & Drive, Affärsverken]
 clothesContainerOperators: [Myrorna, Human Bridge, FTI]
+defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: short white dashes
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="2dp"
     android:paddingBottom="2dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     android:orientation="horizontal"
-    android:gravity="center_vertical"
-    tools:ignore="RtlSymmetry">
+    android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/presetTitleText"
@@ -17,9 +17,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:textSize="18sp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        tools:text="This is a long preset name!"/>
+        android:layout_marginEnd="16dp"
+        tools:text="This is a long preset name!" />
 
     <ImageView
         android:id="@+id/menuButton"
@@ -29,22 +28,13 @@
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:padding="12dp"
-        android:focusable="true"
-         />
+        android:focusable="true" />
 
-    <FrameLayout
-        android:id="@+id/selectionRadioButtonContainer"
-        android:layout_width="@dimen/table_icon_size"
+    <RadioButton
+        android:id="@+id/selectionRadioButton"
+        android:layout_width="32dp"
         android:layout_height="@dimen/table_icon_size"
-        android:layout_marginStart="32dp">
-
-        <RadioButton
-            android:id="@+id/selectionRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""/>
-
-    </FrameLayout>
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

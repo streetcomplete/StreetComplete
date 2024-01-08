@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.download
 
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class DownloadProgressRelay : DownloadProgressListener {
 
-    private val listeners = CopyOnWriteArrayList<DownloadProgressListener>()
+    private val listeners = Listeners<DownloadProgressListener>()
 
     override fun onStarted() { listeners.forEach { it.onStarted() } }
     override fun onError(e: Exception) { listeners.forEach { it.onError(e) } }

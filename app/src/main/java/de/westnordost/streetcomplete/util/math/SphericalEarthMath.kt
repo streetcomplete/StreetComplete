@@ -177,9 +177,14 @@ fun LatLon.nearestPointOnArc(start: LatLon, end: LatLon): LatLon {
 }
 
 /** Returns the point on the given polyline that is closest to this point */
-fun LatLon.nearestPointOnArcs(polyline: List<LatLon>): LatLon {
-    val arc = polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
+fun LatLon.nearestPointOf(polyline: List<LatLon>): LatLon {
+    val arc = nearestArcOf(polyline)
     return nearestPointOnArc(arc.first, arc.second)
+}
+
+/** Returns the segment of the given polyline that is closest to this point */
+fun LatLon.nearestArcOf(polyline: List<LatLon>): Pair<LatLon, LatLon> {
+    return polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
 }
 
 //endregion
@@ -207,7 +212,9 @@ fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
                 if (
                     first != npolyline.first() && first != npolyline.last()
                     && second != npolyline.first() && second != npolyline.last()
-                ) return true
+                ) {
+                    return true
+                }
             }
         }
     }
@@ -379,10 +386,14 @@ fun List<LatLon>.centerPointOfPolygon(): LatLon {
     }
     area *= 3.0
 
-    return if (area == 0.0) origin else LatLon(
-        lat / area + origin.latitude,
-        normalizeLongitude(lon / area + origin.longitude)
-    )
+    return if (area == 0.0) {
+        origin
+    } else {
+        LatLon(
+            lat / area + origin.latitude,
+            normalizeLongitude(lon / area + origin.longitude)
+        )
+    }
 }
 
 /**
@@ -605,8 +616,11 @@ private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
     var normalizedLon = lon % 360 // normalizedLon is -360..360
-    if (normalizedLon < -180) normalizedLon += 360
-    else if (normalizedLon >= 180) normalizedLon -= 360
+    if (normalizedLon < -180) {
+        normalizedLon += 360
+    } else if (normalizedLon >= 180) {
+        normalizedLon -= 360
+    }
     return normalizedLon
 }
 

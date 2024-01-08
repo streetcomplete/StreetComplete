@@ -163,20 +163,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "N-ro de konstruaĵo/parcelo",
                         "neighbourhood": "Najbaraĵo",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Ejo",
                         "postcode": "Poŝtkodo",
                         "province": "Provinco",
                         "province!cn": "Provinco/Municipo/Aŭtonomia regiono/Speciala administra divido",
                         "province!jp": "Gubernio",
                         "quarter": "Kvartalo",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Ŝtato",
                         "street": "Strato",
                         "subdistrict": "Subdistrikto",
                         "subdistrict!vn": "Kvartalo/Komunumo/Urbeto",
                         "suburb": "Suburbo",
-                        "suburb!jp": "Kvartalo",
                         "unit": "Unueco"
                     },
                     "terms": "adreso,domnumero,stratnomo"
@@ -380,10 +377,6 @@
                 "brand": {
                     "label": "Marko",
                     "terms": "marko,firmao,reto"
-                },
-                "brewery": {
-                    "label": "Verŝataj bieroj",
-                    "terms": "verŝata,krana,barela"
                 },
                 "bridge": {
                     "label": "Speco",
@@ -669,7 +662,6 @@
                         "lebanese": "libana",
                         "malaysian": "malajzia",
                         "mexican": "meksika",
-                        "pankcake": "patkukoj",
                         "pasta": "makaronioj",
                         "pizza": "picoj",
                         "polish": "pola",
@@ -1227,15 +1219,7 @@
                     "label": "Korboj",
                     "placeholder": "1, 2, 4…"
                 },
-                "horse_dressage": {
-                    "label": "Dresrajdado",
-                    "options": {
-                        "equestrian": "Jes",
-                        "undefined": "Ne"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Ĉeval-rajdado",
                     "options": {
                         "horse_riding": "Jes",
                         "undefined": "Ne"
@@ -1248,18 +1232,10 @@
                         "critical": "Malfacilega: transrajdebla nur por spertaj rajdistoj kaj ĉevaloj, grandaj obstakloj, pontoj povas ne subteni vian pezon.",
                         "dangerous": "Tre malfacilega: transrajdebla nur por tre spertaj rajdistoj kaj ĉevaloj dum bona vetero, deĉevaliĝu.",
                         "demanding": "Ete malfacila: malebena vojo, kelkaj malfacilaj pasejoj.",
-                        "difficult": "Malfacila: mallarĝa kaj malebena vojo, povas enhavi transsaltendajn baraĵojn kaj mallarĝajn pasejojn.",
-                        "impossible": "Netransrajdebla: vojo aŭ ponto netrairebla por ĉevaloj.; tre mallarĝa, malhelpaĵoj kiel ŝtupetaroj; danĝera por vivo."
+                        "difficult": "Malfacila: mallarĝa kaj malebena vojo, povas enhavi transsaltendajn baraĵojn kaj mallarĝajn pasejojn."
                     },
                     "placeholder": "Malfacila, danĝera…",
                     "terms": "malfacilo,facileco"
-                },
-                "horse_stables": {
-                    "label": "Ĉeval-domo",
-                    "options": {
-                        "stables": "Jes",
-                        "undefined": "Ne"
-                    }
                 },
                 "hot_water": {
                     "label": "Varma akvo"
@@ -1492,10 +1468,6 @@
                     "label": "Maksimuma aĝo",
                     "terms": "aĝlimo,aĝlimito,agho maksimuma,agxo maksimuma"
                 },
-                "maxheight": {
-                    "label": "Maksimuma alto",
-                    "terms": "alto maksimuma,altlimigo,altolimigo"
-                },
                 "maxspeed": {
                     "label": "Rapidlimo",
                     "placeholder": "40, 50, 60…",
@@ -1508,14 +1480,6 @@
                 },
                 "maxspeed/hgv": {
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Templimo de parkumado",
-                    "terms": "parkumada tempolimo,maksimuma restadtempo,maksimuma parkumtempo"
-                },
-                "maxweight": {
-                    "label": "Maksimuma pezo",
-                    "terms": "pezlimo,pezolimigo"
                 },
                 "memorial": {
                     "label": "Speco"
@@ -1681,10 +1645,6 @@
                     "placeholder": "Nekonataj",
                     "terms": "horoj de malfermo,malfermitaj horoj"
                 },
-                "opening_hours/covid19": {
-                    "label": "Malfermaj horoj (KOVIM-19)",
-                    "terms": "horoj de malfermo,malfermitaj horoj,covid-19,kronviruso"
-                },
                 "operator": {
                     "label": "Administranto",
                     "terms": "estro,mastrumanto"
@@ -1737,14 +1697,6 @@
                         "street_side": "Apudstrata",
                         "surface": "Supraĵa",
                         "underground": "Subtera"
-                    }
-                },
-                "parking/orientation": {
-                    "label": "Orientiĝo",
-                    "options": {
-                        "diagonal": "Diagonale al strato",
-                        "parallel": "Laŭlonge de strato",
-                        "perpendicular": "Orte al strato"
                     }
                 },
                 "parking_entrance": {
@@ -2355,35 +2307,6 @@
                 },
                 "sport": {
                     "label": "Sportoj"
-                },
-                "sport_ice": {
-                    "label": "Sportoj",
-                    "options": {
-                        "curling": "glitŝtonludo (curling)",
-                        "ice_hockey": "glacihokeo",
-                        "ice_skating": "glitkurado",
-                        "ice_stock": "glitŝtonludo bavara (Eisstockschießen)",
-                        "multi": "pluraj sportoj"
-                    }
-                },
-                "sport_racing_motor": {
-                    "label": "Sportoj",
-                    "options": {
-                        "karting": "karting",
-                        "motocross": "motokroso",
-                        "motor": "aŭtosportoj",
-                        "speedway": "Spidvejo"
-                    }
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sportoj",
-                    "options": {
-                        "bmx": "biciklado akrobata (BMX)",
-                        "cycling": "biciklado",
-                        "dog_racing": "hund-kurado",
-                        "horse_racing": "ĉeval-kurado",
-                        "running": "kurado"
-                    }
                 },
                 "stars": {
                     "label": "Steloj",
@@ -3205,10 +3128,6 @@
                     "name": "Kabineto de kuracisto",
                     "terms": "kuracistejo,sanigejo,doktoro"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "Kabineto de ginekologiisto",
-                    "terms": "ginekologiisto,ginekologo,virinkuracisto"
-                },
                 "amenity/dojo": {
                     "name": "Doĵo / batalart-lernejo",
                     "terms": "dojho,dojxo,batalarto,luktoarto,luktarto"
@@ -3341,10 +3260,6 @@
                 "amenity/kindergarten": {
                     "name": "Infanvartejo (ISCED 0)",
                     "terms": "infanoghardeno,infanogxardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanghardeno,infangxardeno,infanvartejo,lernludejo"
-                },
-                "amenity/kneipp_water_cure": {
-                    "name": "Naĝejeto",
-                    "terms": "nahgejeto,nagxejeto,piedbano,banejo,baseneto"
                 },
                 "amenity/language_school": {
                     "name": "Lingva lernejo",
@@ -3587,10 +3502,6 @@
                 "amenity/recycling_centre": {
                     "name": "Ricikliga centro",
                     "terms": "recikligejo,recikligo,rubodeponejo,balaaĵejo"
-                },
-                "amenity/recycling_container": {
-                    "name": "Rubujego (recikligo)",
-                    "terms": "rubujo,balaaĵujo,rubujego,recikligujo"
                 },
                 "amenity/refugee_site": {
                     "name": "Kampadejo por rifuĝantoj",
@@ -3907,10 +3818,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "Rubujo por hund-fekaĵoj",
                     "terms": "rubujo,hundaj fekoj,fekaĵoj,eksrementoj"
-                },
-                "amenity/waste_basket": {
-                    "name": "Rubujo",
-                    "terms": "balaaĵujo,balaaĵkesto,rubkesto,forĵetaĵujo"
                 },
                 "amenity/waste_disposal": {
                     "name": "Rubujego (miksita)",
@@ -4354,10 +4261,6 @@
                 "building/temple": {
                     "name": "Konstruaĵo de templo",
                     "terms": "templo,sanktejo"
-                },
-                "building/terrace": {
-                    "name": "Envicaj domoj",
-                    "terms": "envica domo,ŝtondomo,brikdomo,envicdomo,vica domo,sekvenca domo"
                 },
                 "building/train_station": {
                     "name": "Fervoj-stacia konstruaĵo"
@@ -5358,10 +5261,6 @@
                 "landuse/military/barracks": {
                     "name": "Soldatejo",
                     "terms": "soldathejmo,kazerno"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Danĝerejo",
-                    "terms": "dangherejo,dangxerejo,minkampo,pafaĵejo"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Obstakl-kurejo armea",
@@ -7471,8 +7370,7 @@
                     "terms": "hifi,altfidela,hi-fi,stereo,video"
                 },
                 "shop/hobby": {
-                    "name": "Hobia vendejo",
-                    "terms": "hobio,ŝatokupo,modelfarado,figuroj,animeo"
+                    "name": "Hobia vendejo"
                 },
                 "shop/household_linen": {
                     "name": "Tuka vendejo",

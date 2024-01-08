@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/dialog_vertical_margin"
+    android:paddingLeft="@dimen/dialog_horizontal_margin"
+    android:paddingRight="@dimen/dialog_horizontal_margin"
+    android:paddingBottom="@dimen/dialog_vertical_margin">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/title_logs_filters"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/messageContainsEditTextLayout"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/label_log_message_contains"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:layout_marginTop="16dp"
+        app:startIconDrawable="@drawable/ic_search_24dp"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/messageContainsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/newerThanEditTextLayout"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/label_log_newer_than"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/messageContainsEditTextLayout"
+        android:layout_marginTop="16dp"
+        app:startIconDrawable="@drawable/ic_calendar_month_24dp"
+        app:endIconDrawable="@drawable/ic_cancel_24dp"
+        app:endIconMode="custom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newerThanEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:focusable="false"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/olderThanEditTextLayout"
+        style="?attr/textInputOutlinedStyle"
+        android:hint="@string/label_log_older_than"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/newerThanEditTextLayout"
+        android:layout_marginTop="16dp"
+        app:startIconDrawable="@drawable/ic_calendar_month_24dp"
+        app:endIconDrawable="@drawable/ic_cancel_24dp"
+        app:endIconMode="custom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/olderThanEditText"
+            tools:text="Tues, Sep 26"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:focusable="false"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/levelLabel"
+        android:text="@string/label_log_level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:labelFor="@id/levelChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/olderThanEditTextLayout"
+        android:layout_marginTop="20dp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/levelChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/levelLabel"
+        android:layout_marginTop="4dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

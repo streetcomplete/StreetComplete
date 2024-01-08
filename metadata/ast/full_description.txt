@@ -1,5 +1,5 @@
 ¡Ayuda a ameyorar OpenStreetMap con StreetComplete!
 
-Esta aplicación busca información incompleta y ameyorable na to redolada y amuésala nun mapa con marcadores. Pues resolver caún de los problemes respondiendo a una entruga cenciella.
+Esta aplicación busca información incompleta y ameyorable na redolada y muéstrala nun mapa con marcadores. Puedes resolver caún de los problemes respondiendo a una pregunta cenciella.
 
-La información amestada inclúise direutamente n'OpenStreetMap col to nome ensin precisar nengún otru editor o editora.
+La información añadida inclúise directo n'OpenStreetMap col to nome ensin precisar nengún otru programa.

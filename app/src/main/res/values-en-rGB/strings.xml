@@ -40,16 +40,16 @@
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
-    <string name="action_download">"Scan for quests here"</string>
+    <string name="action_download">"Download data here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give an answer"</string>
     <string name="close">"close"</string>
-    <string name="download_error">"Error while scanning for quests"</string>
+    <string name="download_error">"Error while downloading data"</string>
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
-    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current download and download here instead?"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
-    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and download data in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Project Home"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
     <string name="not_authorized">"Not authorised"</string>
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
-    <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
+    <string name="no_gps_no_quests">"To download data around you automatically, turn on location"</string>
     <string name="later">"Later"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
@@ -94,7 +94,7 @@ Editing OpenStreetMap anonymously is not possible. Any changes you make (and the
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-The app does not share your GPS location with anyone. It is used to automatically scan for and download quests around you, and position the map at your location.
+The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
@@ -140,7 +140,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="crash_compose_email">"Compose email"</string>
     <string name="no_email_client">"You have no email client installed."</string>
     <string name="pref_title_keep_screen_on">"Keep screen on"</string>
-    <string name="download_server_error">"Connection error while scanning for quests. Try again later."</string>
+    <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
@@ -182,7 +182,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_toiletsFee_title">"Do you have to pay to use this toilet?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this pedestrian crossing have tactile paving on both sides?"</string>
     <string name="quest_source_dialog_title">"Are you sure you checked this on-site?"</string>
-    <string name="quest_source_dialog_note">"Only information that was found on a survey should be entered."</string>
+    <string name="quest_source_dialog_note">"Only information that was verified in-person should be entered."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">"Don’t show again for this session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
@@ -278,7 +278,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_vanilla">"Vanilla"</string>
     <string name="produce_walnuts">"Walnuts"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Can’t download here. Try to zoom in further or tilt the map less."</string>
     <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
     <string name="quest_crossing_type_unmarked">"Without road markings"</string>
     <string name="action_undo">"Undo"</string>
@@ -302,7 +302,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_levelsLabel2">"regular levels (not counting the roof)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Differs per building part"</string>
     <string name="quest_buildingLevels_answer_description">"In this case, simply input the values of the highest building part."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Are the carriageways of this road physically separated by a physical barrier or green space? The default speed limit depends on whether this is the case."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Are the carriageways of this road separated by a physical barrier or green space? The default speed limit depends on whether this is the case."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Attach photo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Do you want to delete this picture?"</string>
@@ -311,7 +311,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_none">"none"</string>
     <string name="quest_cycleway_value_shared">"lane shared explicitly with other traffic"</string>
     <string name="quest_cycleway_value_bus_lane">"on bus lane"</string>
-    <string name="quest_cycleway_value_sidewalk">"explicitly shared-use pavement"</string>
     <string name="quest_leave_new_note_create_image_error">"Unable to create file for photo"</string>
     <string name="quest_cycleway_value_lane_dual">"cycle lane, both directions"</string>
     <string name="quest_cycleway_value_track_dual">"sidepath or protected cycle lane, both directions"</string>
@@ -476,7 +475,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_sports_centre">"Sports centre"</string>
     <string name="quest_buildingType_toilets">"Toilets"</string>
     <string name="quest_maxspeed_sign_question">"What defines the speed limit?"</string>
-    <string name="quest_segregated_title">"How is the footpath and cycle path laid out here?"</string>
+    <string name="quest_segregated_title">"How are the footpath and cycle path laid out here?"</string>
     <string name="dialog_tutorial_upload">"To upload your changes manually, use the button in the toolbar that looks like this."</string>
     <string name="quest_segregated_separated">"Segregated from one another"</string>
     <string name="quest_segregated_mixed">"Cyclists and pedestrians share the same space"</string>
@@ -545,13 +544,13 @@ Split it now?"</string>
     <string name="quest_handrail_title">"Do these steps have a handrail?"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as its center on the map."</string>
+    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as its centre on the map."</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
     <string name="quest_recycling_materials_note">"If anything not listed can be recycled here, please leave a note instead."</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
     <string name="quest_recycling_type_cans">"Cans"</string>
     <string name="quest_recycling_type_clothes">"Clothes"</string>
-    <string name="quest_recycling_type_green_waste">"Garden waste"</string>
+    <string name="quest_recycling_type_green_waste">"Compostable waste"</string>
     <string name="quest_recycling_type_glass_bottles">"Glass bottles and jars"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Bottles and jars"</string>
     <string name="quest_recycling_type_paper">"Paper"</string>
@@ -572,8 +571,8 @@ Split it now?"</string>
     <string name="about_title_donate">"Donate"</string>
     <string name="about_summary_donate">"Show your appreciation! ❤️"</string>
     <string name="about_description_donate">"Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Download here instead"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continue current download"</string>
     <string name="quest_buildingType_garages_description">"Separate spaces for different owners/tenants"</string>
     <string name="quest_tourism_information_title">"What type of tourist information is this?"</string>
     <string name="quest_tourism_information_office">"Tourist information office"</string>
@@ -735,7 +734,6 @@ levels"</string>
     <string name="resurvey_intervals_less_often">"Ask less often"</string>
     <string name="resurvey_intervals_default">"Default"</string>
     <string name="resurvey_intervals_more_often">"Ask more often"</string>
-    <string name="quest_is_defibrillator_inside_title">"Is this defibrillator (AED) inside a building?"</string>
     <string name="about_title_translate">"Help translate this app"</string>
     <string name="about_description_translate">"%1$s is translated %2$d%%"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
@@ -831,7 +829,7 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
     <string name="quest_surface_value_tartan">"Tartan Track"</string>
     <string name="quest_bicycle_parking_fee_title">"Do you have to pay to park a bicycle here?"</string>
-    <string name="quest_buildingType_house_description2">"not detached single-family home, e.g. a single row house"</string>
+    <string name="quest_buildingType_house_description2">"non-detached single-family home, e.g. a single terraced house"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non-potable water (with a sign)"</string>
@@ -910,7 +908,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"How many levels above the basement does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"How many levels above the basement does this building part have?"</string>
-    <string name="quest_crossing_title">"Are there kerbs where this way meets this road here? What kind?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preset: %s"</string>
     <string name="default_disabled_msg_roofShape">"This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases, it is easier and more efficient to map this from aerial imagery at home."</string>
     <string name="quest_religion_animist">"Animist"</string>
@@ -944,7 +941,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_buildingType_bridge">"Bridge between buildings (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Does this laundry provide self-service?"</string>
     <string name="quest_dietType_explanation_halal">"Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance."</string>
-    <string name="quest_picnicTableCover_title">"Is this picnic table covered (protected from rain)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
     <string name="quest_barrier_type_passage_conversion">"Converted into a passage in a wall/fence/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Converted into a gate"</string>
@@ -1185,7 +1181,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
     <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
     <string name="quest_memorialType_sculpture">"Other sculpture"</string>
-    <string name="select_overlay">"Select Overlay"</string>
     <string name="overlay_none">"None"</string>
     <string name="overlay_lit">"Street lighting"</string>
     <string name="lit_value_yes">"Lit"</string>
@@ -1208,8 +1203,8 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_camp_shower_title">"Are there showers here?"</string>
     <string name="quest_camp_power_supply_title">"Is there any way for customers to charge their phone, laptop etc. here?"</string>
     <string name="quest_camp_type_title">"Who may camp here?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Both tents and motor homes, travel trailers, …"</string>
-    <string name="quest_camp_type_caravans_only">"Only motor homes, travel trailers, …"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Both tents and motor homes, caravans, …"</string>
+    <string name="quest_camp_type_caravans_only">"Only motor homes, caravans, …"</string>
     <string name="quest_camp_type_tents_only">"Only tents"</string>
     <string name="quest_camp_type_backcountry">"Backcountry camping (no facilities)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
@@ -1228,7 +1223,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_address_street_hint2">"Tap street on map to select it"</string>
     <string name="quest_bicycle_incline_title">"Which direction leads upwards here?"</string>
     <string name="quest_bicycle_incline_up_and_down">"It’s up and down hops"</string>
-    <string name="quest_drinking_water_type_title">"How is drinking water provided here?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Other water fountain"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Water fountain emitting small jet of water"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Refilling bottles only"</string>
@@ -1240,7 +1234,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="overlay_addresses">"Addresses"</string>
     <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
-    <string name="vacant_shop_title">"Vacant shop"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
     <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened (with or without a key)?"</string>
@@ -1281,7 +1274,7 @@ Move it now?"</string>
     <string name="move_node_action_description">"You moved the node"</string>
     <string name="quest_cycleway_value_shoulder">"none, but shoulder is usable for cyclists"</string>
     <string name="quest_placeName_no_name_answer">"There is no name sign…"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from curb to curb, including on-street parking, bicycle lanes etc."</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from kerb to kerb, including on-street parking, bicycle lanes etc."</string>
     <string name="overlay_cycleway">"Cycleways"</string>
     <string name="bicycle_boulevard_is_a">"It’s a %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"It’s not a %1$s"</string>
@@ -1292,19 +1285,18 @@ Move it now?"</string>
     <string name="separate_cycleway_non_segregated">"Shared-use path"</string>
     <string name="separate_cycleway_segregated">"Separated bike and foot path"</string>
     <string name="separate_cycleway_exclusive">"Bike-only path"</string>
-    <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent sidewalk (separated by a curb)"</string>
+    <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent sidewalk (separated by a kerb)"</string>
     <string name="cycleway_reverse_direction">"Reverse cycleway direction"</string>
     <string name="cycleway_reverse_direction_warning">"That a cycleway goes into the other direction is extremely rare."</string>
     <string name="cycleway_reverse_direction_toast">"Tap which side to reverse"</string>
     <string name="separate_cycleway_path">"Path or trail"</string>
     <string name="quest_fireHydrant_type_pipe">"Pipe"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"explicitly shared-use pavement, both directions"</string>
     <string name="measure_info_title">"Achieving optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"This application runs on &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
-    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at a specific part of the year."</string>
+    <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
     <string name="quest_gritBinSeasonal_title">"Is this also here outside of winter?"</string>
     <string name="street_parking_staggered_on_street">"On street on alternating sides"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
@@ -1314,8 +1306,68 @@ Move it now?"</string>
     <string name="quest_address_answer_block">"It's within a block…"</string>
     <string name="quest_address_answer_no_block">"It isn't within a block…"</string>
     <string name="quest_surface_value_mud">"Persistent mud"</string>
-    <string name="quest_wheelchairAccessPat_noToilet">"There is no restroom here"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"There is no toilet here"</string>
     <string name="unknown_surface_title">"Other kind of surface"</string>
     <string name="overlay_surface">"Surfaces"</string>
     <string name="overlay_path_surface_segregated">"Split into cycling and walking parts"</string>
+    <string name="quest_crossing_title2">"Is there a crossing here?"</string>
+    <string name="quest_crossing_yes">"Yes (e.g. the kerb is lowered here or there are markings)"</string>
+    <string name="quest_crossing_no">"No, but crossing is possible"</string>
+    <string name="quest_crossing_prohibited">"No, crossing is prohibited or impossible"</string>
+    <string name="quest_hairdresser_title">"Which customers visit this hairdresser?"</string>
+    <string name="quest_hairdresser_male_and_female">"Anyone"</string>
+    <string name="quest_hairdresser_female_only">"Women"</string>
+    <string name="quest_hairdresser_male_only">"Men"</string>
+    <string name="quest_hairdresser_not_signed">"Not signed"</string>
+    <string name="quest_amenityCover_title">"Is this covered (protected from rain)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Kerb extension"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Traffic island"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Kerb extension + traffic island"</string>
+    <string name="lane_narrowing_traffic_calming_none">"No narrowed lane here"</string>
+    <string name="quest_tactilePaving_title_steps">"Is there tactile paving at the top and bottom of these steps?"</string>
+    <string name="quest_tactilePaving_steps_top">"Only at the top"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Only at the bottom"</string>
+    <string name="overlay_addresses_no_entrance">"It’s not an entrance…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"shared-use path"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"shared-use path, both directions"</string>
+    <string name="overlays_tutorial_title">"Overlays"</string>
+    <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+
+The data is highlighted in different colors to give you a good overview of what has been recorded so far.
+Missing data is always shown in red."</string>
+    <string name="overlays_tutorial_edit">"Tap on any highlighted data to display or edit it. You can also split ways or report notes, like with quests.
+
+Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"What’s the height of the kerbs at this crossing?"</string>
+    <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"What height limit is indicated below the bridge?"</string>
+    <string name="quest_leave_new_note_as_answer">"In this case, you need to leave a note in which you explain the situation."</string>
+    <string name="quest_drinking_water_type_title2">"Is drinking water available here? If so, what is its source?"</string>
+    <string name="quest_is_amenity_inside_title">"Is this inside a building?"</string>
+    <string name="quest_bbq_fuel_title">"What is this grill powered by?"</string>
+    <string name="quest_bbq_fuel_wood">"Wood"</string>
+    <string name="quest_bbq_fuel_electric">"Electric"</string>
+    <string name="quest_bbq_fuel_charcoal">"Charcoal"</string>
+    <string name="inside">"inside"</string>
+    <string name="outside">"outside"</string>
+    <string name="quest_recycling_type_food_waste">"Food waste"</string>
+    <string name="quest_defibrillator_location">"Where is this defibrillator located?"</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Is there a sanitary dump station?"</string>
+    <string name="quest_sanitary_dump_station_description">"Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
+    <string name="quest_generalFee_title">"Do you need to pay to use this?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"It’s a fire enclosure"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"for use in error reports"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Share logs"</string>
+    <string name="about_title_show_logs">"Show logs"</string>
+    <string name="label_log_level">"Log level"</string>
+    <string name="label_log_newer_than">"From"</string>
+    <string name="label_log_older_than">"To"</string>
+    <string name="label_log_message_contains">"Message contains"</string>
+    <string name="title_logs_filters">"Filter messages"</string>
 </resources>

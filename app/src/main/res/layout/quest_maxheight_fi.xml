@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/splitWayHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_maxheight_split_way_hint"
+        android:paddingBottom="@dimen/quest_form_vertical_padding"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_below="@id/splitWayHint"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputSigns"
+        app:layout_constraintTop_toBottomOf="@+id/splitWayHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/meterInputSign"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:gravity="center"
+            android:background="@drawable/background_maxheight_sign_yellow"
+            android:padding="18dp">
+
+            <me.grantland.widget.AutofitLayout
+                android:id="@+id/meterInputContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/meterInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789.,"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textColor="@color/traffic_black"
+                    android:textSize="32dp"
+                    android:textStyle="bold"
+                    tools:text="8.4" />
+
+            </me.grantland.widget.AutofitLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="m"
+                android:textColor="@color/traffic_black"
+                android:textSize="26dp"
+                android:layout_marginStart="4dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/feetInputSign"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:gravity="center"
+            android:background="@drawable/background_maxheight_sign_yellow"
+            android:padding="18dp">
+
+            <EditText
+                android:id="@+id/feetInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0fff"
+                android:gravity="center"
+                android:inputType="number"
+                android:nextFocusDown="@+id/inchInput"
+                android:textColor="@color/traffic_black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:text="15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="′ "
+                android:textColor="@color/traffic_black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/inchInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0fff"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:nextFocusUp="@+id/feetInput"
+                android:textColor="@color/traffic_black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:text="11" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="″"
+                android:textColor="@color/traffic_black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/heightUnitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/inputSigns"
+        android:paddingStart="16dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:ignore="RtlSymmetry"
+        app:layout_constraintStart_toEndOf="@+id/inputSigns"
+        app:layout_constraintBottom_toBottomOf="@+id/inputSigns"
+        app:layout_constraintTop_toTopOf="@+id/inputSigns" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

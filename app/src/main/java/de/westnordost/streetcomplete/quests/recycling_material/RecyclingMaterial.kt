@@ -17,13 +17,15 @@ enum class RecyclingMaterial(val value: String) {
     SMALL_ELECTRICAL_APPLIANCES("small_electrical_appliances"),
     BATTERIES("batteries"),
     GREEN_WASTE("green_waste"),
+    FOOD_WASTE("food_waste"),
     COOKING_OIL("cooking_oil"),
     ENGINE_OIL("engine_oil");
 
     companion object {
         val selectableValues = listOf(
             GLASS_BOTTLES, PAPER, PLASTIC, CANS, SCRAP_METAL, CLOTHES, SHOES,
-            SMALL_ELECTRICAL_APPLIANCES, BATTERIES, GREEN_WASTE, COOKING_OIL, ENGINE_OIL
+            SMALL_ELECTRICAL_APPLIANCES, BATTERIES, GREEN_WASTE, FOOD_WASTE,
+            COOKING_OIL, ENGINE_OIL
         )
 
         val selectablePlasticValues = listOf(

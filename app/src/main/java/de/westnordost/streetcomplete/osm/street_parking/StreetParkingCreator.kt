@@ -51,8 +51,11 @@ private fun StreetParking.applyTo(tags: Tags, side: String) {
         // same as "on_kerb". However, since "shoulder" is an approved value, it will not be over-
         // written by StreetComplete if "adjacent to street" is selected
         // https://wiki.openstreetmap.org/wiki/Talk:Street_parking#Suggestion_to_remove_parking:side=shoulder
-        if (osmPositionValue == "on_kerb" && tags["parking:$side"] == "shoulder") "shoulder"
-        else osmPositionValue
+        if (osmPositionValue == "on_kerb" && tags["parking:$side"] == "shoulder") {
+            "shoulder"
+        } else {
+            osmPositionValue
+        }
 
     if (this is StreetParkingPositionAndOrientation) {
         tags["parking:$side:orientation"] = orientation.osmValue

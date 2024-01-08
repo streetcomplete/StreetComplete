@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"не постоји"</string>
     <string name="quest_cycleway_value_shared">"трака која се дели са другим возилима"</string>
     <string name="quest_cycleway_value_bus_lane">"по аутобуској траци"</string>
-    <string name="quest_cycleway_value_sidewalk">"тротоар који се дели са пешацима"</string>
     <string name="quest_leave_new_note_create_image_error">"Није могуће направити датотеку фотографије"</string>
     <string name="quest_cycleway_value_lane_dual">"бициклистичка трака у оба смера"</string>
     <string name="quest_cycleway_value_track_dual">"бициклистичка стаза у оба смера"</string>
@@ -734,7 +733,6 @@
     <string name="resurvey_intervals_less_often">"Питај ређе"</string>
     <string name="resurvey_intervals_default">"Уобичајено"</string>
     <string name="resurvey_intervals_more_often">"Питај чешће"</string>
-    <string name="quest_is_defibrillator_inside_title">"Да ли је овај дефибрилатор (AED) унутар зграде?"</string>
     <string name="about_title_translate">"Помозите у преводу овог програма"</string>
     <string name="about_description_translate">"%1$s је преведен %2$d%%"</string>
     <string name="quest_oneway2_title">"Да ли је ово једносмерна улица? У ком смеру?"</string>
@@ -907,7 +905,6 @@
     <string name="about_title_faq">"Честа питања"</string>
     <string name="quest_buildingLevels_title2">"Колико спратова изнад подрума има ова грађевина?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колико спратова изнад подрума има ова грађевина?"</string>
-    <string name="quest_crossing_title">"Постоје ли ивичњаци између ових путева? Које врсте?"</string>
     <string name="pref_subtitle_quests_preset_name">"Група задатака: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ова врста задатака је онемогућена јер се облици кровова често не виде добро са улице. Такође, одузимају доста врмена. Углавном је лакше и ефикасније кровове означити од куће, преко снимака из ваздуха."</string>
     <string name="quest_religion_animist">"Анимизам"</string>
@@ -941,7 +938,6 @@
     <string name="quest_buildingType_bridge">"Мост између зграда (топла веза)"</string>
     <string name="quest_laundrySelfService_title2">"Да ли је ово самоуслужна перионица/вешерај?"</string>
     <string name="quest_dietType_explanation_halal">"Халал производи се спремају по посебној рецептури, уз одговарајуће сертификате за Халал производе."</string>
-    <string name="quest_picnicTableCover_title">"Да ли је овај сто за пикник наткривен (пружа ли заштиту од кише)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Овај сегмент су степенице"</string>
     <string name="quest_barrier_type_passage_conversion">"Конвертовано у пролаз кроз зид/ограду/итд."</string>
     <string name="quest_barrier_type_gate_conversion">"Конвертовано у капију"</string>
@@ -1182,7 +1178,6 @@
     <string name="quest_memorialType_stele_wooden">"Дрвена стела (спомен плоча)"</string>
     <string name="quest_memorialType_stele_stone">"Камена стела (спомен плоча)"</string>
     <string name="quest_memorialType_sculpture">"Други тип скулптуре"</string>
-    <string name="select_overlay">"Одаберите подлогу"</string>
     <string name="overlay_none">"Ниједна"</string>
     <string name="overlay_lit">"Улична расвета"</string>
     <string name="lit_value_yes">"Има га"</string>
@@ -1225,7 +1220,6 @@
     <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
     <string name="quest_bicycle_incline_title">"Који смер води нагоре одавде?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Иде горе-доле"</string>
-    <string name="quest_drinking_water_type_title">"Како је овде доступна вода за пиће?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Други тип фонтанице"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница слабог притиска"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само за допуну флашица"</string>
@@ -1237,7 +1231,6 @@
     <string name="overlay_addresses">"Адресе"</string>
     <string name="overlay_shops">"Продавнице"</string>
     <string name="name_label">"Назив:"</string>
-    <string name="vacant_shop_title">"Празан локал"</string>
     <string name="unknown_shop_title">"Непозната намена локала"</string>
     <string name="quest_address_answer_no_address">"Овде нема адресе"</string>
     <string name="quest_bicycle_barrier_installation_title">"Може ли се ова бициклистичка баријера померити?"</string>
@@ -1294,7 +1287,6 @@
     <string name="cycleway_reverse_direction_toast">"Додирните страну коју треба окренути"</string>
     <string name="separate_cycleway_path">"Путић или стаза"</string>
     <string name="quest_fireHydrant_type_pipe">"Цевасти"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"тротоар који се дели са пешацима у оба смера"</string>
     <string name="measure_info_title">"Постизање оптималне прецизности"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore понекад (на почетку) претпоставља да је земља (тло, односно подлога) нешто нижа или виша него у стварности. Ово представља грешку у мерењу која постаје све већа како се телефон усмерава ка хоризонту.&lt;/p&gt;
 &lt;p&gt;Поставите почетну и крајњу тачку тако што ћете усмерити телефон право надоле (тако да белу стрелицу видите одозго) како бисте у потпуности избегли грешку хоризонталног мерења.&lt;/p&gt;
@@ -1309,8 +1301,62 @@
     <string name="label_block">"блок"</string>
     <string name="quest_address_answer_block">"У кругу блока…"</string>
     <string name="quest_address_answer_no_block">"Није у кругу блока…"</string>
+    <string name="quest_surface_value_mud">"Постојано блато"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Овде нема тоалета"</string>
     <string name="unknown_surface_title">"Други тип подлоге"</string>
     <string name="overlay_surface">"Подлоге"</string>
     <string name="overlay_path_surface_segregated">"Подељено на бициклистичке и пешачке делове"</string>
+    <string name="quest_crossing_title2">"Да ли је овде прелаз?"</string>
+    <string name="quest_crossing_yes">"Да (нпр. спуштен ивичњак или постоји зебра)"</string>
+    <string name="quest_crossing_no">"Не, али је могуће прећи"</string>
+    <string name="quest_crossing_prohibited">"Не, прелаз је изричито забрањен или није могућ"</string>
+    <string name="quest_hairdresser_title">"Која клијентела посећује овог фризера?"</string>
+    <string name="quest_hairdresser_male_and_female">"Свако"</string>
+    <string name="quest_hairdresser_female_only">"Жене"</string>
+    <string name="quest_hairdresser_male_only">"Мушкарци"</string>
+    <string name="quest_hairdresser_not_signed">"Није назначено"</string>
+    <string name="quest_amenityCover_title">"Да ли је наткривено (пружа ли заштиту од кише)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Продужетак ивичњака"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Саобраћајно острво"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Шикана"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Продужетак ивичњака + саобраћајно острво"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Овде нема уске траке"</string>
+    <string name="quest_tactilePaving_title_steps">"Имају ли степенице траке за навођење слепих особа?"</string>
+    <string name="quest_tactilePaving_steps_top">"Само на врху"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Само у дну"</string>
+    <string name="overlay_addresses_no_entrance">"Није улаз…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"дељена путања"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"дељена путања у оба смера"</string>
+    <string name="overlays_tutorial_title">"Слојеви на карти"</string>
+    <string name="overlays_tutorial_intro">"Пронашли сте нови начин за измену података!"</string>
+    <string name="overlays_tutorial_display">"Сваки слој приказује један тип података, на пример продавнице или површину пута.
+
+Подаци се истичу различитим бојама ради јасног приказа шта је до сада урађено.
+Подаци који недостају се увек обележавају црвеном бојом."</string>
+    <string name="overlays_tutorial_edit">"Дотакните истакнуте податке како бисте их уредили. Можете разделити линије или оставити напомене, попут задатака.
+
+Поред тога, неки слојеви на карти вам пружају могућност додавања нових података на позицији показивача, као што то пружа слој адреса."</string>
+    <string name="quest_crossing_kerb_height_title">"Колико је висок ивичњак на овом прелазу?"</string>
+    <string name="quest_maxheight_sign_title">"Која максимална висина је овде наведена?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Која максимална висина је наведена испод моста?"</string>
+    <string name="quest_drinking_water_type_title2">"Да ли овде има воде за пиће? Ако има, каквог типа је извор?"</string>
+    <string name="quest_is_amenity_inside_title">"Да ли је унутар изграђеног објекта?"</string>
+    <string name="quest_bbq_fuel_title">"Како се користи овај роштиљ?"</string>
+    <string name="quest_bbq_fuel_wood">"На дрва"</string>
+    <string name="quest_bbq_fuel_electric">"На струју"</string>
+    <string name="quest_bbq_fuel_charcoal">"На ћумур"</string>
+    <string name="inside">"унутар"</string>
+    <string name="outside">"споља"</string>
+    <string name="quest_recycling_type_food_waste">"На био отпад"</string>
+    <string name="quest_defibrillator_location">"Где се налази овај дефибрилатор?"</string>
+    <string name="quest_generalFee_title">"Да ли је потребно платити за употребу?"</string>
+    <string name="about_title_logs">"Евиденција (%1$d)"</string>
+    <string name="action_filter">"Филтер"</string>
+    <string name="action_share">"Поделите евиденцију"</string>
+    <string name="about_title_show_logs">"Приказ евиденције"</string>
+    <string name="label_log_level">"Ниво евиденције"</string>
+    <string name="label_log_newer_than">"од"</string>
+    <string name="label_log_older_than">"до"</string>
+    <string name="label_log_message_contains">"Да порука садржи"</string>
+    <string name="title_logs_filters">"Филтрирање порука"</string>
 </resources>

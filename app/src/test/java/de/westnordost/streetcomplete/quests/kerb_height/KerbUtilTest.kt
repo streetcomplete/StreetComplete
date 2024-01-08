@@ -5,10 +5,10 @@ import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class KerbUtilTest {
     @Test fun `free-floating kerbs do not count`() {
@@ -167,6 +167,46 @@ class KerbUtilTest {
             )),
         ))
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
+    }
+
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/sidewalk-end.svg
+    @Test fun `endpoints of crossings do not count if they already have a non-endnode with a kerb`() {
+        val kerb = node(id = 2, tags = mapOf("barrier" to "kerb"))
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(id = 1),
+            node(id = 2, tags = mapOf("barrier" to "kerb")),
+            way(1, listOf(1, 2, 3), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+            way(2, listOf(1, 4), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+        ))
+        // only the kerb tagged as such is found, not node 1 (intersection node between way 1 and 2)
+        assertEquals(
+            listOf(kerb),
+            mapData.findAllKerbNodes().toList())
+    }
+
+    // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/crossing-style2.svg
+    // when e.g. one side is already tagged with barrier=kerb and the other side is not yet
+    @Test fun `endpoints of crossings do still count if they have an endnode with a kerb`() {
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(id = 1),
+            node(id = 3, tags = mapOf("barrier" to "kerb")),
+            way(1, listOf(1, 2, 3), mapOf(
+                "highway" to "footway",
+                "footway" to "crossing"
+            )),
+            way(2, listOf(1, 4), mapOf(
+                "highway" to "footway",
+                "footway" to "sidewalk"
+            )),
+        ))
+        // 2 kerbs here actually: at node 3 and and node 1
+        assertEquals(2, mapData.findAllKerbNodes().toList().size)
     }
 
     @Test fun `nodes are not returned twice`() {

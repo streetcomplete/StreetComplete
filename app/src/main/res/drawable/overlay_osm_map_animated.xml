@@ -1,0 +1,15 @@
+<animated-vector android:drawable="@drawable/overlay_osm_map"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <target android:name="clip">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="750"
+                android:propertyName="pathData"
+                android:valueType="pathType"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:valueFrom="M-452,0 l226,222 l452,-444 l-226,-222z"
+                android:valueTo="M-226,222 l226,222 l452,-444 l-226,-222z"/>
+        </aapt:attr>
+    </target>
+</animated-vector>

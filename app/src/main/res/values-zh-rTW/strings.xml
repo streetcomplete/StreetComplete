@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"無"</string>
     <string name="quest_cycleway_value_shared">"車道應與其他交通工具共享"</string>
     <string name="quest_cycleway_value_bus_lane">"與公車專用道共用"</string>
-    <string name="quest_cycleway_value_sidewalk">"應與人行道共用"</string>
     <string name="quest_leave_new_note_create_image_error">"無法為照片產生檔案"</string>
     <string name="quest_cycleway_value_lane_dual">"單車車道，雙向"</string>
     <string name="quest_cycleway_value_track_dual">"單車道，雙向"</string>
@@ -733,7 +732,6 @@
     <string name="resurvey_intervals_less_often">"詢問更少資訊"</string>
     <string name="resurvey_intervals_default">"預設"</string>
     <string name="resurvey_intervals_more_often">"詢問更多資訊"</string>
-    <string name="quest_is_defibrillator_inside_title">"這一個去顫器 (AED) 是在建築物裡嗎？"</string>
     <string name="about_title_translate">"幫忙翻譯這款 app"</string>
     <string name="about_description_translate">"%1$s 翻譯 %2$d%%"</string>
     <string name="quest_oneway2_title">"這是單行道嗎？那個方向呢？"</string>
@@ -906,7 +904,6 @@
     <string name="about_title_faq">"常見問題"</string>
     <string name="quest_buildingLevels_title2">"這棟建築地下室之上有幾層？"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"這棟建築部分的地下室之上有幾層？"</string>
-    <string name="quest_crossing_title">"這邊這條路與這條路的交匯處是否有路緣石？ 哪一種呢？ "</string>
     <string name="pref_subtitle_quests_preset_name">"預設組合：%s"</string>
     <string name="default_disabled_msg_roofShape">"這個任務類型已經預設關閉，因為屋頂形狀常常無法直接從街上看出來。這個任務類型也相當花時間；大部分的情形之下，直接在家從空照圖繪製更簡單也更有效率。"</string>
     <string name="quest_religion_animist">"泛靈論"</string>
@@ -940,7 +937,6 @@
     <string name="quest_buildingType_bridge">"建築之間的橋樑 (天橋)"</string>
     <string name="quest_laundrySelfService_title2">"這間洗衣店是否有提供自助服務？"</string>
     <string name="quest_dietType_explanation_halal">"清真產品的準備需符合特別的規則，清真認證單位需要認證產品。"</string>
-    <string name="quest_picnicTableCover_title">"這個野餐桌是否有遮蓋 (能夠擋雨)？"</string>
     <string name="quest_generic_answer_is_actually_steps">"這部分是階梯"</string>
     <string name="quest_barrier_type_passage_conversion">"轉換成牆壁/圍欄/當中的通道。 "</string>
     <string name="quest_barrier_type_gate_conversion">"轉換成閘門"</string>
@@ -1181,7 +1177,6 @@
     <string name="quest_memorialType_stele_wooden">"木碑（紀念板）"</string>
     <string name="quest_memorialType_stele_stone">"石碑（紀念板）"</string>
     <string name="quest_memorialType_sculpture">"其他雕像"</string>
-    <string name="select_overlay">"選擇重疊"</string>
     <string name="overlay_none">"沒有"</string>
     <string name="overlay_lit">"路燈"</string>
     <string name="lit_value_yes">"有路燈"</string>
@@ -1224,7 +1219,6 @@
     <string name="quest_address_street_hint2">"點一下道路來選取道路"</string>
     <string name="quest_bicycle_incline_title">"往上的方向是朝向什麼方向？"</string>
     <string name="quest_bicycle_incline_up_and_down">"是上上下下的坡道"</string>
-    <string name="quest_drinking_water_type_title">"這裡的飲水如何提供？"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"其他飲用水泉"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"水泉會放出小流水"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"只有用瓶子裝"</string>
@@ -1236,7 +1230,6 @@
     <string name="overlay_addresses">"地址"</string>
     <string name="overlay_shops">"商店"</string>
     <string name="name_label">"名稱："</string>
-    <string name="vacant_shop_title">"閒置店面"</string>
     <string name="unknown_shop_title">"其他類型"</string>
     <string name="quest_address_answer_no_address">"這裡沒有地址"</string>
     <string name="quest_bicycle_barrier_installation_title">"這裡的單車障礙物是否能開啟 (有或沒有鑰匙)？"</string>
@@ -1294,10 +1287,67 @@
     <string name="cycleway_reverse_direction_toast">"點一下決定那邊要反轉"</string>
     <string name="separate_cycleway_path">"路徑或山徑"</string>
     <string name="quest_fireHydrant_type_pipe">"管子"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"應與人行道共用"</string>
     <string name="measure_info_title">"達成最佳精確度"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore 有時候 (一開始) 預設地面會低一點或是高一點，這會讓你越讓手機貼近水平線，測量的誤差變得比預期大。&lt;/p&gt;
 &lt;p&gt;設定每一次的開始 - 以及結束點，要將你手直直朝下 (因此你會在上面看到白色箭頭) 來完全避免水平測量的問題。&lt;/p&gt;
 &lt;p&gt;而垂直測量部分，你需要透過不同方向檢視，檢查開始點相較地面沒有跑掉。&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"這應用程式 &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) 來運作，並且由 Google 採用 &lt;a href=\"https://policies.google.com/privacy\"&gt;Google 隱私政策&lt;/a&gt; 提供服務與管理。"</string>
+    <string name="default_disabled_msg_seasonal">"這類型的任務已經預設關閉，因為需要在一年特定時間再次檢查狀況。"</string>
+    <string name="quest_gritBinSeasonal_title">"除了冬天之外這裡也有嗎？"</string>
+    <string name="street_parking_staggered_on_street">"在道路的另一側"</string>
+    <string name="street_parking_staggered_half_on_kerb">"部分道路的另一側"</string>
+    <string name="quest_traffic_signals_sound_description">"提示：檢查是否有擴音器，不是所有的警示音都是透過按鈕啟用。"</string>
+    <string name="quest_presets_duplicate">"重覆"</string>
+    <string name="label_block">"街區"</string>
+    <string name="quest_address_answer_block">"一個街區以內…"</string>
+    <string name="quest_address_answer_no_block">"超過一個街區距離…"</string>
+    <string name="quest_surface_value_mud">"強固泥巴"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"這裡沒有廁所"</string>
+    <string name="unknown_surface_title">"其他種類的舖面"</string>
+    <string name="overlay_surface">"舖面"</string>
+    <string name="overlay_path_surface_segregated">"分隔為單車與步行部分"</string>
+    <string name="quest_crossing_title2">"這種有穿越道嗎？"</string>
+    <string name="quest_crossing_yes">"是 (例如這邊路緣比較低或是有標示)"</string>
+    <string name="quest_crossing_no">"無，但仍可以穿越"</string>
+    <string name="quest_crossing_prohibited">"無，禁止穿越或是無法"</string>
+    <string name="quest_hairdresser_title">"那種類型的顧戶會來光顧剪頭髮？"</string>
+    <string name="quest_hairdresser_male_and_female">"任何人"</string>
+    <string name="quest_hairdresser_female_only">"女性"</string>
+    <string name="quest_hairdresser_male_only">"男性"</string>
+    <string name="quest_hairdresser_not_signed">"沒有標示"</string>
+    <string name="quest_amenityCover_title">"這裡有遮避嗎 (能夠遮雨)？"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"路緣延伸"</string>
+    <string name="lane_narrowing_traffic_calming_island">"槽化島"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"S形彎道"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"路緣延伸 + 安全島"</string>
+    <string name="lane_narrowing_traffic_calming_none">"這裡沒有窄車道"</string>
+    <string name="quest_tactilePaving_title_steps">"這些階梯頂部與最底部的地方有導盲磚嗎？"</string>
+    <string name="quest_tactilePaving_steps_top">"只有在頂部"</string>
+    <string name="quest_tactilePaving_steps_bottom">"只有在底部"</string>
+    <string name="overlay_addresses_no_entrance">"這裡不是入口..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"混合通行路徑"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"混合通行路徑，雙向"</string>
+    <string name="overlays_tutorial_title">"套疊"</string>
+    <string name="overlays_tutorial_intro">"你發現新的編輯資料方式！"</string>
+    <string name="overlays_tutorial_display">"每一層套疊代表一種資料，例如店家或是道路舖面。
+
+每種資料會用不同顏色高亮度顯示，能讓你清楚知道記錄的東西是什麼。有遺失資料的路部分則會用紅色顯示。"</string>
+    <string name="overlays_tutorial_edit">"對高亮度顯示的資料按一下來顯示或是編輯。你可以分割路徑或是回報註解，像是回答任務。
+
+除此之外，有些套疊允許你在所在位置的十字符號加新資料，例如地址套疊。"</string>
+    <string name="quest_crossing_kerb_height_title">"這個道路交叉口的路緣多高？"</string>
+    <string name="quest_maxheight_sign_title">"這邊的高度限制是多少？"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"橋樑下的高度限制是多少？"</string>
+    <string name="quest_leave_new_note_as_answer">"在這個狀況下，你需要留註解來解釋。"</string>
+    <string name="quest_drinking_water_type_title2">"這裡有飲用水嗎？如果有的話，飲用水的來源是？"</string>
+    <string name="quest_is_amenity_inside_title">"這在建築內嗎？"</string>
+    <string name="quest_bbq_fuel_title">"烤肉的火力來源是？"</string>
+    <string name="quest_bbq_fuel_wood">"木頭"</string>
+    <string name="quest_bbq_fuel_electric">"電力"</string>
+    <string name="quest_bbq_fuel_charcoal">"木炭"</string>
+    <string name="inside">"裡面"</string>
+    <string name="outside">"外面"</string>
+    <string name="quest_recycling_type_food_waste">"廚餘"</string>
+    <string name="quest_defibrillator_location">"去顫器的位置在那裡？"</string>
+    <string name="quest_defibrillator_location_description">"請提供精確的位置敘述 (例如「行李員休息室」)"</string>
 </resources>

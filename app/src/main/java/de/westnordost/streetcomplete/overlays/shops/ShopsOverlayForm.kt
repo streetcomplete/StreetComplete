@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.overlays.shops
 
-import android.content.SharedPreferences
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
@@ -32,12 +29,12 @@ import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -48,7 +45,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_shops
     private val binding by contentViewBinding(FragmentOverlayShopsBinding::bind)
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private var originalFeature: Feature? = null
     private var originalNoName: Boolean = false
@@ -69,7 +66,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         val element = element
         originalFeature = element?.let {
             if (IS_DISUSED_SHOP_EXPRESSION.matches(element)) {
-                createVacantShop(requireContext().resources)
+                featureDictionary.byId("shop/vacant").get()
             } else {
                 featureDictionary
                     .byTags(element.tags)
@@ -119,7 +116,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
 
         val selectableLanguages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct().toMutableList()
-        val preferredLanguage = prefs.getString(PREFERRED_LANGUAGE_FOR_NAMES, null)
+        val preferredLanguage = prefs.getStringOrNull(PREFERRED_LANGUAGE_FOR_NAMES)
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
                 selectableLanguages.add(0, preferredLanguage)
@@ -169,12 +166,15 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     }
 
     private fun setVacant() {
-        onSelectedFeature(createVacantShop(requireContext().resources))
+        onSelectedFeature(featureDictionary.byId("shop/vacant").get())
     }
 
     private fun createNoNameAnswer(): AnswerItem? =
-        if (featureCtrl.feature == null || isNoName) null
-        else AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
+        if (featureCtrl.feature == null || isNoName) {
+            null
+        } else {
+            AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
+        }
 
     private fun setNoName() {
         isNoName = true
@@ -209,7 +209,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val firstLanguage = namesAdapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
-        if (firstLanguage != null) prefs.edit { putString(PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage) }
+        if (firstLanguage != null) prefs.putString(PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage)
 
         viewLifecycleScope.launch {
             applyEdit(createEditAction(
@@ -265,12 +265,13 @@ private suspend fun createEditAction(
             // only a name was added (name was missing before; user wouldn't be able to answer
             // if the place changed or not anyway, so rather keep previous information)
             hasAddedNames && !hasChangedFeature
-            // only the feature was changed, the non-empty name did not change (if it was a
-            // different shop now, it would also have a different name)
-            || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
+            // previously: only the feature was changed, the non-empty name did not change
+            // - see #5195
             // place has been added, nothing to replace
             || element == null
-        ) false
+        ) {
+            false
+        }
         // always replace if:
         else if (
             // the feature is a brand feature or was a brand feature (i.e. overwrites the name)
@@ -280,11 +281,15 @@ private suspend fun createEditAction(
             || wasVacant && hasChangedFeature
             // it's vacant now
             || isVacant
-        ) true
+        ) {
+            true
+        }
         // ask whether it is still the same shop if:
         // + the name was changed
         // + the feature was changed and the name was empty before
-        else confirmReplaceShop()
+        else {
+            confirmReplaceShop()
+        }
 
     if (doReplaceShop) {
         tagChanges.replaceShop(newFeature.addTags)
@@ -307,15 +312,8 @@ private suspend fun createEditAction(
     }
 
     return if (element != null) {
-        UpdateElementTagsAction(tagChanges.create())
+        UpdateElementTagsAction(element!!, tagChanges.create())
     } else {
         CreateNodeAction(geometry.center, tagChanges)
     }
 }
-
-private fun createVacantShop(resources: Resources) = DummyFeature(
-    "shop/vacant",
-    resources.getString(R.string.vacant_shop_title),
-    "maki-shop",
-    mapOf("disused:shop" to "yes")
-)

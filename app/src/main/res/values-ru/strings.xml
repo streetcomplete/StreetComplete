@@ -2,13 +2,13 @@
 <resources>
     <string name="action_settings">"Настройки"</string>
     <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
-    <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
+    <string name="oauth_failed_permissions">"Авторизация не удалась: должны быть предоставлены все указанные разрешения"</string>
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе в мегабайтах"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показать все заметки"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Показывать все заметки, с вопросами и без"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Также показывать заметки, сформулированные не как вопросы"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
     <string name="pref_title_map_cache">"Размер кэша карты"</string>
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
@@ -58,7 +58,7 @@
     <string name="about_title_feedback">"Отправить отзыв"</string>
     <string name="about_title_license">"Лицензия"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
-    <string name="offline">"Нет подключения к сети"</string>
+    <string name="offline">"Нет подключения к Интернету"</string>
     <string name="confirmation_authorize_now">"Для того, чтобы ваши ответы были переданы в базу данных OSM, необходимо войти в свою учётную запись в OSM. Сделать это сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
     <string name="version_banned_message">"Эта версия StreetComplete устарела. Пожалуйста, обновите её!"</string>
@@ -312,7 +312,6 @@
     <string name="quest_cycleway_value_none">"нет"</string>
     <string name="quest_cycleway_value_shared">"полоса явно указанная для совместного движения"</string>
     <string name="quest_cycleway_value_bus_lane">"на выделенной полосе для автобусов"</string>
-    <string name="quest_cycleway_value_sidewalk">"разрешённый знаками тротуар для пешеходов и велосипедистов"</string>
     <string name="quest_leave_new_note_create_image_error">"Не удалось создать файл для фото"</string>
     <string name="quest_cycleway_value_lane_dual">"велосипедная полоса, движение в обе стороны"</string>
     <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
@@ -737,7 +736,6 @@
     <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
-    <string name="quest_is_defibrillator_inside_title">"Дефибриллятор (AED) находится внутри здания?"</string>
     <string name="about_title_translate">"Помогите перевести это приложение"</string>
     <string name="about_description_translate">"%1$s переведён на %2$d%%"</string>
     <string name="quest_oneway2_title">"Это улица с односторонним движением? Если да, то в каком направлении?"</string>
@@ -831,7 +829,7 @@
     <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Это платная парковка для велосипеда?"</string>
-    <string name="quest_buildingType_house_description2">"Частный дом"</string>
+    <string name="quest_buildingType_house_description2">"дом на одну семью, например, находящийся в ряду домов"</string>
     <string name="quest_drinking_water_potable_signed">"Питьевая вода (есть знак)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Питьевая вода (нет знака)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Не питьевая вода (есть знак)"</string>
@@ -868,7 +866,7 @@
 Данные обновляются через %1$s дней, а неиспользованные данные автоматически удаляются через %2$s дней."</string>
     <string name="pref_background_type_select">"Выберите тип фона"</string>
     <string name="background_type_map">"Карта"</string>
-    <string name="background_type_aerial_esri">"Воздушная (Esri)"</string>
+    <string name="background_type_aerial_esri">"Аэрофото (Esri)"</string>
     <string name="quest_barrier_type_title">"Что это за барьер?"</string>
     <string name="quest_barrier_type_lift_gate">"Шлагбаум"</string>
     <string name="quest_barrier_type_bollard">"Боллард(ы)"</string>
@@ -893,7 +891,7 @@
     <string name="quest_policeType_title">"Какой это полицейский участок?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Преобразовано в калитку-вертушку"</string>
     <string name="quest_stile_type_title">"Какой это тип приступка?"</string>
-    <string name="quest_buildingType_semi_detached_description2">"примыкающий односемейный дом(а)"</string>
+    <string name="quest_buildingType_semi_detached_description2">"дома на одну семью под одной крышей"</string>
     <string name="pref_title_quests2">"Выбор и приоритет квеста"</string>
     <string name="pref_subtitle_quests">"выбрано %1$d из %2$d"</string>
     <string name="no_location_permission_warning_title">"Разрешение определения местоположения"</string>
@@ -910,7 +908,6 @@
     <string name="about_title_faq">"ЧаВо"</string>
     <string name="quest_buildingLevels_title2">"Сколько этажей над подвалом у этого здания?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Сколько этажей над подвалом у этой части здания?"</string>
-    <string name="quest_crossing_title">"Есть ли бордюры в месте пересечения этого пути с дорогой? Какого типа?"</string>
     <string name="pref_subtitle_quests_preset_name">"Преднастройка: %s"</string>
     <string name="default_disabled_msg_roofShape">"Этот тип квеста отключён по умолчанию, потому что форму крыши часто нелегко распознать с улицы. Этот тип задания также довольно трудоёмкий; в большинстве случаев проще и эффективнее сопоставить его с помощью аэрофотоснимков дома."</string>
     <string name="quest_religion_animist">"Анимист"</string>
@@ -944,7 +941,6 @@
     <string name="quest_buildingType_bridge">"Мост между зданиями (эстакада)"</string>
     <string name="quest_laundrySelfService_title2">"Эта прачечная с самообслуживанием?"</string>
     <string name="quest_dietType_explanation_halal">"Халяльные продукты должны быть приготовлены в соответствии со специальными правилами, а агентства по сертификации Халяль должны маркировать продукцию в соответствии с ними."</string>
-    <string name="quest_picnicTableCover_title">"Столик для пикника под навесом (укрыт от дождя)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Эта часть является лестницей"</string>
     <string name="quest_barrier_type_passage_conversion">"Превращён в проход в стене/заборе/и т.п."</string>
     <string name="quest_barrier_type_gate_conversion">"Преобразовано в ворота"</string>
@@ -1187,7 +1183,6 @@
     <string name="quest_memorialType_stele_wooden">"Деревянная стела (мемориальная плита)"</string>
     <string name="quest_memorialType_stele_stone">"Каменная стела (мемориальная плита)"</string>
     <string name="quest_memorialType_sculpture">"Другая скульптура"</string>
-    <string name="select_overlay">"Выбрать наложение"</string>
     <string name="overlay_none">"Нет"</string>
     <string name="overlay_lit">"Уличное освещение"</string>
     <string name="lit_value_yes">"Освещено"</string>
@@ -1230,7 +1225,6 @@
     <string name="quest_address_street_hint2">"Нажмите на улицу на карте чтобы выбрать её"</string>
     <string name="quest_bicycle_incline_title">"Какое направление здесь ведёт вверх?"</string>
     <string name="quest_bicycle_incline_up_and_down">"То вверх, то вниз"</string>
-    <string name="quest_drinking_water_type_title">"Как здесь предоставляется питьевая вода?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Другой питьевой фонтан"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Питьевой фонтан с небольшой струйкой воды"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Только наполнение бутылок"</string>
@@ -1242,7 +1236,6 @@
     <string name="overlay_addresses">"Адреса"</string>
     <string name="overlay_shops">"Магазины"</string>
     <string name="name_label">"Название"</string>
-    <string name="vacant_shop_title">"Свободный магазин"</string>
     <string name="unknown_shop_title">"Другой тип места"</string>
     <string name="quest_address_answer_no_address">"Тут нет адреса"</string>
     <string name="quest_bicycle_barrier_installation_title">"Может ли эта преграда для велосипедов быть открыта (с ключом или без)?"</string>
@@ -1287,16 +1280,88 @@
     <string name="overlay_cycleway">"Велодорожки"</string>
     <string name="bicycle_boulevard_is_a">"Это %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Это не %1$s"</string>
+    <string name="bicycle_boulevard">"Велосипедная зона"</string>
     <string name="separate_cycleway_no">"Проезд на велосипеде запрещён"</string>
     <string name="separate_cycleway_allowed">"Движение на велосипеде разрешено"</string>
     <string name="separate_cycleway_no_or_allowed">"Не предназначено для велосипедистов (проезд на велосипеде может быть разрешён)"</string>
+    <string name="separate_cycleway_non_segregated">"Совмещённая дорожка"</string>
     <string name="separate_cycleway_segregated">"Велосипеда и пешеходная дорожки разделены"</string>
     <string name="separate_cycleway_exclusive">"Только для велосипедов"</string>
     <string name="separate_cycleway_with_sidewalk">"Вело дорожка с отдельным тротуаром для пешеходов"</string>
     <string name="cycleway_reverse_direction">"Развернуть направление велосипедной дорожки"</string>
     <string name="cycleway_reverse_direction_warning">"Велосипедная дорожка, идущая в противоположном направлении бывает крайне редко."</string>
+    <string name="cycleway_reverse_direction_toast">"Нажмите, на какую сторону повернуть"</string>
     <string name="separate_cycleway_path">"Дорожка или тропинка"</string>
     <string name="quest_fireHydrant_type_pipe">"Труба"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"разрешённый знаками тротуар для пешеходов и велосипедистов, движение в обе стороны"</string>
+    <string name="measure_info_title">"Достижение оптимальной точности"</string>
+    <string name="measure_info_html_description">"&lt;p&gt;ARCore иногда (в начале) предполагает, что земля немного ниже или выше, чем на самом деле. Это приводит к ошибке измерения, которая увеличивается, когда вы наклоняете телефон к горизонту.&lt;/p&gt; &lt;p&gt;Установите начальную и конечную точки, указывая телефон прямо внизу (чтобы видеть белую стрелку сверху), чтобы полностью избежать этой проблемы для горизонтальных измерений.&lt;/p&gt; &lt;p&gt;Для вертикальных измерений вам нужно вместо этого проверить, не кажется ли стартовая точка движущейся относительно земли, смотря на нее с разных направлений.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Данное приложение использует &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;сервисы Google Play для дополненной реальности&lt;/a&gt; (ARCore), предоставленные Google в соответствии с &lt;a href=\"https://policies.google.com/privacy\"&gt;политикой приватности Google&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Этот тип квеста по умолчанию отключен, поскольку может потребоваться повторная проверка ситуации в определенное время года."</string>
+    <string name="quest_gritBinSeasonal_title">"Есть ли это здесь кроме зимнего сезона?"</string>
+    <string name="street_parking_staggered_on_street">"На проезжей части, если оставляет возможность проехать"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Частично на проезжей части, если оставляет возможность проехать"</string>
+    <string name="quest_traffic_signals_sound_description">"Подсказка: обратите внимание на динамики.  Не все звуковые сигналы можно активировать с помощью кнопки."</string>
+    <string name="quest_presets_duplicate">"Дублировать"</string>
+    <string name="label_block">"блок"</string>
+    <string name="quest_address_answer_block">"Это внутри одного квартала (домовладения)..."</string>
+    <string name="quest_address_answer_no_block">"Это находится за пределами одного квартала..."</string>
+    <string name="quest_surface_value_mud">"Стойкая грязь"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Здесь нет туалета"</string>
+    <string name="unknown_surface_title">"Другой вид поверхности"</string>
+    <string name="overlay_surface">"Покрытие"</string>
+    <string name="overlay_path_surface_segregated">"Разделить на велосипедную и пешеходную части"</string>
+    <string name="quest_crossing_title2">"Здесь есть переход?"</string>
+    <string name="quest_crossing_yes">"Да (например, здесь опущен бордюр или есть разметка)"</string>
+    <string name="quest_crossing_no">"Нет, но пересечение возможно"</string>
+    <string name="quest_crossing_prohibited">"Нет, пересечение запрещено или невозможно"</string>
+    <string name="quest_hairdresser_title">"Какие клиенты посещают эту парикмахерскую?"</string>
+    <string name="quest_hairdresser_male_and_female">"Любые"</string>
+    <string name="quest_hairdresser_female_only">"Женщины"</string>
+    <string name="quest_hairdresser_male_only">"Мужчины"</string>
+    <string name="quest_hairdresser_not_signed">"Не подписано"</string>
+    <string name="quest_amenityCover_title">"Защищен ли данный объект от дождя?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Расширение бордюра"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Остров безопасности"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Преднамеренно круто изогнутая улица или ряд поворотов, которые вы должны объехать."</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Расширение бордюра + островок безопасности"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Тут нет суженной полосы"</string>
+    <string name="quest_tactilePaving_title_steps">"Есть ли тактильное покрытие вверху и внизу этих ступеней?"</string>
+    <string name="quest_tactilePaving_steps_top">"Только наверху"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Только внизу"</string>
+    <string name="overlay_addresses_no_entrance">"Это не вход..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"дорожка общего пользования"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"дорожка общего пользования, в обоих направлениях"</string>
+    <string name="overlays_tutorial_title">"Наложения"</string>
+    <string name="overlays_tutorial_intro">"Вы нашли новый способ редактирования данных!"</string>
+    <string name="overlays_tutorial_display">"Каждое наложение отображает один тип данных, например магазины или улицы.
+
+ Данные выделены разными цветами, чтобы дать вам хорошее представление о том, что было записано на данный момент.
+ Отсутствующие данные всегда отображаются красным цветом."</string>
+    <string name="overlays_tutorial_edit">"Нажмите на выделенные данные, чтобы отобразить или отредактировать их.  Вы также можете разделить пути или оставить заметки, как в случае с квестами.
+
+ Кроме того, некоторые наложения позволяют добавлять новые данные в место отображаемого перекрестия, например адреса."</string>
+    <string name="quest_crossing_kerb_height_title">"Какова высота бордюров на этом переходе?"</string>
+    <string name="quest_maxheight_sign_title">"Какое ограничение по высоте здесь указано?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Какое ограничение по высоте указано под мостом?"</string>
+    <string name="quest_leave_new_note_as_answer">"В этом случае вам нужно оставить заметку, в которой вы объясните ситуацию."</string>
+    <string name="quest_drinking_water_type_title2">"Есть ли здесь питьевая вода? Если да, то каков её источник?"</string>
+    <string name="quest_is_amenity_inside_title">"Это внутри здания?"</string>
+    <string name="quest_bbq_fuel_title">"На чем работает этот гриль?"</string>
+    <string name="quest_bbq_fuel_wood">"Дерево"</string>
+    <string name="quest_bbq_fuel_electric">"Электро"</string>
+    <string name="quest_bbq_fuel_charcoal">"Уголь"</string>
+    <string name="inside">"внутри"</string>
+    <string name="outside">"снаружи"</string>
+    <string name="quest_recycling_type_food_waste">"Пищевые отходы"</string>
+    <string name="quest_defibrillator_location">"Где находится этот дефибриллятор?"</string>
+    <string name="quest_defibrillator_location_description">"Пожалуйста, кратко опишите его местоположение (например, «в комнате вахтёра»)."</string>
+    <string name="quest_sanitary_dump_station_title">"Есть ли здесь место для слива человеческих отходов?"</string>
+    <string name="quest_sanitary_dump_station_description">"Место для хранения слитых отходов жизнедеятельности человека из бака туалета дома на колёсах, грузовика для дальних перевозок и т.д. Обычно обозначается таким знаком:"</string>
+    <string name="quest_generalFee_title">"Нужно ли заплатить, чтобы воспользоваться этим?"</string>
+    <string name="about_title_logs">"Лог (%1$d)"</string>
+    <string name="about_summary_logs">"для использования в отчетах об ошибках"</string>
+    <string name="action_filter">"Фильтр"</string>
+    <string name="about_title_show_logs">"Показать лог"</string>
+    <string name="label_log_newer_than">"С"</string>
+    <string name="label_log_older_than">"По"</string>
 </resources>

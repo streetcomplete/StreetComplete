@@ -11,12 +11,18 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun Sidewalk.asStreetSideItem(): StreetSideDisplayItem<Sidewalk>? =
-    if (this == INVALID) null
-    else StreetSideItem(this, imageResId, titleResId, iconResId, floatingIconResId)
+    if (this == INVALID) {
+        null
+    } else {
+        StreetSideItem(this, imageResId, titleResId, iconResId, floatingIconResId)
+    }
 
 fun Sidewalk.asItem(): DisplayItem<Sidewalk>? =
-    if (this == INVALID) null
-    else Item(this, iconResId, titleResId)
+    if (this == INVALID) {
+        null
+    } else {
+        Item(this, iconResId, titleResId)
+    }
 
 private val Sidewalk.iconResId get() = when (this) {
     YES -> R.drawable.ic_sidewalk_yes

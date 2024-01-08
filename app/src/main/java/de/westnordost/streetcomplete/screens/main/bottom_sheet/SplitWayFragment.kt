@@ -18,6 +18,8 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -35,7 +37,6 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
@@ -54,7 +55,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -73,6 +73,7 @@ class SplitWayFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val soundFx: SoundFx by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
 
     override val elementKey: ElementKey by lazy { way.key }
 
@@ -151,11 +152,10 @@ class SplitWayFragment :
     private suspend fun splitWay() {
         binding.glassPane.isGone = false
         if (splits.size <= 2 || confirmManySplits()) {
-            val location = listOfNotNull(listener?.displayedMapLocation)
-            if (checkIsSurvey(requireContext(), geometry, location)) {
-                val action = SplitWayAction(ArrayList(splits.map { it.first }))
+            if (checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
+                val action = SplitWayAction(way, ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
-                    elementEditsController.add(editType, way, geometry, "survey", action)
+                    elementEditsController.add(editType, geometry, "survey", action)
                 }
                 listener?.onSplittedWay(editType, way, geometry)
                 return
@@ -189,7 +189,6 @@ class SplitWayFragment :
 
     @UiThread
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-
         val splitWayCandidates = createSplits(position, clickAreaSizeInMeters)
         if (splitWayCandidates.isEmpty()) return true
 

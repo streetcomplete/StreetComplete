@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
 
 class SeparateCyclewayCreatorKtTest {
     @Test fun `apply none`() {

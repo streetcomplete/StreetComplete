@@ -312,7 +312,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_cycleway_value_none">"cap"</string>
     <string name="quest_cycleway_value_shared">"el carril és explícitament compartit amb la resta de trànsit"</string>
     <string name="quest_cycleway_value_bus_lane">"al carril de bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"vorera explícitament compartida"</string>
     <string name="quest_leave_new_note_create_image_error">"No s'ha pogut crear un fitxer per fotos"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, doble sentit"</string>
     <string name="quest_cycleway_value_track_dual">"pista per ciclistes, doble sentit"</string>
@@ -732,7 +731,6 @@ d'acompliment"</string>
     <string name="resurvey_intervals_less_often">"Demana-ho menys sovint"</string>
     <string name="resurvey_intervals_default">"Per defecte"</string>
     <string name="resurvey_intervals_more_often">"Demana-ho més sovint"</string>
-    <string name="quest_is_defibrillator_inside_title">"Hi ha un desfibril·lador (DEA) dins l'edifici?"</string>
     <string name="about_title_translate">"Ajudeu a traduir aquesta aplicació"</string>
     <string name="about_description_translate">"%1$s està traduït al %2$d%%"</string>
     <string name="quest_oneway2_title">"Aquest és un carrer de sentit únic? En quin sentit?"</string>
@@ -908,7 +906,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Quants nivells per sobre del soterrani té aquest edifici?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quants nivells per sobre del soterrani té aquesta part de l'edifici?"</string>
-    <string name="quest_crossing_title">"Hi han vorades per on aquest camí creua la carretera? De quina mena?"</string>
     <string name="pref_subtitle_quests_preset_name">"Predefinit: %s"</string>
     <string name="default_disabled_msg_roofShape">"Aquest tipus de missió està desactivada per defecte perquè les formes del sostre sovint no són fàcilment visibles des del carrer. Aquest tipus de missió també consumeix molt temps; en la majoria dels casos és més fàcil i eficient traçar-ho a partir d'imatges aèries a casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -942,7 +939,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_buildingType_bridge">"Pont entre edificis (penjant)"</string>
     <string name="quest_laundrySelfService_title2">"Aquesta bugaderia és d'autoservei?"</string>
     <string name="quest_dietType_explanation_halal">"Els productes Halal han d'estar preparats seguint unes regles especials, amb el certificat Halal de les agències de certificació corresponent."</string>
-    <string name="quest_picnicTableCover_title">"Està aquesta taula de picnic coberta (protegida de la plutja)? "</string>
     <string name="quest_generic_answer_is_actually_steps">"Aquesta part són escales"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertit en un pas en una paret/tanca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"S'ha convertit a una porta"</string>
@@ -1187,7 +1183,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_memorialType_stele_wooden">"Estela de fusta (làpida commemorativa)"</string>
     <string name="quest_memorialType_stele_stone">"Estela de pedra (làpida commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altres escultures"</string>
-    <string name="select_overlay">"Seleccionar superposició"</string>
     <string name="overlay_none">"Cap"</string>
     <string name="overlay_lit">"Il·luminació al carrer"</string>
     <string name="lit_value_yes">"Il·luminat"</string>
@@ -1233,7 +1228,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_bicycle_incline_title">"Quina direcció va cap amunt aquí?
 "</string>
     <string name="quest_bicycle_incline_up_and_down">"Són salts de pujada i baixada "</string>
-    <string name="quest_drinking_water_type_title">"Com es proporciona l'aigua potable aquí?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Altres fonts d'aigua
 "</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Font que emet un petit raig d'aigua"</string>
@@ -1247,7 +1241,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="overlay_addresses">"Adreces"</string>
     <string name="overlay_shops">"Botigues"</string>
     <string name="name_label">"Nom:"</string>
-    <string name="vacant_shop_title">"Local vacant"</string>
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
     <string name="quest_address_answer_no_address">"No hi ha adreça"</string>
     <string name="quest_bicycle_barrier_installation_title">"Es pot obrir la barrera per a bicletes?"</string>
@@ -1305,7 +1298,6 @@ Menejar ara?"</string>
     <string name="cycleway_reverse_direction_toast">"Toca el sentit a invertir"</string>
     <string name="separate_cycleway_path">"Camí o pista"</string>
     <string name="quest_fireHydrant_type_pipe">"Tub"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"vorera explícitament compartida, doble sentit"</string>
     <string name="measure_info_title">"Aconseguint precisió òptima"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore de vegades (inicialment) suposa que el sòl és una mica més baix o més alt del que és realment. Això introdueix un error de mesura que es fa més gran com més inclines el telèfon cap a l'horitzó.&lt;/p&gt;
 &lt;p&gt;Definiu cadascun el punt inicial i final mentre apunteu el telèfon cap avall (de manera que vegeu la fletxa blanca des de dalt) per evitar completament aquest problema amb les mesures horitzontals.&lt;/p&gt;
@@ -1325,4 +1317,37 @@ Menejar ara?"</string>
     <string name="unknown_surface_title">"Un altre tipus de superfície"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
+    <string name="quest_crossing_title2">"Hi ha un creuament aquí?"</string>
+    <string name="quest_crossing_yes">"Si (p. ex. el voral està rebaixat o hi ha marques)"</string>
+    <string name="quest_crossing_no">"No, però és possible creuar"</string>
+    <string name="quest_crossing_prohibited">"No, creuar està prohibit o és impossible"</string>
+    <string name="quest_hairdresser_title">"Quin tipus de clients visita aquesta perruqueria?"</string>
+    <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
+    <string name="quest_hairdresser_female_only">"Dones"</string>
+    <string name="quest_hairdresser_male_only">"Homens"</string>
+    <string name="quest_hairdresser_not_signed">"No senyalitzat"</string>
+    <string name="quest_amenityCover_title">"Està cobert (protegit de la pluja)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Extensió de la vorera"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Illa de trànsit"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Extensió de la vorera + illa de trànsit"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Aquí no hi ha cap carril estret"</string>
+    <string name="quest_tactilePaving_title_steps">"Hi ha un paviment podotàctil a la part superior i inferior d'aquestes escales?"</string>
+    <string name="quest_tactilePaving_steps_top">"Només a la part superior"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Només a la part inferior"</string>
+    <string name="overlay_addresses_no_entrance">"No és una entrada..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Camí d'us compartit"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"camí d'ús compartit, ambdues direccions"</string>
+    <string name="overlays_tutorial_title">"Superposicions"</string>
+    <string name="overlays_tutorial_intro">"Heu trobat una nova manera d'editar dades!"</string>
+    <string name="overlays_tutorial_display">"Cada superposició mostra un tipus de dades, per exemple, botigues o superfícies de carrers.
+
+Les dades es destaquen amb diferents colors per oferir-vos una bona visió general del que s'ha registrat fins ara.
+Les dades que falten sempre es mostren en vermell."</string>
+    <string name="overlays_tutorial_edit">"Toqueu les dades destacades per mostrar-les o editar-les. També podeu dividir vies o afegir notes, com amb les missions.
+
+A més, algunes superposicions us permeten afegir dades noves a la posició d'un punt de mira mostrat, com ara la superposició d'adreces."</string>
+    <string name="quest_crossing_kerb_height_title">"Quina és l'alçada dels vorals en aquest pas?"</string>
+    <string name="quest_maxheight_sign_title">"Quin límit d'alçada s'indica aquí?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quin límit d'alçada s'indica a sota del pont?"</string>
 </resources>

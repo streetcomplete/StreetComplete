@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [sr, it]
 atmOperators: [Zagrebačka banka, PBZ, Euronet, Privredna banka Zagreb, Erste, HPB, Erste Bank, Hrvatska poštanska banka, ZABA, OTP Bank, RBA, OTP Banka, OTP, Raiffeisen, Euronet Worldwide, Splitska Banka, Raiffeisen Bank, Addiko Bank, otpbanka, Auro Domus, Hypo, Raiffeisenbank Austria, Erste Banka, Raiffeisenbank, Addiko, Privredna banka, Karlovačka banka, Sberbank, Kreditna banka Zagreb, Zagrebacka banka, MoneyGet, Hypo Group, Erste Bank Croatia, Erste & Steiermärkische banka, Raiffaisen Bank, HypoGroup Alpe Adria, Zagrebačka banka d.d., Jadranska banka, Volksbank, Poštanska banka, Raiffeisen banka, Erste&Steiermärkische Bank, Societe Generale - Splitska banka, Erste & Steiermärkische Bank, Hypo Alpe Adria, OTP banka d.d., Addiko Banka, Euonet, Hypo Alpe Adria Bank, BSpend, optbanka, Payten]
 chargingStationOperators: [ELEN, Elen, Tesla Motors Inc., MOL Plugee, Eurokod]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true

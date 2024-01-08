@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [Banco Agrícola, Banco de América Central, Banco Cuscatlan, Scotiabank, Caja de Crédito, Davivienda]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dots
 hasAdvisoryCycleLane: true
 hasBicycleBoulevard: true

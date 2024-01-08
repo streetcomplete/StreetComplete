@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)

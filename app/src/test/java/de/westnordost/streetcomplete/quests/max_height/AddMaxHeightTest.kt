@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class AddMaxHeightTest {
 
@@ -45,6 +45,29 @@ class AddMaxHeightTest {
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(parkingEntrance))
+    }
+
+    @Test fun `applicable to railway crossing node that is a vertex of an electrified railway`() {
+        val crossing = node(2, tags = mapOf("railway" to "level_crossing"))
+        val railway = way(1, listOf(1, 2), mapOf(
+            "railway" to "rail",
+            "electrified" to "contact_line"
+        ))
+
+        val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
+    }
+
+    @Test fun `not applicable to railway crossing node that is a vertex of a normal railway`() {
+        val crossing = node(2, tags = mapOf("railway" to "level_crossing"))
+        val railway = way(1, listOf(1, 2), mapOf("railway" to "rail"))
+
+        val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
+
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(crossing))
     }
 
     @Test fun `applicable to road below bridge`() {

@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -18,7 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
@@ -49,7 +47,9 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
+import de.westnordost.streetcomplete.screens.main.controls.OverlaysButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -66,6 +67,8 @@ class MainActivity :
     BaseActivity(),
     MainFragment.Listener,
     TutorialFragment.Listener,
+    OverlaysButtonFragment.Listener,
+    OverlaysTutorialFragment.Listener,
     MessagesButtonFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
@@ -80,7 +83,7 @@ class MainActivity :
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private var mainFragment: MainFragment? = null
 
@@ -148,11 +151,12 @@ class MainActivity :
         val data = intent.data ?: return
         val config = urlConfigController.parse(data.toString()) ?: return
 
-        val alreadyExists = questPresetsSource.getByName(config.presetName) != null
+        val alreadyExists = config.presetName == null || questPresetsSource.getByName(config.presetName) != null
+        val name = config.presetName ?: getString(R.string.quest_presets_default_name)
 
-        val name = "<i>" + Html.escapeHtml(config.presetName) + "</i>"
+        val htmlName = "<i>" + Html.escapeHtml(name) + "</i>"
         val text = StringBuilder()
-        text.append(getString(R.string.urlconfig_apply_message, name))
+        text.append(getString(R.string.urlconfig_apply_message, htmlName))
         text.append("<br><br>")
         if (alreadyExists) {
             text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")
@@ -199,23 +203,6 @@ class MainActivity :
         uploadController.showNotification = false
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (!forwardBackPressedToChildren()) super.onBackPressed()
-    }
-
-    private fun forwardBackPressedToChildren(): Boolean {
-        val messagesContainerFragment = messagesContainerFragment
-        if (messagesContainerFragment != null) {
-            if (messagesContainerFragment.onBackPressed()) return true
-        }
-        val mainFragment = mainFragment
-        if (mainFragment != null) {
-            if (mainFragment.onBackPressed()) return true
-        }
-        return false
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val mainFragment = mainFragment
         if (event.keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
@@ -230,10 +217,8 @@ class MainActivity :
     public override fun onPause() {
         super.onPause()
         val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.edit {
-            putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
-            putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
-        }
+        prefs.putDouble(Prefs.MAP_LATITUDE, pos.latitude)
+        prefs.putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
         downloadController.showNotification = true
         uploadController.showNotification = true
     }
@@ -357,8 +342,15 @@ class MainActivity :
     override fun onTutorialFinished() {
         requestLocation()
 
-        prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
+        prefs.putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true)
+        removeTutorialFragment()
+    }
 
+    private fun requestLocation() {
+        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    }
+
+    private fun removeTutorialFragment() {
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
             supportFragmentManager.commit {
@@ -368,8 +360,20 @@ class MainActivity :
         }
     }
 
-    private fun requestLocation() {
-        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
+    /* ---------------------------- OverlaysButtonFragment.Listener ----------------------------- */
+
+    override fun onShowOverlaysTutorial() {
+        supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+            add(R.id.fragment_container, OverlaysTutorialFragment())
+        }
+    }
+
+    /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
+
+    override fun onOverlaysTutorialFinished() {
+        prefs.putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true)
+        removeTutorialFragment()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */

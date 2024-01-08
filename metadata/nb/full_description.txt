@@ -1,5 +1,5 @@
 Hjelp til med å forbedre OpenStreetMap med StreetComplete!
 
-Denne appen finner mangelfulle registreringer i nærheten av deg og viser dem med markører på kartet. Klikk på en markør for å få opp enkle spørsmål som bidrar til å fullføre informasjonen om stedet.
+Denne appen finner manglende kartdata i nærheten av deg og viser dem som oppdrag på kartet. Løs oppdragene ved å besøke stedene og svar på enkle spørsmål for å oppdatere kartet.
 
 Informasjonen du legger til blir automatisk lastet opp til OpenStreetMap i ditt navn, uten behov for andre redigeringsverktøy.

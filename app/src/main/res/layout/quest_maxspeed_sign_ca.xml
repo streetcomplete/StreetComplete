@@ -30,7 +30,7 @@
         android:textStyle="bold"
         android:maxLength="3"
         android:textSize="48dp"
-        tools:text="50"/>
+        tools:text="999"/>
 
     <Spinner
         android:id="@+id/speedUnitSelect"

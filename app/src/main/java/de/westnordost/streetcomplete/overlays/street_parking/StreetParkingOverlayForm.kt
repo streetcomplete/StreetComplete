@@ -64,7 +64,9 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         binding.hintTextView.text = if (width != null) {
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             getString(R.string.street_parking_street_width, widthFormatted)
-        } else null
+        } else {
+            null
+        }
 
         originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
@@ -133,12 +135,16 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.applyTo(tagChanges)
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
 
 private enum class ParkingSelection {
-    PARALLEL, DIAGONAL, PERPENDICULAR, SEPARATE, NO
+    PARALLEL,
+    DIAGONAL,
+    PERPENDICULAR,
+    SEPARATE,
+    NO
 }
 
 private val ParkingSelection.titleResId: Int get() = when (this) {

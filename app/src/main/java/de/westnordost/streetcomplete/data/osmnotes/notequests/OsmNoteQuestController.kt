@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Used to get visible osm note quests */
 class OsmNoteQuestController(
@@ -25,9 +25,9 @@ class OsmNoteQuestController(
         fun onUnhid(edit: OsmNoteQuestHidden)
         fun onUnhidAll()
     }
-    private val hideListeners: MutableList<HideOsmNoteQuestListener> = CopyOnWriteArrayList()
+    private val hideListeners = Listeners<HideOsmNoteQuestListener>()
 
-    private val listeners: MutableList<OsmNoteQuestSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         notesPreferences.showOnlyNotesPhrasedAsQuestions
@@ -44,8 +44,11 @@ class OsmNoteQuestController(
             }
             for (note in updated) {
                 val q = createQuestForNote(note, hiddenNoteIds)
-                if (q != null) quests.add(q)
-                else deletedQuestIds.add(note.id)
+                if (q != null) {
+                    quests.add(q)
+                } else {
+                    deletedQuestIds.add(note.id)
+                }
             }
             onUpdated(quests, deletedQuestIds)
         }
@@ -93,7 +96,9 @@ class OsmNoteQuestController(
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)) {
             OsmNoteQuest(note.id, note.position)
-        } else null
+        } else {
+            null
+        }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -203,7 +208,9 @@ private fun Note.shouldShowAsQuest(
     /* don't show notes where user replied last unless he wrote a survey required marker */
     if (comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
        replies yet */
@@ -216,7 +223,9 @@ private fun Note.shouldShowAsQuest(
     if (showOnlyNotesPhrasedAsQuestions
         && !probablyContainsQuestion()
         && !containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     return true
 }

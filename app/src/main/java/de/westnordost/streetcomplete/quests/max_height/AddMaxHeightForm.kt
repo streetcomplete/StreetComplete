@@ -17,6 +17,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
     override val contentLayoutResId get() = when (countryInfo.countryCode) {
         "AU", "NZ", "US", "CA" -> R.layout.quest_maxheight_mutcd
+        "FI", "IS", "SE" -> R.layout.quest_maxheight_fi
         else -> R.layout.quest_maxheight
     }
 
@@ -40,7 +41,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
             inchesInput = view.findViewById(R.id.inchInput)
         )
         lengthInput.maxFeetDigits = 2
-        lengthInput.maxMeterDigits = Pair(1, 2)
+        lengthInput.maxMeterDigits = Pair(2, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = { checkIsFormComplete() }
     }

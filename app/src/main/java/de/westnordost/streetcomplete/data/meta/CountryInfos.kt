@@ -2,12 +2,17 @@ package de.westnordost.streetcomplete.data.meta
 
 import android.content.res.AssetManager
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.YamlConfiguration
 import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.countryboundaries.CountryBoundaries
 import java.io.File
 import java.io.SequenceInputStream
 
 class CountryInfos(private val assetManager: AssetManager) {
+    private val yaml = Yaml(configuration = YamlConfiguration(
+        strictMode = false, // ignore unknown properties
+    ))
+
     private val countryInfoMap = HashMap<String, IncompleteCountryInfo?>()
     private val defaultCountryInfo: IncompleteCountryInfo by lazy {
         loadCountryInfo("default")
@@ -40,7 +45,7 @@ class CountryInfos(private val assetManager: AssetManager) {
             val countryCode = countryCodeIso3166.split("-").first()
             val stream = SequenceInputStream("countryCode: $countryCode\n".byteInputStream(), inputStream)
 
-            return Yaml.default.decodeFromStream(stream)
+            return yaml.decodeFromStream(stream)
         }
     }
 

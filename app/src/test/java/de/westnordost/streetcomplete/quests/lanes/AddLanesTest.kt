@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class AddLanesTest {
 
@@ -43,7 +43,12 @@ class AddLanesTest {
             "surface" to "asphalt"
         ))))
         assertFalse(questType.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:zone30",
+            "source:maxspeed" to "DE:zone:30",
+            "highway" to "residential",
+            "surface" to "asphalt"
+        ))))
+        assertFalse(questType.isApplicableTo(way(tags = mapOf(
+            "maxspeed:type" to "DE:30",
             "highway" to "residential",
             "surface" to "asphalt"
         ))))

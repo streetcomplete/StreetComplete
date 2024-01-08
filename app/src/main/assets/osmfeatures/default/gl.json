@@ -52,6 +52,9 @@
                 "access": {
                     "label": "Permítese o acceso",
                     "options": {
+                        "customers": {
+                            "title": "Clientes"
+                        },
                         "designated": {
                             "description": "Acceso permitido segundo os sinais ou leis locais específicas",
                             "title": "Designado"
@@ -100,7 +103,21 @@
                 },
                 "access_simple": {
                     "label": "Permítese o acceso",
+                    "options": {
+                        "customers": "Só clientes",
+                        "private": "Privado",
+                        "yes": "Público"
+                    },
                     "terms": "permitido,acceso,público,publico,poder,pasar,non restrinxido,aberto"
+                },
+                "activity": {
+                    "label": "Actividade",
+                    "options": {
+                        "bicycle": "Ciclismo",
+                        "hiking": "Sendeirismo \n ",
+                        "mtb": "Ciclismo de montaña",
+                        "ski": "Esquí"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Tipo",
@@ -133,20 +150,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "Nº de edificio/Nº de mazá",
                         "neighbourhood": "Veciñanza ou subarrio",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Lugar",
                         "postcode": "Código postal",
                         "province": "Provincia",
                         "province!cn": "Provincia/Concello/AR/SAR",
                         "province!jp": "Prefectura",
                         "quarter": "Distrito",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Estado",
                         "street": "Rúa",
                         "subdistrict": "Subdistrito",
                         "subdistrict!vn": "Barrio/Comuna/Aldea pequena",
                         "suburb": "Barrio ou suburbio",
-                        "suburb!jp": "Barrio",
                         "unit": "Unidade"
                     },
                     "terms": "enderezo,dirección,ubicación,localización,posición,situación"
@@ -257,7 +271,10 @@
                     "label": "Bar de copas"
                 },
                 "barrier": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "bollard": "Bolardo"
+                    }
                 },
                 "basin": {
                     "label": "Tipo"
@@ -324,9 +341,6 @@
                 "brand": {
                     "label": "Marca",
                     "terms": "marca,distintivo,sinal,comercial"
-                },
-                "brewery": {
-                    "label": "Cervexa de bocoi / tirada"
                 },
                 "bridge": {
                     "label": "Tipo",
@@ -865,8 +879,18 @@
                 "highway": {
                     "label": "Tipo"
                 },
+                "highway_cartpath": {
+                    "options": {
+                        "service": "Estrada de servizo"
+                    }
+                },
                 "historic": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "building": "Edificio histórico",
+                        "castle": "Castelo",
+                        "church": "Igrexa"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Civilización histórica"
@@ -884,15 +908,7 @@
                     "label": "Canastras",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Doma clásica",
-                    "options": {
-                        "equestrian": "Si",
-                        "undefined": "Non"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Centro de equitación",
                     "options": {
                         "horse_riding": "Si",
                         "undefined": "Non"
@@ -905,17 +921,9 @@
                         "critical": "Límite: só transitábel para xinetes e cabalos experimentados. Obstáculos importantes. As pontes teñen que examinarse coidadosamente.",
                         "dangerous": "Perigoso: só axeitado para xinetes e cabalos moi experimentados e só cando vai bo tempo. Desmontar.",
                         "demanding": "Empregar con coidado: Vía irregular, pasaxes ocasionalmente difíciles.",
-                        "difficult": "Difícil: Camiño estreito e exposto. Pode ter obstáculos para pasar e corredoiras estreitas.",
-                        "impossible": "Imposíbel: camiño ou ponte non transitábel para cabalos. Moi estreito, soporte insuficiente, obstáculos coma chanzos. Perigo de morte."
+                        "difficult": "Difícil: Camiño estreito e exposto. Pode ter obstáculos para pasar e corredoiras estreitas."
                     },
                     "placeholder": "Difícil, perigoso..."
-                },
-                "horse_stables": {
-                    "label": "Cortello para montar a cabalo",
-                    "options": {
-                        "stables": "Si",
-                        "undefined": "Non"
-                    }
                 },
                 "hot_water": {
                     "label": "Auga quente"
@@ -1116,13 +1124,14 @@
                     "label": "Marco indicador"
                 },
                 "material": {
-                    "label": "Material"
+                    "label": "Material",
+                    "options": {
+                        "metal": "Metal",
+                        "stone": "Pedra"
+                    }
                 },
                 "max_age": {
                     "label": "Idade máxima"
-                },
-                "maxheight": {
-                    "label": "Altura máxima"
                 },
                 "maxspeed": {
                     "label": "Límite da velocidade",
@@ -1131,12 +1140,6 @@
                 "maxspeed/advisory": {
                     "label": "Límite da velocidade recomendado",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Estancia máxima"
-                },
-                "maxweight": {
-                    "label": "Peso máximo"
                 },
                 "memorial": {
                     "label": "Tipo"
@@ -1276,9 +1279,6 @@
                 "opening_hours": {
                     "label": "Horas",
                     "placeholder": "Descoñecido"
-                },
-                "opening_hours/covid19": {
-                    "label": "Horario coa pandemia COVID-19"
                 },
                 "operator": {
                     "label": "Operador"
@@ -1759,7 +1759,10 @@
                     "label": "Autoservizo"
                 },
                 "service": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "alley": "Ruela"
+                    }
                 },
                 "service/vehicle": {
                     "label": "Servizos"
@@ -1832,27 +1835,27 @@
                     "label": "SMS"
                 },
                 "social_facility": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "food_bank": "Banco de alimentos"
+                    }
                 },
                 "social_facility_for": {
-                    "label": "Persoas atendidas"
+                    "label": "Persoas atendidas",
+                    "options": {
+                        "woman": "Mulleres"
+                    }
                 },
                 "source": {
                     "label": "Fontes"
+                },
+                "species": {
+                    "label": "Especie"
                 },
                 "species/wikidata": {
                     "label": "Especies en Wikidata"
                 },
                 "sport": {
-                    "label": "Deportes"
-                },
-                "sport_ice": {
-                    "label": "Deportes"
-                },
-                "sport_racing_motor": {
-                    "label": "Deportes"
-                },
-                "sport_racing_nonmotor": {
                     "label": "Deportes"
                 },
                 "stars": {
@@ -1921,7 +1924,10 @@
                     "label": "Soporte"
                 },
                 "surface": {
-                    "label": "Superficie"
+                    "label": "Superficie",
+                    "options": {
+                        "sand": "Area"
+                    }
                 },
                 "surveillance": {
                     "label": "Tipo de vixilancia"
@@ -2674,10 +2680,6 @@
                     "name": "Área escolar infantil",
                     "terms": "preescolar,xardín de infancia,guardería,infantil,párvulos,garderia,gardería,gardaria,parvulos,gardaría,párvulo,xardin de infancia,xardín infantil,xardin infantil,zona,area,área,escola infantil"
                 },
-                "amenity/kneipp_water_cure": {
-                    "name": "Augas termais Kneipp",
-                    "terms": "cura,kneipp,kneippiano,auga,agua,hidroterapia,termas,balneario,terma"
-                },
                 "amenity/language_school": {
                     "name": "Escola de idiomas",
                     "terms": "escola,colexio,idiomas,linguas"
@@ -2885,10 +2887,6 @@
                 "amenity/recycling_centre": {
                     "name": "Centro de reciclaxe",
                     "terms": "centro de reciclaxe,punto limpo"
-                },
-                "amenity/recycling_container": {
-                    "name": "Contedor de reciclaxe",
-                    "terms": "reciclaxe,colector,contenedor,contedor,lixo,basura,vidro,papel,carton"
                 },
                 "amenity/refugee_site": {
                     "name": "Campo de refuxiados"
@@ -3151,10 +3149,6 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Papeleira para excrementos de cans"
-                },
-                "amenity/waste_basket": {
-                    "name": "Papeleira",
-                    "terms": "papeleira,lixo,basura"
                 },
                 "amenity/waste_disposal": {
                     "name": "Contedor de lixo"
@@ -3529,10 +3523,6 @@
                 },
                 "building/temple": {
                     "name": "Edificio do templo"
-                },
-                "building/terrace": {
-                    "name": "Ringleira de casas",
-                    "terms": "casas en fila,fila de casas,ringleira de casas,casas adosadas,vivendas adosadas"
                 },
                 "building/train_station": {
                     "name": "Edificio da estación de trens"
@@ -4356,10 +4346,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Barracóns"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Área perigosa",
-                    "terms": "zona de perigo,bombas,minas,munición,explosivo,militar,exército,forza aérea,mariña,armada,forza naval,área perigosa,zona de exclusión"
                 },
                 "landuse/military/range": {
                     "name": "Campo de tiro militar"
@@ -5808,6 +5794,10 @@
                 "shop/bookmaker": {
                     "name": "Corredor de apostas",
                     "terms": "casa de apostas,casino,codere,luckia,apostas"
+                },
+                "shop/books": {
+                    "name": "Libraría",
+                    "aliases": "Librería"
                 },
                 "shop/boutique": {
                     "name": "Boutique"

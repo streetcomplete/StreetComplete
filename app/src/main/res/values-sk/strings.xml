@@ -311,7 +311,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_cycleway_value_none">"žiadne"</string>
     <string name="quest_cycleway_value_shared">"pruh vyslovene zdieľaný s ostatnými druhmi dopravy"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pre autobusy"</string>
-    <string name="quest_cycleway_value_sidewalk">"vyslovene zdieľaný chodník"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodarilo sa vytvoriť fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruhy, oba smery"</string>
     <string name="quest_cycleway_value_track_dual">"Cyklochodník s oddelenými smermi jazdy"</string>
@@ -730,7 +729,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="resurvey_intervals_less_often">"Pýtať sa menej často"</string>
     <string name="resurvey_intervals_default">"Predvolené"</string>
     <string name="resurvey_intervals_more_often">"Pýtať sa častejšie"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) vo vnútri budovy?"</string>
     <string name="about_title_translate">"Pomôžte preložiť túto aplikáciu"</string>
     <string name="about_description_translate">"%1$s je preložené %2$d%%"</string>
     <string name="quest_oneway2_title">"Je toto jednosmerná ulica? V akom smere?"</string>
@@ -903,7 +901,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="about_title_faq">"Časté otázky"</string>
     <string name="quest_buildingLevels_title2">"Koľko poschodí nad suterénom má táto budova?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Koľko poschodí nad suterénom má táto stavebná časť?"</string>
-    <string name="quest_crossing_title">"Existujú obrubníky, kde sa táto cesta stretáva s touto cestou? Aký druh?"</string>
     <string name="pref_subtitle_quests_preset_name">"Predvoľba: %s"</string>
     <string name="default_disabled_msg_roofShape">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože tvary striech nie sú z ulice často dobre viditeľné. Tento typ úlohy je tiež dosť časovo náročný; vo väčšine prípadov je jednoduchšie a efektívnejšie to zmapovať z leteckých snímok doma."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -937,7 +934,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_buildingType_bridge">"Most medzi budovami"</string>
     <string name="quest_laundrySelfService_title2">"Poskytuje táto práčovňa samoobsluhu?"</string>
     <string name="quest_dietType_explanation_halal">"Halal výrobky sa musia pripravovať podľa zvláštnych pravidiel. Špeciálne agentúry dávajú certifikáty tým Halal produktom, ktoré sú v súlade s týmito pravidlami."</string>
-    <string name="quest_picnicTableCover_title">"Je tento stôl na piknik krytý (chránený pred dažďom)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Toto sú schody"</string>
     <string name="quest_barrier_type_passage_conversion">"Premenené na priechod v stene/plote/a pod."</string>
     <string name="quest_barrier_type_gate_conversion">"Premenené na bránu"</string>
@@ -1178,7 +1174,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_memorialType_stele_wooden">"Drevená stéla (pamätná doska)"</string>
     <string name="quest_memorialType_stele_stone">"Kamenná stéla (pamätná doska)"</string>
     <string name="quest_memorialType_sculpture">"Iná skulptúra"</string>
-    <string name="select_overlay">"Vyberte prekrytie"</string>
     <string name="overlay_none">"Žiadne"</string>
     <string name="overlay_lit">"Pouličné osvetlenie"</string>
     <string name="lit_value_yes">"Osvetlené"</string>
@@ -1221,7 +1216,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_address_street_hint2">"Kliknutím vyberte miesto na mape"</string>
     <string name="quest_bicycle_incline_title">"Ktorý smer vedie nahor?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Je to hopsanie hore dole"</string>
-    <string name="quest_drinking_water_type_title">"Ako je tu zabezpečená pitná voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Iná vodná fontána"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vodná fontána vypúšťajúca malý prúd vody"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Iba doplňovanie fliaš"</string>
@@ -1233,7 +1227,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="overlay_addresses">"Adresy"</string>
     <string name="overlay_shops">"Obchody"</string>
     <string name="name_label">"Meno:"</string>
-    <string name="vacant_shop_title">"Prázdny obchod"</string>
     <string name="unknown_shop_title">"Iný druh miesta"</string>
     <string name="quest_address_answer_no_address">"Bez adresy"</string>
     <string name="quest_bicycle_barrier_installation_title">"Dá sa táto cyklistická závora otvoriť (s kľúčom alebo bez neho)?"</string>
@@ -1273,7 +1266,7 @@ Presunúť ju teraz?"</string>
     <string name="move_node_description">"Potiahnutím mapy umiestnite prvok na správne miesto. Použite funkciu priblíženia a snažte sa byť čo najpresnejší. Berte na vedomie, že zobrazená poloha môže byť menej presná ako zobrazená."</string>
     <string name="move_node_action_description">"Presunuli ste uzol"</string>
     <string name="quest_cycleway_value_shoulder">"nieje, ale krajnica je použiteľná pre cyklistov"</string>
-    <string name="quest_placeName_no_name_answer">"Nie je tam žiadne označenie mena"</string>
+    <string name="quest_placeName_no_name_answer">"Nie je tam žiadne označenie"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"Táto šírka vyzerá nedôveryhodne. Nezabudnite, že by to mala byť šírka od obrubníka k obrubníku vrátane parkovania na ulici, cyklistických pruhov atď."</string>
     <string name="overlay_cycleway">"Cyklotrasy"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
@@ -1291,10 +1284,83 @@ Presunúť ju teraz?"</string>
     <string name="cycleway_reverse_direction_toast">"Kliknite na stranu, ktorú chcete otočiť"</string>
     <string name="separate_cycleway_path">"Cesta alebo chodník"</string>
     <string name="quest_fireHydrant_type_pipe">"Rúra"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"vyslovene zdieľaný chodník, oba smery"</string>
     <string name="measure_info_title">"Dosiahnutie optimálnej presnosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore niekedy (spočiatku) predpokladá, že zem je o niečo nižšie alebo vyššie, než v skutočnosti je. To spôsobuje chybu merania, ktorá je tým väčšia, čím viac nakláňate telefón k horizontu.&lt;/p&gt;
 &lt;p&gt;Nastavte každý počiatočný a koncový bod, pričom telefón nasmerujte rovno nadol (tak, aby ste zvrchu videli bielu šípku), aby ste sa tomuto problému pri horizontálnych meraniach úplne vyhli.&lt;/p&gt;
 &lt;p&gt;Pri vertikálnych meraniach musíte namiesto toho skontrolovať, či počiatočný bod nie je paralaxe so zemou, a to tak, že sa naň pozriete z rôznych smerov.&lt;/p"</string>
     <string name="privacy_html_arcore">"Táto aplikácia beží na &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href=\"https://policies.google.com/privacy\"&gt;Google Privacy Policy&lt;/a&gt;."</string>
+    <string name="default_disabled_msg_seasonal">"Tento typ úlohy je predvolene vypnutý, pretože môže vyžadovať opätovné overenie situácie v určitej časti roka."</string>
+    <string name="quest_gritBinSeasonal_title">"Je to tu aj mimo zimy?"</string>
+    <string name="street_parking_staggered_on_street">"Na ulici na striedajúcich sa stranách"</string>
+    <string name="street_parking_staggered_half_on_kerb">"Čiastočne na ulici na striedajúcich sa stranách"</string>
+    <string name="quest_traffic_signals_sound_description">"Tip: Pozrite sa po reproduktoroch. Nie všetky zvukové signály sa dajú aktivovať pomocou tlačidla."</string>
+    <string name="quest_presets_duplicate">"Duplikovať"</string>
+    <string name="label_block">"Blok"</string>
+    <string name="quest_address_answer_block">"Je to v rámci bloku"</string>
+    <string name="quest_address_answer_no_block">"Nie je to v rámci bloku..."</string>
+    <string name="quest_surface_value_mud">"Trvalé blato"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Nie je tu žiadna toaleta"</string>
+    <string name="unknown_surface_title">"Iný druh povrchu"</string>
+    <string name="overlay_surface">"Povrchy"</string>
+    <string name="overlay_path_surface_segregated">"Rozdelené na cyklo a pešiu časť"</string>
+    <string name="quest_crossing_title2">"Nachádza sa tu prechod?"</string>
+    <string name="quest_crossing_yes">"Áno (napr. obrubník je tu znížený alebo sú tu značky)"</string>
+    <string name="quest_crossing_no">"Nie, ale prechod je možný"</string>
+    <string name="quest_crossing_prohibited">"Nie, prechod je zakázaný alebo nemožný"</string>
+    <string name="quest_hairdresser_title">"Akí zákazníci navštevujú kaderníctvo?"</string>
+    <string name="quest_hairdresser_male_and_female">"Ktokoľvek"</string>
+    <string name="quest_hairdresser_female_only">"Ženy"</string>
+    <string name="quest_hairdresser_male_only">"Muži"</string>
+    <string name="quest_hairdresser_not_signed">"Nedefinované"</string>
+    <string name="quest_amenityCover_title">"Je to kryté (chránené pred dažďom)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Rozšírenie chodníka"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Dopravný ostrovček"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Šikana"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Rozšírenie chodníka + dopravný ostrovček"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Žiadny zúžený pruh tu nie je"</string>
+    <string name="quest_tactilePaving_title_steps">"Je v hornej a dolnej časti týchto schodov hmatová dlažba?"</string>
+    <string name="quest_tactilePaving_steps_top">"Iba na vrchole"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Iba v dolnej časti"</string>
+    <string name="overlay_addresses_no_entrance">"Nie je to vstup..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Cesta na spoločné používanie"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"zdieľaná cesta v oboch smeroch"</string>
+    <string name="overlays_tutorial_title">"Prekrytie"</string>
+    <string name="overlays_tutorial_intro">"Našli ste nový spôsob úpravy údajov!"</string>
+    <string name="overlays_tutorial_display">"Každé prekrytie zobrazuje jeden druh údajov, napríklad obchody, alebo povrchy ulíc.
+
+Údaje sú zvýraznené rôznymi farbami, aby ste mali dobrý prehľad o tom, čo bolo doteraz zaznamenané.
+Chýbajúce údaje sú vždy zobrazené červenou farbou."</string>
+    <string name="overlays_tutorial_edit">"Ťuknutím na ktorýkoľvek zvýraznený údaj ho zobrazíte, alebo upravíte. Môžete tiež rozdeliť spôsoby, alebo nahlásiť poznámky, podobne ako pri úlohách.
+
+Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu zobrazeného kríža, ako napríklad prekrytie adries."</string>
+    <string name="quest_crossing_kerb_height_title">"Aký vysoký je obrubník na tejto križovatke?"</string>
+    <string name="quest_maxheight_sign_title">"Aký výškový limit je tu uvedený?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Aký výškový limit je uvedený pod mostom?"</string>
+    <string name="quest_leave_new_note_as_answer">"V takom prípade musíte zanechať poznámku, v ktorej vysvetlíte situáciu."</string>
+    <string name="quest_drinking_water_type_title2">"Je tu k dispozícii pitná voda? Ak áno, aký je jej zdroj?"</string>
+    <string name="quest_is_amenity_inside_title">"Je to vo vnútri budovy?"</string>
+    <string name="quest_bbq_fuel_title">"Na aké palivo je tento gril?"</string>
+    <string name="quest_bbq_fuel_wood">"Drevo"</string>
+    <string name="quest_bbq_fuel_electric">"Elektrické"</string>
+    <string name="quest_bbq_fuel_charcoal">"Drevené uhlie"</string>
+    <string name="inside">"vnútri"</string>
+    <string name="outside">"vonku"</string>
+    <string name="quest_recycling_type_food_waste">"Plytvanie potravinami"</string>
+    <string name="quest_defibrillator_location">"Kde sa tento defibrilátor nachádza?"</string>
+    <string name="quest_defibrillator_location_description">"Uveďte stručný opis jeho polohy (napr. \"v salóniku vrátnika\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Nachádza sa tu odtok na splašky?"</string>
+    <string name="quest_sanitary_dump_station_description">"Zariadenie na vyhodenie ľudského odpadu zo záchodovej nádrže obytného vozidla, diaľkového nákladného vozidla atď. Zvyčajne sa označuje takouto značkou:"</string>
+    <string name="quest_generalFee_title">"Musíte za jej používanie platiť?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Je to požiarny kryt"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Na rozdiel od grilov nemajú ohniská varnú plochu (napr. rošt/platňu)."</string>
+    <string name="about_title_logs">"Záznamy (%1$d)"</string>
+    <string name="about_summary_logs">"na použitie v chybových hláseniach"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Zdieľať záznamy"</string>
+    <string name="about_title_show_logs">"Zobraziť záznamy"</string>
+    <string name="label_log_level">"Úroveň záznamov"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Správa obsahuje"</string>
+    <string name="title_logs_filters">"Filtrovanie správ"</string>
 </resources>

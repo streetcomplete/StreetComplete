@@ -281,7 +281,9 @@
                         "gate": "Kapija",
                         "hedge": "Živica",
                         "kerb": "Rubnjak",
+                        "lift_gate": "Rampa",
                         "retaining_wall": "Potporni zid",
+                        "swing_gate": "Zakretna rampa",
                         "wall": "Zid"
                     }
                 },
@@ -291,12 +293,26 @@
                 "bath/sand_bath": {
                     "label": "Pješčano kupalište (Suna Yu)"
                 },
+                "beauty": {
+                    "label": "Usluge",
+                    "options": {
+                        "cosmetics": "Kozmetika",
+                        "hair_removal": "Depilacija",
+                        "nails": "Manikura/pedikura",
+                        "skin_care": "Njega kože",
+                        "tanning": "Solarij",
+                        "waxing": "Depilacija voskom"
+                    }
+                },
                 "bench": {
                     "label": "Klupa",
                     "terms": "klupa"
                 },
                 "bicycle_parking": {
-                    "label": "Vrsta"
+                    "label": "Vrsta",
+                    "options": {
+                        "building": "U zgradi"
+                    }
                 },
                 "bin": {
                     "label": "Kanta za smeće",
@@ -330,10 +346,6 @@
                     "label": "Marka",
                     "terms": "marka,trgovinska oznaka"
                 },
-                "brewery": {
-                    "label": "Točena piva",
-                    "terms": "točeno pivo"
-                },
                 "bridge": {
                     "label": "Vrsta"
                 },
@@ -345,6 +357,7 @@
                     "terms": "zgrada,građevina"
                 },
                 "building/levels": {
+                    "label": "Broj katova zajedno sa prizemljem",
                     "terms": "razine,katovi"
                 },
                 "building/levels/underground": {
@@ -660,7 +673,7 @@
                 },
                 "fire_hydrant/type": {
                     "options": {
-                        "pillar": "Stub/nadzemni",
+                        "pillar": "Stup/nadzemni",
                         "underground": "Podzemni",
                         "wall": "Zid"
                     }
@@ -762,12 +775,6 @@
                 "hoops": {
                     "label": "Obruči",
                     "placeholder": "1, 2, 4..."
-                },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da",
-                        "undefined": "Ne"
-                    }
                 },
                 "horse_riding": {
                     "options": {
@@ -898,6 +905,7 @@
                     "terms": "razina,kat"
                 },
                 "level_semi": {
+                    "label": "Kat",
                     "terms": "razine,katovi"
                 },
                 "lifeguard": {
@@ -965,10 +973,6 @@
                 "max_age": {
                     "terms": "maksimalna starost"
                 },
-                "maxheight": {
-                    "label": "Max visina",
-                    "terms": "maksimalna visina"
-                },
                 "maxspeed": {
                     "label": "Ograničenje brzine",
                     "placeholder": "40, 50, 60...",
@@ -976,14 +980,6 @@
                 },
                 "maxspeed/advisory": {
                     "terms": "predloženo ograničenje brzine"
-                },
-                "maxstay": {
-                    "label": "Maks. ostanak",
-                    "terms": "maksimalno vrijeme zadržavanja"
-                },
-                "maxweight": {
-                    "label": "Najveća dopuštena težina",
-                    "terms": "maksimalna težina"
                 },
                 "memorial": {
                     "options": {
@@ -1122,9 +1118,6 @@
                     "placeholder": "Nepoznato",
                     "terms": "sati"
                 },
-                "opening_hours/covid19": {
-                    "terms": "sati covid-19 pandemije,odobreni sati,korona virus,sars‑cov‑2"
-                },
                 "operator": {
                     "label": "Operator",
                     "terms": "operater"
@@ -1160,17 +1153,6 @@
                         "surface": "Površinski",
                         "underground": "Podzemni"
                     }
-                },
-                "parking/orientation": {
-                    "label": "Orijentacija",
-                    "options": {
-                        "diagonal": "Dijagonalno na ulicu",
-                        "parallel": "Paralelno sa ulicom",
-                        "perpendicular": "Okomito na ulicu"
-                    }
-                },
-                "parking/side/orientation": {
-                    "label": "Orijentacija parkiranja"
                 },
                 "payment_multi": {
                     "label": "Načini plaćanja",
@@ -1467,15 +1449,6 @@
                     "options": {
                         "handball": "Rukomet"
                     }
-                },
-                "sport_ice": {
-                    "label": "Sportovi"
-                },
-                "sport_racing_motor": {
-                    "label": "Sportovi"
-                },
-                "sport_racing_nonmotor": {
-                    "label": "Sportovi"
                 },
                 "stars": {
                     "label": "Zvjezdice",
@@ -1951,9 +1924,6 @@
                 "amenity/recycling_centre": {
                     "name": "Centar za reciklažu"
                 },
-                "amenity/recycling_container": {
-                    "name": "Kontejner za reciklažu"
-                },
                 "amenity/restaurant": {
                     "name": "Restoran",
                     "terms": "restoran,buffet,zdravljak,zalogajnica"
@@ -2094,10 +2064,6 @@
                 },
                 "amenity/waste/dog_excrement": {
                     "name": "Košara za pseći izmet"
-                },
-                "amenity/waste_basket": {
-                    "name": "Kanta za smeće",
-                    "terms": "smeće,koš za smeće,kanta za smeće"
                 },
                 "amenity/waste_disposal": {
                     "name": "Kontejner za smeće"
@@ -2294,9 +2260,6 @@
                 },
                 "building/stadium": {
                     "name": "Zgrada stadiona"
-                },
-                "building/terrace": {
-                    "name": "Kuće u nizu"
                 },
                 "building/train_station": {
                     "name": "Zgrada željezničkog kolodvora"

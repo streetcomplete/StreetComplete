@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class BooleanExpressionBuilderTest {
     @Test fun leaf() { check("a") }
@@ -55,23 +56,47 @@ class BooleanExpressionBuilderTest {
     @Test fun flatten1() { check("((a*b)*c)*d*(e*f)", "a*b*c*d*e*f") }
     @Test fun flatten2() { check("(a+b*(c+d)+e)*f", "(a+b*(c+d)+e)*f") }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too many brackets 1`() { TestBooleanExpressionParser.parse("a+b)") }
+    @Test
+    fun `closed too many brackets 1`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("a+b)")
+        }
+    }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too many brackets 2`() { TestBooleanExpressionParser.parse("(a+b))") }
+    @Test
+    fun `closed too many brackets 2`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("(a+b))")
+        }
+    }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too many brackets 3`() { TestBooleanExpressionParser.parse("((b+c)*a)+d)") }
+    @Test
+    fun `closed too many brackets 3`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("((b+c)*a)+d)")
+        }
+    }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too few brackets 1`() { TestBooleanExpressionParser.parse("(a+b") }
+    @Test
+    fun `closed too few brackets 1`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("(a+b")
+        }
+    }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too few brackets 2`() { TestBooleanExpressionParser.parse("((a+b)") }
+    @Test
+    fun `closed too few brackets 2`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("((a+b)")
+        }
+    }
 
-    @Test(expected = IllegalStateException::class)
-    fun `closed too few brackets 3`() { TestBooleanExpressionParser.parse("((a*(b+c))") }
+    @Test
+    fun `closed too few brackets 3`() {
+        assertFailsWith<IllegalStateException> {
+            TestBooleanExpressionParser.parse("((a*(b+c))")
+        }
+    }
 
     private fun check(input: String, expected: String = input) {
         val tree = TestBooleanExpressionParser.parse(input)

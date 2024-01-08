@@ -1,5 +1,5 @@
 Ajutați la îmbunătățirea OpenStreetMap cu StreetComplete!
 
-Această aplicație găsește date incomplete și extensibile în vecinătatea dvs. și le afișează pe o hartă ca marcări. Fiecare dintre marcări poate fi eliminat răspunzând la o întrebare simplă pentru a completa informațiile de pe site.
+Această aplicație găsește date lipsă în vecinătate și le afișează pe o hartă sub formă de misiuni. Rezolvați fiecare misiune vizitând locația și răspunzând la o simplă întrebare pentru a actualiza harta.
 
-Informațiile pe care le introduceți sunt apoi adăugate direct în OpenStreetMap în numele dvs., fără a fi nevoie să utilizați un alt editor.
+Informațiile pe care le introduceți sunt direct adăugate în OpenStreetMap în numele dumneavoastră, fără a fi nevoie să utilizați un alt editor.

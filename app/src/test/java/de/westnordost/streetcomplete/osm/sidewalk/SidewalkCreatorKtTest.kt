@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
 
 class SidewalkCreatorKtTest {
     @Test fun `apply nothing applies nothing`() {
@@ -248,14 +249,18 @@ class SidewalkCreatorKtTest {
         )
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying invalid left throws exception`() {
-        LeftAndRightSidewalk(Sidewalk.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightSidewalk(Sidewalk.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying invalid right throws exception`() {
-        LeftAndRightSidewalk(null, Sidewalk.INVALID).applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            LeftAndRightSidewalk(null, Sidewalk.INVALID).applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 }
 

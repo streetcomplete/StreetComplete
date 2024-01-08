@@ -5,6 +5,7 @@ centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true
 hasSlowZone: false
+lengthUnits: [meter, foot and inch]
 mobileCountryCode: 302
 noParkingSignStyle: mutcd
 noStoppingSignStyle: canada

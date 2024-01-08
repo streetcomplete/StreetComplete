@@ -76,12 +76,10 @@
                         "housenumber": "123",
                         "housenumber!jp": "Edificiu Núm./Mazana Núm.",
                         "neighbourhood": "Vecinderu",
-                        "neighbourhood!jp": "Chōme/Aza/Koaza",
                         "place": "Llugar",
                         "postcode": "Códigu postal",
                         "province": "Provincia",
                         "province!jp": "Prefeutura",
-                        "quarter!jp": "Ōaza/Machi",
                         "state": "Estáu",
                         "street": "Cai",
                         "subdistrict": "Subdistritu",
@@ -576,18 +574,9 @@
                 "map_type": {
                     "label": "Tipu"
                 },
-                "maxheight": {
-                    "label": "Altor máximu"
-                },
                 "maxspeed": {
                     "label": "Velocidá máxima",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "Tiempu máx."
-                },
-                "maxweight": {
-                    "label": "Pesu máximu"
                 },
                 "memorial": {
                     "label": "Tipu"
@@ -932,15 +921,6 @@
                     "label": "Fontes"
                 },
                 "sport": {
-                    "label": "Deportes"
-                },
-                "sport_ice": {
-                    "label": "Deportes"
-                },
-                "sport_racing_motor": {
-                    "label": "Deportes"
-                },
-                "sport_racing_nonmotor": {
                     "label": "Deportes"
                 },
                 "stars": {
@@ -1543,10 +1523,6 @@
                     "name": "Papelera pa escrementos de perros",
                     "terms": "contenedor,escrementos,perros,bolses"
                 },
-                "amenity/waste_basket": {
-                    "name": "Papelera",
-                    "terms": "papelera,basoria"
-                },
                 "amenity/waste_disposal": {
                     "name": "Contenedor de basoria"
                 },
@@ -1722,9 +1698,6 @@
                 "building/stable": {
                     "name": "Establu",
                     "terms": "corte,cuadra"
-                },
-                "building/terrace": {
-                    "name": "Filera de cases"
                 },
                 "building/university": {
                     "name": "Edificiu universitariu"
@@ -2187,9 +2160,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Cuartel"
-                },
-                "landuse/military/danger_area": {
-                    "name": "Área de peligru"
                 },
                 "landuse/military/range": {
                     "name": "Campu de tiru"

@@ -23,10 +23,10 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
 
     var selectedItem: DisplayItem<I>? = null
-    set(value) {
-        field = value
-        updateSelectedCell()
-    }
+        set(value) {
+            field = value
+            updateSelectedCell()
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

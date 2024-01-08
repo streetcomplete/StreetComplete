@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
 
 class AddressNumberTest {
     @Test fun `applyTo house number`() {

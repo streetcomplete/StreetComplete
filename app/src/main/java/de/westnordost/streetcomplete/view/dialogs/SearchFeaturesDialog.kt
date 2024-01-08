@@ -15,6 +15,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -27,7 +28,8 @@ class SearchFeaturesDialog(
     private val countryOrSubdivisionCode: String? = null,
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
-    private val onSelectedFeatureFn: (Feature) -> Unit
+    private val onSelectedFeatureFn: (Feature) -> Unit,
+    private val dismissKeyboardOnClose: Boolean = false,
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
@@ -86,6 +88,15 @@ class SearchFeaturesDialog(
         val list = if (text == null) defaultFeatures else getFeatures(text)
         adapter.list = list.toMutableList()
         binding.noResultsText.isGone = list.isNotEmpty()
+    }
+
+    override fun dismiss() {
+        if (dismissKeyboardOnClose) {
+            // Handle keyboard not being automatically dismissed on all Android versions. Has to be
+            // called before the super method, otherwise it won't work.
+            binding.searchEditText.hideKeyboard()
+        }
+        super.dismiss()
     }
 
     private inner class FeaturesAdapter : ListAdapter<Feature>() {

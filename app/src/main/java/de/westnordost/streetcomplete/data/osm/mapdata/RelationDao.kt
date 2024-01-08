@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VER
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

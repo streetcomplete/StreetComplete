@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.Rect
@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
@@ -30,6 +31,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -73,7 +75,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
@@ -102,6 +103,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -110,12 +112,15 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.concurrent.FutureTask
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -162,7 +167,6 @@ class MainFragment :
     MapDataWithEditsSource.Listener,
     SelectedOverlaySource.Listener,
     // rest
-    HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
@@ -170,8 +174,9 @@ class MainFragment :
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val soundFx: SoundFx by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -199,6 +204,18 @@ class MainFragment :
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
+
+    private val historyBackPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            closeEditHistorySidebar()
+        }
+    }
+
+    private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            (bottomSheetFragment as IsCloseableBottomSheet).onClickClose { closeBottomSheet() }
+        }
+    }
 
     //region Lifecycle - Android Lifecycle Callbacks
 
@@ -234,6 +251,13 @@ class MainFragment :
         binding.createButton.setOnClickListener { onClickCreateButton() }
 
         updateOffsetWithOpenBottomSheet()
+
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, historyBackPressedCallback)
+        historyBackPressedCallback.isEnabled = editHistoryFragment != null
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
+        sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
     }
 
     @UiThread
@@ -264,23 +288,6 @@ class MainFragment :
         selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
-    }
-
-    /** Called by the activity when the user presses the back button.
-     *  Returns true if the event should be consumed. */
-    override fun onBackPressed(): Boolean {
-        if (editHistoryFragment != null) {
-            closeEditHistorySidebar()
-            return true
-        }
-
-        val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) {
-            f.onClickClose { closeBottomSheet() }
-            return true
-        }
-
-        return false
     }
 
     override fun onStop() {
@@ -444,7 +451,9 @@ class MainFragment :
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
-    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+    override val metersPerPixel: Double? get() = mapFragment?.getMetersPerPixel()
+
+    override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
         closeBottomSheet()
     }
@@ -467,6 +476,9 @@ class MainFragment :
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
         closeBottomSheet()
     }
+
+    override fun getPointOf(pos: LatLon): PointF? =
+        mapFragment?.getPointOf(pos)
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
@@ -598,6 +610,7 @@ class MainFragment :
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        if (view == null) return
         viewLifecycleScope.launch {
             val f = bottomSheetFragment
             if (f !is IsShowingElement) return@launch
@@ -802,7 +815,9 @@ class MainFragment :
         val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
 
         val intent = Intent(Intent.ACTION_VIEW, uri)
-        if (intent.resolveActivity(ctx.packageManager) != null) {
+        val otherMapAppInstalled = ctx.packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+            .any { !it.activityInfo.packageName.equals(ctx.packageName) }
+        if (otherMapAppInstalled) {
             startActivity(intent)
         } else {
             ctx.toast(R.string.map_application_missing, Toast.LENGTH_LONG)
@@ -816,8 +831,11 @@ class MainFragment :
         }
 
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose { composeNote(pos) }
-        else composeNote(pos)
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { composeNote(pos) }
+        } else {
+            composeNote(pos)
+        }
     }
 
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
@@ -891,6 +909,7 @@ class MainFragment :
         }
         mapFragment?.hideOverlay()
         mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
+        historyBackPressedCallback.isEnabled = true
     }
 
     private fun closeEditHistorySidebar() {
@@ -900,6 +919,7 @@ class MainFragment :
         clearHighlighting()
         mapFragment?.clearFocus()
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
+        historyBackPressedCallback.isEnabled = false
     }
 
     //endregion
@@ -917,6 +937,7 @@ class MainFragment :
         clearHighlighting()
         unfreezeMap()
         mapFragment?.endFocus()
+        sheetBackPressedCallback.isEnabled = false
     }
 
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
@@ -934,6 +955,7 @@ class MainFragment :
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
         }
+        sheetBackPressedCallback.isEnabled = f is IsCloseableBottomSheet
     }
 
     /** Make the map not follow the user's location anymore temporarily */
@@ -989,7 +1011,9 @@ class MainFragment :
         // open note if it is blocking element
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
-            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+            notesSource
+                .getAll(BoundingBox(center, center).enlargedBy(1.2))
+                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))
@@ -1059,7 +1083,7 @@ class MainFragment :
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.center.enclosingBoundingBox(quest.type.highlightedElementsRadius)
+        val bbox = quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {
@@ -1070,7 +1094,7 @@ class MainFragment :
 
         val levels = createLevelsOrNull(element.tags)
 
-        viewLifecycleScope.launch {
+        viewLifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
                 quest.type.getHighlightedElements(element, ::getMapData)
             }
@@ -1084,7 +1108,7 @@ class MainFragment :
                 if (element.tags["layer"] != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(e.tags)
+                val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
@@ -1135,7 +1159,7 @@ class MainFragment :
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

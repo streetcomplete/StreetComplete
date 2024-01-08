@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
@@ -28,7 +29,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
@@ -91,7 +92,9 @@ class UndoDialog(
         scope.launch {
             binding.titleText.text = edit.getTitle()
             if (edit is ElementEdit) {
-                binding.titleHintText.text = getNameAndLocationLabel(edit.originalElement, context.resources, featureDictionary)
+                binding.titleHintText.text = edit.getPrimaryElement()?.let {
+                    getNameAndLocationLabel(it, context.resources, featureDictionary)
+                }
             }
         }
     }
@@ -101,10 +104,18 @@ class UndoDialog(
         scope.cancel()
     }
 
+    private suspend fun ElementEdit.getPrimaryElement(): Element? {
+        val key = action.elementKeys.firstOrNull() ?: return null
+        return withContext(Dispatchers.IO) { mapDataSource.get(key.type, key.id) }
+    }
+
     private suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
-            if (type is QuestType) getQuestTitle(type, originalElement.tags)
-            else context.resources.getText(type.title)
+            if (type is QuestType) {
+                getQuestTitle(type, getPrimaryElement()?.tags.orEmpty())
+            } else {
+                context.resources.getText(type.title)
+            }
         }
         is NoteEdit -> {
             context.resources.getText(when (action) {
@@ -125,11 +136,18 @@ class UndoDialog(
     private val Edit.descriptionView: View get() = when (this) {
         is ElementEdit -> {
             when (action) {
-                is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
-                is DeletePoiNodeAction ->     createTextView(ResText(R.string.deleted_poi_action_description))
-                is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
-                is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
-                is MoveNodeAction ->          createTextView(ResText(R.string.move_node_action_description))
+                is UpdateElementTagsAction ->
+                    createListOfTagUpdates(action.changes.changes)
+                is DeletePoiNodeAction ->
+                    createTextView(ResText(R.string.deleted_poi_action_description))
+                is SplitWayAction ->
+                    createTextView(ResText(R.string.split_way_action_description))
+                is CreateNodeAction ->
+                    createCreateNodeDescriptionView(action.tags)
+                is CreateNodeFromVertexAction ->
+                    createListOfTagUpdates(action.changes.changes)
+                is MoveNodeAction ->
+                    createTextView(ResText(R.string.move_node_action_description))
                 else -> throw IllegalArgumentException()
             }
         }
@@ -174,7 +192,7 @@ class UndoDialog(
         return txt
     }
 
-    private fun createCreateNodeDescriptionView(position: LatLon, tags: Map<String, String>): TextView {
+    private fun createCreateNodeDescriptionView(tags: Map<String, String>): TextView {
         val txt = TextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 

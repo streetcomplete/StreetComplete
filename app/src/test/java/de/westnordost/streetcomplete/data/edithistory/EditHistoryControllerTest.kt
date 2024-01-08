@@ -17,11 +17,11 @@ import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.noteQuestHidden
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.questHidden
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class EditHistoryControllerTest {
 
@@ -37,7 +37,7 @@ class EditHistoryControllerTest {
     private lateinit var hideNoteQuestsListener: OsmNoteQuestController.HideOsmNoteQuestListener
     private lateinit var hideQuestsListener: OsmQuestController.HideOsmQuestListener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         elementEditsController = mock()
         noteEditsController = mock()
         osmQuestController = mock()

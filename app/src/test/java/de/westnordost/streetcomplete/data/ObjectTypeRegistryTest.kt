@@ -1,18 +1,23 @@
 package de.westnordost.streetcomplete.data
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 internal class ObjectTypeRegistryTest {
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `throws when one class is added twice`() {
-        ObjectTypeRegistry<Any>(listOf(1 to A, 2 to A))
+        assertFailsWith<IllegalArgumentException> {
+            ObjectTypeRegistry<Any>(listOf(1 to A, 2 to A))
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `throws when one ordinal is added twice`() {
-        ObjectTypeRegistry(listOf(1 to A, 1 to B))
+        assertFailsWith<IllegalArgumentException> {
+            ObjectTypeRegistry(listOf(1 to A, 1 to B))
+        }
     }
 
     @Test

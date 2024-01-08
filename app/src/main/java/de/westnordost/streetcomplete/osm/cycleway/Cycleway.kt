@@ -28,27 +28,34 @@ fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftA
 fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
     isOneway(tags)
     && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-    && !isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
+    && isNotOnewayForCyclistsNow(tags) == false
 
-fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean {
+/** Returns whether this is now not a oneway for cyclists. It returns null if any side
+ *  is null because it is possible that the undefined side has a track in the contra-flow direction
+ *  (e.g. either a normal track on the left side or a dual-track on the right side) */
+fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
     val onewayDir = when  {
         isForwardOneway(tags) -> FORWARD
         isReversedOneway(tags) -> BACKWARD
         else -> return true
     }
-    val previous = createCyclewaySides(tags, isLeftHandTraffic)
-    val l = (left ?: previous?.left)
-    val r = (right ?: previous?.right)
     /* "no cycleway" has no direction and should be ignored
        "separate" should also be ignored because if the cycleway is mapped separately, the existence
        of a separate way that enables cyclists to go in contra-flow-direction doesn't mean that they
        can do the same on the main way for the road too (see #4715) */
-    val leftDir = l?.direction?.takeIf { l.cycleway != NONE && l.cycleway != SEPARATE }
-    val rightDir = r?.direction?.takeIf { r.cycleway != NONE && r.cycleway != SEPARATE }
+    val leftDir = left?.direction?.takeIf { left.cycleway != NONE && left.cycleway != SEPARATE }
+    val rightDir = right?.direction?.takeIf { right.cycleway != NONE && right.cycleway != SEPARATE }
 
-    return leftDir == BOTH || rightDir == BOTH ||
-        leftDir != null && leftDir != onewayDir ||
-        rightDir != null && rightDir != onewayDir
+    // any side goes in both directions
+    if (leftDir == BOTH || rightDir == BOTH) return true
+    // left side has contra-flow to oneway
+    if (leftDir != null && leftDir != onewayDir) return true
+    // right side has contra-flow to oneway
+    if (rightDir != null && rightDir != onewayDir) return true
+
+    if (left == null || right == null) return null
+
+    return false
 }
 
 @Serializable
@@ -61,7 +68,9 @@ fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
 
 @Serializable
 enum class Direction {
-    FORWARD, BACKWARD, BOTH;
+    FORWARD,
+    BACKWARD,
+    BOTH;
 
     fun reverse(): Direction = when (this) {
         FORWARD -> BACKWARD

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -22,10 +21,13 @@ import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -37,7 +39,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
@@ -59,9 +60,9 @@ class OsmQuestController internal constructor(
         fun onUnhid(edit: OsmQuestHidden)
         fun onUnhidAll()
     }
-    private val hideListeners: MutableList<HideOsmQuestListener> = CopyOnWriteArrayList()
+    private val hideListeners = Listeners<HideOsmQuestListener>()
 
-    private val listeners: MutableList<OsmQuestSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<OsmQuestSource.Listener>()
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
@@ -165,9 +166,9 @@ class OsmQuestController internal constructor(
                     val questTime = nowAsEpochMilliseconds()
                     var questCount = 0
                     val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags) {
-                            onlyElementsWithTags
+                        onlyElementsWithTags
                     } else {
-                            mapDataWithGeometry
+                        mapDataWithGeometry
                     }
                     for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
@@ -349,8 +350,7 @@ class OsmQuestController internal constructor(
     fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
         val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
 
-        val elementKeys = HashSet<ElementKey>()
-        questKeysWithTimestamp.mapTo(elementKeys) {
+        val elementKeys = questKeysWithTimestamp.mapTo(HashSet()) {
             ElementKey(it.osmQuestKey.elementType, it.osmQuestKey.elementId)
         }
 
@@ -421,11 +421,6 @@ class OsmQuestController internal constructor(
         private const val TAG = "OsmQuestController"
     }
 }
-
-// the resulting precision is about ~1 meter (see #1089)
-private fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
-
-private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
 
 /** an index by which a list of quest types can be sorted so that quests that are the slowest to
  *  evaluate are evaluated first. This is a performance improvement because the evaluation is done

@@ -3,16 +3,12 @@ package de.westnordost.streetcomplete.screens.user.profile
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
-import androidx.core.content.edit
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Prefs
@@ -29,15 +25,15 @@ import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -58,7 +54,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val avatarsCacheDirectory: File by inject(named("AvatarsCacheDirectory"))
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var anonAvatar: Bitmap
 
@@ -122,7 +118,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userLoginStatusController.logOut()
         }
         binding.profileButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/user/" + userDataSource.userName)
+            openUri("https://www.openstreetmap.org/user/" + userDataSource.userName)
         }
     }
 
@@ -228,7 +224,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.globalRankContainer,
             binding.globalRankText
         )
-        prefs.edit { putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, rank) }
+        prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, rank)
 
         val rankCurrentWeek = statisticsSource.currentWeekRank
         updateGlobalRankText(
@@ -237,11 +233,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.currentWeekGlobalRankContainer,
             binding.currentWeekGlobalRankText
         )
-        prefs.edit { putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, rankCurrentWeek) }
+        prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, rankCurrentWeek)
     }
 
-    private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView ) {
-        container.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
+    private fun updateGlobalRankText(rank: Int, previousRank: Int, container: View, circle: TextView) {
+        val shouldHide = rank <= 0 || statisticsSource.getEditCount() <= 100
+        container.isGone = shouldHide
+        if (shouldHide) return
+
         val updateRank = { r: Int ->
             circle.text = "#$r"
             circle.background.level = getScaledGlobalRank(r)
@@ -277,24 +276,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val localRank = withContext(Dispatchers.IO) { statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount() }
         updateLocalRankText(
             localRank,
-            prefs.getString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, null)?.let { Json.decodeFromString(it) },
+            prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) },
             50,
             binding.localRankContainer,
             binding.localRankLabel,
             binding.localRankText
         )
-        prefs.edit { putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(localRank)) }
+        prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(localRank))
 
         val localRankCurrentWeek = withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount() }
         updateLocalRankText(
             localRankCurrentWeek,
-            prefs.getString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, null)?.let { Json.decodeFromString(it) },
+            prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) },
             5,
             binding.currentWeekLocalRankContainer,
             binding.currentWeekLocalRankLabel,
             binding.currentWeekLocalRankText
         )
-        prefs.edit { putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(localRankCurrentWeek)) }
+        prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(localRankCurrentWeek))
     }
 
     private fun updateLocalRankText(
@@ -342,10 +341,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         anim.interpolator = AccelerateDecelerateInterpolator()
         anim.start()
         animations.add(anim)
-    }
-
-    private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        return tryStartActivity(intent)
     }
 }

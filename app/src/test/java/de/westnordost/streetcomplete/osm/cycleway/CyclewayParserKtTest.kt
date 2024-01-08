@@ -2,14 +2,14 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Direction.*
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class CyclewayParserKtTest {
     /* These are a lot of tests because there are many possible permutations and this test does not
-    *  make (much) assumptions that the code is written in a way that if it is solved for one type,
-    *  it is solved for all */
+     * make (much) assumptions that the code is written in a way that if it is solved for one type,
+     * it is solved for all */
 
     /* -------------------------------------- special cases ------------------------------------- */
 

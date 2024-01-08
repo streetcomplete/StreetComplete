@@ -5,8 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
-    kotlin("plugin.serialization") version "1.8.0"
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 android {
@@ -35,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.ml"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5201
-        versionName = "52.0"
+        versionCode = 5601
+        versionName = "56.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,6 +45,7 @@ android {
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            testProguardFile("test-proguard-rules.pro")
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
@@ -64,6 +64,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     bundle {
@@ -102,70 +103,67 @@ configurations {
     all {
         // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
+        exclude(group = "xmlpull", module = "xmlpull")
     }
 }
 
 dependencies {
-    val kotlinVersion = "1.8.0"
     val mockitoVersion = "3.12.4"
-    val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.3"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
     // tests
-    testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
+    testImplementation(kotlin("test"))
 
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
+    androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation("io.insert-koin:koin-android-compat:$koinVersion")
-    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
+    implementation("io.insert-koin:koin-android-compat:3.4.1")
+    implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.6.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.6")
-    implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.annotation:annotation:1.7.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.6")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.7.1")
+    implementation("androidx.work:work-runtime:2.8.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:1.6")
+    implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:2.0")
-    implementation("de.westnordost:osmapi-changesets:2.0")
-    implementation("de.westnordost:osmapi-notes:2.0")
-    implementation("de.westnordost:osmapi-traces:2.0")
-    implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+    implementation("de.westnordost:osmapi-map:3.0")
+    implementation("de.westnordost:osmapi-changesets:3.0")
+    implementation("de.westnordost:osmapi-notes:3.0")
+    implementation("de.westnordost:osmapi-traces:3.0")
+    implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -176,11 +174,11 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // sharing presets/settings via QR Code
-    implementation("com.google.zxing:core:3.5.0")
+    implementation("com.google.zxing:core:3.5.2")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    implementation("com.charleskorn.kaml:kaml:0.48.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("com.charleskorn.kaml:kaml:0.55.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
@@ -188,7 +186,7 @@ dependencies {
     implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.27.0")
+    implementation("ch.poole:OpeningHoursParser:0.28.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -196,17 +194,17 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
+    "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
     "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230320"
+val nsiVersion = "v6.0.20231218"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.0.0"
+val presetsVersion = "v6.5.0"
 
 val poEditorProjectId = "97843"
 
@@ -266,6 +264,8 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
+    languageCodes = bcp47ExportLanguages
+    mustIncludeLanguagePercentage = 90
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }

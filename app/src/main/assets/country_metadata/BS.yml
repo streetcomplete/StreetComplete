@@ -1,5 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 364

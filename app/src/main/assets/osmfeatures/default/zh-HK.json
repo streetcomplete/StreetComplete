@@ -155,20 +155,17 @@
                         "housenumber": "123",
                         "housenumber!jp": "建築物號碼／地段",
                         "neighbourhood": "屋苑",
-                        "neighbourhood!jp": "丁目／字／小字",
                         "place": "地方",
                         "postcode": "郵遞區號",
                         "province": "省",
                         "province!cn": "省／自治區／直轄市／特別行政區",
                         "province!jp": "州",
                         "quarter": "區",
-                        "quarter!jp": "大字／町",
                         "state": "州",
                         "street": "街",
                         "subdistrict": "分區",
                         "subdistrict!vn": "坊／社／市鎮",
                         "suburb": "市郊",
-                        "suburb!jp": "選區",
                         "unit": "單位"
                     }
                 },
@@ -341,9 +338,6 @@
                 },
                 "brand": {
                     "label": "品牌"
-                },
-                "brewery": {
-                    "label": "生啤"
                 },
                 "bridge": {
                     "label": "種類",
@@ -588,7 +582,6 @@
                         "lebanese": "黎巴嫩料理",
                         "malaysian": "馬來西亞料理",
                         "mexican": "墨西哥料理",
-                        "pankcake": "鬆餅",
                         "pasta": "意粉",
                         "pizza": "意大利薄餅",
                         "polish": "波蘭料理",
@@ -1010,15 +1003,7 @@
                     "label": "籃框數量",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "盛裝舞步",
-                    "options": {
-                        "equestrian": "是",
-                        "undefined": "否"
-                    }
-                },
                 "horse_riding": {
-                    "label": "騎馬",
                     "options": {
                         "horse_riding": "是",
                         "undefined": "否"
@@ -1030,13 +1015,6 @@
                         "common": "容易：沒有問題或困難度。（預設）"
                     },
                     "placeholder": "危險, 困難..."
-                },
-                "horse_stables": {
-                    "label": "馬廄",
-                    "options": {
-                        "stables": "是",
-                        "undefined": "否"
-                    }
                 },
                 "hot_water": {
                     "label": "熱水"
@@ -1218,9 +1196,6 @@
                 "max_age": {
                     "label": "最大年齡"
                 },
-                "maxheight": {
-                    "label": "最大高度"
-                },
                 "maxspeed": {
                     "label": "速度限制",
                     "placeholder": "40, 50, 60..."
@@ -1228,12 +1203,6 @@
                 "maxspeed/advisory": {
                     "label": "建議限速",
                     "placeholder": "40, 50, 60..."
-                },
-                "maxstay": {
-                    "label": "可停留時間"
-                },
-                "maxweight": {
-                    "label": "最大承重"
                 },
                 "memorial": {
                     "label": "種類"
@@ -1368,9 +1337,6 @@
                     "label": "時間",
                     "placeholder": "未知"
                 },
-                "opening_hours/covid19": {
-                    "label": "COVID-19 流行期間營業時間"
-                },
                 "operator": {
                     "label": "營辦商"
                 },
@@ -1415,9 +1381,6 @@
                         "surface": "地面",
                         "underground": "地下"
                     }
-                },
-                "parking/orientation": {
-                    "label": "方向"
                 },
                 "parking_entrance": {
                     "label": "種類"
@@ -1930,34 +1893,6 @@
                 },
                 "sport": {
                     "label": "運動"
-                },
-                "sport_ice": {
-                    "label": "運動",
-                    "options": {
-                        "curling": "冰壺",
-                        "ice_hockey": "冰上曲棍球",
-                        "ice_skating": "溜冰",
-                        "ice_stock": "冰上滑盤",
-                        "multi": "多重"
-                    }
-                },
-                "sport_racing_motor": {
-                    "label": "運動",
-                    "options": {
-                        "karting": "卡丁車",
-                        "motocross": "越野電車車",
-                        "motor": "賽車"
-                    }
-                },
-                "sport_racing_nonmotor": {
-                    "label": "運動",
-                    "options": {
-                        "bmx": "BMX",
-                        "cycling": "騎單車",
-                        "dog_racing": "賽狗",
-                        "horse_racing": "賽馬",
-                        "running": "跑步"
-                    }
                 },
                 "stars": {
                     "label": "星級"
@@ -2631,9 +2566,6 @@
                     "name": "醫生",
                     "terms": "醫師"
                 },
-                "amenity/doctors/gynaecology": {
-                    "name": "婦科醫生"
-                },
                 "amenity/dojo": {
                     "name": "道場/武術學院",
                     "terms": "武藝,武術"
@@ -2921,10 +2853,6 @@
                     "name": "回收中心",
                     "terms": "recycling center,廢物回收中心,資源回收中心"
                 },
-                "amenity/recycling_container": {
-                    "name": "回收桶",
-                    "terms": "回收桶,三色桶,回收箱"
-                },
                 "amenity/restaurant": {
                     "name": "餐廳",
                     "terms": "restaurant,茶樓,酒家,酒樓,飯店,飯館,餐廳,餐館"
@@ -3186,10 +3114,6 @@
                 "amenity/waste/dog_excrement": {
                     "name": "狗糞收集箱",
                     "terms": "dog excrement bin,狗屎收集箱"
-                },
-                "amenity/waste_basket": {
-                    "name": "垃圾桶",
-                    "terms": "waste basket,垃圾桶,垃圾箱,廢物箱"
                 },
                 "amenity/waste_disposal": {
                     "name": "大型垃圾箱",
@@ -3484,10 +3408,6 @@
                 },
                 "building/temple": {
                     "name": "寺廟建築物"
-                },
-                "building/terrace": {
-                    "name": "排屋",
-                    "terms": "行列式房屋,連棟式住宅"
                 },
                 "building/train_station": {
                     "name": "鐵路車站建築物"
@@ -4143,10 +4063,6 @@
                 "landuse/military/barracks": {
                     "name": "軍營",
                     "terms": "barracks,兵房,兵營,營房,軍營"
-                },
-                "landuse/military/danger_area": {
-                    "name": "危險區",
-                    "terms": "danger area,危險地區,危險區域,危險範圍"
                 },
                 "landuse/military/range": {
                     "name": "軍事靶場",

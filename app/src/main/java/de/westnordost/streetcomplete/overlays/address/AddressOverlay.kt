@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.overlays.address
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
@@ -12,11 +12,9 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
-import de.westnordost.streetcomplete.util.ktx.getIds
-import java.util.concurrent.FutureTask
 
 class AddressOverlay(
-    private val countryBoundaries: FutureTask<CountryBoundaries>
+    private val getCountryCodeByLocation: (location: LatLon) -> String?
 ) : Overlay {
 
     override val title = R.string.overlay_addresses
@@ -49,7 +47,7 @@ class AddressOverlay(
             .filter("ways, relations with building")
             .filter {
                 val center = mapData.getGeometry(it.type, it.id)?.center ?: return@filter false
-                val country = countryBoundaries.get().getIds(center).firstOrNull()
+                val country = getCountryCodeByLocation(center)
                 country !in noAddressesOnBuildings
             }
             .map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }

@@ -18,8 +18,7 @@ class MainMenuDialog(
     indexInTeam: Int?,
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
-    onDisableTeamMode: () -> Unit,
-    onClickOverlays: () -> Unit,
+    onDisableTeamMode: () -> Unit
 ) : AlertDialog(context) {
     init {
         val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
@@ -49,11 +48,6 @@ class MainMenuDialog(
         }
         binding.downloadButton.setOnClickListener {
             onClickDownload()
-            dismiss()
-        }
-
-        binding.overlaysButton.setOnClickListener {
-            onClickOverlays()
             dismiss()
         }
 

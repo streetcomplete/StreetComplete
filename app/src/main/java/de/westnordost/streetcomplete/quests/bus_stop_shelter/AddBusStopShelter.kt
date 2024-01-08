@@ -13,13 +13,14 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswe
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
         and !covered
+        and location !~ underground|indoor
         and indoor != yes
         and tunnel != yes
         and (!level or level >= 0)

@@ -311,7 +311,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_cycleway_value_none">"ne postoji"</string>
     <string name="quest_cycleway_value_shared">"traka koja se eksplicitno dijeli s ostalim vozilima (sharrow)"</string>
     <string name="quest_cycleway_value_bus_lane">"po autobusnoj traci"</string>
-    <string name="quest_cycleway_value_sidewalk">"nogostup eksplicitno dijeljen zajedno s pješacima"</string>
     <string name="quest_leave_new_note_create_image_error">"Nije moguće stvoriti datoteku za fotografiju"</string>
     <string name="quest_cycleway_value_lane_dual">"biciklistička traka, u oba smjera"</string>
     <string name="quest_cycleway_value_track_dual">"biciklistička staza, u oba smjera"</string>
@@ -735,7 +734,6 @@ postignuća"</string>
     <string name="resurvey_intervals_less_often">"Pitaj rjeđe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je li ovaj defibrilator (AVD/AED) unutar zgrade?"</string>
     <string name="about_title_translate">"Pomozite prevesti ovu aplikaciju"</string>
     <string name="about_description_translate">"%1$s je %2$d%% preveden"</string>
     <string name="quest_oneway2_title">"Je li ovo jednosmjerna ulica? U kojem smjeru?"</string>
@@ -783,7 +781,7 @@ postignuća"</string>
     <string name="quest_buildingType_ruins_description">"zapuštena i uništena zgrada koju nije moguće identificirati"</string>
     <string name="quest_charging_station_capacity_title">"Koliko se automobila može istovremeno puniti na ovoj stanici za punjenje?"</string>
     <string name="link_disaster_ninja_description">"Karta koja prikazuje nedavne prirodne katastrofe, zanimljiva za kartografe humanitarnih organizacija. Također, prikazuje mnoštvo zanimljivih statističkih podataka za analizu koliko su dobro kartirana i ažurirana mjesta."</string>
-    <string name="quest_lanes_title">"Koliko traka za automobile ima ova cesta?"</string>
+    <string name="quest_lanes_title">"Koliko automobilskih traka ima ova cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Označene trake"</string>
     <string name="quest_lanes_answer_noLanes">"Nema označenih traka"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ima dvosmjernu traku za skretanje lijevo (USA/Kanada)"</string>
@@ -910,7 +908,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Koliko katova iznad podruma ima ova građevina?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Koliko katova iznad podruma ima ovaj dio građevine?"</string>
-    <string name="quest_crossing_title">"Postoje li rubnici na ovom spoju puta i ceste? Koja vrsta?"</string>
     <string name="pref_subtitle_quests_preset_name">"Grupa zadataka: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ova vrsta zadatka je inicijalno onemogućena jer se oblici krova često ne vide lako s ulice.  Ova vrsta zadatka također oduzima dosta vremena; u većini slučajeva je jednostavnije i učinkovitije krovove označiti iz zračnih snimaka kod kuće."</string>
     <string name="quest_religion_animist">"Animizam"</string>
@@ -944,7 +941,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="quest_buildingType_bridge">"Most koji spaja zgrade (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Je li ova praonica rublja samoposlužna?"</string>
     <string name="quest_dietType_explanation_halal">"Halal proizvodi se moraju pripremati prema posebnim pravilima, a Halal agencije za certificiranje moraju označavati proizvode u skladu s njima."</string>
-    <string name="quest_picnicTableCover_title">"Je li ovaj stol za piknik natkriven (zaštićen od kiše)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"To su stepenice"</string>
     <string name="quest_barrier_type_passage_conversion">"Pretvoreno u prolaz kroz zid/ogradu/itd."</string>
     <string name="quest_barrier_type_gate_conversion">"Pretvoreno u vrata"</string>
@@ -1145,7 +1141,7 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_barrier_type_gate_any_size">"Vrata (svih veličina)"</string>
     <string name="quest_air_pump_compressor_title">"Postoji li ovdje kompresor zraka?"</string>
     <string name="quest_step_count_stile_hint">"Samo broj koraka za dostizanje vrha. Ako se broj koraka razlikuje na svakoj strani, navedite veći broj."</string>
-    <string name="quest_shoulder_explanation2">"Zaustavna traka je jasno razgraničena traka za zaustavljanje u nuždi. Područje označeno kao zaustavna traka nije nužno popločano cijelom širinom i niti dovoljno široko da se automobil potpuno zaustavi izvan prometne trake."</string>
+    <string name="quest_shoulder_explanation2">"Zaustavna traka je jasno razgraničena traka za zaustavljanje u nuždi. Područje označeno kao zaustavna traka ne mora nužno biti u cijelosti asfaltirano, niti dovoljno široko da se automobil može cijelom širinom zaustaviti izvan prometne trake."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ne postoji, niti je dopuštena vožnja biciklom u ovom smjeru"</string>
     <string name="map_btn_create_track">"Snimi novi trag"</string>
     <string name="map_btn_stop_track">"Zaustavi snimanje traga"</string>
@@ -1185,7 +1181,6 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_memorialType_stele_wooden">"Drvena stela (spomen-ploča)"</string>
     <string name="quest_memorialType_stele_stone">"Kamena stela (spomen-ploča)"</string>
     <string name="quest_memorialType_sculpture">"Druga skulptura"</string>
-    <string name="select_overlay">"Odaberi Nadsloj"</string>
     <string name="overlay_none">"Ništa"</string>
     <string name="overlay_lit">"Ulična rasvjeta"</string>
     <string name="lit_value_yes">"Osvijetljeno"</string>
@@ -1228,7 +1223,6 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_address_street_hint2">"Dotaknite ulicu na karti da ju odaberete"</string>
     <string name="quest_bicycle_incline_title">"Koji smjer vodi prema gore odavde?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Svako malo ide gore-dolje"</string>
-    <string name="quest_drinking_water_type_title">"Na koji način je ovdje dostupna pitka voda?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Neka druga vrsta"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vodoskok sa malim mlazom vode"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Samo za punjenje boca"</string>
@@ -1240,7 +1234,6 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="overlay_addresses">"Adrese"</string>
     <string name="overlay_shops">"Trgovine"</string>
     <string name="name_label">"Naziv:"</string>
-    <string name="vacant_shop_title">"Upražnjena trgovina"</string>
     <string name="unknown_shop_title">"Nepoznata vrsta trgovine"</string>
     <string name="quest_address_answer_no_address">"Nema adrese ovdje"</string>
     <string name="quest_bicycle_barrier_installation_title">"Može li se ova biciklistička barijera otvoriti (sa ili bez ključa)?"</string>
@@ -1265,7 +1258,7 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
     <string name="user_profile_current_week_title">"Zadnjih 7 dana"</string>
     <string name="user_profile_dates_mapped">"Dani kada ste nedavno kartirali"</string>
-    <string name="quest_cycleway_value_advisory_lane">"Preporučena traka za bicikle"</string>
+    <string name="quest_cycleway_value_advisory_lane">"Preporučena biciklistička traka"</string>
     <string name="urlconfig_scan_qr_code_again2">"Nakon instaliranja aplikacije ponovno skenirajte QR kod ili kliknite &lt;a href=\"%s\"&gt;ovu poveznicu&lt;/a&gt; za primjenu Grupe zadataka."</string>
     <string name="confirmation_replace_shop_title">"Koja je ovdje sada trgovina?"</string>
     <string name="confirmation_replace_shop_message">"U tom slučaju i radno vrijeme, podaci za kontakt itd. će također biti promijenjeni. "</string>
@@ -1298,7 +1291,6 @@ Pomaknuti sada?"</string>
     <string name="cycleway_reverse_direction_toast">"Dotaknite stranu koju želite preokrenuti"</string>
     <string name="separate_cycleway_path">"Staza ili puteljak"</string>
     <string name="quest_fireHydrant_type_pipe">"Cijev"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"nogostup eksplicitno dijeljen zajedno s pješacima, u oba smjera"</string>
     <string name="measure_info_title">"Postizanje optimalne preciznosti"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore ponekad (inicijalno) pretpostavlja da je tlo malo niže ili više nego što zapravo jest. Ovo uvodi mjernu pogrešku koja raste čim više telefon usmjeravate prema horizontu.&lt;/p&gt;
 &lt;p&gt;Postavite i početnu i krajnju točku usmjeravajući telefon ravno prema dolje (tako da vidite bijelu strelicu odozgo) kako biste u potpunosti izbjegli ovaj problem za horizontalna mjerenja.&lt;/p&gt;
@@ -1318,4 +1310,64 @@ Pomaknuti sada?"</string>
     <string name="unknown_surface_title">"Nepoznata vrsta površine"</string>
     <string name="overlay_surface">"Površine"</string>
     <string name="overlay_path_surface_segregated">"Podijeljena je na biciklistički i pješački dio"</string>
+    <string name="quest_crossing_title2">"Postoji li ovdje pješački prijelaz?"</string>
+    <string name="quest_crossing_yes">"Da (npr. rubnik je ovdje spušten ili postoji zebra)"</string>
+    <string name="quest_crossing_no">"Ne, ali je prelazak moguć"</string>
+    <string name="quest_crossing_prohibited">"Ne, prelazak je zabranjen ili nemoguć"</string>
+    <string name="quest_hairdresser_title">"Koje mušterije posjećuju ovog frizera?"</string>
+    <string name="quest_hairdresser_male_and_female">"Svatko"</string>
+    <string name="quest_hairdresser_female_only">"Žene"</string>
+    <string name="quest_hairdresser_male_only">"Muškarci"</string>
+    <string name="quest_hairdresser_not_signed">"Nije naznačeno"</string>
+    <string name="quest_amenityCover_title">"Je li ovo natkriveno (zaštićeno od kiše)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Produžetak rubnika"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Pješački otok"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Namjerna krivulja (šikana)"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Produžetak rubnika  +  pješački otok"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Ovdje nema sužene trake"</string>
+    <string name="quest_tactilePaving_title_steps">"Imaju li ove stepenice trake vodilje za slijepe?"</string>
+    <string name="quest_tactilePaving_steps_top">"Samo na vrhu"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Samo na dnu"</string>
+    <string name="overlay_addresses_no_entrance">"To nije ulaz…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"biciklističko-pješačka staza"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"biciklističko-pješačka staza, u oba smjera"</string>
+    <string name="overlays_tutorial_title">"Nadslojevi"</string>
+    <string name="overlays_tutorial_intro">"Pronašli ste novi način za uređivanje podataka!"</string>
+    <string name="overlays_tutorial_display">"Svaki Nadsloj prikazuje jednu vrstu podataka, na primjer trgovine ili cestovne površine.
+
+Različiti podaci su označeni različitim bojama kako biste imali dobar pregled onoga što je do sada označeno.
+Podaci koji nedostaju uvijek su prikazani crvenom bojom."</string>
+    <string name="overlays_tutorial_edit">"Dotaknite bilo koji obojani element da biste ga uredili. Također možete razdvojiti put ili ostaviti bilješku, kao kod Zadataka.
+
+Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikazanog križića, kao npr. Nadsloj \"Adrese\"."</string>
+    <string name="quest_crossing_kerb_height_title">"Koliko je visok rubnik na ovom prijelazu?"</string>
+    <string name="quest_maxheight_sign_title">"Koje je ograničenje visine ovdje naznačeno?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Koje je ograničenje visine naznačeno ispod mosta?"</string>
+    <string name="quest_leave_new_note_as_answer">"U tom slučaju, trebate ostaviti bilješku u kojoj objašnjavate situaciju."</string>
+    <string name="quest_drinking_water_type_title2">"Ima li ovdje pitke vode? Ako ima, koji je njezin izvor?"</string>
+    <string name="quest_is_amenity_inside_title">"Je li ovo unutar zgrade?"</string>
+    <string name="quest_bbq_fuel_title">"Koje gorivo koristi ovaj roštilj?"</string>
+    <string name="quest_bbq_fuel_wood">"Drvo"</string>
+    <string name="quest_bbq_fuel_electric">"Struju"</string>
+    <string name="quest_bbq_fuel_charcoal">"Ugljen"</string>
+    <string name="inside">"unutra"</string>
+    <string name="outside">"vani"</string>
+    <string name="quest_recycling_type_food_waste">"Otpad od sve hrane"</string>
+    <string name="quest_defibrillator_location">"Gdje se nalazi ovaj defibrilator (AVD/AED)?"</string>
+    <string name="quest_defibrillator_location_description">"Navedite sažet ali precizan opis njegovog položaja (npr. “u portirnici”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Postoji li ovdje stanica za pražnjenje fekalnih spremnika?"</string>
+    <string name="quest_sanitary_dump_station_description">"Postrojenje za odlaganje ljudskog otpada iz WC spremnika kampera, kamiona za duge relacije itd. Obično je označeno ovakvim znakom:"</string>
+    <string name="quest_generalFee_title">"Trebate li platiti za korištenje ovog?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"To je samo ognjište"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Ognjište nema površinu za kuhanje (npr. rešetku/ploču) kao što je ima roštilj."</string>
+    <string name="about_title_logs">"Logovi (%1$d)"</string>
+    <string name="about_summary_logs">"za upotrebu u izvješćima o greškama"</string>
+    <string name="action_filter">"Filtar"</string>
+    <string name="action_share">"Podijeli logove"</string>
+    <string name="about_title_show_logs">"Prikaži logove"</string>
+    <string name="label_log_level">"Razina logiranja"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Poruka sadrži"</string>
+    <string name="title_logs_filters">"Filtrirajte poruke"</string>
 </resources>

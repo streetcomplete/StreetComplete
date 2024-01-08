@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.SpatialCache
-import java.util.concurrent.CopyOnWriteArrayList
 
 /** Access and listen to quests visible on the map */
 class VisibleQuestsSource(
@@ -27,7 +27,7 @@ class VisibleQuestsSource(
         fun onVisibleQuestsInvalidated()
     }
 
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<Listener>()
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {

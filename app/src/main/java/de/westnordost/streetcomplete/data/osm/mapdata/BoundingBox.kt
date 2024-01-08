@@ -34,5 +34,17 @@ fun BoundingBox.splitAt180thMeridian(): List<BoundingBox> {
             BoundingBox(min.latitude, min.longitude, max.latitude, 180.0 - 1e-13),
             BoundingBox(min.latitude, -180.0, max.latitude, max.longitude)
         )
-    } else listOf(this)
+    } else {
+        listOf(this)
+    }
 }
+
+/** @return a polygon with the same extent as this bounding box, defined in counter-clockwise order
+ * */
+fun BoundingBox.toPolygon() = listOf(
+    min,
+    LatLon(min.latitude, max.longitude),
+    max,
+    LatLon(max.latitude, min.longitude),
+    min,
+)

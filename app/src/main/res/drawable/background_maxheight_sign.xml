@@ -5,7 +5,7 @@
     android:viewportHeight="112">
   <path
       android:pathData="M56,56m-55.75,0a55.75,55.75 0,1 1,111.5 0a55.75,55.75 0,1 1,-111.5 0"
-      android:fillColor="@color/traffic_sign_background"/>
+      android:fillColor="@color/traffic_white"/>
   <path
       android:pathData="M56,34 l-18,-18h36zM56,78 l18,18L38,96Z"
       android:fillColor="@color/traffic_black"/>

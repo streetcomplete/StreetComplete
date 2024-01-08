@@ -15,6 +15,8 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
         nodes, ways with
           amenity = charging_station
           and !operator and !name and !brand
+          and operator:signed != no
+          and brand:signed != no
     """
     override val changesetComment = "Specify charging station operators"
     override val wikiLink = "Tag:amenity=charging_station"

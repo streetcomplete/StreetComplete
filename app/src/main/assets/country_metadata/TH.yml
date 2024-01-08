@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en, th-Latn]
 advisorySpeedLimitSignStyle: yellow
 atmOperators: [Bangkok Bank, Siam Commercial Bank, Krungsri, Kasikorn Bank, Krungthai Bank, SCB, KTB, Kasikorn, Krungthai, TMB, ธนาคารกสิกรไทย, ธนาคารไทยพาณิชย์, ธนาคารกรุงไทย, ธนาคารกรุงเทพ, Government Savings Bank, GSB, Krungsri Bank, Kasikornbank, Thanachart Bank, KBANK, ATM, ธนาคารออมสิน, Bank of Ayudhya, Siam City Bank, Siam Commercial, K-Bank, Kasikornthai, Krung Thai Bank, ธนาคารกรุงศรีอยุธยา, Omsin, ธนาคารทหารไทย, ธนาคารธนชาต, Goverment Savings Bank, UOB, Aeon, K Bank, Thanachart, กสิกรไทย, BBL, Easybank, Baac, CIMB Thai, Krung Thai, Siam Commercial Bank (SCB), ออมสิน, Bangkok, Kasikornthai Bank, 'KBANK, SCB, KTB', TCAP, BAY, 'KBANK, SCB', Oomsin, Krungsiri, TMB Bank, Bangkok Bank (BBL), Krung Thai Bank (KTB), 'KTB, BBL, GSB', ธนาคารกรุงไทย (Krungthai Bank), LH Bank, ธนาคารซีไอเอ็มบีไทย, ไทยพาณิชย์, Krungthai Bank ธนาคารกรุงไทย, Cimb, Krungsri Bay, Easy Bank, SNA, bike park, Aomsin Bank, Thai Military Bank, ธ.ออมสิน, Krungsri ATM, ATM Krungsri, ธ.ไทยพาณิชย์, ATM Siam Commercial Bank]
 centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
 isLeftHandTraffic: true
 mobileCountryCode: 520
 noParkingLineStyle: yellow-white on curb

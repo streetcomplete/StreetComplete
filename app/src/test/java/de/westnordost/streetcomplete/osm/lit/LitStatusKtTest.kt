@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.lit.LitStatus.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
 
 class LitStatusKtTest {
 
@@ -19,9 +20,11 @@ class LitStatusKtTest {
         verifyAnswer(mapOf(), NIGHT_AND_DAY, arrayOf(StringMapEntryAdd("lit", "24/7")))
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `applying invalid throws exception`() {
-        UNSUPPORTED.applyTo(StringMapChangesBuilder(mapOf()))
+        assertFailsWith<IllegalArgumentException> {
+            UNSUPPORTED.applyTo(StringMapChangesBuilder(mapOf()))
+        }
     }
 
     @Test fun `apply updates check date`() {

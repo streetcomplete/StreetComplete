@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
@@ -10,7 +10,7 @@ class QuestTypeOrderController(
     private val questTypeRegistry: QuestTypeRegistry
 ) : QuestTypeOrderSource {
 
-    private val listeners = CopyOnWriteArrayList<QuestTypeOrderSource.Listener>()
+    private val listeners = Listeners<QuestTypeOrderSource.Listener>()
 
     private val selectedPresetId: Long get() = questPresetsSource.selectedId
 

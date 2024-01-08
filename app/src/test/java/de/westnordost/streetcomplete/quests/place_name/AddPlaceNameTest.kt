@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
-import org.junit.Test
+import kotlin.test.Test
 
 class AddPlaceNameTest {
 

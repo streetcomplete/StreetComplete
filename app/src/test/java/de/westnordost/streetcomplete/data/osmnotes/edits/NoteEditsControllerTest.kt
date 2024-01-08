@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 class NoteEditsControllerTest {
 
@@ -21,7 +21,7 @@ class NoteEditsControllerTest {
     private lateinit var db: NoteEditsDao
     private lateinit var listener: NoteEditsSource.Listener
 
-    @Before fun setUp() {
+    @BeforeTest fun setUp() {
         db = mock()
         on(db.delete(anyLong())).thenReturn(true)
         on(db.markSynced(anyLong())).thenReturn(true)

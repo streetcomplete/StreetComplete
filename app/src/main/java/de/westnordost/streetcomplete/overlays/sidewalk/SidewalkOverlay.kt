@@ -53,7 +53,11 @@ class SidewalkOverlay : Overlay {
         return if (
             element.tags["highway"] in ALL_ROADS ||
             createSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
-        ) SidewalkOverlayForm() else null
+        ) {
+            SidewalkOverlayForm()
+        } else {
+            null
+        }
     }
 }
 
@@ -98,7 +102,7 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
       or maxspeed <= 10
       or maxspeed = walk
       or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
-      or ~"(${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")})" ~ ".*zone:?([1-9]|10)"
+      or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|10)"
 """.toElementFilterExpression() }
 
 private fun sidewalkTaggingNotExpected(element: Element) =

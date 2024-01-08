@@ -311,7 +311,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_cycleway_value_none">"nessuna"</string>
     <string name="quest_cycleway_value_shared">"corsia condivisa esplicitamente con altro traffico"</string>
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
-    <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il percorso pedonale"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossibile creare un file per la foto"</string>
     <string name="quest_cycleway_value_lane_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
@@ -526,7 +525,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_ferry_motor_vehicle_title">"Questa linea di traghetti trasporta veicoli a motore?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’aggiunta di una foto renderà la nota molto più utile."</string>
     <string name="create_new_note_hint">"Sarebbe meglio scrivere la nota nella lingua locale oppure in inglese."</string>
-    <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie?"</string>
+    <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie larghe?"</string>
     <string name="quest_leaf_type_needles">"Aghi"</string>
     <string name="quest_leaf_type_broadleaved">"Foglie larghe"</string>
     <string name="quest_leaf_type_mixed">"Sono presenti entrambi"</string>
@@ -734,7 +733,6 @@ riconoscimento"</string>
     <string name="resurvey_intervals_less_often">"Chiedi meno spesso"</string>
     <string name="resurvey_intervals_default">"Predefinito"</string>
     <string name="resurvey_intervals_more_often">"Chiedi più spesso"</string>
-    <string name="quest_is_defibrillator_inside_title">"Questo defibrillatore (DAE) è all’interno di un edificio?"</string>
     <string name="about_title_translate">"Aiuta a tradurre questa app"</string>
     <string name="about_description_translate">"%1$s è tradotto %2$d%%"</string>
     <string name="quest_oneway2_title">"È una strada a senso unico? In quale direzione?"</string>
@@ -907,7 +905,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Quanti piani sopra il seminterrato ha questo edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quanti piani sopra il seminterrato ha questa parte di edificio?"</string>
-    <string name="quest_crossing_title">"Ci sono cordoli dove questa via incontra la strada? Di che tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preimpostazione: %s"</string>
     <string name="default_disabled_msg_roofShape">"Questo tipo di missione è disabilitata perché la forma del tetto non è sempre facilmente visibile dalla strada. Questo tipo di missione è anche gravosa; nella maggior parte dei casi è più facile ed efficiente mappare queste informazioni usando le immagini satellitari da casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -941,7 +938,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_buildingType_bridge">"Ponte tra edifici"</string>
     <string name="quest_laundrySelfService_title2">"Questa lavanderia ha il servizio self service?"</string>
     <string name="quest_dietType_explanation_halal">"I prodotti Halal devono essere preparati in osservanza di speciali regole, le agenzie di certificazione Halal marchiano i prodotti che le rispettano."</string>
-    <string name="quest_picnicTableCover_title">"Questo tavolo da picnic è coperto (riparato dalla pioggia)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Questi sono scalini"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertito in un passaggio in un muro/barriera"</string>
     <string name="quest_barrier_type_gate_conversion">"Convertito in cancello"</string>
@@ -1182,7 +1178,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_memorialType_stele_wooden">"Stele di legno (lastra commemorativa)"</string>
     <string name="quest_memorialType_stele_stone">"Stele di pietra (lastra commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altra scultura"</string>
-    <string name="select_overlay">"Seleziona livello sovrapposto"</string>
     <string name="overlay_none">"Nessuno"</string>
     <string name="overlay_lit">"Illuminazione delle strade"</string>
     <string name="lit_value_yes">"Illuminato"</string>
@@ -1190,7 +1185,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="lit_value_24_7">"Illuminato giorno e notte"</string>
     <string name="lit_value_automatic">"Illuminato quando qualcuno passa"</string>
     <string name="overlay_sidewalk">"Marciapiedi"</string>
-    <string name="quest_generic_answer_is_indoors">"Si trova all'interno"</string>
+    <string name="quest_generic_answer_is_indoors">"È all'interno di un edificio"</string>
     <string name="quest_summit_cross_title">"C'è una croce di vetta qui?"</string>
     <string name="quest_entrance_reference">"Che scritta è presente su questo ingresso?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Un nome e un intervallo di appartamenti"</string>
@@ -1225,7 +1220,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_address_street_hint2">"Premi sulla strada nella mappa per selezionarla"</string>
     <string name="quest_bicycle_incline_title">"In quale direzione si sale qua?"</string>
     <string name="quest_bicycle_incline_up_and_down">"È un saliscendi"</string>
-    <string name="quest_drinking_water_type_title">"Come viene fornita l’acqua potabile qua?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Altra fontanella"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"La fontanella emette un piccolo getto d’acqua"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Solo per riempire le bottiglie"</string>
@@ -1237,7 +1231,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="overlay_addresses">"Indirizzi"</string>
     <string name="overlay_shops">"Negozi"</string>
     <string name="name_label">"Nome:"</string>
-    <string name="vacant_shop_title">"Negozio vuoto"</string>
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
     <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta (eventualmente con una chiave)?"</string>
@@ -1295,7 +1288,6 @@ Spostarlo ora?"</string>
     <string name="cycleway_reverse_direction_toast">"Clicca il lato da invertire"</string>
     <string name="separate_cycleway_path">"Sentiero"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"esplicitamente condivisa con il percorso pedonale, entrambe le direzioni"</string>
     <string name="measure_info_title">"Ottenere la precisione ottimale"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore talvolta rileva (inizialmente) il terreno ad una distanza leggermente maggiore o minore di quella reale, introducendo così un errore di misurazione il quale aumenta man mano che si ruota il telefono verso l'orizzonte.&lt;/p&gt;
 &lt;p&gt;Per evitare questo tipo di errori nelle misurazioni orizzontali, imposta i punti di inizio e fine con il telefono rivolto esattamente verso il basso (in modo da vedere la freccia bianca dall'alto).&lt;/p&gt;
@@ -1315,4 +1307,48 @@ Spostarlo ora?"</string>
     <string name="unknown_surface_title">"Altri tipi di supeficie"</string>
     <string name="overlay_surface">"Superfici"</string>
     <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
+    <string name="quest_crossing_title2">"C'è un attraversamento qui?"</string>
+    <string name="quest_crossing_yes">"Sì (ad es. qui il cordolo è abbassato oppure ci sono le strisce)"</string>
+    <string name="quest_crossing_no">"No, però è possibile attraversare"</string>
+    <string name="quest_crossing_prohibited">"No, è proibito oppure impossibile attraversare"</string>
+    <string name="quest_hairdresser_title">"Quali clienti vanno da questo parrucchiere?"</string>
+    <string name="quest_hairdresser_male_and_female">"Chiunque"</string>
+    <string name="quest_hairdresser_female_only">"Donne"</string>
+    <string name="quest_hairdresser_male_only">"Uomini"</string>
+    <string name="quest_hairdresser_not_signed">"Non è indicato"</string>
+    <string name="quest_amenityCover_title">"È coperto (protetto dalla pioggia)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Prolungamento del cordolo"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Isola di traffico"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Prolungamento del cordolo + isola di traffico"</string>
+    <string name="lane_narrowing_traffic_calming_none">"La corsia qui non è ristretta"</string>
+    <string name="quest_tactilePaving_title_steps">"C'è una pavimentazione tattile in cima e in fondo a questi gradini?"</string>
+    <string name="quest_tactilePaving_steps_top">"Solo in cima"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Solo in fondo"</string>
+    <string name="overlay_addresses_no_entrance">"Non è un'entrata…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"percorso condiviso"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"percorso condiviso, entrambe le direzioni"</string>
+    <string name="overlays_tutorial_title">"Livelli sovrapposti"</string>
+    <string name="overlays_tutorial_intro">"Hai trovato un nuovo modo per modificare i dati!"</string>
+    <string name="overlays_tutorial_display">"Ogni livello in sovrapposizione mostra un tipo di dati, per esempio negozi o superfici stradali.
+
+I dati sono evidenziati in colori differenti per dare un'idea generale di cosa è già stato inserito. I dati mancanti vengono mostrati in rosso."</string>
+    <string name="overlays_tutorial_edit">"Premi i dati evidenziati per mostrarli o modificarli. Puoi anche dividere way o lasciare note, come nei compiti.
+
+Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del bersaglio, come il livello \"Indirizzi\"."</string>
+    <string name="quest_crossing_kerb_height_title">"Qual è l'altezza del cordolo a questo attraversamento?"</string>
+    <string name="quest_maxheight_sign_title">"Quale limite di altezza è indicato qui?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quale limite di altezza è indicato sotto questo ponte?"</string>
+    <string name="quest_leave_new_note_as_answer">"In questo caso, devi lasciare una nota per spiegare la situazione."</string>
+    <string name="quest_drinking_water_type_title2">"C'è dell'acqua potabile qui? Se sì, qual è la fonte?"</string>
+    <string name="quest_is_amenity_inside_title">"È all'interno di un edificio?"</string>
+    <string name="quest_bbq_fuel_title">"Cosa dà energia a questa griglia?"</string>
+    <string name="quest_bbq_fuel_wood">"Legno"</string>
+    <string name="quest_bbq_fuel_electric">"Elettricità"</string>
+    <string name="quest_bbq_fuel_charcoal">"Carbone"</string>
+    <string name="inside">"all'interno"</string>
+    <string name="outside">"all'esterno"</string>
+    <string name="quest_recycling_type_food_waste">"Scarti di cibo"</string>
+    <string name="quest_defibrillator_location">"Dove è posizionato questo defibrillatore?"</string>
+    <string name="quest_defibrillator_location_description">"Per favore, fornisci una breve descrizione della posizione (es. \"Nell'androne\")."</string>
 </resources>

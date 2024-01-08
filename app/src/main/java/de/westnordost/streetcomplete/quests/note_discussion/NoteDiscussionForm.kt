@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
@@ -76,8 +74,11 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         val alreadyHidden = osmNoteQuestController.getVisible(noteId) == null
         setButtonPanelAnswers(listOf(
-            if (alreadyHidden) AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
-            else               AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            if (alreadyHidden) {
+                AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
+            } else {
+                AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            }
         ))
 
         binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
@@ -87,10 +88,6 @@ class NoteDiscussionForm : AbstractQuestForm() {
         viewLifecycleScope.launch {
             val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
             inflateNoteDiscussion(comments)
-        }
-
-        if (savedInstanceState == null) {
-            childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
     }
 
@@ -109,7 +106,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onClickOk() {
-        require(noteText != null ) { "NoteQuest has been answered with an empty comment!" }
+        require(noteText != null) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {

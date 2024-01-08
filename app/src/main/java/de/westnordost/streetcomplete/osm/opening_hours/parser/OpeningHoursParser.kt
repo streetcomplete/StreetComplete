@@ -250,11 +250,17 @@ private fun Rule.collidesWith(other: Rule): Boolean {
 
     // handle times looping into next day
     val compareDays =
-        if (times?.any { it.expandsIntoNextDay() } == true) days?.map { it.expandedToNextDay() }
-        else days
+        if (times?.any { it.expandsIntoNextDay() } == true) {
+            days?.map { it.expandedToNextDay() }
+        } else {
+            days
+        }
     val compareOtherDays =
-        if (other.times?.any { it.expandsIntoNextDay() } == true) other.days?.map { it.expandedToNextDay() }
-        else other.days
+        if (other.times?.any { it.expandsIntoNextDay() } == true) {
+            other.days?.map { it.expandedToNextDay() }
+        } else {
+            other.days
+        }
 
     if (holidays.orEmpty().intersectsWith(other.holidays.orEmpty())) return true
     if (compareDays.orEmpty().intersectsWith(compareOtherDays.orEmpty())) return true

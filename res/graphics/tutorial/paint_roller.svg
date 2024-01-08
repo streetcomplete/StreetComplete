@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 26 26" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs>
+	
+	
+	
+	
+	
+	
+<mask id="mask2695" maskUnits="userSpaceOnUse"><rect x="2.5" y="1" width="20" height="4" ry="1" fill="#fff"/></mask></defs>
+<path d="m12.5 14v-3l12-2v-5h-23" fill="none" stroke="#788ca4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+<path d="m12.25 13.625v-3l12-2v-5h-23" fill="none" stroke="#9baabb" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+<rect x="2.5" y="1" width="20" height="6" ry="1" fill="#fef0c1" stroke-width=".0625"/>
+<path d="m11-8v2h1v-2zm-7 1v2h1v-2zm11 0v2h1v-2zm-8 1v2h1v-2zm12 0v2h1v-2zm-9 2v2h1v-2zm-7 1v2h1v-2zm18 0v2h1v-2zm-5 1v2h1v-2zm-10 1v2h1v-2zm5 2v2h1v-2zm-7 1v2h1v-2zm11 0v2h1v-2zm-8 1v2h1v-2zm12 0v2h1v-2z" fill="#e2cf90" mask="url(#mask2695)"/>
+<path d="m4.5 5h16.104c0.49632 0 0.89589-0.33049 0.89589-0.97911v-3.0209s1 0 1 1v4.1041c0 0.49632-0.39957 0.89589-0.89589 0.89589h-18.104v-1s0-1 1-1z" fill="#e2cf90"/><rect x="10.5" y="13" width="4" height="12" ry="1" fill="#ef4431"/>
+<rect x="9.5" y="13" width="6" height="2" ry=".87537" fill="#ef4431"/>
+<path d="m13.5 16v8" fill="#ef4431" stroke="#ac3024"/><path d="m11.5 16v8" fill="#ef4431" stroke="#ac3024"/></svg>

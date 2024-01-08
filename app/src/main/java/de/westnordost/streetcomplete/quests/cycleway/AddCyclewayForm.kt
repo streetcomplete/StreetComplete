@@ -34,11 +34,14 @@ import kotlinx.serialization.json.Json
 class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRightCycleway>() {
 
     override val buttonPanelAnswers get() =
-        if (isDisplayingPrevious) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious = false },
-            AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
-        )
-        else emptyList()
+        if (isDisplayingPrevious) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious = false },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
+            )
+        } else {
+            emptyList()
+        }
 
     override val otherAnswers: List<IAnswerItem> get() = listOfNotNull(
         createShowBothSidesAnswer(),
@@ -102,15 +105,18 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
         val isNoRoundabout = element.tags["junction"] != "roundabout" && element.tags["junction"] != "circular"
         return if (streetSideSelect.showSides != BOTH && isNoRoundabout) {
             AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { streetSideSelect.showSides = BOTH }
-        } else null
+        } else {
+            null
+        }
     }
 
     private fun getInitiallyShownSides(cycleways: LeftAndRightCycleway?): StreetSideSelectWithLastAnswerButtonViewController.Sides {
-        val bothSidesWereDefinedBefore = cycleways?.left != null && cycleways.right != null
+        val contraflowSide = if (isLeftHandTraffic) cycleways?.right else cycleways?.left
+        val contraflowSideWasDefinedBefore = contraflowSide != null
         val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
 
         return when {
-            bothSidesWereDefinedBefore || bicycleTrafficOnBothSidesIsLikely -> BOTH
+            contraflowSideWasDefinedBefore || bicycleTrafficOnBothSidesIsLikely -> BOTH
             isLeftHandTraffic -> LEFT
             else -> RIGHT
         }

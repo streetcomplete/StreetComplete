@@ -5,9 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
 import android.net.ConnectivityManager
-import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -18,7 +16,7 @@ import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
@@ -26,6 +24,8 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -45,9 +45,9 @@ class QuestAutoSyncer(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginStatusSource: UserLoginStatusSource,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val downloadedTilesDao: DownloadedTilesDao
+    private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
@@ -103,7 +103,7 @@ class QuestAutoSyncer(
         override fun onTeamModeChanged(enabled: Boolean) {
             if (!enabled) {
                 // because other team members will have solved some of the quests already
-                downloadedTilesDao.removeAll()
+                downloadedTilesController.invalidateAll()
                 triggerAutoDownload()
             }
         }
@@ -111,7 +111,7 @@ class QuestAutoSyncer(
 
     val isAllowedByPreference: Boolean
         get() {
-            val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
+            val p = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON")
             return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
         }
 

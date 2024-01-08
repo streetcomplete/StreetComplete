@@ -18,7 +18,7 @@
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, ik weet het zeker"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
-    <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
+    <string name="quest_leave_new_note_title">"In plaats hiervan een notitie achterlaten?"</string>
     <string name="quest_leave_new_note_description">"Je kan ofwel een openbare opmerking achterlaten op deze locatie, die andere mappers hopelijk kunnen oplossen, ofwel de vraag voor jezelf verbergen"</string>
     <string name="quest_leave_new_note_yes">"Oké"</string>
     <string name="quest_leave_new_note_no">"Nee, verberg deze vraag"</string>
@@ -179,10 +179,10 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap onder jou
     <string name="quest_manySports_confirmation_generic">"Algemeen gebruik"</string>
     <string name="quest_sport_manySports_confirmation_title">"Je hebt veel sporten geselecteerd"</string>
     <string name="quest_toiletsFee_title">"Moet je voor deze toiletten betalen?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats blindengeleidetegels aan beide zijden?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats voelbare bestrating aan beide zijden?"</string>
     <string name="quest_source_dialog_title">"Ben je dit echt ter plaatse nagegaan?"</string>
     <string name="quest_source_dialog_note">"Alleen antwoorden die tijdens veldwerk zijn gevonden mogen worden ingevoerd."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt (beschermd tegen regen)?"</string>
     <string name="dialog_session_dont_show_again">"Toon dit niet meer voor deze sessie"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximumsnelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
@@ -278,8 +278,8 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="produce_walnuts">"Walnoten"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Niet mogelijk hier te scannen. Probeer meer in te zoomen, of kantel de kaart minder."</string>
-    <string name="quest_crossing_type_title">"Wat voor oversteek is dit?"</string>
-    <string name="quest_crossing_type_unmarked">"Oversteek zonder wegmarkeringen"</string>
+    <string name="quest_crossing_type_title">"Wat voor oversteekplaats is dit?"</string>
+    <string name="quest_crossing_type_unmarked">"Oversteekplaats zonder wegmarkeringen"</string>
     <string name="action_undo">"Ongedaan maken"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -310,7 +310,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cycleway_value_none">"geen"</string>
     <string name="quest_cycleway_value_shared">"fietssuggestiestrook of expliciet gedeeld met ander verkeer"</string>
     <string name="quest_cycleway_value_bus_lane">"op een busstrook"</string>
-    <string name="quest_cycleway_value_sidewalk">"een fietspad gedeeld met voetgangers"</string>
     <string name="quest_leave_new_note_create_image_error">"Kon geen bestand voor de foto aanmaken"</string>
     <string name="quest_cycleway_value_lane_dual">"fietsstrook op de weg, in beide richtingen"</string>
     <string name="quest_cycleway_value_track_dual">"gescheiden fietspad met tweerichtingsverkeer"</string>
@@ -729,7 +728,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="resurvey_intervals_less_often">"Vraag minder vaak"</string>
     <string name="resurvey_intervals_default">"Standaard"</string>
     <string name="resurvey_intervals_more_often">"Vraag vaker"</string>
-    <string name="quest_is_defibrillator_inside_title">"Is deze defibrilator (AED) binnen een gebouw?"</string>
     <string name="about_title_translate">"Help deze app te vertalen"</string>
     <string name="about_description_translate">"%1$s is %2$d%% vertaald"</string>
     <string name="quest_oneway2_title">"Is hier eenrichtingsverkeer? In welke richting?"</string>
@@ -902,7 +900,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="about_title_faq">"Veelgestelde vragen"</string>
     <string name="quest_buildingLevels_title2">"Hoeveel verdiepingen boven de kelder heeft dit gebouw?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hoeveel verdiepingen boven de kelder heeft dit gebouwdeel?"</string>
-    <string name="quest_crossing_title">"Zijn er stoepranden waar dit pad de weg kruist? Welke soort?"</string>
     <string name="pref_subtitle_quests_preset_name">"Voorinstelling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen"</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -936,7 +933,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_buildingType_bridge">"Brug tussen gebouwen (luchtbrug)"</string>
     <string name="quest_laundrySelfService_title2">"Biedt deze wasserij self-service aan?"</string>
     <string name="quest_dietType_explanation_halal">"Halal producten moeten bereid worden volgens speciale regels en door halal certificatie-agentschappen wordt aangegeven of producten hieraan voldoen."</string>
-    <string name="quest_picnicTableCover_title">"Is deze picknicktafel overdekt?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Dit deel is een trap"</string>
     <string name="quest_barrier_type_passage_conversion">"Omgebouwd tot een doorgang in een muur/hek/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Omgebouwd tot een poort"</string>
@@ -1143,7 +1139,7 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="map_btn_stop_track">"Stop spooropname"</string>
     <string name="quest_bicycle_rental_capacity_title">"Hoeveel plaatsen voor huurfietsen zijn er hier?"</string>
     <string name="quest_bicycle_rental_type_title">"Wat voor soort fietsverhuur is dit?"</string>
-    <string name="quest_bicycle_rental_type_docking_station">"Dockingstation dat de fietsen automatisch blokkeert"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Fietsenrek dat de fietsen automatisch op slot zet."</string>
     <string name="quest_bicycle_rental_type_dropoff_point">"Specifiek toegewezen plaats (fietsen afzonderlijk op slot)"</string>
     <string name="quest_bicycle_rental_type_human">"Fietsverhuur door mensen bemand"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Fietswinkel die ook fietsen verhuurt"</string>
@@ -1177,7 +1173,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
-    <string name="select_overlay">"Kies laag"</string>
     <string name="overlay_none">"Geen"</string>
     <string name="overlay_lit">"Straatverlichting"</string>
     <string name="lit_value_yes">"Verlicht"</string>
@@ -1220,7 +1215,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_address_street_hint2">"Tik op een straat om deze te selecteren"</string>
     <string name="quest_bicycle_incline_title">"In welke richting gaat het hier naar boven?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Het gaat op en neer"</string>
-    <string name="quest_drinking_water_type_title">"Hoe wordt hier drinkwater aangeboden?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Ander soort drinkfontein"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Drinkfontein die een straaltje water geeft"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Alleen flesjes bijvullen"</string>
@@ -1232,7 +1226,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="overlay_addresses">"Adressen"</string>
     <string name="overlay_shops">"Winkels"</string>
     <string name="name_label">"Naam:"</string>
-    <string name="vacant_shop_title">"Leegstaande winkel"</string>
     <string name="unknown_shop_title">"Ander soort winkel"</string>
     <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kan deze fietssluis geopend worden (met of zonder sleutel)?"</string>
@@ -1288,9 +1281,8 @@ Nu verplaatsen?"</string>
     <string name="cycleway_reverse_direction">"Wijzig rijrichting fietspad"</string>
     <string name="cycleway_reverse_direction_warning">"Dat een fietspad de andere kant op gaat, komt zelden voor."</string>
     <string name="cycleway_reverse_direction_toast">"Tik de kant waarvan de rijrichting gewijzigd moet worden"</string>
-    <string name="separate_cycleway_path">"Pad of karrespoor"</string>
+    <string name="separate_cycleway_path">"Pad of spoor"</string>
     <string name="quest_fireHydrant_type_pipe">"Pijp"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"een fietspad gedeeld met voetgangers, in beide richtingen"</string>
     <string name="measure_info_title">"Optimale precisie bereiken"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore gaat er soms (in eerste instantie) van uit dat de grond wat lager of hoger is dan hij in werkelijkheid is. Dit introduceert een meetfout die groter wordt naarmate u uw telefoon meer naar de horizon kantelt.&lt;/p&gt;
 &lt;p&gt;Stel elk begin- en eindpunt in terwijl u de telefoon recht naar beneden richt (zodat u de witte pijl van bovenaf ziet) om dit probleem voor horizontale metingen volledig te voorkomen.&lt;/p&gt;
@@ -1301,4 +1293,73 @@ Nu verplaatsen?"</string>
     <string name="street_parking_staggered_on_street">"Op de straat aan afwisselende zijden"</string>
     <string name="street_parking_staggered_half_on_kerb">"Gedeeltelijk op de straat aan afwisselende zijden"</string>
     <string name="quest_traffic_signals_sound_description">"Hint: Zoek naar luidsprekers. Niet alle geluidssignalen kunnen via een knop worden geactiveerd."</string>
+    <string name="quest_presets_duplicate">"Dupliceren"</string>
+    <string name="label_block">"blok"</string>
+    <string name="quest_address_answer_block">"Het is in een blok"</string>
+    <string name="quest_address_answer_no_block">"Het is niet in een blok. "</string>
+    <string name="quest_surface_value_mud">"Modder (altijd)"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Er is hier geen toilet"</string>
+    <string name="unknown_surface_title">"Ander soort oppervlakte"</string>
+    <string name="overlay_surface">"Oppervlakten"</string>
+    <string name="overlay_path_surface_segregated">"Het pad heeft gescheiden delen voor fietsers en voetgangers"</string>
+    <string name="quest_crossing_title2">"Is hier een oversteekplaats?"</string>
+    <string name="quest_crossing_yes">"Ja (de stoeprand is verlaagd, er zijn markeringen, etc.)"</string>
+    <string name="quest_crossing_no">"Nee, maar oversteken is mogelijk"</string>
+    <string name="quest_crossing_prohibited">"Nee, oversteken is verboden of onmogelijk"</string>
+    <string name="quest_hairdresser_title">"Is dit een dames- of een herenkapper?"</string>
+    <string name="quest_hairdresser_male_and_female">"Beiden"</string>
+    <string name="quest_hairdresser_female_only">"Dames"</string>
+    <string name="quest_hairdresser_male_only">"Heren"</string>
+    <string name="quest_hairdresser_not_signed">"Het staat niet aangegeven"</string>
+    <string name="quest_amenityCover_title">"Is dit overdekt (beschermd tegen regen)?"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Wegversmalling"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Verkeerseiland"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Chicane"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Wegversmalling + verkeerseiland"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Geen versmalde rijbaan hier"</string>
+    <string name="quest_tactilePaving_title_steps">"Is er voelbare bestrating boven- en onderaan deze trap?"</string>
+    <string name="quest_tactilePaving_steps_top">"Alleen bovenaan"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Alleen onderaan"</string>
+    <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
+    <string name="quest_cycleway_value_sidewalk2">"Gezamelijk padgebruik"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Gezamelijk padgebruik, beide richtingen"</string>
+    <string name="overlays_tutorial_title">"Overlays"</string>
+    <string name="overlays_tutorial_intro">"Je hebt een nieuwe manier gevonden om gegevens te bewerken!"</string>
+    <string name="overlays_tutorial_display">"Elke overlay toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
+
+De gegevens worden in verschillende kleuren weergegeven om je een goed overzicht te geven van wat er tot nu toe is geregistreerd.
+Ontbrekende gegevens worden altijd in rood weergegeven."</string>
+    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities toevoegen, zoals bij quests.
+
+Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
+    <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
+    <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Welke hoogtebeperking onder de brug staat er vermeld?"</string>
+    <string name="quest_leave_new_note_as_answer">"In dit geval moet je een notitie achterlaten, waarin je de situatie uitlegt"</string>
+    <string name="quest_drinking_water_type_title2">"Is hier drinkwater beschikbaar? Indien ja, wat is de bron?"</string>
+    <string name="quest_is_amenity_inside_title">"Is dit binnen een gebouw?"</string>
+    <string name="quest_bbq_fuel_title">"Waardoor wordt deze grill verwarmd?"</string>
+    <string name="quest_bbq_fuel_wood">"Hout"</string>
+    <string name="quest_bbq_fuel_electric">"Elelctriciteit"</string>
+    <string name="quest_bbq_fuel_charcoal">"Houtskool"</string>
+    <string name="inside">"binnen"</string>
+    <string name="outside">"buiten"</string>
+    <string name="quest_recycling_type_food_waste">"Voedselafval"</string>
+    <string name="quest_defibrillator_location">"Waar bevindt deze defibrilator zich?"</string>
+    <string name="quest_defibrillator_location_description">"Geef een beknopte beschrijving van de locatie (bijv. \"in de portiersloge\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Kun je hier afvalwater lozen?"</string>
+    <string name="quest_sanitary_dump_station_description">"Een faciliteit voor het lozen van afvalwater van een toilet van een camper, vrachtwagen, enz. Meestal voorzien van een bord als dit:"</string>
+    <string name="quest_generalFee_title">"Moet je betalen om dit te gebruiken?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Het is een vuurplaats"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Vuurplaatsen hebben geen kook-oppervlak (rooster, plaat), in tegenstelling tot grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"voor gebruik in foutrapporten"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Deel logs"</string>
+    <string name="about_title_show_logs">"Laat logs zien"</string>
+    <string name="label_log_level">"Logniveau"</string>
+    <string name="label_log_newer_than">"Van"</string>
+    <string name="label_log_older_than">"Tot"</string>
+    <string name="label_log_message_contains">"Bericht bevat"</string>
+    <string name="title_logs_filters">"Filter berichten"</string>
 </resources>

@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes
 atmOperators: [OTP Bank, OTP, Budapest Bank Zrt., CIB Bank Zrt., Erste Bank, Euronet, K&H, K&H Bank, CIB Bank, Erste, OTP Bank Nyrt., Budapest Bank, UniCredit Bank, Takarékbank, Takarékszövetkezet, MagNet Magyar Közösségi Bank Zrt., CIB, Erste Bank Hungary Zrt., OTP Nyrt., OTP Bank Zrt., otpbank, FHB Bank, MKB Bank, Raiffeisen Bank, MKB, K&H Bank Zrt., Duna Takarék, Pannon Takarék Bank, Takarék Bank, Sopron Bank, UniCredit, Duna Takarék Bank, Raiffeisen Bank Zrt., B3 Takarék, Raiffeisenbank, Euronet Worldwide, Takarékbank Zrt.]
 chargingStationOperators: [NKM Mobilitás Kft., MOL Nyrt., ELMŰ, e-Mobi, E-On, Penny Market, e-mobi, Elektromobilitás Nonprofit Kft., e-Mobi Elekrtomobilitás Nonprofit Kft., NKM, Lidl, Evopro, evopro, emobi, e.on, NISSAN, ÉMÁSZ, eTank, e-mobi.hu, XVIII. kerület, Tesla Motors, Porsche Hungária Kft, Lidl Magyarország Kereskedelmi Bt., LUKOIL Magyarország Kft., IKEA, E-mobi, ABB]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

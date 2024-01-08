@@ -1,26 +1,21 @@
 package de.westnordost.streetcomplete.data.meta
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
 import java.util.Locale
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class AbbreviationsTest {
-    @Test fun `capitalizes first letter`() {
-        val abbr = Abbreviations(mapOf("str" to "straße"), Locale.GERMANY)
-        assertEquals("Straße", abbr.getExpansion("str", true, true))
-    }
-
     @Test fun `removes abbreviation dot`() {
         val abbr = Abbreviations(mapOf("str" to "straße"), Locale.GERMANY)
-        assertEquals("Straße", abbr.getExpansion("str.", true, true))
+        assertEquals("straße", abbr.getExpansion("str.", true, true))
     }
 
     @Test fun `ignores case`() {
-        val abbr = Abbreviations(mapOf("sTr" to "Straße"), Locale.GERMANY)
-        assertEquals("Straße", abbr.getExpansion("StR", true, true))
+        val abbr = Abbreviations(mapOf("sTr" to "straße"), Locale.GERMANY)
+        assertEquals("straße", abbr.getExpansion("StR", true, true))
     }
 
     @Test fun `expects own word by default`() {
@@ -39,31 +34,26 @@ class AbbreviationsTest {
     }
 
     @Test fun `concatenable works normally for non-concatenation`() {
-        val abbr = Abbreviations(mapOf("...str" to "Straat"), Locale.US)
-        assertEquals("Straat", abbr.getExpansion("str", true, true))
+        val abbr = Abbreviations(mapOf("...str" to "straat"), Locale.US)
+        assertEquals("straat", abbr.getExpansion("str", true, true))
     }
 
     @Test fun `get expansion of only first word`() {
-        val abbr = Abbreviations(mapOf("^st" to "Saint"), Locale.US)
+        val abbr = Abbreviations(mapOf("^st" to "saint"), Locale.US)
         assertNull(abbr.getExpansion("st.", false, false))
-        assertEquals("Saint", abbr.getExpansion("st.", true, false))
+        assertEquals("saint", abbr.getExpansion("st.", true, false))
     }
 
     @Test fun `get expansion of only last word`() {
-        val abbr = Abbreviations(mapOf("str$" to "Straße"), Locale.US)
+        val abbr = Abbreviations(mapOf("str$" to "straße"), Locale.US)
         assertNull(abbr.getExpansion("str", true, false))
         assertNull(abbr.getExpansion("str", true, true))
-        assertEquals("Straße", abbr.getExpansion("str", false, true))
+        assertEquals("straße", abbr.getExpansion("str", false, true))
     }
 
     @Test fun `uses unicode`() {
-        val abbr = Abbreviations(mapOf("бл" to "Блок"), Locale("ru", "RU"))
-        assertEquals("Блок", abbr.getExpansion("бл", true, true))
-    }
-
-    @Test fun `locale dependent case`() {
         val abbr = Abbreviations(mapOf("бл" to "блок"), Locale("ru", "RU"))
-        assertEquals("Блок", abbr.getExpansion("Бл", true, true))
+        assertEquals("блок", abbr.getExpansion("бл", true, true))
     }
 
     @Test fun `finds abbreviation`() {

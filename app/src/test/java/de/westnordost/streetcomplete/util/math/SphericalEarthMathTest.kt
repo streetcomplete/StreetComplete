@@ -4,14 +4,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.util.ktx.equalsInOsm
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
 import kotlin.math.PI
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class SphericalEarthMathTest {
 
@@ -327,9 +328,11 @@ class SphericalEarthMathTest {
         assertTrue(bbox.crosses180thMeridian)
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `enclosingbbox fails for empty line`() {
-        listOf<LatLon>().enclosingBoundingBox()
+        assertFailsWith<IllegalArgumentException> {
+            listOf<LatLon>().enclosingBoundingBox()
+        }
     }
 
     @Test fun `enclosingbbox for points`() {
@@ -369,9 +372,11 @@ class SphericalEarthMathTest {
 
     //region centerLineOfPolyline
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `centerLineOfPolyline for point fails`() {
-        listOf(p(0.0, 0.0)).centerLineOfPolyline()
+        assertFailsWith<IllegalArgumentException> {
+            listOf(p(0.0, 0.0)).centerLineOfPolyline()
+        }
     }
 
     @Test fun `centerLineOfPolyline for a line with zero length`() {
@@ -407,9 +412,11 @@ class SphericalEarthMathTest {
 
     //region centerPointOfPolyline
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `centerPointOfPolyline fails for empty list`() {
-        listOf<LatLon>().centerPointOfPolyline()
+        assertFailsWith<IllegalArgumentException> {
+            listOf<LatLon>().centerPointOfPolyline()
+        }
     }
 
     @Test fun `centerPointOfPolyline for line with zero length`() {
@@ -483,9 +490,11 @@ class SphericalEarthMathTest {
 
     //region isRingDefinedClockwise
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `isRingDefinedClockwise for empty list fails`() {
-        emptyList<LatLon>().isRingDefinedClockwise()
+        assertFailsWith<IllegalArgumentException> {
+            emptyList<LatLon>().isRingDefinedClockwise()
+        }
     }
 
     @Test fun isRingDefinedClockwise() {
@@ -504,14 +513,18 @@ class SphericalEarthMathTest {
 
     //region intersectsWith
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `intersectsWith requires line`() {
-        listOf(p(0.0,0.0)).intersectsWith(listOf(p(1.0, 0.0), p(0.0, 1.0)))
+        assertFailsWith<IllegalArgumentException> {
+            listOf(p(0.0, 0.0)).intersectsWith(listOf(p(1.0, 0.0), p(0.0, 1.0)))
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `intersectsWith requires line for the parameter too`() {
-        listOf(p(1.0, 0.0), p(0.0, 1.0)).intersectsWith(listOf(p(0.0,0.0)))
+        assertFailsWith<IllegalArgumentException> {
+            listOf(p(1.0, 0.0), p(0.0, 1.0)).intersectsWith(listOf(p(0.0, 0.0)))
+        }
     }
 
     @Test fun `intersectsWith finds intersection`() {
@@ -640,9 +653,11 @@ class SphericalEarthMathTest {
 
     //region centerPointOfPolygon
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun `centerPointOfPolygon for empty polygon fails`() {
-        listOf<LatLon>().centerPointOfPolygon()
+        assertFailsWith<IllegalArgumentException> {
+            listOf<LatLon>().centerPointOfPolygon()
+        }
     }
 
     @Test fun `centerPointOfPolygon with no area simply returns first point`() {

@@ -29,6 +29,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAndNote>() {
          and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})($|;.*)"
          and (access !~ private|no)
          and indoor != yes and (!building or building = no)
+         and (athletics !~ high_jump|pole_vault)
          and (
           !surface
           or surface older today -12 years

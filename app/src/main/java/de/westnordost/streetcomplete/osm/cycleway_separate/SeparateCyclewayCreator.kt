@@ -60,10 +60,13 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             tags["highway"] = "cycleway"
             if (tags.containsKey("bicycle")) tags["bicycle"] = "designated"
 
-            if (this == EXCLUSIVE) tags["foot"] = "no"
-            // follow the same pattern as for roads here: It is uncommon for roads to have foot
-            // tagged at all when such roads have sidewalks
-            else tags.remove("foot")
+            if (this == EXCLUSIVE) {
+                tags["foot"] = "no"
+            } else {
+                // follow the same pattern as for roads here: It is uncommon for roads to have foot
+                // tagged at all when such roads have sidewalks
+                tags.remove("foot")
+            }
         }
     }
 

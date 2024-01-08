@@ -311,7 +311,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_cycleway_value_none">"non hai ren"</string>
     <string name="quest_cycleway_value_shared">"carril compartido co resto do tráfico"</string>
     <string name="quest_cycleway_value_bus_lane">"no carril do bus"</string>
-    <string name="quest_cycleway_value_sidewalk">"compartido cos peóns"</string>
     <string name="quest_leave_new_note_create_image_error">"Non foi posíbel crea-lo ficheiro da imaxe"</string>
     <string name="quest_cycleway_value_lane_dual">"carril bici, dúas direccións"</string>
     <string name="quest_cycleway_value_track_dual">"senda ciclista, dúas direccións"</string>
@@ -733,7 +732,6 @@ logros"</string>
     <string name="resurvey_intervals_less_often">"Preguntar menos veces"</string>
     <string name="resurvey_intervals_default">"Predeterminado"</string>
     <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
-    <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
     <string name="about_title_translate">"Axuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
     <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>
@@ -906,7 +904,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Cantos pisos por enriba do soto ten este edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Cantos pisos por enriba do soto ten esta parte do edificio?"</string>
-    <string name="quest_crossing_title">"Existe bordo aquí onde este camiño se atopa coa estrada? de que tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preaxuste: %s"</string>
     <string name="default_disabled_msg_roofShape">"Este tipo de pregunta está desactivada por defecto porque as formas dos tellados normalmente non se distinguen desde a rúa. Esta pregunta tamén consume moito tempo, é máis doado respondela desde a casa vendo imaxe aéreas."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -940,7 +937,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_buildingType_bridge">"Ponte entre edificios (corredor elevado)"</string>
     <string name="quest_laundrySelfService_title2">"Esta lavandería ten autoservizo?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal deben prepararse segundo reglas especiais e ser marcadas por axencias de certificación Halal."</string>
-    <string name="quest_picnicTableCover_title">"Esta mesa de picnic está cuberta (protexida da chuvia)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Este tramo son escaleiras"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido nun acceso nun muro/valado/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido nunha cancela"</string>
@@ -990,6 +986,8 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="street_parking_prohibited">"Non é aparcadoiro"</string>
     <string name="street_stopping_prohibited">"Non pode deterse"</string>
     <string name="street_standing_prohibited">"Non pode permanecer"</string>
+    <string name="street_parking_conditional_restrictions">"Estacionamento / Parada restrinxida"</string>
+    <string name="street_parking_no_other_reasons">"Sen señais/non posible aparcar"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
     <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
@@ -1002,13 +1000,17 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_smoothness_road_title">"Cal é aquí a calidade da superficie da estrada?"</string>
     <string name="quest_smoothness_title_excellent">"Suave e nivelada"</string>
     <string name="quest_smoothness_title_good">"Bastante nivelada"</string>
+    <string name="quest_smoothness_title_intermediate">"Algo irregular"</string>
+    <string name="quest_smoothness_title_bad">"Irregular "</string>
+    <string name="quest_smoothness_title_very_bad">"Moi irregular "</string>
     <string name="quest_smoothness_title_very_horrible">"Case intransitable"</string>
     <string name="quest_smoothness_title_impassable">"Non transitable"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Fochancas fondas, rodeiras ou dano importante"</string>
+    <string name="quest_smoothness_description_impassable">"Inapropiado para vehículos, só andando"</string>
     <string name="link_osmhydrant_description">"Buscar, engadir e editar estacións de bombeiros e bocas de incendio."</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>
     <string name="achievement_lifesaver_solved_X">"Resolviches %d tarefas que axudan aos servizos de emerxencias e aos primeiros auxilios!"</string>
     <string name="quest_fuelSelfService_title">"Podes botar combustible ti mesmo aquí?"</string>
     <string name="quest_barrier_road_intersection">"De que maneira a estrada atravesa aquí a barreira?"</string>
     <string name="quest_sidewalk_value_separate">"amosado por separado no mapa"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"compartido cos peóns, dúas direccións"</string>
 </resources>

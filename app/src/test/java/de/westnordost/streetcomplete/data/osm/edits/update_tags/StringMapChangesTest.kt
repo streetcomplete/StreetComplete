@@ -2,12 +2,13 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
 import org.mockito.Mockito.atLeastOnce
 import org.mockito.Mockito.verify
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class StringMapChangesTest {
 
@@ -59,7 +60,7 @@ class StringMapChangesTest {
         verify(change2, atLeastOnce()).conflictsWith(someMap)
     }
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun `applying with conflict fails`() {
         val someMap = mutableMapOf<String, String>()
 
@@ -68,7 +69,9 @@ class StringMapChangesTest {
 
         val changes = StringMapChanges(listOf(conflict))
 
-        changes.applyTo(someMap)
+        assertFailsWith<IllegalStateException> {
+            changes.applyTo(someMap)
+        }
     }
 
     @Test fun getConflicts() {

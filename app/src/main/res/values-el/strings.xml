@@ -311,7 +311,6 @@
     <string name="quest_cycleway_value_none">"κανείς"</string>
     <string name="quest_cycleway_value_shared">"η λωρίδα μοιράζεται κατηγορηματικά με άλλες κυκλοφορίες"</string>
     <string name="quest_cycleway_value_bus_lane">"στη λωρίδα των λεωφορείων"</string>
-    <string name="quest_cycleway_value_sidewalk">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο"</string>
     <string name="quest_leave_new_note_create_image_error">"Αδύνατη η δημιουργία αρχείου για τη φωτογραφία"</string>
     <string name="quest_cycleway_value_lane_dual">"ποδηλατική λωρίδα, διπλή κατεύθυνση"</string>
     <string name="quest_cycleway_value_track_dual">"ποδηλατόδρομος, διπλή κατεύθυνση"</string>
@@ -377,7 +376,7 @@
     <string name="quest_fee_add_times">"Προσθέστε ώρες"</string>
     <string name="quest_housenumber_multiple_numbers">"Έχει πολλαπλούς αριθμούς κατοικιών"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Μπορείτε απλά να εισάγετε κόμμα που διαχωρίζει τους αριθμούς των σπιτιών ή παύλες. Για παράδειγμα 1,3 ή 2–6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Στάση (για σκελετό ποδηλάτου)"</string>
+    <string name="quest_bicycle_parking_type_stand">"Σταντ (για σκελετό ποδηλάτου)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Βάση ποδηλάτου (για τροχούς μόνο)"</string>
     <string name="quest_bicycle_parking_type_shed">"Υπόστεγο"</string>
     <string name="quest_bicycle_parking_type_locker">"Κλειδαριά"</string>
@@ -724,7 +723,6 @@
     <string name="resurvey_intervals_less_often">"Ρωτήστε λιγότερο συχνά"</string>
     <string name="resurvey_intervals_default">"Προκαθορισμένο"</string>
     <string name="resurvey_intervals_more_often">"Ρωτήστε πιο συχνά"</string>
-    <string name="quest_is_defibrillator_inside_title">"Είναι αυτός ο απινιδωτής (AED) μέσα σε ένα κτήριο;"</string>
     <string name="about_title_translate">"Βοηθήστε στη μετάφραση αυτής της εφαρμογής"</string>
     <string name="about_description_translate">"Το %1$s είναι μεταφρασμένο %2$d%%"</string>
     <string name="quest_oneway2_title">"Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;"</string>
@@ -897,7 +895,6 @@
     <string name="about_title_faq">"Συχνές ερωτήσεις"</string>
     <string name="quest_buildingLevels_title2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>
-    <string name="quest_crossing_title">"Υπάρχουν κράσπεδα εκεί που συναντάει εκείνος ο δρόμος αυτόν εδώ; Τι είδους;"</string>
     <string name="pref_subtitle_quests_preset_name">"Προεπιλογή: %s"</string>
     <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
     <string name="quest_religion_animist">"Ανιμισμός"</string>
@@ -931,7 +928,6 @@
     <string name="quest_buildingType_bridge">"Γέφυρα μεταξύ κτιρίων (πεζογέφυρα)"</string>
     <string name="quest_laundrySelfService_title2">"Αυτό το πλυντήριο παρέχει αυτοεξυπηρέτηση;"</string>
     <string name="quest_dietType_explanation_halal">"Τα προϊόντα Χαλάλ πρέπει να παρασκευάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης να σηματοδοτούν τα συμβατά προϊόντα."</string>
-    <string name="quest_picnicTableCover_title">"Είναι αυτό το τραπέζι πικνίκ καλυμμένο (προστατεύεται από τη βροχή);"</string>
     <string name="quest_generic_answer_is_actually_steps">"Αυτό το μέρος είναι σκαλιά"</string>
     <string name="quest_barrier_type_passage_conversion">"Μετατράπηκε σε πέρασμα σε τοίχο/φράχτη/κ.λπ."</string>
     <string name="quest_barrier_type_gate_conversion">"Μετατράπηκε σε πύλη"</string>
@@ -1171,7 +1167,6 @@
     <string name="quest_memorialType_stele_wooden">"Ξύλινη στήλη (αναμνηστική πλάκα)"</string>
     <string name="quest_memorialType_stele_stone">"Λίθινη στήλη (αναμνηστική πλάκα)"</string>
     <string name="quest_memorialType_sculpture">"Άλλο γλυπτό"</string>
-    <string name="select_overlay">"Επιλογή Επικάλυψης"</string>
     <string name="overlay_none">"Καμία"</string>
     <string name="overlay_lit">"Φωτισμός δρόμου"</string>
     <string name="lit_value_yes">"Φωτισμένο"</string>
@@ -1214,7 +1209,6 @@
     <string name="quest_address_street_hint2">"Πατήστε το δρόμο στο χάρτη για να τον επιλέξετε"</string>
     <string name="quest_bicycle_incline_title">"Ποιά κατεύθυνση οδηγεί προς τα πάνω;"</string>
     <string name="quest_bicycle_incline_up_and_down">"Είναι με αναπηδήσεις"</string>
-    <string name="quest_drinking_water_type_title">"Πώς προσφέρεται το πόσιμο νερό εδώ;"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Άλλη βρύση νερού"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Βρύση που αναδίδει πίδακα νερού"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Για γέμισμα μπουκαλιών μόνο"</string>
@@ -1226,7 +1220,6 @@
     <string name="overlay_addresses">"Διευθύνσεις"</string>
     <string name="overlay_shops">"Καταστήματα"</string>
     <string name="name_label">"Όνομα:"</string>
-    <string name="vacant_shop_title">"Άδειο κατάστημα"</string>
     <string name="unknown_shop_title">"Άλλου είδους μέρος"</string>
     <string name="quest_address_answer_no_address">"Καμία διεύθυνση εδώ"</string>
     <string name="quest_bicycle_barrier_installation_title">"Μπορεί να ανοίξει αυτό το εμπόδιο ποδηλάτων;"</string>
@@ -1284,7 +1277,6 @@
     <string name="cycleway_reverse_direction_toast">"Πατήστε σε ποια πλευρά θέλετε να αντιστρέψετε"</string>
     <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι"</string>
     <string name="quest_fireHydrant_type_pipe">"σωλήνα"</string>
-    <string name="quest_cycleway_value_sidewalk_dual">"κατηγορηματικά κοινόχρηστο πεζοδρόμιο, διπλή κατεύθυνση"</string>
     <string name="measure_info_title">"Επίτευξη βέλτιστης ακρίβειας"</string>
     <string name="measure_info_html_description">"&lt;p&gt;Το ARCore μερικές φορές (αρχικά) υποθέτει ότι το έδαφος είναι λίγο χαμηλότερο ή υψηλότερο από ό,τι στην πραγματικά είναι. Αυτό εισάγει ένα σφάλμα μέτρησης που γίνεται μεγαλύτερο όσο περισσότερο γέρνετε το τηλέφωνό σας προς τον ορίζοντα.&lt;/p&gt;
 &lt;p&gt;Ρυθμίστε το σημείο έναρξης και τέλους ενώ στρέφετε το τηλέφωνο ευθεία προς τα κάτω (έτσι ώστε να βλέπετε το λευκό βέλος από πάνω) για να αποφύγετε εντελώς αυτό το ζήτημα για οριζόντιες μετρήσεις.&lt;/p&gt;
@@ -1295,4 +1287,73 @@
     <string name="street_parking_staggered_on_street">"Στο δρόμο σε εναλλασσόμενες πλευρές"</string>
     <string name="street_parking_staggered_half_on_kerb">"Μερικώς στο δρόμο σε εναλλασσόμενες πλευρές"</string>
     <string name="quest_traffic_signals_sound_description">"Συμβουλή: Προσέξτε για ηχεία. Δεν λειτουργούν όλα τα ηχητικά σήματα μέσω ενός κουμπιού."</string>
+    <string name="quest_presets_duplicate">"Διπλότυπο"</string>
+    <string name="label_block">"οικοδομικό τετράγωνο"</string>
+    <string name="quest_address_answer_block">"Είναι μέσα σε ένα οικοδομικό τετράγωνο..."</string>
+    <string name="quest_address_answer_no_block">"Δεν είναι μέσα σε ένα οικοδομικό τετράγωνο... "</string>
+    <string name="quest_surface_value_mud">"Διαρκής λάσπη"</string>
+    <string name="quest_wheelchairAccessPat_noToilet">"Δεν υπάρχει τουαλέτα εδώ"</string>
+    <string name="unknown_surface_title">"Άλλο είδος επιφάνειας"</string>
+    <string name="overlay_surface">"Επιφάνειες"</string>
+    <string name="overlay_path_surface_segregated">"Χωρίζεται σε τμήματα ποδηλασίας και πεζοπορίας"</string>
+    <string name="quest_crossing_title2">"Υπάρχει διάβαση εδώ;"</string>
+    <string name="quest_crossing_yes">"Ναι (π.χ. το κράσπεδο είναι χαμηλωμένο εδώ ή υπάρχουν σημάνσεις)"</string>
+    <string name="quest_crossing_no">"Όχι, αλλά η διάβαση είναι δυνατή"</string>
+    <string name="quest_crossing_prohibited">"Όχι, η διάβαση απαγορεύεται ή είναι αδύνατη"</string>
+    <string name="quest_hairdresser_title">"Ποιοι πελάτες επισκέπτονται αυτό το κομμωτήριο;"</string>
+    <string name="quest_hairdresser_male_and_female">"Ανδρικό &amp; Γυναικείο"</string>
+    <string name="quest_hairdresser_female_only">"Γυναικείο"</string>
+    <string name="quest_hairdresser_male_only">"Ανδρικό"</string>
+    <string name="quest_hairdresser_not_signed">"Δεν υποδεικνύεται"</string>
+    <string name="quest_amenityCover_title">"Είναι καλυμμένο (προστατεύεται από τη βροχή);"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Επέκταση κράσπεδου"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Νησίδα κυκλοφορίας"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Ήπιας κυκλοφορίας"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Επέκταση πεζοδρομίου + νησίδα κυκλοφορίας"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Χωρίς στένωση λωρίδας εδώ"</string>
+    <string name="quest_tactilePaving_title_steps">"Υπάρχει απτική πλακόστρωση στο πάνω και στο κάτω μέρος αυτών των σκαλοπατιών;"</string>
+    <string name="quest_tactilePaving_steps_top">"Μόνο στην κορυφή"</string>
+    <string name="quest_tactilePaving_steps_bottom">"Μόνο στο κάτω μέρος"</string>
+    <string name="overlay_addresses_no_entrance">"Δεν είναι είσοδος…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"διαδρομή κοινής χρήσης"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"διαδρομή κοινής χρήσης, και οι δύο κατευθύνσεις"</string>
+    <string name="overlays_tutorial_title">"Επικαλύψεις"</string>
+    <string name="overlays_tutorial_intro">"Βρήκατε ένα νέο τρόπο επεξεργασίας δεδομένων!"</string>
+    <string name="overlays_tutorial_display">"Κάθε επικάλυψη εμφανίζει ένα είδος δεδομένων, για παράδειγμα καταστήματα ή επιφάνειες δρόμων.
+
+Τα δεδομένα επισημαίνονται με διαφορετικά χρώματα για να σας δώσουν μια καλή επισκόπηση των όσων έχουν καταγραφεί μέχρι τώρα.
+Τα δεδομένα που λείπουν εμφανίζονται πάντα με κόκκινο χρώμα."</string>
+    <string name="overlays_tutorial_edit">"Πατήστε σε οποιαδήποτε επισημασμένα δεδομένα για να τα εμφανίσετε ή να τα επεξεργαστείτε. Μπορείτε επίσης να χωρίσετε γραμμές ή να αναφέρετε σημειώσεις, όπως με τις αποστολές.
+
+Επιπλέον, ορισμένες επικαλύψεις σας επιτρέπουν να προσθέτετε νέα δεδομένα στη θέση ενός εμφανιζόμενου στόχαστρου, όπως η επικάλυψη διευθύνσεων."</string>
+    <string name="quest_crossing_kerb_height_title">"Ποιό είναι το ύψος των κρασπέδων σε αυτήν τη διάβαση;"</string>
+    <string name="quest_maxheight_sign_title">"Ποιο όριο ύψους αναφέρεται εδώ;"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Ποιο όριο ύψους αναφέρεται κάτω από τη γέφυρα;"</string>
+    <string name="quest_leave_new_note_as_answer">"Σε αυτή την περίπτωση, θα πρέπει να αφήσετε ένα σημείωμα στο οποίο εξηγείτε την κατάσταση."</string>
+    <string name="quest_drinking_water_type_title2">"Υπάρχει πόσιμο νερό εδώ; Αν ναι, ποια είναι η πηγή του;"</string>
+    <string name="quest_is_amenity_inside_title">"Είναι αυτό μέσα σε κτίριο;"</string>
+    <string name="quest_bbq_fuel_title">"Από τι τροφοδοτείται αυτή η ψησταριά;"</string>
+    <string name="quest_bbq_fuel_wood">"Ξύλο"</string>
+    <string name="quest_bbq_fuel_electric">"Ρεύμα"</string>
+    <string name="quest_bbq_fuel_charcoal">"Ξυλοκάρβουνο"</string>
+    <string name="inside">"μέσα"</string>
+    <string name="outside">"έξω"</string>
+    <string name="quest_recycling_type_food_waste">"Απόβλητα τροφίμων"</string>
+    <string name="quest_defibrillator_location">"Πού βρίσκεται αυτός ο απινιδωτής;"</string>
+    <string name="quest_defibrillator_location_description">"Παρακαλούμε δώστε μια συνοπτική περιγραφή της θέσης του (π.χ. \"στο σαλόνι του αχθοφόρου\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Υπάρχει σταθμός απόρριψης λυμάτων;"</string>
+    <string name="quest_sanitary_dump_station_description">"Εγκατάσταση για εναπόθεση ανθρώπινων αποβλήτων από δεξαμενή αποθήκευσης τουαλέτας τροχόσπιτου, φορτηγού μεγάλων αποστάσεων κ.λπ. Συνήθως υποδεικνύεται με μια πινακίδα όπως αυτή:"</string>
+    <string name="quest_generalFee_title">"Χρειάζεται να πληρώσετε για να το χρησιμοποιήσετε;"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Είναι μια εστία φωτιάς"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Οι εστίες φωτιάς δεν έχουν επιφάνεια μαγειρέματος (π.χ. σχάρα/πλάκα), σε αντίθεση με τις ψησταριές."</string>
+    <string name="about_title_logs">"Καταγραφές (%1$d)"</string>
+    <string name="about_summary_logs">"για χρήση σε αναφορές σφαλμάτω"</string>
+    <string name="action_filter">"Φίλτρο"</string>
+    <string name="action_share">"Κοινοποίηση καταγραφών"</string>
+    <string name="about_title_show_logs">"Εμφάνιση καταγραφών"</string>
+    <string name="label_log_level">"Επίπεδο καταγραφής"</string>
+    <string name="label_log_newer_than">"Από"</string>
+    <string name="label_log_older_than">"Μέχρι"</string>
+    <string name="label_log_message_contains">"Το μήνυμα περιέχει"</string>
+    <string name="title_logs_filters">"Φιλτράρισμα μηνυμάτων"</string>
 </resources>

@@ -104,7 +104,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
-It is recommended to install the [Ktlint (unofficial)](https://plugins.jetbrains.com/plugin/15057-ktlint-unofficial-) Android Studio plugin which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
+It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
 ### Hints for more active people
 
@@ -125,8 +125,9 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 * [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
-* [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
-  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - used by osmfeatures. In StreetComplete it powers display of feature type, object classification in shop overlay and more
+* [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
+  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
+  * [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
 * [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 
 ### Created for StreetComplete
@@ -142,4 +143,3 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Shop.kt#L6)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
-

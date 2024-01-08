@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.verifyAnswer
-import org.junit.Test
+import kotlin.test.Test
 
 class AddMaxWeightTest {
 

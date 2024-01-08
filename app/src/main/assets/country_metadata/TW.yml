@@ -4,6 +4,7 @@ atmOperators: [華南銀行, 中華郵政, 國泰世華銀行, 中華郵政股�
 centerLineStyle: yellow
 chargingStationOperators: [英屬開曼群島商睿能新動力股份有限公司台灣分公司, 睿能創意股份有限公司, Gogoro Inc., gogoro, Gogoro, Gogoro Taiwan, 台灣城市動力股份有限公司]
 clothesContainerOperators: [高雄市方舟就業服務協會]
+defaultSpeedLimitHasUrbanOrRural: false
 mobileCountryCode: 466
 noParkingLineStyle: red
 noParkingSignStyle: taiwan

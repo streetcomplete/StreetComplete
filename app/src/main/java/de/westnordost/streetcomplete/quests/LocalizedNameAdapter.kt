@@ -2,13 +2,18 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Build
+import android.os.LocaleList
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
@@ -288,8 +293,7 @@ class LocalizedNameAdapter(
                 if (emptyNamesHint == null) input.requestFocus()
             }
             input.setText(localizedName.name)
-            val languageTag = localizedName.languageTag
-            buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
+            updateLanguage(localizedName.languageTag)
 
             // first entry is bold (the first entry is supposed to be the "default language", I
             // hope that comes across to the users like this. Otherwise, a text hint is necessary)
@@ -307,15 +311,19 @@ class LocalizedNameAdapter(
 
                 showLanguageSelectMenu(v, notAddedLanguageTags) { languageTag ->
                     localizedName.languageTag = languageTag
-                    buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
+                    updateLanguage(languageTag)
                     updateAddLanguageButtonVisibility()
-                    updateNameSuggestions()
-                    updateAbbreviations()
                 }
             }
+        }
 
+        private fun updateLanguage(languageTag: String) {
+            buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
             updateNameSuggestions()
             updateAbbreviations()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                updateHintLocales(Locale.forLanguageTag(languageTag))
+            }
         }
 
         private fun updateNameSuggestions() {
@@ -335,12 +343,23 @@ class LocalizedNameAdapter(
         }
 
         private fun updateAbbreviations() {
+            autoCorrectAbbreviations.abbreviations = null
             // load abbreviations from file in background
             viewLifecycleScope.launch {
                 autoCorrectAbbreviations.abbreviations = withContext(Dispatchers.IO) {
                     abbreviationsByLocale?.get(Locale(localizedName.languageTag))
                 }
             }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.N)
+        private fun updateHintLocales(locale: Locale) {
+            if (locale.toString().isEmpty()) {
+                input.imeHintLocales = null
+            } else {
+                input.imeHintLocales = LocaleList(locale)
+            }
+            context.getSystemService<InputMethodManager>()?.restartInput(input)
         }
     }
 

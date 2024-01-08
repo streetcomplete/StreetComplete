@@ -3,6 +3,7 @@ atmOperators: [Banco Macro, Banco Nación, Banco de la Nación Argentina, Macro,
 centerLineStyle: yellow
 chargingStationOperators: [Empresa Provincial de la Energía Santa Fe]
 clothesContainerOperators: [Municipalidad de Posadas]
+defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 722
 noEntrySignStyle: default
 noParkingSignStyle: mutcd latin
