@@ -5,7 +5,6 @@ import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -51,11 +50,11 @@ import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMap
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.util.ktx.asBitmapDrawable
-import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -197,7 +196,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    (almost?) as faster as not sorting (requires GeoJsonSource and sorting the list of pins)
 
         // add used images for quests pins and other icons
-        // todo: here we should use pins, not round icons... simply create LayerDrawables?
         val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
         val iconSize = pin.intrinsicWidth
         questTypeRegistry.forEach {
@@ -211,14 +209,18 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             drawable.setLayerInset(1, (iconDrawable.intrinsicWidth * 0.35 / 2).toInt(), pin.intrinsicHeight / 10, (iconDrawable.intrinsicWidth * 0.35 / 8).toInt(), pin.intrinsicHeight / 4) // not perfect, but not the right way to do it anyway
             style.addImage(resources.getResourceEntryName(it.icon), drawable)
         }
-        // use sdf here (the true in the end)
-        // this is only recommended for monochrome icons, and allows using halo stuff for symbols (for mimicking tangram icons with outline)
+        // use sdf here
+        // this is only recommended for monochrome icons, and allows using halo stuff for symbols
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
-        TangramIconsSpriteSheet.ICONS.forEach { style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true) } // getBitmapDrawable gives a lot of log warnings
-        // todo: here also the icons from pinIcons should be loaded
+        TangramIconsSpriteSheet.ICONS.forEach {
+            style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true)
+        } // getBitmapDrawable gives a lot of log warnings
+        presetIconIndex.forEach { (k, v) ->
+            style.addImage(resources.getResourceEntryName(v), resources.getBitmapDrawable(v).bitmap, true)
+        } // getBitmapDrawable gives a lot of log warnings
 
         // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
-        // this mimics tangram behavior, and noticeeably improves performance when there are many icons
+        // this mimics tangram behavior, and noticeably improves performance when there are many icons
         // defaults: 300, 0, true
         style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
 
@@ -296,7 +298,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayer(pinsLayer!!)
 
         // add a circle layer using the pinsSource (could actually also be a symbol layer using the dot image, but circles are fast!)
-        val pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
+        pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
             // set fixed properties, circles are all the same
             .withProperties(
                 PropertyFactory.circleColor("white"),
@@ -307,7 +309,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // add layer below the pinsLayer
         // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
-        style.addLayerBelow(pinsDotLayer, "pins-layer")
+        style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
         super.onMapReady(mapView, mapboxMap, style) // arguemnts are a leftover from initial implementation, maybe change?
 
@@ -564,11 +566,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
         pinsMapComponent?.isVisible = false
-        if (questKey is OsmQuestKey)
+        if (questKey is OsmQuestKey) {
             // set filter, so only pins of the highlighted quest are shown
             // currently just filtering by element id, and for OsmQuest, but at least it's clear how to do
             // and actually in MapLibre the properties can also be numbers, so no need to convert id to a string
             pinsLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
+            pinsDotLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
+        }
     }
 
     fun hideOverlay() {
@@ -619,6 +623,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
         geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         pinsLayer?.setFilter(Expression.literal(true)) // how to set "no filter"?
+        pinsDotLayer?.setFilter(Expression.literal(true))
     }
 
     fun clearSelectedPins() {
@@ -692,6 +697,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var pinsSource: GeoJsonSource? = null
         var geometrySource: GeoJsonSource? = null
         var pinsLayer: SymbolLayer? = null
+        var pinsDotLayer: CircleLayer? = null
     }
 }
 

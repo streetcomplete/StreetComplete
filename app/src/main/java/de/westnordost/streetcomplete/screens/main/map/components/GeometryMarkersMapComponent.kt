@@ -68,7 +68,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 MainActivity.activity?.runOnUiThread {
                     val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                         .withLatLng(center.toLatLng())
-                        .withIconImage(resources.getResourceEntryName(drawableResId)) // todo: pinIcons not loaded in the style, but no priority
+                        .withIconImage(resources.getResourceEntryName(drawableResId))
+                        .withIconColor("D140D0") // does not work...
                     )
                     annotations.add(symbol)
                 }
@@ -122,7 +123,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             """.trimIndent())
             marker.setPoint(geometry.center)
             markers.add(marker)
-            MainActivity.activity?.runOnUiThread {
+            MainActivity.activity?.runOnUiThread { // todo: does not work
                 val symbol = MainMapFragment.geometrySymbolManager!!.create(SymbolOptions()
                     .withLatLng(center.toLatLng())
                     .withTextField(escapedTitle)
