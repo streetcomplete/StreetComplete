@@ -549,9 +549,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
 
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
-    <string name="pref_title_quests_restore_hidden_summary_none_hidden">You don’t have any hidden quests.</string>
-    <string name="pref_title_quests_restore_hidden_summary_one_hidden">1 quest is currently hidden.</string>
-    <string name="pref_title_quests_restore_hidden_summary_multiple_hidden">%1$d quests are currently hidden.</string>
+    <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>

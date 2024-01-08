@@ -51,7 +51,7 @@ class OsmQuestsHiddenDao(private val db: Database) {
         db.delete(NAME)
 
     fun countAll(): Long =
-        db.countAll(NAME)
+        db.queryOne(NAME, columns = arrayOf("COUNT(*)")) { it.getLong("COUNT(*)") } ?: 0L
 }
 
 private fun OsmQuestKey.toPairs() = listOf(

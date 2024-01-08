@@ -282,30 +282,11 @@ class SettingsFragment :
     }
 
     private fun setHiddenQuestsSummary() {
-        val amountOfHiddenQuests = countHiddenQuests()
         viewLifecycleScope.launch {
+            val amountOfHiddenQuests = withContext(Dispatchers.IO) { countHiddenQuests() }
             val pref = findPreference<Preference>("quests.restore.hidden")
-            pref?.summary = calculateHiddenQuestsSummary(amountOfHiddenQuests)
-            if (amountOfHiddenQuests == 0L) {
-                pref?.isEnabled = false
-            }
-        }
-    }
-
-    private fun calculateHiddenQuestsSummary(amount: Long): String = when (amount) {
-        0L -> {
-            requireContext().getString(R.string.pref_title_quests_restore_hidden_summary_none_hidden)
-        }
-
-        1L -> {
-            requireContext().getString(R.string.pref_title_quests_restore_hidden_summary_one_hidden)
-        }
-
-        else -> {
-            requireContext().getString(
-                R.string.pref_title_quests_restore_hidden_summary_multiple_hidden,
-                amount
-            )
+            pref?.summary = requireContext().getString(R.string.pref_title_quests_restore_hidden_summary, amountOfHiddenQuests)
+            pref?.isEnabled = amountOfHiddenQuests > 0
         }
     }
 }

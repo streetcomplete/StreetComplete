@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.database.Cursor
-import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase.CONFLICT_ABORT
 import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
 import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
@@ -134,10 +133,6 @@ class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     override fun delete(table: String, where: String?, args: Array<Any>?): Int {
         val strArgs = args?.primitivesArrayToStringArray()
         return db.delete(table, where, strArgs)
-    }
-
-    override fun countAll(table: String): Long {
-        return DatabaseUtils.queryNumEntries(db, table)
     }
 
     override fun <T> transaction(block: () -> T): T {
