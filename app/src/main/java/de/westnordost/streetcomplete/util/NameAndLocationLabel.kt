@@ -114,19 +114,26 @@ fun getNameLabel(tags: Map<String, String>): String? {
     val operator = tags["operator"]
 
     if (tags["highway"] in ALL_ROADS) {
-        return if (name != null && localRef != null) "$name [$localRef]" else null
-            ?: if (name != null && ref != null) "$name [$ref]" else null
+        val nameAndLocalRef = if (name != null && localRef != null) "$name [$localRef]" else null
+        val nameAndRef = if (name != null && ref != null) "$name [$ref]" else null
+
+        return nameAndLocalRef
+            ?: nameAndRef
             ?: name
             ?: localRef
             ?: ref
     }
 
+    val nameAndLocalRef = if (name != null && localRef != null) "$name ($localRef)" else null
+    val operatorAndLocalRef = if (localRef != null && operator != null) "$operator ($localRef)" else null
+    val operatorAndRef = if (ref != null && operator != null) "$operator [$ref]" else null
+
     // Favour local ref over ref as it's likely to be more local/visible, e.g. bus stop point versus text code
-    return if (name != null && localRef != null) "$name ($localRef)" else null
+    return nameAndLocalRef
         ?: name
         ?: brand
-        ?: if (localRef != null && operator != null) "$operator ($localRef)" else null
-        ?: if (ref != null && operator != null) "$operator [$ref]" else null
+        ?: operatorAndLocalRef
+        ?: operatorAndRef
         ?: operator
         ?: localRef
         ?: ref
