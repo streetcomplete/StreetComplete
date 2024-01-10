@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.tangram
-
+/*
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.TouchInput
 
@@ -124,3 +124,4 @@ class TouchGestureManager(private val c: MapController) {
         }
     }
 }
+*/

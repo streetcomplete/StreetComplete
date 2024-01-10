@@ -163,7 +163,6 @@ class StyleableOverlayManager(
             }
             if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
-                ctrl.requestRender()
             }
         }
     }
@@ -195,7 +194,7 @@ class StyleableOverlayManager(
 
             if (changedAnything && coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
-                ctrl.requestRender()
+//                ctrl.requestRender()
             }
         }
     }

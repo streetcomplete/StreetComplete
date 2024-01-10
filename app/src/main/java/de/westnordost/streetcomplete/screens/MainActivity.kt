@@ -180,7 +180,7 @@ class MainActivity :
         val geo = parseGeoUri(data) ?: return
         val zoom = if (geo.zoom == null || geo.zoom < 14) 18f else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
-        mainFragment?.setCameraPosition(pos, zoom)
+        mainFragment?.setCameraPosition(pos, zoom.toFloat())
     }
 
     public override fun onStart() {

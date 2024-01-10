@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
@@ -65,8 +66,8 @@ import org.koin.android.ext.android.inject
  *  geometry, overlays... */
 class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    private val questPinsSpriteSheet: TangramPinsSpriteSheet by inject()
-    private val iconsSpriteSheet: TangramIconsSpriteSheet by inject()
+//    private val questPinsSpriteSheet: TangramPinsSpriteSheet by inject()
+//    private val iconsSpriteSheet: TangramIconsSpriteSheet by inject()
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
@@ -125,9 +126,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override suspend fun onBeforeLoadScene() {
         super.onBeforeLoadScene()
         val sceneUpdates = withContext(Dispatchers.IO) {
-            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
+//            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
         }
-        sceneMapComponent?.addSceneUpdates(sceneUpdates)
+//        sceneMapComponent?.addSceneUpdates(sceneUpdates)
 
         overlaySceneUpdates = selectedOverlaySource.selectedOverlay?.sceneUpdates
         overlaySceneUpdates?.let { sceneMapComponent?.addSceneUpdates(it) }
@@ -137,7 +138,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
         val ctrl = controller ?: return
-        ctrl.setPickRadius(8f)
+//        ctrl.setPickRadius(8f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
 
         pinsMapComponent = PinsMapComponent(ctrl)
@@ -183,6 +184,28 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   see MapTilesDownloader
         //  see CurrentLocationMapComponent
 
+        // todo now after removing tangram
+        //  re-arrange things so layers can be added via mapController instead of doing everything here and with MainActivity
+        //  zoom-in for node quests is far too much
+        //  symbols in overlays not shown
+        //  overlays look awfully broken
+        //   like first and last nodes of a way are connected (wasn't like that initially, it think)
+        //  overlay roads are rather hard to select
+        //  node overlay shows nothing (worked before removing tangram)
+        //  nearby symbols not shown
+        //  nearby text not shown
+        //  camera does not unlock when moving
+        //  later
+        //   make the location pointer work (currently rotates like crazy in top left corner -> there is also a degree / radians issue)
+        //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
+        //    possibly sth initializing twice
+        //   no tilt or rotate in follow-mode
+        //   quest pin looks awful, maybe layer drawable not suitable?
+        //   quest dots should look a little nicer, is image ok for performance?
+        //   accuracy circle blocks quest pins, but not dots
+        //   accuracy circle disappears when center out of view
+        //   gps and user tracks not working
+
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
         //   -> use SymbolLayer and some source (GeoJson, or CustomGeometry)
@@ -212,11 +235,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // use sdf here
         // this is only recommended for monochrome icons, and allows using halo stuff for symbols
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
-        TangramIconsSpriteSheet.ICONS.forEach {
+        presetIconIndex.values.forEach {
             style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true)
-        } // getBitmapDrawable gives a lot of log warnings
-        presetIconIndex.forEach { (k, v) ->
-            style.addImage(resources.getResourceEntryName(v), resources.getBitmapDrawable(v).bitmap, true)
         } // getBitmapDrawable gives a lot of log warnings
 
         // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
@@ -239,6 +259,18 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
          * flingAnimation: time and threshold should be in next MapLibre version (now: 10.0.2),
          *  and should definitely be adjusted... sth like threshold 250 and time 500
          */
+        mapboxMap.uiSettings.setCompassFadeFacingNorth(true)
+        // todo: set correct top margin, should depend on where bottom of menu button is
+        mapboxMap.uiSettings.setCompassMargins(0, requireContext().dpToPx(80).toInt(), 6, 0)
+        val compass = LayerDrawable(arrayOf(
+            ContextCompat.getDrawable(requireContext(), R.drawable.round_white_button)!!,
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_compass_needle_48dp)!!
+        ))
+        // todo: image too large, but when creating a correctly sized bitmap, it's grey and not white (wtf?)
+        mapboxMap.uiSettings.setCompassImage(compass)
+
+        mapboxMap.uiSettings.isLogoEnabled = false
+        mapboxMap.uiSettings.isAttributionEnabled = false
 
         // sources
         //  GeoJsonSource
@@ -369,7 +401,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // need more information on how to work with expressions...
         // or better use them in style json instead of here? probably easier
-        val overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
+        overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
             // separate layer for dashed lines
             .withFilter(Expression.has("dashed"))
             .withProperties(
@@ -381,8 +413,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
 //                PropertyFactory.lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
             )
-        style.addLayerBelow(overlayDashedLineLayer, "pins-layer")
-        val overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
+        style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
+        overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
             .withFilter(Expression.not(Expression.has("dashed")))
             .withProperties(
                 PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
@@ -393,10 +425,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
                 // there is no "lineOutlineColor", so how to properly copy the tangram overlay style?
             )
-        style.addLayerBelow(overlayLineLayer, "pins-layer") // means: above the dashed layer
+        style.addLayerBelow(overlayLineLayer!!, "pins-layer") // means: above the dashed layer
 
         // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
-        val overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
+        overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
             .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
 //            .withProperties(PropertyFactory.fillColor(Expression.get("color")))
 //            .withProperties(PropertyFactory.fillOutlineColor(Expression.get("outline-color"))) // no outline color if extrusion?
@@ -404,9 +436,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyFactory.fillExtrusionOpacity(Expression.get("opacity")))
             .withProperties(PropertyFactory.fillExtrusionColor(Expression.get("color")))
             .withProperties(PropertyFactory.fillExtrusionHeight(Expression.get("height"))) // need extrusion layer for height
-        style.addLayerBelow(overlayFillLayer, "pins-layer")
+        style.addLayerBelow(overlayFillLayer!!, "pins-layer")
 
-        val overlaySymbolLayer = SymbolLayer("overlay-symbols", "overlay-source")
+        overlaySymbolLayer = SymbolLayer("overlay-symbols", "overlay-source")
             .withProperties(
                 PropertyFactory.iconImage("{icon}"),
                 PropertyFactory.textField("{label}"),
@@ -421,7 +453,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
 //                PropertyFactory.iconHaloBlur(2f),
             )
-        style.addLayerBelow(overlaySymbolLayer, "pins-layer")
+        style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
         // for highlighted nearby
         // keep AnnotationManagers? or use layers? not enough icons to be relevant for performance
@@ -476,7 +508,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
-
+/*
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
             if (pinsMapComponent?.isVisible == true) {
@@ -532,7 +564,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         listener?.onClickedMapAt(clickPos, fingerRadiusInMeters)
     }
-
+*/
     /* --------------------------- Focusing on edit/quest/element ------------------------------- */
 
     /** Focus the view on the given geometry */
@@ -561,7 +593,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     fun highlightPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
-        selectedPinsMapComponent?.set(iconResId, pinPositions)
+//        selectedPinsMapComponent?.set(iconResId, pinPositions)
     }
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
@@ -576,43 +608,24 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     fun hideOverlay() {
-        styleableOverlayMapComponent?.isVisible = false
+        overlayFillLayer?.setFilter(Expression.literal(false))
+        overlayLineLayer?.setFilter(Expression.literal(false))
+        overlayDashedLineLayer?.setFilter(Expression.literal(false))
+        overlaySymbolLayer?.setFilter(Expression.literal(false))
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
         geometryMapComponent?.showGeometry(geometry)
-
-        // clear previous geometries as tangram does
-        geometryLineManager?.deleteAll()
-        geometryCircleManger?.deleteAll()
-        geometryFillManager?.deleteAll()
-
-        when (geometry) {
-            is ElementPolylinesGeometry -> {
-                val points = geometry.polylines.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
-                val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points)
-                geometrySource?.setGeoJson(Feature.fromGeometry(multilineString))
-            }
-            is ElementPolygonsGeometry -> {
-                val points = geometry.polygons.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
-                val polygon = com.mapbox.geojson.Polygon.fromLngLats(points) // todo: breaks for mulitpolygons when zooming in (weird...)
-                // todo: actually the outline is displayed in the fill layer
-                //  maybe this is what breaks multipolygon display
-                //  just set some Expression.geometryType() filter on the fill layer
-                val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points) // outline
-                geometrySource?.setGeoJson(FeatureCollection.fromFeatures(listOf(Feature.fromGeometry(multilineString), Feature.fromGeometry(polygon))))
-            }
-            is ElementPointGeometry -> {
-                geometrySource?.setGeoJson(com.mapbox.geojson.Point.fromLngLat(geometry.center.longitude, geometry.center.latitude))
-            }
-        }
     }
 
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
-        styleableOverlayMapComponent?.isVisible = true
-        selectedPinsMapComponent?.clear()
+        overlayFillLayer?.setFilter(Expression.literal(true))
+        overlayLineLayer?.setFilter(Expression.literal(true))
+        overlayDashedLineLayer?.setFilter(Expression.literal(true))
+        overlaySymbolLayer?.setFilter(Expression.literal(true))
+//        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
         geometrySymbolManager?.deleteAll()
@@ -627,7 +640,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     fun clearSelectedPins() {
-        selectedPinsMapComponent?.clear()
+//        selectedPinsMapComponent?.clear()
     }
 
     /* ----------------------------  Markers for current highlighting --------------------------- */
@@ -698,6 +711,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var geometrySource: GeoJsonSource? = null
         var pinsLayer: SymbolLayer? = null
         var pinsDotLayer: CircleLayer? = null
+
+        var overlayDashedLineLayer: LineLayer? = null
+        var overlayLineLayer: LineLayer? = null
+        var overlayFillLayer: FillExtrusionLayer? = null
+        var overlaySymbolLayer: SymbolLayer? = null
     }
 }
 

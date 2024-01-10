@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import com.mapzen.tangram.SceneUpdate
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
@@ -52,6 +51,7 @@ class SceneMapComponent(
      *
      *  The scene will not actually be reloaded if everything stayed the same. */
     suspend fun loadScene() = mutex.withLock {
+        /*
         val sceneFilePath = getSceneFilePath()
         val sceneUpdates = getAllSceneUpdates()
         val strSceneUpdates = sceneUpdates.map { it.toString() }
@@ -64,9 +64,9 @@ class SceneMapComponent(
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }
-        aerialViewChanged = false
+        aerialViewChanged = false*/
     }
-
+/*
     private fun getAllSceneUpdates(): List<SceneUpdate> =
         getBaseSceneUpdates() + sceneUpdates.flatten().map { SceneUpdate(it.first, it.second) }
 
@@ -76,7 +76,7 @@ class SceneMapComponent(
         SceneUpdate("global.api_key", vectorTileProvider.apiKey),
         SceneUpdate("global.language_script", Locale.getDefault().script)
     )
-
+*/
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES

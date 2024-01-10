@@ -181,7 +181,6 @@ dependencies {
     implementation("com.charleskorn.kaml:kaml:0.55.0")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.17.1")
     implementation("org.maplibre.gl:android-sdk:10.0.2")
     implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 

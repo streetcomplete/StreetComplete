@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
-import de.westnordost.streetcomplete.screens.main.map.tangram.screenBottomToCenterDistance
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -41,7 +40,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private val recentLocationStore: RecentLocationStore by inject()
     private val prefs: Preferences by inject()
 
-    private lateinit var compass: Compass
+//    private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
 
     private var locationMapComponent: CurrentLocationMapComponent? = null
@@ -77,7 +76,7 @@ open class LocationAwareMapFragment : MapFragment() {
     var isNavigationMode: Boolean
         set(value) {
             if (_isNavigationMode != value && !value) {
-                updateCameraPosition(300) { tilt = 0f }
+                updateCameraPosition(300) { tilt = 0.0 }
             }
             _isNavigationMode = value
         }
@@ -103,12 +102,12 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        compass = Compass(
-            context.getSystemService<SensorManager>()!!,
-            context.getSystemService<WindowManager>()!!.defaultDisplay,
-            this::onCompassRotationChanged
-        )
-        lifecycle.addObserver(compass)
+//        compass = Compass(
+//            context.getSystemService<SensorManager>()!!,
+//            context.getSystemService<WindowManager>()!!.defaultDisplay,
+//            this::onCompassRotationChanged
+//        )
+//        lifecycle.addObserver(compass)
         locationManager = FineLocationManager(context, this::onLocationChanged)
     }
 
@@ -143,7 +142,6 @@ open class LocationAwareMapFragment : MapFragment() {
 
         val ctrl = controller ?: return
         val ctx = context ?: return
-        val mapbox = mapboxMap ?: return
         locationMapComponent = CurrentLocationMapComponent(ctx, style, SymbolManager(mapView, mapboxMap, style, "geo-symbols"), ctrl)
         locationMapComponent?.location = displayedLocation
 
@@ -212,7 +210,7 @@ open class LocationAwareMapFragment : MapFragment() {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
                 if (bearing != null) {
-                    rotation = -(bearing * PI / 180.0).toFloat()
+                    rotation = -(bearing * PI / 180.0)
                     /* move center position down a bit, so there is more space in front of than
                        behind user */
                     val distance = controller?.screenBottomToCenterDistance()
@@ -220,14 +218,14 @@ open class LocationAwareMapFragment : MapFragment() {
                         centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
-                tilt = PI.toFloat() / 6f
+                tilt = PI.toFloat() / 6.0
             }
 
             position = centerPosition
 
             if (!zoomedYet) {
                 zoomedYet = true
-                zoom = 19f
+                zoom = 19.0
             }
         }
     }
@@ -248,7 +246,7 @@ open class LocationAwareMapFragment : MapFragment() {
         recentLocationStore.add(location)
         locationMapComponent?.location = location
         addTrackLocation(location)
-        compass.setLocation(location)
+//        compass.setLocation(location)
         centerCurrentPositionIfFollowing()
         listener?.onDisplayedLocationDidChange()
     }

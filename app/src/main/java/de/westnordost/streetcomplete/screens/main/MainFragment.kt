@@ -321,16 +321,16 @@ class MainFragment :
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
-        mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it) }
+        mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it.toFloat()) }
         listener?.onMapInitialized()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
-        binding.compassView.rotation = (180 * rotation / PI).toFloat()
-        binding.compassView.rotationX = (180 * tilt / PI).toFloat()
+//        binding.compassView.rotation = (180 * rotation / PI).toFloat()
+//        binding.compassView.rotationX = (180 * tilt / PI).toFloat()
 
-        val margin = 2 * PI / 180
-        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
+//        val margin = 2 * PI / 180
+//        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
 
         updateLocationPointerPin()
         updateCreateButtonEnablement(zoom)
@@ -710,11 +710,11 @@ class MainFragment :
     }
 
     private fun onClickZoomOut() {
-        mapFragment?.updateCameraPosition(300) { zoomBy = -1f }
+        mapFragment?.updateCameraPosition(300) { zoomBy = -1.0 }
     }
 
     private fun onClickZoomIn() {
-        mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
+        mapFragment?.updateCameraPosition(300) { zoomBy = +1.0 }
     }
 
     private fun onClickTracksStop() {
@@ -733,12 +733,12 @@ class MainFragment :
 
         // if the user wants to rotate back north, it means he also doesn't want to use nav mode anymore
         if (mapFragment.isNavigationMode) {
-            mapFragment.updateCameraPosition(300) { rotation = 0f }
+            mapFragment.updateCameraPosition(300) { rotation = 0.0 }
             setIsNavigationMode(false)
         } else {
             mapFragment.updateCameraPosition(300) {
-                rotation = 0f
-                tilt = 0f
+                rotation = 0.0
+                tilt = 0.0
             }
         }
     }
@@ -825,7 +825,7 @@ class MainFragment :
     }
 
     private fun onClickCreateNote(pos: LatLon) {
-        if ((mapFragment?.cameraPosition?.zoom ?: 0f) < ApplicationConstants.NOTE_MIN_ZOOM) {
+        if ((mapFragment?.cameraPosition?.zoom ?: 0.0) < ApplicationConstants.NOTE_MIN_ZOOM) {
             context?.toast(R.string.create_new_note_unprecise)
             return
         }
@@ -856,6 +856,7 @@ class MainFragment :
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
 
     private fun updateLocationPointerPin() {
+        // todo: broken atm
         val mapFragment = mapFragment ?: return
         val camera = mapFragment.cameraPosition ?: return
         val position = camera.position
@@ -992,9 +993,9 @@ class MainFragment :
         val f = overlay.createForm(null) ?: return
         if (f.arguments == null) f.arguments = bundleOf()
         val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0f
-        val tilt = camera?.tilt ?: 0f
-        val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation, tilt)
+        val rotation = camera?.rotation ?: 0.0
+        val tilt = camera?.tilt ?: 0.0
+        val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation.toFloat(), tilt.toFloat())
         f.requireArguments().putAll(args)
 
         showInBottomSheet(f)
@@ -1025,9 +1026,9 @@ class MainFragment :
         if (f.arguments == null) f.arguments = bundleOf()
 
         val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0f
-        val tilt = camera?.tilt ?: 0f
-        val args = AbstractOverlayForm.createArguments(overlay, element, geometry, rotation, tilt)
+        val rotation = camera?.rotation ?: 0.0
+        val tilt = camera?.tilt ?: 0.0
+        val args = AbstractOverlayForm.createArguments(overlay, element, geometry, rotation.toFloat(), tilt.toFloat())
         f.requireArguments().putAll(args)
 
         showInBottomSheet(f)
@@ -1059,9 +1060,9 @@ class MainFragment :
         if (f.arguments == null) f.arguments = bundleOf()
 
         val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0f
-        val tilt = camera?.tilt ?: 0f
-        val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
+        val rotation = camera?.rotation ?: 0.0
+        val tilt = camera?.tilt ?: 0.0
+        val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation.toFloat(), tilt.toFloat())
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
@@ -1191,7 +1192,7 @@ class MainFragment :
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
         mapFragment?.isNavigationMode = false
-        mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
+        mapFragment?.setInitialCameraPosition(CameraPosition(position, 0.0, 0.0, zoom.toDouble()))
         setIsFollowingPosition(false)
     }
 

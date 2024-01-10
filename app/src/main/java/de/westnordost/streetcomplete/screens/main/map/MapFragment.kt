@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -15,19 +14,8 @@ import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapzen.tangram.TouchInput.DoubleTapResponder
-import com.mapzen.tangram.TouchInput.LongPressResponder
-import com.mapzen.tangram.TouchInput.PanResponder
-import com.mapzen.tangram.TouchInput.RotateResponder
-import com.mapzen.tangram.TouchInput.ScaleResponder
-import com.mapzen.tangram.TouchInput.ShoveResponder
-import com.mapzen.tangram.TouchInput.TapResponder
-import com.mapzen.tangram.networking.DefaultHttpHandler
-import com.mapzen.tangram.networking.HttpHandler
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
@@ -37,7 +25,6 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListener
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
-import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -47,26 +34,14 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import okhttp3.HttpUrl
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.internal.userAgent
 import org.koin.android.ext.android.inject
 
 /** Manages a map that remembers its last location*/
-open class MapFragment :
-    Fragment(),
-    TapResponder,
-    DoubleTapResponder,
-    LongPressResponder,
-    PanResponder,
-    ScaleResponder,
-    ShoveResponder,
-    RotateResponder {
+open class MapFragment : Fragment() {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
+//    private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
 
     protected var controller: KtMapController? = null
     protected var mapboxMap : MapboxMap? = null
@@ -97,7 +72,7 @@ open class MapFragment :
         }
 
     private val vectorTileProvider: VectorTileProvider by inject()
-    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
+//    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -130,7 +105,7 @@ open class MapFragment :
         Mapbox.getInstance(requireContext())
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
-        val mapView = view.findViewById<MapView>(R.id.mapbox)
+        val mapView = view.findViewById<MapView>(R.id.map)
         mapView.onCreate(savedInstanceState)
         val mapLibreJson = resources.assets.open("map_theme/jawg-streets.json").reader().readText()
         mapView.getMapAsync { map ->
@@ -152,7 +127,7 @@ open class MapFragment :
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        val mapView = view.findViewById<MapView>(R.id.mapbox)
+        val mapView = binding.map
         mapView.getMapAsync {
             map -> viewLifecycleScope.launch { initMap(mapView, map) }
         }
@@ -209,7 +184,7 @@ open class MapFragment :
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap(mapView: MapView, mapboxMap: MapboxMap) {
-        val ctrl = binding.map.initMap(mapboxMap, createHttpHandler())
+        val ctrl = binding.map.initMap(mapboxMap)
         controller = ctrl
         val style = mapboxMap.style
         if (ctrl == null) return
@@ -224,7 +199,7 @@ open class MapFragment :
 
         sceneMapComponent?.loadScene()
 
-        ctrl.glViewHolder!!.view.awaitLayout()
+//        ctrl.glViewHolder!!.view.awaitLayout()
 
         onMapReady(mapView, mapboxMap, style)
 
@@ -233,41 +208,23 @@ open class MapFragment :
     }
 
     private fun registerResponders(ctrl: KtMapController) {
-        ctrl.setTapResponder(this)
-        ctrl.setDoubleTapResponder(this)
-        ctrl.setLongPressResponder(this)
-        ctrl.setRotateResponder(this)
-        ctrl.setPanResponder(this)
-        ctrl.setScaleResponder(this)
-        ctrl.setShoveResponder(this)
         ctrl.setMapChangingListener(object : MapChangingListener {
             override fun onMapWillChange() {}
             override fun onMapIsChanging() {
                 val camera = cameraPosition ?: return
                 if (camera == previousCameraPosition) return
                 previousCameraPosition = camera
-                onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
-                listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                onMapIsChanging(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
+                listener?.onMapIsChanging(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
             }
             override fun onMapDidChange() {
                 val camera = cameraPosition ?: return
                 if (camera == previousCameraPosition) return
                 previousCameraPosition = camera
-                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
-                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                onMapDidChange(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
+                listener?.onMapDidChange(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
             }
         })
-    }
-
-    private fun createHttpHandler(): HttpHandler {
-        val builder = OkHttpClient.Builder().cache(cacheConfig.cache)
-        return object : DefaultHttpHandler(builder) {
-            override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
-                builder
-                    .cacheControl(cacheConfig.tangramCacheControl)
-                    .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + userAgent)
-            }
-        }
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
@@ -287,7 +244,7 @@ open class MapFragment :
     protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
-
+/*
     override fun onPanBegin(): Boolean {
         listener?.onPanBegin()
         return false
@@ -324,8 +281,8 @@ open class MapFragment :
         }
         return true
     }
-
-    override fun onLongPress(x: Float, y: Float) {
+*/
+    fun onLongPress(x: Float, y: Float) {
         listener?.onLongPress(x, y)
     }
 
@@ -357,16 +314,16 @@ open class MapFragment :
                 prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
                 prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
             ),
-            prefs.getFloat(Prefs.MAP_ROTATION, 0f),
-            prefs.getFloat(Prefs.MAP_TILT, 0f),
-            prefs.getFloat(Prefs.MAP_ZOOM, 0f)
+            prefs.getFloat(Prefs.MAP_ROTATION, 0f).toDouble(),
+            prefs.getFloat(Prefs.MAP_TILT, 0f).toDouble(),
+            prefs.getFloat(Prefs.MAP_ZOOM, 0f).toDouble()
         )
     }
 
     private fun saveCameraPosition(camera: CameraPosition) {
-        prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation)
-        prefs.putFloat(Prefs.MAP_TILT, camera.tilt)
-        prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom)
+        prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation.toFloat())
+        prefs.putFloat(Prefs.MAP_TILT, camera.tilt.toFloat())
+        prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom.toFloat())
         prefs.putDouble(Prefs.MAP_LATITUDE, camera.position.latitude)
         prefs.putDouble(Prefs.MAP_LONGITUDE, camera.position.longitude)
     }
@@ -396,10 +353,9 @@ open class MapFragment :
 
     fun updateCameraPosition(
         duration: Long = 0,
-        interpolator: Interpolator = defaultCameraInterpolator,
         builder: CameraUpdate.() -> Unit
     ) {
-        controller?.updateCameraPosition(duration, interpolator, builder)
+        controller?.updateCameraPosition(duration, builder)
     }
 
     fun setInitialCameraPosition(camera: CameraPosition) {

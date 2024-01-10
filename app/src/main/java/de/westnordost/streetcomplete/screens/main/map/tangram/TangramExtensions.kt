@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.tangram
-
+/* todo: keep for checking what could be usful in maplibre
 import android.graphics.PointF
 import android.graphics.RectF
 import com.mapzen.tangram.LngLat
@@ -61,8 +61,6 @@ fun ElementPolygonsGeometry.toTangramGeometry(properties: Map<String, String> = 
     }
 }
 
-fun LngLat.toLatLon(): LatLon = LatLon(latitude, longitude)
-
 fun LatLon.toLngLat(): LngLat = LngLat(longitude, latitude)
 
 fun KtMapController.screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
@@ -91,3 +89,4 @@ fun KtMapController.screenBottomToCenterDistance(): Double? {
     val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
     return center.distanceTo(bottom)
 }
+*/

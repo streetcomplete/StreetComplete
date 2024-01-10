@@ -11,21 +11,13 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMap.OnMoveListener
-import com.mapzen.tangram.FeaturePickResult
-import com.mapzen.tangram.LabelPickResult
-import com.mapzen.tangram.MapChangeListener
-import com.mapzen.tangram.MapController
-import com.mapzen.tangram.MapData
-import com.mapzen.tangram.MapView
-import com.mapzen.tangram.SceneError
-import com.mapzen.tangram.SceneUpdate
-import com.mapzen.tangram.TouchInput
-import com.mapzen.tangram.networking.HttpHandler
-import com.mapzen.tangram.viewholder.GLSurfaceViewHolderFactory
-import com.mapzen.tangram.viewholder.GLViewHolder
-import com.mapzen.tangram.viewholder.GLViewHolderFactory
+import de.westnordost.streetcomplete.data.maptiles.toLatLng
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
@@ -60,18 +52,18 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, private val mapboxMap: MapboxMap, contentResolver: ContentResolver) :
+class KtMapController(private val mapboxMap: MapboxMap, contentResolver: ContentResolver) :
     DefaultLifecycleObserver {
 
-    private val cameraManager = CameraManager(c, mapboxMap, contentResolver)
-    private val markerManager = MarkerManager(c)
-    private val gestureManager = TouchGestureManager(c)
+    private val cameraManager = CameraManager(mapboxMap, contentResolver)
+//    private val markerManager = MarkerManager(c)
+//    private val gestureManager = TouchGestureManager(c)
 
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
 
     private val sceneUpdateContinuations = mutableMapOf<Int, Continuation<Int>>()
-    private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
-    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
+//    private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
+//    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
@@ -80,24 +72,6 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
     private val flingAnimator: TimeAnimator = TimeAnimator()
 
     init {
-        c.setSceneLoadListener { sceneId, sceneError ->
-            val cont = sceneUpdateContinuations.remove(sceneId)
-            if (sceneError != null) {
-                cont?.resumeWithException(sceneError.toException())
-            } else {
-                markerManager.recreateMarkers()
-                cont?.resume(sceneId)
-            }
-        }
-
-        c.setLabelPickListener { labelPickResult: LabelPickResult? ->
-            pickLabelContinuations.poll()?.resume(labelPickResult)
-        }
-
-        c.setFeaturePickListener { featurePickResult: FeaturePickResult? ->
-            featurePickContinuations.poll()?.resume(featurePickResult)
-        }
-
         flingAnimator.setTimeListener { _, _, _ ->
             mapChangingListener?.onMapIsChanging()
         }
@@ -115,11 +89,11 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
                 mapChangingListener?.onMapDidChange()
             }
         }
-
+/*
         c.setMapChangeListener(object : MapChangeListener {
             private var calledOnMapIsChangingOnce = false
 
-            override fun onViewComplete() { /* not interested*/ }
+            override fun onViewComplete() {  }
 
             override fun onRegionWillChange(animated: Boolean) {
                 // could be called not on the ui thread, see https://github.com/tangrams/tangram-es/issues/2157
@@ -148,7 +122,7 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
                     }
                 }
             }
-        })
+        })*/
         mapboxMap.addOnCameraMoveStartedListener { mapChangingListener?.onMapWillChange() }
         mapboxMap.addOnCameraMoveListener { mapChangingListener?.onMapIsChanging() }
         mapboxMap.addOnCameraIdleListener { mapChangingListener?.onMapDidChange() }
@@ -160,7 +134,7 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
     }
 
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
-
+/*  todo: use map.setStyle for maplibre, style may come from json or others
     suspend fun loadSceneFile(
         path: String,
         sceneUpdates: List<SceneUpdate>? = null
@@ -181,17 +155,17 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
         sceneUpdateContinuations[sceneId] = cont
         cont.invokeOnCancellation { sceneUpdateContinuations.remove(sceneId) }
     }
-
+*/
     /* ----------------------------------------- Camera ----------------------------------------- */
 
     val cameraPosition: CameraPosition get() = cameraManager.camera
 
-    fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: CameraUpdate.() -> Unit) {
-        updateCameraPosition(duration, interpolator, CameraUpdate().apply(builder))
+    fun updateCameraPosition(duration: Long = 0, builder: CameraUpdate.() -> Unit) {
+        updateCameraPosition(duration, CameraUpdate().apply(builder))
     }
 
-    fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, update: CameraUpdate) {
-        cameraManager.updateCamera(duration, interpolator, update)
+    fun updateCameraPosition(duration: Long = 0, update: CameraUpdate) {
+        cameraManager.updateCamera(duration, update)
     }
 
     fun setCameraPosition(camera: CameraPosition) {
@@ -200,37 +174,30 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
         update.rotation = camera.rotation
         update.tilt = camera.tilt
         update.zoom = camera.zoom
-        updateCameraPosition(0L, defaultInterpolator, update)
+        updateCameraPosition(0L, update)
     }
 
-    var cameraType: MapController.CameraType
-        set(value) { c.cameraType = value }
-        get() = c.cameraType
+    var minimumZoomLevel: Double
+        set(value) { mapboxMap.setMinZoomPreference(value) }
+        get() = mapboxMap.minZoomLevel
 
-    var minimumZoomLevel: Float
-        set(value) { c.minimumZoomLevel = value }
-        get() = c.minimumZoomLevel
+    var maximumZoomLevel: Double
+        set(value) { mapboxMap.setMaxZoomPreference(value) }
+        get() = mapboxMap.maxZoomLevel
 
-    var maximumZoomLevel: Float
-        set(value) { c.maximumZoomLevel = value }
-        get() = c.maximumZoomLevel
+    var maximumTilt: Double
+        set(value) { mapboxMap.setMaxPitchPreference(value) }
+        get() = mapboxMap.maxPitch
 
-    var maximumTilt: Float
-        set(value) {
-            cameraManager.maximumTilt = value
-        }
-        get() = cameraManager.maximumTilt
-
-    fun screenPositionToLatLon(screenPosition: PointF): LatLon? = c.screenPositionToLngLat(screenPosition)?.toLatLon()
-    fun latLonToScreenPosition(latLon: LatLon): PointF = c.lngLatToScreenPosition(latLon.toLngLat())
+    fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
+    fun latLonToScreenPosition(latLon: LatLon): PointF = mapboxMap.projection.toScreenLocation(latLon.toLatLng())
     fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =
-        c.lngLatToScreenPosition(latLon.toLngLat(), screenPositionOut, clipToViewport)
+        mapboxMap.projection.toScreenLocation(latLon.toLatLng()) // todo: what does it do?
 
     fun screenCenterToLatLon(padding: RectF): LatLon? {
-        val view = glViewHolder?.view ?: return null
-        val w = view.width
-        val h = view.height
-        if (w == 0 || h == 0) return null
+        val w = mapboxMap.width
+        val h = mapboxMap.height
+        if (w == 0f || h == 0f) return null
 
         return screenPositionToLatLon(PointF(
             padding.left + (w - padding.left - padding.right) / 2f,
@@ -239,10 +206,9 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
     }
 
     fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
-        val view = glViewHolder?.view ?: return null
-        val w = view.width
-        val h = view.height
-        if (w == 0 || h == 0) return null
+        val w = mapboxMap.width
+        val h = mapboxMap.height
+        if (w == 0f || h == 0f) return null
 
         val size = PointF(w - padding.left - padding.right, h - padding.top - padding.bottom)
 
@@ -267,15 +233,15 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
         val boundsCenter = listOf(bounds.min, bounds.max).centerPointOfPolyline()
         val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
         val camera = cameraPosition
-        return CameraPosition(pos, camera.rotation, camera.tilt, zoom)
+        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
     }
 
     private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
         val screenBounds: BoundingBox
         val currentZoom: Float
-        synchronized(c) {
+        synchronized(mapboxMap) { // todo: what to use?
             screenBounds = screenAreaToBoundingBox(padding) ?: return null
-            currentZoom = cameraPosition.zoom
+            currentZoom = cameraPosition.zoom.toFloat()
         }
         val screenWidth = normalizeLongitude(screenBounds.max.longitude - screenBounds.min.longitude)
         val screenHeight = screenBounds.max.latitude - screenBounds.min.latitude
@@ -288,11 +254,10 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
         return max(1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
     }
 
-    fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
-        val view = glViewHolder?.view ?: return null
-        val w = view.width
-        val h = view.height
-        if (w == 0 || h == 0) return null
+    fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom.toFloat()): LatLon? {
+        val w = mapboxMap.width
+        val h = mapboxMap.height
+        if (w == 0f || h == 0f) return null
 
         val screenCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
         val offsetScreenCenter = screenPositionToLatLon(
@@ -311,18 +276,18 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
 
     /* -------------------------------------- Data Layers --------------------------------------- */
 
-    fun addDataLayer(name: String, generateCentroid: Boolean = false): MapData =
-        c.addDataLayer(name, generateCentroid)
+//    fun addDataLayer(name: String, generateCentroid: Boolean = false): MapData =
+//        c.addDataLayer(name, generateCentroid)
 
     /* ---------------------------------------- Markers ----------------------------------------- */
 
-    fun addMarker(): Marker = markerManager.addMarker()
-    fun removeMarker(marker: Marker): Boolean = removeMarker(marker.markerId)
-    fun removeMarker(markerId: Long): Boolean = markerManager.removeMarker(markerId)
-    fun removeAllMarkers() = markerManager.removeAllMarkers()
+//    fun addMarker(): Marker = markerManager.addMarker()
+//    fun removeMarker(marker: Marker): Boolean = removeMarker(marker.markerId)
+//    fun removeMarker(markerId: Long): Boolean = markerManager.removeMarker(markerId)
+//    fun removeAllMarkers() = markerManager.removeAllMarkers()
 
     /* ------------------------------------ Map interaction ------------------------------------- */
-
+/*
     fun setPickRadius(radius: Float) = c.setPickRadius(radius)
 
     suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCancellableCoroutine { cont ->
@@ -338,11 +303,11 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
         cont.invokeOnCancellation { featurePickContinuations.remove(cont) }
         c.pickFeature(posX, posY)
     }
-
+*/
     fun setMapChangingListener(listener: MapChangingListener?) { mapChangingListener = listener }
 
     /* -------------------------------------- Touch input --------------------------------------- */
-
+/*
     fun setShoveResponder(responder: TouchInput.ShoveResponder?) {
         // enforce maximum tilt
         gestureManager.setShoveResponder(object : TouchInput.ShoveResponder {
@@ -376,9 +341,9 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
     }
     fun isSimultaneousDetectionAllowed(first: TouchInput.Gestures, second: TouchInput.Gestures): Boolean =
         c.touchInput.isSimultaneousDetectionAllowed(first, second)
-
+*/
     /* ------------------------------------------ Misc ------------------------------------------ */
-
+/*
     suspend fun captureFrame(waitForCompleteView: Boolean): Bitmap = suspendCancellableCoroutine { cont ->
         c.captureFrame({ bitmap -> cont.resume(bitmap) }, waitForCompleteView)
     }
@@ -395,23 +360,46 @@ class KtMapController(private val c: MapController, private val mapboxMap: Mapbo
     fun useCachedGlState(use: Boolean) = c.useCachedGlState(use)
 
     fun setDefaultBackgroundColor(red: Float, green: Float, blue: Float) = c.setDefaultBackgroundColor(red, green, blue)
+*/
+    fun screenBottomToCenterDistance(): Double? {
+        val w = mapboxMap.width
+        val h = mapboxMap.height
+        if (w == 0f || h == 0f) return null
+
+        val center = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+        val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
+        return center.distanceTo(bottom)
+    }
+
+    fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
+        val p = PointF()
+        return when (g) {
+            is ElementPolylinesGeometry -> g.polylines
+            is ElementPolygonsGeometry -> g.polygons
+            else -> listOf(listOf(g.center))
+        }.flatten().all {
+//            latLonToScreenPosition(it, p, false) ??
+                p.x >= offset.left
+                && p.x <= mapboxMap.width - offset.right
+                && p.y >= offset.top
+                && p.y <= mapboxMap.height - offset.bottom
+        }
+    }
 }
 
-class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : RuntimeException(message)
+//class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : RuntimeException(message)
 
-private fun SceneError.toException() =
-    LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
+//private fun SceneError.toException() =
+//    LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
 suspend fun MapView.initMap(
     mapboxMap: MapboxMap,
-    httpHandler: HttpHandler? = null,
-    glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
 ): KtMapController? = suspendCancellableCoroutine { cont ->
     getMapAsync({ mapController ->
         cont.resume(mapController?.let {
-            KtMapController(it, mapboxMap, context.contentResolver)
+            KtMapController(it, context.contentResolver)
         })
-    }, glViewHolderFactory, httpHandler)
+    })
 }
 
 interface MapChangingListener {

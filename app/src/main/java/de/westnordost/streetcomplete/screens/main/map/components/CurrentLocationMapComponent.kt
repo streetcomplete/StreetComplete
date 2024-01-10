@@ -17,16 +17,15 @@ import com.mapbox.mapboxsdk.plugins.annotation.Symbol
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapbox.mapboxsdk.style.expressions.Expression
-import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
-import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -38,14 +37,9 @@ import kotlin.math.pow
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val symbolManager: SymbolManager, private val ctrl: KtMapController) {
     // markers showing the user's location, direction and accuracy of location
-    private val locationMarker: Marker
     private val locationSymbol: Symbol
-    private val accuracyMarker: Marker
     private val accuracySymbol: Symbol
-    private val directionMarker: Marker
     private val directionSymbol: Symbol
-
-    private val directionMarkerSize: PointF
 
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
@@ -111,31 +105,10 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
             ctx.pxToDp(dotImg.bitmap.height)
         )
 
-        val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
-        directionMarkerSize = PointF(
-            ctx.pxToDp(directionImg.bitmap.width),
-            ctx.pxToDp(directionImg.bitmap.height)
-        )
-
         val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
 
-        locationMarker = ctrl.addMarker().also {
-            it.setStylingFromString("""
-            {
-                style: 'points',
-                color: 'white',
-                size: [${dotSize.x}px, ${dotSize.y}px],
-                order: 2000,
-                flat: true,
-                collide: false,
-                interactive: true
-            }
-            """.trimIndent())
-            it.setDrawable(dotImg)
-            it.setDrawOrder(3)
-        }
         symbolManager.iconAllowOverlap = true
-        symbolManager.setFilter(Expression.literal(false)) // disable for testing location component
+//        symbolManager.setFilter(Expression.literal(false)) // disable for testing location component
         mapStyle.addImage("dotImg", bitmapFromDrawableRes(ctx, R.drawable.location_dot)!!)
         mapStyle.addImage("directionImg", bitmapFromDrawableRes(ctx, R.drawable.location_direction)!!)
         mapStyle.addImage("accuracyImg", accuracyImg)
@@ -155,24 +128,14 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
                 .withIconImage("accuracyImg")
                 .withLatLng(LatLng(0.0, 0.0))
         )
-
-        directionMarker = ctrl.addMarker().also {
-            it.setDrawable(directionImg)
-            it.setDrawOrder(2)
-        }
-        accuracyMarker = ctrl.addMarker().also {
-            it.setDrawable(accuracyImg)
-            it.setDrawOrder(1)
-        }
     }
 
     private fun hide() {
-        locationMarker.isVisible = false
-        accuracyMarker.isVisible = false
-        directionMarker.isVisible = false
+        symbolManager.setFilter(Expression.literal(false))
     }
 
     private fun show() {
+        symbolManager.setFilter(Expression.literal(true)) // easier way?
         updateLocation()
         updateDirection()
     }
@@ -207,18 +170,16 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         if (!isVisible) return
         val pos = location?.toLatLon() ?: return
 
-        accuracyMarker.isVisible = true
-        accuracyMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
-        locationMarker.isVisible = true
-        locationMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
-        directionMarker.isVisible = rotation != null
-        directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         locationSymbol.latLng = LatLng(pos.latitude, pos.longitude)
         directionSymbol.latLng = locationSymbol.latLng
         accuracySymbol.latLng = locationSymbol.latLng
         symbolManager.update(directionSymbol)
         symbolManager.update(locationSymbol)
-//        MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location) // todo: sometimes crahing with The LocationComponent has to be activated with one of the LocationComponent#activateLocationComponent overloads before any other methods are invoked.
+        // todo: sometimes crashing with: The LocationComponent has to be activated with one of the LocationComponent#activateLocationComponent overloads before any other methods are invoked.
+        //  i guess that happens when the map isn't fully initialized?
+//        try {
+//            MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
+//        } catch (_: Exception) {}
 
         updateAccuracy()
     }
@@ -228,17 +189,10 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         if (!isVisible) return
         val location = location ?: return
 
-        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom)
-        accuracyMarker.setStylingFromString("""
-        {
-            style: 'points',
-            color: 'white',
-            size: ${size}px,
-            order: 2000,
-            flat: true,
-            collide: false
-        }
-        """)
+        // todo: size is constant, does not change when zooming
+        //  and what is the unit? not pixels it seems, but also not meters at current zoom
+        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom.toFloat())
+        accuracySymbol.iconSize = size.toFloat() / 100
     }
 
     /** Update the marker that shows the direction in which the smartphone is held */
@@ -247,19 +201,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         // no sense to display direction if there is no location yet
         if (rotation == null || location == null) return
 
-        directionMarker.isVisible = true
-        directionMarker.setStylingFromString("""
-        {
-            style: 'points',
-            color: '#cc536dfe',
-            size: [${directionMarkerSize.x}px, ${directionMarkerSize.y}px],
-            order: 2000,
-            collide: false,
-            flat: true,
-            angle: $rotation
-        }
-        """)
-        directionSymbol.iconRotate = rotation!!.toFloat();
+        directionSymbol.iconRotate = rotation!!.toFloat() // todo: does nothing?
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
