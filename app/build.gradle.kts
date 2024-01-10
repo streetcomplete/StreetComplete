@@ -275,6 +275,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     mapStyleBranch = "jawg"
 }
 
+tasks.register<UpdateChangelogTask>("updateChangelog") {
+    group = "streetcomplete"
+    sourceDir = "$rootDir/res/changelog"
+    targetFile = "$projectDir/src/main/res/raw/changelog.json"
+}
+
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
