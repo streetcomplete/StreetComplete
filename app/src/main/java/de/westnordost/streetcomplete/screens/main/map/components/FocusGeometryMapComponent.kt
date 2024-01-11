@@ -47,30 +47,30 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
             is ElementPolylinesGeometry -> {
                 val points = geometry.polylines.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
                 val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points)
-                MainMapFragment.geometrySource?.setGeoJson(Feature.fromGeometry(multilineString))
+                MainMapFragment.focusedGeometrySource?.setGeoJson(Feature.fromGeometry(multilineString))
             }
             is ElementPolygonsGeometry -> {
                 val points = geometry.polygons.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
-                val polygon = com.mapbox.geojson.Polygon.fromLngLats(points) // todo: breaks for mulitpolygons when zooming in (weird...)
+                val polygon = com.mapbox.geojson.Polygon.fromLngLats(points)
+                // todo: breaks for mulitpolygons at high zoom only
                 // todo: actually the outline is displayed in the fill layer
                 //  maybe this is what breaks multipolygon display
                 //  just set some Expression.geometryType() filter on the fill layer
                 val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points) // outline
-                MainMapFragment.geometrySource?.setGeoJson(
+                MainMapFragment.focusedGeometrySource?.setGeoJson(
                     FeatureCollection.fromFeatures(listOf(
                         Feature.fromGeometry(multilineString), Feature.fromGeometry(polygon))))
             }
             is ElementPointGeometry -> {
-                MainMapFragment.geometrySource?.setGeoJson(com.mapbox.geojson.Point.fromLngLat(geometry.center.longitude, geometry.center.latitude))
+                MainMapFragment.focusedGeometrySource?.setGeoJson(com.mapbox.geojson.Point.fromLngLat(geometry.center.longitude, geometry.center.latitude))
             }
         }
     }
 
     /** Hide all shown geometry */
     fun clearGeometry() {
-        MainMapFragment.geometryLineManager?.deleteAll()
-        MainMapFragment.geometryCircleManger?.deleteAll()
-        MainMapFragment.geometryFillManager?.deleteAll()
+        val fc: FeatureCollection? = null
+        MainMapFragment.focusedGeometrySource?.setGeoJson(fc)
     }
 
     @Synchronized fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {

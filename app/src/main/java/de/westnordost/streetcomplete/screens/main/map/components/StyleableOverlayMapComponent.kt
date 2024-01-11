@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.pointFromGeometry
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
@@ -55,7 +56,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     fun set(features: Collection<StyledElement>) {
         // todo: color.invisible should reproduce original style?
         //  then do after actual style is decided
-        val mapLibreFeatures = features.flatMap {  (element, geometry, style) ->
+        val mapLibreFeatures = features.flatMap { (element, geometry, style) ->
             val p = JsonObject()
             p.addProperty(ELEMENT_ID, element.id.toString()) // try avoiding the string?
             p.addProperty(ELEMENT_TYPE, element.type.name)
@@ -67,7 +68,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                         p.addProperty("icon", style.icon)
                     if (style.label != null)
                         p.addProperty("label", style.label) // offset and stuff is set for all text in layer
-                    listOf(Feature.fromGeometry(Point.fromLngLat(geometry.center.longitude, geometry.center.latitude), p))
+                    listOf(Feature.fromGeometry(pointFromGeometry(geometry), p))
                 }
                 is PolygonStyle -> {
                     if (style.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
@@ -122,7 +123,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     } else null
                     val label = if (style.label != null)
                         Feature.fromGeometry(
-                            Point.fromLngLat(geometry.center.longitude, geometry.center.latitude),
+                            pointFromGeometry(geometry),
                             JsonObject().apply { addProperty("label", style.label) }
                         )
                     else null

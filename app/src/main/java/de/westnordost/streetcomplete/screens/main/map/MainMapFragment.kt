@@ -6,9 +6,7 @@ import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
-import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
@@ -32,9 +30,6 @@ import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -54,7 +49,6 @@ import de.westnordost.streetcomplete.util.ktx.asBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -66,8 +60,6 @@ import org.koin.android.ext.android.inject
  *  geometry, overlays... */
 class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-//    private val questPinsSpriteSheet: TangramPinsSpriteSheet by inject()
-//    private val iconsSpriteSheet: TangramIconsSpriteSheet by inject()
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
@@ -184,6 +176,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   see MapTilesDownloader
         //  zoom very often is choppy, far not as smooth as tangram
         //   more quests make it a little worse, but most of it seems to be "natural"
+        //  overlay paths/roads are rather hard to select
+        //   probably the pickRadius
+        //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
 
         // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
@@ -191,9 +186,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  overlays look awfully broken after selecting an element
         //   like first and last nodes of a way are connected
         //   it does not go away until restart?
-        //  overlay paths/roads are rather hard to select
-        //  node overlay shows nothing (worked before removing tangram)
-        //  nearby symbols not shown
+        //  node overlay shows nothing
+        //   worked before removing tangram, what is wrong?
         //  nearby text not shown
         //  camera does not unlock when panning (keeps following position)
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons dont work
@@ -202,10 +196,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
         //    possibly sth initializing twice
         //   no tilt or rotate in follow-mode
-        //   quest pin looks awful, maybe layer drawable not suitable?
-        //   quest dots should look a little nicer, is image ok for performance?
+        //   quest pin looks awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
         //   accuracy circle blocks quest pins, but not dots
         //   accuracy circle disappears when center out of view
+        //   use the maplibre-internal position and accuracy stuff? but accuracy circle has really bad performance when zooming
         //   gps and user tracks not working
         //   define pins/overlay/geometry/... layers in some json instead of in code? for easier change of attributes
 
@@ -337,7 +331,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // set fixed properties, circles are all the same
             .withProperties(
                 PropertyFactory.circleColor("white"),
-                PropertyFactory.circleStrokeColor("black"),
+                PropertyFactory.circleStrokeColor("grey"),
                 PropertyFactory.circleRadius(5f),
                 PropertyFactory.circleStrokeWidth(1f)
             )
@@ -459,39 +453,57 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             )
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
-        // for highlighted nearby
-        // keep AnnotationManagers? or use layers? not enough icons to be relevant for performance
-        geometrySymbolManager = SymbolManager(mapView, mapboxMap, style)
-        geometryLineManager = LineManager(mapView, mapboxMap, style)
-        geometryFillManager = FillManager(mapView, mapboxMap, style)
-        geometryCircleManger = CircleManager(mapView, mapboxMap, style)
-
-        // for quest geometry
+        // for nearby element geometry
         geometrySource = GeoJsonSource("geometry-source")
         style.addSource(geometrySource!!)
 
         val geometryLineLayer = LineLayer("geo-lines", "geometry-source")
             .withProperties(PropertyFactory.lineWidth(10f))
-            .withProperties(PropertyFactory.lineColor("#D14000"))
+            .withProperties(PropertyFactory.lineColor("#D140D0"))
             .withProperties(PropertyFactory.lineOpacity(0.5f))
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND)) // wow, this looks really ugly with opacity
         style.addLayerBelow(geometryLineLayer, "pins-layer")
 
         val geometryFillLayer = FillLayer("geo-fill", "geometry-source")
-            .withProperties(PropertyFactory.fillColor("#D14000"))
+            .withProperties(PropertyFactory.fillColor("#D140D0"))
             .withProperties(PropertyFactory.fillOpacity(0.3f))
         style.addLayerBelow(geometryFillLayer, "pins-layer")
 
         val geometryCircleLayer = CircleLayer("geo-circle", "geometry-source")
-            .withProperties(PropertyFactory.circleColor("#D14000"))
+            .withProperties(PropertyFactory.circleColor("#D140D0"))
             .withProperties(PropertyFactory.circleOpacity(0.7f))
+            .withProperties(PropertyFactory.textField("{label}")) // todo: not showing, maybe need anchor, offset, ...
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(geometryCircleLayer, "pins-layer")
 
         val geometrySymbolLayer = SymbolLayer("geo-symbols", "geometry-source")
             .withFilter(Expression.has("icon"))
-            .withProperties(PropertyFactory.iconImage("icon"))
+            .withProperties(PropertyFactory.iconColor("#D140D0"))
+            .withProperties(PropertyFactory.iconImage("{icon}"))
+            .withProperties(PropertyFactory.textField("{label}")) // todo: this is never set, title has its own circle geometry thing
         style.addLayerBelow(geometrySymbolLayer, "pins-layer")
+
+        // for focused element geometry
+        focusedGeometrySource = GeoJsonSource("focus-geometry-source")
+        style.addSource(focusedGeometrySource!!)
+
+        val focusGeometryLineLayer = LineLayer("focus-geo-lines", "focus-geometry-source")
+            .withProperties(PropertyFactory.lineWidth(10f))
+            .withProperties(PropertyFactory.lineColor("#D14000"))
+            .withProperties(PropertyFactory.lineOpacity(0.5f))
+            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND)) // wow, this looks really ugly with opacity
+        style.addLayerBelow(focusGeometryLineLayer, "pins-layer")
+
+        val focusGeometryFillLayer = FillLayer("focus-geo-fill", "focus-geometry-source")
+            .withProperties(PropertyFactory.fillColor("#D14000"))
+            .withProperties(PropertyFactory.fillOpacity(0.3f))
+        style.addLayerBelow(focusGeometryFillLayer, "pins-layer")
+
+        val focusGeometryCircleLayer = CircleLayer("focus-geo-circle", "focus-geometry-source")
+            .withProperties(PropertyFactory.circleColor("#D14000"))
+            .withProperties(PropertyFactory.circleOpacity(0.7f))
+            .withFilter(Expression.not(Expression.has("icon")))
+        style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
@@ -506,7 +518,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
         mapView = null
-        pinSymbolManager = null
         geometryCircleManger = null
         style = null
     }
@@ -633,13 +644,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
-        geometrySymbolManager?.deleteAll()
-        geometryLineManager?.deleteAll()
-        geometryCircleManger?.deleteAll()
-        geometryFillManager?.deleteAll()
 //        val thisIsNoFeature: Feature? = null
 //        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
         geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
+        focusedGeometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
         pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
     }
@@ -701,7 +709,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo: this is bad, but very convenient for testing if we have access to everything from everywhere
         var mapView: MapView? = null
         var mapboxMap: MapboxMap? = null
-        var pinSymbolManager: SymbolManager? = null
         var overlaySource: GeoJsonSource? = null
 
         // keep AnnotationManagers for now, because they allow removing single annotations,
@@ -714,6 +721,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var style: Style? = null
         var pinsSource: GeoJsonSource? = null
         var geometrySource: GeoJsonSource? = null
+        var focusedGeometrySource: GeoJsonSource? = null
         var pinsLayer: SymbolLayer? = null
         var pinsDotLayer: CircleLayer? = null
 

@@ -21,7 +21,4 @@ val mapModule = module {
                 "https://tile.jawg.io/streets-v2/$zoom/$x/$y.pbf?access-token=$apiKey"
         }
     }
-
-//    single { TangramPinsSpriteSheet(get(), get(), get(), get()) }
-//    single { TangramIconsSpriteSheet(get(), get()) }
 }
