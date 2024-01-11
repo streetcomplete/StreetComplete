@@ -168,6 +168,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // how to best hide layers?
         //   layer.setFilter(Expression.literal(false))
         //   maybe could also remove layer from style, but didn't try yet
+        //    possible, but need to be careful to re-insert it at correct position
 
         // todo
         //  performance test when updating pins (maybe CustomGeometrySource could be faster than GeoJsonSource)
@@ -178,23 +179,24 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    maybe just need to set different caching parameters... how?
         //    or maybe this is fixed when using offline stuff
         //   remove it by adjusting the style?
-        //  hide pins of not-the-active quest (just set a filter)
         //  enable offline stuff
         //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
         //   see MapTilesDownloader
-        //  see CurrentLocationMapComponent
+        //  zoom very often is choppy, far not as smooth as tangram
+        //   more quests make it a little worse, but most of it seems to be "natural"
 
         // todo now after removing tangram
-        //  re-arrange things so layers can be added via mapController instead of doing everything here and with MainActivity
-        //  zoom-in for node quests is far too much
-        //  symbols in overlays not shown
-        //  overlays look awfully broken
-        //   like first and last nodes of a way are connected (wasn't like that initially, it think)
-        //  overlay roads are rather hard to select
+        //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
+        //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
+        //  overlays look awfully broken after selecting an element
+        //   like first and last nodes of a way are connected
+        //   it does not go away until restart?
+        //  overlay paths/roads are rather hard to select
         //  node overlay shows nothing (worked before removing tangram)
         //  nearby symbols not shown
         //  nearby text not shown
-        //  camera does not unlock when moving
+        //  camera does not unlock when panning (keeps following position)
+        //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons dont work
         //  later
         //   make the location pointer work (currently rotates like crazy in top left corner -> there is also a degree / radians issue)
         //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
@@ -205,6 +207,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   accuracy circle blocks quest pins, but not dots
         //   accuracy circle disappears when center out of view
         //   gps and user tracks not working
+        //   define pins/overlay/geometry/... layers in some json instead of in code? for easier change of attributes
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -341,6 +344,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // add layer below the pinsLayer
         // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
+        pinsDotLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
         super.onMapReady(mapView, mapboxMap, style) // arguemnts are a leftover from initial implementation, maybe change?
@@ -602,6 +606,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // set filter, so only pins of the highlighted quest are shown
             // currently just filtering by element id, and for OsmQuest, but at least it's clear how to do
             // and actually in MapLibre the properties can also be numbers, so no need to convert id to a string
+            // todo: really use filter here? or better use source? or different layer instead of filtering?
             pinsLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
             pinsDotLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
         }
@@ -635,8 +640,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        val thisIsNoFeature: Feature? = null
 //        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
         geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
-        pinsLayer?.setFilter(Expression.literal(true)) // how to set "no filter"?
-        pinsDotLayer?.setFilter(Expression.literal(true))
+        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
+        pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
     }
 
     fun clearSelectedPins() {

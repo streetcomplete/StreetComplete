@@ -52,12 +52,11 @@ class CameraManager(private val mapboxMap: MapboxMap, private val contentResolve
         }
     private var lastAnimatorEndTime: Long = 0
 
-    private val _mablibreCamera = com.mapbox.mapboxsdk.camera.CameraPosition.Builder().build() // todo: can't be changed
     val camera: CameraPosition get() = CameraPosition(mapboxMap.cameraPosition)
 
     val isAnimating: Boolean get() = lastAnimator != null
 
-    var maximumTilt: Float = PI.toFloat() / 6f // 60° // todo: use it
+    var maximumTilt: Float = PI.toFloat() / 6f // 60° // todo: use it, but how to actually tilt in maplibre?
 
     interface AnimationsListener {
         @UiThread fun onAnimationsStarted()
@@ -67,8 +66,8 @@ class CameraManager(private val mapboxMap: MapboxMap, private val contentResolve
     var listener: AnimationsListener? = null
 
     @AnyThread fun updateCamera(duration: Long = 0, update: CameraUpdate) {
-        synchronized(mapboxMap) { // todo: where to synchronize?
-            update.resolveDeltas(_mablibreCamera)
+        synchronized(mapboxMap) { // todo: where to synchronize? is it necessary a all?
+            update.resolveDeltas(camera)
             if (duration == 0L || isAnimationsOff) {
                 applyCameraUpdate(update) // todo: mapLibre camera should be set here, because applyCameraUpdate is also called at the end of animateCameraUpdate
             } else {
@@ -139,10 +138,10 @@ data class CameraPosition(
 
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 
-private fun CameraUpdate.resolveDeltas(pos: MaplibreCameraPosition) {
+private fun CameraUpdate.resolveDeltas(pos: CameraPosition) {
     zoomBy?.let { zoom = pos.zoom + (zoom ?: 0.0) + it }
     tiltBy?.let { tilt = pos.tilt + (tilt ?: 0.0) + it }
-    rotationBy?.let { rotation = pos.bearing + (rotation ?: 0.0) + it }
+    rotationBy?.let { rotation = pos.rotation + (rotation ?: 0.0) + it }
 }
 
 class DoubleTypeEvaluator : TypeEvaluator<Double> {

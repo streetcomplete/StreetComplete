@@ -40,10 +40,15 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** Shows/hides the map data */
     var isVisible: Boolean
-        // try controlling visibility via filter on one of the overlay layers (can't do it on source)
-        get() = MainMapFragment.overlayLineLayer?.filter == Expression.literal(true)
+        // add / remove source
+        get() = MainMapFragment.mapboxMap?.style?.sources?.any { it.id == "overlay-source" } == true
         set(value) {
-            MainActivity.activity?.runOnUiThread { MainMapFragment.overlayLineLayer?.setFilter(Expression.literal(value)) }
+            if (isVisible == value) return
+            if (value) {
+                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.addSource(MainMapFragment.overlaySource!!) }
+            } else {
+                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.removeSource(MainMapFragment.overlaySource!!) }
+            }
         }
 
     /** Show given map data with each the given style */
@@ -160,7 +165,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     /** Clear map data */
     fun clear() {
         MainActivity.activity?.runOnUiThread {
-            MainMapFragment.overlaySource!!.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
+            val fc: FeatureCollection? = null
+            MainMapFragment.overlaySource!!.setGeoJson(fc)
         }
     }
 

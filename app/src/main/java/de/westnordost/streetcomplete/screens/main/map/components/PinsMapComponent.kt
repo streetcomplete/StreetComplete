@@ -14,10 +14,15 @@ class PinsMapComponent(private val ctrl: KtMapController) {
 
     /** Shows/hides the pins */
     var isVisible: Boolean
-        // try controlling visibility via filter
-        get() = MainMapFragment.pinsLayer?.filter == Expression.literal(true)
+        // add / remove source
+        get() = MainMapFragment.mapboxMap?.style?.sources?.any { it.id == "pins-source" } == true
         set(value) {
-            MainActivity.activity?.runOnUiThread { MainMapFragment.pinsLayer?.setFilter(Expression.literal(value)) }
+            if (isVisible == value) return
+            if (value) {
+                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.addSource(MainMapFragment.pinsSource!!) }
+            } else {
+                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.removeSource(MainMapFragment.pinsSource!!) }
+            }
         }
 
     /** Show given pins. Previously shown pins are replaced with these.  */

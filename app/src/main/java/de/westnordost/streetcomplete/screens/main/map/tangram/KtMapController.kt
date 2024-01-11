@@ -2,18 +2,13 @@ package de.westnordost.streetcomplete.screens.main.map.tangram
 
 import android.animation.TimeAnimator
 import android.content.ContentResolver
-import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.Interpolator
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mapbox.android.gestures.MoveGestureDetector
-import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.maps.MapboxMap.OnMoveListener
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -30,13 +25,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.math.PI
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
