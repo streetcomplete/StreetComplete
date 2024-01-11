@@ -207,7 +207,7 @@ class AddDetectBarrierIntersectionTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `do not aks for road on city wall tagged as one object`() {
+    @Test fun `do not ask for road on city wall tagged as one object`() {
         // see https://github.com/streetcomplete/StreetComplete/issues/5438
         val mapData = TestMapDataWithGeometry(listOf(
             node(1, p(0.0, -1.0)),
