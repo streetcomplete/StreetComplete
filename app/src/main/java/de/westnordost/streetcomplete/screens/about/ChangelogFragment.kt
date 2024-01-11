@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
+import de.westnordost.streetcomplete.util.ktx.getJsonStringMap
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -91,7 +91,7 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
+    resources.getJsonStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
 }
 
 private fun addedLinks(description: String): String {
