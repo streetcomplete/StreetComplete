@@ -45,6 +45,14 @@ open class UpdateChangelogTask : DefaultTask() {
         val html = HtmlGenerator(markdown, parsedTree, markdownFlavour).generateHtml()
             .replace("<body>", "")
             .replace("</body>", "")
+            .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
+                val issue = matchResult.groupValues[1]
+                "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
+            }
+            .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
+                val contributor = matchResult.groupValues[1]
+                "<a href=\"https://github.com/$contributor\">$contributor</a>"
+            }
 
         return html
     }

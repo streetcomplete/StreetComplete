@@ -91,17 +91,5 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getJsonStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
-}
-
-private fun addedLinks(description: String): String {
-    return description
-        .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
-            val issue = matchResult.groupValues[1]
-            "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
-        }
-        .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
-            val contributor = matchResult.groupValues[1]
-            "<a href=\"https://github.com/$contributor\">$contributor</a>"
-        }
+    resources.getJsonStringMap(R.raw.changelog).map { Release(it.key, it.value) }
 }
