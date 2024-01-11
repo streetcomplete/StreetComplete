@@ -35,7 +35,7 @@
     <string name="pref_hide_notes_hint">Use comma to separate user names or IDs</string>
     <string name="pref_hide_notes_message">Enter user names or IDs to ignore</string>
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
-    <string name="pref_show_gpx_button_summary">Contrary to OSM notes, adding a GPX not will not hide any quest at the affected location</string>
+    <string name="pref_show_gpx_button_summary">Contrary to OSM notes, adding a GPX note will not hide any quest at the affected location</string>
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
