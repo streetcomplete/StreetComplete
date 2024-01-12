@@ -55,7 +55,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
 
         scope.launch {
             val fullChangelog = readChangelog(context.resources)
-            var sinceVersionIndex = fullChangelog.indexOf("<h2>x$sinceVersion</h2>")
+            var sinceVersionIndex = fullChangelog.indexOf("<h2>$sinceVersion</h2>")
             if (sinceVersionIndex == -1) {
                 // if version not found, just show the last one
                 sinceVersionIndex = fullChangelog.indexOf("<h2>", 4)
