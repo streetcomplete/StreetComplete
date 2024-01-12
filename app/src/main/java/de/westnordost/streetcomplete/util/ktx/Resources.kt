@@ -10,9 +10,6 @@ import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromStream
 
 inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
     Yaml.default.decodeFromStream(openRawResource(id))
@@ -20,12 +17,8 @@ inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
 /** shortcut for [getYamlObject] with included type information */
 fun Resources.getYamlStringMap(@RawRes id: Int): Map<String, String> = this.getYamlObject(id)
 
-@OptIn(ExperimentalSerializationApi::class)
-inline fun <reified T> Resources.getJsonObject(@RawRes id: Int): T =
-    Json.decodeFromStream(openRawResource(id))
-
-/** shortcut for [getJsonObject] with included type information */
-fun Resources.getJsonStringMap(@RawRes id: Int): Map<String, String> = this.getJsonObject(id)
+fun Resources.getRawTextFile(@RawRes id: Int) =
+    openRawResource(id).bufferedReader().use { it.readText() }
 
 fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
     getDrawable(id).asBitmapDrawable(this)
