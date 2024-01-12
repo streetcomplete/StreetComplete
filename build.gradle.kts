@@ -114,6 +114,7 @@ tasks.register("updateStreetCompleteData") {
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
         "app:updateMapStyle",
+        "app:updateChangelog",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",
         "app:updateAvailableLanguages",
