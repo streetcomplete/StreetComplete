@@ -29,7 +29,7 @@ Correct any mistakes found by the inspection directly in POEditor if possible (o
 
 ### Prepare Release
 
-1. Go through the git history since the last release and add a new release notes file: `res/changelog/vXY.Z.md`. Make sure to credit everyone (use "by ..." if something was contributed by a person and "thanks ..." if that person helped but did not do it (all) himself) and reference the related pull requests and issues.
+1. Go through the git history since the last release and update `CHANGELOG.md`. Make sure to credit everyone (use "by ..." if something was contributed by a person and "thanks ..." if that person helped but did not do it (all) himself) and reference the related pull requests and issues.
 2. In the `build.gradle`, increase the `versionCode` and the `versionName`.
 3. Run the gradle task `app:installRelease` to deploy the release on your smartphone.
 4. Test if all works as expected. At least look at the changelog and download quests.
