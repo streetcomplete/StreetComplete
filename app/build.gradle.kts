@@ -277,8 +277,8 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
-    sourceDir = "$rootDir/res/changelog"
-    targetFile = "$projectDir/src/main/res/raw/changelog.json"
+    sourceFile = "$rootDir/CHANGELOG.md"
+    targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
