@@ -149,7 +149,7 @@ v53.1: |
 v53.0: |
   <h3>Quest & Overlay Enhancements</h3>
   <ul>
-  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)<br>
+  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)</li>
   <li>Address overlay: You can now add addresses as entrances directly to building outlines (#4976, #4995)</li>
   <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
   <li>Crossing: Different wording and use <code>crossing=informal</code> for points at which there are no crossings but people can still cross (#4944)</li>
@@ -292,7 +292,6 @@ v50.0: |
   <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
   <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
       quest and overlay. It lets you correct the position of the POI.</p>
-  </ul>
   <h3>Enhanced Overlays</h3>
   <ul>
   <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
@@ -395,7 +394,7 @@ v48.0: |
   <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
-  <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  <li>The obtrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
   <li>Resurvey quests no longer vanish after splitting the way - only works if auto-sync is off (#3567, #4523), by @Helium314</li>
   <li>Fix which tags the parking overlay removes when changing the answer (#4501, #4552), thanks @tapetis</li>
   <li>Other small enhancements and fixes (#4453, #4496, #4506, #4494, #4499, #4544, #4540...), thanks @Helium314, @tapetis, @mnalis</li>
@@ -529,7 +528,7 @@ v45.0: |
   <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
   <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
   <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
-  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
+  <li>In dark mode, remove obtrusive glow from railways and motorways, by @Helium314</li>
   <li>Ask about bus stop reference numbers in Ireland (#4161)</li>
   <li>Stop asking about toilet fees in US and Canada (#4174), by @matkoniecz</li>
   <li>Other small enhancements and performance improvements (#3919, #4120, #4138, #4181, #4184, #4180, #4183, #4164...), thanks @Helium314</li>
@@ -635,7 +634,7 @@ v42.0: |
   <ul>
   <li>Fix crash issues on Android 5 (#3889, #3914), thanks @FloEdelmann</li>
   <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
-  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
+  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cyrillic (#3897)</li>
   <li>Fix rare crashes (#3888), thanks @tapetis</li>
   <li>Other minor enhancements and fixes (#3852, #3893, #3895, #3867...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
@@ -788,7 +787,7 @@ v38.0: |
   <li>Fix some crash issues (#3517, #3522)</li>
   </ul>
 
-v37.2:
+v37.2: |
   <p>Fix a common crash issue when opening certain quests (#3504, #3506, #3510, #3511)</p>
 
 v37.1: |
@@ -1231,7 +1230,7 @@ v30.0: |
   <li>More opening hours in non-standard syntax are understood and displayed on resurvey, thanks @simonpoole</li>
   <li>Check existence: Display brand name if object has no name (#2512)</li>
   <li>Sidewalks: Ask for residential roads even if they are not lit (#2519, #2531), by @riQQ</li>
-  <li>Reycling materials: Do not ask for private containers (#2515)</li>
+  <li>Recycling materials: Do not ask for private containers (#2515)</li>
   <li>Road name: Do not ask if name:left or name:right is defined already (#2526)</li>
   <li>A few clarifications in wording (#2467, #2431, #2539)</li>
   </ul>
@@ -1365,6 +1364,7 @@ v27.1: |
       marked lanes (#2328)</li>
   <li>Show tactile paving quests in Italy (#2320)</li>
   <li>Update translations</li>
+  </ul>
 
 v27.0: |
   <h3>New Quests</h3>
@@ -1514,7 +1514,7 @@ v23.0: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Motorcycle and bicycle parking: Do not accept an input of "0" (#516)</li>
-  <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
+  <li>Also ask for the opening hours of defibrillators (#1756, #2066), by @matkoniecz</li>
   <li>Better picture of paving stones in surface quest (#2088), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
@@ -1637,7 +1637,7 @@ v20.1: |
   <ul>
     <li>Workaround drawing problem with the location pin in Android 6 (#1879), thanks @matkoniecz</li>
     <li>Fix crashy country bubble in statistics screen (#1886)</li>
-    <li>Road name and bus name: Trim whitespaces at start and end of user input (#1861)</li>
+    <li>Road name and bus name: Trim whitespace at start and end of user input (#1861)</li>
     <li>Crossing type: Don't ask for crossings that are not for pedestrians (#1868), by @matkoniecz</li>
     <li>Tactile paving on crossing: Don't ask for crossings that are not for pedestrians (#1875)</li>
     <li>House numbers: Don't ask the housenumber of buildings which are in a relation that already has a housenumber (#1860)</li>
@@ -2626,7 +2626,7 @@ v2.0: |
   <h3>New Quests:</h3>
   <ul>
   <li>toilet availability</li>
-  <li>powerpoles material type</li>
+  <li>power poles material type</li>
   <li>orchard produce</li>
   <li>parking type</li>
   <li>crossing type</li>
@@ -2648,7 +2648,7 @@ v1.4: |
   <li>StreetComplete version now mentioned in created note</li>
   <li>do not show quests for private roads</li>
   <li>fixed 4 crash bugs for edge cases</li>
-  <li>updated translatations</li>
+  <li>updated translations</li>
   </ul>
 
 v1.3: |
@@ -2762,10 +2762,10 @@ v0.5: |
   </ul>
 
 v0.4: |
-  <p>fixed a crashbug, some small usability stuff</p>
+  <p>fixed a crash bug, some small usability stuff</p>
 
 v0.3: |
   <p>Last beta probably. Released on Google Play (Beta) also.</p>
 
 v0.2: |
-  <p>internal forum betatest version no.2</p>
+  <p>internal forum beta test version no.2</p>
