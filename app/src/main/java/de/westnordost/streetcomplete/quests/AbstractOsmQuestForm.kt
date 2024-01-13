@@ -245,7 +245,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
         } else {
-            "Unable to answer \"$questTitle\" for $hintLabel"
+            "Unable to answer \"$questTitle – $hintLabel\""
         }
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }

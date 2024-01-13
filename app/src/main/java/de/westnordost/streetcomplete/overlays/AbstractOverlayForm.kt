@@ -404,9 +404,9 @@ abstract class AbstractOverlayForm :
         val overlayTitle = englishResources.getString(overlay.title)
         val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
-            "In context of \"$overlayTitle\" overlay"
+            "In context of overlay \"$overlayTitle\""
         } else {
-            "In context of \"$overlayTitle\" overlay for $hintLabel"
+            "In context of overlay \"$overlayTitle – $hintLabel\""
         }
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
