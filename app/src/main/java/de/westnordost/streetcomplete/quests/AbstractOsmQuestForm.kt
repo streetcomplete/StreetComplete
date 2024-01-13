@@ -241,7 +241,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun composeNote() {
         val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
-        val leaveNoteContext = "Unable to answer \"$questTitle\""
+        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "Unable to answer \"$questTitle\""
+        } else {
+            "Unable to answer \"$questTitle\" – $hintLabel"
+        }
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
 

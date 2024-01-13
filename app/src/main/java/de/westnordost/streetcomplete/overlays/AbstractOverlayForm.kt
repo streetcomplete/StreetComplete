@@ -402,7 +402,12 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         val overlayTitle = englishResources.getString(overlay.title)
-        val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
+        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "In context of overlay \"$overlayTitle\""
+        } else {
+            "In context of overlay \"$overlayTitle\" – $hintLabel"
+        }
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
 
