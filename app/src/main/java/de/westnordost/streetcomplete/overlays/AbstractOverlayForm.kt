@@ -518,13 +518,23 @@ abstract class AbstractOverlayForm :
         val element = element ?: return null
         if (!element.isArea()) return null
         return if (AbstractOsmQuestForm.demolishableBuildingsFilter.matches(element))
-            AnswerItem(R.string.quest_building_demolished) {
-                viewLifecycleScope.launch {
-                    val builder = StringMapChangesBuilder(element.tags)
-                    builder["demolished:building"] = builder["building"] ?: "yes"
-                    builder.remove("building")
-                    solve(UpdateElementTagsAction(element, builder.create()), geometry, true)
-                }
+            AnswerItem(R.string.quest_generic_answer_does_not_exist) {
+                AlertDialog.Builder(requireContext())
+                    .setItems(arrayOf(requireContext().getString(R.string.quest_building_demolished), requireContext().getString(R.string.leave_note))) { di, i ->
+                        di.dismiss()
+                        if (i == 0) {
+                            viewLifecycleScope.launch {
+                                val builder = StringMapChangesBuilder(element.tags)
+                                builder["demolished:building"] = builder["building"] ?: "yes"
+                                builder.remove("building")
+                                solve(UpdateElementTagsAction(element, builder.create()), geometry, true)
+                            }
+                        } else {
+                            composeNote(element)
+                        }
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
             }
         else null
     }
