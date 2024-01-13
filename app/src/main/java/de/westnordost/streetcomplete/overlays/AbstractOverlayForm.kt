@@ -406,7 +406,7 @@ abstract class AbstractOverlayForm :
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "In context of overlay \"$overlayTitle\""
         } else {
-            "In context of overlay \"$overlayTitle – $hintLabel\""
+            "In context of overlay \"$overlayTitle\" – $hintLabel"
         }
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
