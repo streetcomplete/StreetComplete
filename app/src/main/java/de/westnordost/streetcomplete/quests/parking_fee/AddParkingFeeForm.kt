@@ -24,11 +24,14 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
     private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
 
     override val buttonPanelAnswers get() =
-        if (mode == FEE_YES_NO) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(FeeAndMaxStay(HasNoFee)) },
-            AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(FeeAndMaxStay(HasFee)) }
-        )
-        else emptyList()
+        if (mode == FEE_YES_NO) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(FeeAndMaxStay(HasNoFee)) },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(FeeAndMaxStay(HasFee)) }
+            )
+        } else {
+            emptyList()
+        }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_fee_answer_hours) { mode = FEE_AT_HOURS },

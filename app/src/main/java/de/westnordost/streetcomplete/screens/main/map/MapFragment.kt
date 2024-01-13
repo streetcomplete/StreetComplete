@@ -325,7 +325,9 @@ open class MapFragment :
                 Prefs.MAP_ROTATION,
                 Prefs.MAP_TILT,
                 Prefs.MAP_ZOOM,
-        ))) return null
+        ))) {
+            return null
+        }
 
         return CameraPosition(
             LatLon(
@@ -374,7 +376,6 @@ open class MapFragment :
         interpolator: Interpolator = defaultCameraInterpolator,
         builder: CameraUpdate.() -> Unit
     ) {
-
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
 

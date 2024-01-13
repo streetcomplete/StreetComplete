@@ -222,8 +222,11 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
 
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
-            if (isReplaceShopEnabled) replaceShop() // allow both being enabled, but prefer replace over delete
-            else deletePoiNode()
+            if (isReplaceShopEnabled) {
+                replaceShop() // allow both being enabled, but prefer replace over delete
+            } else {
+                deletePoiNode()
+            }
         }
     }
 
@@ -314,7 +317,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun composeNote() {
         val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
-        val leaveNoteContext = "Unable to answer \"$questTitle\""
+        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "Unable to answer \"$questTitle\""
+        } else {
+            "Unable to answer \"$questTitle\" – $hintLabel"
+        }
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
 

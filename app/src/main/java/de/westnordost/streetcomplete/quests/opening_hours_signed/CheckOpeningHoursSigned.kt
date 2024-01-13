@@ -63,7 +63,6 @@ class CheckOpeningHoursSigned(
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-
         if (answer) {
             tags.remove("opening_hours:signed")
             /* it is now signed: we set the check date for the opening hours to the previous edit

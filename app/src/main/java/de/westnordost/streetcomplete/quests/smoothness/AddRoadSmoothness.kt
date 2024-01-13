@@ -34,8 +34,11 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["area"] == "yes") R.string.quest_smoothness_square_title
-        else                       R.string.quest_smoothness_road_title
+        if (tags["area"] == "yes") {
+            R.string.quest_smoothness_square_title
+        } else {
+            R.string.quest_smoothness_road_title
+        }
 
     override fun createForm() = AddSmoothnessForm()
 

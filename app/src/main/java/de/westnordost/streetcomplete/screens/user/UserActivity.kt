@@ -85,7 +85,9 @@ class UserActivity :
         return if (item.itemId == android.R.id.home) {
             finish()
             return true
-        } else super.onOptionsItemSelected(item)
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroy() {

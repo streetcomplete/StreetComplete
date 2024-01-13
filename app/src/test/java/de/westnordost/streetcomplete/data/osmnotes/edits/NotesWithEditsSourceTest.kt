@@ -238,7 +238,6 @@ class NotesWithEditsSourceTest {
 
     @Test
     fun `getAll returns updated notes`() {
-
         on(userDataSource.userId).thenReturn(-1)
         on(noteController.getAll(any<BoundingBox>())).thenReturn(initialNotes1)
         on(noteEditsController.getAllUnsynced(any())).thenReturn(edits1)

@@ -138,8 +138,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             binding.unlockedLinksList.adapter = null
         } else {
             binding.unlockedLinkTitleText.setText(
-                if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
-                else R.string.achievements_unlocked_links
+                if (unlockedLinks.size == 1) {
+                    R.string.achievements_unlocked_link
+                } else {
+                    R.string.achievements_unlocked_links
+                }
             )
             binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, ::openUri)
         }
@@ -266,10 +269,10 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             it.scaleY = 0.5f
             it.translationY = 0f
             /* For the "show new achievement" mode, only the icon is shown first and only after a
-            *  delay, the dialog with the description etc.
-            *  This icon is in the center at first and should animate up while the dialog becomes
-            *  visible. This movement is solved via a (default) layout transition here for which the
-            *  APPEARING transition type is disabled because we animate the alpha ourselves. */
+             * delay, the dialog with the description etc.
+             * This icon is in the center at first and should animate up while the dialog becomes
+             * visible. This movement is solved via a (default) layout transition here for which the
+             * APPEARING transition type is disabled because we animate the alpha ourselves. */
             it.isGone = startDelay > 0
             it.animate()
                 .setStartDelay(startDelay)

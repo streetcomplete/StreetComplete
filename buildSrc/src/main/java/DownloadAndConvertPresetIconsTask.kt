@@ -52,7 +52,6 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             var message: String = ""
             var iconWasFound = false
             for (url in urls) {
-
                 try {
                     URL(url).openStream().use { input ->
                         val factory = DocumentBuilderFactory.newInstance()

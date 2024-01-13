@@ -18,7 +18,7 @@ class MessagesSource(
     private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
-    *  database table*/
+     * database table*/
 
     interface UpdateListener {
         fun onNumberOfMessagesUpdated(numberOfMessages: Int)
@@ -77,7 +77,6 @@ class MessagesSource(
     }
 
     fun popNextMessage(): Message? {
-
         val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)

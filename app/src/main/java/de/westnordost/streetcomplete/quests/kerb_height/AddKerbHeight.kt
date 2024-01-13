@@ -35,8 +35,11 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
         mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
-        else null
+        if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) {
+            false
+        } else {
+            null
+        }
 
     override fun createForm() = AddKerbHeightForm()
 

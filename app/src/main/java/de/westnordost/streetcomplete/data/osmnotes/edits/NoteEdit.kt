@@ -43,5 +43,7 @@ data class NoteEdit(
 }
 
 enum class NoteEditAction {
-    CREATE, COMMENT, CLOSE
+    CREATE,
+    COMMENT,
+    CLOSE
 }

@@ -34,7 +34,6 @@ fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, Stri
  *  is null because it is possible that the undefined side has a track in the contra-flow direction
  *  (e.g. either a normal track on the left side or a dual-track on the right side) */
 fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
-
     val onewayDir = when  {
         isForwardOneway(tags) -> FORWARD
         isReversedOneway(tags) -> BACKWARD
@@ -69,7 +68,9 @@ fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
 
 @Serializable
 enum class Direction {
-    FORWARD, BACKWARD, BOTH;
+    FORWARD,
+    BACKWARD,
+    BOTH;
 
     fun reverse(): Direction = when (this) {
         FORWARD -> BACKWARD

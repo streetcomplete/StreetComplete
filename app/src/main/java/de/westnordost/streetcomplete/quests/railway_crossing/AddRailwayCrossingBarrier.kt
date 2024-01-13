@@ -57,10 +57,10 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
             tags.updateWithCheckDate("crossing:barrier", answer.osmValue)
         }
         /* The mere existence of the crossing:chicane tag seems to imply that there could be a
-        *  barrier additionally to the chicane.
-        *  However, we still tag crossing:barrier=no here because the illustration as shown
-        *  in the app corresponds to the below tagging - it shows just a chicane and no further
-        *  barriers */
+         * barrier additionally to the chicane.
+         * However, we still tag crossing:barrier=no here because the illustration as shown
+         * in the app corresponds to the below tagging - it shows just a chicane and no further
+         * barriers */
         if (answer == RailwayCrossingBarrier.CHICANE) {
             tags.updateWithCheckDate("crossing:barrier", "no")
             tags["crossing:chicane"] = "yes"

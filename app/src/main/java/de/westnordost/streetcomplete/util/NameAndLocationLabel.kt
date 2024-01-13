@@ -9,6 +9,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import java.util.Locale
 
@@ -112,12 +113,27 @@ fun getNameLabel(tags: Map<String, String>): String? {
     val ref = tags["ref"]
     val operator = tags["operator"]
 
+    if (tags["highway"] in ALL_ROADS) {
+        val nameAndLocalRef = if (name != null && localRef != null) "$name [$localRef]" else null
+        val nameAndRef = if (name != null && ref != null) "$name [$ref]" else null
+
+        return nameAndLocalRef
+            ?: nameAndRef
+            ?: name
+            ?: localRef
+            ?: ref
+    }
+
+    val nameAndLocalRef = if (name != null && localRef != null) "$name ($localRef)" else null
+    val operatorAndLocalRef = if (localRef != null && operator != null) "$operator ($localRef)" else null
+    val operatorAndRef = if (ref != null && operator != null) "$operator [$ref]" else null
+
     // Favour local ref over ref as it's likely to be more local/visible, e.g. bus stop point versus text code
-    return if (name != null && localRef != null) "$name ($localRef)" else null
+    return nameAndLocalRef
         ?: name
         ?: brand
-        ?: if (localRef != null && operator != null) "$operator ($localRef)" else null
-        ?: if (ref != null && operator != null) "$operator [$ref]" else null
+        ?: operatorAndLocalRef
+        ?: operatorAndRef
         ?: operator
         ?: localRef
         ?: ref

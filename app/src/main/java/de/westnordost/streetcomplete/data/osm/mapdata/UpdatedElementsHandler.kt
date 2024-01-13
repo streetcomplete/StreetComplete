@@ -56,8 +56,11 @@ class UpdatedElementsHandler(val ignoreRelationTypes: Set<String?> = emptySet())
         val newNodeIds = ArrayList<Long>(way.nodeIds.size)
         for (nodeId in way.nodeIds) {
             val diff = nodeDiffs[nodeId]
-            if (diff == null) newNodeIds.add(nodeId)
-            else if (diff.serverId != null) newNodeIds.add(diff.serverId)
+            if (diff == null) {
+                newNodeIds.add(nodeId)
+            } else if (diff.serverId != null) {
+                newNodeIds.add(diff.serverId)
+            }
         }
         return Way(newId, newNodeIds, HashMap(way.tags), newVersion, way.timestampEdited)
     }
@@ -66,8 +69,11 @@ class UpdatedElementsHandler(val ignoreRelationTypes: Set<String?> = emptySet())
         val newRelationMembers = ArrayList<RelationMember>(relation.members.size)
         for (member in relation.members) {
             val diff = getDiff(member.type, member.ref)
-            if (diff == null) newRelationMembers.add(RelationMember(member.type, member.ref, member.role))
-            else if (diff.serverId != null) newRelationMembers.add(RelationMember(member.type, diff.serverId, member.role))
+            if (diff == null) {
+                newRelationMembers.add(RelationMember(member.type, member.ref, member.role))
+            } else if (diff.serverId != null) {
+                newRelationMembers.add(RelationMember(member.type, diff.serverId, member.role))
+            }
         }
         return Relation(newId, newRelationMembers, HashMap(relation.tags), newVersion, relation.timestampEdited)
     }

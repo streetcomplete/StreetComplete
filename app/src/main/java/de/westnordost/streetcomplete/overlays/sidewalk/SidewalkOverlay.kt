@@ -53,7 +53,11 @@ class SidewalkOverlay : Overlay {
         return if (
             element.tags["highway"] in ALL_ROADS ||
             createSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
-        ) SidewalkOverlayForm() else null
+        ) {
+            SidewalkOverlayForm()
+        } else {
+            null
+        }
     }
 }
 

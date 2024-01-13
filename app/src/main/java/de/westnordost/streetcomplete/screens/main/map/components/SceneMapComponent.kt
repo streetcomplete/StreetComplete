@@ -61,7 +61,9 @@ class SceneMapComponent(
         if (loadedSceneFilePath == sceneFilePath
             && loadedSceneUpdates == strSceneUpdates
             && !aerialViewChanged
-        ) return
+        ) {
+            return
+        }
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }

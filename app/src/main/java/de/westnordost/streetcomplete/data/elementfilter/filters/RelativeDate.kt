@@ -18,8 +18,11 @@ class RelativeDate(val deltaDays: Float) : DateFilter {
         val now = LocalDateTime.now()
         val plusHours = (deltaDays * MULTIPLIER * 24).toLong()
         val relativeDateTime = (
-            if (plusHours > 0) now.plusInSystemTimeZone(plusHours, DateTimeUnit.HOUR)
-            else now.minusInSystemTimeZone(plusHours.absoluteValue, DateTimeUnit.HOUR)
+            if (plusHours > 0) {
+                now.plusInSystemTimeZone(plusHours, DateTimeUnit.HOUR)
+            } else {
+                now.minusInSystemTimeZone(plusHours.absoluteValue, DateTimeUnit.HOUR)
+            }
         )
         return relativeDateTime.date
     }

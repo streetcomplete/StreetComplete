@@ -35,8 +35,11 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["shop"] == "bicycle") R.string.quest_air_pump_bicycle_shop_title
-        else R.string.quest_air_pump_bicycle_repair_station_title
+        if (tags["shop"] == "bicycle") {
+            R.string.quest_air_pump_bicycle_shop_title
+        } else {
+            R.string.quest_air_pump_bicycle_repair_station_title
+        }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""

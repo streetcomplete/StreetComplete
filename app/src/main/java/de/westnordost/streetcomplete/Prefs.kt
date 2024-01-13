@@ -134,7 +134,9 @@ object Prefs {
     const val TEMP_LOGGER = "temp_logger"
 
     enum class Autosync {
-        ON, WIFI, OFF
+        ON,
+        WIFI,
+        OFF
     }
 
     enum class Theme(val appCompatNightMode: Int) {
@@ -146,7 +148,10 @@ object Prefs {
     }
 
     enum class ResurveyIntervals {
-        EVEN_LESS_OFTEN, LESS_OFTEN, DEFAULT, MORE_OFTEN
+        EVEN_LESS_OFTEN,
+        LESS_OFTEN,
+        DEFAULT,
+        MORE_OFTEN,
     }
 
     enum class DayNightBehavior {

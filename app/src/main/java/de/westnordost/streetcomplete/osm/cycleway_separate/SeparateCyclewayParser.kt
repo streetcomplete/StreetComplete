@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 
 /** Returns the situation for a separately mapped cycleway */
 fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
-
     /* bridleways (with cycleways) are not supported, because the complexity explodes when a path
        can not only have have states ranging between two tags with values "no, yes, designated,
        segregated from each other, with sidewalk" but three, with any mixture between these

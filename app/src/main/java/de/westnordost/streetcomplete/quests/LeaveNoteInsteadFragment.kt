@@ -103,7 +103,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean) {
         val fullText = mutableListOf<String>()
         leaveNoteContext?.let { fullText += it }
-        fullText += "for https://osm.org/${elementType.name.lowercase()}/$elementId"
+        fullText += "– https://osm.org/${elementType.name.lowercase()}/$elementId"
         fullText += if (isGpxNote) "\n$text" else "via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
         viewLifecycleScope.launch {

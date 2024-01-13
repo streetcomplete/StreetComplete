@@ -96,7 +96,9 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
             if (buildingGeometry != null) {
                 val nearbyAddresses = addressPositions.getAll(buildingGeometry.getBounds())
                 nearbyAddresses.any { it.isInMultipolygon(buildingGeometry.polygons) }
-            } else true
+            } else {
+                true
+            }
         }
 
         if (buildings.isEmpty()) return listOf()

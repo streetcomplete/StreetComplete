@@ -44,8 +44,11 @@ class OsmNoteQuestController(
             }
             for (note in updated) {
                 val q = createQuestForNote(note, hiddenNoteIds)
-                if (q != null) quests.add(q)
-                else deletedQuestIds.add(note.id)
+                if (q != null) {
+                    quests.add(q)
+                } else {
+                    deletedQuestIds.add(note.id)
+                }
             }
             onUpdated(quests, deletedQuestIds)
         }
@@ -93,7 +96,9 @@ class OsmNoteQuestController(
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds, notesPreferences)) {
             OsmNoteQuest(note.id, note.position)
-        } else null
+        } else {
+            null
+        }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -216,7 +221,9 @@ private fun Note.shouldShowAsQuest(
     if (showOnlyNotesPhrasedAsQuestions
         && comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
        replies yet */
@@ -229,7 +236,9 @@ private fun Note.shouldShowAsQuest(
     if (showOnlyNotesPhrasedAsQuestions
         && !probablyContainsQuestion()
         && !containsSurveyRequiredMarker()
-    ) return false
+    ) {
+        return false
+    }
 
     return true
 }

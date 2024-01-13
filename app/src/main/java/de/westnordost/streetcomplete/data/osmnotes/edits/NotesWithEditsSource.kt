@@ -48,15 +48,18 @@ class NotesWithEditsSource(
     private val noteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) {
             /* can't just get the associated note from DB and apply this edit to it because this
-            *  edit might just be the last in a long chain of edits, i.e. if several comments
-            *  are added to a note, or if a note is created through an edit (and then commented) */
+             * edit might just be the last in a long chain of edits, i.e. if several comments
+             * are added to a note, or if a note is created through an edit (and then commented) */
 
             // note has changed, so we need to fetch it from db and rebuild it
             noteCache.update(deleted = listOf(edit.noteId))
             val note = get(edit.noteId) ?: return
 
-            if (edit.action == CREATE) callOnUpdated(added = listOf(note))
-            else callOnUpdated(updated = listOf(note))
+            if (edit.action == CREATE) {
+                callOnUpdated(added = listOf(note))
+            } else {
+                callOnUpdated(updated = listOf(note))
+            }
         }
 
         override fun onSyncedEdit(edit: NoteEdit) {

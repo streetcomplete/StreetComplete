@@ -18,7 +18,9 @@ data class Note(
     val isHidden get() = status == Status.HIDDEN
 
     enum class Status {
-        OPEN, CLOSED, HIDDEN
+        OPEN,
+        CLOSED,
+        HIDDEN
     }
 }
 
@@ -32,6 +34,10 @@ data class NoteComment(
     val isAnonymous get() = user == null
 
     enum class Action {
-        OPENED, COMMENTED, CLOSED, REOPENED, HIDDEN
+        OPENED,
+        COMMENTED,
+        CLOSED,
+        REOPENED,
+        HIDDEN
     }
 }

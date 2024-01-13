@@ -22,7 +22,9 @@ class RecentLocationStore {
             ) {
                 previousLocation = it
                 true
-            } else false
+            } else {
+                false
+            }
         }
     }
 

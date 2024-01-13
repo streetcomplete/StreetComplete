@@ -314,7 +314,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             } else {
                 AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
             }
-        } else null
+        } else {
+            null
+        }
 
     /* ------------------------------ Show house name / place name ------------------------------ */
 

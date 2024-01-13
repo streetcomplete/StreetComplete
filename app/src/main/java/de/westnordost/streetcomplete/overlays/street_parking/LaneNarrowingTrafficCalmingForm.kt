@@ -59,7 +59,9 @@ class LaneNarrowingTrafficCalmingForm :
             AnswerItem(R.string.lane_narrowing_traffic_calming_none) {
                 confirmRemoveLaneNarrowingTrafficCalming()
             }
-        } else null
+        } else {
+            null
+        }
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

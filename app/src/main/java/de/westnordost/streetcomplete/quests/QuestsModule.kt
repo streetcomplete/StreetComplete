@@ -577,7 +577,7 @@ fun getQuestTypeList(
     148 to AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
 
     /* should best be after road surface because it excludes unpaved roads, also, need to search
-    *  for the sign which is one reason why it is disabled by default */
+     * for the sign which is one reason why it is disabled by default */
     149 to AddMaxSpeed(),
 
     // buildings

@@ -213,7 +213,6 @@ class SplitWayFragment :
 
     @UiThread
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-
         val splitWayCandidates = createSplits(position, clickAreaSizeInMeters)
         if (splitWayCandidates.isEmpty()) return true
 
