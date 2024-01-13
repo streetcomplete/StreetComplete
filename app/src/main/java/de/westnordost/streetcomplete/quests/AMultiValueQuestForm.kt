@@ -62,17 +62,19 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
         )
         binding.valueInput.onItemClickListener = AdapterView.OnItemClickListener { _, t, _, _ ->
             val value = (t as? TextView)?.text?.toString() ?: return@OnItemClickListener
-            if (!values.add(value)) return@OnItemClickListener // we don't want duplicates
-            onAddedValue(value)
+            addValue(value)
         }
 
-        binding.valueInput.doAfterTextChanged { checkIsFormComplete() }
+        binding.valueInput.doAfterTextChanged {
+            if (it.toString().endsWith("\n"))
+                addValue(it.toString())
+            checkIsFormComplete()
+        }
         binding.valueInput.doOnLayout { binding.valueInput.dropDownWidth = binding.valueInput.width - requireContext().dpToPx(60).toInt() }
 
         binding.addValueButton.setOnClickListener {
             if (!isFormComplete() || binding.valueInput.text.isBlank()) return@setOnClickListener
-            values.add(value)
-            onAddedValue(value)
+            addValue(value)
         }
         showSuggestions()
     }
@@ -99,6 +101,13 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
             serialize = { it },
             deserialize = { it },
         )
+    }
+
+    private fun addValue(value: String) {
+        val modifiedValue = value.trim()
+        if (modifiedValue.isEmpty()) return
+        if (!values.add(modifiedValue)) return // we don't want duplicates
+        onAddedValue(modifiedValue)
     }
 
     private fun onAddedValue(value: String) {
