@@ -4,4 +4,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TrafficFlowSegment(val wayId: Long, val fromPosition: LatLon, val toPosition: LatLon)
+data class TrafficFlowSegment(
+    val wayId: Long,
+    val fromPosition: LatLon,
+    val toPosition: LatLon,
+)

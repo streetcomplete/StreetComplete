@@ -14,7 +14,10 @@ import java.net.URLConnection
 
 
 @Serializable
-private data class PhotoUploadResponse(@SerialName("future_url") val futureUrl: String)
+private data class PhotoUploadResponse(
+    @SerialName("future_url")
+    val futureUrl: String
+)
 
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
