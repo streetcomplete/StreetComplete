@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.databinding.RowCreditsTranslatorsBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
-import de.westnordost.streetcomplete.util.ktx.getYamlObject
+import de.westnordost.streetcomplete.util.ktx.getJsonObject
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.setHtml
@@ -67,26 +67,26 @@ class CreditsFragment : TwoPaneDetailFragment(R.layout.fragment_credits), HasTit
     }
 
     private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<Contributor>>(R.raw.credits_main)
+        resources.getJsonObject<List<Contributor>>(R.raw.credits_main)
     }
 
     private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_projects)
+        resources.getJsonObject<List<String>>(R.raw.credits_projects)
     }
 
     private suspend fun readCodeContributors(skipUsers: List<String?>) = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<Contributor>>(R.raw.credits_contributors)
+        resources.getJsonObject<List<Contributor>>(R.raw.credits_contributors)
             .filter { it.githubUsername !in skipUsers && it.score >= 50 }
             .sortedByDescending { it.score }
             .map { it.toTextWithLink() } + getString(R.string.credits_and_more)
     }
 
     private suspend fun readArtContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_art)
+        resources.getJsonObject<List<String>>(R.raw.credits_art)
     }
 
     private suspend fun readTranslators() = withContext(Dispatchers.IO) {
-        val map = resources.getYamlObject<TranslationCreditMap>(R.raw.credits_translators)
+        val map = resources.getJsonObject<TranslationCreditMap>(R.raw.credits_translators)
 
         // skip those translators who contributed less than 2% of the translation
         for (contributors in map.values) {

@@ -217,7 +217,7 @@ tasks.register("updateAvailableLanguages") {
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    targetFile = "$projectDir/src/main/res/raw/credits_translators.json"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
     phpsessid = properties["POEditorPHPSESSID"] as String
