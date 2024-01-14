@@ -1,4 +1,3 @@
-import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -14,7 +13,6 @@ open class UpdateChangelogTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
 
     private val markdownFlavour = CommonMarkFlavourDescriptor()
-    private val json = Json { prettyPrint = true }
 
     @TaskAction fun run() {
         val sourceFile = File(sourceFile)
