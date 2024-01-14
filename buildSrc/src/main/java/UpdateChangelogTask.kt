@@ -19,7 +19,9 @@ open class UpdateChangelogTask : DefaultTask() {
         val targetFile = File(targetFile)
         require(sourceFile.exists()) { "File ${sourceFile.absolutePath} does not exist." }
 
-        targetFile.writeText(convertToHtml(sourceFile.readText()))
+        val scriptName = UpdateChangelogTask::class.simpleName
+        val comment = "<!-- Do not edit! This file was generated automatically from ${sourceFile.name} via $scriptName -->\n"
+        targetFile.writeText(comment + convertToHtml(sourceFile.readText()))
     }
 
     private fun convertToHtml(markdown: String): String {
