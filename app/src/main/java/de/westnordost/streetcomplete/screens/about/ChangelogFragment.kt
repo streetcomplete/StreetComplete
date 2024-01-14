@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.getRawTextFile
+import de.westnordost.streetcomplete.util.ktx.indicesOf
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.CoroutineScope
@@ -60,7 +61,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
             var sinceVersionIndex = fullChangelog.indexOf("<h2>$sinceVersion</h2>")
             if (sinceVersionIndex == -1) {
                 // if version not found, just show the last one
-                sinceVersionIndex = fullChangelog.indexOf("<h2>", 4)
+                sinceVersionIndex = fullChangelog.indicesOf("<h2>").elementAt(1)
             }
             val changelog = fullChangelog.substring(0, sinceVersionIndex)
 
