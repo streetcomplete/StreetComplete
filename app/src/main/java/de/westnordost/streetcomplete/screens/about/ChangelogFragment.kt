@@ -88,7 +88,7 @@ private fun Resources.getDimensionInSp(@DimenRes resId: Int) =
 private fun Resources.getDimensionInDp(@DimenRes resId: Int) =
     (getDimension(resId) / displayMetrics.density).roundToInt()
 
-private fun WebView.setHtmlFromString(html: String) {
+private fun WebView.setHtmlFromString(body: String) {
     val textColor = resources.getHexColor(R.color.text)
     val linkColor = resources.getHexColor(R.color.accent)
     val dividerColor = resources.getHexColor(R.color.divider)
@@ -101,31 +101,37 @@ private fun WebView.setHtmlFromString(html: String) {
     val verticalMargin = resources.getDimensionInDp(R.dimen.activity_vertical_margin)
     val horizontalMargin = resources.getDimensionInDp(R.dimen.activity_horizontal_margin)
 
-    val style = """
-        <meta name="color-scheme" content="dark light">
-        <style>
-            body {
-                margin: ${verticalMargin}px ${horizontalMargin}px;
-                color: $textColor;
-                font-size: ${textSize}px;
-            }
+    val html = """
+        <html>
+            <head>
+                <meta name="color-scheme" content="dark light">
+                <style>
+                    body {
+                        margin: ${verticalMargin}px ${horizontalMargin}px;
+                        color: $textColor;
+                        font-size: ${textSize}px;
+                    }
 
-            :link { color: $linkColor; }
+                    :link { color: $linkColor; }
 
-            h2, h3, h4 { font-family: sans-serif-condensed; }
+                    h2, h3, h4 { font-family: sans-serif-condensed; }
 
-            h2 { font-size: ${h2Size}px; }
-            h3 { font-size: ${h3Size}px; }
-            h4 { font-size: ${h4Size}px; }
+                    h2 { font-size: ${h2Size}px; }
+                    h3 { font-size: ${h3Size}px; }
+                    h4 { font-size: ${h4Size}px; }
 
-            h2:not(:first-child) {
-                border-top: 1px solid $dividerColor;
-                padding-top: 1rem;
-            }
+                    h2:not(:first-child) {
+                        border-top: 1px solid $dividerColor;
+                        padding-top: 1rem;
+                    }
 
-            @media (prefers-color-scheme: dark) {}
-        </style>
+                    @media (prefers-color-scheme: dark) {}
+                </style>
+            </head>
+            <body>$body</body>
+        </html>
     """.trimIndent()
-    loadDataWithBaseURL(null, style + html, "text/html", "utf-8", null)
+
+    loadDataWithBaseURL(null, html, "text/html", "utf-8", null)
     setBackgroundColor(Color.TRANSPARENT)
 }
