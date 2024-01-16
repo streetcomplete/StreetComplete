@@ -48,7 +48,7 @@ class OsmQuestControllerTest {
 
     private lateinit var ctrl: OsmQuestController
     private lateinit var listener: OsmQuestSource.Listener
-    private lateinit var hideListener: OsmQuestController.HideOsmQuestListener
+    private lateinit var hideListener: OsmQuestsHiddenSource.Listener
 
     private lateinit var mapDataListener: MapDataWithEditsSource.Listener
     private lateinit var notesListener: NotesWithEditsSource.Listener
@@ -86,7 +86,7 @@ class OsmQuestControllerTest {
         hideListener = mock()
         ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
         ctrl.addListener(listener)
-        ctrl.addHideQuestsListener(hideListener)
+        ctrl.addListener(hideListener)
     }
 
     @Test fun get() {
@@ -167,6 +167,11 @@ class OsmQuestControllerTest {
             ),
             ctrl.getAllHiddenNewerThan(123L)
         )
+    }
+
+    @Test fun countAll() {
+        on(hiddenDB.countAll()).thenReturn(123L)
+        assertEquals(123L, ctrl.countAll())
     }
 
     @Test fun hide() {

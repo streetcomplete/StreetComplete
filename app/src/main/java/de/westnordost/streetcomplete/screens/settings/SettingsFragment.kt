@@ -19,11 +19,13 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -57,43 +59,37 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     private val downloadedTilesController: DownloadedTilesController by inject()
     private val noteController: NoteController by inject()
     private val mapDataController: MapDataController by inject()
-    private val osmQuestController: OsmQuestController by inject()
-    private val osmNoteQuestController: OsmNoteQuestController by inject()
+    private val osmQuestsHiddenController: OsmQuestsHiddenController by inject()
+    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val osmQuestsHiddenDao: OsmQuestsHiddenDao by inject()
-    private val noteQuestsHiddenDao: NoteQuestsHiddenDao by inject()
 
     override val title: String get() = getString(R.string.action_settings)
 
     private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
-            setQuestPreferenceSummary()
-        }
-
-        override fun onQuestTypeVisibilitiesChanged() {
-            setQuestPreferenceSummary()
-        }
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) { setQuestPreferenceSummary() }
+        override fun onQuestTypeVisibilitiesChanged() { setQuestPreferenceSummary() }
     }
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() {
-            setQuestPresetsPreferenceSummary()
-        }
+        override fun onSelectedQuestPresetChanged() { setQuestPresetsPreferenceSummary() }
+        override fun onAddedQuestPreset(preset: QuestPreset) { setQuestPresetsPreferenceSummary() }
+        override fun onRenamedQuestPreset(preset: QuestPreset) { setQuestPresetsPreferenceSummary() }
+        override fun onDeletedQuestPreset(presetId: Long) { setQuestPresetsPreferenceSummary() }
+    }
 
-        override fun onAddedQuestPreset(preset: QuestPreset) {
-            setQuestPresetsPreferenceSummary()
-        }
+    private val osmQuestsHiddenListener = object : OsmQuestsHiddenSource.Listener {
+        override fun onHid(edit: OsmQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhid(edit: OsmQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhidAll() { setHiddenQuestsSummary() }
+    }
 
-        override fun onRenamedQuestPreset(preset: QuestPreset) {
-            setQuestPresetsPreferenceSummary()
-        }
-
-        override fun onDeletedQuestPreset(presetId: Long) {
-            setQuestPresetsPreferenceSummary()
-        }
+    private val osmNoteQuestsHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
+        override fun onHid(edit: OsmNoteQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhid(edit: OsmNoteQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhidAll() { setHiddenQuestsSummary() }
     }
 
     private val onAutosyncChanged =  {
@@ -178,7 +174,6 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
                 getString(R.string.restore_hidden_success, hidden),
                 Toast.LENGTH_LONG
             )
-            setHiddenQuestsSummary()
         }
     }
 
@@ -215,6 +210,8 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
         visibleQuestTypeSource.addListener(visibleQuestTypeListener)
         questPresetsSource.addListener(questPresetsListener)
+        osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
+        osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
     }
 
     override fun onStop() {
@@ -222,6 +219,8 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
         visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
         questPresetsSource.removeListener(questPresetsListener)
+        osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
+        osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
     }
 
     override fun onResume() {
@@ -259,11 +258,11 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     }
 
     private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
-        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
+        osmQuestsHiddenController.unhideAll() + osmNoteQuestsHiddenController.unhideAll()
     }
 
     private fun countHiddenQuests(): Long =
-        osmQuestsHiddenDao.countAll() + noteQuestsHiddenDao.countAll()
+        osmQuestsHiddenController.countAll() + osmNoteQuestsHiddenController.countAll()
 
 
     private fun setQuestPreferenceSummary() {
